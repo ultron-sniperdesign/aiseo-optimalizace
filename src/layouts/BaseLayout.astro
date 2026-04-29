@@ -1,0 +1,97 @@
+---
+import "~/styles/global.css";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  /** OG image URL (absolutní nebo /og/...). Default = /og/default.png. */
+  image?: string;
+  /** Canonical URL — pokud chybí, vygeneruje se z Astro.url. */
+  canonical?: string;
+  /** Volitelné JSON-LD schema (např. FAQPage, Article) — vloží se do <head>. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** noindex pro thank-you / debug pages. */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = "/og/default.png",
+  canonical,
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageURL = new URL(image, Astro.site).toString();
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "aiseo-optimalizace.cz",
+  url: "https://aiseo-optimalizace.cz",
+  description: "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO.",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "aiseo-optimalizace.cz",
+  url: "https://aiseo-optimalizace.cz",
+  inLanguage: "cs-CZ",
+};
+
+const allJsonLd = [orgSchema, websiteSchema, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
+---
+
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="aiseo-optimalizace.cz" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="aiseo-optimalizace.cz" href="/rss.xml" />
+
+    {allJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+    <slot name="head" />
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:shadow">
+      Přeskočit na obsah
+    </a>
+
+    <Header />
+
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

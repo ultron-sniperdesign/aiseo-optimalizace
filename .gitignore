@@ -1,0 +1,39 @@
+# Build outputs
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.production
+.env.local
+.env.*.local
+
+# Node / npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor metadata
+.DS_Store
+Icon
+Icon?
+._*
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# macOS Finder Icon resource fork (also inside .git/, see runbook §9)
+.git/refs/heads/Icon
+.git/Icon
+
+# Build artefakty
+.deploy-staging/
+release_local/
+*.tsbuildinfo
+
+# Local Claude session artefakty (per-session, ne pro repo)
+.claude/

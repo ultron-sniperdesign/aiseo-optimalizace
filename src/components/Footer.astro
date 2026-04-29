@@ -1,0 +1,35 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-ink)]/10 mt-20 py-10">
+  <div class="mx-auto max-w-7xl px-6 grid gap-8 md:grid-cols-3 text-sm text-[var(--color-ink-muted)]">
+    <div>
+      <p class="font-display font-semibold text-[var(--color-ink)] mb-2">aiseo-optimalizace.cz</p>
+      <p>Edukativní průvodce AI érou vyhledávání. Co je rozdíl mezi SEO, GEO, AEO a AIO — a kdy kterou techniku použít.</p>
+    </div>
+
+    <div>
+      <p class="font-display font-semibold text-[var(--color-ink)] mb-2">Sekce</p>
+      <ul class="space-y-1">
+        <li><a href="/seo/" class="hover:text-[var(--color-accent-strong)]">SEO — Search Engine Optimization</a></li>
+        <li><a href="/geo/" class="hover:text-[var(--color-accent-strong)]">GEO — Generative Engine Optimization</a></li>
+        <li><a href="/aeo/" class="hover:text-[var(--color-accent-strong)]">AEO — Answer Engine Optimization</a></li>
+        <li><a href="/aio/" class="hover:text-[var(--color-accent-strong)]">AIO — AI Optimization / Overviews</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-display font-semibold text-[var(--color-ink)] mb-2">Praxe</p>
+      <ul class="space-y-1">
+        <li><a href="/prakticky-postup/" class="hover:text-[var(--color-accent-strong)]">Praktický postup implementace</a></li>
+        <li><a href="/rozhodovaci-matice/" class="hover:text-[var(--color-accent-strong)]">Rozhodovací matice — co kdy použít</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 mt-8 pt-6 border-t border-[var(--color-ink)]/10 text-xs text-[var(--color-ink-muted)] flex flex-wrap justify-between gap-4">
+    <p>© {year} aiseo-optimalizace.cz</p>
+    <p>Postaveno na Astru, hostováno v Česku.</p>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const sections = (await getCollection("sections")).sort((a, b) => a.data.order - b.data.order);
+
+const pageTitle = "AI SEO: SEO vs. GEO vs. AEO vs. AIO — průvodce 4 zkratkami AI éry";
+const pageDescription =
+  "Co je rozdíl mezi SEO, GEO, AEO a AIO? Praktický průvodce optimalizací pro AI vyhledávání — ChatGPT, Perplexity, Google AI Overviews. Pro web i e-shop.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="mx-auto max-w-4xl px-6 pt-16 pb-10">
+    <p class="text-sm font-medium text-[var(--color-accent-strong)] uppercase tracking-wider mb-3">
+      Průvodce AI érou vyhledávání
+    </p>
+    <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-[1.1] mb-6">
+      SEO, GEO, AEO, AIO — co je rozdíl a kdy kterou techniku použít
+    </h1>
+    <p class="text-lg md:text-xl text-[var(--color-ink-muted)] max-w-prose">
+      <strong class="text-[var(--color-ink)]">SEO</strong> optimalizuje pro pozice v Googlu.
+      <strong class="text-[var(--color-ink)]">GEO</strong> pro citace v ChatGPT a Perplexity.
+      <strong class="text-[var(--color-ink)]">AEO</strong> pro odpovědi v Google AI Overviews.
+      <strong class="text-[var(--color-ink)]">AIO</strong> je zastřešující pojem.
+      V roce 2026 už nestačí jen klasické SEO — potřebujete kombinaci všech čtyř.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-10">
+    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+      Začni tady — 6 sekcí podle myšlenkové mapy
+    </h2>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        sections.map((section) => (
+          <a
+            href={`/${section.data.slug}/`}
+            class="group block p-6 rounded-2xl border border-[var(--color-ink)]/10 hover:border-[var(--color-accent)]/40 hover:shadow-lg hover:-translate-y-0.5 transition-all bg-white"
+          >
+            <p class="text-xs font-semibold text-[var(--color-accent-strong)] uppercase tracking-wider mb-2">
+              {section.data.abbr}
+            </p>
+            <h3 class="font-display text-xl font-semibold mb-2 group-hover:text-[var(--color-accent-strong)] transition-colors">
+              {section.data.title}
+            </h3>
+            <p class="text-sm text-[var(--color-ink-muted)] leading-relaxed line-clamp-3">
+              {section.data.description}
+            </p>
+            <p class="mt-4 text-sm font-medium text-[var(--color-accent-strong)] inline-flex items-center gap-1">
+              Číst dál
+              <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">→</span>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-14 prose-content">
+    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-4">
+      Hledáš kompletní pillar průvodce?
+    </h2>
+    <p class="text-[var(--color-ink-muted)] mb-6">
+      Pokud chceš všech 4 zkratek vysvětlených v jediném ~3 000 slov dlouhém článku — od definic přes srovnávací tabulku až po praktický postup ve 4 krocích a FAQ — máme pro tebe pillar.
+    </p>
+    <a
+      href="/seo-vs-geo-vs-aeo-vs-aio/"
+      class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--color-accent-strong)] text-white font-medium hover:bg-[var(--color-ink)] transition-colors"
+    >
+      Otevřít kompletní pillar →
+    </a>
+  </section>
+</BaseLayout>

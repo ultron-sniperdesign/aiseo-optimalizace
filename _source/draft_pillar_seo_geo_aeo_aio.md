@@ -1,0 +1,374 @@
+# SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4 zkratkami pro AI éru vyhledávání
+
+**Meta title:** SEO vs. GEO vs. AEO vs. AIO: Průvodce AI érou (2026)
+**Meta description:** Co je rozdíl mezi SEO, GEO, AEO a AIO? Kompletní průvodce optimalizací pro AI vyhledávání — ChatGPT, Perplexity, Google AI Overviews.
+**URL slug:** `/seo-vs-geo-vs-aeo-vs-aio`
+**Cílová délka:** ~3 000 slov
+**Primární KW:** ai overview, geo seo, aeo seo, answer engine optimization, geo vs seo
+
+---
+
+## TL;DR
+
+**SEO** optimalizuje stránku pro pozice v Googlu. **GEO** (Generative Engine Optimization) optimalizuje obsah pro citace v generativních AI jako ChatGPT a Perplexity. **AEO** (Answer Engine Optimization) cílí na přímé odpovědi v Google AI Overviews a Bing Chatu. **AIO** zaštiťuje všechny tři disciplíny pod hlavičkou „optimalizace pro AI". V roce 2026 už nestačí dělat jen klasické SEO — pokud chcete být citováni v ChatGPT odpovědi nebo zobrazeni v Google AI Overview, potřebujete kombinaci všech čtyř.
+
+---
+
+## Úvod: Proč najednou 4 zkratky místo jedné
+
+Ještě v roce 2023 stačilo říct „SEO" a všichni věděli, o co jde — optimalizace stránek pro pozice v Googlu, Seznamu nebo Bingu. Pak přišel ChatGPT, Google AI Overviews, Perplexity, Claude a generativní vyhledávání. A s nimi tři nové zkratky: **GEO, AEO a AIO**.
+
+Český trh začíná tyto pojmy reflektovat až teď. Podle dat z Marketing Miner má v ČR fráze „ai overview" měsíční hledanost 150, meziročně **+257 %**, a „geo seo" 70 hledání s **+645 %** YoY. Google Trends ukazují, že zájem v ČR je koncentrovaný v Praze a v Brně — typicky tam, kde sídlí marketingové agentury a in-house SEO týmy.
+
+Problém je, že **pojmy se v textech navzájem prolínají**. Jeden článek mluví o GEO jako o „optimalizaci pro generativní AI", druhý o AEO ve stejném smyslu, třetí používá AIO jako synonymum pro AI Overviews. V tomto průvodci je rozeberu jednotlivě a v reálných příkladech, abyste si po jeho přečtení dokázali sami říct, kterou disciplínu kde použít.
+
+---
+
+## Co je SEO (klasické vyhledávání)
+
+**SEO (Search Engine Optimization) je optimalizace webové stránky tak, aby se zobrazovala na vysokých pozicích v organických výsledcích vyhledávačů jako Google nebo Seznam.**
+
+Cílem klasického SEO je modrý odkaz v top 10 výsledcích — ideálně v top 3, protože ty získávají většinu kliků. Klíčové signály:
+
+- **On-page faktory:** title tag, meta description, struktura H1–H6, interní prolinkování, schema markup
+- **Obsahové faktory:** relevance ke klíčovému slovu, hloubka pokrytí tématu, čtenářský komfort
+- **Technické faktory:** rychlost načítání, mobile-first design, indexovatelnost, Core Web Vitals
+- **Off-page faktory:** zpětné odkazy z autoritních domén, brand mentions, E-E-A-T signály
+
+SEO funguje na principu **rankingových algoritmů** — Google hodnotí stránky podle stovek faktorů a řadí je v SERPu (Search Engine Results Page). I v roce 2026 zůstává SEO **základem všeho ostatního**: pokud Google vaši stránku neumí dobře načíst, indexovat a porozumět jí, žádná z dalších disciplín nezafunguje.
+
+---
+
+## Co je GEO — Generative Engine Optimization
+
+**GEO (Generative Engine Optimization) je optimalizace obsahu tak, aby byl citován jako zdroj v odpovědích generativních AI nástrojů — ChatGPT, Perplexity, Claude, Gemini.**
+
+Když uživatel zadá ChatGPT dotaz „jaké jsou nejlepší AI nástroje pro SEO 2026", model nevytahuje top 10 modrých odkazů. Místo toho **vygeneruje odpověď v přirozené řeči** a u některých platforem (Perplexity, ChatGPT v search módu, Gemini) k ní přidá **citace zdrojů**. GEO řeší: jak udělat, aby právě váš web byl tím citovaným zdrojem.
+
+### GEO vs. SEO — klíčový rozdíl
+
+| | SEO | GEO |
+|---|---|---|
+| **Cíl** | Pozice v top 10 SERPu | Citace v AI odpovědi |
+| **Měření** | Klíčová slova, organic traffic, CTR | Mention rate, citation share, brand visibility v AI |
+| **Hlavní platformy** | Google, Seznam, Bing | ChatGPT, Perplexity, Claude, Gemini |
+| **Klíčové signály** | Backlinks, on-page SEO, E-E-A-T | Strukturovaný obsah, citovatelnost, brand authority, fact-density |
+| **Co AI hledá** | Index a ranking faktory | Konkrétní fakta, čísla, citáty, krátké odpovědi |
+
+**Důležitá pointa pro CZ trh:** GEO buduje na základech SEO, není jeho náhradou. Stránka, která je v Googlu na pozici 1, ale je špatně strukturovaná pro citaci, **se v ChatGPT nemusí objevit vůbec**. A naopak — autoritativní zdroj na 8. pozici se může stát hlavní citací v AI odpovědi, pokud má jasné fakta, citáty a strukturovaný obsah.
+
+---
+
+## Co je AEO — Answer Engine Optimization
+
+**AEO (Answer Engine Optimization) je optimalizace obsahu tak, aby byl použit jako přímá odpověď v „answer engines" — Google AI Overviews, Bing Chat, Google Featured Snippets.**
+
+AEO je **užší pojem než GEO**. Zatímco GEO řeší citace v jakémkoli generativním AI (včetně ChatGPT, který Google nevyhledává), AEO se soustředí specificky na **answer engines napojené na vyhledávač**: typicky Google AI Overviews (dříve SGE — Search Generative Experience) a Bing Chat.
+
+### Klíčové platformy pro AEO
+
+- **Google AI Overviews** — souhrn nahoře nad organickými výsledky, generovaný Geminim
+- **Bing Chat / Copilot** — AI odpověď v Edge browseru a na Bing.com
+- **Google Featured Snippets** — klasické „pozice 0", které AEO zdědí
+- **Knowledge Panel a Knowledge Graph** — entitní data o brandu
+
+### Co AEO vyžaduje
+
+1. **FAQ sekce s schema.org/FAQPage markupem** — AI engines z toho přímo táhnou Q&A do odpovědí
+2. **HowTo schema** pro návody — AI Overviews často citují strukturované postupy
+3. **Krátké, věcné odpovědi nahoře v článku** — typicky 40–60 slov hned po H2
+4. **Datově hutný obsah** — čísla, procenta, konkrétní hodnoty (AI miluje fakta)
+5. **Strukturované odstavce** — jeden nápad na odstavec, žádné „omáčky"
+
+Z dat Marketing Mineru víme, že na CZ trhu má reálnou viditelnost v Google AI Overviews v dubnu 2026 jen několik domén. Mezi nimi **interval.cz, marketingppc.cz, seoprakticky.cz**. A interval.cz si touto strategií **zdvojnásobil organic traffic za rok** — z 1 844 návštěv v dubnu 2025 na 4 363 v dubnu 2026 (+137 %).
+
+---
+
+## Co je AIO — AI Overviews / AI Optimization
+
+**AIO má dva významy — záleží na kontextu:**
+
+1. **AI Overviews** — konkrétní funkce Google vyhledávače, kde se nad organickými výsledky zobrazuje generovaný souhrn s odkazy na zdroje.
+2. **AI Optimization** — širší zastřešující pojem pro optimalizaci pro AI obecně (zahrnuje GEO + AEO + LLMO).
+
+### AI Overviews v praxi
+
+AI Overview je **krátký generovaný přehled s odpovědí na dotaz**, do kterého Gemini vybírá informace z více zdrojů, doplňuje je obrázky, doporučenými odkazy nebo souvisejícími tématy. Aktivuje se selektivně — typicky u **informačních dotazů**, kde má AI dost důvěryhodných zdrojů. U transakčních a navigačních dotazů se obvykle nezobrazuje.
+
+V Česku jsou AI Overviews aktivní od **léta 2025** a zájem o ně rychle roste — Google Trends index pro „ai overview" je v CZ za posledních 12 měsíců **59,4 z 100** (silný signál mainstream zájmu).
+
+### Defenzivní strana mince
+
+Kuriózní zjištění z dat Google Trends: **3 z 5 nejrostoucích dotazů** kolem „ai overview" v ČR jsou **defenzivní**:
+
+- „turn off ai overview google"
+- „google disable ai overview"
+- „how to disable ai overview google"
+
+Část uživatelů AI Overviews **aktivně chce vypnout**, protože se jim nelíbí, že odpověď přijde bez kliknutí na zdroj. To má dvě konsekvence pro vaši strategii:
+
+1. **Defenzivní článek** „Jak vypnout AI Overviews v Googlu" je magnet na traffic — málo CZ konkurence, snadný obsah
+2. **Mít v AIO presence ale neznamená automaticky win** — záleží na typu obsahu (více v sekci „Co se nedoporučuje")
+
+---
+
+## Srovnávací tabulka SEO / GEO / AEO / AIO
+
+Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychlý reference guide:
+
+| Dimenze | SEO | GEO | AEO | AIO |
+|---|---|---|---|---|
+| **Plný název** | Search Engine Optimization | Generative Engine Optimization | Answer Engine Optimization | AI Optimization (zastřešující) |
+| **Cíl** | Pozice v SERPu | Citace v AI odpovědi | Přímá odpověď v answer enginu | Souhrn všech tří |
+| **Hlavní platformy** | Google, Seznam, Bing | ChatGPT, Perplexity, Claude, Gemini | Google AI Overviews, Bing Chat | Vše dohromady |
+| **Klíčový signál** | Backlinks + on-page | Citovatelnost obsahu | FAQ + HowTo schema | Kombinace všeho |
+| **Měření** | Pozice, traffic, CTR | Citation share, mention rate | AIO impressions, snippet rate | Hybrid metriky |
+| **Formát obsahu** | Long-form pillar pages | Strukturovaný, faktický | Q&A, jasné odpovědi | Kombinace |
+| **Časový horizont výsledku** | 3–6 měsíců | 1–3 měsíce | 2–4 měsíce | Závisí na pillaru |
+| **Klíčový nástroj** | Google Search Console, Ahrefs | Mention monitoring (Otterly, Profound) | Google AIO tracker, Search Console | Hybrid stack |
+
+---
+
+## Kdy použít kterou disciplínu (rozhodovací matrix)
+
+Pokud máte omezené zdroje, není reálné dělat všechny 4 disciplíny naplno. Tady je rozhodovací rámec:
+
+### Začněte s SEO, pokud…
+
+- Web je nový (do 12 měsíců) a nemá ještě indexovou autoritu
+- Hlavní traffic kanál je organic search
+- KPI tým měří podle organic traffic + konverzí
+- Konkurence v SERPu má slabou backlinkovou strukturu
+
+### Přidejte AEO, jakmile…
+
+- Máte 20+ článků v top 10 organické pozice
+- Většina dotazů, které řešíte, jsou informační (jak udělat X, co je Y)
+- Klíčová slova mají vysoký podíl SERP features (featured snippets, PAA boxes)
+- V Google Search Console vidíte rostoucí impressions ale klesající CTR (signál, že AIO odpověď „kradne" kliknutí)
+
+### Investujte do GEO, pokud…
+
+- Vaše B2B nebo prémiová cílovka aktivně používá ChatGPT/Perplexity pro research
+- Brand mention v AI odpovědi je pro vás konverzně cenný (B2B, SaaS, konzultace)
+- Máte schopnost sledovat citation share přes nástroje jako Otterly nebo Profound
+- Cíl je „brand visibility v AI ekosystému", ne přímý traffic
+
+### AIO jako zastřešující strategii nasazujte, když…
+
+- Máte zralý SEO program a chcete jeden koherentní rámec
+- Marketingový tým potřebuje jednu metriku/strategii místo tří
+- Cílíte na C-level — pojem „AIO strategy" je pro ně srozumitelnější než tři zkratky
+
+**Praktická realita CZ trhu:** Většině českých firem doporučuji začít kombinací **SEO + AEO** (FAQ schema, HowTo, krátké odpovědi nahoře). GEO investice má smysl až ve chvíli, kdy máte měřitelnou cílovku v AI nástrojích — pro většinu CZ B2C e-shopů to ještě není priorita.
+
+---
+
+## Praktický postup: jak začít s GEO/AEO/AIO ve 4 krocích
+
+### Krok 1 — Audit existujícího obsahu pro AI citovatelnost
+
+Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky:
+
+1. **Je odpověď na hlavní dotaz v prvních 60 slovech článku?** Pokud ne, přesuňte ji nahoru.
+2. **Obsahuje stránka konkrétní fakta, čísla, citáty?** AI engines milují fact-density.
+3. **Je struktura H2/H3 logická?** Každý subheading by měl odpovídat na sub-dotaz.
+4. **Má FAQ sekci s schema.org/FAQPage markupem?** Pokud ne, přidejte ji.
+
+### Krok 2 — Schema.org markup (FAQPage, HowTo, Article)
+
+Schema markup je **strojově čitelný popis** vaší stránky, který AI engines explicitně vyhledávají. Tři typy, které musí mít každá content stránka:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Co je rozdíl mezi SEO a GEO?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "SEO optimalizuje stránku pro pozice v Googlu. GEO optimalizuje obsah pro citace v AI odpovědích."
+    }
+  }]
+}
+```
+
+Pro tutoriály a postupy `HowTo`, pro články `Article` s `author`, `datePublished` a `image`.
+
+### Krok 3 — Strukturované odpovědi (answer block + kontext)
+
+Každý článek by měl mít **dvouvrstevnou strukturu**:
+
+- **Answer block** (40–60 slov) hned po H1 nebo H2 — tady AI engines táhnou citaci
+- **Dlouhý kontext** pod tím — pro lidské čtenáře, kteří chtějí hlubší pochopení
+
+Tento článek má v každé sekci výraznou definici tučně („**X je…**"). Není to estetický doplněk — je to **přímý signál pro AI scrapery**, kde najdou definici daného pojmu.
+
+### Krok 4 — Měření: SERP features tracking + AI citation monitoring
+
+Co měřit:
+
+| Metrika | Zdroj | Frekvence |
+|---|---|---|
+| Pozice v AI Overviews | manuální Google search nebo SE Ranking | týdně |
+| Featured Snippets impressions | Google Search Console | denně |
+| FAQ rich snippet zobrazení | GSC → Performance → Search Appearance | týdně |
+| Brand mention v ChatGPT | nástroje jako Otterly, Profound | měsíčně |
+| Citation share v Perplexity | manuální audit nebo Profound | měsíčně |
+
+V Marketing Miner API endpoint `website_stats` vrací atribut `ai_overviews` s počtem klíčových slov, na kterých se vaše doména v AIO objevuje. To je nejjednodušší a v ČR dostupný způsob, jak AIO presence sledovat.
+
+---
+
+## Co se NEdoporučuje (anti-patterns)
+
+Při optimalizaci pro AI se snadno udělají čtyři chyby, které se v CZ obsahovém marketingu opakují:
+
+### 1. Plné kopírování AI promptů do textu
+
+Občas vidíme články, které doslova obsahují sekci „Při psaní jsme použili tento prompt: …". Je to autenticita, kterou AI engines penalizují — pokud detekují, že obsah je primárně AI-generovaný bez přidané hodnoty, snižují citovatelnost.
+
+### 2. Nucení FAQ tam, kde nepatří
+
+FAQ sekce má cenu jen, když odpovídá na **reálné dotazy uživatelů**. Když si vymyslíte 5 otázek typu „Proč je naše agentura nejlepší?", neměří se to ničemu. Použijte data z Google Search Console (dotazy, na které už hodnotíte) a People Also Ask boxů.
+
+### 3. Příliš dlouhé answer blocks
+
+Pokud první odpověď v článku má 200 slov, AI scraper **najde jen prvních 60** a zbytek ignoruje. Krátká, věcná odpověď nahoře. Dlouhý kontext pod tím.
+
+### 4. Optimalizace pouze pro AIO bez ohledu na obsahový profil
+
+Klíčové zjištění z analýzy CZ trhu: **AI Overviews škodí dlouhým how-to průvodcům** (marketingppc.cz prošel propadem organic 46k → 20k mezi červencem a září 2025, i když měl AIO presence) a **prospívá krátkým news/edu článkům** (interval.cz +137 % YoY se stejnou AIO presence).
+
+Pokud máte e-shop nebo B2B SaaS s dlouhými edukačními průvodci, zvažte, **zda se chcete v AIO objevovat** — protože AI vám může „sebrat" odpověď a uživatel už neklikne. Někdy je strategicky správnější obsah **z AIO blokovat** přes `nosnippet` meta tag.
+
+---
+
+## FAQ — nejčastější dotazy ke 4 zkratkám
+
+### Co je rozdíl mezi SEO a GEO?
+
+SEO optimalizuje stránku pro pozice v Googlu (modrý odkaz). GEO optimalizuje obsah pro citace v AI odpovědích (ChatGPT, Perplexity). SEO i GEO se navzájem podporují — bez kvalitního SEO vás AI engine ani neindexuje, bez GEO vás necituje.
+
+### Jak optimalizovat pro ChatGPT?
+
+ChatGPT v search módu (od léta 2024) prochází web podobně jako Google, ale preferuje **strukturovaný obsah s jasnými fakty**. Klíčové kroky: (1) stručné definice ve formátu „X je…", (2) datově hutné odstavce s čísly a procentními údaji, (3) FAQPage schema, (4) backlinks z autoritních zdrojů (E-E-A-T), (5) brand mentions v relevantních komunitách (Reddit, Quora, oborové weby).
+
+### Kde se zobrazují AI Overviews?
+
+Google AI Overviews se zobrazují **v Česku od léta 2025** nad organickými výsledky pro informační dotazy. Aktivují se selektivně — Google rozhoduje na základě dotazu, dostupnosti důvěryhodných zdrojů a typu hledaní. U transakčních a navigačních dotazů se obvykle neobjevují.
+
+### Můžu AI Overviews v Googlu vypnout?
+
+V Google nastavení účtu lze AI Overviews částečně omezit přes **Search Labs → AI Overviews → Off**, ale Google funkci nedovoluje úplně vypnout pro všechny dotazy. Některé prohlížeče (Brave, DuckDuckGo) AI Overviews neobsahují vůbec. Pokud chcete pro vlastní web AIO zablokovat, použijte `<meta name="google" content="nosnippet">` v hlavičce.
+
+### Je AEO totéž co AIO?
+
+Ne. **AEO** (Answer Engine Optimization) je užší — týká se konkrétně answer engines napojených na vyhledávač (Google AIO, Bing Chat, Featured Snippets). **AIO** (AI Optimization) je zastřešující pojem pro celou disciplínu optimalizace pro AI, který zahrnuje SEO + GEO + AEO. AIO je tedy strategický rámec, AEO konkrétní implementační oblast.
+
+### Kdy investovat do GEO místo do SEO?
+
+GEO **nenahrazuje** SEO. Pokud máte web mladší než 12 měsíců nebo slabou indexaci, začněte SEO. GEO investice má smysl až, když: (1) máte minimálně 20 článků v top 10 organicky, (2) vaše B2B cílovka aktivně používá AI nástroje, (3) chcete měřit brand visibility v AI ekosystému jako konverzní metriku.
+
+### Funguje GEO i pro Seznam.cz?
+
+Seznam má vlastní AI vyhledávač **Asistent**, ale jeho rozšíření v ČR je zatím marginální oproti Google. GEO praktiky (strukturovaný obsah, schema markup, fakta nahoře) prospívají i Seznamu, ale dedikovanou GEO strategii pro Seznam zatím nepotřebujete — kvalitní SEO + AEO pro Google obvykle pokryje i Seznam.
+
+---
+
+## Závěr: Co dělat příští týden
+
+Pokud jste dočetli až sem, máte přehled o všech 4 zkratkách. Co teď s tím **konkrétně** udělat:
+
+1. **Tento týden:** Vyberte 5 nejnavštěvovanějších stránek na svém webu. Doplňte na nich answer block (60 slov) hned po H1 a FAQPage schema dolů.
+2. **Tento měsíc:** Audit zbylých top 20 stránek podle 4 otázek z Kroku 1 výše. Najměte si nebo postavte interní šablonu pro nové články, která tyto principy vynucuje.
+3. **Tento kvartál:** Zaveďte měření AI citation share — minimálně manuální Google search pro top 10 vašich KW jednou měsíčně. Pokud máte rozpočet, zvažte nástroj Otterly nebo Profound.
+4. **Long-term:** Rozhodněte se, jestli AIO presence je pro vaši firmu **win nebo loss**. Pokud máte dlouhé edu průvodce, zvažte selektivní `nosnippet` meta tag. Pokud máte krátké news/recenze, AIO vás bude tahat nahoru.
+
+Zatím **většina českého trhu tyto principy nedělá** — Google CZ pro „generative engine optimization" v dubnu 2026 ukazuje top 10 výsledků pouze v angličtině, žádný český obsah. To je vzácná příležitost být první.
+
+---
+
+## Zdroje a další čtení
+
+- [Search Engine Land — What is Generative Engine Optimization](https://searchengineland.com/what-is-generative-engine-optimization-geo-444418)
+- [Pavel Ungr — AI Overviews v Česku a na Slovensku](https://www.pavelungr.cz/ai-overviews-jsou-v-cesku-i-na-slovensku-co-to-meni-pro-seo-strategii/)
+- [Interval.cz — Nová éra SEO: Jak připravit web na AI přehledy](https://www.interval.cz/clanky/nova-era-seo-jak-pripravit-web-na-ai-prehledy/)
+- [SEOPRAKTICKY.cz — AIO a GEO: Je AI overviews náhrada nebo nové příležitosti pro SEO?](https://www.seoprakticky.cz/blog/aio-geo/)
+- [Google Search Central — schema.org/FAQPage Documentation](https://developers.google.com/search/docs/appearance/structured-data/faqpage)
+
+---
+
+## Schema.org markup vzor pro tento článek
+
+Vložit do `<head>` stránky:
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4 zkratkami pro AI éru",
+      "datePublished": "2026-04-28",
+      "dateModified": "2026-04-28",
+      "author": {
+        "@type": "Person",
+        "name": "[Autor]"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "[Vaše značka]"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Co je rozdíl mezi SEO a GEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SEO optimalizuje stránku pro pozice v Googlu. GEO optimalizuje obsah pro citace v AI odpovědích jako ChatGPT a Perplexity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak optimalizovat pro ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strukturovaný obsah s jasnými definicemi, datově hutné odstavce, FAQPage schema, backlinks z autoritních zdrojů a brand mentions v relevantních komunitách."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kde se zobrazují AI Overviews?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google AI Overviews se v Česku zobrazují od léta 2025 nad organickými výsledky pro informační dotazy. Aktivují se selektivně podle typu dotazu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Můžu AI Overviews v Googlu vypnout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "V Google Search Labs lze AI Overviews částečně omezit, ale úplně vypnout je nelze. Pro vlastní web blokujte přes meta tag nosnippet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Je AEO totéž co AIO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ne. AEO je užší — týká se answer engines (Google AIO, Bing Chat). AIO je zastřešující pojem pro celou disciplínu optimalizace pro AI, který zahrnuje SEO + GEO + AEO."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+```

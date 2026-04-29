@@ -1,0 +1,44 @@
+---
+const navItems = [
+  { href: "/seo/", label: "SEO" },
+  { href: "/geo/", label: "GEO" },
+  { href: "/aeo/", label: "AEO" },
+  { href: "/aio/", label: "AIO" },
+  { href: "/prakticky-postup/", label: "Praktický postup" },
+  { href: "/rozhodovaci-matice/", label: "Kdy použít co" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-[var(--color-ink)]/10 bg-[var(--color-paper)] sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
+  <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between gap-6">
+    <a href="/" class="font-display font-semibold text-lg tracking-tight hover:text-[var(--color-accent-strong)] transition-colors">
+      aiseo-optimalizace<span class="text-[var(--color-accent)]">.cz</span>
+    </a>
+
+    <nav aria-label="Hlavní navigace">
+      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium">
+        {
+          navItems.map((item) => {
+            const isActive = currentPath === item.href || currentPath.startsWith(item.href);
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    "transition-colors hover:text-[var(--color-accent-strong)]",
+                    isActive ? "text-[var(--color-accent-strong)]" : "text-[var(--color-ink-muted)]",
+                  ]}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
