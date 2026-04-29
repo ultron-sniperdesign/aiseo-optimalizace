@@ -45,6 +45,20 @@ const websiteSchema = {
 };
 
 const allJsonLd = [orgSchema, websiteSchema, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
+
+/**
+ * Tracking & verification — build-time env vars (přes GH Secrets v CI).
+ * Lokálně v devu zůstávají undefined → tagy se nevykreslí.
+ *
+ * - PUBLIC_GSC_VERIFICATION: hodnota Google Search Console verification meta
+ *   (např. "abc123def456..." — kopíruje se z GSC po volbě HTML tag method)
+ * - PUBLIC_GA4_MEASUREMENT_ID: GA4 measurement ID (formát "G-XXXXXXXXXX")
+ *
+ * GA4 tag se NEloaduje pokud uživatel nemá `Sec-GPC: 1` (Global Privacy Control)
+ * nebo `Do-Not-Track: 1`. To je honor pravidlo CZ DSA implementace.
+ */
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION as string | undefined;
+const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
 ---
 
 <!doctype html>
@@ -75,6 +89,30 @@ const allJsonLd = [orgSchema, websiteSchema, ...(Array.isArray(jsonLd) ? jsonLd 
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="aiseo-optimalizace.cz" href="/rss.xml" />
+
+    {/* Google Search Console ownership verification (volitelné, build-time env) */}
+    {gscVerification && (
+      <meta name="google-site-verification" content={gscVerification} />
+    )}
+
+    {/* Google Analytics 4 (volitelné, build-time env) — honoruje Sec-GPC */}
+    {ga4Id && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline define:vars={{ ga4Id }}>{`
+          // Honor Sec-GPC (Global Privacy Control) a Do-Not-Track — neload analytics
+          if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") {
+            console.info("[ga4] respektuji Sec-GPC / DNT — analytics není aktivní");
+          } else {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag("js", new Date());
+            gtag("config", ga4Id, { anonymize_ip: true });
+          }
+        `}</script>
+      </>
+    )}
 
     {allJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
 

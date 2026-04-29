@@ -61,7 +61,47 @@ const pillar = defineCollection({
   }),
 });
 
+/**
+ * Articles — samostatné dlouhé články (defenzivní/tutoriálové, case studies, blog).
+ * Nepatří do hub-and-spoke struktury 6 sekcí; mají vlastní slug pod root URL.
+ */
+const articles = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().min(70).max(160),
+    /** 40–60 slovní answer block hned po H1 — AI scraper hook. */
+    answer: z.string(),
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    /** Kategorie — pro pozdější filter v blog kategorii. */
+    category: z.enum(["defensive", "case-study", "tutorial", "analysis"]),
+    updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    keywords: z.array(z.string()),
+    faq: z
+      .array(
+        z.object({
+          q: z.string(),
+          a: z.string(),
+        }),
+      )
+      .optional(),
+    /** Volitelné HowTo schema — pro tutoriálové články. */
+    howto: z
+      .object({
+        name: z.string(),
+        steps: z.array(
+          z.object({
+            name: z.string(),
+            text: z.string(),
+          }),
+        ),
+      })
+      .optional(),
+  }),
+});
+
 export const collections = {
   sections,
   pillar,
+  articles,
 };

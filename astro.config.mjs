@@ -11,7 +11,20 @@ export default defineConfig({
   build: {
     format: "directory",
   },
-  integrations: [mdx(), sitemap()],
+  /**
+   * Redirects — alias slugs / přeznačené staré URL.
+   * - `/seo-a-geo/` → pillar (CZ Suggest říká „seo a geo", ne „seo vs geo")
+   */
+  redirects: {
+    "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio",
+  },
+  integrations: [
+    mdx(),
+    sitemap({
+      // /seo-a-geo není kanonická URL — vyloučit ze sitemap
+      filter: (page) => !page.includes("/seo-a-geo"),
+    }),
+  ],
   vite: {
     // Cast: @tailwindcss/vite a astro/vite mohou mít odlišný Plugin<any> typ
     // (různé verze vite v node_modules). Funkčně to ale sedí, jen TS to neví.

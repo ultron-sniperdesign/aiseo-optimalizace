@@ -37,3 +37,6 @@ release_local/
 
 # Local Claude session artefakty (per-session, ne pro repo)
 .claude/
+
+# Marketing research výstupy (lokální, ne pro repo)
+_research/

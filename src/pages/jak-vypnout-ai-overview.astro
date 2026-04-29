@@ -1,0 +1,99 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getEntry, render } from "astro:content";
+
+const entry = await getEntry("articles", "jak-vypnout-ai-overview");
+if (!entry) {
+  throw new Error("Článek 'jak-vypnout-ai-overview' nenalezen v src/content/articles/");
+}
+const { Content } = await render(entry);
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  dateModified: entry.data.updated,
+  datePublished: entry.data.updated,
+  inLanguage: "cs-CZ",
+  keywords: entry.data.keywords.join(", "),
+};
+
+const faqJsonLd =
+  entry.data.faq && entry.data.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: entry.data.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.a,
+          },
+        })),
+      }
+    : undefined;
+
+const howToJsonLd = entry.data.howto
+  ? {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: entry.data.howto.name,
+      step: entry.data.howto.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+      })),
+    }
+  : undefined;
+
+const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd].filter(
+  Boolean,
+) as Record<string, unknown>[];
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd}>
+  <article class="mx-auto max-w-3xl px-6 pt-12 pb-20">
+    <header class="mb-10">
+      <p class="text-sm font-semibold text-[var(--color-accent-strong)] uppercase tracking-wider mb-3">
+        Návod / defenzivní
+      </p>
+      <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight text-balance leading-[1.1] mb-4">
+        {entry.data.title}
+      </h1>
+      <p class="text-base text-[var(--color-ink-muted)]">
+        Aktualizováno: <time datetime={entry.data.updated}>{entry.data.updated}</time>
+      </p>
+    </header>
+
+    <div class="mb-10 p-5 rounded-xl bg-[var(--color-accent)]/5 border-l-4 border-[var(--color-accent)]">
+      <p class="font-medium text-[var(--color-ink)] leading-relaxed">
+        {entry.data.answer}
+      </p>
+    </div>
+
+    <div class="prose-content prose prose-lg prose-headings:font-display prose-headings:tracking-tight max-w-none">
+      <Content />
+    </div>
+
+    {
+      entry.data.faq && entry.data.faq.length > 0 && (
+        <section class="mt-16">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-6">
+            Časté otázky
+          </h2>
+          <dl class="space-y-6">
+            {entry.data.faq.map((item) => (
+              <div class="border-b border-[var(--color-ink)]/10 pb-6 last:border-0">
+                <dt class="font-display text-lg font-semibold mb-2">{item.q}</dt>
+                <dd class="text-[var(--color-ink-muted)] leading-relaxed">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+  </article>
+</BaseLayout>
