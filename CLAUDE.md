@@ -249,10 +249,25 @@ Očekávaný výstup: 7 unikátních záznamů (5 sessions + 1 user kotva + 1 re
 | Lokální Astro projekt | ✅ commit-ready | `npm run build` ✅ 2026-04-29 03:40, 8 stránek, 0 errors/warnings/hints |
 | Per-projekt board | ✅ live | `cross-session/aiseo-optimalizace.md` |
 | Servisní fronta | ✅ prázdná | poslední request 5.1 vyřízen 03:35 |
-| GitHub repo | ⏳ pending | request půjde po prvním lokálním `git init` + commit |
-| Deploy klíč + GH Secrets + workflow | ⏳ pending | po vzniku repa |
-| DNS A-záznamy u Forpsi | ⏳ pending | uživatel, apex + www → 80.211.223.175 |
-| Caddy blok | ⏳ pending | request na sd-server-admin po DNS + prvním deployi |
+| GitHub repo | ✅ live | `ultron-sniperdesign/aiseo-optimalizace`, public, sd-server-admin bootstrap 2026-04-29 10:40 |
+| Deploy klíč + GH Secrets | ✅ live | klíč `aiseo-optimalizace-deploy@github` v `~ultron/.ssh/authorized_keys`, Secrets DEPLOY_HOST/USER/SSH_PRIVATE_KEY |
+| Workflow | ✅ live | `.github/workflows/deploy.yml`, CI run `25105896987` ✅ 1m20s |
+| First deploy | ✅ live | release `20260429-112052-b070a40` v `/srv/apps/aiseo-optimalizace/releases/`, `current` symlink → release |
+| DNS A-záznamy u Forpsi | ✅ propnuté | apex + www → 80.211.223.175 (ověřeno 8.8.8.8 + 1.1.1.1) |
+| Caddy bloky (apex + www) | ✅ live | sd-server-admin reload 2026-04-29 ~14:50, backup `Caddyfile.bak-1777462724` |
+| HTTPS smoke test live | ✅ pass | viz tabulka níže |
+| LE cert | ✅ valid | `CN=aiseo-optimalizace.cz`, issuer Let's Encrypt E8, valid `2026-04-29` → `2026-07-28` (90 dní, Caddy autorenew) |
+
+**Smoke test 2026-04-29 17:04 (externí HTTPS):**
+
+| URL | HTTP | Pozn. |
+|---|---|---|
+| `https://aiseo-optimalizace.cz/` | 200 | HSTS, X-Content-Type-Options, X-Frame-Options DENY, Referrer-Policy, Permissions-Policy, content-length 12981 |
+| `/seo/`, `/geo/`, `/aeo/`, `/aio/`, `/prakticky-postup/`, `/rozhodovaci-matice/` | 200 | všech 6 sekcí |
+| `/seo-vs-geo-vs-aeo-vs-aio/` | 200 | pillar průvodce |
+| `/sitemap-index.xml` + `/sitemap-0.xml` | 200 | sitemap-0 obsahuje 8 URLs |
+| `/robots.txt` | 200 | obsahuje explicit Allow pro GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended |
+| `https://www.aiseo-optimalizace.cz/` | 301 → apex | redirect-only blok |
 | Plné pillar tělo (~3000 slov) v `src/content/pillar/` | ⏳ pending | první iterace má placeholder, draft v `_source/` |
 | CLAUDE.md | ✅ live | tento soubor, založen 2026-04-29 03:40 |
 

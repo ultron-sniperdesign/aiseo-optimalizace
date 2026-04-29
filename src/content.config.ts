@@ -49,6 +49,15 @@ const pillar = defineCollection({
     keywords: z.array(z.string()),
     /** TL;DR shrnutí pro AI scrapery, max ~80 slov. */
     tldr: z.string(),
+    /** FAQ položky pro FAQPage JSON-LD. Mirror hlavičky v textu. */
+    faq: z
+      .array(
+        z.object({
+          q: z.string(),
+          a: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 
