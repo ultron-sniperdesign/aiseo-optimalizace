@@ -11,30 +11,168 @@ faq:
     a: "V Google nastavení účtu lze AI Overviews částečně omezit přes Search Labs → AI Overviews → Off, ale úplně vypnout je nelze. Pokud chcete pro vlastní web AIO zablokovat (např. dlouhé how-to průvodce, kterým AIO bere kliknutí), použijte meta tag nosnippet."
   - q: "Je AEO totéž co AIO?"
     a: "Ne. AEO je užší — týká se konkrétně answer engines napojených na vyhledávač (Google AIO, Bing Chat). AIO je zastřešující pojem pro celou disciplínu optimalizace pro AI. AIO je strategický rámec, AEO konkrétní implementační oblast."
+  - q: "Co znamená 'zero-click search' a proč je to problém?"
+    a: "Zero-click search znamená, že uživatel získá odpověď přímo v AIO panelu, aniž by klikl na zdroj. Pro publishers to znamená ztrátu trafficu i přes top 3 ranking. CZ kazuistika: marketingppc.cz měl AIO presence, ale ztratil 56 % organic trafficu (46k → 20k) za 3 měsíce, protože AIO panel sebral odpověď."
+  - q: "Jak rozhodnout, jestli mít AIO presence chci nebo nechci?"
+    a: "Krátké news/edu články profitují (interval.cz +137 % YoY se stejnou AIO presence). Dlouhé how-to průvodce trpí (marketingppc.cz −56 %). Strategický bypass přes meta nosnippet je validní volba pro publishers, kteří závisí na page views nebo ad revenue."
+  - q: "Co je LLMO a jak se liší od GEO?"
+    a: "LLMO (Large Language Model Optimization) je novější synonymum pro GEO — používané hlavně v anglických zdrojích z 2024+. Některé agentury rozlišují: LLMO = optimalizace pro obecné LLM bez search modulu (ChatGPT bez search), GEO = pro LLM s real-time search (Perplexity, Gemini Search). V praxi se pojmy zaměňují."
 ---
 
 ## Dva významy AIO
 
 **AIO má dva významy** — záleží na kontextu:
 
-1. **AI Overviews** — konkrétní funkce Google vyhledávače, kde se nad organickými výsledky zobrazuje generovaný souhrn s odkazy na zdroje.
-2. **AI Optimization** — širší zastřešující pojem pro optimalizaci pro AI obecně (zahrnuje [SEO](/seo/) + [GEO](/geo/) + [AEO](/aeo/)).
+### 1. AI Overviews
 
-V tomto průvodci používáme AIO primárně ve významu **AI Optimization** jako strategický deštník nad SEO/GEO/AEO. Když mluvíme o konkrétní funkci Google, píšeme „AI Overviews" plně.
+Konkrétní funkce Google vyhledávače, kde se nad organickými výsledky zobrazuje generovaný souhrn s odkazy na zdroje. Aktivní v ČR od **léta 2025**, generuje ji **Gemini** model.
+
+### 2. AI Optimization
+
+Širší zastřešující pojem pro optimalizaci pro AI obecně. Zahrnuje:
+
+- [SEO](/seo/) (klasické vyhledávání — předpoklad pro vše ostatní)
+- [GEO](/geo/) (citace v generativní AI: ChatGPT, Perplexity, Claude, Gemini)
+- [AEO](/aeo/) (odpovědi v answer engines: Google AIO, Bing Chat)
+
+V tomto průvodci používáme AIO primárně ve významu **AI Optimization** jako strategický deštník nad SEO/GEO/AEO. Když mluvíme o konkrétní funkci Google, píšeme **„AI Overviews"** plně.
 
 ## AI Overviews v praxi
 
-AI Overview je **krátký generovaný přehled s odpovědí na dotaz**, do kterého Gemini vybírá informace z více zdrojů, doplňuje je obrázky, doporučenými odkazy nebo souvisejícími tématy. Aktivuje se selektivně — typicky u **informačních dotazů**, kde má AI dost důvěryhodných zdrojů. U transakčních a navigačních dotazů se obvykle nezobrazuje.
+AI Overview je **krátký generovaný přehled s odpovědí na dotaz**, do kterého Gemini vybírá informace z více zdrojů, doplňuje je obrázky, doporučenými odkazy nebo souvisejícími tématy.
 
-V Česku jsou AI Overviews aktivní od **léta 2025** a zájem o ně rychle roste — Google Trends index pro „ai overview" je v CZ za posledních 12 měsíců **59,4 z 100**.
+### Kdy se aktivuje
 
-## Defenzivní strana mince
+Selektivně — typicky u **informačních dotazů**, kde má AI dost důvěryhodných zdrojů:
 
-Kuriózní zjištění z dat Google Trends: **3 z 5 nejrostoucích dotazů** kolem „ai overview" v ČR jsou **defenzivní** — uživatelé chtějí AIO vypnout, protože jim odpověď přijde bez kliknutí na zdroj.
+- ✅ „co je geo seo" → AIO panel se zobrazí
+- ✅ „jak optimalizovat pro chatgpt" → AIO panel se zobrazí
+- ❌ „brainycal přihlášení" (navigační) → AIO se obvykle nezobrazí
+- ❌ „koupit hyundai i30 praha" (transakční) → AIO se obvykle nezobrazí
 
-To má dvě strategické konsekvence:
+### Češko v dubnu 2026
 
-- **Defenzivní článek „Jak vypnout AI Overviews v Googlu"** je magnet na traffic — málo CZ konkurence
-- **Mít v AIO presence neznamená automaticky win** — záleží na typu obsahu (krátké news ano, dlouhé how-to ne — viz [Rozhodovací matice](/rozhodovaci-matice/))
+V CZ je AIO viditelné u **~30 % informačních dotazů** s rostoucí tendencí. Google Trends index pro „ai overview" je v CZ za posledních 12 měsíců **59,4 z 100** — silný signál mainstream zájmu.
 
-> **Tato stránka je placeholder první iterace.** Plný pillar obsah vychází z draftu `_source/draft_pillar_seo_geo_aeo_aio.md` a doplní se v další fázi.
+### Strukturální složení AIO panelu
+
+| Prvek | Příklad |
+|---|---|
+| **Headline odpověď** | 1–2 věty s primární odpovědí |
+| **Bullet list / kroky** | 3–7 strukturovaných bodů |
+| **Citace zdrojů** | 3–5 odkazů na zdrojové weby (vpravo nebo dole) |
+| **Související otázky** | „Lidé se také ptají" (PAA box) |
+| **Obrázky / videa** | Pokud relevantní pro téma |
+
+## Defenzivní strana mince — AIO není pro každého
+
+Kuriózní zjištění z dat Google Trends: **3 z 5 nejrostoucích dotazů** kolem „ai overview" v ČR jsou **defenzivní**:
+
+- „turn off ai overview google"
+- „google disable ai overview"
+- „how to disable ai overview google"
+
+Část uživatelů AI Overviews **aktivně chce vypnout**, protože se jim nelíbí, že odpověď přijde bez kliknutí na zdroj.
+
+To má dvě konsekvence pro vaši strategii:
+
+### Defenzivní článek je magnet na traffic
+
+Téma „Jak vypnout AI Overviews v Googlu" má v CZ **málo konkurence**, vysokou hledanost a snadný obsah. Pro publishers je to **vzácná příležitost** rychlého rankingu.
+
+### Mít AIO presence ≠ automaticky win
+
+Klíčový insight z analýzy CZ trhu:
+
+| Doména | AIO presence | Organic dopad |
+|---|---|---|
+| **interval.cz** | ✅ ano | **+137 % YoY** — krátké news/edu články |
+| **marketingppc.cz** | ✅ ano | **−56 %** za 3 měsíce — dlouhé how-to průvodce |
+
+**AIO škodí dlouhým průvodcům**, kde uživatel získá kompletní odpověď v panelu a už neklikne. Naopak **prospívá krátkým news/edu článkům**, kde panel funguje jako teaser.
+
+## Kdy AIO blokovat
+
+Pro publishers s dlouhými edukačními průvodci je validní strategie **AIO bypass**:
+
+### Globální blokace přes meta tag
+
+```html
+<meta name="googlebot" content="nosnippet">
+<meta name="google" content="nosnippet">
+```
+
+Google nepoužije obsah stránky v AIO ani ve Featured Snippets. **Nevýhoda:** ztratíte i klasické featured snippets (pozice 0), které dříve přiváděly traffic.
+
+### Selektivní blokace přes data attribute
+
+```html
+<div data-nosnippet>
+  Tento blok se nepoužije v AIO ani snippets.
+</div>
+```
+
+Můžete blokovat jen **odpověď block**, zatímco zbytek článku zůstává AIO-friendly. **Doporučená strategie** pro long-form publishers.
+
+### `max-snippet` direktiva
+
+```html
+<meta name="robots" content="max-snippet:0">
+```
+
+Hard limit na 0 znaků snippet. Nukleární možnost — efektivně schová stránku z AIO i klasických snippets.
+
+## Praktický postup pro AIO strategii
+
+### Krok 1 — Audit aktuální AIO presence
+
+Manuálně přes Google search top 10 KW + Marketing Miner endpoint `website_stats` (atribut `ai_overviews` vrací počet KW v AIO).
+
+### Krok 2 — Klasifikace stránek
+
+Pro každou stránku v AIO:
+
+| Stránka | AIO efekt | Akce |
+|---|---|---|
+| Krátký news/edu článek (< 1500 slov) | typicky pozitivní | nech, optimalizuj pro vyšší citation rate |
+| Dlouhý how-to průvodce (3000+ slov) | typicky negativní | zvaž `data-nosnippet` na úvodní bloky |
+| Produktová stránka | irelevant | AIO se aktivuje jen u informačních dotazů |
+| Listing kategorie | typicky negativní | `nosnippet` na popisu kategorie |
+
+### Krok 3 — A/B test
+
+Před plošnou implementací `nosnippet` udělejte **A/B test**:
+
+1. Vyberte 5 srovnatelných stránek s AIO presence
+2. Přidejte `data-nosnippet` na 2–3 z nich
+3. Sledujte 30 dní organic traffic + CTR
+4. Pokud no-snippet varianta přinesla **vyšší organic traffic**, rozšiřte na další podobné stránky
+
+### Krok 4 — Měření AIO dopadu
+
+| Metrika | Zdroj |
+|---|---|
+| Organic clicks per page | Google Analytics 4 / Plausible |
+| Impressions vs CTR ratio | Google Search Console |
+| AIO presence count | Marketing Miner `website_stats.ai_overviews` |
+| Featured Snippet rate | GSC → Search Appearance |
+
+Klíčový **warning signál**: rostoucí impressions + klesající CTR = AIO „krade" kliky → zvážit `nosnippet`.
+
+## AIO jako strategický rámec
+
+Pro C-level a marketingové leadery je **AIO jako AI Optimization** často srozumitelnější než tři separátní zkratky. Strategie pak zní:
+
+> **„Naše AIO strategie kombinuje SEO foundations, GEO citation tactics a AEO snippet optimization s defenzivním nosnippet bypass na long-form how-to průvodcích."**
+
+Pojem AIO tedy slouží jako **deštník** nad implementačními disciplínami. AIO ≠ jeden konkrétní postup; AIO = strategická vize.
+
+## Časté chyby v AIO strategii
+
+1. **AIO bez SEO baseline** — bez Google indexace se v AIO neobjevíte vůbec
+2. **Plošná `nosnippet`** — ztratíte i pozitivní snippet trafic, který fungoval
+3. **Žádný A/B test** — bez měření slepá víra že nosnippet pomáhá
+4. **Záměna AIO a AEO** — AIO je strategický rámec, AEO konkrétní taktika
+5. **Ignorování defenzivních KW** — „jak vypnout ai overview" je skutečně rostoucí klíčové slovo
+
+Detailní rozhodovací rámec v sekci [Rozhodovací matice](/rozhodovaci-matice/).
