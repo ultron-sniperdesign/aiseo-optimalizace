@@ -268,7 +268,8 @@ Očekávaný výstup: 7 unikátních záznamů (5 sessions + 1 user kotva + 1 re
 | `/sitemap-index.xml` + `/sitemap-0.xml` | 200 | sitemap-0 obsahuje 8 URLs |
 | `/robots.txt` | 200 | obsahuje explicit Allow pro GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended |
 | `https://www.aiseo-optimalizace.cz/` | 301 → apex | redirect-only blok |
-| Plné pillar tělo (~3000 slov) v `src/content/pillar/` | ✅ live | commit `193acdb`, CI run `25118569513` ✅, deploy `20260429-154001-193acdb`, pillar HTML 37 KB, 7 FAQ + FAQPage JSON-LD |
+| Plné pillar tělo (~3000 slov) v `src/content/pillar/` | ✅ live | commit `193acdb`, CI run `25118569513` ✅, pillar HTML 37 KB, 7 FAQ + FAQPage JSON-LD |
+| Plné rozšíření 6 sekcí (~1300 slov každá) | ✅ live | commit `2a823d7`, CI run `25132281814` ✅, deploy `20260429-203210-2a823d7`, sekce 20–28 KB HTML |
 | CLAUDE.md | ✅ live | tento soubor, založen 2026-04-29 03:40 |
 
 ---
