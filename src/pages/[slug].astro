@@ -97,9 +97,12 @@ const allLd = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
  * Scoped CSS níže dědí přes var(--d).
  */
 const heroStyle = `--d: ${c.d}; --d-tint: ${c.tint}; --d-soft: ${c.soft};`;
+
+/** OG image per slug (každá sekce má vlastní vizuál v public/og/<slug>.png). */
+const ogImage = `/og/${entry.data.slug}.png`;
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd}>
+<BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd} image={ogImage}>
   <div class="page" data-abbr={entry.data.abbr} style={heroStyle}>
     <!-- HERO -->
     <section class="d-hero">
