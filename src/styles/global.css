@@ -1,16 +1,49 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
-  --font-display: "Inter", "system-ui", sans-serif;
+/**
+ * Foundation — Phase 1 redesign
+ * Direction: "Modern documentation" — friendly grotesque, light only.
+ * Design proposal: _design/DESIGN_PROPOSAL.md
+ */
 
-  /* Brand barvy — content-first, vysoký kontrast */
-  --color-ink: oklch(0.18 0.02 260);
-  --color-ink-muted: oklch(0.45 0.02 260);
-  --color-paper: oklch(0.99 0.005 260);
-  --color-accent: oklch(0.55 0.18 264);
-  --color-accent-strong: oklch(0.45 0.22 264);
+@theme {
+  /* Typography — Geist sans throughout, JetBrains Mono jen pro code */
+  --font-sans: "Geist", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  --font-display: "Geist", "system-ui", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", ui-monospace, monospace;
+
+  /* Base palette — cool light interface (paper / ink) */
+  --color-paper: oklch(0.985 0.004 250);
+  --color-paper-deep: oklch(0.965 0.005 250);
+  --color-paper-hover: oklch(0.945 0.007 250);
+  --color-ink: oklch(0.22 0.012 260);
+  --color-ink-muted: oklch(0.45 0.012 260);
+  --color-ink-faint: oklch(0.62 0.01 260);
+  --color-rule: oklch(0.9 0.006 260);
+  --color-rule-strong: oklch(0.8 0.008 260);
+
+  /* Accent — electric blue, dev-tool feel */
+  --color-accent: oklch(0.52 0.18 250);
+  --color-accent-strong: oklch(0.42 0.2 250);
+  --color-signal: oklch(0.55 0.2 25);
   --color-warn: oklch(0.7 0.18 50);
+
+  /* Discipline identity — wayfinding system */
+  --color-seo: oklch(0.45 0.16 264);
+  --color-seo-tint: oklch(0.96 0.022 264);
+  --color-seo-soft: oklch(0.86 0.06 264);
+
+  --color-geo: oklch(0.5 0.13 155);
+  --color-geo-tint: oklch(0.96 0.022 155);
+  --color-geo-soft: oklch(0.86 0.06 155);
+
+  --color-aeo: oklch(0.55 0.13 65);
+  --color-aeo-tint: oklch(0.96 0.022 65);
+  --color-aeo-soft: oklch(0.88 0.07 65);
+
+  --color-aio: oklch(0.48 0.16 305);
+  --color-aio-tint: oklch(0.96 0.022 305);
+  --color-aio-soft: oklch(0.86 0.06 305);
 }
 
 html {
@@ -23,8 +56,40 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
+  hyphens: auto;
+}
+
+::selection {
+  background: oklch(from var(--color-accent) l c h / 0.18);
+  color: var(--color-ink);
+}
+
+/* Tabular numerals pro číselné stat hodnoty */
+.tnum {
+  font-feature-settings: "tnum", "cv11";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Eyebrow — sans uppercase label nad sekcemi (NE mono) */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+}
+
+.eyebrow__num {
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 /* Reading-comfort prose defaults pro pillar/sekce */
@@ -38,4 +103,18 @@ body {
 
 .prose-content h3 {
   scroll-margin-top: 5rem;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
