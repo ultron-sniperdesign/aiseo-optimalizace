@@ -136,11 +136,55 @@ const quartet: Quartet[] = [
       Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.
     </p>
 
-    <div class="hero__pills">
-      <span class="pill" data-d="seo">SEO — Search</span>
-      <span class="pill" data-d="geo">GEO — Generative</span>
-      <span class="pill" data-d="aeo">AEO — Answer</span>
-      <span class="pill" data-d="aio">AIO — Umbrella</span>
+    <div class="hero__pills" role="tablist" aria-label="Rychlé seznámení s disciplínami">
+      {pillDefs.map((p) => (
+        <button
+          type="button"
+          class="pill pill--btn"
+          data-d={p.d}
+          data-pill-trigger={p.d}
+          aria-controls={`pill-panel-${p.d}`}
+          aria-expanded="false"
+          role="tab"
+        >
+          <span>{p.label}</span>
+          <svg class="pill__icon" width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M5.5 1V10M1 5.5H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </button>
+      ))}
+    </div>
+
+    <!-- Pill detail panel — shared, swaps content based on active pill -->
+    <div class="pill-panels" data-pill-panels>
+      {pillDefs.map((p) => (
+        <article
+          class="pill-panel"
+          id={`pill-panel-${p.d}`}
+          data-d={p.d}
+          data-pill-panel={p.d}
+          role="tabpanel"
+          hidden
+        >
+          <header class="pill-panel__head">
+            <span class="pill-panel__abbr">{p.d.toUpperCase()}</span>
+            <h3 class="pill-panel__title">{p.fullName}</h3>
+            <button type="button" class="pill-panel__close" data-pill-close aria-label="Zavřít detail">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </button>
+          </header>
+          <p class="pill-panel__one">{p.oneLine}</p>
+          <p class="pill-panel__quick">{p.quick}</p>
+          <a href={p.href} class="pill-panel__link">
+            Otevřít detail disciplíny
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -581,6 +625,136 @@ const quartet: Quartet[] = [
     background: var(--color-aio-tint);
   }
   .pill[data-d="aio"]::before { background: var(--color-aio); }
+
+  /* Interactive pill (button) */
+  .pill--btn {
+    cursor: pointer;
+    font: inherit;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    position: relative;
+  }
+  .pill--btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px -3px rgba(0, 0, 0, 0.12);
+  }
+  .pill--btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+  .pill__icon {
+    opacity: 0.55;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .pill--btn:hover .pill__icon { opacity: 1; }
+  .pill--btn[aria-expanded="true"] .pill__icon {
+    transform: rotate(45deg);
+    opacity: 1;
+  }
+  .pill--btn[aria-expanded="true"] {
+    box-shadow: 0 0 0 2px currentColor inset;
+  }
+
+  /* Pill detail panels — shared container, one visible at a time */
+  .pill-panels {
+    margin-top: 1rem;
+    max-width: 42rem;
+  }
+  .pill-panel {
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem 1.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    animation: pillPanelIn 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .pill-panel[hidden] { display: none; }
+  @keyframes pillPanelIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: none; }
+  }
+  .pill-panel[data-d="seo"] { border-color: var(--color-seo-soft); background: color-mix(in oklch, var(--color-seo-tint) 60%, var(--color-paper)); }
+  .pill-panel[data-d="geo"] { border-color: var(--color-geo-soft); background: color-mix(in oklch, var(--color-geo-tint) 60%, var(--color-paper)); }
+  .pill-panel[data-d="aeo"] { border-color: var(--color-aeo-soft); background: color-mix(in oklch, var(--color-aeo-tint) 60%, var(--color-paper)); }
+  .pill-panel[data-d="aio"] { border-color: var(--color-aio-soft); background: color-mix(in oklch, var(--color-aio-tint) 60%, var(--color-paper)); }
+
+  .pill-panel__head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .pill-panel__abbr {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: var(--color-paper);
+    border: 1px solid currentColor;
+  }
+  .pill-panel[data-d="seo"] .pill-panel__abbr { color: var(--color-seo); }
+  .pill-panel[data-d="geo"] .pill-panel__abbr { color: var(--color-geo); }
+  .pill-panel[data-d="aeo"] .pill-panel__abbr { color: var(--color-aeo); }
+  .pill-panel[data-d="aio"] .pill-panel__abbr { color: var(--color-aio); }
+
+  .pill-panel__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin: 0;
+    flex: 1;
+  }
+  .pill-panel__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-ink-muted);
+    padding: 0.25rem;
+    display: inline-flex;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .pill-panel__close:hover {
+    background: var(--color-paper-deep);
+    color: var(--color-ink);
+  }
+  .pill-panel__one {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .pill-panel__quick {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 0 1rem;
+  }
+  .pill-panel__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: currentColor;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: gap 0.18s ease;
+  }
+  .pill-panel[data-d="seo"] .pill-panel__link { color: var(--color-seo); }
+  .pill-panel[data-d="geo"] .pill-panel__link { color: var(--color-geo); }
+  .pill-panel[data-d="aeo"] .pill-panel__link { color: var(--color-aeo); }
+  .pill-panel[data-d="aio"] .pill-panel__link { color: var(--color-aio); }
+  .pill-panel__link:hover { gap: 0.6rem; }
 
   /* ===== HERO MEDIA SLOT ===== */
   .hero-media {
@@ -1165,3 +1339,65 @@ const quartet: Quartet[] = [
   }
   .scard:hover .scard__cta { gap: 0.7rem; }
 </style>
+
+<script>
+  // Pill popover toggle — click to open, click again or X to close, Esc to close,
+  // click outside to close. Only one panel visible at a time.
+  (() => {
+    const triggers = document.querySelectorAll<HTMLButtonElement>("[data-pill-trigger]");
+    const panels = document.querySelectorAll<HTMLElement>("[data-pill-panel]");
+    const container = document.querySelector<HTMLElement>("[data-pill-panels]");
+
+    if (!triggers.length || !panels.length || !container) return;
+
+    const closeAll = () => {
+      triggers.forEach((t) => t.setAttribute("aria-expanded", "false"));
+      panels.forEach((p) => p.setAttribute("hidden", ""));
+    };
+
+    const open = (key: string) => {
+      panels.forEach((p) => {
+        if (p.dataset.pillPanel === key) p.removeAttribute("hidden");
+        else p.setAttribute("hidden", "");
+      });
+      triggers.forEach((t) => {
+        t.setAttribute(
+          "aria-expanded",
+          t.dataset.pillTrigger === key ? "true" : "false",
+        );
+      });
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const key = trigger.dataset.pillTrigger;
+        if (!key) return;
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+        if (isOpen) closeAll();
+        else open(key);
+      });
+    });
+
+    // Close button inside panels
+    document.querySelectorAll<HTMLButtonElement>("[data-pill-close]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeAll();
+      });
+    });
+
+    // Click outside both pills and panels closes
+    document.addEventListener("click", (e) => {
+      const target = e.target as Node;
+      const insidePanels = container.contains(target);
+      const insideTrigger = Array.from(triggers).some((t) => t.contains(target));
+      if (!insidePanels && !insideTrigger) closeAll();
+    });
+
+    // Escape closes
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAll();
+    });
+  })();
+</script>
