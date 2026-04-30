@@ -1,44 +1,151 @@
 ---
 const navItems = [
-  { href: "/seo/", label: "SEO" },
-  { href: "/geo/", label: "GEO" },
-  { href: "/aeo/", label: "AEO" },
-  { href: "/aio/", label: "AIO" },
-  { href: "/prakticky-postup/", label: "Praktický postup" },
-  { href: "/rozhodovaci-matice/", label: "Kdy použít co" },
-];
+  { href: "/seo/", label: "SEO", discipline: "seo" as const },
+  { href: "/geo/", label: "GEO", discipline: "geo" as const },
+  { href: "/aeo/", label: "AEO", discipline: "aeo" as const },
+  { href: "/aio/", label: "AIO", discipline: "aio" as const },
+] as const;
 
 const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath === href || currentPath.startsWith(href);
 ---
 
-<header class="border-b border-[var(--color-ink)]/10 bg-[var(--color-paper)] sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
-  <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between gap-6">
-    <a href="/" class="font-display font-semibold text-lg tracking-tight hover:text-[var(--color-accent-strong)] transition-colors">
-      aiseo-optimalizace<span class="text-[var(--color-accent)]">.cz</span>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="brand" aria-label="aiseo-optimalizace.cz — domovská stránka">
+      <span class="brand__sigil" aria-hidden="true"></span>
+      <span>aiseo-optimalizace.cz</span>
     </a>
 
-    <nav aria-label="Hlavní navigace">
-      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium">
-        {
-          navItems.map((item) => {
-            const isActive = currentPath === item.href || currentPath.startsWith(item.href);
-            return (
-              <li>
-                <a
-                  href={item.href}
-                  class:list={[
-                    "transition-colors hover:text-[var(--color-accent-strong)]",
-                    isActive ? "text-[var(--color-accent-strong)]" : "text-[var(--color-ink-muted)]",
-                  ]}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
+    <nav class="disc-nav" aria-label="Hlavní navigace">
+      {
+        navItems.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={item.href}
+              data-d={item.discipline}
+              class:list={["disc-nav__link", { "disc-nav__link--active": active }]}
+              aria-current={active ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+      <a
+        href="/seo-vs-geo-vs-aeo-vs-aio/"
+        class:list={["disc-nav__link disc-nav__link--pillar", { "disc-nav__link--active": isActive("/seo-vs-geo-vs-aeo-vs-aio/") }]}
+        aria-current={isActive("/seo-vs-geo-vs-aeo-vs-aio/") ? "page" : undefined}
+      >
+        Průvodce
+      </a>
     </nav>
   </div>
 </header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    /* Fallback pro browsery bez relative color syntax (Safari < 16.4 atd.) */
+    background: var(--color-paper);
+    background: oklch(from var(--color-paper) l c h / 0.85);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .site-header__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.875rem clamp(1.25rem, 4vw, 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .brand {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.012em;
+    color: var(--color-ink);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    transition: color 0.2s ease;
+  }
+  .brand:hover { color: var(--color-accent); }
+  .brand__sigil {
+    width: 18px;
+    height: 18px;
+    background: var(--color-ink);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    flex: none;
+    transition: background 0.2s ease;
+  }
+  .brand__sigil::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: var(--color-paper);
+    border-radius: 2px;
+  }
+  .brand:hover .brand__sigil { background: var(--color-accent); }
+
+  .disc-nav {
+    display: none;
+    gap: 1.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  @media (min-width: 768px) { .disc-nav { display: flex; } }
+
+  .disc-nav__link {
+    color: var(--color-ink-muted);
+    position: relative;
+    padding: 0.4rem 0;
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+  .disc-nav__link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    width: 0;
+    transition: width 0.35s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .disc-nav__link:hover::after,
+  .disc-nav__link--active::after {
+    width: 100%;
+  }
+  .disc-nav__link:hover,
+  .disc-nav__link--active {
+    color: var(--color-ink);
+  }
+  .disc-nav__link[data-d="seo"]:hover,
+  .disc-nav__link[data-d="seo"].disc-nav__link--active {
+    color: var(--color-seo);
+  }
+  .disc-nav__link[data-d="geo"]:hover,
+  .disc-nav__link[data-d="geo"].disc-nav__link--active {
+    color: var(--color-geo);
+  }
+  .disc-nav__link[data-d="aeo"]:hover,
+  .disc-nav__link[data-d="aeo"].disc-nav__link--active {
+    color: var(--color-aeo);
+  }
+  .disc-nav__link[data-d="aio"]:hover,
+  .disc-nav__link[data-d="aio"].disc-nav__link--active {
+    color: var(--color-aio);
+  }
+</style>

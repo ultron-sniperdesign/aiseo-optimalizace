@@ -1,75 +1,954 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
 
-const sections = (await getCollection("sections")).sort((a, b) => a.data.order - b.data.order);
-
-const pageTitle = "AI SEO: SEO vs. GEO vs. AEO vs. AIO — průvodce 4 zkratkami AI éry";
+const pageTitle = "AI éra vyhledávání: SEO vs. GEO vs. AEO vs. AIO — průvodce 4 zkratkami";
 const pageDescription =
-  "Co je rozdíl mezi SEO, GEO, AEO a AIO? Praktický průvodce optimalizací pro AI vyhledávání — ChatGPT, Perplexity, Google AI Overviews. Pro web i e-shop.";
+  "Praktický průvodce čtyřmi disciplínami AI éry vyhledávání pro český trh. SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro AI Overviews, AIO jako zastřešující rámec.";
+
+/**
+ * Quartet — 4 disciplíny pro homepage hero karty.
+ * Každá disciplína má vlastní barvu (--color-{d}) a vlastní /<d>/ slug.
+ */
+type Discipline = "seo" | "geo" | "aeo" | "aio";
+interface Quartet {
+  d: Discipline;
+  abbr: string;
+  name: string;
+  desc: string;
+  features: string[];
+  href: string;
+}
+
+const quartet: Quartet[] = [
+  {
+    d: "seo",
+    abbr: "SEO",
+    name: "Search Engine Optimization",
+    desc: "Klasická optimalizace pro pozice v Googlu a Seznamu. Zůstává základem všeho ostatního — bez indexace nezafunguje GEO ani AEO.",
+    features: [
+      "Cílí na top 10 v Googlu",
+      "První výsledky za 3 až 6 měsíců",
+      "Měří se přes Google Search Console",
+      "Funguje pro Google a Seznam",
+    ],
+    href: "/seo/",
+  },
+  {
+    d: "geo",
+    abbr: "GEO",
+    name: "Generative Engine Optimization",
+    desc: "Optimalizace pro citace v ChatGPT, Perplexity, Claude a Gemini. Místo modrého odkazu cílíte na to, abyste byli zdrojem, ze kterého AI čerpá fakta.",
+    features: [
+      "Cílí na zmínky v AI odpovědích",
+      "První výsledky za 1 až 3 měsíce",
+      "Měří se počet citací napříč nástroji",
+      "Funguje pro ChatGPT a Perplexity",
+    ],
+    href: "/geo/",
+  },
+  {
+    d: "aeo",
+    abbr: "AEO",
+    name: "Answer Engine Optimization",
+    desc: "Užší disciplína cílená na Google AI Overviews a Bing Chat. FAQ sekce, návody a krátké odpovědi hned po nadpisu — to je její řemeslo.",
+    features: [
+      "Cílí na panel AI Overviews v Googlu",
+      "První výsledky za 2 až 4 měsíce",
+      "Měří se přes Google Search Console",
+      "Funguje pro Google a Bing",
+    ],
+    href: "/aeo/",
+  },
+  {
+    d: "aio",
+    abbr: "AIO",
+    name: "AI Optimization (zastřešující)",
+    desc: "Strategický deštník nad SEO, GEO a AEO. Také konkrétní funkce Google AI Overviews. Dvojí význam, který se v praxi často plete.",
+    features: [
+      "Cílí na koherentní strategii",
+      "Iteruje se po kvartálech",
+      "Měří se hybridně přes všechny kanály",
+      "Pokrývá vše dohromady",
+    ],
+    href: "/aio/",
+  },
+];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="mx-auto max-w-4xl px-6 pt-16 pb-10">
-    <p class="text-sm font-medium text-[var(--color-accent-strong)] uppercase tracking-wider mb-3">
-      Průvodce AI érou vyhledávání
-    </p>
-    <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-[1.1] mb-6">
-      SEO, GEO, AEO, AIO — co je rozdíl a kdy kterou techniku použít
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero__intro">Průvodce AI érou vyhledávání pro český trh</span>
+
+    <h1 class="display hero__title">
+      <strong>AI éra vyhledávání</strong> se neptá <span class="hl">na pozice</span>. Ptá se <span class="hl">na citace</span>.
     </h1>
-    <p class="text-lg md:text-xl text-[var(--color-ink-muted)] max-w-prose">
-      <strong class="text-[var(--color-ink)]">SEO</strong> optimalizuje pro pozice v Googlu.
-      <strong class="text-[var(--color-ink)]">GEO SEO</strong> pro citace v ChatGPT a Perplexity.
-      <strong class="text-[var(--color-ink)]">AEO</strong> pro odpovědi v Google
-      <strong class="text-[var(--color-ink)]">AI Overview</strong> panelu.
-      <strong class="text-[var(--color-ink)]">AIO</strong> je zastřešující pojem.
-      V roce 2026 už nestačí jen klasické SEO — potřebujete kombinaci všech čtyř.
+
+    <p class="lead hero__lead">
+      Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás ChatGPT zacituje, a jestli vás v roce 2026 najde někdo jiný než vy sami.
     </p>
+
+    <div class="hero__pills">
+      <span class="pill" data-d="seo">SEO — Search</span>
+      <span class="pill" data-d="geo">GEO — Generative</span>
+      <span class="pill" data-d="aeo">AEO — Answer</span>
+      <span class="pill" data-d="aio">AIO — Umbrella</span>
+    </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-10">
-    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-8">
-      Začni tady — 6 sekcí podle myšlenkové mapy
-    </h2>
+  <!-- HERO MEDIA SLOT (placeholder pro budoucí ilustraci/video) -->
+  <section class="hero-media" aria-label="Místo pro hlavní ilustraci">
+    <figure class="hero-media__frame">
+      <span class="hero-media__label">Hlavní ilustrace nebo úvodní video</span>
+      <span class="hero-media__sub">Sem přijde úvodní obrázek, abstraktní vizualizace, nebo krátké video — formát 16:9. Doplníme po schválení designu.</span>
+    </figure>
+  </section>
 
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <!-- STAT BAR -->
+  <section class="stat-bar" aria-label="Český trh — statistiky 2026">
+    <div class="stat-bar__inner">
+      <div class="stat">
+        <div class="stat__num"><strong>+257&nbsp;%</strong></div>
+        <p class="stat__label">Meziroční růst hledanosti „ai overview" v ČR</p>
+        <p class="stat__src">Zdroj: Marketing Miner, jaro 2026</p>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><strong>+645&nbsp;%</strong></div>
+        <p class="stat__label">Meziroční růst hledanosti „geo seo" v ČR</p>
+        <p class="stat__src">Zdroj: Marketing Miner, jaro 2026</p>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><strong>59,4</strong>/100</div>
+        <p class="stat__label">Index Google Trends pro „ai overview" za 12 měsíců</p>
+        <p class="stat__src">Zdroj: Google Trends, ČR</p>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><strong>3</strong>&thinsp;z&thinsp;5</div>
+        <p class="stat__label">Z pěti nejrostoucích dotazů jsou tři defenzivní</p>
+        <p class="stat__src">Zdroj: Google Trends, rostoucí dotazy</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUARTET — 4 disciplíny -->
+  <section class="section">
+    <header class="section__head">
+      <span class="eyebrow"><span class="eyebrow__num">02</span> Čtyři disciplíny</span>
+      <h2 class="section__title">
+        Každá řeší <span class="hl">jiný kanál</span>. Společně tvoří <strong>kvartet</strong>.
+      </h2>
+      <p class="section__intro">
+        Nejde o synonyma ani o trendové štítky. Každá disciplína má vlastní platformy, vlastní signály a vlastní časový horizont. Chyba je dělat všechny najednou, bez pořadí.
+      </p>
+    </header>
+
+    <div class="quartet">
       {
-        sections.map((section) => (
-          <a
-            href={`/${section.data.slug}/`}
-            class="group block p-6 rounded-2xl border border-[var(--color-ink)]/10 hover:border-[var(--color-accent)]/40 hover:shadow-lg hover:-translate-y-0.5 transition-all bg-white"
-          >
-            <p class="text-xs font-semibold text-[var(--color-accent-strong)] uppercase tracking-wider mb-2">
-              {section.data.abbr}
-            </p>
-            <h3 class="font-display text-xl font-semibold mb-2 group-hover:text-[var(--color-accent-strong)] transition-colors">
-              {section.data.title}
-            </h3>
-            <p class="text-sm text-[var(--color-ink-muted)] leading-relaxed line-clamp-3">
-              {section.data.description}
-            </p>
-            <p class="mt-4 text-sm font-medium text-[var(--color-accent-strong)] inline-flex items-center gap-1">
-              Číst dál
-              <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">→</span>
-            </p>
+        quartet.map((q) => (
+          <a href={q.href} class="qcard" data-d={q.d}>
+            <h3 class="qcard__abbr">{q.abbr}</h3>
+            <p class="qcard__name">{q.name}</p>
+            <p class="qcard__desc">{q.desc}</p>
+            <ul class="qcard__features">
+              {q.features.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            <span class="qcard__cta">
+              Číst sekci <span aria-hidden="true">→</span>
+            </span>
           </a>
         ))
       }
     </div>
   </section>
 
-  <section class="mx-auto max-w-4xl px-6 py-14 prose-content">
-    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-4">
-      Hledáš kompletní pillar průvodce?
-    </h2>
-    <p class="text-[var(--color-ink-muted)] mb-6">
-      Pokud chceš všech 4 zkratek vysvětlených v jediném ~3 000 slov dlouhém článku — od definic přes srovnávací tabulku až po praktický postup ve 4 krocích a FAQ — máme pro tebe pillar.
-    </p>
-    <a
-      href="/seo-vs-geo-vs-aeo-vs-aio/"
-      class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--color-accent-strong)] text-white font-medium hover:bg-[var(--color-ink)] transition-colors"
-    >
-      Otevřít kompletní pillar →
-    </a>
+  <!-- HUB-AND-SPOKE -->
+  <section class="hub-section">
+    <div class="hub-section__inner">
+      <div>
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Jak je web postavený</span>
+        <h2 class="section__title hub-section__title">
+          Hlavní průvodce uprostřed, <span class="hl">šest sekcí</span> kolem něj.
+        </h2>
+        <p class="section__intro hub-section__intro">
+          Tento web sám je živý příklad struktury, kterou doporučujeme. Hlavní průvodce pokrývá celé téma na jednom místě. Šest navazujících sekcí se ponořuje do jedné disciplíny nebo do praxe. Vzájemné odkazy pomáhají v Googlu i v AI nástrojích.
+        </p>
+      </div>
+
+      <svg class="hub-svg" viewBox="0 0 580 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hub-and-spoke diagram: hlavní průvodce uprostřed, šest sekcí kolem">
+        <g>
+          <line class="conn" x1="290" y1="290" x2="290" y2="80"></line>
+          <line class="conn" x1="290" y1="290" x2="495" y2="180"></line>
+          <line class="conn" x1="290" y1="290" x2="495" y2="400"></line>
+          <line class="conn" x1="290" y1="290" x2="290" y2="500"></line>
+          <line class="conn" x1="290" y1="290" x2="85" y2="400"></line>
+          <line class="conn" x1="290" y1="290" x2="85" y2="180"></line>
+        </g>
+
+        <g class="node node-pillar">
+          <rect x="212" y="234" width="156" height="112" rx="8" fill="var(--color-ink)"></rect>
+          <text x="290" y="280" font-family="Geist, sans-serif" font-size="11" font-weight="500" fill="var(--color-ink-faint)" text-anchor="middle">Hlavní</text>
+          <text x="290" y="294" font-family="Geist, sans-serif" font-size="11" font-weight="500" fill="var(--color-ink-faint)" text-anchor="middle">průvodce</text>
+          <text x="290" y="318" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">SEO · GEO · AEO · AIO</text>
+        </g>
+
+        <g class="node node-1">
+          <rect x="248" y="42" width="84" height="76" rx="10" fill="var(--color-seo-tint)" stroke="var(--color-seo)" stroke-width="1.2"></rect>
+          <text x="290" y="86" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-seo)" text-anchor="middle">SEO</text>
+        </g>
+        <g class="node node-2">
+          <rect x="453" y="142" width="84" height="76" rx="10" fill="var(--color-geo-tint)" stroke="var(--color-geo)" stroke-width="1.2"></rect>
+          <text x="495" y="186" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-geo)" text-anchor="middle">GEO</text>
+        </g>
+        <g class="node node-3">
+          <rect x="453" y="362" width="84" height="76" rx="10" fill="var(--color-aeo-tint)" stroke="var(--color-aeo)" stroke-width="1.2"></rect>
+          <text x="495" y="406" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-aeo)" text-anchor="middle">AEO</text>
+        </g>
+        <g class="node node-4">
+          <rect x="248" y="462" width="84" height="76" rx="10" fill="var(--color-aio-tint)" stroke="var(--color-aio)" stroke-width="1.2"></rect>
+          <text x="290" y="506" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-aio)" text-anchor="middle">AIO</text>
+        </g>
+        <g class="node node-5">
+          <rect x="43" y="362" width="84" height="76" rx="10" fill="var(--color-paper-deep)" stroke="var(--color-accent)" stroke-width="1.2"></rect>
+          <text x="85" y="395" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">Praktický</text>
+          <text x="85" y="412" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">postup</text>
+        </g>
+        <g class="node node-6">
+          <rect x="43" y="142" width="84" height="76" rx="10" fill="var(--color-paper-deep)" stroke="oklch(0.4 0.06 200)" stroke-width="1.2"></rect>
+          <text x="85" y="175" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">Rozhodovací</text>
+          <text x="85" y="192" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">matice</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- PILLAR PROMO -->
+  <section class="pillar-promo">
+    <div class="pillar-promo__main">
+      <span class="eyebrow"><span class="eyebrow__num">04</span> Hlavní průvodce</span>
+      <h2 class="pillar-promo__title">
+        SEO vs. GEO vs. AEO vs. AIO: <strong>kompletní průvodce</strong> <span class="hl">4 zkratkami</span> pro AI éru
+      </h2>
+      <p class="pillar-promo__lead">
+        Hlavní článek, který každou disciplínu rozebírá od definice přes srovnání až po rozhodovací matici. Doporučené čtení v jedné dávce.
+      </p>
+      <div class="pillar-promo__meta">
+        <span>Asi 3 000 slov</span>
+        <span>Sedm častých otázek</span>
+        <span>Srovnávací tabulka</span>
+        <span>12 minut čtení</span>
+      </div>
+      <a href="/seo-vs-geo-vs-aeo-vs-aio/" class="btn">
+        Otevřít hlavní průvodce
+        <svg class="btn__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+
+    <aside class="pillar-promo__excerpt">
+      <span class="pillar-promo__excerpt-mark">Z hlavního průvodce</span>
+      <p class="pillar-promo__excerpt-text">
+        Většina českého trhu k dubnu 2026 tyto principy nedělá. Google v ČR pro „generative engine optimization" ukazuje top 10 výsledků pouze v <strong>angličtině</strong>, žádný český obsah. To je <strong>vzácná příležitost</strong> být první.
+      </p>
+    </aside>
+  </section>
+
+  <!-- VYBRANÉ ČLÁNKY -->
+  <section class="section">
+    <header class="section__head">
+      <span class="eyebrow"><span class="eyebrow__num">05</span> Vybrané články</span>
+      <h2 class="section__title">Tři praktická čtení <strong>pro tento týden</strong></h2>
+    </header>
+
+    <div class="section-grid">
+      <a href="/prakticky-postup/" class="scard" data-d="practice">
+        <div class="scard__header">
+          <span class="scard__tag">Praxe</span>
+          <span class="scard__time">9 minut</span>
+        </div>
+        <h3 class="scard__title">Praktický postup ve čtyřech krocích</h3>
+        <p class="scard__desc">
+          Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.
+        </p>
+        <div class="scard__meta">
+          <span>Asi 1 400 slov</span>
+          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a href="/rozhodovaci-matice/" class="scard" data-d="matrix">
+        <div class="scard__header">
+          <span class="scard__tag">Rozhodování</span>
+          <span class="scard__time">10 minut</span>
+        </div>
+        <h3 class="scard__title">Rozhodovací matice — co kdy použít</h3>
+        <p class="scard__desc">
+          Pro e-shopy, B2B služby, lokální podniky a vydavatele. Plus rozhodovací stromek, kterým si projdete vlastní situaci.
+        </p>
+        <div class="scard__meta">
+          <span>Asi 1 500 slov</span>
+          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a href="/jak-vypnout-ai-overview/" class="scard" data-d="defense">
+        <div class="scard__header">
+          <span class="scard__tag">Návod</span>
+          <span class="scard__time">14 minut</span>
+        </div>
+        <h3 class="scard__title">Jak vypnout AI Overviews v Googlu</h3>
+        <p class="scard__desc">
+          Pět ověřených způsobů — pro běžné uživatele i pro správce webů, kteří nechtějí, aby jim AI „kradla" odpovědi.
+        </p>
+        <div class="scard__meta">
+          <span>Asi 2 200 slov</span>
+          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* ===== TYPOGRAPHY ===== */
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    font-size: clamp(2.75rem, 8.5vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+  }
+  .display strong { font-weight: 600; color: var(--color-ink); }
+  .display .hl { color: var(--color-accent); font-weight: 400; }
+
+  .lead {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    letter-spacing: -0.005em;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(3.5rem, 11vh, 8rem) clamp(1.25rem, 4vw, 4rem) clamp(3.5rem, 7vh, 6rem);
+  }
+  .hero__intro {
+    margin-bottom: 3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    padding: 0.45rem 0.875rem;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+  }
+  .hero__intro::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+  .hero__title {
+    margin-bottom: 2.5rem;
+    max-width: 19ch;
+  }
+  .hero__lead {
+    max-width: 38rem;
+    margin-bottom: 3rem;
+  }
+  .hero__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* hero stagger animation */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .hero > * {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+  .hero > *:nth-child(1) { animation-delay: 0.04s; }
+  .hero > *:nth-child(2) { animation-delay: 0.14s; }
+  .hero > *:nth-child(3) { animation-delay: 0.26s; }
+  .hero > *:nth-child(4) { animation-delay: 0.38s; }
+
+  .pill {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    padding: 0.45rem 0.875rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-rule-strong);
+    color: var(--color-ink-muted);
+    background: var(--color-paper-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .pill::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-ink-faint);
+  }
+  .pill[data-d="seo"] {
+    color: var(--color-seo);
+    border-color: var(--color-seo-soft);
+    background: var(--color-seo-tint);
+  }
+  .pill[data-d="seo"]::before { background: var(--color-seo); }
+  .pill[data-d="geo"] {
+    color: var(--color-geo);
+    border-color: var(--color-geo-soft);
+    background: var(--color-geo-tint);
+  }
+  .pill[data-d="geo"]::before { background: var(--color-geo); }
+  .pill[data-d="aeo"] {
+    color: var(--color-aeo);
+    border-color: var(--color-aeo-soft);
+    background: var(--color-aeo-tint);
+  }
+  .pill[data-d="aeo"]::before { background: var(--color-aeo); }
+  .pill[data-d="aio"] {
+    color: var(--color-aio);
+    border-color: var(--color-aio-soft);
+    background: var(--color-aio-tint);
+  }
+  .pill[data-d="aio"]::before { background: var(--color-aio); }
+
+  /* ===== HERO MEDIA SLOT ===== */
+  .hero-media {
+    max-width: 80rem;
+    margin: 0 auto clamp(3rem, 6vw, 5rem);
+    padding: 0 clamp(1.25rem, 4vw, 4rem);
+  }
+  .hero-media__frame {
+    aspect-ratio: 16 / 8;
+    background: var(--color-paper-deep);
+    border: 1px dashed var(--color-rule-strong);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+  .hero-media__frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg, transparent 49.5%, oklch(from var(--color-accent) l c h / 0.06) 50%, transparent 50.5%),
+      linear-gradient(90deg, transparent 49.5%, oklch(from var(--color-accent) l c h / 0.06) 50%, transparent 50.5%);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .hero-media__label {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+  }
+  .hero-media__sub {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 350;
+    color: var(--color-ink-faint);
+    text-align: center;
+    max-width: 36rem;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
+
+  /* ===== STAT BAR ===== */
+  .stat-bar {
+    border-top: 1px solid var(--color-rule-strong);
+    border-bottom: 1px solid var(--color-rule-strong);
+    background: var(--color-paper-deep);
+  }
+  .stat-bar__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 4rem);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem 1rem 1.25rem;
+    border-left: 1px solid var(--color-rule);
+  }
+  .stat:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+  .stat__num {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--color-ink);
+    font-feature-settings: "tnum", "cv11";
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__num strong {
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .stat__label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    line-height: 1.4;
+  }
+  .stat__src {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--color-ink-faint);
+    margin-top: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .stat__src::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background: var(--color-ink-faint);
+    border-radius: 50%;
+  }
+
+  /* ===== SECTION HEAD ===== */
+  .section {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 4rem);
+  }
+  .section__head {
+    margin-bottom: clamp(2.5rem, 4vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .section__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    max-width: 22ch;
+    color: var(--color-ink);
+  }
+  .section__title strong { font-weight: 600; }
+  .section__title .hl {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  .section__intro {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1rem, 1.4vw, 1.1875rem);
+    color: var(--color-ink-muted);
+    max-width: 38rem;
+    line-height: 1.55;
+  }
+
+  /* ===== QUARTET ===== */
+  .quartet {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--color-rule);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .qcard {
+    background: var(--color-paper);
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: relative;
+    transition: background-color 0.3s ease;
+    min-height: 26rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .qcard:hover { background: var(--qcard-tint); }
+  .qcard[data-d="seo"] {
+    --qcard-color: var(--color-seo);
+    --qcard-tint: var(--color-seo-tint);
+  }
+  .qcard[data-d="geo"] {
+    --qcard-color: var(--color-geo);
+    --qcard-tint: var(--color-geo-tint);
+  }
+  .qcard[data-d="aeo"] {
+    --qcard-color: var(--color-aeo);
+    --qcard-tint: var(--color-aeo-tint);
+  }
+  .qcard[data-d="aio"] {
+    --qcard-color: var(--color-aio);
+    --qcard-tint: var(--color-aio-tint);
+  }
+  .qcard__abbr {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--qcard-color);
+    margin: 0;
+  }
+  .qcard__name {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.3;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+  }
+  .qcard__desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .qcard__features {
+    margin: auto 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    border-top: 1px solid var(--color-rule);
+    padding: 1.25rem 0 0;
+    list-style: none;
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    line-height: 1.45;
+  }
+  .qcard__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+  .qcard__features li::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    margin-top: 0.6em;
+    border-radius: 50%;
+    background: var(--qcard-color);
+    opacity: 0.55;
+  }
+  .qcard__cta {
+    margin-top: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--qcard-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.25s ease;
+  }
+  .qcard:hover .qcard__cta { gap: 0.875rem; }
+
+  /* ===== HUB AND SPOKE ===== */
+  .hub-section {
+    background: var(--color-paper-deep);
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .hub-section__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 4vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .hub-section__inner { grid-template-columns: 1fr 1.2fr; }
+  }
+  .hub-section__title { margin-top: 1.25rem; }
+  .hub-section__intro { margin-top: 1.5rem; }
+
+  .hub-svg {
+    width: 100%;
+    height: auto;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  @keyframes draw {
+    from { stroke-dashoffset: 320; }
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes fadein {
+    from { opacity: 0; transform: scale(0.94); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .hub-svg .conn {
+    stroke: var(--color-rule-strong);
+    stroke-width: 1;
+    fill: none;
+    stroke-dasharray: 320;
+    animation: draw 1.2s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+  .hub-svg .node {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: fadein 0.5s backwards;
+  }
+  .hub-svg .node-pillar { animation-delay: 0.15s; }
+  .hub-svg .node-1 { animation-delay: 1.0s; }
+  .hub-svg .node-2 { animation-delay: 1.1s; }
+  .hub-svg .node-3 { animation-delay: 1.2s; }
+  .hub-svg .node-4 { animation-delay: 1.3s; }
+  .hub-svg .node-5 { animation-delay: 1.4s; }
+  .hub-svg .node-6 { animation-delay: 1.5s; }
+
+  /* ===== PILLAR PROMO ===== */
+  .pillar-promo {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: stretch;
+  }
+  @media (min-width: 900px) {
+    .pillar-promo { grid-template-columns: 1.3fr 1fr; gap: 5rem; }
+  }
+  .pillar-promo__main {
+    border-top: 1px solid var(--color-ink);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .pillar-promo__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .pillar-promo__title strong { font-weight: 600; }
+  .pillar-promo__title .hl {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  .pillar-promo__lead {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: 1.1875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    max-width: 36rem;
+  }
+  .pillar-promo__meta {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+  .pillar-promo__meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .pillar-promo__meta span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.95rem 1.625rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background: var(--color-accent);
+    transform: translateX(2px);
+  }
+  .btn__arrow { transition: transform 0.25s ease; }
+  .btn:hover .btn__arrow { transform: translateX(3px); }
+
+  .pillar-promo__excerpt {
+    background: var(--color-paper-deep);
+    padding: clamp(1.75rem, 2.5vw, 2.5rem);
+    border-radius: 8px;
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .pillar-promo__excerpt-mark {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .pillar-promo__excerpt-text {
+    font-family: var(--font-sans);
+    font-weight: 380;
+    font-size: 1.1875rem;
+    line-height: 1.45;
+    letter-spacing: -0.012em;
+    color: var(--color-ink);
+  }
+  .pillar-promo__excerpt-text strong { font-weight: 600; }
+
+  /* ===== SECTION GRID (vybrané články) ===== */
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .scard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.75rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+  .scard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--scard-color, var(--color-ink-faint));
+    transform: scaleY(0.3);
+    transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .scard:hover {
+    background: var(--color-paper-deep);
+    border-color: var(--scard-color, var(--color-ink));
+  }
+  .scard:hover::before { transform: scaleY(1); }
+  .scard[data-d="practice"] { --scard-color: var(--color-accent); }
+  .scard[data-d="matrix"] { --scard-color: oklch(0.4 0.06 200); }
+  .scard[data-d="defense"] { --scard-color: var(--color-signal); }
+
+  .scard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+  .scard__tag {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--scard-color);
+    background: oklch(from var(--scard-color) l c h / 0.08);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+  .scard__time {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--color-ink-faint);
+  }
+  .scard__title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.1875rem;
+    line-height: 1.25;
+    letter-spacing: -0.018em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .scard__desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .scard__meta {
+    margin-top: auto;
+    padding-top: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-rule);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-faint);
+  }
+  .scard__cta {
+    color: var(--scard-color);
+    transition: gap 0.25s ease;
+    display: flex;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+  .scard:hover .scard__cta { gap: 0.7rem; }
+</style>
