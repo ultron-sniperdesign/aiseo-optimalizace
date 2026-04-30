@@ -17,8 +17,8 @@
   --color-paper-deep: oklch(0.965 0.005 250);
   --color-paper-hover: oklch(0.945 0.007 250);
   --color-ink: oklch(0.22 0.012 260);
-  --color-ink-muted: oklch(0.45 0.012 260);
-  --color-ink-faint: oklch(0.62 0.01 260);
+  --color-ink-muted: oklch(0.42 0.012 260);
+  --color-ink-faint: oklch(0.5 0.01 260);
   --color-rule: oklch(0.9 0.006 260);
   --color-rule-strong: oklch(0.8 0.008 260);
 
@@ -37,7 +37,7 @@
   --color-geo-tint: oklch(0.96 0.022 155);
   --color-geo-soft: oklch(0.86 0.06 155);
 
-  --color-aeo: oklch(0.55 0.13 65);
+  --color-aeo: oklch(0.46 0.13 65);
   --color-aeo-tint: oklch(0.96 0.022 65);
   --color-aeo-soft: oklch(0.88 0.07 65);
 
@@ -113,6 +113,23 @@ body {
 
 .prose-content h3 {
   scroll-margin-top: 5rem;
+}
+
+/* Focus indicators — keyboard a11y.
+ * :focus-visible se chová tak, že nezobrazuje outline při klepnutí myší
+ * (jen při Tab navigaci), takže nevadí estetice ale je viditelný pro
+ * keyboard usery. Discipline color identity přebíráme přes currentColor —
+ * link uvnitř SEO sekce pak má modrý outline, atd.
+ */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Buttons / pills v hero už mají vlastní focus-visible (currentColor) — ne přepisovat */
+.pill--btn:focus-visible {
+  outline-color: currentColor;
 }
 
 /* Reduced motion respect */
