@@ -44,6 +44,15 @@
   --color-aio: oklch(0.48 0.16 305);
   --color-aio-tint: oklch(0.96 0.022 305);
   --color-aio-soft: oklch(0.86 0.06 305);
+
+  /* Sekce mimo 4 disciplíny — používané v /prakticky-postup/ a /rozhodovaci-matice/ */
+  --color-praxe: var(--color-accent);
+  --color-praxe-tint: oklch(0.96 0.022 250);
+  --color-praxe-soft: oklch(0.86 0.06 250);
+
+  --color-matice: oklch(0.4 0.06 200);
+  --color-matice-tint: oklch(0.96 0.022 200);
+  --color-matice-soft: oklch(0.86 0.05 200);
 }
 
 html {

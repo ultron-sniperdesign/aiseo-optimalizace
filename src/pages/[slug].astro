@@ -7,13 +7,62 @@ export const getStaticPaths = (async () => {
   const sections = await getCollection("sections");
   return sections.map((entry) => ({
     params: { slug: entry.data.slug },
-    props: { entry },
+    props: { entry, allSections: sections },
   }));
 }) satisfies GetStaticPaths;
 
-const { entry } = Astro.props;
+const { entry, allSections } = Astro.props;
 const { Content } = await render(entry);
 
+/**
+ * Color mapping podle disciplíny (frontmatter `abbr`).
+ * Inline-stylem nastaví --d / --d-tint / --d-soft proměnné na <article>,
+ * scoped CSS uvnitř pak dědí discipline barvu.
+ */
+type ColorTriple = { d: string; tint: string; soft: string };
+const colorByAbbr: Record<string, ColorTriple> = {
+  SEO: { d: "var(--color-seo)", tint: "var(--color-seo-tint)", soft: "var(--color-seo-soft)" },
+  GEO: { d: "var(--color-geo)", tint: "var(--color-geo-tint)", soft: "var(--color-geo-soft)" },
+  AEO: { d: "var(--color-aeo)", tint: "var(--color-aeo-tint)", soft: "var(--color-aeo-soft)" },
+  AIO: { d: "var(--color-aio)", tint: "var(--color-aio-tint)", soft: "var(--color-aio-soft)" },
+  PRAXE: { d: "var(--color-praxe)", tint: "var(--color-praxe-tint)", soft: "var(--color-praxe-soft)" },
+  MATICE: { d: "var(--color-matice)", tint: "var(--color-matice-tint)", soft: "var(--color-matice-soft)" },
+};
+const c = colorByAbbr[entry.data.abbr] ?? colorByAbbr.SEO;
+
+/**
+ * Kontextový label v breadcrumbu — překlad abbr na čitelný kontext.
+ */
+const contextLabel: Record<string, string> = {
+  SEO: "První disciplína · SEO",
+  GEO: "Druhá disciplína · GEO",
+  AEO: "Třetí disciplína · AEO",
+  AIO: "Čtvrtá disciplína · AIO",
+  PRAXE: "Návod · Praktický postup",
+  MATICE: "Rozhodování · Kdy co použít",
+};
+const crumb = contextLabel[entry.data.abbr] ?? entry.data.abbr;
+
+/**
+ * Display block pro velkou abbreviation v hero.
+ * Subtitle bere DESCRIPTIVE část za první pomlčkou (např. "Search Engine Optimization"),
+ * aby se neopakovala se zkratkou. Pokud title pomlčku neobsahuje, použije celý title.
+ */
+const heroAbbr = entry.data.abbr;
+const titleParts = entry.data.title.split(" — ");
+const heroAbbrSubtitle = titleParts.length > 1 ? titleParts.slice(1).join(" — ") : entry.data.title;
+
+/**
+ * Related — 3 jiné sekce z collection (vyloučí current), seřazené dle order.
+ */
+const related = allSections
+  .filter((s) => s.data.slug !== entry.data.slug)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+/**
+ * JSON-LD schema — preserve existing.
+ */
 const faqJsonLd =
   entry.data.faq && entry.data.faq.length > 0
     ? {
@@ -42,49 +91,630 @@ const articleJsonLd = {
 };
 
 const allLd = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
+
+/**
+ * Inline style nastaví per-page discipline color CSS variables.
+ * Scoped CSS níže dědí přes var(--d).
+ */
+const heroStyle = `--d: ${c.d}; --d-tint: ${c.tint}; --d-soft: ${c.soft};`;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd}>
-  <article class="mx-auto max-w-3xl px-6 pt-12 pb-20">
-    <header class="mb-10">
-      <p class="text-sm font-semibold text-[var(--color-accent-strong)] uppercase tracking-wider mb-3">
-        {entry.data.abbr}
-      </p>
-      <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight text-balance leading-[1.1] mb-4">
-        {entry.data.title}
-      </h1>
-      <p class="text-base text-[var(--color-ink-muted)]">
-        Aktualizováno: <time datetime={entry.data.updated}>{entry.data.updated}</time>
-      </p>
-    </header>
+  <div class="page" style={heroStyle}>
+    <!-- HERO -->
+    <section class="d-hero">
+      <nav class="d-hero__crumbs" aria-label="Drobečková navigace">
+        <a href="/">Úvod</a>
+        <span class="crumb-sep">›</span>
+        <span>Disciplíny</span>
+        <span class="crumb-sep">›</span>
+        <span class="d-hero__crumb-pill">{crumb}</span>
+      </nav>
 
-    {/* Answer block — 40–60 slov, čteno AI scrapery jako primární definice. */}
-    <div class="mb-10 p-5 rounded-xl bg-[var(--color-accent)]/5 border-l-4 border-[var(--color-accent)]">
-      <p class="font-medium text-[var(--color-ink)] leading-relaxed">
-        {entry.data.answer}
-      </p>
-    </div>
+      <div class="d-hero__layout">
+        <div class="d-hero__main">
+          <h1 class="display d-hero__title">{entry.data.title}</h1>
+          <p class="d-hero__sub">{entry.data.description}</p>
+        </div>
 
-    <div class="prose-content prose prose-lg prose-headings:font-display prose-headings:tracking-tight max-w-none">
-      <Content />
-    </div>
+        <div class="d-hero__abbr-block" aria-hidden="true">
+          <div class="d-hero__abbr">{heroAbbr}</div>
+          <div class="d-hero__abbr-meta">{heroAbbrSubtitle}</div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ANSWER BLOCK -->
+    <section class="answer">
+      <div class="answer__inner">
+        <span class="answer__mark">Stručná definice</span>
+        <p class="answer__text">{entry.data.answer}</p>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article">
+      <div class="article__prose">
+        <Content />
+      </div>
+    </article>
+
+    <!-- FAQ -->
     {
       entry.data.faq && entry.data.faq.length > 0 && (
-        <section class="mt-16">
-          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-6">
-            Často kladené otázky
-          </h2>
-          <dl class="space-y-6">
-            {entry.data.faq.map((item) => (
-              <div class="border-b border-[var(--color-ink)]/10 pb-6 last:border-0">
-                <dt class="font-display text-lg font-semibold mb-2">{item.q}</dt>
-                <dd class="text-[var(--color-ink-muted)] leading-relaxed">{item.a}</dd>
+        <section class="faq" aria-labelledby="faq-title">
+          <header class="faq__head">
+            <span class="eyebrow">
+              <span class="eyebrow__num">FAQ</span>
+              Časté otázky
+            </span>
+            <h2 id="faq-title" class="faq__title">
+              Otázky, které se k <strong>{entry.data.abbr}</strong> ptají nejčastěji
+            </h2>
+          </header>
+
+          <dl class="faq__list">
+            {entry.data.faq.map((item, i) => (
+              <div class="faq__item">
+                <dt class="faq__q">
+                  <span class="faq__q-num">{i + 1}</span>
+                  <span>{item.q}</span>
+                </dt>
+                <dd class="faq__a">{item.a}</dd>
               </div>
             ))}
           </dl>
         </section>
       )
     }
-  </article>
+
+    <!-- RELATED -->
+    {
+      related.length > 0 && (
+        <section class="related">
+          <header class="related__head">
+            <span class="eyebrow">Související</span>
+            <h2 class="related__title">
+              Tři sekce, které <strong>jdou dohromady s {entry.data.abbr}</strong>
+            </h2>
+          </header>
+
+          <div class="related__grid">
+            {related.map((r) => {
+              const rc = colorByAbbr[r.data.abbr] ?? colorByAbbr.SEO;
+              const rStyle = `--rd: ${rc.d}; --rd-tint: ${rc.tint};`;
+              return (
+                <a href={`/${r.data.slug}/`} class="rcard" style={rStyle}>
+                  <div class="rcard__row">
+                    <div class="rcard__abbr">{r.data.abbr}</div>
+                    <span class="rcard__index">{contextLabel[r.data.abbr] ?? r.data.abbr}</span>
+                  </div>
+                  <h3 class="rcard__title">{r.data.title.split(" — ")[0] ?? r.data.title}</h3>
+                  <p class="rcard__desc">{r.data.description}</p>
+                  <span class="rcard__cta">
+                    Číst sekci <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+  </div>
 </BaseLayout>
+
+<style>
+  /* ===== TYPOGRAPHY ===== */
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+
+  /* ===== HERO ===== */
+  .d-hero {
+    position: relative;
+    padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vh, 4rem);
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+  .d-hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .d-hero__crumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .d-hero__crumbs a:hover { color: var(--color-ink); }
+  .d-hero__crumb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--d-tint);
+    color: var(--d);
+    border: 1px solid var(--d-soft);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .d-hero__crumb-pill::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+  .crumb-sep { opacity: 0.4; }
+
+  .d-hero__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: end;
+  }
+  @media (min-width: 1024px) {
+    .d-hero__layout { grid-template-columns: 1.3fr 1fr; gap: 3rem; }
+  }
+
+  .d-hero__title {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    margin: 0 0 1.25rem;
+    max-width: 18ch;
+    color: var(--color-ink);
+  }
+
+  .d-hero__sub {
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    max-width: 36rem;
+    margin: 0;
+  }
+
+  .d-hero__abbr-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+    user-select: none;
+  }
+  .d-hero__abbr {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(7rem, 18vw, 14rem);
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: var(--d);
+    text-align: right;
+  }
+  .d-hero__abbr-meta {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-faint);
+    letter-spacing: -0.005em;
+    text-align: right;
+  }
+
+  /* hero stagger */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  .d-hero__main > * { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+  .d-hero__main > *:nth-child(1) { animation-delay: 0.04s; }
+  .d-hero__main > *:nth-child(2) { animation-delay: 0.18s; }
+  .d-hero__abbr-block { animation: rise 1s 0.18s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+
+  /* ===== ANSWER BLOCK ===== */
+  .answer {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+  }
+  .answer__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 8px;
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 60rem;
+  }
+  .answer__mark {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--d);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .answer__mark::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+  .answer__text {
+    font-family: var(--font-sans);
+    font-weight: 380;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== ARTICLE BODY ===== */
+  .article {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(1rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+  }
+  .article__prose {
+    max-width: 40rem;
+    font-family: var(--font-sans);
+  }
+
+  /* Markdown rendered body — sans typography, friendly hierarchy */
+  .article__prose :global(h2) {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 3rem 0 1.5rem;
+    color: var(--color-ink);
+    scroll-margin-top: 5rem;
+  }
+  .article__prose :global(h2:first-child) { margin-top: 0; }
+  .article__prose :global(h3) {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    letter-spacing: -0.018em;
+    margin: 2.25rem 0 0.875rem;
+    color: var(--color-ink);
+    scroll-margin-top: 5rem;
+  }
+  .article__prose :global(p) {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    margin: 0 0 1.125rem;
+  }
+  .article__prose :global(p strong) { font-weight: 600; }
+  .article__prose :global(p em) { font-style: italic; }
+  .article__prose :global(a) {
+    color: var(--d);
+    border-bottom: 1px solid color-mix(in oklch, var(--d) 35%, transparent);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+  .article__prose :global(a:hover) { border-bottom-color: var(--d); }
+
+  /* První odstavec po H2 dostává „lead" treatment — left border místo drop cap */
+  .article__prose :global(h2 + p) {
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    font-weight: 400;
+    color: var(--color-ink);
+    padding-left: 1rem;
+    border-left: 2px solid var(--d);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Lists */
+  .article__prose :global(ul),
+  .article__prose :global(ol) {
+    margin: 1.25rem 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .article__prose :global(ul li) {
+    position: relative;
+    padding-left: 1.625rem;
+    margin-bottom: 0.625rem;
+    line-height: 1.65;
+    font-size: 1.0625rem;
+  }
+  .article__prose :global(ul li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 0.75rem;
+    height: 1px;
+    background: var(--d);
+  }
+  .article__prose :global(ol) {
+    counter-reset: ord;
+  }
+  .article__prose :global(ol li) {
+    position: relative;
+    padding-left: 2.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
+    font-size: 1.0625rem;
+    counter-increment: ord;
+  }
+  .article__prose :global(ol li::before) {
+    content: counter(ord);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 50%;
+    background: var(--d-tint);
+    border: 1px solid var(--d-soft);
+    color: var(--d);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Tabulky */
+  .article__prose :global(table) {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .article__prose :global(thead) { background: var(--d-tint); }
+  .article__prose :global(th) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--d);
+    border-bottom: 1px solid var(--d-soft);
+    font-size: 0.875rem;
+  }
+  .article__prose :global(td) {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-rule);
+    color: var(--color-ink);
+  }
+  .article__prose :global(tr:last-child td) { border-bottom: none; }
+
+  /* Code */
+  .article__prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    color: var(--color-ink);
+  }
+  .article__prose :global(pre) {
+    background: oklch(0.18 0.012 260);
+    color: oklch(0.92 0.012 80);
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-left: 3px solid var(--d);
+  }
+  .article__prose :global(pre code) {
+    background: transparent;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: inherit;
+  }
+
+  /* Blockquotes */
+  .article__prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-left: 3px solid var(--d);
+    font-style: normal;
+    color: var(--color-ink-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  .article__prose :global(blockquote p) { margin: 0 0 0.5rem; color: inherit; }
+  .article__prose :global(blockquote p:last-child) { margin-bottom: 0; }
+
+  /* HR */
+  .article__prose :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-rule);
+    margin: 2.5rem 0;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    border-top: 1px solid var(--color-rule);
+    background: var(--color-paper-deep);
+  }
+  .faq__head {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .faq__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.625rem, 3vw, 2.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .faq__title strong { font-weight: 600; }
+
+  .faq__list {
+    max-width: 60rem;
+    margin: 0;
+  }
+  .faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding: 1.75rem 0;
+  }
+  .faq__item:last-child { border-bottom: 1px solid var(--color-rule); }
+  .faq__q {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.35;
+    letter-spacing: -0.018em;
+    color: var(--color-ink);
+    margin-bottom: 0.875rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .faq__q-num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--d-tint);
+    border: 1px solid var(--d-soft);
+    color: var(--d);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  .faq__a {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-ink-muted);
+    max-width: 50rem;
+    margin: 0 0 0 3rem;
+  }
+
+  /* ===== RELATED ===== */
+  .related {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+  }
+  .related__head {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .related__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .related__title strong { font-weight: 600; }
+
+  .related__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .rcard {
+    padding: 1.75rem;
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .rcard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--rd);
+    transform: scaleX(0.2);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .rcard:hover {
+    border-color: var(--rd);
+    background: var(--color-paper-deep);
+  }
+  .rcard:hover::before { transform: scaleX(1); }
+
+  .rcard__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .rcard__abbr {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--rd);
+  }
+  .rcard__index {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-ink-faint);
+  }
+  .rcard__title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: -0.012em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .rcard__desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .rcard__cta {
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--rd);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.25s ease;
+  }
+  .rcard:hover .rcard__cta { gap: 0.75rem; }
+</style>
