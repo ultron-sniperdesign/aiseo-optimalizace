@@ -69,7 +69,8 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   font-feature-settings: "cv11", "ss01";
-  hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 ::selection {

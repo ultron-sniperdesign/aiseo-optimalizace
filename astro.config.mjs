@@ -23,6 +23,9 @@ export default defineConfig({
     sitemap({
       // /seo-a-geo není kanonická URL — vyloučit ze sitemap
       filter: (page) => !page.includes("/seo-a-geo"),
+      // Build-time datum jako lastmod pro všechny stránky.
+      // Google `lastmod` používá, pokud je konzistentně přesné — přesně to děláme.
+      lastmod: new Date(),
     }),
   ],
   vite: {
