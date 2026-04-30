@@ -274,7 +274,7 @@ Očekávaný výstup: 7 unikátních záznamů (5 sessions + 1 user kotva + 1 re
 | Astro redirect `/seo-a-geo/` → pillar | ✅ live | client-side meta refresh + canonical + noindex (sitemap exclude) |
 | GSC + GA4 sloty v BaseLayout | ✅ ready | env vars `PUBLIC_GSC_VERIFICATION` + `PUBLIC_GA4_MEASUREMENT_ID` v Secrets |
 | GA4 tracking | ⏳ rolling out | ID `G-BG0FVWG0YH` (uživatel 2026-04-29 23:35), request u sd-server-admin pro Secret nastavení |
-| GSC verification | ✅ meta tag live | token `BpVWR260qQusVvlwhefuHC5pRVh0Mo4N5o9nzdbSKts`. Secret přidán sd-server-admin 2026-04-30, re-deploy `4070e3d` ✅, ověřeno na `/` + `/seo-vs-geo-vs-aeo-vs-aio/`. Čeká už jen na klik „Verify" v GSC + submit sitemap od uživatele. |
+| GSC verification | ✅ verified | token `BpVWR260qQusVvlwhefuHC5pRVh0Mo4N5o9nzdbSKts`. Secret přidán sd-server-admin 2026-04-30, re-deploy `4070e3d` ✅, GSC ownership verified uživatelem 2026-04-30. |
 | Articles content collection | ✅ live | extensible pro budoucí case studies pod `src/content/articles/` |
 | CLAUDE.md | ✅ live | tento soubor, založen 2026-04-29 03:40 |
 

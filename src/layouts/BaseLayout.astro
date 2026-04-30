@@ -68,13 +68,15 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    {/* Google Fonts — Geist (display+body) + JetBrains Mono (code only) */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@200..900&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
+    {/* Self-hosted fonts — Geist (display+body) + JetBrains Mono (code only).
+        Latinka má ~28 KB Geist + ~31 KB JBM, latin-ext ~15+12 KB. Preload
+        latin variantu (hot path); latin-ext načte browser až když
+        narazí na české znaky (typicky během pár ms). Žádný third-party
+        DNS / handshake → odstranění render-blocking ~800 ms (Lighthouse).
+    */}
+    <link rel="preload" href="/fonts/geist-200-900-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/geist-200-900-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
