@@ -272,7 +272,9 @@ Očekávaný výstup: 7 unikátních záznamů (5 sessions + 1 user kotva + 1 re
 | Plné rozšíření 6 sekcí (~1300 slov každá) | ✅ live | commit `2a823d7`, CI run `25132281814` ✅, deploy `20260429-203210-2a823d7`, sekce 20–28 KB HTML |
 | Defenzivní článek `/jak-vypnout-ai-overview/` | ✅ live | commit `c81c9f3`, ~2200 slov, HowTo schema (5 kroků) + FAQPage (6 otázek), 27 KB HTML, deploy `20260429-212419-c81c9f3` |
 | Astro redirect `/seo-a-geo/` → pillar | ✅ live | client-side meta refresh + canonical + noindex (sitemap exclude) |
-| GSC + GA4 sloty v BaseLayout | ✅ ready | env vars `PUBLIC_GSC_VERIFICATION` + `PUBLIC_GA4_MEASUREMENT_ID` (zatím prázdné) |
+| GSC + GA4 sloty v BaseLayout | ✅ ready | env vars `PUBLIC_GSC_VERIFICATION` + `PUBLIC_GA4_MEASUREMENT_ID` v Secrets |
+| GA4 tracking | ⏳ rolling out | ID `G-BG0FVWG0YH` (uživatel 2026-04-29 23:35), request u sd-server-admin pro Secret nastavení |
+| GSC verification | ⏳ pending | uživatel ještě nemá ownership token, zatímco není submit ani sitemap |
 | Articles content collection | ✅ live | extensible pro budoucí case studies pod `src/content/articles/` |
 | CLAUDE.md | ✅ live | tento soubor, založen 2026-04-29 03:40 |
 

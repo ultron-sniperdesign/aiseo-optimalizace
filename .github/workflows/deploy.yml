@@ -26,6 +26,11 @@ jobs:
       - name: Build (astro check + astro build)
         env:
           NODE_ENV: production
+          # PUBLIC_* env vars jsou Astro-specific: dostupné v import.meta.env
+          # ve build-time i client-side. Pokud Secret není nastavený, env je
+          # prázdný a BaseLayout meta/script se nevykreslí (default fallback).
+          PUBLIC_GSC_VERIFICATION: ${{ secrets.PUBLIC_GSC_VERIFICATION }}
+          PUBLIC_GA4_MEASUREMENT_ID: ${{ secrets.PUBLIC_GA4_MEASUREMENT_ID }}
         run: npm run build
 
       - name: Setup SSH key
