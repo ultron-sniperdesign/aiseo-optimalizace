@@ -497,6 +497,67 @@ const quartet: Quartet[] = [
       </a>
     </div>
   </section>
+
+  <!-- AGENCY CTA — Sniperdesign.cz -->
+  <section class="agency-cta" aria-labelledby="agency-cta-title">
+    <div class="agency-cta__inner">
+      <header class="agency-cta__head">
+        <span class="eyebrow"><span class="eyebrow__num">06</span> Pomoc s implementací</span>
+        <h2 id="agency-cta-title" class="agency-cta__title">
+          Nechcete to řešit interně? <strong>Postavíme to za vás.</strong>
+        </h2>
+        <p class="agency-cta__lead">
+          Tento průvodce vám dá přehled. Co s ním udělá <strong>web nebo e‑shop</strong> v praxi, je druhá věc — a obvykle to chce někoho, kdo už tím prošel. Děláme to v <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniperdesign.cz</a>.
+        </p>
+      </header>
+
+      <div class="agency-cta__benefits">
+        <article class="agency-benefit">
+          <span class="agency-benefit__num">01</span>
+          <h3 class="agency-benefit__title">AI SEO audit</h3>
+          <p class="agency-benefit__desc">
+            Projdeme top 20 stránek vašeho webu, najdeme díry v answer blocích, FAQ a schema markupu. Konkrétní seznam úprav s prioritou podle dopadu.
+          </p>
+        </article>
+
+        <article class="agency-benefit">
+          <span class="agency-benefit__num">02</span>
+          <h3 class="agency-benefit__title">Implementace strukturovaných dat</h3>
+          <p class="agency-benefit__desc">
+            Article, FAQPage, HowTo, Product, Organization. Validace přes Google Rich Results Test, automatizovaný build pro váš CMS, žádný manuální copy‑paste.
+          </p>
+        </article>
+
+        <article class="agency-benefit">
+          <span class="agency-benefit__num">03</span>
+          <h3 class="agency-benefit__title">Měření a iterace</h3>
+          <p class="agency-benefit__desc">
+            Setup GSC + GA4 + manuální AIO tracker, měsíční report kde vás AI cituje (ChatGPT, Perplexity, Google AI Overview) a co s tím dělat dál.
+          </p>
+        </article>
+
+        <article class="agency-benefit">
+          <span class="agency-benefit__num">04</span>
+          <h3 class="agency-benefit__title">Obsah, který AI cituje</h3>
+          <p class="agency-benefit__desc">
+            Přepsání klíčových stránek do AI‑friendly struktury. Otázka jako H1, krátká odpověď nahoře, fakta s čísly, FAQ se schema. Žádná „omáčka".
+          </p>
+        </article>
+      </div>
+
+      <div class="agency-cta__actions">
+        <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener" class="btn btn--solid">
+          Otevřít Sniperdesign.cz
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="https://www.sniperdesign.cz/kontakt/" target="_blank" rel="noopener" class="btn btn--ghost">
+          Nezávazná konzultace
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -1338,6 +1399,157 @@ const quartet: Quartet[] = [
     font-weight: 500;
   }
   .scard:hover .scard__cta { gap: 0.7rem; }
+
+  /* ===== AGENCY CTA — Sniperdesign.cz ===== */
+  .agency-cta {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 4rem) clamp(5rem, 9vw, 8rem);
+  }
+  .agency-cta__inner {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-radius: 14px;
+    padding: clamp(2.25rem, 4.5vw, 4rem) clamp(1.75rem, 4vw, 3.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  /* subtle accent corner */
+  .agency-cta__inner::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(
+      ellipse 60% 50% at 100% 0%,
+      color-mix(in oklch, var(--color-accent) 22%, transparent),
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  .agency-cta__head {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    max-width: 48rem;
+    position: relative;
+  }
+  .agency-cta__head .eyebrow {
+    color: color-mix(in oklch, var(--color-paper) 60%, transparent);
+  }
+  .agency-cta__head .eyebrow__num {
+    color: var(--color-paper);
+  }
+  .agency-cta__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 250;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0.75rem 0 1rem;
+    color: var(--color-paper);
+  }
+  .agency-cta__title strong {
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .agency-cta__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    line-height: 1.6;
+    color: color-mix(in oklch, var(--color-paper) 78%, transparent);
+    margin: 0;
+  }
+  .agency-cta__lead strong {
+    color: var(--color-paper);
+    font-weight: 600;
+  }
+  .agency-cta__lead a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: opacity 0.2s ease;
+  }
+  .agency-cta__lead a:hover { opacity: 0.8; }
+
+  .agency-cta__benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    position: relative;
+  }
+  @media (min-width: 600px) {
+    .agency-cta__benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .agency-cta__benefits {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .agency-benefit {
+    padding: 1.5rem 1.25rem 1.5rem 1.5rem;
+    background: color-mix(in oklch, var(--color-paper) 5%, transparent);
+    border: 1px solid color-mix(in oklch, var(--color-paper) 12%, transparent);
+    border-radius: 10px;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .agency-benefit:hover {
+    background: color-mix(in oklch, var(--color-paper) 8%, transparent);
+    border-color: color-mix(in oklch, var(--color-accent) 50%, transparent);
+    transform: translateY(-2px);
+  }
+  .agency-benefit__num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.875rem;
+  }
+  .agency-benefit__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    color: var(--color-paper);
+    margin: 0 0 0.5rem;
+  }
+  .agency-benefit__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: color-mix(in oklch, var(--color-paper) 70%, transparent);
+    margin: 0;
+  }
+
+  .agency-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    position: relative;
+  }
+  .btn--solid {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+  .btn--solid:hover {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    transform: translateX(2px);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--color-paper);
+    border: 1px solid color-mix(in oklch, var(--color-paper) 25%, transparent);
+  }
+  .btn--ghost:hover {
+    background: color-mix(in oklch, var(--color-paper) 8%, transparent);
+    border-color: color-mix(in oklch, var(--color-paper) 50%, transparent);
+    color: var(--color-paper);
+    transform: translateX(2px);
+  }
 </style>
 
 <script>
