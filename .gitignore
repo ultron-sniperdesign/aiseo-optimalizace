@@ -40,3 +40,7 @@ release_local/
 
 # Marketing research výstupy (lokální, ne pro repo)
 _research/
+
+# Local design experimenty (mimo TS/build scope)
+_design/
+public/og/_drafts/
