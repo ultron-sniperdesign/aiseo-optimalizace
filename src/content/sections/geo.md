@@ -46,7 +46,7 @@ Detailní srovnání všech 4 disciplín v [pillar průvodci](/seo-vs-geo-vs-aeo
 
 AI engines preferují **datově hutný obsah**:
 
-- ✅ „Marketing Miner ukazuje, že hledanost ‚geo seo' v ČR je 70/měs s meziročním růstem +645 %."
+- ✅ „Google AI Overview se v ČR zobrazuje pro ~30 % informačních dotazů a snižuje organic CTR o 35–60 %."
 - ❌ „Hledanost se zvyšuje rychle."
 
 První věta dá AI modelu konkrétní citační hook. Druhá věta je „omáčka" — model ji ignoruje.
@@ -66,7 +66,7 @@ První formulace je čistá definice — AI ji vytáhne 1:1. Druhá je marketing
 
 ### Citace a zdroje
 
-- Explicitní atribuce („Podle dat Marketing Mineru…", „Studie Princeton 2023 ukázala…")
+- Explicitní atribuce („Podle GSC dat za Q1 2026…", „Studie Princeton 2023 ukázala…")
 - Linky na primární zdroje (ne na sekundární blogposty)
 - Datace tvrzení („k dubnu 2026", „Q1 2026 data") — AI engines preferují recenční obsah
 
@@ -136,7 +136,7 @@ Tento web (`aiseo-optimalizace.cz/robots.txt`) je živý příklad této konfigu
 | **Brand mentions** napříč webem | Brand24, Mention.com, Google Alerts | týdně |
 | **AI crawler hits** v access logu | Caddy/Nginx access log filter na `GPTBot|PerplexityBot|ClaudeBot` | denně |
 | **Manuální audit** | ChatGPT/Perplexity dotaz na top 10 vašich KW | měsíčně |
-| **Backlinks** z autoritních zdrojů | Ahrefs / Marketing Miner | měsíčně |
+| **Backlinks** z autoritních zdrojů | Ahrefs / Semrush | měsíčně |
 
 ## Kdy investovat do GEO
 

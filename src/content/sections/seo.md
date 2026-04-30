@@ -64,7 +64,7 @@ I v roce 2026 zůstává SEO **základem všeho ostatního**: pokud Google vaši
 
 ### Krok 1 — Keyword research
 
-Použijte **Marketing Miner**, **Ahrefs** nebo **Google Keyword Planner** pro zmapování klíčových slov v oboru. Pro každý cluster:
+Použijte nástroj typu **Ahrefs**, **SE Ranking** nebo zdarma **Google Keyword Planner** pro zmapování klíčových slov v oboru. Pro každý cluster:
 
 - Primární KW (vysoká hledanost, střední konkurence)
 - 3–5 souvisejících long-tail KW
@@ -140,11 +140,11 @@ Detailní rozhodovací rámec najdete v sekci [Rozhodovací matice](/rozhodovaci
 
 | Metrika | Zdroj | Frekvence |
 |---|---|---|
-| Pozice klíčových slov | Marketing Miner / Ahrefs / SE Ranking | týdně |
+| Pozice klíčových slov | Ahrefs / SE Ranking / Google Search Console | týdně |
 | Organic traffic | Google Analytics 4 / Plausible | denně |
 | Click-through rate (CTR) | Google Search Console | týdně |
 | Backlinks (DR/UR) | Ahrefs / Semrush | měsíčně |
 | Core Web Vitals | Google Search Console / PageSpeed Insights | měsíčně |
 | Indexovatelnost | Google Search Console (Coverage report) | měsíčně |
 
-V CZ kontextu je **Marketing Miner nejdostupnější nástroj** — má kompletní data o hledanosti, AIO presence (atribut `ai_overviews`) a SERP features pro česká KW.
+V CZ kontextu vystačí pro většinu webů kombinace **Google Search Console** (zdarma, oficiální data) + jeden placený SEO nástroj na konkurenční benchmark a backlink audit. Zatímco GSC vám řekne, kde už stojíte, placený nástroj ukáže, kde stojí konkurence a kam můžete růst.

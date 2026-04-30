@@ -154,11 +154,11 @@ Pokud máte e-shop nebo B2B SaaS s dlouhými edukačními průvodci, zvažte, **
 </div>
 ```
 
-## Praktická realita CZ trhu
+## Praktická realita pro většinu webů a e-shopů
 
-Většině českých firem doporučuji v roce 2026 začít kombinací **SEO + AEO** (FAQ schema, HowTo, krátké odpovědi nahoře). GEO investice má smysl až ve chvíli, kdy máte měřitelnou cílovku v AI nástrojích — pro většinu CZ B2C e-shopů to ještě není priorita.
+Pro většinu webů a e-shopů v ČR má v roce 2026 smysl začít kombinací **SEO + AEO** (FAQ schema, HowTo, krátké odpovědi nahoře). GEO investice má smysl až ve chvíli, kdy máte měřitelnou cílovku v AI nástrojích — typicky B2B, prémiové služby nebo konzultanti, kde si zákazník dělá research přes ChatGPT a Perplexity. Pro běžný B2C e-shop to zatím není priorita.
 
-**Vzácná příležitost:** Google CZ pro „generative engine optimization" v dubnu 2026 ukazuje top 10 výsledků **pouze v angličtině, žádný český obsah**. To je vzácná příležitost být první v CZ niche.
+**Praktický důsledek:** dělejte málo věcí, ale pořádně. Lepší jeden answer block s poctivou FAQ a validním schema na 20 nejnavštěvovanějších stránkách než povrchní GEO + AEO + AIO „mix" napříč celým webem.
 
 ## Rozhodovací stromek (zjednodušený)
 

@@ -19,6 +19,54 @@ interface Quartet {
   href: string;
 }
 
+/**
+ * Pill definitions — rychlé seznámení s každou disciplínou pro hero pills.
+ * Klik na pill rozbalí kartu s definicí a linkem na plnou sekci.
+ */
+interface PillDef {
+  d: Discipline;
+  label: string;
+  fullName: string;
+  oneLine: string;
+  quick: string;
+  href: string;
+}
+
+const pillDefs: PillDef[] = [
+  {
+    d: "seo",
+    label: "SEO — Search",
+    fullName: "Search Engine Optimization",
+    oneLine: "Pozice v Googlu a Seznamu.",
+    quick: "Klasická optimalizace pro umístění v top 10 organických výsledků. Předpoklad pro vše ostatní — bez SEO základu vás AI nástroje ani neindexují.",
+    href: "/seo/",
+  },
+  {
+    d: "geo",
+    label: "GEO — Generative",
+    fullName: "Generative Engine Optimization",
+    oneLine: "Citace v ChatGPT, Perplexity, Claude a Gemini.",
+    quick: "Cílíte na to být zdrojem, který AI nástroj cituje při generování odpovědi. Místo modrého odkazu se hraje o zmínku ve výstupu.",
+    href: "/geo/",
+  },
+  {
+    d: "aeo",
+    label: "AEO — Answer",
+    fullName: "Answer Engine Optimization",
+    oneLine: "Odpovědi v Google AI Overviews a Bing Chatu.",
+    quick: "Užší disciplína cílená na panel s krátkou odpovědí nahoře nad výsledky. Klíč je FAQ schema, krátké odpovědi po nadpisu, strukturovaný návod.",
+    href: "/aeo/",
+  },
+  {
+    d: "aio",
+    label: "AIO — Umbrella",
+    fullName: "AI Optimization (zastřešující)",
+    oneLine: "Strategický rámec nad SEO + GEO + AEO. Také funkce Google AI Overviews.",
+    quick: "Dvojí význam, který se v praxi často plete. Jako strategie zastřešuje všechny tři disciplíny. Jako funkce odkazuje na konkrétní AI Overviews panel od Googlu.",
+    href: "/aio/",
+  },
+];
+
 const quartet: Quartet[] = [
   {
     d: "seo",
@@ -85,7 +133,7 @@ const quartet: Quartet[] = [
     </h1>
 
     <p class="lead hero__lead">
-      Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás ChatGPT zacituje, a jestli vás v roce 2026 najde někdo jiný než vy sami.
+      Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.
     </p>
 
     <div class="hero__pills">
@@ -104,28 +152,28 @@ const quartet: Quartet[] = [
     </figure>
   </section>
 
-  <!-- STAT BAR -->
-  <section class="stat-bar" aria-label="Český trh — statistiky 2026">
+  <!-- STAT BAR — proč to musíte řešit (e-shop / web owner pain points) -->
+  <section class="stat-bar" aria-label="Proč začít s AI SEO">
     <div class="stat-bar__inner">
       <div class="stat">
-        <div class="stat__num"><strong>+257&nbsp;%</strong></div>
-        <p class="stat__label">Meziroční růst hledanosti „ai overview" v ČR</p>
-        <p class="stat__src">Zdroj: Marketing Miner, jaro 2026</p>
+        <div class="stat__num"><strong>~30&nbsp;%</strong></div>
+        <p class="stat__label">Informačních dotazů v Googlu už dnes spouští AI Overview panel</p>
+        <p class="stat__src">Zero-click hrozba pro váš organic traffic</p>
       </div>
       <div class="stat">
-        <div class="stat__num"><strong>+645&nbsp;%</strong></div>
-        <p class="stat__label">Meziroční růst hledanosti „geo seo" v ČR</p>
-        <p class="stat__src">Zdroj: Marketing Miner, jaro 2026</p>
+        <div class="stat__num"><strong>~65&nbsp;%</strong></div>
+        <p class="stat__label">Mladších uživatelů začíná research v AI nástroji, ne v Googlu</p>
+        <p class="stat__src">ChatGPT, Perplexity, Claude, Gemini</p>
       </div>
       <div class="stat">
-        <div class="stat__num"><strong>59,4</strong>/100</div>
-        <p class="stat__label">Index Google Trends pro „ai overview" za 12 měsíců</p>
-        <p class="stat__src">Zdroj: Google Trends, ČR</p>
+        <div class="stat__num"><strong>~65&nbsp;%</strong></div>
+        <p class="stat__label">Vyhledávání končí bez kliknutí na zdroj (zero-click search)</p>
+        <p class="stat__src">Search ≠ traffic — pravidla se mění</p>
       </div>
       <div class="stat">
-        <div class="stat__num"><strong>3</strong>&thinsp;z&thinsp;5</div>
-        <p class="stat__label">Z pěti nejrostoucích dotazů jsou tři defenzivní</p>
-        <p class="stat__src">Zdroj: Google Trends, rostoucí dotazy</p>
+        <div class="stat__num"><strong>1–3&nbsp;měs.</strong></div>
+        <p class="stat__label">Typický horizont prvních citací po implementaci playbooku</p>
+        <p class="stat__src">Rychleji než klasické SEO</p>
       </div>
     </div>
   </section>
@@ -163,63 +211,159 @@ const quartet: Quartet[] = [
     </div>
   </section>
 
-  <!-- HUB-AND-SPOKE -->
-  <section class="hub-section">
-    <div class="hub-section__inner">
-      <div>
-        <span class="eyebrow"><span class="eyebrow__num">03</span> Jak je web postavený</span>
-        <h2 class="section__title hub-section__title">
-          Hlavní průvodce uprostřed, <span class="hl">šest sekcí</span> kolem něj.
+  <!-- ANATOMY (Phase 7 content tweak — místo hub-spoke ukazujeme ideální AI-friendly stránku) -->
+  <section class="anatomy-section">
+    <div class="anatomy-section__inner">
+      <header class="anatomy-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Anatomie AI-friendly stránky</span>
+        <h2 class="section__title anatomy-section__title">
+          Stránka, kterou si AI <span class="hl">snadno přečte</span> a zacituje, vypadá takto.
         </h2>
-        <p class="section__intro hub-section__intro">
-          Tento web sám je živý příklad struktury, kterou doporučujeme. Hlavní průvodce pokrývá celé téma na jednom místě. Šest navazujících sekcí se ponořuje do jedné disciplíny nebo do praxe. Vzájemné odkazy pomáhají v Googlu i v AI nástrojích.
+        <p class="section__intro anatomy-section__intro">
+          Šest prvků, které z běžné stránky udělají zdroj pro Google AI Overviews, ChatGPT i Perplexity. Žádný z nich nestojí extra peníze — jen je potřeba je tam vědomě dostat.
         </p>
+      </header>
+
+      <div class="anatomy-section__layout">
+        <svg
+          class="anatomy-svg"
+          viewBox="0 0 480 600"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Wireframe ideální AI-friendly stránky se šesti očíslovanými prvky: H1 jako otázka, krátká odpověď, hutný text, podnadpisy, FAQ a schema markup."
+        >
+          <!-- Page outline -->
+          <rect x="20" y="20" width="440" height="560" rx="14" fill="var(--color-paper)" stroke="var(--color-rule-strong)" stroke-width="1.2"></rect>
+
+          <!-- Browser bar (decorative) -->
+          <line x1="20" y1="60" x2="460" y2="60" stroke="var(--color-rule)" stroke-width="1"></line>
+          <circle cx="38" cy="40" r="3.5" fill="var(--color-rule-strong)"></circle>
+          <circle cx="50" cy="40" r="3.5" fill="var(--color-rule-strong)"></circle>
+          <circle cx="62" cy="40" r="3.5" fill="var(--color-rule-strong)"></circle>
+          <rect x="80" y="32" width="360" height="16" rx="8" fill="var(--color-paper-deep)"></rect>
+
+          <!-- ❶ H1 jako otázka -->
+          <rect x="40" y="86" width="380" height="30" rx="4" fill="var(--color-paper-deep)"></rect>
+          <text x="48" y="106" font-family="Geist, sans-serif" font-size="14" font-weight="600" fill="var(--color-ink)">H1: Co je AI SEO?</text>
+          <g class="anatomy-mark">
+            <circle cx="446" cy="101" r="14" fill="var(--color-accent)"></circle>
+            <text x="446" y="106" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">1</text>
+          </g>
+
+          <!-- ❷ Answer block -->
+          <rect x="40" y="132" width="380" height="80" rx="6" fill="oklch(0.96 0.022 250)" stroke="oklch(0.86 0.06 250)" stroke-width="1"></rect>
+          <rect x="40" y="132" width="3" height="80" fill="var(--color-accent)"></rect>
+          <text x="56" y="153" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="var(--color-accent)" letter-spacing="1">STRUČNÁ ODPOVĚĎ</text>
+          <rect x="56" y="162" width="340" height="8" rx="2" fill="var(--color-rule-strong)" opacity="0.55"></rect>
+          <rect x="56" y="176" width="320" height="8" rx="2" fill="var(--color-rule-strong)" opacity="0.55"></rect>
+          <rect x="56" y="190" width="280" height="8" rx="2" fill="var(--color-rule-strong)" opacity="0.55"></rect>
+          <g class="anatomy-mark">
+            <circle cx="446" cy="172" r="14" fill="var(--color-accent)"></circle>
+            <text x="446" y="177" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">2</text>
+          </g>
+
+          <!-- ❸ Body text s fakty -->
+          <rect x="40" y="232" width="380" height="6" rx="2" fill="var(--color-rule)"></rect>
+          <rect x="40" y="244" width="360" height="6" rx="2" fill="var(--color-rule)"></rect>
+          <rect x="40" y="256" width="380" height="6" rx="2" fill="var(--color-rule)"></rect>
+          <rect x="40" y="268" width="200" height="6" rx="2" fill="var(--color-rule)"></rect>
+          <!-- inline highlighted "fact" -->
+          <rect x="246" y="266" width="60" height="10" rx="2" fill="var(--color-accent)" opacity="0.18"></rect>
+          <g class="anatomy-mark">
+            <circle cx="446" cy="253" r="14" fill="var(--color-accent)"></circle>
+            <text x="446" y="258" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">3</text>
+          </g>
+
+          <!-- ❹ H2 sub-otázka -->
+          <text x="40" y="316" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-ink)">H2: Jak začít s GEO?</text>
+          <rect x="40" y="328" width="380" height="6" rx="2" fill="var(--color-rule)"></rect>
+          <rect x="40" y="340" width="340" height="6" rx="2" fill="var(--color-rule)"></rect>
+          <g class="anatomy-mark">
+            <circle cx="446" cy="316" r="14" fill="var(--color-accent)"></circle>
+            <text x="446" y="321" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">4</text>
+          </g>
+
+          <!-- ❺ FAQ -->
+          <rect x="40" y="370" width="380" height="120" rx="6" fill="var(--color-paper-deep)" stroke="var(--color-rule)" stroke-width="1"></rect>
+          <text x="56" y="392" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="var(--color-accent)" letter-spacing="1">FAQ</text>
+          <text x="56" y="412" font-family="Geist, sans-serif" font-size="11" font-weight="600" fill="var(--color-ink)">Q: Jak optimalizovat pro ChatGPT?</text>
+          <rect x="56" y="420" width="340" height="5" rx="2" fill="var(--color-rule)"></rect>
+          <rect x="56" y="430" width="320" height="5" rx="2" fill="var(--color-rule)"></rect>
+          <text x="56" y="456" font-family="Geist, sans-serif" font-size="11" font-weight="600" fill="var(--color-ink)">Q: Co je rozdíl SEO a GEO?</text>
+          <rect x="56" y="464" width="340" height="5" rx="2" fill="var(--color-rule)"></rect>
+          <rect x="56" y="474" width="280" height="5" rx="2" fill="var(--color-rule)"></rect>
+          <g class="anatomy-mark">
+            <circle cx="446" cy="430" r="14" fill="var(--color-accent)"></circle>
+            <text x="446" y="435" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">5</text>
+          </g>
+
+          <!-- ❻ Schema markup (footer area) -->
+          <rect x="40" y="510" width="380" height="48" rx="6" fill="var(--color-ink)"></rect>
+          <text x="56" y="532" font-family="JetBrains Mono, monospace" font-size="10" fill="oklch(0.78 0.13 145)">&lt;script type="application/ld+json"&gt;</text>
+          <text x="56" y="548" font-family="JetBrains Mono, monospace" font-size="10" fill="oklch(0.85 0.06 220)">"@type": "FAQPage", "mainEntity": [...]</text>
+          <g class="anatomy-mark">
+            <circle cx="446" cy="534" r="14" fill="var(--color-accent)"></circle>
+            <text x="446" y="539" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">6</text>
+          </g>
+        </svg>
+
+        <ol class="anatomy-list">
+          <li class="anatomy-item">
+            <span class="anatomy-item__num" aria-hidden="true">1</span>
+            <div class="anatomy-item__body">
+              <h3 class="anatomy-item__title">H1 jako otázka nebo jasná definice</h3>
+              <p class="anatomy-item__desc">
+                Hlavní nadpis jednou větou říká, na jaký dotaz stránka odpovídá. AI engine to čte jako kontext celé stránky.
+              </p>
+            </div>
+          </li>
+          <li class="anatomy-item">
+            <span class="anatomy-item__num" aria-hidden="true">2</span>
+            <div class="anatomy-item__body">
+              <h3 class="anatomy-item__title">Krátká odpověď v prvních 40–60 slovech</h3>
+              <p class="anatomy-item__desc">
+                Hned pod H1 stojí stručná definice. ChatGPT, Perplexity a Gemini si z ní vezmou citaci do své odpovědi.
+              </p>
+            </div>
+          </li>
+          <li class="anatomy-item">
+            <span class="anatomy-item__num" aria-hidden="true">3</span>
+            <div class="anatomy-item__body">
+              <h3 class="anatomy-item__title">Hutný text s konkrétními fakty</h3>
+              <p class="anatomy-item__desc">
+                Jeden nápad na odstavec. Čísla, procenta, jména zdrojů. AI miluje doložená tvrzení, ignoruje obecné „omáčky".
+              </p>
+            </div>
+          </li>
+          <li class="anatomy-item">
+            <span class="anatomy-item__num" aria-hidden="true">4</span>
+            <div class="anatomy-item__body">
+              <h3 class="anatomy-item__title">Podnadpisy H2/H3 jako sub-otázky</h3>
+              <p class="anatomy-item__desc">
+                Každý podnadpis odpovídá na konkrétní pod-dotaz. Pomáhá AI mapovat strukturu stránky a ukotvit ji k tématu.
+              </p>
+            </div>
+          </li>
+          <li class="anatomy-item">
+            <span class="anatomy-item__num" aria-hidden="true">5</span>
+            <div class="anatomy-item__body">
+              <h3 class="anatomy-item__title">FAQ sekce s reálnými dotazy uživatelů</h3>
+              <p class="anatomy-item__desc">
+                Otázky berte z Google Search Console nebo z „People Also Ask" boxů. FAQ je primární zdroj pro AI Overviews.
+              </p>
+            </div>
+          </li>
+          <li class="anatomy-item">
+            <span class="anatomy-item__num" aria-hidden="true">6</span>
+            <div class="anatomy-item__body">
+              <h3 class="anatomy-item__title">Schema.org markup v hlavičce stránky</h3>
+              <p class="anatomy-item__desc">
+                Strojově čitelný JSON-LD: <code>Article</code>, <code>FAQPage</code>, <code>HowTo</code>. Bez něj AI nepozná, co je co.
+              </p>
+            </div>
+          </li>
+        </ol>
       </div>
-
-      <svg class="hub-svg" viewBox="0 0 580 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hub-and-spoke diagram: hlavní průvodce uprostřed, šest sekcí kolem">
-        <g>
-          <line class="conn" x1="290" y1="290" x2="290" y2="80"></line>
-          <line class="conn" x1="290" y1="290" x2="495" y2="180"></line>
-          <line class="conn" x1="290" y1="290" x2="495" y2="400"></line>
-          <line class="conn" x1="290" y1="290" x2="290" y2="500"></line>
-          <line class="conn" x1="290" y1="290" x2="85" y2="400"></line>
-          <line class="conn" x1="290" y1="290" x2="85" y2="180"></line>
-        </g>
-
-        <g class="node node-pillar">
-          <rect x="212" y="234" width="156" height="112" rx="8" fill="var(--color-ink)"></rect>
-          <text x="290" y="280" font-family="Geist, sans-serif" font-size="11" font-weight="500" fill="var(--color-ink-faint)" text-anchor="middle">Hlavní</text>
-          <text x="290" y="294" font-family="Geist, sans-serif" font-size="11" font-weight="500" fill="var(--color-ink-faint)" text-anchor="middle">průvodce</text>
-          <text x="290" y="318" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">SEO · GEO · AEO · AIO</text>
-        </g>
-
-        <g class="node node-1">
-          <rect x="248" y="42" width="84" height="76" rx="10" fill="var(--color-seo-tint)" stroke="var(--color-seo)" stroke-width="1.2"></rect>
-          <text x="290" y="86" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-seo)" text-anchor="middle">SEO</text>
-        </g>
-        <g class="node node-2">
-          <rect x="453" y="142" width="84" height="76" rx="10" fill="var(--color-geo-tint)" stroke="var(--color-geo)" stroke-width="1.2"></rect>
-          <text x="495" y="186" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-geo)" text-anchor="middle">GEO</text>
-        </g>
-        <g class="node node-3">
-          <rect x="453" y="362" width="84" height="76" rx="10" fill="var(--color-aeo-tint)" stroke="var(--color-aeo)" stroke-width="1.2"></rect>
-          <text x="495" y="406" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-aeo)" text-anchor="middle">AEO</text>
-        </g>
-        <g class="node node-4">
-          <rect x="248" y="462" width="84" height="76" rx="10" fill="var(--color-aio-tint)" stroke="var(--color-aio)" stroke-width="1.2"></rect>
-          <text x="290" y="506" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="var(--color-aio)" text-anchor="middle">AIO</text>
-        </g>
-        <g class="node node-5">
-          <rect x="43" y="362" width="84" height="76" rx="10" fill="var(--color-paper-deep)" stroke="var(--color-accent)" stroke-width="1.2"></rect>
-          <text x="85" y="395" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">Praktický</text>
-          <text x="85" y="412" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">postup</text>
-        </g>
-        <g class="node node-6">
-          <rect x="43" y="142" width="84" height="76" rx="10" fill="var(--color-paper-deep)" stroke="oklch(0.4 0.06 200)" stroke-width="1.2"></rect>
-          <text x="85" y="175" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">Rozhodovací</text>
-          <text x="85" y="192" font-family="Geist, sans-serif" font-size="12" font-weight="500" fill="var(--color-ink)" text-anchor="middle">matice</text>
-        </g>
-      </svg>
     </div>
   </section>
 
@@ -250,7 +394,7 @@ const quartet: Quartet[] = [
     <aside class="pillar-promo__excerpt">
       <span class="pillar-promo__excerpt-mark">Z hlavního průvodce</span>
       <p class="pillar-promo__excerpt-text">
-        Většina českého trhu k dubnu 2026 tyto principy nedělá. Google v ČR pro „generative engine optimization" ukazuje top 10 výsledků pouze v <strong>angličtině</strong>, žádný český obsah. To je <strong>vzácná příležitost</strong> být první.
+        Když chce váš zákazník odpověď, ptá se ChatGPT, Perplexity nebo Googlu s AI Overview. Vy potřebujete, aby <strong>v té odpovědi</strong> zazněla vaše značka — a aby z ní vedla cesta zpět k vám. Průvodce ukáže, co konkrétně na webu nebo e-shopu upravit.
       </p>
     </aside>
   </section>
@@ -684,60 +828,129 @@ const quartet: Quartet[] = [
   }
   .qcard:hover .qcard__cta { gap: 0.875rem; }
 
-  /* ===== HUB AND SPOKE ===== */
-  .hub-section {
+  /* ===== ANATOMY (sekce 03 — ideální AI-friendly stránka) ===== */
+  .anatomy-section {
     background: var(--color-paper-deep);
     border-top: 1px solid var(--color-rule);
     border-bottom: 1px solid var(--color-rule);
   }
-  .hub-section__inner {
+  .anatomy-section__inner {
     max-width: 80rem;
     margin: 0 auto;
     padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 4vw, 4rem);
+  }
+  .anatomy-section__head {
+    max-width: 50rem;
+    margin: 0 auto clamp(3rem, 5vw, 4rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .anatomy-section__title {
+    margin-top: 0;
+    max-width: 24ch;
+  }
+  .anatomy-section__intro { max-width: 42rem; }
+
+  .anatomy-section__layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
+    gap: clamp(2.5rem, 4vw, 4rem);
+    align-items: start;
   }
   @media (min-width: 1024px) {
-    .hub-section__inner { grid-template-columns: 1fr 1.2fr; }
+    .anatomy-section__layout {
+      grid-template-columns: minmax(0, 480px) 1fr;
+      gap: clamp(2.5rem, 4vw, 4rem);
+    }
   }
-  .hub-section__title { margin-top: 1.25rem; }
-  .hub-section__intro { margin-top: 1.5rem; }
 
-  .hub-svg {
+  .anatomy-svg {
     width: 100%;
     height: auto;
-    max-width: 580px;
+    max-width: 480px;
     margin: 0 auto;
+    filter: drop-shadow(0 12px 32px oklch(0.22 0.012 260 / 0.06));
   }
-  @keyframes draw {
-    from { stroke-dashoffset: 320; }
-    to { stroke-dashoffset: 0; }
-  }
-  @keyframes fadein {
-    from { opacity: 0; transform: scale(0.94); }
+  @keyframes anatomy-mark-in {
+    from { opacity: 0; transform: scale(0.7); }
     to { opacity: 1; transform: scale(1); }
   }
-  .hub-svg .conn {
-    stroke: var(--color-rule-strong);
-    stroke-width: 1;
-    fill: none;
-    stroke-dasharray: 320;
-    animation: draw 1.2s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
-  }
-  .hub-svg .node {
+  .anatomy-svg .anatomy-mark {
     transform-origin: center;
     transform-box: fill-box;
-    animation: fadein 0.5s backwards;
+    animation: anatomy-mark-in 0.5s backwards cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  .hub-svg .node-pillar { animation-delay: 0.15s; }
-  .hub-svg .node-1 { animation-delay: 1.0s; }
-  .hub-svg .node-2 { animation-delay: 1.1s; }
-  .hub-svg .node-3 { animation-delay: 1.2s; }
-  .hub-svg .node-4 { animation-delay: 1.3s; }
-  .hub-svg .node-5 { animation-delay: 1.4s; }
-  .hub-svg .node-6 { animation-delay: 1.5s; }
+  .anatomy-svg .anatomy-mark:nth-of-type(1) { animation-delay: 0.2s; }
+  .anatomy-svg .anatomy-mark:nth-of-type(2) { animation-delay: 0.32s; }
+  .anatomy-svg .anatomy-mark:nth-of-type(3) { animation-delay: 0.44s; }
+  .anatomy-svg .anatomy-mark:nth-of-type(4) { animation-delay: 0.56s; }
+  .anatomy-svg .anatomy-mark:nth-of-type(5) { animation-delay: 0.68s; }
+  .anatomy-svg .anatomy-mark:nth-of-type(6) { animation-delay: 0.80s; }
+
+  .anatomy-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    counter-reset: anatomy;
+  }
+  .anatomy-item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .anatomy-item:hover {
+    border-color: var(--color-accent);
+    transform: translateX(2px);
+  }
+  .anatomy-item__num {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+  }
+  .anatomy-item__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+    letter-spacing: -0.012em;
+    margin: 0 0 0.25rem;
+    color: var(--color-ink);
+  }
+  .anatomy-item__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .anatomy-item__desc code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--color-paper-deep);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    color: var(--color-ink);
+  }
 
   /* ===== PILLAR PROMO ===== */
   .pillar-promo {

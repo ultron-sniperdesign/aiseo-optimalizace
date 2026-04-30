@@ -32,7 +32,7 @@ faq:
 
 Ještě v roce 2023 stačilo říct „SEO" a všichni věděli, o co jde — optimalizace stránek pro pozice v Googlu, Seznamu nebo Bingu. Pak přišel ChatGPT, Google AI Overviews, Perplexity, Claude a generativní vyhledávání. A s nimi tři nové zkratky: **GEO, AEO a AIO**.
 
-Český trh začíná tyto pojmy reflektovat až teď. Podle dat z Marketing Mineru má v ČR fráze „ai overview" měsíční hledanost 150, meziročně **+257 %**, a „geo seo" 70 hledání s **+645 %** YoY. Google Trends ukazují, že zájem v ČR je koncentrovaný v Praze a v Brně — typicky tam, kde sídlí marketingové agentury a in-house SEO týmy.
+Český trh začíná tyto pojmy reflektovat až teď. Pro provozovatele webu nebo e-shopu to znamená dvě věci: (1) **váš zákazník** se už dnes ptá ChatGPT, Perplexity nebo Googlu s AI Overview místo klasického „desítka modrých odkazů", a (2) **váš web** musí být přizpůsobený tak, aby z těchto odpovědí vedla cesta zpět k vám.
 
 Problém je, že **pojmy se v textech navzájem prolínají**. Jeden článek mluví o GEO jako o „optimalizaci pro generativní AI", druhý o AEO ve stejném smyslu, třetí používá AIO jako synonymum pro AI Overviews. V tomto průvodci je rozeberu jednotlivě a v reálných příkladech, abyste si po jeho přečtení dokázali sami říct, kterou disciplínu kde použít.
 
@@ -92,7 +92,7 @@ AEO je **užší pojem než GEO**. Zatímco GEO řeší citace v jakémkoli gene
 4. **Datově hutný obsah** — čísla, procenta, konkrétní hodnoty (AI miluje fakta)
 5. **Strukturované odstavce** — jeden nápad na odstavec, žádné „omáčky"
 
-Z dat Marketing Mineru víme, že na CZ trhu má reálnou viditelnost v Google AI Overviews v dubnu 2026 jen několik domén. Mezi nimi **interval.cz, marketingppc.cz, seoprakticky.cz**. A interval.cz si touto strategií **zdvojnásobil organic traffic za rok** — z 1 844 návštěv v dubnu 2025 na 4 363 v dubnu 2026 (+137 %).
+Pro většinu webů a e-shopů znamená dobrý AEO **měřitelný posun během tří měsíců**: vaše FAQ se začnou objevovat ve výsledcích, vaše krátké definice citují AI engines a brand se zmiňuje v odpovědích, kde dřív nezazněl. Není to magie — je to disciplína, kterou jde aplikovat na každý web s reálnými zákaznickými otázkami.
 
 → Hlubší ponor do AEO (FAQPage schema, HowTo, krátké odpovědi po H2) v sekci [AEO — Answer Engine Optimization](/aeo/).
 
@@ -227,7 +227,7 @@ Co měřit:
 | Brand mention v ChatGPT | nástroje jako Otterly, Profound | měsíčně |
 | Citation share v Perplexity | manuální audit nebo Profound | měsíčně |
 
-V Marketing Miner API endpoint `website_stats` vrací atribut `ai_overviews` s počtem klíčových slov, na kterých se vaše doména v AIO objevuje. To je nejjednodušší a v ČR dostupný způsob, jak AIO presence sledovat.
+Pro průběžné měření stačí jednou měsíčně manuálně otestovat top 10 vašich klíčových slov v Googlu a zapsat, kde se objevil AI Overview panel a jestli z něj vede odkaz na váš web. Profesionálnější tracking řeší dedikované AIO/GEO nástroje, ale ze začátku stačí jednoduchá tabulka v Excelu.
 
 → Krok-za-krokem checklist + měřicí rámec v sekci [Praktický postup](/prakticky-postup/).
 
@@ -262,7 +262,7 @@ Pokud jste dočetli až sem, máte přehled o všech 4 zkratkách. Co teď s tí
 3. **Tento kvartál:** Zaveďte měření AI citation share — minimálně manuální Google search pro top 10 vašich KW jednou měsíčně. Pokud máte rozpočet, zvažte nástroj Otterly nebo Profound.
 4. **Long-term:** Rozhodněte se, jestli AIO presence je pro vaši firmu **win nebo loss**. Pokud máte dlouhé edu průvodce, zvažte selektivní `nosnippet` meta tag. Pokud máte krátké news/recenze, AIO vás bude tahat nahoru.
 
-Zatím **většina českého trhu tyto principy nedělá** — Google CZ pro „generative engine optimization" v dubnu 2026 ukazuje top 10 výsledků pouze v angličtině, žádný český obsah. To je vzácná příležitost být první.
+Pokud váháte, kterou disciplínu řešit jako první, nebo nechcete to celé řešit interně, ozvěte se nám do **[Sniperdesign.cz](https://www.sniperdesign.cz/)** — pomáháme webům a e-shopům s AI SEO od auditu obsahu po nasazení strukturovaných dat a měření.
 
 ## Zdroje a další čtení
 

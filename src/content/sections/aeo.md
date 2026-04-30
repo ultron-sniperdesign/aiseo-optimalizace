@@ -14,7 +14,7 @@ faq:
   - q: "Jaký je rozdíl mezi AEO a Featured Snippets?"
     a: "Featured Snippets (klasická 'pozice 0') je předchůdce AEO — Google už 10 let extrahuje krátké odpovědi z webu. AI Overviews je nová generace: místo 1 zdroje agreguje fakta z 3–5 zdrojů a generuje vlastní text. AEO obě platformy řeší společně."
   - q: "Jak měřit AEO výkon?"
-    a: "Google Search Console → Performance → Search Appearance pro Featured Snippets a FAQ rich snippets. Pro AI Overviews zatím nemá GSC dedikovanou metriku — sleduje se manuálně přes top 10 KW search nebo přes Marketing Miner endpoint website_stats (atribut ai_overviews)."
+    a: "Google Search Console → Performance → Search Appearance pro Featured Snippets a FAQ rich snippets. Pro AI Overviews zatím nemá GSC dedikovanou metriku — sleduje se manuálně přes top 10 KW search, případně přes specializované AIO/GEO trackery."
   - q: "Funguje AEO pro Bing/Copilot stejně jako pro Google?"
     a: "Hlavní principy ano — FAQ schema, krátké odpovědi, fact-density. Bing Chat/Copilot ale táhne i z BING-specific signálů: Bing Webmaster Tools sitemap, IndexNow protocol pro instantní indexaci. Pro CZ trh je Bing minoritní (méně než 5 % share), takže priorita je Google AIO."
 ---
@@ -99,7 +99,7 @@ Tento web má v každé sekci **answer block** (tučný 40–60 slov rámeček n
 
 ### 4. Datově hutný obsah
 
-- ✅ „Marketing Miner ukazuje, že AIO presence v ČR roste meziročně o +257 % na 150 hledání/měs."
+- ✅ „Google AI Overview se v ČR zobrazuje pro ~30 % informačních dotazů a snižuje organic CTR o 35–60 %."
 - ❌ „AIO je čím dál důležitější."
 
 První věta je AI-friendly. Druhá je marketingová vata.
@@ -108,17 +108,17 @@ První věta je AI-friendly. Druhá je marketingová vata.
 
 Jeden nápad na odstavec. Žádné „omáčky" ani „proudové" psaní.
 
-## CZ trh — kdo už AEO dělá
+## AIO presence není automaticky výhra
 
-Z dat Marketing Mineru víme, že na CZ trhu má reálnou viditelnost v Google AI Overviews v dubnu 2026 jen několik domén:
+Důležitý insight, na který se v běžných AEO návodech zapomíná: **objevit se v AI Overview neznamená nutně víc trafficu.** Zero-click search je reálné riziko — uživatel dostane odpověď přímo v Googlu a na váš web už nepřijde.
 
-| Doména | AIO presence | Organic dopad |
+| Typ obsahu | AIO presence typicky | Dopad na traffic |
 |---|---|---|
-| **interval.cz** | vysoká | **+137 % YoY** (1 844 → 4 363 návštěv duben 2025 → duben 2026) |
-| **marketingppc.cz** | vysoká | **−56 %** (46k → 20k mezi 7/2025 a 9/2025 — AIO sebrala kliky u dlouhých how-to) |
-| **seoprakticky.cz** | střední | rostoucí |
+| **Krátké news / edu definice** | vysoká | pozitivní (brand exposure → kliky pro hlubší kontext) |
+| **Dlouhé how-to průvodce** | vysoká | negativní (uživatel si vystačí s extraktem v AIO) |
+| **Transakční / produktové stránky** | nízká | bez dopadu |
 
-**Klíčový insight:** AIO presence **není automaticky win**. Krátké news/edu články profitují, dlouhé how-to průvodce trpí (zero-click search). Detail v sekci [Rozhodovací matice](/rozhodovaci-matice/).
+**Z toho plyne pravidlo pro AEO:** krátký edu obsah a FAQ optimalizujte pro AIO citaci, dlouhé průvodce zvažte selektivně — někdy je strategicky lepší část obsahu z AIO **vyřadit**. Detail v sekci [Rozhodovací matice](/rozhodovaci-matice/).
 
 ## Praktický postup AEO
 
@@ -145,7 +145,7 @@ Pro každý návodový článek (kategorie „jak udělat X") přidejte `HowTo` 
 
 Google Search Console → Performance → Queries. Vyfiltrujte dotazy s impressions ale CTR < 5 % — to jsou kandidáti na AEO optimalizaci. Přidejte tyto dotazy jako FAQ otázky na cílových stránkách.
 
-### Krok 5 — Měření přes GSC + Marketing Miner
+### Krok 5 — Měření přes GSC + manuální AIO check
 
 V GSC sledujte:
 
@@ -153,7 +153,7 @@ V GSC sledujte:
 - **Performance** → Featured Snippets impressions
 - **Coverage** → indexovatelnost
 
-V Marketing Miner endpoint `website_stats` má atribut `ai_overviews` s počtem KW v AIO. **Nejjednodušší AIO tracker pro CZ trh.**
+Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 vašich klíčových slov v Googlu a zapsat do tabulky, kde se objevil AI Overview a jestli z něj vede odkaz na váš web. Pokud chcete profesionální tracking, dají se použít specializované AIO/GEO nástroje (Otterly, Profound a další), ale pro většinu webů ze začátku stačí ta tabulka.
 
 ## Časté chyby v AEO
 
