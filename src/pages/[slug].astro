@@ -100,7 +100,7 @@ const heroStyle = `--d: ${c.d}; --d-tint: ${c.tint}; --d-soft: ${c.soft};`;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd}>
-  <div class="page" style={heroStyle}>
+  <div class="page" data-abbr={entry.data.abbr} style={heroStyle}>
     <!-- HERO -->
     <section class="d-hero">
       <nav class="d-hero__crumbs" aria-label="Drobečková navigace">
@@ -717,4 +717,86 @@ const heroStyle = `--d: ${c.d}; --d-tint: ${c.tint}; --d-soft: ${c.soft};`;
     transition: gap 0.25s ease;
   }
   .rcard:hover .rcard__cta { gap: 0.75rem; }
+
+  /* ===== PHASE 5 — PER-PAGE ENRICHMENT ===== */
+
+  /**
+   * PRAXE (/prakticky-postup/) — timeline treatment.
+   * H2 dostávají kruhové badge + vertikální connector mezi nimi (čára pod číslem).
+   * H3 (sub-kroky) dostávají větší kruhové numbered badges.
+   * Celkový dojem: krok-za-krokem návod, ne jen seznam.
+   */
+  .page[data-abbr="PRAXE"] .article__prose :global(h2) {
+    counter-increment: praxe-step;
+    position: relative;
+    padding-left: 4.5rem;
+    margin-top: 4rem;
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .page[data-abbr="PRAXE"] .article__prose {
+    counter-reset: praxe-step;
+  }
+  .page[data-abbr="PRAXE"] .article__prose :global(h2)::before {
+    content: counter(praxe-step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background: var(--d);
+    color: var(--color-paper);
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 6px var(--d-tint);
+  }
+  .page[data-abbr="PRAXE"] .article__prose :global(h2:not(:last-of-type))::after {
+    content: "";
+    position: absolute;
+    left: 1.6rem;
+    top: 3.75rem;
+    bottom: -2rem;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--d-soft), transparent);
+    z-index: -1;
+  }
+  /* Lead paragraph po PRAXE H2 — větší padding-left aby seděl s timeline */
+  .page[data-abbr="PRAXE"] .article__prose :global(h2 + p) {
+    margin-left: 4.5rem;
+  }
+
+  /**
+   * MATICE (/rozhodovaci-matice/) — persona comparison styling.
+   * Tabulky dostávají alternating row background + větší padding.
+   * H3 (jednotlivé persona kategorie) dostávají subtle "card" treatment.
+   */
+  .page[data-abbr="MATICE"] .article__prose :global(table) {
+    box-shadow: 0 4px 12px oklch(0.22 0.012 260 / 0.04);
+  }
+  .page[data-abbr="MATICE"] .article__prose :global(tbody tr:nth-child(even)) {
+    background: var(--color-paper-deep);
+  }
+  .page[data-abbr="MATICE"] .article__prose :global(td) {
+    padding: 1rem 1.25rem;
+  }
+  .page[data-abbr="MATICE"] .article__prose :global(th) {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.825rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  /* H3 persona „cards" — left border + slight indent */
+  .page[data-abbr="MATICE"] .article__prose :global(h3) {
+    padding: 0.625rem 0 0.625rem 1.25rem;
+    border-left: 3px solid var(--d);
+    background: linear-gradient(to right, var(--d-tint), transparent 40%);
+    border-radius: 0 4px 4px 0;
+    margin-top: 2.75rem;
+  }
 </style>
