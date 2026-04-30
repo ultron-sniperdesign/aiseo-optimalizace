@@ -17,6 +17,8 @@ faq:
     a: "Google Search Console → Performance → Search Appearance pro Featured Snippets a FAQ rich snippets. Pro AI Overviews zatím nemá GSC dedikovanou metriku — sleduje se manuálně přes top 10 KW search, případně přes specializované AIO/GEO trackery."
   - q: "Funguje AEO pro Bing/Copilot stejně jako pro Google?"
     a: "Hlavní principy ano — FAQ schema, krátké odpovědi, fact-density. Bing Chat/Copilot ale táhne i z BING-specific signálů: Bing Webmaster Tools sitemap, IndexNow protocol pro instantní indexaci. Pro CZ trh je Bing minoritní (méně než 5 % share), takže priorita je Google AIO."
+  - q: "Jaký je rozdíl mezi AI Overview a AI Overviews?"
+    a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma."
 ---
 
 ## Co je AEO
@@ -24,6 +26,8 @@ faq:
 **AEO (Answer Engine Optimization) je optimalizace obsahu tak, aby byl použit jako přímá odpověď v „answer engines" — Google AI Overviews, Bing Chat, Google Featured Snippets.**
 
 AEO je **užší pojem než [GEO](/geo/)**. Zatímco GEO řeší citace v jakémkoli generativním AI (včetně ChatGPT, který Google nevyhledává), AEO se soustředí specificky na **answer engines napojené na vyhledávač**: typicky Google AI Overviews (dříve SGE — Search Generative Experience) a Bing Chat.
+
+> **AI Overview vs. AI Overviews:** Google používá množné číslo **„AI Overviews"** jako oficiální název funkce, protože jeden výsledek dotazu typicky obsahuje více dílčích odpovědí a více citací zdrojů. V češtině se však běžně objevuje i singulár **„AI Overview"** — když mluvíme o jednom konkrétním panelu nad výsledky vyhledávání. **Jde o totéž** a v tomto textu používáme oba tvary jako synonyma.
 
 Pro většinu CZ webů má AEO **větší přímý dopad na traffic** než GEO — Google AI Overviews čte v roce 2026 mnohem víc Čechů než ChatGPT/Perplexity dohromady. AEO je tedy **prioritní investice** pro publishers, content marketers a B2C brandy, kteří chtějí přežít zero-click éru.
 

@@ -77,6 +77,8 @@ Když uživatel zadá ChatGPT dotaz „jaké jsou nejlepší AI nástroje pro SE
 
 AEO je **užší pojem než GEO**. Zatímco GEO řeší citace v jakémkoli generativním AI (včetně ChatGPT, který Google nevyhledává), AEO se soustředí specificky na **answer engines napojené na vyhledávač**: typicky Google AI Overviews (dříve SGE — Search Generative Experience) a Bing Chat.
 
+> **Poznámka k terminologii:** Google sám funkci nazývá **AI Overviews** (množné číslo), protože jeden výsledek dotazu obvykle obsahuje více dílčích odpovědí a více zdrojových citací. V češtině se ujímá i singulár **„AI Overview"** — typicky když mluvíme o jednom konkrétním panelu nad výsledky. V tomto průvodci používáme oba tvary jako synonyma.
+
 ### Klíčové platformy pro AEO
 
 - **Google AI Overviews** — souhrn nahoře nad organickými výsledky, generovaný Geminim
