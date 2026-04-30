@@ -195,7 +195,7 @@ const quartet: Quartet[] = [
         src="/og/hero-1600.png"
         srcset="/og/hero-800.png 800w, /og/hero-1600.png 1600w"
         sizes="(max-width: 800px) 100vw, 1600px"
-        alt="Vlevo Google výsledky vyhledávání, uprostřed proud citací a faktů, vpravo AI chat panely se zdroji — vizualizace přechodu od pozic ke zmínkám v AI odpovědích."
+        alt="Vlevo tmavý web s viditelnou FAQ a strukturovanými daty, AI engine ho skenuje a vyzobává citace, FAQ odpovědi a fakta, která vpravo redistribuuje do tří AI nástrojů — Google AI Overview, ChatGPT a Perplexity."
         width="1600"
         height="893"
         loading="eager"
@@ -856,11 +856,13 @@ const quartet: Quartet[] = [
     background-size: 24px 24px;
     pointer-events: none;
   }
-  /* Naplněná varianta — schová placeholder borders/grid, dá obrázku celý slot. */
+  /* Naplněná varianta — schová placeholder borders/grid, dá obrázku celý slot.
+   * Žádný outer border ani background — obrázek má vlastní přirozené okraje. */
   .hero-media__frame--filled {
     aspect-ratio: 16 / 9;
     background: transparent;
-    border: 1px solid var(--color-rule);
+    border: none;
+    border-radius: 0;
   }
   .hero-media__frame--filled::before { display: none; }
   .hero-media__frame--filled img {
