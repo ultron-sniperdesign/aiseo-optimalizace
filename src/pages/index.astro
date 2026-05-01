@@ -1986,19 +1986,42 @@ const quartet: Quartet[] = [
     src: url("/sniperdesign/fonts/KumbhSans-Bold.woff2") format("woff2");
   }
 
+  /* Sniperdesign brand palette — sekce 06 inspirovaná sniperdesign.cz:
+   * deep violet base, magenta highlights, gold/yellow CTA. */
   .agency-cta {
     --font-agency: "Kumbh Sans", var(--font-sans);
+    --sd-deep: oklch(0.22 0.13 305);          /* dark violet base */
+    --sd-deeper: oklch(0.16 0.11 305);        /* deeper violet (gradient stop) */
+    --sd-violet: oklch(0.55 0.25 305);         /* brand violet */
+    --sd-magenta: oklch(0.62 0.27 335);        /* bright magenta */
+    --sd-gold: oklch(0.82 0.16 80);            /* signature gold/yellow */
+    --sd-gold-deep: oklch(0.7 0.18 60);        /* gold gradient deep stop */
+    --sd-paper: oklch(0.985 0.004 250);        /* paper for text on dark */
     max-width: 80rem;
     margin: 0 auto;
     padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 4rem) clamp(5rem, 9vw, 8rem);
   }
   .agency-cta__inner {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    background:
+      radial-gradient(ellipse 70% 60% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 30%, transparent), transparent 60%),
+      radial-gradient(ellipse 80% 70% at -10% 100%, color-mix(in oklch, var(--sd-violet) 32%, transparent), transparent 60%),
+      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    color: var(--sd-paper);
     border-radius: 14px;
     padding: clamp(2.25rem, 4.5vw, 4rem) clamp(1.75rem, 4vw, 3.5rem);
     position: relative;
     overflow: hidden;
+  }
+  .agency-cta__inner::after {
+    /* jemná diagonální gradient spodní stužka — Sniperdesign signature */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    pointer-events: none;
   }
   .agency-cta__brand {
     display: inline-block;
@@ -2013,28 +2036,16 @@ const quartet: Quartet[] = [
     width: auto;
     display: block;
   }
-  /* subtle accent corner */
-  .agency-cta__inner::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    background: radial-gradient(
-      ellipse 60% 50% at 100% 0%,
-      color-mix(in oklch, var(--color-accent) 22%, transparent),
-      transparent 70%
-    );
-    pointer-events: none;
-  }
   .agency-cta__head {
     margin-bottom: clamp(2rem, 4vw, 3rem);
     max-width: 48rem;
     position: relative;
   }
   .agency-cta__head .eyebrow {
-    color: color-mix(in oklch, var(--color-paper) 60%, transparent);
+    color: color-mix(in oklch, var(--sd-paper) 65%, transparent);
   }
   .agency-cta__head .eyebrow__num {
-    color: var(--color-paper);
+    color: var(--sd-magenta);
   }
   .agency-cta__title {
     font-family: var(--font-agency);
@@ -2043,26 +2054,30 @@ const quartet: Quartet[] = [
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin: 0.75rem 0 1rem;
-    color: var(--color-paper);
+    color: var(--sd-paper);
   }
   .agency-cta__title strong {
     font-weight: 700;
-    color: var(--color-accent);
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
   .agency-cta__lead {
     font-family: var(--font-agency);
     font-size: clamp(1rem, 1.4vw, 1.125rem);
     font-weight: 400;
     line-height: 1.6;
-    color: color-mix(in oklch, var(--color-paper) 78%, transparent);
+    color: color-mix(in oklch, var(--sd-paper) 80%, transparent);
     margin: 0;
   }
   .agency-cta__lead strong {
-    color: var(--color-paper);
+    color: var(--sd-paper);
     font-weight: 700;
   }
   .agency-cta__lead a {
-    color: var(--color-accent);
+    color: var(--sd-magenta);
     text-decoration: none;
     border-bottom: 1px solid currentColor;
     padding-bottom: 1px;
@@ -2080,7 +2095,7 @@ const quartet: Quartet[] = [
     font-family: var(--font-agency);
     font-size: 0.875rem;
     font-weight: 400;
-    color: color-mix(in oklch, var(--color-paper) 70%, transparent);
+    color: color-mix(in oklch, var(--sd-paper) 72%, transparent);
   }
   .agency-cta__trust li {
     display: inline-flex;
@@ -2090,14 +2105,14 @@ const quartet: Quartet[] = [
   }
   .agency-cta__trust li::before {
     content: "";
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: var(--color-accent);
+    background: linear-gradient(135deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
     flex-shrink: 0;
   }
   .agency-cta__trust strong {
-    color: var(--color-paper);
+    color: var(--sd-paper);
     font-weight: 700;
   }
 
@@ -2120,29 +2135,48 @@ const quartet: Quartet[] = [
   }
   .agency-benefit {
     padding: 1.5rem 1.25rem 1.25rem 1.5rem;
-    background: color-mix(in oklch, var(--color-paper) 5%, transparent);
-    border: 1px solid color-mix(in oklch, var(--color-paper) 12%, transparent);
+    background: color-mix(in oklch, var(--sd-paper) 6%, transparent);
+    border: 1px solid color-mix(in oklch, var(--sd-paper) 14%, transparent);
     border-radius: 10px;
     transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .agency-benefit::before {
+    /* drobná violet→magenta čárka při hover */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
   }
   .agency-benefit:hover {
-    background: color-mix(in oklch, var(--color-paper) 8%, transparent);
-    border-color: color-mix(in oklch, var(--color-accent) 50%, transparent);
+    background: color-mix(in oklch, var(--sd-paper) 10%, transparent);
+    border-color: color-mix(in oklch, var(--sd-magenta) 50%, transparent);
     transform: translateY(-2px);
   }
+  .agency-benefit:hover::before { opacity: 1; }
   .agency-benefit:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--sd-magenta);
     outline-offset: 2px;
   }
   .agency-benefit__num {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.08em;
-    color: var(--color-accent);
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     display: block;
     margin-bottom: 0.875rem;
   }
@@ -2151,7 +2185,7 @@ const quartet: Quartet[] = [
     font-size: 1.0625rem;
     font-weight: 700;
     letter-spacing: -0.005em;
-    color: var(--color-paper);
+    color: var(--sd-paper);
     margin: 0 0 0.5rem;
   }
   .agency-benefit__desc {
@@ -2159,17 +2193,17 @@ const quartet: Quartet[] = [
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.55;
-    color: color-mix(in oklch, var(--color-paper) 70%, transparent);
+    color: color-mix(in oklch, var(--sd-paper) 72%, transparent);
     margin: 0 0 0.875rem;
     flex: 1;
   }
   .agency-benefit__meta {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.02em;
-    color: color-mix(in oklch, var(--color-accent) 90%, var(--color-paper));
-    border-top: 1px solid color-mix(in oklch, var(--color-paper) 12%, transparent);
+    color: var(--sd-gold);
+    border-top: 1px solid color-mix(in oklch, var(--sd-paper) 14%, transparent);
     padding-top: 0.75rem;
     display: block;
   }
@@ -2180,24 +2214,29 @@ const quartet: Quartet[] = [
     gap: 0.75rem;
     position: relative;
   }
+  /* Solid CTA — Sniperdesign signature gold gradient */
   .btn--solid {
-    background: var(--color-accent);
-    color: var(--color-ink);
+    background: linear-gradient(135deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
+    color: oklch(0.18 0.06 60);
+    font-weight: 600;
+    box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--sd-gold) 60%, transparent);
   }
   .btn--solid:hover {
-    background: var(--color-paper);
-    color: var(--color-ink);
+    background: linear-gradient(135deg, var(--sd-gold-deep) 0%, var(--sd-gold) 100%);
+    color: oklch(0.15 0.06 60);
     transform: translateX(2px);
+    box-shadow: 0 6px 20px -4px color-mix(in oklch, var(--sd-gold) 75%, transparent);
   }
+  /* Ghost CTA — magenta border */
   .btn--ghost {
     background: transparent;
-    color: var(--color-paper);
-    border: 1px solid color-mix(in oklch, var(--color-paper) 25%, transparent);
+    color: var(--sd-paper);
+    border: 1px solid color-mix(in oklch, var(--sd-magenta) 50%, transparent);
   }
   .btn--ghost:hover {
-    background: color-mix(in oklch, var(--color-paper) 8%, transparent);
-    border-color: color-mix(in oklch, var(--color-paper) 50%, transparent);
-    color: var(--color-paper);
+    background: color-mix(in oklch, var(--sd-magenta) 12%, transparent);
+    border-color: var(--sd-magenta);
+    color: var(--sd-paper);
     transform: translateX(2px);
   }
 </style>
