@@ -1108,14 +1108,14 @@ const quartet: Quartet[] = [
   .result__url {
     font-family: var(--font-sans);
     font-size: 0.72rem;
-    color: var(--color-ink-muted);
+    color: oklch(0.38 0.012 260); /* tmavší než ink-muted, AA pass na paper */
   }
   .result__title {
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.25;
-    color: oklch(0.42 0.16 264); /* link blue */
+    color: oklch(0.36 0.18 264); /* tmavší link blue, AA pass */
     margin: 0;
   }
   .result__desc {
