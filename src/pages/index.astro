@@ -188,28 +188,130 @@ const quartet: Quartet[] = [
     </div>
   </section>
 
-  <!-- HERO MEDIA — vizuální narativ: Google search → AI citations -->
-  <section class="hero-media" aria-label="Vizualizace: AI éra mění vyhledávání ze seznamu odkazů na citace">
-    <figure class="hero-media__frame hero-media__frame--filled">
-      <picture>
-        <source
-          type="image/webp"
-          srcset="/og/hero-800.webp 800w, /og/hero-1600.webp 1600w"
-          sizes="(max-width: 800px) 100vw, 1600px"
-        />
-        <img
-          src="/og/hero-1600.png"
-          srcset="/og/hero-800.png 800w, /og/hero-1600.png 1600w"
-          sizes="(max-width: 800px) 100vw, 1600px"
-          alt="Vlevo tmavý web s viditelnou FAQ a strukturovanými daty, AI engine ho skenuje a vyzobává citace, FAQ odpovědi a fakta, která vpravo redistribuuje do tří AI nástrojů — Google AI Overview, ChatGPT a Perplexity."
-          width="1600"
-          height="893"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </picture>
-    </figure>
+  <!-- HERO TRIO — stejný dotaz, tři rozhraní. Reálné HTML mockupy místo dekorativního obrázku. -->
+  <section class="trio" aria-labelledby="trio-title">
+    <header class="trio__head">
+      <span class="eyebrow"><span class="eyebrow__num">→</span> Stejný dotaz, tři rozhraní</span>
+      <h2 id="trio-title" class="trio__title">
+        Co dostane uživatel, když se dnes ptá <strong>„jak připravit web pro AI vyhledávání"</strong>?
+      </h2>
+    </header>
+
+    <div class="trio__grid">
+      <!-- Panel 1: Klasický Google -->
+      <article class="tpanel" data-tone="google" aria-label="Klasické Google vyhledávání">
+        <header class="tpanel__chrome">
+          <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="tpanel__brand">
+            <span class="g g--b">G</span><span class="g g--r">o</span><span class="g g--y">o</span><span class="g g--b">g</span><span class="g g--g">l</span><span class="g g--r">e</span>
+          </span>
+        </header>
+        <div class="tpanel__bar">
+          <span class="tpanel__bar-icon" aria-hidden="true">⌕</span>
+          <span class="tpanel__bar-q">jak připravit web pro AI vyhledávání</span>
+        </div>
+        <div class="tpanel__body">
+          <article class="result">
+            <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
+            <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4&nbsp;zkratkami…</h3>
+            <p class="result__desc">Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže a jestli vás zacitují AI nástroje…</p>
+          </article>
+          <article class="result">
+            <span class="result__url">aiseo-optimalizace.cz › prakticky-postup</span>
+            <h3 class="result__title">Praktický postup ve čtyřech krocích — audit, schema, měření</h3>
+            <p class="result__desc">Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.</p>
+          </article>
+          <article class="result">
+            <span class="result__url">aiseo-optimalizace.cz › aeo</span>
+            <h3 class="result__title">AEO — Answer Engine Optimization (Google AI Overviews…)</h3>
+            <p class="result__desc">FAQ schema, krátké odpovědi 40–60 slov, Product schema. Jak se dostat do AI Overview citací…</p>
+          </article>
+        </div>
+        <footer class="tpanel__foot">
+          <span class="tpanel__foot-key">Co uživatel dostane:</span>
+          <span class="tpanel__foot-val">Seznam odkazů. Klikne, čte, rozhodne se.</span>
+        </footer>
+      </article>
+
+      <!-- Panel 2: Google s AI Overview -->
+      <article class="tpanel tpanel--featured" data-tone="aio" aria-label="Google s AI Overview panelem">
+        <header class="tpanel__chrome">
+          <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="tpanel__brand">
+            <span class="g g--b">G</span><span class="g g--r">o</span><span class="g g--y">o</span><span class="g g--b">g</span><span class="g g--g">l</span><span class="g g--r">e</span>
+          </span>
+        </header>
+        <div class="tpanel__bar">
+          <span class="tpanel__bar-icon" aria-hidden="true">⌕</span>
+          <span class="tpanel__bar-q">jak připravit web pro AI vyhledávání</span>
+        </div>
+        <div class="tpanel__body">
+          <section class="aio-card">
+            <header class="aio-card__head">
+              <span class="aio-card__sparkle" aria-hidden="true">✦</span>
+              <span class="aio-card__label">AI Overview</span>
+            </header>
+            <p class="aio-card__line"><strong>Pro úspěch v AI vyhledávání</strong> potřebujete: krátké odpovědi 40–60&nbsp;slov hned po nadpisu, FAQ sekci s FAQPage schema, datově hutný obsah s konkrétními čísly a brand mentions z autoritních zdrojů.</p>
+            <p class="aio-card__line">Cílí to na <strong>citaci v AI odpovědi</strong>, ne jen na klasickou pozici v Googlu.</p>
+            <div class="aio-card__sources">
+              <span class="aio-card__src-label">Zdroje:</span>
+              <span class="aio-card__src">aiseo-optimalizace.cz</span>
+              <span class="aio-card__src">marketingppc.cz</span>
+              <span class="aio-card__src">seoprakticky.cz</span>
+            </div>
+          </section>
+          <article class="result result--demoted">
+            <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
+            <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce…</h3>
+          </article>
+        </div>
+        <footer class="tpanel__foot">
+          <span class="tpanel__foot-key">Co uživatel dostane:</span>
+          <span class="tpanel__foot-val">Hotová odpověď s citacemi. Často neklikne.</span>
+        </footer>
+      </article>
+
+      <!-- Panel 3: ChatGPT -->
+      <article class="tpanel" data-tone="chat" aria-label="ChatGPT odpověď">
+        <header class="tpanel__chrome">
+          <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="tpanel__brand tpanel__brand--chat">
+            <span class="chat-mark" aria-hidden="true">✺</span>
+            ChatGPT
+          </span>
+        </header>
+        <div class="tpanel__body tpanel__body--chat">
+          <div class="bubble bubble--user">
+            <span class="bubble__avatar" aria-hidden="true">🙂</span>
+            <p class="bubble__text">jak připravit web pro AI vyhledávání</p>
+          </div>
+          <div class="bubble bubble--ai">
+            <span class="bubble__avatar bubble__avatar--ai" aria-hidden="true">✺</span>
+            <div class="bubble__body">
+              <p class="bubble__text">Pro AI vyhledávání jsou klíčové tři vrstvy:</p>
+              <ul class="bubble__list">
+                <li><strong>Klasické SEO</strong> jako základ — bez něj vás AI nenajde.</li>
+                <li><strong>Strukturovaná data</strong> (FAQPage, Product, HowTo) pro citace.</li>
+                <li><strong>Brand mentions</strong> v autoritních zdrojích — bez nich vás necituji.</li>
+              </ul>
+              <div class="bubble__sources">
+                <span class="bubble__src-pill">aiseo-optimalizace.cz</span>
+                <span class="bubble__src-pill">interval.cz</span>
+                <span class="bubble__src-pill">seoprakticky.cz</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="tpanel__foot">
+          <span class="tpanel__foot-key">Co uživatel dostane:</span>
+          <span class="tpanel__foot-val">Konverzační odpověď. Klik k vám už není v plánu.</span>
+        </footer>
+      </article>
+    </div>
+
+    <p class="trio__legend">
+      <strong>Pokud na webu nemáte obsah, který se dá <em>citovat</em></strong>, ve dvou ze tří rozhraní jste neviditelní. Tento průvodce ukazuje, co konkrétně přidat — sekce po sekci.
+    </p>
   </section>
 
   <!-- STAT BAR — proč to musíte řešit (e-shop / web owner pain points) -->
@@ -862,66 +964,371 @@ const quartet: Quartet[] = [
   .pill-panel[data-d="aio"] .pill-panel__link { color: var(--color-aio); }
   .pill-panel__link:hover { gap: 0.6rem; }
 
-  /* ===== HERO MEDIA SLOT ===== */
-  .hero-media {
+  /* ===== TRIO — 3 panely se stejným dotazem ===== */
+  .trio {
     max-width: 80rem;
     margin: 0 auto clamp(3rem, 6vw, 5rem);
     padding: 0 clamp(1.25rem, 4vw, 4rem);
   }
-  .hero-media__frame {
-    aspect-ratio: 16 / 8;
-    background: var(--color-paper-deep);
-    border: 1px dashed var(--color-rule-strong);
-    border-radius: 14px;
+  .trio__head {
+    max-width: 56rem;
+    margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .trio__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+    font-weight: 250;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0 0;
+    color: var(--color-ink);
+  }
+  .trio__title strong {
+    font-weight: 600;
+    color: var(--color-ink);
+    background: linear-gradient(transparent 65%, color-mix(in oklch, var(--color-accent) 22%, transparent) 65%);
+    padding: 0 0.15em;
+  }
+
+  .trio__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 720px) {
+    .trio__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1100px) {
+    .trio__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Panel base ── */
+  .tpanel {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 0 oklch(0 0 0 / 0.02), 0 8px 24px -16px oklch(0 0 0 / 0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .tpanel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1px 0 oklch(0 0 0 / 0.02), 0 12px 32px -16px oklch(0 0 0 / 0.22);
+  }
+  .tpanel--featured {
+    border-color: color-mix(in oklch, var(--color-accent) 35%, var(--color-rule-strong));
+  }
+
+  /* Chrome (top bar with dots + brand) */
+  .tpanel__chrome {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    position: relative;
+    gap: 0.75rem;
+    padding: 0.55rem 0.875rem;
+    background: var(--color-paper-deep);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .tpanel__dots {
+    display: inline-flex;
+    gap: 0.3rem;
+  }
+  .tpanel__dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-rule-strong);
+  }
+  .tpanel__brand {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .tpanel__brand--chat {
+    color: oklch(0.42 0.13 155); /* deep emerald */
+  }
+  .chat-mark {
+    color: oklch(0.42 0.13 155);
+    font-size: 1.1em;
+  }
+  /* Google "Google" letter colors */
+  .g--b { color: oklch(0.55 0.16 256); }
+  .g--r { color: oklch(0.58 0.2 27); }
+  .g--y { color: oklch(0.78 0.16 78); }
+  .g--g { color: oklch(0.6 0.16 145); }
+
+  /* Search bar */
+  .tpanel__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 0.875rem;
+    margin: 0.875rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-ink);
+  }
+  .tpanel__bar-icon {
+    color: var(--color-ink-muted);
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .tpanel__bar-q {
+    font-weight: 500;
+    flex: 1;
     overflow: hidden;
-    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .hero-media__frame::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(0deg, transparent 49.5%, oklch(from var(--color-accent) l c h / 0.06) 50%, transparent 50.5%),
-      linear-gradient(90deg, transparent 49.5%, oklch(from var(--color-accent) l c h / 0.06) 50%, transparent 50.5%);
-    background-size: 24px 24px;
-    pointer-events: none;
+
+  /* Body shared */
+  .tpanel__body {
+    padding: 0.5rem 0.875rem 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    flex: 1;
   }
-  /* Naplněná varianta — schová placeholder borders/grid, dá obrázku celý slot.
-   * Žádný outer border ani background — obrázek má vlastní přirozené okraje. */
-  .hero-media__frame--filled {
-    aspect-ratio: 16 / 9;
-    background: transparent;
-    border: none;
-    border-radius: 0;
+
+  /* ── Classic Google result ── */
+  .result {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
   }
-  .hero-media__frame--filled::before { display: none; }
-  .hero-media__frame--filled img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .result__url {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: var(--color-ink-muted);
   }
-  .hero-media__label {
+  .result__title {
     font-family: var(--font-sans);
     font-size: 0.95rem;
     font-weight: 500;
+    line-height: 1.25;
+    color: oklch(0.42 0.16 264); /* link blue */
+    margin: 0;
+  }
+  .result__desc {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--color-ink-muted);
+    margin: 0.15rem 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .result--demoted {
+    opacity: 0.7;
+  }
+
+  /* ── AI Overview card ── */
+  .aio-card {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--color-accent) 8%, var(--color-paper)) 0%,
+      color-mix(in oklch, var(--color-aio) 6%, var(--color-paper)) 100%
+    );
+    border: 1px solid color-mix(in oklch, var(--color-accent) 25%, var(--color-rule-strong));
+    border-radius: 10px;
+    padding: 0.875rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .aio-card__head {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.15rem;
+  }
+  .aio-card__sparkle {
+    color: var(--color-accent);
+    font-size: 0.85rem;
+  }
+  .aio-card__label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+  }
+  .aio-card__line {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .aio-card__line strong {
+    font-weight: 600;
+  }
+  .aio-card__sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    padding-top: 0.4rem;
+    border-top: 1px dashed color-mix(in oklch, var(--color-accent) 20%, var(--color-rule));
+    margin-top: 0.25rem;
+  }
+  .aio-card__src-label {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--color-ink-muted);
+    margin-right: 0.15rem;
+  }
+  .aio-card__src {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    background: var(--color-paper);
+    border: 1px solid color-mix(in oklch, var(--color-accent) 25%, var(--color-rule));
+    border-radius: 999px;
+    color: var(--color-ink);
+  }
+
+  /* ── ChatGPT bubbles ── */
+  .tpanel__body--chat {
+    background: var(--color-paper-deep);
+    padding: 0.875rem;
+    gap: 0.625rem;
+  }
+  .bubble {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .bubble--user {
+    justify-content: flex-end;
+  }
+  .bubble--user .bubble__text {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    color: var(--color-ink);
+  }
+  .bubble--ai .bubble__body {
+    background: var(--color-paper);
+    border: 1px solid color-mix(in oklch, var(--color-geo) 18%, var(--color-rule-strong));
+    border-radius: 10px;
+    padding: 0.625rem 0.75rem;
+    flex: 1;
+  }
+  .bubble__avatar {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 50%;
+    font-size: 0.7rem;
+  }
+  .bubble__avatar--ai {
+    background: color-mix(in oklch, var(--color-geo) 14%, var(--color-paper));
+    border-color: color-mix(in oklch, var(--color-geo) 30%, transparent);
+    color: oklch(0.42 0.13 155);
+  }
+  .bubble--user .bubble__avatar { order: 2; }
+  .bubble__text {
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    line-height: 1.45;
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    max-width: 85%;
+  }
+  .bubble--ai .bubble__text {
+    padding: 0;
+    color: var(--color-ink);
+    margin-bottom: 0.4rem;
+  }
+  .bubble__list {
+    margin: 0 0 0.5rem;
+    padding: 0 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+  }
+  .bubble__list li { margin-bottom: 0.25rem; }
+  .bubble__list strong { font-weight: 600; }
+  .bubble__sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--color-rule);
+  }
+  .bubble__src-pill {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.18rem 0.45rem;
+    background: color-mix(in oklch, var(--color-geo) 8%, var(--color-paper));
+    border: 1px solid color-mix(in oklch, var(--color-geo) 20%, var(--color-rule));
+    border-radius: 999px;
+    color: oklch(0.42 0.13 155);
+  }
+
+  /* Footer caption per panel */
+  .tpanel__foot {
+    border-top: 1px solid var(--color-rule);
+    padding: 0.625rem 0.875rem 0.75rem;
+    background: var(--color-paper-deep);
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .tpanel__foot-key {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--color-ink-muted);
   }
-  .hero-media__sub {
+  .tpanel__foot-val {
     font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 350;
-    color: var(--color-ink-faint);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    line-height: 1.4;
+  }
+
+  /* Legend below trio */
+  .trio__legend {
+    max-width: 56rem;
+    margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
     text-align: center;
-    max-width: 36rem;
-    padding: 0 1rem;
-    line-height: 1.5;
+  }
+  .trio__legend strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .trio__legend em {
+    font-style: italic;
+    color: var(--color-accent);
+    font-weight: 500;
   }
 
   /* ===== STAT BAR ===== */
