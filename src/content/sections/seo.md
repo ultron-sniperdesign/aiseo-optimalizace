@@ -18,7 +18,7 @@ faq:
   - q: "Funguje SEO i pro Seznam.cz?"
     a: "Ano, ale s odlišnostmi. Seznam má vlastní algoritmus a preferuje české domény, .cz TLD, kvalitní české zpětné odkazy a Sklik integraci. Hlavní principy on-page SEO ale fungují stejně. Pro většinu CZ projektů stačí dobrý Google SEO + sledování Seznam Webmasteru."
   - q: "Co je local SEO a kdy ho řešit?"
-    a: "Local SEO je optimalizace pro vyhledávání s lokálním záměrem (typicky město, okres, region). Klíčové signály: Google Business Profile s kompletními údaji, NAP konzistence (Name + Address + Phone) napříč webem a katalogy, lokální zpětné odkazy z .cz domén, Seznam Firmy záznam, recenze. V ČR je local SEO nejvíce hledaná podkategorie SEO (SV 2 300 pro „local seo“, SV 1 800 pro „seo konzultace brno“) — pokud cílíte zákazníky v konkrétním městě, je to priorita."
+    a: "Local SEO je optimalizace pro vyhledávání s lokálním záměrem (typicky město, okres, region). Klíčové signály: Google Business Profile s kompletními údaji, NAP konzistence (Name + Address + Phone) napříč webem a katalogy, lokální zpětné odkazy z .cz domén, Seznam Firmy záznam, recenze. V ČR je local SEO jedna z nejrychleji rostoucích podkategorií SEO (hledanost „local seo“ stoupla meziročně násobně) — pokud cílíte zákazníky v konkrétním městě nebo regionu, je to priorita."
   - q: "Které SEO nástroje doporučujete pro CZ trh v roce 2026?"
     a: "Free baseline: Google Search Console (oficiální data o vlastním webu), Google PageSpeed Insights, Bing Webmaster Tools, Seznam Webmaster. Placený stack pro CZ: Ahrefs nebo Semrush pro konkurenční benchmark a backlink audit, Marketing Miner pro CZ-specific keyword research s lokální hledaností, Screaming Frog pro technický crawl audit. Pro AI éru navíc Otterly nebo Profound na sledování citation share v ChatGPT a Perplexity. Většina webů vystačí s GSC + jedním placeným nástrojem."
   - q: "Co je SEO audit a co by měl obsahovat?"
@@ -70,7 +70,7 @@ I v roce 2026 zůstává SEO **základem všeho ostatního**: pokud Google vaši
 
 ## Local SEO — proč je to v ČR rostoucí kategorie
 
-Local SEO je optimalizace pro **vyhledávání s lokálním záměrem** — typicky dotazy „pekařství brno", „kavárna praha 7", „seo konzultace brno". V ČR je to dnes nejrychleji rostoucí podkategorie klasického SEO (hledanost „local seo" stoupla meziročně o stovky procent, „seo konzultace brno" má měsíční hledanost 1 800).
+Local SEO je optimalizace pro **vyhledávání s lokálním záměrem** — typicky dotazy „kavárna praha 7", „autoservis praha 4", „pekařství olomouc". V ČR je to dnes jedna z nejrychleji rostoucích podkategorií klasického SEO (hledanost „local seo" stoupla meziročně násobně) a u městských dotazů jsou měsíční hledanosti běžně v řádu stovek až tisíců.
 
 Hlavní signály, na kterých local SEO stojí:
 

@@ -132,6 +132,45 @@ body {
   outline-color: currentColor;
 }
 
+/* GFM task list checkboxes — markdown `[ ]` rendered as <input type="checkbox">.
+ * Vizuálně to nepotřebuje label (kontext daný textem položky), ale pro a11y
+ * ho hide z accessibility tree přes aria-hidden a označ disabled (jsou jen UI),
+ * a zároveň aplikuj přes CSS ::before pro lepší vzhled.
+ */
+.contains-task-list { list-style: none; padding-left: 0; }
+.task-list-item { padding-left: 0; }
+.task-list-item input[type="checkbox"] {
+  pointer-events: none;
+  accent-color: var(--color-accent);
+  margin-right: 0.5rem;
+  vertical-align: -0.075em;
+}
+
+/* Astro Shiki code blocks — některé syntax tokens mají na světlém pozadí
+ * nedostatečný kontrast. Force minimum contrast přes filter pro tokens.
+ */
+pre.astro-code {
+  background: var(--color-paper-deep) !important;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-rule);
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+pre.astro-code code { background: transparent !important; }
+pre.astro-code .line span {
+  /* zaručit minimum kontrastu (WCAG AA) — pokud má token světlou barvu
+   * blízkou pozadí, opadne na ink. */
+  color: inherit;
+}
+/* Token barvy z Shiki theme — explicitní override pro WCAG AA */
+pre.astro-code .line span[style*="color:#6A737D"],
+pre.astro-code .line span[style*="color:#959DA5"],
+pre.astro-code .line span[style*="color:#A0A1A7"] {
+  color: oklch(0.45 0.012 260) !important; /* ink-muted, AA pass */
+}
+
 /* Reduced motion respect */
 @media (prefers-reduced-motion: reduce) {
   html {

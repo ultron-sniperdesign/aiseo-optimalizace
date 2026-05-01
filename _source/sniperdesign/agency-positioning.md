@@ -175,7 +175,7 @@ Soubory v `Sniper design - znalost agentury/`:
 
 ### Geografie
 - ČR (primární) + portugalsky mluvící trh (sekundární, podle PT mutace)
-- V ČR: Praha (sídlo), bez explicitního lokálního targetingu (ale Brno + Praha rostoucí KW podle našeho KW research)
+- V ČR: **Praha** (sídlo CPU s.r.o., Akademická 5, Praha 10). **Sniperdesign není v Brně** — Brno se v KW research objevuje jen jako trhový signál pro lokální SEO general. Lokální targeting webu zůstává neutrální (Praha jen jako fakturační adresa, ne jako geo-claim)
 
 ---
 

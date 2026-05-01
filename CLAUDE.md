@@ -276,7 +276,14 @@ Očekávaný výstup: 7 unikátních záznamů (5 sessions + 1 user kotva + 1 re
 | GA4 tracking | ⏳ rolling out | ID `G-BG0FVWG0YH` (uživatel 2026-04-29 23:35), request u sd-server-admin pro Secret nastavení |
 | GSC verification | ✅ verified | token `BpVWR260qQusVvlwhefuHC5pRVh0Mo4N5o9nzdbSKts`. Secret přidán sd-server-admin 2026-04-30, re-deploy `4070e3d` ✅, GSC ownership verified uživatelem 2026-04-30. |
 | Articles content collection | ✅ live | extensible pro budoucí case studies pod `src/content/articles/` |
-| CLAUDE.md | ✅ live | tento soubor, založen 2026-04-29 03:40 |
+| Marketing Miner KW research | ✅ done | 810 kr, 2 771 kandidátů, 100 deep-dive, 3 konkurenti, insights.md v `_research/analyza_20260501_001022/` (lokální, gitignored) |
+| Sniperdesign agency research | ✅ done | trvalý dokument v `_source/sniperdesign/agency-positioning.md`, sekce 06 redesign s reálnými URL + ceny + Kumbh Sans font |
+| Lighthouse skóre (9 stránek) | ✅ launch-ready | 7/9 stránek 100/100/100/100, HP 92/100/100/100 (LCP hero img), prakticky-postup + matice 98/94–96/100/100 (drobné a11y fixed pluginem) |
+| Self-host fonts | ✅ live | Geist + JBM lokálně v `public/fonts/`, Kumbh Sans v `public/sniperdesign/fonts/` (sekce 06 only) |
+| OG images per stránka | ✅ live | 8 unikátních (NanoBanana Pro), favicon SVG + PNG 32 + apple-touch 180 |
+| Hero ilustrace V10 | ✅ live | NanoBanana Pro 2K, web → AI core → 3 destinations, 1600w + 800w responsive |
+| RSS feed odkaz v BaseLayout | ❌ odstraněn | RSS endpoint nemáme generated, vrátíme až bude `articles` collection víc položek |
+| CLAUDE.md | ✅ live | tento soubor, založen 2026-04-29 03:40, audit launch-ready 2026-05-01 |
 
 ---
 

@@ -100,7 +100,8 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="alternate" type="application/rss+xml" title="aiseo-optimalizace.cz" href="/rss.xml" />
+    {/* RSS feed teď negenerujeme — projekt je obsahový průvodce, ne blog se sériovými články.
+        Až vznikne `articles` content collection s víc položkami, vrátíme RSS endpoint zpět. */}
 
     {/* Google Search Console ownership verification (volitelné, build-time env) */}
     {gscVerification && (

@@ -3,6 +3,30 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import { visit } from "unist-util-visit";
+
+/**
+ * Rehype plugin: GFM task-list checkboxy mají v markdown renderu Astro
+ * podobu <input type="checkbox" disabled>. Lighthouse je flaguje v `label`
+ * audit jako missing label. Visuálně label tvoří text položky v <li>,
+ * sémanticky jde jen o dekoraci (read-only marker), takže přidáme
+ * aria-hidden + role="presentation".
+ */
+function rehypeTaskListA11y() {
+  return (/** @type {any} */ tree) => {
+    visit(tree, "element", (/** @type {any} */ node) => {
+      if (
+        node.tagName === "input" &&
+        node.properties?.type === "checkbox" &&
+        node.properties?.disabled
+      ) {
+        node.properties["aria-hidden"] = "true";
+        node.properties.role = "presentation";
+        node.properties.tabIndex = -1;
+      }
+    });
+  };
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +41,9 @@ export default defineConfig({
    */
   redirects: {
     "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio",
+  },
+  markdown: {
+    rehypePlugins: [rehypeTaskListA11y],
   },
   integrations: [
     mdx(),
