@@ -44,6 +44,15 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [rehypeTaskListA11y],
+    /**
+     * Shiki theme: výchozí Astro `github-dark` má světlé syntax barvy
+     * (#79B8FF, #9ECBFF, #E1E4E8) na našem světlém pozadí
+     * → kontrast pod 2:1, fail WCAG AA. `github-light` má tmavé tokeny
+     * proti světlému bg, kontrast OK.
+     */
+    shikiConfig: {
+      theme: "github-light",
+    },
   },
   integrations: [
     mdx(),
