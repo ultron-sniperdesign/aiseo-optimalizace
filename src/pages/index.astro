@@ -191,17 +191,24 @@ const quartet: Quartet[] = [
   <!-- HERO MEDIA — vizuální narativ: Google search → AI citations -->
   <section class="hero-media" aria-label="Vizualizace: AI éra mění vyhledávání ze seznamu odkazů na citace">
     <figure class="hero-media__frame hero-media__frame--filled">
-      <img
-        src="/og/hero-1600.png"
-        srcset="/og/hero-800.png 800w, /og/hero-1600.png 1600w"
-        sizes="(max-width: 800px) 100vw, 1600px"
-        alt="Vlevo tmavý web s viditelnou FAQ a strukturovanými daty, AI engine ho skenuje a vyzobává citace, FAQ odpovědi a fakta, která vpravo redistribuuje do tří AI nástrojů — Google AI Overview, ChatGPT a Perplexity."
-        width="1600"
-        height="893"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/og/hero-800.webp 800w, /og/hero-1600.webp 1600w"
+          sizes="(max-width: 800px) 100vw, 1600px"
+        />
+        <img
+          src="/og/hero-1600.png"
+          srcset="/og/hero-800.png 800w, /og/hero-1600.png 1600w"
+          sizes="(max-width: 800px) 100vw, 1600px"
+          alt="Vlevo tmavý web s viditelnou FAQ a strukturovanými daty, AI engine ho skenuje a vyzobává citace, FAQ odpovědi a fakta, která vpravo redistribuuje do tří AI nástrojů — Google AI Overview, ChatGPT a Perplexity."
+          width="1600"
+          height="893"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </figure>
   </section>
 

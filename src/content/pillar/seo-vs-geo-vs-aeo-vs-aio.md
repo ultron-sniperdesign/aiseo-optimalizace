@@ -26,6 +26,8 @@ faq:
     a: "GEO nenahrazuje SEO. Pokud máte web mladší než 12 měsíců nebo slabou indexaci, začněte SEO. GEO investice má smysl až, když: (1) máte minimálně 20 článků v top 10 organicky, (2) vaše B2B cílovka aktivně používá AI nástroje, (3) chcete měřit brand visibility v AI ekosystému jako konverzní metriku."
   - q: "Funguje GEO i pro Seznam.cz?"
     a: "Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření v ČR je zatím marginální oproti Google. GEO praktiky (strukturovaný obsah, schema markup, fakta nahoře) prospívají i Seznamu, ale dedikovanou GEO strategii pro Seznam zatím nepotřebujete — kvalitní SEO + AEO pro Google obvykle pokryje i Seznam."
+  - q: "Jaký je rozdíl mezi AI Overview a AI Overviews?"
+    a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma. V tomto průvodci používáme oba zaměnitelně."
 ---
 
 ## Úvod: Proč najednou 4 zkratky místo jedné
