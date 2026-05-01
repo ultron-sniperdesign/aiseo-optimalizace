@@ -164,11 +164,18 @@ pre.astro-code .line span {
    * blízkou pozadí, opadne na ink. */
   color: inherit;
 }
-/* Token barvy z Shiki theme — explicitní override pro WCAG AA */
+/* Token barvy z Shiki theme — explicitní override pro WCAG AA.
+ * GitHub-light theme má string token #22863A s kontrastem 4.19 vs.
+ * paper-deep (#f1f4f7) — pod AA cíl 4.5. Ztmavíme na 4.5+.
+ */
 pre.astro-code .line span[style*="color:#6A737D"],
 pre.astro-code .line span[style*="color:#959DA5"],
 pre.astro-code .line span[style*="color:#A0A1A7"] {
-  color: oklch(0.45 0.012 260) !important; /* ink-muted, AA pass */
+  color: oklch(0.42 0.012 260) !important; /* ink-muted, AA pass */
+}
+pre.astro-code .line span[style*="color:#22863A"],
+pre.astro-code .line span[style*="color:#22863a"] {
+  color: oklch(0.42 0.13 155) !important; /* tmavší zelená, AA pass */
 }
 
 /* Reduced motion respect */
