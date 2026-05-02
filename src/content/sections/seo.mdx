@@ -27,11 +27,7 @@ faq:
     a: "Google několikrát ročně uvolňuje core updaty algoritmu. Medic update (srpen 2018) byl první, který výrazně zasáhl YMYL témata (zdraví, finance) a zavedl koncept E-A-T. Od té doby běží 2–4 core updaty ročně — typicky cílí na hloubku obsahu, expertizu autora a důvěryhodnost zdrojů. V roce 2026 jsou core updaty stále důležité, ale váhu má i Helpful Content Update (proti AI-generovanému spamu) a SpamBrain (machine learning detekce spamerských technik)."
 ---
 import Insight from "../../components/blocks/Insight.astro";
-import Checklist from "../../components/blocks/Checklist.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
-import DoDont from "../../components/blocks/DoDont.astro";
-import Do from "../../components/blocks/Do.astro";
-import Dont from "../../components/blocks/Dont.astro";
 import SignalGrid from "../../components/blocks/SignalGrid.astro";
 
 ## Jak SEO funguje v praxi
@@ -92,37 +88,6 @@ Google hodnotí stránku přes **čtyři vrstvy signálů**. Když máte v každ
   }
 ]} />
 
-## Local SEO — proč je to v ČR rostoucí kategorie
-
-Local SEO je optimalizace pro **vyhledávání s lokálním záměrem** — typicky dotazy „kavárna praha 7", „autoservis praha 4", „pekařství olomouc". V ČR je to dnes jedna z nejrychleji rostoucích podkategorií klasického SEO (hledanost „local seo" stoupla meziročně násobně) a u městských dotazů jsou měsíční hledanosti běžně v řádu stovek až tisíců.
-
-Hlavní signály, na kterých local SEO stojí:
-
-- **Google Business Profile (GBP)** — kompletně vyplněný profil firmy: adresa, otevírací doba, telefon, kategorie, fotky, popis. GBP je největší jednotlivý faktor pro lokální dotazy.
-- **NAP konzistence** — Name, Address, Phone identicky napříč webem, GBP, Seznam Firmy a všemi katalogy. Rozdíl v zápisu adresy (např. „Praha 1" vs. „Praha 01") Google rozpozná jako matoucí signál.
-- **Lokální zpětné odkazy** — odkazy z .cz domén regionálního charakteru (lokální média, oborové asociace, městské weby).
-- **Seznam Firmy** — pro CZ trh povinný záznam, Seznam local pack ho táhne přímo odtud.
-- **Recenze a hodnocení** — počet a kvalita recenzí na GBP a Seznam Firmy. Aktivně si o ně říkat zákazníkům.
-- **Lokalizovaný obsah** — na webu mít stránky, které explicitně zmiňují cílovou lokalitu (slug, H1, body), ne jen v patičce.
-
-V kombinaci s [AEO](/aeo/) (FAQ schema) je local SEO dnes nejlepší zbraň proti zero-click éře — Google AI Overviews lokální dotazy obvykle neagreguje, takže klik na stránku zůstává.
-
-## SEO nástroje — krátký přehled
-
-Nástroje pro SEO se v roce 2026 dělí do tří vrstev: **free baseline od vyhledávačů** (GSC, Bing Webmaster, Seznam Webmaster — vlastní data, jediný 100% spolehlivý zdroj), **placené konkurenční a keyword research nástroje** (Ahrefs, Semrush, SE Ranking, Marketing Miner) a nově i **AI citation tracking** (Otterly, Profound) pro sledování mentions v ChatGPT, Perplexity a Claude. Reálné ceny i doporučené stacky podle velikosti projektu se v posledních dvou letech výrazně proměnily.
-
-<Insight tone="seo" icon="→" label="Samostatný průvodce">
-  Kompletní průvodce SEO nástroji 2026 (7 kategorií, reálné ceny, 4 doporučené stacky podle situace — od malé firmy po enterprise) má vlastní článek: **[SEO nástroje 2026: kompletní průvodce kategoriemi, cenami a AI érou](/seo-nastroje-2026/)**.
-</Insight>
-
-## Co je SEO audit
-
-SEO audit je strukturovaná **diagnostika webu ve třech vrstvách** — technická, on‑page, off‑page — s pořadím, kde chyby v nižší vrstvě negují optimalizace na vyšší. Výstupem je seznam nálezů s prioritou (P0/P1/P2). Audit dává smysl udělat 1× ročně nebo po major redesignu.
-
-<Insight tone="seo" icon="→" label="Samostatný průvodce">
-  Kompletní checklist auditu (3 vrstvy, jak prioritizovat, kdy svépomocí a kdy s agenturou) má vlastní článek: **[SEO audit — co kontrolovat 1× ročně](/seo-audit-co-kontrolovat/)**.
-</Insight>
-
 ## Praktický postup SEO pro nový web
 
 <Stepper tone="seo" steps={[
@@ -178,3 +143,19 @@ Pro většinu webů a e-shopů to neznamená opustit klasické SEO — znamená 
 | Indexovatelnost | Google Search Console (Coverage report) | měsíčně |
 
 V CZ kontextu vystačí pro většinu webů kombinace **Google Search Console** (zdarma, oficiální data) + jeden placený SEO nástroj na konkurenční benchmark a backlink audit. Zatímco GSC vám řekne, kde už stojíte, placený nástroj ukáže, kde stojí konkurence a kam můžete růst.
+
+## Hlubší témata k SEO
+
+Tato pillar sekce drží přehled. Tři oblasti, které stojí za vlastní hlubší ponor, jsme separovali do samostatných tutoriálů — najdete tam reálné checklisty, ceny, postupy krok za krokem a CZ-specifická data.
+
+<Insight tone="seo" icon="→" label="Local SEO Česko 2026">
+  Optimalizace pro lokální dotazy ("kavárna praha 7", "autoservis brno") — šest pilířů (Google Business Profile, NAP konzistence, Seznam Firmy, lokální linky, recenze, lokalizovaný obsah), praktický postup pro novou firmu a proč je to v ČR jedna z nejrychleji rostoucích kategorií. **[Číst Local SEO Česko 2026 →](/local-seo-cesko-2026/)**
+</Insight>
+
+<Insight tone="seo" icon="→" label="SEO nástroje 2026">
+  Sedm kategorií SEO nástrojů s reálnými cenami v roce 2026 (Ahrefs, Semrush, SE Ranking, Marketing Miner, Otterly, Profound) a 4 doporučené stacky podle situace — od malé firmy po enterprise. **[Číst SEO nástroje 2026 →](/seo-nastroje-2026/)**
+</Insight>
+
+<Insight tone="seo" icon="→" label="SEO audit — co kontrolovat 1× ročně">
+  Kompletní checklist auditu ve třech vrstvách (technická / on‑page / off‑page), jak prioritizovat nálezy P0/P1/P2 a kdy svépomocí, kdy s agenturou. **[Číst SEO audit checklist →](/seo-audit-co-kontrolovat/)**
+</Insight>

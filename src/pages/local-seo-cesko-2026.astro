@@ -1,0 +1,498 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getEntry, render } from "astro:content";
+
+const entry = await getEntry("articles", "local-seo-cesko-2026");
+if (!entry) {
+  throw new Error(
+    "Článek 'local-seo-cesko-2026' nenalezen v src/content/articles/",
+  );
+}
+const { Content } = await render(entry);
+
+/**
+ * JSON-LD — Article + FAQPage. Bez HowTo (kategorie analysis).
+ */
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  dateModified: entry.data.updated,
+  datePublished: entry.data.updated,
+  inLanguage: "cs-CZ",
+  keywords: entry.data.keywords.join(", "),
+};
+
+const faqJsonLd =
+  entry.data.faq && entry.data.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: entry.data.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.a,
+          },
+        })),
+      }
+    : undefined;
+
+const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd].filter(
+  Boolean,
+) as Record<string, unknown>[];
+
+const faqCount = entry.data.faq?.length ?? 0;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  jsonLd={allLd}
+  image="/og/local-seo-cesko-2026.png"
+>
+  <div class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <nav class="hero__crumbs" aria-label="Drobečková navigace">
+        <a href="/">Úvod</a>
+        <span class="crumb-sep">›</span>
+        <span>Analýzy</span>
+        <span class="crumb-sep">›</span>
+        <span class="hero__crumb-pill">Tutorial · Local SEO</span>
+      </nav>
+
+      <h1 class="display hero__title">{entry.data.title}</h1>
+
+      <div class="hero__meta">
+        <span>~2 100 slov</span>
+        <span>{faqCount} častých otázek</span>
+        <span>~11 minut čtení</span>
+        <span>Aktualizováno: {entry.data.updated}</span>
+      </div>
+    </section>
+
+    <!-- ANSWER BLOCK -->
+    <section class="answer">
+      <div class="answer__inner">
+        <span class="answer__mark">Stručná odpověď</span>
+        <p class="answer__text">{entry.data.answer}</p>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article">
+      <header class="article__head">
+        <span class="eyebrow"><span class="eyebrow__num">§</span> Detailní rozbor</span>
+        <h2 class="article__head-title">Šest pilířů + AI éra v lokálním vyhledávání</h2>
+        <p class="article__head-intro">
+          Google Business Profile, NAP konzistence, Seznam Firmy, lokální linky, recenze a lokalizovaný obsah. Plus proč Local SEO v ČR rychle roste a co s ním dělá AI éra.
+        </p>
+      </header>
+
+      <div class="article__prose">
+        <Content />
+      </div>
+    </article>
+
+    <!-- FAQ -->
+    {
+      entry.data.faq && entry.data.faq.length > 0 && (
+        <section class="faq" aria-labelledby="faq-title">
+          <header class="faq__head">
+            <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
+            <h2 id="faq-title" class="faq__title">
+              Osm otázek, které k Local SEO <strong>nejčastěji padají</strong>
+            </h2>
+          </header>
+
+          <dl class="faq__list">
+            {entry.data.faq.map((item, i) => (
+              <div class="faq__item">
+                <dt class="faq__q">
+                  <span class="faq__q-num">{i + 1}</span>
+                  <span>{item.q}</span>
+                </dt>
+                <dd class="faq__a">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+
+    <!-- BACK CTA -->
+    <section class="back-cta">
+      <a href="/seo/" class="back-cta__primary">
+        <span aria-hidden="true">←</span>
+        Číst sekci SEO
+      </a>
+      <a href="/" class="back-cta__secondary">Zpět na úvod</a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ===== PAGE ROOT — analytical article používá indigo (SEO color) jako discipline accent ===== */
+  .page {
+    --d: var(--color-seo);
+    --d-tint: var(--color-seo-tint);
+    --d-soft: var(--color-seo-soft);
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
+  }
+  .hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .hero__crumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .hero__crumbs a:hover { color: var(--color-ink); }
+  .hero__crumb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--d-tint);
+    color: var(--d);
+    border: 1px solid var(--d-soft);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .hero__crumb-pill::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+  .crumb-sep { opacity: 0.4; }
+
+  .hero__title {
+    font-size: clamp(1.875rem, 4.5vw, 3.75rem);
+    margin: 0 0 1.5rem;
+    max-width: 24ch;
+    color: var(--color-ink);
+    line-height: 1.05;
+  }
+  .hero__sub {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 50rem;
+    margin: 0 0 1.75rem;
+  }
+  .hero__meta {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem 1.5rem;
+  }
+  .hero__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hero__meta span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero > * { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+  .hero > *:nth-child(1) { animation-delay: 0.04s; }
+  .hero > *:nth-child(2) { animation-delay: 0.16s; }
+  .hero > *:nth-child(3) { animation-delay: 0.28s; }
+  .hero > *:nth-child(4) { animation-delay: 0.40s; }
+
+  /* ===== ANSWER BLOCK ===== */
+  .answer {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+  }
+  .answer__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 8px;
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 60rem;
+  }
+  .answer__mark {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--d);
+  }
+  .answer__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== ARTICLE ===== */
+  .article {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+  }
+  .article__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .article__head-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 250;
+    letter-spacing: -0.025em;
+    margin: 0.75rem 0 0.75rem;
+    color: var(--color-ink);
+    line-height: 1.1;
+  }
+  .article__head-intro {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  .article__prose {
+    max-width: 50rem;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+  }
+  .article__prose :global(h2) {
+    font-family: var(--font-sans);
+    font-size: clamp(1.375rem, 2.2vw, 1.625rem);
+    font-weight: 600;
+    letter-spacing: -0.018em;
+    line-height: 1.2;
+    margin: 3rem 0 1rem;
+    color: var(--color-ink);
+  }
+  .article__prose :global(h3) {
+    font-family: var(--font-sans);
+    font-size: clamp(1.125rem, 1.6vw, 1.25rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin: 2rem 0 0.75rem;
+    color: var(--color-ink);
+  }
+  .article__prose :global(p) {
+    margin: 0 0 1.25rem;
+  }
+  .article__prose :global(ul),
+  .article__prose :global(ol) {
+    margin: 0 0 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .article__prose :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .article__prose :global(a) {
+    color: var(--d);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  .article__prose :global(a:hover) {
+    text-decoration-thickness: 2px;
+  }
+  .article__prose :global(strong) {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .article__prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .article__prose :global(th),
+  .article__prose :global(td) {
+    text-align: left;
+    padding: 0.625rem 0.875rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .article__prose :global(th) {
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-paper-deep);
+  }
+  .article__prose :global(blockquote) {
+    border-left: 3px solid var(--d);
+    background: var(--d-tint);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    color: var(--color-ink);
+    border-radius: 0 6px 6px 0;
+  }
+  .article__prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    color: var(--color-ink);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .eyebrow__num {
+    color: var(--d);
+    font-weight: 600;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+  }
+  .faq__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .faq__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 250;
+    letter-spacing: -0.025em;
+    margin: 0.75rem 0 0;
+    color: var(--color-ink);
+    line-height: 1.1;
+  }
+  .faq__title strong {
+    font-weight: 600;
+    color: var(--d);
+  }
+  .faq__list {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 1.5rem;
+  }
+  .faq__q {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.625rem;
+    display: flex;
+    gap: 0.875rem;
+    align-items: baseline;
+    line-height: 1.35;
+  }
+  .faq__q-num {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--d);
+    flex-shrink: 0;
+  }
+  .faq__a {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0 0 0 1.875rem;
+  }
+
+  /* ===== BACK CTA ===== */
+  .back-cta {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(4rem, 8vw, 6rem);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .back-cta__primary,
+  .back-cta__secondary {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .back-cta__primary {
+    background: var(--d-tint);
+    color: var(--d);
+    border: 1px solid var(--d-soft);
+  }
+  .back-cta__primary:hover {
+    background: var(--d-soft);
+  }
+  .back-cta__secondary {
+    color: var(--color-ink-muted);
+  }
+  .back-cta__secondary:hover {
+    color: var(--color-ink);
+  }
+</style>
