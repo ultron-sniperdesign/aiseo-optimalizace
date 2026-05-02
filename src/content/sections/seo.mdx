@@ -29,7 +29,6 @@ faq:
 import Insight from "../../components/blocks/Insight.astro";
 import Checklist from "../../components/blocks/Checklist.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
-import ToolGrid from "../../components/blocks/ToolGrid.astro";
 import DoDont from "../../components/blocks/DoDont.astro";
 import Do from "../../components/blocks/Do.astro";
 import Dont from "../../components/blocks/Dont.astro";
@@ -108,23 +107,12 @@ Hlavní signály, na kterých local SEO stojí:
 
 V kombinaci s [AEO](/aeo/) (FAQ schema) je local SEO dnes nejlepší zbraň proti zero-click éře — Google AI Overviews lokální dotazy obvykle neagreguje, takže klik na stránku zůstává.
 
-## SEO nástroje 2026 — co opravdu potřebujete
+## SEO nástroje — krátký přehled
 
-<ToolGrid tone="seo" items={[
-  { name: "Google Search Console", tier: "free", category: "Vlastní data", desc: "Pozice, klíčová slova, CTR, indexovatelnost, Core Web Vitals — oficiální data, jediný 100% spolehlivý zdroj.", url: "https://search.google.com/search-console" },
-  { name: "Bing Webmaster Tools", tier: "free", category: "Vlastní data", desc: "Bing/Copilot indexovatelnost, IndexNow protokol pro instantní invalidaci cache.", url: "https://www.bing.com/webmasters" },
-  { name: "Seznam Webmaster", tier: "free", category: "Vlastní data", desc: "Ranking, CTR a indexovatelnost na Seznam.cz pro CZ trh.", url: "https://www.seznam.cz/webmaster" },
-  { name: "Ahrefs / Semrush / SE Ranking", tier: "paid", category: "Konkurenti", desc: "Backlink profil konkurence, gap analýza, share of voice, content audit." },
-  { name: "Marketing Miner", tier: "paid", category: "Keyword research", desc: "CZ-first hledanost, sezónnost, intent, difficulty. Pro CZ trh nejdostupnější." },
-  { name: "Google Keyword Planner", tier: "free", category: "Keyword research", desc: "Hledanost a CPC odhady přímo z Google Ads — orientačně i pro organic." },
-  { name: "Screaming Frog", tier: "both", category: "Technický audit", desc: "Crawl chyby, struktura URL, schema validace. Free do 500 URL." },
-  { name: "PageSpeed Insights", tier: "free", category: "Core Web Vitals", desc: "LCP, INP, CLS měření na lab i field datech (Chrome UX Report).", url: "https://pagespeed.web.dev/" },
-  { name: "Google Rich Results Test", tier: "free", category: "Schema validace", desc: "Validace JSON-LD strukturovaných dat. Co Google reálně rozpozná jako rich result.", url: "https://search.google.com/test/rich-results" },
-  { name: "Otterly / Profound", tier: "paid", category: "AI éra", desc: "Citation share v ChatGPT, Perplexity, Claude. Mention monitoring a brand visibility v AI." }
-]} />
+Nástroje pro SEO se v roce 2026 dělí do tří vrstev: **free baseline od vyhledávačů** (GSC, Bing Webmaster, Seznam Webmaster — vlastní data, jediný 100% spolehlivý zdroj), **placené konkurenční a keyword research nástroje** (Ahrefs, Semrush, SE Ranking, Marketing Miner) a nově i **AI citation tracking** (Otterly, Profound) pro sledování mentions v ChatGPT, Perplexity a Claude. Reálné ceny i doporučené stacky podle velikosti projektu se v posledních dvou letech výrazně proměnily.
 
-<Insight tone="seo" icon="✦" label="Doporučený stack">
-  **Pro malou firmu stačí: GSC + PageSpeed Insights + Rich Results Test + jeden placený nástroj na konkurenci** (Ahrefs nebo SE Ranking, ~5 000 Kč/měs.). Většinu věcí, které dělá agentura ručně v dražších stack-ách, malá firma nezvládne ani s nejdražším nástrojem — value je v interpretaci, ne v datech.
+<Insight tone="seo" icon="→" label="Samostatný průvodce">
+  Kompletní průvodce SEO nástroji 2026 (7 kategorií, reálné ceny, 4 doporučené stacky podle situace — od malé firmy po enterprise) má vlastní článek: **[SEO nástroje 2026: kompletní průvodce kategoriemi, cenami a AI érou](/seo-nastroje-2026/)**.
 </Insight>
 
 ## Co je SEO audit
