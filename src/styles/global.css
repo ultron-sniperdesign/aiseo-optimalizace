@@ -53,6 +53,13 @@
   --color-matice: oklch(0.4 0.06 200);
   --color-matice-tint: oklch(0.96 0.022 200);
   --color-matice-soft: oklch(0.86 0.05 200);
+
+  /* Layout tokeny — sjednocený rytmus middle sekcí (Trio, Quartet, Anatomy,
+   * Pillar promo, Vybrané články, Agency CTA). Hero a Stat-bar mají vlastní
+   * specifické metriky a tyto tokeny nepoužívají. */
+  --space-section-y: clamp(4rem, 7vw, 6.5rem);
+  --space-section-x: clamp(1.25rem, 4vw, 4rem);
+  --max-section: 80rem;
 }
 
 html {

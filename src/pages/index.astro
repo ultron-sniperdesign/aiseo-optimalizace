@@ -191,11 +191,8 @@ const quartet: Quartet[] = [
   <!-- HERO TRIO — stejný dotaz, tři rozhraní. Reálné HTML mockupy místo dekorativního obrázku. -->
   <section class="trio" aria-labelledby="trio-title">
     <header class="trio__head">
-      <span class="trio__eyebrow">
-        <span class="trio__eyebrow-mark" aria-hidden="true">→</span>
-        Stejný dotaz, tři rozhraní
-      </span>
-      <h2 id="trio-title" class="trio__title">
+      <span class="eyebrow"><span class="eyebrow__num">01</span> Stejný dotaz, tři rozhraní</span>
+      <h2 id="trio-title" class="trio__title section__title">
         Co dostane uživatel, když se dnes ptá <strong>„jak připravit web pro AI vyhledávání"</strong>?
       </h2>
     </header>
@@ -569,7 +566,7 @@ const quartet: Quartet[] = [
   </section>
 
   <!-- VYBRANÉ ČLÁNKY -->
-  <section class="section">
+  <section class="section section--deep">
     <header class="section__head">
       <span class="eyebrow"><span class="eyebrow__num">05</span> Vybrané články</span>
       <h2 class="section__title">Čtyři praktická čtení <strong>pro tento týden</strong></h2>
@@ -974,55 +971,22 @@ const quartet: Quartet[] = [
 
   /* ===== TRIO — 3 panely se stejným dotazem ===== */
   .trio {
-    max-width: 80rem;
-    margin: 0 auto clamp(3rem, 6vw, 5rem);
-    padding: 0 clamp(1.25rem, 4vw, 4rem);
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: var(--space-section-y) var(--space-section-x);
   }
   .trio__head {
-    max-width: 56rem;
-    margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+    max-width: none;
+    margin: 0 0 clamp(2.5rem, 4vw, 4rem);
+    text-align: left;
   }
-  /* Trio-specific eyebrow — silnější než běžný .eyebrow.
-   * Cíl: uživatel okamžitě pozná, že to je úvod do vlastního vyprávění,
-   * ne další „nudná section label". */
-  .trio__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    padding: 0.4rem 0.875rem 0.4rem 0.65rem;
-    background: color-mix(in oklch, var(--color-accent) 10%, var(--color-paper));
-    border: 1px solid color-mix(in oklch, var(--color-accent) 25%, transparent);
-    border-radius: 999px;
-  }
-  .trio__eyebrow-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.4rem;
-    height: 1.4rem;
-    background: var(--color-accent);
-    color: var(--color-paper);
-    border-radius: 50%;
-    font-size: 0.85rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .trio__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
-    font-weight: 250;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
+  /* Trio title má section__title parametry (font, weight, letter-spacing).
+   * Strong dostává accent gradient highlight pro důraz na "samotný dotaz". */
+  .trio__title.section__title {
+    max-width: 28ch;
     margin: 0.875rem 0 0;
-    color: var(--color-ink);
   }
-  .trio__title strong {
+  .trio__title.section__title strong {
     font-weight: 600;
     color: var(--color-ink);
     background: linear-gradient(transparent 65%, color-mix(in oklch, var(--color-accent) 22%, transparent) 65%);
@@ -1368,10 +1332,11 @@ const quartet: Quartet[] = [
   }
 
   /* Callout pod trio — tato pasáž má uživatel **přečíst**.
-   * Card s accent borderem, krouhový ! marker, větší tučný text. */
+   * Card s accent borderem, krouhový ! marker, větší tučný text.
+   * Left-aligned, max-width 56rem pro čtecí komfort. */
   .trio__callout {
     max-width: 56rem;
-    margin: clamp(2rem, 3.5vw, 2.75rem) auto 0;
+    margin: clamp(2rem, 3.5vw, 2.75rem) 0 0;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -1490,9 +1455,23 @@ const quartet: Quartet[] = [
 
   /* ===== SECTION HEAD ===== */
   .section {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 4rem);
+    padding: var(--space-section-y) var(--space-section-x);
+  }
+  /* Full-bleed paper-deep variant — pro vizuální oddělení sekcí.
+   * Section sám zachovává max-width, padding-x se rozšiřuje na viewport
+   * okraj přes max(token, calc(50vw - 40rem)) tak, že obsah zůstává
+   * vycentrovaný do 80rem, ale background pokrývá celou šířku okna. */
+  .section--deep {
+    background: var(--color-paper-deep);
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding-left: max(var(--space-section-x), calc(50vw - 40rem));
+    padding-right: max(var(--space-section-x), calc(50vw - 40rem));
   }
   .section__head {
     margin-bottom: clamp(2.5rem, 4vw, 4rem);
@@ -1631,9 +1610,9 @@ const quartet: Quartet[] = [
     border-bottom: 1px solid var(--color-rule);
   }
   .anatomy-section__inner {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 4vw, 4rem);
+    padding: var(--space-section-y) var(--space-section-x);
   }
   .anatomy-section__head {
     max-width: 50rem;
@@ -1750,9 +1729,9 @@ const quartet: Quartet[] = [
 
   /* ===== PILLAR PROMO ===== */
   .pillar-promo {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem);
+    padding: var(--space-section-y) var(--space-section-x);
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1998,9 +1977,9 @@ const quartet: Quartet[] = [
     --sd-gold: oklch(0.82 0.16 80);            /* signature gold/yellow */
     --sd-gold-deep: oklch(0.7 0.18 60);        /* gold gradient deep stop */
     --sd-paper: oklch(0.985 0.004 250);        /* paper for text on dark */
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 4rem) clamp(5rem, 9vw, 8rem);
+    padding: var(--space-section-y) var(--space-section-x);
   }
   .agency-cta__inner {
     background:
