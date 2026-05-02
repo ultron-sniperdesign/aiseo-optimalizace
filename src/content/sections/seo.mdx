@@ -127,38 +127,12 @@ V kombinaci s [AEO](/aeo/) (FAQ schema) je local SEO dnes nejlepší zbraň prot
   **Pro malou firmu stačí: GSC + PageSpeed Insights + Rich Results Test + jeden placený nástroj na konkurenci** (Ahrefs nebo SE Ranking, ~5 000 Kč/měs.). Většinu věcí, které dělá agentura ručně v dražších stack-ách, malá firma nezvládne ani s nejdražším nástrojem — value je v interpretaci, ne v datech.
 </Insight>
 
-## SEO audit — co kontrolovat 1× ročně
+## Co je SEO audit
 
-Strukturovaný audit se dělí na **tři vrstvy** s jasným pořadím (technická → on-page → off-page), protože chyby v nižší vrstvě negují optimalizace na vyšší.
+SEO audit je strukturovaná **diagnostika webu ve třech vrstvách** — technická, on‑page, off‑page — s pořadím, kde chyby v nižší vrstvě negují optimalizace na vyšší. Výstupem je seznam nálezů s prioritou (P0/P1/P2). Audit dává smysl udělat 1× ročně nebo po major redesignu.
 
-<Checklist tone="seo" title="1. Technická vrstva" items={[
-  { title: "Crawl & indexovatelnost", desc: "sitemap.xml v rootu, advertised v robots.txt, validní XML; všechny canonical pages bez noindex." },
-  { title: "Crawl chyby", desc: "žádné 4xx/5xx na hlavních stránkách (GSC Coverage report)." },
-  { title: "Core Web Vitals", desc: "LCP < 2.5 s, INP < 200 ms, CLS < 0.1 — testovat na mobilu, ne desktop." },
-  { title: "Mobile-first", desc: "všechen obsah dostupný na mobilu, žádné display: none na klíčové prvky." },
-  { title: "HTTPS", desc: "TLS certifikát platný, žádné mixed content warnings." },
-  { title: "Strukturovaná data", desc: "Article, FAQPage, HowTo, Product, Organization přes Rich Results Test bez chyb." }
-]} />
-
-<Checklist tone="seo" title="2. On-page vrstva" items={[
-  { title: "Title & meta description", desc: "optimalizované pro top 20 stránek, pod limit znaků." },
-  { title: "H1–H6 hierarchie", desc: "jeden H1 per stránka, logická struktura." },
-  { title: "Interní prolinkování", desc: "žádné orphan pages, pillar ↔ cluster vazby fungují." },
-  { title: "Image alt texty", desc: "kompletní pro všechny obrázky (přístupnost + ranking signál)." },
-  { title: "Canonical URL", desc: "každá stránka odkazuje na sebe, žádné self-conflict." },
-  { title: "Open Graph + Twitter Cards", desc: "pro každou stránku validní (test přes Facebook Sharing Debugger)." }
-]} />
-
-<Checklist tone="seo" title="3. Off-page vrstva" items={[
-  { title: "Backlink profil", desc: "DR/UR vývoj v Ahrefs, žádné toxické odkazy (PBN, link farms)." },
-  { title: "Anchor text distribuce", desc: "diverzifikovaná, ne 80 % exact match — vypadá uměle." },
-  { title: "Brand mentions", desc: "sledovat v Google Alerts + nástroji jako Brand24." },
-  { title: "NAP konzistence", desc: "pro local business v Seznam Firmy, GBP, dalších katalozích." },
-  { title: "E-E-A-T", desc: "autorské bio, kontakty, transparentní info o firmě, autoritní citace na webu." }
-]} />
-
-<Insight tone="seo" icon="P" label="Výstup auditu">
-  **Seznam priorit (P0/P1/P2) s odhadem dopadu a effort.** Realisticky se v jednom auditu dostanete na 30–80 nálezů; dělejte top 10 každý měsíc, audit refreshujte za rok.
+<Insight tone="seo" icon="→" label="Samostatný průvodce">
+  Kompletní checklist auditu (3 vrstvy, jak prioritizovat, kdy svépomocí a kdy s agenturou) má vlastní článek: **[SEO audit — co kontrolovat 1× ročně](/seo-audit-co-kontrolovat/)**.
 </Insight>
 
 ## Praktický postup SEO pro nový web
