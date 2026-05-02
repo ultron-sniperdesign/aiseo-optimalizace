@@ -117,7 +117,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
       <div class="d-hero__layout">
         <div class="d-hero__main">
           <h1 class="display d-hero__title">{entry.data.title}</h1>
-          <p class="d-hero__sub">{entry.data.description}</p>
+          {/* Pozn.: viditelný subtitle byl odstraněn — description žije jen
+             v <meta name="description"> přes BaseLayout. Stručná definice
+             pro čtenáře je answer block hned pod hero (40–60 slov hook). */}
         </div>
 
         <div class="d-hero__abbr-block" aria-hidden="true">
