@@ -1,0 +1,90 @@
+---
+/**
+ * Insight callout — pro klíčové stat / pravidla / „pamatuj si tohle".
+ * Použití v MDX:
+ *   <Insight>**Strukturovaný obsah zvyšuje citation rate o 30–40 %**.</Insight>
+ *   <Insight icon="%" tone="signal">…</Insight>
+ *
+ * Tone: accent (default) | seo | geo | aeo | aio | signal | warn
+ */
+interface Props {
+  icon?: string;
+  tone?: "accent" | "seo" | "geo" | "aeo" | "aio" | "signal" | "warn";
+  label?: string;
+}
+
+const { icon = "✦", tone = "accent", label = "Klíčový insight" } = Astro.props;
+---
+
+<aside class={`insight insight--${tone}`} role="note">
+  <span class="insight__mark" aria-hidden="true">{icon}</span>
+  <div class="insight__body">
+    <span class="insight__label">{label}</span>
+    <div class="insight__text"><slot /></div>
+  </div>
+</aside>
+
+<style>
+  .insight {
+    --tone: var(--color-accent);
+    --tone-tint: var(--color-accent);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1.75rem 0;
+    padding: 1.125rem 1.25rem;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--tone) 6%, var(--color-paper)) 0%,
+      var(--color-paper) 100%
+    );
+    border: 1px solid color-mix(in oklch, var(--tone) 25%, var(--color-rule-strong));
+    border-left: 4px solid var(--tone);
+    border-radius: 8px;
+  }
+  .insight--seo    { --tone: var(--color-seo); }
+  .insight--geo    { --tone: var(--color-geo); }
+  .insight--aeo    { --tone: var(--color-aeo); }
+  .insight--aio    { --tone: var(--color-aio); }
+  .insight--signal { --tone: var(--color-signal); }
+  .insight--warn   { --tone: var(--color-warn); }
+
+  .insight__mark {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: var(--tone);
+    color: var(--color-paper);
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+  .insight__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .insight__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tone);
+  }
+  .insight__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .insight__text :global(p:first-child) { margin-top: 0; }
+  .insight__text :global(p:last-child) { margin-bottom: 0; }
+  .insight__text :global(strong) { font-weight: 600; }
+</style>

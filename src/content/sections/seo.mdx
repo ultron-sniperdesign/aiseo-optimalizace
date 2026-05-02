@@ -26,6 +26,13 @@ faq:
   - q: "Co znamená medic update a další Google core updaty?"
     a: "Google několikrát ročně uvolňuje core updaty algoritmu. Medic update (srpen 2018) byl první, který výrazně zasáhl YMYL témata (zdraví, finance) a zavedl koncept E-A-T. Od té doby běží 2–4 core updaty ročně — typicky cílí na hloubku obsahu, expertizu autora a důvěryhodnost zdrojů. V roce 2026 jsou core updaty stále důležité, ale váhu má i Helpful Content Update (proti AI-generovanému spamu) a SpamBrain (machine learning detekce spamerských technik)."
 ---
+import Insight from "../../components/blocks/Insight.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import ToolGrid from "../../components/blocks/ToolGrid.astro";
+import DoDont from "../../components/blocks/DoDont.astro";
+import Do from "../../components/blocks/Do.astro";
+import Dont from "../../components/blocks/Dont.astro";
 
 ## Co je SEO
 
@@ -34,6 +41,10 @@ faq:
 SEO funguje na principu **rankingových algoritmů** — Google hodnotí stránky podle stovek faktorů a řadí je v SERPu (Search Engine Results Page). Cílem klasického SEO je modrý odkaz v top 10 výsledcích, ideálně v top 3, protože ty získávají většinu kliků (top pozice typicky 30–40 % CTR, pozice 5+ pod 5 %).
 
 I v roce 2026 zůstává SEO **základem všeho ostatního**: pokud Google vaši stránku neumí dobře načíst, indexovat a porozumět jí, žádná z dalších disciplín ([GEO](/geo/), [AEO](/aeo/), [AIO](/aio/)) nezafunguje. AI engines totiž stejně jako Google indexují web — pokud vás Google neuvidí, ChatGPT vás nezacituje.
+
+<Insight tone="seo" icon="!" label="Pravidlo č. 1">
+  **Bez kvalitního SEO základu žádná z AI disciplín nezafunguje.** Google a AI engines indexují stejný web; pokud vás Google nevidí, ChatGPT vás nezacituje a v AI Overview se neobjevíte.
+</Insight>
 
 ## Klíčové signály SEO
 
@@ -85,104 +96,66 @@ V kombinaci s [AEO](/aeo/) (FAQ schema) je local SEO dnes nejlepší zbraň prot
 
 ## SEO nástroje 2026 — co opravdu potřebujete
 
-| Kategorie | Nástroj (free) | Nástroj (placený) | Co řeší |
-|---|---|---|---|
-| **Vlastní data** | Google Search Console | — | Pozice, klíčová slova, CTR, indexovatelnost, Core Web Vitals (oficiální data, jediný 100% spolehlivý zdroj) |
-| **Vlastní data** | Bing Webmaster Tools | — | Bing/Copilot indexovatelnost, IndexNow protokol |
-| **Vlastní data** | Seznam Webmaster | — | Seznam ranking pro CZ |
-| **Konkurenti** | — | Ahrefs / Semrush / SE Ranking | Backlink profil konkurence, gap analýza, share of voice |
-| **Keyword research** | Google Keyword Planner | Marketing Miner (CZ-first), Ahrefs Keywords | Hledanost, sezónnost, intent, difficulty |
-| **Technický audit** | — | Screaming Frog (free do 500 URL) | Crawl chyby, struktura, schema validace |
-| **Core Web Vitals** | PageSpeed Insights | — | LCP, INP, CLS měření |
-| **Schema validace** | Google Rich Results Test | — | Validace JSON-LD strukturovaných dat |
-| **AI éra** | — | Otterly, Profound | Citation share v ChatGPT, Perplexity, Claude |
+<ToolGrid tone="seo" items={[
+  { name: "Google Search Console", tier: "free", category: "Vlastní data", desc: "Pozice, klíčová slova, CTR, indexovatelnost, Core Web Vitals — oficiální data, jediný 100% spolehlivý zdroj.", url: "https://search.google.com/search-console" },
+  { name: "Bing Webmaster Tools", tier: "free", category: "Vlastní data", desc: "Bing/Copilot indexovatelnost, IndexNow protokol pro instantní invalidaci cache.", url: "https://www.bing.com/webmasters" },
+  { name: "Seznam Webmaster", tier: "free", category: "Vlastní data", desc: "Ranking, CTR a indexovatelnost na Seznam.cz pro CZ trh.", url: "https://www.seznam.cz/webmaster" },
+  { name: "Ahrefs / Semrush / SE Ranking", tier: "paid", category: "Konkurenti", desc: "Backlink profil konkurence, gap analýza, share of voice, content audit." },
+  { name: "Marketing Miner", tier: "paid", category: "Keyword research", desc: "CZ-first hledanost, sezónnost, intent, difficulty. Pro CZ trh nejdostupnější." },
+  { name: "Google Keyword Planner", tier: "free", category: "Keyword research", desc: "Hledanost a CPC odhady přímo z Google Ads — orientačně i pro organic." },
+  { name: "Screaming Frog", tier: "both", category: "Technický audit", desc: "Crawl chyby, struktura URL, schema validace. Free do 500 URL." },
+  { name: "PageSpeed Insights", tier: "free", category: "Core Web Vitals", desc: "LCP, INP, CLS měření na lab i field datech (Chrome UX Report).", url: "https://pagespeed.web.dev/" },
+  { name: "Google Rich Results Test", tier: "free", category: "Schema validace", desc: "Validace JSON-LD strukturovaných dat. Co Google reálně rozpozná jako rich result.", url: "https://search.google.com/test/rich-results" },
+  { name: "Otterly / Profound", tier: "paid", category: "AI éra", desc: "Citation share v ChatGPT, Perplexity, Claude. Mention monitoring a brand visibility v AI." }
+]} />
 
-**Doporučený stack pro malou firmu:** GSC + PageSpeed Insights + Rich Results Test + jeden placený nástroj na konkurenci (Ahrefs nebo SE Ranking, ~5 000 Kč/měs.). Většinu věcí, které dělá agentura ručně v dražších stack-ách, malá firma nezvládne ani s nejdražším nástrojem — value je v interpretaci, ne v datech.
+<Insight tone="seo" icon="✦" label="Doporučený stack">
+  **Pro malou firmu stačí: GSC + PageSpeed Insights + Rich Results Test + jeden placený nástroj na konkurenci** (Ahrefs nebo SE Ranking, ~5 000 Kč/měs.). Většinu věcí, které dělá agentura ručně v dražších stack-ách, malá firma nezvládne ani s nejdražším nástrojem — value je v interpretaci, ne v datech.
+</Insight>
 
 ## SEO audit — co kontrolovat 1× ročně
 
 Strukturovaný audit se dělí na **tři vrstvy** s jasným pořadím (technická → on-page → off-page), protože chyby v nižší vrstvě negují optimalizace na vyšší.
 
-### 1. Technická vrstva
+<Checklist tone="seo" title="1. Technická vrstva" items={[
+  { title: "Crawl & indexovatelnost", desc: "sitemap.xml v rootu, advertised v robots.txt, validní XML; všechny canonical pages bez noindex." },
+  { title: "Crawl chyby", desc: "žádné 4xx/5xx na hlavních stránkách (GSC Coverage report)." },
+  { title: "Core Web Vitals", desc: "LCP < 2.5 s, INP < 200 ms, CLS < 0.1 — testovat na mobilu, ne desktop." },
+  { title: "Mobile-first", desc: "všechen obsah dostupný na mobilu, žádné display: none na klíčové prvky." },
+  { title: "HTTPS", desc: "TLS certifikát platný, žádné mixed content warnings." },
+  { title: "Strukturovaná data", desc: "Article, FAQPage, HowTo, Product, Organization přes Rich Results Test bez chyb." }
+]} />
 
-- ✅ **Crawl & indexovatelnost** — sitemap.xml v rootu, advertised v robots.txt, validní XML; všechny canonical pages bez `noindex`
-- ✅ **Crawl chyby** — žádné 4xx/5xx na hlavních stránkách (GSC Coverage report)
-- ✅ **Core Web Vitals** — LCP < 2.5 s, INP < 200 ms, CLS < 0.1 (testovat na mobilu, ne desktop)
-- ✅ **Mobile-first** — všechen obsah dostupný na mobilu, žádné `display: none` na klíčové prvky
-- ✅ **HTTPS** — TLS certifikát platný, žádné mixed content warnings
-- ✅ **Strukturovaná data** — Article, FAQPage, HowTo, Product, Organization přes Rich Results Test bez chyb
+<Checklist tone="seo" title="2. On-page vrstva" items={[
+  { title: "Title & meta description", desc: "optimalizované pro top 20 stránek, pod limit znaků." },
+  { title: "H1–H6 hierarchie", desc: "jeden H1 per stránka, logická struktura." },
+  { title: "Interní prolinkování", desc: "žádné orphan pages, pillar ↔ cluster vazby fungují." },
+  { title: "Image alt texty", desc: "kompletní pro všechny obrázky (přístupnost + ranking signál)." },
+  { title: "Canonical URL", desc: "každá stránka odkazuje na sebe, žádné self-conflict." },
+  { title: "Open Graph + Twitter Cards", desc: "pro každou stránku validní (test přes Facebook Sharing Debugger)." }
+]} />
 
-### 2. On-page vrstva
+<Checklist tone="seo" title="3. Off-page vrstva" items={[
+  { title: "Backlink profil", desc: "DR/UR vývoj v Ahrefs, žádné toxické odkazy (PBN, link farms)." },
+  { title: "Anchor text distribuce", desc: "diverzifikovaná, ne 80 % exact match — vypadá uměle." },
+  { title: "Brand mentions", desc: "sledovat v Google Alerts + nástroji jako Brand24." },
+  { title: "NAP konzistence", desc: "pro local business v Seznam Firmy, GBP, dalších katalozích." },
+  { title: "E-E-A-T", desc: "autorské bio, kontakty, transparentní info o firmě, autoritní citace na webu." }
+]} />
 
-- ✅ **Title & meta description** — optimalizované pro top 20 stránek, pod limit znaků
-- ✅ **H1–H6 hierarchie** — jeden H1 per stránka, logická struktura
-- ✅ **Interní prolinkování** — žádné orphan pages, pillar ↔ cluster vazby fungují
-- ✅ **Image alt texty** — kompletní pro všechny obrázky (přístupnost + ranking signál)
-- ✅ **Canonical URL** — každá stránka odkazuje na sebe, žádné self-conflict
-- ✅ **Open Graph + Twitter Cards** — pro každou stránku validní (test přes [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/))
-
-### 3. Off-page vrstva
-
-- ✅ **Backlink profil** — DR/UR vývoj v Ahrefs, žádné toxické odkazy (PBN, link farms)
-- ✅ **Anchor text distribuce** — diverzifikovaná, ne 80 % exact match (vypadá uměle)
-- ✅ **Brand mentions** — sledovat v Google Alerts + nástroji jako Brand24
-- ✅ **NAP konzistence** — pro local business v Seznam Firmy, GBP, dalších katalozích
-- ✅ **E-E-A-T** — autorské bio, kontakty, transparentní info o firmě, autoritní cituje na webu
-
-**Výstup auditu** je seznam priorit (P0/P1/P2) s odhadem dopadu a effort. Realisticky se v jednom auditu dostanete na 30–80 nálezů; dělejte top 10 každý měsíc, audit refreshujte za rok.
+<Insight tone="seo" icon="P" label="Výstup auditu">
+  **Seznam priorit (P0/P1/P2) s odhadem dopadu a effort.** Realisticky se v jednom auditu dostanete na 30–80 nálezů; dělejte top 10 každý měsíc, audit refreshujte za rok.
+</Insight>
 
 ## Praktický postup SEO pro nový web
 
-### Krok 1 — Keyword research
-
-Použijte nástroj typu **Ahrefs**, **SE Ranking** nebo zdarma **Google Keyword Planner** pro zmapování klíčových slov v oboru. Pro každý cluster:
-
-- Primární KW (vysoká hledanost, střední konkurence)
-- 3–5 souvisejících long-tail KW
-- Search intent (informační vs. transakční)
-
-### Krok 2 — Information architecture
-
-Postavte **pillar + cluster strukturu**:
-
-- 1 pillar stránka pokrývající široké téma (~3 000 slov)
-- 5–10 cluster stránek na užší podtémata (~800–1 500 slov)
-- Vzájemné prolinkování pillar ↔ clusters
-
-Tento web sám je příklad: pillar [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) + 6 sekcí jako clusters.
-
-### Krok 3 — On-page SEO checklist
-
-Pro každou stránku:
-
-1. ✅ Title tag s primárním KW (50–60 znaků)
-2. ✅ Meta description (150–160 znaků)
-3. ✅ H1 obsahuje primární KW
-4. ✅ H2/H3 hierarchie odpovídá struktuře
-5. ✅ Interní linky na související pillar/cluster
-6. ✅ Schema markup (Article + FAQPage pro Q&A sekce)
-7. ✅ Open Graph + Twitter Cards
-8. ✅ Canonical URL
-9. ✅ Image alt texty (přístupnost + ranking)
-
-### Krok 4 — Technical audit
-
-Použijte **Google Search Console** + **Screaming Frog** nebo **Ahrefs Site Audit**:
-
-- Žádné 4xx/5xx chyby na hlavních stránkách
-- Sitemap submitted v GSC
-- Core Web Vitals v zelené zóně
-- Mobile usability bez chyb
-- Indexovatelnost — všechny canonical pages indexovatelné
-
-### Krok 5 — Off-page (link building)
-
-V první fázi (0–6 měsíců) místo agresivního link buildingu **buduje brand**:
-
-- Hostujte se na podcastech ve vašem oboru
-- Pište guest posts na autoritních CZ blogách
-- Zapojte se do Reddit/Quora vláken (bez spamu)
-- Dejte do Seznam Firmy + Google Business Profile (i pro online business)
+<Stepper tone="seo" steps={[
+  { title: "Keyword research", desc: "Ahrefs, SE Ranking nebo zdarma Google Keyword Planner pro zmapování klíčových slov. Pro každý cluster: primární KW (vysoká hledanost, střední konkurence), 3–5 long-tail KW, search intent (informační/transakční)." },
+  { title: "Information architecture", desc: "Pillar + cluster struktura. 1 pillar stránka (~3 000 slov), 5–10 cluster stránek (~800–1 500 slov), vzájemné prolinkování. Tento web je příklad: pillar SEO vs. GEO vs. AEO vs. AIO + 6 sekcí jako clusters." },
+  { title: "On-page SEO checklist", desc: "Pro každou stránku: title tag s primárním KW, meta description, H1 s KW, logická H2/H3 hierarchie, interní linky na pillar/cluster, schema markup (Article + FAQPage), OG + Twitter Cards, canonical URL, image alt texty." },
+  { title: "Technical audit", desc: "GSC + Screaming Frog nebo Ahrefs Site Audit. Žádné 4xx/5xx chyby, sitemap submitted v GSC, Core Web Vitals v zelené zóně, mobile usability bez chyb, indexovatelnost canonical pages." },
+  { title: "Off-page (link building)", desc: "V prvních 0–6 měsících místo agresivního link buildingu buduje brand: podcasty ve vašem oboru, guest posts na autoritních CZ blogách, Reddit/Quora vlákna (bez spamu), Seznam Firmy + Google Business Profile." }
+]} />
 
 ## Kdy SEO samo o sobě stačí
 

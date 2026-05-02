@@ -1,0 +1,106 @@
+---
+/**
+ * Checklist — audit-style karta s checkbox icon + bold key + popis.
+ * Items je pole { title, desc } objektů. Title se zobrazí tučně, desc za pomlčkou.
+ * Použití:
+ *   <Checklist title="Technická vrstva" items={[
+ *     { title: "Crawl & indexovatelnost", desc: "sitemap.xml v rootu, advertised v robots.txt…" },
+ *     { title: "Core Web Vitals", desc: "LCP < 2.5 s, INP < 200 ms…" },
+ *   ]} tone="seo" />
+ */
+interface ChecklistItem {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  title?: string;
+  items: ChecklistItem[];
+  tone?: "accent" | "seo" | "geo" | "aeo" | "aio";
+}
+
+const { title, items, tone = "accent" } = Astro.props;
+---
+
+<section class={`chk chk--${tone}`}>
+  {title && <h3 class="chk__title">{title}</h3>}
+  <ul class="chk__list">
+    {
+      items.map((item) => (
+        <li class="chk__item">
+          <span class="chk__icon" aria-hidden="true">✓</span>
+          <div class="chk__body">
+            <strong class="chk__key">{item.title}</strong>
+            <span class="chk__desc">{item.desc}</span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .chk {
+    --tone: var(--color-accent);
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.375rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-left: 3px solid var(--tone);
+    border-radius: 8px;
+  }
+  .chk--seo { --tone: var(--color-seo); }
+  .chk--geo { --tone: var(--color-geo); }
+  .chk--aeo { --tone: var(--color-aeo); }
+  .chk--aio { --tone: var(--color-aio); }
+
+  .chk__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--tone);
+    margin: 0 0 0.875rem;
+  }
+  .chk__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .chk__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+  .chk__icon {
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    background: var(--tone);
+    color: var(--color-paper);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+  .chk__body {
+    flex: 1;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .chk__key {
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-right: 0.35rem;
+  }
+  .chk__desc { color: var(--color-ink-muted); }
+</style>

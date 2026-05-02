@@ -1,0 +1,72 @@
+---
+/**
+ * CompareCol — jeden sloupec uvnitř <Compare>.
+ * Tone: seo | geo | aeo | aio | accent (default).
+ */
+interface Props {
+  heading: string;
+  tone?: "seo" | "geo" | "aeo" | "aio" | "accent";
+  subtitle?: string;
+}
+
+const { heading, tone = "accent", subtitle } = Astro.props;
+---
+
+<section class={`cmp cmp--${tone}`}>
+  <header class="cmp__head">
+    <h3 class="cmp__heading">{heading}</h3>
+    {subtitle && <span class="cmp__sub">{subtitle}</span>}
+  </header>
+  <div class="cmp__body"><slot /></div>
+</section>
+
+<style>
+  .cmp {
+    --tone: var(--color-accent);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-top: 3px solid var(--tone);
+    border-radius: 8px;
+    padding: 1.25rem 1.375rem 1.375rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .cmp--seo { --tone: var(--color-seo); }
+  .cmp--geo { --tone: var(--color-geo); }
+  .cmp--aeo { --tone: var(--color-aeo); }
+  .cmp--aio { --tone: var(--color-aio); }
+
+  .cmp__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 1px solid var(--color-rule);
+    margin-bottom: 0.5rem;
+  }
+  .cmp__heading {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--tone);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .cmp__sub {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-ink-muted);
+  }
+  .cmp__body {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .cmp__body :global(p) { margin: 0 0 0.625rem; }
+  .cmp__body :global(p:last-child) { margin-bottom: 0; }
+  .cmp__body :global(ul) { margin: 0.25rem 0 0.625rem; padding-left: 1.1rem; }
+  .cmp__body :global(li) { margin-bottom: 0.3rem; }
+  .cmp__body :global(strong) { font-weight: 600; color: var(--color-ink); }
+</style>

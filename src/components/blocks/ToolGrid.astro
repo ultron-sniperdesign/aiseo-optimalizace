@@ -1,0 +1,145 @@
+---
+/**
+ * ToolGrid — grid karet nástrojů. Items je pole { name, tier, category, desc, url? }.
+ * Použití:
+ *   <ToolGrid items={[
+ *     { name: "Google Search Console", tier: "free", category: "Vlastní data", desc: "…" },
+ *     { name: "Ahrefs", tier: "paid", category: "Konkurenti", desc: "…", url: "https://ahrefs.com" },
+ *   ]} />
+ */
+interface ToolItem {
+  name: string;
+  tier: "free" | "paid" | "both";
+  category: string;
+  desc: string;
+  url?: string;
+}
+
+interface Props {
+  items: ToolItem[];
+  tone?: "accent" | "seo" | "geo" | "aeo" | "aio";
+}
+
+const { items, tone = "accent" } = Astro.props;
+
+const tierLabel = { free: "Free", paid: "Placený", both: "Free + Placený" };
+---
+
+<div class={`tg tg--${tone}`}>
+  {
+    items.map((item) => {
+      const Wrapper = item.url ? "a" : "div";
+      const wrapperProps = item.url
+        ? { href: item.url, target: "_blank", rel: "noopener" }
+        : {};
+      return (
+        <Wrapper class={`tg__card tg__card--${item.tier}`} {...wrapperProps}>
+          <header class="tg__head">
+            <span class="tg__cat">{item.category}</span>
+            <span class={`tg__tier tg__tier--${item.tier}`}>{tierLabel[item.tier]}</span>
+          </header>
+          <h3 class="tg__name">{item.name}</h3>
+          <p class="tg__desc">{item.desc}</p>
+          {item.url && <span class="tg__cta" aria-hidden="true">→</span>}
+        </Wrapper>
+      );
+    })
+  }
+</div>
+
+<style>
+  .tg {
+    --tone: var(--color-accent);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.75rem 0;
+  }
+  @media (min-width: 600px) {
+    .tg { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .tg { grid-template-columns: repeat(3, 1fr); }
+  }
+  .tg--seo { --tone: var(--color-seo); }
+  .tg--geo { --tone: var(--color-geo); }
+  .tg--aeo { --tone: var(--color-aeo); }
+  .tg--aio { --tone: var(--color-aio); }
+
+  .tg__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.125rem 1.125rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-ink);
+    position: relative;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  a.tg__card:hover {
+    border-color: var(--tone);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -10px oklch(0 0 0 / 0.18);
+  }
+  .tg__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .tg__cat {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+  .tg__tier {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+  }
+  .tg__tier--free {
+    background: color-mix(in oklch, var(--color-geo) 10%, var(--color-paper));
+    color: var(--color-geo);
+  }
+  .tg__tier--paid {
+    background: color-mix(in oklch, var(--color-aeo) 10%, var(--color-paper));
+    color: var(--color-aeo);
+  }
+  .tg__tier--both {
+    background: color-mix(in oklch, var(--tone) 10%, var(--color-paper));
+    color: var(--tone);
+  }
+  .tg__name {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .tg__desc {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .tg__cta {
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--tone);
+    transition: transform 0.2s ease;
+  }
+  a.tg__card:hover .tg__cta { transform: translateX(3px); }
+</style>

@@ -1,0 +1,103 @@
+---
+/**
+ * Stepper — vertikální sekvence kroků. Items prop pro plain data.
+ * Použití:
+ *   <Stepper steps={[
+ *     { title: "Keyword research", desc: "Použijte Ahrefs nebo SE Ranking…" },
+ *     { title: "Information architecture", desc: "Postavte pillar + cluster…" },
+ *   ]} tone="seo" />
+ */
+interface Step {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  steps: Step[];
+  tone?: "accent" | "seo" | "geo" | "aeo" | "aio";
+}
+
+const { steps, tone = "accent" } = Astro.props;
+---
+
+<ol class={`stp stp--${tone}`}>
+  {
+    steps.map((step, i) => (
+      <li class="stp__item">
+        <div class="stp__num" aria-hidden="true">
+          {i + 1}
+        </div>
+        <div class="stp__body">
+          <h3 class="stp__title">{step.title}</h3>
+          <p class="stp__desc">{step.desc}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .stp {
+    --tone: var(--color-accent);
+    list-style: none;
+    margin: 1.75rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .stp--seo { --tone: var(--color-seo); }
+  .stp--geo { --tone: var(--color-geo); }
+  .stp--aeo { --tone: var(--color-aeo); }
+  .stp--aio { --tone: var(--color-aio); }
+
+  .stp__item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    padding: 0.875rem 0;
+    border-left: 2px solid color-mix(in oklch, var(--tone) 30%, var(--color-rule-strong));
+    padding-left: 0;
+    margin-left: 1.25rem;
+    position: relative;
+  }
+  .stp__item:first-child { padding-top: 0; }
+  .stp__item:last-child { padding-bottom: 0; }
+  .stp__num {
+    position: absolute;
+    left: -1.25rem;
+    top: 0.875rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-paper);
+    border: 2px solid var(--tone);
+    color: var(--tone);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  .stp__item:first-child .stp__num { top: 0; }
+  .stp__body {
+    grid-column: 2;
+    margin-left: 1rem;
+  }
+  .stp__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin: 0 0 0.35rem;
+  }
+  .stp__desc {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+</style>

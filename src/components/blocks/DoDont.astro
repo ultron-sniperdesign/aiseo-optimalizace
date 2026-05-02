@@ -1,0 +1,28 @@
+---
+/**
+ * DoDont — pair karta „takhle ano / takhle ne".
+ * Použití:
+ *   <DoDont>
+ *     <Do>**„Konkrétní fakt s číslem."**</Do>
+ *     <Dont>„Vágní marketingová věta."</Dont>
+ *   </DoDont>
+ */
+---
+
+<div class="dd">
+  <slot />
+</div>
+
+<style>
+  .dd {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 600px) {
+    .dd {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

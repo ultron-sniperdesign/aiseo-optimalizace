@@ -1,0 +1,62 @@
+---
+/**
+ * Do — zelená karta v <DoDont>. Best practice / správný příklad.
+ */
+---
+
+<aside class="ddc ddc--do" aria-label="Doporučeno">
+  <header class="ddc__head">
+    <span class="ddc__icon" aria-hidden="true">✓</span>
+    <span class="ddc__label">Takhle ano</span>
+  </header>
+  <div class="ddc__body"><slot /></div>
+</aside>
+
+<style>
+  .ddc {
+    border-radius: 8px;
+    padding: 1rem 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .ddc--do {
+    background: color-mix(in oklch, var(--color-geo) 8%, var(--color-paper));
+    border: 1px solid color-mix(in oklch, var(--color-geo) 30%, var(--color-rule-strong));
+  }
+  .ddc__head {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ddc__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--color-geo);
+    color: var(--color-paper);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .ddc__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-geo);
+  }
+  .ddc__body {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .ddc__body :global(p) { margin: 0 0 0.5rem; }
+  .ddc__body :global(p:last-child) { margin-bottom: 0; }
+  .ddc__body :global(strong) { font-weight: 600; }
+</style>

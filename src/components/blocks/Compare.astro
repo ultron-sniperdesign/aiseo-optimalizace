@@ -1,0 +1,28 @@
+---
+/**
+ * Compare — side-by-side X vs. Y. Vlastní wrapper, sloty pro 2+ sloupce.
+ * Použití:
+ *   <Compare>
+ *     <CompareCol heading="SEO" tone="seo">…</CompareCol>
+ *     <CompareCol heading="GEO" tone="geo">…</CompareCol>
+ *   </Compare>
+ */
+---
+
+<div class="compare">
+  <slot />
+</div>
+
+<style>
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.75rem 0;
+  }
+  @media (min-width: 720px) {
+    .compare {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
