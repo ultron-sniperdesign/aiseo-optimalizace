@@ -33,6 +33,7 @@ import ToolGrid from "../../components/blocks/ToolGrid.astro";
 import DoDont from "../../components/blocks/DoDont.astro";
 import Do from "../../components/blocks/Do.astro";
 import Dont from "../../components/blocks/Dont.astro";
+import SignalGrid from "../../components/blocks/SignalGrid.astro";
 
 ## Jak SEO funguje v praxi
 
@@ -44,36 +45,53 @@ SEO funguje na principu **rankingových algoritmů** — Google hodnotí stránk
 
 ## Klíčové signály SEO
 
-### On-page faktory
+Google hodnotí stránku přes **čtyři vrstvy signálů**. Když máte v každé z nich pořádek, ranking se rozjede sám. Když některá vrstva chybí, ostatní ji nedoženou.
 
-- **Title tag** — 50–60 znaků, primární klíčové slovo na začátku, brand na konci
-- **Meta description** — 150–160 znaků, slouží jako „reklama" v SERPu (vliv na CTR, ne na ranking)
-- **Struktura H1–H6** — jeden H1 per stránka, hierarchická H2/H3 odpovídající struktuře tématu
-- **Interní prolinkování** — předává „link juice" mezi stránkami, pomáhá crawlerům najít hluboko zanořené stránky
-- **Schema markup** — strukturovaná data v JSON-LD (Article, FAQPage, HowTo, Product, Organization)
-- **URL slug** — krátký, popisný, bez stop slov (`/seo-vs-geo/`, ne `/page?id=42`)
-
-### Obsahové faktory
-
-- **Relevance ke klíčovému slovu** — search intent musí sedět (informační, transakční, navigační)
-- **Hloubka pokrytí tématu** — pillar content (~3 000 slov) má lepší šanci než tenký článek (~500 slov)
-- **Čtenářský komfort** — krátké odstavce, podnadpisy, bullet listy, vizuály
-- **Originalita** — přidaná hodnota oproti existujícím top 10 výsledkům (jiný úhel, vlastní data, případové studie)
-
-### Technické faktory
-
-- **Rychlost načítání** — Core Web Vitals (LCP < 2.5s, INP < 200ms, CLS < 0.1)
-- **Mobile-first design** — Google indexuje mobilní verzi primárně, desktop sekundárně
-- **Indexovatelnost** — funkční `robots.txt`, sitemap, kanonické URL, žádné `noindex` na cílových stránkách
-- **HTTPS** — TLS certifikát je rankingový signál od 2014, dnes nezbytné minimum
-- **Strukturovaná data** — schema.org JSON-LD, Open Graph, Twitter Cards
-
-### Off-page faktory
-
-- **Zpětné odkazy z autoritních domén** — Domain Rating (Ahrefs), Domain Authority (Moz)
-- **Brand mentions** — i bez odkazu Google rozpoznává brand jako entity
-- **E-E-A-T signály** — Experience, Expertise, Authoritativeness, Trustworthiness
-- **Lokální signály** (pro CZ) — citace v českých médiích, .cz odkazy, Seznam Firmy
+<SignalGrid tone="seo" cards={[
+  {
+    title: "On-page faktory",
+    icon: "page",
+    items: [
+      { key: "Title tag", desc: "50–60 znaků, primární klíčové slovo na začátku, brand na konci." },
+      { key: "Meta description", desc: "150–160 znaků, slouží jako „reklama\" v SERPu (vliv na CTR, ne na ranking)." },
+      { key: "Struktura H1–H6", desc: "Jeden H1 per stránka, hierarchická H2/H3 odpovídající struktuře tématu." },
+      { key: "Interní prolinkování", desc: "Předává „link juice\" mezi stránkami, pomáhá crawlerům najít hluboko zanořené stránky." },
+      { key: "Schema markup", desc: "Strukturovaná data v JSON-LD (Article, FAQPage, HowTo, Product, Organization)." },
+      { key: "URL slug", desc: "Krátký, popisný, bez stop slov (/seo-vs-geo/, ne /page?id=42)." }
+    ]
+  },
+  {
+    title: "Obsahové faktory",
+    icon: "content",
+    items: [
+      { key: "Relevance ke klíčovému slovu", desc: "Search intent musí sedět (informační, transakční, navigační)." },
+      { key: "Hloubka pokrytí tématu", desc: "Pillar content (~3 000 slov) má lepší šanci než tenký článek (~500 slov)." },
+      { key: "Čtenářský komfort", desc: "Krátké odstavce, podnadpisy, bullet listy, vizuály." },
+      { key: "Originalita", desc: "Přidaná hodnota oproti existujícím top 10 výsledkům (jiný úhel, vlastní data, případové studie)." }
+    ]
+  },
+  {
+    title: "Technické faktory",
+    icon: "tech",
+    items: [
+      { key: "Rychlost načítání", desc: "Core Web Vitals (LCP < 2,5 s, INP < 200 ms, CLS < 0,1)." },
+      { key: "Mobile-first design", desc: "Google indexuje mobilní verzi primárně, desktop sekundárně." },
+      { key: "Indexovatelnost", desc: "Funkční robots.txt, sitemap, kanonické URL, žádné noindex na cílových stránkách." },
+      { key: "HTTPS", desc: "TLS certifikát je rankingový signál od 2014, dnes nezbytné minimum." },
+      { key: "Strukturovaná data", desc: "schema.org JSON-LD, Open Graph, Twitter Cards." }
+    ]
+  },
+  {
+    title: "Off-page faktory",
+    icon: "offpage",
+    items: [
+      { key: "Zpětné odkazy z autoritních domén", desc: "Domain Rating (Ahrefs), Domain Authority (Moz)." },
+      { key: "Brand mentions", desc: "I bez odkazu Google rozpoznává brand jako entity." },
+      { key: "E-E-A-T signály", desc: "Experience, Expertise, Authoritativeness, Trustworthiness." },
+      { key: "Lokální signály", desc: "Pro CZ citace v českých médiích, .cz odkazy, Seznam Firmy." }
+    ]
+  }
+]} />
 
 ## Local SEO — proč je to v ČR rostoucí kategorie
 
