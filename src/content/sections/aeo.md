@@ -21,9 +21,7 @@ faq:
     a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma."
 ---
 
-## Co je AEO
-
-**AEO (Answer Engine Optimization) je optimalizace obsahu tak, aby byl použit jako přímá odpověď v „answer engines" — Google AI Overviews, Bing Chat, Google Featured Snippets.**
+## AEO vs. GEO — kde je hranice
 
 AEO je **užší pojem než [GEO](/geo/)**. Zatímco GEO řeší citace v jakémkoli generativním AI (včetně ChatGPT, který Google nevyhledává), AEO se soustředí specificky na **answer engines napojené na vyhledávač**: typicky Google AI Overviews (dříve SGE — Search Generative Experience) a Bing Chat.
 

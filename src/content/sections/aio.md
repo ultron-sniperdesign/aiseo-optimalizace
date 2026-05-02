@@ -19,9 +19,9 @@ faq:
     a: "LLMO (Large Language Model Optimization) je novější synonymum pro GEO — používané hlavně v anglických zdrojích z 2024+. Některé agentury rozlišují: LLMO = optimalizace pro obecné LLM bez search modulu (ChatGPT bez search), GEO = pro LLM s real-time search (Perplexity, Gemini Search). V praxi se pojmy zaměňují."
 ---
 
-## Dva významy AIO
+## Dva významy AIO — rozeznejte je v textu
 
-**AIO má dva významy** — záleží na kontextu:
+Pojem AIO se v praxi míchá ve dvou rolích, které spolu sice souvisí, ale nepoužívejte je zaměnitelně:
 
 ### 1. AI Overviews
 

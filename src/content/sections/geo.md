@@ -19,9 +19,7 @@ faq:
     a: "Rychlejší než SEO — typicky 1–3 měsíce. AI engines nemají retargeting cyklus jako Google ranking, citace se aktualizují průběžně s novým crawlem. Faktor: jak rychle se nový obsah dostane do training/RAG dat dané platformy (ChatGPT crawl latence ~14 dní, Perplexity blíž real-time)."
 ---
 
-## Co je GEO
-
-**GEO (Generative Engine Optimization) je optimalizace obsahu tak, aby byl citován jako zdroj v odpovědích generativních AI nástrojů — ChatGPT, Perplexity, Claude, Gemini.**
+## Jak GEO funguje v praxi
 
 Když uživatel zadá ChatGPT dotaz „jaké jsou nejlepší AI nástroje pro SEO 2026", model nevytahuje top 10 modrých odkazů jako Google. Místo toho **vygeneruje odpověď v přirozené řeči** a u některých platforem (Perplexity, ChatGPT v search módu, Gemini, Claude search) k ní přidá **citace zdrojů**.
 
