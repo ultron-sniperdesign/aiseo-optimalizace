@@ -193,7 +193,7 @@ const quartet: Quartet[] = [
     <header class="section__head">
       <span class="eyebrow"><span class="eyebrow__num">01</span> Stejný dotaz, tři rozhraní</span>
       <h2 id="trio-title" class="section__title">
-        Co dostane uživatel, když se dnes ptá <strong>„jak připravit web pro AI vyhledávání"</strong>?
+        Co dostane uživatel, když se dnes ptá na <span class="hl">AI vyhledávání</span>? Tři rozhraní, <strong>jedna otázka</strong>.
       </h2>
     </header>
 
@@ -383,7 +383,7 @@ const quartet: Quartet[] = [
       <header class="anatomy-section__head">
         <span class="eyebrow"><span class="eyebrow__num">03</span> Anatomie AI-friendly stránky</span>
         <h2 class="section__title">
-          Stránka, kterou si AI <span class="hl">snadno přečte</span> a zacituje, vypadá takto.
+          Stránka, kterou si AI <span class="hl">snadno přečte</span> a <strong>zacituje</strong>, vypadá takto.
         </h2>
         <p class="section__intro">
           Šest prvků, které z běžné stránky udělají zdroj pro Google AI Overviews, ChatGPT i Perplexity. Žádný z nich nestojí extra peníze — jen je potřeba je tam vědomě dostat.
@@ -1049,13 +1049,6 @@ const quartet: Quartet[] = [
     max-width: var(--max-section);
     margin: 0 auto;
     padding: var(--space-section-y) var(--space-section-x);
-  }
-  /* Trio strong dostává accent gradient highlight pro důraz na "samotný dotaz". */
-  #trio-title strong {
-    font-weight: 600;
-    color: var(--color-ink);
-    background: linear-gradient(transparent 65%, color-mix(in oklch, var(--color-accent) 22%, transparent) 65%);
-    padding: 0 0.15em;
   }
 
   .trio__grid {
