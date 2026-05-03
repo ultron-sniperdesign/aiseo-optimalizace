@@ -109,6 +109,25 @@ body {
   font-weight: 600;
 }
 
+/* .hl — accent (modrý) zvýraznění uvnitř nadpisů. Globální pattern napříč
+ * homepage, article pages i pillar — kombinuje se s <strong> (tučný) pro
+ * 3-úrovňovou hierarchii zvýraznění (běžný + modrý + tučný). */
+h1 .hl,
+h2 .hl,
+h3 .hl {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* <strong> uvnitř nadpisů musí být skutečně tučné. Bez tohoto by <strong>
+ * dědilo light font-weight (250–280) z parent .article__head-title /
+ * .faq__title / .section__title a zvýraznění by zaniklo. */
+h1 strong,
+h2 strong,
+h3 strong {
+  font-weight: 600;
+}
+
 /* Reading-comfort prose defaults pro pillar/sekce */
 .prose-content {
   max-width: 72ch;
