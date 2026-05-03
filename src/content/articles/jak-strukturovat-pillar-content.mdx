@@ -1,0 +1,296 @@
+---
+title: "Jak strukturovat pillar content: blueprint pro 3 000slovní průvodce v AI éře"
+description: "Anatomie pillar contentu krok za krokem — answer block, kontext, FAQ, schema. Vizuální blueprint, kontrolní seznam a srovnání proti tenkému obsahu."
+answer: "Pillar content je dlouhý průvodce (~3 000 slov), který kompletně pokrývá jedno téma a slouží jako autoritní reference. Jeho struktura jde shora dolů v pěti vrstvách: (1) hero s H1 a krátkým podtitulem, (2) answer block 40–60 slov pro AI scrapery, (3) detailní rozbor v 6–10 H2 sekcích, (4) FAQ sekce s 6–10 otázkami, (5) schema markup (Article + FAQPage JSON-LD). Doplněno hub-and-spoke prolinkováním na cluster články."
+slug: "jak-strukturovat-pillar-content"
+category: "tutorial"
+updated: "2026-05-03"
+keywords:
+  - "pillar content"
+  - "jak psát pillar content"
+  - "struktura článku"
+  - "answer block"
+  - "obrácená pyramida"
+  - "hub and spoke"
+  - "topic cluster"
+  - "long form content"
+  - "ai content structure"
+  - "pillar page seo"
+faq:
+  - q: "Jak dlouhý má pillar content být?"
+    a: "Standard je 2 500–3 500 slov. Kratší obsah pillar nepokryje téma do hloubky a nevyhraje proti konkurenci v top 10. Delší než 4 000 slov bývá kontraproduktivní — uživatel se ztratí, AI engines tahají stejně jen prvních cca 1 000 znaků. Pokud máte materiálu na 5 000+ slov, je to obvykle signál, že máte 2 různá pillar témata, ne jeden článek."
+  - q: "Co je answer block a kam patří?"
+    a: "Answer block je 40–60slovní definice tématu hned po H1, vizuálně oddělená (orámování, jiné pozadí). Slouží AI scraperům jako rychlá citace — ChatGPT, Perplexity a Google AI Overviews z něj nejčastěji čerpají. Patří hned po H1 a před první H2, aby ho AI engine našel v prvních cca 1 000 znacích, které reálně zpracovává."
+  - q: "Pillar content vs tenký článek — proč ten rozdíl?"
+    a: "Tenký článek (200–800 slov) v roce 2026 nemá šanci na top 10. Google preferuje obsah, který kompletně odpovídá na intent — a to vyžaduje hloubku, ne jen klíčová slova. Pillar content navíc generuje long-tail traffic z desítek souvisejících dotazů, kde tenký článek pokryje 1–2. Z pohledu ROI: pillar = 3× více práce na napsání, ale 10–30× více organic trafiku za 12 měsíců."
+  - q: "Co je hub-and-spoke struktura a proč ji používat?"
+    a: "Hub = pillar (široké téma, ~3 000 slov). Spokes = cluster články (úzká podtémata, 800–1 500 slov), které se prolinkují s pillar a mezi sebou. Příklad: pillar 'SEO vs GEO vs AEO vs AIO' + 6 cluster článků (SEO, GEO, AEO, AIO, Praktický postup, Rozhodovací matice). Tato struktura signalizuje Googlu hluboké pokrytí tématu, posiluje autoritu domény a zvyšuje rank pillar stránky."
+  - q: "Kolik H2/H3 sekcí má pillar mít?"
+    a: "Optimum je 6–10 hlavních H2 sekcí, každá s 300–500 slovy. H3 použít, když jedna H2 sekce má víc než 500 slov a logicky se dá rozdělit. Vyhnout se H4–H6 (kromě výjimečných hlubokých struktur) — narušují čitelnost a AI engines je často ignorují. H2 nadpisy by měly tvořit pyramidovou outline, kde z první sekce poznáte, o čem zbytek bude."
+  - q: "Jaké schema markup pillar content potřebuje?"
+    a: "Minimum: Article JSON-LD (headline, description, datePublished, dateModified, author, publisher) + FAQPage JSON-LD pro FAQ sekci (každá Q jako Question s acceptedAnswer). Pro tutoriálové pillary navíc HowTo JSON-LD. Schema neovlivňuje ranking přímo, ale výrazně zvyšuje šanci na rich snippety v SERPu (FAQ accordion, How-to steps) a chápání obsahu AI engines."
+  - q: "Jak často pillar content aktualizovat?"
+    a: "Strukturálně 1× ročně (procházíte celý článek, přepisujete sekce, kde se realita posunula). Dílčí update na klíčových místech (data, ceny, citace) podle potřeby — minimálně každé 3 měsíce u rychle se měnících oborů (AI, kryptoměny, regulace). U evergreen témat (matematika, klasické postupy) stačí 1× za 18–24 měsíců. Datum poslední aktualizace zobrazit viditelně + v Article schema."
+  - q: "Pomáhá pillar content i s AI citation share?"
+    a: "Ano, dramaticky. AI engines (ChatGPT, Perplexity, Claude) preferují citovat dlouhý komplexní obsah, který pokrývá téma z více úhlů — protože z něj získají víc kontextu pro odpověď. Pillar content s answer blockem na začátku, jasnou H2/H3 strukturou a FAQ sekcí na konci je optimální formát pro AI citations. Tenký 500slovní článek AI engines obvykle ignorují ve prospěch hlubšího zdroje."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
+import Compare from "../../components/blocks/Compare.astro";
+import CompareCol from "../../components/blocks/CompareCol.astro";
+
+<Insight tone="seo" icon="✦" label="TL;DR">
+  **Pillar content** je dlouhý průvodce (~3 000 slov), který kompletně pokrývá jedno téma. Struktura jde shora dolů: **hero → answer block (40–60 slov) → 6–10 H2 sekcí → FAQ → schema markup**. Doplněno **hub-and-spoke** strukturou s 5–10 cluster články. Tenký obsah (pod 800 slov) v roce 2026 nemá šanci na top 10 ani na AI citation share — pillar content je default pro každé strategicky důležité téma.
+</Insight>
+
+## Proč pillar content vyhrává nad tenkým obsahem
+
+Tenký obsah (200–800 slov) byl standard v letech 2010–2018, kdy Google rankoval podle keyword density a počtu backlinks. Od **Helpful Content Update (2022)** a nástupu **AI Overviews (2024)** je situace opačná — Google penalizuje obsah, který "jen odškrtává klíčové slovo" bez hloubky. AI engines (ChatGPT, Perplexity) tenký obsah obvykle vůbec necitují, protože z něj nedostanou dost kontextu na kvalitní odpověď.
+
+Tři důvody, proč pillar content vyhrává:
+
+1. **Pokrývá search intent kompletně.** Když uživatel hledá "co je SEO", chce kontext, příklady, srovnání i postup — ne jen definici. Pillar content to poskytne v jednom místě, tenký článek vyžaduje 5 kliků mezi 5 weby.
+2. **Long-tail traffic.** Pillar 3 000 slov ranknete na desítkách souvisejících dotazů (např. pillar o pillar contentu chytá "co je pillar content", "jak dlouhý pillar content", "pillar vs cluster", "pillar content schema", …). Tenký článek pokryje 1–2.
+3. **AI citations.** AI engines preferují dlouhý komplexní obsah pro citace, protože z něj odvodí více souvislostí. Pillar = víc citation share v ChatGPT/Perplexity.
+
+<Compare>
+  <CompareCol title="Tenký obsah (200–800 slov)" tone="bad">
+    - Šance na top 10 v 2026: téměř nulová
+    - AI citation share: minimální
+    - Long-tail traffic: 1–2 KW
+    - Životnost: 6–12 měsíců, pak propad
+    - Update náklady: nízké, ale neefektivní
+    - Vhodné pro: short news, krátké update
+  </CompareCol>
+  <CompareCol title="Pillar content (2 500–3 500 slov)" tone="good">
+    - Šance na top 10: vysoká při kvalitě
+    - AI citation share: výrazně vyšší
+    - Long-tail traffic: desítky souvisejících KW
+    - Životnost: 24–36 měsíců s 1× ročním updatem
+    - Update náklady: vyšší, ale ROI 10–30×
+    - Vhodné pro: každé strategicky důležité téma
+  </CompareCol>
+</Compare>
+
+## Anatomie pillar contentu — vizuální blueprint
+
+Pillar content má **5 vrstev nad sebou**, každá má svou roli pro lidi i pro AI engines. Tady je přehledný layout:
+
+<div class="pillar-blueprint" role="img" aria-label="Schematický blueprint pillar contentu — 5 vrstev nad sebou">
+  <div class="pb-hero">
+    <span class="pb-num">1</span>
+    <div class="pb-content">
+      <strong>Hero (H1 + krátký podtitul)</strong>
+      <span class="pb-meta">Specifický, konkrétní, slibuje hodnotu · 1 řádek podtitulu nebo žádný</span>
+    </div>
+  </div>
+  <div class="pb-arrow">↓</div>
+  <div class="pb-answer">
+    <span class="pb-num">2</span>
+    <div class="pb-content">
+      <strong>Answer block (40–60 slov)</strong>
+      <span class="pb-meta">Vizuálně oddělený rámeček · čtenář dostane odpověď do 5 vteřin · AI scrapery sem chodí pro citaci</span>
+    </div>
+  </div>
+  <div class="pb-arrow">↓</div>
+  <div class="pb-context">
+    <span class="pb-num">3</span>
+    <div class="pb-content">
+      <strong>Detailní rozbor — 6–10 H2 sekcí</strong>
+      <span class="pb-meta">Pyramida: nejdůležitější věci nahoře · každá H2 300–500 slov · doplněno H3 jen kde nutné</span>
+      <ul class="pb-sublist">
+        <li>Co je téma X (definice, kontext)</li>
+        <li>Jak X funguje (mechanika, příklady)</li>
+        <li>Klíčové signály / pilíře / kritéria X</li>
+        <li>Praktický postup pro X (Stepper)</li>
+        <li>Časté chyby / co nedělat</li>
+        <li>Měření výkonu / metriky / nástroje</li>
+        <li>Budoucnost / AI éra / next steps</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pb-arrow">↓</div>
+  <div class="pb-faq">
+    <span class="pb-num">4</span>
+    <div class="pb-content">
+      <strong>FAQ sekce — 6–10 otázek</strong>
+      <span class="pb-meta">Reálné otázky z Google "People Also Ask" + Marketing Miner · každá odpověď 50–120 slov · pokrývá long-tail dotazy, na které pillar text neodpověděl explicitně</span>
+    </div>
+  </div>
+  <div class="pb-arrow">↓</div>
+  <div class="pb-schema">
+    <span class="pb-num">5</span>
+    <div class="pb-content">
+      <strong>Schema markup — Article + FAQPage</strong>
+      <span class="pb-meta">JSON-LD v &lt;head&gt; · FAQPage z FAQ sekce · případně HowTo pro tutoriály · canonical, OG, Twitter Cards</span>
+    </div>
+  </div>
+</div>
+
+<Insight tone="seo" icon="!" label="Pyramidové pravidlo">
+  AI engines (ChatGPT, Perplexity, Claude) tahají z prvních cca **1 000 znaků dokumentu**. Pokud máte hlavní hodnotu zakopanou v sekci 4, **AI engine ji možná nikdy nedostane**. Proto: nejdůležitější odpověď nahoru (answer block), kontext dolů. Stejně tak nejdůležitější H2 sekce na začátku.
+</Insight>
+
+## Sedm vrstev pillar contentu — jak je naplnit
+
+### 1. Hero (H1 + podtitul)
+
+H1 musí být **specifický a konkrétní**. Ne "Vše o SEO" — to je generické a nikdy nezarankuje. Místo toho: "SEO Česko 2026: kompletní průvodce klasickým vyhledáváním v AI éře" — obsahuje primary KW, lokalitu, rok, slibuje hodnotu.
+
+Podtitul (volitelný, 1 řádek) doplňuje H1 o konkrétní benefit nebo úhel pohledu. **Nepoužívat ho, pokud by jen opakoval H1 jinými slovy** — to je duplikace, kterou AI scrapery vidí jako weak signal.
+
+### 2. Answer block (40–60 slov)
+
+Vizuálně oddělený rámeček (jiné pozadí, levý border v brand barvě, pevný rozestup). Obsahuje **definici tématu v jednom odstavci 40–60 slov**, který AI scraper použije jako citaci.
+
+Pravidla pro answer block:
+
+- První věta = krátká definice ("X je …")
+- Druhá věta = klíčový mechanismus / kontext ("Funguje tak, že …")
+- Třetí věta = praktický důsledek / kdy to řešit ("V praxi to znamená …")
+- Žádné odkazy, žádné odrážky, žádné zkratky bez vysvětlení
+- Tučně zvýraznit 2–3 klíčové termíny (AI engines z toho čerpají)
+
+### 3. Detailní rozbor (6–10 H2 sekcí)
+
+**Outline pillar contentu typicky kopíruje univerzální vzorec**, který funguje napříč obory:
+
+1. **Co je X** — definice, kontext, kdy vzniklo
+2. **Jak X funguje v praxi** — mechanika, jednoduché příklady
+3. **Klíčové signály / pilíře / kritéria X** — strukturovaná data (SignalGrid, tabulka)
+4. **Praktický postup pro X** — Stepper se 4–7 kroky
+5. **Časté chyby / co nedělat** — DoDont nebo numbered list
+6. **Měření výkonu / nástroje** — tabulka s metrikami
+7. **Budoucnost / AI éra / next steps** — kontext do dalších 12–24 měsíců
+
+Pro každou H2 sekci platí pravidlo **300–500 slov**. Méně = povrchní, víc = ztratí strukturu (rozdělit na H3 podsekce).
+
+### 4. Vizuální bloky (Insight, Compare, Stepper, Checklist)
+
+Pillar content **bez vizuálních bloků je wall of text** — uživatel scrolluje, ale nezachytí strukturu. Doporučené minimum:
+
+- **2–3 Insight bloky** (klíčové takeaway, pravidla, varování)
+- **1 Compare** (vs srovnání — typicky "starý přístup vs nový", "tenký vs pillar")
+- **1 Stepper** (praktický postup)
+- **1 Checklist** nebo SignalGrid (přehled signálů, kritérií, kontrolních bodů)
+- **1 tabulka** (typicky pro metriky, nástroje, srovnání cen)
+
+Tato kompozice rozbíjí monotonii, dává očím "kotvy" a výrazně zvyšuje **dwell time** (čas strávený na stránce — Google ranking signál).
+
+### 5. FAQ sekce (6–10 otázek)
+
+FAQ na konci pillar contentu má 4 funkce:
+
+1. **Pokrýt long-tail dotazy**, které pillar text explicitně nezodpověděl
+2. **Generovat FAQ rich snippet** v Google SERPu (přes FAQPage schema)
+3. **Dodat AI engines hutné Q→A páry**, které jsou v perfektním formátu pro citace
+4. **Snížit bounce rate** — uživatel najde odpověď bez hledání jinde
+
+Otázky brát z reálných zdrojů — **Google "People Also Ask" panel, Reddit thready k tématu, Marketing Miner search suggestions, ChatGPT prompty od reálných uživatelů**. Nevymýšlet otázky, které nikdo nepokládá.
+
+Každá odpověď: **50–120 slov**, jasná struktura (krátká definice → kontext → praktický důsledek), žádné odkazy uvnitř (snižuje váhu schema).
+
+### 6. Cross-linking na cluster články (hub-and-spoke)
+
+Pillar = hub. Cluster články = spokes. Každá H2 sekce v pillaru, kterou by šlo rozvést do vlastního článku, by měla mít **explicitní cross-link** na ten článek (formou Insight "Samostatný průvodce" boxu, ne jen inline odkazu — vizuálně signalizuje hloubku).
+
+Příklad z tohoto webu: pillar "SEO vs GEO vs AEO vs AIO" → cluster články /seo/, /geo/, /aeo/, /aio/, /prakticky-postup/, /rozhodovaci-matice/. Pillar drží overview, cluster články drží hloubku.
+
+Pravidlo: **5–10 cluster článků** na 1 pillar je sweet spot. Méně = pillar je v silosu, víc = redundance.
+
+### 7. Schema markup + meta
+
+Minimum pro pillar content:
+
+- **Article JSON-LD** v `<head>` — headline, description, datePublished, dateModified, author, publisher, image
+- **FAQPage JSON-LD** vygenerované z FAQ sekce
+- **Open Graph tags** pro sdílení na sociálních sítích (og:title, og:description, og:image 1200×630)
+- **Twitter Card** tags (summary_large_image)
+- **Canonical URL** vždy explicitně nastavený
+- **Hreflang** pokud máte vícejazyčné verze
+
+Pro tutoriálové pillary (postupy, návody) navíc **HowTo JSON-LD** se step-by-step instrukcemi.
+
+## Praktický postup: napsat pillar content od nuly
+
+<Stepper tone="seo" steps={[
+  { title: "Keyword research a outline", desc: "Marketing Miner / Ahrefs: identifikovat 1 primary KW (search volume 200+) a 10–15 long-tail variant. Sepsat outline 6–10 H2 sekcí podle univerzálního vzorce. Cílit na search intent — pillar content je obvykle informační intent, ne transakční." },
+  { title: "Napsat answer block jako první", desc: "40–60 slov, definice + mechanismus + praktický důsledek. Pošlete to ChatGPT/Claude s promptem 'shrň tento text v 1 větě' — pokud AI shrnutí dobře vystihuje téma, answer block je good. Pokud ne, přepište." },
+  { title: "Naplnit 6–10 H2 sekcí (300–500 slov každá)", desc: "Začít sekcí 'Co je X' (kontext) a 'Jak X funguje' (mechanika). Pokračovat 'Klíčové signály', 'Praktický postup', 'Časté chyby', 'Měření', 'Budoucnost'. Každá sekce končí buď konkrétním takeaway nebo přechodem k další." },
+  { title: "Přidat 2–3 Insight + 1 Compare + 1 Stepper + 1 Checklist + 1 tabulku", desc: "Vizuální bloky rozbijí wall of text. Doporučená frekvence: 1 vizuální blok na každých 600–800 slov textu. Insight typicky pro klíčová pravidla, Compare pro 'starý vs nový' nebo 'tenký vs pillar'." },
+  { title: "Napsat FAQ sekci (6–10 otázek z reálných zdrojů)", desc: "Otázky z Google 'People Also Ask', Reddit, Marketing Miner. Žádné vymyšlené dotazy. Každá odpověď 50–120 slov, jasná struktura. Vyhnout se duplikaci s body textem — FAQ pokrývá to, na co text explicitně neodpověděl." },
+  { title: "Schema markup + cross-linking", desc: "Article + FAQPage JSON-LD do <head>. Pro každou H2 sekci, kterou by šlo rozvést do vlastního článku, přidat cross-link na cluster článek (Insight 'Samostatný průvodce' box)." },
+  { title: "Reread + cut + AI test", desc: "Přečíst celý pillar nahlas. Vyhodit redundantní odstavce (pravidlo: pokud věta neodpovídá na 'co tím říkám nového?', vyhodit). Zkopírovat URL do ChatGPT s promptem 'shrň hlavní body tohoto článku' — kvalita shrnutí indikuje, jestli AI engine pillar správně chápe." }
+]} />
+
+## Checklist před publikací
+
+<Checklist tone="seo" items={[
+  "H1 je specifický, konkrétní, obsahuje primary KW + rok",
+  "Answer block 40–60 slov hned po H1, vizuálně oddělený",
+  "Body má 2 500–3 500 slov rozdělených do 6–10 H2 sekcí",
+  "Každá H2 sekce má 300–500 slov, žádná není wall of text",
+  "Použity 2–3 Insight + 1 Compare + 1 Stepper + 1 Checklist + 1 tabulka",
+  "FAQ sekce má 6–10 otázek z reálných zdrojů (PAA, Reddit, Marketing Miner)",
+  "Každá FAQ odpověď je 50–120 slov, žádné vnitřní odkazy",
+  "Article + FAQPage JSON-LD jsou v <head>",
+  "OG tags + Twitter Card + canonical URL nastaveny",
+  "5–10 cross-linků na cluster články přes Insight boxy (ne inline)",
+  "datum poslední aktualizace viditelně zobrazené + v Article schema",
+  "Image alt texty u všech obrázků (AI engines i screen readers)"
+]} />
+
+## Časté chyby v pillar contentu
+
+1. **Generický H1** — "Vše o SEO", "Kompletní průvodce SEO" — nikdy nezarankuje proti specifickým variantám.
+2. **Žádný answer block** nebo answer block schovaný v 3. odstavci — AI scrapery ho najdou pozdě nebo vůbec.
+3. **Wall of text bez vizuálních bloků** — uživatel scrolluje, ale nezachytí strukturu, bounce rate roste.
+4. **FAQ jako duplikace body textu** — odpovědi na otázky, které už pillar text pokryl. AI scrapery to vyhodnotí jako redundanci a snižují citation váhu.
+5. **Nezvládnutá délka** — 1 800 slov je pod hranicí pillar contentu, 5 000+ slov bývá 2 různá pillar témata stlačená do jednoho.
+6. **Outdated data bez update timestamp** — uživatel i AI engine ztratí důvěru, že obsah je aktuální.
+7. **Žádný cross-link na cluster články** — pillar je v silosu, nepřispívá topical authority.
+8. **Schema markup chybí nebo je broken** — ztrácíte FAQ rich snippet a horší AI chápání obsahu.
+
+## Pillar vs cluster článek — kdy co psát
+
+| Typ | Délka | Účel | Příklad |
+|---|---|---|---|
+| **Pillar** | 2 500–3 500 slov | Široké téma, autorita, hub pro cluster | "SEO vs GEO vs AEO vs AIO" |
+| **Cluster (sekce)** | 800–1 500 slov | Hluboké pokrytí 1 podtématu | "Co je SEO" |
+| **Tutorial článek** | 1 500–2 500 slov | Praktický postup s checklistem | "SEO audit — co kontrolovat 1× ročně" |
+| **Defenzivní článek** | 1 500–2 500 slov | Brand mention v negativním kontextu | "Jak vypnout AI Overview" |
+| **Case study** | 1 200–2 000 slov | Konkrétní výsledek, čísla, postup | "Jak jsme zvedli organic traffic o 340 %" |
+| **Krátký update / news** | 300–600 slov | Aktuální zpráva, newsjacking | "Google update XYZ — co to znamená" |
+
+Pro **každé strategicky důležité téma** = pillar. Pro **podtémata** = cluster nebo tutorial. Tenký obsah pod 800 slov má smysl jen u krátkých update / news, kde se očekává freshness, ne hloubka.
+
+## Měření výkonu pillar contentu
+
+| Metrika | Zdroj | Frekvence | Cíl pro pillar |
+|---|---|---|---|
+| Pozice na primary KW | GSC, Ahrefs | týdně | top 10 do 6 měsíců, top 3 do 12 |
+| Long-tail KW počet (top 10) | Ahrefs, GSC | měsíčně | 20+ KW po 6 měsících |
+| Organic sessions | GA4 | měsíčně | rostoucí trend, 500+ /měsíc po 12 měsících |
+| Average time on page | GA4 | měsíčně | 4+ minut |
+| Scroll depth (75 %+) | GA4, Hotjar | měsíčně | 40 %+ uživatelů |
+| Bounce rate | GA4 | měsíčně | pod 60 % |
+| Backlinks | Ahrefs, Semrush | čtvrtletně | 5+ kvalitních linků za první rok |
+| AI citation share | Otterly, Profound | měsíčně | mention v ChatGPT/Perplexity |
+
+Pro většinu webů stačí **GSC + GA4 (zdarma)** + měsíční manuální kontrola pozic na top 5 KW. Pro agentury nebo enterprise pillar pages se vyplatí **Ahrefs nebo SE Ranking** na ranking tracking + AI citation monitoring.
+
+## Sniperdesign a pillar content
+
+V [Sniperdesign.cz](https://www.sniperdesign.cz/) řešíme pillar content jako součást **kompletního AI SEO balíčku**. Pro každého klienta sestavujeme content strategy s 2–4 pillar tématy a 10–25 cluster články, plánováno na 12–18 měsíců dopředu. Pillar content sám o sobě nestačí — musí být zasazen do **hub-and-spoke struktury** a podpořen technickým SEO, AEO i GEO. Vše dodáváme jako jeden balík se strategií, audity, copywritingem i implementací pod jednou střechou.
+
+## Zdroje a další čtení
+
+- **[SEO — pillar sekce](/seo/)** — kontext klasického SEO, na kterém pillar content staví
+- **[AEO — odpovědi pro AI](/aeo/)** — answer block + FAQ schema jsou hlavní AEO techniky
+- **[GEO — citovatelnost v AI](/geo/)** — proč pillar content vyhrává v AI citation share
+- **[Praktický postup](/prakticky-postup/)** — kde pillar content zapadá do širší AI SEO strategie
+- **[SEO nástroje 2026](/seo-nastroje-2026/)** — keyword research a content optimization nástroje
+- **HubSpot Pillar Page Guide** — `hubspot.com/topic-clusters` (originální koncept hub-and-spoke)
+- **Backlinko Skyscraper Technique** — `backlinko.com/skyscraper-technique` (jak vyhrát top 10 dlouhým obsahem)
