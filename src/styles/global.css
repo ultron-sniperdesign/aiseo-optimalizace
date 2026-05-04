@@ -128,6 +128,41 @@ h3 strong {
   font-weight: 600;
 }
 
+/* ===== BODY H2 — vizuální hook v běžném textu =====
+ * Section pages (/seo/, /geo/, ...), article pages i pillar používají
+ * .page > .article__prose wrapper. Přidáváme:
+ *   - top border separator (rozdělí "wall of text")
+ *   - numbered prefix (01, 02, ...) v discipline color (--d)
+ *   - mono font na prefix → vizuální odlišení od heading textu
+ * Specificita .page .article__prose h2 přebije scoped .article__prose :global(h2)
+ * v jednotlivých page routes. */
+.page .article__prose {
+  counter-reset: h2-counter;
+}
+.page .article__prose h2 {
+  position: relative;
+  padding-top: 1.75rem;
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--color-rule);
+  counter-increment: h2-counter;
+}
+.page .article__prose h2::before {
+  content: counter(h2-counter, decimal-leading-zero);
+  display: inline-block;
+  margin-right: 0.7em;
+  color: var(--d, var(--color-accent));
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.55em;
+  letter-spacing: 0.06em;
+  vertical-align: 0.55em;
+}
+.page .article__prose h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
 /* Reading-comfort prose defaults pro pillar/sekce */
 .prose-content {
   max-width: 72ch;
