@@ -33,7 +33,7 @@ faq:
     a: "První signály v Google Search Console (rostoucí impressions) typicky 4–8 týdnů po implementaci. Pohyb pozic v top 10 pro střední konkurenční KW 3–6 měsíců. Měřitelný růst organic traffic + konverzí 6–12 měsíců. AI Overview citation typicky rychleji než klasické pozice (4–8 týdnů), protože FAQ schema je jednorázový technický fix. AI citation v ChatGPT/Perplexity 3–6 měsíců (vyžaduje brand mentions napříč webem)."
 ---
 
-## Co se v roce 2026 pro e‑shopy reálně mění
+## Co se v <span class="hl">roce 2026</span> pro e‑shopy <strong>reálně mění</strong>
 
 Ještě před dvěma lety se SEO pro e‑shop dalo shrnout do tří vrstev: **technické zdraví**, **on‑page optimalizace** kategorií a produktovek, a **off‑page** v podobě backlinků. Tyhle tři vrstvy fungují i v roce 2026 — bez nich vás Google ani nezačne brát vážně. Co se ale **změnilo zásadně**, je ekonomika kliknutí.
 
@@ -45,7 +45,7 @@ Váš zákazník dnes hledá ve **třech různých režimech**, často všech v 
 
 **Rozdíl mezi tím, kdo z těchto kanálů přivede traffic, a kdo ne, je v roce 2026 zásadní.** Pro e‑shop, který doteď řešil jen Google pozice, to znamená přidat dvě nové vrstvy: **AI viditelnost** (aby vás AI engines citovaly) a **AI defense** (aby vám AI Overview „nesebral“ klik u edukativních dotazů).
 
-## Pět věcí, které musíte v e‑shopu udělat
+## <span class="hl">Pět věcí</span>, které musíte v e‑shopu <strong>udělat</strong>
 
 Ne všechno z následujícího seznamu je nové — ale priorita se posunula. Co bylo „nice to have“ v roce 2024, je v roce 2026 nutné minimum.
 
@@ -111,7 +111,7 @@ Pokud máte na e‑shopu blog nebo kategorie typu „rady a návody“, **AI Ove
 
 Detail v samostatném [návodu, jak omezit AI Overviews](/jak-vypnout-ai-overview/) — sekce „Jak zablokovat AIO pro vlastní web“.
 
-## Kolik to stojí — reálné ceny v ČR (2026)
+## <strong>Kolik to stojí</strong> — <span class="hl">reálné ceny v ČR</span> (2026)
 
 Trh SEO služeb pro e‑shopy v ČR je rozdělený zhruba do tří cenových hladin. Tady je orientační rozpětí podle reálných ceníků specializovaných agentur:
 
@@ -138,7 +138,7 @@ Trh SEO služeb pro e‑shopy v ČR je rozdělený zhruba do tří cenových hla
 
 Pokud uvažujete o pořízení SEO služeb, **nepouštějte se do dlouhodobého kontraktu bez auditu**. Audit za 5–25 tisíc je investice, která vám potvrdí, jestli má smysl pokračovat — a také jestli daná agentura ví, co dělá.
 
-## Kdy řešit interně a kdy s agenturou
+## Kdy řešit <span class="hl">interně</span> a kdy <strong>s agenturou</strong>
 
 Není pravda, že každý e‑shop potřebuje agenturu. Pro některé je lepší investovat čas vlastníka, pro jiné je interní řešení neefektivní. Tady je rámec, který používáme jako rozhodovací matice:
 
@@ -161,7 +161,7 @@ Není pravda, že každý e‑shop potřebuje agenturu. Pro některé je lepší
 
 Pro hraniční případy (200–500 produktů) se osvědčila **hybrid strategie**: agenturní audit + roadmap → vlastník postupně implementuje → agentura kvartálně reviewuje výsledky a aktualizuje strategii. Náklady 30–80 tisíc ročně místo 200+ tisíc za plnou kontinuální péči.
 
-## Kde má smysl si nás najmout
+## Kde má smysl <strong>si nás</strong> <span class="hl">najmout</span>
 
 Tenhle web (`aiseo-optimalizace.cz`) staví **Sniperdesign** — agentura specializovaná na **e‑shopy na Upgates a Shoptet**, **Zlatý Upgates partner od 2016**, přes **500 e‑shopů na CZ trhu**. Ne klasická marketingová agentura — specialista na e‑commerce s vlastními moduly, audit balíčky a custom vývojem.
 
@@ -174,7 +174,7 @@ Tenhle web (`aiseo-optimalizace.cz`) staví **Sniperdesign** — agentura specia
 
 Co nás odlišuje: **provozujeme vlastní e‑shop** ([MEGA DETAIL](https://www.megadetail.cz/)), takže nemluvíme z teorie, ale z reálné zkušenosti. Filozofie agentury: *„Kde jiní řeknou 'to nejde', my hledáme cesty.“*
 
-## Co dělat tento týden, tento měsíc, tento kvartál
+## <strong>Co dělat</strong> <span class="hl">tento týden, tento měsíc, tento kvartál</span>
 
 Pokud jste dočetli až sem, máte přehled. Co teď konkrétně:
 

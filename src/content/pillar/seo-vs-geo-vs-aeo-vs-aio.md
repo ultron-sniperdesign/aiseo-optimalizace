@@ -30,7 +30,7 @@ faq:
     a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma. V tomto průvodci používáme oba zaměnitelně."
 ---
 
-## Úvod: Proč najednou 4 zkratky místo jedné
+## <strong>Úvod</strong>: Proč najednou <span class="hl">4 zkratky</span> místo jedné
 
 Ještě v roce 2023 stačilo říct „SEO" a všichni věděli, o co jde — optimalizace stránek pro pozice v Googlu, Seznamu nebo Bingu. Pak přišel ChatGPT, Google AI Overviews, Perplexity, Claude a generativní vyhledávání. A s nimi tři nové zkratky: **GEO, AEO a AIO**.
 
@@ -38,7 +38,7 @@ Ještě v roce 2023 stačilo říct „SEO" a všichni věděli, o co jde — op
 
 Problém je, že **pojmy se v textech navzájem prolínají**. Jeden článek mluví o GEO jako o „optimalizaci pro generativní AI", druhý o AEO ve stejném smyslu, třetí používá AIO jako synonymum pro AI Overviews. V tomto průvodci je rozeberu jednotlivě a v reálných příkladech, abyste si po jeho přečtení dokázali sami říct, kterou disciplínu kde použít.
 
-## Co je SEO (klasické vyhledávání)
+## Co je <span class="hl">SEO</span> <strong>(klasické vyhledávání)</strong>
 
 **SEO (Search Engine Optimization) je optimalizace webové stránky tak, aby se zobrazovala na vysokých pozicích v organických výsledcích vyhledávačů jako Google nebo Seznam.**
 
@@ -53,7 +53,7 @@ SEO funguje na principu **rankingových algoritmů** — Google hodnotí stránk
 
 → Detailní rozbor SEO signálů a kdy SEO samo o sobě stačí najdete v sekci [SEO — Search Engine Optimization](/seo/).
 
-## Co je GEO — Generative Engine Optimization
+## Co je <span class="hl">GEO</span> — <strong>Generative Engine Optimization</strong>
 
 **GEO (Generative Engine Optimization) je optimalizace obsahu tak, aby byl citován jako zdroj v odpovědích generativních AI nástrojů — ChatGPT, Perplexity, Claude, Gemini.**
 
@@ -73,7 +73,7 @@ Když uživatel zadá ChatGPT dotaz „jaké jsou nejlepší AI nástroje pro SE
 
 → Detailní GEO playbook (formátování pro citace, fact-density, brand authority) najdete v sekci [GEO — Generative Engine Optimization](/geo/).
 
-## Co je AEO — Answer Engine Optimization
+## Co je <span class="hl">AEO</span> — <strong>Answer Engine Optimization</strong>
 
 **AEO (Answer Engine Optimization) je optimalizace obsahu tak, aby byl použit jako přímá odpověď v „answer engines" — Google AI Overviews, Bing Chat, Google Featured Snippets.**
 
@@ -100,7 +100,7 @@ Pro většinu webů a e-shopů znamená dobrý AEO **měřitelný posun během t
 
 → Hlubší ponor do AEO (FAQPage schema, HowTo, krátké odpovědi po H2) v sekci [AEO — Answer Engine Optimization](/aeo/).
 
-## Co je AIO — AI Overviews / AI Optimization
+## Co je <span class="hl">AIO</span> — <strong>AI Overviews / AI Optimization</strong>
 
 **AIO má dva významy — záleží na kontextu:**
 
@@ -128,7 +128,7 @@ Kuriózní zjištění z dat Google Trends: **3 z 5 nejrostoucích dotazů** kol
 
 → Plné rozšíření AIO (oba významy, defenzivní strategie, blokace přes nosnippet) v sekci [AIO — AI Optimization / AI Overviews](/aio/).
 
-## Srovnávací tabulka SEO / GEO / AEO / AIO
+## <strong>Srovnávací tabulka</strong> <span class="hl">SEO / GEO / AEO / AIO</span>
 
 Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychlý reference guide:
 
@@ -143,7 +143,7 @@ Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychl
 | **Časový horizont výsledku** | 3–6 měsíců | 1–3 měsíce | 2–4 měsíce | Závisí na pillaru |
 | **Klíčový nástroj** | Google Search Console, Ahrefs | Mention monitoring (Otterly, Profound) | Google AIO tracker, Search Console | Hybrid stack |
 
-## Kdy použít kterou disciplínu (rozhodovací matrix)
+## Kdy použít <strong>kterou disciplínu</strong> <span class="hl">(rozhodovací matrix)</span>
 
 Pokud máte omezené zdroje, není reálné dělat všechny 4 disciplíny naplno. Tady je rozhodovací rámec:
 
@@ -178,7 +178,7 @@ Pokud máte omezené zdroje, není reálné dělat všechny 4 disciplíny naplno
 
 → Detailní rozhodovací matice s konkrétními triggery (kdy přidat AEO, kdy GEO) v sekci [Rozhodovací matice](/rozhodovaci-matice/).
 
-## Praktický postup: jak začít s GEO/AEO/AIO ve 4 krocích
+## <strong>Praktický postup</strong>: jak začít s <span class="hl">GEO/AEO/AIO</span> ve 4 krocích
 
 ### Krok 1 — Audit existujícího obsahu pro AI citovatelnost
 
@@ -235,7 +235,7 @@ Pro průběžné měření stačí jednou měsíčně manuálně otestovat top 1
 
 → Krok-za-krokem checklist + měřicí rámec v sekci [Praktický postup](/prakticky-postup/).
 
-## Co se NEdoporučuje (anti-patterns)
+## Co se <strong>NEdoporučuje</strong> <span class="hl">(anti-patterns)</span>
 
 Při optimalizaci pro AI se snadno udělají čtyři chyby, které se v CZ obsahovém marketingu opakují:
 
@@ -257,7 +257,7 @@ Klíčové zjištění z analýzy CZ trhu: **AI Overviews škodí dlouhým how-t
 
 Pokud máte e-shop nebo B2B SaaS s dlouhými edukačními průvodci, zvažte, **zda se chcete v AIO objevovat** — protože AI vám může „sebrat" odpověď a uživatel už neklikne. Někdy je strategicky správnější obsah **z AIO blokovat** přes `nosnippet` meta tag.
 
-## Závěr: Co dělat příští týden
+## <strong>Závěr</strong>: Co dělat <span class="hl">příští týden</span>
 
 Pokud jste dočetli až sem, máte přehled o všech 4 zkratkách. Co teď s tím **konkrétně** udělat:
 
@@ -268,7 +268,7 @@ Pokud jste dočetli až sem, máte přehled o všech 4 zkratkách. Co teď s tí
 
 Pokud váháte, kterou disciplínu řešit jako první, nebo nechcete to celé řešit interně, ozvěte se nám do **[Sniperdesign.cz](https://www.sniperdesign.cz/)** — pomáháme webům a e-shopům s AI SEO od auditu obsahu po nasazení strukturovaných dat a měření.
 
-## Zdroje a další čtení
+## <strong>Zdroje</strong> a <span class="hl">další čtení</span>
 
 - [Search Engine Land — What is Generative Engine Optimization](https://searchengineland.com/what-is-generative-engine-optimization-geo-444418)
 - [Pavel Ungr — AI Overviews v Česku a na Slovensku](https://www.pavelungr.cz/ai-overviews-jsou-v-cesku-i-na-slovensku-co-to-meni-pro-seo-strategii/)

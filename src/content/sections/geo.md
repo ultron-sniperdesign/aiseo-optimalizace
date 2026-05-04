@@ -19,13 +19,13 @@ faq:
     a: "Rychlejší než SEO — typicky 1–3 měsíce. AI engines nemají retargeting cyklus jako Google ranking, citace se aktualizují průběžně s novým crawlem. Faktor: jak rychle se nový obsah dostane do training/RAG dat dané platformy (ChatGPT crawl latence ~14 dní, Perplexity blíž real-time)."
 ---
 
-## Jak GEO funguje v praxi
+## Jak <span class="hl">GEO</span> funguje <strong>v praxi</strong>
 
 Když uživatel zadá ChatGPT dotaz „jaké jsou nejlepší AI nástroje pro SEO 2026", model nevytahuje top 10 modrých odkazů jako Google. Místo toho **vygeneruje odpověď v přirozené řeči** a u některých platforem (Perplexity, ChatGPT v search módu, Gemini, Claude search) k ní přidá **citace zdrojů**.
 
 GEO řeší: jak udělat, aby právě váš web byl tím citovaným zdrojem. Pojem zavedli akademici z Princetonu v roce 2023 (paper „GEO: Generative Engine Optimization" — Aggarwal et al.), kde testovali, jak různé úpravy obsahu mění pravděpodobnost citace v generativní odpovědi. Klíčové zjištění: **strukturovaný obsah s konkrétními fakty zvyšuje citation rate o 30–40 %** oproti volně psanému textu.
 
-## GEO vs. SEO — klíčový rozdíl
+## <span class="hl">GEO</span> vs. <span class="hl">SEO</span> — <strong>klíčový rozdíl</strong>
 
 | | SEO | GEO |
 |---|---|---|
@@ -38,7 +38,7 @@ GEO řeší: jak udělat, aby právě váš web byl tím citovaným zdrojem. Poj
 
 Detailní srovnání všech 4 disciplín v [pillar průvodci](/seo-vs-geo-vs-aeo-vs-aio/).
 
-## Co AI hledá v obsahu
+## Co <span class="hl">AI hledá</span> v <strong>obsahu</strong>
 
 ### Fact-density — fakta jsou základ
 
@@ -72,7 +72,7 @@ První formulace je čistá definice — AI ji vytáhne 1:1. Druhá je marketing
 
 AI engines váží **brand mentions** v autoritních komunitách (Reddit, Hacker News, Quora, oborové fóra) jako citation signal. Web bez brand mentions má citation rate o ~40 % nižší než stejně kvalitní obsah s mentions (Princeton GEO paper).
 
-## Praktický GEO playbook
+## Praktický <span class="hl">GEO</span> <strong>playbook</strong>
 
 ### Krok 1 — Audit obsahu na fact-density
 
@@ -126,7 +126,7 @@ Allow: /
 
 Tento web (`aiseo-optimalizace.cz/robots.txt`) je živý příklad této konfigurace.
 
-## Měření GEO výkonu
+## <strong>Měření</strong> <span class="hl">GEO</span> výkonu
 
 | Metrika | Zdroj | Frekvence |
 |---|---|---|
@@ -136,7 +136,7 @@ Tento web (`aiseo-optimalizace.cz/robots.txt`) je živý příklad této konfigu
 | **Manuální audit** | ChatGPT/Perplexity dotaz na top 10 vašich KW | měsíčně |
 | **Backlinks** z autoritních zdrojů | Ahrefs / Semrush | měsíčně |
 
-## Kdy investovat do GEO
+## Kdy <strong>investovat</strong> do <span class="hl">GEO</span>
 
 GEO **nenahrazuje** [SEO](/seo/). Investice má smysl, pokud:
 
@@ -147,7 +147,7 @@ GEO **nenahrazuje** [SEO](/seo/). Investice má smysl, pokud:
 
 Pro většinu CZ B2C e-shopů je v roce 2026 GEO ještě **luxus** — efektivnější je investice do [AEO](/aeo/) (Google AI Overviews) a klasického SEO. Detailní rozhodovací rámec v [Rozhodovací matici](/rozhodovaci-matice/).
 
-## Časté chyby v GEO
+## <strong>Časté chyby</strong> v <span class="hl">GEO</span>
 
 1. **Optimalizace bez SEO baseline** — bez Google indexace vás AI engine nezacituje
 2. **AI-generated obsah bez fact-checku** — AI engines penalizují halucinace

@@ -147,10 +147,8 @@ body .page .article__prose h2 {
 body .page .article__prose h2:first-child {
   margin-top: 0;
 }
-/* <strong> uvnitř body H2 — tučný v discipline color (jako .faq__title strong) */
-body .page .article__prose h2 strong {
-  color: var(--d, var(--color-accent));
-}
+/* <strong> uvnitř body H2 zůstává v ink color (default font-weight 600
+ * z h1/h2/h3 strong rule výše). Modré zvýraznění řeší .hl span. */
 
 /* Reading-comfort prose defaults pro pillar/sekce */
 .prose-content {

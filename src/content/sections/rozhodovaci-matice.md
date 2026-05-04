@@ -19,11 +19,11 @@ faq:
     a: "Tři možnosti, podle severity: (a) selektivní data-nosnippet na úvodní bloky dlouhých článků, (b) meta nosnippet globálně (ztratíte i klasické snippets), (c) přepsat dlouhé how-to do formátu kratších článků — uživatel klikne dál pro detaily. Začněte A/B testem před plošnou implementací."
 ---
 
-## Rozhodovací rámec ve 4 fázích
+## <strong>Rozhodovací rámec</strong> ve <span class="hl">4 fázích</span>
 
 Pokud máte omezené zdroje, **není reálné dělat všechny 4 disciplíny naplno**. Tady je rozhodovací rámec podle fáze projektu a typu businessu.
 
-## Začněte s SEO, pokud…
+## Začněte s <span class="hl">SEO</span>, <strong>pokud…</strong>
 
 - **Web je nový** (do 12 měsíců) a nemá ještě indexovou autoritu
 - **Hlavní traffic kanál je organic search** — typicky B2C e-shopy, lokální služby
@@ -39,7 +39,7 @@ V této fázi neřešte AIO/GEO/AEO. Soustřeďte se na:
 
 Detail v sekci [SEO](/seo/).
 
-## Přidejte AEO, jakmile…
+## Přidejte <span class="hl">AEO</span>, <strong>jakmile…</strong>
 
 - Máte **20+ článků v top 10** organické pozice
 - Většina dotazů, které řešíte, jsou **informační** (jak udělat X, co je Y)
@@ -55,7 +55,7 @@ V této fázi přidejte:
 
 Detail v sekci [AEO](/aeo/) a praktický postup v sekci [Praktický postup](/prakticky-postup/).
 
-## Investujte do GEO, pokud…
+## Investujte do <span class="hl">GEO</span>, <strong>pokud…</strong>
 
 - Vaše **B2B nebo prémiová cílovka** aktivně používá ChatGPT/Perplexity pro research
 - Brand mention v AI odpovědi je pro vás **konverzně cenný** (B2B, SaaS, konzultace)
@@ -71,7 +71,7 @@ V této fázi:
 
 Detail v sekci [GEO](/geo/).
 
-## AIO jako zastřešující strategii nasazujte, když…
+## <span class="hl">AIO</span> jako zastřešující strategii <strong>nasazujte, když…</strong>
 
 - Máte **zralý SEO program** a chcete jeden koherentní rámec
 - Marketingový tým potřebuje **jednu metriku/strategii** místo tří
@@ -79,7 +79,7 @@ Detail v sekci [GEO](/geo/).
 
 AIO je v této roli **strategický deštník** nad SEO+GEO+AEO. Detail v sekci [AIO](/aio/).
 
-## Praktická rozhodovací matice podle typu businessu
+## <strong>Praktická rozhodovací matice</strong> podle <span class="hl">typu businessu</span>
 
 ### B2C e-shop (módní, elektronika, FMCG)
 
@@ -117,7 +117,7 @@ AIO je v této roli **strategický deštník** nad SEO+GEO+AEO. Detail v sekci [
 | [GEO](/geo/) | ✅ vysoká | Brand mention v ChatGPT = autorita = traffic |
 | [AIO](/aio/) | ⚠️ defenzivní | **Selektivní `nosnippet`** na long-form how-to |
 
-## Pozor: AIO může i škodit
+## Pozor: <span class="hl">AIO</span> může i <strong>škodit</strong>
 
 **Klíčové zjištění z analýzy CZ trhu:**
 
@@ -154,13 +154,13 @@ Pokud máte e-shop nebo B2B SaaS s dlouhými edukačními průvodci, zvažte, **
 </div>
 ```
 
-## Praktická realita pro většinu webů a e-shopů
+## <strong>Praktická realita</strong> pro <span class="hl">většinu webů a e-shopů</span>
 
 Pro většinu webů a e-shopů v ČR má v roce 2026 smysl začít kombinací **SEO + AEO** (FAQ schema, HowTo, krátké odpovědi nahoře). GEO investice má smysl až ve chvíli, kdy máte měřitelnou cílovku v AI nástrojích — typicky B2B, prémiové služby nebo konzultanti, kde si zákazník dělá research přes ChatGPT a Perplexity. Pro běžný B2C e-shop to zatím není priorita.
 
 **Praktický důsledek:** dělejte málo věcí, ale pořádně. Lepší jeden answer block s poctivou FAQ a validním schema na 20 nejnavštěvovanějších stránkách než povrchní GEO + AEO + AIO „mix" napříč celým webem.
 
-## Rozhodovací stromek (zjednodušený)
+## <strong>Rozhodovací stromek</strong> <span class="hl">(zjednodušený)</span>
 
 ```
 1. Je web mladší než 12 měsíců?
@@ -184,7 +184,7 @@ Pro většinu webů a e-shopů v ČR má v roce 2026 smysl začít kombinací **
    → NE: postupně přidávat disciplíny
 ```
 
-## Časté chyby v rozhodování
+## <strong>Časté chyby</strong> v <span class="hl">rozhodování</span>
 
 1. **Přeskakování fází** — investice do GEO bez SEO baseline = vyhozené peníze
 2. **AIO embrace bez měření** — bez sledování CTR/traffic nevíte, jestli vám AIO škodí nebo pomáhá

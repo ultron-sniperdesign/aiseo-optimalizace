@@ -19,11 +19,11 @@ faq:
     a: "Ne, je to nutná ale nedostačující podmínka. Bez kvalitního SEO baseline (indexace, autorita) vás Google v AIO nezobrazí. Bez brand mentions vás ChatGPT necituje. Praktický postup je celý cyklus: SEO foundations → answer block + FAQ → měření → iterace."
 ---
 
-## Praktický postup ve 4 krocích
+## <strong>Praktický postup</strong> ve <span class="hl">4 krocích</span>
 
 Tento postup vychází z draftu pillar průvodce a je optimalizovaný pro CZ trh v roce 2026. Cílem je minimalizovat „zatočení v slepých uličkách" a zaměřit se na **akce s nejvyšším ROI**.
 
-## Krok 1 — Audit existujícího obsahu pro AI citovatelnost
+## Krok 1 — <strong>Audit existujícího obsahu</strong> pro <span class="hl">AI citovatelnost</span>
 
 Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte **4 otázky**:
 
@@ -54,7 +54,7 @@ FAQPage schema je **přímý kanál** pro Google AI Overviews — Google z něj 
 
 **Akce:** Pokud ne, přidejte ji. Otázky berte z **People Also Ask** (PAA) boxů a Google Search Console (dotazy s rostoucími impressions ale klesající CTR).
 
-## Krok 2 — Schema.org markup (FAQPage, HowTo, Article)
+## Krok 2 — <strong>Schema.org markup</strong> <span class="hl">(FAQPage, HowTo, Article)</span>
 
 Schema markup je **strojově čitelný popis** vaší stránky, který AI engines explicitně vyhledávají. Tři typy, které musí mít každá content stránka:
 
@@ -117,7 +117,7 @@ Před deployem validujte přes:
 - **Google Rich Results Test** — https://search.google.com/test/rich-results
 - **Schema Markup Validator** — https://validator.schema.org
 
-## Krok 3 — Strukturované odpovědi (answer block + kontext)
+## Krok 3 — <strong>Strukturované odpovědi</strong> <span class="hl">(answer block + kontext)</span>
 
 Každý článek by měl mít **dvouvrstevnou strukturu**:
 
@@ -145,7 +145,7 @@ Pod answer blockem — pro lidské čtenáře, kteří chtějí hlubší pochope
 
 Tento web má v každé sekci výraznou definici tučně (**„X je…"**). Není to estetický doplněk — je to **přímý signál pro AI scrapery**, kde najdou definici daného pojmu.
 
-## Krok 4 — Měření: SERP features tracking + AI citation monitoring
+## Krok 4 — <strong>Měření</strong>: <span class="hl">SERP features tracking + AI citation monitoring</span>
 
 ### Co měřit
 
@@ -176,7 +176,7 @@ Stejný postup pro AI engines:
 2. Perplexity: „<keyword>" → jste v citacích vpravo?
 3. Claude (s search): „<keyword>" → cituje vás?
 
-## Mapování fází projektu na disciplíny
+## <strong>Mapování fází projektu</strong> na <span class="hl">disciplíny</span>
 
 | Fáze projektu | Doba | Doporučená disciplína |
 |---|---|---|
@@ -188,7 +188,7 @@ Stejný postup pro AI engines:
 
 Klíč: **NEpřeskakujte fáze.** Každá vrstva staví na předchozí. Bez SEO base nezafunguje AEO. Bez AEO + brand authority nezafunguje GEO.
 
-## Praktický kalendář implementace (90 dní)
+## <strong>Praktický kalendář implementace</strong> <span class="hl">(90 dní)</span>
 
 ### Týden 1–2: Audit a strategie
 

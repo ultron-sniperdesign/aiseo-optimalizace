@@ -19,7 +19,7 @@ faq:
     a: "LLMO (Large Language Model Optimization) je novější synonymum pro GEO — používané hlavně v anglických zdrojích z 2024+. Některé agentury rozlišují: LLMO = optimalizace pro obecné LLM bez search modulu (ChatGPT bez search), GEO = pro LLM s real-time search (Perplexity, Gemini Search). V praxi se pojmy zaměňují."
 ---
 
-## Dva významy AIO — rozeznejte je v textu
+## Dva významy <span class="hl">AIO</span> — <strong>rozeznejte je v textu</strong>
 
 Pojem AIO se v praxi míchá ve dvou rolích, které spolu sice souvisí, ale nepoužívejte je zaměnitelně:
 
@@ -37,7 +37,7 @@ Konkrétní funkce Google vyhledávače, kde se nad organickými výsledky zobra
 
 V tomto průvodci používáme AIO primárně ve významu **AI Optimization** jako strategický deštník nad SEO/GEO/AEO. Když mluvíme o konkrétní funkci Google, píšeme **„AI Overviews"** plně.
 
-## AI Overviews v praxi
+## <span class="hl">AI Overviews</span> <strong>v praxi</strong>
 
 AI Overview je **krátký generovaný přehled s odpovědí na dotaz**, do kterého Gemini vybírá informace z více zdrojů, doplňuje je obrázky, doporučenými odkazy nebo souvisejícími tématy.
 
@@ -64,7 +64,7 @@ V CZ je AIO viditelné u **~30 % informačních dotazů** s rostoucí tendencí.
 | **Související otázky** | „Lidé se také ptají" (PAA box) |
 | **Obrázky / videa** | Pokud relevantní pro téma |
 
-## Defenzivní strana mince — AIO není pro každého
+## <strong>Defenzivní strana mince</strong> — <span class="hl">AIO</span> není pro každého
 
 Kuriózní zjištění z dat Google Trends: **3 z 5 nejrostoucích dotazů** kolem „ai overview" v ČR jsou **defenzivní**:
 
@@ -92,7 +92,7 @@ Důležitý princip pro vaši strategii:
 
 **AIO škodí dlouhým průvodcům**, kde uživatel získá kompletní odpověď v panelu a už neklikne. Naopak **prospívá krátkým news/edu článkům**, kde panel funguje jako teaser.
 
-## Kdy AIO blokovat
+## Kdy <span class="hl">AIO</span> <strong>blokovat</strong>
 
 Pro publishers s dlouhými edukačními průvodci je validní strategie **AIO bypass**:
 
@@ -123,7 +123,7 @@ Můžete blokovat jen **odpověď block**, zatímco zbytek článku zůstává A
 
 Hard limit na 0 znaků snippet. Nukleární možnost — efektivně schová stránku z AIO i klasických snippets.
 
-## Praktický postup pro AIO strategii
+## <strong>Praktický postup</strong> pro <span class="hl">AIO strategii</span>
 
 ### Krok 1 — Audit aktuální AIO presence
 
@@ -160,7 +160,7 @@ Před plošnou implementací `nosnippet` udělejte **A/B test**:
 
 Klíčový **warning signál**: rostoucí impressions + klesající CTR = AIO „krade" kliky → zvážit `nosnippet`.
 
-## AIO jako strategický rámec
+## <span class="hl">AIO</span> jako <strong>strategický rámec</strong>
 
 Pro C-level a marketingové leadery je **AIO jako AI Optimization** často srozumitelnější než tři separátní zkratky. Strategie pak zní:
 
@@ -168,7 +168,7 @@ Pro C-level a marketingové leadery je **AIO jako AI Optimization** často srozu
 
 Pojem AIO tedy slouží jako **deštník** nad implementačními disciplínami. AIO ≠ jeden konkrétní postup; AIO = strategická vize.
 
-## Časté chyby v AIO strategii
+## <strong>Časté chyby</strong> v <span class="hl">AIO strategii</span>
 
 1. **AIO bez SEO baseline** — bez Google indexace se v AIO neobjevíte vůbec
 2. **Plošná `nosnippet`** — ztratíte i pozitivní snippet trafic, který fungoval

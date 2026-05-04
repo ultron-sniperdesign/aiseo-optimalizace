@@ -21,7 +21,7 @@ faq:
     a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma."
 ---
 
-## AEO vs. GEO — kde je hranice
+## <span class="hl">AEO</span> vs. <span class="hl">GEO</span> — <strong>kde je hranice</strong>
 
 AEO je **užší pojem než [GEO](/geo/)**. Zatímco GEO řeší citace v jakémkoli generativním AI (včetně ChatGPT, který Google nevyhledává), AEO se soustředí specificky na **answer engines napojené na vyhledávač**: typicky Google AI Overviews (dříve SGE — Search Generative Experience) a Bing Chat.
 
@@ -29,7 +29,7 @@ AEO je **užší pojem než [GEO](/geo/)**. Zatímco GEO řeší citace v jakém
 
 Pro většinu CZ webů má AEO **větší přímý dopad na traffic** než GEO — Google AI Overviews čte v roce 2026 mnohem víc Čechů než ChatGPT/Perplexity dohromady. AEO je tedy **prioritní investice** pro publishers, content marketers a B2C brandy, kteří chtějí přežít zero-click éru.
 
-## Klíčové platformy pro AEO
+## Klíčové <strong>platformy</strong> pro <span class="hl">AEO</span>
 
 ### Google AI Overviews
 
@@ -53,7 +53,7 @@ Klasická „pozice 0" — krátký výtah z 1 zdroje nahoře nad organickými v
 
 Entitní data o brandu vpravo v SERPu. Není to klasický AEO, ale **brand entity** v Knowledge Graphu posiluje šanci být citován v AIO.
 
-## Co AEO vyžaduje
+## Co <span class="hl">AEO</span> <strong>vyžaduje</strong>
 
 ### 1. FAQPage schema markup
 
@@ -110,7 +110,7 @@ První věta je AI-friendly. Druhá je marketingová vata.
 
 Jeden nápad na odstavec. Žádné „omáčky" ani „proudové" psaní.
 
-## AIO presence není automaticky výhra
+## <span class="hl">AIO presence</span> není <strong>automaticky výhra</strong>
 
 Důležitý insight, na který se v běžných AEO návodech zapomíná: **objevit se v AI Overview neznamená nutně víc trafficu.** Zero-click search je reálné riziko — uživatel dostane odpověď přímo v Googlu a na váš web už nepřijde.
 
@@ -122,7 +122,7 @@ Důležitý insight, na který se v běžných AEO návodech zapomíná: **objev
 
 **Z toho plyne pravidlo pro AEO:** krátký edu obsah a FAQ optimalizujte pro AIO citaci, dlouhé průvodce zvažte selektivně — někdy je strategicky lepší část obsahu z AIO **vyřadit**. Detail v sekci [Rozhodovací matice](/rozhodovaci-matice/).
 
-## Praktický postup AEO
+## <strong>Praktický postup</strong> <span class="hl">AEO</span>
 
 ### Krok 1 — Audit existujícího obsahu
 
@@ -157,7 +157,7 @@ V GSC sledujte:
 
 Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 vašich klíčových slov v Googlu a zapsat do tabulky, kde se objevil AI Overview a jestli z něj vede odkaz na váš web. Pokud chcete profesionální tracking, dají se použít specializované AIO/GEO nástroje (Otterly, Profound a další), ale pro většinu webů ze začátku stačí ta tabulka.
 
-## Časté chyby v AEO
+## <strong>Časté chyby</strong> v <span class="hl">AEO</span>
 
 1. **Nucení FAQ kde nepatří** — vymyšlené otázky („Proč je naše agentura nejlepší?") nemají citation value
 2. **Příliš dlouhé answer blocks** — > 60 slov, AI scraper najde jen prvních 60
@@ -165,7 +165,7 @@ Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 vašich 
 4. **Schema bez `mainEntity`** — neplatný JSON-LD, Google ignoruje
 5. **Optimalizace pouze pro AIO bez pohledu na CTR** — viz „win/loss" insight výše
 
-## Kdy přidat AEO
+## Kdy <strong>přidat</strong> <span class="hl">AEO</span>
 
 Začněte s [SEO](/seo/) basics. AEO přidejte, jakmile:
 
