@@ -498,10 +498,10 @@ const faqCount = entry.data.faq?.length ?? 0;
     height: 1px;
     background: var(--color-accent);
   }
-  .article__prose :global(ol) {
+  .article__prose :global(ol:not(.stp)) {
     counter-reset: ord;
   }
-  .article__prose :global(ol li) {
+  .article__prose :global(ol:not(.stp) > li) {
     position: relative;
     padding-left: 2.25rem;
     margin-bottom: 0.75rem;
@@ -509,7 +509,7 @@ const faqCount = entry.data.faq?.length ?? 0;
     font-size: 1.0625rem;
     counter-increment: ord;
   }
-  .article__prose :global(ol li::before) {
+  .article__prose :global(ol:not(.stp) > li::before) {
     content: counter(ord);
     position: absolute;
     left: 0;
