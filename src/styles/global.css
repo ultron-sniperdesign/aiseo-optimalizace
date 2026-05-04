@@ -128,32 +128,28 @@ h3 strong {
   font-weight: 600;
 }
 
-/* ===== BODY H2 — vizuální hook v běžném textu =====
- * Section pages (/seo/, /geo/, ...), article pages i pillar používají
- * .page > .article__prose wrapper. Přidáváme:
- *   - krátký accent bar nad heading textem v discipline color (--d)
- *   - extra margin-top → vzdušnost mezi sekcemi
- * Žádné číslování (01, 02, ...) — to je vyhrazené pro homepage section heads.
- * Specificita .page .article__prose h2 přebije scoped .article__prose :global(h2)
- * v jednotlivých page routes. */
-.page .article__prose h2 {
-  position: relative;
-  padding-top: 1.5rem;
-  margin-top: 3.5rem;
+/* ===== BODY H2 — globální design napříč webem =====
+ * Sjednoceno s typografií .faq__title (light weight, větší letter-spacing,
+ * clamp 1.5–2rem). Section pages (/seo/, /geo/, ...), article pages
+ * i pillar používají .page > .article__prose wrapper.
+ *
+ * Specificita .page .article__prose h2 přebije scoped .article__prose
+ * :global(h2) v jednotlivých page routes. */
+body .page .article__prose h2 {
+  font-family: var(--font-sans);
+  font-weight: 250;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  margin: 3.5rem 0 1.25rem;
 }
-.page .article__prose h2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.5rem;
-  height: 3px;
-  background: var(--d, var(--color-accent));
-  border-radius: 2px;
-}
-.page .article__prose h2:first-child {
+body .page .article__prose h2:first-child {
   margin-top: 0;
-  padding-top: 1.5rem;
+}
+/* <strong> uvnitř body H2 — tučný v discipline color (jako .faq__title strong) */
+body .page .article__prose h2 strong {
+  color: var(--d, var(--color-accent));
 }
 
 /* Reading-comfort prose defaults pro pillar/sekce */
