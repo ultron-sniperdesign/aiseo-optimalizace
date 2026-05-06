@@ -196,9 +196,9 @@ const stepsCount = entry.data.howto?.steps.length ?? 0;
 
   /* ===== HERO ===== */
   .hero {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
+    padding: clamp(3rem, 9vh, 6rem) var(--space-section-x) clamp(2rem, 4vw, 3rem);
   }
   .hero__crumbs {
     display: flex;
@@ -285,9 +285,9 @@ const stepsCount = entry.data.howto?.steps.length ?? 0;
 
   /* ===== ANSWER BLOCK ===== */
   .answer {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
   }
   .answer__inner {
     background: var(--color-paper-deep);
@@ -329,9 +329,9 @@ const stepsCount = entry.data.howto?.steps.length ?? 0;
 
   /* ===== STEPPER (HowTo schema → visual) ===== */
   .stepper-wrap {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x);
   }
   .stepper__head {
     margin-bottom: 2.5rem;
@@ -426,9 +426,9 @@ const stepsCount = entry.data.howto?.steps.length ?? 0;
 
   /* ===== ARTICLE BODY ===== */
   .article {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+    padding: clamp(2rem, 4vw, 3rem) var(--space-section-x) clamp(3rem, 5vw, 5rem);
   }
   .article__head {
     margin-bottom: 2.5rem;
@@ -632,9 +632,9 @@ const stepsCount = entry.data.howto?.steps.length ?? 0;
 
   /* ===== FAQ ===== */
   .faq {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(3rem, 5vw, 5rem) var(--space-section-x);
     border-top: 1px solid var(--color-rule);
     background: var(--color-paper-deep);
   }
@@ -698,9 +698,9 @@ const stepsCount = entry.data.howto?.steps.length ?? 0;
 
   /* ===== BACK CTA ===== */
   .back-cta {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 4rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+    padding: clamp(3rem, 5vw, 4rem) var(--space-section-x) clamp(3rem, 5vw, 5rem);
     display: flex;
     flex-wrap: wrap;
     gap: 0.875rem;

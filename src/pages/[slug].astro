@@ -240,8 +240,8 @@ const ogImage = `/og/${entry.data.slug}.png`;
   /* ===== HERO ===== */
   .d-hero {
     position: relative;
-    padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vh, 4rem);
-    max-width: 80rem;
+    padding: clamp(3rem, 9vh, 6rem) var(--space-section-x) clamp(2.5rem, 5vh, 4rem);
+    max-width: var(--max-section);
     margin: 0 auto;
   }
   .d-hero__crumbs {
@@ -341,9 +341,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
 
   /* ===== ANSWER BLOCK ===== */
   .answer {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
   }
   .answer__inner {
     background: var(--color-paper-deep);
@@ -385,9 +385,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
 
   /* ===== ARTICLE BODY ===== */
   .article {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(1rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+    padding: clamp(1rem, 3vw, 2rem) var(--space-section-x) clamp(3rem, 5vw, 5rem);
   }
   .article__prose {
     max-width: 40rem;
@@ -569,9 +569,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
 
   /* ===== FAQ ===== */
   .faq {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(3rem, 5vw, 5rem) var(--space-section-x);
     border-top: 1px solid var(--color-rule);
     background: var(--color-paper-deep);
   }
@@ -638,9 +638,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
 
   /* ===== RELATED ===== */
   .related {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(3rem, 5vw, 5rem) var(--space-section-x);
   }
   .related__head {
     margin-bottom: 2.5rem;

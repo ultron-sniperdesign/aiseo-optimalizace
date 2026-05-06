@@ -825,9 +825,9 @@ const quartet: Quartet[] = [
 
   /* ===== HERO ===== */
   .hero {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3.5rem, 11vh, 8rem) clamp(1.25rem, 4vw, 4rem) clamp(3.5rem, 7vh, 6rem);
+    padding: clamp(3.5rem, 11vh, 8rem) var(--space-section-x) clamp(3.5rem, 7vh, 6rem);
   }
   .hero__intro {
     margin-bottom: 3rem;
@@ -1470,9 +1470,9 @@ const quartet: Quartet[] = [
     background: var(--color-paper-deep);
   }
   .stat-bar__inner {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(2rem, 4vw, 3.5rem) var(--space-section-x);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 0;

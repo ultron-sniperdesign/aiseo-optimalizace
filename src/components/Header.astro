@@ -57,9 +57,9 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     border-bottom: 1px solid var(--color-rule);
   }
   .site-header__inner {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0.875rem clamp(1.25rem, 4vw, 4rem);
+    padding: 0.875rem var(--space-section-x);
     display: flex;
     align-items: center;
     justify-content: space-between;

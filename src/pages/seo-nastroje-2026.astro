@@ -152,9 +152,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== HERO ===== */
   .hero {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
+    padding: clamp(3rem, 9vh, 6rem) var(--space-section-x) clamp(2rem, 4vw, 3rem);
   }
   .hero__crumbs {
     display: flex;
@@ -241,9 +241,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== ANSWER BLOCK ===== */
   .answer {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
   }
   .answer__inner {
     background: var(--color-paper-deep);
@@ -275,9 +275,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== ARTICLE ===== */
   .article {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
   }
   .article__head {
     max-width: 50rem;
@@ -402,9 +402,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== FAQ ===== */
   .faq {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
   }
   .faq__head {
     max-width: 50rem;
@@ -461,9 +461,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== BACK CTA ===== */
   .back-cta {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(4rem, 8vw, 6rem);
+    padding: 0 var(--space-section-x) clamp(4rem, 8vw, 6rem);
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;

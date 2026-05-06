@@ -238,9 +238,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== HERO ===== */
   .hero {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 9vh, 6rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
+    padding: clamp(3rem, 9vh, 6rem) var(--space-section-x) clamp(2rem, 4vw, 3rem);
   }
   .hero__title {
     font-size: clamp(1.875rem, 4.5vw, 3.75rem);
@@ -291,9 +291,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== ANSWER BLOCK (sjednoceno s articles) ===== */
   .answer {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
+    padding: 0 var(--space-section-x) clamp(2rem, 4vw, 3rem);
   }
   .answer__inner {
     background: var(--color-paper-deep);
@@ -335,9 +335,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== LAYOUT (ToC + Article) ===== */
   .layout {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x) clamp(3rem, 5vw, 5rem);
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -619,9 +619,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== FAQ ===== */
   .faq {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(3rem, 5vw, 5rem) var(--space-section-x);
     border-top: 1px solid var(--color-rule);
     background: var(--color-paper-deep);
   }
@@ -688,9 +688,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
   /* ===== BACK CTA ===== */
   .back-cta {
-    max-width: 80rem;
+    max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 4rem) clamp(1.25rem, 4vw, 4rem) clamp(3rem, 5vw, 5rem);
+    padding: clamp(3rem, 5vw, 4rem) var(--space-section-x) clamp(3rem, 5vw, 5rem);
     text-align: center;
   }
   .back-cta__link {
