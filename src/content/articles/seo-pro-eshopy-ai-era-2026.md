@@ -1,10 +1,10 @@
 ---
 title: "SEO pro e‑shopy v AI éře 2026: co změnit, kolik to stojí, kde začít"
 description: "Praktický průvodce SEO pro e‑shopy v AI éře. Co se mění s AI Overviews, na co zacílit v kategoriích a produktovkách, kolik to stojí a kdy si najmout agenturu."
-answer: "SEO pro e‑shop v AI éře už není jen o pozicích v Googlu. Klíčové změny: (1) FAQPage schema u kategorií i produktů, (2) Product schema s recenzemi a cenou, (3) krátké odpovědi 40–60 slov v úvodu kategorií, (4) E‑E‑A‑T signály na produktových stránkách. Náklady od 2 500 Kč (audit) po desítky tisíc měsíčně (kontinuální péče)."
+answer: "SEO pro e‑shop v AI éře už není jen o pozicích v Googlu. Hlavní akční oblasti: (1) Product schema s cenou, dostupností a recenzemi (technická hygiena pro Shopping i strojovou čitelnost), (2) FAQ sekce u kategorií jako lépe strukturovaný obsah pro citaci, (3) krátký introduction nad listingem produktů, (4) signály důvěry (recenze, transparentní informace o firmě). Priorita podle typu sortimentu a velikosti katalogu — ne plošně. Náklady od jednotek tisíc Kč (basic audit) po desítky tisíc měsíčně (kontinuální péče)."
 slug: "seo-pro-eshopy-ai-era-2026"
 category: "analysis"
-updated: "2026-05-01"
+updated: "2026-05-06"
 keywords:
   - "seo pro eshopy"
   - "seo optimalizace eshopu"
@@ -18,19 +18,19 @@ keywords:
   - "shoptet seo"
 faq:
   - q: "Funguje klasické SEO pro e‑shop v roce 2026 ještě?"
-    a: "Ano, ale samotné už nestačí. Klasické SEO (technické, on‑page, off‑page) zůstává základem — bez něj vás Google ani neindexuje. Co je nové: musíte přidat AI vrstvu — strukturovaná data Product a Review, FAQ schema u kategorií a produktů, krátké odpovědi v úvodu, E‑E‑A‑T signály. Bez AI vrstvy přijdete o viditelnost v Google AI Overviews a v citacích ChatGPT/Perplexity."
+    a: "Ano. Klasické SEO (technické, on‑page, off‑page) zůstává základem — bez něj vás Google ani neindexuje. Pro část informačních a srovnávacích dotazů má smysl přidat AI vrstvu: strukturovaná data Product a Review, FAQ sekci u kategorií, jasné krátké odpovědi v úvodu kategorií, signály důvěry. Priorita AI vrstvy závisí na typu sortimentu — největší smysl dává tam, kde zákazník před nákupem řeší výběr, srovnání nebo návod, marginální dopad u čistě transakčních kategorií se silným brandem nebo výkonným PPC."
   - q: "Kolik stojí SEO pro e‑shop?"
     a: "Široký rozptyl podle rozsahu. Základní SEO audit pro malý e‑shop začíná kolem 2 500 Kč. Komplexní SEO audit s prioritními nálezy a roadmapou stojí typicky 20 000–25 000 Kč. Optimalizace e‑shopu (technické SEO + AI viditelnost + Lighthouse + microdata) se pohybuje 4 000–25 000 Kč podle stavu webu. Kontinuální péče v agenturní spolupráci 15 000–60 000 Kč měsíčně. Cena auditu je jednorázová investice, kontinuální SEO se vrací typicky za 6–12 měsíců."
   - q: "Co znamená AI Overview pro můj e‑shop?"
     a: "Google AI Overviews se aktivuje hlavně pro informační dotazy („jaký nejlepší vrtací stroj“, „jak vyčistit lyžařské boty“) — ne pro transakční („koupit bosch gsr 18v“). Pro e‑shop to znamená: kategorie a edukativní obsah (návody, srovnání) jsou ohrožené zero‑click search. Produktové detailní stránky AIO obvykle nezobrazí. Strategie: optimalizujte kategorie pro citaci v AIO (FAQ, krátké odpovědi), produktovky držte v klasickém SEO + Product schema."
   - q: "Doporučuje ChatGPT a Perplexity konkrétní e‑shopy?"
-    a: "Ano, ale jen ty s dostatečnými signály. AI engines preferují e‑shopy s: (1) backlinky z autoritních zdrojů (recenze v médiích, srovnávače), (2) brand mentions v komunitách (Heureka diskuze, Reddit, oborová fóra), (3) strukturovaná data Product s recenzemi, (4) vlastní obsah za produktovými listingy (návody, FAQ, srovnání). Bez těchto signálů AI engines preferují velké marketplace (Alza, Mall, Heureka)."
+    a: "U citovaných e‑shopů se v praxi často opakují tyto vlastnosti: silnější brand, externí zmínky a recenze (média, srovnávače, komunity jako Heureka diskuze nebo oborová fóra), strukturovaná produktová data, kvalitní obsah za produktovými listingy. Mechanismus, jak různé AI nástroje (ChatGPT, Perplexity, Gemini, Copilot) vybírají citované zdroje, není veřejně publikovaný a liší se mezi nástroji — berte to jako pracovní hypotézu, ne jako garanci. U běžných transakčních dotazů často citace dominují velké marketplace (Alza, Mall, Heureka)."
   - q: "Kdy se vyplatí najmout SEO agenturu a kdy řešit interně?"
     a: "Interně dává smysl, pokud máte: (1) e‑shop s méně než 100 produkty a vlastníka s časem na psaní obsahu, (2) jednoduchou platformu (Shoptet, Upgates, WooCommerce) bez customizací, (3) potřebu jen základní SEO higieny. Agenturu zvažte, pokud: (1) máte 500+ produktů a víc než 5 kategorií, (2) chcete růst rychleji než „pomalé organické“, (3) potřebujete custom moduly nebo migraci platformy, (4) chcete AI viditelnost (AIO, ChatGPT citace) nad rámec klasického SEO."
   - q: "Co je rozdíl mezi SEO pro Upgates a Shoptet?"
     a: "Hlavní principy SEO platí pro obě platformy stejně (title, meta, struktura, schema, rychlost). Rozdíly jsou v technické implementaci: Upgates nabízí flexibilnější moduly a custom úpravy designu, ale vyžaduje partnera, který platformu zná do hloubky. Shoptet má víc out‑of‑the‑box SEO funkcí, ale méně prostoru pro custom rozšíření. Pro AI éru je důležité, že obě platformy umožňují přidat strukturovaná data — záleží jen na tom, kdo to udělá správně."
   - q: "Jak rychle uvidím výsledky SEO pro e‑shop?"
-    a: "První signály v Google Search Console (rostoucí impressions) typicky 4–8 týdnů po implementaci. Pohyb pozic v top 10 pro střední konkurenční KW 3–6 měsíců. Měřitelný růst organic traffic + konverzí 6–12 měsíců. AI Overview citation typicky rychleji než klasické pozice (4–8 týdnů), protože FAQ schema je jednorázový technický fix. AI citation v ChatGPT/Perplexity 3–6 měsíců (vyžaduje brand mentions napříč webem)."
+    a: "Orientačně: první signály v Google Search Console (rostoucí impressions) typicky 4–8 týdnů po implementaci. Pohyb pozic v top 10 pro střední konkurenční KW 3–6 měsíců. Měřitelný růst organic traffic + konverzí 6–12 měsíců. Viditelnost v AI Overviews a citacích AI nástrojů zatím není stabilní metrika s předvídatelným časem náběhu — implementace strukturovaných dat a kvalitního obsahu může zvýšit šanci, garantovat konkrétní horizont nelze. Konkrétní čísla závisí na výchozím stavu, konkurenci, sezónnosti a implementační kvalitě."
 ---
 
 ## Co se v <span class="hl">roce 2026</span> pro e‑shopy <strong>reálně mění</strong>
@@ -45,22 +45,29 @@ Váš zákazník dnes hledá ve **třech různých režimech**, často všech v 
 
 **Rozdíl mezi tím, kdo z těchto kanálů přivede traffic, a kdo ne, je v roce 2026 zásadní.** Pro e‑shop, který doteď řešil jen Google pozice, to znamená přidat dvě nové vrstvy: **AI viditelnost** (aby vás AI engines citovaly) a **AI defense** (aby vám AI Overview „nesebral“ klik u edukativních dotazů).
 
-## <span class="hl">Pět věcí</span>, které musíte v e‑shopu <strong>udělat</strong>
+## <span class="hl">Pět oblastí</span>, kde má smysl <strong>investovat čas</strong>
 
-Ne všechno z následujícího seznamu je nové — ale priorita se posunula. Co bylo „nice to have“ v roce 2024, je v roce 2026 nutné minimum.
+Ne všechny body z následujícího seznamu jsou plošně povinné. Před implementací priorizujte podle business kontextu:
 
-### 1. FAQ schema u kategorií a produktů
+- **Malý e‑shop do 100 produktů** — začněte Product schema, recenzemi a úpravou top 5 kategorií. FAQ tam, kde má sortiment research fázi.
+- **Střední e‑shop / specializovaný sortiment** — Product schema, FAQ u kategorií s research fází, krátký intro nad listingem, signály důvěry.
+- **Velký katalog (1 000+ produktů)** — řešte hlavně šablony produktovek a kategorií, faceted navigation, indexační hygienu, kvalitu produktových dat na škálu. FAQ jako sekundární prioritu.
+- **Sortiment s dlouhou research fází** (elektronika, sport, hobby) — přidejte FAQ, srovnání, návody. AI vrstva má vyšší dopad.
+- **Brandově silný e‑shop** — větší ROI bývá u práce s recenzemi, reputací a SERP coverage než u technické AI optimalizace.
 
-Google AI Overview aktivně **čte FAQPage strukturovaná data** a zařazuje je do souhrnů. ChatGPT a Perplexity dělají totéž. Pokud má vaše kategorie „vrtací stroje“ FAQ se 4–6 reálnými dotazy zákazníků („jaký vrtací stroj pro domácnost“, „rozdíl mezi příklepovou a aku vrtačkou“), získáváte **dvojí benefit**: rich snippet v Googlu + citaci v AI odpovědi.
+### 1. FAQ sekce u kategorií s research fází
+
+Dobře napsaná FAQ sekce dělá z kategorie lépe strukturovaný a citovatelný obsah pro vyhledávače i AI nástroje. `FAQPage` schema je technická hygiena — Google v posledních letech dopad FAQ rich results omezil, takže schema samo o sobě nezaručuje rich snippet ani citaci v AI Overviews. Priorita je **psát otázky podle reálných zákaznických dotazů a odpovědi formulovat jasně, samostatně a fakticky** — schema je pak technický wrapper.
+
+Příklad: kategorie „vrtací stroje" s FAQ na otázky jako „jaký vrtací stroj pro domácnost" nebo „rozdíl mezi příklepovou a aku vrtačkou" — odpovědi vytahujte z **People Also Ask** v Googlu, z **Heureka recenzí** a ze **support ticketů**.
 
 **Konkrétní akce:**
-- Top 20 kategorií na vašem e‑shopu → každá dostane FAQ sekci s 4–6 otázkami
-- Otázky vytahujte z **People Also Ask** v Googlu, z **Heureka recenzí** a ze **support ticketů**
+- Top 20 kategorií na vašem e‑shopu → ty s research fází sortimentu dostanou FAQ sekci s 4–6 otázkami
 - Strukturovaná data validujte přes [Google Rich Results Test](https://search.google.com/test/rich-results)
 
-### 2. Product schema s recenzemi a cenou
+### 2. Product schema s recenzemi, cenou a dostupností
 
-Pro produktové stránky je `schema.org/Product` v roce 2026 absolutní minimum. Bez něj se nedostanete do Google Shopping rich results, do AI Overview produkt comparison panelu, ani vás AI engines nepoužijí jako citaci.
+`schema.org/Product` je pro e‑shop technická priorita, protože pomáhá vyhledávačům jednoznačně číst cenu, dostupnost, značku, hodnocení a varianty produktu. Samo o sobě **negarantuje Shopping viditelnost ani AI citace** — pro produktové výsledky je stejně důležitý kvalitní Merchant Center feed, správné GTIN/EAN, dostupnost, recenze a konkurenceschopná nabídka. Ale: bez validního Product schema připravujete vyhledávač o jasný strojový vstup pro cenu a dostupnost, což oslabuje šanci na rich results plošně.
 
 **Co Product schema musí obsahovat:**
 - `name`, `image`, `description`
@@ -71,9 +78,11 @@ Pro produktové stránky je `schema.org/Product` v roce 2026 absolutní minimum.
 
 Většina českých e‑shop platforem (Shoptet, Upgates, WooCommerce s pluginem) generuje Product schema automaticky, ale **kvalita generovaného markupu se liší**. Audit přes Rich Results Test je 30 minut práce a často odhalí, že schema je technicky validní, ale chybí mu klíčová pole pro AI éru.
 
-### 3. Krátké odpovědi 40–60 slov v úvodu kategorií
+### 3. Krátký intro nad listingem produktů
 
-Klasická kategorie e‑shopu začíná tabulkou produktů a SEO textem dole. **Pro AI éru tohle nefunguje.** AI scrapery čtou prvních ~1 000 znaků obsahu pod H1 — pokud tam najdou jen tabulku produktů, kategorii ignorují.
+Klasická kategorie e‑shopu začíná tabulkou produktů a SEO textem až dole. **Pro kategorie s research fází tohle není ideální** — uživatel ani vyhledávač nedostane rychle informaci, co kategorie obsahuje a podle čeho vybírat.
+
+Princip není pevný limit znaků, ale jasnost: nad listingem by měly být **2–4 věty (~40–60 slov)**, které říkají, co kategorie obsahuje, pro koho je a podle čeho vybírat. Pomáhá to uživateli, vyhledávačům i AI nástrojům rychle pochopit účel kategorie.
 
 **Správný formát kategorie 2026:**
 
@@ -86,11 +95,11 @@ Klasická kategorie e‑shopu začíná tabulkou produktů a SEO textem dole. **
 
 Tenhle format pokrývá **klasické SEO** (text v úvodu = relevance), **AI Overview** (FAQ + krátká odpověď = citation hook) a **konverzní cestu** (tabulka produktů hned po answer blocku, žádné scrollování).
 
-### 4. E‑E‑A‑T signály na produktových stránkách
+### 4. Signály důvěry a transparentnosti
 
-Google E‑E‑A‑T (Experience, Expertise, Authoritativeness, Trustworthiness) se v roce 2024 týkal hlavně YMYL témat (zdraví, finance). Od 2025 se rozšířil na **všechny komerční dotazy**, včetně e‑shopů. AI engines totéž.
+E‑E‑A‑T (Experience, Expertise, Authoritativeness, Trustworthiness) **není samostatný ranking faktor** — je to rámec z Google Quality Rater Guidelines pro posuzování zkušenosti, odbornosti, autority a důvěryhodnosti, který algoritmus aproximuje přes různé proxy signály. U e‑shopů se prakticky překládá do signálů důvěry a transparentnosti, které jsou vždy důležité — bez ohledu na to, jestli to dnes Google explicitně komunikuje jako prioritu pro váš sortiment.
 
-**Co E‑E‑A‑T pro e‑shop znamená v praxi:**
+**Co to pro e‑shop znamená v praxi:**
 - **Recenze a hodnocení** — zobrazené přímo na produktové stránce, ne jen v Heuréce
 - **Datum poslední aktualizace** stránky (`dateModified` v Article/Product schema)
 - **Autor produktového textu** — ideálně se jménem a credentials (např. „testováno naším produktovým týmem“)
@@ -111,9 +120,9 @@ Pokud máte na e‑shopu blog nebo kategorie typu „rady a návody“, **AI Ove
 
 Detail v samostatném [návodu, jak omezit AI Overviews](/jak-vypnout-ai-overview/) — sekce „Jak zablokovat AIO pro vlastní web“.
 
-## <strong>Kolik to stojí</strong> — <span class="hl">reálné ceny v ČR</span> (2026)
+## <strong>Kolik to stojí</strong> — <span class="hl">orientační ceny v ČR</span> (2026)
 
-Trh SEO služeb pro e‑shopy v ČR je rozdělený zhruba do tří cenových hladin. Tady je orientační rozpětí podle reálných ceníků specializovaných agentur:
+Trh SEO služeb pro e‑shopy v ČR je rozdělený zhruba do tří cenových hladin. Rozpětí níže je **orientační** — vychází z veřejných ceníků českých SEO/e‑commerce dodavatelů dostupných k 5/2026 a z typických nabídek pro malé a střední e‑shopy. Ceny se mohou výrazně lišit podle platformy, počtu URL, rozsahu implementace a seniority dodavatele:
 
 | Co | Cena (Kč bez DPH) | Délka |
 |---|---:|---|
@@ -136,7 +145,7 @@ Trh SEO služeb pro e‑shopy v ČR je rozdělený zhruba do tří cenových hla
 - Link building kampaně
 - A/B testování konverzních prvků
 
-Pokud uvažujete o pořízení SEO služeb, **nepouštějte se do dlouhodobého kontraktu bez auditu**. Audit za 5–25 tisíc je investice, která vám potvrdí, jestli má smysl pokračovat — a také jestli daná agentura ví, co dělá.
+Pokud uvažujete o pořízení SEO služeb, **nepouštějte se do dlouhodobého kontraktu bez auditu**. Jednorázový audit ukáže, jestli rozsah a priority dodavatele dávají pro váš web smysl. Návratnost auditu samotného závisí na implementační kapacitě — bez následné implementace zůstává audit jen diagnostickým dokumentem.
 
 ## Kdy řešit <span class="hl">interně</span> a kdy <strong>s agenturou</strong>
 
@@ -161,18 +170,9 @@ Není pravda, že každý e‑shop potřebuje agenturu. Pro některé je lepší
 
 Pro hraniční případy (200–500 produktů) se osvědčila **hybrid strategie**: agenturní audit + roadmap → vlastník postupně implementuje → agentura kvartálně reviewuje výsledky a aktualizuje strategii. Náklady 30–80 tisíc ročně místo 200+ tisíc za plnou kontinuální péči.
 
-## Kde má smysl <strong>si nás</strong> <span class="hl">najmout</span>
+## Kde má smysl <strong>si nechat poradit</strong>
 
-Tenhle web (`aiseo-optimalizace.cz`) staví **Sniperdesign** — agentura specializovaná na **e‑shopy na Upgates a Shoptet**, **Zlatý Upgates partner od 2016**, přes **500 e‑shopů na CZ trhu**. Ne klasická marketingová agentura — specialista na e‑commerce s vlastními moduly, audit balíčky a custom vývojem.
-
-**Co děláme pro e‑shopy v AI éře:**
-
-- **AI‑ready optimalizace e‑shopu** (3 850 – 23 000 Kč) — kompletní balíček: technické SEO + AI viditelnost (FAQ schema, Product schema, Article schema) + Lighthouse + microdata. Délka 14–30 dní podle stavu webu. [Detaily na sniperdesign.cz](https://www.sniperdesign.cz/optimalizace-e-shopu).
-- **Strukturovaný SEO audit** (2 500 – 22 900 Kč) — 8 auditních balíčků: od základního SEO (title/meta) přes UX, Core Web Vitals, Page Speed až po komplexní SEO audit s prioritními nálezy. [Sniperdesign audity](https://www.sniperdesign.cz/audity).
-- **Custom moduly Upgates a Shoptet** — hotové moduly i programování na míru: konfigurátory, kalkulátory, API propojení, migrace mezi platformami. [Co děláme](https://www.sniperdesign.cz/co-delame).
-- **Strategická konzultace** — jednorázový call s konkrétními doporučeními, nebo dlouhodobá spolupráce. Pro e‑shopy, které už fungují a chtějí růst rychleji a chytřeji. [Sniperdesign konzultace](https://www.sniperdesign.cz/konzultace).
-
-Co nás odlišuje: **provozujeme vlastní e‑shop** ([MEGA DETAIL](https://www.megadetail.cz/)), takže nemluvíme z teorie, ale z reálné zkušenosti. Filozofie agentury: *„Kde jiní řeknou 'to nejde', my hledáme cesty.“*
+Pokud potřebujete posoudit konkrétní e‑shop nebo nechcete řešit AI vrstvu interně, [Sniperdesign.cz](https://www.sniperdesign.cz/) dělá audity a implementace pro Upgates a Shoptet — strukturované [auditní balíčky](https://www.sniperdesign.cz/audity), [optimalizace e‑shopu](https://www.sniperdesign.cz/optimalizace-e-shopu) a [strategické konzultace](https://www.sniperdesign.cz/konzultace). První konzultace nezávazná — pomáhá srovnat doporučený scope s vašimi vlastními prioritami.
 
 ## <strong>Co dělat</strong> <span class="hl">tento týden, tento měsíc, tento kvartál</span>
 

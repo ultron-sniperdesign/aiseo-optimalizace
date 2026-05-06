@@ -1,10 +1,10 @@
 ---
 title: "Local SEO Česko 2026: kompletní průvodce pro firmy se zákazníky v okolí"
-description: "Proč je Local SEO v ČR rostoucí kategorie, jak optimalizovat Google Business Profile a Seznam Firmy a co dělá AI éra s lokálními dotazy."
-answer: "Local SEO je optimalizace pro vyhledávání s lokálním záměrem (město, okres, region). Šest klíčových signálů: kompletní Google Business Profile, NAP konzistence (Name + Address + Phone), Seznam Firmy záznam pro CZ trh, lokální zpětné odkazy z .cz domén, recenze a lokalizovaný obsah. V ČR jedna z nejrychleji rostoucích podkategorií SEO."
+description: "Jak v ČR optimalizovat Google Business Profile a Seznam Firmy, na čem stojí lokální viditelnost a co s ní dělá AI éra. Prioritizace podle typu firmy."
+answer: "Local SEO je optimalizace pro vyhledávání s lokálním záměrem (město, okres, region). Práce typicky stojí na šesti pilířích — Google Business Profile, NAP konzistence (Name + Address + Phone), Seznam Firmy záznam pro CZ trh, lokální zpětné odkazy z .cz domén, recenze a lokalizovaný obsah. Priorita pilířů se liší podle typu firmy: jiné u lokální služby s provozovnou, jiné u multi-pobočkového řetězce, jiné u service-area byznysu."
 slug: "local-seo-cesko-2026"
 category: "tutorial"
-updated: "2026-05-03"
+updated: "2026-05-06"
 keywords:
   - "local seo"
   - "lokální seo"
@@ -28,7 +28,7 @@ faq:
   - q: "Jak získat víc recenzí na Google Business Profile?"
     a: "Aktivně si o ně říkat. Konkrétní postupy: (1) QR kód s direct link na recenzní formulář umístěný v provozovně, na účtence, v emailu po službě; (2) follow-up email 2–3 dny po nákupu/službě s krátkou prosbou o recenzi; (3) personalizovaný request od majitele/manažera (vyšší conversion než neosobní šablona); (4) reagovat na všechny recenze, i negativní — Google vidí aktivní profil jako kvalitnější. Pravidlo: nikdy nekupujte recenze a neptáte se 'jen' spokojených zákazníků (proti Google guidelines)."
   - q: "Jak Local SEO funguje s AI Overviews a ChatGPT?"
-    a: "Lokální dotazy jsou jedna z mála kategorií, kde Google AI Overviews často vůbec nezasahuje — Google ví, že lokální intent vyžaduje aktuální data (otevírací doba, dostupnost) a posílá uživatele přímo do local pack nebo na mapy. To znamená, že u lokálních dotazů zero-click traffic ztratíte méně než u informačních dotazů. ChatGPT a Perplexity zatím lokální data čerpají hlavně z Google Maps a OpenStreetMap přes pluginy — pro samotnou optimalizaci tedy stále platí: dobře vyplněný Google Business Profile je 90 % práce."
+    a: "U lokálních dotazů bývá dopad AI Overviews nižší než u čistě informačních dotazů, protože vyhledávač u lokálního intentu typicky preferuje mapové a profilové výsledky (otevírací doba, dostupnost) a posílá uživatele rovnou na local pack nebo do Map. Stav integrací v AI nástrojích (ChatGPT, Perplexity, Gemini) se rychle mění a u různých dotazů a regionů se chování liší — sledujte konkrétní zdroje dat na vašem trhu. V praxi: dobře udržovaný Google Business Profile zůstává základem lokální viditelnosti."
   - q: "Můžu mít Google Business Profile bez fyzické provozovny?"
     a: "Ano, ale jen jako 'service area business' (firma s obsluhovaným územím). Vyžaduje to skrýt přesnou adresu (Google ji použije jen pro verifikaci) a místo ní definovat seznam měst nebo regionů, kde službu poskytujete. Vhodné pro řemeslníky, mobilní služby (autoservis u zákazníka), rozvoz, čistírny. Pravidlo: musíte zákazníky obsluhovat osobně, ne jen mít sklad nebo virtuální office."
   - q: "Kolik stojí Local SEO u agentury v ČR v roce 2026?"
@@ -58,10 +58,10 @@ import Do from "../../components/blocks/Do.astro";
 import Dont from "../../components/blocks/Dont.astro";
 
 <Insight tone="seo" icon="✦" label="TL;DR">
-  Local SEO řeší **dotazy s lokálním záměrem** ("kavárna praha 7", "autoservis brno"). V ČR jde o jednu z nejrychleji rostoucích podkategorií SEO — u městských dotazů jsou měsíční hledanosti běžně ve stovkách až tisících. Práce stojí na šesti pilířích: **Google Business Profile, NAP konzistence, Seznam Firmy, recenze, lokální zpětné odkazy a lokalizovaný obsah**. Bonus: Google AI Overviews lokální dotazy obvykle neagreguje, takže klik na váš web zůstává.
+  Local SEO řeší **dotazy s lokálním záměrem** ("kavárna praha 7", "autoservis brno"). V CZ trhu vidíme rostoucí poptávku po lokální optimalizaci. Práce typicky stojí na šesti pilířích: **Google Business Profile, NAP konzistence, Seznam Firmy, recenze, lokální zpětné odkazy a lokalizovaný obsah** — váha pilířů se liší podle typu firmy. U lokálních dotazů bývá dopad AI Overviews nižší než u informačních.
 </Insight>
 
-## Co je <span class="hl">Local SEO</span> a proč v ČR <strong>rychle roste</strong>
+## Co je <span class="hl">Local SEO</span> a kdy <strong>dává smysl</strong>
 
 Local SEO je optimalizace pro **vyhledávání s lokálním záměrem** — dotazy, kde uživatel implicitně nebo explicitně chce najít službu nebo provozovnu v konkrétní lokalitě. Typické vzory:
 
@@ -69,20 +69,32 @@ Local SEO je optimalizace pro **vyhledávání s lokálním záměrem** — dota
 - **Implicitní lokalita** — "nejbližší zubař", "kadeřnictví v okolí" (Google detekuje polohu uživatele)
 - **Service + lokalita** — "rozvoz pizzy ostrava", "doučování angličtiny liberec"
 
-Pro tyto dotazy Google zobrazuje **local pack** — tři lokální výsledky s mapou nahoře v SERPu. Tyto tři pozice získávají **drtivou většinu kliků** z lokálních dotazů, často 60–80 %. Tradiční organické výsledky pod nimi jsou až druhotné.
+Pro tyto dotazy Google zobrazuje **local pack** — tři lokální výsledky s mapou nahoře v SERPu. U lokálních dotazů bývá podíl kliků na local pack výrazný, ale liší se podle oboru, typu dotazu a SERP layoutu.
 
-Proč Local SEO v ČR roste rychleji než globální průměr:
+### Proč význam Local SEO v ČR roste
 
-1. **Mobile-first chování v ČR** — přes 60 % search queries v ČR je z mobilu, na mobilu jsou local pack a Google Maps dominantní formát.
-2. **Vzestup hledanosti termínu "local seo"** v CZ Marketing Mineru meziročně násobně, což indikuje rostoucí poptávku jak po službě, tak po informacích.
-3. **AI Overviews lokální dotazy obchází** — viz níže. Lokální search je jeden z mála "safe haven" prostorů, kde click-through rate neklesá.
-4. **Google Business Profile usage v ČR** historicky pod globálním průměrem — to znamená, že firma s kompletním a dobře udržovaným profilem získává relativně velkou výhodu.
+1. **Vyšší podíl mobilního vyhledávání** zvyšuje význam lokálních výsledků, protože uživatelé častěji hledají služby „v okolí" a rychle přecházejí do map nebo na call/action flow.
+2. **Rostoucí poptávka po lokální optimalizaci** v CZ trhu — viditelná i v hledanosti termínu „local seo" v keyword nástrojích.
+3. **U lokálních dotazů bývá dopad AI Overviews nižší** než u informačních dotazů — vyhledávač u lokálního intentu typicky preferuje mapové a profilové výsledky. Stav integrací v AI nástrojích se ale rychle mění.
+4. **Google Business Profile usage v ČR** je historicky pod globálním průměrem — firma s kompletním a dobře udržovaným profilem tak získává relativně velkou výhodu.
+
+## <span class="hl">Priorita podle typu firmy</span>
+
+Než půjdete do checklistu, projděte si, kde leží váš P0/P1:
+
+| Typ firmy | P0 | P1 | P2 |
+|---|---|---|---|
+| **Lokální služba s provozovnou** (gastro, kadeřnictví, lékař, advokát) | GBP, NAP, Seznam Firmy, recenze | Lokalizované landing pages, posty, fotky, reakce na recenze | Premium katalogové listingy, lokální link building |
+| **Multi-pobočkový řetězec** | Standardizace NAP, pobočková schema, monitoring konzistence | Per-pobočkové stránky, recenze za pobočku, atributy | Lokalizovaný content, lokální linky |
+| **Service-area firma** (řemeslník, mobilní služba) | GBP jako service area, definice obsluhovaných měst, NAP | Service+lokalita stránky pro top 3–5 měst, recenze | Lokální PR, sponzorství |
+| **Nízkomarginální / commodity obor** | GBP, NAP, Seznam Firmy free | Recenze, fotky | Premium listingy a citace zvážit až po validaci přínosu |
+| **B2B bez fyzické provozovny / online jen** | GBP jako brand entry (i když není ranking core) | NAP konzistence pro důvěru | Lokální SEO obecně jen tam, kde reálně existuje lokální poptávka |
 
 ## <span class="hl">Šest pilířů</span> <strong>Local SEO</strong>
 
 ### 1. Google Business Profile (GBP)
 
-Největší jednotlivý faktor pro local pack ranking. Profil musí mít:
+Obvykle jeden z nejdůležitějších vstupů pro local pack ranking. Výsledné pořadí ale závisí i na **relevanci, vzdálenosti, reputaci a síle webu** — GBP profil sám o sobě nepřebije špatnou relevanci nebo absenci ostatních signálů. Profil by měl mít:
 
 - **Přesný název firmy** (přesně jak ho používáte navenek, bez keyword stuffing)
 - **Adresa** s ověřením přes pohled (Street View) nebo poštu
@@ -129,24 +141,26 @@ Pro CZ trh **povinný záznam**. Seznam local pack ho táhne přímo odtud. Prem
 
 ### 4. Lokální zpětné odkazy
 
-Google považuje za "lokální" odkaz takový, který přichází z:
+Za lokálně relevantní odkazy obvykle považujeme odkazy z:
 
 - **Lokálních médií** (regionální deník, městský portál)
 - **Oborových asociací** s CZ doménou
 - **Sponzorství lokálních akcí** (sportovní klub, kulturní festival, charitativní akce)
 - **Lokálních partnerů** (dodavatelé, sousední živnosti)
 
-Strategie: **vyhledat 5–10 lokálních autoritních zdrojů** v okruhu vašeho města, oslovit s konkrétní hodnotou (obsah, slevová akce, sponzorství). Pro většinu malých firem stačí 5–15 lokálních odkazů ročně k udržení local rankingu.
+„Lokálnost" odkazu ale **není binární definice** — záleží na relevanci, geografii publika, brandu, přirozenosti zmínky a kontextu odkazu. Strategie: **vyhledat 5–10 lokálních autoritních zdrojů** v okruhu vašeho města, oslovit s konkrétní hodnotou (obsah, slevová akce, sponzorství). U malých firem v málokonkurenčních lokalitách stačí pár lokálních zmínek ročně; v konkurenční lokalitě nebo oboru je potřeba systematičtější práce.
 
 ### 5. Recenze a hodnocení
 
-Recenze jsou **kombinovaný ranking signál + konverzní signál**. Google sleduje:
+Recenze jsou **kombinovaný ranking signál + konverzní signál**. Google obvykle sleduje:
 
 - Celkový počet recenzí (relativně k oboru a lokalitě)
-- Průměrné hodnocení (ideálně 4.5+)
+- Průměrné hodnocení (typicky se za zdravý práh považuje 4.5+, ale liší se podle oboru)
 - **Frekvenci nových recenzí** (čerstvost, growth rate)
 - **Sentiment** v textu recenze (pozitivní/negativní klíčová slova)
 - **Vaše odpovědi** na recenze (signál aktivního profilu)
+
+Cíl pro tempo recenzí (1–3 týdně, X za 3 měsíce apod.) **nastavujte podle objemu objednávek a oboru**, ne mechanicky. U menších provozoven je důležitější stabilní růst a přirozenost recenzí než pevné číslo. U vysokoobjemových provozoven je smysluplné nastavit systematický pipeline.
 
 Konkrétní postupy získávání recenzí:
 
@@ -196,28 +210,32 @@ Pro single-location byznys stačí kontaktní stránka s detailním popisem loka
 
 ## <span class="hl">Local SEO</span> <strong>v AI éře</strong>
 
-Lokální dotazy jsou jedna z mála kategorií, kde **AI Overviews neničí click-through rate**. Důvod: lokální intent vyžaduje aktuální data (otevírací doba, dostupnost, rezervace), která Google chce čerpat z verifikovaných zdrojů (GBP, Seznam Firmy, Mapy). AI sumarizace by mohla zobrazovat zastaralá data → Google AI Overviews lokální dotazy obvykle vůbec negeneruje a uživatele posílá rovnou na local pack nebo Mapy.
+U lokálních dotazů bývá dopad AI Overviews **nižší než u informačních dotazů** — vyhledávač u lokálního intentu typicky preferuje mapové a profilové výsledky (otevírací doba, dostupnost, rezervace), které jsou citlivé na čerstvost dat. To neznamená, že AIO se u lokálních dotazů vůbec negeneruje — chování se mění podle dotazu, regionu a SERP layoutu, sledujte konkrétní stav na vašich top KW.
 
 Co to znamená pro vás:
 
-- **Investice do Local SEO má v roce 2026 lepší ROI** než investice do informačního obsahu (kde AIO traffic ztrácíte)
-- **GBP je 90 % práce** — i pro AI nástroje (ChatGPT, Perplexity) jsou lokální data čerpaná hlavně z Google Maps API a OpenStreetMap
-- **NAP konzistence** je důležitější než dříve — AI nástroje porovnávají údaje napříč zdroji a ne-konzistence snižuje "trust score"
+- **Lokální obsahové dotazy s informační vrstvou** (návody, srovnání) mohou trpět AIO podobně jako čistě informační dotazy
+- **Mapové a transakční dotazy** typicky AIO ovlivňuje méně
+- **Stav integrací v AI nástrojích** (ChatGPT, Perplexity) se rychle mění — mechanismy výběru zdrojů se liší a nejsou plně transparentní
+
+### Brand layer — nezapomenout
+
+U lokálního SEO sledujte i **brandový demand**: branded search volume, direct návštěvnost, opakované návštěvy, zmínky na lokálních webech a v komunitách. Silnější značka často zvyšuje výkon profilu i míru prokliku — kompletní GBP s řadou recenzí pomáhá víc, když má firma rozeznatelnou značku, na kterou si lidé vzpomenou (i z offline marketingu, doporučení, soutěží).
 
 <Insight tone="seo" icon="!" label="Strategická poznámka">
-  Pokud máte fyzickou provozovnu nebo obsluhujete zákazníky v konkrétní lokalitě, **Local SEO je dnes priorita č. 1**, ne doplněk. V ČR navíc s rostoucí konkurencí mezi GBP profily — kdo má kompletnější profil a víc recenzí, vyhraje local pack pozici.
+  Pokud máte fyzickou provozovnu nebo obsluhujete zákazníky v konkrétní lokalitě, Local SEO patří mezi **klíčové akviziční kanály** — priorita ale závisí na tom, kolik z vašich konverzí reálně přichází z lokálních dotazů (sledujte v GBP Insights a GA4). U firem s dominantní brandovou poptávkou nebo silným PPC může být marginálnější.
 </Insight>
 
 ## <strong>Časté chyby</strong> v <span class="hl">Local SEO</span>
 
-1. **Keyword stuffing v názvu firmy** — "AIA Autoservis Praha Brno Levně" — Google to penalizuje, profil může být suspended
-2. **Více GBP pro jednu adresu** — duplicates Google detekuje a slučuje, často s rizikem ztráty obou profilů
-3. **Ignorování negativních recenzí** — žádná odpověď = vypadá to, že firma neexistuje nebo se nestará
-4. **Service-area firma s viditelnou adresou** — pokud nemáte fyzickou provozovnu, **musíte adresu v GBP skrýt** (jinak Google odhalí a může profil suspendovat)
-5. **NAP nesoulady** — podrobnost vypadá nedůležitě, ale kumulativně snižuje trust score
-6. **Žádné fotky / staré fotky** — profil bez aktuálních fotek působí opuštěně, snižuje CTR
-7. **Otevírací doba nezohledňuje svátky** — uživatel přijde na zavřeno → negativní recenze → propad v rankingu
-8. **Falšování recenzí** — Google detekuje (vzorce hodnocení, IP overlap, podobnost textů) a profil suspenduje
+1. **Keyword stuffing v názvu firmy** — "AIA Autoservis Praha Brno Levně". Může vést ke zhoršení viditelnosti nebo k zásahu ze strany Googlu, zejména pokud název neodpovídá reálnému brandu.
+2. **Více GBP pro jednu adresu** — Google duplicates detekuje a slučuje; špatně nastavené duplicity bývají důvodem pro problémy s viditelností obou profilů.
+3. **Ignorování negativních recenzí** — žádná odpověď působí, jako by firma neexistovala nebo se nestarala; reakce na negativní recenze často podporují důvěru u dalších čtenářů víc než reakce na pozitivní.
+4. **Service-area firma s viditelnou adresou** — pokud nemáte fyzickou provozovnu otevřenou pro veřejnost, adresu v GBP skryjte. Veřejně viditelná „falešná" adresa zvyšuje riziko zásahu Googlu.
+5. **NAP nesoulady** — podrobnost vypadá nedůležitě, ale kumulativně snižuje konzistenci údajů napříč zdroji a tím trust score.
+6. **Žádné fotky / staré fotky** — profil bez aktuálních fotek působí opuštěně a snižuje CTR z local packu.
+7. **Otevírací doba nezohledňuje svátky** — uživatel přijde na zavřeno → negativní recenze → poškození reputace.
+8. **Falšování recenzí** — Google detekuje neobvyklé vzorce (hodnocení, IP overlap, podobnost textů); zvyšuje riziko zásahu na profilu.
 
 ## <strong>Měření</strong> <span class="hl">Local SEO výkonu</span>
 
@@ -245,9 +263,9 @@ Local SEO je svépomocí zvládnutelný pro firmu s 1–2 provozovnami. Agentura
 
 Pro většinu menších firem je nejlepší cesta **jednorázový profi setup (15–40 tis. Kč) + svépomocná údržba** s ročním auditem.
 
-## <strong>Sniperdesign</strong> a <span class="hl">Local SEO</span>
+## Kde si nechat <strong>poradit</strong>
 
-V [Sniperdesign.cz](https://www.sniperdesign.cz/) řešíme Local SEO jako součást komplexního SEO balíčku — pro klienty s fyzickými provozovnami nebo service-area byznysem. Audit GBP, NAP cleanup, Seznam Firmy správa, lokální link building i recenzní pipeline pod jednou střechou. Pro lokální e-shopy (i ty s rozvozem po celé ČR) doplňujeme ještě **lokalizované landing pages** pro top 5–10 cílových měst.
+Pokud chcete posoudit konkrétní situaci nebo nemáte kapacitu řešit Local SEO interně, [Sniperdesign.cz](https://www.sniperdesign.cz/) řeší audit GBP, NAP cleanup, Seznam Firmy správu, lokální link building a recenzní pipeline. První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — pomáhá srovnat doporučený scope s vašimi prioritami.
 
 ## <strong>Zdroje</strong> a <span class="hl">další čtení</span>
 
