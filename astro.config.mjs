@@ -38,9 +38,20 @@ export default defineConfig({
   /**
    * Redirects — alias slugs / přeznačené staré URL.
    * - `/seo-a-geo/` → pillar (CZ Suggest říká „seo a geo", ne „seo vs geo")
+   * - 8× článek → blog migration (2026-05): articles z root URL přesunuty
+   *   pod /blog/<slug>/ kvůli sjednocení pod jeden dynamic route.
+   *   301 redirecty zachovávají SEO equity ze starých URL.
    */
   redirects: {
     "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio",
+    "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat",
+    "/seo-nastroje-2026": "/blog/seo-nastroje-2026",
+    "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview",
+    "/local-seo-cesko-2026": "/blog/local-seo-cesko-2026",
+    "/jak-strukturovat-pillar-content": "/blog/jak-strukturovat-pillar-content",
+    "/mereni-seo-vykonu-2026": "/blog/mereni-seo-vykonu-2026",
+    "/seo-pro-eshopy-ai-era-2026": "/blog/seo-pro-eshopy-ai-era-2026",
+    "/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026",
   },
   markdown: {
     rehypePlugins: [rehypeTaskListA11y],

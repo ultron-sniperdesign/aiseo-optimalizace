@@ -42,6 +42,13 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
       >
         Průvodce
       </a>
+      <a
+        href="/blog/"
+        class:list={["disc-nav__link disc-nav__link--blog", { "disc-nav__link--active": isActive("/blog/") }]}
+        aria-current={isActive("/blog/") ? "page" : undefined}
+      >
+        Blog
+      </a>
     </nav>
   </div>
 </header>

@@ -1,14 +1,41 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-import { getEntry, render } from "astro:content";
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
 
-const entry = await getEntry("articles", "local-seo-cesko-2026");
-if (!entry) {
-  throw new Error(
-    "Článek 'local-seo-cesko-2026' nenalezen v src/content/articles/",
-  );
-}
+export const getStaticPaths = (async () => {
+  const articles = await getCollection("articles");
+  return articles.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+/**
+ * Per-category crumb context label.
+ */
+const crumbByCategory: Record<string, string> = {
+  tutorial: "Tutorial",
+  analysis: "Analýza",
+  defensive: "Defenzivní",
+  "case-study": "Case study",
+};
+const crumbLabel = crumbByCategory[entry.data.category] ?? "Článek";
+
+/**
+ * Word count + reading time dynamicky z entry.body (raw markdown).
+ */
+const rawBody = entry.body ?? "";
+const wordCount = rawBody
+  .replace(/<[^>]+>/g, " ")
+  .replace(/[#*_`>~]/g, " ")
+  .split(/\s+/)
+  .filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+const wordCountRounded = Math.round(wordCount / 100) * 100;
 
 /**
  * JSON-LD — Article + FAQPage + HowTo (pokud má článek `howto` field).
@@ -54,18 +81,21 @@ const howToJsonLd = entry.data.howto
     }
   : undefined;
 
-const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd].filter(
-  Boolean,
-) as Record<string, unknown>[];
+const allLd: Record<string, unknown>[] = [
+  articleJsonLd,
+  faqJsonLd,
+  howToJsonLd,
+].filter(Boolean) as Record<string, unknown>[];
 
 const faqCount = entry.data.faq?.length ?? 0;
+const ogImage = `/og/${entry.data.slug}.png`;
 ---
 
 <BaseLayout
   title={entry.data.title}
   description={entry.data.description}
   jsonLd={allLd}
-  image="/og/local-seo-cesko-2026.png"
+  image={ogImage}
 >
   <div class="page">
     <!-- HERO -->
@@ -73,17 +103,17 @@ const faqCount = entry.data.faq?.length ?? 0;
       <nav class="hero__crumbs" aria-label="Drobečková navigace">
         <a href="/">Úvod</a>
         <span class="crumb-sep">›</span>
-        <span>Analýzy</span>
+        <a href="/blog/">Blog</a>
         <span class="crumb-sep">›</span>
-        <span class="hero__crumb-pill">Tutorial · Local SEO</span>
+        <span class="hero__crumb-pill">{crumbLabel}</span>
       </nav>
 
       <h1 class="display hero__title">{entry.data.title}</h1>
 
       <div class="hero__meta">
-        <span>~2 100 slov</span>
+        <span>~{wordCountRounded.toLocaleString("cs-CZ")} slov</span>
         <span>{faqCount} častých otázek</span>
-        <span>~11 minut čtení</span>
+        <span>~{readingMinutes} minut čtení</span>
         <span>Aktualizováno: {entry.data.updated}</span>
       </div>
     </section>
@@ -98,14 +128,6 @@ const faqCount = entry.data.faq?.length ?? 0;
 
     <!-- ARTICLE BODY -->
     <article class="article">
-      <header class="article__head">
-        <span class="eyebrow"><span class="eyebrow__num">§</span> Detailní rozbor</span>
-        <h2 class="article__head-title">Šest <span class="hl">pilířů</span> + <strong>AI éra</strong> v lokálním vyhledávání</h2>
-        <p class="article__head-intro">
-          Google Business Profile, NAP konzistence, Seznam Firmy, lokální linky, recenze a lokalizovaný obsah. Plus proč Local SEO v ČR rychle roste a co s ním dělá AI éra.
-        </p>
-      </header>
-
       <div class="article__prose">
         <Content />
       </div>
@@ -118,7 +140,7 @@ const faqCount = entry.data.faq?.length ?? 0;
           <header class="faq__head">
             <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
             <h2 id="faq-title" class="faq__title">
-              Osm otázek, které k <span class="hl">Local SEO</span> <strong>nejčastěji padají</strong>
+              <span class="hl">Časté otázky</span>, které k tématu <strong>nejčastěji padají</strong>
             </h2>
           </header>
 
@@ -139,9 +161,9 @@ const faqCount = entry.data.faq?.length ?? 0;
 
     <!-- BACK CTA -->
     <section class="back-cta">
-      <a href="/seo/" class="back-cta__primary">
+      <a href="/blog/" class="back-cta__primary">
         <span aria-hidden="true">←</span>
-        Číst sekci SEO
+        Všechny články v blogu
       </a>
       <a href="/" class="back-cta__secondary">Zpět na úvod</a>
     </section>
