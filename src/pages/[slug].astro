@@ -90,7 +90,26 @@ const articleJsonLd = {
   about: entry.data.abbr,
 };
 
-const allLd = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
+/** HowTo JSON-LD — vykreslí se jen pokud má sekce `howto` field ve frontmatteru.
+ * Sjednocuje strategii s articles (např. /jak-vypnout-ai-overview/) a naplňuje
+ * vlastní AEO doporučení 'HowTo schema na návody'. */
+const howToJsonLd = entry.data.howto
+  ? {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: entry.data.howto.name,
+      step: entry.data.howto.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+      })),
+    }
+  : undefined;
+
+const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd].filter(
+  Boolean,
+) as Record<string, unknown>[];
 
 /**
  * Inline style nastaví per-page discipline color CSS variables.

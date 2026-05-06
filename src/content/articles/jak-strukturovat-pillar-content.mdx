@@ -33,6 +33,23 @@ faq:
     a: "Strukturálně 1× ročně (procházíte celý článek, přepisujete sekce, kde se realita posunula). Dílčí update na klíčových místech (data, ceny, citace) podle potřeby — minimálně každé 3 měsíce u rychle se měnících oborů (AI, kryptoměny, regulace). U evergreen témat (matematika, klasické postupy) stačí 1× za 18–24 měsíců. Datum poslední aktualizace zobrazit viditelně + v Article schema."
   - q: "Pomáhá pillar content i s AI citation share?"
     a: "Ano, dramaticky. AI engines (ChatGPT, Perplexity, Claude) preferují citovat dlouhý komplexní obsah, který pokrývá téma z více úhlů — protože z něj získají víc kontextu pro odpověď. Pillar content s answer blockem na začátku, jasnou H2/H3 strukturou a FAQ sekcí na konci je optimální formát pro AI citations. Tenký 500slovní článek AI engines obvykle ignorují ve prospěch hlubšího zdroje."
+howto:
+  name: "Praktický postup: napsat pillar content od nuly"
+  steps:
+    - name: "Keyword research a outline"
+      text: "Marketing Miner nebo Ahrefs: identifikovat 1 primary KW (search volume 200+) a 10–15 long-tail variant. Sepsat outline 6–10 H2 sekcí podle univerzálního vzorce. Cílit na search intent — pillar content je obvykle informační intent, ne transakční."
+    - name: "Napsat answer block jako první"
+      text: "40–60 slov, definice + mechanismus + praktický důsledek. Pošlete to ChatGPT nebo Claude s promptem 'shrň tento text v 1 větě' — pokud AI shrnutí dobře vystihuje téma, answer block je dobrý. Pokud ne, přepište. Tučně zvýraznit 2–3 klíčové termíny."
+    - name: "Naplnit 6–10 H2 sekcí (300–500 slov každá)"
+      text: "Začít sekcí 'Co je X' (kontext) a 'Jak X funguje' (mechanika). Pokračovat 'Klíčové signály', 'Praktický postup', 'Časté chyby', 'Měření', 'Budoucnost'. Každá sekce končí buď konkrétním takeaway nebo přechodem k další."
+    - name: "Přidat 2–3 Insight + 1 Compare + 1 Stepper + 1 Checklist + 1 tabulku"
+      text: "Vizuální bloky rozbijí wall of text. Doporučená frekvence: 1 vizuální blok na každých 600–800 slov textu. Insight typicky pro klíčová pravidla, Compare pro 'starý vs nový' nebo 'tenký vs pillar', Stepper pro postupy, Checklist pro kontrolní seznamy."
+    - name: "Napsat FAQ sekci (6–10 otázek z reálných zdrojů)"
+      text: "Otázky z Google 'People Also Ask', Reddit, Marketing Miner. Žádné vymyšlené dotazy. Každá odpověď 50–120 slov, jasná struktura. Vyhnout se duplikaci s body textem — FAQ pokrývá to, na co text explicitně neodpověděl."
+    - name: "Schema markup + cross-linking"
+      text: "Article + FAQPage JSON-LD do <head>. Pro tutoriálové pillary navíc HowTo JSON-LD. Pro každou H2 sekci, kterou by šlo rozvést do vlastního článku, přidat cross-link na cluster článek (Insight 'Samostatný průvodce' box, ne jen inline link)."
+    - name: "Reread, cut, AI test"
+      text: "Přečíst celý pillar nahlas. Vyhodit redundantní odstavce (pravidlo: pokud věta neodpovídá na 'co tím říkám nového?', vyhodit). Zkopírovat URL do ChatGPT s promptem 'shrň hlavní body tohoto článku' — kvalita shrnutí indikuje, jestli AI engine pillar správně chápe."
 ---
 
 import Insight from "../../components/blocks/Insight.astro";

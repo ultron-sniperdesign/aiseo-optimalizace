@@ -19,6 +19,23 @@ faq:
     a: "Hlavní principy ano — FAQ schema, krátké odpovědi, fact-density. Bing Chat/Copilot ale táhne i z BING-specific signálů: Bing Webmaster Tools sitemap, IndexNow protocol pro instantní indexaci. Pro CZ trh je Bing minoritní (méně než 5 % share), takže priorita je Google AIO."
   - q: "Jaký je rozdíl mezi AI Overview a AI Overviews?"
     a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma."
+  - q: "Kolik FAQ otázek by mělo článek obsahovat pro maximální AEO efekt?"
+    a: "Mezi 6 a 10 otázek. Méně než 6 nedá AI Overviews dost variant kontextu. Víc než 10 začíná vytvářet 'noise' a Google rich snippet validator může schema ignorovat. Otázky musí být reálné — Google rozpozná uměle vymyšlené FAQ a sníží váhu schema. Zdroje pro reálné otázky: Google Search Console (Performance → Queries s nízkým CTR), People Also Ask box, Reddit/Quora vlákna ve vašem oboru, oborové weby, ChatGPT prompty od skutečných uživatelů. FAQ odpovědi: 50–120 slov, jasná struktura (definice → kontext → praktický důsledek)."
+  - q: "Stačí FAQPage schema přidat ručně do MDX, nebo musím použít CMS?"
+    a: "Stačí ručně, pokud máte Astro/MDX nebo statický web — FAQPage JSON-LD je standardní script tag v hlavičce a generuje se z `entry.data.faq` ve frontmatter. WordPress + Yoast SEO Premium nebo Rank Math přidávají FAQPage schema automaticky z Gutenberg FAQ bloků. Webflow má FAQPage schema v Native CMS Collections. Klíčový bod: schema musí být v `<head>` (ne v body), JSON musí validovat na schema.org/FAQPage, FAQ otázky v HTML musí přesně odpovídat otázkám v JSON-LD (Google to porovnává). Validate: Google Rich Results Test."
+howto:
+  name: "Jak optimalizovat web pro AEO (Answer Engine Optimization)"
+  steps:
+    - name: "Audit existujícího obsahu"
+      text: "Pro top 20 stránek webu (podle organic trafficu) zkontrolujte 4 body: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) má stránka FAQ sekci s reálnými dotazy uživatelů, (3) je tam FAQPage schema markup, (4) jsou H2/H3 strukturované jako otázky a sub-odpovědi. Stránky které selžou ≥ 2 kontroly přepište answer block a přidejte FAQ."
+    - name: "Implementace FAQPage schema"
+      text: "Na CMS (WordPress, Webflow, Astro) přidejte automatický generator FAQPage JSON-LD z FAQ sekce. Schema musí být v <head>, JSON musí validovat na schema.org/FAQPage, FAQ otázky v HTML musí přesně odpovídat otázkám v JSON-LD. Validate přes Google Rich Results Test."
+    - name: "HowTo schema pro návody"
+      text: "Pro každý návodový článek (kategorie 'jak udělat X') přidejte HowTo schema s explicit kroky. AI Overviews preferuje strukturované postupy nad volnou prózou. Každý krok má @type HowToStep, position, name a text."
+    - name: "People Also Ask (PAA) extension"
+      text: "Google Search Console → Performance → Queries. Vyfiltrujte dotazy s impressions ale CTR pod 5 % — to jsou kandidáti na AEO optimalizaci. Přidejte tyto dotazy jako FAQ otázky na cílových stránkách. Doplňte z Reddit/Quora vláken a oborových diskuzí pro reálné dotazy."
+    - name: "Měření přes GSC a manuální AIO check"
+      text: "V Google Search Console sledujte Search Appearance (FAQ rich snippets, HowTo), Performance (Featured Snippets impressions) a Coverage (indexovatelnost). Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 klíčových slov v Googlu a zapsat do tabulky, kde se objevil AI Overview a jestli z něj vede odkaz na váš web. Pro profesionální tracking nástroje Otterly, Profound nebo Marketing Miner Brand Radar."
 ---
 
 ## <span class="hl">AEO</span> vs. <span class="hl">GEO</span> — <strong>kde je hranice</strong>

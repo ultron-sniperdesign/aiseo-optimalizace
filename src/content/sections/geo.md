@@ -23,6 +23,19 @@ faq:
     a: "Ne. GEO buduje na SEO základech — pokud Google vaši stránku neumí indexovat, načíst nebo jí porozumět, AI engines (ChatGPT, Perplexity, Claude) ji většinou ani neuvidí. Důvod: ChatGPT search a Perplexity používají Bing/Google index jako zdroj pro retrieval, Claude a Gemini čerpají z vlastních crawlů + Google indexu. Bez SEO baseline (technické zdraví webu, indexovatelnost, Core Web Vitals) je GEO ztracená investice. Pořadí: SEO základy → GEO-friendly psaní obsahu od prvního článku → měření citation share později."
   - q: "Co je fact-density a jak ji v obsahu zvýšit?"
     a: "Fact-density = množství konkrétních, ověřitelných faktů na 100 slov textu. AI engines preferují citovat obsah s vysokou hustotou faktů, protože z něj odvodí přesnější odpověď. Praktické pravidlo: každých 100–150 slov by mělo obsahovat alespoň jednu konkrétní hodnotu — číslo, procento, datum, citaci, jméno nástroje, cenu. Ne 'výkon je lepší', ale 'výkon je o 30 % vyšší'. Ne 'nedávno proběhlo testování', ale 'v září 2025 Princeton zveřejnil studii, kde…'. Volně psaný marketingový text má fact-density typicky pod 1 %, GEO-friendly obsah 3–5 %."
+howto:
+  name: "Praktický GEO playbook — jak udělat obsah citovatelný v ChatGPT a Perplexity"
+  steps:
+    - name: "Audit obsahu na fact-density"
+      text: "Pro každý článek spočítejte fakta na 100 slov. Cíl: 3+ konkrétní fakta (číslo, procento, datum, studie) per 100 slov je AI-friendly. Pod 1 fakt per 100 slov je moc obecné, AI to přeskočí. Volně psaný marketingový text má fact-density typicky pod 1 %, GEO-friendly obsah 3–5 %."
+    - name: "Restrukturujte úvod článku"
+      text: "Prvních 60 slov článku je kritických — AI scraper z nich vytváří citaci. Přepište úvod do struktury: definice ve formátu 'X je …' jako tučný odstavec, 1–2 klíčová fakta s čísly, zbytek dlouhého kontextu pod tím. Pyramidová struktura — nejdůležitější věci nahoře."
+    - name: "Přidejte FAQ s autoritativními odpověďmi"
+      text: "FAQ není jen pro AEO (Google AI Overviews) — je to taky ChatGPT/Perplexity citation goldmine. Otázky jsou typicky reálné dotazy uživatelů (z Google Search Console nebo People Also Ask), odpovědi jsou krátké a faktické (50–120 slov). Vyhněte se uměle vymyšleným otázkám."
+    - name: "Buduje brand mentions v autoritních zdrojích"
+      text: "Bez brand authority necitujete v ChatGPT, ani kdybyste byli na 1. pozici v Googlu. Strategie: odpovídejte na Reddit/Quora ve vašem oboru, publikujte guest posts na autoritních CZ blogách (Marketing Journal, Marketing Sales Media, Lupa.cz), buďte hosty/guest na podcastech (transcripty se indexují), publikujte press releases s vlastními daty, a pokud je váš brand notable, ucházejte se o Wikipedia entry — Wikipedia je v ChatGPT priority source."
+    - name: "Nastavte robots.txt explicit Allow pro AI crawlers"
+      text: "Default robots.txt je často restriktivní. Pokud cílíte na GEO, explicitně povolte AI crawlers: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, ClaudeBot, anthropic-ai a Google-Extended. Každého boto má řádek User-agent a Allow: /. Bez explicitního povolení mohou některé AI engines váš web ignorovat."
 ---
 
 ## Jak <span class="hl">GEO</span> funguje <strong>v praxi</strong>

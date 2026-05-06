@@ -33,6 +33,21 @@ faq:
     a: "Minimum: Looker Studio (zdarma) napojený na GSC + GA4 + Search Ads, který agreguje metriky do 1 view. 4 widgety: (1) trend pozic top 10 KW za posledních 90 dní, (2) organic sessions denně + meziroční srovnání, (3) top 20 stránek podle organic trafficu, (4) Core Web Vitals stav. Aktualizace daily. Pro agenturu kompletnější: AgencyAnalytics ($59/měs) nebo SE Ranking dashboard. Klíčové: 1 dashboard pro klienta, 1 hlubší pro interní tým."
   - q: "Co dělat, když pozice klíčového slova klesnou?"
     a: "Diagnostika ve čtyřech krocích: (1) GSC — zkontrolovat, jestli klesly i impressions, nebo jen pozice (impressions stejné = SERP layout změna, AI Overview vzal pozici); (2) GSC Coverage — je stránka stále indexovaná?; (3) Ahrefs — propadla konkurence dopředu? Nové výsledky v top 10? Ztratili jste backlinky?; (4) PageSpeed Insights — zhoršily se Core Web Vitals (nový bundle, špatný image)?. Po diagnóze cílená akce, ne plošná 're-optimalizace'. Většina propadů je do 4–8 týdnů reverzibilní."
+howto:
+  name: "Praktický postup: postavit SEO measurement od nuly"
+  steps:
+    - name: "Setup GSC + GA4 + Bing Webmaster + Seznam Webmaster"
+      text: "Den 1. Verifikovat vlastnictví všech 4 properties. Google Analytics 4 propojit s Google Search Console v admin sekci (umožní 'Search Console' report v GA4). Submitnout sitemap.xml na všech 4 platformách."
+    - name: "Definovat 5–10 strategických KW + 5–10 stránek"
+      text: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) plus 5–10 long-tail variant. K nim přiřadit 5–10 cílových stránek (pillar + cluster). Toto je váš strategic measurement scope."
+    - name: "Setup baseline measurements"
+      text: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organic sessions, CTR, počet indexovaných stránek, Domain Rating. Toto je baseline, proti kterému budete měřit progress. Bez baseline nelze říct, jestli rosteme nebo klesáme."
+    - name: "Postavit Looker Studio dashboard"
+      text: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organic sessions denně plus YoY srovnání, top 20 stránek podle organic trafficu, Core Web Vitals stav. Sdílet read-only link s týmem. Looker Studio je zdarma, napojený na GSC + GA4."
+    - name: "Nastavit alerty na anomálie"
+      text: "Týden 3. GA4 custom insights pro propad organic sessions o 20+ % den-na-den. GSC alerts pro indexační chyby. PageSpeed Insights manuální check čtvrtletně. Bez alertů zjistíte propad za týden místo za hodinu."
+    - name: "Měsíční review a iterace"
+      text: "Měsíčně. 1× za měsíc review dashboardu, identifikovat 1–3 stránky s největším potenciálem (vysoké impressions, nízký CTR = title rewrite kandidáti). Update reportu pro klienta nebo vedení. Po 90 dnech první trend evaluation."
 ---
 
 import Insight from "../../components/blocks/Insight.astro";

@@ -11,7 +11,7 @@ if (!entry) {
 const { Content } = await render(entry);
 
 /**
- * JSON-LD — Article + FAQPage. Bez HowTo (kategorie analysis).
+ * JSON-LD — Article + FAQPage + HowTo (pokud má článek `howto` field).
  */
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -40,7 +40,21 @@ const faqJsonLd =
       }
     : undefined;
 
-const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd].filter(
+const howToJsonLd = entry.data.howto
+  ? {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: entry.data.howto.name,
+      step: entry.data.howto.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+      })),
+    }
+  : undefined;
+
+const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd].filter(
   Boolean,
 ) as Record<string, unknown>[];
 

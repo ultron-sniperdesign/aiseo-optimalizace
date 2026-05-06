@@ -21,6 +21,17 @@ faq:
     a: "Podle kontextu věty. (1) Pokud autor mluví o 'AIO panelu', 'zobrazení v AIO', 'AIO presence' nebo 'AIO citation', myslí Google AI Overviews — konkrétní funkci nad výsledky. (2) Pokud mluví o 'AIO strategii', 'AIO frameworku' nebo 'AIO optimalizaci', myslí AI Optimization — zastřešující pojem (SEO + GEO + AEO). Pravidlo: AIO jako proces = strategický pojem, AIO jako lokace = funkce Googlu. V profesionálních textech 2026 se tento dvojí význam často explicitně vysvětluje na začátku."
   - q: "Stačí pro AIO presence kvalitní SEO + AEO, nebo musím dělat něco dalšího?"
     a: "Pro samotnou AIO presence (zobrazení v Google AI Overviews) stačí SEO + AEO baseline — strukturovaný obsah s answer blocky 40–60 slov, FAQPage schema, autoritní backlinks, E-E-A-T signály. Google AI Overviews vybírá zdroje z top 10 organických výsledků s největší 'citation worthiness' (kvalita strukturování). Žádné speciální 'AIO optimalizace' navíc neexistuje — kdo má dobré SEO + AEO, dostává AIO presence automaticky. Otázka je spíš strategická: 'chci AIO presence' (kratší obsah, news, B2B autorita) vs. 'nechci' (dlouhé how-to, e-shop produktovky, kde AIO bere klik)."
+howto:
+  name: "Praktický postup pro AIO strategii (chci/nechci AIO presence)"
+  steps:
+    - name: "Audit aktuální AIO presence"
+      text: "Manuálně přes Google search top 10 klíčových slov — pro každý dotaz si zapište do tabulky, jestli se AIO panel zobrazil a jestli je vaše doména v citacích. Po měsíci máte přehled, kde stojíte. Pro profesionální tracking nástroje Otterly nebo Marketing Miner Brand Radar."
+    - name: "Klasifikace stránek podle AIO efektu"
+      text: "Pro každou stránku zvažte typický AIO efekt: krátký news/edu článek pod 1500 slov má pozitivní efekt (nech, optimalizuj pro vyšší citation rate), dlouhý how-to průvodce nad 3000 slov má typicky negativní efekt (zvaž data-nosnippet na úvodní bloky), produktová stránka je irelevant (AIO se aktivuje jen u informačních dotazů), listing kategorie má typicky negativní efekt (nosnippet na popisu kategorie)."
+    - name: "A/B test před plošnou implementací nosnippet"
+      text: "Před plošnou implementací data-nosnippet udělejte A/B test: vyberte 5 srovnatelných stránek s AIO presence, přidejte data-nosnippet na 2–3 z nich, sledujte 30 dní organic traffic plus CTR. Pokud no-snippet varianta přinesla vyšší organic traffic, rozšiřte na další podobné stránky."
+    - name: "Měření AIO dopadu"
+      text: "Sledujte 4 metriky: organic clicks per page (Google Analytics 4 nebo Plausible), impressions vs CTR ratio (Google Search Console), AIO presence count (manuální tabulka top 10 KW), Featured Snippet rate (GSC → Search Appearance). Po 90 dnech vyhodnoťte trend a iterujte strategii."
 ---
 
 ## Dva významy <span class="hl">AIO</span> — <strong>rozeznejte je v textu</strong>

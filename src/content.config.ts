@@ -32,6 +32,18 @@ const sections = defineCollection({
         }),
       )
       .optional(),
+    /** Volitelné HowTo schema — když má sekce step-by-step Praktický postup. */
+    howto: z
+      .object({
+        name: z.string(),
+        steps: z.array(
+          z.object({
+            name: z.string(),
+            text: z.string(),
+          }),
+        ),
+      })
+      .optional(),
   }),
 });
 
@@ -57,6 +69,18 @@ const pillar = defineCollection({
           a: z.string(),
         }),
       )
+      .optional(),
+    /** Volitelné HowTo schema — když pillar obsahuje step-by-step postup. */
+    howto: z
+      .object({
+        name: z.string(),
+        steps: z.array(
+          z.object({
+            name: z.string(),
+            text: z.string(),
+          }),
+        ),
+      })
       .optional(),
   }),
 });

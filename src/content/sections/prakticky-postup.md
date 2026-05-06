@@ -21,6 +21,17 @@ faq:
     a: "Sekvenčně, jeden po druhém. Bez auditu (krok 1) nevíte, co opravit. Bez schema markupu (krok 2) AI engines nerozumí struktuře, takže answer block jim nepomůže. Bez správné struktury obsahu (krok 3) měření nemá co reportovat — uvidíte jen 'chybí citace', ne důvod. Praktický harmonogram pro malou firmu: 1. týden audit, 2.–3. týden schema implementace na top 20 stránek, 4.–6. týden přepis answer bloků a FAQ, 7. týden setup měření v Looker Studio. Po 90 dnech první vyhodnocení."
   - q: "Co dělat, když nemám žádné stránky v top 10 — má smysl řešit GEO/AEO?"
     a: "Ano, dokonce naopak. Pokud začínáte s novým webem nebo s 0 článků v top 10, je nejvhodnější chvíle psát obsah hned GEO-friendly — answer block, definice, schema, fact-density. Cena 0 Kč navíc, ale za 6–12 měsíců, až se dostanete do top 10, budete připraveni pro AI citace. Klasická chyba: 'nejdřív SEO, pak GEO' = za rok 50 článků k přepisu. Praktický postup je univerzální nezávisle na startovní pozici."
+howto:
+  name: "Praktický postup: jak začít s GEO/AEO/AIO ve 4 krocích"
+  steps:
+    - name: "Audit existujícího obsahu pro AI citovatelnost"
+      text: "Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) má stránka FAQ sekci s reálnými dotazy uživatelů, (3) je tam FAQPage schema markup, (4) jsou H2/H3 strukturované jako otázky a sub-odpovědi. Stránky které selžou ≥ 2 kontroly přepište answer block a přidejte FAQ. Časový odhad: 2–4 hodiny pro 20 stránek."
+    - name: "Schema.org markup (FAQPage, HowTo, Article)"
+      text: "Implementujte 3 typy strukturovaných dat: Article schema na každý článek (headline, description, datePublished, dateModified, author), FAQPage schema na každou FAQ sekci (mainEntity array s Question a Answer), HowTo schema na každý návodový článek (step array s name a text). JSON-LD blok jde do <head>, FAQ otázky v HTML musí přesně odpovídat otázkám v JSON-LD. Validate přes Google Rich Results Test."
+    - name: "Strukturované odpovědi (answer block + kontext)"
+      text: "Každý článek začíná answer blockem 40–60 slov hned po H1 — vizuálně oddělený rámeček s definicí 'X je …', klíčovým mechanismem a praktickým důsledkem. Pod ním detailní kontext s 6–10 H2 sekcemi (300–500 slov každá). Pyramidová struktura: AI engines tahají z prvních cca 1 000 znaků, takže nejdůležitější věci nahoru."
+    - name: "Měření: SERP features tracking + AI citation monitoring"
+      text: "Nastavte měření ve 4 vrstvách. (1) Google Search Console: Featured Snippets impressions, FAQ rich snippets, AIO presence. (2) Google Analytics 4: organic sessions per page, time on page, scroll depth. (3) AI citation share: ručně přes ChatGPT a Perplexity dotazy 1× měsíčně, profesionálně přes Otterly nebo Marketing Miner Brand Radar. (4) Looker Studio dashboard sjednocující všechny zdroje. Po 90 dnech první vyhodnocení."
 ---
 
 ## <strong>Praktický postup</strong> ve <span class="hl">4 krocích</span>

@@ -28,6 +28,17 @@ faq:
     a: "Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření v ČR je zatím marginální oproti Google. GEO praktiky (strukturovaný obsah, schema markup, fakta nahoře) prospívají i Seznamu, ale dedikovanou GEO strategii pro Seznam zatím nepotřebujete — kvalitní SEO + AEO pro Google obvykle pokryje i Seznam."
   - q: "Jaký je rozdíl mezi AI Overview a AI Overviews?"
     a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma. V tomto průvodci používáme oba zaměnitelně."
+howto:
+  name: "Jak začít s GEO/AEO/AIO ve 4 krocích"
+  steps:
+    - name: "Audit existujícího obsahu pro AI citovatelnost"
+      text: "Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) obsahuje stránka konkrétní fakta, čísla a citáty, (3) je struktura H2/H3 logická (každý subheading odpovídá na sub-dotaz), (4) má stránka FAQ sekci s schema.org/FAQPage markupem. Stránky které selžou ≥ 2 kontroly přepište."
+    - name: "Schema.org markup (FAQPage, HowTo, Article)"
+      text: "Schema markup je strojově čitelný popis vaší stránky, který AI engines explicitně vyhledávají. Implementujte 3 typy: Article schema na každý článek (headline, datePublished, dateModified, author), FAQPage na FAQ sekci (mainEntity array s Question a Answer), HowTo na tutoriály a postupy (step array s name a text). JSON-LD blok jde do <head>, validate přes Google Rich Results Test."
+    - name: "Strukturované odpovědi (answer block + kontext)"
+      text: "Každý článek by měl mít dvouvrstevnou strukturu: answer block 40–60 slov hned po H1 (tady AI engines táhnou citaci) plus dlouhý kontext pod tím (pro lidské čtenáře, kteří chtějí hlubší pochopení). Definice typu 'X je …' jako tučný odstavec — přímý signál pro AI scrapery, kde najdou definici daného pojmu."
+    - name: "Měření: SERP features tracking + AI citation monitoring"
+      text: "Sledujte 5 klíčových metrik: pozice v AI Overviews (manuální Google search nebo SE Ranking, týdně), Featured Snippets impressions (Google Search Console, denně), FAQ rich snippet zobrazení (GSC Performance Search Appearance, týdně), brand mention v ChatGPT (Otterly nebo Profound, měsíčně), citation share v Perplexity (manuální audit nebo Profound, měsíčně). Pro průběžné měření stačí ze začátku jednoduchá tabulka v Excelu."
 ---
 
 ## <strong>Úvod</strong>: Proč najednou <span class="hl">4 zkratky</span> místo jedné
