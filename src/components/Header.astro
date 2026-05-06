@@ -14,7 +14,9 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   <div class="site-header__inner">
     <a href="/" class="brand" aria-label="aiseo-optimalizace.cz — domovská stránka">
       <span class="brand__sigil" aria-hidden="true"></span>
-      <span>aiseo-optimalizace.cz</span>
+      <span class="brand__name">
+        <span class="brand__name-strong">aiseo</span><span class="brand__name-rest">-optimalizace</span><span class="brand__name-tld">.cz</span>
+      </span>
     </a>
 
     <nav class="disc-nav" aria-label="Hlavní navigace">
@@ -67,35 +69,54 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   }
   .brand {
     font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: -0.012em;
+    font-size: 1.125rem;
+    letter-spacing: -0.022em;
     color: var(--color-ink);
     white-space: nowrap;
     display: inline-flex;
     align-items: center;
-    gap: 0.625rem;
-    transition: color 0.2s ease;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: opacity 0.18s ease;
   }
-  .brand:hover { color: var(--color-accent); }
+  .brand:hover { opacity: 0.78; }
   .brand__sigil {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     background: var(--color-ink);
-    border-radius: 4px;
+    border-radius: 6px;
     display: inline-block;
     position: relative;
     flex: none;
-    transition: background 0.2s ease;
+    transition: background 0.18s ease;
   }
   .brand__sigil::before {
     content: "";
     position: absolute;
-    inset: 4px;
+    inset: 5px;
     background: var(--color-paper);
     border-radius: 2px;
   }
   .brand:hover .brand__sigil { background: var(--color-accent); }
+
+  /* Hierarchie loga: 'aiseo' accent + bold | '-optimalizace' ink | '.cz' faint */
+  .brand__name {
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .brand__name-strong {
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: -0.028em;
+  }
+  .brand__name-rest {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .brand__name-tld {
+    font-weight: 400;
+    color: var(--color-ink-faint);
+  }
 
   .disc-nav {
     display: none;

@@ -7,7 +7,9 @@ const year = new Date().getFullYear();
     <div class="ftr-brand">
       <h3>
         <span class="ftr-brand__sigil" aria-hidden="true"></span>
-        aiseo-optimalizace.cz
+        <span class="ftr-brand__name">
+          <span class="ftr-brand__name-strong">aiseo</span><span class="ftr-brand__name-rest">-optimalizace</span><span class="ftr-brand__name-tld">.cz</span>
+        </span>
       </h3>
       <p>
         Praktický průvodce AI érou vyhledávání pro český trh. Co je rozdíl mezi SEO, GEO, AEO a AIO — a kdy kterou techniku použít na webu nebo e-shopu.
@@ -72,20 +74,29 @@ const year = new Date().getFullYear();
 
   .ftr-brand h3 {
     font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 1.0625rem;
-    letter-spacing: -0.018em;
+    font-size: 1.125rem;
+    letter-spacing: -0.022em;
     margin-bottom: 0.875rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.625rem;
+    gap: 0.75rem;
     color: var(--color-ink);
   }
+  /* Hierarchie loga ve footeru — konzistentní s headerem */
+  .ftr-brand__name { display: inline-flex; align-items: baseline; }
+  .ftr-brand__name-strong {
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: -0.028em;
+  }
+  .ftr-brand__name-rest { font-weight: 500; color: var(--color-ink); }
+  .ftr-brand__name-tld { font-weight: 400; color: var(--color-ink-faint); }
+
   .ftr-brand__sigil {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     background: var(--color-ink);
-    border-radius: 4px;
+    border-radius: 6px;
     display: inline-block;
     position: relative;
     flex: none;
@@ -93,7 +104,7 @@ const year = new Date().getFullYear();
   .ftr-brand__sigil::before {
     content: "";
     position: absolute;
-    inset: 4px;
+    inset: 5px;
     background: var(--color-paper-deep);
     border-radius: 2px;
   }
