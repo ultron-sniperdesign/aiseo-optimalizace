@@ -17,6 +17,10 @@ faq:
     a: "Krátké news/edu články profitují (interval.cz +137 % YoY se stejnou AIO presence). Dlouhé how-to průvodce trpí (marketingppc.cz −56 %). Strategický bypass přes meta nosnippet je validní volba pro publishers, kteří závisí na page views nebo ad revenue."
   - q: "Co je LLMO a jak se liší od GEO?"
     a: "LLMO (Large Language Model Optimization) je novější synonymum pro GEO — používané hlavně v anglických zdrojích z 2024+. Některé agentury rozlišují: LLMO = optimalizace pro obecné LLM bez search modulu (ChatGPT bez search), GEO = pro LLM s real-time search (Perplexity, Gemini Search). V praxi se pojmy zaměňují."
+  - q: "Jak rozeznám, kterým z dvou významů AIO autor textu myslí?"
+    a: "Podle kontextu věty. (1) Pokud autor mluví o 'AIO panelu', 'zobrazení v AIO', 'AIO presence' nebo 'AIO citation', myslí Google AI Overviews — konkrétní funkci nad výsledky. (2) Pokud mluví o 'AIO strategii', 'AIO frameworku' nebo 'AIO optimalizaci', myslí AI Optimization — zastřešující pojem (SEO + GEO + AEO). Pravidlo: AIO jako proces = strategický pojem, AIO jako lokace = funkce Googlu. V profesionálních textech 2026 se tento dvojí význam často explicitně vysvětluje na začátku."
+  - q: "Stačí pro AIO presence kvalitní SEO + AEO, nebo musím dělat něco dalšího?"
+    a: "Pro samotnou AIO presence (zobrazení v Google AI Overviews) stačí SEO + AEO baseline — strukturovaný obsah s answer blocky 40–60 slov, FAQPage schema, autoritní backlinks, E-E-A-T signály. Google AI Overviews vybírá zdroje z top 10 organických výsledků s největší 'citation worthiness' (kvalita strukturování). Žádné speciální 'AIO optimalizace' navíc neexistuje — kdo má dobré SEO + AEO, dostává AIO presence automaticky. Otázka je spíš strategická: 'chci AIO presence' (kratší obsah, news, B2B autorita) vs. 'nechci' (dlouhé how-to, e-shop produktovky, kde AIO bere klik)."
 ---
 
 ## Dva významy <span class="hl">AIO</span> — <strong>rozeznejte je v textu</strong>

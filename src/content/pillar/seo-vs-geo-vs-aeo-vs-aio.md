@@ -2,7 +2,7 @@
 title: "SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4 zkratkami pro AI éru"
 description: "Co je rozdíl mezi SEO, GEO, AEO a AIO? Praktický průvodce optimalizací pro AI vyhledávání — ChatGPT, Perplexity, Google AI Overviews. Pro web i e-shop."
 updated: "2026-04-29"
-tldr: "SEO optimalizuje pro pozice v Googlu. GEO pro citace v ChatGPT a Perplexity. AEO pro odpovědi v Google AI Overviews a Bing Chatu. AIO zastřešuje všechny tři disciplíny. V roce 2026 už nestačí dělat jen klasické SEO — pokud chcete být citováni v ChatGPT odpovědi nebo zobrazeni v Google AI Overview, potřebujete kombinaci všech čtyř."
+tldr: "SEO optimalizuje pro pozice v Googlu. GEO pro citace v ChatGPT a Perplexity. AEO pro odpovědi v Google AI Overviews. AIO zastřešuje všechny tři disciplíny. V roce 2026 nestačí dělat jen klasické SEO — pro citace v AI odpovědích potřebujete kombinaci všech čtyř."
 keywords:
   - "ai overview"
   - "geo seo"

@@ -1,7 +1,7 @@
 ---
 title: "SEO pro e‑shopy v AI éře 2026: co změnit, kolik to stojí, kde začít"
 description: "Praktický průvodce SEO pro e‑shopy v AI éře. Co se mění s AI Overviews, na co zacílit v kategoriích a produktovkách, kolik to stojí a kdy si najmout agenturu."
-answer: "SEO pro e‑shop v AI éře už není jen o pozicích v Googlu. Klíčové změny: (1) FAQ sekce s FAQPage schema u kategorií i produktů, (2) Product schema s recenzemi a cenou, (3) krátké odpovědi 40–60 slov v úvodu kategorií, (4) E‑E‑A‑T signály na produktových stránkách (autor, datum, recenze). Náklady se pohybují od 2 500 Kč (základní audit) po desítky tisíc měsíčně (kontinuální péče)."
+answer: "SEO pro e‑shop v AI éře už není jen o pozicích v Googlu. Klíčové změny: (1) FAQPage schema u kategorií i produktů, (2) Product schema s recenzemi a cenou, (3) krátké odpovědi 40–60 slov v úvodu kategorií, (4) E‑E‑A‑T signály na produktových stránkách. Náklady od 2 500 Kč (audit) po desítky tisíc měsíčně (kontinuální péče)."
 slug: "seo-pro-eshopy-ai-era-2026"
 category: "analysis"
 updated: "2026-05-01"

@@ -1,7 +1,7 @@
 ---
 title: "Praktický postup: jak začít s GEO/AEO/AIO ve 4 krocích"
 description: "Krok za krokem: audit obsahu, schema markup (FAQ, HowTo, Article), answer block + kontext, měření citation share. Pro web i e-shop."
-answer: "Začněte ve 4 krocích: (1) audit existujícího obsahu pro AI citovatelnost, (2) přidat schema.org markup (FAQPage, HowTo, Article), (3) strukturovat odpovědi do answer block + dlouhý kontext, (4) měřit přes SERP features tracking a AI citation monitoring."
+answer: "Začněte ve 4 krocích, postupně, ne paralelně. (1) Audit obsahu pro AI citovatelnost — top 20 stránek za 2–4 hodiny. (2) Schema.org markup — FAQPage, HowTo, Article. (3) Answer block 40–60 slov nahoře + detailní kontext dál. (4) Měřit přes Google Search Console a AI citation monitoring (Otterly, Profound)."
 slug: "prakticky-postup"
 order: 5
 abbr: "PRAXE"
@@ -17,6 +17,10 @@ faq:
     a: "Google Search Console (Featured Snippets + FAQ rich snippets, jádro měření zdarma), Ahrefs Brand Radar (citation share napříč LLM), Otterly nebo Profound (mention monitoring v ChatGPT/Perplexity), pro technický audit Screaming Frog nebo Ahrefs Site Audit. Pro AIO presence stačí ze začátku manuální tabulka top 10 KW."
   - q: "Stačí mi udělat answer block a FAQ a budu v AI Overviews?"
     a: "Ne, je to nutná ale nedostačující podmínka. Bez kvalitního SEO baseline (indexace, autorita) vás Google v AIO nezobrazí. Bez brand mentions vás ChatGPT necituje. Praktický postup je celý cyklus: SEO foundations → answer block + FAQ → měření → iterace."
+  - q: "V jakém pořadí mám 4 kroky dělat — paralelně nebo sekvenčně?"
+    a: "Sekvenčně, jeden po druhém. Bez auditu (krok 1) nevíte, co opravit. Bez schema markupu (krok 2) AI engines nerozumí struktuře, takže answer block jim nepomůže. Bez správné struktury obsahu (krok 3) měření nemá co reportovat — uvidíte jen 'chybí citace', ne důvod. Praktický harmonogram pro malou firmu: 1. týden audit, 2.–3. týden schema implementace na top 20 stránek, 4.–6. týden přepis answer bloků a FAQ, 7. týden setup měření v Looker Studio. Po 90 dnech první vyhodnocení."
+  - q: "Co dělat, když nemám žádné stránky v top 10 — má smysl řešit GEO/AEO?"
+    a: "Ano, dokonce naopak. Pokud začínáte s novým webem nebo s 0 článků v top 10, je nejvhodnější chvíle psát obsah hned GEO-friendly — answer block, definice, schema, fact-density. Cena 0 Kč navíc, ale za 6–12 měsíců, až se dostanete do top 10, budete připraveni pro AI citace. Klasická chyba: 'nejdřív SEO, pak GEO' = za rok 50 článků k přepisu. Praktický postup je univerzální nezávisle na startovní pozici."
 ---
 
 ## <strong>Praktický postup</strong> ve <span class="hl">4 krocích</span>

@@ -1,14 +1,14 @@
 ---
 title: "Rozhodovací matice: kdy SEO, kdy AEO, kdy GEO, kdy AIO"
 description: "Kdy investovat do které disciplíny? Praktický rámec pro nový web, B2B SaaS, B2C e-shop. Plus kritické varování: AIO může i škodit."
-answer: "Začněte SEO. Přidejte AEO, jakmile máte 20+ článků v top 10. Investujte do GEO, jen pokud B2B cílovka aktivně používá ChatGPT/Perplexity. AIO jako zastřešující strategii nasazujte, až máte zralý SEO program. Pozor: AIO škodí dlouhým how-to průvodcům."
+answer: "Pořadí podle fáze projektu, ne všechno paralelně. (1) SEO základy — 0–6 měsíců, pillar content + technické zdraví. (2) AEO + GEO-friendly psaní od prvního článku, bez extra nákladu. (3) Měření citation share až od 20+ článků v top 10. (4) AIO jako strategický rámec po zralém SEO programu. Pro dlouhé how-to může AIO ubrat klikatelnost."
 slug: "rozhodovaci-matice"
 order: 6
 abbr: "MATICE"
 updated: "2026-04-29"
 faq:
-  - q: "Kdy investovat do GEO místo do SEO?"
-    a: "GEO nenahrazuje SEO. Pokud máte web mladší než 12 měsíců nebo slabou indexaci, začněte SEO. GEO investice má smysl až, když: (1) máte minimálně 20 článků v top 10 organicky, (2) vaše B2B cílovka aktivně používá AI nástroje, (3) chcete měřit brand visibility v AI ekosystému jako konverzní metriku."
+  - q: "Mám psát GEO-friendly obsah od začátku, nebo až po dosažení SEO milníku?"
+    a: "Od začátku. GEO-friendly psaní (answer block 40–60 slov, definice 'X je…', fact-density 3+ fakta na 100 slov, FAQPage schema) nestojí žádný extra náklad oproti běžnému SEO contentu — jen znamená psát s jiným nastavením v hlavě. Pokud nyní píšete obsah bez GEO awareness, za rok budete mít 50+ článků k přepisu. Co má smysl odložit až po dosažení SEO milníku (typicky 20+ článků v top 10): pořízení placených nástrojů na měření citation share (Otterly $29/měs, Profound $500+) — tady je investice na místě."
   - q: "Můžu se rozhodnout AIO nedělat — i když je to trend?"
     a: "Ano. Klíčové zjištění z analýzy CZ trhu: AI Overviews škodí dlouhým how-to průvodcům (marketingppc.cz prošel propadem 46k → 20k organic mezi červencem a září 2025). Pokud máte e-shop nebo B2B SaaS s dlouhými edukačními průvodci, zvažte selektivní blokování přes meta tag nosnippet."
   - q: "Jak rozhodnout pro B2C e-shop?"
@@ -17,6 +17,8 @@ faq:
     a: "B2B SaaS: full stack (SEO + AEO + GEO). Důvod: B2B research často probíhá v ChatGPT/Perplexity, brand mention v AI odpovědi má vysokou konverzní hodnotu. Měřte přes Profound nebo Otterly. Pillar content + case studies + datově hutné srovnávací články."
   - q: "Co dělat, když AIO snižuje můj organic traffic?"
     a: "Tři možnosti, podle severity: (a) selektivní data-nosnippet na úvodní bloky dlouhých článků, (b) meta nosnippet globálně (ztratíte i klasické snippets), (c) přepsat dlouhé how-to do formátu kratších článků — uživatel klikne dál pro detaily. Začněte A/B testem před plošnou implementací."
+  - q: "Jak rozhodnout, když mám malý rozpočet a musím prioritizovat?"
+    a: "Pravidlo 80/20 pro malou firmu nebo solo projekt s rozpočtem do 10 000 Kč/měs: 70 % zdrojů do SEO základů (technické zdraví, pillar content, on-page), 25 % do AEO (FAQPage schema, answer block, HowTo) a 5 % do GEO awareness při psaní obsahu (žádný přímý náklad — jen styl psaní). Měření v této fázi přes free nástroje: Google Search Console + manuální ChatGPT/Perplexity dotazy 1× měsíčně. Placené citation tracking ($29–500/měs) má smysl až po dosažení 20+ článků v top 10 organicky."
 ---
 
 ## <strong>Rozhodovací rámec</strong> ve <span class="hl">4 fázích</span>
