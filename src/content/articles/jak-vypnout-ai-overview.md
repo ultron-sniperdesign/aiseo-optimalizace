@@ -5,6 +5,7 @@ answer: "Google AI Overviews nelze garantovaně globálně vypnout — Google ne
 slug: "jak-vypnout-ai-overview"
 category: "defensive"
 updated: "2026-05-06"
+variant: "rich"
 keywords:
   - "jak vypnout ai overview"
   - "ai overview vypnout"

@@ -5,6 +5,7 @@ answer: "SEO pro e‑shop v AI éře už není jen o pozicích v Googlu. Hlavní
 slug: "seo-pro-eshopy-ai-era-2026"
 category: "analysis"
 updated: "2026-05-06"
+variant: "rich"
 keywords:
   - "seo pro eshopy"
   - "seo optimalizace eshopu"
