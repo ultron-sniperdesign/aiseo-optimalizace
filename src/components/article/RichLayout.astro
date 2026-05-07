@@ -1,0 +1,820 @@
+---
+/**
+ * RichLayout — enhanced article layout pro `layout: rich` články.
+ *
+ * Rozdíl proti classic:
+ * - Reading progress bar (fixed top)
+ * - Hero stat tiles (z frontmatter `stats`)
+ * - Sticky TOC v levém sloupci (desktop ≥1080px)
+ * - H2 sekce mají chapter divider s velkým číslem
+ * - H3 nadpisy se vykreslí jako numbered cards
+ * - Subtle paper-deep banding mezi sekcemi
+ * - Decorative rail vpravo s discipline color
+ * - Auto-generated heading IDs + scrollspy (client JS)
+ *
+ * Component přijímá `entry` (articles collection) a `Content` (rendered MDX).
+ */
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"articles">;
+  Content: any;
+  crumbLabel: string;
+  wordCountRounded: number;
+  readingMinutes: number;
+  faqCount: number;
+}
+
+const { entry, Content, crumbLabel, wordCountRounded, readingMinutes, faqCount } =
+  Astro.props as Props;
+
+/**
+ * Build heading list z raw entry.body — jen H2 a H3.
+ * Stripped HTML/markdown markers + slugify. Použito pro sticky TOC + assign IDs na klientu.
+ */
+const rawBody = entry.body ?? "";
+const headings = rawBody
+  .split("\n")
+  .map((line) => {
+    const m2 = line.match(/^##\s+(.+?)\s*$/);
+    const m3 = line.match(/^###\s+(.+?)\s*$/);
+    if (!m2 && !m3) return null;
+    const level = m2 ? 2 : 3;
+    const raw = (m2?.[1] ?? m3?.[1] ?? "").trim();
+    const text = raw
+      .replace(/<[^>]+>/g, "")
+      .replace(/[*_`]/g, "")
+      .trim();
+    const id = text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .slice(0, 64);
+    return { level, text, id };
+  })
+  .filter(Boolean) as { level: 2 | 3; text: string; id: string }[];
+
+const stats = entry.data.stats ?? [];
+---
+
+<!-- READING PROGRESS BAR -->
+<div class="reading-progress" aria-hidden="true">
+  <div class="reading-progress__bar" id="reading-progress-bar"></div>
+</div>
+
+<div class="rich-page">
+  <!-- HERO -->
+  <section class="rhero">
+    <div class="rhero__inner">
+      <nav class="rhero__crumbs" aria-label="Drobečková navigace">
+        <a href="/">Úvod</a>
+        <span class="crumb-sep">›</span>
+        <a href="/blog/">Blog</a>
+        <span class="crumb-sep">›</span>
+        <span class="rhero__crumb-pill">{crumbLabel}</span>
+      </nav>
+
+      <h1 class="rhero__title">{entry.data.title}</h1>
+
+      <p class="rhero__sub">{entry.data.description}</p>
+
+      <div class="rhero__meta">
+        <span>~{wordCountRounded.toLocaleString("cs-CZ")} slov</span>
+        <span>{faqCount} častých otázek</span>
+        <span>~{readingMinutes} minut čtení</span>
+        <span>Aktualizováno: {entry.data.updated}</span>
+      </div>
+
+      {
+        stats.length > 0 && (
+          <div class="rhero__stats" role="list">
+            {stats.map((s) => (
+              <div class="stat-tile" role="listitem">
+                <span class="stat-tile__value">{s.value}</span>
+                <span class="stat-tile__label">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    <!-- decorative rail -->
+    <div class="rhero__rail" aria-hidden="true"></div>
+  </section>
+
+  <!-- ANSWER BLOCK -->
+  <section class="ranswer">
+    <div class="ranswer__inner">
+      <div class="ranswer__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </div>
+      <div>
+        <span class="ranswer__mark">Stručná odpověď</span>
+        <p class="ranswer__text">{entry.data.answer}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE GRID — sticky TOC + content + decoration -->
+  <div class="rgrid">
+    <!-- Sticky TOC (desktop) -->
+    {
+      headings.length > 0 && (
+        <aside class="rtoc" aria-label="Obsah článku">
+          <div class="rtoc__sticky">
+            <span class="rtoc__label">V tomto článku</span>
+            <nav class="rtoc__nav">
+              <ol class="rtoc__list">
+                {headings.map((h) => (
+                  <li class={`rtoc__item rtoc__item--h${h.level}`}>
+                    <a href={`#${h.id}`} class="rtoc__link" data-toc-target={h.id}>
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        </aside>
+      )
+    }
+
+    <!-- ARTICLE BODY -->
+    <article class="rarticle">
+      <div class="rarticle__prose" id="rich-article-prose" data-headings={JSON.stringify(headings)}>
+        <Content />
+      </div>
+    </article>
+  </div>
+
+  <!-- FAQ -->
+  {
+    entry.data.faq && entry.data.faq.length > 0 && (
+      <section class="rfaq" aria-labelledby="rfaq-title">
+        <header class="rfaq__head">
+          <span class="rfaq__eyebrow">FAQ · {entry.data.faq.length} otázek</span>
+          <h2 id="rfaq-title" class="rfaq__title">
+            Časté otázky, které k tématu padají
+          </h2>
+        </header>
+
+        <dl class="rfaq__list">
+          {entry.data.faq.map((item, i) => (
+            <details class="rfaq__item">
+              <summary class="rfaq__q">
+                <span class="rfaq__q-num">{String(i + 1).padStart(2, "0")}</span>
+                <span class="rfaq__q-text">{item.q}</span>
+                <span class="rfaq__q-chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="rfaq__a">{item.a}</div>
+            </details>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
+  <!-- BACK CTA -->
+  <section class="rback">
+    <a href="/blog/" class="rback__primary">
+      <span aria-hidden="true">←</span>
+      Všechny články v blogu
+    </a>
+    <a href="/" class="rback__secondary">Zpět na úvod</a>
+  </section>
+</div>
+
+<!-- CLIENT SCRIPT — assign IDs to headings + scrollspy + progress bar -->
+<script is:inline>
+  (function () {
+    var prose = document.getElementById("rich-article-prose");
+    if (!prose) return;
+    var headingsData = [];
+    try {
+      headingsData = JSON.parse(prose.getAttribute("data-headings") || "[]");
+    } catch (e) {}
+
+    /* Map heading text → ID. Walk DOM h2/h3 in order, assign IDs from data sequentially. */
+    var domHeadings = prose.querySelectorAll("h2, h3");
+    var idIdx = 0;
+    domHeadings.forEach(function (h) {
+      var level = h.tagName === "H2" ? 2 : 3;
+      while (idIdx < headingsData.length && headingsData[idIdx].level !== level) idIdx++;
+      if (idIdx < headingsData.length && headingsData[idIdx].level === level) {
+        h.id = headingsData[idIdx].id;
+        idIdx++;
+      }
+    });
+
+    /* Scrollspy — highlight TOC link of nearest heading above scroll position. */
+    var tocLinks = document.querySelectorAll("[data-toc-target]");
+    var idToLink = {};
+    tocLinks.forEach(function (a) { idToLink[a.getAttribute("data-toc-target")] = a; });
+
+    function updateSpy() {
+      var pos = window.scrollY + 140;
+      var current = null;
+      domHeadings.forEach(function (h) {
+        if (h.id && h.offsetTop <= pos) current = h.id;
+      });
+      tocLinks.forEach(function (a) { a.classList.remove("is-active"); });
+      if (current && idToLink[current]) idToLink[current].classList.add("is-active");
+    }
+
+    /* Reading progress bar */
+    var bar = document.getElementById("reading-progress-bar");
+    function updateProgress() {
+      if (!bar) return;
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
+      bar.style.width = pct + "%";
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        updateSpy();
+        updateProgress();
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+<style>
+  /* ===== DESIGN TOKENS — discipline color (default SEO indigo for analysis category) ===== */
+  .rich-page {
+    --d: var(--color-seo);
+    --d-tint: var(--color-seo-tint);
+    --d-soft: var(--color-seo-soft);
+    --d-deep: oklch(from var(--color-seo) calc(l - 0.08) c h);
+  }
+
+  /* ===== READING PROGRESS BAR ===== */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    z-index: 100;
+    pointer-events: none;
+  }
+  .reading-progress__bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-seo) 0%, var(--color-aio) 100%);
+    transition: width 0.05s linear;
+  }
+
+  /* ===== HERO ===== */
+  .rhero {
+    position: relative;
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 8vh, 5.5rem) var(--space-section-x) clamp(2rem, 4vw, 3rem);
+  }
+  .rhero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 60rem;
+  }
+  .rhero__rail {
+    position: absolute;
+    top: 0;
+    right: var(--space-section-x);
+    width: 280px;
+    height: 100%;
+    background:
+      radial-gradient(circle at 80% 20%, color-mix(in oklch, var(--d) 12%, transparent), transparent 60%),
+      linear-gradient(135deg, var(--d-tint) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: 16px;
+    opacity: 0.5;
+  }
+  @media (max-width: 900px) {
+    .rhero__rail { display: none; }
+  }
+
+  .rhero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .rhero__crumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .rhero__crumbs a:hover { color: var(--color-ink); }
+  .rhero__crumb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--d-tint);
+    color: var(--d);
+    border: 1px solid var(--d-soft);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .rhero__crumb-pill::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+  .crumb-sep { opacity: 0.4; }
+
+  .rhero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    font-size: clamp(1.875rem, 4.4vw, 3.75rem);
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    margin: 0 0 1.25rem;
+    max-width: 24ch;
+    color: var(--color-ink);
+  }
+  .rhero__sub {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 50rem;
+    margin: 0 0 2rem;
+  }
+  .rhero__meta {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .rhero__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .rhero__meta span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+
+  /* ===== STAT TILES ===== */
+  .rhero__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.875rem;
+    max-width: 60rem;
+  }
+  .stat-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.125rem 1.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stat-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -8px color-mix(in oklch, var(--d) 25%, transparent);
+  }
+  .stat-tile__value {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+    font-weight: 250;
+    letter-spacing: -0.02em;
+    color: var(--d);
+    line-height: 1;
+  }
+  .stat-tile__label {
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    color: var(--color-ink-muted);
+    line-height: 1.35;
+  }
+
+  /* ===== ANSWER BLOCK ===== */
+  .ranswer {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .ranswer__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 10px;
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.125rem;
+    max-width: 60rem;
+  }
+  .ranswer__icon {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--d-tint);
+    color: var(--d);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+  .ranswer__mark {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--d);
+    margin-bottom: 0.4rem;
+  }
+  .ranswer__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== ARTICLE GRID — TOC + content ===== */
+  .rgrid {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  @media (min-width: 1080px) {
+    .rgrid {
+      grid-template-columns: 220px minmax(0, 1fr);
+    }
+  }
+
+  /* ===== STICKY TOC ===== */
+  .rtoc {
+    display: none;
+  }
+  @media (min-width: 1080px) {
+    .rtoc { display: block; }
+  }
+  .rtoc__sticky {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+  .rtoc__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 1rem;
+  }
+  .rtoc__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--color-rule);
+  }
+  .rtoc__item {
+    margin: 0;
+  }
+  .rtoc__item--h3 {
+    padding-left: 1rem;
+  }
+  .rtoc__link {
+    display: block;
+    padding: 0.4rem 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    line-height: 1.4;
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .rtoc__link:hover {
+    color: var(--color-ink);
+    background: var(--color-paper-deep);
+  }
+  .rtoc__link.is-active {
+    color: var(--d);
+    border-left-color: var(--d);
+    font-weight: 500;
+  }
+  .rtoc__item--h2 > .rtoc__link {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  /* ===== ARTICLE BODY ===== */
+  .rarticle {
+    min-width: 0; /* prevent grid blowout */
+  }
+  .rarticle__prose {
+    max-width: 50rem;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    counter-reset: h2-counter h3-counter;
+  }
+
+  /* H2 — Chapter divider with big number */
+  .rarticle__prose :global(h2) {
+    counter-increment: h2-counter;
+    counter-reset: h3-counter; /* reset H3 counter under each H2 */
+    position: relative;
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.18;
+    margin: clamp(3rem, 6vw, 4.5rem) 0 1.25rem;
+    padding-top: clamp(2rem, 4vw, 3rem);
+    color: var(--color-ink);
+    border-top: 1px solid var(--color-rule);
+  }
+  .rarticle__prose :global(h2)::before {
+    content: "Část " counter(h2-counter, decimal-leading-zero);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--d);
+    margin-bottom: 0.625rem;
+  }
+  .rarticle__prose :global(h2:first-child) {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  /* H3 — Numbered card with big number, left rail */
+  .rarticle__prose :global(h3) {
+    counter-increment: h3-counter;
+    position: relative;
+    font-family: var(--font-sans);
+    font-size: clamp(1.125rem, 1.7vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    line-height: 1.3;
+    margin: 2.5rem 0 1rem;
+    padding: 1rem 1.25rem 1rem 4.5rem;
+    color: var(--color-ink);
+    background: linear-gradient(
+      90deg,
+      var(--d-tint) 0%,
+      var(--color-paper) 70%
+    );
+    border-left: 3px solid var(--d);
+    border-radius: 8px;
+  }
+  .rarticle__prose :global(h3)::before {
+    content: counter(h3-counter, decimal-leading-zero);
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-sans);
+    font-size: 1.625rem;
+    font-weight: 250;
+    letter-spacing: -0.03em;
+    color: var(--d);
+    line-height: 1;
+  }
+
+  .rarticle__prose :global(p) { margin: 0 0 1.25rem; }
+  .rarticle__prose :global(ul),
+  .rarticle__prose :global(ol) { margin: 0 0 1.5rem; padding-left: 1.5rem; }
+  .rarticle__prose :global(li) { margin-bottom: 0.5rem; }
+  .rarticle__prose :global(a) {
+    color: var(--d);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  .rarticle__prose :global(a:hover) { text-decoration-thickness: 2px; }
+  .rarticle__prose :global(strong) { font-weight: 600; color: var(--color-ink); }
+
+  .rarticle__prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75rem 0 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .rarticle__prose :global(th),
+  .rarticle__prose :global(td) {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .rarticle__prose :global(tr:last-child td) { border-bottom: none; }
+  .rarticle__prose :global(th) {
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-paper-deep);
+    border-bottom: 2px solid var(--d-soft);
+  }
+  .rarticle__prose :global(blockquote) {
+    border-left: 3px solid var(--d);
+    background: var(--d-tint);
+    padding: 1rem 1.25rem;
+    margin: 1.75rem 0;
+    color: var(--color-ink);
+    border-radius: 0 8px 8px 0;
+  }
+  .rarticle__prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    color: var(--color-ink);
+  }
+  .rarticle__prose :global(.hl) {
+    background: linear-gradient(180deg, transparent 60%, var(--d-tint) 60%);
+    padding: 0 0.15em;
+  }
+
+  /* ===== FAQ ===== */
+  .rfaq {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 4.5rem);
+  }
+  .rfaq__head {
+    max-width: 50rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .rfaq__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--d);
+    margin-bottom: 0.625rem;
+  }
+  .rfaq__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 250;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--color-ink);
+    line-height: 1.1;
+  }
+  .rfaq__list {
+    max-width: 60rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .rfaq__item {
+    border-top: 1px solid var(--color-rule);
+    padding: 0;
+  }
+  .rfaq__item:last-child {
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .rfaq__item[open] {
+    background: var(--color-paper-deep);
+  }
+  .rfaq__q {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    cursor: pointer;
+    list-style: none;
+    padding: 1.25rem 1rem 1.25rem 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.875rem;
+    align-items: baseline;
+    line-height: 1.35;
+    transition: color 0.15s ease;
+  }
+  .rfaq__q::-webkit-details-marker { display: none; }
+  .rfaq__q:hover { color: var(--d); }
+  .rfaq__q-num {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--d);
+  }
+  .rfaq__q-text {
+    min-width: 0;
+  }
+  .rfaq__q-chevron {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 250;
+    color: var(--d);
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  .rfaq__item[open] .rfaq__q-chevron { transform: rotate(45deg); }
+  .rfaq__a {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink-muted);
+    padding: 0 1rem 1.5rem 2.625rem;
+  }
+
+  /* ===== BACK CTA ===== */
+  .rback {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(4rem, 8vw, 6rem);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .rback__primary,
+  .rback__secondary {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .rback__primary {
+    background: var(--d-tint);
+    color: var(--d);
+    border: 1px solid var(--d-soft);
+  }
+  .rback__primary:hover { background: var(--d-soft); }
+  .rback__secondary { color: var(--color-ink-muted); }
+  .rback__secondary:hover { color: var(--color-ink); }
+
+  /* Smooth scroll for in-page anchors */
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
+    .stat-tile { transition: none; }
+    .stat-tile:hover { transform: none; }
+  }
+</style>

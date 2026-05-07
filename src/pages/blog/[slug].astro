@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import RichLayout from "~/components/article/RichLayout.astro";
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
@@ -13,6 +14,7 @@ export const getStaticPaths = (async () => {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const useRich = entry.data.variant === "rich";
 
 /**
  * Per-category crumb context label.
@@ -97,6 +99,16 @@ const ogImage = `/og/${entry.data.slug}.png`;
   jsonLd={allLd}
   image={ogImage}
 >
+  {useRich ? (
+    <RichLayout
+      entry={entry}
+      Content={Content}
+      crumbLabel={crumbLabel}
+      wordCountRounded={wordCountRounded}
+      readingMinutes={readingMinutes}
+      faqCount={faqCount}
+    />
+  ) : (
   <div class="page">
     <!-- HERO -->
     <section class="hero">
@@ -168,6 +180,7 @@ const ogImage = `/og/${entry.data.slug}.png`;
       <a href="/" class="back-cta__secondary">Zpět na úvod</a>
     </section>
   </div>
+  )}
 </BaseLayout>
 
 <style>

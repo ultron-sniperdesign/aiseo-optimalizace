@@ -101,6 +101,28 @@ const articles = defineCollection({
     category: z.enum(["defensive", "case-study", "tutorial", "analysis"]),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     keywords: z.array(z.string()),
+    /**
+     * Layout variant. `classic` (default) = single column prose.
+     * `rich` = enhanced design s sticky TOC, section dividers, numbered
+     * H3 cards, reading progress bar a hero stat tiles. Opt-in per článek
+     * frontmatter polem `variant: rich`.
+     *
+     * NEPOJMENOVÁVAT `layout` — koliduje s Astro MDX speciální direktivou,
+     * která se snaží resolvovat hodnotu jako layout component import.
+     */
+    variant: z.enum(["classic", "rich"]).optional().default("classic"),
+    /**
+     * Volitelný hero stat block pro rich layout — 3–4 dlaždice s číslem + popiskem.
+     * Příklad: [{ value: "12", label: "chyb v auditu" }, { value: "4–6", label: "typicky vidíme" }].
+     */
+    stats: z
+      .array(
+        z.object({
+          value: z.string(),
+          label: z.string(),
+        }),
+      )
+      .optional(),
     faq: z
       .array(
         z.object({
