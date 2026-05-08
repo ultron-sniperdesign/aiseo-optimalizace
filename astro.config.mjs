@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
+import rehypeExternalLinks from "rehype-external-links";
 
 /**
  * Rehype plugin: GFM task-list checkboxy mají v markdown renderu Astro
@@ -60,7 +61,38 @@ export default defineConfig({
     "/blog/caste-chyby-v-seo-2026-rewrite": "/blog/caste-chyby-v-seo-2026-update",
   },
   markdown: {
-    rehypePlugins: [rehypeTaskListA11y],
+    rehypePlugins: [
+      rehypeTaskListA11y,
+      /**
+       * Externí odkazy → otvírat v novém tabu + bezpečnost (noopener proti
+       * tabnabbing). `noreferrer` přidán jako vedlejší ochrana soukromí
+       * (ne všechny prohlížeče dnes implicitně referrer skryjí).
+       *
+       * Vědomě NEPOUŽÍVÁME `rel="nofollow"` — naše externí odkazy
+       * jsou citace autorit (arxiv, Google docs, Search Engine Land,
+       * vlastní brand sniperdesign.cz / megadetail.cz). Plošný `nofollow`
+       * by snižoval E-E-A-T signály webu (Google očekává, že solidní
+       * autor cituje zdroje s dofollow odkazy).
+       *
+       * Pravidlo `target` filtru — externí = vše, co nezačíná
+       * relativně (/), neřízeným anchor (#), mailto:, tel: a NENÍ
+       * naše vlastní doména aiseo-optimalizace.cz.
+       */
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
+          protocols: ["http", "https"],
+          test: (/** @type {any} */ node) => {
+            const href = node.properties?.href;
+            if (typeof href !== "string") return false;
+            // Skip vlastní doména — interní linky se nemají otvírat v novém tabu
+            return !href.includes("aiseo-optimalizace.cz");
+          },
+        },
+      ],
+    ],
     /**
      * Shiki theme: výchozí Astro `github-dark` má světlé syntax barvy
      * (#79B8FF, #9ECBFF, #E1E4E8) na našem světlém pozadí
