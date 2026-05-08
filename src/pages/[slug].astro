@@ -164,6 +164,13 @@ const ogImage = `/og/${entry.data.slug}.png`;
       </div>
     </article>
 
+    <!-- SNIPERDESIGN SMALL CONTACT — pouze 4 hlavní disciplíny (SEO/GEO/AEO/AIO), nad FAQ -->
+    {
+      ["SEO", "GEO", "AEO", "AIO"].includes(entry.data.abbr) && (
+        <SniperDesignSmallContact />
+      )
+    }
+
     <!-- FAQ -->
     {
       entry.data.faq && entry.data.faq.length > 0 && (
@@ -190,13 +197,6 @@ const ogImage = `/og/${entry.data.slug}.png`;
             ))}
           </dl>
         </section>
-      )
-    }
-
-    <!-- SNIPERDESIGN SMALL CONTACT — pouze 4 hlavní disciplíny (SEO/GEO/AEO/AIO) -->
-    {
-      ["SEO", "GEO", "AEO", "AIO"].includes(entry.data.abbr) && (
-        <SniperDesignSmallContact />
       )
     }
 
