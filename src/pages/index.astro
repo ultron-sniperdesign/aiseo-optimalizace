@@ -201,6 +201,7 @@ const quartet: Quartet[] = [
       <!-- Cell 1: Klasický Google -->
       <div class="trio__cell" data-tone="google">
         <aside class="verdict" data-tone="google" role="note" aria-label="Co uživatel dostane z klasického Googlu">
+          <h3 class="verdict__type">Klasický Google SERP</h3>
           <span class="verdict__key">Co uživatel dostane</span>
           <p class="verdict__val">Seznam odkazů. Klikne, čte, rozhodne se.</p>
         </aside>
@@ -238,6 +239,7 @@ const quartet: Quartet[] = [
       <!-- Cell 2: Google s AI Overview -->
       <div class="trio__cell" data-tone="aio">
         <aside class="verdict" data-tone="aio" role="note" aria-label="Co uživatel dostane z AI Overview">
+          <h3 class="verdict__type">Google s AI Overview</h3>
           <span class="verdict__key">Co uživatel dostane</span>
           <p class="verdict__val">Hotová odpověď s citacemi. Často neklikne.</p>
         </aside>
@@ -277,7 +279,8 @@ const quartet: Quartet[] = [
 
       <!-- Cell 3: ChatGPT -->
       <div class="trio__cell" data-tone="chat">
-        <aside class="verdict" data-tone="chat" role="note" aria-label="Co uživatel dostane z ChatGPT">
+        <aside class="verdict" data-tone="chat" role="note" aria-label="Co uživatel dostane z AI chatbota">
+          <h3 class="verdict__type">AI chatbot (ChatGPT, Perplexity, Gemini)</h3>
           <span class="verdict__key">Co uživatel dostane</span>
           <p class="verdict__val">Konverzační odpověď. Klik k vám už není v plánu.</p>
         </aside>
@@ -1135,6 +1138,21 @@ const quartet: Quartet[] = [
     border-bottom: 1px solid var(--tone-soft);
     transform: rotate(45deg);
   }
+  /* Type heading — identifikuje typ rozhraní (SERP / AIO / chatbot).
+   * Hlavní vizuální kotva bubliny — uživatel hned ví, o jakém příkladu
+   * mluvíme. Tone-accent barva, tučné, mírně větší než eyebrow. */
+  .verdict__type {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--tone-accent);
+    margin: 0 0 0.5rem;
+    padding: 0 0 0.5rem;
+    border-bottom: 1px solid color-mix(in oklch, var(--tone-accent) 18%, transparent);
+  }
   .verdict__key {
     display: block;
     font-family: var(--font-mono);
@@ -1142,8 +1160,8 @@ const quartet: Quartet[] = [
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--tone-accent);
-    margin-bottom: 0.4rem;
+    color: var(--color-ink-muted);
+    margin-bottom: 0.3rem;
   }
   .verdict__val {
     font-family: var(--font-sans);
