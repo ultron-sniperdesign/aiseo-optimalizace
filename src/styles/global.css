@@ -239,3 +239,29 @@ pre.astro-code .line span[style*="color:#22863a"] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ===== Kumbh Sans — brand font Sniperdesign =====
+ * Načítá se globálně, protože Sniperdesign Big/Small Contact
+ * komponenty se mohou objevit napříč různými stránkami.
+ * Browser font cache zajistí, že se stáhne jen jednou. */
+@font-face {
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/sniperdesign/fonts/KumbhSans-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/sniperdesign/fonts/KumbhSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/sniperdesign/fonts/KumbhSans-Bold.woff2") format("woff2");
+}

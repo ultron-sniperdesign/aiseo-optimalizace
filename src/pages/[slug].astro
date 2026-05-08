@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
@@ -189,6 +190,13 @@ const ogImage = `/og/${entry.data.slug}.png`;
             ))}
           </dl>
         </section>
+      )
+    }
+
+    <!-- SNIPERDESIGN SMALL CONTACT — pouze 4 hlavní disciplíny (SEO/GEO/AEO/AIO) -->
+    {
+      ["SEO", "GEO", "AEO", "AIO"].includes(entry.data.abbr) && (
+        <SniperDesignSmallContact />
       )
     }
 

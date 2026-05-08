@@ -1,0 +1,619 @@
+---
+/**
+ * SniperDesignBigContact — plný propagační blok pro Sniperdesign agenturu.
+ *
+ * Single source of truth pro „velkou" verzi CTA. Obsahuje:
+ * - logo Sniperdesign
+ * - eyebrow + nadpis + lead s trust signály
+ * - „Vše jako jeden balík" banner
+ * - 4 benefit cards (Strategie / Audit / Implementace / Obsah)
+ * - 9 oblastí konkrétního záběru (checklist)
+ * - 2 CTA tlačítka (Otevřít Sniperdesign.cz / Nezávazná konzultace)
+ *
+ * Použití:
+ *   import BigContact from "~/components/sniperdesign/BigContact.astro";
+ *   <BigContact />
+ *
+ * Pokud změníte obsah tady, propíše se napříč všemi stránkami,
+ * kde je komponenta vložená. To je **jeden zdroj pravdy** pro velký CTA.
+ *
+ * Pro menší / kompaktnější verzi (kratší padding, bez 4 cards a 9 areas)
+ * použijte sourozeneckou komponentu `SmallContact.astro`.
+ *
+ * Kumbh Sans (brand font) je deklarovaný v globální CSS
+ * (`src/styles/global.css`) — komponenta jen předpokládá, že existuje.
+ *
+ * Props:
+ *   eyebrowNum?: string — vlastní pořadové číslo nahoře (default "06")
+ */
+interface Props {
+  eyebrowNum?: string;
+}
+const { eyebrowNum = "06" } = Astro.props as Props;
+---
+
+<section class="sd-big" aria-labelledby="sd-big-title">
+  <div class="sd-big__inner">
+    <a
+      href="https://www.sniperdesign.cz/"
+      target="_blank"
+      rel="noopener"
+      class="sd-big__brand"
+      aria-label="Sniperdesign — domovská stránka agentury"
+    >
+      <img
+        src="/sniperdesign/logo-wh.svg"
+        alt="Sniperdesign"
+        width="180"
+        height="36"
+        loading="lazy"
+      />
+    </a>
+
+    <header class="sd-big__head">
+      <span class="sd-big__eyebrow"
+        ><span class="sd-big__eyebrow-num">{eyebrowNum}</span> Pomoc s implementací</span
+      >
+      <h2 id="sd-big-title" class="sd-big__title">
+        Nechcete to řešit interně? <strong>Postavíme to za vás.</strong>
+      </h2>
+      <p class="sd-big__lead">
+        Tento průvodce vám dá přehled. Co s ním reálně udělá web nebo e‑shop, je druhá věc — a obvykle to chce někoho, kdo už tím prošel. V <a
+          href="https://www.sniperdesign.cz/"
+          target="_blank"
+          rel="noopener">Sniperdesign.cz</a> děláme <strong>kompletní AI&nbsp;SEO</strong>: od strategie přes audit a implementaci až po finální obsah. Zlatý Upgates partner od&nbsp;2016, přes 500 e‑shopů na CZ trhu, vlastní e‑shop <a
+          href="https://www.megadetail.cz/"
+          target="_blank"
+          rel="noopener">MEGA&nbsp;DETAIL</a>.
+      </p>
+
+      <ul class="sd-big__trust" aria-label="Trust signals">
+        <li><strong>Zlatý Upgates partner</strong> od 2016</li>
+        <li><strong>500+</strong> e‑shopů</li>
+        <li>Vlastní e‑shop <strong>MEGA&nbsp;DETAIL</strong></li>
+      </ul>
+    </header>
+
+    <p class="sd-big__pkg">
+      <span class="sd-big__pkg-mark" aria-hidden="true">✦</span>
+      <span><strong>Vše dodáváme jako jeden balík.</strong> Strategie, znalost, audity, optimalizace i obsah — pod jednou střechou, s jednou kontaktní osobou, s jedním cílem.</span>
+    </p>
+
+    <div class="sd-big__benefits">
+      <a
+        href="https://www.sniperdesign.cz/konzultace"
+        target="_blank"
+        rel="noopener"
+        class="sd-big__benefit"
+      >
+        <span class="sd-big__benefit-num">01</span>
+        <h3 class="sd-big__benefit-title">Strategie a&nbsp;know‑how</h3>
+        <p class="sd-big__benefit-desc">
+          Projdeme s vámi web, vysvětlíme co se děje s AI vyhledáváním a poradíme, kterým směrem se vydat — co řešit hned, co odložit a kam vůbec necílit.
+        </p>
+      </a>
+
+      <a
+        href="https://www.sniperdesign.cz/audity"
+        target="_blank"
+        rel="noopener"
+        class="sd-big__benefit"
+      >
+        <span class="sd-big__benefit-num">02</span>
+        <h3 class="sd-big__benefit-title">Audit AI&nbsp;viditelnosti</h3>
+        <p class="sd-big__benefit-desc">
+          Komplexní průchod technickým SEO, on‑page strukturou, schema markupem a obsahem. Konkrétní seznam priorit s odhadem dopadu a effort.
+        </p>
+      </a>
+
+      <a
+        href="https://www.sniperdesign.cz/optimalizace-e-shopu"
+        target="_blank"
+        rel="noopener"
+        class="sd-big__benefit"
+      >
+        <span class="sd-big__benefit-num">03</span>
+        <h3 class="sd-big__benefit-title">Optimalizace a&nbsp;implementace</h3>
+        <p class="sd-big__benefit-desc">
+          Nasadíme strukturovaná data, přepíšeme klíčové stránky do AI‑friendly struktury, zoptimalizujeme rychlost a Core Web Vitals. Custom moduly pro Upgates a Shoptet.
+        </p>
+      </a>
+
+      <a
+        href="https://www.sniperdesign.cz/co-delame"
+        target="_blank"
+        rel="noopener"
+        class="sd-big__benefit"
+      >
+        <span class="sd-big__benefit-num">04</span>
+        <h3 class="sd-big__benefit-title">Tvorba a&nbsp;aktualizace obsahu</h3>
+        <p class="sd-big__benefit-desc">
+          AI‑řízené generování produktových popisů, FAQ a článků v tonalitě vašeho brandu. Vstup do citation poolu ChatGPT, Perplexity a Google AI Overview.
+        </p>
+      </a>
+    </div>
+
+    <!-- Konkrétní záběr — 9 oblastí, na které sahá implementace -->
+    <div class="sd-big__scope" aria-labelledby="sd-big-scope-title">
+      <header class="sd-big__scope-head">
+        <span class="sd-big__scope-eyebrow">Konkrétní záběr</span>
+        <h3 id="sd-big-scope-title" class="sd-big__scope-title">
+          Co konkrétně upravíme na vašem <strong>webu nebo e‑shopu</strong>
+        </h3>
+      </header>
+      <ul class="sd-big__scope-list" role="list">
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Struktura kategorií a služeb</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Answer bloky pod nadpisy</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>FAQ sekce s reálnými dotazy</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Schema — Product, Article, Organization</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Interní prolinkování</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Technické SEO (Core Web Vitals, indexace, mobile)</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span><code>robots.txt</code> pro AI crawlery</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Obsahové mezery proti konkurenci</span>
+        </li>
+        <li class="sd-big__scope-item">
+          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+          <span>Měření AI citací a brand zmínek</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sd-big__actions">
+      <a
+        href="https://www.sniperdesign.cz/"
+        target="_blank"
+        rel="noopener"
+        class="sd-big__btn sd-big__btn--solid"
+      >
+        Otevřít Sniperdesign.cz
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path
+            d="M1 7H13M13 7L7 1M13 7L7 13"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </a>
+      <a
+        href="https://www.sniperdesign.cz/konzultace"
+        target="_blank"
+        rel="noopener"
+        class="sd-big__btn sd-big__btn--ghost"
+      >
+        Nezávazná konzultace
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ===== SniperDesign Big Contact =====
+   * Sniperdesign brand palette — deep violet, magenta highlights, gold CTA.
+   * Self-contained — všechny styly scopované přes .sd-big prefix,
+   * neovlivní nadřazený layout. Kumbh Sans přichází z global.css. */
+  .sd-big {
+    --font-agency: "Kumbh Sans", var(--font-sans);
+    --sd-deep: oklch(0.22 0.13 305);
+    --sd-deeper: oklch(0.16 0.11 305);
+    --sd-violet: oklch(0.55 0.25 305);
+    --sd-magenta: oklch(0.62 0.27 335);
+    --sd-gold: oklch(0.82 0.16 80);
+    --sd-gold-deep: oklch(0.7 0.18 60);
+    --sd-paper: oklch(0.985 0.004 250);
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: var(--space-section-y) var(--space-section-x);
+  }
+  .sd-big__inner {
+    background:
+      radial-gradient(ellipse 70% 60% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 30%, transparent), transparent 60%),
+      radial-gradient(ellipse 80% 70% at -10% 100%, color-mix(in oklch, var(--sd-violet) 32%, transparent), transparent 60%),
+      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    color: var(--sd-paper);
+    border-radius: 14px;
+    padding: clamp(2.25rem, 4.5vw, 4rem) clamp(1.75rem, 4vw, 3.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .sd-big__inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    pointer-events: none;
+  }
+  .sd-big__brand {
+    display: inline-block;
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+    position: relative;
+    transition: opacity 0.2s ease;
+    line-height: 0;
+  }
+  .sd-big__brand:hover { opacity: 0.85; }
+  .sd-big__brand img {
+    height: clamp(28px, 3vw, 36px);
+    width: auto;
+    display: block;
+  }
+  .sd-big__head {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    max-width: 48rem;
+    position: relative;
+  }
+  .sd-big__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: color-mix(in oklch, var(--sd-paper) 65%, transparent);
+  }
+  .sd-big__eyebrow-num {
+    font-family: var(--font-mono);
+    color: var(--sd-magenta);
+    font-weight: 700;
+  }
+  .sd-big__title {
+    font-family: var(--font-agency);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0.75rem 0 1rem;
+    color: var(--sd-paper);
+  }
+  .sd-big__title strong {
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .sd-big__lead {
+    font-family: var(--font-agency);
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: color-mix(in oklch, var(--sd-paper) 80%, transparent);
+    margin: 0;
+  }
+  .sd-big__lead strong {
+    color: var(--sd-paper);
+    font-weight: 700;
+  }
+  .sd-big__lead a {
+    color: var(--sd-magenta);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: opacity 0.2s ease;
+  }
+  .sd-big__lead a:hover { opacity: 0.8; }
+
+  .sd-big__trust {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-family: var(--font-agency);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: color-mix(in oklch, var(--sd-paper) 72%, transparent);
+  }
+  .sd-big__trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+  .sd-big__trust li::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    flex-shrink: 0;
+  }
+  .sd-big__trust strong {
+    color: var(--sd-paper);
+    font-weight: 700;
+  }
+
+  .sd-big__benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    position: relative;
+  }
+  @media (min-width: 600px) {
+    .sd-big__benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .sd-big__benefits {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .sd-big__benefit {
+    padding: 1.5rem 1.25rem 1.25rem 1.5rem;
+    background: color-mix(in oklch, var(--sd-paper) 6%, transparent);
+    border: 1px solid color-mix(in oklch, var(--sd-paper) 14%, transparent);
+    border-radius: 10px;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .sd-big__benefit::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .sd-big__benefit:hover {
+    background: color-mix(in oklch, var(--sd-paper) 10%, transparent);
+    border-color: color-mix(in oklch, var(--sd-magenta) 50%, transparent);
+    transform: translateY(-2px);
+  }
+  .sd-big__benefit:hover::before { opacity: 1; }
+  .sd-big__benefit:focus-visible {
+    outline: 2px solid var(--sd-magenta);
+    outline-offset: 2px;
+  }
+  .sd-big__benefit-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: block;
+    margin-bottom: 0.875rem;
+  }
+  .sd-big__benefit-title {
+    font-family: var(--font-agency);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    color: var(--sd-paper);
+    margin: 0 0 0.5rem;
+  }
+  .sd-big__benefit-desc {
+    font-family: var(--font-agency);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: color-mix(in oklch, var(--sd-paper) 75%, transparent);
+    margin: 0;
+    flex: 1;
+  }
+
+  .sd-big__scope {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 2.5vw, 2rem);
+    background: color-mix(in oklch, var(--sd-paper) 4%, transparent);
+    border: 1px solid color-mix(in oklch, var(--sd-paper) 12%, transparent);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sd-big__scope::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    opacity: 0.6;
+  }
+  .sd-big__scope-head {
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  }
+  .sd-big__scope-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  .sd-big__scope-title {
+    font-family: var(--font-agency);
+    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--sd-paper);
+    margin: 0;
+  }
+  .sd-big__scope-title strong {
+    font-weight: 700;
+  }
+
+  .sd-big__scope-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.625rem 1rem;
+  }
+  @media (min-width: 600px) {
+    .sd-big__scope-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .sd-big__scope-list { grid-template-columns: repeat(3, 1fr); }
+  }
+  .sd-big__scope-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.625rem;
+    padding: 0.5rem 0.25rem;
+    font-family: var(--font-agency);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: color-mix(in oklch, var(--sd-paper) 88%, transparent);
+  }
+  .sd-big__scope-item code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    background: color-mix(in oklch, var(--sd-paper) 10%, transparent);
+    color: var(--sd-paper);
+  }
+  .sd-big__scope-check {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    color: var(--sd-paper);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    transform: translateY(0.15em);
+  }
+
+  .sd-big__pkg {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    margin: clamp(1.5rem, 3vw, 2.25rem) 0 clamp(1.5rem, 3vw, 2.25rem);
+    padding: 1rem 1.25rem;
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--sd-violet) 18%, transparent) 0%,
+      color-mix(in oklch, var(--sd-magenta) 14%, transparent) 100%
+    );
+    border: 1px solid color-mix(in oklch, var(--sd-magenta) 30%, transparent);
+    border-radius: 10px;
+    font-family: var(--font-agency);
+    font-size: clamp(0.95rem, 1.3vw, 1.0625rem);
+    line-height: 1.55;
+    color: var(--sd-paper);
+    position: relative;
+  }
+  .sd-big__pkg-mark {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: linear-gradient(135deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    color: var(--sd-paper);
+    border-radius: 50%;
+    font-size: 0.95rem;
+    line-height: 1;
+    margin-top: 0.05rem;
+  }
+  .sd-big__pkg strong {
+    font-weight: 700;
+    color: var(--sd-paper);
+  }
+
+  .sd-big__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    position: relative;
+  }
+  /* Buttons — base + variants, scopované přes .sd-big__btn aby
+   * nezasahovaly globální .btn definice na ostatních stránkách. */
+  .sd-big__btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.95rem 1.625rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+  }
+  .sd-big__btn--solid {
+    background: linear-gradient(135deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
+    color: oklch(0.18 0.06 60);
+    font-weight: 600;
+    box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--sd-gold) 60%, transparent);
+  }
+  .sd-big__btn--solid:hover {
+    background: linear-gradient(135deg, var(--sd-gold-deep) 0%, var(--sd-gold) 100%);
+    color: oklch(0.15 0.06 60);
+    transform: translateX(2px);
+    box-shadow: 0 6px 20px -4px color-mix(in oklch, var(--sd-gold) 75%, transparent);
+  }
+  .sd-big__btn--ghost {
+    background: transparent;
+    color: var(--sd-paper);
+    border: 1px solid color-mix(in oklch, var(--sd-magenta) 50%, transparent);
+  }
+  .sd-big__btn--ghost:hover {
+    background: color-mix(in oklch, var(--sd-magenta) 12%, transparent);
+    border-color: var(--sd-magenta);
+    color: var(--sd-paper);
+    transform: translateX(2px);
+  }
+</style>
