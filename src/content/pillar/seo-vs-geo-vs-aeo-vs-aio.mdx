@@ -1,7 +1,7 @@
 ---
 title: "SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4 zkratkami pro AI éru"
-description: "Co je rozdíl mezi SEO, GEO, AEO a AIO? Praktický průvodce optimalizací pro AI vyhledávání — ChatGPT, Perplexity, Google AI Overviews. Pro web i e-shop."
-updated: "2026-04-29"
+description: "Rozdíl mezi SEO, GEO, AEO a AIO + Modern Search Visibility Stack — kdy která disciplína dává smysl. Pro web, e-shop, B2B i obsahový projekt."
+updated: "2026-05-08"
 tldr: "SEO optimalizuje pro pozice v Googlu. GEO pro citace v ChatGPT a Perplexity. AEO pro odpovědi v Google AI Overviews. AIO zastřešuje všechny tři disciplíny. V roce 2026 nestačí dělat jen klasické SEO — pro citace v AI odpovědích potřebujete kombinaci všech čtyř."
 keywords:
   - "ai overview"
@@ -41,6 +41,8 @@ howto:
       text: "Sledujte 5 klíčových metrik: pozice v AI Overviews (manuální Google search nebo SE Ranking, týdně), Featured Snippets impressions (Google Search Console, denně), FAQ rich snippet zobrazení (GSC Performance Search Appearance, týdně), brand mention v ChatGPT (Otterly nebo Profound, měsíčně), citation share v Perplexity (manuální audit nebo Profound, měsíčně). Pro průběžné měření stačí ze začátku jednoduchá tabulka v Excelu."
 ---
 
+import Insight from "../../components/blocks/Insight.astro";
+
 ## <strong>Úvod</strong>: Proč najednou <span class="hl">4 zkratky</span> místo jedné
 
 Ještě v roce 2023 stačilo říct „SEO" a všichni věděli, o co jde — optimalizace stránek pro pozice v Googlu, Seznamu nebo Bingu. Pak přišel ChatGPT, Google AI Overviews, Perplexity, Claude a generativní vyhledávání. A s nimi tři nové zkratky: **GEO, AEO a AIO**.
@@ -48,6 +50,21 @@ Ještě v roce 2023 stačilo říct „SEO" a všichni věděli, o co jde — op
 Český trh začíná tyto pojmy reflektovat až teď. Pro provozovatele webu nebo e-shopu to znamená dvě věci: (1) **váš zákazník** se už dnes ptá ChatGPT, Perplexity nebo Googlu s AI Overview místo klasického „desítka modrých odkazů", a (2) **váš web** musí být přizpůsobený tak, aby z těchto odpovědí vedla cesta zpět k vám.
 
 Problém je, že **pojmy se v textech navzájem prolínají**. Jeden článek mluví o GEO jako o „optimalizaci pro generativní AI", druhý o AEO ve stejném smyslu, třetí používá AIO jako synonymum pro AI Overviews. V tomto průvodci je rozeberu jednotlivě a v reálných příkladech, abyste si po jeho přečtení dokázali sami říct, kterou disciplínu kde použít.
+
+## <span class="hl">Modern Search Visibility Stack</span> — <strong>jak na sebe navazují</strong>
+
+Než půjdeme do detailu jednotlivých disciplín, je užitečné vidět **jejich vzájemnou hierarchii**. SEO, AEO, GEO a AIO nejsou čtyři paralelní rovnocenné položky — tvoří **stack s jasným pořadím závislostí**:
+
+| Vrstva | Disciplína | Co řeší | Závisí na |
+|---|---|---|---|
+| **4. Strategická** | **AIO** — AI Optimization | Holistický pohled napříč disciplínami + defenzivní rozhodnutí (kde optimalizovat na citaci, kde defenzivně blokovat) | SEO + AEO + GEO |
+| **3. Generativní** | **GEO** — Generative Engine Optimization | Citovatelnost obsahu v ChatGPT, Perplexity, Claude, Gemini (mimo Google index) | SEO + AEO |
+| **2. Odpovědní** | **AEO** — Answer Engine Optimization | Přímé odpovědi v Google AI Overviews, Featured Snippets, Bing Copilot (uvnitř Google ekosystému) | SEO |
+| **1. Základ** | **SEO** — Search Engine Optimization | Indexovatelnost, technická hygiena, pozice v klasickém vyhledávání | — (základ) |
+
+**Praktický důsledek:** každá vyšší vrstva potřebuje předchozí. Bez kvalitního SEO základu vás Google ani neindexuje (a tedy ani AEO panel, který kandidáty čerpá z top 10 organických). Bez AEO struktury (krátké odpovědi, FAQ schema) má GEO citovatelnost menší dopad. Bez všech tří dohromady nedává AIO strategický pohled smysl.
+
+**Tohle není 4 oddělené projekty na čtyři roky.** Pro většinu webů je to **jeden způsob psaní obsahu**, který naplňuje všechny vrstvy paralelně — viz sekce „Co dělat od prvního článku" níže.
 
 ## Co je <span class="hl">SEO</span> <strong>(klasické vyhledávání)</strong>
 
@@ -156,7 +173,7 @@ Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychl
 
 ## Co dělat <strong>od prvního článku</strong> a co <span class="hl">odložit na později</span>
 
-Klasický model "nejdřív SEO, pak AEO, pak GEO" v roce 2026 **nefunguje**. Důvod: AEO struktura (FAQPage schema, HowTo, answer block) i GEO-friendly psaní (definice, fact-density, citovatelnost) jsou věci, které píšete od **prvního článku** — schema markup ani strukturní pravidla nestojí žádný extra náklad oproti běžnému SEO contentu. Pokud je odložíte, za rok budete mít stovky článků k přepisu.
+Klasický model „nejdřív SEO, pak AEO, pak GEO" v roce 2026 **typicky nefunguje optimálně**. Důvod: AEO struktura (FAQPage schema, HowTo, answer block) i GEO-friendly psaní (definice, fact-density, citovatelnost) jsou věci, které píšete od **prvního článku** — schema markup ani strukturní pravidla nestojí žádný extra náklad oproti běžnému SEO contentu. Pokud je odložíte, za rok budete mít stovky článků k přepisu.
 
 ### Co patří do balíku "od prvního článku" (0 Kč navíc)
 
@@ -189,6 +206,27 @@ Tyhle věci dávají smysl **až máte něco k měření a reportování** — t
 
 → Detailní rozhodovací rámec podle typu businessu (B2C e-shop, B2B SaaS, local business, publisher) v sekci [Rozhodovací matice](/rozhodovaci-matice/).
 
+## Pro jaký <span class="hl">typ byznysu</span> která disciplína <strong>nejvíc dává smysl</strong>
+
+Stejný stack se aplikuje různě podle typu projektu. Tahle matrix je orientační — záleží na konkrétním sortimentu, konkurenci a fázi růstu. Ale jako rozhodovací rámec funguje:
+
+| Typ byznysu | SEO (priorita) | AEO (priorita) | GEO (priorita) | AIO (priorita) |
+|---|---|---|---|---|
+| **B2C e-shop, transakční sortiment** (drogerie, móda, elektronika běžná) | **Vysoká** — pozice u nákupních dotazů | Střední — kategorie s research fází | Nízká — zákazník nehledá v ChatGPT | Nízká — primárně transakční |
+| **B2C e-shop, prémiový/research sortiment** (sport, hobby, drahá elektronika) | **Vysoká** | **Vysoká** — kategorie srovnání | Střední — zákazník informuje v AI | Střední — kombinace optimalizace + bypass |
+| **B2B firma, lead-gen** | **Vysoká** — buying-journey fáze | **Vysoká** — odpovědi na technické dotazy | **Vysoká** — zákazník porovnává v ChatGPT | **Vysoká** — strategický pohled |
+| **B2B SaaS** | **Vysoká** | **Vysoká** | **Vysoká** — zákazník hledá doporučení | **Vysoká** |
+| **Lokální služba** (advokát, lékař, autoservis) | **Vysoká** — lokální SEO + GBP | Střední — FAQ s lokálními dotazy | Nízká — lokální sortiment se v AI méně řeší | Nízká |
+| **Publisher / blog / mediální projekt** | **Vysoká** — organic je hlavní kanál | **Vysoká** — Featured Snippets a AIO panel | **Vysoká** — citation share v AI | **Vysoká** — defenzivní bypass u long-form |
+| **Edukativní / kategorický thought leader** | **Vysoká** | **Vysoká** | **Vysoká** — citation v AI = brand awareness | **Vysoká** |
+| **Konzultační služby** (advokát s celostátním záběrem, agentura) | **Vysoká** | **Vysoká** | **Vysoká** — research fáze nákupu | **Vysoká** |
+
+**Pravidlo:** SEO je vždycky základ. AEO + GEO + AIO mají smysl tam, kde **zákazník před nákupem aktivně studuje a srovnává**. Čím delší rozhodovací proces, tím vyšší je hodnota citovatelnosti v AI rozhraních.
+
+<Insight tone="aio" icon="✦" label="Nevíte, která strategie dává smysl pro váš web?">
+  Většina webů má **mezeru aspoň v jedné z těchto čtyř vrstev** — a často nevidí, kterou. Pokud chcete vědět, kde stojíte, [Sniperdesign nabízí audit AI viditelnosti](https://www.sniperdesign.cz/audity) — projdeme všechny čtyři vrstvy stacku (SEO základy, AEO struktura, GEO citovatelnost, AIO strategický pohled) a doporučíme prioritní kroky. První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
+</Insight>
+
 ## <strong>Praktický postup</strong>: jak začít s <span class="hl">GEO/AEO/AIO</span> ve 4 krocích
 
 ### Krok 1 — Audit existujícího obsahu pro AI citovatelnost
@@ -196,7 +234,7 @@ Tyhle věci dávají smysl **až máte něco k měření a reportování** — t
 Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky:
 
 1. **Je odpověď na hlavní dotaz v prvních 60 slovech článku?** Pokud ne, přesuňte ji nahoru.
-2. **Obsahuje stránka konkrétní fakta, čísla, citáty?** AI engines milují fact-density.
+2. **Obsahuje stránka konkrétní fakta, čísla, citáty?** Datově hutný obsah má typicky vyšší šanci na citaci v AI odpovědích než obecný marketingový text.
 3. **Je struktura H2/H3 logická?** Každý subheading by měl odpovídat na sub-dotaz.
 4. **Má FAQ sekci s schema.org/FAQPage markupem?** Pokud ne, přidejte ji.
 
