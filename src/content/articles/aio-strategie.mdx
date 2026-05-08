@@ -30,7 +30,7 @@ faq:
   - q: 'Co znamená AIO jako strategie a v čem se liší od běžného SEO plánu?'
     a: 'AIO strategie je řídící vrstva nad SEO, GEO a AEO — neřeší jednotlivé taktiky izolovaně, ale propojuje content, technologii, brand a měření do jednotného plánu pro AI viditelnost. Liší se od SEO plánu třemi věcmi: cross-funkční scope (content + dev + brand + analytics, ne jen SEO tým), defenzivní rozhodování o zero-click obsahu (kde optimalizovat na citaci vs kde blokovat AIO panel) a měření citation share napříč ChatGPT, Perplexity, Claude i Google AI Overviews, ne jen pozic v Googlu.'
   - q: 'Co je AIO Maturity Model a jak ho použít?'
-    a: 'Vlastní framework, který hodnotí připravenost firmy pro AI viditelnost na 5 levelech: L1 Reactive (nahodile reaguje na AIO), L2 Aware (sleduje data, ad-hoc úpravy), L3 Operational (procesy, weekly tracking), L4 Strategic (cross-funkční tým s OKR), L5 Predictive (modeluje dopady, A/B testuje AI prompty). Použití: rychlý self-assessment podle 5 dimenzí, 90-day plán šitý na míru aktuálnímu levelu, opakované hodnocení po 90 dnech. Většina CZ firem v Q2 2026 sedí na L1–L2, top 5 % na L3–L4.'
+    a: 'Vlastní framework, který hodnotí připravenost firmy pro AI viditelnost na 5 levelech: L1 Reactive (nahodile reaguje na AIO), L2 Aware (sleduje data, ad-hoc úpravy), L3 Operational (procesy, weekly tracking), L4 Strategic (cross-funkční tým s OKR), L5 Predictive (aspirační level — modelování dopadů, žádná známá firma ho dnes plně neprovozuje). Použití: rychlý self-assessment podle 5 dimenzí, 90-day plán šitý na míru aktuálnímu levelu, opakované hodnocení po 90 dnech. Z našich auditů vychází na CZ trhu zatím převažující raná fáze adopce (L1–L2), L3 a výš je výjimka — pracovní pozorování, ne reprezentativní výzkum.'
   - q: 'Kdo má v týmu vlastnit AIO?'
     a: 'AIO je cross-funkční zodpovědnost — nemůže ji vlastnit jeden člověk ani jedno oddělení. RACI matice rozděluje role: Content team (obsah, answer blocky, FAQ, fact-checking), Dev/SEO (schema markup, robots.txt, technical SEO), Brand (mentions v autoritních zdrojích, PR, podcasting), Analytics (tracking, reporting, iterace). Vlastnictví obvykle u marketingového ředitele nebo VP Marketing s týdenní synchronizací mezi rolemi. Pro malé firmy do 10 lidí AIO drží majitel/marketer s externí podporou na technickou stranu.'
   - q: 'Jaké KPI sledovat pro AIO?'
@@ -64,9 +64,9 @@ import Insight from "../../components/blocks/Insight.astro";
 
 ## Co znamená <span class="hl">AIO jako strategie</span> a <strong>proč ji teď řešit</strong>
 
-AIO (AI Optimization) je **strategický deštník** nad třemi technickými disciplínami: [SEO](/seo/) (klasické pozice ve vyhledávači), [GEO](/geo/) (citace v generativní AI jako ChatGPT a Perplexity) a [AEO](/aeo/) (odpovědi v Google AI Overviews a Featured Snippets). AIO neřeší jednotlivé taktiky izolovaně — propojuje content, technologii, brand a měření do **jednoho operating modelu** pro AI viditelnost firmy.
+AIO (AI Optimization) je v naší pracovní taxonomii **zastřešující strategický rámec** nad třemi technickými disciplínami: [SEO](/seo/) (klasické pozice ve vyhledávači), [GEO](/geo/) (citace v generativní AI jako ChatGPT a Perplexity) a [AEO](/aeo/) (odpovědi v Google AI Overviews a Featured Snippets). Pojem AIO není ustálený oborový standard — trh jako synonyma používá také „AI SEO", „AI search optimization", „LLM optimization" nebo „generative engine optimization". Pro tento web jsme zvolili AIO, protože nejlépe pojmenovává **řídící vrstvu** nad třemi disciplínami a propojuje content, technologii, brand a měření do jednoho operating modelu.
 
-Bez AIO strategie firmy typicky řeší disciplíny odděleně — SEO tým pracuje na pozicích, content team produkuje články, vývojáři implementují schema markup ad-hoc, brand má vlastní agendu. Vznikají mezery: dobrý ranking v Googlu + chybějící FAQ schema = neviditelnost v AIO panelu. Skvělý obsah + zavřené robots.txt pro `GPTBot` = nulová citace v ChatGPT. **AIO strategie tyto mezery zavírá** tím, že rozhoduje o prioritách napříč týmy a metrikami.
+Bez AIO strategie firmy typicky řeší disciplíny odděleně — SEO tým pracuje na pozicích, content team produkuje články, vývojáři implementují schema markup ad-hoc, brand má vlastní agendu. Vznikají mezery: dobrý ranking v Googlu sám o sobě nezajišťuje silnou viditelnost v AI odpovědích — chybějící struktura obsahu, slabé entity signály nebo nekonzistentní schema mohou snižovat šanci na citaci. Omezený přístup AI crawlerů v `robots.txt` může v některých scénářích snížit šanci, že se obsah objeví v AI odpovědích nebo v navázaném referral trafficu. **AIO strategie tyto mezery zavírá** tím, že rozhoduje o prioritách napříč týmy a metrikami.
 
 ### Proč to nestačí dělat ad-hoc
 
@@ -88,37 +88,37 @@ AIO není relevantní pro každý byznys stejně. Největší dopad má tam, kde
 
 ## <span class="hl">AIO Maturity Model™</span> — <strong>5 levelů, kde sedíte</strong>
 
-Tohle je vlastní framework, který používáme jako diagnostický nástroj — **5 levelů AIO připravenosti firmy**. Většina CZ firem v Q2 2026 sedí na L1–L2, top 5 % na L3–L4. L5 je teoretická aspirace, většina světových značek na ní zatím není.
+Tohle je vlastní framework, který používáme jako diagnostický nástroj — **5 levelů AIO připravenosti firmy**. Z auditů, které jsme zatím dělali, vychází na českém trhu zatím **převažující raná fáze adopce** (L1–L2). L3 a výš je v Q2 2026 spíš výjimka než standard. **Pozor — nemáme reprezentativní výzkum CZ trhu**, jde o pracovní pozorování z vlastních auditů a oborových rozhovorů, ne o publikované benchmarky.
 
 ### L1 — Reactive
 
-Firma reaguje na AI viditelnost **nahodile**. Někdo si všiml, že ChatGPT jejich web nezná, někdo zkusil přidat FAQ. Žádný plán, žádné měření, žádná přidělená zodpovědnost. Typicky 60 % CZ firem v Q2 2026.
+Firma reaguje na AI viditelnost **nahodile**. Někdo si všiml, že ChatGPT jejich web nezná, někdo zkusil přidat FAQ. Žádný plán, žádné měření, žádná přidělená zodpovědnost.
 
 **Symptomy:** „máme někde někoho, kdo by se měl AI věnovat", schema markup chybí nebo je invalid, robots.txt blokuje GPTBot defaultem CMS, žádný tracking AIO presence.
 
 ### L2 — Aware
 
-Firma **sleduje** data — ví, že AIO existuje, dělá ad-hoc úpravy podle aktuálních trendů, sleduje GSC. Stále chybí systematický plán a cross-funkční tým. Typicky 25 % CZ firem.
+Firma **sleduje** data — ví, že AIO existuje, dělá ad-hoc úpravy podle aktuálních trendů, sleduje GSC. Stále chybí systematický plán a cross-funkční tým.
 
 **Symptomy:** marketing posílá týdenní report z GSC, content tým přidal answer blocky na top 5 stránek, schema markup řeší vývojář ad-hoc na žádost. Brand a SEO tým spolu nemluví o AIO.
 
 ### L3 — Operational
 
-Firma má **definované procesy** — týdenní tracking, měsíční review, přidělená zodpovědnost za AIO napříč 2–3 lidmi. RACI matice existuje. Top 5 % CZ firem.
+Firma má **definované procesy** — týdenní tracking, měsíční review, přidělená zodpovědnost za AIO napříč 2–3 lidmi. RACI matice existuje.
 
 **Symptomy:** Otterly nebo Marketing Miner Brand Radar pro tracking, KPI dashboard, content kalendář s AIO ohledem, FAQPage schema na 80 %+ stránek, schema validace v deploy pipeline.
 
 ### L4 — Strategic
 
-Firma má **cross-funkční tým** s formálními OKR, integrovanou AIO strategii do business plánu, A/B testy obsahu na citation rate. Méně než 1 % CZ firem.
+Firma má **cross-funkční tým** s formálními OKR, integrovanou AIO strategii do business plánu, systematicky testuje různé varianty struktury odpovědí a formulace klíčových pasáží vůči citation rate v AI nástrojích.
 
 **Symptomy:** dedikovaná role „AI Visibility Manager" nebo VP Marketing s jasnou agendou, OKR jako „zvýšit AI citation share o 30 % v Q3", kvartální review s management týmem, vlastní studie pro press releases jako brand authority engine.
 
-### L5 — Predictive
+### L5 — Predictive (aspirační level)
 
-Firma **modeluje** dopady AIO úprav před implementací, A/B testuje AI prompty proti vlastnímu obsahu, má prediktivní modely, kde investice do brand mentions nebo schema přinese největší citation rate. Teoretická úroveň, většina světových značek na ní zatím není.
+**L5 je teoretický horizont, ne dnešní realita.** Popis níže ukazuje, jak by L5 mohl vypadat, kdyby existoval — neznáme firmu na CZ ani světovém trhu, která by všechny tyto schopnosti reálně provozovala. Slouží jako **horizont směru**, ne jako benchmark, kterým by se měla firma měřit.
 
-**Symptomy:** vlastní machine learning pipeline pro citation prediction, dedikovaný data science tým pro AI search analytics, integrace AIO data do strategického plánování celé firmy.
+**Hypotetické symptomy:** vlastní machine learning pipeline pro citation prediction, dedikovaný data science tým pro AI search analytics, integrace AIO dat do strategického plánování celé firmy, modelování dopadů AIO úprav před implementací.
 
 ### Self-assessment v 5 dimenzích
 
@@ -148,7 +148,7 @@ Suma: **0–4 = L1 Reactive**, 5–8 = L2 Aware, 9–12 = L3 Operational, 13–1
 |---|---|---|
 | **1–7** | Přidělit zodpovědnost za AIO (typicky marketing manager) | CEO / VP Marketing |
 | **8–14** | GSC audit, manuální baseline 20 KW v Googlu + ChatGPT | Marketing |
-| **15–30** | Robots.txt — povolit GPTBot, PerplexityBot, ClaudeBot, Google-Extended | Dev |
+| **15–30** | Robots.txt audit — explicitně rozhodnout o GPTBot, PerplexityBot, ClaudeBot, Google-Extended (povolit pokud chcete být citováni; selektivně omezit u dlouhých how-to průvodců, kde AIO bere kompletní odpověď) | Dev + Marketing |
 | **30–45** | Top 10 stránek: přepis answer blocku 40–60 slov | Content |
 | **45–60** | FAQPage + HowTo schema na top 10 stránkách | Dev + Content |
 | **60–75** | Týdenní GSC review zavedený jako proces | Marketing |
@@ -305,6 +305,18 @@ AIO strategie není one-size-fits-all. Tady jsou 3 typické archetypy a jak se j
 
 **KPI focus:** lokální organic traffic, formuláře z AI referral, Google Business Profile views.
 
+## Kdy AIO <strong>ještě neřešit</strong> — <span class="hl">anti-fit checklist</span>
+
+AIO strategie není pro každou firmu zralou volbou. Pokud platí dvě nebo více z následujících podmínek, **investujte primárně jinam** a AIO odložte o 6–12 měsíců:
+
+- **Nemáte stabilní SEO základ** — top 50 KW vašeho oboru je mimo top 20 v Googlu. AIO playbook nad rozbitým SEO efekt nevyvolá.
+- **Nemáte aktivní obsahovou produkci** — méně než 1 článek měsíčně, žádný content tým ani externí dodavatel. Bez nového obsahu není co optimalizovat.
+- **Nikdo není ownerem** — AIO „někde někoho", bez explicitního Accountable v RACI matici. Strategie umírá v 90 dnech.
+- **Váš byznys nemá research-driven nákupní cestu** — pure-transakční produkty (drogerie, spotřební zboží), čistě lokální služby bez informační vrstvy. Cílovka AI nástroje při rozhodování nepoužívá.
+- **Nemáte co měřit** — žádný GSC, žádný GA4, žádný tracking. Bez baseline nelze vyhodnotit, jestli AIO funguje.
+
+V těchto situacích investujte do **klasického SEO základu**, content produkce a měření — AIO playbook přijde na řadu, až budete mít alespoň 20+ stránek v top 10 a aktivní content kalendář.
+
 ## <strong>Časté chyby</strong> v <span class="hl">AIO strategii</span>
 
 1. **AIO bez SEO základu** — AI nástroje (ChatGPT search, Perplexity) čerpají z indexovaného obsahu. Bez SEO základu nemá AIO co řídit. Pořadí: SEO → AIO playbook nad ním.
@@ -316,12 +328,16 @@ AIO strategie není one-size-fits-all. Tady jsou 3 typické archetypy a jak se j
 
 ## Reálné <strong>výsledky</strong> v <span class="hl">praxi</span>
 
-<Insight tone="aio" icon="✦" label="Posun firmy z L1 na L3 za 6 měsíců">
-U klienta z B2B SaaS segmentu jsme za 6 měsíců posunuli AIO Maturity z L1 (Reactive) na L3 (Operational). Sled aktivit: měsíc 1 — RACI matice, GSC weekly review, robots.txt revize. Měsíc 2–3 — FAQPage schema coverage z 12 % na 78 %, top 30 stránek answer blocky 40–60 slov. Měsíc 4–6 — Otterly Pro tracking, 8 brand mentions v autoritních zdrojích, vlastní benchmark studie pro press release. **Výsledek**: organic traffic +34 %, AI referral z chatgpt.com +210 %, Featured Snippet impressions +180 %.
+<Insight tone="aio" icon="✦" label="Co reálně vidíme při posunu z L1 na L3">
+U části klientů, kteří prošli z L1 (Reactive) na L3 (Operational) za 6 měsíců, vidíme typický sled aktivit: měsíc 1 — RACI matice, GSC weekly review, robots.txt audit. Měsíc 2–3 — FAQPage schema coverage z desítek na vyšší desítky %, top 20–30 stránek answer blocky 40–60 slov. Měsíc 4–6 — tracking nástroj (Otterly nebo Marketing Miner), brand mentions v autoritních zdrojích, vlastní oborová studie pro press release. **Měřitelný posun:** růst Featured Snippet impressions a AI referral trafficu, ale konkrétní čísla závisí na výchozích pozicích, segmentu, content base a paralelních aktivitách. Bez kontroly atribuce nelze izolovat AIO dopad od souběžně probíhajícího SEO a brand růstu.
 </Insight>
 
-<Insight tone="aio" icon="✦" label="Tato stránka jako příklad AIO playbooku v praxi">
-Stránka, kterou právě čtete, je sama implementací AIO Maturity Modelu pro **tento web jako entitu**: cross-funkční vlastnictví (content + dev + brand), KPI dashboard v Plausible/GSC, RACI mezi externími rolemi, kvartální review. Postupy v článku jsou stejné, které u tohoto webu sami aplikujeme. Můžete si **vyzkoušet** sami — zeptejte se ChatGPT, Perplexity nebo Googlu „co je AIO maturity model" nebo „jak nasadit AI optimalizaci ve firmě" a sledujte, jestli vás na něj odkážou.
+<Insight tone="aio" icon="✦" label="Co AIO umí a neumí měřit — limity dat">
+**Citation count, share-of-voice v AI odpovědích a AI referral traffic nejsou absolutní pravdy.** Výstupy AI nástrojů jsou volatilní — výsledky se liší podle promptu, země, uživatelského účtu, modelu i jeho verze. AI referral je jen část dopadu (uživatel se může na vás dozvědět přes ChatGPT a vyhledat vás přímo později — last-click nezachytí). Tracking si interpretujte jako **trend, ne přesné číslo** — měřitelný posun za 90 dní je signál, že strategie funguje, ale konkrétní % nárůst je nepřesnější než klasické GSC pozice.
+</Insight>
+
+<Insight tone="aio" icon="✦" label="Tento web jako příklad AIO playbooku v praxi (otevřená disclosure)">
+Stránka, kterou právě čtete, je obsahový hub agentury **Sniperdesign** — proto interní RACI mezi „Content / Dev / Brand / Analytics" rolemi, který popisujeme, je stejný framework, který sami u tohoto webu aplikujeme s externími dodavateli. Naše vlastní AIO setup: cross-funkční vlastnictví (content + dev + brand), KPI dashboard v Plausible/GSC, kvartální review, vlastní self-assessment AIO Maturity Model každých 90 dní. Postupy v článku nejsou teoretické — jsou to ty, které u tohoto webu reálně používáme.
 </Insight>
 
 ## Co dělat <strong>tento týden, měsíc, kvartál</strong>
@@ -348,4 +364,10 @@ Pokud váháte, kterou strategii řešit jako první, [Rozhodovací matice](/roz
 
 ## Kde si nechat <strong>poradit</strong> nebo <span class="hl">implementaci</span>
 
-AIO strategie dává největší smysl jako **6–12měsíční transformace**, ne jako jednorázový projekt. Pokud nevíte, na kterém maturity levelu vaše firma sedí, nebo nemáte kapacitu na 90-day plán a RACI matici, [Sniperdesign nabízí konzultaci AI viditelnosti](https://www.sniperdesign.cz/audity) — projdeme AIO Maturity self-assessment, navrhneme RACI matici a doporučíme prioritní 90-day plán pro váš aktuální level. První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
+AIO strategie dává největší smysl jako **6–12měsíční transformace**, ne jako jednorázový projekt. Tento web provozuje agentura **[Sniperdesign](https://www.sniperdesign.cz/)** — pokud chcete pomoct s implementací AIO playbooku u vaší firmy, [nabízíme AIO konzultaci](https://www.sniperdesign.cz/audity):
+
+- **Co dostanete:** 60min audit call, AIO Maturity self-assessment podle 5 dimenzí, návrh RACI matice pro vaši firmu, seznam quick wins na první 30 dní, prioritní 90-day plán pro váš aktuální maturity level, doporučení trackingu a KPI dashboardu.
+- **Pro koho:** B2B SaaS, content-driven publishery, e-shopy s 50+ stránek v top 10, konzultanty a agentury s vlastní obsahovou produkcí.
+- **Kdy se vyplatí:** pokud máte SEO základ, ale AI viditelnost stagnuje. Pokud chcete strategický rámec pro tým, ne jen ad-hoc taktiku. Pokud řešíte, jestli AIO je pro vás teď priorita, nebo má počkat 6 měsíců.
+
+První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme AIO Maturity self-assessment a doporučíme, jestli má smysl pokračovat plnou implementací.
