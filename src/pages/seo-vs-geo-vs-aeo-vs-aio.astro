@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getEntry, render } from "astro:content";
 
 const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
@@ -127,6 +128,9 @@ const faqCount = entry.data.faq?.length ?? 0;
         </div>
       </article>
     </div>
+
+    <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ -->
+    <SniperDesignSmallContact />
 
     <!-- FAQ -->
     {

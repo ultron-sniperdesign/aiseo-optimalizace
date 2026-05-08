@@ -164,12 +164,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
       </div>
     </article>
 
-    <!-- SNIPERDESIGN SMALL CONTACT — pouze 4 hlavní disciplíny (SEO/GEO/AEO/AIO), nad FAQ -->
-    {
-      ["SEO", "GEO", "AEO", "AIO"].includes(entry.data.abbr) && (
-        <SniperDesignSmallContact />
-      )
-    }
+    <!-- SNIPERDESIGN SMALL CONTACT — všechny sekce, nad FAQ -->
+    <SniperDesignSmallContact />
+
 
     <!-- FAQ -->
     {
