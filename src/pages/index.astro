@@ -198,115 +198,121 @@ const quartet: Quartet[] = [
     </header>
 
     <div class="trio__grid">
-      <!-- Panel 1: Klasický Google -->
-      <article class="tpanel" data-tone="google" aria-label="Klasické Google vyhledávání">
-        <header class="tpanel__chrome">
-          <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-          <span class="tpanel__brand">
-            <span class="g g--b">G</span><span class="g g--r">o</span><span class="g g--y">o</span><span class="g g--b">g</span><span class="g g--g">l</span><span class="g g--r">e</span>
-          </span>
-        </header>
-        <div class="tpanel__bar">
-          <span class="tpanel__bar-icon" aria-hidden="true">⌕</span>
-          <span class="tpanel__bar-q">jak připravit web pro AI vyhledávání</span>
-        </div>
-        <div class="tpanel__body">
-          <article class="result">
-            <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
-            <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4&nbsp;zkratkami…</h3>
-            <p class="result__desc">Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže a jestli vás zacitují AI nástroje…</p>
-          </article>
-          <article class="result">
-            <span class="result__url">aiseo-optimalizace.cz › prakticky-postup</span>
-            <h3 class="result__title">Praktický postup ve čtyřech krocích — audit, schema, měření</h3>
-            <p class="result__desc">Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.</p>
-          </article>
-          <article class="result">
-            <span class="result__url">aiseo-optimalizace.cz › aeo</span>
-            <h3 class="result__title">AEO — Answer Engine Optimization (Google AI Overviews…)</h3>
-            <p class="result__desc">FAQ schema, krátké odpovědi 40–60 slov, Product schema. Jak se dostat do AI Overview citací…</p>
-          </article>
-        </div>
-        <footer class="tpanel__foot">
-          <span class="tpanel__foot-key">Co uživatel dostane:</span>
-          <span class="tpanel__foot-val">Seznam odkazů. Klikne, čte, rozhodne se.</span>
-        </footer>
-      </article>
-
-      <!-- Panel 2: Google s AI Overview -->
-      <article class="tpanel tpanel--featured" data-tone="aio" aria-label="Google s AI Overview panelem">
-        <header class="tpanel__chrome">
-          <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-          <span class="tpanel__brand">
-            <span class="g g--b">G</span><span class="g g--r">o</span><span class="g g--y">o</span><span class="g g--b">g</span><span class="g g--g">l</span><span class="g g--r">e</span>
-          </span>
-        </header>
-        <div class="tpanel__bar">
-          <span class="tpanel__bar-icon" aria-hidden="true">⌕</span>
-          <span class="tpanel__bar-q">jak připravit web pro AI vyhledávání</span>
-        </div>
-        <div class="tpanel__body">
-          <section class="aio-card">
-            <header class="aio-card__head">
-              <span class="aio-card__sparkle" aria-hidden="true">✦</span>
-              <span class="aio-card__label">AI Overview</span>
-            </header>
-            <p class="aio-card__line"><strong>Pro úspěch v AI vyhledávání</strong> potřebujete: krátké odpovědi 40–60&nbsp;slov hned po nadpisu, FAQ sekci s FAQPage schema, datově hutný obsah s konkrétními čísly a brand mentions z autoritních zdrojů.</p>
-            <p class="aio-card__line">Cílí to na <strong>citaci v AI odpovědi</strong>, ne jen na klasickou pozici v Googlu.</p>
-            <div class="aio-card__sources">
-              <span class="aio-card__src-label">Zdroje:</span>
-              <span class="aio-card__src">aiseo-optimalizace.cz</span>
-              <span class="aio-card__src">marketingppc.cz</span>
-              <span class="aio-card__src">seoprakticky.cz</span>
-            </div>
-          </section>
-          <article class="result result--demoted">
-            <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
-            <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce…</h3>
-          </article>
-        </div>
-        <footer class="tpanel__foot">
-          <span class="tpanel__foot-key">Co uživatel dostane:</span>
-          <span class="tpanel__foot-val">Hotová odpověď s citacemi. Často neklikne.</span>
-        </footer>
-      </article>
-
-      <!-- Panel 3: ChatGPT -->
-      <article class="tpanel" data-tone="chat" aria-label="ChatGPT odpověď">
-        <header class="tpanel__chrome">
-          <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-          <span class="tpanel__brand tpanel__brand--chat">
-            <span class="chat-mark" aria-hidden="true">✺</span>
-            ChatGPT
-          </span>
-        </header>
-        <div class="tpanel__body tpanel__body--chat">
-          <div class="bubble bubble--user">
-            <span class="bubble__avatar" aria-hidden="true">🙂</span>
-            <p class="bubble__text">jak připravit web pro AI vyhledávání</p>
+      <!-- Cell 1: Klasický Google -->
+      <div class="trio__cell" data-tone="google">
+        <aside class="verdict" data-tone="google" role="note" aria-label="Co uživatel dostane z klasického Googlu">
+          <span class="verdict__key">Co uživatel dostane</span>
+          <p class="verdict__val">Seznam odkazů. Klikne, čte, rozhodne se.</p>
+        </aside>
+        <article class="tpanel" data-tone="google" aria-label="Klasické Google vyhledávání">
+          <header class="tpanel__chrome">
+            <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="tpanel__brand">
+              <span class="g g--b">G</span><span class="g g--r">o</span><span class="g g--y">o</span><span class="g g--b">g</span><span class="g g--g">l</span><span class="g g--r">e</span>
+            </span>
+          </header>
+          <div class="tpanel__bar">
+            <span class="tpanel__bar-icon" aria-hidden="true">⌕</span>
+            <span class="tpanel__bar-q">jak připravit web pro AI vyhledávání</span>
           </div>
-          <div class="bubble bubble--ai">
-            <span class="bubble__avatar bubble__avatar--ai" aria-hidden="true">✺</span>
-            <div class="bubble__body">
-              <p class="bubble__text">Pro AI vyhledávání jsou klíčové tři vrstvy:</p>
-              <ul class="bubble__list">
-                <li><strong>Klasické SEO</strong> jako základ — bez něj vás AI nenajde.</li>
-                <li><strong>Strukturovaná data</strong> (FAQPage, Product, HowTo) pro citace.</li>
-                <li><strong>Brand mentions</strong> v autoritních zdrojích — bez nich vás necituji.</li>
-              </ul>
-              <div class="bubble__sources">
-                <span class="bubble__src-pill">aiseo-optimalizace.cz</span>
-                <span class="bubble__src-pill">interval.cz</span>
-                <span class="bubble__src-pill">seoprakticky.cz</span>
+          <div class="tpanel__body">
+            <article class="result">
+              <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
+              <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4&nbsp;zkratkami…</h3>
+              <p class="result__desc">Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže a jestli vás zacitují AI nástroje…</p>
+            </article>
+            <article class="result">
+              <span class="result__url">aiseo-optimalizace.cz › prakticky-postup</span>
+              <h3 class="result__title">Praktický postup ve čtyřech krocích — audit, schema, měření</h3>
+              <p class="result__desc">Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.</p>
+            </article>
+            <article class="result">
+              <span class="result__url">aiseo-optimalizace.cz › aeo</span>
+              <h3 class="result__title">AEO — Answer Engine Optimization (Google AI Overviews…)</h3>
+              <p class="result__desc">FAQ schema, krátké odpovědi 40–60 slov, Product schema. Jak se dostat do AI Overview citací…</p>
+            </article>
+          </div>
+        </article>
+      </div>
+
+      <!-- Cell 2: Google s AI Overview -->
+      <div class="trio__cell" data-tone="aio">
+        <aside class="verdict" data-tone="aio" role="note" aria-label="Co uživatel dostane z AI Overview">
+          <span class="verdict__key">Co uživatel dostane</span>
+          <p class="verdict__val">Hotová odpověď s citacemi. Často neklikne.</p>
+        </aside>
+        <article class="tpanel tpanel--featured" data-tone="aio" aria-label="Google s AI Overview panelem">
+          <header class="tpanel__chrome">
+            <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="tpanel__brand">
+              <span class="g g--b">G</span><span class="g g--r">o</span><span class="g g--y">o</span><span class="g g--b">g</span><span class="g g--g">l</span><span class="g g--r">e</span>
+            </span>
+          </header>
+          <div class="tpanel__bar">
+            <span class="tpanel__bar-icon" aria-hidden="true">⌕</span>
+            <span class="tpanel__bar-q">jak připravit web pro AI vyhledávání</span>
+          </div>
+          <div class="tpanel__body">
+            <section class="aio-card">
+              <header class="aio-card__head">
+                <span class="aio-card__sparkle" aria-hidden="true">✦</span>
+                <span class="aio-card__label">AI Overview</span>
+              </header>
+              <p class="aio-card__line"><strong>Pro úspěch v AI vyhledávání</strong> potřebujete: krátké odpovědi 40–60&nbsp;slov hned po nadpisu, FAQ sekci s FAQPage schema, datově hutný obsah s konkrétními čísly a brand mentions z autoritních zdrojů.</p>
+              <p class="aio-card__line">Cílí to na <strong>citaci v AI odpovědi</strong>, ne jen na klasickou pozici v Googlu.</p>
+              <div class="aio-card__sources">
+                <span class="aio-card__src-label">Zdroje:</span>
+                <span class="aio-card__src">aiseo-optimalizace.cz</span>
+                <span class="aio-card__src">marketingppc.cz</span>
+                <span class="aio-card__src">seoprakticky.cz</span>
+              </div>
+            </section>
+            <article class="result result--demoted">
+              <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
+              <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce…</h3>
+            </article>
+          </div>
+        </article>
+      </div>
+
+      <!-- Cell 3: ChatGPT -->
+      <div class="trio__cell" data-tone="chat">
+        <aside class="verdict" data-tone="chat" role="note" aria-label="Co uživatel dostane z ChatGPT">
+          <span class="verdict__key">Co uživatel dostane</span>
+          <p class="verdict__val">Konverzační odpověď. Klik k vám už není v plánu.</p>
+        </aside>
+        <article class="tpanel" data-tone="chat" aria-label="ChatGPT odpověď">
+          <header class="tpanel__chrome">
+            <div class="tpanel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="tpanel__brand tpanel__brand--chat">
+              <span class="chat-mark" aria-hidden="true">✺</span>
+              ChatGPT
+            </span>
+          </header>
+          <div class="tpanel__body tpanel__body--chat">
+            <div class="bubble bubble--user">
+              <span class="bubble__avatar" aria-hidden="true">🙂</span>
+              <p class="bubble__text">jak připravit web pro AI vyhledávání</p>
+            </div>
+            <div class="bubble bubble--ai">
+              <span class="bubble__avatar bubble__avatar--ai" aria-hidden="true">✺</span>
+              <div class="bubble__body">
+                <p class="bubble__text">Pro AI vyhledávání jsou klíčové tři vrstvy:</p>
+                <ul class="bubble__list">
+                  <li><strong>Klasické SEO</strong> jako základ — bez něj vás AI nenajde.</li>
+                  <li><strong>Strukturovaná data</strong> (FAQPage, Product, HowTo) pro citace.</li>
+                  <li><strong>Brand mentions</strong> v autoritních zdrojích — bez nich vás necituji.</li>
+                </ul>
+                <div class="bubble__sources">
+                  <span class="bubble__src-pill">aiseo-optimalizace.cz</span>
+                  <span class="bubble__src-pill">interval.cz</span>
+                  <span class="bubble__src-pill">seoprakticky.cz</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <footer class="tpanel__foot">
-          <span class="tpanel__foot-key">Co uživatel dostane:</span>
-          <span class="tpanel__foot-val">Konverzační odpověď. Klik k vám už není v plánu.</span>
-        </footer>
-      </article>
+        </article>
+      </div>
     </div>
 
     <aside class="trio__callout" role="note">
@@ -1070,12 +1076,83 @@ const quartet: Quartet[] = [
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.25rem;
+    align-items: start;
   }
   @media (min-width: 720px) {
     .trio__grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 1100px) {
     .trio__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Trio cell — wrapper pro verdict bubble + tpanel ── */
+  .trio__cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem; /* prostor mezi bubble a kartou — tail visí v tomto gapu */
+  }
+  /* Tone tokens — verdict + tail dědí stejnou paletu jako tpanel border. */
+  .trio__cell[data-tone="google"] {
+    --tone-accent: oklch(0.5 0.18 256);
+    --tone-tint: oklch(0.97 0.025 256);
+    --tone-soft: oklch(0.86 0.06 256);
+  }
+  .trio__cell[data-tone="aio"] {
+    --tone-accent: var(--color-accent);
+    --tone-tint: oklch(0.96 0.022 250);
+    --tone-soft: oklch(0.86 0.06 250);
+  }
+  .trio__cell[data-tone="chat"] {
+    --tone-accent: oklch(0.5 0.13 155);
+    --tone-tint: oklch(0.96 0.022 155);
+    --tone-soft: oklch(0.86 0.06 155);
+  }
+
+  /* ── Verdict bubble — vizuálně oddělená nad kartou, ale s tailem
+   *    míří dolů ke kartě. Říká uživateli "co z toho rozhraní vyleze".
+   *    Decentní tone-color pozadí, tučný text, monospace eyebrow.
+   * ── */
+  .verdict {
+    position: relative;
+    margin: 0;
+    padding: 0.875rem 1.125rem 1rem;
+    background: var(--tone-tint);
+    border: 1px solid var(--tone-soft);
+    border-left: 3px solid var(--tone-accent);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px -4px color-mix(in oklch, var(--tone-accent) 25%, transparent);
+  }
+  /* Speech bubble tail — diamond rotated 45°, hangs in cell gap toward card. */
+  .verdict::after {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    bottom: -7px;
+    width: 12px;
+    height: 12px;
+    background: var(--tone-tint);
+    border-right: 1px solid var(--tone-soft);
+    border-bottom: 1px solid var(--tone-soft);
+    transform: rotate(45deg);
+  }
+  .verdict__key {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tone-accent);
+    margin-bottom: 0.4rem;
+  }
+  .verdict__val {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    margin: 0;
   }
 
   /* ── Panel base ── */
@@ -1362,47 +1439,13 @@ const quartet: Quartet[] = [
     color: oklch(0.42 0.13 155);
   }
 
-  /* Footer caption per panel — visuálně silně oddělený, discipline-color,
-   * uživatel ho má **přečíst**. Levý border + barvený "key" + tučná hodnota. */
-  .tpanel__foot {
-    border-top: 1px solid var(--color-rule);
-    padding: 0.875rem 1rem 1rem;
-    background: var(--color-paper);
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    position: relative;
-  }
-  .tpanel__foot::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -1px;
-    width: 100%;
-    height: 3px;
-    background: var(--tone-accent, var(--color-accent));
-  }
-  /* Discipline tones for footer left border — google blue, AIO accent indigo, chat emerald */
+  /* (Footer pod každou kartou byl odstraněn — verdict bubble nad kartou
+   *  ho nahrazuje. Discipline tone tokeny zůstávají na .tpanel pro jiné
+   *  případné použití, ale .tpanel__foot* CSS již není potřeba.)
+   */
   .tpanel[data-tone="google"] { --tone-accent: oklch(0.5 0.18 256); }
   .tpanel[data-tone="aio"]    { --tone-accent: var(--color-accent); }
   .tpanel[data-tone="chat"]   { --tone-accent: oklch(0.5 0.13 155); }
-
-  .tpanel__foot-key {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tone-accent, var(--color-accent));
-  }
-  .tpanel__foot-val {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.4;
-    letter-spacing: -0.005em;
-  }
 
   /* Callout pod trio — tato pasáž má uživatel **přečíst**.
    * Card s accent borderem, krouhový ! marker, větší tučný text.
