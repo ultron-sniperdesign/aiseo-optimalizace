@@ -1,7 +1,7 @@
 ---
 title: "GEO optimalizace: jak připravit web pro ChatGPT, Perplexity a Google AI Overviews"
 description: "Praktický průvodce GEO optimalizací v 7 krocích — audit, answer block, fact-density, schema, AI crawlery, brand mentions a měření. Pro CZ trh."
-answer: "GEO optimalizace upravuje obsah a technickou stránku webu tak, aby ho AI nástroje (ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews) používaly jako citovaný zdroj odpovědí. Jádro postupu: jasné definice, krátké odpovědi 40–60 slov nahoře, datově hutný obsah, FAQPage a HowTo schema, povolení AI crawlerů v robots.txt a brand mentions v autoritních zdrojích. Princeton paper z roku 2023 ukázal, že strukturovaný obsah s konkrétními fakty může citation rate u testovaného vzorku zvýšit v řádu desítek procent."
+answer: "GEO optimalizace upravuje obsah a strukturu webu tak, aby AI systémy (ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews) dokázaly váš obsah snadno pochopit, použít a případně citovat v odpovědích. Jádro postupu: jasné definice, krátké odpovědi 40–60 slov nahoře, datově hutný obsah, FAQPage a HowTo schema, povolení AI crawlerů v robots.txt a brand mentions v autoritních zdrojích. Princeton paper z roku 2023 ukázal, že strukturovaný obsah s konkrétními fakty může citation rate u testovaného vzorku zvýšit v řádu desítek procent."
 slug: "geo-optimalizace"
 category: "tutorial"
 updated: "2026-05-08"
@@ -57,9 +57,21 @@ import Insight from "../../components/blocks/Insight.astro";
 
 ## Co je <span class="hl">GEO optimalizace</span> a proč ji <strong>řešit teď</strong>
 
-GEO (Generative Engine Optimization) je optimalizace webu a obsahu tak, aby AI nástroje jako **ChatGPT, Perplexity, Claude, Gemini** a **Google AI Overviews** používaly váš web jako citovaný zdroj svých odpovědí. Když se dnes zákazník zeptá AI nástroje „jaký nejlepší CRM pro malou firmu" nebo „doporuč mi konzultanta na X", AI vybere jen několik zdrojů. Pokud mezi nimi nejste, zákazník vás při tomto typu rešerše nemusí vůbec uvidět.
+GEO (Generative Engine Optimization) **upravuje obsah a strukturu webu** tak, aby AI systémy jako **ChatGPT, Perplexity, Claude, Gemini** a **Google AI Overviews** dokázaly váš obsah snadno pochopit, použít a případně citovat v odpovědích. Když se dnes zákazník zeptá AI nástroje „jaký nejlepší CRM pro malou firmu" nebo „doporuč mi konzultanta na X", AI vybere jen několik zdrojů. Pokud mezi nimi nejste, zákazník vás při tomto typu rešerše nemusí vůbec uvidět.
 
-Klasické SEO řeší **pozice** ve výsledcích vyhledávání. GEO optimalizace řeší **citace v generovaných odpovědích** — tedy zda váš web pomáhá AI nástroji odpovědět a zda v té odpovědi zazní vaše značka. Pojem zavedli akademici z Princetonu v roce 2023, dnes se prosazuje jako standardní vrstva nad klasickým SEO. Detailněji o vztahu disciplín pojednává pillar [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) a o samotné disciplíně sekce [GEO — Generative Engine Optimization](/geo/).
+Klasické SEO zůstává základ — řeší pozice ve výsledcích vyhledávání a indexovatelnost obsahu. **GEO rozšiřuje optimalizaci** o viditelnost v AI odpovědích a generativním vyhledávání. Pojem zavedli akademici z Princetonu v roce 2023, dnes se prosazuje jako standardní vrstva nad klasickým SEO. Detailněji o vztahu disciplín pojednává pillar [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) a o samotné disciplíně sekce [GEO — Generative Engine Optimization](/geo/).
+
+### GEO vs SEO vs AEO — kde je hranice
+
+Logická otázka: **proč není GEO jen rebranding SEO**? Tři disciplíny řeší různé vrstvy a pracují s odlišnými signály:
+
+| Disciplína | Co řeší | Hlavní výstup |
+|---|---|---|
+| **[SEO](/seo/)** | Být na první stránce klasického vyhledávání | Pozice 1–10 v Googlu nebo Seznamu |
+| **[AEO](/aeo/)** | Dostat krátkou odpověď přímo do panelu nad výsledky | Citace v Google AI Overviews, Featured Snippets, Bing Copilot |
+| **GEO** | Být citovaným zdrojem v generativním AI obecně | Zmínka v odpovědi ChatGPT, Perplexity, Claude, Gemini |
+
+**Praktický důsledek:** SEO + AEO + GEO se neperou — naopak se posilují. Stejný obsah, který je strukturovaný pro AI Overviews (krátká odpověď, FAQ schema), je obvykle dobře citovatelný i v ChatGPT a Perplexity. Co GEO odlišuje od AEO: AEO cílí specificky na **answer engines napojené na vyhledávač** (Google, Bing), GEO pokrývá **jakékoli generativní AI** včetně ChatGPT, který Google nepoužívá. Většina playbooku se ale překrývá.
 
 ## Co řekl <strong>Princeton paper</strong> — primary source
 
@@ -84,6 +96,36 @@ GEO není relevantní pro každý byznys stejně. Největší dopad má tam, kde
 - **Značky s ambicí být thought leadery** v daném oboru — pokud chcete být „ten, kdo rozumí X", GEO playbook (definice, fakta, brand mentions, autorské profily) přesně podporuje toto pozicování.
 
 GEO **má marginální dopad** u čistě transakčních impulsních produktů, u lokálního retailu bez online research fáze a u značek bez brand search popularity. Tam se primární investice vyplatí jinde — klasické SEO, [lokální SEO](/blog/local-seo-cesko-2026/), PPC. Pokud váháte, kterou disciplínu řešit jako první, pomůže [Rozhodovací matice](/rozhodovaci-matice/).
+
+### Co GEO konkrétně přinese podle typu byznysu
+
+| Typ byznysu | Co GEO konkrétně přinese | Příklad dotazu, kde to hraje roli |
+|---|---|---|
+| **B2B SaaS** | Vstup do shortlistu, který si zákazník dělá v ChatGPT/Perplexity před demem nebo trialem | „nejlepší CRM pro malou firmu", „project management nástroj alternativy k Asaně" |
+| **Konzultanti / agentury** | Citace v odpovědi na doporučovací dotazy — brand mention bez PPC | „doporuč mi SEO agenturu pro e-shop", „specialista na finanční reporting" |
+| **E-shop s research-driven sortimentem** | Citace v doporučení produktů a srovnávání | „jaký nejlepší ergonomický monitor", „srovnání běžeckých bot pro asfalt" |
+| **Edukativní obsah / publishers** | Citation share = brand awareness; AI nástroj směruje uživatele zpět na zdroj | „co je rozdíl mezi X a Y", „jak funguje Z" — výchozí brand exposure |
+| **Odborné služby** (advokát, lékař, daňař) | Citace u problémových dotazů, kde hledá člověk pomoc | „kdy potřebuji advokáta na pracovní právo", „jak postupovat při kontrole z FÚ" |
+
+## <span class="hl">GEO Readiness Framework</span> — <strong>5 vrstev, které hodnotíme</strong>
+
+Než půjdete do detailu 7 kroků, je užitečné vědět, **podle čeho hodnotíme připravenost webu pro GEO**. Pět vrstev, kterými procházíme u klientů — každý krok níže mapuje na jednu z těchto vrstev:
+
+1. **Technical readiness** — indexovatelnost, povolení AI crawlerů (`GPTBot`, `PerplexityBot`, `ClaudeBot`, `Google-Extended`) v `robots.txt`, technické zdraví webu. Bez tohoto základu se AI systémy k webu vůbec nedostanou.
+2. **Content clarity** — jasné definice ve formátu „X je…", krátké odpovědi 40–60 slov hned po nadpisech, pyramidové uspořádání obsahu. **Tato vrstva má v Princeton paperu nejvyšší dopad** na citation rate.
+3. **Entity consistency** — konzistentní zápis značky napříč webem, schema.org `Organization` a `Person` markup, propojené identifikátory (Wikidata, oborové katalogy). Pomáhá AI jednoznačně identifikovat, kdo jste.
+4. **AI trust signals** — fact-density (čísla, procenta, datace), inline citace zdrojů, autorské profily u YMYL témat, brand mentions v autoritních komunitách (Reddit, Quora, oborové weby).
+5. **Citation optimization** — měření AI citation share, A/B testy answer blocků, iterace podle dat z manuálního auditu ChatGPT/Perplexity a placených nástrojů.
+
+## Co má <span class="hl">největší reálný dopad</span> — <strong>TOP 3, pokud máte jen čas na málo</strong>
+
+Pokud potřebujete cherry-pick a nemáte kapacitu na všech 7 kroků najednou, soustřeďte se na tyhle tři věci v tomto pořadí:
+
+1. **Strukturovaná odpověď nahoře v článku** (40–60 slov, tučně, formát „X je…"). Vrstva 2 — Content clarity. Princeton paper i naše zkušenost: tohle má největší jednorázový dopad na citation rate.
+2. **Fact-density obsahu** — 3+ konkrétní fakta na 100 slov (číslo, datum, citace). Vrstva 4 — AI trust signals. Bez konkrétních faktů AI ani správně strukturovanou odpověď nečíta.
+3. **Brand mentions v autoritních zdrojích** (Reddit, Quora, oborové podcasty, guest posty). Vrstva 4 — AI trust signals. Bez signálů důvěryhodnosti i ideálně strukturovaný obsah dostává nízkou citation váhu.
+
+Schema markup (vrstva 3), `robots.txt` setup (vrstva 1) a měření (vrstva 5) jsou důležité, ale jejich **přidaný dopad je nižší** než tří položek výše. Pokud jste v technické hygieně OK, soustřeďte se primárně na obsah a brand authority.
 
 ## <strong>Step-by-step:</strong> 7 kroků <span class="hl">GEO optimalizace webu</span>
 
@@ -247,6 +289,36 @@ Drtivá většina GEO playbooku funguje napříč všemi AI nástroji, ale každ
 | **Bing Copilot** | Bing index + GPT-4 | Strukturovaný obsah, FAQ schema, IndexNow protokol | Pro CZ trh marginální |
 
 **Praktický důsledek:** pokud cílíte na **Perplexity**, dbejte na **recentnost obsahu** (datace, freshness signály). Pokud cílíte na **ChatGPT**, soustřeďte se na **autoritu a brand mentions**. Pokud cílíte na **Gemini a Google AI Overviews**, **klasické SEO** je foundationální — viz [AEO playbook](/aeo/).
+
+### Jak vypadá rozdíl v praxi — ukázková AI odpověď
+
+Pro představu — takto typicky vypadá rozdíl mezi citací zdroje, který má dobře implementovaný GEO playbook (krátká definice, fakta, struktura), a zdroje bez GEO úprav:
+
+```
+Otázka uživatele: „Co je rozdíl mezi SEO a GEO optimalizací?"
+
+✅ AI odpověď s citací GEO-friendly zdroje:
+SEO optimalizuje stránku pro pozice v Googlu, GEO upravuje obsah,
+aby byl citován jako zdroj v odpovědích AI nástrojů. Princeton paper
+(Aggarwal et al. 2023) ukázal, že strukturovaný obsah s konkrétními
+fakty zvyšuje citation rate u testovaného vzorku v řádu desítek %.
+Zdroje:
+  • aiseo-optimalizace.cz   ← vaše doména v citaci
+  • seoprakticky.cz
+  • upgates.cz
+
+❌ AI odpověď bez vaší citace (obecnější web bez GEO úprav):
+SEO se zaměřuje na klasické vyhledávání, GEO řeší AI systémy.
+GEO je novější přístup k optimalizaci pro AI...
+Zdroje:
+  • wikipedia.org
+  • semrush.com
+  • foundationinc.co
+```
+
+Rozdíl není v **kvalitě obsahu** ani v autoritě domény — obě varianty mohou pocházet ze srovnatelných zdrojů. Rozdíl je v tom, jestli má **AI snadný přístup ke krátké definitivní odpovědi**, kterou může extrahovat a citovat. To je esence GEO playbooku.
+
+**Jak si to ověřit pro váš obor:** otevřete ChatGPT v search módu nebo Perplexity, napište 5–10 dotazů, na které by váš obsah měl odpovídat (např. „co je X", „jak vybrat Y", „nejlepší Z"), a sledujte, jestli vás cituje. Pokud ne, podívejte se, kdo cituje, a srovnejte strukturu jejich obsahu s tou vaší.
 
 ## <strong>Časový horizont</strong> — kdy čekat <span class="hl">výsledky</span>
 
