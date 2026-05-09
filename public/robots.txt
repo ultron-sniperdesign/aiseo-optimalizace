@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /_review/
+
+# /_review/ — interní review materiály (POC PDF, draft soubory)
+# Disallow je pro všechny boty včetně AI crawlerů. Přístup přes přímý
+# odkaz funguje (auditoři, kolegové), ale Google ani AI nástroje
+# obsah neindexují.
 
 # AI crawlers — explicitly allowed (cílíme na GEO/AIO citace)
 User-agent: GPTBot
