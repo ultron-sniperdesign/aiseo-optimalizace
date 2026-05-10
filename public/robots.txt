@@ -1,35 +1,55 @@
 User-agent: *
 Allow: /
 Disallow: /_review/
+Disallow: /download/
 
-# /_review/ — interní review materiály (POC PDF, draft soubory)
-# Disallow je pro všechny boty včetně AI crawlerů. Přístup přes přímý
-# odkaz funguje (auditoři, kolegové), ale Google ani AI nástroje
-# obsah neindexují.
+# /_review/ — interní review materiály (audit PDF, drafty)
+# /download/ — lead magnety za e-mail (PDF návody, příručky)
+# Disallow pro všechny boty včetně AI crawlerů. Přístup přes přímý
+# odkaz z e-mailu funguje, ale Google ani AI nástroje obsah neindexují.
+# Důvod pro /download/: chceme, aby uživatel zadal e-mail před stažením,
+# ne aby PDF našel v Google a obešel formulář.
 
-# AI crawlers — explicitly allowed (cílíme na GEO/AIO citace)
+# AI crawlers — explicitly allowed pro hlavní obsah, ale /download/ blokujeme
+# (allow-list níže neruší disallow výše — disallow má precedenci pro shodu cest)
 User-agent: GPTBot
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /_review/
+Disallow: /download/
 
 Sitemap: https://aiseo-optimalizace.cz/sitemap-index.xml
