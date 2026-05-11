@@ -23,7 +23,7 @@ const faqJsonLd = {
       name: "Co konkrétně Pack obsahuje?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou wireframe s anotacemi, šablony textů, schema markup příklady (Product, FAQPage, Article, LocalBusiness) a Figma soubor s wireframy ke kopírování. Plus krok-za-krokem návod, jak to aplikovat na váš web.",
+        text: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou anotovaný wireframe, šablony textů a schema markup příklady (Product, FAQPage, Article, LocalBusiness). Plus krok-za-krokem návod, jak to aplikovat na váš web. Vše v jednom master PDF (~50 stran).",
       },
     },
     {
@@ -32,14 +32,6 @@ const faqJsonLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "Ano. Pack je framework, ne plugin. Wireframy, šablony textů a schema markup příklady aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Potřebuji k Packu Figma účet?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Free Figma účet stačí. Figma soubor je k prohlížení a kopírování zdarma. Pokud Figmu nepoužíváte, wireframy najdete také jako anotované PDF s vysvětlením každého prvku.",
       },
     },
     {
@@ -139,8 +131,8 @@ const pageTypes = [
           </p>
           <p class="pack-hero__lead">
             Wireframe Pack obsahuje sedm typů stránek se šablonami textů, schema markupem
-            a Figma souborem. Aplikujete na svůj web během odpoledne — bez konzultantů,
-            bez měsíců práce.
+            a krok-za-krokem návodem aplikace. Vše v jednom master PDF (~50 stran).
+            Aplikujete na svůj web během odpoledne — bez konzultantů, bez měsíců práce.
           </p>
 
           <div class="pack-hero__pricing">
@@ -175,8 +167,8 @@ const pageTypes = [
           <aside class="pack-delivery" aria-label="Co dostanete po zaplacení">
             <p class="pack-delivery__label">Po zaplacení dostanete</p>
             <ul class="pack-delivery__list">
-              <li>Figma soubor se 7 wireframy</li>
-              <li>PDF návod aplikace</li>
+              <li>Master PDF (~50 stran)</li>
+              <li>7 anotovaných wireframů</li>
               <li>Textové šablony a schema příklady</li>
               <li>Fakturu na firmu</li>
             </ul>
@@ -293,7 +285,7 @@ const pageTypes = [
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">03</span> Co dostanete po koupi</span>
         <h2 class="lp-section__title">
-          Sedm stránek, šablony, schema a Figma <strong>jako jeden balík</strong>
+          Sedm stránek, šablony, schema a návod <strong>jako jeden balík</strong>
         </h2>
       </header>
 
@@ -311,12 +303,12 @@ const pageTypes = [
           BreadcrumbList, LocalBusiness, Organization — JSON-LD copy-paste
         </li>
         <li>
-          <strong>Figma soubor</strong> — všech 7 wireframů ve Figmě, ke kopírování
-          a remixu. Free Figma účet stačí
-        </li>
-        <li>
           <strong>Krok-za-krokem návod aplikace</strong> — checklist, jak Pack aplikovat
           na váš stávající web, podle CMS (Upgates, Shoptet, WordPress, custom)
+        </li>
+        <li>
+          <strong>Anti-pattern checklist</strong> — čemu se vyhnout u každého
+          typu stránky. Z analýzy stovek e-shopů, kde stejné chyby brzdí AI viditelnost.
         </li>
       </ul>
     </section>
@@ -424,7 +416,7 @@ const pageTypes = [
           <strong>celý, ne jen homepage</strong>
         </h2>
         <p class="pack-final__lead">
-          Sedm typů stránek, šablony textů, schema markup a Figma soubor.
+          Sedm typů stránek, šablony textů, schema markup a krok-za-krokem návod.
           <strong>1&nbsp;490&nbsp;Kč jednorázově.</strong> Žádné předplatné,
           žádné skryté poplatky.
         </p>
