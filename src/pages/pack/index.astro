@@ -1,0 +1,803 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import EmailCapture from "~/components/EmailCapture.astro";
+import MockupPage from "~/components/MockupPage.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+
+const pageTitle = "AI SEO Wireframe Pack — sedm typů stránek pro AI vyhledávání";
+const pageDescription =
+  "Pack obsahuje sedm typů stránek s hotovými texty: homepage, produkt, kategorie, blog (článek + výpis), prodejní landing a kontakt. Aplikujete na svůj web během odpoledne. 1 490 Kč jednorázově.";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Co konkrétně Pack obsahuje?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou wireframe s anotacemi, šablony textů, schema markup příklady (Product, FAQPage, Article, LocalBusiness) a Figma soubor s wireframy ke kopírování. Plus krok-za-krokem návod, jak to aplikovat na váš web.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Mohu Pack použít na jakémkoli CMS?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ano. Pack je framework, ne plugin. Wireframy, šablony textů a schema markup příklady aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Potřebuji k Packu Figma účet?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Free Figma účet stačí. Figma soubor je k prohlížení a kopírování zdarma. Pokud Figmu nepoužíváte, wireframy najdete také jako anotované PDF s vysvětlením každého prvku.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Co když si nejsem jistý, jestli to zvládnu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, schema markup, struktura) zvládnete sami za odpoledne. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniperdesign za 9 990 Kč — projdeme váš web a předáme prioritní seznam úprav.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Je tam podpora?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Při nákupu dostanete e-mail s přístupem do soukromé skupiny pro otázky. Sniperdesign tým odpovídá v pracovní dny do 24 hodin. Tří měsíční prodloužení podpory je dostupné jako add-on.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Můžu Pack vrátit, pokud mi nesedí?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ano. 14 dní od stažení můžete Pack vrátit bez udání důvodu — vrátíme plnou částku 1 490 Kč. Pokud něco nesedí, prostě odepište na e-mail a peníze pošleme zpět.",
+      },
+    },
+  ],
+};
+
+const pageTypes = [
+  {
+    num: 1,
+    title: "Homepage",
+    desc: "Wireframe + anotace + šablony textů. Stejný framework jako v free PDF — rozšířený o varianty pro různé typy byznysu (e-shop, služby, agentura, freelance).",
+    pageTitle: "Homepage",
+    tone: "primary" as const,
+  },
+  {
+    num: 2,
+    title: "Produktová stránka",
+    desc: "Detail produktu — title pattern, Product schema, FAQ se strukturovanými daty, related products. AI ji rozpozná jako shopable.",
+    pageTitle: "Produkt",
+    tone: "primary" as const,
+  },
+  {
+    num: 3,
+    title: "Kategoriální stránka",
+    desc: "Listing s filtry, kategoriální popis pro AI, schema markup CollectionPage, AI-friendly hierarchie značek a podtřídění.",
+    pageTitle: "Kategorie",
+    tone: "primary" as const,
+  },
+  {
+    num: 4,
+    title: "Blog článek",
+    desc: "Detail článku s answer block 40–60 slov, FAQPage schema, strukturovaná data autora. Citovatelný v ChatGPT i Google AI Overviews.",
+    pageTitle: "Blog článek",
+    tone: "accent" as const,
+  },
+  {
+    num: 5,
+    title: "Blog výpis článků",
+    desc: "Listing článků s filtry, paginace, autoreferenční schema, hub-and-spoke prolinkování pro AI rozpoznání tématu.",
+    pageTitle: "Blog výpis",
+    tone: "accent" as const,
+  },
+  {
+    num: 6,
+    title: "Prodejní landing",
+    desc: "Pro službu nebo produkt. CTA, form pro sběr leadů, social proof, FAQ — kompletní template přímo aplikovatelný (stejný typ stránky, jakou právě čtete).",
+    pageTitle: "Prodejní landing",
+    tone: "accent" as const,
+  },
+  {
+    num: 7,
+    title: "Kontaktní stránka",
+    desc: "Kontaktní formulář, mapa, NAP data (Name, Address, Phone), LocalBusiness schema. AI ji rozpozná jako oficiální entity contact.",
+    pageTitle: "Kontakt",
+    tone: "neutral" as const,
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={faqJsonLd}>
+  <main class="pack">
+    <!-- ===== HERO ===== -->
+    <section class="pack-hero">
+      <div class="pack-hero__inner">
+        <div class="pack-hero__copy">
+          <span class="pack-hero__eyebrow">Pack · pro celý web</span>
+          <h1 class="pack-hero__title">
+            Postavte web, kterému AI rozumí —<br />
+            <strong>celý, ne jen homepage</strong>
+          </h1>
+          <p class="pack-hero__urgency">
+            Free PDF řeší jednu stránku. Konkurence připravuje produkty, kategorie i blog.
+            <strong>Bez nich vás AI nedoporučí</strong>.
+          </p>
+          <p class="pack-hero__lead">
+            Wireframe Pack obsahuje sedm typů stránek se šablonami textů, schema markupem
+            a Figma souborem. Aplikujete na svůj web během odpoledne — bez konzultantů,
+            bez měsíců práce.
+          </p>
+
+          <div class="pack-hero__pricing">
+            <span class="pack-price">1&nbsp;490&nbsp;Kč</span>
+            <span class="pack-price__detail">jednorázově, bez DPH</span>
+          </div>
+
+          <!-- WAITLIST FORM (zatím — Stripe přijde později) -->
+          <div class="pack-hero__waitlist" id="koupit-pack">
+            <p class="pack-hero__waitlist-note">
+              <strong>Pack právě dokončujeme.</strong> Zadejte e-mail —
+              informujeme vás, jakmile bude k dispozici k nákupu.
+            </p>
+            <EmailCapture
+              variant="hero"
+              buttonLabel="Vstoupit do waitlistu"
+              leadSourceTag="Lead — Pack waitlist"
+            />
+          </div>
+
+          <ul class="pack-hero__bullets" aria-label="Co je v Packu">
+            <li>✓ 7 typů stránek (wireframe + anotace + šablony textů)</li>
+            <li>✓ Schema markup příklady (Product, FAQPage, Article, LocalBusiness)</li>
+            <li>✓ Figma soubor + krok-za-krokem návod aplikace</li>
+          </ul>
+        </div>
+
+        <!-- 7-page mockup focus -->
+        <div class="pack-hero__mockup" aria-hidden="true">
+          <div class="hero-focus">
+            <div class="hero-focus__back hero-focus__back--1">
+              <MockupPage pageNumber={2} pageTitle="Produkt" tone="primary" />
+            </div>
+            <div class="hero-focus__back hero-focus__back--2">
+              <MockupPage pageNumber={5} pageTitle="Blog výpis" tone="accent" />
+            </div>
+            <div class="hero-focus__back hero-focus__back--3">
+              <MockupPage pageNumber={6} pageTitle="Prodejní landing" tone="accent" />
+            </div>
+            <div class="hero-focus__hero">
+              <MockupPage pageNumber={1} pageTitle="Homepage" tone="primary" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 CO PACK OBSAHUJE ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">01</span> Co Pack obsahuje</span>
+        <h2 class="lp-section__title">
+          Sedm typů stránek, které <strong>tvoří kostru jakéhokoli webu</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Každá stránka má vlastní wireframe s anotacemi, šablonu textů,
+          schema markup příklad a vysvětlení, jak signalizuje AI nástrojům
+          obsah a kontext.
+        </p>
+      </header>
+
+      <div class="page-types">
+        {pageTypes.map((pt) => (
+          <article class="page-type">
+            <span class="page-type__num">{pt.num}</span>
+            <h3 class="page-type__title">{pt.title}</h3>
+            <p class="page-type__desc">{pt.desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== 02 CO DOSTANETE ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Co dostanete po koupi</span>
+        <h2 class="lp-section__title">
+          Sedm stránek, šablony, schema a Figma <strong>jako jeden balík</strong>
+        </h2>
+      </header>
+
+      <ul class="pack-deliverables">
+        <li>
+          <strong>7 wireframů s anotacemi</strong> — každý prvek vysvětlený, proč tam je
+          a jaký signál pro AI generuje
+        </li>
+        <li>
+          <strong>Šablony textů pro každý typ stránky</strong> — title pattern, meta
+          description, headings, body copy, FAQ — vše ready ke kopírování
+        </li>
+        <li>
+          <strong>Schema markup příklady</strong> — Product, FAQPage, Article,
+          BreadcrumbList, LocalBusiness, Organization — JSON-LD copy-paste
+        </li>
+        <li>
+          <strong>Figma soubor</strong> — všech 7 wireframů ve Figmě, ke kopírování
+          a remixu. Free Figma účet stačí
+        </li>
+        <li>
+          <strong>Krok-za-krokem návod aplikace</strong> — checklist, jak Pack aplikovat
+          na váš stávající web, podle CMS (Upgates, Shoptet, WordPress, custom)
+        </li>
+        <li>
+          <strong>3 měsíce e-mailové podpory</strong> — odpovědi do 24h v pracovní dny
+          (volitelný add-on)
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 03 KOMU SE PACK HODÍ ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Komu se Pack hodí</span>
+        <h2 class="lp-section__title">
+          <strong>Univerzální balík</strong> — od osobního webu po enterprise e-shop
+        </h2>
+        <p class="lp-section__lead">
+          Stejně jako se SEO hodí každému webu, AI SEO se hodí každému webu.
+          Pack je framework, ne specifický pro typ byznysu.
+        </p>
+      </header>
+
+      <ul class="pack-audience">
+        <li>
+          <strong>Provozovatelé e-shopů</strong> — Upgates, Shoptet, WooCommerce, Shopify
+          a další. AI musí rozpoznat produkty, kategorie a recenze.
+        </li>
+        <li>
+          <strong>Firemní weby s katalogem služeb</strong> — služby, produkty, kontakt.
+          AI musí pochopit, co děláte a jak vás kontaktovat.
+        </li>
+        <li>
+          <strong>Marketing agentury</strong> — chcete framework, který nabídnete klientům
+          jako součást vašich služeb. White-label rozšíření je možné domluvit.
+        </li>
+        <li>
+          <strong>Copywriteři, designéři, vývojáři</strong> — chcete šablonu, podle které
+          pracovat na klientských webech bez vymýšlení od nuly.
+        </li>
+        <li>
+          <strong>Osobní weby, portfolia, blogy</strong> — i osobní brand těží z toho,
+          když ho AI cituje a doporučuje.
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 04 SNIPERDESIGN MEDAILONEK ===== -->
+    <SniperDesignSmallContact />
+
+    <!-- ===== FAQ ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
+        <h2 class="lp-section__title">Než přistoupíte k nákupu, <strong>tady jsou odpovědi</strong></h2>
+      </header>
+
+      <dl class="lp-faq">
+        {faqJsonLd.mainEntity.map((q, i) => (
+          <div class="lp-faq__item">
+            <dt class="lp-faq__q">
+              <span class="lp-faq__q-num">{String(i + 1).padStart(2, "0")}</span>
+              <span>{q.name}</span>
+            </dt>
+            <dd class="lp-faq__a">{q.acceptedAnswer.text}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="pack-final">
+      <div class="pack-final__inner">
+        <h2 class="pack-final__title">
+          Vstupte do waitlistu —<br />
+          <strong>informujeme vás, jakmile bude Pack k dispozici</strong>
+        </h2>
+        <p class="pack-final__lead">
+          Cena 1 490 Kč jednorázově. 14 dní na vrácení peněz bez udání důvodu.
+          Žádné předplatné, žádný spam.
+        </p>
+        <EmailCapture
+          variant="hero"
+          buttonLabel="Vstoupit do waitlistu"
+          leadSourceTag="Lead — Pack waitlist (final CTA)"
+        />
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* ===== Page root ===== */
+  .pack {
+    --lp-violet: oklch(0.55 0.25 305);
+    --lp-magenta: oklch(0.62 0.27 335);
+    --lp-gold: oklch(0.82 0.16 80);
+  }
+
+  /* ===== Section primitives (reused style scheme z /navod-zdarma/) ===== */
+  .lp-section {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-x);
+  }
+  .lp-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .lp-section--alt > * {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
+  }
+  .lp-section__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  }
+  .lp-section__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .lp-section__title strong {
+    font-weight: 700;
+    color: var(--lp-violet);
+  }
+  .lp-section__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+    max-width: 42rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 1rem;
+  }
+  .eyebrow__num {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+
+  /* ===== HERO ===== */
+  .pack-hero {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x) clamp(3rem, 6vw, 5rem);
+  }
+  .pack-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (min-width: 960px) {
+    .pack-hero__inner { grid-template-columns: 1.1fr 1fr; gap: 4rem; }
+  }
+  .pack-hero__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lp-violet);
+    background: oklch(0.95 0.04 305);
+    padding: 0.4rem 0.875rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+  .pack-hero__title {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 0 0 1.25rem;
+  }
+  .pack-hero__title strong {
+    font-weight: 700;
+    color: var(--lp-violet);
+  }
+  .pack-hero__urgency {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 1.25rem 0 1.5rem;
+    padding-left: 0.875rem;
+    border-left: 3px solid var(--lp-magenta);
+    max-width: 36rem;
+  }
+  .pack-hero__urgency strong {
+    color: var(--lp-magenta);
+    font-weight: 600;
+  }
+  .pack-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    font-weight: 350;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 0 1.75rem;
+    max-width: 36rem;
+  }
+  .pack-hero__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .pack-price {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .pack-price__detail {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+  }
+  .pack-hero__waitlist {
+    background: oklch(0.97 0.02 305);
+    border: 1px solid oklch(0.88 0.04 305);
+    border-left: 3px solid var(--lp-violet);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  .pack-hero__waitlist-note {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .pack-hero__waitlist-note strong {
+    color: var(--lp-violet);
+    font-weight: 600;
+  }
+  .pack-hero__bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+  }
+  .pack-hero__bullets li {
+    line-height: 1.5;
+  }
+
+  /* ===== Hero focus mockup (sdílený s /navod-zdarma/) ===== */
+  .pack-hero__mockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+  }
+  .hero-focus {
+    position: relative;
+    width: 380px;
+    height: 420px;
+    --scroll-p: 0;
+  }
+  .hero-focus__hero {
+    position: absolute;
+    z-index: 10;
+    width: 280px;
+    left: 50px;
+    top: 0;
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+    transition:
+      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.5s ease;
+    box-shadow:
+      0 30px 60px -20px oklch(0 0 0 / 0.2),
+      0 12px 24px -8px oklch(0 0 0 / 0.1);
+  }
+  .hero-focus__back {
+    position: absolute;
+    width: 200px;
+    opacity: 0;
+    filter: blur(0.5px);
+    transition:
+      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.5s ease;
+  }
+  .hero-focus.is-visible .hero-focus__hero {
+    opacity: 1;
+    transform: scale(1) translateY(calc(var(--scroll-p) * -8px));
+    transition-delay: 0ms;
+  }
+  .hero-focus.is-visible .hero-focus__back { opacity: 0.55; }
+  .hero-focus.is-visible .hero-focus__back--1 {
+    top: 10px; left: -10px; z-index: 3; transition-delay: 180ms;
+    transform: translate(0, calc(var(--scroll-p) * 12px)) rotate(-7deg);
+  }
+  .hero-focus.is-visible .hero-focus__back--2 {
+    top: 30px; right: -20px; z-index: 4; transition-delay: 240ms;
+    transform: translate(0, calc(var(--scroll-p) * 16px)) rotate(8deg);
+  }
+  .hero-focus.is-visible .hero-focus__back--3 {
+    top: 200px; right: 30px; z-index: 2; transition-delay: 300ms;
+    transform: translate(0, calc(var(--scroll-p) * 20px)) rotate(4deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-focus__hero,
+    .hero-focus__back {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .hero-focus__back { opacity: 0.55 !important; }
+  }
+
+  /* ===== 7 page types grid ===== */
+  .page-types {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (min-width: 640px) {
+    .page-types { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1080px) {
+    .page-types { grid-template-columns: repeat(3, 1fr); }
+  }
+  .page-type {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.5rem 1.375rem;
+    position: relative;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .page-type:hover {
+    border-color: var(--lp-violet);
+    transform: translateY(-2px);
+  }
+  .page-type__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: var(--lp-violet);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+  }
+  .page-type__title {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.015em;
+  }
+  .page-type__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* ===== Deliverables / Audience lists ===== */
+  .pack-deliverables,
+  .pack-audience {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 50rem;
+  }
+  @media (min-width: 760px) {
+    .pack-deliverables,
+    .pack-audience { grid-template-columns: 1fr 1fr; }
+  }
+  .pack-deliverables li,
+  .pack-audience li {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    padding: 1rem 1.125rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+    border-left: 3px solid var(--lp-violet);
+  }
+  .pack-deliverables li strong,
+  .pack-audience li strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* ===== FAQ (sdílený s /navod-zdarma/) ===== */
+  .lp-faq {
+    max-width: 60rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .lp-faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 1.5rem;
+  }
+  .lp-faq__q {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+    margin: 0 0 0.625rem;
+    display: flex;
+    gap: 0.75rem;
+  }
+  .lp-faq__q-num {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--lp-violet);
+    flex: none;
+    padding-top: 0.125rem;
+  }
+  .lp-faq__a {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+    padding-left: 2.25rem;
+  }
+
+  /* ===== Final CTA ===== */
+  .pack-final {
+    background:
+      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--lp-magenta) 24%, transparent), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--lp-violet) 24%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-deep) 100%);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  .pack-final__inner {
+    max-width: 46rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pack-final__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .pack-final__title strong {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .pack-final__lead {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 0 1.75rem;
+  }
+</style>
+
+<!-- Hero focus parallax — sdílený script s /navod-zdarma/ -->
+<script is:inline>
+  (function () {
+    if (typeof window === "undefined") return;
+    var container = document.querySelector(".hero-focus");
+    if (!container) return;
+
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      container.classList.add("is-visible");
+      container.style.setProperty("--scroll-p", "0");
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      container.classList.add("is-visible");
+    } else {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.35, rootMargin: "0px 0px -60px 0px" },
+      );
+      observer.observe(container);
+    }
+
+    var ticking = false;
+    function updateParallax() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var vCenter = vh / 2;
+      var rect = container.getBoundingClientRect();
+      var elCenter = rect.top + rect.height / 2;
+      var distance = elCenter - vCenter;
+      var maxDist = vh / 2 + rect.height / 2;
+      var p = -distance / maxDist;
+      if (p > 1) p = 1;
+      else if (p < -1) p = -1;
+      container.style.setProperty("--scroll-p", p.toFixed(3));
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    updateParallax();
+  })();
+</script>

@@ -106,8 +106,11 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      // /seo-a-geo není kanonická URL — vyloučit ze sitemap
-      filter: (page) => !page.includes("/seo-a-geo"),
+      // Vyloučit ze sitemap:
+      // - /seo-a-geo — není kanonická URL (redirect na pillar)
+      // - /*/dekujeme/ — thank-you stránky mají noindex
+      filter: (page) =>
+        !page.includes("/seo-a-geo") && !page.includes("/dekujeme"),
       // Build-time datum jako lastmod pro všechny stránky.
       // Google `lastmod` používá, pokud je konzistentně přesné — přesně to děláme.
       lastmod: new Date(),
