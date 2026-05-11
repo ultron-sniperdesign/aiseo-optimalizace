@@ -107,8 +107,7 @@ export default defineConfig({
     mdx(),
     sitemap({
       // /seo-a-geo není kanonická URL — vyloučit ze sitemap
-      // /mockup-test — interní review (noindex), nemá být ve sitemap
-      filter: (page) => !page.includes("/seo-a-geo") && !page.includes("/mockup-test"),
+      filter: (page) => !page.includes("/seo-a-geo"),
       // Build-time datum jako lastmod pro všechny stránky.
       // Google `lastmod` používá, pokud je konzistentně přesné — přesně to děláme.
       lastmod: new Date(),
