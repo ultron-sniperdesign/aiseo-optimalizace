@@ -2,9 +2,9 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 
-const pageTitle = "Děkujeme — jste v Pack waitlistu";
+const pageTitle = "Děkujeme za nákup — AI SEO Wireframe Pack";
 const pageDescription =
-  "Děkujeme za zájem o AI SEO Wireframe Pack. Informujeme vás e-mailem, jakmile bude Pack k dispozici k nákupu.";
+  "Děkujeme za nákup AI SEO Wireframe Pack. Přístupový e-mail s odkazem ke stažení dorazí během několika minut.";
 ---
 
 <BaseLayout
@@ -29,65 +29,117 @@ const pageDescription =
           </svg>
         </span>
         <h1 class="ty-hero__title">
-          Jste v <strong>Pack waitlistu</strong>
+          Děkujeme za nákup —<br />
+          <strong>Pack je vaším</strong>
         </h1>
         <p class="ty-hero__lead">
-          Děkujeme za zájem o <strong>AI SEO Wireframe Pack</strong>. Pack právě
-          dokončujeme — jakmile bude k dispozici k nákupu, dáme vám vědět
-          e-mailem na adresu, kterou jste zadali.
+          Právě jste si pořídili <strong>AI SEO Wireframe Pack</strong>.
+          Během několika minut vám na e-mail dorazí přístupové údaje
+          a odkaz na stažení všech sedmi typů stránek, šablon textů,
+          schema markup a Figma souboru.
         </p>
         <p class="ty-hero__meta">
-          Pokud potvrzovací zprávu nevidíte do několika minut, zkontrolujte
-          složku Hromadné nebo Promo akce. V&nbsp;každém našem e-mailu je
-          odhlašovací odkaz — žádný spam.
+          Pokud e-mail nevidíte do 10 minut, zkontrolujte složku Hromadné
+          nebo Promo akce. V&nbsp;potížích nás kontaktujte přes
+          <a href="https://www.sniperdesign.cz/kontakt" target="_blank" rel="noopener">
+            sniperdesign.cz/kontakt
+          </a> — odpovíme do 24 hodin v pracovní dny.
         </p>
       </div>
     </section>
 
-    <!-- ===== CO MEZITÍM ===== -->
+    <!-- ===== CO TEĎ ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">01</span> Co můžete mezitím udělat</span>
+        <span class="eyebrow"><span class="eyebrow__num">01</span> Co teď s Packem</span>
         <h2 class="lp-section__title">
-          Začněte s <strong>homepage frameworkem zdarma</strong>
+          Aplikujte Pack na svůj web <strong>během odpoledne</strong>
         </h2>
         <p class="lp-section__lead">
-          Než bude Pack k dispozici, stáhněte si free PDF návod „Jak upravit
-          homepage pro AI vyhledávání" — stejný framework, který v Packu
-          rozšiřujeme na celý web.
+          Pack obsahuje krok-za-krokem návod aplikace pro různé CMS
+          (Upgates, Shoptet, WordPress, custom). Doporučený postup je
+          v níže uvedeném pořadí.
         </p>
       </header>
 
-      <div class="ty-cards">
-        <article class="ty-card">
-          <span class="ty-card__num">Návod zdarma · 6 stran</span>
-          <h3 class="ty-card__title">Stáhněte free PDF homepage návod</h3>
-          <p class="ty-card__body">
-            Wireframe homepage s 10 anotacemi, tři klíčové principy SEO/GEO/AEO,
-            mikro-case před/po a pět typických chyb. Aplikujete na svůj web
-            během odpoledne.
-          </p>
-          <a href="/navod-zdarma/" class="ty-card__cta">Stáhnout PDF zdarma →</a>
-        </article>
+      <ol class="ty-steps">
+        <li>
+          <span class="ty-step__num">1</span>
+          <div>
+            <strong>Otevřete Figma soubor</strong> a projděte si všech 7 wireframů.
+            Najděte typy stránek, které váš web obsahuje (homepage máte vždy,
+            ostatní podle byznysu).
+          </div>
+        </li>
+        <li>
+          <span class="ty-step__num">2</span>
+          <div>
+            <strong>Začněte s homepage</strong> — nejvyšší dopad. Použijte šablonu
+            textů, schema markup a wireframe jako referenci pro úpravu svého webu.
+          </div>
+        </li>
+        <li>
+          <span class="ty-step__num">3</span>
+          <div>
+            <strong>Pokračujte podle priority pro váš byznys</strong> — e-shop:
+            produktová a kategoriální. Služby: prodejní landing a kontakt.
+            Blog: článek a výpis článků.
+          </div>
+        </li>
+        <li>
+          <span class="ty-step__num">4</span>
+          <div>
+            <strong>Ověřte schema markup</strong> v Google Rich Results Test
+            a Schema.org Validator. Návod uvnitř Packu má přesné odkazy.
+          </div>
+        </li>
+        <li>
+          <span class="ty-step__num">5</span>
+          <div>
+            <strong>Sledujte výsledky</strong> v Google Search Console (Search
+            Performance) a manuálně testujte v ChatGPT a Perplexity (návod
+            uvnitř Packu).
+          </div>
+        </li>
+      </ol>
+    </section>
 
-        <article class="ty-card ty-card--audit">
-          <span class="ty-card__num">Audit · uděláme to za vás</span>
-          <h3 class="ty-card__title">Nebo objednat AI SEO audit</h3>
-          <p class="ty-card__body">
-            Pokud nechcete čekat na Pack a chcete řešit váš konkrétní web hned,
-            objednejte AI SEO audit od Sniperdesign. Projdeme váš web, dáme
-            prioritní seznam úprav, 60min konzultace. 9&nbsp;990 Kč jednorázově.
-          </p>
+    <!-- ===== CROSS-SELL AUDIT ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Pokud chcete jít ještě dál</span>
+        <h2 class="lp-section__title">
+          Nechte si web <strong>zauditovat od specialistů</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Pack vám dává framework. Pokud chcete vědět <strong>přesně</strong>,
+          co změnit na vašem konkrétním webu, máme pro vás audit.
+        </p>
+      </header>
+
+      <article class="ty-audit-card">
+        <span class="ty-audit-card__pill">★ Doporučujeme jako další krok</span>
+        <h3 class="ty-audit-card__title">AI SEO audit od Sniperdesign</h3>
+        <p class="ty-audit-card__body">
+          Projdeme váš konkrétní web, najdeme problémy ve třech vrstvách
+          (technika, obsah, autorita), dáme vám prioritní seznam úprav
+          a 60min konzultaci s vysvětlením. Výstup do 5 pracovních dní.
+        </p>
+        <div class="ty-audit-card__footer">
+          <div class="ty-audit-card__price">
+            <strong>9&nbsp;990&nbsp;Kč</strong>
+            <span>jednorázově, bez DPH</span>
+          </div>
           <a
             href="https://www.sniperdesign.cz/audity"
             target="_blank"
             rel="noopener"
-            class="ty-card__cta"
+            class="ty-audit-card__cta"
           >
             Objednat audit →
           </a>
-        </article>
-      </div>
+        </div>
+      </article>
     </section>
 
     <!-- ===== SNIPERDESIGN MEDAILONEK ===== -->
@@ -101,11 +153,24 @@ const pageDescription =
     --lp-magenta: oklch(0.62 0.27 335);
   }
 
-  /* Section primitives (sdíleno s /navod-zdarma/) */
+  /* Section primitives (sdíleno s /pack/) */
   .lp-section {
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  .lp-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .lp-section--alt > * {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
   }
   .lp-section__head {
     max-width: 50rem;
@@ -131,6 +196,10 @@ const pageDescription =
     color: var(--color-ink-muted);
     margin: 0;
     max-width: 40rem;
+  }
+  .lp-section__lead strong {
+    color: var(--color-ink);
+    font-weight: 600;
   }
 
   .eyebrow {
@@ -164,8 +233,8 @@ const pageDescription =
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: oklch(0.95 0.04 305);
-    color: var(--lp-violet);
+    background: oklch(0.95 0.04 145);
+    color: oklch(0.55 0.18 145);
     margin-bottom: 1.5rem;
   }
   .ty-hero__title {
@@ -195,67 +264,136 @@ const pageDescription =
   .ty-hero__meta {
     font-family: var(--font-sans);
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--color-ink-faint);
     margin: 0;
   }
+  .ty-hero__meta a {
+    color: var(--lp-violet);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+  .ty-hero__meta a:hover { opacity: 0.8; }
 
-  /* ===== Cards (sdíleno s /navod-zdarma/dekujeme/ styling) ===== */
-  .ty-cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  @media (min-width: 720px) {
-    .ty-cards { grid-template-columns: 1fr 1fr; }
-  }
-  .ty-card {
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-radius: 14px;
-    padding: 1.75rem 1.625rem;
-    border-left: 3px solid var(--lp-violet);
+  /* ===== Steps list ===== */
+  .ty-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+    max-width: 50rem;
   }
-  .ty-card--audit { border-left-color: var(--lp-magenta); }
-  .ty-card__num {
+  .ty-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.125rem 1.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    border-left: 3px solid var(--lp-violet);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .ty-steps strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .ty-step__num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: var(--lp-violet);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* ===== Audit cross-sell card ===== */
+  .ty-audit-card {
+    background: oklch(0.96 0.04 335);
+    border: 2px solid oklch(0.85 0.1 335);
+    border-left: 5px solid var(--lp-magenta);
+    border-radius: 14px;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    max-width: 50rem;
+    position: relative;
+  }
+  .ty-audit-card__pill {
     display: inline-block;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--lp-violet);
-    margin-bottom: 0.875rem;
+    color: #ffffff;
+    background-color: var(--lp-magenta);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 1rem;
   }
-  .ty-card--audit .ty-card__num { color: var(--lp-magenta); }
-  .ty-card__title {
+  .ty-audit-card__title {
     font-family: var(--font-sans);
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
     font-weight: 600;
     color: var(--color-ink);
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.625rem;
     letter-spacing: -0.015em;
     line-height: 1.2;
   }
-  .ty-card__body {
+  .ty-audit-card__body {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
     line-height: 1.55;
     color: var(--color-ink-muted);
     margin: 0 0 1.25rem;
-    flex: 1;
   }
-  .ty-card__cta {
+  .ty-audit-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .ty-audit-card__price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--lp-violet);
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 1px;
-    align-self: start;
   }
-  .ty-card--audit .ty-card__cta { color: var(--lp-magenta); }
+  .ty-audit-card__price strong {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  .ty-audit-card__price span {
+    font-size: 0.8125rem;
+    color: var(--color-ink-faint);
+  }
+  .ty-audit-card__cta {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: var(--lp-magenta);
+    padding: 0.625rem 1.125rem;
+    border-radius: 999px;
+    letter-spacing: -0.005em;
+    transition: transform 0.15s ease;
+  }
+  .ty-audit-card__cta:hover { transform: translateY(-1px); }
 </style>
