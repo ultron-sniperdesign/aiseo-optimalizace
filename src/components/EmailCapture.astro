@@ -31,7 +31,7 @@ interface Props {
 }
 const {
   variant = "hero",
-  buttonLabel = "Stáhnout PDF zdarma",
+  buttonLabel = "Otevřít a stáhnout PDF návod",
   placeholder = "vas@email.cz",
   leadSourceTag = "Lead — Návod zdarma",
 } = Astro.props as Props;
@@ -90,6 +90,10 @@ const ECOMAIL_ENDPOINT =
   .ec-form {
     --ec-violet: oklch(0.55 0.25 305);
     --ec-magenta: oklch(0.62 0.27 335);
+    /* Green CTA — sjednoceno s welcome e-mailem (Tailwind green-500 → green-600) */
+    --ec-green: oklch(0.72 0.2 145);          /* #22C55E */
+    --ec-green-deep: oklch(0.6 0.18 145);     /* #16A34A */
+    /* Gold tokens ponechány pro budoucí účely / jiné variants */
     --ec-gold: oklch(0.82 0.16 80);
     --ec-gold-deep: oklch(0.7 0.18 60);
     width: 100%;
@@ -150,20 +154,20 @@ const ECOMAIL_ENDPOINT =
     font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 600;
-    color: oklch(0.18 0.06 60);
-    background: linear-gradient(135deg, var(--ec-gold) 0%, var(--ec-gold-deep) 100%);
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--ec-green) 0%, var(--ec-green-deep) 100%);
     border: none;
     border-radius: 999px;
     cursor: pointer;
     transition: all 0.2s ease;
     letter-spacing: -0.005em;
-    box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--ec-gold) 60%, transparent);
+    box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--ec-green) 55%, transparent);
   }
   .ec-form__button:hover {
-    background: linear-gradient(135deg, var(--ec-gold-deep) 0%, var(--ec-gold) 100%);
-    color: oklch(0.15 0.06 60);
+    background: linear-gradient(135deg, var(--ec-green-deep) 0%, var(--ec-green) 100%);
+    color: #ffffff;
     transform: translateX(2px);
-    box-shadow: 0 6px 20px -4px color-mix(in oklch, var(--ec-gold) 75%, transparent);
+    box-shadow: 0 6px 20px -4px color-mix(in oklch, var(--ec-green) 70%, transparent);
   }
   .ec-form__button:active {
     transform: translateX(1px);
