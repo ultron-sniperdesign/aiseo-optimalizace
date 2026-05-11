@@ -17,7 +17,7 @@ const faqJsonLd = {
       name: "Co je v PDF a kolik to má stránek?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Šest stran: cover, anotovaný wireframe homepage s 10 prvky, tři klíčové principy SEO/GEO/AEO, mikro-case před/po, pět nejčastějších chyb, a přehled rozšířeného packu a auditu od Sniperdesign. Strukturováno tak, abyste pochopili logiku za každým prvkem, ne jen jak vypadá.",
+        text: "Šest stran: anotovaný wireframe homepage, tři principy SEO/GEO/AEO, mikro-case před/po a pět nejčastějších chyb. Praktický framework, ne teoretický ebook — pochopíte logiku za každým prvkem.",
       },
     },
     {
@@ -49,7 +49,7 @@ const faqJsonLd = {
       name: "Co když chci, ať to za mě uděláte vy?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sniperdesign nabízí AI SEO audit za 9 990 Kč. Projdeme váš konkrétní web, najdeme problémy ve třech vrstvách (technika, obsah, autorita), předáme prioritní seznam úprav s odhadem dopadu a 60min konzultaci s vysvětlením. Výstup do 5 pracovních dní.",
+        text: "Sniperdesign nabízí AI SEO audit za 9 990 Kč. Projdeme váš web, najdeme problémy ve třech vrstvách (technika, obsah, autorita), dáme vám prioritní seznam úprav a 60min konzultaci. Výstup do 5 pracovních dní.",
       },
     },
     {
@@ -75,6 +75,10 @@ const faqJsonLd = {
             Vaši zákazníci se dnes ptají ChatGPT.<br />
             <strong>Cituje umělá inteligence váš obsah?</strong>
           </h1>
+          <p class="lp-hero__urgency">
+            Firmy už dnes optimalizují obsah pro AI odpovědi. Pokud AI nerozumí
+            vašemu homepage, <strong>doporučí konkurenci</strong>.
+          </p>
           <p class="lp-hero__lead">
             Návod, podle kterého homepage začne fungovat v AI vyhledávání.
             Wireframe s anotacemi, tři principy a mikro‑case před/po.
@@ -84,7 +88,7 @@ const faqJsonLd = {
 
           <EmailCapture
             variant="hero"
-            buttonLabel="Otevřít a stáhnout PDF návod"
+            buttonLabel="Stáhnout AI SEO návod zdarma"
             leadSourceTag="Lead — Návod zdarma (homepage)"
           />
 
@@ -162,8 +166,8 @@ const faqJsonLd = {
           <span class="lp-feature__num">4</span>
           <h3 class="lp-feature__title">Pět typických chyb</h3>
           <p class="lp-feature__desc">
-            Diagnostický seznam, který okamžitě odhalí, co na vaší aktuální homepage
-            brzdí výsledky. Z analýzy stovek webů — opakují se pořád stejné chyby.
+            Pět chyb, kvůli kterým AI špatně chápe váš homepage — i&nbsp;když máte
+            dobrý produkt. Z analýzy stovek e‑shopů: opakují se pořád stejné.
           </p>
         </article>
       </div>
@@ -188,8 +192,8 @@ const faqJsonLd = {
           který předáte klientovi nebo internímu týmu.
         </li>
         <li>
-          <strong>Copywriteři, designéři, vývojáři</strong> — chcete jasnou
-          šablonu, podle které pracovat na nové stránce bez vymýšlení od nuly.
+          <strong>Copywriteři, designéři, vývojáři</strong> — chcete navrhovat
+          homepage, které AI chápe stejně dobře jako člověk.
         </li>
         <li>
           <strong>B2B agentury</strong> — hledáte vlastní pracovní rámec
@@ -289,7 +293,7 @@ const faqJsonLd = {
         </p>
         <EmailCapture
           variant="hero"
-          buttonLabel="Otevřít a stáhnout PDF návod"
+          buttonLabel="Stáhnout AI SEO návod zdarma"
           leadSourceTag="Lead — Návod zdarma (final CTA)"
         />
       </div>
@@ -394,6 +398,22 @@ const faqJsonLd = {
   .lp-hero__title strong {
     font-weight: 600;
     color: var(--lp-violet);
+  }
+  .lp-hero__urgency {
+    /* Subtilní urgency řádek mezi H1 a leadem — tlak trhu / FOMO bez bullshitu */
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 1.25rem 0 1.5rem;
+    padding-left: 0.875rem;
+    border-left: 3px solid var(--lp-magenta);
+    max-width: 36rem;
+  }
+  .lp-hero__urgency strong {
+    color: var(--lp-magenta);
+    font-weight: 600;
   }
   .lp-hero__lead {
     font-family: var(--font-sans);
