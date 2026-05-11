@@ -1,0 +1,393 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import MockupPage from "~/components/MockupPage.astro";
+
+const pageTitle = "Mockup test — varianty pro hero";
+const pageDescription = "Interní review stránka — neindexovat";
+
+const pages = [
+  { number: 1, title: "Cover", tone: "primary" as const },
+  { number: 2, title: "Wireframe", tone: "primary" as const },
+  { number: 3, title: "Principy", tone: "primary" as const },
+  { number: 4, title: "Před / Po", tone: "accent" as const },
+  { number: 5, title: "5 chyb", tone: "accent" as const },
+  { number: 6, title: "Co dál", tone: "accent" as const },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  noindex={true}
+>
+  <main class="mt-page">
+    <header class="mt-header">
+      <span class="mt-eyebrow">Mockup test · noindex</span>
+      <h1 class="mt-title">4 varianty hero mockupu</h1>
+      <p class="mt-lead">
+        Všechny varianty používají <strong>nový čistě CSS mockup</strong>
+        (žádné reálné PDF stránky, žádný leak). Pod každou variantou
+        je krátký komentář. Vyber tu, kterou nasadíme na produkci.
+      </p>
+      <p class="mt-meta">
+        Stránka má <code>noindex, nofollow</code> v meta tagu a v robots.txt
+        není uvedena. Pro shareování použij URL přímo.
+      </p>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- VARIANTA I — současný stack (fan) -->
+    <!-- ============================================================ -->
+    <section class="mt-variant">
+      <div class="mt-variant__head">
+        <span class="mt-variant__num">i</span>
+        <h2 class="mt-variant__name">Současný stack (fan)</h2>
+        <span class="mt-variant__tag">aktuálně na produkci</span>
+      </div>
+      <p class="mt-variant__desc">
+        6 překrývajících se karet v izometrické kompozici. Ukazuje
+        <strong>objem</strong> (6 stránek je dost). Drží oko statickou
+        kompozicí.
+      </p>
+      <div class="mt-stage">
+        <div class="v1-stack">
+          {pages.map((p, i) => (
+            <div class={`v1-stack__card v1-stack__card--${i + 1}`}>
+              <MockupPage pageNumber={p.number} pageTitle={p.title} tone={p.tone} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VARIANTA II — hero focus + parallax -->
+    <!-- ============================================================ -->
+    <section class="mt-variant">
+      <div class="mt-variant__head">
+        <span class="mt-variant__num">ii</span>
+        <h2 class="mt-variant__name">Hero focus + parallax</h2>
+      </div>
+      <p class="mt-variant__desc">
+        Jedna velká stránka (cover) v popředí, ostatních 5 jemně
+        poodhozené za ní. Ukazuje <strong>kvalitu</strong> jedné stránky,
+        ne přeplněnost. Volné dýchání.
+      </p>
+      <div class="mt-stage">
+        <div class="v2-focus">
+          <div class="v2-focus__back v2-focus__back--1">
+            <MockupPage pageNumber={2} pageTitle="Wireframe" tone="primary" />
+          </div>
+          <div class="v2-focus__back v2-focus__back--2">
+            <MockupPage pageNumber={3} pageTitle="Principy" tone="primary" />
+          </div>
+          <div class="v2-focus__back v2-focus__back--3">
+            <MockupPage pageNumber={4} pageTitle="Před / Po" tone="accent" />
+          </div>
+          <div class="v2-focus__hero">
+            <MockupPage pageNumber={1} pageTitle="Cover" tone="primary" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VARIANTA III — floating rotation -->
+    <!-- ============================================================ -->
+    <section class="mt-variant">
+      <div class="mt-variant__head">
+        <span class="mt-variant__num">iii</span>
+        <h2 class="mt-variant__name">Floating rotation</h2>
+      </div>
+      <p class="mt-variant__desc">
+        3 stránky lehce rotující (5°–8°) a překrývající se. <strong>Dynamičtější
+        ‚movement' feeling</strong>, méně statiky. Méně karet = méně chaosu.
+      </p>
+      <div class="mt-stage">
+        <div class="v3-rotate">
+          <div class="v3-rotate__card v3-rotate__card--3">
+            <MockupPage pageNumber={3} pageTitle="Principy" tone="primary" />
+          </div>
+          <div class="v3-rotate__card v3-rotate__card--2">
+            <MockupPage pageNumber={2} pageTitle="Wireframe" tone="primary" />
+          </div>
+          <div class="v3-rotate__card v3-rotate__card--1">
+            <MockupPage pageNumber={1} pageTitle="Cover" tone="primary" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VARIANTA IV — sliding stack on hover/scroll -->
+    <!-- ============================================================ -->
+    <section class="mt-variant">
+      <div class="mt-variant__head">
+        <span class="mt-variant__num">iv</span>
+        <h2 class="mt-variant__name">Sliding stack (hover)</h2>
+      </div>
+      <p class="mt-variant__desc">
+        Defaultně 6 stránek slidovaných za sebou, při <strong>hover/touch
+        se rozloží do mírného fanu</strong>. Interaktivní, ukazuje že obsah
+        je strukturovaný do více stránek. Najeď myší na stack.
+      </p>
+      <div class="mt-stage">
+        <div class="v4-slide">
+          {pages.map((p, i) => (
+            <div class={`v4-slide__card v4-slide__card--${i + 1}`}>
+              <MockupPage pageNumber={p.number} pageTitle={p.title} tone={p.tone} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-footer">
+      <p>
+        Po výběru pošli zpět session <code>aiseo-optimalizace</code>:
+        „beru variantu N". Nasadím ji do <code>/navod-zdarma/</code> hero
+        a smažu starý mockup s reálnými PDF JPEGy.
+      </p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .mt-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+    font-family: var(--font-sans);
+  }
+  .mt-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .mt-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(0.55 0.25 305);
+    background: oklch(0.95 0.02 305);
+    padding: 0.375rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .mt-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .mt-lead {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 50rem;
+    margin: 0 0 0.875rem;
+  }
+  .mt-meta {
+    font-size: 0.875rem;
+    color: var(--color-ink-faint);
+    max-width: 50rem;
+    margin: 0;
+  }
+  .mt-meta code {
+    background: oklch(0.95 0.005 270);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.8125rem;
+  }
+
+  /* Section primitives */
+  .mt-variant {
+    padding: 3rem 0;
+    border-bottom: 1px dashed var(--color-rule);
+  }
+  .mt-variant__head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .mt-variant__num {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: oklch(0.55 0.25 305);
+    letter-spacing: 0.04em;
+  }
+  .mt-variant__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  .mt-variant__tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(0.55 0.05 145);
+    background: oklch(0.95 0.04 145);
+    padding: 4px 9px;
+    border-radius: 999px;
+  }
+  .mt-variant__desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 50rem;
+    margin: 0 0 2rem;
+  }
+
+  /* Stage — kontejner s pozadím, aby varianty seděly vizuálně */
+  .mt-stage {
+    background: linear-gradient(180deg, oklch(0.98 0.005 270) 0%, oklch(0.96 0.005 270) 100%);
+    border: 1px solid var(--color-rule);
+    border-radius: 14px;
+    padding: 3rem 2rem;
+    min-height: 32rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===================================================== */
+  /* VARIANTA I — fan stack (současný) */
+  /* ===================================================== */
+  .v1-stack {
+    position: relative;
+    width: 260px;
+    height: 360px;
+  }
+  .v1-stack__card {
+    position: absolute;
+    width: 220px;
+    transition: transform 0.4s ease;
+  }
+  .v1-stack__card--1 { top: 0; left: 0; transform: translate(0, 0) rotate(-6deg); z-index: 6; }
+  .v1-stack__card--2 { top: 8px; left: 12px; transform: rotate(-3deg); z-index: 5; }
+  .v1-stack__card--3 { top: 16px; left: 24px; transform: rotate(0deg); z-index: 4; }
+  .v1-stack__card--4 { top: 24px; left: 36px; transform: rotate(3deg); z-index: 3; }
+  .v1-stack__card--5 { top: 32px; left: 48px; transform: rotate(6deg); z-index: 2; }
+  .v1-stack__card--6 { top: 40px; left: 60px; transform: rotate(9deg); z-index: 1; }
+
+  /* ===================================================== */
+  /* VARIANTA II — hero focus s parallax */
+  /* ===================================================== */
+  .v2-focus {
+    position: relative;
+    width: 380px;
+    height: 420px;
+  }
+  .v2-focus__hero {
+    position: absolute;
+    z-index: 10;
+    width: 280px;
+    left: 50px;
+    top: 0;
+    box-shadow:
+      0 30px 60px -20px oklch(0 0 0 / 0.2),
+      0 12px 24px -8px oklch(0 0 0 / 0.1);
+  }
+  .v2-focus__back {
+    position: absolute;
+    width: 200px;
+    opacity: 0.55;
+    filter: blur(0.5px);
+  }
+  .v2-focus__back--1 { top: 10px; left: -10px; transform: rotate(-7deg); z-index: 3; }
+  .v2-focus__back--2 { top: 30px; right: -20px; transform: rotate(8deg); z-index: 4; }
+  .v2-focus__back--3 { top: 200px; right: 30px; transform: rotate(4deg); z-index: 2; }
+
+  /* ===================================================== */
+  /* VARIANTA III — floating rotation */
+  /* ===================================================== */
+  .v3-rotate {
+    position: relative;
+    width: 340px;
+    height: 380px;
+  }
+  .v3-rotate__card {
+    position: absolute;
+    width: 230px;
+    transition: transform 0.4s ease;
+  }
+  .v3-rotate__card--3 {
+    top: 0;
+    right: 0;
+    transform: rotate(7deg);
+    z-index: 3;
+  }
+  .v3-rotate__card--2 {
+    top: 30px;
+    left: 0;
+    transform: rotate(-5deg);
+    z-index: 4;
+  }
+  .v3-rotate__card--1 {
+    top: 60px;
+    left: 50px;
+    transform: rotate(2deg);
+    z-index: 5;
+    box-shadow:
+      0 24px 48px -16px oklch(0 0 0 / 0.18),
+      0 10px 20px -6px oklch(0 0 0 / 0.08);
+  }
+
+  /* ===================================================== */
+  /* VARIANTA IV — sliding stack on hover */
+  /* ===================================================== */
+  .v4-slide {
+    position: relative;
+    width: 280px;
+    height: 380px;
+    pointer-events: auto;
+  }
+  .v4-slide__card {
+    position: absolute;
+    width: 240px;
+    left: 0;
+    top: 0;
+    transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .v4-slide__card--1 { transform: translate(0, 0) rotate(0deg); z-index: 6; }
+  .v4-slide__card--2 { transform: translate(4px, 8px) rotate(0deg); z-index: 5; }
+  .v4-slide__card--3 { transform: translate(8px, 16px) rotate(0deg); z-index: 4; }
+  .v4-slide__card--4 { transform: translate(12px, 24px) rotate(0deg); z-index: 3; }
+  .v4-slide__card--5 { transform: translate(16px, 32px) rotate(0deg); z-index: 2; }
+  .v4-slide__card--6 { transform: translate(20px, 40px) rotate(0deg); z-index: 1; }
+
+  .v4-slide:hover .v4-slide__card--1 { transform: translate(-100px, -10px) rotate(-12deg); }
+  .v4-slide:hover .v4-slide__card--2 { transform: translate(-50px, -5px) rotate(-6deg); }
+  .v4-slide:hover .v4-slide__card--3 { transform: translate(0px, 0px) rotate(0deg); }
+  .v4-slide:hover .v4-slide__card--4 { transform: translate(50px, 5px) rotate(6deg); }
+  .v4-slide:hover .v4-slide__card--5 { transform: translate(100px, 10px) rotate(12deg); }
+  .v4-slide:hover .v4-slide__card--6 { transform: translate(150px, 15px) rotate(18deg); }
+
+  .mt-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-rule);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    line-height: 1.55;
+  }
+  .mt-footer code {
+    background: oklch(0.95 0.005 270);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.875rem;
+  }
+</style>

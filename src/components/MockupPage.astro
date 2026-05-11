@@ -1,0 +1,186 @@
+---
+/**
+ * MockupPage — čistě CSS „stránka průvodce" pro ilustrativní použití
+ * v hero sekci. Žádný reálný obsah, jen abstraktní bloky, které navozují
+ * dojem strukturovaného dokumentu.
+ *
+ * Důvod existence: dřív jsme používali skutečné JPG exporty PDF stránek
+ * (/products/wireframe-pack/page-*.jpg), které si uživatel mohl otevřít
+ * jako obrázky a přečíst obsah bez sběru e-mailu (leak lead magnetu).
+ * MockupPage je čistě CSS, nedá se otevřít, nic nelze přečíst.
+ *
+ * Props:
+ *   pageNumber: 1..6
+ *   pageTitle:  short label ("WIREFRAME", "PRINCIPY"...)
+ *   tone:       "primary" | "accent" | "neutral" — barva accent pásu
+ */
+interface Props {
+  pageNumber: number;
+  pageTitle: string;
+  tone?: "primary" | "accent" | "neutral";
+}
+const { pageNumber, pageTitle, tone = "primary" } = Astro.props as Props;
+const pageNumPadded = String(pageNumber).padStart(2, "0");
+---
+
+<div class={`mock-page mock-page--${tone}`} aria-hidden="true">
+  <!-- Top brand stripe -->
+  <div class="mock-page__stripe"></div>
+
+  <!-- Header row: page number + title label -->
+  <div class="mock-page__header">
+    <span class="mock-page__num">{pageNumPadded}</span>
+    <span class="mock-page__title">{pageTitle}</span>
+  </div>
+
+  <!-- Title block (2 lines simulating headline) -->
+  <div class="mock-page__heading">
+    <div class="mock-page__bar mock-page__bar--xl"></div>
+    <div class="mock-page__bar mock-page__bar--lg"></div>
+  </div>
+
+  <!-- 4 mini blocks grid (simulating annotated wireframe / cards) -->
+  <div class="mock-page__grid">
+    <div class="mock-page__block"></div>
+    <div class="mock-page__block"></div>
+    <div class="mock-page__block"></div>
+    <div class="mock-page__block"></div>
+  </div>
+
+  <!-- Body lines (simulating paragraphs) -->
+  <div class="mock-page__body">
+    <div class="mock-page__line mock-page__line--full"></div>
+    <div class="mock-page__line mock-page__line--full"></div>
+    <div class="mock-page__line mock-page__line--md"></div>
+    <div class="mock-page__line mock-page__line--full"></div>
+    <div class="mock-page__line mock-page__line--sm"></div>
+  </div>
+
+  <!-- Footer pagination -->
+  <div class="mock-page__footer">
+    <span class="mock-page__pagination">{pageNumPadded} / 06</span>
+  </div>
+</div>
+
+<style>
+  .mock-page {
+    --mock-violet: oklch(0.55 0.25 305);
+    --mock-magenta: oklch(0.62 0.27 335);
+    --mock-bg: #ffffff;
+    --mock-ink: oklch(0.4 0.02 270);
+    --mock-ink-faint: oklch(0.8 0.01 270);
+    --mock-stripe: var(--mock-violet);
+
+    /* A4-ish aspect, držíme vizuální dojem dokumentu */
+    aspect-ratio: 1 / 1.414;
+    background: var(--mock-bg);
+    border: 1px solid oklch(0.92 0.005 270);
+    border-radius: 6px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.04),
+      0 8px 24px -8px oklch(0 0 0 / 0.08);
+    user-select: none;
+    pointer-events: none; /* nedá se kliknout, nedá se ani otevřít */
+  }
+  .mock-page--accent { --mock-stripe: var(--mock-magenta); }
+  .mock-page--neutral { --mock-stripe: oklch(0.7 0.01 270); }
+
+  .mock-page__stripe {
+    height: 4px;
+    background: var(--mock-stripe);
+    border-radius: 999px;
+    margin: -8px -10px 0;
+  }
+  .mock-page__header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: var(--font-mono, monospace);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .mock-page__num { color: var(--mock-stripe); }
+  .mock-page__title { color: var(--mock-ink); }
+
+  .mock-page__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 2px;
+  }
+  .mock-page__bar {
+    background: oklch(0.88 0.01 270);
+    border-radius: 2px;
+    height: 7px;
+  }
+  .mock-page__bar--xl { width: 92%; height: 9px; background: oklch(0.78 0.01 270); }
+  .mock-page__bar--lg { width: 68%; }
+
+  .mock-page__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 4px 0;
+  }
+  .mock-page__block {
+    aspect-ratio: 1 / 0.6;
+    background: oklch(0.96 0.005 270);
+    border: 1px solid oklch(0.93 0.005 270);
+    border-radius: 3px;
+    position: relative;
+  }
+  .mock-page__block::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 16px;
+    height: 3px;
+    background: var(--mock-stripe);
+    border-radius: 1px;
+    opacity: 0.5;
+  }
+  .mock-page__block::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    right: 6px;
+    height: 2px;
+    background: oklch(0.9 0.005 270);
+    border-radius: 1px;
+  }
+
+  .mock-page__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+    margin-bottom: 4px;
+  }
+  .mock-page__line {
+    background: oklch(0.92 0.005 270);
+    border-radius: 2px;
+    height: 3px;
+  }
+  .mock-page__line--full { width: 100%; }
+  .mock-page__line--md { width: 75%; }
+  .mock-page__line--sm { width: 50%; }
+
+  .mock-page__footer {
+    display: flex;
+    justify-content: flex-end;
+    font-family: var(--font-mono, monospace);
+    font-size: 7px;
+    font-weight: 500;
+    color: var(--mock-ink-faint);
+    letter-spacing: 0.06em;
+  }
+</style>

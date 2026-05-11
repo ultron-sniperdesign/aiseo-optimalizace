@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 # /_review/ — interní review materiály (audit PDF, drafty)
 # /download/ — lead magnety za e-mail (PDF návody, příručky)
@@ -16,40 +17,48 @@ User-agent: GPTBot
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /_review/
 Disallow: /download/
+Disallow: /products/wireframe-pack/
 
 Sitemap: https://aiseo-optimalizace.cz/sitemap-index.xml
