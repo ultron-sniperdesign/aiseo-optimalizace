@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8" />
-<title>AI SEO Wireframe Pack — master dokument</title>
+<title>AI SEO Wireframe Pack — Kapitola 02 · Produktová stránka</title>
 <style>
   /* ============================================================ */
   /*  BRAND FONTS — Google Fonts CDN (plná Czech podpora)         */
@@ -1715,26 +1715,26 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- PAGE 6 — CHAPTER 01 OPENER                                   -->
+<!-- PAGE 6 — CHAPTER 02 OPENER (Produktová stránka)              -->
 <!-- ============================================================ -->
 <section class="page">
   <div class="chapter-opener">
-    <div class="chapter-opener__num">01</div>
-    <div class="chapter-opener__label">Kapitola · Homepage</div>
-    <h1 class="chapter-opener__title">Homepage</h1>
+    <div class="chapter-opener__num">02</div>
+    <div class="chapter-opener__label">Kapitola · Produktová stránka</div>
+    <h1 class="chapter-opener__title">Produkt</h1>
     <p class="chapter-opener__subtitle">
-      První dotek s AI vyhledáváním. Stránka, podle které vás AI nástroje
-      rozpoznají, ocitují — nebo přehlédnou.
+      Stránka, kde se rozhoduje o nákupu — pro člověka i pro AI.
+      Tady AI nástroje vytahují cenu, dostupnost, parametry a recenze.
     </p>
 
     <div class="chapter-opener__delivers">
       <div class="chapter-opener__delivers-label">Co najdete v této kapitole</div>
       <ul class="chapter-opener__delivers-list">
-        <li><strong>Anotovaný wireframe</strong> s 10 prvky a vysvětlením, jaký signál pro AI každý generuje.</li>
-        <li><strong>Title pattern + H1 šablony</strong> pro 4 typy byznysu (e-shop, služby, agentura, freelance).</li>
-        <li><strong>Šablony textů</strong> — krátká odpověď, hlavní přínosy, CTA, pruh důvěry — ready ke kopírování.</li>
-        <li><strong>Strukturovaná data</strong> (Organization, WebSite, FAQPage) k vložení do hlavičky.</li>
-        <li><strong>Anti-pattern + před/po</strong> — pět typických chyb a konkrétní transformace.</li>
+        <li><strong>Anotovaný wireframe produktové stránky</strong> s 10 prvky — od názvu produktu po související nabídku.</li>
+        <li><strong>Title pattern + H1 šablony</strong> pro 4 typy produktů (fyzické zboží, digitální produkt, služba, B2B nabídka).</li>
+        <li><strong>Šablony textů</strong> — krátká odpověď, popis produktu, parametry, časté otázky.</li>
+        <li><strong>Strukturovaná data</strong> (Product, Offer, AggregateRating) — kód k předání vývojáři.</li>
+        <li><strong>Anti-pattern + před/po</strong> — typické chyby produktových stránek a konkrétní transformace.</li>
       </ul>
     </div>
   </div>
@@ -1745,8 +1745,8 @@
 <!-- ============================================================ -->
 <section class="page wf-page">
   <div class="wf-header">
-    <h2 class="wf-header__title">Homepage — wireframe s anotacemi</h2>
-    <span class="wf-header__type">Typ · Firemní web nebo služba</span>
+    <h2 class="wf-header__title">Produktová stránka — wireframe s anotacemi</h2>
+    <span class="wf-header__type">Typ · Detail produktu (e-shop)</span>
   </div>
 
   <div class="wf-layout">
@@ -1755,87 +1755,76 @@
       <!-- 1. Header -->
       <div class="wf-block wf-block--header">
         <span class="wf-logo">brand</span>
-        <span class="wf-nav">Služby · O nás · Blog · Kontakt</span>
-        <span class="wf-cta-mini">Kontakt</span>
+        <span class="wf-nav">Kategorie · Akce · Blog · Kontakt</span>
+        <span class="wf-cta-mini">Košík</span>
         <span class="wf-badge wf-badge--seo">1</span>
       </div>
 
-      <!-- 2. Hero -->
-      <div class="wf-block wf-block--hero">
-        <div class="wf-h1">Hlavní nadpis — co děláte a pro koho (max 8–10 slov)</div>
-        <div class="wf-sub">Podtitulek — konkrétní hodnota nebo přínos (1 věta)</div>
-        <div class="wf-cta-row">
-          <span class="wf-cta-primary">Hlavní tlačítko</span>
-          <span class="wf-cta-secondary">Vedlejší tlačítko</span>
-        </div>
+      <!-- 2. Breadcrumb -->
+      <div class="wf-block" style="background: white; border-style: dashed;">
+        <strong>Drobečková navigace:</strong> Domů › Kategorie › Podkategorie › Produkt
         <span class="wf-badge wf-badge--seo">2</span>
       </div>
 
-      <!-- 3. Answer block — KLÍČOVÝ -->
+      <!-- 3. Hero produktu (title + gallery + cena + CTA) -->
+      <div class="wf-block wf-block--hero">
+        <div class="wf-h1">Název produktu — značka, model, klíčový parametr</div>
+        <div class="wf-sub">Galerie fotek · cena · dostupnost · varianty (barva, velikost)</div>
+        <div class="wf-cta-row">
+          <span class="wf-cta-primary">Přidat do košíku</span>
+          <span class="wf-cta-secondary">Do oblíbených</span>
+        </div>
+        <span class="wf-badge wf-badge--seo">3</span>
+      </div>
+
+      <!-- 4. Krátká odpověď — KLÍČOVÝ -->
       <div class="wf-block wf-block--answer">
         <span class="wf-answer-label">Krátká odpověď · 40–60 slov</span>
-        <strong>Co firma dělá, řečeno jednou větou.</strong> Bez „my jsme přední",
-        bez „dynamický tým". Druhá věta doplňuje konkrétní fakt
-        (číslo, datum, ocenění). Třetí věta říká, co z toho má čtenář.
-        Tuhle pasáž si AI nástroje vytahují jako citaci.
-        <span class="wf-badge wf-badge--geo">3</span>
+        <strong>Co produkt je a pro koho.</strong> Druhá věta uvádí
+        konkrétní parametr (výkon, materiál, velikost). Třetí věta říká,
+        co z toho zákazník má — kdy se mu vyplatí. AI nástroje si tuhle
+        pasáž vytahují, když uživatel zadá „nejlepší [produkt] pro [účel]".
+        <span class="wf-badge wf-badge--geo">4</span>
       </div>
 
-      <!-- 4. Trust strip -->
+      <!-- 5. Pruh důvěry produktu -->
       <div class="wf-block">
-        <strong>Pruh důvěry:</strong> 3–5 log klientů + jedno hlavní číslo + jedno ocenění
-        <span class="wf-badge wf-badge--seo">4</span>
+        <strong>Pruh důvěry:</strong> hodnocení (4,8 ★) · počet recenzí · skladová dostupnost · doba dodání
+        <span class="wf-badge wf-badge--seo">5</span>
       </div>
 
-      <!-- 5. Value prop 3-column -->
-      <div class="wf-grid-3" style="position: relative;">
-        <div class="wf-card">
-          <strong>Hlavní přínos 1</strong>
-          Co problém řešíte + jak (2–3 řádky)
-        </div>
-        <div class="wf-card">
-          <strong>Hlavní přínos 2</strong>
-          Co problém řešíte + jak (2–3 řádky)
-        </div>
-        <div class="wf-card">
-          <strong>Hlavní přínos 3</strong>
-          Co problém řešíte + jak (2–3 řádky)
-        </div>
-        <span class="wf-badge wf-badge--seo" style="right: -4mm;">5</span>
-      </div>
-
-      <!-- 6. Service overview -->
+      <!-- 6. Popis produktu -->
       <div class="wf-block">
-        <strong>Přehled služeb · 4 dlaždice</strong> — název + 1 řádek + odkaz na detail
+        <strong>Popis produktu</strong> — 3–5 odstavců. Pro koho, kdy použít, čím se liší, co je v balení
         <span class="wf-badge wf-badge--seo">6</span>
       </div>
 
-      <!-- 7. Featured proof -->
+      <!-- 7. Parametry tabulka -->
       <div class="wf-block">
-        <strong>Důkazy úspěchu</strong> — 1 případová studie + 3 reference klientů
-        <span class="wf-badge wf-badge--geo">7</span>
+        <strong>Tabulka parametrů</strong> — strukturované specifikace (rozměry, hmotnost, materiál, výkon)
+        <span class="wf-badge wf-badge--aeo">7</span>
       </div>
 
-      <!-- 8. FAQ — KLÍČOVÝ -->
+      <!-- 8. Recenze zákazníků -->
+      <div class="wf-block">
+        <strong>Recenze zákazníků</strong> — průměrné hodnocení + 3–5 konkrétních citací (se strukturovanými daty Review)
+        <span class="wf-badge wf-badge--geo">8</span>
+      </div>
+
+      <!-- 9. FAQ — KLÍČOVÝ -->
       <div class="wf-block wf-block--faq">
-        <div class="wf-faq-title">Časté otázky · 4–6 otázek (s FAQPage schématem)</div>
-        <div class="wf-faq-q">Otázka, kterou se zákazník reálně ptá</div>
-        <div class="wf-faq-q">Co konkrétně dostanu a jak to funguje</div>
-        <div class="wf-faq-q">Kolik to stojí a za jak dlouho jsou výsledky</div>
-        <div class="wf-faq-q">Pro koho to je a kdo to nepotřebuje</div>
-        <span class="wf-badge wf-badge--aeo">8</span>
+        <div class="wf-faq-title">Časté otázky · 4–6 otázek (se strukturovanými daty FAQPage)</div>
+        <div class="wf-faq-q">K čemu tento produkt nejvíc využiju?</div>
+        <div class="wf-faq-q">Jak rychle dorazí a kdo platí dopravu?</div>
+        <div class="wf-faq-q">Mohu produkt vrátit a do kolika dní?</div>
+        <div class="wf-faq-q">Je v balení vše, co potřebuju k použití?</div>
+        <span class="wf-badge wf-badge--aeo">9</span>
       </div>
 
-      <!-- 9. Final CTA -->
+      <!-- 10. Související produkty -->
       <div class="wf-block">
-        <strong>Závěrečné tlačítko k akci</strong> — zopakovat hlavní krok + odkaz na alternativu
-        <span class="wf-badge wf-badge--seo">9</span>
-      </div>
-
-      <!-- 10. Footer -->
-      <div class="wf-block wf-block--footer">
-        Patička webu · 4 sloupce odkazů · kontaktní údaje (jméno, adresa, telefon) · sociální sítě
-        <span class="wf-badge wf-badge--aeo" style="background: var(--aeo);">10</span>
+        <strong>Související / podobné produkty</strong> — 3–4 produkty z téže kategorie + 2 nadstandardní varianty
+        <span class="wf-badge wf-badge--seo">10</span>
       </div>
     </div>
 
@@ -1843,84 +1832,83 @@
     <aside class="wf-annotations">
       <div class="wf-annotations__head">Anotace · 10 prvků</div>
 
-
       <div class="wf-anno wf-anno--seo">
         <span class="wf-anno__num">1</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">SEO</span><strong>Hlavička s menu</strong>
-          Hlavní hledané slovo v popiscích menu. Maximálně 4–5 položek — víc rozmělňuje tematický fokus homepage a komplikuje crawl hierarchii.
+          <span class="wf-anno__tag">SEO</span><strong>Hlavička s košíkem</strong>
+          U produktové stránky musí být košík vždy viditelný a dosažitelný. Menu nese hlavní kategorie — to jsou nejsilnější signály pro Google o struktuře e-shopu.
         </div>
       </div>
 
       <div class="wf-anno wf-anno--seo">
         <span class="wf-anno__num">2</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">SEO</span><strong>Hlavní nadpis (H1)</strong>
-          Jeden H1 na stránku. Obsahuje hlavní hledané slovo a říká, co konkrétně nabízíte. Žádné „Vítejte" ani „Komplexní řešení".
-        </div>
-      </div>
-
-      <div class="wf-anno wf-anno--geo">
-        <span class="wf-anno__num">3</span>
-        <div class="wf-anno__body">
-          <span class="wf-anno__tag">GEO</span><strong>Krátká odpověď 40–60 slov</strong>
-          Pasáž, kterou si AI nástroje (ChatGPT, Perplexity) vytahují jako citaci. Definice + jeden konkrétní fakt + co z toho má čtenář.
+          <span class="wf-anno__tag">SEO</span><strong>Drobečková navigace</strong>
+          Zobrazuje zařazení produktu v e-shopu. Pro Google i AI je to klíčový signál o kategorii a kontextu produktu. Doplňte ji strukturovanými daty BreadcrumbList.
         </div>
       </div>
 
       <div class="wf-anno wf-anno--seo">
+        <span class="wf-anno__num">3</span>
+        <div class="wf-anno__body">
+          <span class="wf-anno__tag">SEO</span><strong>Název produktu (H1)</strong>
+          Vzor: <em>značka + model + klíčový parametr</em>. Žádné „Skvělý produkt" ani „Akce týdne". H1 musí konkrétně popsat, o jaký produkt jde — to je nejsilnější signál pro vyhledávání.
+        </div>
+      </div>
+
+      <div class="wf-anno wf-anno--geo">
         <span class="wf-anno__num">4</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">SEO</span><strong>Pruh důvěry</strong>
-          Loga klientů a klíčová čísla. Loga musí mít popis (alt) pro vyhledávač. Ocenění a partnerství patří do strukturovaných dat o firmě.
+          <span class="wf-anno__tag">GEO</span><strong>Krátká odpověď 40–60 slov</strong>
+          Když uživatel zadá ChatGPT „nejlepší [produkt] pro [účel]", AI nástroj vytahuje tuhle pasáž. Definice produktu + konkrétní parametr + kdy se vyplatí.
         </div>
       </div>
 
       <div class="wf-anno wf-anno--seo">
         <span class="wf-anno__num">5</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">SEO</span><strong>Tři hlavní přínosy</strong>
-          Vedlejší klíčová slova v nadpisech jednotlivých přínosů. Každý přínos vede na podstránku služby (interní odkazy posilují celý web).
+          <span class="wf-anno__tag">SEO</span><strong>Pruh důvěry produktu</strong>
+          Hodnocení, počet recenzí, skladová dostupnost, doba dodání. Doplnit strukturovanými daty Offer (cena, dostupnost) a AggregateRating (průměr hodnocení).
         </div>
       </div>
 
       <div class="wf-anno wf-anno--seo">
         <span class="wf-anno__num">6</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">SEO</span><strong>Přehled služeb</strong>
-          Každá dlaždice odkazuje na hlavní článek nebo stránku služby. Homepage je hlavní rozcestník, ze kterého vedou odkazy na konkrétní podtémata — Google a AI takhle rozpoznají hloubku vašeho webu.
+          <span class="wf-anno__tag">SEO</span><strong>Popis produktu</strong>
+          Originální text (ne kopie od dodavatele). Klíčové výrazy z konkrétních dotazů zákazníků. Délka 200–400 slov stačí, kvalita víc než délka.
+        </div>
+      </div>
+
+      <div class="wf-anno wf-anno--aeo">
+        <span class="wf-anno__num">7</span>
+        <div class="wf-anno__body">
+          <span class="wf-anno__tag">AEO</span><strong>Tabulka parametrů</strong>
+          Strukturovaná specifikace — Google AI Overviews a ChatGPT z ní vytahují konkrétní fakta („má 2 TB úložiště"). Bez tabulky AI fakta nedostane a citaci nepřinese.
         </div>
       </div>
 
       <div class="wf-anno wf-anno--geo">
-        <span class="wf-anno__num">7</span>
+        <span class="wf-anno__num">8</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">GEO</span><strong>Důkazy úspěchu</strong>
-          Konkrétní čísla, jméno klienta, dosažený výsledek. AI nástroje takto popsané fakta vytahují snadněji než marketingová tvrzení bez kontextu.
+          <span class="wf-anno__tag">GEO</span><strong>Recenze zákazníků</strong>
+          Skutečné citace zákazníků, ne generické 5★ blbiny. Doplnit strukturovanými daty Review — AI nástroje pak vytahují konkrétní zkušenosti („uživatelé chválí výdrž baterie").
         </div>
       </div>
 
       <div class="wf-anno wf-anno--aeo">
-        <span class="wf-anno__num">8</span>
+        <span class="wf-anno__num">9</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">AEO</span><strong>Časté otázky + FAQPage schéma</strong>
-          Otázky musí být skutečné — z Google Search Console, z chatů se zákazníky, z ChatGPT promptů. Doplnit strukturovanými daty (FAQPage).
+          <span class="wf-anno__tag">AEO</span><strong>Časté otázky + FAQPage</strong>
+          Reálné otázky před nákupem — z chatu, e-mailů, recenzí konkurence. Doplnit strukturovanými daty FAQPage. AI nástroje citují tyhle otázky téměř doslova v odpovědích.
         </div>
       </div>
 
       <div class="wf-anno wf-anno--seo">
-        <span class="wf-anno__num">9</span>
-        <div class="wf-anno__body">
-          <span class="wf-anno__tag">SEO</span><strong>Závěrečné tlačítko</strong>
-          Zopakování hlavního kroku po dlouhém scrollování. UTM značky v odkazu pro pozdější vyhodnocení, kolik konverzí přišlo z homepage.
-        </div>
-      </div>
-
-      <div class="wf-anno wf-anno--aeo">
         <span class="wf-anno__num">10</span>
         <div class="wf-anno__body">
-          <span class="wf-anno__tag">AEO</span><strong>Patička s kontakty</strong>
-          Jméno firmy, adresa, telefon — všude na webu naprosto stejně. Pokud nabízíte lokální služby, doplnit strukturovaná data LocalBusiness.
+          <span class="wf-anno__tag">SEO</span><strong>Související produkty</strong>
+          Interní prolinkování v rámci kategorie — pomáhá Google rozpoznat sortiment a nabízí zákazníkovi alternativy. Vyhněte se náhodným produktům, vybírejte tematicky.
         </div>
       </div>
     </aside>
@@ -1946,15 +1934,15 @@
 <section class="page text-page">
   <span class="text-page__eyebrow"><strong>Proč</strong> ta struktura funguje</span>
   <h2 class="text-page__title">
-    Tři <strong>principy</strong>, které drží homepage<br/>
+    Tři <strong>principy</strong>, které drží produktovou stránku<br/>
     v každém z tří typů vyhledávání
   </h2>
   <p class="text-page__lead">
-    Wireframe na předchozí stránce není estetický návrh. Je to
-    <strong>strategická kostra</strong>, kde každý prvek řeší jednu ze
-    tří úrovní viditelnosti — klasické vyhledávání v Googlu, citace
-    v ChatGPT a Perplexity, nebo vytažení do panelu Google AI Overviews
-    nad výsledky.
+    Produktová stránka má jiný cíl než homepage — má prodat konkrétní
+    věc konkrétnímu člověku. Wireframe na předchozí stránce řeší
+    tři úrovně viditelnosti: kdy Google nabídne stránku v klasickém
+    vyhledávání, kdy ji AI použije jako citaci, a kdy ji vytáhne
+    do panelu s odpovědí nad výsledky.
   </p>
 
   <div class="principles">
@@ -1962,17 +1950,17 @@
       <div class="principle__num">1</div>
       <div class="principle__body">
         <h3>
-          Jeden hlavní nadpis, který říká „o čem to je"
+          Originální popis produktu, ne kopie od dodavatele
           <span class="principle__discipline">SEO</span>
         </h3>
         <p>
-          Google čte hlavní nadpis (H1) jako nejsilnější signál o tom,
-          čemu stránka rozumí. Obecný titulek „Vítejte" nebo „Komplexní
-          řešení" nepomáhá ani uživatelům, ani vyhledávači. <strong>Hlavní
-          nadpis musí obsahovat klíčové hledané slovo a říct,
-          co konkrétně nabízíte, ve 8–10 slovech.</strong> Pomůže to
-          k pozicím v klasickém vyhledávání i k tomu, aby Google
-          rozuměl, kdy stránku nabídnout v AI panelu nad výsledky.
+          Většina e-shopů kopíruje popisy produktů od výrobce nebo
+          dodavatele. Google to vidí jako duplicitu a nezařadí stránku
+          do top výsledků. <strong>Každý prodávaný produkt potřebuje
+          alespoň 200–400 slov originálního textu</strong> — pro koho
+          je vhodný, čím se odlišuje od podobných produktů, kdy se
+          vyplatí. Bez vlastního popisu se v hledání ztratíte mezi
+          desítkami stránek s identickým textem.
         </p>
       </div>
     </article>
@@ -1981,19 +1969,17 @@
       <div class="principle__num">2</div>
       <div class="principle__body">
         <h3>
-          Krátká odpověď 40–60 slov hned pod úvodem
+          Krátká odpověď a reálné recenze pro AI citaci
           <span class="principle__discipline">GEO</span>
         </h3>
         <p>
-          Tohle je jedna z důležitých změn proti tomu, jak se SEO
-          dělalo dřív. Umělá inteligence (ChatGPT, Perplexity, Claude,
-          Gemini) si často vytahuje krátké, jasně formulované pasáže
-          ze začátku stránky a používá je jako citaci v odpovědi.
-          <strong>Krátká odpověď = definice toho, co děláte, jeden
-          konkrétní fakt a praktický důsledek pro čtenáře</strong> —
-          dohromady 40 až 60 slov, vizuálně oddělená. Výrazně zvyšuje
-          šanci, že AI použije právě váš text jako citaci místo
-          podobného obsahu konkurence.
+          Když uživatel zadá ChatGPT nebo Perplexity „nejlepší [produkt]
+          pro [použití]", AI vytahuje krátké pasáže z produktových
+          stránek. <strong>Pasáž 40–60 slov hned pod názvem produktu
+          + skutečné recenze zákazníků se strukturovanými daty (Review)</strong>
+          dramaticky zvyšují šanci, že AI doporučí právě váš produkt.
+          Generické 5★ recenze typu „Skvělý, doporučuji" AI ignoruje
+          — vytahuje konkrétní zkušenosti („uživatelé chválí výdrž baterie").
         </p>
       </div>
     </article>
@@ -2002,19 +1988,18 @@
       <div class="principle__num">3</div>
       <div class="principle__body">
         <h3>
-          Časté otázky se strukturovanými daty na konci
+          Tabulka parametrů a FAQ — fakta, která AI vytáhne přímo
           <span class="principle__discipline">AEO</span>
         </h3>
         <p>
-          Panel s AI odpovědí v Googlu (AI Overviews, často zkracováno
-          jako AIO) a krátké odpovědi nad výsledky (Featured Snippets)
-          čerpají z otázek a odpovědí přímo na webu. <strong>Sekce
-          s 4–6 častými otázkami doplněná o strukturovaná data
-          (FAQPage)</strong> pomáhá vyhledávači i AI nástrojům lépe
-          interpretovat, co všechno stránka odpovídá. Otázky musí být
-          skutečné — z Google Search Console, z chatu se zákazníky,
-          z ChatGPT promptů. Vymyšlené otázky obvykle mívají výrazně
-          horší výsledky a méně relevantní viditelnost.
+          Google AI Overviews a krátké odpovědi nad výsledky čerpají
+          z konkrétních faktů na stránce. <strong>Tabulka parametrů
+          (rozměry, hmotnost, výkon) + sekce častých otázek se
+          strukturovanými daty (FAQPage)</strong> dávají AI nástrojům
+          přesně to, co potřebují k odpovědi. Otázky musí být skutečné
+          — z e-mailů, chatu se zákazníky, recenzí konkurence. Když
+          uživatel zadá „má [produkt] vodotěsnost?", AI najde odpověď
+          přímo ve vaší FAQ.
         </p>
       </div>
     </article>
@@ -2032,39 +2017,41 @@
 <section class="page case-page">
   <span class="case-page__eyebrow"><strong>Příklad</strong> z reálné práce</span>
   <h2 class="case-page__title">
-    Stejná firma, dva různé <strong>výchozí body</strong>.<br/>
-    Jeden z nich AI nepochopí.
+    Stejný produkt, dva různé <strong>názvy a popisy</strong>.<br/>
+    Jeden z nich AI nedoporučí.
   </h2>
   <p class="case-page__lead">
-    Rozdíl mezi obvyklou firemní homepage a stejnou stránkou po úpravě
-    podle tří principů z předchozí strany. Stejný produkt, stejná firma
-    — jen jinak postavená výchozí věta.
+    Rozdíl mezi obvyklou produktovou stránkou v e-shopu a stejnou stránkou
+    po úpravě podle tří principů z předchozí strany. Stejný produkt,
+    stejný sortiment — jen jinak postavený název, popis a parametry.
   </p>
 
   <div class="case-compare">
     <article class="case-card case-card--before">
       <span class="case-card__label">Před úpravou</span>
       <div class="case-card__quote">
-        „Komplexní digitální řešení pro moderní firmy."
+        „Sluchátka SPORT — kvalitní zvuk za skvělou cenu."
       </div>
       <p class="case-card__sub">
-        Generický H1 bez relevance. Google nerozumí, čeho přesně se firma
-        týká. AI nástroje nemají jasný kandidátní úsek pro citaci. Pro
-        zákazníka nevypadá web jako specializovaný — vypadá jako každá
-        druhá agentura.
+        Generický název bez konkrétní značky a modelu. Popis okopírovaný
+        od dodavatele (duplicitní text). Google nemá důvod nabídnout
+        stránku v top výsledcích. AI nástroje nevědí, co je v balení,
+        kolik váží ani pro koho jsou. V hledání „bezdrátová sluchátka
+        s redukcí hluku" se stránka neobjeví.
       </p>
     </article>
 
     <article class="case-card case-card--after">
       <span class="case-card__label">Po úpravě</span>
       <div class="case-card__quote">
-        „SEO pro Shoptet e‑shopy s technickou implementací."
+        „Sony WH-1000XM5 — bezdrátová sluchátka s aktivním potlačením hluku."
       </div>
       <p class="case-card__sub">
-        Konkrétní H1 s primary keywordem („SEO"), platformou („Shoptet")
-        a typem služby („technická implementace"). Google ví, na jaké
-        dotazy stránku nabídnout. AI nástroje mají jasné téma a kontext
-        pro citaci. Zákazník v 1 sekundě ví, jestli je to pro něj.
+        Konkrétní název: značka, model, klíčový parametr. Originální popis
+        300 slov pro koho a kdy se vyplatí. Tabulka parametrů (váha,
+        výdrž 30 h, Bluetooth 5.2). FAQ se 6 reálnými otázkami zákazníků.
+        Google i AI nástroje stránku doporučí v hledání konkrétních
+        parametrů i obecných dotazů typu „nejlepší sluchátka pro cestování".
       </p>
     </article>
   </div>
@@ -2072,36 +2059,36 @@
   <div class="case-result">
     <span class="case-result__mark">→</span>
     <p class="case-result__text">
-      Po úpravě homepage <strong>Google i AI nástroje výrazně lépe pochopí,
-      komu je služba určená a v čem se firma odlišuje.</strong> Stejný produkt,
-      stejná firma — pouze jinak postavený první kontakt s vyhledávačem
-      i se zákazníkem.
+      Po úpravě produktové stránky <strong>AI nástroje vědí, co produkt
+      umí, komu se hodí a jak ho porovnat s konkurencí.</strong> Stejný produkt,
+      stejný sklad — pouze jinak postavený popis, parametry a otázky.
+      Stránka se objeví v hledání i v AI doporučeních.
     </p>
   </div>
 
   <div class="case-changes">
     <div class="case-change">
-      <div class="case-change__label">Hlavní nadpis</div>
+      <div class="case-change__label">Název produktu</div>
       <div class="case-change__before-after">
         <span class="case-change__from">obecný</span>
         <span class="case-change__arrow">→</span>
-        <span class="case-change__to">specifický</span>
+        <span class="case-change__to">značka + model + parametr</span>
       </div>
     </div>
     <div class="case-change">
-      <div class="case-change__label">Cílové dotazy</div>
+      <div class="case-change__label">Popis produktu</div>
       <div class="case-change__before-after">
-        <span class="case-change__from">nejasné</span>
+        <span class="case-change__from">kopie dodavatele</span>
         <span class="case-change__arrow">→</span>
-        <span class="case-change__to">konkrétní</span>
+        <span class="case-change__to">originální 300 slov</span>
       </div>
     </div>
     <div class="case-change">
-      <div class="case-change__label">Pochopení AI</div>
+      <div class="case-change__label">Fakta pro AI</div>
       <div class="case-change__before-after">
-        <span class="case-change__from">slabé</span>
+        <span class="case-change__from">chybí</span>
         <span class="case-change__arrow">→</span>
-        <span class="case-change__to">jednoznačné</span>
+        <span class="case-change__to">tabulka + FAQ</span>
       </div>
     </div>
   </div>
@@ -2119,58 +2106,58 @@
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
-        <span class="chapter-label__num">01</span> · Homepage
+        <span class="chapter-label__num">02</span> · Produkt
       </span>
       <span class="content__breadcrumb">Title pattern + H1 varianty</span>
     </header>
 
     <div class="content__body">
       <h1 class="section-title">
-        Title tag a H1 — <strong>4 varianty po typu byznysu</strong>
+        Title tag a H1 produktu — <strong>4 varianty po typu produktu</strong>
       </h1>
       <p class="lead">
-        Title tag a H1 jsou první signály, které AI nástroje čtou.
-        Pattern: <strong>[Co děláte] — [pro koho / kde] | [Brand]</strong>.
-        Začněte výsledkem, ne brandem.
+        Název produktu je první signál, podle kterého AI nástroje produkt zařadí.
+        Pattern: <strong>[Značka] [Model] — [klíčový parametr] | [E-shop]</strong>.
+        Začněte brandem a modelem, pak konkrétní vlastnost.
       </p>
 
-      <h2 class="subsection-title">Title tag pattern</h2>
+      <h2 class="subsection-title">Title tag pattern produktu</h2>
       <div class="template-block">
         <div class="template-block__label">Pattern</div>
-        <div class="template-block__pattern">[Hlavní výsledek pro zákazníka] — [typ zákazníka / lokalita] | [Název značky]</div>
+        <div class="template-block__pattern">[Značka] [Model / typ] — [klíčový parametr nebo benefit] | [E-shop]</div>
       </div>
 
       <div class="variants">
         <div class="variant">
-          <div class="variant__type">E-shop</div>
-          <div class="variant__example">Specializovaný e-shop s autodíly — pro starší vozy | AutoDíly CZ</div>
-          <div class="variant__pattern">Co prodávate · pro koho · brand</div>
+          <div class="variant__type">Fyzické zboží</div>
+          <div class="variant__example">Sony WH-1000XM5 — bezdrátová sluchátka s aktivním potlačením hluku | Alza</div>
+          <div class="variant__pattern">Značka · model · klíčová vlastnost · e-shop</div>
         </div>
         <div class="variant">
-          <div class="variant__type">Služby</div>
-          <div class="variant__example">Daňové poradenství pro freelancery — Brno a okolí | Klára Daněk</div>
-          <div class="variant__pattern">Co řešíte · segment · lokalita · jméno</div>
+          <div class="variant__type">Digitální produkt</div>
+          <div class="variant__example">Notion Pro šablona — finanční plán pro freelancery na 12 měsíců | TemplateBase</div>
+          <div class="variant__pattern">Typ · pro koho · rozsah · brand</div>
         </div>
         <div class="variant">
-          <div class="variant__type">Agentura</div>
-          <div class="variant__example">Webové studio pro e-shopy na Upgates a Shoptetu | Sniperdesign</div>
-          <div class="variant__pattern">Specializace · platforma · brand</div>
+          <div class="variant__type">Služba</div>
+          <div class="variant__example">Roční účetnictví pro OSVČ — daňové přiznání a EPO výkazy v ceně | Účetnice Brno</div>
+          <div class="variant__pattern">Co řešíte · pro koho · co je v ceně · brand</div>
         </div>
         <div class="variant">
-          <div class="variant__type">Freelance / osobní</div>
-          <div class="variant__example">Copywriter pro SaaS a B2B — texty zaměřené na výsledek | Anna Novotná</div>
-          <div class="variant__pattern">Role · pro koho · USP · jméno</div>
+          <div class="variant__type">B2B nabídka</div>
+          <div class="variant__example">CRM pro e-shopy nad 1000 objednávek/měs — napojení na Pohodu a Shoptet | LeadHub</div>
+          <div class="variant__pattern">Co je · pro koho (segment) · integrace · brand</div>
         </div>
       </div>
 
-      <h2 class="subsection-title">H1 šablona</h2>
+      <h2 class="subsection-title">H1 šablona produktu</h2>
       <div class="template-block">
         <div class="template-block__label">Pattern</div>
-        <div class="template-block__pattern">[Sloveso v rozkazu nebo příslib] [konkrétní hodnota] [pro koho / kdy].</div>
+        <div class="template-block__pattern">[Značka] [Model] — [primární vlastnost / pro jaký účel]</div>
         <div class="template-block__example">
-          „Najděte autodíly pro starší vozy, které jinde nemají." <em>(e-shop)</em><br />
-          „Vyřešte daně i účetnictví bez chyby a včas." <em>(služby)</em><br />
-          „Postavíme vám e-shop na Upgates, který prodává." <em>(agentura)</em>
+          „Sony WH-1000XM5 — bezdrátová sluchátka s potlačením hluku" <em>(fyzické zboží)</em><br />
+          „Notion Pro šablona — finanční plán pro freelancery" <em>(digitální)</em><br />
+          „Roční účetnictví OSVČ — vše v ceně, výsledek do 5 dní" <em>(služba)</em>
         </div>
       </div>
     </div>
@@ -2189,50 +2176,54 @@
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
-        <span class="chapter-label__num">01</span> · Homepage
+        <span class="chapter-label__num">02</span> · Produkt
       </span>
       <span class="content__breadcrumb">Šablony textů</span>
     </header>
 
     <div class="content__body">
       <h1 class="section-title">
-        Šablony textů <strong>ke kopírování</strong>
+        Šablony textů produktu <strong>ke kopírování</strong>
       </h1>
       <p class="lead">
-        Hotové vzorce pro klíčové bloky homepage. Vyplňte placeholder
-        v &lsquo;[závorkách]&rsquo; vaším konkrétním obsahem.
+        Hotové vzorce pro klíčové bloky produktové stránky. Vyplňte
+        placeholder v &lsquo;[závorkách]&rsquo; vaším konkrétním obsahem.
       </p>
 
-      <h2 class="subsection-title">Krátká odpověď (40–60 slov)</h2>
+      <h2 class="subsection-title">Krátká odpověď u produktu (40–60 slov)</h2>
       <div class="template-block">
         <div class="template-block__label">Pattern</div>
-        <div class="template-block__pattern">[Brand] je [kategorie / typ firmy] [pro koho / segment]. [Jak konkrétně pomáháme — 1 věta]. [USP / proč právě my — 1 věta]. [Akce, kterou má návštěvník udělat — 1 věta].</div>
+        <div class="template-block__pattern">[Značka] [Model] jsou [typ produktu] pro [koho / účel]. [Klíčový parametr s číslem]. [Co z toho zákazník má — kdy se vyplatí]. [Co je v balení nebo doplňující výhoda].</div>
         <div class="template-block__example">
-          „Sniperdesign je webové studio pro provozovatele e-shopů na Upgates a Shoptetu. Stavíme weby, které prodávají a které AI nástroje doporučují. Specializujeme se na strukturu pro AI vyhledávání. Pošlete nám zprávu, ozveme se do 24 hodin."
+          „Sony WH-1000XM5 jsou bezdrátová sluchátka s aktivním potlačením hluku, určená pro cestovatele a kancelářské pracovníky. Výdrž baterie 30 hodin, Bluetooth 5.2 a rychlonabíjení (3 minuty = 3 hodiny poslechu). Vhodná pro hluboké soustředění nebo dlouhé lety. V balení: pouzdro, kabel jack 3,5 mm, USB-C kabel."
         </div>
       </div>
 
-      <h2 class="subsection-title">Hlavní přínosy (3 sloupce)</h2>
+      <h2 class="subsection-title">Popis produktu (3–5 odstavců)</h2>
       <div class="template-block">
-        <div class="template-block__label">Vzor · problém → co děláme jinak → výsledek pro zákazníka</div>
+        <div class="template-block__label">Struktura · pro koho / klíčové vlastnosti / kdy se hodí / co je v balení</div>
         <div class="template-block__pattern">
-          [Problém] → [Co děláme jinak] → [Co z toho vy máte]<br />
-          [Problém] → [Co děláme jinak] → [Co z toho vy máte]<br />
-          [Problém] → [Co děláme jinak] → [Co z toho vy máte]
+          1) Pro koho je produkt vhodný (typ uživatele, situace)<br />
+          2) Klíčové vlastnosti a parametry (3–5 nejdůležitějších)<br />
+          3) Kdy se vyplatí versus kdy ne (poctivá komparace)<br />
+          4) Co je přesně v balení / co dostanete<br />
+          5) Doporučené příslušenství nebo navazující produkty
         </div>
         <div class="template-block__example">
-          „<strong>Konkurence vás přehlíží.</strong> Stavíme stránky tak, aby AI rozpoznala, kdo jste. Začnete dostávat přístupy z ChatGPT a AI Overviews."
+          <strong>Důležité:</strong> Žádný kopírovaný text od dodavatele. Originální popis = silnější signál pro Google + lepší šance na citaci v AI.
         </div>
       </div>
 
-      <h2 class="subsection-title">CTA — sekundární akce</h2>
+      <h2 class="subsection-title">Časté otázky (FAQ) — reálné dotazy</h2>
       <div class="template-block">
-        <div class="template-block__label">Pattern · context-driven</div>
+        <div class="template-block__label">Pattern · 6 otázek, které zákazník reálně řeší před nákupem</div>
         <div class="template-block__pattern">
-          Když si chce návštěvník prohlížet nabídku: „Prohlédnout [nabídku / produkty / služby] →"<br />
-          Když vás chce kontaktovat: „Pošlete nám zprávu — odpovíme do 24 h →"<br />
-          Když je připravený koupit: „Koupit [produkt] za [cena] →"<br />
-          Když si chce stáhnout materiál: „Stáhnout [návod / průvodce] zdarma →"
+          1) K čemu produkt nejvíc využiju? (use case)<br />
+          2) Jak rychle dorazí a kdo platí dopravu? (logistika)<br />
+          3) Můžu produkt vrátit a do kolika dní? (risk reduction)<br />
+          4) Je v balení vše, co potřebuju k použití? (co dostanu)<br />
+          5) Jaká je záruka a kdo ji řeší? (poprodejní servis)<br />
+          6) Funguje s [konkurenční produkt / příslušenství]? (kompatibilita)
         </div>
       </div>
     </div>
@@ -2251,60 +2242,58 @@
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
-        <span class="chapter-label__num">01</span> · Homepage
+        <span class="chapter-label__num">02</span> · Produkt
       </span>
       <span class="content__breadcrumb">Strukturovaná data · podklad pro vývojáře</span>
     </header>
 
     <div class="content__body">
       <h1 class="section-title">
-        Strukturovaná data — <strong>údaje, které pomáhají Googlu a AI</strong> pochopit váš web
+        Strukturovaná data produktu — <strong>údaje, podle kterých AI</strong> produkt doporučí
       </h1>
       <p class="lead" style="margin-bottom: 4mm; font-size: 10.5pt;">
         <strong>Tento blok není určený k ručnímu opisování.</strong>
-        Doplňte své údaje a předejte správci webu, vývojáři nebo agentuře.
-        Vy zvládnete přípravu, oni vložení.
+        Doplňte údaje o produktu a předejte vývojáři. Vy zvládnete přípravu,
+        on vložení — typicky každá produktová stránka má vlastní generovaný kód.
       </p>
 
       <div class="info-box" style="margin-top: 0; margin-bottom: 4mm; padding: 3.5mm 5mm;">
         <div class="info-box__label">1. Co si připravit</div>
         <p class="info-box__text" style="font-size: 9.5pt;">
-          <strong>Název firmy</strong>, URL webu, odkaz na logo, 1 věta o firmě
-          (max 160 znaků), odkazy na sociální sítě (LinkedIn, Facebook, Instagram).
-          Pokud nabízíte lokální služby, připojte i adresu a telefon.
+          <strong>Název produktu</strong>, značku, SKU/EAN, URL fotky,
+          1 větu popisu, cenu v Kč, dostupnost (skladem / na objednávku),
+          průměrné hodnocení a počet recenzí. U fyzických produktů
+          připojte i rozměry a hmotnost.
         </p>
       </div>
 
       <h2 class="subsection-title" style="margin-top: 0; margin-bottom: 1.5mm;">2. Hotový kód k předání</h2>
       <p class="body" style="font-style: italic; color: var(--ink-faint); margin-bottom: 2mm; font-size: 9pt;">
         Nemusíte tomu rozumět řádek po řádku. Důležité jsou jen údaje
-        v hranatých závorkách — ty vyplníte podle bodu 1.
+        v hranatých závorkách — ty vyplníte podle bodu 1. U e-shopu
+        bude kód generován automaticky šablonou.
       </p>
       <div class="code-block">
-        <span class="code-block__label">application/ld+json</span><span class="p">&lt;script type="application/ld+json"&gt;</span>
+        <span class="code-block__label">application/ld+json — Product + Offer + AggregateRating</span><span class="p">&lt;script type="application/ld+json"&gt;</span>
 {
   <span class="k">"@context"</span><span class="p">:</span> <span class="s">"https://schema.org"</span><span class="p">,</span>
-  <span class="k">"@type"</span><span class="p">:</span> <span class="s">"Organization"</span><span class="p">,</span>
-  <span class="k">"name"</span><span class="p">:</span> <span class="s">"[Název firmy]"</span><span class="p">,</span>
-  <span class="k">"url"</span><span class="p">:</span> <span class="s">"https://[doména]"</span><span class="p">,</span>
-  <span class="k">"logo"</span><span class="p">:</span> <span class="s">"https://[doména]/logo.png"</span><span class="p">,</span>
-  <span class="k">"description"</span><span class="p">:</span> <span class="s">"[1 věta o firmě, max 160 znaků]"</span><span class="p">,</span>
-  <span class="k">"sameAs"</span><span class="p">: [</span>
-    <span class="s">"https://www.linkedin.com/company/[brand]"</span><span class="p">,</span>
-    <span class="s">"https://www.facebook.com/[brand]"</span>
-  <span class="p">]</span>
-}
-<span class="p">&lt;/script&gt;</span>
-      </div>
-
-      <div class="code-block">
-        <span class="code-block__label">application/ld+json</span><span class="p">&lt;script type="application/ld+json"&gt;</span>
-{
-  <span class="k">"@context"</span><span class="p">:</span> <span class="s">"https://schema.org"</span><span class="p">,</span>
-  <span class="k">"@type"</span><span class="p">:</span> <span class="s">"WebSite"</span><span class="p">,</span>
-  <span class="k">"name"</span><span class="p">:</span> <span class="s">"[Brand]"</span><span class="p">,</span>
-  <span class="k">"url"</span><span class="p">:</span> <span class="s">"https://[doména]"</span><span class="p">,</span>
-  <span class="k">"inLanguage"</span><span class="p">:</span> <span class="s">"cs-CZ"</span>
+  <span class="k">"@type"</span><span class="p">:</span> <span class="s">"Product"</span><span class="p">,</span>
+  <span class="k">"name"</span><span class="p">:</span> <span class="s">"[Značka Model — vlastnost]"</span><span class="p">,</span>
+  <span class="k">"brand"</span><span class="p">:</span> { <span class="k">"@type"</span><span class="p">:</span> <span class="s">"Brand"</span><span class="p">,</span> <span class="k">"name"</span><span class="p">:</span> <span class="s">"[Značka]"</span> }<span class="p">,</span>
+  <span class="k">"sku"</span><span class="p">:</span> <span class="s">"[SKU nebo EAN]"</span><span class="p">,</span>
+  <span class="k">"image"</span><span class="p">:</span> <span class="s">"https://[doména]/produkt.jpg"</span><span class="p">,</span>
+  <span class="k">"description"</span><span class="p">:</span> <span class="s">"[1 věta popisu produktu]"</span><span class="p">,</span>
+  <span class="k">"offers"</span><span class="p">:</span> {
+    <span class="k">"@type"</span><span class="p">:</span> <span class="s">"Offer"</span><span class="p">,</span>
+    <span class="k">"price"</span><span class="p">:</span> <span class="s">"[cena v Kč, bez symbolu]"</span><span class="p">,</span>
+    <span class="k">"priceCurrency"</span><span class="p">:</span> <span class="s">"CZK"</span><span class="p">,</span>
+    <span class="k">"availability"</span><span class="p">:</span> <span class="s">"https://schema.org/InStock"</span>
+  }<span class="p">,</span>
+  <span class="k">"aggregateRating"</span><span class="p">:</span> {
+    <span class="k">"@type"</span><span class="p">:</span> <span class="s">"AggregateRating"</span><span class="p">,</span>
+    <span class="k">"ratingValue"</span><span class="p">:</span> <span class="s">"[4.8]"</span><span class="p">,</span>
+    <span class="k">"reviewCount"</span><span class="p">:</span> <span class="s">"[počet recenzí]"</span>
+  }
 }
 <span class="p">&lt;/script&gt;</span>
       </div>
@@ -2324,7 +2313,7 @@
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
-        <span class="chapter-label__num">01</span> · Homepage
+        <span class="chapter-label__num">02</span> · Produkt
       </span>
       <span class="content__breadcrumb">Strukturovaná data · kam vložit kód</span>
     </header>
@@ -2363,8 +2352,9 @@
         <div class="info-box__label">Po vložení ověřte</div>
         <p class="info-box__text">
           Otevřete <strong>Google Rich Results Test</strong> (search.google.com/test/rich-results),
-          zadejte URL homepage. Google ukáže, jestli strukturovaná data čte správně.
-          Pokud ano, hotovo. Pokud ne, vývojář to opraví — bug bude v rozdělení nebo zatlučení tagů.
+          zadejte URL produktové stránky. Google ukáže, jestli vidí cenu, dostupnost
+          a hodnocení. Pokud ano, hotovo. Pokud ne, vývojář to opraví —
+          bug bývá v dynamickém generování ceny nebo počtu recenzí.
         </p>
       </div>
     </div>
@@ -2383,7 +2373,7 @@
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
-        <span class="chapter-label__num">01</span> · Homepage
+        <span class="chapter-label__num">02</span> · Produkt
       </span>
       <span class="content__breadcrumb">Anti-pattern + před/po</span>
     </header>
@@ -2393,55 +2383,55 @@
         Čeho se vyhnout <strong>+ konkrétní transformace</strong>
       </h1>
       <p class="lead">
-        Pět typických chyb, které vidíme na klientských homepage —
-        a které z webu dělají pro AI neviditelný blok.
+        Šest typických chyb, které vidíme na produktových stránkách
+        v e-shopech — a které dělají z produktu pro AI neviditelnou nabídku.
       </p>
 
-      <h2 class="subsection-title">5 anti-patternů homepage</h2>
+      <h2 class="subsection-title">6 anti-patternů produktové stránky</h2>
       <div class="anti-grid">
         <div class="anti-item">
-          <strong><span class="anti-item__cross">×</span>Generický headline</strong>
-          „Vítejte na našem webu" / „Tým profesionálů" — neříká, co děláte ani pro koho. AI nevytáhne hodnotu.
+          <strong><span class="anti-item__cross">×</span>Generický název produktu</strong>
+          „Sluchátka SPORT" / „Praktický doplněk" — chybí značka, model, klíčový parametr. AI nezařadí produkt do správné kategorie.
+        </div>
+        <div class="anti-item">
+          <strong><span class="anti-item__cross">×</span>Kopie popisu od dodavatele</strong>
+          Stejný text jako u 50 jiných e-shopů. Google to vidí jako duplicitu a stránku nezařadí v top výsledcích.
         </div>
         <div class="anti-item">
           <strong><span class="anti-item__cross">×</span>Chybí krátká odpověď</strong>
-          Pod H1 jen obrázek nebo seznam služeb. Engine nemá co citovat ve své odpovědi.
+          Pod názvem rovnou popis nebo tabulka. AI nemá z čeho citovat — odpoví podle konkurence, ne podle vás.
         </div>
         <div class="anti-item">
-          <strong><span class="anti-item__cross">×</span>CTA bez kontextu</strong>
-          „Klikněte zde" / „Více informací". Uživatel ani AI nevědí, co se stane po kliknutí.
+          <strong><span class="anti-item__cross">×</span>Žádná tabulka parametrů</strong>
+          Specifikace utopené v souvislém textu. Google AI Overviews a ChatGPT z toho nevytáhnou „má 30 h výdrž".
         </div>
         <div class="anti-item">
-          <strong><span class="anti-item__cross">×</span>Žádná strukturovaná data</strong>
-          Bez strukturovaných dat o firmě (Organization, WebSite) nemá AI ani Google jasný kontext, kdo jste.
+          <strong><span class="anti-item__cross">×</span>Generické 5★ recenze</strong>
+          „Super, doporučuji" / „Skvělý produkt". AI nástroje vytahují konkrétní zkušenosti — generický text ignorují.
         </div>
         <div class="anti-item">
-          <strong><span class="anti-item__cross">×</span>Schované přínosy</strong>
-          Hlavní přínosy pouze v PDF brožuře nebo schované nízko na stránce. AI nástroje a Google čtou hlavně to, co vidí nahoře.
-        </div>
-        <div class="anti-item">
-          <strong><span class="anti-item__cross">×</span>Footer bez NAP</strong>
-          Adresa, telefon a e-mail chybí nebo jsou nekonzistentní s registry. LocalBusiness signál slabý.
+          <strong><span class="anti-item__cross">×</span>Chybí Product schema</strong>
+          Bez strukturovaných dat (Product + Offer + AggregateRating) Google nezobrazí cenu, dostupnost ani hodnocení v bohatých výsledcích.
         </div>
       </div>
 
-      <h2 class="subsection-title">Před / po — transformace H1 + krátké odpovědi</h2>
+      <h2 class="subsection-title">Před / po — transformace názvu produktu</h2>
       <div class="ba-grid">
         <div class="ba-col ba-col--before">
           <div class="ba-col__label">× Před</div>
-          <h3 class="ba-col__h1">Vítejte v naší firmě</h3>
+          <h3 class="ba-col__h1">Sluchátka SPORT</h3>
           <p class="ba-col__lead">
-            Jsme dynamicky se rozvíjející společnost s mnohaletou tradicí.
-            Naší filozofií je kvalita a spokojený zákazník na prvním místě.
+            Kvalitní sluchátka za skvělou cenu. Vhodná pro sport
+            i běžné použití. Špičkový zvuk a dlouhá výdrž baterie.
           </p>
         </div>
         <div class="ba-col ba-col--after">
           <div class="ba-col__label">✓ Po</div>
-          <h3 class="ba-col__h1">Postavíme vám e-shop na Upgates, který prodává</h3>
+          <h3 class="ba-col__h1">Sony WH-1000XM5 — bezdrátová sluchátka s aktivním potlačením hluku</h3>
           <p class="ba-col__lead">
-            <strong>Sniperdesign je webové studio</strong> pro provozovatele
-            e-shopů na Upgates a Shoptetu. 8 let stavíme weby, které AI
-            AI nástroje začínají doporučovat — ChatGPT, Perplexity, Google AI Overviews.
+            <strong>Sony WH-1000XM5 jsou bezdrátová sluchátka</strong>
+            pro cestovatele a kancelářské pracovníky. Výdrž 30 hodin,
+            Bluetooth 5.2, rychlonabíjení (3 minuty = 3 hodiny poslechu).
           </p>
         </div>
       </div>
@@ -2461,18 +2451,18 @@
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
-        <span class="chapter-label__num">01</span> · Homepage
+        <span class="chapter-label__num">02</span> · Produkt
       </span>
       <span class="content__breadcrumb">Závěrečný checklist</span>
     </header>
 
     <div class="content__body">
       <h1 class="section-title">
-        Než pustíte homepage ven — <strong>projděte tenhle seznam</strong>
+        Než pustíte produkt do e-shopu — <strong>projděte tenhle seznam</strong>
       </h1>
       <p class="lead">
         Osm otázek, na které musíte odpovědět <strong>ano</strong> dřív,
-        než bude vaše homepage hotová. Pokud na cokoli odpovídáte
+        než bude vaše produktová stránka hotová. Pokud na cokoli odpovídáte
         <em>ne</em> nebo <em>nejsem si jistý/á</em>, vraťte se na příslušnou
         stránku Packu.
       </p>
@@ -2481,57 +2471,57 @@
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má homepage jasné H1, které říká, co konkrétně nabízíte a komu?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Žádné „Vítejte", „Komplexní řešení" ani „Kvalita na prvním místě".</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má produkt jasný název (značka + model + klíčový parametr)?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Ne „Sluchátka SPORT". Ano „Sony WH-1000XM5 — bezdrátová sluchátka s potlačením hluku".</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Je hned pod úvodem krátká odpověď 40–60 slov?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Začíná „X je…" s konkrétním faktem a důsledkem pro čtenáře. AI ji vytahuje jako citaci.</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Je krátká odpověď 40–60 slov hned pod názvem produktu?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Definice + klíčový parametr + kdy se vyplatí + co je v balení. AI ji vytahuje jako citaci.</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Jsou na stránce 3–5 konkrétní důvody, proč vám věřit?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Loga klientů, ocenění, čísla. Ne „mnoholetá tradice".</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Je popis produktu originální (ne kopie od dodavatele)?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Alespoň 200–400 slov originálního textu — pro koho, kdy se vyplatí, čím se liší od podobných produktů.</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Vedou CTA tlačítka k jasné konkrétní akci?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Ne „Klikněte zde" / „Více informací". Spíš „Pošlete zprávu", „Stáhnout PDF", „Koupit za X Kč".</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má produkt tabulku parametrů (rozměry, hmotnost, výkon, materiál)?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Strukturovaná data — Google AI Overviews a ChatGPT z ní vytahují konkrétní fakta.</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Jsou klíčové služby / kategorie / produkty prolinkované z homepage?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">AI rozpozná hloubku tématu, když z homepage vedou odkazy na detailní podstránky.</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Jsou recenze konkrétní (ne generické 5★ blbiny)?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Skutečné citace zákazníků se Review schema. AI nástroje vytahují konkrétní zkušenosti, generická 5★ ignorují.</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má homepage 4–6 skutečných častých otázek zákazníků?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Použijte dotazy z e-mailů, chatu, obchodních hovorů nebo Google Search Console — ne otázky vymyšlené od stolu.</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má produkt 4–6 reálných častých otázek?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Použijte dotazy z e-mailů, chatu, recenzí konkurence — ne otázky vymyšlené od stolu.</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má homepage strukturovaná data o firmě a webu?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Předali jste vývojáři kód z kapitol 12 a 13? Ověřte v Google Rich Results Test.</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Má produkt strukturovaná data Product + Offer + AggregateRating?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Předali jste vývojáři kód ze stránek 12 a 13? Ověřte cenu, dostupnost a hodnocení v Google Rich Results Test.</span>
           </div>
         </li>
         <li style="display: grid; grid-template-columns: 10mm 1fr; gap: 3.5mm; padding: 2.5mm 4mm; background: var(--paper-deep); border-left: 1mm solid var(--sd-violet); border-radius: 1.5mm;">
           <div style="width: 7mm; height: 7mm; border: 1.5px solid var(--sd-violet); border-radius: 1.5mm; margin-top: 0.5mm;"></div>
           <div>
-            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Otestovali jste homepage v ChatGPT / Perplexity?</strong>
-            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Zadejte „Co dělá [vaše firma]?" — AI by měla odpovědět věcně a uvést váš web jako zdroj.</span>
+            <strong style="display: block; color: var(--ink); font-size: 10pt; line-height: 1.35; margin-bottom: 1mm;">Otestovali jste produkt v ChatGPT / Perplexity?</strong>
+            <span style="font-size: 8.5pt; color: var(--ink-muted); line-height: 1.4;">Zadejte „nejlepší [typ produktu] pro [účel]" — AI by mohla zmínit váš produkt jako jeden z relevantních.</span>
           </div>
         </li>
       </ol>
@@ -2539,8 +2529,8 @@
       <div class="info-box" style="margin-top: 7mm; border-left-color: var(--sd-violet);">
         <div class="info-box__label" style="color: var(--sd-violet);">Příští kapitola</div>
         <p class="info-box__text">
-          Homepage je hotová. <strong>Kapitola 02 (Produktová stránka)</strong>
-          ukazuje, jak stejné principy aplikovat na detailu produktu.
+          Produktová stránka je hotová. <strong>Kapitola 03 (Kategoriální stránka)</strong>
+          ukazuje, jak strukturu listingu připravit pro AI vyhledávání.
           Postup je stejný: wireframe → principy → před/po → šablony →
           strukturovaná data → checklist.
         </p>
