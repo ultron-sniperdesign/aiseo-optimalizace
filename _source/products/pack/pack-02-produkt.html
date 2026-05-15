@@ -417,6 +417,24 @@
     padding-bottom: 4mm;
     margin-bottom: 7mm;
   }
+  /* Nadpis wireframu jako bridge na patě předchozí stránky. */
+  .wf-header--bridge {
+    position: absolute;
+    left: 22mm;
+    right: 22mm;
+    bottom: 18mm;
+    margin-bottom: 0;
+    padding-top: 6mm;
+    border-top: 1px solid var(--rule);
+    border-bottom: none;
+    gap: 6mm;
+  }
+  .wf-header--bridge .wf-header__title { font-size: 14pt; }
+  .wf-header--bridge .wf-header__type { white-space: nowrap; }
+  /* Stránka wireframu bez vlastní hlavičky (přesunuta na patu str. 6). */
+  .wf-page--no-header {
+    padding-top: 14mm;
+  }
   .wf-header__title {
     font-family: "Geist", sans-serif;
     font-size: 16pt;
@@ -1744,16 +1762,18 @@
       </ul>
     </div>
   </div>
+
+  <!-- Bridge na další stránku — nadpis wireframu sedí na patě str. 6. -->
+  <div class="wf-header wf-header--bridge">
+    <h2 class="wf-header__title">Produktová stránka — wireframe s anotacemi</h2>
+    <span class="wf-header__type">Typ · Detail produktu (e-shop)</span>
+  </div>
 </section>
 
 <!-- ============================================================ -->
 <!-- PAGE 7 — ANOTOVANÝ WIREFRAME (Free PDF transplant)          -->
 <!-- ============================================================ -->
-<section class="page wf-page">
-  <div class="wf-header">
-    <h2 class="wf-header__title">Produktová stránka — wireframe s anotacemi</h2>
-    <span class="wf-header__type">Typ · Detail produktu (e-shop)</span>
-  </div>
+<section class="page wf-page wf-page--no-header">
 
   <div class="wf-layout">
     <!-- Wireframe column -->
