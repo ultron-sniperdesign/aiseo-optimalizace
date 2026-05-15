@@ -365,34 +365,41 @@
   /* Glossary */
   .glossary {
     column-count: 2;
-    column-gap: 10mm;
+    column-gap: 8mm;
     column-rule: 1px solid var(--rule);
   }
   .glossary-item {
     break-inside: avoid;
-    margin-bottom: 5mm;
+    margin-bottom: 3mm;
   }
   .glossary-term {
     font-family: "Geist", sans-serif;
     font-weight: 700;
-    font-size: 10pt;
+    font-size: 9.5pt;
     color: var(--ink);
-    margin-bottom: 1mm;
+    margin-bottom: 0.8mm;
     letter-spacing: -0.01em;
+    line-height: 1.25;
   }
   .glossary-term-abbr {
     font-family: "JetBrains Mono", monospace;
-    font-size: 7.5pt;
+    font-size: 7pt;
     color: var(--sd-violet);
     font-weight: 600;
     margin-left: 2mm;
     letter-spacing: 0.06em;
   }
   .glossary-def {
-    font-size: 9pt;
-    line-height: 1.5;
+    font-size: 8.2pt;
+    line-height: 1.4;
     color: var(--ink-muted);
   }
+  /* Compact lead pro stránku glosáře (kvůli 20 položkám) */
+  .page--glossary .lead { margin-bottom: 4mm; font-size: 10.5pt; }
+  .page--glossary h1.section-title { margin-bottom: 4mm; font-size: 22pt; }
+  .page--glossary .content { padding: 18mm 22mm 16mm 22mm; }
+  .page--glossary .content__header { padding-bottom: 4mm; margin-bottom: 5mm; }
+  .page--glossary .content__footer { padding-top: 4mm; margin-top: 5mm; }
 
   /* Info box */
   .info-box {
@@ -456,8 +463,8 @@
         Pokrytí celého webu
       </div>
       <div class="cover__meta-item">
-        <strong>1 490 Kč</strong>
-        Jednorázová licence
+        <strong>Licence</strong>
+        Vlastní web i klientské projekty
       </div>
     </div>
     <div class="cover__credit">
@@ -551,7 +558,7 @@
           <span class="toc-num">07</span>
           <span class="toc-title">
             Kontaktní stránka
-            <span class="toc-title-meta">Kontaktní údaje (NAP) · mapa · strukturovaná data pro místní firmu · konzistentní identita</span>
+            <span class="toc-title-meta">Kontaktní údaje — název, adresa, telefon · mapa · strukturovaná data pro místní firmu · konzistentní identita</span>
           </span>
           <span class="toc-page">Str. 41</span>
         </li>
@@ -590,18 +597,19 @@
         Tohle <strong>není ebook</strong>
       </h1>
       <p class="lead">
-        AI SEO Wireframe Pack je <strong>framework, podle kterého
-        postavíte web srozumitelný pro AI vyhledávání</strong> — ChatGPT,
-        Perplexity, Google AI Overviews i klasický Google Search.
+        AI SEO Wireframe Pack je <strong>praktický pracovní rámec —
+        ukazuje, jak poskládat klíčové stránky webu tak, aby byly
+        srozumitelnější</strong> pro Google, ChatGPT, Perplexity i Google
+        AI Overviews.
       </p>
 
       <h2 class="subsection-title">Co tady najdete</h2>
       <p class="body">
-        Sedm wireframů pro sedm typů stránek, které tvoří kostru jakéhokoli
-        webu nebo e-shopu. Pro každý wireframe: anotace u každého prvku
-        (proč tam je a jaký signál pro AI generuje), šablony textů
-        ke kopírování a ukázku strukturovaných dat (JSON-LD blok) jako
-        podklad pro vývojáře.
+        Sedm wireframů pro sedm typů stránek, které tvoří kostru většiny
+        firemních webů a e-shopů. Pro každý wireframe: anotace u každého
+        prvku (proč tam je a jak pomáhá vyhledávačům a AI lépe pochopit
+        obsah stránky), šablony textů ke kopírování a ukázku strukturovaných
+        dat (JSON-LD blok) jako podklad pro vývojáře.
       </p>
       <p class="body">
         Plus krok-za-krokem návod, jak Pack aplikovat na váš stávající
@@ -629,10 +637,10 @@
       <div class="info-box">
         <div class="info-box__label">Edition 1 · 2026</div>
         <p class="info-box__text">
-          AI vyhledávání se vyvíjí. Pack udržujeme aktuální. Drobné
-          aktualizace (nová pravidla pro strukturovaná data, změny v tom,
-          jak ChatGPT a Perplexity uvádějí zdroje) dostanete
-          <strong>zdarma e-mailem</strong>.
+          AI vyhledávání se vyvíjí. Pack udržujeme aktuální. Pokud vydáme
+          drobnou aktualizaci této edice (nová pravidla pro strukturovaná
+          data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje),
+          pošleme ji držitelům licence <strong>zdarma e-mailem</strong>.
           Pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.
         </p>
       </div>
@@ -689,13 +697,16 @@
               Začněte s homepage (Kapitola 01)
               </div>
             <div class="workflow-step__desc">
-              Homepage má nejvyšší dopad — vidí ji nejvíc návštěvníků
-              a AI ji často bere jako hlavní zdroj informací o vašem
-              byznysu. Aplikujte wireframe a šablonu textů; podklady pro
-              strukturovaná data předejte vývojáři. Nasazení ověřte
-              v Google Rich Results Test. V ChatGPT si orientačně vyzkoušejte
-              dotaz „Co dělá [vaše firma]?" — je to orientační kontrola,
-              ne důkaz.
+              Homepage má obvykle vysoký dopad — slouží jako hlavní zdroj
+              informací o firmě a značce. U e-shopů ale mohou mít stejně
+              vysokou prioritu top kategorie a nejprodávanější produkty.
+              Aplikujte wireframe a šablonu textů; podklady pro strukturovaná
+              data předejte vývojáři. Nasazení ověřte v Google Rich Results
+              Test (bezplatný nástroj — vložíte URL a zkontrolujete, jestli
+              Google čte strukturovaná data bez chyb). V ChatGPT si
+              orientačně vyzkoušejte dotaz „Co dělá [vaše firma]?" — dotaz,
+              datum a odpověď si uložte, ať můžete porovnat změny po
+              dalších úpravách. Je to orientační kontrola, ne důkaz.
             </div>
           </div>
         </div>
@@ -720,8 +731,11 @@
               </div>
             <div class="workflow-step__desc">
               Po každé úpravě ověřte strukturovaná data v Google Rich
-              Results Test, indexaci v Google Search Console a zmínky
-              v ChatGPT / Perplexity ručním dotazem.
+              Results Test a zařazení stránky v Google Search Console
+              (bezplatný nástroj od Googlu — ukáže, jestli Google vaše
+              stránky zná, umí je načíst a jak se zobrazují ve vyhledávání).
+              Zmínky v ChatGPT / Perplexity zkontrolujte ručním dotazem
+              a odpovědi si průběžně logujte pro porovnání v čase.
             </div>
           </div>
         </div>
@@ -738,7 +752,7 @@
 <!-- ============================================================ -->
 <!-- PAGE 5 — GLOSÁŘ                                              -->
 <!-- ============================================================ -->
-<section class="page">
+<section class="page page--glossary">
   <div class="content">
     <header class="content__header">
       <span class="chapter-label">
@@ -759,7 +773,7 @@
       <div class="glossary">
         <div class="glossary-item">
           <div class="glossary-term">SEO <span class="glossary-term-abbr">Search Engine Optimization</span></div>
-          <div class="glossary-def">Optimalizace pro klasické vyhledávače (Google, Seznam). Pokrývá technické zdraví webu, content kvalitu a backlink profil.</div>
+          <div class="glossary-def">Optimalizace pro klasické vyhledávače (Google, Seznam). Pokrývá technické fungování webu, kvalitu obsahu a odkazy z jiných webů, které na vás vedou.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">GEO <span class="glossary-term-abbr">Generative Engine Optimization</span></div>
@@ -767,11 +781,11 @@
         </div>
         <div class="glossary-item">
           <div class="glossary-term">AEO <span class="glossary-term-abbr">Answer Engine Optimization</span></div>
-          <div class="glossary-def">Optimalizace pro answer engines — Google Featured Snippets, AI Overviews, voice search. Cíl: poskytnout odpověď ve formátu, který engine vytáhne.</div>
+          <div class="glossary-def">Úprava obsahu tak, aby z něj vyhledávač mohl snadno převzít krátkou přímou odpověď — například do zvýrazněné odpovědi v Googlu, AI Overviews nebo hlasového vyhledávání.</div>
         </div>
         <div class="glossary-item">
-          <div class="glossary-term">AIO <span class="glossary-term-abbr">AI Overviews / AI Optimization</span></div>
-          <div class="glossary-def">Buď konkrétní Google funkce (AI Overviews — generované shrnutí nad výsledky), nebo deštníkový termín pro celkovou AI optimalizaci.</div>
+          <div class="glossary-term">AIO <span class="glossary-term-abbr">AI Overviews</span></div>
+          <div class="glossary-def">AI shrnutí, které Google zobrazuje nad klasickými výsledky vyhledávání. V Packu používáme AIO pouze v tomto významu (Google funkce).</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Krátká odpověď <span class="glossary-term-abbr">answer block</span></div>
@@ -779,7 +793,7 @@
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Strukturovaná data <span class="glossary-term-abbr">schema markup</span></div>
-          <div class="glossary-def">Strojově čitelný popis obsahu stránky v JSON-LD formátu. Pomáhá vyhledávačům i AI rozpoznat typ obsahu. Připravuje je vývojář — Pack k nim dává ukázku jako podklad.</div>
+          <div class="glossary-def">Doplňkové informace ve zdrojovém kódu stránky, které vyhledávačům říkají například: toto je produkt, toto je cena, toto jsou časté dotazy, toto je adresa firmy. Obvykle ve formátu JSON-LD. Připravuje je vývojář — Pack k nim dává ukázku jako podklad.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Vzor titulku <span class="glossary-term-abbr">title pattern</span></div>
@@ -787,11 +801,11 @@
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Strukturovaná data pro časté dotazy <span class="glossary-term-abbr">FAQPage</span></div>
-          <div class="glossary-def">Strukturovaná data, která obsahují otázky a odpovědi ze stránky. Vyhledávače i AI je mohou použít jako přímou citaci.</div>
+          <div class="glossary-def">FAQPage je technický název pro typ strukturovaných dat, který označuje časté dotazy a odpovědi na stránce. Vyhledávače i AI je mohou použít jako přímou citaci.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Prolinkování mezi stránkami <span class="glossary-term-abbr">hub-and-spoke</span></div>
-          <div class="glossary-def">Obsahová struktura: jeden hlavní rozcestníkový článek + skupina podpůrných detailních článků, navzájem propojené odkazy. Ukazuje AI hloubku tématu.</div>
+          <div class="glossary-def">Obsahová struktura: jedna hlavní stránka k tématu + skupina podpůrných detailních stránek nebo článků, navzájem propojených odkazy. Ukazuje AI hloubku tématu.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Kontaktní údaje (NAP) <span class="glossary-term-abbr">Name · Address · Phone</span></div>
@@ -799,23 +813,43 @@
         </div>
         <div class="glossary-item">
           <div class="glossary-term">E-E-A-T <span class="glossary-term-abbr">Experience · Expertise · Authoritativeness · Trustworthiness</span></div>
-          <div class="glossary-def">Google kvalitativní framework. AI nástroje hodnotí podobně — autorství, ověřitelnost, reputace zdroje.</div>
+          <div class="glossary-def">Google kvalitativní framework. U AI nástrojů podobné prvky pomáhají zvyšovat důvěryhodnost obsahu — jasné autorství, ověřitelné informace a reputace zdroje.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Podíl citací <span class="glossary-term-abbr">citation share</span></div>
-          <div class="glossary-def">% případů, kdy AI nástroj cituje váš web v odpovědi na relevantní dotaz. Hlavní ukazatel úspěchu GEO.</div>
+          <div class="glossary-def">Kolikrát se váš web objeví jako zdroj v odpovědích AI nástroje na sadu předem vybraných dotazů. Měří se ruční kontrolou nebo specializovanými nástroji. Jeden z hlavních ukazatelů GEO.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">Hustota faktů <span class="glossary-term-abbr">fact density</span></div>
-          <div class="glossary-def">Počet konkrétních faktů (čísla, jména, data) na 100 slov textu. Vyšší = vyšší šance na citaci v AI odpovědi.</div>
+          <div class="glossary-def">Dobře podané konkrétní informace (čísla, jména, data) mohou zvýšit šanci, že si AI z textu vezme citovatelnou pasáž. Nejde ale o mechanické počítání faktů — důležitá je přesnost, kontext a ověřitelnost.</div>
         </div>
         <div class="glossary-item">
-          <div class="glossary-term">Načitatelná stránka <span class="glossary-term-abbr">crawlable</span></div>
-          <div class="glossary-def">Stránka, kterou si vyhledávací robot nebo AI bot dokáže načíst a přečíst. Weby silně závislé na JavaScriptu bývají hůř načitatelné.</div>
+          <div class="glossary-term">Načitatelná stránka <span class="glossary-term-abbr">crawlable / crawler</span></div>
+          <div class="glossary-def">Stránka, kterou si vyhledávací robot (crawler) nebo AI bot dokáže otevřít, načíst a přečíst. Pokud je důležitý obsah schovaný za JavaScriptem nebo přihlášením, může být pro vyhledávače hůř dostupný.</div>
         </div>
         <div class="glossary-item">
           <div class="glossary-term">JSON-LD</div>
-          <div class="glossary-def">Formát strukturovaných dat (JSON Linked Data). Vkládá se do &lt;script type="application/ld+json"&gt; v head nebo body stránky.</div>
+          <div class="glossary-def">Nejčastější formát pro zápis strukturovaných dat (JSON Linked Data). Netechnik ho obvykle sám nevkládá do webu — připraví podklad a předá ho vývojáři nebo správci webu.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Wireframe</div>
+          <div class="glossary-def">Zjednodušený návrh stránky. Neřeší grafiku do detailu, ale ukazuje, jaké bloky má stránka obsahovat a v jakém pořadí. Základní pomůcka tohoto Packu.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Indexace <span class="glossary-term-abbr">indexing</span></div>
+          <div class="glossary-def">Stav, kdy Google stránku zná a může ji zařadit do výsledků vyhledávání. Neznamená to automaticky, že stránka bude vysoko — jen že se vůbec zobrazit může.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Google Search Console <span class="glossary-term-abbr">GSC</span></div>
+          <div class="glossary-def">Bezplatný nástroj od Googlu. Ukazuje, jestli Google vaše stránky zná, umí je načíst a jak se zobrazují ve vyhledávání. Klíčový nástroj pro kontrolu nasazení.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Google Rich Results Test <span class="glossary-term-abbr">RRT</span></div>
+          <div class="glossary-def">Bezplatný nástroj, ve kterém ověříte, jestli Google správně čte strukturovaná data na stránce. Vložíte URL nebo kód a uvidíte, jaké typy obsahu Google rozpoznal.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Canonical / noindex</div>
+          <div class="glossary-def">Technické pokyny pro vyhledávače. Canonical říká, která verze podobné stránky je hlavní. Noindex říká, že stránku Google nemá zařazovat do výsledků. Nastavuje vývojář nebo správce webu.</div>
         </div>
       </div>
     </div>
