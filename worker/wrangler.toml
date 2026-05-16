@@ -11,6 +11,8 @@ compatibility_date = "2026-05-01"
 #
 # Public env vars (OK v gitu):
 [vars]
-ECOMAIL_LIST_ID = "PLACEHOLDER_LIST_ID"
+# List 12 = "aiseo-optimalizace.cz" (sdílený s free flow /navod-zdarma/).
+# Paid zákazníci jsou tagováni "pack-paid", free subscribers jsou bez tagu.
+ECOMAIL_LIST_ID = "12"
 # Volitelný filter: pokud nastaveno, worker zpracuje webhook jen pro tento Stripe Product ID
 EXPECTED_PRODUCT_ID = ""
