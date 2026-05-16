@@ -5,7 +5,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 
 const pageTitle = "AI SEO Wireframe Pack — sedm typů stránek pro AI vyhledávání";
 const pageDescription =
-  "Pack obsahuje sedm typů stránek s hotovými texty: homepage, produkt, kategorie, blog (článek + výpis), prodejní landing a kontakt. Aplikujete na svůj web během odpoledne. 1 490 Kč jednorázově.";
+  "Pack obsahuje sedm typů stránek s hotovými texty: homepage, produkt, kategorie, blog (článek + výpis), prodejní landing a kontakt. Master PDF má 85 stran. Aplikujete na svůj web během odpoledne. 1 490 Kč jednorázově.";
 
 /**
  * STRIPE CHECKOUT URL — placeholder dokud nedorazí reálná URL.
@@ -23,7 +23,7 @@ const faqJsonLd = {
       name: "Co konkrétně Pack obsahuje?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou anotovaný wireframe, šablony textů a schema markup příklady (Product, FAQPage, Article, LocalBusiness). Plus krok-za-krokem návod, jak to aplikovat na váš web. Vše v jednom master PDF (~50 stran).",
+        text: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou anotovaný wireframe, šablony textů a ukázky strukturovaných dat (pro produkt, časté dotazy, článek, místní firmu). Plus krok-za-krokem návod, jak to aplikovat na váš web. Vše v jednom master PDF (85 stran).",
       },
     },
     {
@@ -31,7 +31,7 @@ const faqJsonLd = {
       name: "Mohu Pack použít na jakémkoli CMS?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ano. Pack je framework, ne plugin. Wireframy, šablony textů a schema markup příklady aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
+        text: "Ano. Pack je praktický pracovní rámec, ne plugin. Wireframy, šablony textů a ukázky strukturovaných dat aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
       },
     },
     {
@@ -39,7 +39,7 @@ const faqJsonLd = {
       name: "Co když si nejsem jistý, jestli to zvládnu?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, schema markup, struktura) zvládnete sami za odpoledne. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniperdesign za 9 990 Kč — projdeme váš web a předáme prioritní seznam úprav.",
+        text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, struktura) zvládnete sami za odpoledne. Strukturovaná data připravíte jako podklad a předáte vývojáři nebo správci webu. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniperdesign za 9 990 Kč — projdeme váš web a předáme prioritní seznam úprav.",
       },
     },
     {
@@ -47,7 +47,7 @@ const faqJsonLd = {
       name: "Dostanu aktualizace Packu, pokud se AI SEO změní?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ano. AI vyhledávání se vyvíjí, Pack udržujeme aktuální. Drobné aktualizace (nová schema markup pravidla, změny v ChatGPT/Perplexity citation systémech) dostanete zdarma e-mailem. Pokud bude potřeba zásadní revize struktury (např. nový typ AI engine), oznámíme to dopředu — typicky 1× ročně.",
+        text: "Ano. AI vyhledávání se vyvíjí, Pack udržujeme aktuální. Pokud vydáme drobnou aktualizaci této edice (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje), pošleme ji držitelům licence zdarma e-mailem. Pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
       },
     },
     {
@@ -72,42 +72,42 @@ const pageTypes = [
   {
     num: 2,
     title: "Produktová stránka",
-    desc: "Detail produktu — title pattern, Product schema, FAQ se strukturovanými daty, related products. AI ji rozpozná jako shopable.",
+    desc: "Detail produktu — vzor titulku, strukturovaná data pro produkt (Product), časté dotazy se strukturovanými daty, související produkty. AI ji rozpozná jako nakupovatelnou stránku.",
     pageTitle: "Produkt",
     tone: "primary" as const,
   },
   {
     num: 3,
     title: "Kategoriální stránka",
-    desc: "Listing s filtry, kategoriální popis pro AI, schema markup CollectionPage, AI-friendly hierarchie značek a podtřídění.",
+    desc: "Výpis s filtry, kategoriální popis pro AI, strukturovaná data pro kategorii (CollectionPage, ItemList), přehledná hierarchie značek a podtřídění.",
     pageTitle: "Kategorie",
     tone: "primary" as const,
   },
   {
     num: 4,
     title: "Blog článek",
-    desc: "Detail článku s answer block 40–60 slov, FAQPage schema, strukturovaná data autora. Citovatelný v ChatGPT i Google AI Overviews.",
+    desc: "Detail článku s krátkou odpovědí 40–60 slov, strukturovanými daty pro časté dotazy (FAQPage) a informacemi o autorovi. Citovatelný v ChatGPT i Google AI Overviews.",
     pageTitle: "Blog článek",
     tone: "accent" as const,
   },
   {
     num: 5,
     title: "Blog výpis článků",
-    desc: "Listing článků s filtry, paginace, autoreferenční schema, hub-and-spoke prolinkování pro AI rozpoznání tématu.",
+    desc: "Výpis článků s filtry, stránkování, prolinkování mezi hlavními a podpůrnými články (hub-and-spoke) pro AI rozpoznání tématu.",
     pageTitle: "Blog výpis",
     tone: "accent" as const,
   },
   {
     num: 6,
     title: "Prodejní landing",
-    desc: "Pro službu nebo produkt. Varianta pro lead generation (form pro sběr e-mailů) i pro direct-purchase (CTA s odkazem na checkout). Social proof, FAQ, risk reduction — vše ready.",
+    desc: "Pro službu nebo produkt. Varianta pro získávání kontaktů (formulář pro sběr e-mailů) i pro přímý prodej (tlačítko s odkazem na pokladnu). Reference, časté dotazy, snížení obav — vše připravené.",
     pageTitle: "Prodejní landing",
     tone: "accent" as const,
   },
   {
     num: 7,
     title: "Kontaktní stránka",
-    desc: "Kontaktní formulář, mapa, NAP data (Name, Address, Phone), LocalBusiness schema. AI ji rozpozná jako oficiální entity contact.",
+    desc: "Kontaktní formulář, mapa, kontaktní údaje — název, adresa, telefon (NAP), strukturovaná data pro místní firmu (LocalBusiness). AI ji rozpozná jako oficiální kontakt firmy.",
     pageTitle: "Kontakt",
     tone: "neutral" as const,
   },
@@ -130,9 +130,10 @@ const pageTypes = [
             <strong>Čím déle čekáte, tím víc obsahu pak budete předělávat.</strong>
           </p>
           <p class="pack-hero__lead">
-            Wireframe Pack obsahuje sedm typů stránek se šablonami textů, schema markupem
-            a krok-za-krokem návodem aplikace. Vše v jednom master PDF (~50 stran).
-            Aplikujete na svůj web během odpoledne — bez konzultantů, bez měsíců práce.
+            Wireframe Pack obsahuje sedm typů stránek se šablonami textů, ukázkami
+            strukturovaných dat pro vývojáře a krok-za-krokem návodem aplikace. Vše
+            v jednom master PDF (85 stran). Aplikujete na svůj web během odpoledne —
+            bez konzultantů, bez měsíců práce.
           </p>
 
           <div class="pack-hero__pricing">
@@ -167,9 +168,9 @@ const pageTypes = [
           <aside class="pack-delivery" aria-label="Co dostanete po zaplacení">
             <p class="pack-delivery__label">Po zaplacení dostanete</p>
             <ul class="pack-delivery__list">
-              <li>Master PDF (~50 stran)</li>
+              <li>Master PDF (85 stran)</li>
               <li>7 anotovaných wireframů</li>
-              <li>Textové šablony a schema příklady</li>
+              <li>Textové šablony a ukázky strukturovaných dat</li>
               <li>Fakturu na firmu</li>
             </ul>
             <p class="pack-delivery__note">Vše okamžitě na e-mail po platbě.</p>
@@ -201,12 +202,12 @@ const pageTypes = [
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">01</span> Co Pack obsahuje</span>
         <h2 class="lp-section__title">
-          Sedm typů stránek, které <strong>tvoří kostru jakéhokoli webu</strong>
+          Sedm typů stránek, které <strong>tvoří kostru většiny firemních webů a e-shopů</strong>
         </h2>
         <p class="lp-section__lead">
           Každá stránka má vlastní wireframe s anotacemi, šablonu textů,
-          schema markup příklad a vysvětlení, jak signalizuje AI nástrojům
-          obsah a kontext.
+          ukázku strukturovaných dat a vysvětlení, jak pomáhá vyhledávačům
+          a AI lépe pochopit obsah stránky.
         </p>
       </header>
 
@@ -230,8 +231,8 @@ const pageTypes = [
         </h2>
         <p class="lp-section__lead">
           Každý ze 7 typů stránek obsahuje wireframe, anotace, šablonu
-          textů a schema markup. Tady je, jak se to skládá u produktové
-          stránky:
+          textů a ukázku strukturovaných dat. Tady je, jak se to skládá
+          u produktové stránky:
         </p>
       </header>
 
@@ -241,7 +242,7 @@ const pageTypes = [
             <span class="pack-sample__num">01</span>
             <div class="pack-sample__body">
               <strong>Hero s názvem produktu a hlavním benefitem</strong>
-              <p>Title pattern pro AI citaci. Krátká anotace (40–60 slov) hned pod titulem — AI nástroje ji vytahují jako přímou odpověď.</p>
+              <p>Vzor titulku pro AI citaci. Krátká odpověď (40–60 slov) hned pod titulkem — AI nástroje ji vytahují jako přímou odpověď.</p>
             </div>
           </li>
           <li>
@@ -254,22 +255,22 @@ const pageTypes = [
           <li>
             <span class="pack-sample__num">03</span>
             <div class="pack-sample__body">
-              <strong>FAQ pro nákupní námitky</strong>
-              <p>Otázky a odpovědi s FAQPage schema — ChatGPT a Perplexity vytahují přímé citace, Google AI Overviews je zobrazuje.</p>
+              <strong>Časté dotazy pro nákupní námitky</strong>
+              <p>Otázky a odpovědi se strukturovanými daty (FAQPage) — ChatGPT a Perplexity vytahují přímé citace, Google AI Overviews je zobrazuje.</p>
             </div>
           </li>
           <li>
             <span class="pack-sample__num">04</span>
             <div class="pack-sample__body">
-              <strong>Product schema JSON-LD</strong>
-              <p>Strukturovaná data o produktu, ceně, dostupnosti — připravené pro Google Rich Results i AI nástroje.</p>
+              <strong>Strukturovaná data pro produkt (Product, JSON-LD)</strong>
+              <p>Údaje o produktu, ceně a dostupnosti ve strojově čitelném formátu — připravené pro Google Rich Results Test i AI nástroje. Podklad k předání vývojáři.</p>
             </div>
           </li>
           <li>
             <span class="pack-sample__num">05</span>
             <div class="pack-sample__body">
-              <strong>Related products + interní prolinkování</strong>
-              <p>Hub-and-spoke pattern, aby AI rozpoznala kategorii a propojila váš sortiment do tematických clusterů.</p>
+              <strong>Související produkty + interní prolinkování</strong>
+              <p>Prolinkování mezi stránkami (hub-and-spoke), aby AI rozpoznala kategorii a propojila váš sortiment do tematických celků.</p>
             </div>
           </li>
         </ol>
@@ -285,22 +286,23 @@ const pageTypes = [
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">03</span> Co dostanete po koupi</span>
         <h2 class="lp-section__title">
-          Sedm stránek, šablony, schema a návod <strong>jako jeden balík</strong>
+          Sedm stránek, šablony, strukturovaná data a návod <strong>jako jeden balík</strong>
         </h2>
       </header>
 
       <ul class="pack-deliverables">
         <li>
           <strong>7 wireframů s anotacemi</strong> — každý prvek vysvětlený, proč tam je
-          a jaký signál pro AI generuje
+          a jak pomáhá vyhledávačům a AI lépe pochopit obsah stránky
         </li>
         <li>
-          <strong>Šablony textů pro každý typ stránky</strong> — title pattern, meta
-          description, headings, body copy, FAQ — vše ready ke kopírování
+          <strong>Šablony textů pro každý typ stránky</strong> — vzor titulku, meta
+          popisek, nadpisy, hlavní text, časté dotazy — vše ready ke kopírování
         </li>
         <li>
-          <strong>Schema markup příklady</strong> — Product, FAQPage, Article,
-          BreadcrumbList, LocalBusiness, Organization — JSON-LD copy-paste
+          <strong>Ukázky strukturovaných dat</strong> — Product, FAQPage, Article,
+          BreadcrumbList, LocalBusiness, Organization v JSON-LD — podklad k předání
+          vývojáři
         </li>
         <li>
           <strong>Krok-za-krokem návod aplikace</strong> — checklist, jak Pack aplikovat
@@ -321,7 +323,7 @@ const pageTypes = [
           Pack <strong>nejvíc využijí ti, kdo mají co prodávat</strong>
         </h2>
         <p class="lp-section__lead">
-          Pack je framework — stránka po stránce. Hodí se webům, které
+          Pack je praktický pracovní rámec — stránka po stránce. Hodí se webům, které
           chtějí být vidět v AI odpovědích a získat z nich konkrétní
           akce: nákupy, leady, kontakty.
         </p>
@@ -416,7 +418,7 @@ const pageTypes = [
           <strong>celý, ne jen homepage</strong>
         </h2>
         <p class="pack-final__lead">
-          Sedm typů stránek, šablony textů, schema markup a krok-za-krokem návod.
+          Sedm typů stránek, šablony textů, strukturovaná data a krok-za-krokem návod.
           <strong>1&nbsp;490&nbsp;Kč jednorázově.</strong> Žádné předplatné,
           žádné skryté poplatky.
         </p>
