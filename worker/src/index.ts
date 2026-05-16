@@ -101,7 +101,11 @@ export default {
             name,
             tags: ["pack-paid"],
           },
-          trigger_autoresponders: true,
+          // FALSE schválně: free pack autoresponder (trigger=subscribed) by se
+          // jinak zavolal i pro paid zákazníky → duplicitní e-mail. Paid
+          // delivery e-mail je samostatná Ecomail automation s triggerem
+          // "tag added: pack-paid", která je tagem zavolaná nezávisle.
+          trigger_autoresponders: false,
           update_existing: true,
         }),
       }

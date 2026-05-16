@@ -63,15 +63,28 @@ V Stripe Dashboard:
 
 ## Ecomail setup
 
+**Architektura: jeden list (sdílený s free flow), tag `pack-paid` na paid zákazníky.**
+
+Důvod: zákazník je v Ecomailu jen jednou, žádné duplicity. Free i paid
+flow běží jako oddělené automatizace nad stejným listem, segmentované přes
+trigger:
+
+- Free flow: form na `/navod-zdarma/` → POST na Ecomail subscribe endpoint
+  → kontakt přidán do listu (bez tagu) → automation A1 (trigger = subscribed)
+  → e-mail s free PDF
+- Paid flow: Stripe → tento worker → subscribe + tag `pack-paid` s
+  `trigger_autoresponders: false` (A1 se nezavolá) → automation A2
+  (trigger = tag added) → e-mail s paid Pack download linky
+
 V Ecomail dashboardu:
 
-1. Vytvořit list „Pack zákazníci"
-2. Zjistit ID listu (URL při editaci listu: `/lists/{ID}/...`)
-3. Vložit ID do `wrangler.toml` jako `ECOMAIL_LIST_ID`
-4. Nastavit Autoresponder pro nové kontakty v tomto listu:
-   - Trigger: "Po přihlášení do listu"
-   - E-mail obsahuje download linky na master PDF (+ jednotlivé kapitoly)
-5. API klíč: Nastavení → API → vygenerovat → uložit jako `ECOMAIL_API_KEY` secret
+1. **List**: použít existující list, do kterého chodí leady z `/navod-zdarma/`
+   (typicky ID 12 „Lead — Návod zdarma"). **Není potřeba zakládat nový.**
+2. Vložit ID listu do `wrangler.toml` jako `ECOMAIL_LIST_ID`
+3. Vytvořit **automation A2**:
+   - Trigger: "Kontaktu byl přidán tag" → tag `pack-paid`
+   - E-mail: download linky na master PDF + jednotlivé kapitoly
+4. API klíč: Nastavení → API → vygenerovat → uložit jako `ECOMAIL_API_KEY` secret
 
 ## Tail (live logs)
 
