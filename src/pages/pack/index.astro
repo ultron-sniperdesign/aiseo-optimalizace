@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-import MockupPage from "~/components/MockupPage.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 
 const pageTitle = "AI SEO Wireframe Pack — sedm typů stránek pro AI vyhledávání";
@@ -177,20 +176,28 @@ const pageTypes = [
           </aside>
         </div>
 
-        <!-- 7-page mockup focus -->
+        <!-- Hero mockup — reálné náhledy ze 4 stran master PDF -->
         <div class="pack-hero__mockup" aria-hidden="true">
           <div class="hero-focus">
             <div class="hero-focus__back hero-focus__back--1">
-              <MockupPage pageNumber={2} pageTitle="Produkt" tone="primary" totalPages={7} />
+              <img src="/pack/preview/hero-sablony-textu.png"
+                   alt="" loading="eager" width="1240" height="1754"
+                   class="hero-focus__img" />
             </div>
             <div class="hero-focus__back hero-focus__back--2">
-              <MockupPage pageNumber={5} pageTitle="Blog výpis" tone="accent" totalPages={7} />
+              <img src="/pack/preview/hero-wireframe-produkt.png"
+                   alt="" loading="eager" width="1240" height="1754"
+                   class="hero-focus__img" />
             </div>
             <div class="hero-focus__back hero-focus__back--3">
-              <MockupPage pageNumber={6} pageTitle="Prodejní landing" tone="accent" totalPages={7} />
+              <img src="/pack/preview/hero-tri-principy.png"
+                   alt="" loading="eager" width="1240" height="1754"
+                   class="hero-focus__img" />
             </div>
             <div class="hero-focus__hero">
-              <MockupPage pageNumber={1} pageTitle="Homepage" tone="primary" totalPages={7} />
+              <img src="/pack/preview/hero-wireframe-homepage.png"
+                   alt="" loading="eager" width="1240" height="1754"
+                   class="hero-focus__img" />
             </div>
           </div>
         </div>
@@ -733,6 +740,23 @@ const pageTypes = [
     transition:
       transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
       opacity 0.5s ease;
+  }
+  .hero-focus__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    background: #fafbfc;
+  }
+  .hero-focus__hero .hero-focus__img {
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.05),
+      inset 0 0 0 1px oklch(0 0 0 / 0.04);
+  }
+  .hero-focus__back .hero-focus__img {
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.08),
+      inset 0 0 0 1px oklch(0 0 0 / 0.05);
   }
   .hero-focus.is-visible .hero-focus__hero {
     opacity: 1;
