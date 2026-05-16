@@ -8,8 +8,25 @@ a Ecomail (subscribe + trigger autoresponder).
 1. Stripe pošle webhook po dokončené platbě za AI SEO Wireframe Pack
 2. Worker ověří Stripe podpis (HMAC-SHA256)
 3. Vytáhne customer e-mail + jméno z checkout session
-4. Zavolá Ecomail API `POST /lists/{id}/subscribe` s `trigger_autoresponders: true`
-5. Ecomail automation pošle PDF download e-mail
+4. **Krok A**: `POST /lists/{ECOMAIL_LIST_ID}/subscribe` s tagem `pack-paid`
+   a `trigger_autoresponders: false` → kontakt v listu + tag, **bez**
+   spuštění autorespondérů
+5. **Krok B**: `POST /pipelines/{ECOMAIL_PIPELINE_ID}/trigger` s `{email}` →
+   explicitně spustí paid delivery automation (A2)
+
+### Proč 2 calls místo tag-trigger automation
+
+Empiricky ověřeno 2026-05-16: `trigger_autoresponders: false` v subscribe
+suppressuje **všechny** trigger evaluations (nejen "subscribed" trigger pro
+free flow, ale i "tag added" trigger). To je důsledek toho, že Ecomail
+podle všeho interpretuje subscribe-with-tag jako atomic operation.
+
+Bez `trigger_autoresponders: false` by se ale free flow autoresponder (A1,
+trigger=subscribed) zavolal pro každého paid zákazníka, který přišel rovnou
+přes platbu bez free signup → duplicit e-mailů.
+
+Řešení: explicitní `POST /pipelines/{id}/trigger` mimo subscribe logiku.
+Funguje pro nové i existující kontakty.
 
 ## Lokální dev
 

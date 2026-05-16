@@ -17,6 +17,11 @@ export interface Env {
   STRIPE_WEBHOOK_SECRET: string; // whsec_...
   ECOMAIL_API_KEY: string;
   ECOMAIL_LIST_ID: string;
+  // ID Ecomail automation, která pošle paid delivery e-mail.
+  // Spouštíme explicitně přes POST /pipelines/{id}/trigger — Ecomail
+  // tag-trigger se NESPUSTÍ při subscribe s trigger_autoresponders=false
+  // (empiricky ověřeno 2026-05-16, viz README).
+  ECOMAIL_PIPELINE_ID: string;
   EXPECTED_PRODUCT_ID?: string; // volitelný filter
 }
 
@@ -86,8 +91,17 @@ export default {
 
     const name = session.customer_details?.name || "";
 
-    // Ecomail API call.
-    const ecomailRes = await fetch(
+    // Krok 1: subscribe kontakt do Ecomail listu s tagem "pack-paid".
+    //
+    // trigger_autoresponders=false: empiricky ověřeno (2026-05-16), že tento
+    // flag suppressuje VŠECHNY trigger evaluations během subscribe — tj. nejen
+    // "subscribed" trigger (A1 free flow), ale i "tag added" trigger. Bez něj
+    // by se A1 zavolala i pro paid zákazníky a poslala by jim free e-mail
+    // navíc k paid e-mailu → duplicit.
+    //
+    // update_existing=true: pokud zákazník už v listu je (přišel přes free
+    // flow), update přidá tag místo selhání.
+    const subscribeRes = await fetch(
       `https://api2.ecomailapp.cz/lists/${env.ECOMAIL_LIST_ID}/subscribe`,
       {
         method: "POST",
@@ -101,29 +115,61 @@ export default {
             name,
             tags: ["pack-paid"],
           },
-          // FALSE schválně: free pack autoresponder (trigger=subscribed) by se
-          // jinak zavolal i pro paid zákazníky → duplicitní e-mail. Paid
-          // delivery e-mail je samostatná Ecomail automation s triggerem
-          // "tag added: pack-paid", která je tagem zavolaná nezávisle.
           trigger_autoresponders: false,
           update_existing: true,
         }),
       }
     );
 
-    if (!ecomailRes.ok) {
-      const errText = await ecomailRes.text();
-      console.error("Ecomail API error", {
-        status: ecomailRes.status,
+    if (!subscribeRes.ok) {
+      const errText = await subscribeRes.text();
+      console.error("Ecomail subscribe error", {
+        status: subscribeRes.status,
         body: errText,
         email,
         sessionId: session.id,
       });
-      // Vrátíme 500 → Stripe automaticky retry s exponential backoff (až 3 dny).
       return new Response("Ecomail subscribe failed", { status: 500 });
     }
 
-    console.log("Pack delivery triggered", { email, sessionId: session.id });
+    // Krok 2: explicitně spustit paid delivery automation (A2).
+    //
+    // Proč explicit místo tag-trigger automation: krok 1 má
+    // trigger_autoresponders=false, takže tag-trigger automation by se
+    // nezavolala. Pipeline trigger endpoint běží mimo subscribe logiku
+    // a spustí konkrétní automation pro daný e-mail bez ohledu na to,
+    // jak se kontakt do listu dostal.
+    const triggerRes = await fetch(
+      `https://api2.ecomailapp.cz/pipelines/${env.ECOMAIL_PIPELINE_ID}/trigger`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Key: env.ECOMAIL_API_KEY,
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
+
+    if (!triggerRes.ok) {
+      const errText = await triggerRes.text();
+      console.error("Ecomail pipeline trigger error", {
+        status: triggerRes.status,
+        body: errText,
+        email,
+        pipelineId: env.ECOMAIL_PIPELINE_ID,
+        sessionId: session.id,
+      });
+      // Subscribe prošel, ale e-mail se neodešle. Vrátíme 500 → Stripe retry.
+      // Pozor: subscribe je idempotentní (update_existing=true), retry safe.
+      return new Response("Ecomail pipeline trigger failed", { status: 500 });
+    }
+
+    console.log("Pack delivery triggered", {
+      email,
+      sessionId: session.id,
+      pipelineId: env.ECOMAIL_PIPELINE_ID,
+    });
     return new Response("OK", { status: 200 });
   },
 };

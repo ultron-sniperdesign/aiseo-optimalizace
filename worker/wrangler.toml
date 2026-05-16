@@ -14,5 +14,9 @@ compatibility_date = "2026-05-01"
 # List 12 = "aiseo-optimalizace.cz" (sdílený s free flow /navod-zdarma/).
 # Paid zákazníci jsou tagováni "pack-paid", free subscribers jsou bez tagu.
 ECOMAIL_LIST_ID = "12"
+# Pipeline 44112 = "aiseo-optimalizace.cz - Placené PDF" automation, která
+# pošle paid delivery e-mail. Worker ji spouští explicitně přes
+# POST /pipelines/{id}/trigger (viz src/index.ts proč).
+ECOMAIL_PIPELINE_ID = "44112"
 # Volitelný filter: pokud nastaveno, worker zpracuje webhook jen pro tento Stripe Product ID
 EXPECTED_PRODUCT_ID = ""
