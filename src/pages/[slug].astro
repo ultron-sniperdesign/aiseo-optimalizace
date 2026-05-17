@@ -375,10 +375,20 @@ const ogImage = `/og/${entry.data.slug}.png`;
     padding: 0;
     margin-bottom: 2rem;
   }
-  /* Inline SniperDesignSmallContact — breathing room od okolního textu */
+  /* Inline SniperDesignSmallContact — vykreslit ve stejné šířce a poloze,
+     jako auto-mode pod článkem. Prose začíná na stejné x-pozici, kde končí
+     levý okraj auto-renderované komponenty (článek je centrovaný v max-section,
+     prose je left-aligned uvnitř s article paddingem). Stačí rozšířit šířku na
+     max-section minus 2× padding — pravý okraj pak skončí na stejném místě
+     jako u auto-renderu. Padding 0 protože šířka už počítá s vnějším paddingem. */
   .article__prose :global(.sd-small) {
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+    width: min(
+      calc(var(--max-section) - 2 * var(--space-section-x)),
+      calc(100vw - 2 * var(--space-section-x))
+    );
+    max-width: none;
+    margin: 2.5rem 0 1.5rem;
+    padding: 0;
   }
 
   /* Markdown rendered body — sans typography, friendly hierarchy */
