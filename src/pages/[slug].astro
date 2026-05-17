@@ -375,20 +375,37 @@ const ogImage = `/og/${entry.data.slug}.png`;
     padding: 0;
     margin-bottom: 2rem;
   }
-  /* Inline SniperDesignSmallContact — vykreslit ve stejné šířce a poloze,
-     jako auto-mode pod článkem. Prose začíná na stejné x-pozici, kde končí
-     levý okraj auto-renderované komponenty (článek je centrovaný v max-section,
-     prose je left-aligned uvnitř s article paddingem). Stačí rozšířit šířku na
-     max-section minus 2× padding — pravý okraj pak skončí na stejném místě
-     jako u auto-renderu. Padding 0 protože šířka už počítá s vnějším paddingem. */
+  /* Inline SniperDesignSmallContact — full-bleed approach pro vizuální paritu
+     s auto-rendrovanou verzí. Komponenta se nachází uvnitř prose (40rem,
+     left-aligned uvnitř centrovaného článku); aby vypadala stejně jako když
+     je rendrovaná jako sibling článku, dáváme jí 100vw šířku s max-width =
+     max-section, plus transform-translateX který ji vizuálně přesune
+     z prose-left zpět doleva tak, aby výsledná pozice odpovídala
+     auto-renderu (centrovanému v max-section). Transform neovlivňuje
+     layout box — následující obsah pozicujet správně. */
   .article__prose :global(.sd-small) {
-    width: min(
-      calc(var(--max-section) - 2 * var(--space-section-x)),
-      calc(100vw - 2 * var(--space-section-x))
-    );
-    max-width: none;
-    margin: 2.5rem 0 1.5rem;
-    padding: 0;
+    width: 100vw;
+    max-width: var(--max-section);
+    transform: translateX(calc(
+      -1 * (max(0px, (100vw - var(--max-section)) / 2) + var(--space-section-x))
+    ));
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  /* Article prose má agresivní :global(h2/p/a/ul/li/strong) selektory, které
+     'leakují' do komponent rendrovaných uvnitř. Komponenta SmallContact má
+     vlastní typografii (white text on dark bg, agency font, různé velikosti),
+     která by jinak prohrávala specificity proti prose pravidlům.
+     all: revert vrátí kaskádu zpět na úroveň komponenty (její vlastní scoped
+     styly pak vyhrají), bez nutnosti měnit komponentu samotnou. */
+  .article__prose :global(.sd-small) :global(h2),
+  .article__prose :global(.sd-small) :global(p),
+  .article__prose :global(.sd-small) :global(a),
+  .article__prose :global(.sd-small) :global(ul),
+  .article__prose :global(.sd-small) :global(li),
+  .article__prose :global(.sd-small) :global(strong),
+  .article__prose :global(.sd-small) :global(em) {
+    all: revert;
   }
 
   /* Markdown rendered body — sans typography, friendly hierarchy */

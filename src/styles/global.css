@@ -66,6 +66,12 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Předejít horizontálnímu scrollbaru způsobenému full-bleed bloky uvnitř
+     constraintů (např. inline SmallContact uvnitř article__prose, který
+     používá width: 100vw + transform pro vizuální paritu s auto-renderem).
+     overflow-x: clip neovlivňuje vertikální scroll, jen ořízne přesahy
+     horizontálně. */
+  overflow-x: clip;
 }
 
 body {
