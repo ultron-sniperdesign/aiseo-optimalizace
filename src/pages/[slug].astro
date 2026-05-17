@@ -375,14 +375,19 @@ const ogImage = `/og/${entry.data.slug}.png`;
     padding: 0;
     margin-bottom: 2rem;
   }
-  /* Inline SniperDesignSmallContact — breakout z 40rem prose constraintu
-     na šířku odpovídající ostatním in-article wide blokům (např. .related
-     karty 68rem). Stejný left-edge jako prose-content, rozšířený doprava
-     do article-container width. Komponenta drží vlastní inner padding
-     (clamp), takže visible block uvnitř má stejný design. */
+  /* Inline SniperDesignSmallContact — vykreslit naprosto identicky s auto-
+     rendered verzí: max-section width, centrovaný v viewportu. Trik: prose
+     je left-aligned v article (které je centrované v viewportu s max-section
+     max-width a space-section-x paddingem). Element uvnitř prose má svůj
+     left edge na článkovém content-left. Negative margin-left -space-section-x
+     ho posune o padding doleva = na article-left = přesně tam, kde leží
+     max-section centrovaný v viewportu. Pak width = max-section (capped
+     na viewport) dorazí na článkový pravý okraj. */
   .article__prose :global(.sd-small) {
-    width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
-    max-width: none;
+    width: min(var(--max-section), 100vw);
+    max-width: min(var(--max-section), 100vw);
+    margin-left: calc(-1 * var(--space-section-x));
+    margin-right: 0;
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
   }
