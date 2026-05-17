@@ -553,26 +553,44 @@ const quartet: Quartet[] = [
        PDF zdarma je hotová šablona přesně pro tento moment. -->
   <aside class="free-strip" aria-labelledby="free-strip-title">
     <div class="free-strip__inner">
+      <!-- Decorative gradient glow behind PDFs -->
+      <span class="free-strip__glow" aria-hidden="true"></span>
+
+      <div class="free-strip__visual" aria-hidden="true">
+        <div class="free-strip__pdf free-strip__pdf--back">
+          <img src="/navod-zdarma/wireframe.jpg" alt="" loading="lazy" decoding="async" width="720" height="1018" />
+        </div>
+        <div class="free-strip__pdf free-strip__pdf--front">
+          <img src="/navod-zdarma/cover.jpg" alt="" loading="lazy" decoding="async" width="720" height="1018" />
+        </div>
+        <span class="free-strip__pdf-badge">6 stran A4 · PDF</span>
+      </div>
+
       <div class="free-strip__body">
-        <span class="free-strip__badge">
+        <span class="free-strip__eyebrow">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M7 1V10M7 10L3 6M7 10L11 6M1 13H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 1V10M7 10L3 6M7 10L11 6M1 13H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          PDF zdarma
+          Návod zdarma · 0 Kč
         </span>
         <h3 id="free-strip-title" class="free-strip__title">
-          Hotový návod pro vaši <strong>homepage</strong> v AI vyhledávání
+          Šest signálů z předchozí sekce už máme <span class="free-strip__hl">připravené pro&nbsp;vaši homepage</span>
         </h3>
         <p class="free-strip__desc">
-          Šest signálů z předchozí sekce přeložených do konkrétních úprav. Šest stran A4, výměnou za e-mail.
+          Wireframe s anotacemi, tři principy, které drží strukturu, a šablony textů. Šest stran A4 v PDF — výměnou za e-mail.
         </p>
+        <ul class="free-strip__bullets">
+          <li>Wireframe homepage 1:1 s anotacemi</li>
+          <li>Šablony nadpisů, krátké odpovědi a FAQ</li>
+          <li>Checklist připravený k použití</li>
+        </ul>
+        <a href="/navod-zdarma/" class="free-strip__cta">
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1V10M7 10L3 6M7 10L11 6M1 13H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stáhnout PDF zdarma
+        </a>
       </div>
-      <a href="/navod-zdarma/" class="free-strip__cta">
-        Stáhnout zdarma
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
     </div>
   </aside>
 
@@ -1938,94 +1956,209 @@ const quartet: Quartet[] = [
   /* ===== FREE PDF STRIP ===== */
   .free-strip {
     max-width: var(--max-section);
-    margin: 0 auto;
+    margin: 4rem auto 0;
     padding: 0 var(--space-section-x);
   }
   .free-strip__inner {
-    background: linear-gradient(135deg, oklch(0.96 0.06 80) 0%, oklch(0.92 0.09 70) 100%);
-    border: 1px solid oklch(0.85 0.1 70);
-    border-radius: 16px;
-    padding: 1.75rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    align-items: flex-start;
-    box-shadow: 0 8px 24px -16px oklch(0.7 0.18 60 / 0.4);
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 80% at 90% 110%, oklch(0.32 0.13 285 / 0.45) 0%, transparent 60%),
+      linear-gradient(135deg, oklch(0.2 0.04 270) 0%, oklch(0.15 0.05 280) 100%);
+    border: 1px solid oklch(0.32 0.06 280);
+    border-radius: 20px;
+    padding: 2.25rem 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    box-shadow:
+      0 20px 50px -20px oklch(0.2 0.05 280 / 0.5),
+      0 1px 0 oklch(1 0 0 / 0.05) inset;
   }
-  @media (min-width: 760px) {
+  @media (min-width: 860px) {
     .free-strip__inner {
-      flex-direction: row;
+      grid-template-columns: minmax(280px, 360px) 1fr;
+      gap: 3.5rem;
+      padding: 3rem 3.5rem 3rem 3rem;
       align-items: center;
-      gap: 2rem;
-      padding: 1.5rem 2rem;
     }
   }
-  .free-strip__body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  .free-strip__glow {
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 60%;
+    height: 180%;
+    background: radial-gradient(closest-side, oklch(0.7 0.2 320 / 0.25) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
   }
-  .free-strip__badge {
-    display: inline-flex;
+
+  /* Visual — stacked tilted PDF previews */
+  .free-strip__visual {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    min-height: 220px;
+    display: flex;
     align-items: center;
-    gap: 0.35rem;
-    align-self: flex-start;
+    justify-content: center;
+  }
+  @media (min-width: 860px) {
+    .free-strip__visual {
+      aspect-ratio: 3 / 4;
+      min-height: 320px;
+    }
+  }
+  .free-strip__pdf {
+    position: absolute;
+    width: 62%;
+    aspect-ratio: 720 / 1018;
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+    box-shadow:
+      0 1px 0 oklch(1 0 0 / 0.15) inset,
+      0 30px 60px -20px oklch(0 0 0 / 0.55),
+      0 12px 24px -8px oklch(0 0 0 / 0.4);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .free-strip__pdf img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .free-strip__pdf--back {
+    transform: translate(18%, -4%) rotate(8deg);
+    opacity: 0.92;
+  }
+  .free-strip__pdf--front {
+    transform: translate(-12%, 6%) rotate(-6deg);
+    z-index: 2;
+  }
+  .free-strip__inner:hover .free-strip__pdf--back {
+    transform: translate(22%, -6%) rotate(10deg);
+  }
+  .free-strip__inner:hover .free-strip__pdf--front {
+    transform: translate(-16%, 8%) rotate(-8deg);
+  }
+  .free-strip__pdf-badge {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 3;
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: oklch(0.32 0.14 60);
-    background: oklch(1 0 0 / 0.6);
-    border: 1px solid oklch(0.8 0.12 70 / 0.6);
+    color: oklch(0.95 0.02 80);
+    background: oklch(0 0 0 / 0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid oklch(1 0 0 / 0.15);
     border-radius: 999px;
-    padding: 0.25rem 0.625rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* Body */
+  .free-strip__body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+  .free-strip__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(0.85 0.13 80);
+    background: oklch(0.55 0.15 70 / 0.18);
+    border: 1px solid oklch(0.7 0.15 75 / 0.4);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
   }
   .free-strip__title {
     font-family: var(--font-sans);
-    font-size: clamp(1.125rem, 2.4vw, 1.375rem);
-    font-weight: 500;
-    line-height: 1.25;
-    color: oklch(0.25 0.12 60);
+    font-size: clamp(1.375rem, 2.6vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+    color: oklch(0.98 0.01 80);
     margin: 0;
-    letter-spacing: -0.01em;
+    max-width: 28ch;
   }
-  .free-strip__title strong {
+  .free-strip__hl {
+    color: oklch(0.85 0.13 80);
     font-weight: 700;
   }
   .free-strip__desc {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
-    line-height: 1.5;
-    color: oklch(0.4 0.08 60);
+    line-height: 1.55;
+    color: oklch(0.8 0.02 280);
     margin: 0;
-    max-width: 52ch;
+    max-width: 48ch;
+  }
+  .free-strip__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0 0.5rem;
+    display: grid;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: oklch(0.88 0.015 280);
+  }
+  .free-strip__bullets li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .free-strip__bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 14px;
+    height: 14px;
+    background: no-repeat center / contain;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L6 11L12 3' stroke='%23e6c45a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
   .free-strip__cta {
-    flex-shrink: 0;
+    margin-top: 0.5rem;
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
     font-weight: 600;
-    color: oklch(1 0 0);
-    background: linear-gradient(135deg, oklch(0.55 0.15 60) 0%, oklch(0.5 0.16 55) 100%);
-    border: 1px solid oklch(0.45 0.15 55);
+    color: oklch(0.18 0.04 270);
+    background: linear-gradient(135deg, oklch(0.92 0.1 80) 0%, oklch(0.86 0.13 75) 100%);
+    border: 1px solid oklch(0.78 0.14 70);
     border-radius: 999px;
-    padding: 0.7rem 1.25rem;
+    padding: 0.8rem 1.4rem;
     text-decoration: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
-    box-shadow: 0 4px 12px -6px oklch(0.5 0.16 55 / 0.5);
+    box-shadow:
+      0 8px 22px -10px oklch(0.7 0.18 70 / 0.6),
+      0 1px 0 oklch(1 0 0 / 0.3) inset;
   }
   .free-strip__cta:hover {
     transform: translateY(-1px);
-    background: linear-gradient(135deg, oklch(0.5 0.16 55) 0%, oklch(0.45 0.17 50) 100%);
-    box-shadow: 0 8px 20px -8px oklch(0.5 0.16 55 / 0.6);
+    background: linear-gradient(135deg, oklch(0.95 0.11 80) 0%, oklch(0.88 0.14 75) 100%);
+    box-shadow:
+      0 12px 28px -10px oklch(0.7 0.2 70 / 0.7),
+      0 1px 0 oklch(1 0 0 / 0.4) inset;
   }
   .free-strip__cta:focus-visible {
-    outline: 2px solid oklch(0.55 0.15 60);
+    outline: 2px solid oklch(0.9 0.13 80);
     outline-offset: 3px;
   }
 
