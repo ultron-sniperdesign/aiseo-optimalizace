@@ -548,6 +548,34 @@ const quartet: Quartet[] = [
     </div>
   </section>
 
+  <!-- FREE PDF PROMO STRIP — bridge mezi „Anatomií" (technický detail) a „Hlavním průvodcem" (teoretická hloubka).
+       Logika: čtenář právě viděl 6 signálů AI-friendly stránky, přirozeně myslí „jak to dostat na moji homepage?" —
+       PDF zdarma je hotová šablona přesně pro tento moment. -->
+  <aside class="free-strip" aria-labelledby="free-strip-title">
+    <div class="free-strip__inner">
+      <div class="free-strip__body">
+        <span class="free-strip__badge">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1V10M7 10L3 6M7 10L11 6M1 13H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          PDF zdarma
+        </span>
+        <h3 id="free-strip-title" class="free-strip__title">
+          Hotový návod pro vaši <strong>homepage</strong> v AI vyhledávání
+        </h3>
+        <p class="free-strip__desc">
+          Šest signálů z předchozí sekce přeložených do konkrétních úprav. Šest stran A4, výměnou za e-mail.
+        </p>
+      </div>
+      <a href="/navod-zdarma/" class="free-strip__cta">
+        Stáhnout zdarma
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </aside>
+
   <!-- PILLAR PROMO -->
   <section class="pillar-promo">
     <div class="pillar-promo__main">
@@ -1905,6 +1933,100 @@ const quartet: Quartet[] = [
     padding: 0.1em 0.35em;
     border-radius: 4px;
     color: var(--color-ink);
+  }
+
+  /* ===== FREE PDF STRIP ===== */
+  .free-strip {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+  }
+  .free-strip__inner {
+    background: linear-gradient(135deg, oklch(0.96 0.06 80) 0%, oklch(0.92 0.09 70) 100%);
+    border: 1px solid oklch(0.85 0.1 70);
+    border-radius: 16px;
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    box-shadow: 0 8px 24px -16px oklch(0.7 0.18 60 / 0.4);
+  }
+  @media (min-width: 760px) {
+    .free-strip__inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 2rem;
+    }
+  }
+  .free-strip__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .free-strip__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: oklch(0.32 0.14 60);
+    background: oklch(1 0 0 / 0.6);
+    border: 1px solid oklch(0.8 0.12 70 / 0.6);
+    border-radius: 999px;
+    padding: 0.25rem 0.625rem;
+  }
+  .free-strip__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.125rem, 2.4vw, 1.375rem);
+    font-weight: 500;
+    line-height: 1.25;
+    color: oklch(0.25 0.12 60);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .free-strip__title strong {
+    font-weight: 700;
+  }
+  .free-strip__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: oklch(0.4 0.08 60);
+    margin: 0;
+    max-width: 52ch;
+  }
+  .free-strip__cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: oklch(1 0 0);
+    background: linear-gradient(135deg, oklch(0.55 0.15 60) 0%, oklch(0.5 0.16 55) 100%);
+    border: 1px solid oklch(0.45 0.15 55);
+    border-radius: 999px;
+    padding: 0.7rem 1.25rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+    box-shadow: 0 4px 12px -6px oklch(0.5 0.16 55 / 0.5);
+  }
+  .free-strip__cta:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, oklch(0.5 0.16 55) 0%, oklch(0.45 0.17 50) 100%);
+    box-shadow: 0 8px 20px -8px oklch(0.5 0.16 55 / 0.6);
+  }
+  .free-strip__cta:focus-visible {
+    outline: 2px solid oklch(0.55 0.15 60);
+    outline-offset: 3px;
   }
 
   /* ===== PILLAR PROMO ===== */
