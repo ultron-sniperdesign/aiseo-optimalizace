@@ -630,7 +630,7 @@ const quartet: Quartet[] = [
   <section class="section section--deep">
     <header class="section__head">
       <span class="eyebrow"><span class="eyebrow__num">05</span> Vybrané články</span>
-      <h2 class="section__title">Deset praktických čtení <strong>pro tento týden</strong></h2>
+      <h2 class="section__title">Praktická čtení <strong>pro tento týden</strong></h2>
     </header>
 
     <div class="section-grid">
@@ -724,64 +724,14 @@ const quartet: Quartet[] = [
         </div>
       </a>
 
-      <a href="/blog/local-seo-cesko-2026/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Tutorial</span>
-          <span class="scard__time">11 minut</span>
-        </div>
-        <h3 class="scard__title">Local SEO Česko 2026</h3>
-        <p class="scard__desc">
-          Šest pilířů lokálního SEO (Google Business Profile, NAP, Seznam Firmy, recenze, …) a proč je to v ČR rostoucí kategorie. Postup pro novou firmu krok za krokem.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 2 100 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
+    </div>
 
-      <a href="/blog/jak-strukturovat-pillar-content/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Tutorial</span>
-          <span class="scard__time">15 minut</span>
-        </div>
-        <h3 class="scard__title">Jak strukturovat pillar content</h3>
-        <p class="scard__desc">
-          Vizuální blueprint anatomie 3 000slovního průvodce — answer block, kontext, FAQ, schema. Pillar vs tenký obsah, checklist před publikací, kdy psát co.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 3 000 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/blog/mereni-seo-vykonu-2026/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Tutorial</span>
-          <span class="scard__time">13 minut</span>
-        </div>
-        <h3 class="scard__title">Měření SEO výkonu 2026</h3>
-        <p class="scard__desc">
-          Osm klíčových metrik (pozice, traffic, CTR, CWV, AI citation share), benchmarky podle pozice, nástrojový stack od GSC zdarma po enterprise dashboarding.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 2 600 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/blog/caste-chyby-v-seo-2026-update/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Tutorial</span>
-          <span class="scard__time">14 minut</span>
-        </div>
-        <h3 class="scard__title">Časté chyby v SEO 2026 (update)</h3>
-        <p class="scard__desc">
-          12 omylů, které brzdí výsledky — keyword stuffing, tenký obsah, technický dluh, ignorování brandu jako ranking faktoru, „dělejte všechno" bez prioritizace.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 2 800 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
+    <div class="section-more">
+      <a href="/blog/" class="section-more__btn">
+        Zobrazit všechny články
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </a>
     </div>
   </section>
@@ -2284,6 +2234,41 @@ const quartet: Quartet[] = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
+  }
+  .section-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .section-more__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 999px;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .section-more__btn svg {
+    transition: transform 0.2s ease;
+  }
+  .section-more__btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--color-ink);
+    box-shadow: 0 6px 16px -8px oklch(0 0 0 / 0.18);
+  }
+  .section-more__btn:hover svg {
+    transform: translateX(3px);
+  }
+  .section-more__btn:focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
   }
   .scard {
     display: flex;
