@@ -392,22 +392,14 @@ const ogImage = `/og/${entry.data.slug}.png`;
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
   }
-  /* Article prose má agresivní :global(h2/p/a/ul/li/strong) selektory, které
-     'leakují' do komponent rendrovaných uvnitř. Komponenta SmallContact má
-     vlastní typografii (white text on dark bg, agency font, různé velikosti),
-     která by jinak prohrávala specificity proti prose pravidlům.
-     all: revert vrátí kaskádu zpět na úroveň komponenty (její vlastní scoped
-     styly pak vyhrají), bez nutnosti měnit komponentu samotnou. */
-  .article__prose :global(.sd-small) :global(h2),
-  .article__prose :global(.sd-small) :global(p),
-  .article__prose :global(.sd-small) :global(a),
-  .article__prose :global(.sd-small) :global(ul),
-  .article__prose :global(.sd-small) :global(li),
-  .article__prose :global(.sd-small) :global(strong),
-  .article__prose :global(.sd-small) :global(em) {
-    all: revert;
-  }
+  /* PROSE TYPOGRAPHY V @layer — všechna pravidla pro markdown obsah
+     uvnitř .article__prose jsou v "prose" CSS layeru. Layered styly mají
+     vždy nižší prioritu než unlayered, takže komponenty rendrované inline
+     (SmallContact, RelatedSections, SignalGrid…) automaticky vyhrávají se
+     svými vlastními scoped styly — bez ohledu na specificity selektoru.
 
+     Tahle technika eliminuje "style leak" prose pravidel do komponent. */
+  @layer prose {
   /* Markdown rendered body — sans typography, friendly hierarchy */
   .article__prose :global(h2) {
     font-family: var(--font-sans);
@@ -580,6 +572,7 @@ const ogImage = `/og/${entry.data.slug}.png`;
     border-top: 1px solid var(--color-rule);
     margin: 2.5rem 0;
   }
+  } /* end @layer prose */
 
   /* ===== FAQ ===== */
   .faq {

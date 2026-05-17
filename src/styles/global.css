@@ -140,18 +140,23 @@ h3 strong {
  * i pillar používají .page > .article__prose wrapper.
  *
  * Specificita .page .article__prose h2 přebije scoped .article__prose
- * :global(h2) v jednotlivých page routes. */
-body .page .article__prose h2 {
-  font-family: var(--font-sans);
-  font-weight: 250;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: var(--color-ink);
-  margin: 3.5rem 0 1.25rem;
-}
-body .page .article__prose h2:first-child {
-  margin-top: 0;
+ * :global(h2) v jednotlivých page routes.
+ *
+ * V @layer prose, aby komponenty rendrované inline uvnitř prose (SmallContact
+ * apod.) měly své vlastní h2 styly přednostně bez ohledu na specificity. */
+@layer prose {
+  body .page .article__prose h2 {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 3.5rem 0 1.25rem;
+  }
+  body .page .article__prose h2:first-child {
+    margin-top: 0;
+  }
 }
 /* <strong> uvnitř body H2 zůstává v ink color (default font-weight 600
  * z h1/h2/h3 strong rule výše). Modré zvýraznění řeší .hl span. */
