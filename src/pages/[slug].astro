@@ -157,8 +157,8 @@ const ogImage = `/og/${entry.data.slug}.png`;
       </div>
     </article>
 
-    <!-- SNIPERDESIGN SMALL CONTACT — všechny sekce, nad FAQ -->
-    <SniperDesignSmallContact />
+    <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ, pokud frontmatter nemá inlineSmallContact: true -->
+    {!entry.data.inlineSmallContact && <SniperDesignSmallContact />}
 
 
     <!-- FAQ -->
@@ -373,6 +373,12 @@ const ogImage = `/og/${entry.data.slug}.png`;
      vertical padding navíc — H2 v MDX už dává spacing. */
   .article__prose :global(.related) {
     padding: 0;
+    margin-bottom: 2rem;
+  }
+  /* Inline SniperDesignSmallContact — breathing room od okolního textu */
+  .article__prose :global(.sd-small) {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   /* Markdown rendered body — sans typography, friendly hierarchy */
