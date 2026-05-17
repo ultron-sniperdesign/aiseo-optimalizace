@@ -6,6 +6,7 @@ slug: "seo"
 order: 1
 abbr: "SEO"
 updated: "2026-05-08"
+inlineRelated: true
 faq:
   - q: "Kolik SEO stojí?"
     a: "Záleží na velikosti webu, oboru a stavu, ze kterého startujete. Jednorázový SEO audit pro malý web typicky 5–25 tisíc Kč. Komplexní audit s prioritními nálezy a roadmapou 18–25 tisíc Kč. Měsíční SEO péče u SMB e-shopu 15–60 tisíc Kč. SEO ale není jednorázová úprava — funguje jako dlouhodobé budování viditelnosti, takže náklad rozkládejte na 6–12 měsíců minimálně. U malé firmy s nízkou konkurencí lze leccos zvládnout svépomocí přes free nástroje (GSC, PageSpeed Insights), s občasným odborným auditem."
@@ -43,6 +44,7 @@ import Insight from "../../components/blocks/Insight.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 import SignalGrid from "../../components/blocks/SignalGrid.astro";
 import TopicCard from "../../components/blocks/TopicCard.astro";
+import RelatedSections from "../../components/blocks/RelatedSections.astro";
 
 ## Co se v <span class="hl">SEO</span> mění <strong>v AI éře</strong>
 
@@ -66,36 +68,7 @@ Co to znamená v praxi:
   **SEO je nutný základ, ne dostatečná strategie.** Bez dobrého SEO vás vyhledávače ani AI nástroje nenajdou. Ale samotné SEO vás drží v jednom kanálu, který se mění. Plný balíček = SEO + [AEO](/aeo/) + [GEO](/geo/) + [AIO](/aio/) řešený paralelně, ne sekvenčně.
 </Insight>
 
-## Tři disciplíny, které jdou <strong>dohromady</strong> s <span class="hl">SEO</span>
-
-SEO řeší pozici v Googlu a Seznamu. AI éra k tomu přidává tři další disciplíny — všechny staví na stejných základech jako SEO, ale cílí na rozhraní, která za poslední rok výrazně rozrostla svůj podíl na rozhodování zákazníka.
-
-<TopicCard
-  tone="geo"
-  href="/geo/"
-  eyebrow="Druhá disciplína"
-  title="GEO — Generative Engine Optimization"
->
-  Optimalizace pro to, aby vás citovaly **ChatGPT, Perplexity, Claude a Gemini**. Místo modrého odkazu cílíte na to, abyste byli zdrojem, ze kterého AI čerpá fakta.
-</TopicCard>
-
-<TopicCard
-  tone="aeo"
-  href="/aeo/"
-  eyebrow="Třetí disciplína"
-  title="AEO — Answer Engine Optimization"
->
-  Užší disciplína cílená na **Google AI Overviews a Bing Chat**. FAQ sekce, krátké odpovědi po nadpisu a strukturovaný návod — to je její řemeslo.
-</TopicCard>
-
-<TopicCard
-  tone="aio"
-  href="/aio/"
-  eyebrow="Čtvrtá disciplína"
-  title="AIO — AI Optimization (zastřešující)"
->
-  Strategický deštník nad **SEO, GEO i AEO**. Také konkrétní funkce Google AI Overviews — dvojí význam, který se v praxi často plete.
-</TopicCard>
+<RelatedSections currentAbbr="SEO" />
 
 Konkrétní pořadí kroků, jak to v praxi pokrýt, najdete v sekci [Praktický postup](/prakticky-postup/) a [Rozhodovací matice](/rozhodovaci-matice/).
 

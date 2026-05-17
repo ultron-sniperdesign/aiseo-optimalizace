@@ -21,6 +21,12 @@ const sections = defineCollection({
     order: z.number().int().positive(),
     /** Hlavní zkratka, kterou článek pokrývá. */
     abbr: z.enum(["SEO", "GEO", "AEO", "AIO", "PRAXE", "MATICE"]),
+    /**
+     * Když je true, [slug].astro NEVYKRESLÍ auto "Související" sekci na konci.
+     * Použij, když chceš stejný blok vložit INLINE do MDX přes
+     * <RelatedSections currentAbbr="…" /> na jiné pozici v článku.
+     */
+    inlineRelated: z.boolean().optional().default(false),
     /** Datum poslední aktualizace (ISO YYYY-MM-DD). */
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     /** FAQ položky (volitelné, použijí se do FAQPage JSON-LD). */

@@ -1,0 +1,189 @@
+---
+/**
+ * RelatedSections — „Tři sekce, které jdou dohromady s {abbr}"
+ *
+ * Stejný design jako auto-rendered related blok na konci [slug].astro.
+ * Extrahovaný do komponenty kvůli možnosti vložit ho INLINE do MDX
+ * (typicky uprostřed článku) místo na konec stránky.
+ *
+ * Použití v MDX:
+ *   import RelatedSections from "../../components/blocks/RelatedSections.astro";
+ *   <RelatedSections currentAbbr="SEO" />
+ *
+ * Pokud chceš auto-render z [slug].astro vypnout, nastav `inlineRelated: true`
+ * ve frontmatteru sekce.
+ */
+
+import { getCollection } from "astro:content";
+
+interface Props {
+  currentAbbr: string;
+}
+
+const { currentAbbr } = Astro.props;
+
+type ColorTriple = { d: string; tint: string };
+const colorByAbbr: Record<string, ColorTriple> = {
+  SEO: { d: "var(--color-seo)", tint: "var(--color-seo-tint)" },
+  GEO: { d: "var(--color-geo)", tint: "var(--color-geo-tint)" },
+  AEO: { d: "var(--color-aeo)", tint: "var(--color-aeo-tint)" },
+  AIO: { d: "var(--color-aio)", tint: "var(--color-aio-tint)" },
+  PRAXE: { d: "var(--color-praxe)", tint: "var(--color-praxe-tint)" },
+  MATICE: { d: "var(--color-matice)", tint: "var(--color-matice-tint)" },
+};
+
+const contextLabel: Record<string, string> = {
+  SEO: "První disciplína · SEO",
+  GEO: "Druhá disciplína · GEO",
+  AEO: "Třetí disciplína · AEO",
+  AIO: "Čtvrtá disciplína · AIO",
+  PRAXE: "Návod · Praktický postup",
+  MATICE: "Rozhodování · Kdy co použít",
+};
+
+const allSections = await getCollection("sections");
+const related = allSections
+  .filter((s) => s.data.abbr !== currentAbbr)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+---
+
+{
+  related.length > 0 && (
+    <section class="related">
+      <header class="related__head">
+        <span class="eyebrow">Související</span>
+        <h2 class="related__title">
+          Tři sekce, které <strong>jdou dohromady s {currentAbbr}</strong>
+        </h2>
+      </header>
+
+      <div class="related__grid">
+        {related.map((r) => {
+          const rc = colorByAbbr[r.data.abbr] ?? colorByAbbr.SEO;
+          const rStyle = `--rd: ${rc.d}; --rd-tint: ${rc.tint};`;
+          return (
+            <a href={`/${r.data.slug}/`} class="rcard" style={rStyle}>
+              <div class="rcard__row">
+                <div class="rcard__abbr">{r.data.abbr}</div>
+                <span class="rcard__index">{contextLabel[r.data.abbr] ?? r.data.abbr}</span>
+              </div>
+              <h3 class="rcard__title">{r.data.title.split(" — ")[0] ?? r.data.title}</h3>
+              <p class="rcard__desc">{r.data.description}</p>
+              <span class="rcard__cta">
+                Číst sekci <span aria-hidden="true">→</span>
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .related {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 5vw, 5rem) var(--space-section-x);
+  }
+  .related__head {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .related__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .related__title strong { font-weight: 600; }
+
+  .related__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .rcard {
+    padding: 1.75rem;
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .rcard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--rd);
+    transform: scaleX(0.2);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .rcard:hover {
+    border-color: var(--rd);
+    background: var(--color-paper-deep);
+  }
+  .rcard:hover::before { transform: scaleX(1); }
+
+  .rcard__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .rcard__abbr {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--rd);
+  }
+  .rcard__index {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-ink-faint);
+  }
+  .rcard__title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: -0.012em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .rcard__desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .rcard__cta {
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--rd);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.25s ease;
+  }
+  .rcard:hover .rcard__cta { gap: 0.75rem; }
+</style>
