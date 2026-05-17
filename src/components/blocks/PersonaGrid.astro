@@ -1,0 +1,31 @@
+---
+/**
+ * PersonaGrid — responsive grid wrapper pro <Persona> karty.
+ * Pro „Pro koho má X smysl" sekce. Auto-fit 1 → 2 → 3 sloupce.
+ *
+ * Použití:
+ *   <PersonaGrid>
+ *     <Persona icon="🏢" title="B2B firmy">…</Persona>
+ *     <Persona icon="🛒" title="E-shopy">…</Persona>
+ *   </PersonaGrid>
+ */
+---
+
+<div class="persona-grid">
+  <slot />
+</div>
+
+<style>
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .persona-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 960px) {
+    .persona-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

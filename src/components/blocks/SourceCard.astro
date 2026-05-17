@@ -1,0 +1,106 @@
+---
+/**
+ * SourceCard — karta s akademickou/odbornou citací + odkaz na primární zdroj.
+ * Pro „Podle paper / studie / analýzy XYZ…" sekce, kde chceme zdroj
+ * vyzdvihnout vizuálně, ne ho jen schovat do inline odkazu.
+ *
+ * Použití:
+ *   <SourceCard
+ *     badge="Akademický zdroj"
+ *     href="https://arxiv.org/abs/2311.09735"
+ *     linkLabel="Otevřít paper na arXiv"
+ *   >
+ *     **Princeton paper „GEO" (Aggarwal et al., 2023)** jako první kvantifikoval…
+ *   </SourceCard>
+ */
+
+interface Props {
+  badge?: string;
+  href: string;
+  linkLabel?: string;
+  tone?: "seo" | "geo" | "aeo" | "aio" | "accent";
+}
+
+const { badge = "Zdroj", href, linkLabel = "Otevřít zdroj", tone = "geo" } = Astro.props;
+const isExternal = href.startsWith("http");
+---
+
+<aside class={`src-card src-card--${tone}`}>
+  <span class="src-card__badge">{badge}</span>
+  <div class="src-card__body"><slot /></div>
+  <a
+    href={href}
+    class="src-card__link"
+    {...(isExternal ? { target: "_blank", rel: "noopener" } : {})}
+  >
+    {linkLabel}
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M5 9L9 5M9 5H5M9 5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </a>
+</aside>
+
+<style>
+  .src-card {
+    --sc-tone: var(--color-accent);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .src-card--seo { --sc-tone: var(--color-seo); }
+  .src-card--geo { --sc-tone: var(--color-geo); }
+  .src-card--aeo { --sc-tone: var(--color-aeo); }
+  .src-card--aio { --sc-tone: var(--color-aio); }
+
+  @media (max-width: 640px) {
+    .src-card { grid-template-columns: 1fr; }
+  }
+
+  .src-card__badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: oklch(0.45 0.15 280);
+    background: oklch(0.95 0.05 280);
+    border-radius: 4px;
+    padding: 0.35rem 0.625rem;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  .src-card__body {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .src-card__body :global(p) { margin: 0 0 0.5rem; }
+  .src-card__body :global(p:last-child) { margin: 0; }
+  .src-card__body :global(strong) { font-weight: 700; color: var(--color-ink); }
+
+  .src-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sc-tone);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.5rem 0.875rem;
+    background: oklch(from var(--sc-tone) l c h / 0.08);
+    border-radius: 6px;
+  }
+  .src-card__link:hover {
+    background: oklch(from var(--sc-tone) l c h / 0.15);
+  }
+</style>

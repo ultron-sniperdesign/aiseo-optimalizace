@@ -1,0 +1,119 @@
+---
+/**
+ * CompareTable — row-based porovnávací tabulka „X vs Y" s tone color hlavičkami
+ * a ikonami u řádků. Pro sekce „SEO vs GEO", „GEO vs AEO" apod.
+ *
+ * Liší se od existující `<Compare>` (column-based slot wrapper) — tato je
+ * řádková tabulka pro porovnání mnoha dimenzí naráz.
+ *
+ * Použití:
+ *   <CompareTable
+ *     leftLabel="SEO"
+ *     leftTone="seo"
+ *     rightLabel="GEO"
+ *     rightTone="geo"
+ *     rows={[
+ *       { icon: "🎯", label: "Cíl", left: "Být na první stránce Googlu", right: "Být v odpovědi AI" },
+ *       { icon: "📊", label: "Co se měří", left: "Pozice, traffic", right: "Citation share" },
+ *     ]}
+ *   />
+ */
+
+type Tone = "seo" | "geo" | "aeo" | "aio" | "accent";
+
+interface Row {
+  icon?: string;
+  label: string;
+  left: string;
+  right: string;
+}
+
+interface Props {
+  leftLabel: string;
+  leftTone?: Tone;
+  rightLabel: string;
+  rightTone?: Tone;
+  rows: Row[];
+}
+
+const { leftLabel, leftTone = "accent", rightLabel, rightTone = "accent", rows } = Astro.props;
+---
+
+<div class="ctbl-wrap">
+  <table class={`ctbl ctbl--left-${leftTone} ctbl--right-${rightTone}`}>
+    <thead>
+      <tr>
+        <th></th>
+        <th class="ctbl__left-head">{leftLabel}</th>
+        <th class="ctbl__right-head">{rightLabel}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <th scope="row">
+            {row.icon && <span class="ctbl__icon" aria-hidden="true">{row.icon}</span>}
+            <span>{row.label}</span>
+          </th>
+          <td>{row.left}</td>
+          <td>{row.right}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .ctbl-wrap {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+  .ctbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    background: var(--color-paper);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+  }
+  .ctbl th, .ctbl td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+  .ctbl tbody tr:last-child th,
+  .ctbl tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .ctbl tbody tr:hover {
+    background: var(--color-paper-deep);
+  }
+  .ctbl thead th {
+    font-weight: 600;
+    background: var(--color-paper-deep);
+    font-size: 0.95rem;
+  }
+
+  .ctbl--left-seo .ctbl__left-head { color: var(--color-seo); background: var(--color-seo-tint); }
+  .ctbl--left-geo .ctbl__left-head { color: var(--color-geo); background: var(--color-geo-tint); }
+  .ctbl--left-aeo .ctbl__left-head { color: var(--color-aeo); background: var(--color-aeo-tint); }
+  .ctbl--left-aio .ctbl__left-head { color: var(--color-aio); background: var(--color-aio-tint); }
+
+  .ctbl--right-seo .ctbl__right-head { color: var(--color-seo); background: var(--color-seo-tint); }
+  .ctbl--right-geo .ctbl__right-head { color: var(--color-geo); background: var(--color-geo-tint); }
+  .ctbl--right-aeo .ctbl__right-head { color: var(--color-aeo); background: var(--color-aeo-tint); }
+  .ctbl--right-aio .ctbl__right-head { color: var(--color-aio); background: var(--color-aio-tint); }
+
+  .ctbl tbody th {
+    font-weight: 600;
+    color: var(--color-ink);
+    background: transparent;
+  }
+  .ctbl__icon {
+    font-size: 1rem;
+    margin-right: 0.4rem;
+  }
+</style>

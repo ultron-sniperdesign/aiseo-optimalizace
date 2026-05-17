@@ -1,0 +1,44 @@
+---
+/**
+ * PromptList — wrapper pro <Prompt> boxy s clipboard JS handlerem.
+ *
+ * Použití:
+ *   <PromptList>
+ *     <Prompt text="co je GEO" />
+ *     <Prompt text="rozdíl mezi SEO a GEO" />
+ *   </PromptList>
+ */
+---
+
+<div class="prmt-list">
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-prompt-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.parentElement?.querySelector(".prmt__text")?.textContent;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.innerHTML;
+        btn.innerHTML = "<span>✓ Zkopírováno</span>";
+        btn.classList.add("prmt__copy--done");
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.classList.remove("prmt__copy--done");
+        }, 1500);
+      } catch (e) {
+        console.error("Clipboard write failed", e);
+      }
+    });
+  });
+</script>
+
+<style>
+  .prmt-list {
+    display: grid;
+    gap: 0.625rem;
+    margin: 1.5rem 0;
+  }
+</style>

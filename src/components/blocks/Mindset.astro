@@ -1,0 +1,101 @@
+---
+/**
+ * Mindset — dvojice pull-quote karet „špatný / správný mindset".
+ * Pro sekce typu „co si lidé pletou" / „mindset shift".
+ *
+ * Použití:
+ *   <Mindset
+ *     badQuote="Nejdřív SEO, pak GEO."
+ *     badWhy="Vytvoříte si dluh — za rok desítky článků k přepsání."
+ *     goodQuote="GEO je standard psaní od článku #1. Stojí 0 Kč navíc."
+ *     goodWhy="SEO a GEO se posilují — strukturovaný obsah vyhrává v obou kanálech."
+ *   />
+ */
+
+interface Props {
+  badQuote: string;
+  badWhy?: string;
+  goodQuote: string;
+  goodWhy?: string;
+  badChip?: string;
+  goodChip?: string;
+}
+
+const {
+  badQuote,
+  badWhy,
+  goodQuote,
+  goodWhy,
+  badChip = "Špatný mindset",
+  goodChip = "Správný mindset",
+} = Astro.props;
+---
+
+<div class="mindset">
+  <div class="mindset__card mindset__card--bad">
+    <span class="mindset__chip mindset__chip--bad">❌ {badChip}</span>
+    <p class="mindset__quote">„{badQuote}"</p>
+    {badWhy && <p class="mindset__why">{badWhy}</p>}
+  </div>
+  <div class="mindset__card mindset__card--good">
+    <span class="mindset__chip mindset__chip--good">✅ {goodChip}</span>
+    <p class="mindset__quote">„{goodQuote}"</p>
+    {goodWhy && <p class="mindset__why">{goodWhy}</p>}
+  </div>
+</div>
+
+<style>
+  .mindset {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .mindset { grid-template-columns: 1fr 1fr; }
+  }
+  .mindset__card {
+    padding: 1.125rem 1.25rem;
+    border-radius: 10px;
+  }
+  .mindset__card--bad {
+    background: oklch(0.97 0.025 25);
+    border: 1px solid oklch(0.85 0.06 25);
+  }
+  .mindset__card--good {
+    background: oklch(0.96 0.04 145);
+    border: 1px solid oklch(0.78 0.08 145);
+  }
+  .mindset__chip {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .mindset__chip--bad {
+    color: oklch(0.4 0.12 25);
+    background: oklch(1 0 0 / 0.6);
+  }
+  .mindset__chip--good {
+    color: oklch(0.35 0.1 145);
+    background: oklch(1 0 0 / 0.6);
+  }
+  .mindset__quote {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.625rem;
+    line-height: 1.4;
+  }
+  .mindset__why {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+</style>

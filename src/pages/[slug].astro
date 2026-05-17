@@ -361,13 +361,243 @@ const ogImage = `/og/${entry.data.slug}.png`;
     font-family: var(--font-sans);
   }
 
-  /* Wide blocks — SignalGrid, inline RelatedSections, ArticleGrid potřebují
-     víc šířky než 40rem prose. Breakout do article-container width. */
+  /* Wide blocks — komponenty potřebují víc šířky než 40rem prose. Breakout
+     do article-container width (68rem). */
   .article__prose :global(.sg),
   .article__prose :global(.related),
-  .article__prose :global(.acards-grid) {
+  .article__prose :global(.acards-grid),
+  .article__prose :global(.persona-grid),
+  .article__prose :global(.anti-persona),
+  .article__prose :global(.ctbl-wrap),
+  .article__prose :global(.dd),
+  .article__prose :global(.mistake-grid),
+  .article__prose :global(.mindset),
+  .article__prose :global(.src-card),
+  .article__prose :global(.prmt-list),
+  .article__prose :global(.mech),
+  .article__prose :global(.metrics-table-wrap),
+  .article__prose :global(.standards) {
     width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
     max-width: none;
+  }
+
+  /* ===== Inline patterns používané přes raw HTML v MDX sekcích ===== */
+  /* Mechanism diagram (GEO sekce 1 — Google SERP vs ChatGPT bubble) */
+  .article__prose :global(.mech) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.75rem 0;
+    align-items: center;
+  }
+  @media (min-width: 760px) {
+    .article__prose :global(.mech) { grid-template-columns: 1fr auto 1fr; gap: 1.25rem; }
+  }
+  .article__prose :global(.mech__col) {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 12px;
+    padding: 1.25rem 1.375rem;
+  }
+  .article__prose :global(.mech__col--google) { border-top: 3px solid oklch(0.55 0.18 240); }
+  .article__prose :global(.mech__col--ai) { border-top: 3px solid var(--color-geo); }
+  .article__prose :global(.mech__head) { margin-bottom: 1rem; }
+  .article__prose :global(.mech__brand) {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .article__prose :global(.mech__tagline) {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .article__prose :global(.mech__list) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  .article__prose :global(.mech__link) {
+    padding: 0.4rem 0.625rem;
+    background: var(--color-paper-deep);
+    border-radius: 4px;
+    color: var(--color-ink-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .article__prose :global(.mech__link--highlight) {
+    background: oklch(from var(--color-geo) l c h / 0.12);
+    color: var(--color-geo);
+    font-weight: 600;
+  }
+  .article__prose :global(.mech__pos) {
+    font-size: 0.7rem;
+    background: var(--color-geo);
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+  }
+  .article__prose :global(.mech__arrow) {
+    color: var(--color-ink-faint);
+    text-align: center;
+    font-size: 1.5rem;
+    transform: rotate(90deg);
+  }
+  @media (min-width: 760px) {
+    .article__prose :global(.mech__arrow) { transform: none; }
+  }
+  .article__prose :global(.mech__bubble) {
+    background: oklch(from var(--color-geo) l c h / 0.05);
+    border: 1px solid oklch(from var(--color-geo) l c h / 0.2);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .article__prose :global(.mech__bubble) p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 0.75rem;
+    color: var(--color-ink);
+  }
+  .article__prose :global(.mech__cite) {
+    color: var(--color-ink-faint);
+    font-size: 0.7em;
+    font-weight: 700;
+  }
+  .article__prose :global(.mech__cite--you) { color: var(--color-geo); }
+  .article__prose :global(.mech__sources) {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .article__prose :global(.mech__sources-you) {
+    color: var(--color-geo);
+    font-weight: 700;
+  }
+  .article__prose :global(.mech__note) {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+    font-style: italic;
+  }
+  .article__prose :global(.mech__note) strong { color: var(--color-ink); font-style: normal; }
+
+  /* Metrics table with frequency chips */
+  .article__prose :global(.metrics-table-wrap) {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+  .article__prose :global(.metrics-table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    background: var(--color-paper);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+  }
+  .article__prose :global(.metrics-table) th,
+  .article__prose :global(.metrics-table) td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+  .article__prose :global(.metrics-table) tbody tr:last-child td { border-bottom: none; }
+  .article__prose :global(.metrics-table) th {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-muted);
+    background: var(--color-paper-deep);
+    font-weight: 600;
+  }
+  .article__prose :global(.freq-chip) {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .article__prose :global(.freq-chip--day) {
+    color: oklch(0.45 0.18 25);
+    background: oklch(0.97 0.05 25);
+  }
+  .article__prose :global(.freq-chip--week) {
+    color: oklch(0.45 0.15 60);
+    background: oklch(0.97 0.05 60);
+  }
+  .article__prose :global(.freq-chip--month) {
+    color: oklch(0.4 0.12 145);
+    background: oklch(0.95 0.05 145);
+  }
+
+  /* Standards icon checklist grid */
+  .article__prose :global(.standards) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    margin: 1rem 0 1.75rem;
+  }
+  @media (min-width: 640px) {
+    .article__prose :global(.standards) { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 960px) {
+    .article__prose :global(.standards) { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .article__prose :global(.standard) {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 0.75rem 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    line-height: 1.4;
+  }
+  .article__prose :global(.standard__icon) { font-size: 1.125rem; line-height: 1; }
+  .article__prose :global(.standard) strong { font-weight: 600; }
+
+  /* Robots.txt detail */
+  .article__prose :global(.robots-detail) {
+    margin: 1.5rem 0;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    background: var(--color-paper);
+  }
+  .article__prose :global(.robots-detail) summary {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--d);
   }
   /* Když je .related vykreslený inline v MDX, nemá vlastní section padding
      (to platí jen na bottom auto-render). Override aby nepřidával zbytečný

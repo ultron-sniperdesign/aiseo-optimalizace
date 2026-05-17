@@ -1,0 +1,82 @@
+---
+/**
+ * AntiPersona — varovný box „kdy se to NEhodí" / „kdy NEdělat X".
+ * Typicky pod <PersonaGrid> jako counter-example, nebo samostatně
+ * v sekcích typu „kdy se obejdete bez X".
+ *
+ * Použití (markdown obsah ve slotu):
+ *   <AntiPersona title="Kdy GEO nedává smysl">
+ *     - **Čistě transakční impulsní produkty** — lidé se neptají AI…
+ *     - **Lokální retail bez online research fáze** — investice…
+ *   </AntiPersona>
+ */
+
+interface Props {
+  title: string;
+  icon?: string;
+}
+
+const { title, icon = "❌" } = Astro.props;
+---
+
+<aside class="anti-persona">
+  <header class="anti-persona__head">
+    <span class="anti-persona__icon">{icon}</span>
+    <h3 class="anti-persona__title">{title}</h3>
+  </header>
+  <div class="anti-persona__body">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .anti-persona {
+    margin: 1.25rem 0;
+    background: oklch(0.97 0.02 25);
+    border: 1px solid oklch(0.85 0.06 25);
+    border-radius: 10px;
+    padding: 1.125rem 1.25rem 1rem;
+  }
+  .anti-persona__head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.625rem;
+  }
+  .anti-persona__icon {
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+  .anti-persona__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: oklch(0.4 0.1 25);
+  }
+  .anti-persona__body :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+  }
+  .anti-persona__body :global(ul li) { padding: 0; }
+  .anti-persona__body :global(strong) {
+    color: oklch(0.35 0.1 25);
+    font-weight: 600;
+  }
+  .anti-persona__body :global(p) {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .anti-persona__body :global(p:last-child) { margin-bottom: 0; }
+</style>

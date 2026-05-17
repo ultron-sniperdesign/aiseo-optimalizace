@@ -1,0 +1,31 @@
+---
+/**
+ * MistakeGrid — responsive grid wrapper pro <Mistake> karty.
+ * Pro „Časté chyby" sekce. Auto 1 → 2 → 3 sloupce.
+ *
+ * Použití:
+ *   <MistakeGrid>
+ *     <Mistake num="01" title="X" fix="Y">…</Mistake>
+ *     <Mistake num="02" title="X" fix="Y">…</Mistake>
+ *   </MistakeGrid>
+ */
+---
+
+<div class="mistake-grid">
+  <slot />
+</div>
+
+<style>
+  .mistake-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .mistake-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1080px) {
+    .mistake-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

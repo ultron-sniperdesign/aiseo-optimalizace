@@ -1,0 +1,102 @@
+---
+/**
+ * Persona — karta audience persony (audience targeting pattern).
+ * Pro sekce typu „pro koho má X smysl" — 1 karta = 1 typ zákazníka/byznysu.
+ *
+ * Použití v MDX (uvnitř <PersonaGrid>):
+ *   <Persona
+ *     icon="🏢"
+ *     title="B2B firmy a SaaS"
+ *     chip="Vysoký dopad"
+ *     tone="geo"
+ *   >
+ *     Nákupní proces se táhne týdny, zákazník ptá ChatGPT...
+ *   </Persona>
+ *
+ * Chip variant: yes (zelený) | warn (oranžový) | omit pro neutralní karty.
+ */
+
+interface Props {
+  icon?: string;
+  title: string;
+  chip?: string;
+  chipVariant?: "yes" | "warn";
+  tone?: "seo" | "geo" | "aeo" | "aio" | "accent";
+}
+
+const { icon, title, chip, chipVariant = "yes", tone = "accent" } = Astro.props;
+---
+
+<article class={`persona persona--${tone}`}>
+  {icon && <span class="persona__icon" aria-hidden="true">{icon}</span>}
+  <h3 class="persona__title">{title}</h3>
+  <div class="persona__desc"><slot /></div>
+  {chip && (
+    <span class={`persona__chip persona__chip--${chipVariant}`}>
+      {chipVariant === "yes" ? "✅ " : "⚠️ "}{chip}
+    </span>
+  )}
+</article>
+
+<style>
+  .persona {
+    --p-tone: var(--color-accent);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+    padding: 1.125rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    height: 100%;
+  }
+  .persona:hover {
+    border-color: var(--p-tone);
+    transform: translateY(-1px);
+  }
+  .persona--seo { --p-tone: var(--color-seo); }
+  .persona--geo { --p-tone: var(--color-geo); }
+  .persona--aeo { --p-tone: var(--color-aeo); }
+  .persona--aio { --p-tone: var(--color-aio); }
+
+  .persona__icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .persona__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-ink);
+    line-height: 1.3;
+  }
+  .persona__desc {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    flex: 1;
+  }
+  .persona__desc :global(p) { margin: 0; }
+  .persona__desc :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .persona__chip {
+    display: inline-flex;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    margin-top: 0.25rem;
+  }
+  .persona__chip--yes {
+    color: oklch(0.4 0.12 145);
+    background: oklch(0.95 0.05 145);
+  }
+  .persona__chip--warn {
+    color: oklch(0.45 0.15 60);
+    background: oklch(0.96 0.05 60);
+  }
+</style>
