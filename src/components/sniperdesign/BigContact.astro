@@ -80,57 +80,37 @@ const { eyebrowNum = "06" } = Astro.props as Props;
     </p>
 
     <div class="sd-big__benefits">
-      <a
-        href="https://www.sniperdesign.cz/konzultace"
-        target="_blank"
-        rel="noopener"
-        class="sd-big__benefit"
-      >
+      <div class="sd-big__benefit">
         <span class="sd-big__benefit-num">01</span>
         <h3 class="sd-big__benefit-title">Strategie a&nbsp;know‑how</h3>
         <p class="sd-big__benefit-desc">
           Projdeme s vámi web, vysvětlíme co se děje s AI vyhledáváním a poradíme, kterým směrem se vydat — co řešit hned, co odložit a kam vůbec necílit.
         </p>
-      </a>
+      </div>
 
-      <a
-        href="https://www.sniperdesign.cz/audity"
-        target="_blank"
-        rel="noopener"
-        class="sd-big__benefit"
-      >
+      <div class="sd-big__benefit">
         <span class="sd-big__benefit-num">02</span>
         <h3 class="sd-big__benefit-title">Audit AI&nbsp;viditelnosti</h3>
         <p class="sd-big__benefit-desc">
           Komplexní průchod technickým SEO, on‑page strukturou, schema markupem a obsahem. Konkrétní seznam priorit s odhadem dopadu a effort.
         </p>
-      </a>
+      </div>
 
-      <a
-        href="https://www.sniperdesign.cz/optimalizace-e-shopu"
-        target="_blank"
-        rel="noopener"
-        class="sd-big__benefit"
-      >
+      <div class="sd-big__benefit">
         <span class="sd-big__benefit-num">03</span>
         <h3 class="sd-big__benefit-title">Optimalizace a&nbsp;implementace</h3>
         <p class="sd-big__benefit-desc">
           Nasadíme strukturovaná data, přepíšeme klíčové stránky do AI‑friendly struktury, zoptimalizujeme rychlost a Core Web Vitals. Custom moduly pro Upgates a Shoptet.
         </p>
-      </a>
+      </div>
 
-      <a
-        href="https://www.sniperdesign.cz/co-delame"
-        target="_blank"
-        rel="noopener"
-        class="sd-big__benefit"
-      >
+      <div class="sd-big__benefit">
         <span class="sd-big__benefit-num">04</span>
         <h3 class="sd-big__benefit-title">Tvorba a&nbsp;aktualizace obsahu</h3>
         <p class="sd-big__benefit-desc">
           AI‑řízené generování produktových popisů, FAQ a článků v tonalitě vašeho brandu. Vstup do citation poolu ChatGPT, Perplexity a Google AI Overview.
         </p>
-      </a>
+      </div>
     </div>
 
     <!-- Konkrétní záběr — 9 oblastí, na které sahá implementace -->
@@ -183,7 +163,7 @@ const { eyebrowNum = "06" } = Astro.props as Props;
 
     <div class="sd-big__actions">
       <a
-        href="https://www.sniperdesign.cz/"
+        href="https://www.sniperdesign.cz/seo-pro-ai"
         target="_blank"
         rel="noopener"
         class="sd-big__btn sd-big__btn--solid"
@@ -374,33 +354,10 @@ const { eyebrowNum = "06" } = Astro.props as Props;
     background: color-mix(in oklch, var(--sd-paper) 6%, transparent);
     border: 1px solid color-mix(in oklch, var(--sd-paper) 14%, transparent);
     border-radius: 10px;
-    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-    text-decoration: none;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
-  }
-  .sd-big__benefit::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  .sd-big__benefit:hover {
-    background: color-mix(in oklch, var(--sd-paper) 10%, transparent);
-    border-color: color-mix(in oklch, var(--sd-magenta) 50%, transparent);
-    transform: translateY(-2px);
-  }
-  .sd-big__benefit:hover::before { opacity: 1; }
-  .sd-big__benefit:focus-visible {
-    outline: 2px solid var(--sd-magenta);
-    outline-offset: 2px;
   }
   .sd-big__benefit-num {
     font-family: var(--font-mono);
