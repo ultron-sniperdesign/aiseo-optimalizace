@@ -447,6 +447,24 @@ const faqCount = entry.data.faq?.length ?? 0;
     font-family: var(--font-sans);
   }
 
+  /* Wide-block breakout: nové komponenty potřebují víc šířky než 42rem prose */
+  .article__prose :global(.persona-grid),
+  .article__prose :global(.anti-persona),
+  .article__prose :global(.ctbl-wrap),
+  .article__prose :global(.dd),
+  .article__prose :global(.mistake-grid),
+  .article__prose :global(.mindset),
+  .article__prose :global(.src-card),
+  .article__prose :global(.prmt-list),
+  .article__prose :global(.acards-grid),
+  .article__prose :global(.related) {
+    width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
+    max-width: none;
+  }
+
+  /* PROSE TYPOGRAPHY V @layer — layered styly mají vždy nižší prioritu
+     než unlayered, takže komponentní styly automaticky vyhrávají */
+  @layer prose {
   /* Markdown rendered body — sans typography matching sections */
   .article__prose :global(h2) {
     font-family: var(--font-sans);
@@ -620,6 +638,7 @@ const faqCount = entry.data.faq?.length ?? 0;
     border-top: 1px solid var(--color-rule);
     margin: 2.5rem 0;
   }
+  } /* end @layer prose */
 
   /* ===== FAQ ===== */
   .faq {

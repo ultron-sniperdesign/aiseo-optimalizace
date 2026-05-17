@@ -42,6 +42,12 @@ howto:
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import Persona from "../../components/blocks/Persona.astro";
+import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mindset from "../../components/blocks/Mindset.astro";
 
 ## <strong>Úvod</strong>: Proč najednou <span class="hl">4 zkratky</span> místo jedné
 
@@ -132,8 +138,14 @@ Pro většinu webů a e-shopů znamená dobrý AEO **měřitelný posun během t
 
 **AIO má dva významy — záleží na kontextu:**
 
-1. **AI Overviews** — konkrétní funkce Google vyhledávače, kde se nad organickými výsledky zobrazuje generovaný souhrn s odkazy na zdroje.
-2. **AI Optimization** — širší zastřešující pojem pro optimalizaci pro AI obecně (zahrnuje GEO + AEO + LLMO).
+<PersonaGrid>
+  <Persona icon="🔎" title="AI Overviews" chip="Funkce v Googlu" tone="aio">
+    **Konkrétní funkce Google vyhledávače**, kde se nad organickými výsledky zobrazuje generovaný souhrn s odkazy na zdroje.
+  </Persona>
+  <Persona icon="🌐" title="AI Optimization" chip="Strategický deštník" tone="aio">
+    **Širší zastřešující pojem** pro optimalizaci pro AI obecně (zahrnuje GEO + AEO + LLMO).
+  </Persona>
+</PersonaGrid>
 
 ### AI Overviews v praxi
 
@@ -173,7 +185,12 @@ Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychl
 
 ## Co dělat <strong>od prvního článku</strong> a co <span class="hl">odložit na později</span>
 
-Klasický model „nejdřív SEO, pak AEO, pak GEO" v roce 2026 **typicky nefunguje optimálně**. Důvod: AEO struktura (FAQPage schema, HowTo, answer block) i GEO-friendly psaní (definice, fact-density, citovatelnost) jsou věci, které píšete od **prvního článku** — schema markup ani strukturní pravidla nestojí žádný extra náklad oproti běžnému SEO contentu. Pokud je odložíte, za rok budete mít stovky článků k přepisu.
+<Mindset
+  badQuote="Nejdřív SEO, pak AEO, pak GEO."
+  badWhy="Klasický model. V roce 2026 typicky nefunguje optimálně — vytváří dluh. Pokud teď píšete bez GEO/AEO awareness, za rok budete mít stovky článků k přepisu."
+  goodQuote="SEO + AEO + GEO píšete od prvního článku paralelně."
+  goodWhy="Schema markup ani strukturní pravidla nestojí žádný extra náklad. Měření a placené nástroje přijdou až s 20+ články v top 10 — to je skutečná investice po milníku."
+/>
 
 ### Co patří do balíku "od prvního článku" (0 Kč navíc)
 
@@ -229,58 +246,24 @@ Stejný stack se aplikuje různě podle typu projektu. Tahle matrix je orientač
 
 ## <strong>Praktický postup</strong>: jak začít s <span class="hl">GEO/AEO/AIO</span> ve 4 krocích
 
-### Krok 1 — Audit existujícího obsahu pro AI citovatelnost
-
-Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky:
-
-1. **Je odpověď na hlavní dotaz v prvních 60 slovech článku?** Pokud ne, přesuňte ji nahoru.
-2. **Obsahuje stránka konkrétní fakta, čísla, citáty?** Datově hutný obsah má typicky vyšší šanci na citaci v AI odpovědích než obecný marketingový text.
-3. **Je struktura H2/H3 logická?** Každý subheading by měl odpovídat na sub-dotaz.
-4. **Má FAQ sekci s schema.org/FAQPage markupem?** Pokud ne, přidejte ji.
-
-### Krok 2 — Schema.org markup (FAQPage, HowTo, Article)
-
-Schema markup je **strojově čitelný popis** vaší stránky, který AI engines explicitně vyhledávají. Tři typy, které musí mít každá content stránka:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "Co je rozdíl mezi SEO a GEO?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "SEO optimalizuje stránku pro pozice v Googlu. GEO optimalizuje obsah pro citace v AI odpovědích."
-    }
-  }]
-}
-```
-
-Pro tutoriály a postupy `HowTo`, pro články `Article` s `author`, `datePublished` a `image`.
-
-### Krok 3 — Strukturované odpovědi (answer block + kontext)
-
-Každý článek by měl mít **dvouvrstevnou strukturu**:
-
-- **Answer block** (40–60 slov) hned po H1 nebo H2 — tady AI engines táhnou citaci
-- **Dlouhý kontext** pod tím — pro lidské čtenáře, kteří chtějí hlubší pochopení
-
-Tento průvodce má v každé sekci výraznou definici tučně („**X je…**"). Není to estetický doplněk — je to **přímý signál pro AI scrapery**, kde najdou definici daného pojmu.
-
-### Krok 4 — Měření: SERP features tracking + AI citation monitoring
-
-Co měřit:
-
-| Metrika | Zdroj | Frekvence |
-|---|---|---|
-| Pozice v AI Overviews | manuální Google search nebo SE Ranking | týdně |
-| Featured Snippets impressions | Google Search Console | denně |
-| FAQ rich snippet zobrazení | GSC → Performance → Search Appearance | týdně |
-| Brand mention v ChatGPT | nástroje jako Otterly, Profound | měsíčně |
-| Citation share v Perplexity | manuální audit nebo Profound | měsíčně |
-
-Pro průběžné měření stačí jednou měsíčně manuálně otestovat top 10 vašich klíčových slov v Googlu a zapsat, kde se objevil AI Overview panel a jestli z něj vede odkaz na váš web. Profesionálnější tracking řeší dedikované AIO/GEO nástroje, ale ze začátku stačí jednoduchá tabulka v Excelu.
+<Stepper tone="aio" steps={[
+  {
+    title: "Audit existujícího obsahu pro AI citovatelnost",
+    desc: "Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky: (1) Je odpověď na hlavní dotaz v prvních 60 slovech? (2) Obsahuje stránka konkrétní fakta, čísla, citáty? (3) Je struktura H2/H3 logická (každý subheading odpovídá na sub-dotaz)? (4) Má FAQ sekci s FAQPage schema markupem? Stránky které selžou ≥ 2 kontroly přepište.",
+  },
+  {
+    title: "Schema.org markup (FAQPage, HowTo, Article)",
+    desc: "Schema markup je strojově čitelný popis vaší stránky, který AI engines explicitně vyhledávají. Implementujte 3 typy: Article na každý článek (headline, datePublished, dateModified, author), FAQPage na FAQ sekci (mainEntity array s Question a Answer), HowTo na tutoriály a postupy (step array s name a text). JSON-LD blok jde do <head>, validate přes Google Rich Results Test.",
+  },
+  {
+    title: "Strukturované odpovědi (answer block + kontext)",
+    desc: 'Každý článek by měl mít dvouvrstevnou strukturu: answer block 40–60 slov hned po H1 (AI engines táhnou citaci) + dlouhý kontext pod tím (pro lidské čtenáře). Definice typu „X je …" jako tučný odstavec je přímý signál pro AI scrapery, kde najdou definici pojmu.',
+  },
+  {
+    title: "Měření: SERP features tracking + AI citation monitoring",
+    desc: "Sledujte 5 metrik: pozice v AI Overviews (manuální Google search nebo SE Ranking, týdně), Featured Snippets impressions (GSC, denně), FAQ rich snippet zobrazení (GSC Search Appearance, týdně), brand mention v ChatGPT (Otterly nebo Profound, měsíčně), citation share v Perplexity (manuální audit nebo Profound, měsíčně). Pro průběžné měření stačí ze začátku jednoduchá tabulka v Excelu.",
+  },
+]} />
 
 → Krok-za-krokem checklist + měřicí rámec v sekci [Praktický postup](/prakticky-postup/).
 
@@ -288,32 +271,43 @@ Pro průběžné měření stačí jednou měsíčně manuálně otestovat top 1
 
 Při optimalizaci pro AI se snadno udělají čtyři chyby, které se v CZ obsahovém marketingu opakují:
 
-### 1. Plné kopírování AI promptů do textu
-
-Občas vidíme články, které doslova obsahují sekci „Při psaní jsme použili tento prompt: …". Je to autenticita, kterou AI engines penalizují — pokud detekují, že obsah je primárně AI-generovaný bez přidané hodnoty, snižují citovatelnost.
-
-### 2. Nucení FAQ tam, kde nepatří
-
-FAQ sekce má cenu jen, když odpovídá na **reálné dotazy uživatelů**. Když si vymyslíte 5 otázek typu „Proč je naše agentura nejlepší?", neměří se to ničemu. Použijte data z Google Search Console (dotazy, na které už hodnotíte) a People Also Ask boxů.
-
-### 3. Příliš dlouhé answer blocks
-
-Pokud první odpověď v článku má 200 slov, AI scraper **najde jen prvních 60** a zbytek ignoruje. Krátká, věcná odpověď nahoře. Dlouhý kontext pod tím.
-
-### 4. Optimalizace pouze pro AIO bez ohledu na obsahový profil
-
-Klíčové zjištění z analýzy CZ trhu: **AI Overviews škodí dlouhým how-to průvodcům** (marketingppc.cz prošel propadem organic 46k → 20k mezi červencem a září 2025, i když měl AIO presence) a **prospívá krátkým news/edu článkům** (interval.cz +137 % YoY se stejnou AIO presence).
-
-Pokud máte e-shop nebo B2B SaaS s dlouhými edukačními průvodci, zvažte, **zda se chcete v AIO objevovat** — protože AI vám může „sebrat" odpověď a uživatel už neklikne. Někdy je strategicky správnější obsah **z AIO blokovat** přes `nosnippet` meta tag.
+<MistakeGrid>
+  <Mistake num="01" title="Plné kopírování AI promptů do textu" fix="Použijte AI jen jako research nástroj, nikdy nepublikujte raw prompt sekce.">
+    Občas vidíme články, které doslova obsahují sekci „Při psaní jsme použili tento prompt: …". AI engines penalizují obsah, který detekují jako primárně AI-generovaný bez přidané hodnoty.
+  </Mistake>
+  <Mistake num="02" title="Nucení FAQ tam, kde nepatří" fix="Použijte data z GSC (dotazy, na které už hodnotíte) a People Also Ask boxů.">
+    FAQ má cenu jen, když odpovídá na **reálné dotazy uživatelů**. Vymyšlené otázky typu „Proč je naše agentura nejlepší?" nemají citation value.
+  </Mistake>
+  <Mistake num="03" title="Příliš dlouhé answer blocks" fix="Striktně 40–60 slov nahoře. Dlouhý kontext pod tím.">
+    Pokud první odpověď v článku má 200 slov, AI scraper najde jen prvních 60 a zbytek ignoruje.
+  </Mistake>
+  <Mistake num="04" title="Optimalizace pro AIO bez ohledu na obsahový profil" fix="Dlouhé how-to průvodce → zvážit nosnippet. Krátké news/edu → optimalizovat na AIO citaci.">
+    AI Overviews **škodí dlouhým how-to průvodcům** (marketingppc.cz propad 46k → 20k 2025) a **prospívá krátkým news/edu článkům** (interval.cz +137 % YoY). U dlouhých edu průvodců AI „sebere" odpověď a uživatel neklikne.
+  </Mistake>
+</MistakeGrid>
 
 ## <strong>Závěr</strong>: Co dělat <span class="hl">příští týden</span>
 
 Pokud jste dočetli až sem, máte přehled o všech 4 zkratkách. Co teď s tím **konkrétně** udělat:
 
-1. **Tento týden:** Vyberte 5 nejnavštěvovanějších stránek na svém webu. Doplňte na nich answer block (60 slov) hned po H1 a FAQPage schema dolů.
-2. **Tento měsíc:** Audit zbylých top 20 stránek podle 4 otázek z Kroku 1 výše. Najměte si nebo postavte interní šablonu pro nové články, která tyto principy vynucuje.
-3. **Tento kvartál:** Zaveďte měření AI citation share — minimálně manuální Google search pro top 10 vašich KW jednou měsíčně. Pokud máte rozpočet, zvažte nástroj Otterly nebo Profound.
-4. **Long-term:** Rozhodněte se, jestli AIO presence je pro vaši firmu **win nebo loss**. Pokud máte dlouhé edu průvodce, zvažte selektivní `nosnippet` meta tag. Pokud máte krátké news/recenze, AIO vás bude tahat nahoru.
+<Stepper tone="aio" steps={[
+  {
+    title: "Tento týden",
+    desc: "Vyberte 5 nejnavštěvovanějších stránek na svém webu. Doplňte na nich answer block (60 slov) hned po H1 a FAQPage schema dolů.",
+  },
+  {
+    title: "Tento měsíc",
+    desc: "Audit zbylých top 20 stránek podle 4 otázek z Kroku 1 výše. Najměte si nebo postavte interní šablonu pro nové články, která tyto principy vynucuje.",
+  },
+  {
+    title: "Tento kvartál",
+    desc: "Zaveďte měření AI citation share — minimálně manuální Google search pro top 10 vašich KW jednou měsíčně. Pokud máte rozpočet, zvažte nástroj Otterly nebo Profound.",
+  },
+  {
+    title: "Long-term",
+    desc: "Rozhodněte se, jestli AIO presence je pro vaši firmu win nebo loss. Pokud máte dlouhé edu průvodce, zvažte selektivní nosnippet meta tag. Pokud máte krátké news/recenze, AIO vás bude tahat nahoru.",
+  },
+]} />
 
 Pokud váháte, kterou disciplínu řešit jako první, nebo nechcete to celé řešit interně, ozvěte se nám do **[Sniperdesign.cz](https://www.sniperdesign.cz/)** — pomáháme webům a e-shopům s AI SEO od auditu obsahu po nasazení strukturovaných dat a měření.
 
