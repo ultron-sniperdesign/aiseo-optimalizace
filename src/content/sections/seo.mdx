@@ -45,6 +45,9 @@ import Insight from "../../components/blocks/Insight.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 import SignalGrid from "../../components/blocks/SignalGrid.astro";
 import TopicCard from "../../components/blocks/TopicCard.astro";
+import Persona from "../../components/blocks/Persona.astro";
+import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import AntiPersona from "../../components/blocks/AntiPersona.astro";
 import ArticleCard from "../../components/blocks/ArticleCard.astro";
 import ArticleGrid from "../../components/blocks/ArticleGrid.astro";
 import RelatedSections from "../../components/blocks/RelatedSections.astro";
@@ -140,13 +143,29 @@ Google hodnotí stránku přes **čtyři vrstvy signálů**. Když máte v každ
 
 SEO není pro každého stejně důležité. Největší dopad má tam, kde zákazník aktivně hledá řešení a srovnává možnosti — typicky:
 
-- **E-shopy a značky s produkty, které lidé před nákupem srovnávají.** Pokud zákazník zadá do Googlu „nejlepší vrtačka na domácí použití" nebo „prémiové krmivo pro psy", chcete být mezi prvními výsledky. Kdo tam není, nehraje.
-- **Lokální služby** — lékaři, advokáti, autoservisy, řemeslníci, kavárny. Lokální dotazy („autoservis brno", „kadeřnictví praha 7") mají vysoký nákupní záměr a nízkou konkurenci v rámci jedné lokality.
-- **B2B firmy a SaaS** — kde se zákazník před nákupem informuje, srovnává a chce ověřit, že rozumíte oboru. SEO pomáhá obsazovat fáze rozhodovacího procesu.
-- **Projekty, kde PPC začíná být drahé.** Pokud platíte za klik 30+ Kč a každý měsíc utratíte desítky tisíc, dlouhodobé SEO sníží závislost na placené reklamě.
-- **Firmy, které chtějí stabilní poptávky.** Reklama přestane fungovat ve chvíli, kdy ji vypnete. Dobré SEO pracuje 24/7 i bez denního dohledu.
+<PersonaGrid>
+  <Persona icon="🛒" title="E-shopy se srovnávaným sortimentem" chip="Vysoký dopad" tone="seo">
+    Pokud zákazník zadá do Googlu „nejlepší vrtačka na domácí použití" nebo „prémiové krmivo pro psy", chcete být mezi prvními výsledky. Kdo tam není, nehraje.
+  </Persona>
+  <Persona icon="📍" title="Lokální služby" chip="Vysoký dopad" tone="seo">
+    Lékaři, advokáti, autoservisy, řemeslníci, kavárny. Lokální dotazy („autoservis brno", „kadeřnictví praha 7") mají vysoký nákupní záměr a nízkou konkurenci v rámci jedné lokality.
+  </Persona>
+  <Persona icon="🏢" title="B2B firmy a SaaS" chip="Vysoký dopad" tone="seo">
+    Zákazník se před nákupem informuje, srovnává a chce ověřit, že rozumíte oboru. SEO pomáhá obsazovat fáze rozhodovacího procesu.
+  </Persona>
+  <Persona icon="💸" title="Projekty, kde PPC začíná být drahé" chip="Vysoký dopad" tone="seo">
+    Pokud platíte za klik 30+ Kč a každý měsíc utratíte desítky tisíc, dlouhodobé SEO sníží závislost na placené reklamě.
+  </Persona>
+  <Persona icon="📈" title="Firmy, které chtějí stabilní poptávky" chip="Vysoký dopad" tone="seo">
+    Reklama přestane fungovat ve chvíli, kdy ji vypnete. Dobré SEO pracuje 24/7 i bez denního dohledu.
+  </Persona>
+</PersonaGrid>
 
-SEO **není primární kanál** pro projekty s velmi krátkým nákupním cyklem (impulsní nákupy bez vyhledávání), čistě transakčním brandem bez search popularity nebo pro testovací produkty s nejistou poptávkou.
+<AntiPersona title="Kdy SEO není primární kanál">
+  - **Projekty s velmi krátkým nákupním cyklem** — impulsní nákupy bez vyhledávání.
+  - **Čistě transakční brand bez search popularity** — nikdo nezná, nikdo nehledá.
+  - **Testovací produkty s nejistou poptávkou** — investice se nemusí vrátit, pokud produkt nedotáhnete k market fit.
+</AntiPersona>
 
 ## <strong>Praktický postup</strong> <span class="hl">SEO</span> pro nový web
 
