@@ -508,30 +508,33 @@ const faqCount = entry.data.faq?.length ?? 0;
   }
   .article__prose :global(.standard) {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
     border-left: 3px solid var(--color-accent);
     border-radius: 8px;
-    padding: 0.875rem 1.125rem;
+    padding: 0.875rem 1.125rem 1rem;
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    color: var(--color-ink);
-    line-height: 1.45;
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    line-height: 1.5;
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .article__prose :global(.standard):hover {
     background: var(--color-paper-deep);
   }
   .article__prose :global(.standard__icon) {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     line-height: 1;
     flex-shrink: 0;
   }
   .article__prose :global(.standard) strong {
+    display: block;
     font-weight: 600;
     color: var(--color-ink);
+    font-size: 0.9375rem;
   }
   .article__prose :global(.standard) code {
     font-family: var(--font-mono);
