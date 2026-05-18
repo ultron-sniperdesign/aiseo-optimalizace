@@ -969,8 +969,13 @@ const pageTypes = [
   }
 
   /* ===== Ukázka struktury — produktová stránka drill-down ===== */
-  .pack-sample {
-    max-width: 50rem;
+  /* Parent selector pro specificity boost: .lp-section--alt > * (Astro scope
+     (0,3,0)) jinak přebíjí .pack-sample ((0,2,0)) a karta spadne na celou
+     --max-section místo content-width. */
+  .lp-section--alt .pack-sample {
+    max-width: calc(var(--max-section) - 2 * var(--space-section-x));
+    /* width 100%-minus-padding na mobile drží card od edges viewportu */
+    width: calc(100% - 2 * var(--space-section-x));
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
     border-radius: 14px;
