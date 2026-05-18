@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
 
 /**
@@ -218,6 +219,8 @@ const answerText =
         }
       </div>
     </section>
+
+    <FreeStrip />
 
     <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ -->
     <SniperDesignSmallContact />
