@@ -626,6 +626,19 @@ function renderFaqMarkdown(text: string): string {
   .article__prose :global(.card-h3 > ul:last-child) {
     margin-bottom: 0;
   }
+  /* Komponenty uvnitř .card-h3 nesmí mít vlastní breakout (vystupují z karty).
+     Override: width: auto + max-width: 100% — vejdou se do parent .card-h3,
+     která je sama na prose šířce. */
+  .article__prose :global(.card-h3 .dd),
+  .article__prose :global(.card-h3 .ctbl-wrap),
+  .article__prose :global(.card-h3 .mistake-grid),
+  .article__prose :global(.card-h3 .persona-grid),
+  .article__prose :global(.card-h3 .mindset),
+  .article__prose :global(.card-h3 .prmt-list),
+  .article__prose :global(.card-h3 .acards-grid) {
+    width: auto;
+    max-width: 100%;
+  }
 
   /* Robots.txt detail */
   .article__prose :global(.robots-detail) {
