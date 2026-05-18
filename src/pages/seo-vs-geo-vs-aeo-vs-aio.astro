@@ -464,7 +464,10 @@ const faqCount = entry.data.faq?.length ?? 0;
     font-family: var(--font-sans);
   }
 
-  /* Wide-block breakout: nové komponenty potřebují víc šířky než 42rem prose */
+  /* Wide-block: na pillar layoutu (s TOC sidebarem) je article column užší
+     než na section pages — žádný breakout, komponenty fillují prose šířku.
+     width: 100% + max-width: none rezetuje výchozí komponentní breakouty,
+     které jsou cílené na full-width article pages. */
   .article__prose :global(.persona-grid),
   .article__prose :global(.anti-persona),
   .article__prose :global(.ctbl-wrap),
@@ -475,8 +478,21 @@ const faqCount = entry.data.faq?.length ?? 0;
   .article__prose :global(.prmt-list),
   .article__prose :global(.acards-grid),
   .article__prose :global(.related) {
-    width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
+    width: 100%;
     max-width: none;
+  }
+  /* Grid komponenty mají viewport-based media queries pro 3-col layout
+     (1080px+ → 3 cols). Na pillar je article column užší → 3 cols by byly
+     cramped. Cap na max 2 cols bez ohledu na viewport. */
+  .article__prose :global(.mistake-grid),
+  .article__prose :global(.persona-grid) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .article__prose :global(.mistake-grid),
+    .article__prose :global(.persona-grid) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   /* PROSE TYPOGRAPHY V @layer — layered styly mají vždy nižší prioritu
