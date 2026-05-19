@@ -163,6 +163,11 @@ const faqJsonLd = {
               <strong>9&nbsp;990&nbsp;Kč</strong>
               <span class="audit-hero__form-price-detail">bez DPH (s&nbsp;DPH 12&nbsp;088&nbsp;Kč)</span>
             </p>
+            <p class="audit-hero__form-reframe">
+              Kupujete <strong>zkrácení rozhodování</strong> &mdash; místo týdnů
+              domýšlení dostanete priority připravené k&nbsp;předání copywriterovi,
+              vývojáři nebo internímu&nbsp;týmu.
+            </p>
           </header>
 
           <form
@@ -365,23 +370,73 @@ const faqJsonLd = {
             <li>Signály důvěryhodnosti &mdash; kdo za&nbsp;obsahem stojí, jak je ověřitelný a&nbsp;proč mu vyhledávače věřit (E-E-A-T)</li>
             <li>Kontaktní údaje (NAP) konzistence napříč webem a&nbsp;katalogy</li>
             <li>Backlink profil &mdash; odkazy z&nbsp;jiných webů, které na&nbsp;vás vedou</li>
-            <li>Brand mentions v&nbsp;Googlu, ChatGPT a&nbsp;Perplexity</li>
             <li>Schema Organization a&nbsp;strukturovaná data pro místní firmu</li>
             <li>Reputace v&nbsp;Heuréce, Zboží, Google reviews</li>
           </ul>
         </article>
 
-        <article class="audit-layer audit-layer--bonus">
-          <span class="audit-layer__num audit-layer__num--bonus">✦</span>
-          <h3>Co dostanete jako výstup</h3>
-          <ul>
-            <li><strong>Prioritní seznam úprav</strong> podle dopadu a&nbsp;náročnosti (co řešit jako první)</li>
-            <li><strong>Konkrétní doporučení pro vaši platformu</strong> (Upgates, Shoptet, WordPress, custom) a&nbsp;typ webu</li>
-            <li><strong>Audit ve&nbsp;formátu</strong> PDF / Notion / Google Doc &mdash; podle vaší preference</li>
-            <li><strong>60min konzultace s&nbsp;týmem</strong> &mdash; projdeme závěry a&nbsp;další postup</li>
-          </ul>
-        </article>
       </div>
+
+      <!-- AI Visibility Check — elevated callout (audit #12) -->
+      <aside class="audit-visibility" aria-labelledby="audit-visibility-title">
+        <div class="audit-visibility__inner">
+          <span class="audit-visibility__pill">★ Součástí auditu</span>
+          <h3 id="audit-visibility-title" class="audit-visibility__title">
+            AI Visibility Check &mdash; <strong>jste viditelní v&nbsp;AI&nbsp;odpovědích?</strong>
+          </h3>
+          <p class="audit-visibility__desc">
+            Ověříme, jestli se&nbsp;vaše značka objevuje v&nbsp;odpovědích ChatGPT,
+            Perplexity a&nbsp;Google AI&nbsp;Overviews u&nbsp;dotazů, které souvisí
+            s&nbsp;vaším sortimentem nebo službou &mdash; a&nbsp;jestli AI nástroje
+            místo vás nezmiňují&nbsp;konkurenci.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Co konkrétně dostanete — sample output struktura (audit #5) -->
+      <article class="audit-deliverable">
+        <header class="audit-deliverable__head">
+          <span class="audit-deliverable__pill">★ Výstup</span>
+          <h3 class="audit-deliverable__title">
+            Co konkrétně dostanete jako <strong>audit dokument</strong>
+          </h3>
+          <p class="audit-deliverable__lead">
+            Strukturovaný dokument (PDF / Notion / Google Doc &mdash; podle
+            vaší preference), který obsahuje:
+          </p>
+        </header>
+
+        <ol class="audit-deliverable__list">
+          <li>
+            <strong>Kritická zjištění</strong>
+            <span>Co teď nejvíc brzdí viditelnost ve&nbsp;vyhledávačích a&nbsp;AI nástrojích.</span>
+          </li>
+          <li>
+            <strong>Prioritní tabulka úprav</strong>
+            <span>Každá položka: dopad &times; náročnost &times; kdo by ji&nbsp;měl řešit (vývojář / copywriter / interní tým).</span>
+          </li>
+          <li>
+            <strong>Technické problémy</strong>
+            <span>Konkrétní URL, screenshot/citace, doporučená oprava. Připravené k&nbsp;předání vývojáři.</span>
+          </li>
+          <li>
+            <strong>Obsahové mezery proti konkurenci</strong>
+            <span>Témata a&nbsp;dotazy, kde konkurence pokrývá a&nbsp;vy ne &mdash; s&nbsp;odhadem priority.</span>
+          </li>
+          <li>
+            <strong>Doporučení pro&nbsp;AI citovatelnost</strong>
+            <span>Konkrétní úpravy textu, strukturovaných dat a&nbsp;signálů důvěryhodnosti, aby vás AI začala citovat.</span>
+          </li>
+          <li>
+            <strong>30denní akční plán</strong>
+            <span>Co řešit první týden, druhý, třetí, čtvrtý &mdash; v&nbsp;pořadí, které dává smysl.</span>
+          </li>
+          <li>
+            <strong>60min konzultace s&nbsp;týmem</strong>
+            <span>Projdeme závěry, dáme prostor na&nbsp;otázky, doladíme priority dle&nbsp;vašich možností.</span>
+          </li>
+        </ol>
+      </article>
     </section>
 
     <!-- ===== 02 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
@@ -909,6 +964,170 @@ const faqJsonLd = {
   .audit-hero__form-price-detail {
     font-family: var(--font-sans);
     font-size: 0.875rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* ===== Price reframe — pod cenou v hero form-card (audit #4) ===== */
+  .audit-hero__form-reframe {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0.875rem 0 0;
+    padding: 0.75rem 0.875rem;
+    background: color-mix(in oklch, var(--sd-gold) 8%, transparent);
+    border-left: 3px solid var(--sd-gold);
+    border-radius: 0 6px 6px 0;
+  }
+  .audit-hero__form-reframe strong {
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+
+  /* ===== AI Visibility Check callout (audit #12 — elevace brand mentions) ===== */
+  .audit-visibility {
+    max-width: 56rem;
+    margin: clamp(2rem, 4vw, 3rem) 0 0;
+    padding: 0;
+  }
+  .audit-visibility__inner {
+    background: linear-gradient(135deg,
+      color-mix(in oklch, var(--sd-violet) 10%, var(--color-paper)) 0%,
+      color-mix(in oklch, var(--sd-magenta) 8%, var(--color-paper)) 100%);
+    border: 1px solid color-mix(in oklch, var(--sd-violet) 25%, var(--color-rule));
+    border-left: 4px solid var(--sd-violet);
+    border-radius: 14px;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+  }
+  .audit-visibility__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    background: var(--sd-violet);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 0.875rem;
+  }
+  .audit-visibility__title {
+    font-family: var(--font-agency, var(--font-sans));
+    font-weight: 300;
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 0.75rem;
+  }
+  .audit-visibility__title strong {
+    font-weight: 700;
+    color: var(--sd-violet);
+  }
+  .audit-visibility__desc {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* ===== „Co konkrétně dostanete" — sample output struktura (audit #5) ===== */
+  .audit-deliverable {
+    max-width: 56rem;
+    margin: clamp(2rem, 3vw, 2.5rem) 0 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--sd-gold);
+    border-radius: 14px;
+  }
+  .audit-deliverable__head {
+    margin: 0 0 1.5rem;
+  }
+  .audit-deliverable__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    background: var(--sd-gold);
+    color: var(--sd-deep);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 0.875rem;
+  }
+  .audit-deliverable__title {
+    font-family: var(--font-agency, var(--font-sans));
+    font-weight: 300;
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 0.625rem;
+  }
+  .audit-deliverable__title strong {
+    font-weight: 700;
+    color: var(--sd-deep);
+  }
+  .audit-deliverable__lead {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .audit-deliverable__list {
+    counter-reset: deliverable;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .audit-deliverable__list li {
+    counter-increment: deliverable;
+    position: relative;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+  }
+  .audit-deliverable__list li::before {
+    content: counter(deliverable, decimal-leading-zero);
+    position: absolute;
+    left: 0.875rem;
+    top: 0.875rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sd-gold);
+    color: var(--sd-deep);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 999px;
+  }
+  .audit-deliverable__list strong {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .audit-deliverable__list span {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
     color: var(--color-ink-muted);
   }
 
