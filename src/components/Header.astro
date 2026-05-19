@@ -50,6 +50,13 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
         Blog
       </a>
       <a
+        href="/audit/"
+        class:list={["disc-nav__link disc-nav__link--audit", { "disc-nav__link--active": isActive("/audit/") }]}
+        aria-current={isActive("/audit/") ? "page" : undefined}
+      >
+        Audit
+      </a>
+      <a
         href="/navod-zdarma/"
         class:list={["disc-nav__link disc-nav__link--free", { "disc-nav__link--active": isActive("/navod-zdarma/") }]}
         aria-current={isActive("/navod-zdarma/") ? "page" : undefined}
@@ -183,6 +190,28 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   .disc-nav__link[data-d="aio"].disc-nav__link--active {
     color: var(--color-aio);
   }
+
+  /* "Audit" — magenta pill, premium/paid akce vedle gold „Návod zdarma" */
+  .disc-nav__link--audit {
+    color: oklch(0.32 0.16 335);
+    background: linear-gradient(135deg, oklch(0.95 0.04 335) 0%, oklch(0.92 0.06 320) 100%);
+    border: 1px solid oklch(0.86 0.08 330);
+    border-radius: 999px;
+    padding: 0.45rem 0.875rem;
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  }
+  .disc-nav__link--audit:hover {
+    color: oklch(0.25 0.18 335);
+    background: linear-gradient(135deg, oklch(0.92 0.06 330) 0%, oklch(0.86 0.1 325) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -4px oklch(0.62 0.27 335 / 0.4);
+  }
+  .disc-nav__link--audit.disc-nav__link--active {
+    background: linear-gradient(135deg, oklch(0.78 0.16 330) 0%, oklch(0.7 0.2 325) 100%);
+    color: oklch(0.99 0.005 335);
+  }
+  .disc-nav__link--audit::after { display: none !important; }
 
   /* "Návod zdarma" — gold pill, vystupuje z navigace jako primární akce */
   .disc-nav__link--free {
