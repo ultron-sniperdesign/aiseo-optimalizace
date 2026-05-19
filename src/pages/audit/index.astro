@@ -88,6 +88,22 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
+      name: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ano, pokud chcete nezávislý pohled na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Výstup můžete předat internímu týmu, copywriterovi, vývojáři nebo stávající agentuře.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Co když audit neodhalí zásadní problém?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "I to je užitečný výsledek. Získáte potvrzení, že technika, obsah a důvěryhodnost nejsou hlavní brzda, a doporučíme, kam zaměřit další úsilí. V praxi ale ve většině auditů nacházíme kombinaci technických, obsahových i důvěryhodnostních rezerv.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Můžu se na něco zeptat předem?",
       acceptedAnswer: {
         "@type": "Answer",
@@ -336,6 +352,25 @@ const faqJsonLd = {
         </p>
       </header>
 
+      <!-- Interpretační rámec — jak rozdělíme nálezy (audit #15) -->
+      <div class="audit-impact-frame">
+        <span class="audit-impact-frame__eyebrow">Každý nález rozdělíme podle dopadu</span>
+        <div class="audit-impact-frame__grid">
+          <div class="audit-impact-frame__item audit-impact-frame__item--crit">
+            <strong>Kritické brzdy</strong>
+            <span>Věci, které brání indexaci, čitelnosti nebo&nbsp;důvěryhodnosti. Řešit ihned.</span>
+          </div>
+          <div class="audit-impact-frame__item audit-impact-frame__item--quick">
+            <strong>Rychlé výhry</strong>
+            <span>Úpravy, které lze nasadit bez&nbsp;velkého vývoje &mdash; nejlepší poměr dopad&nbsp;/&nbsp;effort.</span>
+          </div>
+          <div class="audit-impact-frame__item audit-impact-frame__item--strat">
+            <strong>Strategické úpravy</strong>
+            <span>Obsah, struktura, autorita &mdash; budují AI viditelnost dlouhodobě.</span>
+          </div>
+        </div>
+      </div>
+
       <div class="audit-layers">
         <article class="audit-layer">
           <span class="audit-layer__num" data-tone="seo">01</span>
@@ -497,18 +532,13 @@ const faqJsonLd = {
         <h2 class="lp-section__title">
           Co je pro vás <strong>vhodnější</strong>?
         </h2>
-        <p class="lp-section__lead">
-          <a href="/pack/">AI&nbsp;SEO Wireframe Pack</a> a&nbsp;audit nejsou
-          konkurenti &mdash; řeší dvě různé situace. Často je nejlepší
-          mít obojí: Pack jako framework, audit jako přesný plán pro váš
-          konkrétní web.
-        </p>
         <p class="audit-bridge">
-          <strong>Pack je framework, který si aplikujete sami.</strong> Audit je
-          placený za&nbsp;expertizu nad&nbsp;vaším konkrétním webem: co řešit
-          hned, co počká, co má nejvyšší dopad a&nbsp;co je na&nbsp;vaší platformě
-          reálně proveditelné. <strong>Neplatíte za&nbsp;objem textu, ale
-          za&nbsp;prioritizaci, kontext a&nbsp;konzultaci.</strong>
+          <strong>Nejste si jistí, jestli stačí Pack?</strong> Pokud váš web
+          generuje tržby a&nbsp;nechcete ztrácet týdny samostatnou analýzou,
+          <strong>audit je správná volba</strong> &mdash; dostanete přesný
+          plán pro&nbsp;váš konkrétní web a&nbsp;sortiment, nikoli obecný
+          framework. Neplatíte za&nbsp;objem textu, ale za&nbsp;prioritizaci,
+          kontext a&nbsp;konzultaci.
         </p>
       </header>
 
@@ -545,7 +575,7 @@ const faqJsonLd = {
             <li>Výstup do&nbsp;5&nbsp;pracovních dní + 60min konzultace</li>
           </ul>
           <a href="#objednat" class="audit-compare__cta audit-compare__cta--accent">
-            Objednat audit&nbsp;&rarr;
+            Chci konkrétní plán pro&nbsp;svůj web&nbsp;&rarr;
           </a>
         </article>
       </div>
@@ -622,6 +652,26 @@ const faqJsonLd = {
             problémů. Jakmile je rozsah potvrzen a&nbsp;audit zahájen, jde o&nbsp;službu
             připravovanou na&nbsp;míru a&nbsp;storno řešíme individuálně podle
             rozpracovanosti.
+          </dd>
+        </div>
+        <div>
+          <dt>Má smysl audit, když už máme SEO specialistu nebo agenturu?</dt>
+          <dd>
+            Ano, pokud chcete <strong>nezávislý pohled</strong> na&nbsp;připravenost
+            webu pro&nbsp;AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu
+            &mdash; dává vašemu týmu konkrétní priority, které může zapracovat.
+            Výstup můžete předat internímu týmu, copywriterovi, vývojáři nebo
+            stávající agentuře.
+          </dd>
+        </div>
+        <div>
+          <dt>Co když audit neodhalí zásadní problém?</dt>
+          <dd>
+            I&nbsp;to je užitečný výsledek. Získáte <strong>potvrzení</strong>,
+            že technika, obsah a&nbsp;důvěryhodnost nejsou hlavní brzda,
+            a&nbsp;doporučíme, kam zaměřit další úsilí. V&nbsp;praxi ale
+            ve&nbsp;většině auditů nacházíme kombinaci technických, obsahových
+            i&nbsp;důvěryhodnostních rezerv.
           </dd>
         </div>
         <div>
@@ -964,6 +1014,57 @@ const faqJsonLd = {
   .audit-hero__form-price-detail {
     font-family: var(--font-sans);
     font-size: 0.875rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* ===== Impact framework — interpretační rámec nálezů (audit #15) ===== */
+  .audit-impact-frame {
+    margin: 0 0 clamp(2rem, 3vw, 2.5rem);
+    padding: clamp(1.25rem, 2vw, 1.5rem);
+    background: color-mix(in oklch, var(--sd-violet) 4%, var(--color-paper-deep));
+    border: 1px solid color-mix(in oklch, var(--sd-violet) 18%, var(--color-rule));
+    border-radius: 12px;
+  }
+  .audit-impact-frame__eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sd-violet);
+    margin: 0 0 0.875rem;
+  }
+  .audit-impact-frame__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 720px) {
+    .audit-impact-frame__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .audit-impact-frame__item {
+    padding: 0.875rem 1rem;
+    background: var(--color-paper);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-rule);
+  }
+  .audit-impact-frame__item--crit { border-left-color: oklch(0.6 0.22 25); }
+  .audit-impact-frame__item--quick { border-left-color: oklch(0.7 0.18 145); }
+  .audit-impact-frame__item--strat { border-left-color: var(--sd-violet); }
+  .audit-impact-frame__item strong {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .audit-impact-frame__item span {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
     color: var(--color-ink-muted);
   }
 
