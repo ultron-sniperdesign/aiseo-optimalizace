@@ -1295,6 +1295,39 @@ const faqJsonLd = {
     border-radius: 0;
     padding: 0;
   }
+  /* V úzké form-card (~480 px) je 2-col grid pro jméno/email moc tísnivý
+     (216 px na pole). Force všechna pole na 1-col. */
+  .audit-form--inline .audit-form__grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+  /* Inputs viditelnější border na světlém form-card bg */
+  .audit-form--inline .audit-form__field input[type="text"],
+  .audit-form--inline .audit-form__field input[type="email"],
+  .audit-form--inline .audit-form__field input[type="url"],
+  .audit-form--inline .audit-form__field select,
+  .audit-form--inline .audit-form__field textarea {
+    border-color: var(--color-rule-strong);
+  }
+  /* Submit: full-width, gold (matchuje hero CTA), prominent — primární akce */
+  .audit-form--inline .audit-form__submit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: var(--sd-gold);
+    color: var(--sd-deep);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    padding: 1.125rem 1.5rem;
+    margin-top: 1.25rem;
+    box-shadow: 0 8px 24px -8px oklch(from var(--sd-gold) l c h / 0.55);
+  }
+  .audit-form--inline .audit-form__submit:hover {
+    background: color-mix(in oklch, var(--sd-gold) 85%, white);
+    color: var(--sd-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -8px oklch(from var(--sd-gold) l c h / 0.7);
+  }
   .audit-form__grid {
     display: grid;
     grid-template-columns: 1fr;
