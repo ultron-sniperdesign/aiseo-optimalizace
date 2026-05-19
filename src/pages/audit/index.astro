@@ -1071,15 +1071,20 @@ const faqJsonLd = {
     color: var(--color-ink-muted);
   }
 
-  /* ===== AI SEO proof examples — pod trust cards (audit #7) ===== */
-  .audit-examples {
-    margin: clamp(2rem, 3vw, 2.75rem) 0 0;
+  /* ===== AI SEO proof examples — pod trust cards (audit #7) =====
+     Parent selector bumps specificity nad .lp-section--alt > * Astro scope
+     (jinak max-width 56rem prohraje a kartka se posune na nesprávnou šířku). */
+  .lp-section--alt .audit-examples {
+    margin: clamp(2rem, 3vw, 2.75rem) auto 0;
     padding: clamp(1.5rem, 2.5vw, 2rem);
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
     border-left: 4px solid var(--sd-magenta);
     border-radius: 14px;
-    max-width: 56rem;
+    /* width = content area sekce (= --max-section − 2× section padding),
+       drží zarovnání s audit-trust gridem výše */
+    max-width: calc(var(--max-section) - 2 * var(--space-section-x));
+    width: calc(100% - 2 * var(--space-section-x));
   }
   .audit-examples__title {
     font-family: var(--font-sans);
