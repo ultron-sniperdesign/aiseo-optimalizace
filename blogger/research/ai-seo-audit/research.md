@@ -1,6 +1,6 @@
 # Research — AI SEO audit (slug: ai-seo-audit)
 
-**Datum:** 2026-05-24 · **Kategorie:** tutorial (+ howto) · **Run:** první ostrý dle CONTENT_WORKFLOW.md
+**Datum:** 2026-05-23 · **Kategorie:** tutorial (+ howto) · **Run:** první ostrý dle CONTENT_WORKFLOW.md
 
 ## Cílové KW + long-tail
 - Hlavní: **ai seo audit** (autocomplete `ai seo` → audit/tool/skill, viz `_source/_keyword-research/cz-zkratky-20260523_144759/insights.md`; „ai seo" 140/měs, +111 % YoY).
