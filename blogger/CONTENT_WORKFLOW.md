@@ -9,6 +9,7 @@
 > - `blogger/obsahovy-plan.csv` — fronta témat (zdroj práce + evidence publikací).
 > - `marketing/05-messaging-a-tonalita.md` — brand voice + zakázaný slovník.
 > - `docs/section-page-standard.md` — komponenty pro design optimalizaci (BLOK D1).
+> - `blogger/IMAGE_GUIDE.md` — featured / OG image (BLOK D2).
 >
 > **Režim provozu:** plná autonomie. Jediný lidský dotyk je závěrečný report URL
 > do vlákna (D4). Roli „recenzenta" během tvorby plní OpenAI auditor (BLOK C), ne uživatel.
@@ -24,6 +25,7 @@
 | Trend & téma research | `WebSearch` (built-in) | klasický vyhledávací research |
 | Keyword research + Trends | `marketing-miner-api` | `~/.claude/skills/marketing-miner-api/` · env `MARKETING_MINER_API_TOKEN` |
 | Audit obsahu | `open-ai-api-core` | `~/.claude/skills/open-ai-api-core/scripts/chat.py` · env `OPENAI_API_KEY` (v `.env` skillu) |
+| Featured / OG image | `open-ai-api-core` | `~/.claude/skills/open-ai-api-core/scripts/image.py` · `gpt-image-2` → `public/og/<slug>.png` · viz `IMAGE_GUIDE.md` |
 | Design komponenty | `docs/section-page-standard.md` | `src/components/blocks/*.astro` |
 | Publikace | viz `blogger/README.md` | `npm run build` → git → CI |
 
@@ -88,18 +90,25 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 ---
 
-## BLOK D — Design, publikace, uzávěr
+## BLOK D — Design, featured image, publikace, uzávěr
 
 - **D1 — Design optimalizace** (PŘED publikací — jeden deploy): podle `docs/section-page-standard.md` rozbij „wall of text" komponentami z `src/components/blocks/` (`DoDont`, `Stepper`, `Insight`, `Mistake`/`MistakeGrid`, `Persona`/`PersonaGrid`, `CompareTable`, `SourceCard`, `PromptList`…). Vizuální landmark min. každých 200–300 slov.
   - Článek je proto **`.mdx`** (kvůli importu komponent) + `variant: "rich"` ve frontmatteru.
   - Importy v hlavičce MDX za frontmatterem: `import X from "../../components/blocks/X.astro";`
-- **D2 — Publikace** (dle `blogger/README.md`):
+- **D2 — Featured / OG image** (POVINNÁ — bez ní 404 na kartě i heru). Plný postup: `blogger/IMAGE_GUIDE.md`. V kostce:
+  - Generuj přes `open-ai-api-core` / `image.py`, **model `gpt-image-2`**, `--size 1536x1024`, `--quality high`, `--output "public/og/<slug>.png"`. (NE difúzní modely — komolí češtinu.)
+  - Prompt = konstantní stylová preambule (flat vektor, indigo/navy, světlé pozadí, sparkles) + scéna k tématu + **CZ text vlevo nahoře** (hlavní KW + podtitul, správná diakritika). Šablona v `IMAGE_GUIDE.md` §5.
+  - **Kompozice:** důležitý obsah do horních **~84 %** — zobrazení ořízne spodních ~16 %.
+  - `--prompt` do **jednoduchých** uvozovek, uvnitř žádný apostrof.
+  - **Zkontroluj** vygenerovaný PNG (Read): čitelný a správně napsaný CZ text + kompozice; jinak uprav prompt a regeneruj.
+  - Jeden soubor `public/og/<slug>.png` = thumbnail + hero + og:image (odvozeno ze slugu, žádné frontmatter pole). Volitelnou master kopii do `_source/_blog-images/` **přeskakuji** — mimo blogger scope.
+- **D3 — Publikace** (dle `blogger/README.md`):
   - `npm run build` (validace frontmatteru + komponent)
-  - `git add` JEN vlastní soubory (`src/content/articles/<slug>.mdx`, případně `public/blog/<slug>/`, `public/og/<slug>.png`) — nikdy `-A`
-  - commit `Blog: …` → `git push origin main` → CI ~1–2 min
-  - verifikace: `curl -sSI .../blog/<slug>/` → 200, listing `/blog/`, sitemap, JSON-LD (≥ 2), IndexNow v CI logu
-- **D3 — Uzávěr tabulky:** v `obsahovy-plan.csv` u řádku nastav `Publikováno = ano` a `URL = https://aiseo-optimalizace.cz/blog/<slug>/`. Commituj (`Blog: obsahový plán — <slug> publikováno`).
-- **D4 — Report:** vlož URL nového článku do vlákna ke kontrole obsahu. Po netriviálním researchi krátký záznam do `cross-session/aiseo-optimalizace.md`.
+  - `git add` JEN vlastní soubory: `src/content/articles/<slug>.mdx` + **`public/og/<slug>.png`** (povinně) + případně `public/blog/<slug>/` — nikdy `-A`
+  - commit `Blog: …` (obrázek jde se článkem) → `git push origin main` → CI ~1–2 min
+  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.png` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2), IndexNow v CI logu; očima karta + hero (text obrázku se neusekne)
+- **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` u řádku nastav `Publikováno = ano` a `URL = https://aiseo-optimalizace.cz/blog/<slug>/`. Commituj (`Blog: obsahový plán — <slug> publikováno`).
+- **D5 — Report:** vlož URL nového článku do vlákna ke kontrole obsahu. Po netriviálním researchi krátký záznam do `cross-session/aiseo-optimalizace.md`.
 
 ---
 
@@ -134,6 +143,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - [ ] C1: draft s answer + FAQ + CTA, brand voice OK
 - [ ] C2–C5: 2 kola OpenAI auditu zapracována (`--max-tokens` ≥ 5000)
 - [ ] D1: design komponenty, `.mdx` + `variant: rich`, žádný wall of text
-- [ ] D2: `npm run build` OK → commit (jen vlastní soubory) → push → CI → curl 200
-- [ ] D3: tabulka `E = ano`, `F = URL`
-- [ ] D4: URL do vlákna + (volitelně) záznam do per-projekt boardu
+- [ ] D2: featured image `public/og/<slug>.png` (gpt-image-2, 1536×1024, CZ text v horních ~84 %, zkontrolováno)
+- [ ] D3: `npm run build` OK → commit (článek + OG image) → push → CI → curl 200 (článek i `og/<slug>.png`)
+- [ ] D4: tabulka `E = ano`, `F = URL`
+- [ ] D5: URL do vlákna + (volitelně) záznam do per-projekt boardu
