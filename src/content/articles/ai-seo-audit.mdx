@@ -1,0 +1,161 @@
+---
+title: "AI SEO audit webu: co kontrolovat pro viditelnost v AI"
+description: "Praktický AI SEO audit krok za krokem: zjistěte, jestli vás citují ChatGPT, Perplexity a Google AI Overviews — a co na webu opravit pro lepší viditelnost."
+answer: "AI SEO audit je strukturovaná kontrola toho, jak dobře váš web chápou a citují nástroje AI vyhledávání — ChatGPT, Perplexity a Google AI Overviews. Projdete pět vrstev: viditelnost značky v jejich odpovědích, přístupnost pro AI roboty, strukturovaná data, citovatelnost obsahu a měření v čase. Výstupem je seznam konkrétních úprav. Doporučená frekvence je jednou za čtvrtletí."
+slug: "ai-seo-audit"
+category: "tutorial"
+updated: "2026-05-24"
+variant: "rich"
+keywords:
+  - "ai seo audit"
+  - "audit ai viditelnosti"
+  - "viditelnost v ChatGPT"
+  - "optimalizace pro Perplexity"
+  - "Google AI Overviews"
+  - "GEO audit"
+  - "strukturovaná data pro AI"
+  - "llms.txt"
+stats:
+  - value: "5"
+    label: "vrstev, které AI SEO audit projde"
+  - value: "3"
+    label: "platformy v základní kontrole: ChatGPT, Perplexity, Google"
+  - value: "0 Kč"
+    label: "cena základního průchodu (zdarma dostupné nástroje)"
+  - value: "4×/rok"
+    label: "doporučená frekvence auditu"
+howto:
+  name: "Jak udělat AI SEO audit webu"
+  steps:
+    - name: "Zmapujte viditelnost v AI"
+      text: "Zadejte 15–20 dotazů, jak je píší vaši zákazníci, do ChatGPT, Perplexity a do Googlu (kde sledujte, jestli se zobrazí AI Overview a které zdroje cituje), a zaznamenejte, jestli a jak jste zmíněni a kdo se objevuje místo vás."
+    - name: "Zkontrolujte přístup AI robotů"
+      text: "V souboru robots.txt ověřte, že omylem neblokujete relevantní user agenty jako GPTBot, ClaudeBot nebo PerplexityBot. Google-Extended posuzujte zvlášť — slouží ke kontrole využití obsahu v některých AI funkcích Googlu a jeho povolení samo o sobě citaci nezaručuje."
+    - name: "Ověřte strukturovaná data"
+      text: "Otestujte Article, FAQPage, Organization a drobečkovou navigaci přes Test rozšířených výsledků a validátor strukturovaných dat Schema.org."
+    - name: "Upravte strukturu obsahu"
+      text: "Doplňte krátkou odpověď 40–60 slov nahoru, odpovězte na hlavní dotaz v prvních zhruba 200 slovech a převeďte vágní věty na konkrétní."
+    - name: "Nastavte měření a opakujte"
+      text: "Sledujte podíl zmínek a citací v čase, obsah pravidelně aktualizujte a celý audit opakujte jednou za čtvrtletí."
+faq:
+  - q: "Co je AI SEO audit?"
+    a: "AI SEO audit je strukturovaná kontrola toho, jak dobře váš web chápou a citují AI vyhledávače jako ChatGPT, Perplexity a Google AI Overviews. Prochází viditelnost značky v jejich odpovědích, technickou přístupnost pro AI roboty, strukturovaná data a strukturu obsahu. Výstupem je seznam konkrétních úprav podle priority."
+  - q: "Jak zjistím, jestli mě cituje ChatGPT nebo Perplexity?"
+    a: "Zadejte 15–20 dotazů, jaké píší vaši zákazníci, přímo do ChatGPT, Perplexity a do Googlu (kde sledujte, jestli se zobrazí AI Overview) a zaznamenejte, jestli a jak jste zmíněni. Pro průběžné sledování existují nástroje jako Otterly, Profound nebo AirOps, které měří podíl zmínek a citací napříč platformami."
+  - q: "Liší se AI SEO audit od klasického SEO auditu?"
+    a: "Ano. Klasický audit řeší pozice v Googlu, AI SEO audit řeší citace v AI odpovědích — a ty spolu nemusí souviset. Podle analýz z roku 2025 mívá řada stránek citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu. Klasický audit je základ, AI vrstva je doplněk nad ním."
+  - q: "Pomůže soubor llms.txt k lepší viditelnosti v AI?"
+    a: "Zatím jen okrajově. Soubor llms.txt popisuje, co na webu je, ale podle dostupných analýz z roku 2025 nebylo jeho plošné využívání velkými AI roboty (GPTBot, ClaudeBot, PerplexityBot) prokázané. Nastavit ho můžete, ale jako prioritu berte strukturovaná data a citovatelný obsah."
+  - q: "Jak často dělat AI SEO audit?"
+    a: "Doporučená frekvence je jednou za čtvrtletí. Prostředí AI vyhledávání se mění rychle — přibývají noví roboti, mění se pravidla i způsob citování — takže roční rytmus jako u klasického SEO je tu příliš pomalý."
+  - q: "Musím si na AI SEO audit platit nástroje?"
+    a: "Základ zvládnete zdarma: ruční dotazy v ChatGPT a Perplexity, Test rozšířených výsledků a validátor strukturovaných dat Schema.org a kontrola souboru robots.txt. Placené nástroje (Otterly, Profound) se hodí až na průběžné měření podílu zmínek u více dotazů a konkurence."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## AI SEO audit krok za krokem: pět vrstev, které projdete
+
+**AI SEO audit je kontrola, jak je váš web připravený na citace a zmínky v AI odpovědích.** Projde **pět vrstev** v logickém pořadí: jestli vás AI vyhledávače vůbec zmiňují, jestli k vašemu webu pustí své roboty, jestli vašemu obsahu rozumí stroje, jestli je text napsaný tak, aby šel citovat, a jak si to celé měřit v čase. Tenhle návod je **DIY checklist** — základní průchod na menším nebo středním webu většinou zvládnete během jednoho odpoledne, převážně se zdarma dostupnými nástroji.
+
+Proč to vůbec řešit odděleně od klasického SEO? Protože pozice v Googlu a citace v AI odpovědích spolu nemusí souviset. Podle analýz z roku 2025 mívá značná část stránek často citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu. Dobrý klasický [SEO audit](/blog/seo-audit-co-kontrolovat/) je základ, ale AI vrstvu nepokryje.
+
+## Proč řešit AI viditelnost právě teď
+
+Čísla v tomto článku pocházejí z veřejných analýz AI vyhledávání z let 2025–2026 a podle trhu, jazyka a oboru se výrazně liší — berte je jako řádový trend, ne jako přesnou hodnotu pro váš obor. Trend je ale konzistentní: u části hledání v Googlu se dnes zobrazuje AI Overview a návštěvnost z AI vyhledávání podle dostupných analýz rychle roste. Přesto velká část firem zatím v AI odpovědích vidět není — AI systémy je často necitují mimo jiné proto, že jejich web nemá dostatečně srozumitelný, strukturovaný a ověřitelný obsah.
+
+Zároveň se mění samotný způsob hledání: lidé místo deseti modrých odkazů dostanou jednu složenou odpověď s pár citovanými zdroji. Pokud se vaše značka mezi citovanými zdroji neobjevuje, vyplatí se zjistit, které zdroje AI systémy preferují a proč. Co konkrétně každá disciplína řeší, rozebírá [průvodce SEO vs GEO vs AEO vs AIO](/seo-vs-geo-vs-aeo-vs-aio/); tenhle audit je praktická kontrola, jestli na to váš web reálně stačí.
+
+<Insight tone="accent" icon="!" label="Hlavní princip">
+  Pozice v Googlu a citace v AI odpovědích spolu nemusí souviset. **Měřte AI viditelnost zvlášť** — dobrý klasický SEO audit je základ, ale AI vrstvu nepokryje.
+</Insight>
+
+## Krok 1: Zmapujte, jestli vás AI vůbec zmiňuje
+
+Začněte tím, kde reálně stojíte. Sepište **15–20 dotazů tak, jak je píší vaši zákazníci** (ne jak by je napsal marketér) a zadejte je do ChatGPT, Perplexity a do Googlu. U Googlu navíc sledujte, jestli se pro dotaz zobrazí AI Overview a které zdroje cituje. U každého dotazu si zapište tři věci: jestli jste zmíněni, **jak** jste popsáni, a kdo se objevuje místo vás.
+
+Pomáhá vědět, odkud která platforma čerpá. Podle veřejných analýz z let 2025–2026 se zdroje mezi platformami výrazně liší (konkrétní podíly se mění podle trhu, jazyka a typu dotazu):
+
+| Platforma | Z jakých zdrojů podle analýz nejčastěji čerpá |
+|---|---|
+| ChatGPT | autoritativní a encyklopedické zdroje (typu Wikipedie) |
+| Perplexity | široké spektrum webů včetně komunitního obsahu; obvykle hodně citací na odpověď |
+| Google AI Overviews | klasické organické výsledky doplněné o multimédia |
+
+Na ruční zmapování stačí pár promptů a tabulka. Na **průběžné měření** (více dotazů, sledování konkurence) existují placené nástroje jako Otterly, Profound nebo AirOps — ale to je až krok pro pokročilé, ne podmínka prvního auditu.
+
+## Krok 2: Pustíte k sobě AI roboty? (robots.txt a llms.txt)
+
+Pokud chcete být citovatelní, musí se k vašemu obsahu AI systémy vůbec dostat. V souboru `robots.txt` ověřte, že **omylem neblokujete** relevantní AI roboty a user agenty:
+
+- `GPTBot` (OpenAI / ChatGPT)
+- `ClaudeBot` (Anthropic)
+- `PerplexityBot` (Perplexity)
+- `Google-Extended` (řízení využití obsahu pro některé AI funkce Googlu)
+
+Rozlišujte přitom mezi roboty pro klasickou indexaci, pro trénink modelů a pro živé načítání obsahu — `Google-Extended` například není indexovací robot jako Googlebot, ale kontrolní token pro využití obsahu v některých AI produktech Googlu. **Povolení přístupu samo o sobě citaci nezaručuje, jen odstraňuje technickou překážku.** Spousta webů přitom roboty blokuje, aniž by o tom věděla — typicky převzatým pravidlem ze šablony. Pokud chcete přístup naopak **omezit**, je to legitimní volba; jak na to a jaké má důsledky, rozebírá [návod, jak omezit AI Overview](/blog/jak-vypnout-ai-overview/).
+
+Často se zmiňuje i soubor `llms.txt`. Berte ho s rezervou: popisuje, co na webu je, ale podle dostupných analýz z roku 2025 nebylo jeho plošné využívání velkými AI platformami prokázané. V roce 2026 ho proto berte jako doplněk — prioritou jsou strukturovaná data a obsah.
+
+## Krok 3: Rozumí vám stroje? (strukturovaná data)
+
+<span class="hl">Strukturovaná data</span> jsou strojově čitelný popis obsahu stránky — pomáhají vyhledávačům a AI systémům lépe rozpoznat typ stránky, autora, organizaci, produkt, cenu, dostupnost nebo časté dotazy (základní HTML strukturu ale nenahrazují). Dopad není kosmetický: snižují riziko, že stroje stránku interpretují špatně.
+
+V auditu projděte, jestli máte plošně nasazené alespoň základní typy a jestli jsou validní:
+
+<Checklist tone="geo" title="Strukturovaná data k ověření" items={[
+  { title: "Article + drobečková navigace (BreadcrumbList)", desc: "na obsahových a článkových stránkách." },
+  { title: "Organization", desc: "s kontaktními údaji — název, adresa, telefon." },
+  { title: "FAQPage", desc: "tam, kde reálně odpovídáte na časté dotazy; u většiny webů dnes nezaručuje rozšířený výsledek v Googlu, ale pomáhá strojovému pochopení." },
+  { title: "Product (u e-shopů)", desc: "cena a dostupnost produktu." }
+]} />
+
+Ověřte to v **Testu rozšířených výsledků** (Rich Results Test) a ve validátoru strukturovaných dat Schema.org. Proč na tom u AI tolik záleží a jak strukturu obsahu postavit, rozvádí [návod na strukturu pilířového obsahu](/blog/jak-strukturovat-pillar-content/) a sekce o [generativní optimalizaci (GEO)](/geo/).
+
+## Krok 4: Je obsah napsaný tak, aby šel citovat?
+
+I dobře přístupný a otagovaný obsah AI přeskočí, pokud z něj nejde snadno vytáhnout odpověď. Projděte top stránky a opravte tohle:
+
+<Checklist tone="aeo" title="Pravidla citovatelného obsahu" items={[
+  { title: "Krátká odpověď nahoře", desc: "Hned za nadpisem 40–60 slov, která samostatně odpovídají na hlavní dotaz stránky — zvyšuje šanci, že je AI použije jako zdroj." },
+  { title: "Odpověď v prvních 100–200 slovech", desc: "Úvod nastavuje téma a hlavní odpověď; když ji schováte níž, snižujete šanci na vyhodnocení jako relevantní." },
+  { title: "Test samostatnosti", desc: "Každý odstavec dává smysl i vytržený z kontextu; vágní věty typu To / Tohle / Ten přepište na konkrétní podmět." },
+  { title: "Tabulky a seznamy", desc: "Strukturovaný obsah se cituje líp než souvislý odstavec." },
+  { title: "Aktuálnost", desc: "Obsah vázaný na aktuální rok (např. 2026) pravidelně aktualizujte — zastaralá čísla snižují důvěru i citovatelnost." }
+]} />
+
+## Krok 5: Měřte a opakujte
+
+AI SEO audit není jednorázová akce. Nastavte si **základní měření** — kolik z vašich testovacích dotazů vás zmíní (podíl zmínek, tzv. share of voice) a u kterých témat citaci ztrácíte ve prospěch konkurence. Veďte si jednoduchý kalendář aktualizací klíčových stránek.
+
+Celý audit pak **opakujte jednou za čtvrtletí**. Prostředí se mění rychle: přibývají noví roboti, platformy mění pravidla i způsob citování. Pokud AI viditelnost aktivně řešíte, roční kontrola bývá příliš pomalá — základní srovnání dotazů a citací dává smysl opakovat častěji.
+
+<Insight tone="accent" icon="↻" label="Jak často">
+  Základní průchod (dotazy + citace) si zopakujte **každý kvartál**, kompletní audit ideálně 4× ročně. AI prostředí se mění rychleji než klasické SEO.
+</Insight>
+
+## Časté chyby, kterým se vyhnout
+
+<MistakeGrid>
+  <Mistake num="01" title="Pozice v Googlu = AI viditelnost" fix="Měřte AI viditelnost zvlášť — ruční dotazy v ChatGPT a Perplexity.">
+    Podle analýz z roku 2025 mívá řada stránek citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu.
+  </Mistake>
+  <Mistake num="02" title="Omylem zablokovaní AI roboti" fix="Zkontrolujte robots.txt — GPTBot, ClaudeBot, PerplexityBot.">
+    Blokace převzatá ze šablony snižuje šanci, že AI systémy obsah najdou, pochopí a použijí jako zdroj.
+  </Mistake>
+  <Mistake num="03" title="Spoléhání na llms.txt" fix="Prioritou jsou strukturovaná data a citovatelný obsah.">
+    Soubor llms.txt je zatím doplněk bez prokázaného plošného využití velkými AI platformami.
+  </Mistake>
+  <Mistake num="04" title="Audit jednou a hotovo" fix="Opakujte jednou za čtvrtletí.">
+    Bez pravidelného opakování ztratíte krok s rychlým vývojem AI platforem.
+  </Mistake>
+</MistakeGrid>
+
+## Co dál: rámec, nebo audit na míru
+
+AI SEO audit vám ukáže, **co** je potřeba na webu opravit. Když to chcete převést na vlastní web krok za krokem — od homepage přes produktové a kategoriové stránky až po blog — připravili jsme [AI SEO Wireframe Pack](/pack/): kompletní rámec se šablonami textů, strukturovanými daty a návodem za 1 490 Kč, se kterým začnete během jednoho odpoledne.
+
+Pokud nechcete řešit implementaci sami, dává smysl navázat [AI SEO auditem na míru](/audit/) za 9 990 Kč přímo pro váš web. Pack vám dává rámec, audit přesný plán.
