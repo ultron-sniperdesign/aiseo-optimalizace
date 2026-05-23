@@ -1,0 +1,146 @@
+---
+title: "ChatGPT SEO: jak se dostat do odpovědí a citací ChatGPT"
+description: "ChatGPT SEO krok za krokem: technická dostupnost, krátké odpovědi, autorita značky, zmínky z jiných webů a měření citací v ChatGPT."
+answer: "ChatGPT SEO je optimalizace webu tak, aby vás ChatGPT s webovým vyhledáváním našel, pochopil a citoval ve svých odpovědích. Stojí na čtyřech pilířích: technická dostupnost pro vyhledávací roboty OpenAI a Bing, obsah psaný jako přímé odpovědi, tematická autorita a zmínky z cizích webů. Zaručit citaci nelze, ale technikou, obsahem a autoritou ji jde výrazně ovlivnit."
+slug: "chatgpt-seo"
+category: "tutorial"
+updated: "2026-05-23"
+variant: "rich"
+keywords:
+  - "chatgpt seo"
+  - "jak se dostat do chatgpt"
+  - "citace v chatgpt"
+  - "optimalizace pro chatgpt"
+  - "gptbot"
+  - "indexace v bingu"
+  - "krátká odpověď"
+  - "ai viditelnost"
+stats:
+  - value: "6"
+    label: "signálů, které v analýzách souvisejí s citacemi"
+  - value: "30 dní"
+    label: "měsíční kontrola nejdůležitějších stránek"
+  - value: "Bing"
+    label: "důležitý zdroj pro dohledatelnost v ChatGPT"
+  - value: "0 Kč"
+    label: "většinu kroků uděláte bez placených nástrojů"
+howto:
+  name: "Jak se dostat do odpovědí ChatGPT"
+  steps:
+    - name: "Buďte dohledatelní pro vyhledávání OpenAI a Bing"
+      text: "V robots.txt zkontrolujte hlavně pravidla pro OAI-SearchBot a načítání přes ChatGPT-User; GPTBot je primárně robot pro trénink, takže jeho povolení samo o sobě citace nezajistí. Ověřte i dohledatelnost webu v Bingu."
+    - name: "Pište krátké, přímé odpovědi"
+      text: "Na začátek každé sekce dejte přímou odpověď v 1–2 větách s konkrétními fakty, čísly a názvy nástrojů."
+    - name: "Doplňte strukturovaná data a autora"
+      text: "Article, FAQPage, Organization a autorské údaje pomáhají vyhledávačům a AI lépe pochopit typ obsahu, autora a organizaci za webem."
+    - name: "Budujte zmínky mimo vlastní web"
+      text: "Velká část AI citací pochází z cizích zdrojů; pomáhají recenze, oborové weby a autentická účast v diskuzích (Reddit) bez spamu."
+    - name: "Měřte citace a aktualizujte"
+      text: "Pravidelně testujte dotazy v ChatGPT, sledujte podíl zmínek a u témat, kde záleží na aktuálnosti, kontrolujte data, ceny, nástroje a FAQ."
+faq:
+  - q: "Co je ChatGPT SEO?"
+    a: "ChatGPT SEO je optimalizace webu tak, aby vás ChatGPT s webovým vyhledáváním našel, pochopil a citoval ve svých odpovědích. Týká se hlavně režimu ChatGPT s vyhledáváním, který tahá živé zdroje, ne odpovědí z natrénovaných dat. Stojí na technické způsobilosti, obsahu psaném jako přímé odpovědi, tematické autoritě a zmínkách z cizích webů."
+  - q: "Které roboty OpenAI mám pustit na web?"
+    a: "Pro ChatGPT s vyhledáváním jsou nejdůležitější pravidla pro OAI-SearchBot a načítání přes ChatGPT-User. GPTBot je primárně robot pro trénink, takže ho neberte jako hlavní signál citovatelnosti. Zkontrolujte, že v robots.txt neblokujete relevantní vyhledávací roboty OpenAI a že klíčové stránky nejsou zakázané pro indexaci."
+  - q: "Proč u ChatGPT SEO řešit Bing?"
+    a: "Bing je jeden z důležitých zdrojů pro dohledatelnost webu v AI vyhledávání ChatGPT. Proto má smysl zkontrolovat indexaci v Bing Webmaster Tools, odeslat sitemapu a odstranit technické překážky, které mohou bránit nalezení důležitých stránek."
+  - q: "Stačí dobré pozice v Googlu?"
+    a: "Dobré pozice v Googlu mohou pomoci, ale samy o sobě citace v ChatGPT nezajišťují. Překryv mezi výsledky v Googlu a citacemi v ChatGPT se podle oborových analýz liší podle tématu, jazyka a typu dotazu, takže AI viditelnost je potřeba řešit a měřit zvlášť."
+  - q: "Jak poznám, jestli mě ChatGPT cituje?"
+    a: "Nejrychleji ručně: zadejte 15–20 dotazů, jak je píší vaši zákazníci, do ChatGPT s vyhledáváním a sledujte, jestli a jak jste zmíněni a kdo se objevuje místo vás. Na průběžné sledování slouží placené nástroje na měření podílu zmínek a citací."
+  - q: "Jak rychle se citace v ChatGPT projeví?"
+    a: "Technické kroky (GPTBot, Bing, strukturovaná data, přímé odpovědi) se mohou projevit řádově v týdnech. Autorita a zmínky z cizích webů jsou ale dlouhodobá práce na měsíce — proto berte ChatGPT SEO jako průběžný proces, ne jednorázové nastavení."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## ChatGPT SEO: čtyři pilíře, na kterých citace stojí
+
+**ChatGPT SEO je optimalizace webu tak, aby vás ChatGPT s webovým vyhledáváním našel, pochopil a citoval.** Stojí na čtyřech pilířích: technické způsobilosti (web je dostupný robotu a indexovaný), obsahu psaném jako přímé odpovědi, tematické autoritě a zmínkách z cizích webů. Tento návod každý pilíř rozebere na konkrétní kroky.
+
+Důležité upřesnění: bavíme se hlavně o **ChatGPT s webovým vyhledáváním**, který tahá živé zdroje a uvádí citace — ne o odpovědích z natrénovaných dat, které ovlivnit přímo nejde. A platí, že pozice v Googlu a citace v ChatGPT spolu souvisí jen částečně, takže [AI viditelnost](/blog/ai-seo-audit/) je potřeba řešit a měřit zvlášť.
+
+## Co podle analýz zvyšuje šanci na citaci v ChatGPT
+
+Ve veřejných analýzách z let 2025–2026 se opakuje zhruba **šest signálů**, které s citacemi v ChatGPT často souvisejí: autorita zdroje, tematická shoda s dotazem, struktura obsahu, čerstvost, strukturovaná data a rozpoznatelnost značky jako entity. Nejde o oficiální algoritmus — fungují dohromady a jejich váha se mění podle dotazu a oboru. Čísla v tomto článku berte jako orientační; liší se podle oboru, jazyka i typu dotazu.
+
+Z toho plyne praktické pořadí práce: nejdřív se vůbec dostat do hry (technika), pak dát obsahu citovatelnou formu, a teprve potom dlouhodobě budovat autoritu a zmínky.
+
+<Insight tone="accent" icon="!" label="Pořadí práce">
+  Postupujte v pořadí **technika → obsah → autorita**. Dokud vás vyhledávání OpenAI a Bing nenajdou, nemá smysl ladit zbytek.
+</Insight>
+
+## Krok 1: Buďte dohledatelní pro vyhledávání OpenAI a Bing
+
+Než řešíte obsah, ověřte, že vás ChatGPT vůbec může najít:
+
+- **Nezakazujte vyhledávací roboty OpenAI.** OpenAI rozlišuje robota pro trénink (`GPTBot`) a roboty pro vyhledávání a načtení na vyžádání (`OAI-SearchBot`, `ChatGPT-User`). Příliš restriktivní pravidla v `robots.txt` mohou snížit šanci, že ChatGPT váš obsah najde a použije. Pokud přístup omezit chcete, je to legitimní volba — počítejte ale s nižší citovatelností.
+- **Buďte dohledatelní v Bingu.** Bing je důležitý kontrolní zdroj pro dohledatelnost v AI vyhledávání. Zkontrolujte web v Bing Webmaster Tools a odešlete sitemapu; rychlejší zaindexování pomáhá protokol IndexNow.
+
+Tahle vrstva je základ: bez dostupnosti pro relevantní roboty a bez dohledatelnosti v důležitých vyhledávacích zdrojích se šance na citace výrazně snižuje. Patří i do širšího [AI SEO auditu](/blog/ai-seo-audit/).
+
+## Krok 2: Pište krátké odpovědi na začátek sekcí
+
+Obsah, který ChatGPT cituje, má společný rys: <span class="hl">odpověď je hned na začátku</span>, ne schovaná v polovině textu.
+
+<Checklist tone="aeo" title="Jak psát citovatelný obsah" items={[
+  { title: "Přímá odpověď v 1–2 větách", desc: "na začátku každé sekce; kontext rozveďte až potom." },
+  { title: "Hustota faktů", desc: "konkrétní čísla, názvy nástrojů a postupy — obecné fráze se necitují." },
+  { title: "Krátká odpověď nahoře", desc: "na celou stránku 40–60 slov, která dává smysl samostatně." }
+]} />
+
+Je to stejná logika jako u [optimalizace pro odpovědi (AEO)](/aeo/) a u [pilířového obsahu](/blog/jak-strukturovat-pillar-content/) — psát tak, aby šel z textu vytáhnout jeden citovatelný kus.
+
+## Krok 3: Budujte tematickou autoritu a entitu
+
+V citacích ChatGPT se častěji objevují zdroje, které v daném tématu publikují konzistentně a dají se rozpoznat jako důvěryhodná entita:
+
+<Checklist tone="geo" title="Stavební kameny autority" items={[
+  { title: "Tematická autorita", desc: "pravidelný obsah ve své niche, ne jeden osamělý článek." },
+  { title: "Strukturovaná data a autor", desc: "Article, FAQPage a Organization plus jasné autorské údaje pomáhají rozpoznat, kdo za obsahem stojí." },
+  { title: "Konzistentní značka", desc: "stejný název, popis a kontaktní údaje napříč webem i profily." }
+]} />
+
+## Krok 4: Získejte zmínky mimo vlastní web
+
+Tohle většina firem podceňuje: v řadě analýz AI citací hrají velkou roli **externí zdroje** — recenze, oborové weby, srovnávače a diskuse — ne jen vlastní web značky. ChatGPT si vás „ověřuje" i podle toho, co o vás píšou jinde.
+
+- Oborové weby, srovnávače a recenze, kde vás zmiňují.
+- Autentická účast v diskuzích (typicky Reddit) — věcně a bez spamu, ne promo příspěvky.
+- Konzistentní zmínky názvu značky napříč webem.
+
+Je to nejpomalejší pilíř — výsledky se počítají na měsíce, ne dny. Dlouhodobě ale patří mezi nejsilnější signály důvěryhodnosti.
+
+## Krok 5: Měřte citace a opakujte
+
+Bez měření nevíte, jestli kroky fungují:
+
+- **Ruční test** — 15–20 zákaznických dotazů v ChatGPT s vyhledáváním, zápis, jestli a jak jste zmíněni.
+- **Podíl zmínek** (share of voice) vůči konkurenci u klíčových témat.
+- **Aktualizace obsahu** — u dotazů, kde záleží na aktuálnosti, může pravidelně obnovovaný obsah zvýšit šanci na citaci. U nejdůležitějších stránek dává smysl měsíční kontrola: ověřit data, ceny, nástroje, postupy a FAQ.
+
+## Časté chyby, kterým se vyhnout
+
+<MistakeGrid>
+  <Mistake num="01" title="Příliš restriktivní robots.txt" fix="Nechte projít OAI-SearchBot a ChatGPT-User.">
+    Blokace vyhledávacích robotů OpenAI může výrazně snížit šanci na citace.
+  </Mistake>
+  <Mistake num="02" title="Ignorovat Bing" fix="Ověřte web v Bing Webmaster Tools a odešlete sitemapu.">
+    Bez dohledatelnosti v Bingu se ChatGPT k vašemu obsahu dostává hůř.
+  </Mistake>
+  <Mistake num="03" title="Pozice v Googlu jako záruka" fix="Měřte AI citace zvlášť.">
+    Překryv mezi pozicemi v Googlu a citacemi v ChatGPT je podle analýz jen částečný.
+  </Mistake>
+  <Mistake num="04" title="Jednorázové nastavení" fix="Testujte a aktualizujte průběžně.">
+    Bez měření a aktualizací se citovatelnost časem zhoršuje.
+  </Mistake>
+</MistakeGrid>
+
+## Co dál: převeďte to na vlastní web
+
+ChatGPT SEO není jeden trik, ale souběh techniky, obsahu a autority. Když to chcete převést na vlastní web krok za krokem — od homepage po produktové a obsahové stránky — připravili jsme [AI SEO Wireframe Pack](/pack/): kompletní rámec se šablonami textů a strukturovanými daty za 1 490 Kč, se kterým začnete během jednoho odpoledne.
+
+Pokud chcete vědět, co konkrétně na vašem webu opravit, dává smysl [AI SEO audit na míru](/audit/) za 9 990 Kč. Pack vám dá rámec, audit přesný plán pro váš web.
