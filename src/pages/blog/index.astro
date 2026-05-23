@@ -466,8 +466,12 @@ const answerText =
   .acard__img {
     display: block;
     width: 100%;
-    aspect-ratio: 3 / 2;
+    /* Poměr = existující OG (1200×669) → ty se vejdou bez ořezu stran (text vpravo
+       zůstane). object-position: top zachová text generovaných 3:2 obrázků (vlevo
+       nahoře), ořízne se jen spodek. */
+    aspect-ratio: 1200 / 669;
     object-fit: cover;
+    object-position: center top;
     background: var(--color-paper-deep);
     border-bottom: 1px solid var(--color-rule);
   }

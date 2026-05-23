@@ -406,8 +406,11 @@ const _bundlerHints = [
     display: block;
     width: 100%;
     max-width: 60rem;
-    aspect-ratio: 3 / 2;
+    /* Poměr = existující OG (1200×669) → bez ořezu stran (text vpravo zůstane);
+       object-position: top zachová text generovaných 3:2 obrázků (vlevo nahoře). */
+    aspect-ratio: 1200 / 669;
     object-fit: cover;
+    object-position: center top;
     border: 1px solid var(--color-rule);
     border-radius: 12px;
     margin-top: clamp(1.5rem, 3vw, 2.5rem);
