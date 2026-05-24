@@ -1,0 +1,124 @@
+---
+title: "SEO vs GEO: kdy řešit pozice a kdy citace v AI odpovědích"
+description: "SEO vs GEO srozumitelně: čím se liší, proč to není volba buď–anebo a podle čeho se rozhodnout, kam u svého webu investovat dřív."
+answer: "SEO (optimalizace pro vyhledávače) a GEO (Generative Engine Optimization, ne geografické SEO) jsou dvě vrstvy viditelnosti. SEO řeší pozice a prokliky v klasickém vyhledávání, GEO zmínky a citace v odpovědích AI nástrojů s vyhledáváním (Perplexity, ChatGPT s vyhledáváním, Google AI Overviews). Nesoupeří; GEO obvykle staví na SEO základech. Prioritu určuje hlavně chování cílovky."
+slug: "seo-vs-geo"
+category: "analysis"
+updated: "2026-05-24"
+variant: "rich"
+keywords:
+  - "seo vs geo"
+  - "rozdíl seo a geo"
+  - "geo vs seo"
+  - "seo nebo geo"
+  - "generative engine optimization"
+  - "citace v ai"
+  - "klasické vyhledávání"
+  - "ai viditelnost"
+stats:
+  - value: "2"
+    label: "vrstvy: klasické pozice + citace v AI"
+  - value: "ne buď/anebo"
+    label: "SEO a GEO se doplňují, nesoupeří"
+  - value: "bez prokliku"
+    label: "hodnota GEO vzniká často i bez návštěvy webu"
+  - value: "SEO základ"
+    label: "GEO staví na dobrém SEO"
+faq:
+  - q: "Jaký je rozdíl mezi SEO a GEO?"
+    a: "SEO (Search Engine Optimization) cílí na pozice a prokliky v klasickém vyhledávání. GEO (Generative Engine Optimization) cílí na zmínky a citace v odpovědích AI nástrojů jako ChatGPT, Perplexity nebo Google AI Overviews. SEO měříte hlavně v proklicích, hodnota GEO je často zero-click — obsah se přečte v odpovědi, aniž uživatel přijde na web."
+  - q: "Je lepší SEO, nebo GEO?"
+    a: "Ani jedno samo o sobě. SEO zůstává základ, protože technicky dostupný a dobře strukturovaný obsah pomáhá vyhledávačům i AI nástrojům web lépe najít, pochopit a citovat — a GEO na něm staví navrch. Jsou to doplňky, ne konkurenti. Otázka tedy nezní, jestli SEO, nebo GEO, ale kolik kapacity dát do které vrstvy podle toho, kde je vaše cílovka."
+  - q: "Nahradí GEO klasické SEO?"
+    a: "Nenahradí. Organické vyhledávání nezmizelo a technická i obsahová kvalita, na které stojí SEO, je zároveň základem pro citace v AI. V praxi se navíc často překrývá to, co je citované v AI, s tím, co se umisťuje vysoko v organických výsledcích — dobré SEO tak GEO podporuje."
+  - q: "Kdy se víc vyplatí soustředit na GEO?"
+    a: "Když vaše cílovka používá AI nástroje při rozhodování — typicky B2B, prémiové B2C, konzultační služby a témata s delší rozhodovací fází. Tam vás citace v ChatGPT nebo Perplexity může dostat do užšího výběru, na který byste se z nižších pozic v Googlu nedostali."
+  - q: "Proč z AI chodí málo návštěv, když mě cituje?"
+    a: "Část hodnoty GEO je zero-click — uživatel dostane odpověď i s vaší zmínkou, ale na web neklikne. Podle dostupných analýz tvoří přímý provoz z AI platforem zatím malý podíl; u části webů ale konvertuje nadprůměrně, protože přichází po rešerši. GEO proto neměřte jen objemem návštěv."
+  - q: "Musím SEO a GEO řešit jako dvě oddělené strategie?"
+    a: "Ne nutně. Velká část práce se překrývá — kvalitní struktura, jasné odpovědi, strukturovaná data a důvěryhodnost pomáhají oběma. Praktické je dělat společný obsah a navrch přidat GEO vrstvu (krátké odpovědi, fakta, zmínky jinde) tam, kde má vaše cílovka k AI nástrojům blízko."
+---
+
+import CompareTable from "../../components/blocks/CompareTable.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## SEO vs GEO: dvě vrstvy, ne soupeři
+
+**SEO i GEO jsou dvě vrstvy viditelnosti.** SEO (Search Engine Optimization) cílí na pozice a prokliky v klasickém vyhledávání; GEO (Generative Engine Optimization — ne geografické SEO) na zmínky a citace v odpovědích AI nástrojů s vyhledáváním, například ChatGPT s vyhledáváním, Perplexity nebo Google AI Overviews. Tenhle článek je užší dvojstrana — kdy hrát o pozice a kdy o citace; celý čtyřdílný obraz dává [průvodce SEO vs GEO vs AEO vs AIO](/seo-vs-geo-vs-aeo-vs-aio/).
+
+Hlavní myšlenka dopředu: **není to volba buď, anebo.** SEO zůstává základ a GEO na něm staví. Otázka tedy nezní „SEO, nebo GEO", ale kolik kapacity dát do které vrstvy.
+
+## Čím se SEO a GEO liší
+
+<CompareTable leftLabel="SEO" leftTone="seo" rightLabel="GEO" rightTone="geo" rows={[
+  { icon: "🎯", label: "Cíl", left: "pozice a prokliky ve výsledcích", right: "zmínky a citace v AI odpovědích" },
+  { icon: "📍", label: "Kde", left: "Google, Seznam (klasické vyhledávání)", right: "ChatGPT s vyhledáváním, Perplexity, AI Overviews" },
+  { icon: "📊", label: "Měřítko", left: "prokliky, pozice, míra prokliku", right: "podíl citací, zmínky, podíl viditelnosti v AI" },
+  { icon: "🔗", label: "Jak vzniká viditelnost", left: "odkazem ve výsledcích vyhledávání", right: "zmínkou nebo citací v odpovědi AI" },
+  { icon: "💡", label: "Hodnota", left: "návštěva webu", right: "viditelnost i bez prokliku (zero-click)" }
+]} />
+
+Rozdíl se dá shrnout jednou větou: v SEO vás navigují **odkazy**, v GEO **citace**.
+
+## Proč to není volba buď, anebo
+
+GEO není náhrada SEO — je to vrstva navíc. Mluví pro to dva praktické důvody:
+
+- **AI s vyhledáváním pracuje s dohledatelným webem.** ChatGPT s vyhledáváním, Perplexity i AI Overviews často čerpají z toho, co je veřejně dohledatelné a technicky dostupné. Bez SEO základů (dostupnost, kvalita, autorita) výrazně klesá šance, že se k vám dostanou.
+- **Pozice a citace se překrývají.** V praxi se často sleduje překryv: část stránek citovaných v AI odpovědích se zároveň umisťuje vysoko v organických výsledcích. Dobré SEO tak GEO podporuje — není to ale pravidlo pro každý obor.
+
+Jinými slovy: kdo zanedbá SEO, má pro GEO slabší základ.
+
+<Insight tone="accent" icon="!" label="Hlavní závěr">
+  SEO a GEO nejsou soupeři — GEO je vrstva nad zdravým SEO. Otázka nezní „co z toho", ale **kolik kapacity dát do které vrstvy** podle vaší cílovky.
+</Insight>
+
+## Zero-click: méně návštěv, jiná hodnota
+
+GEO má jeden zásadní rozdíl oproti SEO — jeho hodnota je často **zero-click**. Uživatel dostane odpověď i s vaší zmínkou, ale na web nemusí kliknout.
+
+Návštěvnost přicházející přímo z AI platforem bývá u mnoha webů zatím nízká — ověřte si ji ve vlastních datech. U části webů ale může mít vyšší kvalitu, protože uživatel často přichází po hledání informací. GEO proto neměřte jen objemem návštěv; sledujte i to, jestli a jak vás AI nástroje zmiňují.
+
+## Kdy investovat dřív do GEO
+
+GEO dává větší smysl tam, kde cílovka používá AI nástroje při rozhodování:
+
+- **B2B a konzultační služby** — delší rozhodovací fáze, kde zákazník hledá doporučení.
+- **Dražší nebo specializované B2C** s delší rozhodovací fází — vyšší řady elektroniky, sportovní vybavení nebo hobby produkty, které lidé před nákupem porovnávají.
+- **Edukativní a srovnávací témata** — typický vstup pro dotaz do AI.
+
+Tady vás citace může dostat do užšího výběru, na který byste se z nižších pozic v Googlu nedostali.
+
+## Kdy stačí soustředit se hlavně na SEO
+
+Naopak u čistě transakčních a lokálních věcí bez delšího hledání informací je dopad GEO menší:
+
+- **Část lokálních služeb a retailu**, kde uživatel hledá hlavně dostupnost, vzdálenost nebo kontakt — primární je lokální SEO a Google Business Profile.
+- **Impulzivní a běžné nákupy** — u části sortimentu rozhoduje hlavně cena, dostupnost nebo zvyk, takže delší rozhodovací fáze bývá slabší.
+
+Tady dává smysl těžiště nechat u klasického SEO a GEO řešit až jako doplněk.
+
+## Časté omyly v SEO vs GEO
+
+<MistakeGrid>
+  <Mistake num="01" title="GEO nahradí SEO" fix="Berte GEO jako vrstvu nad SEO, ne náhradu.">
+    GEO staví na SEO základech; bez nich má obvykle nižší šanci na stabilní citace.
+  </Mistake>
+  <Mistake num="02" title="GEO je jen rebranding SEO" fix="Sledujte cíl: pozice vs citace.">
+    Cíl i platformy se liší, i když se velká část práce s obsahem překrývá.
+  </Mistake>
+  <Mistake num="03" title="Z AI nechodí návštěvnost, nevyplatí se" fix="Měřte i zmínky a citace, ne jen návštěvy.">
+    Část hodnoty je zero-click a příchozí provoz u části webů konvertuje nadprůměrně.
+  </Mistake>
+  <Mistake num="04" title="Musíme si vybrat" fix="Dělejte společný obsah se SEO základem a GEO vrstvou.">
+    Nejpraktičtější bývá jeden obsah optimalizovaný pro obě vrstvy.
+  </Mistake>
+</MistakeGrid>
+
+## Co dál: kam u vašeho webu investovat
+
+SEO vs GEO není souboj — je to otázka poměru. Pro většinu webů platí: udržet zdravé SEO základy a přidat GEO vrstvu tam, kde má cílovka k AI nástrojům blízko.
+
+Kde přesně je ten poměr pro váš web, ukáže [AI SEO audit na míru](/audit/) za 9 990 Kč — projde technickou i obsahovou stránku a doporučí priority. Pokud chcete nejdřív sami zapracovat na GEO vrstvě, dává základ [AI SEO Wireframe Pack](/pack/) za 1 490 Kč se šablonami a postupem.
