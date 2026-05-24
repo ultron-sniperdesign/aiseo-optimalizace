@@ -27,6 +27,8 @@ type Discipline = "seo" | "geo" | "aeo" | "aio";
 
 export interface PillDef {
   d: Discipline;
+  /** Zobrazený kód disciplíny v panelu (CZ = SEO/GEO/AEO/AIO; EN fork u aio = "AI SEO"). */
+  badge: string;
   label: string;
   fullName: string;
   oneLine: string;
@@ -55,6 +57,7 @@ export const hero = {
 export const pillDefs: PillDef[] = [
   {
     d: "seo",
+    badge: "SEO",
     label: "SEO — Search",
     fullName: "Search Engine Optimization",
     oneLine: "Pozice v Googlu a Seznamu.",
@@ -64,6 +67,7 @@ export const pillDefs: PillDef[] = [
   },
   {
     d: "geo",
+    badge: "GEO",
     label: "GEO — Generative",
     fullName: "Generative Engine Optimization",
     oneLine: "Citace v ChatGPT, Perplexity, Claude a Gemini.",
@@ -73,6 +77,7 @@ export const pillDefs: PillDef[] = [
   },
   {
     d: "aeo",
+    badge: "AEO",
     label: "AEO — Answer",
     fullName: "Answer Engine Optimization",
     oneLine: "Odpovědi v Google AI Overviews a Bing Chatu.",
@@ -82,6 +87,7 @@ export const pillDefs: PillDef[] = [
   },
   {
     d: "aio",
+    badge: "AIO",
     label: "AIO — Umbrella",
     fullName: "AI Optimization (zastřešující)",
     oneLine:
@@ -91,6 +97,15 @@ export const pillDefs: PillDef[] = [
     href: "/aio/",
   },
 ];
+
+/** UI microcopy uvnitř homepage šablony (aria-labely + CTA, které nejsou v sekčních datech). */
+export const ui = {
+  pillsAria: "Rychlé seznámení s disciplínami",
+  pillPanelLink: "Otevřít detail disciplíny",
+  pillPanelClose: "Zavřít detail",
+  quartetCta: "Číst sekci",
+  scardCta: "Číst",
+};
 
 export const quartet: Quartet[] = [
   {
@@ -178,6 +193,64 @@ export const trioCallout = {
   cont: "Tento průvodce ukazuje, co konkrétně přidat — sekce po sekci.",
 };
 
+/**
+ * Trio mockupy — text tří ilustrativních rozhraní (Google SERP / AI Overview /
+ * ChatGPT). Dřív zapečený v `index.astro`; externalizováno pro mutace.
+ * `*.path` se v šabloně skládá s `site.name` (např. `{site.name} › {path}`).
+ * `sources` NEobsahují vlastní doménu — tu šablona prependuje jako první zdroj.
+ * Pole s inline `<strong>` (aio.line*, chat.bullets) renderuje šablona přes
+ * set:html (rodič má `:global(strong)` pravidlo).
+ */
+export const trio = {
+  query: "jak připravit web pro AI vyhledávání",
+  google: {
+    cellAria: "Co uživatel dostane z klasického Googlu",
+    panelAria: "Klasické Google vyhledávání",
+    results: [
+      {
+        path: "seo-vs-geo-vs-aeo-vs-aio",
+        title: "SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4&nbsp;zkratkami…",
+        desc: "Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže a jestli vás zacitují AI nástroje…",
+      },
+      {
+        path: "prakticky-postup",
+        title: "Praktický postup ve čtyřech krocích — audit, schema, měření",
+        desc: "Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.",
+      },
+      {
+        path: "aeo",
+        title: "AEO — Answer Engine Optimization (Google AI Overviews…)",
+        desc: "FAQ schema, krátké odpovědi 40–60 slov, Product schema. Jak se dostat do AI Overview citací…",
+      },
+    ],
+  },
+  aio: {
+    cellAria: "Co uživatel dostane z AI Overview",
+    panelAria: "Google s AI Overview panelem",
+    label: "AI Overview",
+    line1:
+      "<strong>Pro úspěch v AI vyhledávání</strong> potřebujete: krátké odpovědi 40–60&nbsp;slov hned po nadpisu, FAQ sekci s FAQPage schema, datově hutný obsah s konkrétními čísly a brand mentions z autoritních zdrojů.",
+    line2:
+      "Cílí to na <strong>citaci v AI odpovědi</strong>, ne jen na klasickou pozici v Googlu.",
+    sourcesLabel: "Zdroje:",
+    sources: ["marketingppc.cz", "seoprakticky.cz"],
+    demotedPath: "seo-vs-geo-vs-aeo-vs-aio",
+    demotedTitle: "SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce…",
+  },
+  chat: {
+    cellAria: "Co uživatel dostane z AI chatbota",
+    panelAria: "ChatGPT odpověď",
+    brand: "ChatGPT",
+    answerLead: "Pro AI vyhledávání jsou klíčové tři vrstvy:",
+    bullets: [
+      "<strong>Klasické SEO</strong> jako základ — bez něj vás AI nenajde.",
+      "<strong>Strukturovaná data</strong> (FAQPage, Product, HowTo) pro citace.",
+      "<strong>Brand mentions</strong> v autoritních zdrojích — bez nich vás necituji.",
+    ],
+    sources: ["interval.cz", "seoprakticky.cz"],
+  },
+};
+
 /** Stat bar (4 dlaždice). */
 export const statBar = [
   {
@@ -253,7 +326,23 @@ export const anatomyList = [
   },
 ];
 
-/** FreeStrip promo (props pro komponentu). */
+/**
+ * SVG wireframe popisky (text uvnitř `<svg>` v sekci 03). Externalizováno pro
+ * mutace; značky/souřadnice SVG zůstávají v `index.astro`. Pozn.: ukázka
+ * JSON-LD schema kódu uvnitř SVG je ponechaná v šabloně (kód, jazykově neutrální).
+ */
+export const wireframe = {
+  aria:
+    "Wireframe ideální AI-friendly stránky se šesti očíslovanými prvky: H1 jako otázka, krátká odpověď, hutný text, podnadpisy, FAQ a schema markup.",
+  h1: "H1: Co je AI SEO?",
+  answerLabel: "STRUČNÁ ODPOVĚĎ",
+  h2: "H2: Jak začít s GEO?",
+  faqLabel: "FAQ",
+  faqQ1: "Q: Jak optimalizovat pro ChatGPT?",
+  faqQ2: "Q: Co je rozdíl SEO a GEO?",
+};
+
+/** FreeStrip promo (props pro komponentu). Fork může nastavit na null → sekce se skryje. */
 export const freeStrip = {
   title: "Šest signálů AI-friendly stránky jako",
   titleHighlight: "hotový návod pro vaši homepage",
