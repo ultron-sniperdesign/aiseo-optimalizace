@@ -18,9 +18,9 @@ import type { SectionHead } from "~/content/pages/_types";
 
 export const meta = {
   title:
-    "AI SEO pro český trh: SEO, GEO, AEO a AIO v éře vyhledávání",
+    "SEO pro AI: GEO, AIO optimalizace webu pro AI vyhledávání",
   description:
-    "Praktický průvodce AI SEO pro český trh — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro Google AI Overviews a AIO jako zastřešující rámec.",
+    "Praktický průvodce SEO pro AI na českém trhu — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro Google AI Overviews a AIO jako zastřešující rámec.",
 };
 
 type Discipline = "seo" | "geo" | "aeo" | "aio";
