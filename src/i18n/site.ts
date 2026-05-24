@@ -20,6 +20,13 @@ export const site = {
   inLanguage: "cs-CZ",
   /** Název webu — WebSite schema name + og:site_name */
   name: "aiseo-optimalizace.cz",
+  /**
+   * Brand logo (Header + Footer) — název rozdělený na 3 barevné spany
+   * (strong = accent/bold, rest = ink, tld = faint). Per-mutace: fork přepíše
+   * split pro vlastní doménu (např. EN „seoforai.net" → strong:"seofor", rest:"ai", tld:".net").
+   * Spojení strong+rest+tld musí dát `name`.
+   */
+  brand: { strong: "aiseo", rest: "-optimalizace", tld: ".cz" },
   /** meta author (AI attribution signál) */
   author: "Kamil ze Sniper Design",
   /** Breadcrumb root (position 1) */
