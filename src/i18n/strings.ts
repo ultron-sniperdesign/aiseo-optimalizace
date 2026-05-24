@@ -140,6 +140,22 @@ export const ui = {
     MATICE: "Rozhodování · Kdy co použít",
   } as Record<string, string>,
 
+  // RelatedSections blok (konec všech 6 sekcí): eyebrow / titulek / CTA.
+  // `{abbr}` v titulku nahradí šablona (= display badge aktuální sekce).
+  relatedEyebrow: "Související",
+  relatedTitleHtml: 'Tři sekce, které <strong>jdou dohromady s {abbr}</strong>',
+  relatedCta: "Číst sekci",
+  // Velký display badge v kartě (klíč = abbr enum). CZ = identita;
+  // EN fork přepíše AIO → "AI SEO" (stejný princip jako homepage PillDef.badge).
+  sectionBadge: {
+    SEO: "SEO",
+    GEO: "GEO",
+    AEO: "AEO",
+    AIO: "AIO",
+    PRAXE: "PRAXE",
+    MATICE: "MATICE",
+  } as Record<string, string>,
+
   // Blog kategorie (crumb + filter chips + card tag); klíč = frontmatter category
   category: {
     tutorial: "Tutorial",
