@@ -8,6 +8,15 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
   description={p.meta.description}
   noindex={true}
 >
+  {/* Meta Pixel — Lead konverze (uživatel odeslal e-mail na free PDF a je tady).
+      Guard `window.fbq`: base pixel v BaseLayout definuje fbq jen když uživatel
+      NEsignalizuje Sec-GPC / DNT → Lead respektuje stejný opt-out jako PageView. */}
+  <Fragment slot="head">
+    <script is:inline>
+      if (window.fbq) fbq("track", "Lead");
+    </script>
+  </Fragment>
+
   <div class="ty">
     <section class="ty-hero">
       <div class="ty-hero__icon" aria-hidden="true">
