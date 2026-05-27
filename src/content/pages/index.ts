@@ -23,6 +23,19 @@ export const meta = {
     "Praktický průvodce SEO pro AI na českém trhu — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro Google AI Overviews a AIO jako zastřešující rámec.",
 };
 
+/**
+ * Hero video (2-sloupcové hero — video v pravém sloupci). Lazy facade: na webu
+ * se při načtení ukáže jen náhled (YouTube thumbnail), teprve klik načte
+ * `youtube-nocookie` iframe → žádné YT cookies ani perf zátěž do interakce.
+ * Fork: `video = null` celý mediální sloupec skryje (hero zůstane jednosloupcový);
+ * jinak vyměnit `youtubeId` + přeložit `badge`/`playLabel`.
+ */
+export const video: { youtubeId: string; badge: string; playLabel: string } | null = {
+  youtubeId: "7rJFWQ1NpAM",
+  badge: "Úvodní video · 2 min",
+  playLabel: "Přehrát úvodní video",
+};
+
 type Discipline = "seo" | "geo" | "aeo" | "aio";
 
 export interface PillDef {

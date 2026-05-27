@@ -8,7 +8,8 @@ import { site } from "~/i18n/site";
 
 <BaseLayout title={p.meta.title} description={p.meta.description} image="/og/default.png">
   <!-- HERO -->
-  <section class="hero">
+  <section class:list={["hero", { "hero--has-media": !!p.video }]}>
+    <div class="hero__main">
     <span class="hero__intro">{p.hero.intro}</span>
 
     <h1 class="display hero__title" set:html={p.hero.title}></h1>
@@ -70,6 +71,29 @@ import { site } from "~/i18n/site";
         </section>
       ))}
     </div>
+    </div>
+
+    {p.video && (
+      <div class="hero__media">
+        <div class="hero-video" data-yt-wrap>
+          <button type="button" class="hero-video__btn" data-yt={p.video.youtubeId} aria-label={p.video.playLabel}>
+            <img
+              class="hero-video__thumb"
+              src={`https://i.ytimg.com/vi/${p.video.youtubeId}/maxresdefault.jpg`}
+              alt=""
+              width="1280"
+              height="720"
+              loading="eager"
+              onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${p.video.youtubeId}/hqdefault.jpg'`}
+            />
+            <span class="hero-video__play" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+            <span class="hero-video__badge">{p.video.badge}</span>
+          </button>
+        </div>
+      </div>
+    )}
   </section>
 
   <!-- HERO TRIO — stejný dotaz, tři rozhraní. Reálné HTML mockupy místo dekorativního obrázku. -->
@@ -493,6 +517,94 @@ import { site } from "~/i18n/site";
     margin: 0 auto;
     padding: clamp(3.5rem, 11vh, 8rem) var(--space-section-x) clamp(3.5rem, 7vh, 6rem);
   }
+  /* 2-sloupcové hero jen když je video (fork bez videa = jednosloupcový). */
+  @media (min-width: 880px) {
+    .hero--has-media {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: center;
+    }
+  }
+  /* ===== HERO VIDEO (lazy facade) ===== */
+  .hero__media {
+    margin-top: 2.5rem;
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s backwards;
+  }
+  @media (min-width: 880px) {
+    .hero__media { margin-top: 0; }
+  }
+  .hero-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+    background: linear-gradient(135deg, oklch(0.45 0.16 250), oklch(0.5 0.13 155));
+    box-shadow: 0 24px 60px -24px oklch(0.2 0.05 260 / 0.45), 0 4px 12px -6px oklch(0.2 0.05 260 / 0.2);
+  }
+  .hero-video__btn {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: block;
+  }
+  .hero-video__thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-video__play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: oklch(1 0 0 / 0.92);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3px;
+    box-shadow: 0 8px 24px oklch(0.2 0.05 260 / 0.35);
+    transition: transform 0.18s ease;
+  }
+  .hero-video__btn:hover .hero-video__play { transform: translate(-50%, -50%) scale(1.07); }
+  .hero-video__btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .hero-video__badge {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: oklch(1 0 0);
+    background: oklch(0.2 0.03 260 / 0.7);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .hero-video__iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__media { animation: none; }
+    .hero-video__play { transition: none; }
+  }
   .hero__intro {
     margin-bottom: 3rem;
     display: inline-flex;
@@ -557,15 +669,15 @@ import { site } from "~/i18n/site";
       transform: none;
     }
   }
-  .hero > * {
+  .hero__main > * {
     animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
   }
-  .hero > *:nth-child(1) { animation-delay: 0.04s; }
-  .hero > *:nth-child(2) { animation-delay: 0.14s; }
-  .hero > *:nth-child(3) { animation-delay: 0.26s; }
-  .hero > *:nth-child(4) { animation-delay: 0.34s; }
-  .hero > *:nth-child(5) { animation-delay: 0.42s; }
-  .hero > *:nth-child(6) { animation-delay: 0.5s; }
+  .hero__main > *:nth-child(1) { animation-delay: 0.04s; }
+  .hero__main > *:nth-child(2) { animation-delay: 0.14s; }
+  .hero__main > *:nth-child(3) { animation-delay: 0.26s; }
+  .hero__main > *:nth-child(4) { animation-delay: 0.34s; }
+  .hero__main > *:nth-child(5) { animation-delay: 0.42s; }
+  .hero__main > *:nth-child(6) { animation-delay: 0.5s; }
 
   .pill {
     font-family: var(--font-sans);
@@ -2029,6 +2141,27 @@ import { site } from "~/i18n/site";
     // Escape closes
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeAll();
+    });
+  })();
+
+  // Hero video — lazy facade. Náhled (YouTube thumbnail) se ukáže hned; teprve
+  // klik načte youtube-nocookie iframe → žádné YT cookies ani perf zátěž do interakce.
+  (() => {
+    document.querySelectorAll<HTMLElement>(".hero-video[data-yt-wrap]").forEach((wrap) => {
+      const btn = wrap.querySelector<HTMLButtonElement>(".hero-video__btn");
+      if (!btn) return;
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.yt;
+        if (!id) return;
+        const ifr = document.createElement("iframe");
+        ifr.className = "hero-video__iframe";
+        ifr.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+        ifr.title = btn.getAttribute("aria-label") || "";
+        ifr.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+        ifr.allowFullscreen = true;
+        btn.remove();
+        wrap.appendChild(ifr);
+      });
     });
   })();
 </script>
