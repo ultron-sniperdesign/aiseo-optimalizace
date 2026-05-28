@@ -9,11 +9,14 @@ import { site } from "~/i18n/site";
 <BaseLayout title={p.meta.title} description={p.meta.description} image="/og/default.png">
   <!-- HERO -->
   <section class:list={["hero", { "hero--has-media": !!p.video }]}>
-    <div class="hero__main">
+    <div class="hero__head">
     <span class="hero__intro">{p.hero.intro}</span>
 
     <h1 class="display hero__title" set:html={p.hero.title}></h1>
+    </div>
 
+    <div class="hero__body">
+    <div class="hero__text">
     <p class="lead hero__lead">{p.hero.lead}</p>
 
     <p class="hero__pills-hint">
@@ -94,6 +97,7 @@ import { site } from "~/i18n/site";
         </div>
       </div>
     )}
+    </div>
   </section>
 
   <!-- HERO TRIO — stejný dotaz, tři rozhraní. Reálné HTML mockupy místo dekorativního obrázku. -->
@@ -517,16 +521,16 @@ import { site } from "~/i18n/site";
     margin: 0 auto;
     padding: clamp(3.5rem, 11vh, 8rem) var(--space-section-x) clamp(3.5rem, 7vh, 6rem);
   }
-  /* 2-sloupcové hero jen když je video (fork bez videa = jednosloupcový). */
+  /* Hero head (intro chip + h1) jede přes celou šířku. 2-sloupcové až .hero__body
+     (text vlevo, video vpravo) — jen když je video; fork bez videa = jednosloupcový. */
+  .hero__head { margin-bottom: clamp(2rem, 4vw, 3rem); }
   @media (min-width: 880px) {
-    .hero--has-media {
+    .hero--has-media .hero__body {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       gap: clamp(2rem, 4vw, 4rem);
       align-items: start;
     }
-    /* video zarovnané k hornímu okraji textu, mírně níž k úrovni nadpisu */
-    .hero--has-media .hero__media { margin-top: clamp(2rem, 6vw, 5rem); }
   }
   /* ===== HERO VIDEO (lazy facade) ===== */
   .hero__media {
@@ -672,15 +676,21 @@ import { site } from "~/i18n/site";
       transform: none;
     }
   }
-  .hero__main > * {
+  /* Stagger reveal — per-class (6 hero prvků je teď rozdělených mezi .hero__head a .hero__text). */
+  .hero__intro,
+  .hero__title,
+  .hero__lead,
+  .hero__pills-hint,
+  .hero__pills,
+  .hero .pill-panels {
     animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
   }
-  .hero__main > *:nth-child(1) { animation-delay: 0.04s; }
-  .hero__main > *:nth-child(2) { animation-delay: 0.14s; }
-  .hero__main > *:nth-child(3) { animation-delay: 0.26s; }
-  .hero__main > *:nth-child(4) { animation-delay: 0.34s; }
-  .hero__main > *:nth-child(5) { animation-delay: 0.42s; }
-  .hero__main > *:nth-child(6) { animation-delay: 0.5s; }
+  .hero__intro       { animation-delay: 0.04s; }
+  .hero__title       { animation-delay: 0.14s; }
+  .hero__lead        { animation-delay: 0.26s; }
+  .hero__pills-hint  { animation-delay: 0.34s; }
+  .hero__pills       { animation-delay: 0.42s; }
+  .hero .pill-panels { animation-delay: 0.5s; }
 
   .pill {
     font-family: var(--font-sans);
