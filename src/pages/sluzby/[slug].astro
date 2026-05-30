@@ -1,0 +1,542 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import { getCollection, render } from "astro:content";
+import { site } from "~/i18n/site";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async () => {
+  const services = await getCollection("services");
+  // Detail page jen pro služby s hasDetailPage=true (zbytek = jen karty v indexu).
+  return services
+    .filter((s) => s.data.hasDetailPage)
+    .map((entry) => ({
+      params: { slug: entry.data.slug },
+      props: { entry },
+    }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const personaIcon: Record<string, string> = { eshop: "🛒", firemni: "🏢" };
+const personaLabel: Record<string, string> = { eshop: "E-shop", firemni: "Firemní web" };
+const typeLabel: Record<string, string> = {
+  vstupni: "Vstupní",
+  jednorazova: "Jednorázová",
+  mesicni: "Měsíční retainer",
+  addon: "Doplněk",
+};
+
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+const pageURL = `${SITE_ORIGIN}/sluzby/${entry.data.slug}/`;
+const ctaHref = `/kontakt/?sluzba=${entry.data.slug}`;
+const ctaLabel = entry.data.cta ?? "Mám zájem o tuto službu";
+
+/* JSON-LD: Article + FAQPage (pokud existuje faq). */
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: entry.data.name,
+  description: entry.data.description ?? entry.data.oneLine,
+  url: pageURL,
+  provider: {
+    "@type": "Organization",
+    name: site.org.name,
+    url: "https://www.sniperdesign.cz/",
+  },
+  areaServed: "CZ",
+  inLanguage: site.inLanguage,
+};
+const faqLd = entry.data.faq && entry.data.faq.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: entry.data.faq.map((q) => ({
+        "@type": "Question",
+        name: q.q,
+        acceptedAnswer: { "@type": "Answer", text: q.a },
+      })),
+    }
+  : undefined;
+const allLd = [articleLd, ...(faqLd ? [faqLd] : [])];
+
+const ogImage = "/og/default.png"; // později per-service OG; zatím sdílený
+---
+
+<BaseLayout
+  title={entry.data.seoTitle ?? `${entry.data.name} | Služby aiseo-optimalizace.cz`}
+  description={entry.data.description ?? entry.data.oneLine}
+  jsonLd={allLd}
+  image={ogImage}
+  ogType="article"
+  breadcrumb={[
+    { label: "Služby", href: "/sluzby/" },
+    { label: entry.data.name, href: `/sluzby/${entry.data.slug}/` },
+  ]}
+>
+  <div class="svc-page">
+    <!-- HERO -->
+    <section class="svc-hero">
+      <nav class="svc-crumbs" aria-label="Drobečková navigace">
+        <a href="/">Úvod</a>
+        <span class="crumb-sep">›</span>
+        <a href="/sluzby/">Služby</a>
+        <span class="crumb-sep">›</span>
+        <span class="svc-crumb-pill">{entry.data.name}</span>
+      </nav>
+
+      <div class="svc-hero__chips">
+        {entry.data.personas.map((p) => (
+          <span class="chip chip--persona">
+            <span aria-hidden="true">{personaIcon[p]}</span> {personaLabel[p]}
+          </span>
+        ))}
+        <span class={`chip chip--type chip--type-${entry.data.type}`}>{typeLabel[entry.data.type]}</span>
+      </div>
+
+      <h1 class="display svc-hero__title">{entry.data.name}</h1>
+      <p class="lead svc-hero__lead">{entry.data.oneLine}</p>
+
+      <div class="svc-hero__cta">
+        <a href={ctaHref} class="btn btn--primary">{ctaLabel}</a>
+        <a href="/audit/" class="btn btn--ghost">Nebo začněte auditem →</a>
+      </div>
+    </section>
+
+    <!-- ANSWER BLOCK -->
+    {entry.data.answer && (
+      <section class="svc-answer">
+        <div class="svc-answer__inner">
+          <span class="svc-answer__mark">Stručná odpověď</span>
+          <p class="svc-answer__text">{entry.data.answer}</p>
+        </div>
+      </section>
+    )}
+
+    <!-- CO SLUŽBA OBSAHUJE — MDX body -->
+    <section class="svc-body">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    <!-- PRO KOHO / VÝSTUP -->
+    <section class="svc-meta">
+      {entry.data.forWhom && (
+        <div class="svc-meta__card">
+          <h3 class="svc-meta__head">Pro koho</h3>
+          <p class="svc-meta__text">{entry.data.forWhom}</p>
+        </div>
+      )}
+      {entry.data.model && (
+        <div class="svc-meta__card">
+          <h3 class="svc-meta__head">Výstup a model spolupráce</h3>
+          <p class="svc-meta__text">{entry.data.model}</p>
+        </div>
+      )}
+    </section>
+
+    <!-- FAQ -->
+    {entry.data.faq && entry.data.faq.length > 0 && (
+      <section class="svc-faq" aria-labelledby="svc-faq-title">
+        <header class="svc-faq__head">
+          <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
+          <h2 id="svc-faq-title" class="svc-faq__title">
+            Otázky, které se k <strong>této službě</strong> nejčastěji ptají
+          </h2>
+        </header>
+        <dl class="svc-faq__list">
+          {entry.data.faq.map((q) => (
+            <div class="svc-faq__item">
+              <dt class="svc-faq__q">{q.q}</dt>
+              <dd class="svc-faq__a">{q.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )}
+
+    <!-- CO NÁSLEDUJE -->
+    {entry.data.upsell && (
+      <section class="svc-upsell">
+        <div class="svc-upsell__inner">
+          <span class="eyebrow"><span class="eyebrow__num">Co dál</span></span>
+          <h2 class="svc-upsell__title">S čím to <strong>kombinovat</strong></h2>
+          <p class="svc-upsell__text">{entry.data.upsell}</p>
+        </div>
+      </section>
+    )}
+
+    <!-- FINÁLNÍ CTA -->
+    <section class="svc-cta">
+      <div class="svc-cta__inner">
+        <h2 class="svc-cta__title">Pojďme to probrat</h2>
+        <p class="svc-cta__lead">Napište nám, co řešíte. Vrátíme se obvykle do 1 pracovního dne.</p>
+        <div class="svc-cta__btns">
+          <a href={ctaHref} class="btn btn--primary">{ctaLabel}</a>
+          <a href="/sluzby/" class="btn btn--ghost">Zpět na všechny služby</a>
+        </div>
+      </div>
+    </section>
+
+    <SniperDesignSmallContact />
+  </div>
+</BaseLayout>
+
+<style>
+  .svc-page {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(2rem, 4vw, 3rem);
+  }
+
+  /* ===== HERO ===== */
+  .svc-hero {
+    padding: clamp(2rem, 6vh, 4rem) 0 clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .svc-crumbs {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-ink-faint);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .svc-crumbs a { color: var(--color-ink-muted); text-decoration: none; }
+  .svc-crumbs a:hover { color: var(--color-accent); }
+  .crumb-sep { color: var(--color-ink-faint); }
+  .svc-crumb-pill {
+    background: var(--color-paper-deep);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-rule);
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .svc-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .chip {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-rule);
+    color: var(--color-ink-muted);
+    background: var(--color-paper-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    line-height: 1.2;
+  }
+  .chip--type-vstupni     { background: oklch(0.96 0.04 60); color: oklch(0.4 0.14 60); border-color: oklch(0.88 0.07 60); }
+  .chip--type-jednorazova { background: oklch(0.96 0.025 250); color: oklch(0.42 0.16 250); border-color: oklch(0.88 0.05 250); }
+  .chip--type-mesicni     { background: oklch(0.96 0.03 155); color: oklch(0.4 0.13 155); border-color: oklch(0.88 0.06 155); }
+  .chip--type-addon       { background: oklch(0.96 0.03 305); color: oklch(0.42 0.14 305); border-color: oklch(0.88 0.05 305); }
+
+  .svc-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.85rem, 4.5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--color-ink);
+    margin: 0;
+    max-width: 26ch;
+  }
+  .svc-hero__lead {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    max-width: 42rem;
+    margin: 0;
+  }
+  .svc-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ===== ANSWER BLOCK ===== */
+  .svc-answer {
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+  }
+  .svc-answer__inner {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--color-accent) 7%, var(--color-paper)) 0%,
+      color-mix(in oklch, var(--color-aio) 5%, var(--color-paper)) 100%
+    );
+    border-left: 3px solid var(--color-accent);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    max-width: 52rem;
+  }
+  .svc-answer__mark {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+  .svc-answer__text {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== BODY (MDX) ===== */
+  .svc-body {
+    margin: clamp(2rem, 4vw, 3rem) 0;
+  }
+  .prose {
+    max-width: 44rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+  }
+  .prose :global(h2) {
+    font-weight: 280;
+    font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 2rem 0 1rem;
+    color: var(--color-ink);
+  }
+  .prose :global(h3) {
+    font-weight: 500;
+    font-size: 1.125rem;
+    margin: 1.5rem 0 0.625rem;
+    color: var(--color-ink);
+  }
+  .prose :global(p) { margin: 0.875rem 0; color: var(--color-ink-muted); }
+  .prose :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .prose :global(ul), .prose :global(ol) {
+    margin: 0.875rem 0 0.875rem 1.25rem;
+    color: var(--color-ink-muted);
+  }
+  .prose :global(li) { margin: 0.375rem 0; }
+  .prose :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .prose :global(a:hover) { text-decoration-thickness: 2px; }
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+
+  /* ===== META — Pro koho / Výstup ===== */
+  .svc-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: clamp(2rem, 4vw, 3rem) 0;
+  }
+  @media (min-width: 720px) {
+    .svc-meta { grid-template-columns: repeat(2, 1fr); }
+  }
+  .svc-meta__card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .svc-meta__head {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 0.625rem;
+  }
+  .svc-meta__text {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== FAQ ===== */
+  .svc-faq {
+    margin: clamp(2.5rem, 5vw, 4rem) 0;
+    max-width: 52rem;
+  }
+  .svc-faq__head {
+    margin-bottom: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .svc-faq__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .svc-faq__title strong { font-weight: 600; }
+  .svc-faq__list { display: flex; flex-direction: column; gap: 1.25rem; margin: 0; }
+  .svc-faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 1.25rem;
+  }
+  .svc-faq__q {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .svc-faq__a {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* ===== UPSELL ===== */
+  .svc-upsell {
+    margin: clamp(2rem, 4vw, 3rem) 0;
+  }
+  .svc-upsell__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.75rem;
+    max-width: 52rem;
+  }
+  .svc-upsell__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.3rem, 2vw, 1.625rem);
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+    color: var(--color-ink);
+    margin: 0.75rem 0 0.875rem;
+  }
+  .svc-upsell__title strong { font-weight: 600; }
+  .svc-upsell__text {
+    font-family: var(--font-sans);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .svc-cta {
+    margin: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 3vw, 3rem);
+  }
+  .svc-cta__inner {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--color-accent) 8%, var(--color-paper)) 0%,
+      color-mix(in oklch, var(--color-aio) 6%, var(--color-paper)) 100%
+    );
+    border: 1px solid color-mix(in oklch, var(--color-accent) 30%, var(--color-rule-strong));
+    border-radius: 14px;
+    padding: clamp(2rem, 3.5vw, 2.75rem);
+    text-align: center;
+  }
+  .svc-cta__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+    color: var(--color-ink);
+    margin: 0 0 0.875rem;
+  }
+  .svc-cta__lead {
+    font-family: var(--font-sans);
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 auto 1.5rem;
+    max-width: 36rem;
+  }
+  .svc-cta__btns {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .btn--primary { background: var(--color-accent); color: var(--color-paper); }
+  .btn--primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -6px oklch(0.42 0.2 250 / 0.4);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-rule-strong);
+  }
+  .btn--ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* ===== EYEBROW (shared) ===== */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .eyebrow__num {
+    background: var(--color-paper-deep);
+    color: var(--color-accent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-rule);
+  }
+</style>

@@ -164,8 +164,79 @@ const articles = defineCollection({
   }),
 });
 
+/**
+ * Services — prodejní katalog služeb (komerční nabídka).
+ *
+ * Cards: každá služba má kartu v `/sluzby/` indexu (per `bucket` seskupené).
+ * Detail pages: opt-in přes `hasDetailPage: true` → vykreslí `/sluzby/<slug>/`
+ * z MDX body + frontmatter polí (valueProp / forWhom / model / upsell / cta / faq).
+ * `href` overruje výchozí `/sluzby/<slug>/` (např. Audit → `/audit/` na stávající landing).
+ *
+ * Mutace: fork přeloží MDX (jako sections/articles); struktura sdílená.
+ */
+const services = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/services" }),
+  schema: z.object({
+    /** Display název v kartě + H1 detailu. */
+    name: z.string(),
+    /** URL slug (vede na `/sluzby/<slug>/` pokud hasDetailPage, jinak jen klíč). */
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    /** Bucket — sekce v indexu. */
+    bucket: z.enum([
+      "audit-strategie",
+      "obsah-pro-ai",
+      "technika-mereni",
+      "rust-autorita",
+      "doplnky",
+    ]),
+    /** Pořadí v rámci bucketu (1 = nahoře). */
+    order: z.number().int().positive(),
+    /** 1-věta popisku pro kartu (max ~160 znaků). */
+    oneLine: z.string().max(200),
+    /** Persony, kterým služba pasuje. */
+    personas: z.array(z.enum(["eshop", "firemni"])).min(1),
+    /** Typ angažmá (filtr/štítek). */
+    type: z.enum(["vstupni", "jednorazova", "mesicni", "addon"]),
+    /** Když true, `/sluzby/<slug>/` se vykreslí z MDX body + detail polí níže. */
+    hasDetailPage: z.boolean().default(false),
+    /** Override URL karty — když nastaveno, karta vede sem místo `/sluzby/<slug>/`. */
+    href: z.string().optional(),
+
+    /* ===== Detail page fields (povinné když hasDetailPage=true) ===== */
+    /** SEO <title>; když chybí, použije se `name`. */
+    seoTitle: z.string().optional(),
+    /** Meta description (70–160 znaků). */
+    description: z.string().min(70).max(160).optional(),
+    /** Answer block (40–60 slov) — citovatelný blok nahoře detailu. */
+    answer: z.string().optional(),
+    /** „Pro koho" sekce — komu služba sedí. */
+    forWhom: z.string().optional(),
+    /** „Výstup / model" — jednorázová / retainer / sprint, časový horizont, cena. */
+    model: z.string().optional(),
+    /** „Co následuje / upsell" — jaké navazující služby z nabídky doplňují. */
+    upsell: z.string().optional(),
+    /** Primární CTA label. Default v šabloně: „Mám zájem". */
+    cta: z.string().optional(),
+    /** FAQ položky → FAQPage JSON-LD. */
+    faq: z
+      .array(
+        z.object({
+          q: z.string(),
+          a: z.string(),
+        }),
+      )
+      .optional(),
+    /** Datum poslední aktualizace (volitelné, pro Article schema u detailu). */
+    updated: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
+  }),
+});
+
 export const collections = {
   sections,
   pillar,
   articles,
+  services,
 };
