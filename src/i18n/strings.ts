@@ -6,8 +6,8 @@
  * systému „A"). Tento soubor se při forku do jiného jazyka PŘELOŽÍ — stejně
  * jako content/pages/*.ts. EN/DE/PL fork = kopie projektu + překlad těchto dat.
  *
- * Nav odkazy: `nav.groups` (3 skupiny, 12 odkazů) sdílí Footer i mobilní menu;
- * `nav.desktop` (8 kompaktních) je jen pro desktopovou lištu.
+ * Nav odkazy: `nav.groups` (3 skupiny, 13 odkazů) sdílí Footer i mobilní menu;
+ * `nav.desktop` (9 kompaktních) je jen pro desktopovou lištu.
  *
  * POZN.: značka/domény (brand spany, e-mailové adresy v právním textu) jsou
  * per-doména identita — fork je upraví v rámci své identity, nejsou to „překlad".
@@ -43,6 +43,7 @@ export const nav = {
     { href: "/aio/", label: "AIO", d: "aio" },
     { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
     { href: "/blog/", label: "Blog", variant: "blog" },
+    { href: "/sluzby/", label: "Služby" },
     { href: "/audit/", label: "Audit", variant: "audit" },
     { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
   ] as NavLink[],
@@ -70,6 +71,7 @@ export const nav = {
     {
       label: "Co nabízíme",
       links: [
+        { href: "/sluzby/", label: "Všechny služby" },
         { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
         { href: "/pack/", label: "AI SEO Wireframe Pack" },
         { href: "/audit/", label: "AI SEO audit", variant: "audit" },
