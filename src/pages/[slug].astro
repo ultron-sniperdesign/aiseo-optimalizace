@@ -2,6 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import RelatedSections from "~/components/blocks/RelatedSections.astro";
+import HeroVideo from "~/components/blocks/HeroVideo.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
@@ -199,6 +200,15 @@ function renderFaqMarkdown(text: string): string {
         <p class="answer__text">{entry.data.answer}</p>
       </div>
     </section>
+
+    {/* Volitelný video explainer pod answer blockem (per-section, frontmatter `video`). */}
+    {entry.data.video && (
+      <HeroVideo
+        youtubeId={entry.data.video.youtubeId}
+        badge={entry.data.video.badge}
+        playLabel={entry.data.video.playLabel}
+      />
+    )}
 
     <!-- ARTICLE BODY -->
     <article class="article">

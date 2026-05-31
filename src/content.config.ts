@@ -37,6 +37,17 @@ const sections = defineCollection({
     inlineSmallContact: z.boolean().optional().default(false),
     /** Datum poslední aktualizace (ISO YYYY-MM-DD). */
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    /**
+     * Volitelné YouTube video pod answer blockem. Lazy facade přes
+     * `HeroVideo.astro` komponentu. Fork přeloží `badge`/`playLabel`.
+     */
+    video: z
+      .object({
+        youtubeId: z.string(),
+        badge: z.string().optional(),
+        playLabel: z.string().optional(),
+      })
+      .optional(),
     /** FAQ položky (volitelné, použijí se do FAQPage JSON-LD). */
     faq: z
       .array(
