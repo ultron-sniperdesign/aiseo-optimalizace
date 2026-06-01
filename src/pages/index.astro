@@ -567,25 +567,31 @@ import { site } from "~/i18n/site";
     height: 100%;
     object-fit: cover;
   }
+  /* Klasický YouTube play button — červený rounded rectangle s bílým trojúhelníkem.
+     Lazy facade vizuálně matchuje co lidi z YouTube znají; benefit (žádné YT cookies
+     do kliku) zůstává. Sjednoceno s HeroVideo.astro (.video-facade__play). */
   .hero-video__play {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: oklch(1 0 0 / 0.92);
-    color: var(--color-accent);
+    width: 68px;
+    height: 48px;
+    border-radius: 14px;
+    background: #ff0000; /* YouTube red */
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 3px;
-    box-shadow: 0 8px 24px oklch(0.2 0.05 260 / 0.35);
-    transition: transform 0.18s ease;
+    padding-left: 4px;
+    box-shadow: 0 4px 16px oklch(0.2 0.05 260 / 0.25);
+    transition: background 0.18s ease, transform 0.18s ease;
   }
-  .hero-video__btn:hover .hero-video__play { transform: translate(-50%, -50%) scale(1.07); }
-  .hero-video__btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .hero-video__btn:hover .hero-video__play {
+    background: #cc0000; /* YouTube hover red */
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  .hero-video__btn:focus-visible { outline: 2px solid #ff0000; outline-offset: 3px; }
   .hero-video__badge {
     position: absolute;
     left: 14px;
