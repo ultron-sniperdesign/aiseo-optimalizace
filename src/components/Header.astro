@@ -3,7 +3,8 @@ import { nav } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 
 // Nav data + UI labely ze sdíleného slovníku (per-mutace přeloženo).
-const navLinks = nav.desktop; // desktop lišta — kompaktní
+const navEdu = nav.desktopEdu; // levá skupina — disciplíny + průvodce
+const navOffers = nav.desktopOffers; // pravá skupina — komerční nabídka
 const mobileNavGroups = nav.groups; // mobilní menu + footer — plné názvy
 
 const currentPath = Astro.url.pathname;
@@ -20,23 +21,45 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     </a>
 
     <nav class="disc-nav" aria-label={nav.navAria}>
-      {navLinks.map((item) => {
-        const active = isActive(item.href);
-        return (
-          <a
-            href={item.href}
-            data-d={item.d}
-            class:list={[
-              "disc-nav__link",
-              item.variant && `disc-nav__link--${item.variant}`,
-              { "disc-nav__link--active": active },
-            ]}
-            aria-current={active ? "page" : undefined}
-          >
-            {item.label}
-          </a>
-        );
-      })}
+      <div class="disc-nav__group disc-nav__group--edu">
+        {navEdu.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={item.href}
+              data-d={item.d}
+              class:list={[
+                "disc-nav__link",
+                item.variant && `disc-nav__link--${item.variant}`,
+                { "disc-nav__link--active": active },
+              ]}
+              aria-current={active ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </div>
+      <span class="disc-nav__divider" aria-hidden="true"></span>
+      <div class="disc-nav__group disc-nav__group--offers">
+        {navOffers.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={item.href}
+              data-d={item.d}
+              class:list={[
+                "disc-nav__link",
+                item.variant && `disc-nav__link--${item.variant}`,
+                { "disc-nav__link--active": active },
+              ]}
+              aria-current={active ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </div>
     </nav>
 
     <button
@@ -172,15 +195,35 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     color: var(--color-ink-faint);
   }
 
+  /* Top nav rozdělená na 2 vizuálně oddělené skupiny:
+       __group--edu     — obsahové disciplíny + průvodce (vlevo)
+       __divider        — vertikální linka var(--color-rule)
+       __group--offers  — komerční nabídka (Služby, Audit, Návod zdarma) */
   .disc-nav {
     display: none;
-    gap: 1.75rem;
+    align-items: center;
+    gap: 1.25rem;
     font-family: var(--font-sans);
     font-size: 0.95rem;
     font-weight: 500;
     letter-spacing: -0.005em;
   }
   @media (min-width: 768px) { .disc-nav { display: flex; } }
+  .disc-nav__group {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  .disc-nav__group--offers {
+    gap: 0.6rem; /* CTA pillboxy si drží padding samy, menší gap mezi nimi */
+  }
+  .disc-nav__divider {
+    display: inline-block;
+    width: 1px;
+    height: 1.25rem;
+    background: var(--color-rule);
+    flex: none;
+  }
 
   .disc-nav__link {
     color: var(--color-ink-muted);

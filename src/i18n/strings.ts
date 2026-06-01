@@ -6,8 +6,12 @@
  * systému „A"). Tento soubor se při forku do jiného jazyka PŘELOŽÍ — stejně
  * jako content/pages/*.ts. EN/DE/PL fork = kopie projektu + překlad těchto dat.
  *
- * Nav odkazy: `nav.groups` (3 skupiny, 13 odkazů) sdílí Footer i mobilní menu;
- * `nav.desktop` (9 kompaktních) je jen pro desktopovou lištu.
+ * Nav odkazy:
+ *  - `nav.groups` (3 skupiny) sdílí Footer i mobilní menu (plné názvy).
+ *  - `nav.desktopEdu` + `nav.desktopOffers` (2 sekce) jen pro desktopovou
+ *    lištu — vizuálně oddělené vertikálním dividerem v Header.astro.
+ *    Edu = obsahové disciplíny + průvodce; Offers = co prodáváme / dáváme.
+ *    Blog do top nav nepatří (je v Footer/mobile groups → Praxe → Blog).
  *
  * POZN.: značka/domény (brand spany, e-mailové adresy v právním textu) jsou
  * per-doména identita — fork je upraví v rámci své identity, nejsou to „překlad".
@@ -35,14 +39,17 @@ export const nav = {
   navAria: "Hlavní navigace",
   mobileAria: "Mobilní navigace",
 
-  /** DESKTOP lišta — kompaktní (kratší názvy, pills). */
-  desktop: [
+  /** DESKTOP lišta — edukativní část (obsahové disciplíny + průvodce). */
+  desktopEdu: [
     { href: "/seo/", label: "SEO", d: "seo" },
     { href: "/geo/", label: "GEO", d: "geo" },
     { href: "/aeo/", label: "AEO", d: "aeo" },
     { href: "/aio/", label: "AIO", d: "aio" },
     { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
-    { href: "/blog/", label: "Blog", variant: "blog" },
+  ] as NavLink[],
+
+  /** DESKTOP lišta — komerční / „co nabízíme" část. Oddělená dividerem. */
+  desktopOffers: [
     { href: "/sluzby/", label: "Služby" },
     { href: "/audit/", label: "Audit", variant: "audit" },
     { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
