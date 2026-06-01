@@ -22,8 +22,8 @@ export interface NavLink {
   label: string;
   /** Disciplína — barevné zvýraznění (tečka / hover barva). */
   d?: "seo" | "geo" | "aeo" | "aio";
-  /** Stylová varianta (pillar / blog / audit / free). */
-  variant?: "pillar" | "blog" | "audit" | "free";
+  /** Stylová varianta (pillar / blog / services / audit / free). */
+  variant?: "pillar" | "blog" | "services" | "audit" | "free";
 }
 
 export interface NavGroup {
@@ -48,9 +48,11 @@ export const nav = {
     { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
   ] as NavLink[],
 
-  /** DESKTOP lišta — komerční / „co nabízíme" část. Oddělená dividerem. */
+  /** DESKTOP lišta — komerční / „co nabízíme" část. Oddělená dividerem.
+   *  Všechny 3 položky pilly (services = outlined neutral, audit = magenta,
+   *  free = gold) — vizuálně koherentní trojice CTA. */
   desktopOffers: [
-    { href: "/sluzby/", label: "Služby" },
+    { href: "/sluzby/", label: "Služby", variant: "services" },
     { href: "/audit/", label: "Audit", variant: "audit" },
     { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
   ] as NavLink[],

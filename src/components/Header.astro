@@ -267,6 +267,33 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     color: var(--color-aio);
   }
 
+  /* "Služby" — neutral outlined pill, vstupní brána do katalogu. Sjednocuje
+     trojici komerčních položek (services → audit → free) na jednu vizuální
+     hladinu CTA pillů. Slabší vizuální váha než audit/free pills (jen outline,
+     bez gradientu), aby zaplacené/lead-magnet akce stále vystoupaly nahoře. */
+  .disc-nav__link--services {
+    color: var(--color-ink);
+    background: var(--color-paper-deep, oklch(0.97 0.005 260));
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    padding: 0.45rem 0.875rem;
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .disc-nav__link--services:hover {
+    color: var(--color-ink);
+    background: oklch(0.95 0.01 260);
+    border-color: var(--color-ink-faint);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -6px oklch(0.2 0.05 260 / 0.2);
+  }
+  .disc-nav__link--services.disc-nav__link--active {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+  .disc-nav__link--services::after { display: none !important; }
+
   /* "Audit" — magenta pill, premium/paid akce vedle gold „Návod zdarma" */
   .disc-nav__link--audit {
     color: oklch(0.32 0.16 335);
