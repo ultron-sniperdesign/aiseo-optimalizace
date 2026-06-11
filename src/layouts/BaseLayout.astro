@@ -205,7 +205,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
       </>
     )}
 
-    {/* Meta Pixel (Facebook) — pixel ID 990248333397178. Honor Sec-GPC / DNT
+    {/* Meta Pixel (Facebook) — pixel ID 990248353397178. Honor Sec-GPC / DNT
         stejně jako GA4 — pokud uživatel signalizuje opt-out, pixel se nenačte
         a žádný PageView event nepošle. <noscript> fallback se v takovém případě
         neuplatní (browser by neměl JS, a tudíž nemůže Sec-GPC vyhodnotit). */}
@@ -221,11 +221,11 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '990248333397178');
+        fbq('init', '990248353397178');
         fbq('track', 'PageView');
       }
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=990248333397178&ev=PageView&noscript=1" alt="" /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=990248353397178&ev=PageView&noscript=1" alt="" /></noscript>
 
     {allJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
 
