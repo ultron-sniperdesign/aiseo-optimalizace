@@ -1,0 +1,223 @@
+---
+title: "Lighthouse Agentic Browsing: AI check v roce 2026"
+description: "Lighthouse AI check v roce 2026: co kontroluje Agentic Browsing, jak audit spustit a co opravit pro lepší strojové pochopení webu."
+answer: "Lighthouse Agentic Browsing je nová kategorie auditu, která podle dostupné dokumentace hodnotí technickou připravenost stránky pro strojové čtení a agentické akce. Objevila se v Lighthouse 13.3 v květnu 2026. Kontroluje čtyři oblasti: llms.txt, WebMCP, accessibility tree a stabilitu rozvržení (CLS). Výstup není 0–100 skóre, ale podíl splněných kontrol."
+slug: "lighthouse-ai-check"
+category: "tutorial"
+updated: "2026-06-11"
+keywords:
+  - "lighthouse ai check"
+  - "lighthouse agentic browsing"
+  - "ai readiness audit"
+  - "lighthouse llms.txt"
+  - "lighthouse webmcp"
+variant: "rich"
+stats:
+  - value: "4"
+    label: "oblasti, které kategorie Agentic Browsing v Lighthouse 13.3 kontroluje"
+  - value: "13.3"
+    label: "verze Lighthouse z května 2026, ve které se podle dostupné dokumentace Agentic Browsing objevuje jako samostatná kategorie"
+  - value: "CLS < 0,1"
+    label: "doporučená hodnota pro stabilitu rozvržení v Agentic Browsing i Core Web Vitals"
+  - value: "desítky s"
+    label: "typická doba běhu Lighthouse auditu v Chrome DevTools"
+howto:
+  name: "Jak spustit Lighthouse Agentic Browsing audit"
+  steps:
+    - name: "Otevřete stránku v Chrome a spusťte DevTools"
+      text: "V Chrome otevřete adresu, kterou chcete auditovat. Pravým tlačítkem klikněte na stránku a zvolte Inspect (česky často Prozkoumat), nebo stiskněte F12. V DevTools přejděte na záložku Lighthouse."
+    - name: "Vyberte kategorie a zařízení"
+      text: "Zaškrtněte Agentic Browsing spolu s Performance, Accessibility, Best Practices a SEO. Vyberte zařízení (mobile nebo desktop) podle toho, co chcete auditovat. Zachovejte Navigation jako režim měření."
+    - name: "Spusťte audit a počkejte"
+      text: "Klikněte na tlačítko Analyze page load. Lighthouse otevře novou instanci stránky, projde ji v emulovaném prostředí a vyhodnotí všechny zaškrtnuté kategorie. Běh zabere typicky desítky sekund, podle výkonu počítače a složitosti stránky."
+    - name: "Prostudujte výstup Agentic Browsing"
+      text: "U Agentic Browsing neuvidíte klasické 0 až 100 skóre, ale podíl splněných kontrol (například „3 of 4 checks passed“). Každá jednotlivá kontrola je rozkliknutelná s podrobností, co chybí a kde začít s opravou."
+    - name: "Postupujte podle priority oprav"
+      text: "Začněte s llms.txt (nejlevnější oprava), pak accessibility tree (names and labels) a stabilita rozvržení (CLS). WebMCP nechte na konec — implementace je náročnější a smysl má hlavně pro e-shopy a aplikace, kde agent může provádět akce."
+faq:
+  - q: "Co je Lighthouse Agentic Browsing audit?"
+    a: "Nová kategorie v Google Lighthouse vedle Performance, Accessibility, Best Practices a SEO. Kontroluje, jak je web připravený pro práci AI agentů se stránkou. Audit testuje čtyři oblasti: přítomnost llms.txt, podporu protokolu WebMCP, kvalitu accessibility tree a stabilitu rozvržení (CLS). Lighthouse 13.3 ji v květnu 2026 zařadil do výchozího nastavení."
+  - q: "Jak se Agentic Browsing skóre liší od klasického Lighthouse?"
+    a: "Klasické kategorie (Performance, SEO) mají vážené skóre 0 až 100. Agentic Browsing místo toho používá podíl splněných kontrol („3 of 4 checks passed“). Kategorie je nová a audit zatím pracuje s jednodušším vyhodnocením typu úspěšný/neúspěšný. Pro praxi to znamená, že každá kontrola ukazuje, co chybí a kde začít s opravou."
+  - q: "Co je llms.txt a proč ho Lighthouse kontroluje?"
+    a: "llms.txt je strojově čitelný souhrn obsahu webu v rootu domény (například `https://vasweb.cz/llms.txt`). Lighthouse kontroluje jeho přítomnost a základní strukturu. Pokud soubor chybí, neprojde příslušná kontrola. Je to obvykle nejlevnější oprava — ve většině případů stačí vytvořit statický textový soubor llms.txt v rootu webu."
+  - q: "Co je WebMCP a musím to implementovat?"
+    a: "WebMCP je frontendový protokol, který webu umožňuje nabídnout AI agentovi konkrétní akce (přidej do košíku, odešli formulář, vyhledej produkt). Liší se od běžných MCP serverů na backendu — WebMCP funguje v prohlížeči uživatele. V roce 2026 je standard ještě experimentální. Smysl má hlavně pro e-shopy, booking weby a SaaS aplikace, kde agent může provádět konkrétní akce."
+  - q: "Jak souvisí Agentic Browsing s accessibility?"
+    a: "AI agenti se při čtení stránky podle dostupné dokumentace spoléhají na takzvaný accessibility tree — stejnou strukturu, kterou používají screen readery pro nevidomé uživatele. Lighthouse v Agentic Browsing kontroluje konkrétní podmnožinu accessibility auditů kritických pro stroje, hlavně programově rozpoznatelná pojmenování interaktivních prvků. Optimalizace pro AI agenty proto často pomůže i pro klasické accessibility skóre."
+  - q: "Kde Lighthouse audit nejlépe spustit?"
+    a: "Doporučená cesta je Chrome DevTools (záložka Lighthouse) — funguje na nasazené stránce i lokálním webu, na přihlášených stránkách a dovolí výběr kategorií. Pro veřejně dostupné adresy stačí PageSpeed Insights na pagespeed.web.dev. Pro CI/CD pipeline existuje Lighthouse CLI. Starší rozšíření do Chrome už nejsou k červnu 2026 doporučovaná."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Lighthouse Agentic Browsing je nová kategorie v Google Lighthouse, která se podle veřejně dostupné dokumentace objevila ve verzi 13.3 v květnu 2026. Kontroluje čtyři oblasti důležité pro to, jak nástroje stránku přečtou strojově: přítomnost llms.txt, podporu protokolu WebMCP, kvalitu accessibility tree a stabilitu rozvržení (CLS).** Skóre není vážené od 0 do 100, ale ukazuje podíl splněných kontrol — u každé z nich jasně vidíte, zda prošla nebo neprošla. Spustit audit lze v Chrome DevTools, v PageSpeed Insights nebo přes Lighthouse CLI (příkazová řádka). Tento návod vysvětluje, co audit testuje, jak ho spustit a v jakém pořadí opravovat neúspěšné kontroly.
+
+## Co je Lighthouse Agentic Browsing
+
+Podle veřejně dostupné dokumentace a sledování vydání se kategorie Agentic Browsing objevila v Lighthouse 13.3 v květnu 2026. Ve veřejných verzích rozhraní se začala objevovat jako samostatná kategorie, v PageSpeed Insights během následujících týdnů a integrace v Chrome 150 DevTools na to navazuje. Kategorie měří, jak dobře je web připravený pro **AI agenty** — tedy nástroje, které umí stránku přečíst strojově a v některých případech na ní provádět akce.
+
+Na rozdíl od klasických Lighthouse kategorií **nepoužívá vážené skóre 0 až 100**. Místo toho ukazuje **podíl splněných kontrol** (například „3 of 4 checks passed"). Kategorie je nová a audit zatím pracuje s jednodušším vyhodnocením typu úspěšný/neúspěšný. Pro praxi to znamená, že každá kontrola ukazuje, co chybí a kde začít s opravou.
+
+<Insight tone="key">
+Agentic Browsing není rozšíření klasického SEO ani Performance. Měří jinou věc: jak dobře stránku přečte AI agent, který ji čte strojově, ne jako lidský návštěvník.
+</Insight>
+
+## Čtyři oblasti, které audit kontroluje
+
+Lighthouse Agentic Browsing testuje čtyři specifické oblasti:
+
+<Checklist title="Kontroly v Agentic Browsing kategorii" items={[
+  { title: "llms.txt", desc: "Strojově čitelný souhrn obsahu v rootu domény (například /llms.txt). Lighthouse kontroluje přítomnost a základní strukturu." },
+  { title: "WebMCP", desc: "Frontend protokol, který umožňuje agentovi provádět konkrétní akce na webu (přidat do košíku, odeslat formulář). Stále experimentální." },
+  { title: "Accessibility tree", desc: "Konkrétní podmnožina accessibility auditů kritických pro AI agenty (programově rozpoznatelná pojmenování, ARIA atributy)." },
+  { title: "Stabilita rozvržení (CLS)", desc: "Cumulative Layout Shift — pokud se prvky posouvají, agent i návštěvník mohou cílit na nesprávné místo. Doporučená hodnota CLS < 0,1." },
+]} />
+
+### 1. llms.txt
+
+Strojově čitelný souhrn obsahu v rootu domény — například `https://vasweb.cz/llms.txt`. Lighthouse kontroluje, jestli soubor existuje a má základní strukturu. **Pokud chybí, neprojde příslušná kontrola.** Je to obvykle nejlevnější oprava z celé kategorie — ve většině případů stačí vytvořit statický textový soubor llms.txt v rootu webu. Pro detail je samostatný [návod k llms.txt](/blog/llms-txt-navod/).
+
+### 2. WebMCP
+
+WebMCP (Web Model Context Protocol) se v dostupné dokumentaci popisuje jako experimentální protokol, který weby používají k tomu, aby nabídly agentickým nástrojům konkrétní akce. Liší se od běžných MCP serverů, které běží na backendu — WebMCP funguje v prohlížeči návštěvníka a popisuje, co nástroj může v dané stránce dělat (klik, formulář, vyhledávání).
+
+V roce 2026 je standard **stále experimentální** a aktivně ho podporuje jen málo agentů. Implementace má smysl hlavně pro **e-shopy, booking weby a SaaS aplikace**, kde agent může reálně provádět akce.
+
+### 3. Accessibility tree
+
+Podle dostupné dokumentace je accessibility tree pro agentické čtení stránky klíčový datový model. Agentické nástroje se při čtení stránky spoléhají na stejnou strukturu, kterou používají čtečky obrazovky pro nevidomé uživatele. Lighthouse kontroluje konkrétní podmnožinu accessibility auditů, hlavně:
+
+- **Names and labels** — každé interaktivní tlačítko, odkaz a vstup musí mít čitelný popis (text v tlačítku, `aria-label` u ikony, `<label>` u inputu).
+- **ARIA atributy** — správné `role`, `aria-label`, `aria-describedby`.
+
+Pasáže jako tab order nebo focus management souvisí s použitelností, ale Lighthouse se zde podle dostupné dokumentace soustředí hlavně na names and labels a ARIA. Optimalizace pro AI agenty **často zlepší i klasické accessibility skóre** a usnadní použití webu lidem s asistivními technologiemi.
+
+### 4. Stabilita rozvržení (CLS)
+
+Cumulative Layout Shift měří, jak moc se prvky stránky posouvají po načtení. Pro lidského návštěvníka to znamená frustraci („chtěl jsem kliknout na tlačítko a ono se posunulo"). Nestabilní layout může navíc ztížit provedení akce — agent i uživatel mohou cílit na prvek, který se mezitím posunul nebo přemístil.
+
+Lighthouse cílí na **CLS < 0,1**, stejně jako u klasických Core Web Vitals. Optimalizace je sdílená s Performance kategorií.
+
+## Jak spustit Lighthouse audit
+
+Existují tři cesty, jak audit spustit. Doporučená je Chrome DevTools.
+
+<CompareTable
+  caption="Tři způsoby, jak spustit Lighthouse audit"
+  columns={["Chrome DevTools (doporučeno)", "PageSpeed Insights / CLI"]}
+  rows={[
+    { icon: "🖥️", label: "Kde běží", left: "Lokálně v Chrome prohlížeči", right: "PageSpeed Insights: webové rozhraní pagespeed.web.dev. CLI: lokální Node prostředí." },
+    { icon: "🔐", label: "Co umí auditovat", left: "Nasazená i lokální adresa, přihlášené stránky", right: "PageSpeed: pouze veřejně dostupné adresy. CLI: lokální i veřejné, vhodné pro CI/CD." },
+    { icon: "⚙️", label: "Volba kategorií", left: "Výběr kategorií, zařízení (mobile/desktop), režimu", right: "PageSpeed: výchozí nastavení. CLI: plně konfigurovatelné přes parametry." },
+    { icon: "📊", label: "Výstup", left: "Interaktivní report přímo v DevTools, historie předchozích spuštění", right: "PageSpeed: webová stránka s reportem. CLI: HTML / JSON soubor pro archivaci a CI/CD." },
+    { icon: "🎯", label: "Vhodné pro", left: "Vývojáře, jednotlivé audity, diagnostika konkrétní stránky", right: "PageSpeed: rychlý audit veřejné stránky bez instalace. CLI: automatizace v CI/CD pipeline." },
+  ]}
+/>
+
+<Stepper
+  steps={[
+    {
+      label: "Otevřete stránku v Chrome",
+      title: "Načtěte adresu, kterou chcete auditovat",
+      text: "V Chrome otevřete stránku. Doporučujeme zavřít ostatní záložky a rozšíření, která by mohla ovlivnit výsledky (blokátor reklam, správce hesel, čtečku obrazovky). Audit má probíhat v co nejčistším prostředí.",
+    },
+    {
+      label: "Spusťte DevTools a vyberte Lighthouse",
+      title: "Otevřete vývojářské nástroje a přejděte na Lighthouse",
+      text: "Pravým tlačítkem klikněte na stránku a zvolte Inspect (česky často Prozkoumat), nebo stiskněte F12. V DevTools panelu přepněte na záložku Lighthouse. Pokud ji nevidíte, klikněte na dvě šipky vpravo (More tabs) a vyberte ji z přetékajícího menu.",
+    },
+    {
+      label: "Vyberte kategorie a zařízení",
+      title: "Zaškrtněte Agentic Browsing + ostatní kategorie",
+      text: "Zaškrtněte všechny relevantní kategorie (Performance, Accessibility, Best Practices, SEO, Agentic Browsing). Vyberte zařízení (mobile pro web cílený na uživatele, desktop pro B2B nástroje). Zachovejte Navigation jako režim měření.",
+    },
+    {
+      label: "Analyzujte a počkejte",
+      title: "Klikněte na tlačítko Analyze page load a počkejte typicky desítky sekund",
+      text: "Lighthouse otevře novou instanci stránky v izolovaném prostředí, projde ji a vyhodnotí všechny kategorie. Během auditu se stránky nedotýkejte. Po dokončení uvidíte přehledný report s úspěšnými a neúspěšnými kontrolami.",
+    },
+    {
+      label: "Prostudujte Agentic Browsing výstup",
+      title: "Zaměřte se na neúspěšné kontroly",
+      text: "U Agentic Browsing neuvidíte klasické 0 až 100 skóre, ale podíl splněných kontrol (například „3 of 4 checks passed“). Každá jednotlivá kontrola je rozkliknutelná s konkrétní podrobností, co chybí a jak to opravit.",
+    },
+    {
+      label: "Plán oprav podle priority",
+      title: "Postupujte od nejlevnějších k nejnáročnějším",
+      text: "Začněte s llms.txt (nejlevnější), pak accessibility tree (names and labels), pak optimalizace stability rozvržení (CLS). WebMCP nechte na konec — implementace je náročná a smysl má hlavně pro e-shopy a aplikace, kde agent může provádět akce.",
+    },
+  ]}
+/>
+
+## V jakém pořadí opravovat neúspěšné kontroly
+
+Lighthouse Agentic Browsing dává okamžitý seznam toho, co opravit. Pro **maximální hodnotu za vynaloženou práci** doporučujeme následující pořadí.
+
+<DoDont
+  doTitle="V tomto pořadí opravovat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "1. llms.txt — typicky 5 až 30 minut práce, vysoký dopad. Statický textový soubor v rootu domény.",
+    "2. Accessibility tree (names and labels) — 1 až 4 hodiny podle velikosti webu. Pomáhá i klasickému accessibility skóre.",
+    "3. Stabilita rozvržení (CLS) — sdílená práce s klasickými Core Web Vitals. Explicit width/height u obrázků, přednačtení fontů, rezervace místa pro lazy-loaded obsah.",
+    "4. WebMCP — náročná implementace, pouze pro e-shopy a aplikace s reálnými agent akcemi.",
+  ]}
+  dontItems={[
+    "Začínat WebMCP před lehčími opravami — typicky špatný poměr práce k výsledku.",
+    "Ignorovat neúspěšné kontroly s tím, že „není to ranking faktor“ — souvisejí s tím, jak nástroje stránku čtou strojově.",
+    "Optimalizovat na 100% podíl splněných kontrol za každou cenu — některé kontroly (například WebMCP) v roce 2026 ještě nemají smysl pro většinu webů.",
+    "Spoléhat jen na Lighthouse — doplnit ho ručním otestováním v reálném AI nástroji s agentickým procházením webu.",
+  ]}
+/>
+
+<MistakeGrid>
+  <Mistake number="01" title="Audit jen na homepage">
+    Spuštění Lighthouse jen na homepage podceňuje stav celého webu. Auditujte alespoň 3 typy stránek: homepage, kategorii nebo listovou stránku a produktovou nebo detailovou stránku. Neúspěšné kontroly se mezi šablonami často liší.
+  </Mistake>
+  <Mistake number="02" title="Optimalizace bez opakovaného spuštění auditu">
+    Změny v llms.txt nebo accessibility tree je třeba ověřit dalším auditem. Bez opakovaného spuštění nelze potvrdit, že oprava skutečně fungovala a Lighthouse ji uznal.
+  </Mistake>
+  <Mistake number="03" title="Stará verze Lighthouse">
+    Pokud používáte starší než Lighthouse 13.3, kategorie Agentic Browsing chybí nebo je v experimentálním stavu. Pro relevantní audit doporučujeme Chrome aktualizovaný a Lighthouse v aktuální verzi.
+  </Mistake>
+  <Mistake number="04" title="Spoléhat na PageSpeed Insights u dev verze">
+    PageSpeed Insights umí auditovat pouze veřejně dostupné adresy. Pro testování dev prostředí nebo přihlášených stránek je nutné použít Chrome DevTools (lokální Lighthouse).
+  </Mistake>
+</MistakeGrid>
+
+## Co Agentic Browsing audit neukáže
+
+Lighthouse Agentic Browsing je užitečný technický audit, ale **není to kompletní AI SEO audit**. Co nemeří:
+
+- **Obsahovou kvalitu** — jestli odpovědi na otázky jsou užitečné, faktické, citovatelné.
+- **AI viditelnost značky** — jestli o vás AI modely vůbec vědí a citují vás.
+- **Pozici v AI odpovědích** — analyticky musíte měřit v ChatGPT, Perplexity, Google AI Overviews.
+- **Hlubší optimalizaci strukturovaných dat** — Lighthouse není plnohodnotný validátor strukturovaných dat a neřeší jejich hlubší návrh pro vyhledávání ani AI systémy.
+
+Lighthouse Agentic Browsing je **vstupní brána** — pokud zde web nesplňuje základní kontroly, může to naznačovat slabší technickou připravenost pro širší AI viditelnost a stojí za to ji prověřit. Naopak: 100% podíl splněných kontrol v této kategorii nezaručuje, že o vás AI bude citovat.
+
+<Insight tone="warning">
+Lighthouse Agentic Browsing je v roce 2026 stále nová kategorie a její váha v reálném chování AI agentů není dokumentovaná. Berte ji jako užitečné technické vodítko, ne jako garanci AI viditelnosti.
+</Insight>
+
+## Co si z článku odnést
+
+- **Lighthouse 13.3 v květnu 2026** přidal novou kategorii **Agentic Browsing**, která kontroluje, jak je web připravený pro AI agenty.
+- Audit testuje **čtyři oblasti**: llms.txt, WebMCP, accessibility tree a stabilita rozvržení (CLS).
+- Skóre **není vážené 0 až 100** — místo toho podíl splněných kontrol s konkrétními úspěšnými a neúspěšnými signály.
+- **Spustit ho lze** v Chrome DevTools (doporučeno), v PageSpeed Insights nebo přes Lighthouse CLI.
+- **Pořadí oprav podle dopadu**: llms.txt → accessibility tree (names and labels) → CLS → WebMCP.
+- Audit je **vstupní brána**, ne kompletní AI SEO. Doplňte ho měřením v reálných AI nástrojích a obsahovou strategií.
+
+---
+
+**Chcete projít Lighthouse Agentic Browsing audit krok za krokem a opravit neúspěšné kontroly sami?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje checklist pro Lighthouse Agentic Browsing, vzor llms.txt, seznam kontrol pro accessibility tree a postup prioritizace oprav. Pokud chcete profesionální analýzu s plánem priorit pro větší web, [AI SEO audit za 9 990 Kč](/audit/) projde klíčové stránky a navrhne konkrétní opravy s odhadem dopadu.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Tento článek vychází z veřejné dokumentace Chrome for Developers k červnu 2026 a sledování vývoje Lighthouse 13.3+; jednotlivé kontroly a jejich váha se mohou v dalších verzích měnit.*
