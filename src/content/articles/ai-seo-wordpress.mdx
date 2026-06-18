@@ -1,0 +1,215 @@
+---
+title: "AI SEO na WordPressu: praktický návod pro rok 2026"
+description: "Jak nastavit WordPress pro AI vyhledávání: llms.txt, robots.txt pro AI vyhledávací roboty, strukturovaná data a rychlost. Praktický návod pro CZ weby."
+answer: "AI SEO na WordPressu je úprava webu tak, aby AI systémy lépe pochopily jeho obsah a snáz ho použily v odpovědích. Typicky zahrnuje SEO plugin, strukturovaná data, kontrolu robots.txt pro AI vyhledávací roboty, případně llms.txt a dobré Core Web Vitals."
+slug: "ai-seo-wordpress"
+category: "tutorial"
+updated: "2026-06-11"
+keywords:
+  - "ai seo wordpress"
+  - "wordpress pro ai vyhledavani"
+  - "wordpress llms.txt"
+  - "wordpress robots.txt ai"
+  - "ai seo plugin wordpress"
+variant: "rich"
+stats:
+  - value: "~40 %"
+    label: "podíl WordPressu mezi všemi weby podle veřejně citovaných odhadů k roku 2026"
+  - value: "5"
+    label: "často řešených identifikátorů AI vyhledávacích robotů + pravidlo Google-Extended, které se vyplatí v roce 2026 zkontrolovat"
+  - value: "~30 000+"
+    label: "aktivních instalací nejpoužívanějšího WordPress pluginu pro llms.txt (k červnu 2026)"
+  - value: "4"
+    label: "hlavní SEO pluginy pro WordPress, které pokrývají AI SEO základ"
+howto:
+  name: "Jak nastavit WordPress pro AI vyhledávání"
+  steps:
+    - name: "Ujistěte se, že máte funkční SEO plugin"
+      text: "Pro AI SEO základ stačí kterýkoliv z hlavních pluginů: Yoast SEO, Rank Math, SEOPress nebo All in One SEO (AIOSEO). Všechny generují strukturovaná data (Article, Organization, BreadcrumbList), XML sitemap a umožňují editovat robots.txt. Pokud žádný nemáte, nainstalujte jeden."
+    - name: "Přidejte llms.txt"
+      text: "Nainstalujte plugin Website LLMs.txt (k červnu 2026 zhruba 30 000+ aktivních instalací, integrace s hlavními SEO pluginy) nebo vytvořte llms.txt ručně v rootu domény. Ověřte přes `curl -I https://vasweb.cz/llms.txt` (HTTP 200) a otevřete soubor v prohlížeči, abyste viděli i obsah."
+    - name: "Ujistěte se, že AI vyhledávací roboti nejsou blokovaní v robots.txt"
+      text: "Pro citace v AI odpovědích je potřeba, aby hlavní AI user-agenty nebyly blokované. Mezi ně patří GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a Meta-ExternalAgent. Samostatně řešte pravidlo Google-Extended, kterým Google řídí využití obsahu pro některé AI účely. Pozor: blokování GPTBot neblokuje OAI-SearchBot — jsou to dvě samostatná pravidla."
+    - name: "Doplňte strukturovaná data, která SEO plugin nedělá automaticky"
+      text: "Manuálně přidejte FAQPage (FAQ blok na produktové nebo službové stránce), Product s Offer u WooCommerce a Person na autorské stránce. Většina SEO pluginů má pro tyto typy generátor v editoru postu."
+    - name: "Sledujte Core Web Vitals a konfiguraci CDN"
+      text: "Cíl LCP < 2,5 s, INP < 200 ms, CLS < 0,1. Použijte cache plugin (LiteSpeed Cache zdarma, WP Rocket placený) a optimalizaci obrázků (ShortPixel, Imagify). Pokud používáte Cloudflare, ověřte, že přepínač Block AI Bots není zapnutý — v praxi může přebít vaše robots.txt a zablokovat AI vyhledávací roboty."
+faq:
+  - q: "Stačí na AI SEO ve WordPressu jeden plugin?"
+    a: "Pro základ stačí kombinace dvou: hlavní SEO plugin (Yoast, Rank Math, SEOPress nebo AIOSEO) pro strukturovaná data a sitemap, plus dedikovaný plugin na llms.txt (Website LLMs.txt). Hlavní SEO plugin generuje Article, Organization a BreadcrumbList automaticky. llms.txt plugin zajistí strojově čitelný souhrn obsahu pro AI modely. Zbytek (robots.txt, rychlost webu) jde řešit přes existující pluginy nebo manuálně."
+  - q: "Který WordPress SEO plugin je pro AI SEO nejlepší v roce 2026?"
+    a: "Pro AI SEO základ fungují všechny čtyři hlavní pluginy srovnatelně: Yoast SEO, Rank Math, SEOPress a All in One SEO (AIOSEO). Liší se hlavně rozsahem bezplatné verze a uživatelským prostředím. Rank Math má štědrou bezplatnou verzi s generátorem strukturovaných dat, Yoast je nejrozšířenější s dobrou integrací třetích pluginů (mimo jiné Website LLMs.txt). Přechod mezi nimi je možný, ale měl by být provedený opatrně kvůli ztrátě nastavení."
+  - q: "Které AI vyhledávací roboty mám v robots.txt řešit?"
+    a: "Mezi často řešené identifikátory pro rok 2026 patří GPTBot (OpenAI training), OAI-SearchBot (OpenAI live search), ClaudeBot (Anthropic), PerplexityBot (Perplexity) a Meta-ExternalAgent (Meta AI). Samostatně řešte pravidlo Google-Extended, kterým Google řídí využití obsahu pro některé AI účely. Pozor: GPTBot a OAI-SearchBot jsou samostatné. V novější dokumentaci a praxi se obvykle řeší hlavně ClaudeBot; starší identifikátory Claude-Web a anthropic-ai se v aktuálních návodech objevují méně. Někteří správci webů uvádějí, že Bytespider (ByteDance) respektuje robots.txt jen omezeně — pokud to vidíte i v logách, bývá účinnější blokace přes CDN nebo firewall."
+  - q: "Jak doplnit llms.txt na WordPress bez pluginu?"
+    a: "Vytvořte textový soubor llms.txt s krátkým markdown přehledem hlavních stránek webu a uploadujte ho do rootu domény (například přes FTP nebo File Manager v hostingu). Ověřte přes `curl -I https://vasweb.cz/llms.txt` (HTTP 200) a otevřete soubor v prohlížeči, abyste viděli i obsah. Plugin Website LLMs.txt to ale dělá automaticky a aktualizuje při změnách webu, takže pro většinu uživatelů je výhodnější."
+  - q: "Pokud používám Cloudflare, mám zapnout Block AI Bots přepínač?"
+    a: "Pokud chcete zvýšit šanci na citace v AI odpovědích, obvykle není vhodné tento přepínač zapínat. Cloudflare Block AI Bots (přidaný 2024) na úrovni CDN je v praxi silnější než pravidla v robots.txt a může AI vyhledávací roboty zastavit dřív, než váš web vůbec uvidí. Místo plošné blokace doporučujeme jemnější pravidla pro jednotlivé AI vyhledávací roboty: povolit ty, kteří citují v AI odpovědích, blokovat pouze konkrétní obtěžující přes webový aplikační firewall (WAF)."
+  - q: "Jak se AI SEO na WordPressu liší od klasického SEO?"
+    a: "Základ je stejný: strukturovaná data, kvalitní obsah, sitemap, technické zdraví. AI SEO přidává tři vrstvy: neblokované AI vyhledávací roboty v robots.txt, případně llms.txt jako doplňkový strojově čitelný přehled webu a důraz na strukturu obsahu, kterou AI snáz používá v odpovědích (krátké úseky 50 až 150 slov, FAQ, listy s konkrétními čísly). Většina už existujících SEO opatření pro AI funguje, jen je potřeba doplnit specifika."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI SEO na WordPressu je soubor nastavení, která pomáhají AI systémům (ChatGPT, Google AI Overviews, Perplexity, Claude, Gemini) lépe pochopit a použít obsah webu. Konkrétně to znamená správně nastavený SEO plugin pro strukturovaná data, doplněný llms.txt, neblokované relevantní AI user-agenty v robots.txt a dobré Core Web Vitals.** WordPress podle veřejně citovaných odhadů pohání v roce 2026 zhruba 40 % webů, takže AI SEO řeší v něm největší část majitelů. Dobrá zpráva: většinu kroků zvládnete pluginy bez programování. Tento návod ukazuje, co konkrétně udělat a v jakém pořadí.
+
+## Co AI SEO ve WordPressu znamená
+
+AI vyhledávání přidává k tradičnímu SEO několik nových technických prvků. Pro WordPress weby to v roce 2026 znamená především:
+
+- **Mít neblokované hlavní AI vyhledávací roboty** v robots.txt. Mezi často řešené identifikátory patří GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a Meta-ExternalAgent. Samostatně doporučujeme zkontrolovat pravidlo Google-Extended. Seznam ale není definitivní a v čase se může měnit.
+- **Zvážit llms.txt** jako doplňkový orientační soubor pro AI systémy. Není to univerzálně potvrzený standard, ale může zjednodušit orientaci v obsahu webu.
+- **Mít strukturovaná data** (Article, Organization, BreadcrumbList, FAQPage, Product) — většinu už dělá SEO plugin.
+- **Zaměřit obsah** na krátké úseky a otázky a odpovědi, které se AI systémům snáz používají v odpovědích.
+- **Hlídat Core Web Vitals** a stabilitu rozvržení.
+
+<Insight tone="key">
+Pro WordPress AI SEO obvykle nemusíte měnit téma ani migrovat na jiný CMS. Většinu kroků zvládnete přidáním nebo doladěním existujících pluginů.
+</Insight>
+
+## Hlavní 4 SEO pluginy — krátké srovnání
+
+Pro AI SEO základ ve WordPressu fungují všechny hlavní pluginy srovnatelně. Liší se hlavně rozsahem bezplatné verze, uživatelským prostředím a integracemi.
+
+<CompareTable
+  caption="Hlavní WordPress SEO pluginy pro AI SEO základ (k červnu 2026)"
+  columns={["Yoast SEO / AIOSEO", "Rank Math / SEOPress"]}
+  rows={[
+    { icon: "📊", label: "Strukturovaná data", left: "Article, Organization, BreadcrumbList, WebSite automaticky; FAQPage a HowTo přes bloky v Gutenbergu", right: "Schema generator s řadou typů (Article, FAQ, HowTo, Product, Review); flexibilnější customizace na úrovni postu" },
+    { icon: "🤖", label: "robots.txt editor", left: "Vestavěný editor v UI; pravidla pro AI user-agenty musíte doplnit ručně", right: "Vestavěný editor; Rank Math má v některých modulech předpřipravené šablony" },
+    { icon: "🔗", label: "Integrace s llms.txt pluginy", left: "Plná integrace s Website LLMs.txt pluginem (přebírá data ze SEO pluginu)", right: "Také podporováno; Website LLMs.txt umí číst metadata všech čtyř hlavních SEO pluginů" },
+    { icon: "💰", label: "Bezplatná verze", left: "Yoast — funkční bezplatná, premium pro pokročilé. AIOSEO — bezplatný základ, placený pro Schema Custom Editor", right: "Rank Math — štědrá bezplatná verze s většinou funkcí. SEOPress — funkční bezplatný, placený pro pokročilejší funkce" },
+    { icon: "🌍", label: "Komunita a podpora", left: "Yoast největší, nejvíce tutorialů; AIOSEO druhý nejrozšířenější", right: "Rank Math k červnu 2026 dál roste; SEOPress menší ale stabilní" },
+  ]}
+/>
+
+**Praktické doporučení:**
+
+- **Yoast SEO** — pokud chcete vyzkoušený standard s nejširší komunitou.
+- **Rank Math** — pokud chcete více funkcí v bezplatné verzi.
+- **SEOPress** — pokud chcete evropský plugin přívětivý ke GDPR.
+- **AIOSEO** — pokud preferujete méně technické uživatelské prostředí.
+
+Přechod mezi nimi je možný, ale měl by být **proveden opatrně** — kvůli ztrátě nastavení a meta tagů doporučujeme udělat export a otestovat na testovací kopii webu.
+
+## Praktický postup krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "SEO plugin",
+      title: "Mějte funkční hlavní SEO plugin",
+      text: "Pokud máte Yoast SEO, Rank Math, SEOPress nebo AIOSEO a strukturovaná data fungují (test přes validátor strukturovaných dat Schema.org nebo Google Rich Results Test), AI SEO základ máte. Pokud ne, nainstalujte jeden z nich a nakonfigurujte základní typy (Organization, WebSite, Article).",
+    },
+    {
+      label: "llms.txt",
+      title: "Přidejte llms.txt",
+      text: "Nejjednodušší cesta: plugin Website LLMs.txt (k červnu 2026 zhruba 30 000+ aktivních instalací). Automaticky generuje a aktualizuje llms.txt na základě obsahu webu. Manuální cesta: vytvořit textový soubor llms.txt s krátkým markdown přehledem a nahrát do rootu domény (přes FTP nebo File Manager v hostingu).",
+    },
+    {
+      label: "robots.txt",
+      title: "Ujistěte se, že AI vyhledávací roboti nejsou blokovaní",
+      text: "Pro citace v AI odpovědích musí mít hlavní AI vyhledávací roboti přístup. Mezi často řešené identifikátory patří GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a Meta-ExternalAgent. Samostatně řešte Google-Extended. Pokud máte restriktivní robots.txt, přidejte pro relevantní identifikátory výjimky. Pozor: GPTBot a OAI-SearchBot jsou dvě samostatná pravidla.",
+    },
+    {
+      label: "Strukturovaná data",
+      title: "Doplňte typy, které SEO plugin nedělá automaticky",
+      text: "Manuálně přidejte FAQPage (FAQ blok na produktové nebo službové stránce), Product s Offer u WooCommerce, Person na autorské stránce. Většina SEO pluginů má pro tyto typy generátor přímo v editoru postu nebo Gutenberg blok.",
+    },
+    {
+      label: "Rychlost webu",
+      title: "Hlídejte Core Web Vitals",
+      text: "Cíl LCP < 2,5 s, INP < 200 ms, CLS < 0,1. Použijte cache plugin (LiteSpeed Cache zdarma, WP Rocket placený), optimalizaci obrázků (ShortPixel, Imagify, Smush). Největší dopad mívá kvalita hostingu — pro AI SEO doporučujeme spravovaný WordPress hosting.",
+    },
+    {
+      label: "CDN a firewall",
+      title: "Ověřte konfiguraci Cloudflare nebo jiného CDN",
+      text: "Pokud používáte Cloudflare, ověřte, že přepínač Block AI Bots není zapnutý — blokace na úrovni CDN je v praxi silnější než pravidla v robots.txt a může AI vyhledávací roboty zastavit ještě před tím, než váš web vůbec uvidí. Pro AI SEO doporučujeme jemnější pravidla pro jednotlivé AI vyhledávací roboty: povolit ty, kteří citují v AI odpovědích, blokovat pouze konkrétní obtěžující přes webový aplikační firewall (WAF).",
+    },
+  ]}
+/>
+
+## Vzorová šablona robots.txt pro AI SEO WordPress
+
+Tady je minimální funkční šablona, kterou doporučujeme jako start. Konkrétní úpravy podle specifik webu (přihlášené sekce, vlastní URL struktura, parametry):
+
+<Checklist title="Co WordPress robots.txt pro AI SEO obsahuje" items={[
+  { title: "Neblokovat hlavní AI user-agenty", desc: "GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent — pokud máte restriktivní pravidla, přidejte pro ně výjimky." },
+  { title: "Pravidlo Google-Extended", desc: "Samostatně rozhodněte, jestli chcete Googlu povolit využití obsahu pro některé AI účely." },
+  { title: "Disallow admin", desc: "/wp-admin/, /wp-login.php — admin sekce nemá být v indexu žádného vyhledávače." },
+  { title: "Disallow interní vyhledávání", desc: "Parametry typu /?s= nebo /search/ — vede k tisícům duplicit obsahu." },
+  { title: "Allow admin-ajax.php", desc: "Některé funkce webu (komentáře, vyhledávání) potřebují admin-ajax přístupný vyhledávacím robotům." },
+  { title: "Sitemap odkaz", desc: "Sitemap: https://vasweb.cz/sitemap_index.xml — generuje SEO plugin." },
+  { title: "Volitelné Disallow Bytespider", desc: "Bytespider je často obtěžující; lze zkusit blokovat, ale spolehlivá ochrana je až přes WAF." },
+]} />
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Cloudflare Block AI Bots zapnutý">
+    Pokud máte Cloudflare a zapnutý přepínač Block AI Bots (přidaný 2024), blokace na úrovni CDN je v praxi silnější než pravidla v robots.txt a může AI vyhledávací roboty zastavit ještě před tím, než váš web vůbec uvidí. Web pak nemůže být citovaný v AI odpovědích, i když máte vše ostatní správně. Pokud chcete být v AI odpovědích vidět, přepínač vypněte.
+  </Mistake>
+  <Mistake number="02" title="Blokujete jen Claude-Web a anthropic-ai">
+    Starší identifikátory Claude-Web a anthropic-ai už nejsou aktivní. Aktuální vyhledávací robot Anthropic je ClaudeBot. Pokud chcete pravidla skutečně aplikovat, používejte ClaudeBot.
+  </Mistake>
+  <Mistake number="03" title="GPTBot ≠ OAI-SearchBot">
+    Blokování GPTBot neblokuje OAI-SearchBot. GPTBot stahuje data pro trénink modelů, OAI-SearchBot je live search agent ChatGPT. Pro AI SEO chceme oba dostupné; pro blokaci tréninkových dat je potřeba dvě pravidla.
+  </Mistake>
+  <Mistake number="04" title="Regrese robots.txt po update">
+    Změny v robots.txt vznikají při migracích WordPressu, theme update, instalaci security pluginu nebo změně konfigurace CDN. Po každém větším zásahu ověřte `curl https://vasweb.cz/robots.txt` a porovnejte s očekávaným stavem.
+  </Mistake>
+</MistakeGrid>
+
+## WooCommerce specifika
+
+Pro WordPress e-shopy postavené na WooCommerce (zhruba 25 až 30 % e-shopů) přidává AI SEO několik konkrétních úkolů:
+
+<DoDont
+  doTitle="Co dělat na WooCommerce"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Mít Product strukturovaná data s Offer (cena, dostupnost), AggregateRating (recenze) — generuje SEO plugin automaticky, doplnit chybějící.",
+    "Přidat FAQ blok na produktovou stránku — odpovídá přesně na dotazy, které kupci kladou AI.",
+    "Texty kategorií (top + bottom intro) s konkrétními informacemi — takový obsah může zvýšit šanci, že se stránka objeví v AI odpovědích u dotazů „nejlepší X“ nebo „X pro Y“.",
+    "Integrace recenzí (Heureka, Trusted Shops, Google Reviews) zpět na produkt přes strukturovaná data typu Review.",
+  ]}
+  dontItems={[
+    "Spoléhat jen na výchozí WooCommerce strukturovaná data — chybí FAQ, autor produktu, někdy i AggregateRating.",
+    "Nechat prázdné kategorie bez textu — AI systémy mají méně použitelného obsahu pro odpověď.",
+    "Schovávat recenze za přihlášení — AI je nepřečte.",
+    "Blokovat AI vyhledávací roboty v robots.txt s tím, že „nechci, aby AI brala moje produkty“ — bez nich nebude o produktech v AI odpovědích vědět.",
+  ]}
+/>
+
+## Co dělat nad rámec pluginů
+
+Pluginy řeší technickou vrstvu. Pro reálnou AI viditelnost značky je ale potřeba i to, co plugin neudělá:
+
+- **Pravidelná aktualizace obsahu** — u témat, která se rychle mění, může pravidelná aktualizace zvýšit šanci, že AI systémy budou obsah považovat za aktuální.
+- **Konkrétní čísla a vlastní data** — vlastní průzkum, A/B test nebo případová studie s konkrétními čísly mohou zvýšit šanci, že bude obsah pro AI odpovědi zajímavější a citovatelnější.
+- **Krátké citovatelné úseky** 50 až 150 slov — AI jednodušeji vybírá samostatně stojící odpovědi.
+- **Autor entity** — autorská stránka s LinkedIn, foto, krátkou bio = signál důvěry pro AI i Google.
+
+<Insight tone="warning">
+Žádný plugin nezaručí AI citace. Pluginy zajistí technický základ (strukturovaná data, llms.txt, neblokovaný robots.txt), ale samotná AI viditelnost závisí na kvalitě obsahu a autoritě značky, kterou si plugin nekoupíte.
+</Insight>
+
+## Co si z článku odnést
+
+- **AI SEO ve WordPressu** = SEO plugin (Yoast, Rank Math, SEOPress nebo AIOSEO) + llms.txt plugin + neblokovaní AI user-agenty v robots.txt + strukturovaná data + Core Web Vitals.
+- **5 hlavních AI user-agentů 2026**: GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent. Samostatně Google-Extended. GPTBot ≠ OAI-SearchBot.
+- **Cloudflare Block AI Bots přepínač** v praxi přebíjí robots.txt — pro AI SEO ho **nezapínat**.
+- **WooCommerce** vyžaduje doplnit FAQ na produkty, kategoriové texty a integraci recenzí.
+- **Pluginy řeší techniku.** Pro reálné AI citace je potřeba kvalitní obsah, aktualizace a autorita značky.
+
+---
+
+**Pokud nechcete jednotlivé kroky skládat ručně**, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje přesně ty šablony a checklisty, které tento návod popisuje: checklist pro nastavení SEO pluginu, vzor llms.txt, šablonu robots.txt pro AI user-agenty a kontrolní seznam pro WooCommerce. Pokud chcete profesionální audit konkrétně vašeho WordPress webu s plánem priorit, [AI SEO audit za 9 990 Kč](/audit/) projde hlavní stránky, zkontroluje strukturovaná data, robots.txt, konfiguraci CDN a navrhne opravy s odhadem dopadu.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Naše hlavní specializace je e-shopová platforma Upgates, ale principy AI SEO popisované v tomto článku platí podobně pro WordPress, WooCommerce, Shoptet i jiné CMS — liší se hlavně konkrétní implementace přes pluginy nebo šablony. Konfigurace AI user-agentů a jejich váha se v čase mění; tento článek vychází z veřejných dat dostupných k červnu 2026.*
