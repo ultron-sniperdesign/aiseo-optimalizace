@@ -1,0 +1,207 @@
+---
+title: "Seznam.cz a AI vyhledávání v Česku 2026"
+description: "Seznam.cz uvedl vlastního asistenta s modelem SeLLMa. Jakou roli hraje vedle Googlu a ChatGPT a kdy do něj investovat čas a peníze."
+answer: "Seznam.cz je v roce 2026 český sekundární vyhledávací kanál, který vedle klasického vyhledávání nabízí i Seznam Asistenta postaveného na vlastním modelu SeLLMa. Podle veřejných dat z let 2024–2025 se pohybuje zhruba mezi 11 a 15 procenty českého organického vyhledávání. Pro značku má smysl hlavně u starší cílovky, lokálních dotazů a vybraných oborů jako reality, automotive nebo finance."
+slug: "seznam-cz-ai-vyhledavani"
+category: "analysis"
+updated: "2026-06-11"
+keywords:
+  - "seznam ai vyhledavani"
+  - "seznam asistent"
+  - "sellma"
+  - "cesky vyhledavac ai"
+  - "seznam cz 2026"
+variant: "rich"
+stats:
+  - value: "~11–15 %"
+    label: "podíl Seznam.cz na českém organickém vyhledávání podle veřejných dat 2024–2025"
+  - value: "70 mld. parametrů"
+    label: "rozsah vlastního českého jazykového modelu SeLLMa od Seznamu"
+  - value: "~100 mil. Kč+"
+    label: "investice Seznamu do vlastního AI (mj. grafické čipy NVIDIA H100)"
+  - value: "25. 5. 2026"
+    label: "datum spuštění Seznam Asistenta v beta verzi pro všechny přihlášené uživatele"
+faq:
+  - q: "Jaký má Seznam.cz podíl na českém vyhledávání v roce 2026?"
+    a: "Podle veřejných dat z let 2024–2025 (Statista, Statcounter) drží Seznam.cz zhruba 11 až 15 procent českého organického vyhledávání. Google má kolem 79 až 82 procent. Trend je dlouhodobě klesající — v roce 2015 měl Seznam ještě kolem 20 procent. V placené reklamě je pozice silnější: Sklik tvoří podle veřejně citovaných odhadů přibližně 25 procent českého trhu placeného vyhledávání."
+  - q: "Co je Seznam Asistent a SeLLMa?"
+    a: "Seznam Asistent je vlastní konverzační AI nástroj Seznamu, který kombinuje prvky chatového asistenta a vyhledávání. Dostupný je přes samostatnou adresu asistent.seznam.cz a podle aktuální podoby služby i z rozhraní Seznam.cz. V listopadu 2025 byl spuštěn ve zkušebním provozu, 25. května 2026 byl zpřístupněn v beta verzi všem přihlášeným uživatelům zdarma. Stojí na vlastním českém jazykovém modelu SeLLMa (70 miliard parametrů, postaveném na open-source Llama 3.1 od Mety), do kterého Seznam investoval přes 100 milionů Kč."
+  - q: "V čem je Seznam Asistent jiný než ChatGPT nebo Google AI Overviews?"
+    a: "Hlavní odlišnost je v českém kontextu a propojení s vlastním ekosystémem Seznamu. SeLLMa je trénovaná a doladěná na český jazyk a kontext, asistent kombinuje vyhledávání s interními zdroji Seznamu (Mapy.cz, Firmy.cz, počasí, jízdní řády) a běží podle veřejných vyjádření Seznamu v evropských datacentrech. Samotnou kvalitou jazykového modelu se s nejlepšími světovými modely (ChatGPT, Claude, Gemini) zatím přímo neměří."
+  - q: "Mám pro Seznam optimalizovat web stejně jako pro Google?"
+    a: "Web pro Seznam se ve většině základních principů optimalizuje podobně jako pro Google: důležité jsou strukturovaná data, kvalitní obsah, sitemap a technické zdraví. Specifické pro Seznam jsou navíc registrace v Seznam Search Console, profil ve Firmy.cz pro lokální firmu, recenze v Heurece pro e-shop a placená kampaň ve Skliku. Pro AI viditelnost v Seznam Asistentovi se vyplatí mít konzistentní obsah dohledatelný v organickém vyhledávání na Seznamu."
+  - q: "Kdy dává smysl Seznam aktivně řešit a kdy ne?"
+    a: "Smysl dává u starší cílovky (Sklik má silnou pozici u 55 až 64 let), u lokálních dotazů, v oborech jako reality (Sreality.cz), automotive, finance nebo cestování. Naopak u digital-native B2B SaaS, mladé cílovky, anglických webů cílících mimo CZ nebo malých rozpočtů má smysl prioritizovat Google a mezinárodní AI ekosystém (ChatGPT, Perplexity, Claude). Seznam mívá u těchto skupin obvykle nižší význam než Google, LinkedIn a oborové komunity."
+  - q: "Stojí Sklik v roce 2026 za investici vedle Google Ads?"
+    a: "U českých firem cílících na CZ trh obvykle ano, ne ale jako náhrada Google Ads. Sklik má o 20 až 40 procent nižší CPC a silnou starší cílovku. Jako orientační start se u části českých firem používá poměr 70:30 ve prospěch Google Ads, ale vhodné rozdělení závisí na oboru, cílovce a ceně za získanou konverzi. U produktů s českou cílovkou nad 50 let je poměr často vyrovnanější."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Seznam.cz si v Česku dál drží roli významného menšinového vyhledávače — podle veřejných dat z let 2024–2025 se pohybuje zhruba mezi 11 a 15 procenty organického trhu vedle 79 až 82 procent Googlu. V listopadu 2025 přitom uvedl vlastního AI asistenta v testovacím provozu a v květnu 2026 ho zpřístupnil v beta verzi všem přihlášeným uživatelům.** Stojí na vlastním českém jazykovém modelu SeLLMa, podle veřejně citovaných informací s 70 miliardami parametrů a investicí přes 100 milionů Kč. Pro většinu českých firem proto Seznam dává smysl hlavně jako doplněk ke Googlu, zejména u starší cílové skupiny, lokálních dotazů a vybraných oborů.
+
+## Tržní pozice Seznam.cz v Česku k roku 2026
+
+Podíl Seznamu na českém vyhledávání v poslední dekádě dlouhodobě klesá ve prospěch Googlu. Konkrétní čísla podle dostupných veřejných zdrojů (Statista, Statcounter, 2024–2025):
+
+- **Google: ~79 až 82 %** organického vyhledávání v CZ.
+- **Seznam.cz: ~11 až 15 %** organického vyhledávání v CZ.
+- V roce **2015 měl Seznam ještě ~20 %**, pokles za zhruba 10 let je výrazný.
+
+V **placené reklamě** je pozice Seznamu silnější — **Sklik** tvoří podle veřejně citovaných odhadů kolem **25 % CZ search PPC trhu**, hlavně díky levnějšímu CPC (o 20 až 40 % nižší než Google Ads) a silné pozici u uživatelů ve věku 55 až 64 let.
+
+<Insight tone="key">
+Seznam zůstává v Česku významným hráčem, ale ne dominantním. Pro většinu firem je primární kanál Google, Seznam je sekundární — důležitější u starší cílovky, lokálních dotazů a vybraných oborů (reality, automotive, finance, cestování).
+</Insight>
+
+## Seznam Asistent a SeLLMa — český vstup do AI vyhledávání
+
+V listopadu 2025 uvedl Seznam **Seznam Asistenta** v testovacím provozu — vlastní konverzační AI nástroj, který kombinuje prvky chatového asistenta a vyhledávání. **25. května 2026** ho zpřístupnil v beta verzi **všem přihlášeným uživatelům zdarma**. Dostupný je přes samostatnou adresu `asistent.seznam.cz` a podle aktuální podoby služby i z rozhraní Seznam.cz.
+
+### Jazykový model SeLLMa
+
+Asistent stojí na vlastním českém jazykovém modelu Seznamu — **SeLLMa**. Podle veřejných vyjádření Seznamu a veřejně citovaných informací:
+
+- **Open-source základ:** Llama 3.1 od Mety.
+- **Rozsah modelu kolem 70 miliard parametrů** (70B).
+- **Investice Seznamu řádově přes 100 milionů Kč**, mimo jiné nákup výkonných grafických čipů NVIDIA H100.
+- **Běží v evropských datacentrech** — Seznam zdůrazňuje evropské zpracování dat.
+
+Podle veřejných vyjádření Seznam využívá tento model v Seznam Asistentovi a postupně ho nasazuje i v dalších částech svého ekosystému.
+
+### Hlavní odlišnost proti Google AI Overviews a ChatGPT
+
+V roce 2026 jsou Google AI Overviews rozšířené ve více než 200 zemích a 40+ jazycích (česky včetně), takže český trh už není v AI vrstvě izolovaný jen na lokální hráče. Seznam Asistent proto stojí proti silné globální konkurenci.
+
+<CompareTable
+  caption="Seznam Asistent versus globální AI vyhledávače"
+  columns={["Seznam Asistent (SeLLMa)", "Google AI Overviews / ChatGPT"]}
+  rows={[
+    { icon: "🇨🇿", label: "Jazyk a kontext", left: "Doladěný na češtinu, idiomy a kontext CZ trhu", right: "Funguje v češtině, ale primárně trénovaný na globálních datech" },
+    { icon: "🔗", label: "Propojení", left: "Přímé napojení na Mapy.cz, Firmy.cz, počasí, jízdní řády, Heureku, Sreality.cz", right: "Globální data + běžný web; Google AI Overviews navíc vlastní znalostní databázi Googlu" },
+    { icon: "🛡️", label: "Datová centra a GDPR", left: "Evropská datová centra; podle veřejných vyjádření Seznamu důraz na evropské zpracování dat", right: "Globální datová centra (US, EU); EU varianty jsou možné, ale ne výchozí" },
+    { icon: "🤖", label: "Kvalita modelu", left: "70 miliard parametrů; přizpůsobený, ale menší než nejlepší světové modely", right: "Špičkové modely (Claude Opus 4.x, GPT-5.x, Gemini 2.x) výrazně větší; v obecných mezinárodních benchmarcích a šíři použití obvykle silnější" },
+    { icon: "📊", label: "Tržní rozsah", left: "CZ trh ~11–15 % organic + adopce Asistenta ještě roste", right: "Google ~79–82 % CZ organic, ChatGPT/Perplexity rostou mezinárodně" },
+  ]}
+/>
+
+<Insight tone="warning">
+Samotnou kvalitou jazykového modelu se SeLLMa s nejlepšími světovými modely (Claude, GPT, Gemini) zatím přímo neměří — 70 miliard parametrů je menší než největší konkurence a investice Seznamu je sice významná v CZ kontextu, ale řádově nižší než u globálních hráčů. Hlavní výhoda Seznam Asistenta proto leží v českém kontextu a propojení s lokálním ekosystémem, ne v samotné kvalitě jazykového modelu.
+</Insight>
+
+## Kdy má Seznam.cz pro firmu smysl
+
+Pro většinu českých firem zůstává **Google primárním vyhledávacím kanálem** a globální AI asistenti a vyhledávací nástroje (ChatGPT, Perplexity, Claude) primárním AI kanálem. Seznam je důležitý sekundární kanál v několika konkrétních situacích.
+
+<Checklist title="Kdy Seznam dává smysl aktivně řešit" items={[
+  { title: "Starší cílovka", desc: "Sklik má silnou pozici u 55 až 64 let; Seznam.cz je u této skupiny stále zvyklý vstup do internetu." },
+  { title: "Lokální dotazy", desc: "Dotazy typu restaurace v Brně nebo autoservis Praha 9 — Mapy.cz a Firmy.cz zůstávají v Česku důležitou lokální vrstvou." },
+  { title: "Reality", desc: "Sreality.cz patří mezi nejsilnější české realitní portály a v řadě segmentů je velmi viditelný." },
+  { title: "Automotive, finance, cestování", desc: "Obory s vysokým podílem starší cílovky a lokální specifiky." },
+  { title: "E-shopy s českou recenzí", desc: "Heureka a Zboží.cz jako srovnávače, integrace recenzí zpět na produkt." },
+  { title: "Placená reklama s nižším CPC", desc: "Sklik o 20–40 % levnější než Google Ads; vhodné pro testování a dlouhodobou kampaň." },
+]} />
+
+## Kdy Seznam.cz není priorita
+
+<MistakeGrid>
+  <Mistake number="01" title="Mladá cílovka (18–25 let)">
+    Mladí uživatelé v Česku používají primárně Google, Instagram, TikTok a YouTube. Sklik a Seznam organic mívají u této skupiny menší dosah a investice se vrátí pomaleji než stejný rozpočet na Google nebo sociální sítě.
+  </Mistake>
+  <Mistake number="02" title="Digital-native B2B SaaS">
+    B2B SaaS produkty cílící na vývojáře, marketéry nebo manažery se rozhodují primárně přes Google, LinkedIn a komunitní zdroje (Reddit, Hacker News). Seznam mívá u této cílovky obvykle nižší význam.
+  </Mistake>
+  <Mistake number="03" title="Anglické weby cílící mimo CZ">
+    Pokud cílíte na zahraniční trh, Seznam pro vás nemá smysl — má dosah pouze v Česku. Investice patří do Google, Bing a globálních AI vyhledávačů.
+  </Mistake>
+  <Mistake number="04" title="Velmi malý rozpočet">
+    Pokud máte rozpočet jen na jeden kanál, prioritizujte Google a globální AI. Seznam se přidává až jako sekundární investice, ne místo primárního kanálu.
+  </Mistake>
+</MistakeGrid>
+
+## Jak optimalizovat web pro Seznam a Seznam Asistenta
+
+<Stepper
+  steps={[
+    {
+      label: "Stav v Seznamu",
+      title: "Ověřte, jak vás Seznam vidí",
+      text: "Registrujte web v Seznam Search Console (search.seznam.cz). Zkontrolujte indexaci, sitemap a robots.txt. Seznam má vlastního vyhledávacího robota (SeznamBot), takže má smysl zkontrolovat indexaci přímo v nástrojích Seznamu.",
+    },
+    {
+      label: "Seznam Asistent test",
+      title: "Vyzkoušejte typické dotazy a sledujte, kdo se zobrazuje",
+      text: "Otevřete asistent.seznam.cz nebo Seznam.cz a zkuste dotazy relevantní k vašemu oboru (například kavárna Praha 7, recenze produktu Y, jak vybrat Z). Sledujte, jaké zdroje Asistent uvádí a jestli mezi nimi figuruje váš web nebo konkurence.",
+    },
+    {
+      label: "Firmy.cz pro lokální firmu",
+      title: "Mějte aktuální profil v katalogu",
+      text: "Pro lokální firmu (kavárna, autoservis, advokát, lékař, řemeslník) je Firmy.cz pro řadu lokálních dotazů v Česku stále důležitý firemní katalog. Aktuální profil s otevíracími hodinami, fotkami, recenzemi a kontaktem zvyšuje šanci na zobrazení i v Seznam Asistent odpovědích."
+    },
+    {
+      label: "Heureka pro e-shop",
+      title: "Zboží + recenze + dostupnost",
+      text: "Pro e-shop je Heureka v české e-commerce stále důležitý zdroj recenzí a srovnání. Konzistentní feed produktů, aktivní reakce na recenze a integrace recenzí zpět na produktovou stránku přes strukturovaná data zvyšuje šanci být uvedený nejen v Heurece, ale i v Seznam Asistentovi a Google AI Overviews."
+    },
+    {
+      label: "Sklik vedle Google Ads",
+      title: "Pokud máte čistě českou cílovou skupinu, otestujte Sklik",
+      text: "Začněte testovacím rozpočtem odpovídajícím vašemu oboru a ceně za klik — u části menších českých kampaní to bývají stovky až nižší tisíce korun denně. Po 30 dnech sledujte cenu za získanou konverzi a srovnejte s paralelní Google Ads kampaní. Pokud má Sklik konkurenceschopnou cenu (často u starší cílovky nebo lokálních produktů), navyšte podíl. Jako orientační start se u části českých firem používá poměr 70:30 Google:Sklik."
+    },
+    {
+      label: "Strukturovaná data pro CZ ekosystém",
+      title: "Organization, LocalBusiness, Product, FAQPage",
+      text: "Seznam Asistent podle dostupné dokumentace využívá strukturovaná data podobně jako Google. Mějte aktuální Organization (logo, adresa, sociální profily), LocalBusiness u kamenných firem, Product u e-shopu a FAQPage na produktových nebo službových stránkách."
+    },
+  ]}
+/>
+
+<DoDont
+  doTitle="Co dělat pro Seznam ekosystém"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Registrace v Seznam Search Console a kontrola, jak vás vidí.",
+    "Pravidelný a aktuální profil ve Firmy.cz pro lokální firmu.",
+    "Aktivní práce s Heurekou pro e-shop (recenze, dostupnost, feed).",
+    "Sklik jako sekundární PPC kanál vedle Google Ads u čistě české cílovky.",
+    "Strukturovaná data, která fungují pro Google i Seznam (Organization, LocalBusiness, Product, FAQPage).",
+  ]}
+  dontItems={[
+    "Investovat do Seznamu více než do Googlu jen z patriotismu — tržně to neodpovídá.",
+    "Spoléhat na Seznam Asistenta jako na hlavní AI kanál — zatím je v beta a kvalita SeLLMy je menší než světová špička.",
+    "Optimalizovat web jinak pro Seznam a jinak pro Google — základ je stejný, hlavní rozdíly jsou v ekosystémových katalozích.",
+    "Ignorovat Seznam u starší cílovky nebo lokálních dotazů — tam pořád dělá rozdíl.",
+  ]}
+/>
+
+## Co je v roce 2026 nejisté
+
+- **Adopce Seznam Asistenta.** Beta od května 2026 je čerstvá — zatím není veřejně dokumentované, kolik uživatelů ho reálně používá místo klasického Seznam vyhledávání.
+- **Tržní podíl Seznam.cz** dál klesá vs. Google. Bez novějších veřejných dat nelze potvrdit, zda se podíl Seznamu stabilizuje, nebo bude dál klesat.
+- **Kvalita SeLLMy** v praxi — 70 miliard parametrů je menší než nejlepší světové modely. Pokud budou uživatelé odpovědi vnímat jako slabší než u zavedených globálních nástrojů, nemusí se k Asistentovi vracet.
+- **Konkurence Googlu** je řádově silnější — Google investuje do AI Overviews a Gemini desítky miliard USD globálně, Seznam stovky milionů Kč v CZ kontextu.
+
+<Insight tone="warning">
+Seznam Asistent je v polovině roku 2026 zajímavá novinka, ale není to garance, že se z něj stane významný citační kanál pro značky. Pro AI viditelnost v Česku doporučujeme primárně optimalizaci pro Google, ChatGPT a Perplexity; Seznam Asistenta sledujte a testujte, ale nestavte na něm strategii.
+</Insight>
+
+## Co si z článku odnést
+
+- **Seznam.cz drží v Česku zhruba 11 až 15 procent organického vyhledávání** vedle 79 až 82 procent Googlu; trend je dlouhodobě klesající.
+- **Seznam Asistent** běží na vlastním českém modelu **SeLLMa** (70 mld. parametrů, postavený na Llama 3.1, investice 100+ mil. Kč) a od **25. května 2026** je v beta pro všechny přihlášené uživatele zdarma.
+- **Hlavní výhoda Seznam Asistenta** je v českém kontextu a propojení s vlastním ekosystémem (Mapy.cz, Firmy.cz, Heureka, Sreality.cz), ne v samotné kvalitě jazykového modelu.
+- **Pro značku v Česku** je Seznam důležitý sekundární kanál — primárně u starší cílovky, lokálních dotazů a oborů jako reality, automotive nebo finance.
+- **Sklik vedle Google Ads** dává smysl pro čistě českou cílovku; orientační start 70:30 Google:Sklik.
+- **Pro AI viditelnost** primárně optimalizovat pro Google, ChatGPT a Perplexity; Seznam Asistenta sledovat a testovat.
+
+---
+
+**Chcete odhadnout, jak velký význam má pro vaši cílovou skupinu Seznam oproti Googlu a kde má investice do Seznam ekosystému (Firmy.cz, Heureka, Sklik) největší smysl?** [AI SEO audit za 9 990 Kč](/audit/) projde vaši analytiku, zhodnotí pozici v Seznam i Google organic i v AI vyhledávačích a navrhne, kam alokovat rozpočet a obsahovou práci. Pokud chcete pravidla pro CZ trh zvládnout sami, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje checklisty pro Seznam Search Console, Firmy.cz, Heureku i základ Sklik kampaně.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Upgates plně podporuje feedy do Heureka, Zboží.cz, Google Shopping i Sklik, takže s technickým napojením e-shopu na český ekosystém máme dlouhodobou praktickou zkušenost. Tržní podíly a popis Seznam Asistenta v tomto článku vycházejí z veřejně dostupných dat k červnu 2026; konkrétní čísla i adopce nového Asistenta se v čase mění.*
