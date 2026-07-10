@@ -1,0 +1,205 @@
+---
+title: "Jak AI cituje zdroje: srovnání platforem 2026"
+description: "Jak AI vybírá a cituje zdroje? Srovnání ChatGPT, Perplexity a Google AI Overviews a dopad na obsah, který chce být citovaný."
+answer: "Každá AI platforma vybírá zdroje jinak. ChatGPT preferuje autoritativní encyklopedický obsah a cituje méně často, Perplexity klade velký důraz na čerstvost a zdroje uvádí obvykle s odkazy, Google AI Overviews staví na indexu Vyhledávání Google a signálech autority. Podle veřejných analýz 2026 cituje ChatGPT i Perplexity současně jen malá část domén, takže optimalizace na jednu platformu nestačí."
+slug: "jak-ai-cituje-zdroje"
+category: "analysis"
+updated: "2026-06-11"
+keywords:
+  - "jak ai cituje zdroje"
+  - "jak ai vybira zdroje"
+  - "ai citace rozdily"
+  - "chatgpt perplexity citace"
+  - "ai citovani zdroju"
+variant: "rich"
+stats:
+  - value: "~11 %"
+    label: "domén, které v jedné z veřejných analýz 2026 citovaly ChatGPT i Perplexity současně — každá platforma má vlastní logiku"
+  - value: "čerstvost"
+    label: "u Perplexity patří k nejsilnějším signálům; nově aktualizovaný obsah bývá citovaný častěji (orientačně podle analýz 2026)"
+  - value: "obvykle"
+    label: "Perplexity uvádí číslované odkazy jako výchozí chování; ChatGPT zdroje uvádí hlavně při zapnutém vyhledávání"
+  - value: "klesá"
+    label: "závislost Google AI Overviews na top 10 organických výsledků; roste vliv strukturovaných dat a E-E-A-T"
+faq:
+  - q: "Citují všechny AI platformy zdroje stejně?"
+    a: "AI platformy zdroje citují rozdílně, protože každá upřednostňuje jiné signály. ChatGPT preferuje autoritativní encyklopedický obsah a cituje méně často, Perplexity klade velký důraz na čerstvost a zdroje uvádí obvykle s číslovanými odkazy, Google AI Overviews staví na indexu Vyhledávání Google a signálech autority včetně E-E-A-T. Podle veřejných analýz 2026 cituje ChatGPT i Perplexity současně jen malá část domén."
+  - q: "Podle čeho vybírá zdroje ChatGPT?"
+    a: "ChatGPT podle dostupných analýz preferuje autoritativní, faktický a encyklopedicky laděný obsah. Cituje méně viditelně: z vybraných zdrojů extrahuje hlouběji a při skládání odpovědi obsah silně komprimuje. Zdroje uvádí hlavně tehdy, když je zapnuté vyhledávání na webu, a i tak méně konzistentně než Perplexity. Pro citaci pomáhá autorita a jasná struktura víc než čerstvost. Pokud je téma dohledatelné i v autoritativních referenčních zdrojích, může to zvýšit důvěryhodnost, ale není to podmínka citace."
+  - q: "Proč je pro Perplexity tak důležitá čerstvost obsahu?"
+    a: "Perplexity klade na čerstvost větší důraz než ostatní platformy. Podle dostupných analýz 2026 má obsah aktualizovaný za posledních 30 dní zhruba trojnásobnou šanci na citaci a čerstvá stránka běžně poráží starší stránku na stejné téma. Pomáhá i viditelný rok (například „2026“) v titulku. Perplexity navíc uvádí zdroje obvykle s číslovanými odkazy a ve veřejných analýzách patří k platformám s nejvyšším počtem odkazovaných zdrojů."
+  - q: "Jak vybírá zdroje Google AI Overviews?"
+    a: "Google AI Overviews staví na standardním indexu Vyhledávání Google obohaceném o signály autority. Podle dostupných analýz ale klesá jejich závislost na první desítce organických výsledků — ve veřejných studiích se uvádí pokles zhruba ze 76 % v roce 2025 na přibližně 38 % (Ahrefs) nebo 17 % (BrightEdge) v roce 2026; čísla se liší metodikou, směr je stejný. Roste vliv strukturovaných dat, E-E-A-T a obsahu, který pokrývá téma souvisle. Pozice v klasickém vyhledávání proto už není zárukou citace."
+  - q: "Znamená to, že mám optimalizovat pro každou platformu zvlášť?"
+    a: "Z velké části ano. Existuje univerzální základ, který pomáhá všude (kvalitní faktický obsah, strukturovaná data, jasná struktura, autorita), ale nad ním se platformy liší. Pro ChatGPT pomáhá encyklopedičnost a autorita, pro Perplexity čerstvost a přirozená dohledatelnost tématu v komunitních zdrojích, pro Google AI Overviews klasické SEO plus strukturovaná data a E-E-A-T. Protože se citované domény mezi platformami málo překrývají, vyplatí se testovat každou zvlášť."
+  - q: "Jak zjistím, jak mě která platforma cituje?"
+    a: "Ručním testem: sestavte 15 až 20 dotazů, jaké kladou reální zákazníci, spusťte je v ChatGPT, Perplexity a Google AI Overviews (pro českou cílovku i v Seznam Asistentovi) a u každého zaznamenejte, jestli se objevíte, na jaké pozici, kdo je místo vás a jaké zdroje daná platforma cituje. Protože se odpovědi mění, dotazy opakujte několikrát. Postup podrobně rozebíráme v článku o testu AI viditelnosti."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Každá velká AI platforma vybírá a cituje zdroje jinak. ChatGPT preferuje autoritativní encyklopedický obsah a cituje méně často, Perplexity klade velký důraz na čerstvost a zdroje uvádí obvykle s odkazy, Google AI Overviews staví na indexu Vyhledávání Google a signálech autority.** Podle veřejných analýz 2026 se citované domény mezi ChatGPT a Perplexity překrývají jen z malé části, takže nestačí optimalizace jen pro jednu platformu. Tento článek srovnává, podle čeho jednotlivé platformy zdroje vybírají, a co z toho plyne pro obsah, který chce být citovaný.
+
+## Proč na rozdílech záleží
+
+Kdyby všechny AI systémy citovaly stejně, stačilo by optimalizovat jednou. Realita je ale opačná. Jedna z často citovaných veřejných analýz z roku 2026 (Profound nad velkým vzorkem citací) uvádí, že **ChatGPT i Perplexity současně cituje jen malá část domén** — jde o marketingový výzkum nad vlastním vzorkem a metodikou, konkrétní podíl se v analýzách liší. Závěr je ale konzistentní: co funguje na jedné platformě, nemusí fungovat na druhé.
+
+Pro tvůrce obsahu to znamená, že **nestačí „být dobrý"** obecně. Vyplatí se rozumět tomu, co která platforma při výběru zdrojů upřednostňuje.
+
+<Insight tone="key">
+Platformy se shodnou na základu — kvalitní, faktický, dobře strukturovaný obsah pomáhá všude. Nad tímto základem se ale liší v tom, jaké signály při výběru zdrojů zřejmě váží nejvíc: autorita, čerstvost, nebo klasické SEO signály.
+</Insight>
+
+## Srovnání: podle čeho platformy vybírají zdroje
+
+<CompareTable
+  caption="Jak jednotlivé AI platformy vybírají a citují zdroje (podle dostupných analýz 2026)"
+  columns={["Platforma", "Hlavní signál a chování"]}
+  rows={[
+    { icon: "💬", label: "ChatGPT", left: "Autorita, encyklopedičnost", right: "Preferuje autoritativní faktický obsah; cituje méně často a hlavně při zapnutém vyhledávání; silně komprimuje" },
+    { icon: "🔍", label: "Perplexity", left: "Čerstvost", right: "Ve většině rozhraní uvádí zdroje obvykle s číslovanými odkazy; klade velký důraz na obsah z posledních týdnů; často uvádí více zdrojů než jiné platformy" },
+    { icon: "🌐", label: "Google AI Overviews", left: "Index Vyhledávání Google + autorita + E-E-A-T", right: "Staví na indexu Vyhledávání Google; klesá závislost na top 10 organických výsledků; roste vliv strukturovaných dat a E-E-A-T" },
+    { icon: "🎓", label: "Claude", left: "Autorita a vyváženost", right: "Veřejných srovnávacích dat je méně; obvykle staví na opatrně formulovaných odpovědích a autoritativních zdrojích" },
+    { icon: "✨", label: "Gemini", left: "Ekosystém Googlu", right: "Veřejných dat je méně; pravděpodobně se projevují signály z širšího ekosystému Googlu a práce s entitami" },
+  ]}
+/>
+
+## ChatGPT: autorita a encyklopedičnost
+
+Ve veřejných analýzách se u ChatGPT opakovaně objevují **autoritativní a encyklopedicky laděné zdroje**. Klíčové charakteristiky:
+
+- **Cituje méně viditelně** než Perplexity. Z vybraných zdrojů extrahuje hlouběji a při skládání odpovědi obsah silně komprimuje.
+- **Zdroje uvádí hlavně při zapnutém vyhledávání** na webu, a i tak méně konzistentně.
+- **Autorita váží víc než čerstvost.** Pro citaci pomáhá jasná struktura, definice a fakticky ověřitelný obsah.
+
+**Co z toho plyne:** pro ChatGPT pomáhá encyklopedický, dobře strukturovaný obsah. Pokud je téma dohledatelné i v autoritativních referenčních zdrojích, může to zvýšit důvěryhodnost, ale nejde o podmínku citace. Konkrétní taktiky rozebíráme v článku o [SEO pro ChatGPT](/blog/chatgpt-seo/).
+
+## Perplexity: silný důraz na čerstvost
+
+Perplexity funguje jinak. Ve většině veřejně dostupných rozhraní a testů **uvádí zdroje obvykle s číslovanými odkazy** a ve veřejných analýzách patří k platformám s nejvyšším počtem odkazovaných zdrojů.
+
+Nejsilnějším signálem je **čerstvost obsahu:**
+
+- Podle veřejných marketingových analýz 2026 patří čerstvost u Perplexity k nejsilnějším signálům a nově aktualizovaný obsah bývá citovaný častěji (v jedné z analýz nad vlastním vzorkem se uvádí zhruba trojnásobná šance).
+- Ve veřejných analýzách se u Perplexity opakovaně ukazuje, že čerstvá stránka může mít proti starší výhodu i na stejném tématu.
+- U témat citlivých na aktuálnost může pomoci i **viditelný rok v titulku** (například „2026"), pokud odpovídá skutečně aktualizovanému obsahu.
+
+Podle veřejných rozborů vznikají odpovědi Perplexity ve více krocích nad dohledanými zdroji, kde se zjevně silně zohledňuje relevance a čerstvost; přesný interní postup ale veřejně neznáme.
+
+**Co z toho plyne:** pro Perplexity je klíčové obsah **aktualizovat a datovat**. Pomoci může i přirozená dohledatelnost tématu v relevantních diskusích a komunitních zdrojích, ne uměle vytvářené zmínky. Detaily v článku o [SEO pro Perplexity](/blog/perplexity-seo/).
+
+## Google AI Overviews: index Googlu, ale ne jen pozice
+
+Google AI Overviews staví na **standardním indexu Vyhledávání Google** obohaceném o signály autority. Zajímavý je ale trend: podle dostupných analýz **klesá jejich závislost na první desítce organických výsledků.**
+
+- Ve veřejných studiích z roku 2026 se uvádí nižší podíl překryvu s top 10 organických výsledků než dříve, ale konkrétní čísla se výrazně liší podle metodiky a vzorku (například Ahrefs a BrightEdge uvádějí odlišné hodnoty, řádově z desítek procent v roce 2025 na nižší jednotky až desítky procent v roce 2026). Směr je tedy orientační, ne přímo srovnatelná časová řada.
+- Ve veřejných rozborech se častěji objevují weby se silnými signály důvěryhodnosti (E-E-A-T), jasnou strukturou a dobře popsanými entitami; pomoci mohou i strukturovaná data a obsah, který pokrývá téma souvisle.
+
+**Co z toho plyne:** pro Google AI Overviews platí klasické SEO jako základ, ale pozice v žebříčku už není zárukou citace. Vyšší šanci mívá obsah s jasnou strukturou, strukturovanými daty a důvěryhodnostními signály. Podrobněji v článku o [Google AI Mode a AI Overviews](/blog/google-ai-mode/).
+
+<Insight tone="warning">
+Konkrétní čísla v tomto článku (podíly domén, násobky citací, procenta) pocházejí z veřejných marketingových analýz 2026, ne z oficiální dokumentace platforem. Berte je jako orientační — směr je konzistentní, přesná čísla se mezi studiemi liší a v čase se mění.
+</Insight>
+
+## Co funguje napříč platformami
+
+I když se platformy liší, existuje **univerzální základ**, který pomáhá všude:
+
+<Checklist title="Co pomáhá citovatelnosti napříč AI platformami" items={[
+  { title: "Kvalitní faktický obsah", desc: "Unikátní, ověřitelný, s vlastním úhlem pohledu — ne převyprávěné cizí informace." },
+  { title: "Jasná struktura", desc: "Nadpisy, krátké samostatně čitelné úseky, definice a odpovědi na konkrétní otázky." },
+  { title: "Strukturovaná data", desc: "Pomáhají AI extrahovat fakta napříč platformami (Article, FAQPage, Product, Organization)." },
+  { title: "Autorita značky a autora", desc: "E-E-A-T signály, jmenovaný autor, zmínky v důvěryhodných zdrojích." },
+  { title: "Aktuálnost", desc: "Pravidelná aktualizace pomáhá zvlášť u Perplexity, ale neškodí nikde." },
+]} />
+
+## Platformově specifická strategie
+
+<Stepper
+  steps={[
+    {
+      label: "ChatGPT",
+      title: "Encyklopedičnost a autorita",
+      text: "Fakticky ověřitelný, dobře strukturovaný obsah s jasnými definicemi. Pomáhá dohledatelnost tématu nebo značky v autoritativních referenčních zdrojích.",
+    },
+    {
+      label: "Perplexity",
+      title: "Čerstvost a přirozená dohledatelnost",
+      text: "Obsah pravidelně aktualizujte a datujte (rok v titulku). Pomáhá i přirozená přítomnost tématu v relevantních diskusích, ne uměle vytvářené zmínky.",
+    },
+    {
+      label: "Google AI Overviews",
+      title: "Klasické SEO plus strukturovaná data",
+      text: "Kvalitní SEO základ, strukturovaná data, souvislé pokrytí tématu a E-E-A-T. Nespoléhejte jen na pozici v žebříčku — ta už není zárukou citace.",
+    },
+    {
+      label: "Claude a Gemini",
+      title: "Vyváženost a ekosystém Googlu",
+      text: "U Claude a Gemini je veřejných srovnávacích dat méně, berte to jen orientačně. Pro Claude bývá vhodný vyvážený a kvalitní obsah, u Gemini se pravděpodobně projevují signály z širšího ekosystému Googlu.",
+    },
+    {
+      label: "Test",
+      title: "Ověřte, jak vás která platforma cituje",
+      text: "Protože se citované domény mezi platformami málo překrývají, testujte každou zvlášť. Praktický postup rozebíráme v samostatném článku o testu AI viditelnosti.",
+    },
+  ]}
+/>
+
+## Časté omyly
+
+<MistakeGrid>
+  <Mistake number="01" title="Optimalizovat jen na jednu platformu">
+    Citované domény se mezi platformami málo překrývají. Kdo cílí jen na ChatGPT, může být pro Perplexity málo viditelný a naopak. Vyplatí se univerzální základ plus platformová specifika.
+  </Mistake>
+  <Mistake number="02" title="Ignorovat čerstvost">
+    Zvlášť u Perplexity čerstvost výrazně pomáhá. Starý, neaktualizovaný obsah prohrává s čerstvým na stejné téma. Aktualizace a datování mají smysl.
+  </Mistake>
+  <Mistake number="03" title="Spoléhat na pozici v Googlu">
+    U Google AI Overviews klesá závislost na první desítce výsledků. Být první ještě neznamená být citovaný v AI přehledu — roste vliv strukturovaných dat a E-E-A-T.
+  </Mistake>
+  <Mistake number="04" title="Brát marketingová čísla jako jistotu">
+    Procenta a násobky z analýz jsou orientační a v čase se mění. Používejte je pro směr, ne jako přesné cíle — a ověřujte na vlastních testech.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Stavět na univerzálním základu: kvalitní obsah, struktura, strukturovaná data, autorita.",
+    "Doplnit platformová specifika (čerstvost pro Perplexity, encyklopedičnost pro ChatGPT).",
+    "Pravidelně aktualizovat a datovat obsah.",
+    "Testovat citace v každé platformě zvlášť.",
+    "Brát konkrétní čísla z analýz jako orientační směr.",
+  ]}
+  dontItems={[
+    "Předpokládat, že co funguje na ChatGPT, funguje i na Perplexity.",
+    "Optimalizovat jen na jednu platformu.",
+    "Spoléhat na pozici v Googlu jako záruku citace v AI Overviews.",
+    "Nechat obsah roky bez aktualizace.",
+    "Považovat marketingová procenta za přesná a neměnná fakta.",
+  ]}
+/>
+
+Jak zjistit, jak vás která platforma cituje, ukazujeme krok za krokem v článku [Jak zjistit AI viditelnost](/blog/test-viditelnosti-v-ai/).
+
+## Co si z článku odnést
+
+- **Každá AI platforma cituje jinak** — citované domény se mezi ChatGPT a Perplexity překrývají jen z malé části.
+- **ChatGPT** preferuje autoritu a encyklopedičnost, cituje méně často.
+- **Perplexity** klade velký důraz na čerstvost, uvádí zdroje obvykle s odkazy a často nejvíc.
+- **Google AI Overviews** staví na indexu Vyhledávání Google, ale závislost na top 10 klesá; roste vliv strukturovaných dat a E-E-A-T.
+- **Univerzální základ** (kvalitní obsah, struktura, strukturovaná data, autorita) pomáhá všude; nad ním jsou platformová specifika.
+- **Testujte každou platformu zvlášť** a berte marketingová čísla jako orientační.
+
+---
+
+**Chcete vědět, jak vás konkrétně cituje ChatGPT, Perplexity a Google AI Overviews — a kde máte největší mezery?** [AI SEO audit za 9 990 Kč](/audit/) projde vaši viditelnost napříč platformami, porovná citační logiku každé z nich s vaším obsahem a navrhne konkrétní plán priorit. Pokud chcete citovatelnost napříč platformami řešit sami, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje checklist univerzálního základu i platformových specifik.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. AI audity děláme s reálným testem napříč platformami. Konkrétní čísla o citační logice v tomto článku pocházejí z veřejných marketingových analýz 2026, ne z oficiální dokumentace platforem; berte je jako orientační. Rozdíly v chování platforem jsou ale konzistentní napříč zdroji.*
