@@ -1,0 +1,223 @@
+---
+title: "Autorský profil pro AI: jak vybudovat author entity"
+description: "Zjistěte, jak postavit autorský profil pro AI: podpis autora, autorská stránka, strukturovaná data typu Person a ověřené profily sameAs."
+answer: "Autorská entita je konkrétní osoba, kterou AI a vyhledávače dokážou jednoznačně spojit s obsahem díky podpisu autora, autorské stránce, strukturovaným datům typu Person a ověřeným profilům sameAs. Obsah se jmenovaným expertem bývá podle dostupných analýz citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce“."
+slug: "autorsky-profil-pro-ai"
+category: "tutorial"
+updated: "2026-06-11"
+keywords:
+  - "autorsky profil pro ai"
+  - "author entity"
+  - "autor jako signal duvery"
+  - "person schema autor"
+  - "autorska entita"
+variant: "rich"
+stats:
+  - value: "2+"
+    label: "ověřené externí profily v sameAs — v některých analýzách hranice, od které bývá vidět efekt (ne pevné pravidlo)"
+  - value: "několik"
+    label: "ověřených a veřejně dostupných profilů v sameAs — důležitější než počet je jejich jednoznačnost a kvalita"
+  - value: "série"
+    label: "publikovaných článků na téma pod jedním jménem, které pomáhají budovat opakovaně doloženou odbornost autora (ne jeden článek)"
+  - value: "3–6 měs."
+    label: "orientační horizont podle marketingových analýz, než se autorský profil začne projevovat na citacích (ne garance)"
+howto:
+  name: "Jak vybudovat autorskou entitu pro AI viditelnost"
+  steps:
+    - name: "Zrušte anonymní autory"
+      text: "Nahraďte každé generické označení autora „Redakce“, „Admin“ nebo „Team“ jménem konkrétní osoby. Anonymní autorství nepřidává jasný autorský signál. Jmenovaný expert s dohledatelnou identitou je pro AI čitelná entita."
+    - name: "Sesbírejte základní autorská data"
+      text: "Pro každý podpis autora potřebujete: celé jméno, roli nebo pozici, portrétní foto odpovídající skutečné identitě autora (stock fotografie identitu samy nepotvrzují), jednu až dvě věty bio a alespoň jeden kanonický profil (například LinkedIn). Jméno musí být všude stejné."
+    - name: "Vytvořte autorskou stránku"
+      text: "Založte stránku /autori/jmeno/ s bio, portrétní fotkou, kvalifikací (tituly, certifikace, licence), odkazy na externí profily a seznamem článků autora. Tuto stránku propojte z každého článku daného autora."
+    - name: "Doplňte Person strukturovaná data"
+      text: "Přidejte strukturovaná data typu Person (podle schema.org) vnořená do Article. Klíčová pole: name (přesně jako podpis autora), url na autorskou stránku, image, jobTitle a sameAs se dvěma a více ověřenými profily. Ověřte syntaxi ve validátoru strukturovaných dat."
+    - name: "Rozšiřte sameAs a buďte konzistentní"
+      text: "Doplňte sameAs o další ověřené profily (Wikidata, ORCID u akademiků, odborné registry). Držte stejné jméno, stejnou fotku a konzistentní bio napříč webem i externími profily. Nekonzistence oslabuje entitu."
+faq:
+  - q: "Co je autorská entita a proč na ní záleží?"
+    a: "Autorská entita je konkrétní osoba, kterou vyhledávače a AI dokážou jednoznačně spojit s obsahem — ne jen jméno v textu. Skládá se z podpisu autora u článku, autorské stránky, strukturovaných dat typu Person a propojení sameAs na ověřené externí profily. Podle dostupných analýz bývá obsah se jmenovaným expertem citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce“."
+  - q: "Jaká strukturovaná data potřebuje autor?"
+    a: "Základ je typ Person podle schema.org, vnořený do Article nebo BlogPosting jako author. Klíčová pole: name (přesně jako viditelný podpis autora), url na autorskou stránku, image (portrétní foto), jobTitle a sameAs jako pole odkazů na ověřené profily. Praktické minimum podle dostupných analýz bývají dva ověřené externí profily; funkční seznamy v polovině 2026 mívají 5 až 12 URL. Odkazy mají být funkční a veřejně dostupné."
+  - q: "Co je sameAs a které profily do něj dát?"
+    a: "sameAs je vlastnost strukturovaných dat, která propojuje autora s jeho ověřenými profily na jiných webech a pomáhá jednoznačně určit jeho identitu. Vhodné jsou LinkedIn (minimum), Wikidata, ORCID u akademiků, odborné registry (v Česku například ČAK u advokátů, ČLK u lékařů) a oficiální osobní web autora na jiné doméně. Vyhněte se anonymním účtům bez dohledatelné identity a mrtvým odkazům."
+  - q: "Musí jméno v datech přesně sedět s podpisem autora?"
+    a: "Ano, mělo by. Jméno ve strukturovaných datech by mělo odpovídat viditelnému podpisu autora. Rozdíl typu „Jan Novák“ ve strukturovaných datech a „Jan M. Novák“ v textu může zbytečně zhoršit jednoznačnost identity. Používejte pokud možno stejnou podobu jména na webu, v datech i na externích profilech — jednotná identita je celý smysl author entity."
+  - q: "Jak je to u citlivých témat (zdraví, finance, právo)?"
+    a: "U citlivých témat (v angličtině YMYL, tedy Your Money Your Life) je laťka důvěry výrazně vyšší a ověřitelná kvalifikace autora tu často patří mezi nejsilnější signály důvěryhodnosti. Lékař s dohledatelnou registrací v ČLK, advokát s profilem v ČAK nebo finanční poradce registrovaný u ČNB poskytují u těchto témat silnější ověřitelné signály než autor bez dohledatelných dokladů. Bez nich bývá šance na citace u citlivých témat nižší; roli hrají i kvalitní zdroje a odborná editace."
+  - q: "Za jak dlouho se autorský profil projeví?"
+    a: "Podle dostupných marketingových analýz autoři s Person strukturovanými daty, ověřenými sameAs (aspoň dvě platformy) a pěti a více publikovanými články na dané téma začínají vykazovat zlepšení citací zhruba za tři až šest měsíců. Nejde o garanci ani o okamžitý efekt — bez publikační kontinuity se zlepšení nemusí projevit. Autorská entita je dlouhodobá investice, která se buduje sérií obsahu pod jedním jménem."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Autorská entita je konkrétní osoba, kterou AI a vyhledávače dokážou jednoznačně spojit s obsahem díky podpisu autora, autorské stránce, strukturovaným datům typu Person a ověřeným profilům sameAs.** Pomáhá jim k tomu viditelný podpis autora, autorská stránka a ověřitelné odkazy na profily mimo web. Podle dostupných analýz bývá obsah se jmenovaným expertem citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce". Tento návod ukazuje, jak autorskou entitu vybudovat — od podpisu autora přes autorskou stránku po strukturovaná data typu Person a propojení sameAs.
+
+Pojmem „citace" v tomto článku myslíme zařazení stránky mezi zdroje, které AI odpověď odkazuje nebo z nich vychází.
+
+## Co je autorská entita
+
+Autorská entita (v angličtině author entity) je **konkrétní osoba, kterou vyhledávače a AI dokážou jednoznačně spojit s obsahem** — ne jen jméno v textu. Skládá se z pěti navazujících vrstev:
+
+<Checklist title="Pět vrstev autorské entity" items={[
+  { title: "Podpis autora u článku", desc: "Jméno konkrétní osoby na článku, ne „Redakce“ nebo „Admin“." },
+  { title: "Autorská stránka", desc: "Vlastní stránka autora s bio, portrétní fotkou, kvalifikací a seznamem článků." },
+  { title: "Person strukturovaná data", desc: "Strojově čitelný popis autora podle schema.org (name, url, image, jobTitle, sameAs)." },
+  { title: "sameAs propojení", desc: "Odkazy na ověřené externí profily (LinkedIn, Wikidata, ORCID, odborné registry)." },
+  { title: "Konzistence", desc: "Stejné jméno, foto a bio napříč webem i externími profily." },
+]} />
+
+<Insight tone="key">
+Klíč není „být autorita“ v abstraktním smyslu. Klíč je být pro AI a vyhledávače jednoznačně identifikovatelná osoba — entita, kterou lze propojit s ověřenými profily a publikační historií.
+</Insight>
+
+## Proč to funguje
+
+Google i některé AI systémy se snaží pracovat se signály důvěryhodnosti obsahu. U Google se v této souvislosti často používá rámec **E-E-A-T** (zkušenost, odbornost, autoritativnost, důvěryhodnost) a autor může být jedním z nositelů těchto signálů. Širší koncept vysvětlujeme v článku [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/).
+
+Podle dostupných analýz 2026:
+
+- **Obsah se jmenovaným expertem** bývá citovaný častěji než obsah s generickým podpisem autora. Uváděný nárůst citací se v některých analýzách pohybuje řádově v desítkách procent (konkrétní čísla se liší podle studie a oboru).
+- V některých marketingových analýzách se úplnější strukturovaná data (Person a Article) častěji objevují u citovaných stránek. Jde ale o korelaci, ne o potvrzenou přímou příčinu.
+- Některé marketingové analýzy naznačují, že u citací v AI odpovědích nemusí rozhodovat jen klasická pozice ve výsledcích, ale i síla důvěryhodnostních signálů včetně autora. Nejde však o univerzální pravidlo.
+
+Berte konkrétní čísla jako orientační — jsou z marketingových analýz, ne z oficiální dokumentace. Směr je ale konzistentní: **jmenovaný, ověřitelný autor pomáhá.**
+
+## Person strukturovaná data — základ
+
+Jádrem technické vrstvy je typ **Person** podle schema.org, vnořený do `Article` nebo `BlogPosting` jako `author`. Klíčová pole:
+
+<Checklist title="Klíčová pole Person strukturovaných dat" items={[
+  { title: "name", desc: "Celé jméno autora — přesně jako viditelný podpis autora." },
+  { title: "url", desc: "Odkaz na autorskou stránku na vašem webu (například /autori/jmeno/)." },
+  { title: "image", desc: "URL portrétní fotky odpovídající skutečné identitě autora (stock fotografie identitu samy nepotvrzují)." },
+  { title: "jobTitle", desc: "Role nebo pozice autora (například „SEO konzultant“, „lékař“, „daňový poradce“)." },
+  { title: "sameAs", desc: "Pole odkazů na ověřené externí profily. Sem patří několik ověřených a veřejně dostupných profilů; důležitější než počet je jejich jednoznačnost a kvalita." },
+]} />
+
+**Pravidla pro sameAs:**
+
+- **sameAs má obsahovat několik ověřených a veřejně dostupných profilů** — důležitější než počet je jejich jednoznačnost a kvalita. Podle dostupných analýz se rozdíl u části sledovaných webů častěji ukazoval u autorů s aspoň dvěma ověřenými profily.
+- **Vhodné profily:** LinkedIn (u B2B autorů v Česku často užitečný jako jeden z ověřitelných profilů), Wikidata, ORCID u akademiků, odborné registry, oficiální osobní web autora na jiné doméně, univerzitní stránka.
+- **Nevhodné:** anonymní účty bez dohledatelné identity, mrtvé odkazy, profily s jiným jménem.
+
+## Autorská stránka
+
+Autorská stránka je místo, kde se autorská entita „usadí". Bez ní zůstává podpis autora prázdným jménem.
+
+<Stepper
+  steps={[
+    {
+      label: "Základní identita",
+      title: "Celé jméno, role a portrétní foto",
+      text: "Nahoře stránky celé jméno autora, jeho role nebo pozice a reálná portrétní fotka. Stock foto nebo generovaný portrét samy o sobě nepomáhají ověřitelnosti a u expertního obsahu mohou vyvolávat pochybnosti, pokud nejde o skutečnou identitu autora.",
+    },
+    {
+      label: "Bio a kvalifikace",
+      title: "Konkrétní zkušenost a doklady",
+      text: "Bio s konkrétní zkušeností (roky praxe, obor, čím se autor zabývá). U odborných témat doplňte kvalifikaci: tituly, certifikace, licence. U citlivých témat je ověřitelná kvalifikace klíčová.",
+    },
+    {
+      label: "Externí profily",
+      title: "Odkazy na ověřené profily (sameAs)",
+      text: "Viditelné odkazy na LinkedIn, publikace, odborné registry. Tytéž odkazy pak patří do pole sameAs ve strukturovaných datech. Konzistence mezi viditelnými odkazy a strukturovanými daty posiluje entitu.",
+    },
+    {
+      label: "Seznam článků",
+      title: "Publikační historie autora",
+      text: "Seznam článků, které autor napsal, s interním prolinkováním. Buduje tematickou autoritu, tedy opakovaně doloženou odbornost autora v jednom okruhu témat, a ukazuje AI i čtenářům, že autor o tématu píše soustavně.",
+    },
+    {
+      label: "Strukturovaná data",
+      title: "Person data přímo na autorské stránce",
+      text: "Autorská stránka by měla mít vlastní Person strukturovaná data. Ověřte syntaxi a vazby ve validátoru strukturovaných dat schema.org; v Google Rich Results Test si pak zkontrolujte, že značky neobsahují chyby tam, kde je Google zpracovává.",
+    },
+  ]}
+/>
+
+## Citlivá témata: vyšší laťka
+
+U **citlivých témat** — v angličtině YMYL (Your Money Your Life), tedy zdraví, finance, právo a bezpečnost — je laťka důvěryhodnosti výrazně vyšší. Ověřitelná kvalifikace autora tu často patří mezi **nejsilnější signály důvěryhodnosti** — vedle kvalitních zdrojů, odborné editace a instituční důvěryhodnosti.
+
+<CompareTable
+  caption="Ověřitelná kvalifikace u citlivých témat v českém prostředí"
+  columns={["Obor", "Ověřitelný doklad do sameAs"]}
+  rows={[
+    { icon: "🩺", label: "Zdraví", left: "Lékař, zdravotník", right: "Registrace v České lékařské komoře (ČLK), odborná společnost" },
+    { icon: "⚖️", label: "Právo", left: "Advokát, právník", right: "Profil v České advokátní komoře (ČAK)" },
+    { icon: "💰", label: "Finance", left: "Finanční poradce", right: "Registrace v seznamu ČNB, odborné certifikace" },
+    { icon: "🎓", label: "Akademie", left: "Vědec, výzkumník", right: "ORCID, univerzitní profil, RIV" },
+    { icon: "🔧", label: "Odborná řemesla", left: "Autorizovaný odborník", right: "Profesní komora, autorizace ČKAIT a podobně" },
+  ]}
+/>
+
+<Insight tone="warning">
+U citlivých témat bez ověřitelné kvalifikace autora bývá šance na citace v AI odpovědích nižší. Lékařský obsah bez dohledatelného lékaře, finanční rada bez registrovaného poradce nebo právní výklad bez advokáta má u AI slabší signál důvěry — a to i při jinak kvalitním obsahu.
+</Insight>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Anonymní autor">
+    „Redakce“, „Admin“ nebo „Team“ jako autor nepomáhá jednoznačně přiřadit obsah konkrétní osobě. Anonymní autorství je promarněná příležitost — jmenovaný expert je pro AI čitelná a ověřitelná entita.
+  </Mistake>
+  <Mistake number="02" title="Falešní autoři vydávaní za reálné osoby">
+    Falešný autor vydávaný za reálnou osobu je důvěryhodnostní problém. Stock fotka nebo generovaný portrét samy o sobě nepomáhají ověřitelnosti; autorská entita musí odpovídat skutečné osobě.
+  </Mistake>
+  <Mistake number="03" title="Nesoulad jména">
+    Jméno ve strukturovaných datech by se mělo shodovat s viditelným podpisem autora. Rozdíl typu „Jan Novák“ versus „Jan M. Novák“ může zbytečně zhoršit jednoznačnost identity.
+  </Mistake>
+  <Mistake number="04" title="Prázdná autorská stránka">
+    Autorská stránka bez bio, kvalifikace a odkazů na externí profily nepřidává důvěru. Samotná existence stránky nestačí — musí mít obsah, který autora jako entitu doloží.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Podepisovat články konkrétní osobou s dohledatelnou identitou.",
+    "Mít autorskou stránku s bio, portrétní fotkou, kvalifikací a seznamem článků.",
+    "Přidat Person strukturovaná data se dvěma a více ověřenými profily v sameAs.",
+    "Držet stejné jméno, fotku a bio napříč webem i externími profily.",
+    "U citlivých témat doplnit ověřitelnou kvalifikaci (ČLK, ČAK, ČNB, ORCID).",
+  ]}
+  dontItems={[
+    "Podepisovat obsah jako „Redakce“, „Admin“ nebo „Team“.",
+    "Vydávat vymyšlené autory za reálné osoby.",
+    "Nechat nesoulad mezi jménem v podpisu autora a ve strukturovaných datech.",
+    "Dávat do sameAs anonymní účty nebo mrtvé odkazy.",
+    "Čekat okamžitý efekt — u části webů se změny projeví až po delší době, často v řádu měsíců.",
+  ]}
+/>
+
+## Časový horizont a realistická očekávání
+
+Autorská entita **není okamžitý přepínač**. Podle dostupných marketingových analýz se u autorů s Person strukturovanými daty, ověřenými sameAs (aspoň dvě platformy) a **pěti a více publikovanými články** na dané téma rozdíl u části sledovaných webů častěji ukazoval zhruba po **třech až šesti měsících**. Nejde o garanci — bez publikační kontinuity se zlepšení nemusí projevit.
+
+Je to **dlouhodobá investice**, která se buduje:
+
+1. **Sérií obsahu** pod jedním jménem (ne jeden článek).
+2. **Konzistentní identitou** napříč weby.
+3. **Rostoucí publikační historií** na dané téma (tematická autorita).
+
+## Co si z článku odnést
+
+- **Autorská entita** je konkrétní dohledatelná osoba, ne jen jméno v textu — AI i Google stále více pracují s entitami.
+- **Pět vrstev:** podpis autora, autorská stránka, Person strukturovaná data, sameAs propojení, konzistence.
+- **Strukturovaná data typu Person** potřebují name (přesně jako podpis autora), url, image, jobTitle a sameAs s **několika ověřenými profily**.
+- **U citlivých témat** (zdraví, finance, právo) je ověřitelná kvalifikace autora nosná — v Česku ČLK, ČAK, ČNB, ORCID.
+- **Nejčastější chyby:** anonymní autor, falešní autoři, nesoulad jména, prázdná autorská stránka.
+- **Horizont 3 až 6 měsíců** a série obsahu pod jedním jménem — ne okamžitý efekt.
+
+---
+
+**Pokud si chcete autorské stránky a strukturovaná data připravit interně**, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje wireframe šablonu autorské stránky, vzor Person strukturovaných dat se sameAs i checklist pro konzistenci identity napříč profily. Pokud chcete posoudit stav autorské entity na vašem webu profesionálně, [AI SEO audit za 9 990 Kč](/audit/) projde podpisy autorů, autorské stránky, strukturovaná data a sameAs a navrhne, kde má úprava největší dopad na citovatelnost.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Autorské stránky i Person strukturovaná data lze na Upgates i jiných CMS řešit přes šablony. Konkrétní čísla o dopadu autorské entity v tomto článku pocházejí z veřejných marketingových analýz 2026, ne z oficiální dokumentace vyhledávačů; berte je jako orientační. Princip jmenovaného ověřitelného autora je ale konzistentní napříč zdroji.*
