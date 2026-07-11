@@ -1,0 +1,197 @@
+---
+title: "Query fan-out: jak Google AI Mode čte obsah"
+description: "Query fan-out v Google AI Mode může podle veřejných popisů rozložit dotaz na víc podotázek. Vysvětlujeme, jak funguje a co mění pro citovaný obsah."
+answer: "Query fan-out je podle Googlu a dostupných analýz způsob, kdy Google AI Mode může jeden dotaz rozložit na víc souběžných podotázek. Každou samostatně dohledá a z nalezených pasáží složí jednu odpověď s odkazy. Pro viditelnost pak není důležitá jen jedna pozice, ale i to, jestli obsah pokrývá dílčí podotázky."
+slug: "query-fan-out-ai-mode"
+category: "analysis"
+updated: "2026-07-11"
+keywords:
+  - "query fan-out"
+  - "google ai mode query fan-out"
+  - "jak funguje ai mode"
+  - "rozklad dotazu ai"
+  - "podotázky ai vyhledávání"
+variant: "rich"
+stats:
+  - value: "1 → víc"
+    label: "query fan-out rozloží jeden dotaz na víc souběžných podotázek běžících paralelně"
+  - value: "2025"
+    label: "query fan-out se výrazněji popisuje od roku 2025 v souvislosti s Google AI Mode; navazuje na principy tematického vyhledávání"
+  - value: "desítky+"
+    label: "u jednoho zadání umí podle Googlu vygenerovat intenzivnější Deep Search desítky až stovky background dotazů"
+  - value: "pasáže"
+    label: "AI nevybírá celé stránky, ale konkrétní úseky obsahu napříč podotázkami"
+faq:
+  - q: "Co je query fan-out?"
+    a: "Query fan-out je technika, kterou Google AI Mode a část AI Overviews rozloží jeden dotaz uživatele na víc souběžných podotázek. Každou podotázku systém samostatně vyhledá napříč webem, znalostním grafem i specializovanými zdroji a z nalezených pasáží složí jednu odpověď s odkazy. Nejde tedy o jedno vyhledávání jednoho termínu, ale o vějíř souvisejících vyhledávání běžících paralelně."
+  - q: "Jak query fan-out funguje krok za krokem?"
+    a: "Uživatel zadá dotaz, který bývá delší a konverzační. Jazykový model ho interpretuje a rozloží na sadu podotázek, včetně těch, na které se uživatel přímo nezeptal. Podotázky běží paralelně a systém u nich nevybírá celé stránky, ale konkrétní úseky obsahu, které odpovídají jednotlivým aspektům. Z těchto úseků napříč zdroji pak model složí jednu odpověď a k tématům přiřadí odkazy."
+  - q: "Co query fan-out mění pro SEO a pozice?"
+    a: "Když se jeden dotaz rozpadne na víc podotázek, klasická pozice na jedno klíčové slovo ztrácí část výpovědní hodnoty. Na tom, jestli vás AI odpověď použije, se pak výrazně podílí i to, jestli váš obsah dobře odpovídá na některou z podotázek. Klasické SEO ale nezaniká, protože AI odpovědi podle veřejných vyjádření stále čerpají i ze standardního indexu Vyhledávání. Mění se hlavně měření: sledujte, jestli jste citovaní, ne jen na jaké jste pozici."
+  - q: "Jaké typy podotázek Google generuje?"
+    a: "Podle veřejných analýz systém generuje mimo jiné jiné formulace téže otázky, obecnější a naopak konkrétnější verze, logicky navazující a implikované otázky a u nákupních témat i srovnávací nebo cenové podotázky. Jde o odhad kategorií na základě pozorování a patentů, ne o oficiální úplný seznam. Praktický závěr je, že k hlavnímu tématu se vyplatí pokrýt i vedlejší otázky, které si uživatel může položit."
+  - q: "Jak psát obsah, aby ho query fan-out citoval?"
+    a: "Pište v samostatně srozumitelných úsecích, kde jeden krátký odstavec odpovídá na jednu otázku, a nahoru dejte stručnou definici nebo krátkou odpověď. K hlavnímu tématu pokryjte i implicitní podotázky, jako je cena, srovnání, pro koho to je nebo jak začít. Pomáhá tematické prolinkování a jasné pojmenování entit. Cílem je, aby byl každý úsek nezávisle použitelný jako odpověď na některou z podotázek."
+  - q: "Týká se query fan-out i českých webů?"
+    a: "Ano, i když se Google AI Mode v Česku rozjíždí postupně a Google AI Overviews jsou v češtině aktivní. Čeští uživatelé kladou v AI často delší konverzační dotazy, takže se vyplatí pokrývat přirozený jazyk, ne jen krátká klíčová slova. Pro český trh navíc doplňte měření o Seznam, který má vlastní logiku mimo Google fan-out."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Query fan-out je podle Googlu a dostupných analýz způsob, kterým [Google AI Mode](/blog/google-ai-mode/) může jeden dotaz uživatele rozložit na víc souběžných podotázek, každou samostatně dohledat a z nalezených pasáží složit jednu odpověď s odkazy.** Pro viditelnost pak není důležitá jen jedna pozice na jedno klíčové slovo, ale i to, jestli váš obsah pokrývá některou z dílčích podotázek, na které se dotaz rozpadne. Níže rozebíráme, jak vějíř podotázek funguje, jaké typy podotázek se objevují a co z toho plyne pro obsah, který chce být v AI vidět.
+
+## Co je query fan-out
+
+V klasickém vyhledávání Google obvykle vyhodnocuje jeden hlavní dotaz a jeho významové varianty. V AI Mode se navíc dotaz může rozložit na víc samostatných podotázek: model dotaz vyhodnotí a **může z něj odvodit sadu souvisejících otázek** — včetně těch, na které jste se přímo nezeptali. Podle dostupných popisů každou zpracuje jako samostatné vyhledávání, výsledky seskupí podle témat a z nich složí jednu odpověď.
+
+Google ve svých ukázkách AI Mode naznačuje, že systém může doplňovat i dílčí otázky, které rozvádějí související potřeby uživatele — u dotazu na program ve městě pro skupinu tak může jít o restaurace, bary nebo aktivity pro různé typy skupin. Query fan-out se v souvislosti s AI Mode výrazněji popisuje od roku 2025 a dostupné analýzy ho dávají do souvislosti s dřívějšími principy tematického vyhledávání; nejde ale o Googlem potvrzené úplné technické vysvětlení.
+
+<Insight tone="key">
+Vějíř (fan-out) je posun od „jeden dotaz = jedno hledání" k „jeden dotaz = víc paralelních hledání". Vaše stránka nemusí vyhrát hlavní dotaz — pomoct může i to, když dobře odpoví na jednu z podotázek, na které se dotaz rozpadne.
+</Insight>
+
+## Jak query fan-out funguje krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "Dotaz",
+      title: "Uživatel zadá delší, konverzační dotaz",
+      text: "AI dotazy často bývají delší než klasické vyhledávání — místo dvou tří slov celá věta nebo otázka. To dává modelu víc kontextu, ze kterého odvodí podotázky.",
+    },
+    {
+      label: "Rozklad",
+      title: "Model dotaz rozloží na podotázky",
+      text: "Jazykový model dotaz interpretuje a vygeneruje sadu souvisejících podotázek — explicitních i implicitních, na které se uživatel přímo nezeptal, ale pravděpodobně by ho zajímaly.",
+    },
+    {
+      label: "Vyhledání",
+      title: "Podotázky běží paralelně",
+      text: "Každá podotázka se podle dostupných popisů samostatně dohledává nad víc zdroji — například webovým indexem a dalšími datovými vrstvami Googlu. Podotázky přitom obvykle neběží za sebou, ale souběžně.",
+    },
+    {
+      label: "Pasáže",
+      title: "AI často pracuje s úseky, ne s celými stránkami",
+      text: "Systém často pracuje s konkrétními pasážemi obsahu, ne jen s celými stránkami jako jedním blokem. Dobře strukturovaný obsah se pak snáz rozdělí na použitelné pasáže.",
+    },
+    {
+      label: "Syntéza",
+      title: "Model složí jednu odpověď s odkazy",
+      text: "Z úseků napříč zdroji model poskládá jednu souvislou odpověď a k jednotlivým tématům přiřadí odkazy na zdroje. Jedna odpověď tak může citovat víc různých webů najednou.",
+    },
+  ]}
+/>
+
+## Jaké podotázky vějíř generuje
+
+Přesný seznam Google nezveřejňuje, ale z dostupných analýz a patentových popisů se opakovaně objevují tyto typy. Berte je jako orientační kategorie, ne jako oficiální výčet.
+
+<Checklist title="Typické kategorie podotázek (orientačně)" items={[
+  { title: "Jiná formulace", desc: "Alternativní znění téže otázky — stránka nemusí sedět na přesná slova, ale na význam." },
+  { title: "Obecnější verze", desc: "Širší podoba dotazu; dokument odpovídající na obecnější otázku může být citovaný." },
+  { title: "Konkrétnější verze", desc: "Detailnější podoba — zaměřená na konkrétní parametr, kontext nebo entitu." },
+  { title: "Navazující otázka", desc: "Logicky další krok, který si uživatel pravděpodobně položí potom." },
+  { title: "Implikovaná otázka", desc: "Něco, co z dotazu logicky plyne, i když to zaznělo jen nepřímo." },
+  { title: "Srovnávací a cenová", desc: "U nákupních témat podotázky typu X versus Y, cena, alternativy nebo pro koho se to hodí." },
+]} />
+
+## Co query fan-out mění pro obsah
+
+Nejdůležitější posun je v tom, že **jedna pozice na jedno klíčové slovo má v prostředí AI odpovědí menší vypovídací hodnotu než dřív.** Když se dotaz rozpadne na víc podotázek, vaše stránka soutěží v každé z nich zvlášť — a může uspět v jedné, i když v hlavním dotazu nevede.
+
+Klasické SEO tím ale nezaniká. AI odpovědi podle veřejných vyjádření a analýz stále čerpají i ze standardního indexu Vyhledávání, takže indexovatelnost, autorita a kvalita obsahu zůstávají důležité. To, jak AI vybírá jednotlivé zdroje a úseky, podrobněji rozebíráme v článku o tom, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+
+<Insight tone="warning">
+Rozklad dotazu bývá kontextový — stejný dotaz se může rozvětvit jinak podle situace, například formulace, zařízení nebo polohy. Jedna pevná pozice má proto pro AI odpovědi omezenou vypovídací hodnotu. Místo pozice sledujte, jestli vás AI odpovědi citují napříč variantami dotazu.
+</Insight>
+
+Druhý důsledek se týká měření a návštěvnosti. Protože AI složí odpověď přímo, uživatel často neklikne na žádný zdroj — jde o [efekt bez prokliku](/blog/zero-click-ai/). Citace v AI odpovědi je proto spíš signál viditelnosti než jistota návštěvnosti.
+
+## Query fan-out napříč platformami
+
+Rozklad dotazu na podotázky nedělá jen Google. Následující srovnání je orientační interpretace podle veřejně pozorovaného chování, ne potvrzený technický popis — u každé platformy jde spíš o to, jak se navenek jeví, než o ověřený vnitřní postup.
+
+<CompareTable
+  caption="Orientační srovnání, jak platformy rozkládají dotaz (podle veřejně pozorovaného chování)"
+  columns={["Platforma", "Jak se rozklad dotazu jeví"]}
+  rows={[
+    { icon: "🌐", label: "Google AI Mode", left: "Paralelní vějíř", right: "Souběžná dávka vyhledávání napříč tématy nad indexem Vyhledávání; relativně dobře popsaný způsob fungování" },
+    { icon: "🔍", label: "Perplexity", left: "Víc dotazů naráz", right: "Vícestupňové řazení nad víc dotazy; se sekcemi obsahu pracuje jako se samostatně použitelnými pasážemi" },
+    { icon: "🟦", label: "Microsoft Copilot", left: "Postupné dohledávání", right: "Postupné dohledávání a opírání odpovědi o zdroje nad Bingem" },
+    { icon: "💬", label: "ChatGPT", left: "Nezveřejněná", right: "Způsob fungování není veřejně popsaný; podle pozorování dotaz přeformuluje a odpověď skládá s citacemi při zapnutém vyhledávání" },
+  ]}
+/>
+
+Jak se optimalizace liší na jednotlivých platformách, rozebíráme podrobněji v článcích o [SEO pro ChatGPT](/blog/chatgpt-seo/) a [SEO pro Perplexity](/blog/perplexity-seo/).
+
+## Jak psát obsah pro query fan-out
+
+Dobrá zpráva: většina toho, co pomáhá vějíři podotázek, je zdravý obsahový základ. Nejde o žádný trik navíc.
+
+<Checklist title="Co pomáhá být citovaný napříč podotázkami" items={[
+  { title: "Samostatné úseky", desc: "Jeden krátký odstavec = odpověď na jednu otázku. Každý úsek musí dávat smysl i vytržený z kontextu." },
+  { title: "Krátká odpověď nahoře", desc: "Na začátek stránky nebo sekce dejte stručnou definici či shrnutí — model z něj snadno čerpá." },
+  { title: "Pokrytí vedlejších otázek", desc: "K hlavnímu tématu doplňte implicitní podotázky: cena, srovnání, pro koho, jak začít, alternativy." },
+  { title: "Prolinkování mezi stránkami", desc: "Provažte související stránky v tématu (pilíř a navazující články). Pomáhá to systému lépe pochopit souvislosti mezi stránkami." },
+  { title: "Jasné entity", desc: "Konzistentně pojmenovávejte značku, produkty a pojmy; doplňte je [strukturovanými daty](/blog/strukturovana-data-pro-ai/)." },
+  { title: "Přirozený jazyk", desc: "Pište, jak se lidé reálně ptají — celé otázky a věty, ne jen holá klíčová slova." },
+]} />
+
+Pokrývat porovnávací podotázky pomáhá zvlášť u nákupních témat — jak na ně, rozebíráme v článku o [srovnávacích článcích pro AI](/blog/srovnavaci-clanky-pro-ai/).
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Optimalizovat na jedno klíčové slovo">
+    Vějíř rozloží dotaz na víc podotázek. Kdo cílí jen na jednu hlavní frázi, míjí většinu příležitostí být citovaný ve vedlejších podotázkách.
+  </Mistake>
+  <Mistake number="02" title="Psát dlouhé nedělené bloky">
+    AI často pracuje s úseky, ne s celými stránkami. Zeď textu bez jasné struktury se hůř rozděluje na použitelné pasáže a hůř se cituje.
+  </Mistake>
+  <Mistake number="03" title="Hlídat jednu stabilní pozici">
+    Vějíř bývá kontextový, takže jedna pevná pozice má pro AI odpovědi omezenou vypovídací hodnotu. Kdo sleduje jen pozici jednoho dotazu, může přehlédnout důležitou část viditelnosti v AI odpovědích.
+  </Mistake>
+  <Mistake number="04" title="Ignorovat implicitní otázky">
+    Uživatel se ptá na jednu věc, ale systém řeší i to, co z dotazu plyne. Obsah, který pokrývá jen doslovnou otázku, do vějíře zapadá hůř.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Psát v samostatně srozumitelných úsecích, jeden odstavec na jednu otázku.",
+    "Dávat krátkou odpověď nebo definici na začátek sekce.",
+    "Pokrývat i implicitní podotázky (cena, srovnání, pro koho, jak začít).",
+    "Provazovat související stránky tematicky.",
+    "Měřit citace napříč variantami dotazu, ne jen pozici.",
+  ]}
+  dontItems={[
+    "Sázet všechno na jedno hlavní klíčové slovo.",
+    "Skládat obsah do dlouhých nedělených bloků.",
+    "Spoléhat na jednu stabilní pozici jako na cíl.",
+    "Řešit jen doslovnou otázku a ignorovat vedlejší.",
+    "Předpokládat, že vějíř je jen Google — testujte i ostatní platformy.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Query fan-out rozloží jeden dotaz** v Google AI Mode na víc souběžných podotázek a z výsledků složí jednu odpověď s odkazy.
+- **Víc než pozice váží odpověď na podotázku** — vaše stránka může uspět v jedné z podotázek, i když nevede v hlavním dotazu.
+- **AI často pracuje s úseky, ne s celými stránkami** — pište v samostatně srozumitelných odstavcích s krátkou odpovědí nahoře.
+- **Pokrývejte i implicitní podotázky** — cenu, srovnání, pro koho a jak začít, ne jen doslovnou otázku.
+- **Klasické SEO neztrácí smysl** — AI odpovědi čerpají i ze standardního indexu Vyhledávání; měří se ale citace, ne jedna pozice.
+- **Vějíř bývá kontextový** — ověřujte viditelnost [testem AI viditelnosti](/blog/test-viditelnosti-v-ai/) napříč variantami dotazu.
+
+---
+
+**Chcete, aby vaše stránky odpovídaly na správné podotázky a AI je citovala?** [AI SEO audit za 9 990 Kč](/audit/) projde váš obsah z pohledu query fan-out — kde chybí pokrytí vedlejších otázek, jak rozdělit dlouhé bloky na citovatelné úseky a kde posílit entity a prolinkování. Pokud chcete začít sami, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje wireframy stránek s pasážovou strukturou, kterou AI dobře čte.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis query fan-out vychází z veřejné dokumentace a analýz (Google Search, Search Engine Journal, iPullRank) k létu 2026; způsob fungování AI Mode se vyvíjí a konkrétní chování se může měnit.*
