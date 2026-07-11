@@ -1,0 +1,207 @@
+---
+title: "Person: strukturovaná data pro autora 2026"
+description: "Person strukturovaná data (JSON-LD) pomáhají AI a Googlu pochopit, kdo je autor. Návod se sameAs, @id a příkladem kódu pro E-E-A-T a AI citace."
+answer: "Person je typ strukturovaných dat, kterým strojově popíšete autora — jméno, roli, profily a oblasti expertízy. Pomáhá AI i Googlu lépe pochopit, kdo obsah vytvořil, a propojit ho s dalšími veřejnými profily. Klíčová je vlastnost sameAs s odkazy na profily jako LinkedIn nebo Wikidata a stabilní @id, který u všech článků autora zvyšuje šanci na konzistentní propojení do jedné entity."
+slug: "person-data-pro-autora"
+category: "tutorial"
+updated: "2026-07-11"
+keywords:
+  - "person schema autor"
+  - "autor strukturovaná data"
+  - "person json-ld"
+  - "sameas autor ai"
+  - "autor entita ai"
+variant: "rich"
+stats:
+  - value: "sameAs"
+    label: "nejdůležitější vlastnost — odkazy na profily (LinkedIn, Wikidata) odliší autora od jmenovců"
+  - value: "1 @id"
+    label: "stabilní @id opakovaný ve všech článcích zvyšuje šanci na konzistentní propojení autora do jedné entity"
+  - value: "E-E-A-T"
+    label: "Person data pomáhají AI i Googlu lépe pochopit, kdo je autorem a s jakými signály odbornosti ho spojit"
+  - value: "~40 %"
+    label: "podle vybraných studií GEO orientačně vyšší citace v AI odpovědích u kombinace strukturovaných dat, citací a statistik"
+howto:
+  name: "Jak nasadit Person strukturovaná data pro autora"
+  steps:
+    - name: "Definujte autora typem Person na jeho profilu"
+      text: "Na autorskou stránku vložte JSON-LD s typem Person — jméno, roli, popis a odkaz na profil. Jméno v datech musí přesně sedět s tím, jak je autor uvedený u článků."
+    - name: "Doplňte sameAs s odkazy na profily"
+      text: "Do vlastnosti sameAs přidejte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata a další veřejné profily, které autora skutečně reprezentují. Důvěryhodné a udržované profily mohou odlišení autora usnadnit."
+    - name: "Přiřaďte stabilní @id a opakujte ho"
+      text: "Autorovi dejte jeden stabilní identifikátor @id, například vasweb.cz/#autor-jmeno. Ten samý @id použijte u všech jeho článků, což zvyšuje šanci, že si AI a Google jednotlivé zmínky spojí s jedním autorem místo mnoha různých osob."
+    - name: "Propojte článek s autorem přes @id"
+      text: "V JSON-LD článku (Article) odkažte na autora přes author s jeho @id a na vydavatele přes publisher. Autor se tak definuje jednou a články na něj jen odkazují."
+    - name: "Ověřte soulad s viditelným obsahem"
+      text: "Zkontrolujte, že strukturovaná data odpovídají tomu, co je na stránce reálně vidět — jméno, role, profily. Nevymýšlejte tituly ani profily, které autor nemá; nesoulad je riziko."
+faq:
+  - q: "Co je Person a k čemu autorovi je?"
+    a: "Person je typ ze slovníku Schema.org, kterým strojově čitelně popíšete autora: jméno, roli, profily a oblasti expertízy. Pomáhá Googlu i AI rozpoznat autora jako entitu a propojit signály o něm napříč webem. V éře AI, kde roste váha toho, kdo obsah píše (E-E-A-T), tato data technicky popisují autora a mohou pomoci systémům propojit obsah s dalšími signály o něm."
+  - q: "Co je sameAs a proč je pro autora klíčové?"
+    a: "sameAs je vlastnost, do které dáte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata, X nebo osobní web. Právě to Googlu a AI pomáhá odlišit vašeho autora od kohokoli jiného se stejným jménem. Důvěryhodné a dobře udržované profily mohou toto odlišení usnadnit. Doporučuje se aspoň jeden kanonický profil, ideálně víc."
+  - q: "Co je @id a proč ho opakovat?"
+    a: "@id je stabilní identifikátor autora, například adresa jeho profilu s kotvou. Když ten samý @id použijete v Person datech na profilu i ve všech článcích, které napsal, zvýší se šance, že si Google a AI jednotlivé zmínky spojí s jedním autorem místo toho, aby ho na každé stránce chápaly jako jinou osobu. Konzistentní @id je proto silnější než definovat autora znovu na každé stránce."
+  - q: "Kam JSON-LD s Person vložit?"
+    a: "JSON-LD vložte do značky script s typem application/ld+json na stránce. Osvědčený postup je definovat autora typem Person jednou na jeho autorském profilu a v jednotlivých článcích na něj jen odkazovat přes @id. V praxi to bývá součást šablony článku nebo autorské stránky ve vašem systému nebo CMS."
+  - q: "Musí data sedět s viditelným obsahem stránky?"
+    a: "Ano, a je to zásadní. Strukturovaná data by měla odpovídat tomu, co je na stránce reálně vidět — jméno autora, jeho role a profily. Nevymýšlejte tituly, kredence ani profily, které autor nemá. Nesoulad mezi daty a obsahem je riziko a u citlivých témat, jako je zdraví, finance nebo právo, obzvlášť."
+  - q: "Platí to i pro české autory?"
+    a: "Ano. Do sameAs přidejte relevantní veřejné profily autora, typicky například LinkedIn, a u známějších osob může dávat smysl i položka na Wikidatech, pokud existuje. Autorský profil pište česky a jméno uvádějte konzistentně, se stejnou diakritikou napříč webem i profily. Princip je stejný jako jinde: jasně a konzistentně popsaná entita autora pomáhá AI i Googlu pochopit, kdo obsah píše."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Person je typ strukturovaných dat, kterým strojově popíšete autora — jméno, roli, profily a oblasti expertízy — a pomůžete tak Googlu i AI lépe pochopit, kdo obsah vytvořil.** Klíčem jsou dvě věci: vlastnost `sameAs` s odkazy na profily jako LinkedIn nebo Wikidata a stabilní `@id`, který u všech článků zvyšuje šanci na konzistentní propojení autora do jedné entity. Tento návod ukazuje, jak Person data nasadit, i s příkladem kódu.
+
+## Co Person řeší
+
+Vyhledávače i některé AI systémy při interpretaci obsahu pracují i s **entitami a vztahy mezi nimi**, ne jen s klíčovými slovy. U obsahu roste váha toho, kdo ho píše — tedy [důvěryhodnosti autora (E-E-A-T)](/blog/e-e-a-t-pro-ai/). Person data přesně tohle technicky popisují: kdo je autor, čemu rozumí a kde jinde na webu se dá ověřit.
+
+Tento článek je technický protějšek k tomu, jak vůbec [autorský profil pro AI](/blog/autorsky-profil-pro-ai/) postavit — tam řešíme obsah a strategii, tady konkrétní strukturovaná data.
+
+<Insight tone="key">
+Samo o sobě Person data nejsou kouzlo. Fungují ale jako jasná vizitka: říkají strojům, že za obsahem stojí konkrétní, ověřitelná osoba s doloženými profily. To může systémům pomoci autora správně identifikovat, když interpretují obsah.
+</Insight>
+
+## Klíčové vlastnosti Person
+
+Nemusíte vyplnit všechno, ale některé vlastnosti mají větší váhu než jiné.
+
+<CompareTable
+  caption="Nejdůležitější vlastnosti typu Person"
+  columns={["Vlastnost", "Co říká AI a Googlu"]}
+  rows={[
+    { icon: "🪪", label: "name", left: "Jméno", right: "Celé jméno autora; musí sedět s tím, jak je uvedený u článků" },
+    { icon: "🔗", label: "sameAs", left: "Profily", right: "Odkazy na LinkedIn, Wikidata, osobní web — odliší autora od jmenovců" },
+    { icon: "💼", label: "jobTitle a worksFor", left: "Role a firma", right: "Pozice autora a organizace, pro kterou pracuje (uvádějte, jen když vztah reálně platí)" },
+    { icon: "🧠", label: "knowsAbout", left: "Expertíza", right: "Témata, kterým autor rozumí — signál odbornosti" },
+    { icon: "🆔", label: "@id", left: "Identita", right: "Stabilní identifikátor, který pomáhá propojit články autora do jedné entity" },
+  ]}
+/>
+
+## sameAs a @id — srdce autorské entity
+
+Dvě vlastnosti mívají v praxi největší význam. **`sameAs`** dá AI a Googlu odkazy, které autora pomáhají spolehlivě identifikovat — obecně platí, že důvěryhodné a dobře udržované profily (třeba [LinkedIn](/blog/linkedin-pro-ai-citace/) a [Wikidata](/blog/znacka-na-wikipedii-pro-ai/)) mohou odlišení autora od jmenovců usnadnit. **`@id`** je stabilní identifikátor, který zopakujete u všech článků autora, což zvýší šanci, že si systémy jednotlivé zmínky spojí s jedním autorem.
+
+## Příklad JSON-LD
+
+Takhle může vypadat zjednodušená definice autora typem Person na jeho profilu:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://vasweb.cz/#autor-jan-novak",
+  "name": "Jan Novák",
+  "url": "https://vasweb.cz/o-nas/jan-novak/",
+  "jobTitle": "AI SEO konzultant",
+  "worksFor": { "@type": "Organization", "name": "Vaše firma s.r.o." },
+  "knowsAbout": ["AI SEO", "strukturovaná data", "e-commerce"],
+  "sameAs": [
+    "https://www.linkedin.com/in/jan-novak/",
+    "https://www.wikidata.org/wiki/Q000000"
+  ]
+}
+```
+
+Vlastní profil autora na stejném webu patří primárně do `url`; `sameAs` míří hlavně na další veřejné profily a referenční identity (LinkedIn, Wikidata). V článku pak na autora jen odkážete přes ten samý `@id`, takže ho definujete jednou a nemusíte ho opakovat celý na každé stránce. V datech článku (`Article`) na autora ukážete přes `author` a na vydavatele přes `publisher`:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Název článku",
+  "author": { "@id": "https://vasweb.cz/#autor-jan-novak" },
+  "publisher": { "@type": "Organization", "name": "Vaše firma s.r.o." }
+}
+```
+
+Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organization`) definovaného samostatně a konzistentně napříč webem, u větších webů i s vlastním `@id`.
+
+## Jak Person data nasadit
+
+<Stepper
+  steps={[
+    {
+      label: "Person",
+      title: "Definujte autora na jeho profilu",
+      text: "Na autorskou stránku vložte JSON-LD s typem Person — jméno, roli, popis a odkaz na profil. Jméno v datech musí přesně sedět s tím, jak je autor uvedený u článků.",
+    },
+    {
+      label: "sameAs",
+      title: "Doplňte odkazy na profily",
+      text: "Do sameAs přidejte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata a další veřejné profily, které autora skutečně reprezentují. Důvěryhodné a udržované profily mohou odlišení autora usnadnit.",
+    },
+    {
+      label: "@id",
+      title: "Přiřaďte stabilní identifikátor a opakujte ho",
+      text: "Autorovi dejte jeden stabilní @id a ten samý použijte u všech jeho článků, což zvýší šanci, že si systémy jednotlivé zmínky spojí s jedním autorem místo mnoha různých osob.",
+    },
+    {
+      label: "Propojení",
+      title: "Propojte článek s autorem",
+      text: "V datech článku odkažte na autora přes jeho @id a na vydavatele přes publisher. Autor se tak definuje jednou a články na něj jen odkazují.",
+    },
+    {
+      label: "Kontrola",
+      title: "Ověřte soulad s viditelným obsahem",
+      text: "Zkontrolujte, že data odpovídají tomu, co je na stránce reálně vidět. Nevymýšlejte tituly ani profily, které autor nemá; nesoulad je riziko.",
+    },
+  ]}
+/>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Chybějící sameAs">
+    Bez odkazů na profily může být pro AI i Google těžší odlišit autora od jmenovců. sameAs patří k nejdůležitějším vlastnostem pro odlišení autora od jmenovců.
+  </Mistake>
+  <Mistake number="02" title="Různý @id na každém článku">
+    Když má autor na každé stránce jiný identifikátor, je pro stroje těžší poznat, že jde o stejného autora. Stabilní @id opakujte všude stejný.
+  </Mistake>
+  <Mistake number="03" title="Data neodpovídají stránce">
+    Jméno nebo role v datech, které se liší od toho, co je na stránce vidět, jsou nesoulad. Strukturovaná data mají popisovat realitu, ne ji vylepšovat.
+  </Mistake>
+  <Mistake number="04" title="Vymyšlená odbornost">
+    Falešné tituly nebo profily, které autor nemá, důvěryhodnosti nepomůžou a u citlivých témat jsou vyloženě riziko. E-E-A-T stojí na skutečné odbornosti.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Definovat autora typem Person na jeho profilu.",
+    "Doplnit sameAs s odkazy na LinkedIn, Wikidata a osobní web.",
+    "Použít jeden stabilní @id a opakovat ho u všech článků.",
+    "Držet jméno a role v datech shodné s viditelným obsahem.",
+    "Vyplnit knowsAbout reálnými oblastmi expertízy.",
+  ]}
+  dontItems={[
+    "Nechávat Person data bez sameAs.",
+    "Dávat autorovi jiný @id na každé stránce.",
+    "Odkazovat na cizí nebo neexistující profily.",
+    "Vymýšlet tituly a kredence, které autor nemá.",
+    "Nechávat data v rozporu s podpisem autora na stránce.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Person data popisují autora jako entitu** — jméno, role, profily a expertíza pro AI i Google.
+- **sameAs patří k nejdůležitějším** — odkazy na LinkedIn a Wikidata pomáhají odlišit autora od jmenovců.
+- **Stabilní @id opakujte** u všech článků, aby se autor sloučil do jedné entity.
+- **Článek odkazuje na autora přes @id** — autora definujete jednou.
+- **Data musí sedět s viditelným obsahem** — žádné vymyšlené tituly.
+- **Person data pomáhají pochopit, kdo je autorem** — ověřte výsledek [testem AI viditelnosti](/blog/test-viditelnosti-v-ai/).
+
+---
+
+**Chcete mít autory i celý web popsané tak, aby je AI rozpoznala?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje návrhy stránek včetně autorského profilu se strukturou, kterou AI dobře čte. Pokud chcete revizi celého webu, [AI SEO audit za 9 990 Kč](/audit/) projde vaše strukturovaná data, autorské entity a soulad s obsahem a navrhne, kde posílit důvěryhodnost pro AI i Google.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis vlastností Person vychází z veřejné dokumentace Schema.org a analýz dostupných k 11. 7. 2026. Uváděné statistiky (např. vyšší míra citací) jsou orientační zjištění z konkrétních studií GEO, ne univerzální efekt; konkrétní dopad na viditelnost se liší podle webu a tématu a v čase se vyvíjí.*
