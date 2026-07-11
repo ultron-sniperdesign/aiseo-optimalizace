@@ -1,0 +1,163 @@
+---
+title: "Konec FAQ rich results: co dělat v roce 2026"
+description: "Google 7. 5. 2026 ukončil FAQ rich results. Zjistěte, co to znamená pro FAQPage a kdy markup nechat nebo odstranit."
+answer: "FAQ rich results jsou rozšířené výsledky s rozklikávacími otázkami a odpověďmi ve Vyhledávání Google. Jejich zobrazování Google 7. května 2026 ukončil, ale FAQPage markup zůstává platný — Google ho podle veřejné dokumentace dál zpracovává k porozumění stránce a strukturované otázky s odpověďmi mohou být použitelné i pro AI systémy. Skončil jen zobrazovací prvek, ne hodnota strukturovaných dat."
+slug: "konec-faq-rich-results"
+category: "analysis"
+updated: "2026-07-11"
+keywords:
+  - "konec faq rich results"
+  - "faqpage 2026"
+  - "faq strukturovaná data"
+  - "faqpage zrušeno"
+  - "faq rich results google"
+variant: "rich"
+stats:
+  - value: "7. 5. 2026"
+    label: "datum, kdy FAQ rich results přestaly ve Vyhledávání Google (podle Google Search Central)"
+  - value: "validní"
+    label: "FAQPage zůstává platný typ ze slovníku Schema.org — Google ho podle veřejné dokumentace dál zpracovává"
+  - value: "3 fáze"
+    label: "ukončení rozšířených výsledků (květen), odebrání reportu a testu (červen), avizovaný konec podpory v API (srpen 2026)"
+  - value: "0"
+    label: "negativních dopadů na Vyhledávání, když markup zůstane a sedí s obsahem (podle Googlu)"
+faq:
+  - q: "Co přesně Google s FAQ rich results udělal?"
+    a: "Google podle veřejné dokumentace Search Central přidal 7. května 2026 k dokumentaci FAQ strukturovaných dat oznámení o ukončení a FAQ rich results se přestaly zobrazovat ve výsledcích Vyhledávání. Rozklikávací otázky a odpovědi, které se dřív zobrazovaly přímo pod odkazem, tak zmizely. Nešlo ale o zrušení samotného typu FAQPage, jen zobrazovacího prvku ve Vyhledávání."
+  - q: "Mám teď FAQPage markup ze stránek smazat?"
+    a: "Ne plošně. FAQPage zůstává platný Schema.org typ a podle Googlu nevyužitý markup Vyhledávání neškodí. Nechte ho tam, kde přesně popisuje viditelné otázky a odpovědi na stránce a kde FAQ sekce reálně pomáhá uživatelům. Odstraňte ho jen tam, kde odkazuje na obsah, který už na stránce není, nebo kde byla FAQ sekce tenká a přidaná jen kvůli hezčímu výsledku."
+  - q: "Čtou FAQ strukturovaná data i AI systémy?"
+    a: "Podle dostupných informací ano. Podle veřejné dokumentace Google FAQ markup dál zpracovává, aby porozuměl stránce, a strukturovanou sadu otázek a odpovědí mohou zpracovávat i AI systémy a jejich vyhledávací roboti. Jasně oddělené páry otázka–odpověď se navíc dají snadno převzít do odpovědí. Hodnota markup se tak přesunula od zobrazení ve Vyhledávání k porozumění obsahu a k AI."
+  - q: "Kdy má smysl FAQ markup odstranit?"
+    a: "Když markup odkazuje na otázky a odpovědi, které na stránce viditelně nejsou, protože nesoulad mezi strukturovanými daty a obsahem je riziko. Dál tehdy, když byla FAQ sekce tenká nebo naspamovaná a vznikla jen kvůli rozšířenému výsledku ve Vyhledávání. Pokud ale FAQ reálně odpovídá na dotazy uživatelů, není důvod ho odstraňovat."
+  - q: "Co se stane s FAQ reportem v Search Console a Rich Results Testem?"
+    a: "Podle avizované časové osy Googlu byl v červnu 2026 odebrán FAQ report v Search Console i podpora FAQ v nástroji Rich Results Test a v srpnu 2026 má skončit podpora ve Search Console API. Jde o postupné vyřazení nástrojů kolem FAQ rich results. Samotný FAQPage markup na stránkách tím není dotčen a může zůstat."
+  - q: "Platí to i pro české weby?"
+    a: "Ano, změna je globální a týká se i českých webů a českých FAQ sekcí. Řada českých stránek měla FAQPage hlavně kvůli rozšířenému výsledku ve Vyhledávání — teď je vhodná chvíle ověřit, jestli FAQ sekce reálně pomáhá uživatelům. Jasná struktura otázek a odpovědí navíc může pomáhat i v AI odpovědích a asistenčních rozhraních."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**FAQ rich results byly rozšířené výsledky s rozklikávacími otázkami a odpověďmi přímo ve Vyhledávání Google — a Google jejich zobrazování 7. května 2026 ukončil.** FAQPage markup ale zůstává platný a Google ho podle veřejné dokumentace dál zpracovává, aby porozuměl stránce; strukturované otázky a odpovědi mohou být použitelné i pro AI systémy. Skončil jen zobrazovací prvek, ne hodnota strukturovaných dat. Tento článek vysvětluje, co se přesně stalo, proč markup ve většině případů nechat a kdy ho naopak odstranit.
+
+## Co se přesně stalo
+
+FAQ rich results byly typ rozšířeného výsledku: pod odkazem ve Vyhledávání se zobrazovaly rozklikávací otázky a odpovědi z FAQ sekce stránky. Ten prvek Google podle veřejné dokumentace Search Central ukončil — a dělá to postupně ve třech fázích.
+
+<Stepper
+  steps={[
+    {
+      label: "7. 5. 2026",
+      title: "FAQ rich results zmizely z Vyhledávání",
+      text: "Google přidal k dokumentaci FAQ strukturovaných dat oznámení o ukončení a rozklikávací otázky a odpovědi se přestaly ve výsledcích zobrazovat. Toto je hotová změna.",
+    },
+    {
+      label: "Červen 2026",
+      title: "Odebrání FAQ reportu a testu",
+      text: "Z Search Console zmizel FAQ report a podpora FAQ v nástroji Rich Results Test (test rozšířených výsledků). Nástroje kolem FAQ rich results se tím začaly vyřazovat.",
+    },
+    {
+      label: "Srpen 2026",
+      title: "Konec podpory v API (chystá se)",
+      text: "Podle avizované časové osy Googlu má v srpnu 2026 skončit podpora FAQ ve Search Console API. K datu vydání tohoto článku jde o oznámený, ještě neproběhlý krok.",
+    },
+  ]}
+/>
+
+<Insight tone="key">
+Klíčové je oddělit dvě věci: skončil zobrazovací prvek ve Vyhledávání, ne typ FAQPage ani jeho hodnota. Markup zůstává platný a klíčový nikdy nebyl samotný zápis strukturovaných dat, ale obsah — tedy jasné otázky a odpovědi, které reálně pomáhají.
+</Insight>
+
+## Proč FAQPage markup pořád dává smysl
+
+I bez rozšířeného výsledku má strukturovaná FAQ sekce hodnotu — jen se přesunula jinam.
+
+<Checklist title="K čemu FAQPage slouží i po konci rich results" items={[
+  { title: "Google ho dál zpracovává", desc: "Podle veřejné dokumentace Google FAQ markup dál zpracovává, aby porozuměl obsahu stránky." },
+  { title: "AI systémy ho zpracovávají", desc: "Strukturovanou sadu otázek a odpovědí mohou zpracovávat i AI systémy a jejich vyhledávací roboti." },
+  { title: "Snadné převzetí do odpovědí", desc: "Jasně oddělené páry otázka–odpověď se dají snáz využít v odpovědích AI systémů i v [krátkých citacích](/blog/jak-ai-cituje-zdroje/)." },
+  { title: "Lepší struktura pro uživatele", desc: "Dobře udělaná FAQ sekce odpovídá na reálné dotazy — to má hodnotu bez ohledu na prvek ve výsledcích vyhledávání." },
+  { title: "Bez rizika, když sedí", desc: "Podle Googlu nevyužitý markup Vyhledávání neškodí, pokud odpovídá viditelnému obsahu." },
+]} />
+
+## Nechat, nebo odstranit? Rozhodovací rámec
+
+Odpověď není plošná. Záleží na tom, jestli FAQ sekce reálně pomáhá, nebo vznikla jen kvůli hezčímu výsledku.
+
+<CompareTable
+  caption="Kdy FAQPage markup nechat a kdy zvážit odstranění"
+  columns={["Nechat", "Zvážit odstranění"]}
+  rows={[
+    { icon: "✅", label: "Soulad s obsahem", left: "Markup přesně popisuje viditelné otázky a odpovědi na stránce", right: "Markup odkazuje na obsah, který na stránce už není" },
+    { icon: "🙋", label: "Užitečnost", left: "FAQ sekce reálně odpovídá na dotazy uživatelů", right: "FAQ byla tenká a přidaná jen kvůli rozšířenému výsledku" },
+    { icon: "🤖", label: "Čitelnost pro AI", left: "Chcete, aby AI systémy měly čistě strukturovaný Q&A", right: "Q&A na stránce reálně nedává smysl pro čtenáře" },
+    { icon: "⚠️", label: "Riziko", left: "Žádné — konzistentní markup je bezpečný", right: "Nesoulad markup a obsahu je zbytečné riziko" },
+  ]}
+/>
+
+<Insight tone="warning">
+Nejhorší varianta není markup nechat, ani ho smazat — je nechat ho v nesouladu s viditelným obsahem. Pokud FAQ sekci ze stránky odeberete, odeberte i její FAQPage markup. Konzistence mezi strukturovanými daty a tím, co uživatel opravdu vidí, je teď důležitější než dřív.
+</Insight>
+
+## Zapadá to do širšího posunu strukturovaných dat
+
+Konec FAQ rich results není izolovaná událost. Rozšířený výsledek ztratily dřív i návody (HowTo) a Google zároveň opakuje, že pro AI Overviews ani AI Mode [není potřeba žádná speciální strukturovaná data](/blog/aeo-geo-je-porad-seo/). Směr je konzistentní: strukturovaná data mají sloužit k porozumění obsahu, ne jako dekorace výsledku.
+
+To ale neznamená, že strukturovaná data ztrácejí smysl. Naopak — když přesně popisují viditelný obsah, pomáhají Googlu i AI. Které typy nasadit a jak, rozebíráme v článku o [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/).
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Plošně smazat všechna FAQ">
+    Konec rich results neznamená konec FAQ. Kdo v panice smaže funkční FAQ sekce, přijde o obsah, který dál pomáhá uživatelům i AI systémům.
+  </Mistake>
+  <Mistake number="02" title="Nechat markup bez obsahu">
+    Pokud FAQ sekci ze stránky odeberete, ale markup necháte, vznikne nesoulad mezi strukturovanými daty a obsahem. To je zbytečné riziko.
+  </Mistake>
+  <Mistake number="03" title="Čekat na návrat rich results">
+Ve veřejné dokumentaci Googlu je změna komunikovaná jako ukončení a k létu 2026 nic veřejně nenasvědčuje návratu FAQ rozšířených výsledků. Kdo staví strategii na tom, že se prvek obnoví, ztrácí čas — energii je lepší dát do obsahu a AI viditelnosti.
+  </Mistake>
+  <Mistake number="04" title="Považovat markup za samospásný">
+    Klíčový nikdy nebyl samotný zápis strukturovaných dat, ale obsah. Sám markup bez užitečných odpovědí nikdy nezajistil viditelnost a po konci rich results to platí dvojnásob.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Nechat FAQPage markup tam, kde sedí s viditelným obsahem.",
+    "Ověřit, jestli FAQ sekce reálně odpovídá na dotazy uživatelů.",
+    "Držet markup v souladu s tím, co je na stránce vidět.",
+    "Psát krátké jasné odpovědi, které AI snadno převezme.",
+    "Brát strukturovaná data jako pomoc porozumění, ne jako dekoraci výsledků vyhledávání.",
+  ]}
+  dontItems={[
+    "Plošně mazat všechna FAQ v panice.",
+    "Nechávat markup pro obsah, který na stránce není.",
+    "Spoléhat na návrat rich results.",
+    "Přidávat tenké FAQ jen kvůli rozšířenému výsledku.",
+    "Považovat samotný markup za záruku viditelnosti.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Google 7. 5. 2026 ukončil FAQ rich results** — rozklikávací otázky zmizely z výsledků Vyhledávání.
+- **FAQPage markup zůstává platný** — Google i AI systémy ho podle Googlu dál čtou.
+- **Skončil jen zobrazovací prvek, ne hodnota** — klíčový nebyl zápis strukturovaných dat, ale obsah.
+- **Markup nechte, když sedí** s viditelnými otázkami a odpověďmi; odstraňte jen tenká nebo nesouladná FAQ.
+- **Vyřazení je ve třech fázích** — rich results (květen), GSC report (červen) a podpora v API (srpen 2026, chystá se).
+- **Priorita se posouvá** od dekorace výsledků vyhledávání k jasné struktuře a citovatelnosti v AI.
+
+---
+
+**Nevíte, která strukturovaná data na webu nechat, upravit, nebo odstranit?** [AI SEO audit za 9 990 Kč](/audit/) projde vaše strukturovaná data i FAQ sekce, ověří soulad markup s obsahem a navrhne, co dál pomáhá viditelnosti v AI a co je jen zbytečná zátěž. Pokud chcete začít sami, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje wireframy stránek se správnou strukturou otázek a odpovědí, kterou AI dobře čte.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis změny vychází z veřejné dokumentace Google Search Central a analýz k létu 2026; časová osa se opírá o Googlem avizované kroky, z nichž část (srpen 2026) k datu vydání článku ještě neproběhla.*
