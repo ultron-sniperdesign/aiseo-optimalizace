@@ -1,0 +1,183 @@
+---
+title: "Share of Model: metrika AI viditelnosti značky"
+description: "Share of Model (SoM) měří podíl vaší značky na zmínkách v AI odpovědích. Jak se liší od Share of Voice, jak ho orientačně změřit a jak ho číst."
+answer: "Share of Model (SoM) je metrika AI viditelnosti: měří, jak často a jak výrazně vás daný AI model zmíní napříč relevantními dotazy — v poměru ke konkurentům. Je to obdoba Share of Voice, ale pro odpovědi AI místo pozic ve vyhledávání. Protože se odpovědi liší běh od běhu, je SoM směrový ukazatel trendu, ne přesné číslo."
+slug: "share-of-model-metrika"
+category: "analysis"
+updated: "2026-07-11"
+keywords:
+  - "share of model"
+  - "podíl zmínek v ai"
+  - "ai share of voice"
+  - "měření ai viditelnosti"
+  - "ai viditelnost značky"
+variant: "rich"
+stats:
+  - value: "SoM"
+    label: "podíl vaší značky na zmínkách v AI odpovědích napříč relevantními dotazy"
+  - value: "pozice nestačí"
+    label: "v AI odpovědi je klasické pořadí méně důležité než přítomnost a kontext zmínky"
+  - value: "modely zvlášť"
+    label: "měřte pro každý model zvlášť — ChatGPT, Perplexity a Gemini se chovají jinak"
+  - value: "trend > číslo"
+    label: "kvůli kolísání odpovědí sledujte směr v čase, ne jednorázový výsledek"
+faq:
+  - q: "Co je Share of Model?"
+    a: "Share of Model (SoM) je metrika, která měří, jak často a jak výrazně vás daný AI model zmíní napříč relevantními dotazy — v poměru ke konkurentům. Je to obdoba Share of Voice z klasického marketingu, jen místo reklamy nebo pozic ve vyhledávání sleduje zmínky v odpovědích AI, jako je ChatGPT, Perplexity nebo Gemini."
+  - q: "Jak se Share of Model liší od Share of Voice?"
+    a: "Share of Voice měří váš podíl na viditelnosti nebo zmínkách ve zvoleném kanálu — v praxi třeba v reklamě, organickém vyhledávání, médiích nebo na sociálních sítích. Share of Model přenáší stejnou myšlenku do světa AI odpovědí, kde ale často není žebříček výsledků, jen souhrnná odpověď. Neměří se tak pozice, ale jestli a jak výrazně vás model v odpovědi zmíní oproti konkurenci."
+  - q: "Jak Share of Model orientačně změřit?"
+    a: "Sestavte sadu 10 až 30 reálných dotazů, které klade váš zákazník, a spusťte je napříč modely (ChatGPT, Perplexity, Gemini), ideálně v češtině. U každé odpovědi zaznamenejte, jestli je zmíněná vaše značka a konkurenti, a spočítejte váš podíl na zmínkách. Měření pravidelně opakujte a sledujte trend, protože jednorázový výsledek kolísá."
+  - q: "Proč brát čísla Share of Model s rezervou?"
+    a: "Odpovědi AI jsou nedeterministické — stejný dotaz dá pokaždé trochu jinou odpověď. Výsledky navíc ovlivňuje region, personalizace i aktualizace modelu a malý vzorek dotazů přináší šum. Share of Model je proto směrový ukazatel trendu, ne přesné číslo. Nedává smysl z něj odvozovat konkrétní sliby o prodejích."
+  - q: "Nahrazuje Share of Model měření návštěvnosti?"
+    a: "Ne, doplňuje ho. Share of Model je pohled zvenčí — co o vás říká model. Měření návštěvnosti a konverzí z AI je pohled zevnitř, z vašeho webu. Dává smysl sledovat obojí: Share of Model jako orientační ukazatel viditelnosti a návštěvnost s konverzemi jako výsledkové metriky, u kterých sledujete, jestli se s viditelností v AI vyvíjejí podobným směrem."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Share of Model (SoM) je metrika AI viditelnosti, která měří, jak často a jak výrazně vás daný AI model zmíní napříč relevantními dotazy — v poměru ke konkurentům.** Je to obdoba Share of Voice, ale pro odpovědi AI místo pozic ve vyhledávání. A protože se odpovědi liší běh od běhu, je SoM směrový ukazatel trendu, ne přesné číslo. Tento rozbor ukazuje, co SoM je, jak ho orientačně měřit a jak ho číst vedle klasických metrik vyhledávání.
+
+## Proč klasické pořadí ztrácí na váze
+
+V klasickém vyhledávání existuje **žebříček výsledků**. Dalo se měřit pořadí, podíl na kliknutích, viditelnost v kategorii. V AI odpovědi ale často nedostanete klasický seznam výsledků, ale **souhrnnou odpověď**, někdy doplněnou o zdroje, ve které se značky objevují různě výrazně.
+
+Tím se mění otázka, kterou si klademe. Místo „na jaké jsme pozici" jde nově o to, **jestli jsme v odpovědi vůbec, jak výrazně a v jakém kontextu**. Právě tuhle otázku se Share of Model snaží zachytit.
+
+<Insight tone="key">
+Share of Model není o vašem webu, ale o tom, co o vás říká model. Je možné být vysoko v Googlu a přesto se v části AI odpovědí neobjevovat — a naopak. Proto je to samostatný signál, který klasické pozice nenahradí.
+</Insight>
+
+## Share of Model vs. příbuzné metriky
+
+SoM se snadno plete s podobně znějícími pojmy. Liší se ale tím, co přesně měří.
+
+<CompareTable
+  caption="Čím se Share of Model liší od příbuzných metrik"
+  columns={["Metrika", "Co měří"]}
+  rows={[
+    { icon: "🤖", label: "Share of Model", left: "Zmínky v AI", right: "Váš podíl na zmínkách v odpovědích AI napříč dotazy" },
+    { icon: "📣", label: "Share of Voice", left: "Viditelnost v kanálu", right: "Váš podíl na viditelnosti nebo zmínkách ve zvoleném kanálu (reklama, organika, média, sítě)" },
+    { icon: "🔎", label: "Share of Search", left: "Zájem o značku", right: "Podíl značky na vyhledávacích dotazech, často jako orientační ukazatel zájmu" },
+    { icon: "💬", label: "Počet zmínek", left: "Četnost", right: "Jak často vás model zmíní — bez poměru ke konkurenci" },
+  ]}
+/>
+
+## Jak Share of Model orientačně změřit
+
+Nepotřebujete hned placený nástroj. Základní obrázek dá i ruční test, když ho děláte konzistentně. Jednotný standard výpočtu zatím není ustálený, proto je nejdůležitější držet stejnou metodiku v čase. Kromě prostého podílu můžete zvlášť hodnotit i výraznost zmínky — jestli šlo o okrajovou zmínku, doporučení, nebo citaci se zdrojem.
+
+<Stepper
+  steps={[
+    {
+      label: "Dotazy",
+      title: "Sestavte sadu reálných dotazů",
+      text: "Napište 10 až 30 otázek, které váš zákazník opravdu klade — typu vhodné řešení pro danou situaci, ne dotazy na vaše jméno.",
+    },
+    {
+      label: "Modely",
+      title: "Spusťte je napříč modely",
+      text: "Zadejte dotazy do ChatGPT, Perplexity a Gemini, ideálně v češtině. Chování se mezi modely liší, proto je měřte zvlášť.",
+    },
+    {
+      label: "Záznam",
+      title: "Zaznamenejte zmínky",
+      text: "U každé odpovědi si poznačte, jestli je zmíněná vaše značka, kdo z konkurentů a kdo je uvedený jako zdroj.",
+    },
+    {
+      label: "Podíl",
+      title: "Spočítejte podíl na zmínkách",
+      text: "Vydělte zmínky vaší značky všemi zmínkami značek v odpovědích. Spočítejte pro každý model zvlášť a pak dohromady.",
+    },
+    {
+      label: "Opakování",
+      title: "Měřte pravidelně a sledujte trend",
+      text: "Stejné dotazy opakujte v čase, například měsíčně. Zajímá vás směr vývoje, ne jednorázové číslo.",
+    },
+  ]}
+/>
+
+## Proč čísla brát s rezervou
+
+Tady je potřeba být upřímný: Share of Model je **odhad, ne exaktní metrika**. Několik důvodů, proč jednomu číslu nevěřit:
+
+<Checklist
+  items={[
+    { title: "Nedeterminismus", desc: "Stejný dotaz dá pokaždé trochu jinou odpověď — modely negenerují vždy totéž." },
+    { title: "Personalizace a region", desc: "Výsledky může ovlivnit lokace, jazyk, použitý režim, historie konverzace nebo přihlášení; liší se to podle služby a modelu." },
+    { title: "Modely se mění", desc: "Aktualizace modelu může SoM posunout ze dne na den, aniž byste cokoli udělali." },
+    { title: "Malý vzorek = šum", desc: "Pár dotazů nestačí; i větší sada dává jen orientační odhad." },
+    { title: "Zmínka není doporučení", desc: "Rozlišujte okrajovou zmínku, citaci se zdrojem a aktivní doporučení — nejsou totéž." },
+  ]}
+/>
+
+<Insight tone="warning">
+Proto ze Share of Model nikdy neodvozujte tvrdé sliby typu „vyšší SoM znamená tolik a tolik prodejů". Berte ho jako orientační ukazatel viditelnosti, který sledujete v trendu — ne jako přesnou účetní hodnotu.
+</Insight>
+
+## Co Share of Model ovlivňuje
+
+Když SoM roste nebo klesá, obvykle za tím stojí to, jak dobře vás modely mají z čeho poznat:
+
+- **Citovatelný obsah** — autoritativní a strukturovaný obsah; [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+- **Zmínky třetích stran** — recenze, oborové seznamy, komunitní diskuze; pro modely jsou často důležitým doplňkovým signálem vedle vlastních stránek, jak ukazují i [zmínky značky v AI](/blog/ai-brand-mentions/).
+- **Jasná entita značky** — konzistentní popis firmy napříč webem, aby si model spojil zmínky s jedním subjektem.
+- **Přítomnost na zdrojích, kterým modely věří** — autority dané kategorie, nejen váš web.
+
+Souvisí to s realitou [nulového prokliku](/blog/zero-click-ai/): když nejste v odpovědi, pro část uživatelů můžete být méně viditelní bez ohledu na to, jak si stojíte v klasickém vyhledávání.
+
+## Nejčastější chyby v měření
+
+<MistakeGrid>
+  <Mistake number="01" title="Jedno měření = závěr">
+    Odpovědi kolísají. Jednorázový snímek nic neříká; smysl dává až opakované měření a trend.
+  </Mistake>
+  <Mistake number="02" title="Dotazy na značku">
+    Ptát se modelu přímo na svoje jméno nafoukne výsledek. Měřte na neutrálních dotazech, které řeší problém, ne značku.
+  </Mistake>
+  <Mistake number="03" title="Jeden model za všechny">
+    Chování se mezi ChatGPT, Perplexity a Gemini liší. Průměr přes jeden model zkresluje celkový obrázek.
+  </Mistake>
+  <Mistake number="04" title="SoM místo výsledků">
+    Share of Model je orientační ukazatel, ne cíl sám o sobě. Vždy ho párujte s návštěvností a konverzemi.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Měřit na sadě reálných, neznačkových dotazů.",
+    "Sledovat trend v čase, ne jednorázové číslo.",
+    "Rozlišovat modely a měřit je zvlášť.",
+    "Párovat SoM s návštěvností a konverzemi z AI.",
+    "Brát čísla jako orientační odhad.",
+  ]}
+  dontItems={[
+    "Vyvozovat tvrdé prodejní sliby z jednoho čísla.",
+    "Měřit jen na dotazech na vlastní značku.",
+    "Spoléhat na jediné měření nebo jediný model.",
+    "Zaměňovat zmínku za doporučení.",
+    "Ignorovat kolísání a personalizaci výsledků.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Share of Model měří podíl zmínek v AI** — jak výrazně vás model zmíní oproti konkurenci.
+- **Klasické pozice samy nestačí** — v AI odpovědi často nerozhoduje jen pořadí ve vyhledávání, ale i to, zda a jak se značka objeví v odpovědi.
+- **Měřte ručně a pravidelně** — sada dotazů napříč modely, opakovaně, se sledováním trendu.
+- **Čísla jsou orientační** — kvůli kolísání a personalizaci jde o odhad, ne přesnou metriku.
+- **Párujte s výsledky** — SoM je orientační ukazatel, ověřte ho [měřením AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/) a [návštěvností z AI](/blog/ai-navstevnost-konverze/).
+
+---
+
+**Chcete vědět, jak jste na tom v AI odpovědích oproti konkurenci?** [AI SEO audit za 9 990 Kč](/audit/) projde vaši viditelnost v AI, porovná vás s konkurencí na reálných dotazech a navrhne, kde chybíte a jak to změnit. Pokud chcete nejdřív posílit obsah, který se lépe cituje, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) dává strukturu stránek, kterou AI dobře čte.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Share of Model je nově se ustavující metrika; popis vychází z veřejné praxe a nástrojů dostupných k 11. 7. 2026. Uváděné principy jsou orientační, konkrétní výsledky se liší podle kategorie, jazyka a modelu a v čase se vyvíjejí.*
