@@ -1,0 +1,165 @@
+---
+title: "RAG: jak funguje AI vyhledávání v roce 2026"
+description: "RAG je zjednodušeně způsob, jak AI vyhledávání dohledává podklady k odpovědi. Vysvětlujeme, jak funguje a proč pro AI viditelnost dál platí SEO."
+answer: "RAG je zkratka pro generování rozšířené o vyhledávání: model si k dotazu nejdřív dohledá relevantní úseky obsahu z indexu a teprve z nich složí odpověď s odkazy. Podle veřejných popisů na tomto principu fungují i Google AI Overviews a AI Mode nad indexem Vyhledávání, takže indexovatelnost a SEO dál hrají důležitou roli."
+slug: "rag-ai-vyhledavani"
+category: "analysis"
+updated: "2026-07-11"
+keywords:
+  - "rag ai"
+  - "jak funguje ai vyhledávání"
+  - "retrieval augmented generation"
+  - "rag seo"
+  - "rag google ai overviews"
+variant: "rich"
+stats:
+  - value: "dohledání"
+    label: "RAG nejdřív dohledá relevantní úseky obsahu, teprve pak model složí odpověď"
+  - value: "index"
+    label: "Google AI Overviews i AI Mode dohledávají z indexu Vyhledávání — indexovatelnost je obvykle základní podmínka"
+  - value: "význam"
+    label: "vektory významu hledají významově nejbližší úseky obsahu, ne shodu klíčových slov"
+  - value: "čerstvost"
+    label: "RAG čerpá z živého indexu; aktualizovaný obsah se může dostat do odpovědi bez přetrénování modelu"
+faq:
+  - q: "Co je RAG jednoduše?"
+    a: "RAG je zkratka pro generování odpovědi rozšířené o vyhledávání (anglicky retrieval-augmented generation). Znamená to, že jazykový model neodpovídá jen z toho, co se naučil při tréninku, ale nejdřív si k vašemu dotazu dohledá relevantní úseky obsahu z nějaké znalostní báze nebo indexu a teprve z nich složí odpověď. Díky tomu je odpověď opřená o konkrétní zdroje, aktuálnější a méně náchylná k vymýšlení."
+  - q: "Jak RAG funguje krok za krokem?"
+    a: "Nejprve přijde dotaz. Systém pak prohledá index nebo znalostní bázi a najde nejrelevantnější úseky obsahu; často k tomu používá vektory významu, kdy se dotaz i dokumenty převedou na čísla podle významu a hledají se ty s nejbližším významem. Nalezené úseky se vloží modelu jako kontext a model z nich složí odpověď a odkáže na zdroje. Model tedy neodpovídá zpaměti, ale z toho, co si dohledal."
+  - q: "Používá RAG i Google?"
+    a: "Podle veřejných popisů Google AI Overviews i AI Mode fungují na principu podobném RAG nad standardním indexem Vyhledávání Google. Dohledávají tedy podklady z živého indexu důvěryhodných zdrojů, ne jen z toho, co se model naučil při tréninku. Proto mohou být odpovědi aktuálnější a proto se do nich mohou dostat i čerstvé stránky. Podobný princip využívají při zapnutém vyhledávání i ChatGPT nebo Perplexity."
+  - q: "Znamená RAG, že klasické SEO je mrtvé?"
+    a: "Spíš naopak. Když AI dohledává odpovědi z indexu Vyhledávání, je indexovatelnost základní podmínkou — co v indexu není, systém obvykle nedohledá. Na tom, co se do odpovědi dostane, se pak výrazně podílí autorita, relevance a struktura obsahu, tedy věci, které řeší i klasické SEO. RAG proto ukazuje, proč spolu SEO a AI viditelnost často úzce souvisejí, jak rozebíráme v článku o tom, proč je AEO a GEO pořád SEO."
+  - q: "Co jsou vektory významu (embeddings)?"
+    a: "Vektory významu, anglicky embeddings, jsou převod textu na čísla podle významu. Dotaz i obsah se zakódují do vektorů a systém hledá ty, které jsou si významově nejblíž — ne ty, které mají shodná klíčová slova. Prakticky to znamená, že pro dohledání je důležitější, jestli obsah pokrývá význam dotazu, než kolikrát v něm zazní přesná fráze. Proto se vyplatí psát přirozeně a tematicky souvisle."
+  - q: "Co RAG nedokáže a kde jsou jeho limity?"
+    a: "RAG není záruka pravdy. Pokud je zdroj špatný, zastaralý nebo v indexu chybí, může být špatná i odpověď. RAG také není paměť modelu — čerpá z toho, co si právě dohledá, ne z toho, co si pamatuje. A není to trénink: znalostní báze se aktualizuje bez přetrénování, takže změna obsahu se může projevit v odpovědích, ale kvalita odpovědi vždy závisí na kvalitě dohledaných zdrojů."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**RAG neboli generování rozšířené o vyhledávání (anglicky retrieval-augmented generation) je způsob, jak AI vyhledávání odpovídá: místo aby model čerpal jen z tréninku, nejdřív si k dotazu dohledá relevantní úseky obsahu z indexu a z nich složí odpověď s odkazy.** Podle veřejných popisů na tomto principu fungují i [Google AI Overviews a AI Mode](/blog/google-ai-mode/) nad indexem Vyhledávání — takže klasické SEO a indexovatelnost dál hrají velkou roli. Tento článek vysvětluje, jak RAG funguje a co z toho plyne pro obsah, který chce být v AI vidět.
+
+## Co je RAG
+
+Jazykový model se při tréninku naučí spoustu věcí, ale má dva problémy: neví o ničem novém, co vzniklo po tréninku, a občas si věci vymyslí. **RAG oba problémy zmírňuje tím, že si model před odpovědí dohledá relevantní podklady.** Nejdřív se k dotazu dohledá relevantní obsah a teprve z něj model skládá odpověď.
+
+Výsledkem může být odpověď **opřená o konkrétní zdroje** — často aktuálnější a méně náchylná k halucinacím, pokud jsou dohledané podklady kvalitní. V ideálním případě lze hlavní tvrzení dohledat zpět ke zdroji, i když v praxi to nebývá stoprocentní.
+
+<Insight tone="key">
+Klíčový posun: model neodpovídá zpaměti, ale z toho, co si právě dohledal. To znamená, že o vaší viditelnosti v AI odpovědi nerozhoduje jen kvalita modelu; významnou roli hraje i to, jestli je váš obsah dohledatelný a dobře strukturovaný.
+</Insight>
+
+## Jak RAG funguje krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "Dotaz",
+      title: "Uživatel položí otázku",
+      text: "Vstupem je dotaz uživatele. U AI vyhledávání bývá delší a konverzační než klasické vyhledávání.",
+    },
+    {
+      label: "Dohledání",
+      title: "Systém najde relevantní úseky",
+      text: "Systém prohledá index nebo znalostní bázi a najde nejrelevantnější úseky obsahu. Často k tomu používá vektory významu — dotaz i dokumenty se převedou na číselné reprezentace podle významu a hledají se ty s nejbližším významem, ne shoda klíčových slov.",
+    },
+    {
+      label: "Kontext",
+      title: "Úseky se vloží do zadání pro model",
+      text: "Nalezené úseky se přidají modelu jako kontext, ze kterého má vycházet. Model tak dostane konkrétní podklady k dotazu, které mohou být aktuálnější než samotný trénink modelu.",
+    },
+    {
+      label: "Odpověď",
+      title: "Model složí odpověď s odkazy",
+      text: "Z vloženého kontextu model složí odpověď a odkáže na zdroje. Neodpovídá tedy zpaměti, ale z toho, co se pro daný dotaz dohledalo.",
+    },
+  ]}
+/>
+
+## Jak to používá Google
+
+Podle veřejných popisů stojí [Google AI Overviews i AI Mode](/blog/google-ai-mode/) na principu podobném RAG nad **standardním indexem Vyhledávání Google**. Dohledávají tedy podklady z živého indexu, ne jen z toho, co se model naučil při tréninku — proto mohou být odpovědi aktuálnější a mohou se do nich dostat i čerstvé stránky.
+
+RAG také souvisí s tím, jak AI Mode rozkládá dotaz. Systém dotaz rozdělí na víc podotázek a pro každou dělá vlastní dohledání — mechaniku rozebíráme v článku o [query fan-out](/blog/query-fan-out-ai-mode/). To, jak se z dohledaných úseků nakonec vybere citace, pak popisujeme v článku o tom, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+
+<CompareTable
+  caption="Odpověď s dohledáním (RAG) versus jen z tréninku modelu"
+  columns={["S RAG (AI vyhledávání)", "Jen z tréninku modelu"]}
+  rows={[
+    { icon: "📚", label: "Zdroj odpovědi", left: "Dohledané úseky z indexu", right: "Jen to, co se model naučil" },
+    { icon: "🕐", label: "Aktuálnost", left: "Čerpá z živého indexu", right: "Omezená datem tréninku" },
+    { icon: "🔗", label: "Zdroje", left: "Lze odkázat a ověřit", right: "Bez dohledatelného zdroje" },
+    { icon: "⚠️", label: "Riziko vymýšlení", left: "Nižší — opřené o zdroje", right: "Vyšší — bez opory" },
+  ]}
+/>
+
+## Co z toho plyne pro SEO a obsah
+
+Nejdůležitější závěr: **když AI dohledává z indexu Vyhledávání, klasické SEO neztrácí smysl a často zůstává důležitou podmínkou viditelnosti.** RAG tak ukazuje, proč spolu AI viditelnost a SEO často úzce souvisejí, jak rozebíráme v článku o tom, proč je [AEO a GEO pořád SEO](/blog/aeo-geo-je-porad-seo/).
+
+<Checklist title="Co pomáhá, aby vás RAG dohledal a použil" items={[
+  { title: "Indexovatelnost", desc: "Co není v indexu Vyhledávání, systém obvykle nedohledá. Technické SEO a přístupnost pro vyhledávací roboty jsou základ." },
+  { title: "Pokrytí významu", desc: "Vektory významu pomáhají hledat významovou blízkost, ne jen shodu frází. Pište přirozeně a tematicky souvisle." },
+  { title: "Pasážová struktura", desc: "Krátké samostatně srozumitelné úseky se snáz dohledávají a citují." },
+  { title: "Jasná tvrzení s daty", desc: "RAG hledá konkrétní odpovědi; podložené, jasné věty se používají líp." },
+  { title: "Čerstvost", desc: "Živý index znamená, že [aktualizovaný obsah](/blog/aktualizace-obsahu-pro-ai/) má šanci se do odpovědi dostat." },
+  { title: "Jasné entity", desc: "Konzistentní pojmenování a [strukturovaná data](/blog/strukturovana-data-pro-ai/) pomáhají model spojit obsah s tématem." },
+]} />
+
+## Co RAG není
+
+<MistakeGrid>
+  <Mistake number="01" title="AI, která si pamatuje všechno">
+    RAG není paměť modelu. Model se neopírá jen o to, co si nese z tréninku — při odpovědi pracuje i s tím, co si k dotazu právě dohledá v indexu.
+  </Mistake>
+  <Mistake number="02" title="Trénink modelu">
+    RAG není přetrénování. Znalostní báze se aktualizuje samostatně — změníte obsah a odpovědi se mohou změnit, aniž by se model učil znovu.
+  </Mistake>
+  <Mistake number="03" title="Záruka pravdy">
+    RAG negarantuje správnost. Pokud je dohledaný zdroj špatný, zastaralý nebo chybí, může být špatná i odpověď.
+  </Mistake>
+  <Mistake number="04" title="Konec SEO">
+    RAG neznamená konec SEO. Naopak — u systémů, které dohledávají z indexu Vyhledávání, zůstávají indexovatelnost a kvalita obsahu důležité.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Držet web indexovatelný a technicky v pořádku.",
+    "Psát tematicky souvisle a pokrývat význam dotazů.",
+    "Dělit obsah na krátké samostatně srozumitelné úseky.",
+    "Podkládat tvrzení daty a psát jasné odpovědi.",
+    "Udržovat obsah čerstvý, ať se dostane do živého indexu.",
+  ]}
+  dontItems={[
+    "Spoléhat, že si vás AI zapamatuje i bez dohledatelného obsahu.",
+    "Cpát klíčová slova místo pokrytí významu.",
+    "Skládat obsah do dlouhých nedělených bloků.",
+    "Publikovat vágní tvrzení bez opory.",
+    "Považovat AI vyhledávání za důvod přestat s SEO.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **RAG = generování rozšířené o vyhledávání** — model si k dotazu nejdřív dohledá obsah a z něj složí odpověď.
+- **Podle veřejných popisů na tomto principu fungují Google AI Overviews i AI Mode** — dohledávají z indexu Vyhledávání.
+- **Pro odpovědi z indexu indexovatelnost bývá základní podmínkou** — co v indexu není, systém obvykle nedohledá.
+- **Vektory významu hledají významovou blízkost, ne jen fráze** — pište přirozeně a pokrývejte téma.
+- **Pasáže, jasná tvrzení a čerstvost** pomáhají obsah dohledat a použít.
+- **RAG ukazuje, proč SEO a AI viditelnost často souvisejí** — ověřte si to [testem AI viditelnosti](/blog/test-viditelnosti-v-ai/).
+
+---
+
+**Chcete vědět, jestli je váš obsah pro RAG dohledatelný a použitelný?** [AI SEO audit za 9 990 Kč](/audit/) prověří indexovatelnost, strukturu a entity vašeho webu z pohledu toho, jak AI dohledává a skládá odpovědi — a navrhne, kde přidat nejvíc. Pokud chcete začít sami, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje wireframy stránek s pasážovou strukturou, která může usnadnit dohledání a použití obsahu v AI odpovědích.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis fungování RAG a AI vyhledávání vychází z veřejné dokumentace a analýz (Google Cloud, Search Engine Land a další) k létu 2026; jde o zjednodušený popis, konkrétní implementace se u jednotlivých platforem liší a vyvíjejí.*
