@@ -4,6 +4,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
@@ -15,13 +16,8 @@ const articles = (await getCollection("articles")).sort((a, b) =>
   b.data.updated.localeCompare(a.data.updated),
 );
 
-/** Category labels pro filter chips + per-card tag. */
-const categoryLabel: Record<string, string> = {
-  tutorial: "Tutorial",
-  analysis: "Analýza",
-  defensive: "Defenzivní",
-  "case-study": "Case study",
-};
+/** Category labels pro filter chips + per-card tag — z i18n vrstvy (fork přeloží ui.category). */
+const categoryLabel = ui.category;
 
 /** Reading time per článek — dynamicky z body. */
 function calcReading(body: string): { wordCount: number; minutes: number } {
@@ -143,10 +139,10 @@ const answerText =
   <div class="page">
     <!-- HERO -->
     <section class="hero">
-      <nav class="hero__crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
+      <nav class="hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
         <span class="crumb-sep">›</span>
-        <span class="hero__crumb-pill">Blog</span>
+        <span class="hero__crumb-pill">{ui.crumbBlog}</span>
       </nav>
 
       <h1 class="display hero__title">
@@ -168,15 +164,15 @@ const answerText =
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">Stručná definice</span>
+        <span class="answer__mark">{ui.answerDefinition}</span>
         <p class="answer__text">{answerText}</p>
       </div>
     </section>
 
     <!-- FILTER CHIPS -->
-    <section class="filter-bar" aria-label="Filtr článků podle kategorie">
+    <section class="filter-bar" aria-label={ui.ariaArticleFilter}>
       <button class="chip chip--active" data-filter="all" type="button">
-        Všechny <span class="chip__count">({articles.length})</span>
+        {ui.filterAll} <span class="chip__count">({articles.length})</span>
       </button>
       {
         usedCategories.map((cat) => {
@@ -192,7 +188,7 @@ const answerText =
     </section>
 
     <!-- ARTICLES GRID -->
-    <section class="articles" aria-label="Seznam článků">
+    <section class="articles" aria-label={ui.ariaArticleList}>
       <div class="articles__grid">
         {
           articles.map((entry) => {
@@ -214,15 +210,15 @@ const answerText =
                 <div class="acard__body">
                   <div class="acard__header">
                     <span class="acard__tag">{categoryLabel[entry.data.category] ?? entry.data.category}</span>
-                    <span class="acard__time">{reading.minutes} min</span>
+                    <span class="acard__time">{reading.minutes} {ui.metaMinShort}</span>
                   </div>
                   <h2 class="acard__title">{entry.data.title}</h2>
                   <p class="acard__desc">{entry.data.description}</p>
                   <div class="acard__meta">
                     <span>{entry.data.updated}</span>
-                    <span>~{reading.wordCount.toLocaleString(site.inLanguage)} slov</span>
+                    <span>~{reading.wordCount.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
                     <span class="acard__cta">
-                      Číst <span aria-hidden="true">→</span>
+                      {ui.cardReadMore} <span aria-hidden="true">→</span>
                     </span>
                   </div>
                 </div>
@@ -241,10 +237,8 @@ const answerText =
     <!-- FAQ -->
     <section class="faq" aria-labelledby="faq-title">
       <header class="faq__head">
-        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-        <h2 id="faq-title" class="faq__title">
-          Šest otázek, které k <span class="hl">blogu</span> <strong>nejčastěji padají</strong>
-        </h2>
+        <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
+        <h2 id="faq-title" class="faq__title" set:html={ui.blogIndexFaqTitleHtml} />
       </header>
 
       <dl class="faq__list">

@@ -30,6 +30,7 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
 
 interface Props {
   entry: CollectionEntry<"articles">;
@@ -108,10 +109,10 @@ const _bundlerHints = [
 <div class="rich-page">
   <!-- HERO — clean, no stat tiles, žádný rail (chytřeji přidáme později) -->
   <section class="rhero">
-    <nav class="rhero__crumbs" aria-label="Drobečková navigace">
-      <a href="/">Úvod</a>
+    <nav class="rhero__crumbs" aria-label={ui.ariaBreadcrumb}>
+      <a href="/">{ui.crumbHome}</a>
       <span class="crumb-sep">›</span>
-      <a href="/blog/">Blog</a>
+      <a href="/blog/">{ui.crumbBlog}</a>
       <span class="crumb-sep">›</span>
       <span class="rhero__crumb-pill">{crumbLabel}</span>
     </nav>
@@ -121,10 +122,10 @@ const _bundlerHints = [
     <p class="rhero__sub">{entry.data.description}</p>
 
     <div class="rhero__meta">
-      <span>~{wordCountRounded.toLocaleString(site.inLanguage)} slov</span>
-      <span>{faqCount} častých otázek</span>
-      <span>~{readingMinutes} minut čtení</span>
-      <span>Aktualizováno: {entry.data.updated}</span>
+      <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
+      <span>{faqCount} {ui.metaFaqs}</span>
+      <span>~{readingMinutes} {ui.metaReadingMins}</span>
+      <span>{ui.metaUpdated} {entry.data.updated}</span>
     </div>
 
     <img
@@ -139,7 +140,7 @@ const _bundlerHints = [
   <!-- ANSWER BLOCK -->
   <section class="ranswer">
     <div class="ranswer__inner">
-      <span class="ranswer__mark">Stručná odpověď</span>
+      <span class="ranswer__mark">{ui.answerShort}</span>
       <p class="ranswer__text">{entry.data.answer}</p>
     </div>
   </section>
@@ -148,9 +149,9 @@ const _bundlerHints = [
   <div class="rgrid">
     {
       headings.length > 0 && (
-        <aside class="rtoc" aria-label="Obsah článku">
+        <aside class="rtoc" aria-label={ui.ariaToc}>
           <div class="rtoc__sticky">
-            <span class="rtoc__label">V tomto článku</span>
+            <span class="rtoc__label">{ui.tocLabelRich}</span>
             <nav class="rtoc__nav">
               <ol class="rtoc__list">
                 {headings.map((h) => (
@@ -182,9 +183,9 @@ const _bundlerHints = [
     entry.data.faq && entry.data.faq.length > 0 && (
       <section class="rfaq" aria-labelledby="rfaq-title">
         <header class="rfaq__head">
-          <span class="rfaq__eyebrow">FAQ · {entry.data.faq.length} otázek</span>
+          <span class="rfaq__eyebrow">{ui.richFaqEyebrowHtml.replace("{n}", String(entry.data.faq.length))}</span>
           <h2 id="rfaq-title" class="rfaq__title">
-            Časté otázky, které k tématu padají
+            {ui.richFaqTitle}
           </h2>
         </header>
 
@@ -207,9 +208,9 @@ const _bundlerHints = [
   <section class="rback">
     <a href="/blog/" class="rback__primary">
       <span aria-hidden="true">←</span>
-      Všechny články v blogu
+      {ui.allArticles}
     </a>
-    <a href="/" class="rback__secondary">Zpět na úvod</a>
+    <a href="/" class="rback__secondary">{ui.backToHome}</a>
   </section>
 </div>
 

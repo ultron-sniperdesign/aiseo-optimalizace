@@ -4,6 +4,7 @@ import RichLayout from "~/components/article/RichLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -19,15 +20,9 @@ const { Content } = await render(entry);
 const useRich = entry.data.variant === "rich";
 
 /**
- * Per-category crumb context label.
+ * Per-category crumb context label — z i18n vrstvy (fork přeloží ui.category).
  */
-const crumbByCategory: Record<string, string> = {
-  tutorial: "Tutorial",
-  analysis: "Analýza",
-  defensive: "Defenzivní",
-  "case-study": "Case study",
-};
-const crumbLabel = crumbByCategory[entry.data.category] ?? "Článek";
+const crumbLabel = ui.category[entry.data.category] ?? ui.categoryFallback;
 
 /**
  * Word count + reading time dynamicky z entry.body (raw markdown).
@@ -123,7 +118,7 @@ const ogImage = `/og/${entry.data.slug}.png`;
   image={ogImage}
   ogType="article"
   breadcrumb={[
-    { label: "Blog", href: "/blog/" },
+    { label: ui.crumbBlog, href: "/blog/" },
     { label: entry.data.title, href: `/blog/${entry.data.slug}/` },
   ]}
 >
@@ -140,10 +135,10 @@ const ogImage = `/og/${entry.data.slug}.png`;
   <div class="page">
     <!-- HERO -->
     <section class="hero">
-      <nav class="hero__crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
+      <nav class="hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
         <span class="crumb-sep">›</span>
-        <a href="/blog/">Blog</a>
+        <a href="/blog/">{ui.crumbBlog}</a>
         <span class="crumb-sep">›</span>
         <span class="hero__crumb-pill">{crumbLabel}</span>
       </nav>
@@ -151,17 +146,17 @@ const ogImage = `/og/${entry.data.slug}.png`;
       <h1 class="display hero__title">{entry.data.title}</h1>
 
       <div class="hero__meta">
-        <span>~{wordCountRounded.toLocaleString(site.inLanguage)} slov</span>
-        <span>{faqCount} častých otázek</span>
-        <span>~{readingMinutes} minut čtení</span>
-        <span>Aktualizováno: {entry.data.updated}</span>
+        <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
+        <span>{faqCount} {ui.metaFaqs}</span>
+        <span>~{readingMinutes} {ui.metaReadingMins}</span>
+        <span>{ui.metaUpdated} {entry.data.updated}</span>
       </div>
     </section>
 
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">Stručná odpověď</span>
+        <span class="answer__mark">{ui.answerShort}</span>
         <p class="answer__text">{entry.data.answer}</p>
       </div>
     </section>
@@ -181,10 +176,8 @@ const ogImage = `/og/${entry.data.slug}.png`;
       entry.data.faq && entry.data.faq.length > 0 && (
         <section class="faq" aria-labelledby="faq-title">
           <header class="faq__head">
-            <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-            <h2 id="faq-title" class="faq__title">
-              <span class="hl">Časté otázky</span>, které k tématu <strong>nejčastěji padají</strong>
-            </h2>
+            <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
+            <h2 id="faq-title" class="faq__title" set:html={ui.blogFaqTitleHtml} />
           </header>
 
           <dl class="faq__list">
@@ -206,9 +199,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
     <section class="back-cta">
       <a href="/blog/" class="back-cta__primary">
         <span aria-hidden="true">←</span>
-        Všechny články v blogu
+        {ui.allArticles}
       </a>
-      <a href="/" class="back-cta__secondary">Zpět na úvod</a>
+      <a href="/" class="back-cta__secondary">{ui.backToHome}</a>
     </section>
   </div>
   )}

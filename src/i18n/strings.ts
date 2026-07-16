@@ -127,6 +127,7 @@ export const ui = {
   metaFaqs: "častých otázek",
   metaReadingMins: "minut čtení",
   metaUpdated: "Aktualizováno:",
+  metaMinShort: "min", // krátká forma na blog kartách (acard__time)
 
   // Obsah (TOC)
   tocLabel: "Obsah",
@@ -140,6 +141,12 @@ export const ui = {
   // Back CTA
   backToHome: "Zpět na úvod",
   allArticles: "Všechny články v blogu",
+
+  // Blog listing (index) — filtr + karty + aria labely
+  filterAll: "Všechny",
+  cardReadMore: "Číst",
+  ariaArticleFilter: "Filtr článků podle kategorie",
+  ariaArticleList: "Seznam článků",
 
   // Sekce [slug] — kontextový label v breadcrumb pillu (klíč = abbr)
   sectionContext: {
@@ -188,6 +195,16 @@ export const ui = {
   // Sekce [slug] — rich FAQ titulek ({abbr} nahradí šablona)
   sectionFaqTitleHtml:
     'Otázky, které se k <span class="hl">{abbr}</span> <strong>ptají nejčastěji</strong>',
+
+  // Blog reading page [slug] (non-rich) — FAQ titulek (set:html)
+  blogFaqTitleHtml:
+    '<span class="hl">Časté otázky</span>, které k tématu <strong>nejčastěji padají</strong>',
+  // Blog index — FAQ titulek (set:html)
+  blogIndexFaqTitleHtml:
+    'Šest otázek, které k <span class="hl">blogu</span> <strong>nejčastěji padají</strong>',
+  // RichLayout (variant: rich) — FAQ eyebrow ({n} = počet otázek) + titulek
+  richFaqEyebrowHtml: "FAQ · {n} otázek",
+  richFaqTitle: "Časté otázky, které k tématu padají",
 };
 
 export const emailCapture = {
