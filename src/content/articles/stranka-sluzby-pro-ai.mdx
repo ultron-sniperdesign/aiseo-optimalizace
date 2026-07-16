@@ -1,0 +1,212 @@
+---
+title: "Stránka služby pro AI: návod pro B2B weby"
+description: "Jak upravit stránku služby, aby z ní AI i vyhledávače lépe chápaly nabídku. Co uvést o rozsahu, ceně i strukturovaných datech typu Service."
+answer: "Stránka služby je stránka popisující jednu konkrétní službu. Aby z ní AI mohla čerpat spolehlivěji, měla by odpovídat na to, co se lidé ptají: co to je, pro koho, co je v tom, kolik to zhruba stojí a jak to probíhá. Pomáhají strukturovaná data typu Service a krátká odpověď nahoře."
+slug: "stranka-sluzby-pro-ai"
+category: "tutorial"
+updated: "2026-07-11"
+keywords:
+  - "stránka služby"
+  - "seo pro služby"
+  - "strukturovaná data typu service"
+  - "b2b stránka služby ai"
+  - "ceny služeb na webu"
+variant: "rich"
+stats:
+  - value: "1 služba"
+    label: "ve většině případů pomáhá jedna hlavní služba na jednu stránku"
+  - value: "cenový rámec"
+    label: "bez ceny nebo aspoň rozpětí se hůř odpovídá na dotaz, kolik služba stojí"
+  - value: "pro koho"
+    label: "vymezení, pro koho služba je a pro koho ne, je silný signál relevance"
+  - value: "Service"
+    label: "typ strukturovaných dat pro služby — obvykle nevytváří vlastní vzhled výsledku, pomáhá strojové srozumitelnosti"
+howto:
+  name: "Jak postavit stránku služby, ze které může AI čerpat"
+  steps:
+    - name: "Začněte krátkou definicí služby"
+      text: "Nahoru dejte 40 až 60 slov o tom, co služba je, pro koho je a co z ní zákazník má. Musí dávat smysl samostatně, bez zbytku stránky."
+    - name: "Vymezte, pro koho to je a pro koho ne"
+      text: "Napište konkrétně, komu je služba určená a komu se nehodí. Šetří to čas oběma stranám a je to jasný signál relevance."
+    - name: "Popište rozsah a průběh"
+      text: "Uveďte, co konkrétně je v ceně, jaké jsou výstupy a jak spolupráce probíhá krok za krokem. Obecné fráze o individuálním přístupu tady nestačí."
+    - name: "Uveďte cenu nebo cenový rámec"
+      text: "Ideálně konkrétní cenu. Pokud je nacenění individuální, dejte aspoň rámec: od kolika, typické rozpětí podle rozsahu nebo hodinovou sazbu."
+    - name: "Doplňte strukturovaná data typu Service"
+      text: "Přidejte JSON-LD s typem Service — typicky název, popis, poskytovatele a případně oblast působení či cenovou nabídku, pokud jsou na stránce skutečně uvedené. Data musí odpovídat tomu, co je vidět."
+faq:
+  - q: "Co je stránka služby a čím se liší od produktové?"
+    a: "Je to stránka popisující jednu konkrétní službu, ne zboží v e-shopu. Hlavní rozdíl je, že služba obvykle nemá pevnou cenu ani skladovou dostupnost a často se naceňuje podle rozsahu. O to důležitější je popsat slovy, co je v ní obsažené, pro koho je a v jakém cenovém rámci se pohybuje."
+  - q: "Musím na stránku služby uvádět cenu?"
+    a: "Nemusíte, ale pak vaše stránka na nejčastější dotaz konkrétně neodpovídá. Když se někdo ptá, kolik služba stojí, AI systémy obvykle vycházejí z informací, které najdou na webu; pokud u vás nic není, mohou použít obecnější nebo cizí zdroje. Řešením nemusí být přesná cena: často stačí rámec, tedy od kolika, typické rozpětí podle rozsahu nebo hodinová sazba."
+  - q: "Co jsou strukturovaná data typu Service?"
+    a: "Je to typ ze slovníku Schema.org, kterým strojově čitelně popíšete službu: název, popis, kdo ji poskytuje, kde ji poskytuje a případně za kolik. Pomáhá vyhledávačům i AI pochopit, o jakou službu jde. Na rozdíl od produktů ale typ Service obvykle nevytváří samostatný výsledek s vlastním vzhledem; jeho hlavní přínos je strojová srozumitelnost."
+  - q: "Proč vymezovat, pro koho služba není?"
+    a: "Protože příliš široké vymezení zhoršuje pochopení toho, pro jaké situace je služba vhodná. Konkrétní vymezení pomáhá zákazníkovi rychle poznat, jestli je na správné adrese, a dává vyhledávačům i AI jasnější představu o tom, k jakým dotazům se stránka hodí. Zároveň vám to ušetří poptávky, které stejně nechcete."
+  - q: "Mám dát všechny služby na jednu stránku?"
+    a: "Ve většině případů je lepší jedna hlavní služba na jednu stránku. Když je na jedné stránce mnoho různých služeb, žádná z nich není popsaná dost konkrétně a hůř se z ní čerpá odpověď na konkrétní dotaz. Rozpad na samostatné stránky navíc umožní u každé uvést vlastní rozsah, cenu i strukturovaná data."
+  - q: "Musí strukturovaná data odpovídat obsahu stránky?"
+    a: "Ano, a je to zásadní. Pokud v datech uvedete cenu, rozsah nebo oblast působení, musí to být vidět i na samotné stránce. Nesoulad mezi daty a viditelným obsahem je riziko a u služby, kde jde o peníze zákazníka, obzvlášť."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Stránka služby je stránka popisující jednu konkrétní službu.** Aby z ní AI mohla čerpat spolehlivěji, měla by odpovídat na to, co se lidé ptají: co to je, pro koho, co je v tom, kolik to zhruba stojí a jak to probíhá. Pomáhají strukturovaná data typu `Service` a krátká odpověď nahoře. Ve strukturovaných datech pak stačí popsat to, co je na stránce skutečně vidět.
+
+## Proč jsou stránky služeb pro AI slabší než produktové
+
+Produktová stránka to má jednodušší: má cenu, dostupnost, parametry, často i recenze — a k tomu strukturovaná data, ze kterých jde všechno přečíst. Podrobněji to řeší [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/).
+
+Stránka služby bývá pravý opak. Místo informací na ní stojí, že jsme lídr na trhu, máme individuální přístup a že nás máte kontaktovat. To je text, ze kterého se nedá nic vyčíst — a tedy ani citovat.
+
+<Insight tone="key">
+Když se někdo zeptá „kolik stojí ta služba", AI odpoví z toho, co najde. Pokud u vás není ani rámcová odpověď, vezme ji spíš od konkurence — nebo odpoví jen obecně. Chybějící informace není neutrální stav; je to prostor, který vyplní někdo jiný.
+</Insight>
+
+## Co má stránka služby obsahovat
+
+<CompareTable
+  caption="Otázky, na které stránka služby má odpovídat"
+  columns={["Blok", "Co tam patří"]}
+  rows={[
+    { icon: "📌", label: "Krátká definice", left: "Nahoře", right: "40 až 60 slov: co to je, pro koho, co z toho zákazník má" },
+    { icon: "🎯", label: "Pro koho", left: "Vymezení", right: "Komu je služba určená — a komu se nehodí" },
+    { icon: "📦", label: "Rozsah", left: "Konkrétně", right: "Co je v ceně, jaké jsou výstupy, co zákazník dostane" },
+    { icon: "💰", label: "Cena", left: "Aspoň rámec", right: "Konkrétní cena, rozpětí podle rozsahu, nebo hodinová sazba" },
+    { icon: "🔄", label: "Průběh", left: "V krocích", right: "Jak spolupráce probíhá a co se stane po ozvání" },
+    { icon: "🪪", label: "Kdo to dělá", left: "Doložitelně", right: "Autor nebo tým s reálnou zkušeností; viz E-E-A-T (zkušenost, odbornost, autorita, důvěryhodnost)" },
+  ]}
+/>
+
+## Postup krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "Definice",
+      title: "Začněte krátkou odpovědí",
+      text: "Nahoru 40 až 60 slov: co služba je, pro koho a co z ní zákazník má. Musí dávat smysl i vytržené ze stránky.",
+    },
+    {
+      label: "Pro koho",
+      title: "Vymezte cílovou skupinu",
+      text: "Napište konkrétně, komu je služba určená a komu se nehodí. Vymezení je signál relevance, ne ztráta zákazníků.",
+    },
+    {
+      label: "Rozsah",
+      title: "Popište, co je v tom a jak to probíhá",
+      text: "Konkrétní výstupy a kroky spolupráce. Fráze o individuálním přístupu tady nic neřeknou.",
+    },
+    {
+      label: "Cena",
+      title: "Uveďte cenu nebo aspoň rámec",
+      text: "Ideálně konkrétní číslo. U individuálního nacenění stačí od kolika, typické rozpětí, nebo hodinová sazba.",
+    },
+    {
+      label: "Data",
+      title: "Doplňte strukturovaná data typu Service",
+      text: "JSON-LD s názvem, popisem a poskytovatelem; oblast působení nebo cenu jen tehdy, když jsou na stránce vidět.",
+    },
+  ]}
+/>
+
+## Příklad strukturovaných dat
+
+Takhle může vypadat zjednodušený popis služby typem `Service`:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI SEO audit",
+  "serviceType": "AI SEO audit",
+  "description": "Revize webu z pohledu viditelnosti v AI odpovědích a ve vyhledávání.",
+  "provider": { "@type": "Organization", "name": "Vaše firma s.r.o." },
+  "areaServed": { "@type": "Country", "name": "Česko" },
+  "offers": {
+    "@type": "Offer",
+    "price": "9990",
+    "priceCurrency": "CZK"
+  }
+}
+```
+
+Ukázka je zjednodušené minimum, ne univerzální šablona: konkrétní vlastnosti doplňte jen tehdy, když odpovídají viditelnému obsahu stránky. Pokud uvádíte `offers`, cena by měla být na stránce jasně viditelná a vztahovat se ke stejné službě. Volitelně lze doplnit i cílovou skupinu (`audience`), pro základní nasazení ji ale často nepotřebujete.
+
+Typ `Service` navíc obvykle nevytváří samostatný výsledek s vlastním vzhledem — nečekejte od něj hvězdičky ani cenovku v odkazu. Smysl je jinde: pomoci strojům lépe přečíst, o jakou službu jde a kdo ji poskytuje; případně i další údaje, pokud jsou na stránce skutečně uvedené. Obecněji to rozebírají [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/).
+
+## Cena: nejcitlivější bod
+
+„Ceny neuvádíme, je to individuální." Rozumný důvod to má — jenže z pohledu někoho, kdo se ptá, je to prostě chybějící odpověď.
+
+U složitých B2B služeb nemusí být pevná cena realistická a nutit ji do stránky za každou cenu nedává smysl. U některých služeb je vhodnější uvést rámec, model nacenění nebo příklady scénářů než jednu pevnou částku. I tehdy je to ale odpověď — na rozdíl od mlčení.
+
+<Checklist
+  items={[
+    { title: "Konkrétní cena", desc: "Nejlepší varianta, pokud ji lze uvést. Odpověď je jednoznačná." },
+    { title: "Cena od", desc: "Když se rozsah liší, aspoň spodní hranice dá představu o řádu." },
+    { title: "Typické rozpětí", desc: "Například typicky X až Y podle rozsahu. Pořád je to odpověď." },
+    { title: "Hodinová sazba", desc: "U konzultací často nejpoctivější varianta." },
+    { title: "Co cenu ovlivňuje", desc: "Krátce vysvětlete, na čem rozsah závisí — a nacenění přestane být záhada." },
+  ]}
+/>
+
+<Insight tone="warning">
+Uvedení ceny samo o sobě nic nezaručí — negarantuje víc poptávek ani lepší viditelnost. Bez ceny ale vaše stránka na nejčastější dotaz konkrétně neodpovídá, což snižuje šanci, že poslouží jako zdroj konkrétní odpovědi.
+</Insight>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Marketingový text bez informací">
+    Lídr na trhu, individuální přístup, kontaktujte nás. Z takové stránky se nedá nic vyčíst ani citovat.
+  </Mistake>
+  <Mistake number="02" title="Žádná cena ani rámec">
+    Nejčastější dotaz zní kolik to stojí. Bez odpovědi si ji AI spíš vezme jinde.
+  </Mistake>
+  <Mistake number="03" title="Mnoho služeb na jedné stránce">
+    Žádná z nich pak není popsaná konkrétně a hůř se z ní čerpá odpověď. Většinou pomáhá jedna hlavní služba na stránku.
+  </Mistake>
+  <Mistake number="04" title="Data neodpovídají stránce">
+    Cena nebo rozsah ve strukturovaných datech, které na stránce nikde nejsou, jsou nesoulad.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Dát nahoru krátkou definici služby.",
+    "Vymezit, pro koho služba je a pro koho ne.",
+    "Popsat konkrétní rozsah a průběh.",
+    "Uvést cenu nebo aspoň cenový rámec.",
+    "Držet strukturovaná data shodná s obsahem.",
+  ]}
+  dontItems={[
+    "Psát obecné fráze místo informací.",
+    "Nechat cenu úplně bez odpovědi.",
+    "Slučovat všechny služby na jednu stránku.",
+    "Uvádět v datech to, co na stránce není.",
+    "Vymýšlet reference nebo čísla.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Stránka služby má odpovídat na dotazy** — co to je, pro koho, co je v tom, kolik to stojí, jak to probíhá.
+- **Chybějící cena je chybějící odpověď** — aspoň rámec: od kolika, rozpětí, hodinová sazba.
+- **Vymezení pomáhá** — pro koho to je a pro koho ne, viz [B2B kontext](/blog/ai-seo-b2b/).
+- **Většinou jedna služba na stránku** — jinak se konkrétní odpověď hůř dohledává.
+- **Strukturovaná data ať sedí s obsahem** — a nečekejte od nich vlastní vzhled ve výsledcích; proč na konkrétní odpovědi záleží, rozebírá [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+
+---
+
+**Nevíte, jak stránku služby poskládat?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje návrhy stránek včetně prodejní stránky a kontaktu — se strukturou, kterou dobře čtou lidé i AI. Pokud už stránky služeb máte a chcete vědět, co jim chybí, [AI SEO audit za 9 990 Kč](/audit/) je projde a navrhne, co doplnit.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis vlastností typu Service vychází z veřejné dokumentace Schema.org a Googlu, dostupné k 11. 7. 2026. Uvedení ceny ani strukturovaných dat nezaručuje viditelnost v AI odpovědích; konkrétní dopad se liší podle oboru a webu.*
