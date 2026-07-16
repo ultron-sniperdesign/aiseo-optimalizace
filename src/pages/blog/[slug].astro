@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import RichLayout from "~/components/article/RichLayout.astro";
+import AuthorByline from "~/components/article/AuthorByline.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
@@ -145,6 +146,10 @@ const ogImage = `/og/${entry.data.slug}.png`;
 
       <h1 class="display hero__title">{entry.data.title}</h1>
 
+      <div class="hero__byline">
+        <AuthorByline />
+      </div>
+
       <div class="hero__meta">
         <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
         <span>{faqCount} {ui.metaFaqs}</span>
@@ -280,6 +285,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
     color: var(--color-ink-muted);
     max-width: 50rem;
     margin: 0 0 1.75rem;
+  }
+  .hero__byline {
+    margin: 1.4rem 0 1.5rem;
   }
   .hero__meta {
     font-family: var(--font-sans);

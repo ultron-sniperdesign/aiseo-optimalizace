@@ -29,6 +29,7 @@ import AntiPersona from "~/components/blocks/AntiPersona.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import AuthorByline from "~/components/article/AuthorByline.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
@@ -120,6 +121,10 @@ const _bundlerHints = [
     <h1 class="rhero__title">{entry.data.title}</h1>
 
     <p class="rhero__sub">{entry.data.description}</p>
+
+    <div class="rhero__byline">
+      <AuthorByline />
+    </div>
 
     <div class="rhero__meta">
       <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
@@ -381,6 +386,9 @@ const _bundlerHints = [
     color: var(--color-ink-muted);
     max-width: 50rem;
     margin: 0 0 2rem;
+  }
+  .rhero__byline {
+    margin: 0 0 1.5rem;
   }
   .rhero__meta {
     font-family: var(--font-sans);
