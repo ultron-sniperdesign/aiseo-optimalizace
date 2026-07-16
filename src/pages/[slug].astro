@@ -6,6 +6,7 @@ import HeroVideo from "~/components/blocks/HeroVideo.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
+import { buildPersonRef } from "~/lib/jsonld";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -109,12 +110,7 @@ const articleJsonLd = {
   wordCount,
   timeRequired: `PT${readingMinutes}M`,
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
-  author: {
-    "@type": "Person",
-    name: site.author,
-    url: "https://www.sniperdesign.cz/",
-    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
-  },
+  author: buildPersonRef(SITE_ORIGIN),
   publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 

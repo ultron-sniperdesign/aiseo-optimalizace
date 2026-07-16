@@ -4,6 +4,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import { getEntry, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
+import { buildPersonRef } from "~/lib/jsonld";
 
 const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
 if (!entry) {
@@ -67,12 +68,7 @@ const articleJsonLd = {
   wordCount,
   timeRequired: `PT${readingMinutes}M`,
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
-  author: {
-    "@type": "Person",
-    name: site.author,
-    url: "https://www.sniperdesign.cz/",
-    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
-  },
+  author: buildPersonRef(SITE_ORIGIN),
   publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
