@@ -22,10 +22,10 @@ export const author = {
   photo: "/autor/kamil.jpg" as string | null,
 
   /**
-   * URL autorské stránky. `null` = jméno v byline je plain text bez odkazu.
-   * Autorská stránka (bod 3) sem doplní `"/autor/kamil/"`.
+   * URL autorské stránky — jméno v byline a AuthorBoxu je odkaz sem.
+   * `null` by vykreslilo plain text (fallback, kdyby stránka neexistovala).
    */
-  url: null as string | null,
+  url: "/autor/kamil/" as string | null,
 
   /** Malý label nad jménem v byline. */
   bylineLabel: "Autor",
@@ -46,5 +46,46 @@ export const author = {
       { href: "https://www.sniperdesign.cz/", label: "Sniper Design" },
       { href: "https://www.megadetail.cz/", label: "MEGA DETAIL" },
     ] as { href: string; label: string }[],
+  },
+
+  /** Autorská stránka /autor/kamil/ (page.astro čte odsud vše přeložitelné). */
+  page: {
+    /** SEO <title>. */
+    seoTitle: "Kamil ze Sniper Design — autor průvodce aiseo-optimalizace.cz",
+    /** Meta description (70–160 znaků). */
+    description:
+      "Kdo píše aiseo-optimalizace.cz: Kamil ze Sniper Design — od 2016 stovky e-shopů na CZ trhu, Zlatý partner Upgates, vlastní e-shop MEGA DETAIL a videa k AI SEO.",
+    breadcrumbLabel: "Autor",
+    eyebrow: "Autor webu",
+    /** Delší lead pod H1 (H1 = author.name). */
+    lead: "Od roku 2016 se ve Sniper Design věnuje stavbě a optimalizaci webů a e-shopů pro český trh. Tenhle web je jeho otevřený zápisník AI SEO: co se osvědčuje u klientů a na vlastním e-shopu MEGA DETAIL, sem přepisuje jako návody, checklisty a videa.",
+    /** Credential dlaždice (4. dlaždice s počtem článků se skládá dynamicky). */
+    credentials: [
+      { value: "2016", label: "od tohoto roku Zlatý partner platformy Upgates" },
+      { value: "600+", label: "e-shopů na českém trhu za tu dobu" },
+      { value: "MEGA DETAIL", label: "vlastní e-shop — testovací provoz pro rady z článků" },
+    ] as { value: string; label: string }[],
+    /** Dynamická dlaždice: {n} nahradí šablona počtem článků. */
+    credentialArticles: "článků a průvodců na tomto webu",
+
+    /** Transparentnost tvorby obsahu (E-E-A-T + vlastní doporučení webu). */
+    transparency: {
+      eyebrow: "Transparentně",
+      title: "Jak vzniká obsah na tomto webu",
+      text: "Při tvorbě obsahu používáme AI nástroje — na rešerši, osnovu a první verzi textu. Každý článek ale prochází lidskou kontrolou: fakta ověřujeme proti primárním zdrojům, doplňujeme zkušenost z vlastní praxe a za výsledek ručí podepsaný autor. Přesně tak, jak v článcích sami radíme.",
+    },
+
+    /** Sekce s videi (data videí se čtou z content/sections frontmatter). */
+    videos: {
+      eyebrow: "Videoprůvodci",
+      title: "Disciplíny vysvětlené ve videích",
+      note: "Stejná videa najdete přímo v sekcích jednotlivých disciplín.",
+    },
+
+    /** Výpis posledních článků. */
+    articles: {
+      eyebrow: "Z blogu",
+      title: "Poslední články",
+    },
   },
 };
