@@ -30,6 +30,18 @@ export const author = {
   /** Malý label nad jménem v byline. */
   bylineLabel: "Autor",
 
+  /**
+   * Person `sameAs` — profily OSOBY/tváře (autorská stránka je čte do
+   * JSON-LD). Firemní profily (LinkedIn/IG/FB agentury) patří do
+   * Organization sameAs v site.ts, ne sem. YouTube kanál je tady i v org —
+   * brand kanál, ale tvář ve videích je autor.
+   */
+  sameAs: [
+    "https://www.sniperdesign.cz/",
+    "https://www.megadetail.cz/",
+    "https://www.youtube.com/channel/UCgg_pplVfiWhtkULnMHVpOw",
+  ] as string[],
+
   /** Bio box na konci článků (AuthorBox.astro). */
   box: {
     eyebrow: "O autorovi",
@@ -45,6 +57,10 @@ export const author = {
     links: [
       { href: "https://www.sniperdesign.cz/", label: "Sniper Design" },
       { href: "https://www.megadetail.cz/", label: "MEGA DETAIL" },
+      {
+        href: "https://www.youtube.com/channel/UCgg_pplVfiWhtkULnMHVpOw",
+        label: "YouTube",
+      },
     ] as { href: string; label: string }[],
   },
 

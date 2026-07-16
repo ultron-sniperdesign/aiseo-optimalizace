@@ -53,7 +53,7 @@ const personJsonLd = {
   image: `${SITE_ORIGIN}${author.photo ?? "/autor/kamil.jpg"}`,
   description: author.box.bio,
   worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
-  sameAs: author.box.links.map((l) => l.href),
+  sameAs: author.sameAs,
   knowsAbout: [
     "SEO",
     "GEO — Generative Engine Optimization",
