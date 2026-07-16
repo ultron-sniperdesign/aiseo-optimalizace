@@ -30,6 +30,7 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import AuthorByline from "~/components/article/AuthorByline.astro";
+import AuthorBox from "~/components/article/AuthorBox.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
@@ -179,6 +180,9 @@ const _bundlerHints = [
       </div>
     </article>
   </div>
+
+  <!-- AUTHOR BOX — kdo za obsahem stojí (E-E-A-T), hned pod článkem -->
+  <AuthorBox />
 
   <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ -->
   <SniperDesignSmallContact />

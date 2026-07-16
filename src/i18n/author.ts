@@ -29,4 +29,22 @@ export const author = {
 
   /** Malý label nad jménem v byline. */
   bylineLabel: "Autor",
+
+  /** Bio box na konci článků (AuthorBox.astro). */
+  box: {
+    eyebrow: "O autorovi",
+    /**
+     * 3–4 věty, jen ověřitelná fakta (agentura od 2016, Zlatý partner
+     * Upgates, 600+ e-shopů, vlastní e-shop MEGA DETAIL, videa v sekcích).
+     */
+    bio: "Kamil stojí za obsahem tohoto webu. Se Sniper Design od roku 2016 staví a optimalizuje weby a e-shopy pro český trh — jako Zlatý partner platformy Upgates s více než 600 e-shopy za sebou. Vlastní e-shop MEGA DETAIL mu slouží jako testovací provoz: co radí v článcích, zkouší nejdřív na svém. K disciplínám SEO, GEO a AEO natočil videoprůvodce, které najdete přímo v sekcích.",
+    /**
+     * Odkazy pod bio textem. Až budou URL na YouTube kanál / LinkedIn,
+     * přidat sem — vykreslí se automaticky.
+     */
+    links: [
+      { href: "https://www.sniperdesign.cz/", label: "Sniper Design" },
+      { href: "https://www.megadetail.cz/", label: "MEGA DETAIL" },
+    ] as { href: string; label: string }[],
+  },
 };
