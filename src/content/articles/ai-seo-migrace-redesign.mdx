@@ -1,0 +1,194 @@
+---
+title: "Migrace a redesign webu: jak udržet AI viditelnost"
+description: "Při migraci nebo redesignu webu hrozí ztráta pozic i citací v AI. Ohlídejte mapu URL, přesměrování 301, strukturovaná data, robots.txt a měření po spuštění."
+answer: "Migrace nebo redesign webu je změna URL, šablon nebo domény, při které hrozí ztráta indexace, pozic i citací v AI odpovědích. Základ je mapa starých adres na nové, trvalé přesměrování 301, zachovaná strukturovaná data a měření před spuštěním i po něm. U některých AI služeb se změny navíc mohou projevit později než v běžném vyhledávání."
+slug: "ai-seo-migrace-redesign"
+category: "tutorial"
+updated: "2026-07-11"
+keywords:
+  - "migrace webu seo"
+  - "redesign webu seo"
+  - "ai viditelnost po migraci"
+  - "přesměrování 301"
+  - "postup migrace webu"
+variant: "rich"
+stats:
+  - value: "301"
+    label: "trvalé přesměrování staré adresy na novou — ne 302, ne řetězce přesměrování"
+  - value: "1:1"
+    label: "každá stará URL má mít vlastní cíl, ne hromadné svedení na úvodní stránku"
+  - value: "404"
+    label: "smazaná adresa bez přesměrování může vést ke ztrátě signálů, propadu viditelnosti i ztrátě cíle pro dosavadní citace"
+  - value: "prodleva"
+    label: "u některých AI služeb se změny projeví později než v běžném vyhledávání — počítejte s ní"
+howto:
+  name: "Jak provést migraci webu bez ztráty AI viditelnosti"
+  steps:
+    - name: "Udělejte inventuru URL a změřte výchozí stav"
+      text: "Vyexportujte všechny indexované adresy ze Search Console, sitemap a procházení webu. Zaznamenejte si výchozí stav návštěvnosti a viditelnosti, ať máte s čím po spuštění porovnávat."
+    - name: "Sestavte mapu starých adres na nové"
+      text: "Ke každé staré URL přiřaďte konkrétní novou adresu se stejným nebo velmi podobným obsahem. Přednost dejte stránkám, které mají návštěvnost z AI nebo bývají citované."
+    - name: "Nasaďte trvalá přesměrování 301"
+      text: "Při trvalé migraci je správná volba 301; 302 je určené pro dočasné přesuny a může prodloužit období, kdy si systémy drží starou adresu. Vyhněte se řetězcům, kde jedna adresa vede na druhou a ta na třetí; ideální je jeden skok na cílovou stránku."
+    - name: "Přeneste strukturovaná data a zkontrolujte robots.txt"
+      text: "Ověřte, že nová šablona obsahuje stejná strukturovaná data jako původní. Zkontrolujte robots.txt, značku noindex a kanonické adresy — z testovacího prostředí často zůstane zákaz procházení nebo indexace."
+    - name: "Odešlete sitemap a měřte po spuštění"
+      text: "Odešlete novou sitemap do Search Console i Bing Webmaster Tools. Pak sledujte indexaci, chyby procházení a návštěvnost z AI a porovnávejte je s výchozím stavem."
+faq:
+  - q: "Co hrozí při migraci nebo redesignu webu?"
+    a: "Migrace mění adresy, šablony nebo doménu, takže vyhledávače i mnohé AI služby pak pracují s jinými adresami a šablonami než dříve. Hrozí ztráta indexace a pozic, a v AI éře navíc ztráta opory pro citace: mnohé AI služby odkazují na konkrétní URL, a když ta přestane fungovat, citace ztrácí cíl."
+  - q: "Proč použít 301 a ne 302?"
+    a: "Přesměrování 301 znamená trvalou změnu, 302 jen dočasnou. U migrace je změna trvalá, takže 301 dává vyhledávačům jasný signál, že nová adresa nahrazuje starou. Dočasné 302 může vést k tomu, že si systémy dál drží původní adresu, což zbytečně prodlužuje nejasný stav."
+  - q: "Můžu staré URL po čase smazat?"
+    a: "Přesměrování je lepší nechat běžet dlouhodobě. AI systémy si obsah načetly dříve a mohou na starou adresu odkazovat i po delší době. Dokud přesměrování funguje, návštěvník se dostane na správnou stránku. Když adresu zrušíte, z citace se stane odkaz na nefungující stránku."
+  - q: "Jak rychle se migrace projeví v AI odpovědích?"
+    a: "Počítejte s prodlevou. Běžné vyhledávání změny obvykle zpracuje relativně rychle, ale u některých AI služeb se změny mohou projevit později a průběh se liší podle konkrétní služby. Chvíli se proto může stávat, že AI odkazuje na staré adresy. To je další důvod, proč přesměrování nechat funkční."
+  - q: "Co zkontrolovat hned po spuštění?"
+    a: "Nejdřív robots.txt, značku noindex a kanonické adresy, protože z testovacího prostředí často zůstane zákaz procházení, zákaz indexace nebo odkaz na testovací doménu. Pak zkontrolujte, že přesměrování fungují a nevznikají chyby 404, a odešlete sitemap. Nakonec sledujte indexaci a návštěvnost z AI proti výchozímu stavu."
+  - q: "Můžu při redesignu zároveň přepsat obsah?"
+    a: "Jde to, ale ztížíte si vyhodnocení. Když se naráz změní adresy, šablona i texty, po případném propadu nepoznáte, co ho způsobilo. Pokud to jde, oddělte kroky: nejdřív migrujte se zachovaným obsahem, ověřte, že je vše v pořádku, a teprve pak obsah upravujte."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Migrace nebo redesign webu je změna URL, šablon nebo domény, při které hrozí ztráta indexace, pozic i citací v AI odpovědích.** Základ je mapa starých adres na nové, trvalé přesměrování 301, zachovaná strukturovaná data a měření před spuštěním i po něm. Tento návod shrnuje, co ohlídat před migrací, při ní a po ní — včetně kontroly, že staré adresy dál vedou na odpovídající obsah a že nová verze nezablokovala procházení ani indexaci.
+
+## Co je na migraci v AI éře navíc
+
+Klasické SEO při migraci hlídá indexaci a pozice: přesměrování, sitemap, interní odkazy. To platí dál. Přibyla ale vrstva navíc.
+
+Mnohé AI služby při odpovědích odkazují na **konkrétní adresy** nebo zdrojové stránky. Když se URL změní a stará přestane fungovat, citace ztrácí cíl. Navíc si obsah načetly dřív a aktualizují se **vlastní kadencí** — u některých služeb se změny projeví později než v běžném vyhledávání a průběh se liší podle konkrétní služby. Chvíli se tak může stávat, že AI odkazuje na adresy, které už u vás nejsou — a jestli návštěvník skončí na správné stránce, nebo na chybě, rozhoduje vaše přesměrování.
+
+<CompareTable
+  caption="Co při migraci hlídat: klasická vrstva a co přidává AI"
+  columns={["Oblast", "Na co si dát pozor"]}
+  rows={[
+    { icon: "🔀", label: "Přesměrování", left: "Klasické SEO", right: "Mapa 1:1, trvalé 301, žádné řetězce ani svedení na úvodní stránku" },
+    { icon: "🔗", label: "Citované adresy", left: "AI vrstva", right: "Mnohé AI služby odkazují na konkrétní URL — ta by měla zůstat dosažitelná i po migraci" },
+    { icon: "🧩", label: "Strukturovaná data", left: "Obojí", right: "Nová šablona je často zapomene přenést" },
+    { icon: "🤖", label: "robots.txt a noindex", left: "Obojí", right: "Zákaz procházení nebo indexace z testovacího prostředí je klasická chyba po spuštění" },
+    { icon: "⏳", label: "Kadence", left: "AI vrstva", right: "U některých AI služeb se změny projeví později a hůř předvídatelně" },
+  ]}
+/>
+
+<Insight tone="key">
+Jedna z nejdražších chyb migrace je, když stará adresa vrátí 404. Přijdete tím nejen o pozici, ale i o oporu pro každou citaci, která na ni v AI odpovědích odkazuje. Přesměrování je proto potřeba nechat běžet dlouhodobě, ne jen pár týdnů.
+</Insight>
+
+## Před migrací: co si připravit
+
+Většina problémů vzniká tím, že se nezměřil výchozí stav. Bez něj po spuštění nepoznáte, jestli je propad reálný.
+
+<Checklist
+  items={[
+    { title: "Inventura URL", desc: "Export všech indexovaných adres ze Search Console, sitemap a procházení webu." },
+    { title: "Výchozí stav měření", desc: "Zaznamenejte návštěvnost, indexaci a viditelnost před migrací — jinak nebude s čím porovnávat." },
+    { title: "Priorita citovaných stránek", desc: "Zjistěte, které stránky mají návštěvnost z AI nebo bývají citované; ty ohlídejte nejpečlivěji." },
+    { title: "Mapa starých adres na nové", desc: "Ke každé staré URL konkrétní cíl s odpovídajícím obsahem — ne hromadné svedení na úvodní stránku." },
+    { title: "Záloha obsahu a dat", desc: "Uložte si původní texty a strukturovaná data, ať je po spuštění s čím srovnat." },
+  ]}
+/>
+
+## Postup migrace krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "Inventura",
+      title: "Změřte výchozí stav a vyexportujte adresy",
+      text: "Vyexportujte indexované adresy ze Search Console a sitemap a zaznamenejte si výchozí návštěvnost i viditelnost.",
+    },
+    {
+      label: "Mapa",
+      title: "Přiřaďte staré adresy k novým",
+      text: "Ke každé staré URL dejte konkrétní novou adresu s odpovídajícím obsahem. Přednost mají stránky s návštěvností z AI.",
+    },
+    {
+      label: "301",
+      title: "Nasaďte trvalá přesměrování",
+      text: "Při trvalé migraci je správná volba 301; 302 je určené pro dočasné přesuny. Vyhněte se řetězcům, ideální je jeden skok rovnou na cílovou stránku.",
+    },
+    {
+      label: "Kontrola",
+      title: "Přeneste strukturovaná data a zkontrolujte robots.txt",
+      text: "Ověřte, že nová šablona má stejná strukturovaná data, a zkontrolujte robots.txt, značku noindex i kanonické adresy.",
+    },
+    {
+      label: "Měření",
+      title: "Odešlete sitemap a sledujte výsledky",
+      text: "Odešlete sitemap do Search Console i Bing Webmaster Tools a porovnávejte indexaci a návštěvnost s výchozím stavem.",
+    },
+  ]}
+/>
+
+Pokud cílíte i na Bing, můžete změny adres oznámit přes IndexNow. Může to urychlit objevení změn v ekosystému Bingu, samo o sobě ale nezaručí rychlé přepsání všech signálů — detaily v článku o [Bingu jako vrstvě pro AI](/blog/bing-seo-pro-ai/). Nastavení pro AI roboty pak řeší [robots.txt pro AI](/blog/ai-crawler-robots-txt/).
+
+## Po spuštění: co měřit
+
+První dny rozhodují. Sledujte:
+
+- **Indexaci a chyby procházení** — hlavně nárůst 404, které ukazují na chybějící přesměrování.
+- **Interní odkazy a navigaci** — ať vedou přímo na nové adresy, ne přes přesměrování.
+- **Návštěvnost z AI** — pokud ji sledujete (přes vlastní segmenty nebo zdroje návštěv), jestli neklesla; pomůžou [AI segmenty v Search Console](/blog/gsc-ai-segmenty-mereni/).
+- **Viditelnost v AI ručně** — projděte klíčové dotazy [testem viditelnosti](/blog/test-viditelnosti-v-ai/) a srovnejte se stavem před migrací.
+- **Strukturovaná data** — jestli je nová šablona opravdu vypisuje; viz [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/).
+
+<Insight tone="warning">
+Nepanikařte z propadu v prvních dnech. Krátkodobé výkyvy po migraci jsou běžné, a pokud je migrace technicky v pořádku, viditelnost se může postupně vracet. Zpozornět ale máte, když rostou chyby 404 nebo když v Search Console mizí stránky z indexu — to nejsou příznaky usazování, ale chybějícího přesměrování.
+</Insight>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="404 místo přesměrování">
+    Nejrychlejší způsob, jak přijít o pozice i o oporu pro citace v AI. Každá stará adresa potřebuje cíl.
+  </Mistake>
+  <Mistake number="02" title="Všechno na úvodní stránku">
+    Hromadné svedení starých adres na úvodní stránku může vyhledávač vyhodnotit jako soft 404 nebo nerelevantní přesměrování a relevance se ztrácí.
+  </Mistake>
+  <Mistake number="03" title="Zapomenutý zákaz procházení">
+    Řádek zakazující procházení celého webu zůstane z testovacího prostředí. Web je dostupný uživatelům, ale robots.txt může vyhledávacím robotům zablokovat jeho procházení.
+  </Mistake>
+  <Mistake number="04" title="Všechno naráz">
+    Změna adres, šablony i textů zároveň znamená, že po propadu nepoznáte příčinu. Když to jde, oddělte kroky.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Změřit výchozí stav ještě před migrací.",
+    "Mapovat staré adresy na nové v poměru 1:1.",
+    "Použít trvalé přesměrování 301 s jedním skokem.",
+    "Přenést strukturovaná data do nové šablony.",
+    "Nechat přesměrování běžet dlouhodobě.",
+  ]}
+  dontItems={[
+    "Mazat staré adresy bez přesměrování.",
+    "Svádět všechno hromadně na úvodní stránku.",
+    "Používat 302 tam, kde je změna trvalá.",
+    "Nechat v robots.txt zákaz z testovacího prostředí.",
+    "Měnit adresy, vzhled webu i obsah v jednom kroku.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Migrace mění to, co vyhledávače i AI znají** — bez mapy adres hrozí ztráta indexace i citací.
+- **301 a jeden skok** — trvalé přesměrování, žádné řetězce, žádné svedení na úvodní stránku.
+- **Přesměrování nechte běžet dlouho** — AI mohou na staré adresy odkazovat i po delší době.
+- **Strukturovaná data a robots.txt** — dvě věci, které nová šablona nejčastěji rozbije.
+- **Měřte před i po** — bez výchozího stavu nejde propad vyhodnotit; [proč na adresách záleží](/blog/jak-ai-cituje-zdroje/).
+
+---
+
+**Chystáte redesign a nechcete přijít o viditelnost?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) dává strukturu stránek nového webu tak, aby ji AI i vyhledávače dobře četly. Pokud už web běží a chcete ověřit, jestli migrace dopadla dobře, [AI SEO audit za 9 990 Kč](/audit/) projde přesměrování, strukturovaná data i viditelnost v AI a najde, co se ztratilo.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Postup vychází z veřejné dokumentace vyhledávačů a praxe k 11. 7. 2026. Kadence, s jakou se AI systémy po migraci srovnají, se liší podle služby a nedá se zaručit; uvedené kroky riziko snižují, ale nevylučují.*
