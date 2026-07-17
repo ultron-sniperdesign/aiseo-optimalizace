@@ -131,9 +131,34 @@ const howToJsonLd = entry.data.howto
     }
   : undefined;
 
-const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd].filter(
-  Boolean,
-) as Record<string, unknown>[];
+/** VideoObject — jen sekce s frontmatter `video`. uploadDate = kdy bylo video
+ * na stránku nasazeno (všechna tři 2026-06-01, viz git historie); author
+ * odkazuje kanonickou Person entitu, publisher org. Google video rich results
+ * vyžadují name/thumbnailUrl/uploadDate. */
+const videoJsonLd = entry.data.video
+  ? {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: entry.data.video.badge ?? `Video průvodce · ${displayAbbr}`,
+      description: entry.data.description,
+      thumbnailUrl: [
+        `https://i.ytimg.com/vi/${entry.data.video.youtubeId}/maxresdefault.jpg`,
+      ],
+      uploadDate: "2026-06-01",
+      embedUrl: `https://www.youtube-nocookie.com/embed/${entry.data.video.youtubeId}`,
+      url: `https://www.youtube.com/watch?v=${entry.data.video.youtubeId}`,
+      inLanguage: site.inLanguage,
+      author: buildPersonRef(SITE_ORIGIN),
+      publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
+    }
+  : undefined;
+
+const allLd: Record<string, unknown>[] = [
+  articleJsonLd,
+  faqJsonLd,
+  howToJsonLd,
+  videoJsonLd,
+].filter(Boolean) as Record<string, unknown>[];
 
 /**
  * Inline style nastaví per-page discipline color CSS variables.
