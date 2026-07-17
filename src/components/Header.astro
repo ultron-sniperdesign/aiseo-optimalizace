@@ -266,6 +266,10 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   .disc-nav__link[data-d="aio"].disc-nav__link--active {
     color: var(--color-aio);
   }
+  .disc-nav__link[data-d="aimode"]:hover,
+  .disc-nav__link[data-d="aimode"].disc-nav__link--active {
+    color: var(--color-aimode);
+  }
 
   /* "Služby" — neutral outlined pill, vstupní brána do katalogu. Sjednocuje
      trojici komerčních položek (services → audit → free) na jednu vizuální
@@ -562,6 +566,8 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   .mobile-nav__link[data-d="aeo"].mobile-nav__link--active { color: var(--color-aeo); }
   .mobile-nav__link[data-d="aio"]:hover,
   .mobile-nav__link[data-d="aio"].mobile-nav__link--active { color: var(--color-aio); }
+  .mobile-nav__link[data-d="aimode"]:hover,
+  .mobile-nav__link[data-d="aimode"].mobile-nav__link--active { color: var(--color-aimode); }
 
   /* CTA odkazy (Návod zdarma / AI SEO audit) — akcentová barva textu místo
      capsule pillu (čistší, jednotný tvar řádku). */

@@ -1,0 +1,90 @@
+---
+title: "AI Mode — konverzační režim Googlu (a jak v něm být vidět)"
+seoTitle: "Google AI Mode: co to je, jak funguje a jak se v něm zobrazit"
+description: "Google AI Mode je konverzační režim vyhledávání: místo odkazů složí odpověď. Co to znamená pro váš web, jak funguje query fan-out a jak se připravit."
+answer: "AI Mode je konverzační režim vyhledávání Googlu: místo seznamu odkazů složí kompletní odpověď z mnoha zdrojů najednou a umožňuje pokládat navazující otázky. Typicky rozloží dotaz na desítky dílčích (query fan-out) a cituje stránky, které odpovídají na konkrétní podotázky. V Česku zájem o AI Mode meziročně vyrostl o tisíce procent."
+slug: "ai-mode"
+order: 7
+abbr: "AIMODE"
+updated: "2026-07-18"
+faq:
+  - q: "Co je Google AI Mode?"
+    a: "AI Mode je samostatný konverzační režim vyhledávání Googlu (záložka vedle klasických výsledků). Na dotaz odpoví souvislým textem složeným z mnoha zdrojů, s citacemi a možností pokládat navazující otázky — jako chat, ale nad aktuálním indexem Googlu."
+  - q: "Jak se AI Mode liší od AI Overviews?"
+    a: "AI Overviews je AI souhrn NAD klasickými výsledky — jeden blok, pod ním modré odkazy. AI Mode je celý konverzační zážitek: žádný seznam výsledků, jen odpověď s citacemi a follow-up otázky. AI Overviews vidí každý; AI Mode si uživatel volí záměrně."
+  - q: "Je AI Mode dostupný v Česku?"
+    a: "Google AI Mode postupně rozšiřuje do dalších zemí a jazyků; v Česku zájem prudce roste — hledanost dotazu „ai mode\" vyrostla meziročně o více než 6 000 % (Marketing Miner, květen 2026). Přesná dostupnost funkcí se mění; aktuální stav ověříte přímo ve vyhledávání."
+  - q: "Jak AI Mode vybírá, které weby cituje?"
+    a: "Dotaz rozkládá na desítky dílčích podotázek (query fan-out) a pro každou hledá nejlepší odpověď v indexu. Šanci na citaci mají stránky, které na konkrétní podotázku odpovídají přímo, fakticky a čitelně — často jiné stránky, než které vyhrávají klasický SERP na hlavní dotaz."
+  - q: "Jak poznám, že se můj web v AI Mode zobrazuje?"
+    a: "Search Console má beta report „Funkce s generativní AI\", který ukazuje zobrazení webu ve funkcích generativního vyhledávání (AI Mode i AI Overviews dohromady). Kliknutí zatím oddělit nejdou. Na vlastním e-shopu jsme takto naměřili 200 000 zobrazení za dva měsíce."
+  - q: "Znamená AI Mode konec klasického SEO?"
+    a: "Ne — AI Mode staví na stejném indexu a odměňuje stejné základy: technicky zdravý web, strukturovaný obsah a důvěryhodnou značku. Mění se ale jednotka optimalizace: místo pozice na dotaz jde o odpověď na podotázku. Kvalitní SEO je vstupenka, citovatelný obsah je výhra."
+howto:
+  name: "Jak připravit web na Google AI Mode"
+  steps:
+    - name: "Pokryjte podotázky, ne jen hlavní dotaz"
+      text: "Rozepište téma do konkrétních otázek a odpovědí (H2/H3 jako otázka, odpověď 40–60 slov hned pod ní) — přesně tak AI Mode skládá odpovědi přes query fan-out."
+    - name: "Držte fakta hutná a citovatelná"
+      text: "Čísla, parametry, postupy, tabulky. Obecné marketingové odstavce AI Mode přeskočí — cituje pasáže, které něco tvrdí."
+    - name: "Nasaďte strukturovaná data"
+      text: "Article, Product, FAQPage, Organization a Person schema pomáhají systému pochopit, kdo jste a o čem stránka je."
+    - name: "Zpřístupněte web AI crawlerům"
+      text: "Zkontrolujte robots.txt (Googlebot a Google-Extended), rychlost načítání a indexaci v Search Console — co není v indexu, nemůže být citováno."
+    - name: "Měřte zobrazení v generativní AI"
+      text: "Zapněte si v Search Console report Funkce s generativní AI a sledujte trend zobrazení; doplňte GA4 segment pro AI referraly."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+
+## Co je AI Mode a proč vznikl
+
+**AI Mode je největší změna Google vyhledávání za poslední dekádu.** Zatímco [AI Overviews](/aeo/) přidaly AI souhrn nad klasické výsledky, AI Mode klasické výsledky úplně opouští: je to samostatná záložka, kde Google odpovídá souvislým textem, cituje zdroje a čeká na navazující otázku. Vyhledávání se mění v rozhovor.
+
+Pro uživatele je to pohodlné. Pro weby je to nové rozdání karet: **buď jste součástí odpovědi, nebo neexistujete.** Žádná desátá pozice, na kterou někdo doscrolluje.
+
+## Jak AI Mode funguje: query fan-out
+
+Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě"), AI Mode ho **rozloží na desítky dílčích podotázek** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
+
+Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz", ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Malý specializovaný článek tak může porazit velkou autoritu — pokud odpovídá přesněji. Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/).
+
+<Insight tone="key">
+V AI Mode se jednotkou optimalizace stává **odpověď na podotázku**, ne pozice na klíčové slovo. Web strukturovaný jako sada jasných otázek a odpovědí má matematicky víc „losů v osudí" než jeden dlouhý text optimalizovaný na jediný dotaz.
+</Insight>
+
+## AI Mode vs. AI Overviews vs. ChatGPT
+
+| | **AI Mode** | **AI Overviews** | **ChatGPT** |
+|---|---|---|---|
+| Kde | záložka v Googlu | nad výsledky Googlu | samostatná aplikace |
+| Podoba | celá konverzace | jeden souhrn + odkazy | konverzace |
+| Zdroj dat | živý index Googlu | živý index Googlu | trénink + vlastní vyhledávání |
+| Uživatel | volí záměrně | vidí automaticky | volí záměrně |
+| Optimalizace | query fan-out, citovatelné odpovědi | [AEO](/aeo/) — krátké odpovědi, FAQ | [GEO](/geo/) — citace, brand |
+
+Praktická zpráva: **stejný obsahový základ živí všechny tři.** Krátké odpovědi, fakta, struktura a důvěryhodná značka fungují napříč — liší se jen důrazy.
+
+## Co říkají data: AI Mode právě přichází do Česka
+
+Tohle není budoucnost, děje se to teď:
+
+- Hledanost dotazu **„ai mode" v ČR: 1 700/měsíc, meziročně +6 302 %** (peak květen 2026); „google ai mode" +1 314 %, dotaz „režim ai mode" je zbrusu nový (Marketing Miner, červenec 2026).
+- **AI Overviews**: 390 hledání/měs, +136 % — peak právě teď.
+- Na vlastním e-shopu MEGA DETAIL jsme v beta reportu Search Console naměřili **[200 000 zobrazení ve funkcích s generativní AI za dva měsíce](/ai-viditelnost/)** — ještě před cílenou optimalizací.
+
+<Insight tone="warning">
+Zobrazení v AI Mode a AI Overviews **neuvidíte v Google Analytics** — odehrávají se před kliknutím. Jediné přímé měřítko je beta report „Funkce s generativní AI" v Search Console (zatím jen zobrazení, kliknutí neoddělí). Jak s tím pracovat, popisujeme v návodu na [měření GSC AI segmentů](/blog/gsc-ai-segmenty-mereni/).
+</Insight>
+
+## Co to znamená pro váš web nebo e-shop
+
+1. **Informační dotazy přestávají nosit kliky** — odpověď dostane uživatel přímo. Obsah musí buď prodávat vaši značku uvnitř odpovědi (citace), nebo cílit na dotazy, kde AI odpověď nestačí (transakce, lokální služby, srovnání s osobní zkušeností).
+2. **Roste hodnota „being the source"** — když AI Mode cituje váš web, získáváte důvěru a brand awareness i bez kliknutí. A návštěvník, který skrz AI doporučení přijde, [konvertuje výrazně lépe](/blog/case-study-megadetail-ai-navstevnost/).
+3. **E-shopy: produktová data rozhodují** — AI Mode u nákupních dotazů skládá srovnání z parametrů, cen a recenzí. Strukturovaná data a [kvalitní produktové stránky](/blog/produktove-stranky-pro-ai/) jsou vstupní podmínka.
+
+## Jak se připravit — pět kroků
+
+Praktický postup je ve struktuře výše (a v HowTo schematu této stránky): pokrýt podotázky, hutná fakta, strukturovaná data, přístupné crawlery, měření. Kompletní metodiku krok za krokem rozepisujeme v [praktickém postupu](/prakticky-postup/) a chystáme sérii článků k AI Mode — od uživatelského vysvětlení po měření.
+
+Pokud chcete vědět, jak je na tom váš web s viditelností v AI odpovědích už dnes, [AI SEO audit](/audit/) to změří a navrhne priority.

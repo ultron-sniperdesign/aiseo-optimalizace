@@ -11,7 +11,7 @@
  *  - `nav.desktopEdu` + `nav.desktopOffers` (2 sekce) jen pro desktopovou
  *    lištu — vizuálně oddělené vertikálním dividerem v Header.astro.
  *    Edu = obsahové disciplíny + průvodce; Offers = co prodáváme / dáváme.
- *    Blog do top nav nepatří (je v Footer/mobile groups → Praxe → Blog).
+ *    Blog je i v top nav (přání uživatele 2026-07-18) + v Praxe groupě.
  *
  * POZN.: značka/domény (brand spany, e-mailové adresy v právním textu) jsou
  * per-doména identita — fork je upraví v rámci své identity, nejsou to „překlad".
@@ -21,7 +21,7 @@ export interface NavLink {
   href: string;
   label: string;
   /** Disciplína — barevné zvýraznění (tečka / hover barva). */
-  d?: "seo" | "geo" | "aeo" | "aio";
+  d?: "seo" | "geo" | "aeo" | "aio" | "aimode";
   /** Stylová varianta (pillar / blog / services / audit / free). */
   variant?: "pillar" | "blog" | "services" | "audit" | "free";
 }
@@ -45,7 +45,9 @@ export const nav = {
     { href: "/geo/", label: "GEO", d: "geo" },
     { href: "/aeo/", label: "AEO", d: "aeo" },
     { href: "/aio/", label: "AIO", d: "aio" },
+    { href: "/ai-mode/", label: "AI Mode", d: "aimode" },
     { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
+    { href: "/blog/", label: "Blog" },
   ] as NavLink[],
 
   /** DESKTOP lišta — komerční / „co nabízíme" část. Oddělená dividerem.
@@ -60,12 +62,13 @@ export const nav = {
   /** Kompletní seznam — sdílí Footer i mobilní menu (plné názvy, 3 skupiny). */
   groups: [
     {
-      label: "Čtyři disciplíny",
+      label: "Disciplíny",
       links: [
         { href: "/seo/", label: "SEO", d: "seo" },
         { href: "/geo/", label: "GEO", d: "geo" },
         { href: "/aeo/", label: "AEO", d: "aeo" },
         { href: "/aio/", label: "AIO", d: "aio" },
+        { href: "/ai-mode/", label: "Google AI Mode", d: "aimode" },
       ],
     },
     {
@@ -75,6 +78,7 @@ export const nav = {
         { href: "/rozhodovaci-matice/", label: "Rozhodovací matice" },
         { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Hlavní průvodce" },
         { href: "/blog/", label: "Blog" },
+        { href: "/slovnik/", label: "Slovník pojmů" },
       ],
     },
     {
@@ -155,6 +159,7 @@ export const ui = {
     GEO: "Druhá disciplína · GEO",
     AEO: "Třetí disciplína · AEO",
     AIO: "Čtvrtá disciplína · AIO",
+    AIMODE: "Nová vrstva Googlu · AI Mode",
     PRAXE: "Návod · Praktický postup",
     MATICE: "Rozhodování · Kdy co použít",
   } as Record<string, string>,
@@ -171,6 +176,7 @@ export const ui = {
     GEO: "GEO",
     AEO: "AEO",
     AIO: "AIO",
+    AIMODE: "AI MODE",
     PRAXE: "PRAXE",
     MATICE: "MATICE",
   } as Record<string, string>,

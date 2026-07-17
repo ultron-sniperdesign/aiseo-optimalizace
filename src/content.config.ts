@@ -23,7 +23,7 @@ const sections = defineCollection({
     /** Pořadí v navigaci (1 = nahoře). */
     order: z.number().int().positive(),
     /** Hlavní zkratka, kterou článek pokrývá. */
-    abbr: z.enum(["SEO", "GEO", "AEO", "AIO", "PRAXE", "MATICE"]),
+    abbr: z.enum(["SEO", "GEO", "AEO", "AIO", "AIMODE", "PRAXE", "MATICE"]),
     /**
      * Když je true, [slug].astro NEVYKRESLÍ auto "Související" sekci na konci.
      * Použij, když chceš stejný blok vložit INLINE do MDX přes
