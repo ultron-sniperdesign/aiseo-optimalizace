@@ -1,0 +1,153 @@
+---
+title: "AI nákupní agenti a e-shopy: co se mění"
+description: "AI nákupní agenti mění výběr zboží v ChatGPT i dalších systémech. Co je doložené, co je humbuk a která produktová data mají pro e-shopy smysl v Česku."
+answer: "AI nákupní agent je systém, který za uživatele vyhledá a porovná produkty a zkracuje cestu od dotazu k výběru. Místo dlouhého seznamu e-shopů dostane zákazník užší porovnání, takže roste význam dobře popsaných produktových dat — cena, dostupnost, značka a identifikátor. V Česku jde zatím spíš o přípravu než o významný zdroj objednávek."
+slug: "ai-nakupni-agenti"
+category: "analysis"
+updated: "2026-07-11"
+keywords:
+  - "ai nákupní agenti"
+  - "agentní nakupování"
+  - "ai a e-shopy"
+  - "chatgpt nakupování"
+  - "produktová data pro ai"
+variant: "rich"
+stats:
+  - value: "výběr"
+    label: "místo seznamu e-shopů dostane zákazník užší výběr — mimo něj produkt ztrácí velkou část viditelnosti v dané odpovědi"
+  - value: "GTIN"
+    label: "identifikátor, podle kterého jde jednoznačně poznat, že jde o stejný produkt jako u konkurence"
+  - value: "shoda údajů"
+    label: "cena a dostupnost v datovém souboru a na stránce se musí shodovat, jinak vzniká nesoulad"
+  - value: "zatím okrajové"
+    label: "agentní nakupování je zatím převážně mimo Česko — jde o přípravu, ne o zavedenou cestu k prodeji"
+faq:
+  - q: "Co je AI nákupní agent?"
+    a: "Je to AI systém, který za uživatele vyhledá a porovná produkty a zkracuje cestu od dotazu k výběru; v některých případech ho může dovést i k dalšímu kroku nákupu. Rozdíl proti klasickému vyhledávání je v tom, že zákazník nedostane seznam odkazů na e-shopy, ale rovnou užší porovnání. Pro prodejce se tím mění otázka: nejde jen o pozici, ale o to, jestli se produkt do výběru vůbec dostane."
+  - q: "Nakupuje se přes AI agenty v Česku už teď?"
+    a: "Zatím spíš okrajově. Nákupní funkce v AI systémech jsou převážně anglicky a orientované na velké trhy; v Česku s tím zatím nelze počítat jako se zdrojem, který přináší významnější počet objednávek. Dává proto smysl brát to jako přípravu: udělat na produktových datech to, co má smysl i bez agentů, a nepřestavovat kvůli tomu e-shop."
+  - q: "Na kterých produktových datech nejvíc záleží?"
+    a: "Na těch, která umožňují produkt jednoznačně identifikovat a porovnat: název, značka, identifikátor typu GTIN, cena s měnou a dostupnost. Doplňkově pomáhají obrázek, popis, skutečná hodnocení a podmínky dopravy a vrácení. Bez identifikátoru je těžší poznat, že jde o stejný produkt jako u konkurence."
+  - q: "Stačí strukturovaná data na stránce, nebo je potřeba i datový soubor?"
+    a: "Nejsou to alternativy. Strukturovaná data na stránce a produktový datový soubor (feed) popisují stejný produkt, jen pro jiné odběratele. Zásadní je, aby byly v souladu: pokud je na stránce jiná cena než v datovém souboru, vzniká nesoulad, který škodí důvěře zákazníka i strojovému zpracování."
+  - q: "Čtou AI agenti produktová data jinak než Google?"
+    a: "Tohle se často tvrdí, ale veřejně doložené to není. Způsob výběru, tedy jak jednotlivé systémy produkty vybírají a řadí, jejich provozovatelé nezveřejňují. Bezpečnější je vycházet z toho, co platí obecně: čím úplnější a konzistentnější data o produktu jsou, tím snáz s ním jakýkoli stroj pracuje."
+  - q: "Mám kvůli agentům předělat e-shop?"
+    a: "Kvůli agentům obvykle není nutné e-shop předělávat. Většina užitečných úprav dává smysl i bez nich: úplná a pravdivá produktová data, soulad datového souboru se stránkou, jasné ceny a dostupnost. Nákladně přestavovat e-shop jen kvůli agentnímu nakupování je v Česku zatím předčasné; čistá produktová data a soulad údajů ale smysl mají už dnes."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI nákupní agent je systém, který za uživatele vyhledá a porovná produkty a zkracuje cestu od dotazu k výběru.** Místo dlouhého seznamu e-shopů dostane zákazník užší porovnání, takže roste význam dobře popsaných produktových dat — cena, dostupnost, značka a identifikátor. V Česku jde přitom zatím spíš o přípravu než o významný zdroj objednávek.
+
+## Co je reálné a co humbuk
+
+Kolem agentního nakupování je hodně hluku, tak si oddělme, co je doložitelné.
+
+**Doložitelné je, že se to zkouší.** U ChatGPT jsou veřejně pozorovatelné scénáře, v nichž pomáhá s výběrem a porovnáním produktů; neznamená to ale plošně dostupnou a zavedenou cestu k nákupu. U Perplexity byly veřejně vidět testy nákupně orientovaných výstupů a cest k produktu. V Google AI režimech se objevují i nákupně orientované odpovědi a produktové informace — pro obchodníky proto dál dává smysl pracovat s produktovými daty a Merchant Center. Objevují se i úvahy a dílčí pokusy o sjednocení nákupních kroků uvnitř asistentů, jejich podoba ale není ustálená.
+
+**Doložit nejde:** jaký objem prodejů přes agenty prochází, jak přesně agenti produkty vybírají a řadí, ani že by v Česku šlo o zavedený kanál. Rozsah funkcí a dostupnost se navíc liší podle trhu i času a provozovatelé způsob výběru nezveřejňují.
+
+<Insight tone="key">
+Užitečné je oddělit dvě otázky. „Přijdou agenti?" je spekulace. „Jsou moje produktová data úplná a konzistentní?" je věc, kterou lze vyřešit dnes — a která se vyplatí bez ohledu na to, jak to s agenty dopadne.
+</Insight>
+
+## Ze seznamu na výběr
+
+Nejpodstatnější změna není technická, ale logická.
+
+<CompareTable
+  caption="Klasické vyhledávání a nákupní agent z pohledu e-shopu"
+  columns={["Hledisko", "Rozdíl"]}
+  rows={[
+    { icon: "📄", label: "Výstup", left: "Seznam vs. výběr", right: "Místo deseti odkazů dostane zákazník pár možností" },
+    { icon: "🎯", label: "Cíl", left: "Pozice vs. zařazení", right: "Být šestý byla šance; nebýt ve výběru znamená výrazně menší šanci" },
+    { icon: "🤖", label: "Čtenář", left: "Člověk vs. stroj", right: "Agent neposuzuje web jako člověk; opírá se hlavně o strojově čitelné údaje" },
+    { icon: "🏷️", label: "Podklad", left: "Text vs. pole", right: "Rozhodují konkrétní údaje: cena, dostupnost, značka, identifikátor" },
+    { icon: "🇨🇿", label: "Česko", left: "Zatím okrajové", right: "Nákupní funkce míří hlavně na velké trhy; u nás jde o přípravu" },
+  ]}
+/>
+
+Souvisí to s tím, co popisuje článek o [nulovém prokliku](/blog/zero-click-ai/): čím víc rozhodování se odehraje v odpovědi, tím menší roli hraje to, jak vypadá váš web — a tím větší to, co se o produktu dá strojově zjistit.
+
+## Na kterých datech záleží
+
+Nejde o tajemství. Jsou to pole, která umožní produkt **jednoznačně určit a porovnat**.
+
+<Checklist
+  items={[
+    { title: "Název a značka", desc: "Jednoznačný název produktu a značka — ne interní kód ani marketingový slogan." },
+    { title: "Identifikátor (GTIN, MPN)", desc: "Podle něj jde jednoznačně poznat, že jde o stejný produkt jako u konkurence; značka identifikaci jen zpřesňuje." },
+    { title: "Cena a měna", desc: "Konkrétní částka a měna, ne jen text na stránce." },
+    { title: "Dostupnost", desc: "Skladem, na objednávku, vyprodáno — a hlavně aktuálně." },
+    { title: "Obrázek a popis", desc: "Vizuál a srozumitelný popis toho, co produkt je a pro koho." },
+    { title: "Hodnocení a podmínky", desc: "Skutečná hodnocení, doprava a vrácení. Nikdy vymyšlená." },
+  ]}
+/>
+
+Ve strukturovaných datech to znamená hlídat hlavně typy `Product` a `Offer`: u produktu `name`, `brand` a `gtin`, případně `mpn`; u nabídky `price`, `priceCurrency` a `availability`. Volitelně pak `aggregateRating` a údaje o dopravě přes `Offer.shippingDetails`. Jak je nasadit, rozebírají [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/) a obecněji [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/). Na Upgates a Shoptetu to obvykle řeší šablona nebo doplněk — viz [AI SEO pro Upgates a Shoptet](/blog/ai-seo-upgates-shoptet/).
+
+## Datový soubor a stránka musí sedět
+
+Strukturovaná data na stránce a produktový datový soubor (feed) nejsou alternativy — popisují stejný produkt, jen pro jiného odběratele. Problém nastává, když se rozejdou.
+
+Jiná cena v datovém souboru než na stránce není detail: pro zákazníka je to zklamání a pro jakýkoli stroj signál, že vašim údajům nejde věřit. Stejné platí pro dostupnost.
+
+<Insight tone="warning">
+Rozpor, na který se dá narazit často: e-shop blokuje AI roboty v robots.txt a zároveň čeká, že se jeho produkty objeví v AI odpovědích. Může to jít proti sobě — záleží ale na konkrétním systému a na tom, odkud čerpá data. Podrobněji [robots.txt pro AI](/blog/ai-crawler-robots-txt/).
+</Insight>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Cena jen v textu">
+    Cena a dostupnost viditelné na stránce, ale chybějící ve strukturovaných datech — nebo naopak. Stroj pak čte něco jiného než zákazník.
+  </Mistake>
+  <Mistake number="02" title="Chybějící identifikátor">
+    Bez GTIN, případně MPN, je těžší poznat, že jde o stejný produkt jako u konkurence; značka identifikaci jen zpřesňuje.
+  </Mistake>
+  <Mistake number="03" title="Datový soubor a stránka se rozcházejí">
+    Jiná cena nebo dostupnost v datovém souboru než na webu. Nesoulad škodí důvěře i strojovému zpracování.
+  </Mistake>
+  <Mistake number="04" title="Předělávat e-shop kvůli humbuku">
+    Agentní nakupování v Česku zatím nepřináší významnější počet objednávek. Investovat do čistých dat dává smysl; nákladná přestavba kvůli spekulaci ne.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Doplnit značku a identifikátor tam, kde chybí.",
+    "Držet cenu a dostupnost ve strukturovaných datech aktuální.",
+    "Sjednotit produktový datový soubor se stránkou.",
+    "Zvážit, které AI roboty blokuji, pokud chci zvýšit šanci, že systémy moje data použijí.",
+    "Sledovat, jestli návštěvnost z AI vůbec roste.",
+  ]}
+  dontItems={[
+    "Vymýšlet hodnocení nebo dostupnost.",
+    "Nechat datový soubor a stránku rozejít se.",
+    "Blokovat AI roboty a čekat viditelnost v AI.",
+    "Nákladně přestavovat e-shop kvůli něčemu, co zatím nepřináší objednávky.",
+    "Věřit tvrzením o tom, jak přesně agenti vybírají.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Mění se výstup, ne jen pozice** — místo seznamu e-shopů užší výběr, mimo který produkt není vidět.
+- **Rozhodují data, ne dojem** — název, značka, identifikátor, cena, dostupnost.
+- **Datový soubor a stránka musí sedět** — rozpor škodí zákazníkovi i strojům.
+- **Způsob výběru agentů není veřejný** — kdo tvrdí, že ví, jak přesně vybírají, spekuluje.
+- **V Česku je to zatím příprava** — dělejte to, co dává smysl i bez agentů; jak to měřit, řeší [AI segmenty v Search Console](/blog/gsc-ai-segmenty-mereni/).
+
+---
+
+**Nevíte, jestli vaše produktová data obstojí?** [AI SEO audit za 9 990 Kč](/audit/) projde strukturovaná data vašich produktů, zkontroluje soulad datového souboru se stránkou a najde pole, která chybí. Pokud stavíte nový e-shop, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje návrhy produktové i kategoriové stránky se strukturou, kterou dobře čtou lidé i stroje.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis vychází z veřejně dostupných informací o nákupních funkcích AI systémů k 11. 7. 2026. Konkrétní způsob výběru produktů není zveřejněný, dostupnost těchto funkcí v Česku je omezená a vývoj je rychlý; článek proto nepopisuje, jak agenty „vyhrát", ani negarantuje výsledek.*
