@@ -37,6 +37,8 @@ interface Props {
 
 const { caption, rows, unit = "", tableValueLabel = "Hodnota" } = Astro.props;
 const max = Math.max(...rows.map((r) => r.value));
+/** display už jednotku obsahuje — unit se přidává jen k surové hodnotě. */
+const fmt = (r: Row) => r.display ?? `${r.value}${unit ? ` ${unit}` : ""}`;
 ---
 
 <figure class="dbars">
@@ -44,12 +46,12 @@ const max = Math.max(...rows.map((r) => r.value));
   <div class="dbars__rows">
     {
       rows.map((r) => (
-        <div class="dbars__row" title={`${r.label}: ${r.display ?? r.value}${unit ? " " + unit : ""}`}>
+        <div class="dbars__row" title={`${r.label}: ${fmt(r)}`}>
           <span class="dbars__label">{r.label}</span>
           <span class="dbars__track">
             <span
               class={`dbars__bar${r.emphasized ? " dbars__bar--emph" : ""}`}
-              style={`width: ${Math.max(1.5, (r.value / max) * 100)}%`}
+              style={`width: calc((100% - 5.5rem) * ${Math.max(0.015, r.value / max).toFixed(4)})`}
             />
             <span class="dbars__value">{r.display ?? r.value}</span>
           </span>
@@ -65,7 +67,7 @@ const max = Math.max(...rows.map((r) => r.value));
       </thead>
       <tbody>
         {rows.map((r) => (
-          <tr><td>{r.label}</td><td>{r.display ?? r.value}{unit ? ` ${unit}` : ""}</td></tr>
+          <tr><td>{r.label}</td><td>{fmt(r)}</td></tr>
         ))}
       </tbody>
     </table>
@@ -94,7 +96,9 @@ const max = Math.max(...rows.map((r) => r.value));
   }
   .dbars__row {
     display: grid;
-    grid-template-columns: minmax(110px, 34%) 1fr;
+    /* Sloupec popisků jen tak široký, jak potřebuje nejdelší popisek (strop 14rem) —
+       bez stropu by na desktopu zabíral třetinu karty a vlevo vznikal mrtvý prostor. */
+    grid-template-columns: fit-content(14rem) 1fr;
     align-items: center;
     gap: 0.75rem;
   }
