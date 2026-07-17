@@ -1,0 +1,256 @@
+---
+/**
+ * /slovnik/ — slovník pojmů AI éry vyhledávání.
+ *
+ * Data: src/content/pages/slovnik.ts (skupiny → hesla s kotvami).
+ * Každé heslo má vlastní kotvu #id (linkovatelné z článků i zvenku),
+ * definici 40–60 slov (citovatelnou samostatně) a volitelný odkaz na
+ * hlubší obsah. JSON-LD: DefinedTermSet + DefinedTerm per heslo.
+ *
+ * Postaveno na keyword researchi _source/_keyword-research/slovnik-ai-20260718/.
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import * as p from "~/content/pages/slovnik";
+
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+const pageUrl = `${SITE_ORIGIN}/slovnik/`;
+
+const termCount = p.groups.reduce((n, g) => n + g.terms.length, 0);
+
+/** DefinedTermSet JSON-LD — každé heslo jako DefinedTerm s URL kotvy. */
+const termSetJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "@id": `${pageUrl}#set`,
+  name: p.meta.title,
+  description: p.meta.description,
+  url: pageUrl,
+  hasDefinedTerm: p.groups.flatMap((g) =>
+    g.terms.map((t) => ({
+      "@type": "DefinedTerm",
+      "@id": `${pageUrl}#${t.id}`,
+      name: t.term,
+      ...(t.aka ? { alternateName: t.aka } : {}),
+      description: t.def,
+      url: `${pageUrl}#${t.id}`,
+      inDefinedTermSet: `${pageUrl}#set`,
+    })),
+  ),
+};
+---
+
+<BaseLayout
+  title={p.meta.title}
+  description={p.meta.description}
+  jsonLd={termSetJsonLd}
+  image="/og/slovnik.png"
+  breadcrumb={[{ label: "Slovník", href: "/slovnik/" }]}
+>
+  <div class="gl">
+    <!-- ===== HERO ===== -->
+    <section class="gl-hero">
+      <span class="gl-hero__eyebrow">{p.hero.eyebrow} · {termCount} pojmů</span>
+      <h1 class="gl-hero__title">{p.hero.title}</h1>
+      <p class="gl-hero__lead">{p.hero.lead}</p>
+
+      <!-- Navigace skupin -->
+      <nav class="gl-nav" aria-label="Skupiny pojmů">
+        {
+          p.groups.map((g) => (
+            <a class="gl-nav__chip" href={`#${g.id}`}>
+              {g.label} <span class="gl-nav__count">({g.terms.length})</span>
+            </a>
+          ))
+        }
+      </nav>
+    </section>
+
+    <!-- ===== SKUPINY HESEL ===== -->
+    {
+      p.groups.map((g) => (
+        <section class="gl-group" id={g.id} aria-label={g.label}>
+          <h2 class="gl-group__title">{g.label}</h2>
+          <dl class="gl-list">
+            {g.terms.map((t) => (
+              <div class="gl-term" id={t.id}>
+                <dt class="gl-term__head">
+                  <a class="gl-term__anchor" href={`#${t.id}`} aria-label={`Odkaz na pojem ${t.term}`}>#</a>
+                  <span class="gl-term__name">{t.term}</span>
+                  {t.aka && <span class="gl-term__aka">{t.aka}</span>}
+                </dt>
+                <dd class="gl-term__body">
+                  <p class="gl-term__def">{t.def}</p>
+                  {t.link && (
+                    <a class="gl-term__link" href={t.link.href}>
+                      {t.link.label}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .gl {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vh, 5rem) var(--space-section-x) clamp(3rem, 6vw, 5rem);
+  }
+
+  /* ===== HERO ===== */
+  .gl-hero__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-bottom: 1rem;
+  }
+  .gl-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .gl-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    font-weight: 350;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 44rem;
+    margin: 0 0 1.75rem;
+  }
+  .gl-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .gl-nav__chip {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    background: var(--color-paper);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .gl-nav__chip:hover {
+    border-color: var(--color-ink-faint);
+    transform: translateY(-1px);
+  }
+  .gl-nav__count {
+    color: var(--color-ink-faint);
+    font-weight: 500;
+  }
+
+  /* ===== SKUPINY ===== */
+  .gl-group {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    scroll-margin-top: 5rem;
+  }
+  .gl-group__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .gl-list {
+    margin: 0;
+  }
+
+  /* ===== HESLO ===== */
+  .gl-term {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-rule);
+    scroll-margin-top: 5.5rem;
+  }
+  .gl-term:last-child {
+    border-bottom: none;
+  }
+  .gl-term:target {
+    background: var(--color-seo-tint);
+    border-radius: 12px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  .gl-term__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .gl-term__anchor {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.9rem;
+    color: var(--color-ink-faint);
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .gl-term:hover .gl-term__anchor,
+  .gl-term:target .gl-term__anchor {
+    opacity: 1;
+  }
+  .gl-term__anchor:hover {
+    color: var(--color-seo);
+  }
+  .gl-term__name {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+  .gl-term__aka {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-ink-faint);
+  }
+  .gl-term__body {
+    margin: 0.5rem 0 0;
+  }
+  .gl-term__def {
+    font-family: var(--font-sans);
+    font-size: 0.975rem;
+    line-height: 1.65;
+    color: var(--color-ink-muted);
+    margin: 0;
+    max-width: 48rem;
+  }
+  .gl-term__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .gl-term__link:hover {
+    text-decoration: underline;
+    color: var(--color-seo);
+  }
+</style>
