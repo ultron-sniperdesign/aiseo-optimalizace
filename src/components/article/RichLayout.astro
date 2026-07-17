@@ -33,6 +33,7 @@ import DataColumns from "~/components/blocks/DataColumns.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import AuthorByline from "~/components/article/AuthorByline.astro";
 import AuthorBox from "~/components/article/AuthorBox.astro";
+import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
@@ -187,6 +188,9 @@ const _bundlerHints = [
 
   <!-- AUTHOR BOX — kdo za obsahem stojí (E-E-A-T), hned pod článkem -->
   <AuthorBox />
+
+  <!-- FREE STRIP — lead magnet (blog čtenář = TOFU, e-mail za free PDF) -->
+  <FreeStrip marginTop="2.5rem" />
 
   <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ -->
   <SniperDesignSmallContact />
