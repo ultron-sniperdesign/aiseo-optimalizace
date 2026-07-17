@@ -1,0 +1,189 @@
+---
+title: "Interní prolinkování pro AI: jak propojit obsah"
+description: "Interní prolinkování pomáhá vyhledávačům i AI pochopit souvislosti webu. Naučte se psát text odkazu a najít osiřelé i slabě propojené stránky."
+answer: "Interní prolinkování je propojování stránek vlastního webu pomocí interních odkazů. Pomáhá čtenářům, vyhledávačům i AI systémům odhadnout, co spolu souvisí a které stránky mají v rámci webu vyšší prioritu. V praxi rozhoduje popisný text odkazu, dostupnost stránky z relevantních míst a to, jestli na ni vůbec něco odkazuje."
+slug: "interni-prolinkovani-pro-ai"
+category: "tutorial"
+updated: "2026-07-11"
+keywords:
+  - "interní prolinkování"
+  - "interní odkazy seo"
+  - "text odkazu"
+  - "osiřelé stránky"
+  - "prolinkování webu"
+variant: "rich"
+stats:
+  - value: "text odkazu"
+    label: "popisný text říká, co je na druhé straně; slovo zde neříká nic"
+  - value: "z textu"
+    label: "odkaz z těla článku obvykle nese konkrétnější kontext než odkaz v menu nebo patičce"
+  - value: "osiřelé"
+    label: "stránka, na kterou nic neodkazuje, se hůř objeví a hůř zařadí do souvislostí"
+  - value: "souvislost"
+    label: "odkazovat na to, co spolu opravdu souvisí — ne co nejvíc odkazů"
+howto:
+  name: "Jak prolinkovat obsah, aby dával smysl lidem i strojům"
+  steps:
+    - name: "Najděte osiřelé a slabě propojené stránky"
+      text: "Sestavte si seznam všech důležitých adres z redakčního systému, exportu a sitemap. Pak ho porovnejte s adresami, které najde procházení webu po interních odkazech. Co je v seznamu, ale procházení to nenajde, jsou kandidáti na osiřelé stránky — ty ověřte. Google Search Console je jen pomocný signál; zná pouze adresy, které už objevila."
+    - name: "Nahraďte texty odkazů typu zde"
+      text: "Text odkazu má popisovat, co je na druhé straně. Místo klikněte zde napište, o čem cílová stránka je — třeba strukturovaná data pro AI."
+    - name: "Propojte související témata z těla textu"
+      text: "Odkazujte odtud, kde to čtenáři dává smysl, tedy přímo z textu. Odkaz z odstavce nese víc kontextu než odkaz schovaný jen v patičce."
+    - name: "Zkraťte cestu k důležitým stránkám"
+      text: "Ověřte, kolik kliků od úvodní stránky jsou vaše nejdůležitější stránky. Když je to hluboko, přidejte odkazy z relevantních míst."
+    - name: "Zkontrolujte rozbité odkazy a přesměrování"
+      text: "Interní odkazy mají vést přímo na cílovou adresu. Odkazy na chybové stránky nebo přes řetězec přesměrování po migraci opravte."
+faq:
+  - q: "Co je interní prolinkování?"
+    a: "Interní prolinkování je propojování stránek vlastního webu pomocí interních odkazů. Slouží dvěma věcem najednou: čtenáři usnadní přechod na související obsah a vyhledávačům i AI systémům pomůžou odhadnout, co spolu souvisí a co má na webu vyšší prioritu. Zároveň jsou cestou, po které se vyhledávací roboti k obsahu dostanou."
+  - q: "Proč nepsat u odkazu klikněte zde?"
+    a: "Protože text odkazu je kontext. Slovo zde neříká nic o tom, co je na druhé straně, zatímco popisný text to řekne rovnou — čtenáři i stroji. Text odkazu pište přirozeně a skloňujte ho podle věty; nemá to být pořád dokola stejná fráze nacpaná do textu."
+  - q: "Co je osiřelá stránka?"
+    a: "Osiřelá stránka je taková, na kterou nevede žádný interní odkaz; stránka s velmi malým počtem odkazů je spíš slabě propojená. Vyhledávací roboti se k ní dostanou hůř a hůř se pozná, kam v rámci webu patří. Kandidáty najdete tak, že porovnáte seznam známých adres z redakčního systému a sitemap s adresami, které najde procházení webu po odkazech; rozdíl je potřeba ověřit. Google Search Console je jen pomocný signál, protože zná pouze adresy, které už objevila."
+  - q: "Kolik interních odkazů má být v článku?"
+    a: "Konkrétní číslo neexistuje a nedává smysl ho stanovovat. Rozhoduje souvislost, ne počet: odkazujte tam, kde to čtenáři pomůže. Padesát odkazů v jednom odstavci je stejně nepoužitelné jako žádný. Když odkaz nedává smysl čtenáři, nedává smysl ani strojům."
+  - q: "Pomáhá interní prolinkování v AI odpovědích?"
+    a: "Pomáhá nepřímo. Mnohé AI systémy při odpovědích pracují s nalezenými částmi obsahu a popisný text odkazu jim pomáhá pochopit, co spolu souvisí. Prolinkování zároveň ukazuje, že web tématu věnuje víc než jednu stránku. Jak přesně jednotlivé systémy interní odkazy váží ale zveřejněné není, takže to neberte jako páku na viditelnost."
+  - q: "Stačí odkazy v menu a patičce?"
+    a: "Jako základní navigace ano a něco vypovídají i o struktuře webu. Konkrétní kontext ale nesou hůř: odkaz z těla textu je v jasné souvislosti, čtenář i stroj vidí, proč tam je. Menu a patička jsou na každé stránce stejné, takže pro vztah mezi dvěma konkrétními tématy bývá užitečnější odkaz přímo v textu."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Interní prolinkování je propojování stránek vlastního webu pomocí interních odkazů.** Pomáhá čtenářům, vyhledávačům i AI systémům odhadnout, co spolu souvisí a které stránky mají v rámci webu vyšší prioritu. V praxi rozhoduje popisný text odkazu, dostupnost stránky z relevantních míst a to, jestli na ni vůbec něco odkazuje.
+
+## Co interní odkazy dělají
+
+Tři věci, které jsou celkem nesporné:
+
+- **Cesta k obsahu** — vyhledávací roboti se po odkazech dostanou ke stránkám. Bez interního odkazu je objevení a zařazení do struktury webu obvykle těžší, i když se stránka může objevit i jinak, například přes sitemapu nebo externí odkaz.
+- **Kontext** — text odkazu říká, co je na druhé straně, ještě než tam kdokoli klikne.
+- **Vztahy a priorita** — struktura odkazů naznačuje, co spolu souvisí a které stránky mají v rámci webu vyšší prioritu.
+
+<Insight tone="key">
+Co se naopak tvrdit nedá: kolik „síly" odkaz přenese, ani jak přesně interní odkazy váží AI systémy. Tyhle váhy nikdo nezveřejňuje. Držte se toho, co ověřit jde — odkazy pomáhají obsah objevit a pochopit souvislosti. To stačí jako důvod je dělat pořádně.
+</Insight>
+
+## Čtyři věci, na kterých v praxi záleží
+
+<CompareTable
+  caption="Co u interních odkazů rozhoduje"
+  columns={["Prvek", "Proč na něm záleží"]}
+  rows={[
+    { icon: "🔤", label: "Text odkazu", left: "Kontext", right: "Popisný text řekne, co je na druhé straně; zde neřekne nic" },
+    { icon: "📍", label: "Odkud odkazujete", left: "Umístění", right: "Odkaz z těla textu obvykle nese konkrétnější kontext než odkaz v patičce" },
+    { icon: "🪜", label: "Dostupnost", left: "Zanoření", right: "Důležité stránky mají být snadno dostupné z relevantních částí webu, ne zbytečně zanořené" },
+    { icon: "🔗", label: "Souvislost", left: "Smysl", right: "Odkazovat na to, co spolu opravdu souvisí — ne co nejvíc odkazů" },
+  ]}
+/>
+
+## Postup krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "Osiřelé",
+      title: "Najděte stránky bez odkazů",
+      text: "Porovnejte seznam známých adres (redakční systém, sitemap) s tím, co najde procházení po odkazech. Rozdíl jsou kandidáti na osiřelé stránky.",
+    },
+    {
+      label: "Text",
+      title: "Zbavte se odkazů typu zde",
+      text: "Text odkazu má popisovat cílovou stránku. Pište přirozeně a skloňujte podle věty, ne pořád stejnou frázi.",
+    },
+    {
+      label: "Z textu",
+      title: "Propojte související témata z odstavců",
+      text: "Odkazujte odtud, kde to čtenáři dává smysl. Odkaz v kontextu věty řekne víc než odkaz v patičce.",
+    },
+    {
+      label: "Hloubka",
+      title: "Zkraťte cestu k důležitým stránkám",
+      text: "Zjistěte, kolik kliků od úvodní jsou vaše klíčové stránky, a přidejte odkazy z relevantních míst.",
+    },
+    {
+      label: "Kontrola",
+      title: "Opravte rozbité odkazy a přesměrování",
+      text: "Interní odkazy mají vést přímo na cíl. Odkazy na chybové stránky nebo přes řetězec přesměrování opravte.",
+    },
+  ]}
+/>
+
+Poslední krok je zvlášť aktuální po přestavbě webu — proč, rozebírá článek o [migraci a redesignu](/blog/ai-seo-migrace-redesign/).
+
+## Co to přidává v AI odpovědích
+
+Mnohé AI systémy při odpovědích pracují s nalezenými částmi obsahu. Popisný text odkazu jim pomáhá pochopit, co je na druhé straně, a prolinkování ukazuje, že web tématu věnuje víc než jednu osamocenou stránku. Podobný princip se používá i v pilířové struktuře obsahu, kterou rozebírá [jak strukturovat pilířový obsah](/blog/jak-strukturovat-pillar-content/).
+
+<Insight tone="warning">
+Nepřeceňujte to. Interní odkazy nezachrání obsah, který nemá co nabídnout — jen usnadní najít to, co už tam je. Když stránka neodpovídá na žádný dotaz, nepomůže jí ani deset odkazů; proč, vysvětluje [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+</Insight>
+
+## Jak si web zkontrolovat
+
+<Checklist
+  items={[
+    { title: "Kandidáti na osiřelé stránky", desc: "Porovnejte seznam známých adres (redakční systém, sitemap) s tím, co najde procházení po odkazech. Rozdíl ověřte." },
+    { title: "Report v Google Search Console", desc: "Ukáže stránky s nejmenším počtem odkazů. Je to pomocný signál — zná jen adresy, které už objevil." },
+    { title: "Test důležitých stránek", desc: "Vezměte několik nejdůležitějších stránek a spočítejte kliky od úvodní." },
+    { title: "Texty odkazů", desc: "Vyhledejte na webu zde a více — a přepište je na popisné." },
+    { title: "Rozbité odkazy", desc: "Najděte interní odkazy na chybové stránky a odkazy přes přesměrování." },
+  ]}
+/>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Klikněte zde">
+    Text odkazu bez kontextu. Čtenář ani stroj z něj nepozná, co ho na druhé straně čeká.
+  </Mistake>
+  <Mistake number="02" title="Osiřelé stránky">
+    Článek se publikuje a už na něj nevede žádný interní odkaz. Hůř se objeví i zařadí do souvislostí.
+  </Mistake>
+  <Mistake number="03" title="Odkazy jen v patičce">
+    Menu a patička jsou všude stejné. Pro vztah mezi dvěma konkrétními tématy bývá užitečnější odkaz přímo v textu.
+  </Mistake>
+  <Mistake number="04" title="Odkazy pro odkazy">
+    Vkládat odkazy na sílu tam, kde souvislost není. Když nedávají smysl čtenáři, nedávají ho ani strojům.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Psát popisný text odkazu, přirozeně skloňovaný.",
+    "Odkazovat z těla textu, kde to dává smysl.",
+    "Držet důležité stránky snadno dostupné z relevantních míst.",
+    "Pravidelně hledat osiřelé stránky.",
+    "Vést odkazy přímo na cílovou adresu.",
+  ]}
+  dontItems={[
+    "Používat zde a více jako text odkazu.",
+    "Opakovat pořád stejnou frázi v každém odkazu.",
+    "Nechat publikovanou stránku bez jediného odkazu.",
+    "Cpát odkazy tam, kde souvislost není.",
+    "Nechávat interní odkazy vést přes přesměrování.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Text odkazu je kontext** — popisný text místo zde a více.
+- **Odkaz z textu bývá užitečnější než z patičky** — nese jasnější kontext.
+- **Osiřelé a slabě propojené stránky hledejte pravidelně** — publikovat nestačí.
+- **Rozhoduje souvislost, ne počet** — žádné magické číslo odkazů neexistuje.
+- **Nepřeceňujte to** — odkazy usnadní najít hodnotu, nevytvoří ji; strukturu obsahu řeší [obsah pro AI](/blog/ai-seo-content/).
+
+---
+
+**Nevíte, které stránky na vašem webu nikam nevedou?** [AI SEO audit za 9 990 Kč](/audit/) projde web, pomůže odhalit osiřelé a slabě propojené stránky, slabé texty odkazů i odkazy přes přesměrování a navrhne, co propojit. Pokud stavíte nový web, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje návrhy stránek i s tím, kam patří odkazy na související obsah.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Doporučení vycházejí z veřejné dokumentace vyhledávačů a praxe k 11. 7. 2026. Jak přesně interní odkazy váží jednotlivé vyhledávače a AI systémy, zveřejněné není; uvedené kroky pomáhají srozumitelnosti webu, ale negarantují výsledek.*
