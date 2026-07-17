@@ -4,6 +4,7 @@ import RichLayout from "~/components/article/RichLayout.astro";
 import AuthorByline from "~/components/article/AuthorByline.astro";
 import AuthorBox from "~/components/article/AuthorBox.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
+import RelatedArticles from "~/components/article/RelatedArticles.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
@@ -203,6 +204,13 @@ const ogImage = `/og/${entry.data.slug}.png`;
         </section>
       )
     }
+
+    <!-- SOUVISEJÍCÍ ČLÁNKY — automaticky dle keywords + kategorie -->
+    <RelatedArticles
+      currentSlug={entry.data.slug}
+      category={entry.data.category}
+      keywords={entry.data.keywords}
+    />
 
     <!-- BACK CTA -->
     <section class="back-cta">

@@ -196,6 +196,11 @@ export const ui = {
   sectionFaqTitleHtml:
     'Otázky, které se k <span class="hl">{abbr}</span> <strong>ptají nejčastěji</strong>',
 
+  // Související články pod článkem (RelatedArticles.astro)
+  relatedArticlesEyebrow: "Čtěte dál",
+  relatedArticlesTitle: "Související články",
+  relatedArticlesAria: "Doporučené související články",
+
   // Blog reading page [slug] (non-rich) — FAQ titulek (set:html)
   blogFaqTitleHtml:
     '<span class="hl">Časté otázky</span>, které k tématu <strong>nejčastěji padají</strong>',

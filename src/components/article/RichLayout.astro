@@ -34,6 +34,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import AuthorByline from "~/components/article/AuthorByline.astro";
 import AuthorBox from "~/components/article/AuthorBox.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
+import RelatedArticles from "~/components/article/RelatedArticles.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
@@ -221,6 +222,13 @@ const _bundlerHints = [
       </section>
     )
   }
+
+  <!-- SOUVISEJÍCÍ ČLÁNKY — automaticky dle keywords + kategorie -->
+  <RelatedArticles
+    currentSlug={entry.data.slug}
+    category={entry.data.category}
+    keywords={entry.data.keywords}
+  />
 
   <section class="rback">
     <a href="/blog/" class="rback__primary">
