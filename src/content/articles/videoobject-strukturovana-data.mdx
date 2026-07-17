@@ -1,0 +1,191 @@
+---
+title: "VideoObject: strukturovaná data pro video a AI"
+description: "Jak označit video přes VideoObject, aby mu rozuměly vyhledávače i AI. Povinné vlastnosti, role přepisu a časté chyby — bez slibů o rich results."
+answer: "VideoObject jsou strukturovaná data, kterými se k videu na stránce doplní strojově čitelná fakta: název, náhledový obrázek a datum publikování jsou povinné, k tomu se přidává odkaz na soubor nebo přehrávač a délka. AI systémy z těchto dat a z přepisu mohou vycházet. Označení samo o sobě rozšířený výsledek nezaručí, ale pro způsobilost k němu je důležité."
+slug: "videoobject-strukturovana-data"
+category: "tutorial"
+updated: "2026-07-17"
+keywords:
+  - "videoobject"
+  - "strukturovaná data pro video"
+  - "video ve strukturovaných datech"
+  - "video pro ai"
+  - "přepis videa"
+variant: "rich"
+stats:
+  - value: "3 povinné"
+    label: "name, thumbnailUrl a uploadDate — bez nich video není způsobilé pro rozšířený výsledek"
+  - value: "+1 odkaz"
+    label: "k tomu aspoň contentUrl nebo embedUrl; Google preferuje contentUrl na soubor videa"
+  - value: "přepis"
+    label: "obsah videa přepis převádí do textu, se kterým AI často pracuje"
+  - value: "shoda"
+    label: "označit jde jen video, které je na stránce reálně vidět; jinak jde o porušení politiky"
+howto:
+  name: "Jak označit video přes VideoObject"
+  steps:
+    - name: "Ověřte, že video je na stránce reálně vidět"
+      text: "Strukturovaná data se dělají k videu, které na stránce skutečně je, ne jako doplněk navíc. Označit video, které tam není, je porušení politiky strukturovaných dat od Googlu. Nejdřív tedy video na stránku vložte, pak ho popisujte."
+    - name: "Vyplňte tři povinné vlastnosti"
+      text: "Podle dokumentace Googlu jsou povinné name (unikátní název videa), thumbnailUrl (odkaz na náhledový obrázek, který je přímo dostupný pro crawlery, ne schovaný za přihlášením) a uploadDate (datum publikování ve formátu ISO 8601, ideálně s časovou zónou)."
+    - name: "Přidejte odkaz na video a délku"
+      text: "Doplňte aspoň jedno z contentUrl (přímý odkaz na soubor videa, třeba MP4) nebo embedUrl (odkaz na přehrávač). Google preferuje contentUrl; ideál je uvést obojí. Přidejte i duration, tedy délku ve formátu ISO 8601, například PT4M12S."
+    - name: "Dejte na stránku přepis videa"
+      text: "Tohle je pro AI často velmi užitečný krok. Textový model obvykle vychází z textu na stránce, takže bez přepisu zůstává obsah videa z velké části skrytý. Přepis dejte na stránku jako úplný text, ne zkrácený. Strukturovaná data dají fakta o videu, přepis dá jeho obsah."
+    - name: "Ověřte shodu a platnost"
+      text: "Hodnoty ve strukturovaných datech mají odpovídat tomu, co je na stránce vidět. Otestujte značení v nástroji pro kontrolu strukturovaných dat a hlídejte, aby uploadDate nebylo v budoucnu a formáty seděly."
+faq:
+  - q: "Co je VideoObject?"
+    a: "VideoObject je typ strukturovaných dat ze slovníku schema.org, kterým se k videu na stránce doplní strojově čitelná fakta: název, náhledový obrázek, datum publikování, délka a odkaz na soubor nebo přehrávač. Vyhledávače i AI systémy z něj čtou základní informace o videu, které by jinak musely dolovat z okolního textu, nebo by je neměly vůbec."
+  - q: "Které vlastnosti jsou povinné?"
+    a: "Podle dokumentace Googlu jsou povinné tři: name, thumbnailUrl a uploadDate. K tomu je potřeba aspoň jedno z contentUrl nebo embedUrl, i když ty jsou vedené jako doporučené. Description povinné není, přestože to část návodů uvádí jinak; je doporučené a dává smysl ho vyplnit, ale samo o sobě podmínkou způsobilosti není."
+  - q: "Proč je u videa pro AI důležitý přepis?"
+    a: "Protože textový model obvykle vychází z textu: obsahu stránky, strukturovaných dat a přepisu. Strukturovaná data dají fakta jako název a délku, ale vlastní obsah videa, tedy co v něm zaznělo, se model dozví hlavně z přepisu. Video bez přepisu proto pro AI zůstává z velké části skryté, ať jsou data jakkoli úplná."
+  - q: "Zaručí VideoObject zobrazení videa v rozšířeném výsledku?"
+    a: "Ne. Splnění povinných vlastností dělá video způsobilým pro rozšířený výsledek, ale nezaručuje ho. Jestli se zobrazí a jak, rozhoduje Google podle víc faktorů. U citací v AI je to podobné: strukturovaná data a přepis šanci zvyšují, ale nikdo nemůže slíbit, že se z vašeho videa bude čerpat."
+  - q: "Musím uvádět počet zhlédnutí?"
+    a: "Ne, je to nepovinné. Pokud ho uvádět chcete, použijte interactionStatistic. Starší vlastnost interactionCount Google sice pořád podporuje, ale od roku 2019 doporučuje místo ní právě interactionStatistic, takže u nového značení sáhněte rovnou po doporučené variantě."
+  - q: "Stačí video vložit z YouTube, nebo musím dělat i data?"
+    a: "Vložené video z YouTube na stránce funguje a YouTube má vlastní data na své straně. Pokud ale chcete, aby vaší stránce rozuměly stroje co nejlíp, dává smysl doplnit VideoObject a hlavně přepis přímo na vaši stránku. Tím dáte kontext a obsah tam, kde řešíte svoje téma, ne jen na platformu."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**VideoObject jsou strukturovaná data, kterými se k videu na stránce doplní strojově čitelná fakta.** Název, náhledový obrázek a datum publikování jsou povinné, k tomu se přidává odkaz na soubor nebo přehrávač a délka. AI systémy z těchto dat a z přepisu mohou vycházet. Označení samo o sobě rozšířený výsledek nezaručí, ale pro způsobilost k němu je důležité.
+
+Video je pro stroje jiný případ než text. Odstavec si vyhledávač i AI přečtou rovnou; u videa vidí soubor, kterému bez další pomoci nerozumí. VideoObject a přepis jsou dva způsoby, jak k tomu souboru dodat text — a každý dělá něco jiného.
+
+## Co AI z videa vidí a co ne
+
+Mnoho textových AI modelů při práci se stránkou vychází hlavně z textu: okolního obsahu, strukturovaných dat a přepisu. Rozdíl mezi daty a přepisem je přitom zásadní a snadno se plete.
+
+<CompareTable
+  caption="Strukturovaná data vs. přepis — co dává co"
+  columns={["Zdroj", "Co z něj stroj získá"]}
+  rows={[
+    { icon: "🏷️", label: "VideoObject data", left: "Fakta o videu", right: "Název, náhled, datum, délka, odkaz — strojově čitelná fakta, na která se dá odkázat" },
+    { icon: "📝", label: "Přepis", left: "Obsah videa", right: "Co ve videu zaznělo — vlastní sdělení, ze kterého AI může čerpat" },
+    { icon: "🔗", label: "Okolní text", left: "Kontext", right: "O čem stránka je a jak s videem souvisí" },
+  ]}
+/>
+
+<Insight tone="key">
+Strukturovaná data a přepis se doplňují, nenahrazují. Data řeknou stroji, **že** tam video je a jaké má parametry. Přepis řekne, **co** v něm je. Bez přepisu zůstává obsah videa z velké části skrytý, i když jsou data úplná.
+</Insight>
+
+## Postup
+
+<Stepper
+  steps={[
+    {
+      label: "Video",
+      title: "Mějte video reálně na stránce",
+      text: "Data se dělají k videu, které tam je, ne jako trik. Označit video, které na stránce není, je porušení politiky.",
+    },
+    {
+      label: "Povinné",
+      title: "Vyplňte tři povinné vlastnosti",
+      text: "name (unikátní název), thumbnailUrl (přímo dostupný náhled) a uploadDate v ISO 8601, ideálně s časovou zónou.",
+    },
+    {
+      label: "Odkaz",
+      title: "Přidejte odkaz a délku",
+      text: "Aspoň contentUrl (soubor) nebo embedUrl (přehrávač); contentUrl Google preferuje. Doplňte duration.",
+    },
+    {
+      label: "Přepis",
+      title: "Dejte na stránku přepis",
+      text: "Úplný text, ne zkrácený. Pro AI často velmi užitečný krok — fakta dají data, obsah dá přepis.",
+    },
+    {
+      label: "Kontrola",
+      title: "Ověřte shodu a platnost",
+      text: "Hodnoty = to, co je vidět. Otestujte v nástroji pro kontrolu strukturovaných dat, uploadDate ne v budoucnu, formáty správně.",
+    },
+  ]}
+/>
+
+## Jak vypadá značení
+
+Povinné jsou jen `name`, `thumbnailUrl` a `uploadDate`. Pro způsobilost videa je ale potřeba uvést aspoň jedno z `contentUrl` nebo `embedUrl` (ideál je obojí) — bez odkazu na video zůstává značení neúplné:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Jak nastavit strukturovaná data krok za krokem",
+  "description": "Praktická ukázka nastavení strukturovaných dat na produktové stránce.",
+  "thumbnailUrl": "https://example.cz/nahledy/strukturovana-data.jpg",
+  "uploadDate": "2026-05-19T08:00:00+02:00",
+  "duration": "PT4M12S",
+  "contentUrl": "https://example.cz/video/strukturovana-data.mp4",
+  "embedUrl": "https://example.cz/prehravac/strukturovana-data"
+}
+```
+
+Formát `duration` je ISO 8601 pro trvání: `PT4M12S` znamená 4 minuty a 12 sekund. Datum v `uploadDate` je taky ISO 8601 a s časovou zónou je jednoznačnější. Kde VideoObject zapadá do širšího obrázku, rozebírá článek o [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/).
+
+## Čeho se vyvarovat
+
+<MistakeGrid>
+  <Mistake number="01" title="Náhled za přihlášením nebo přes přesměrování">
+    Když se Google k obrázku v thumbnailUrl nedostane přímo, může to zabránit správnému zpracování a snížit šanci na rozšířený výsledek. Odkaz má vést rovnou na dostupný obrázek.
+  </Mistake>
+  <Mistake number="02" title="Data k videu, které tam není">
+    Označit video, které na stránce reálně není, je porušení politiky strukturovaných dat. Data popisují to, co je vidět.
+  </Mistake>
+  <Mistake number="03" title="Video bez přepisu">
+    Pro textový model zůstává obsah videa z velké části skrytý, ať jsou data jakkoli úplná. Přepis bývá důležitým zdrojem jeho obsahu, ze kterého AI může čerpat.
+  </Mistake>
+  <Mistake number="04" title="Zastaralé interactionCount">
+    Pokud uvádíte počet zhlédnutí, použijte interactionStatistic. interactionCount je od roku 2019 nedoporučený.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Přepis se vyplatí psát jako úplný text, ne jako shrnutí. Zkrácený přepis vypustí přesně ty věty, které by AI mohla citovat. Je to sice víc práce, ale bývá to jeden z nejpřímějších způsobů, jak dostat obsah mluveného slova do textu, se kterým stroje pracují.
+</Insight>
+
+## Kde je hranice
+
+**Nezaručí rozšířený výsledek ani citaci.** Povinné vlastnosti dělají video způsobilým, ne zobrazeným. Jestli a jak se ukáže, rozhoduje Google podle víc faktorů; u citací v AI platí totéž.
+
+**Neřeší produkci ani hosting videa.** Článek je o tom, jak už existující video označit, ne kde ho vyrobit nebo uložit.
+
+**Data a přepis se nenahrazují.** Jsou to dvě různé věci — fakta a obsah. Potřebujete oboje, ne jedno místo druhého.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Tři povinné vlastnosti: name, thumbnailUrl, uploadDate",
+    "Aspoň contentUrl nebo embedUrl, ideálně obojí, plus duration",
+    "Úplný přepis videa jako text přímo na stránce",
+    "Hodnoty ve strukturovaných datech shodné s viditelným obsahem",
+    "interactionStatistic, pokud uvádíte počet zhlédnutí",
+  ]}
+  dontItems={[
+    "Náhledový obrázek za přihlášením nebo přes přesměrování",
+    "Strukturovaná data k videu, které na stránce není",
+    "Spoléhat jen na data a přepis vynechat",
+    "Zkrácený nebo shrnutý přepis místo úplného",
+    "Zastaralé interactionCount u nového značení",
+  ]}
+/>
+
+## Co si odnést
+
+VideoObject a přepis řeší dvě různé věci. Data dají strojům fakta o videu — název, náhled, datum, délku, odkaz. Přepis dá to podstatné: co v videu zaznělo, tedy obsah, ze kterého může AI čerpat.
+
+Povinné jsou jen tři vlastnosti, ale bez odkazu na video a hlavně bez přepisu je značení jen půlka práce. A jako u každých strukturovaných dat platí, že mají popisovat to, co je na stránce reálně vidět — ne slibovat něco, co tam není.
+
+Jestli řešíte video šířeji než jen po technické stránce, navazuje [YouTube pro AI viditelnost](/blog/youtube-pro-ai-viditelnost/); jak AI vybírá, z čeho cituje, rozebírá [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+
+---
+
+Nevíte, jestli máte video a přepisy označené tak, aby jim stroje rozuměly? **[AI SEO audit](/audit/)** za 9 990 Kč projde strukturovaná data na webu a navrhne, co doplnit. Hotové vzory stránek jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
