@@ -42,10 +42,10 @@ export const proof = {
     },
   ] as { value: string; label: string }[],
 
-  /** Primární CTA — důkaz (celá data). */
+  /** Primární CTA — dedikovaná landing s reálnými screenshoty. */
   ctaPrimary: {
     label: "Podívat se na celá data",
-    href: "/blog/case-study-megadetail-ai-navstevnost/",
+    href: "/ai-viditelnost/",
   },
   /** Sekundární CTA — co s tím může čtenář udělat. */
   ctaSecondary: {

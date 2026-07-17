@@ -1,0 +1,527 @@
+---
+/**
+ * /ai-viditelnost/ — landing „200 000 zobrazení v AI odpovědích Googlu".
+ *
+ * Marketingová landing nad reálnými daty (GSC screenshoty + čísla z case
+ * study MEGA DETAIL). Cíl ProofStrip komponenty napříč webem. Texty:
+ * src/content/pages/ai-viditelnost.ts (fork přeloží). Vizuál drží design
+ * tokeny webu; tmavý hero je stejná rodina jako ProofStrip panel.
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import DataBars from "~/components/blocks/DataBars.astro";
+import * as p from "~/content/pages/ai-viditelnost";
+import { buildFaqJsonLd } from "~/lib/jsonld";
+
+const faqJsonLd = buildFaqJsonLd(p.faq);
+---
+
+<BaseLayout
+  title={p.meta.title}
+  description={p.meta.description}
+  jsonLd={faqJsonLd}
+  image="/og/ai-viditelnost.png"
+  breadcrumb={[{ label: "AI viditelnost", href: "/ai-viditelnost/" }]}
+>
+  <div class="aiv">
+    <!-- ===== HERO — tmavý panel, stejná rodina jako ProofStrip ===== -->
+    <section class="aiv-hero" aria-labelledby="aiv-hero-title">
+      <div class="aiv-hero__inner">
+        <span class="aiv-hero__eyebrow">{p.hero.eyebrow}</span>
+        <h1 id="aiv-hero-title" class="aiv-hero__title" set:html={p.hero.titleHtml} />
+        <p class="aiv-hero__lead">{p.hero.lead}</p>
+        <div class="aiv-hero__actions">
+          <a class="aiv-cta aiv-cta--light" href={p.hero.ctaPrimary.href}>
+            {p.hero.ctaPrimary.label}
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="aiv-cta aiv-cta--ghost" href={p.hero.ctaSecondary.href}>
+            {p.hero.ctaSecondary.label}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DŮKAZ 1 — reálný screenshot reportu ===== -->
+    <section class="aiv-shot" aria-label="Reálný screenshot ze Search Console">
+      <figure class="aiv-shot__figure">
+        <div class="aiv-shot__frame">
+          <img
+            src={p.shot1.src}
+            alt={p.shot1.alt}
+            width={p.shot1.width}
+            height={p.shot1.height}
+            loading="eager"
+          />
+        </div>
+        <figcaption class="aiv-shot__caption">{p.shot1.caption}</figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== CO TO ZNAMENÁ ===== -->
+    <section class="aiv-means" aria-labelledby="aiv-means-title">
+      <header class="aiv-head">
+        <span class="eyebrow"><span class="eyebrow__num">01</span> {p.means.eyebrow}</span>
+        <h2 id="aiv-means-title" class="aiv-title">{p.means.title}</h2>
+      </header>
+      <div class="aiv-means__grid">
+        {
+          p.means.items.map((item) => (
+            <article class="aiv-means__card">
+              <span class="aiv-means__num">{item.num}</span>
+              <h3 class="aiv-means__card-title">{item.title}</h3>
+              <p class="aiv-means__card-text">{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ===== DŮKAZ 2 — top stránky (screenshot + přehledný graf) ===== -->
+    <section class="aiv-shot" aria-label="Nejzobrazovanější stránky v AI odpovědích">
+      <figure class="aiv-shot__figure">
+        <div class="aiv-shot__frame">
+          <img
+            src={p.shot2.src}
+            alt={p.shot2.alt}
+            width={p.shot2.width}
+            height={p.shot2.height}
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="aiv-shot__caption">{p.shot2.caption}</figcaption>
+      </figure>
+
+      <DataBars
+        caption="Stejná data přehledně: top stránky podle zobrazení v AI odpovědích (Search Console, 18. 5. – 15. 7. 2026)"
+        unit="zobrazení"
+        tableValueLabel="Zobrazení"
+        rows={[
+          { label: "Životnost motoru 1.0 TSI 85 kW", value: 17326, display: "17 326", emphasized: true },
+          { label: "Problémy motoru 1.2 PureTech", value: 8918, display: "8 918", emphasized: true },
+          { label: "Co když neudělám testy v autoškole", value: 7645, display: "7 645", emphasized: true },
+          { label: "Po kolika km se dělají rozvody", value: 7126, display: "7 126", emphasized: true },
+          { label: "Můžu tankovat 100oktanový benzín", value: 6631, display: "6 631", emphasized: true },
+          { label: "Waze v Rakousku", value: 6079, display: "6 079", emphasized: true },
+        ]}
+      />
+    </section>
+
+    <!-- ===== JAK SE TO DĚLÁ ===== -->
+    <section class="aiv-how" aria-labelledby="aiv-how-title">
+      <header class="aiv-head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> {p.how.eyebrow}</span>
+        <h2 id="aiv-how-title" class="aiv-title">{p.how.title}</h2>
+        <p class="aiv-lead">{p.how.lead}</p>
+      </header>
+      <ol class="aiv-how__list">
+        {
+          p.how.steps.map((step, i) => (
+            <li class="aiv-how__step">
+              <span class="aiv-how__step-num">{i + 1}</span>
+              <div class="aiv-how__step-body">
+                <h3 class="aiv-how__step-title">{step.title}</h3>
+                <p class="aiv-how__step-text">{step.text}</p>
+                <a class="aiv-how__step-link" href={step.href}>
+                  {step.linkLabel}
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="aiv-method">
+        {p.methodology.text}
+        {" "}
+        <a href={p.methodology.href}>{p.methodology.linkLabel}</a>.
+      </p>
+    </section>
+
+    <!-- ===== FINÁLNÍ CTA ===== -->
+    <section class="aiv-final" aria-labelledby="aiv-final-title">
+      <div class="aiv-final__inner">
+        <span class="aiv-hero__eyebrow">{p.finalCta.eyebrow}</span>
+        <h2 id="aiv-final-title" class="aiv-final__title" set:html={p.finalCta.titleHtml} />
+        <p class="aiv-hero__lead">{p.finalCta.lead}</p>
+        <div class="aiv-hero__actions">
+          <a class="aiv-cta aiv-cta--light" href={p.finalCta.ctaPrimary.href}>
+            {p.finalCta.ctaPrimary.label}
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="aiv-cta aiv-cta--ghost" href={p.finalCta.ctaSecondary.href}>
+            {p.finalCta.ctaSecondary.label}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="aiv-faq" aria-labelledby="aiv-faq-title">
+      <header class="aiv-head">
+        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
+        <h2 id="aiv-faq-title" class="aiv-title">Na co se k těm číslům ptáte</h2>
+      </header>
+      <dl class="aiv-faq__list">
+        {
+          p.faq.map((item, i) => (
+            <div class="aiv-faq__item">
+              <dt class="aiv-faq__q">
+                <span class="aiv-faq__q-num">{i + 1}</span>
+                <span>{item.q}</span>
+              </dt>
+              <dd class="aiv-faq__a">{item.a}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="aiv-disclaimer">{p.disclaimer}</p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .aiv {
+    --d: var(--color-seo);
+  }
+
+  /* ===== Sdílené hlavičky sekcí ===== */
+  .aiv-head {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+  }
+  .aiv-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--color-ink);
+    margin: 0.9rem 0 0.75rem;
+    max-width: 30ch;
+  }
+  .aiv-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    font-weight: 350;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 46rem;
+    margin: 0;
+  }
+
+  /* ===== HERO (tmavý) ===== */
+  .aiv-hero {
+    max-width: var(--max-section);
+    margin: clamp(2rem, 5vh, 3.5rem) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .aiv-hero__inner,
+  .aiv-final__inner {
+    border-radius: 24px;
+    background:
+      radial-gradient(120% 160% at 85% -20%, oklch(0.42 0.14 264 / 0.55), transparent 55%),
+      radial-gradient(100% 140% at 0% 110%, oklch(0.4 0.1 155 / 0.35), transparent 50%),
+      oklch(0.21 0.03 262);
+    color: oklch(0.97 0.005 250);
+    padding: clamp(2.25rem, 5.5vw, 4rem) clamp(1.5rem, 4.5vw, 3.5rem);
+    box-shadow:
+      0 32px 80px -32px oklch(0.2 0.06 262 / 0.55),
+      0 6px 16px -8px oklch(0.2 0.06 262 / 0.3);
+  }
+  .aiv-hero__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.85 0.06 250);
+    border: 1px solid oklch(1 0 0 / 0.18);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 1.4rem;
+  }
+  .aiv-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    font-size: clamp(2.1rem, 5.5vw, 3.8rem);
+    max-width: 20ch;
+    margin: 0 0 1.1rem;
+    color: oklch(1 0 0);
+  }
+  .aiv-hero__title :global(strong),
+  .aiv-final__title :global(strong) {
+    font-weight: 650;
+    color: oklch(0.87 0.09 250);
+  }
+  .aiv-hero__lead {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+    line-height: 1.6;
+    color: oklch(0.9 0.01 250);
+    max-width: 48rem;
+    margin: 0 0 1.75rem;
+  }
+  .aiv-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .aiv-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .aiv-cta--light {
+    background: oklch(1 0 0);
+    color: oklch(0.22 0.012 260);
+  }
+  .aiv-cta--light:hover {
+    transform: translateY(-1px);
+    background: oklch(0.93 0.01 250);
+  }
+  .aiv-cta--ghost {
+    border: 1px solid oklch(1 0 0 / 0.35);
+    color: oklch(1 0 0);
+  }
+  .aiv-cta--ghost:hover {
+    transform: translateY(-1px);
+    border-color: oklch(1 0 0 / 0.7);
+  }
+
+  /* ===== SCREENSHOTY ===== */
+  .aiv-shot {
+    max-width: var(--max-section);
+    margin: clamp(2.5rem, 6vw, 4rem) auto;
+    padding: 0 var(--space-section-x);
+  }
+  .aiv-shot__figure {
+    margin: 0;
+  }
+  .aiv-shot__frame {
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--color-paper);
+    box-shadow:
+      0 24px 60px -28px oklch(0.2 0.05 260 / 0.35),
+      0 4px 12px -6px oklch(0.2 0.05 260 / 0.15);
+  }
+  .aiv-shot__frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .aiv-shot__caption {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin-top: 0.8rem;
+    max-width: 52rem;
+  }
+  .aiv-shot :global(.dbars) {
+    margin-top: 1.5rem;
+  }
+
+  /* ===== CO TO ZNAMENÁ ===== */
+  .aiv-means {
+    margin: clamp(3rem, 7vw, 5rem) auto;
+  }
+  .aiv-means__grid {
+    max-width: var(--max-section);
+    margin: 1.75rem auto 0;
+    padding: 0 var(--space-section-x);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .aiv-means__card {
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    background: var(--color-paper);
+    padding: 1.5rem 1.6rem;
+  }
+  .aiv-means__num {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-seo);
+  }
+  .aiv-means__card-title {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin: 0.6rem 0 0.5rem;
+  }
+  .aiv-means__card-text {
+    font-family: var(--font-sans);
+    font-size: 0.925rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* ===== JAK SE TO DĚLÁ ===== */
+  .aiv-how {
+    margin: clamp(3rem, 7vw, 5rem) auto;
+  }
+  .aiv-how__list {
+    max-width: var(--max-section);
+    margin: 2rem auto 0;
+    padding: 0 var(--space-section-x);
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .aiv-how__step {
+    display: flex;
+    gap: 1.1rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    background: var(--color-paper);
+    padding: 1.5rem 1.6rem;
+  }
+  .aiv-how__step-num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-seo-tint);
+    color: var(--color-seo);
+    font-family: var(--font-sans);
+    font-weight: 650;
+    font-size: 0.95rem;
+  }
+  .aiv-how__step-title {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0.2rem 0 0.4rem;
+  }
+  .aiv-how__step-text {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0 0 0.6rem;
+  }
+  .aiv-how__step-link {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .aiv-how__step-link:hover {
+    text-decoration: underline;
+  }
+  .aiv-method {
+    max-width: var(--max-section);
+    margin: 1.5rem auto 0;
+    padding: 0 var(--space-section-x);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-ink-muted);
+  }
+  .aiv-method a {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* ===== FINÁLNÍ CTA ===== */
+  .aiv-final {
+    max-width: var(--max-section);
+    margin: clamp(3rem, 7vw, 5rem) auto;
+    padding: 0 var(--space-section-x);
+  }
+  .aiv-final__title {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    font-size: clamp(1.75rem, 4vw, 2.9rem);
+    max-width: 24ch;
+    margin: 0 0 1rem;
+    color: oklch(1 0 0);
+  }
+
+  /* ===== FAQ ===== */
+  .aiv-faq {
+    margin: clamp(3rem, 7vw, 5rem) auto;
+  }
+  .aiv-faq__list {
+    max-width: 52rem;
+    margin: 1.75rem auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .aiv-faq__item {
+    border-bottom: 1px solid var(--color-rule);
+    padding: 1.25rem 0;
+  }
+  .aiv-faq__q {
+    display: flex;
+    gap: 0.85rem;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .aiv-faq__q-num {
+    flex-shrink: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-seo-tint);
+    color: var(--color-seo);
+    font-size: 0.85rem;
+  }
+  .aiv-faq__a {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-ink-muted);
+    margin: 0.6rem 0 0 2.55rem;
+  }
+  .aiv-disclaimer {
+    max-width: 52rem;
+    margin: 2rem auto 0;
+    padding: 0 var(--space-section-x);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--color-ink-faint);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .aiv-means__grid {
+      grid-template-columns: 1fr;
+    }
+    .aiv-how__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
