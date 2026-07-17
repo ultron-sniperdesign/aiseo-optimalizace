@@ -1,0 +1,164 @@
+---
+title: "Chybná informace o firmě v AI: jak reagovat"
+description: "Nepravdivé informace v AI o vaší firmě? Zjistěte možné příčiny, jak opravit zdroje a jak chybu nahlásit — bez nereálných slibů."
+answer: "Když AI odpoví o firmě nepravdivý údaj, odpověď obvykle nejde přímo přepsat — běžné rozhraní, kterým byste si ji upravili sami, k dispozici není. Reálně lze opravit zdroje, ze kterých systém čerpá, doplnit jasnou informaci na vlastním webu a chybu nahlásit. Účinek bývá nepřímý, bez záruky a bez jistého termínu."
+slug: "chybna-informace-o-firme-v-ai"
+category: "analysis"
+updated: "2026-07-11"
+keywords:
+  - "chybná informace v ai"
+  - "nepravdivé informace ai"
+  - "oprava informací v ai"
+  - "ai o firmě"
+  - "reputace v ai"
+variant: "rich"
+stats:
+  - value: "přepsat ne"
+    label: "přímá úprava samotné odpovědi v běžném rozhraní obvykle k dispozici není"
+  - value: "zdroje ano"
+    label: "opravit jde to, odkud se údaj bere: vlastní web i cizí katalogy a profily"
+  - value: "3 příčiny"
+    label: "zastaralý údaj, chybný cizí zdroj, nebo konfabulace — každá se řeší jinak"
+  - value: "bez záruky"
+    label: "ani po správně provedených krocích nelze slíbit opravu ani termín"
+faq:
+  - q: "Dá se opravit, co o mé firmě říká AI?"
+    a: "Oprava chybné informace v AI obvykle probíhá nepřímo: úpravou zdrojů, doplněním jasné informace na vlastním webu a případným nahlášením chyby platformě. Přímá uživatelská úprava samotné odpovědi v běžném rozhraní obvykle k dispozici není. Opravit jde hlavně zdroje, ze kterých systém čerpá — vlastní web, firemní profily, katalogy."
+  - q: "Proč o mé firmě AI uvádí nesmysl?"
+    a: "Obvykle z jednoho ze tří důvodů. Buď někde žije zastaralý údaj, třeba stará cena nebo zrušená služba. Nebo je zdrojem cizí web s chybou, například starý katalog. Anebo si model údaj domyslel — to bývá tam, kde chybí jasné a konzistentní podklady, ale může jít i o záměnu s jinou firmou nebo o chybné spojení několika zdrojů. Každá z těch příčin se řeší jinak, takže první krok je zjistit, o kterou jde."
+  - q: "Jak dlouho trvá, než se oprava projeví?"
+    a: "To se nedá říct. Kadence, s jakou jednotlivé systémy přebírají změny ze zdrojů, není zveřejněná a liší se. Počítejte s tím, že to nebude hned, a testujte opakovaně s odstupem. Nikdo vám nemůže slíbit, že se to opraví, ani kdy."
+  - q: "Má smysl chybu v AI nástroji nahlásit?"
+    a: "Ano, je to legitimní krok a některé systémy k tomu mají zpětnou vazbu. Nepočítejte s tím ale jako s jistým řešením: průběh vyhodnocení a zapracování změny obvykle není transparentní, takže nebývá vidět, jak přesně se podnět posoudí a kdy se případně projeví. Berte to jako doplněk k opravě zdrojů, ne jako náhradu."
+  - q: "Mám na web napsat, že to není pravda?"
+    a: "Opatrně. Stránka ve stylu není pravda, že děláme to a to, obvykle nepomůže čtenáři ani strojům a může chybné tvrzení naopak spojit s vaším jménem. Lepší je uvést správnou informaci jasně a pozitivně na místě, kde ji lidé hledají — a hlavně konzistentně napříč webem a profily."
+  - q: "Co když je to poškozující tvrzení?"
+    a: "U závažného případu, kdy nepravdivé tvrzení firmu reálně poškozuje, je namístě konzultace s právníkem. Tento článek se drží toho, co jde udělat obsahově a technicky, a právní postup neřeší; posouzení konkrétní situace patří odborníkovi."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Když AI odpoví o firmě nepravdivý údaj, odpověď obvykle nejde přímo přepsat** — běžné rozhraní, kterým byste si ji upravili sami, k dispozici není. Reálně lze opravit zdroje, ze kterých systém čerpá, doplnit jasnou informaci na vlastním webu a chybu nahlásit. Účinek bývá nepřímý, bez záruky a bez jistého termínu.
+
+Hned na začátku je dobré rozlišit dvě věci, které se snadno pletou. **Přímá úprava samotné odpovědi** v běžném rozhraní obvykle k dispozici není. **Nahlásit chybu ale jde** — některé platformy k tomu mají zpětnou vazbu a umožňují upravit související firemní záznam nebo profil. Co vidět nebývá, je jak přesně se podnět vyhodnotí a kdy se případně projeví.
+
+## Nejdřív zjistěte příčinu
+
+Tohle je podstata. „AI o nás lže" není jedna situace, ale tři různé — a každá se řeší jinak.
+
+<CompareTable
+  caption="Tři příčiny chybného údaje a co s nimi"
+  columns={["Příčina", "Jak se řeší"]}
+  rows={[
+    { icon: "🕰️", label: "Zastaralý údaj", left: "Stará cena, zrušená služba", right: "Aktualizovat vlastní web a profily; nejčastější a nejlépe řešitelné" },
+    { icon: "🔗", label: "Chybný cizí zdroj", left: "Katalog, starý článek", right: "Kontaktovat provozovatele zdroje a nechat údaj opravit" },
+    { icon: "💭", label: "Konfabulace", left: "Chybí jasné podklady", right: "Doplnit jasnou odpověď tam, kde o vás nic konkrétního není; může jít i o záměnu s jinou firmou" },
+  ]}
+/>
+
+Konfabulace může být častější tam, kde chybí jasné a konzistentní podklady, ale vzniká i při chybné syntéze více zdrojů nebo záměně entity. Riziko tedy může růst u značek, o nichž je méně konzistentních veřejných podkladů; k tomu, proč si modely domýšlejí, viz článek o [AI generovaném obsahu](/blog/ai-generovany-obsah-viditelnost/).
+
+<Insight tone="key">
+Zásadní rozdíl: model přepsat nejde, zdroje ano. Všechno, co reálně můžete udělat, míří na to, **odkud se informace bere** — ne na odpověď samotnou. Kdo slibuje přímou nebo garantovanou opravu odpovědi v AI, slibuje víc, než může doložit.
+</Insight>
+
+## Co reálně jde dělat
+
+<Stepper
+  steps={[
+    {
+      label: "Doklad",
+      title: "Zdokumentujte to",
+      text: "Uložte si dotaz, odpověď, datum a systém. Odpovědi kolísají, tak to zkuste víckrát — jedna odpověď nemusí nic znamenat.",
+    },
+    {
+      label: "Příčina",
+      title: "Určete, odkud to je",
+      text: "Zastaralý údaj, chybný cizí zdroj, nebo konfabulace? Podle toho se liší další krok. Bez toho střílíte naslepo.",
+    },
+    {
+      label: "Zdroj",
+      title: "Opravte zdroj",
+      text: "Vlastní web aktualizujte, u cizího zdroje kontaktujte provozovatele. Někdy stačí jeden e-mail nebo úprava vlastního profilu, jindy je proces delší a bez jistého výsledku.",
+    },
+    {
+      label: "Odpověď",
+      title: "Doplňte, co chybí",
+      text: "Jedním z důvodů, proč si model domýšlí, může být to, že odpověď není nikde podaná jasně a konzistentně. Napište ji na jedno místo a držte ji stejnou napříč webem.",
+    },
+    {
+      label: "Test",
+      title: "Testujte s odstupem",
+      text: "Ověřte opakovaně a v různých systémech. Počítejte s prodlevou — kadence přebírání změn není zveřejněná.",
+    },
+  ]}
+/>
+
+Konzistence je tu důležitější než jinde. Když se údaj na webu, v profilech a v katalozích rozchází, dáváte strojům na výběr — a nemáte vliv na to, co si vyberou. Kde všude značka může figurovat, rozebírají [zmínky značky v AI](/blog/ai-brand-mentions/) a [značka na Wikipedii](/blog/znacka-na-wikipedii-pro-ai/).
+
+## Co naopak nedělat
+
+<MistakeGrid>
+  <Mistake number="01" title="Panika z jedné odpovědi">
+    Odpovědi kolísají běh od běhu. Než začnete jednat, ověřte to víckrát a v různých systémech.
+  </Mistake>
+  <Mistake number="02" title="Opravná stránka na webu">
+    Text ve stylu není pravda, že děláme to a to, nepomůže čtenáři a může chybné tvrzení spojit s vaším jménem.
+  </Mistake>
+  <Mistake number="03" title="Vytváření falešných zdrojů">
+    Vyrábět obsah jen kvůli přebití chyby je riziko i etický problém. Oprava zdroje bývá nejčistší a nejspolehlivější cesta.
+  </Mistake>
+  <Mistake number="04" title="Čekání na tlačítko upravit">
+    Přímá úprava samotné odpovědi v běžném rozhraní obvykle k dispozici není. Čas strávený hledáním cesty k modelu je lepší dát do opravy zdrojů a nahlášení.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Nahlásit chybu v samotném AI nástroji dává smysl a některé systémy k tomu mají zpětnou vazbu. Nepočítejte s tím ale jako s jistým řešením: průběh vyhodnocení a zapracování změny obvykle není transparentní. Je to doplněk k opravě zdrojů, ne náhrada.
+</Insight>
+
+## Kde je hranice tohoto článku
+
+Dvě věci, které tenhle text neřeší a řešit nemůže.
+
+**Nemůže slíbit výsledek.** Ani po správně provedených krocích nelze zaručit, že se odpověď změní, ani kdy. Kdo tvrdí opak, prodává jistotu, kterou nemá.
+
+**Neřeší právní rovinu.** Vedle oprav zdrojů může někdy připadat v úvahu i nahlášení výstupu platformě, oprava souvisejícího firemního záznamu nebo formální žádost vůči zdroji; konkrétní postup závisí na typu chyby a službě. Pokud vás nepravdivé tvrzení reálně poškozuje, je namístě konzultace s právníkem. Tady zůstáváme u toho, co jde udělat obsahově a technicky.
+
+<DoDont
+  doTitle="Co dělat"
+  dontTitle="Čemu se vyhnout"
+  doItems={[
+    "Zdokumentovat dotaz, odpověď, datum a systém.",
+    "Určit příčinu dřív než řešení.",
+    "Aktualizovat vlastní web a firemní profily.",
+    "Doplnit jasnou odpověď tam, kde chybí.",
+    "Testovat opakovaně a s odstupem.",
+  ]}
+  dontItems={[
+    "Jednat podle jediné odpovědi.",
+    "Psát na web opravné texty typu není pravda.",
+    "Vyrábět falešné zdroje kvůli přebití chyby.",
+    "Slibovat vedení, že to bude opravené do týdne.",
+    "Nechat údaje na webu a v profilech rozcházet se.",
+  ]}
+/>
+
+## Co si z článku odnést
+
+- **Model přepsat nejde, zdroje ano** — všechno účinné míří na to, odkud se údaj bere.
+- **Nejdřív příčina, pak řešení** — zastaralý údaj, cizí zdroj a konfabulace se řeší jinak.
+- **Konfabulace často roste tam, kde chybí jasné podklady** — může ale jít i o záměnu značek.
+- **Konzistence napříč webem a profily** — rozpory nechávají výběr na strojích.
+- **Bez záruky a bez termínu** — ověřujte opakovaně, viz [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/), a nikomu neslibujte datum.
+
+---
+
+**Nevíte, co o vás AI říká a odkud to bere?** [AI SEO audit za 9 990 Kč](/audit/) projde, jak o vaší firmě AI systémy odpovídají, pomůže dohledat pravděpodobné zdroje sporných údajů a navrhne obsahové a technické kroky, které mohou zvýšit šanci na nápravu. Pokud chcete mít na webu jasné odpovědi, ze kterých se dá čerpat, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) dává strukturu stránek s krátkou odpovědí na správném místě.
+
+*Transparentně: Sniperdesign je Zlatý partner platformy Upgates od roku 2016. Popis vychází z veřejně dostupných informací a praxe k 11. 7. 2026. Provozovatelé AI systémů nezveřejňují, jak přesně přebírají změny ze zdrojů; uvedené kroky proto nemohou zaručit opravu ani její načasování. Článek neposkytuje právní poradenství.*
