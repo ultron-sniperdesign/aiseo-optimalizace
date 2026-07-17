@@ -1,0 +1,199 @@
+---
+title: "Ceny na webu a AI: jak cenu uvést srozumitelně"
+description: "Cena na dotaz a AI: proč prázdné místo v ceně vede k domýšlení a jak dát srozumitelný cenový signál i tam, kde konkrétní číslo uvést nejde."
+answer: "Cena na webu je pro AI nejčitelnější tehdy, když je na stránce napsaná jako text. Údaj schovaný v obrázku, v PDF nebo za formulářem systém přečíst nemusí a může sáhnout po cizím nebo zastaralém zdroji. I tam, kde konkrétní číslo dát nejde, pomůže rozpětí, od-cena nebo popis toho, co cenu určuje."
+slug: "ceny-na-webu-a-ai"
+category: "tutorial"
+updated: "2026-07-17"
+keywords:
+  - "ceny na webu"
+  - "cena na dotaz"
+  - "ceník pro ai"
+  - "cena ve strukturovaných datech"
+  - "cenová stránka"
+variant: "rich"
+stats:
+  - value: "text, ne PDF"
+    label: "cena napsaná na stránce je čitelná; v obrázku, v PDF nebo za formulářem hůř"
+  - value: "rozpětí jde"
+    label: "i tam, kde konkrétní číslo dát nejde, lze uvést od-cenu nebo rozpětí"
+  - value: "model > číslo"
+    label: "u individuálních zakázek bývá popis toho, co cenu určuje, cennější než jedno číslo"
+  - value: "shoda nutná"
+    label: "strukturovaná data mají uvádět stejnou cenu, jaká je vidět v textu stránky"
+howto:
+  name: "Jak uvést cenu tak, aby jí rozuměli lidé i stroje"
+  steps:
+    - name: "Rozhodněte, co jde říct"
+      text: "Ne každý web může uvést jedno číslo, a to je v pořádku. Projděte si možnosti od nejkonkrétnější: přesná cena, cenové rozpětí, od-cena, nebo popis modelu kalkulace. I věta od 15 000 Kč podle rozsahu nese víc informace než cena na dotaz."
+    - name: "Napište cenu jako text na stránku"
+      text: "Cena patří do textu stránky, ne do obrázku, ne jen do PDF ceníku a ne až za kliknutí nebo za formulář. Umístěte ji tam, kde ji člověk hledá, tedy blízko popisu produktu nebo služby, ne do patičky."
+    - name: "Vysvětlete, co cenu určuje"
+      text: "U individuálních zakázek je tohle to nejcennější, co můžete dát. Napište, co cenu zvedá a co snižuje: rozsah, počet stránek, termín, integrace. Čtenář si udělá představu a vy nemusíte slibovat číslo, které neplatí."
+    - name: "Sjednoťte cenu napříč místy"
+      text: "Web, ceník, profily, katalogy a nabídky mají říkat totéž. Když se údaje rozcházejí, dáváte na výběr a nemáte vliv na to, který si systém vezme. Projděte i cizí zdroje, kde vaše ceny někdo uvádí."
+    - name: "Doplňte strukturovaná data sedící na text"
+      text: "Cenu zopakujte strojově čitelně přes Offer a PriceSpecification, u rozpětí přes minPrice a maxPrice. Hodnoty musí odpovídat viditelné ceně na stránce. Při každé změně ceny aktualizujte obojí naráz."
+faq:
+  - q: "Musím na web dávat ceny?"
+    a: "Ne. Jestli ceny zveřejnit je obchodní rozhodnutí, do kterého vstupuje konkurence, marže, segment i způsob nákupu na straně klienta. Cena na dotaz je legitimní volba. Tento článek řeší něco jiného: když se rozhodnete cenu nějak komunikovat, jak to udělat srozumitelně pro lidi i pro stroje."
+  - q: "Co když je cena vždycky individuální?"
+    a: "Pak místo čísla popište model. Uveďte, od jaké částky se zakázky obvykle odvíjejí, co cenu zvedá a co snižuje, a jak kalkulace probíhá. Rozpětí nebo od-cena je pořád konkrétnější informace než cena na dotaz a čtenáři i systému dá něco, z čeho může vycházet."
+  - q: "Proč nestačí ceník v PDF?"
+    a: "PDF za odkazem je pro čtení textu stránky slabší místo: systém, který zpracovává stránku, se k obsahu souboru nemusí dostat. Navíc se PDF hůř aktualizuje, takže v něm často žije starší cena než na webu. Když PDF ceník chcete mít, mějte podstatu i v textu stránky."
+  - q: "Pomůže cena ve strukturovaných datech k citaci v AI?"
+    a: "Zaručit to nejde. Strukturovaná data jsou strojově čitelné zopakování toho, co je na stránce vidět, ne přepínač viditelnosti. Dávají smysl jako podklad, který se dá přečíst jednoznačně, ale samy o sobě nic negarantují a nenahradí cenu napsanou v textu."
+  - q: "Co je špatného na ceně od 0 Kč?"
+    a: "Od-cena má odpovídat něčemu, co si opravdu jde koupit. Když od-cena existuje jen jako lákadlo, čtenář to zjistí při prvním kontaktu a důvěru to nezvedne. Krátkodobě to může vypadat dobře, dlouhodobě je to důvod, proč lidé od-cenám nevěří."
+  - q: "Jak často cenu aktualizovat?"
+    a: "Vždy, když se změní. Kadence, s jakou jednotlivé systémy přebírají změny ze zdrojů, není zveřejněná a liší se, takže se stará cena může držet ještě nějakou dobu po opravě. To je důvod měnit ji na všech místech naráz, ne důvod ji neměnit."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Cena na webu je pro AI nejčitelnější tehdy, když je na stránce napsaná jako text.** Údaj schovaný v obrázku, v PDF nebo za formulářem systém přečíst nemusí a může sáhnout po cizím nebo zastaralém zdroji. I tam, kde konkrétní číslo dát nejde, pomůže rozpětí, od-cena nebo popis toho, co cenu určuje.
+
+Ať je jasné, o čem tenhle text není: **neradí vám ceny zveřejnit.** To je obchodní rozhodnutí a „cena na dotaz" je legitimní volba. Řeší jen tu druhou otázku — když už se rozhodnete cenu nějak komunikovat, jak to udělat tak, aby tomu rozuměl člověk i stroj.
+
+## Proč zrovna u ceny vzniká prázdné místo
+
+V článku o [chybné informaci o firmě v AI](/blog/chybna-informace-o-firme-v-ai/) jsme psali, že si systém spíš domyslí odpověď tam, kde chybí jasné a konzistentní podklady. Cena je přesně takové místo. Cena bývá častý dotaz a na spoustě českých webů na ni odpověď není.
+
+Když na vlastním webu jasný údaj chybí, prostor často vyplní cizí zdroje. Srovnávače, starší články, diskuze, katalogy. Ty mohou být zastaralé nebo se týkat něčeho trochu jiného.
+
+<CompareTable
+  caption="Kde cena bývá a jak dobře se dá přečíst"
+  columns={["Kde", "Jak je na tom čitelnost"]}
+  rows={[
+    { icon: "📝", label: "Text na stránce", left: "Napsaná v HTML", right: "Nejčitelnější varianta — člověk i stroj ji obvykle snáz zpracují" },
+    { icon: "🧾", label: "PDF ceník", left: "Soubor za odkazem", right: "Slabší — k obsahu souboru se systém nemusí dostat a hůř se aktualizuje" },
+    { icon: "🖼️", label: "Obrázek", left: "Cena v grafice", right: "Slabé — text v obrázku není text stránky" },
+    { icon: "🔒", label: "Za formulářem", left: "Ceník po registraci", right: "Hůř dostupné — obsah za formulářem uvidí až návštěvník po vyplnění a systém se k němu často nedostane" },
+  ]}
+/>
+
+<Insight tone="key">
+Rozdíl není mezi „mít ceny" a „nemít ceny", ale mezi **srozumitelným a nesrozumitelným signálem**. Věta „od 15 000 Kč podle rozsahu, cenu určuje počet stránek a termín" je konkrétní informace. „Cena na dotaz" je informačně chudé místo, které může prostor pro domýšlení zvětšit.
+</Insight>
+
+## Postup
+
+<Stepper
+  steps={[
+    {
+      label: "Volba",
+      title: "Rozhodněte, co jde říct",
+      text: "Od nejkonkrétnější: přesná cena, rozpětí, od-cena, nebo popis modelu kalkulace. Často jde říct aspoň něco.",
+    },
+    {
+      label: "Text",
+      title: "Napište cenu na stránku",
+      text: "Do textu, ne do obrázku, ne jen do PDF a ne až po kliknutí. Blízko popisu produktu nebo služby, ne do patičky.",
+    },
+    {
+      label: "Model",
+      title: "Vysvětlete, co cenu určuje",
+      text: "Co ji zvedá a co snižuje: rozsah, termín, integrace. U individuálních zakázek je tohle cennější než jedno číslo.",
+    },
+    {
+      label: "Shoda",
+      title: "Sjednoťte cenu napříč místy",
+      text: "Web, ceník, profily, katalogy. Když se údaje rozcházejí, dáváte na výběr a nemáte vliv na to, co si systém vezme.",
+    },
+    {
+      label: "Data",
+      title: "Doplňte strukturovaná data",
+      text: "Zopakujte cenu strojově čitelně. Hodnoty musí odpovídat tomu, co je vidět v textu — a měnit se spolu s ním.",
+    },
+  ]}
+/>
+
+## Strukturovaná data pro cenu
+
+Cenu jde zapsat strojově čitelně pomocí `Offer`, u rozpětí například přes `PriceSpecification` s `minPrice` a `maxPrice`. Měna se uvádí v ISO 4217 (`"CZK"`) a číslo se píše s desetinnou tečkou, bez oddělovačů tisíců. Konkrétní podoba se řídí typem stránky a tím, co je na ní opravdu vidět — data nemají doplňovat cenu, která na stránce není:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI SEO audit",
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": 15000,
+      "maxPrice": 45000,
+      "priceCurrency": "CZK"
+    }
+  }
+}
+```
+
+Je to ilustrativní ukázka — konkrétní značení se liší podle typu nabídky a stránky. Důležitá podmínka platí napříč: **hodnoty mají odpovídat ceně, kterou vidí návštěvník na stránce.** U strukturovaných dat dává smysl držet shodu s viditelným obsahem; když se údaje rozcházejí, je to problém pro interpretaci i důvěryhodnost — data mají popisovat obsah stránky, ne říkat něco vedle. Že samy o sobě citaci nezaručí, rozebírá článek o [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/).
+
+## Čeho se vyvarovat
+
+<MistakeGrid>
+  <Mistake number="01" title="Cena na dotaz jako jediná informace">
+    Obchodně legitimní, informačně prázdné. Často jde uvést aspoň rozpětí nebo popsat, co cenu určuje.
+  </Mistake>
+  <Mistake number="02" title="Cena jen v PDF ceníku">
+    K obsahu souboru se systém nemusí dostat a PDF se hůř udržuje, takže v něm často žije starší cena než na webu.
+  </Mistake>
+  <Mistake number="03" title="Rozpor mezi daty a stránkou">
+    Když strukturovaná data uvádějí jinou cenu než text, je to problém sám o sobě — a signál, že jedno z těch míst nikdo neudržuje.
+  </Mistake>
+  <Mistake number="04" title="Falešná od-cena">
+    Od-cena má odpovídat něčemu, co si opravdu jde koupit. Jinak to čtenář zjistí při prvním kontaktu.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Cena je jeden z údajů, které nejrychleji zastarávají. Když ji měníte, změňte ji **všude naráz** — na stránce, ve strukturovaných datech, v ceníku i na profilech. Kadence, s jakou systémy přebírají změny ze zdrojů, není zveřejněná, takže stará cena se může držet ještě nějakou dobu; k tomu viz [aktualizace obsahu pro AI](/blog/aktualizace-obsahu-pro-ai/).
+</Insight>
+
+## Kde je hranice tohoto článku
+
+**Neradí, jestli ceny zveřejnit.** To je obchodní rozhodnutí, ne technické. Článek řeší jen formu, ne strategii.
+
+**Neslibuje citaci ani lepší umístění.** Jasná cena zvyšuje šanci, že se bude čerpat z vás a ne odjinud. Záruka to není a nikdo vám ji dát nemůže.
+
+**Neřeší cenotvorbu ani právní stránku.** Uvádění cen vůči spotřebiteli, DPH, akční ceny — to má svoje pravidla a patří na to odborník.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Cenu, rozpětí nebo od-cenu napsanou jako text na stránce",
+    "Popis toho, co cenu určuje — hlavně u individuálních zakázek",
+    "Stejnou cenu na webu, v ceníku, na profilech i v katalozích",
+    "Strukturovaná data s hodnotami shodnými s viditelným textem",
+    "Aktualizaci všech míst naráz při každé změně ceny",
+  ]}
+  dontItems={[
+    "Cenu jen v obrázku, jen v PDF nebo až za formulářem",
+    "Od-cenu, za kterou si ve skutečnosti nikdo nic nekoupí",
+    "Strukturovaná data, která říkají něco jiného než stránka",
+    "Ceny, které se mezi webem a profily rozcházejí",
+    "Cenu na dotaz jako jedinou informaci na celé stránce",
+  ]}
+/>
+
+## Co si odnést
+
+Cena bývá časté prázdné místo na webech a zároveň jedna z prvních věcí, na které se lidé ptají. Prázdné místo se málokdy drží prázdné — často ho vyplní cizí, někdy starší zdroj.
+
+Nejde o to zveřejnit ceník za každou cenu. Jde o to dát srozumitelný signál: rozpětí, od-cenu, nebo aspoň model kalkulace, napsaný jako text tam, kde ho člověk hledá. A pak to držet stejné všude.
+
+U produktů to má vlastní specifika — ta rozebírají [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/), u služeb a B2B [stránka služby pro AI](/blog/stranka-sluzby-pro-ai/).
+
+---
+
+Chcete vědět, odkud se berou ceny, které o vás kolují? **[AI SEO audit](/audit/)** za 9 990 Kč dohledá pravděpodobné zdroje sporných údajů a navrhne obsahové a technické kroky, které mohou zvýšit šanci, že se o firmě a jejích cenách budou čerpat přesnější údaje. Hotové wireframy včetně produktové a prodejní stránky jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
+
+*Pro pořádek: vlastní ceny uvádíme veřejně, obě čísla výše jsou toho příkladem. Neděláme z toho ctnost — jen by bylo divné psát o cenách a mít u sebe „cena na dotaz".*
