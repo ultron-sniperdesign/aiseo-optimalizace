@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
+import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import { getCollection } from "astro:content";
 
 const meta = {
@@ -130,6 +131,8 @@ const byBucket = (key: string) =>
     </div>
   </section>
 
+  <!-- PROOF STRIP — 200 tis. zobrazení v AI odpovědích (trust prvek před pitch) -->
+  <ProofStrip />
   <SniperDesignBigContact eyebrowNum="06" />
 </BaseLayout>
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import RelatedSections from "~/components/blocks/RelatedSections.astro";
 import HeroVideo from "~/components/blocks/HeroVideo.astro";
 import { getCollection, render } from "astro:content";
@@ -238,6 +239,8 @@ function renderFaqMarkdown(text: string): string {
       </div>
     </article>
 
+    <!-- PROOF STRIP — 200 tis. zobrazení v AI odpovědích (trust prvek před pitch) -->
+    <ProofStrip />
     <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ, pokud frontmatter nemá inlineSmallContact: true -->
     {!entry.data.inlineSmallContact && <SniperDesignSmallContact />}
 
