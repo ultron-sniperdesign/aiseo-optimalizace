@@ -1,0 +1,168 @@
+---
+title: "Case study: co AI nástroje posílají e-shopu — data MEGA DETAIL"
+seoTitle: "Case study: návštěvnost e-shopu z ChatGPT a AI nástrojů — reálná data"
+description: "Reálná čísla z e-shopu MEGA DETAIL za 12 měsíců: kolik návštěv posílá ChatGPT, jak konvertují a proč AI doporučuje web, který AI SEO teprve začíná řešit."
+answer: "Za 12 měsíců poslaly AI nástroje e-shopu MEGA DETAIL 1 867 návštěv, z toho 90 % ChatGPT. Je to zatím 0,5 % celkové návštěvnosti, ale s 3,5% konverzní mírou — zhruba 4× vyšší než Google organic — a s ~3× vyšší tržbou na návštěvu. Jde o výchozí stav před cílenou AI SEO optimalizací; článek budeme s novými daty aktualizovat."
+slug: "case-study-megadetail-ai-navstevnost"
+category: "case-study"
+updated: "2026-07-17"
+keywords:
+  - "ai navstevnost eshopu"
+  - "chatgpt navstevnost data"
+  - "case study ai seo"
+  - "kolik navstev posila chatgpt"
+  - "konverze z ai nastroju"
+  - "ai doporuceni eshop"
+variant: "rich"
+stats:
+  - value: "1 867"
+    label: "návštěv z AI nástrojů za 12 měsíců — 90 % z nich poslal ChatGPT"
+  - value: "3,5 %"
+    label: "konverzní míra návštěv z ChatGPT — asi 4× víc než Google organic (0,88 %)"
+  - value: "3×"
+    label: "vyšší tržba na návštěvu z ChatGPT (29,50 Kč) oproti Googlu (10,30 Kč)"
+  - value: "668"
+    label: "různých vstupních stránek, na které AI nástroje poslaly návštěvníky"
+faq:
+  - q: "Kolik návštěvnosti reálně posílají AI nástroje e-shopu?"
+    a: "V našem měření na e-shopu MEGA DETAIL za 12 měsíců (červenec 2025 – červenec 2026) to bylo 1 867 návštěv, tedy zhruba 0,5 % z celkových 394 tisíc. Zhruba 90 % z toho poslal ChatGPT. Podíl je zatím malý, ale mezi březnem a květnem 2026 vyrostl o víc než polovinu."
+  - q: "Jak kvalitní je návštěvnost z ChatGPT?"
+    a: "V našich datech výrazně nadprůměrná: konverzní míra 3,5 % oproti 0,88 % z Google organic a tržba na návštěvu zhruba 29,50 Kč oproti 10,30 Kč. AI pošle málo lidí, ale často už rozhodnutých — na web přicházejí s konkrétním doporučením."
+  - q: "Proč AI doporučuje e-shop, který AI SEO zatím neřešil?"
+    a: "Protože roky staví na tom, co AI systémy vyhledávají přirozeně: edukativní články odpovídající na reálné otázky, strukturované produktové texty, jasnou značku a fyzické důkazy (prodejna, detailingové studio, kurzy). Deset nejnavštěvovanějších stránek z Googlu jsou články, ne produkty."
+  - q: "Co je „dark AI traffic\"?"
+    a: "Vliv AI doporučení, který v analytice není vidět jako AI referral. Uživatel si nechá poradit v ChatGPT, ale pak značku vyhledá v Googlu nebo zadá adresu napřímo — návštěva se započítá jako organic či direct. Měřitelné AI referraly jsou proto spodní odhad skutečného vlivu AI nástrojů."
+  - q: "Dají se tahle čísla přenést na jiný e-shop?"
+    a: "Řádově ano, přesně ne. Podíl i kvalita AI návštěvnosti závisí na oboru, síle značky a hlavně na tom, jestli web má citovatelný obsah. Vzorec „málo návštěv, vysoká konverze\" se ale opakuje napříč veřejnými analýzami AI trafficu z let 2025–2026."
+  - q: "Jak se návštěvnost z AI nástrojů měří?"
+    a: "V GA4 přes dimenzi Zdroj relace: chatgpt.com, perplexity (.ai), gemini.google.com, copilot.com, claude.ai a grok.com. Kliknutí z Google AI Overviews se v GSC nedají oddělit od běžného organicu, takže v součtu AI referralů nejsou — i proto jde o spodní odhad."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import DataBars from "~/components/blocks/DataBars.astro";
+import DataColumns from "~/components/blocks/DataColumns.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+
+**Tohle je první díl živé case study.** [MEGA DETAIL](https://www.megadetail.cz/) — pražský e-shop s autokosmetikou, o jehož web se stará Sniper Design — dostává doporučení v ChatGPT, Perplexity i dalších AI nástrojích, přestože cílenou AI SEO optimalizaci teprve rozjíždíme. Zveřejňujeme výchozí čísla **před optimalizací** a za pár měsíců k nim přiložíme stav po ní. Žádná cizí studie — vlastní data z GA4 a Search Console.
+
+## Kolik toho AI nástroje reálně pošlou
+
+Za 12 měsíců (17. 7. 2025 – 16. 7. 2026) přišlo z AI nástrojů **1 867 návštěv** z celkových 394 tisíc — tedy zhruba **0,5 %**. Devět z deseti AI návštěv poslal ChatGPT (1 688), zbytek Perplexity (126), Gemini (28), Copilot (23) a jednotky z Claude a Groku.
+
+<DataColumns
+  caption="Návštěvy z AI nástrojů po měsících (GA4, zdroj relace: ChatGPT, Perplexity, Gemini, Copilot, Claude, Grok)"
+  unit="návštěv"
+  tableValueLabel="Návštěvy"
+  ticks={[0, 100, 200]}
+  points={[
+    { label: "srp 25", value: 156, labeled: true },
+    { label: "zář", value: 124 },
+    { label: "říj", value: 144 },
+    { label: "lis", value: 157 },
+    { label: "pro", value: 107 },
+    { label: "led 26", value: 127 },
+    { label: "úno", value: 112 },
+    { label: "bře", value: 148 },
+    { label: "dub", value: 223 },
+    { label: "kvě", value: 241, labeled: true },
+    { label: "čvn", value: 171, labeled: true },
+  ]}
+/>
+
+Do března se objem držel kolem 110–160 návštěv měsíčně. **V dubnu a květnu 2026 skočil na 223–241 — nárůst o víc než polovinu** proti dosavadnímu průměru. Červnový pokles zatím nehodnotíme; jestli jde o sezónu, nebo výkyv, ukážou další měsíce.
+
+Půl procenta zní jako zaokrouhlovací chyba. Jenže na objemu nezáleží tolik jako na tom, **kdo ty návštěvy jsou** — a tady se data lámou.
+
+## Málo lidí, ale rozhodnutých
+
+Návštěvník z ChatGPT se chová jinak než návštěvník z vyhledávače. Nepřichází „porovnat nabídku" — přichází s konkrétním doporučením, které mu AI složila na míru jeho otázce.
+
+<DataBars
+  caption="Konverzní míra podle zdroje návštěvnosti (klíčové události, GA4, 12 měsíců)"
+  unit="%"
+  tableValueLabel="Konverzní míra"
+  rows={[
+    { label: "ChatGPT", value: 3.5, display: "3,5 %", emphasized: true },
+    { label: "Google organic", value: 0.88, display: "0,88 %" },
+    { label: "Průměr celého webu", value: 0.79, display: "0,79 %" },
+  ]}
+/>
+
+<DataBars
+  caption="Tržba na návštěvu podle zdroje (GA4, 12 měsíců)"
+  unit="Kč"
+  tableValueLabel="Tržba na návštěvu"
+  rows={[
+    { label: "ChatGPT", value: 29.5, display: "29,50 Kč", emphasized: true },
+    { label: "Přímá návštěvnost", value: 10.4, display: "10,40 Kč" },
+    { label: "Google organic", value: 10.3, display: "10,30 Kč" },
+    { label: "Facebook", value: 4.3, display: "4,30 Kč" },
+    { label: "Seznam", value: 3.9, display: "3,90 Kč" },
+  ]}
+/>
+
+<Insight tone="key">
+Návštěva z ChatGPT konvertuje zhruba **4× lépe než z Google organic** a přinese **asi 3× vyšší tržbu**. AI nástroje fungují jako filtr: místo deseti zvědavých pošlou jednoho rozhodnutého. Půl procenta návštěvnosti tak nese výrazně větší podíl na hodnotě, než odpovídá objemu.
+</Insight>
+
+## Kam AI návštěvníky posílá
+
+Za rok poslaly AI nástroje lidi na **668 různých vstupních stránek**. To je samo o sobě zjištění: AI necituje jen homepage — zná kategorie, články, kurzy i velkoobchod.
+
+<DataBars
+  caption="Top vstupní stránky návštěv z AI nástrojů (GA4, 12 měsíců)"
+  unit="návštěv"
+  tableValueLabel="Návštěvy"
+  rows={[
+    { label: "Homepage", value: 298, display: "298", emphasized: true },
+    { label: "Článek: volná plocha na ježdění", value: 122, display: "122", emphasized: true },
+    { label: "Detailingové kurzy", value: 33, display: "33", emphasized: true },
+    { label: "MEGA HALA (studio)", value: 28, display: "28", emphasized: true },
+    { label: "Článek: nejkvalitnější nafta v ČR", value: 27, display: "27", emphasized: true },
+    { label: "Prodejna Praha 10", value: 25, display: "25", emphasized: true },
+  ]}
+/>
+
+Vedle homepage vedou **edukativní články a stránky s fyzickým důkazem existence** — kurzy, detailingové studio, kamenná prodejna. Přesně obsah, který AI systémům umožňuje odpovědět na otázky typu „kde se naučím detailing" nebo „kam zajít v Praze pro autokosmetiku".
+
+## Proč AI doporučuje web, který AI SEO neřešil
+
+MEGA DETAIL zatím nemá za sebou cílenou AI SEO optimalizaci — ta právě začíná. Doporučení si vysloužil tím, co roky dělá pro lidi a klasické vyhledávání:
+
+<Checklist
+  items={[
+    { title: "Edukativní obsah na reálné otázky", desc: "Deset nejnavštěvovanějších stránek z Googlu je deset článků (nejkvalitnější nafta v ČR, 100oktanový benzín, nabíjení autobaterie) — ne produkty. Za 12 měsíců přinesly desítky tisíc kliknutí." },
+    { title: "Strukturované produktové texty", desc: "Produkty mají benefit nadpis, vlastnosti, návod k použití a sekci na co je vhodný — přesně bloky, ze kterých AI skládá doporučení." },
+    { title: "Kategorie s definicí a prolinkováním", desc: "Kategorie začínají krátkou definicí a odkazují na související návody — hub-and-spoke, o kterém píšeme v průvodci strukturou." },
+    { title: "Nezaměnitelná značka s fyzickými důkazy", desc: "Vlastní prodejna, detailingové studio, kurzy, výrazný brand voice. Entita, kterou si AI umí zapamatovat a ověřit." },
+  ]}
+/>
+
+<Insight tone="warning">
+Čísla v této studii jsou **spodní odhad vlivu AI**. Kliknutí z Google AI Overviews se v Search Console nedají oddělit od běžného organicu. A velká část AI vlivu je „dark traffic": uživatel dostane doporučení v ChatGPT, ale značku pak vygooglí nebo zadá napřímo — v analytice skončí jako organic či direct. Napovídá tomu i to, že nejsilnější dotaz v Search Console je samotný brand „megadetail" a přímá návštěvnost tvoří přes pětinu webu.
+</Insight>
+
+## Co s tím teď uděláme
+
+Právě proto je tahle studie „živá". Výchozí stav máme změřený; teď na MEGA DETAIL nasazujeme playbook, který popisujeme v jednotlivých průvodcích:
+
+- **[Obsah pro AI](/blog/ai-seo-content/)** — krátké odpovědi a fakticky hutné pasáže do klíčových kategorií a článků,
+- **[strukturovaná data](/blog/strukturovana-data-pro-ai/)** — Product, FAQPage a Organization schema v plné šíři,
+- **[E-E-A-T signály](/blog/e-e-a-t-pro-ai/)** — autoři, zkušenost z praxe, propojení entity s fyzickými provozy,
+- **[měření AI viditelnosti](/blog/test-viditelnosti-v-ai/)** — pravidelný test citací napříč platformami místo jednorázového dojmu.
+
+Za 3–6 měsíců sem doplníme stejné grafy znovu — před/po. Pokud podíl AI návštěvnosti a konverze porostou, uvidíte přesně o kolik; pokud ne, uvidíte to taky. Datum poslední aktualizace u titulku vždy říká, s jak čerstvými čísly pracujete.
+
+## Co si z dat odnést
+
+- **AI referraly jsou dnes jednotky promile návštěvnosti** — kdo slibuje „20 % trafficu z ChatGPT do půl roku", neukazuje data.
+- **Kvalita je ale mimořádná**: ~4× vyšší konverze a ~3× vyšší tržba na návštěvu než z Googlu. AI posílá rozhodnuté zákazníky.
+- **Trend míří nahoru** — duben–květen 2026 přinesly skok o víc než polovinu.
+- **Cituje se obsah, ne katalog**: články, kurzy, fyzické provozy. E-shop bez edukativního obsahu nemá co citovat.
+- **Měřitelné referraly jsou spodní odhad** — část vlivu AI se schovává v brand searchi a directu.
+
+---
+
+**Chcete vědět, co by AI nástroje citovaly z vašeho webu?** [AI SEO audit za 9 990 Kč](/audit/) projde váš obsah stejnou optikou, jakou teď nasazujeme na MEGA DETAIL: co je citovatelné, co chybí a v jakém pořadí to doplnit.
+
+*Transparentně: MEGA DETAIL je vlastní e-shop agentury Sniper Design, která provozuje i tento web — data proto známe z první ruky a publikujeme je se souhlasem. Čísla pocházejí z GA4 (dimenze Zdroj relace, období 17. 7. 2025 – 16. 7. 2026) a Google Search Console téhož období. Konverzní míra = míra klíčových událostí relace v GA4. Kliknutí z Google AI Overviews nelze v datech oddělit od běžného organicu; hodnoty AI referralů jsou proto spodní odhad. Článek aktualizujeme s novými daty po nasazení AI SEO optimalizace.*
