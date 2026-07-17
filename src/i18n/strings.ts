@@ -96,6 +96,7 @@ export const footer = {
   /** Skládá se jako: © {rok} {doména} · {builtNote} */
   builtNote: "postaveno na Astru · hostováno v ČR",
   sitemapLabel: "Sitemap",
+  rssLabel: "RSS",
   updatedLabel: "Aktualizováno květen 2026",
 };
 

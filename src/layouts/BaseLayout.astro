@@ -147,6 +147,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — blog`} href="/rss.xml" />
 
     {/* Author — AI engines (ChatGPT, Perplexity) berou tento tag jako attribution signal. */}
     <meta name="author" content={site.author} />
