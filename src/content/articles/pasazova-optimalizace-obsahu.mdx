@@ -1,0 +1,199 @@
+---
+title: "Psaní po pasážích: aby úsek obstál i bez kontextu"
+description: "AI systémy i čtenáři často pracují jen s částí stránky. Co pasáž rozbije, jak to poznat testem zakrytím a jak ji přepsat — s ukázkou před a po."
+answer: "Psaní po pasážích znamená psát jednotlivé úseky tak, aby dávaly smysl i vytržené ze stránky. Každá sekce má vlastní nadpis, který konkrétně pojmenuje její téma, odpověď v první větě a nepotřebuje okolní text: žádné odkazy typu jak jsme psali výše, žádná zájmena bez pojmenovaného podmětu a zkratky rozepsané tam, kde se použijí."
+slug: "pasazova-optimalizace-obsahu"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "psaní po pasážích"
+  - "obsah pro ai"
+  - "samostatné pasáže"
+  - "struktura článku pro ai"
+  - "citovatelný text"
+variant: "rich"
+stats:
+  - value: "test zakrytím"
+    label: "zakryjte zbytek stránky a přečtěte jednu sekci — když musíte odrolovat, není samostatná"
+  - value: "6 jevů"
+    label: "zpětné odkazy, zájmena bez opory, zkratky, prázdné nadpisy, tabulky bez uvození, návaznost"
+  - value: "nadpis = téma"
+    label: "„Další informace\" neřekne nic; nadpis má konkrétně pojmenovat téma sekce"
+  - value: "nepřehánět"
+    label: "opakovat celý kontext v každé sekci text zrobotičtí — cílem je srozumitelnost, ne kopie úvodu"
+howto:
+  name: "Jak psát úseky, které obstojí i samostatně"
+  steps:
+    - name: "Dejte každé sekci nadpis, který pojmenuje její téma"
+      text: "Nadpis typu Další informace nebo Poznámka neřekne, o čem úsek je. Napište místo něj otázku, na kterou sekce odpovídá, nebo konkrétní tvrzení. Čtenář i stroj pak poznají, co v úseku najdou, aniž by četli zbytek stránky."
+    - name: "Odpověď dejte do první věty úseku"
+      text: "První věta má odpovídat, ne uvádět. Rozvedení, souvislosti a výjimky patří až za ni. Kdo čte jen začátek sekce, má mít hotovou odpověď; kdo pokračuje, dostane podrobnosti."
+    - name: "Nahraďte zpětné odkazy a zájmena"
+      text: "Formulace jako jak jsme psali výše, viz tabulka nahoře nebo u něj to platí taky se ve vytržené pasáži nemají k čemu vztáhnout. Zopakujte podmět jménem, i když to v souvislém čtení působí trochu redundantně."
+    - name: "Doplňte kontext přímo do věty"
+      text: "Zkratku rozepište tam, kde ji poprvé v sekci použijete, ne jen v úvodu stránky. U tabulky napište popisek, který stojí sám. U příkladu zopakujte, čeho se týká, místo odkazu na předchozí sekci."
+    - name: "Otestujte zakrytím"
+      text: "Zakryjte všechno kromě jedné sekce a přečtěte si ji. Když musíte odrolovat nahoru, abyste jí rozuměli, není samostatná. Projděte takhle sekci po sekci a co neobstojí, přepište."
+faq:
+  - q: "Co je psaní po pasážích?"
+    a: "Je to způsob psaní, kdy jednotlivé úseky textu dávají smysl i vytržené ze stránky. Každá sekce má vlastní nadpis, který pojmenuje její téma, odpověď v první větě a neodkazuje na okolní text. Důvod je praktický: ze stránky se často použije jen část, ať už ji čte člověk přicházející z odkazu, nebo systém skládající odpověď."
+  - q: "Jak poznám, že úsek není samostatný?"
+    a: "Testem zakrytím. Zakryjte všechno kromě jedné sekce a přečtěte si ji. Pokud musíte odrolovat nahoru, abyste pochopili, o čem je, čí je to vlastnost nebo co znamená použitá zkratka, pasáž samostatná není. Je to primitivní kontrola, ale odhalí většinu problémů během pár minut."
+  - q: "Co pasáž nejčastěji rozbije?"
+    a: "Šest věcí: zpětné odkazy typu jak jsme psali výše, zájmena bez pojmenovaného podmětu, zkratky rozepsané jen v úvodu stránky, nadpisy bez obsahu jako Další informace, tabulky a seznamy bez uvození a návaznost na příklad z předchozí sekce."
+  - q: "Nebude text kvůli tomu repetitivní?"
+    a: "Může, když se to přežene. Cílem není zopakovat celý kontext v každém odstavci, ale doplnit tolik, aby úsek dával smysl. Prakticky stačí pojmenovat podmět místo zájmena, rozepsat zkratku při prvním použití v sekci a dát tabulce vlastní popisek. Když se v každé sekci opakuje úvod, text zrobotičtí."
+  - q: "Platí to pro každý typ obsahu?"
+    a: "Ne. U vyprávěcích textů, případových studií nebo článků, které staví na postupném vývoji myšlenky, dává návaznost smysl a rozbíjet ji by textu uškodilo. Psaní po pasážích se hodí hlavně u návodů, přehledů, srovnání a dokumentace, tedy tam, kde čtenář stejně skáče po částech."
+  - q: "Zaručí to citaci v AI?"
+    a: "Ne. Je to řemeslo, které zvyšuje šanci, že bude úsek použitelný sám o sobě — ne přepínač viditelnosti. Hlavní užitek je přitom čtenářský: lidé přicházejí z odkazů doprostřed stránky a skenují. Text, který obstojí po částech, jim slouží líp bez ohledu na to, kdo ho čte."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Psaní po pasážích znamená psát jednotlivé úseky tak, aby dávaly smysl i vytržené ze stránky.** Každá sekce má vlastní nadpis, který konkrétně pojmenuje její téma, odpověď v první větě a nepotřebuje okolní text: žádné odkazy typu „jak jsme psali výše", žádná zájmena bez pojmenovaného podmětu a zkratky rozepsané tam, kde se použijí.
+
+Důvod je prozaický. Ze stránky se často použije jen kousek — ať už ji čte člověk, který přišel z odkazu rovnou doprostřed, nebo systém, který z více zdrojů skládá odpověď.
+
+## Co pasáž rozbije
+
+Skoro vždycky je to jedna z šesti věcí. Všechny mají společné, že se opírají o něco, co v úseku samotném není.
+
+<CompareTable
+  caption="Co pasáž rozbije a čím to nahradit"
+  columns={["Problém", "Náhrada"]}
+  rows={[
+    { icon: "↩️", label: "Zpětný odkaz", left: "„jak jsme psali výše\", „viz tabulka nahoře\"", right: "Zopakovat údaj nebo odkázat na konkrétní stránku" },
+    { icon: "🫥", label: "Zájmeno bez opory", left: "„u něj to platí taky\", „ten je dražší\"", right: "Pojmenovat podmět jménem" },
+    { icon: "🔤", label: "Zkratka jen v úvodu", left: "CTR, GSC uvedené jednou na začátku stránky", right: "Rozepsat při prvním použití v sekci" },
+    { icon: "🏷️", label: "Prázdný nadpis", left: "„Další informace\", „Poznámka\"", right: "Otázka nebo konkrétní tvrzení" },
+    { icon: "📊", label: "Tabulka bez uvození", left: "Přehled, co dává smysl až po odstavci nad ním", right: "Popisek, který stojí sám" },
+    { icon: "🔗", label: "Návaznost na příklad", left: "„u toho e-shopu z minulé sekce\"", right: "Zopakovat, o jaký případ jde" },
+  ]}
+/>
+
+## Test zakrytím
+
+<Insight tone="key">
+Zakryjte všechno kromě jedné sekce a přečtěte si ji. **Když musíte odrolovat nahoru, abyste jí rozuměli, pasáž není samostatná.** Je to primitivní kontrola, ale odhalí většinu problémů za pár minut — a nepotřebujete na ni žádný nástroj.
+</Insight>
+
+Projděte takhle sekci po sekci. Častý vzorec je, že první část textu obstojí a problémy se kupí ke konci, kde už autor psal „v rozjetém vlaku".
+
+## Jak nesamostatnou pasáž přepsat
+
+<Stepper
+  steps={[
+    {
+      label: "Nadpis",
+      title: "Nadpis nese otázku nebo tvrzení",
+      text: "Ne „Další informace\", ale otázka, na kterou sekce odpovídá, nebo konkrétní tvrzení.",
+    },
+    {
+      label: "Odpověď",
+      title: "Odpověď do první věty",
+      text: "První věta odpovídá, neuvádí. Rozvedení a výjimky patří až za ni.",
+    },
+    {
+      label: "Podmět",
+      title: "Pryč se zájmeny a zpětnými odkazy",
+      text: "Zopakujte podmět jménem, i když to v souvislém čtení působí trochu redundantně.",
+    },
+    {
+      label: "Kontext",
+      title: "Doplňte kontext do věty",
+      text: "Zkratku rozepsat v sekci, tabulce dát vlastní popisek, u příkladu zopakovat, čeho se týká.",
+    },
+    {
+      label: "Test",
+      title: "Otestujte zakrytím",
+      text: "Sekci po sekci. Co bez zbytku stránky nedává smysl, přepište.",
+    },
+  ]}
+/>
+
+## Ukázka: před a po přepisu
+
+Nejrychleji je to vidět na ukázce. Tenhle úsek je silně závislý na okolním kontextu:
+
+> ### Další poznámky
+>
+> Jak jsme psali výše, u něj to platí taky. Podle tabulky nahoře je to navíc levnější, takže se to obvykle vyplatí. CTR se přitom nemění.
+
+Vytržený z kontextu neřekne vůbec nic: nevíme, u čeho to platí, co je levnější ani co je CTR. Po přepsání:
+
+> ### Kdy se vyplatí přejít na roční platbu
+>
+> Roční platba se u tarifu Standard vyplatí, pokud službu používáte déle než sedm měsíců. Vychází o 18 % levněji než platba po měsících. Míra prokliku (CTR) tím ovlivněná není.
+
+Změnilo se pět věcí: nadpis konkrétně pojmenuje téma sekce, první věta odpovídá, nejasná zájmena nahradily pojmenované entity, číslo je přímo v textu místo odkazu na tabulku a zkratka je rozepsaná. Délka přitom zůstala skoro stejná.
+
+## Čeho se vyvarovat
+
+<MistakeGrid>
+  <Mistake number="01" title="Nadpisy bez obsahu">
+    „Další informace" nebo „Poznámka" neřeknou, co v sekci je. Nadpis má nést otázku, na kterou úsek odpovídá.
+  </Mistake>
+  <Mistake number="02" title="Zájmena bez opory">
+    „U něj", „ten", „tohle" — ve vytržené pasáži není k čemu je vztáhnout. Pojmenujte podmět.
+  </Mistake>
+  <Mistake number="03" title="Zkratka jen na začátku stránky">
+    Kdo přijde rovnou do sekce uprostřed, rozepsání v úvodu nevidí. Rozepište ji i tam, kde ji použijete.
+  </Mistake>
+  <Mistake number="04" title="Přehnaná samostatnost">
+    Opakovat celý kontext v každé sekci text zrobotičtí. Cílem je srozumitelnost, ne kopie úvodu v každém odstavci.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Poslední bod stojí za zdůraznění, protože se přehlíží. Když se v každém odstavci zopakuje, o čem je celý článek, vznikne text, který se čte hůř než původní verze. **Doplňte tolik kontextu, aby úsek dával smysl — ne víc.** Často stačí pojmenovat podmět, rozepsat zkratku a dát tabulce popisek.
+</Insight>
+
+## Kde má tenhle přístup hranice
+
+**Neplatí pro každý žánr.** U vyprávěcích textů, případových studií nebo článků, které staví na postupném rozvíjení myšlenky, dává návaznost smysl a rozbíjet ji by uškodilo. Psaní po pasážích se hodí hlavně u návodů, přehledů, srovnání a dokumentace.
+
+**Nezaručuje citaci.** Je to řemeslo, které zvyšuje šanci na použitelnost úseku, ne přepínač viditelnosti. Řeší formu, ne obsah: samostatná pasáž bez věcné hodnoty zůstane pořád prázdná.
+
+**Není to jen „pro AI".** Čtenáři skenují a přicházejí z odkazů doprostřed stránky. Text, který obstojí po částech, slouží líp bez ohledu na to, kdo ho čte.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Nadpis ve tvaru otázky nebo konkrétního tvrzení",
+    "Odpověď v první větě sekce",
+    "Pojmenovaný podmět místo zájmena",
+    "Zkratku rozepsanou tam, kde ji použijete",
+    "Test zakrytím na každé sekci",
+  ]}
+  dontItems={[
+    "Odkazy typu „jak jsme psali výše\"",
+    "Nadpisy „Další informace\" a „Poznámka\"",
+    "Tabulku, která dává smysl až po odstavci nad ní",
+    "Opakování celého kontextu v každé sekci",
+  ]}
+/>
+
+## Co si odnést
+
+Ze stránky se málokdy čte všechno. Čtenář přijde z odkazu doprostřed, proskenuje dva nadpisy a odejde; systém může pracovat jen s jedním úsekem. Text, který počítá jen se čtením odshora dolů, na tom tratí.
+
+Řemeslo je přitom levné: konkrétní nadpis, odpověď v první větě, pojmenovaný podmět, rozepsaná zkratka. A test zakrytím, který zabere pár minut a ukáže, kde se to sype.
+
+Jen to nepřehánějte. Cílem je úsek, kterému jde rozumět samostatně — ne článek, který v každém odstavci opakuje sám sebe.
+
+**Související čtení:** co psát po obsahové stránce rozebírají [čtyři principy citovatelného obsahu](/blog/ai-seo-content/), jak se úseky skládají do odpovědi [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/), mechanismus rozkladu dotazu [query fan-out](/blog/query-fan-out-ai-mode/) a širší postup [jak se zobrazit v AI Mode](/blog/jak-se-zobrazit-v-ai-mode/).
+
+---
+
+Chcete vědět, jak na tom váš obsah je? **[AI SEO audit](/audit/)** za 9 990 Kč projde strukturu i obsah stránek a pojmenuje konkrétní místa k přepsání. Hotové vzory stránek včetně členění jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
