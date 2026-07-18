@@ -1,0 +1,158 @@
+---
+title: "Měření AI Mode: proč ho data zatím neoddělí"
+description: "Search Console slučuje AI Mode s AI Overviews a návštěvnost z asistentů se míchá. Co z čísel opravdu plyne a která tvrzení o AI Mode neobstojí."
+answer: "Výkon v Google AI Mode nejde z běžně dostupných dat oddělit. Report v Search Console vykazuje zobrazení za AI Overviews a AI Mode dohromady, návštěvnost z asistentů se v analytice míchá a ruční test ukáže jen jednotlivou odpověď. Měřit lze souhrn a směr vývoje, ne výkon jednoho povrchu."
+slug: "mereni-ai-mode-limity"
+category: "analysis"
+tags:
+  - "mereni"
+  - "ai-platformy"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "měření ai mode"
+  - "návštěvnost z ai mode"
+  - "ai mode search console"
+  - "limity měření ai"
+  - "ai viditelnost report"
+variant: "rich"
+stats:
+  - value: "sloučeno"
+    label: "report v Search Console vykazuje AI Overviews a AI Mode v jednom zobrazení Search"
+  - value: "13,7 %"
+    label: "shoda citovaných adres obou povrchů (Ahrefs, USA, září 2025) — souhrn je slabý zástupce"
+  - value: "bez kliknutí"
+    label: "report kliky ani míru prokliku neobsahuje; zobrazení proto není návštěvnost"
+  - value: "90 % ChatGPT"
+    label: "v našich datech tvořil návštěvnost z asistentů převážně ChatGPT, ne Google AI"
+faq:
+  - q: "Dá se výkon v AI Mode měřit samostatně?"
+    a: "Z běžně dostupných dat zatím ne. Report Generative AI features v Search Console vykazuje zobrazení za AI Overviews a AI Mode společně v zobrazení Search, návštěvnost z asistentů se v analytice míchá dohromady a ruční test ukáže jednotlivou odpověď, ne objem. Měřit jde souhrn a jeho vývoj v čase, ne výkon jednoho povrchu."
+  - q: "Proč nestačí brát souhrnné číslo jako přibližný AI Mode?"
+    a: "Protože slučuje dva povrchy, o kterých víme, že se chovají odlišně. V analýze Ahrefs nad americkými daty ze září 2025 se citované adresy AI Overviews a AI Mode překrývaly jen z 13,7 procenta. Když souhrn vzroste, může za tím být růst v jednom povrchu, v druhém, nebo v obou — a z čísla to nepoznáte."
+  - q: "Co tedy mohu o své AI viditelnosti tvrdit?"
+    a: "Obhajitelné je, že zobrazení ve funkcích s generativní AI Googlu vzrostla o určité procento, že z AI asistentů přišel určitý počet návštěv, nebo že vás v opakovaném testu na daný dotaz zmínila část běhů. Neobhajitelné je přiřadit kterékoli z těch čísel konkrétně AI Mode."
+  - q: "Znamená to, že měření nemá smysl?"
+    a: "Nemá smysl předstírat přesnost, kterou data nemají. Měřit ale smysl má: souhrnná zobrazení ukazují, jestli se web v Google AI funkcích objevuje a jak se to vyvíjí, analytika ukáže kvalitu návštěv z asistentů a opakovaný ruční test odhalí vzorec. Jen se u každého čísla musí říct, co přesně měří."
+  - q: "Proč se výsledky mění, když test zopakuji?"
+    a: "Protože se odpovědi generují znovu a výběr zdrojů kolísá. Dřívější výzkum uváděný ve studii Ahrefs mluví asi o 45 procentech citací, které se mezi jednotlivými vygenerováními změní. Jednorázová kontrola proto ukazuje spíš šum než stav; smysl dává až opakování s odstupem na více dotazech."
+  - q: "Pokrývá report v Search Console i ChatGPT nebo Perplexity?"
+    a: "Ne, týká se jen generativních funkcí Googlu. Návštěvnost z ostatních asistentů je potřeba sledovat v analytice zvlášť. V našich datech z e-shopu MEGA DETAIL tvořil návštěvnost z AI nástrojů z devadesáti procent právě ChatGPT, takže spoléhat jen na Search Console by obrázek zkreslilo."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Výkon v Google AI Mode nejde z běžně dostupných dat oddělit.** Report v Search Console vykazuje zobrazení za AI Overviews a AI Mode dohromady, návštěvnost z asistentů se v analytice míchá a ruční test ukáže jen jednotlivou odpověď. Měřit lze souhrn a směr vývoje, ne výkon jednoho povrchu.
+
+Tenhle článek není návod na nástroje — ty už tu jsou. Je o tom, co z naměřených čísel opravdu plyne, aby se v reportu neobjevilo tvrzení, které neobstojí.
+
+## Tři zdroje a co každý o AI Mode řekne
+
+<CompareTable
+  caption="Co který zdroj o AI Mode prozradí"
+  columns={["Co ukáže", "Co o AI Mode neřekne"]}
+  rows={[
+    { icon: "📊", label: "Search Console", left: "Zobrazení ve funkcích s generativní AI Googlu", right: "Nerozliší AI Mode od AI Overviews — jsou v jednom zobrazení" },
+    { icon: "📈", label: "Analytika", left: "Návštěvy z AI asistentů a jejich kvalitu", right: "Neřekne, ze kterého povrchu Googlu návštěva přišla" },
+    { icon: "🔍", label: "Ruční test", left: "Jestli vás odpověď na konkrétní dotaz zmínila", right: "Neřekne objem ani to, jak často to platí" },
+  ]}
+/>
+
+Jak s každým z nich pracovat, rozebírají [GSC AI report](/blog/gsc-ai-segmenty-mereni/), [AI návštěvnost a konverze](/blog/ai-navstevnost-konverze/) a [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/). Tady jde o to, co z nich vyvodit.
+
+## Proč je souhrn slabý zástupce
+
+Nabízí se to brát tak, že souhrnné číslo je „skoro AI Mode". Jenže slučuje dva povrchy, o kterých víme, že se chovají odlišně.
+
+V analýze Ahrefs nad americkými daty ze září 2025, která zachycují jednotlivá vygenerování, se citované adresy AI Overviews a AI Mode překrývaly **jen z 13,7 procenta**. Podrobně to rozebírá [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
+
+<Insight tone="key">
+Když souhrnné číslo vzroste, může za tím být růst v jednom povrchu, v druhém, nebo v obou — **a z čísla to nepoznáte**. Souhrn tedy není spolehlivý přibližný zástupce AI Mode. Je to součet dvou věcí, u kterých je doloženo, že se rozcházejí.
+</Insight>
+
+## Co tedy jde tvrdit
+
+Tohle je praktická část. Rozdíl mezi obhajitelným a neobhajitelným tvrzením je většinou jen ve formulaci — ale ta formulace rozhoduje, jestli report obstojí, až se na něj někdo za rok podívá.
+
+<CompareTable
+  caption="Stejná data, dvě formulace"
+  columns={["Obhajitelné", "Neobhajitelné"]}
+  rows={[
+    { icon: "👁️", label: "Zobrazení", left: "Zobrazení ve funkcích s generativní AI Googlu vzrostla o X %", right: "Máme X zobrazení v AI Mode" },
+    { icon: "🚪", label: "Návštěvy", left: "Z AI asistentů přišlo N návštěv, převážně z ChatGPT", right: "Z AI Mode přišlo N návštěv" },
+    { icon: "🔁", label: "Test", left: "V opakovaném testu nás na dotaz zmínily 4 z 5 běhů", right: "Jsme v AI Mode vidět na tenhle dotaz" },
+    { icon: "📉", label: "Vývoj", left: "Souhrn roste, povrch rozlišit neumíme", right: "Rosteme v AI Mode" },
+  ]}
+/>
+
+Rozdíl není v opatrnickém slovíčkaření. Levý sloupec říká, co bylo naměřeno; pravý přiřazuje číslo něčemu, co se neměřilo.
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Vydávat souhrn za AI Mode">
+    Nejčastější chyba. Report slučuje AI Overviews a AI Mode do jednoho zobrazení, takže z něj výkon jednoho povrchu nevyčtete.
+  </Mistake>
+  <Mistake number="02" title="Číst zobrazení jako návštěvnost">
+    Report dává zobrazení, ne kliknutí ani míru prokliku. Zobrazení je signál výskytu, ne návštěva.
+  </Mistake>
+  <Mistake number="03" title="Závěr z jednoho spuštění">
+    Výběr zdrojů mezi běhy kolísá. Jedna vyzkoušená odpověď je anekdota, ne měření.
+  </Mistake>
+  <Mistake number="04" title="Míchat Google AI a ostatní asistenty">
+    Report v Search Console pokrývá jen generativní funkce Googlu. ChatGPT ani Perplexity v něm nejsou.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+K opakování měření je dobrý důvod: dřívější výzkum uváděný ve studii Ahrefs mluví asi o **45 procentech citací, které se mezi jednotlivými vygenerováními změní**. Jednorázová kontrola tedy zachytí spíš okamžik než stav — smysl dává až opakování s odstupem a na více dotazech.
+</Insight>
+
+## Jak to vypadá na reálných datech
+
+Na vlastním měření e-shopu MEGA DETAIL je ten limit dobře vidět. Naměřili jsme **200 000 zobrazení** ve funkcích s generativní AI Googlu za necelé dva měsíce — ale to číslo nerozliší povrch. A **1 867 návštěv** z AI nástrojů za dvanáct měsíců, z nichž **90 procent** poslal ChatGPT — tedy nástroj, který v Search Console vůbec není.
+
+Obojí jsou užitečná čísla. Ani jedno ale neříká nic o tom, jak si web vede konkrétně v AI Mode. Celá data jsou v [case study MEGA DETAIL](/blog/case-study-megadetail-ai-navstevnost/); na stejný limit jsme narazili i u [AI Mode a e-shopů](/blog/ai-mode-a-eshopy/).
+
+## Kde je hranice tohoto článku
+
+**Není to návod na nástroje.** Kde report najít a jak ho segmentovat, řeší odkazované články.
+
+**Platí ke dni vydání.** Report je v beta verzi a zpřístupňuje se postupně; pokud Google začne povrchy rozlišovat, tenhle text zaktualizujeme.
+
+**Neříká, že měřit nemá smysl.** Říká jen, že se nemá předstírat přesnost, kterou data nemají.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "U každého čísla uveďte, co přesně měří a za jaké období",
+    "Sledujte vývoj souhrnu v čase, ne jednotlivý údaj",
+    "Opakujte ruční testy s odstupem a na více dotazech",
+    "Návštěvnost z asistentů sledujte zvlášť od Google AI",
+  ]}
+  dontItems={[
+    "Přiřazovat souhrnná zobrazení konkrétně AI Mode",
+    "Vydávat zobrazení za návštěvnost",
+    "Stavět závěr na jedné vyzkoušené odpovědi",
+    "Slibovat klientovi měřitelný výkon v AI Mode",
+  ]}
+/>
+
+## Co si odnést
+
+Ke dni vydání se AI Mode z běžně dostupných dat oddělit nedá. Search Console ho slučuje s AI Overviews, analytika nerozliší povrch a ruční test ukáže okamžik, ne objem.
+
+To ale neznamená měřit naslepo. Souhrn a jeho vývoj jsou použitelný signál — jen se u něj musí říct, že je to souhrn. Nejcennější dovednost při reportování AI viditelnosti je dnes umět rozlišit, co bylo naměřeno, od toho, co jsme si k tomu domysleli.
+
+A když někdo nabízí garantovaný a měřitelný výkon v AI Mode, stojí za to se zeptat, z jakých dat ho vyčte.
+
+---
+
+Chcete mít měření AI viditelnosti postavené tak, aby čísla obstála? **[AI SEO audit](/audit/)** za 9 990 Kč projde nastavení měření a pojmenuje, co z dat plyne a co ne. Neslibujeme, že oddělíme AI Mode — to dnes neumí nikdo. Hotové vzory stránek jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
+
+*Zdroje: report Generative AI features v Google Search Console (beta), analýza Ahrefs porovnávající AI Overviews a AI Mode (USA, září 2025) a vlastní měření e-shopu MEGA DETAIL. Stav k 18. 7. 2026.*
