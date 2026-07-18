@@ -5,6 +5,7 @@ import AuthorByline from "~/components/article/AuthorByline.astro";
 import AuthorBox from "~/components/article/AuthorBox.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import RelatedArticles from "~/components/article/RelatedArticles.astro";
+import TagChips from "~/components/article/TagChips.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
@@ -155,6 +156,10 @@ const ogImage = `/og/${entry.data.slug}.png`;
         <span>~{readingMinutes} {ui.metaReadingMins}</span>
         <span>{ui.metaUpdated} {entry.data.updated}</span>
       </div>
+
+      <div class="hero__tags">
+        <TagChips tags={entry.data.tags} />
+      </div>
     </section>
 
     <!-- ANSWER BLOCK -->
@@ -210,6 +215,7 @@ const ogImage = `/og/${entry.data.slug}.png`;
       currentSlug={entry.data.slug}
       category={entry.data.category}
       keywords={entry.data.keywords}
+      tags={entry.data.tags}
     />
 
     <!-- BACK CTA -->
@@ -320,6 +326,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
     height: 6px;
     background: var(--d);
     border-radius: 50%;
+  }
+  .hero__tags {
+    margin-top: 1.25rem;
   }
 
   @keyframes rise {

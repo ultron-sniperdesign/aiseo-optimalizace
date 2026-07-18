@@ -153,6 +153,15 @@ export const ui = {
   ariaArticleFilter: "Filtr článků podle kategorie",
   ariaArticleList: "Seznam článků",
 
+  // Tagy / tematické clustery (registr témat v i18n/tags.ts)
+  tagsRowLabel: "Témata",
+  ariaTagNav: "Témata blogu",
+  tagPageEyebrow: "Téma",
+  tagPageCountSuffix: "článků k tématu", // „12 článků k tématu"
+  tagPageAllTags: "Další témata",
+  tagPageBackToBlog: "Všechny články v blogu",
+  articleTagsLabel: "Témata článku",
+
   // Sekce [slug] — kontextový label v breadcrumb pillu (klíč = abbr)
   sectionContext: {
     SEO: "První disciplína · SEO",

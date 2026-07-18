@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { TAG_IDS } from "./i18n/tags";
 
 /**
  * Sekce — 6 hlavních pilířů dle myšlenkové mapy:
@@ -136,8 +137,13 @@ const articles = defineCollection({
     /** 40–60 slovní answer block hned po H1 — AI scraper hook. */
     answer: z.string(),
     slug: z.string().regex(/^[a-z0-9-]+$/),
-    /** Kategorie — pro pozdější filter v blog kategorii. */
+    /** Kategorie — formát článku (filter chips na /blog/). */
     category: z.enum(["defensive", "case-study", "tutorial", "analysis"]),
+    /**
+     * Tematické tagy (1–3 per článek) — id z registru `src/i18n/tags.ts`.
+     * Generují tag stránky /blog/tema/<slug>/ a chips na článku i listingu.
+     */
+    tags: z.array(z.enum(TAG_IDS as [string, ...string[]])).min(1).max(3),
     /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
     published: z
       .string()

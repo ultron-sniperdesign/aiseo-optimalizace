@@ -19,19 +19,23 @@ interface Props {
   currentSlug: string;
   category: string;
   keywords: string[];
+  /** Tematické tagy článku (frontmatter `tags`) — sdílený tag = silný signál příbuznosti. */
+  tags?: string[];
 }
 
-const { currentSlug, category, keywords } = Astro.props;
+const { currentSlug, category, keywords, tags = [] } = Astro.props;
 
 const all = await getCollection("articles");
 const kw = new Set(keywords.map((k) => k.toLowerCase()));
+const tagSet = new Set(tags);
 
 const scored = all
   .filter((a) => a.data.slug !== currentSlug)
   .map((a) => {
     const overlap = a.data.keywords.filter((k) => kw.has(k.toLowerCase())).length;
     const catBonus = a.data.category === category ? 1 : 0;
-    return { a, score: overlap * 2 + catBonus };
+    const tagOverlap = a.data.tags.filter((t) => tagSet.has(t)).length;
+    return { a, score: overlap * 2 + tagOverlap * 2 + catBonus };
   })
   .sort(
     (x, y) =>

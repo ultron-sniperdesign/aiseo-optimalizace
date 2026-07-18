@@ -5,6 +5,7 @@ import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
+import { BLOG_TAGS, TAG_BASE } from "~/i18n/tags";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
@@ -31,6 +32,12 @@ function calcReading(body: string): { wordCount: number; minutes: number } {
 
 /** Distinct categories ze článků pro filter chips. */
 const usedCategories = Array.from(new Set(articles.map((a) => a.data.category)));
+
+/** Tematické clustery s počtem článků — odkazové chips na /blog/tema/<slug>/. */
+const tagRow = BLOG_TAGS.map((t) => ({
+  ...t,
+  count: articles.filter((a) => a.data.tags.includes(t.id)).length,
+})).filter((t) => t.count > 0);
 
 /** Dynamic stats pro fact-density v leadu. */
 const totalWords = articles.reduce((sum, a) => {
@@ -186,6 +193,18 @@ const answerText =
         })
       }
     </section>
+
+    <!-- TÉMATA — odkazové chips na tag stránky (server-side, indexovatelné) -->
+    <nav class="tag-row" aria-label={ui.ariaTagNav}>
+      <span class="tag-row__label">{ui.tagsRowLabel}:</span>
+      {
+        tagRow.map((t) => (
+          <a class="tchip" href={`${TAG_BASE}${t.slug}/`}>
+            {t.label} <span class="tchip__count">({t.count})</span>
+          </a>
+        ))
+      }
+    </nav>
 
     <!-- ARTICLES GRID -->
     <section class="articles" aria-label={ui.ariaArticleList}>
@@ -409,6 +428,46 @@ const answerText =
     color: var(--color-paper);
   }
   .chip--active .chip__count { color: var(--color-paper); }
+
+  /* ===== TÉMATA (odkazové chips) ===== */
+  .tag-row {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 1rem var(--space-section-x) 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .tag-row__label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-right: 0.25rem;
+  }
+  .tchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tchip:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .tchip__count { color: var(--color-ink-faint); font-weight: 400; }
 
   /* ===== ARTICLES GRID ===== */
   .articles {
