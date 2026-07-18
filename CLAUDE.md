@@ -85,7 +85,7 @@
 | workers.dev subdomain | `aiseo-optimalizace` | API PUT /accounts/{id}/workers/subdomain 2026-05-16 |
 | Worker name | `aiseo-pack-webhook` | wrangler deploy log |
 | Worker URL | `https://aiseo-pack-webhook.aiseo-optimalizace.workers.dev` | curl HEAD 200 2026-05-16 |
-| OAuth login | `~/Library/Preferences/.wrangler/config/default.toml` (token, refresh, scopes) | `wrangler whoami` |
+| OAuth login | `~/Library/Preferences/.wrangler/config/default.toml` (token, refresh, scopes). **⚠️ K 2026-07-18 expirovaný** („Not logged in", refresh 400) — před dalším worker deployem `npx wrangler login` (interaktivní, browser). Worker sám běží dál (secrets jsou na CF). | `wrangler whoami` 2026-07-18 → Not logged in |
 | Worker zdroj | `worker/` v projektu (TypeScript, žádný Stripe SDK — vlastní HMAC verify) | |
 
 ### Stripe (LIVE mode)
@@ -136,7 +136,7 @@
 |---|---|
 | Dev server | `npm run dev` → `http://localhost:4321` (Astro default) nebo `4323` (pomocí `.claude/launch.json`) |
 | Build out | `dist/` (statický HTML + CSS + assets) |
-| Stránky (aktuálně live) | `/`, `/seo/`, `/geo/`, `/aeo/`, `/aio/`, `/prakticky-postup/`, `/rozhodovaci-matice/`, `/seo-vs-geo-vs-aeo-vs-aio/`, `/jak-vypnout-ai-overview/`, `/seo-pro-eshopy-ai-era-2026/`, `/navod-zdarma/`, `/navod-zdarma/dekujeme/`, **`/pack/`, `/pack/dekujeme/`** |
+| Stránky (aktuálně live) | **Pilíř + sekce (7):** `/`, `/seo/`, `/geo/`, `/aeo/`, `/aio/`, **`/ai-mode/`**, `/prakticky-postup/`, `/rozhodovaci-matice/`, `/seo-vs-geo-vs-aeo-vs-aio/`. **Huby:** **`/zacnete-tady/`** (vstupní cesta), **`/slovnik/`** (46+ pojmů), **`/serie/ai-seo-pro-eshopy/`**, **`/blog/tema/<slug>/`** (9 tag stránek), `/ai-viditelnost/` (200k landing), `/autor/kamil/`. **Produkt/funnel:** `/pack/`+`/pack/dekujeme/`, `/audit/`+`/audit/dekujeme/`, `/navod-zdarma/`+`/navod-zdarma/dekujeme/`, `/sluzby/`. **Utility:** `/kontakt/`, `/gdpr/`, `/rss.xml`, **`/llms.txt` (generovaný endpointem)**. **Blog:** `/blog/` + **69 článků** `/blog/<slug>/` (Blogger session). Celkem **119 routes** (k 2026-07-18). |
 
 ---
 
@@ -188,15 +188,25 @@ aiseo-optimalizace.cz/
 │   │   ├── pillar/ sections/ articles/       # dlouhý obsah (MDX) — per-mutace přeložit
 │   │   └── pages/*.ts                        # DATOVÉ MODULY landing/thank-you/audit/pack/index (Fáze 0) — per-mutace přeložit
 │   ├── i18n/                             # I18N VRSTVA — per-mutace přeložit (viz MUTATIONS.md)
-│   │   ├── strings.ts                        # chrome: Header/Footer/EmailCapture (nav, legal, labely)
+│   │   ├── strings.ts                        # chrome: Header/Footer/EmailCapture (nav, legal, labely, tagy/série UI)
 │   │   ├── sniperdesign.ts                   # agency promo: BigContact/SmallContact
-│   │   └── site.ts                           # locale/schema/identita: lang, og:locale, název webu, Organization
+│   │   ├── site.ts                           # locale/schema/identita: lang, og:locale, název webu, Organization
+│   │   ├── author.ts                         # autor entita (byline/AuthorBox/autorská stránka/Person @id)
+│   │   ├── proof.ts                          # ProofStrip (200k trust komponenta)
+│   │   ├── tags.ts                           # registr 9 blog témat (id stabilní, slug/label přeložit)
+│   │   ├── series.ts                         # registr sérií článků (AI SEO pro e-shopy, 8 dílů)
+│   │   └── llms.ts                           # texty pro generovaný /llms.txt
 │   ├── layouts/BaseLayout.astro              # SEO meta + JSON-LD + Header/Footer (čte site.ts)
 │   ├── pages/
 │   │   ├── index.astro                       # Homepage
 │   │   ├── [slug].astro                      # Dynamic route ze sections
 │   │   ├── seo-vs-geo-vs-aeo-vs-aio.astro    # Pillar
-│   │   ├── blog/                             # blog index + dynamic [slug]
+│   │   ├── blog/                             # blog index + dynamic [slug] + tema/[tema] (tag stránky)
+│   │   ├── serie/[serie].astro               # landing série (registr i18n/series.ts)
+│   │   ├── zacnete-tady.astro                # vstupní hub (data: content/pages/zacnete-tady.ts)
+│   │   ├── slovnik.astro                     # slovník pojmů (data: content/pages/slovnik.ts)
+│   │   ├── llms.txt.ts                       # generovaný llms.txt endpoint (97+ odkazů)
+│   │   ├── rss.xml.ts                        # RSS feed
 │   │   ├── navod-zdarma/{index,dekujeme}.astro   # free PDF landing + thank-you
 │   │   └── pack/
 │   │       ├── index.astro                   # Pack landing — Stripe Payment Link LIVE
@@ -418,7 +428,10 @@ ssh aiseo-optimalizace-vps "cd /srv/apps/aiseo-optimalizace && ln -sfn releases/
 
 ```bash
 ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | uniq -c"
-# Očekávaně: 7 unikátních (5 sessions + 1 user kotva + 1 repo deploy)
+# K 2026-07-18: 14 unikátních (audit 2026-05-24: 13; rostoucí počet sourozeneckých projektů na sdíleném VPS:
+# aiseo, aiseo-en, geo-seo, blogcounter, brainycal, geotestzdarma, sniperdesign-web, ai-agentura…).
+# Drift z původních 7 je očekávaný (víc sessions). Doporučení: dedikovaný klíč-audit přes sd-server-admin
+# (namapovat každý záznam na vlastníka, zrušit osiřelé) — viz cross-session/server-admin.md.
 ```
 
 ### Před risky operací
@@ -467,7 +480,19 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 ## VII — Aktuální stav
 
-> Snapshot k `2026-05-16 23:30`. Při auditu A přepsat datum a obsah.
+> Snapshot k `2026-07-18`. Při auditu A přepsat datum a obsah.
+>
+> **Audit 2026-07-18 (Režim A) — souhrn:** Infra (VPS `sd-ultron-vps`, service user uid993/gid984,
+> layout 2775, aktuální release na VPS = poslední commit, DNS apex+www, HTTPS 200, GitHub PUBLIC
+> + 5 secrets, CF Worker 405, Stripe URL na `/pack/` — nyní 4× místo 3×, PDFs `_review` 200)
+> **vše sedí**. Drift od 2026-05-24: (1) **blog 21 → 69 článků**; (2) **routes ~48 → 119** — nové huby
+> `/zacnete-tady/`, `/slovnik/`, `/serie/ai-seo-pro-eshopy/`, 9× `/blog/tema/`, `/ai-viditelnost/`,
+> `/autor/kamil/`, sekce **`/ai-mode/`** (7. sekce, abbr AIMODE), `/sluzby/`, `/rss.xml`;
+> (3) **obsahová infrastruktura**: tagy (povinný frontmatter `tags`), série (registr `series.ts`),
+> `published`/`updated` split, RelatedArticles, FreeStrip, E-E-A-T balík (byline/AuthorBox/Person @id),
+> ProofStrip + 200k landing, **dynamický `/llms.txt`** (endpoint, nahradil statický);
+> (4) **authorized_keys 13→14**; (5) **⚠️ wrangler lokální OAuth expirovaný** (viz §II Cloudflare) —
+> jediný nález k akci. Detaily v `cross-session/aiseo-optimalizace.md` (záznam 2026-07-18).
 
 ### Web (aiseo-optimalizace.cz)
 
@@ -500,7 +525,11 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 ### Backlog (známé následující úkoly)
 
-- **Audit landing URL swap** — když spustíme prodejní landing pro SEO audity Sniperdesign, vyměnit `https://www.sniperdesign.cz/audity` za nový landing v: e-mail `email-pack-paid-v2.html` + `/pack/index.astro` + `/pack/dekujeme.astro`
+- ~~**Audit landing URL swap**~~ — ✅ HOTOVO (audit 2026-05-24): `/audit/` landing je LIVE; `/pack/` (7×) i `/pack/dekujeme/` (4×) odkazují na `/audit/`, žádný odkaz na `sniperdesign.cz/audity` nezbyl. Zbývá ověřit jen e-mail šablonu `email-pack-paid-v2.html` (mimo web, neověřeno auditem).
+- **`npx wrangler login`** — lokální OAuth expirovaný (audit 2026-07-18); nutné před příštím worker deployem. Interaktivní (browser), potřebuje uživatele.
+- **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
+- **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou.
+- **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.
 - **Reálný kartový test celé chain** — volitelné, ověření že Stripe checkout UI + redirect + dekujeme stránka chodí end-to-end. Drobný 1.5 % fee zůstane při refundu.
 - **Stripe Tax (DPH)** — pokud CPU s.r.o. plátce DPH a chce automatické DPH na fakturách
 - **Faktura via Stripe vs. vlastní fakturační systém** — momentálně faktura vystavená samostatně mimo Stripe
@@ -516,7 +545,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 | HTTPS + LE cert | ✅ valid (90 dní, autorenew) |
 | Per-projekt board | ✅ live, `cross-session/aiseo-optimalizace.md` |
 | Servisní fronta | ✅ prázdná |
-| CLAUDE.md | ✅ aktualizován 2026-05-16 (tento update — major rewrite s CF Worker + Stripe + Ecomail + Pack sekcemi) |
+| CLAUDE.md | ✅ audit Režim A 2026-07-18 (snapshot, pages 119 routes, blog 69, obsahová infrastruktura, wrangler OAuth nález, key drift 13→14) |
 
 ---
 
@@ -557,7 +586,7 @@ Když uživatel řekne *„audit CLAUDE.md vs realita"*:
 10. Přepsat datumy „k YYYY-MM-DD" na nový datum
 11. Log do `cross-session/aiseo-optimalizace.md` ve formátu „Audit CLAUDE.md vs realita 2026-MM-DD: …"
 
-Příští audit: **2026-06-16** (měsíční kadence od dnešního major rewrite).
+Příští audit: **2026-08-18** (měsíční kadence od auditu 2026-07-18).
 
 ---
 
