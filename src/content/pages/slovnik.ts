@@ -227,6 +227,12 @@ export const groups: TermGroup[] = [
         link: { href: "/blog/rag-ai-vyhledavani/", label: "RAG rozbor" },
       },
       {
+        id: "prompt-engineering",
+        term: "Prompt engineering",
+        aka: "práce s prompty",
+        def: "Umění formulovat zadání pro AI tak, aby dalo užitečný výstup: kontext, role, formát odpovědi, příklady. Pro AI SEO je užitečné obráceně — když víte, jak se lidé AI ptají na váš obor, umíte psát obsah, který na tyto dotazy odpovídá.",
+      },
+      {
         id: "embedding",
         term: "Embedding",
         def: "Číselná reprezentace textu zachycující jeho význam. AI systémy přes embeddingy porovnávají významovou podobnost — proto najdou váš obsah i na dotaz formulovaný úplně jinými slovy. Základ sémantického vyhledávání.",
@@ -266,6 +272,13 @@ export const groups: TermGroup[] = [
         aka: "krátká odpověď",
         def: "Odstavec 40–60 slov hned pod nadpisem, který samostatně a fakticky odpovídá na hlavní otázku stránky. Přesně z takových pasáží AI systémy skládají citace — je to nejlevnější a nejúčinnější technika AI SEO.",
         link: { href: "/blog/ai-seo-content/", label: "Obsah pro AI" },
+      },
+      {
+        id: "long-tail",
+        term: "Long tail",
+        aka: "dlouhý ocas dotazů",
+        def: "Konkrétní víceslovné dotazy s malou hledaností, kterých jsou ale tisíce („vosk na tmavý lak v zimě“ místo „autokosmetika“). V AI éře jejich význam roste: query fan-out rozkládá dotazy právě na dílčí long-tail otázky a cituje stránky, které na ně přímo odpovídají.",
+        link: { href: "/blog/query-fan-out-ai-mode/", label: "Query fan-out" },
       },
       {
         id: "strukturovana-data",

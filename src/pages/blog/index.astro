@@ -20,6 +20,12 @@ const articles = (await getCollection("articles")).sort((a, b) =>
 /** Category labels pro filter chips + per-card tag — z i18n vrstvy (fork přeloží ui.category). */
 const categoryLabel = ui.category;
 
+/** Build-time: sloty s WebP variantou OG (fallback = PNG, nikdy rozbitý obrázek). */
+import { existsSync } from "node:fs";
+const webpSlugs = new Set(
+  articles.filter((a) => existsSync(`public/og/${a.data.slug}.webp`)).map((a) => a.data.slug),
+);
+
 /** Reading time per článek — dynamicky z body. */
 function calcReading(body: string): { wordCount: number; minutes: number } {
   const wc = body
@@ -222,14 +228,19 @@ const answerText =
                 class="acard"
                 data-category={entry.data.category}
               >
-                <img
-                  class="acard__img"
-                  src={`/og/${entry.data.slug}.png`}
-                  alt={entry.data.title}
-                  loading="lazy"
-                  width="1536"
-                  height="1024"
-                />
+                <picture>
+                  {webpSlugs.has(entry.data.slug) && (
+                    <source srcset={`/og/${entry.data.slug}.webp`} type="image/webp" />
+                  )}
+                  <img
+                    class="acard__img"
+                    src={`/og/${entry.data.slug}.png`}
+                    alt={entry.data.title}
+                    loading="lazy"
+                    width="1536"
+                    height="1024"
+                  />
+                </picture>
                 <div class="acard__body">
                   <div class="acard__header">
                     <span class="acard__tag">{categoryLabel[entry.data.category] ?? entry.data.category}</span>

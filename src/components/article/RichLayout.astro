@@ -13,6 +13,7 @@
  * Opt-in přes frontmatter `variant: rich`.
  */
 import type { CollectionEntry } from "astro:content";
+import { existsSync } from "node:fs";
 
 import Insight from "~/components/blocks/Insight.astro";
 import Compare from "~/components/blocks/Compare.astro";
@@ -51,6 +52,10 @@ interface Props {
 
 const { entry, Content, crumbLabel, wordCountRounded, readingMinutes, faqCount } =
   Astro.props as Props;
+
+/** Build-time check: WebP varianta hero obrázku (viz blogger/IMAGE_GUIDE.md §2b).
+ *  Když chybí, <picture> nedostane <source> a padá se na PNG — nikdy rozbitý obrázek. */
+const heroWebp = existsSync(`public/og/${entry.data.slug}.webp`);
 
 /**
  * Build heading list z raw entry.body — H2 a H3.
@@ -146,13 +151,17 @@ const _bundlerHints = [
       <TagChips tags={entry.data.tags} />
     </div>
 
-    <img
-      class="rhero__img"
-      src={`/og/${entry.data.slug}.png`}
-      alt={entry.data.title}
-      width="1536"
-      height="1024"
-    />
+    <picture>
+      {heroWebp && <source srcset={`/og/${entry.data.slug}.webp`} type="image/webp" />}
+      <img
+        class="rhero__img"
+        src={`/og/${entry.data.slug}.png`}
+        alt={entry.data.title}
+        width="1536"
+        height="1024"
+        fetchpriority="high"
+      />
+    </picture>
   </section>
 
   <!-- ANSWER BLOCK -->

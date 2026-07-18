@@ -46,6 +46,20 @@ python3 "$SKILL_DIR/scripts/image.py" \
 
 ---
 
+## 2b. POVINNÉ: WebP varianta (perf)
+
+Po vygenerování PNG **vždy vytvoř i WebP** vedle něj (šablony servírují WebP
+přes `<picture>`, PNG zůstává fallback + og:image; 1,2 MB → ~40 KB):
+
+```bash
+python3 -c "
+from PIL import Image
+Image.open('public/og/<slug>.png').convert('RGB').save('public/og/<slug>.webp', 'WEBP', quality=82, method=6)"
+```
+
+Když WebP chybí, nic se nerozbije (šablona při buildu kontroluje existenci
+a padá na PNG) — ale stránka článku je pak o ~1 MB těžší. Commituj oba soubory.
+
 ## 3. Kam uložit
 
 - **`public/og/<slug>.png`** — jeden soubor, který slouží zároveň jako:

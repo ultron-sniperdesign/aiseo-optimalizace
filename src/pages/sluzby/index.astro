@@ -93,7 +93,14 @@ const byBucket = (key: string) =>
 
         <div class="cards">
           {items.map((item) => {
-            const href = item.data.href ?? `/sluzby/${item.data.slug}/`;
+            // Detail jen pro hasDetailPage; ostatní karty vedou na kontakt
+            // s předvyplněnou službou (stejný pattern jako CTA na detailu).
+            // Bez toho karty bez detailu linkovaly na 404 /sluzby/<slug>/.
+            const href =
+              item.data.href ??
+              (item.data.hasDetailPage
+                ? `/sluzby/${item.data.slug}/`
+                : `/kontakt/?sluzba=${item.data.slug}`);
             return (
               <a href={href} class="card" data-bucket={b.key}>
                 <div class="card__chips">

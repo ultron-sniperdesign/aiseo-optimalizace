@@ -9,6 +9,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import AuthorByline from "~/components/article/AuthorByline.astro";
+import { existsSync } from "node:fs";
 import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
@@ -25,6 +26,7 @@ const pageUrl = `${SITE_ORIGIN}${SERIES_BASE}${s.slug}/`;
 /** Featured image — stejná konvence jako články: /og/serie-<slug>.png
  *  (fork si vygeneruje vlastní dle blogger/IMAGE_GUIDE.md). */
 const heroImage = `/og/serie-${s.slug}.png`;
+const heroWebp = existsSync(`public/og/serie-${s.slug}.webp`);
 
 const all = await getCollection("articles");
 const bySlug = new Map(all.map((a) => [a.data.slug, a]));
@@ -117,13 +119,17 @@ const collectionJsonLd = {
         <span>{ui.metaUpdated} {newestUpdated}</span>
       </div>
 
-      <img
-        class="se-hero__img"
-        src={heroImage}
-        alt={s.title}
-        width="1536"
-        height="1024"
-      />
+      <picture>
+        {heroWebp && <source srcset={heroImage.replace(/\.png$/, ".webp")} type="image/webp" />}
+        <img
+          class="se-hero__img"
+          src={heroImage}
+          alt={s.title}
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+      </picture>
     </section>
 
     <!-- ANSWER BLOCK — jako na článku -->
