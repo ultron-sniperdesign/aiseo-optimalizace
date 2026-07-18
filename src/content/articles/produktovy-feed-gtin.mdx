@@ -1,0 +1,192 @@
+---
+title: "Produktový feed a GTIN: data, přes která vás najdou"
+description: "GTIN pomáhá produkt jednoznačně zařadit. Co patří do feedu, proč se vyplatí držet shodu se stránkou a co dělat u produktů, které GTIN nemají."
+answer: "GTIN je mezinárodně uznávaný jedinečný identifikátor produktu, který najdete na obalu u čárového kódu. Ve feedu pomáhá systémům produkt jednoznačně zařadit, místo aby se poznával jen podle názvu. Ve feedu se posílá v atributu gtin a podle Googlu pomáhá jeho systémům produkt zařadit. Ne každý produkt ale GTIN má a vymýšlet ho nelze."
+slug: "produktovy-feed-gtin"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "technicke-zaklady"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "gtin"
+  - "produktový feed"
+  - "ean kod eshop"
+  - "merchant center feed"
+  - "produktová data pro ai"
+variant: "rich"
+stats:
+  - value: "jedinečný kód"
+    label: "GTIN je mezinárodně uznávaný jedinečný identifikátor — najdete ho na obalu u čárového kódu"
+  - value: "ne vždy"
+    label: "Google uvádí, že ne každý produkt GTIN má; u vlastní výroby se nevymýšlí"
+  - value: "3 vrstvy"
+    label: "stránka, feed a strukturovaná data se vyplatí držet shodné — jinak si systém vybere sám"
+  - value: "ověřit zdroj"
+    label: "u GTINů z cizích zdrojů Google doporučuje ověřit jejich legitimitu"
+howto:
+  name: "Jak dát dohromady produktová data a identifikátory"
+  steps:
+    - name: "Zjistěte, které produkty GTIN mají"
+      text: "GTIN najdete na obalu vedle čárového kódu. Google uvádí, že ne každý produkt GTIN má — typicky vlastní výroba, sady nebo zakázková výroba. U takových produktů se identifikátor nevymýšlí; jako praktická náhrada pomůže značka a katalogové označení výrobce, pokud je máte."
+    - name: "Doplňte identifikátory do feedu"
+      text: "GTIN se do produktových dat posílá v atributu gtin. Google uvádí, že to pomáhá jeho systémům produkty zařadit a zobrazit. U produktů bez GTINu se v praxi vyplácí doplnit značku a katalogové označení, aby šel záznam identifikovat aspoň takto."
+    - name: "Sjednoťte údaje napříč vrstvami"
+      text: "Cena, dostupnost, název a klíčové parametry se vyplatí držet shodné na stránce, ve feedu i ve strukturovaných datech. Když se zdroje rozcházejí, nemá systém jak rozhodnout, který údaj platí — a vy nevíte, který si vybere."
+    - name: "Ověřte identifikátory z cizích zdrojů"
+      text: "Pokud GTINy přebíráte od dodavatele nebo z databáze, Google doporučuje ověřit jejich legitimitu. Když identifikátor na obalu nenajdete, obraťte se na výrobce. Nesprávný identifikátor může vést k tomu, že se váš záznam zařadí k jinému produktu."
+    - name: "Kontrolujte pravidelně"
+      text: "Feed se generuje automaticky, ale stránky a ceník se mění ručně. Rozejít se to dokáže samo. Zaveďte pravidelnou kontrolu klíčových údajů u vzorku produktů, ne jen jednorázové nastavení."
+faq:
+  - q: "Co je GTIN a kde ho najdu?"
+    a: "GTIN je podle Googlu mezinárodně uznávaný jedinečný identifikátor produktu. Najdete ho na obalu vedle čárového kódu; v Česku se často mluví o EAN, což je jedna z jeho podob. Slouží k tomu, aby šel konkrétní produkt identifikovat jednoznačně, a ne jen podle názvu, který si každý prodejce píše po svém."
+  - q: "Co když produkt GTIN nemá?"
+    a: "Pak ho nevymýšlejte. Google výslovně uvádí, že ne všechny produkty GTIN mají — typicky vlastní výroba, sady nebo zakázka. U takových produktů se v praxi osvědčí doplnit značku a katalogové označení výrobce, aby šel záznam identifikovat jinak. Vymyšlený identifikátor je horší než žádný, protože může váš produkt zařadit k cizímu."
+  - q: "Proč se musí feed shodovat se stránkou?"
+    a: "Není to výslovné pravidlo o feedu, ale praktická nutnost: jinak existují dva rozporné údaje o jedné věci a není jak rozhodnout, který platí. K tomu se váže dvojí doložená povinnost — pravidla pro nákupní reklamy zakazují prezentovat produkty způsobem, který není přesný a pravdivý, a u strukturovaných dat Google požaduje shodu s viditelným obsahem stránky."
+  - q: "Které údaje hlídat nejvíc?"
+    a: "Ty, které se mění a zároveň rozhodují o nákupu: cena, dostupnost a dodací lhůta. K tomu název a klíčové parametry, podle kterých se produkt porovnává. Právě u ceny a dostupnosti se feed a stránka rozcházejí nejčastěji, protože se aktualizují jiným způsobem a jindy."
+  - q: "Stačí mít feed nastavený jednou?"
+    a: "Nestačí. Feed se sice generuje automaticky, ale sortiment, ceny i dostupnost se mění a chyby vznikají postupně. Praktické je kontrolovat vzorek produktů pravidelně a porovnat, co říká stránka, co feed a co strukturovaná data."
+  - q: "Zajistí správný feed, že mě AI doporučí?"
+    a: "Ne. Kvalitní a konzistentní data jsou podmínka toho, aby šel váš produkt vůbec spolehlivě identifikovat a porovnat — ne záruka zobrazení nebo doporučení. Nikdo dnes nemůže slíbit, že se konkrétní produkt objeví v konkrétní odpovědi."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**GTIN je mezinárodně uznávaný jedinečný identifikátor produktu, který najdete na obalu u čárového kódu.** Ve feedu pomáhá systémům produkt jednoznačně zařadit, místo aby se poznával jen podle názvu. Ve feedu se posílá v atributu gtin a podle Googlu pomáhá jeho systémům produkt zařadit. Ne každý produkt ale GTIN má a vymýšlet ho nelze.
+
+Tenhle díl uzavírá sérii o AI SEO pro e-shopy a je z ní nejtechničtější. Zároveň je to vrstva, na které stojí všechno ostatní: bez spolehlivých dat o produktu nemá smysl řešit texty ani recenze.
+
+## Proč je identifikátor důležitější, než vypadá
+
+Název produktu si každý prodejce píše po svém. „Leštěnka Ultra Gloss 500 ml", „Ultra Gloss leštící pasta 0,5 l" a „ULTRA GLOSS 500" můžou být tentýž výrobek — a z názvu to spolehlivě nepoznáte.
+
+Identifikátor tenhle problém zmenšuje z definice: je jedinečný a mezinárodně uznávaný, takže o produktu nese jednoznačnou informaci nezávisle na tom, jak si ho kdo pojmenoval. Google k tomu uvádí, že GTIN se posílá v atributu `gtin` a pomáhá jeho systémům produkty zařadit a zobrazit.
+
+<Insight tone="key">
+Bez identifikátoru zbývá k rozpoznání produktu jen název a parametry, které si každý prodejce píše po svém. S identifikátorem je k dispozici údaj, který je u téhož výrobku všude stejný. **U srovnávacích dotazů je to rozdíl mezi „nějaká leštěnka" a „přesně tenhle výrobek".**
+</Insight>
+
+## Tři vrstvy, které se vyplatí držet shodné
+
+Tohle je místo, kde e-shopy nejčastěji tratí — a přitom to není o technologii, ale o údržbě.
+
+<CompareTable
+  caption="Kde všude o produktu mluvíte"
+  columns={["Vrstva", "Co v ní bývá špatně"]}
+  rows={[
+    { icon: "🖥️", label: "Stránka", left: "Co vidí zákazník", right: "Ruční úpravy, které se nepromítnou jinam" },
+    { icon: "📤", label: "Feed", left: "Datový soubor pro srovnávače a Merchant Center", right: "Generuje se automaticky, často ze starších polí" },
+    { icon: "🏷️", label: "Strukturovaná data", left: "Strojově čitelný popis na stránce", right: "Zůstanou po předchozí verzi šablony" },
+  ]}
+/>
+
+Když se tyhle tři vrstvy rozejdou, vznikne rozpor, který nikdo neumí rozhodnout. Držet je shodné není výslovné pravidlo o feedu, ale plyne to ze dvou doložených povinností: pravidla pro nákupní reklamy zakazují prezentovat produkty způsobem, který není přesný a pravdivý, a u strukturovaných dat Google požaduje shodu s viditelným obsahem stránky.
+
+Nejcitlivější je cena — proč zrovna ta, rozebírá článek o [cenách na webu](/blog/ceny-na-webu-a-ai/).
+
+## Jak dát data dohromady
+
+<Stepper
+  steps={[
+    {
+      label: "Inventura",
+      title: "Zjistěte, které produkty GTIN mají",
+      text: "Je na obalu u čárového kódu. Google uvádí, že ne každý produkt ho má — vlastní výroba, sady, zakázka.",
+    },
+    {
+      label: "Feed",
+      title: "Doplňte identifikátory",
+      text: "GTIN do atributu gtin. U produktů bez něj značka a katalogové číslo výrobce.",
+    },
+    {
+      label: "Shoda",
+      title: "Sjednoťte údaje napříč vrstvami",
+      text: "Cena, dostupnost, název a parametry mají říkat totéž na stránce, ve feedu i ve strukturovaných datech.",
+    },
+    {
+      label: "Ověření",
+      title: "Prověřte cizí identifikátory",
+      text: "U GTINů od dodavatele Google doporučuje ověřit legitimitu; když ho nenajdete, ptejte se výrobce.",
+    },
+    {
+      label: "Údržba",
+      title: "Kontrolujte pravidelně",
+      text: "Feed běží automaticky, stránky se mění ručně. Vzorek produktů projděte opakovaně.",
+    },
+  ]}
+/>
+
+## Co s produkty bez GTINu
+
+Ne každý sortiment ho má a Google to výslovně připouští. Týká se to hlavně vlastní výroby, sad složených z více položek a zakázkové výroby.
+
+Řešení není identifikátor vymyslet — to je nejhorší možná varianta, protože nesprávný GTIN může váš záznam zařadit k úplně jinému výrobku. V praxi se místo toho osvědčí doplnit značku a katalogové označení výrobce, aby šel produkt identifikovat aspoň touhle dvojicí.
+
+## Čtyři chyby v produktových datech
+
+<MistakeGrid>
+  <Mistake number="01" title="Vymyšlený nebo přebraný GTIN">
+    Nesprávný identifikátor může produkt chybně zařadit. Google u identifikátorů z cizích zdrojů doporučuje ověřit jejich legitimitu.
+  </Mistake>
+  <Mistake number="02" title="Feed a stránka se rozcházejí">
+    Dva rozporné údaje o jedné věci. Prezentovat produkt nepřesně navíc pravidla pro nákupní reklamy zakazují.
+  </Mistake>
+  <Mistake number="03" title="Strukturovaná data mimo obsah">
+    Údaj ve strukturovaných datech, který na stránce není vidět, jde proti požadavku na shodu s viditelným obsahem.
+  </Mistake>
+  <Mistake number="04" title="Nastavit feed a zapomenout">
+    Ceny, dostupnost i sortiment se mění. Bez pravidelné kontroly se vrstvy rozejdou samy.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+V Česku má e-shop typicky víc feedů naráz — vedle Merchant Center ještě pro tuzemské srovnávače. Každý má vlastní formát a vlastní dokumentaci, kterou je potřeba respektovat. Důsledek rozporu je ale všude stejný: **čím víc míst o produktu mluví, tím víc míst si může protiřečit.** Konkrétní požadavky jednotlivých srovnávačů tady neřešíme, ty patří do jejich vlastní dokumentace.
+</Insight>
+
+## Kde má tenhle návod hranice
+
+**Neslibuje zobrazení ani doporučení.** Konzistentní data jsou podmínka spolehlivé identifikace, ne záruka, že se produkt objeví v konkrétní odpovědi.
+
+**Neuvádí požadavky konkrétních srovnávačů.** Zboží.cz i Heureka mají vlastní formáty a dokumentaci; opisovat je zpaměti by bylo nespolehlivé.
+
+**Není to návod na Merchant Center.** Článek je o datech, ne o proklikání rozhraní.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Doplňte GTIN tam, kde produkt identifikátor má",
+    "U produktů bez GTINu značku a katalogové číslo výrobce",
+    "Sjednoťte cenu, dostupnost a parametry napříč vrstvami",
+    "Ověřujte identifikátory přebrané od dodavatelů",
+    "Kontrolujte vzorek produktů pravidelně",
+  ]}
+  dontItems={[
+    "Vymýšlet identifikátor u produktu, který ho nemá",
+    "Nechat feed a stránku říkat každý něco jiného",
+    "Doplňovat do dat údaje, které na stránce nejsou",
+    "Spoléhat na jednorázové nastavení feedu",
+  ]}
+/>
+
+## Co si odnést
+
+Produktová data jsou nejméně vděčná část e-shopu: nejsou vidět, nikdo je nepochválí a rozbíjejí se potichu. Přitom na nich stojí všechno ostatní — texty i recenze jsou k ničemu, pokud systém neví, o který produkt vlastně jde.
+
+Identifikátor pomáhá se zařazením a rozpoznáním produktu, konzistence napříč vrstvami s důvěryhodností údajů. Ani jedno není složité; obojí vyžaduje údržbu.
+
+**Související čtení:** jak psát samotnou produktovou stránku rozebírají [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/), co z produktových dat čerpají nákupní asistenti [AI nákupní agenti](/blog/ai-nakupni-agenti/), jak na recenze [recenze a hodnocení pro AI](/blog/recenze-a-hodnoceni-pro-ai/) a co řešit na Upgates či Shoptetu [AI SEO na Upgates a Shoptetu](/blog/ai-seo-upgates-shoptet/).
+
+---
+
+Nevíte, jestli vám sedí feed se stránkou? **[AI SEO audit](/audit/)** za 9 990 Kč projde produktová data, strukturovaná data i jejich shodu a pojmenuje, co opravit. Hotové vzory produktové a kategoriální stránky jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
+
+*Zdroje: dokumentace Google Merchant Center k identifikátoru GTIN a pravidla pro nákupní reklamy, stav k 18. 7. 2026.*

@@ -77,11 +77,16 @@ export const SERIES: Series[] = [
         slug: "case-study-megadetail-ai-navstevnost",
         note: "Reálná čísla z našeho e-shopu: objemy, konverze a co od AI kanálu čekat.",
       },
+      {
+        slug: "recenze-a-hodnoceni-pro-ai",
+        note: "Jediný text na produktu, který nenapsal prodejce — jak ho sbírat a označit.",
+      },
+      {
+        slug: "produktovy-feed-gtin",
+        note: "Datová vrstva pod tím vším: identifikátory a shoda feedu se stránkou.",
+      },
     ],
-    planned: [
-      "Recenze a hodnocení pro AI: jak z nich udělat citovatelný signál",
-      "Produktový feed a GTIN: data, přes která vás najdou AI nákupní agenti",
-    ],
+    planned: [],
     promoTag: "eshopy",
   },
 ];

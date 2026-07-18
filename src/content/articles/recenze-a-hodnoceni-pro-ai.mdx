@@ -1,0 +1,207 @@
+---
+title: "Recenze a hodnocení pro AI: citovatelný signál"
+description: "Recenze bývají na produktu nejcennější text, který nenapsal prodejce. Jak je sbírat, označit a vytěžit — a proč známka vlastní firmy na hvězdičky nestačí."
+answer: "Recenze jsou pro e-shop zdroj textu, který nenapsal prodejce: obsahují formulace zákazníků a odpovídají na otázky, na které popis produktu nedosáhne. Pro rozšířený výsledek s hodnocením je potřeba označit je strukturovanými daty, mít je na stránce viditelné a sbírat je přímo od uživatelů."
+slug: "recenze-a-hodnoceni-pro-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "duveryhodnost"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "recenze pro ai"
+  - "hodnocení produktu schema"
+  - "aggregaterating"
+  - "recenze eshop"
+  - "hvězdičky ve výsledcích"
+variant: "rich"
+stats:
+  - value: "cizí text"
+    label: "recenze bývají na produktu nejcennější obsah, který nenapsal prodejce ani výrobce"
+  - value: "vlastní ≠ ok"
+    label: "u Organization a LocalBusiness: recenze o sobě pod vlastní kontrolou nejsou pro hvězdičky způsobilé"
+  - value: "jen viditelné"
+    label: "označit lze jen recenze, které jsou na stránce reálně k přečtení"
+  - value: "bez přetahování"
+    label: "Google uvádí, že se recenze ani hodnocení z jiných webů nemají agregovat"
+howto:
+  name: "Jak z recenzí udělat použitelný signál"
+  steps:
+    - name: "Sbírejte hodnocení od skutečných zákazníků"
+      text: "Google uvádí, že hodnocení mají pocházet přímo od uživatelů. Oslovte zákazníka po doručení, navažte dotaz na konkrétní objednávku a nevynucujte známku. Ověřený nákup je zároveň praktický způsob, jak falešné recenze omezit."
+    - name: "Rozlište, co vlastně označujete"
+      text: "Recenze produktu, který prodáváte, se označuje u typu Product. Pozor na hodnocení firmy jako celku (typy Organization a LocalBusiness): pokud hodnocený subjekt recenze o sobě sám kontroluje, jeho stránky podle Googlu nejsou pro hvězdičky způsobilé. Cesta vede přes recenze produktů, ne přes známku e-shopu na vlastním webu."
+    - name: "Označte jen to, co je vidět"
+      text: "Google požaduje, aby byl označený obsah recenzí na stránce běžně dostupný ke čtení. Strukturovaná data mají popisovat viditelné hodnocení, ne doplňovat číslo, které na stránce nikde není."
+    - name: "Doplňte povinné vlastnosti"
+      text: "U AggregateRating je potřeba ratingValue, alespoň jedno z ratingCount nebo reviewCount a vazba na hodnocenou položku přes itemReviewed s názvem; při vnoření pod Product se vazba i název přebírají z rodiče. U jednotlivé recenze navíc author a reviewRating s hodnotou. Jméno autora má být kratší než sto znaků."
+    - name: "Vytěžte text, nejen číslo"
+      text: "Průměrná známka je jeden údaj. Cennější je, co se v recenzích opakuje: na co si zákazníci stěžují, k čemu produkt používají, co je překvapilo. Shrňte to do samostatné pasáže vlastními slovy a nechte pod ní původní recenze."
+faq:
+  - q: "Proč jsou recenze pro AI zajímavější než popis produktu?"
+    a: "Protože je nenapsal prodejce. Popis od výrobce má na svém webu i konkurence, takže do srovnání nepřidává nic odlišujícího. Recenze obsahují formulace zákazníků, tedy jazyk, kterým se lidé na produkt ptají, a pokrývají dílčí otázky, na které popis nedosáhne: jak to sedí, jak dlouho to vydrží, na co si dát pozor."
+  - q: "Můžu označit hodnocení svého e-shopu?"
+    a: "Pro hvězdičky u vlastní firmy ne. U typů Organization a LocalBusiness Google uvádí, že pokud hodnocený subjekt recenze o sobě sám kontroluje, jeho stránky nejsou pro tuto funkci způsobilé. Označovat má smysl recenze produktů, které prodáváte; vlastní známku firmy na vlastním webu za způsobilý podklad nepovažujte."
+  - q: "Můžu použít recenze ze srovnávače nebo z jiného webu?"
+    a: "Ne. Google výslovně uvádí, že se recenze ani hodnocení z jiných webů nemají agregovat. Přetáhnout hodnocení z externí služby a označit je jako vlastní je porušení pravidel. Sbírejte vlastní recenze od svých zákazníků."
+  - q: "Co musí strukturovaná data u hodnocení obsahovat?"
+    a: "U souhrnného hodnocení je potřeba hodnota, alespoň jedno z počtu hodnocení nebo počtu recenzí a údaj o tom, co je hodnoceno, včetně názvu. U jednotlivé recenze k tomu přibývá autor, údaj o hodnocené položce a hodnota hodnocení; název musí být na hodnocené položce nebo na rodiči. Jméno autora má být kratší než sto znaků."
+  - q: "Stačí přidat strukturovaná data k číslu, které na stránce není?"
+    a: "Ne. Google požaduje, aby byl označený obsah recenzí na stránce běžně dostupný. Data mají popisovat, co návštěvník vidí. Označit hodnocení, které na stránce nikde není, je rozpor mezi daty a obsahem, ne chytrá zkratka."
+  - q: "Zaručí strukturovaná data hvězdičky ve výsledcích?"
+    a: "Ne. Splnění podmínek dělá stránku způsobilou, ne zobrazenou. Jestli se hodnocení ve výsledku ukáže, rozhoduje vyhledávač. Hlavní užitek recenzí je stejně jinde: jsou to podklady, které o produktu říkají něco, co prodejce sám napsat nemůže."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Recenze jsou pro e-shop zdroj textu, který nenapsal prodejce:** obsahují formulace zákazníků a odpovídají na otázky, na které popis produktu nedosáhne. Pro rozšířený výsledek s hodnocením je potřeba označit je strukturovanými daty, mít je na stránce viditelné a sbírat je přímo od uživatelů.
+
+Na produktové stránce je většina textu od prodejce nebo od výrobce. Recenze jsou výjimka — a právě proto jsou zajímavé.
+
+## Proč recenze váží víc než popis
+
+Popis od výrobce má i konkurence. Když ho e-shop jen převezme, nemá do srovnávacího dotazu čím přispět; rozebírá to článek o [AI Mode a e-shopech](/blog/ai-mode-a-eshopy/).
+
+Recenze přinášejí tři věci, které jinde na stránce nejsou:
+
+- **Formulace zákazníků** — jazyk, kterým se lidé na produkt reálně ptají.
+- **Dílčí otázky** — jak to sedí, jak dlouho to vydrží, na co si dát pozor.
+- **Nezávislý hlas** — text, který nenapsal ten, kdo produkt prodává.
+
+## Kde e-shopy nejčastěji chybují
+
+Tohle je nejdůležitější část článku, protože se to dělá špatně běžně.
+
+<Insight tone="warning">
+U hodnocení firmy jako celku (typy Organization a LocalBusiness) Google uvádí, že **pokud hodnocený subjekt recenze o sobě sám kontroluje, jeho stránky nejsou pro hvězdičky ve výsledku způsobilé.** Prakticky: vlastní známka e-shopu označená na vlastním webu jako hodnocení firmy k hvězdičkám nevede. Legitimní cesta jsou recenze **produktů**, které prodáváte.
+</Insight>
+
+<CompareTable
+  caption="Co označit jde a co ne"
+  columns={["Postup", "Jak je na tom"]}
+  rows={[
+    { icon: "📦", label: "Recenze produktu", left: "Hodnocení konkrétního produktu u typu Product", right: "V pořádku — to je určená cesta" },
+    { icon: "🏪", label: "Známka vlastní firmy", left: "Organization/LocalBusiness pod vlastní kontrolou", right: "Pro hvězdičky nezpůsobilé" },
+    { icon: "🔁", label: "Recenze z cizího webu", left: "Přetažené ze srovnávače nebo jiné služby", right: "Google uvádí, že se agregovat nemají" },
+    { icon: "👻", label: "Data bez obsahu", left: "Označené hodnocení, které na stránce není", right: "Porušuje požadavek na viditelnost" },
+  ]}
+/>
+
+## Jak recenze nasadit krok za krokem
+
+<Stepper
+  steps={[
+    {
+      label: "Sběr",
+      title: "Hodnocení od skutečných zákazníků",
+      text: "Po doručení, navázané na konkrétní objednávku, bez vynucování známky. Ověřený nákup pomáhá falešné recenze omezit.",
+    },
+    {
+      label: "Typ",
+      title: "Rozlište, co označujete",
+      text: "Recenze produktu ano. Vlastní známka e-shopu na vlastním webu pro hvězdičky nestačí.",
+    },
+    {
+      label: "Viditelnost",
+      title: "Označte jen to, co je vidět",
+      text: "Označený obsah musí být na stránce běžně dostupný ke čtení.",
+    },
+    {
+      label: "Data",
+      title: "Doplňte povinné vlastnosti",
+      text: "Hodnota, počet hodnocení nebo recenzí, hodnocená položka s názvem; u jednotlivé recenze i autor.",
+    },
+    {
+      label: "Text",
+      title: "Vytěžte text, ne jen číslo",
+      text: "Shrňte, co se v recenzích opakuje, vlastními slovy — a nechte pod tím původní hodnocení.",
+    },
+  ]}
+/>
+
+## Jak vypadá značení v JSON-LD
+
+U souhrnného hodnocení je potřeba hodnota, alespoň jedno z počtu hodnocení nebo recenzí a vazba na hodnocenou položku (`itemReviewed`) s názvem. Když je značení vnořené pod `Product`, řeší se vazba i název přes rodiče, takže `itemReviewed` uvádět nemusíte:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Leštěnka na lak Ultra Gloss 500 ml",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "reviewCount": 128
+  }
+}
+```
+
+U jednotlivé recenze je navíc potřeba `author`, `itemReviewed` a `reviewRating` s hodnotou, přičemž název musí být buď na `itemReviewed`, nebo na rodiči; jméno autora má být kratší než sto znaků. Jak strukturovaná data zapadají do celku, rozebírá článek o [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/).
+
+## Nejcennější část recenzí není číslo
+
+Průměrná známka je jeden údaj a nedá se z ní citovat nic zajímavého. To, co v recenzích opravdu je, jsou opakující se témata.
+
+Když se u sedmi z dvaceti recenzí objeví, že produkt sedí menší, je to informace, kterou popis od výrobce neobsahuje — a přesně na tohle se lidé ptají. Shrňte taková témata do samostatné pasáže vlastními slovy a původní hodnocení nechte pod ní. Aby ta pasáž fungovala i vytržená, řídí se stejnými pravidly jako [psaní po pasážích](/blog/pasazova-optimalizace-obsahu/).
+
+## Čtyři chyby při značení recenzí
+
+<MistakeGrid>
+  <Mistake number="01" title="Označit známku vlastní firmy">
+    U typů Organization a LocalBusiness platí: když hodnocený subjekt recenze o sobě sám kontroluje, jeho stránky podle Googlu nejsou pro hvězdičky způsobilé.
+  </Mistake>
+  <Mistake number="02" title="Přetahovat cizí recenze">
+    Google výslovně uvádí, že se hodnocení z jiných webů nemají agregovat. Sbírejte vlastní.
+  </Mistake>
+  <Mistake number="03" title="Data bez viditelného obsahu">
+    Označené hodnocení, které na stránce nikde není, je rozpor mezi daty a obsahem.
+  </Mistake>
+  <Mistake number="04" title="Falešné nebo vynucené recenze">
+    Kromě etického problému je to podvod na zákazníkovi — a při odhalení zásah do důvěryhodnosti, kterou budujete jinde.
+  </Mistake>
+</MistakeGrid>
+
+## Kde má tenhle návod hranice
+
+**Nezaručuje hvězdičky ani citaci.** Splnění podmínek dělá stránku způsobilou, ne zobrazenou; rozhoduje vyhledávač.
+
+**Neřeší právní stránku.** Sbírání a zveřejňování recenzí má svá pravidla vůči spotřebiteli včetně toho, jak označovat ověřenost. To patří odborníkovi, ne tomuhle textu.
+
+**Nedává česká čísla.** Jak moc recenze ovlivňují viditelnost na českém trhu, veřejně doložené není.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Sbírejte recenze od skutečných zákazníků s ověřeným nákupem",
+    "Označujte recenze produktů, které prodáváte",
+    "Držte označená data shodná s tím, co je na stránce vidět",
+    "Shrňte opakující se témata z recenzí do vlastní pasáže",
+  ]}
+  dontItems={[
+    "Označovat vlastní známku e-shopu jako podklad pro hvězdičky",
+    "Přetahovat hodnocení z cizích webů",
+    "Doplňovat hodnocení do dat, když na stránce není",
+    "Vynucovat nebo vyrábět recenze",
+  ]}
+/>
+
+## Co si odnést
+
+Recenze bývají na produktové stránce nejcennější text, který nenapsal prodejce. To je jejich hodnota — pro zákazníka i pro obsah stránky.
+
+Technicky je to jednoduché: sbírat od skutečných zákazníků, označit recenze produktů, držet data shodná s viditelným obsahem. Nejčastější chyba je označit si vlastní známku firmy a čekat hvězdičky; u typů Organization a LocalBusiness pod vlastní kontrolou Google nezpůsobilost výslovně uvádí.
+
+A nejcennější věc na recenzích stejně není průměr. Je to to, co se v nich opakuje — a co se nikde jinde na stránce nedozvíte.
+
+---
+
+Chcete vědět, jestli máte recenze označené správně? **[AI SEO audit](/audit/)** za 9 990 Kč projde produktové stránky i strukturovaná data a pojmenuje, co opravit. Hotové vzory produktové stránky jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
+
+*Zdroj pravidel: dokumentace Google Search Central k rozšířeným výsledkům s hodnocením, stav k 18. 7. 2026.*
