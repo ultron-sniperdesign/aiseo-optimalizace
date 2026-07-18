@@ -41,6 +41,7 @@ export const nav = {
 
   /** DESKTOP lišta — edukativní část (obsahové disciplíny + průvodce). */
   desktopEdu: [
+    { href: "/zacnete-tady/", label: "Start" },
     { href: "/seo/", label: "SEO", d: "seo" },
     { href: "/geo/", label: "GEO", d: "geo" },
     { href: "/aeo/", label: "AEO", d: "aeo" },
@@ -74,6 +75,7 @@ export const nav = {
     {
       label: "Praxe",
       links: [
+        { href: "/zacnete-tady/", label: "Začněte tady" },
         { href: "/prakticky-postup/", label: "Praktický postup" },
         { href: "/rozhodovaci-matice/", label: "Rozhodovací matice" },
         { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Hlavní průvodce" },
@@ -152,6 +154,10 @@ export const ui = {
   cardReadMore: "Číst",
   ariaArticleFilter: "Filtr článků podle kategorie",
   ariaArticleList: "Seznam článků",
+
+  // Blog hero — odkaz na vstupní hub pro nováčky
+  blogStartLead: "Jste tu poprvé?",
+  blogStartLink: "Začněte tady",
 
   // Tagy / tematické clustery (registr témat v i18n/tags.ts)
   tagsRowLabel: "Témata",

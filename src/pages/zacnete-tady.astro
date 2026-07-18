@@ -1,0 +1,454 @@
+---
+/**
+ * /zacnete-tady/ — vstupní hub pro nováčky.
+ *
+ * Data: src/content/pages/zacnete-tady.ts (kurátorovaná cesta ve 3 fázích
+ * + rozcestník podle role + FAQ). JSON-LD: HowTo (fáze jako kroky) +
+ * FAQPage; breadcrumb přes BaseLayout.
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FreeStrip from "~/components/blocks/FreeStrip.astro";
+import { ui } from "~/i18n/strings";
+import { site } from "~/i18n/site";
+import * as p from "~/content/pages/zacnete-tady";
+
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+const pageUrl = `${SITE_ORIGIN}/zacnete-tady/`;
+
+const howtoJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: p.howtoName,
+  description: p.meta.description,
+  inLanguage: site.inLanguage,
+  step: p.phases.map((ph, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: `${ph.num}. ${ph.title}`,
+    text: ph.goal,
+    url: `${pageUrl}#faze-${ph.num}`,
+  })),
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: p.faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={p.meta.title}
+  description={p.meta.description}
+  jsonLd={[howtoJsonLd, faqJsonLd]}
+  breadcrumb={[{ label: p.hero.eyebrow, href: "/zacnete-tady/" }]}
+>
+  <div class="st">
+    <!-- ===== HERO ===== -->
+    <section class="st-hero">
+      <span class="st-hero__eyebrow">{p.hero.eyebrow}</span>
+      <h1 class="st-hero__title">{p.hero.title}</h1>
+      <p class="st-hero__lead">{p.hero.lead}</p>
+    </section>
+
+    <!-- ===== KRÁTKÁ ODPOVĚĎ ===== -->
+    <section class="st-answer">
+      <div class="st-answer__inner">
+        <span class="st-answer__mark">{ui.answerShort}</span>
+        <p class="st-answer__text">{p.hero.answer}</p>
+      </div>
+    </section>
+
+    <!-- ===== 3 FÁZE ===== -->
+    <section class="st-phases" aria-label={p.howtoName}>
+      {
+        p.phases.map((ph) => (
+          <article class="st-phase" id={`faze-${ph.num}`}>
+            <header class="st-phase__head">
+              <span class="st-phase__num">{ph.num}</span>
+              <div>
+                <h2 class="st-phase__title">{ph.title}</h2>
+                <p class="st-phase__goal">{ph.goal}</p>
+              </div>
+            </header>
+            <ol class="st-steps">
+              {ph.steps.map((s) => (
+                <li class="st-step">
+                  <a class="st-step__link" href={s.href}>
+                    {s.label} <span aria-hidden="true">→</span>
+                  </a>
+                  <p class="st-step__why">{s.why}</p>
+                </li>
+              ))}
+            </ol>
+          </article>
+        ))
+      }
+    </section>
+
+    <!-- ===== PODLE ROLE ===== -->
+    <section class="st-roles" aria-label={p.roles.title}>
+      <h2 class="st-roles__title">{p.roles.title}</h2>
+      <p class="st-roles__lead">{p.roles.lead}</p>
+      <div class="st-roles__grid">
+        {
+          p.roles.items.map((r) => (
+            <a class="st-role" href={r.href}>
+              <span class="st-role__title">
+                {r.title} <span aria-hidden="true">→</span>
+              </span>
+              <span class="st-role__desc">{r.desc}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <FreeStrip />
+
+    <!-- ===== AUDIT CTA ===== -->
+    <section class="st-cta">
+      <div class="st-cta__inner">
+        <div>
+          <h2 class="st-cta__title">{p.cta.title}</h2>
+          <p class="st-cta__lead">{p.cta.lead}</p>
+        </div>
+        <a class="st-cta__btn" href={p.cta.href}>{p.cta.button}</a>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="st-faq" aria-labelledby="faq-title">
+      <header class="st-faq__head">
+        <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
+        <h2 id="faq-title" class="st-faq__title">Otázky těch, kdo začínají</h2>
+      </header>
+      <dl class="st-faq__list">
+        {
+          p.faq.map((item, i) => (
+            <div class="st-faq__item">
+              <dt class="st-faq__q">
+                <span class="st-faq__q-num">{i + 1}</span>
+                <span>{item.q}</span>
+              </dt>
+              <dd class="st-faq__a">{item.a}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .st {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
+  }
+
+  /* ===== HERO ===== */
+  .st-hero {
+    padding-top: clamp(3rem, 9vh, 5.5rem);
+    max-width: 52rem;
+  }
+  .st-hero__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .st-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .st-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    font-weight: 350;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 44rem;
+    margin: 0;
+  }
+
+  /* ===== KRÁTKÁ ODPOVĚĎ ===== */
+  .st-answer {
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  }
+  .st-answer__inner {
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-paper-deep);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    max-width: 52rem;
+  }
+  .st-answer__mark {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+  .st-answer__text {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== FÁZE ===== */
+  .st-phases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+  @media (max-width: 1000px) {
+    .st-phases { grid-template-columns: 1fr; }
+  }
+  .st-phase {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 1.5rem;
+    scroll-margin-top: 5rem;
+  }
+  .st-phase__head {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .st-phase__num {
+    flex: none;
+    width: 2.1rem;
+    height: 2.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-paper);
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+  .st-phase__title {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+    margin: 0.1rem 0 0.35rem;
+  }
+  .st-phase__goal {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .st-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    counter-reset: step;
+  }
+  .st-step {
+    padding-left: 1.4rem;
+    position: relative;
+    counter-increment: step;
+  }
+  .st-step::before {
+    content: counter(step) ".";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-ink-faint);
+  }
+  .st-step__link {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .st-step__link:hover { color: var(--color-accent); }
+  .st-step__why {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0.25rem 0 0;
+  }
+
+  /* ===== ROLE ===== */
+  .st-roles {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+  .st-roles__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .st-roles__lead {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 44rem;
+    margin: 0 0 1.25rem;
+  }
+  .st-roles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (max-width: 900px) {
+    .st-roles__grid { grid-template-columns: 1fr; }
+  }
+  .st-role {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .st-role:hover {
+    border-color: var(--color-accent);
+    background: var(--color-paper-deep);
+  }
+  .st-role__title {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .st-role__desc {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+
+  /* ===== AUDIT CTA ===== */
+  .st-cta {
+    margin-top: clamp(2rem, 5vw, 3rem);
+  }
+  .st-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+  }
+  .st-cta__title {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+    margin: 0 0 0.35rem;
+  }
+  .st-cta__lead {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 38rem;
+    margin: 0;
+  }
+  .st-cta__btn {
+    flex: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-paper);
+    background: var(--color-ink);
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .st-cta__btn:hover { background: var(--color-accent); }
+
+  /* ===== FAQ ===== */
+  .st-faq {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+  .st-faq__head { margin-bottom: 1.5rem; }
+  .st-faq__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0.75rem 0 0;
+  }
+  .st-faq__list { margin: 0; }
+  .st-faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding: 1.25rem 0;
+  }
+  .st-faq__q {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--color-ink);
+    margin-bottom: 0.5rem;
+  }
+  .st-faq__q-num {
+    flex: none;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+  }
+  .st-faq__a {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-ink-muted);
+    margin: 0 0 0 1.9rem;
+  }
+</style>

@@ -166,6 +166,10 @@ const answerText =
         <span>průměrně ~{avgWords.toLocaleString(site.inLanguage)} slov / článek</span>
         <span>nejnovější: {newestDate}</span>
       </div>
+
+      <p class="hero__start">
+        {ui.blogStartLead} <a href="/zacnete-tady/">{ui.blogStartLink} <span aria-hidden="true">→</span></a>
+      </p>
     </section>
 
     <!-- ANSWER BLOCK -->
@@ -389,6 +393,18 @@ const answerText =
     background: var(--d);
     border-radius: 50%;
   }
+  .hero__start {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    margin: 1rem 0 0;
+  }
+  .hero__start a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hero__start a:hover { text-decoration: underline; }
 
   /* ===== FILTER CHIPS ===== */
   .filter-bar {
