@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "ai-platformy"
 published: "2026-05-25"
-updated: "2026-05-25"
+updated: "2026-07-17"
 variant: "rich"
 keywords:
   - "google ai mode"
@@ -55,7 +55,6 @@ faq:
 
 import Checklist from "../../components/blocks/Checklist.astro";
 import Insight from "../../components/blocks/Insight.astro";
-import CompareTable from "../../components/blocks/CompareTable.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
 
@@ -71,22 +70,9 @@ Tento návod ukazuje, čím se AI Mode liší od AI Overviews, jak funguje **que
 
 ## AI Mode vs. AI Overviews: jaký je rozdíl
 
-Lidé oba pojmy směšují, ale jde o dvě různé věci. **AI Overviews** je shrnující box nad klasickými výsledky — modré odkazy pod ním zůstávají. **AI Mode** je samostatné konverzační rozhraní, kde AI odpověď a navazující otázky hrají větší roli než klasický seznam organických výsledků.
+Lidé oba pojmy směšují, ale jde o dvě různé věci. **AI Overviews** je shrnující box nad klasickými výsledky — modré odkazy pod ním zůstávají. **AI Mode** je samostatné konverzační rozhraní, kde odpověď stojí sama a dá se doptávat.
 
-<CompareTable
-  leftLabel="AI Overviews"
-  leftTone="aio"
-  rightLabel="AI Mode"
-  rightTone="accent"
-  rows={[
-    { icon: "📍", label: "Kde se zobrazí", left: "Box nad organickými výsledky", right: "Samostatný konverzační režim" },
-    { icon: "🔗", label: "Odkazy", left: "Modré odkazy zůstávají pod boxem", right: "Klasické pozice mají menší roli" },
-    { icon: "🔄", label: "Způsob práce", left: "Jeden dotaz, jedno shrnutí", right: "Dialog a navazující otázky" },
-    { icon: "🎯", label: "Co rozhoduje o viditelnosti", left: "Citace v boxu + pozice níž", right: "Viditelnost hlavně přes citace v odpovědi" }
-  ]}
-/>
-
-Praktický důsledek: pokud berete AI Overviews a AI Mode jako jeden cíl, snadno připravíte obsah tak, že nebude dobře fungovat ani pro jeden režim. AI Overviews stojí blíž klasickému organickému vyhledávání, AI Mode víc na výběru konkrétních pasáží.
+Praktický důsledek: když je berete jako jeden cíl, snadno připravíte obsah tak, že nebude dobře fungovat ani pro jeden. Dostupné analýzy navíc naznačují, že oba povrchy sice říkají významově podobné věci, ale citují často jiné zdroje. Podrobné srovnání včetně dat a jejich limitů rozebírá [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
 
 ## Jak funguje query fan-out
 

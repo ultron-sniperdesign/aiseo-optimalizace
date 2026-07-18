@@ -1,0 +1,147 @@
+---
+title: "AI Mode vs. AI Overviews: jiné zdroje, podobná odpověď"
+description: "AI Mode a AI Overviews vypadají podobně, ale citují jiné zdroje. V čem se liší, co to mění pro váš web a proč se nedají měřit jako jeden povrch."
+answer: "AI Overviews je shrnutí nahoře na běžné stránce s výsledky, kde pod ním zůstávají odkazy. AI Mode je samostatný konverzační režim, ve kterém odpověď stojí sama a dá se doptávat. Oba staví odpověď z více zdrojů, ale citují často jiné adresy, takže je nelze brát jako jeden povrch."
+slug: "ai-mode-vs-ai-overviews"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-07-17"
+updated: "2026-07-17"
+keywords:
+  - "ai mode vs ai overviews"
+  - "rozdíl ai mode ai overviews"
+  - "google ai mode"
+  - "ai overviews"
+  - "citace v ai"
+variant: "rich"
+stats:
+  - value: "dvě místa"
+    label: "AI Overviews jsou nad výsledky, AI Mode je samostatný konverzační režim"
+  - value: "13,7 %"
+    label: "shoda citovaných adres — Ahrefs, USA, září 2025; snímek jednotlivých vygenerování, ne stav v čase"
+  - value: "~4× delší"
+    label: "odpovědi v AI Mode byly ve stejné studii výrazně delší a zmiňovaly víc entit — 3,3 oproti 1,3"
+  - value: "měřit zvlášť"
+    label: "citace v jednom povrchu neznamená citaci v druhém; jedno spuštění navíc nic nedokazuje"
+faq:
+  - q: "Jaký je rozdíl mezi AI Mode a AI Overviews?"
+    a: "AI Overviews je shrnutí, které se objeví nahoře na běžné stránce s výsledky; pod ním zůstávají klasické odkazy. AI Mode je samostatný konverzační režim, kde odpověď stojí sama, dá se doptávat a organické výsledky vedle ní nejsou. Oba skládají odpověď z více zdrojů, ale liší se místem, délkou i tím, co citují."
+  - q: "Když mě cituje AI Overviews, budu i v AI Mode?"
+    a: "Nutně ne. Ve velké americké analýze Ahrefs ze září 2025 se citované adresy obou povrchů překrývaly z 13,7 procenta, přestože obsah odpovědí si byl významově blízký. Studie sama upozorňuje, že šlo o snímek jednotlivých vygenerování, takže skutečný překryv může být vyšší. I tak z toho plyne, že jeden povrch za druhý ručit nemůže."
+  - q: "Platí ta čísla i pro Česko?"
+    a: "Ne bez výhrad. Šlo o americká data ze září 2025 a AI Mode se v jednotlivých zemích zavádí postupně, takže dostupnost i podoba se liší podle trhu, účtu a fáze zavádění. Berte je jako řádové vodítko k tomu, že se povrchy chovají odlišně, ne jako číslo, které si můžete přepočítat na svůj web."
+  - q: "Mám optimalizovat zvlášť pro AI Mode?"
+    a: "Základ je pro oba společný: srozumitelná odpověď na konkrétní dílčí otázku, dohledatelné podklady a konzistentní údaje. Oba povrchy navíc používají takzvaný query fan-out, tedy rozklad dotazu na podotázky. Oddělené techniky slibované jen na jeden povrch nemá zpravidla čím doložit ani ten, kdo je nabízí."
+  - q: "Proč se citace mění, když stejný dotaz zopakuji?"
+    a: "Odpovědi se generují znovu a výběr zdrojů kolísá. Dřívější výzkum uváděný ve studii Ahrefs zjistil, že se mezi jednotlivými vygenerováními mění zhruba 45 procent citací v AI Overviews. Prakticky to znamená, že jedno měření je anekdota: testujte opakovaně, s odstupem a raději na víc dotazech."
+  - q: "Znamená delší odpověď v AI Mode větší šanci na zmínku?"
+    a: "Ve zmíněné studii byly odpovědi v AI Mode výrazně delší a zmiňovaly víc entit — v průměru 3,3 oproti 1,3 — takže prostoru je tam víc. Zároveň to ale znamená víc jmen v jedné odpovědi, tedy i víc konkurence o pozornost. Víc prostoru samo o sobě není totéž co větší užitek."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI Overviews je shrnutí nahoře na běžné stránce s výsledky, kde pod ním zůstávají odkazy. AI Mode je samostatný konverzační režim, ve kterém odpověď stojí sama a dá se doptávat.** Oba staví odpověď z více zdrojů, ale citují často jiné adresy, takže je nelze brát jako jeden povrch.
+
+Zvenčí to působí jako jedna věc: „Google teď odpovídá sám." V praxi jsou to dvě různá místa s jiným chováním — a to má docela konkrétní důsledek pro to, jak měříte a co si můžete slibovat.
+
+## Kde se s každým potkáte
+
+<CompareTable
+  caption="AI Overviews a AI Mode vedle sebe"
+  columns={["AI Overviews", "AI Mode"]}
+  rows={[
+    { icon: "📍", label: "Kde je", left: "Shrnutí nahoře na běžné stránce s výsledky", right: "Samostatný konverzační režim" },
+    { icon: "🔗", label: "Odkazy vedle", left: "Ano — pod shrnutím zůstávají výsledky", right: "Ne — odpověď stojí sama" },
+    { icon: "💬", label: "Interakce", left: "Jednorázové shrnutí", right: "Konverzace, dá se doptávat" },
+    { icon: "📏", label: "Délka", left: "Kratší", right: "Výrazně delší" },
+    { icon: "🔀", label: "Rozklad dotazu", left: "Používá query fan-out", right: "Používá query fan-out" },
+  ]}
+/>
+
+Společný jmenovatel je důležitější, než se zdá: u obou se podle dosavadních pozorování dotaz rozkládá na dílčí otázky a odpověď skládá z víc zdrojů. Jak to funguje, rozebírá článek o [query fan-out](/blog/query-fan-out-ai-mode/).
+
+## Stejná odpověď, jiné zdroje
+
+Tohle je nejzajímavější zjištění a zároveň místo, kde je potřeba být opatrný s čísly.
+
+V amerických datech ze září 2025, která zachycují jednotlivá vygenerování, porovnal Ahrefs odpovědi obou povrchů na velkém vzorku: zhruba 730 tisíc párů odpovědí pro podobnost obsahu a 540 tisíc párů dotazů pro citace. Odpovědi si byly významově blízké — průměrná sémantická podobnost kolem 86 procent, zatímco shoda na úrovni konkrétních slov vyšla kolem 16 procent. **Citované adresy se překrývaly z 13,7 procenta**, u prvních tří citací z 16,3 procenta. Jinými slovy: oba řekly významově podobnou věc, ale opřeli ji o jiné stránky.
+
+<Insight tone="key">
+Prakticky to znamená jedno: **citace v jednom povrchu nezaručuje citaci v druhém.** Když si ověříte, že vás zmiňuje shrnutí nad výsledky, o AI Mode tím nevíte nic — a naopak.
+</Insight>
+
+Než si z toho číslo odnesete jako fakt, patří k němu tři výhrady, které uvádí sama studie nebo plynou z jejího zadání.
+
+<Insight tone="warning">
+**Byla to americká data ze září 2025**, ne česká a ne aktuální. **Šlo o snímek jednotlivých vygenerování**, ne o množiny zdrojů v čase. A dřívější výzkum, který studie zmiňuje, zjistil, že se mezi jednotlivými vygenerováními mění zhruba 45 procent citací v AI Overviews — takže skutečný překryv zdrojů může být vyšší, než snímek napovídá.
+</Insight>
+
+Závěr, který ze studie plyne bezpečně, je střízlivější než to číslo: i když by odpověď mohlo podepřít víc zdrojů, oba povrchy v praxi často sáhnou po jiných.
+
+## Co to mění pro váš web
+
+**Měřte je odděleně.** Zjištění, že jste v jednom, není zjištění o druhém. Jak si viditelnost ověřit, rozebírá [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/); k datům z Search Console pak [AI segmenty v GSC](/blog/gsc-ai-segmenty-mereni/).
+
+**Jedno spuštění nestačí.** Když se výběr zdrojů mezi běhy mění, jeden test je anekdota. Opakujte s odstupem a na víc dotazech.
+
+**Optimalizace se ale nerozdvojuje.** Základ je pro oba stejný: srozumitelně odpovědět na konkrétní dílčí otázku, mít dohledatelné podklady a konzistentní údaje. Praktickou přípravu obsahu řeší [Google AI Mode](/blog/google-ai-mode/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Brát to jako jeden povrch">
+    Věta „jsme vidět v AI" neříká skoro nic. Jde o dvě různá místa, která se chovají i citují jinak.
+  </Mistake>
+  <Mistake number="02" title="Přenášet americká čísla na Česko">
+    Jiný trh, jiná fáze zavádění, jiné množství podkladů v jazyce. Čísla ze zahraničních studií berte jako vodítko, ne jako předpověď.
+  </Mistake>
+  <Mistake number="03" title="Závěr z jednoho spuštění">
+    Citace mezi běhy kolísají. Kdo z jednoho testu vyvozuje trend, měří spíš šum než skutečnost.
+  </Mistake>
+  <Mistake number="04" title="Zvláštní triky na jeden povrch">
+    Techniky slibované výhradně na AI Mode nebo výhradně na AI Overviews nebývá čím doložit. Společný základ je pořád tentýž.
+  </Mistake>
+</MistakeGrid>
+
+## Kde je hranice tohoto článku
+
+**Neříká, jak se do nich dostat.** To je téma přípravy obsahu, ne srovnání; na to je [Google AI Mode](/blog/google-ai-mode/) a další díly.
+
+**Nedává česká čísla.** Veřejně doložená data pro český trh k dispozici nejsou, takže je tu radši neuvádíme než odhadujeme.
+
+**Neslibuje přenos mezi povrchy.** Spíš naopak — dostupná analýza ukazuje, že se citace obou míst často rozcházejí.
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Sledujte oba povrchy odděleně, ne jako jednu položku",
+    "Testujte opakovaně, s odstupem a na víc dotazech",
+    "Držte základ: jasná odpověď na dílčí otázku, dohledatelné podklady",
+    "U zahraničních čísel si hlídejte trh a datum sběru",
+  ]}
+  dontItems={[
+    "Vyvozovat z jednoho spuštění, že „to funguje\" nebo „nefunguje\"",
+    "Přepočítávat americká data na český web",
+    "Kupovat techniky slibované zvlášť na jeden povrch",
+    "Považovat citaci v jednom místě za důkaz o druhém",
+  ]}
+/>
+
+## Co si odnést
+
+AI Overviews a AI Mode se snadno slijí do jednoho „Google teď odpovídá sám". Rozdíl je ale praktický: první je shrnutí nad výsledky, které pod sebou nechává odkazy, druhý je samostatná konverzace bez nich.
+
+A hlavně — dostupná analýza naznačuje, že i když říkají podobné věci, opírají je často o jiné zdroje. Takže je sledujte zvlášť, neberte jedno měření jako důkaz a u čísel ze zahraničí se vždycky ptejte, z jakého trhu a kdy jsou.
+
+---
+
+Chcete vědět, jak si stojíte v jednotlivých AI povrchách a co s tím jde dělat? **[AI SEO audit](/audit/)** za 9 990 Kč projde viditelnost i obsah a pomůže pojmenovat další kroky. Hotové vzory stránek jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
+
+*Zdroj čísel: analýza Ahrefs porovnávající odpovědi AI Overviews a AI Mode nad daty Brand Radaru (USA, září 2025). Uvádíme ji včetně limitů, které zmiňuje sama.*
