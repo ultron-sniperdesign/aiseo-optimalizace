@@ -63,7 +63,7 @@ export const hero = {
   intro: "Průvodce AI érou vyhledávání pro český trh",
   title:
     '<strong>AI éra vyhledávání</strong> se neptá <span class="hl">na pozice</span>. Ptá se <span class="hl">na citace</span>.',
-  lead: "Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.",
+  lead: "Praktický průvodce čtyřmi disciplínami — a nastupujícím Google AI Mode — které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.",
   pillsHint: "Klikněte na disciplínu pro krátkou definici a odkaz na detail",
 };
 

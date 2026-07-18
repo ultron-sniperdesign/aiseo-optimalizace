@@ -7,6 +7,7 @@ import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import RelatedArticles from "~/components/article/RelatedArticles.astro";
 import TagChips from "~/components/article/TagChips.astro";
 import SeriesNav from "~/components/article/SeriesNav.astro";
+import { findSeriesPart, SERIES_BASE } from "~/i18n/series";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
@@ -55,6 +56,9 @@ const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.png`;
  * - mainEntityOfPage: cíl rich snippet linku
  * - wordCount, articleSection, timeRequired: signal pro Discover / kategorizaci
  */
+/** Členství v sérii (registr i18n/series.ts) — pro isPartOf v JSON-LD. */
+const seriesHit = findSeriesPart(entry.data.slug);
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -71,6 +75,17 @@ const articleJsonLd = {
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
   author: buildPersonRef(SITE_ORIGIN),
   publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
+  // Článek v sérii → isPartOf CreativeWorkSeries + pozice dílu
+  ...(seriesHit
+    ? {
+        isPartOf: {
+          "@type": "CreativeWorkSeries",
+          name: seriesHit.series.title,
+          url: `${SITE_ORIGIN}${SERIES_BASE}${seriesHit.series.slug}/`,
+        },
+        position: seriesHit.index + 1,
+      }
+    : {}),
 };
 
 const faqJsonLd =
