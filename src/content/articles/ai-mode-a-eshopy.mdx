@@ -1,0 +1,156 @@
+---
+title: "AI Mode a e-shopy: co to mění pro nákupní dotazy"
+description: "V AI Mode nestojí vedle odpovědi organické výsledky. Co to znamená pro e-shopy, která data rozhodují a proč jde tenhle povrch těžko změřit zvlášť."
+answer: "AI Mode je konverzační režim vyhledávání, ve kterém odpověď stojí sama a organické výsledky vedle ní nejsou. Pro e-shop se tím mění tvar příležitosti: nejde o pozici v seznamu, ale o to být jedním ze zdrojů, ze kterých se odpověď skládá. Rozhodují údaje, které zákazník řeší — cena, dostupnost, parametry."
+slug: "ai-mode-a-eshopy"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "ai-platformy"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "ai mode eshop"
+  - "nákupní dotazy v ai"
+  - "ai mode e-commerce"
+  - "produktová data pro ai"
+  - "ai viditelnost eshopu"
+variant: "rich"
+stats:
+  - value: "bez seznamu"
+    label: "v AI Mode nestojí vedle odpovědi organické výsledky — mizí pozice, zůstává role zdroje"
+  - value: "1 867"
+    label: "návštěv z AI nástrojů za 12 měsíců na e-shopu MEGA DETAIL, 90 % z nich poslal ChatGPT"
+  - value: "3,5 % vs 0,88 %"
+    label: "konverzní míra z ChatGPT oproti Google organic — jeden e-shop, výchozí stav před optimalizací"
+  - value: "měřit zvlášť?"
+    label: "AI Mode samostatně z běžných dat vyčíst nejde; report Search Console je za AI funkce souhrnně"
+faq:
+  - q: "Co se pro e-shop v AI Mode mění oproti běžnému vyhledávání?"
+    a: "Hlavně to, že vedle odpovědi nestojí seznam organických výsledků. Zákazník dostane složenou odpověď a případné odkazy na zdroje. Pro e-shop to znamená posun od otázky na jaké jsem pozici k otázce jestli jsem jedním ze zdrojů, ze kterých se odpověď skládá. Podmínky pro zobrazení jsou přitom podle Googlu stejné jako pro běžné vyhledávání."
+  - q: "Která data u produktu rozhodují nejvíc?"
+    a: "Ta, která řeší zákazník při rozhodování: cena, dostupnost a dodací lhůta, klíčové parametry, doprava a podmínky vrácení. Když některý údaj na stránce chybí, je jen v obrázku nebo si odporuje s feedem (datovým souborem s produkty), nemá systém z čeho čerpat a sáhne po jiném zdroji. Shodu mezi stránkou a feedem je proto potřeba hlídat."
+  - q: "Stačí popis produktu od výrobce?"
+    a: "Na srovnávací dotazy zpravidla ne. Popis od výrobce má i konkurence, takže do odpovědi nepřidává nic, co by odlišovalo právě váš záznam. Užitečnější bývá to, co k produktu umíte doplnit sami: pro koho se hodí, s čím se kombinuje, jaké má limity, jaká je zkušenost z praxe."
+  - q: "Kolik návštěv z AI nástrojů reálně chodí?"
+    a: "Na e-shopu MEGA DETAIL to bylo 1 867 návštěv za dvanáct měsíců, z toho 90 procent poslal ChatGPT. Konverzní míra byla 3,5 procenta oproti 0,88 procenta z Google organic a tržba na návštěvu 29,50 Kč oproti 10,30 Kč. Jde ale o jeden e-shop a o výchozí stav před cílenou optimalizací, takže to berte jako ilustraci, ne jako benchmark trhu."
+  - q: "Dá se výkon v AI Mode měřit samostatně?"
+    a: "Samostatně zatím prakticky ne. Report v Search Console je vedený za funkce s generativní AI souhrnně a návštěvnost z asistentů bývá v analytice smíchaná dohromady; v našem případě ji z devadesáti procent tvořil ChatGPT. Čísla naměřená u AI Overviews proto nelze vydávat za výsledky v AI Mode."
+  - q: "Znamená to, že mám dělat něco jiného než dosud?"
+    a: "Spíš to samé, ale důsledněji. Google ve své dokumentaci uvádí, že pro AI funkce nejsou zvláštní požadavky. Co se mění, je tolerance k odbytým údajům: v seznamu výsledků se dala chybějící dostupnost přejít, ve složené odpovědi znamená, že do ní váš produkt nemá čím přispět."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI Mode je konverzační režim vyhledávání, ve kterém odpověď stojí sama a organické výsledky vedle ní nejsou.** Pro e-shop se tím mění tvar příležitosti: nejde o pozici v seznamu, ale o to být jedním ze zdrojů, ze kterých se odpověď skládá. Rozhodují údaje, které zákazník řeší — cena, dostupnost, parametry.
+
+Zní to jako velká změna a v jednom ohledu je. V jiném je to ale nuda: pravidla zůstávají stejná, jen se přísněji pozná, když jsou data odbytá.
+
+## Co se mění a co ne
+
+<CompareTable
+  caption="Nákupní dotaz v seznamu výsledků a v AI Mode"
+  columns={["Běžné výsledky", "AI Mode"]}
+  rows={[
+    { icon: "📋", label: "Co zákazník vidí", left: "Seznam e-shopů, vybírá sám", right: "Složenou odpověď a odkazy na zdroje" },
+    { icon: "🥇", label: "O co se hraje", left: "Pozice v seznamu", right: "Být jedním ze zdrojů odpovědi" },
+    { icon: "⚖️", label: "Srovnávací dotaz", left: "Zákazník si otevře víc karet", right: "Srovnání složí systém z víc zdrojů" },
+    { icon: "🧾", label: "Co rozhoduje", left: "Relevance a pozice", right: "Dostupné a konzistentní údaje o produktu" },
+  ]}
+/>
+
+Podmínky pro zobrazení se přitom nemění. Google ve své dokumentaci uvádí, že pro AI funkce nejsou zvláštní požadavky ani samostatné značení — platí stejný základ jako pro běžné vyhledávání. Mezi doporučeními zmiňuje i to, že důležitý obsah má být v textové podobě a strukturovaná data mají odpovídat viditelnému textu. Rozebírá to [jak se zobrazit v AI Mode](/blog/jak-se-zobrazit-v-ai-mode/).
+
+## Nákupní dotazy jsou srovnávací
+
+Tady je pro e-shop to podstatné. Dotazy typu „který vysavač je nejlepší na chlupy" nebo „čím ošetřit lak po zimě" nejsou o jednom produktu — jsou o kritériích. Odpověď se skládá z víc zdrojů a každý do ní přispěje tím, co má navíc.
+
+E-shop, který má na produktu jen popis od výrobce, nemá čím přispět. Ten samý text má i konkurence.
+
+<Insight tone="key">
+Ve srovnávacím dotazu nevyhrává nejhezčí stránka, ale ta, která má **údaje, jež se dají porovnat** — cena, dostupnost, parametry, pro koho se produkt hodí a kde má limity. Co u vás chybí nebo si odporuje s feedem, doplní systém odjinud.
+</Insight>
+
+Jak psát produktovou stránku, aby to splňovala, rozebírají [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/); proč je čitelná cena zvlášť citlivé místo, [ceny na webu a AI](/blog/ceny-na-webu-a-ai/).
+
+## Kolik toho zatím chodí — naše data
+
+Aby to nebyly jen úvahy: na e-shopu MEGA DETAIL jsme měřili, co AI nástroje reálně přivedou. Za dvanáct měsíců to bylo **1 867 návštěv**, z nichž **90 procent** poslal ChatGPT. Konverzní míra u nich byla **3,5 procenta** oproti **0,88 procenta** z Google organic a tržba na návštěvu **29,50 Kč oproti 10,30 Kč**.
+
+Objem tedy malý, kvalita návštěvy vyšší. Celá data i s metodikou jsou v [case study MEGA DETAIL](/blog/case-study-megadetail-ai-navstevnost/).
+
+<Insight tone="warning">
+K těm číslům patří tři výhrady. Je to **jeden e-shop**, jde o **výchozí stav před cílenou optimalizací** a — což je pro tenhle článek nejdůležitější — **netýkají se AI Mode**. Zobrazení, která jsme naměřili ve funkcích s generativní AI Googlu, spadají pod AI Overviews. Vydávat je za výsledky v AI Mode by byla přesně ta chyba, před kterou varuje [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
+</Insight>
+
+## Proč se to špatně měří
+
+Tohle je nepříjemná, ale poctivá část. AI Mode se z běžně dostupných dat samostatně vyčíst nedá:
+
+- Report v Search Console je vedený za **funkce s generativní AI souhrnně**, ne po jednotlivých povrchách.
+- Návštěvnost z asistentů se v analytice míchá dohromady a v našem případě ji z devadesáti procent tvořil ChatGPT.
+- Citace se navíc mezi jednotlivými vygenerováními mění — dřívější výzkum uváděný ve studii Ahrefs mluví asi o 45 procentech —, takže jednorázová kontrola nic nedokazuje.
+
+Prakticky to znamená, že tvrzení „máme X návštěv z AI Mode" by dnes bylo těžké doložit — a stejně tak nabídka, která takový výsledek slibuje.
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Brát AI Mode a AI Overviews jako jedno">
+    Jsou to různé povrchy s odlišnými citacemi — v americké analýze Ahrefs ze září 2025 se citované adresy překrývaly z 13,7 procenta. Číslo z jednoho o druhém nevypovídá.
+  </Mistake>
+  <Mistake number="02" title="Vydávat data z jednoho povrchu za druhý">
+    Nejčastěji se to stává právě u zobrazení z Search Console, která jsou vedená souhrnně.
+  </Mistake>
+  <Mistake number="03" title="Spoléhat na popis od výrobce">
+    Do srovnání nepřidává nic, co nemá i konkurence. Cenné je to, co doplníte vy.
+  </Mistake>
+  <Mistake number="04" title="Rozpor mezi stránkou a feedem">
+    Když si cena nebo dostupnost odporují, systém nemá z čeho vyjít a sáhne jinam.
+  </Mistake>
+</MistakeGrid>
+
+## Kde je hranice tohoto článku
+
+**Nedává česká čísla k AI Mode.** Veřejně doložená nejsou a dostupnost se zavádí postupně, takže je tu radši neuvádíme než odhadujeme.
+
+**Naše data jsou ilustrace, ne benchmark.** Jeden e-shop, jedno období, stav před optimalizací.
+
+**Neslibuje prodeje.** Popisuje, co se mění a co jde ovlivnit. Kdo slibuje konkrétní obrat z AI Mode, slibuje víc, než dnes umí kdokoli doložit.
+
+**Neřeší nákupní agenty obecně.** Na ty je [AI nákupní agenti a e-shopy](/blog/ai-nakupni-agenti/).
+
+<DoDont
+  doTitle="Dělejte"
+  dontTitle="Nedělejte"
+  doItems={[
+    "Doplňte údaje, které zákazník při rozhodování řeší",
+    "Hlídejte shodu mezi stránkou a feedem",
+    "Přidejte k produktu to, co nemá popis od výrobce",
+    "Sledujte AI povrchy odděleně a opakovaně",
+  ]}
+  dontItems={[
+    "Vydávat zobrazení z AI Overviews za výsledky v AI Mode",
+    "Slibovat obrat z AI Mode — doložit se dnes nedá",
+    "Nechat cenu nebo dostupnost jen v obrázku",
+    "Vyvozovat závěr z jedné vyzkoušené odpovědi",
+  ]}
+/>
+
+## Co si odnést
+
+Pro e-shop se v AI Mode nemění pravidla, ale tvar příležitosti. Místo pozice v seznamu jde o to být jedním ze zdrojů složené odpovědi — a do srovnání přispěje jen ten, kdo má co porovnat.
+
+Objem je zatím malý. Naše data ukazují 1 867 návštěv za dvanáct měsíců u jednoho e-shopu, ale s výrazně lepší konverzí než z organiku. To je dobrý důvod se tím zabývat a špatný důvod tomu podřizovat celý rozpočet.
+
+A hlavně: buďte opatrní na čísla. Ani my dnes neumíme oddělit výkon v AI Mode od zbytku — a kdo tvrdí, že to umí, by měl nejdřív ukázat metodiku. Širší kontext dává [SEO pro e-shopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/).
+
+---
+
+Chcete vědět, jestli mají vaše produktová data to, co složená odpověď potřebuje? **[AI SEO audit](/audit/)** za 9 990 Kč projde produktové stránky, strukturovaná data i shodu s feedem a pomůže pojmenovat další kroky. Hotové vzory produktové a kategoriální stránky jsou v **[AI SEO Wireframe Packu](/pack/)** za 1 490 Kč.
+
+*Zdroj dat: vlastní měření e-shopu MEGA DETAIL za 12 měsíců (publikováno 17. 7. 2026) a dokumentace Google Search Central k AI funkcím.*
