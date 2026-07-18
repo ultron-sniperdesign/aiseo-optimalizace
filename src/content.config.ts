@@ -36,6 +36,11 @@ const sections = defineCollection({
      */
     inlineSmallContact: z.boolean().optional().default(false),
     /** Datum poslední aktualizace (ISO YYYY-MM-DD). */
+    /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
+    published: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     /**
      * Volitelné YouTube video pod answer blockem. Lazy facade přes
@@ -83,6 +88,11 @@ const pillar = defineCollection({
     /** Volitelný SEO <title> pro SERP. Když chybí, použije se `title` (= H1 na stránce). */
     seoTitle: z.string().optional(),
     description: z.string().min(70).max(160),
+    /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
+    published: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     /** Klíčová slova pro meta keywords + interní reference. */
     keywords: z.array(z.string()),
@@ -128,6 +138,11 @@ const articles = defineCollection({
     slug: z.string().regex(/^[a-z0-9-]+$/),
     /** Kategorie — pro pozdější filter v blog kategorii. */
     category: z.enum(["defensive", "case-study", "tutorial", "analysis"]),
+    /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
+    published: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     keywords: z.array(z.string()),
     /**

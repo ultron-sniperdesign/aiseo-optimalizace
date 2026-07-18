@@ -61,7 +61,7 @@ const articleJsonLd = {
   headline: entry.data.title,
   description: entry.data.description,
   image: [articleImageURL],
-  datePublished: entry.data.updated,
+  datePublished: entry.data.published ?? entry.data.updated,
   dateModified: entry.data.updated,
   inLanguage: site.inLanguage,
   keywords: entry.data.keywords.join(", "),
