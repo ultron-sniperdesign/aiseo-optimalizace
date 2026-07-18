@@ -27,6 +27,19 @@ slug: "url-slug-clanku-bez-diakritiky"
 # - analysis: trendy, datové rozbory, srovnání platforem
 category: "analysis"
 
+# POVINNÉ (od 2026-07-18): 1–3 tematické tagy z registru src/i18n/tags.ts.
+# Bez tagů spadne build (Zod enum). Povolená id:
+#   strategie / ai-platformy / technicke-zaklady / strukturovana-data /
+#   obsah / duveryhodnost / eshopy / mereni / audit-nastroje
+# Vyber podle TÉMATU (ne formátu — formát drží category). Generují
+# stránky /blog/tema/<slug>/ a chips na článku.
+tags:
+  - "ai-platformy"
+
+# Datum prvního publikování (ISO, volitelné — když chybí, použije se updated).
+# Nastav při prvním publikování a už neměň.
+published: "2026-05-17"
+
 # Datum poslední aktualizace v ISO formátu YYYY-MM-DD. ≤ dnes.
 # Aktualizuj při každém významném update obsahu (ne při fix typu).
 updated: "2026-05-17"
