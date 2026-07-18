@@ -36,6 +36,7 @@ import AuthorBox from "~/components/article/AuthorBox.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import RelatedArticles from "~/components/article/RelatedArticles.astro";
 import TagChips from "~/components/article/TagChips.astro";
+import SeriesNav from "~/components/article/SeriesNav.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
@@ -160,6 +161,11 @@ const _bundlerHints = [
       <span class="ranswer__mark">{ui.answerShort}</span>
       <p class="ranswer__text">{entry.data.answer}</p>
     </div>
+  </section>
+
+  <!-- SÉRIE — jen u článků, které patří do série (registr i18n/series.ts) -->
+  <section class="rseries">
+    <SeriesNav slug={entry.data.slug} />
   </section>
 
   <!-- ARTICLE GRID — sticky TOC (≥1080px) + content -->
@@ -460,6 +466,16 @@ const _bundlerHints = [
     max-width: var(--max-section);
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 3.5rem);
+  }
+  /* SeriesNav container — přisunutý pod answer block; prázdný (článek mimo
+     sérii) nezabírá místo, SeriesNav pak nic nerendruje. */
+  .rseries {
+    max-width: var(--max-section);
+    margin: calc(-1 * clamp(1.25rem, 2.5vw, 2rem)) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .rseries:has(> :first-child) {
+    padding-bottom: clamp(2rem, 4vw, 3rem);
   }
   .ranswer__inner {
     background: var(--color-paper-deep);

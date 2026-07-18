@@ -159,6 +159,21 @@ export const ui = {
   blogStartLead: "Jste tu poprvé?",
   blogStartLink: "Začněte tady",
 
+  // Série článků (registr v i18n/series.ts) — SeriesNav box + landing
+  seriesEyebrow: "Série",
+  seriesNavAria: "Navigace v sérii",
+  /** „Díl {x} z {n}" — {x}/{n} nahradí šablona. */
+  seriesPartOf: "Díl {x} z {n}",
+  seriesPrev: "← Předchozí díl",
+  seriesNext: "Další díl →",
+  seriesAllParts: "Všechny díly",
+  seriesPlannedTitle: "Připravujeme",
+  seriesPlannedNote: "Další díly jsou v obsahovém plánu — přibudou v příštích týdnech.",
+  seriesStartCta: "Začít dílem 1",
+  /** Promo banner série na tag stránce. */
+  seriesPromoLead: "K tomuto tématu máme ucelenou sérii:",
+  seriesPromoCta: "Projít sérii",
+
   // Tagy / tematické clustery (registr témat v i18n/tags.ts)
   tagsRowLabel: "Témata",
   ariaTagNav: "Témata blogu",

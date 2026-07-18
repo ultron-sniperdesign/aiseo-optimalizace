@@ -24,6 +24,7 @@
 | **Agency promo** | `src/i18n/sniperdesign.ts` | BigContact / SmallContact |
 | **Locale / schema** | `src/i18n/site.ts` | `lang`, `og:locale`, `inLanguage`, název webu, author, Organization |
 | **Tagy blogu** | `src/i18n/tags.ts` | tematické clustery: `slug`/`label`/`title`/`description` + `TAG_BASE` (`/blog/tema/`). **`id` NEPŘEKLÁDAT** — je ve frontmatteru článků |
+| **Série článků** | `src/i18n/series.ts` | série: `slug`/`title`/`description`/`intro`/`parts[].note`/`planned` + `SERIES_BASE` (`/serie/`). **`id` NEPŘEKLÁDAT**; `parts[].slug` odkazují na články mutace |
 | **Dlouhý obsah** | `src/content/{pillar,sections,articles}/*.mdx` | pillar, 6 sekcí, blog články |
 | **OG obrázky** | `public/og/*` | přegenerovat s přeloženým textem |
 | **JSON-LD v `.astro` datech** | `serviceJsonLd`/`faqJsonLd`/`productJsonLd` v `content/pages/audit.ts`, `pack.ts` | structured data (plain text, přeložit) |

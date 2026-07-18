@@ -13,6 +13,7 @@ import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { BLOG_TAGS, TAG_BASE } from "~/i18n/tags";
+import { seriesForTag, SERIES_BASE } from "~/i18n/series";
 
 export async function getStaticPaths() {
   return BLOG_TAGS.map((tag) => ({ params: { tema: tag.slug }, props: { tag } }));
@@ -42,6 +43,9 @@ const otherTags = BLOG_TAGS.filter((t) => t.id !== tag.id).map((t) => ({
 }));
 
 const pageUrl = `${SITE_ORIGIN}${TAG_BASE}${tag.slug}/`;
+
+/** Série promovaná na této tag stránce (např. E-shopy → AI SEO pro e-shopy). */
+const promoSeries = seriesForTag(tag.id);
 
 const collectionJsonLd = {
   "@context": "https://schema.org",
@@ -99,6 +103,21 @@ const collectionJsonLd = {
         {articles.length} {ui.tagPageCountSuffix}
       </p>
     </section>
+
+    {
+      promoSeries && (
+        <section class="spromo" aria-label={ui.seriesEyebrow}>
+          <div class="spromo__inner">
+            <p class="spromo__lead">
+              {ui.seriesPromoLead} <strong>{promoSeries.shortTitle}</strong> ({promoSeries.parts.length} dílů v pořadí)
+            </p>
+            <a class="spromo__cta" href={`${SERIES_BASE}${promoSeries.slug}/`}>
+              {ui.seriesPromoCta} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+      )
+    }
 
     <section class="articles" aria-label={ui.ariaArticleList}>
       <div class="articles__grid">
@@ -209,6 +228,39 @@ const collectionJsonLd = {
     color: var(--color-ink-faint);
     margin: 0;
   }
+
+  .spromo {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(0.5rem, 1.5vw, 1rem) var(--space-section-x) 0;
+  }
+  .spromo__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: oklch(from var(--color-accent) l c h / 0.06);
+    border: 1px solid oklch(from var(--color-accent) l c h / 0.25);
+    border-radius: 8px;
+    padding: 0.9rem 1.25rem;
+  }
+  .spromo__lead {
+    font-family: var(--font-sans);
+    font-size: 0.925rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .spromo__lead strong { color: var(--color-ink); font-weight: 600; }
+  .spromo__cta {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .spromo__cta:hover { text-decoration: underline; }
 
   .articles {
     max-width: var(--max-section);

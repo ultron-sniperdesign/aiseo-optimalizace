@@ -6,6 +6,7 @@ import AuthorBox from "~/components/article/AuthorBox.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import RelatedArticles from "~/components/article/RelatedArticles.astro";
 import TagChips from "~/components/article/TagChips.astro";
+import SeriesNav from "~/components/article/SeriesNav.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
@@ -168,6 +169,11 @@ const ogImage = `/og/${entry.data.slug}.png`;
         <span class="answer__mark">{ui.answerShort}</span>
         <p class="answer__text">{entry.data.answer}</p>
       </div>
+    </section>
+
+    <!-- SÉRIE — jen u článků z registru i18n/series.ts -->
+    <section class="series-slot">
+      <SeriesNav slug={entry.data.slug} />
     </section>
 
     <!-- ARTICLE BODY -->
@@ -346,6 +352,14 @@ const ogImage = `/og/${entry.data.slug}.png`;
     max-width: var(--max-section);
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
+  }
+  .series-slot {
+    max-width: var(--max-section);
+    margin: calc(-1 * clamp(1.25rem, 2.5vw, 2rem)) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .series-slot:has(> :first-child) {
+    padding-bottom: clamp(2rem, 4vw, 3rem);
   }
   .answer__inner {
     background: var(--color-paper-deep);
