@@ -416,6 +416,26 @@ import { site } from "~/i18n/site";
     </div>
   </section>
 
+  <!-- KUDY DO OBSAHU — rozcestník hubů (fork skryje prázdným polem contentNav) -->
+  {p.contentNav.length > 0 && (
+    <section class="section">
+      <header class="section__head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.contentNavHead.eyebrowNum}</span> {p.contentNavHead.eyebrow}</span>
+        <h2 class="section__title" set:html={p.contentNavHead.title}></h2>
+      </header>
+
+      <div class="cnav">
+        {p.contentNav.map((c) => (
+          <a href={c.href} class="cnav-card">
+            <span class="cnav-card__label">{c.label}</span>
+            <span class="cnav-card__title">{c.title} <span aria-hidden="true">→</span></span>
+            <span class="cnav-card__desc">{c.desc}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
   <!-- VYBRANÉ ČLÁNKY (fork skryje prázdným polem scards) -->
   {p.scards.length > 0 && (
   <section class="section section--deep">
@@ -1408,6 +1428,56 @@ import { site } from "~/i18n/site";
     max-width: var(--max-section);
     margin: 0 auto;
     padding: var(--space-section-y) var(--space-section-x);
+  }
+
+  /* ===== KUDY DO OBSAHU — rozcestník hubů ===== */
+  .cnav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (max-width: 1000px) {
+    .cnav { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .cnav { grid-template-columns: 1fr; }
+  }
+  .cnav-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .cnav-card:hover {
+    border-color: var(--color-accent);
+    background: var(--color-paper-deep);
+  }
+  .cnav-card__label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .cnav-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+  }
+  .cnav-card__desc {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
   }
   /* Full-bleed paper-deep variant — pro vizuální oddělení sekcí.
    * Section sám zabírá celé okno (full-width background), ale vnitřní

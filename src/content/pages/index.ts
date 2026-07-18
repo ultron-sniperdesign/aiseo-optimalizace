@@ -377,8 +377,42 @@ export const pillarPromo = {
 };
 
 /** Sekce 05 — Vybrané články. */
-export const articlesHead: SectionHead = {
+/** KUDY DO OBSAHU — rozcestník hubů (fork skryje prázdným polem items). */
+export const contentNavHead: SectionHead = {
   eyebrowNum: "05",
+  eyebrow: "Kudy do obsahu",
+  title: "Přes 60 článků. <strong>Tady jsou čtyři vstupy</strong>, ať se neztratíte",
+};
+
+export const contentNav = [
+  {
+    href: "/zacnete-tady/",
+    title: "Začněte tady",
+    desc: "Jste tu poprvé? Kurátorovaná cesta ve třech fázích — pochopit, zavést, měřit.",
+    label: "Pro nováčky",
+  },
+  {
+    href: "/serie/ai-seo-pro-eshopy/",
+    title: "Série pro e-shopy",
+    desc: "Osm dílů v pořadí jako kurz: od produktových stránek po AI nákupní agenty.",
+    label: "8 dílů",
+  },
+  {
+    href: "/blog/tema/strategie/",
+    title: "Témata blogu",
+    desc: "Články roztříděné do devíti oblastí — strategie, měření, e-shopy, technika…",
+    label: "9 témat",
+  },
+  {
+    href: "/slovnik/",
+    title: "Slovník pojmů",
+    desc: "AI Mode, GEO, query fan-out, zero-click — krátké definice s kotvami k citování.",
+    label: "46+ pojmů",
+  },
+];
+
+export const articlesHead: SectionHead = {
+  eyebrowNum: "06",
   eyebrow: "Vybrané články",
   title: "Praktická čtení <strong>pro tento týden</strong>",
 };
@@ -447,7 +481,7 @@ export const articlesMore = {
 
 /** Sekce 06 — Nabídka (3 produkty). */
 export const offersHead: SectionHead = {
-  eyebrowNum: "06",
+  eyebrowNum: "07",
   eyebrow: "Co můžete dělat dál",
   title: "Tři způsoby, jak <strong>posunout svůj web</strong> do AI éry",
   lead:
