@@ -723,8 +723,10 @@ const DISC = {
 
 <script>
   // ===== Dropdown náhledy disciplín (desktop) =====
-  // Otevírá se na mouseenter/focus/klik disciplíny, zavírá při opuštění
-  // celého řádku 2 (vč. dropdownu), na Esc a klik mimo. Vždy max jedna karta.
+  // Hover pattern vázaný na TLAČÍTKO + KARTU: otevřeno jen dokud je kurzor
+  // nad disciplínou nebo nad dropdownem; opuštění obojího zavírá s krátkou
+  // prodlevou (přejezd mezi tlačítkem a kartou). Focus/Esc/klik mimo řeší
+  // klávesnici a dotyk. Vždy max jedna karta.
   function initDiscDropdown() {
     const row = document.querySelector("[data-disc-row]");
     const drop = document.querySelector<HTMLElement>("[data-disc-drop]");
@@ -732,14 +734,21 @@ const DISC = {
     const links = Array.from(row.querySelectorAll<HTMLElement>("[data-disc-link]"));
     const cards = Array.from(drop.querySelectorAll<HTMLElement>("[data-disc-card]"));
     let openKey: string | null = null;
+    let closeTimer: number | undefined;
 
     const close = () => {
+      window.clearTimeout(closeTimer);
       openKey = null;
       drop.hidden = true;
       cards.forEach((c) => (c.hidden = true));
       links.forEach((l) => l.classList.remove("dnav__link--open"));
     };
+    const scheduleClose = () => {
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(close, 120);
+    };
     const open = (key: string) => {
+      window.clearTimeout(closeTimer);
       openKey = key;
       drop.hidden = false;
       cards.forEach((c) => (c.hidden = c.dataset.discCard !== key));
@@ -749,13 +758,12 @@ const DISC = {
     links.forEach((link) => {
       const key = link.dataset.discLink!;
       link.addEventListener("mouseenter", () => open(key));
+      link.addEventListener("mouseleave", scheduleClose);
       link.addEventListener("focus", () => open(key));
+      link.addEventListener("blur", scheduleClose);
     });
-    row.addEventListener("mouseleave", close);
-    // Přejezd na doplňky/oddělovač (jsou uvnitř řádku 2) musí dropdown zavřít taky
-    row.querySelectorAll(".anav__link, .hdr__sep").forEach((el) =>
-      el.addEventListener("mouseenter", close),
-    );
+    drop.addEventListener("mouseenter", () => window.clearTimeout(closeTimer));
+    drop.addEventListener("mouseleave", scheduleClose);
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && openKey) close();
     });
