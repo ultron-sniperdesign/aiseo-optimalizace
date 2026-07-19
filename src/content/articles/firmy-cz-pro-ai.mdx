@@ -1,0 +1,144 @@
+---
+title: "Zápis na Firmy.cz: co zkontrolovat a proč na tom záleží"
+description: "Seznam jmenuje Firmy.cz mezi zdroji dat pro svého AI asistenta. Co si v zápisu zkontrolovat, jak poznat duplicitu a kdy má smysl platit za rozšíření."
+answer: "Firmy.cz je katalog Seznamu, který Seznam jmenovitě uvádí mezi zdroji dat svého AI asistenta. Pro lokální firmu to znamená, že na správnosti zápisu záleží víc než dřív: chybné údaje se odtud můžou dostat do odpovědí. Samotný zápis ale zobrazení nezaručí."
+slug: "firmy-cz-pro-ai"
+category: "tutorial"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "firmy.cz pro ai"
+  - "zápis na firmy.cz"
+  - "firmy cz seznam asistent"
+  - "lokální firma ai viditelnost"
+  - "firmy.cz profil"
+variant: "rich"
+stats:
+  - value: "1 z 8"
+    label: "Firmy.cz je jedním z osmi zdrojů, které Seznam u Asistenta jmenuje"
+  - value: "zdarma"
+    label: "registrace zápisu podle Firmy.cz nic nestojí a zabere pár minut"
+  - value: "750 tis."
+    label: "ověřených firem uvádí Firmy.cz na svých stránkách"
+  - value: "≠ záruka"
+    label: "být jmenovaným zdrojem neznamená být v odpovědi zobrazen"
+howto:
+  name: "Jak zkontrolovat a opravit zápis firmy na Firmy.cz"
+  steps:
+    - name: "Najděte, jestli zápis už neexistuje"
+      text: "Hledejte podle názvu firmy, telefonu i adresy zvlášť — každý z nich může vést na jiný starý profil. Když nějaký najdete, řešte jeho převzetí. Nový zakládejte až tehdy, když máte jistotu, že žádný existující není."
+    - name: "Zkontrolujte, jestli nemáte duplicitu"
+      text: "Duplicitu poznáte podle stejné adresy nebo telefonu u dvou různých profilů, po přestěhování, po změně názvu firmy nebo když zápis kdysi zakládal někdo jiný než vy. Duplicitní profily řešte, ne ignorujte."
+    - name: "Opravte údaje, podle kterých vás lidé hledají"
+      text: "Adresa, otevírací doba, telefon a obor. Kontrolní otázka: sedí to na webu a v zápisu úplně stejně, včetně formátu čísla a názvu ulice?"
+    - name: "Napište věcný popis činnosti"
+      text: "Do popisu patří, co konkrétně děláte a pro koho — instalatér zvlášť uvede, jestli dělá havárie, rekonstrukce, nebo obojí. Nepatří tam marketingové fráze o kvalitě a tradici."
+    - name: "Placené rozšíření řešte až nakonec"
+      text: "Rozšířené zobrazení přidává logo, fotky, akční nabídky a události, ale data si bere ze stejného zápisu. Platit za rozšíření nad špatnými údaji jen zvětší chybu."
+faq:
+  - q: "Proč by měl zápis na Firmy.cz zajímat kvůli AI?"
+    a: "Protože Seznam v květnu 2026 uvedl, že jeho Asistent využívá data mimo jiné z Firmy.cz. Znamená to, že chybné údaje v zápisu se odtud můžou dostat dál, ne jen zůstat v katalogu. Neznamená to ale, že zápis vaše zobrazení v odpovědích zaručí."
+  - q: "Stojí zápis něco?"
+    a: "Firmy.cz na svých stránkách uvádí, že registrace je zdarma a zabere jen pár minut. Vedle toho existuje placené rozšíření, které přidává logo, fotky, akční nabídky a události. Data pro rozšířené zobrazení se přitom berou ze stejného zápisu, takže bez správně vyplněného základu nemá smysl."
+  - q: "Jak poznám, že mám duplicitní zápis?"
+    a: "Typicky podle toho, že na stejnou adresu nebo telefon najdete dva různé profily. Nejčastěji vzniknou po stěhování, po změně názvu firmy nebo když zápis kdysi založil někdo jiný než vy — třeba bývalý zaměstnanec nebo agentura. Hledejte proto podle názvu, telefonu i adresy zvlášť."
+  - q: "Mám založit nový zápis, nebo hledat existující?"
+    a: "Nejdřív vždy hledejte. Řada firem je v katalogu už zapsaná, aniž by o tom věděla. Když založíte nový zápis vedle staršího, vzniknou duplicity s rozpornými údaji — a to je přesně stav, kterému se chcete vyhnout."
+  - q: "Zaručí mi zápis, že mě Seznam Asistent zmíní?"
+    a: "Ne. Seznam Firmy.cz jmenuje mezi zdroji dat, ale to je něco jiného než příslib zobrazení. Jak si systém vybírá, co v odpovědi uvede, veřejně popsané není. Zápis proto berte jako smysluplný základ, ne jako záruku."
+  - q: "Nahradí Firmy.cz péči o vlastní web?"
+    a: "Ne. Katalog je jeden ze zdrojů, váš web je jiný. Nejhorší varianta je mít oba, ale s rozdílnými údaji. Nejlepší je mít je konzistentní, aby si systém nemusel vybírat mezi dvěma verzemi pravdy o vaší firmě."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Firmy.cz je katalog Seznamu, který Seznam jmenovitě uvádí mezi zdroji dat svého AI asistenta.** Pro lokální firmu to znamená, že na správnosti zápisu záleží víc než dřív: chybné údaje se odtud můžou dostat do odpovědí. Samotný zápis ale zobrazení nezaručí.
+
+Zápis na Firmy.cz se roky bral jako povinná otravnost — jeden z katalogů, kam se člověk zapíše a zapomene na to. Od letoška už to není jen kolonka navíc.
+
+## Co se změnilo
+
+Seznam v květnu 2026 popsal, odkud jeho Asistent bere data: z **Vyhledávání, zpravodajských webů, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, jízdních řádů a TV programu**.
+
+Osm zdrojů, a Firmy.cz je jedním z nich. Právě to je na tom praktické: Seznam ten zdroj jmenuje napřímo. U většiny ostatních AI nástrojů ani nevíte, z čeho berou.
+
+<Insight tone="warning">
+Aby bylo jasno hned a jen jednou: **samotný zápis vám zmínku v Asistentovi nezaručí.** Seznam uvedl, odkud data bere — ne jak si mezi nimi vybírá. Zbytek článku proto není o tom, jak se dostat do odpovědí, ale o tom, aby o vaší firmě nekolovaly špatné údaje.
+</Insight>
+
+## Tři situace, kdy zápis dělá škodu
+
+Tohle není teorie o datech. Vypadá to takhle:
+
+- **Kavárna** změní otevírací dobu na webu a na zápis zapomene. Někdo dorazí na zavřeno.
+- **Advokát** má v katalogu telefon do kanceláře, ze které se před třemi lety odstěhoval.
+- **Instalatér** má v oboru napsáno jen „instalatérství", takže není poznat, že dělá i havárie o víkendu — a přesně na to se lidé ptají.
+
+Ve všech třech případech není problém v tom, že by údaj chyběl. Problém je, že **existují dvě verze pravdy** a systém i člověk si vybere jednu z nich.
+
+## Postup
+
+<Stepper
+  steps={[
+    { label: "Krok 1", title: "Najděte, jestli zápis už neexistuje", text: "Hledejte podle názvu, telefonu i adresy zvlášť — každý může vést na jiný starý profil. Nový zakládejte až tehdy, když máte jistotu, že žádný není." },
+    { label: "Krok 2", title: "Zkontrolujte duplicity", text: "Dva profily na stejnou adresu nebo telefon. Nejčastěji po stěhování, po změně názvu, nebo když zápis kdysi založil někdo jiný než vy." },
+    { label: "Krok 3", title: "Opravte údaje, podle kterých vás hledají", text: "Kontrolní otázka: sedí adresa, telefon a otevírací doba na webu a v zápisu úplně stejně, včetně formátu?" },
+    { label: "Krok 4", title: "Napište věcný popis činnosti", text: "Co konkrétně děláte a pro koho. Instalatér uvede, jestli jezdí na havárie. Ne fráze o kvalitě a tradici." },
+    { label: "Krok 5", title: "Placené rozšíření až nakonec", text: "Rozšíření si bere data ze stejného zápisu. Platit za ně nad špatnými údaji jen zvětší chybu." },
+  ]}
+/>
+
+Registrace je podle Firmy.cz zdarma a zabere pár minut. Katalog na svých stránkách uvádí přes 750 tisíc ověřených firem — je to jeho vlastní číslo, ale řádově ukazuje, že prázdný rozhodně není. Šance, že tam vaše firma nějak figuruje už teď, je slušná.
+
+## Duplicita je nejčastější a nejhorší problém
+
+Ze všech věcí v tomhle článku je tahle nejdůležitější, protože se řeší nejhůř a nejčastěji vzniká bez vašeho přičinění.
+
+Starý profil vaší firmy může existovat proto, že ho kdysi založil bývalý zaměstnanec, agentura, nebo vznikl automaticky. Vy pak v dobré víře založíte nový — a v katalogu jsou dva. Jeden se správnou adresou, druhý s tou z roku 2019.
+
+**Praktický postup:** hledejte svou firmu podle názvu, pak zvlášť podle telefonu a pak zvlášť podle adresy. Každé z těch hledání může vytáhnout jiný profil. Když nějaký starý najdete, řešte jeho převzetí přes Firmy.cz, ne založení dalšího.
+
+## Recenze: jediný text, který nenapíšete vy
+
+Na profilu je vidět celkové hodnocení, počet recenzí i jejich souhrn. Je to jediný obsah u vaší firmy, který nevytváříte vy — a lidé na něj při rozhodování slyší víc než na váš popis.
+
+Jedna konkrétní rada, která funguje líp než cokoli jiného: **řekněte si o recenzi ve chvíli, kdy je spokojenost čerstvá** — po dokončení zakázky, ne za měsíc mailem. A profil bez jediné reakce majitele působí hůř než profil s pár negativními recenzemi, na které někdo věcně odpověděl. Víc v článku o [recenzích a hodnocení pro AI](/blog/recenze-a-hodnoceni-pro-ai/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Založit nový zápis místo převzetí">
+    Vzniknou dva profily s rozpornými údaji. Nejdřív hledat, teprve pak zakládat.
+  </Mistake>
+  <Mistake number="02" title="Cpát klíčová slova do názvu">
+    Název firmy má být název firmy. V katalogu ověřených firem to působí nedůvěryhodně.
+  </Mistake>
+  <Mistake number="03" title="Vyplnit a deset let nesáhnout">
+    Otevírací doba a kontakt jsou přesně ty údaje, kvůli kterým tam lidé chodí.
+  </Mistake>
+  <Mistake number="04" title="Platit za rozšíření nad špatnými daty">
+    Rozšíření bere data ze stejného zápisu. Nejdřív opravit, pak zvažovat placení.
+  </Mistake>
+</MistakeGrid>
+
+## Co si odnést
+
+Seznam jmenuje Firmy.cz mezi zdroji dat svého Asistenta. Z toho neplyne, že vás někam dostane zápis sám o sobě — plyne z toho, že **špatné údaje v katalogu už nezůstanou jen v katalogu.**
+
+Prakticky to znamená jednu nudnou věc: mít jeden správný zápis, který říká totéž co váš web. Ne dva zápisy, ne poloprázdný profil, ne staré kontaktní údaje.
+
+A pokud vás láká rovnou platit za rozšířené zobrazení — počkejte, dokud nemáte v pořádku základ. Rozšíření si bere data ze stejného zápisu.
+
+Související témata: [Local SEO v Česku](/blog/local-seo-cesko-2026/) pro celkový obrázek, [Seznam a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/) pro roli Seznamu jako kanálu a [Seznam-Extended](/blog/seznam-asistent-sellma/) pro to, jak Seznam čte weby.
+
+---
+
+Máte jednu provozovnu a jde vám hlavně o správný zápis? Zvládnete to sami podle postupu výš. Pokud máte víc poboček, staré duplicity nebo netušíte, odkud si o vás systémy berou údaje, dává smysl nechat to projít v **[AI SEO auditu](/audit/)** za 9 990 Kč.
+
+*Zdroje: blog Seznam.cz (květen 2026), stránky Firmy.cz a nápověda Seznamu. Stav k 19. 7. 2026 — služby se vyvíjejí, článek budeme aktualizovat.*
