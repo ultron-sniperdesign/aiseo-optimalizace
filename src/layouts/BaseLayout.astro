@@ -191,7 +191,10 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     {ga4Id && (
       <>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
-        <script is:inline define:vars={{ ga4Id }}>{`
+        {/* POZOR: obsah skriptu psát PŘÍMO, ne jako {`template literal`} —
+            expression child se vyrenderuje jako řetězec, který se nikdy
+            nespustí (GA4 kvůli tomu od 2026-04-29 do 2026-07-19 neměřilo). */}
+        <script is:inline define:vars={{ ga4Id }}>
           // Honor Sec-GPC (Global Privacy Control) a Do-Not-Track — neload analytics
           if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") {
             console.info("[ga4] respektuji Sec-GPC / DNT — analytics není aktivní");
@@ -202,7 +205,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
             gtag("js", new Date());
             gtag("config", ga4Id, { anonymize_ip: true });
           }
-        `}</script>
+        </script>
       </>
     )}
 
