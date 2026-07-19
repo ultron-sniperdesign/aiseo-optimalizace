@@ -752,6 +752,10 @@ const DISC = {
       link.addEventListener("focus", () => open(key));
     });
     row.addEventListener("mouseleave", close);
+    // Přejezd na doplňky/oddělovač (jsou uvnitř řádku 2) musí dropdown zavřít taky
+    row.querySelectorAll(".anav__link, .hdr__sep").forEach((el) =>
+      el.addEventListener("mouseenter", close),
+    );
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && openKey) close();
     });
