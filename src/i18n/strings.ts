@@ -39,6 +39,90 @@ export const nav = {
   navAria: "Hlavní navigace",
   mobileAria: "Mobilní navigace",
 
+  /**
+   * HEADER v4a (redesign 2026-07-19, design handoff „Claude design"):
+   * dvouřádkový header — řádek 1: logo + vyhledávání + akviziční blok;
+   * řádek 2: disciplíny (s dropdown náhledy) + doplňky. Fork přeloží
+   * labely/texty; `d` klíče a href nechává dle vlastních slugů.
+   */
+  header: {
+    /** Vyhledávání (Pagefind → /hledat/). */
+    search: {
+      placeholder: "Hledat disciplíny, návody, pojmy…",
+      placeholderMobile: "Hledat…",
+      button: "Hledat",
+      aria: "Hledat na webu",
+      action: "/hledat/",
+    },
+    /** Disciplíny (řádek 2) + obsah dropdown karet. */
+    disciplines: [
+      {
+        d: "seo",
+        label: "SEO",
+        href: "/seo/",
+        badge: "SEO",
+        fullName: "Search Engine Optimization",
+        lead: "Pozice v Googlu a Seznamu.",
+        desc: "Klasická optimalizace pro pozice ve vyhledávačích. Zůstává základem všeho ostatního — bez indexace nezafunguje GEO ani AEO.",
+      },
+      {
+        d: "geo",
+        label: "GEO",
+        href: "/geo/",
+        badge: "GEO",
+        fullName: "Generative Engine Optimization",
+        lead: "Citace v ChatGPT, Perplexity, Claude a Gemini.",
+        desc: "Místo modrého odkazu cílíte na to být zdrojem, ze kterého AI čerpá fakta při generování odpovědi.",
+      },
+      {
+        d: "aeo",
+        label: "AEO",
+        href: "/aeo/",
+        badge: "AEO",
+        fullName: "Answer Engine Optimization",
+        lead: "Google AI Overviews a Bing Chat.",
+        desc: "Užší disciplína — FAQ sekce, návody a krátké odpovědi hned po nadpisu. To je její řemeslo.",
+      },
+      {
+        d: "aio",
+        label: "AIO",
+        href: "/aio/",
+        badge: "AIO",
+        fullName: "AI Optimization (zastřešující)",
+        lead: "Strategický deštník nad SEO, GEO a AEO.",
+        desc: "Také konkrétní funkce Google AI Overviews. Dvojí význam, který se v praxi často plete.",
+      },
+      {
+        d: "aimode",
+        label: "AI Mode",
+        href: "/ai-mode/",
+        badge: "AI MODE",
+        fullName: "Google AI Mode",
+        lead: "Konverzační vyhledávání přímo v Googlu.",
+        desc: "Nastupující rozhraní s query fan-out — odpovědi bez klikání. Rozhoduje, jestli vás Google vůbec ukáže.",
+      },
+    ],
+    /** CTA v dropdown kartě. */
+    dropdownCta: "Otevřít detail disciplíny →",
+    /** Doplňky (utlumená část řádku 2). */
+    addons: [
+      { href: "/blog/", label: "Blog" },
+      { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce" },
+      { href: "/slovnik/", label: "Slovník" },
+    ],
+    /** Akviziční blok (řádek 1 vpravo). Variant řídí barvu tlačítka. */
+    acquisitions: [
+      { href: "/sluzby/", label: "Služby", variant: "outline" },
+      { href: "/audit/", label: "Audit", variant: "audit" },
+      { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
+    ],
+    /** Mobilní drawer. */
+    mobile: {
+      disciplinesTitle: "DISCIPLÍNY",
+      searchAria: "Otevřít vyhledávání",
+    },
+  },
+
   /** DESKTOP lišta — edukativní část (obsahové disciplíny + průvodce). */
   desktopEdu: [
     { href: "/zacnete-tady/", label: "Start" },
@@ -173,6 +257,16 @@ export const ui = {
   /** Promo banner série na tag stránce. */
   seriesPromoLead: "K tomuto tématu máme ucelenou sérii:",
   seriesPromoCta: "Projít sérii",
+
+  // Stránka /hledat/ (Pagefind)
+  searchPage: {
+    title: "Hledání",
+    metaTitle: "Hledání na webu",
+    metaDescription:
+      "Fulltextové hledání napříč celým webem — články, disciplíny, slovník pojmů i praktické návody k AI éře vyhledávání.",
+    lead: "Prohledává všechny články, sekce disciplín i slovník pojmů.",
+    devNote: "Vyhledávací index vzniká při buildu — na dev serveru není k dispozici.",
+  },
 
   // Tagy / tematické clustery (registr témat v i18n/tags.ts)
   tagsRowLabel: "Témata",
