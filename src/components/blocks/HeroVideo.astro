@@ -43,14 +43,15 @@ const {
       data-yt={youtubeId}
       aria-label={playLabel}
     >
+      {/* Lokální WebP poster (bez třetí domény) — fallback ytimg pro videa bez posteru. */}
       <img
         class="video-facade__thumb"
-        src={`https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`}
+        src={`/video/poster-${youtubeId}.webp`}
         alt=""
         width="1280"
         height="720"
         loading="lazy"
-        onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg'`}
+        onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg'`}
       />
       <span class="video-facade__play" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"

@@ -81,14 +81,17 @@ import { site } from "~/i18n/site";
       <div class="hero__media">
         <div class="hero-video" data-yt-wrap>
           <button type="button" class="hero-video__btn" data-yt={p.video.youtubeId} aria-label={p.video.playLabel}>
+            {/* Lokální WebP poster (LCP bez třetí domény) — fallback ytimg, když
+                pro dané video poster chybí (fork: vygenerovat /video/poster-<id>.webp). */}
             <img
               class="hero-video__thumb"
-              src={`https://i.ytimg.com/vi/${p.video.youtubeId}/maxresdefault.jpg`}
+              src={`/video/poster-${p.video.youtubeId}.webp`}
               alt=""
               width="1280"
               height="720"
               loading="eager"
-              onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${p.video.youtubeId}/hqdefault.jpg'`}
+              fetchpriority="high"
+              onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${p.video.youtubeId}/maxresdefault.jpg'`}
             />
             <span class="hero-video__play" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>

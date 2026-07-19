@@ -206,6 +206,33 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
             gtag("config", ga4Id, { anonymize_ip: true });
           }
         </script>
+        <script is:inline>
+          // GA4 konverzní eventy — delegovaně, guard na gtag (u GPC/DNT neexistuje).
+          // begin_checkout: klik na Stripe Payment Link (Pack CTA kdekoli na webu)
+          // generate_lead:  submit EmailCapture (free PDF) / poptávkový formulář na /audit/
+          document.addEventListener("click", function (e) {
+            if (typeof window.gtag !== "function" || !e.target.closest) return;
+            if (e.target.closest('a[href*="buy.stripe.com"]')) {
+              gtag("event", "begin_checkout", {
+                currency: "CZK", value: 1490, item_name: "AI SEO Wireframe Pack",
+                transport_type: "beacon",
+              });
+            }
+          });
+          document.addEventListener("submit", function (e) {
+            if (typeof window.gtag !== "function") return;
+            var f = e.target;
+            if (f.classList && f.classList.contains("ec-form")) {
+              gtag("event", "generate_lead", {
+                lead_type: "free_pdf", page_path: location.pathname, transport_type: "beacon",
+              });
+            } else if (location.pathname.indexOf("/audit") === 0) {
+              gtag("event", "generate_lead", {
+                lead_type: "audit", page_path: location.pathname, transport_type: "beacon",
+              });
+            }
+          }, true);
+        </script>
       </>
     )}
 
