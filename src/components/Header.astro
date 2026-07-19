@@ -295,14 +295,18 @@ const DISC = {
   }
 
   /* ===== Vyhledávání (desktop) ===== */
+  /* Výška sladěná s CTA tlačítky vpravo (44px) — viz --h-control. */
+  .hdr { --h-control: 44px; }
   .hsearch {
     flex: 1;
     display: flex;
     align-items: center;
     gap: 11px;
     max-width: 460px;
+    height: var(--h-control);
+    box-sizing: border-box;
     margin: 0 auto;
-    padding: 6px 6px 6px 18px;
+    padding: 4px 4px 4px 18px;
     border-radius: 999px;
     background: var(--h-field);
     border: 1.5px solid var(--h-line);
@@ -329,6 +333,9 @@ const DISC = {
   .hsearch__input::-webkit-search-cancel-button { display: none; }
   .hsearch__btn {
     flex: none;
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center;
     font-family: var(--font-sans);
     font-size: 14.5px;
     font-weight: 700;
@@ -336,7 +343,7 @@ const DISC = {
     background: var(--h-blue);
     border: none;
     border-radius: 999px;
-    padding: 9px 20px;
+    padding: 0 20px;
     cursor: pointer;
     transition: background 0.15s ease;
   }
@@ -350,9 +357,13 @@ const DISC = {
     flex-shrink: 0;
   }
   .hcta__btn {
+    display: inline-flex;
+    align-items: center;
+    height: var(--h-control);
+    box-sizing: border-box;
     font-size: 15px;
     font-weight: 700;
-    padding: 10px 17px;
+    padding: 0 17px;
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
@@ -372,7 +383,7 @@ const DISC = {
   .hcta__btn--free {
     background: var(--h-free-bg);
     color: var(--h-free-text);
-    padding: 10px 19px;
+    padding: 0 19px;
     box-shadow: 0 6px 16px var(--h-free-shadow);
   }
   .hcta__btn--free:hover {
