@@ -1,0 +1,153 @@
+---
+title: "Recenzní platformy: lidé odcházejí, AI je cituje dál"
+description: "Recenzní weby ztratily většinu návštěvnosti, ale drží 3 z 5 nejcitovanějších domén v AI Overviews. Co z toho plyne pro značku a kde má smysl být."
+answer: "Recenzní platformy jsou weby třetí strany, kde zákazníci hodnotí produkty a firmy — G2, Capterra, Trustpilot nebo česká Firmy.cz. Podle studie SE Ranking tvořily 3 z 5 nejcitovanějších domén v AI Overviews, přestože jim organická návštěvnost od roku 2024 spadla o 76,5 až 92,2 procenta."
+slug: "recenze-srovnavace-pro-ai"
+category: "analysis"
+tags:
+  - "duveryhodnost"
+  - "strategie"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "recenzní platformy ai citace"
+  - "g2 capterra ai"
+  - "srovnávače ai odpovědi"
+  - "recenze třetí strany ai"
+  - "kde ai bere doporučení"
+variant: "rich"
+stats:
+  - value: "3 z 5"
+    label: "nejcitovanějších domén v AI Overviews byly recenzní weby (SE Ranking, 12/2025)"
+  - value: "−84,5 %"
+    label: "organické návštěvnosti ztratil G2 mezi začátkem 2024 a koncem 2025"
+  - value: "88 %"
+    label: "citací recenzních platforem si rozdělilo top 5 webů; menší v datasetu skoro nic"
+  - value: "4,6–6,3 vs 1,8"
+    label: "průměr citací ChatGPT u domén s profily na více platformách vs bez nich"
+faq:
+  - q: "Co jsou recenzní platformy v kontextu AI?"
+    a: "Weby třetí strany, kde produkty a firmy hodnotí zákazníci: globálně G2, Capterra nebo Trustpilot, v Česku třeba Firmy.cz. Pro AI odpovědi fungují jako hotový agregát nezávislých hodnocení — model nemusí skládat obrázek z jednotlivých webů, vezme si ho odtud."
+  - q: "Proč AI cituje recenzní platformy tak často?"
+    a: "Studie SE Ranking nad AI Overviews ukázala, že recenzní platformy tvoří 8,5 procenta všech odkazů, ale tři z pěti nejcitovanějších domén. Nabízejí přesně to, co odpovědní systém potřebuje u hodnotících dotazů: srovnání více možností na jednom místě a text, který nepsal prodejce."
+  - q: "Znamená pokles jejich návštěvnosti, že přestávají být důležité?"
+    a: "Ne — spíš naopak. G2 ztratil 84,5 procenta organické návštěvnosti, Capterra 89 procent, TrustRadius 92,2 procenta, a přesto zůstávají mezi nejcitovanějšími doménami. Lidé na ně chodí méně, protože jejich obsah čtou modely a závěr předávají v odpovědi."
+  - q: "Stačí být na jedné platformě?"
+    a: "Podle dat spíš ne. V AI Overviews si top 5 recenzních webů rozdělilo 88 procent citací této kategorie a menší platformy nedostaly skoro nic. Druhá studie zároveň našla korelaci: domény s profily na více platformách měly v průměru 4,6 až 6,3 citací ChatGPT, domény bez nich 1,8."
+  - q: "Platí to i pro český trh?"
+    a: "Přímá data chybí — obě studie měří americké a globální prostředí, silně vychýlené k B2B softwaru. Doloženě víme jen to, že Seznam Asistent jmenuje mezi zdroji Zboží.cz a Firmy.cz; Heureka v tom výčtu není. U českých srovnávačů a katalogů proto nezbývá než viditelnost otestovat na vlastních dotazech."
+  - q: "Jak se na platformy dostat férově?"
+    a: "Kompletní profil, průběžně sbírané skutečné recenze a věcné odpovědi na ty negativní. Kupované nebo fingované recenze porušují pravidla platforem — a hlavně jdou přímo proti důvodu, proč modely tyhle weby čtou: hledají text, který nepsal prodejce."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Recenzní platformy jsou weby třetí strany, kde zákazníci hodnotí produkty a firmy — G2, Capterra, Trustpilot nebo česká Firmy.cz.** Podle studie SE Ranking tvořily 3 z 5 nejcitovanějších domén v AI Overviews, přestože jim organická návštěvnost od roku 2024 spadla o 76,5 až 92,2 procenta.
+
+Ta dvě čísla vedle sebe jsou celý příběh tohohle článku. Weby, na které chodí čím dál méně lidí, váží v AI odpovědích čím dál víc. Nejdřív proč, pak — a hlavně — co s tím.
+
+## Co přesně studie změřila
+
+SE Ranking analyzoval 22 729 AI Overviews nad 30 000 komerčními klíčovými slovy v USA (snímek z prosince 2025, 23 recenzních platforem). Dvě hlavní zjištění:
+
+- Recenzní platformy tvořily jen **8,5 procenta všech odkazů** v AI Overviews — ale **3 z 5 nejcitovanějších domén** byly právě recenzní weby.
+- Stejné platformy přitom mezi začátkem 2024 a koncem 2025 ztratily většinu organické návštěvnosti.
+
+<CompareTable
+  caption="Paradox recenzních platforem: citace vs. návštěvnost (SE Ranking)"
+  columns={["Podíl na citacích recenzních webů", "Změna organické návštěvnosti 2024–2025"]}
+  rows={[
+    { icon: "—", label: "Gartner Peer Insights", left: "26,0 %", right: "−76,5 %" },
+    { icon: "—", label: "G2", left: "23,1 %", right: "−84,5 %" },
+    { icon: "—", label: "Capterra", left: "17,8 %", right: "−89 %" },
+    { icon: "—", label: "TrustRadius", left: "8,3 %", right: "−92,2 %" },
+  ]}
+/>
+
+Pátý v pořadí, Software Advice (12,8 % citací), v tabulce chybí — u něj studie změnu návštěvnosti neuvádí. A jedno upozornění hned: dataset je silně vychýlený k **B2B softwaru**, proto vévodí Gartner, G2 a Capterra. Pro jiné segmenty budou platformy jiné a síla efektu se může lišit; podobný vzorec ale není důvod čekat jen u softwaru.
+
+## AI nečte vaši značku přímo, ale přes prostředníky
+
+Naše čtení těch čísel: recenzní platforma bývala místo, kam člověk zašel před nákupem. Teď na ni čím dál častěji nechodí člověk, ale **model — a závěr předá v odpovědi.** Prostředník mezi zákazníkem a vámi nezmizel, jen se přestěhoval z prohlížeče do odpovědi.
+
+V článku o [zmínkách o značce](/blog/ai-brand-mentions/) jsme psali, že AI skládá obrázek o firmě z cizích webů. Tady je to vidět v číslech: u hodnotících dotazů často nesoutěžíte primárně o to, aby AI citovala váš web — **soutěžíte o to, co o vás stojí na doméně, kterou AI považuje za důvěryhodnější zdroj hodnocení.**
+
+## Co se tím mění v praxi
+
+Tohle je důsledek, který z čísel plyne a který většina firem zatím nepromítla do práce:
+
+- **Návštěvnost z platformy přestává být hlavní metrika.** Profil na G2 nebo Firmy.cz, ze kterého nikdo neproklikne, může přesto formovat, co o vás AI říká. Hodnotit ho podle referral návštěv znamená měřit včerejší roli.
+- **Důležitější než přítomnost je stav profilu.** Model čte to, co tam visí: poloprázdný profil se třemi recenzemi z roku 2023 předává přesně takový obrázek. Čerstvost a úplnost nejsou kosmetika, jsou to data.
+- **Vlastní web a cizí platformy hrají různé role.** Web je to, co o sobě říkáte vy — a jak ho pro recenze připravit, řeší [díl série o recenzích](/blog/recenze-a-hodnoceni-pro-ai/). Platformy jsou korektiv, který nepíšete. Dobrá pozice potřebuje obojí, protože modely obojí porovnávají.
+
+## Většinu citací bere pár nejsilnějších platforem
+
+Citace recenzních webů si nerozdělují rovnoměrně. **Top 5 platforem posbíralo 88 procent** všech citací této kategorie; menší weby jako AlternativeTo nebo SaaSHub nedostaly v datasetu skoro nic.
+
+K tomu sedí i druhá studie SE Ranking — tentokrát nad 129 000 doménami a citacemi ChatGPT. Domény s profily na **více** recenzních platformách (Trustpilot, G2, Capterra, Sitejabber, Yelp) měly v průměru **4,6 až 6,3 citací**; domény bez takové přítomnosti **1,8**.
+
+<Insight tone="warning">
+Dvě upřesnění, ať čísla neslibují víc, než umí. Zaprvé jde o **korelaci, ne doloženou příčinnost** — domény na platformách bývají zavedenější i jinak. Zadruhé jsou to dvě různé studie s různými datasety: jedna měří AI Overviews, druhá ChatGPT. Směr ale ukazují stejný.
+</Insight>
+
+Prakticky: nemá smysl rozprostřít se na deset katalogů. Má smysl být **pořádně na těch dvou třech, které v segmentu berou citace** — a to se pozná podle toho, koho AI u vašich dotazů skutečně uvádí.
+
+## Nejsilnější jsou u dotazů na recenze a zkušenosti
+
+Záleží na typu dotazu. Recenzní platformy se objevily ve
+
+- **49 %** AI Overviews u dotazů výslovně na recenze („recenze X"),
+- **39,4 %** u obecných dotazů na software a nástroje,
+- jen **17,1 %** u dotazů typu „nejlepší X".
+
+Co z toho plyne: pokud k vám zákazníci chodí přes dotazy na recenze a zkušenosti, platformy jsou priorita. Pokud bojujete hlavně o „nejlepší X", větší roli hrají žebříčky a [srovnávací články](/blog/srovnavaci-clanky-pro-ai/). Platformy proto neřešte izolovaně, ale podle toho, jak se na vás zákazníci reálně ptají.
+
+## Co z toho plyne pro českou firmu
+
+Poctivě: **obě studie měří americké a globální prostředí.** Českou Heureku ani oborové katalogy nikdo takhle nezměřil. Tři situace, tři různé závěry:
+
+- **B2B nebo software s prodejem do zahraničí:** G2 a Capterra jsou měřený a doložený kanál. Vzhledem ke koncentraci citací řešte primárně je, ne dlouhý ocas katalogů. Souvislosti v [AI SEO pro B2B](/blog/ai-seo-b2b/).
+- **E-shop prodávající v Česku:** doložený bod je výčet zdrojů Seznam Asistenta — **Zboží.cz a Firmy.cz** (Heureka v něm není, což neznamená, že nehraje roli; znamená to, že to nikdo nedoložil). Co s Firmy.cz, jsme rozebrali [dnes ráno](/blog/firmy-cz-pro-ai/).
+- **Lokální služby:** pro vás je hlavní hřiště Firmy.cz a recenze na něm; globální platformy vás míjejí.
+
+Ve všech třech případech začněte stejně: **vypište si dotazy, kterými by vás zákazník hledal** — „[značka] recenze", „[produkt] zkušenosti", „nejlepší [kategorie]", „[vy] vs [konkurent]" — a projeďte je AI nástroji. Koho odpovědi uvádějí jako zdroj, ten je váš seznam platforem. Postup je v [testu viditelnosti](/blog/test-viditelnosti-v-ai/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Hodnotit platformy podle návštěv, které pošlou">
+    Referral návštěvnost klesá všem. Role platformy se přesunula do toho, co o vás předává modelům.
+  </Mistake>
+  <Mistake number="02" title="Být na deseti platformách místo dvou správných">
+    Top 5 webů vzalo 88 % citací kategorie. Vyberte podle toho, koho AI u vašich dotazů cituje.
+  </Mistake>
+  <Mistake number="03" title="Nechat profil poloprázdný a bez reakcí">
+    Model čte, co tam visí. Tři recenze z roku 2023 bez odpovědi firmy jsou taky sdělení.
+  </Mistake>
+  <Mistake number="04" title="Kupovat nebo fingovat recenze">
+    Porušuje to pravidla platforem — a text psaný prodejcem je přesně to, co tenhle mechanismus obchází.
+  </Mistake>
+</MistakeGrid>
+
+## Co z těch dat neplyne
+
+**Neplyne z nich doporučení konkrétní platformy** — to závisí na segmentu a na tom, koho AI u vašich dotazů reálně uvádí.
+
+**Neplyne z nich nic změřeného o českém trhu.** Nejblíž doloženému stavu je výčet zdrojů Seznam Asistenta.
+
+**Neplyne z nich, že profil zajistí citaci.** Korelace není záruka; profil je předpoklad, se kterým se dá pracovat.
+
+## Co si odnést
+
+Recenzní platformy prošly zvláštní proměnou: **ztratily většinu lidí, ale udržely si místo u stolu, kde se skládají odpovědi.** Kdo je odepsal podle křivky návštěvnosti, dívá se na špatný graf.
+
+Rozhodovací rámec na závěr: **přestaňte** platformy hodnotit podle návštěv, které vám pošlou. **Zjistěte**, koho AI cituje u dotazů na recenze a zkušenosti ve vašem oboru. A **vyberte si jednu dvě platformy**, které tam figurují, a ty udržujte živé — skutečné recenze, kompletní profil, věcné reakce. Je to prostá taktika, ale je jediná, která míří na to, co modely na těch webech hledají: text, který nepsal prodejce.
+
+---
+
+Chcete vědět, koho AI cituje u dotazů ve vašem oboru a jestli jste mezi zdroji? **[AI SEO audit](/audit/)** za 9 990 Kč projde viditelnost značky napříč AI nástroji i zdroji, ze kterých čerpají. A pokud vedle cizích platforem potřebujete posílit i vlastní důkazní obsah na webu, vzory stránek najdete v [AI SEO Wireframe Packu](/pack/).
+
+*Zdroje: dvě studie SE Ranking — analýza recenzních platforem v AI Overviews (30 000 klíčových slov, 22 729 AI Overviews, snímek 12/2025) a analýza faktorů citací ChatGPT (129 000 domén, 216 524 stránek); blog Seznam.cz (5/2026). Stav k 19. 7. 2026 — čísla se rychle mění, článek budeme aktualizovat.*
