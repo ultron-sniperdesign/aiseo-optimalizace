@@ -1,0 +1,154 @@
+---
+title: "Blokovat AI odpovědi v Google? Rozhodovací rámec"
+description: "Google chystá v Search Console přepínač, kterým web odhlásíte z AI odpovědí. Co přesně dělá, komu to může dávat smysl a proč většina webů blokovat nechce."
+answer: "Odhlašovací přepínač v Search Console je celowebové nastavení, kterým majitel rozhodne, jestli se jeho obsah smí objevovat v generativních funkcích Googlu. Odhlášený web z nich podle Googlu nedostane návštěvy ani zobrazení; na výsledky mimo tyto generativní funkce se to podle něj jako signál hodnocení nepoužije. Zatím se testuje jen na části webů."
+slug: "blokovat-ai-odpovedi-gsc"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "blokovat ai odpovědi"
+  - "odhlásit web z ai overviews"
+  - "search console přepínač ai"
+  - "opt out ai google"
+  - "vypnout ai overviews web"
+variant: "rich"
+stats:
+  - value: "celoweb"
+    label: "přepínač je na úrovni celého webu — všechno nebo nic; ovládání po stránkách oznámení neuvádí"
+  - value: "0 z AI"
+    label: "odhlášený web podle Googlu nedostane návštěvy ani zobrazení z generativních funkcí"
+  - value: "hodnocení ne"
+    label: "Google uvádí, že se to jako signál hodnocení mimo generativní funkce nepoužije"
+  - value: "zatím UK"
+    label: "testuje se na části majitelů webů ve Velké Británii, teprve pak globálně"
+faq:
+  - q: "Co ten přepínač v Search Console dělá?"
+    a: "Je to celowebové nastavení, kterým majitel rozhodne, jestli se jeho web smí objevovat v generativních funkcích Googlu a sloužit jako podklad pro jejich odpovědi — tedy v AI Overviews, AI Mode i v AI Overviews v Discoveru. Google uvádí, že odhlášený web z těchto funkcí nedostane návštěvy ani zobrazení."
+  - q: "Mám ho už ve svém účtu?"
+    a: "Pravděpodobně ne. Google uvedl, že přepínač začíná testovat s částí majitelů webů ve Velké Británii a teprve potom ho chce zpřístupnit globálně. Dostupnost mimo tento test ani termín pro další země neupřesnil, takže se vyplatí ověřit si přímo ve svém účtu, jestli ho tam vidíte."
+  - q: "Uškodí odhlášení mému běžnému hodnocení ve vyhledávání?"
+    a: "Podle Googlu ne. V oznámení výslovně uvádí, že se toto nastavení nepoužije jako signál hodnocení pro výsledky mimo generativní funkce. Odhlášený web má tedy zůstat normálně indexovaný a hodnocený ve výsledcích mimo tyto generativní funkce. Pozor ale na to, že mezi dotčené funkce Google řadí i AI Overviews v Discoveru. Je to navíc vyjádření dodavatele o vlastním produktu, ne nezávislé ověření."
+  - q: "Můžu odhlásit jen část webu?"
+    a: "Podle oznámení ne. Popsané ovládání je na úrovni celého webu, možnost odhlásit jednotlivé stránky v něm zmíněná není. Prakticky to znamená všechno nebo nic: nejde si nechat sekce, které z AI odpovědí těží, a odhlásit jen ty ostatní."
+  - q: "Je to totéž jako nosnippet nebo robots.txt?"
+    a: "Není. Direktivy jako nosnippet a data-nosnippet omezují, co se smí použít jako text úryvku, a pracují na úrovni stránky nebo bloku. Blokace v robots.txt řeší procházení. Přepínač v Search Console je samostatná úroveň: rozhoduje o zapojení celého webu do generativních funkcí."
+  - q: "Komu může odhlášení dávat smysl?"
+    a: "Nejspíš webům, jejichž produktem je samotná informace — placený obsah, předplatné nebo obsah, který se licencuje. I tam jde ale o obchodní rozhodnutí, ne technické. Pro weby, které něco prodávají a mají z AI kanálu konvertující návštěvy, znamená vypnutí ztrátu tohoto kanálu, kterou je potřeba poměřit s tím, co si od odhlášení slibujete."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Odhlašovací přepínač v Search Console je celowebové nastavení, kterým majitel rozhodne, jestli se jeho obsah smí objevovat v generativních funkcích Googlu.** Odhlášený web z nich podle Googlu nedostane návštěvy ani zobrazení; na výsledky mimo tyto generativní funkce se to podle něj jako signál hodnocení nepoužije. Zatím se testuje jen na části webů.
+
+Nejpraktičtější informace hned na začátek: **Google uvedl, že přepínač začíná testovat s částí majitelů webů ve Velké Británii**, teprve potom ho chce zpřístupnit globálně. Dostupnost mimo tento test neupřesnil — ve svém účtu ho tedy zatím nemusíte najít. Zbytek článku je o tom, co s ním dělat, až se objeví.
+
+## Co přepínač podle Googlu dělá
+
+V oznámení z června 2026 Google popisuje nové nastavení v Search Console, kterým majitel webu rozhodne, jestli se jeho stránky smí objevovat v generativních funkcích vyhledávání a sloužit jako podklad pro jejich odpovědi — jmenovitě v AI Overviews, v AI Mode a v AI Overviews v Discoveru.
+
+Tři věci z toho oznámení stojí za zapamatování:
+
+- **Odhlášený web nedostane z generativních funkcí návštěvy ani zobrazení.**
+- **Nastavení se nemá použít jako signál hodnocení** pro výsledky mimo tyto generativní funkce; web má zůstat normálně indexovaný a hodnocený. Mezi dotčené funkce ale Google řadí i AI Overviews v Discoveru.
+- Popsané ovládání je **na úrovni celého webu** — možnost odhlásit jen některé stránky v oznámení není.
+
+Vedle přepínače Google zmiňuje i nové přehledy: zobrazení v generativních funkcích, které stránky se v AI odpovědích objevují a v jakých zemích, s tím, že další metriky mají přibývat.
+
+<Insight tone="key">
+Není to jemný nástroj, kterým si necháte sekce, co fungují, a odhlásíte zbytek. Je to jeden vypínač pro celý web — a proto se nedá použít jako experiment.
+</Insight>
+
+## Jak se to liší od direktiv a robots.txt
+
+Tohle se plete nejčastěji, protože se všechno tváří jako „blokování AI".
+
+<CompareTable
+  caption="Tři různé úrovně, tři různé účinky"
+  columns={["Nástroj", "Co řeší"]}
+  rows={[
+    { icon: "🚧", label: "robots.txt", left: "Procházení robotem", right: "Jestli se robot k obsahu vůbec dostane" },
+    { icon: "✂️", label: "nosnippet a spol.", left: "Použití textu v úryvku", right: "Co se smí použít jako text; po stránce nebo bloku" },
+    { icon: "🔌", label: "Přepínač v Search Console", left: "Zapojení webu do generativních funkcí", right: "Jestli se web vůbec účastní; celoweb" },
+  ]}
+/>
+
+Uživatelskou stranu — tedy jak si AI Overviews vypnout sám pro sebe — a práci s direktivami rozebírá [jak omezit AI Overviews](/blog/jak-vypnout-ai-overview/); blokaci na úrovni procházení [robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+
+## Kde se to láme: přínos toho kanálu neumíte čistě změřit
+
+Dostupnost není ten hlavní problém. Hlavní problém je samotné rozhodnutí.
+
+Abyste odhlášení vyhodnotili, potřebovali byste vědět, kolik vám generativní funkce reálně přinášejí a co by odchod stál. Jenže jednotlivé AI povrchy se z běžně dostupných dat oddělit nedají — Search Console je vykazuje souhrnně, jak rozebírá [měření AI Mode](/blog/mereni-ai-mode-limity/).
+
+<Insight tone="warning">
+Prakticky to znamená, že byste **vypínali kanál, jehož přínos zatím neumíte spolehlivě změřit** — a po vypnutí byste neměli s čím srovnávat, protože zobrazení z těch funkcí prostě zmizí. Je to rozhodnutí, které se špatně dělá dopředu a ještě hůř vyhodnocuje zpětně.
+</Insight>
+
+## Co ukazuje jeden e-shopový příklad
+
+Naše vlastní čísla nejsou reprezentativní, ale ukazují směr. Na e-shopu MEGA DETAIL přišlo z AI nástrojů **1 867 návštěv za dvanáct měsíců** — objemově málo. Konverzní míra u nich byla **3,5 procenta oproti 0,88 procenta** z organického vyhledávání.
+
+Jde o jeden e-shop, výchozí stav před optimalizací a o návštěvy z asistentů obecně, ne konkrétně z Googlu; celá data jsou v [case study](/blog/case-study-megadetail-ai-navstevnost/). I tak z toho plyne otázka, kterou má smysl si položit: jakou hodnotu má pro vás kanál, který nosí málo lidí, ale s nadprůměrnou konverzí?
+
+## Rozhodovací filtr: pro koho to dává smysl
+
+Důvod k odhlášení existuje. Bez vašich čísel za vás nikdo nerozhodne, ale filtr se postavit dá — a je poměrně ostrý.
+
+<CompareTable
+  caption="Tři situace a co z nich pro rozhodnutí plyne"
+  columns={["Co to znamená pro rozhodnutí", "Co si ověřit"]}
+  rows={[
+    { icon: "📚", label: "Produktem je samotná informace", left: "Odhlášení má srozumitelnou logiku — dát shrnutí zdarma je jiná kalkulace než u e-shopu", right: "Kolik obsahu je opravdu vaše zboží, a ne jen marketing" },
+    { icon: "🛒", label: "Prodáváte zboží nebo služby", left: "Vypínáte celý kanál, ne jeho problematickou část", right: "Jestli z asistentů chodí konverze, ne jen návštěvy" },
+    { icon: "🤷", label: "Přínos neumíte ani rámcově odhadnout", left: "Nemáte z čeho dopad vyhodnotit — ani předem, ani zpětně", right: "Co ve svých datech o AI kanálu vůbec vidíte" },
+  ]}
+/>
+
+I u prvního řádku jde o obchodní rozhodnutí, ne o technické nastavení.
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Rozhodnout dřív, než máte přepínač i data">
+    Teoretické rozhodnutí bez vlastních čísel se stejně bude předělávat, až přijde na řadu.
+  </Mistake>
+  <Mistake number="02" title="Zaměňovat ho s direktivami">
+    nosnippet řeší použití textu v úryvku, robots.txt procházení. Přepínač je samostatná úroveň.
+  </Mistake>
+  <Mistake number="03" title="Odhlásit se ze strachu o hodnocení">
+    Google výslovně uvádí, že se nastavení nepoužije jako signál hodnocení mimo generativní funkce.
+  </Mistake>
+  <Mistake number="04" title="Rozhodovat bez dat">
+    Když neumíte oddělit jednotlivé povrchy, nemáte z čeho dopad odhadnout ani ověřit.
+  </Mistake>
+</MistakeGrid>
+
+## Kde má tenhle článek hranice
+
+**Nedává termíny dostupnosti.** Google konkrétní data neuvedl a odhadovat je tu nebudeme.
+
+**Stojí na oznámení Googlu, ne na nezávislém testu.** Popis chování i ujištění o hodnocení jsou vyjádření dodavatele o vlastním produktu.
+
+**Nerozhodne za vás.** Filtr výše je nejdál, kam se dá dojít bez znalosti vašich čísel.
+
+
+## Co si odnést
+
+Přepínač je reálná věc, ale zatím ho má jen část webů v testu. Až přijde, bude to jeden vypínač pro celý web.
+
+Podstatnější než mechanika je otázka, na kterou málokdo odpoví poctivě: **podle čeho byste se rozhodovali?** Přesné oddělení jednotlivých AI ploch dnes z běžně dostupných dat nejde a po vypnutí by nebylo s čím srovnávat. O to důležitější je udělat aspoň rámcový odhad — kolik lidí z asistentů chodí, co u vás dělají a jestli nakupují — než rozhodovat úplně naslepo.
+
+Hranice vede mezi weby, které chrání samotný obsah, a weby, které z návštěvy potřebují obchodní výsledek. Na které straně jste, víte líp než kdokoli jiný. Co vám ten kanál nese, ale zatím možná nevíte — a to se dá zjistit dřív, než se cokoli vypne.
+
+---
+
+Pokud je pro vás hlavní problém právě to, že přínos AI kanálu neumíte z vlastních dat odhadnout, dává smysl začít měřením a viditelností. **[AI SEO audit](/audit/)** za 9 990 Kč projde, co z vašich dat opravdu jde vyčíst a kde už jen odhadujete. Hotové vzory stránek najdete v [AI SEO Wireframe Packu](/pack/).
+
+*Zdroj: oznámení Google „New opportunities, control and insights for website owners" (3. 6. 2026). Stav k 18. 7. 2026 — dostupnost se může měnit, článek budeme aktualizovat.*
