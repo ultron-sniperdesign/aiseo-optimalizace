@@ -1,0 +1,131 @@
+---
+title: "Seznam-Extended: AI robot, co vám chybí v robots.txt"
+description: "Seznam má pro AI vlastního robota Seznam-Extended a dokumentovaný způsob, jak ho odmítnout. Jak ho zablokujete, co vás to bude stát a odkud Asistent čerpá."
+answer: "Seznam-Extended je robot, kterým Seznam sbírá obsah pro své AI služby včetně Seznam Asistenta. Řídí se robots.txt, takže ho lze odmítnout. Seznam ale sám uvádí, že odhlášenému webu pak přestane přes Seznam AI přivádět uživatele. Je to rozhodnutí za celý web."
+slug: "seznam-asistent-sellma"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "technicke-zaklady"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "seznam asistent"
+  - "sellma"
+  - "seznam-extended"
+  - "seznam ai robots.txt"
+  - "blokovat seznam ai"
+variant: "rich"
+stats:
+  - value: "Seznam-Extended"
+    label: "jméno robota, kterým Seznam sbírá obsah pro své AI služby"
+  - value: "robots.txt"
+    label: "odhlášení se dělá standardní direktivou, žádné zvláštní rozhraní"
+  - value: "8"
+    label: "zdrojů dat, které Seznam u Asistenta jmenuje — většinou vlastní služby"
+  - value: "25. 5. 2026"
+    label: "datum, kdy se beta otevřela všem přihlášeným uživatelům zdarma"
+faq:
+  - q: "Co je Seznam-Extended?"
+    a: "Je to označení robota, kterým Seznam sbírá obsah pro své AI služby, tedy i pro Seznam Asistenta. Chová se jako ostatní roboti: řídí se pravidly v souboru robots.txt na vašem webu. Je to samostatný user-agent Seznamu pro jeho AI služby."
+  - q: "Jak weby z Seznam AI odhlásím?"
+    a: "Podle nápovědy Seznamu pro partnery se do robots.txt přidá pravidlo pro user-agenta Seznam-Extended s direktivou Disallow. Seznam zároveň uvádí, že pokud stránka obsahuje Seznam-Extended Disallow, direktivu AI Disallow nebo nosnippet, obsah se v AI odpovědích nepoužije."
+  - q: "Co mě odhlášení bude stát?"
+    a: "Seznam to říká přímo: na odhlášený web už nebude uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat. Není to tedy jen zákaz použití obsahu, ale i konec návštěv z tohoto kanálu. Je to volba za celý web, u které se za ochranu obsahu platí viditelností."
+  - q: "Ovlivní blokace i běžné výsledky v Seznamu?"
+    a: "Dokumentace mluví o použití obsahu v rámci Seznam AI a dopad na klasické vyhledávání v ní řešený není. Nelze tedy tvrdit ani že se nic nestane, ani opak. Pokud je pro vás tahle otázka zásadní, ověřte si ji přímo u Seznamu, než cokoli nastavíte."
+  - q: "Odkud Asistent bere data?"
+    a: "Seznam v květnu 2026 uvedl, že nástroj využívá data z Vyhledávání, zpravodajských webů, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, jízdních řádů a TV programu. Většina jmenovaných zdrojů jsou vlastní služby Seznamu, což je pro plánování viditelnosti podstatné."
+  - q: "Čím Seznam Asistent běží?"
+    a: "Stojí na vlastním modelu SeLLMa. V listopadu 2025 Seznam uvedl, že dočasně používá i komerční modely od OpenAI provozované v evropských datacentrech přes Microsoft Azure, s dlouhodobým cílem provozovat Asistenta výhradně na interních modelech. Květnové oznámení z roku 2026 už zmiňuje jen SeLLMa, takže veřejně není jednoznačné, jestli ten dočasný stav trvá."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Seznam-Extended je robot, kterým Seznam sbírá obsah pro své AI služby včetně Seznam Asistenta.** Řídí se robots.txt, takže ho lze odmítnout. Seznam ale sám uvádí, že odhlášenému webu pak přestane přes Seznam AI přivádět uživatele. Je to rozhodnutí za celý web.
+
+Pokud řešíte AI roboty jen přes GPTBota a spol., **v robots.txt vám nejspíš chybí rozhodnutí o `Seznam-Extended`** — a chybí tam i nám, jak zjistíte o pár odstavců níž.
+
+Tenhle text neřeší Seznam jako obchodní kanál. Jde v něm o tři praktické věci: jak Seznam AI čte weby, jak ho zablokujete a kde se vlastně bere viditelnost v Asistentovi. Jestli hledáte to první — **jakou roli má Seznam na trhu a kdy do něj investovat** — na to je [Seznam.cz a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/).
+
+## Jak Seznam-Extended zablokujete v robots.txt
+
+Podle nápovědy Seznamu pro partnery se AI robot jmenuje **`Seznam-Extended`** a poslouchá robots.txt. Odhlášení vypadá takto:
+
+```
+User-agent: Seznam-Extended
+Disallow: /
+```
+
+Seznam k tomu dodává, že pokud stránka obsahuje `Seznam-Extended: Disallow`, direktivu `AI: Disallow` nebo `nosnippet`, obsah se v AI odpovědích nepoužije vůbec.
+
+Že jde o snadno přehlédnutelnou věc, si dovolíme doložit na sobě: při psaní tohohle článku jsme si pustili vlastní `robots.txt` a `Seznam-Extended` v něm nebyl. Řešili jsme globální roboty a na českého zapomněli. Až si tedy budete robots.txt ladit podle [návodu pro AI roboty](/blog/ai-crawler-robots-txt/), přidejte si Seznam mezi věci ke kontrole.
+
+## Co vás zablokování bude stát
+
+<Insight tone="warning">
+Důsledek Seznam nezastírá a stojí za doslovné ocitování: na odhlášený web už *„nadále nebudeme uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat"*. Není to tedy jen zákaz použití obsahu — je to i konec návštěv z tohoto kanálu.
+</Insight>
+
+Pokud vám to zní povědomě, není to náhoda. Podobný kompromis jsme popisovali u [odhlašovacího přepínače Googlu](/blog/blokovat-ai-odpovedi-gsc/) i u [kategorií v Cloudflare](/blog/cloudflare-ai-bot-blocking/) — pokaždé jde o volbu za celý web, u které se za ochranu obsahu platí viditelností.
+
+Co v dokumentaci **není**, je dopad na klasické výsledky v Seznamu. Formulace mluví o Seznam AI. Domýšlet si zbytek jedním ani druhým směrem tady nebudeme; pokud je to pro vás zásadní, ověřte si to přímo u Seznamu.
+
+## Z jakých zdrojů Asistent čerpá
+
+Tohle je pro plánování viditelnosti důležitější než parametry modelu. Seznam v květnu 2026 uvedl, že Asistent využívá data z **Vyhledávání, zpravodajských webů, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, jízdních řádů a TV programu**.
+
+<Insight tone="key">
+Všimněte si, co v tom výčtu převažuje: **vlastní služby Seznamu.** „Být vidět v Asistentovi" proto není jen otázka vašeho webu — u e-shopu jde i o Zboží.cz, u lokální firmy o Firmy.cz. Váš web je jeden vstup z osmi jmenovaných.
+</Insight>
+
+## Co víme o modelu a proč to není to hlavní
+
+Pro úplnost, protože veřejná vyjádření se v čase liší:
+
+- **Listopad 2025:** vlastní model SeLLMa a *dočasně* i komerční modely od OpenAI provozované v evropských datacentrech přes Microsoft Azure.
+- **Deklarovaný cíl:** provozovat Asistenta výhradně na interních modelech a ve vlastních datových centrech.
+- **Květen 2026:** oznámení zmiňuje už jen vlastní technologii SeLLMa — komerční modely neuvádí, ale ani nevyvrací.
+
+Veřejně tedy není jednoznačné, jestli ten dočasný stav trvá. Pro rozhodování majitele webu to naštěstí moc nemění: o tom, jestli se do odpovědí dostanete, rozhodují spíš zdroje dat než to, který model text formuluje.
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Řešit jen globální roboty">
+    GPTBot, ClaudeBot a spol. jsou jen část. V Česku má vlastního AI robota i Seznam.
+  </Mistake>
+  <Mistake number="02" title="Zablokovat Seznam-Extended bez rozmyslu">
+    Seznam sám uvádí, že pak přestane i přivádět uživatele. Není to bezplatné gesto.
+  </Mistake>
+  <Mistake number="03" title="Řešit viditelnost jen na vlastním webu">
+    Většina jmenovaných zdrojů jsou služby Seznamu. U e-shopu rozhoduje i Zboží.cz.
+  </Mistake>
+  <Mistake number="04" title="Zajímat se hlavně o to, jaký je to model">
+    Parametry modelu jsou dobrá hospodská debata. S vaší viditelností hýbou zdroje dat.
+  </Mistake>
+</MistakeGrid>
+
+## Co tenhle článek neřeší
+
+**Pozici Seznamu na trhu ani návod na optimalizaci** — obojí je v [hlavním článku o Seznamu](/blog/seznam-cz-ai-vyhledavani/).
+
+**Monetizaci pro vydavatele** — Seznam u AI sumarizací uvádí stejné parametry jako u služby Newsfeed, takže se to týká hlavně webů, které v Newsfeedu už jsou.
+
+**Měření návštěvnosti z Asistenta** — veřejný nástroj, který by ji spolehlivě oddělila, nemáme; platí tu totéž co u [měření AI kanálů obecně](/blog/mereni-ai-mode-limity/).
+
+## Co si odnést
+
+Pokud si robots.txt ladíte podle článků o GPTBotovi, **chybí vám tam řádek** — a je to řádek pro vyhledávač, který v Česku pořád drží nezanedbatelný podíl.
+
+Jestli ho tam ale přidat s `Disallow`, je jiná otázka. Seznam u odhlášení otevřeně říká, že s ním končí i přivádění uživatelů — takže platí totéž, co jsme psali u jiných nástrojů: obsah si ochráníte, viditelnost dáte pryč.
+
+A pokud vám jde hlavně o to být v odpovědích vidět, začněte jinde než u robots.txt — u toho, jestli jste v Zboží.cz a Firmy.cz, tedy ve zdrojích, ze kterých Asistent podle Seznamu čerpá.
+
+---
+
+Nevíte, jestli máte AI roboty na webu ošetřené správně? V **[AI SEO auditu](/audit/)** za 9 990 Kč projdeme robots.txt, indexaci i to, odkud vás AI nástroje reálně berou. Hotové vzory stránek najdete v [AI SEO Wireframe Packu](/pack/).
+
+*Zdroje: nápověda Seznamu pro partnery (Seznam AI), nápověda Vyhledávání a blog Seznam.cz z listopadu 2025 a května 2026. Stav k 19. 7. 2026 — Seznam službu vyvíjí, článek budeme aktualizovat.*

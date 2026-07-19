@@ -7,7 +7,7 @@ category: "analysis"
 tags:
   - "ai-platformy"
 published: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-07-19"
 keywords:
   - "seznam ai vyhledavani"
   - "seznam asistent"
@@ -71,14 +71,9 @@ V listopadu 2025 uvedl Seznam **Seznam Asistenta** v testovacím provozu — vla
 
 ### Jazykový model SeLLMa
 
-Asistent stojí na vlastním českém jazykovém modelu Seznamu — **SeLLMa**. Podle veřejných vyjádření Seznamu a veřejně citovaných informací:
+Asistent stojí na vlastním českém jazykovém modelu Seznamu — **SeLLMa**. Podle veřejně citovaných informací jde o model postavený na open-source základu Llama 3.1 od Mety, v rozsahu kolem 70 miliard parametrů, s investicí Seznamu řádově přes 100 milionů Kč.
 
-- **Open-source základ:** Llama 3.1 od Mety.
-- **Rozsah modelu kolem 70 miliard parametrů** (70B).
-- **Investice Seznamu řádově přes 100 milionů Kč**, mimo jiné nákup výkonných grafických čipů NVIDIA H100.
-- **Běží v evropských datacentrech** — Seznam zdůrazňuje evropské zpracování dat.
-
-Podle veřejných vyjádření Seznam využívá tento model v Seznam Asistentovi a postupně ho nasazuje i v dalších částech svého ekosystému.
+**Není to ale celý obrázek.** Seznam v listopadu 2025 uvedl, že Asistent používá vlastní model SeLLMa **a dočasně i komerční modely od OpenAI** provozované v evropských datacentrech přes Microsoft Azure, s dlouhodobým cílem provozovat ho výhradně na interních modelech. Oznámení z května 2026 už zmiňuje jen SeLLMa, takže veřejně není jednoznačné, jestli ten dočasný stav trvá. Podrobněji to rozebírá [samostatný článek o Seznam Asistentovi](/blog/seznam-asistent-sellma/).
 
 ### Hlavní odlišnost proti Google AI Overviews a ChatGPT
 
@@ -97,7 +92,7 @@ V roce 2026 jsou [Google AI Overviews](/aio/) rozšířené ve více než 200 ze
 />
 
 <Insight tone="warning">
-Samotnou kvalitou jazykového modelu se SeLLMa s nejlepšími světovými modely (Claude, GPT, Gemini) zatím přímo neměří — 70 miliard parametrů je menší než největší konkurence a investice Seznamu je sice významná v CZ kontextu, ale řádově nižší než u globálních hráčů. Hlavní výhoda Seznam Asistenta proto leží v českém kontextu a propojení s lokálním ekosystémem, ne v samotné kvalitě jazykového modelu.
+Hlavní výhoda Seznam Asistenta leží v českém kontextu a propojení s lokálním ekosystémem, ne ve velikosti vlastního modelu — ten je podle veřejně citovaných údajů menší než největší světová konkurence. Srovnávat kvalitu odpovědí přímo je ale ošidné i proto, že Seznam podle vlastního vyjádření z listopadu 2025 vedle SeLLMa dočasně používal i komerční modely.
 </Insight>
 
 ## Kdy má Seznam.cz pro firmu smysl
@@ -137,7 +132,7 @@ Pro většinu českých firem zůstává **Google primárním vyhledávacím kan
     {
       label: "Stav v Seznamu",
       title: "Ověřte, jak vás Seznam vidí",
-      text: "Registrujte web v Seznam Search Console (search.seznam.cz). Zkontrolujte indexaci, sitemap a robots.txt. Seznam má vlastního vyhledávacího robota (SeznamBot), takže má smysl zkontrolovat indexaci přímo v nástrojích Seznamu.",
+      text: "Registrujte web v Seznam Search Console (search.seznam.cz). Zkontrolujte indexaci, sitemap a robots.txt. Seznam má vlastního vyhledávacího robota (SeznamBot) a pro AI služby zvlášť robota Seznam-Extended, takže si v robots.txt zkontrolujte oba.",
     },
     {
       label: "Seznam Asistent test",
