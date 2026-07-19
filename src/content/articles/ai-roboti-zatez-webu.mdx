@@ -1,0 +1,124 @@
+---
+title: "AI roboti: kolik vás projdou na jednu návštěvu zpět"
+description: "Poměr procházení k návštěvám ukazuje, co za zátěž z AI robotů dostáváte. Jak si zjistit vlastní číslo, jak ho číst a kdy ho vůbec má smysl řešit."
+answer: "Poměr procházení k návštěvám udává, kolik stránek si AI platforma na webu projde na jednu návštěvu, kterou mu pošle zpět. Podle dat ze sítě Cloudflare za červenec 2025 se pohyboval od 5,4 do 38 065,7 podle provozovatele. Zhruba 80 procent procházení připadá na trénink modelů."
+slug: "ai-roboti-zatez-webu"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "ai roboti zátěž webu"
+  - "crawl to refer ratio"
+  - "poměr procházení k návštěvám"
+  - "ai crawler traffic"
+  - "kolik ai roboti procházejí"
+variant: "rich"
+stats:
+  - value: "80 %"
+    label: "procházení AI roboty připadá podle Cloudflare na trénink modelů, ne na vyhledávání"
+  - value: "5,4 vs 38 065,7"
+    label: "rozptyl poměru procházení k návštěvám mezi provozovateli, červenec 2025"
+  - value: "+257 %"
+    label: "o tolik se poměr u Perplexity za půl roku zhoršil — čísla stárnou rychle"
+  - value: "30 dní"
+    label: "období, na kterém má smysl svůj vlastní poměr číst; ne jeden den"
+faq:
+  - q: "Co je poměr procházení k návštěvám?"
+    a: "Cloudflare ho definuje jako počet stránek, které platforma projde, v poměru k tomu, jak často pošle na web návštěvníka. Vysoký poměr znamená hodně procházení a málo návštěv zpátky. Je to praktičtější metrika než samotný objem požadavků, protože rovnou ukazuje, co za tu zátěž dostáváte."
+  - q: "Jaké byly hodnoty u velkých platforem?"
+    a: "Podle dat Cloudflare za červenec 2025 měl Google 5,4, Microsoft 40,7, Perplexity 194,8, OpenAI 1 091,4 a Anthropic 38 065,7. Jsou to čísla ze sítě Cloudflare za dané období, ne z konkrétního webu — na vašem webu můžou vypadat jinak."
+  - q: "Jak zjistím svoje vlastní číslo?"
+    a: "Cloudflare od července 2026 nabízí přehled, který ukazuje poměr procházení k návštěvám pro celý web i po jednotlivých provozovatelích, a to za posledních 24 hodin, 7 dní nebo 30 dní. Volte 30 dní, kratší období je náchylné na jednorázové výkyvy. Kdo Cloudflare nepoužívá, musí do serverových logů."
+  - q: "Mění se ta čísla rychle?"
+    a: "Velmi. Mezi lednem a červencem 2025 se poměr u Anthropicu snížil o 86,7 procenta, zatímco u Perplexity vzrostl o 256,7 procenta. Jakékoli konkrétní číslo proto berte jako snímek k datu, ne jako trvalou vlastnost dané platformy."
+  - q: "Proč je většina procházení na trénink?"
+    a: "Cloudflare uvádí, že trénink tvoří zhruba 80 procent aktivity AI robotů, oproti 72 procentům o rok dřív. Vyhledávání připadá asi 18 procent a akcím vyvolaným uživatelem 2 procenta. Obsah odebraný na trénink se nevrací jako návštěva — není to chyba, je to účel toho procházení."
+  - q: "Znamená vysoký poměr, že mám robota zablokovat?"
+    a: "Ne automaticky. Je to vstup do rozhodnutí, ne rozhodnutí samo. Vysoký poměr říká, kolik obsahu odchází na jednu návštěvu zpět — ale jestli vám ta výměna vadí, závisí na tom, čím si vyděláváte a co od AI kanálu čekáte."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+**Poměr procházení k návštěvám udává, kolik stránek si AI platforma na webu projde na jednu návštěvu, kterou mu pošle zpět.** Podle dat ze sítě Cloudflare za červenec 2025 se pohyboval od 5,4 do 38 065,7 podle provozovatele. Zhruba 80 procent procházení připadá na trénink modelů.
+
+O zátěži z AI robotů se mluví hlavně přes objem: kolik požadavků, kolik přenesených dat. Tenhle článek **není o výkonu serveru ani o nákladech na hosting**. Je o metrice, která k rozhodování poslouží líp: co za tu zátěž dostáváte zpátky.
+
+## Co znamená poměr procházení k návštěvám
+
+Cloudflare ho definuje jako počet stránek, které platforma projde, v porovnání s tím, jak často na web pošle člověka. Čím vyšší číslo, tím víc obsahu odchází na jednu návštěvu zpět.
+
+<CompareTable
+  caption="Poměr procházení k návštěvám podle Cloudflare, červenec 2025"
+  columns={["Poměr", "Změna od ledna 2025"]}
+  rows={[
+    { icon: "—", label: "Google", left: "5,4", right: "+43 %" },
+    { icon: "—", label: "Microsoft", left: "40,7", right: "+5,7 %" },
+    { icon: "—", label: "Perplexity", left: "194,8", right: "+256,7 %" },
+    { icon: "—", label: "OpenAI", left: "1 091,4", right: "−10,4 %" },
+    { icon: "—", label: "Anthropic", left: "38 065,7", right: "−86,7 %" },
+  ]}
+/>
+
+Mezi krajními hodnotami je zhruba sedmitisícinásobný rozdíl. Hlavní poučení z tabulky ale není v konkrétních číslech — je v tom, že **„AI roboti" nejsou jedna věc s jedním chováním.**
+
+## Proč se na cizí čísla nedá spoléhat
+
+Podívejte se na pravý sloupec. Za pouhého půl roku spadl Anthropic z 286 930 na 38 065,7, zatímco Perplexity vyskočil z 54 na 195. Kdo si v lednu udělal strategii podle tehdejších hodnot, měl ji v červenci u obou platforem obráceně.
+
+<Insight tone="warning">
+Platí to i o téhle tabulce: **jakékoli číslo v článku o AI robotech má omezenou trvanlivost.** Jsou to navíc data ze sítě Cloudflare, ne z vašeho webu. Berte je jako řádový obrázek trhu a rozhodujte se podle svého čísla — to se dnes už zjistit dá.
+</Insight>
+
+## Většina procházení jde na trénink, ne na vyhledávání
+
+Tahle část je trvanlivější než konkrétní hodnoty. Cloudflare uvádí, že trénink modelů tvoří zhruba **80 procent** aktivity AI robotů, oproti 72 procentům o rok dřív. Na vyhledávání připadá asi 18 procent a na akce vyvolané uživatelem 2 procenta.
+
+Velká většina toho, co si roboti odnesou, se tedy **nevrací jako návštěva** — a není to selhání ani zlá vůle, je to účel toho procházení. Právě proto Cloudflare v [nastavení AI robotů](/blog/cloudflare-ai-bot-blocking/) rozděluje trénink, vyhledávání a agenty na tři samostatné volby.
+
+## Jak zjistit vlastní číslo
+
+Cloudflare od července 2026 nabízí přehled, který ukazuje poměr procházení k návštěvám **pro váš web i po jednotlivých provozovatelích**, za posledních 24 hodin, 7 dní nebo 30 dní.
+
+<Stepper
+  steps={[
+    { label: "Krok 1", title: "Najděte přehled v Cloudflare", text: "Hledejte přehledy o AI provozu a atribuci. Názvy položek v menu se mění, takže se držte spíš pojmu než konkrétní cesty." },
+    { label: "Krok 2", title: "Zvolte 30 dní, ne 24 hodin", text: "Kratší období je náchylné na jednorázové výkyvy. Jeden den, kdy si vás někdo hromadně prošel, nevypovídá o ničem." },
+    { label: "Krok 3", title: "Rozpadněte číslo po provozovatelích", text: "Souhrn za celý web zprůměruje extrémy. Zajímavé je, kdo konkrétně bere hodně a vrací málo." },
+    { label: "Krok 4", title: "Porovnejte s předchozím obdobím", text: "Sledujte trend, ne jeden údaj. A ověřte, jestli se skoková změna nepotkala se změnou vašeho vlastního nastavení." },
+    { label: "Krok 5", title: "Bez Cloudflare jděte do logů", text: "Stejná informace se dá vyčíst ze serverových logů podle user-agentů, jen pracněji. Chtějte od správce výpis za 30 dní." },
+  ]}
+/>
+
+## Kdy má smysl to číslo řešit
+
+Samotná výše poměru nerozhoduje o ničem. Rámec, podle kterého se dá uvažovat:
+
+- **Když je váš obsah snadno přepsatelný do odpovědi** (návody, popisy, srovnání), vysoký poměr u konkrétní platformy znamená reálný odliv hodnoty. Tady stojí za to rozhodovat vědomě.
+- **Když je obsah podpůrný a prodej běží jinde** (doporučení, prodejci, kamenná pobočka), stejné číslo vás pálit nemusí. Zátěž není totéž co ztráta.
+- **Když se číslo skokově změní, neblokujte hned.** Ověřte trend za 30 dní a projděte, jestli změna nesouvisí s něčím na vaší straně.
+- **Když nevíte, co vám AI kanál vůbec nese**, je to signál řešit napřed měření, ne blokaci. Rozebírá to článek o [limitech měření](/blog/mereni-ai-mode-limity/).
+
+## Co tenhle článek neřeší
+
+**Nedoporučuje blokovat ani pouštět.** Rámec pro to rozhodnutí je v článku o [odhlášení z AI odpovědí](/blog/blokovat-ai-odpovedi-gsc/), provedení na úrovni CDN v článku o [Cloudflare](/blog/cloudflare-ai-bot-blocking/).
+
+**Neuvádí náklady na hosting** ani není návodem pro správce serveru. Cache a omezení frekvence jsou samostatné téma.
+
+## Co si odnést
+
+Užitečnější než otázka „kolik mě AI roboti stojí" je otázka, kolik obsahu od vás kdo odebere na jednu návštěvu zpět. Nám se to osvědčilo představovat si obrazně jako **směnný kurz** — Cloudflare tak o tom nemluví, ale dobře to vystihuje, že se mezi provozovateli liší řádově a mění se rychle.
+
+Dvě věci si z toho vezměte. **Většina procházení jde na trénink**, takže se velká část zátěže z principu nevrátí — a je to tak zamýšleno. A poprvé si můžete místo cizích čísel zobrazit **vlastní**, po jednotlivých provozovatelích a za rozumné období.
+
+Jestli v těch číslech uvidíte rozdíly mezi platformami, ale nebudete vědět, co pustit, co omezit a jak to propsat do měření, je to přesně chvíle, kdy má smysl si na to někoho vzít.
+
+---
+
+**[AI SEO audit](/audit/)** za 9 990 Kč projde měření, viditelnost i technické nastavení a pojmenuje, z čeho se rozhodovat. Hotové vzory stránek najdete v [AI SEO Wireframe Packu](/pack/).
+
+*Zdroje: blog Cloudflare („The crawl-to-click gap", data za červenec 2025) a changelog Cloudflare z 1. 7. 2026. Stav k 19. 7. 2026 — hodnoty se rychle mění, článek budeme aktualizovat.*
