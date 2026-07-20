@@ -238,6 +238,11 @@ export const ui = {
   cardReadMore: "Číst",
   ariaArticleFilter: "Filtr článků podle kategorie",
   ariaArticleList: "Seznam článků",
+  // Blog listing — hero meta dlaždice ({n}/{date} nahradí šablona)
+  blogMetaArticles: "{n} článků",
+  blogMetaCategories: "{n} kategorií",
+  blogMetaAvgWords: "průměrně ~{n} slov / článek",
+  blogMetaNewest: "nejnovější: {date}",
 
   // Blog hero — odkaz na vstupní hub pro nováčky
   blogStartLead: "Jste tu poprvé?",
@@ -341,6 +346,57 @@ export const ui = {
   // RichLayout (variant: rich) — FAQ eyebrow ({n} = počet otázek) + titulek
   richFaqEyebrowHtml: "FAQ · {n} otázek",
   richFaqTitle: "Časté otázky, které k tématu padají",
+
+  // Skip-link v BaseLayout (a11y)
+  skipToContent: "Přeskočit na obsah",
+
+  // Mikrotexty obsahových blocks komponent (src/components/blocks/*) —
+  // labely zadrátované v komponentách, ne props z MDX. Fork je přeloží tady.
+  blocks: {
+    doLabel: "Takhle ano",
+    dontLabel: "Takhle ne",
+    /** Insight default label (přepsatelný props `label` z MDX). */
+    insightLabel: "Klíčový insight",
+    /** Mistake — prefix fix řádku. */
+    mistakeFixLabel: "Fix:",
+    /** SourceCard defaulty (přepsatelné props). */
+    sourceBadge: "Zdroj",
+    sourceLinkLabel: "Otevřít zdroj",
+    /** ToolGrid tier labely (klíč = tier enum). */
+    tier: {
+      free: "Free",
+      paid: "Placený",
+      both: "Free + Placený",
+    } as Record<string, string>,
+    /** HeroVideo — aria-label play tlačítka (default, přepsatelný props). */
+    playVideo: "Přehrát video",
+    /** DataBars / DataColumns — tabulkový fallback. */
+    dataShowTable: "Zobrazit data v tabulce",
+    dataItemCol: "Položka",
+    dataPeriodCol: "Období",
+    dataValueCol: "Hodnota",
+  },
+};
+
+/**
+ * FreeStrip — obsah promo bloku „návod zdarma" (default hodnoty komponenty).
+ * Je to obsah, ne chrome — ale komponenta je sdílená a vkládá se z MDX bez
+ * props, takže defaulty musí žít v i18n vrstvě. Props z MDX je dál přepíšou.
+ */
+export const freeStrip = {
+  eyebrow: "Návod zdarma · 0 Kč",
+  title: "Šest signálů AI-friendly stránky jako",
+  titleHighlight: "hotový návod pro vaši homepage",
+  description:
+    "Wireframe s anotacemi, tři principy, které drží strukturu, a šablony textů. Šest stran A4 v PDF — výměnou za e-mail.",
+  bullets: [
+    "Wireframe homepage 1:1 s anotacemi",
+    "Šablony nadpisů, krátké odpovědi a FAQ",
+    "Checklist připravený k použití",
+  ],
+  ctaText: "Stáhnout PDF zdarma",
+  ctaHref: "/navod-zdarma/",
+  badge: "6 stran A4 · PDF",
 };
 
 export const emailCapture = {
