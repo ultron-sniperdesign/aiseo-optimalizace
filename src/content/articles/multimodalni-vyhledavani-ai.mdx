@@ -1,0 +1,138 @@
+---
+title: "Hlas a obraz v AI: jedno je doložené, druhé ne"
+description: "U obrazového vyhledávání Google publikuje čísla i mechanismus. U hlasového si statistiky odporují a primární zdroj chybí. Co z toho plyne pro obsah."
+answer: "Multimodální vyhledávání znamená, že se systému ptáte textem, obrazem i hlasem zároveň. U obrazu Google zveřejnil konkrétní čísla i mechanismus rozpadu dotazu nad obrázkem. U hlasu veřejně dostupné statistiky rok od roku kolísají a primární zdroj pro ně chybí."
+slug: "multimodalni-vyhledavani-ai"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "obsah"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "multimodální vyhledávání"
+  - "hlasové vyhledávání ai"
+  - "google lens ai mode"
+  - "obrazové vyhledávání ai"
+  - "voice search 2026"
+variant: "rich"
+stats:
+  - value: "1 mld."
+    label: "měsíčních uživatelů AI Mode rok po spuštění (Google, I/O 2026)"
+  - value: "1,5 mld."
+    label: "lidí měsíčně používá Google Lens k hledání toho, co vidí (Google, 5/2025)"
+  - value: "víc dotazů"
+    label: "AI Mode nad jedním obrázkem pouští několik dotazů naráz, i na vedlejší objekty"
+  - value: "0"
+    label: "primárních zdrojů, které jsme našli k procentům hlasových dotazů"
+faq:
+  - q: "Co znamená multimodální vyhledávání?"
+    a: "Že systému nemusíte položit dotaz jen textem. Vyfotíte nebo nahrajete obrázek, zeptáte se na něj a dostanete odpověď. Google to popsal u AI Mode v dubnu 2025: nahrajete fotku, položíte otázku a dostanete odpověď včetně odkazů, kam jít dál."
+  - q: "Jak AI zpracuje obrázek?"
+    a: "Google popisuje takzvaný visual search fan-out: systém podle něj pouští několik dotazů najednou — na obrázek jako celek i na jednotlivé objekty v něm — a získává tak víc informací než klasické vyhledávání. Prakticky to znamená, že čte i vedlejší předměty ve scéně, ne jen hlavní motiv."
+  - q: "Jak velké je obrazové vyhledávání?"
+    a: "Google v květnu 2025 uvedl, že Lens používá k hledání toho, co lidé vidí, více než 1,5 miliardy lidí měsíčně. Na I/O v květnu 2026 pak oznámil, že AI Mode rok po spuštění překročil miliardu měsíčních uživatelů a dotazy se podle něj víc než zdvojnásobují každé čtvrtletí."
+  - q: "A kolik je hlasových dotazů?"
+    a: "Nevíme a nikdo z veřejně dostupných zdrojů, které jsme prošli, to nedokládá. Souhrny statistik uvádějí pro rok 2026 několik různých hodnot, které měří různé věci a navzájem si odporují; žádná neodkazuje na primární měření. Konkrétní čísla proto neuvádíme ani my — berte podobné statistiky v článcích o hlasovém vyhledávání s rezervou."
+  - q: "Má smysl optimalizovat pro hlasové vyhledávání?"
+    a: "Jako samostatná disciplína to podložené není. Co u hlasu dává smysl — přirozeně formulované otázky a odpověď hned na začátku — je ale přesně to, co pomáhá i v textových AI odpovědích. Nejde tedy o práci navíc, jen se to nemusí dělat pod hlavičkou hlasové optimalizace."
+  - q: "Co to znamená pro fotky produktů?"
+    a: "Pokud systém čte i vedlejší objekty v obrázku, nese fotka víc informace, než se obvykle předpokládá — rekvizity, prostředí a další předměty v záběru taky něco sdělují. Je to mechanická úvaha z popisu Googlu, ne jeho doporučený postup, takže z ní nedělejte přesná pravidla pro focení."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+
+**Multimodální vyhledávání znamená, že se systému ptáte textem, obrazem i hlasem zároveň.** U obrazu Google zveřejnil konkrétní čísla i mechanismus rozpadu dotazu nad obrázkem. U hlasu veřejně dostupné statistiky rok od roku kolísají a primární zdroj pro ně chybí.
+
+Tyhle dvě věci se obvykle zmiňují jedním dechem — „hlas a obraz mění vyhledávání“. Když se ale člověk podívá, čím je která podložená, jsou to dva úplně různé případy.
+
+## Obraz: Google publikuje čísla i mechanismus
+
+Začneme tím, co doložit jde.
+
+- **Google Lens:** v květnu 2025 Google uvedl, že ho k hledání toho, co lidé vidí, používá **více než 1,5 miliardy lidí měsíčně**.
+- **AI Mode:** na I/O v květnu 2026 Google oznámil, že rok po spuštění překročil **miliardu měsíčních uživatelů** a že se dotazy podle něj *„více než zdvojnásobují každé čtvrtletí od spuštění“*.
+- **Multimodální vstup:** už v dubnu 2025 Google u AI Mode popsal, že můžete vyfotit nebo nahrát obrázek, zeptat se na něj a dostat odpověď *„s odkazy, kam jít dál“*.
+
+Jsou to produktová čísla samotného Googlu, takže neříkají všechno. Ale jsou veřejná, datovaná a ověřitelná — což je u tohohle tématu vzácnost.
+
+## Jak AI vlastně čte obrázek
+
+Tohle je pro majitele webu prakticky nejzajímavější část a Google ji popsal poměrně konkrétně. Říká tomu **visual search fan-out**, tedy rozpad dotazu nad obrázkem.
+
+Podle Googlu systém *„pouští několik dotazů na obrázek jako celek i na objekty uvnitř něj a získává tak větší záběr a hloubku informací než tradiční vyhledávání“*.
+
+<Insight tone="key">
+Z toho plyne jedna mechanická úvaha — Google ji jako doporučení neuvádí, ale vyplývá z popisu: **systém nečte jen hlavní motiv fotky, ale i to, co je kolem.**
+</Insight>
+
+Pro e-shop to má tři docela hmatatelné důsledky:
+
+- Na produktové fotce nehraje roli jen produkt, ale i **rekvizity, prostředí a další předměty v záběru**.
+- **Lifestyle fotka** může systému předat širší kontext než čistý packshot — ale zároveň víc šumu.
+- U hlavní fotky proto stojí za úvahu, **co přesně na ní má být rozpoznáno jako podstatné**.
+
+To ale neznamená, že z toho jde odvodit přesný návod na alt texty nebo kompozici záběru. Google žádný takový postup nezveřejnil a domýšlet si ho by bylo přesně to, co tenhle článek kritizuje u hlasu.
+
+## Hlas: čísla, která nikdo neumí doložit
+
+A teď ta druhá polovina tématu, o které se mluví minimálně stejně dlouho.
+
+Když jsme hledali, jak velké hlasové vyhledávání vlastně je, našli jsme pro rok 2026 hned několik různých čísel. Každé měřilo něco jiného — podíl na všech dotazech, míru užívání, denní frekvenci — a navzájem si odporovala. Konkrétní hodnoty tady schválně neuvádíme: žádná z nich neodkazovala na primární měření a všechny pocházely ze souhrnů statistik na SEO webech, které citují jiné souhrny statistik. Vytištěné by se čtenáři zafixovaly jako fakt, i když je článek zpochybňuje.
+
+<Insight tone="warning">
+Historie tady radí opatrnost. Ve své době se hojně citovala předpověď, že **75 procent lidí bude do roku 2020 vlastnit chytrý reproduktor**. Nenaplnila se.
+
+Naše pravidlo je proto prosté: **když číslo nejde dohledat k původnímu měření, nebereme ho jako podklad pro strategii.** Ani když se opakuje na deseti webech.
+</Insight>
+
+Neznamená to, že lidé hlasem nehledají — určitě ano. Znamená to, že **nemáme čím podložit ani velikost, ani růst toho kanálu.** A pokud na něj někdo chce vyčlenit rozpočet jako na samostatnou disciplínu, měl by k tomu mít lepší podklad než souhrn statistik.
+
+## Co který zdroj vlastně obsahuje
+
+Aby bylo vidět, na čem článek stojí a co jsme museli vyřadit:
+
+<CompareTable
+  caption="Přehled podkladů: co v nich je a co v nich není"
+  columns={["Co uvádí", "Co v něm není"]}
+  rows={[
+    { icon: "—", label: "Google I/O, 19. 5. 2026", left: "AI Mode přes miliardu měsíčních uživatelů; dotazy se podle Googlu zdvojnásobují každé čtvrtletí", right: "Žádná čísla o Lens, obrazovém vyhledávání ani hlasu" },
+    { icon: "—", label: "Aktualizace AI Mode, 20. 5. 2025", left: "Lens používá přes 1,5 miliardy lidí měsíčně", right: "Nic o multimodálním mechanismu" },
+    { icon: "—", label: "Multimodální AI Mode, 7. 4. 2025", left: "Popis visual search fan-out a nahrávání fotek", right: "Žádná čísla o objemech" },
+    { icon: "—", label: "Hlasové vyhledávání", left: "Několik navzájem si odporujících hodnot ze souhrnů statistik", right: "Jakýkoli dohledatelný primární zdroj" },
+  ]}
+/>
+
+## Kam dát práci a kam ne
+
+Dobrá zpráva je, že se toho moc měnit nemusí — a hlavně ne pod hlavičkou „voice SEO“.
+
+Co u hlasu dává intuitivně smysl, tedy **přirozeně formulované otázky a odpověď hned na začátku**, je přesně to, co pomáhá i v textových AI odpovědích. Rozebírají to [pasážová optimalizace](/blog/pasazova-optimalizace-obsahu/) a [obsah pro AI éru](/blog/ai-seo-content/). Nejvíc to uvidíte na FAQ, na otázkách u produktů a v úvodech kategorií.
+
+U obrazu je navíc jeden konkrétní důvod, proč fotky nepodceňovat: pokud systém rozebírá i objekty okolo, je **volba scény součástí informace, ne jen otázkou designu**. Souvisí to s tím, co rozebírá článek o [produktových stránkách](/blog/produktove-stranky-pro-ai/).
+
+## Kde končí podklad
+
+**Nejde z toho odvodit návod na alt texty.** Google nepublikoval postup „jak psát pro multimodální vyhledávání“ a my si ho nevymyslíme. Značení obrázků strukturovanými daty je samostatné téma.
+
+**Neplyne z toho nic o českém trhu.** Všechna čísla jsou globální nebo z USA.
+
+**Neplyne z toho, že hlas nefunguje.** Plyne z toho, že o něm nemáme spolehlivá data — což je jiné tvrzení.
+
+## Co si odnést
+
+Když příště narazíte na článek, který v jedné větě spojí „hlasové a obrazové vyhledávání rostou“, zkuste si u obou půlek položit stejnou otázku: **kdo to změřil a kde to publikoval?** U obrazu dostanete odpověď s datem. U hlasu narazíte na souhrn, který cituje jiný souhrn.
+
+Čtyři pravidla, která z toho plynou:
+
+1. **Nezakládejte samostatný projekt na hlasové vyhledávání**, dokud pro něj nemáte data z vlastního webu.
+2. **U fotek řešte celý záběr**, ne jen hlavní produkt — rekvizity a prostředí systém čte taky.
+3. **Odpověď a otázku dejte nahoru** na FAQ, u produktů a v úvodech kategorií; funguje to napříč způsoby zadání dotazu.
+4. **Pokud máte rozpočet na jednu věc**, dejte ho do lepších fotek a jasnějších odpovědí na stránce, ne do disciplíny pojmenované podle toho, jak se dotaz zadává.
+
+---
+
+Jestli nechcete stavět rozhodnutí na marketingových souhrnech, dává smysl podívat se nejdřív na vlastní viditelnost a obsahové signály. **[AI SEO audit](/audit/)** za 9 990 Kč projde, kde vás AI nástroje zmiňují a odkud o vás berou informace.
+
+*Zdroje: blog Google — I/O 2026 (19. 5. 2026), aktualizace AI Mode (20. 5. 2025) a představení multimodálního AI Mode (7. 4. 2025). Statistiky hlasového vyhledávání pocházejí ze souhrnných přehledů bez primárního zdroje. Stav k 19. 7. 2026.*
