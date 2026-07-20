@@ -18,7 +18,7 @@ export const meta: PageMeta = {
   title: "AI SEO blog: praktické články o SEO, GEO, AEO a AIO",
   description:
     "Tutoriály, analýzy a defenzivní průvodce AI SEO pro český trh — SEO, GEO, AEO i AIO. Nový článek pravidelně.",
-  ogImage: "/og/blog.png",
+  ogImage: "/og/blog.jpg",
 };
 
 /** Hero H1 — set:html (hl zvýraznění + nbsp). */
