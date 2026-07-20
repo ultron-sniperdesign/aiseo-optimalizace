@@ -1,0 +1,121 @@
+---
+title: "Číslované seznamy pro AI: kdy fungují a kdy ne"
+description: "Rada „pište listicly, AI je miluje“ je useknutá. Malá studie na ChatGPT ukázala, že žebříčky se citují hlavně u jednoho typu dotazu — a jinde skoro vůbec."
+answer: "Číslovaný seznam typu Top-N řadí a čísluje možnosti. Podle malé studie AIVO na ChatGPT tvořily listicly 100 procent citovaných zdrojů u dotazů, kde člověk porovnává možnosti, ale jen 13 procent u dotazů na konkrétní fakt a nula u navigačních. Univerzální formát to tedy není."
+slug: "listicly-top-n-pro-ai"
+category: "analysis"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "listicle ai citace"
+  - "číslovaný seznam pro ai"
+  - "top n obsah ai"
+  - "nejlepší x obsah ai"
+  - "formát obsahu ai vyhledávání"
+variant: "rich"
+stats:
+  - value: "100 % vs 0 %"
+    label: "podíl listiclů v citacích: dotazy s porovnáváním vs navigační (AIVO, ChatGPT)"
+  - value: "13 %"
+    label: "podíl listiclů u informačních dotazů — kde člověk chce jen fakt"
+  - value: "138"
+    label: "dotazů ve vzorku — malá studie na jedné platformě, ne univerzální pravda"
+  - value: "0"
+    label: "studií, které tohle měřily na českých dotazech"
+faq:
+  - q: "Je pravda, že AI upřednostňuje číslované seznamy?"
+    a: "Jen u určitých dotazů. Studie AIVO na ChatGPT našla listicly u 100 procent citací u dotazů, kde člověk porovnává možnosti, ale jen u 13 procent u informačních dotazů a u nuly u navigačních. Rada „dělejte listicly“ je tedy pravdivá pro jeden typ obsahu a zavádějící pro ostatní."
+  - q: "Jak velký byl vzorek té studie?"
+    a: "Malý — 138 dotazů ChatGPT postavených ze 46 reálných promptů, pět typů záměru a pět kategorií, tři běhy na prompt. Jen ChatGPT, jen americký trh a angličtina. Berte to jako signál o směru, ne jako změřený zákon platný pro češtinu."
+  - q: "Kolik položek má mít seznam?"
+    a: "Medián citovaného seznamu ve studii byl 10 položek, průměr zhruba 11 a rozsah od 3 do 50. Je to popis toho, co se citovalo, ne doporučení. Počet položek odvozujte od toho, kolik jich má váš obor smysluplně, ne od mediánu z cizí studie."
+  - q: "Má být v titulku rok?"
+    a: "Ve studii mělo 92 procent citovaných listiclů v titulku aktuální rok. Je to ale korelace, ne prokázaná příčina — může jít jen o průvodní jev toho, že šlo o čerstvě aktualizovaný obsah. A rok v titulku znamená závazek: buď ho každý rok aktualizujete, nebo vám stránka zastará viditelněji než jiné."
+  - q: "Jaký je rozdíl proti srovnávacímu článku X vs Y?"
+    a: "Srovnání X vs Y staví vedle sebe dvě konkrétní možnosti, seznam Top-N jich řadí víc. Řemeslo je u obou stejné a rozebírá ho samostatný článek o srovnávacích textech: kritéria, poctivé pro a proti, modulární struktura. Tenhle text řeší jen rozhodnutí, jestli do formátu vůbec jít."
+  - q: "Znamená to, že mám přepsat existující články na seznamy?"
+    a: "Ne. Formát má vycházet ze záměru dotazu, na který stránka cílí. Přepsat návod nebo faktickou stránku na žebříček by podle těchto dat mířilo špatným směrem — u informačních dotazů se listicly citovaly nejméně."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+
+**Číslovaný seznam typu Top-N řadí a čísluje možnosti.** Podle malé studie AIVO na ChatGPT tvořily listicly 100 procent citovaných zdrojů u dotazů, kde člověk porovnává možnosti, ale jen 13 procent u dotazů na konkrétní fakt a nula u navigačních. Univerzální formát to tedy není.
+
+Z té studie plyne pro praxi jedna jistější věc: **číslovaný žebříček není univerzální formát pro AI.** Dává smysl hlavně tam, kde člověk vybírá z možností. U dotazů na fakt nebo na konkrétní web z těchto dat důvod tlačit ho všude nevyplývá.
+
+Zbytek článku je o tom, jak to poznat — a jak moc se na to dá spoléhat.
+
+## Co studie změřila
+
+AIVO Research otestoval **138 dotazů ChatGPT** postavených ze 46 reálných uživatelských promptů, v pěti typech záměru a pěti kategoriích, se třemi běhy na každý prompt. Definici listiclu si zafixoval před sběrem dat a výsledky ověřoval ručně.
+
+Podíl listiclů mezi citovanými zdroji se podle záměru dotazu láme výrazně:
+
+<CompareTable
+  caption="Podíl listiclů v citovaných zdrojích podle záměru dotazu (AIVO, ChatGPT)"
+  columns={["Co člověk chce", "Podíl listiclů"]}
+  rows={[
+    { icon: "—", label: "Porovnává možnosti", left: "Vybírám mezi nástroji, službami, produkty", right: "100 %" },
+    { icon: "—", label: "Lokální dotaz", left: "Hledám něco v okolí", right: "71 %" },
+    { icon: "—", label: "Transakční", left: "Chci to koupit nebo objednat", right: "50 %" },
+    { icon: "—", label: "Informační", left: "Chci vědět jeden konkrétní fakt", right: "13 %" },
+    { icon: "—", label: "Navigační", left: "Hledám konkrétní web nebo firmu", right: "0 %" },
+  ]}
+/>
+
+<Insight tone="warning">
+Velikost vzorku hned na začátek: **138 dotazů, jen ChatGPT, jen americký trh a angličtina.** To není změřený zákon a pro češtinu to nikdo neověřil. Rozdíl mezi krajními hodnotami je ale tak velký, že směr je čitelný i z malého vzorku — a právě jako směr to berte.
+</Insight>
+
+## Proč z té studie neplyne „pište listicly všude“
+
+Autoři si předem stanovili hypotézu, že listicle je univerzální formát pro AI vyhledávání, a nastavili si práh, při jehož nesplnění ji zamítnou. Vlastní data ji zamítla.
+
+Jejich závěr stojí za doslovné ocitování: listicle je *„near-universal for buyers comparing options and collapses for people who want a fact or a specific site“* — tedy téměř univerzální u kupujících, kteří porovnávají možnosti, a nevychází u lidí, kteří chtějí fakt nebo konkrétní web.
+
+Sedí to i s tím, co jsme psali o [recenzních platformách](/blog/recenze-srovnavace-pro-ai/): u dotazů typu „nejlepší X“ se recenzní weby objevovaly jen v 17,1 procenta odpovědí. Jsou to dvě různé studie a jedna nevysvětluje druhou — obě ale ukazují, že u porovnávacích dotazů hraje roli, v jakém formátu obsah je.
+
+## Jak si to přeložit na český web
+
+Studie měřila angličtinu na ChatGPT, takže tohle není převod dat, ale úvaha podle záměru dotazu. Na běžných českých dotazech vypadá takhle:
+
+- **„nejlepší účetní software pro malé firmy“** — člověk vybírá z možností. Tady seznam smysl dávat může.
+- **„jaká je sazba DPH na knihy“** — chce jeden údaj. Větší smysl má přímá odpověď hned nahoře než desetibodový žebříček.
+- **„Shoptet přihlášení“** — hledá konkrétní web. Seznam mu nepomůže.
+- **„zubní pohotovost Brno“** — lokální dotaz, kde studie naznačuje, že seznam roli hrát může; u českých výsledků ale bude hodně záležet na mapách a místních katalozích.
+
+<Insight tone="key">
+Pokud si z článku odnesete jednu věc, ať to není počet položek ani rok v titulku. **Ať je to pořadí rozhodování: nejdřív záměr dotazu, teprve pak formát.** Opačné pořadí — nejdřív formát, protože je zrovna v módě — je přesně ta chyba, kterou data zpochybňují.
+
+Řemeslo psaní samotného žebříčku, tedy kritéria, strukturu a férovost, rozebírá [článek o srovnávacích textech](/blog/srovnavaci-clanky-pro-ai/).
+</Insight>
+
+## Co studie zaznamenala navíc
+
+Dva společné znaky citovaných seznamů, obojí jako **popis, ne recept**: medián **10 položek** (rozsah 3 až 50) a **92 procent** citovaných listiclů mělo v titulku aktuální rok.
+
+U roku v titulku je opatrnost namístě dvakrát. Zaprvé je to korelace — může jít jen o průvodní jev čerstvě aktualizovaného obsahu, a pak by skutečnou příčinou byla čerstvost, ne letopočet. Zadruhé je to závazek: buď takovou stránku každý rok skutečně projdete, nebo bude svou zastaralost hlásit rovnou v titulku. Souvisí to s tím, co jsme psali o [aktualizaci obsahu](/blog/aktualizace-obsahu-pro-ai/).
+
+## Co z těch dat neplyne
+
+**Neplyne z nich nic o českém trhu.** Studie měřila ChatGPT v angličtině na americkém trhu; nejblíž se k odpovědi dostanete [testem na vlastních dotazech](/blog/test-viditelnosti-v-ai/).
+
+**Neplyne z nich příčinnost** — ani rok v titulku, ani počet položek nejsou doložené příčiny citace. Jsou to vlastnosti obsahu, který citovaný byl.
+
+**Neplyne z nich metodika.** Sto třicet osm dotazů na jedné platformě je dost na zpochybnění přehnané rady, ne na stavbu pravidel.
+
+## Co si odnést
+
+Rada „dělejte listicly“ není špatná, jen je useknutá. Celá zní: **dělejte je tam, kde váš čtenář porovnává možnosti a vybírá si.** U dotazů na fakt a na konkrétní adresu se v těch datech neukázaly skoro vůbec.
+
+A pokud žebříček píšete, počítejte s údržbou. Seznam stárne rychleji než jiný obsah — a s rokem v titulku to jde vidět na první pohled.
+
+---
+
+Nejste si jistí, které vaše stránky mají být žebříčky a které ne? **[AI SEO audit](/audit/)** za 9 990 Kč projde dotazy i formáty obsahu a ukáže, kde seznam dává smysl a kde ne.
+
+*Zdroj: AIVO Research, „Are Listicles the AI-Search Silver Bullet? A ChatGPT Study“ (138 dotazů, ChatGPT, USA, červen 2026). Stav k 19. 7. 2026 — článek budeme aktualizovat.*
