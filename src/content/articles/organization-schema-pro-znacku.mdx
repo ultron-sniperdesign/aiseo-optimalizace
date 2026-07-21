@@ -1,0 +1,217 @@
+---
+title: "Organization schema: identita značky, ne stroj na citace"
+description: "Organization ve strukturovaných datech: co do něj patří, kam ho umístit, jak zapsat IČO a DIČ — a proč od něj nečekat citace v AI odpovědích."
+answer: "Organization je typ strukturovaných dat, kterým na jedné stránce webu strojově popíšete svou firmu — název, právní název, logo, kontakty a odkazy na profily. Google ho dokumentuje pro rozlišení identity a administrativních údajů, ne jako nástroj na citace v AI. Žádnou vlastnost přitom neuvádí jako povinnou."
+slug: "organization-schema-pro-znacku"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "duveryhodnost"
+published: "2026-07-21"
+updated: "2026-07-21"
+keywords:
+  - "organization schema"
+  - "strukturovaná data o firmě"
+  - "sameAs pro značku"
+  - "legalName IČO schema"
+  - "identifikace značky pro ai"
+variant: "rich"
+stats:
+  - value: "0 povinných"
+    label: "Google u typu Organization neuvádí žádnou povinnou vlastnost"
+  - value: "1 stránka"
+    label: "doporučené umístění: domovská nebo jedna stránka popisující organizaci"
+  - value: "bez záruky"
+    label: "Google výslovně negarantuje zobrazení funkcí, které strukturovaná data používají"
+  - value: "bez korelace"
+    label: "analýza Search Atlas nenašla vztah mezi pokrytím značkováním a citacemi v LLM"
+howto:
+  name: "Jak nasadit Organization pro vlastní značku"
+  steps:
+    - name: "Vyberte jednu stránku"
+      text: "Domovskou stránku nebo stránku o firmě. Google doporučuje umístit tyhle údaje právě na jednu takovou stránku; plošné opakování z té rady neplyne."
+    - name: "Vyplňte identitu"
+      text: "Název, pod kterým vás lidé znají, právní název z rejstříku, adresu webu, logo a krátký popis. Všechno musí sedět s tím, co je na stránce vidět."
+    - name: "Doplňte české identifikátory"
+      text: "IČO, DIČ s národním prefixem a sídlo. Schema.org české identifikátory nejmenuje, takže jde o výklad podle definic — ne o dokumentované pravidlo."
+    - name: "Vypište sameAs"
+      text: "Profily, které jednoznačně ukazují na tutéž firmu. Definice mluví o jednoznačné identitě, ne o počtu odkazů — méně udržovaných profilů je lepší než hodně opuštěných."
+    - name: "Ověřte a zkontrolujte duplicity"
+      text: "Projeďte blok validátorem strukturovaných dat a zjistěte, kde všude se na webu vypisuje. Některé pluginy ho přidávají na každou stránku automaticky."
+faq:
+  - q: "K čemu Organization ve strukturovaných datech vlastně slouží?"
+    a: "Podle dokumentace Googlu pomáhá lépe porozumět administrativním údajům organizace a rozlišit ji ve výsledcích vyhledávání. Jde tedy o identifikaci — kdo jste, jak se jmenujete právně, kde sídlíte, kde jinde na webu jste. Některé vlastnosti navíc ovlivňují, které logo se ukáže ve výsledcích a ve znalostním panelu."
+  - q: "Zvýší mi Organization šanci na citace v ChatGPT nebo Perplexity?"
+    a: "Nic takového doloženo není. Search Engine Land uvádí, že ChatGPT ani Perplexity nezveřejnily, jestli strukturovaná data vůbec používají, a že o jejich dopadu na viditelnost v AI neexistuje recenzovaná studie. Analýza Search Atlas navíc nenašla vztah mezi pokrytím značkováním a tím, jak často se doména objevuje v odpovědích. Dělejte to kvůli identifikaci, ne kvůli citacím."
+  - q: "Patří ten blok na každou stránku, nebo na jednu?"
+    a: "Google doporučuje umístit tyhle informace na domovskou stránku nebo na jednu stránku, která organizaci popisuje. Opakovat celý blok na každé podstránce není podle téhle rady potřeba. Pluginy a generátory v redakčních systémech to přesto dělají — stojí za to zkontrolovat, co váš web skutečně vypisuje."
+  - q: "Jak do toho zapsat IČO a DIČ?"
+    a: "IČO se obvykle mapuje na taxID a DIČ na vatID, které podle definice vyžaduje národní prefix, tedy tvar CZ12345678. Pozor ale na to, že schema.org ani Google české identifikátory nikde nejmenují — je to odvození z obecných definic, ne dokumentované pravidlo. Právní název firmy z rejstříku patří do legalName."
+  - q: "Kolik odkazů má mít sameAs?"
+    a: "Schema.org definuje sameAs jako odkaz na stránku, která jednoznačně ukazuje identitu položky. Kritérium je tedy jednoznačnost, ne počet. Aktivní profily, které skutečně patří vaší firmě, dávají smysl; odkazy na opuštěné a poloprázdné profily jsou spíš šum."
+  - q: "Musím vyplnit všechny doporučené vlastnosti?"
+    a: "Ne. Google výslovně uvádí, že u tohoto typu nejsou žádné povinné vlastnosti, a doporučuje přidat ty, které jsou pro vaši organizaci relevantní. Identifikátory jako duns nebo leiCode se týkají velkých a mezinárodních subjektů — běžná česká firma je nepotřebuje."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Organization je typ strukturovaných dat, kterým na jedné stránce webu strojově popíšete svou firmu — název, právní název, logo, kontakty a odkazy na profily.** Google ho dokumentuje pro rozlišení identity a administrativních údajů, ne jako nástroj na citace v AI. Žádnou vlastnost přitom neuvádí jako povinnou.
+
+Tomuhle typu se často připisuje vliv na citace v AI. Dokumentace ani dostupné analýzy to netvrdí. Nasadit ho přesto stojí za to — jen z jiného důvodu, než se obvykle uvádí.
+
+## Co Organization podle Googlu dělá
+
+Google popisuje účel jednou větou: pomáhá mu lépe porozumět **administrativním údajům** organizace a **rozlišit ji** ve výsledcích vyhledávání. Nic o citacích, nic o AI odpovědích.
+
+Z dokumentace stojí za zapamatování ještě tři věci:
+
+- **Žádná vlastnost není povinná.** Google doslova uvádí, že povinné vlastnosti nejsou, a doporučuje přidat ty relevantní.
+- **Doporučené umístění je jedna stránka** — domovská nebo ta, která organizaci popisuje. Plošné opakování napříč webem z té rady neplyne.
+- **Žádná záruka.** Google výslovně uvádí, že nezaručuje zobrazení funkcí, které strukturovaná data používají.
+
+Některé vlastnosti přitom ovlivňují viditelné prvky — třeba které **logo** se ukáže ve výsledcích a ve znalostním panelu. To je konkrétní a ověřitelný přínos.
+
+<Insight tone="key">
+Řada generátorů strukturovaných dat v redakčních systémech vypisuje identický blok o firmě na každé podstránce. Google to nezakazuje, ale jeho rada zní jinak — a hlavně to znamená, že váš web nejspíš nějaký blok už má. Než začnete přidávat vlastnosti, podívejte se, co v něm dnes stojí.
+</Insight>
+
+## Co o vlivu na citace víme (a co ne)
+
+Pro pořádek: audit AI viditelnosti sami prodáváme, takže slib „strukturovaná data = citace“ by nám hrál do karet. Čtěte následující s tím vědomím.
+
+**Co je doložené:** Google a Microsoft uvedli přínos strukturovaných dat pro své vyhledávací a AI funkce — bez veřejně doložené vazby na to, jak často jsou značky citované v odpovědích modelů. Studie publikovaná v Nature Communications (únor 2024) ukázala, že jazykové modely extrahují informace přesněji ze strukturovaného vstupu než z volného textu.
+
+**Co doložené není:** podle přehledu Search Engine Land neexistuje recenzovaná studie o dopadu strukturovaných dat na viditelnost v AI a **ChatGPT ani Perplexity nezveřejnily, jestli je vůbec používají**.
+
+**Co zatím žádný vztah neukázalo:** analýza Search Atlas porovnala pokrytí značkováním s tím, jak často se doména objevuje v odpovědích OpenAI, Gemini a Perplexity. Domény rozdělila do pěti pásem podle pokrytí — od nulového po stoprocentní — a rozdělení viditelnosti vyšlo napříč pásmy prakticky totožné.
+
+<Insight tone="warning">
+Tu analýzu neberte jako důkaz, že značkování nefunguje. Autoři sami uvádějí, že měřili jen **přítomnost** značkování, ne jeho typ a kvalitu, že jde o pozorování a ne o kauzalitu a že pokrývá tři platformy; Search Atlas je navíc dodavatel SEO nástrojů a počet domén ve vzorku neuvedl.
+
+**Pro slib citací tedy není opora ani na jedné straně.** Rozhodujte se podle toho, co doložené je — identifikace.
+</Insight>
+
+## Kde to má v Česku největší smysl
+
+V českém prostředí dává Organization smysl ještě z jednoho důvodu: **značka se u nás běžně jmenuje jinak než právní subjekt za ní.** Zákazník zná e-shop pod jedním názvem, fakturu dostane od s.r.o., o kterém nikdy neslyšel, a na LinkedInu je firma vedená pod třetí variantou.
+
+Pro stroj jsou to různé řetězce, dokud je něco nespojí. `legalName` k tomu slouží přímo — nese oficiální název organizace — a spolu s `name`, `url` a `sameAs` dává dohromady popis, ze kterého jde identitu odvodit. Sám o sobě to nezařídí a odvodit se dá i odjinud — z patičky, z profilů, z rejstříku. Přímo a jednoznačně to na webu ale neřekne nic jiného.
+
+U jednoduchého firemního webu je to jedna stránka a jeden blok. Složitější to bývá tam, kde strukturovaná data generuje plugin, kde má firma víc poboček nebo víc značek pod jedním subjektem — tam je první práce zjistit, co všechno už web posílá.
+
+## Co do bloku patří
+
+<CompareTable
+  caption="Vlastnosti, které dávají smysl běžné české firmě"
+  columns={["Co tam dát", "Proč"]}
+  rows={[
+    { icon: "🏷️", label: "name a alternateName", left: "Jméno, pod kterým vás lidé znají, a zkratka či varianta", right: "Nejčastější tvar, kterým vás někdo hledá" },
+    { icon: "⚖️", label: "legalName", left: "Obchodní firma přesně podle rejstříku", right: "Nese oficiální název z rejstříku; spolu s name a sameAs je to na webu často jediný strojově čitelný náznak té vazby" },
+    { icon: "🖼️", label: "logo", left: "Odkaz na soubor s logem", right: "Google uvádí, že ovlivňuje, které logo se ukáže ve výsledcích a ve znalostním panelu" },
+    { icon: "🔗", label: "sameAs", left: "Profily, které jednoznačně ukazují tutéž firmu", right: "Podle definice jde o jednoznačnost identity, ne o počet odkazů" },
+    { icon: "🧾", label: "taxID a vatID", left: "IČO a DIČ s prefixem CZ", right: "Administrativní identifikátory, které jsou pro každou firmu jedinečné; v ČR se vykládají jako IČO a DIČ" },
+    { icon: "📍", label: "address a contactPoint", left: "Sídlo a kontakt", right: "Administrativní údaje, kvůli kterým typ podle Googlu existuje" },
+  ]}
+/>
+
+Identifikátory jako `duns`, `leiCode` nebo `iso6523Code` Google také uvádí, ale týkají se velkých a mezinárodních subjektů. Běžná česká firma je nepotřebuje.
+
+## České identifikátory: mapování, ne pravidlo
+
+Tohle je potřeba říct rovnou, protože se to jinde vydává za dané: **schema.org ani Google české identifikátory nikde nejmenují.**
+
+Mapování níže je odvozené z obecných definic:
+
+- **IČO → `taxID`.** Schema.org uvádí jako příklad španělské CIF/NIF, což je rovněž identifikátor firmy v rejstříku. Obhajitelné, ale ne doslovné.
+- **DIČ → `vatID`.** Tady je to čisté: definice explicitně žádá národní prefix, tedy `CZ12345678`.
+- **Obchodní firma z rejstříku → `legalName`.** Přímo podle definice: „oficiální název organizace, například zapsaný název firmy“.
+
+Prakticky z toho plyne rozhodnutí: pokud mapování použijete, dělejte to konzistentně napříč webem a netvrďte o něm, že jde o oficiální pravidlo. A pokud se vám výklad nezdá, je bezpečnější `taxID` **vynechat** než do něj zapsat hodnotu, u jejíhož významu si nejste jistí. Chybějící údaj nikdo za chybu nepovažuje.
+
+## Příklad
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://vasweb.cz/#organizace",
+  "name": "Vaše značka",
+  "legalName": "Vaše značka s.r.o.",
+  "alternateName": "VZ",
+  "url": "https://vasweb.cz/",
+  "logo": "https://vasweb.cz/logo.png",
+  "description": "Krátký popis toho, co firma dělá.",
+  "taxID": "12345678",
+  "vatID": "CZ12345678",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Ulice 1",
+    "addressLocality": "Praha",
+    "postalCode": "11000",
+    "addressCountry": "CZ"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/vase-znacka/",
+    "https://www.firmy.cz/detail/000000-vase-znacka.html",
+    "https://www.wikidata.org/wiki/Q000000"
+  ]
+}
+```
+
+Ukázka kombinuje běžné položky s volitelnými — `taxID` a `vatID` stojí na výkladovém mapování z předchozí části, `sameAs` závisí na tom, kde firma opravdu je. `@id` je stabilní identifikátor, na který pak odkazujete z dalších dat — třeba jako `publisher` u článků. Mechaniku `@id` rozebírá článek o [Person datech pro autora](/blog/person-data-pro-autora/), u firmy funguje stejně.
+
+Související: [ostatní typy strukturovaných dat](/blog/strukturovana-data-pro-ai/) · [profil na Firmy.cz](/blog/firmy-cz-pro-ai/) · [značka na Wikipedii a ve Wikidatech](/blog/znacka-na-wikipedii-pro-ai/).
+
+## Postup
+
+<Stepper
+  steps={[
+    { label: "Krok 1", title: "Vyberte jednu stránku", text: "Domovskou nebo stránku o firmě. Nejdřív ale zkontrolujte, co web vypisuje dnes — často už blok někde je." },
+    { label: "Krok 2", title: "Vyplňte identitu", text: "Název, právní název, url, logo, popis. Všechno musí sedět s tím, co je na stránce vidět." },
+    { label: "Krok 3", title: "Doplňte identifikátory", text: "IČO, DIČ s prefixem CZ, sídlo, kontakt. Přesně tak, jak jsou v rejstříku." },
+    { label: "Krok 4", title: "Vypište sameAs", text: "Profily, které jednoznačně patří téhle firmě. Opuštěné profily raději vynechte." },
+    { label: "Krok 5", title: "Ověřte", text: "Validátor strukturovaných dat plus kontrola, kde všude se blok na webu vypisuje." },
+  ]}
+/>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Nevědět, co web vypisuje">
+    Google doporučuje domovskou nebo jednu stránku popisující organizaci. Je-li blok konzistentní a správný, opakování samo o sobě doložený problém není — řešte hlavně rozpory mezi verzemi a to, že o obsahu svých dat pak nerozhodujete vy, ale plugin.
+  </Mistake>
+  <Mistake number="02" title="sameAs jako odkazovník">
+    Definice mluví o stránce, která **jednoznačně ukazuje identitu**. Není to sekce „naše profily“ a počet odkazů není skóre.
+  </Mistake>
+  <Mistake number="03" title="Značka bez právního názvu">
+    Bez `legalName` na webu chybí přímý strojově čitelný údaj o oficiálním názvu. Odvodit se dá i z patičky nebo z rejstříku, ale jednoznačné to pak není — a přitom je to přesně ten rozpor, na který tenhle typ míří.
+  </Mistake>
+  <Mistake number="04" title="Čekat od toho citace">
+    Je to identifikace, ne distribuce. Kdo vám za tohle slibuje citace v AI, opírá se o něco, co zatím nikdo neukázal.
+  </Mistake>
+</MistakeGrid>
+
+## Podle čeho poznáte, že je to hotové
+
+Ověřitelné je tohle — a citace v AI mezi tím nejsou:
+
+- **Blok projde validátorem** strukturovaných dat bez chyb.
+- **Údaje sedí s tím, co je na stránce vidět**, a s rejstříkem. Rozpor je horší než chybějící údaj.
+- **Napříč webem je jedna verze údajů**, ne tři různé na třech stránkách.
+- **Logo a údaje, které Google zobrazuje**, odpovídají tomu, co posíláte. Je to jediný viditelný výstup, na který u tohohle typu dokumentace odkazuje.
+
+## Kdy to řešit a kdy stačí minimum
+
+- **Značka se jmenuje jinak než firma v rejstříku, máte veřejné profily a kontakty na webu** — vyplňte Organization celý, tohle je přesně ten případ.
+- **Značka a právní název se kryjí, žádné veřejné profily** — stačí minimum: název, url, logo, kontakt. Zbytek u tohohle případu jasný praktický přínos obvykle nepřinese.
+- **Web už nějaký blok vypisuje** — první práce není přidávat, ale zjistit, co tam je a jestli to sedí se skutečností.
+
+## Co si z toho odnést
+
+Organization je jedno z přímých míst, kde se dá strojově vyjádřit vazba mezi značkou a právním subjektem. **Doložený přínos je ale úzký:** srozumitelnější strojový popis organizace pro Google a vliv na to, které logo se zobrazí. Nic víc dokumentace neslibuje — a i u toho si Google vyhrazuje, že zobrazení funkcí nezaručuje.
+
+Rozhodnutí z toho plyne prosté. Liší se vaše značka od právního názvu, nebo máte veřejné profily, které k firmě patří? Doplňte blok; je to malá úprava s doloženým, byť úzkým účelem. Kryjí se názvy a nikde jinde veřejně nejste? Vystačíte si s minimem a o nic doloženého nepřijdete.
