@@ -344,6 +344,18 @@ export const groups: TermGroup[] = [
         link: { href: "/blog/llms-txt-navod/", label: "llms.txt návod" },
       },
       {
+        id: "googlebot",
+        term: "Googlebot",
+        def: "Hlavní crawler Googlu, který prochází a indexuje web pro klasické vyhledávání — a jeho index živí i AI Overviews a AI Mode. Od tréninkového bota Google-Extended se liší účelem: zablokovat Googlebot znamená zmizet z vyhledávání i z AI odpovědí Googlu.",
+        link: { href: "/blog/ai-crawler-robots-txt/", label: "Robots.txt pro AI" },
+      },
+      {
+        id: "google-extended",
+        term: "Google-Extended",
+        def: "Samostatný token v robots.txt, kterým Google odděluje trénink AI modelů (Gemini) od vyhledávání. Jeho zakázání nevyřadí web z Googlu ani z AI Overviews — omezí jen použití obsahu pro trénink. Rozhodnutí je proto strategické, ne technické.",
+        link: { href: "/blog/ai-crawler-robots-txt/", label: "Robots.txt pro AI" },
+      },
+      {
         id: "search-console",
         term: "Google Search Console",
         aka: "GSC",
@@ -356,6 +368,20 @@ export const groups: TermGroup[] = [
         aka: "zobrazení",
         def: "Počet zobrazení webu ve výsledcích či AI odpovědích — bez ohledu na kliknutí. V AI éře klíčová metrika: velká část hodnoty (doporučení v odpovědi, brand awareness) vzniká právě při zobrazení, které v návštěvnosti nikdy neuvidíte.",
         link: { href: "/ai-viditelnost/", label: "200 000 zobrazení — data" },
+      },
+      {
+        id: "ctr",
+        term: "CTR",
+        aka: "click-through rate, míra prokliku",
+        def: "Poměr kliknutí k zobrazením — kolik procent lidí, kteří web viděli ve výsledcích, na něj skutečně kliklo. V AI éře CTR u informačních dotazů plošně klesá (odpověď dostane uživatel rovnou), proto se vyplácí sledovat ho spolu s impresemi, ne izolovaně.",
+        link: { href: "/blog/zero-click-ai/", label: "Zero-click éra" },
+      },
+      {
+        id: "ga4",
+        term: "Google Analytics 4",
+        aka: "GA4",
+        def: "Bezplatný analytický nástroj Googlu pro měření návštěvnosti a konverzí webu. V AI éře slouží hlavně k měření AI referralů — návštěv z ChatGPT, Perplexity či Gemini — přes segment podle zdroje relace; zobrazení v AI odpovědích ale nevidí, to umí jen Search Console.",
+        link: { href: "/blog/ai-navstevnost-konverze/", label: "Měření AI návštěvnosti" },
       },
       {
         id: "share-of-model",
