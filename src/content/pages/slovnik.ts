@@ -23,7 +23,7 @@ export const hero = {
 };
 
 export interface Term {
-  /** Kotva (#id) — neměnit, cílí na ni interní odkazy. */
+  /** Kotva (#id) — neměnit, cílí na ni interní odkazy. Zároveň slug detailu /slovnik/<id>/. */
   id: string;
   /** Název hesla. */
   term: string;
@@ -33,6 +33,12 @@ export interface Term {
   def: string;
   /** Odkaz na hlubší obsah na webu. */
   link?: { href: string; label: string };
+  /**
+   * Rozšířený výklad pro detailní stránku /slovnik/<id>/ (top hesla).
+   * Odstavce oddělené prázdným řádkem (\n\n); povolený inline <a>/<strong>.
+   * Hesla bez `long` mají detail jen s definicí + auto-sekcemi (články, související).
+   */
+  long?: string;
 }
 
 export interface TermGroup {
@@ -52,6 +58,8 @@ export const groups: TermGroup[] = [
         aka: "SEO pro AI",
         def: "Souhrnné označení pro optimalizaci webu pro AI éru vyhledávání: klasické SEO základy doplněné o citovatelnost v generativních nástrojích (ChatGPT, Perplexity, Gemini) a ve funkcích Googlu s generativní AI. Cílem není jen pozice, ale být součástí AI odpovědí.",
         link: { href: "/seo/", label: "Sekce SEO" },
+        long:
+          "AI SEO není nová disciplína, která by klasické SEO nahrazovala — je to jeho rozšíření o novou otázku: <strong>umí váš obsah přečíst, pochopit a citovat umělá inteligence?</strong> Zatímco klasické SEO optimalizuje pro pozici v seznamu odkazů, AI SEO optimalizuje pro roli zdroje v hotové odpovědi. Uživatel často žádný seznam neuvidí — dostane rovnou odpověď a v ní (nebo pod ní) citace.\n\nV praxi AI SEO stojí na čtyřech pilířích: technicky zdravý a indexovatelný web (bez toho vás žádná AI nenajde), obsah strukturovaný jako odpovědi na konkrétní otázky, strukturovaná data, která obsahu dodají strojově čitelný kontext, a důvěryhodná značka konzistentní napříč internetem.\n\nNa tomto webu pokrýváme AI SEO jako celek: čtyři disciplíny <a href=\"/seo/\">SEO</a>, <a href=\"/geo/\">GEO</a>, <a href=\"/aeo/\">AEO</a> a <a href=\"/aio/\">AIO</a> plus novou vrstvu <a href=\"/ai-mode/\">Google AI Mode</a>. Pokud začínáte, projděte <a href=\"/zacnete-tady/\">kurátorovanou cestu Začněte tady</a>.",
       },
       {
         id: "seo",
@@ -66,6 +74,8 @@ export const groups: TermGroup[] = [
         aka: "Generative Engine Optimization",
         def: "Optimalizace obsahu tak, aby ho generativní AI nástroje (ChatGPT, Perplexity, Claude, Gemini) používaly jako zdroj a citovaly ho ve svých odpovědích. Stojí na jasných definicích, konkrétních faktech, struktuře a budování zmínek o značce v důvěryhodných zdrojích.",
         link: { href: "/geo/", label: "Sekce GEO" },
+        long:
+          "GEO (Generative Engine Optimization) odpovídá na situaci, kdy se zákazník neptá Googlu, ale ChatGPT, Perplexity nebo Gemini. Tyto nástroje odpověď generují — a přitom si vybírají, ze kterých zdrojů budou čerpat a koho citují. GEO je řemeslo, jak se mezi tyto zdroje dostat.\n\nGenerativní enginy preferují obsah, který je <strong>fakticky hutný, jasně strukturovaný a snadno ověřitelný</strong>: krátké definice, konkrétní čísla, tabulky, odpovědi na přesně položené otázky. A protože si modely ověřují tvrzení napříč zdroji, roli hraje i konzistence vaší značky mimo váš web — recenze, zmínky, profily.\n\nPodrobný rozbor disciplíny najdete v <a href=\"/geo/\">sekci GEO</a>, praktický postup v <a href=\"/blog/geo-optimalizace/\">návodu na GEO optimalizaci v 7 krocích</a> a mechaniku výběru zdrojů v článku <a href=\"/blog/jak-ai-cituje-zdroje/\">Jak AI cituje zdroje</a>.",
       },
       {
         id: "aeo",
@@ -73,6 +83,8 @@ export const groups: TermGroup[] = [
         aka: "Answer Engine Optimization",
         def: "Užší disciplína zaměřená na answer engines napojené na vyhledávač — Google AI Overviews, Featured Snippets či Bing Copilot. Pracuje s krátkými odpověďmi, FAQ sekcemi a strukturovanými daty, aby vyhledávač mohl stránku použít jako přímou odpověď na dotaz.",
         link: { href: "/aeo/", label: "Sekce AEO" },
+        long:
+          "AEO (Answer Engine Optimization) cílí na odpovědní systémy napojené na vyhledávače — především Google AI Overviews, Featured Snippets a Bing Copilot. Od GEO se liší tím, že se odehrává uvnitř ekosystému vyhledávače: kandidáty na citaci si systém vybírá z indexovaných stránek, typicky z těch, které už dobře fungují v klasickém vyhledávání.\n\nŘemeslo AEO je konkrétní: <strong>krátká odpověď 40–60 slov hned pod nadpisem</strong>, nadpisy formulované jako otázky, FAQ sekce se strukturovanými daty, návody krok za krokem s HowTo schematem. Přesně z takových bloků odpovědní panely skládají obsah.\n\nZáklady rozebírá <a href=\"/aeo/\">sekce AEO</a>, praktiku <a href=\"/blog/aeo-optimalizace-v-praxi/\">návod na AEO optimalizaci</a> — včetně anatomie answer blocku a šablon pěti typů otázek.",
       },
       {
         id: "aio",
@@ -92,6 +104,8 @@ export const groups: TermGroup[] = [
         aka: "Experience, Expertise, Authoritativeness, Trust",
         def: "Rámec Googlu pro hodnocení důvěryhodnosti obsahu: zkušenost, odbornost, autorita a důvěryhodnost. V AI éře nabývá na váze — systémy preferují obsah s dohledatelným autorem, doloženou praxí a konzistentní entitou značky napříč webem.",
         link: { href: "/blog/e-e-a-t-pro-ai/", label: "E-E-A-T pro AI" },
+        long:
+          "E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness — zkušenost, odbornost, autorita, důvěryhodnost) je rámec, kterým Google popisuje kvalitu zdroje. Není to přímý ranking faktor se skóre — je to souhrn signálů, podle kterých systémy (a čím dál víc i AI odpovědi) poznávají, komu věřit.\n\nV AI éře význam E-E-A-T roste: generativní systémy si vybírají zdroje pro citace a <strong>ověřitelná identita autora a značky je jedním z hlavních vodítek</strong>. Prakticky to znamená: viditelný autor s vlastní stránkou a Person schematem, reálná zkušenost v textech („testovali jsme\", konkrétní čísla z praxe), konzistentní profil značky napříč webem, recenzemi a zmínkami.\n\nCelý rozbor najdete v článku <a href=\"/blog/e-e-a-t-pro-ai/\">E-E-A-T pro AI</a>; navazují <a href=\"/blog/autorsky-profil-pro-ai/\">autorský profil pro AI</a> a heslo <a href=\"/slovnik/brand-mentions/\">brand mentions</a>.",
       },
       {
         id: "zero-click",
@@ -117,6 +131,8 @@ export const groups: TermGroup[] = [
         aka: "Google AI Mode, režim AI",
         def: "Konverzační režim vyhledávání Googlu: samostatná záložka, kde místo seznamu odkazů dostanete souvislou odpověď složenou z mnoha zdrojů, s citacemi a navazujícími otázkami. Dotazy rozkládá technikou query fan-out; v ČR zájem meziročně vyrostl o tisíce procent.",
         link: { href: "/ai-mode/", label: "Sekce AI Mode" },
+        long:
+          "Google AI Mode je samostatná záložka vyhledávání, ve které Google místo seznamu odkazů rovnou skládá odpověď — a čeká na navazující otázky jako v chatu. Stojí na stejném indexu jako klasické vyhledávání, ale funguje jinak: dotaz rozloží na desítky dílčích podotázek (query fan-out) a pro každou hledá nejlepší odpověď.\n\nPro weby to znamená zásadní posun: <strong>citaci nevyhrává stránka první na hlavní dotaz, ale stránka nejpřesněji odpovídající na konkrétní podotázku.</strong> Malý specializovaný článek tak může porazit velkou autoritu. V Česku zájem o AI Mode prudce roste — hledanost meziročně vzrostla o tisíce procent.\n\nKompletní rozbor včetně pěti kroků přípravy najdete v <a href=\"/ai-mode/\">sekci Google AI Mode</a>; srovnání s AI Overviews v článku <a href=\"/blog/ai-mode-vs-ai-overviews/\">AI Mode vs. AI Overviews</a> a praktický návod v textu <a href=\"/blog/jak-se-zobrazit-v-ai-mode/\">Jak se zobrazit v AI Mode</a>.",
       },
       {
         id: "ai-overviews",
@@ -124,12 +140,16 @@ export const groups: TermGroup[] = [
         aka: "AI přehledy, dříve SGE",
         def: "AI souhrn zobrazovaný nad klasickými výsledky Googlu: stručná odpověď vygenerovaná z více zdrojů s odkazy na citované weby. Na rozdíl od AI Mode nenahrazuje výsledky, ale předsazuje se před ně — a snižuje míru prokliku u informačních dotazů.",
         link: { href: "/aio/", label: "Sekce AIO" },
+        long:
+          "AI Overviews je funkce Googlu, která nad klasické výsledky vloží AI souhrn složený z více zdrojů, s citacemi. Na rozdíl od AI Mode ji uživatel nevolí — zobrazuje se automaticky u dotazů, kde ji Google vyhodnotí jako užitečnou, typicky u informačních otázek.\n\nPro weby má AI Overviews dvojí tvář. Kdo je citovaný, získává viditelnost a důvěru „nad prvním místem\". Kdo citovaný není, přichází o kliknutí — uživatel dostal odpověď a nemá důvod scrollovat. Proto se kolem AI Overviews vedou dvě legitimní strategie: <strong>optimalizovat na citaci</strong> (viz <a href=\"/aeo/\">AEO</a>), nebo u citlivého obsahu <strong>použití obsahu omezit</strong>.\n\nJak se do AI Overviews dostat, rozebírá <a href=\"/blog/aeo-optimalizace-v-praxi/\">praktický návod</a>; jak je naopak omezit, řeší návod <a href=\"/blog/jak-vypnout-ai-overview/\">Jak vypnout AI Overviews</a>. Zobrazení vašeho webu v AI funkcích měří beta report v <a href=\"/blog/gsc-ai-segmenty-mereni/\">Search Console</a>.",
       },
       {
         id: "query-fan-out",
         term: "Query fan-out",
         def: "Technika generativního vyhledávání: systém rozloží jeden dotaz na desítky dílčích podotázek, každou zodpoví z indexu a odpovědi složí do výsledného textu. Citace tak vyhrávají stránky, které nejlépe odpovídají na konkrétní podotázku — ne nutně ty první na hlavní dotaz.",
         link: { href: "/blog/query-fan-out-ai-mode/", label: "Query fan-out rozbor" },
+        long:
+          "Query fan-out je technika, kterou Google AI Mode zpracovává dotazy: jeden dotaz uživatele rozloží na desítky dílčích podotázek, každou zvlášť vyhledá v indexu a z nejlepších odpovědí složí výsledný text s citacemi. Z dotazu „jaký vosk na tmavý lak v zimě\" se tak stane sada otázek o typech vosků, chování laku v mrazu, konkrétních produktech i recenzích.\n\nDůsledek pro tvorbu obsahu je zásadní: <strong>jednotkou optimalizace přestává být klíčové slovo a stává se jí odpověď na podotázku.</strong> Web strukturovaný jako sada jasných otázek a odpovědí má v osudí víc losů než jeden dlouhý text optimalizovaný na jediný dotaz.\n\nMechanismus do hloubky rozebírá článek <a href=\"/blog/query-fan-out-ai-mode/\">Query fan-out: jak Google AI Mode čte obsah</a>; širší kontext najdete v <a href=\"/ai-mode/\">sekci AI Mode</a>.",
       },
       {
         id: "featured-snippet",
@@ -218,6 +238,8 @@ export const groups: TermGroup[] = [
         term: "LLM",
         aka: "velký jazykový model",
         def: "Velký jazykový model — AI systém natrénovaný na obrovském množství textu, který umí rozumět jazyku a generovat odpovědi (GPT, Gemini, Claude). LLM pohání všechny AI vyhledávací nástroje; jejich znalosti končí datem tréninku, proto se kombinují s živým vyhledáváním.",
+        long:
+          "LLM (velký jazykový model) je AI systém natrénovaný na obrovském množství textu, který umí rozumět jazyku a generovat odpovědi — pohání ChatGPT (GPT), Gemini, Claude i české nástroje jako SeLLMa od Seznamu. Pro viditelnost webu jsou podstatné dvě vlastnosti LLM.\n\nZaprvé, <strong>znalosti modelu končí datem tréninku</strong> — proto se LLM kombinují s živým vyhledáváním (viz <a href=\"/slovnik/rag/\">RAG</a>) a proto má čerstvý obsah šanci na citaci i proti velkým autoritám. Zadruhé, modely pracují s významem, ne s přesnou shodou klíčových slov: rozhoduje, jestli váš text srozumitelně odpovídá na otázku, ne kolikrát obsahuje frázi.\n\nJak LLM vybírají, koho citovat, rozebírá <a href=\"/blog/jak-ai-cituje-zdroje/\">Jak AI cituje zdroje</a>; pro jednotlivé nástroje viz hesla <a href=\"/slovnik/chatgpt/\">ChatGPT</a>, <a href=\"/slovnik/perplexity/\">Perplexity</a> a <a href=\"/slovnik/claude/\">Claude</a>.",
       },
       {
         id: "rag",
@@ -225,6 +247,8 @@ export const groups: TermGroup[] = [
         aka: "Retrieval-Augmented Generation",
         def: "Technika, kdy si AI před odpovědí dohledá aktuální podklady (vyhledáváním či ve vlastní databázi) a odpověď generuje z nich, s citacemi. Právě RAG dělá z AI asistentů vyhledávače — a z vašeho obsahu potenciální zdroj odpovědí.",
         link: { href: "/blog/rag-ai-vyhledavani/", label: "RAG rozbor" },
+        long:
+          "RAG (Retrieval-Augmented Generation) je technika, díky které AI asistenti nejsou odkázaní jen na to, co se naučili při tréninku: před odpovědí si <strong>dohledají aktuální podklady</strong> (vyhledáváním na webu či ve vlastní databázi) a odpověď generují z nich — typicky s citacemi zdrojů.\n\nPrávě RAG dělá z chatbotů vyhledávače a z vašeho webu potenciální zdroj odpovědí. Má to praktický důsledek: do RAG odpovědí se dostává obsah, který je dohledatelný, čerstvý a snadno „vyříznutelný\" — pasáže, které dávají smysl samy o sobě. Obsah zamčený za přihlášením nebo závislý na kontextu celé stránky má smůlu.\n\nJak RAG funguje krok za krokem, rozebírá článek <a href=\"/blog/rag-ai-vyhledavani/\">RAG: jak AI vyhledávání funguje</a>; navazuje heslo <a href=\"/slovnik/embedding/\">embedding</a> a <a href=\"/slovnik/query-fan-out/\">query fan-out</a>.",
       },
       {
         id: "prompt-engineering",
@@ -342,6 +366,8 @@ export const groups: TermGroup[] = [
         term: "llms.txt",
         def: "Navrhovaný standard: soubor v kořeni webu, který AI systémům přehledně shrnuje, co web nabízí a kde najdou klíčový obsah — jakási mapa webu pro jazykové modely. Podpora mezi AI firmami se teprve vyvíjí; nasazení je levné a bez rizika.",
         link: { href: "/blog/llms-txt-navod/", label: "llms.txt návod" },
+        long:
+          "llms.txt je navržený standard (autor Jeremy Howard): Markdown soubor v kořeni domény, který AI systémům přehledně shrnuje, co web nabízí a kde najdou klíčový obsah — mapa webu psaná pro jazykové modely. Podpora mezi AI firmami se stále vyvíjí: deklarují ji např. Anthropic a Perplexity, Google podle veřejných vyjádření soubor nevyužívá.\n\nZ vlastní zkušenosti dodáváme jedno pravidlo: <strong>llms.txt generujte automaticky, nepište ho ručně.</strong> Ručně psaný soubor nám zastaral za dva měsíce; generovaný při buildu se aktualizuje s každým novým obsahem sám — ten náš najdete na <a href=\"https://aiseo-optimalizace.cz/llms.txt\">aiseo-optimalizace.cz/llms.txt</a>.\n\nKompletní návod včetně formátu a rozhodnutí, kdy llms.txt neřešit, je v článku <a href=\"/blog/llms-txt-navod/\">llms.txt v roce 2026</a>.",
       },
       {
         id: "googlebot",

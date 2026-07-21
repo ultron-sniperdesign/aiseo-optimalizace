@@ -1,0 +1,328 @@
+---
+/**
+ * Detail slovníkového hesla /slovnik/<id>/ — samostatná citovatelná URL.
+ *
+ * Data: src/content/pages/slovnik.ts (id hesla = slug). Top hesla mají
+ * rozšířený výklad `long` (odstavce přes \n\n, inline <a>/<strong> —
+ * POZOR set:html gotcha: potomci potřebují :global()). Všechna hesla
+ * dostávají auto-sekce: „Kde se s pojmem potkáte" (články dle title/
+ * keywords, roste samo s blogem) a související hesla ze skupiny.
+ * JSON-LD: DefinedTerm navázaný na DefinedTermSet indexu.
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
+import { groups } from "~/content/pages/slovnik";
+
+export async function getStaticPaths() {
+  return groups.flatMap((g) =>
+    g.terms.map((t) => ({ params: { heslo: t.id }, props: { term: t, group: g } })),
+  );
+}
+
+const { term, group } = Astro.props;
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+const pageUrl = `${SITE_ORIGIN}/slovnik/${term.id}/`;
+
+/** Rozšířený výklad → odstavce. */
+const longParas = term.long ? term.long.split("\n\n") : [];
+
+/** Auto: články, kde se pojem potkává (title/keywords match, top 5 dle updated). */
+const needles = [term.term, ...(term.aka ? term.aka.split(",").map((s) => s.trim()) : [])]
+  .map((s) => s.toLowerCase())
+  .filter((s) => s.length >= 3);
+const articles = (await getCollection("articles"))
+  .filter((a) => {
+    const hay = (a.data.title + " " + a.data.keywords.join(" ")).toLowerCase();
+    return needles.some((n) => hay.includes(n));
+  })
+  .sort((a, b) => b.data.updated.localeCompare(a.data.updated))
+  .slice(0, 5);
+
+/** Související hesla — stejná skupina, bez sebe. */
+const related = group.terms.filter((t) => t.id !== term.id).slice(0, 6);
+
+const metaTitle = `Co je ${term.term}? — slovník AI SEO`;
+const metaDesc = term.def.length > 158 ? term.def.slice(0, 155).trimEnd() + "…" : term.def;
+
+const termJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "@id": `${pageUrl}#term`,
+  name: term.term,
+  ...(term.aka ? { alternateName: term.aka } : {}),
+  description: term.def,
+  url: pageUrl,
+  inDefinedTermSet: `${SITE_ORIGIN}/slovnik/#set`,
+  inLanguage: site.inLanguage,
+};
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={metaDesc}
+  jsonLd={termJsonLd}
+  image="/og/slovnik.png"
+  breadcrumb={[
+    { label: "Slovník", href: "/slovnik/" },
+    { label: term.term, href: `/slovnik/${term.id}/` },
+  ]}
+>
+  <div class="th">
+    <section class="th-hero">
+      <nav class="th-hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
+        <span class="crumb-sep">›</span>
+        <a href="/slovnik/">Slovník</a>
+        <span class="crumb-sep">›</span>
+        <span class="th-hero__crumb-pill">{term.term}</span>
+      </nav>
+
+      <span class="th-hero__eyebrow">{group.label}</span>
+      <h1 class="th-hero__title">{term.term}</h1>
+      {term.aka && <p class="th-hero__aka">{term.aka}</p>}
+    </section>
+
+    <!-- Definice = answer block (citovatelná) -->
+    <section class="th-answer">
+      <div class="th-answer__inner">
+        <span class="th-answer__mark">{ui.answerDefinition}</span>
+        <p class="th-answer__text">{term.def}</p>
+      </div>
+    </section>
+
+    {
+      longParas.length > 0 && (
+        <section class="th-long">
+          {longParas.map((p) => (
+            <p class="th-long__para" set:html={p} />
+          ))}
+        </section>
+      )
+    }
+
+    {
+      term.link && (
+        <section class="th-cta">
+          <a class="th-cta__link" href={term.link.href}>
+            {term.link.label} <span aria-hidden="true">→</span>
+          </a>
+        </section>
+      )
+    }
+
+    {
+      articles.length > 0 && (
+        <section class="th-arts" aria-label="Články k tomuto pojmu">
+          <h2 class="th-arts__title">Kde se s pojmem potkáte</h2>
+          <ul class="th-arts__list">
+            {articles.map((a) => (
+              <li>
+                <a class="th-arts__link" href={`/blog/${a.data.slug}/`}>
+                  {a.data.title}
+                </a>
+                <span class="th-arts__meta">{ui.metaUpdated} {a.data.updated}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      related.length > 0 && (
+        <section class="th-rel" aria-label="Související pojmy">
+          <h2 class="th-rel__title">Související pojmy</h2>
+          <div class="th-rel__chips">
+            {related.map((t) => (
+              <a class="th-rel__chip" href={`/slovnik/${t.id}/`}>
+                {t.term}
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="th-back">
+      <a class="th-back__link" href="/slovnik/">
+        <span aria-hidden="true">←</span> Celý slovník pojmů
+      </a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .th {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
+  }
+
+  .th-hero { padding-top: clamp(3rem, 8vh, 5rem); }
+  .th-hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .th-hero__crumbs a { color: var(--color-ink-muted); text-decoration: none; }
+  .th-hero__crumbs a:hover { color: var(--color-ink); }
+  .th-hero__crumb-pill {
+    display: inline-flex;
+    padding: 0.35rem 0.75rem;
+    background: oklch(from var(--color-accent) l c h / 0.08);
+    color: var(--color-accent);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .crumb-sep { color: var(--color-ink-faint); }
+  .th-hero__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-bottom: 0.75rem;
+  }
+  .th-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .th-hero__aka {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  .th-answer { margin-top: clamp(1.5rem, 3vw, 2rem); }
+  .th-answer__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 10px;
+    padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  }
+  .th-answer__mark {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+  .th-answer__text {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.65;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  .th-long { margin-top: clamp(1.5rem, 3vw, 2rem); }
+  .th-long__para {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    margin: 0 0 1.1rem;
+  }
+  /* set:html potomci — bez :global() by scoped selektor nematchnul */
+  .th-long__para :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .th-long__para :global(strong) {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .th-cta { margin-top: 0.5rem; }
+  .th-cta__link {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .th-cta__link:hover { text-decoration: underline; }
+
+  .th-arts { margin-top: clamp(2rem, 4vw, 3rem); }
+  .th-arts__title,
+  .th-rel__title {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin: 0 0 0.9rem;
+  }
+  .th-arts__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .th-arts__list li {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--color-rule);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .th-arts__link {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .th-arts__link:hover { color: var(--color-accent); }
+  .th-arts__meta {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-ink-faint);
+    white-space: nowrap;
+  }
+
+  .th-rel { margin-top: clamp(2rem, 4vw, 3rem); }
+  .th-rel__chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .th-rel__chip {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .th-rel__chip:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+  .th-back { margin-top: clamp(2rem, 4vw, 3rem); }
+  .th-back__link {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .th-back__link:hover { text-decoration: underline; }
+</style>

@@ -75,7 +75,8 @@ const termSetJsonLd = {
               <div class="gl-term" id={t.id}>
                 <dt class="gl-term__head">
                   <a class="gl-term__anchor" href={`#${t.id}`} aria-label={`Odkaz na pojem ${t.term}`}>#</a>
-                  <span class="gl-term__name">{t.term}</span>
+                  {/* Název → detail hesla (vlastní citovatelná URL); kotva # zůstává. */}
+                  <a class="gl-term__name gl-term__name--link" href={`/slovnik/${t.id}/`}>{t.term}</a>
                   {t.aka && <span class="gl-term__aka">{t.aka}</span>}
                 </dt>
                 <dd class="gl-term__body">
@@ -222,6 +223,11 @@ const termSetJsonLd = {
     letter-spacing: -0.01em;
     color: var(--color-ink);
   }
+  .gl-term__name--link {
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .gl-term__name--link:hover { color: var(--color-accent); }
   .gl-term__aka {
     font-family: var(--font-sans);
     font-size: 0.85rem;
