@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-06-09"
-updated: "2026-06-09"
+updated: "2026-07-21"
 variant: "rich"
 keywords:
   - "llms.txt"
@@ -119,6 +119,14 @@ Specifikace od Jeremyho Howarda je jednoduchá — Markdown s nadpisy a odkazy:
 ```
 
 Volitelně můžete přidat i `llms-full.txt` se kompletním textovým obsahem klíčových stránek v Markdownu — vhodné hlavně pro dokumentaci, kdy chcete AI poskytnout přímo plný obsah bez nutnosti načítat jednotlivé URL.
+
+## Z naší praxe: generujte, nepište ručně
+
+Náš vlastní [llms.txt](https://aiseo-optimalizace.cz/llms.txt) jsme původně psali ručně — a během dvou měsíců zastaral: web narostl z ~20 na 100+ odkazů a soubor pořád tvrdil, že blog má 12 článků. **Zastaralý llms.txt je horší než žádný** — AI systému aktivně podsouvá špatnou mapu webu.
+
+Řešení: llms.txt **generujeme při každém buildu** přímo z obsahu webu (stejně jako sitemapu). Každý nový článek, téma i série se do něj propíšou samy, včetně popisů. Pokud váš web běží na statickém generátoru (Astro, Next.js, Hugo…), je to pár desítek řádků kódu; u WordPressu totéž zvládne šablona nebo plugin. Ruční údržbě se vyhněte všude, kde obsah přibývá častěji než jednou za kvartál.
+
+Definici pojmu s kotvou pro citování najdete i v našem [slovníku](/slovnik/#llms-txt).
 
 ## Kdy llms.txt nasadit a kdy ne
 

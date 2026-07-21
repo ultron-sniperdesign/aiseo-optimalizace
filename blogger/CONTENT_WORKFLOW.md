@@ -43,6 +43,8 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **A3 — Porovnání s webem:** projdi 12 článků v `src/content/articles/` + pilíř/sekce → vyřaď duplicity, najdi mezery.
 - **A4 — Porovnání s tabulkou:** projdi `obsahovy-plan.csv` (řádky `Publikováno = ne`) → nepřidávej, co už čeká.
 - **A5 — Zápis ≥ 2 nových řádků** do `obsahovy-plan.csv` (formát sloupců viz legenda níže). Vyplň A–E (E = `ne`), F nech prázdné.
+- **A6 — Refresh kadence 2:1 (od 2026-07-21):** po každých **2 nových článcích** odbav **1 refresh** z `blogger/REFRESH_QUEUE.md` (postup i priority tam). Důvod: baseline citací ukázala, že AI Mode/ChatGPT citují čerstvý obsah — starší články padají z citací na freshness.
+- **A7 — CZ-ukotvení (od 2026-07-21):** kde to dává smysl, ukotvi title/answer geograficky („v Česku", „pro český trh"). Z měření: ChatGPT u obecných dotazů cituje globální EN zdroje — český web se do citací dostane právě CZ-specifickou formulací.
 
 ---
 
