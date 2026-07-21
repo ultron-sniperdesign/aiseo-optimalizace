@@ -25,6 +25,7 @@
 | **Locale / schema** | `src/i18n/site.ts` | `lang`, `og:locale`, `inLanguage`, název webu, author, Organization |
 | **Tagy blogu** | `src/i18n/tags.ts` | tematické clustery: `slug`/`label`/`title`/`description` + `TAG_BASE` (`/blog/tema/`). **`id` NEPŘEKLÁDAT** — je ve frontmatteru článků |
 | **Série článků** | `src/i18n/series.ts` | série: `slug`/`title`/`description`/`intro`/`parts[].note`/`planned` + `SERIES_BASE` (`/serie/`). **`id` NEPŘEKLÁDAT**; `parts[].slug` odkazují na články mutace |
+| **Auto-linkování pojmů** | `src/i18n/glossary-autolink.mjs` | patterny + slugy pro wikipedizaci obsahu (rehype plugin). Fork nastaví vlastní neskloňované výrazy; delší patterny před kratšími |
 | **Dlouhý obsah** | `src/content/{pillar,sections,articles}/*.mdx` | pillar, 6 sekcí, blog články |
 | **OG obrázky** | `public/og/*` | **REGENEROVAT, ne dědit** — obrázky mají zapečený text i doménu/wordmark (CZ grafika by šla živě ven, stalo se u EN s `/og/blog`). Při forku projít celou složku, smazat zděděné CZ a vyrobit vlastní. Formát/rozměr/konverze: `docs/og-image-style.md` § Publikační formát (JPEG 1200×800 + WebP přes `scripts/og-publish.mjs`) |
 | **JSON-LD v `.astro` datech** | `serviceJsonLd`/`faqJsonLd`/`productJsonLd` v `content/pages/audit.ts`, `pack.ts` | structured data (plain text, přeložit) |
