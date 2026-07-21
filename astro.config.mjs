@@ -6,6 +6,7 @@ import indexnow from "astro-indexnow";
 import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeGlossaryLinks from "./src/lib/rehype-glossary-links.mjs";
 
 /**
  * Rehype plugin: GFM task-list checkboxy mají v markdown renderu Astro
@@ -73,6 +74,13 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [
       rehypeTaskListA11y,
+      /**
+       * Wikipedizace: první výskyt slovníkového pojmu v MDX obsahu se
+       * automaticky prolinkuje na /slovnik/<id>/ (jen neskloňované
+       * zkratky, ruční odkazy mají přednost — viz src/lib/rehype-glossary-links.mjs
+       * a překladová data src/i18n/glossary-autolink.mjs).
+       */
+      rehypeGlossaryLinks,
       /**
        * Externí odkazy → otvírat v novém tabu + bezpečnost (noopener proti
        * tabnabbing). `noreferrer` přidán jako vedlejší ochrana soukromí

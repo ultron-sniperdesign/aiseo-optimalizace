@@ -293,3 +293,17 @@ pre.astro-code .line span[style*="color:#22863a"] {
   font-display: swap;
   src: url("/sniperdesign/fonts/KumbhSans-Bold.woff2") format("woff2");
 }
+
+/* Auto-odkazy na slovníková hesla (rehype-glossary-links) — jemný,
+   wikipediovský styl: tečkované podtržení, barva textu, hover accent. */
+.gl-autolink {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: oklch(from var(--color-accent) l c h / 0.5);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.gl-autolink:hover {
+  color: var(--color-accent);
+  text-decoration-style: solid;
+}
