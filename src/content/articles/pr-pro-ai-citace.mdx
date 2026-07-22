@@ -1,0 +1,169 @@
+---
+title: "PR pro AI citace: co z těch čísel platí pro Česko"
+description: "Kolik citací drží nejcitovanější domény? Dvě publikovaná měření se liší o řád a nedají se porovnat. Co z toho platí pro Česko a co si ověřit sám."
+answer: "Podíl nejcitovanějších domén na odpovědích AI se veřejně uvádí ve dvou nesouměřitelných číslech, mezi nimiž je řádový rozdíl: PR agentura mluví o 68 procentech pro top 15 domén, měření 200 milionů promptů uvádí, že Wikipedia, Reddit, LinkedIn a YouTube dohromady zřídka přesáhnou 5 procent. Obě čísla vydali dodavatelé a u jednoho není definovaný jmenovatel."
+slug: "pr-pro-ai-citace"
+category: "analysis"
+tags:
+  - "duveryhodnost"
+  - "strategie"
+published: "2026-07-22"
+updated: "2026-07-22"
+keywords:
+  - "pr pro ai citace"
+  - "nejcitovanější domény ai"
+  - "podíl na ai citacích"
+  - "média a ai vyhledávání"
+  - "seznam médií pro ai"
+variant: "rich"
+stats:
+  - value: "68 %"
+    label: "má podle PR agentury držet top 15 domén — jmenovatel ale nikde definovaný není"
+  - value: "pod 5 %"
+    label: "dávají podle měření 200 milionů promptů Wikipedia, Reddit, LinkedIn a YouTube dohromady"
+  - value: "1 z 5"
+    label: "citací na Perplexity míří podle téhož měření na Reddit — nejvyšší koncentrace na jedné platformě"
+  - value: "0"
+    label: "nezávislých měření mimo dodavatele nástrojů a agentur se mi najít nepodařilo"
+faq:
+  - q: "Kolik citací drží nejcitovanější domény?"
+    a: "Spolehlivá přesná odpověď neexistuje; hrubá orientace podle opakujících se typů zdrojů ano. Trade Press AI Index od PR agentury 5W uvádí, že top 15 domén drží 68 procent takzvaného konsolidovaného podílu na citacích. Analýza Evertune nad 200 miliony promptů uvádí, že nejcitovanější doména na dané platformě zpravidla nepřesáhne 5 procent jejích citací. Ta čísla se ale nedají porovnat: první z nich nevysvětluje, z čeho se počítá."
+  - q: "Proč jsou ta čísla tak odlišná?"
+    a: "Jedna z možností je odlišný jmenovatel, tedy že se procento nepočítá ze stejné množiny. Že se to v tomhle oboru děje, ukazuje třetí číslo stejného typu: tvrzení, že Wikipedia tvoří 47,9 procenta zdrojů ChatGPT, počítá podíl uvnitř první desítky zdrojů, ne ze všech citací. U čísla 68 procent to ale doložit nejde — metodika zveřejněná není, takže jde o hypotézu, ne o vysvětlení."
+  - q: "Komu z těch dodavatelů mám věřit?"
+    a: "Ani jednomu bez výhrad. Trade Press AI Index vydala PR agentura, která v témže dokumentu prodává optimalizaci pro AI vyhledávání, a není to původní měření, ale syntéza šesti starších studií. Evertune prodává monitoring značky v AI. Nezávislé měření tohoto typu veřejně k dispozici není. Užitečnější než vybrat si stranu je ptát se na jmenovatel a na vzorek."
+  - q: "Platí americké seznamy médií pro český trh?"
+    a: "Jako hotový seznam cílů ne. Studie jmenují PCMag, Skift, STAT, Bloomberg nebo Forbes. Do těch se česká firma zpravidla nedostane a česky položený dotaz navíc čerpá z jiné jazykové množiny zdrojů. Český ekvivalent oborového média — oborové portály, srovnávače, katalogy — v žádné z těch studií měřený není. Jako hrubá orientace v typech zdrojů posloužit můžou."
+  - q: "Má smysl dělat tiskové zprávy kvůli citacím v AI?"
+    a: "Nevíme. Žádné veřejné měření, které by dopad tiskových zpráv na citace v AI izolovalo, neznáme, takže ani my to tvrdit nebudeme. Prakticky z toho plyne rozhodnutí: pokud PR děláte kvůli lidem, značce nebo odkazům, berte případné citace v AI jako vedlejší přínos. Jako samostatný důvod k výdaji zatím doložený není."
+  - q: "Co z těch studií tedy použít?"
+    a: "Jména, ne procenta. Wikipedia, Reddit, YouTube a LinkedIn se objevují napříč všemi seznamy bez ohledu na to, jak která studie počítá podíly, a na rozdíl od amerických oborových titulů jsou pro českou firmu aspoň v principu otevřené. Pozor ale na Wikipedii: ta pro většinu firem marketingový kanál není, protože vyžaduje encyklopedickou významnost."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Podíl nejcitovanějších domén na odpovědích AI se veřejně uvádí ve dvou nesouměřitelných číslech, mezi nimiž je řádový rozdíl: PR agentura mluví o 68 procentech pro top 15 domén, měření 200 milionů promptů uvádí, že Wikipedia, Reddit, LinkedIn a YouTube dohromady zřídka přesáhnou 5 procent.** Obě čísla vydali dodavatelé a u jednoho není definovaný jmenovatel.
+
+Když si dnes čtete, na která média cílit kvůli citacím v AI, narazíte na sebejistá procenta. Stojí za to podívat se, odkud jsou — a jestli vůbec měří totéž.
+
+## Dvě čísla, která se nedají porovnat
+
+<CompareTable
+  caption="Stejná otázka, dvě nesouměřitelná měření"
+  columns={["Tvrzení A", "Tvrzení B"]}
+  rows={[
+    { icon: "📊", label: "Co říká", left: "Top 15 domén drží 68 % podílu na citacích", right: "Ani nejcitovanější doména zpravidla nepřesáhne 5 % citací na dané platformě" },
+    { icon: "🧮", label: "Podklad", left: "Syntéza šesti dříve publikovaných studií, deklarováno 680 milionů citací", right: "Vlastní analýza 200 milionů promptů za pět měsíců" },
+    { icon: "🏢", label: "Vydavatel", left: "5W Public Relations — PR agentura", right: "Evertune — dodavatel monitoringu značky v AI" },
+    { icon: "❓", label: "Jmenovatel", left: "Nedefinovaný — dokument pojem „konsolidovaný podíl“ nevysvětluje", right: "Všechny citace na dané platformě" },
+    { icon: "🔬", label: "Co měří", left: "Neznámo — bez definice metriky nelze říct", right: "Podíl jednotlivých domén na jedné platformě" },
+  ]}
+/>
+
+Na první pohled to vypadá jako přímý spor. Při bližším pohledu je to ale jinak — a hůř: **ta dvě čísla se nedají porovnat vůbec.**
+
+Tvrzení B mluví o podílu jednotlivé domény na všech citacích jedné platformy. Tvrzení A mluví o „konsolidovaném podílu na citacích", což je pojem, který v tom dokumentu nikde vysvětlený není. Nevíme tedy, jestli si čísla odporují, nebo popisují dvě různé věci a odpovídají na dvě různé otázky.
+
+Namítnete možná: i metodicky slabá studie přece ukazuje aspoň směr. To je fér — a odpověď zní **ano, ale opravdu jen směr.** Opakují se v nich velké otevřené a komunitní zdroje, což je informace. O podílech, pořadí ani o českém trhu z toho neplyne nic.
+
+Jako přesný cíl je tedy použít nemůžete; jako hrubou orientaci v typech zdrojů omezeně ano.
+
+## Proč je procento bez jmenovatele neověřitelné
+
+Jedna z možností je, že se každé číslo počítá z jiné množiny. Že se to v tomhle oboru běžně stává, ukazuje třetí údaj stejného typu, na který v těch materiálech narazíte: **Wikipedia prý tvoří 47,9 procenta zdrojů ChatGPT.**
+
+To zní dramaticky, dokud si nevšimnete, že jde o podíl **uvnitř první desítky zdrojů** — ne ze všech citací. Jinými slovy: „mezi deseti nejčastějšími zdroji je Wikipedia skoro polovina." Pravdivé, ale úplně jiné tvrzení než „polovina všeho, co ChatGPT cituje, je Wikipedia".
+
+<Insight tone="warning">
+U čísla 68 procent je tohle ale jen **hypotéza, ne vysvětlení** — jmenovatel zveřejněný není, takže nevíme, čím se ten rozdíl bere. Korektně: netvrdíme, že je to číslo špatně. Tvrdíme, že je **neověřitelné, a tedy nevhodné pro srovnání i pro plánování.**
+
+Praktické pravidlo, které z toho plyne: než převezmete jakékoli procento o AI citacích, najděte si větu „z čeho se to počítá". Pokud tam není, číslo nepoužívejte.
+</Insight>
+
+## Kdo ta čísla vydal
+
+**Trade Press AI Index** vydala **5W Public Relations**, tedy PR agentura, která v témže dokumentu nabízí optimalizaci pro AI vyhledávání a měření viditelnosti. Není to původní měření — je to **syntéza šesti dříve publikovaných studií** z let 2024 až 2026. Materiál neuvádí období sběru dat, způsob výběru dotazů ani to, jak byly jednotlivé zdroje váženy.
+
+**Evertune** prodává monitoring značky v AI odpovědích. Oba vydavatelé tedy prodávají služby, kterým jejich vlastní interpretace může prospět.
+
+<Insight tone="key">
+Prodáváme AI SEO audit a šablonu; do stejné kategorie dodavatelů tedy patříme i my.
+</Insight>
+
+## Co z toho přežije
+
+Zajímavé je, že **na jménech se zdroje shodují, i když se neshodnou na podílech.** Napříč všemi seznamy se opakovaně objevují:
+
+- **Wikipedia**
+- **Reddit**
+- **YouTube**
+- **LinkedIn**
+
+U Perplexity uvádí Evertune výrazně vyšší koncentraci než jinde: na Reddit tam podle jejich dat míří až **jedna z pěti citací**.
+
+Tohle je použitelnější než jakékoli procento — a na rozdíl od amerických oborových titulů jsou tyhle platformy pro českou firmu aspoň v principu otevřené. „Otevřené" ale neznamená „snadné", a u každé to znamená něco jiného:
+
+- **Reddit** — dává smysl, když ve vašem oboru existují aktivní diskuze a mluvíte k anglickému publiku. U Perplexity uvádí Evertune nejvyšší koncentraci ze všech platforem.
+- **LinkedIn** — když vaše odbornost stojí na konkrétních lidech a jde o B2B téma.
+- **YouTube** — když se téma dá ukázat lépe, než popsat.
+- **Wikipedia** — jen pokud značka splní encyklopedickou významnost. Pro většinu firem to **není marketingový kanál** a pokus o vlastní článek bez nezávislých zdrojů skončí smazáním.
+
+Jednotlivé kanály rozebírají [citace na Redditu](/blog/ai-citace-reddit/), [značka na Wikipedii](/blog/znacka-na-wikipedii-pro-ai/) a [LinkedIn](/blog/linkedin-pro-ai-citace/).
+
+## Proč je ta anglická mapa pro Česko slabý podklad
+
+Studie jmenují **PCMag, Skift, STAT, Bloomberg, Axios, Forbes**. Jako hotový seznam cílů pro českou firmu to nepoužijete, a to ze tří důvodů najednou:
+
+1. **Nedostupnost.** Do těch titulů se český dodavatel prakticky nedostane a většinou ani nemá proč.
+2. **Jazyk.** Česky položený dotaz čerpá z jiné množiny zdrojů než anglický. Co drží podíl v angličtině, nemusí mít na češtinu vliv žádný.
+3. **Neměřená kategorie.** Český protějšek „oborového média" — oborové portály, srovnávače, katalogy — v žádné z těch studií měřený nebyl. Nevíme o něm nic, ani že nefunguje.
+
+Neznamená to, že jsou ty studie bezcenné. Jako hrubá orientace v tom, jaké **typy** zdrojů se opakují, posloužit můžou — a pokud cílíte na anglicky hledané B2B publikum, tak i víc. Závazný seznam médií pro český trh z nich ale nikdo neudělá.
+
+## Co dnes rozumně platí pro Česko
+
+Shrnuto do vět, které dostupné podklady unesou:
+
+1. **Směr je spolehlivější než čísla.** Napříč všemi seznamy se opakují velké otevřené a komunitní zdroje. To je použitelná informace — o podílech ani o pořadí ale neříká nic.
+2. **Pro češtinu podíly nikdo nezměřil.** Žádná z těch studií nepracovala s českými dotazy ani s českými weby. Nevíme, jestli se pořadí liší; víme, že to nikdo neověřil.
+3. **Platforma může s výsledkem hýbat víc než jazyk.** Rozdíly mezi ChatGPT, Perplexity a AI Overviews jsou doložené — u Perplexity uvádí Evertune až jednu citaci z pěti na Reddit, jinde nic podobného. Testujte platformy zvlášť a výsledky nemíchejte.
+4. **Oborové médium má u nás jinou podobu.** Českým protějškem PCMagu není časopis, ale spíš oborový portál, srovnávač nebo katalog. Že by nefungovaly, nikdo neukázal — jen to nikdo neměřil.
+5. **Vlastní test je jediný podklad, který pro český trh existuje.** Ne proto, že by byl skvělý, ale protože žádný jiný není.
+
+### Minimální test, ať to nemusíte hledat jinde
+
+- **20 až 30 dotazů**, které by váš zákazník reálně napsal — ne názvy vaší značky.
+- **2 až 4 platformy**, každou zvlášť, výsledky nesčítat dohromady.
+- **Zapisujte doménu každého citovaného zdroje**, ne celou URL. Zajímá vás, kdo se opakuje.
+- **Za opakující se zdroj berte ten, který vyjde aspoň ve třetině dotazů** na téže platformě.
+- **Zopakujte s odstupem** — odpovědi se mezi spuštěními mění, z jednoho běhu nevyvozujte nic.
+
+Podrobněji to rozebírá [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
+
+Až budete vědět, které zdroje se u vás opakují, přijde na řadu druhá polovina práce: dostat se do nich. Jak zmínky budovat, rozebírá [zmínky o značce](/blog/ai-brand-mentions/); v čem se liší jednotlivé platformy, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Převzít procento bez jmenovatele">
+    Číslo, u kterého není napsáno, z čeho se počítá, není údaj, ale dojem. U podílů na citacích to platí dvojnásob, protože „top 10 zdrojů“ a „všechny citace“ dávají zcela jiná čísla.
+  </Mistake>
+  <Mistake number="02" title="Brát seznam amerických médií jako cíl">
+    PCMag ani Skift vaši českou firmu neuvedou a česky položený dotaz je stejně nemusí použít. Přenositelné je maximálně to, jaký typ zdroje se opakuje.
+  </Mistake>
+  <Mistake number="03" title="Vybrat si číslo, které se hodí">
+    Když jedno měření podporuje váš plán a druhé ne, není řešením citovat to první. Že se ta čísla takhle rozcházejí, je samo o sobě informace: tuhle otázku zatím nikdo veřejně nezodpověděl.
+  </Mistake>
+  <Mistake number="04" title="Přehlédnout, kdo studii vydal">
+    U dodavatelských studií je vyšší riziko, že metrika a rámování vyhovují nabídce vydavatele. Není to důvod je zahodit, je to důvod hledat metodiku.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Na otázku „která média mi zajistí citace v AI" dnes **doložená odpověď neexistuje** — ani pro angličtinu, natož pro češtinu.
+
+Rozhodnutí je proto skromnější, než by se chtělo: pracujte se jmény, na kterých se zdroje shodují, u každého procenta se ptejte na jmenovatel a **český seznam si udělejte vlastním testem.** Zabere odpoledne a je to zatím jediný podklad, který pro tenhle trh existuje.
