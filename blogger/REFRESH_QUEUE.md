@@ -20,6 +20,7 @@
 
 | ✓ | Článek | Cílový dotaz (z baseline) | Kdo nás poráží | Pokyny |
 |---|---|---|---|---|
+| ☐ | `e-e-a-t-pro-ai` | „co je E-E-A-T", „eeat" (170/měs, +233 % YoY) | mentorkalucie.cz aj. (definiční weby) | **Upgrade z analysis na velký průvodce** (dnes jen ~1 100 slov — nejslabší hub velkého tématu). Doplnit: 4 složky (Experience/Expertise/Authoritativeness/Trust) každá jako H2 otázka s příkladem „jak doložit", sekce YMYL (40/měs, +64 % — provázat s tématem „ymyl obsah pro ai" z plánu), Google rater guidelines kontext, mýty o „E-E-A-T skóre", checklist. CZ-ukotvení. Interní odkazy na celý cluster důvěryhodnosti (15 článků) + /slovnik/e-e-a-t/. |
 | ☐ | `chatgpt-seo` | „jak být citovaný v ChatGPT" | koraba.cz (jediný článek přesně na frázi) | Refokus: title i answer přímo na „Jak být citovaný v ChatGPT (v Česku)". Doplň poznatek z našeho měření: ChatGPT u obecných dotazů cituje globální EN zdroje — český web se prosadí CZ-ukotveným obsahem. Interní odkaz na /blog/jak-ai-cituje-zdroje/ a slovník #citace-v-ai. |
 | ☐ | `aeo-optimalizace-v-praxi` | „jak se dostat do Google AI Overviews" | posunemevasvys.cz | Doplň H2 přesně „Jak se dostat do AI Overviews" + krátkou odpověď pod ním; aktualizuj stav AIO v ČR k datu refreshe; odkaz na GSC beta report. |
 | ☐ | `ai-crawler-robots-txt` | „které AI crawlery povolit v robots.txt" | Lady Virtual, spir.cz | Aktualizuj seznam botů k datu refreshe (nové UA), tabulku povolit/zvážit/blokovat, odkaz na slovník #googlebot a #google-extended. |
