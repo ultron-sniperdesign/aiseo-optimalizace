@@ -108,6 +108,13 @@ export const groups: TermGroup[] = [
           "E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness — zkušenost, odbornost, autorita, důvěryhodnost) je rámec, kterým Google popisuje kvalitu zdroje. Není to přímý ranking faktor se skóre — je to souhrn signálů, podle kterých systémy (a čím dál víc i AI odpovědi) poznávají, komu věřit.\n\nV AI éře význam E-E-A-T roste: generativní systémy si vybírají zdroje pro citace a <strong>ověřitelná identita autora a značky je jedním z hlavních vodítek</strong>. Prakticky to znamená: viditelný autor s vlastní stránkou a Person schematem, reálná zkušenost v textech („testovali jsme\", konkrétní čísla z praxe), konzistentní profil značky napříč webem, recenzemi a zmínkami.\n\nCelý rozbor najdete v článku <a href=\"/blog/e-e-a-t-pro-ai/\">E-E-A-T pro AI</a>; navazují <a href=\"/blog/autorsky-profil-pro-ai/\">autorský profil pro AI</a> a heslo <a href=\"/slovnik/brand-mentions/\">brand mentions</a>.",
       },
       {
+        id: "ymyl",
+        term: "YMYL",
+        aka: "Your Money or Your Life",
+        def: "Kategorie obsahu, který může ovlivnit zdraví, finance, bezpečnost nebo zásadní životní rozhodnutí čtenáře — Google i AI systémy u něj uplatňují nejpřísnější nároky na důvěryhodnost. U YMYL témat rozhoduje doložitelná odbornost autora a ověřitelné zdroje; anonymní obsah zde v AI odpovědích prakticky nemá šanci.",
+        link: { href: "/blog/e-e-a-t-pro-ai/", label: "E-E-A-T pro AI" },
+      },
+      {
         id: "zero-click",
         term: "Zero-click vyhledávání",
         def: "Vyhledávání, které skončí bez kliknutí na jakýkoli web — uživatel dostane odpověď přímo ve výsledcích (AI Overviews, featured snippet, panel znalostí). Pro weby znamená růst viditelnosti bez návštěvy a nutnost měřit zobrazení, ne jen kliky.",
