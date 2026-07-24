@@ -1,7 +1,12 @@
+KONTEXTOVÝ RÁMEC: Toto je marketingový a vzdělávací článek pro web aiseo-optimalizace.cz — edukativní web o AI éře vyhledávání (SEO/GEO/AEO/AIO). Web nabízí AI SEO Wireframe Pack (1 490 Kč) a AI SEO audit (9 990 Kč). Provozovatel: Sniperdesign. Auditor hodnotí: věcnou správnost, brand voice, citovatelnost pro AI, SEO, relevanci CTA. Aktuální rok: 2026 (červenec). Vrať konkrétní seznam oprav, ne obecnosti.
+
+TOTO JE VERZE PO 1. AUDITU. Zapracované změny z 1. kola: odstraněn zakázaný termín „schema markup" (→ strukturovaná data), sjednoceno „Organization/Person schema" → „strukturovaná data Organization/Person", zkrácena description pod 160 znaků, změkčeny overclaimy (AI „neumí napodobit" zkušenost, „identická otázka a tytéž signály" u AI systémů, „model si ověřuje", „řádově menší konkurence" na CZ trhu, „AI je cituje", Reddit/recenzní weby/čerstvost, YMYL „nemá šanci"), zpřesněna datace QRG změn (15. 12. 2022, leden 2025, září 2025), doplněn externí odkaz na oficiální QRG PDF, CTA „nezávisle" → „odborně". Vědomě NEzměněno: slug (refresh existující URL s historií), poslední věta answeru (drží answer na limitu 60 slov), samostatná sekce „E-A-T vs E-E-A-T" (změna 2022 je pokryta v sekci o QRG a ve FAQ). Jde o refresh/upgrade článku published 2026-05-26 na hub clusteru důvěryhodnosti; cílový dotaz „co je E-E-A-T".
+
+=== ČLÁNEK (MDX vč. frontmatteru, verze po 1. auditu) ===
 ---
 title: "E-E-A-T pro AI: jak budovat důvěru pro vyhledávače 2026"
 description: "Co je E-E-A-T, odkud pochází, jak doložit čtyři složky a kde platí vyšší laťka YMYL. Průvodce důvěryhodností pro Google i AI — bez mýtů o skóre."
-answer: "E-E-A-T je zkratka pro Experience, Expertise, Authoritativeness a Trust — zkušenost, odbornost, autoritativnost a důvěryhodnost. Pochází z Google Search Quality Rater Guidelines, manuálu pro hodnotitele kvality výsledků. Není to skóre ani přímý hodnoticí faktor, ale rámec důvěry — a podobné ověřitelné signály pomáhají i AI systémům vyhodnotit, komu věřit. V éře AI obsahu na něm záleží víc než dřív."
+answer: "E-E-A-T je zkratka pro Experience, Expertise, Authoritativeness a Trust — zkušenost, odbornost, autoritativnost a důvěryhodnost. Pochází z Google Search Quality Rater Guidelines, manuálu pro hodnotitele kvality výsledků. Není to skóre ani přímý hodnoticí faktor, ale rámec signálů, podle kterých Google i AI systémy odhadují, jestli zdroji věřit. V éře AI obsahu na něm záleží víc než dřív."
 slug: "e-e-a-t-pro-ai"
 category: "analysis"
 tags:
@@ -23,7 +28,7 @@ keywords:
   - "experience expertise authoritativeness trust"
 stats:
   - value: "182 stran"
-    label: "má verze Quality Rater Guidelines ze září 2025, odkud E-E-A-T pochází"
+    label: "má aktuální verze Quality Rater Guidelines (září 2025), odkud E-E-A-T pochází"
   - value: "2022"
     label: "rok, kdy Google přidal Experience — krátce po spuštění ChatGPT"
   - value: "Trust"
@@ -47,7 +52,7 @@ faq:
   - q: "Je E-E-A-T ranking faktor?"
     a: "Ne, E-E-A-T není jeden přímý hodnoticí faktor a Google veřejně neuvádí žádné samostatné E-E-A-T skóre. Je to koncept z Google Search Quality Rater Guidelines, podle kterého hodnotitelé posuzují kvalitu výsledků; Google tato hodnocení používá k vyhodnocování změn ve svých systémech, ne jako přímé skóre stránky. Nehledejte tlačítko na zapnutí — jde o dlouhodobou kvalitu."
   - q: "Co jsou Quality Rater Guidelines?"
-    a: "Manuál pro externí hodnotitele kvality vyhledávání — poslední veřejná verze ze září 2025 má 182 stran. Hodnotitelé podle něj posuzují vzorky výsledků a jejich hodnocení slouží Googlu jako zpětná vazba při vyhodnocování změn algoritmu. Právě z tohoto dokumentu pochází E-E-A-T i kategorie YMYL."
+    a: "Manuál pro externí hodnotitele kvality vyhledávání — aktuální verze ze září 2025 má 182 stran. Hodnotitelé podle něj posuzují vzorky výsledků a jejich hodnocení slouží Googlu jako zpětná vazba při vyhodnocování změn algoritmu. Právě z tohoto dokumentu pochází E-E-A-T i kategorie YMYL."
   - q: "Proč na E-E-A-T záleží u AI vyhledávání?"
     a: "Protože s rostoucím množstvím generovaného obsahu roste význam doložené lidské zkušenosti, transparentnosti a důvěry. Transparentní, podepsaný a ozdrojovaný obsah se AI systémům i vyhledávačům snáze vyhodnocuje než anonymní text bez doložení — a snáze se u něj ověří, kdo za tvrzením stojí."
   - q: "Který pilíř E-E-A-T je nejdůležitější?"
@@ -66,7 +71,7 @@ import Stepper from "../../components/blocks/Stepper.astro";
 
 ## Co je E-E-A-T?
 
-**E-E-A-T je zkratka pro Experience, Expertise, Authoritativeness a Trust — zkušenost, odbornost, autoritativnost a důvěryhodnost. Je to rámec z pokynů Googlu pro hodnotitele kvality (Quality Rater Guidelines), podle kterého se posuzuje, jestli obsahu a jeho autorovi věřit.** Není to přímý hodnoticí faktor ani skóre — je to veřejný rámec, který popisuje, jaké vlastnosti obsahu, autora a webu hodnotitelé Googlu sledují. Podobné ověřitelné signály pomáhají i AI systémům pochopit, kdo za obsahem stojí. A protože web zaplavil generovaný obsah, patří v roce 2026 právě tyhle signály mezi to, co odliší doložený obsah z praxe od zaměnitelných textů.
+**E-E-A-T je zkratka pro Experience, Expertise, Authoritativeness a Trust — zkušenost, odbornost, autoritativnost a důvěryhodnost. Je to rámec z pokynů Googlu pro hodnotitele kvality (Quality Rater Guidelines), podle kterého se posuzuje, jestli obsahu a jeho autorovi věřit.** Není to přímý hodnoticí faktor ani skóre — je to sada signálů, které pomáhají Googlu i AI systémům odhadnout důvěryhodnost zdroje. A protože web zaplavil generovaný obsah, jsou v roce 2026 právě tyhle signály jedním z hlavních způsobů, jak odlišit doložený obsah z praxe od zaměnitelných textů.
 
 Tento průvodce projde všechny čtyři složky — u každé s konkrétním „jak ji doložit" — a k tomu kontext, který se často vynechává: odkud E-E-A-T pochází, kde platí vyšší laťka [YMYL](/slovnik/ymyl/) a proč nemá smysl honit „E-E-A-T skóre". Navazuje na [obsah pro AI éru](/blog/ai-seo-content/) a [zmínky a off-page pro AI](/blog/ai-brand-mentions/).
 
@@ -76,10 +81,10 @@ Tento průvodce projde všechny čtyři složky — u každé s konkrétním „
 
 ## Odkud E-E-A-T pochází: Quality Rater Guidelines
 
-E-E-A-T není marketingový pojem — má konkrétní zdrojový dokument. **[Search Quality Rater Guidelines](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)** jsou manuál pro externí hodnotitele, kteří pro Google posuzují vzorky výsledků vyhledávání; poslední veřejná verze ze září 2025 má 182 stran. Dvě věci z něj je potřeba chápat správně:
+E-E-A-T není marketingový pojem — má konkrétní zdrojový dokument. **[Search Quality Rater Guidelines](https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf)** jsou manuál pro externí hodnotitele, kteří pro Google posuzují vzorky výsledků vyhledávání; aktuální verze ze září 2025 má 182 stran. Dvě věci z něj je potřeba chápat správně:
 
 - **Hodnotitelé neovlivňují pozici konkrétní stránky.** Jejich hodnocení slouží jako zpětná vazba — Google podle nich vyhodnocuje, jestli změny algoritmu zlepšily kvalitu výsledků. Manuál je ale veřejný, takže je to nejpřímější pohled na to, co Google považuje za kvalitu.
-- **Dokument se průběžně vyvíjí — a směr je čitelný.** Dne 15. 12. 2022, krátce po spuštění ChatGPT, přibylo druhé E (Experience). Lednová verze 2025 výslovněji popsala hodnocení obsahu s minimální lidskou přidanou hodnotou — včetně generovaného textu, který může spadat do nejnižší kvality — a verze ze září 2025 upravila kategorie YMYL. Laťka se tedy nezvyšuje pro ty, kdo mají co doložit — zvyšuje se pro obsah, který doložit nemá co.
+- **Dokument se průběžně vyvíjí — a směr je čitelný.** Dne 15. 12. 2022, krátce po spuštění ChatGPT, přibylo druhé E (Experience). V lednu 2025 přibyla pravidla pro hodnocení AI generovaného obsahu — text vytvořený s minimální lidskou přidanou hodnotou spadá do nejnižší kvality — a verze ze září 2025 upravila kategorie YMYL. Laťka se tedy nezvyšuje pro ty, kdo mají co doložit — zvyšuje se pro obsah, který doložit nemá co.
 
 Stejný rámec se přitom netýká jen Googlu. AI systémy, které skládají odpovědi z webových zdrojů, řeší podobnou otázku — kterému zdroji dát přednost — a pomáhají jim obdobné ověřitelné signály: jasný autor, transparentní provozovatel, zmínky z jiných webů a shoda tvrzení s dalšími důvěryhodnými zdroji. Jak přesně AI vybírá, co citovat, rozebírá [Jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
 
@@ -111,11 +116,11 @@ Podrobné návody: [autorský profil pro AI](/blog/autorsky-profil-pro-ai/), [Pe
 
 ## Authoritativeness: jak se buduje autorita?
 
-Třetí složka nejvíc závisí na tom, **co o vás říkají ostatní** — vlastní web ji podpoří kvalitním tematickým pokrytím a autorskými profily, ale nejsilnější signály vznikají mimo něj. Pro AI systémy je to důležité: při výběru zdrojů může hrát roli, jestli se značka nebo autor objevují i jinde a v jakém kontextu. Kde autorita vzniká:
+Třetí složka je jediná, kterou **nemůžete vyrobit u sebe na webu** — autorita je to, co o vás říkají ostatní. Pro AI systémy je to důležité: při výběru zdrojů může hrát roli, jestli se značka nebo autor objevují i jinde a v jakém kontextu. Kde autorita vzniká:
 
 <Checklist tone="seo" title="Zdroje autority mimo váš web" items={[
   { title: "Zmínky a citace v médiích", desc: "obsahová PR práce — jak na ni v českých podmínkách, ukazuje rozbor PR pro AI citace." },
-  { title: "Oborové platformy a katalogy", desc: "recenzní a srovnávací weby se v AI odpovědích dál objevují — proč a co s tím, rozebírá samostatný rozbor." },
+  { title: "Oborové platformy a katalogy", desc: "recenzní weby se v AI odpovědích objevují dál, i když jim lidská návštěvnost klesá — rozbor níže." },
   { title: "Komunitní zdroje", desc: "Reddit a diskuse jsou pro některé AI systémy významný zdroj u zkušenostních dotazů — víc v rozboru AI citací Redditu." },
   { title: "Wikipedie a znalostní báze", desc: "pro etablované značky silný signál identity; kdy má cenu ji řešit, rozebírá samostatný článek." }
 ]} />
@@ -132,14 +137,14 @@ Detaily po kanálech: [zmínky o značce](/blog/ai-brand-mentions/), [PR pro AI 
 - **Konzistentní identita.** [strukturovaná data Organization](/blog/organization-schema-pro-znacku/) a jednotné údaje napříč webem i externími profily — a když o vás AI tvrdí nesmysl, [postup na opravu chybné informace](/blog/chybna-informace-o-firme-v-ai/).
 
 <Insight tone="seo" icon="i" label="Proč tohle AI systémy zajímá">
-  Samotný jazykový model nemá redakci, která by každý zdroj prověřila. AI vyhledávací systémy proto pracují s ověřitelnými signály: podepsaný autor, dohledatelný provozovatel a tvrzení, která sedí s dalšími důvěryhodnými zdroji. Web, u kterého tohle nejde ověřit, je pro AI riziková citace.
+  Jazykový model nemá redakci, která by zdroj prověřila. Spoléhá na korroborační signály: podepsaný autor, ověřitelný provozovatel a tvrzení, která sedí s dalšími důvěryhodnými zdroji. Web, u kterého tohle nejde ověřit, je pro AI riziková citace.
 </Insight>
 
 ## YMYL: kde platí nejvyšší laťka
 
 Ze stejného manuálu jako E-E-A-T pochází i kategorie **[YMYL](/slovnik/ymyl/)** — Your Money or Your Life. Označuje obsah, který může ovlivnit zdraví, finance, bezpečnost nebo zásadní životní rozhodnutí čtenáře. U YMYL témat hodnotitelé vyžadují nejvyšší úroveň E-E-A-T: doložitelnou odbornost autora, důvěryhodné zdroje a přesnost bez kompromisů — anonymní článek o investování nebo léčbě bude důvěryhodnost obhajovat jen těžko, ať je napsaný sebelíp.
 
-Kategorie se přitom dál vyvíjí: verze ze září 2025 vede dřívější „YMYL Society" nově jako **„YMYL Government, Civics and Society"** — s důrazem na obsah, který může ovlivnit důvěru ve veřejné instituce. Pokud tvoříte obsah o zdraví, financích či právu, přečtěte si samostatný rozbor [YMYL obsah a AI](/blog/ymyl-obsah-pro-ai/) — včetně toho, jak s YMYL tématy nakládají samotné AI odpovědi.
+Kategorie se přitom dál vyvíjí: v září 2025 Google rozšířil dřívější „YMYL Society" na **„YMYL Government, Civics & Society"** — přibyl důraz na obsah, který může ovlivnit důvěru ve veřejné instituce. Pokud tvoříte obsah o zdraví, financích či právu, přečtěte si samostatný rozbor [YMYL obsah a AI](/blog/ymyl-obsah-pro-ai/) — včetně toho, jak s YMYL tématy nakládají samotné AI odpovědi.
 
 ## Mýty: E-E-A-T skóre neexistuje
 
@@ -162,7 +167,7 @@ Kolem E-E-A-T se točí víc mýtů než kolem většiny SEO pojmů. Nejčastěj
 
 ## E-E-A-T pro malé weby a český trh
 
-Důvěra nezačíná velikostí, ale doložitelností — a to je pro české weby dobrá zpráva. V auditech českých webů často vidíme, že u odborných témat chybí jasný autor, vlastní data i transparentní provozovatel — jmenovaný autor s reálnou praxí a vlastní data z českého trhu proto pořád dokážou web odlišit víc než generický překladový obsah. Prakticky:
+Důvěra nezačíná velikostí, ale doložitelností — a to je pro české weby dobrá zpráva. V českém prostředí je u řady témat stále méně obsahu s jasným autorem, vlastními daty a transparentním provozovatelem než v silně konkurenčních anglických výsledcích — jmenovaný autor s reálnou praxí a vlastní data z českého trhu tu proto pořád dokážou web odlišit. Prakticky:
 
 - Podepište obsah **reálným autorem** s doloženou kvalifikací a propojte jeho identitu napříč profily.
 - Stavte na **vlastních datech a zkušenosti z českého trhu** — ta nikdo jiný nemá a [zvyšují šanci na citaci v AI](/blog/originalni-data-pro-ai/).
