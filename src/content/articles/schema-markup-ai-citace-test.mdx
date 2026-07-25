@@ -1,0 +1,136 @@
+---
+title: "Pomáhá schema markup AI citacím? Co ukázal test"
+description: "Citované stránky mají schema 3× častěji. Vypadá to jako důkaz — ale kauzální test Ahrefs ukázal nulový efekt. Proč korelace klame a kdy schema pořád dělat."
+answer: "Kauzální test Ahrefs neukázal, že by přidání schema markup samo o sobě zvyšovalo citace v AI. Citované stránky sice mají strukturovaná data zhruba 3× častěji, ale test na 1 885 stránkách našel nulový až mírně záporný efekt. Schema tedy vychází spíš jako průvodní znak kvalitních webů než jako páka na citace. Smysl dává pro rich results a rozlišení identity."
+slug: "schema-markup-ai-citace-test"
+category: "analysis"
+tags:
+  - "strukturovana-data"
+  - "strategie"
+published: "2026-07-25"
+updated: "2026-07-25"
+keywords:
+  - "schema markup ai citace"
+  - "strukturovaná data ai vliv"
+  - "ahrefs schema studie"
+  - "pomáhá schema ai"
+  - "json-ld ai overviews"
+variant: "rich"
+stats:
+  - value: "3×"
+    label: "častěji mají citované stránky JSON-LD než necitované — svůdná korelace"
+  - value: "1 885"
+    label: "stránek přidalo schema v kauzálním testu Ahrefs; 4 000 kontrolních bez něj"
+  - value: "−4,6 %"
+    label: "u Google AI Overviews vyšel v testu malý pokles, bez důkazu přínosu — ne důkaz škody"
+  - value: "0"
+    label: "významný nárůst citací na kterékoli platformě po přidání schématu"
+faq:
+  - q: "Zvýší schema markup mé citace v AI?"
+    a: "Podle dostupných dat se schema jako páka na citace nejeví. Kauzální test Ahrefs sledoval 1 885 stránek, které přidaly JSON-LD, proti 4 000 kontrolním z jiných domén s podobnou úrovní citací, a nenašel významný nárůst na žádné platformě — u Google AI Overviews dokonce mírný pokles. Schema dělejte pro rich results, rozlišení identity a konzistenci dat, ne jako nástroj, jak se dostat do AI odpovědí."
+  - q: "Když schema nepomáhá, proč mají citované stránky schema častěji?"
+    a: "Protože je to korelace, ne příčina. AI systémy citují dobře udržované a autoritativní weby — a ty shodou okolností schema používají také. Strukturovaná data jsou tedy příznak kvalitního webu, ne důvod, proč ho AI cituje. Přidat schema na slabou stránku z ní autoritativní neudělá."
+  - q: "Znamená −4,6 %, že schema citacím škodí?"
+    a: "Ne. To číslo je blízko nuly a hlavní zjištění zní, že schema nemá významný přínos, ne že škodí. Statisticky šlo o mírný pokles u jedné platformy, ne o důkaz, že vám schema uškodí. Berte to jako „žádný přínos pro citace“, ne jako varování před strukturovanými daty."
+  - q: "Má tedy vůbec smysl schema dělat?"
+    a: "Ano, jen z jiného důvodu než kvůli AI citacím. Strukturovaná data pomáhají ke klasickým rich results v Googlu (hvězdičky u recenzí, cena a dostupnost u produktů) a stroji usnadní pochopit, kdo jste a co stránka obsahuje. To je doložený užitek. Páka na citace v AI to ale není."
+  - q: "Platí ta studie i pro český trh?"
+    a: "Studie je mezinárodní, takže z ní nevyvozujte přesná česká čísla. Mechanismus je ale obecný: kauzální test neukázal přínos ani na jedné z velkých platforem. Pro češtinu srovnatelné měření nemáme, takže české specifikum z toho nepotvrdíme ani nevyvrátíme — prakticky ale není dobrý důvod počítat se schematem jako se spolehlivou citační pákou."
+  - q: "Kdo studii dělal a dá se jí věřit?"
+    a: "Udělal ji Ahrefs, dodavatel SEO nástrojů — takže nezaujatý zdroj to není. Na rozdíl od většiny „studií“ v oboru ale nešlo jen o korelaci: šlo o kauzální test s kontrolní skupinou, který je metodicky výrazně silnější. Stejným směrem, byť jen observačně, ukázala i analýza Search Atlas — hlavní váhu tu ale má právě ten kauzální test."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Kauzální test Ahrefs neukázal, že by přidání schema markup samo o sobě zvyšovalo citace v AI.** Citované stránky sice mají strukturovaná data zhruba 3× častěji, ale při kauzálním testu na 1 885 stránkách vyšel nulový až mírně záporný efekt. V tomto testu se schema jeví spíš jako marker kvalitních webů, které AI cituje tak jako tak, než jako samostatná páka na citace. Smysl dává pro rich results, rozlišení identity a konzistenci, ne jako nástroj na AI odpovědi.
+
+„Přidejte strukturovaná data, ať vás AI cituje“ patří k nejčastějším radám AI SEO. Zní logicky a opírá se o reálné číslo. To číslo ale znamená něco jiného, než se tvrdí — a rozdíl mezi tím je celý smysl tohohle článku.
+
+## Proč to vypadalo, že schema pomáhá
+
+Rada nevznikla z ničeho. Ahrefs při analýze **6 milionů URL** zjistil, že stránky citované v AI mají JSON-LD **skoro 3× častěji** než ty necitované. To je silná korelace a dá se z ní snadno usoudit: schema → citace.
+
+Přesně tady se láme logika. Korelace neznamená příčinu — a tvrdit „mají to častěji, tak to musí pomáhat“ je stejná chyba jako „hasiči bývají u velkých požárů častěji, tak požáry způsobují hasiči“.
+
+## Co ukázal kauzální test
+
+Ahrefs proto udělal něco, co většina „studií“ v oboru nedělá: **kauzální test s kontrolní skupinou.**
+
+<CompareTable
+  caption="Rozdíl mezi korelací a kauzálním testem"
+  columns={["Korelační pohled", "Kauzální test"]}
+  rows={[
+    { icon: "🔢", label: "Vzorek", left: "6 milionů URL, jen se pozoruje", right: "1 885 stránek, které schema přidaly, proti 4 000 kontrolním bez něj" },
+    { icon: "🧪", label: "Metoda", left: "Kdo je citovaný, má schema?", right: "Přidání schématu → změnily se citace oproti srovnatelným stránkám?" },
+    { icon: "📊", label: "Výsledek", left: "Citovaní mají schema 3× častěji", right: "Žádný významný nárůst citací na žádné platformě" },
+    { icon: "🎯", label: "Google AI Overviews", left: "—", right: "Místo nárůstu mírný pokles, kolem −4,6 %" },
+  ]}
+/>
+
+Test běžel od srpna 2025 do března 2026 a měřil citace napříč Google AI Overviews, AI Mode i ChatGPT. Ke každé stránce, která schema přidala, přiřadil tři kontrolní stránky z jiných domén s podobnou předchozí úrovní citací. **V tomto testu a sledovaném období se po přidání schématu neprojevil významný nárůst citací na žádné platformě.**
+
+<Insight tone="warning">
+Číslo −4,6 % u Google AI Overviews neberte jako „schema škodí“. Je blízko nuly a statisticky drobné; hlavní závěr zní jinak: **přidání strukturovaných dat citace samo o sobě nezvýšilo.** Není to varování před schématem, je to konec jedné pohodlné zkratky.
+</Insight>
+
+## Proč korelace tak dlouho klamala
+
+Vysvětlení je prosté a docela poučné pro celé AI SEO. AI systémy citují **dobře udržované, autoritativní weby** — a ty shodou okolností **schema používají taky.** V testu tak strukturovaná data vyšla spíš jako **průvodní znak** kvalitního webu než jako **příčina** toho, že ho AI cituje.
+
+<Insight tone="key">
+Otočte si to prakticky: **přidání schématu na slabou stránku z ní autoritativní neudělá.** Jde o záměnu markeru kvality za samostatný mechanismus růstu citací. Stejnou past — korelaci vydávanou za páku — najdete v oboru u spousty dalších „AI triků“; osvědčené kritérium je ptát se, jestli za tvrzením stojí kauzální test, nebo jen pozorování.
+</Insight>
+
+Stejným směrem ukazuje i **observační analýza Search Atlas**, která napříč OpenAI, Gemini a Perplexity nenašla mezi pokrytím schématem a viditelností vztah — není to ale kauzální důkaz, takže hlavní váhu tu má test Ahrefs. A **Google ve svém průvodci z května 2026** uvádí, že pro AI funkce není potřeba žádné zvláštní schema.org značkování navíc; tím ale nepopírá jeho běžný přínos pro rich results a identitu ([víc o tom průvodci](/blog/aeo-geo-je-porad-seo/)).
+
+## Co test měří a co ne
+
+Férová námitka, než půjdeme dál: studie zkoumá hlavně **efekt dodatečného přidání JSON-LD na existující stránky.** Netvrdí, že schema nikdy v žádném kontextu strojům s porozuměním nepomůže — testuje jednu konkrétní věc: jestli se **samotné přidání značkování** projeví na citacích. A to se v datech neprojevilo. Neobrací to závěr, jen ho poctivě vymezuje.
+
+## K čemu schema pořád slouží
+
+Teď to důležité, aby článek nesklouzl do „schema je k ničemu“: **strukturovaná data mají doložený smysl — jen jinde než u AI citací.** Není to spor s doporučeními schema nasazovat, která najdete jinde na webu; jen je potřeba oddělit jeho klasický technický přínos od neprokázaného vlivu na AI citace.
+
+<CompareTable
+  caption="Kde schema pomáhá a kde ne"
+  columns={["Doložený užitek", "Nedoložená páka"]}
+  rows={[
+    { icon: "⭐", label: "Rich results", left: "Hvězdičky u recenzí, cena a dostupnost u produktů — vzhled v klasickém vyhledávání", right: "Citace v AI odpovědích" },
+    { icon: "🏷️", label: "Rozlišení identity", left: "Organization a Person explicitně vyjádří, kdo jste a jak entity souvisí", right: "Vyšší šance na výběr do AI odpovědi" },
+    { icon: "🔗", label: "Konzistence", left: "Nutí sladit data s viditelným textem", right: "Zvýhodnění nad silnějším, ale neoznačkovaným obsahem" },
+  ]}
+/>
+
+Pozor jen na to, že i klasický užitek se místy zmenšuje: **FAQ a HowTo rich results Google v roce 2026 osekal**, jak rozebírá [konec FAQ rich results](/blog/konec-faq-rich-results/). Jak schema nasadit tam, kde smysl má, řeší [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/) a [Organization schema](/blog/organization-schema-pro-znacku/).
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Přidat schema kvůli AI citacím">
+    Kauzální test přínos neukázal. Čas na značkování dává smysl kvůli rich results a strojové čitelnosti, ne jako trik na citace v AI.
+  </Mistake>
+  <Mistake number="02" title="Číst korelaci jako příčinu">
+    „Citovaní mají schema častěji" neznamená „schema přineslo citace". Je to nejběžnější past AI SEO studií — ptejte se, jestli za číslem stojí kauzální test.
+  </Mistake>
+  <Mistake number="03" title="Čekat od schématu autoritu">
+    Strukturovaná data jsou příznak kvalitního webu, ne jeho náhrada. Na slabém obsahu bez důvěryhodnosti schema nic nezachrání.
+  </Mistake>
+  <Mistake number="04" title="Brát −4,6 % jako důvod schema nedělat">
+    To číslo znamená „žádný přínos pro citace“, ne „schema škodí“. Pro rich results a identitu strukturovaná data dál dávají smysl.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Otázka „pomáhá schema markup AI citacím" má po kauzálním testu docela jasnou odpověď: **jako páka na citace se neprojevil.** Korelace, na které rada stála, mizí, jakmile se místo pozorování udělá pokus — schema je marker kvalitních webů, ne příčina jejich citací.
+
+Rozhodnutí je proto jednoduché a nikoli „schema zahodit“:
+
+- **Chcete rich results, produktové prvky nebo vyjasnit identitu značky** — schema nasaďte, má doložený užitek.
+- **Přidáváte ho jen v naději na víc AI citací** — efekt nečekejte; test ho nenašel.
+- **Máte omezený čas** — přednost dejte obsahu, zdrojům, autoritě a interní konzistenci, ne dolaďování značkování.
+
+Strukturovaná data dělejte tam, kde mají doložený smysl. Jako zkratku do AI odpovědí ne — tu jim data nepotvrzují.
