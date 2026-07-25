@@ -1,0 +1,166 @@
+---
+title: "Core Web Vitals a AI: kdy rychlost webu opravdu rozhoduje"
+description: "Ovlivňují Core Web Vitals viditelnost v AI? Jako signál skoro ne — měření to nepotvrzuje. Reálné riziko je jinde: limit robota a pozdní vykreslení obsahu."
+answer: "Core Web Vitals jsou tři metriky rychlosti a stability webu — LCP, INP a CLS. Žádná AI platforma je nepotvrdila jako faktor citací a měřená korelace s AI viditelností je blízko nuly. Jeden reálný důvod web zrychlit ale existuje: kvůli krátkému limitu robotů nebo pozdnímu vykreslení hlavního obsahu se extrémně pomalá stránka nemusí dostat do zpracování, ze kterého AI čerpá."
+slug: "core-web-vitals-pro-ai"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-07-24"
+updated: "2026-07-24"
+keywords:
+  - "core web vitals ai"
+  - "rychlost webu ai vyhledávání"
+  - "inp lcp cls 2026"
+  - "core web vitals ai citace"
+  - "rychlost webu a ai roboti"
+variant: "rich"
+stats:
+  - value: "0 platforem"
+    label: "žádná AI platforma nepotvrdila Core Web Vitals jako faktor pro výběr zdrojů"
+  - value: "~0"
+    label: "korelace CWV s AI viditelností byla ve studii z ledna 2026 blízko nuly"
+  - value: "jednotky s"
+    label: "krátký časový limit robotů; liší se podle robota a situace, řádově sekundy"
+  - value: "březen 2024"
+    label: "INP plně nahradil starší metriku FID; měří celý životní cyklus interakce"
+howto:
+  name: "Jak řešit Core Web Vitals s ohledem na AI"
+  steps:
+    - name: "Změřte zdarma"
+      text: "PageSpeed Insights ukáže laboratorní test vždy a reálná data tam, kde má stránka nebo doména dost dat z CrUX. Report Core Web Vitals v Search Console je taky zdarma. Stačí to k rozhodnutí, jestli vůbec máte problém."
+    - name: "Přečtěte tři metriky"
+      text: "LCP pod 2,5 sekundy, INP pod 200 milisekund, CLS pod 0,1. Cílem jsou tyhle prahy dobré hodnoty, ne skóre 100 ze 100."
+    - name: "Priorita: ať se stránka vůbec stihne načíst"
+      text: "Kvůli krátkému časovému limitu robota je u AI nejrizikovější extrémně pomalá stránka. Nejdřív vyřešte tu, ne poslední body do plného skóre."
+    - name: "Opravte jednu nejhorší věc"
+      text: "Nejčastěji velké neoptimalizované obrázky, které kazí LCP, nebo těžký JavaScript, který zhoršuje INP. Jedna velká oprava udělá víc než deset drobných."
+    - name: "Překontrolujte s odstupem"
+      text: "Reálná data se počítají z 28 dní provozu, takže se změna neprojeví hned. Změřte znovu za pár týdnů, ne druhý den."
+faq:
+  - q: "Jsou Core Web Vitals faktor pro citace v AI?"
+    a: "Doložené to není. Žádná z platforem — Google, OpenAI, Microsoft ani Perplexity — nepotvrdila Core Web Vitals jako faktor pro výběr zdrojů do generativních odpovědí. Studie z ledna 2026 navíc našla jen velmi slabou korelaci mezi rychlostí webu a viditelností v AI, blízko nuly. Rychlost řešte kvůli základu a lidem, ne kvůli domnělé páce na citace."
+  - q: "Proč se pak rychlostí vůbec zabývat?"
+    a: "Kvůli jednomu konkrétnímu mechanismu: AI roboti, kteří sbírají obsah pro ChatGPT, Perplexity nebo Google, běží na krátkém časovém limitu, typicky jednotky sekund. Extrémně pomalá stránka se nemusí stihnout načíst, a co se nenačte, to nelze citovat. Nejde o to být nejrychlejší, jde o to nebýt tak pomalý, že robot odejde dřív."
+  - q: "Co znamenají zkratky LCP, INP a CLS?"
+    a: "LCP (Largest Contentful Paint) měří, za jak dlouho se načte hlavní obsah — dobrá hodnota je pod 2,5 sekundy. INP (Interaction to Next Paint) měří odezvu na kliknutí a psaní — dobře je pod 200 milisekund. CLS (Cumulative Layout Shift) měří, jak moc obsah poskakuje při načítání — dobře je pod 0,1."
+  - q: "Co se stalo s metrikou FID?"
+    a: "V březnu 2024 ji plně nahradila INP. FID měřila jen zpoždění prvního vstupu, INP hodnotí celý životní cyklus interakce, takže lépe vystihuje, jak web reaguje během celé návštěvy. Pokud narazíte na starší návod mluvící o FID, je v tomhle bodě zastaralý."
+  - q: "Na kolik mám Core Web Vitals vyladit?"
+    a: "Na dobré hodnoty prahů, ne na sto ze sta. Metriky se počítají z 75. percentilu reálných uživatelů Chrome za 28 dní, takže jde o zkušenost většiny návštěvníků, ne o jednu ideální laboratorní hodnotu. Nad rámec dobrých prahů má další ladění klesající návratnost — čas se víc vyplatí dát do obsahu."
+  - q: "Pomůže rychlý web aspoň nepřímo?"
+    a: "Nepřímo ano, ale nepřeceňujte to. Rychlý a stabilní web zlepšuje zážitek návštěvníků a chování, které z něj plyne, a snižuje riziko, že robot kvůli časovému limitu odejde. Je to hygiena, na které stojí ostatní práce — ne samostatný nástroj, jak se dostat do AI odpovědí."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+
+**Core Web Vitals jsou tři metriky rychlosti a stability webu — LCP, INP a CLS.** Žádná AI platforma je nepotvrdila jako faktor citací a měřená korelace s AI viditelností je blízko nuly. Jeden reálný důvod web zrychlit ale existuje: AI roboti mají krátký časový limit, takže extrémně pomalá stránka se nemusí načíst a pak ji nelze citovat.
+
+„Zrychlete web, ať vás cituje AI" je rada, která zní logicky a přitom se o ni nedá opřít. Zároveň ale platí, že úplně pomalý web si u AI uškodit umí — jen jinak, než se říká. Rozdíl mezi těmi dvěma tvrzeními je celý smysl tohohle článku.
+
+## Co Core Web Vitals jsou
+
+Tři metriky, které Google hodnotí podle **75. percentilu reálných dat uživatelů Chrome (dataset CrUX) za 28 dní** — tedy podle zkušenosti většiny návštěvníků, ne podle jedné laboratorní hodnoty.
+
+<CompareTable
+  caption="Tři metriky a jejich dobré hodnoty"
+  columns={["Co měří", "Dobrá hodnota"]}
+  rows={[
+    { icon: "🖼️", label: "LCP", left: "Largest Contentful Paint — jak dlouho se načítá hlavní obsah", right: "pod 2,5 sekundy" },
+    { icon: "⚡", label: "INP", left: "Interaction to Next Paint — doba od interakce po další vykreslení rozhraní", right: "pod 200 ms; 200–500 zlepšit, nad 500 špatné" },
+    { icon: "📐", label: "CLS", left: "Cumulative Layout Shift — jak moc obsah poskakuje při načítání", right: "pod 0,1" },
+  ]}
+/>
+
+Jedna poznámka k metrikám: **v březnu 2024 INP plně nahradila starší FID.** FID měřila jen zpoždění prvního vstupu, INP sleduje odezvu interakcí napříč celou návštěvou. Pokud narazíte na návod, který mluví o „First Input Delay", je v tomhle bodě zastaralý.
+
+## Ovlivňují AI viditelnost? Poctivá odpověď
+
+Tady je potřeba oddělit, co se říká, od toho, co je doložené.
+
+**Co doložené není:** žádná z platforem — Google, OpenAI, Microsoft ani Perplexity — nepotvrdila Core Web Vitals jako faktor pro výběr zdrojů do generativních odpovědí.
+
+**Co ukazují data:** mezinárodní studie z ledna 2026 našla mezi rychlostí webu a viditelností v AI jen velmi slabou korelaci, blízko nuly. Není to nula na puntík, ale je to daleko od „rychlost = citace" — a vyvozovat z ní české benchmarky ani příčinu nejde.
+
+<Insight tone="key">
+Poučení není „rychlost je jedno". Je to „nedělejte z Core Web Vitals páku na AI, protože jí nejsou". Stejně jako u [struktury URL](/blog/ai-friendly-url-struktura/) platí: co si trh vykládá jako zvláštní AI signál, bývá jen klasické SEO — a Google to ve svém průvodci z května 2026 potvrzuje, když uvádí, že pro AI funkce nejsou potřeba žádné zvláštní technické požadavky nad běžné podmínky pro indexaci a zobrazení se snippetem ([víc o tom průvodci](/blog/aeo-geo-je-porad-seo/)).
+</Insight>
+
+## Jeden reálný důvod, proč pomalý web u AI vadí
+
+Existuje ale mechanismus, který je konkrétní a nehypeový: **AI roboti běží na krátkém časovém limitu.**
+
+Systémy a crawlery, které obsah získávají a připravují pro další zpracování v ChatGPT, Perplexity nebo Google AI, můžou mít krátké časové limity — v praxi se uvádí řádově jednotky sekund. U extrémně pomalé stránky tak roste riziko, že robot obsah neuvidí celý nebo ji nedocrouluje vůbec. To může omezit její dostupnost pro další zpracování — není to ranking signál, je to o tom, jestli se obsah k robotovi vůbec dostane.
+
+<Insight tone="warning">
+Hlavní praktický důvod, proč rychlost u AI řešit: **ne abyste byli nejrychlejší, ale abyste nebyli tak pomalí, že robot odejde dřív, než se obsah objeví.** Rozdíl mezi „dobrým" a „výborným" webem tady nehraje roli, rozdíl mezi „pomalým" a „extrémně pomalým" ano. A netýká se to jen timeoutu — u těžkých stránek závislých na JavaScriptu je stejné riziko, že se hlavní obsah nestihne vykreslit.
+</Insight>
+
+## Jak na to
+
+<Stepper
+  steps={[
+    { label: "Krok 1", title: "Změřte zdarma", text: "PageSpeed Insights ukáže laboratorní test vždy a reálná data na úrovni URL, případně celé domény, když jich je v CrUX dost. Doplní to report Core Web Vitals v Search Console. Bez placení." },
+    { label: "Krok 2", title: "Přečtěte tři metriky", text: "LCP pod 2,5 s, INP pod 200 ms, CLS pod 0,1. Cíl jsou dobré prahy, ne sto ze sta." },
+    { label: "Krok 3", title: "Priorita: ať se stránka načte", text: "Kvůli časovému limitu robota je nejrizikovější extrémně pomalá stránka. Tu řešte první." },
+    { label: "Krok 4", title: "Opravte jednu nejhorší věc", text: "Nejčastěji hero obrázek (komprese, rozměry) kvůli LCP, render-blocking a dlouhé JS úlohy kvůli INP, nebo pomalý server a pozdě dodaný hlavní obsah. Jedna velká oprava udělá víc než deset drobných." },
+    { label: "Krok 5", title: "Překontrolujte s odstupem", text: "Data jsou z 28 dní provozu — změřte znovu za pár týdnů, ne druhý den." },
+  ]}
+/>
+
+Hlubší práci s metrikami a jejich zasazení mezi ostatní ukazatele rozebírá [měření SEO výkonu](/blog/mereni-seo-vykonu-2026/). Jestli se váš web vůbec dostane k robotům, řeší [robots.txt pro AI](/blog/ai-crawler-robots-txt/).
+
+## Pozor: Core Web Vitals nejsou test pro robota
+
+Tohle je pro technicky zdatné čtenáře nejdůležitější věta článku: **Core Web Vitals měří zkušenost reálných návštěvníků z Chrome, ne přímo to, co uvidí crawler.** Jsou dobrý varovný signál, ale ne přímý test dostupnosti obsahu pro robota.
+
+Prakticky: i web s přijatelnými Core Web Vitals může mít pro robota problém, pokud klíčový obsah dodává až JavaScript pozdě. A naopak stránka s horšími čísly, ale s obsahem rovnou v HTML, může být pro robota úplně v pořádku. Když máte aplikaci závislou na JavaScriptu, ověřte si fetch a render robota zvlášť — na to vám CWV neodpoví.
+
+<Checklist tone="seo" title="Rychlý technický check dostupnosti pro robota" items={[
+  { title: "Je hlavní obsah v initial HTML?", desc: "otevřete zdroj stránky (bez spuštění JS) a ověřte, jestli je v něm podstata textu, ne jen prázdný kontejner." },
+  { title: "Vidíte podstatu i bez JavaScriptu?", desc: "když obsah přijde až po skriptu, počítejte s tím, že ho část robotů nemusí získat." },
+  { title: "Není LCP objekt zbytečně těžký?", desc: "hlavní obrázek nebo video komprimujte a dejte mu rozumné rozměry." },
+  { title: "Nepřetěžuje stránku dlouhý JavaScript?", desc: "dlouhé úlohy na hlavním vlákně zhoršují INP i celkovou odezvu." },
+  { title: "Máte pro URL dost dat z CrUX?", desc: "pokud ne, rozhodujete jen z laboratorního testu — berte ho jako diagnostiku, ne verdikt." }
+]} />
+
+## Kolik ladění stačí
+
+Krátká odpověď: **po dobré prahy, a pak přestat.** Metriky se počítají z reálných uživatelů, takže cílem je zkušenost většiny návštěvníků — ne honba za poslední bodovou stovkou v laboratorním testu.
+
+Nad rámec dobrých hodnot má další optimalizace klesající návratnost. Ten čas se skoro vždy víc vyplatí dát do obsahu, který má na viditelnost v AI doložitelně větší vliv než rozdíl mezi rychlým a ještě rychlejším webem.
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Honit Core Web Vitals kvůli AI">
+    Korelace s AI viditelností je blízko nuly a žádná platforma je jako faktor nepotvrdila. Dělejte rychlost kvůli základu a lidem, ne jako trik na citace.
+  </Mistake>
+  <Mistake number="02" title="Ladit na sto ze sta">
+    Dobré prahy stačí. Nad nimi roste čas a klesá přínos — a laboratorní stovka stejně neodpovídá tomu, co zažívají reální návštěvníci.
+  </Mistake>
+  <Mistake number="03" title="Přehlédnout extrémně pomalou stránku">
+    U AI je tohle to nejrizikovější. Když se stránka nenačte do časového limitu robota, může být pro daný fetch nedostupná nebo se její obsah nedostane celý do dalšího zpracování.
+  </Mistake>
+  <Mistake number="04" title="Rozhodovat podle laboratorního skóre">
+    O stavu Core Web Vitals rozhoduje 75. percentil reálných uživatelů za 28 dní. Laboratorní test o tom stavu nerozhoduje, ale je klíčový pro hledání příčiny — reálná data řeknou, že problém je, lab test proč.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Core Web Vitals nejsou zvláštní páka na AI — **nikdo je jako faktor nepotvrdil a měřená korelace je blízko nuly.** Jeden reálný důvod ale existuje: časový limit robota, kvůli kterému se extrémně pomalá stránka nemusí vůbec načíst.
+
+Rozhodnutí je proto jednoduché:
+
+- **Plníte prahy a hlavní obsah je v HTML nebo se objeví rychle bez těžkého JavaScriptu** — pro AI dál rychlost neřešte.
+- **Neplníte prahy, nebo se hlavní obsah vykresluje pozdě** — opravte to, nejdřív kvůli lidem a pak proto, aby robot neodešel dřív, než uvidí obsah.
+- **Máte aplikaci závislou na JavaScriptu** — ověřte fetch a render robota zvlášť; samotné CWV vám to nepotvrdí.
+
+Rychlost je hygiena, na které ostatní práce stojí — ne zkratka do AI odpovědí.
