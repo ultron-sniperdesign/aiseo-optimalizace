@@ -3,7 +3,7 @@ title: "SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4 zkratkami pro AI ér
 seoTitle: "SEO vs. GEO vs. AEO vs. AIO: rozdíly a kdy kterou použít"
 description: "Jaký je rozdíl mezi SEO, GEO, AEO a AIO? Srozumitelný průvodce 4 disciplínami AI éry — definice, srovnání a kdy která dává smysl pro web i e-shop."
 published: "2026-04-29"
-updated: "2026-07-18"
+updated: "2026-07-26"
 tldr: "SEO optimalizuje pro pozice v Googlu. GEO pro citace v ChatGPT a Perplexity. AEO pro odpovědi v Google AI Overviews. AIO zastřešuje všechny tři disciplíny. V roce 2026 nestačí dělat jen klasické SEO — pro citace v AI odpovědích potřebujete kombinaci všech čtyř."
 keywords:
   - "ai overview"
@@ -11,6 +11,9 @@ keywords:
   - "aeo seo"
   - "answer engine optimization"
   - "geo vs seo"
+  - "geo vs aeo"
+  - "aio vs geo"
+  - "aeo vs geo"
   - "generative engine optimization"
   - "ai optimization"
 faq:
@@ -22,12 +25,16 @@ faq:
     a: "Google AI Overviews se v Česku zobrazují od léta 2025 nad organickými výsledky pro informační dotazy. Aktivují se selektivně podle typu dotazu, dostupnosti důvěryhodných zdrojů a typu hledaní. U transakčních a navigačních dotazů se obvykle neobjevují."
   - q: "Můžu AI Overviews v Googlu vypnout?"
     a: "V Google nastavení účtu lze AI Overviews částečně omezit přes Search Labs → AI Overviews → Off, ale úplně vypnout je nelze. Některé prohlížeče (Brave, DuckDuckGo) AI Overviews neobsahují vůbec. Pokud chcete pro vlastní web AIO zablokovat, použijte meta tag nosnippet."
+  - q: "Jaký je rozdíl mezi GEO a AEO?"
+    a: "GEO (Generative Engine Optimization) cílí na citace v samostatných AI chatech — ChatGPT, Perplexity, Claude. AEO (Answer Engine Optimization) cílí na odpovědní funkce vyhledávačů — Google AI Overviews a featured snippets. Postupy se z velké části překrývají (strukturovaný obsah, přímé odpovědi, fakta), liší se ale platforma a měření: GEO sledujete přes zmínky a citace v chatech, AEO přes Search Console."
+  - q: "Jaký je rozdíl mezi AIO a GEO?"
+    a: "AIO (AI Optimization) je zastřešující rámec optimalizace pro AI éru — zahrnuje SEO, GEO i AEO. GEO je jeho podmnožina zaměřená na citace v generativních chatech. Pozor na dvojí význam: AIO je zároveň zavedená zkratka pro Google AI Overviews. V tomto průvodci označujeme funkci Googlu slovy AI Overviews a zkratku AIO používáme pro disciplínu."
   - q: "Je AEO totéž co AIO?"
     a: "Ne. AEO (Answer Engine Optimization) je užší — týká se konkrétně answer engines napojených na vyhledávač (Google AIO, Bing Chat, Featured Snippets). AIO (AI Optimization) je zastřešující pojem pro celou disciplínu optimalizace pro AI, který zahrnuje SEO + GEO + AEO. AIO je strategický rámec, AEO konkrétní implementační oblast."
   - q: "Mám psát GEO-friendly obsah od začátku, nebo až po dosažení SEO milníku?"
     a: "Od začátku. GEO-friendly psaní (answer block 40–60 slov, definice 'X je…', fact-density 3+ fakta na 100 slov, FAQPage schema) nestojí žádný extra náklad oproti běžnému SEO contentu — jen znamená psát s jiným nastavením v hlavě. Pokud nyní píšete obsah bez GEO awareness, za rok budete mít 50+ článků k přepisu. Co má smysl odložit až po dosažení SEO milníku (typicky 20+ článků v top 10): pořízení placených nástrojů na měření citation share (Otterly $29/měs, Profound $500+) — tady je investice na místě."
   - q: "Funguje GEO i pro Seznam.cz?"
-    a: "Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření v ČR je zatím marginální oproti Google. GEO praktiky (strukturovaný obsah, schema markup, fakta nahoře) prospívají i Seznamu, ale dedikovanou GEO strategii pro Seznam zatím nepotřebujete — kvalitní SEO + AEO pro Google obvykle pokryje i Seznam."
+    a: "Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření v ČR je zatím marginální oproti Google. GEO praktiky (strukturovaný obsah, strukturovaná data, fakta nahoře) prospívají i Seznamu, ale dedikovanou GEO strategii pro Seznam zatím nepotřebujete — kvalitní SEO + AEO pro Google obvykle pokryje i Seznam."
   - q: "Jaký je rozdíl mezi AI Overview a AI Overviews?"
     a: "Žádný věcný rozdíl. Google funkci oficiálně nazývá AI Overviews v množném čísle (jeden výsledek typicky agreguje více dílčích odpovědí a citací). V češtině se běžně používá i singulár AI Overview, když mluvíme o jednom konkrétním panelu nad výsledky. Jde o totéž — oba tvary jsou synonyma. V tomto průvodci používáme oba zaměnitelně."
 howto:
@@ -35,8 +42,8 @@ howto:
   steps:
     - name: "Audit existujícího obsahu pro AI citovatelnost"
       text: "Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) obsahuje stránka konkrétní fakta, čísla a citáty, (3) je struktura H2/H3 logická (každý subheading odpovídá na sub-dotaz), (4) má stránka FAQ sekci s schema.org/FAQPage markupem. Stránky které selžou ≥ 2 kontroly přepište."
-    - name: "Schema.org markup (FAQPage, HowTo, Article)"
-      text: "Schema markup je strojově čitelný popis vaší stránky, který AI engines explicitně vyhledávají. Implementujte 3 typy: Article schema na každý článek (headline, datePublished, dateModified, author), FAQPage na FAQ sekci (mainEntity array s Question a Answer), HowTo na tutoriály a postupy (step array s name a text). JSON-LD blok jde do <head>, validate přes Google Rich Results Test."
+    - name: "Strukturovaná data (FAQPage, HowTo, Article)"
+      text: "Strukturovaná data jsou strojově čitelný popis vaší stránky, který AI engines explicitně vyhledávají. Implementujte 3 typy: Article schema na každý článek (headline, datePublished, dateModified, author), FAQPage na FAQ sekci (mainEntity array s Question a Answer), HowTo na tutoriály a postupy (step array s name a text). JSON-LD blok jde do <head>, validate přes Google Rich Results Test."
     - name: "Strukturované odpovědi (answer block + kontext)"
       text: "Každý článek by měl mít dvouvrstevnou strukturu: answer block 40–60 slov hned po H1 (tady AI engines táhnou citaci) plus dlouhý kontext pod tím (pro lidské čtenáře, kteří chtějí hlubší pochopení). Definice typu 'X je …' jako tučný odstavec — přímý signál pro AI scrapery, kde najdou definici daného pojmu."
     - name: "Měření: SERP features tracking + AI citation monitoring"
@@ -190,13 +197,33 @@ Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychl
 | **Časový horizont výsledku** | 3–6 měsíců | 1–3 měsíce | 2–4 měsíce | Závisí na pillaru |
 | **Klíčový nástroj** | Google Search Console, Ahrefs | Mention monitoring (Otterly, Profound) | Google AIO tracker, Search Console | Hybrid stack |
 
+## <span class="hl">GEO vs. AEO</span> a další <strong>rozdíly ve dvojicích</strong>
+
+Tabulka výše srovnává všechny čtyři disciplíny najednou — v praxi se ale lidé nejčastěji ptají na konkrétní dvojici. Tady jsou přímé odpovědi:
+
+### GEO vs. AEO: jaký je rozdíl?
+
+**GEO optimalizuje obsah pro citace v samostatných AI chatech (ChatGPT, Perplexity, Claude), zatímco AEO cílí na odpovědní funkce navázané na vyhledávač (Google AI Overviews, featured snippets).** Postupy se z velké části překrývají — strukturovaný, faktický obsah s přímými odpověďmi pomáhá oběma. Liší se platforma a měření: GEO sledujete přes zmínky a citace v chatech, AEO přes imprese v [Search Console](/slovnik/search-console/). Detailně v sekcích [GEO](/geo/) a [AEO](/aeo/).
+
+### SEO vs. AEO: jaký je rozdíl?
+
+**SEO cílí na pozice v klasických výsledcích (modré odkazy), AEO na to, aby vaši odpověď vyhledávač vytáhl do odpovědního boxu nad výsledky.** AEO přitom na SEO staví — do AI Overviews se dostávají typicky stránky, které už slušně rankují. Rozdíl je ve formátu: AEO chce jasně položenou otázku v nadpisu a přímou odpověď 40–60 slov hned pod ní.
+
+### AIO vs. GEO: jaký je rozdíl?
+
+**AIO (AI Optimization) je zastřešující rámec — zahrnuje SEO, GEO i AEO dohromady. GEO je jedna z jeho součástí, zaměřená na generativní chaty.** Matoucí je dvojí význam zkratky: AIO se běžně používá i pro Google AI Overviews (funkci vyhledávače). V tomto průvodci označujeme funkci slovy AI Overviews a zkratku AIO necháváme disciplíně — obojí rozebírá sekce [AIO](/aio/).
+
+### AIO vs. AEO: jaký je rozdíl?
+
+**AEO je užší implementační disciplína (odpovědní funkce vyhledávačů), AIO strategický rámec nad všemi třemi disciplínami.** Pokud řešíte „jak se dostat do AI Overviews", děláte AEO; pokud skládáte celkovou strategii webu pro AI éru, děláte AIO.
+
 ## Co dělat <strong>od prvního článku</strong> a co <span class="hl">odložit na později</span>
 
 <Mindset
   badQuote="Nejdřív SEO, pak AEO, pak GEO."
   badWhy="Klasický model. V roce 2026 typicky nefunguje optimálně — vytváří dluh. Pokud teď píšete bez GEO/AEO awareness, za rok budete mít stovky článků k přepisu."
   goodQuote="SEO + AEO + GEO píšete od prvního článku paralelně."
-  goodWhy="Schema markup ani strukturní pravidla nestojí žádný extra náklad. Měření a placené nástroje přijdou až s 20+ články v top 10 — to je skutečná investice po milníku."
+  goodWhy="Strukturovaná data ani strukturní pravidla nestojí žádný extra náklad. Měření a placené nástroje přijdou až s 20+ články v top 10 — to je skutečná investice po milníku."
 />
 
 ### Co patří do balíku "od prvního článku" (0 Kč navíc)
