@@ -79,8 +79,10 @@ Bez identifikátoru zbývá k rozpoznání produktu jen název a parametry, kter
 Tohle je místo, kde e-shopy nejčastěji tratí — a přitom to není o technologii, ale o údržbě.
 
 <CompareTable
-  caption="Kde všude o produktu mluvíte"
-  columns={["Vrstva", "Co v ní bývá špatně"]}
+  leftLabel="Vrstva"
+  leftTone="accent"
+  rightLabel="Co v ní bývá špatně"
+  rightTone="accent"
   rows={[
     { icon: "🖥️", label: "Stránka", left: "Co vidí zákazník", right: "Ruční úpravy, které se nepromítnou jinam" },
     { icon: "📤", label: "Feed", left: "Datový soubor pro srovnávače a Merchant Center", right: "Generuje se automaticky, často ze starších polí" },
@@ -133,16 +135,16 @@ Ne každý sortiment ho má a Google to výslovně připouští. Týká se to hl
 ## Čtyři chyby v produktových datech
 
 <MistakeGrid>
-  <Mistake number="01" title="Vymyšlený nebo přebraný GTIN">
+  <Mistake num="01" title="Vymyšlený nebo přebraný GTIN">
     Nesprávný identifikátor může produkt chybně zařadit. Google u identifikátorů z cizích zdrojů doporučuje ověřit jejich legitimitu.
   </Mistake>
-  <Mistake number="02" title="Feed a stránka se rozcházejí">
+  <Mistake num="02" title="Feed a stránka se rozcházejí">
     Dva rozporné údaje o jedné věci. Prezentovat produkt nepřesně navíc pravidla pro nákupní reklamy zakazují.
   </Mistake>
-  <Mistake number="03" title="Strukturovaná data mimo obsah">
+  <Mistake num="03" title="Strukturovaná data mimo obsah">
     Údaj ve strukturovaných datech, který na stránce není vidět, jde proti požadavku na shodu s viditelným obsahem.
   </Mistake>
-  <Mistake number="04" title="Nastavit feed a zapomenout">
+  <Mistake num="04" title="Nastavit feed a zapomenout">
     Ceny, dostupnost i sortiment se mění. Bez pravidelné kontroly se vrstvy rozejdou samy.
   </Mistake>
 </MistakeGrid>

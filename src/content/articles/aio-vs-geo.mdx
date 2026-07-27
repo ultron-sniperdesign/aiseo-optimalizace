@@ -54,8 +54,10 @@ To není slovíčkaření. **Pod stejnou zkratkou jsou schované dvě různé ot
 Než půjdeme k významům, tady je to podstatné — podle situace se totiž ptáte na něco jiného:
 
 <CompareTable
-  caption="Kdy se na „AIO vs. GEO“ narazí a co je správná otázka"
-  columns={["Situace", "Co se ptát místo toho"]}
+  leftLabel="Na co se ptáte"
+  leftTone="accent"
+  rightLabel="Co se ptát místo toho"
+  rightTone="geo"
   rows={[
     { icon: "🗺️", label: "Plánujete strategii", left: "Ptáte se, do čeho investovat", right: "Ne „AIO nebo GEO“, ale: v jakém pořadí poskládat vrstvy a co odložit" },
     { icon: "📈", label: "Sestavujete reporting", left: "Ptáte se, co vykazovat", right: "Které vrstvě patří která metrika — a co u ní vůbec nejde změřit" },
@@ -78,8 +80,10 @@ Podrobná kritéria pro první dva body má [GEO vs. AEO](/blog/geo-vs-aeo/).
 Zbytek článku vysvětluje, proč to tak je.
 
 <CompareTable
-  caption="Co „AIO vs. GEO“ znamená podle použitého významu"
-  columns={["AIO = AI Optimization", "AIO = AI Overviews"]}
+  leftLabel="AIO = AI Optimization"
+  leftTone="aio"
+  rightLabel="AIO = AI Overviews"
+  rightTone="accent"
   rows={[
     { icon: "🧩", label: "Co to je", left: "Strategický deštník nad SEO, GEO a AEO", right: "Funkce Google vyhledávače — souhrn nad výsledky" },
     { icon: "⚖️", label: "Vztah ke GEO", left: "GEO je jeho součást, ne protiklad", right: "Jiný povrch, než na který cílí GEO" },
@@ -111,8 +115,10 @@ Jedna poznámka k pojmům: **AI Overviews není totéž co AI Mode.** AI Overvie
 Tohle je v praxi nejužitečnější použití celého rozlišení. Rozeznat význam pomůže otázka **jde o proces, nebo o místo?** — „AIO strategie" míří na disciplínu, „zobrazení v AIO" na funkci Googlu. Podle toho se ptejte jinak:
 
 <CompareTable
-  caption="Na co se ptát podle toho, co dodavatel myslí"
-  columns={["Míní disciplínu (AI Optimization)", "Míní funkci Googlu (AI Overviews)"]}
+  leftLabel="Míní disciplínu (AI Optimization)"
+  leftTone="aio"
+  rightLabel="Míní funkci Googlu (AI Overviews)"
+  rightTone="accent"
   rows={[
     { icon: "📐", label: "Rozsah", left: "Které vrstvy to zahrnuje a co je mimo", right: "Na jaké sadě dotazů se bude měřit" },
     { icon: "🎯", label: "Měření", left: "Jaké KPI má každá vrstva zvlášť", right: "Jak oddělí značkové dotazy od neznačkových" },
@@ -136,16 +142,16 @@ Rozseknutí významu není akademické cvičení — mění, co budete dělat:
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Vybírat mezi celkem a jeho částí">
+  <Mistake num="01" title="Vybírat mezi celkem a jeho částí">
     Když AIO myslíte jako deštník, GEO je jeho vrstva. Volba mezi nimi neexistuje — reálné rozhodnutí je o pořadí vrstev, ne o tom, kterou z nich zahodit.
   </Mistake>
-  <Mistake number="02" title="Neurčit význam a hádat se o odpověď">
+  <Mistake num="02" title="Neurčit význam a hádat se o odpověď">
     Dva lidé se můžou přít o „AIO vs. GEO" a oba mít pravdu, protože každý myslí jinou zkratku. První otázka vždycky je, který význam kdo používá.
   </Mistake>
-  <Mistake number="03" title="Zaměňovat AI Overviews a AI Mode">
+  <Mistake num="03" title="Zaměňovat AI Overviews a AI Mode">
     Souhrn nad výsledky a samostatný konverzační režim nejsou totéž. Zaměňují se běžně, ale liší se povrchem i chováním.
   </Mistake>
-  <Mistake number="04" title="Kupovat „AIO služby“ bez definice">
+  <Mistake num="04" title="Kupovat „AIO služby“ bez definice">
     Bez určení, jestli jde o disciplínu nebo o funkci Googlu, nevíte, co objednáváte ani jak to změříte. Ptejte se na konkrétní výstup a způsob ověření.
   </Mistake>
 </MistakeGrid>

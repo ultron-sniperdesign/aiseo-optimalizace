@@ -77,8 +77,10 @@ Samo o sobě Person data nejsou kouzlo. Fungují ale jako jasná vizitka: říka
 Nemusíte vyplnit všechno, ale některé vlastnosti mají větší váhu než jiné.
 
 <CompareTable
-  caption="Nejdůležitější vlastnosti typu Person"
-  columns={["Vlastnost", "Co říká AI a Googlu"]}
+  leftLabel="Vlastnost"
+  leftTone="accent"
+  rightLabel="Co říká AI a Googlu"
+  rightTone="accent"
   rows={[
     { icon: "🪪", label: "name", left: "Jméno", right: "Celé jméno autora; musí sedět s tím, jak je uvedený u článků" },
     { icon: "🔗", label: "sameAs", left: "Profily", right: "Odkazy na LinkedIn, Wikidata, osobní web — odliší autora od jmenovců" },
@@ -162,16 +164,16 @@ Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organiz
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Chybějící sameAs">
+  <Mistake num="01" title="Chybějící sameAs">
     Bez odkazů na profily může být pro AI i Google těžší odlišit autora od jmenovců. sameAs patří k nejdůležitějším vlastnostem pro odlišení autora od jmenovců.
   </Mistake>
-  <Mistake number="02" title="Různý @id na každém článku">
+  <Mistake num="02" title="Různý @id na každém článku">
     Když má autor na každé stránce jiný identifikátor, je pro stroje těžší poznat, že jde o stejného autora. Stabilní @id opakujte všude stejný.
   </Mistake>
-  <Mistake number="03" title="Data neodpovídají stránce">
+  <Mistake num="03" title="Data neodpovídají stránce">
     Jméno nebo role v datech, které se liší od toho, co je na stránce vidět, jsou nesoulad. Strukturovaná data mají popisovat realitu, ne ji vylepšovat.
   </Mistake>
-  <Mistake number="04" title="Vymyšlená odbornost">
+  <Mistake num="04" title="Vymyšlená odbornost">
     Falešné tituly nebo profily, které autor nemá, důvěryhodnosti nepomůžou a u citlivých témat jsou vyloženě riziko. E-E-A-T stojí na skutečné odbornosti.
   </Mistake>
 </MistakeGrid>

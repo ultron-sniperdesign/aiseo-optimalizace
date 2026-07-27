@@ -81,8 +81,10 @@ Pro WordPress AI SEO obvykle nemusíte měnit téma ani migrovat na jiný CMS. V
 Pro AI SEO základ ve WordPressu fungují všechny hlavní pluginy srovnatelně. Liší se hlavně rozsahem bezplatné verze, uživatelským prostředím a integracemi.
 
 <CompareTable
-  caption="Hlavní WordPress SEO pluginy pro AI SEO základ (k červnu 2026)"
-  columns={["Yoast SEO / AIOSEO", "Rank Math / SEOPress"]}
+  leftLabel="Yoast SEO / AIOSEO"
+  leftTone="accent"
+  rightLabel="Rank Math / SEOPress"
+  rightTone="accent"
   rows={[
     { icon: "📊", label: "Strukturovaná data", left: "Article, Organization, BreadcrumbList, WebSite automaticky; FAQPage a HowTo přes bloky v Gutenbergu", right: "Schema generator s řadou typů (Article, FAQ, HowTo, Product, Review); flexibilnější customizace na úrovni postu" },
     { icon: "🤖", label: "robots.txt editor", left: "Vestavěný editor v UI; pravidla pro AI user-agenty musíte doplnit ručně", right: "Vestavěný editor; Rank Math má v některých modulech předpřipravené šablony" },
@@ -155,16 +157,16 @@ Tady je minimální funkční šablona, kterou doporučujeme jako start. Konkré
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Cloudflare Block AI Bots zapnutý">
+  <Mistake num="01" title="Cloudflare Block AI Bots zapnutý">
     Pokud máte Cloudflare a zapnutý přepínač Block AI Bots (přidaný 2024), blokace na úrovni CDN je v praxi silnější než pravidla v robots.txt a může AI vyhledávací roboty zastavit ještě před tím, než váš web vůbec uvidí. Web pak nemůže být citovaný v AI odpovědích, i když máte vše ostatní správně. Pokud chcete být v AI odpovědích vidět, přepínač vypněte.
   </Mistake>
-  <Mistake number="02" title="Blokujete jen Claude-Web a anthropic-ai">
+  <Mistake num="02" title="Blokujete jen Claude-Web a anthropic-ai">
     Starší identifikátory Claude-Web a anthropic-ai už nejsou aktivní. Aktuální vyhledávací robot Anthropic je ClaudeBot. Pokud chcete pravidla skutečně aplikovat, používejte ClaudeBot.
   </Mistake>
-  <Mistake number="03" title="GPTBot ≠ OAI-SearchBot">
+  <Mistake num="03" title="GPTBot ≠ OAI-SearchBot">
     Blokování GPTBot neblokuje OAI-SearchBot. GPTBot stahuje data pro trénink modelů, OAI-SearchBot je live search agent ChatGPT. Pro AI SEO chceme oba dostupné; pro blokaci tréninkových dat je potřeba dvě pravidla.
   </Mistake>
-  <Mistake number="04" title="Regrese robots.txt po update">
+  <Mistake num="04" title="Regrese robots.txt po update">
     Změny v robots.txt vznikají při migracích WordPressu, theme update, instalaci security pluginu nebo změně konfigurace CDN. Po každém větším zásahu ověřte `curl https://vasweb.cz/robots.txt` a porovnejte s očekávaným stavem.
   </Mistake>
 </MistakeGrid>

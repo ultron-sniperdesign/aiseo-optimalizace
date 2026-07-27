@@ -91,16 +91,16 @@ Originální data jsou **konkrétní čísla nebo měření, která nikdo jiný 
 ]} />
 
 <MistakeGrid>
-  <Mistake number="01" title="Recitace cizích čísel">
+  <Mistake num="01" title="Recitace cizích čísel">
     Sebrání 10 zdrojů, vytažení čísel z každého a publikace v jednom článku není originální výzkum. Pro AI to je sekundární zpracování existujícího obsahu.
   </Mistake>
-  <Mistake number="02" title="Vágní tvrzení bez metodiky">
+  <Mistake num="02" title="Vágní tvrzení bez metodiky">
     „Podle našich zkušeností přibližně polovina firem…“ není originální data. Bez popsané metodiky a vzorku to je dojem, ne výzkum, a AI to v citacích obvykle ignoruje.
   </Mistake>
-  <Mistake number="03" title="Nereprodukovatelná data">
+  <Mistake num="03" title="Nereprodukovatelná data">
     Pokud chybí popis metodiky, datový soubor nebo aspoň souhrn vzorku, čtenář ani jiný novinář si to nemůže ověřit. AI takový zdroj sice někdy použije, ale autorita značky tím trpí.
   </Mistake>
-  <Mistake number="04" title="Anonymní mini-průzkum jako reprezentativní">
+  <Mistake num="04" title="Anonymní mini-průzkum jako reprezentativní">
     20 lidí z facebookové skupiny prezentovaných jako „výzkum oboru“ víc škodí než pomáhá. Reputační riziko převažuje nad krátkodobým přínosem v citacích.
   </Mistake>
 </MistakeGrid>
@@ -147,8 +147,10 @@ Originální data jsou **konkrétní čísla nebo měření, která nikdo jiný 
 Originální data nejsou jen pro velké korporace. Realistický rozsah se liší podle velikosti, ale **i menší firma často najde alespoň omezený datový základ**, ze kterého se dá vytvořit výzkumný materiál.
 
 <CompareTable
-  caption="Realistické formáty originálních dat podle velikosti firmy"
-  columns={["Solo / mikro (1–5)", "Malá až střední (6–250)"]}
+  leftLabel="Solo / mikro (1–5)"
+  leftTone="accent"
+  rightLabel="Malá až střední (6–250)"
+  rightTone="accent"
   rows={[
     { icon: "🔍", label: "Vlastní průzkum", left: "Mini-průzkum 50 až 200 respondentů ve vlastní databázi kontaktů nebo přes klientské newslettery", right: "Oborový průzkum 200 až 1 000 respondentů, případně partnerství s portálem s vlastní cílovkou" },
     { icon: "📊", label: "Analýza vlastních dat", left: "Anonymizovaná data z prodejů, GA4, GSC za 12 měsíců", right: "Benchmark napříč klienty, segmentace, datové soubory z více zdrojů" },

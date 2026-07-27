@@ -74,8 +74,10 @@ Dnes jsou podle Cloudflare všechny tři kategorie ve výchozím stavu povolené
 ## Tři chování místo seznamu jmen
 
 <CompareTable
-  caption="Jak Cloudflare kategorie definuje"
-  columns={["Co to je", "Co pro vás znamená"]}
+  leftLabel="Co to je"
+  leftTone="accent"
+  rightLabel="Co pro vás znamená"
+  rightTone="accent"
   rows={[
     { icon: "🔍", label: "Search", left: "Chování, které sbírá nebo indexuje obsah, aby na něj později umělo odpovídat", right: "Podle Cloudflare chování, které nejpřirozeněji vrací návštěvníky" },
     { icon: "🤖", label: "Agent", left: "Automatická činnost jednající v reálném čase za konkrétního člověka", right: "Sem patří asistenti, kteří něco vyřizují za uživatele" },
@@ -129,16 +131,16 @@ Rozumné je mít obojí a pro většinu majitelů webů stačí zapamatovat si j
 ## Časté chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Zakázat trénink a čekat, že citace zůstanou">
+  <Mistake num="01" title="Zakázat trénink a čekat, že citace zůstanou">
     Smíšené roboty spadnou pod blokaci tréninku. Obojí nejde vždycky oddělit.
   </Mistake>
-  <Mistake number="02" title="Nechat výchozí nastavení a nevědět jaké">
+  <Mistake num="02" title="Nechat výchozí nastavení a nevědět jaké">
     Dnes je povoleno vše, od 15. září dostávají nové domény jiné. Podívejte se, co máte vy.
   </Mistake>
-  <Mistake number="03" title="Blokovat podle jména robota">
+  <Mistake num="03" title="Blokovat podle jména robota">
     User-agent si do hlavičky napíše kdokoli, takže blokace podle jména je děravá. Dokumentace Cloudflare u robotů rozlišuje ověřené a neověřené.
   </Mistake>
-  <Mistake number="04" title="Spoléhat jen na jednu vrstvu">
+  <Mistake num="04" title="Spoléhat jen na jednu vrstvu">
     Samotný robots.txt nic nevynutí, samotná blokace na CDN zase nedá slušným robotům signál.
   </Mistake>
 </MistakeGrid>

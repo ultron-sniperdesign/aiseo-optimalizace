@@ -69,8 +69,10 @@ import Checklist from "~/components/blocks/Checklist.astro";
 Tři metriky, které Google hodnotí podle **75. percentilu reálných dat uživatelů Chrome (dataset CrUX) za 28 dní** — tedy podle zkušenosti většiny návštěvníků, ne podle jedné laboratorní hodnoty.
 
 <CompareTable
-  caption="Tři metriky a jejich dobré hodnoty"
-  columns={["Co měří", "Dobrá hodnota"]}
+  leftLabel="Co měří"
+  leftTone="accent"
+  rightLabel="Dobrá hodnota"
+  rightTone="accent"
   rows={[
     { icon: "🖼️", label: "LCP", left: "Largest Contentful Paint — jak dlouho se načítá hlavní obsah", right: "pod 2,5 sekundy" },
     { icon: "⚡", label: "INP", left: "Interaction to Next Paint — doba od interakce po další vykreslení rozhraní", right: "pod 200 ms; 200–500 zlepšit, nad 500 špatné" },
@@ -139,16 +141,16 @@ Nad rámec dobrých hodnot má další optimalizace klesající návratnost. Ten
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Honit Core Web Vitals kvůli AI">
+  <Mistake num="01" title="Honit Core Web Vitals kvůli AI">
     Korelace s AI viditelností je blízko nuly a žádná platforma je jako faktor nepotvrdila. Dělejte rychlost kvůli základu a lidem, ne jako trik na citace.
   </Mistake>
-  <Mistake number="02" title="Ladit na sto ze sta">
+  <Mistake num="02" title="Ladit na sto ze sta">
     Dobré prahy stačí. Nad nimi roste čas a klesá přínos — a laboratorní stovka stejně neodpovídá tomu, co zažívají reální návštěvníci.
   </Mistake>
-  <Mistake number="03" title="Přehlédnout extrémně pomalou stránku">
+  <Mistake num="03" title="Přehlédnout extrémně pomalou stránku">
     U AI je tohle to nejrizikovější. Když se stránka nenačte do časového limitu robota, může být pro daný fetch nedostupná nebo se její obsah nedostane celý do dalšího zpracování.
   </Mistake>
-  <Mistake number="04" title="Rozhodovat podle laboratorního skóre">
+  <Mistake num="04" title="Rozhodovat podle laboratorního skóre">
     O stavu Core Web Vitals rozhoduje 75. percentil reálných uživatelů za 28 dní. Laboratorní test o tom stavu nerozhoduje, ale je klíčový pro hledání příčiny — reálná data řeknou, že problém je, lab test proč.
   </Mistake>
 </MistakeGrid>

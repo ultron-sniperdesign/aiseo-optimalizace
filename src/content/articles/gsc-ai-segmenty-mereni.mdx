@@ -154,8 +154,10 @@ Správný způsob, jak číst report jen s impresemi, je brát imprese jako **si
 Report je silná nová vrstva, ale je potřeba vědět, kde končí.
 
 <CompareTable
-  caption="Co Search Console AI report ukazuje a co ne"
-  columns={["Ukazuje", "Neukazuje"]}
+  leftLabel="Ukazuje"
+  leftTone="accent"
+  rightLabel="Neukazuje"
+  rightTone="accent"
   rows={[
     { icon: "👁️", label: "Imprese", left: "Ano — kolikrát se URL objevily v Google AI", right: "—" },
     { icon: "🖱️", label: "Kliky a CTR", left: "—", right: "Ne — verze 1 kliky nesleduje" },
@@ -170,8 +172,10 @@ Report je silná nová vrstva, ale je potřeba vědět, kde končí.
 Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hodnoty je potřeba víc zdrojů.
 
 <CompareTable
-  caption="Vrstvy měření AI viditelnosti"
-  columns={["Co měříte", "Čím to měříte"]}
+  leftLabel="Co měříte"
+  leftTone="accent"
+  rightLabel="Čím to měříte"
+  rightTone="accent"
   rows={[
     { icon: "👁️", label: "Google AI imprese", left: "Jak často se objevíte v Google AI", right: "Search Console — Generative AI features report" },
     { icon: "📊", label: "Návštěvnost z AI", left: "Kolik lidí z AI přišlo na web", right: "GA4 (referral z AI, částečně) + UTM parametry" },
@@ -183,16 +187,16 @@ Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hod
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Číst imprese jako návštěvnost">
+  <Mistake num="01" title="Číst imprese jako návštěvnost">
     Vysoké AI imprese neznamenají vysokou návštěvnost. Report neukazuje kliky. Kdo bere imprese jako návštěvnost, přeceňuje reálný přínos AI viditelnosti.
   </Mistake>
-  <Mistake number="02" title="Spoléhat jen na GSC">
+  <Mistake num="02" title="Spoléhat jen na GSC">
     Report pokrývá jen Google AI. ChatGPT, Perplexity a Claude v něm nejsou. Kdo měří jen v Search Console, vidí jen část AI ekosystému.
   </Mistake>
-  <Mistake number="03" title="Nechat data ve výchozím přehledu">
+  <Mistake num="03" title="Nechat data ve výchozím přehledu">
     Výchozí přehled Výkonu mísí všechny typy vyhledávání a AI trendy v něm zaniknou. Bez samostatného filtru na AI funkce se konkrétní obrázek ztratí.
   </Mistake>
-  <Mistake number="04" title="Nekombinovat s organickými kliky">
+  <Mistake num="04" title="Nekombinovat s organickými kliky">
     Samotné AI imprese říkají jen půl příběhu. Teprve porovnání s organickými kliky téže URL ukáže, jestli obsah přináší i návštěvnost, nebo je jen vidět.
   </Mistake>
 </MistakeGrid>

@@ -76,8 +76,10 @@ Když se někdo zeptá „kolik stojí ta služba", AI odpoví z toho, co najde.
 ## Co má stránka služby obsahovat
 
 <CompareTable
-  caption="Otázky, na které stránka služby má odpovídat"
-  columns={["Blok", "Co tam patří"]}
+  leftLabel="Blok"
+  leftTone="accent"
+  rightLabel="Co tam patří"
+  rightTone="accent"
   rows={[
     { icon: "📌", label: "Krátká definice", left: "Nahoře", right: "40 až 60 slov: co to je, pro koho, co z toho zákazník má" },
     { icon: "🎯", label: "Pro koho", left: "Vymezení", right: "Komu je služba určená — a komu se nehodí" },
@@ -168,16 +170,16 @@ Uvedení ceny samo o sobě nic nezaručí — negarantuje víc poptávek ani lep
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Marketingový text bez informací">
+  <Mistake num="01" title="Marketingový text bez informací">
     Lídr na trhu, individuální přístup, kontaktujte nás. Z takové stránky se nedá nic vyčíst ani citovat.
   </Mistake>
-  <Mistake number="02" title="Žádná cena ani rámec">
+  <Mistake num="02" title="Žádná cena ani rámec">
     Nejčastější dotaz zní kolik to stojí. Bez odpovědi si ji AI spíš vezme jinde.
   </Mistake>
-  <Mistake number="03" title="Mnoho služeb na jedné stránce">
+  <Mistake num="03" title="Mnoho služeb na jedné stránce">
     Žádná z nich pak není popsaná konkrétně a hůř se z ní čerpá odpověď. Většinou pomáhá jedna hlavní služba na stránku.
   </Mistake>
-  <Mistake number="04" title="Data neodpovídají stránce">
+  <Mistake num="04" title="Data neodpovídají stránce">
     Cena nebo rozsah ve strukturovaných datech, které na stránce nikde nejsou, jsou nesoulad.
   </Mistake>
 </MistakeGrid>

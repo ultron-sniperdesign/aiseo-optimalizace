@@ -55,8 +55,10 @@ Hned na začátku je dobré rozlišit dvě věci, které se snadno pletou. **Př
 Tohle je podstata. „AI o nás lže" není jedna situace, ale tři různé — a každá se řeší jinak.
 
 <CompareTable
-  caption="Tři příčiny chybného údaje a co s nimi"
-  columns={["Příčina", "Jak se řeší"]}
+  leftLabel="Příčina"
+  leftTone="accent"
+  rightLabel="Jak se řeší"
+  rightTone="accent"
   rows={[
     { icon: "🕰️", label: "Zastaralý údaj", left: "Stará cena, zrušená služba", right: "Aktualizovat vlastní web a profily; nejčastější a nejlépe řešitelné" },
     { icon: "🔗", label: "Chybný cizí zdroj", left: "Katalog, starý článek", right: "Kontaktovat provozovatele zdroje a nechat údaj opravit" },
@@ -107,16 +109,16 @@ Konzistence je tu důležitější než jinde. Když se údaj na webu, v profile
 ## Co naopak nedělat
 
 <MistakeGrid>
-  <Mistake number="01" title="Panika z jedné odpovědi">
+  <Mistake num="01" title="Panika z jedné odpovědi">
     Odpovědi kolísají běh od běhu. Než začnete jednat, ověřte to víckrát a v různých systémech.
   </Mistake>
-  <Mistake number="02" title="Opravná stránka na webu">
+  <Mistake num="02" title="Opravná stránka na webu">
     Text ve stylu není pravda, že děláme to a to, nepomůže čtenáři a může chybné tvrzení spojit s vaším jménem.
   </Mistake>
-  <Mistake number="03" title="Vytváření falešných zdrojů">
+  <Mistake num="03" title="Vytváření falešných zdrojů">
     Vyrábět obsah jen kvůli přebití chyby je riziko i etický problém. Oprava zdroje bývá nejčistší a nejspolehlivější cesta.
   </Mistake>
-  <Mistake number="04" title="Čekání na tlačítko upravit">
+  <Mistake num="04" title="Čekání na tlačítko upravit">
     Přímá úprava samotné odpovědi v běžném rozhraní obvykle k dispozici není. Čas strávený hledáním cesty k modelu je lepší dát do opravy zdrojů a nahlášení.
   </Mistake>
 </MistakeGrid>

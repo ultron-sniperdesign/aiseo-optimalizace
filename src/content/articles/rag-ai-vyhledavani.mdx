@@ -94,8 +94,10 @@ Podle veřejných popisů stojí [Google AI Overviews i AI Mode](/blog/google-ai
 RAG také souvisí s tím, jak AI Mode rozkládá dotaz. Systém dotaz rozdělí na víc podotázek a pro každou dělá vlastní dohledání — mechaniku rozebíráme v článku o [query fan-out](/blog/query-fan-out-ai-mode/). To, jak se z dohledaných úseků nakonec vybere citace, pak popisujeme v článku o tom, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
 
 <CompareTable
-  caption="Odpověď s dohledáním (RAG) versus jen z tréninku modelu"
-  columns={["S RAG (AI vyhledávání)", "Jen z tréninku modelu"]}
+  leftLabel="S RAG (AI vyhledávání)"
+  leftTone="accent"
+  rightLabel="Jen z tréninku modelu"
+  rightTone="accent"
   rows={[
     { icon: "📚", label: "Zdroj odpovědi", left: "Dohledané úseky z indexu", right: "Jen to, co se model naučil" },
     { icon: "🕐", label: "Aktuálnost", left: "Čerpá z živého indexu", right: "Omezená datem tréninku" },
@@ -120,16 +122,16 @@ Nejdůležitější závěr: **když AI dohledává z indexu Vyhledávání, kla
 ## Co RAG není
 
 <MistakeGrid>
-  <Mistake number="01" title="AI, která si pamatuje všechno">
+  <Mistake num="01" title="AI, která si pamatuje všechno">
     RAG není paměť modelu. Model se neopírá jen o to, co si nese z tréninku — při odpovědi pracuje i s tím, co si k dotazu právě dohledá v indexu.
   </Mistake>
-  <Mistake number="02" title="Trénink modelu">
+  <Mistake num="02" title="Trénink modelu">
     RAG není přetrénování. Znalostní báze se aktualizuje samostatně — změníte obsah a odpovědi se mohou změnit, aniž by se model učil znovu.
   </Mistake>
-  <Mistake number="03" title="Záruka pravdy">
+  <Mistake num="03" title="Záruka pravdy">
     RAG negarantuje správnost. Pokud je dohledaný zdroj špatný, zastaralý nebo chybí, může být špatná i odpověď.
   </Mistake>
-  <Mistake number="04" title="Konec SEO">
+  <Mistake num="04" title="Konec SEO">
     RAG neznamená konec SEO. Naopak — u systémů, které dohledávají z indexu Vyhledávání, zůstávají indexovatelnost a kvalita obsahu důležité.
   </Mistake>
 </MistakeGrid>

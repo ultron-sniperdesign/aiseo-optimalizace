@@ -53,8 +53,10 @@ Tenhle článek není návod na nástroje — ty už tu jsou. Je o tom, co z nam
 ## Tři zdroje a co každý o AI Mode řekne
 
 <CompareTable
-  caption="Co který zdroj o AI Mode prozradí"
-  columns={["Co ukáže", "Co o AI Mode neřekne"]}
+  leftLabel="Co ukáže"
+  leftTone="accent"
+  rightLabel="Co o AI Mode neřekne"
+  rightTone="accent"
   rows={[
     { icon: "📊", label: "Search Console", left: "Zobrazení ve funkcích s generativní AI Googlu", right: "Nerozliší AI Mode od AI Overviews — jsou v jednom zobrazení" },
     { icon: "📈", label: "Analytika", left: "Návštěvy z AI asistentů a jejich kvalitu", right: "Neřekne, ze kterého povrchu Googlu návštěva přišla" },
@@ -79,8 +81,10 @@ Když souhrnné číslo vzroste, může za tím být růst v jednom povrchu, v d
 Tohle je praktická část. Rozdíl mezi obhajitelným a neobhajitelným tvrzením je většinou jen ve formulaci — ale ta formulace rozhoduje, jestli report obstojí, až se na něj někdo za rok podívá.
 
 <CompareTable
-  caption="Stejná data, dvě formulace"
-  columns={["Obhajitelné", "Neobhajitelné"]}
+  leftLabel="Obhajitelné"
+  leftTone="accent"
+  rightLabel="Neobhajitelné"
+  rightTone="accent"
   rows={[
     { icon: "👁️", label: "Zobrazení", left: "Zobrazení ve funkcích s generativní AI Googlu vzrostla o X %", right: "Máme X zobrazení v AI Mode" },
     { icon: "🚪", label: "Návštěvy", left: "Z AI asistentů přišlo N návštěv, převážně z ChatGPT", right: "Z AI Mode přišlo N návštěv" },
@@ -94,16 +98,16 @@ Rozdíl není v opatrnickém slovíčkaření. Levý sloupec říká, co bylo na
 ## Časté chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Vydávat souhrn za AI Mode">
+  <Mistake num="01" title="Vydávat souhrn za AI Mode">
     Nejčastější chyba. Report slučuje AI Overviews a AI Mode do jednoho zobrazení, takže z něj výkon jednoho povrchu nevyčtete.
   </Mistake>
-  <Mistake number="02" title="Číst zobrazení jako návštěvnost">
+  <Mistake num="02" title="Číst zobrazení jako návštěvnost">
     Report dává zobrazení, ne kliknutí ani míru prokliku. Zobrazení je signál výskytu, ne návštěva.
   </Mistake>
-  <Mistake number="03" title="Závěr z jednoho spuštění">
+  <Mistake num="03" title="Závěr z jednoho spuštění">
     Výběr zdrojů mezi běhy kolísá. Jedna vyzkoušená odpověď je anekdota, ne měření.
   </Mistake>
-  <Mistake number="04" title="Míchat Google AI a ostatní asistenty">
+  <Mistake num="04" title="Míchat Google AI a ostatní asistenty">
     Report v Search Console pokrývá jen generativní funkce Googlu. ChatGPT ani Perplexity v něm nejsou.
   </Mistake>
 </MistakeGrid>

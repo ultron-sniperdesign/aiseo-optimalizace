@@ -61,8 +61,10 @@ Věta „Google penalizuje AI obsah" je zjednodušení. Přesnější je: nezál
 ## Kde je hranice
 
 <CompareTable
-  caption="Co rozhoduje o tom, na které straně hranice obsah stojí"
-  columns={["Hledisko", "Co je podstatné"]}
+  leftLabel="Hledisko"
+  leftTone="accent"
+  rightLabel="Co je podstatné"
+  rightTone="accent"
   rows={[
     { icon: "🛠️", label: "Nástroj", left: "Sám o sobě nerozhoduje", right: "Podle veřejných vyjádření Googlu není samo použití AI automaticky porušením pravidel" },
     { icon: "📚", label: "Přidaná hodnota", left: "Rozhoduje", right: "Vlastní data, zkušenost, konkrétní postup — něco, co jinde není" },
@@ -95,16 +97,16 @@ Legitimních použití je dost. Většina z nich má společné to, že AI děl�
 ## Kdy škodí
 
 <MistakeGrid>
-  <Mistake number="01" title="Masová produkce bez hodnoty">
+  <Mistake num="01" title="Masová produkce bez hodnoty">
     Stovky vygenerovaných stránek, které čtenáři nic nepřinášejí, míří přesně na to, co pravidla proti spamu popisují.
   </Mistake>
-  <Mistake number="02" title="Nekontrolovaná fakta">
+  <Mistake num="02" title="Nekontrolovaná fakta">
     Modely mohou konfabulovat, tedy přesvědčivě uvádět nepravdivé údaje. U témat jako zdraví, finance nebo právo je publikování bez ověření vážné riziko.
   </Mistake>
-  <Mistake number="03" title="Žádná vlastní zkušenost">
+  <Mistake num="03" title="Žádná vlastní zkušenost">
     Text bez praxe je jen přeříkání cizího. Chybí vlastní zkušenost z praxe, kterou do textu musí dodat člověk; bez ní bývá obsah zaměnitelný a méně důvěryhodný.
   </Mistake>
-  <Mistake number="04" title="Vymyšlený autor">
+  <Mistake num="04" title="Vymyšlený autor">
     Fiktivní jméno a profil u generovaného textu je nesoulad s realitou; skutečnému autorovi to nepomůže nahradit.
   </Mistake>
 </MistakeGrid>

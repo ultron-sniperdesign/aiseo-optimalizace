@@ -83,8 +83,10 @@ U hodnocení firmy jako celku (typy Organization a LocalBusiness) Google uvádí
 </Insight>
 
 <CompareTable
-  caption="Co označit jde a co ne"
-  columns={["Postup", "Jak je na tom"]}
+  leftLabel="Postup"
+  leftTone="accent"
+  rightLabel="Jak je na tom"
+  rightTone="accent"
   rows={[
     { icon: "📦", label: "Recenze produktu", left: "Hodnocení konkrétního produktu u typu Product", right: "V pořádku — to je určená cesta" },
     { icon: "🏪", label: "Známka vlastní firmy", left: "Organization/LocalBusiness pod vlastní kontrolou", right: "Pro hvězdičky nezpůsobilé" },
@@ -153,16 +155,16 @@ Když se u sedmi z dvaceti recenzí objeví, že produkt sedí menší, je to in
 ## Čtyři chyby při značení recenzí
 
 <MistakeGrid>
-  <Mistake number="01" title="Označit známku vlastní firmy">
+  <Mistake num="01" title="Označit známku vlastní firmy">
     U typů Organization a LocalBusiness platí: když hodnocený subjekt recenze o sobě sám kontroluje, jeho stránky podle Googlu nejsou pro hvězdičky způsobilé.
   </Mistake>
-  <Mistake number="02" title="Přetahovat cizí recenze">
+  <Mistake num="02" title="Přetahovat cizí recenze">
     Google výslovně uvádí, že se hodnocení z jiných webů nemají agregovat. Sbírejte vlastní.
   </Mistake>
-  <Mistake number="03" title="Data bez viditelného obsahu">
+  <Mistake num="03" title="Data bez viditelného obsahu">
     Označené hodnocení, které na stránce nikde není, je rozpor mezi daty a obsahem.
   </Mistake>
-  <Mistake number="04" title="Falešné nebo vynucené recenze">
+  <Mistake num="04" title="Falešné nebo vynucené recenze">
     Kromě etického problému je to podvod na zákazníkovi — a při odhalení zásah do důvěryhodnosti, kterou budujete jinde.
   </Mistake>
 </MistakeGrid>

@@ -95,8 +95,10 @@ Nejčastější chyba je testovat jen značkové dotazy. Vlastní značku už zn
 Každá AI platforma cituje jinak, takže test na jedné nestačí. Minimum jsou tři, pro českou cílovku i více.
 
 <CompareTable
-  caption="Jak jednotlivé AI platformy citují zdroje"
-  columns={["Platforma", "Jak cituje a na co dát pozor"]}
+  leftLabel="Platforma"
+  leftTone="accent"
+  rightLabel="Jak cituje a na co dát pozor"
+  rightTone="accent"
   rows={[
     { icon: "🔍", label: "Perplexity", left: "Obvykle uvádí zdroje s odkazy", right: "Pro ruční test velmi přehledná — hned vidíte, odkud AI čerpá" },
     { icon: "🌐", label: "Google AI Overviews", left: "Uvádí odkazy v běžném vyhledávání", right: "Často vychází z webového obsahu a dalších dohledatelných zdrojů; sledujte, které weby se v přehledu objevují" },
@@ -147,8 +149,10 @@ Záznam si veďte v jednoduché tabulce: sloupce dotaz, platforma, objevil se (a
 ## Krok 4: Interpretujte výsledky
 
 <CompareTable
-  caption="Co který výsledek znamená a jak reagovat"
-  columns={["Výsledek testu", "Co s tím"]}
+  leftLabel="Výsledek testu"
+  leftTone="accent"
+  rightLabel="Co s tím"
+  rightTone="accent"
   rows={[
     { icon: "✅", label: "Objevíte se se správnou informací", left: "Nejlepší scénář", right: "Udržujte obsah aktuální; sledujte, jestli pozice v čase neklesá" },
     { icon: "⚠️", label: "Objevíte se, ale informace je chybná", left: "Časté u méně známých značek", right: "Aktualizujte vlastní obsah a strukturovaná data; doplňte fakta na dohledatelná místa" },
@@ -169,8 +173,10 @@ Pokud se **neobjevujete vůbec**, projděte příčiny od nejtechničtějších:
 Ruční test je skvělý pro **první audit**. Pro **průběžný monitoring** se ale vyplatí nástroj — testovat 20 dotazů ručně každý týden je neudržitelné.
 
 <CompareTable
-  caption="Ruční test versus automatizovaný nástroj"
-  columns={["Ruční test (zdarma)", "Automatizovaný nástroj (freemium / placený)"]}
+  leftLabel="Ruční test (zdarma)"
+  leftTone="accent"
+  rightLabel="Automatizovaný nástroj (freemium / placený)"
+  rightTone="accent"
   rows={[
     { icon: "💰", label: "Cena", left: "Zdarma, jen váš čas", right: "Bezplatné kontroly bez registrace i placené tarify pro monitoring" },
     { icon: "🎯", label: "Vhodné pro", left: "První audit, malá firma, ověření stavu", right: "Průběžný monitoring, více značek, reporting" },
@@ -193,16 +199,16 @@ Konkrétní nástroje k červnu 2026 (funkce a ceny se v čase mění, ověřte 
 ## Nejčastější chyby při testu
 
 <MistakeGrid>
-  <Mistake number="01" title="Jeden dotaz, jednou">
+  <Mistake num="01" title="Jeden dotaz, jednou">
     AI odpovědi nejsou pokaždé stejné. Jeden dotaz spuštěný jednou nic nevypovídá — potřebujete víc dotazů a každý opakovaně. Bez opakování testujete náhodu.
   </Mistake>
-  <Mistake number="02" title="Jen značkové dotazy">
+  <Mistake num="02" title="Jen značkové dotazy">
     Vlastní značku znáte. Smysl testu jsou kategoriové a problémové dotazy, kde vás lidé hledají, aniž by vaše jméno znali. Jen značkové dotazy dají falešně pozitivní obrázek.
   </Mistake>
-  <Mistake number="03" title="Jen ChatGPT">
+  <Mistake num="03" title="Jen ChatGPT">
     Každá platforma cituje jinak. Test jen na ChatGPT přehlédne, že vás Perplexity nebo Google AI Overviews klidně nezmíní (nebo naopak). Testujte minimálně tři.
   </Mistake>
-  <Mistake number="04" title="Přihlášený účet s historií">
+  <Mistake num="04" title="Přihlášený účet s historií">
     Přihlášený účet může výsledky ovlivnit historií, pamětí nebo dalšími personalizačními signály. Přihlášený test vám tak ukáže obrázek ovlivněný vaší minulou aktivitou. Testujte v odhlášeném nebo anonymním režimu.
   </Mistake>
 </MistakeGrid>

@@ -149,8 +149,10 @@ Autorská stránka je místo, kde se autorská entita „usadí". Bez ní zůst�
 U **citlivých témat** — v angličtině YMYL (Your Money Your Life), tedy zdraví, finance, právo a bezpečnost — je laťka důvěryhodnosti výrazně vyšší. Ověřitelná kvalifikace autora tu často patří mezi **nejsilnější signály důvěryhodnosti** — vedle kvalitních zdrojů, odborné editace a instituční důvěryhodnosti.
 
 <CompareTable
-  caption="Ověřitelná kvalifikace u citlivých témat v českém prostředí"
-  columns={["Obor", "Ověřitelný doklad do sameAs"]}
+  leftLabel="Obor"
+  leftTone="accent"
+  rightLabel="Ověřitelný doklad do sameAs"
+  rightTone="accent"
   rows={[
     { icon: "🩺", label: "Zdraví", left: "Lékař, zdravotník", right: "Registrace v České lékařské komoře (ČLK), odborná společnost" },
     { icon: "⚖️", label: "Právo", left: "Advokát, právník", right: "Profil v České advokátní komoře (ČAK)" },
@@ -167,16 +169,16 @@ U citlivých témat bez ověřitelné kvalifikace autora bývá šance na citace
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Anonymní autor">
+  <Mistake num="01" title="Anonymní autor">
     „Redakce“, „Admin“ nebo „Team“ jako autor nepomáhá jednoznačně přiřadit obsah konkrétní osobě. Anonymní autorství je promarněná příležitost — jmenovaný expert je pro AI čitelná a ověřitelná entita.
   </Mistake>
-  <Mistake number="02" title="Falešní autoři vydávaní za reálné osoby">
+  <Mistake num="02" title="Falešní autoři vydávaní za reálné osoby">
     Falešný autor vydávaný za reálnou osobu je důvěryhodnostní problém. Stock fotka nebo generovaný portrét samy o sobě nepomáhají ověřitelnosti; autorská entita musí odpovídat skutečné osobě.
   </Mistake>
-  <Mistake number="03" title="Nesoulad jména">
+  <Mistake num="03" title="Nesoulad jména">
     Jméno ve strukturovaných datech by se mělo shodovat s viditelným podpisem autora. Rozdíl typu „Jan Novák“ versus „Jan M. Novák“ může zbytečně zhoršit jednoznačnost identity.
   </Mistake>
-  <Mistake number="04" title="Prázdná autorská stránka">
+  <Mistake num="04" title="Prázdná autorská stránka">
     Autorská stránka bez bio, kvalifikace a odkazů na externí profily nepřidává důvěru. Samotná existence stránky nestačí — musí mít obsah, který autora jako entitu doloží.
   </Mistake>
 </MistakeGrid>

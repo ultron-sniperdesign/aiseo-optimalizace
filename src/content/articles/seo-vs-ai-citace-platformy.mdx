@@ -54,8 +54,10 @@ import Mistake from "~/components/blocks/Mistake.astro";
 Analýza CiteLens pustila na tureckém trhu 320 šablonových nákupních dotazů přes ChatGPT, Perplexity, Claude a Google AI Mode a u každého citovaného zdroje se podívala, jestli je zároveň ve výsledcích Googlu a Bingu. Výsledek podle platforem:
 
 <CompareTable
-  caption="Kolik citací pochází z první desítky Googlu"
-  columns={["Platforma", "Podíl citací z Google top-10"]}
+  leftLabel="Platforma"
+  leftTone="accent"
+  rightLabel="Podíl citací z Google top-10"
+  rightTone="accent"
   rows={[
     { icon: "🔵", label: "Google AI Mode", left: "Staví přímo na indexu Googlu", right: "kolem 93 % — klasické pozice rozhodují nejvíc" },
     { icon: "🟣", label: "Perplexity", left: "Silně se opírá o webové výsledky", right: "kolem 89 % — podobně těsná vazba na pozice" },
@@ -101,16 +103,16 @@ Teze tedy drží hlavně u Google AI Mode a Perplexity; u ChatGPT je přesnějš
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Jedna strategie na všechny platformy">
+  <Mistake num="01" title="Jedna strategie na všechny platformy">
     Co dostane obsah do Google AI Mode, nemusí stačit na ChatGPT. Rozdíl mezi 90 a 30 procenty citací z pozic je moc velký na jednotný přístup.
   </Mistake>
-  <Mistake number="02" title="Brát 93 a 30 procent jako přesné číslo">
+  <Mistake num="02" title="Brát 93 a 30 procent jako přesné číslo">
     Je to jedna zahraniční studie na nákupních dotazech. Spolehlivý je směr — vysoká versus nízká závislost na pozicích — ne konkrétní hodnota pro váš trh.
   </Mistake>
-  <Mistake number="03" title="Odepsat SEO kvůli ChatGPT">
+  <Mistake num="03" title="Odepsat SEO kvůli ChatGPT">
     I u ChatGPT pochází část citací z první desítky. Pozice pořád hraje roli, jen k ní přibývá druhý, silnější faktor. SEO nezahazujte, doplňte ho.
   </Mistake>
-  <Mistake number="04" title="Optimalizovat naslepo bez znalosti publika">
+  <Mistake num="04" title="Optimalizovat naslepo bez znalosti publika">
     Než rozdělíte úsilí, zjistěte, kterou AI vaši zákazníci používají. Bez toho investujete do platformy, na které vaše cílovka není.
   </Mistake>
 </MistakeGrid>

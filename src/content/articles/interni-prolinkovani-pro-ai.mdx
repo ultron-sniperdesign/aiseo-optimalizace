@@ -77,8 +77,10 @@ Co se naopak tvrdit nedá: kolik „síly" odkaz přenese, ani jak přesně inte
 ## Čtyři věci, na kterých v praxi záleží
 
 <CompareTable
-  caption="Co u interních odkazů rozhoduje"
-  columns={["Prvek", "Proč na něm záleží"]}
+  leftLabel="Prvek"
+  leftTone="accent"
+  rightLabel="Proč na něm záleží"
+  rightTone="accent"
   rows={[
     { icon: "🔤", label: "Text odkazu", left: "Kontext", right: "Popisný text řekne, co je na druhé straně; zde neřekne nic" },
     { icon: "📍", label: "Odkud odkazujete", left: "Umístění", right: "Odkaz z těla textu obvykle nese konkrétnější kontext než odkaz v patičce" },
@@ -144,16 +146,16 @@ Nepřeceňujte to. Interní odkazy nezachrání obsah, který nemá co nabídnou
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Klikněte zde">
+  <Mistake num="01" title="Klikněte zde">
     Text odkazu bez kontextu. Čtenář ani stroj z něj nepozná, co ho na druhé straně čeká.
   </Mistake>
-  <Mistake number="02" title="Osiřelé stránky">
+  <Mistake num="02" title="Osiřelé stránky">
     Článek se publikuje a už na něj nevede žádný interní odkaz. Hůř se objeví i zařadí do souvislostí.
   </Mistake>
-  <Mistake number="03" title="Odkazy jen v patičce">
+  <Mistake num="03" title="Odkazy jen v patičce">
     Menu a patička jsou všude stejné. Pro vztah mezi dvěma konkrétními tématy bývá užitečnější odkaz přímo v textu.
   </Mistake>
-  <Mistake number="04" title="Odkazy pro odkazy">
+  <Mistake num="04" title="Odkazy pro odkazy">
     Vkládat odkazy na sílu tam, kde souvislost není. Když nedávají smysl čtenáři, nedávají ho ani strojům.
   </Mistake>
 </MistakeGrid>

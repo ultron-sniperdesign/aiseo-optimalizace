@@ -121,8 +121,10 @@ Druhý důsledek se týká měření a návštěvnosti. Protože AI složí odpo
 Rozklad dotazu na podotázky nedělá jen Google. Následující srovnání je orientační interpretace podle veřejně pozorovaného chování, ne potvrzený technický popis — u každé platformy jde spíš o to, jak se navenek jeví, než o ověřený vnitřní postup.
 
 <CompareTable
-  caption="Orientační srovnání, jak platformy rozkládají dotaz (podle veřejně pozorovaného chování)"
-  columns={["Platforma", "Jak se rozklad dotazu jeví"]}
+  leftLabel="Platforma"
+  leftTone="accent"
+  rightLabel="Jak se rozklad dotazu jeví"
+  rightTone="accent"
   rows={[
     { icon: "🌐", label: "Google AI Mode", left: "Paralelní vějíř", right: "Souběžná dávka vyhledávání napříč tématy nad indexem Vyhledávání; relativně dobře popsaný způsob fungování" },
     { icon: "🔍", label: "Perplexity", left: "Víc dotazů naráz", right: "Vícestupňové řazení nad víc dotazy; se sekcemi obsahu pracuje jako se samostatně použitelnými pasážemi" },
@@ -151,16 +153,16 @@ Pokrývat porovnávací podotázky pomáhá zvlášť u nákupních témat — j
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Optimalizovat na jedno klíčové slovo">
+  <Mistake num="01" title="Optimalizovat na jedno klíčové slovo">
     Vějíř rozloží dotaz na víc podotázek. Kdo cílí jen na jednu hlavní frázi, míjí většinu příležitostí být citovaný ve vedlejších podotázkách.
   </Mistake>
-  <Mistake number="02" title="Psát dlouhé nedělené bloky">
+  <Mistake num="02" title="Psát dlouhé nedělené bloky">
     AI často pracuje s úseky, ne s celými stránkami. Zeď textu bez jasné struktury se hůř rozděluje na použitelné pasáže a hůř se cituje.
   </Mistake>
-  <Mistake number="03" title="Hlídat jednu stabilní pozici">
+  <Mistake num="03" title="Hlídat jednu stabilní pozici">
     Vějíř bývá kontextový, takže jedna pevná pozice má pro AI odpovědi omezenou vypovídací hodnotu. Kdo sleduje jen pozici jednoho dotazu, může přehlédnout důležitou část viditelnosti v AI odpovědích.
   </Mistake>
-  <Mistake number="04" title="Ignorovat implicitní otázky">
+  <Mistake num="04" title="Ignorovat implicitní otázky">
     Uživatel se ptá na jednu věc, ale systém řeší i to, co z dotazu plyne. Obsah, který pokrývá jen doslovnou otázku, do vějíře zapadá hůř.
   </Mistake>
 </MistakeGrid>

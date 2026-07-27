@@ -94,16 +94,16 @@ Wikipedie má pro firmy přísnější pravidlo významnosti (WP:NCORP) než pro
 ]} />
 
 <MistakeGrid>
-  <Mistake number="01" title="Vlastní tiskové zprávy a placené články">
+  <Mistake num="01" title="Vlastní tiskové zprávy a placené články">
     Tiskové zprávy, i když je převzala ČTK nebo komerční PR servery, se pro významnost na Wikipedii nepočítají. Stejně tak nepočítají sponzorované články, native advertising a komerční sdělení v médiích.
   </Mistake>
-  <Mistake number="02" title="Vlastní obsah (blog, YouTube, sociální sítě)">
+  <Mistake num="02" title="Vlastní obsah (blog, YouTube, sociální sítě)">
     Vlastní obsah není nezávislým zdrojem. Článek na Wikipedii vyžaduje to, co o značce napsali jiní — ne to, co jste publikovali sami.
   </Mistake>
-  <Mistake number="03" title="Listingy v databázích">
+  <Mistake num="03" title="Listingy v databázích">
     Firmy.cz, Crunchbase, různé seznamy „top 100" a databáze nejsou významnou nezávislou coverage. Jsou to katalogy, ne redakční obsah.
   </Mistake>
-  <Mistake number="04" title="Pouhá zmínka v rámci jiného článku">
+  <Mistake num="04" title="Pouhá zmínka v rámci jiného článku">
     Věta typu „…včetně XY a YZ…" v článku, který je primárně o něčem jiném, nestačí. Významnost vyžaduje podstatnou, přímou diskusi o značce, ne pouhé vyjmenování v seznamu.
   </Mistake>
 </MistakeGrid>
@@ -173,8 +173,10 @@ Pokud editor článek píše za zaměstnání, jako majitel firmy nebo jako naja
 Pravda je, že **u řady malých a středních firem v Česku je splnění významnosti** pro anglickou Wikipedii nereálné a u některých to není pravděpodobné ani v dohledné době. Článek na Wikipedii pro takové firmy by buď neprošel, nebo by byl rychle smazán. V tom případě má smysl řešit jiné páky.
 
 <CompareTable
-  caption="Wikipedie versus alternativy pro AI viditelnost značky"
-  columns={["Článek na Wikipedii", "Wikidata + nezávislé mediální pokrytí"]}
+  leftLabel="Článek na Wikipedii"
+  leftTone="accent"
+  rightLabel="Wikidata + nezávislé mediální pokrytí"
+  rightTone="accent"
   rows={[
     { icon: "🎯", label: "Bariéra významnosti", left: "Velmi vysoká — minimum 3 až 5 podstatných nezávislých článků", right: "Wikidata mají obvykle nižší bariéru, mediální pokrytí se buduje postupně" },
     { icon: "⚙️", label: "Náročnost a čas", left: "Týdny až měsíce schvalování přes Articles for Creation (doporučený proces pro posouzení návrhu článku)", right: "Wikidata položka často v řádu hodin až dnů, mediální pokrytí průběžně" },

@@ -70,8 +70,10 @@ V článku o [chybné informaci o firmě v AI](/blog/chybna-informace-o-firme-v-
 Když na vlastním webu jasný údaj chybí, prostor často vyplní cizí zdroje. Srovnávače, starší články, diskuze, katalogy. Ty mohou být zastaralé nebo se týkat něčeho trochu jiného.
 
 <CompareTable
-  caption="Kde cena bývá a jak dobře se dá přečíst"
-  columns={["Kde", "Jak je na tom čitelnost"]}
+  leftLabel="Kde"
+  leftTone="accent"
+  rightLabel="Jak je na tom čitelnost"
+  rightTone="accent"
   rows={[
     { icon: "📝", label: "Text na stránce", left: "Napsaná v HTML", right: "Nejčitelnější varianta — člověk i stroj ji obvykle snáz zpracují" },
     { icon: "🧾", label: "PDF ceník", left: "Soubor za odkazem", right: "Slabší — k obsahu souboru se systém nemusí dostat a hůř se aktualizuje" },
@@ -142,16 +144,16 @@ Je to ilustrativní ukázka — konkrétní značení se liší podle typu nabí
 ## Čeho se vyvarovat
 
 <MistakeGrid>
-  <Mistake number="01" title="Cena na dotaz jako jediná informace">
+  <Mistake num="01" title="Cena na dotaz jako jediná informace">
     Obchodně legitimní, informačně prázdné. Často jde uvést aspoň rozpětí nebo popsat, co cenu určuje.
   </Mistake>
-  <Mistake number="02" title="Cena jen v PDF ceníku">
+  <Mistake num="02" title="Cena jen v PDF ceníku">
     K obsahu souboru se systém nemusí dostat a PDF se hůř udržuje, takže v něm často žije starší cena než na webu.
   </Mistake>
-  <Mistake number="03" title="Rozpor mezi daty a stránkou">
+  <Mistake num="03" title="Rozpor mezi daty a stránkou">
     Když strukturovaná data uvádějí jinou cenu než text, je to problém sám o sobě — a signál, že jedno z těch míst nikdo neudržuje.
   </Mistake>
-  <Mistake number="04" title="Falešná od-cena">
+  <Mistake num="04" title="Falešná od-cena">
     Od-cena má odpovídat něčemu, co si opravdu jde koupit. Jinak to čtenář zjistí při prvním kontaktu.
   </Mistake>
 </MistakeGrid>

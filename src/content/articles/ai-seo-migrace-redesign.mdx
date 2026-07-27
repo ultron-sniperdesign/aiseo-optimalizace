@@ -69,8 +69,10 @@ Klasické SEO při migraci hlídá indexaci a pozice: přesměrování, sitemap,
 Mnohé AI služby při odpovědích odkazují na **konkrétní adresy** nebo zdrojové stránky. Když se URL změní a stará přestane fungovat, citace ztrácí cíl. Navíc si obsah načetly dřív a aktualizují se **vlastní kadencí** — u některých služeb se změny projeví později než v běžném vyhledávání a průběh se liší podle konkrétní služby. Chvíli se tak může stávat, že AI odkazuje na adresy, které už u vás nejsou — a jestli návštěvník skončí na správné stránce, nebo na chybě, rozhoduje vaše přesměrování.
 
 <CompareTable
-  caption="Co při migraci hlídat: klasická vrstva a co přidává AI"
-  columns={["Oblast", "Na co si dát pozor"]}
+  leftLabel="Oblast"
+  leftTone="accent"
+  rightLabel="Na co si dát pozor"
+  rightTone="accent"
   rows={[
     { icon: "🔀", label: "Přesměrování", left: "Klasické SEO", right: "Mapa 1:1, trvalé 301, žádné řetězce ani svedení na úvodní stránku" },
     { icon: "🔗", label: "Citované adresy", left: "AI vrstva", right: "Mnohé AI služby odkazují na konkrétní URL — ta by měla zůstat dosažitelná i po migraci" },
@@ -149,16 +151,16 @@ Nepanikařte z propadu v prvních dnech. Krátkodobé výkyvy po migraci jsou b�
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="404 místo přesměrování">
+  <Mistake num="01" title="404 místo přesměrování">
     Nejrychlejší způsob, jak přijít o pozice i o oporu pro citace v AI. Každá stará adresa potřebuje cíl.
   </Mistake>
-  <Mistake number="02" title="Všechno na úvodní stránku">
+  <Mistake num="02" title="Všechno na úvodní stránku">
     Hromadné svedení starých adres na úvodní stránku může vyhledávač vyhodnotit jako soft 404 nebo nerelevantní přesměrování a relevance se ztrácí.
   </Mistake>
-  <Mistake number="03" title="Zapomenutý zákaz procházení">
+  <Mistake num="03" title="Zapomenutý zákaz procházení">
     Řádek zakazující procházení celého webu zůstane z testovacího prostředí. Web je dostupný uživatelům, ale robots.txt může vyhledávacím robotům zablokovat jeho procházení.
   </Mistake>
-  <Mistake number="04" title="Všechno naráz">
+  <Mistake num="04" title="Všechno naráz">
     Změna adres, šablony i textů zároveň znamená, že po propadu nepoznáte příčinu. Když to jde, oddělte kroky.
   </Mistake>
 </MistakeGrid>

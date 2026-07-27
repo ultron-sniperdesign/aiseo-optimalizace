@@ -63,8 +63,10 @@ Platformy se shodnou na základu — kvalitní, faktický, dobře strukturovaný
 ## Srovnání: podle čeho platformy vybírají zdroje
 
 <CompareTable
-  caption="Jak jednotlivé AI platformy vybírají a citují zdroje (podle dostupných analýz 2026)"
-  columns={["Platforma", "Hlavní signál a chování"]}
+  leftLabel="Platforma"
+  leftTone="accent"
+  rightLabel="Hlavní signál a chování"
+  rightTone="accent"
   rows={[
     { icon: "💬", label: "ChatGPT", left: "Autorita, encyklopedičnost", right: "Preferuje autoritativní faktický obsah; cituje méně často a hlavně při zapnutém vyhledávání; silně komprimuje" },
     { icon: "🔍", label: "Perplexity", left: "Čerstvost", right: "Ve většině rozhraní uvádí zdroje obvykle s číslovanými odkazy; klade velký důraz na obsah z posledních týdnů; často uvádí více zdrojů než jiné platformy" },
@@ -158,16 +160,16 @@ I když se platformy liší, existuje **univerzální základ**, který pomáhá
 ## Časté omyly
 
 <MistakeGrid>
-  <Mistake number="01" title="Optimalizovat jen na jednu platformu">
+  <Mistake num="01" title="Optimalizovat jen na jednu platformu">
     Citované domény se mezi platformami málo překrývají. Kdo cílí jen na ChatGPT, může být pro Perplexity málo viditelný a naopak. Vyplatí se univerzální základ plus platformová specifika.
   </Mistake>
-  <Mistake number="02" title="Ignorovat čerstvost">
+  <Mistake num="02" title="Ignorovat čerstvost">
     Zvlášť u Perplexity čerstvost výrazně pomáhá. Starý, neaktualizovaný obsah prohrává s čerstvým na stejné téma. Aktualizace a datování mají smysl.
   </Mistake>
-  <Mistake number="03" title="Spoléhat na pozici v Googlu">
+  <Mistake num="03" title="Spoléhat na pozici v Googlu">
     U Google AI Overviews klesá závislost na první desítce výsledků. Být první ještě neznamená být citovaný v AI přehledu — roste vliv strukturovaných dat a E-E-A-T.
   </Mistake>
-  <Mistake number="04" title="Brát marketingová čísla jako jistotu">
+  <Mistake num="04" title="Brát marketingová čísla jako jistotu">
     Procenta a násobky z analýz jsou orientační a v čase se mění. Používejte je pro směr, ne jako přesné cíle — a ověřujte na vlastních testech.
   </Mistake>
 </MistakeGrid>

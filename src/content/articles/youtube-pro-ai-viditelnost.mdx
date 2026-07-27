@@ -121,8 +121,10 @@ Pět kroků, které pokrývají to, co AI u videa reálně čte — od přepisu 
 Rychlý přehled, kde jednotlivé prvky umístit a proč na nich AI záleží.
 
 <CompareTable
-  caption="Kam patří jednotlivé prvky a proč pomáhají AI"
-  columns={["Kam patří", "Proč pro AI"]}
+  leftLabel="Kam patří"
+  leftTone="accent"
+  rightLabel="Proč pro AI"
+  rightTone="accent"
   rows={[
     { icon: "📝", label: "Editovaný přepis", left: "YouTube i stránka na vlastním webu", right: "Hlavní text, ze kterého AI cituje; opravený, ne automatický" },
     { icon: "🔖", label: "Kapitoly a časové značky", left: "Do popisu videa", right: "Každá kapitola může být samostatná citace" },
@@ -143,16 +145,16 @@ Rychlý přehled, kde jednotlivé prvky umístit a proč na nich AI záleží.
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Spoléhat na automatické titulky">
+  <Mistake num="01" title="Spoléhat na automatické titulky">
     Automatické titulky komolí názvy a termíny a chyby se propíšou do toho, jak AI video cituje. Editovaný přepis je základ, ne nadstavba.
   </Mistake>
-  <Mistake number="02" title="Popis jako zeď hashtagů">
+  <Mistake num="02" title="Popis jako zeď hashtagů">
     Popis plný hashtagů a odkazů AI nic neřekne. Bez abstraktu s přímou odpovědí přicházíte o jeden z hlavních citovatelných textů pod videem.
   </Mistake>
-  <Mistake number="03" title="Video bez kapitol">
+  <Mistake num="03" title="Video bez kapitol">
     Bez kapitol nabízíte AI jeden nedělený blok. S kapitolami může jedno video získat víc samostatných citací.
   </Mistake>
-  <Mistake number="04" title="Optimalizovat jen obraz místo textu">
+  <Mistake num="04" title="Optimalizovat jen obraz místo textu">
     Samotné záběry většině AI systémů při citaci nepomohou. Kdo ladí jen estetiku a ignoruje přepis a popis, optimalizuje to, s čím AI většinou nepracuje.
   </Mistake>
 </MistakeGrid>

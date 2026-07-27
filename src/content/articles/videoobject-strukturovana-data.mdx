@@ -67,8 +67,10 @@ Video je pro stroje jiný případ než text. Odstavec si vyhledávač i AI pře
 Mnoho textových AI modelů při práci se stránkou vychází hlavně z textu: okolního obsahu, strukturovaných dat a přepisu. Rozdíl mezi daty a přepisem je přitom zásadní a snadno se plete.
 
 <CompareTable
-  caption="Strukturovaná data vs. přepis — co dává co"
-  columns={["Zdroj", "Co z něj stroj získá"]}
+  leftLabel="Zdroj"
+  leftTone="accent"
+  rightLabel="Co z něj stroj získá"
+  rightTone="accent"
   rows={[
     { icon: "🏷️", label: "VideoObject data", left: "Fakta o videu", right: "Název, náhled, datum, délka, odkaz — strojově čitelná fakta, na která se dá odkázat" },
     { icon: "📝", label: "Přepis", left: "Obsah videa", right: "Co ve videu zaznělo — vlastní sdělení, ze kterého AI může čerpat" },
@@ -135,16 +137,16 @@ Formát `duration` je ISO 8601 pro trvání: `PT4M12S` znamená 4 minuty a 12 se
 ## Čeho se vyvarovat
 
 <MistakeGrid>
-  <Mistake number="01" title="Náhled za přihlášením nebo přes přesměrování">
+  <Mistake num="01" title="Náhled za přihlášením nebo přes přesměrování">
     Když se Google k obrázku v thumbnailUrl nedostane přímo, může to zabránit správnému zpracování a snížit šanci na rozšířený výsledek. Odkaz má vést rovnou na dostupný obrázek.
   </Mistake>
-  <Mistake number="02" title="Data k videu, které tam není">
+  <Mistake num="02" title="Data k videu, které tam není">
     Označit video, které na stránce reálně není, je porušení politiky strukturovaných dat. Data popisují to, co je vidět.
   </Mistake>
-  <Mistake number="03" title="Video bez přepisu">
+  <Mistake num="03" title="Video bez přepisu">
     Pro textový model zůstává obsah videa z velké části skrytý, ať jsou data jakkoli úplná. Přepis bývá důležitým zdrojem jeho obsahu, ze kterého AI může čerpat.
   </Mistake>
-  <Mistake number="04" title="Zastaralé interactionCount">
+  <Mistake num="04" title="Zastaralé interactionCount">
     Pokud uvádíte počet zhlédnutí, použijte interactionStatistic. interactionCount je od roku 2019 nedoporučený.
   </Mistake>
 </MistakeGrid>

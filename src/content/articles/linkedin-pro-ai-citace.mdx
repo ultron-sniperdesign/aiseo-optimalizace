@@ -77,8 +77,10 @@ LinkedIn je kanál mimo vlastní web, kde máte vysokou kontrolu nad tím, co a 
 Ne každý typ obsahu má stejnou šanci. Podle analýz 2026 se citovanost mezi formáty výrazně liší.
 
 <CompareTable
-  caption="Jak si jednotlivé formáty vedou v AI citacích (podle dostupných analýz 2026)"
-  columns={["Formát", "Role v AI citacích"]}
+  leftLabel="Formát"
+  leftTone="accent"
+  rightLabel="Role v AI citacích"
+  rightTone="accent"
   rows={[
     { icon: "📄", label: "Dlouhé odborné články", left: "Nejsilnější", right: "Zhruba polovina až dvě třetiny citovaného LinkedIn obsahu; ideální délka řádově 500–2 000 slov (podle analýz 2026)" },
     { icon: "📝", label: "Příspěvky ve feedu", left: "Doplněk", right: "Menší podíl citací, ale fungují; nejlíp krátké a věcné" },
@@ -139,8 +141,10 @@ Formát je jen půlka. Druhá půlka je, o čem a jak píšete.
 LinkedIn není jediný zdroj, ze kterého AI čerpá zmínky o značce. Podle některých analýz 2026 pochází většina sledovaných zmínek o značce z cizích webů (v konkrétních vzorcích orientačně kolem 85 %), ne z vlastního webu — a různé kanály se liší mírou kontroly.
 
 <CompareTable
-  caption="Kanály mimo vlastní web pro AI viditelnost a míra vaší kontroly"
-  columns={["Kanál", "Role a kontrola"]}
+  leftLabel="Kanál"
+  leftTone="accent"
+  rightLabel="Role a kontrola"
+  rightTone="accent"
   rows={[
     { icon: "💼", label: "LinkedIn", left: "Vysoká kontrola", right: "Sami rozhodujete, co a jak často publikujete; silné u B2B a odborných dotazů" },
     { icon: "👥", label: "Reddit", left: "Nízká kontrola", right: "Píšou hlavně ostatní; silný signál, ale těžko řiditelný — [rozbor zde](/blog/ai-citace-reddit/)" },
@@ -158,16 +162,16 @@ Jak zmínky o značce fungují napříč platformami, rozebíráme v článku o 
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Jen sdílet cizí obsah">
+  <Mistake num="01" title="Jen sdílet cizí obsah">
     Sdílení cizího se mezi citacemi objevuje méně. Kdo na LinkedInu jen sdílí cizí články bez vlastního originálního obsahu, dává AI málo důvodů ho citovat.
   </Mistake>
-  <Mistake number="02" title="Honit lajky místo relevance">
+  <Mistake num="02" title="Honit lajky místo relevance">
     Citované příspěvky podle analýz často nemívají hodně reakcí. Kdo cílí na virální dosah místo věcné odpovědi, může míjet to, podle čeho AI častěji vybírá.
   </Mistake>
-  <Mistake number="03" title="Publikovat nárazově">
+  <Mistake num="03" title="Publikovat nárazově">
     Bez pravidelnosti bývá šance na citaci nižší. U většiny citovaných autorů jde o časté publikující, ne o jeden příspěvek za čtvrt roku.
   </Mistake>
-  <Mistake number="04" title="Jen firemní stránka bez lidí">
+  <Mistake num="04" title="Jen firemní stránka bez lidí">
     ChatGPT a Google AI Mode spíš citují obsah jednotlivců. Kdo spoléhá jen na firemní stránku, může přicházet o část citační logiky, kterou platformy přisuzují osobním profilům.
   </Mistake>
 </MistakeGrid>

@@ -55,8 +55,10 @@ import Mistake from "~/components/blocks/Mistake.astro";
 Pro orientaci, než půjdeme k rozhodování:
 
 <CompareTable
-  caption="GEO vs. AEO ve čtyřech bodech, na kterých záleží"
-  columns={["GEO", "AEO"]}
+  leftLabel="GEO"
+  leftTone="geo"
+  rightLabel="AEO"
+  rightTone="aeo"
   rows={[
     { icon: "🎯", label: "Kde chcete být", left: "V odpovědi samostatného AI chatu", right: "V odpovědním boxu nad výsledky vyhledávání" },
     { icon: "🌐", label: "Platformy", left: "ChatGPT, Perplexity, Claude, Gemini", right: "Google AI Overviews, featured snippets, Bing Copilot" },
@@ -112,8 +114,10 @@ Jedna protiváha: pokud o vaší značce a tématu **mimo vlastní web skoro nej
 Tohle je v praxi největší rozdíl a stojí za to znát jeho limity.
 
 <CompareTable
-  caption="Co u které disciplíny reálně naměříte"
-  columns={["Co jde", "Co nejde"]}
+  leftLabel="Co změříte"
+  leftTone="seo"
+  rightLabel="Co nezměříte"
+  rightTone="accent"
   rows={[
     { icon: "🔍", label: "AEO", left: "Search Console: report generativních funkcí od června 2026 — jen zobrazení v generativních funkcích Googlu", right: "Kliky, CTR ani dotazy report neukazuje a rollout je omezený, takže ho nemusíte vidět" },
     { icon: "💬", label: "GEO", left: "Ruční test sady dotazů napříč chaty — jestli a jak se značka objevuje", right: "Žádný oficiální report; odpovědi se mění mezi spuštěními, takže z jednoho běhu nelze vyvozovat" },
@@ -141,19 +145,19 @@ Prakticky: **u AEO je dobrá pozice v Googlu podstatná část práce.** U GEO j
 ## Časté omyly
 
 <MistakeGrid>
-  <Mistake number="01" title="Dělat z toho dvě oddělené disciplíny">
+  <Mistake num="01" title="Dělat z toho dvě oddělené disciplíny">
     Většina práce je společná — struktura, přímé odpovědi, důvěryhodnost. Dva projekty se dvěma rozpočty jsou zbytečné; liší se hlavně to, kde výsledek sledujete.
   </Mistake>
-  <Mistake number="02" title="Zaměňovat GEO za geografické SEO">
+  <Mistake num="02" title="Zaměňovat GEO za geografické SEO">
     GEO tady znamená Generative Engine Optimization, ne lokální vyhledávání. Je to nejčastější zdroj zmatku v celém názvosloví.
   </Mistake>
-  <Mistake number="03" title="Čekat u GEO stejná data jako u AEO">
+  <Mistake num="03" title="Čekat u GEO stejná data jako u AEO">
     Search Console pokrývá jen Google funkce. Pro chaty žádný oficiální report neexistuje, takže se GEO ověřuje ručně a orientačně.
   </Mistake>
-  <Mistake number="05" title="Myslet si, že u GEO na SEO nezáleží">
+  <Mistake num="04" title="Myslet si, že u GEO na SEO nezáleží">
     Klasické SEO je základ i pro chaty — jen vazba na přední pozice tam nebývá tak těsná jako u AEO. Být „jen zmíněný někde na webu" bez funkčního základu nestačí.
   </Mistake>
-  <Mistake number="04" title="Řešit AEO bez slušných pozic">
+  <Mistake num="05" title="Řešit AEO bez slušných pozic">
     Do odpovědního boxu se typicky dostávají stránky, které už rankují. Když stránka není nikde vidět, samotné přeformátování na otázku a odpověď obvykle nestačí.
   </Mistake>
 </MistakeGrid>

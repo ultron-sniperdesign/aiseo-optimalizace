@@ -106,8 +106,10 @@ U jednoduchého firemního webu je to jedna stránka a jeden blok. Složitějš�
 ## Co do bloku patří
 
 <CompareTable
-  caption="Vlastnosti, které dávají smysl běžné české firmě"
-  columns={["Co tam dát", "Proč"]}
+  leftLabel="Co tam dát"
+  leftTone="accent"
+  rightLabel="Proč"
+  rightTone="accent"
   rows={[
     { icon: "🏷️", label: "name a alternateName", left: "Jméno, pod kterým vás lidé znají, a zkratka či varianta", right: "Nejčastější tvar, kterým vás někdo hledá" },
     { icon: "⚖️", label: "legalName", left: "Obchodní firma přesně podle rejstříku", right: "Nese oficiální název z rejstříku; spolu s name a sameAs je to na webu často jediný strojově čitelný náznak té vazby" },
@@ -181,16 +183,16 @@ Související: [ostatní typy strukturovaných dat](/blog/strukturovana-data-pro
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Nevědět, co web vypisuje">
+  <Mistake num="01" title="Nevědět, co web vypisuje">
     Google doporučuje domovskou nebo jednu stránku popisující organizaci. Je-li blok konzistentní a správný, opakování samo o sobě doložený problém není — řešte hlavně rozpory mezi verzemi a to, že o obsahu svých dat pak nerozhodujete vy, ale plugin.
   </Mistake>
-  <Mistake number="02" title="sameAs jako odkazovník">
+  <Mistake num="02" title="sameAs jako odkazovník">
     Definice mluví o stránce, která **jednoznačně ukazuje identitu**. Není to sekce „naše profily“ a počet odkazů není skóre.
   </Mistake>
-  <Mistake number="03" title="Značka bez právního názvu">
+  <Mistake num="03" title="Značka bez právního názvu">
     Bez `legalName` na webu chybí přímý strojově čitelný údaj o oficiálním názvu. Odvodit se dá i z patičky nebo z rejstříku, ale jednoznačné to pak není — a přitom je to přesně ten rozpor, na který tenhle typ míří.
   </Mistake>
-  <Mistake number="04" title="Čekat od toho citace">
+  <Mistake num="04" title="Čekat od toho citace">
     Je to identifikace, ne distribuce. Kdo vám za tohle slibuje citace v AI, opírá se o něco, co zatím nikdo neukázal.
   </Mistake>
 </MistakeGrid>

@@ -66,8 +66,10 @@ Užitečné je oddělit dvě otázky. „Přijdou agenti?" je spekulace. „Jsou
 Nejpodstatnější změna není technická, ale logická.
 
 <CompareTable
-  caption="Klasické vyhledávání a nákupní agent z pohledu e-shopu"
-  columns={["Hledisko", "Rozdíl"]}
+  leftLabel="Hledisko"
+  leftTone="accent"
+  rightLabel="Rozdíl"
+  rightTone="accent"
   rows={[
     { icon: "📄", label: "Výstup", left: "Seznam vs. výběr", right: "Místo deseti odkazů dostane zákazník pár možností" },
     { icon: "🎯", label: "Cíl", left: "Pozice vs. zařazení", right: "Být šestý byla šance; nebýt ve výběru znamená výrazně menší šanci" },
@@ -109,16 +111,16 @@ Rozpor, na který se dá narazit často: e-shop blokuje AI roboty v robots.txt a
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Cena jen v textu">
+  <Mistake num="01" title="Cena jen v textu">
     Cena a dostupnost viditelné na stránce, ale chybějící ve strukturovaných datech — nebo naopak. Stroj pak čte něco jiného než zákazník.
   </Mistake>
-  <Mistake number="02" title="Chybějící identifikátor">
+  <Mistake num="02" title="Chybějící identifikátor">
     Bez GTIN, případně MPN, je těžší poznat, že jde o stejný produkt jako u konkurence; značka identifikaci jen zpřesňuje.
   </Mistake>
-  <Mistake number="03" title="Datový soubor a stránka se rozcházejí">
+  <Mistake num="03" title="Datový soubor a stránka se rozcházejí">
     Jiná cena nebo dostupnost v datovém souboru než na webu. Nesoulad škodí důvěře i strojovému zpracování.
   </Mistake>
-  <Mistake number="04" title="Předělávat e-shop kvůli humbuku">
+  <Mistake num="04" title="Předělávat e-shop kvůli humbuku">
     Agentní nakupování v Česku zatím nepřináší významnější počet objednávek. Investovat do čistých dat dává smysl; nákladná přestavba kvůli spekulaci ne.
   </Mistake>
 </MistakeGrid>

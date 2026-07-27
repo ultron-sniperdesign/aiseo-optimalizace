@@ -123,8 +123,10 @@ Dobrý text kategorie není o délce, ale o tom, jestli pomáhá rozhodnout. Tad
 Vedle textu pomáhá i strojově čitelný popis kategorie pomocí [strukturovaných dat](/blog/strukturovana-data-pro-ai/). Mezi nejrelevantnější typy pro kategorii často patří tři.
 
 <CompareTable
-  caption="Strukturovaná data pro stránku kategorie e-shopu"
-  columns={["Typ", "Co říká AI a Googlu"]}
+  leftLabel="Typ"
+  leftTone="accent"
+  rightLabel="Co říká AI a Googlu"
+  rightTone="accent"
   rows={[
     { icon: "🗂️", label: "CollectionPage", left: "Typ stránky", right: "Že jde o stránku s výběrem obsahu, tedy kategorii nebo výpis" },
     { icon: "📋", label: "ItemList", left: "Seznam produktů", right: "Které produkty kategorie obsahuje — strojově čitelná mapa sortimentu" },
@@ -139,16 +141,16 @@ Strukturovaná data musí odpovídat tomu, co je na stránce reálně vidět. Kd
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Kategorie bez textu">
+  <Mistake num="01" title="Kategorie bez textu">
     Samotný výpis produktů AI málo řekne. Bez úvodního textu s kritérii nemá model z čeho pochopit, o čem kategorie je a komu se hodí.
   </Mistake>
-  <Mistake number="02" title="Text jen pro klíčová slova">
+  <Mistake num="02" title="Text jen pro klíčová slova">
     Text napěchovaný klíčovými slovy bez hodnoty pro kupujícího nepomáhá ani lidem, ani AI. Víc než hustota frází obvykle pomáhá užitečnost pro kupujícího.
   </Mistake>
-  <Mistake number="03" title="Popisuje, ale nepomáhá rozhodnout">
+  <Mistake num="03" title="Popisuje, ale nepomáhá rozhodnout">
     Text, který jen obecně popisuje sortiment bez kritérií a segmentace, kupujícímu ani AI neusnadní volbu. Kategorie má pomoct rozhodnout.
   </Mistake>
-  <Mistake number="04" title="Duplicitní texty napříč kategoriemi">
+  <Mistake num="04" title="Duplicitní texty napříč kategoriemi">
     Generický odstavec zkopírovaný do všech kategorií mívá pro AI i vyhledávače menší přínos a kupujícímu často nepomáhá. Každá důležitá kategorie si zaslouží vlastní konkrétní text.
   </Mistake>
 </MistakeGrid>

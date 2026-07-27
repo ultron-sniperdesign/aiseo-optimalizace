@@ -52,8 +52,10 @@ Když si dnes čtete, na která média cílit kvůli citacím v AI, narazíte na
 ## Dvě čísla, která se nedají porovnat
 
 <CompareTable
-  caption="Stejná otázka, dvě nesouměřitelná měření"
-  columns={["Tvrzení A", "Tvrzení B"]}
+  leftLabel="Tvrzení A"
+  leftTone="accent"
+  rightLabel="Tvrzení B"
+  rightTone="accent"
   rows={[
     { icon: "📊", label: "Co říká", left: "Top 15 domén drží 68 % podílu na citacích", right: "Ani nejcitovanější doména zpravidla nepřesáhne 5 % citací na dané platformě" },
     { icon: "🧮", label: "Podklad", left: "Syntéza šesti dříve publikovaných studií, deklarováno 680 milionů citací", right: "Vlastní analýza 200 milionů promptů za pět měsíců" },
@@ -148,16 +150,16 @@ Až budete vědět, které zdroje se u vás opakují, přijde na řadu druhá po
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Převzít procento bez jmenovatele">
+  <Mistake num="01" title="Převzít procento bez jmenovatele">
     Číslo, u kterého není napsáno, z čeho se počítá, není údaj, ale dojem. U podílů na citacích to platí dvojnásob, protože „top 10 zdrojů“ a „všechny citace“ dávají zcela jiná čísla.
   </Mistake>
-  <Mistake number="02" title="Brát seznam amerických médií jako cíl">
+  <Mistake num="02" title="Brát seznam amerických médií jako cíl">
     PCMag ani Skift vaši českou firmu neuvedou a česky položený dotaz je stejně nemusí použít. Přenositelné je maximálně to, jaký typ zdroje se opakuje.
   </Mistake>
-  <Mistake number="03" title="Vybrat si číslo, které se hodí">
+  <Mistake num="03" title="Vybrat si číslo, které se hodí">
     Když jedno měření podporuje váš plán a druhé ne, není řešením citovat to první. Že se ta čísla takhle rozcházejí, je samo o sobě informace: tuhle otázku zatím nikdo veřejně nezodpověděl.
   </Mistake>
-  <Mistake number="04" title="Přehlédnout, kdo studii vydal">
+  <Mistake num="04" title="Přehlédnout, kdo studii vydal">
     U dodavatelských studií je vyšší riziko, že metrika a rámování vyhovují nabídce vydavatele. Není to důvod je zahodit, je to důvod hledat metodiku.
   </Mistake>
 </MistakeGrid>

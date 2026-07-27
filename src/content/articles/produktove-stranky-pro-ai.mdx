@@ -138,16 +138,16 @@ Strukturovaná data jsou technický základ. Aby ale AI produkt reálně použil
 ## Nejčastější chyby na produktových stránkách
 
 <MistakeGrid>
-  <Mistake number="01" title="Žádná strukturovaná data">
+  <Mistake num="01" title="Žádná strukturovaná data">
     Bez strukturovaných dat AI čte cenu, dostupnost a hodnocení hůře a méně spolehlivě. Produkt pak má u nákupních dotazů nižší šanci se objevit. Je to nejzákladnější a nejčastější chyba.
   </Mistake>
-  <Mistake number="02" title="Chybí GTIN a značka">
+  <Mistake num="02" title="Chybí GTIN a značka">
     GTIN a značka pomáhají jednoznačné identifikaci produktu, zejména u srovnávacích nákupních dotazů. České e-shopy tato pole často vynechávají, přitom pro AI nákupní dotazy hrají roli.
   </Mistake>
-  <Mistake number="03" title="Parametry jen v marketingovém textu">
+  <Mistake num="03" title="Parametry jen v marketingovém textu">
     Specifikace schované v odstavci se hůř extrahují. AI i kupující potřebují parametry strukturovaně — v tabulce nebo seznamu, ne rozpuštěné v reklamní větě.
   </Mistake>
-  <Mistake number="04" title="Nesoulad strukturovaných dat a stránky">
+  <Mistake num="04" title="Nesoulad strukturovaných dat a stránky">
     Jiná cena nebo dostupnost ve strukturovaných datech než na stránce — Google to může vyhodnotit jako nesoulad a stránka pak nemusí být způsobilá pro některé rozšířené výsledky. Strukturovaná data musí být pravdivá a aktuální.
   </Mistake>
 </MistakeGrid>
@@ -176,8 +176,10 @@ Strukturovaná data jsou technický základ. Aby ale AI produkt reálně použil
 Kompletní strukturovaná data na produktu mají podle dostupných analýz dvojí efekt. Za prvé **vyšší míru prokliku (CTR, tedy podíl lidí, kteří na výsledek kliknou)** v klasickém vyhledávání — hvězdičky, cena a dostupnost přímo ve výsledku zvyšují prokliky (uváděná čísla se liší podle studie a pozice, berte je jako orientační). Za druhé **vyšší šanci být citovaný v AI nákupních odpovědích** — protože AI má z čeho čerpat.
 
 <CompareTable
-  caption="Produktová stránka s a bez strukturovaných dat pro AI"
-  columns={["Bez strukturovaných dat", "S kompletními strukturovanými daty"]}
+  leftLabel="Bez strukturovaných dat"
+  leftTone="accent"
+  rightLabel="S kompletními strukturovanými daty"
+  rightTone="accent"
   rows={[
     { icon: "💰", label: "Cena a dostupnost", left: "AI je musí hádat z HTML — nespolehlivě", right: "AI čte přesnou cenu, měnu a dostupnost" },
     { icon: "🔢", label: "Identifikace produktu", left: "Bez GTIN a značky nejednoznačná", right: "GTIN a značka umožní zařazení do srovnání" },

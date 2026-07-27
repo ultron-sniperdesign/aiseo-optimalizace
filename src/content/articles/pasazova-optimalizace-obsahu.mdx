@@ -69,8 +69,10 @@ Důvod je prozaický. Ze stránky se často použije jen kousek — ať už ji �
 Skoro vždycky je to jedna z šesti věcí. Všechny mají společné, že se opírají o něco, co v úseku samotném není.
 
 <CompareTable
-  caption="Co pasáž rozbije a čím to nahradit"
-  columns={["Problém", "Náhrada"]}
+  leftLabel="Problém"
+  leftTone="accent"
+  rightLabel="Náhrada"
+  rightTone="accent"
   rows={[
     { icon: "↩️", label: "Zpětný odkaz", left: "„jak jsme psali výše\", „viz tabulka nahoře\"", right: "Zopakovat údaj nebo odkázat na konkrétní stránku" },
     { icon: "🫥", label: "Zájmeno bez opory", left: "„u něj to platí taky\", „ten je dražší\"", right: "Pojmenovat podmět jménem" },
@@ -140,16 +142,16 @@ Změnilo se pět věcí: nadpis konkrétně pojmenuje téma sekce, první věta 
 ## Čeho se vyvarovat
 
 <MistakeGrid>
-  <Mistake number="01" title="Nadpisy bez obsahu">
+  <Mistake num="01" title="Nadpisy bez obsahu">
     „Další informace" nebo „Poznámka" neřeknou, co v sekci je. Nadpis má nést otázku, na kterou úsek odpovídá.
   </Mistake>
-  <Mistake number="02" title="Zájmena bez opory">
+  <Mistake num="02" title="Zájmena bez opory">
     „U něj", „ten", „tohle" — ve vytržené pasáži není k čemu je vztáhnout. Pojmenujte podmět.
   </Mistake>
-  <Mistake number="03" title="Zkratka jen na začátku stránky">
+  <Mistake num="03" title="Zkratka jen na začátku stránky">
     Kdo přijde rovnou do sekce uprostřed, rozepsání v úvodu nevidí. Rozepište ji i tam, kde ji použijete.
   </Mistake>
-  <Mistake number="04" title="Přehnaná samostatnost">
+  <Mistake num="04" title="Přehnaná samostatnost">
     Opakovat celý kontext v každé sekci text zrobotičtí. Cílem je srozumitelnost, ne kopie úvodu v každém odstavci.
   </Mistake>
 </MistakeGrid>

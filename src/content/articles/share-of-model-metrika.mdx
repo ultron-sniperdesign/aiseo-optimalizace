@@ -62,8 +62,10 @@ Share of Model není o vašem webu, ale o tom, co o vás říká model. Je možn
 SoM se snadno plete s podobně znějícími pojmy. Liší se ale tím, co přesně měří.
 
 <CompareTable
-  caption="Čím se Share of Model liší od příbuzných metrik"
-  columns={["Metrika", "Co měří"]}
+  leftLabel="Metrika"
+  leftTone="accent"
+  rightLabel="Co měří"
+  rightTone="accent"
   rows={[
     { icon: "🤖", label: "Share of Model", left: "Zmínky v AI", right: "Váš podíl na zmínkách v odpovědích AI napříč dotazy" },
     { icon: "📣", label: "Share of Voice", left: "Viditelnost v kanálu", right: "Váš podíl na viditelnosti nebo zmínkách ve zvoleném kanálu (reklama, organika, média, sítě)" },
@@ -138,16 +140,16 @@ Souvisí to s realitou [nulového prokliku](/blog/zero-click-ai/): když nejste 
 ## Nejčastější chyby v měření
 
 <MistakeGrid>
-  <Mistake number="01" title="Jedno měření = závěr">
+  <Mistake num="01" title="Jedno měření = závěr">
     Odpovědi kolísají. Jednorázový snímek nic neříká; smysl dává až opakované měření a trend.
   </Mistake>
-  <Mistake number="02" title="Dotazy na značku">
+  <Mistake num="02" title="Dotazy na značku">
     Ptát se modelu přímo na svoje jméno nafoukne výsledek. Měřte na neutrálních dotazech, které řeší problém, ne značku.
   </Mistake>
-  <Mistake number="03" title="Jeden model za všechny">
+  <Mistake num="03" title="Jeden model za všechny">
     Chování se mezi ChatGPT, Perplexity a Gemini liší. Průměr přes jeden model zkresluje celkový obrázek.
   </Mistake>
-  <Mistake number="04" title="SoM místo výsledků">
+  <Mistake num="04" title="SoM místo výsledků">
     Share of Model je orientační ukazatel, ne cíl sám o sobě. Vždy ho párujte s návštěvností a konverzemi.
   </Mistake>
 </MistakeGrid>

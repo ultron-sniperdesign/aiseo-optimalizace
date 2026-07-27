@@ -71,8 +71,10 @@ V dokumentaci k AI funkcím stojí, že pro zobrazení v AI Overviews ani v AI M
 Stejně užitečné je, co se tam píše o věcech, které potřeba **nejsou**: vytvářet nové strojově čitelné soubory, zvláštní textové soubory pro AI ani speciální strukturovaná data kvůli AI funkcím.
 
 <CompareTable
-  caption="Co podle dokumentace pomáhá a co není potřeba"
-  columns={["Dává smysl", "Není potřeba"]}
+  leftLabel="Dává smysl"
+  leftTone="accent"
+  rightLabel="Není potřeba"
+  rightTone="accent"
   rows={[
     { icon: "🔎", label: "Dostupnost", left: "Zaindexováno, procházení povolené, způsobilé pro úryvky", right: "Zvláštní přihlašování do AI funkcí" },
     { icon: "📝", label: "Obsah", left: "Podstata v textové podobě", right: "Textové soubory vyrobené pro AI" },
@@ -133,16 +135,16 @@ Prakticky z toho plyne pár velmi konkrétních věcí:
 ## Čeho se vyvarovat
 
 <MistakeGrid>
-  <Mistake number="01" title="Hledat přepínač">
+  <Mistake num="01" title="Hledat přepínač">
     Zvláštní požadavky podle dokumentace Googlu neexistují. Čas strávený hledáním zkratky je lepší dát do dostupnosti a textu.
   </Mistake>
-  <Mistake number="02" title="Vyrábět soubory pro AI">
+  <Mistake num="02" title="Vyrábět soubory pro AI">
     Google uvádí, že nové strojově čitelné soubory ani textové soubory pro AI potřeba nejsou.
   </Mistake>
-  <Mistake number="03" title="Podstata jen v grafice">
+  <Mistake num="03" title="Podstata jen v grafice">
     Co není v textu, se hůř použije. Týká se to i videa bez přepisu a obsahu, který se objeví až po interakci.
   </Mistake>
-  <Mistake number="04" title="Data, která neodpovídají stránce">
+  <Mistake num="04" title="Data, která neodpovídají stránce">
     Strukturovaná data mají popisovat viditelný obsah. Rozpor je problém sám o sobě, ne chytrá zkratka.
   </Mistake>
 </MistakeGrid>

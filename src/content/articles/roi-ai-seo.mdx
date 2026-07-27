@@ -76,8 +76,10 @@ Totéž platí pro „hodnotu viditelnosti značky“ bez dalších dat — to j
 ## Co do výpočtu patří
 
 <CompareTable
-  caption="Co do výpočtu návratnosti patří a co ne"
-  columns={["Použitelné", "Nepoužitelné"]}
+  leftLabel="Použitelné"
+  leftTone="accent"
+  rightLabel="Nepoužitelné"
+  rightTone="accent"
   rows={[
     { icon: "—", label: "Čitatel", left: "Hodnota konverzí z relací připsaných AI", right: "Počet citací nebo zmínek" },
     { icon: "—", label: "Jmenovatel", left: "Nástroje, externí práce, váš čas, jednorázové výdaje", right: "Jen faktury bez vlastního času" },
@@ -142,16 +144,16 @@ Co z toho brát: ne že AI návštěvy konvertují líp vždycky, ale že **samo
 ## Časté chyby ve výpočtu
 
 <MistakeGrid>
-  <Mistake number="01" title="Stavět návratnost na ceně za citaci">
+  <Mistake num="01" title="Stavět návratnost na ceně za citaci">
     Citace není konverze a spolehlivě spočítat ji nejde. Jako měřítko návratnosti se nehodí.
   </Mistake>
-  <Mistake number="02" title="Hodnotit podle počtu návštěv">
+  <Mistake num="02" title="Hodnotit podle počtu návštěv">
     Do poměru patří hodnota konverzí. Objem sledujte zvlášť, kvůli stabilitě a škálovatelnosti.
   </Mistake>
-  <Mistake number="03" title="Brát výsledek jako přesný">
+  <Mistake num="03" title="Brát výsledek jako přesný">
     Zkresluje se nahoru i dolů. Prezentovat ho jako přesné číslo je chyba oběma směry.
   </Mistake>
-  <Mistake number="04" title="Počítat po měsíci">
+  <Mistake num="04" title="Počítat po měsíci">
     Obsahový kanál se projeví se zpožděním. Měsíční okno měří hlavně náhodu.
   </Mistake>
 </MistakeGrid>

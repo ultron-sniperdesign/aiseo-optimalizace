@@ -110,8 +110,10 @@ Guide popisuje postup, kdy AI odpověď vychází z dohledaných zdrojů ve Sear
 Google je v pozici **výrobce vlastního vyhledávače**. Jeho guide platí pro Google AI Overviews a AI Mode. AI ekosystém je ale širší a Google z principu nemluví za konkurenty.
 
 <CompareTable
-  caption="Google guide vs. širší AI ekosystém"
-  columns={["Google AI Overviews / AI Mode", "ChatGPT / Perplexity / Claude / Gemini konkurenti"]}
+  leftLabel="Google AI Overviews / AI Mode"
+  leftTone="accent"
+  rightLabel="ChatGPT / Perplexity / Claude / Gemini konkurenti"
+  rightTone="accent"
   rows={[
     { icon: "🎯", label: "Signály kvality", left: "Stejný Search index a stejné signály kvality jako klasické výsledky (Google to explicitně potvrzuje)", right: "Vlastní systémy, které Google z principu nemůže popsat" },
     { icon: "📄", label: "llms.txt", left: "Není nutný — Google to výslovně říká", right: "Podle vybraných veřejných analýz některé nástroje s ním pracují; není univerzálně potvrzený standard" },
@@ -128,16 +130,16 @@ Google má pravdu, že pro jeho AI features je základ klasické SEO. Ale AEO/GE
 ## Nejčastější nedorozumění po vydání guide
 
 <MistakeGrid>
-  <Mistake number="01" title="AEO/GEO neexistuje, je to marketingový pojem">
+  <Mistake num="01" title="AEO/GEO neexistuje, je to marketingový pojem">
     Google guide neříká, že AEO/GEO jsou zbytečné — jen že z pohledu Googlu jsou to stále SEO. To ale nemluví o citacích v ChatGPT nebo Perplexity, kde vlastní specifika (formát obsahu, brand mentions, off-page signály) reálně hrají roli.
   </Mistake>
-  <Mistake number="02" title="Můžu ignorovat llms.txt, protože ho Google nechce">
+  <Mistake num="02" title="Můžu ignorovat llms.txt, protože ho Google nechce">
     Google llms.txt nedoporučuje jako povinnost pro AI Overviews. Ale mimo Google se objevují experimenty se speciálními soubory a strojově čitelnými instrukcemi; nejde o jednotný standard, ale u některých nástrojů může přínos být. Nutnost to není, možný přínos ano.
   </Mistake>
-  <Mistake number="03" title="Nepotřebuju krátké citovatelné úseky">
+  <Mistake num="03" title="Nepotřebuju krátké citovatelné úseky">
     Google říká, že to není povinnost. Analýzy citací mimo Google ale ukazují, že krátké dobře strukturované úseky 50 až 150 slov bývají často citované víckrát než dlouhý nestrukturovaný text. Pro citovatelnost mimo Google to zůstává praktická taktika.
   </Mistake>
-  <Mistake number="04" title="Když mám dobré SEO, mám AI vyřešené">
+  <Mistake num="04" title="Když mám dobré SEO, mám AI vyřešené">
     Pro Google AI Overviews je dobré SEO základ a může výrazně zvýšit šanci na zobrazení, ale samo o sobě nic negarantuje. Pro citace v ChatGPT, Perplexity, Claude a Gemini rozhoduje i to, jak o vaší značce mluví důvěryhodné zdroje a odborné weby. To dobré SEO samo nezajistí.
   </Mistake>
 </MistakeGrid>

@@ -86,8 +86,10 @@ Souvislost, proč je tohle pořád spíš SEO než „AI SEO", rozebírá člán
 ## Jak má dobrá adresa vypadat
 
 <CompareTable
-  caption="Tvar URL, který pomáhá, a který překáží"
-  columns={["Funguje", "Překáží"]}
+  leftLabel="Funguje"
+  leftTone="accent"
+  rightLabel="Překáží"
+  rightTone="accent"
   rows={[
     { icon: "📏", label: "Délka", left: "Krátký a výstižný, často 2–5 slov", right: "Dlouhá adresa s celým názvem článku a datem" },
     { icon: "🔤", label: "Znaky", left: "Malá písmena, spojovníky, bez diakritiky", right: "Velká písmena, háčky, podtržítka, mezery" },
@@ -124,16 +126,16 @@ Nejdůležitější věta pro každého, kdo tohle čte nad existujícím webem:
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Přepsat slugy kvůli AI">
+  <Mistake num="01" title="Přepsat slugy kvůli AI">
     Migrace URL na existujícím webu je práce s reálným rizikem výměnou za přínos, který nikdo nedoložil. Skoro vždy špatný obchod.
   </Mistake>
-  <Mistake number="02" title="Cpát do URL klíčová slova">
+  <Mistake num="02" title="Cpát do URL klíčová slova">
     Adresa s pětkrát zopakovaným klíčovým slovem nevypadá relevantněji, vypadá spamově a hůř se čte. Popisný slug ano, keyword stuffing ne.
   </Mistake>
-  <Mistake number="03" title="Nechat parametrový chaos být">
+  <Mistake num="03" title="Nechat parametrový chaos být">
     Každá kombinace filtrů jako samostatná indexovaná URL dělá nepořádek: u velkých webů plýtvá rozpočtem na procházení, u menších tvoří duplicity a komplikuje výběr kanonické verze. Řešení není jen canonical, ale kombinace s řízením indexace a interním prolinkováním.
   </Mistake>
-  <Mistake number="04" title="Diakritika a velká písmena ve slugu">
+  <Mistake num="04" title="Diakritika a velká písmena ve slugu">
     Zakódují se do hůř čitelného tvaru a v některých nástrojích při ruční práci s odkazy dělají potíže. Malá písmena, bez háčků, spojovníky.
   </Mistake>
 </MistakeGrid>

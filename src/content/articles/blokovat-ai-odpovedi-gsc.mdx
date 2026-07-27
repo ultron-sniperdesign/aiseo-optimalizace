@@ -70,8 +70,10 @@ Není to jemný nástroj, kterým si necháte sekce, co fungují, a odhlásíte 
 Tohle se plete nejčastěji, protože se všechno tváří jako „blokování AI".
 
 <CompareTable
-  caption="Tři různé úrovně, tři různé účinky"
-  columns={["Nástroj", "Co řeší"]}
+  leftLabel="Nástroj"
+  leftTone="accent"
+  rightLabel="Co řeší"
+  rightTone="accent"
   rows={[
     { icon: "🚧", label: "robots.txt", left: "Procházení robotem", right: "Jestli se robot k obsahu vůbec dostane" },
     { icon: "✂️", label: "nosnippet a spol.", left: "Použití textu v úryvku", right: "Co se smí použít jako text; po stránce nebo bloku" },
@@ -102,8 +104,10 @@ Jde o jeden e-shop, výchozí stav před optimalizací a o návštěvy z asisten
 Důvod k odhlášení existuje. Bez vašich čísel za vás nikdo nerozhodne, ale filtr se postavit dá — a je poměrně ostrý.
 
 <CompareTable
-  caption="Tři situace a co z nich pro rozhodnutí plyne"
-  columns={["Co to znamená pro rozhodnutí", "Co si ověřit"]}
+  leftLabel="Co to znamená pro rozhodnutí"
+  leftTone="accent"
+  rightLabel="Co si ověřit"
+  rightTone="accent"
   rows={[
     { icon: "📚", label: "Produktem je samotná informace", left: "Odhlášení má srozumitelnou logiku — dát shrnutí zdarma je jiná kalkulace než u e-shopu", right: "Kolik obsahu je opravdu vaše zboží, a ne jen marketing" },
     { icon: "🛒", label: "Prodáváte zboží nebo služby", left: "Vypínáte celý kanál, ne jeho problematickou část", right: "Jestli z asistentů chodí konverze, ne jen návštěvy" },
@@ -116,16 +120,16 @@ I u prvního řádku jde o obchodní rozhodnutí, ne o technické nastavení.
 ## Časté chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Rozhodnout dřív, než máte přepínač i data">
+  <Mistake num="01" title="Rozhodnout dřív, než máte přepínač i data">
     Teoretické rozhodnutí bez vlastních čísel se stejně bude předělávat, až přijde na řadu.
   </Mistake>
-  <Mistake number="02" title="Zaměňovat ho s direktivami">
+  <Mistake num="02" title="Zaměňovat ho s direktivami">
     nosnippet řeší použití textu v úryvku, robots.txt procházení. Přepínač je samostatná úroveň.
   </Mistake>
-  <Mistake number="03" title="Odhlásit se ze strachu o hodnocení">
+  <Mistake num="03" title="Odhlásit se ze strachu o hodnocení">
     Google výslovně uvádí, že se nastavení nepoužije jako signál hodnocení mimo generativní funkce.
   </Mistake>
-  <Mistake number="04" title="Rozhodovat bez dat">
+  <Mistake num="04" title="Rozhodovat bez dat">
     Když neumíte oddělit jednotlivé povrchy, nemáte z čeho dopad odhadnout ani ověřit.
   </Mistake>
 </MistakeGrid>

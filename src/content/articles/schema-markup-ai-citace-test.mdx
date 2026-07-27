@@ -60,8 +60,10 @@ Přesně tady se láme logika. Korelace neznamená příčinu — a tvrdit „ma
 Ahrefs proto udělal něco, co většina „studií“ v oboru nedělá: **kauzální test s kontrolní skupinou.**
 
 <CompareTable
-  caption="Rozdíl mezi korelací a kauzálním testem"
-  columns={["Korelační pohled", "Kauzální test"]}
+  leftLabel="Korelační pohled"
+  leftTone="accent"
+  rightLabel="Kauzální test"
+  rightTone="accent"
   rows={[
     { icon: "🔢", label: "Vzorek", left: "6 milionů URL, jen se pozoruje", right: "1 885 stránek, které schema přidaly, proti 4 000 kontrolním bez něj" },
     { icon: "🧪", label: "Metoda", left: "Kdo je citovaný, má schema?", right: "Přidání schématu → změnily se citace oproti srovnatelným stránkám?" },
@@ -95,8 +97,10 @@ Férová námitka, než půjdeme dál: studie zkoumá hlavně **efekt dodatečn�
 Teď to důležité, aby článek nesklouzl do „schema je k ničemu“: **strukturovaná data mají doložený smysl — jen jinde než u AI citací.** Není to spor s doporučeními schema nasazovat, která najdete jinde na webu; jen je potřeba oddělit jeho klasický technický přínos od neprokázaného vlivu na AI citace.
 
 <CompareTable
-  caption="Kde schema pomáhá a kde ne"
-  columns={["Doložený užitek", "Nedoložená páka"]}
+  leftLabel="Doložený užitek"
+  leftTone="accent"
+  rightLabel="Nedoložená páka"
+  rightTone="accent"
   rows={[
     { icon: "⭐", label: "Rich results", left: "Hvězdičky u recenzí, cena a dostupnost u produktů — vzhled v klasickém vyhledávání", right: "Citace v AI odpovědích" },
     { icon: "🏷️", label: "Rozlišení identity", left: "Organization a Person explicitně vyjádří, kdo jste a jak entity souvisí", right: "Vyšší šance na výběr do AI odpovědi" },
@@ -109,16 +113,16 @@ Pozor jen na to, že i klasický užitek se místy zmenšuje: **FAQ a HowTo rich
 ## Nejčastější chyby
 
 <MistakeGrid>
-  <Mistake number="01" title="Přidat schema kvůli AI citacím">
+  <Mistake num="01" title="Přidat schema kvůli AI citacím">
     Kauzální test přínos neukázal. Čas na značkování dává smysl kvůli rich results a strojové čitelnosti, ne jako trik na citace v AI.
   </Mistake>
-  <Mistake number="02" title="Číst korelaci jako příčinu">
+  <Mistake num="02" title="Číst korelaci jako příčinu">
     „Citovaní mají schema častěji" neznamená „schema přineslo citace". Je to nejběžnější past AI SEO studií — ptejte se, jestli za číslem stojí kauzální test.
   </Mistake>
-  <Mistake number="03" title="Čekat od schématu autoritu">
+  <Mistake num="03" title="Čekat od schématu autoritu">
     Strukturovaná data jsou příznak kvalitního webu, ne jeho náhrada. Na slabém obsahu bez důvěryhodnosti schema nic nezachrání.
   </Mistake>
-  <Mistake number="04" title="Brát −4,6 % jako důvod schema nedělat">
+  <Mistake num="04" title="Brát −4,6 % jako důvod schema nedělat">
     To číslo znamená „žádný přínos pro citace“, ne „schema škodí“. Pro rich results a identitu strukturovaná data dál dávají smysl.
   </Mistake>
 </MistakeGrid>

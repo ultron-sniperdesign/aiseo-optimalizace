@@ -114,8 +114,10 @@ Lighthouse cílí na **CLS < 0,1**, stejně jako u klasických Core Web Vitals. 
 Existují tři cesty, jak audit spustit. Doporučená je Chrome DevTools.
 
 <CompareTable
-  caption="Tři způsoby, jak spustit Lighthouse audit"
-  columns={["Chrome DevTools (doporučeno)", "PageSpeed Insights / CLI"]}
+  leftLabel="Chrome DevTools (doporučeno)"
+  leftTone="accent"
+  rightLabel="PageSpeed Insights / CLI"
+  rightTone="accent"
   rows={[
     { icon: "🖥️", label: "Kde běží", left: "Lokálně v Chrome prohlížeči", right: "PageSpeed Insights: webové rozhraní pagespeed.web.dev. CLI: lokální Node prostředí." },
     { icon: "🔐", label: "Co umí auditovat", left: "Nasazená i lokální adresa, přihlášené stránky", right: "PageSpeed: pouze veřejně dostupné adresy. CLI: lokální i veřejné, vhodné pro CI/CD." },
@@ -182,16 +184,16 @@ Lighthouse Agentic Browsing dává okamžitý seznam toho, co opravit. Pro **max
 />
 
 <MistakeGrid>
-  <Mistake number="01" title="Audit jen na homepage">
+  <Mistake num="01" title="Audit jen na homepage">
     Spuštění Lighthouse jen na homepage podceňuje stav celého webu. Auditujte alespoň 3 typy stránek: homepage, kategorii nebo listovou stránku a produktovou nebo detailovou stránku. Neúspěšné kontroly se mezi šablonami často liší.
   </Mistake>
-  <Mistake number="02" title="Optimalizace bez opakovaného spuštění auditu">
+  <Mistake num="02" title="Optimalizace bez opakovaného spuštění auditu">
     Změny v llms.txt nebo accessibility tree je třeba ověřit dalším auditem. Bez opakovaného spuštění nelze potvrdit, že oprava skutečně fungovala a Lighthouse ji uznal.
   </Mistake>
-  <Mistake number="03" title="Stará verze Lighthouse">
+  <Mistake num="03" title="Stará verze Lighthouse">
     Pokud používáte starší než Lighthouse 13.3, kategorie Agentic Browsing chybí nebo je v experimentálním stavu. Pro relevantní audit doporučujeme Chrome aktualizovaný a Lighthouse v aktuální verzi.
   </Mistake>
-  <Mistake number="04" title="Spoléhat na PageSpeed Insights u dev verze">
+  <Mistake num="04" title="Spoléhat na PageSpeed Insights u dev verze">
     PageSpeed Insights umí auditovat pouze veřejně dostupné adresy. Pro testování dev prostředí nebo přihlášených stránek je nutné použít Chrome DevTools (lokální Lighthouse).
   </Mistake>
 </MistakeGrid>
