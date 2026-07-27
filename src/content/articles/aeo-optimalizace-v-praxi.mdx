@@ -9,7 +9,7 @@ tags:
   - "obsah"
   - "strukturovana-data"
 published: "2026-05-08"
-updated: "2026-05-08"
+updated: "2026-07-27"
 variant: "rich"
 keywords:
   - "aeo optimalizace"
@@ -27,8 +27,8 @@ stats:
     label: "slov ideálního answer blocku"
   - value: "5"
     label: "typů otázek = 5 šablon"
-  - value: "25,1 %"
-    label: "Google SERPs s AI Overview"
+  - value: "~48 %"
+    label: "sledovaných dotazů s AI Overviews (zahraniční měření, 2/2026)"
   - value: "2–8 týdnů"
     label: "od implementace k Featured Snippet"
 faq:
@@ -66,6 +66,7 @@ howto:
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
 import Persona from "../../components/blocks/Persona.astro";
 import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
 import AntiPersona from "../../components/blocks/AntiPersona.astro";
@@ -93,18 +94,40 @@ Tři disciplíny řeší různé vrstvy a sdílí společný technický základ:
 
 **Praktický důsledek:** SEO + AEO + GEO se navzájem posilují. Stejný obsah, který je strukturovaný pro AIO (krátká odpověď, FAQ schema), je obvykle dobře citovatelný i v ChatGPT nebo Perplexity. Co AEO odlišuje od GEO: AEO cílí na **answer engines napojené na vyhledávač** (Google, Bing) — má **přímější dopad na CZ traffic**, protože Google AI Overviews čte v Česku víc lidí než ChatGPT a Perplexity dohromady. GEO je doplňková disciplína, která buduje brand awareness v generativní AI — viz [GEO playbook](/blog/geo-optimalizace/).
 
+## Jak se dostat do AI Overviews
+
+**Nejvyšší šanci na citaci v AI Overviews mají stránky, které už jsou pro daný dotaz viditelné a mají na něm stručnou, samostatně použitelnou odpověď.** Citace se ve většině pozorování berou z předních výsledků, takže bez viditelnosti se šance zřetelně snižuje. Druhá vrstva je formát: otázka v nadpisu a přímá odpověď 40–60 slov pod ním. Zaručit citaci nelze, ovlivnit její pravděpodobnost ano.
+
+<Checklist tone="aeo" title="Pět kroků, které tu pravděpodobnost zvyšují" items={[
+  { title: "1. Ověřte, že stránka vůbec rankuje", desc: "Na dotaz, o který jde. Pokud není v předních výsledcích, začněte klasickým SEO — samotný formát to nevyřeší." },
+  { title: "2. Dejte otázku do nadpisu", desc: "Přesně tak, jak ji píší lidé. Ne „Naše řešení“, ale „Jak vybrat CRM pro malou firmu“." },
+  { title: "3. Odpovězte hned pod nadpisem", desc: "40 až 60 slov, které dávají smysl samostatně, bez zbytku stránky. Rozebírá to sekce Anatomie ideálního answer blocku." },
+  { title: "4. Doplňte strukturovaná data", desc: "FAQPage nebo HowTo podle typu obsahu. Pomáhá to Googlu pochopit typ obsahu, samo o sobě ale citaci nezajišťuje a váha se u jednotlivých formátů liší. Postup má sekce Schema cookbook pro AEO." },
+  { title: "5. Ověřte výsledek a opakujte", desc: "Ručním testem dotazů a v Search Console. Postup má sekce Měření AEO výkonu." },
+]} />
+
+<Insight tone="warn" label="Co tenhle postup neudělá">
+Žádný z těch kroků citaci **nezaručí** — výběr zdrojů není veřejně popsaný a mění se. Co udělat jde, je zvýšit pravděpodobnost a hlavně vyloučit důvody, proč se do výběru nedostanete vůbec: nízkou pozici, odpověď rozpuštěnou v textu a chybějící kontext důvěryhodnosti.
+</Insight>
+
 ## Co dnes <strong>víme</strong> o <span class="hl">Featured Snippets a AIO</span>
 
 Featured Snippets existují jako Google funkce už od roku 2014 (původně „answer box"). AI Overviews je nová generace — místo jednoho zdroje agreguje fakta z více stránek a generuje vlastní text odpovědi. **Obě formáty preferují obsah, který je jasně strukturovaný, rychle odpovídá na dotaz a má silný kontext důvěryhodnosti.** Nejde ale o totožný mechanismus výběru — stejné prvky (FAQ schema, strukturovaný answer block, autorita) nemají v obou formátech stejnou váhu, a u AIO je rozhodovací model méně transparentní.
 
-**Klíčová čísla** (k 5/2026):
+**Klíčová čísla** (aktualizováno 7/2026):
 
-- **25,1 % Google SERPs** v US trhu obsahuje AI Overview panel ([Semrush, 2025](https://www.semrush.com/blog/ai-overviews-study/)) — nárůst z 13,1 % v březnu 2025.
-- **Featured Snippet CTR** drží **35,6 %** v top pozici ([Backlinko CTR study, 2025](https://backlinko.com/google-ctr-stats)).
-- **CZ trh:** AI Overviews dostupné od léta 2025, generuje je Gemini model. Featured Snippets běží v plné šíři.
-- **CTR pokles** s AIO panelem nad výsledky: studie ukazují **20–60 % drop** organic CTR podle typu dotazu ([Ahrefs, 2024](https://ahrefs.com/blog/ai-overviews-reduce-clicks/)).
+- **Zhruba 48 % sledovaných dotazů** mělo v únoru 2026 panel AI Overviews podle měření BrightEdge — o rok dřív to bylo kolem 31 %. Jiné datasety uvádějí i vyšší podíly, kolem 60 %. Není to novější pravda — jsou to jiné metodiky a jiné sady sledovaných dotazů, takže se čísla mezi zdroji srovnávat nedají.
+- **Rozptyl podle oboru je obrovský:** u zdravotnictví a vzdělávání se panel objevuje výrazně častěji než u zábavy nebo e-commerce. Průměr proto o vašem oboru neříká skoro nic.
+- **CTR pokles** při zobrazení panelu bývá v analýzách řádově **desítky procent**, s velkým rozptylem podle typu dotazu a podoby výsledku.
+- **CZ trh:** AI Overviews dostupné od léta 2025, generuje je model Gemini. Featured Snippets běží v plné šíři.
 
-**Praktický důsledek:** Featured Snippet a AIO citace **kompenzují CTR pokles** — když jste citovaní, ztrácíte sice část kliků, ale získáváte brand exposure i u uživatelů, kteří dál nekliknou. Pokud nejste citovaní, ztrácíte oboje. AEO playbook rozhoduje, na které straně skončíte.
+<Insight tone="warn" label="Odkud ta čísla jsou">
+Všechno výše jsou **měření na zahraničních, převážně anglických datasetech**. Česká čísla veřejně doložená nemáme a přenášet je jedna k jedné by bylo zavádějící. Berte je jako řádovou orientaci a směr vývoje, ne jako benchmark pro váš web.
+</Insight>
+
+**Co jde změřit u vás:** od června 2026 je v Search Console report generativních funkcí. Ukazuje **zobrazení v generativních funkcích Googlu, ne kliky ani dotazy**, a rollout je omezený — nemusíte ho tedy vidět. Podrobně ho rozebírá [měření AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/).
+
+**Praktický důsledek:** citace může částečně zmírnit ztrátu pozornosti oproti situaci, kdy v panelu nejste vůbec — veřejná data ale neumí spolehlivě vyčíslit, kolik z toho je čistý přínos. Jisté je jen to, že když panel nad výsledky je a vy v něm nejste, přicházíte o obojí: o část kliků i o zmínku.
 
 ## Pro koho má <span class="hl">AEO</span> <strong>největší smysl</strong>
 
@@ -183,7 +206,7 @@ Univerzální answer block neexistuje — každý typ otázky má jinou ideáln�
 s atribucí]. [Praktický důsledek pro čtenáře].
 ```
 
-**Příklad pro AEO:** „AEO (Answer Engine Optimization) **upravuje obsah** tak, aby Google AI Overviews a Featured Snippets použili odpověď z vašeho webu. Mechanismus: krátká odpověď 40–60 slov hned po nadpisu, FAQPage schema, fact-density. 25,1 % Google SERPs obsahuje AIO panel (Semrush 2025). Bez AEO ztrácíte traffic i přes pozici v top 10."
+**Příklad pro AEO:** „AEO (Answer Engine Optimization) **upravuje obsah** tak, aby Google AI Overviews a Featured Snippets použili odpověď z vašeho webu. Mechanismus: krátká odpověď 40–60 slov hned po nadpisu, FAQPage schema, fact-density. Podle zahraničních měření mělo v roce 2026 panel AI Overviews zhruba 48 % sledovaných dotazů. Bez AEO ztrácíte traffic i přes pozici v top 10."
 
 ### Typ 2 — How-to otázky (postupy)
 
