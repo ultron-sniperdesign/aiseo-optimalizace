@@ -1,0 +1,215 @@
+---
+title: "Případová studie jako zdroj pro AI: jak ji napsat"
+description: "Co zvyšuje šanci, že případová studie poslouží jako podklad: čísla s obdobím a zdrojem, popsaná metodika, přiznaná atribuce a šablona k použití."
+answer: "Případová studie použitelná jako zdroj má tři věci, které marketingová verze nemá: čísla s absolutní hodnotou a obdobím, popsanou metodiku měření a přiznanou atribuci — tedy co jiného kromě vaší práce mohlo výsledek způsobit. Bez nich text působí spíš jako reference než jako podklad, o který se dá opřít tvrzení."
+slug: "pripadova-studie-pro-ai"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "duveryhodnost"
+published: "2026-07-27"
+updated: "2026-07-27"
+keywords:
+  - "případová studie pro ai"
+  - "case study ai citace"
+  - "jak napsat případovou studii"
+  - "případová studie s čísly"
+  - "atribuce v případové studii"
+variant: "rich"
+stats:
+  - value: "7 bloků"
+    label: "od souhlasu po limity — každý dává smysl i vytržený z kontextu"
+  - value: "3 údaje"
+    label: "u každého čísla: absolutní hodnota, období a odkud pochází"
+  - value: "atribuce"
+    label: "co jiného mohlo výsledek způsobit — část, kterou marketingová verze vynechává"
+  - value: "1 šablona"
+    label: "kostra ke zkopírování, kterou stačí doplnit vlastními údaji"
+howto:
+  name: "Jak napsat případovou studii použitelnou jako zdroj"
+  steps:
+    - name: "Vyřešte souhlas a publikovatelnost"
+      text: "Zjistěte, co smíte zveřejnit: jméno, čísla, období. Ideálně to řešte už ve smlouvě nebo samostatným schválením publikace a u citlivých dat ověřte i závazky z mlčenlivosti, obchodní tajemství a u osobních údajů ochranu podle GDPR."
+    - name: "Napište výsledek jako první blok"
+      text: "Nahoru patří konkrétní výsledek s absolutní hodnotou, procentem a obdobím. Ne obecná věta o spolupráci."
+    - name: "Doplňte výchozí stav"
+      text: "Bez čísla před zásahem není výsledek interpretovatelný. Uveďte stejnou metriku ve stejné jednotce."
+    - name: "Popište zásah konkrétně"
+      text: "Co se přesně změnilo, kdy a v jakém rozsahu. Obecné formulace typu optimalizace obsahu nejsou reprodukovatelné."
+    - name: "Uveďte metodiku měření"
+      text: "Odkud čísla pocházejí, za jaké období a jak jsou definovaná. Bez toho nemá čtenář jak posoudit, co číslo znamená."
+    - name: "Přiznejte atribuci"
+      text: "Sepište, co jiného kromě vaší práce mohlo výsledek ovlivnit: sezónnost, souběžné kampaně, změny algoritmu, situaci u konkurence."
+    - name: "Doplňte limity"
+      text: "Napište, co studie nedokazuje: jeden klient, jeden obor, jedno období. Přiznaný limit důvěryhodnost zvyšuje."
+faq:
+  - q: "Čím se liší případová studie pro AI od té marketingové?"
+    a: "Třemi věcmi: čísla mají absolutní hodnotu, období a uvedený zdroj, metodika měření je popsaná a atribuce je přiznaná. Marketingová verze uvádí procenta bez kontextu a příčinnost bere jako samozřejmou. Konkrétní a dohledatelný text má větší šanci posloužit jako opora pro tvrzení než obecná formulace o spokojenosti."
+  - q: "Musím uvádět absolutní čísla, nebo stačí procenta?"
+    a: "Bez absolutních čísel je procento nečitelné. Nárůst o tři sta procent může znamenat posun ze dvou konverzí na osm. Uvádějte hodnotu před, hodnotu po, procento a období — teprve dohromady dávají smysl."
+  - q: "Co dělat, když klient nedovolí uvést jméno?"
+    a: "Máte tři režimy zveřejnění a každý něco stojí. Nejsilnější je jméno s čísly. Střední cesta je obor, velikost a období bez jména — pořád použitelné, když je metodika popsaná. Nejslabší je anonymní studie bez konkrétních čísel, ze které si čtenář nemá co odnést. Pokud to jde, začněte vlastním projektem, kde souhlas řešit nemusíte."
+  - q: "Proč psát, co jiného mohlo výsledek způsobit?"
+    a: "Protože případová studie naznačuje příčinnost silněji než třeba průzkum, a ta se v reálném projektu skoro nikdy nedokazuje — neběží kontrolní skupina. Když sami uvedete sezónnost, souběžné kampaně nebo změnu algoritmu jako alternativu, dá to čtenáři informaci, jak silné to tvrzení je."
+  - q: "Kdy případovou studii raději nepsat?"
+    a: "Když výsledek nejde rozumně přiřknout vaší práci, když je období příliš krátké na odlišení od běžného výkyvu, nebo když nesmíte uvést ani obor a čísla. V takovém případě je lepší napsat metodický článek o postupu než slabou studii."
+  - q: "Jaká strukturovaná data k případové studii přidat?"
+    a: "Bezpečná volba je Article. Typ Dataset dává smysl jen tehdy, když k článku opravdu publikujete datový soubor ke stažení. Označovat jako Dataset běžný text s pár čísly nemá smysl."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+## Případová studie jako zdroj, ne jako reference
+
+**Případová studie použitelná jako zdroj má tři věci, které marketingová verze nemá:** čísla s absolutní hodnotou a obdobím, popsanou metodiku měření a přiznanou atribuci — tedy co jiného kromě vaší práce mohlo výsledek způsobit. Bez nich text působí spíš jako reference než jako podklad, o který se dá opřít tvrzení.
+
+**Tenhle článek neřeší, proč jsou případové studie jedním z typů originálních dat — to má [originální data pro AI](/blog/originalni-data-pro-ai/) včetně pravidel pro formát publikace.** Řeší čtyři problémy, které jsou specifické právě pro případovou studii: souhlas a publikovatelnost, ověřitelnost čísel, přiznání alternativních vysvětlení a situace, kdy je lepší studii vůbec nevydávat.
+
+<Insight tone="accent" label="Poctivá poznámka k tomu, co následuje">
+Nejde o veřejně potvrzené interní pravidlo AI systémů — nikdo takové pravidlo nezveřejnil. **Je to redakční heuristika:** čím konkrétnější, dohledatelnější a méně propagační text je, tím snáz z něj jde vzít konkrétní tvrzení a opřít o něj odpověď. Platí to pro AI systémy i pro člověka, který hledá zdroj.
+
+Případová studie navíc **naznačuje příčinnost silněji** než průzkum nebo prostý dataset — říká „udělali jsme X a stalo se Y“. Právě proto u ní víc než jinde záleží na kontextu, měření a alternativních vysvětleních.
+</Insight>
+
+## Sedm bloků, ze kterých jde vytáhnout odpověď
+
+Pořadí není libovolné. Každý blok by měl dávat smysl i samostatně.
+
+<Stepper tone="geo" steps={[
+  { title: "0. Souhlas a publikovatelnost", desc: "Co vůbec smíte zveřejnit. Řeší se první, ne až když je studie napsaná." },
+  { title: "1. Výsledek", desc: "Konkrétní číslo hned nahoře: hodnota před, hodnota po, procento a období. Ne věta o úspěšné spolupráci." },
+  { title: "2. Výchozí stav", desc: "Odkud se startovalo, ve stejné metrice a jednotce. Bez toho je výsledek nečitelný." },
+  { title: "3. Zásah", desc: "Co přesně se změnilo, kdy a v jakém rozsahu. Aby to šlo zopakovat, ne jen obdivovat." },
+  { title: "4. Metodika", desc: "Odkud čísla pocházejí, za jaké období a jak jsou definovaná. Samostatný blok, ne poznámka pod čarou." },
+  { title: "5. Atribuce", desc: "Co jiného mohlo výsledek způsobit. Tenhle blok chybí skoro všude a výrazně ovlivňuje, jak text působí." },
+  { title: "6. Limity", desc: "Co to nedokazuje: jeden klient, jeden obor, jedno období. Přiznaný limit posiluje, neoslabuje." },
+]} />
+
+## Čísla, ze kterých se dá vyjít
+
+Nejčastější slabina případových studií není lež, ale **neúplnost**. Procento bez absolutní hodnoty se nedá interpretovat.
+
+<DoDont>
+  <Do>
+
+  - „Organická návštěvnost vzrostla z 1 240 na 3 100 relací měsíčně (+150 %) mezi lednem a dubnem 2026, měřeno v GA4.“
+  - „Počet dotazů s pozicí do 10 vzrostl z 18 na 47 (Search Console, stejné období, stejná property).“
+  - „Konverzní poměr se nezměnil — 1,8 % před i po.“
+
+  </Do>
+  <Dont>
+
+  - „Zvedli jsme návštěvnost o 150 %.“
+  - „Výrazné zlepšení pozic v Googlu.“
+  - „Klient je velmi spokojený s výsledky spolupráce.“
+
+  </Dont>
+</DoDont>
+
+U každého čísla patří **tři údaje: absolutní hodnota, období a odkud číslo pochází.** Když jeden chybí, čtenář nemá jak posoudit, co ten údaj vlastně znamená.
+
+Jedno upřesnění, aby to nevyznělo silněji, než jaké to je: u klientských studií většinou **nejde o plnou externí ověřitelnost** — do cizího GA4 se nikdo nepodívá. Jde o **auditovatelnost tvrzení**: čtenář ví, co číslo znamená, odkud pochází a za jaké období bylo měřeno. To je realistický cíl.
+
+Zmínit se vyplatí i metriky, které se **nezměnily**. Studie, kde se zlepšilo úplně všechno, působí vybraně; studie, která přizná, že konverzní poměr zůstal stejný, působí měřeně.
+
+## Atribuce: co jiného to mohlo způsobit
+
+Tohle je blok, který v drtivé většině případových studií chybí — a přitom výrazně ovlivňuje, jestli se text čte jako zdroj, nebo jako propagace.
+
+V reálném projektu neběží kontrolní skupina, takže příčinnost prakticky nikdy neprokážete. Poctivá odpověď proto není tvrdit ji silněji, ale **vyjmenovat, co ještě ve stejné době působilo:**
+
+<Checklist tone="seo" title="Alternativní vysvětlení, která patří do textu" items={[
+  { title: "Sezónnost", desc: "Roste ta metrika ve stejném období i v předchozích letech? Meziroční srovnání to ukáže." },
+  { title: "Souběžné aktivity", desc: "Běžela ve stejné době kampaň, PR výstup, sleva nebo redesign? I když je nedělal nikdo z vás." },
+  { title: "Změny na straně platformy", desc: "Aktualizace algoritmu, nová funkce ve výsledcích, změna v měření." },
+  { title: "Situace u konkurence", desc: "Odešel z trhu konkurent, přestal inzerovat, spadl mu web?" },
+  { title: "Velikost výchozí základny", desc: "Z malých čísel dělají velká procenta i malé absolutní posuny." },
+]} />
+
+Nejde o to všechna vysvětlení vyvrátit — to obvykle nejde. Jde o to je **uvést a říct, které považujete za nejpravděpodobnější alternativu.** Věta typu „meziročně roste tahle metrika i bez zásahu zhruba o pětinu, takže část nárůstu jde na vrub sezóně“ udělá pro důvěryhodnost víc než tři další grafy.
+
+## Tři režimy zveřejnění
+
+Nejde o to, jestli anonymizovat, ale **kolik vás to bude stát** — každý režim něco ubere:
+
+<Checklist tone="aeo" title="Co za který režim platíte" items={[
+  { title: "1. Jméno klienta a čísla", desc: "Nejsilnější varianta. Klient je dohledatelný, čísla zasazená do kontextu, studie funguje jako plnohodnotný podklad." },
+  { title: "2. Obor, velikost a období bez jména", desc: "„E-shop s nábytkem, obrat v desítkách milionů, leden až duben 2026.“ Pořád použitelné, pokud je metodika popsaná. Tohle bývá reálný kompromis." },
+  { title: "3. Anonymní bez konkrétních čísel", desc: "„U jednoho klienta jsme výrazně zlepšili viditelnost.“ Čtenář si z toho nemá co odnést — tohle nepište." },
+]} />
+
+<Insight tone="warn" label="Tohle není právní rada">
+U klientských dat neřešíte jen marketingový souhlas, ale i **smluvní mlčenlivost a NDA, případné obchodní tajemství** a u osobních údajů také **ochranu podle GDPR**. Souhlas s publikací bývá praktické minimum, ne automatická záruka, že je zveřejnění po právní stránce v pořádku. U citlivějších případů se ptejte právníka, ne marketéra.
+
+Praktické minimum: **řešte to dopředu, ne až když je studie napsaná** — ideálně větou ve smlouvě. A počítejte s tím, že anonymizace nemusí stačit, pokud jde klient odvodit z kombinace oboru, velikosti a období.
+</Insight>
+
+Pokud souhlas nedostanete vůbec, zbývá nejjistější cesta: **napsat studii o vlastním projektu.** Vlastní web, vlastní e-shop, vlastní experiment — souhlas nepotřebujete a čísla můžete zveřejnit v plné podobě.
+
+## Šablona ke zkopírování
+
+Kostra, kterou stačí doplnit vlastními údaji. Pořadí bloků držte, i když budou některé krátké. **Blok 0 (souhlas) v šabloně není** — je to publikační předkrok, ne část textu.
+
+<Insight tone="seo" label="Kostra případové studie">
+**Výsledek:** Mezi [období] vzrostla [metrika] z [hodnota před] na [hodnota po] (+[procento]), měřeno v [nástroj].
+
+**Výchozí stav:** Před zásahem byla [metrika] na [hodnota] a hlavní problém byl [stručně].
+
+**Zásah:** V [měsíc] jsme provedli [konkrétní změny, rozsah].
+
+**Metodika:** Data pocházejí z [zdroj], srovnáváme [období] s [srovnávací období]. [Metrika] je definovaná jako [definice].
+
+**Atribuce:** Výsledek mohly ovlivnit i [sezónnost / souběžná kampaň / redesign / změna algoritmu]. Za nejpravděpodobnější alternativu považujeme [která] — [proč].
+
+**Limity:** Jde o [jeden web / jeden obor / krátké období]. Studie nedokazuje, že [co z ní nevyplývá].
+</Insight>
+
+Vyplněnou verzi téhle kostry si můžete projít na [naší studii o AI návštěvnosti](/blog/case-study-megadetail-ai-navstevnost/) — jako ukázku struktury, ne jako vzor výsledků.
+
+## Kdy studii raději nepsat
+
+<Insight tone="warn">
+Když výsledek nejde rozumně přiřknout vaší práci, když je období tak krátké, že se nedá odlišit od běžného výkyvu, nebo když nesmíte uvést ani obor a čísla. **Slabá případová studie ubere na důvěryhodnosti víc, než přidá.** V takovém případě je lepší napsat metodický článek o postupu — ten nemá problém s atribucí ani se souhlasem.
+</Insight>
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Procento bez absolutních čísel" fix="Uveďte hodnotu před, hodnotu po, procento a období.">
+    Nárůst o tři sta procent může být posun ze dvou na osm. Bez základny to není údaj, ale dojem.
+  </Mistake>
+  <Mistake num="02" title="Chybějící metodika" fix="Samostatný blok: odkud čísla jsou, za jaké období, jak jsou definovaná.">
+    Bez zdroje nemá čtenář jak posoudit, co číslo znamená — a bere si z něj jen ten dojem.
+  </Mistake>
+  <Mistake num="03" title="Příčinnost jako samozřejmost" fix="Vyjmenujte, co jiného mohlo výsledek způsobit.">
+    Studie bez atribuční sekce naznačuje víc, než ukazuje. Přiznané alternativy důvěryhodnost zvyšují.
+  </Mistake>
+  <Mistake num="04" title="Anonymizace bez čísel" fix="Když nesmí padnout jméno, nechte aspoň obor, velikost, období a metodiku.">
+    „Jeden klient, výrazné zlepšení“ není podklad. Anonymní studie bez konkrétních údajů nemá co nabídnout.
+  </Mistake>
+</MistakeGrid>
+
+## Kontrolní seznam před publikací
+
+<Checklist tone="accent" title="Sedm otázek, než studii vydáte" items={[
+  { title: "Mám souhlas nebo smluvní oprávnění?", desc: "A vím, co konkrétně smím zveřejnit — jméno, čísla, období." },
+  { title: "Mám hodnotu před i po?", desc: "Ve stejné metrice a stejné jednotce." },
+  { title: "Mám u každého čísla období?", desc: "Konkrétní měsíce nebo data, ne „za poslední dobu“." },
+  { title: "Uvedl jsem zdroj metrik?", desc: "GA4, Search Console, interní systém — a jak je metrika definovaná." },
+  { title: "Mám dvě až tři alternativní vysvětlení?", desc: "A řekl jsem, které považuju za nejpravděpodobnější." },
+  { title: "Napsal jsem, co studie nedokazuje?", desc: "Jeden klient, jeden obor, jedno období." },
+  { title: "Vím, co zveřejnit nesmím?", desc: "Mlčenlivost, obchodní tajemství, osobní údaje." },
+]} />
+
+## Co si z toho vzít
+
+Rozdíl mezi případovou studií jako referencí a jako podkladem je v tom, **co všechno jste ochotní přiznat.** Reference ukazuje jen dobrá čísla. Podklad ukazuje čísla, odkud pocházejí, co se nezměnilo a co ještě mohlo výsledek způsobit.
+
+Když z celého článku uděláte jednu věc, ať je to **atribuční odstavec** — ten v cizích studiích chybí skoro vždycky a nejvýrazněji odliší váš text od reklamy.
