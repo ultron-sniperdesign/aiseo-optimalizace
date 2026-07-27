@@ -7,7 +7,7 @@ category: "analysis"
 tags:
   - "strukturovana-data"
 published: "2026-07-11"
-updated: "2026-07-11"
+updated: "2026-07-28"
 keywords:
   - "konec faq rich results"
   - "faqpage 2026"
@@ -111,6 +111,21 @@ Odpověď není plošná. Záleží na tom, jestli FAQ sekce reálně pomáhá, 
 <Insight tone="warn">
 Nejhorší varianta není markup nechat, ani ho smazat — je nechat ho v nesouladu s viditelným obsahem. Pokud FAQ sekci ze stránky odeberete, odeberte i její FAQPage markup. Konzistence mezi strukturovanými daty a tím, co uživatel opravdu vidí, je teď důležitější než dřív.
 </Insight>
+
+## A co HowTo? Ten Google zrušil už v roce 2023
+
+FAQ nejsou první případ. **HowTo rich results Google ve Vyhledávání ukončil už v roce 2023** — a platí u nich přesně totéž, co teď u FAQ: samotný markup zůstává validní, skončil jen zobrazovací prvek ve výsledcích.
+
+Rozhodovací rámec z minulé sekce se proto dá použít beze změny. Otázka nezní „zrušil to Google?“, ale **k čemu vám ten markup ještě slouží**:
+
+<Checklist tone="seo" title="HowTo markup: nechat, nebo odstranit?" items={[
+  { title: "Nechte, když popisuje reálný postup", desc: "Kroky, které na stránce opravdu jsou. Strojově čitelná struktura návodu dává smysl bez ohledu na to, jestli se z ní kreslí prvek v SERP." },
+  { title: "Nechte, když ho máte automatizovaný", desc: "Pokud markup generuje šablona, náklad na udržení je nulový. Odstraňovat ho jen proto, že zmizel vizuální prvek, je práce bez výnosu." },
+  { title: "Odstraňte, když nesedí s obsahem", desc: "Kroky v markupu, které na stránce nejsou, jsou horší než žádný markup — to platí u HowTo i FAQ stejně." },
+  { title: "Odstraňte, když ho udržujete ručně kvůli SERP", desc: "Motivace zmizela. Ruční údržba markupu kvůli prvku, který se nezobrazuje, je čistá ztráta." },
+]} />
+
+**Pozor na jeden rozdíl:** u HowTo se v praxi častěji stává, že markup popisuje idealizovaný postup, který na stránce chybí. Než ho někde necháte „pro AI“, ověřte, že kroky v datech odpovídají krokům v textu.
 
 ## Zapadá to do širšího posunu strukturovaných dat
 

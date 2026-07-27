@@ -8,9 +8,9 @@
 > → **ruční posouzení 29 nejpodezřelejších řádků** proti skutečnému obsahu kandidáta.
 > Zbylých 58 řádků má nízký překryv a **nebylo posuzováno jednotlivě.**
 >
-> **Stav: aplikováno 2026-07-27.** Skupina A uzavřena na URL pokrývajícího článku,
-> skupině B přepsané pokyny na sloučení (řádky zůstávají otevřené jako merge úkoly).
-> Skupina C zatím beze změny.
+> **Stav: aplikováno 2026-07-27, skupina B odbavena 2026-07-28.** Skupina A uzavřena
+> na URL pokrývajícího článku. Skupina B zapsána jako sekce do cílových článků a řádky
+> uzavřeny na jejich URL. Skupina C zatím beze změny.
 
 ---
 
@@ -33,13 +33,19 @@
 
 ## B. SLOUČIT — unikátní data patří do existujícího článku, ne na novou URL (5 řádků)
 
-| Řádek plánu | Cílový článek | Co z něj vzít |
-|---|---|---|
-| `konec howto rich results` | `konec-faq-rich-results` | Rámec „nechat, nebo odstranit?" platí pro HowTo identicky. Samostatný článek by byl klon. → sekce **A co HowTo?** |
-| `domenova prekryv ai` | `jak-ai-cituje-zdroje` | Statistika 11 % domén / 680 mil. citací je nová, ale závěr „neoptimalizovat na jednu platformu" je teze cílového článku. → doplnit jako data. |
-| `ai visibility nastroje srovnani` | `ai-seo-nastroje` | Konkrétní jména a ceny (Brand Radar, Semrush AI Toolkit, Otterly, Hall) tam chybí; „tři úrovně nástrojů" a „kdy začít platit" už tam jsou. → srovnávací tabulka do existujícího. |
-| `recenzni platformy expanze` | `recenze-srovnavace-pro-ai` | Které platformy a jak na ně férově už tam je. Nové je jen číslo 4,6–6,3 vs 1,8 citace a segmentace B2B/e-commerce. → doplnit. |
-| `cerstvost obsahu pro perplexity` | `perplexity-seo` | H2 **Krok 2: Držte obsah aktuální** + FAQ „Jak často aktualizovat kvůli Perplexity". Nové jsou jen konkrétní čísla (30 dní, rok v titulku). → doplnit čísla. |
+**✅ Odbaveno 2026-07-28** — všech pět zapsáno jako sekce, řádky uzavřeny na URL cílového článku.
+
+| Řádek plánu | Cílový článek | Co z něj vzít | Výsledná sekce |
+|---|---|---|---|
+| `konec howto rich results` | `konec-faq-rich-results` | Rámec „nechat, nebo odstranit?" platí pro HowTo identicky. Samostatný článek by byl klon. | **A co HowTo? Ten Google zrušil už v roce 2023** — rozhodovací Checklist |
+| `domenova prekryv ai` | `jak-ai-cituje-zdroje` | Statistika 11 % domén / 680 mil. citací je nová, ale závěr „neoptimalizovat na jednu platformu" je teze cílového článku. | **Jak malý je překryv doopravdy** — číslo + co z něj neplyne |
+| `ai visibility nastroje srovnani` | `ai-seo-nastroje` | Konkrétní jména a ceny tam chybí; „tři úrovně nástrojů" a „kdy začít platit" už tam jsou. | **Které platformy který nástroj vidí** — pokrytí místo cen; ceny už řeší tabulka v „Kdy začít platit" |
+| `recenzni platformy expanze` | `recenze-srovnavace-pro-ai` | Které platformy a jak na ně férově už tam je. Nové je jen číslo 4,6–6,3 vs 1,8 citace a segmentace B2B/e-commerce. | **Přítomnost na víc platformách koreluje s víc citacemi** + CompareTable B2B vs e-commerce |
+| `cerstvost obsahu pro perplexity` | `perplexity-seo` | H2 **Krok 2: Držte obsah aktuální** + FAQ „Jak často aktualizovat kvůli Perplexity". Nové jsou jen konkrétní čísla (30 dní, rok v titulku). | **Jak čerstvý je dost čerstvý** — čísla + varování před kosmetickým datem |
+
+> **Poznámka z odbavení:** u `ai-seo-nastroje` se původní zadání („srovnávací tabulka s cenami")
+> ukázalo jako duplicita — článek už tabulku úrovní s týmiž nástroji má a ceny hedguje záměrně.
+> Doplněná byla proto dimenze, kterou článek neměl: **které AI platformy který tracker dotazuje.**
 
 ## C. PŘEPSAT ZADÁNÍ — téma obstojí, ale ne v současném rámování (2 řádky)
 

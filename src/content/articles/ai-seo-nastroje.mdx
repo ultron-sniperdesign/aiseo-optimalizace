@@ -7,7 +7,7 @@ category: "analysis"
 tags:
   - "audit-nastroje"
 published: "2026-05-24"
-updated: "2026-05-24"
+updated: "2026-07-28"
 variant: "rich"
 keywords:
   - "ai seo nástroje"
@@ -42,6 +42,7 @@ faq:
     a: "Ano, orientačně. Projděte ručně 15–20 zákaznických dotazů v dostupných AI asistentech (ChatGPT s vyhledáváním, Perplexity) a zapisujte zmínky i zdroje tam, kde jsou uvedené. V GA4 sledujte návštěvy z AI platforem jako podpůrný signál — nezachytí zmínky bez prokliku. Je to méně přesné než placený nástroj, ale na start to pomůže."
 ---
 
+import Checklist from "../../components/blocks/Checklist.astro";
 import CompareTable from "../../components/blocks/CompareTable.astro";
 import Insight from "../../components/blocks/Insight.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
@@ -92,6 +93,19 @@ Placené nástroje automaticky pouštějí sady dotazů napříč AI platformami
 ### 3. Pro větší firmy (enterprise)
 
 Pro větší firmy a agentury existují robustnější platformy pro srovnání s konkurencí, práci s větším množstvím témat a někdy i odhady poptávky po dotazech — pro samotné měření například **Profound** nebo **LLM Pulse**. Cena je řádově vyšší a smysl dává až při velkém objemu sledovaných témat.
+
+### Které platformy který nástroj vidí
+
+Při výběru se lidé nejčastěji dívají na cenu a počet dotazů. **Důležitější je ale zjistit, které AI platformy nástroj vůbec dotazuje** — tracker, který nesleduje nástroj, kde se rozhodují vaši zákazníci, vám nic užitečného neřekne, ať stojí kolik chce.
+
+<Checklist tone="accent" title="Pokrytí platforem k červenci 2026" items={[
+  { title: "Otterly.ai — ChatGPT, Google AI Overviews, Perplexity", desc: "Vstupní úroveň bez Claude a Gemini. Ve vstupním tarifu navíc jen malý počet sledovaných dotazů — je to nástroj na pilot, ne na provoz ve velkém." },
+  { title: "Peec AI — ChatGPT, Claude, Gemini, Perplexity", desc: "Nejširší pokrytí ze vstupních a středních nástrojů a několikanásobně víc dotazů v tarifu. Typická volba ve chvíli, kdy ruční měření přestává stačit." },
+  { title: "Profound — ChatGPT, Gemini, Perplexity, Copilot", desc: "Navíc rozebírá, které konkrétní stránky se citují a odkud. Ta hloubka i cena dávají smysl až u velkých značek a agentur." },
+  { title: "Ahrefs Brand Radar — nadstavba, ne samostatné řešení", desc: "Dává smysl hlavně tehdy, když Ahrefs už platíte kvůli klasickému SEO. Za samotné AI funkce vychází dráž než specializované trackery." },
+]} />
+
+Pokrytí se mění každých pár měsíců, takže **si ho před nákupem ověřte v aktuální dokumentaci nástroje** — a hlavně si ověřte, jak si poradí s českými dotazy. To je věc, kterou žádný z těchto nástrojů nemá jako prioritu. Proč vůbec sledovat každou platformu zvlášť, rozebíráme v článku o tom, [jak AI vybírá zdroje](/blog/jak-ai-cituje-zdroje/).
 
 ## Pro český trh
 
