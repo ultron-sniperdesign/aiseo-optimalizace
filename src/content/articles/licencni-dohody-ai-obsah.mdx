@@ -1,0 +1,135 @@
+---
+title: "AI licence a spory o data: co z nich plyne pro web"
+description: "V jednom sporu z roku 2026 nešlo jádro procesní debaty o copyright, ale o podmínky přístupu. Co z toho plyne pro web, který licenci uzavřít nemůže."
+answer: "Ve veřejně známých dohodách o datech pro AI zatím dominují velké platformy s mimořádným objemem nebo jedinečností dat. Pro malý web je zajímavější, na čem stojí konkrétní americký spor Redditu s Anthropicem: nároky tam nejsou postavené na autorském právu, ale na podmínkách přístupu. A blokace jednoho robota nemusí uzavřít všechny cesty k obsahu."
+slug: "licencni-dohody-ai-obsah"
+category: "analysis"
+tags:
+  - "strategie"
+  - "technicke-zaklady"
+published: "2026-07-27"
+updated: "2026-07-27"
+keywords:
+  - "licenční dohody ai obsah"
+  - "ai scraping žaloba"
+  - "reddit anthropic spor"
+  - "licencování obsahu pro ai"
+  - "podmínky užití a ai roboti"
+variant: "rich"
+stats:
+  - value: "0 z 5"
+    label: "nároků v Redditím sporu s Anthropicem stojí na autorském právu"
+  - value: "5 nároků"
+    label: "smlouva, bezdůvodné obohacení, zásah do věci, narušení vztahu, nekalá soutěž"
+  - value: "obchvat"
+    label: "blokace robota nemusí stačit — obsah jde získat i z indexu vyhledávače"
+  - value: "nepočítat s tím"
+    label: "licenční příjem z AI není pro menší web realistický scénář"
+faq:
+  - q: "Můžu svůj obsah licencovat AI firmám?"
+    a: "Není realistické s tím počítat, pokud nejste platforma s obrovským objemem obsahu. Veřejně známé dohody zatím ukazují trh pro velmi velké a jedinečné datasety, ne pro běžný firemní web nebo blog. Plánovat licenční příjem jako běžný kanál proto nedává smysl."
+  - q: "Chrání mě autorské právo před použitím obsahu v AI?"
+    a: "Může, ale tenhle článek to nevyhodnocuje a jedno americké procesní rozhodnutí na to obecnou odpověď nedává; v Česku to posoudí jedině právník. Zajímavé je jen to, na čem stojí konkrétní spor: v Redditím sporu s Anthropicem soud konstatoval, že žádný z uplatněných nároků neodpovídá právům podle amerického autorského zákona. Reddit žaluje na porušení smlouvy, bezdůvodné obohacení, zásah do věci, narušení smluvního vztahu a nekalou soutěž."
+  - q: "Stačí zablokovat AI robota v robots.txt?"
+    a: "Nemusí. V žalobě na Perplexity Reddit tvrdí, že když byl přímý přístup zablokovaný, obsah se získával nepřímo přes indexované výsledky Googlu. Pokud to tak bylo, znamená to, že blokace konkrétního robota nemusí uzavřít všechny cesty — u obsahu dostupného přes vyhledávač může existovat nepřímá cesta, kterou samotná blokace neřeší."
+  - q: "Jsou ty spory už rozhodnuté?"
+    a: "Nejsou. To, co je z veřejných zdrojů známé, je procesní vývoj: spor Redditu s Anthropicem byl v roce 2026 vrácen kalifornskému státnímu soudu, protože nároky nejsou předběhnuté federálním autorským právem. Vrácení k jinému soudu ale není rozhodnutí ve věci samé a nedá se z něj vyvozovat, kdo vyhraje."
+  - q: "Co s tím může udělat malý český web?"
+    a: "Rozhodnutí je užší, než by se z titulků zdálo: buď obsah pro AI roboty otevřít a hrát o citace, nebo ho omezit a počítat se ztrátou viditelnosti, případně obojí kombinovat podle typu stránek. Žalovat velkou AI firmu není reálná varianta kvůli nákladům a jurisdikci."
+  - q: "Mají podmínky užití na webu vůbec nějaký smysl?"
+    a: "Ve sporech, o kterých je řeč, jsou jednou z vrstev argumentace. Samy o sobě ale nezaručují závaznost ani vymahatelnost vůči každému, kdo na web přistoupí — a jestli mají stejnou váhu podle českého práva, je otázka na právníka, ne na SEO článek. Jako signál záměru stojí za to je mít formulované."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+## Licence se řeší jinde, než si většina webů myslí
+
+**Ve veřejně známých dohodách o datech pro AI zatím dominují velké platformy s mimořádným objemem nebo jedinečností dat.** Pro malý web je zajímavější, na čem stojí konkrétní americký spor Redditu s Anthropicem: nároky tam nejsou postavené na autorském právu, ale na podmínkách přístupu. A blokace jednoho robota nemusí uzavřít všechny cesty k obsahu.
+
+**Konkrétní čísla velkých dohod — kolik Reddit dostal od Googlu a OpenAI — má [AI citace z Redditu](/blog/ai-citace-reddit/).** Tenhle článek se jimi nezabývá. Zajímá ho, **co z toho sporu plyne pro web, který žádnou licenční smlouvu uzavřít nemůže**, a proč je ta odpověď jiná, než se čeká.
+
+<Insight tone="warn" label="Tohle není právní rada">
+Popisuji americké spory podle kalifornského práva. **České právo je jiné** a nic z toho tady neříká, jaké nároky má český web nebo jak by uspěl. Pokud řešíte konkrétní případ, patří to právníkovi. Smyslem článku je ukázat, **na čem stojí argumentace v tom konkrétním sporu** — protože je jiná, než se u témat kolem AI a obsahu čeká.
+</Insight>
+
+## Co ukázal rok 2026: v tomhle kroku nešlo o copyrightové nároky
+
+Spor Redditu s Anthropicem byl v roce 2026 vrácen z federálního soudu zpět kalifornskému státnímu soudu. Odůvodnění je zajímavější než samotný přesun: soud uzavřel, že **žádný z uplatněných nároků neuplatňuje práva rovnocenná těm podle amerického autorského zákona**, takže je autorský zákon nepředbíhá.
+
+Jinými slovy — v tomhle sporu Reddit neuplatňuje nárok za zkopírování díla. Uplatňuje nároky za to, jak se k obsahu přistupovalo:
+
+<Checklist tone="seo" title="Pět nároků, na kterých spor stojí" items={[
+  { title: "Porušení smlouvy", desc: "Podmínky užití platformy stanovily, jak a k jakému účelu se smí obsah načítat." },
+  { title: "Bezdůvodné obohacení", desc: "Prospěch z obsahu bez protiplnění, které si jiní zaplatili licencí." },
+  { title: "Zásah do věci", desc: "Zatížení serverů a obcházení technických opatření." },
+  { title: "Narušení smluvního vztahu", desc: "Zásah do vztahu mezi platformou a jejími uživateli." },
+  { title: "Nekalá soutěž", desc: "Podle kalifornského předpisu o nekalých obchodních praktikách." },
+]} />
+
+**Co z toho plyne pro majitele webu:** v tomhle sporu staví Reddit argumentaci hlavně na podmínkách přístupu a údajném obcházení pravidel, ne na autorskoprávních nárocích. Je to signál, že **samotné autorství nemusí být jediná rovina sporu** — ne že podmínky užití samy o sobě stačí nebo že copyright nehraje roli.
+
+<Insight tone="accent">
+Neznamená to, že autorské právo je bezcenné, ani že tenhle výklad vydrží. **Je to procesní rozhodnutí v jednom sporu, ne pravidlo.** Soud tím nepotvrdil skutková tvrzení Redditu, nerozhodl, že podmínky užití byly porušeny, ani že ty nároky obstojí po meritorní stránce — řekl jen, že je federální autorské právo zatím nevytlačilo. Stojí za pozornost proto, že ukazuje, kudy se argumentace reálně vede, když má jít o peníze.
+</Insight>
+
+## Obchvat: blokace jednoho robota nemusí stačit
+
+Druhá věc, kterou naznačuje související žalobní argumentace, je praktičtější. V žalobě na Perplexity — podané spolu s žalobou na tři firmy zabývající se sběrem dat — Reddit tvrdí, že **když byl přímý přístup zablokovaný, obsah se získával nepřímo přes indexované výsledky Googlu.**
+
+To přímo kvalifikuje běžnou radu „nechcete tam být, tak robota zablokujte“:
+
+<CompareTable
+  leftLabel="Co blokace robota řeší"
+  leftTone="seo"
+  rightLabel="Co neřeší"
+  rightTone="accent"
+  rows={[
+    { icon: "🚧", label: "Přímý přístup", left: "Robot, který se identifikuje, na váš web nepřijde", right: "Nezaručuje, že se obsah k té AI nedostane jinudy" },
+    { icon: "🔎", label: "Index vyhledávače", left: "Nic — obsah v indexu tam zůstává", right: "Podle žaloby může dostupnost přes vyhledávač oslabit účinek blokace přímého přístupu" },
+    { icon: "📄", label: "Kopie jinde", left: "Nic — přetisky, agregátory, citace na cizích webech", right: "Ty mají vlastní pravidla a vy je neřídíte" },
+    { icon: "⚖️", label: "Právní rovina", left: "Zakládá porušení vašich pravidel, když je někdo obejde", right: "Samo o sobě nic nevymáhá" },
+  ]}
+/>
+
+Souvisí to s tím, co má web napsané jinde: **[robots.txt je žádost, ne zámek](/blog/ai-crawler-robots-txt/).** Redditovo tvrzení o nepřímé cestě tuhle větu doplňuje o druhé patro: i když žádost někdo respektuje, obsah může být dostupný cestou, kterou neřídíte.
+
+## Co z toho reálně plyne pro český web
+
+Tady je poctivá část. Titulky o stamilionových dohodách svádějí k představě, že se otevírá nový příjem z obsahu. **Pro menší web není realistické s takovým příjmem počítat.** Veřejně známé dohody zatím míří na datasety, jejichž hodnota je v objemu a jedinečnosti.
+
+Reálná sada možností je proto užší:
+
+<Checklist tone="aeo" title="Tři možnosti, které skutečně máte" items={[
+  { title: "Otevřít a hrát o citace", desc: "Pustit vyhledávací roboty a soustředit se na to, aby vás AI odpovědi uváděly jako zdroj. Většina obsahových webů skončí tady." },
+  { title: "Omezit a počítat se ztrátou", desc: "Zablokovat, co jde, a přijmout nižší viditelnost. Dává smysl u obsahu, jehož hodnota je v tom, že je za přihlášením nebo placený." },
+  { title: "Kombinovat podle typu stránek", desc: "Otevřít informační obsah, chránit to, co má samo o sobě tržní hodnotu. Nastavení řeší články o robotech a Cloudflare." },
+]} />
+
+Postupy k první i druhé variantě má web popsané: [které AI crawlery povolit](/blog/ai-crawler-robots-txt/), [blokace přes Cloudflare](/blog/cloudflare-ai-bot-blocking/) a [přepínač v Search Console](/blog/blokovat-ai-odpovedi-gsc/). Čtvrtá možnost — soudit se s velkou AI firmou — reálná není: rozhoduje cena sporu a jurisdikce, ne to, kdo má pravdu.
+
+## Časté omyly
+
+<MistakeGrid>
+  <Mistake num="01" title="Plánovat licenční příjem z AI" fix="Počítejte s tím, že nepřijde; hodnotu hledejte v citacích a značce.">
+    Veřejně známé dohody zatím kupují objem a jedinečnost dat. Pár set článků takovou poptávku nevytváří.
+  </Mistake>
+  <Mistake num="02" title="Předpokládat, že se všechno vyřeší autorským právem" fix="Počítejte s tím, že roviny je víc — a konkrétní případ patří právníkovi.">
+    V americkém sporu, o kterém je řeč, soud konstatoval, že uplatněné nároky autorskému právu neodpovídají. Neznamená to, že copyright neplatí ani že podmínky přístupu stačí — jen že rovin je víc, než se čeká.
+  </Mistake>
+  <Mistake num="03" title="Považovat blokaci robota za konec věci" fix="Počítejte s nepřímou cestou přes index a kopie na cizích webech.">
+    Žaloba staví na tom, že dostupnost přes vyhledávač může oslabit účinek blokace přímého přístupu.
+  </Mistake>
+  <Mistake num="04" title="Číst procesní rozhodnutí jako výsledek sporu" fix="Vrácení k jinému soudu neříká, kdo vyhraje.">
+    Zatím není rozhodnuto ve věci samé. Kdo si z toho dělá závěry o výsledku, předbíhá.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho vzít
+
+Zprávy o licenčních dohodách jsou zprávy o platformách, ne o vašem webu. **Užitečné je sledovat, že se v konkrétních sporech vedle autorského práva řeší i podmínky přístupu a způsob, jakým se obsah získal** — a že blokace jednoho robota nemusí uzavřít všechny cesty.
+
+Pro běžný web z toho plyne jednoduchý závěr: **licencování dnes není realistický základ strategie.** Není to ale ani tvrdé dilema otevřít versus zavřít — u většiny webů jde o kombinaci distribuce, technických omezení a priorit podle typu obsahu. Vodítko zůstává stejné: má ta stránka hodnotu sama o sobě, nebo hlavně jako cesta k vám?
