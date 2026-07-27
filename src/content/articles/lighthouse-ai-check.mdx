@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "audit-nastroje"
 published: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-07-27"
 keywords:
   - "lighthouse ai check"
   - "lighthouse agentic browsing"
@@ -163,6 +163,33 @@ Existují tři cesty, jak audit spustit. Doporučená je Chrome DevTools.
     },
   ]}
 />
+
+## Stav návrhu WebMCP k červenci 2026
+
+Z celé kategorie je WebMCP jediná kontrola postavená na standardu, který ještě neexistuje. Stojí za to vědět, kde přesně je — rozhoduje to o tom, jestli má smysl cokoli plánovat.
+
+<Checklist title="Časová osa návrhu" items={[
+  { title: "Září 2025 — přijetí návrhu", desc: "Návrh formálně přijala W3C Web Machine Learning Community Group. Community Group je ve W3C otevřené diskuzní těleso, do kterého se může přihlásit kdokoli — není to formální standardizační trať a její výstupy nemají statut doporučení W3C." },
+  { title: "Únor 2026 — draft Community Group Report", desc: "Skupina publikovala draft zprávy s popisem navrhované specifikace." },
+  { title: "Únor 2026 — preview v Chrome Canary", desc: "Google vydal náhled ve vývojářské verzi Chrome; na návrhu spolupracuje s Microsoftem v rámci diskuse v téže Community Group." },
+  { title: "Druhá polovina 2026 — cíl", desc: "Nativní podpora v Chrome a Edge je zatím cílený termín, ne oznámené vydání." },
+]} />
+
+<Insight tone="warn">
+**Draft Community Group Report není ratifikovaný standard** a preview ve vývojářské verzi prohlížeče není podpora ve stabilním. Obojí se ještě může změnit nebo neprosadit. Kdo dnes plánuje implementaci na produkci, plánuje na pohyblivý cíl — a proto tady žádný návod na implementaci není.
+</Insight>
+
+### Dvě poloviny návrhu — a co to dělá s odhadem práce
+
+Podle dosud publikovaného návrhu má protokol dvě části. **Deklarativní** má stavět na běžných prvcích stránky a formulářích, které se tím stanou použitelnou schopností pro agenta. **Imperativní** je JavaScript API, kterým web vystaví vlastní funkcionalitu jako volatelný nástroj.
+
+To zpřesňuje doporučení výše: **náročná je hlavně ta imperativní půlka.** Pokud deklarativní část opravdu zůstane postavená na prvcích, které dobře udělaný web už má, nemusí jít o nový projekt. Zdůrazňuji „pokud" — ověřit se to dá až na hotové specifikaci a reálné implementaci, takže pořadí oprav zatím neměním.
+
+### Co WebMCP nahrazuje
+
+Bez tohohle kontrastu není vidět, proč vzniká. Agenti dnes weby obsluhují naslepo: udělají si obrázek stránky a simulují kliknutí, jako by byli člověk. Rozbije to změna rozvržení, jiné rozlišení nebo přesunuté tlačítko — a web o té interakci vůbec neví.
+
+Návrh počítá s opačným režimem: **stránka sama deklaruje, co u ní jde udělat**, a agent volá popsanou akci místo hádání ze souřadnic. Vedlejší efekt je zajímavější než technika — web tím dostává v té interakci hlas. Může nabídnout tři akce a nic víc.
 
 ## V jakém pořadí opravovat neúspěšné kontroly
 
