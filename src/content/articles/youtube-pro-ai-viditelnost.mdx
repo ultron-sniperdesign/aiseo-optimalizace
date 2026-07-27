@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **YouTube patří podle analýz 2026 k nejcitovanějším zdrojům v AI vyhledávání — a klíčové je vědět, že většina AI systémů video nepřehrává a místo toho pracuje s přepisem, popisem a kapitolami.** Cesta k citaci proto vede přes text okolo videa, ne přes obraz. Tento návod ukazuje, jak přepisem, kapitolami, popisem a strukturovanými daty udělat video, které AI dokáže citovat.
 
@@ -159,24 +161,26 @@ Rychlý přehled, kde jednotlivé prvky umístit a proč na nich AI záleží.
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Nahrávat editovaný, opravený přepis ke každému videu.",
-    "Dělit video na kapitoly s časovými značkami.",
-    "Psát popis jako abstrakt s přímou odpovědí nahoře.",
-    "Doplnit VideoObject a publikovat přepis i na vlastním webu.",
-    "Ověřovat citace ručním testem v ChatGPT, Perplexity a Google AI.",
-  ]}
-  dontItems={[
-    "Spoléhat na automatické titulky bez kontroly.",
-    "Cpát do popisu jen hashtagy a odkazy.",
-    "Nechávat video jako jeden nedělený blok.",
-    "Optimalizovat jen obraz a estetiku záběrů.",
-    "Nechávat přepis výhradně na YouTube.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Nahrávat editovaný, opravený přepis ke každému videu.
+  - Dělit video na kapitoly s časovými značkami.
+  - Psát popis jako abstrakt s přímou odpovědí nahoře.
+  - Doplnit VideoObject a publikovat přepis i na vlastním webu.
+  - Ověřovat citace ručním testem v ChatGPT, Perplexity a Google AI.
+
+  </Do>
+  <Dont>
+
+  - Spoléhat na automatické titulky bez kontroly.
+  - Cpát do popisu jen hashtagy a odkazy.
+  - Nechávat video jako jeden nedělený blok.
+  - Optimalizovat jen obraz a estetiku záběrů.
+  - Nechávat přepis výhradně na YouTube.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

@@ -59,6 +59,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **GTIN je mezinárodně uznávaný jedinečný identifikátor produktu, který najdete na obalu u čárového kódu.** Ve feedu pomáhá systémům produkt jednoznačně zařadit, místo aby se poznával jen podle názvu. Ve feedu se posílá v atributu gtin a podle Googlu pomáhá jeho systémům produkt zařadit. Ne každý produkt ale GTIN má a vymýšlet ho nelze.
 
@@ -161,23 +163,29 @@ V Česku má e-shop typicky víc feedů naráz — vedle Merchant Center ještě
 
 **Není to návod na Merchant Center.** Článek je o datech, ne o proklikání rozhraní.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Doplňte GTIN tam, kde produkt identifikátor má",
-    "U produktů bez GTINu značku a katalogové číslo výrobce",
-    "Sjednoťte cenu, dostupnost a parametry napříč vrstvami",
-    "Ověřujte identifikátory přebrané od dodavatelů",
-    "Kontrolujte vzorek produktů pravidelně",
-  ]}
-  dontItems={[
-    "Vymýšlet identifikátor u produktu, který ho nemá",
-    "Nechat feed a stránku říkat každý něco jiného",
-    "Doplňovat do dat údaje, které na stránce nejsou",
-    "Spoléhat na jednorázové nastavení feedu",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Doplňte GTIN tam, kde produkt identifikátor má
+  - U produktů bez GTINu značku a katalogové číslo výrobce
+  - Sjednoťte cenu, dostupnost a parametry napříč vrstvami
+  - Ověřujte identifikátory přebrané od dodavatelů
+  - Kontrolujte vzorek produktů pravidelně
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Vymýšlet identifikátor u produktu, který ho nemá
+  - Nechat feed a stránku říkat každý něco jiného
+  - Doplňovat do dat údaje, které na stránce nejsou
+  - Spoléhat na jednorázové nastavení feedu
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

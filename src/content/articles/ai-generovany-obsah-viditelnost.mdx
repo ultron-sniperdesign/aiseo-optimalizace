@@ -45,6 +45,8 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Google podle své veřejné dokumentace posuzuje obsah především podle kvality a užitečnosti, ne podle toho, jestli ho psal člověk, nebo AI.** Riziko nepředstavuje nástroj, ale masově tvořený obsah bez přidané hodnoty, na který míří pravidla proti spamu. Tento rozbor shrnuje, co k tomu Google veřejně říká, kde je hranice a jaké vlastnosti obsahu často zvyšují nebo snižují šanci na citaci v AI odpovědích.
 
@@ -126,24 +128,26 @@ Rozdíl nedělá nástroj, ale vlastní vklad. Konkrétně:
 - **Aktuálnost** — viz [aktualizace obsahu pro AI](/blog/aktualizace-obsahu-pro-ai/).
 - **Struktura** — aby šla odpověď dohledat; viz [obsah pro AI](/blog/ai-seo-content/).
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Používat AI na rešerši, osnovu a první verzi.",
-    "Doplnit vlastní data a zkušenost z praxe.",
-    "Ověřovat čísla, jména a tvrzení.",
-    "Podepsat obsah skutečným autorem.",
-    "Publikovat jen text, který něco přidává.",
-  ]}
-  dontItems={[
-    "Generovat stovky stránek bez přidané hodnoty.",
-    "Publikovat neověřená fakta, hlavně u citlivých témat.",
-    "Vydávat přeříkání cizího za vlastní zkušenost.",
-    "Podepisovat texty vymyšleným autorem.",
-    "Spoléhat na to, že obecný text bez přínosu stačí.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Používat AI na rešerši, osnovu a první verzi.
+  - Doplnit vlastní data a zkušenost z praxe.
+  - Ověřovat čísla, jména a tvrzení.
+  - Podepsat obsah skutečným autorem.
+  - Publikovat jen text, který něco přidává.
+
+  </Do>
+  <Dont>
+
+  - Generovat stovky stránek bez přidané hodnoty.
+  - Publikovat neověřená fakta, hlavně u citlivých témat.
+  - Vydávat přeříkání cizího za vlastní zkušenost.
+  - Podepisovat texty vymyšleným autorem.
+  - Spoléhat na to, že obecný text bez přínosu stačí.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

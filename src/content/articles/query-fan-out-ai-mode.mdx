@@ -46,6 +46,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Query fan-out je podle Googlu a dostupných analýz způsob, kterým [Google AI Mode](/blog/google-ai-mode/) může jeden dotaz uživatele rozložit na víc souběžných podotázek, každou samostatně dohledat a z nalezených pasáží složit jednu odpověď s odkazy.** Pro viditelnost pak není důležitá jen jedna pozice na jedno klíčové slovo, ale i to, jestli váš obsah pokrývá některou z dílčích podotázek, na které se dotaz rozpadne. Níže rozebíráme, jak vějíř podotázek funguje, jaké typy podotázek se objevují a co z toho plyne pro obsah, který chce být v AI vidět.
 
@@ -167,24 +169,26 @@ Pokrývat porovnávací podotázky pomáhá zvlášť u nákupních témat — j
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Psát v samostatně srozumitelných úsecích, jeden odstavec na jednu otázku.",
-    "Dávat krátkou odpověď nebo definici na začátek sekce.",
-    "Pokrývat i implicitní podotázky (cena, srovnání, pro koho, jak začít).",
-    "Provazovat související stránky tematicky.",
-    "Měřit citace napříč variantami dotazu, ne jen pozici.",
-  ]}
-  dontItems={[
-    "Sázet všechno na jedno hlavní klíčové slovo.",
-    "Skládat obsah do dlouhých nedělených bloků.",
-    "Spoléhat na jednu stabilní pozici jako na cíl.",
-    "Řešit jen doslovnou otázku a ignorovat vedlejší.",
-    "Předpokládat, že vějíř je jen Google — testujte i ostatní platformy.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Psát v samostatně srozumitelných úsecích, jeden odstavec na jednu otázku.
+  - Dávat krátkou odpověď nebo definici na začátek sekce.
+  - Pokrývat i implicitní podotázky (cena, srovnání, pro koho, jak začít).
+  - Provazovat související stránky tematicky.
+  - Měřit citace napříč variantami dotazu, ne jen pozici.
+
+  </Do>
+  <Dont>
+
+  - Sázet všechno na jedno hlavní klíčové slovo.
+  - Skládat obsah do dlouhých nedělených bloků.
+  - Spoléhat na jednu stabilní pozici jako na cíl.
+  - Řešit jen doslovnou otázku a ignorovat vedlejší.
+  - Předpokládat, že vějíř je jen Google — testujte i ostatní platformy.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

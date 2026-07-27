@@ -46,6 +46,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Reddit patří podle souhrnných analýz 2025–2026 mezi nejcitovanější zdroje napříč velkými AI modely a v agregaci dosahuje podílu kolem 40 % citací. Výsledek se ale liší podle modelu a typu dotazu.** Za tím nestojí náhoda, ale kombinace placených licenčních dohod, obsahu z osobních zkušeností a struktury, která se v marketingu těžko napodobuje. Tento článek vysvětluje, proč to tak je, jaká jsou rizika a co může v českém prostředí realisticky dělat malá nebo střední firma.
 
@@ -145,24 +147,28 @@ Pokud chcete Reddit využít jako součást širší AI viditelnosti, jediná dl
   ]}
 />
 
-<DoDont
-  doTitle="Co dělat na Redditu"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Splnit pravidlo 90/10 — 90 % organické aktivity, max 10 % vlastní zmínky.",
-    "Číst pravidla každého subredditu předtím, než cokoli postnete.",
-    "Otevřeně přiznat spojení s firmou („Pracuju u XY“).",
-    "Odpovídat s konkrétními čísly, daty a osobní zkušeností.",
-    "Brát to jako dlouhodobou (12 a více měsíční) investici, ne krátkou kampaň.",
-  ]}
-  dontItems={[
-    "Vytvářet sekundární účty pro vlastní kladná hlasování nebo komentáře.",
-    "Vystupovat pod falešnou identitou nebo skrývat spojení s firmou.",
-    "Postit jen odkazy na vlastní web bez relevantní komunitní aktivity.",
-    "Promovat zároveň napříč mnoha subreddity — může vést k omezení viditelnosti.",
-    "Spoléhat na Reddit jako jediný kanál pro AI viditelnost — je vysoce volatilní.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Co dělat na Redditu**
+
+  - Splnit pravidlo 90/10 — 90 % organické aktivity, max 10 % vlastní zmínky.
+  - Číst pravidla každého subredditu předtím, než cokoli postnete.
+  - Otevřeně přiznat spojení s firmou („Pracuju u XY“).
+  - Odpovídat s konkrétními čísly, daty a osobní zkušeností.
+  - Brát to jako dlouhodobou (12 a více měsíční) investici, ne krátkou kampaň.
+
+  </Do>
+  <Dont>
+
+  - Vytvářet sekundární účty pro vlastní kladná hlasování nebo komentáře.
+  - Vystupovat pod falešnou identitou nebo skrývat spojení s firmou.
+  - Postit jen odkazy na vlastní web bez relevantní komunitní aktivity.
+  - Promovat zároveň napříč mnoha subreddity — může vést k omezení viditelnosti.
+  - Spoléhat na Reddit jako jediný kanál pro AI viditelnost — je vysoce volatilní.
+
+  </Dont>
+</DoDont>
 
 ## Reddit versus LinkedIn pro českou firmu
 

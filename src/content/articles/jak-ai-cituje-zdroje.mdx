@@ -47,6 +47,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Každá velká AI platforma vybírá a cituje zdroje jinak. ChatGPT preferuje autoritativní encyklopedický obsah a cituje méně často, Perplexity klade velký důraz na čerstvost a zdroje uvádí obvykle s odkazy, Google AI Overviews staví na indexu Vyhledávání Google a signálech autority.** Podle veřejných analýz 2026 se citované domény mezi ChatGPT a Perplexity překrývají jen z malé části, takže nestačí optimalizace jen pro jednu platformu. Tento článek srovnává, podle čeho jednotlivé platformy zdroje vybírají, a co z toho plyne pro obsah, který chce být citovaný.
 
@@ -174,24 +176,26 @@ I když se platformy liší, existuje **univerzální základ**, který pomáhá
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Stavět na univerzálním základu: kvalitní obsah, struktura, strukturovaná data, autorita.",
-    "Doplnit platformová specifika (čerstvost pro Perplexity, encyklopedičnost pro ChatGPT).",
-    "Pravidelně aktualizovat a datovat obsah.",
-    "Testovat citace v každé platformě zvlášť.",
-    "Brát konkrétní čísla z analýz jako orientační směr.",
-  ]}
-  dontItems={[
-    "Předpokládat, že co funguje na ChatGPT, funguje i na Perplexity.",
-    "Optimalizovat jen na jednu platformu.",
-    "Spoléhat na pozici v Googlu jako záruku citace v AI Overviews.",
-    "Nechat obsah roky bez aktualizace.",
-    "Považovat marketingová procenta za přesná a neměnná fakta.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Stavět na univerzálním základu: kvalitní obsah, struktura, strukturovaná data, autorita.
+  - Doplnit platformová specifika (čerstvost pro Perplexity, encyklopedičnost pro ChatGPT).
+  - Pravidelně aktualizovat a datovat obsah.
+  - Testovat citace v každé platformě zvlášť.
+  - Brát konkrétní čísla z analýz jako orientační směr.
+
+  </Do>
+  <Dont>
+
+  - Předpokládat, že co funguje na ChatGPT, funguje i na Perplexity.
+  - Optimalizovat jen na jednu platformu.
+  - Spoléhat na pozici v Googlu jako záruku citace v AI Overviews.
+  - Nechat obsah roky bez aktualizace.
+  - Považovat marketingová procenta za přesná a neměnná fakta.
+
+  </Dont>
+</DoDont>
 
 Jak zjistit, jak vás která platforma cituje, ukazujeme krok za krokem v článku [Jak zjistit AI viditelnost](/blog/test-viditelnosti-v-ai/).
 

@@ -46,6 +46,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **FAQ rich results byly rozšířené výsledky s rozklikávacími otázkami a odpověďmi přímo ve Vyhledávání Google — a Google jejich zobrazování 7. května 2026 ukončil.** FAQPage markup ale zůstává platný a Google ho podle veřejné dokumentace dál zpracovává, aby porozuměl stránce; strukturované otázky a odpovědi mohou být použitelné i pro AI systémy. Skončil jen zobrazovací prvek, ne hodnota strukturovaných dat. Tento článek vysvětluje, co se přesně stalo, proč markup ve většině případů nechat a kdy ho naopak odstranit.
 
@@ -133,24 +135,26 @@ Ve veřejné dokumentaci Googlu je změna komunikovaná jako ukončení a k lét
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Nechat FAQPage markup tam, kde sedí s viditelným obsahem.",
-    "Ověřit, jestli FAQ sekce reálně odpovídá na dotazy uživatelů.",
-    "Držet markup v souladu s tím, co je na stránce vidět.",
-    "Psát krátké jasné odpovědi, které AI snadno převezme.",
-    "Brát strukturovaná data jako pomoc porozumění, ne jako dekoraci výsledků vyhledávání.",
-  ]}
-  dontItems={[
-    "Plošně mazat všechna FAQ v panice.",
-    "Nechávat markup pro obsah, který na stránce není.",
-    "Spoléhat na návrat rich results.",
-    "Přidávat tenké FAQ jen kvůli rozšířenému výsledku.",
-    "Považovat samotný markup za záruku viditelnosti.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Nechat FAQPage markup tam, kde sedí s viditelným obsahem.
+  - Ověřit, jestli FAQ sekce reálně odpovídá na dotazy uživatelů.
+  - Držet markup v souladu s tím, co je na stránce vidět.
+  - Psát krátké jasné odpovědi, které AI snadno převezme.
+  - Brát strukturovaná data jako pomoc porozumění, ne jako dekoraci výsledků vyhledávání.
+
+  </Do>
+  <Dont>
+
+  - Plošně mazat všechna FAQ v panice.
+  - Nechávat markup pro obsah, který na stránce není.
+  - Spoléhat na návrat rich results.
+  - Přidávat tenké FAQ jen kvůli rozšířenému výsledku.
+  - Považovat samotný markup za záruku viditelnosti.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

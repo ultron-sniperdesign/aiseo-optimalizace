@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Článek o značce na Wikipedii dává smysl hlavně tehdy, když o firmě už podstatně psala nezávislá média. Wikipedie patří podle dostupných analýz mezi nejcitovanější zdroje v AI odpovědích — v některých analýzách odpovědí ChatGPT z let 2025–2026 měla podíl okolo 47,9 % mezi nejcitovanějšími doménami.** Samotná významnost firmy se ale tím nevytváří, jen se zachycuje. Tento návod ukazuje, kdy má smysl o článek usilovat, jak postupovat a kdy raději investovat jinam.
 
@@ -114,22 +116,24 @@ Pokud editor článek píše za zaměstnání, jako majitel firmy nebo jako naja
 
 **Důsledky nesplnění:** Wikimedia projekty pravidelně řeší případy nezveřejněné placené editace a sankce mohou vést až k blokaci účtu — podle veřejných shrnutí jdou ročně do stovek. Wikipedie má aktivní tým dobrovolníků a správců, kteří hlídají problematické editace; účty založené jen kvůli propagaci jedné značky bývají rychle podezřelé a často přitahují kontrolu.
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Napsat na vaší uživatelské stránce šablonu Paid (s informací o klientovi nebo zaměstnavateli).",
-    "Předložit návrh přes Articles for Creation a nechat nezávislé editory schválit.",
-    "Na diskusní stránce navrhovat změny a nechat nezávislé editory je provést.",
-    "Reagovat na otázky reviewerů věcně a doložit tvrzení nezávislými zdroji.",
-  ]}
-  dontItems={[
-    "Editovat přímo článek bez přiznání, když jste se subjektem spojení.",
-    "Skrýt provázanost s firmou pod anonymní účet — Wikipedie má vzorové detekce.",
-    "Mazat negativní fakta jen proto, že jsou negativní (pokud jsou podložená).",
-    "Předkládat návrh bez nezávislých referencí a doufat, že projde.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Napsat na vaší uživatelské stránce šablonu Paid (s informací o klientovi nebo zaměstnavateli).
+  - Předložit návrh přes Articles for Creation a nechat nezávislé editory schválit.
+  - Na diskusní stránce navrhovat změny a nechat nezávislé editory je provést.
+  - Reagovat na otázky reviewerů věcně a doložit tvrzení nezávislými zdroji.
+
+  </Do>
+  <Dont>
+
+  - Editovat přímo článek bez přiznání, když jste se subjektem spojení.
+  - Skrýt provázanost s firmou pod anonymní účet — Wikipedie má vzorové detekce.
+  - Mazat negativní fakta jen proto, že jsou negativní (pokud jsou podložená).
+  - Předkládat návrh bez nezávislých referencí a doufat, že projde.
+
+  </Dont>
+</DoDont>
 
 ## Praktický postup krok za krokem
 

@@ -46,6 +46,8 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **AI nákupní agent je systém, který za uživatele vyhledá a porovná produkty a zkracuje cestu od dotazu k výběru.** Místo dlouhého seznamu e-shopů dostane zákazník užší porovnání, takže roste význam dobře popsaných produktových dat — cena, dostupnost, značka a identifikátor. V Česku jde přitom zatím spíš o přípravu než o významný zdroj objednávek.
 
@@ -125,24 +127,26 @@ Rozpor, na který se dá narazit často: e-shop blokuje AI roboty v robots.txt a
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Doplnit značku a identifikátor tam, kde chybí.",
-    "Držet cenu a dostupnost ve strukturovaných datech aktuální.",
-    "Sjednotit produktový datový soubor se stránkou.",
-    "Zvážit, které AI roboty blokuji, pokud chci zvýšit šanci, že systémy moje data použijí.",
-    "Sledovat, jestli návštěvnost z AI vůbec roste.",
-  ]}
-  dontItems={[
-    "Vymýšlet hodnocení nebo dostupnost.",
-    "Nechat datový soubor a stránku rozejít se.",
-    "Blokovat AI roboty a čekat viditelnost v AI.",
-    "Nákladně přestavovat e-shop kvůli něčemu, co zatím nepřináší objednávky.",
-    "Věřit tvrzením o tom, jak přesně agenti vybírají.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Doplnit značku a identifikátor tam, kde chybí.
+  - Držet cenu a dostupnost ve strukturovaných datech aktuální.
+  - Sjednotit produktový datový soubor se stránkou.
+  - Zvážit, které AI roboty blokuji, pokud chci zvýšit šanci, že systémy moje data použijí.
+  - Sledovat, jestli návštěvnost z AI vůbec roste.
+
+  </Do>
+  <Dont>
+
+  - Vymýšlet hodnocení nebo dostupnost.
+  - Nechat datový soubor a stránku rozejít se.
+  - Blokovat AI roboty a čekat viditelnost v AI.
+  - Nákladně přestavovat e-shop kvůli něčemu, co zatím nepřináší objednávky.
+  - Věřit tvrzením o tom, jak přesně agenti vybírají.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

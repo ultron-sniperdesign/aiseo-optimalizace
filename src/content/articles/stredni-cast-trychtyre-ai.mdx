@@ -47,6 +47,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Střední část trychtýře v AI éře je fáze, kde uživatel porovnává možnosti a vybírá řešení — a právě sem se přesouvá těžiště rozhodování.** Protože AI Overviews odpovídají na informační dotazy přímo, horní část trychtýře ztrácí prokliky a hodnota se posouvá od obsahu „co je X" k obsahu „které X je pro mě nejlepší" a k tomu, jestli vás AI zmíní jménem. Tento článek popisuje, co se s trychtýřem děje a kde dnes vzniká větší hodnota.
 
@@ -116,24 +118,26 @@ Dává smysl horní trychtýř neopouštět úplně, ale přerozdělit část en
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Přesunout část energie do srovnávacího a rozhodovacího obsahu.",
-    "Usilovat o jmenovitou zmínku v AI odpovědích.",
-    "Udržet kvalitní informační základ pro autoritu a citace.",
-    "Měřit citace, konverze a přínos do obchodních příležitostí, ne jen prokliky.",
-    "Posílit značku, recenze a důvěru.",
-  ]}
-  dontItems={[
-    "Sázet celou strategii na horní informační trychtýř.",
-    "Ignorovat srovnávací a rozhodovací dotazy.",
-    "Spokojit se s tím, že jste jen zdroj bez jmenovité zmínky.",
-    "Hodnotit AI kanál jen podle objemu návštěvnosti.",
-    "V panice smazat informační obsah, který dál buduje autoritu.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Přesunout část energie do srovnávacího a rozhodovacího obsahu.
+  - Usilovat o jmenovitou zmínku v AI odpovědích.
+  - Udržet kvalitní informační základ pro autoritu a citace.
+  - Měřit citace, konverze a přínos do obchodních příležitostí, ne jen prokliky.
+  - Posílit značku, recenze a důvěru.
+
+  </Do>
+  <Dont>
+
+  - Sázet celou strategii na horní informační trychtýř.
+  - Ignorovat srovnávací a rozhodovací dotazy.
+  - Spokojit se s tím, že jste jen zdroj bez jmenovité zmínky.
+  - Hodnotit AI kanál jen podle objemu návštěvnosti.
+  - V panice smazat informační obsah, který dál buduje autoritu.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

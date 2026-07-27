@@ -47,6 +47,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **RAG neboli generování rozšířené o vyhledávání (anglicky retrieval-augmented generation) je způsob, jak AI vyhledávání odpovídá: místo aby model čerpal jen z tréninku, nejdřív si k dotazu dohledá relevantní úseky obsahu z indexu a z nich složí odpověď s odkazy.** Podle veřejných popisů na tomto principu fungují i [Google AI Overviews a AI Mode](/blog/google-ai-mode/) nad indexem Vyhledávání — takže klasické SEO a indexovatelnost dál hrají velkou roli. Tento článek vysvětluje, jak RAG funguje a co z toho plyne pro obsah, který chce být v AI vidět.
 
@@ -136,24 +138,26 @@ Nejdůležitější závěr: **když AI dohledává z indexu Vyhledávání, kla
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Držet web indexovatelný a technicky v pořádku.",
-    "Psát tematicky souvisle a pokrývat význam dotazů.",
-    "Dělit obsah na krátké samostatně srozumitelné úseky.",
-    "Podkládat tvrzení daty a psát jasné odpovědi.",
-    "Udržovat obsah čerstvý, ať se dostane do živého indexu.",
-  ]}
-  dontItems={[
-    "Spoléhat, že si vás AI zapamatuje i bez dohledatelného obsahu.",
-    "Cpát klíčová slova místo pokrytí významu.",
-    "Skládat obsah do dlouhých nedělených bloků.",
-    "Publikovat vágní tvrzení bez opory.",
-    "Považovat AI vyhledávání za důvod přestat s SEO.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Držet web indexovatelný a technicky v pořádku.
+  - Psát tematicky souvisle a pokrývat význam dotazů.
+  - Dělit obsah na krátké samostatně srozumitelné úseky.
+  - Podkládat tvrzení daty a psát jasné odpovědi.
+  - Udržovat obsah čerstvý, ať se dostane do živého indexu.
+
+  </Do>
+  <Dont>
+
+  - Spoléhat, že si vás AI zapamatuje i bez dohledatelného obsahu.
+  - Cpát klíčová slova místo pokrytí významu.
+  - Skládat obsah do dlouhých nedělených bloků.
+  - Publikovat vágní tvrzení bez opory.
+  - Považovat AI vyhledávání za důvod přestat s SEO.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

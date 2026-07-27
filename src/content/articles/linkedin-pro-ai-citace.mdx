@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **LinkedIn patří podle dostupných analýz 2026 k často citovaným zdrojům v AI vyhledávání — u odborných a B2B dotazů bývá jedním z nejčastěji citovaných webů napříč ChatGPT, Perplexity i Google AI Mode.** Abyste z něj byli citovaní, nestačí mít profil: pomáhá originální odborný obsah, pravidelnost a přímé odpovědi na dotazy zákazníků. Tento návod ukazuje, co přesně AI z LinkedInu cituje a jak na tom pracovat.
 
@@ -176,24 +178,26 @@ Jak zmínky o značce fungují napříč platformami, rozebíráme v článku o 
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Psát originální odborné články na reálné dotazy zákazníků.",
-    "Publikovat přes firemní stránku i osobní profily týmu.",
-    "Dávat jasnou odpověď hned do úvodu příspěvku.",
-    "Držet pravidelnou kadenci několika příspěvků měsíčně.",
-    "Ověřovat citace ručním testem v ChatGPT, Perplexity a Google AI Mode.",
-  ]}
-  dontItems={[
-    "Jen sdílet cizí příspěvky bez vlastního obsahu.",
-    "Optimalizovat na lajky a dosah místo věcné relevance.",
-    "Publikovat nárazově a bez tématu.",
-    "Spoléhat jen na firemní stránku bez lidí z týmu.",
-    "Cpát do příspěvků produktové promo místo užitečných odpovědí.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Psát originální odborné články na reálné dotazy zákazníků.
+  - Publikovat přes firemní stránku i osobní profily týmu.
+  - Dávat jasnou odpověď hned do úvodu příspěvku.
+  - Držet pravidelnou kadenci několika příspěvků měsíčně.
+  - Ověřovat citace ručním testem v ChatGPT, Perplexity a Google AI Mode.
+
+  </Do>
+  <Dont>
+
+  - Jen sdílet cizí příspěvky bez vlastního obsahu.
+  - Optimalizovat na lajky a dosah místo věcné relevance.
+  - Publikovat nárazově a bez tématu.
+  - Spoléhat jen na firemní stránku bez lidí z týmu.
+  - Cpát do příspěvků produktové promo místo užitečných odpovědí.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

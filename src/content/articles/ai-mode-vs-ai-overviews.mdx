@@ -45,6 +45,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **AI Overviews je shrnutí nahoře na běžné stránce s výsledky, kde pod ním zůstávají odkazy. AI Mode je samostatný konverzační režim, ve kterém odpověď stojí sama a dá se doptávat.** Oba staví odpověď z více zdrojů, ale citují často jiné adresy, takže je nelze brát jako jeden povrch.
 
@@ -119,22 +121,28 @@ Závěr, který ze studie plyne bezpečně, je střízlivější než to číslo
 
 **Neslibuje přenos mezi povrchy.** Spíš naopak — dostupná analýza ukazuje, že se citace obou míst často rozcházejí.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Sledujte oba povrchy odděleně, ne jako jednu položku",
-    "Testujte opakovaně, s odstupem a na víc dotazech",
-    "Držte základ: jasná odpověď na dílčí otázku, dohledatelné podklady",
-    "U zahraničních čísel si hlídejte trh a datum sběru",
-  ]}
-  dontItems={[
-    "Vyvozovat z jednoho spuštění, že „to funguje\" nebo „nefunguje\"",
-    "Přepočítávat americká data na český web",
-    "Kupovat techniky slibované zvlášť na jeden povrch",
-    "Považovat citaci v jednom místě za důkaz o druhém",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Sledujte oba povrchy odděleně, ne jako jednu položku
+  - Testujte opakovaně, s odstupem a na víc dotazech
+  - Držte základ: jasná odpověď na dílčí otázku, dohledatelné podklady
+  - U zahraničních čísel si hlídejte trh a datum sběru
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Vyvozovat z jednoho spuštění, že „to funguje" nebo „nefunguje"
+  - Přepočítávat americká data na český web
+  - Kupovat techniky slibované zvlášť na jeden povrch
+  - Považovat citaci v jednom místě za důkaz o druhém
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

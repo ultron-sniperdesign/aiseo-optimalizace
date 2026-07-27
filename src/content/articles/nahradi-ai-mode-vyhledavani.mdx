@@ -45,6 +45,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Google AI Mode je konverzační režim vyhledávání, který běží nad stejným indexem jako běžné výsledky, ne vedle něj.** Otázka po nahrazení je proto spíš otázkou po rozhraní a prokliku než po zániku vyhledávání. Kolik dotazů se dnes přesouvá, se navíc nedá spolehlivě změřit.
 
@@ -128,22 +130,28 @@ Co dává smysl sledovat, není předpověď, ale vlastní čísla: podíl náv�
 
 **Pracuje i s vyjádřeními dodavatele.** Tvrzení Googlu jsou v textu označená jako jeho — popisují záměr, ne nezávislý dopad.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Sledujte vlastní čísla: podíl návštěv z asistentů a jejich kvalitu",
-    "U cizích tvrzení se ptejte, co přesně měří a kdo je zdroj",
-    "Držte společný základ — funguje pro obě rozhraní",
-    "Rozhodujte podle svých dat, ne podle titulků",
-  ]}
-  dontItems={[
-    "Číst růst hledanosti termínu jako důkaz adopce",
-    "Přesouvat rozpočet na základě predikcí",
-    "Slučovat všechny AI povrchy do jednoho tvrzení",
-    "Brát vyjádření dodavatele jako nezávislé měření",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Sledujte vlastní čísla: podíl návštěv z asistentů a jejich kvalitu
+  - U cizích tvrzení se ptejte, co přesně měří a kdo je zdroj
+  - Držte společný základ — funguje pro obě rozhraní
+  - Rozhodujte podle svých dat, ne podle titulků
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Číst růst hledanosti termínu jako důkaz adopce
+  - Přesouvat rozpočet na základě predikcí
+  - Slučovat všechny AI povrchy do jednoho tvrzení
+  - Brát vyjádření dodavatele jako nezávislé měření
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

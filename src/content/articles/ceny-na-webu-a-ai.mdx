@@ -58,6 +58,8 @@ import Stepper from "~/components/blocks/Stepper.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Cena na webu je pro AI nejčitelnější tehdy, když je na stránce napsaná jako text.** Údaj schovaný v obrázku, v PDF nebo za formulářem systém přečíst nemusí a může sáhnout po cizím nebo zastaralém zdroji. I tam, kde konkrétní číslo dát nejde, pomůže rozpětí, od-cena nebo popis toho, co cenu určuje.
 
@@ -170,24 +172,30 @@ Cena je jeden z údajů, které nejrychleji zastarávají. Když ji měníte, zm
 
 **Neřeší cenotvorbu ani právní stránku.** Uvádění cen vůči spotřebiteli, DPH, akční ceny — to má svoje pravidla a patří na to odborník.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Cenu, rozpětí nebo od-cenu napsanou jako text na stránce",
-    "Popis toho, co cenu určuje — hlavně u individuálních zakázek",
-    "Stejnou cenu na webu, v ceníku, na profilech i v katalozích",
-    "Strukturovaná data s hodnotami shodnými s viditelným textem",
-    "Aktualizaci všech míst naráz při každé změně ceny",
-  ]}
-  dontItems={[
-    "Cenu jen v obrázku, jen v PDF nebo až za formulářem",
-    "Od-cenu, za kterou si ve skutečnosti nikdo nic nekoupí",
-    "Strukturovaná data, která říkají něco jiného než stránka",
-    "Ceny, které se mezi webem a profily rozcházejí",
-    "Cenu na dotaz jako jedinou informaci na celé stránce",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Cenu, rozpětí nebo od-cenu napsanou jako text na stránce
+  - Popis toho, co cenu určuje — hlavně u individuálních zakázek
+  - Stejnou cenu na webu, v ceníku, na profilech i v katalozích
+  - Strukturovaná data s hodnotami shodnými s viditelným textem
+  - Aktualizaci všech míst naráz při každé změně ceny
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Cenu jen v obrázku, jen v PDF nebo až za formulářem
+  - Od-cenu, za kterou si ve skutečnosti nikdo nic nekoupí
+  - Strukturovaná data, která říkají něco jiného než stránka
+  - Ceny, které se mezi webem a profily rozcházejí
+  - Cenu na dotaz jako jedinou informaci na celé stránce
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

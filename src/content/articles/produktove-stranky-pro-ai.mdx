@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Produktová stránka pro AI potřebuje čtyři věci: strukturovaná data (Product, Offer, AggregateRating), přehledné parametry v tabulce, obsah odpovídající reálným dotazům kupujících a reálné recenze.** Nákupní dotazy se přesouvají do AI a u nich záleží, jestli AI dokáže z vaší produktové stránky spolehlivě přečíst cenu, dostupnost a hodnocení. Bez strukturovaných dat AI tyto údaje čte hůře a méně spolehlivě, takže se produkt může v nákupních odpovědích objevovat méně často. Tento návod ukazuje, co na produktovou stránku pro AI patří.
 
@@ -152,24 +154,26 @@ Strukturovaná data jsou technický základ. Aby ale AI produkt reálně použil
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Přidat Product a Offer na produktové stránky; pokud máte reálné recenze na stránce, doplnit AggregateRating a Review.",
-    "Doplnit GTIN, značku a hasMerchantReturnPolicy — pole, na kterých u AI záleží.",
-    "Uvést parametry strukturovaně v tabulce nebo seznamu.",
-    "Napsat vlastní obsah odpovídající reálným dotazům plus FAQ na produktu.",
-    "Zobrazit reálné recenze na stránce a napojit je na AggregateRating.",
-  ]}
-  dontItems={[
-    "Spoléhat jen na to, že AI přečte cenu a dostupnost z prostého HTML.",
-    "Vynechat GTIN a značku — produkt se pak hůř zařadí do srovnávacích odpovědí.",
-    "Kopírovat generický popis od výrobce beze změny.",
-    "Nechat strukturovaná data v nesouladu s viditelnou cenou.",
-    "Schovávat recenze za přihlášení — AI je nepřečte.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Přidat Product a Offer na produktové stránky; pokud máte reálné recenze na stránce, doplnit AggregateRating a Review.
+  - Doplnit GTIN, značku a hasMerchantReturnPolicy — pole, na kterých u AI záleží.
+  - Uvést parametry strukturovaně v tabulce nebo seznamu.
+  - Napsat vlastní obsah odpovídající reálným dotazům plus FAQ na produktu.
+  - Zobrazit reálné recenze na stránce a napojit je na AggregateRating.
+
+  </Do>
+  <Dont>
+
+  - Spoléhat jen na to, že AI přečte cenu a dostupnost z prostého HTML.
+  - Vynechat GTIN a značku — produkt se pak hůř zařadí do srovnávacích odpovědí.
+  - Kopírovat generický popis od výrobce beze změny.
+  - Nechat strukturovaná data v nesouladu s viditelnou cenou.
+  - Schovávat recenze za přihlášení — AI je nepřečte.
+
+  </Dont>
+</DoDont>
 
 ## Co to přináší
 

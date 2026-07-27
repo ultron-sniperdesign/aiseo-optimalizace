@@ -45,6 +45,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **AI Mode je konverzační režim vyhledávání, ve kterém odpověď stojí sama a organické výsledky vedle ní nejsou.** Pro e-shop se tím mění tvar příležitosti: nejde o pozici v seznamu, ale o to být jedním ze zdrojů, ze kterých se odpověď skládá. Rozhodují údaje, které zákazník řeší — cena, dostupnost, parametry.
 
@@ -126,22 +128,28 @@ Prakticky to znamená, že tvrzení „máme X návštěv z AI Mode" by dnes byl
 
 **Neřeší nákupní agenty obecně.** Na ty je [AI nákupní agenti a e-shopy](/blog/ai-nakupni-agenti/).
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Doplňte údaje, které zákazník při rozhodování řeší",
-    "Hlídejte shodu mezi stránkou a feedem",
-    "Přidejte k produktu to, co nemá popis od výrobce",
-    "Sledujte AI povrchy odděleně a opakovaně",
-  ]}
-  dontItems={[
-    "Vydávat zobrazení z AI Overviews za výsledky v AI Mode",
-    "Slibovat obrat z AI Mode — doložit se dnes nedá",
-    "Nechat cenu nebo dostupnost jen v obrázku",
-    "Vyvozovat závěr z jedné vyzkoušené odpovědi",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Doplňte údaje, které zákazník při rozhodování řeší
+  - Hlídejte shodu mezi stránkou a feedem
+  - Přidejte k produktu to, co nemá popis od výrobce
+  - Sledujte AI povrchy odděleně a opakovaně
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Vydávat zobrazení z AI Overviews za výsledky v AI Mode
+  - Slibovat obrat z AI Mode — doložit se dnes nedá
+  - Nechat cenu nebo dostupnost jen v obrázku
+  - Vyvozovat závěr z jedné vyzkoušené odpovědi
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

@@ -60,6 +60,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Originální data jsou vlastní průzkum, měření nebo analýza zveřejněná s jasnou metodikou. Pro AI citace bývají cenná, protože u konkrétních čísel obvykle potřebují AI systémy dohledatelný zdroj; bez něj je vyšší riziko chyby nebo necitovatelné odpovědi.** Patří mezi účinné způsoby, jak může malá nebo střední firma v roce 2026 zvýšit šanci, že se její web stane zdrojem pro AI odpovědi. Tento návod ukazuje, co se počítá za originální data, jak je vytvořit a jak je publikovat tak, aby se zvýšila šance na citaci.
 
@@ -170,24 +172,26 @@ Originální data nejsou jen pro velké korporace. Realistický rozsah se liší
 
 Sběr dat je jen polovina práce. Pro AI citace záleží také na tom, **jak je výzkum publikovaný**.
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Klíčové výsledky shrnout do úseků 50 až 150 slov hned v úvodu článku.",
-    "Metodiku popsat v samostatném boxu nebo v závěru: co, jak, na kom, kdy, jaký vzorek.",
-    "Nabídnout stažitelný soubor s daty (CSV, XLSX) nebo aspoň souhrn vzorku.",
-    "Použít strukturovaná data typu Dataset nebo Article s metadaty (autor, datum, organizace).",
-    "Naplánovat aktualizaci nebo roční opakování průzkumu už při prvním vydání.",
-  ]}
-  dontItems={[
-    "Schovat klíčová čísla na konec dlouhého textu — AI a čtenáři je nenajdou.",
-    "Publikovat bez metodiky — pro AI je to méně důvěryhodné a pro novináře neúnosné.",
-    "Použít vágní formulace („přibližně polovina firem“, „většina trhu“) místo konkrétních čísel.",
-    "Nechat datový soubor bez popisu a bez datace — za pár měsíců nikdo nepozná, kdy a jak vznikl.",
-    "Publikovat jednou a nikdy víc — bez aktualizace stránka v čase ztrácí podíl AI citací.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Klíčové výsledky shrnout do úseků 50 až 150 slov hned v úvodu článku.
+  - Metodiku popsat v samostatném boxu nebo v závěru: co, jak, na kom, kdy, jaký vzorek.
+  - Nabídnout stažitelný soubor s daty (CSV, XLSX) nebo aspoň souhrn vzorku.
+  - Použít strukturovaná data typu Dataset nebo Article s metadaty (autor, datum, organizace).
+  - Naplánovat aktualizaci nebo roční opakování průzkumu už při prvním vydání.
+
+  </Do>
+  <Dont>
+
+  - Schovat klíčová čísla na konec dlouhého textu — AI a čtenáři je nenajdou.
+  - Publikovat bez metodiky — pro AI je to méně důvěryhodné a pro novináře neúnosné.
+  - Použít vágní formulace („přibližně polovina firem“, „většina trhu“) místo konkrétních čísel.
+  - Nechat datový soubor bez popisu a bez datace — za pár měsíců nikdo nepozná, kdy a jak vznikl.
+  - Publikovat jednou a nikdy víc — bez aktualizace stránka v čase ztrácí podíl AI citací.
+
+  </Dont>
+</DoDont>
 
 <Insight tone="warn">
 Originální data si žádají poctivost. Pokud vzorek není reprezentativní nebo metodika nevyzkoušená, je lepší to napsat otevřeně, než to schovávat. AI sice někdy citaci přesto vezme, ale když to později někdo rozporuje, reputační dopad bývá větší než krátkodobý přínos v citacích.

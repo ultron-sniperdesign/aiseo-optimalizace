@@ -57,6 +57,8 @@ import Stepper from "~/components/blocks/Stepper.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **VideoObject jsou strukturovaná data, kterými se k videu na stránce doplní strojově čitelná fakta.** Název, náhledový obrázek a datum publikování jsou povinné, k tomu se přidává odkaz na soubor nebo přehrávač a délka. AI systémy z těchto dat a z přepisu mohou vycházet. Označení samo o sobě rozšířený výsledek nezaručí, ale pro způsobilost k němu je důležité.
 
@@ -163,24 +165,30 @@ Přepis se vyplatí psát jako úplný text, ne jako shrnutí. Zkrácený přepi
 
 **Data a přepis se nenahrazují.** Jsou to dvě různé věci — fakta a obsah. Potřebujete oboje, ne jedno místo druhého.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Tři povinné vlastnosti: name, thumbnailUrl, uploadDate",
-    "Aspoň contentUrl nebo embedUrl, ideálně obojí, plus duration",
-    "Úplný přepis videa jako text přímo na stránce",
-    "Hodnoty ve strukturovaných datech shodné s viditelným obsahem",
-    "interactionStatistic, pokud uvádíte počet zhlédnutí",
-  ]}
-  dontItems={[
-    "Náhledový obrázek za přihlášením nebo přes přesměrování",
-    "Strukturovaná data k videu, které na stránce není",
-    "Spoléhat jen na data a přepis vynechat",
-    "Zkrácený nebo shrnutý přepis místo úplného",
-    "Zastaralé interactionCount u nového značení",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Tři povinné vlastnosti: name, thumbnailUrl, uploadDate
+  - Aspoň contentUrl nebo embedUrl, ideálně obojí, plus duration
+  - Úplný přepis videa jako text přímo na stránce
+  - Hodnoty ve strukturovaných datech shodné s viditelným obsahem
+  - interactionStatistic, pokud uvádíte počet zhlédnutí
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Náhledový obrázek za přihlášením nebo přes přesměrování
+  - Strukturovaná data k videu, které na stránce není
+  - Spoléhat jen na data a přepis vynechat
+  - Zkrácený nebo shrnutý přepis místo úplného
+  - Zastaralé interactionCount u nového značení
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

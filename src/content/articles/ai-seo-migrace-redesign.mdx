@@ -59,6 +59,8 @@ import Stepper from "~/components/blocks/Stepper.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Migrace nebo redesign webu je změna URL, šablon nebo domény, při které hrozí ztráta indexace, pozic i citací v AI odpovědích.** Základ je mapa starých adres na nové, trvalé přesměrování 301, zachovaná strukturovaná data a měření před spuštěním i po něm. Tento návod shrnuje, co ohlídat před migrací, při ní a po ní — včetně kontroly, že staré adresy dál vedou na odpovídající obsah a že nová verze nezablokovala procházení ani indexaci.
 
@@ -165,24 +167,26 @@ Nepanikařte z propadu v prvních dnech. Krátkodobé výkyvy po migraci jsou b�
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Změřit výchozí stav ještě před migrací.",
-    "Mapovat staré adresy na nové v poměru 1:1.",
-    "Použít trvalé přesměrování 301 s jedním skokem.",
-    "Přenést strukturovaná data do nové šablony.",
-    "Nechat přesměrování běžet dlouhodobě.",
-  ]}
-  dontItems={[
-    "Mazat staré adresy bez přesměrování.",
-    "Svádět všechno hromadně na úvodní stránku.",
-    "Používat 302 tam, kde je změna trvalá.",
-    "Nechat v robots.txt zákaz z testovacího prostředí.",
-    "Měnit adresy, vzhled webu i obsah v jednom kroku.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Změřit výchozí stav ještě před migrací.
+  - Mapovat staré adresy na nové v poměru 1:1.
+  - Použít trvalé přesměrování 301 s jedním skokem.
+  - Přenést strukturovaná data do nové šablony.
+  - Nechat přesměrování běžet dlouhodobě.
+
+  </Do>
+  <Dont>
+
+  - Mazat staré adresy bez přesměrování.
+  - Svádět všechno hromadně na úvodní stránku.
+  - Používat 302 tam, kde je změna trvalá.
+  - Nechat v robots.txt zákaz z testovacího prostředí.
+  - Měnit adresy, vzhled webu i obsah v jednom kroku.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

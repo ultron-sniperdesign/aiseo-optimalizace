@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Autorská entita je konkrétní osoba, kterou AI a vyhledávače dokážou jednoznačně spojit s obsahem díky podpisu autora, autorské stránce, strukturovaným datům typu Person a ověřeným profilům sameAs.** Pomáhá jim k tomu viditelný podpis autora, autorská stránka a ověřitelné odkazy na profily mimo web. Podle dostupných analýz bývá obsah se jmenovaným expertem citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce". Tento návod ukazuje, jak autorskou entitu vybudovat — od podpisu autora přes autorskou stránku po strukturovaná data typu Person a propojení sameAs.
 
@@ -183,24 +185,26 @@ U citlivých témat bez ověřitelné kvalifikace autora bývá šance na citace
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Podepisovat články konkrétní osobou s dohledatelnou identitou.",
-    "Mít autorskou stránku s bio, portrétní fotkou, kvalifikací a seznamem článků.",
-    "Přidat Person strukturovaná data se dvěma a více ověřenými profily v sameAs.",
-    "Držet stejné jméno, fotku a bio napříč webem i externími profily.",
-    "U citlivých témat doplnit ověřitelnou kvalifikaci (ČLK, ČAK, ČNB, ORCID).",
-  ]}
-  dontItems={[
-    "Podepisovat obsah jako „Redakce“, „Admin“ nebo „Team“.",
-    "Vydávat vymyšlené autory za reálné osoby.",
-    "Nechat nesoulad mezi jménem v podpisu autora a ve strukturovaných datech.",
-    "Dávat do sameAs anonymní účty nebo mrtvé odkazy.",
-    "Čekat okamžitý efekt — u části webů se změny projeví až po delší době, často v řádu měsíců.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Podepisovat články konkrétní osobou s dohledatelnou identitou.
+  - Mít autorskou stránku s bio, portrétní fotkou, kvalifikací a seznamem článků.
+  - Přidat Person strukturovaná data se dvěma a více ověřenými profily v sameAs.
+  - Držet stejné jméno, fotku a bio napříč webem i externími profily.
+  - U citlivých témat doplnit ověřitelnou kvalifikaci (ČLK, ČAK, ČNB, ORCID).
+
+  </Do>
+  <Dont>
+
+  - Podepisovat obsah jako „Redakce“, „Admin“ nebo „Team“.
+  - Vydávat vymyšlené autory za reálné osoby.
+  - Nechat nesoulad mezi jménem v podpisu autora a ve strukturovaných datech.
+  - Dávat do sameAs anonymní účty nebo mrtvé odkazy.
+  - Čekat okamžitý efekt — u části webů se změny projeví až po delší době, často v řádu měsíců.
+
+  </Dont>
+</DoDont>
 
 ## Časový horizont a realistická očekávání
 

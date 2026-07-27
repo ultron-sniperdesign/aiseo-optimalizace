@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **AI SEO na WordPressu je soubor nastavení, která pomáhají AI systémům (ChatGPT, Google AI Overviews, Perplexity, Claude, Gemini) lépe pochopit a použít obsah webu. Konkrétně to znamená správně nastavený SEO plugin pro strukturovaná data, doplněný [llms.txt](/blog/llms-txt-navod/), neblokované relevantní AI user-agenty v robots.txt a dobré Core Web Vitals.** WordPress podle veřejně citovaných odhadů pohání v roce 2026 zhruba 40 % webů, takže AI SEO řeší v něm největší část majitelů. Dobrá zpráva: většinu kroků zvládnete pluginy bez programování. Tento návod ukazuje, co konkrétně udělat a v jakém pořadí.
 
@@ -175,22 +177,26 @@ Tady je minimální funkční šablona, kterou doporučujeme jako start. Konkré
 
 Pro WordPress e-shopy postavené na WooCommerce (zhruba 25 až 30 % e-shopů) přidává AI SEO několik konkrétních úkolů:
 
-<DoDont
-  doTitle="Co dělat na WooCommerce"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Mít Product strukturovaná data s Offer (cena, dostupnost), AggregateRating (recenze) — generuje SEO plugin automaticky, doplnit chybějící.",
-    "Přidat FAQ blok na produktovou stránku — odpovídá přesně na dotazy, které kupci kladou AI.",
-    "Texty kategorií (top + bottom intro) s konkrétními informacemi — takový obsah může zvýšit šanci, že se stránka objeví v AI odpovědích u dotazů „nejlepší X“ nebo „X pro Y“.",
-    "Integrace recenzí (Heureka, Trusted Shops, Google Reviews) zpět na produkt přes strukturovaná data typu Review.",
-  ]}
-  dontItems={[
-    "Spoléhat jen na výchozí WooCommerce strukturovaná data — chybí FAQ, autor produktu, někdy i AggregateRating.",
-    "Nechat prázdné kategorie bez textu — AI systémy mají méně použitelného obsahu pro odpověď.",
-    "Schovávat recenze za přihlášení — AI je nepřečte.",
-    "Blokovat AI vyhledávací roboty v robots.txt s tím, že „nechci, aby AI brala moje produkty“ — bez nich nebude o produktech v AI odpovědích vědět.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Co dělat na WooCommerce**
+
+  - Mít Product strukturovaná data s Offer (cena, dostupnost), AggregateRating (recenze) — generuje SEO plugin automaticky, doplnit chybějící.
+  - Přidat FAQ blok na produktovou stránku — odpovídá přesně na dotazy, které kupci kladou AI.
+  - Texty kategorií (top + bottom intro) s konkrétními informacemi — takový obsah může zvýšit šanci, že se stránka objeví v AI odpovědích u dotazů „nejlepší X“ nebo „X pro Y“.
+  - Integrace recenzí (Heureka, Trusted Shops, Google Reviews) zpět na produkt přes strukturovaná data typu Review.
+
+  </Do>
+  <Dont>
+
+  - Spoléhat jen na výchozí WooCommerce strukturovaná data — chybí FAQ, autor produktu, někdy i AggregateRating.
+  - Nechat prázdné kategorie bez textu — AI systémy mají méně použitelného obsahu pro odpověď.
+  - Schovávat recenze za přihlášení — AI je nepřečte.
+  - Blokovat AI vyhledávací roboty v robots.txt s tím, že „nechci, aby AI brala moje produkty“ — bez nich nebude o produktech v AI odpovědích vědět.
+
+  </Dont>
+</DoDont>
 
 ## Co dělat nad rámec pluginů
 

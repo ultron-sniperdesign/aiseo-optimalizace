@@ -59,6 +59,8 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Interní prolinkování je propojování stránek vlastního webu pomocí interních odkazů.** Pomáhá čtenářům, vyhledávačům i AI systémům odhadnout, co spolu souvisí a které stránky mají v rámci webu vyšší prioritu. V praxi rozhoduje popisný text odkazu, dostupnost stránky z relevantních míst a to, jestli na ni vůbec něco odkazuje.
 
@@ -160,24 +162,26 @@ Nepřeceňujte to. Interní odkazy nezachrání obsah, který nemá co nabídnou
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Psát popisný text odkazu, přirozeně skloňovaný.",
-    "Odkazovat z těla textu, kde to dává smysl.",
-    "Držet důležité stránky snadno dostupné z relevantních míst.",
-    "Pravidelně hledat osiřelé stránky.",
-    "Vést odkazy přímo na cílovou adresu.",
-  ]}
-  dontItems={[
-    "Používat zde a více jako text odkazu.",
-    "Opakovat pořád stejnou frázi v každém odkazu.",
-    "Nechat publikovanou stránku bez jediného odkazu.",
-    "Cpát odkazy tam, kde souvislost není.",
-    "Nechávat interní odkazy vést přes přesměrování.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Psát popisný text odkazu, přirozeně skloňovaný.
+  - Odkazovat z těla textu, kde to dává smysl.
+  - Držet důležité stránky snadno dostupné z relevantních míst.
+  - Pravidelně hledat osiřelé stránky.
+  - Vést odkazy přímo na cílovou adresu.
+
+  </Do>
+  <Dont>
+
+  - Používat zde a více jako text odkazu.
+  - Opakovat pořád stejnou frázi v každém odkazu.
+  - Nechat publikovanou stránku bez jediného odkazu.
+  - Cpát odkazy tam, kde souvislost není.
+  - Nechávat interní odkazy vést přes přesměrování.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

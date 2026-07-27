@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Google 3. června 2026 spustil v Search Console report Generative AI features — první oficiální přehled o tom, jak často se vaše stránky objevují v AI Overviews (AI shrnutí ve výsledcích Vyhledávání Google), AI Mode (konverzačním režimu vyhledávání) a generativních funkcích v Discoveru.** V beta verzi má ale výrazná omezení: ukazuje jen imprese, žádné kliky, CTR ani dotazy. Tento návod ukazuje, kde report najít, jak ho segmentovat a hlavně jak imprese číst správně — jako signál výskytu v AI funkcích, ne jako návštěvnost.
 
@@ -201,24 +203,26 @@ Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hod
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Číst imprese jako signál výskytu v AI funkcích, ne jako návštěvnost.",
-    "Segmentovat report podle stránky, země a času.",
-    "Porovnávat AI imprese s organickými kliky téže URL.",
-    "Doplnit GSC o GA4, UTM a ruční test napříč platformami.",
-    "Sledovat trend AI impresí v čase a spojovat ho se změnami obsahu.",
-  ]}
-  dontItems={[
-    "Zaměňovat AI imprese za návštěvnost.",
-    "Spoléhat na GSC jako na kompletní měření celého AI ekosystému.",
-    "Nechat AI data smíchaná ve výchozím reportu Výkonu.",
-    "Ignorovat, že report zatím nemusí být pro váš web dostupný.",
-    "Očekávat data o tržbách nebo konverzích — report je nemá.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Číst imprese jako signál výskytu v AI funkcích, ne jako návštěvnost.
+  - Segmentovat report podle stránky, země a času.
+  - Porovnávat AI imprese s organickými kliky téže URL.
+  - Doplnit GSC o GA4, UTM a ruční test napříč platformami.
+  - Sledovat trend AI impresí v čase a spojovat ho se změnami obsahu.
+
+  </Do>
+  <Dont>
+
+  - Zaměňovat AI imprese za návštěvnost.
+  - Spoléhat na GSC jako na kompletní měření celého AI ekosystému.
+  - Nechat AI data smíchaná ve výchozím reportu Výkonu.
+  - Ignorovat, že report zatím nemusí být pro váš web dostupný.
+  - Očekávat data o tržbách nebo konverzích — report je nemá.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

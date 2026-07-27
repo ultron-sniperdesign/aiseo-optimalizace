@@ -45,6 +45,8 @@ import Stepper from "~/components/blocks/Stepper.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Když AI odpoví o firmě nepravdivý údaj, odpověď obvykle nejde přímo přepsat** — běžné rozhraní, kterým byste si ji upravili sami, k dispozici není. Reálně lze opravit zdroje, ze kterých systém čerpá, doplnit jasnou informaci na vlastním webu a chybu nahlásit. Účinek bývá nepřímý, bez záruky a bez jistého termínu.
 
@@ -135,24 +137,26 @@ Dvě věci, které tenhle text neřeší a řešit nemůže.
 
 **Neřeší právní rovinu.** Vedle oprav zdrojů může někdy připadat v úvahu i nahlášení výstupu platformě, oprava souvisejícího firemního záznamu nebo formální žádost vůči zdroji; konkrétní postup závisí na typu chyby a službě. Pokud vás nepravdivé tvrzení reálně poškozuje, je namístě konzultace s právníkem. Tady zůstáváme u toho, co jde udělat obsahově a technicky.
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Zdokumentovat dotaz, odpověď, datum a systém.",
-    "Určit příčinu dřív než řešení.",
-    "Aktualizovat vlastní web a firemní profily.",
-    "Doplnit jasnou odpověď tam, kde chybí.",
-    "Testovat opakovaně a s odstupem.",
-  ]}
-  dontItems={[
-    "Jednat podle jediné odpovědi.",
-    "Psát na web opravné texty typu není pravda.",
-    "Vyrábět falešné zdroje kvůli přebití chyby.",
-    "Slibovat vedení, že to bude opravené do týdne.",
-    "Nechat údaje na webu a v profilech rozcházet se.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Zdokumentovat dotaz, odpověď, datum a systém.
+  - Určit příčinu dřív než řešení.
+  - Aktualizovat vlastní web a firemní profily.
+  - Doplnit jasnou odpověď tam, kde chybí.
+  - Testovat opakovaně a s odstupem.
+
+  </Do>
+  <Dont>
+
+  - Jednat podle jediné odpovědi.
+  - Psát na web opravné texty typu není pravda.
+  - Vyrábět falešné zdroje kvůli přebití chyby.
+  - Slibovat vedení, že to bude opravené do týdne.
+  - Nechat údaje na webu a v profilech rozcházet se.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

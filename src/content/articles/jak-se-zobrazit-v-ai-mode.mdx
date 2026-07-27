@@ -59,6 +59,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Google AI Mode je konverzační režim vyhledávání, pro který podle dokumentace Googlu neexistují zvláštní požadavky ani samostatné značení.** Stránka proto musí splnit stejné základy jako pro běžné vyhledávání: být zaindexovaná, povolená k procházení a způsobilá pro úryvky, mít podstatu v textu a strukturovaná data odpovídající tomu, co je vidět.
 
@@ -165,24 +167,30 @@ Stejná dokumentace popisuje i opačný směr. Rozsah toho, co se smí z vaší 
 
 **Vychází z dokumentace dodavatele.** Vyjádření Googlu o vlastních produktech je autoritativní pro jeho povrchy, ale pořád je to zdroj od dodavatele; ostatní AI systémy se chovají po svém.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Ověřte indexaci, procházení a způsobilost pro úryvky",
-    "Podstatu držte v textu, ne jen v grafice nebo videu",
-    "Každé dílčí otázce vlastní nadpis a odpověď na začátku",
-    "Strukturovaná data shodná s viditelným textem",
-    "Měřte opakovaně a každý povrch zvlášť",
-  ]}
-  dontItems={[
-    "Kupovat „tajný postup na AI Mode\"",
-    "Vyrábět zvláštní soubory pro AI jako vstupenku",
-    "Psát pasáže, které bez okolního textu ztratí smysl",
-    "Přidávat strukturovaná data, která na stránce nejsou vidět",
-    "Vyvozovat závěr z jediného spuštění",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Ověřte indexaci, procházení a způsobilost pro úryvky
+  - Podstatu držte v textu, ne jen v grafice nebo videu
+  - Každé dílčí otázce vlastní nadpis a odpověď na začátku
+  - Strukturovaná data shodná s viditelným textem
+  - Měřte opakovaně a každý povrch zvlášť
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Kupovat „tajný postup na AI Mode"
+  - Vyrábět zvláštní soubory pro AI jako vstupenku
+  - Psát pasáže, které bez okolního textu ztratí smysl
+  - Přidávat strukturovaná data, která na stránce nejsou vidět
+  - Vyvozovat závěr z jediného spuštění
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

@@ -59,6 +59,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Recenze jsou pro e-shop zdroj textu, který nenapsal prodejce:** obsahují formulace zákazníků a odpovídají na otázky, na které popis produktu nedosáhne. Pro rozšířený výsledek s hodnocením je potřeba označit je strukturovanými daty, mít je na stránce viditelné a sbírat je přímo od uživatelů.
 
@@ -177,22 +179,28 @@ Když se u sedmi z dvaceti recenzí objeví, že produkt sedí menší, je to in
 
 **Nedává česká čísla.** Jak moc recenze ovlivňují viditelnost na českém trhu, veřejně doložené není.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Sbírejte recenze od skutečných zákazníků s ověřeným nákupem",
-    "Označujte recenze produktů, které prodáváte",
-    "Držte označená data shodná s tím, co je na stránce vidět",
-    "Shrňte opakující se témata z recenzí do vlastní pasáže",
-  ]}
-  dontItems={[
-    "Označovat vlastní známku e-shopu jako podklad pro hvězdičky",
-    "Přetahovat hodnocení z cizích webů",
-    "Doplňovat hodnocení do dat, když na stránce není",
-    "Vynucovat nebo vyrábět recenze",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Sbírejte recenze od skutečných zákazníků s ověřeným nákupem
+  - Označujte recenze produktů, které prodáváte
+  - Držte označená data shodná s tím, co je na stránce vidět
+  - Shrňte opakující se témata z recenzí do vlastní pasáže
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Označovat vlastní známku e-shopu jako podklad pro hvězdičky
+  - Přetahovat hodnocení z cizích webů
+  - Doplňovat hodnocení do dat, když na stránce není
+  - Vynucovat nebo vyrábět recenze
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

@@ -46,6 +46,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Seznam.cz si v Česku dál drží roli významného menšinového vyhledávače — podle veřejných dat z let 2024–2025 se pohybuje zhruba mezi 11 a 15 procenty organického trhu vedle 79 až 82 procent Googlu. V listopadu 2025 přitom uvedl vlastního AI asistenta v testovacím provozu a v květnu 2026 ho zpřístupnil v beta verzi všem přihlášeným uživatelům.** Stojí na vlastním českém jazykovém modelu SeLLMa, podle veřejně citovaných informací s 70 miliardami parametrů a investicí přes 100 milionů Kč. Pro většinu českých firem proto Seznam dává smysl hlavně jako doplněk ke Googlu, zejména u starší cílové skupiny, lokálních dotazů a vybraných oborů.
 
@@ -164,23 +166,27 @@ Pro většinu českých firem zůstává **Google primárním vyhledávacím kan
   ]}
 />
 
-<DoDont
-  doTitle="Co dělat pro Seznam ekosystém"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Registrace v Seznam Search Console a kontrola, jak vás vidí.",
-    "Pravidelný a aktuální profil ve Firmy.cz pro lokální firmu.",
-    "Aktivní práce s Heurekou pro e-shop (recenze, dostupnost, feed).",
-    "Sklik jako sekundární PPC kanál vedle Google Ads u čistě české cílovky.",
-    "Strukturovaná data, která fungují pro Google i Seznam (Organization, LocalBusiness, Product, FAQPage).",
-  ]}
-  dontItems={[
-    "Investovat do Seznamu více než do Googlu jen z patriotismu — tržně to neodpovídá.",
-    "Spoléhat na Seznam Asistenta jako na hlavní AI kanál — zatím je v beta a kvalita SeLLMy je menší než světová špička.",
-    "Optimalizovat web jinak pro Seznam a jinak pro Google — základ je stejný, hlavní rozdíly jsou v ekosystémových katalozích.",
-    "Ignorovat Seznam u starší cílovky nebo lokálních dotazů — tam pořád dělá rozdíl.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Co dělat pro Seznam ekosystém**
+
+  - Registrace v Seznam Search Console a kontrola, jak vás vidí.
+  - Pravidelný a aktuální profil ve Firmy.cz pro lokální firmu.
+  - Aktivní práce s Heurekou pro e-shop (recenze, dostupnost, feed).
+  - Sklik jako sekundární PPC kanál vedle Google Ads u čistě české cílovky.
+  - Strukturovaná data, která fungují pro Google i Seznam (Organization, LocalBusiness, Product, FAQPage).
+
+  </Do>
+  <Dont>
+
+  - Investovat do Seznamu více než do Googlu jen z patriotismu — tržně to neodpovídá.
+  - Spoléhat na Seznam Asistenta jako na hlavní AI kanál — zatím je v beta a kvalita SeLLMy je menší než světová špička.
+  - Optimalizovat web jinak pro Seznam a jinak pro Google — základ je stejný, hlavní rozdíly jsou v ekosystémových katalozích.
+  - Ignorovat Seznam u starší cílovky nebo lokálních dotazů — tam pořád dělá rozdíl.
+
+  </Dont>
+</DoDont>
 
 ## Co je v roce 2026 nejisté
 

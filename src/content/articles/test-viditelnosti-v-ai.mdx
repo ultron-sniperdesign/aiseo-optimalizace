@@ -60,6 +60,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Test AI viditelnosti je ruční kontrola toho, zda a kde se vaše značka objevuje v odpovědích nástrojů jako ChatGPT, Perplexity a Google AI Overviews.** Sestavíte 15 až 20 dotazů, jaké kladou reální zákazníci, spustíte je napříč hlavními AI platformami a u každého zaznamenáte, jestli se objevíte, kde a kdo je místo vás. Základní verzi zvládnete přibližně za hodinu a bez placeného nástroje. Tento návod ukazuje konkrétní postup i časté chyby, kterým se vyhnout.
 
@@ -213,24 +215,26 @@ Konkrétní nástroje k červnu 2026 (funkce a ceny se v čase mění, ověřte 
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Sestavit 15 až 20 dotazů ve čtyřech typech, jazykem zákazníka.",
-    "Testovat minimálně na ChatGPT, Perplexity a Google AI Overviews.",
-    "Opakovat každý dotaz třikrát až pětkrát a zaznamenávat do tabulky.",
-    "Sledovat nejen jestli se objevíte, ale i pozici, konkurenci a zdroje.",
-    "Testovat v odhlášeném režimu pro objektivnější obrázek.",
-  ]}
-  dontItems={[
-    "Spoléhat na jeden dotaz spuštěný jednou.",
-    "Testovat jen značkové dotazy, kde vás AI zná.",
-    "Testovat jen jednu platformu.",
-    "Ignorovat, jaké zdroje AI cituje — to je klíč ke strategii.",
-    "Považovat jednorázový test za trvalý stav — AI odpovědi se v čase mění.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Sestavit 15 až 20 dotazů ve čtyřech typech, jazykem zákazníka.
+  - Testovat minimálně na ChatGPT, Perplexity a Google AI Overviews.
+  - Opakovat každý dotaz třikrát až pětkrát a zaznamenávat do tabulky.
+  - Sledovat nejen jestli se objevíte, ale i pozici, konkurenci a zdroje.
+  - Testovat v odhlášeném režimu pro objektivnější obrázek.
+
+  </Do>
+  <Dont>
+
+  - Spoléhat na jeden dotaz spuštěný jednou.
+  - Testovat jen značkové dotazy, kde vás AI zná.
+  - Testovat jen jednu platformu.
+  - Ignorovat, jaké zdroje AI cituje — to je klíč ke strategii.
+  - Považovat jednorázový test za trvalý stav — AI odpovědi se v čase mění.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

@@ -44,6 +44,8 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Share of Model (SoM) je metrika AI viditelnosti, která měří, jak často a jak výrazně vás daný AI model zmíní napříč relevantními dotazy — v poměru ke konkurentům.** Je to obdoba Share of Voice, ale pro odpovědi AI místo pozic ve vyhledávání. A protože se odpovědi liší běh od běhu, je SoM směrový ukazatel trendu, ne přesné číslo. Tento rozbor ukazuje, co SoM je, jak ho orientačně měřit a jak ho číst vedle klasických metrik vyhledávání.
 
@@ -154,24 +156,26 @@ Souvisí to s realitou [nulového prokliku](/blog/zero-click-ai/): když nejste 
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Měřit na sadě reálných, neznačkových dotazů.",
-    "Sledovat trend v čase, ne jednorázové číslo.",
-    "Rozlišovat modely a měřit je zvlášť.",
-    "Párovat SoM s návštěvností a konverzemi z AI.",
-    "Brát čísla jako orientační odhad.",
-  ]}
-  dontItems={[
-    "Vyvozovat tvrdé prodejní sliby z jednoho čísla.",
-    "Měřit jen na dotazech na vlastní značku.",
-    "Spoléhat na jediné měření nebo jediný model.",
-    "Zaměňovat zmínku za doporučení.",
-    "Ignorovat kolísání a personalizaci výsledků.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Měřit na sadě reálných, neznačkových dotazů.
+  - Sledovat trend v čase, ne jednorázové číslo.
+  - Rozlišovat modely a měřit je zvlášť.
+  - Párovat SoM s návštěvností a konverzemi z AI.
+  - Brát čísla jako orientační odhad.
+
+  </Do>
+  <Dont>
+
+  - Vyvozovat tvrdé prodejní sliby z jednoho čísla.
+  - Měřit jen na dotazech na vlastní značku.
+  - Spoléhat na jediné měření nebo jediný model.
+  - Zaměňovat zmínku za doporučení.
+  - Ignorovat kolísání a personalizaci výsledků.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

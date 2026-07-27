@@ -59,6 +59,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Psaní po pasážích znamená psát jednotlivé úseky tak, aby dávaly smysl i vytržené ze stránky.** Každá sekce má vlastní nadpis, který konkrétně pojmenuje její téma, odpověď v první větě a nepotřebuje okolní text: žádné odkazy typu „jak jsme psali výše", žádná zájmena bez pojmenovaného podmětu a zkratky rozepsané tam, kde se použijí.
 
@@ -168,23 +170,29 @@ Poslední bod stojí za zdůraznění, protože se přehlíží. Když se v kaž
 
 **Není to jen „pro AI".** Čtenáři skenují a přicházejí z odkazů doprostřed stránky. Text, který obstojí po částech, slouží líp bez ohledu na to, kdo ho čte.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "Nadpis ve tvaru otázky nebo konkrétního tvrzení",
-    "Odpověď v první větě sekce",
-    "Pojmenovaný podmět místo zájmena",
-    "Zkratku rozepsanou tam, kde ji použijete",
-    "Test zakrytím na každé sekci",
-  ]}
-  dontItems={[
-    "Odkazy typu „jak jsme psali výše\"",
-    "Nadpisy „Další informace\" a „Poznámka\"",
-    "Tabulku, která dává smysl až po odstavci nad ní",
-    "Opakování celého kontextu v každé sekci",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - Nadpis ve tvaru otázky nebo konkrétního tvrzení
+  - Odpověď v první větě sekce
+  - Pojmenovaný podmět místo zájmena
+  - Zkratku rozepsanou tam, kde ji použijete
+  - Test zakrytím na každé sekci
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Odkazy typu „jak jsme psali výše"
+  - Nadpisy „Další informace" a „Poznámka"
+  - Tabulku, která dává smysl až po odstavci nad ní
+  - Opakování celého kontextu v každé sekci
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 

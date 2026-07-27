@@ -46,6 +46,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **AEO a GEO jsou v pojetí Googlu součást SEO. Google to popsal v prvním oficiálním průvodci optimalizací pro generativní AI vyhledávání z 15. května 2026 — jeho AI Overviews i AI Mode vycházejí ze stejného Search indexu a z obdobných signálů kvality jako klasické výsledky.** Google explicitně píše, že nepotřebujete nové speciální soubory ani speciální typy strukturovaných dat „jen pro AI". Tento článek shrnuje, co Google guide skutečně říká, kde má pravdu a v čem je jeho pozice zjednodušená vůči širšímu AI ekosystému.
 
@@ -148,24 +150,26 @@ Google má pravdu, že pro jeho AI features je základ klasické SEO. Ale AEO/GE
 
 Detailní posouzení, zda váš web splňuje jak Google AI Overviews podmínky, tak i praktické AEO/GEO taktiky pro citace mimo Google, řešíme v [AI SEO auditu](/audit/).
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Držet se fundamentálního SEO: kvalitní obsah, technické zdraví, strukturovaná data pro rich results, přehledná organizace.",
-    "Sledovat oficiální Google Search Central dokumentaci a její aktualizace.",
-    "Testovat viditelnost v ChatGPT, Perplexity, Claude a Google AI Overviews samostatně — každý má vlastní logiku.",
-    "Doplnit AEO/GEO taktiky (krátké citovatelné úseky, FAQ, brand mentions) tam, kde cílíte i na AI systémy mimo Google.",
-    "Nezaměňovat Google AI Overviews za celý AI ekosystém — je to důležitá, ale ne jediná plocha.",
-  ]}
-  dontItems={[
-    "Kupovat drahé „AI SEO služby“, které slibují nové speciální značení nebo AI text soubory jako povinnost.",
-    "Rušit existující strukturovaná data s tím, že „Google je stejně nevyžaduje“ — rich results a jasnější strojová čitelnost mají hodnotu.",
-    "Považovat guide za konec diskuse — Google mluví za sebe, ne za ChatGPT nebo Perplexity.",
-    "Ignorovat zmínky a odkazy mimo vlastní web: v důvěryhodných zdrojích mohou pro citace mimo Google hrát roli, kterou guide neřeší.",
-    "Podceňovat obsahovou kvalitu — Google guide opakovaně zdůrazňuje „lidé napřed“ a unikátní úhel pohledu.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Držet se fundamentálního SEO: kvalitní obsah, technické zdraví, strukturovaná data pro rich results, přehledná organizace.
+  - Sledovat oficiální Google Search Central dokumentaci a její aktualizace.
+  - Testovat viditelnost v ChatGPT, Perplexity, Claude a Google AI Overviews samostatně — každý má vlastní logiku.
+  - Doplnit AEO/GEO taktiky (krátké citovatelné úseky, FAQ, brand mentions) tam, kde cílíte i na AI systémy mimo Google.
+  - Nezaměňovat Google AI Overviews za celý AI ekosystém — je to důležitá, ale ne jediná plocha.
+
+  </Do>
+  <Dont>
+
+  - Kupovat drahé „AI SEO služby“, které slibují nové speciální značení nebo AI text soubory jako povinnost.
+  - Rušit existující strukturovaná data s tím, že „Google je stejně nevyžaduje“ — rich results a jasnější strojová čitelnost mají hodnotu.
+  - Považovat guide za konec diskuse — Google mluví za sebe, ne za ChatGPT nebo Perplexity.
+  - Ignorovat zmínky a odkazy mimo vlastní web: v důvěryhodných zdrojích mohou pro citace mimo Google hrát roli, kterou guide neřeší.
+  - Podceňovat obsahovou kvalitu — Google guide opakovaně zdůrazňuje „lidé napřed“ a unikátní úhel pohledu.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

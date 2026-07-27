@@ -60,6 +60,8 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Stránka služby je stránka popisující jednu konkrétní službu.** Aby z ní AI mohla čerpat spolehlivěji, měla by odpovídat na to, co se lidé ptají: co to je, pro koho, co je v tom, kolik to zhruba stojí a jak to probíhá. Pomáhají strukturovaná data typu `Service` a krátká odpověď nahoře. Ve strukturovaných datech pak stačí popsat to, co je na stránce skutečně vidět.
 
@@ -184,24 +186,26 @@ Uvedení ceny samo o sobě nic nezaručí — negarantuje víc poptávek ani lep
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Dát nahoru krátkou definici služby.",
-    "Vymezit, pro koho služba je a pro koho ne.",
-    "Popsat konkrétní rozsah a průběh.",
-    "Uvést cenu nebo aspoň cenový rámec.",
-    "Držet strukturovaná data shodná s obsahem.",
-  ]}
-  dontItems={[
-    "Psát obecné fráze místo informací.",
-    "Nechat cenu úplně bez odpovědi.",
-    "Slučovat všechny služby na jednu stránku.",
-    "Uvádět v datech to, co na stránce není.",
-    "Vymýšlet reference nebo čísla.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Dát nahoru krátkou definici služby.
+  - Vymezit, pro koho služba je a pro koho ne.
+  - Popsat konkrétní rozsah a průběh.
+  - Uvést cenu nebo aspoň cenový rámec.
+  - Držet strukturovaná data shodná s obsahem.
+
+  </Do>
+  <Dont>
+
+  - Psát obecné fráze místo informací.
+  - Nechat cenu úplně bez odpovědi.
+  - Slučovat všechny služby na jednu stránku.
+  - Uvádět v datech to, co na stránce není.
+  - Vymýšlet reference nebo čísla.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

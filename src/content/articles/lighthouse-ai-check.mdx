@@ -60,6 +60,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Lighthouse Agentic Browsing je nová kategorie v Google Lighthouse, která se podle veřejně dostupné dokumentace objevila ve verzi 13.3 v květnu 2026. Kontroluje čtyři oblasti důležité pro to, jak nástroje stránku přečtou strojově: přítomnost llms.txt, podporu protokolu WebMCP, kvalitu accessibility tree a stabilitu rozvržení (CLS).** Skóre není vážené od 0 do 100, ale ukazuje podíl splněných kontrol — u každé z nich jasně vidíte, zda prošla nebo neprošla. Spustit audit lze v Chrome DevTools, v PageSpeed Insights nebo přes Lighthouse CLI (příkazová řádka). Tento návod vysvětluje, co audit testuje, jak ho spustit a v jakém pořadí opravovat neúspěšné kontroly.
 
@@ -166,22 +168,26 @@ Existují tři cesty, jak audit spustit. Doporučená je Chrome DevTools.
 
 Lighthouse Agentic Browsing dává okamžitý seznam toho, co opravit. Pro **maximální hodnotu za vynaloženou práci** doporučujeme následující pořadí.
 
-<DoDont
-  doTitle="V tomto pořadí opravovat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "1. llms.txt — typicky 5 až 30 minut práce, vysoký dopad. Statický textový soubor v rootu domény.",
-    "2. Accessibility tree (names and labels) — 1 až 4 hodiny podle velikosti webu. Pomáhá i klasickému accessibility skóre.",
-    "3. Stabilita rozvržení (CLS) — sdílená práce s klasickými Core Web Vitals. Explicit width/height u obrázků, přednačtení fontů, rezervace místa pro lazy-loaded obsah.",
-    "4. WebMCP — náročná implementace, pouze pro e-shopy a aplikace s reálnými agent akcemi.",
-  ]}
-  dontItems={[
-    "Začínat WebMCP před lehčími opravami — typicky špatný poměr práce k výsledku.",
-    "Ignorovat neúspěšné kontroly s tím, že „není to ranking faktor“ — souvisejí s tím, jak nástroje stránku čtou strojově.",
-    "Optimalizovat na 100% podíl splněných kontrol za každou cenu — některé kontroly (například WebMCP) v roce 2026 ještě nemají smysl pro většinu webů.",
-    "Spoléhat jen na Lighthouse — doplnit ho ručním otestováním v reálném AI nástroji s agentickým procházením webu.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **V tomto pořadí opravovat**
+
+  - 1. llms.txt — typicky 5 až 30 minut práce, vysoký dopad. Statický textový soubor v rootu domény.
+  - 2. Accessibility tree (names and labels) — 1 až 4 hodiny podle velikosti webu. Pomáhá i klasickému accessibility skóre.
+  - 3. Stabilita rozvržení (CLS) — sdílená práce s klasickými Core Web Vitals. Explicit width/height u obrázků, přednačtení fontů, rezervace místa pro lazy-loaded obsah.
+  - 4. WebMCP — náročná implementace, pouze pro e-shopy a aplikace s reálnými agent akcemi.
+
+  </Do>
+  <Dont>
+
+  - Začínat WebMCP před lehčími opravami — typicky špatný poměr práce k výsledku.
+  - Ignorovat neúspěšné kontroly s tím, že „není to ranking faktor“ — souvisejí s tím, jak nástroje stránku čtou strojově.
+  - Optimalizovat na 100% podíl splněných kontrol za každou cenu — některé kontroly (například WebMCP) v roce 2026 ještě nemají smysl pro většinu webů.
+  - Spoléhat jen na Lighthouse — doplnit ho ručním otestováním v reálném AI nástroji s agentickým procházením webu.
+
+  </Dont>
+</DoDont>
 
 <MistakeGrid>
   <Mistake num="01" title="Audit jen na homepage">

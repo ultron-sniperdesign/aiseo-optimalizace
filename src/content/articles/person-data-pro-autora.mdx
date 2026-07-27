@@ -59,6 +59,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Person je typ strukturovaných dat, kterým strojově popíšete autora — jméno, roli, profily a oblasti expertízy — a pomůžete tak Googlu i AI lépe pochopit, kdo obsah vytvořil.** Klíčem jsou dvě věci: vlastnost `sameAs` s odkazy na profily jako LinkedIn nebo Wikidata a stabilní `@id`, který u všech článků zvyšuje šanci na konzistentní propojení autora do jedné entity. Tento návod ukazuje, jak Person data nasadit, i s příkladem kódu.
 
@@ -178,24 +180,26 @@ Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organiz
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Definovat autora typem Person na jeho profilu.",
-    "Doplnit sameAs s odkazy na LinkedIn, Wikidata a osobní web.",
-    "Použít jeden stabilní @id a opakovat ho u všech článků.",
-    "Držet jméno a role v datech shodné s viditelným obsahem.",
-    "Vyplnit knowsAbout reálnými oblastmi expertízy.",
-  ]}
-  dontItems={[
-    "Nechávat Person data bez sameAs.",
-    "Dávat autorovi jiný @id na každé stránce.",
-    "Odkazovat na cizí nebo neexistující profily.",
-    "Vymýšlet tituly a kredence, které autor nemá.",
-    "Nechávat data v rozporu s podpisem autora na stránce.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Definovat autora typem Person na jeho profilu.
+  - Doplnit sameAs s odkazy na LinkedIn, Wikidata a osobní web.
+  - Použít jeden stabilní @id a opakovat ho u všech článků.
+  - Držet jméno a role v datech shodné s viditelným obsahem.
+  - Vyplnit knowsAbout reálnými oblastmi expertízy.
+
+  </Do>
+  <Dont>
+
+  - Nechávat Person data bez sameAs.
+  - Dávat autorovi jiný @id na každé stránce.
+  - Odkazovat na cizí nebo neexistující profily.
+  - Vymýšlet tituly a kredence, které autor nemá.
+  - Nechávat data v rozporu s podpisem autora na stránce.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

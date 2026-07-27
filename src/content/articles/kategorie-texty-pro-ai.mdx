@@ -60,6 +60,8 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Texty kategorií e-shopu pomáhají AI pochopit váš sortiment a rozhodovací kritéria, takže mohou zvýšit šanci, že vás AI použije u dotazů typu „nejlepší X" nebo „X pro Y".** U komerčních dotazů totiž AI často čerpá z přehledových a kategorijních stránek, ne jen z jednotlivých produktů. Tento návod ukazuje, co do textu kategorie napsat a jak ho doplnit strukturovanými daty, aby ho AI i zákazníci ocenili.
 
@@ -155,24 +157,26 @@ Strukturovaná data musí odpovídat tomu, co je na stránce reálně vidět. Kd
   </Mistake>
 </MistakeGrid>
 
-<DoDont
-  doTitle="Co dělat"
-  dontTitle="Čemu se vyhnout"
-  doItems={[
-    "Psát krátkou odpověď a kritéria nad výpis produktů.",
-    "Pomáhat rozhodnout — kritéria, segmentace, srovnání typů.",
-    "Doplnit CollectionPage, ItemList a BreadcrumbList.",
-    "Prolinkovat na podkategorie, produkty a nákupní průvodce.",
-    "Psát přirozeně, jak se lidé na produkty ptají.",
-  ]}
-  dontItems={[
-    "Nechávat kategorii bez jakéhokoli textu.",
-    "Cpát do textu klíčová slova bez hodnoty.",
-    "Jen popisovat sortiment bez rozhodovacích kritérií.",
-    "Kopírovat stejný text do všech kategorií.",
-    "Schovávat celý text pod odkaz číst více.",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  - Psát krátkou odpověď a kritéria nad výpis produktů.
+  - Pomáhat rozhodnout — kritéria, segmentace, srovnání typů.
+  - Doplnit CollectionPage, ItemList a BreadcrumbList.
+  - Prolinkovat na podkategorie, produkty a nákupní průvodce.
+  - Psát přirozeně, jak se lidé na produkty ptají.
+
+  </Do>
+  <Dont>
+
+  - Nechávat kategorii bez jakéhokoli textu.
+  - Cpát do textu klíčová slova bez hodnoty.
+  - Jen popisovat sortiment bez rozhodovacích kritérií.
+  - Kopírovat stejný text do všech kategorií.
+  - Schovávat celý text pod odkaz číst více.
+
+  </Dont>
+</DoDont>
 
 ## Co si z článku odnést
 

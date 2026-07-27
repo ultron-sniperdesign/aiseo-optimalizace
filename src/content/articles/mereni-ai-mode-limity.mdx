@@ -45,6 +45,8 @@ import CompareTable from "~/components/blocks/CompareTable.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
 
 **Výkon v Google AI Mode nejde z běžně dostupných dat oddělit.** Report v Search Console vykazuje zobrazení za AI Overviews a AI Mode dohromady, návštěvnost z asistentů se v analytice míchá a ruční test ukáže jen jednotlivou odpověď. Měřit lze souhrn a směr vývoje, ne výkon jednoho povrchu.
 
@@ -130,22 +132,28 @@ Obojí jsou užitečná čísla. Ani jedno ale neříká nic o tom, jak si web v
 
 **Neříká, že měřit nemá smysl.** Říká jen, že se nemá předstírat přesnost, kterou data nemají.
 
-<DoDont
-  doTitle="Dělejte"
-  dontTitle="Nedělejte"
-  doItems={[
-    "U každého čísla uveďte, co přesně měří a za jaké období",
-    "Sledujte vývoj souhrnu v čase, ne jednotlivý údaj",
-    "Opakujte ruční testy s odstupem a na více dotazech",
-    "Návštěvnost z asistentů sledujte zvlášť od Google AI",
-  ]}
-  dontItems={[
-    "Přiřazovat souhrnná zobrazení konkrétně AI Mode",
-    "Vydávat zobrazení za návštěvnost",
-    "Stavět závěr na jedné vyzkoušené odpovědi",
-    "Slibovat klientovi měřitelný výkon v AI Mode",
-  ]}
-/>
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - U každého čísla uveďte, co přesně měří a za jaké období
+  - Sledujte vývoj souhrnu v čase, ne jednotlivý údaj
+  - Opakujte ruční testy s odstupem a na více dotazech
+  - Návštěvnost z asistentů sledujte zvlášť od Google AI
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Přiřazovat souhrnná zobrazení konkrétně AI Mode
+  - Vydávat zobrazení za návštěvnost
+  - Stavět závěr na jedné vyzkoušené odpovědi
+  - Slibovat klientovi měřitelný výkon v AI Mode
+
+  </Dont>
+</DoDont>
 
 ## Co si odnést
 
