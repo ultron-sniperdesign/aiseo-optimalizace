@@ -49,10 +49,12 @@
 
 ## C. PŘEPSAT ZADÁNÍ — téma obstojí, ale ne v současném rámování (2 řádky)
 
+**✅ Zadání přepsána 2026-07-28** — řádky zůstávají otevřené, ale s explicitním zákazem toho, co už jinde je.
+
 | Řádek plánu | Problém | Jak přerámovat |
 |---|---|---|
-| `obsah podle intentu dotazu` | `listicly-top-n-pro-ai` už AIVO studii i rozpad podle intentu (100 % → 0 %) vypráví celý. | Nesmí studii převyprávět. Musí to být **rozhodovací tabulka formát × záměr** napříč formáty (seznam / návod / srovnání / stránka), studie jen odkazem. |
-| `ai overviews trigger kdy` | `aeo-optimalizace-v-praxi` po dnešním refreshi obsahuje podíly zobrazení i rozptyl podle oboru. | Zúžit na **co spouštění mění v praxi** (typy dotazů, kde panel nečekat), ne na čísla. Jinak sloučit tam. |
+| `obsah podle intentu dotazu` | `listicly-top-n-pro-ai` už AIVO studii i rozpad podle intentu (100 % → 0 %) vypráví celý. | Nesmí studii převyprávět. Musí to být **rozhodovací tabulka formát × záměr** napříč formáty (seznam / návod / srovnání / stránka / definiční odstavec), studie jen odkazem. Plus co s dotazy se smíšeným záměrem. |
+| `ai overviews trigger kdy` | `aeo-optimalizace-v-praxi` po refreshi obsahuje podíly zobrazení i rozptyl podle oboru. | Zúžit na **co spouštění mění v praxi** (typy dotazů, kde panel nečekat; proč je nezobrazený panel někdy dobrá zpráva), ne na čísla. Pokud bez čísel neunese vlastní URL, sloučit tam jako sekci. |
 
 ## D. PSÁT — ověřeno, že na webu nejsou (11 řádků)
 
