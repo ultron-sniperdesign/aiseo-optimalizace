@@ -102,11 +102,12 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   - Prompt = konstantní stylová preambule (flat vektor, indigo/navy, světlé pozadí, sparkles) + scéna k tématu + **CZ text vlevo nahoře** (hlavní KW + podtitul, správná diakritika). Šablona v `IMAGE_GUIDE.md` §5.
   - **Kompozice:** důležitý obsah do horních **~84 %** — zobrazení ořízne spodních ~16 %.
   - `--prompt` do **jednoduchých** uvozovek, uvnitř žádný apostrof.
+  - ⛔ **Do promptu NIKDY `no text` / `no letters`** — CZ nadpis je povinná součást stylu. (Runy 51–62 na tomhle spadly: vznikla série tmavých abstraktních obrázků bez textu, přegenerováno 2026-07-27.)
   - **Zkontroluj** vygenerovaný PNG (Read): čitelný a správně napsaný CZ text + kompozice; jinak uprav prompt a regeneruj.
-  - Jeden soubor `public/og/<slug>.png` = thumbnail + hero + og:image (odvozeno ze slugu, žádné frontmatter pole). Volitelnou master kopii do `_source/_blog-images/` **přeskakuji** — mimo blogger scope.
+  - **Vyrob `.jpg` (1200×800) + `.webp` odvozeniny** — šablona sahá na `.jpg` (hero + og:image) a `.webp`, na `.png` nikde. Příkaz v `IMAGE_GUIDE.md` §2b. Volitelnou master kopii do `_source/_blog-images/` **přeskakuji** — mimo blogger scope.
 - **D3 — Publikace** (dle `blogger/README.md`):
   - `npm run build` (validace frontmatteru + komponent)
-  - `git add` JEN vlastní soubory: `src/content/articles/<slug>.mdx` + **`public/og/<slug>.png`** (povinně) + případně `public/blog/<slug>/` — nikdy `-A`
+  - `git add` JEN vlastní soubory: `src/content/articles/<slug>.mdx` + **`public/og/<slug>.{png,jpg,webp}`** (povinně všechny tři) + případně `public/blog/<slug>/` — nikdy `-A`
   - commit `Blog: …` (obrázek jde se článkem) → `git push origin main` → CI ~1–2 min
   - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.png` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2), IndexNow v CI logu; očima karta + hero (text obrázku se neusekne)
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` u řádku nastav `Publikováno = ano` a `URL = https://aiseo-optimalizace.cz/blog/<slug>/`. Commituj (`Blog: obsahový plán — <slug> publikováno`).

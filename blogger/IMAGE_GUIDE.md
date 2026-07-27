@@ -7,6 +7,20 @@
 
 ---
 
+> ## ⛔ NEJČASTĚJŠÍ SELHÁNÍ — přečti dřív, než napíšeš prompt
+>
+> **CZ text v obrázku je POVINNÁ součást stylu, ne volitelný doplněk.** Nikdy do promptu
+> nepiš `no text`, `no letters`, `no words` — je to přesný opak §4. Bez nadpisu vlevo nahoře
+> obrázek nejde odlišit od generické abstraktní grafiky a nesedí do sady.
+>
+> **Nepiš prompt od nuly podle vlastního citu.** Zkopíruj preambuli z §5, doplň jen
+> scénu + CZ nadpis a podtitul. Pozadí je **světle modro-šedé**, ne tmavé.
+>
+> *(Historie: v runech 51–62 vznikla série tmavých abstraktních obrázků bez textu, protože
+> se prompty psaly ad-hoc a obsahovaly „absolutely no text". Přegenerováno 2026-07-27.)*
+
+---
+
 ## 1. Čím generovat — skill + model
 
 - **Skill:** `open-ai-api-core` (`~/.claude/skills/open-ai-api-core/scripts/image.py`)
@@ -46,27 +60,32 @@ python3 "$SKILL_DIR/scripts/image.py" \
 
 ---
 
-## 2b. POVINNÉ: WebP varianta (perf)
+## 2b. POVINNÉ: tři soubory, ne jeden
 
-Po vygenerování PNG **vždy vytvoř i WebP** vedle něj (šablony servírují WebP
-přes `<picture>`, PNG zůstává fallback + og:image; 1,2 MB → ~40 KB):
+⚠️ **Opraveno 2026-07-27 podle skutečného chování šablony.** `RichLayout.astro` sahá na
+`/og/<slug>.jpg` (hero `<img>` + `og:image`) a `/og/<slug>.webp` (`<source>` v `<picture>`).
+**Na `.png` se nikde neodkazuje** — je to jen master pro pozdější regeneraci.
+Když `.jpg` chybí, `og:image` vrací 404 a náhledy při sdílení jsou rozbité (stalo se
+u 12 článků, opraveno commitem `ff3fa1b`).
+
+Po vygenerování PNG **vždy vyrob obě odvozeniny**:
 
 ```bash
-python3 -c "
-from PIL import Image
-Image.open('public/og/<slug>.png').convert('RGB').save('public/og/<slug>.webp', 'WEBP', quality=82, method=6)"
+node -e "
+const sharp=require('sharp'), s='<slug>';
+sharp('public/og/'+s+'.png').resize(1200,800,{fit:'cover'}).jpeg({quality:82}).toFile('public/og/'+s+'.jpg');
+sharp('public/og/'+s+'.png').webp({quality:78}).toFile('public/og/'+s+'.webp');"
 ```
 
-Když WebP chybí, nic se nerozbije (šablona při buildu kontroluje existenci
-a padá na PNG) — ale stránka článku je pak o ~1 MB těžší. Commituj oba soubory.
+Commituj všechny tři (`.png` master, `.jpg`, `.webp`).
 
 ## 3. Kam uložit
 
-- **`public/og/<slug>.png`** — jeden soubor, který slouží zároveň jako:
+- **`public/og/<slug>.{png,jpg,webp}`** — trojice, která slouží zároveň jako:
   1. **featured image** na kartě výpisu + hero v detailu (odvozeno ze slugu, žádné frontmatter pole netřeba),
-  2. **og:image** pro sociální sdílení (BaseLayout ho bere automaticky z `/og/<slug>.png`).
+  2. **og:image** pro sociální sdílení (BaseLayout bere `/og/<slug>.jpg`).
 - **Žádné jiné umístění.** Nepatří do `public/blog/<slug>/` (tam jdou jen inline obrázky v textu).
-- Bez tohoto souboru = rozbitý obrázek na kartě, heru i v og:image.
+- Bez `.jpg` = rozbitý obrázek na kartě, heru i v og:image.
 
 ---
 
@@ -156,9 +175,12 @@ curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.png" | head -1   # → 200
 
 ## 8. Co NEdělat
 
+- ❌ **Nikdy nepiš do promptu `no text` / `no letters` / `no words`.** CZ nadpis je povinný (§4). Tohle je nejčastější chyba — viz box na začátku souboru.
+- ❌ **Nepiš prompt od nuly.** Preambule z §5 doslova, měň jen scénu a CZ texty. Tmavé pozadí = mimo sadu.
 - ❌ Negeneruj přes difúzní modely (Nano Banana, DALL·E) když má být v obrázku text — komolí češtinu. **Vždy gpt-image-2.**
 - ❌ Nedávej text ani klíčový obsah do **spodních ~16 %** (ořízne se).
-- ❌ Neukládej jinam než `public/og/<slug>.png`.
+- ❌ Nezapomeň na `.jpg` + `.webp` odvozeniny (§2b) — bez `.jpg` je og:image 404.
+- ❌ Neukládej jinam než `public/og/<slug>.*`.
 - ❌ Žádná reálná loga/značky v obrázku.
 - ❌ Apostrof `'` uvnitř `--prompt` (rozbije shell). Diakritika OK, dvojité uvozovky OK.
 
