@@ -1,14 +1,14 @@
 ---
 title: "Zero-click a AI Overviews 2026: jak měřit a kompenzovat"
-description: "Zero-click roste i kvůli AI Overviews. Vysvětlíme, jak měřit dopad v Google Search Console, kdy je zero-click problém a jak ztrátu prokliků kompenzovat."
-answer: "Zero-click vyhledávání je situace, kdy uživatel dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz. AI Overviews tento podíl u řady dotazů zvyšují. V Google Search Console lze sledovat samostatné segmenty AI Mode a AI Overviews, kliky z nich ale nejsou oddělené od klasického organiku. Ne každý zero-click je problém — někdy posiluje značku přes citaci."
+description: "Zero-click roste a s AI Overviews se pojí ještě nižší CTR. Jak měřit dopad v Search Console, kdy je zero-click problém a jak ztrátu prokliků kompenzovat."
+answer: "Zero-click vyhledávání je situace, kdy uživatel dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz. Podle analýzy SparkToro skončilo v prvních čtyřech měsících roku 2026 bez prokliku zhruba 68 % vyhledávání v Googlu; u dotazů, kde se AI Overviews zobrazí, studie pozorují nižší míru prokliku. Ne každý zero-click je ale ztráta."
 slug: "zero-click-ai"
 category: "analysis"
 tags:
   - "mereni"
   - "strategie"
 published: "2026-05-28"
-updated: "2026-05-28"
+updated: "2026-07-28"
 variant: "rich"
 keywords:
   - "zero-click ai"
@@ -19,19 +19,19 @@ keywords:
   - "ai search console"
   - "ai overviews dopad"
 stats:
-  - value: "AI segmenty"
-    label: "GSC od poloviny 2025 zobrazuje AI Mode a AI Overviews zvlášť"
-  - value: "nelze oddělit"
-    label: "kliky z AIO se v reportech mísí s klasickým organikem"
-  - value: "dobrý vs. špatný"
-    label: "ne každý zero-click je problém — záleží na typu dotazu"
-  - value: "značka"
-    label: "citace v AIO může u značkových dotazů CTR i zvyšovat"
+  - value: "68 %"
+    label: "vyhledávání v Googlu bez prokliku za první čtyři měsíce 2026 (SparkToro)"
+  - value: "27 → 11 %"
+    label: "CTR první pozice bez AIO a s ním (Sistrix, 2/2026)"
+  - value: "68 → 50 %"
+    label: "podíl bez prokliku v roce 2026 oproti roku 2019 (SparkToro)"
+  - value: "1 %"
+    label: "návštěv s AI Overview, kde uživatel klikl na odkaz uvnitř panelu (Pew Research, 7/2025)"
 howto:
   name: "Jak měřit a kompenzovat zero-click v AI éře"
   steps:
     - name: "Použijte AI segmenty v GSC"
-      text: "V Google Search Console otevřete Výkon → Search Appearance a vyberte segmenty AI Mode nebo AI Overviews, pokud jsou pro váš web dostupné. Sledujte hlavně zobrazení a CTR."
+      text: "V Google Search Console otevřete Výkon → Search Appearance a vyberte segmenty AI Mode nebo AI Overviews, pokud jsou pro váš web dostupné. Zobrazení a CTR v nich sledujte jako trendový ukazatel, ne jako přesné měření podílu kliků z panelu."
     - name: "Identifikujte dotčené dotazy"
       text: "Najděte klíčová slova, kde rostou imprese, ale klesá CTR — možný signál rostoucího zero-click. Ověřte proti pozici, sezónnosti a výskytu AI Overview."
     - name: "Roztřiďte dobrý a špatný zero-click"
@@ -40,11 +40,11 @@ howto:
       text: "Posilte značku přes citace v AI, investujte do střední části trychtýře (porovnání, recenze) a měřte i nepřímou hodnotu."
 faq:
   - q: "Co je zero-click vyhledávání?"
-    a: "Zero-click vyhledávání je situace, kdy uživatel zadá dotaz, dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz na cizí web. Roste s rozšířenými výsledky, featured snippety a v posledních letech zejména s AI Overviews. Podle dostupných analýz se v roce 2026 podíl zero-click dotazů blíží dvěma třetinám."
+    a: "Zero-click vyhledávání je situace, kdy uživatel zadá dotaz, dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz na cizí web. Roste s rozšířenými výsledky, featured snippety a v posledních letech zejména s AI Overviews. Podle analýzy SparkToro skončilo v prvních čtyřech měsících roku 2026 bez prokliku zhruba 68 % vyhledávání v Googlu — na jejich vzorku a metodice, ne na českých datech."
   - q: "Jak měřit zero-click v Google Search Console?"
     a: "Google Search Console od poloviny roku 2025 zobrazuje pod filtrem Search Appearance samostatné segmenty AI Mode a AI Overviews. V nich sledujte hlavně zobrazení a CTR — kliky ale k roku 2026 nelze spolehlivě oddělit od klasického organického vyhledávání, proto vyhodnocujte trend zobrazení, CTR a dotazů společně. Signálem rostoucího zero-click je rostoucí počet impressions u dotazu při klesajícím CTR."
   - q: "Jdou v GSC oddělit kliky z AI Overviews od klasického organiku?"
-    a: "Ne, k roku 2026 to nejde. Google Search Console kliky z AI Overviews zahrnuje do reportů, ale nerozlišuje je od klasických organických kliků. Samostatně dokážete sledovat impressions a CTR v rámci segmentů AI Mode a AI Overviews, ale kliky z nich se na úrovni jednotlivého prokliku od klasických neoddělují."
+    a: "Ne, k roku 2026 to nejde. Google Search Console kliky z AI Overviews zahrnuje do reportů, ale nerozlišuje je od klasických organických kliků. Impressions a CTR v segmentech AI Mode a AI Overviews sledujte jako trendový ukazatel, ne jako přesné oddělení kliků z panelu, ale kliky z nich se na úrovni jednotlivého prokliku od klasických neoddělují."
   - q: "Je každý zero-click problém?"
     a: "Není. Existují dva typy: dobrý zero-click znamená, že vás AI cituje nebo uvádí značku — uživatel si značku zafixuje, i když neklikne. Špatný zero-click nastává, když AI nebo rozšířený výsledek převezme odpověď u dotazu s obchodní hodnotou (porovnání, ceny, recenze, dotazy blízko konverzi) a uživatel značku ani neuvidí, ani neklikne. Hodnotu zero-click proto posuzujte podle typu dotazu a podle toho, jestli z něj zůstává viditelnost značky."
   - q: "Jak kompenzovat ztrátu prokliků kvůli AI Overviews?"
@@ -61,33 +61,70 @@ import Mistake from "../../components/blocks/Mistake.astro";
 
 ## Zero-click v AI éře: co se vlastně děje
 
-**Zero-click vyhledávání je situace, kdy uživatel dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz.** U řady dotazů mohou AI Overviews tento podíl zvyšovat — uživatel někdy dostane dostatečnou odpověď přímo ve výsledku a nemá důvod pokračovat na web. Pro značky to ale není jen ztráta prokliků: část zero-click dotazů zároveň posiluje značku přes citace. Klíč je proto **měřit dopad a vědomě kompenzovat**, ne paniku z poklesu návštěvnosti.
+**Zero-click vyhledávání je situace, kdy uživatel dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz.** U řady dotazů mohou AI Overviews tento podíl zvyšovat — uživatel někdy dostane dostatečnou odpověď přímo ve výsledku a nemá důvod pokračovat na web. Pro značky to ale nemusí být jen ztráta prokliků: citace ve výsledku může mít brandingový efekt. Je to ale **hypotéza, kterou uvedená čísla nedokládají** — brandingový dopad se měří podstatně hůř než prokliky. Klíč je proto **měřit dopad a vědomě kompenzovat**, ne paniku z poklesu návštěvnosti.
 
 Tento rozbor doplňuje [návod, jak vypnout AI Overview](/blog/jak-vypnout-ai-overview/) o **analytický pohled**: jak měřit zero-click v Google Search Console, kdy je problém a jak ztrátu kompenzovat. Pro širší měření výkonu se hodí [návod na měření SEO výkonu](/blog/mereni-seo-vykonu-2026/).
 
 <Insight tone="accent" icon="!" label="Co si odnést">
-  Ne každý zero-click je ztráta. Citace v AI Overviews může posílit značku, i když uživatel neklikne. Cílem není každý zero-click zachránit, ale rozlišit dobrý od špatného a kompenzovat ztrátu hodnotných návštěv.
+  Ne každý zero-click je ztráta. Citace v [AI Overviews](/slovnik/ai-overviews/) může posílit značku, i když uživatel neklikne — počítejte ale s tím, že proklik z ní přijde jen výjimečně. Cílem není každý [zero-click](/slovnik/zero-click/) zachránit, ale rozlišit dobrý od špatného a kompenzovat ztrátu hodnotných návštěv.
 </Insight>
 
 ## Jak AI Overviews mění CTR a zero-click podíl
 
-Zero-click není nový jev, ale AI Overviews ho výrazně zesilují:
+Zero-click není nový jev a **AI Overviews nejsou jeho jedinou příčinou.** Data, která k tomu existují, srovnávají výsledky s panelem a bez něj — a panel se nezobrazuje náhodně, objevuje se spíš u dotazů, které mají k nulovému prokliku blízko i tak. Z čísel proto plyne **souvislost, ne prokázaná příčina.**
 
-- Podíl zero-click dotazů v Googlu roste — různé analýzy z let 2025–2026 ukazují, že se u části trhů přibližuje **dvěma třetinám** dotazů. Berte to jako orientační trend, ne univerzální benchmark.
-- U dotazů s AI Overviews bývá zero-click podíl ještě výrazně vyšší.
-- CTR pozic v organiku u dotazů s AIO podle analýz citelně klesá — rozptyl je ale velký, závisí na typu dotazu, oboru a podobě výsledku.
+Projeví se to hlavně na [míře prokliku (CTR)](/slovnik/ctr/). K polovině roku 2026 existuje několik měření od pojmenovaných zdrojů:
 
-Konkrétní procenta se mezi studiemi liší podle trhu, zařízení, typu dotazu a metodiky měření — berte je jako trend, ne jako benchmark.
+Jsou to ale **tři různé věci** a je důležité je nesloučit do jednoho dojmu.
+
+**1. Jaký podíl vyhledávání končí bez prokliku**
+
+| Zjištění | Co metrika měří | Zdroj |
+|---|---|---|
+| **68 %** vyhledávání v Googlu bez prokliku (leden–duben 2026) | podíl vyhledávání, ne uživatelů | SparkToro, 2026 |
+| Růst z hodnoty kolem **50 % v roce 2019** | tentýž ukazatel v čase, podle téhož zdroje | SparkToro, 2026 |
+
+**2. Jak se liší organické CTR, když se AI Overview zobrazí**
+
+| Zjištění | Co metrika měří | Zdroj |
+|---|---|---|
+| CTR první pozice **nižší zhruba o 58 %** | srovnání SERPů s AIO a bez něj | Ahrefs, únor 2026 |
+| CTR první pozice **27 % → 11 %** | totéž, jiná metodika a vzorek | Sistrix, únor 2026 |
+
+**3. Jak se lidé chovají uvnitř výsledku s AI Overview**
+
+| Zjištění | Co metrika měří | Zdroj |
+|---|---|---|
+| S AIO klikne na organický výsledek **8 %** uživatelů, bez něj 15 % | chování uživatelů v panelu, ne CTR stránky | Pew Research, červenec 2025 |
+| Na odkaz **uvnitř** AI Overview klikne asi **1 %** uživatelů | tamtéž | Pew Research, červenec 2025 |
+
+<Insight tone="warn" label="Proč se čísla liší">
+Všimněte si, že i tabulky výše se rozcházejí: Ahrefs mluví o poklesu CTR zhruba o 58 %, Sistrix o propadu z 27 na 11 procent a z Pew vychází pokles kliků na organický výsledek z 15 na 8 procent. **Není to spor — každá studie počítá něco jiného:** jiný vzorek dotazů, jiné zařízení, jiný trh a jiná definice toho, co se počítá jako proklik. Sledujte proto řád a směr, ne desetinná místa. A hlavně: **žádné z těch čísel není měřené na českých datech.**
+</Insight>
+
+Rozptyl mezi obory je přitom větší než rozdíly mezi studiemi. U dotazů na počasí, převody jednotek nebo kurzy se podíl bez prokliku blíží 100 % odjakživa — dávno před AI, protože odpověď se vejde do výsledku. U odborných a nákupních dotazů je naopak podstatně nižší. **Celkový průměr proto o vašem oboru neříká skoro nic.**
+
+### Co si z cizích čísel odnést pro český web
+
+**Ani jedno z těch čísel není benchmark pro váš web.** Jsou to zahraniční vzorky s vlastní metodikou a český ekvivalent veřejně neexistuje. Použijte je jako signál směru — a vlastní hodnotu si spočítejte sami.
+
+<Checklist tone="seo" title="Jak si udělat vlastní baseline" items={[
+  { title: "Vyexportujte top dotazy ze Search Console", desc: "Za posledních dvanáct měsíců, aby v datech byla sezónnost. Pracujte s dotazy, ne se stránkami." },
+  { title: "Oddělte značkové a neznačkové dotazy", desc: "Značkové jsou ty, které obsahují název vaší firmy nebo produktu — vyfiltrujte je regulárním výrazem. Smíchané dohromady vám zprůměrují právě to, co potřebujete vidět." },
+  { title: "Najděte dotazy, kde rostou imprese a klesá CTR", desc: "To je hlavní kandidát na rostoucí zero-click. Samotný pokles návštěv nestačí — může být jen o pozici." },
+  { title: "U vzorku ověřte SERP ručně", desc: "Vezměte deset takových dotazů a v anonymním okně, ze stejného místa a na stejném zařízení se podívejte, jestli se u nich AI Overview vůbec zobrazuje. Bez toho jen hádáte." },
+  { title: "Prioritizujte podle obchodní hodnoty", desc: "Neřešte všechno. Zajímají vás neznačkové dotazy blízko konverzi a stránky, které opravdu vydělávají." },
+]} />
 
 ## Jak měřit zero-click v Google Search Console
 
-Google v polovině roku 2025 přidal do GSC samostatné AI segmenty. Tady je, co s nimi dělat:
+Od roku 2025 jsou v části účtů v GSC dostupné samostatné AI segmenty. Tady je, co s nimi dělat:
 
 <Checklist tone="seo" title="Měření zero-click v GSC" items={[
   { title: "AI segmenty v Search Appearance", desc: "ve filtru najdete AI Mode a AI Overviews (pokud jsou pro váš účet dostupné) — impressions a CTR uvidíte v rámci daného reportu." },
   { title: "Trend impressions vs CTR", desc: "rostoucí impressions a klesající CTR je možný signál zero-click; ověřte proti pozici, sezónnosti a výskytu AIO." },
   { title: "Porovnání segmentů", desc: "kde se chová AI Overviews jinak než klasické výsledky — to je oblast k řešení." },
-  { title: "Značkové vs neznačkové dotazy", desc: "u značkových dotazů může citace v AIO CTR i zvyšovat — sledujte zvlášť." }
+  { title: "Značkové vs neznačkové dotazy", desc: "u značkových dotazů se někdy uvádí, že citace CTR nesnižuje tolik nebo i pomáhá — doloženo to ale není, berte to jako hypotézu k ověření na vlastních datech." }
 ]} />
 
 <Insight tone="seo" icon="i" label="Co GSC k roku 2026 neumí">
@@ -113,9 +150,9 @@ Ne každý zero-click je problém. Rozlišení rozhoduje o tom, kdy ztrátu komp
 
 ## Jak kompenzovat ztrátu prokliků
 
-Pokud zero-click přebírá hodnotné dotazy, soustředění jen na objem prokliků nestačí. Posuňte měření i strategii:
+Pokud u hodnotných dotazů pozorujete rostoucí imprese a klesající CTR, soustředění jen na objem prokliků nestačí. Posuňte měření i strategii:
 
-- **Posilte značku přes AI citace** — citace v AIO může zvýšit viditelnost značky i bez prokliku, pokud je zdroj nebo značka ve výsledku zřetelně uvedená. Pomáhá [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/).
+- **Posilte značku přes AI citace** — citace v AIO může zvýšit viditelnost značky i bez prokliku, pokud je zdroj nebo značka ve výsledku zřetelně uvedená. Pomáhá [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/). **Nečekejte ale, že citace nahradí proklik:** podle Pew Research klikne na odkaz uvnitř AI Overview zhruba 1 % uživatelů. Hodnota citace je v tom, že vás uživatel uvidí, ne v návštěvě.
 - **Investujte do střední části trychtýře** — porovnání, recenze, značkové dotazy a dotazy na dodavatele, alternativy a ceny, kde se rozhoduje o nákupu.
 - **Pracujte na zmínkách mimo vlastní web** — [zmínky a recenze](/blog/ai-brand-mentions/) mohou pomoci posílit dohledatelnost a důvěryhodnost značky v ekosystému zdrojů, ze kterých AI odpovědi čerpají.
 - **Měřte i nepřímé metriky** — vyhledávání značky, zmínky v AI odpovědích, kvalitu konverzí, ne jen objem návštěv.
