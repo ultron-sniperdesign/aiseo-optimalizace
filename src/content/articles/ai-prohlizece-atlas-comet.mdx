@@ -1,0 +1,210 @@
+---
+title: "AI prohlížeče: co Atlas a Comet dělají s vaším webem"
+description: "ChatGPT Atlas a Perplexity Comet se hlásí jako Chrome. Proč je robots.txt neoddělí, co to dělá s vaší analytikou a kde vzniká riziko u placené reklamy."
+answer: "AI prohlížeče nejsou vyhledávací roboti, ale prohlížeče v rukou uživatele. ChatGPT Atlas i Perplexity Comet se podle dostupných testů hlásí v user-agentu jako Chrome, takže je přes robots.txt ani podle user-agentu selektivně neoddělíte. Co se mění, není obsahová práce, ale měření: návštěva z nich často spadne do přímé."
+slug: "ai-prohlizece-atlas-comet"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-07-28"
+updated: "2026-07-28"
+keywords:
+  - "ai prohlížeče"
+  - "chatgpt atlas"
+  - "perplexity comet"
+  - "ai prohlížeč měření návštěvnosti"
+  - "atlas user agent"
+variant: "rich"
+stats:
+  - value: "Chrome"
+    label: "za co se AI prohlížeče vydávají v user-agentu"
+  - value: "Direct"
+    label: "kam návštěva z AI prohlížeče často spadne, když se nepropíše referrer (nebo do not set)"
+  - value: "žádný"
+    label: "veřejně známý samostatný token v robots.txt pro AI prohlížeč"
+  - value: "OAI-SearchBot"
+    label: "veřejně popsaný crawler, kterým OpenAI obsah objevuje pro vyhledávání"
+faq:
+  - q: "Můžu AI prohlížeč zablokovat v robots.txt?"
+    a: "Selektivně ne. Robots.txt míří na roboty a Atlas ani Comet nemají vlastní řídicí token; v user-agentu se navíc hlásí jako Chrome, takže pravidlo, které by je zachytilo, by zablokovalo i běžné návštěvníky. Neznamená to, že provozovatel žádné instrukce ze stránky nerespektuje — jen že vy je přes robots.txt cíleně neoddělíte."
+  - q: "Poznám návštěvu z AI prohlížeče v logu?"
+    a: "Podle user-agentu ne — vypadá jako Chrome. Podle chování to jde jen nespolehlivě (téměř nulové prodlevy mezi kroky, neobvyklé pořadí akcí). Naopak v agentním režimu existuje podepsaná hlavička Signature-Agent, jejíž pravost se dá ověřit — to je dnes nejčistší dostupná identifikace. Zachytí ale jen agenta, ne člověka, který si v Atlasu čte."
+  - q: "Proč mi roste přímá návštěvnost, i když jsem nic neudělal?"
+    a: "Jedním z možných vysvětlení je právě tohle: AI prohlížeče často neposílají referrer, takže návštěva spadne do Direct. Smíchá se tam s lidmi, kteří přišli ze záložky nebo si adresu napsali. Není to důkaz, jen jedno z vysvětlení — ověřte si i ostatní příčiny, třeba chybějící UTM parametry v kampaních."
+  - q: "Je návštěva z chatgpt.com vidět jinak než z Atlasu?"
+    a: "Podle dostupných pozorování ano, a je to důležitý rozdíl. U webové verze ChatGPT se v odkazech objevuje parametr utm_source=chatgpt.com, takže návštěvu v analytice poznáte. U prohlížeče se referrer často nepropíše. Stejný nástroj, jiný povrch, jiná viditelnost v datech — ověřte si ale, jak to vypadá ve vašich vlastních datech, chování se mění."
+  - q: "Mám kvůli AI prohlížečům předělat web?"
+    a: "Není k tomu důvod. Nic nenaznačuje, že by prohlížeč vyžadoval jinou práci než ostatní AI systémy — tedy čitelnou strukturu, jasné odpovědi a konzistentní data. Co má smysl změnit, je čtení reportů a ostražitost u placené reklamy."
+  - q: "Souvisí to nějak s tím, že mě AI cituje?"
+    a: "Nepřímo. Vaši adresu si prohlížeč načte vždycky, když ji uživatel zadá nebo na ni klikne. Aby vás ale nástroj sám nabídl v odpovědi nebo doporučení, musí obsah nejdřív najít crawler — u OpenAI je to OAI-SearchBot. Jeho blokace v robots.txt tuhle cestu omezí, ať Atlas používá kdokoli."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**AI prohlížeče nejsou vyhledávací roboti, ale prohlížeče v rukou uživatele.** ChatGPT Atlas i Perplexity Comet se podle dostupných testů hlásí v user-agentu jako Chrome, takže je přes robots.txt ani podle user-agentu selektivně neoddělíte. Co se mění, není obsahová práce, ale měření: návštěva z nich často spadne do přímé.
+
+Kolem AI prohlížečů se rychle nabalila vrstva rad typu „připravte web na Atlas". Většina z nich řeší špatný problém. Ta zajímavá změna není v tom, co na web napíšete — je v tom, co uvidíte v reportech a za co zaplatíte v reklamě.
+
+## Co to vlastně je a proč to není crawler
+
+AI prohlížeč je běžný prohlížeč s vestavěným modelem. Uživatel v něm surfuje jako jinde, ale může požádat o shrnutí stránky, porovnání dvou nabídek nebo o to, aby za něj asistent něco na stránce udělal.
+
+Rozdíl proti [AI crawlerům](/blog/ai-crawler-robots-txt/) je zásadní:
+
+<CompareTable
+  leftLabel="AI crawler"
+  leftTone="seo"
+  rightLabel="AI prohlížeč"
+  rightTone="aeo"
+  rows={[
+    { icon: "🤖", label: "Kdo to spustil", left: "Provozovatel služby, dávkově a plánovaně", right: "Konkrétní člověk, právě teď" },
+    { icon: "🪪", label: "Jak se představí", left: "Vlastním jménem (GPTBot, OAI-SearchBot, PerplexityBot)", right: "Jako Chrome — bez rozlišení" },
+    { icon: "📄", label: "Jde řídit přes robots.txt", left: "Ano, u slušných provozovatelů", right: "Selektivně ne — nemá vlastní token ani odlišný user-agent" },
+    { icon: "🔍", label: "Odlišíte ho podle user-agentu", left: "Ano", right: "Ne — splyne s běžnou návštěvou z Chromu" },
+    { icon: "🎯", label: "K čemu slouží", left: "Objevování a indexace obsahu", right: "Čtení a jednání za uživatele" },
+  ]}
+/>
+
+Tohle je jádro celého tématu. **Prohlížeč není něco, co byste pouštěli nebo blokovali — je to způsob, jakým k vám chodí lidé.**
+
+## Hlásí se jako Chrome. A to má následky
+
+Testy ukazují, že Atlas i Comet posílají **stejný user-agent jako Chrome** — ne „něco podobného Chromu", ale přesně Chrome. Nemají vlastní identifikátor ani token pro `robots.txt`.
+
+<Checklist tone="aeo" title="Co z toho plyne" items={[
+  { title: "Nejde je selektivně zablokovat", desc: "Pravidlo, které by je zachytilo podle user-agentu, by odřízlo i běžné návštěvníky z Chromu. Kdo to zkusí, ustřelí si nohu." },
+  { title: "Nejde je plošně spočítat", desc: "Mimo agentní režim nemáte v analytice ani v logu segment, kterým byste je oddělili. Kolik lidí k vám přes ně chodí, prostě nevíte." },
+  { title: "Nepřímá detekce je nespolehlivá", desc: "Jde jít po chování — téměř nulové prodlevy mezi kroky, neobvyklé pořadí akcí. Pro běžný web je to práce, která se nezaplatí." },
+  { title: "Výjimkou je agentní režim", desc: "Když asistent jedná sám, může posílat podepsanou hlavičku, která ho identifikuje. Zpátky k tomu na konci článku." },
+]} />
+
+## Co se rozbíjí: měření
+
+Tohle je nejpraktičtější dopad a stojí za to ho pochopit přesně, protože se liší podle toho, **odkud** uživatel přišel — i když je to ten samý nástroj.
+
+<CompareTable
+  leftLabel="ChatGPT na webu"
+  leftTone="seo"
+  rightLabel="ChatGPT Atlas / Comet"
+  rightTone="aio"
+  rows={[
+    { icon: "🔗", label: "Co dorazí s návštěvou", left: "Podle dostupných pozorování bývá parametr utm_source=chatgpt.com", right: "Referrer se často nepropíše" },
+    { icon: "📊", label: "Jak to sedí v analytice", left: "Rozpoznatelný zdroj", right: "Direct, nebo (not set)" },
+    { icon: "🧮", label: "Dá se to spočítat", left: "Ano, jako samostatný kanál", right: "Ne — smíchá se s přímými návštěvami" },
+    { icon: "🧭", label: "Co si z toho odnesete", left: "Vidíte, že AI kanál funguje", right: "Vidíte růst Directu bez vysvětlení" },
+  ]}
+/>
+
+Praktický důsledek: **návštěvy, které reálně přišly z AI, se můžou smíchat s lidmi, kteří si adresu napsali ručně nebo přišli ze záložky.** Direct tiše roste a snadno se to přečte jako sílící přímá poptávka po značce.
+
+Čím přesně je to způsobené, ale veřejně popsané není. Na vině může být samotný prohlížeč, přechod z interní AI vrstvy, nastavení `Referrer-Policy` nebo přesměrování po cestě. **Je to pozorovaný efekt, ne popsaný mechanismus** — a to je rozdíl, který stojí za to držet, než na tom postavíte rozhodnutí.
+
+<Insight tone="warn" label="Než to na Direct svedete">
+Rostoucí přímá návštěvnost má **spoustu jiných vysvětlení** — chybějící UTM parametry v kampaních, špatně nasazené měření, přesměrování, e-mailové odkazy bez značek. AI prohlížeč je **jedna z možných příčin, ne diagnóza.** Než na něj svedete výkyv v datech, projděte ty obvyklejší.
+</Insight>
+
+Souvislost s obecnějším problémem měření rozebíráme v článku o [návštěvnosti a konverzích z AI](/blog/ai-navstevnost-konverze/) a o [zero-click chování](/blog/zero-click-ai/).
+
+### Co si nastavit místo toho
+
+Přesné číslo nedostanete. Můžete si ale nastavit kontroly, které anomálii odhalí, i když ji neumíte pojmenovat:
+
+<Checklist tone="seo" title="Praktické minimum" items={[
+  { title: "Sledujte podíl Directu, ne jeho absolutní výši", desc: "Skokový růst podílu při stabilním zbytku je signál. Samotný růst návštěv nic neříká." },
+  { title: "Porovnávejte Direct s brandovým vyhledáváním", desc: "Když roste přímá návštěvnost a brandové dotazy v Search Console stojí, je vysvětlení „lidé si nás pamatují“ slabší." },
+  { title: "Oddělte si nové a vracející se návštěvníky", desc: "Skutečná přímá návštěvnost bývá z velké části vracející se. Náhlý příliv nových v Directu je podezřelý." },
+  { title: "Logujte hlavičku Signature-Agent na serveru", desc: "Nejčistší dnes popsaná identifikace, a to ověřitelná podpisem. Zachytí ale jen agentní režim, ne člověka čtoucího v Atlasu." },
+]} />
+
+U všech čtyř hledejte **zlom proti čtyřem až osmi předchozím týdnům**, ne absolutní hodnotu — a před vyhodnocením očistěte data o sezónnost a běžící kampaně. Žádná z těch kontrol nedá jistotu. Dohromady ale stačí na to, abyste poznali, že se něco změnilo, a nezaměnili to za úspěch.
+
+## Riziko, které stojí peníze
+
+Objevují se upozornění, že Atlas v agentním režimu **umí na stránce klikat způsobem, který na úrovni samotné stránky působí podobně jako člověk — včetně kliků na placenou reklamu.** Inzerent by pak mohl zaplatit za proklik, který neudělal zákazník.
+
+<Insight tone="warn" label="Zatím je to možnost, ne doložený účet">
+**Není veřejně změřené, jak velký ten objem je — ani jestli takové kliky reklamní systémy vůbec proplácejí.** Platformy mají vlastní filtry na neplatný provoz a je možné, že velkou část odchytí. Nikdo zvenčí to ale neověří.
+
+Berte to tedy jako **teoretickou možnost, kterou stojí za to sledovat**, ne jako díru v rozpočtu.
+</Insight>
+
+Když chcete být konkrétní, sledujte tohle:
+
+<Checklist tone="accent" title="Na co se u kampaní dívat" items={[
+  { title: "Poměr prokliků a konverzí v čase", desc: "Zajímá vás zlom bez zjevné příčiny, ne absolutní číslo. Srovnávejte se stejným obdobím dřív." },
+  { title: "Chování po prokliku", desc: "Doba na stránce, hloubka scrollu, druhá stránka. Nulová interakce ve velkém objemu je signál k prošetření." },
+  { title: "Brandové versus nebrandové kampaně zvlášť", desc: "Rozcházejí-li se jen u jedné skupiny, příčina bude spíš v cílení než v novém typu provozu." },
+  { title: "Reklamace u podpory platformy", desc: "Pokud máte podezření na neplatný provoz, je to jediná cesta, jak se dostat k penězům zpátky. Připravte si data předem." },
+]} />
+
+## Co s tím reálně nadělám
+
+<DoDont>
+  <Do>
+    **Zvažte, jestli chcete blokovat `OAI-SearchBot`.** Do odpovědí a doporučení uvnitř ekosystému se obsah dostává přes crawler. Načíst si vaši URL přímo prohlížeč umí vždycky, ale blokace crawleru v [robots.txt](/blog/ai-crawler-robots-txt/) omezí šanci, že vás nástroj sám nabídne. Pokud citovatelnost chcete, tohle je cena.
+
+    **Počítejte s tím při čtení Directu.** Nepřipisujte si růst přímé návštěvnosti jako zásluhu, dokud nevyloučíte obvyklejší příčiny.
+
+    **U placených kampaní sledujte poměr prokliků a konverzí.** Když se rozejde bez zjevného důvodu, přidejte si tuhle hypotézu na seznam.
+
+    **Držte stránku čitelnou a strukturovanou.** Je to stejná práce, která pomáhá ostatním AI systémům — jen ji nedělejte „kvůli Atlasu".
+  </Do>
+  <Dont>
+    **Nepokoušejte se je blokovat podle user-agentu.** Zablokovali byste Chrome, tedy většinu svých návštěvníků.
+
+    **Nepředělávejte web „pro AI prohlížeče".** Nic nenaznačuje, že by chtěly něco jiného než ostatní AI systémy.
+
+    **Neberte růst Directu jako důkaz.** Je to indicie mezi mnoha jinými.
+
+    **Nekupujte nástroj, který slibuje spolehlivou detekci.** Bez podepsané identity je to odhad z chování, ať to prodejce nazve jakkoli.
+  </Dont>
+</DoDont>
+
+## Jak to poznat, když to opravdu potřebujete
+
+Jedna cesta existuje, ale platí jen pro **agentní režim**, ne pro člověka, který si v Atlasu jen čte. Když asistent jedná sám, může posílat hlavičku, která ho identifikuje:
+
+```txt
+Signature-Agent: "https://chatgpt.com"
+```
+
+Její pravost se ověřuje podpisem v hlavičkách `Signature-Input` a `Signature`. Je to praktické nasazení principu, který se v IETF teprve standardizuje pod názvem **Web Bot Auth** — a který podrobněji popisujeme v článku o [robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+
+<Insight tone="accent">
+Stojí za povšimnutí, že řešení identity přichází **z opačné strany, než se čekalo.** Ne přes `robots.txt`, kam si každý napíše, co chce, ale přes kryptografický podpis požadavku. Zatím to ale zdaleka nepokrývá všechny nástroje ani všechny režimy.
+</Insight>
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Blokovat prohlížeč v robots.txt" fix="Robots.txt řešte jen u crawlerů. U prohlížeče není co blokovat — je to váš návštěvník.">
+    Nejčastější reakce na zprávu o AI prohlížečích je snaha je vypnout. Není kde a není co: nemají vlastní token a hlásí se jako Chrome.
+  </Mistake>
+  <Mistake num="02" title="Přičíst si růst Directu" fix="Nejdřív vylučte chybějící UTM, rozbité měření a přesměrování. AI prohlížeč je až jedna z dalších hypotéz.">
+    Přímá návštěvnost roste a vypadá to jako sílící značka. Může to tak být — ale taky to může být jen ztracený referrer.
+  </Mistake>
+  <Mistake num="03" title="Zablokovat crawler a čekat, že vás nástroj bude nabízet" fix="Objevování uvnitř ekosystému běží přes crawler. Přímo zadanou adresu prohlížeč načte vždy, doporučení bez crawleru ale nečekejte.">
+    Prohlížeč a crawler se snadno pletou. Blokace crawleru kvůli „ochraně před AI" omezí i cestu, kterou by k vám lidé mohli přijít.
+  </Mistake>
+  <Mistake num="04" title="Předělat web kvůli nové kategorii nástrojů" fix="Dělejte to, co platí obecně: čitelná struktura, jasné odpovědi, konzistentní data.">
+    Každá nová vrstva v AI přinese vlnu doporučení, jak na ni web připravit. Tady pro to zatím není doklad.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z článku odnést
+
+AI prohlížeče jsou nová vrstva mezi uživatelem a vaším webem, ale **nechovají se jako roboti — chovají se jako Chrome.** Nejde je pustit ani zakázat, protože to není rozhodnutí, které byste dělali vy.
+
+Co se opravdu mění, jsou dvě věci a ani jedna není obsahová. **Rozbíjí se atribuce** — návštěva z AI často spadne do Directu a smíchá se s ostatními. A **vzniká nová kategorie provozu u placené reklamy**, u které zatím nikdo zvenčí neumí říct, jak je velká.
+
+To první si můžete ohlídat vlastními daty už dnes. To druhé zatím jen sledovat.
+
+Práce na webu zůstává stejná. Změnit se má opatrnost, se kterou čtete reporty.
