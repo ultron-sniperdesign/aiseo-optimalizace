@@ -1,0 +1,221 @@
+---
+title: "Jak se dostat do AI odpovědí: rozcestník podle kanálu"
+description: "AI Overviews, AI Mode, ChatGPT, Perplexity i Seznam Asistent. Co u kterého kanálu rozhoduje, kde začít podle typu firmy a co je jen pozorování."
+answer: "Do AI odpovědí se v Česku dostanete hlavně přes pět kanálů: Google AI Overviews, Google AI Mode, ChatGPT, Perplexity a Seznam Asistent. Každý si vybírá zdroje trochu jinak, ale většina práce je společná — dohledatelnost pro roboty, přímá odpověď na začátku a shoda údajů napříč zdroji."
+slug: "jak-se-dostat-do-ai-odpovedi"
+category: "tutorial"
+tags:
+  - "strategie"
+  - "obsah"
+published: "2026-07-28"
+updated: "2026-07-28"
+keywords:
+  - "jak se dostat do ai odpovědí"
+  - "jak se dostat do ai overviews"
+  - "citace v ai"
+  - "ai viditelnost kanály"
+  - "ai odpovědi česko"
+variant: "rich"
+stats:
+  - value: "5"
+    label: "kanálů, které v Česku řeší většina firem jako první"
+  - value: "1×"
+    label: "kolikrát se dělá společný základ — platí pro všechny kanály"
+  - value: "0"
+    label: "kanálů, které citaci zaručí, i když všechno uděláte správně"
+howto:
+  name: "Jak se dostat do AI odpovědí"
+  steps:
+    - name: "Ověřte, že vás roboti vůbec vidí"
+      text: "V robots.txt nesmí být zablokované vyhledávací a on-demand roboty jednotlivých služeb. Ověřte i meta robots, X-Robots-Tag a dostupnost obsahu bez přihlášení. Bez tohohle kroku má zbytek práce podstatně menší šanci se projevit."
+    - name: "Dejte na začátek stránky přímou odpověď"
+      text: "Zhruba čtyřicet až šedesát slov hned pod nadpisem, které odpovídají na dotaz bez rozehřívání. Je to formát, který se dobře extrahuje, ne záruka převzetí."
+    - name: "Sjednoťte údaje napříč zdroji"
+      text: "Web, firemní profily, katalogy a recenzní platformy musí uvádět totéž. Rozpor mezi zdroji si systém vyřeší po svém."
+    - name: "Vyberte si kanál, na který se zaměříte"
+      text: "Podle toho, kde jsou vaši zákazníci. U českého lokálního byznysu bude jiný než u B2B softwaru."
+    - name: "Změřte výchozí stav a opakujte to"
+      text: "Projděte patnáct až dvacet reálných dotazů ručně a zapište, kdo se v odpovědích objevuje. Bez výchozího bodu nepoznáte, jestli se něco změnilo."
+faq:
+  - q: "Který kanál má pro českou firmu největší smysl?"
+    a: "Záleží na tom, kde jsou vaši zákazníci, ne na velikosti kanálu. U lokálního byznysu rozhoduje Google a Seznam, u B2B softwaru spíš ChatGPT a odborné zdroje, ze kterých čerpá. Nejlevnější způsob, jak to zjistit, je projít si vlastní reálné dotazy ručně."
+  - q: "Musím pro každý kanál dělat jinou práci?"
+    a: "Většinou ne. Společná je dostupnost pro roboty, přímá odpověď na začátku, konzistentní údaje a doložitelné autorství. Rozdíly mezi kanály jsou hlavně v důrazu: u Perplexity se opakovaně ukazuje čerstvost, u ChatGPT dohledatelnost v Bingu, u Seznamu zápis na Firmy.cz. Nejsou to zveřejněná pravidla, ale pozorované tendence."
+  - q: "Zaručí mi něco z toho citaci?"
+    a: "Ne, a je dobré s tím počítat. Žádný z těch kroků není páka, kterou zmáčknete a objevíte se v odpovědi. Jsou to typické předpoklady — bez nich bývá šance výrazně menší, s nimi ji máte. Kdo vám slibuje garantovanou citaci, prodává něco, co nemá."
+  - q: "Kde mám začít, když mám omezený čas?"
+    a: "Zkontrolujte dostupnost pěti nejdůležitějších URL pro roboty, vyberte deset dotazů a zapište si u nich výchozí stav, a upravte úvod tří nejdůležitějších stránek na přímou odpověď. To je práce na jedno odpoledne a funguje napříč všemi kanály. Všechno ostatní má smysl až potom."
+  - q: "Jak poznám, že se to zlepšuje?"
+    a: "Jedině tak, že máte s čím srovnávat. Projděte si před začátkem patnáct až dvacet dotazů a zapište, kdo se v odpovědích objevuje. Za měsíc to zopakujte se stejnými dotazy. Bez toho výchozího bodu je jakékoli tvrzení o zlepšení jen dojem."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Do AI odpovědí se v Česku dostanete přes pět hlavních kanálů: Google AI Overviews, Google AI Mode, ChatGPT, Perplexity a Seznam Asistent.** Každý si vybírá zdroje trochu jinak, ale drtivá většina práce je společná — dohledatelnost pro roboty, přímá odpověď na začátku a shoda údajů napříč zdroji.
+
+Tenhle článek je rozcestník. U každého kanálu najdete krátce to podstatné a odkaz na podrobný návod, plus dvě věci, které v jednotlivých návodech nejsou: **kde začít podle typu firmy** a **co z toho je doložené a co jen pozorované.**
+
+<Insight tone="accent" label="Tři různé věci, které se pletou">
+**Citace** je odkaz na váš web zobrazený v odpovědi. **Zmínka** je situace, kdy vás systém jmenuje, ale neodkáže. **Skryté použití** znamená, že váš obsah odpověď ovlivnil, aniž byste se kdekoli objevili.
+
+Tenhle článek řeší hlavně první dvě, protože jen ty jdou nějak sledovat. Třetí kategorii nikdo zvenčí změřit neumí — a je dost možná největší.
+</Insight>
+
+## Proč zrovna těchhle pět
+
+Pětice není vyčerpávající seznam, ale kanály, u kterých má česká firma reálnou šanci se ověřitelně objevit a zároveň si to sama zkontrolovat. **Vynechané nejsou proto, že by nebyly důležité:**
+
+- **Microsoft Copilot** stojí na Bingu, takže ho z velké části pokrývá práce popsaná u ChatGPT.
+- **Gemini jako samostatná aplikace** a **Claude** se v českém prostředí v citacích objevují řidčeji a chybí k nim použitelná data; základ pro ně platí stejný.
+
+Pokud víte, že vaši zákazníci sedí zrovna v některém z nich, řešte ho — logika zůstává stejná.
+
+## Nejdřív to, co platí všude
+
+Než začnete řešit jednotlivé kanály, stojí za to udělat společný základ. **Je to většina práce a udělá se jednou.** Přesný podíl nikdo nezměřil — z praxe ale platí, že kanálově specifických úprav je podstatně míň než těch společných.
+
+<Checklist tone="accent" title="Společný základ pro všechny kanály" items={[
+  { title: "Roboti se na web dostanou", desc: "V robots.txt nesmí být zablokované vyhledávací a on-demand roboty. Zkontrolujte i meta robots, hlavičku X-Robots-Tag a jestli obsah není schovaný za přihlášením nebo závislý na JavaScriptu." },
+  { title: "Přímá odpověď na začátku", desc: "Zhruba čtyřicet až šedesát slov hned pod nadpisem, bez rozehřívání. Není to zaručený recept — je to formát, který se dobře extrahuje, a v praxi se osvědčuje napříč kanály." },
+  { title: "Struktura, ve které se dá orientovat", desc: "Nadpisy odpovídající reálným otázkám, krátké odstavce, seznamy a tabulky tam, kde dávají smysl." },
+  { title: "Konzistentní údaje napříč zdroji", desc: "Web, firemní profily, katalogy a recenzní platformy by měly uvádět totéž. Nejvíc to váží u lokálních firem; u čistě odborných témat rozhoduje spíš dohledatelnost a relevance." },
+  { title: "Doložitelné autorství", desc: "Kdo text napsal a proč mu věřit. U zdravotních, právních a finančních témat je to mezi prvními kroky; u běžného e-shopu až po zbytku seznamu." },
+]} />
+
+Podrobněji je tenhle základ rozebraný v článku o [SEO pro AI](/blog/seo-pro-ai/) a v [AI SEO auditu](/blog/ai-seo-audit/).
+
+<Insight tone="warn" label="Co žádný kanál neslibuje">
+Ani jeden z těch kroků není páka, po jejímž zmáčknutí se objevíte v odpovědi. **Jsou to typické předpoklady — bez nich bývá šance výrazně menší**, s nimi ji máte. Rozdíl mezi podmínkou a zárukou je tady zásadní a hodně nabídek na trhu ho stírá.
+</Insight>
+
+## Jak se dostat do AI Overviews
+
+**AI Overviews je shrnutí nad výsledky vyhledávání Google.** Objevuje se u části dotazů, spíš u informačních než u navigačních, ale spouštění se liší podle oboru, regionu i rozhraní. Skládá se z běžného indexu — tedy z toho, co už Google zná. Speciální strukturovaná data pro něj podle Googlu potřeba nejsou.
+
+Co se opakovaně ukazuje jako užitečné: **přímá odpověď hned na začátku stránky** a pokrytí souvisejících podotázek, které si k tématu člověk položí. Google k tomu opakuje, že jde o běžné SEO, ne o samostatnou disciplínu.
+
+**Co zkontrolovat hned:** máte na klíčových stránkách odpověď v prvním odstavci? Odpovídají nadpisy otázkám, které lidé opravdu pokládají? Je na stránce i to, na co se člověk zeptá vzápětí?
+
+Podrobný postup máme v článku o [AEO optimalizaci v praxi](/blog/aeo-optimalizace-v-praxi/), kde je i aktuální stav zobrazování panelu.
+
+## Jak se dostat do Google AI Mode
+
+**AI Mode je konverzační režim vyhledávání postavený na modelech Gemini.** Liší se tím, že váš dotaz rozloží na několik podotázek a odpověď složí z víc zdrojů najednou — tomu se říká query fan-out.
+
+Praktický důsledek: **nestačí pokrýt hlavní dotaz, pomáhá pokrýt i jeho rozpad.** Stránka, která odpovídá jen na jednu úzkou otázku, se do složené odpovědi může dostat hůř než ta, která drží téma v souvislostech.
+
+**Co zkontrolovat hned:** pokrývá stránka téma i do šířky, nebo končí u jedné otázky? Odkazujete z ní na související stránky? Není obsah rozdrobený do pěti tenkých textů, které by unesl jeden pořádný?
+
+Detaily jsou v článku o [Google AI Mode](/blog/google-ai-mode/) a rozdíly proti panelu v [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
+
+## Jak být citovaný v ChatGPT
+
+**ChatGPT cituje weby v režimu s webovým vyhledáváním.** Základ je stejný jako u klasického SEO, ale s jedním navíc: podstatnou roli tu hraje dohledatelnost v Bingu, ne v Googlu. Jak přesně se zdroje vybírají, OpenAI veřejně nepopisuje, takže to berte jako důležitou vrstvu, ne jako jedinou bránu.
+
+Pro české weby je tu podstatné omezení z **našeho vlastního testu na patnácti českých dotazech** — malý vzorek, jeden den, žádná statistická platnost: **u obecných dotazů ChatGPT sahal hlavně po globálních anglických zdrojích.** Česká stránka se prosadí spíš u dotazů, které jsou geograficky ukotvené — tedy tam, kde se ptáte na Česko.
+
+**Co zkontrolovat hned:** jste vůbec v Bingu? (Zadejte `site:vasedomena.cz`.) Nemáte zablokovaný `OAI-SearchBot`? Obsahují klíčové stránky české ukotvení — „v Česku", ceny v korunách, české příklady?
+
+Celé měření i postup najdete v článku [jak být citovaný v ChatGPT](/blog/chatgpt-seo/).
+
+## Jak se dostat do odpovědí Perplexity
+
+**U Perplexity se opakovaně ukazuje, že hraje roli čerstvost.** Obsah, který se nedávno aktualizoval, mívá v pozorováních vyšší šanci než starší stránka o tomtéž — a v citacích se často objevují komunitní zdroje. Je to pozorovaná tendence, ne zveřejněné pravidlo.
+
+Druhá věc, na kterou Perplexity slyší, je **shoda informací napříč zdroji**. Když se váš web rozchází s tím, co o vás píšou jinde, je to problém.
+
+**Co zkontrolovat hned:** kdy jste naposledy opravdu aktualizovali nejdůležitější stránky — a změnili při tom obsah, ne jen datum? Shodují se údaje o vás na webu a jinde na internetu?
+
+Konkrétní kroky jsou v článku o [Perplexity SEO](/blog/perplexity-seo/).
+
+## Jak se dostat do Seznam Asistenta
+
+**Z pětice jediný domácí kanál.** Seznam Asistent stojí na vlastním modelu a Seznam u něj jmenovitě uvádí zdroje dat, ze kterých čerpá — mezi nimi Firmy.cz.
+
+Pro lokální firmu z toho plyne konkrétní úkol: **zkontrolovat zápis v katalogu**, protože chybné údaje odtud můžou skončit v odpovědi. Zápis sám o sobě zobrazení nezaručí.
+
+**Co zkontrolovat hned:** existuje váš zápis na Firmy.cz a sedí v něm adresa, telefon a otevírací doba? Nemáte tam duplicitní profil po stěhování nebo změně názvu?
+
+Rozebíráme to v článcích o [Seznamu a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/) a o [zápisu na Firmy.cz](/blog/firmy-cz-pro-ai/).
+
+## Kde se kanály liší nejvíc
+
+Rozdíly nejsou v tom, co psát. Jsou v tom, čemu který kanál podle pozorování dá spíš přednost, když vybírá mezi srovnatelnými zdroji. Žádný z provozovatelů svá pravidla výběru nezveřejňuje.
+
+<CompareTable
+  leftLabel="Kanál"
+  leftTone="accent"
+  rightLabel="Co se u něj často ukazuje jako důležité"
+  rightTone="accent"
+  rows={[
+    { icon: "🔎", label: "Google AI Overviews", left: "Informační dotazy, běžný index", right: "Přímá odpověď na začátku a pokrytí podotázek" },
+    { icon: "💬", label: "Google AI Mode", left: "Složitější a vícevrstvé dotazy", right: "Téma držené v souvislostech, ne izolovaná odpověď" },
+    { icon: "🤖", label: "ChatGPT", left: "Cesta přes Bing", right: "Dohledatelnost a u českých témat geografické ukotvení" },
+    { icon: "⚡", label: "Perplexity", left: "Rychle se měnící témata", right: "Čerstvost a shoda napříč zdroji" },
+    { icon: "🇨🇿", label: "Seznam Asistent", left: "Český trh, lokální dotazy", right: "Jmenované zdroje dat, u firem zápis na Firmy.cz" },
+  ]}
+/>
+
+<Insight tone="accent" label="Praktický závěr">
+Kdybyste měli udělat jen jednu věc, udělejte **společný základ**. Optimalizace na konkrétní kanál dává smysl až tehdy, když víte, že vaši zákazníci zrovna tam jsou — a to zjistíte ručním testem, ne odhadem.
+</Insight>
+
+## Kde začít podle typu firmy
+
+Tohle je otázka, na kterou jednotlivé návody neodpovídají, protože každý řeší svůj kanál. Pořadí není dogma — je to výchozí odhad, který si po prvním měření upravíte.
+
+<CompareTable
+  leftLabel="Typ firmy"
+  leftTone="seo"
+  rightLabel="Kde často dává smysl začít"
+  rightTone="aeo"
+  rows={[
+    { icon: "🏪", label: "Lokální firma a služby", left: "Zákazníci v okolí, provozovna", right: "Obvykle Seznam Asistent a Firmy.cz, pak AI Overviews a AI Mode. ChatGPT až potom — u lokálních dotazů se česká firma prosazuje hůř." },
+    { icon: "🛒", label: "E-shop", left: "Fyzické zboží, srovnávací dotazy", right: "Obvykle u produktových dat a AI Mode, pak AI Overviews. U e-shopů bývá práce na feedu vděčnější než na textech — ale ověřte si to na vlastních dotazech." },
+    { icon: "💼", label: "B2B a služby na míru", left: "Delší rozhodování, shortlist", right: "Často ChatGPT a AI Mode, souběžně recenzní a oborové zdroje, ze kterých modely čerpají. Vlastní web tu bývá jen část skládanky." },
+    { icon: "📰", label: "Obsahový web a média", left: "Informační dotazy, objem", right: "Obvykle AI Overviews a Perplexity kvůli čerstvosti, pak AI Mode. Tady se zároveň nejvíc projeví zero-click efekt." },
+  ]}
+/>
+
+<Insight tone="warn" label="Než se toho chytnete">
+Tahle tabulka je **zkušenostní odhad, ne měření.** Rozhoduje, kde jsou opravdu vaši zákazníci — a to zjistíte jedině ručním testem vlastních dotazů. Když vám z něj vyjde něco jiného, řiďte se testem, ne tabulkou.
+</Insight>
+
+## Jak zjistit, kde na tom jste
+
+Bez výchozího bodu nepoznáte, jestli se něco zlepšilo. Nejlevnější způsob je nudný a funguje: **vezměte patnáct až dvacet dotazů, kterými k vám lidé reálně chodí, projděte je v jednotlivých nástrojích a zapište, kdo se v odpovědích objevuje.**
+
+Za měsíc to zopakujte se stejnými dotazy. Teprve pak má smysl bavit se o tom, jestli se něco změnilo.
+
+<Insight tone="warn" label="Limity ručního testu">
+Výsledky **kolísají i mezi dvěma pokusy za sebou** a mění se podle přihlášení, historie konverzace, polohy a jazyka. Proto: testujte odhlášeně, ze stejného místa, se stejným zněním dotazu — a **ukládejte si screenshot a seznam citovaných URL**, ne jen pocit. Bez toho po měsíci nerozeznáte změnu od šumu.
+</Insight>
+
+Postup i formulář na zápis máme v článku o [testu viditelnosti v AI](/blog/test-viditelnosti-v-ai/); kdy se vyplatí přejít na placený nástroj, rozebíráme u [AI SEO nástrojů](/blog/ai-seo-nastroje/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Začít u kanálu místo u základu" fix="Udělejte nejdřív společnou část. Teprve pak se ptejte, na který kanál se soustředit.">
+    Nejčastější postup je vybrat si nástroj, o kterém se zrovna mluví, a optimalizovat na něj. Většina té práce je přitom společná a udělala by se jednou.
+  </Mistake>
+  <Mistake num="02" title="Vybrat kanál podle jeho velikosti" fix="Rozhoduje, kde jsou vaši zákazníci. To zjistíte ručním testem vlastních dotazů, ne z grafu tržních podílů.">
+    Největší kanál nemusí být váš kanál. U lokálního řemesla je jiný než u B2B softwaru.
+  </Mistake>
+  <Mistake num="03" title="Brát podmínku jako záruku" fix="Počítejte s tím, že i po správně odvedené práci citaci mít nemusíte. Je to zvýšení šance, ne přepnutí vypínače.">
+    Splnit všechny body neznamená být v odpovědi. Kdo to slibuje, prodává jistotu, kterou nikdo nemá.
+  </Mistake>
+  <Mistake num="04" title="Měřit bez výchozího bodu" fix="Zapište si stav před začátkem. Bez něj je jakékoli tvrzení o zlepšení jen dojem.">
+    Když se po měsíci práce zeptáte „pomohlo to?", bez zapsaného výchozího stavu odpověď nemáte — a snadno si ji domyslíte.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z článku odnést
+
+Kanálů je pět a každý si vybírá trochu jinak, ale **to, co mají společné, je objemnější než to, čím se liší.** Dostupnost pro roboty, přímá odpověď na začátku, srozumitelná struktura, konzistentní údaje a doložitelné autorství — tohle živí všechny.
+
+Postup je proto jednoduchý: **udělejte společný základ, změřte si výchozí stav a teprve pak se rozhodujte, kterému kanálu dát navíc.** Opačné pořadí je nejčastější způsob, jak udělat hodně práce a nevědět, jestli k něčemu byla.
