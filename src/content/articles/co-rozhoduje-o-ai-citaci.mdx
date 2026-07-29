@@ -1,0 +1,170 @@
+---
+title: "Co rozhoduje o AI citaci: studie na 252 000 pokusech"
+description: "Studie z konference SIGIR testovala 18 faktorů na 252 000 pokusech. Nejvíc rozhodovala shoda s tématem a pozice v pořadí — a co z toho pro váš web neplyne."
+answer: "Studie What Gets Cited testovala na 252 000 pokusech napříč šesti modely, co rozhoduje, když se o citaci uchází dva zdroje. Abstrakt jako nejsilnější vypichuje shodu s tématem a pozici v pořadí. Testovala ale jen výběr mezi dvěma už načtenými zdroji — o tom, jak se mezi ně dostat, nevypovídá."
+slug: "co-rozhoduje-o-ai-citaci"
+category: "analysis"
+tags:
+  - "strategie"
+  - "obsah"
+published: "2026-07-28"
+updated: "2026-07-28"
+keywords:
+  - "co rozhoduje o ai citaci"
+  - "geo studie"
+  - "what gets cited"
+  - "faktory ai citace"
+  - "generative engine optimization výzkum"
+variant: "rich"
+stats:
+  - value: "252 000"
+    label: "pokusů, na kterých studie stojí"
+  - value: "6"
+    label: "jazykových modelů zapojených do testu"
+  - value: "18"
+    label: "obsahových faktorů porovnávaných po dvojicích"
+  - value: "2"
+    label: "zdroje v každém pokusu — oba už načtené v kontextu"
+faq:
+  - q: "Co ta studie vlastně měřila?"
+    a: "Do modelu se vložily přesně dva zdroje, které se lišily v jediném faktoru, a sledovalo se, který z nich model zmíní v první citaci. Tohle se opakovalo 252 000× napříč šesti modely a osmnácti faktory. Značky byly anonymizované a pořadí zdrojů prohazované, aby se oddělil vliv obsahu od vlivu pořadí."
+  - q: "Co z ní vyšlo jako nejdůležitější?"
+    a: "Podle abstraktu studie vycházejí nejsilněji dvě věci: shoda obsahu s tématem dotazu a pozice zdroje v pořadí. Ostatní faktory, jako úplnost, důvěryhodnost nebo čerstvost, se testovaly také, ale konkrétní velikosti jejich vlivu z veřejného shrnutí nevyčtete."
+  - q: "Znamená to, že na formátování nezáleží?"
+    a: "To z téhle studie vyvodit nejde. Testovala výběr mezi dvěma zdroji, které už jsou v kontextu modelu — tedy poslední krok. Jestli se tam vaše stránka vůbec dostane, závisí na dřívějších krocích, které studie neměřila. Formátování a čitelnost hrají roli hlavně tam."
+  - q: "Můžu podle toho něco změnit na webu?"
+    a: "Nejvíc práce je pořád ve shodě s tématem — tedy že stránka opravdu odpovídá na dotaz, kvůli kterému ji někdo hledá. S pozicí v pořadí se dá pracovat jen nepřímo, protože vzniká ve fázi vyhledávání před samotným výběrem. Není to nové doporučení — je to doklad pro to nejzákladnější, který dosud chyběl."
+  - q: "Je to důkaz, jak AI funguje?"
+    a: "Ne. Je to kontrolovaný laboratorní test jednoho kroku z delšího řetězu. Kritický přehled odborné literatury upozorňuje, že podobné studie platí uvnitř svého uspořádání a nedokládají ani dohledatelnost, ani trvalý efekt na návštěvnost. Berte to jako dobrý střípek, ne jako návod."
+  - q: "Proč o tom píšete, když z toho tolik neplyne?"
+    a: "Protože je to jedna z mála věcí v tomhle oboru, která má pořádnou metodiku a prošla recenzí na odborné konferenci. Většina toho, co se o AI viditelnosti tvrdí, nemá ani to. Číst ji přesně je užitečné i proto, aby se z ní nedělaly závěry, které v ní nejsou."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Studie What Gets Cited testovala na 252 000 pokusech napříč šesti modely, co rozhoduje, když se o citaci uchází dva zdroje. Abstrakt jako nejsilnější vypichuje shodu s tématem a pozici v pořadí.** Testovala ale jen výběr mezi dvěma už načtenými zdroji — o tom, jak se mezi ně dostat, nevypovídá.
+
+Kolem AI viditelnosti se tvrdí spousta věcí a doložených je málo. Tahle studie patří k metodicky silnějším pracím: má kontrolované uspořádání a prošla recenzí na konferenci SIGIR. To z ní nedělá poslední slovo — pracujeme navíc jen s abstraktem a veřejnými shrnutími, ne s plným textem. O to větší škoda by ale byla vyvozovat z ní víc, než v ní je.
+
+## Co přesně studie udělala
+
+Autoři postavili **kontrolované prostředí se dvěma dokumenty**. Do kontextu modelu vložili přesně dva zdroje, které se lišily v jediném faktoru, a sledovali, který z nich se objeví v první citaci odpovědi.
+
+<Checklist tone="aeo" title="Metodika v pěti bodech" items={[
+  { title: "252 000 pokusů", desc: "Opakovaná párová srovnání podle jednoho faktoriálního plánu — ne sběr dat z volné přírody, ale řízený experiment." },
+  { title: "Šest jazykových modelů", desc: "Výsledek tedy nestojí na chování jednoho nástroje." },
+  { title: "Osmnáct obsahových faktorů", desc: "Rozdělených do skupin jako shoda s tématem, úplnost, důvěryhodnost, čitelnost, konkurenční postavení a čerstvost." },
+  { title: "Anonymizované značky", desc: "Aby výsledek neovlivnilo, že model některé jméno zná lépe než jiné." },
+  { title: "Prohazované pořadí zdrojů", desc: "Aby šlo oddělit vliv obsahu od vlivu toho, který zdroj byl uvedený první." },
+]} />
+
+Ta poslední dvě opatření jsou důvod, proč stojí za to studii brát vážně. **Anonymizace značek a prohazování pořadí jsou přesně ty kontroly, které většině marketingových „analýz“ chybí.**
+
+Dvě věci je ale potřeba u metodiky vědět, než z ní začnete cokoli vyvozovat:
+
+- **Sledovala se první citace, ne všechny.** To je jasně měřitelné a pro srovnání dvojic praktické, ale je to užší veličina než „byl zdroj v odpovědi použitý". Zdroj uvedený jako druhý se v tomhle měření počítá stejně jako neuvedený.
+- **Co přesně znamená „shoda s tématem", z veřejného shrnutí nevyčtete.** Jestli šlo o doslovnou podobnost slov, významovou blízkost nebo pokrytí záměru dotazu, se liší v důsledcích dost zásadně. Pro praxi je to rozdíl mezi „opakuj frázi" a „odpověz na otázku".
+
+## Co z ní vyšlo
+
+Podle abstraktu vycházejí ze smíšených modelů nejsilněji **dva faktory: shoda obsahu s tématem dotazu a pozice zdroje v pořadí.**
+
+<Insight tone="warn" label="Co v tomhle článku nenajdete">
+Konkrétní velikosti vlivu jednotlivých faktorů — třeba o kolik přesně pomáhá čerstvost nebo jak dopadla čitelnost — **z veřejného shrnutí studie vyčíst nejdou.** Kdo vám je odjinud odcituje jako pořadí čtyř nejdůležitějších věcí, buď četl plný text, nebo si domýšlí. My jsme pracovali s abstraktem a shrnutími, takže uvádíme jen to, co je v nich.
+</Insight>
+
+Že vyhrává **shoda s tématem**, nikoho nepřekvapí — a je to dobře. Znamená to, že nejnudnější doporučení ze všech (stránka má opravdu odpovídat na dotaz, kvůli kterému na ni někdo přijde) obstálo i v kontrolovaném testu.
+
+Že hraje velkou roli **pozice v pořadí**, je nepříjemnější a stojí za upřesnění. Studie ukazuje, že na výběr má vliv pořadí, ve kterém byly zdroje předložené — neříká, co to pořadí v reálném systému určuje. V praxi je to výsledek dřívějšího vyhledávání, takže se s ním pracuje nepřímo: přes to, aby vás vyhledávání našlo výš. Přímé tlačítko na to nemáte.
+
+## Nejdůležitější věta celého článku
+
+Studie měřila **poslední krok** — výběr mezi dvěma zdroji, které už jsou v kontextu modelu. Neměřila, jak se tam dostaly.
+
+<CompareTable
+  leftLabel="Co studie testovala"
+  leftTone="seo"
+  rightLabel="Co netestovala"
+  rightTone="aio"
+  rows={[
+    { icon: "🎯", label: "Fáze procesu", left: "Výběr mezi dvěma už načtenými zdroji", right: "Jestli se váš web mezi ty dva vůbec dostane" },
+    { icon: "🔍", label: "Dohledatelnost", left: "Nic — oba zdroje byly vložené ručně", right: "Procházení, indexace, vytažení kandidátů" },
+    { icon: "📊", label: "Dopad na návštěvnost", left: "Nic — měřila se citace, ne kliky", right: "Jestli z citace přijde návštěva nebo objednávka" },
+    { icon: "🌍", label: "Prostředí", left: "Laboratorní, s anonymizovanými značkami", right: "Reálné vyhledávání se skutečnými značkami a konkurencí" },
+  ]}
+/>
+
+Není to výtka studii — autoři to takhle zamýšleli a právě ta kontrola dělá výsledek použitelným. **Je to výtka způsobu, jakým se podobné studie čtou.**
+
+Odborně se tomu říká rozdíl mezi **interní a vnější platností**. Uvnitř svého uspořádání je studie silná: kontroly jsou poctivé a vzorek velký, takže tomu, co naměřila, se dá věřit. Přenositelnost ven je slabší, protože laboratorní podmínky se od běžného provozu záměrně liší. **Obojí platí najednou** a není v tom rozpor.
+
+<Insight tone="warn" label="Nejsme v tom sami">
+Kritický přehled 45 studií o generativní optimalizaci z let 2023 až 2026 dochází k témuž závěru obecně: často citované zisky ze zakládající práce **platí uvnitř svého experimentálního uspořádání a jsou podmíněné tím, že zdroj už v kontextu je.** Nedokládají ani organickou dohledatelnost, ani trvalý efekt na návštěvnost.
+
+Jinými slovy: velká část toho, co se v oboru cituje jako důkaz, měří poslední metr závodu.
+</Insight>
+
+## Jak to smířit s tím, co doporučujeme my
+
+Na webu opakovaně píšeme, že pomáhá **krátká přímá odpověď na začátku, přehledná struktura a čitelné úseky textu.** Ve veřejném shrnutí studie se mezi nejsilnějšími faktory neobjevila ani čitelnost, ani nic formátovacího — vypíchnuté byly shoda s tématem a pozice.
+
+Poctivé čtení má dvě části a obě je potřeba říct nahlas.
+
+**Za prvé: je to oslabení naší formulace.** Když jsme psali, že struktura a čitelnost pomáhají k citaci, znělo to univerzálně. V tomhle konkrétním kroku — výběru mezi dvěma zdroji — se to podle dostupného shrnutí mezi hlavní faktory nedostalo. Neznamená to, že neúčinkují, ale znamená to, že jsme si tím byli jistější, než bylo podložené.
+
+**Za druhé: vyvrácené to není.** Užitečnější než se hádat je seřadit si to podle jistoty — co studie podpořila, co nechala otevřené a co vůbec netestovala:
+
+<CompareTable
+  leftLabel="Doporučení"
+  leftTone="seo"
+  rightLabel="Na co ve skutečnosti míří"
+  rightTone="aeo"
+  rows={[
+    { icon: "✍️", label: "Přímá odpověď na začátku", left: "Aby šla z textu vytáhnout odpověď", right: "Fáze vytažení a použití, ne výběr mezi dvěma zdroji" },
+    { icon: "🧱", label: "Přehledná struktura", left: "Aby stránka dávala smysl po částech", right: "Zpracování obsahu, ne finální rozhodnutí o citaci" },
+    { icon: "🔑", label: "Shoda s tématem", left: "Aby stránka odpovídala na ten dotaz", right: "Tohle studie potvrdila přímo" },
+    { icon: "🤖", label: "Dostupnost pro roboty", left: "Aby se obsah vůbec našel", right: "Fáze, kterou studie z principu nemohla testovat" },
+  ]}
+/>
+
+**Poctivý závěr zní: studie jedno naše doporučení podpořila a u ostatních nám ubrala jistotu, aniž by je vyvrátila.** Kdo by z ní vyvodil „přestaňte se starat o strukturu“, dělá z testu jedné fáze závěr o celém procesu. Kdo by tvrdil, že se nic nemění, zase přehlíží, že jsme si u části rad byli jistější, než na co máme doklad.
+
+## Co si z toho odnést prakticky
+
+<Checklist tone="accent" title="Tři věci, které z toho plynou" items={[
+  { title: "Shoda s tématem není klišé", desc: "Ve veřejném shrnutí vychází jako nejsilnější faktor napříč šesti modely. Stránka, která odpovídá na dotaz přímo, má navrch nad tou, která se tématu jen dotýká." },
+  { title: "Pozice je vlastní faktor, ne šum", desc: "Studie ji měří odděleně od obsahu a musela ji kontrolovat prohazováním — sama o sobě tedy citaci ovlivňuje. V reálném systému ji ovlivníte jen nepřímo, přes dřívější fázi vyhledávání." },
+  { title: "Efekt nestojí na známosti značky", desc: "Značky byly anonymizované, takže rozdíly vznikly obsahem, ne tím, že model některé jméno zná. To je u marketingových analýz vzácnost." },
+  { title: "Jedna studie není mapa", desc: "Cesta k citaci má víc kroků a tenhle test pokrývá jeden z nich. Podle toho vážte, kolik na něm postavíte." },
+]} />
+
+Souvislosti kolem výběru zdrojů rozebíráme v článku o tom, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/), a mechanismus jednoho konkrétního nástroje v článku, [jak funguje ChatGPT](/blog/jak-funguje-chatgpt/).
+
+## Časté chyby při čtení takových studií
+
+<MistakeGrid>
+  <Mistake num="01" title="Číst výsledek jedné fáze jako návod na celý proces" fix="Zjistěte nejdřív, co přesně experiment měřil. U téhle studie to byl výběr mezi dvěma už načtenými zdroji.">
+    Nejčastější chyba u odborných prací o AI viditelnosti. Věta „studie prokázala, že rozhoduje X“ obvykle vynechává, za jakých podmínek.
+  </Mistake>
+  <Mistake num="02" title="Převzít pořadí faktorů z druhé ruky" fix="Když někdo uvádí přesné pořadí a velikosti vlivu, ověřte si to v plném textu. V abstraktu jsou jen ty nejsilnější faktory.">
+    Kolem každé studie vzniknou shrnutí, která doplní čísla, jež v původním textu nejsou nebo znamenají něco jiného.
+  </Mistake>
+  <Mistake num="03" title="Zaměnit laboratorní podmínky za realitu" fix="Anonymizované značky a ručně vložené zdroje jsou nutné pro čistotu testu, ale právě proto se výsledek nedá přenést jedna ku jedné.">
+    Kontroly, které dělají studii dobrou, ji zároveň vzdalují od běžného provozu. Obojí platí najednou.
+  </Mistake>
+  <Mistake num="04" title="Přestat dělat věci, které studie netestovala" fix="Nezměřený není totéž co vyvrácený. Doporučení, na která experiment nemířil, zůstávají tam, kde byla.">
+    Z toho, že se něco v testu neprojevilo, se snadno udělá, že to nefunguje. To je jiné tvrzení.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z článku odnést
+
+Studie na 252 000 pokusech je v tomhle oboru vzácnost — kontrolovaná metodika, šest modelů, opatření proti zkreslení. **Vyšlo z ní, že nejvíc rozhoduje shoda s tématem a pozice v pořadí.**
+
+Důležitější než ten výsledek je ale to, kam sahá. **Měřila poslední krok: výběr mezi dvěma zdroji, které už v kontextu byly.** Platí tedy podmíněně: *pokud* se tam vaše stránka dostane, tohle rozhoduje dál. O dohledatelnosti, návštěvnosti ani o chování v reálném prostředí nevypovídá — a stejnou výhradu vznáší i kritický přehled celého oboru.
+
+Prakticky z toho plyne především jedna věc, a je nudná: **stránka musí opravdu odpovídat na dotaz, kvůli kterému na ni někdo přijde.** To je faktor, který ve shrnutí studie vychází nejsilněji napříč všemi šesti modely.
