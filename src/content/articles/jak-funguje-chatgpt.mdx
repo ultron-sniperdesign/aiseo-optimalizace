@@ -1,0 +1,178 @@
+---
+title: "Jak funguje ChatGPT: kdy vás může citovat a kdy ne"
+description: "ChatGPT odpovídá buď z natrénované paměti, nebo z živě dohledaných stránek. Rozdíl rozhoduje o tom, jestli se váš web může objevit jako citovaný zdroj."
+answer: "ChatGPT se navenek chová dvěma způsoby. Buď odpoví z toho, co se naučil při tréninku — pak odpověď obvykle nemá odkazy a váš web se v ní neuplatní jako citace. Nebo si dohledá aktuální stránky a ty ocituje. Provozovatel webu si tenhle rozdíl přímo vynutit nemůže."
+slug: "jak-funguje-chatgpt"
+category: "analysis"
+tags:
+  - "ai-platformy"
+published: "2026-07-28"
+updated: "2026-07-28"
+keywords:
+  - "jak funguje chatgpt"
+  - "chatgpt vyhledávání na webu"
+  - "knowledge cutoff"
+  - "odkud bere chatgpt informace"
+  - "chatgpt citace zdrojů"
+variant: "rich"
+stats:
+  - value: "2"
+    label: "způsoby, jak se odpověď navenek chová — a jen u jednoho se hraje o citaci"
+  - value: "rok+"
+    label: "jak staré bývají znalosti natrénované v modelu oproti dnešku"
+  - value: "~⅓"
+    label: "cestovatelských dotazů v jedné analýze skončilo bez živého vyhledávání"
+  - value: "0"
+    label: "možností, jak si jako provozovatel webu vyhledávání přímo vynutit"
+faq:
+  - q: "Odkud ChatGPT bere informace?"
+    a: "Ze dvou míst. Základ je text, na kterém se model natrénoval — knihy, weby, odborné texty a diskuze do určitého data. K tomu si v režimu s vyhledáváním umí dotáhnout aktuální stránky z webu. Které z toho použije, se liší dotaz od dotazu."
+  - q: "Co je knowledge cutoff?"
+    a: "Datum, ke kterému končí znalosti natrénované v modelu. Liší se verzi od verze a bývá zpravidla rok i víc do minulosti. Cokoli novějšího model z paměti neví — musel by si to dohledat. Pro váš web to znamená, že obsah vydaný po tomhle datu se do odpovědi dostane jen přes živé vyhledávání."
+  - q: "Poznám, ve kterém režimu ChatGPT odpověděl?"
+    a: "Většinou ano, podle odkazů. Když odpověď obsahuje citace na konkrétní stránky, je to silný signál, že se pracovalo s živě dohledanými zdroji. Když je bez odkazů, šlo nejspíš o odpověď z natrénované paměti. Důkaz to není, ale jako vodítko to stačí."
+  - q: "Můžu ovlivnit, jestli si ChatGPT dohledá zdroje?"
+    a: "Vy jako provozovatel webu ne. Rozhoduje se to na straně modelu podle povahy dotazu — časově citlivé otázky, ceny, novinky a konkrétní údaje spouštějí vyhledávání častěji než obecné výklady. Uživatel si někdy může vyhledávání vyžádat sám, ale to je jeho volba, ne vaše."
+  - q: "Proč mě ChatGPT necituje, když mám dobrý obsah?"
+    a: "Jedno z vysvětlení je, že u vašich dotazů vyhledávání vůbec neproběhne — pak nezáleží na tom, jak je obsah dobrý. Další možnosti jsou, že vás nenajde v indexu, ze kterého čerpá, nebo že si vybere jiné zdroje. Rozlišit to jde jedině tak, že si odpovědi projdete a všímáte si, jestli v nich odkazy vůbec jsou."
+  - q: "Znamená to, že pro ChatGPT nemá smysl psát?"
+    a: "Ne, ale je dobré vědět, co ovlivníte. U dotazů, kde vyhledávání běží, se o citaci hraje a práce na obsahu má přímý smysl. U dotazů zodpovězených z paměti se hraje o něco jiného — o to, jestli se o vaší značce vůbec někde psalo, dokud se model trénoval."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**ChatGPT se navenek chová dvěma způsoby. Buď odpoví z toho, co se naučil při tréninku — pak odpověď obvykle nemá odkazy a váš web se v ní neuplatní jako citace. Nebo si dohledá aktuální stránky a ty ocituje.** Provozovatel webu si tenhle rozdíl přímo vynutit nemůže.
+
+<Insight tone="warn" label="Zjednodušení, se kterým pracujeme">
+Tohle dělení popisuje **to, co je zvenčí vidět** — ne interní architekturu. Co se uvnitř děje, OpenAI podrobně nezveřejňuje a chování se navíc liší podle modelu, tarifu, zapnutých nástrojů i verze produktu. Berte celý článek jako **funkční model pro rozhodování, ne jako popis skutečné pipeline.**
+</Insight>
+
+Tenhle rozdíl vysvětluje většinu zmatku kolem toho, proč se web „někdy objeví a někdy ne“. Není za tím trik, ale rozdíl v tom, odkud odpověď čerpá. Roli hraje i to, že odpovědi mezi pokusy kolísají samy o sobě.
+
+## Dva režimy, dva úplně jiné příběhy
+
+<CompareTable
+  leftLabel="Odpověď z paměti"
+  leftTone="aio"
+  rightLabel="Odpověď s vyhledáváním"
+  rightTone="seo"
+  rows={[
+    { icon: "🧠", label: "Odkud informace pochází", left: "Z textů, na kterých se model trénoval", right: "Z konkrétních stránek načtených právě teď" },
+    { icon: "🔗", label: "Jsou v odpovědi odkazy", left: "Obvykle ne", right: "Obvykle ano, navázané na tvrzení v textu" },
+    { icon: "📅", label: "Jak čerstvé to je", left: "Nanejvýš k datu konce tréninku", right: "Potenciálně aktuální, podle toho, co se načetlo" },
+    { icon: "🌐", label: "Může se objevit váš web", left: "Ne jako zdroj — nanejvýš jako znalost o značce", right: "Ano, jako citovaný zdroj" },
+    { icon: "🎯", label: "Co s tím zmůžete", left: "Nepřímo: aby se o vás psalo jinde", right: "Přímo: aby vás našel a měl co citovat" },
+  ]}
+/>
+
+
+## Co je knowledge cutoff a proč vás zajímá
+
+Model má **hranici znalostí** — datum, ke kterému končí texty, na kterých se učil. **Každá verze modelu má tu hranici jinde** a bývá zpravidla rok i víc do minulosti; u modelů generace GPT-5 se uvádějí data v roce 2025. Přesné datum si ověřte v dokumentaci ke konkrétnímu modelu, protože se s každou verzí posouvá.
+
+Cokoli, co se stalo nebo vyšlo později, model z paměti neví. Musel by si to dohledat.
+
+<Insight tone="warn" label="Praktický důsledek">
+**Váš letošní obsah pro model v paměti neexistuje.** Když odpověď vznikne bez vyhledávání, čerpá se z textů starých rok i víc — a je jedno, že jste minulý měsíc vydali ten nejlepší článek na dané téma.
+
+Neznamená to, že psát nemá cenu. Znamená to, že **u čerstvého obsahu se hraje výhradně o režim s vyhledáváním** — a tomu odpovídá i to, na čem záleží: aby vás roboti našli a aby stránka odpovídala na dotaz jasně.
+</Insight>
+
+## Kdy se vyhledávání spustí a kdy ne
+
+O tom, jestli se vyhledávání použije, rozhoduje systém na straně služby podle povahy dotazu. **Časově citlivé otázky ho spouštějí spolehlivěji** než obecné výklady:
+
+<Checklist tone="seo" title="Co vyhledávání spouští spíš" items={[
+  { title: "Aktuální dění a novinky", desc: "Cokoli, co se mohlo změnit po konci tréninku. Systém vyhodnotí, že odpověď nejspíš vyžaduje aktuální data." },
+  { title: "Ceny, dostupnost, parametry", desc: "Konkrétní čísla, u kterých by odpověď z paměti byla riskantní." },
+  { title: "Dotazy na konkrétní firmu nebo produkt", desc: "Podle zkušenosti častěji u menších subjektů, o kterých model z tréninku nemá dost. Pravidlo to ale není." },
+  { title: "Otázky, kde uživatel sám chce zdroje", desc: "Formulace typu najdi mi, podle čeho to je nebo odkud to máš." },
+]} />
+
+Naopak u obecných výkladů, definic a ustálených postupů model často odpoví rovnou. **Nejde to ale odhadnout spolehlivě** — jedna analýza cestovatelských dotazů zjistila, že zhruba třetina z nich skončila bez živého vyhledávání, i když by se od nich čekal opak.
+
+<Insight tone="warn" label="Jak přesná ta čísla jsou">
+Podíl dotazů bez vyhledávání se **liší podle oboru, formulace i verze modelu** a nikdo ho systematicky nesleduje. Uvedená třetina je z jednoho vzorku v jednom oboru — berte ji jako doklad, že se to děje, ne jako číslo, se kterým se dá počítat.
+</Insight>
+
+### Tři vrstvy, které se pletou
+
+Než půjdeme dál, stojí za to oddělit tři věci, které se v běžné debatě slévají:
+
+<Checklist tone="accent" title="Co je co" items={[
+  { title: "Natrénovaná znalost", desc: "Co se model naučil při tréninku. Uzavřené k datu cutoffu, bez odkazů, bez vlivu vašeho dnešního webu." },
+  { title: "Živé načtení zdrojů", desc: "Když si systém k dotazu dohledá aktuální stránky. Tady se o vaši citaci hraje." },
+  { title: "Zobrazení odkazů v rozhraní", desc: "To, co vidíte jako uživatel. Souvisí s druhou vrstvou, ale není to totéž — jak přesně se odkazy párují na tvrzení, se liší." },
+]} />
+
+Když se v článcích píše, že „AI použila váš web", nebývá jasné, která z těch vrstev se myslí. Pro rozhodování je klíčová prostřední.
+
+## Jak vyhledávání probíhá
+
+Když se režim spustí, proběhne zhruba tohle:
+
+1. Model si vaši otázku **přeloží do jednoho nebo víc vyhledávacích dotazů** — často jinými slovy, než jste použili vy.
+2. Pošle je do vyhledávacího indexu. Historicky a v řadě pozorování se u ChatGPT zmiňuje microsoftí vyhledávací infrastruktura, ale **OpenAI veřejně nepopisuje, kam přesně dotazy posílá** — berte to jako pravděpodobnou, ne potvrzenou cestu.
+3. **Pracuje jen s omezeným výběrem nalezených výsledků**, ne s celým indexem. Kolik jich je, se liší dotaz od dotazu.
+4. Z nich složí odpověď a k jednotlivým tvrzením připojí odkazy na zdroje.
+
+Dva body z toho stojí za zdůraznění. **Model nehledá vaši frázi, ale svoji** — proto samotná optimalizace na přesné znění dotazu nestačí a důležitější je pokrýt téma a odpovědět jasně. A **pracuje jen s úzkým výběrem výsledků**, ne s celým indexem; dostat se do té skupiny je celá hra.
+
+Podrobněji rozebíráme výběr zdrojů v článku o tom, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
+
+## Co z toho plyne pro váš web
+
+<CompareTable
+  leftLabel="Chcete uspět u dotazů s vyhledáváním"
+  leftTone="seo"
+  rightLabel="Chcete něco zmoct i u odpovědí z paměti"
+  rightTone="aeo"
+  rows={[
+    { icon: "🤖", label: "První podmínka", left: "Jako minimum neblokovat vyhledávací roboty OpenAI a být dostupný běžným vyhledávačům", right: "Aby se značka a související informace objevovaly v datech, ze kterých si model tvoří obecné znalosti" },
+    { icon: "🔎", label: "Kde být k nalezení", left: "Ve vyhledávacím indexu, ze kterého se čerpá. Orientačně: hledejte site:vasedomena.cz v Bingu — je to hrubý signál, ne důkaz indexace", right: "V odborných textech, diskuzích a katalozích" },
+    { icon: "✍️", label: "Co dělat s obsahem", left: "Přímé odpovědi hned na začátku stránky", right: "Dostat značku do textů, které píšou jiní" },
+    { icon: "⏱️", label: "Jak rychle se to projeví", left: "Řádově dny až týdny", right: "Nejdřív s další generací modelu — kdy to bude, nikdo zvenčí neví" },
+  ]}
+/>
+
+Levý sloupec je práce, kterou máte pod kontrolou a která se dá měřit. Rozebíráme ji v návodu, [jak být citovaný v ChatGPT](/blog/chatgpt-seo/). Pravý sloupec je dlouhodobá práce na tom, aby se o vás psalo — k tomu se hodí článek o [zmínkách o značce](/blog/ai-brand-mentions/).
+
+## Jak si to ověřit na vlastním webu
+
+Diagnostika je jednoduchá a nudná, ale je jediná, kterou máte:
+
+1. **Vyberte 10 až 20 dotazů**, kterými k vám lidé reálně chodí.
+2. U každého si zapište, jestli odpověď **obsahovala odkazy** — a pokud ano, na které domény.
+3. Když odkazy **většinou nejsou**, nemá smysl začínat přepisem stránek. Řešíte jinou věc.
+4. Když odkazy **jsou, ale bez vás**, podívejte se, kdo se opakuje. To je váš skutečný konkurent v tomhle kanálu.
+
+<Insight tone="warn" label="Co z toho nevyčtete">
+Z jedné odpovědi **nepoznáte, co se dělo uvnitř.** Soudíte jen podle toho, co je vidět. Odpovědi navíc kolísají mezi pokusy a mění se podle formulace, jazyka i přihlášení — proto ta dvacítka dotazů a proto opakovaně, ne jednou.
+</Insight>
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Číst nepřítomnost v odpovědi jako chybu obsahu" fix="Nejdřív se podívejte, jestli odpověď vůbec obsahuje odkazy. Když ne, nejspíš nešlo o odpověď postavenou na citovaných webových zdrojích — a přepis stránky na tom nic nezmění.">
+    Firma vidí, že ji ChatGPT nezmínil, a přepisuje stránku. Přitom u toho dotazu vyhledávání ani neproběhlo.
+  </Mistake>
+  <Mistake num="02" title="Optimalizovat na přesné znění dotazu" fix="Pokrývejte téma a jeho okolí, ne konkrétní formulaci. Model si stejně vytvoří vlastní dotazy.">
+    Model vaši otázku přepíše do vlastních vyhledávacích dotazů. Doslovná shoda s tím, co napsal uživatel, tak ztrácí smysl.
+  </Mistake>
+  <Mistake num="03" title="Spoléhat, že se nový obsah dostane do modelu" fix="Počítejte s tím, že do paměti modelu se dostanete až s další generací, pokud vůbec. Čerstvý obsah se hraje přes vyhledávání.">
+    Vydaný článek se v natrénované paměti neobjeví. Ta je uzavřená k datu konce tréninku.
+  </Mistake>
+  <Mistake num="04" title="Ověřovat viditelnost jedním pokusem" fix="Projděte víc dotazů a zapište, u kterých byly odkazy a u kterých ne. Teprve to něco říká.">
+    Odpovědi kolísají mezi pokusy a liší se podle formulace. Z jednoho dotazu se nedá usoudit nic.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z článku odnést
+
+Pro praxi je užitečné rozlišovat **dva navenek viditelné způsoby, jak odpověď vzniká.** Jedna obvykle přijde bez viditelných webových citací a váš web se v ní neuplatní; druhá pracuje s omezeným výběrem živě dohledaných zdrojů a některé z nich zobrazí jako odkazy. Co přesně o tom rozhoduje, zvenčí nezjistíte.
+
+Pro praxi z toho plyne jedna střízlivá věc: **než začnete něco měnit, podívejte se, jestli v odpovědích na vaše dotazy vůbec bývají odkazy.** Když ano, má práce na obsahu přímý smysl. Když ne, řešíte jiný problém — a přepisování stránek vám ho nevyřeší.
