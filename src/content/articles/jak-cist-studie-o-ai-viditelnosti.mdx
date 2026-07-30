@@ -1,0 +1,255 @@
+---
+title: "Jak číst studie o AI viditelnosti: co plyne a co ne"
+description: "Většina čísel o AI viditelnosti pochází z pozorování, ne z pokusu. Pět otázek na každou studii — a jeden z mála doložených kauzálních testů v oboru."
+answer: "Většina tvrzení o AI viditelnosti stojí na pozorování: spočítá se, co mají citované stránky společného, a znak se vydává za příčinu. Takový postup zpravidla neodliší příčinu od shody okolností. Randomizovaný pokus to zvládne líp, protože o zásahu nerozhodují vlastnosti účastníků."
+slug: "jak-cist-studie-o-ai-viditelnosti"
+category: "analysis"
+tags:
+  - "mereni"
+  - "strategie"
+published: "2026-07-31"
+updated: "2026-07-31"
+keywords:
+  - "jak číst studie o ai viditelnosti"
+  - "studie ai overviews"
+  - "randomizovaný experiment ai"
+  - "korelace vs kauzalita seo"
+  - "ai viditelnost data"
+variant: "rich"
+stats:
+  - value: "1 065"
+    label: "účastníků randomizovaného pokusu na dopad AI Overviews"
+  - value: "38–40 %"
+    label: "o tolik klesly prokliky na dotazech, kde se AI Overviews objevily"
+  - value: "5"
+    label: "otázek, kterými projde každá studie, než ji budete citovat"
+  - value: "2"
+    label: "role, které pozorování má — najít stopu a popsat stav, ne doložit příčinu"
+faq:
+  - q: "Proč se pořád rozlišuje korelace a příčina, když čísla vypadají jasně?"
+    a: "Protože pozorování zpravidla neodliší dvě různé věty: „X způsobuje citaci“ a „stránky, které by byly citované tak jako tak, mají shodou okolností X“. Obě dají velmi podobná data. Rozhodnout mezi nimi pomůže hlavně zásah — někde se něco změní, jinde ne, a rozdíl se změří."
+  - q: "Znamená to, že korelačním studiím nemám věřit vůbec?"
+    a: "Ne. Dobře udělané pozorování je užitečné k tomu, aby ukázalo, kde se má hledat, a k popisu stavu. Problém nastane, když se z něj rovnou udělá doporučení k nákupu. Rozdíl je slyšet na slovese: „citované stránky mívají X“ je popis, „přidejte X a budete citovaní“ je tvrzení o příčině."
+  - q: "Co je randomizovaný terénní pokus?"
+    a: "Účastníci se náhodně rozdělí do skupin, jedné se něco změní a druhé ne, a pak se porovná chování. Protože o zařazení rozhodl los, je méně pravděpodobné, že rozdíl vysvětlí to, čím se lidé lišili předem. Terénní znamená, že se to děje při běžném používání, ne v laboratoři."
+  - q: "Kolik prokliků tedy AI Overviews reálně berou?"
+    a: "V tom pokusu zhruba 38 až 40 procent — ale jen na dotazech, kde se AI Overviews vůbec objevily, a ty byly zhruba čtyři z deseti. Nejde tedy o 40 procent veškeré návštěvnosti z vyhledávání. Přesně tenhle rozdíl ve jmenovateli je místo, kde se čísla nejčastěji nafouknou."
+  - q: "Platí ten výsledek i pro český web?"
+    a: "Přímo ne. Pokus běžel v USA, na desktopovém Chromu, přes placený panel a dva týdny na účastníka. To o českém trhu, mobilech ani o vašem oboru neříká nic. Použitelný je směr a řádová velikost, ne číslo k dosazení do vlastního výpočtu."
+  - q: "Podle čeho poznám, že si číslo někdo vymyslel?"
+    a: "Nejrychlejší test je zeptat se na jmenovatel a na zdroj. Když u čísla není řečeno, z čeho je to procento a odkud pochází, obvykle to nikdo nedohledal. Druhý signál je, že tvrzení přesně odpovídá tomu, co prodává ten, kdo ho zveřejnil."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+
+Kolem AI viditelnosti koluje spousta čísel, u kterých není jasné, co přesně měří. Sedmdesát procent tohohle, trojnásobek tamtoho, propad o polovinu. Mnohá z nich vznikla stejným postupem: někdo se podíval na hromadu AI odpovědí, spočítal, co mají citované stránky společného, a ten společný znak vydal za návod.
+
+Tenhle článek není o tom, že jsou taková čísla nutně lživá. Je o tom, **co se z nich smí vyvodit** — a jak to poznat za pár minut.
+
+## Proč zrovna tady čísla tolik klamou
+
+Rozdíl mezi pozorováním a pokusem je v tomhle oboru důležitý ze tří důvodů.
+
+**Za prvé, nikdo nemá přístup dovnitř.** Když se ptáte, proč zrovna tahle stránka byla citovaná, nemáte log ani dokumentaci — máte jen výsledek. Všechno ostatní se dohaduje zvenčí. V klasickém SEO se dá aspoň porovnávat pořadí ve výsledcích napříč tisíci dotazy. U AI odpovědí se s tak stabilním pořadím nepracuje; místo něj se sleduje přítomnost, četnost a prominence citace, což jsou hůř uchopitelné veličiny.
+
+**Za druhé, velká část analýz vzniká u firem, které v téže větě nabízejí řešení.** To samo o sobě není důkaz nepoctivosti — dodavatelé nástrojů mívají přístup k velkým datovým souborům, které jinde nejsou. Mění to ale pravděpodobnost, že někdo bude hypotézu poctivě zkoušet vyvrátit, když z ní plyne poptávka po jeho produktu.
+
+**Za třetí, obor je mladý a nemá zavedené konvence.** V zavedené disciplíně existuje shoda, co se čím měří. Tady si každý zvolí vlastní jmenovatel, vlastní vzorek dotazů i vlastní definici toho, co se počítá jako „zmínka". Výsledkem jsou čísla, která si zdánlivě odporují, přestože každé samo o sobě může být správně spočítané.
+
+<Insight tone="warn" icon="⚠" label="Nejčastější tichý přeskok">
+Z věty „citované stránky mají **často** X" se během jednoho odstavce stane „přidejte X a budete citovaní". První věta je popis. Druhá je tvrzení o příčině — a to z prvního neplyne. Mezi nimi chybí krok, který skoro nikdo neudělá: **zkusit X přidat a změřit, jestli se něco stane.**
+</Insight>
+
+## Jeden pokus, který ten krok udělal
+
+V dubnu 2026 se na SSRN objevila práce Saharshe Agarwala (Indian School of Business) a Ananyi Sen (Carnegie Mellon), v červnu 2026 pak revidovaná verze. Podle abstraktu a nezávislých popisů jde o **jeden z mála doložených kauzálních testů** dopadu AI Overviews — randomizovaný terénní pokus.
+
+<Insight tone="signal" icon="◆" label="Přiznaná mez tohohle článku">
+**Plný text té práce jsem nečetl** — SSRN automatizované stažení odmítá. Všechno, co níže o výsledcích píšu, pochází z abstraktu a z několika nezávislých popisů studie. Nemám tedy statistické detaily, intervaly spolehlivosti ani rozpad podle oborů, a nemůžu ověřit, jak přesně autoři jednotlivé veličiny definovali.
+</Insight>
+
+Design je natolik jednoduchý, že se dá popsat jedním odstavcem, a přesto řeší to, co samotné pozorování neumí.
+
+<Stepper tone="accent" steps={[
+  { title: "Rozšíření do prohlížeče", desc: "Účastníci si nainstalovali doplněk do Chromu, který dokázal zasáhnout do stránky s výsledky vyhledávání." },
+  { title: "Náhodné rozdělení", desc: "Kdo do které skupiny patří, rozhodl los, ne vlastnosti člověka. Jedna skupina viděla vyhledávání beze změny, druhé se AI Overviews v reálném čase skrývaly, třetí byla přesměrovaná do AI Mode." },
+  { title: "Běžné používání", desc: "Nešlo o zadané úkoly v laboratoři. Lidé zhruba dva týdny normálně vyhledávali, dohromady vznikly desítky tisíc dotazů." },
+  { title: "Porovnání skupin", desc: "Protože o zařazení rozhodl los, je méně pravděpodobné, že rozdíl v chování vysvětlí to, čím se lidé lišili předem. Zbývá tedy hlavně vysvětlení, že ho způsobil zásah." },
+]} />
+
+To poslední je jádro randomizace. U pozorování vždycky zbývá námitka „ty stránky byly prostě lepší" nebo „ti lidé by stejně neklikli". Náhodné rozdělení tuhle námitku oslabí, protože o zařazení nerozhodly vlastnosti účastníků.
+
+<Insight tone="warn" icon="⚠" label="Co randomizace neřeší">
+Sama o sobě nestačí. I po náhodném rozdělení se skupiny můžou náhodou lišit, zásah může být proveden špatně a hlavně: **lidé z pokusu odpadávají.** Autoři podle popisů část výsledků označují za předběžnou právě proto, že někteří účastníci rozšíření během sběru odinstalovali. Randomizace odpovídá na otázku „způsobil to zásah?", ne na otázku „platí to i jinde?".
+</Insight>
+
+### Co z pokusu vyšlo
+
+<CompareTable
+  leftLabel="Když se AI Overviews zobrazí"
+  leftTone="aeo"
+  rightLabel="Když se skryjí"
+  rightTone="seo"
+  rows={[
+    { icon: "🖱", label: "Odchozí organické prokliky", left: "zhruba 0,38 na vyhledávání", right: "zhruba 0,61 na vyhledávání" },
+    { icon: "🚫", label: "Podíl vyhledávání bez prokliku", left: "kolem 72 %", right: "kolem 54 %" },
+    { icon: "🙂", label: "Měřená spokojenost a vnímaná kvalita", left: "bez znatelného rozdílu", right: "bez znatelného rozdílu" },
+    { icon: "⏱", label: "Sledované chování po prokliku", left: "bez znatelného rozdílu", right: "bez znatelného rozdílu" },
+    { icon: "💰", label: "Placené prokliky", left: "beze změny", right: "beze změny" },
+  ]}
+/>
+
+Pokles organických prokliků vychází zhruba na **38 až 40 procent** — a hned u toho je potřeba dodat, čeho se to procento týká. Ne veškeré návštěvnosti z vyhledávání. Jen dotazů, u kterých se AI Overviews vůbec objevily, což byly v tom vzorku zhruba čtyři z deseti.
+
+Zajímavější než samotné číslo je ale to, co se **nezměnilo**. V měřených ukazatelích — spokojenost, vnímaná kvalita informace, snadnost hledání — se kontrolní skupina a skupina se skrytými AI Overviews podle popisů znatelně nelišily. Přes devadesát pět procent lidí ve skupině se skrytými AI Overviews si dokonce ničeho nevšimlo, což je nepřímý doklad, že zásah nebyl rušivý. Placené prokliky zůstaly beze změny; posun se týkal organiky.
+
+Pozor ale na to, co z toho neplyne. „Bez znatelného rozdílu v měřených ukazatelích" **není totéž co „uživateli to nic neubralo"**. Neměřené věci se neměřily.
+
+### Třetí skupina: co se stalo v AI Mode
+
+Na třetí větev pokusu se v přehledech obvykle zapomíná, přitom je zajímavá právě pro to, kam se vyhledávání posouvá. Účastníci v ní byli přesměrováni do konverzačního AI Mode.
+
+Sekundární popisy uvádějí, že z něj lidé odcházeli na weby ještě méně než z běžných výsledků s AI Overviews — a že u nich na rozdíl od předchozí skupiny **klesla i deklarovaná spokojenost**, zmiňuje se pokles o 1,14 bodu. Tenhle údaj mám z druhé ruky a nemám k němu měřítko, na kterém se hodnotilo.
+
+I tak stojí za pozornost jako rozdíl mezi dvěma větvemi. Zároveň platí, že nikdo běžně nepoužívá AI Mode na sto procent dotazů, takže výsledek popisuje spíš krajní scénář než realitu.
+
+## Pět otázek na libovolnou studii
+
+Zbytek tohohle článku je filtr. Projít ho zabere pár minut a odfiltruje většinu toho, co koluje.
+
+<Checklist tone="accent" title="Než číslo použijete nebo odcitujete" items={[
+  { title: "1. Jaký je jmenovatel?", desc: "Procento z čeho — ze všech dotazů, nebo jen z těch, kde se funkce objeví? Ze zobrazení, relací, nebo uživatelů? Stejný jev vydá při různém jmenovateli čísla, která si zdánlivě odporují." },
+  { title: "2. Pozorování, nebo zásah?", desc: "Někdo jen popsal, co viděl, nebo do situace zasáhl a změřil rozdíl? Bez srovnání s věrohodnou alternativou je řeč o příčině slabá, ať je vzorek jakkoli velký." },
+  { title: "3. Kdo, kde, jak dlouho?", desc: "Země, zařízení, obor, délka sběru. Výsledek z amerického desktopu za dva týdny může být pravdivý a přitom pro český web nepoužitelný." },
+  { title: "4. Kdo to platil?", desc: "Dodavatel, jehož byznys stojí na určité metrice nebo typu problému, má silnou motivaci zkoumat hypotézy, které mu obchodně nahrávají. Nediskvalifikuje to studii, ale zvyšuje to nárok na metodiku." },
+  { title: "5. Co z toho plyne pro mě?", desc: "I platný výsledek nemusí znamenat žádnou akci. Když z tvrzení nevyplývá nic, co byste udělali jinak, je to informace, ne úkol." },
+]} />
+
+Otázka číslo dvě je nejdůležitější a nejrychlejší. Ve chvíli, kdy víte, že šlo o pozorování, přestanou dávat smysl všechny formulace typu „stačí přidat".
+
+Otázka číslo čtyři se často chápe jako obvinění, přitom jde jen o pravděpodobnost. Když někdo prodává nástroj na sledování zmínek značky a zveřejní analýzu, ze které vychází, že zmínky značky jsou klíčové, nemusí lhát ani slovem. Stačí, že tuhle hypotézu zkoumal a tři jiné ne. Praktický dopad je jednoduchý: **u takové studie čtěte metodiku, ne shrnutí.**
+
+### Jmenovatel v praxi
+
+Nejčastější zdroj zdánlivých rozporů je otázka číslo jedna. Ukažme si to na jednom čísle z pokusu výše.
+
+<CompareTable
+  leftLabel="Co se dá říct"
+  leftTone="seo"
+  rightLabel="Co už ne"
+  rightTone="aeo"
+  rows={[
+    { icon: "🎯", label: "Rozsah tvrzení", left: "Na dotazech, kde se AI Overviews objeví, klesly v pokusu organické prokliky zhruba o 38–40 %.", right: "AI Overviews berou 40 % návštěvnosti z vyhledávání." },
+    { icon: "📐", label: "Z čeho je procento", left: "Z prokliků na těch dotazech — v tom vzorku zhruba čtyři z deseti.", right: "Ze všeho, což ve vzorku neplatilo." },
+    { icon: "🌍", label: "Kde to platí", left: "USA, desktopový Chrome, placený panel, dva týdny.", right: "Kdekoliv, tedy i na českém e-shopu." },
+    { icon: "🧾", label: "Co s tím dál", left: "Odhad řádu ztráty u dotazů, kde AI Overviews vídáte.", right: "Číslo do prezentace o propadu vlastní návštěvnosti." },
+  ]}
+/>
+
+Levý i pravý sloupec vycházejí ze stejné studie. Liší se jen tím, co si k číslu domyslíte.
+
+### Když pozorování stačí a když ne
+
+Kauzální test se dá udělat i mimo akademii. Ahrefs jeden takový zveřejnil na strukturovaných datech: citované stránky mají schema markup zhruba třikrát častěji, což vypadalo jako jasný návod. Když ale schema skutečně přidali a změřili rozdíl, **měřitelný efekt se v tom testu neprojevil**. Rozebíráme ho v [samostatném článku o testu schema markupu](/blog/schema-markup-ai-citace-test/).
+
+Ten příklad stojí za zapamatování, protože trojnásobek je opravdu výrazná korelace — a přesto samotné přidání schema v tom testu očekávaný efekt neukázalo. (Což mimochodem taky není důkaz, že schema nikdy k ničemu není; může jít o jinou složku, o podmíněný efekt nebo o test, který na jeho zachycení neměl dost síly.)
+
+Neznamená to, že je pozorování k ničemu. Má dvě legitimní role:
+
+- **Ukázat, kde hledat.** Když si citované stránky v něčem nápadně podobají, je to dobrý důvod ten znak otestovat. Špatné je jen přeskočit test.
+- **Popsat stav.** Věta „recenzní weby patří mezi nejcitovanější domény" popisuje, jak to ve vzorku vypadalo. Sama o sobě ale neříká, že z recenzního formátu citovanost plyne.
+
+## Filtr na jednom konkrétním tvrzení
+
+Nejpoctivější je vyzkoušet ho na vlastním textu. V článku o [recenzních platformách](/blog/recenze-srovnavace-pro-ai/) píšeme, že tvoří tři z pěti nejcitovanějších domén v AI Overviews. Co z toho projde filtrem?
+
+<CompareTable
+  leftLabel="Otázka"
+  leftTone="accent"
+  rightLabel="Jak na tom tohle tvrzení je"
+  rightTone="seo"
+  rows={[
+    { icon: "📐", label: "Jmenovatel", left: "Tři z pěti čeho?", right: "Žebříčku domén podle počtu citací ve vzorku. Recenzní platformy přitom tvořily jen 8,5 % všech odkazů — velký podíl na špičce, malý na celku. Bez té druhé půlky číslo klame." },
+    { icon: "🔬", label: "Design", left: "Pozorování, nebo zásah?", right: "Pozorování. Snímek stavu bez srovnávací skupiny. Neříká tedy nic o tom, že by být recenzní platformou citovanost způsobovalo." },
+    { icon: "🌍", label: "Vzorek", left: "Kdo, kde, kdy?", right: "22 729 AI Overviews nad 30 000 komerčními dotazy v USA, prosinec 2025, 23 sledovaných platforem. Komerční dotazy, ne všechny; USA, ne Česko; jeden snímek, ne vývoj." },
+    { icon: "💼", label: "Kdo to platil", left: "Má zadavatel zájem na výsledku?", right: "Dodavatel SEO nástroje. Metodika je popsaná otevřeně, ale patří to do kategorie, kde je namístě vyšší nárok." },
+    { icon: "🧭", label: "Co z toho plyne", left: "Mění to něco?", right: "Že u hodnotících dotazů má smysl řešit svůj profil na cizích platformách. To je použitelný závěr — plyne ale spíš z povahy těch dotazů než z toho čísla." },
+  ]}
+/>
+
+Tvrzení tedy obstojí jako **popis stavu v jednom vzorku**, ne jako doklad mechanismu. Rozdíl je vidět na dvou formulacích téhož:
+
+<DoDont>
+<Do>
+V analyzovaném vzorku komerčních dotazů v USA měly recenzní platformy silné zastoupení mezi nejcitovanějšími doménami, přestože tvořily jen kolem 8,5 % všech odkazů.
+</Do>
+<Dont>
+AI cituje hlavně recenzní weby.
+</Dont>
+</DoDont>
+
+## Když se čísla rozcházejí
+
+Ještě jedna věc se u té studie ukázala hned. Jedny zdroje uvádějí pokles **38 procent**, jiné **39,8 procenta**. Není to chyba ani jednoho z nich: práce byla mezi dubnem a červnem 2026 revidována a jednotlivé popisy vycházejí z různých verzí a z odlišně zaokrouhlených průměrů.
+
+<DoDont>
+<Do>
+Uvést rozpětí a říct, odkud rozdíl pochází. „Zhruba 38 až 40 procent podle verze práce" je tvrzení, které obstojí.
+</Do>
+<Dont>
+Vybrat si vyšší číslo, protože líp vypadá, a napsat ho bez zdroje. Přesně takhle vznikají čísla, která se pak roky opisují.
+</Dont>
+</DoDont>
+
+<Insight tone="warn" icon="⚠" label="Co si z toho vzít o naší vlastní práci">
+Většina toho, co na tomhle webu doporučujeme, stojí na pozorování a na zkušenosti, ne na kauzálních testech — protože ty v tomhle oboru skoro nikdo nedělá. Filtr z tohohle článku proto platí i na nás. Tam, kde jde jen o pozorování, se to snažíme napsat; kde jsme to v minulosti nenapsali dost jasně, je to k opravě, ne k obhajobě.
+</Insight>
+
+## Když se ověřit nedá
+
+Občas narazíte na číslo, které nejde dohledat vůbec: v článku není odkaz, zdroj vede na jiný článek bez odkazu a původní studie neexistuje nebo je za přihlášením. Tehdy máte tři možnosti a všechny jsou legitimní.
+
+<Stepper tone="seo" steps={[
+  { title: "Nepoužít ho", desc: "Nejjednodušší a v drtivé většině případů správné. Argument, který stojí na nedohledatelném čísle, se rozpadne při první otázce." },
+  { title: "Použít ho i s tou nejistotou", desc: "Napsat, že číslo koluje, ale primární zdroj se dohledat nepodařilo. To je poctivé a čtenář si udělá vlastní úsudek." },
+  { title: "Nahradit ho vlastním měřením", desc: "U většiny otázek o vlastním webu je stejně užitečnější změřit si to sám než hledat cizí procento. Vlastní vzorek dotazů má nad zahraniční studií tu výhodu, že se týká přímo vás." },
+]} />
+
+Poslední možnost je nejpracnější a nejčastěji nejlepší. Padesát relevantních dotazů projetých ručně řekne o vaší situaci víc než jakékoli cizí procento.
+
+## Časté chyby
+
+<Mistake num="01" title="Zaměnit velký vzorek za dobrý design" fix="Ptejte se na srovnávací skupinu, ne na počet řádků. Milion pozorování bez ní o příčině nerozhodne.">
+Sto tisíc analyzovaných odpovědí zní přesvědčivě, ale velikost vzorku řeší náhodný šum, ne systematické zkreslení. Když je celý vzorek pokřivený stejným směrem, víc dat ho jen upevní.
+</Mistake>
+
+<Mistake num="02" title="Přenést zahraniční číslo na český trh" fix="Berte si ze zahraničních dat směr a řádovou velikost, ne konkrétní procento do vlastní prezentace.">
+Chování uživatelů, podíl platforem i nasazení jednotlivých funkcí se mezi trhy liší. Číslo z USA je legitimní vstup do úvahy, ale ne podklad pro odhad vlastní ztráty.
+</Mistake>
+
+<Mistake num="03" title="Číst neprokázaný rozdíl jako neúspěch" fix="Berte „nezměnilo se nic“ jako plnohodnotné zjištění — často je cennější než potvrzení očekávání.">
+To, že se spokojenost mezi dvěma skupinami znatelně nelišila, je jeden z nejzajímavějších výsledků celého pokusu. Nulové výsledky se ale hůř sdílejí, takže z popisů často vypadnou úplně.
+</Mistake>
+
+<Mistake num="04" title="Ptát se na metodiku jen u toho, s čím nesouhlasíte" fix="Použijte stejný filtr na studii, která potvrzuje váš názor. Tam je totiž slepé místo.">
+Nejrychlejší způsob, jak si zafixovat nesprávné přesvědčení, je prověřovat důkladně jen protiargumenty. Filtr z tohohle článku má cenu hlavně tehdy, když ho pustíte na vlastní oblíbené číslo.
+</Mistake>
+
+## Co si z toho odnést
+
+Nejde o to stát se skeptikem, který nevěří ničemu. Jde o dvě konkrétní věci.
+
+**Rozlišujte, co studie měřila, od toho, co se z ní vyvozuje.** Většina sporů o AI viditelnost je ve skutečnosti spor o tenhle přeskok, ne o data.
+
+**A když už číslo použijete, přeneste s ním i jmenovatel.** Rozdíl mezi „AI Overviews berou 40 procent prokliků" a „na dotazech, kde se objeví, klesly v jednom pokusu organické prokliky zhruba o 38 až 40 procent" je rozdíl mezi poplašnou zprávou a použitelným zjištěním.
+
+Kdyby si z článku měl někdo odnést jedinou větu: **bez jmenovatele a bez informace o designu neberte žádné procento jako návod k akci.**
+
+Místo hledání cizího čísla je skoro vždycky užitečnější změřit si vlastní situaci — postup je v článku o [testu viditelnosti v AI](/blog/test-viditelnosti-v-ai/). Jednu konkrétní studii a to, co z ní neplyne, jsme rozebrali u [faktorů AI citace](/blog/co-rozhoduje-o-ai-citaci/).
