@@ -11,12 +11,20 @@
 | Kandidát | Co v něm je | Verdikt |
 |---|---|---|
 | `ai-souhrny-recenzi` | **Neexistuje** — jen řádek v plánu (nový, skupina D). Bude o tom, jak AI recenze **shrnuje**. | Nekoliduje, ale hraničí. Tenhle článek = **odpověď firmy** jako vlastní text. Ten druhý = souhrny cizích textů. |
-| `hodnoceni-a-recenze-pro-ai` | **Neexistuje** — plánovaný díl 9 série pro e-shopy. | Volné. Až vznikne, bude o `AggregateRating` a sbírání recenzí, ne o psaní odpovědí. |
+| `recenze-a-hodnoceni-pro-ai` | **Existuje** (18. 7. 2026, tutorial, eshopy+duveryhodnost) — sbírání recenzí, `AggregateRating`, recenze jako text, který nenapsal prodejce. | **Nekanibalizovat.** Tam vstup recenzí do e-shopu, tady výstup firmy do vlákna. Prolinkovat. |
+| `recenze-srovnavace-pro-ai` | **Existuje** (19. 7. 2026, analysis) — recenzní platformy jako citované domény, data SE Ranking. | Sousedí. Tam volba platformy, tady text v ní. Prolinkovat. |
 | `e-e-a-t-pro-ai` | Důvěryhodnost obecně, autorská entita | Sousedí, neduplikuje. Prolinkovat. |
 | `originalni-data-pro-ai` | Vlastní data jako citovatelný obsah | Sousedí — odpověď na recenzi je taky text, který nikdo jiný nenapíše. Prolinkovat. |
 | `firemni-profil-google-pro-ai` | Neexistuje. | — |
 
-**Verdikt:** téma volné.
+**Verdikt:** téma volné. Sousedí se dvěma existujícími články o recenzích, ale
+dělicí linie je čistá: ty dva řeší **cizí text** (jak ho sbírat, kde ho mít),
+tenhle **vlastní text** (co do vlákna napíše firma).
+
+> Poznámka k opravě: v první verzi tohohle záznamu stálo, že
+> `recenze-a-hodnoceni-pro-ai` neexistuje — spletl jsem si pořadí slov ve slugu.
+> Článek existuje od 18. 7. 2026 a draft na něj prolinkovává, takže kontrola
+> se věcně stala; chybný byl jen tenhle zápis. Opraveno 30. 7. 2026.
 
 ---
 
