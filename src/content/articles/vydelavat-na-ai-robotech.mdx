@@ -1,0 +1,189 @@
+---
+title: "Může web vydělávat na AI robotech? Zatím spíš ne"
+description: "Cloudflare staví infrastrukturu pro placený přístup k obsahu, API i datům. Co z toho dnes reálně jde, proč to českému webu nic nenese a co se mění samo."
+answer: "Nástroje na zpoplatnění přístupu AI robotů existují, ale běžně dostupné ani doložené nejsou. Monetization Gateway má Cloudflare na čekací listině, model Pay Per Use testuje s pěti partnery a žádné vyplacené částky ve svých materiálech neuvádí. Platí se navíc ve stablecoinech."
+slug: "vydelavat-na-ai-robotech"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "strategie"
+published: "2026-08-01"
+updated: "2026-08-01"
+keywords:
+  - "vydělávat na ai robotech"
+  - "pay per crawl"
+  - "cloudflare monetizace ai"
+  - "x402 platba za obsah"
+  - "zpoplatnit ai crawler"
+variant: "rich"
+stats:
+  - value: "x402"
+    label: "protokol nad stavovým kódem HTTP 402, na kterém placení mezi stroji stojí"
+  - value: "5"
+    label: "partnerů, se kterými Cloudflare podle tiskové zprávy testuje placení za užití obsahu"
+  - value: "0"
+    label: "veřejně ověřitelných vyplacených částek, které se mi při přípravě článku podařilo dohledat"
+  - value: "15. 9."
+    label: "datum, kdy se u části účtů výchozí nastavení blokování změní automaticky"
+faq:
+  - q: "Můžu si dnes nechat platit za to, že mě prochází AI roboti?"
+    a: "Běžně ne. Cloudflare má Monetization Gateway na čekací listině a model Pay Per Use podle tiskové zprávy testuje s pěti jmenovanými zahraničními partnery. Pro běžný web to zatím není běžně dostupný ani doložený zdroj příjmu — a hlavně: aby to fungovalo, musela by druhá strana chtít platit."
+  - q: "Co je x402 a HTTP 402?"
+    a: "402 Payment Required je stavový kód vyhrazený pro situace, kdy server podmiňuje vydání obsahu platbou, a dlouho se prakticky nepoužíval. Protokol x402 na něm staví konkrétní postup: server pošle cenu a platební údaje, klient zaplatí a požadavek zopakuje s dokladem."
+  - q: "V čem se platí?"
+    a: "Ve stablecoinech; Cloudflare jako příklady uvádí Open USD a USDC. Vypořádání popisuje jako peer-to-peer přímo do peněženky prodávajícího. Pro českou firmu to otevírá účetní a daňové otázky, které je rozumné vyjasnit dřív než technické nastavení."
+  - q: "Kolik se tím dá vydělat?"
+    a: "Nevím a nedohledal jsem to. Kolují odhady v desítkách až stovkách tisíc dolarů měsíčně pro velké weby, ale v blogovém oznámení Cloudflare ani v jeho tiskové zprávě žádné takové číslo není a není u něj řečeno, čí je to odhad."
+  - q: "Co se tedy mění doopravdy?"
+    a: "Od 15. září 2026 se podle Cloudflare mění výchozí nastavení: u stránek s reklamou se má povolit vyhledávání, ale zablokovat trénink a použití agenty. Stávající zákazníci na bezplatném tarifu, kteří nastavení nezmění, ho podle oznámení dostanou automaticky."
+  - q: "Co mám dělat místo řešení monetizace?"
+    a: "Zjistit si, kolik vás roboti opravdu procházejí a co vám z toho chodí zpátky. Bez toho čísla nemá smysl řešit ani blokování, ani ceník. Teprve pak se rozhodovat, jestli část robotů pustit, nebo ne."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+Myšlenka je lákavá a stará jako spor o AI a obsah: když si moje texty berou modely, ať za ně zaplatí. Cloudflare dřív popsalo model Pay Per Crawl a v červenci 2026 k němu přidalo výrazně širší Monetization Gateway.
+
+Tenhle článek je o tom, **co z toho dnes reálně jde** — a proč je odpověď pro běžný český web zatím zklamáním.
+
+## Tři věci, které se pletou
+
+Hned na začátku je potřeba rozplést, co je co. V textech o tomhle tématu se tři různé věci často slévají do jedné.
+
+<CompareTable
+  leftLabel="Co to je"
+  leftTone="accent"
+  rightLabel="V jakém je to stavu"
+  rightTone="seo"
+  rows={[
+    { icon: "🕷", label: "Pay Per Crawl", left: "Cloudflare takto označovalo dřívější model mířený na zpoplatnění přístupu robotů k obsahu.", right: "Předchůdce. Cloudflare od něj posunul důraz jinam — viz další řádek." },
+    { icon: "📈", label: "Pay Per Use", left: "Posun od placení za stažení k placení za užití: vydavatel má dostat zaplaceno, když jeho obsah vytvoří hodnotu, ne když si ho někdo jen stáhne.", right: "Podle tiskové zprávy se testuje s pěti jmenovanými partnery. Vydavatel se musí sám přihlásit." },
+    { icon: "🚪", label: "Monetization Gateway", left: "Nejširší z toho: zpoplatnit jakýkoli zdroj za Cloudflare — stránky, datové sady, rozhraní API i jednotlivá volání nástrojů v MCP.", right: "Otevřená čekací listina. Nejde tedy o funkci dostupnou všem zákazníkům Cloudflare." },
+  ]}
+/>
+
+Rozdíl mezi prvními dvěma je věcný: účtovat za stažení je snadné změřit, ale nevystihuje hodnotu — jednou stažený text může model použít ve stovkách odpovědí. Placení za užití tenhle problém řeší, zato je těžší ho ověřit.
+
+## Jak by placení mělo fungovat
+
+Mechanismus používá **HTTP 402 Payment Required** jako signál a nad ním protokol **x402**, který popisuje zbytek.
+
+<Stepper tone="accent" steps={[
+  { title: "Klient si řekne o zdroj", desc: "Přijde běžný požadavek na obsah, rozhraní nebo data, která jste označili jako placená." },
+  { title: "Server odpoví 402 místo obsahu", desc: "Spolu s kódem pošle malou zprávu: kolik to stojí, čím se dá zaplatit a kam poslat platbu." },
+  { title: "Klient zaplatí", desc: "Cloudflare popisuje vypořádání jako peer-to-peer přímo do peněženky prodávajícího, ve stablecoinech." },
+  { title: "Požadavek se zopakuje s dokladem", desc: "Tentokrát projde a zdroj se vydá. Celé se to odehrává mezi stroji." },
+]} />
+
+<Insight tone="signal" icon="◆" label="Proč je to technicky přirozené">
+Model spojuje **požadavek, cenu i platbu do jednoho toku**. Pro automatizované přístupy je to elegantnější než předplatné nebo smlouva sjednaná dopředu. Neznamená to ale, že kolem něj nejsou další provozní, právní a účetní podmínky — jen je nemá vyřešené protokol.
+</Insight>
+
+Nastavuje se to podle Cloudflare výrazy, podobně jako ostatní pravidla, přes vlastní rozhraní. Účtovat se má dát i podle typu požadavku nebo podle složitosti úlohy.
+
+## Kde to naráží
+
+Teď ta méně příjemná část. Rozdíl mezi „existuje" a „můžu to použít" je tady velký.
+
+<CompareTable
+  leftLabel="Co se běžně říká"
+  leftTone="aeo"
+  rightLabel="Co k tomu Cloudflare uvádí"
+  rightTone="seo"
+  rows={[
+    { icon: "🚪", label: "Dostupnost", left: "Můžete si nechat platit za obsah.", right: "Monetization Gateway má otevřenou čekací listinu — není to funkce dostupná všem zákazníkům." },
+    { icon: "🤝", label: "Placení v praxi", left: "AI firmy platí vydavatelům.", right: "Placení za užití se podle tiskové zprávy testuje s pěti jmenovanými partnery a vydavatel se musí sám přihlásit." },
+    { icon: "💱", label: "Měna", left: "Peníze za obsah.", right: "Stablecoiny; jako příklady se uvádějí Open USD a USDC, do vlastní peněženky." },
+    { icon: "📊", label: "Kolik to nese", left: "Odhady v desítkách až stovkách tisíc dolarů měsíčně.", right: "V blogovém oznámení ani v tiskové zprávě žádné takové číslo není." },
+    { icon: "🧾", label: "Podíl provozovatele", left: "—", right: "V oznámení není uvedený." },
+  ]}
+/>
+
+### Chybí druhá strana
+
+Nejzávažnější problém není technický ani účetní. Je obchodní.
+
+Zpoplatnění funguje jen tehdy, když **druhá strana chce zaplatit**. U žádného z velkých provozovatelů generativního vyhledávání se mi nepodařilo doložit, že by takto platil. To není totéž jako tvrdit, že nikdo neplatí — jen se mi to nepodařilo veřejně doložit. Mezi jmenovanými partnery jsou vydavatelé i platformy, ale ti největší provozovatelé mezi nimi nefigurují.
+
+<Insight tone="warn" icon="⚠" label="Nabídka bez poptávky ještě není trh">
+Když nastavíte cenu a robot ji nezaplatí, nedostanete peníze. **Dostanete jen o jeden přístup robota míň** — a jestli je to výhra, nebo ztráta, závisí na tom, jestli vám ten robot přiváděl nějakou hodnotu zpátky. To je úplně jiná otázka než monetizace.
+</Insight>
+
+### Číslo, které jsem nepoužil
+
+Při přípravě článku se opakovaně objevilo tvrzení, že weby s vysokou návštěvností mohou z AI robotů vydělávat desítky až stovky tisíc dolarů měsíčně.
+
+Nedohledal jsem ho ani v blogovém oznámení Cloudflare, ani v jeho tiskové zprávě. Není u něj řečeno, čí je to odhad, na jakém vzorku vznikl ani co znamená „vysoká návštěvnost". Proto v článku není nic než tahle poznámka. Jak taková čísla filtrovat, rozebíráme v textu o [čtení studií o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/).
+
+## Co se naopak mění doopravdy
+
+Zatímco placení je zatím na čekací listině, jedna věc má konkrétní datum a u části účtů se **aplikuje automaticky**.
+
+Podle Cloudflare se od **15. září 2026** mění výchozí nastavení: u stránek s reklamou se má povolit vyhledávání, ale zablokovat trénink a použití agenty. Roboti, kteří vyhledávání od agentního použití neumí oddělit, mají být na stránkách s reklamou zablokovaní. Stávající zákazníci na bezplatném tarifu, kteří si nastavení nezmění, ho podle oznámení dostanou automaticky.
+
+<Insight tone="accent" icon="◆" label="Tohle je ta praktická část">
+Rozdíl je zásadní: k placení se musíte přihlásit a zatím nikam nevede. **Změna výchozího nastavení se u části účtů provede sama.** Když provozujete web na Cloudflare a máte na stránkách reklamu, stojí za to vědět, co se v září stane. Rozebíráme to v článku o [nastavení AI robotů na Cloudflare](/blog/cloudflare-ai-bot-blocking/).
+</Insight>
+
+## Rozhodovací rámec
+
+Zadání znělo rozhodnout, komu to dává smysl a komu ne. Tady je odpověď co nejstručněji.
+
+<CompareTable
+  leftLabel="Sledovat vývoj má smysl, když…"
+  leftTone="seo"
+  rightLabel="Neřešte to teď, když…"
+  rightTone="aeo"
+  rows={[
+    { icon: "📚", label: "Povaha obsahu", left: "prodáváte data, rozhraní API nebo odborný obsah, který má cenu i mimo návštěvu", right: "je váš obsah pozvánkou k nákupu zboží nebo služby" },
+    { icon: "🔁", label: "Návratnost", left: "roboti vám berou drahý obsah a zpátky nechodí prakticky nic", right: "z asistentů vám chodí návštěvy, které konvertují" },
+    { icon: "🧾", label: "Provozní připravenost", left: "umíte interně vyřešit příjem ve stablecoinech", right: "platba mimo běžný bankovní styk je pro vás sama o sobě překážka" },
+    { icon: "🧩", label: "Nahraditelnost", left: "váš obsah se jinde těžko sežene", right: "podobný text existuje na deseti dalších webech" },
+  ]}
+/>
+
+Poslední řádek stojí za rozvedení. U snadno nahraditelného obsahu je riziko, že zpoplatnění povede spíš k obejití než k platbě — model si vezme některý z ostatních zdrojů. **Vyjednávat může ten, koho někdo potřebuje**, a jednotlivý český web má obvykle slabší pozici, pokud nenabízí něco těžko nahraditelného.
+
+## Co s tím dnes dělat
+
+Doporučení je nudné a přesně proto užitečné: **neřešte ceník, řešte čísla a rozhodnutí.**
+
+<Checklist tone="accent" title="Tři kroky, které dávají smysl teď" items={[
+  { title: "1. Zjistěte, kolik vás roboti opravdu procházejí", desc: "Bez vlastního poměru procházení k návštěvám nemáte co monetizovat ani co bránit. Postup je v samostatném článku o zátěži AI robotů." },
+  { title: "2. Podívejte se, co vám ten provoz přináší zpátky", desc: "Robot, ze kterého chodí lidé, je něco jiného než robot, který jen čerpá obsah. Rozhodnutí o blokování i o ceně stojí na tomhle rozdílu, ne na principu." },
+  { title: "3. Rozhodněte o blokování, ne o ceně", desc: "Pro většinu webů je to dnes nejpraktičtější a nejdostupnější páka. Ceník si můžete nastavit, až bude komu ho poslat." },
+]} />
+
+Kdo si chce nechat možnost do budoucna, může se na čekací listinu přihlásit. Samo o sobě to ale ještě neznamená, že službu dostane k běžnému použití v dohledné době — a rozhodně z toho nedělejte položku v rozpočtu.
+
+## Časté chyby
+
+<Mistake num="01" title="Plánovat příjem z něčeho, co je na čekací listině" fix="Do rozpočtu si dávejte jen příjem, který je někde veřejně doložený jako skutečně vyplacený. Takový případ jsem nenašel.">
+Mezi „oznámeno" a „vyplaceno" je v tomhle oboru velká vzdálenost. Oznámení nic nestojí, výplata ano.
+</Mistake>
+
+<Mistake num="02" title="Zaměnit zpoplatnění za blokování" fix="Rozhodněte nejdřív, koho vůbec chcete pustit. Cena je až druhý krok a dnes se bez ní obejdete.">
+Blokování funguje hned a nic nestojí. Zpoplatnění potřebuje, aby druhá strana zaplatila — a to je předpoklad, ne jistota.
+</Mistake>
+
+<Mistake num="03" title="Řešit stablecoiny dřív než účetní" fix="Než začnete cokoli nastavovat, zeptejte se, jak se u vás zaúčtuje příjem v kryptoměně a co k tomu potřebujete doložit.">
+Platba mimo běžný bankovní styk není jen technický detail. Otevírá účetní, daňové i interní otázky, které se řeší dřív než nastavení pravidel.
+</Mistake>
+
+<Mistake num="04" title="Zablokovat všechno a čekat, až někdo zaplatí" fix="Odlište roboty, kteří přivádějí návštěvy, od těch, kteří jen čerpají obsah. Plošná blokace vypne i to první.">
+Kdo zavře dveře úplně, nezískal vyjednávací pozici — jen zmizel z odpovědí.
+</Mistake>
+
+## Co si z toho odnést
+
+**Infrastruktura vzniká, trh se zatím nedá doložit.** Technicky je model placení mezi stroji hotový a docela pěkný. Chybí veřejně viditelná část, kde někdo platí.
+
+**Pro běžný český web z toho dnes není doložený příjem ani běžně dostupný způsob nasazení.** Čekací listina, test s pěti zahraničními partnery, platba ve stablecoinech a nula dohledaných vyplacených částek — to zatím nevypadá jako použitelná podnikatelská příležitost, spíš jako věc k dalšímu sledování.
+
+**Co je reálné, je změna výchozího nastavení v září.** Ta se u části účtů provede automaticky.
+
+Než začnete řešit ceník, zjistěte si vlastní čísla — [kolik vás AI roboti projdou na jednu návštěvu zpět](/blog/ai-roboti-zatez-webu/). To je základní podklad, bez kterého se o dalším postupu rozhoduje naslepo.
