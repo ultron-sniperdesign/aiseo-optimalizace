@@ -1,0 +1,182 @@
+---
+title: "Preferované zdroje v Googlu: co nastaví čtenář"
+description: "Čtenář si může označit weby jako preferované zdroje. Google je pak označí v AI odpovědích. Jak to funguje česky a jak o to slušně požádat."
+answer: "Preferované zdroje ve Vyhledávání Google jsou nastavení, kterým si uživatel označí weby, které chce preferovat. Podle Googlu se obsah takového zdroje může častěji objevovat v Hlavních událostech; v přehledech od AI a v režimu AI je výrazně označený. Nastavuje to čtenář, ne provozovatel webu."
+slug: "preferovane-zdroje-google"
+category: "tutorial"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-08-01"
+updated: "2026-08-01"
+keywords:
+  - "preferované zdroje google"
+  - "preferred sources"
+  - "nastavení zdrojů google"
+  - "hlavní události google"
+  - "ai přehledy odkazy"
+variant: "rich"
+stats:
+  - value: "3"
+    label: "místa, kde se to podle Googlu projeví — Hlavní události, přehledy od AI a režim AI"
+  - value: "všechny"
+    label: "podporované jazyky, ve kterých je funkce podle Googlu od dubna 2026 dostupná"
+  - value: "0"
+    label: "přepínačů, které si k tomu zapne provozovatel webu — rozhoduje o tom čtenář"
+  - value: "2×"
+    label: "vyšší ochota prokliknout na preferovaný zdroj — tvrzení Googlu o vlastním produktu"
+faq:
+  - q: "Co jsou preferované zdroje?"
+    a: "Je to funkce Preferované zdroje ve Vyhledávání Google. Uživatel si v ní označí weby, které chce preferovat. Podle nápovědy se obsah takového zdroje může častěji objevovat v Hlavních událostech; v přehledech od AI a v režimu AI je výrazně označený."
+  - q: "Kde si to čtenář nastaví?"
+    a: "Ve vyhledávání klikne na svou profilovou fotku, otevře Personalizaci vyhledávání a v ní Nastavení zdrojů. Tam si zdroje vybere. Tuhle cestu uvádí česká nápověda; anglická verze doplňuje, že na mobilu jde zdroj přidat i přes hvězdičku u Hlavních událostí."
+  - q: "Funguje to v češtině?"
+    a: "Podle Googlu ano — v dubnu 2026 oznámil dostupnost ve všech podporovaných jazycích a česká nápověda funkci popisuje i s názvy položek v rozhraní. Sám jsem to jako přihlášený uživatel netestoval, takže vycházím z nápovědy, ne z vlastního pokusu."
+  - q: "Můžu si nastavit svůj vlastní web?"
+    a: "Můžete, ale ovlivní to jen vaše vlastní výsledky. Nastavení si dělá každý čtenář sám pro sebe; na to, co uvidí ostatní, vliv nemá. Jediná cesta je požádat lidi, kteří vás už čtou."
+  - q: "Platí to i pro e-shop nebo firemní web?"
+    a: "Funkce má těžiště ve zpravodajství — dokumentace pro vydavatele mluví hlavně o Hlavních událostech. Pro web, který pravidelně vydává, dává větší smysl než pro e-shop. Česká nápověda navíc uvádí, že zdroje, které nejsou pravidelně aktualizovány, nemusí být k dispozici."
+  - q: "Dá se to nějak koupit nebo vyladit?"
+    a: "Provozovatel webu si tuhle funkci sám nezapne ani nekoupí. Může jen zvýšit šanci, že bude jako zdroj vůbec k dispozici a že si ho čtenář vybere — tedy pravidelně vydávat a slušně o to požádat."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+
+Skoro všechno, co se dá s viditelností v AI odpovědích dělat, drží v ruce buď Google, nebo autor obsahu. Existuje jedna výjimka a je snadné ji přehlédnout: **preferované zdroje** si nastavuje čtenář sám a projeví se to i v AI odpovědích.
+
+Nejde je koupit ani doladit. Dá se o ně jen požádat — a k tomu potřebujete vědět, jak to v českém rozhraní vypadá.
+
+<Insight tone="signal" icon="◆" label="Odkud tenhle článek čerpá">
+Všechno níže pochází z **nápovědy a oznámení Googlu**, včetně české verze nápovědy. **Sám jsem funkci jako přihlášený uživatel netestoval**, takže o tom, jak se chová u konkrétního webu, nic netvrdím. Kde vycházím z anglické verze nápovědy místo české, je to u dané věty napsané.
+</Insight>
+
+## Co to je a kde se to projeví
+
+Preferované zdroje jsou nastavení ve Vyhledávání Google. Uživatel si v něm označí weby, které chce preferovat. Google popisuje tři místa, kde se to projeví — a u každého trochu jinak.
+
+<CompareTable
+  leftLabel="Kde"
+  leftTone="accent"
+  rightLabel="Co k tomu Google uvádí"
+  rightTone="seo"
+  rows={[
+    { icon: "📰", label: "Hlavní události", left: "Sekce s aktuálními články u dotazů na dění", right: "Obsah preferovaného zdroje se podle dokumentace pro vydavatele může objevovat častěji a nese odznak preferovaného zdroje" },
+    { icon: "🤖", label: "Přehledy od AI", left: "Shrnutí nad výsledky", right: "Preferované zdroje jsou podle oznámení z května 2026 výrazně označené, aby je šlo v odpovědi poznat" },
+    { icon: "💬", label: "Režim AI", left: "Konverzační rozhraní", right: "Totéž označení — nastavení se přenáší i sem" },
+  ]}
+/>
+
+Rozdíl mezi prvním a druhým řádkem stojí za pozornost. **U Hlavních událostí jde o četnost, u AI povrchů o rozpoznatelnost.** Že by preferovaný zdroj Google do AI odpovědi vybíral častěji, z dostupných materiálů neplyne — plyne z nich, že když už tam je, čtenář ho pozná.
+
+<Insight tone="warn" icon="⚠" label="Čí je to číslo">
+Google u své funkce tvrdí, že lidé jsou u preferovaného zdroje zhruba **dvakrát ochotnější prokliknout**. Je to vyjádření dodavatele o vlastním produktu, nezávislé ověření k dispozici není a z povahy věci se dělá špatně — nikdo zvenčí nevidí, jak by se titíž lidé chovali bez toho nastavení. **Berte to jako směr, ne jako hodnotu do výpočtu.**
+</Insight>
+
+## Jak si to čtenář nastaví
+
+Tohle je ta část, kterou potřebujete umět popsat, až se někoho budete chystat požádat. Názvy odpovídají české nápovědě.
+
+<Stepper tone="accent" steps={[
+  { title: "Otevřít vyhledávání a kliknout na profilovou fotku", desc: "Vpravo nahoře, tam kde se přepíná účet." },
+  { title: "Personalizace vyhledávání", desc: "Položka v nabídce pod profilem." },
+  { title: "Nastavení zdrojů", desc: "Tady si čtenář zdroje vybere." },
+]} />
+
+Anglická verze nápovědy k tomu doplňuje tři věci: na mobilu jde zdroj přidat i přes **hvězdičku** u Hlavních událostí, **počet zdrojů omezený není** a přes polovinu lidí si prý vybere čtyři a víc. Přihlášený účet si podle ní nastavení nese napříč prohlížeči. Českou variantu těchhle detailů jsem neověřoval.
+
+<Insight tone="signal" icon="◆" label="Podmínka, o které se moc nemluví">
+Česká nápověda obsahuje jednu důležitou větu: **zdroje, které nejsou pravidelně aktualizovány, nemusí být k dispozici.** Co přesně „pravidelně" znamená, Google neupřesňuje — ale web, který vydá dva články ročně, se tam čtenář nemusí dobrat.
+</Insight>
+
+## Proč je to jiné než všechno ostatní
+
+Stojí za to si uvědomit, v čem se tenhle signál liší od zbytku toho, čemu se říká AI SEO.
+
+<CompareTable
+  leftLabel="Běžné páky"
+  leftTone="aeo"
+  rightLabel="Preferované zdroje"
+  rightTone="seo"
+  rows={[
+    { icon: "🎛", label: "Kdo rozhoduje", left: "Google podle svých kritérií, vy podle toho, co napíšete", right: "Konkrétní čtenář ve svém účtu" },
+    { icon: "🛠", label: "Dá se to zapnout", left: "Ano — obsahem, strukturou, technikou", right: "Ne. Provozovatel si k tomu žádný přepínač nezapne" },
+    { icon: "📏", label: "Jde to změřit", left: "Nepřímo, přes zobrazení a prokliky", right: "Prakticky ne — v dostupných datech se to od ostatního neoddělí" },
+    { icon: "🎯", label: "Koho se to týká", left: "Všech, kdo daný dotaz hledají", right: "Jen lidí, kteří si vás vybrali" },
+  ]}
+/>
+
+Poslední řádek je zásadní a snadno se přehlédne. **Preferované zdroje nezvýší vaši viditelnost u lidí, kteří vás neznají.** Působí u těch, kdo už vás četli a rozhodli se vidět vás častěji. Není to nástroj na získávání publika, ale na jeho udržení.
+
+Právě proto je zajímavý: v prostředí, kde návštěvnost z vyhledávání klesá a rozhoduje o ní stroj, je tohle jedno z mála míst, kde rozhodnutí patří zpátky čtenáři.
+
+## Jak o to požádat, aby to nebylo trapné
+
+Tady se to většina webů pokazí. Prosba o nastavení v cizím účtu je citlivá věc.
+
+<DoDont>
+<Do>
+Zmínit to jednou, na místě, kde už čtenář prokázal zájem — v patičce newsletteru, na konci delšího článku, na děkovné stránce po odběru. Vysvětlit, co to může udělat pro něj: v Hlavních událostech může na váš obsah narazit častěji a v AI odpovědích vaše odkazy snáz pozná.
+</Do>
+<Dont>
+Vyskakovací okno hned po příchodu, opakovaná lišta na každé stránce nebo formulace typu „podpořte nás". Kdo web nezná, nemá důvod ho preferovat, a otravné vyžádání si zapamatuje spíš špatně.
+</Dont>
+</DoDont>
+
+<Checklist tone="accent" title="Co v té prosbě má být" items={[
+  { title: "Konkrétní cesta, ne odkaz na nápovědu", desc: "Profilová fotka, Personalizace vyhledávání, Nastavení zdrojů. Tři kroky se přečtou, odkaz do dokumentace většina lidí nerozklikne." },
+  { title: "Důvod na straně čtenáře", desc: "Ne že to pomůže vám, ale že si preferované zdroje snáz pozná v AI odpovědích a v Hlavních událostech na ně může narazit častěji. To lépe odpovídá tomu, co Google o funkci popisuje." },
+  { title: "Jedno místo, ne pět", desc: "Opakovaná prosba působí zoufale. Stačí ji mít tam, kde čtenář dočte a je nejnakloněnější." },
+  { title: "Žádný slib, který nedržíte", desc: "Netvrďte, že vás to automaticky dostane do AI odpovědí. Doložené je hlavně to, že když se tam preferovaný zdroj objeví, Google ho označí." },
+]} />
+
+## Pro koho to dává větší a pro koho menší smysl
+
+Buďme konkrétní, protože funkce má jasné těžiště.
+
+<CompareTable
+  leftLabel="Typ webu"
+  leftTone="accent"
+  rightLabel="Nakolik to dává smysl"
+  rightTone="seo"
+  rows={[
+    { icon: "📰", label: "Médium, zpravodajský web", left: "Vydává často, čtenáři se vracejí", right: "Největší přínos. Hlavní události jsou přesně ta sekce, které se dokumentace pro vydavatele týká." },
+    { icon: "✍️", label: "Odborný blog s pravidelným vydáváním", left: "Publikuje v týdnech, ne v letech", right: "Dává smysl. Podmínku pravidelné aktualizace splňuje a má vracející se čtenáře, které jde požádat." },
+    { icon: "🛒", label: "E-shop", left: "Katalog se mění, obsah spíš ne", right: "Spíš malý. Dokumentace váže těžiště funkce na Hlavní události, a ty se produktových dotazů obvykle netýkají." },
+    { icon: "🏢", label: "Firemní web bez blogu", left: "Statické stránky, občasná aktualita", right: "Obvykle malý. Bez pravidelného vydávání nemusí být podle nápovědy jako zdroj vůbec k dispozici a málokdy má komu prosbu adresovat." },
+  ]}
+/>
+
+## Časté chyby
+
+<Mistake num="01" title="Slibovat si od toho novou návštěvnost" fix="Berte to jako nástroj na udržení publika, ne na jeho získání. Nové čtenáře přivádí obsah, ne tohle nastavení.">
+Funguje jen u lidí, kteří si vás vybrali. Přínos proto nejspíš roste s velikostí a loajalitou stávajícího publika; u webu bez vracejících se čtenářů bude zanedbatelný.
+</Mistake>
+
+<Mistake num="02" title="Odkázat čtenáře na anglickou nápovědu" fix="Napište tři kroky česky přímo do textu. Trvá to dvě věty a projde tím výrazně víc lidí.">
+Prosba, která končí odkazem do dokumentace, se plní minimálně. Čím delší cesta, tím míň lidí ji dojde.
+</Mistake>
+
+<Mistake num="03" title="Čekat, že to uvidíte v datech" fix="Nastavte si realistické očekávání: přímé měření nemáte. Berte to jako doplněk, ne jako kampaň s vyhodnocením.">
+Search Console preferované zdroje neodděluje. Nezjistíte, kolik lidí si vás přidalo ani co to udělalo — pracujete s tvrzením Googlu a s vlastním odhadem.
+</Mistake>
+
+<Mistake num="04" title="Prosit dřív, než máte co nabídnout" fix="Nejdřív pravidelné vydávání, potom prosba. V opačném pořadí to nemusí fungovat ani technicky.">
+Podmínka pravidelné aktualizace není formalita. Web, který nevydává, se podle nápovědy nemusí do nabídky zdrojů vůbec dostat.
+</Mistake>
+
+## Co si z toho odnést
+
+**Je to jedna z mála funkcí kolem zobrazování výsledků a AI povrchů, o které rozhoduje čtenář.** Ani Google, ani vy — a nedá se to obejít optimalizací.
+
+**Působí na udržení, ne na dosah.** Kdo vás nezná, ten si vás nepreferuje. Kdo vás čte, může vás díky tomu v odpovědi snáz poznat.
+
+**A je to levné.** Prakticky to znamená jednu krátkou prosbu na správném místě, ne opakovanou kampaň po celém webu. Pokud máte vracející se publikum a pravidelně vydáváte, patří to do seznamu drobností, které stojí za zkoušku; pokud ne, řešte nejdřív to.
+
+Co udělat na straně obsahu, aby vás Google do odpovědí vůbec vybral, rozebírá [rozcestník podle kanálu](/blog/jak-se-dostat-do-ai-odpovedi/). Jak se liší zdroje mezi přehledy od AI a režimem AI, pak článek o [AI Mode a AI Overviews](/blog/ai-mode-vs-ai-overviews/).
