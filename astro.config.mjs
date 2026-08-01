@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeGlossaryLinks from "./src/lib/rehype-glossary-links.mjs";
+import rehypeHeadingIds from "./src/lib/rehype-heading-ids.mjs";
 
 /**
  * Rehype plugin: GFM task-list checkboxy mají v markdown renderu Astro
@@ -96,6 +97,12 @@ export default defineConfig({
        * relativně (/), neřízeným anchor (#), mailto:, tel: a NENÍ
        * naše vlastní doména aiseo-optimalizace.cz.
        */
+      /**
+       * Kanonická `id` nadpisů. MUSÍ být až za rehypeGlossaryLinks — ten může
+       * do nadpisu vložit odkaz na slovník, a `id` se počítá z výsledného textu.
+       * Detaily a historie vady: src/lib/heading-slug.mjs
+       */
+      rehypeHeadingIds,
       [
         rehypeExternalLinks,
         {
