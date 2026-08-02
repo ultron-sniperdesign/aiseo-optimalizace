@@ -141,7 +141,7 @@ export const upsellTiers: PricingTier[] = [
     title: "AI&nbsp;SEO audit od Sniper Design",
     body: "Získáte přesný plán, co změnit na každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u vašeho oboru, kde má konkurence díry a jak ji předběhnout. Plus 60min konzultace. Výstup do 5 pracovních dní.",
     chip: "✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet",
-    price: "9&nbsp;990&nbsp;Kč",
+    price: "3&nbsp;600&nbsp;Kč",
     priceNote: "jednorázově, bez DPH",
     ctaLabel: "Objednat&nbsp;→",
     ctaHref: "/audit/",
@@ -174,7 +174,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Co když chci, ať to za mě uděláte vy?",
-    a: "Sniper Design nabízí AI SEO audit za 9 990 Kč. Projdeme váš web, najdeme problémy ve třech vrstvách (technika, obsah, autorita), dáme vám prioritní seznam úprav a 60min konzultaci. Výstup do 5 pracovních dní.",
+    a: "Sniper Design nabízí AI SEO audit za 3 600 Kč. Projdeme váš web, najdeme problémy ve třech vrstvách (technika, obsah, autorita), dáme vám prioritní seznam úprav a 60min konzultaci. Výstup do 5 pracovních dní.",
   },
   {
     q: "Můžu se kdykoli odhlásit z e-mailů?",

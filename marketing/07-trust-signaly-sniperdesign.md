@@ -188,7 +188,7 @@ píšeš o tom, „co Sniperdesign dělá":
 | **Základní SEO audit** | 2 500 Kč | – |
 | **WCAG 2.1 AA accessibility audit** | 2 600 Kč | – |
 
-**„AI SEO audit za 9 990 Kč"** prezentovaný na našem webu = pravděpodobně
+**„AI SEO audit za 3 600 Kč"** prezentovaný na našem webu = pravděpodobně
 zhruba ekvivalent **Základní SEO audit + obsahový audit** (variabilní,
 ověřit u Sniperdesign tým).
 

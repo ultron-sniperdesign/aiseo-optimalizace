@@ -85,7 +85,7 @@ export const faqJsonLd = {
       name: "Co když si nejsem jistý, jestli to zvládnu?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, struktura) zvládnete sami za odpoledne. Strukturovaná data připravíte jako podklad a předáte vývojáři nebo správci webu. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniper Design za 9 990 Kč — projdeme váš web a předáme prioritní seznam úprav.",
+        text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, struktura) zvládnete sami za odpoledne. Strukturovaná data připravíte jako podklad a předáte vývojáři nebo správci webu. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniper Design za 3 600 Kč — projdeme váš web a předáme prioritní seznam úprav.",
       },
     },
     {
@@ -352,7 +352,7 @@ export const firstAfternoon = {
     "<strong>Stejný postup použijete na&nbsp;další šablony</strong> &mdash; postupně, ne najednou. Pack máte na&nbsp;ruku navždy.",
   ],
   fallback:
-    'Pokud čekáte <strong>plně-managed implementaci</strong> (někdo upraví web za&nbsp;vás), Pack není to&nbsp;pravé. Zvolte raději <a href="/audit/">AI&nbsp;SEO audit za&nbsp;9&nbsp;990&nbsp;Kč</a> nebo <a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener">Sniper Design konzultaci</a>.',
+    'Pokud čekáte <strong>plně-managed implementaci</strong> (někdo upraví web za&nbsp;vás), Pack není to&nbsp;pravé. Zvolte raději <a href="/audit/">AI&nbsp;SEO audit za&nbsp;3&nbsp;600&nbsp;Kč</a> nebo <a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener">Sniper Design konzultaci</a>.',
 };
 
 /** Sekce 06 — Komu se Pack hodí. */
@@ -413,7 +413,7 @@ export const decision = {
       need: "Konkrétní doporučení pro&nbsp;<strong>můj web</strong> od&nbsp;specialisty",
       choice:
         '<a href="/audit/" class="pack-decision__link">AI&nbsp;SEO audit</a> &mdash; prioritní seznam + 60min konzultace',
-      price: "<strong>9&nbsp;990&nbsp;Kč</strong>",
+      price: "<strong>3&nbsp;600&nbsp;Kč</strong>",
       featured: false,
     },
     {
@@ -450,5 +450,5 @@ export const finalCta = {
   btnLabel: "Koupit Pack a&nbsp;začít dnes",
   btnAria: "Koupit AI SEO Wireframe Pack za 1 490 Kč",
   trust:
-    'Platba kartou (Stripe) · faktura na&nbsp;firmu · okamžitý přístup po&nbsp;platbě.<br />Chcete místo šablon custom doporučení pro&nbsp;svůj web? <a href="/audit/">Zvolte AI&nbsp;SEO audit za&nbsp;9&nbsp;990&nbsp;Kč</a>.',
+    'Platba kartou (Stripe) · faktura na&nbsp;firmu · okamžitý přístup po&nbsp;platbě.<br />Chcete místo šablon custom doporučení pro&nbsp;svůj web? <a href="/audit/">Zvolte AI&nbsp;SEO audit za&nbsp;3&nbsp;600&nbsp;Kč</a>.',
 };

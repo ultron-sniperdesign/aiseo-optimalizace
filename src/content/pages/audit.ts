@@ -1,5 +1,5 @@
 /**
- * Datový modul — prodejní landing /audit/ (AI SEO audit, 9 990 Kč).
+ * Datový modul — prodejní landing /audit/ (AI SEO audit, 3 600 Kč).
  *
  * Fáze 0 refaktor: veškerý dříve inline obsah `audit/index.astro` je tady.
  * Template stránku jen renderuje (styly + struktura formuláře + inline JS
@@ -16,9 +16,9 @@
 import type { SectionHead, RichFaqItem } from "~/content/pages/_types";
 
 export const meta = {
-  title: "AI SEO audit od Sniper Design — přesný plán pro váš web, 9 990 Kč",
+  title: "AI SEO audit od Sniper Design — přesný plán pro váš web, 3 600 Kč",
   description:
-    "AI SEO audit od Sniper Design za 9 990 Kč bez DPH. Projdeme váš konkrétní web v technice, obsahu a důvěryhodnosti. Prioritní seznam úprav s odhadem dopadu + 60min konzultace. Výstup do 5 pracovních dní. Zlatý Upgates partner od 2016, 600+ e-shopů.",
+    "AI SEO audit od Sniper Design za 3 600 Kč bez DPH. Projdeme váš konkrétní web v technice, obsahu a důvěryhodnosti. Prioritní seznam úprav s odhadem dopadu + 60min konzultace. Výstup do 5 pracovních dní. Zlatý Upgates partner od 2016, 600+ e-shopů.",
 };
 
 /** Service schema.org JSON-LD. */
@@ -46,11 +46,11 @@ export const serviceJsonLd = {
     "Komplexní audit webu pro AI éru vyhledávání. Technický audit (Core Web Vitals, schema markup), obsahový audit (pillar coverage, on-page) a důvěryhodnost (E-E-A-T, NAP). Prioritní seznam úprav s odhadem dopadu + 60min konzultace s týmem. Výstup do 5 pracovních dní.",
   offers: {
     "@type": "Offer",
-    price: "9990",
+    price: "3600",
     priceCurrency: "CZK",
     priceSpecification: {
       "@type": "PriceSpecification",
-      price: "9990",
+      price: "3600",
       priceCurrency: "CZK",
       valueAddedTaxIncluded: false,
     },
@@ -77,7 +77,7 @@ export const faqJsonLd = {
       name: "Co když nemám AI SEO Wireframe Pack?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pack i audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1 490 Kč), audit je hands-on analýza vašeho webu se 60min konzultací (9 990 Kč). Audit můžete objednat samostatně — nepotřebujete předem Pack. Pokud máte Pack, audit se vám hodí jako navazující krok pro implementaci na váš konkrétní sortiment.",
+        text: "Pack i audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1 490 Kč), audit je hands-on analýza vašeho webu se 60min konzultací (3 600 Kč). Audit můžete objednat samostatně — nepotřebujete předem Pack. Pokud máte Pack, audit se vám hodí jako navazující krok pro implementaci na váš konkrétní sortiment.",
       },
     },
     {
@@ -101,7 +101,7 @@ export const faqJsonLd = {
       name: "Komu platím a dostanu fakturu?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Platíte CPU s.r.o. (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena 9 990 Kč je bez DPH (s DPH = 12 088 Kč).",
+        text: "Platíte CPU s.r.o. (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena 3 600 Kč je bez DPH (s DPH = 4 356 Kč).",
       },
     },
     {
@@ -169,8 +169,8 @@ export const hero = {
 export const heroForm = {
   eyebrowPill: "Objednávka",
   eyebrowText: "výstup do 5 pracovních dní",
-  price: "9&nbsp;990&nbsp;Kč",
-  priceDetail: "bez DPH (s&nbsp;DPH 12&nbsp;088&nbsp;Kč)",
+  price: "3&nbsp;600&nbsp;Kč",
+  priceDetail: "bez DPH (s&nbsp;DPH 4&nbsp;356&nbsp;Kč)",
   reframe:
     "Kupujete <strong>zkrácení rozhodování</strong> &mdash; místo týdnů domýšlení dostanete priority připravené k&nbsp;předání copywriterovi, vývojáři nebo internímu&nbsp;týmu.",
   labelJmeno: "Vaše jméno",
@@ -197,9 +197,9 @@ export const heroForm = {
     "např. pokles z Googlu, slabá viditelnost, příprava na rebrand, lepší citace v AI nástrojích…",
   gdprLabel:
     'Souhlasím se&nbsp;<a href="/gdpr/">zpracováním osobních údajů</a> za&nbsp;účelem zpracování této poptávky.',
-  submitLabel: "Objednat audit za 9&nbsp;990&nbsp;Kč",
+  submitLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   legal:
-    "Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu za&nbsp;9&nbsp;990&nbsp;Kč bez DPH</strong>. Do&nbsp;24&nbsp;hodin potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme. Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;platby. Údaje použijeme pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash; bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových e&#8209;mailů.",
+    "Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu za&nbsp;3&nbsp;600&nbsp;Kč bez DPH</strong>. Do&nbsp;24&nbsp;hodin potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme. Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;platby. Údaje použijeme pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash; bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových e&#8209;mailů.",
 };
 
 /** URGENCY blok (Proč to řešit teď). */
@@ -407,7 +407,7 @@ export const compare = [
     pillMod: "audit",
     pill: "Audit",
     title: "Když chcete <strong>plán pro váš konkrétní web</strong>",
-    price: "9&nbsp;990&nbsp;Kč bez DPH &middot; jednorázově",
+    price: "3&nbsp;600&nbsp;Kč bez DPH &middot; jednorázově",
     items: [
       "Chcete <strong>přesnou analýzu vašeho webu</strong>, ne&nbsp;obecný framework",
       "Potřebujete <strong>prioritní seznam úprav</strong> &mdash; co změnit jako první, proč a&nbsp;jaký to bude mít dopad",
@@ -448,7 +448,7 @@ export const faq: RichFaqItem[] = [
   },
   {
     q: "Komu platím a&nbsp;dostanu fakturu?",
-    a: "Platíte <strong>CPU s.r.o.</strong> (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po&nbsp;potvrzení objednávky. Cena <strong>9&nbsp;990&nbsp;Kč bez DPH</strong> (s&nbsp;DPH = 12&nbsp;088&nbsp;Kč).",
+    a: "Platíte <strong>CPU s.r.o.</strong> (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po&nbsp;potvrzení objednávky. Cena <strong>3&nbsp;600&nbsp;Kč bez DPH</strong> (s&nbsp;DPH = 4&nbsp;356&nbsp;Kč).",
   },
   {
     q: "Co audit nezahrnuje?",
@@ -475,8 +475,8 @@ export const faq: RichFaqItem[] = [
 /** FINAL CTA banner. */
 export const finalCta = {
   title: "Připraveni na audit? <strong>Začneme do&nbsp;24&nbsp;hodin.</strong>",
-  lead: "9&nbsp;990&nbsp;Kč bez DPH · prioritní seznam úprav · 60min konzultace · výstup do&nbsp;5&nbsp;pracovních dní.",
-  btnLabel: "Objednat audit za 9&nbsp;990&nbsp;Kč",
+  lead: "3&nbsp;600&nbsp;Kč bez DPH · prioritní seznam úprav · 60min konzultace · výstup do&nbsp;5&nbsp;pracovních dní.",
+  btnLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   btnHref: "#objednat",
   trust:
     'Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.',

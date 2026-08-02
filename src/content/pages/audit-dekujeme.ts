@@ -44,7 +44,7 @@ export const steps: NumberedStep[] = [
   {
     num: 2,
     html:
-      "<strong>Potvrdíme cenu a&nbsp;fakturaci.</strong> Vystavíme fakturu na&nbsp;9&nbsp;990&nbsp;Kč bez&nbsp;DPH (12&nbsp;088&nbsp;Kč s&nbsp;DPH). Cena auditu je pevná. Bez skrytých poplatků za&nbsp;samotný audit.",
+      "<strong>Potvrdíme cenu a&nbsp;fakturaci.</strong> Vystavíme fakturu na&nbsp;3&nbsp;600&nbsp;Kč bez&nbsp;DPH (4&nbsp;356&nbsp;Kč s&nbsp;DPH). Cena auditu je pevná. Bez skrytých poplatků za&nbsp;samotný audit.",
   },
   {
     num: 3,

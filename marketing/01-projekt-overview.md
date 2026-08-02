@@ -40,7 +40,7 @@ Web sám má **3 příjmové linky**:
 |---|---:|---|---|---|
 | **Free PDF** „Návod zdarma" | 0 Kč | — (loss leader) | jednorázové | top funnel akvizice |
 | **AI SEO Wireframe Pack** | 1 490 Kč | vysoká (digitální produkt) | jednorázový nákup | middle funnel konverze |
-| **AI SEO audit** (přes Sniperdesign) | 9 990 Kč | služba (čas Sniperdesign týmu) | jednorázový + možnost follow-up | bottom funnel high-touch |
+| **AI SEO audit** (přes Sniperdesign) | 3 600 Kč | služba (čas Sniperdesign týmu) | jednorázový + možnost follow-up | bottom funnel high-touch |
 
 **Bottom of funnel** často vede ke **dlouhodobé spolupráci** se Sniperdesignem
 (implementace, custom Upgates moduly, SYNKRO, GPTfeed) — ale to už není
@@ -92,7 +92,7 @@ mandát marketing pro tento web.
 
 | URL | Co je |
 |---|---|
-| `https://www.sniperdesign.cz/audity` | AI SEO audit 9 990 Kč (placený, link out) |
+| `https://www.sniperdesign.cz/audity` | AI SEO audit 3 600 Kč (placený, link out) |
 | `https://www.sniperdesign.cz/konzultace` | Nezávazná konzultace |
 | `https://www.sniperdesign.cz/` | Sniperdesign agentura — home |
 

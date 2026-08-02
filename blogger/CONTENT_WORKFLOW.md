@@ -83,7 +83,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 > Toto je marketingový a vzdělávací článek pro web **aiseo-optimalizace.cz** — edukativní web
 > o AI éře vyhledávání (SEO/GEO/AEO/AIO). Web informuje o tématu a zároveň nabízí ke koupi
-> **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **AI SEO audit** (9 990 Kč). Provozovatel:
+> **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **AI SEO audit** (3 600 Kč). Provozovatel:
 > Sniperdesign (Zlatý partner Upgates od 2016, vlastní e-shop MEGA DETAIL).
 > Auditor hodnotí: věcnou správnost, soulad s brand voice (žádný zakázaný žargon, žádný overclaim),
 > citovatelnost pro AI (answer block, hustota faktů, FAQ), SEO (titulek, description 70–160, struktura),

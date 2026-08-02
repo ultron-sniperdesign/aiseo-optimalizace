@@ -8,30 +8,34 @@
 
 ---
 
-## 0. Blokující rozhodnutí (bez nich nemá smysl dělat §B)
+## 0. Rozhodnutí
 
-### 🔴 0.1 — Kolize ceny auditu mezi weby
+### ✅ 0.1 — Cena auditu sjednocena na 3 600 Kč bez DPH (2026-08-02)
 
-| Kde | Produkt | Cena |
+Uživatel potvrdil: **3 600 Kč bez DPH je nová cena auditu.** Původních 9 990 Kč
+je zrušeno. Obě ceny byly bez DPH, takže nešlo o převodní chybu — s DPH nově
+**4 356 Kč** (dřív 12 088 Kč).
+
+**Provedeno na webu** (commit 2026-08-02): 79 souborů — landing `/audit/` včetně
+strukturovaných dat (`Offer.price`), CTA v 69 článcích, homepage, `/pack/`,
+`/navod-zdarma/`, všechny tři děkovací stránky, `/kontakt/`. Plus 9 interních
+dokumentů (`blogger/ARTICLE_TEMPLATE.md`, `CONTENT_WORKFLOW.md`, `marketing/*`).
+
+**Zbývá mimo web — vyžaduje ruční krok:**
+
+| Artefakt | Kde je vidět | Co udělat |
 |---|---|---|
-| `aiseo-optimalizace.cz/audit/` | „AI SEO audit" | **9 990 Kč** |
-| `sniperdesign.cz/seo-pro-ai` | „Audit připravenosti + edukativní meeting" | **3 600 Kč bez DPH** |
+| `public/_review/free-homepage-final.pdf` | free PDF ze všech nových leadů (Ecomail A1) | přerenderovat z HTML zdroje po opravě ceny |
+| `_source/products/email-pack-paid-v2.html` | LIVE šablona Ecomail A2 (platící zákazníci) | opravit + **znovu vložit do Ecomailu ručně** |
 
-Návštěvník, který vidí oba weby (a remarketing ho mezi nimi prohání), narazí na
-trojnásobný cenový rozdíl u produktů, které se jmenují skoro stejně. Než se sáhne
-na `/sluzby/`, je potřeba rozhodnout jednu z variant:
+**Otevřená otázka k pozicování:** cenový žebřík byl Free → Pack 1 490 → Audit 9 990
+(poměr 6,7×). Nově je 1 490 → 3 600 (poměr 2,4×). Argumenty v
+`marketing/03-produktove-portfolio.md` typu „Pack vypadá velmi dostupný vedle
+auditu" tím slábnou — čísla jsem opravil, ale **positioning by si zasloužil
+lidský pohled**. Zvážit, jestli Pack nemá být levnější, nebo audit prezentovaný
+jako jasně vyšší úroveň.
 
-- **(a) Dvě různé úrovně** — 3 600 = vstupní readiness check pro Upgates e-shopy,
-  9 990 = hloubkový audit libovolného webu. Pak je nutné je viditelně **odlišit
-  názvem i rozsahem** na obou webech.
-- **(b) Jeden produkt** — sjednotit cenu i název, jeden z webů na druhý odkazuje.
-- **(c) Rozdělení podle trhu** — sniperdesign = Upgates e-shopy, aiseo = všechno
-  ostatní; explicitně napsané na obou stranách.
-
-> Doporučení: **(a)**, protože oba produkty reálně existují a liší se rozsahem.
-> Vyžaduje jen přejmenování a jednu vysvětlující větu na `/audit/`.
-
-### 🔴 0.2 — Ceny na `/sluzby/`: ano, nebo ne?
+### 🔴 0.2 (stále otevřené) — Ceny na `/sluzby/`: ano, nebo ne?
 
 `docs/sluzby-brief.md` § 1 má natvrdo *„Ceny: vynechat (later-wave)"*. Stránka
 `seo-pro-ai` je mezitím **plně naceněná** (3 balíčky, 8 technických modulů,
@@ -90,9 +94,14 @@ bez rozbití konverzní logiky stránky.
 
 ### 🔴 A5 — Přesměrovat kampaň RMK2 (tvoje věc, Meta Ads)
 
-37 relací, engagement 19 %, průměr 10–19 s, **0 leadů i 0 nákupů**. Lidé po stažení
-návodu zdarma jdou rovnou na audit za 9 990. Mezikrok, který už máme hotový:
-case study nebo `/sluzby/`. Alternativa: nabídnout Pack za 1 490 místo auditu.
+37 relací, engagement 19 %, průměr 10–19 s, **0 leadů i 0 nákupů**. V měřeném období
+šli lidé po stažení návodu zdarma rovnou na audit za tehdejších 9 990 Kč.
+
+**Nová cena to částečně řeší sama.** Skok „zdarma → 3 600 Kč" je nesrovnatelně
+schůdnější než „zdarma → 9 990 Kč", takže kampaň může začít fungovat i beze změny
+cíle. Doporučení: **nechat kampaň běžet ~2 týdny s novou cenou a přeměřit**, teprve
+pak sahat na cílovou stránku. Kdyby konverze zůstala nulová, mezikrok je připravený:
+case study nebo `/sluzby/`.
 
 ### 🔴 A6 — Označit `generate_lead` jako klíčovou událost v GA4 (tvoje věc, 2 min)
 
@@ -176,7 +185,7 @@ odříznuté od zbytku webu podobně jako landing stránky.
 |---|---|---|---|
 | 1 | A6 — klíčová událost v GA4 | ty | 2 min |
 | 2 | A5 — přesměrovat RMK2 | ty | 15 min |
-| 3 | 0.1–0.3 — rozhodnutí o cenách a vztahu webů | ty | — |
+| 3 | 0.2–0.3 — rozhodnutí o cenách v /sluzby/ a vztahu webů | ty | — |
 | 4 | A1 + A2 — záchranné bloky na 3 landing stránkách | já | ~2 h |
 | 5 | A3 + A4 — CTA výš, mobilní odkaz | já | ~2,5 h |
 | 6 | B1 + B2 — ceny a balíčky | já | ~7 h |

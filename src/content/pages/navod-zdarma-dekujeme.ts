@@ -57,7 +57,7 @@ export const tiers: PricingTier[] = [
     title: "AI&nbsp;SEO audit od Sniper Design",
     body: "Získáte přesný plán, co změnit na&nbsp;každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u&nbsp;vašeho oboru, kde má konkurence díry a&nbsp;jak ji předběhnout. Plus 60min konzultace.",
     chip: "✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet",
-    price: "9&nbsp;990&nbsp;Kč",
+    price: "3&nbsp;600&nbsp;Kč",
     priceNote: "jednorázově, bez DPH",
     ctaLabel: "Objednat&nbsp;→",
     ctaHref: "/audit/",

@@ -11,7 +11,7 @@ přes paid digitální produkt po službu agentury:
   │ Návod       │  →   │ AI SEO      │  →   │ AI SEO      │
   │ zdarma      │  →   │ Wireframe   │  →   │ audit       │
   │ 6 stran     │  →   │ Pack 85 str │  →   │ Sniperdesign│
-  │ FREE        │       │ 1 490 Kč    │       │ 9 990 Kč    │
+  │ FREE        │       │ 1 490 Kč    │       │ 3 600 Kč    │
   └─────────────┘       └─────────────┘       └─────────────┘
   e-mail za PDF         jednorázový nákup     vlastní web audit
   „Co je AI SEO"        „Jak to udělat"       „Udělejte to za mě"
@@ -57,7 +57,7 @@ přes paid digitální produkt po službu agentury:
 
 Free PDF má 2 cross-sell sekce na konci:
 - **Pack 1 490 Kč** („Pokryje celý web, ne jen homepage")
-- **Audit 9 990 Kč** („Uděláme to za vás")
+- **Audit 3 600 Kč** („Uděláme to za vás")
 
 ---
 
@@ -137,7 +137,7 @@ Free PDF má 2 cross-sell sekce na konci:
 - ❌ **Není pro vývojáře** — je pro netechniky (= „dej strukturovaná
   data svému vývojáři, my ti je nachystáme")
 - ❌ **Není abonement** — jednorázová cena, žádné předplatné
-- ❌ **Není „udělá to za vás"** — to je audit (9 990 Kč). Pack je DIY.
+- ❌ **Není „udělá to za vás"** — to je audit (3 600 Kč). Pack je DIY.
 
 ### Refund policy
 
@@ -173,9 +173,9 @@ přes `info@sniperdesign.cz`.
 
 ### Cena a hodnota
 
-- **Cena:** **9 990 Kč** jednorázově (bez DPH? — ověřit u Sniperdesignu)
+- **Cena:** **3 600 Kč** jednorázově, bez DPH (potvrzeno 2026-08-02, sjednoceno se sniperdesign.cz/seo-pro-ai)
 - **Konkurence:** komplexní SEO audity v CZ stojí 15 000–50 000 Kč,
-  takže 9 990 Kč je middle-tier
+  takže 3 600 Kč je middle-tier
 - **Vnímaná hodnota:** „audit od specialisty + konzultace" — silná
   hodnota pro B2B i e-commerce
 
@@ -196,7 +196,7 @@ přes `info@sniperdesign.cz`.
 ### Hlavní messaging pro Audit
 
 - **„Pack vám dává framework, audit dá přesný plán pro váš web"**
-- **„9 990 Kč jednorázově, výstup do 5 dnů"**
+- **„3 600 Kč jednorázově, výstup do 5 dnů"**
 - **„Najdeme problémy v technice, obsahu a důvěryhodnosti webu"**
 - **„60min konzultace s naším týmem zahrnuta"**
 - **„Pro ty, kdo nechtějí řešit Pack vlastními silami"**
@@ -206,7 +206,7 @@ přes `info@sniperdesign.cz`.
 **Marketingově: Pack je default, Audit je upgrade.**
 
 V messagingu nesmí audit zastínit Pack — někdo, kdo by si normálně koupil
-Pack za 1 490 Kč, by si rozmyslel a šel rovnou na audit za 9 990 Kč,
+Pack za 1 490 Kč, by si rozmyslel a šel rovnou na audit za 3 600 Kč,
 což je dražší (Sniperdesign čas) a delší (5 dní výstup vs. instant download).
 
 Správný framing: **„Audit je navazující krok po Packu — nebo samostatná
@@ -220,7 +220,7 @@ volba, pokud nechcete řešit implementaci sami."**
 |---|---|---|---|
 | Free PDF | Nejnižší (e-mail) | — (loss leader) | Vysoké — chceme objem |
 | Pack 1 490 Kč | Střední (jednorázový nákup) | Vysoká | Střední — CPA cíl ~ 200-400 Kč |
-| Audit 9 990 Kč | Vysoký (B2B nákup, čas) | Variabilní (Sniperdesign čas) | Vysoké — LTV velký, sales cycle delší |
+| Audit 3 600 Kč | Vysoký (B2B nákup, čas) | Variabilní (Sniperdesign čas) | Vysoké — LTV velký, sales cycle delší |
 
 ### Anchor effect
 
@@ -228,7 +228,7 @@ Web používá **anchor pricing** napříč funnelem:
 
 - Free PDF na landing zmiňuje Pack za 1 490 Kč → Pack vypadá "rozumně"
   vs free PDF objemem hodnoty
-- Pack na landing zmiňuje Audit za 9 990 Kč → Pack vypadá „velmi dostupný"
+- Pack na landing zmiňuje Audit za 3 600 Kč → Pack vypadá „velmi dostupný"
   vs audit ceně
 - Konkurence (jiné CZ SEO frameworky 5-15 000 Kč) → Pack za 1 490 Kč
   vypadá jako „no-brainer steal"

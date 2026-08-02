@@ -145,7 +145,7 @@ Krátký odstavec (3–5 vět) syntézy: **co si čtenář odnese**, ne shrnutí
 Pak jedno CTA relevantní pro kontext:
 
 - Tutorial / defensive → CTA na **Pack** (1 490 Kč): `[Stáhněte AI SEO Wireframe Pack](/pack/)`
-- Analysis / case-study → CTA na **Audit** (9 990 Kč): `[Objednejte AI SEO audit](/audit/)`
+- Analysis / case-study → CTA na **Audit** (3 600 Kč): `[Objednejte AI SEO audit](/audit/)`
 - Defensive / široký pojem → CTA na **Free PDF**: `[Stáhněte návod zdarma](/navod-zdarma/)`
 
 Žádné generické „kontaktujte nás" — vždy konkrétní produkt.

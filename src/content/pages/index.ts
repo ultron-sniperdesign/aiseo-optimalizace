@@ -525,9 +525,9 @@ export const offers = [
     mod: "audit",
     featuredPill: "★ Nejvyšší hodnota",
     tag: "AI&nbsp;SEO audit od&nbsp;Sniper Design",
-    priceMain: "9&nbsp;990&nbsp;Kč",
+    priceMain: "3&nbsp;600&nbsp;Kč",
     priceNote: "bez DPH &middot; jednorázově",
-    priceVat: "12&nbsp;088&nbsp;Kč s&nbsp;DPH",
+    priceVat: "4&nbsp;356&nbsp;Kč s&nbsp;DPH",
     title: "Přesný plán pro váš konkrétní web",
     desc: "Důkladná analýza vašeho webu od&nbsp;Sniper Design týmu. Prioritní seznam úprav s&nbsp;odhadem dopadu + 60min konzultace nad výsledky.",
     bullets: [

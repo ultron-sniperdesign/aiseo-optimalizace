@@ -65,7 +65,7 @@ Web `aiseo-optimalizace.cz` mluví dvěma hlasy podle kontextu:
 
 **Pro Audit:**
 - „Pack vám dává framework, audit dá přesný plán pro váš web"
-- „9 990 Kč, výstup do 5 pracovních dní"
+- „3 600 Kč, výstup do 5 pracovních dní"
 - „Najdeme problémy v technice, obsahu a důvěryhodnosti webu"
 - „60min konzultace s naším týmem zahrnuta"
 - „Navazující krok po Packu — nebo samostatná volba, pokud nechcete řešit implementaci sami"

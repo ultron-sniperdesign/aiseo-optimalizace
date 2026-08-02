@@ -112,7 +112,7 @@ export const finalCta = {
   eyebrow: "Váš web",
   titleHtml: "Kolikrát se v AI odpovědích zobrazuje <strong>váš web</strong>?",
   lead: "AI SEO audit vám na to odpoví přesně: projdeme váš obsah, strukturu i měření stejnou optikou, jakou optimalizujeme MEGA DETAIL — a dostanete seznam kroků seřazený podle dopadu.",
-  ctaPrimary: { label: "Objednat AI SEO audit za 9 990 Kč", href: "/audit/" },
+  ctaPrimary: { label: "Objednat AI SEO audit za 3 600 Kč", href: "/audit/" },
   ctaSecondary: { label: "Nejdřív chci vidět celá data", href: "/blog/case-study-megadetail-ai-navstevnost/" },
 };
 

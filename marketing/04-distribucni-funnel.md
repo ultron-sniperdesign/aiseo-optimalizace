@@ -42,7 +42,7 @@
 │  • Trigger: „Po přihlášení do listu"                                     │
 │  • Akce: poslat e-mail s download linkem na free PDF                     │
 │  • Subject: „Tady je váš návod — homepage pro AI vyhledávání"            │
-│  • Cross-sell: Pack 1 490 + Audit 9 990 v patičce e-mailu                │
+│  • Cross-sell: Pack 1 490 + Audit 3 600 v patičce e-mailu                │
 │                                                                          │
 │         ↓                                                                │
 │                                                                          │
@@ -69,12 +69,12 @@
 │  • E-mail subject: „Děkujeme za nákup — kompletní sada pro AI SEO        │
 │    je tady"                                                              │
 │  • Obsah: master PDF link + 9 download linky + onboarding postup         │
-│  • Cross-sell: Audit 9 990 Kč v patičce e-mailu                          │
+│  • Cross-sell: Audit 3 600 Kč v patičce e-mailu                          │
 │  • Support: info@sniperdesign.cz                                         │
 │                                                                          │
 │         ↓                                                                │
 │                                                                          │
-│  🟣 UPSELL: AUDIT 9 990 Kč                                                │
+│  🟣 UPSELL: AUDIT 3 600 Kč                                                │
 │  ──────────────────────                                                  │
 │  • Cross-sell prezentován na 5 místech:                                  │
 │    - /pack/ landing (Sniperdesign Big Contact sekce)                     │
@@ -215,7 +215,7 @@ leads i paid customers (paid mají tag `pack-paid`).
 3. „Co v PDF najdete" — 4 položky
 4. **Cross-sell sekce:**
    - **Pack 1 490 Kč** — „Pokud chcete pokrýt celý web, nejen homepage"
-   - **Audit 9 990 Kč** — „Pokud chcete, abychom to udělali za vás"
+   - **Audit 3 600 Kč** — „Pokud chcete, abychom to udělali za vás"
 5. Sniperdesign brand footer
 
 **Open rate cíl:** > 50 % (welcome e-maily mají typicky 40-60 % open
@@ -315,7 +315,7 @@ vedou na stejný Stripe Payment Link.
 
 ---
 
-## 🟣 Fáze 4: UPSELL AUDIT (9 990 Kč)
+## 🟣 Fáze 4: UPSELL AUDIT (3 600 Kč)
 
 ### 4.1 Touchpoints pro audit
 

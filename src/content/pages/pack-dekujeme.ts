@@ -139,8 +139,8 @@ export const auditCard = {
     "Součástí je <strong>60min konzultace 1:1</strong>, kde projdeme hlavní nálezy, vysvětlíme priority a&nbsp;doporučíme další postup pro váš tým, copywritera nebo vývojáře.",
   ],
   chip: "✓ Stejný tým, který vytvořil Pack &mdash; Sniper Design",
-  priceMain: "9&nbsp;990&nbsp;Kč",
-  priceNote: "bez DPH (12&nbsp;088&nbsp;Kč s&nbsp;DPH)",
+  priceMain: "3&nbsp;600&nbsp;Kč",
+  priceNote: "bez DPH (4&nbsp;356&nbsp;Kč s&nbsp;DPH)",
   ctaLabel: "Objednat AI&nbsp;SEO audit&nbsp;→",
   ctaHref: "/audit/",
   secondary:

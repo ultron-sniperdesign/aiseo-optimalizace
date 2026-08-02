@@ -15,7 +15,7 @@ Společné pro všechny 3 typy:
 - **VNÍMAJÍ AI ÉRU** — buď vědomě (uvědomili si pokles organického
   traffu), nebo intuitivně (slyšeli o ChatGPT v inboxu, řeší to)
 - **MAJÍ ROZPOČET 2 000 – 25 000 Kč** na jednorázové vylepšení webu
-  (Pack 1 490 Kč nebo audit 9 990 Kč)
+  (Pack 1 490 Kč nebo audit 3 600 Kč)
 
 ---
 
@@ -84,7 +84,7 @@ Nejčastěji vstoupí přes:
    nebo `/pack/`
 
 Pak: stáhne free PDF → nurturing → koupí Pack za 1 490 Kč → po měsíci
-audit za 9 990 Kč.
+audit za 3 600 Kč.
 
 ---
 
@@ -120,7 +120,7 @@ audit za 9 990 Kč.
   je perfect fit
 - **Zdroj pro vnitřní edukaci** — pillar průvodce a sekce pro sdílení
   v týmu
-- **Audit pro důkaz managementu** — 9 990 Kč jako third-party validation
+- **Audit pro důkaz managementu** — 3 600 Kč jako third-party validation
 
 ### Kde ji/ho najdeš
 
