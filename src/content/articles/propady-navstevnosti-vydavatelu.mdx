@@ -1,0 +1,206 @@
+---
+title: "Kolik návštěvnosti vydavatelé opravdu ztratili"
+description: "Chegg 49 %, HubSpot 80 %, Daily Mail 89 %. Čísla jsou doložitelná, ale každé měří něco jiného. Co z nich pro váš web plyne a co ne."
+answer: "Všechna ta čísla jsou doložitelná a žádné z nich neměří totéž. U Chegga jde o návštěvnost nepředplatitelů v lednu 2025, u HubSpotu o odhad Semrushe v rozpětí 75 až 81 procent se spornou příčinou a u Daily Mailu o míru prokliku ve dvou odlišně popsaných skupinách výsledků, ne o návštěvnosti. Sčítat je nejde a nic z toho nepředpovídá váš web."
+slug: "propady-navstevnosti-vydavatelu"
+category: "analysis"
+tags:
+  - "mereni"
+  - "strategie"
+published: "2026-08-03"
+updated: "2026-08-03"
+keywords:
+  - "propad návštěvnosti ai overviews"
+  - "vydavatelé ztráta návštěvnosti"
+  - "daily mail ai overviews ctr"
+  - "chegg google žaloba"
+  - "hubspot pokles návštěvnosti"
+variant: "rich"
+stats:
+  - value: "3+1"
+    label: "nejcitovanější čísla o propadech a jeden často přidávaný údaj — každé měří něco jiného"
+  - value: "25,23 → 2,79 %"
+    label: "míra prokliku Daily Mailu bez AI přehledu a s ním, z podání firmy britskému úřadu"
+  - value: "0"
+    label: "z těch čísel, které by šlo použít jako předpověď pro váš web"
+  - value: "2"
+    label: "strany sporu, jejichž čísla nejde postavit proti sobě — každá měří jinou věc"
+faq:
+  - q: "O kolik návštěvnosti přišel Daily Mail kvůli AI Overviews?"
+    a: "Údaj 89 % se týká míry prokliku, ne celkové návštěvnosti. Podle podání vydavatele DMG Media britskému úřadu CMA klesla míra prokliku na počítači z 25,23 % u výsledků bez AI přehledu na 2,79 % tam, kde AI přehled byl. Obě porovnávané skupiny přitom podání nepopisuje úplně stejně: u první mluví o umístění v první desítce organických výsledků, u druhé o viditelně umístěném odkazu. Kolik z toho dělá celková ztráta návštěvnosti, z toho čísla nevyplývá."
+  - q: "Je pravda, že HubSpot přišel o 80 % návštěvnosti kvůli AI?"
+    a: "První část ano, druhá doložená není. Propad okolo 75 až 81 procent je odhad Semrushe, ne údaj od HubSpotu. Analytici, kteří případ rozebírali, ho ale připisují hlavně algoritmickým aktualizacím a obsahové strategii postavené na objemu článků na obecná témata. AI Overviews jsou jedna z možných příčin, ne prokázaná hlavní."
+  - q: "Co přesně tvrdí Chegg?"
+    a: "Chegg v roce 2025 zažaloval Google a uvedl propad návštěvnosti nepředplatitelů o 49 procent v lednu 2025 oproti poklesu o 8 procent ve druhém čtvrtletí 2024. Jde tedy o konkrétní segment návštěvnosti a konkrétní měsíc, ne o celkovou návštěvnost webu za celý rok."
+  - q: "Google tvrdí opak. Kdo má pravdu?"
+    a: "Ta čísla se navzájem nevyvracejí, protože každé vychází z jiného srovnání. Google mluví o tom, že odkaz uvnitř AI přehledu má vyšší míru prokliku než odkaz mimo něj, a o kvalitě těch prokliků. Vydavatelé srovnávají stránku s AI přehledem a bez něj a mluví o počtu prokliků. Neznamená to ale, že obě strany mají pravdu v plném rozsahu toho, co z čísel vyvozují — jen že jedno číslo to druhé nepopírá."
+  - q: "Znamenají ta čísla, že přijdu o návštěvnost taky?"
+    a: "Ne. Tři hlavní případy v článku jsou velké weby s obrovským podílem informačních dotazů na obecná témata, tedy přesně ten typ obsahu, který AI odpověď nahradí nejsnáz; čtvrtý je agregát napříč AI aplikacemi, ne web. Menší web se specializovaným obsahem, transakčními stránkami nebo lokálním záběrem je v jiné situaci. Vlastní odhad si uděláte jen z vlastních dat."
+  - q: "Jak si mám změřit svůj vlastní propad?"
+    a: "V Search Console porovnejte kliky a imprese na stejné období loni a letos, a to zvlášť pro stránky s informačními dotazy a zvlášť pro ostatní. Když kliky klesají rychleji než imprese, ubývá prokliků na stejné viditelnosti. To je nejrelevantnější číslo, které o svém webu můžete mít."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+V každé druhé prezentaci o AI vyhledávání se objeví stejná trojice: **Chegg −49 %, HubSpot −80 %, Daily Mail −89 %.** Někdy se k ní přidá čtvrtý údaj, od firmy Tollbit. Obvykle stojí vedle sebe, jako by to byla jedna řada čísel.
+
+U každého jsem dohledal nejbližší doložitelný zdroj. Doložit se dají všechna — u Cheggu a Daily Mailu jde o vlastní podání firem, u HubSpotu jen o odhad nástroje. A žádná dvě neměří totéž.
+
+<Insight tone="warn" icon="⚠" label="Proč na tom záleží">
+Když se čísla postaví vedle sebe, čtenář si z nich odvodí **předpověď pro svůj web**. Jenže jedno je návštěvnost jednoho segmentu za jeden měsíc, druhé odhad třetí strany se spornou příčinou a třetí míra prokliku na vybraných dotazech. Z takové řady se předpovídat nedá.
+</Insight>
+
+Aby to nezapadlo mezi výhradami, hned na začátku natvrdo: **ta procenta nejsou srovnatelná a předpověď z nich neuděláte — tlak na proklikovost u obecných informačních dotazů ale ukazují reálný.** Zbytek článku je o tom, jak se k tomu závěru dojde.
+
+## Chegg: −49 % ✅ doloženo, ale je to jiná metrika
+
+Vzdělávací firma Chegg zažalovala v roce 2025 Google kvůli AI Overviews. Údaj z jejího vlastního vyjádření: **návštěvnost nepředplatitelů klesla v lednu 2025 o 49 %**, oproti poklesu o 8 % ve druhém čtvrtletí 2024.
+
+Co v tom čísle **není**: celková návštěvnost webu. Chegg má předplatitelskou část, která se do toho údaje nepočítá. Číslo je navíc za jeden měsíc, ne za rok.
+
+Co dokresluje kontext: tržby za čtvrté čtvrtletí klesly meziročně o 24 %. Že firma měla vážný problém, sporné není. Že „přišla o polovinu návštěvnosti", je ale posun.
+
+## HubSpot: −80 % ⚠️ odhad třetí strany a sporná příčina
+
+Tady je to nejzajímavější a nejčastěji opisované špatně.
+
+<CompareTable
+  leftLabel="Co se říká"
+  leftTone="aeo"
+  rightLabel="Co je doložené"
+  rightTone="geo"
+  rows={[
+    { icon: "◈", label: "Zdroj čísla", left: "HubSpot přišel o 80 %", right: "odhad Semrushe, ne data od HubSpotu" },
+    { icon: "◇", label: "Rozsah", left: "„návštěvnost“", right: "organická návštěvnost: 24,4 mil. (3/2023) → 6,1 mil. (1/2025)" },
+    { icon: "▲", label: "Příčina", left: "kvůli AI Overviews", right: "analytici ji připisují hlavně aktualizacím a obsahové strategii" },
+    { icon: "▤", label: "Kde ztráta vznikla", left: "plošně", right: "hlavně u obecných dotazů „co, proč, jak“ na začátku rozhodování" },
+  ]}
+/>
+
+Rozdíl mezi „odhad nástroje" a „údaj od firmy" není detail. Odhady organické návštěvnosti pracují s modelem a u velkých webů se od reality liší klidně o desítky procent — v obou směrech.
+
+Zásadnější je ale ta příčina. Lidé, kteří případ rozebírali do hloubky, docházejí k tomu, že HubSpot dlouho vyráběl velké objemy článků na obecná témata mimo své jádro. Přesně ten obsah pak ztratil pozice po algoritmických aktualizacích. **AI Overviews jsou možná jedna z příčin. Prokázaná hlavní příčina to není.**
+
+<Insight tone="signal" icon="◆" label="Proč se to opisuje právě takhle">
+„Firma přišla o 80 % kvůli AI" je lepší příběh než „firma dlouho vyráběla velké objemy obsahu na obecná témata mimo své jádro a pak přišly aktualizace". První verze je navíc pro každého, kdo prodává AI SEO služby, výhodnější. Stojí za to si toho všímat i u nás.
+</Insight>
+
+## Daily Mail: −89 % ✅ doloženo, ale je to míra prokliku
+
+Tohle číslo má nejlepší zdroj ze všech: **veřejné podání vydavatele DMG Media britskému úřadu pro hospodářskou soutěž** v řízení o postavení Googlu na trhu vyhledávání.
+
+Doslova z něj plyne, že míra prokliku na počítači klesá:
+
+- **25,23 %** u stránky s výsledky **bez AI přehledu**, kde je web v první desítce organických výsledků,
+- **2,79 %** tam, kde **AI přehled je** a odkaz na Daily Mail je viditelně umístěný,
+- což je **pokles o 89 %**. Na mobilu 87 %, v USA 85 % na počítači a 87 % na mobilu.
+
+Data pocházejí od firmy Authoritas a sbírala se **od 18. června do 27. července 2025**.
+
+Stojí za pozornost, že obě porovnávané skupiny nejsou v podání popsané úplně stejně: u první se mluví o umístění v první desítce organických výsledků, u druhé o viditelně umístěném odkazu. Nemusí jít o totéž a z textu podání se to nedá rozhodnout.
+
+<Insight tone="warn" icon="⚠" label="Co to číslo NEŘÍKÁ">
+Neříká, že Daily Mail přišel o 89 % návštěvnosti. Je to **míra prokliku na těch dotazech, kde se web už tak umístil v první desítce** — srovnání dvou situací, ne vývoj v čase. Kolik z celkové návštěvnosti to ukrojí, závisí na tom, u kolika dotazů se AI přehled vůbec objeví. To je jiné číslo a v tom podání není.
+</Insight>
+
+## Čtvrté číslo, které se přidává: −91 % a −96 %
+
+Ze stejného podání pochází i údaj firmy Tollbit — ale z jiné populace a jiného srovnání. Nejde o jeden web, nýbrž o agregát napříč AI aplikacemi: proklik z AI vyhledávání je podle něj nižší o **91 %** a z chatbotů o **96 %**. Míra prokliku u AI aplikací **0,67 %** proti **2,4 až 27,6 %** u prvních deseti odkazů v Googlu podle pozice. I tady jde o srovnání napříč odlišnými prostředími, ne o tentýž dotaz ve stejné situaci.
+
+Tady je namístě podívat se, kdo měří. Tollbit staví trh s právy mezi vydavateli a AI firmami — čím dramatičtější rozdíl, tím větší poptávka po tom, co prodává. Neznamená to, že čísla lžou. Znamená to, že si zaslouží stejnou skepsi jako čísla od Googlu.
+
+## Druhá strana sporu — a je citovaná v tomtéž dokumentu
+
+Nejlepší zdroj z celé skupiny má Daily Mail. Nejcennější metodická lekce z téhož podání je ale jiná: vydavatel v něm sám cituje protistranu.
+
+Tabulka níž staví ta dvě stanoviska vedle sebe **jen proto, aby ukázala, že se míjejí** — jako srovnání sloupec proti sloupci ji číst nelze.
+
+<CompareTable
+  leftLabel="Google"
+  leftTone="seo"
+  rightLabel="Vydavatel"
+  rightTone="aeo"
+  rows={[
+    { icon: "◆", label: "Co se srovnává", left: "odkaz uvnitř AI přehledu vs. odkaz mimo něj", right: "stránka s AI přehledem vs. bez něj" },
+    { icon: "▲", label: "Co se měří", left: "míra prokliku a kvalita návštěvy", right: "počet prokliků" },
+    { icon: "◈", label: "Závěr", left: "uvnitř AI přehledu se kliká víc a lidé neodcházejí hned", right: "propad o 89 %" },
+  ]}
+/>
+
+Šéfka Vyhledávání Googlu argumentuje tím, že prokliky z AI odpovědí jsou kvalitnější, protože člověk neklikne a hned neodejde. Vydavatel na to odpovídá jednou větou: *to naše data neukazují.*
+
+**Ta dvě tvrzení se automaticky nevyvracejí**, protože každé vychází z jiného srovnání: Google srovnává dvě pozice uvnitř téhož výsledku, vydavatel srovnává dva různé výsledky. Neplyne z toho ale, že obě strany mají pravdu v plném rozsahu toho, co z čísel vyvozují — jen to, že jedno číslo to druhé nevyvrací. A ani jedno neodpovídá na otázku, která zajímá vás: kolik prokliků ubude vám.
+
+<Insight tone="signal" icon="◆" label="A ještě jedna věc, poctivě">
+Denominátor se posouvá i uvnitř materiálu poškozené strany. Podání cituje rešerši Press Gazette nad daty SimilarWebu: v květnu 2024 bylo **48 %** dotazů na Daily Mail bez prokliku a o rok později **68,8 %** — jenže druhé číslo je podíl *z dotazů, u kterých byl AI přehled přítomen*. Jak je to napsané, ta dvě čísla nestojí na stejném základu. Může jít o zkratku ve formulaci; ukazuje to ale, že tenhle problém nemá jen jedna strana.
+</Insight>
+
+## Co z toho platí pro váš web
+
+<Checklist
+  title="Než si ta čísla vztáhnete na sebe"
+  tone="geo"
+  items={[
+    { title: "Tři případy jsou weby, čtvrtý ne", desc: "Chegg, HubSpot a Daily Mail jsou konkrétní weby. Tollbit je agregát napříč AI aplikacemi — do stejné řady nepatří." },
+    { title: "Ty tři weby stojí na informačních dotazech", desc: "Přesně ten obsah, který AI odpověď nahradí nejsnáz. Transakční, lokální a specializovaný obsah je v jiné situaci." },
+    { title: "A jsou obrovské", desc: "Web s miliony návštěv má jinou strukturu dotazů než web s tisíci. Procenta se mezi nimi nepřenášejí." },
+    { title: "Tři ze čtyř mají v tom čísle zájem", desc: "Žaloba, regulační podání, firma prodávající řešení. Nejde o výzkum, jde o argument." },
+    { title: "Žádné z nich není z Česka", desc: "Nasazení AI přehledů se u českých dotazů liší od anglických. Přenášet procenta přes jazyk a trh nejde." },
+    { title: "Ani jedno neříká, co s tím", desc: "Popis ztráty není návod. Ten se musí odvodit z vlastních dat." },
+  ]}
+/>
+
+## Jak si změřit vlastní číslo
+
+Z vlastních dat to jde poměrně rychle a je to nejrelevantnější číslo, které o vašem webu můžete mít.
+
+<Stepper
+  steps={[
+    {
+      title: "Porovnejte stejné období loni a letos",
+      desc: "V Search Console v přehledu Výkon zapněte srovnání s obdobím před rokem. Sledujte kliky i imprese, ne jen kliky — bez impresí nepoznáte, jestli ubylo viditelnosti, nebo prokliků."
+    },
+    {
+      title: "Rozdělte stránky podle typu dotazu",
+      desc: "Zvlášť stránky, na které lidé chodí z informačních dotazů (návody, definice, přehledy), a zvlášť ty ostatní (produkt, služba, značka, kontakt). Propady bývají výrazně nerovnoměrné."
+    },
+    {
+      title: "Podívejte se na poměr, ne na absolutní čísla",
+      desc: "Když kliky klesají rychleji než imprese, ubývá prokliků na stejné viditelnosti. To je nejbližší ekvivalent toho, co měří vydavatelé — a je to spočítané na vašich datech."
+    },
+    {
+      title: "Doplňte AI imprese, pokud je máte",
+      desc: "Report generativních AI funkcí v Search Console ukáže, jestli se váš obsah v AI funkcích vůbec objevuje. Zpřístupňuje se ale postupně, takže ho možná ještě nemáte."
+    },
+  ]}
+/>
+
+## Nejčastější chyby
+
+<Mistake num="01" title="Sčítat nebo průměrovat čísla z různých případů" fix="Nedají se sečíst, protože neměří totéž.">
+Návštěvnost segmentu, odhad nástroje a míra prokliku jsou tři různé veličiny. Průměr z nich nedává žádnou informaci — jen zdání přesnosti.
+</Mistake>
+
+<Mistake num="02" title="Brát odhad nástroje jako údaj od firmy" fix="Ptejte se, kdo to číslo naměřil.">
+U HubSpotu se běžně cituje odhad Semrushe, jako by ho zveřejnil HubSpot. Rozdíl je zásadní: odhad pracuje s modelem, firemní data s realitou.
+</Mistake>
+
+<Mistake num="03" title="Zaměňovat pokles míry prokliku za ztrátu návštěvnosti" fix="To druhé z prvního nevyplývá.">
+Pokles o 89 % v míře prokliku znamená ztrátu 89 % návštěvnosti jen tehdy, kdyby se AI přehled zobrazoval u všech dotazů. To se neděje.
+</Mistake>
+
+<Mistake num="04" title="Ignorovat, kdo má na čísle zájem" fix="Platí to na obě strany.">
+Žaloba, regulační podání a firma prodávající řešení mají důvod ukázat velký propad. Google má důvod ukázat malý. Skepse patří k oběma.
+</Mistake>
+
+## Co si z toho odnést
+
+Ta čísla nejsou výmysl. Chegg, DMG Media i Tollbit je doložili a vedle nich veřejně zaznívá odlišný argument Googlu, který ale mluví o jiném srovnání. Špatně tedy není zdroj, ale způsob, jakým se ta čísla používají: **jako předpověď pro cizí web.**
+
+Prakticky z nich plyne jediné, a to docela silné: **u obecných informačních dotazů proklikovost klesá a v některých případech výrazně.** Kdo staví návštěvnost na tomhle typu obsahu, měl by s tím počítat. Kdo ne, ten se z těch procent o svém webu nedozví nic.
+
+Jak podobná čísla číst obecně, rozebíráme v návodu [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/). Celotržní pohled na mizející prokliky je v článku o [efektu bez prokliku](/blog/zero-click-ai/) a měření v Search Console v textu o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/).
