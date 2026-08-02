@@ -55,10 +55,14 @@ const { eyebrow, title, links } = Astro.props;
      První verze měla světlé pozadí (--color-paper-deep), jenže stejné mají
      i finální CTA sekce a patička — vznikl souvislý šedý pás a blok v něm
      zanikl. Kontrastní plocha ho odděluje, aniž by z něj dělala další nabídku. */
+  /* Horní odsazení je větší než spodní — blok navazuje na finální CTA sekci
+     a potřebuje od ní zřetelný odstup („safe zóna"). Pozor: tyhle sekce dřív
+     měly margin-bottom: -3rem kvůli doléhání na patičku; při zavedení tohoto
+     bloku bylo odstraněno, jinak odsazení ukusovalo. */
   .rescue {
     max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
   }
   .rescue__inner {
     border-radius: 24px;
