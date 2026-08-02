@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "ai-platformy"
 published: "2026-05-27"
-updated: "2026-05-27"
+updated: "2026-08-02"
 variant: "rich"
 keywords:
   - "claude gemini seo"
@@ -49,7 +49,7 @@ faq:
   - q: "Které vyhledávací roboty používá Claude?"
     a: "Anthropic uvádí tři roboty: ClaudeBot (tréninkový vyhledávací robot), Claude-User (načte stránku, když se uživatel na něco Clauda zeptá) a Claude-SearchBot (webové vyhledávání Clauda). Všichni se řídí pravidly v robots.txt. V něm tak můžete jejich přístup povolit nebo omezit podle své strategie."
   - q: "Vidí vyhledávací roboti AI obsah načítaný JavaScriptem?"
-    a: "Spíš ne. Vyhledávací roboti AI čtou hlavně HTML zdroj a obsah dotvářený až JavaScriptem nemusí vidět. Důležité informace proto patří přímo do HTML, ne jen do skriptů vykreslených v prohlížeči. Rychlý a technicky čistý web jim navíc usnadní práci."
+    a: "U Clauda spíš ne, u Gemini spíš ano — a v tom je právě rozdíl. Podle měření Vercelu a MERJ z prosince 2024 robot Claude soubory JavaScriptu stahoval, ale nespouštěl; u Gemini zdroj vykreslování uvádí, protože běží na infrastruktuře Googlu. Důležité informace proto patří přímo do HTML, ať už se spoléháte na kohokoli."
 ---
 
 import Checklist from "../../components/blocks/Checklist.astro";
@@ -132,7 +132,7 @@ Anthropic v dokumentaci uvádí tři roboty — **ClaudeBot** (tréninkové proc
     Google-Extended ovlivňuje Gemini, ne pozice v klasickém Vyhledávání.
   </Mistake>
   <Mistake num="03" title="Spoléhat na obsah z JavaScriptu" fix="Dejte ho do HTML.">
-    Vyhledávací roboti AI čtou hlavně HTML — co je jen v JS, nemusí vidět.
+    Robot Clauda podle měření skripty nespouští, u Gemini je to naopak. Co je jen v JS, se tak k části nástrojů nedostane.
   </Mistake>
   <Mistake num="04" title="Ignorovat reputaci u Clauda" fix="Budujte recenze a zmínky.">
     U Clauda podle analýz mohou hrát větší roli ověřené zdroje a důvěra.
