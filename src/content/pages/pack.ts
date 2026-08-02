@@ -452,3 +452,28 @@ export const finalCta = {
   trust:
     'Platba kartou (Stripe) · faktura na&nbsp;firmu · okamžitý přístup po&nbsp;platbě.<br />Chcete místo šablon custom doporučení pro&nbsp;svůj web? <a href="/audit/">Zvolte AI&nbsp;SEO audit za&nbsp;3&nbsp;600&nbsp;Kč</a>.',
 };
+
+/**
+ * Záchranná síť pod finálním CTA (GA4 2026-08-01) — viz ExitRescue.astro.
+ */
+export const exitRescue = {
+  eyebrow: "Ještě se rozmýšlíte?",
+  title: "Spoustu z toho <strong>zvládnete i bez Packu</strong>.",
+  links: [
+    {
+      href: "/zacnete-tady/",
+      title: "Začněte tady",
+      desc: "Rozcestník podle toho, co řešíte. Vede vás krok za krokem.",
+    },
+    {
+      href: "/blog/seo-pro-ai/",
+      title: "Praktický checklist",
+      desc: "Co udělat pro viditelnost v AI odpovědích, krok za krokem a zdarma.",
+    },
+    {
+      href: "/seo-vs-geo-vs-aeo-vs-aio/",
+      title: "SEO, GEO, AEO a AIO",
+      desc: "Kompletní průvodce čtyřmi zkratkami AI éry a rozdíly mezi nimi.",
+    },
+  ],
+};

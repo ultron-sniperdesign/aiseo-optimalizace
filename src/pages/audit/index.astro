@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import * as p from "~/content/pages/audit";
+import ExitRescue from "~/components/blocks/ExitRescue.astro";
 ---
 
 <BaseLayout
@@ -344,6 +345,12 @@ import * as p from "~/content/pages/audit";
         <p class="audit-cta-final__trust" set:html={p.finalCta.trust}></p>
       </div>
     </section>
+
+    <ExitRescue
+      eyebrow={p.exitRescue.eyebrow}
+      title={p.exitRescue.title}
+      links={p.exitRescue.links}
+    />
   </div>
 </BaseLayout>
 

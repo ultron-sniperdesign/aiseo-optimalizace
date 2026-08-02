@@ -192,3 +192,29 @@ export const finalCta = {
     leadSourceTag: "Lead — Návod zdarma (final CTA)",
   } satisfies EmailCaptureConfig,
 };
+
+/**
+ * Záchranná síť pod finálním CTA (GA4 2026-08-01): kdo nevyplní e-mail, měl
+ * dosud jedinou cestu pryč z webu. Odkazy míří na volný obsah, ne na produkty.
+ */
+export const exitRescue = {
+  eyebrow: "Ještě se rozmýšlíte?",
+  title: "Nemusíte nic stahovat &mdash; <strong>začít se dá rovnou tady</strong>.",
+  links: [
+    {
+      href: "/zacnete-tady/",
+      title: "Začněte tady",
+      desc: "Rozcestník podle toho, co řešíte. Vede vás krok za krokem.",
+    },
+    {
+      href: "/seo-vs-geo-vs-aeo-vs-aio/",
+      title: "SEO, GEO, AEO a AIO",
+      desc: "Kompletní průvodce čtyřmi zkratkami AI éry a rozdíly mezi nimi.",
+    },
+    {
+      href: "/slovnik/",
+      title: "Slovník pojmů",
+      desc: "Přes padesát hesel vysvětlených srozumitelně, každé na vlastní stránce.",
+    },
+  ],
+};

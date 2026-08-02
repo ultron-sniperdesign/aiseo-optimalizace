@@ -4,6 +4,7 @@ import EmailCapture from "~/components/EmailCapture.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import * as p from "~/content/pages/navod-zdarma";
 import { buildFaqJsonLd } from "~/lib/jsonld";
+import ExitRescue from "~/components/blocks/ExitRescue.astro";
 
 // Obsah stránky je v datovém modulu src/content/pages/navod-zdarma.ts.
 // Tato stránka je čistý template — refaktor Fáze 0 (i18n příprava).
@@ -187,6 +188,12 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
         />
       </div>
     </section>
+
+    <ExitRescue
+      eyebrow={p.exitRescue.eyebrow}
+      title={p.exitRescue.title}
+      links={p.exitRescue.links}
+    />
   </div>
 </BaseLayout>
 

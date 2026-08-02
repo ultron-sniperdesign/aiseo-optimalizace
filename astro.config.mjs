@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeGlossaryLinks from "./src/lib/rehype-glossary-links.mjs";
+import rehypeInlineCta from "./src/lib/rehype-inline-cta.mjs";
 import rehypeHeadingIds from "./src/lib/rehype-heading-ids.mjs";
 
 /**
@@ -82,6 +83,12 @@ export default defineConfig({
        * a překladová data src/i18n/glossary-autolink.mjs).
        */
       rehypeGlossaryLinks,
+      /**
+       * Kontextové CTA doprostřed článku (po 2. H2). Důvod: do konce stránky
+       * doscrolluje jen ~11 % návštěv, spodní CTA většina nevidí. Jen články
+       * v src/content/articles/, texty v src/i18n/inline-cta.mjs.
+       */
+      rehypeInlineCta,
       /**
        * Externí odkazy → otvírat v novém tabu + bezpečnost (noopener proti
        * tabnabbing). `noreferrer` přidán jako vedlejší ochrana soukromí

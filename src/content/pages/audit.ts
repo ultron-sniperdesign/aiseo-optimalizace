@@ -481,3 +481,29 @@ export const finalCta = {
   trust:
     'Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.',
 };
+
+/**
+ * Záchranná síť pod finálním CTA (GA4 2026-08-01): remarketingový provoz sem
+ * chodil a do 20 s mizel, protože stránka nenabízela nic mezi „koupit" a „odejít".
+ */
+export const exitRescue = {
+  eyebrow: "Ještě nejste rozhodnutí?",
+  title: "Podívejte se nejdřív, <strong>jak audit vypadá v praxi</strong>.",
+  links: [
+    {
+      href: "/blog/case-study-megadetail-ai-navstevnost/",
+      title: "Případová studie s čísly",
+      desc: "Co jsme dělali na vlastním e-shopu a jaká data z toho vyšla.",
+    },
+    {
+      href: "/blog/ai-seo-audit/",
+      title: "Co je AI SEO audit",
+      desc: "Co se v auditu prochází, co je výstupem a kdy má smysl.",
+    },
+    {
+      href: "/zacnete-tady/",
+      title: "Chci nejdřív pochopit téma",
+      desc: "Vstupní rozcestník celým webem — bez placené služby.",
+    },
+  ],
+};

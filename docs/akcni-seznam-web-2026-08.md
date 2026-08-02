@@ -59,7 +59,7 @@ zúžilo na Upgates. Rozhodnout: přebíráme **strukturu a ceník**, ale nechá
 
 ## A. Retence — zastavit rychlé odchody (z GA4)
 
-### 🟢 A1 — Záchranná síť na `/navod-zdarma/` ⏱️ ~1 h
+### ✅ A1 — Záchranná síť na `/navod-zdarma/` (hotovo 2026-08-02)
 
 **Problém:** 96 uživatelů, 29 konverzí (30 %, výborné). Zbylých **67 odchází z webu
 úplně** — stránka má v těle odkazy jen na `/pack/`, `/audit/` (placené) a GDPR.
@@ -72,25 +72,32 @@ volný obsah: `/zacnete-tady/`, pilíř, nejsilnější článek. Text ve stylu
 **Měřítko úspěchu:** stránek na relaci u kampaně AKV z 1,39 nahoru; konverze
 formuláře nesmí klesnout pod ~25 %.
 
-### 🟢 A2 — Totéž na `/audit/` a `/pack/` ⏱️ ~1 h
+### ✅ A2 — Totéž na `/audit/` a `/pack/` (hotovo 2026-08-02)
 
 `/audit/` má v těle jediný interní odkaz (`/pack/`), `/pack/` dva. Remarketingový
 provoz sem chodí a do 20 s mizí. Přidat stejný záchranný blok — u `/audit/`
 především odkaz na [case study](/blog/case-study-megadetail-ai-navstevnost/),
 protože to je přesně obsah, který chce vidět člověk zvažující audit.
 
-### 🟢 A3 — CTA výš v článcích ⏱️ ~2 h
+### ✅ A3 — CTA výš v článcích (hotovo 2026-08-02)
 
 Do 90 % délky stránky doscrolluje jen ~11 % návštěv (41 scroll událostí / 371
 zobrazení). Spodní CTA tedy většina čtenářů nikdy neuvidí. Přidat nenápadné
 kontextové CTA zhruba do první třetiny článku (komponenta, ne ruční vkládání do
 každého MDX).
 
-### 🟢 A4 — Mobilní navigace na landing stránkách ⏱️ ~30 min
+### ⏸️ A4 — Viditelný odkaz nad ohybem na mobilu — VĚDOMĚ NEPROVEDENO
 
-Většina placeného provozu je mobil, kde je celá navigace schovaná pod hamburgerem.
-Zvážit u landing stránek jeden viditelný textový odkaz „Co je AI SEO?" nad ohybem —
-bez rozbití konverzní logiky stránky.
+Původní úvaha: většina placeného provozu je mobil, kde je navigace pod hamburgerem.
+Po zvážení jsem to neudělal a doporučuju to nechat být:
+
+- `/navod-zdarma/` konvertuje ~30 %. Odkaz „pryč z nabídky" nad ohybem soutěží
+  přímo s formulářem a může tuhle míru srazit — riziko je větší než přínos.
+- Kdo odchází do 4 vteřin, ten se nerozhoduje podle navigace; u placeného provozu
+  jde spíš o nesoulad reklamy s cílovou stránkou (řeší A5, ne úprava webu).
+- Hamburger je zavedený vzorec, orientaci neblokuje.
+
+Vrátit se k tomu, až budou data z A1–A3 (datový check ~15. 8.).
 
 ### 🔴 A5 — Přesměrovat kampaň RMK2 (tvoje věc, Meta Ads)
 
@@ -111,7 +118,13 @@ a nedá se podle nich vyhodnocovat kampaň. GA4 → Správce → Události → p
 
 ---
 
-## B. Přestavba `/sluzby/` podle `seo-pro-ai`
+## B. Přestavba `/sluzby/` — POZASTAVENO
+
+> **2026-08-02:** Uživatel má vlastní vizi toho, jak se má návštěvník odbavit.
+> Ceny zůstávají podle `seo-pro-ai`, mění se ale zamýšlený průchod. Do doladění
+> vize se `/sluzby/` nesahá — body B1–B6 níže jsou původní návrh, ne zadání.
+
+## B (návrh, čeká na vizi). Přestavba `/sluzby/` podle `seo-pro-ai`
 
 **Výchozí stav aiseo:** 14 služeb v kolekci `src/content/services/`, 5 bucketů,
 6 detailních stránek (8 služeb detail nemá), **žádné ceny** (schema pole `price`
@@ -186,8 +199,8 @@ odříznuté od zbytku webu podobně jako landing stránky.
 | 1 | A6 — klíčová událost v GA4 | ty | 2 min |
 | 2 | A5 — přesměrovat RMK2 | ty | 15 min |
 | 3 | 0.2–0.3 — rozhodnutí o cenách v /sluzby/ a vztahu webů | ty | — |
-| 4 | A1 + A2 — záchranné bloky na 3 landing stránkách | já | ~2 h |
-| 5 | A3 + A4 — CTA výš, mobilní odkaz | já | ~2,5 h |
+| ~~4~~ | ~~A1 + A2 — záchranné bloky na 3 landing stránkách~~ | ✅ 2026-08-02 | |
+| ~~5~~ | ~~A3 — CTA výš v článcích~~ (A4 zrušeno, viz výše) | ✅ 2026-08-02 | |
 | 6 | B1 + B2 — ceny a balíčky | já | ~7 h |
 | 7 | B3 + B4 + B6 — detaily, škála vlivu, propojení | já | ~10 h |
 | 8 | B5 — self-check | já | ~4 h |

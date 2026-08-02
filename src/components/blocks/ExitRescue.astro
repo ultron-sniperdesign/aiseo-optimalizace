@@ -1,0 +1,151 @@
+---
+/**
+ * ExitRescue — „záchranná síť" na konci prodejních landing stránek.
+ *
+ * Proč existuje (GA4 2026-08-01): landing stránky (/navod-zdarma/, /audit/,
+ * /pack/) měly v těle odkazy jen na placené produkty a GDPR. Návštěvník, který
+ * nebyl připravený dát e-mail ani zaplatit, neměl kam pokračovat a odcházel
+ * z webu úplně — u /navod-zdarma/ šlo zhruba o 67 z 96 uživatelů.
+ *
+ * Blok se vkládá VŽDY AŽ ZA hlavní CTA sekci, ne před ni — nemá s nabídkou
+ * soutěžit, jen zachytit toho, kdo prošel celou stránku a stejně nekonvertoval.
+ *
+ * Texty i odkazy jsou props z datových modulů stránek (per-mutace překlad),
+ * šablona zůstává sdílená — viz MUTATIONS.md.
+ */
+
+export interface Link {
+  href: string;
+  title: string;
+  desc: string;
+}
+
+export interface Props {
+  eyebrow: string;
+  title: string;
+  links: Link[];
+}
+
+const { eyebrow, title, links } = Astro.props;
+---
+
+<aside class="rescue" aria-labelledby="rescue-title">
+  <div class="rescue__inner">
+    <header class="rescue__head">
+      <span class="rescue__eyebrow">{eyebrow}</span>
+      <h2 id="rescue-title" class="rescue__title" set:html={title}></h2>
+    </header>
+
+    <div class="rescue__grid">
+      {
+        links.map((l) => (
+          <a href={l.href} class="rescue__card">
+            <span class="rescue__card-title">{l.title}</span>
+            <span class="rescue__card-desc">{l.desc}</span>
+            <span class="rescue__card-cta" aria-hidden="true">→</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</aside>
+
+<style>
+  .rescue {
+    background: var(--color-paper-deep);
+    border-top: 1px solid var(--color-rule);
+  }
+  .rescue__inner {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 4vw, 3.5rem) var(--space-section-x);
+  }
+  .rescue__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.75rem;
+  }
+  .rescue__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .rescue__title {
+    font-family: var(--font-sans);
+    font-weight: 280;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  /* set:html potomci nedostanou Astro scope atribut -> :global() (viz CLAUDE.md § rizika) */
+  .rescue__title :global(strong) {
+    font-weight: 600;
+  }
+
+  .rescue__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.75rem;
+  }
+  .rescue__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.25rem 1.375rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    background: var(--color-paper);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s ease;
+  }
+  .rescue__card:hover {
+    border-color: var(--color-ink-muted);
+    transform: translateY(-2px);
+  }
+  .rescue__card-title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.975rem;
+    letter-spacing: -0.012em;
+    color: var(--color-ink);
+  }
+  .rescue__card-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+  .rescue__card-cta {
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+    color: var(--color-ink-faint);
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+  .rescue__card:hover .rescue__card-cta {
+    color: var(--color-ink);
+    transform: translateX(3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rescue__card,
+    .rescue__card-cta {
+      transition: none;
+    }
+    .rescue__card:hover {
+      transform: none;
+    }
+    .rescue__card:hover .rescue__card-cta {
+      transform: none;
+    }
+  }
+</style>
