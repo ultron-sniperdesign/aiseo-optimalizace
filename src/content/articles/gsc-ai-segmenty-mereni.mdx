@@ -1,13 +1,13 @@
 ---
 title: "GSC AI report: měření AI viditelnosti 2026"
-description: "GSC AI report v Search Console ukazuje AI Overviews a AI Mode bez kliků a CTR. Zjistěte, co měří a jak AI imprese správně číst."
-answer: "Generative AI features report v Google Search Console je beta přehled, který ukazuje, jak často se vaše stránky objevují v AI Overviews, AI Mode a generativních funkcích v Discoveru. Dává imprese, stránky, země, zařízení a datum — ale žádné kliky, CTR ani dotazy. Imprese proto čtěte jako signál, že se URL v Google AI funkcích objevuje, ne jako návštěvnost."
+description: "GSC AI report ukazuje AI Overviews a AI Mode bez kliků a CTR — a obojí dohromady. Co měří, co ne a jak AI imprese správně číst."
+answer: "Report Generative AI features v Search Console ukazuje, jak často se vaše stránky objevují v AI Overviews, AI Mode a v Discoveru. Dává imprese, stránky, země, zařízení a datum — ale žádné kliky, CTR ani dotazy a AI Overviews od AI Mode neoddělí. Imprese proto čtěte jako signál výskytu, ne jako návštěvnost."
 slug: "gsc-ai-segmenty-mereni"
 category: "tutorial"
 tags:
   - "mereni"
 published: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-08-02"
 keywords:
   - "gsc ai report"
   - "search console ai overviews"
@@ -17,39 +17,41 @@ keywords:
 variant: "rich"
 stats:
   - value: "3. 6. 2026"
-    label: "datum, kdy Google spustil Generative AI features report v Search Console (Beta)"
+    label: "datum, kdy Google spustil Generative AI features report v Search Console"
   - value: "imprese"
     label: "hlavní metrika reportu — kolikrát se vaše URL objevily v generativních AI funkcích"
   - value: "0"
-    label: "kliků, CTR i dotazů v reportu — verze 1 sleduje pouze imprese"
+    label: "kliků, CTR i dotazů v reportu — ověřeno v nápovědě Googlu 2. 8. 2026"
   - value: "2"
-    label: "samostatná zobrazení: Search (AI Overviews + AI Mode) a Discover"
+    label: "samostatná zobrazení: Search (AI Overviews + AI Mode dohromady) a Discover"
 howto:
   name: "Jak měřit AI viditelnost v Google Search Console"
   steps:
     - name: "Ověřte, jestli máte report k dispozici"
-      text: "Report se od června 2026 postupně rozšiřuje na jednotlivé weby. Zkontrolujte v Search Console v sekci Výkon, jestli je dostupná sekce Generative AI features. Pokud ještě není, doplňte měření ručním testem AI viditelnosti."
+      text: "Report se rozšiřuje postupně a nejdřív ho dostaly weby v Británii. Google v nápovědě i dva měsíce po spuštění píše, že ho dostává jen část majitelů webů (ověřeno 2. 8. 2026). Zkontrolujte v Search Console v sekci Výkon, jestli je dostupná sekce Generative AI features. Pokud ještě není, doplňte měření ručním testem AI viditelnosti."
     - name: "Otevřete report a přepněte na Search"
       text: "V Search Console přejděte do sekce Výkon a otevřete Generative AI features. Přepněte mezi zobrazením Search (AI Overviews + AI Mode) a Discover. Pro AI vyhledávání sledujte hlavně zobrazení Search."
     - name: "Segmentujte podle stránky, země a času"
-      text: "Filtrujte report podle konkrétních URL (které stránky se v AI objevují), podle zemí (kde máte viditelnost) a podle datumu (jak se to mění v čase). Výchozí report Výkonu mísí všechny typy vyhledávání, proto si vytvořte samostatný pohled jen na AI funkce."
+      text: "Filtrujte report podle konkrétních URL (které stránky se v AI objevují), podle zemí (kde máte viditelnost) a podle data (jak se to mění v čase). Výchozí report Výkonu mísí všechny typy vyhledávání, proto si vytvořte samostatný pohled jen na AI funkce."
     - name: "Porovnejte AI imprese s organickými kliky"
       text: "Report ukazuje jen imprese, ne kliky. Porovnejte AI imprese téže URL s organickými kliky v klasickém reportu Výkonu. Vysoké AI imprese a nízké organické kliky znamenají obsah, který je v AI vidět, ale neposílá návštěvnost (efekt bez prokliku)."
     - name: "Doplňte vlastní měření nad rámec GSC"
       text: "Search Console pokrývá jen Google AI, ne ChatGPT, Perplexity nebo Claude, a neukazuje kliky. Doplňte GA4 (návštěvnost z AI), UTM parametry v odkazech a ruční test napříč platformami. GSC je jedna vrstva, ne kompletní obrázek."
 faq:
   - q: "Co Google spustil v Search Console v červnu 2026?"
-    a: "Google 3. června 2026 spustil v Search Console report Generative AI features (Beta), který ukazuje, jak často se stránky webu objevují v generativních AI funkcích Vyhledávání (AI Overviews a AI Mode) a v Discoveru. Report má dvě samostatná zobrazení — Search a Discover — a k datu vydání tohoto článku se postupně zpřístupňuje jen části webů (report se podle Googlu zpřístupňuje postupně), takže ho zatím nemusí mít každý web v Search Console."
+    a: "Google 3. června 2026 spustil v Search Console report Generative AI features, který ukazuje, jak často se stránky webu objevují v generativních AI funkcích Vyhledávání (AI Overviews a AI Mode) a v Discoveru. Report má dvě samostatná zobrazení — Search a Discover. Zpřístupňuje se postupně: nejdřív ho dostaly weby v Británii a Google v nápovědě i k 2. srpnu 2026 píše, že ho dostává jen část majitelů webů. Dva měsíce po spuštění ho tedy pořád nemá každý."
+  - q: "Poznám v reportu, kolik impresí je z AI Mode?"
+    a: "Ne. Nápověda Search Console uvádí AI Overviews i AI Mode v jednom výčtu toho, co report pokrývá, a k 2. srpnu 2026 v něm není žádný filtr ani rozměr, který by je oddělil — rozpady jsou jen podle stránek, zemí, data a zařízení. Ve zobrazení Search jsou tedy imprese za obě funkce zahrnuté společně. Rozdíl mezi nimi si musíte doplnit ručním testem."
   - q: "Jaké metriky report ukazuje?"
-    a: "Report ukazuje imprese (kolikrát se vaše URL objevily v generativních AI funkcích), stránky (které konkrétní URL se objevily), země (viditelnost podle zemí), zařízení (jen u Search) a datum s hodinovým, denním, týdenním i měsíčním intervalem. Neukazuje ale kliky, míru prokliku (CTR), pozici ani dotazy — verze 1 sleduje pouze imprese."
+    a: "Report ukazuje imprese (kolikrát se vaše URL objevily v generativních AI funkcích), stránky (které konkrétní URL se objevily), země (viditelnost podle zemí), zařízení (jen u Search) a datum s hodinovým, denním, týdenním i měsíčním intervalem. Neukazuje ale kliky, míru prokliku (CTR), pozici ani dotazy a k 2. srpnu 2026 neumí oddělit AI Overviews od AI Mode — imprese za obě funkce jsou společně. Ověřeno v nápovědě Googlu."
   - q: "Proč report neukazuje kliky?"
-    a: "To je nejvýznamnější omezení reportu. Když uživatel čte odpověď generovanou AI, přiřazení prokliku zpět na konkrétní zdroj v syntetizované odpovědi funguje jinak než klik na klasický výsledek. Imprese v AI odpovědi navíc neznamená proklik — AI odpovědi jsou navržené odpovědět přímo, takže míra prokliku z generativních funkcí bývá strukturálně nižší než u klasických modrých odkazů."
+    a: "To je nejvýznamnější omezení reportu. Google důvod v nápovědě nevysvětluje; jedním z pravděpodobných je, že přiřazení prokliku zpět na konkrétní zdroj v syntetizované odpovědi funguje jinak než klik na klasický výsledek. Jisté je, že imprese v AI odpovědi neznamená proklik — AI odpovědi jsou navržené odpovědět přímo, takže míra prokliku z generativních funkcí bývá nižší než u klasických modrých odkazů."
   - q: "Jak mám imprese v reportu číst?"
     a: "Imprese berte jako signál, že se vaše URL objevuje v Google AI funkcích, ne jako metriku návštěvnosti. Může jít o užitečný signál relevance obsahu v AI funkcích, ale ne o přímý důkaz kvality, návštěvnosti ani obchodního přínosu. Nejužitečnější je porovnat AI imprese téže URL s organickými kliky v klasickém reportu Výkonu — z toho vidíte, co je v AI vidět a co zároveň přináší návštěvnost."
   - q: "Nahrazuje GSC report ruční test AI viditelnosti?"
     a: "Ne, doplňuje ho. Search Console report pokrývá jen Google AI (AI Overviews, AI Mode, Discover), ne ChatGPT, Perplexity, Claude ani Gemini. Neukazuje kliky ani kvalitu návštěvnosti. Pro celý AI ekosystém potřebujete i ruční test napříč platformami a měření návštěvnosti v GA4. GSC report je silná nová vrstva měření Google AI, ne kompletní obrázek."
   - q: "Platí report i pro české weby?"
-    a: "Report se rozšiřuje postupně, takže české weby ho nemusí mít hned. Pokud se AI Overviews v češtině zobrazují a report máte zpřístupněný, může zachytit i českou AI viditelnost vašeho webu; dostupnost se ale k datu vydání článku rozšiřuje postupně. Pro český trh doplňte měření o nástroje Seznamu a o ruční test, protože Seznam Asistent ani mezinárodní AI platformy Search Console nepokrývá."
+    a: "Nemusíte ho ještě mít. Zpřístupňování začalo u webů v Británii a Google k 2. srpnu 2026 pořád píše, že report dostává jen část majitelů webů. Pokud ho zpřístupněný máte, zachytí i českou AI viditelnost — rozpad podle zemí v reportu je. Než ho dostanete, měřte ručním testem a nezapomeňte, že Search Console nepokrývá Seznam Asistenta ani ChatGPT, Perplexity a Claude."
 ---
 
 import Checklist from "~/components/blocks/Checklist.astro";
@@ -62,17 +64,17 @@ import DoDont from "~/components/blocks/DoDont.astro";
 import Do from "~/components/blocks/Do.astro";
 import Dont from "~/components/blocks/Dont.astro";
 
-**Google 3. června 2026 spustil v Search Console report Generative AI features — první oficiální přehled o tom, jak často se vaše stránky objevují v AI Overviews (AI shrnutí ve výsledcích Vyhledávání Google), AI Mode (konverzačním režimu vyhledávání) a generativních funkcích v Discoveru.** V beta verzi má ale výrazná omezení: ukazuje jen imprese, žádné kliky, CTR ani dotazy. Tento návod ukazuje, kde report najít, jak ho segmentovat a hlavně jak imprese číst správně — jako signál výskytu v AI funkcích, ne jako návštěvnost.
+**Google 3. června 2026 spustil v Search Console report Generative AI features — první oficiální přehled o tom, jak často se vaše stránky objevují v AI Overviews (AI shrnutí ve výsledcích Vyhledávání Google), AI Mode (konverzačním režimu vyhledávání) a generativních funkcích v Discoveru.** Má ale tři výrazná omezení, ověřená k 2. srpnu 2026: ukazuje jen imprese, neoddělí AI Overviews od AI Mode a dva měsíce po spuštění ho pořád nemá každý web. Tento návod ukazuje, kde report najít, jak ho segmentovat a hlavně jak imprese číst správně — jako signál výskytu v AI funkcích, ne jako návštěvnost.
 
 ## Co Google spustil
 
-Report **Generative AI features** je v Search Console dostupný od 3. června 2026 (Beta) a k datu vydání tohoto článku se postupně zpřístupňuje jen části webů (report se podle Googlu zpřístupňuje postupně). Zatím ho tedy nemusí mít každý web v Search Console. Má dvě samostatná zobrazení:
+Report **Generative AI features** je v Search Console dostupný od 3. června 2026. Zpřístupňuje se postupně: v den spuštění ho dostávaly weby v Británii a Google ve své nápovědě **i k 2. srpnu 2026** píše, že report dostává jen část majitelů webů. Dva měsíce po spuštění ho tedy pořád nemá každý. Má dvě samostatná zobrazení:
 
 - **Search** — AI Overviews a AI Mode ve Vyhledávání.
 - **Discover** — generativní AI funkce v Discoveru.
 
 <Insight tone="accent">
-Před tímto reportem neexistoval oficiální zdroj dat od Googlu o tom, jak často se web objevuje v jeho AI funkcích. Doteď se měření opíralo hlavně o odhady, [ruční test AI viditelnosti](/blog/test-viditelnosti-v-ai/) a nepřímé signály. Report je proto významná nová vrstva — ale v beta verzi a ne kompletní obrázek.
+Před tímto reportem neexistoval oficiální zdroj dat od Googlu o tom, jak často se web objevuje v jeho AI funkcích. Doteď se měření opíralo hlavně o odhady, [ruční test AI viditelnosti](/blog/test-viditelnosti-v-ai/) a nepřímé signály. Report je proto významná nová vrstva — ale pořád ne kompletní obrázek. A je to produkt v pohybu: rozsah reportu i jeho dostupnost se během zpřístupňování můžou dál měnit, proto jsou všechna stavová tvrzení v tomhle článku ověřená k 2. srpnu 2026.
 </Insight>
 
 ## Co report ukazuje
@@ -87,13 +89,34 @@ Před tímto reportem neexistoval oficiální zdroj dat od Googlu o tom, jak ča
 
 ## Kritické omezení: žádné kliky
 
-Nejdůležitější věc, kterou o reportu potřebujete vědět: **verze 1 sleduje pouze imprese.** Žádné kliky, míru prokliku (CTR), pozici ani dotazy.
+Nejdůležitější věc, kterou o reportu potřebujete vědět: **sleduje pouze imprese.** Žádné kliky, míru prokliku (CTR), pozici ani dotazy. Ověřeno v nápovědě Search Console k **2. srpnu 2026** — od spuštění se v tomhle nic nezměnilo.
 
-Google v této verzi reportu kliky, CTR, pozici ani dotazy nezveřejňuje. Prakticky to znamená, že z reportu nevyčtete návštěvnost ani výkonnost po prokliku. Jedním z možných vysvětlení je odlišný způsob interakce s AI odpověďmi — ty často odpovídají přímo v rozhraní, takže proklik nemusí být hlavní výsledek interakce. Podrobně se tomuto efektu věnujeme v článku o [efektu bez prokliku](/blog/zero-click-ai/).
+Google v reportu kliky, CTR, pozici ani dotazy nezveřejňuje. Prakticky to znamená, že z reportu nevyčtete návštěvnost ani výkonnost po prokliku. Jedním z možných vysvětlení je odlišný způsob interakce s AI odpověďmi — ty často odpovídají přímo v rozhraní, takže proklik nemusí být hlavní výsledek interakce. Podrobně se tomuto efektu věnujeme v článku o [efektu bez prokliku](/blog/zero-click-ai/).
 
 <Insight tone="warn">
 Nečtěte AI imprese jako návštěvnost. Vysoký počet impresí v AI Overviews neznamená vysoký počet návštěvníků. Znamená, že se vaše URL v AI funkcích objevují často — což je signál výskytu, ne návštěvnost.
 </Insight>
+
+## Druhé omezení: AI Overviews a AI Mode v jednom čísle
+
+Tohle je otázka, se kterou k reportu většina lidí přijde: **kolik z těch impresí je AI Mode?**
+Odpověď je, že se to nedozvíte.
+
+Nápověda Search Console uvádí obě funkce v jednom výčtu toho, co report pokrývá — AI Overviews
+a AI Mode — a **k 2. srpnu 2026 v reportu není žádný filtr ani rozměr, který by je od sebe oddělil.**
+Rozpady jsou jen podle stránek, zemí, data a zařízení. Ve zobrazení Search jsou tedy imprese
+za obě funkce zahrnuté společně a report je neumí rozlišit.
+
+<Insight tone="warn">
+Prakticky to znamená, že **nárůst AI impresí neumíte přiřadit ke konkrétní funkci.** Když čísla
+vyskočí, může za to větší nasazení AI Overviews u vašich témat, změna chování v AI Mode, nebo
+obojí najednou. Report vám řekne, že jste vidět víc; neřekne kde.
+</Insight>
+
+Co s tím jde dělat: rozdíl mezi oběma funkcemi si musíte doplnit ručním testem. Zadejte stejné
+dotazy jednou do běžného vyhledávání a jednou do AI Mode a porovnejte, jestli se váš web objeví
+v obou. Je to práce navíc a vzorek je malý, ale je to jediná cesta, jak ten rozdíl vůbec vidět.
+Rozdíly mezi oběma funkcemi rozebíráme v článku [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
 
 ## Jak imprese číst správně
 
@@ -141,12 +164,12 @@ Správný způsob, jak číst report jen s impresemi, je brát imprese jako **si
     {
       label: "Segmentace",
       title: "Filtrujte podle stránky, země a času",
-      text: "Filtrujte podle konkrétních URL, podle zemí a podle datumu. Výchozí přehled Výkonu mísí všechny typy vyhledávání, což maskuje AI trendy — proto používejte samostatný filtr nebo export jen pro AI funkce.",
+      text: "Filtrujte podle konkrétních URL, podle zemí a podle data. Výchozí přehled Výkon mísí všechny typy vyhledávání, což maskuje AI trendy — proto pracujte přímo v reportu Generative AI features, nebo si z něj dělejte samostatný export.",
     },
     {
       label: "Vlastní přehled",
       title: "Sledujte AI report pravidelně",
-      text: "Vytvořte si vlastní pravidelný přehled nad AI reportem, například přes export dat, segmentovaný podle stránky, země a datumu. To je základ pro sledování, jak se AI viditelnost vašeho webu vyvíjí.",
+      text: "Vytvořte si vlastní pravidelný přehled nad AI reportem, například přes export dat, segmentovaný podle stránky, země a data. To je základ pro sledování, jak se AI viditelnost vašeho webu vyvíjí.",
     },
   ]}
 />
@@ -162,8 +185,9 @@ Report je silná nová vrstva, ale je potřeba vědět, kde končí.
   rightTone="accent"
   rows={[
     { icon: "👁️", label: "Imprese", left: "Ano — kolikrát se URL objevily v Google AI", right: "—" },
-    { icon: "🖱️", label: "Kliky a CTR", left: "—", right: "Ne — verze 1 kliky nesleduje" },
+    { icon: "🖱️", label: "Kliky a CTR", left: "—", right: "Ne — report kliky nesleduje" },
     { icon: "🔤", label: "Dotazy a pozice", left: "—", right: "Ne — žádná data na úrovni dotazů" },
+    { icon: "🧩", label: "AI Overviews vs. AI Mode", left: "—", right: "Ne — imprese za obě funkce jsou společně" },
     { icon: "💰", label: "Tržby a konverze", left: "—", right: "Ne — neukáže, jestli imprese vedla k prodeji" },
     { icon: "🌍", label: "AI mimo Google", left: "—", right: "Ne — jen Google AI, ne ChatGPT, Perplexity, Claude" },
   ]}
@@ -226,9 +250,9 @@ Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hod
 
 ## Co si z článku odnést
 
-- **Google spustil 3. června 2026** v Search Console report Generative AI features (Beta) — první oficiální data o Google AI viditelnosti.
+- **Google spustil 3. června 2026** v Search Console report Generative AI features — první oficiální data o Google AI viditelnosti. Zpřístupňuje se postupně, začal u britských webů a k 2. srpnu 2026 ho pořád nemá každý.
 - **Ukazuje imprese, stránky, země, zařízení a datum** — ve dvou zobrazeních (Search a Discover).
-- **Neukazuje kliky, CTR, pozici ani dotazy** — verze 1 sleduje jen imprese.
+- **Neukazuje kliky, CTR, pozici ani dotazy** — sleduje jen imprese. A **AI Overviews od AI Mode k 2. srpnu 2026 neoddělí** — imprese za obě funkce jsou společně.
 - **Imprese čtěte jako signál výskytu v Google AI funkcích**, ne jako návštěvnost; porovnejte je s organickými kliky.
 - **Report pokrývá jen Google AI** — pro ChatGPT, Perplexity a Claude potřebujete ruční test.
 - **Doplňte GSC** o GA4, UTM a ruční test — je to jedna vrstva, ne kompletní obrázek.
@@ -237,4 +261,4 @@ Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hod
 
 **Chcete nastavit kompletní měření AI viditelnosti napříč Search Console, GA4 i ručním testem?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje checklist měření AI viditelnosti — jak číst Generative AI report, jak ho doplnit o GA4 a UTM a jak interpretovat imprese versus návštěvnost. Pokud chcete kompletní audit AI viditelnosti napříč platformami, [AI SEO audit za 3 600 Kč](/audit/) propojí data ze Search Console, GA4 i ručního testu a navrhne, kde má úprava největší dopad.
 
-*Transparentně: AI audity děláme s měřením napříč vrstvami (Search Console, GA4, ruční test). Popis reportu vychází z veřejné dokumentace Google Search Central k červnu 2026; funkce jsou v Beta verzi a jejich rozsah i dostupnost se mohou měnit. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
+*Transparentně: AI audity děláme s měřením napříč vrstvami (Search Console, GA4, ruční test). Popis reportu vychází z veřejné nápovědy Search Console, ověřené k 2. srpnu 2026; rozsah reportu i jeho dostupnost se mohou měnit. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
