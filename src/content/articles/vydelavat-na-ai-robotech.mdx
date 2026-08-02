@@ -1,6 +1,6 @@
 ---
 title: "Může web vydělávat na AI robotech? Zatím spíš ne"
-description: "Cloudflare staví infrastrukturu pro placený přístup k obsahu, API i datům. Co z toho dnes reálně jde, proč to českému webu nic nenese a co se mění samo."
+description: "Cloudflare staví infrastrukturu pro placený přístup k obsahu, API i datům. Co z toho dnes reálně jde a jaké výchozí nastavení čeká nově zakládané domény."
 answer: "Nástroje na zpoplatnění přístupu AI robotů existují, ale běžně dostupné ani doložené nejsou. Monetization Gateway má Cloudflare na čekací listině, model Pay Per Use testuje s pěti partnery a žádné vyplacené částky ve svých materiálech neuvádí. Platí se navíc ve stablecoinech."
 slug: "vydelavat-na-ai-robotech"
 category: "analysis"
@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "strategie"
 published: "2026-08-01"
-updated: "2026-08-01"
+updated: "2026-08-02"
 keywords:
   - "vydělávat na ai robotech"
   - "pay per crawl"
@@ -24,7 +24,7 @@ stats:
   - value: "0"
     label: "veřejně ověřitelných vyplacených částek, které se mi při přípravě článku podařilo dohledat"
   - value: "15. 9."
-    label: "datum, kdy se u části účtů výchozí nastavení blokování změní automaticky"
+    label: "datum, od kterého mají nově zakládané domény jiné výchozí nastavení robotů"
 faq:
   - q: "Můžu si dnes nechat platit za to, že mě prochází AI roboti?"
     a: "Běžně ne. Cloudflare má Monetization Gateway na čekací listině a model Pay Per Use podle tiskové zprávy testuje s pěti jmenovanými zahraničními partnery. Pro běžný web to zatím není běžně dostupný ani doložený zdroj příjmu — a hlavně: aby to fungovalo, musela by druhá strana chtít platit."
@@ -35,7 +35,7 @@ faq:
   - q: "Kolik se tím dá vydělat?"
     a: "Nevím a nedohledal jsem to. Kolují odhady v desítkách až stovkách tisíc dolarů měsíčně pro velké weby, ale v blogovém oznámení Cloudflare ani v jeho tiskové zprávě žádné takové číslo není a není u něj řečeno, čí je to odhad."
   - q: "Co se tedy mění doopravdy?"
-    a: "Od 15. září 2026 se podle Cloudflare mění výchozí nastavení: u stránek s reklamou se má povolit vyhledávání, ale zablokovat trénink a použití agenty. Stávající zákazníci na bezplatném tarifu, kteří nastavení nezmění, ho podle oznámení dostanou automaticky."
+    a: "Od 15. září 2026 mají podle Cloudflare nově zakládané domény jiné výchozí nastavení: u stránek s reklamou zůstane povolená kategorie Search, ale zablokují se kategorie Training a Agent. Stávajícím doménám se podle změnového logu nic samo nepřepne — vlastní nastavení si ale můžete zvolit kdykoli."
   - q: "Co mám dělat místo řešení monetizace?"
     a: "Zjistit si, kolik vás roboti opravdu procházejí a co vám z toho chodí zpátky. Bez toho čísla nemá smysl řešit ani blokování, ani ceník. Teprve pak se rozhodovat, jestli část robotů pustit, nebo ne."
 ---
@@ -60,7 +60,7 @@ Hned na začátku je potřeba rozplést, co je co. V textech o tomhle tématu se
   rightLabel="V jakém je to stavu"
   rightTone="seo"
   rows={[
-    { icon: "🕷", label: "Pay Per Crawl", left: "Cloudflare takto označovalo dřívější model mířený na zpoplatnění přístupu robotů k obsahu.", right: "Předchůdce. Cloudflare od něj posunul důraz jinam — viz další řádek." },
+    { icon: "🕷", label: "Pay Per Crawl", left: "Cloudflare takto označovalo dřívější model mířený na zpoplatnění přístupu robotů k obsahu.", right: "Předchůdce. Cloudflare od něj posunulo důraz jinam — viz další řádek." },
     { icon: "📈", label: "Pay Per Use", left: "Posun od placení za stažení k placení za užití: vydavatel má dostat zaplaceno, když jeho obsah vytvoří hodnotu, ne když si ho někdo jen stáhne.", right: "Podle tiskové zprávy se testuje s pěti jmenovanými partnery. Vydavatel se musí sám přihlásit." },
     { icon: "🚪", label: "Monetization Gateway", left: "Nejširší z toho: zpoplatnit jakýkoli zdroj za Cloudflare — stránky, datové sady, rozhraní API i jednotlivá volání nástrojů v MCP.", right: "Otevřená čekací listina. Nejde tedy o funkci dostupnou všem zákazníkům Cloudflare." },
   ]}
@@ -121,12 +121,16 @@ Nedohledal jsem ho ani v blogovém oznámení Cloudflare, ani v jeho tiskové zp
 
 ## Co se naopak mění doopravdy
 
-Zatímco placení je zatím na čekací listině, jedna věc má konkrétní datum a u části účtů se **aplikuje automaticky**.
+Zatímco placení je zatím na čekací listině, jedna věc má konkrétní datum.
 
-Podle Cloudflare se od **15. září 2026** mění výchozí nastavení: u stránek s reklamou se má povolit vyhledávání, ale zablokovat trénink a použití agenty. Roboti, kteří vyhledávání od agentního použití neumí oddělit, mají být na stránkách s reklamou zablokovaní. Stávající zákazníci na bezplatném tarifu, kteří si nastavení nezmění, ho podle oznámení dostanou automaticky.
+Podle Cloudflare mají od **15. září 2026** nově zakládané domény jiné výchozí nastavení: u stránek s reklamou zůstane povolená kategorie Search, ale zablokují se kategorie Training a Agent. Smíšení roboti, kteří kombinují Search a Training, spadnou pod blokaci tréninku.
+
+<Insight tone="warn" icon="↻" label="Opraveno 2026-08-02">
+V první verzi tohohle článku z 1. srpna stálo, že stávající zákazníci na bezplatném tarifu dostanou nové výchozí nastavení automaticky. **To bylo špatně.** Vzal jsem to z automatického shrnutí tiskové zprávy Cloudflare, aniž bych to ověřil ve změnovém logu — a ten říká jasně, že se nové výchozí hodnoty týkají **nově zakládaných domén**. Existující doméně se 15. září nic samo nepřepne.
+</Insight>
 
 <Insight tone="accent" icon="◆" label="Tohle je ta praktická část">
-Rozdíl je zásadní: k placení se musíte přihlásit a zatím nikam nevede. **Změna výchozího nastavení se u části účtů provede sama.** Když provozujete web na Cloudflare a máte na stránkách reklamu, stojí za to vědět, co se v září stane. Rozebíráme to v článku o [nastavení AI robotů na Cloudflare](/blog/cloudflare-ai-bot-blocking/).
+Rozdíl je zásadní: k placení se musíte přihlásit a zatím nikam nevede. **Změna výchozího nastavení se od 15. září týká jen nově zakládaných domén; existující doméně se nic samo nepřepne.** Prakticky: máte-li web na Cloudflare už dnes, zkontrolujte si nastavení ručně; chystáte-li novou doménu po 15. září, počítejte s jinými výchozími hodnotami. Rozebíráme to v článku o [nastavení AI robotů na Cloudflare](/blog/cloudflare-ai-bot-blocking/).
 </Insight>
 
 ## Rozhodovací rámec
@@ -184,6 +188,6 @@ Kdo zavře dveře úplně, nezískal vyjednávací pozici — jen zmizel z odpov
 
 **Pro běžný český web z toho dnes není doložený příjem ani běžně dostupný způsob nasazení.** Čekací listina, test s pěti zahraničními partnery, platba ve stablecoinech a nula dohledaných vyplacených částek — to zatím nevypadá jako použitelná podnikatelská příležitost, spíš jako věc k dalšímu sledování.
 
-**Co je reálné, je změna výchozího nastavení v září.** Ta se u části účtů provede automaticky.
+**Co je reálné, je změna výchozího nastavení v září** — ale jen pro nově zakládané domény. Existující web si nastavení musí zvolit sám.
 
 Než začnete řešit ceník, zjistěte si vlastní čísla — [kolik vás AI roboti projdou na jednu návštěvu zpět](/blog/ai-roboti-zatez-webu/). To je základní podklad, bez kterého se o dalším postupu rozhoduje naslepo.

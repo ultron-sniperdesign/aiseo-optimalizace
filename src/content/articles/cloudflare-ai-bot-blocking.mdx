@@ -1,14 +1,14 @@
 ---
-title: "Cloudflare a AI roboti: co nastavit do 15. září"
-description: "Cloudflare rozlišuje u AI robotů tři chování — Search, Agent a Training. Co která volba znamená, kde je past se smíšenými roboty a co se mění 15. září."
-answer: "Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training. U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nové domény jiné výchozí hodnoty a starý přepínač končí."
+title: "Cloudflare a AI roboti: Search, Agent a Training"
+description: "Cloudflare rozlišuje u AI robotů tři chování — Search, Agent a Training. Co která volba znamená, kde je past se smíšenými roboty a co čeká nové domény."
+answer: "Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training. U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nově zakládané domény jiné výchozí hodnoty; existující doméně se nic samo nepřepne."
 slug: "cloudflare-ai-bot-blocking"
 category: "tutorial"
 tags:
   - "technicke-zaklady"
   - "ai-platformy"
 published: "2026-07-19"
-updated: "2026-07-19"
+updated: "2026-08-02"
 keywords:
   - "cloudflare blokování ai robotů"
   - "cloudflare ai crawl control"
@@ -20,7 +20,7 @@ stats:
   - value: "3"
     label: "kategorie chování místo seznamu jmen: Search, Agent a Training"
   - value: "15. 9."
-    label: "od tohoto data dostávají nové domény jiné výchozí hodnoty; starý přepínač končí"
+    label: "od tohoto data dostávají nově zakládané domény jiné výchozí hodnoty; existujícím se nic nemění"
   - value: "i zdarma"
     label: "nastavení je dostupné všem zákazníkům včetně Free plánu"
   - value: "past"
@@ -40,9 +40,9 @@ faq:
   - q: "Co Cloudflare u AI robotů vlastně rozlišuje?"
     a: "Tři chování místo jmen robotů. Search je chování, které sbírá nebo indexuje obsah, aby na něj později umělo odpovídat. Agent je automatická činnost jednající v reálném čase za konkrétního člověka. Training je procházení, které bere obsah na trénink nebo doladění modelu. U každé kategorie se rozhodujete samostatně."
   - q: "Co se mění 15. září 2026?"
-    a: "Cloudflare oznámil, že k tomuto datu nastaví nové výchozí hodnoty pro všechny tři kategorie. Nové domény mají mít Training a Agent blokované na stránkách s reklamou, zatímco Search zůstane povolený. Vlastní nastavení si zákazníci můžou zvolit kdykoli před tímto datem. Zároveň k témuž dni končí starý přepínač Block AI bots."
+    a: "Podle změnového logu Cloudflare dostanou k tomuto datu nově zakládané domény jiné výchozí hodnoty: Training a Agent blokované na stránkách s reklamou, Search povolený. Ke stejnému dni mají pod blokaci tréninku spadnout i roboti, kteří kombinují Search a Training. Existující doméně se ale nic samo nepřepne a vlastní nastavení si můžete zvolit kdykoli."
   - q: "Přijdu blokací tréninku o citace v AI odpovědích?"
-    a: "Cloudflare k dopadu na citace nic neuvádí, takže to nikdo netvrdí za něj. Uvádí ale, že blokace kategorie Training zasáhne i roboty, kteří kombinují Search a Training zároveň. Zbytek plyne z mechaniky: co si robot nenačte, to nemůže použít v odpovědi. Rozhodujte se s vědomím, že tyhle dvě věci nejdou vždy oddělit."
+    a: "Cloudflare k dopadu na citace nic neuvádí, takže to nikdo netvrdí za něj. Uvádí ale, že blokace kategorie Training zasáhne i roboty, kteří kombinují Search a Training zároveň. Praktický důsledek může být ten, že robot z takového obsahu nebude mít z čeho čerpat; přesný dopad na citace ani na návštěvnost z toho ale odvodit nejde. Rozhodujte se s vědomím, že tyhle dvě věci nejdou vždy oddělit."
   - q: "Je to dostupné i na bezplatném plánu?"
     a: "Ano. Cloudflare uvádí, že novou správu AI provozu mají všichni zákazníci včetně Free plánu. Na bezplatných plánech se roboti rozpoznávají podle user-agent řetězce, placené Bot Management detekci vylepšuje."
   - q: "Nahradí tohle nastavení robots.txt?"
@@ -57,7 +57,7 @@ import Stepper from "~/components/blocks/Stepper.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 
-**Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training.** U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nové domény jiné výchozí hodnoty a starý přepínač končí.
+**Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training.** U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nově zakládané domény jiné výchozí hodnoty; existující doméně se nic samo nepřepne.
 
 Pokud jste někdy četli návod ve stylu „zablokujte Bytespider a povolte GPTBot", je zastaralý. Cloudflare dnes nabízí řízení podle **kategorií chování**, ne podle jednotlivých jmen robotů.
 
@@ -65,7 +65,11 @@ Pokud jste někdy četli návod ve stylu „zablokujte Bytespider a povolte GPTB
 
 Od 1. července 2026 může každý zákazník, **včetně bezplatného plánu**, nastavit chování AI robotů podle tří kategorií zvlášť. U každé z nich jsou tři volby: blokovat na všech stránkách, blokovat jen na stránkách s reklamou, nebo neblokovat.
 
-Dnes jsou podle Cloudflare všechny tři kategorie ve výchozím stavu povolené. **Od 15. září 2026 se to mění pro nově zakládané domény**: ty mají dostat Training a Agent blokované na stránkách s reklamou a Search povolený. K témuž dni končí i starý přepínač Block AI bots, ten, který se roky doporučoval v návodech.
+Dnes jsou podle Cloudflare všechny tři kategorie ve výchozím stavu povolené. **Od 15. září 2026 se to mění pro nově zakládané domény**: ty mají dostat Training a Agent blokované na stránkách s reklamou a Search povolený. Změnový log k témuž dni dodává, že pod blokaci tréninku spadnou i roboti, kteří kombinují Search a Training.
+
+<Insight tone="signal" icon="↻" label="Aktualizováno 2026-08-02">
+V první verzi tohohle článku stálo, že k 15. září **končí starý přepínač Block AI bots**. To jsem po kontrole u zdroje nedohledal — změnový log Cloudflare ani dokumentace o jeho ukončení nic neuvádějí, píšou jen o nových výchozích hodnotách. Tvrzení proto z článku mizí. Co u starého přepínače doložené je: podle dokumentace pod něj **spadají i smíšení roboti**. Při spoléhání na tuhle volbu si proto ověřte její aktuální chování v dokumentaci.
+</Insight>
 
 <Insight tone="accent">
 **Máte existující doménu? Žádná panika.** Nové výchozí hodnoty se podle oznámení týkají nově zakládaných domén — vám se 15. září nic samo nepřepne. Vlastní nastavení si můžete kdykoli zvolit sami, teď i potom. To datum je hlavně dobrá připomínka, abyste se podívali, jaké nastavení váš web teď má.
@@ -79,7 +83,7 @@ Dnes jsou podle Cloudflare všechny tři kategorie ve výchozím stavu povolené
   rightLabel="Co pro vás znamená"
   rightTone="accent"
   rows={[
-    { icon: "🔍", label: "Search", left: "Chování, které sbírá nebo indexuje obsah, aby na něj později umělo odpovídat", right: "Podle Cloudflare chování, které nejpřirozeněji vrací návštěvníky" },
+    { icon: "🔍", label: "Search", left: "Chování, které sbírá nebo indexuje obsah, aby z něj později umělo odpovídat", right: "Podle Cloudflare chování, které nejpřirozeněji vrací návštěvníky" },
     { icon: "🤖", label: "Agent", left: "Automatická činnost jednající v reálném čase za konkrétního člověka", right: "Sem patří asistenti, kteří něco vyřizují za uživatele" },
     { icon: "🧠", label: "Training", left: "Procházení, které bere obsah na trénink nebo doladění modelu", right: "Obsah se natrvalo vstřebá do modelu, návštěvu nečekejte" },
   ]}
@@ -92,10 +96,10 @@ Rozdíl mezi nimi není akademický. Jako důvod, proč nechává **Search povol
 Tady je nejdůležitější věta celého článku, a je přímo z oznámení Cloudflare: **blokace kategorie Training zasáhne i roboty, kteří kombinují Search a Training zároveň.**
 
 <Insight tone="warn">
-Cloudflare u toho nepíše, co to udělá s vaší viditelností — to si musíte domyslet sami. Mechanika je ale jednoduchá: **co si robot nenačte, to taky nemůže použít v odpovědi.** Rozšířená úvaha „zakážu trénink, ale zbytek si nechám" proto nemusí vyjít tak, jak si ji člověk představuje.
+Cloudflare u toho nepíše, co to udělá s vaší viditelností — to si musíte domyslet sami. Praktický důsledek může být ten, že robot z takového obsahu nebude mít z čeho čerpat. Přesný dopad na citace ani na návštěvnost z toho ale odvodit nejde. Rozšířená úvaha „zakážu trénink, ale zbytek si nechám" proto nemusí vyjít tak, jak si ji člověk představuje.
 </Insight>
 
-Starý přepínač se přitom choval opačně: podle dokumentace smíšené roboty naopak vynechával. **Stará a nová volba tedy nedělají totéž**, takže si nastavení nemůžete jen tak překlopit a předpokládat stejný výsledek.
+Podle dokumentace spadají pod starý přepínač **i smíšení roboti**. Pokud jste se na tuhle volbu spoléhali, **ověřte si její aktuální chování v dokumentaci** — zvlášť právě u smíšených robotů.
 
 ## Postup
 
