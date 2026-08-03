@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 
 Myšlenka je lákavá a stará jako spor o AI a obsah: když si moje texty berou modely, ať za ně zaplatí. Cloudflare dřív popsalo model Pay Per Crawl a v červenci 2026 k němu přidalo výrazně širší Monetization Gateway.
@@ -166,22 +167,24 @@ Kdo si chce nechat možnost do budoucna, může se na čekací listinu přihlás
 
 ## Časté chyby
 
-<Mistake num="01" title="Plánovat příjem z něčeho, co je na čekací listině" fix="Do rozpočtu si dávejte jen příjem, který je někde veřejně doložený jako skutečně vyplacený. Takový případ jsem nenašel.">
-Mezi „oznámeno" a „vyplaceno" je v tomhle oboru velká vzdálenost. Oznámení nic nestojí, výplata ano.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Plánovat příjem z něčeho, co je na čekací listině" fix="Do rozpočtu si dávejte jen příjem, který je někde veřejně doložený jako skutečně vyplacený. Takový případ jsem nenašel.">
+  Mezi „oznámeno" a „vyplaceno" je v tomhle oboru velká vzdálenost. Oznámení nic nestojí, výplata ano.
+  </Mistake>
 
-<Mistake num="02" title="Zaměnit zpoplatnění za blokování" fix="Rozhodněte nejdřív, koho vůbec chcete pustit. Cena je až druhý krok a dnes se bez ní obejdete.">
-Blokování funguje hned a nic nestojí. Zpoplatnění potřebuje, aby druhá strana zaplatila — a to je předpoklad, ne jistota.
-</Mistake>
+  <Mistake num="02" title="Zaměnit zpoplatnění za blokování" fix="Rozhodněte nejdřív, koho vůbec chcete pustit. Cena je až druhý krok a dnes se bez ní obejdete.">
+  Blokování funguje hned a nic nestojí. Zpoplatnění potřebuje, aby druhá strana zaplatila — a to je předpoklad, ne jistota.
+  </Mistake>
 
-<Mistake num="03" title="Řešit stablecoiny dřív než účetní" fix="Než začnete cokoli nastavovat, zeptejte se, jak se u vás zaúčtuje příjem v kryptoměně a co k tomu potřebujete doložit.">
-Platba mimo běžný bankovní styk není jen technický detail. Otevírá účetní, daňové i interní otázky, které se řeší dřív než nastavení pravidel.
-</Mistake>
+  <Mistake num="03" title="Řešit stablecoiny dřív než účetní" fix="Než začnete cokoli nastavovat, zeptejte se, jak se u vás zaúčtuje příjem v kryptoměně a co k tomu potřebujete doložit.">
+  Platba mimo běžný bankovní styk není jen technický detail. Otevírá účetní, daňové i interní otázky, které se řeší dřív než nastavení pravidel.
+  </Mistake>
 
-<Mistake num="04" title="Zablokovat všechno a čekat, až někdo zaplatí" fix="Odlište roboty, kteří přivádějí návštěvy, od těch, kteří jen čerpají obsah. Plošná blokace vypne i to první.">
-Kdo zavře dveře úplně, nezískal vyjednávací pozici — jen zmizel z odpovědí.
-</Mistake>
+  <Mistake num="04" title="Zablokovat všechno a čekat, až někdo zaplatí" fix="Odlište roboty, kteří přivádějí návštěvy, od těch, kteří jen čerpají obsah. Plošná blokace vypne i to první.">
+  Kdo zavře dveře úplně, nezískal vyjednávací pozici — jen zmizel z odpovědí.
+  </Mistake>
 
+</MistakeGrid>
 ## Co si z toho odnést
 
 **Infrastruktura vzniká, trh se zatím nedá doložit.** Technicky je model placení mezi stroji hotový a docela pěkný. Chybí veřejně viditelná část, kde někdo platí.

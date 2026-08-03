@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 
 V každé druhé prezentaci o AI vyhledávání se objeví stejná trojice: **Chegg −49 %, HubSpot −80 %, Daily Mail −89 %.** Někdy se k ní přidá čtvrtý údaj, od firmy Tollbit. Obvykle stojí vedle sebe, jako by to byla jedna řada čísel.
@@ -181,22 +182,24 @@ Z vlastních dat to jde poměrně rychle a je to nejrelevantnější číslo, kt
 
 ## Nejčastější chyby
 
-<Mistake num="01" title="Sčítat nebo průměrovat čísla z různých případů" fix="Nedají se sečíst, protože neměří totéž.">
-Návštěvnost segmentu, odhad nástroje a míra prokliku jsou tři různé veličiny. Průměr z nich nedává žádnou informaci — jen zdání přesnosti.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Sčítat nebo průměrovat čísla z různých případů" fix="Nedají se sečíst, protože neměří totéž.">
+  Návštěvnost segmentu, odhad nástroje a míra prokliku jsou tři různé veličiny. Průměr z nich nedává žádnou informaci — jen zdání přesnosti.
+  </Mistake>
 
-<Mistake num="02" title="Brát odhad nástroje jako údaj od firmy" fix="Ptejte se, kdo to číslo naměřil.">
-U HubSpotu se běžně cituje odhad Semrushe, jako by ho zveřejnil HubSpot. Rozdíl je zásadní: odhad pracuje s modelem, firemní data s realitou.
-</Mistake>
+  <Mistake num="02" title="Brát odhad nástroje jako údaj od firmy" fix="Ptejte se, kdo to číslo naměřil.">
+  U HubSpotu se běžně cituje odhad Semrushe, jako by ho zveřejnil HubSpot. Rozdíl je zásadní: odhad pracuje s modelem, firemní data s realitou.
+  </Mistake>
 
-<Mistake num="03" title="Zaměňovat pokles míry prokliku za ztrátu návštěvnosti" fix="To druhé z prvního nevyplývá.">
-Pokles o 89 % v míře prokliku znamená ztrátu 89 % návštěvnosti jen tehdy, kdyby se AI přehled zobrazoval u všech dotazů. To se neděje.
-</Mistake>
+  <Mistake num="03" title="Zaměňovat pokles míry prokliku za ztrátu návštěvnosti" fix="To druhé z prvního nevyplývá.">
+  Pokles o 89 % v míře prokliku znamená ztrátu 89 % návštěvnosti jen tehdy, kdyby se AI přehled zobrazoval u všech dotazů. To se neděje.
+  </Mistake>
 
-<Mistake num="04" title="Ignorovat, kdo má na čísle zájem" fix="Platí to na obě strany.">
-Žaloba, regulační podání a firma prodávající řešení mají důvod ukázat velký propad. Google má důvod ukázat malý. Skepse patří k oběma.
-</Mistake>
+  <Mistake num="04" title="Ignorovat, kdo má na čísle zájem" fix="Platí to na obě strany.">
+  Žaloba, regulační podání a firma prodávající řešení mají důvod ukázat velký propad. Google má důvod ukázat malý. Skepse patří k oběma.
+  </Mistake>
 
+</MistakeGrid>
 ## Co si z toho odnést
 
 Ta čísla nejsou výmysl. Chegg, DMG Media i Tollbit je doložili a vedle nich veřejně zaznívá odlišný argument Googlu, který ale mluví o jiném srovnání. Špatně tedy není zdroj, ale způsob, jakým se ta čísla používají: **jako předpověď pro cizí web.**

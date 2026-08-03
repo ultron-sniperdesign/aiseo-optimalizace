@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
 Google letos v květnu oznámil balík změn v tom, jak ve výsledcích ukazuje zdroje. Jednou z nich bylo rozšíření štítku **„vysoce citovaný"** na další odkazy na články.
 
@@ -135,22 +136,24 @@ Jestli tedy hledáte, kde je letos něco k jednání, je to ten levý sloupec. P
 
 ## Nejčastější chyby
 
-<Mistake num="01" title="Psát o štítku jako o novince roku 2026" fix="Je z března 2022.">
-Letos přišlo rozšíření, ne spuštění. Rozdíl je podstatný: kdyby to byla novinka, dalo by se čekat doladění pravidel. Po čtyřech letech bez zveřejněné metodiky je rozumnější počítat s tím, že ji Google zveřejňovat nebude.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Psát o štítku jako o novince roku 2026" fix="Je z března 2022.">
+  Letos přišlo rozšíření, ne spuštění. Rozdíl je podstatný: kdyby to byla novinka, dalo by se čekat doladění pravidel. Po čtyřech letech bez zveřejněné metodiky je rozumnější počítat s tím, že ji Google zveřejňovat nebude.
+  </Mistake>
 
-<Mistake num="02" title="Nabízet postup, jak štítek získat" fix="Google žádný neuvedl.">
-Každý „návod" na tohle téma je odvozený z jediné věty na stránce o kvalitě informací. Když někdo slibuje kroky, přidal si je sám.
-</Mistake>
+  <Mistake num="02" title="Nabízet postup, jak štítek získat" fix="Google žádný neuvedl.">
+  Každý „návod" na tohle téma je odvozený z jediné věty na stránce o kvalitě informací. Když někdo slibuje kroky, přidal si je sám.
+  </Mistake>
 
-<Mistake num="03" title="Tvrdit, že štítek zvedá pozice" fix="Doložené to není.">
-Google ho popisuje jako pomůcku pro čtenáře. Jestli má vliv na hodnocení, neřekl. Bez dokladu to netvrďte ani vy.
-</Mistake>
+  <Mistake num="03" title="Tvrdit, že štítek zvedá pozice" fix="Doložené to není.">
+  Google ho popisuje jako pomůcku pro čtenáře. Jestli má vliv na hodnocení, neřekl. Bez dokladu to netvrďte ani vy.
+  </Mistake>
 
-<Mistake num="04" title="Zaměňovat ho s preferovanými zdroji" fix="Jedno volí čtenář, druhé Google.">
-Ze stejného oznámení, opačná logika. Preferované zdroje jsou otevřené komukoli, štítek ne.
-</Mistake>
+  <Mistake num="04" title="Zaměňovat ho s preferovanými zdroji" fix="Jedno volí čtenář, druhé Google.">
+  Ze stejného oznámení, opačná logika. Preferované zdroje jsou otevřené komukoli, štítek ne.
+  </Mistake>
 
+</MistakeGrid>
 ## Co si z toho odnést
 
 <Checklist

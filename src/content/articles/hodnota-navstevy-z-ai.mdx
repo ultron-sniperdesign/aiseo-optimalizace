@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 
 Návratnost AI SEO se dá spočítat — o tom máme [samostatný článek](/blog/roi-ai-seo/). Ten výpočet ale začíná číslem, které e-shop zná z objednávek a **ostatní si ho musí odvodit**: jakou očekávanou hodnotu má jedna poptávka.
@@ -141,22 +142,24 @@ Než začnete cokoli počítat, ujistěte se, že návštěvy z AI vůbec vidít
 
 ## Časté chyby
 
-<Mistake num="01" title="Přenést konverzní poměr z e-shopu" fix="Používejte vlastní čísla. Cizí konverzní poměr popisuje cizí byznys.">
-Konverzní poměry z e-shopových případovek se na poptávku u služby přenést nedají — je to jiná událost, jiný proces i jiná cena. I naše vlastní data z e-shopu jsou v tomhle smyslu k ničemu.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Přenést konverzní poměr z e-shopu" fix="Používejte vlastní čísla. Cizí konverzní poměr popisuje cizí byznys.">
+  Konverzní poměry z e-shopových případovek se na poptávku u služby přenést nedají — je to jiná událost, jiný proces i jiná cena. I naše vlastní data z e-shopu jsou v tomhle smyslu k ničemu.
+  </Mistake>
 
-<Mistake num="02" title="Čekat na přesné číslo" fix="Spočítejte řádový odhad hned a označte ho jako odhad. Zpřesnit ho můžete, až budete mít víc dat.">
-Firmy tenhle výpočet často odkládají, dokud nebudou mít pořádné CRM. Mezitím se rozhodují úplně bez čísla, což je horší než rozhodovat se podle hrubého odhadu.
-</Mistake>
+  <Mistake num="02" title="Čekat na přesné číslo" fix="Spočítejte řádový odhad hned a označte ho jako odhad. Zpřesnit ho můžete, až budete mít víc dat.">
+  Firmy tenhle výpočet často odkládají, dokud nebudou mít pořádné CRM. Mezitím se rozhodují úplně bez čísla, což je horší než rozhodovat se podle hrubého odhadu.
+  </Mistake>
 
-<Mistake num="03" title="Přiřknout AI kanálu všechno, co přišel poptat" fix="Berte přiřazenou hodnotu jako spodní odhad a nedělejte z ní nárok. Část cesty vidět nebudete.">
-Člověk se o vás mohl dozvědět z asistenta, ale poptávku poslal až po týdnu a přes vyhledávač. Atribuce takové cesty vidí jen část — v obou směrech.
-</Mistake>
+  <Mistake num="03" title="Přiřknout AI kanálu všechno, co přišel poptat" fix="Berte přiřazenou hodnotu jako spodní odhad a nedělejte z ní nárok. Část cesty vidět nebudete.">
+  Člověk se o vás mohl dozvědět z asistenta, ale poptávku poslal až po týdnu a přes vyhledávač. Atribuce takové cesty vidí jen část — v obou směrech.
+  </Mistake>
 
-<Mistake num="04" title="Počítat hodnotu jednou a zapomenout" fix="Přepočítejte při změně ceníku nebo skladby zakázek, tedy zhruba jednou za rok.">
-Hodnota poptávky není konstanta. Když zdražíte nebo se posunete k větším zakázkám, změní se i to, kolik vám kanál nese.
-</Mistake>
+  <Mistake num="04" title="Počítat hodnotu jednou a zapomenout" fix="Přepočítejte při změně ceníku nebo skladby zakázek, tedy zhruba jednou za rok.">
+  Hodnota poptávky není konstanta. Když zdražíte nebo se posunete k větším zakázkám, změní se i to, kolik vám kanál nese.
+  </Mistake>
 
+</MistakeGrid>
 ## Co si z toho odnést
 
 **Bez hodnoty na jednotku se návratnost spočítat nedá** — a e-shopová čísla, kterými je internet plný, vám ji nedají.

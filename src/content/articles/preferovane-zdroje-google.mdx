@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
 import Do from "~/components/blocks/Do.astro";
@@ -155,22 +156,24 @@ Buďme konkrétní, protože funkce má jasné těžiště.
 
 ## Časté chyby
 
-<Mistake num="01" title="Slibovat si od toho novou návštěvnost" fix="Berte to jako nástroj na udržení publika, ne na jeho získání. Nové čtenáře přivádí obsah, ne tohle nastavení.">
-Funguje jen u lidí, kteří si vás vybrali. Přínos proto nejspíš roste s velikostí a loajalitou stávajícího publika; u webu bez vracejících se čtenářů bude zanedbatelný.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Slibovat si od toho novou návštěvnost" fix="Berte to jako nástroj na udržení publika, ne na jeho získání. Nové čtenáře přivádí obsah, ne tohle nastavení.">
+  Funguje jen u lidí, kteří si vás vybrali. Přínos proto nejspíš roste s velikostí a loajalitou stávajícího publika; u webu bez vracejících se čtenářů bude zanedbatelný.
+  </Mistake>
 
-<Mistake num="02" title="Odkázat čtenáře na anglickou nápovědu" fix="Napište tři kroky česky přímo do textu. Trvá to dvě věty a projde tím výrazně víc lidí.">
-Prosba, která končí odkazem do dokumentace, se plní minimálně. Čím delší cesta, tím míň lidí ji dojde.
-</Mistake>
+  <Mistake num="02" title="Odkázat čtenáře na anglickou nápovědu" fix="Napište tři kroky česky přímo do textu. Trvá to dvě věty a projde tím výrazně víc lidí.">
+  Prosba, která končí odkazem do dokumentace, se plní minimálně. Čím delší cesta, tím míň lidí ji dojde.
+  </Mistake>
 
-<Mistake num="03" title="Čekat, že to uvidíte v datech" fix="Nastavte si realistické očekávání: přímé měření nemáte. Berte to jako doplněk, ne jako kampaň s vyhodnocením.">
-Search Console preferované zdroje neodděluje. Nezjistíte, kolik lidí si vás přidalo ani co to udělalo — pracujete s tvrzením Googlu a s vlastním odhadem.
-</Mistake>
+  <Mistake num="03" title="Čekat, že to uvidíte v datech" fix="Nastavte si realistické očekávání: přímé měření nemáte. Berte to jako doplněk, ne jako kampaň s vyhodnocením.">
+  Search Console preferované zdroje neodděluje. Nezjistíte, kolik lidí si vás přidalo ani co to udělalo — pracujete s tvrzením Googlu a s vlastním odhadem.
+  </Mistake>
 
-<Mistake num="04" title="Prosit dřív, než máte co nabídnout" fix="Nejdřív pravidelné vydávání, potom prosba. V opačném pořadí to nemusí fungovat ani technicky.">
-Podmínka pravidelné aktualizace není formalita. Web, který nevydává, se podle nápovědy nemusí do nabídky zdrojů vůbec dostat.
-</Mistake>
+  <Mistake num="04" title="Prosit dřív, než máte co nabídnout" fix="Nejdřív pravidelné vydávání, potom prosba. V opačném pořadí to nemusí fungovat ani technicky.">
+  Podmínka pravidelné aktualizace není formalita. Web, který nevydává, se podle nápovědy nemusí do nabídky zdrojů vůbec dostat.
+  </Mistake>
 
+</MistakeGrid>
 ## Co si z toho odnést
 
 **Je to jedna z mála funkcí kolem zobrazování výsledků a AI povrchů, o které rozhoduje čtenář.** Ani Google, ani vy — a nedá se to obejít optimalizací.

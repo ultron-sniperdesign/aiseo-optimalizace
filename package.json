@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist",
+    "build": "node scripts/check-content.mjs && astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "check:content": "node scripts/check-content.mjs"
   },
   "engines": {
     "node": ">=20.0.0"

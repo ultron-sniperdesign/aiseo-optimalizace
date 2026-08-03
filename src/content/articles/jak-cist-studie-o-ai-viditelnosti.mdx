@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 import DoDont from "~/components/blocks/DoDont.astro";
 import Do from "~/components/blocks/Do.astro";
@@ -226,22 +227,24 @@ Poslední možnost je nejpracnější a nejčastěji nejlepší. Padesát releva
 
 ## Časté chyby
 
-<Mistake num="01" title="Zaměnit velký vzorek za dobrý design" fix="Ptejte se na srovnávací skupinu, ne na počet řádků. Milion pozorování bez ní o příčině nerozhodne.">
-Sto tisíc analyzovaných odpovědí zní přesvědčivě, ale velikost vzorku řeší náhodný šum, ne systematické zkreslení. Když je celý vzorek pokřivený stejným směrem, víc dat ho jen upevní.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Zaměnit velký vzorek za dobrý design" fix="Ptejte se na srovnávací skupinu, ne na počet řádků. Milion pozorování bez ní o příčině nerozhodne.">
+  Sto tisíc analyzovaných odpovědí zní přesvědčivě, ale velikost vzorku řeší náhodný šum, ne systematické zkreslení. Když je celý vzorek pokřivený stejným směrem, víc dat ho jen upevní.
+  </Mistake>
 
-<Mistake num="02" title="Přenést zahraniční číslo na český trh" fix="Berte si ze zahraničních dat směr a řádovou velikost, ne konkrétní procento do vlastní prezentace.">
-Chování uživatelů, podíl platforem i nasazení jednotlivých funkcí se mezi trhy liší. Číslo z USA je legitimní vstup do úvahy, ale ne podklad pro odhad vlastní ztráty.
-</Mistake>
+  <Mistake num="02" title="Přenést zahraniční číslo na český trh" fix="Berte si ze zahraničních dat směr a řádovou velikost, ne konkrétní procento do vlastní prezentace.">
+  Chování uživatelů, podíl platforem i nasazení jednotlivých funkcí se mezi trhy liší. Číslo z USA je legitimní vstup do úvahy, ale ne podklad pro odhad vlastní ztráty.
+  </Mistake>
 
-<Mistake num="03" title="Číst neprokázaný rozdíl jako neúspěch" fix="Berte „nezměnilo se nic“ jako plnohodnotné zjištění — často je cennější než potvrzení očekávání.">
-To, že se spokojenost mezi dvěma skupinami znatelně nelišila, je jeden z nejzajímavějších výsledků celého pokusu. Nulové výsledky se ale hůř sdílejí, takže z popisů často vypadnou úplně.
-</Mistake>
+  <Mistake num="03" title="Číst neprokázaný rozdíl jako neúspěch" fix="Berte „nezměnilo se nic“ jako plnohodnotné zjištění — často je cennější než potvrzení očekávání.">
+  To, že se spokojenost mezi dvěma skupinami znatelně nelišila, je jeden z nejzajímavějších výsledků celého pokusu. Nulové výsledky se ale hůř sdílejí, takže z popisů často vypadnou úplně.
+  </Mistake>
 
-<Mistake num="04" title="Ptát se na metodiku jen u toho, s čím nesouhlasíte" fix="Použijte stejný filtr na studii, která potvrzuje váš názor. Tam je totiž slepé místo.">
-Nejrychlejší způsob, jak si zafixovat nesprávné přesvědčení, je prověřovat důkladně jen protiargumenty. Filtr z tohohle článku má cenu hlavně tehdy, když ho pustíte na vlastní oblíbené číslo.
-</Mistake>
+  <Mistake num="04" title="Ptát se na metodiku jen u toho, s čím nesouhlasíte" fix="Použijte stejný filtr na studii, která potvrzuje váš názor. Tam je totiž slepé místo.">
+  Nejrychlejší způsob, jak si zafixovat nesprávné přesvědčení, je prověřovat důkladně jen protiargumenty. Filtr z tohohle článku má cenu hlavně tehdy, když ho pustíte na vlastní oblíbené číslo.
+  </Mistake>
 
+</MistakeGrid>
 ## Co si z toho odnést
 
 Nejde o to stát se skeptikem, který nevěří ničemu. Jde o dvě konkrétní věci.

@@ -44,6 +44,7 @@ import Insight from "~/components/blocks/Insight.astro";
 import CompareTable from "~/components/blocks/CompareTable.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 
 Ve vašem prohlížeči stránka vypadá skvěle. Nadpis, text, cena, tlačítko. Jenže část toho, co vidíte, tam nebyla, když se stránka stáhla ze serveru — dokreslil to až JavaScript.
@@ -152,22 +153,24 @@ U navigace stojí za zvláštní pozornost jedna věc: **odkaz musí být odkaz.
 
 ## Nejčastější chyby
 
-<Mistake num="01" title="Ověřovat obsah v inspektoru prvků" fix="Používejte zobrazení zdroje stránky nebo curl.">
-Inspektor ukazuje strom dokumentu **po** spuštění skriptů. Vidíte v něm i obsah, který v odpovědi ze serveru vůbec nebyl. Je to nejčastější důvod, proč si někdo myslí, že má obsah v HTML, a nemá.
-</Mistake>
+<MistakeGrid>
+  <Mistake num="01" title="Ověřovat obsah v inspektoru prvků" fix="Používejte zobrazení zdroje stránky nebo curl.">
+  Inspektor ukazuje strom dokumentu **po** spuštění skriptů. Vidíte v něm i obsah, který v odpovědi ze serveru vůbec nebyl. Je to nejčastější důvod, proč si někdo myslí, že má obsah v HTML, a nemá.
+  </Mistake>
 
-<Mistake num="02" title="Opravit domovskou stránku a mít hotovo" fix="Projděte i produkt, článek a výpis.">
-Domovská stránka bývá napsaná staticky a projde. Problém se často schovává až na šablonách, které skládají obsah z databáze — tedy přesně tam, kde jsou peníze.
-</Mistake>
+  <Mistake num="02" title="Opravit domovskou stránku a mít hotovo" fix="Projděte i produkt, článek a výpis.">
+  Domovská stránka bývá napsaná staticky a projde. Problém se často schovává až na šablonách, které skládají obsah z databáze — tedy přesně tam, kde jsou peníze.
+  </Mistake>
 
-<Mistake num="03" title="Spolehnout se na to, že robot počká" fix="Počítejte s tím, že nepočká.">
-U robotů, kteří skripty nespouštějí, nejde o čekání: bez spuštění skriptu ten obsah prostě nevznikne. A u těch, kteří vykreslují, je vykreslování práce navíc a děje se s odstupem. Ani tam to není zdarma.
-</Mistake>
+  <Mistake num="03" title="Spolehnout se na to, že robot počká" fix="Počítejte s tím, že nepočká.">
+  U robotů, kteří skripty nespouštějí, nejde o čekání: bez spuštění skriptu ten obsah prostě nevznikne. A u těch, kteří vykreslují, je vykreslování práce navíc a děje se s odstupem. Ani tam to není zdarma.
+  </Mistake>
 
-<Mistake num="04" title="Vzít plošné „AI roboti nevykreslují JavaScript“ jako fakt" fix="Rozlišujte podle robota.">
-AppleBot v měření z prosince 2024 vykresloval a u Gemini to zdroj dovozuje z infrastruktury Googlu. Když stavíte rozhodnutí na tom, že to nedělá nikdo, stavíte ho na tvrzení, které je nepřesné i podle zdroje, ze kterého se opisuje.
-</Mistake>
+  <Mistake num="04" title="Vzít plošné „AI roboti nevykreslují JavaScript“ jako fakt" fix="Rozlišujte podle robota.">
+  AppleBot v měření z prosince 2024 vykresloval a u Gemini to zdroj dovozuje z infrastruktury Googlu. Když stavíte rozhodnutí na tom, že to nedělá nikdo, stavíte ho na tvrzení, které je nepřesné i podle zdroje, ze kterého se opisuje.
+  </Mistake>
 
+</MistakeGrid>
 ## Co s tím, když web na JavaScriptu opravdu stojí
 
 Přepis celé aplikace kvůli AI robotům se skoro nikdy nevyplatí. Reálné jsou tři levnější cesty.
