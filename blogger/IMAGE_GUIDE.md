@@ -17,7 +17,10 @@
 > scénu + CZ nadpis a podtitul. Pozadí je **světle modro-šedé**, ne tmavé.
 >
 > *(Historie: v runech 51–62 vznikla série tmavých abstraktních obrázků bez textu, protože
-> se prompty psaly ad-hoc a obsahovaly „absolutely no text". Přegenerováno 2026-07-27.)*
+> se prompty psaly ad-hoc a obsahovaly „absolutely no text". Přegenerováno 2026-07-27.
+> **Přesně totéž se zopakovalo v runech 81–86** — čtyři tmavé obrázky bez textu, opět proto,
+> že se prompt psal od nuly místo kopie preambule. Přegenerováno 2026-08-03. Když se přistihneš,
+> že píšeš `#0B0D10`, `violet` nebo `no text`, jsi mimo sadu — zastav a zkopíruj §5.)*
 
 ---
 
@@ -144,6 +147,37 @@ reading exactly: Generativní optimalizace . Spell the Czech text exactly with c
 diacritics. No other text, no logos, no brand marks.
 ```
 
+### Tři dodatky ověřené 2026-08-03
+
+**a) Kompozici vynuť tvrdě, ne popisem.** Formulace „keep key elements in the upper and middle
+area" nestačí — model stejně poskládá spodní řadu karet do ořezové zóny. Funguje až tohle,
+přidané na konec scény:
+
+```
+CRITICAL COMPOSITION RULE: place every meaningful element within the upper two thirds of the
+canvas. The bottom third must be empty light background with at most one or two faint sparkle
+stars, because it gets cropped away.
+```
+
+**b) Zakaž modelu vymýšlet čísla.** Když je ve scéně cokoli, co vypadá jako údaj (procenta,
+částky, metriky), model si je vymyslí — a nebudou souhlasit s článkem. U článku o tom, že se
+čísla přebírají špatně, je to obzvlášť trapné. Buď do promptu napiš přesnou hodnotu, kterou má
+vykreslit, nebo přidej:
+
+```
+IMPORTANT: do not draw any digits, numbers, percentages or figures anywhere in the scene.
+```
+
+**c) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
+(`PROPADY V YDAVATELŮ`). Pojistka:
+
+```
+TYPESETTING RULE: render that headline as exactly two whole words on a single line with one
+normal space between them; never split, hyphenate or add extra spacing inside a word.
+```
+
+---
+
 > **Shell gotcha:** `--prompt` obal do **jednoduchých** uvozovek `'...'` a uvnitř
 > promptu nepoužívej apostrof `'`. (Dvojité uvozovky `"` uvnitř jsou OK.)
 
@@ -153,9 +187,20 @@ diacritics. No other text, no logos, no brand marks.
 
 1. Článek má hotový frontmatter se `slug`.
 2. Vygeneruj obrázek příkazem z §1 s `--output "public/og/<slug>.png"`.
-3. **Zkontroluj vygenerovaný soubor** (otevři/Read): je CZ text čitelný a správně
-   napsaný (diakritika)? Je důležitý obsah v horních ~84 %? Pokud text zkomolený
-   nebo špatná kompozice → uprav prompt a regeneruj.
+3. **Zkontroluj vygenerovaný soubor — ale na ořezu, ne na originálu.** Vyrob si náhled toho,
+   co uvidí čtenář, a teprve ten posuzuj:
+
+   ```bash
+   node -e "
+   const sharp=require('sharp'), s='<slug>';
+   (async()=>{const m=await sharp('public/og/'+s+'.png').metadata();
+   await sharp('public/og/'+s+'.png').extract({left:0,top:0,width:m.width,height:Math.round(m.width*669/1200)})
+     .resize(1200,669).jpeg({quality:88}).toFile('/tmp/crop-'+s+'.jpg');})();"
+   ```
+
+   Na náhledu ověř: je CZ text čitelný a správně napsaný (diakritika, žádné rozlomené slovo)?
+   Nespadlo nic důležitého pod ořez? Nevymyslel si model čísla, která nesouhlasí s článkem?
+   Cokoli z toho → uprav prompt a regeneruj.
 4. `npm run build` — musí projít.
 5. Vizuálně ověř kartu `/blog/` i detail `/blog/<slug>/` (text obrázku se nikde
    neusekne; spodní ořez ~16 % nesmí brát nic důležitého).
@@ -180,6 +225,9 @@ curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.png" | head -1   # → 200
 - ❌ Negeneruj přes difúzní modely (Nano Banana, DALL·E) když má být v obrázku text — komolí češtinu. **Vždy gpt-image-2.**
 - ❌ Nedávej text ani klíčový obsah do **spodních ~16 %** (ořízne se).
 - ❌ Nezapomeň na `.jpg` + `.webp` odvozeniny (§2b) — bez `.jpg` je og:image 404.
+- ❌ **Nemaž `.png` master po vytvoření odvozenin.** Commituje se celý trojlístek (§2b);
+  bez masteru se obrázek nedá přegenerovat ani zkontrolovat na ořezu.
+- ❌ **Neposuzuj obrázek podle originálu 3:2** — vždy podle náhledu po ořezu (§6 krok 3).
 - ❌ Neukládej jinam než `public/og/<slug>.*`.
 - ❌ Žádná reálná loga/značky v obrázku.
 - ❌ Apostrof `'` uvnitř `--prompt` (rozbije shell). Diakritika OK, dvojité uvozovky OK.
