@@ -1,0 +1,173 @@
+---
+title: "Bing ukazuje, jak si Copilot hledá podklad"
+description: "Bing má report o citacích v AI odpovědích a v něm fráze, kterými si AI v prostředí Microsoftu hledá podklad. Sám ale píše, že jde o vzorek."
+answer: "Bing Webmaster Tools má od února 2026 report AI Performance s citacemi v Copilotu a v AI shrnutích. Dává v něm grounding queries — fráze, kterými si AI vyhledává podkladový obsah. Report Generative AI features v Search Console dotazy neposkytuje. Microsoft ale sám uvádí, že data jsou jen vzorek celkové aktivity, takže z nich nejde počítat podíl a časový vývoj je jen orientační."
+slug: "bing-ai-performance-report"
+category: "analysis"
+tags:
+  - "mereni"
+  - "ai-platformy"
+published: "2026-08-03"
+updated: "2026-08-03"
+keywords:
+  - "bing ai performance report"
+  - "copilot citace měření"
+  - "grounding queries"
+  - "bing webmaster tools ai"
+  - "měření ai viditelnosti bing"
+variant: "rich"
+stats:
+  - value: "10. 2. 2026"
+    label: "kdy Microsoft report spustil — o čtyři měsíce dřív než Google ten svůj"
+  - value: "vzorek"
+    label: "Microsoft sám uvádí, že data jsou jen vzorek celkové aktivity, ne úplný počet"
+  - value: "1"
+    label: "věc navíc oproti reportu Googlu: fráze, kterými si AI vyhledává podklad"
+  - value: "0"
+    label: "kliků a CTR: u Googlu je nápověda výslovně vylučuje, u Bingu je oznámení nezmiňuje"
+faq:
+  - q: "Co je AI Performance v Bing Webmaster Tools?"
+    a: "Report, který ukazuje, jak často je váš web citovaný jako zdroj v AI odpovědích. Microsoft ho spustil 10. února 2026 jako veřejný náhled. Pokrývá Microsoft Copilot, AI shrnutí v Bingu a nejmenované partnerské integrace. Uvádí celkový počet citací, průměrný počet citovaných stránek denně, aktivitu po jednotlivých URL, vývoj v čase a takzvané grounding queries."
+  - q: "Co jsou grounding queries?"
+    a: "Microsoft je popisuje jako fráze, které AI použila při hledání obsahu, na který se pak v odpovědi odkázala. Nejsou to tedy dotazy, které zadal člověk, ale formulace, které si model sestaví sám, když jde pro podklad. Z reportů, které jsem ověřoval přímo u výrobců, je to jediný zdroj dat na úrovni dotazových frází — v reportu Googlu dotazy nejsou."
+  - q: "Jsou ta čísla úplná?"
+    a: "Ne, a Microsoft to sám uvádí: data v reportu jsou vzorek celkové aktivity citací. Celkový počet citací proto není počet, ale vzorek. Nedá se z něj počítat podíl vůči konkurenci a časovou řadu nelze brát jako přesnou metriku — nanejvýš jako signál směru."
+  - q: "Je to lepší než report Googlu?"
+    a: "Neměří totéž, takže srovnání na lepší a horší nedává smysl. Bing dává citace a dotazy, ale přiznává vzorek. Google dává imprese, stránky, země, zařízení a datum, ale žádné dotazy a AI Overviews od AI Mode neoddělí. Kliky, CTR ani návštěvnost jsem nenašel ani u jednoho: u Googlu to nápověda uvádí výslovně, u Bingu o nich oznámení nemluví."
+  - q: "Má report smysl pro český web?"
+    a: "Jako nástroj na reporting spíš ne — podíl Bingu na českém trhu je malý, takže absolutní čísla budou nízká. Jako pohled na to, jak se AI k obsahu dostává, ale smysl má: grounding queries ukazují, jakou formulací si model podklad hledá, a to se z ničeho jiného nedozvíte."
+  - q: "Znamená hodně citací lepší pozice?"
+    a: "Microsoft to výslovně vyvrací. V popisu reportu stojí, že údaje odrážejí, jak často jsou stránky citované, ne jejich důležitost, pozici ani umístění. Citace v AI odpovědi a pozice ve výsledcích jsou dvě různé věci."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+O měření AI viditelnosti se v Česku píše skoro výhradně přes Google. Přitom **Microsoft spustil svůj report o čtyři měsíce dřív** — a dává v něm jednu věc, kterou v reportu Generative AI features v Search Console nenajdete.
+
+Zároveň v jeho popisu stojí věta, kterou nikdo necituje a která mění, jak se ta čísla dají použít.
+
+## Co ten report je
+
+**AI Performance** v Bing Webmaster Tools, spuštěný **10. února 2026** jako veřejný náhled. Ukazuje, jak často je váš web citovaný jako zdroj v AI odpovědích ve třech prostředích: **Microsoft Copilot**, **AI shrnutí v Bingu** a **vybrané partnerské integrace**, které Microsoft nejmenuje.
+
+<Checklist
+  title="Co report obsahuje"
+  tone="seo"
+  items={[
+    { title: "Celkový počet citací", desc: "Kolikrát byl web citovaný jako zdroj za zvolené období." },
+    { title: "Průměrný počet citovaných stránek", desc: "Denní průměr unikátních URL z webu, na které se AI odkázala." },
+    { title: "Aktivita po jednotlivých stránkách", desc: "Které konkrétní URL se citují a jak se to mění." },
+    { title: "Vývoj v čase", desc: "Orientační signál směru napříč obdobím — ne přesný trend, protože jde o vzorek." },
+    { title: "Grounding queries", desc: "Fráze, které AI použila při hledání obsahu, na který se pak odkázala. Tohle je ta část, kterou report Googlu nemá." },
+  ]}
+/>
+
+## Grounding queries: dotazy, které nikdo nezadal
+
+Tohle je nejzajímavější položka celého reportu a stojí za rozlišení.
+
+**Nejsou to dotazy uživatelů.** Microsoft je popisuje jako fráze, které AI použila, když šla hledat obsah, na který se pak v odpovědi odkázala. Jinými slovy: člověk se zeptá nějak, a model si pro podklad hledá **vlastní formulací**.
+
+<Insight tone="signal" icon="◆" label="Proč je to prakticky užitečné">
+Klasické SEO pracuje s tím, co píšou lidé. Tady poprvé vidíte, **co si k tomu napíše stroj** — a ta formulace bývá jiná: delší, popisnější, často složená z několika dílčích otázek. Když se vaše stránky trefují do dotazů uživatelů, ale ne do těchhle frází, může to být jedno z vysvětlení, proč se citace neobjevují častěji.
+</Insight>
+
+V reportech Bingu a Googlu — tedy u dvou, které jsem ověřoval přímo u výrobců — jsou to **jediná data na úrovni dotazových frází**. Report Generative AI features v Search Console dotazy neposkytuje vůbec.
+
+<Insight tone="warn" icon="⚠" label="Ale platí to jen pro Microsoft">
+Microsoft popisuje své vlastní prostředí. **Nepřenášejte to na ChatGPT ani Perplexity** — jak si podklad hledají ony, veřejně doložené není. Že to dělají podobně, je pravděpodobné, ale je to domněnka.
+</Insight>
+
+## Věta, kterou nikdo necituje
+
+V popisu reportu Microsoft uvádí, že **zobrazená data představují vzorek celkové aktivity citací.**
+
+To mění všechno, co se s tím číslem dá dělat:
+
+<CompareTable
+  leftLabel="Co s tím jde"
+  leftTone="geo"
+  rightLabel="Co s tím nejde"
+  rightTone="aeo"
+  rows={[
+    { icon: "◈", label: "Směr", left: "brát jako hrubý signál růstu či poklesu", right: "doložit skutečný trend nebo říct o kolik" },
+    { icon: "▤", label: "Stránky", left: "vidět, které URL se citují", right: "tvrdit, že ostatní se necitují vůbec" },
+    { icon: "◆", label: "Srovnání", left: "porovnat vlastní stránky mezi sebou", right: "počítat podíl vůči konkurenci" },
+    { icon: "▲", label: "Reporting", left: "brát to jako signál", right: "dávat to do reportu jako metriku" },
+  ]}
+/>
+
+Druhá věta ze stejného popisu: údaje odrážejí, **jak často jsou stránky citované — ne jejich důležitost, pozici ani umístění.** Microsoft tedy sám předem odmítá výklad „hodně citací znamená lepší pozice".
+
+Praktický závěr celého článku se dá říct už tady: **na reporting ten report není, na hledání obsahových mezer ano.**
+
+## Bing versus Google: co dává který
+
+Obojí mám ověřené přímo u výrobců. Tady je rozdíl přehledně.
+
+<CompareTable
+  leftLabel="Bing AI Performance"
+  leftTone="accent"
+  rightLabel="GSC Generative AI features"
+  rightTone="aio"
+  rows={[
+    { icon: "▲", label: "Spuštěno", left: "10. 2. 2026", right: "3. 6. 2026" },
+    { icon: "◆", label: "Hlavní metrika", left: "citace", right: "imprese" },
+    { icon: "◈", label: "Dotazy", left: "ano — grounding queries", right: "ne, žádné" },
+    { icon: "◇", label: "Kliky a CTR", left: "v oznámení neuvedené", right: "ne, uvedeno v nápovědě" },
+    { icon: "▤", label: "Rozpad", left: "stránky, čas", right: "stránky, země, zařízení, datum" },
+    { icon: "◎", label: "Co výrobce říká o úplnosti", left: "výslovně uvádí vzorek", right: "v ověřených podkladech neuvedeno" },
+    { icon: "◐", label: "Dostupnost", left: "veřejný náhled", right: "postupně, začalo v Británii" },
+    { icon: "▦", label: "Plochy", left: "Copilot, AI shrnutí v Bingu, vybrané nejmenované partnerské integrace", right: "AI Overviews, AI Mode, Discover" },
+  ]}
+/>
+
+Srovnávat je na lepší a horší nedává smysl, protože měří jinou věc. Praktický závěr je jiný: **v ověřených podkladech nedává kliky ani návštěvnost ani jeden z nich** — u Googlu to nápověda uvádí výslovně, u Bingu o nich oznámení nemluví. Kdo chce vědět, co mu AI přivádí, musí to skládat z víc zdrojů — o tom je [GSC AI report](/blog/gsc-ai-segmenty-mereni/) i [měření AI viditelnosti obecně](/blog/test-viditelnosti-v-ai/).
+
+## Má to pro český web smysl?
+
+Poctivá odpověď je dvojí.
+
+**Jako nástroj na reporting spíš ne.** Podíl Bingu na českém trhu je malý, takže absolutní čísla budou nízká — a k tomu jde jen o vzorek. Stavět na tom měsíční report nejde.
+
+**Jako pohled do fungování AI ano.** Grounding queries ukazují, jakou formulací si model hledá podklad, a to se z žádného jiného oficiálního zdroje nedozvíte. I malý vzorek řekne, jestli se vaše stránky trefují do toho, jak se stroj ptá.
+
+<Insight tone="aeo" icon="✓" label="Co s tím udělat prakticky">
+Ověřte si web v Bing Webmaster Tools (postup je v článku o [Bingu pro AI](/blog/bing-seo-pro-ai/)), otevřete AI Performance a projděte **grounding queries**. Pak tři kroky:
+
+1. **Hledejte, co se ve frázích opakuje** — ne celé věty, ale pojmy, vlastnosti a dílčí otázky. Ty se vrací napříč dotazy a jsou to témata, na která si model shání podklad.
+2. **Zkontrolujte, jestli je vaše stránka vůbec pokrývá** — ale jen tam, kde to pro danou stránku dává věcný smysl a je to užitečné pro čtenáře. Chybí u produktu parametr, na který se ptá? Nemáte v návodu krok, který se ve frázích opakuje?
+3. **Doplňte je jako obsah, ne jako fráze.** Mezititulek, definice, srovnání, otázka a odpověď. Opisovat ty fráze doslova nemá smysl a nikde není doloženo, že by to k čemukoli pomohlo.
+</Insight>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Brát celkový počet citací jako počet" fix="Je to vzorek, Microsoft to sám píše.">
+  Z vzorku se nedá počítat podíl vůči konkurenci ani přesná změna. Když číslo klesne o pětinu, nevíte, jestli se změnila realita, nebo vzorek.
+  </Mistake>
+
+  <Mistake num="02" title="Číst grounding queries jako dotazy uživatelů" fix="Jsou to fráze, které si sestaví AI.">
+  Jsou to dvě různé věci. Uživatel se ptá po svém, model si k tomu vytvoří vlastní hledání. Právě ten rozdíl je na tom to zajímavé.
+  </Mistake>
+
+  <Mistake num="03" title="Přenášet to na ChatGPT a Perplexity" fix="Microsoft mluví o svém prostředí.">
+  O tom, jak si podklad hledají ostatní nástroje, veřejný doklad není. Podobnost je pravděpodobná, ale je to domněnka, ne zjištění.
+  </Mistake>
+
+  <Mistake num="04" title="Odvozovat z citací pozice" fix="Microsoft to výslovně vylučuje.">
+  V popisu reportu stojí, že údaje neodrážejí důležitost, pozici ani umístění stránky. Citace v AI odpovědi je jiná věc než pozice ve výsledcích.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Report je zajímavý ne kvůli číslům, ale kvůli **jedné položce, kterou z reportů ověřených přímo u výrobců dává jen Bing**: vidíte v něm, jak se stroj ptá, když jde pro váš obsah.
+
+Zbytek je potřeba brát s rezervou, kterou si Microsoft sám nastavil. To, že vzorek výslovně přiznává, je metodicky užitečná informace — u Googlu jsem srovnatelnou větu v ověřených podkladech nenašel, což ale neznamená, že jeho data úplná jsou nebo nejsou. Prakticky z toho plyne jediné: do reportu pro vedení tohle nepatří.
+
+Jak k podobným číslům přistupovat obecně, rozebíráme v návodu [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/). Co dává Google, je v článku o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/).
