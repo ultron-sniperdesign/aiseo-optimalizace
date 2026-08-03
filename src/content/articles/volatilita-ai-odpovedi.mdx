@@ -1,0 +1,181 @@
+---
+title: "Stejný dotaz, jiná odpověď. Kolikrát testovat"
+description: "V měření AI Mode se mezi opakováními téhož dotazu shodovalo jen 18–20 % odkazů. Jeden běh testu tedy nic nedokazuje. Kolikrát opakovat a co zapsat."
+answer: "Jednorázový test AI viditelnosti nic neznamená. V měření SE Ranking z 29. září 2025 se mezi opakováními téhož obecného lokálního dotazu v AI Mode shodovalo jen 18 až 20 procent odkazů. U dotazů s uvedeným městem to bylo 46 až 49 procent. Z toho plyne praktická potřeba testovat opakovaně a zapisovat rozptyl, ne jeden výsledek."
+slug: "volatilita-ai-odpovedi"
+category: "tutorial"
+tags:
+  - "mereni"
+  - "ai-platformy"
+published: "2026-08-03"
+updated: "2026-08-03"
+keywords:
+  - "volatilita ai odpovědí"
+  - "ai mode stejný dotaz jiné výsledky"
+  - "test ai viditelnosti opakování"
+  - "nestabilita ai výsledků"
+  - "měření ai viditelnosti"
+variant: "rich"
+stats:
+  - value: "18–20 %"
+    label: "shoda odkazů mezi opakováními téhož obecného lokálního dotazu v AI Mode"
+  - value: "46–49 %"
+    label: "shoda u druhé skupiny dotazů, těch s uvedeným městem — víc než dvojnásobek"
+  - value: "5 000"
+    label: "dotazů v pěti amerických městech; každý dotaz byl spuštěný patnáctkrát"
+  - value: "1"
+    label: "běh testu, ze kterého nelze spolehlivě usoudit stabilní viditelnost"
+faq:
+  - q: "Proč dá stejný dotaz pokaždé jinou odpověď?"
+    a: "Prakticky se to chová nedeterministicky: opakování téhož dotazu vracelo v měření rozdílné sady zdrojů, takže dvě spuštění ve stejnou chvíli můžou vrátit z velké části jiné odkazy. Proč přesně se to děje, studie neřeší — obvyklé vysvětlení je, že model odpověď sestavuje znovu, místo aby dohledával pevný seznam."
+  - q: "O kolik se výsledky liší?"
+    a: "Podle měření SE Ranking z 29. září 2025 se u obecných lokálních dotazů v AI Mode shodovalo mezi opakováními jen 18 až 20 procent URL a 34 až 37 procent domén. U dotazů s uvedeným městem byla shoda výrazně vyšší: 46 až 49 procent URL. Studie pracovala s pěti tisíci dotazy v pěti amerických městech, každý spouštěla patnáctkrát."
+  - q: "Kolikrát mám tedy dotaz zopakovat?"
+    a: "Aspoň třikrát až pětkrát, ideálně s odstupem a v odhlášeném režimu. Studie sama minimální počet neurčuje, pouštěla každý dotaz patnáctkrát; tři až pět je praktický kompromis pro ruční test. Důležitější než počet je ale to, co si zapíšete: ne jestli jste se objevili, ale v kolika bězích z kolika. Údaj „ve dvou z pěti“ je informace, „objevili jsme se“ není."
+  - q: "Platí ta čísla i pro Česko?"
+    a: "Ne, a je fér to říct rovnou. Studie měřila AI Mode v pěti amerických městech a jen na lokálních dotazech typu restaurace. Pro české prostředí ani pro informační dotazy z ní čísla přenášet nelze. Použitelný je z ní ten princip, ne konkrétní procenta."
+  - q: "Znamená to, že testovat viditelnost nemá smysl?"
+    a: "Naopak, znamená to jen, že se musí testovat jinak. Jeden běh je los. Několik opakování s poznamenaným rozptylem dá obrázek, který má vypovídací hodnotu — a hlavně se dá porovnat s příštím měřením."
+  - q: "Dá se ta nestabilita nějak snížit?"
+    a: "Ve studii měla skupina dotazů s uvedeným městem zhruba dvaapůlkrát vyšší shodu odkazů než skupina obecných. Pozor ale na to, co z toho neplyne: porovnávaly se dvě různé skupiny dotazů, ne tentýž dotaz ve dvou formulacích, takže to není důkaz, že přeformulováním dotazu stabilitu získáte. Při testu se přesto vyplatí ptát se tak konkrétně, jak se ptají vaši zákazníci — už proto, že tím měříte to, co vás skutečně zajímá."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+Spustíte dotaz v AI Mode, svůj web tam nevidíte, a uděláte si závěr. Spustíte ho o minutu později znovu a najednou tam jste.
+
+Není to náhoda ani chyba měření. **Je to normální chování** — a existuje k němu měření, které říká, jak moc.
+
+Jedno upřesnění hned na začátek: to měření sledovalo, **jaké odkazy a domény AI v odpovědi uvede**, ne celé znění textu. Když se tady mluví o „jiné odpovědi", jde o jiné zdroje.
+
+## O kolik se to liší
+
+Firma SE Ranking zveřejnila **29. září 2025** test volatility AI Mode. Metodika stojí za uvedení, protože z ní plynou i limity:
+
+<Checklist
+  title="Jak se to měřilo"
+  tone="seo"
+  items={[
+    { title: "5 000 dotazů", desc: "Polovina obecných lokálních („restaurace v okolí“), polovina s uvedeným místem („restaurace v New Yorku“)." },
+    { title: "Pět měst v USA", desc: "New York, Los Angeles, Washington DC, Houston, Denver." },
+    { title: "Každý dotaz patnáctkrát", desc: "Tři běhy na každé město." },
+    { title: "Sledovaly se domény i konkrétní URL", desc: "Kolik se jich mezi běhy shodovalo." },
+    { title: "Měřil se AI Mode", desc: "Ne AI Overviews — to je jiná funkce a tahle čísla na ni nepatří." },
+  ]}
+/>
+
+A tady je výsledek. Čísla jsou **shoda mezi opakováními** — čím nižší, tím nestabilnější:
+
+<CompareTable
+  leftLabel="Obecný dotaz"
+  leftTone="aeo"
+  rightLabel="Dotaz s uvedeným městem"
+  rightTone="geo"
+  rows={[
+    { icon: "◈", label: "Shoda URL, stejné město", left: "18,3–20,5 %", right: "46–49 %" },
+    { icon: "◆", label: "Shoda domén, stejné město", left: "34,2–36,8 %", right: "53,3–56,6 %" },
+    { icon: "▲", label: "Shoda URL napříč městy", left: "1,6–2 %", right: "41,9–44 %" },
+    { icon: "▤", label: "Shoda domén napříč městy", left: "23,7–24,1 %", right: "48–49,2 %" },
+  ]}
+/>
+
+První řádek je ten hlavní. **U obecného dotazu se mezi dvěma spuštěními shodne zhruba pětina odkazů.** Čtyři pětiny jsou pokaždé jiné.
+
+## Pointa, kterou přehledy zahazují
+
+Většina textů o téhle studii cituje jen to první číslo a udělá z toho „AI je nestabilní". Jenže srovnejte oba sloupce.
+
+<Insight tone="signal" icon="◆" label="Volatilita ve studii silně souvisela s typem dotazu">
+Skupina dotazů s uvedeným městem měla **zhruba 2,2 až 2,7× vyšší shodu URL** než skupina obecných lokálních dotazů (v průměru zhruba 2,5×).
+
+**Pozor na to, co z toho neplyne.** Studie porovnávala **dvě různé skupiny dotazů**, ne tentýž dotaz ve dvou formulacích. Není to tedy důkaz, že když svůj dotaz přeformulujete konkrétněji, dostanete stabilnější výsledek — je to zjištění, že konkrétnější dotazy jako celek byly stabilnější. Jako hypotéza pro vlastní testování to stojí za vyzkoušení, jako pravidlo ne.
+</Insight>
+
+Poslední řádek tabulky je pak varování pro každého, kdo testuje z jednoho místa: u obecných dotazů se výsledky napříč městy shodly v **necelých dvou procentech**. Překryv je tam už jen minimální.
+
+## Limity, které je potřeba říct
+
+Tohle měření je nejlepší, co k tématu veřejně je. Zároveň se z něj nedá vyvozovat víc, než v něm je.
+
+<CompareTable
+  leftLabel="Co studie měřila"
+  leftTone="geo"
+  rightLabel="Co z ní tedy neplyne"
+  rightTone="aeo"
+  rows={[
+    { icon: "◆", label: "Funkce", left: "AI Mode", right: "nic o AI Overviews, ChatGPT ani Perplexity" },
+    { icon: "◈", label: "Trh", left: "pět měst v USA", right: "žádná čísla pro Česko" },
+    { icon: "▤", label: "Typ dotazů", left: "lokální, typu restaurace", right: "nic o informačních dotazech" },
+    { icon: "▲", label: "Datum", left: "29. září 2025", right: "od té doby se to mohlo změnit" },
+  ]}
+/>
+
+Přenositelný je **princip**, ne konkrétní procenta. Že jsou AI odpovědi nestabilní, je rozumné očekávat i jinde. Že konkrétnější dotazy budou stabilnější i mimo lokální témata a mimo americký trh, je hypotéza — a že to bude zrovna 18 % a 46 %, neplatí ani jako hypotéza.
+
+<Insight tone="warn" icon="⚠" label="A jedno číslo, které jinde koluje špatně">
+Kolem tohohle tématu se opakuje údaj, že se **„obsah AI přehledu mění v 70 % případů"**. To je zkomolenina: původní tvrzení mluví o tom, že se **za dva až tři měsíce obmění zhruba 70 % stránek**, které se v AI Overviews objevují. Je to jiná metrika, jiná funkce i jiné časové okno. Měl jsem to zprvu poznamenané stejně špatně; rozpadlo se to až u zdroje.
+</Insight>
+
+## Co s tím při testování
+
+Náš [návod na test AI viditelnosti](/blog/test-viditelnosti-v-ai/) říká opakovat každý dotaz třikrát až pětkrát. Tahle data ukazují **proč** a co k tomu přidat.
+
+<Stepper
+  steps={[
+    {
+      title: "Testujte formulace, jaké používají zákazníci",
+      desc: "Místo „nejlepší účetní software“ raději „účetní software pro živnostníka v Česku“. Odpovídá to tomu, jak se ptají skuteční zákazníci. Že to i sníží rozptyl, je hypotéza: studie měřila lokální dotazy typu restaurace, ne software — u nelokálních témat to tedy berte jako věc k ověření, ne jako jistotu."
+    },
+    {
+      title: "Opakujte, ne jednou",
+      desc: "Tři až pět běhů na dotaz, ideálně s odstupem a v odhlášeném režimu. Tohle číslo ze studie nepochází — ta pouštěla každý dotaz patnáctkrát — je to praktický kompromis pro ruční test. Jeden běh při pětinové shodě není měření, je to los."
+    },
+    {
+      title: "Zapisujte poměr, ne fakt",
+      desc: "Ne „objevili jsme se“, ale „objevili jsme se ve dvou z pěti běhů“. Jen tak se dá výsledek porovnat s příštím měřením a poznat změnu od šumu."
+    },
+    {
+      title: "U lokálních témat měňte i místo",
+      desc: "Když má váš byznys pobočky, otestujte z každé lokality zvlášť. Napříč městy se u obecných dotazů shodla necelá dvě procenta odkazů."
+    },
+  ]}
+/>
+
+<Insight tone="aeo" icon="✓" label="Jak poznat skutečnou změnu">
+Tohle je konzervativní pomůcka, ne statistika: při pěti opakováních **nepřeceňujte malé rozdíly** typu „2 z 5" proti „3 z 5". Za přesvědčivější signál berte větší posun, který se navíc udrží přes několik měření za sebou. Nižší nároky vedou k tomu, že si budete gratulovat k náhodě.
+</Insight>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Udělat závěr z jednoho běhu" fix="Opakujte a zapište poměr.">
+  Při shodě kolem pětiny je jednorázový výsledek prakticky náhodný — a to platí v obou směrech. Nepotvrzuje ani nevyvrací.
+  </Mistake>
+
+  <Mistake num="02" title="Porovnávat měsíce, mezi kterými se změnila metoda" fix="Držte stejné dotazy i postup.">
+  Když příště změníte formulaci dotazů, měříte něco jiného. Rozdíl pak nevypovídá o vaší viditelnosti, ale o zadání.
+  </Mistake>
+
+  <Mistake num="03" title="Přenášet ta procenta na české prostředí" fix="Berte z toho princip, ne čísla.">
+  Studie měřila AI Mode na lokálních dotazech v pěti amerických městech. Pro české informační dotazy z ní konkrétní hodnoty neplynou.
+  </Mistake>
+
+  <Mistake num="04" title="Slibovat klientovi pozici v AI" fix="Pozice tam v tomhle smyslu není.">
+  Když se čtyři pětiny odkazů mezi dvěma spuštěními vymění, nedává smysl mluvit o stabilní pozici tak, jak se o ní mluví u klasických výsledků. Slibovat „první místo v odpovědích AI“ znamená slibovat něco, co se nedá udržet ani ověřit.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Nestabilita AI odpovědí není chyba, kterou někdo opraví. Je to důsledek toho, jak ty systémy fungují — a měření z 29. září 2025 ukazuje, že v některých případech je to opravdu hodně.
+
+Praktický dopad je ale povzbudivější, než to zní. **Ve studii se rozptyl výrazně lišil mezi dvěma skupinami dotazů podle jejich formulace** — což je zajímavá stopa, ne hotové pravidlo. Co platí bez ohledu na typ dotazu, je tohle: několik opakování a zapsaný poměr místo jednoho výsledku z testu udělá něco, co se dá porovnávat.
+
+**Použitelná minima jsou tři:** netestovat jednou, zapisovat podíl výskytů místo pouhého „ano/ne", a u lokálních témat testovat z víc míst.
+
+Jak podobná čísla obecně číst, je v návodu [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/). Proč se AI Mode nedá spolehlivě oddělit ani v datech, rozebírá článek o [limitech měření AI Mode](/blog/mereni-ai-mode-limity/).
