@@ -1,0 +1,158 @@
+---
+title: "Generativní AI v Discoveru: imprese neznámo čeho"
+description: "Search Console má zobrazení pro generativní AI v Discoveru. V nápovědě k němu ale neuvádí, které funkce to jsou — a dává o rozměr míň než u Vyhledávání."
+answer: "Search Console má samostatné zobrazení pro generativní AI funkce v Discoveru. Google v nápovědě k tomu reportu neuvádí, které funkce to jsou, takže dostanete počty impresí u něčeho, co tam není blíž popsané — a číslo se pak špatně interpretuje i vykazuje. Oproti zobrazení pro Vyhledávání navíc chybí rozpad podle zařízení. Podle novinářských zdrojů jde nejspíš o AI přepisování titulků, v ověřené nápovědě to ale Google s reportem nespojuje."
+slug: "generativni-ai-v-discoveru"
+category: "analysis"
+tags:
+  - "mereni"
+  - "obsah"
+published: "2026-08-04"
+updated: "2026-08-04"
+keywords:
+  - "generativní ai v discoveru"
+  - "google discover ai"
+  - "search console discover report"
+  - "ai přepisování titulků"
+  - "discover imprese měření"
+variant: "rich"
+stats:
+  - value: "0"
+    label: "jmenovitě uvedených funkcí na ověřené stránce nápovědy k zobrazení pro Discover"
+  - value: "−1"
+    label: "rozměr oproti zobrazení pro Vyhledávání: u Discoveru chybí zařízení"
+  - value: "1"
+    label: "imprese na výsledek za relaci — ne za každé zobrazení karty"
+  - value: "1 000"
+    label: "řádků je strop tabulky; co je pod ním, v exportu neuvidíte"
+faq:
+  - q: "Co jsou generativní AI funkce v Discoveru?"
+    a: "Google to na ověřené stránce nápovědy k tomu reportu neuvádí. U zobrazení pro Vyhledávání funkce vyjmenoval (AI Overviews a AI Mode), u Discoveru mluví jen obecně o generativních AI funkcích. O tom, co uživatel vidí, se dozvíte pouze to, že obsah se objeví jako běžná karta v Discoveru nebo vložený v karuselu."
+  - q: "Co ten report ukazuje?"
+    a: "Imprese s rozpadem podle stránek, zemí a data. Oproti zobrazení pro Vyhledávání chybí rozpad podle zařízení. Kliky, míru prokliku ani dotazy neukazuje ani jedno ze zobrazení."
+  - q: "Přepisuje Google v Discoveru titulky?"
+    a: "Podle novinářských zdrojů z ledna 2026 a navazujících reportáží to tak nejspíš je: Google měl v Discoveru testovat nahrazování titulků od vydavatele titulky vygenerovanými AI. Tytéž zdroje uvádějí, že se test rozšířil i do klasických výsledků. V ověřené nápovědě to ale Google s tímhle reportem nespojuje, takže jde o pravděpodobné vysvětlení, ne o doložené."
+  - q: "Dá se přepisování titulků vypnout?"
+    a: "V ověřené nápovědě to Google neřeší. Podle dostupných novinářských zpráv žádnou možnost odhlášení neposkytl a ani neoznačuje, kdy k přepisu došlo. V praxi to tedy nejspíš poznáte hlavně ruční kontrolou. Americká News Media Alliance po Googlu žádá transparentnost i možnost se odhlásit."
+  - q: "Proč je v reportu jen jedna imprese za relaci?"
+    a: "Tak to Google počítá: jedna imprese na výsledek za relaci, ne za každé zobrazení karty. Když tedy uživatel v Discoveru projde stejnou kartu vícekrát během jedné návštěvy, v reportu je to pořád jedna imprese. Číslo proto může podhodnocovat počet zobrazení karty v rámci relace."
+  - q: "Má smysl ten report sledovat?"
+    a: "Pro obsahové weby, kde Discover přivádí znatelnou návštěvnost, ano — ale jako signál, ne jako metriku. Bez definice funkce a bez kliků z něj neuděláte reporting. Užitečnější je zjistit, jestli se vaše titulky v Discoveru zobrazují tak, jak jste je napsali."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+Report generativních AI funkcí v Search Console má dvě zobrazení. O reportu pro Vyhledávání se píše všude. To druhé — **Discover** — se obvykle odbude jednou větou, i v [našem vlastním článku o tom reportu](/blog/gsc-ai-segmenty-mereni/).
+
+Když jsem si ho ale otevřel pořádně, je v něm zajímavější věc než čísla.
+
+## Report o něčem, co není pojmenované
+
+U zobrazení pro Vyhledávání Google v nápovědě vyjmenuje, co do něj patří: **AI Overviews a AI Mode.** Víte tedy, co měříte.
+
+Na ověřené stránce nápovědy k zobrazení pro Discover **nic takového neuvádí.** Mluví o „generativních AI funkcích v Discoveru" a tím to končí. Jediné, co se o podobě dozvíte, je, že se obsah objeví jako běžná karta v Discoveru nebo vložený v karuselu.
+
+<Insight tone="warn" icon="⚠" label="Co to prakticky znamená">
+Dostanete metriku něčeho, co v nápovědě k reportu není blíž popsané. Když číslo vyroste, nevíte, čeho přibylo — a když klesne, nevíte, co se ztratilo. **Bez pojmenování funkce je to obtížně interpretovatelné**, i kdyby to číslo bylo přesné.
+</Insight>
+
+## Co report dává a co ne
+
+Srovnání obou zobrazení je vidět nejlíp vedle sebe. Obojí mám z nápovědy Googlu.
+
+<CompareTable
+  leftLabel="Discover"
+  leftTone="aeo"
+  rightLabel="Vyhledávání"
+  rightTone="geo"
+  rows={[
+    { icon: "◆", label: "Metrika", left: "imprese", right: "imprese" },
+    { icon: "▤", label: "Stránky, země, datum", left: "ano", right: "ano" },
+    { icon: "◐", label: "Zařízení", left: "ne", right: "ano" },
+    { icon: "◈", label: "Které funkce to jsou", left: "neuvedeno", right: "AI Overviews a AI Mode" },
+    { icon: "▲", label: "Kliky, CTR, dotazy", left: "ne", right: "ne" },
+  ]}
+/>
+
+Dostupnost je u obou stejná: Google píše, že report zpřístupňuje **jen části majitelů webů**. U Discoveru navíc dodává, že se nemusí objevit, když web nemá dost impresí.
+
+## Drobné písmo, které mění čísla
+
+Tohle je v nápovědě a skoro nikdo to nečte, přitom to mění, co ta čísla znamenají:
+
+<Checklist
+  title="Čtyři pravidla, která posouvají výsledek"
+  tone="seo"
+  items={[
+    { title: "Jedna imprese na výsledek za relaci", desc: "Ne za každé zobrazení karty. Když uživatel projde stejnou kartu během jedné návštěvy třikrát, v reportu je to jednou. Číslo tedy může být nižší než počet zobrazení karty během relace." },
+    { title: "Bez experimentů Search Labs", desc: "Data z nich se do reportu nezapočítávají. To, co testuje část uživatelů, v číslech není." },
+    { title: "Strop tabulky 1 000 řádků", desc: "U většího webu neuvidíte dlouhý ocas. Součet v tabulce proto nemusí odpovídat celku." },
+    { title: "Vlnovka a pomlčka se exportují jako nula", desc: "Hodnoty, které nápověda uvádí jako „~“ nebo „-“, se při exportu promění v nuly. Kdo počítá nad exportem, počítá s nulami tam, kde nula nebyla." },
+  ]}
+/>
+
+To poslední pravidlo je zrádné hlavně proto, že se projeví až v tabulce — a tam už nepoznáte, že šlo o zaokrouhlení, ne o nulu.
+
+## A teď to, co Google neřekl
+
+Nabízí se otázka, co ty „generativní AI funkce v Discoveru" vlastně jsou. V ověřeném primárním zdroji odpověď není, takže je potřeba oddělit dvě roviny.
+
+<Insight tone="signal" icon="◆" label="Doložené versus pravděpodobné">
+**Doložené (ověřená nápověda Googlu):** report existuje, měří imprese, funkce v ní nepojmenovává.
+
+**Pravděpodobné (novinářské zdroje, leden 2026 a dál):** Google v Discoveru testuje **nahrazování titulků od vydavatele titulky vygenerovanými AI** a test se rozšířil i do klasických výsledků vyhledávání.
+
+**Co chybí:** v ověřené nápovědě Google ty dvě věci nespojuje. Že report měří právě tohle, je rozumný odhad, ne doložený fakt.
+
+Jinými slovy: **že ten report existuje, je jisté. Co přesně pod hlavičkou Discover počítá, jisté není.**
+</Insight>
+
+Napříč zdroji se opakuje jeden příklad, na kterém je vidět, proč to vydavatele znepokojuje: nuancovaný text PC Gameru byl přepsán na **„BG3 players exploit children"**. Tedy titulek, který sice obsahuje slova z článku, ale ztratil kontext i smysl. Je to ale ilustrace jednoho medializovaného případu, ne doklad toho, že jsou podobně chybné přepisy běžné.
+
+Podle týchž zdrojů Google **neposkytl možnost se odhlásit** a **neoznačuje, kdy k přepisu došlo**. Americká News Media Alliance po něm proto žádá obojí.
+
+## Co s tím může český web dělat
+
+Poctivá odpověď je, že málo — ale ne nic.
+
+<Checklist
+  title="Tři věci, které dávají smysl"
+  tone="geo"
+  items={[
+    { title: "Zkontrolujte, jak vaše karty vypadají", desc: "Otevřete Discover na mobilu a projděte, jestli u vašich článků sedí titulek s tím, co jste napsali. Podle dostupných zpráv Google přepis neoznačuje, takže je to zatím nejpraktičtější způsob, jak si toho všimnout." },
+    { title: "Pište titulky s významem hned na začátku", desc: "Titulek, jehož smysl stojí na vedlejší větě nebo na ironii, se rozpadne při běžném zkrácení v rozhraní — a může být zranitelnější i tehdy, pokud ho systém přeformuluje. Podstata v prvních čtyřech slovech přežije spíš." },
+    { title: "Sledujte report jako signál, ne jako metriku", desc: "Když Discover přivádí znatelnou návštěvnost, stojí za to vědět, jestli impresí přibývá. Reporting z toho ale nestavte — bez definice funkce a bez kliků to neunese." },
+  ]}
+/>
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Číst imprese v Discoveru jako zobrazení karty" fix="Je to jedna imprese za relaci.">
+  Když uživatel projde kartu během návštěvy vícekrát, je to pořád jedna imprese. Číslo tedy může být nižší než počet zobrazení karty během jedné relace.
+  </Mistake>
+
+  <Mistake num="02" title="Předpokládat, že Discover má stejné rozměry jako Vyhledávání" fix="Chybí tam zařízení.">
+  Rozpad podle zařízení je jen u zobrazení pro Vyhledávání. Kdo v Discoveru hledá rozdíl mobil versus počítač, nenajde ho.
+  </Mistake>
+
+  <Mistake num="03" title="Počítat nad exportem bez kontroly" fix="Vlnovky se změní v nuly.">
+  Hodnoty, které rozhraní ukazuje jako přibližné, jsou v exportu nuly. Součet pak vyjde nižší, aniž by bylo z čeho to poznat.
+  </Mistake>
+
+  <Mistake num="04" title="Tvrdit, že report měří přepisování titulků" fix="V ověřené nápovědě to Google nespojuje.">
+  Je to pravděpodobné vysvětlení, ne doložené. Kdo to podává jako fakt, dělá přesně to, před čím tenhle web varuje.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Discover zobrazení je dobrý příklad toho, jak vypadá měření na začátku: **číslo bez definice.** Google vám řekne, kolikrát se váš obsah objevil v něčem, co nepojmenoval, s jedním rozměrem méně než u Vyhledávání a bez kliků.
+
+Užitečnější než ta čísla je proto vědomí, **co se v Discoveru s vaším obsahem může dít** — a že případný přepsaný titulek nejspíš nejlíp odhalíte ruční kontrolou.
+
+Co dává zobrazení pro Vyhledávání, rozebírá článek o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/). Jak podobná tvrzení ověřovat u výrobce, je v návodu o [falešných novinkách](/blog/falesne-screenshoty-seo-funkci/).
