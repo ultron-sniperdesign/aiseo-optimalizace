@@ -1,13 +1,13 @@
 ---
 title: "Měření SEO výkonu 2026: 8 metrik, KPI hierarchie a nástroje od GSC po AI citation tracking"
 description: "Co opravdu měřit u SEO v roce 2026 — pozice, traffic, CTR, Core Web Vitals i AI citation share. KPI hierarchie podle příjemce reportu a podle typu byznysu."
-answer: "Měření SEO výkonu v roce 2026 stojí na osmi metrikách rozdělených do čtyř vrstev: visibility (pozice, CTR z GSC), traffic & engagement (sessions a chování v GA4), zdraví webu (Core Web Vitals, indexace v GSC Pages reportu, backlinks v Ahrefs), AI presence (AI citation share přes Otterly nebo Profound). Priorita metrik se liší podle typu byznysu — lokální služba, B2B lead-gen, e-shop a publisher mají jiné P0/P1. Pro malou firmu stačí GSC + GA4 zdarma; placený stack přidávejte podle konkrétního use case."
+answer: "Měření SEO výkonu v roce 2026 stojí na osmi metrikách rozdělených do čtyř vrstev: visibility (pozice, CTR z GSC), traffic & engagement (sessions a chování v GA4), zdraví webu (Core Web Vitals, indexace v GSC Pages reportu, backlinks v Ahrefs), AI presence (AI citation share přes Otterly nebo Profound a od června 2026 report Generative AI features v Search Console). Priorita metrik se liší podle typu byznysu — lokální služba, B2B lead-gen, e-shop a publisher mají jiné P0/P1. Pro malou firmu stačí GSC + GA4 zdarma; placený stack přidávejte podle konkrétního use case."
 slug: "mereni-seo-vykonu-2026"
 category: "tutorial"
 tags:
   - "mereni"
 published: "2026-05-03"
-updated: "2026-05-06"
+updated: "2026-08-03"
 variant: "rich"
 keywords:
   - "měření seo"
@@ -22,21 +22,23 @@ keywords:
   - "seo reporting"
 faq:
   - q: "Jaké jsou nejdůležitější SEO metriky pro malou firmu?"
-    a: "Pro malou firmu (web do 100 stránek, 1–2 lidé na SEO): pozice na top 5 strategických KW (GSC, týdně), organic traffic z Google + Seznam (GA4, denně), CTR (GSC, měsíčně) a Core Web Vitals (PageSpeed Insights, čtvrtletně). To je 4 metriky, které pokryjí 80 % insightu. Backlinks a AI citation share jsou nice-to-have, ale ne nutnost dokud nepřekročíte 1 000 organic sessions/měsíc."
+    a: "Pro malou firmu (web do 100 stránek, 1–2 lidé na SEO): pozice na top 5 strategických KW (GSC, týdně), organic traffic z Google + Seznam (GA4, denně), CTR (GSC, měsíčně) a Core Web Vitals (PageSpeed Insights, čtvrtletně). To jsou čtyři metriky, které pokryjí většinu prakticky využitelného přehledu. Backlinks a AI citation share jsou nice-to-have, ale ne nutnost dokud nepřekročíte 1 000 organic sessions/měsíc."
   - q: "Jak často kontrolovat SEO metriky?"
     a: "Pozice KW týdně (Google často mění algoritmus, čekat měsíc je pozdě). Organic traffic + konverze denně (rychlá detekce propadů, sezónnosti, akčních efektů). CTR a search impressions týdně až měsíčně. Backlinks a AI citation share měsíčně. Core Web Vitals + indexovatelnost čtvrtletně (po major update). Anomálie monitorovat alertem v GA4 / Plausible — manuální kontrola každý den je neefektivní."
   - q: "Stačí Google Search Console + GA4 nebo potřebuju placený nástroj?"
-    a: "Pro většinu malých až středních webů GSC + GA4 stačí na 60–70 % insightu zdarma. Co GSC + GA4 nedělají: konkurenční benchmark (kdo rankuje na vaše KW), backlink monitoring (kdo na vás odkazuje, kdo na konkurenci), keyword discovery (jaké KW vůbec existují), AI citation tracking. Pro tyto 4 oblasti potřebujete placený nástroj — typicky Ahrefs ($29/měs) nebo SE Ranking ($65/měs). Pro AI tracking ještě Otterly ($29/měs)."
+    a: "Pro většinu malých až středních webů pokryjí GSC + GA4 podstatnou část základního přehledu, a to zdarma. Co GSC + GA4 nedělají: konkurenční benchmark (kdo rankuje na vaše KW), backlink monitoring (kdo na vás odkazuje, kdo na konkurenci), keyword discovery (jaké KW vůbec existují), AI citation tracking. Pro tyto 4 oblasti potřebujete placený nástroj — typicky Ahrefs ($29/měs) nebo SE Ranking ($65/měs). Pro AI tracking ještě Otterly ($29/měs). Ceny jsou k květnu 2026, ověřte si aktuální ceník."
   - q: "Co je dobrý CTR pro organic search?"
     a: "Závisí silně na pozici. Orientační benchmark (Backlinko 2025, US trh): pozice 1 = 28–30 % CTR, pozice 2 = 15–18 %, pozice 3 = 10–12 %, pozice 4–5 = 6–8 %, pozice 6–10 = 2–4 %. Pokud máte dlouhodobě výrazně nižší CTR, než je obvyklé pro srovnatelný typ dotazu a SERP layout, je vhodné prověřit snippet, intent fit a přítomnost SERP features (AI Overview, ads, map pack, video blok mohou CTR výrazně srazit, aniž by šlo o vaši chybu). Brandové dotazy mívají jinou dynamiku než non-brand. Pozici a CTR vždy hodnotit společně."
+  - q: "Jak v Search Console poznám viditelnost v AI Overviews?"
+    a: "Jen částečně a nepřímo. V běžném reportu Výkon to nepoznáte vůbec: data z AI funkcí jsou podle dokumentace Googlu započtená v celkových číslech a žádný filtr na jejich oddělení neexistuje. Od 3. června 2026 existuje samostatný report Generative AI features, který ukazuje imprese, stránky, země, zařízení a datum — ale ne kliky, CTR ani dotazy, a AI Overviews od AI Mode neoddělí. Navíc se zpřístupňuje postupně, takže ho k srpnu 2026 nemá každý web."
   - q: "Jak měřit AI citation share v ChatGPT a Perplexity?"
-    a: "Manuálně přes prompty se značkovým KW (např. 'doporuč mi seo agenturu v praze') a sledování, jestli jste citováni. Reliably ale jen přes specializované nástroje: Otterly AI ($29/měs Lite, $99/měs Pro) sleduje 50+ promptů, vrací citation share, sentiment, sources. Profound (enterprise, $500+) má hlubší tracking. Marketing Miner Brand Radar ($99/měs Machine plan) přidal AI mention tracking pro CZ trh v 2025. Klíčové: měřit citation share **vůči konkurenci**, ne absolutně."
+    a: "Manuálně přes prompty se značkovým KW (např. 'doporuč mi seo agenturu v praze') a sledování, jestli jste citováni. Reliably ale jen přes specializované nástroje: Otterly AI ($29/měs Lite, $99/měs Pro) sleduje 50+ promptů, vrací citation share, sentiment, sources. Profound (enterprise, $500+) má hlubší tracking. Marketing Miner Brand Radar ($99/měs Machine plan) má sledování zmínek v AI pro český trh. Ceny jsou k květnu 2026. Klíčové: měřit citation share **vůči konkurenci**, ne absolutně."
   - q: "Co jsou Core Web Vitals a jak je měřit?"
-    a: "Core Web Vitals jsou tři metriky uživatelského zážitku, které Google používá jako ranking signál: LCP (Largest Contentful Paint, kdy se načte hlavní obsah, cíl <2.5 s), INP (Interaction to Next Paint, jak rychle reaguje na akce, cíl <200 ms), CLS (Cumulative Layout Shift, kolik se stránka 'leká', cíl <0.1). Měření: PageSpeed Insights (zdarma, lab + field data z Chrome UX Report), GSC Core Web Vitals report (field data), Lighthouse v Chrome DevTools (lab data). Field data jsou důležitější než lab — odráží reálné uživatele."
+    a: "Core Web Vitals jsou tři metriky uživatelského zážitku, které Google používá jako ranking signál: LCP (Largest Contentful Paint, kdy se načte hlavní obsah, cíl <2.5 s), INP (Interaction to Next Paint, jak rychle reaguje na akce, cíl <200 ms), CLS (Cumulative Layout Shift, jak moc se rozvržení stránky neočekávaně posouvá, cíl <0.1). Měření: PageSpeed Insights (zdarma, lab + field data z Chrome UX Report), GSC Core Web Vitals report (field data), Lighthouse v Chrome DevTools (lab data). Field data jsou důležitější než lab — odráží reálné uživatele."
   - q: "Jak postavit SEO dashboard?"
-    a: "Minimum: Looker Studio (zdarma) napojený na GSC + GA4 + Search Ads, který agreguje metriky do 1 view. 4 widgety: (1) trend pozic top 10 KW za posledních 90 dní, (2) organic sessions denně + meziroční srovnání, (3) top 20 stránek podle organic trafficu, (4) Core Web Vitals stav. Aktualizace daily. Pro agenturu kompletnější: AgencyAnalytics ($59/měs) nebo SE Ranking dashboard. Klíčové: 1 dashboard pro klienta, 1 hlubší pro interní tým."
+    a: "Minimum: Looker Studio (zdarma) napojený na GSC + GA4 + Google Ads, který agreguje metriky do 1 view. 4 widgety: (1) trend pozic top 10 KW za posledních 90 dní, (2) organic sessions denně + meziroční srovnání, (3) top 20 stránek podle organic trafficu, (4) Core Web Vitals stav. Aktualizace daily. Pro agenturu kompletnější: AgencyAnalytics ($59/měs, cena k květnu 2026) nebo SE Ranking dashboard. Klíčové: 1 dashboard pro klienta, 1 hlubší pro interní tým."
   - q: "Co dělat, když pozice klíčového slova klesnou?"
-    a: "Diagnostika ve čtyřech krocích: (1) GSC — zkontrolovat, jestli klesly i impressions, nebo jen pozice (impressions stejné = SERP layout změna, AI Overview vzal pozici); (2) GSC Coverage — je stránka stále indexovaná?; (3) Ahrefs — propadla konkurence dopředu? Nové výsledky v top 10? Ztratili jste backlinky?; (4) PageSpeed Insights — zhoršily se Core Web Vitals (nový bundle, špatný image)?. Po diagnóze cílená akce, ne plošná 're-optimalizace'. Většina propadů je do 4–8 týdnů reverzibilní."
+    a: "Diagnostika ve čtyřech krocích: (1) GSC — zkontrolovat, jestli klesly i impressions, nebo jen pozice (impressions stejné = pravděpodobně změna rozvržení výsledků; ověřte ručně, jestli se u dotazu neobjevil AI přehled, reklamy nebo jiný prvek — z čísel v GSC to nepoznáte); (2) GSC Coverage — je stránka stále indexovaná?; (3) Ahrefs — propadla konkurence dopředu? Nové výsledky v top 10? Ztratili jste backlinky?; (4) PageSpeed Insights — zhoršily se Core Web Vitals (nový bundle, špatný image)?. Po diagnóze cílená akce, ne plošná 're-optimalizace'. Řada propadů se dá zvrátit, ale jak rychle, se paušálně říct nedá — závisí na příčině."
 howto:
   name: "Praktický postup: postavit SEO measurement od nuly"
   steps:
@@ -49,7 +51,7 @@ howto:
     - name: "Postavit Looker Studio dashboard"
       text: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organic sessions denně plus YoY srovnání, top 20 stránek podle organic trafficu, Core Web Vitals stav. Sdílet read-only link s týmem. Looker Studio je zdarma, napojený na GSC + GA4."
     - name: "Nastavit alerty na anomálie"
-      text: "Týden 3. GA4 custom insights pro propad organic sessions o 20+ % den-na-den. GSC alerts pro indexační chyby. PageSpeed Insights manuální check čtvrtletně. Bez alertů zjistíte propad za týden místo za hodinu."
+      text: "Týden 3. GA4 custom insights pro propad organic sessions o 20+ % den-na-den. E-mailová upozornění z GSC na indexační problémy (nejde o konfigurovatelné alerty jako v GA4). PageSpeed Insights manuální check čtvrtletně. Bez alertů zjistíte propad za týden místo za hodinu."
     - name: "Měsíční review a iterace"
       text: "Měsíčně. 1× za měsíc review dashboardu, identifikovat 1–3 stránky s největším potenciálem (vysoké impressions, nízký CTR = title rewrite kandidáti). Update reportu pro klienta nebo vedení. Po 90 dnech první trend evaluation."
 ---
@@ -66,10 +68,10 @@ import Dont from "../../components/blocks/Dont.astro";
 Klasický přístup („sleduji pozici klíčových slov") dnes nestačí. Tři důvody:
 
 1. **Pozice samy o sobě neznamenají traffic.** Zero-click search a AI Overviews snižují míru prokliku i z top pozic. Můžete být #1 a vidět pokles kliků oproti dřívějšku — sledujte pozici a CTR společně.
-2. **Roste podíl odpovědí mimo klasický SERP.** Vedle Googlu uživatelé dostávají odpovědi v ChatGPT, Perplexity, Gemini a Copilotu. Konkrétní podíl pro váš trh / vertikálu zatím nelze spolehlivě generalizovat — sledujte data v server lozích a v případě dostupných nástrojů (Otterly, Brand Radar) ve specializovaném trackingu.
+2. **Roste podíl odpovědí mimo klasický SERP.** Vedle Googlu uživatelé dostávají odpovědi v ChatGPT, Perplexity, Gemini a Copilotu. Konkrétní podíl pro váš trh / vertikálu zatím nelze spolehlivě generalizovat — sledujte referery a průchody robotů v serverových logách jako doplňkový signál (ne jako měření podílu) a v případě dostupných nástrojů (Otterly, Brand Radar) specializovaný tracking.
 3. **Engagement signály jsou užitečné jako diagnostika.** Bounce rate, scroll depth a time on page nejsou veřejně potvrzené přímé ranking signály — Google explicitně neříká, že GA4 metriky používá k řazení. Jako diagnostika relevance a kvality stránky jsou ale **velmi cenné**: pokud stránka získává impressions, ale uživatelé rychle odcházejí, jde typicky o problém intentu, relevance nebo UX.
 
-Pro reálný obraz výkonu potřebujete **3 vrstvy metrik**:
+Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 
 - **Vrstva 1 — Visibility (pozice, CTR, impressions)** — kde vás Google vidí
 - **Vrstva 2 — Traffic & engagement (sessions, time on page, konverze)** — co s tím uživatelé dělají
@@ -142,7 +144,7 @@ Pro reálný obraz výkonu potřebujete **3 vrstvy metrik**:
 
 **Co měří:** kvalita a kvantita externích odkazů na váš web. Externí odkazy zůstávají jedním z důležitých signálů důvěryhodnosti, objevitelnosti a reputace URL/domény, i když jejich dopad závisí na kontextu trhu, typu dotazu a síle ostatních signálů. **Pozor:** DR/DA jsou third-party metriky (Ahrefs/Moz), ne Google metriky — slouží jako orientační proxy.
 
-**Zdroj:** Ahrefs (DR — Domain Rating), Semrush (DA — Domain Authority), Moz (DA), Majestic (TF/CF).
+**Zdroj:** Ahrefs (DR — Domain Rating), Semrush (Authority Score), Moz (DA — Domain Authority), Majestic (TF/CF).
 
 **Frekvence:** měsíčně.
 
@@ -200,7 +202,7 @@ Pro reálný obraz výkonu potřebujete **3 vrstvy metrik**:
 
 **Emerging doplňková metrika.** AI citation share = podíl relevantních AI odpovědí (ChatGPT, Perplexity, Gemini, Copilot) na definovanou sadu dotazů, kde je váš brand citován jako zdroj nebo doporučení. Mention rate je obecnější — % odpovědí, kde je brand jakkoli zmíněn. **Pozor:** jde o experimentální vrstvu s omezenou reprodukovatelností (vysoká závislost na prompt setu, geolokaci, personalizaci, modelových updatech a metodice nástroje). Pro většinu firem to **není KPI první úrovně** — sledujte jako trend, ne jako přesné číslo, a metodická konzistence je důležitější než absolutní hodnota.
 
-**Zdroj:** Otterly AI ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs Machine plan, CZ trh).
+**Zdroj:** Otterly AI ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs Machine plan, CZ trh). *Ceny uvedené v tomto článku jsou k květnu 2026 — před nákupem si je ověřte v aktuálním ceníku, mění se průběžně.*
 
 **Frekvence:** měsíčně.
 
@@ -221,7 +223,7 @@ Než půjdete do nástrojového stacku, projděte si, kde leží P0/P1 pro váš
 | **Lokální služba** | GBP Insights, GSC pozice na lokální KW, organic sessions z GA4 | Local pack tracking, recenze growth, NAP konzistence | Brand Radar pro lokální brand mentions |
 | **B2B lead-gen / SaaS** | GSC top KW, organic sessions, **konverze (demo, trial)**, top entry pages | Brand vs non-brand poměr v GSC, engagement na money pages | AI citation share — pokud cílovka používá AI při výběru |
 | **E-shop / katalog** | GSC indexace, Core Web Vitals, organic sessions, **revenue z organic v GA4** | Per-kategorie pozice, product schema validita, CTR podle SERP layoutu | AI citation pro kategorie s research fází sortimentu |
-| **Publisher / blog** | Organic sessions, top stránky, čerstvost obsahu, indexace | Engagement (scroll depth, time on page), share dotaz/stránka, CTR podle pozice | AI citation share, AI Overview impact |
+| **Publisher / blog** | Organic sessions, top stránky, čerstvost obsahu, indexace | Engagement (scroll depth, time on page), share dotaz/stránka, CTR podle pozice | AI citation share, viditelnost v AI funkcích Googlu (jen přes report Generative AI features, pokud ho máte) |
 
 ## <span class="hl">KPI hierarchie</span> — <strong>co reportovat komu</strong>
 
@@ -264,7 +266,7 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
   { title: "Definovat 5–10 strategických KW + 5–10 stránek", desc: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) + 5–10 long-tail. K nim přiřadit 5–10 cílových stránek (pillar + cluster)." },
   { title: "Setup baseline measurements", desc: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organic sessions, CTR, počet indexovaných stránek, DR. Toto je baseline, proti kterému budete měřit progress." },
   { title: "Postavit Looker Studio dashboard", desc: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organic sessions denně + YoY, top 20 stránek podle organic, CWV stav. Sdílet read-only link s týmem." },
-  { title: "Nastavit alerty na anomálie", desc: "Týden 3. GA4 custom insights pro propad organic sessions o 20%+ den-na-den. GSC alerts pro indexační chyby. PageSpeed Insights manuální check čtvrtletně." },
+  { title: "Nastavit alerty na anomálie", desc: "Týden 3. GA4 custom insights pro propad organic sessions o 20%+ den-na-den. E-mailová upozornění z GSC na indexační problémy. PageSpeed Insights manuální check čtvrtletně." },
   { title: "Měsíční review + iterace", desc: "Měsíčně. 1× za měsíc: review dashboardu, identifikovat 1–3 stránky s největším potenciálem (vysoké impressions, nízký CTR = title rewrite kandidáti). Update reportu pro klienta / vedení." }
 ]} />
 
@@ -273,7 +275,7 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
 <Checklist tone="seo" items={[
   "Google Search Console je verifikovaný pro doménu (ne jen URL prefix)",
   "Google Analytics 4 je propojený s GSC v admin sekci",
-  "Sitemap.xml je submitnutý v GSC + Bing Webmaster + Seznam Webmaster",
+  "Soubor sitemap.xml je odeslaný v GSC + Bing Webmaster + Seznam Webmaster",
   "Robots.txt nezakazuje crawl důležitých stránek (zkontrolovat v GSC URL Inspection)",
   "Definovaných 5–10 strategických KW + 5–10 cílových stránek",
   "Baseline measurements zaznamenané s datem (foto / export)",
@@ -305,10 +307,15 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
 
 ## <strong>Měření</strong> <span class="hl">v AI éře</span> — co se mění
 
-V roce 2026 přibývají k klasickému SEO measurementu tři vrstvy, které mají různou prioritu podle typu byznysu:
+V roce 2026 přibývají k klasickému SEO measurementu tři vrstvy, které mají různou prioritu podle typu byznysu.
 
-1. **AI citation share** — viz metrika #8. Důležitost roste, není ale pro každý byznys equally relevantní.
-2. **AI Overview impact** — v některých účtech a rolloutech umožňuje GSC sledovat AI Overview ve Performance reportu (Search appearance). Pokud je dostupný, berte ho jako doplňkový kontext k výkonu, ne jako samostatný KPI.
+<Insight tone="warn" icon="!" label="Oprava k 3. 8. 2026">
+  Původní verze tohoto článku z května uváděla, že AI Overviews jde v Search Console sledovat v reportu Výkon jako typ zobrazení (Search appearance). **To není pravda a nikdy nebylo.** Podle dokumentace Googlu jsou data z AI funkcí započtená v celkových číslech reportu Výkon a **žádný filtr, kterým by se dala oddělit, neexistuje**. Chybu jsem převzal z nepřesných informací a tehdy si ji neověřil proti dokumentaci Googlu. Co existuje doopravdy, je samostatný report Generative AI features od 3. 6. 2026 — popsaný hned pod tímhle odstavcem.
+</Insight>
+
+
+1. **AI citation share** — viz metrika #8. Důležitost roste, není ale pro každý byznys stejně relevantní.
+2. **Viditelnost v AI funkcích Googlu** — od **3. června 2026** má Search Console samostatný report **Generative AI features**. Ukazuje imprese, stránky, země, zařízení a datum; **kliky, CTR, pozici ani dotazy ne** a AI Overviews od AI Mode neoddělí. Zpřístupňuje se postupně, takže ho možná ještě nemáte. Detailně v článku o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/).
 3. **Branded vs generic queries** — v ChatGPT / Perplexity uživatelé chodí spíš s brand-conscious dotazy („nejlepší seo agentura v praze") než s generic („co je seo"). Sledujte poměr brand vs non-brand v GSC i v AI tracking nástrojích — zvlášť u B2B SaaS a prémiových brandů, kde je rozhodovací cesta delší.
 
 <Insight tone="seo" icon="!" label="Strategická poznámka">
@@ -333,6 +340,7 @@ První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — proj
 - **[SEO audit — co kontrolovat 1× ročně](/seo-audit-co-kontrolovat/)** — measurement jako součást ročního auditu
 - **[Local SEO Česko 2026](/local-seo-cesko-2026/)** — specifické metriky pro lokální SEO (GBP Insights, local pack pozice)
 - **[Jak strukturovat pillar content](/jak-strukturovat-pillar-content/)** — engagement metriky pro long-form
+- **[GSC AI report: měření AI viditelnosti](/blog/gsc-ai-segmenty-mereni/)** — co report Generative AI features ukazuje a co ne
 - **Google Search Console** — `search.google.com/search-console`
 - **Google Analytics 4** — `analytics.google.com`
 - **Looker Studio** — `lookerstudio.google.com` (zdarma dashboarding)
