@@ -1,0 +1,181 @@
+---
+title: "Falešná novinka v SEO: ověřte, že funkce existuje"
+description: "Screenshot nové funkce v Search Console byl vyrobený. Google to vyvrátil týž den, zpráva žila dál — i v jednom mém článku. Jak si to ověřit."
+answer: "U tvrzení, že existuje nová funkce, nepomáhá odhadovat důvěryhodnost autora — pomáhá ověřit funkci u výrobce. Projděte nápovědu produktu, changelog a oficiální blog, a hledejte vyjádření zaměstnance. Screenshot není doklad, protože se dá vyrobit. Když funkci nikde u výrobce nenajdete, berte ji jako nepotvrzenou a nestavte na ní práci."
+slug: "falesne-screenshoty-seo-funkci"
+category: "tutorial"
+tags:
+  - "audit-nastroje"
+  - "mereni"
+published: "2026-08-03"
+updated: "2026-08-03"
+keywords:
+  - "falešný screenshot search console"
+  - "ověřit novou funkci google"
+  - "ai overviews filtr search console"
+  - "dezinformace v seo"
+  - "jak ověřit seo novinku"
+variant: "rich"
+stats:
+  - value: "15. 9. 2025"
+    label: "den, kdy se falešná zpráva objevila i kdy ji Google vyvrátil — a přesto přežila"
+  - value: "Platinum"
+    label: "status autora falešného tvrzení v nápovědních fórech Googlu"
+  - value: "3 měsíce"
+    label: "jak dlouho na tomhle webu zůstalo chybné tvrzení o téže neexistující funkci"
+  - value: "4"
+    label: "místa u výrobce, kde se existence funkce dá ověřit"
+faq:
+  - q: "Co se v září 2025 stalo?"
+    a: "V nápovědních fórech Google Search Console se objevilo tvrzení, že Google zahrnul data z AI funkcí přímo do reportu Výkon, doplněné vyrobenou dokumentací s filtrem Search Appearance pro AI Overviews. Rozšířilo se to po LinkedInu a sociálních sítích. John Mueller z Googlu ještě týž den napsal, že žádný takový filtr v Search Console není a screenshot je falešný. Autor příspěvek smazal a omluvil se s tím, že ho původně považoval za schválený, ale schválený nebyl."
+  - q: "Jak si ověřím, že nějaká funkce opravdu existuje?"
+    a: "U výrobce, ne u toho, kdo o ní píše: v nápovědě a dokumentaci produktu, v changelogu, na oficiálním blogu a ve vyjádřeních zaměstnanců. Když ji nenajdete ani na jednom z těch míst, berte ji jako nepotvrzenou a nestavte na ní práci."
+  - q: "Proč nestačí posoudit, jestli je zdroj důvěryhodný?"
+    a: "Protože v tomhle případě zdroj vypadal výborně. Autor měl status Platinum Product Expert, publikoval přímo v nápovědních fórech Googlu a přiložil screenshot. Kdo hodnotil důvěryhodnost, došel ke špatnému závěru. Kdo šel ověřit funkci do nápovědy produktu, došel ke správnému."
+  - q: "Není screenshot dostatečný důkaz?"
+    a: "Ne. Screenshot rozhraní jde vyrobit i bez pokročilých nástrojů — stačí upravit stránku v prohlížeči. Právě v tomhle případě šlo o vyrobenou dokumentaci. Screenshot berte jako ilustraci tvrzení, ne jako jeho doklad."
+  - q: "Jak poznám, že se zpráva jen recykluje?"
+    a: "Podívejte se, na co se odkazuje. Když článek o nové funkci neodkazuje na nápovědu, changelog ani oznámení výrobce, ale na jiný článek, který dělá totéž, jste v recyklaci. Užitečná zkouška: dohledejte původní zdroj celé řady. Někdy zjistíte, že žádný není."
+  - q: "Stalo se to i vám?"
+    a: "Ano, a proto o tom píšu. Náš článek o měření SEO z května 2026 tvrdil, že AI Overviews jde v Search Console sledovat jako typ zobrazení. Je to tatáž neexistující funkce i se stejným názvem; že jsem ji převzal právě z téhle dezinformace, je pravděpodobné, ale doložit tu cestu neumím. Chyba na webu vydržela tři měsíce, opravena byla 3. srpna 2026."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+Patnáctého září 2025 se v SEO komunitě rozšířila zpráva, na kterou všichni čekali: **Google prý zahrnul data z AI funkcí přímo do reportu Výkon v Search Console.** Byl u toho i screenshot dokumentace s novým filtrem.
+
+Funkce nikdy neexistovala. Google to vyvrátil týž den. A totéž nepravdivé tvrzení se přesto objevovalo dál — mimo jiné v jednom článku na tomhle webu, kde vydrželo tři měsíce.
+
+<Insight tone="warn" icon="⚠" label="Proč to píšu z první ruky">
+Náš článek o měření SEO z května 2026 obsahoval větu, že AI Overviews jde v Search Console sledovat jako **typ zobrazení (Search appearance)**. Je to tatáž neexistující funkce, včetně názvu — že jsem ji převzal právě z tohohle případu, je pravděpodobné, ale doložit tu cestu neumím. Opravil jsem to [teprve 3. srpna 2026](/blog/mereni-seo-vykonu-2026/). Tenhle článek není poučování — je to popis vlastní chyby a toho, co ji mělo zachytit.
+</Insight>
+
+## Co se stalo
+
+Celý příběh proběhl v jednom dni. Jmenuji jen mluvčího výrobce, který vystupoval veřejně za Google; ostatní aktéry ne — pointou není pranýřovat konkrétní lidi a jeden z nich se veřejně omluvil. Případ je přitom celý dohledatelný ze zdrojů uvedených dole.
+
+<Stepper
+  steps={[
+    {
+      title: "Tvrzení ve fóru Googlu",
+      desc: "Uživatel se statusem Platinum Product Expert napsal v nápovědních fórech Google Search Console, že Google zahrnul data z AI funkcí přímo do reportu Výkon. Přiložil vyrobenou dokumentaci s filtrem Search Appearance pro AI Overviews."
+    },
+    {
+      title: "Rozšíření po sítích",
+      desc: "Zpráva se dostala na LinkedIn a další sítě. Jeden SEO konzultant ji sdílel s komentářem „FINALLY HAPPENING“, později stanovisko upravil."
+    },
+    {
+      title: "Vyvrácení od Googlu",
+      desc: "John Mueller z Googlu napsal na LinkedInu, že žádný takový filtr v Search Console není a že screenshot je falešný."
+    },
+    {
+      title: "Stažení a omluva",
+      desc: "Autor příspěvek smazal a na LinkedInu se omluvil s tím, že ho původně považoval za schválený, ale schválený nebyl."
+    },
+  ]}
+/>
+
+Případ je dobře doložený a Google ho veřejně vyvrátil. Zajímavé na něm je něco jiného: **proč se to chytlo a proč to přežilo i po vyvrácení.**
+
+## Proč tomu tolik lidí uvěřilo
+
+Obvyklá rada zní „ověřujte si zdroje". Tady by nepomohla, protože zdroj vypadal dobře.
+
+<CompareTable
+  leftLabel="Co vzbuzovalo důvěru"
+  leftTone="accent"
+  rightLabel="Proč to nic nedokazovalo"
+  rightTone="aeo"
+  rows={[
+    { icon: "◆", label: "Status autora", left: "Platinum Product Expert", right: "je to komunitní status, ne role v Googlu" },
+    { icon: "◈", label: "Místo publikace", left: "nápovědní fóra Googlu", right: "fórum je uživatelské, obsah nepíše Google" },
+    { icon: "▤", label: "Screenshot", left: "vypadal jako dokumentace", right: "rozhraní i dokumentaci lze upravit v prohlížeči" },
+    { icon: "▲", label: "Obsah zprávy", left: "přesně to, co komunita chtěla", right: "shoda s přáním není důkaz" },
+  ]}
+/>
+
+Ten poslední řádek je nejdůležitější. Když se data z AI funkcí slila do celkových čísel v reportu Výkon, zůstala díra: nešlo poznat, co dělá AI a co klasické vyhledávání. **Falešná zpráva slibovala přesně tu chybějící funkci** — a to je situace, ve které si lidé ověřují nejméně.
+
+<Insight tone="signal" icon="◆" label="Test, který si můžete udělat sami">
+Když mě nějaká novinka potěší dřív, než jsem ji ověřil, beru to jako signál, ne jako odměnu. **Čím víc se zpráva hodí, tím dřív si ji ověřit** — u mě to selhalo přesně takhle: funkce, po které jsem sám volal, se prostě „objevila".
+</Insight>
+
+## Jak si ověřit, že funkce existuje
+
+Klíčový posun je v tom, co ověřujete. **Neposuzujte autora, ověřte funkci** — a to u toho, kdo ji dělá.
+
+<Checklist
+  title="Čtyři místa, kde se existence funkce dá ověřit"
+  tone="geo"
+  items={[
+    { title: "Nápověda produktu", desc: "U Googlu support.google.com, u Microsoftu nápověda Bing Webmaster Tools. Funkce, která existuje, tam bývá popsaná — a bývá tam i to, co neumí." },
+    { title: "Changelog nebo poznámky k verzím", desc: "Datovaný seznam změn. Když funkce vznikla, má tam obvykle záznam s datem, který si můžete ověřit." },
+    { title: "Oficiální blog", desc: "U Googlu Search Central Blog. Větší změny se oznamují tady a dá se z toho vyčíst i rozsah nasazení." },
+    { title: "Vyjádření zaměstnanců", desc: "Lidé z produktových týmů se k dotazům vyjadřují na sítích. Právě takhle se tenhle případ vyvrátil — jednou větou od zaměstnance Googlu." },
+  ]}
+/>
+
+### V jakém pořadí hledat
+
+Zabere to pár minut. Tohle pořadí se mi osvědčilo, ale není to neomylná hierarchie — u některých produktů přijde dřív oznámení na blogu než záznam v nápovědě.
+
+1. **Nápověda a dokumentace produktu.** Hledejte název funkce přímo v nápovědě; u Googlu podle produktu na `support.google.com` i na `developers.google.com`. Operátor `site:` ve vyhledávači je užitečná pomůcka, ne jediné síto — dokumentace bývá roztroušená.
+2. **Changelog nebo poznámky k verzím.** Hledáte datovaný záznam. Když existuje, máte i datum, které si můžete ověřit proti tomu, co tvrdí článek.
+3. **Oficiální blog.** U Googlu Search Central Blog. Větší změny se oznamují tady a bývá z nich patrný i rozsah nasazení.
+4. **Vyjádření zaměstnanců.** Až nakonec. Lidé z produktových týmů odpovídají na sítích a právě takhle se tenhle případ vyvrátil — jednou větou.
+
+Když funkci nenajdete ani v jednom z těch kroků, závěr „asi se to teprve chystá" je ten pohodlnější, ale horší. Bezpečnější je **počítat s tím, že neexistuje**, a nestavět na ní práci.
+
+A pokud výrobce změnu opravdu ještě nepopsal — což se stává u postupného zpřístupňování — pak platí totéž, jen mírněji: dá se o tom psát, ale s uvedením, že jde o nepotvrzené pozorování, a bez toho, aby na tom stálo doporučení.
+
+## Jak poznat, že se zpráva jen recykluje
+
+Druhá polovina problému nastala až po vyvrácení. Původní příspěvek zmizel, ale řada textů, které z něj vycházely, zůstala bez opravy.
+
+<CompareTable
+  leftLabel="Zpráva stojí na zdroji"
+  leftTone="geo"
+  rightLabel="Zpráva se jen recykluje"
+  rightTone="aeo"
+  rows={[
+    { icon: "◈", label: "Kam vede odkaz", left: "nápověda, changelog, oznámení výrobce", right: "jiný článek, který dělá totéž" },
+    { icon: "◇", label: "Datum", left: "uvedené a ověřitelné", right: "chybí, nebo je jen „nedávno“" },
+    { icon: "▤", label: "Rozsah", left: "popsaný, včetně omezení", right: "obecný, samá možnost" },
+    { icon: "▲", label: "Když zdroj dohledáte", left: "existuje a odpovídá tvrzení", right: "končí to u dalšího přepisu" },
+  ]}
+/>
+
+Praktická zkouška zabere pár minut: u tvrzení, které chcete použít, **dohledejte původní zdroj celé řady odkazů.** Někdy zjistíte, že žádný není — všechny články odkazují na sebe navzájem.
+
+## Nejčastější chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Posuzovat důvěryhodnost autora místo existence funkce" fix="Ověřte funkci u výrobce.">
+  V tomhle případě měl autor oficiálně vypadající status a publikoval ve fóru Googlu. Kdo hodnotil autora, došel ke špatnému závěru. Kdo šel do nápovědy produktu, došel ke správnému.
+  </Mistake>
+
+  <Mistake num="02" title="Brát screenshot jako doklad" fix="Berte ho jako ilustraci.">
+  Screenshot rozhraní i dokumentace jde vyrobit úpravou stránky v prohlížeči. Právě to se stalo. Doklad je odkaz na zdroj u výrobce, ne obrázek.
+  </Mistake>
+
+  <Mistake num="03" title="Ověřovat míň, když se zpráva hodí" fix="Otočte to.">
+  Zprávy, které potvrzují, co si přejeme, procházejí kontrolou snáz. Přitom právě u nich je chyba nejdražší, protože se na ně naváže rozhodnutí.
+  </Mistake>
+
+  <Mistake num="04" title="Neopravit to, co jste převzali" fix="Vracejte se k tomu.">
+  Vyvrácení bylo veřejné a rychlé. Přesto řada těch, kdo zprávu převzali, opravu nikdy neudělala — a chyba žila dál. Já k nim patřím: v našem článku vydržela tři měsíce.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z toho odnést
+
+Ten případ není o jednom člověku, který udělal chybu, ani o Googlu. Je o tom, že **v SEO se tvrzení o funkcích šíří rychleji, než se ověřují** — a že po vyvrácení se zpětně opravuje málokdy.
+
+Prakticky z toho plyne jedna změna návyku, a je levná: než tvrzení o nové funkci použijete, **strávíte dvě minuty na stránce výrobce.** Ne u autora, ne v diskusi, ne u screenshotu. U výrobce.
+
+Jak podobně přistupovat k číslům a studiím, rozebíráme v návodu [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/). Co v Search Console ohledně AI funkcí existuje doopravdy, je v článku o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/).
