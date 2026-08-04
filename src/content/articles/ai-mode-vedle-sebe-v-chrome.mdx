@@ -1,0 +1,179 @@
+---
+title: "AI Mode v Chromu: web se otevře vedle odpovědi"
+description: "Google v AI Mode v Chromu otevírá odkaz vedle odpovědi, ne místo ní. Co to dělá s vaší stránkou, když vedle ní zůstává otevřený panel AI Mode."
+answer: "Google od 16. dubna 2026 v AI Mode v Chromu na desktopu otevírá kliknutý odkaz vedle odpovědi — AI Mode zůstává otevřený a uživatel se může doptávat dál. Vaše stránka se tedy zobrazí v užším okně a vedle ní zůstává otevřený panel AI Mode. Zatím jen v USA a v tomto oznámení jen pro desktop."
+slug: "ai-mode-vedle-sebe-v-chrome"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "obsah"
+published: "2026-08-04"
+updated: "2026-08-04"
+keywords:
+  - "ai mode chrome"
+  - "ai mode vedle sebe"
+  - "google ai mode odkazy"
+  - "rozdělené okno chrome ai"
+  - "ai mode desktop"
+variant: "rich"
+stats:
+  - value: "16. 4."
+    label: "2026 — datum oznámení na blogu Googlu, ne srpnová novinka"
+  - value: "1"
+    label: "země, kde to Google při oznámení spustil: USA"
+  - value: "desktop"
+    label: "platforma, pro kterou Google rozdělené zobrazení popsal"
+faq:
+  - q: "Co se v AI Mode v Chromu změnilo?"
+    a: "Google 16. dubna 2026 oznámil, že v AI Mode v Chromu na desktopu se kliknutý odkaz otevře vedle odpovědi. Doslova píše, že kliknutí na odkaz otevře webovou stránku vedle AI Mode. Panel s odpovědí tedy nezmizí a uživatel může pokračovat v dotazech, aniž by přepínal karty."
+  - q: "Platí to i na mobilu?"
+    a: "Rozdělené zobrazení Google popisuje pro desktop. Pro mobil zmiňuje v témže oznámení něco jiného — nabídku plus ve vyhledávacím poli na stránce nové karty, přes kterou jde do dotazu přidat nedávné karty."
+  - q: "Funguje to v Česku?"
+    a: "Při oznámení ne. Google napsal, že je funkce dostupná v USA a že ji brzy rozšíří do dalších míst po světě. Žádný termín ani seznam dalších zemí neuvedl, Česko nezmínil. Ověřit si to odsud tedy spolehlivě nejde."
+  - q: "Jak se taková návštěva projeví v analytice?"
+    a: "Google to v oznámení neřeší a my to netvrdíme. Není z něj poznat, jak se návštěva chová z hlediska zdroje návštěvnosti ani jestli ji Search Console vykazuje jinak. Bez vlastního testu nebo dalšího zdroje se to z oznámení vyčíst nedá."
+  - q: "Co to znamená pro moji stránku?"
+    a: "Dvě věci plynou přímo z popisu funkce. Stránka dostane míň šířky než celá karta prohlížeče a vedle ní zůstává otevřený AI Mode, takže uživatel může dál pracovat s odpovědí a pokládat další dotazy. Poměr rozdělení okna Google neuvádí. Všechno ostatní v článku jsou odvozená doporučení, ne měření."
+  - q: "Je to totéž co AI prohlížeče typu Atlas nebo Comet?"
+    a: "Ne. Atlas a Comet jsou samostatné prohlížeče od jiných firem a hlavní problém u nich je identifikace a měření. Tady jde o funkci uvnitř Chromu, kde AI Mode zůstává vedle otevřené stránky. Společné mají jen to, že se čtení obsahu přesouvá do prostředí, které kontroluje někdo jiný."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+Novinka není v tom, že AI Mode odkazuje na weby. Ta je v tom, **co se stane po kliknutí**: odpověď nezmizí a zůstane vedle vaší stránky.
+
+## Co Google <span class="hl">oznámil</span>
+
+Na svém blogu 16. dubna 2026 — tedy ne v srpnu, jak se to místy podává mezi čerstvými novinkami — Google popsal změnu jednou větou: *„clicking a link opens the webpage side-by-side with AI Mode."* Kliknutí na odkaz otevře stránku **vedle** AI Mode.
+
+Panel s odpovědí tedy nezmizí. Uživatel si otevře váš text a může se rovnou doptat dál, aniž by přepínal karty.
+
+Ve stejném oznámení Google přidal ještě možnost vzít do dotazu **víc otevřených karet, obrázků nebo souborů PDF** a poslat je do AI Mode jako kontext.
+
+<Insight tone="aeo" icon="i" label="Dostupnost — a proč to odsud nevyzkoušíte">
+Google napsal, že je to *„now available in the U.S., and we'll expand soon to more places around the world."* **Žádný termín, žádný seznam dalších zemí, o Česku ani slovo.** Kdo vám dnes ukazuje, jak se to chová na českých výsledcích, ukazuje něco jiného.
+</Insight>
+
+<Checklist
+  title="Platí jen tehdy, když sedí všechny čtyři podmínky"
+  tone="geo"
+  items={[
+    { title: "Jen v AI Mode", desc: "Ne v běžných výsledcích vyhledávání a ne v AI Overviews." },
+    { title: "Popsané pro Chrome", desc: "Google to v tomhle oznámení popisuje pro AI Mode v Chromu; o jiných prohlížečích nic neříká." },
+    { title: "Jen na desktopu", desc: "Pro mobil Google v témže postu popisuje jinou věc — přidávání karet do dotazu." },
+    { title: "Při oznámení jen v USA", desc: "Rozšíření do dalších zemí Google slíbil bez termínu a bez seznamu." },
+  ]}
+/>
+
+## Co se tím mění pro <strong>vaši stránku</strong>
+
+Z popisu plynou přímo dvě věci. Praktické důsledky, které z nich vyvozuju o kus níž, už jsou odvození, ne zjištění.
+
+**Za prvé: vaše stránka dostane míň šířky než celá karta.** O kolik, Google neuvádí — poměr rozdělení okna v oznámení není. Jisté je jen to, že se o okno dělí s panelem, takže se layout přiblíží šířkám, které web běžně řeší až u tabletu.
+
+**Za druhé: vedle vás zůstává otevřený AI Mode.** Uživatel může pokračovat v odpovědi a ptát se dál, aniž by se musel vracet.
+
+<CompareTable
+  leftLabel="Klasický proklik"
+  leftTone="seo"
+  rightLabel="AI Mode vedle sebe"
+  rightTone="aio"
+  rows={[
+    { icon: "▤", label: "Šířka pro váš obsah", left: "celá karta", right: "část okna, poměr Google neuvádí" },
+    { icon: "◈", label: "Odpověď AI", left: "zmizí", right: "zůstává vedle" },
+    { icon: "▲", label: "Návrat k odpovědi", left: "tlačítko zpět", right: "AI Mode zůstává otevřený" },
+    { icon: "◐", label: "Další otázka", left: "nový dotaz", right: "rovnou v panelu" },
+  ]}
+/>
+
+## AI Mode zůstává <span class="hl">vedle vaší stránky</span>
+
+Tohle je podstatnější než šířka okna. V klasickém výsledku vyhledávání se uživatel musí vrátit zpátky, aby zkusil jiný zdroj — a to je bariéra, i když malá. Tady je menší.
+
+Jako pracovní závěr z toho plyne, že první obrazovka vašeho textu bude důležitější než dřív. Když návštěvník po pár sekundách nevidí odpověď na to, kvůli čemu přišel, má vedle sebe otevřený AI Mode a změna směru je snazší. Souvisí to s tím, [co se dnes děje s prokliky obecně](/blog/zero-click-ai/) — jen o krok dál: proklik proběhl, ale soutěž o pozornost pokračuje i po něm.
+
+## Dva výklady <span class="hl">téže změny</span>
+
+Google to rámuje jako pohodlí pro uživatele: díky rozdělenému zobrazení je *„much easier to visit relevant websites"* a porovnávat detaily bez přepínání karet. Vzato doslova, je to argument ve prospěch webů: Google to prezentuje jako snazší cestu na relevantní weby. Že by z toho plynulo víc návštěv, ale v oznámení není.
+
+Vydavatelská čtení bývá opatrnější: dokud panel s odpovědí zůstává na obrazovce, zůstává na ní i nabídka odejít jinam. Návštěva u vás pak nemusí být konec cesty, ale jen jedna z průběžných zastávek.
+
+Obojí se může projevit různě podle typu dotazu a stránky. **Rozhodnout mezi těmi výklady dnes nejde**, protože k tomu nejsou data — ani od Googlu, ani z vlastního měření, viz níž.
+
+## Co Google <strong>neřekl</strong>
+
+<Insight tone="warn" icon="!" label="Hranice mezi doloženým a odhadem">
+V oznámení **není** ani slovo o tom, jak se taková návštěva chová v analytice, jestli ji Search Console vykazuje jinak, v jakém poměru je okno rozdělené, ani jestli je to chování výchozí, nebo volitelné. **Nevíme to a netvrdíme to.** Všechno, co v tomhle článku následuje jako doporučení, je odvozené z toho, jak funkce podle popisu vypadá — ne z měření.
+</Insight>
+
+To je důležité hlavně proto, že se u podobných změn rychle objeví „analýzy" s procenty dopadu na CTR. Zatím není z čeho je spočítat.
+
+## V analytice to <strong>nepoznáte</strong> — pokud si to nenastavíte
+
+Jedna praktická poznámka, protože se to nabízí jako první nápad: **standardní dimenze rozlišení obrazovky v GA4 popisuje displej zařízení, ne šířku okna.** Uživatel s monitorem 2560 pixelů zůstane uživatelem s monitorem 2560 pixelů i tehdy, když si váš web prohlíží v polovičním panelu.
+
+Pokud chcete vědět, jestli u vás roste podíl úzkých desktopových oken, musíte si šířku viewportu poslat sami jako vlastní parametr. Neřekne vám to, že návštěva přišla z AI Mode — jen to, že se mění tvar okna, ve kterém lidé čtou.
+
+## Co s tím <span class="hl">udělat</span>
+
+<Checklist
+  title="Čtyři věci, které v užším okně dávají smysl"
+  tone="aeo"
+  items={[
+    { title: "Otestujte stránku v zúženém okně", desc: "Ne v mobilním emulátoru, ale zúžením okna prohlížeče na desktopu. Přesnou šířku Google neuvádí, jde tedy o orientační test, ne o přesnou simulaci." },
+    { title: "Dejte odpověď nad ohyb", desc: "Krátká odpověď hned pod nadpisem má smysl vždycky, tady ale dvojnásob — konkurenční zdroj je jeden klik daleko." },
+    { title: "Podívejte se, kolik místa berou lišty a sticky prvky", desc: "Cookie lišta, sticky hlavička a plovoucí tlačítko chatu spolknou v užším okně mnohem větší podíl plochy než na plné šířce." },
+    { title: "Zkontrolujte tabulky a široké bloky kódu", desc: "To, co se na plné šířce vejde, začne v polovičním okně přetékat nebo se zalamovat do nečitelna." },
+  ]}
+/>
+
+Nic z toho není nová disciplína. Je to responzivita, kterou weby běžně řeší kvůli mobilům — jen se teď týká i návštěv, které v datech vypadají jako desktopové.
+
+## Čtyři chyby, které se <strong>nabízejí</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Brát to jako srpnovou novinku" fix="Oznámení je z 16. dubna 2026.">
+    Kolovalo to mezi čerstvými zprávami ještě v srpnu. Datum si ověřte, než se na to v prezentaci odvoláte jako na poslední vývoj.
+  </Mistake>
+  <Mistake num="02" title="Testovat to z Česka a vyvozovat závěry" fix="Google to při oznámení spustil v USA.">
+    Když to tady nevidíte, neznamená to, že se popis nezakládá na pravdě. Znamená to, že tu funkce nemusí být.
+  </Mistake>
+  <Mistake num="03" title="Počítat dopad na CTR" fix="Google nezveřejnil nic, z čeho by to šlo spočítat.">
+    Čísla, která se k takové změně objeví během pár týdnů, nemají v tuhle chvíli o co se opřít.
+  </Mistake>
+  <Mistake num="04" title="Zaměňovat to s AI prohlížeči" fix="Atlas a Comet jsou jiné produkty s jinými problémy.">
+    U [AI prohlížečů](/blog/ai-prohlizece-atlas-comet/) je hlavní téma identifikace a měření. Tady jde o funkci uvnitř Chromu.
+  </Mistake>
+</MistakeGrid>
+
+## Jak si to <strong>nasimulovat</strong> bez přístupu k funkci
+
+Přesné rozhraní nenapodobíte, ale to podstatné — kolik vašeho obsahu se vejde do užšího okna — si ověříte za dvě minuty:
+
+<Checklist
+  title="Dvouminutový test"
+  tone="seo"
+  items={[
+    { title: "Výrazně zúžete okno prohlížeče", desc: "Ne přes vývojářské nástroje v mobilním režimu — ten simuluje dotykové zařízení. Stačí okno přetáhnout. Přesnou šířku Google neuvádí, takže je to orientační simulace, ne replika." },
+    { title: "Podívejte se, co je vidět bez scrollování", desc: "Je tam nadpis a odpověď na otázku, se kterou člověk přišel? Nebo hlavička, lišta a obrázek?" },
+    { title: "Projděte tabulky, kód a grafy", desc: "Co se na plné šířce vejde, tady začne přetékat. Vodorovné posouvání uvnitř bloku je řešení, useknutý obsah není." },
+    { title: "Zavřete a znovu otevřete stránku", desc: "Cookie lišta a případný modál se v užším okně ukážou v plné parádě. Může to být první věc, kterou návštěvník uvidí." },
+  ]}
+/>
+
+Ten test má smysl i bez ohledu na AI Mode. Úzká desktopová okna používají lidé i běžně — vedle dokumentu, vedle videohovoru, na rozdělené obrazovce.
+
+Kdy se funkce dostane do Česka, Google neřekl — formulace *„we'll expand soon to more places"* je bez data i bez seznamu zemí. Připravit stránky na užší okno se ale vyplatí bez ohledu na to, protože stejným směrem jde i [AI Mode jako celek](/blog/google-ai-mode/) a rozdíl [proti AI Overviews](/blog/ai-mode-vs-ai-overviews/) se dál stírá.
+
+## Shrnutí
+
+- Google **16. 4. 2026** oznámil, že v AI Mode v Chromu na desktopu se kliknutý odkaz otevře **vedle** odpovědi.
+- **AI Mode zůstává otevřený** a uživatel se může doptávat dál.
+- Pro vaši stránku z toho plyne **užší okno** a to, že **AI Mode zůstává vedle ní otevřený**.
+- Google **neřekl nic** o měření takové návštěvy, o poměru rozdělení okna ani o tom, jestli jde o výchozí chování.
+- Dostupnost při oznámení: **USA**, rozšíření bez termínu.
+- Co dělat: otestovat stránku v užším okně, dát odpověď nahoru, uklidit sticky prvky. Ty úpravy dávají smysl i mimo tuhle funkci — úzká desktopová okna lidé používají i běžně.

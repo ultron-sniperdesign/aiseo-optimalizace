@@ -168,6 +168,17 @@ vykreslit, nebo přidej:
 IMPORTANT: do not draw any digits, numbers, percentages or figures anywhere in the scene.
 ```
 
+**d) Tečka za podtitulem — ověřeno 2026-08-04.** Šablona výš končí podtitul mezerou a tečkou
+(`reading exactly: <PODTITUL> .`) jako oddělovačem. Model to občas vykreslí doslova a v obrázku
+pak stojí „Web se otevře vedle odpovědi ." s mezerou před tečkou. Pojistka:
+
+```
+PUNCTUATION RULE: render the subtitle without any trailing period, comma or other punctuation
+at its end.
+```
+
+Nebo tečku v promptu vůbec nepoužívat a instrukci ukončit koncem řádku.
+
 **c) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
 (`PROPADY V YDAVATELŮ`). Pojistka:
 
