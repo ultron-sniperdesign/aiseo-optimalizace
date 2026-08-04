@@ -1,0 +1,209 @@
+---
+title: "Search Console měří i TikTok. Víc dat než u AI funkcí"
+description: "Search Console má nový typ služby pro Instagram, TikTok, X a YouTube. Dává kliky, CTR i pozice — tedy metriky, které report generativních AI funkcí nemá."
+answer: "Search Console má od července 2026 nový typ služby pro účty na Instagramu, TikToku, X a YouTube. Ukáže kliky, imprese, míru prokliku a průměrnou pozici obsahu z těch platforem ve Vyhledávání, Discoveru a Zprávách Google. Nesleduje dění na platformě samotné a Google ho zavádí postupně, takže ho nemusíte mít hned."
+slug: "platform-properties-search-console"
+category: "analysis"
+tags:
+  - "mereni"
+  - "ai-platformy"
+published: "2026-08-04"
+updated: "2026-08-04"
+keywords:
+  - "platform properties search console"
+  - "služby platforem search console"
+  - "search console tiktok instagram"
+  - "měření sociálních sítí v googlu"
+  - "search console youtube report"
+variant: "rich"
+stats:
+  - value: "4"
+    label: "podporované platformy: Instagram, TikTok, X a YouTube"
+  - value: "4"
+    label: "metriky v přehledu výkonu: kliky, imprese, CTR a průměrná pozice"
+  - value: "3"
+    label: "plochy Googlu jako zdroj dat: Vyhledávání, Objevit a Zprávy"
+  - value: "0"
+    label: "údajů o tom, co se děje na platformě samotné"
+faq:
+  - q: "Co jsou služby platforem v Search Console?"
+    a: "Nový typ služby (property) pro účty na sociálních a video platformách. Podle nápovědy Googlu díky nim můžete v Search Console sledovat, jak lidé nacházejí váš obsah při vyhledávání na Googlu. Podporované jsou čtyři platformy: Instagram, TikTok, X a YouTube. Google je oznámil 7. července 2026 a podle nápovědy je zavádí postupně."
+  - q: "Jaké metriky služby platforem ukazují?"
+    a: "Přehled výkonu dává celkový počet kliknutí a zobrazení, průměrnou míru prokliku a průměrnou pozici ve vyhledávání, s možností filtrovat na konkrétní příspěvky a dotazy. K tomu je přehled statistik s trendy a nejvýkonnějším obsahem a sekce Úspěchy s milníky založenými na kliknutích. Zdrojem dat je Vyhledávání Google, feed Objevit a Zprávy Google."
+  - q: "Ukáže mi Search Console, kolik zhlédnutí má moje video na TikToku?"
+    a: "Ne. Nápověda to uvádí výslovně: služby platforem nesledují aktivitu na samotných platformách a neukážou, kolikrát se video zobrazilo na TikToku. Měří jen tu část, která jde přes Google. Statistiky dosahu na platformě zůstávají v nástrojích dané platformy a obě čísla se mohou výrazně lišit, protože měří jinou věc."
+  - q: "Jak se služba platformy ověřuje?"
+    a: "Podle nápovědy buď automatickým propojením přes existující webovou službu, nebo přímým přihlášením k platformě — tedy ne DNS záznamem ani HTML souborem jako u domény. Google vlastnictví periodicky překontrolovává: pokud dojde ke ztrátě propojení, přístup se pozastaví, dokud ho znovu neověříte."
+  - q: "Mám to v Search Console vidět hned?"
+    a: "Nemusíte. Nápověda Googlu píše, že funkci zavádí postupně a že pro vás zatím nemusí být k dispozici. Část oborových přehledů přitom tvrdí, že je dostupná globálně pro všechny — to je silnější tvrzení, než jaké dává sám Google."
+  - q: "Zjistím z toho, jestli mě citují AI odpovědi?"
+    a: "Ne. Tenhle report měří obsah z Instagramu, TikToku, X a YouTube ve Vyhledávání, Objevit a Zprávách. Citace v AI odpovědích neřeší a kliky z AI Overviews ani z AI Mode neodděluje o nic víc než zbytek Search Console. Na generativní AI funkce je samostatný report a ten dává jen imprese."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+Search Console byla dosud hlavně o měření vlastního webu. Od 7. července 2026 k tomu přidává i obsah, který publikujete na cizích platformách — **na Instagramu, TikToku, X a YouTube.**
+
+A je v tom rozdíl, který stojí za pozornost.
+
+## Co jsou <span class="hl">služby platforem</span>
+
+Jde o nový **typ služby** (property) v Search Console. Vedle doménové služby a služby s předponou URL si teď můžete přidat účet na jedné ze čtyř podporovaných platforem:
+
+<Checklist
+  title="Podporované platformy"
+  tone="geo"
+  items={[
+    { title: "Instagram", desc: "účet a jeho příspěvky — měřené jen tam, kde je ukazuje Google." },
+    { title: "TikTok", desc: "účet a jeho videa — opět jen ta část, která jde přes Google." },
+    { title: "X", desc: "účet a jeho příspěvky." },
+    { title: "YouTube", desc: "kanál a jeho videa." },
+  ]}
+/>
+
+Nápověda Googlu to popisuje stroze: díky službám platforem *„můžete pomocí Search Console sledovat, jak lidé nacházejí váš obsah při vyhledávání na Googlu."* Ta věta je zkratka — popis reportů v téže nápovědě uvádí jako zdroj dat i feed Objevit a Zprávy Google tam, kde se obsah zobrazuje.
+
+## Co report <strong>dává</strong> — a proč je to <span class="hl">překvapení</span>
+
+Přehled výkonu u služby platformy obsahuje **celkový počet kliknutí a zobrazení, průměrnou míru prokliku a průměrnou pozici ve vyhledávání**. Filtrovat jde na konkrétní příspěvky i dotazy. K tomu Google přidává přehled statistik s trendy a sekci Úspěchy s milníky založenými na kliknutích.
+
+Teď to srovnejte s reportem, který na svém vlastním webu dostanete pro generativní AI funkce:
+
+<CompareTable
+  leftLabel="Služby platforem"
+  leftTone="geo"
+  rightLabel="Generativní AI funkce"
+  rightTone="aio"
+  rows={[
+    { icon: "▲", label: "Kliky", left: "ano", right: "ne" },
+    { icon: "◆", label: "Imprese", left: "ano", right: "ano" },
+    { icon: "◐", label: "Míra prokliku", left: "ano", right: "ne" },
+    { icon: "▤", label: "Průměrná pozice", left: "ano", right: "ne" },
+    { icon: "◈", label: "Dotazy", left: "ano", right: "ne" },
+    { icon: "✦", label: "Čeho se to týká", left: "váš obsah na cizí platformě", right: "váš vlastní web" },
+  ]}
+/>
+
+<Insight tone="warn" icon="!" label="Tohle je ta pointa">
+U obsahu, který jste zveřejnili **na cizí platformě**, vám Google dnes dá kliky, míru prokliku i průměrnou pozici. U generativních AI funkcí **na vašem vlastním webu** dostanete pořád jen imprese — [co ten report umí a neumí](/blog/gsc-ai-segmenty-mereni/) jsme rozebírali zvlášť. Část toho rozdílu je pochopitelná: proklik z výsledku na TikTok je běžný proklik, kdežto velká část dotazů v Googlu dnes končí [bez prokliknutí kamkoli](/blog/zero-click-ai/). Proč Google u jednoho reportu zveřejňuje kliky a u druhého ne, ale nikde nevysvětluje. Stojí za pojmenování aspoň to, jak to dnes vypadá: u obsahu na cizí platformě dostanete širší sadu metrik než u vlastního webu v generativních AI funkcích.
+</Insight>
+
+## Co report <strong>nesleduje</strong>
+
+Tohle je nejdůležitější věta celého článku a nápověda ji říká výslovně: **služby platforem nesledují aktivitu na samotných platformách.** Googlův vlastní příklad — neukážou vám, kolikrát se vaše video zobrazilo na TikToku.
+
+Čísla se proto mohou výrazně lišit — statistiky platformy bývají řádově jiné než data v Search Console. Obojí je správně, jen měří jinou věc:
+
+<CompareTable
+  leftLabel="Statistiky platformy"
+  leftTone="seo"
+  rightLabel="Služba platformy v GSC"
+  rightTone="geo"
+  rows={[
+    { icon: "◆", label: "Co měří", left: "dosah uvnitř aplikace", right: "cestu přes Google" },
+    { icon: "▲", label: "Co ta čísla představují", left: "interakce uvnitř aplikace", right: "zobrazení a kliky na plochách Googlu" },
+    { icon: "◈", label: "Kde to najdete", left: "nástroje dané platformy", right: "Search Console" },
+  ]}
+/>
+
+Zdrojem dat jsou tři plochy Googlu: **Vyhledávání, feed Objevit a Zprávy Google** — tam, kde se obsah zobrazuje.
+
+## Kliky vedou <strong>na platformu</strong>, ne na váš web
+
+Nápověda tohle takhle neříká, ale z povahy reportu to plyne a je dobré si to říct nahlas: **klik, který report počítá, vede na obsah na dané platformě.** Ne na váš web.
+
+Prakticky to znamená tři věci:
+
+1. **Nejsou to návštěvy vašich stránek**, takže se v GA4 na webu jako takové neprojeví. Kdo je bude sčítat s organickou návštěvností, míchá dvě různé věci.
+2. **Konverzi na webu tenhle report neukáže.** Uživatel skončí na platformě; případný dopad na web se projeví až nepřímo a připsat ho konkrétnímu kliku z reportu je těžké.
+3. **Zato je to samostatná vrstva měření** toho, jak se obsah z platforem na plochách Googlu zobrazuje a proklikává. Když se vaše video ukáže ve Vyhledávání na oborový dotaz, je to informace, kterou byste jinak jen odhadovali.
+
+<Insight tone="geo" icon="✦" label="Jak to zařadit do reportingu">
+Nedávejte tahle čísla do stejného sloupce jako návštěvnost webu. Patří vedle brandových metrik — k [zmínkám o značce](/blog/ai-brand-mentions/) a brandovému vyhledávání. Odpovídají totiž na jinou otázku: ne „kolik lidí přišlo“, ale „kde všude nás Google ukazuje“.
+</Insight>
+
+## Jak se to <span class="hl">připojí</span>
+
+Ověření nejde přes DNS záznam ani HTML soubor, jak jste zvyklí u domény. Nápověda uvádí dvě cesty: *„Automatické propojení prostřednictvím existující webové služby nebo přímé přihlášení k platformě."*
+
+Přidání proběhne přes výběr služby a volbu **Přidat službu**, kde jsou ty čtyři platformy nabídnuté vedle webu.
+
+Jedna věc, na kterou si dát pozor: Google vlastnictví **periodicky překontrolovává**. Doslova: *„Pokud dojde ke ztrátě propojení, přístup se pozastaví, dokud ho znovu neověříte."* Když tedy ve firmě odejde člověk, přes jehož účet bylo propojení navázané, data se zastaví.
+
+<Insight tone="aeo" icon="i" label="Jedno tvrzení, které jsme nepřevzali">
+Několik oborových přehledů uvádí, že jde o **první typ služby v Search Console, který nevyžaduje vlastnictví domény**. Zní to logicky, ale v nápovědě takhle formulované není — a co v ní není, sem nepíšeme. Doložená je jen mechanika ověření popsaná výš.
+</Insight>
+
+## Dostupnost: co říká Google a co <strong>říkají přehledy</strong>
+
+Nápověda končí větou: *„Tuhle funkci zavádíme postupně, takže pro vás zatím nemusí být k dispozici."*
+
+Nejméně tři oborové přehledy přitom píšou, že jsou služby platforem **dostupné globálně pro všechny**. To je silnější tvrzení, než jaké dává sám Google — a pokud podle něj někdo usoudí, že mu Search Console nefunguje, hledá chybu, která není jeho.
+
+Držte se formulace z nápovědy. Když službu nevidíte, může jít o postupné zavádění stejně jako o problém s účtem nebo ověřením.
+
+## Pro koho to má <span class="hl">smysl</span>
+
+<Checklist
+  title="Kdy si službu platformy přidat"
+  tone="aeo"
+  items={[
+    { title: "Děláte video a chcete vědět, co z toho vytěží Google", desc: "Zhlédnutí na YouTube a výkon téhož obsahu na plochách Googlu jsou dvě různé věci. Tohle je oficiální zdroj pro tu druhou." },
+    { title: "Řešíte, jestli se práce na popiscích vyplácí", desc: "Přepis, kapitoly a popis videa doporučujeme kvůli AI. Teď se dá aspoň sledovat, jestli se výkon takového obsahu na plochách Googlu mění." },
+    { title: "Publikujete zprávy nebo aktuality", desc: "Data podle nápovědy pokrývají i Zprávy Google a feed Objevit, ne jen Vyhledávání." },
+    { title: "Potřebujete srozumitelnější metriku", desc: "Kliky a míra prokliku se vykládají snáz než dosah uvnitř aplikace, který je u každé platformy počítaný jinak." },
+  ]}
+/>
+
+Naopak pokud sociální sítě neděláte nebo je berete jen jako distribuci odkazů na web, nebude pro vás tenhle report prioritní — čísla o webu už máte jinde.
+
+## Co udělat <span class="hl">v prvním týdnu</span>
+
+<Checklist
+  title="Čtyři kroky, které dávají smysl hned"
+  tone="seo"
+  items={[
+    { title: "Přidejte službu přes firemní účet", desc: "Ne přes osobní. Propojení se překontrolovává a při jeho ztrátě se data zastaví." },
+    { title: "Poznamenejte si datum připojení", desc: "Od něj si snáz vymezíte srovnávací základnu a první období po nasazení." },
+    { title: "Projděte dotazy, ne jen příspěvky", desc: "Zajímavé bývá, na co lidé narazí. Když se video ukazuje na oborový dotaz, je to jiná informace než dosah v aplikaci." },
+    { title: "Srovnejte to s tím, co víte z platformy", desc: "Rozdíl řádů je normální. Cílem není čísla sladit, ale vědět, kterou otázku které z nich zodpovídá." },
+  ]}
+/>
+
+## Čtyři chyby, které se u toho <strong>nabízejí</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Číst to jako statistiku dosahu" fix="Report měří jen cestu přes Google, ne dění na platformě.">
+    Nejčastější omyl bude porovnávání s čísly z TikToku nebo YouTube Studia. Ta čísla si neodpovídají a odpovídat si nemají.
+  </Mistake>
+  <Mistake num="02" title="Dělat závěry z příliš krátkého období" fix="Berte první měsíce jako budování srovnávací základny.">
+    U nové služby je na začátku málo dat a není s čím srovnávat. První závěry dělejte až po delším srovnatelném období.
+  </Mistake>
+  <Mistake num="03" title="Hledat v tom citace v AI odpovědích" fix="Na generativní AI funkce je samostatný report a dává jen imprese.">
+    Služby platforem na otázku citací v AI neodpovídají a kliky ani zobrazení z AI Overviews a AI Mode samostatně neoddělují. Kdo hledá odpověď na otázku „citují mě AI nástroje“, hledá ji tady marně.
+  </Mistake>
+  <Mistake num="04" title="Navázat propojení na osobní účet jednoho člověka" fix="Použijte účet, který ve firmě zůstane.">
+    Google vlastnictví překontrolovává a při ztrátě propojení přístup pozastaví. Odchod jednoho člověka pak umí data utnout.
+  </Mistake>
+</MistakeGrid>
+
+## Co to <span class="hl">neřeší</span>
+
+Ať je ten report jakkoli užitečný, na hlavní otázku téhle doby neodpovídá. **Jestli vás citují AI odpovědi, z něj nezjistíte.** Kliky z AI Overviews ani z AI Mode neodděluje o nic víc než zbytek Search Console a generativní AI funkce má Google v [úplně jiném reportu](/blog/gsc-ai-segmenty-mereni/), který dává jen imprese — a u [zobrazení pro Discover](/blog/generativni-ai-v-discoveru/) dokonce ani nepojmenovává, co počítá.
+
+Souhrnný pohled na to, co dnes jde a nejde měřit, máme v článku o [měření SEO výkonu](/blog/mereni-seo-vykonu-2026/). Vlastní pohled na AI plochy dává i [report Bingu](/blog/bing-ai-performance-report/).
+
+## Shrnutí
+
+- **Služby platforem** jsou nový typ služby v Search Console pro Instagram, TikTok, X a YouTube, spuštěný 7. 7. 2026.
+- Dávají **kliky, imprese, míru prokliku a průměrnou pozici** s filtrem na příspěvky a dotazy — z Vyhledávání, Objevit a Zpráv.
+- **Nesledují dění na platformě.** Kolik zhlédnutí má video na TikToku, se z nich nedozvíte.
+- Ověření jde přes propojení účtu, ne přes DNS; Google ho **periodicky překontrolovává**.
+- Google píše, že funkci **zavádí postupně**. Tvrzení přehledů o globální dostupnosti pro všechny je silnější než jeho vlastní.
+- Na **citace v AI** to není. Ty se pořád měří jinde a hůř.
+
+Jestli chcete, aby vaše video mělo v AI odpovědích vůbec šanci, začněte u [přepisu, kapitol a popisu](/blog/youtube-pro-ai-viditelnost/). Tenhle report vám pak ukáže, jak se ten obsah projevuje na plochách Googlu.
