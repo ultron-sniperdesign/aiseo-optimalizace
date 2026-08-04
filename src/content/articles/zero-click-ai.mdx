@@ -8,7 +8,7 @@ tags:
   - "mereni"
   - "strategie"
 published: "2026-05-28"
-updated: "2026-07-28"
+updated: "2026-08-04"
 variant: "rich"
 keywords:
   - "zero-click ai"
@@ -30,8 +30,8 @@ stats:
 howto:
   name: "Jak měřit a kompenzovat zero-click v AI éře"
   steps:
-    - name: "Použijte AI segmenty v GSC"
-      text: "V Google Search Console otevřete Výkon → Search Appearance a vyberte segmenty AI Mode nebo AI Overviews, pokud jsou pro váš web dostupné. Zobrazení a CTR v nich sledujte jako trendový ukazatel, ne jako přesné měření podílu kliků z panelu."
+    - name: "Otevřete report Generativní AI funkce"
+      text: "V Google Search Console najděte report Generativní AI funkce, pokud ho už na webu máte — Google ho spustil 3. června 2026 a nemá ho každý. Dává jen imprese a neoddělí AI Overviews od AI Mode. Žádný typ zobrazení pro AI funkce v reportu Výkon neexistuje, nehledejte ho."
     - name: "Identifikujte dotčené dotazy"
       text: "Najděte klíčová slova, kde rostou imprese, ale klesá CTR — možný signál rostoucího zero-click. Ověřte proti pozici, sezónnosti a výskytu AI Overview."
     - name: "Roztřiďte dobrý a špatný zero-click"
@@ -42,9 +42,9 @@ faq:
   - q: "Co je zero-click vyhledávání?"
     a: "Zero-click vyhledávání je situace, kdy uživatel zadá dotaz, dostane odpověď přímo ve výsledcích a neklikne na žádný odkaz na cizí web. Roste s rozšířenými výsledky, featured snippety a v posledních letech zejména s AI Overviews. Podle analýzy SparkToro skončilo v prvních čtyřech měsících roku 2026 bez prokliku zhruba 68 % vyhledávání v Googlu — na jejich vzorku a metodice, ne na českých datech."
   - q: "Jak měřit zero-click v Google Search Console?"
-    a: "Google Search Console od poloviny roku 2025 zobrazuje pod filtrem Search Appearance samostatné segmenty AI Mode a AI Overviews. V nich sledujte hlavně zobrazení a CTR — kliky ale k roku 2026 nelze spolehlivě oddělit od klasického organického vyhledávání, proto vyhodnocujte trend zobrazení, CTR a dotazů společně. Signálem rostoucího zero-click je rostoucí počet impressions u dotazu při klesajícím CTR."
+    a: "Ne přes samostatný segment — ten v Search Console není. Data z AI funkcí jsou započtená v celkových číslech reportu Výkon a oddělit se nedají. Od 3. června 2026 existuje samostatný report Generativní AI funkce, ten ale dává jen imprese, nemá ho každý web a AI Overviews od AI Mode neoddělí. Zero-click se proto vyhodnocuje nepřímo: rostoucí imprese u dotazu při klesajícím CTR, ověřené proti pozici, sezónnosti a ruční kontrole výsledků."
   - q: "Jdou v GSC oddělit kliky z AI Overviews od klasického organiku?"
-    a: "Ne, k roku 2026 to nejde. Google Search Console kliky z AI Overviews zahrnuje do reportů, ale nerozlišuje je od klasických organických kliků. Impressions a CTR v segmentech AI Mode a AI Overviews sledujte jako trendový ukazatel, ne jako přesné oddělení kliků z panelu, ale kliky z nich se na úrovni jednotlivého prokliku od klasických neoddělují."
+    a: "Ne, k roku 2026 to nejde. Google Search Console kliky z AI Overviews do reportů zahrnuje, ale nerozlišuje je od klasických organických kliků, a žádný filtr na to nemá. Report Generativní AI funkce kliky vůbec nedává — jen imprese. Zůstává nepřímé vyhodnocení: trend impresí, CTR, pozice a typu dotazu."
   - q: "Je každý zero-click problém?"
     a: "Není. Existují dva typy: dobrý zero-click znamená, že vás AI cituje nebo uvádí značku — uživatel si značku zafixuje, i když neklikne. Špatný zero-click nastává, když AI nebo rozšířený výsledek převezme odpověď u dotazu s obchodní hodnotou (porovnání, ceny, recenze, dotazy blízko konverzi) a uživatel značku ani neuvidí, ani neklikne. Hodnotu zero-click proto posuzujte podle typu dotazu a podle toho, jestli z něj zůstává viditelnost značky."
   - q: "Jak kompenzovat ztrátu prokliků kvůli AI Overviews?"
@@ -118,17 +118,21 @@ Rozptyl mezi obory je přitom větší než rozdíly mezi studiemi. U dotazů na
 
 ## Jak měřit zero-click v Google Search Console
 
-Od roku 2025 jsou v části účtů v GSC dostupné samostatné AI segmenty. Tady je, co s nimi dělat:
+<Insight tone="warn" icon="!" label="Oprava k 4. 8. 2026 — co v tomhle článku bylo špatně">
+Do srpna 2026 tenhle článek na sedmi místech tvrdil, že v Search Console jsou pod typem zobrazení **samostatné segmenty AI Mode a AI Overviews**, a dokonce uváděl, že tam jsou „od poloviny roku 2025". **Taková funkce v Search Console není a nikdy nebyla.** Je to tatáž neexistující položka, o které píšeme v článku o [falešných screenshotech funkcí](/blog/falesne-screenshoty-seo-funkci/) — a kterou jsme ve stejném týdnu opravovali i v [měření SEO výkonu](/blog/mereni-seo-vykonu-2026/). Co existuje doopravdy, je samostatný report **Generativní AI funkce** od 3. června 2026: jen imprese, jen na části webů a bez oddělení AI Overviews od AI Mode. Opraveno na všech místech včetně FAQ a postupu.
+</Insight>
+
+Přímý údaj o klicích z AI panelu Search Console nedává. Tady je, co se s dostupnými daty dělat dá:
 
 <Checklist tone="seo" title="Měření zero-click v GSC" items={[
-  { title: "AI segmenty v Search Appearance", desc: "ve filtru najdete AI Mode a AI Overviews (pokud jsou pro váš účet dostupné) — impressions a CTR uvidíte v rámci daného reportu." },
+  { title: "Report Generativní AI funkce", desc: "od 3. 6. 2026, jen imprese a jen na části webů; AI Overviews od AI Mode neoddělí. Typ zobrazení pro AI funkce v reportu Výkon neexistuje." },
   { title: "Trend impressions vs CTR", desc: "rostoucí impressions a klesající CTR je možný signál zero-click; ověřte proti pozici, sezónnosti a výskytu AIO." },
-  { title: "Porovnání segmentů", desc: "kde se chová AI Overviews jinak než klasické výsledky — to je oblast k řešení." },
+  { title: "Ruční kontrola SERP", desc: "u dotazů s propadem CTR se podívejte, jestli tam panel opravdu je — jinak si příčinu jen domýšlíte." },
   { title: "Značkové vs neznačkové dotazy", desc: "u značkových dotazů se někdy uvádí, že citace CTR nesnižuje tolik nebo i pomáhá — doloženo to ale není, berte to jako hypotézu k ověření na vlastních datech." }
 ]} />
 
 <Insight tone="seo" icon="i" label="Co GSC k roku 2026 neumí">
-  Google Search Console k roku 2026 nedokáže pro jednotlivý proklik spolehlivě určit, zda přišel z AI Overview nebo z klasického výsledku. CTR v segmentu AI Mode / AI Overviews berte jako orientační metriku daného reportu, ne jako přesné oddělení každého prokliku. Pro vyhodnocení proto kombinujte impresi, CTR, pozici, typ dotazu a ruční kontrolu SERPu.
+  Google Search Console k roku 2026 nedokáže pro jednotlivý proklik určit, zda přišel z AI Overview nebo z klasického výsledku — a samostatný segment pro AI funkce v reportu Výkon nemá. Pro vyhodnocení proto kombinujte impresi, CTR, pozici, typ dotazu a ruční kontrolu SERPu.
 </Insight>
 
 ## Dobrý a špatný zero-click
@@ -166,7 +170,7 @@ Pokud u hodnotných dotazů pozorujete rostoucí imprese a klesající CTR, sous
   <Mistake num="02" title="Hned vypnout AI Overviews" fix="Nejdřív měřte, pak rozhodněte.">
     Vypnutí může vzít i citace, které značce reálně pomáhaly.
   </Mistake>
-  <Mistake num="03" title="Připisovat každý pokles AIO" fix="Ověřte segmenty v GSC.">
+  <Mistake num="03" title="Připisovat každý pokles AIO" fix="Ověřte ručně, jestli u dotazu panel opravdu je.">
     Bez kontextu dat lehce přiřknete vinu AI tam, kde nehrála roli.
   </Mistake>
   <Mistake num="04" title="Spoléhat na klasickou horní část trychtýře" fix="Posuňte se do středu trychtýře.">

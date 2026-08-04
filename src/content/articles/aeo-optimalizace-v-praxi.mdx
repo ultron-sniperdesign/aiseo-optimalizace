@@ -9,7 +9,7 @@ tags:
   - "obsah"
   - "strukturovana-data"
 published: "2026-05-08"
-updated: "2026-07-27"
+updated: "2026-08-04"
 variant: "rich"
 keywords:
   - "aeo optimalizace"
@@ -45,7 +45,7 @@ faq:
   - q: 'Stačí mi přidat FAQ sekci a FAQPage schema?'
     a: 'Pomáhá to, ale samo o sobě nestačí. Bez krátké odpovědi 40–60 slov hned po H1, bez fact-density v textu a bez správné struktury H2/H3 nadpisů Google FAQPage schema často ignoruje. Rich snippety u FAQ se zobrazují jen tam, kde Google vyhodnotí celou stránku jako kvalitní odpověď na konkrétní dotaz. FAQPage schema je nezbytná, ne ale dostatečná podmínka. Plný playbook v 7 krocích níže.'
   - q: 'Můžu měřit AEO bez placených nástrojů?'
-    a: 'Ano, free baseline stačí pro většinu malých webů. Google Search Console: Performance → Search Appearance (FAQ rich snippets, HowTo), Performance → Queries (Featured Snippets impressions), Coverage (indexovatelnost). Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner Brand Radar) má smysl s 20+ článků v top 10.'
+    a: 'Ano, free baseline stačí pro většinu malých webů. Google Search Console: pozice a imprese hlavních dotazů, report Generativní AI funkce (pokud ho už máte) a pokrytí. Typ zobrazení pro doporučené úryvky v Search Console není a u FAQ skončil 7. května 2026 — tyhle dvě věci se zjišťují ruční kontrolou SERP. Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner Brand Radar) má smysl s 20+ článků v top 10.'
 howto:
   name: "Jak optimalizovat web pro AEO v 7 krocích"
   steps:
@@ -60,7 +60,7 @@ howto:
     - name: "People Also Ask extension"
       text: "V Google Search Console → Performance → Queries vyfiltrujte dotazy s impressions ale CTR pod 5 % — to jsou kandidáti na AEO úpravu. Doplňte tyto dotazy jako FAQ otázky na cílových stránkách. Pro reálné formulace dotazů kombinujte: GSC queries, Reddit a Quora vlákna v oboru, oborové diskuze (lupa.cz, marketingjournal.cz pro CZ), záznamy zákaznické podpory. Cíl: 5–10 reálných otázek na stránku v FAQ sekci."
     - name: "Měření přes GSC + manuální AIO audit"
-      text: "GSC Search Appearance sleduje FAQ rich snippets a HowTo zobrazení. GSC Performance → Queries ukazuje Featured Snippets impressions (filtr search appearance). Pro AI Overviews zatím GSC nemá dedikovanou metriku — sleduje se manuálně: jednou měsíčně otestovat top 10 KW v Googlu a do tabulky zapsat AIO presence. Profesionální tracking Otterly, Profound nebo Marketing Miner Brand Radar má smysl s 20+ článků v top 10."
+      text: "Search Console nemá typ zobrazení pro doporučené úryvky a u FAQ ho od 7. května 2026 nemá také — obojí se dá zjistit jen ruční kontrolou výsledků. Pro generativní AI funkce naopak od června 2026 report existuje, ukazuje ale jen imprese a nemá ho každý web; doplňte ho ručním testem top 10 dotazů jednou měsíčně a zapisujte AIO presence. Profesionální tracking Otterly, Profound nebo Marketing Miner Brand Radar má smysl s 20+ článků v top 10."
     - name: "Iterace podle dat — co optimalizovat dál"
       text: "Po 60–90 dnech vyhodnoťte: které stránky získaly Featured Snippet, kde se objevil AIO panel s vaší citací, kde stagnujeme. Pro každou stagnující stránku zkontrolujte AEO Coverage Score (sekce níže) a doplňte chybějící dimenze. Iterujte ne plošnými změnami, ale cílenými úpravami jednotlivých stránek. Featured Snippets jsou pohyblivý cíl — Google průběžně mění, koho vybírá; měsíční audit pomáhá zachytit ztráty i nové příležitosti."
 ---
@@ -372,11 +372,15 @@ Free baseline pro většinu malých webů stačí — placené nástroje mají s
 
 ### Co měřit v GSC
 
-**Performance → Search Appearance:**
+**Report Generativní AI funkce** (pokud ho už na webu máte):
 
-- **FAQ rich snippets** — kolik impressions a kliků dostávají
-- **HowTo** — kolik impressions a kliků
-- **Featured Snippets** — pokud máte (zobrazuje se jako web result, hledejte v Queries s vysokým CTR)
+- **imprese v generativních AI funkcích** — ve dvou zobrazeních, Vyhledávání a Discover
+- pozor: report nedává kliky ani dotazy a [AI Overviews neoddělí od AI Mode](/blog/gsc-ai-segmenty-mereni/)
+
+**Co v Search Console nehledejte:**
+
+- **doporučené úryvky** — typ zobrazení pro ně neexistuje, zjistíte je jen ruční kontrolou
+- **FAQ rozšířené výsledky** — [skončily 7. května 2026](/blog/konec-faq-rich-results/), odpovídající typ zobrazení je vyřazený
 
 **Performance → Queries:**
 
@@ -464,15 +468,15 @@ AEO playbook má největší dopad jako součást **kombinovaného workflow** �
 </Insight>
 
 <Insight tone="aeo" icon="✦" label="Co reálně vidíme po 90 dnech AEO playbooku">
-U části klientů s **existujícími top 10 pozicemi** vídáme po systematické AEO úpravě (answer blocky + FAQ + schema + fact-density) **růst Featured Snippet impressions** v GSC za 90 dní. Konkrétní dopad ale závisí na výchozích pozicích, typu dotazu a konkurenci — někdy jednotky procent, jindy násobky. AIO presence je méně předvídatelná, ale u edukativních článků s dobrou strukturou se první AIO citace často objevují v horizontu **1–3 měsíců** po implementaci. Klíč: nejde o plošné úpravy, ale o cílené přepisy úvodu top 20 stránek.
+U části klientů s **existujícími top 10 pozicemi** vídáme po systematické AEO úpravě (answer blocky + FAQ + schema + fact-density) **častější výskyt v doporučených úryvcích** při ruční kontrole SERP za 90 dní. Konkrétní dopad ale závisí na výchozích pozicích, typu dotazu a konkurenci — někdy jednotky procent, jindy násobky. AIO presence je méně předvídatelná, ale u edukativních článků s dobrou strukturou se první AIO citace často objevují v horizontu **1–3 měsíců** po implementaci. Klíč: nejde o plošné úpravy, ale o cílené přepisy úvodu top 20 stránek.
 </Insight>
 
 ## Kde si nechat <strong>poradit</strong> nebo <span class="hl">implementaci</span>
 
 AEO playbook se nejlépe škáluje, když je součást **kombinovaného AI viditelnostního auditu** — ne jako jednorázová úprava 5 stránek. Pokud máte web s **20+ URL v top 10** a chcete vědět, kde má AEO největší ROI, [Sniper Design nabízí AEO audit](https://www.sniperdesign.cz/audity):
 
-- **Co dostanete:** shortlist top 20 stránek seřazených podle AEO Coverage Score, prioritizace 1–10, přepis 3 answer blocků jako šablona pro váš tým, schema checklist pro CMS, GSC dashboard setup pro tracking Featured Snippets a FAQ rich snippets.
+- **Co dostanete:** shortlist top 20 stránek seřazených podle AEO Coverage Score, prioritizace 1–10, přepis 3 answer blocků jako šablona pro váš tým, schema checklist pro CMS, nastavení reportingu v Search Console nad tím, co dnes reálně měřit jde.
 - **Pro koho:** B2B SaaS, content-driven publishery, e-shopy s research-driven sortimentem, konzultanty a agentury s 20+ článků v top 10.
-- **Kdy se vyplatí:** pokud už platíte za SEO obsah, ale Featured Snippet impressions stagnují, nebo pokud vidíte vaše konkurenty v AIO panelu, ale vás ne.
+- **Kdy se vyplatí:** pokud už platíte za SEO obsah, ale v doporučených úryvcích se neobjevujete, nebo pokud vidíte vaše konkurenty v AIO panelu, ale vás ne.
 
 První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme baseline AEO Coverage Score na 5 vašich stránkách a doporučíme, jestli má smysl pokračovat plným auditem.

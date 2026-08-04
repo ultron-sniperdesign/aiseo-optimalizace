@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "obsah"
 published: "2026-05-03"
-updated: "2026-05-06"
+updated: "2026-08-04"
 variant: "rich"
 keywords:
   - "pillar content"
@@ -32,7 +32,7 @@ faq:
   - q: "Kolik H2/H3 sekcí má pillar mít?"
     a: "Pracovní heuristika: 6–10 hlavních H2 sekcí, každá orientačně s 300–500 slovy. H3 použít, když jedna H2 sekce má víc než 500 slov a logicky se dá rozdělit. H4–H6 dávají smysl jen u opravdu hlubokých struktur — jinak narušují čitelnost a fragmentují téma. Počet sekcí ale není metrika kvality, rozhoduje pokrytí intentu. H2 nadpisy by měly tvořit pyramidovou outline, kde z první sekce poznáte, o čem zbytek bude."
   - q: "Jaké schema markup pillar content potřebuje?"
-    a: "Minimum: Article JSON-LD (headline, description, datePublished, dateModified, author, publisher). Pro tutoriálové pillary HowTo JSON-LD pokud má článek stepwise průvodce. FAQPage JSON-LD pro FAQ sekci je vhodný pro strojovou čitelnost, ale Google v posledních letech omezil zobrazování FAQ rich results pro většinu webů — schema tedy není garance rich snippetu. Schema neovlivňuje ranking přímo; pomáhá strojovému pochopení obsahu a může podpořit vybrané rich result formáty, pokud je daný typ výsledku v SERPu pro vaše dotazy dostupný."
+    a: "Minimum: Article JSON-LD (headline, description, datePublished, dateModified, author, publisher). Pro tutoriálové pillary HowTo JSON-LD pokud má článek stepwise průvodce. FAQPage JSON-LD pro FAQ sekci je vhodný pro strojovou čitelnost, rozšířený výsledek už ale nepřinese — Google zobrazování FAQ ve Vyhledávání 7. května 2026 ukončil. Schema neovlivňuje ranking přímo; pomáhá strojovému pochopení obsahu a může podpořit vybrané rich result formáty, pokud je daný typ výsledku v SERPu pro vaše dotazy dostupný."
   - q: "Jak často pillar content aktualizovat?"
     a: "Strukturálně 1× ročně (procházíte celý článek, přepisujete sekce, kde se realita posunula). Dílčí update na klíčových místech (data, ceny, citace) podle potřeby — minimálně každé 3 měsíce u rychle se měnících oborů (AI, kryptoměny, regulace). U evergreen témat (matematika, klasické postupy) stačí 1× za 18–24 měsíců. Datum poslední aktualizace zobrazit viditelně + v Article schema."
   - q: "Pomáhá pillar content i s AI citation share?"
@@ -212,7 +212,7 @@ FAQ na konci pillar contentu má 4 funkce, v pořadí podle reálného přínosu
 1. **Pokrýt long-tail dotazy**, které pillar text explicitně nezodpověděl
 2. **Lepší informační architektura** — strukturované Q→A páry pomáhají organizaci obsahu pro lidi i pro vyhledávače
 3. **Strojová čitelnost** — kompaktní formulace v generativních odpovědích se objevují častěji, ale nejde o garantovaný mechanismus
-4. **FAQ rich snippet v Google SERPu** přes FAQPage schema je možnost, ale Google omezil zobrazování FAQ rich results pro většinu webů — berte to jako sekundární možnost, ne jako hlavní benefit
+4. **FAQPage schema** už rozšířený výsledek ve Vyhledávání nepřinese — [Google jejich zobrazování 7. května 2026 ukončil](/blog/konec-faq-rich-results/). Markup zůstává platný kvůli strojovému porozumění, ne kvůli vzhledu ve výsledcích
 
 Otázky brát z reálných zdrojů — **Google „People Also Ask" panel, Reddit thready k tématu, Marketing Miner search suggestions, ChatGPT prompty od reálných uživatelů**. Nevymýšlet otázky, které nikdo nepokládá.
 

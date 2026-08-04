@@ -9,7 +9,7 @@ tags:
   - "strategie"
   - "mereni"
 published: "2026-05-08"
-updated: "2026-07-28"
+updated: "2026-08-04"
 variant: "rich"
 keywords:
   - "ai search trends 2026"
@@ -62,7 +62,7 @@ howto:
     - name: "Multimodal a vertical search readiness"
       text: "Image-first search roste +40 % YoY (Google data 2025). Připravte: optimalizované alt texty, ImageObject schema, vlastní original imagery (ne stock fotky), případně video s VideoObject schema pro klíčové edukativní obsahy. Pro vertikální search (Perplexity Spaces a podobné) pravidelný content cluster v hlavní specializaci firmy — 10+ článků v jednom topic clusteru."
     - name: "Měřitelné cíle a kvartální revize"
-      text: "Definujte 3 KPI cíle na rok 2026: (1) Featured Snippet impressions YoY +X %, (2) AI citation count v top 20 KW vs baseline +X, (3) AI referral traffic vs total organic +X %. Měsíční tracking, kvartální review s management týmem. Po 12 měsících vyhodnocení trendu a rebalance priorit pro 2027."
+      text: "Definujte 3 KPI cíle na rok 2026: (1) imprese v reportu Generativní AI funkce YoY +X %, (2) AI citation count v top 20 KW vs baseline +X, (3) AI referral traffic vs total organic +X %. Měsíční tracking, kvartální review s management týmem. Po 12 měsících vyhodnocení trendu a rebalance priorit pro 2027."
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
@@ -280,7 +280,7 @@ Klasický „pozice 1 v Googlu" sám o sobě nestačí. Doplňte do KPI dashboar
 - **AI referral traffic** z GA4 (filter source: chatgpt.com, perplexity.ai, claude.ai)
 - **Brand search volume** trend v GSC nebo Marketing Miner
 - **AI citation count** v top 20 KW (manuální nebo přes Otterly)
-- **Featured Snippet impressions** v GSC
+- **Imprese v reportu Generativní AI funkce** v GSC — [co přesně ukazuje](/blog/gsc-ai-segmenty-mereni/)
 
 Detail v článku [Měření SEO výkonu 2026](/blog/mereni-seo-vykonu-2026/) a strategický rámec v [AIO jako strategie](/blog/aio-strategie/).
 
@@ -328,12 +328,13 @@ Jedna z nejčastějších slabin v AI search obsahu: míchání metrik, které s
 | **AI citation count** | částečně | Manuální audit nebo Otterly/Profound | malý vzorek, výsledky jsou personalizované, prompt/locale/model-version dependent |
 | **Brand exposure v AI** | ne přímo | Proxy přes brand search queries v GSC | zpoždění (uživatel se na vás dozví v ChatGPT a vyhledá vás přes 3 dny), vliv paralelních kampaní |
 | **AIO panel presence** | částečně | SERP tracking (Marketing Miner, manuálně) | závisí na lokalitě, typu dotazu, A/B variantě, kterou Google právě testuje |
-| **Featured Snippet impressions** | **ano** | GSC → Search Appearance → Featured Snippet | nejstabilnější metrika, ale neukáže AIO citace |
+| **Doporučené úryvky** | ne z reportu | ruční kontrola SERP; typ zobrazení pro ně v Search Console není | pracné, ale jiná cesta nevede |
+| **Imprese v AI funkcích** | částečně | GSC → report Generativní AI funkce | jen imprese, nemá ho každý web, [AIO od AI Mode neoddělí](/blog/gsc-ai-segmenty-mereni/) |
 | **Citation share vs konkurence** | částečně | Otterly, Profound | personalizace, malý vzorek dotazů |
 | **Brand search volume trend** | **ano** | GSC → Performance → Queries (filter brand) | proxy pro AI viditelnost, ale směšuje s PR a kampaněmi |
 | **Conversion z AI referral** | částečně | GA4 + CRM | last-click bias, AI typically generuje top-funnel exposure, ne přímé konverze |
 
-**Praktický důsledek:** žádná z AI search metrik není tak přesná jako klasické GSC pozice. Sledujte je jako **trend, ne jako přesné číslo**. Pro management reporting používejte **kombinaci**: Featured Snippet impressions (přesné) + brand search volume (proxy) + manuální AIO audit (kvalitativní).
+**Praktický důsledek:** žádná z AI search metrik není tak přesná jako klasické GSC pozice. Sledujte je jako **trend, ne jako přesné číslo**. Pro management reporting používejte **kombinaci**: pozice hlavních dotazů a imprese v reportu Generativní AI funkce (nejtvrdší data, která k dispozici jsou) + brand search volume (proxy) + ruční AIO audit (kvalitativní).
 
 ## Pro koho je tento <strong>trend urgentní</strong> — <span class="hl">segmentace</span>
 
