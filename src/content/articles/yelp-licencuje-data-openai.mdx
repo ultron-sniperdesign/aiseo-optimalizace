@@ -1,0 +1,175 @@
+---
+title: "Yelp posílá recenze do ChatGPT. Firmy u dohody nejsou"
+description: "Yelp licencoval OpenAI recenze, fotky a data o firmách. Pro české firmy je podstatné hlavně to, že hodnocená firma u takové dohody nebývá smluvní stranou."
+answer: "Yelp 23. července 2026 licencoval OpenAI recenze, hodnocení, fotky a informace o firmách pro doporučení v ChatGPT. Dohoda není exkluzivní a její finanční podmínky nezveřejnili. Pro firmy je podstatné hlavně to, že o takové licenci obvykle nerozhodují samy: hodnocená firma nebývá smluvní stranou."
+slug: "yelp-licencuje-data-openai"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-08-04"
+updated: "2026-08-04"
+keywords:
+  - "yelp openai licence"
+  - "recenze a ai"
+  - "licencování dat pro ai"
+  - "chatgpt doporučení firem"
+  - "data o firmách pro ai"
+variant: "rich"
+stats:
+  - value: "23. 7."
+    label: "2026 — datum oznámení dohody Yelpu s OpenAI"
+  - value: "nezveřejněno"
+    label: "finanční podmínky dohody"
+  - value: "nedohledáno"
+    label: "veřejné oznámení podobné licence českých firemních dat"
+faq:
+  - q: "Co přesně Yelp licencoval OpenAI?"
+    a: "Podle zprávy z 23. července 2026 jde o recenze, hodnocení, fotky a informace o firmách, které mají sloužit k doporučením místních podniků v ChatGPT. Značka a odkazy Yelpu se v odpovědích mají objevit, ale podobu toho zobrazení podle téhož zdroje řídí OpenAI. Finanční podmínky zveřejněné nebyly."
+  - q: "Je ta dohoda exkluzivní?"
+    a: "Ne. Podle dostupné zprávy nebrání Yelpu licencovat data i dalším AI firmám. To je podstatné, protože dohoda Yelpu nebrání dalším podobným licencím. Sama o sobě ale ještě širší trend nedokazuje."
+  - q: "Může firma takovou licenci odmítnout?"
+    a: "Je to smlouva mezi platformou a AI firmou, tedy mezi dvěma subjekty, z nichž ani jeden není dotčená firma. Recenze navíc píšou zákazníci, takže rozhodovací právo k tomu textu hodnocená firma obvykle nemá. Pokud platforma získala od autorů dost široká práva a sama dohodu uzavírá, hodnocená firma ten přenos zpravidla přímo neřídí."
+  - q: "Týká se to i Česka?"
+    a: "Zpráva geografický rozsah neuvádí a Yelp je na českém trhu okrajový. Podobnou roli tu hrají hlavně firemní profily a recenzní vrstvy Googlu a Seznamu, u zboží pak srovnávače. Žádnou veřejně oznámenou licenci českých firemních dat pro AI jsme nedohledali — což neznamená, že žádná neexistuje."
+  - q: "Co s tím může firma dělat?"
+    a: "Stavět vlastní vrstvu, kterou nikdo nelicencuje bez ní: recenze a reference na vlastním webu, vlastní strukturovaná data, aktuální kontaktní údaje. A zároveň být viditelná na platformách, ze kterých AI čerpá, protože ty dvě věci se nevylučují."
+  - q: "Znamená to, že mě ChatGPT začne doporučovat?"
+    a: "Ne. Licence dává AI přístup k datům, nikoli záruku, že zrovna vaši firmu zmíní. Kdo se v odpovědi objeví, řídí model, ne dohoda. Jednorázový test navíc nic nedokazuje, protože odpovědi kolísají mezi opakováními."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+Recenze zákazníků patří k nejvlivnějším informacím, které o firmě na internetu jsou. Pokud leží na cizí platformě, firma obvykle nerozhoduje o tom, jak s nimi ta platforma dál naloží.
+
+**23. července 2026 se to ukázalo na konkrétní dohodě.**
+
+## Co se <span class="hl">stalo</span>
+
+Yelp — americká platforma s recenzemi místních podniků — uzavřel licenční dohodu s OpenAI. Podle dostupné zprávy jí poskytuje **recenze, hodnocení, fotky a informace o firmách** pro doporučení místních podniků v ChatGPT.
+
+Tři věci z té zprávy stojí za zapamatování:
+
+<Checklist
+  title="Co je na dohodě doložené"
+  tone="geo"
+  items={[
+    { title: "Není exkluzivní", desc: "Yelpu nic nebrání licencovat táž data i dalším AI firmám. Že by z toho byl širší trend, to samo o sobě nedokazuje." },
+    { title: "Podobu odkazování řídí odběratel", desc: "Značka a odkazy Yelpu se mají objevit, ale o tom, jak budou zobrazené, podle zprávy rozhoduje OpenAI, ne Yelp." },
+    { title: "Finanční podmínky nezveřejněné", desc: "Nevíme, kolik taková data stojí ani jak jsou případné výnosy rozdělené." },
+  ]}
+/>
+
+Chystá se i pokračování: uživatel má přes ChatGPT poptat místního poskytovatele — objednat konzultaci nebo termín — aniž by odcházel jinam.
+
+<Insight tone="aeo" icon="i" label="Co ve zprávě není">
+**Rozsah zemí.** Zpráva neříká, jestli se to týká jen USA, nebo i dalších trhů. Neuvádí ani objem dat — čísla o stovkách milionů recenzí, která kolují v přehledech, jsme u ověřeného zdroje nenašli, takže s nimi tady nepracujeme.
+</Insight>
+
+## Proč je to <strong>zajímavější</strong>, než vypadá
+
+Dosud se o licencích dat pro AI mluvilo hlavně u vydavatelů: noviny, weby, obsah, který někdo napsal a vlastní ho. [Spory i dohody o obsahu](/blog/licencni-dohody-ai-obsah/) jsme rozebírali zvlášť a jejich logika je poměrně jasná — vlastník obsahu se rozhodne.
+
+Tady je to jinak. **Obsahem je hodnocení vaší firmy, ale o jeho dalším využití může rozhodovat platforma** — pokud k tomu má od autorů recenzí a ve svých podmínkách dost široká práva.
+
+<CompareTable
+  leftLabel="Licence obsahu vydavatele"
+  leftTone="seo"
+  rightLabel="Licence dat o firmách"
+  rightTone="aio"
+  rows={[
+    { icon: "◆", label: "Kdo obsah vytvořil", left: "vydavatel", right: "zákazníci" },
+    { icon: "▤", label: "Koho se týká", left: "vydavatele", right: "hodnocené firmy" },
+    { icon: "◈", label: "Kdo licencuje", left: "vydavatel sám za sebe", right: "platforma za data o někom jiném" },
+    { icon: "▲", label: "Kdo je smluvní stranou licence", left: "vydavatel sám", right: "platforma a AI firma, ne hodnocená firma" },
+  ]}
+/>
+
+Firma, o které recenze jsou, u takového jednání typicky není. Přímé veto nad licencí proto zpravidla nemá — zvlášť když platforma získala od autorů recenzí široká práva k dalšímu užití.
+
+## Poptávka rovnou v odpovědi — a co to udělá s měřením
+
+Ohlášené pokračování je zajímavější než samotná licence. Pokud si uživatel má přes ChatGPT objednat termín nebo vyžádat nabídku, znamená to, že **část kontaktu se zákazníkem může proběhnout mimo váš web i mimo vaše běžné měření** — v prostředí, které nevidíte.
+
+Praktické důsledky jsou dva a oba se týkají měření:
+
+- **Ten kontakt se nemusí nikde projevit jako návštěva.** Uživatel na váš web nedojde, takže v analytice po něm nezůstane stopa. Poptávka přitom dorazí.
+- **Atribuce se rozpadne dřív než dřív.** Dosud platilo, že AI přivede návštěvu a ta se dá aspoň zaznamenat. Tady může přijít rovnou lead bez předchozí návštěvy.
+
+Nic z toho zatím netvrdíme jako změřené — funkce je ohlášená, ne popsaná do detailu. Ale je to směr, který stojí za sledování: jak se dnes vůbec dá měřit, [co přichází z AI](/blog/ai-navstevnost-konverze/), jsme rozebírali zvlášť.
+
+## Co to znamená <span class="hl">pro Česko</span>
+
+Yelp je tu okrajový, takže konkrétní dopad téhle dohody na českou firmu bude nejspíš malý. Zajímavá je role, kterou Yelp v USA hraje — a kdo ji hraje tady:
+
+<Checklist
+  title="Kde v Česku leží tatáž data"
+  tone="seo"
+  items={[
+    { title: "Google Business Profile", desc: "Recenze, fotky, otevírací doba, kategorie. Nejbližší ekvivalent toho, co Yelp licencoval." },
+    { title: "Firmy.cz a Mapy.cz", desc: "Seznamácká vrstva firemních dat a hodnocení, u části dotazů pořád silná." },
+    { title: "Heureka a Zboží.cz", desc: "U zboží hrají roli srovnávače a recenze produktů i obchodů." },
+    { title: "Vaše vlastní stránky", desc: "Vrstva, u které míváte největší kontrolu nad publikací i podmínkami." },
+  ]}
+/>
+
+<Insight tone="warn" icon="!" label="Co netvrdíme">
+**Žádnou veřejně oznámenou licenci českých firemních dat pro AI jsme nedohledali.** To ale neznamená, že žádná neexistuje — jen že jsme na ni nenarazili. Tvrdit z toho, že se Česku podobné dohody vyhýbají, by bylo přesně to přeskočení, které tady kritizujeme jinde.
+</Insight>
+
+## Kde se to <span class="hl">doopravdy rozhoduje</span>
+
+Ne v tiskové zprávě, ale v podmínkách užití platformy. Tam bývá popsané, jaká práva platforma získává k firemnímu profilu od jeho správce a jaká k recenzím od jejich autorů. Nejsou to nutně tytéž vztahy. Formulace se u jednotlivých platforem liší a mění se v čase.
+
+Pro běžnou orientaci není nutné číst je celé. Důležité je vědět, které pasáže hledat:
+
+<Checklist
+  title="Tři věci, které v podmínkách hledat"
+  tone="aeo"
+  items={[
+    { title: "Rozsah licence k obsahu", desc: "Kdo a k čemu smí obsah dál použít. Formulace typu „nevýhradní, celosvětová, převoditelná licence“ jsou v praxi hodně široké." },
+    { title: "Kdo je autorem recenze", desc: "Text napsal zákazník, ne vy. Právní vztah k recenzi tak vzniká primárně mezi autorem a platformou, ne mezi autorem a hodnocenou firmou." },
+    { title: "Změna podmínek", desc: "Jestli se mění jednostranně a s jakým předstihem. To rozhoduje, kolik toho o budoucnosti víte dnes." },
+  ]}
+/>
+
+Tohle není právní rozbor a ani ho nenahrazuje — je to jen orientace v tom, proč o přenosu dat rozhoduje někdo jiný než vy.
+
+## Co s tím <strong>dělat</strong>
+
+Nic z toho není důvod k panice a většina kroků je stejná jako předtím. Změnil se hlavně důvod, proč je dělat.
+
+1. **Postavte vlastní vrstvu.** Reference a recenze na vlastním webu, vlastní strukturovaná data, aktuální kontakty. Tohle je obsah, u kterého máte obvykle největší smluvní i technickou kontrolu. Jak s ním pracovat, rozebírá článek o [recenzích a hodnoceních pro AI](/blog/recenze-a-hodnoceni-pro-ai/).
+2. **Buďte tam, odkud se čerpá.** Profily na platformách mají dnes dvojí hodnotu — přímou návštěvnost a nepřímý průnik do AI odpovědí. Které platformy AI reálně cituje, ukazuje [analýza recenzních platforem](/blog/recenze-srovnavace-pro-ai/).
+3. **Nespoléhejte na podobu odkazů.** I když dohoda odkazy slibuje, o jejich zobrazení rozhoduje strana, která data odebírá.
+4. **Čtěte podmínky platforem.** Konkrétní licenci mezi platformou a AI firmou tím obvykle přímo neovlivníte. Ovlivníte ale to, kde vůbec být, co tam o sobě zveřejníte a s jakými podmínkami do toho jdete.
+
+## Čtyři chyby, které se <span class="hl">nabízejí</span>
+
+<MistakeGrid>
+  <Mistake num="01" title="Číst to jako záruku doporučení" fix="Licence dává přístup k datům, ne slib zmínky.">
+    Kdo se v odpovědi objeví, rozhoduje model. Dohoda o datech na tom nic nemění a jednorázový test to neověří — [odpovědi kolísají](/blog/volatilita-ai-odpovedi/).
+  </Mistake>
+  <Mistake num="02" title="Přebírat čísla o objemu dat" fix="Ověřený zdroj žádná neuvádí.">
+    V přehledech kolují počty recenzí i záznamů. U zprávy, ze které vycházíme, nejsou — a bez ověření nemají v textu co dělat.
+  </Mistake>
+  <Mistake num="03" title="Vyvozovat, že v Česku se to nestane" fix="Nedohledali jsme licenci, to není totéž jako že neexistuje.">
+    Absence zprávy není důkaz absence dohody. Část dat o českých firmách navíc leží u platforem, které působí globálně.
+  </Mistake>
+  <Mistake num="04" title="Rezignovat na profily, protože „stejně o tom nerozhoduju“" fix="Rozhodujete o tom, co na profilu je.">
+    Obsah profilu, aktuálnost údajů a odpovědi na recenze pod vaši kontrolu spadají — a jsou to přesně ta data, která se pak někam přenášejí.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **23. 7. 2026** Yelp licencoval OpenAI recenze, hodnocení, fotky a data o firmách pro doporučení v ChatGPT.
+- Dohoda **není exkluzivní**, finanční podmínky **nezveřejnili**, geografický rozsah zpráva **neuvádí**.
+- **O podobě zobrazení a odkazů rozhoduje OpenAI**, ne platforma, která data poskytla.
+- Podstatný je ten vzorec: **obsahem je hodnocení vaší firmy, ale o licenci může rozhodovat platforma**, pokud k tomu má smluvní práva — a hodnocená firma typicky není smluvní stranou té dohody. Je to analytický závěr z jedné dohody, ne doložený trend.
+- V Česku tutéž roli hrají **Google Business Profile, Firmy.cz, Mapy.cz** a u zboží srovnávače. Veřejně oznámenou licenci českých dat jsme nedohledali.
+- Co je ve vaší moci: **vlastní vrstva dat** a **kvalita profilů** tam, odkud se čerpá.
