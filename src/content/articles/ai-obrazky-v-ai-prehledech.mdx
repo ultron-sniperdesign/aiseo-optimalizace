@@ -1,0 +1,177 @@
+---
+title: "Google oznámil generování obrázků v AI přehledech"
+description: "Google přidal do AI přehledů generování obrázků. Zatím jen anglicky — pro weby to u obrázků může být podobný typ změny, jaký AI přehledy přinesly u textu."
+answer: "Google 14. července 2026 oznámil generování obrázků v AI přehledech: uživatel zadá prompt a systém vytvoří obrázek od začátku, ne převzetím z konkrétní webové stránky. Při spuštění jen v angličtině a v regionech, kde už funguje tvorba obrázků v AI Mode. Zdroje neuvádějí, jak je výstup označený ani jestli u něj vede odkaz."
+slug: "ai-obrazky-v-ai-prehledech"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "obsah"
+published: "2026-08-04"
+updated: "2026-08-04"
+keywords:
+  - "ai obrázky v ai overviews"
+  - "google generování obrázků vyhledávání"
+  - "nano banana google"
+  - "obrázkové vyhledávání a ai"
+  - "ai přehledy obrázky"
+variant: "rich"
+stats:
+  - value: "14. 7."
+    label: "2026 — datum oznámení generování obrázků v AI přehledech"
+  - value: "1"
+    label: "jazyk při spuštění: angličtina"
+  - value: "neuvedeno"
+    label: "jak jsou generované obrázky označené a jestli u nich vede odkaz"
+faq:
+  - q: "Co Google v AI přehledech spustil?"
+    a: "Generování obrázků. Uživatel zadá textový prompt a AI přehled z něj podle dostupné zprávy vytvoří obrázek úplně od začátku. Pohání to nejnovější model řady Nano Banana. Google to oznámil 14. července 2026 spolu s novou domovskou stránkou obrázkového vyhledávání k jeho pětadvacátým narozeninám."
+  - q: "Funguje to v češtině?"
+    a: "Při spuštění ne. Zdroj uvádí angličtinu a regiony, kde už je dostupná tvorba obrázků v AI Mode. Kdy a jestli přibudou další jazyky, uvedeno není. Pro běžné české vyhledávání s tím tedy dnes nelze počítat."
+  - q: "Pozná uživatel, že je obrázek vygenerovaný?"
+    a: "Z dostupných zdrojů to nevyplývá — ani jeden neřeší viditelný štítek v rozhraní, metadata ani jinou formu označení. Netvrdíme proto, že Google takové obrázky neoznačuje; u obrázků ze svých modelů dlouhodobě mluví o neviditelném vodoznaku, ten ale uživatel z podstaty nevidí. U téhle konkrétní funkce zdroje mlčí."
+  - q: "Znamená to konec optimalizace obrázků?"
+    a: "Ne. Obrázkové vyhledávání dál existuje a dál vede na weby. Popisný název souboru, alt text, kontext stránky a strukturovaná data mají pořád stejný smysl — jsou podmínkou toho, aby stroj obrázku rozuměl. Mění se to, že u části dotazů může vzniknout obrázek, u kterého není zdrojová stránka jako u převzaté fotky."
+  - q: "Jak zjistím dopad na svoji návštěvnost z obrázků?"
+    a: "Klasická data o obrázkovém vyhledávání v Search Console zůstávají, takže sledujte je. Report generativních AI funkcí vám nepomůže, protože kliky neukazuje — jen imprese. Dopad zrovna téhle změny z veřejně dostupných dat nejspíš spolehlivě neizolujete."
+  - q: "Použije Google k vygenerování obrázku moje fotky?"
+    a: "Zpráva mluví o obrázku vytvořeném od začátku, ne o úpravě konkrétní existující fotografie. Jak přesně model vzniká a na čem byl trénovaný, je jiná otázka a v oznámení se neřeší."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+U textu jsme si na to zvykli: AI přehled odpověď shrne a část uživatelů nikam nekliká. U obrázků se dosud pracovalo s vizuály, které už někde existují.
+
+**Od oznámení ze 14. července 2026 může obrázek rovnou vzniknout.**
+
+## Co Google <span class="hl">oznámil</span>
+
+Ve svém přehledu novinek za červenec to Google shrnul jednou větou: *„we announced a new browseable home for Google Images and image generation through AI Overviews in Search."*
+
+Detaily doplňuje oborová zpráva ze 14. července. Uživatel zadá textový prompt a AI přehled z něj vytvoří *„high-quality, custom visual made completely from scratch"* — tedy obrázek postavený od začátku, ne vybraný z webu. Pohání to nejnovější model **Nano Banana**.
+
+<Checklist
+  title="Rozsah při spuštění"
+  tone="geo"
+  items={[
+    { title: "Jen v angličtině", desc: "Zdroj uvádí jeden jazyk. Kdy přibudou další, řečeno není." },
+    { title: "Jen kde už jde tvořit obrázky v AI Mode", desc: "Regiony se vážou na dřívější funkci, ne na nový samostatný seznam zemí." },
+    { title: "Postupný náběh", desc: "„Over the coming weeks“ — nejde o jednorázové zapnutí všude." },
+    { title: "K tomu nová domovská stránka Obrázků", desc: "Google ji oznámil zároveň, k pětadvacátým narozeninám obrázkového vyhledávání." },
+  ]}
+/>
+
+## Proč je to <strong>stejný příběh</strong> jako u textu
+
+Připomíná to logiku, kterou AI přehledy přinesly [u textu a prokliků](/blog/zero-click-ai/) — jen o médium vedle.
+
+<CompareTable
+  leftLabel="Obrázek z webu"
+  leftTone="seo"
+  rightLabel="Vygenerovaný obrázek"
+  rightTone="aio"
+  rows={[
+    { icon: "◆", label: "Odkud se bere", left: "z konkrétní stránky", right: "vzniká podle promptu" },
+    { icon: "▲", label: "Přirozený cíl prokliku", left: "existuje zdrojový web", right: "zjevná zdrojová stránka není" },
+    { icon: "◈", label: "Kdo může těžit z prokliku", left: "web s tou fotkou", right: "z popisu funkce to zřejmé není" },
+    { icon: "▤", label: "Co za tím stojí", left: "váš obsah", right: "model" },
+  ]}
+/>
+
+To poslední je jádro rozdílu: **u obrázku vytvořeného od začátku není zjevná zdrojová stránka** jako u převzaté fotky. Z popisu funkce proto nelze čekat stejný model prokliku. Jestli Google přesto zobrazuje nějaký odkaz nebo související cíle, zdroje nepopisují.
+
+<Insight tone="warn" icon="!" label="Kde končí doložené a začíná úvaha">
+Zdroje **neuvádějí**, jestli se generované obrázky nějak označují, jestli u nich vede nějaký odkaz, ani jaký podíl dotazů to zasáhne. Netvrdíme proto, že Google takové obrázky neoznačuje — u obrázků ze svých modelů dlouhodobě mluví o neviditelném vodoznaku. Jen to u téhle funkce v dostupných zprávách není. Všechno, co v článku následuje jako dopad, je odvození z popisu funkce, ne měření.
+</Insight>
+
+## Kde to <span class="hl">udeří</span> a kde ne
+
+Tohle je úvaha, ne zjištění — ale dá se o ni opřít při rozhodování, kolik pozornosti obrázkům věnovat.
+
+**Spíš zasažené:** dotazy, kde stačí ilustrace. „Jak vypadá skandinávský interiér", „schéma vrstev zeminy", „ikona pro prezentaci". Tam může pro část uživatelů stačit obrázek vytvořený přímo v přehledu a motivace kliknout dál může klesnout.
+
+**Spíš nezasažené:** dotazy na konkrétní věc. Fotka konkrétního produktu, konkrétního místa, konkrétního člověka. U dotazů, kde uživatel hledá záznam konkrétní reality, má syntetický obrázek nižší hodnotu — vygenerovaná ilustrace obvykle nenahradí skutečnou fotografii konkrétního výrobku.
+
+Jako pracovní hypotéza z toho plyne: **čím obecnější a ilustrativnější vaše obrázky jsou, tím snáz je něco nahradí.** Fotky vlastních výrobků, prostor, lidí a reálné práce by proti tomu měly být odolnější — a mimochodem jsou to přesně ty, které se hůř berou odjinud.
+
+## Které vaše obrázky AI nahradí <span class="hl">hůř</span>
+
+Praktický důsledek předchozí úvahy: projděte si, čím vlastně ilustrujete. Jde o rozdělení podle povahy vizuálu, ne o doložený seznam typů dotazů — ale rozhodovat se podle něj dá hned.
+
+<CompareTable
+  leftLabel="Spíš nahraditelné"
+  leftTone="aio"
+  rightLabel="Spíš odolné"
+  rightTone="geo"
+  rows={[
+    { icon: "◆", label: "Typ", left: "obecná ilustrace, stock, ikona", right: "vlastní fotografie konkrétní věci" },
+    { icon: "▤", label: "Příklad", left: "„člověk u notebooku“", right: "vaše provozovna, váš tým, váš výrobek" },
+    { icon: "◈", label: "Co dokládá", left: "nic, jen dotváří dojem", right: "že to existuje a vypadá takhle" },
+    { icon: "▲", label: "Co k tomu potřebujete", left: "prompt", right: "přístup ke konkrétní věci, místu nebo situaci" },
+  ]}
+/>
+
+Není to výzva vyhodit veškerou ilustraci. Je to argument pro to, kam napřít rozpočet: **fotka reálné práce může mít pro čtenáře vyšší důvěryhodnost než generovaná ilustrace** — a platí to i mimo vyhledávání.
+
+Souvisí to s tím, co dělá obsah [citovatelným pro AI](/blog/ai-generovany-obsah-viditelnost/): rozhoduje, jestli přinášíte něco, co jinde není.
+
+## Používáte generované obrázky sami? Pak <strong>pozor na past</strong>
+
+Tatáž technologie je dostupná i vám a spousta webů jí dnes ilustruje články. Rychlé, levné, vypadá to slušně.
+
+Háček je v tom, že **obrázek, který si umí vygenerovat i vyhledávač, vás odliší míň** než vlastní fotografie navázaná na konkrétní produkt, místo nebo postup. Pokud nabízíte jen obecnou ilustraci téhož typu, může část důvodu chodit za tím vaším zmizet.
+
+Neznamená to nepoužívat generované ilustrace. Znamená to nestavět na nich to, čím se odlišujete. U vizuálů, které mají něco dokládat — jak produkt vypadá, jak práce probíhá, jak vypadá výsledek — má generovaný obrázek slabší pozici, protože nenahrazuje záznam konkrétní věci.
+
+## Co se tím <strong>nemění</strong>
+
+<Checklist
+  title="Práce na obrázcích má pořád stejný smysl"
+  tone="seo"
+  items={[
+    { title: "Obrázkové vyhledávání nezmizelo", desc: "Mění se jedna vrstva výsledků ve Vyhledávání, ne to, že Google Obrázky dál fungují jako kanál odkazů na weby." },
+    { title: "Popisný název souboru a alt text", desc: "Bez nich má stroj slabší signály o tom, co je na obrázku a v jakém kontextu ho chápat." },
+    { title: "Kontext stránky kolem obrázku", desc: "Popisek, okolní text a nadpis doplňují význam a účel obrázku, který ze samotného vizuálu nemusí být zřejmý." },
+    { title: "Strukturovaná data", desc: "U produktů, receptů nebo videa je obrázek součástí značkování a stroj ho tam očekává." },
+  ]}
+/>
+
+Ke značkování patří i to, jak obrázek popsat strojově — detaily má článek o [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/) a u videa [VideoObject](/blog/videoobject-strukturovana-data/).
+
+## Jak to <span class="hl">měřit</span>
+
+Čistě odděleně to z veřejných dat nezměříte — ale indicie sledovat jde.
+
+Klasická data o obrázkovém vyhledávání v Search Console zůstávají, takže sledujte ta. Report generativních AI funkcí vám nepomůže: [ukazuje jen imprese](/blog/gsc-ai-segmenty-mereni/), ne kliky.
+
+Co udělat prakticky: **poznamenat si datum** a sledovat trend impresí a kliků z obrázkového vyhledávání u stránek, kde na obrázcích stojí návštěvnost. Když se něco pohne, budete aspoň vědět, odkdy.
+
+## Čtyři chyby, které se <strong>nabízejí</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Vyhlásit konec obrázkového SEO" fix="Změnila se jedna plocha, ne celý kanál.">
+    Obrázkové vyhledávání dál funguje a dál posílá návštěvy. Práce na popiscích a kontextu je podmínkou strojového porozumění, ne bonusem k rich results.
+  </Mistake>
+  <Mistake num="02" title="Testovat to na českých dotazech" fix="Při spuštění je funkce podle zprávy jen v angličtině.">
+    Zpráva uvádí angličtinu, takže dostupnost funkce se na českých dotazech posuzovat nedá. Že ji tam nevidíte, není důkaz o ničem.
+  </Mistake>
+  <Mistake num="03" title="Tvrdit, že Google generované obrázky neoznačuje" fix="Zdroje o označování mlčí, to není totéž.">
+    Mlčení zprávy není zjištění. U obrázků ze svých modelů Google dlouhodobě mluví o vodoznaku; jestli platí i tady, z dostupných zdrojů nevyčteme.
+  </Mistake>
+  <Mistake num="04" title="Číst to jako „Google použil moji fotku“" fix="Zpráva mluví o obrázku vytvořeném od začátku.">
+    Generování a převzetí konkrétní fotografie jsou dvě různé věci. Otázka, na čem se model učil, je samostatná a v oznámení se neřeší.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- Google **14. 7. 2026** oznámil v AI přehledech **generování obrázků** z textového promptu, pohání to model Nano Banana.
+- Při spuštění **jen anglicky**, jen v regionech s tvorbou obrázků v AI Mode, s postupným náběhem. **Pro české vyhledávání s tím dnes nelze počítat.**
+- U obrázku vytvořeného od začátku **není zjevná zdrojová stránka** jako u převzaté fotky.
+- **Zdroje neuvádějí**, jak jsou takové obrázky označené ani jestli u nich Google zobrazuje nějaký odkaz.
+- Nejzranitelnější jsou **obecné ilustrace**. Fotky konkrétních výrobků, míst a lidí by měly být vůči nahrazení spíš odolnější.
+- Práce na obrázcích se **nemění**: název souboru, alt text, kontext stránky, strukturovaná data.

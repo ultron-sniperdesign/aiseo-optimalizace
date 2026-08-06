@@ -168,6 +168,16 @@ vykreslit, nebo přidej:
 IMPORTANT: do not draw any digits, numbers, percentages or figures anywhere in the scene.
 ```
 
+**e) Diakritiku v nadpisu si přečti nahlas — ověřeno 2026-08-04.** Model vykreslí přesně to,
+co v promptu stojí. Když do promptu napíšeš `OBRAZKY`, dostaneš `OBRAZKY` bez čárky a je to
+tvoje chyba, ne modelova. Před odesláním projdi nadpis i podtitul znak po znaku. Pojistka
+u nadpisů s diakritikou:
+
+```
+DIACRITICS RULE: the headline must be spelled <NADPIS> with the acute accent over the letter A.
+Spell all Czech text exactly with correct diacritics.
+```
+
 **d) Tečka za podtitulem — ověřeno 2026-08-04.** Šablona výš končí podtitul mezerou a tečkou
 (`reading exactly: <PODTITUL> .`) jako oddělovačem. Model to občas vykreslí doslova a v obrázku
 pak stojí „Web se otevře vedle odpovědi ." s mezerou před tečkou. Pojistka:
