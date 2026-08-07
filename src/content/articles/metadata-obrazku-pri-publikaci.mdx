@@ -1,0 +1,197 @@
+---
+title: "Sharp při resize a exportu nepřenese metadata. Měřeno"
+description: "Vlastní test na knihovně sharp: výchozí nastavení nepřeneslo do výstupu EXIF ani XMP, u JPEG i WebP. keepMetadata() zachovalo obojí, keepExif() jen EXIF."
+answer: "Otestoval jsem, co udělá knihovna sharp 0.34.5 s metadaty obrázku při zmenšení a exportu. Ve výchozím nastavení v mém testu nepřenesla do výstupu EXIF ani XMP, u JPEG i u WebP. Volání keepMetadata() je zachovalo včetně deklarace o původu, keepExif() ne — ta deklarace totiž seděla v XMP."
+slug: "metadata-obrazku-pri-publikaci"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "mereni"
+published: "2026-08-07"
+updated: "2026-08-07"
+keywords:
+  - "metadata obrázku"
+  - "sharp keepmetadata"
+  - "exif xmp při publikaci"
+  - "webp metadata"
+  - "iptc digitalsourcetype"
+variant: "rich"
+stats:
+  - value: "0"
+    label: "sledovaných metadatových částí (EXIF, XMP), které ve výchozím testu přešly do výstupu"
+  - value: "1"
+    label: "volání, které je v testu zachovalo: keepMetadata()"
+  - value: "693 B"
+    label: "přírůstek testovacího JPEG se zachovanými metadaty (5 557 → 6 250 B)"
+faq:
+  - q: "Co přesně jsem testoval?"
+    a: "Testovací JPEG s vyplněným EXIF blokem a XMP packetem, ve kterém byla IPTC hodnota DigitalSourceType označující plně vygenerovaný obsah — tedy zapsaná v XMP, ne jako samostatný IPTC IIM blok. Soubor prošel knihovnou sharp ve verzi 0.34.5 v šesti variantách zpracování a u každého výstupu jsem kontroloval, které metadatové části zbyly — u JPEG segmenty, u WebP chunky."
+  - q: "Proč zrovna sharp?"
+    a: "Je to knihovna, kterou pod kapotou používá Astro a řada dalších Node pipeline pro zpracování obrázků. Výsledek se tedy týká hodně webů, ale neplatí automaticky pro WordPress, Shoptet ani pro transformace na CDN — ty jsem netestoval."
+  - q: "Jak se metadata zachovají?"
+    a: "V tomhle testu na sharpu je zachovalo volání keepMetadata() v řetězci zpracování — EXIF i XMP, a deklarace o původu přežila i konverzi do WebP. Testovací JPEG se tím zvětšil o 693 bajtů, WebP o 690 bajtů."
+  - q: "Proč keepExif nestačí?"
+    a: "Protože hodnota DigitalSourceType byla zapsaná v XMP packetu, ne v EXIF bloku. V testu po keepExif() zůstaly EXIF položky jako autor a copyright, ale XMP s informací o způsobu vzniku ve výstupu nebyl."
+  - q: "Kdy naopak chci metadata zahodit?"
+    a: "Když by prozradila víc, než chcete — poloha z fotoaparátu u fotek z provozovny, jméno autora u klientských podkladů, sériové číslo přístroje. V takovém případě je výchozí chování výhoda a je dobré vědět, že zapnutí keepMetadata tuhle ochranu vypne."
+  - q: "Platí to i pro C2PA Content Credentials?"
+    a: "Netestoval jsem to. Podepsané C2PA manifesty se chovají jinak než EXIF a XMP a ověřený závěr o nich nemám. Test měřil EXIF a XMP."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+V článku o tom, [jak se pozná AI obrázek](/blog/jak-poznat-ai-obrazek/), jsme skončili doporučením ověřit si, co z metadat přežije vaši publikační pipeline. Tak jsem to změřil.
+
+**V tomhle testu vyšel výsledek jednoznačně.**
+
+## Co jsem <span class="hl">testoval</span>
+
+Testovací JPEG 1600 × 1000 se dvěma bloky metadat: **EXIF** (autor, copyright, software, popis) a **XMP packet** se značkou `IPTC DigitalSourceType` označující plně vygenerovaný obsah. Tedy deklarace o způsobu vzniku, kterou metadata unesou — ne kryptograficky ověřený důkaz.
+
+Soubor pak prošel knihovnou **sharp ve verzi 0.34.5** — tu používá pod kapotou Astro; podobně se nasazuje i v dalších Node pipeline. Vždy `resize({ width: 1200 })` a export s výchozím nastavením enkodéru kromě kvality — jedna běžná varianta publikačního zpracování, ne jediná možná. U JPEG jsem kontroloval APP1 segmenty nesoucí EXIF a XMP a také APP13, u WebP RIFF chunky `EXIF` a `XMP `; přítomnost řetězce `trainedAlgorithmicMedia` sloužila jen jako doplňková kontrola.
+
+## Výsledek
+
+| Varianta | Velikost | Metadata ve výstupu | Deklarace původu |
+|---|---|---|---|
+| originál | 26 381 B | EXIF + XMP | **ano** |
+| JPEG, výchozí nastavení | 5 557 B | **žádná** | ne |
+| WebP, výchozí nastavení | 1 684 B | **žádná** | ne |
+| JPEG s `keepMetadata()` | 6 250 B | EXIF + XMP | **ano** |
+| WebP s `keepMetadata()` | 2 374 B | EXIF + XMP | **ano** |
+| JPEG s `keepExif()` | 5 833 B | jen EXIF | **ne** |
+| JPEG s `keepXmp()` | 5 974 B | jen XMP | **ano** |
+
+<Insight tone="warn" icon="!" label="Tři zjištění z tabulky">
+**Za prvé:** nešlo o částečné zachování — EXIF ani XMP se do výstupu **nepřenesly vůbec**, u JPEG i u WebP.
+**Za druhé:** v tomhle testu jedno volání `keepMetadata()` zachovalo obojí a deklarace přežila i konverzi do WebP.
+**Za třetí, a to je nejzajímavější:** `keepExif()` deklaraci o původu **nezachránil**, protože ta seděla v XMP, ne v EXIF. „Zachovat EXIF" není totéž co „zachovat informaci o původu".
+</Insight>
+
+### Jak si to ověřit na vlastním souboru
+
+Samotné zpracování je pár volání. Vezměte obrázek, o kterém víte, co v něm je:
+
+```js
+const sharp = require("sharp");
+const src = "orig.jpg";               // soubor, o kterém víte, co v něm je
+const r = () => sharp(src).resize({ width: 1200 });
+
+await r().jpeg({ quality: 82 }).toFile("a-vychozi.jpg");
+await r().webp({ quality: 78 }).toFile("b-vychozi.webp");
+await r().keepMetadata().jpeg({ quality: 82 }).toFile("c-keep.jpg");
+await r().keepMetadata().webp({ quality: 78 }).toFile("d-keep.webp");
+await r().keepExif().jpeg({ quality: 82 }).toFile("e-exif.jpg");
+await r().keepXmp().jpeg({ quality: 82 }).toFile("f-xmp.jpg");
+```
+
+Pak oba výstupy otevřete v prohlížeči EXIF a XMP (nebo v exiftoolu) a porovnejte je s originálem. Pokud vás zajímá konkrétně tahle deklarace, hledejte v XMP buď vlastnost `DigitalSourceType`, nebo její hodnotu `trainedAlgorithmicMedia`.
+
+Vstupní soubor jsem vyrobil v Pillow, aby bylo jisté, co v něm je:
+
+```python
+from PIL import Image
+im = Image.new("RGB", (1600, 1000), (40, 70, 160))
+exif = Image.Exif()
+exif[0x013B] = "Kamil Test"           # Artist
+exif[0x8298] = "Copyright 2026 Test"  # Copyright
+xmp = b"""<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/"
+ Iptc4xmpExt:DigitalSourceType="http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"/>
+</rdf:RDF></x:xmpmeta><?xpacket end="w"?>"""
+im.save("orig.jpg", "JPEG", quality=92, exif=exif.tobytes(), xmp=xmp)
+```
+
+<Insight tone="aio" icon="i" label="Prostředí a způsob ověření">
+Node 24.14.1, sharp 0.34.5, Pillow 12.2.0, macOS. Výstupy jsem četl **vlastním skriptem** — u JPEG scan markerů APP1 a APP13, u WebP průchod RIFF chunky; hledání řetězce v souboru sloužilo jen jako doplňková kontrola. `keepExif()` a `keepXmp()` jsem zkoušel **jen u JPEG**, protože pro pointu testu stačilo ověřit, které části se přenesou.
+</Insight>
+
+## Proč je ten třetí bod <strong>důležitý</strong>
+
+Kdo hledá v dokumentaci přepínač, narazí nejdřív na EXIF — je to známější pojem a v nastaveních bývá první. Jenže autor, copyright a model fotoaparátu jsou v EXIF, kdežto **hodnota z IPTC schématu byla v tomhle testu zapsaná v XMP** — ne jako samostatný IPTC IIM blok.
+
+<CompareTable
+  leftLabel="EXIF"
+  leftTone="seo"
+  rightLabel="XMP"
+  rightTone="geo"
+  rows={[
+    { icon: "◆", label: "Co tam bývá", left: "autor, copyright, přístroj, čas, poloha", right: "popisná schémata včetně IPTC" },
+    { icon: "▤", label: "Značka AI původu", left: "není", right: "je" },
+    { icon: "◈", label: "Co zachová keepExif()", left: "ano", right: "ne" },
+    { icon: "▲", label: "Co zachová keepMetadata()", left: "ano", right: "ano" },
+  ]}
+/>
+
+Prakticky: kdo si myslí, že „zapnul zachování metadat", a přitom sáhl jen po EXIF, si nepřenese deklaraci o způsobu vzniku.
+
+## Argument o výkonu tady <span class="hl">nesedí</span>
+
+Metadata se často zahazují kvůli velikosti, soukromí nebo konzistenci výstupu. V tomhle testu stálo zachování **693 bajtů u JPEG** (5 557 → 6 250 B) a **690 bajtů u WebP** (1 684 → 2 374 B).
+
+Absolutně je to málo, relativně u WebP hodně — přes 40 % velikosti souboru. Jenže testovací soubor je maličký a syntetický; fotka z fotoaparátu s plnou sadou náhledů, ICC profilů a historie úprav se bude chovat jinak. **Tenhle test tedy nedává silnou oporu pro paušální zahazování metadat kvůli velikosti, ale ani netvrdí, že je režie vždy zanedbatelná.**
+
+## Kdy metadata naopak <strong>chcete pryč</strong>
+
+Tohle není článek o tom, že se metadata mají zachovávat vždy. Výchozí chování má dobrý důvod:
+
+<Checklist
+  title="Čtyři situace, kdy je zahození metadat výhoda"
+  tone="aeo"
+  items={[
+    { title: "Poloha z fotoaparátu", desc: "Fotky z provozovny, z domácí dílny nebo od zákazníka můžou nést souřadnice, které jste publikovat nechtěli." },
+    { title: "Jméno autora u cizích podkladů", desc: "U klientských fotek a podkladů od dodavatelů bývá v metadatech někdo úplně jiný, než koho na webu uvádíte." },
+    { title: "Sériové číslo a model přístroje", desc: "Data, která spojí sadu fotek napříč weby s jedním konkrétním zařízením." },
+    { title: "Zbytky z editace", desc: "Poznámky, popisky a interní údaje z editoru, které se do exportu občas propíšou. Na webu nemají co dělat." },
+  ]}
+/>
+
+Podstatné je, že **je to rozhodnutí, ne náhoda.** V tomhle testu to za vás rozhodlo výchozí nastavení sharpu.
+
+## Co s tím udělat <span class="hl">u sebe</span>
+
+<Checklist
+  title="Pětiminutová kontrola vlastní pipeline"
+  tone="seo"
+  items={[
+    { title: "Vezměte obrázek, o kterém víte, co v něm je", desc: "Fotka rovnou z fotoaparátu nebo soubor, do kterého jste metadata vědomě zapsali." },
+    { title: "Projděte ho celou cestou", desc: "Nahrát do systému, publikovat, stáhnout výsledek z webu. Ne z administrace — z webu, jak ho vidí návštěvník." },
+    { title: "Porovnejte, co zbylo", desc: "Stačí prohlížeč EXIF a XMP, například exiftool; na C2PA je potřeba specializovaný nástroj. Zajímá vás rozdíl proti originálu." },
+    { title: "Rozhodněte se vědomě", desc: "Zachovat u fotek, které mají něco dokládat. Zahodit tam, kde by metadata prozradila víc, než chcete." },
+  ]}
+/>
+
+## Limity tohohle testu
+
+<Insight tone="aio" icon="i" label="Co z měření neplyne">
+Testoval jsem **jednu knihovnu v jedné verzi** (sharp 0.34.5), **jeden syntetický soubor** a **EXIF s XMP, ne podepsané C2PA manifesty** — ty se chovají jinak a ověřený závěr o nich nemám. Deklarace původu byla navíc zapsaná v XMP, ne jako samostatný IPTC IIM blok. O WordPressu s optimalizačním pluginem, o Shoptetu ani o transformacích na CDN test neříká nic. A měřil přežití segmentů, ne to, jestli s nimi někdo dál pracuje.
+</Insight>
+
+## Tři chyby, které se u toho <strong>nabízejí</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Předpokládat, že se metadata přenášejí" fix="Ve výchozím nastavení se v testu nepřenesla vůbec.">
+    V tomhle testu se ze sledovaných částí nepřeneslo nic — ani EXIF, ani XMP, u JPEG i u WebP.
+  </Mistake>
+  <Mistake num="02" title="Zapnout zachování EXIF a mít pocit hotova" fix="Značka o původu je v XMP.">
+    V testu prošel EXIF a XMP zmizelo — s ním i informace, kvůli které to celé člověk dělá.
+  </Mistake>
+  <Mistake num="03" title="Zobecnit tenhle výsledek na všechny systémy" fix="Testovaná byla jedna knihovna.">
+    U jiného CMS nebo CDN to může dopadnout jinak. Pětiminutová kontrola výš to zjistí spolehlivěji než analogie.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- V testu na knihovně **sharp 0.34.5** výchozí nastavení **nepřeneslo do výstupu EXIF ani XMP** — u JPEG i u WebP.
+- **`keepMetadata()`** obojí zachovalo, včetně deklarace o původu, a to i po konverzi do WebP.
+- **`keepExif()` deklaraci o původu nezachránil** — seděla v XMP, ne v EXIF.
+- Zachování stálo **693 B u JPEG a 690 B u WebP** — absolutně málo, u malého WebP ale přes 40 % velikosti.
+- Zahazovat metadata je někdy správně. Má to ale být **rozhodnutí, ne výchozí nastavení, o kterém nevíte.**
+- Test platí pro **jednu knihovnu, jeden soubor a pro EXIF s XMP**; C2PA ani jiné systémy netestoval.
