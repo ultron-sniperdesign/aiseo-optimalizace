@@ -118,13 +118,16 @@ a nedá se podle nich vyhodnocovat kampaň. GA4 → Správce → Události → p
 
 ---
 
-## B. Přestavba `/sluzby/` — POZASTAVENO
+## B. Přestavba `/sluzby/` — ✅ HOTOVO 2026-08-05
 
-> **2026-08-02:** Uživatel má vlastní vizi toho, jak se má návštěvník odbavit.
-> Ceny zůstávají podle `seo-pro-ai`, mění se ale zamýšlený průchod. Do doladění
-> vize se `/sluzby/` nesahá — body B1–B6 níže jsou původní návrh, ne zadání.
+> Nasazeno podle finální nabídky `sniperdesign.cz/seo-pro-ai`: balíčky, audit,
+> 11 modulů s cenami, obsahové úrovně, srovnávací obsah, retainery, self-check,
+> mýty, FAQ + OfferCatalog JSON-LD. Obsah: `src/content/pages/sluzby.ts`.
+> Otevřené: osud 5 detailních stránek, na které index už neodkazuje
+> (off-page-pro-ai, freshness-program, geo-obsah-eshopy, technicka-uprava —
+> zůstávají na URL, rozhodnutí o stažení je na uživateli).
 
-## B (návrh, čeká na vizi). Přestavba `/sluzby/` podle `seo-pro-ai`
+## B (původní návrh — překonáno finální nabídkou)
 
 **Výchozí stav aiseo:** 14 služeb v kolekci `src/content/services/`, 5 bucketů,
 6 detailních stránek (8 služeb detail nemá), **žádné ceny** (schema pole `price`
