@@ -1,11 +1,12 @@
 /**
- * Datový modul — /sluzby/ (kompletní nabídka SEO pro AI).
+ * Datový modul — /sluzby/ (nabídka SEO pro AI, platformově nezávislá).
  *
- * Zdroj nabídky: sniperdesign.cz/seo-pro-ai (finální ceník 2026-08; ceny
- * sjednocené — audit 3 600 Kč bez DPH). Tento web prezentuje TUTÉŽ nabídku,
- * ale v aiseo tonalitě (žádný „schema.org" jako pojem, „strukturovaná data";
- * „krátká odpověď") a se širším cílením: hotové moduly = Upgates/Shoptet,
- * ostatní platformy na míru.
+ * VZTAH K sniperdesign.cz/seo-pro-ai: tam je nabídka pro KONKRÉTNÍ platformu
+ * (Upgates) s hotovými moduly a pevným ceníkem. Tady je nabídka OBECNÁ —
+ * zpracujeme totéž na jakékoli platformě, ale postup i pracnost se liší,
+ * takže ceny technické přípravy negarantujeme (stanovují se po auditu).
+ * Pevnou cenu má jen: audit (vstupní služba) a generování obsahu
+ * (jednotkové ceny za kategorii/produkt — na platformě nezávisí).
  *
  * PER-MUTACE: celý soubor se překládá (viz MUTATIONS.md). Ceny v CZK.
  */
@@ -13,7 +14,7 @@
 export const meta = {
   title: "Služby — kompletní SEO pro AI | aiseo-optimalizace.cz",
   description:
-    "Audit za 3 600 Kč, technické moduly s pevnou cenou a citovatelný obsah. Kompletní nabídka SEO pro AI — od prvního auditu po měsíční monitoring citací.",
+    "Zpracujeme SEO pro AI na jakékoli platformě: audit za 3 600 Kč, technická příprava na míru a citovatelný obsah s jednotkovou cenou. Od auditu po monitoring citací.",
   ogImage: "/og/default.jpg",
 };
 
@@ -40,23 +41,22 @@ export const funnel = {
   note: "Naše služby řeší kroky 2–4: aby vás AI měla šanci najít, vyhodnotit jako důvěryhodný zdroj a citovat.",
 };
 
-/** 3 balíčky — hotové kombinace modulů se zvýhodněnou cenou. */
+/** 3 rozsahy spolupráce — orientace, co příprava obnáší. BEZ pevných cen:
+ * nabídka je platformově nezávislá a pracnost se liší web od webu. */
 export const packagesSection = {
   eyebrowNum: "02",
-  eyebrow: "Balíčky",
+  eyebrow: "Rozsahy spolupráce",
   title: "Tři úrovně <strong>přípravy na AI vyhledávání</strong>",
   lead:
-    "Hotové kombinace modulů se zvýhodněnou cenou. Balíčky nasazujeme jako hotová řešení na Upgates a Shoptet; pro weby na jiných platformách připravíme totéž na míru.",
-  vatNote: "Všechny ceny jsou bez DPH.",
+    "Orientace, co všechno příprava obnáší — od základů po plnou výbavu. Nejde o ceník: každý web běží na jiné platformě a v jiném stavu, takže konkrétní rozsah, postup i cenu stanovíme po auditu.",
+  vatNote: "Rozsahy jsou orientační. Přesnou nabídku s cenou dostanete po auditu — bez závazku pokračovat.",
 };
 
 export interface PackageDef {
   badge?: string;
   name: string;
   forWhom: string;
-  price: string;
-  regular: string;
-  saving: string;
+  priceLabel: string;
   priceNote: string;
   items: string[];
   itemsPrefix?: string;
@@ -68,13 +68,11 @@ export const packages: PackageDef[] = [
   {
     name: "Potřebný pevný základ",
     forWhom: "Pro web, který potřebuje postavit základy a optimalizace doplňovat časem.",
-    price: "13 490 Kč",
-    regular: "17 100 Kč",
-    saving: "3 610 Kč",
-    priceNote: "jednorázová investice",
+    priceLabel: "Cena na míru",
+    priceNote: "upřesníme po auditu",
     items: [
       "Audit připravenosti + edukativní meeting",
-      "Strukturovaná data na 100 % Google Rich Results",
+      "Strukturovaná data v plném rozsahu (Google Rich Results)",
       "Google Search Console + aktivace Bing Webmaster",
       "Na míru vyplněný soubor llms.txt pro AI vyhledávání",
     ],
@@ -82,19 +80,17 @@ export const packages: PackageDef[] = [
     featured: false,
   },
   {
-    badge: "Nejoblíbenější volba",
+    badge: "Nejčastější rozsah",
     name: "Technicky připravený web",
     forWhom: "Pro weby a e-shopy, které chtějí být v AI vyhledávání.",
-    price: "32 900 Kč",
-    regular: "41 400 Kč",
-    saving: "8 500 Kč",
-    priceNote: "jednorázová investice",
+    priceLabel: "Cena na míru",
+    priceNote: "upřesníme po auditu",
     items: [
       "Audit připravenosti + edukativní meeting",
-      "Strukturovaná data na 100 % Google Rich Results",
+      "Strukturovaná data v plném rozsahu (Google Rich Results)",
       "Google Search Console + aktivace Bing Webmaster",
-      "Modul krátká odpověď v kategorii pro AI vyhledávání",
-      "FAQ modul na produktech a kategoriích",
+      "Krátké citovatelné odpovědi na klíčových stránkách",
+      "FAQ na produktech, kategoriích či službách",
       "E-E-A-T prvky na webu — doložená důvěryhodnost",
       "Optimalizace HTML sémantiky pro čtení AI nástroji",
     ],
@@ -105,18 +101,16 @@ export const packages: PackageDef[] = [
     badge: "Maximum",
     name: "AI vyhledávání na MAX",
     forWhom: "Pro web, který chce být maximálně vidět v AI vyhledávačích, citacích a doporučeních.",
-    price: "49 490 Kč",
-    regular: "61 900 Kč",
-    saving: "12 410 Kč",
-    priceNote: "jednorázová investice · ideálně navázat obsahem",
-    itemsPrefix: "Vše z balíčku Technicky připravený web, a navíc:",
+    priceLabel: "Cena na míru",
+    priceNote: "upřesníme po auditu · ideálně navázat obsahem",
+    itemsPrefix: "Vše z rozsahu Technicky připravený web, a navíc:",
     items: [
       "Na míru vyplněný soubor llms.txt pro AI vyhledávání",
-      "Modul autoři článků + šablona důvěryhodného autora",
+      "Autorství článků — karty autorů a doložená odbornost",
       "Rozšířená strukturovaná data u článků",
-      "Rychlý souhrn produktu a kategorie pro AI",
+      "Strojové souhrny klíčových stránek pro AI",
       "Převod obrázků do formátu WebP",
-      "Hodina konzultace zdarma navíc",
+      "Hodina konzultace navíc",
     ],
     cta: "Chci být plně připravený na AI",
     featured: false,
@@ -137,14 +131,19 @@ export const stepAudit = {
   ctaHref: "/audit/",
 };
 
-/** Krok 2 — technické moduly à la carte. */
+/** Krok 2 — technická příprava. Oblasti, které zpracujeme; BEZ cen (závisí
+ * na platformě a stavu webu — stanovují se po auditu). */
 export const stepModules = {
   eyebrowNum: "04",
   eyebrow: "Krok 2 · Technika",
   title: "Web, který AI <strong>chápe a přečte rychle</strong>",
   lead:
-    "Prověřené technické úpravy, které přímo ovlivňují šance na citace. Na Upgates a Shoptet jde o hotové moduly s pevnou cenou — většinu nasazujeme do pár dnů. Na ostatních platformách totéž řešíme na míru.",
+    "Prověřené technické úpravy, které přímo ovlivňují šance na citace. Zpracujeme je na jakékoli platformě — WordPress, Shoptet, Upgates i web na míru. Postup a pracnost se ale platformu od platformy liší, proto ceny stanovujeme po auditu, ne z ceníku.",
   impactLegend: "Škála vlivu: 🔥🔥🔥 velký · 🔥🔥 střední · 🔥 menší",
+  platformNote:
+    'Máte e-shop na Upgates? Tam máme tyhle úpravy jako <a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener">hotové moduly s pevnou cenou</a> — nasazení do pár dnů.',
+  cta: "Zjistit, co váš web potřebuje",
+  ctaHref: "/audit/",
 };
 
 export type Impact = 3 | 2 | 1;
@@ -153,87 +152,63 @@ export interface ModuleDef {
   impact: Impact;
   name: string;
   desc: string;
-  price: string;
-  slug: string;
 }
 
 export const modules: ModuleDef[] = [
   {
     impact: 3,
-    name: "Strukturovaná data na 100 % Google Rich Results",
-    desc: "Optimalizace a plné doplnění JSON-LD — Google i AI nástroje přesně pochopí produkty, ceny, dostupnost a firmu.",
-    price: "7 000 Kč",
-    slug: "strukturovana-data",
+    name: "Strukturovaná data v plném rozsahu",
+    desc: "Optimalizace a plné doplnění JSON-LD až na 100 % Google Rich Results — Google i AI nástroje přesně pochopí produkty, ceny, dostupnost a firmu.",
   },
   {
     impact: 3,
     name: "Google Search Console + aktivace Bing Webmaster",
     desc: "Kontrola a plné nastavení Search Console a aktivace Bingu — na indexaci v Bingu stojí citace v ChatGPT a Copilotu.",
-    price: "3 900 Kč",
-    slug: "gsc-bing",
   },
   {
     impact: 3,
-    name: "Modul krátká odpověď v kategorii",
-    desc: "Modul „Co je {kategorie}“ — citovatelná odpověď zavedená do strukturovaných dat vedle FAQ, včetně návodu, jaký obsah vyplňovat.",
-    price: "3 900 Kč",
-    slug: "kratka-odpoved",
+    name: "Krátké odpovědi na klíčových stránkách",
+    desc: "Citovatelná odpověď „Co je {téma}“ na kategoriích či službách, zavedená i do strukturovaných dat — přesně formát, ze kterého AI skládá odpovědi.",
   },
   {
     impact: 3,
-    name: "FAQ modul na produktech a kategoriích",
-    desc: "Modul pro vkládání FAQ do kategorií i produktů, včetně zavedení do strukturovaných dat pro AI nástroje.",
-    price: "4 800 Kč",
-    slug: "faq-modul",
+    name: "FAQ na produktech, kategoriích a službách",
+    desc: "Reálné otázky a odpovědi přímo na stránkách, včetně zavedení do strukturovaných dat pro AI nástroje.",
   },
   {
     impact: 3,
     name: "E-E-A-T prvky na webu",
     desc: "Stránky O nás, autorství, odborné profily, citace, reference a vazby na externí zdroje — doporučíme nebo rovnou připravíme.",
-    price: "10 400 Kč",
-    slug: "eeat-prvky",
   },
   {
     impact: 3,
     name: "Optimalizace HTML sémantiky",
     desc: "Čistá struktura šablony, ze které AI roboti rychle pochopí, co je co na stránce — a umí se v obsahu okamžitě zorientovat.",
-    price: "7 800 Kč",
-    slug: "html-semantika",
   },
   {
     impact: 1,
     name: "Na míru vyplněný soubor llms.txt",
     desc: "Soubor s podstatnými informacemi o webu, firmě a důvěryhodnosti — přímý vstup pro AI nástroje.",
-    price: "2 600 Kč",
-    slug: "llms-txt",
   },
   {
     impact: 2,
-    name: "Modul autoři článků",
-    desc: "Každý článek má svého autora s vlastní kartou. Šablona karty autora je připravená pro důvěryhodnost v AI vyhledávání.",
-    price: "3 900 Kč",
-    slug: "autori-clanku",
+    name: "Autorství článků",
+    desc: "Každý článek má svého autora s vlastní kartou a doloženou odborností — signál důvěryhodnosti pro AI vyhledávání.",
   },
   {
     impact: 1,
     name: "Rozšířená strukturovaná data u článků",
     desc: "Datum publikace, poslední aktualizace a další podstatná pole u článků — pro AI i Google.",
-    price: "2 300 Kč",
-    slug: "clanky-data",
   },
   {
     impact: 1,
-    name: "Rychlý souhrn produktu a kategorie",
-    desc: "Vlastní pole se strojovým souhrnem stránky a jejích vazeb — AI okamžitě ví, o čem stránka je.",
-    price: "1 300 Kč",
-    slug: "rychly-souhrn",
+    name: "Strojové souhrny stránek",
+    desc: "Souhrn stránky a jejích vazeb ve strukturovaných datech — AI okamžitě ví, o čem stránka je.",
   },
   {
     impact: 2,
-    name: "Převod obrázků do WebP",
-    desc: "Přegenerování produktových i ostatních obrázků do WebP — rychlost načítání jako základní signál kvality.",
-    price: "individuálně dle rozsahu",
-    slug: "webp",
+    name: "Rychlost a formáty obrázků",
+    desc: "Převod obrázků do WebP a základní výkonové úpravy — rychlost načítání jako základní signál kvality.",
   },
 ];
 
@@ -476,15 +451,15 @@ export const faq = [
   },
   {
     q: "Musíme všechno dělat naráz, nebo to jde postupně?",
-    a: "Postupně — nabídka je na to stavěná. Začíná se auditem za 3 600 Kč, pak jdou technické moduly podle priorit (každý má pevnou cenu) a obsah po úrovních. Balíčky jsou pro ty, kdo chtějí základ vyřešit najednou a se slevou.",
+    a: "Postupně — nabídka je na to stavěná. Začíná se auditem za 3 600 Kč, který určí priority. Technickou přípravu pak řešíme po krocích podle toho, co má největší dopad, a obsah po úrovních s jednotkovou cenou. Nemusíte se upsat k celku předem.",
   },
   {
     q: "Jak měříte výsledky?",
     a: "Návštěvnost z AI asistentů a konverze v Google Analytics 4, imprese v AI Overviews v Search Console a citace značky v AI odpovědích přes specializované nástroje (Collabim, Marketing Miner). Pro dlouhodobé sledování nabízíme měsíční monitoring AI viditelnosti.",
   },
   {
-    q: "Děláte to jen pro Upgates a Shoptet?",
-    a: "Ne. Na Upgates a Shoptetu máme hotové moduly s pevnou cenou (nasazení do pár dnů), protože obě platformy známe do detailu — jsme Zlatý partner obou. Stejné úpravy připravíme na míru i pro weby na jiných platformách; cenu stanovíme po auditu.",
+    q: "Proč u technické přípravy neuvádíte ceny?",
+    a: "Protože by to nebylo fér. Stejná úprava znamená na WordPressu, Shoptetu a webu na míru úplně jinou práci — garantovat jednu cenu předem nejde. Proto cenu technické přípravy stanovujeme po auditu, kdy víme, na čem web běží a v jakém je stavu. Pevnou cenu má audit (3 600 Kč) a generování obsahu — to na platformě nezávisí. Výjimka: pro e-shopy na Upgates máme hotové moduly s pevným ceníkem na sniperdesign.cz/seo-pro-ai.",
   },
 ];
 
@@ -502,11 +477,10 @@ export const offerCatalogJsonLd = {
   "@type": "OfferCatalog",
   name: "SEO pro AI — kompletní nabídka služeb",
   url: "https://aiseo-optimalizace.cz/sluzby/",
+  // Jen služby s garantovanou cenou (audit + obsah). Technická příprava je
+  // na míru — bez ceny do katalogu nepatří.
   itemListElement: [
     { "@type": "Offer", name: "Audit připravenosti + edukativní meeting", price: "3600", priceCurrency: "CZK" },
-    { "@type": "Offer", name: "Balíček Potřebný pevný základ", price: "13490", priceCurrency: "CZK" },
-    { "@type": "Offer", name: "Balíček Technicky připravený web", price: "32900", priceCurrency: "CZK" },
-    { "@type": "Offer", name: "Balíček AI vyhledávání na MAX", price: "49490", priceCurrency: "CZK" },
     { "@type": "Offer", name: "Srovnávací obsah X vs Y — roční publikační plán", price: "12800", priceCurrency: "CZK" },
   ],
 };

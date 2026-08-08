@@ -72,11 +72,8 @@ const contactHref = (slug: string) => `/kontakt/?sluzba=${slug}`;
               {pack.badge && <span class="pack__badge">{pack.badge}</span>}
               <h3 class="pack__name">{pack.name}</h3>
               <p class="pack__for">{pack.forWhom}</p>
-              <p class="pack__price">{pack.price}</p>
-              <p class="pack__price-note">{pack.priceNote} · bez DPH</p>
-              <p class="pack__saving">
-                Běžná cena modulů {pack.regular} — <strong>ušetříte {pack.saving}</strong>
-              </p>
+              <p class="pack__price">{pack.priceLabel}</p>
+              <p class="pack__price-note">{pack.priceNote}</p>
               <ul class="pack__items" role="list">
                 {pack.itemsPrefix && <li class="pack__items-prefix">{pack.itemsPrefix}</li>}
                 {pack.items.map((i) => <li>{i}</li>)}
@@ -129,12 +126,15 @@ const contactHref = (slug: string) => `/kontakt/?sluzba=${slug}`;
               </span>
               <h3 class="mod__name">{m.name}</h3>
               <p class="mod__desc">{m.desc}</p>
-              <div class="mod__foot">
-                <span class="mod__price">{m.price}{m.price.includes("Kč") ? " bez DPH" : ""}</span>
-                <a href={contactHref(m.slug)} class="mod__cta">Chci tento modul <span aria-hidden="true">→</span></a>
-              </div>
             </article>
           ))}
+        </div>
+
+        <div class="mods-foot">
+          <p class="mods-foot__note" set:html={p.stepModules.platformNote}></p>
+          <a href={p.stepModules.ctaHref} class="sl-btn sl-btn--accent">
+            {p.stepModules.cta} <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -565,8 +565,6 @@ const contactHref = (slug: string) => `/kontakt/?sluzba=${slug}`;
     color: var(--color-ink);
   }
   .pack__price-note { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-ink-faint); }
-  .pack__saving { margin: 0; font-size: 0.85rem; color: var(--color-ink-muted); }
-  .pack__saving strong { color: var(--color-geo); font-weight: 600; }
   .pack__items { margin: 0.625rem 0 1rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
   .pack__items li {
     list-style: none;
@@ -646,19 +644,15 @@ const contactHref = (slug: string) => `/kontakt/?sluzba=${slug}`;
     line-height: 1.3;
   }
   .mod__desc { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--color-ink-muted); flex-grow: 1; }
-  .mod__foot {
+  .mods-foot {
+    margin-top: 2rem;
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-    padding-top: 0.75rem;
-    border-top: 1px dashed var(--color-rule);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
-  .mod__price { font-family: var(--font-sans); font-weight: 600; font-size: 0.95rem; }
-  .mod__cta { font-size: 0.85rem; font-weight: 500; color: var(--color-accent); text-decoration: none; white-space: nowrap; }
-  .mod__cta:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .mods-foot__note { margin: 0; font-size: 0.925rem; line-height: 1.55; color: var(--color-ink-muted); max-width: 46rem; }
+  .mods-foot__note :global(a) { color: var(--color-accent); }
 
   /* ===== 05 Obsah ===== */
   .analysis-note {
@@ -889,7 +883,7 @@ const contactHref = (slug: string) => `/kontakt/?sluzba=${slug}`;
   .final-cta__btns { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 0.5rem; }
 
   @media (prefers-reduced-motion: reduce) {
-    .sl-btn, .ret, .mod__cta { transition: none; }
+    .sl-btn, .ret { transition: none; }
     .sl-btn:hover, .ret:hover { transform: none; }
   }
 </style>
