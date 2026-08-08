@@ -99,6 +99,16 @@ Po zvážení jsem to neudělal a doporučuju to nechat být:
 
 Vrátit se k tomu, až budou data z A1–A3 (datový check ~15. 8.).
 
+
+### 🔴 NOVÉ (2026-08-10) — `npx wrangler login` je teď urgentní
+
+Worker čeká na deploy se dvěma změnami: (1) šablony e-mailů pro poptávky
+služeb z nového formuláře na /sluzby/, (2) **oprava STARÉ ceny auditu
+9 990/12 088 v auto-reply zákazníkům** — nasazená verze workeru posílá
+starou cenu každému, kdo odešle audit formulář, od změny ceny 2. 8.
+Login je interaktivní (browser): `cd worker && npx wrangler login`,
+pak mi dej vědět — deploy a ověření udělám já.
+
 ### 🔴 A5 — Přesměrovat kampaň RMK2 (tvoje věc, Meta Ads)
 
 37 relací, engagement 19 %, průměr 10–19 s, **0 leadů i 0 nákupů**. V měřeném období
