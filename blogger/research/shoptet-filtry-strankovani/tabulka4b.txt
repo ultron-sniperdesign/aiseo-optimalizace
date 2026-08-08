@@ -1,0 +1,4 @@
+KATEGORIÍ ZNOVU STAŽENO: 46
+  bez jediného <a> odkazu s filtrovým parametrem: 43 / 46
+  s odkazy: [('gigamat.cz', 1), ('prokonzole.cz', 6), ('pesan-krmiva.cz', 1)]
+  checkboxů: min 0 · medián 15 · max 437

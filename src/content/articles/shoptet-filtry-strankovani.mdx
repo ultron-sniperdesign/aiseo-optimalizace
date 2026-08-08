@@ -1,0 +1,159 @@
+---
+title: "Filtry na Shoptetu kryje robots.txt, stránkování ne"
+description: "Měření 47 e-shopů: filtrované adresy zakazuje robots.txt a většinou na ně nevede odkaz. Strana 2 kategorie je index,follow, bez canonicalu a v sitemapě chybí."
+answer: "Změřil jsem kategorie na 47 e-shopech běžících na Shoptetu. Filtrované adresy jsou ve vzorku kryté robots.txt a z kategorie na ně většinou nevede odkaz, protože filtry jsou formulářová zaškrtávátka. Druhá strana kategorie naopak u všech třiceti měřených případů neměla rel=canonical, byla index,follow a v sitemapě nebyla."
+slug: "shoptet-filtry-strankovani"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "technicke-zaklady"
+published: "2026-08-08"
+updated: "2026-08-08"
+keywords:
+  - "shoptet filtry url"
+  - "shoptet stránkování canonical"
+  - "faceted navigace eshop"
+  - "robots.txt noindex konflikt"
+  - "parametrické url eshop"
+variant: "rich"
+stats:
+  - value: "43 / 46"
+    label: "měřených kategorií, kde na filtrovanou adresu nevede ani jeden odkaz"
+  - value: "0 / 30"
+    label: "měřených druhých stran kategorie, které mají rel=canonical"
+  - value: "0 / 39"
+    label: "sitemap, které obsahují parametrickou nebo stránkovanou adresu"
+faq:
+  - q: "Musím na Shoptetu řešit filtrované adresy?"
+    a: "Ve změřeném vzorku obvykle ne jako první prioritu. Výchozí robots.txt zakazuje parametry jako priceMin, order, parameterId, manufacturerId nebo pv a dd. Z kategorie na filtrovanou adresu navíc většinou nevede odkaz, protože filtry jsou zaškrtávátka ve formuláři. Výjimkou je situace, kdy jste si filtrované adresy sami prolinkovali nebo na ně vedou odkazy odjinud."
+  - q: "Mám dát na filtrované adresy noindex?"
+    a: "Ne, pokud je ta adresa zároveň blokovaná v robots.txt. Dokumentace Googlu říká přímo, že když crawler stránku kvůli robots.txt neotevře, pravidlo noindex na ní neuvidí — pro tuhle adresu tedy signál prakticky nefunguje. Pokud noindex použít chcete, stránka pro crawler musí být přístupná."
+  - q: "Co je důležité vědět o stránkování?"
+    a: "Nejde nutně o chybu, ale o technický stav, o kterém je dobré vědět. Druhá strana kategorie nemá v měřeném vzorku rel=canonical ani jednou ze třiceti, má meta robots index,follow, vlastní titulek se slovem Strana a robots.txt ji nezakazuje. Je to tedy samostatně indexovatelná stránka s výpisem produktů, kterou platforma vytvořila za vás."
+  - q: "Má strana 2 canonical na stranu 1?"
+    a: "Nemá žádný. To je důležitý rozdíl — není to canonical mířící jinam, je to absence značky. Strana 1 canonical má a míří sama na sebe, strana 2 nemá v hlavičce rel=canonical vůbec."
+  - q: "Je absence canonicalu na stránkování chyba?"
+    a: "Sama o sobě ne. Google od roku 2019 nepoužívá rel=next a rel=prev jako indexační signál a stránkované stránky bere jako samostatné dokumenty. Navíc jsem neměřil, jestli jsou ty adresy skutečně v indexu — jen jaké signály e-shop vydává. Je to rozhodnutí, které za vás udělala platforma, a stojí za to o něm vědět."
+  - q: "Jak velký je ten filtrovaný prostor?"
+    a: "Na jedné měřené kategorii bylo až 437 zaškrtávacích políček a 399 hodnot filtrů. Kombinací by z toho vzniklo obrovské množství adres. Právě proto stojí za povšimnutí, že se na ně robot nedostane odkazem ani přes robots.txt."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+Filtrované adresy jsou u e-shopů klasické strašidlo: tisíce tenkých stránek, které vzniknou z pár zaškrtávátek. Šel jsem to na Shoptetu změřit a čekal jsem, že najdu problém.
+
+**Našel jsem ho jinde.** Ve vzorku nevypadají jako první problém filtry, ale stránkování. U filtrů působí zároveň zákaz v robots.txt a absence odkazů z kategorie. Druhá strana kategorie je naopak samostatně indexovatelná a bez canonicalu.
+
+## Co jsem <span class="hl">měřil</span> — a co ne
+
+Vzorek je stejný jako v [druhém dílu](/blog/shoptet-robots-txt-ai-roboti/): **47 e-shopů**, kategorie jsem našel u 46. U každého jsem si nejdřív načetl jeho robots.txt, pak z homepage vybral odkazy, které ten soubor **nezakazuje**, a našel mezi nimi kategorii.
+
+<Insight tone="signal" icon="?" label="Filtrované adresy jsem nestahoval">
+Výchozí robots.txt je zakazuje. Po článku o tom, jak se robots.txt čte, a po třetím dílu, kde jsem ze stejného důvodu vynechal produktové feedy, by bylo pokrytecké je stáhnout. Měřil jsem tedy jen povolené: kategorii, stránkování a sitemapu. O tom, co je na filtrovaných adresách za značky, netvrdím nic.
+</Insight>
+
+Po opravě chyby v prvním průchodu jsem celé měření zopakoval; dál pracuju jen s opravenými daty. Co se stalo, popisuju na konci.
+
+## Kategorie: na straně 1 konzistentní signály
+
+| Zjištění na straně 1 | Počet |
+|---|---|
+| `rel=canonical` přítomný | **46 z 46** |
+| canonical míří sám na sebe | **46 z 46** |
+| `meta robots` = `index,follow` | **46 z 46** |
+| `rel=next` na další stranu | 31 z 46 |
+
+Na straně 1 byl stav konzistentní: canonical sám na sebe a `index,follow` u všech 46 případů.
+
+## Filtry: zakázané a navíc neodkazované
+
+Výchozí robots.txt má 40 zákazů a mezi nimi parametry `?priceMin`, `?priceMax`, `?order`, `?parameterId`, `?availabilityId`, `?manufacturerId`, `?stock`, `?pv*` a `?dd*`. Tedy přesně ty, kterými se filtruje a řadí.
+
+Důležitější než ten zákaz je ale druhý faktor:
+
+| Zjištění | Počet |
+|---|---|
+| kategorií **bez jediného odkazu s filtrovým parametrem** | **43 ze 46** |
+| kategorií, kde nějaký takový odkaz je | 3 (jeden, šest a jeden) |
+| zaškrtávacích políček na kategorii | medián 15, **maximum 437** |
+| hodnot filtrů na kategorii | medián 6, **maximum 399** |
+
+**Ve většině měřených kategorií nejsou filtry realizované jako odkazy na parametrickou adresu, ale jako zaškrtávátka ve formuláři.** Robot, který prochází web po odkazech, se k filtrované adrese z téhle kategorie běžně nedostane — a robots.txt ji navíc zakazuje. Pokud jste si filtry sami neprolinkovali, není to ve vzorku první technická priorita.
+
+Filtrovaný prostor je přitom obrovský. Jedna z měřených kategorií měla 437 zaškrtávacích políček; kombinacemi by z toho vznikly řádově statisíce adres. Ty adresy existují, ale z měřené kategorie se k nim odkazem většinou nedá dojít.
+
+<Insight tone="warn" icon="!" label="Proto na ně nedávejte noindex">
+Dokumentace Googlu k pravidlu `noindex` to říká přímo: **je-li stránka blokovaná v robots.txt, crawler pravidlo `noindex` nikdy neuvidí** a stránka se navíc pořád může objevit ve výsledcích, pokud na ni něco odkazuje. Pro takovou adresu tedy `noindex` prakticky nefunguje — ne proto, že by se pravidla rušila, ale proto, že se k němu crawler nedostane. Na Shoptetu jsou filtry zakázané, takže `noindex` na nich nemá co dělat. Kdo si ale filtry prolinkuje vlastní úpravou šablony, změní ten druhý faktor: na zakázanou adresu nově povede odkaz.
+</Insight>
+
+## Stránkování: samostatně indexovatelné strany bez canonicalu
+
+Tady je ten skutečný nález. Kategorie se stránkuje adresou typu `/kategorie/strana-2/` a **tu výchozí robots.txt nezakazuje**. Ze 47 e-shopů měl jediný vlastní pravidlo, kterým si stránkování zavřel — a je to týž obchod, který si v druhém dílu robots.txt upravoval. U něj jsem stranu 2 nestahoval.
+
+Zbylých třicet vypadá takhle:
+
+| Zjištění na straně 2 | Počet |
+|---|---|
+| **má `rel=canonical`** | **0 z 30** |
+| `meta robots` = `index,follow` | **30 z 30** |
+| `rel=prev` na předchozí stranu | 30 z 30 |
+| vlastní titulek se slovem „Strana" | 30 z 30 |
+
+Všimněte si toho prvního řádku pořádně: **není to canonical mířící na stranu 1. Je to absence značky.** Strana 1 canonical má a míří sama na sebe. Strana 2 nemá v hlavičce `rel=canonical` vůbec.
+
+A do třetice: **v sitemapě stránkované adresy nejsou** — ani u jednoho z 39 e-shopů, u kterých se sitemapa dala přečíst. Stejně tak tam není žádná adresa s otazníkem.
+
+Dohromady to znamená, že strana 2, 3 a 4 vaší kategorie jsou samostatně indexovatelné stránky s výpisem produktů, které za vás vytvořila platforma. `rel=canonical` jsem u nich neviděl a v dostupných sitemapách se neobjevovaly.
+
+<Insight tone="aio" icon="i" label="Není to automaticky chyba">
+Google od roku 2019 nepoužívá `rel=next` a `rel=prev` jako indexační signál a stránkované stránky bere jako samostatné dokumenty. Tvrdit, že absence canonicalu je vada, by bylo silnější než to, co jsem změřil. **Je to rozhodnutí, které za vás udělala platforma** — a rozdíl proti filtrům je v tom, že u filtrů to rozhodnutí je vidět v robots.txt, kdežto u stránkování není vidět nikde.
+
+Prakticky: pokud vám nevadí, že stránkované výpisy fungují jako samostatné dokumenty, je to legitimní stav. Pokud to nechcete, je to bod k vědomému řešení — ne něco, co se má přecházet jen proto, že filtry vypadají hrozivěji.
+</Insight>
+
+## Co si z toho odnést
+
+Pořadí, ve kterém to dává smysl řešit:
+
+1. Ověřte, že z kategorií nevedou odkazy na filtrované adresy.
+2. Otevřete stranu 2 kategorie a rozhodněte se, jestli chcete, aby byla samostatně indexovatelná.
+3. `noindex` na adresách zakázaných v robots.txt neřešte — ten problém neřeší.
+
+<MistakeGrid>
+<Mistake number="01" title="Řešit filtry, protože se to tak dělá">
+Ve vzorku proti nim působí dva faktory zároveň — zákaz v robots.txt a to, že z kategorie na ně většinou nevede odkaz. Čas strávený jejich „opravováním" je čas, který jinde chybí.
+</Mistake>
+
+<Mistake number="02" title="Dávat noindex na adresy zakázané v robots.txt">
+Nefunguje to a dokumentace Googlu to říká výslovně: je-li stránka blokovaná v robots.txt, crawler se k `noindex` na ní nedostane. Pokud chcete `noindex` použít, stránka pro něj musí být přístupná.
+</Mistake>
+
+<Mistake number="03" title="Prolinkovat si filtry vlastní úpravou">
+Tím změníte ten druhý faktor: na zakázanou adresu nově povede odkaz. A zakázaná adresa, na kterou odkaz vede, se podle Googlu ve výsledcích objevit může — `noindex` na ní, jak už víme, nepomůže.
+</Mistake>
+</MistakeGrid>
+
+<Checklist tone="geo" title="Co si projít na vlastním e-shopu" items={[
+  { title: "Otevřít kategorii a najít odkaz s otazníkem", desc: "Pokud tam žádný nevede, nebude to ve většině případů první věc k řešení. Pokud ano, přidala ho úprava šablony nebo doplněk." },
+  { title: "Otevřít stranu 2 kategorie a hledat canonical", desc: "V měřeném vzorku ho nemělo ani jedno z třiceti. Vaše rozhodnutí, jestli to tak chcete." },
+  { title: "Zkontrolovat, jestli stránkování není v sitemapě", desc: "Ve vzorku nebylo nikde. Sitemapa je tedy neposílá jako preferované adresy k procházení." },
+  { title: "Neřešit noindex tam, kde platí robots.txt", desc: "Kombinace nefunguje. Vyberte jedno: buď zákaz procházení, nebo noindex na přístupné stránce." },
+  { title: "Vědět, kolik filtrů kategorie nabízí", desc: "Na jedné měřené kategorii jich bylo 437. Kombinacemi vzniká obrovský prostor adres — dobré vědět, i když se na ně nedá dojít." },
+]} />
+
+<Insight tone="signal" icon="?" label="Poznámka k opravě měření">
+První průchod měl chybu: skript načítal robots.txt pod špatným klíčem, takže seznam zákazů vyšel prázdný a filtrování kandidátů podle něj neproběhlo. Nesedělo to na základní kontrolu proti druhému dílu, kde 31 ze 47 e-shopů mělo výchozí soubor se 40 pravidly — a tady vycházela nula u všech. Klíč jsem opravil a **celé měření zopakoval**. Čísla v článku pocházejí jen z opraveného průchodu.
+</Insight>
+
+<Insight tone="aio" icon="i" label="Limity měření">
+47 e-shopů a **jedna kategorie na e-shop** — jiná kategorie může mít jiné filtry i jiný počet stran. Měřil jsem **jeden den, 8. srpna 2026**. Filtrované adresy jsem nestahoval, takže o jejich obsahu netvrdím nic. A neměřil jsem, jestli jsou stránkované adresy skutečně v indexu Googlu — měřil jsem, co e-shop vydává, ne co s tím vyhledávač udělá.
+</Insight>
+
+## Kam tenhle článek patří
+
+Čtvrtý díl bloku o Shoptetu a viditelnosti v AI. Předchozí měřily [formát strukturovaných dat](/blog/shoptet-strukturovana-data-mereni/), [robots.txt a AI roboty](/blog/shoptet-robots-txt-ai-roboti/) a [produktová pole proti požadavkům Googlu](/blog/shoptet-produktova-pole-google/). Poslední díl se podívá na blogový modul.
+
+Obecné souvislosti mezi strukturou adres a čitelností pro stroje rozebírá [AI friendly struktura URL](/blog/ai-friendly-url-struktura/).

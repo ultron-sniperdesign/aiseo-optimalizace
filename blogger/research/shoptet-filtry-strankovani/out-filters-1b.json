@@ -1,0 +1,862 @@
+[
+ {
+  "label": "anela.cz",
+  "base": "https://www.anela.cz",
+  "disallow_count": 40,
+  "pages_checked": 9,
+  "category": {
+   "url": "https://www.anela.cz/leto/",
+   "canonical": "https://www.anela.cz/leto/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Péče o pleť v létě: krátce a přehledně"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 264
+   },
+   "values": {
+    "pv": 86
+   },
+   "checkboxes": 90
+  },
+  "page2_url": null,
+  "sitemap_total": 370,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "angrybeards.cz",
+  "base": "https://www.angrybeards.cz",
+  "disallow_count": 76,
+  "pages_checked": 11,
+  "category": {
+   "url": "https://www.angrybeards.cz/kule/",
+   "canonical": "https://www.angrybeards.cz/kule/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Intimní chlapská kosmetika Calm Balls 🎱🎱 Na kule v klidu!"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 5,
+    "dd[]": 39,
+    "dd=": 13
+   },
+   "values": {
+    "dd": 13
+   },
+   "checkboxes": 15
+  },
+  "page2_url": null,
+  "sitemap_total": 425,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "autodoplnky-obchod.cz",
+  "base": "https://www.autodoplnky-obchod.cz",
+  "disallow_count": 45,
+  "pages_checked": 9,
+  "category": {
+   "url": "https://www.autodoplnky-obchod.cz/doplnky-do-auta/",
+   "canonical": "https://www.autodoplnky-obchod.cz/doplnky-do-auta/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/doplnky-do-auta/strana-2/",
+   "rel_prev": null,
+   "title": "Autodoplňky podle modelu auta | Autodoplňky-obchod.cz"
+  },
+  "filters": {
+   "keys": {},
+   "values": {},
+   "checkboxes": 0
+  },
+  "page2_url": "https://www.autodoplnky-obchod.cz/doplnky-do-auta/strana-2/",
+  "page2_blocked_by": "/*strana-*",
+  "sitemap_total": 3539,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "baavi.cz",
+  "base": "https://www.baavi.cz",
+  "disallow_count": 40,
+  "pages_checked": 7,
+  "category": {
+   "url": "https://www.baavi.cz/loggos/",
+   "canonical": "https://www.baavi.cz/loggos/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "LOGGOS"
+  },
+  "filters": {
+   "keys": {
+    "order=": 5
+   },
+   "values": {},
+   "checkboxes": 0
+  },
+  "page2_url": null,
+  "sitemap_total": 320,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "cistedrevo.cz",
+  "base": "https://www.cistedrevo.cz",
+  "disallow_count": 50,
+  "pages_checked": 6,
+  "category": {
+   "url": "https://www.cistedrevo.cz/nabidka--dd-3/",
+   "canonical": "https://www.cistedrevo.cz/nabidka--dd-3/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Naše nejprodávanější kousky - 14 produktů SKLADEM | ČistéDřevo.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 12,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 3,
+    "dd[]": 27,
+    "dd=": 9
+   },
+   "values": {
+    "pv": 1,
+    "dd": 9
+   },
+   "checkboxes": 14
+  },
+  "page2_url": null,
+  "sitemap_total": 1020,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "drevenysvet.online",
+  "base": "https://www.drevenysvet.online",
+  "disallow_count": 0,
+  "pages_checked": 15,
+  "category": {
+   "url": "https://www.drevenysvet.online/hackovani-a-vypletani/",
+   "canonical": "https://www.drevenysvet.online/hackovani-a-vypletani/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/hackovani-a-vypletani/strana-2/",
+   "rel_prev": null,
+   "title": "Dna a víka na háčkování | Dřevěný svět online"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 8,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 282
+   },
+   "values": {
+    "pv": 66
+   },
+   "checkboxes": 97
+  },
+  "page2_url": "https://www.drevenysvet.online/hackovani-a-vypletani/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.drevenysvet.online/hackovani-a-vypletani/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/hackovani-a-vypletani/strana-3/",
+   "rel_prev": "/hackovani-a-vypletani/",
+   "title": "Dna a víka na háčkování | Dřevěný svět online, Strana 2"
+  },
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "film-technika.com",
+  "base": "https://www.film-technika.com",
+  "disallow_count": 40,
+  "pages_checked": 8,
+  "category": {
+   "url": "https://www.film-technika.com/fotoaparaty/",
+   "canonical": "https://www.film-technika.com/fotoaparaty/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Kamery - FILM-TECHNIKA"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 44,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 12,
+    "dd=": 4
+   },
+   "values": {
+    "dd": 4
+   },
+   "checkboxes": 17
+  },
+  "page2_url": null,
+  "sitemap_total": 461,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "gigamat.cz",
+  "base": "https://www.gigamat.cz",
+  "disallow_count": 40,
+  "pages_checked": 9,
+  "category": {
+   "url": "https://www.gigamat.cz/vsechny-kategorie/",
+   "canonical": "https://www.gigamat.cz/vsechny-kategorie/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/vsechny-kategorie/strana-2/",
+   "rel_prev": null,
+   "title": "🛒 Vybírejte z 10030 produktů skladem | Gigamat.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 1248,
+    "stock=": 1,
+    "order=": 6,
+    "dd[]": 30,
+    "dd=": 10
+   },
+   "values": {
+    "dd": 10
+   },
+   "checkboxes": 323
+  },
+  "page2_url": "https://www.gigamat.cz/vsechny-kategorie/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.gigamat.cz/vsechny-kategorie/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/vsechny-kategorie/strana-3/",
+   "rel_prev": "/vsechny-kategorie/",
+   "title": "🛒 Vybírejte z 10030 produktů skladem | Gigamat.cz, Strana 2"
+  },
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "giovani.cz",
+  "base": "https://www.giovani.cz",
+  "disallow_count": 43,
+  "pages_checked": 14,
+  "category": {
+   "url": "https://www.giovani.cz/parfemy-na-prani/",
+   "canonical": "https://www.giovani.cz/parfemy-na-prani/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Parfémy na praní GIOVANI | Giovani.cz"
+  },
+  "filters": {
+   "keys": {
+    "order=": 4
+   },
+   "values": {},
+   "checkboxes": 1
+  },
+  "page2_url": null,
+  "sitemap_total": 276,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "hobynaradi.cz",
+  "base": "https://www.hobynaradi.cz",
+  "disallow_count": 43,
+  "pages_checked": 9,
+  "category": {
+   "url": "https://www.hobynaradi.cz/casoakce/",
+   "canonical": "https://www.hobynaradi.cz/casoakce/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/casoakce/strana-2/",
+   "rel_prev": null,
+   "title": "Časoakce - HobyNaradi.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "dd": 3
+   },
+   "checkboxes": 4
+  },
+  "page2_url": "https://www.hobynaradi.cz/casoakce/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.hobynaradi.cz/casoakce/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/casoakce/strana-3/",
+   "rel_prev": "/casoakce/",
+   "title": "Časoakce - HobyNaradi.cz, Strana 2"
+  },
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "konzoliste.cz",
+  "base": "https://www.konzoliste.cz",
+  "disallow_count": 46,
+  "pages_checked": 11,
+  "category": {
+   "url": "https://www.konzoliste.cz/gaming/",
+   "canonical": "https://www.konzoliste.cz/gaming/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/gaming/strana-2/",
+   "rel_prev": null,
+   "title": "Gaming ⭐ 3342 produktů SKLADEM | KONZOLIŠTĚ.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 948,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 6,
+    "dd[]": 21,
+    "dd=": 7
+   },
+   "values": {
+    "pv": 2,
+    "dd": 7
+   },
+   "checkboxes": 247
+  },
+  "page2_url": "https://www.konzoliste.cz/gaming/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.konzoliste.cz/gaming/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/gaming/strana-3/",
+   "rel_prev": "/gaming/",
+   "title": "Gaming ⭐ 3342 produktů SKLADEM | KONZOLIŠTĚ.cz, Strana 2"
+  },
+  "sitemap_total": 997,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "kulina.cz",
+  "base": "https://www.kulina.cz",
+  "disallow_count": 42,
+  "pages_checked": 5,
+  "category": {
+   "url": "https://www.kulina.cz/inspirace/",
+   "canonical": "https://www.kulina.cz/inspirace/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Inspirace 🔵 VÝBĚR EXPERTŮ"
+  },
+  "filters": {
+   "keys": {},
+   "values": {},
+   "checkboxes": 0
+  },
+  "page2_url": null,
+  "sitemap_total": 2119,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "levanduloveudoli.cz",
+  "base": "https://www.levanduloveudoli.cz",
+  "disallow_count": 40,
+  "pages_checked": 12,
+  "category": {
+   "url": "https://www.levanduloveudoli.cz/produkty/",
+   "canonical": "https://www.levanduloveudoli.cz/produkty/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/produkty/strana-2/",
+   "rel_prev": null,
+   "title": "Molekuly života pro zdraví a dlouhověkost v BIO kvalitě"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 18,
+    "dd=": 6
+   },
+   "values": {
+    "dd": 6
+   },
+   "checkboxes": 8
+  },
+  "page2_url": "https://www.levanduloveudoli.cz/produkty/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.levanduloveudoli.cz/produkty/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/produkty/strana-3/",
+   "rel_prev": "/produkty/",
+   "title": "Molekuly života pro zdraví a dlouhověkost v BIO kvalitě, Strana 2"
+  },
+  "sitemap_total": 172,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "madvell.cz",
+  "base": "https://www.madvell.cz",
+  "disallow_count": 40,
+  "pages_checked": 9,
+  "category": {
+   "url": "https://www.madvell.cz/novinky-2026/",
+   "canonical": "https://www.madvell.cz/novinky-2026/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Novinky 2026 - Madvell"
+  },
+  "filters": {
+   "keys": {
+    "order=": 4
+   },
+   "values": {},
+   "checkboxes": 0
+  },
+  "page2_url": null,
+  "sitemap_total": 466,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "nanospace.cz",
+  "base": "https://www.nanospace.cz",
+  "disallow_count": 40,
+  "pages_checked": 17,
+  "category": {
+   "url": "https://www.nanospace.cz/akce/",
+   "canonical": "https://www.nanospace.cz/akce/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/akce/strana-2/",
+   "rel_prev": null,
+   "title": "Aktuálně probíhající slevové akce | nanoSPACE"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "dd": 3
+   },
+   "checkboxes": 5
+  },
+  "page2_url": "https://www.nanospace.cz/akce/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.nanospace.cz/akce/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/akce/strana-3/",
+   "rel_prev": "/akce/",
+   "title": "Aktuálně probíhající slevové akce | nanoSPACE, Strana 2"
+  },
+  "sitemap_total": 559,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "nasegalanterie.cz",
+  "base": "https://www.nasegalanterie.cz",
+  "disallow_count": 40,
+  "pages_checked": 6,
+  "category": {
+   "url": "https://www.nasegalanterie.cz/prize/",
+   "canonical": "https://www.nasegalanterie.cz/prize/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/prize/strana-2/",
+   "rel_prev": null,
+   "title": "Příze a vlny na pletení i háčkování ⭐ Vyberte si z 5705 druhů | NašeGalanterie.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 80,
+    "stock=": 1,
+    "order=": 5
+   },
+   "values": {},
+   "checkboxes": 21
+  },
+  "page2_url": "https://www.nasegalanterie.cz/prize/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.nasegalanterie.cz/prize/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/prize/strana-3/",
+   "rel_prev": "/prize/",
+   "title": "Příze a vlny na pletení i háčkování ⭐ Vyberte si z 5705 druhů | NašeGalanterie.cz, Strana 2"
+  },
+  "sitemap_total": 1170,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "nemeckyeshop.cz",
+  "base": "https://www.nemeckyeshop.cz",
+  "disallow_count": 40,
+  "pages_checked": 10,
+  "category": {
+   "url": "https://www.nemeckyeshop.cz/domacnost/",
+   "canonical": "https://www.nemeckyeshop.cz/domacnost/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/domacnost/strana-2/",
+   "rel_prev": null,
+   "title": "Domácnost z Německa: drogerie, praní, úklid i nádobí"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 444,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 63,
+    "dd[]": 27,
+    "dd=": 9
+   },
+   "values": {
+    "pv": 21,
+    "dd": 9
+   },
+   "checkboxes": 142
+  },
+  "page2_url": "https://www.nemeckyeshop.cz/domacnost/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.nemeckyeshop.cz/domacnost/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/domacnost/strana-3/",
+   "rel_prev": "/domacnost/",
+   "title": "Domácnost z Německa: drogerie, praní, úklid i nádobí, Strana 2"
+  },
+  "sitemap_total": 882,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "nonstopstavebniny.cz",
+  "base": "https://www.nonstopstavebniny.cz",
+  "disallow_count": 40,
+  "pages_checked": 8,
+  "category": {
+   "url": "https://www.nonstopstavebniny.cz/stavba/",
+   "canonical": "https://www.nonstopstavebniny.cz/stavba/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/stavba/strana-2/",
+   "rel_prev": null,
+   "title": "STAVBA - NonstopStavebniny.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 480,
+    "stock=": 1,
+    "order=": 5
+   },
+   "values": {},
+   "checkboxes": 121
+  },
+  "page2_url": "https://www.nonstopstavebniny.cz/stavba/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.nonstopstavebniny.cz/stavba/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/stavba/strana-3/",
+   "rel_prev": "/stavba/",
+   "title": "STAVBA - NonstopStavebniny.cz, Strana 2"
+  },
+  "sitemap_total": 1515,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "olivie.cz",
+  "base": "https://www.olivie.cz",
+  "disallow_count": 40,
+  "pages_checked": 20,
+  "category": null
+ },
+ {
+  "label": "outdoorstuff.cz",
+  "base": "https://www.outdoorstuff.cz",
+  "disallow_count": 40,
+  "pages_checked": 13,
+  "category": {
+   "url": "https://www.outdoorstuff.cz/akce/",
+   "canonical": "https://www.outdoorstuff.cz/akce/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/akce/strana-2/",
+   "rel_prev": null,
+   "title": "🏕️VÝPRODEJ - Outdoorstuff.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "dd": 3
+   },
+   "checkboxes": 4
+  },
+  "page2_url": "https://www.outdoorstuff.cz/akce/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.outdoorstuff.cz/akce/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/akce/strana-3/",
+   "rel_prev": "/akce/",
+   "title": "🏕️VÝPRODEJ - Outdoorstuff.cz, Strana 2"
+  },
+  "sitemap_total": 587,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "pff.cz",
+  "base": "https://www.pff.cz",
+  "disallow_count": 40,
+  "pages_checked": 3,
+  "category": {
+   "url": "https://www.pff.cz/bio-dobroty/",
+   "canonical": "https://www.pff.cz/bio-dobroty/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "BIO dobroty - Pet Farm Food"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4
+   },
+   "values": {},
+   "checkboxes": 2
+  },
+  "page2_url": null,
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "pocitarna.cz",
+  "base": "https://www.pocitarna.cz",
+  "disallow_count": 40,
+  "pages_checked": 10,
+  "category": {
+   "url": "https://www.pocitarna.cz/masakr-cen/",
+   "canonical": "https://www.pocitarna.cz/masakr-cen/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/masakr-cen/strana-2/",
+   "rel_prev": null,
+   "title": "Masakr cen ✅ | Vyber si z 258 modelů na POČÍTÁRNA.CZ"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 56,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 1239,
+    "dd[]": 27,
+    "dd=": 9
+   },
+   "values": {
+    "pv": 390,
+    "dd": 9
+   },
+   "checkboxes": 437
+  },
+  "page2_url": "https://www.pocitarna.cz/masakr-cen/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.pocitarna.cz/masakr-cen/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/masakr-cen/strana-3/",
+   "rel_prev": "/masakr-cen/",
+   "title": "Masakr cen ✅ | Vyber si z 258 modelů na POČÍTÁRNA.CZ, Strana 2"
+  },
+  "sitemap_total": 3920,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "profi-dj.cz",
+  "base": "https://www.profi-dj.cz",
+  "disallow_count": 39,
+  "pages_checked": 3,
+  "category": {
+   "url": "https://www.profi-dj.cz/sezonni-vyprodej/",
+   "canonical": "https://www.profi-dj.cz/sezonni-vyprodej/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/sezonni-vyprodej/strana-2/",
+   "rel_prev": null,
+   "title": "Sezonní výprodej, výběr z 5966 produktů | Profi-DJ.cz"
+  },
+  "filters": {
+   "keys": {},
+   "values": {},
+   "checkboxes": 0
+  },
+  "page2_url": "https://www.profi-dj.cz/sezonni-vyprodej/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.profi-dj.cz/sezonni-vyprodej/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/sezonni-vyprodej/strana-3/",
+   "rel_prev": "/sezonni-vyprodej/",
+   "title": "Sezonní výprodej, výběr z 5966 produktů | Profi-DJ.cz, Strana 2"
+  },
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "prohackovani.cz",
+  "base": "https://www.prohackovani.cz",
+  "disallow_count": 40,
+  "pages_checked": 11,
+  "category": {
+   "url": "https://www.prohackovani.cz/prize-podle-slozeni/",
+   "canonical": "https://www.prohackovani.cz/prize-podle-slozeni/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/prize-podle-slozeni/strana-2/",
+   "rel_prev": null,
+   "title": "Příze podle složení - široká škála přízí s různým složením"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 52,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 429,
+    "dd[]": 18,
+    "dd=": 6
+   },
+   "values": {
+    "pv": 136,
+    "dd": 6
+   },
+   "checkboxes": 163
+  },
+  "page2_url": "https://www.prohackovani.cz/prize-podle-slozeni/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.prohackovani.cz/prize-podle-slozeni/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/prize-podle-slozeni/strana-3/",
+   "rel_prev": "/prize-podle-slozeni/",
+   "title": "Příze podle složení - široká škála přízí s různým složením, Strana 2"
+  },
+  "sitemap_total": 765,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ }
+]

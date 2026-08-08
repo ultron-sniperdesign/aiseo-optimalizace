@@ -1,0 +1,26 @@
+E-SHOPŮ: 47 · kategorie nalezena: 46
+pravidel Disallow načteno (kontrola opravy): {40: 36, 76: 1, 45: 2, 50: 1, 0: 1, 43: 2, 46: 1, 42: 1, 39: 1, 41: 1}
+
+=== KATEGORIE (strana 1) ===
+  rel=canonical                : 46 / 46
+  canonical míří sám na sebe   : 46 / 46
+  meta robots                  : {'index,follow': 46}
+  rel=next                     : 31 / 46
+
+=== STRÁNKOVÁNÍ ===
+  kategorií se stranou 2       : 31 / 46
+  strana 2 zakázaná v robots   : ['autodoplnky-obchod.cz']
+  strana 2 stažena             : 30
+  z toho má rel=canonical      : 0 / 30
+  meta robots na straně 2      : {'index,follow': 30}
+  rel=prev                     : 30 / 30
+  unikátní titulek             : 30 / 30
+
+=== FILTRY V HTML KATEGORIE ===
+  {'priceMin': 39, 'priceMax': 39, 'manufacturerId': 32, 'stock=': 39, 'order=': 43, 'pv[]': 22, 'dd[]': 29, 'dd=': 29}
+  hodnot filtrů (pv+dd): min 0 · medián 6 · max 399
+  checkboxů: min 0 · medián 15 · max 437
+
+=== SITEMAPA (39 e-shopů) ===
+  s parametrickými URL (?)     : 0 / 39
+  se stránkovanými URL         : 0 / 39

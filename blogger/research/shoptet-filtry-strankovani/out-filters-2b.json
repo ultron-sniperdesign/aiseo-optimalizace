@@ -1,0 +1,951 @@
+[
+ {
+  "label": "prokonzole.cz",
+  "base": "https://www.prokonzole.cz",
+  "disallow_count": 40,
+  "pages_checked": 16,
+  "category": {
+   "url": "https://www.prokonzole.cz/hry/",
+   "canonical": "https://www.prokonzole.cz/hry/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/hry/strana-2/",
+   "rel_prev": null,
+   "title": "Hry na herní konzole a PC | Prokonzole.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 228,
+    "dd[]": 12,
+    "dd=": 6
+   },
+   "values": {
+    "pv": 76,
+    "dd": 4
+   },
+   "checkboxes": 81
+  },
+  "page2_url": "https://www.prokonzole.cz/hry/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.prokonzole.cz/hry/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/hry/strana-3/",
+   "rel_prev": "/hry/",
+   "title": "Hry na herní konzole a PC | Prokonzole.cz, Strana 2"
+  },
+  "sitemap_total": 2003,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "prolicence.cz",
+  "base": "https://www.prolicence.cz",
+  "disallow_count": 40,
+  "pages_checked": 8,
+  "category": {
+   "url": "https://www.prolicence.cz/microsoft-windows/",
+   "canonical": "https://www.prolicence.cz/microsoft-windows/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Nejlevnější originální systémy Microsoft Windows | ProLicence.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4
+   },
+   "values": {},
+   "checkboxes": 2
+  },
+  "page2_url": null,
+  "sitemap_total": 299,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "ptakoviny-cb.cz",
+  "base": "https://www.ptakoviny-cb.cz",
+  "disallow_count": 40,
+  "pages_checked": 7,
+  "category": {
+   "url": "https://www.ptakoviny-cb.cz/fanclub/",
+   "canonical": "https://www.ptakoviny-cb.cz/fanclub/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/fanclub/strana-2/",
+   "rel_prev": null,
+   "title": "PRO FANOUŠKY ✅ | 77 produktů na Ptákoviny-CB"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 28,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 69
+   },
+   "values": {
+    "pv": 23
+   },
+   "checkboxes": 31
+  },
+  "page2_url": "https://www.ptakoviny-cb.cz/fanclub/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.ptakoviny-cb.cz/fanclub/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/fanclub/strana-3/",
+   "rel_prev": "/fanclub/",
+   "title": "PRO FANOUŠKY ✅ | 77 produktů na Ptákoviny-CB, Strana 2"
+  },
+  "sitemap_total": 1742,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "puellavune.cz",
+  "base": "https://www.puellavune.cz",
+  "disallow_count": 41,
+  "pages_checked": 2,
+  "category": {
+   "url": "https://www.puellavune.cz/green-days/",
+   "canonical": "https://www.puellavune.cz/green-days/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "💚 Zelená vůně Double Y - www.PUELLAvune.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 51,
+    "dd=": 17
+   },
+   "values": {
+    "dd": 17
+   },
+   "checkboxes": 20
+  },
+  "page2_url": null,
+  "sitemap_total": 421,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "ususil.cz",
+  "base": "https://www.ususil.cz",
+  "disallow_count": 40,
+  "pages_checked": 9,
+  "category": {
+   "url": "https://www.ususil.cz/darky/",
+   "canonical": "https://www.ususil.cz/darky/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Dárkové balíčky sušeného masa"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 6,
+    "dd[]": 15,
+    "dd=": 5
+   },
+   "values": {
+    "pv": 2,
+    "dd": 5
+   },
+   "checkboxes": 9
+  },
+  "page2_url": null,
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "utukutu.cz",
+  "base": "https://www.utukutu.cz",
+  "disallow_count": 40,
+  "pages_checked": 10,
+  "category": {
+   "url": "https://www.utukutu.cz/kategorie/eshop/",
+   "canonical": "https://www.utukutu.cz/kategorie/eshop/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/kategorie/eshop/strana-2/",
+   "rel_prev": null,
+   "title": "E-shop | Utukutu"
+  },
+  "filters": {
+   "keys": {
+    "order=": 5
+   },
+   "values": {},
+   "checkboxes": 0
+  },
+  "page2_url": "https://www.utukutu.cz/kategorie/eshop/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.utukutu.cz/kategorie/eshop/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/kategorie/eshop/strana-3/",
+   "rel_prev": "/kategorie/eshop/",
+   "title": "E-shop | Utukutu, Strana 2"
+  },
+  "sitemap_total": 591,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "venira.cz",
+  "base": "https://www.venira.cz",
+  "disallow_count": 45,
+  "pages_checked": 11,
+  "category": {
+   "url": "https://www.venira.cz/darky/",
+   "canonical": "https://www.venira.cz/darky/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/darky/strana-2/",
+   "rel_prev": null,
+   "title": "Tipy na dárky - přírodní kosmetika a doplňky stravy"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 15
+   },
+   "values": {
+    "pv": 5
+   },
+   "checkboxes": 7
+  },
+  "page2_url": "https://www.venira.cz/darky/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.venira.cz/darky/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/darky/strana-3/",
+   "rel_prev": "/darky/",
+   "title": "Tipy na dárky - přírodní kosmetika a doplňky stravy, Strana 2"
+  },
+  "sitemap_total": 285,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "super-granule.cz",
+  "base": "https://www.super-granule.cz",
+  "disallow_count": 40,
+  "pages_checked": 10,
+  "category": {
+   "url": "https://www.super-granule.cz/granule-pro-psy/",
+   "canonical": "https://www.super-granule.cz/granule-pro-psy/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/granule-pro-psy/strana-2/",
+   "rel_prev": null,
+   "title": "Hypoalergenní granule pro psy | Pro alergické a citlivé psy | Super-granule.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 2,
+    "priceMax": 1,
+    "manufacturerId": 40,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 192,
+    "dd[]": 12,
+    "dd=": 4
+   },
+   "values": {
+    "pv": 64,
+    "dd": 4
+   },
+   "checkboxes": 79
+  },
+  "page2_url": "https://www.super-granule.cz/granule-pro-psy/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.super-granule.cz/granule-pro-psy/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/granule-pro-psy/strana-3/",
+   "rel_prev": "/granule-pro-psy/",
+   "title": "Hypoalergenní granule pro psy | Pro alergické a citlivé psy | Super-granule.cz, Strana 2"
+  },
+  "sitemap_total": 893,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "pesan-krmiva.cz",
+  "base": "https://www.pesan-krmiva.cz",
+  "disallow_count": 40,
+  "pages_checked": 2,
+  "category": {
+   "url": "https://www.pesan-krmiva.cz/psi/",
+   "canonical": "https://www.pesan-krmiva.cz/psi/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/psi/strana-2/",
+   "rel_prev": null,
+   "title": "PSI - Pesan-Krmiva - obchod s chovatelskými potřebami"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 236,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 141,
+    "dd[]": 21,
+    "dd=": 8
+   },
+   "values": {
+    "pv": 47,
+    "dd": 7
+   },
+   "checkboxes": 114
+  },
+  "page2_url": "https://www.pesan-krmiva.cz/psi/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.pesan-krmiva.cz/psi/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/psi/strana-3/",
+   "rel_prev": "/psi/",
+   "title": "PSI - Pesan-Krmiva - obchod s chovatelskými potřebami, Strana 2"
+  },
+  "sitemap_total": 905,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "husse.cz",
+  "base": "https://www.husse.cz",
+  "disallow_count": 40,
+  "pages_checked": 10,
+  "category": {
+   "url": "https://www.husse.cz/pes/",
+   "canonical": "https://www.husse.cz/pes/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/pes/strana-2/",
+   "rel_prev": null,
+   "title": "Chovatelské potřeby pro psy | Kvalitní psí krmivo a doplňky"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 4,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 54,
+    "dd[]": 12,
+    "dd=": 4
+   },
+   "values": {
+    "pv": 18,
+    "dd": 4
+   },
+   "checkboxes": 24
+  },
+  "page2_url": "https://www.husse.cz/pes/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.husse.cz/pes/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/pes/strana-3/",
+   "rel_prev": "/pes/",
+   "title": "Chovatelské potřeby pro psy | Kvalitní psí krmivo a doplňky, Strana 2"
+  },
+  "sitemap_total": 0,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "bellas.cz",
+  "base": "https://www.bellas.cz",
+  "disallow_count": 40,
+  "pages_checked": 19,
+  "category": {
+   "url": "https://www.bellas.cz/novinky/",
+   "canonical": "https://www.bellas.cz/novinky/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/novinky/strana-2/",
+   "rel_prev": null,
+   "title": "NOVINKY - Bellas.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 12,
+    "stock=": 1,
+    "order=": 5,
+    "dd[]": 12,
+    "dd=": 4
+   },
+   "values": {
+    "dd": 4
+   },
+   "checkboxes": 12
+  },
+  "page2_url": "https://www.bellas.cz/novinky/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.bellas.cz/novinky/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/novinky/strana-3/",
+   "rel_prev": "/novinky/",
+   "title": "NOVINKY - Bellas.cz, Strana 2"
+  },
+  "sitemap_total": 227,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "nutrition-shop.cz",
+  "base": "https://www.nutrition-shop.cz",
+  "disallow_count": 40,
+  "pages_checked": 8,
+  "category": {
+   "url": "https://www.nutrition-shop.cz/sportovni-vyziva/",
+   "canonical": "https://www.nutrition-shop.cz/sportovni-vyziva/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/sportovni-vyziva/strana-2/",
+   "rel_prev": null,
+   "title": "Nejlepší sportovní výživa skladem (389 produktů)"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 128,
+    "stock=": 1,
+    "order=": 4
+   },
+   "values": {},
+   "checkboxes": 33
+  },
+  "page2_url": "https://www.nutrition-shop.cz/sportovni-vyziva/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.nutrition-shop.cz/sportovni-vyziva/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/sportovni-vyziva/strana-3/",
+   "rel_prev": "/sportovni-vyziva/",
+   "title": "Nejlepší sportovní výživa skladem (389 produktů), Strana 2"
+  },
+  "sitemap_total": 825,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "brainmarket.cz",
+  "base": "https://www.brainmarket.cz",
+  "disallow_count": 40,
+  "pages_checked": 5,
+  "category": {
+   "url": "https://www.brainmarket.cz/brainmax/",
+   "canonical": "https://www.brainmarket.cz/brainmax/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/brainmax/strana-2/",
+   "rel_prev": null,
+   "title": "BrainMax (KVALITA PODPOŘENA EXPERTY) | BrainMarket.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 20,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 333
+   },
+   "values": {
+    "pv": 109
+   },
+   "checkboxes": 117
+  },
+  "page2_url": "https://www.brainmarket.cz/brainmax/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.brainmarket.cz/brainmax/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/brainmax/strana-3/",
+   "rel_prev": "/brainmax/",
+   "title": "BrainMax (KVALITA PODPOŘENA EXPERTY) | BrainMarket.cz, Strana 2"
+  },
+  "sitemap_total": 1466,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "viviencosmetics.cz",
+  "base": "https://www.viviencosmetics.cz",
+  "disallow_count": 40,
+  "pages_checked": 12,
+  "category": {
+   "url": "https://www.viviencosmetics.cz/prirodni-kosmetika/",
+   "canonical": "https://www.viviencosmetics.cz/prirodni-kosmetika/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/prirodni-kosmetika/strana-2/",
+   "rel_prev": null,
+   "title": "Přírodní kosmetika | VIVIEN cosmetics"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 8,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 27,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "pv": 9,
+    "dd": 3
+   },
+   "checkboxes": 15
+  },
+  "page2_url": "https://www.viviencosmetics.cz/prirodni-kosmetika/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://www.viviencosmetics.cz/prirodni-kosmetika/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/prirodni-kosmetika/strana-3/",
+   "rel_prev": "/prirodni-kosmetika/",
+   "title": "Přírodní kosmetika | VIVIEN cosmetics, Strana 2"
+  },
+  "sitemap_total": 664,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Samba",
+  "base": "https://samba.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 3,
+  "category": {
+   "url": "https://samba.shoptet.cz/parfemy/",
+   "canonical": "https://samba.shoptet.cz/parfemy/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Parfémy - Samba"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 8,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 6,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "pv": 2,
+    "dd": 3
+   },
+   "checkboxes": 8
+  },
+  "page2_url": null,
+  "sitemap_total": 73,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Disco",
+  "base": "https://disco.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 7,
+  "category": {
+   "url": "https://disco.shoptet.cz/do-domacnosti/",
+   "canonical": "https://disco.shoptet.cz/do-domacnosti/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/do-domacnosti/strana-2/",
+   "rel_prev": null,
+   "title": "Do domácnosti - Disco.shoptet.sk"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 16,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 32,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "pv": 9,
+    "dd": 3
+   },
+   "checkboxes": 17
+  },
+  "page2_url": "https://disco.shoptet.cz/do-domacnosti/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://disco.shoptet.cz/do-domacnosti/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": "/do-domacnosti/",
+   "title": "Do domácnosti - Disco.shoptet.sk, Strana 2"
+  },
+  "sitemap_total": 226,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Step",
+  "base": "https://step.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 2,
+  "category": {
+   "url": "https://step.shoptet.cz/zena/",
+   "canonical": "https://step.shoptet.cz/zena/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/zena/strana-2/",
+   "rel_prev": null,
+   "title": "Žena - Šablona Step"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 72,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 72,
+    "dd[]": 15,
+    "dd=": 5
+   },
+   "values": {
+    "pv": 24,
+    "dd": 5
+   },
+   "checkboxes": 48
+  },
+  "page2_url": "https://step.shoptet.cz/zena/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://step.shoptet.cz/zena/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": "/zena/strana-3/",
+   "rel_prev": "/zena/",
+   "title": "Žena - Šablona Step, Strana 2"
+  },
+  "sitemap_total": 120,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Classic",
+  "base": "https://classic.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 3,
+  "category": {
+   "url": "https://classic.shoptet.cz/novinky/",
+   "canonical": "https://classic.shoptet.cz/novinky/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/novinky/strana-2/",
+   "rel_prev": null,
+   "title": "Novinky - Classic"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 5,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "dd": 3
+   },
+   "checkboxes": 4
+  },
+  "page2_url": "https://classic.shoptet.cz/novinky/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://classic.shoptet.cz/novinky/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": "/novinky/",
+   "title": "Novinky - Classic, Strana 2"
+  },
+  "sitemap_total": 56,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Waltz",
+  "base": "https://waltz.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 11,
+  "category": {
+   "url": "https://waltz.shoptet.cz/syry-a-mlecne-vyrobky/",
+   "canonical": "https://waltz.shoptet.cz/syry-a-mlecne-vyrobky/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Sýry a mléčné výrobky - Waltz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "dd": 3
+   },
+   "checkboxes": 4
+  },
+  "page2_url": null,
+  "sitemap_total": 31,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Tango",
+  "base": "https://tango.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 3,
+  "category": {
+   "url": "https://tango.shoptet.cz/novinky/",
+   "canonical": "https://tango.shoptet.cz/novinky/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": null,
+   "title": "Novinky - Tango"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "stock=": 1,
+    "order=": 4,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "dd": 3
+   },
+   "checkboxes": 4
+  },
+  "page2_url": null,
+  "sitemap_total": 42,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Techno",
+  "base": "https://techno.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 2,
+  "category": {
+   "url": "https://techno.shoptet.cz/obleceni/",
+   "canonical": "https://techno.shoptet.cz/obleceni/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/obleceni/strana-2/",
+   "rel_prev": null,
+   "title": "Oblečení - Techno.shoptet.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 28,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 40,
+    "dd[]": 9,
+    "dd=": 3
+   },
+   "values": {
+    "pv": 10,
+    "dd": 3
+   },
+   "checkboxes": 21
+  },
+  "page2_url": "https://techno.shoptet.cz/obleceni/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://techno.shoptet.cz/obleceni/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": "/obleceni/",
+   "title": "Oblečení - Techno.shoptet.cz, Strana 2"
+  },
+  "sitemap_total": 86,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Soul",
+  "base": "https://soul.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 2,
+  "category": {
+   "url": "https://soul.shoptet.cz/obleceni/",
+   "canonical": "https://soul.shoptet.cz/obleceni/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/obleceni/strana-2/",
+   "rel_prev": null,
+   "title": "Oblečení - Soul.shoptet.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 21,
+    "stock=": 1,
+    "order=": 5,
+    "pv[]": 20,
+    "dd[]": 6,
+    "dd=": 3
+   },
+   "values": {},
+   "checkboxes": 21
+  },
+  "page2_url": "https://soul.shoptet.cz/obleceni/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://soul.shoptet.cz/obleceni/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": "/obleceni/",
+   "title": "Oblečení - Soul.shoptet.cz, Strana 2"
+  },
+  "sitemap_total": 81,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ },
+ {
+  "label": "demo Pop",
+  "base": "https://pop.shoptet.cz",
+  "disallow_count": 40,
+  "pages_checked": 2,
+  "category": {
+   "url": "https://pop.shoptet.cz/obleceni/",
+   "canonical": "https://pop.shoptet.cz/obleceni/",
+   "has_canonical": true,
+   "robots_meta": "index,follow",
+   "rel_next": "/obleceni/strana-2/",
+   "rel_prev": null,
+   "title": "Oblečení - pop.shoptet.cz"
+  },
+  "filters": {
+   "keys": {
+    "priceMin": 1,
+    "priceMax": 1,
+    "manufacturerId": 21,
+    "stock=": 1,
+    "order=": 4,
+    "pv[]": 8,
+    "dd[]": 6,
+    "dd=": 3
+   },
+   "values": {
+    "pv": 4,
+    "dd": 3
+   },
+   "checkboxes": 15
+  },
+  "page2_url": "https://pop.shoptet.cz/obleceni/strana-2/",
+  "page2_blocked_by": null,
+  "page2": {
+   "url": "https://pop.shoptet.cz/obleceni/strana-2/",
+   "canonical": null,
+   "has_canonical": false,
+   "robots_meta": "index,follow",
+   "rel_next": null,
+   "rel_prev": "/obleceni/",
+   "title": "Oblečení - pop.shoptet.cz, Strana 2"
+  },
+  "sitemap_total": 83,
+  "sitemap_query": 0,
+  "sitemap_paged": 0
+ }
+]
