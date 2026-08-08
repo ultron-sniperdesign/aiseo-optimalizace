@@ -519,6 +519,8 @@ const stepColors = [
   .tier__items .step__glyph { color: var(--gc, var(--color-accent)); }
 
   .crow { display: flex; align-items: baseline; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--color-rule); }
+  /* tečkovaný leader řádku srovnávacího obsahu (třída zbyla po ledgeru) */
+  .lrow__leader { flex: 1; border-bottom: 2px dotted var(--color-rule-strong); transform: translateY(-6px); min-width: 2rem; }
   .crow__main { flex-shrink: 0; max-width: 30rem; display: flex; flex-direction: column; gap: 0.15rem; }
   .crow__name { font-weight: 600; font-size: 1rem; letter-spacing: -0.012em; }
   .crow__detail { font-size: 0.86rem; color: var(--color-ink-muted); }
