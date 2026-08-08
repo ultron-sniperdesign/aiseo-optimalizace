@@ -316,7 +316,10 @@ const stepColors = [
 <style>
   /* ============ EDITORIAL ZÁKLAD ============ */
   .ed {
-    max-width: 76rem;
+    /* Kontejner dle standardu webu (--max-section = 80rem, stejné jako
+       všechny ostatní stránky) — vlastní šířka by rozbila zarovnání
+       s headerem a zbytkem webu. */
+    max-width: var(--max-section);
     margin: 0 auto;
     padding: 0 var(--space-section-x);
     font-size: 1.03rem;
