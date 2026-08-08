@@ -85,7 +85,7 @@
 | workers.dev subdomain | `aiseo-optimalizace` | API PUT /accounts/{id}/workers/subdomain 2026-05-16 |
 | Worker name | `aiseo-pack-webhook` | wrangler deploy log |
 | Worker URL | `https://aiseo-pack-webhook.aiseo-optimalizace.workers.dev` | curl HEAD 200 2026-05-16 |
-| OAuth login | `~/Library/Preferences/.wrangler/config/default.toml` (token, refresh, scopes). **⚠️ K 2026-07-18 expirovaný** („Not logged in", refresh 400) — před dalším worker deployem `npx wrangler login` (interaktivní, browser). Worker sám běží dál (secrets jsou na CF). | `wrangler whoami` 2026-07-18 → Not logged in |
+| OAuth login | `~/Library/Preferences/.wrangler/config/default.toml` — ✅ obnoveno 2026-08-09 přes ultron@sniperdesign.cz (POZOR: účet info@sniperdesign.cz je JINÝ CF účet bez přístupu k workeru). | `wrangler whoami` 2026-08-09 → ultron@, account 3f243ec |
 | Worker zdroj | `worker/` v projektu (TypeScript, žádný Stripe SDK — vlastní HMAC verify) | |
 
 ### Stripe (LIVE mode)
@@ -518,7 +518,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 | `/pack/dekujeme/` | ✅ live | success URL pro Stripe redirect |
 | Stripe Product + Payment Link | ✅ LIVE | „AI SEO Wireframe Pack" 1 490 Kč CZK, `https://buy.stripe.com/4gM9AU8Km1wm6vY4Hw0VO00` |
 | Stripe webhook endpoint | ✅ LIVE | „aiseo-optimalizace PRO PDF" Active, `checkout.session.completed` jen |
-| CF Worker `aiseo-pack-webhook` | ✅ live | Version `a36026b0`, HMAC verify + Ecomail subscribe + pipeline trigger |
+| CF Worker `aiseo-pack-webhook` | ✅ live | Version `f9eec8bd` (2026-08-09): + /audit-inquiry typ=sluzba šablony, oprava ceny auditu v auto-reply (3 600) |
 | Ecomail list 12 + tag `pack-paid` | ✅ live | sdílený s free flow |
 | Ecomail A2 (pipeline 44112) | ✅ live | trigger=tag pack-paid, paste-nutá HTML šablona z `email-pack-paid-v2.html`, dedup pouze jednou |
 | End-to-end test | ✅ done | 5 API testů (Ecomail) + 2 simulované Stripe HMAC webhooky → e-mail dorazil do `info@`, `kamil@sniperdesign.cz` |
