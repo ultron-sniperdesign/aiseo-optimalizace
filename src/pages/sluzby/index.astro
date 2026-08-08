@@ -41,7 +41,7 @@ const stepColors = [
 >
   <div class="ed">
     <!-- ===== HERO ===== -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero wrap" aria-labelledby="hero-title">
       <span class="hero__intro r"><span class="hero__intro-dot" aria-hidden="true"></span>{p.hero.kicker}</span>
       <h1 id="hero-title" class="display hero__title r r2" set:html={p.hero.titleHtml}></h1>
       <div class="hero__grid">
@@ -76,7 +76,7 @@ const stepColors = [
     <ProofStrip />
 
     <!-- ===== TŘI KROKY ===== -->
-    <section class="steps" id="kroky" aria-labelledby="steps-title">
+    <section class="steps wrap" id="kroky" aria-labelledby="steps-title">
       <span class="eyebrow"><span class="eyebrow__num">01</span> Postup</span>
       <h2 id="steps-title" class="steps__intro" set:html={p.steps.introHtml}></h2>
 
@@ -115,7 +115,7 @@ const stepColors = [
     </section>
 
     <!-- ===== CENÍK OBSAHU ===== -->
-    <section class="content" id="obsah" aria-labelledby="content-title">
+    <section class="content wrap" id="obsah" aria-labelledby="content-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">02</span> {p.stepContent.eyebrow}</span>
         <span class="sec-head__meta">ceny bez DPH</span>
@@ -169,6 +169,7 @@ const stepColors = [
     </section>
 
     <!-- ===== AUDIT NABÍDKA ===== -->
+    <div class="wrap">
     <section class="offer" id="audit" aria-labelledby="offer-title">
       <div>
         <h2 id="offer-title" class="offer__title" set:html={p.offer.titleHtml}></h2>
@@ -184,9 +185,10 @@ const stepColors = [
         <p class="offer__risk">{p.offer.risk}</p>
       </div>
     </section>
+    </div>
 
     <!-- ===== DLOUHODOBĚ ===== -->
-    <section class="ret" aria-labelledby="ret-title">
+    <section class="ret wrap" aria-labelledby="ret-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">03</span> {p.retainers.eyebrow}</span>
         <span class="sec-head__meta">měsíční spolupráce</span>
@@ -207,7 +209,7 @@ const stepColors = [
     </section>
 
     <!-- ===== SELF-CHECK ===== -->
-    <section class="check-sec" aria-labelledby="check-title">
+    <section class="check-sec wrap" aria-labelledby="check-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">04</span> {p.selfCheck.eyebrow}</span>
         <span class="sec-head__meta check__meter" data-check-progress>
@@ -237,7 +239,7 @@ const stepColors = [
     </section>
 
     <!-- ===== MÝTY ===== -->
-    <section class="myths-sec" aria-labelledby="myths-title">
+    <section class="myths-sec wrap" aria-labelledby="myths-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">05</span> {p.myths.eyebrow}</span>
       </div>
@@ -254,7 +256,7 @@ const stepColors = [
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section class="faq-sec" aria-labelledby="faq-title">
+    <section class="faq-sec wrap" aria-labelledby="faq-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">06</span> {p.faqHead.eyebrow}</span>
       </div>
@@ -270,6 +272,7 @@ const stepColors = [
     </section>
 
     <!-- ===== FINÁLNÍ CTA ===== -->
+    <div class="wrap">
     <section class="final" aria-labelledby="final-title">
       <h2 id="final-title" class="final__title" set:html={p.finalCta.titleHtml}></h2>
       <p class="final__lead">{p.finalCta.lead}</p>
@@ -278,6 +281,7 @@ const stepColors = [
         <a class="btn btn--ghost" href={p.finalCta.btnSecondary.href}>{p.finalCta.btnSecondary.label}</a>
       </div>
     </section>
+    </div>
 
     <SniperDesignBigContact eyebrowNum="07" />
   </div>
@@ -304,13 +308,17 @@ const stepColors = [
 <style>
   /* ============ EDITORIAL ZÁKLAD ============ */
   .ed {
-    /* Kontejner dle standardu webu (--max-section = 80rem, stejné jako
-       všechny ostatní stránky) — vlastní šířka by rozbila zarovnání
-       s headerem a zbytkem webu. */
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x);
+    /* Obal NEnese kontejner — sdílené komponenty (ProofStrip, BigContact)
+       mají vlastní max-width + padding a druhé odsazení by je posunulo
+       (zpětná vazba 2026-08-09). Šířku nese každá sekce přes .wrap. */
     font-size: 1.03rem;
+  }
+  .wrap {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
   }
   .btn {
     display: inline-flex;
