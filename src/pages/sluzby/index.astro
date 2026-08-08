@@ -92,7 +92,7 @@ const stepColors = [
 
             <div class="step__act">
               <p class="step__price" set:html={s.priceHtml}></p>
-              <a class={`btn ${s.cta.gold ? "btn--gold" : "btn--ghost"}`} href={s.cta.href}>
+              <a class={`btn ${s.cta.gold ? "btn--gold" : "btn--ghost"}`} href={s.cta.href} data-sluzba={("sluzba" in s.cta && s.cta.sluzba) || undefined}>
                 {s.cta.label} <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -150,6 +150,9 @@ const stepColors = [
                     </li>
                   ))}
                 </ul>
+                <a class="btn btn--ghost tier__cta" href="#poptavka" data-sluzba={gi === 0 ? "Obsah kategorií" : "Obsah produktů"}>
+                  Poptat <span aria-hidden="true">→</span>
+                </a>
               </article>
             ))}
           </div>
@@ -164,6 +167,7 @@ const stepColors = [
         <span class="lrow__leader" aria-hidden="true"></span>
         <div class="crow__buy">
           <span class="crow__price">{p.compareOffer.price} <small>{p.compareOffer.unit}</small></span>
+          <a class="crow__cta" href="#poptavka" data-sluzba="Srovnávací obsah „X vs Y“">Poptat <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
@@ -213,10 +217,65 @@ const stepColors = [
       <p class="ret__measure">{p.retainers.measureNote}</p>
     </section>
 
+    <!-- ===== POPTÁVKA ===== -->
+    <section class="pop wrap" id="poptavka" aria-labelledby="pop-title">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="eyebrow__num">04</span> {p.poptavka.eyebrow}</span>
+        <span class="sec-head__meta">odpověď do 1 pracovního dne</span>
+      </div>
+      <h2 id="pop-title" class="content__title" set:html={p.poptavka.titleHtml}></h2>
+      <p class="content__lead">{p.poptavka.lead}</p>
+
+      <form class="pop__form" action={p.poptavka.endpoint} method="post" novalidate data-error={p.poptavka.errorText}>
+        <div class="pop__grid">
+          <label class="pop__field pop__field--full">
+            <span>{p.poptavka.fields.sluzba}</span>
+            <select id="pop-sluzba" required>
+              {p.poptavka.options.map((o) => <option value={o}>{o}</option>)}
+            </select>
+          </label>
+          <label class="pop__field">
+            <span>{p.poptavka.fields.jmeno}</span>
+            <input id="pop-jmeno" type="text" autocomplete="name" required />
+          </label>
+          <label class="pop__field">
+            <span>{p.poptavka.fields.email}</span>
+            <input id="pop-email" type="email" autocomplete="email" required />
+          </label>
+          <label class="pop__field pop__field--full">
+            <span>{p.poptavka.fields.url}</span>
+            <input id="pop-url" type="url" placeholder="https://" required />
+          </label>
+          <label class="pop__field pop__field--full">
+            <span>{p.poptavka.fields.zprava}</span>
+            <textarea id="pop-zprava" rows="4" placeholder={p.poptavka.fields.zpravaPlaceholder}></textarea>
+          </label>
+        </div>
+
+        <!-- Honeypot — lidé nevidí, boti vyplní. -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="pop__hp" />
+
+        <label class="pop__gdpr">
+          <input id="pop-gdpr" type="checkbox" required />
+          <span set:html={p.poptavka.gdprHtml}></span>
+        </label>
+
+        <p class="pop__error" hidden></p>
+        <button type="submit" class="btn btn--gold pop__submit" data-busy={p.poptavka.submitBusy}>
+          <span class="pop__submit-label">{p.poptavka.submit}</span> <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <div class="pop__success" hidden>
+        <h3>{p.poptavka.successTitle}</h3>
+        <p>{p.poptavka.successText}</p>
+      </div>
+    </section>
+
     <!-- ===== SELF-CHECK ===== -->
     <section class="check-sec wrap" aria-labelledby="check-title">
       <div class="sec-head">
-        <span class="eyebrow"><span class="eyebrow__num">04</span> {p.selfCheck.eyebrow}</span>
+        <span class="eyebrow"><span class="eyebrow__num">05</span> {p.selfCheck.eyebrow}</span>
         <span class="sec-head__meta check__meter" data-check-progress>
           {p.selfCheck.progressTemplate.replace("{n}", "0").replace("{total}", String(p.selfCheck.items.length))}
         </span>
@@ -246,7 +305,7 @@ const stepColors = [
     <!-- ===== MÝTY ===== -->
     <section class="myths-sec wrap" aria-labelledby="myths-title">
       <div class="sec-head">
-        <span class="eyebrow"><span class="eyebrow__num">05</span> {p.myths.eyebrow}</span>
+        <span class="eyebrow"><span class="eyebrow__num">06</span> {p.myths.eyebrow}</span>
       </div>
       <h2 id="myths-title" class="content__title" set:html={p.myths.titleHtml}></h2>
       <p class="content__lead">{p.myths.lead}</p>
@@ -263,7 +322,7 @@ const stepColors = [
     <!-- ===== FAQ ===== -->
     <section class="faq-sec wrap" aria-labelledby="faq-title">
       <div class="sec-head">
-        <span class="eyebrow"><span class="eyebrow__num">06</span> {p.faqHead.eyebrow}</span>
+        <span class="eyebrow"><span class="eyebrow__num">07</span> {p.faqHead.eyebrow}</span>
       </div>
       <h2 id="faq-title" class="content__title" set:html={p.faqHead.titleHtml}></h2>
       <div class="faq">
@@ -288,7 +347,7 @@ const stepColors = [
     </section>
     </div>
 
-    <SniperDesignBigContact eyebrowNum="07" />
+    <SniperDesignBigContact eyebrowNum="08" />
   </div>
 </BaseLayout>
 
@@ -308,6 +367,65 @@ const stepColors = [
     };
     boxes.forEach((b) => b.addEventListener("change", update));
   }
+
+  /** Poptávkový formulář: POST na CF Worker (stejný endpoint jako audit,
+   *  typ: "sluzba"). Pole cil/platforma se posílají kvůli zpětné
+   *  kompatibilitě s aktuálně nasazeným workerem (než projde deploy). */
+  const popForm = document.querySelector<HTMLFormElement>(".pop__form");
+  if (popForm) {
+    const err = popForm.querySelector<HTMLElement>(".pop__error");
+    const btn = popForm.querySelector<HTMLButtonElement>(".pop__submit");
+    const label = popForm.querySelector<HTMLElement>(".pop__submit-label");
+    const orig = label?.textContent || "Odeslat";
+    const val = (id: string) =>
+      (document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null)?.value?.trim() || "";
+
+    popForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!popForm.reportValidity()) return;
+      if (err) { err.hidden = true; err.textContent = ""; }
+      if (btn) btn.disabled = true;
+      if (label) label.textContent = btn?.dataset.busy || "Odesílám…";
+      try {
+        const sluzba = val("pop-sluzba");
+        const zprava = val("pop-zprava");
+        const res = await fetch(popForm.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            typ: "sluzba",
+            sluzba,
+            zprava,
+            jmeno: val("pop-jmeno"),
+            email: val("pop-email"),
+            url: val("pop-url"),
+            platforma: "—",
+            cil: `POPTÁVKA SLUŽBY: ${sluzba}\n\n${zprava || "(bez zprávy)"}`,
+            gdpr: (document.getElementById("pop-gdpr") as HTMLInputElement | null)?.checked === true,
+            website: (popForm.querySelector('input[name="website"]') as HTMLInputElement | null)?.value || "",
+          }),
+        });
+        if (!res.ok) throw new Error(`Server returned ${res.status}`);
+        popForm.hidden = true;
+        const ok = document.querySelector<HTMLElement>(".pop__success");
+        if (ok) { ok.hidden = false; ok.scrollIntoView({ block: "center", behavior: "smooth" }); }
+      } catch (e2) {
+        console.error("Poptávka failed", e2);
+        if (err) { err.textContent = popForm.dataset.error || "Odeslání selhalo."; err.hidden = false; }
+        if (btn) btn.disabled = false;
+        if (label) label.textContent = orig;
+      }
+    });
+  }
+
+  /** Prefill výběru služby z CTA s data-sluzba (kroky, týry, srovnávací obsah). */
+  document.querySelectorAll<HTMLAnchorElement>('a[data-sluzba][href="#poptavka"]').forEach((a) => {
+    a.addEventListener("click", () => {
+      const sel = document.getElementById("pop-sluzba") as HTMLSelectElement | null;
+      const want = a.dataset.sluzba || "";
+      if (sel && want && [...sel.options].some((o) => o.value === want)) sel.value = want;
+    });
+  });
 </script>
 
 <style>
@@ -671,6 +789,44 @@ const stepColors = [
   .faq__item[open] summary { color: var(--color-aio); }
   .faq__item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
   .faq__item p { color: var(--color-ink-muted); margin: 0 0 1.2rem; max-width: 46rem; font-size: 0.95rem; }
+
+  /* ============ POPTÁVKA ============ */
+  .pop { margin-top: clamp(4.5rem, 10vw, 7.5rem); border-top: 1px solid var(--color-ink); padding-top: 0.9rem; }
+  .pop .eyebrow__num { color: var(--color-accent-strong); }
+  .pop__form { margin-top: 2rem; max-width: 46rem; }
+  .pop__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .pop__field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .pop__field--full { grid-column: 1 / -1; }
+  .pop__field > span { font-family: var(--font-sans); font-weight: 500; font-size: 0.9rem; letter-spacing: -0.01em; }
+  .pop__field input,
+  .pop__field select,
+  .pop__field textarea {
+    font-family: var(--font-sans);
+    font-size: 0.975rem;
+    color: var(--color-ink);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+  }
+  .pop__field textarea { resize: vertical; }
+  .pop__field input:focus-visible,
+  .pop__field select:focus-visible,
+  .pop__field textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; border-color: var(--color-accent); }
+  .pop__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .pop__gdpr { display: flex; gap: 0.7rem; align-items: flex-start; margin-top: 1.1rem; font-size: 0.85rem; color: var(--color-ink-muted); }
+  .pop__gdpr input { accent-color: var(--color-accent); width: 1.05rem; height: 1.05rem; margin-top: 0.15rem; flex-shrink: 0; }
+  .pop__gdpr :global(a) { color: var(--color-accent-strong); }
+  .pop__error { color: var(--color-signal); font-size: 0.9rem; margin: 1rem 0 0; }
+  .pop__submit { margin-top: 1.25rem; border: 0; cursor: pointer; font-size: 1rem; }
+  .pop__submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
+  .pop__success { margin-top: 2rem; border: 2px solid var(--color-geo); background: var(--color-geo-tint); border-radius: 14px; padding: 1.5rem 1.75rem; max-width: 46rem; }
+  .pop__success h3 { margin: 0 0 0.4rem; font-size: 1.15rem; font-weight: 650; letter-spacing: -0.015em; color: var(--color-geo); }
+  .pop__success p { margin: 0; color: var(--color-ink-muted); }
+  .tier__cta { margin-top: 1rem; align-self: flex-start; padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+  .crow__cta { display: inline-block; margin-top: 0.35rem; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; color: var(--color-accent-strong); text-decoration: none; }
+  .crow__cta:hover { text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 560px) { .pop__grid { grid-template-columns: 1fr; } }
 
   /* ============ FINÁLNÍ CTA ============ */
   .final {

@@ -64,7 +64,7 @@ export const steps = {
       title: "Připravíme web, který AI přečte",
       desc: "Prověřené úpravy, které přímo ovlivňují šance na citace — na jakékoli platformě. Postup i pracnost se ale web od webu liší, proto cenu stanovíme po auditu, ne z ceníku, který by neplatil. Co přesně technická příprava obnáší, ukazují karty níže.",
       priceHtml: "<b>Cena na míru</b> <i>· rozsah i cena podle auditu</i>",
-      cta: { label: "Poptat technickou přípravu", href: "/kontakt/?sluzba=technicka-priprava", gold: false },
+      cta: { label: "Poptat technickou přípravu", href: "#poptavka", gold: false, sluzba: "Technická příprava webu" },
     },
     {
       num: "03",
@@ -384,6 +384,45 @@ export const faq = [
     a: "Protože by to nebylo fér. Stejná úprava znamená na WordPressu, Shoptetu a webu na míru úplně jinou práci — garantovat jednu cenu předem nejde. Proto cenu technické přípravy stanovujeme po auditu, kdy víme, na čem web běží a v jakém je stavu. Pevnou cenu má audit (3 600 Kč) a generování obsahu — to na platformě nezávisí. Výjimka: pro e-shopy na Upgates máme hotové moduly s pevným ceníkem na sniperdesign.cz/seo-pro-ai.",
   },
 ];
+
+
+/* ============ POPTÁVKOVÝ FORMULÁŘ ============ */
+
+/**
+ * Poptávka služby přímo na stránce (zpětná vazba 2026-08-10: objednání
+ * nesmí vést přes /kontakt/ a sniperdesign.cz). Odesílá se na stejný CF
+ * Worker endpoint jako audit formulář, s typ: "sluzba".
+ */
+export const poptavka = {
+  eyebrow: "Poptávka",
+  titleHtml: "Poptejte službu <strong>rovnou tady</strong>",
+  lead: "Vyberte, co řešíte, a do jednoho pracovního dne se vám ozveme s dalším postupem. Žádné přeposílání na jiný web.",
+  endpoint: "https://aiseo-pack-webhook.aiseo-optimalizace.workers.dev/audit-inquiry",
+  fields: {
+    sluzba: "Co poptáváte",
+    jmeno: "Jméno",
+    email: "E-mail",
+    url: "Web, kterého se poptávka týká",
+    zprava: "Zpráva (nepovinné)",
+    zpravaPlaceholder: "Cokoli, co nám pomůže — platforma webu, rozsah, termín…",
+  },
+  options: [
+    "Technická příprava webu",
+    "Obsah kategorií",
+    "Obsah produktů",
+    "Srovnávací obsah „X vs Y“",
+    "Dlouhodobá SEO optimalizace",
+    "Monitoring AI viditelnosti",
+    "Nevím — poraďte mi",
+  ],
+  gdprHtml:
+    'Odesláním souhlasíte se zpracováním údajů pro vyřízení této poptávky. <a href="/gdpr/">Zásady zpracování osobních údajů</a>.',
+  submit: "Odeslat poptávku",
+  submitBusy: "Odesílám…",
+  successTitle: "Poptávka odeslána — díky!",
+  successText: "Do jednoho pracovního dne se vám ozveme na uvedený e-mail. Potvrzení právě letí do vaší schránky.",
+  errorText: "Něco se pokazilo při odeslání. Zkuste to prosím znovu, nebo napište na aiseo-optimalizace@sniperdesign.cz.",
+};
 
 /* ============ FINÁLNÍ CTA ============ */
 

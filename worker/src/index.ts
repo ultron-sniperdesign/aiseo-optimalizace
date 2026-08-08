@@ -8,7 +8,9 @@
  *    subscribe (list 12, tag "pack-paid") → trigger pipeline 44112
  *    (paid delivery automation pošle PDF download e-mail).
  *
- * 2. POST /audit-inquiry — formulář poptávky AI SEO auditu
+ * 2. POST /audit-inquiry — formulář poptávky auditu NEBO služby
+ *    (typ: "sluzba" přepne šablony e-mailů; název route zůstává kvůli
+ *    zpětné kompatibilitě nasazených frontendů).
  *    Flow: front-end form fetch → validace → 2 e-maily přes Resend:
  *    (a) notifikace pro aiseo-optimalizace@sniperdesign.cz se všemi poli
  *    (b) auto-reply zákazníkovi (potvrzení přijetí poptávky)
@@ -88,6 +90,12 @@ interface AuditInquiry {
   gdpr: boolean;
   /** Honeypot. Bots fill all fields. Empty = legit human. */
   website?: string;
+  /** "sluzba" = poptávka služby z /sluzby/ (jiné šablony e-mailů). */
+  typ?: string;
+  /** Název poptávané služby (jen typ=sluzba). */
+  sluzba?: string;
+  /** Volitelná zpráva od zákazníka (jen typ=sluzba). */
+  zprava?: string;
 }
 
 async function handleAuditInquiry(req: Request, env: Env): Promise<Response> {
@@ -135,14 +143,21 @@ async function handleAuditInquiry(req: Request, env: Env): Promise<Response> {
 
   const platforma = (body.platforma || "").trim() || "neuvedeno";
   const cil = (body.cil || "").trim() || "neuvedeno";
+  const isSluzba = (body.typ || "").trim() === "sluzba";
+  const sluzba = (body.sluzba || "").trim() || "neupřesněno";
+  const zprava = (body.zprava || "").trim() || "—";
 
   // E-mail 1: notifikace pro Sniper Design tým.
   const notifyRes = await sendResend(env, {
     from: env.AUDIT_FROM,
     to: env.AUDIT_NOTIFY_TO,
     reply_to: email,
-    subject: `Nová poptávka auditu — ${jmeno} (${auditUrl})`,
-    html: renderNotifyEmail({ jmeno, email, url: auditUrl, platforma, cil }),
+    subject: isSluzba
+      ? `Nová poptávka služby: ${sluzba} — ${jmeno} (${auditUrl})`
+      : `Nová poptávka auditu — ${jmeno} (${auditUrl})`,
+    html: isSluzba
+      ? renderSluzbaNotifyEmail({ jmeno, email, url: auditUrl, sluzba, zprava })
+      : renderNotifyEmail({ jmeno, email, url: auditUrl, platforma, cil }),
   });
 
   if (!notifyRes.ok) {
@@ -157,8 +172,12 @@ async function handleAuditInquiry(req: Request, env: Env): Promise<Response> {
     from: env.AUDIT_FROM,
     to: email,
     reply_to: env.AUDIT_NOTIFY_TO,
-    subject: `Potvrzení poptávky AI SEO auditu pro ${auditUrl}`,
-    html: renderReplyEmail({ jmeno, url: auditUrl }),
+    subject: isSluzba
+      ? `Potvrzení poptávky — ${sluzba} pro ${auditUrl}`
+      : `Potvrzení poptávky AI SEO auditu pro ${auditUrl}`,
+    html: isSluzba
+      ? renderSluzbaReplyEmail({ jmeno: jmeno, url: auditUrl, sluzba })
+      : renderReplyEmail({ jmeno, url: auditUrl }),
   });
 
   if (!replyRes.ok) {
@@ -171,8 +190,50 @@ async function handleAuditInquiry(req: Request, env: Env): Promise<Response> {
     // Logujeme, ale formulář považujeme za úspěšný (notify dorazil internímu týmu).
   }
 
-  console.log("Audit inquiry processed", { email, url: auditUrl, platforma });
+  console.log("Inquiry processed", { email, url: auditUrl, typ: isSluzba ? "sluzba" : "audit" });
   return jsonResponse({ ok: true }, 200, cors);
+}
+
+function renderSluzbaNotifyEmail(data: {
+  jmeno: string;
+  email: string;
+  url: string;
+  sluzba: string;
+  zprava: string;
+}): string {
+  const e = escapeHtml;
+  return `<!DOCTYPE html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #18181b;">
+  <h1 style="font-size: 20px; margin: 0 0 16px; color: #18181b;">Nová poptávka služby</h1>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5;">
+    <tr><td style="padding: 8px 12px; background: #f4f4f5; border-radius: 4px; font-weight: 600; width: 140px; vertical-align: top;">Služba</td><td style="padding: 8px 12px;"><strong>${e(data.sluzba)}</strong></td></tr>
+    <tr><td style="padding: 8px 12px; background: #f4f4f5; border-radius: 4px; font-weight: 600; vertical-align: top;">Jméno</td><td style="padding: 8px 12px;">${e(data.jmeno)}</td></tr>
+    <tr><td style="padding: 8px 12px; background: #f4f4f5; border-radius: 4px; font-weight: 600; vertical-align: top;">E-mail</td><td style="padding: 8px 12px;"><a href="mailto:${e(data.email)}">${e(data.email)}</a></td></tr>
+    <tr><td style="padding: 8px 12px; background: #f4f4f5; border-radius: 4px; font-weight: 600; vertical-align: top;">Web</td><td style="padding: 8px 12px;"><a href="${e(data.url)}" target="_blank">${e(data.url)}</a></td></tr>
+    <tr><td style="padding: 8px 12px; background: #f4f4f5; border-radius: 4px; font-weight: 600; vertical-align: top;">Zpráva</td><td style="padding: 8px 12px; white-space: pre-wrap;">${e(data.zprava)}</td></tr>
+  </table>
+  <p style="margin-top: 24px; font-size: 13px; color: #71717a;">Reply-to je nastaven na zákazníka. Můžete odpovědět přímo z této zprávy.</p>
+</body></html>`;
+}
+
+function renderSluzbaReplyEmail(data: { jmeno: string; url: string; sluzba: string }): string {
+  const e = escapeHtml;
+  return `<!DOCTYPE html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #18181b; line-height: 1.55;">
+  <p>Dobrý den,</p>
+  <p>děkuji za poptávku služby <strong>${e(data.sluzba)}</strong> pro <a href="${e(data.url)}" target="_blank">${e(data.url)}</a>. Poptávka dorazila v&nbsp;pořádku.</p>
+
+  <h2 style="font-size: 16px; margin: 24px 0 8px;">Další postup</h2>
+  <ol style="padding-left: 20px; margin: 0;">
+    <li style="margin-bottom: 10px;"><strong>Ozvu se vám do&nbsp;1&nbsp;pracovního dne</strong> e-mailem nebo telefonicky.</li>
+    <li style="margin-bottom: 10px;"><strong>Upřesníme rozsah a&nbsp;podobu spolupráce.</strong><br />U technické přípravy vychází konkrétní cena z&nbsp;auditu &mdash; záleží na&nbsp;platformě a&nbsp;stavu webu. U&nbsp;generování obsahu platí jednotkové ceny z&nbsp;webu.</li>
+    <li><strong>Domluvíme termín zahájení.</strong></li>
+  </ol>
+
+  <p style="margin-top: 24px;">Pokud máte cokoli urgentního, odpovězte na&nbsp;tento e-mail nebo zavolejte na&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>.</p>
+  <p style="margin-top: 24px; font-size: 13px; color: #71717a;">Tento e-mail je pouze potvrzením o&nbsp;přijetí poptávky, nejde o&nbsp;uzavření smlouvy.</p>
+  <p style="margin-top: 24px;">Hezký den,<br /><strong>Kamil</strong><br />Sniper Design / CPU&nbsp;s.r.o.<br /><a href="https://aiseo-optimalizace.cz">aiseo-optimalizace.cz</a></p>
+</body></html>`;
 }
 
 interface ResendPayload {
@@ -243,7 +304,7 @@ function renderReplyEmail(data: { jmeno: string; url: string }): string {
   <h2 style="font-size: 16px; margin: 24px 0 8px;">Další postup</h2>
   <ol style="padding-left: 20px; margin: 0;">
     <li style="margin-bottom: 10px;"><strong>Ozvu se vám e-mailem nebo telefonicky.</strong><br />Upřesníme rozsah auditu, případné priority a&nbsp;termín zahájení.</li>
-    <li style="margin-bottom: 10px;"><strong>Pošlu fakturu na&nbsp;9&nbsp;990&nbsp;Kč bez&nbsp;DPH.</strong><br />Cena s&nbsp;DPH je 12&nbsp;088&nbsp;Kč. Splatnost faktury je 14&nbsp;dnů.</li>
+    <li style="margin-bottom: 10px;"><strong>Pošlu fakturu na&nbsp;3&nbsp;600&nbsp;Kč bez&nbsp;DPH.</strong><br />Cena s&nbsp;DPH je 4&nbsp;356&nbsp;Kč. Splatnost faktury je 14&nbsp;dnů.</li>
     <li style="margin-bottom: 10px;"><strong>Audit zahájím po&nbsp;uhrazení faktury / v&nbsp;domluveném termínu.</strong><br />Po dokončení auditu vám výstup pošlu na&nbsp;e-mail.</li>
     <li><strong>Následně projdeme audit na&nbsp;60min konzultaci.</strong><br />Zaměříme se hlavně na&nbsp;priority a&nbsp;praktickou implementaci.</li>
   </ol>
