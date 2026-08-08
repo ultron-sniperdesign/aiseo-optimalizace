@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-05-24"
-updated: "2026-07-28"
+updated: "2026-08-08"
 variant: "rich"
 keywords:
   - "ai crawler"
@@ -128,7 +128,23 @@ User-agent: Claude-User
 Allow: /
 ```
 
-**Pokud nemáte jiné blokující pravidlo, `Allow: /` obvykle nic nemění** — robota, kterého nic nezakazuje, pustí i tak. Smysl to má hlavně pro přehlednost a v případě, kdy máte obecné `User-agent: *` s blokací. Povolení robotů ale samo o sobě citace nezajistí; jen odstraňuje technickou překážku, aby se obsah mohl dostat do vyhledávacích a odpovědních vrstev. Tahle vrstva navazuje na [SEO pro ChatGPT](/blog/chatgpt-seo/) a patří do širšího [AI SEO auditu](/blog/ai-seo-audit/).
+**Pokud nemáte jiné blokující pravidlo, `Allow: /` obvykle nic nemění** — robota, kterého nic nezakazuje, pustí i tak. Povolení robotů samo o sobě citace nezajistí; jen odstraňuje technickou překážku, aby se obsah mohl dostat do vyhledávacích a odpovědních vrstev.
+
+⚠️ **Pozor, pokud máte v `User-agent: *` nějaké zákazy.** Podle dokumentace Googlu platí pro každého robota **jen jedna skupina pravidel** — ta s nejspecifičtějším odpovídajícím user-agentem. Jakmile tedy dáte robotovi vlastní skupinu, skupina `User-agent: *` se na něj **přestane vztahovat**. Nedoplní se, nahradí se. Skupina, ve které stojí jen `Allow: /`, mu tím pádem zruší i zákazy, které pro něj do té doby platily — typicky vyhledávání, košík, přihlášení a filtrované adresy. Pokud vlastní skupinu chcete, zopakujte v ní zákazy, na kterých vám záleží:
+
+```txt
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /vyhledavani/
+Disallow: /kosik/
+Disallow: /*?order
+```
+
+<Insight tone="warn" icon="!" label="Otevřená oprava (8. 8. 2026)">
+Do 8. 8. 2026 tady stálo, že `Allow: /` má smysl „hlavně pro přehlednost a v případě, kdy máte obecné `User-agent: *` s blokací". **Druhá polovina té věty to měla obráceně** a opravili jsme ji. Vyplavalo to při [měření 47 e-shopů na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/), kde výchozí `User-agent: *` obsahuje 40 zákazů: čtyři e-shopy si přidaly skupiny s pouhým `Allow: /` pro AI roboty a tím jim otevřely i stránky, které měly zavřené.
+</Insight>
+
+Tahle vrstva navazuje na [SEO pro ChatGPT](/blog/chatgpt-seo/) a patří do širšího [AI SEO auditu](/blog/ai-seo-audit/).
 
 ## Nechci obsah do tréninku: omezte tréninkové roboty
 

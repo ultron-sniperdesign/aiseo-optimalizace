@@ -1,0 +1,127 @@
+100ks.cz                   200  
+adrop.cz                   200  
+agatinsvet.cz              200  
+ahifi.cz                   200  
+ame.cz                     200  
+anela.cz                   200  SHOPTET
+angrybeards.cz             200  SHOPTET
+aurumpro.cz                200  
+autodily-pema.cz           200  
+autodoplnky-obchod.cz      200  SHOPTET
+autohotarek.cz             200  
+avenberg.cz                200  
+baavi.cz                   200  SHOPTET
+bonmoto.cz                 200  
+chytapust.cz               200  
+cistedrevo.cz              200  SHOPTET
+cityzenwear.cz             200  
+cocky-kontaktni.cz         200  
+dalkove-ovladace.cz        200  
+decodoma.cz                200  
+donpealo.cz                200  
+drevenysvet.online         200  SHOPTET
+e-kondomy.cz               200  
+ejuice.cz                  200  
+ekokoza.cz                 200  
+eldum.cz                   200  
+elny.cz                    200  
+esennce.cz                 200  
+eva.cz                     200  
+film-technika.com          200  SHOPTET
+filmnadvd.cz               200  
+fitham.cz                  200  
+florea.cz                  200  
+galanterie-cendulka.cz     200  
+gigamat.cz                 200  SHOPTET
+gigaprint.cz               200  
+giovani.cz                 200  SHOPTET
+hadex.cz                   200  
+herni-kupony.cz            200  
+hnojik.cz                  200  
+hobynaradi.cz              200  SHOPTET
+kamody.cz                  200  
+kidero.cz                  200  
+kofio.cz                   200  
+konzoliste.cz              200  SHOPTET
+kralovstvi-tiande.cz       200  
+kulina.cz                  200  SHOPTET
+kulturistika.com           403  
+kupaoprav.cz               200  
+kupkolo.cz                 200  
+kvelektro.cz               200  
+landema.cz                 200  
+leifheit-online.cz         200  
+levanduloveudoli.cz        200  SHOPTET
+madvell.cz                 200  SHOPTET
+matracezahubicku.cz        200  
+miroluk.cz                 200  
+mkluzkoviny.cz             200  
+mn-modelar.cz              200  
+mojeelektro.cz             200  
+mojemincovna.cz            200  
+motokramek.cz              200  
+motora.cz                  200  
+mpouzdra.cz                200  
+musicrecords.cz            200  
+nadeta.cz                  200  
+nanospace.cz               200  SHOPTET
+nasegalanterie.cz          200  SHOPTET
+nazuby.cz                  200  
+nejbaby.cz                 200  
+nemeckyeshop.cz            200  SHOPTET
+nonstopstavebniny.cz       200  SHOPTET
+obchod-vtp.cz              200  
+ochutnejorech.cz           200  
+olaola.cz                  200  
+olivie.cz                  200  SHOPTET
+onlinehrackarstvi.cz       200  
+onlineshop.cz              200  
+optikdodomu.cz             200  
+originalnitonery.cz        200  
+outdoorstuff.cz            200  SHOPTET
+outfit4events.cz           200  
+oveckarna.cz               200  
+parys.cz                   200  
+pemacz.cz                  200  
+pff.cz                     200  SHOPTET
+pneuboss.cz                403  
+pneuprodejna.cz            200  
+pocitarna.cz               200  SHOPTET
+prodejparfemu.cz           200  
+profi-dj.cz                200  SHOPTET
+prohackovani.cz            200  SHOPTET
+prokonzole.cz              200  SHOPTET
+prolicence.cz              200  SHOPTET
+ptakoviny-cb.cz            200  SHOPTET
+puellavune.cz              200  SHOPTET
+raj-siti.cz                200  
+reminky-pasky.cz           200  
+rieker-eshop.cz            200  
+rodinnebaleni.cz           200  
+ruzovyslon.cz              200  
+scootland.cz               200  
+senesi.cz                  200  
+sicistroje-shop.cz         200  
+skoda-dily.cz              200  
+sperky.cz                  200  
+spokojenypes.cz            200  
+svet-svitidel.cz           200  
+svetkaravanu.cz            200  
+svicky.net                 200  
+t-led.cz                   200  
+textil-jimi.cz             200  
+topenilevne.cz             200  
+totemo.eu                  200  
+trenyrkarna.cz             200  
+tropicfishing.cz           200  
+ususil.cz                  200  SHOPTET
+utukutu.cz                 200  SHOPTET
+vaprio.cz                  200  
+vaschovatel.cz             200  
+venira.cz                  200  SHOPTET
+vuch.cz                    200  
+vyhodny-software.cz        200  
+wrobuv.cz                  200  
+zelezarstvi-tuma.cz        200  
+
+TESTOVÁNO 125 · SHOPTET 31 (25 %)

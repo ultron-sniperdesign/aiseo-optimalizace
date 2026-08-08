@@ -1,0 +1,65 @@
+E-SHOPŮ ZMĚŘENO: 47 (robots.txt 200: 47)
+
+--- robots.txt otisky ---
+  5217a5e464f0  31 ×  ['anela.cz', 'baavi.cz', 'film-technika.com', 'levanduloveudoli.cz', 'nanospace.cz', '…']
+  7f77168ffffe   2 ×  ['pocitarna.cz', 'ptakoviny-cb.cz']
+  1282e2d63e9b   1 ×  ['angrybeards.cz']
+  d51bebf3a2b2   1 ×  ['autodoplnky-obchod.cz']
+  a22ac982f42b   1 ×  ['cistedrevo.cz']
+  7658a1d42621   1 ×  ['drevenysvet.online']
+  e06046fe4473   1 ×  ['gigamat.cz']
+  166f680e4a22   1 ×  ['giovani.cz']
+  577eb739c957   1 ×  ['hobynaradi.cz']
+  2022e54b1617   1 ×  ['konzoliste.cz']
+  2e71d76b1cd3   1 ×  ['kulina.cz']
+  1166ac80fe1e   1 ×  ['madvell.cz']
+  45cc685f095f   1 ×  ['profi-dj.cz']
+  8ee0428bc2ba   1 ×  ['prokonzole.cz']
+  b76c2f317eb5   1 ×  ['puellavune.cz']
+  60e6c89c23ed   1 ×  ['venira.cz']
+
+ODLIŠNÝCH OD NEJČASTĚJŠÍHO: 16
+  angrybeards.cz           1933 B · 79 řádků · 2 UA bloků · 76 Disallow · 0 Allow · AI: —
+  autodoplnky-obchod.cz    1076 B · 47 řádků · 1 UA bloků · 45 Disallow · 0 Allow · AI: —
+  cistedrevo.cz            1714 B · 52 řádků · 1 UA bloků · 50 Disallow · 0 Allow · AI: —
+  drevenysvet.online       781 B · 1 řádků · 1 UA bloků · 0 Disallow · 0 Allow · AI: —
+  gigamat.cz               1404 B · 66 řádků · 13 UA bloků · 40 Disallow · 12 Allow · AI: ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+  giovani.cz               2019 B · 93 řádků · 17 UA bloků · 58 Disallow · 16 Allow · AI: ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+  hobynaradi.cz            1297 B · 57 řádků · 11 UA bloků · 44 Disallow · 0 Allow · AI: ['ClaudeBot']
+  konzoliste.cz            1162 B · 48 řádků · 1 UA bloků · 46 Disallow · 0 Allow · AI: —
+  kulina.cz                1015 B · 44 řádků · 1 UA bloků · 42 Disallow · 0 Allow · AI: —
+  madvell.cz               1042 B · 46 řádků · 3 UA bloků · 40 Disallow · 2 Allow · AI: ['GPTBot', 'ChatGPT-User']
+  pocitarna.cz             1860 B · 76 řádků · 13 UA bloků · 40 Disallow · 12 Allow · AI: ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+  profi-dj.cz              981 B · 41 řádků · 1 UA bloků · 39 Disallow · 0 Allow · AI: —
+  prokonzole.cz            3032 B · 128 řádků · 4 UA bloků · 120 Disallow · 3 Allow · AI: —
+  ptakoviny-cb.cz          1860 B · 76 řádků · 13 UA bloků · 40 Disallow · 12 Allow · AI: ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+  puellavune.cz            1009 B · 44 řádků · 2 UA bloků · 41 Disallow · 0 Allow · AI: —
+  venira.cz                1128 B · 48 řádků · 2 UA bloků · 45 Disallow · 0 Allow · AI: —
+
+--- AI pravidla v robots.txt ---
+  e-shopů s alespoň jednou zmínkou AI robota: 6 / 47
+    gigamat.cz               ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+    giovani.cz               ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+    hobynaradi.cz            ['ClaudeBot']
+    madvell.cz               ['GPTBot', 'ChatGPT-User']
+    pocitarna.cz             ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+    ptakoviny-cb.cz          ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Google-Extended', 'CCBot', 'Applebot-Extended']
+
+--- llms.txt ---
+   Counter({200: 47})
+    nemeckyeshop.cz          6681 B · # NěmeckýEshop.cz  > Czech online shop operated by Euro Market Group s.r.o., specializin
+    profi-dj.cz              7862 B · # Profi-DJ.cz  Český e-shop a specializovaný prodejce profesionální DJ, zvukové, světeln
+    brainmarket.cz           2807 B · # llms.txt for Brainmarket.cz # Purpose: Rules and guidance for AI crawlers/LLMs on how t
+
+--- odpověď serveru podle user-agenta ---
+  prohlížeč: Counter({200: 47})
+  GPTBot          {200: 47}   odlišné od prohlížeče: —
+  OAI-SearchBot   {200: 47}   odlišné od prohlížeče: —
+  ClaudeBot       {200: 47}   odlišné od prohlížeče: —
+  PerplexityBot   {200: 47}   odlišné od prohlížeče: —
+  CCBot           {200: 47}   odlišné od prohlížeče: —
+
+--- hlavičky ---
+  X-Robots-Tag: Counter({'None': 47})
+  Server      : Counter({'openresty': 47})
+  CDN         : Counter({'None': 47})

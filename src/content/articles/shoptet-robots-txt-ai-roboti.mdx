@@ -1,0 +1,201 @@
+---
+title: "Shoptet a AI roboti: povolení, které zrušilo zákazy"
+description: "Měření 47 e-shopů na Shoptetu: explicitní blokaci AI robotů jsem nenašel. Šest jim přidalo vlastní pravidla a čtyřem tím přestaly platit výchozí zákazy."
+answer: "Změřil jsem robots.txt na 47 e-shopech běžících na Shoptetu. Explicitní blokaci sledovaných AI robotů jsem nenašel ani u jednoho. Šest jim naopak přidalo vlastní skupinu pravidel — a protože pro robota platí jen jeho nejspecifičtější skupina, čtyřem z nich tím přestalo platit všech 40 výchozích zákazů, tedy i vyhledávání, košík a filtrované adresy."
+slug: "shoptet-robots-txt-ai-roboti"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "mereni"
+published: "2026-08-08"
+updated: "2026-08-08"
+keywords:
+  - "shoptet robots.txt"
+  - "shoptet ai roboti"
+  - "gptbot allow"
+  - "shoptet llms.txt"
+  - "blokování ai crawlerů eshop"
+variant: "rich"
+stats:
+  - value: "0 / 47"
+    label: "měřených e-shopů, jejichž robots.txt explicitně blokuje některého ze sledovaných AI robotů"
+  - value: "4 / 6"
+    label: "e-shopů s vlastním pravidlem pro AI roboty, kterým tím zmizely výchozí zákazy"
+  - value: "44 / 47"
+    label: "e-shopů, kde /llms.txt vrací HTTP 200 s prázdným tělem"
+faq:
+  - q: "Jde robots.txt na Shoptetu upravit?"
+    a: "Ano. Podle nápovědy Shoptetu je pole v administraci v sekci Vzhled a Obsah → Editor → HTML kód a platí pro něj limit 8 192 znaků. Nápověda uvádí, že se vložený text přidá na konec souboru. V měřeném vzorku mělo 16 ze 47 e-shopů soubor jiný než nejčastější výchozí otisk, takže k úpravám v praxi dochází."
+  - q: "Proč je povolení AI robota nebezpečnější než nic?"
+    a: "Riziko nevzniká samotným Allow lomítko, ale tím, že robot dostane vlastní specifičtější skupinu bez zákazů, které do té doby platily v obecné skupině. Podle specifikace se pro konkrétního robota vyhodnocuje jen jedna skupina — ta s nejspecifičtějším odpovídajícím user-agentem. Pokud v ní stojí jen Allow lomítko, robot už zákazy z obecné skupiny nečte."
+  - q: "Jak tedy povolit AI robota bezpečně?"
+    a: "Na Shoptetu ve výchozím stavu mu vlastní skupinu psát nemusíte. Hlavně nepřidávejte samostatný blok jen s Allow lomítko — tím pro daného robota vypnete zákazy z obecné skupiny. Pokud vlastní skupinu chcete, zopakujte v ní zákazy, na kterých vám záleží: vyhledávání, košík, přihlášení a filtrované adresy."
+  - q: "Znamená HTTP 200 na /llms.txt, že mám llms.txt hotový?"
+    a: "V měřeném vzorku ne. Ve 44 ze 47 e-shopů vrátila adresa /llms.txt stavový kód 200 s prázdným tělem, tedy hlavičkou content-length nula. Kontrola, která se ptá jen na stavový kód, tyhle e-shopy označí za vyřešené. Ověřujte obsah, ne existenci."
+  - q: "Blokuje Shoptet AI roboty na úrovni serveru?"
+    a: "V tomhle testu ne. Stáhl jsem homepage s user-agenty GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a CCBot a všech 47 e-shopů vrátilo 200 stejně jako běžnému prohlížeči. Žádná hlavička X-Robots-Tag se neobjevila. Testoval jsem ale jen řetězec user-agenta z běžné IP adresy, ne ověřené rozsahy robotů."
+  - q: "Platí měření pro každý Shoptet e-shop?"
+    a: "Ne. Vzorek tvoří 47 e-shopů: 31 z výsledků soutěže ShopRoku 2025, 7 z předchozího měření a 9 oficiálních šablonových dem. Je to vzorek vychýlený k větším a aktivnějším obchodům a měřil jsem jeden den, 8. srpna 2026."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+[První díl](/blog/shoptet-strukturovana-data-mereni/) skončil otevřenou otázkou: robots.txt byl u všech patnácti měřených e-shopů identický, ale jestli s ním jde v administraci hýbat, jsem netvrdil ani jedním směrem.
+
+Odpověď byla v nápovědě Shoptetu. **A když jsem pak rozšířil vzorek na 47 e-shopů, našel jsem něco, co jsem nehledal: u čtyř obchodů vedlo přidání vlastních pravidel pro AI roboty k tomu, že pro ně přestalo platit všech 40 zákazů, které platforma nastavuje ve výchozím stavu.**
+
+Jestli máte v robots.txt vlastní blok pro GPTBota, ClaudeBota nebo jiného AI robota, **zkontrolujte hned teď, jestli neobsahuje jen `Allow: /`.** Pokud ano, výchozí zákazy pro něj přestaly platit a je potřeba je do jeho skupiny dopsat. Proč, vysvětluje zbytek článku.
+
+Co následuje, platí pro obsah souboru `robots.txt` a pro odpověď homepage na zadané řetězce user-agenta z běžné IP adresy. Ověřené rozsahy adres robotů ani jiné stránky než homepage jsem netestoval.
+
+## Co říká <span class="hl">nápověda</span>
+
+Shoptet to má popsané v sekci HTML kódy: robots.txt se edituje v **Vzhled a Obsah → Editor → HTML kód**, sekce má limit **8 192 znaků** a — to je důležité — „vložený text se přidá na konec souboru robots.txt“. Tedy přílepek, ne přepis. Výchozích 40 zákazů zůstává.
+
+Tatáž stránka mimochodem popisuje ještě jedno pole, o kterém se moc neví: **`llms.txt` — vlastní text pro AI nástroje.** K němu se dostanu níž, protože měření u něj vydalo nepříjemnou věc.
+
+## Vzorek
+
+Potřeboval jsem seznam reálných e-shopů, který jsem nesestavil sám. Vzal jsem **125 e-shopů uvedených ve výsledcích soutěže ShopRoku 2025**, u každého otestoval otisk Shoptetu v HTML (`cdn.myshoptet.com` a objekt `Shoptet.` v JavaScriptu) a nechal si ty, které na platformě běží.
+
+Vyšlo **31 e-shopů, tedy 25 %**. K nim jsem přidal 7 obchodů z prvního dílu a 9 oficiálních šablonových dem. Dohromady **47 e-shopů**. Není to reprezentativní náhodný vzorek platformy — soutěž ho vychyluje k větším a aktivnějším obchodům.
+
+Konkrétní domény v článku neuvádím. Princip i čísla dávají smysl bez nich a vystavovat nastavení jednotlivých obchodů mi nepřijde férové.
+
+U každého jsem stáhl robots.txt, `/llms.txt` a homepage — jednou s běžným prohlížečem a pak postupně s user-agenty pěti AI robotů.
+
+## V robots.txt jsem blokaci AI robota nenašel ani jednou
+
+| Zjištění | Počet |
+|---|---|
+| robots.txt vrátil 200 | 47 z 47 |
+| **byte-identický s výchozím** | **31 z 47** |
+| upravený | 16 z 47 |
+| obsahuje zmínku o AI robotovi | 6 z 47 |
+| **blokuje nějakého AI robota** | **0 z 47** |
+
+Jediné `Disallow: /` v celém vzorku patří robotu YoudaoBot, tedy nikomu ze sledované sady.
+
+Úpravy jsou většinou nudné přílepky — někdo přidal dva řádky, jiný pět. Ale ne všechny: jeden e-shop má proti výchozímu souboru **o dvě pravidla míň** a jedno přepsané, jiný má celý obsah na jediném řádku. Základ tedy není všude stejný a proč, to zvenku nepoznám.
+
+## Hlavní nález: vlastní skupina bez zákazů vyřadí tu obecnou
+
+Šest e-shopů má pro AI roboty vlastní pravidla. Všechna povolují. A právě tím vznikl problém.
+
+Dokumentace Googlu k robots.txt to říká jednou větou: **pro konkrétního robota je platná vždy jen jedna skupina** — ta s nejspecifičtějším odpovídajícím user-agentem. Jakmile tedy GPTBot dostane vlastní skupinu, skupina `User-agent: *` se na něj **přestane vztahovat**. Nedoplní se. Nahradí se.
+
+Podívejte se, co to udělá se souborem, který má ve výchozím stavu 40 zákazů:
+
+```
+User-agent: *
+Disallow: /vyhledavani/
+Disallow: /kosik/
+Disallow: /login/
+Disallow: /*?order
+...celkem 40 pravidel
+
+User-agent: GPTBot
+Allow: /
+```
+
+Pro všechny roboty platí těch 40 zákazů. **Pro GPTBota platí jediné pravidlo: pusť ho všude.** Vyhledávání, košík, přihlášení, filtrované a řadicí adresy, záložky s diskusí a hodnocením — všechno, co majitel před roboty schoval, je pro něj zase otevřené.
+
+Rozpad těch šesti e-shopů s vlastními skupinami vypadá takhle:
+
+| Kolik e-shopů | Skupin v souboru | Skupina `*` | Co mají AI roboti |
+|---|---|---|---|
+| 1 | 3 | 40× Disallow | 2 roboti, **jen `Allow: /`** |
+| 3 | 12 | 40× Disallow | 11 robotů, **jen `Allow: /`** |
+| 1 | 16 | 43× Disallow | 15 robotů, `Allow: /` + jediné `Disallow: /klient/` |
+| 1 | 10 | 43× Disallow | ClaudeBot má **prázdnou skupinu** |
+
+<Insight tone="warn" icon="!" label="Není to individuální chyba, je to šablona">
+Dva z těch souborů jsou **byte-identické** — mají stejný otisk. Třetí je od nich skoro k nerozeznání. Jde tedy o kolující předpis, který si někdo někde zkopíroval, a u jednoho je blok dokonce nadepsaný komentářem o „maximálním povolení pro AI“. Když se takový blok šíří dál, šíří se s ním i ten vedlejší účinek.
+</Insight>
+
+Není to výtka — úmysl byl správný a technicky to není havárie. Filtrované adresy jsou tenké stránky, ne tajemství. Ale je to přesný opak toho, co si majitel myslel, že dělá: chtěl robotům otevřít obsah a otevřel jim navíc adresy, které měl pro roboty dosud zavřené.
+
+## Jak povolení zapsat, aby nezpůsobilo tohle
+
+Nejjednodušší odpověď je **nepsat ho vůbec**. Výchozí Shoptet robots.txt sledované AI roboty nijak nezmiňuje, takže z pohledu pravidel procházení mají stejný základ jako ostatní roboti — `Allow: /` jim nepřidá nic, co by neměli.
+
+Pokud vlastní skupinu chcete (třeba kvůli přehlednosti), **nestačí do ní dát `Allow: /`.** Musíte do ní zkopírovat všechny zákazy, které chcete zachovat. Následující ukázka je zkrácená — výchozí Shoptet soubor jich má 40:
+
+```
+User-agent: GPTBot
+Allow: /
+Disallow: /vyhledavani/
+Disallow: /kosik/
+Disallow: /login/
+Disallow: /*?order
+```
+
+Trochu se to opisuje, ale robot pak čte skupinu, která odpovídá tomu, co jste zamýšleli.
+
+## llms.txt: dvoustovka na všech, obsah na třech
+
+Vedle robots.txt jsem změřil i `llms.txt`, protože na něj má Shoptet vlastní pole v administraci. Otázka zněla, kolik e-shopů ho vyplnilo — a odpověď je nepříjemnější, než jsem čekal.
+
+| Zjištění | Počet |
+|---|---|
+| `/llms.txt` vrátí **HTTP 200** | **47 z 47** |
+| tělo je **prázdné** (`content-length: 0`) | **44 z 47** |
+| má skutečný obsah | **3 z 47** |
+
+Shoptet vystavuje adresu `/llms.txt` každému e-shopu bez ohledu na to, jestli do pole někdo něco napsal. Nevrací 404 — vrací dvoustovku s prázdným tělem.
+
+<Insight tone="signal" icon="?" label="Proč na tom záleží">
+Běžná kontrola zní „vrací web /llms.txt?“ a měří se stavovým kódem. Na Shoptetu takový test **projde u všech**, včetně těch 44, které soubor nemají vyplněný. Ověřujte obsah, ne existenci — stačí se podívat na `content-length` nebo soubor prostě otevřít. Co do llms.txt patří, rozebírá [návod na llms.txt](/blog/llms-txt-navod/).
+</Insight>
+
+Ty tři vyplněné mají mezi 2,8 a 7,9 kB textu. Ani jeden z nich není náhoda — někdo si s tím dal práci.
+
+## Filtraci podle user-agenta jsem ve vzorku nenašel
+
+Zbývala otázka, jestli se blokování neděje o patro výš, na serveru. Stáhl jsem homepage s user-agenty **GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a CCBot**.
+
+**Všech 47 e-shopů vrátilo 200 každému z nich**, stejně jako běžnému prohlížeči. Žádná hlavička `X-Robots-Tag` se neobjevila ani jednou. Všechny e-shopy hlásí `Server: openresty` a v naměřených hlavičkách jsem u žádného nenašel známky Cloudflare, takže se na vzorek zřejmě nevztahují ani [výchozí blokace AI robotů, které Cloudflare zapnul](/blog/cloudflare-ai-bot-blocking/).
+
+Limit toho testu je podstatný: měřil jsem **řetězec user-agenta z běžné IP adresy**. Skuteční roboti chodí z ověřitelných rozsahů adres a filtrovat se dá až podle nich. Rate-limiting jsem neměřil vůbec.
+
+## Museli jsme opravit vlastní návod
+
+Tenhle nález se týká i nás. Náš [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/) ukazoval šablonu s `Allow: /` pro jednotlivé roboty a doprovázel ji větou, že to má smysl „v případě, kdy máte obecné `User-agent: *` s blokací“.
+
+**Ta věta to má obráceně.** Právě když má web neprázdnou skupinu `User-agent: *`, přidání vlastní skupiny pro robota tu obecnou skupinu pro něj zruší. Tenhle článek našel čtyři e-shopy, kde to takhle dopadlo. Návod jsme opravili a doplnili do něj bezpečný zápis.
+
+## Tři chyby, které se dají udělat za minutu
+
+<MistakeGrid>
+<Mistake number="01" title="Zkopírovat cizí blok „povolení pro AI“">
+Nejrychlejší cesta k tomu, aby vám roboti chodili do vyhledávání a košíku. Když už blok kopírujete, projděte si, jestli má vlastní zákazy, nebo jen `Allow: /`.
+</Mistake>
+
+<Mistake number="02" title="Považovat HTTP 200 na /llms.txt za splněno">
+Na Shoptetu vrací dvoustovku i prázdný soubor. Ve vzorku to byl případ 44 e-shopů ze 47. Kontrolujte obsah.
+</Mistake>
+
+<Mistake number="03" title="Myslet si, že robota musíte povolit vlastním blokem">
+Na Shoptetu to ve výchozím stavu nutné není — obecná skupina mu nic nezakazuje nad rámec toho, co platí pro všechny. Vlastní blok jen s `Allow: /` naopak obecnou skupinu pro toho robota vypne.
+</Mistake>
+</MistakeGrid>
+
+<Checklist tone="geo" title="Co si projít na vlastním Shoptetu" items={[
+  { title: "Otevřít /robots.txt a najít vlastní skupiny", desc: "Pokud tam žádná není, řídí se AI roboti obecnou skupinou. Pokud je, projděte, co v ní stojí." },
+  { title: "U každé vlastní skupiny zkontrolovat zákazy", desc: "Skupina jen s Allow lomítko bez zopakovaných zákazů způsobí, že pro toho robota přestanou platit zákazy z obecné skupiny." },
+  { title: "Otevřít /llms.txt a podívat se na obsah", desc: "Dvoustovka nestačí. Prázdný soubor vypadá zvenku stejně jako vyplněný." },
+  { title: "Rozhodnout se vědomě, koho chcete pustit", desc: "Ve výchozím stavu Shoptet sledované AI roboty neblokuje, jen na ně platí obecné zákazy jako na ostatní. Není to chyba, ale je to rozhodnutí, které za vás udělala platforma." },
+]} />
+
+<Insight tone="aio" icon="i" label="Limity měření">
+47 e-shopů je vzorek, ne populace — Shoptet jich provozuje řádově víc a ShopRoku ho navíc vychyluje k větším obchodům. Měřil jsem **jeden den, 8. srpna 2026**. U robotů jsem testoval jen řetězec user-agenta z běžné IP, ne ověřené rozsahy adres, a neměřil jsem rate-limiting. A hlavně: robots.txt je pokyn, ne zámek — jestli ho konkrétní robot dodržuje, tenhle test neříká.
+</Insight>
+
+## Kam tenhle článek patří
+
+Druhý díl bloku o Shoptetu a viditelnosti v AI. V dalších navážu datovými poli v administraci, filtry a parametrickými adresami a blogovým modulem. První díl měřil, [co Shoptet posílá strojům ve strukturovaných datech](/blog/shoptet-strukturovana-data-mereni/).
+
+A pokud si z celého textu máte odnést jedinou kontrolu: otevřete si dnes `/robots.txt` a ověřte, že případná skupina pro GPTBota, ClaudeBota nebo PerplexityBota neobsahuje jen `Allow: /`.
