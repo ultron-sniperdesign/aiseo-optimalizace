@@ -1,151 +1,94 @@
 /**
- * Datový modul — /sluzby/ (nabídka SEO pro AI, platformově nezávislá).
+ * Datový modul — /sluzby/ (prodejní landing „Editorial důkaz").
  *
- * VZTAH K sniperdesign.cz/seo-pro-ai: tam je nabídka pro KONKRÉTNÍ platformu
- * (Upgates) s hotovými moduly a pevným ceníkem. Tady je nabídka OBECNÁ —
- * zpracujeme totéž na jakékoli platformě, ale postup i pracnost se liší,
- * takže ceny technické přípravy negarantujeme (stanovují se po auditu).
- * Pevnou cenu má jen: audit (vstupní služba) a generování obsahu
- * (jednotkové ceny za kategorii/produkt — na platformě nezávisí).
+ * Design 2026-08 (koncept A): prémiový editorial — důkazy nesou přesvědčení,
+ * grafika ustupuje. Hairline linky, obří číslice, „účetní výkaz" faktů
+ * s tečkovanými vodicími linkami, stylizovaná GSC karta v hero.
  *
- * PER-MUTACE: celý soubor se překládá (viz MUTATIONS.md). Ceny v CZK.
+ * OBCHODNÍ PREMISA: nabídka je platformově nezávislá („zpracujeme to").
+ * Pevnou cenu má POUZE audit (vstupní služba) a generování obsahu
+ * (jednotkové ceny — na platformě nezávisí). Technická příprava je na míru
+ * po auditu. Upgates e-shopy mají hotové moduly na sniperdesign.cz/seo-pro-ai.
+ *
+ * PER-MUTACE: celý soubor se překládá (viz MUTATIONS.md). Ceny v CZK;
+ * čísla důkazů (200k, 4×, 600+) jsou sdílená fakta z MEGA DETAIL case study.
  */
 
 export const meta = {
-  title: "Služby — kompletní SEO pro AI | aiseo-optimalizace.cz",
+  title: "Služby — SEO pro AI, které jde změřit | aiseo-optimalizace.cz",
   description:
-    "Zpracujeme SEO pro AI na jakékoli platformě: audit za 3 600 Kč, technická příprava na míru a citovatelný obsah s jednotkovou cenou. Od auditu po monitoring citací.",
+    "Zákazníci se ptají ChatGPT a Google AI. Připravíme web, který AI cituje — audit za 3 600 Kč, technická příprava na míru a obsah s jednotkovou cenou.",
   ogImage: "/og/default.jpg",
 };
 
+/* ============ HERO ============ */
+
 export const hero = {
-  intro: "Kompletní nabídka od Sniper Design",
-  title: 'Ať AI <span class="hl">doporučuje váš web</span>, <strong>ne konkurenci</strong>.',
+  kicker: "Služby · SEO pro AI · Sniper Design",
+  titleHtml:
+    'Zákazníci se přestali ptát Googlu.<br /><strong>Ptají se <span class="u">AI — a ta doporučuje</span>.</strong>',
   lead:
-    "Zákazníci se dnes neptají jen Googlu — ptají se ChatGPT, Perplexity a Google AI. Připravíme váš web nebo e-shop tak, aby ho AI uměla přečíst, pochopit a citovat v odpovědích. Tři kroky: audit, technická příprava, citovatelný obsah.",
-  chips: ["600+ klientů od 2016", "Zlatý partner Upgates i Shoptet", "Vlastní e-shop MEGA DETAIL"],
+    "ChatGPT, Perplexity i Google AI dnes odpovídají za vás — otázka je, <strong>jestli v té odpovědi jste</strong>. Připravíme váš web tak, aby ho AI uměla přečíst, pochopit a citovat. Ne podle teorie: podle toho, co měříme na vlastním e-shopu.",
+  ctaPrimary: { label: "Začít auditem — 3 600 Kč", href: "/audit/" },
+  ctaSecondary: { label: "Co přesně děláme", href: "#kroky" },
+  trustLine: "600+ e-shopů od 2016 · Zlatý partner Upgates i Shoptet",
 };
 
-/** Jak se web dostane do AI odpovědi — 4 kroky (edukativní rámec nad nabídkou). */
-export const funnel = {
-  eyebrowNum: "01",
-  eyebrow: "Jak to funguje",
-  title: "Jak se web dostane <strong>do AI odpovědi</strong>",
-  lead: "Cesta od zákazníka, který se zeptá AI, k odpovědi, která cituje vás. Čtyři kroky, na kterých záleží.",
-  steps: [
-    { num: "01", label: "Zákazník se zeptá" },
-    { num: "02", label: "AI hledá zdroje" },
-    { num: "03", label: "Vybere důvěryhodné" },
-    { num: "04", label: "Cituje váš web" },
+/** Stylizovaná karta GSC reportu v hero (čísla z proof.ts / case study). */
+export const heroShot = {
+  barTitle: "Search Console · Funkce s generativní AI · MEGA DETAIL",
+  metric: "200 018",
+  metricUnit: "zobrazení",
+  sub: "v AI odpovědích Googlu · 18. 5. – 15. 7. 2026",
+  /** Výšky sloupců sparkline v % (stylizace reálné rostoucí křivky). */
+  bars: [18, 24, 21, 30, 36, 33, 45, 52, 48, 61, 57, 70, 78, 74, 88, 100],
+  ariaLabel: "Stylizovaný náhled reportu Search Console — 200 018 zobrazení v AI odpovědích",
+};
+
+/* ============ VÝKAZ DŮKAZŮ (ledger) ============ */
+
+export const ledger = {
+  headLeft: "Výkaz — vlastní data, ne slidy",
+  headRight: "zdroj: GSC + GA4",
+  rows: [
+    { label: "Zobrazení v AI odpovědích Googlu za dva měsíce", value: "200 000", unit: "×", hi: true },
+    { label: "Konverze návštěv z ChatGPT proti Google vyhledávání", value: "4", unit: "× vyšší", hi: false },
+    { label: "E-shopů, kterým stavíme viditelnost od roku 2016", value: "600", unit: "+", hi: false },
   ],
-  note: "Naše služby řeší kroky 2–4: aby vás AI měla šanci najít, vyhodnotit jako důvěryhodný zdroj a citovat.",
+  srcHtml:
+    'Čísla z e-shopu MEGA DETAIL (vlastní projekt agentury) — výchozí stav před cílenou optimalizací, veřejně je zlepšujeme. Detail v <a href="/blog/case-study-megadetail-ai-navstevnost/">případové studii</a>.',
 };
 
-/** 3 rozsahy spolupráce — orientace, co příprava obnáší. BEZ pevných cen:
- * nabídka je platformově nezávislá a pracnost se liší web od webu. */
-export const packagesSection = {
-  eyebrowNum: "02",
-  eyebrow: "Rozsahy spolupráce",
-  title: "Tři úrovně <strong>přípravy na AI vyhledávání</strong>",
-  lead:
-    "Orientace, co všechno příprava obnáší — od základů po plnou výbavu. Nejde o ceník: každý web běží na jiné platformě a v jiném stavu, takže konkrétní rozsah, postup i cenu stanovíme po auditu.",
-  vatNote: "Rozsahy jsou orientační. Přesnou nabídku s cenou dostanete po auditu — bez závazku pokračovat.",
+/* ============ TŘI KROKY (editorial kapitoly) ============ */
+
+export const steps = {
+  introHtml: "Tři kroky mezi vámi a <strong>citací v AI odpovědi</strong>.",
+  items: [
+    {
+      num: "01",
+      meta: "Audit · pevná cena",
+      title: "Zjistíme, kde ztrácíte",
+      desc: "Projdeme technickou i obsahovou část webu a nad výsledky proběhne meeting (30–60 min). Odejdete s prioritizovaným plánem — co vás u AI brzdí, co má smysl řešit a co zvládnete sami.",
+      priceHtml: "<b>3 600 Kč</b> <i>· bez DPH · jediná pevně daná cena před auditem</i>",
+    },
+    {
+      num: "02",
+      meta: "Technika · na míru",
+      title: "Připravíme web, který AI přečte",
+      desc: "Prověřené úpravy, které přímo ovlivňují šance na citace — na jakékoli platformě. Postup i pracnost se ale web od webu liší, proto cenu stanovíme po auditu, ne z ceníku, který by neplatil.",
+      priceHtml: "<b>Cena na míru</b> <i>· rozsah i cena podle auditu</i>",
+    },
+    {
+      num: "03",
+      meta: "Obsah · jednotková cena",
+      title: "Dodáme odpovědi, které AI cituje",
+      desc: "Texty ve formátu, ze kterého AI skládá odpovědi — krátké odpovědi, FAQ, fakta místo frází. Jediná část nabídky s garantovanou cenou předem: na platformě totiž nezávisí. Detail úrovní níže.",
+      priceHtml: "<b>od 18 Kč</b> <i>/ kategorie</i> · <b>od 34 Kč</b> <i>/ produkt</i>",
+    },
+  ],
 };
 
-export interface PackageDef {
-  badge?: string;
-  name: string;
-  forWhom: string;
-  priceLabel: string;
-  priceNote: string;
-  items: string[];
-  itemsPrefix?: string;
-  cta: string;
-  featured: boolean;
-}
-
-export const packages: PackageDef[] = [
-  {
-    name: "Potřebný pevný základ",
-    forWhom: "Pro web, který potřebuje postavit základy a optimalizace doplňovat časem.",
-    priceLabel: "Cena na míru",
-    priceNote: "upřesníme po auditu",
-    items: [
-      "Audit připravenosti + edukativní meeting",
-      "Strukturovaná data v plném rozsahu (Google Rich Results)",
-      "Google Search Console + aktivace Bing Webmaster",
-      "Na míru vyplněný soubor llms.txt pro AI vyhledávání",
-    ],
-    cta: "Chci technický základ",
-    featured: false,
-  },
-  {
-    badge: "Nejčastější rozsah",
-    name: "Technicky připravený web",
-    forWhom: "Pro weby a e-shopy, které chtějí být v AI vyhledávání.",
-    priceLabel: "Cena na míru",
-    priceNote: "upřesníme po auditu",
-    items: [
-      "Audit připravenosti + edukativní meeting",
-      "Strukturovaná data v plném rozsahu (Google Rich Results)",
-      "Google Search Console + aktivace Bing Webmaster",
-      "Krátké citovatelné odpovědi na klíčových stránkách",
-      "FAQ na produktech, kategoriích či službách",
-      "E-E-A-T prvky na webu — doložená důvěryhodnost",
-      "Optimalizace HTML sémantiky pro čtení AI nástroji",
-    ],
-    cta: "Chci technicky připravený web",
-    featured: true,
-  },
-  {
-    badge: "Maximum",
-    name: "AI vyhledávání na MAX",
-    forWhom: "Pro web, který chce být maximálně vidět v AI vyhledávačích, citacích a doporučeních.",
-    priceLabel: "Cena na míru",
-    priceNote: "upřesníme po auditu · ideálně navázat obsahem",
-    itemsPrefix: "Vše z rozsahu Technicky připravený web, a navíc:",
-    items: [
-      "Na míru vyplněný soubor llms.txt pro AI vyhledávání",
-      "Autorství článků — karty autorů a doložená odbornost",
-      "Rozšířená strukturovaná data u článků",
-      "Strojové souhrny klíčových stránek pro AI",
-      "Převod obrázků do formátu WebP",
-      "Hodina konzultace navíc",
-    ],
-    cta: "Chci být plně připravený na AI",
-    featured: false,
-  },
-];
-
-/** Krok 1 — audit (vstupní služba, vede na /audit/). */
-export const stepAudit = {
-  eyebrowNum: "03",
-  eyebrow: "Krok 1 · Audit",
-  title: "Zjistěte, kde <strong>ztrácíte v AI vyhledávání</strong>",
-  lead:
-    "Projdeme technickou i obsahovou část webu a připravíme akční plán priorit. Nad výsledky proběhne online meeting (30–60 minut): jak AI vyhledávání funguje a co konkrétně znamená pro váš projekt. Odejdete s jasným seznamem — co vás u AI brzdí, co má smysl řešit a co si umíte udělat sami.",
-  price: "3 600 Kč",
-  priceNote: "bez DPH · pevná cena · vstupní služba",
-  forWhom: "Pro koho: weby a e-shopy, které začínají řešit SEO pro AI",
-  cta: "Objednat audit s meetingem",
-  ctaHref: "/audit/",
-};
-
-/** Krok 2 — technická příprava. Oblasti, které zpracujeme; BEZ cen (závisí
- * na platformě a stavu webu — stanovují se po auditu). */
-export const stepModules = {
-  eyebrowNum: "04",
-  eyebrow: "Krok 2 · Technika",
-  title: "Web, který AI <strong>chápe a přečte rychle</strong>",
-  lead:
-    "Prověřené technické úpravy, které přímo ovlivňují šance na citace. Zpracujeme je na jakékoli platformě — WordPress, Shoptet, Upgates i web na míru. Postup a pracnost se ale platformu od platformy liší, proto ceny stanovujeme po auditu, ne z ceníku.",
-  impactLegend: "Škála vlivu: 🔥🔥🔥 velký · 🔥🔥 střední · 🔥 menší",
-  platformNote:
-    'Máte e-shop na Upgates? Tam máme tyhle úpravy jako <a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener">hotové moduly s pevnou cenou</a> — nasazení do pár dnů.',
-  cta: "Zjistit, co váš web potřebuje",
-  ctaHref: "/audit/",
-};
-
+/** Oblasti technické přípravy (krok 02) — seřazené podle vlivu. */
 export type Impact = 3 | 2 | 1;
 
 export interface ModuleDef {
@@ -186,14 +129,19 @@ export const modules: ModuleDef[] = [
     desc: "Čistá struktura šablony, ze které AI roboti rychle pochopí, co je co na stránce — a umí se v obsahu okamžitě zorientovat.",
   },
   {
-    impact: 1,
-    name: "Na míru vyplněný soubor llms.txt",
-    desc: "Soubor s podstatnými informacemi o webu, firmě a důvěryhodnosti — přímý vstup pro AI nástroje.",
-  },
-  {
     impact: 2,
     name: "Autorství článků",
     desc: "Každý článek má svého autora s vlastní kartou a doloženou odborností — signál důvěryhodnosti pro AI vyhledávání.",
+  },
+  {
+    impact: 2,
+    name: "Rychlost a formáty obrázků",
+    desc: "Převod obrázků do WebP a základní výkonové úpravy — rychlost načítání jako základní signál kvality.",
+  },
+  {
+    impact: 1,
+    name: "Na míru vyplněný soubor llms.txt",
+    desc: "Soubor s podstatnými informacemi o webu, firmě a důvěryhodnosti — přímý vstup pro AI nástroje.",
   },
   {
     impact: 1,
@@ -205,164 +153,122 @@ export const modules: ModuleDef[] = [
     name: "Strojové souhrny stránek",
     desc: "Souhrn stránky a jejích vazeb ve strukturovaných datech — AI okamžitě ví, o čem stránka je.",
   },
-  {
-    impact: 2,
-    name: "Rychlost a formáty obrázků",
-    desc: "Převod obrázků do WebP a základní výkonové úpravy — rychlost načítání jako základní signál kvality.",
-  },
 ];
 
-/** Krok 3 — obsahové služby (úrovně, jednotkové ceny, vstupní analýza). */
+export const modulesFoot = {
+  impactLegend: "Řazeno podle vlivu na citace: ● velký · ◐ střední · ○ menší",
+  platformNoteHtml:
+    'Máte e-shop na Upgates? Tam máme tyhle úpravy jako <a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener">hotové moduly s pevnou cenou</a> — nasazení do pár dnů.',
+};
+
+/* ============ OBSAH — ÚROVNĚ S GARANTOVANOU CENOU ============ */
+
 export const stepContent = {
-  eyebrowNum: "05",
-  eyebrow: "Krok 3 · Obsah",
-  title: "Odpovědi, <strong>které AI cituje</strong>",
+  eyebrow: "Ceník obsahu",
+  titleHtml: "Jediné ceny, které <strong>známe předem</strong>",
   lead:
-    "Texty ve formátu, ze kterého AI skládá odpovědi — krátké odpovědi, FAQ, fakta místo frází. Tady se rozhoduje, jestli odpověď zmíní vás, nebo konkurenci. A protože fakta místo vaty chtějí i lidé, stejný obsah slouží zákazníkům i klasickému SEO.",
+    "Generování citovatelného obsahu na platformě nezávisí — proto ho umíme garantovat na korunu. Úrovně na sebe navazují, vyšší vždy obsahuje vše z nižší.",
   analysisTitle: "Proč je u obsahu vstupní analýza?",
   analysisHtml:
     "Negenerujeme texty jedním univerzálním promptem. U každého projektu nejdřív vytvoříme <strong>vstupní analýzu</strong>: branding a tón projektu, konkurence a mezery, audit stávajícího obsahu. Teprve nad těmito daty ladíme generování na míru projektu. <strong>Analýza se platí jednou pro celou skupinu</strong> — při rozšíření na vyšší úroveň se neopakuje.",
 };
 
-export interface TierDef {
-  badge?: string;
+export interface ContentRow {
   name: string;
-  desc: string;
-  unitPrice: string;
+  detail: string;
+  price: string;
   unit: string;
   analysis: string;
-  items: { label: string; impact: Impact }[];
-  cta: string;
-  featured: boolean;
+  featured?: boolean;
 }
 
-export const categoryTiers: { title: string; lead: string; tiers: TierDef[] } = {
-  title: "Obsah kategorií — tři úrovně",
-  lead: "Úrovně na sebe navazují — vyšší vždy obsahuje vše z nižší.",
-  tiers: [
+export const categoryRows: { title: string; rows: ContentRow[] } = {
+  title: "Obsah kategorií",
+  rows: [
     {
-      name: "1 · Základ",
-      desc: "Jasná citovatelná odpověď u každé kategorie. Základ, bez kterého nemá smysl generovat nic dalšího.",
-      unitPrice: "18 Kč",
-      unit: "kategorie",
+      name: "1 · Krátké odpovědi",
+      detail: "Jasná citovatelná odpověď u každé kategorie — základ všeho dalšího.",
+      price: "18 Kč",
+      unit: "/ kategorie",
       analysis: "vstupní analýza 1 300 Kč (jednou)",
-      items: [{ label: "Krátké odpovědi do všech kategorií", impact: 3 }],
-      cta: "Chci krátké odpovědi",
-      featured: false,
     },
     {
-      name: "2 · Základ + FAQ",
-      desc: "Krátké odpovědi + reálné otázky a odpovědi ke každé kategorii — zdroj, ze kterého AI skládá odpovědi.",
-      unitPrice: "39 Kč",
-      unit: "kategorie",
+      name: "2 · Odpovědi + FAQ",
+      detail: "Krátké odpovědi + reálné otázky a odpovědi ke každé kategorii.",
+      price: "39 Kč",
+      unit: "/ kategorie",
       analysis: "vstupní analýza 2 600 Kč (jednou)",
-      items: [
-        { label: "Krátké odpovědi do všech kategorií", impact: 3 },
-        { label: "FAQ do všech kategorií", impact: 3 },
-      ],
-      cta: "Chci odpovědi + FAQ",
-      featured: false,
     },
     {
-      badge: "Nejlepší hodnota",
-      name: "3 · Kompletní obsah kategorií",
-      desc: "Kompletní obsahová výbava: krátké odpovědi, FAQ a přepis obsahu klíčových kategorií.",
-      unitPrice: "54 Kč",
-      unit: "kategorie",
+      name: "3 · Kompletní obsah",
+      detail: "Odpovědi, FAQ a přepis obsahu klíčových kategorií.",
+      price: "54 Kč",
+      unit: "/ kategorie",
       analysis: "vstupní analýza 2 600 Kč (jednou)",
-      items: [
-        { label: "Krátké odpovědi do všech kategorií", impact: 3 },
-        { label: "FAQ do všech kategorií", impact: 3 },
-        { label: "Přepis obsahu klíčových kategorií", impact: 2 },
-      ],
-      cta: "Chci kompletní obsah kategorií",
       featured: true,
     },
   ],
 };
 
-export const productTiers: { title: string; lead: string; tiers: TierDef[] } = {
-  title: "Obsah produktů — tři úrovně",
-  lead: "Nejrychlejší cestou k citacím jsou FAQ; strukturované popisy a strojové souhrny na ně navazují.",
-  tiers: [
+export const productRows: { title: string; rows: ContentRow[] } = {
+  title: "Obsah produktů",
+  rows: [
     {
       name: "1 · FAQ",
-      desc: "Nejrychlejší cesta k obsahu, který může AI citovat u vašich nejprodávanějších produktů.",
-      unitPrice: "34 Kč",
-      unit: "produkt",
+      detail: "Nejrychlejší cesta k obsahu, který může AI citovat u nejprodávanějších produktů.",
+      price: "34 Kč",
+      unit: "/ produkt",
       analysis: "vstupní analýza 2 600 Kč (jednou)",
-      items: [{ label: "FAQ do klíčových produktů", impact: 3 }],
-      cta: "Chci FAQ k produktům",
-      featured: false,
     },
     {
-      badge: "Doporučené kombo",
       name: "2 · FAQ + popisy",
-      desc: "FAQ + popisy s jasnou strukturou a fakty — dávají smysl zákazníkovi i AI vyhledávači.",
-      unitPrice: "49 Kč",
-      unit: "produkt",
+      detail: "FAQ + popisy s jasnou strukturou a fakty — pro zákazníka i AI vyhledávač.",
+      price: "49 Kč",
+      unit: "/ produkt",
       analysis: "vstupní analýza 3 900 Kč (jednou)",
-      items: [
-        { label: "FAQ do klíčových produktů", impact: 3 },
-        { label: "Strukturované popisy klíčových produktů", impact: 3 },
-      ],
-      cta: "Chci FAQ + popisy",
       featured: true,
     },
     {
-      name: "3 · Kompletní obsah produktů",
-      desc: "Plná výbava klíčových produktů včetně strojových souhrnů do strukturovaných dat.",
-      unitPrice: "55 Kč",
-      unit: "produkt",
+      name: "3 · Kompletní obsah",
+      detail: "FAQ, popisy a strojové souhrny do strukturovaných dat.",
+      price: "55 Kč",
+      unit: "/ produkt",
       analysis: "vstupní analýza 3 900 Kč (jednou)",
-      items: [
-        { label: "FAQ do klíčových produktů", impact: 3 },
-        { label: "Strukturované popisy klíčových produktů", impact: 3 },
-        { label: "Rychlé souhrny do strukturovaných dat", impact: 1 },
-      ],
-      cta: "Chci kompletní obsah produktů",
-      featured: false,
     },
   ],
 };
 
 export const compareOffer = {
-  title: "Samostatné téma: srovnávací obsah",
-  lead:
-    "Férová srovnání „X vs Y“ jsou formát, který AI nástroje citují nejčastěji ze všech — proto stojí mimo úrovně výše, jako samostatný publikační plán. Funguje pro AI, klasické SEO i samotného zákazníka.",
   name: "Srovnávací obsah „X vs Y“",
+  detail:
+    "Férová srovnání jsou formát, který AI cituje nejčastěji ze všech — samostatný publikační plán na rok, 24 srovnání.",
   price: "12 800 Kč",
-  priceNote: "publikační plán na rok · 24 srovnání · pevná cena",
-  cta: "Chci srovnávací obsah",
-  slug: "srovnavaci-obsah",
+  unit: "/ rok · pevná cena",
 };
 
-/** Měření + dlouhodobé služby. */
-export const measurement = {
-  eyebrowNum: "06",
-  eyebrow: "Měření",
-  title: "Dopad AI vyhledávání <strong>se dá měřit</strong>",
-  lead: "A je dobré s tím počítat od začátku. Nastavení měření řešíme v rámci klasického SEO a konzultací.",
+/* ============ AUDIT — NABÍDKOVÁ KARTA ============ */
+
+export const offer = {
+  titleHtml: "Jediné rozhodnutí dnes:<br /><strong>audit za 3 600 Kč.</strong>",
+  lead:
+    "Žádný balíček za desetitisíce naslepo. Nejdřív černé na bílém, kde stojíte — pak se rozhodnete, co řešit s námi a co si uděláte sami.",
   items: [
-    {
-      name: "Google Analytics 4",
-      desc: "Návštěvnost z AI asistentů (ChatGPT, Perplexity…) a její konverze.",
-    },
-    {
-      name: "Google Search Console",
-      desc: "Imprese a pozice v AI Overviews, vývoj dotazů a CTR — včetně zero-click trendů.",
-    },
-    {
-      name: "Specializované nástroje",
-      desc: "Collabim, Marketing Miner a další — sledování citací značky v AI odpovědích.",
-    },
+    "Technický i obsahový rozbor vašeho webu",
+    "Online meeting 30–60 minut — vysvětlíme, co čísla znamenají",
+    "Prioritizovaný plán: co má největší dopad a co počká",
+    "Výstup do 5 pracovních dní",
   ],
+  price: "3 600 Kč",
+  vat: "bez DPH · pevná cena",
+  cta: { label: "Objednat audit", href: "/audit/" },
+  risk: "Bez závazku pokračovat. Plán je váš, ať ho realizuje kdokoli.",
 };
+
+/* ============ DLOUHODOBĚ + MĚŘENÍ ============ */
 
 export const retainers = {
-  eyebrowNum: "07",
   eyebrow: "Dlouhodobě",
-  title: "Základ a monitoring: <strong>klasické SEO + citace</strong>",
+  titleHtml: "Základ a monitoring: <strong>klasické SEO + citace</strong>",
   lead:
     "AI čerpá z webů, které už umí najít Google a Bing — bez zdravého SEO základu AI viditelnost nestojí. A průběžně měříme, kde vás AI cituje a co to přináší.",
   items: [
@@ -370,25 +276,24 @@ export const retainers = {
       type: "Měsíční retainer",
       name: "Klasická pravidelná SEO optimalizace",
       desc: "Klasické SEO je stále základ celé problematiky — s SEO pro AI se prolíná a je třeba ho budovat, aby mělo AI z čeho čerpat.",
-      forWhom: "Pro koho: weby bez funkční SEO základny",
       href: "/sluzby/dlouhodobe-seo/",
     },
     {
       type: "Měsíční retainer",
       name: "Monitoring AI viditelnosti / sledování citací",
       desc: "Zjistíme, u kterých dotazů vás ChatGPT, Perplexity nebo Google AI zmiňují — a kde místo vás doporučují konkurenci.",
-      forWhom: "Pro koho: klienti, kteří potřebují tvrdá data o AI viditelnosti",
       href: "/sluzby/monitoring-ai/",
     },
   ],
-  cta: "Mám zájem o dlouhodobou správu",
+  measureNote:
+    "Dopad měříme od začátku: GA4 (návštěvnost a konverze z AI asistentů), Search Console (imprese v AI Overviews) a specializované nástroje na citace značky.",
 };
 
-/** Interaktivní self-check. */
+/* ============ SELF-CHECK ============ */
+
 export const selfCheck = {
-  eyebrowNum: "08",
   eyebrow: "Otestujte se",
-  title: "Je váš web <strong>připravený na AI?</strong>",
+  titleHtml: "Je váš web <strong>připravený na AI?</strong>",
   lead: "Zaškrtněte, co už máte. Co zůstane prázdné, to je vaše zadání.",
   items: [
     "Vím, o čem je SEO pro AI — umím ho rozdělit na technickou a obsahovou část",
@@ -408,32 +313,33 @@ export const selfCheck = {
   ctaHref: "/audit/",
 };
 
-/** Mýty — vyčištění očekávání. */
+/* ============ MÝTY ============ */
+
 export const myths = {
-  eyebrowNum: "09",
   eyebrow: "Vyčistíme očekávání",
-  title: "Co SEO pro AI <strong>není</strong>",
-  lead: "Tři nejčastější mýty, které se vyplatí mít upřímně na stole hned na začátku.",
+  titleHtml: "Co vám <strong>neslíbíme</strong>",
+  lead: "Přesvědčovat umíme i poctivostí. Tyhle tři věci vám neslíbí nikdo seriózní — a kdo ano, tomu utečte.",
   items: [
     {
-      name: "Není to garance první pozice",
-      desc: "Nikdo nemůže slíbit, že vás ChatGPT bude vždy zmiňovat jako první. Pracujeme se šancemi a měřitelně je zvyšujeme — ale konečné rozhodnutí dělá AI.",
+      name: "„Budete první v ChatGPT“",
+      desc: "Nikdo nemůže slíbit, že vás AI bude vždy zmiňovat jako první. Pracujeme se šancemi a měřitelně je zvyšujeme — ale konečné rozhodnutí dělá AI.",
     },
     {
-      name: "Není to jen generování článků",
-      desc: "SEO pro AI není „nechte si napsat 100 článků GPT“. Bez technické základny, autority a strukturovaných dat by takové články AI nevzala v potaz — nebo by ublížily i klasickému SEO.",
+      name: "„Stačí vygenerovat 100 článků“",
+      desc: "Bez technické základny, autority a strukturovaných dat by takové články AI nevzala v potaz — nebo by ublížily i klasickému SEO.",
     },
     {
-      name: "Není to náhrada klasického SEO",
+      name: "„Klasické SEO už neřešte“",
       desc: "AI vyhledávače čerpají z webů indexovaných přes Google a Bing. Bez funkčního SEO základu se k vám AI ani nedostane — řešíme obojí paralelně.",
     },
   ],
 };
 
+/* ============ FAQ ============ */
+
 export const faqHead = {
-  eyebrowNum: "10",
   eyebrow: "Časté otázky",
-  title: "Na co se <strong>nejčastěji ptáte</strong>",
+  titleHtml: "Na co se <strong>nejčastěji ptáte</strong>",
 };
 
 export const faq = [
@@ -463,22 +369,21 @@ export const faq = [
   },
 ];
 
+/* ============ FINÁLNÍ CTA ============ */
+
 export const finalCta = {
-  title: "Nevíte, kde začít? <strong>Začněte auditem.</strong>",
-  lead:
-    "Za 3 600 Kč dostanete audit připravenosti, edukativní meeting a prioritizovaný plán — a teprve pak se rozhodněte, co řešit s námi a co si uděláte sami.",
+  titleHtml: "Za 3 600 Kč víte, <strong>na čem jste</strong>.",
+  lead: "Žádný závazek, žádný balíček naslepo — jen jasný plán do 5 pracovních dní a jistota, že další koruna půjde tam, kde má smysl.",
   btnPrimary: { label: "Objednat audit za 3 600 Kč", href: "/audit/" },
   btnSecondary: { label: "Napište nám", href: "/kontakt/" },
 };
 
-/** JSON-LD katalog nabídky (ceny bez DPH, CZK). */
+/** JSON-LD katalog — jen služby s garantovanou cenou (bez DPH, CZK). */
 export const offerCatalogJsonLd = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  name: "SEO pro AI — kompletní nabídka služeb",
+  name: "SEO pro AI — nabídka služeb",
   url: "https://aiseo-optimalizace.cz/sluzby/",
-  // Jen služby s garantovanou cenou (audit + obsah). Technická příprava je
-  // na míru — bez ceny do katalogu nepatří.
   itemListElement: [
     { "@type": "Offer", name: "Audit připravenosti + edukativní meeting", price: "3600", priceCurrency: "CZK" },
     { "@type": "Offer", name: "Srovnávací obsah X vs Y — roční publikační plán", price: "12800", priceCurrency: "CZK" },
