@@ -26,7 +26,7 @@ export const meta = {
 export const hero = {
   kicker: "Služby · SEO pro AI · Sniper Design",
   titleHtml:
-    'Zákazníci se přestali ptát Googlu.<br /><strong>Ptají se <span class="u">AI — a ta doporučuje</span>.</strong>',
+    '<strong>Zákazníci se přestali ptát Googlu.</strong><br />Ptají se <span class="hl">AI</span> — a ta <span class="hl">doporučuje</span>.',
   lead:
     "ChatGPT, Perplexity i Google AI dnes odpovídají za vás — otázka je, <strong>jestli v té odpovědi jste</strong>. Připravíme váš web tak, aby ho AI uměla přečíst, pochopit a citovat. Ne podle teorie: podle toho, co měříme na vlastním e-shopu.",
   ctaPrimary: { label: "Začít auditem — 3 600 Kč", href: "/audit/" },

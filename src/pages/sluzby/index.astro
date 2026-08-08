@@ -40,8 +40,8 @@ const stepColors = [
   <div class="ed">
     <!-- ===== HERO ===== -->
     <section class="hero" aria-labelledby="hero-title">
-      <p class="hero__kicker r">{p.hero.kicker}</p>
-      <h1 id="hero-title" class="hero__title r r2" set:html={p.hero.titleHtml}></h1>
+      <span class="hero__intro r"><span class="hero__intro-dot" aria-hidden="true"></span>{p.hero.kicker}</span>
+      <h1 id="hero-title" class="display hero__title r r2" set:html={p.hero.titleHtml}></h1>
       <div class="hero__grid">
         <div class="r r3">
           <p class="hero__lead" set:html={p.hero.lead}></p>
@@ -88,6 +88,7 @@ const stepColors = [
 
     <!-- ===== TŘI KROKY ===== -->
     <section class="steps" id="kroky" aria-labelledby="steps-title">
+      <span class="eyebrow"><span class="eyebrow__num">01</span> Postup</span>
       <h2 id="steps-title" class="steps__intro" set:html={p.steps.introHtml}></h2>
 
       {p.steps.items.map((s, idx) => (<>
@@ -126,9 +127,9 @@ const stepColors = [
 
     <!-- ===== CENÍK OBSAHU ===== -->
     <section class="content" id="obsah" aria-labelledby="content-title">
-      <div class="ledger__head">
-        <span>{p.stepContent.eyebrow}</span>
-        <span>ceny bez DPH</span>
+      <div class="sec-head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> {p.stepContent.eyebrow}</span>
+        <span class="sec-head__meta">ceny bez DPH</span>
       </div>
       <h2 id="content-title" class="content__title" set:html={p.stepContent.titleHtml}></h2>
       <p class="content__lead">{p.stepContent.lead}</p>
@@ -197,9 +198,9 @@ const stepColors = [
 
     <!-- ===== DLOUHODOBĚ ===== -->
     <section class="ret" aria-labelledby="ret-title">
-      <div class="ledger__head">
-        <span>{p.retainers.eyebrow}</span>
-        <span>měsíční spolupráce</span>
+      <div class="sec-head">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> {p.retainers.eyebrow}</span>
+        <span class="sec-head__meta">měsíční spolupráce</span>
       </div>
       <h2 id="ret-title" class="content__title" set:html={p.retainers.titleHtml}></h2>
       <p class="content__lead">{p.retainers.lead}</p>
@@ -218,9 +219,9 @@ const stepColors = [
 
     <!-- ===== SELF-CHECK ===== -->
     <section class="check-sec" aria-labelledby="check-title">
-      <div class="ledger__head">
-        <span>{p.selfCheck.eyebrow}</span>
-        <span class="check__meter" data-check-progress>
+      <div class="sec-head">
+        <span class="eyebrow"><span class="eyebrow__num">04</span> {p.selfCheck.eyebrow}</span>
+        <span class="sec-head__meta check__meter" data-check-progress>
           {p.selfCheck.progressTemplate.replace("{n}", "0").replace("{total}", String(p.selfCheck.items.length))}
         </span>
       </div>
@@ -248,9 +249,8 @@ const stepColors = [
 
     <!-- ===== MÝTY ===== -->
     <section class="myths-sec" aria-labelledby="myths-title">
-      <div class="ledger__head">
-        <span>{p.myths.eyebrow}</span>
-        <span></span>
+      <div class="sec-head">
+        <span class="eyebrow"><span class="eyebrow__num">05</span> {p.myths.eyebrow}</span>
       </div>
       <h2 id="myths-title" class="content__title" set:html={p.myths.titleHtml}></h2>
       <p class="content__lead">{p.myths.lead}</p>
@@ -266,9 +266,8 @@ const stepColors = [
 
     <!-- ===== FAQ ===== -->
     <section class="faq-sec" aria-labelledby="faq-title">
-      <div class="ledger__head">
-        <span>{p.faqHead.eyebrow}</span>
-        <span></span>
+      <div class="sec-head">
+        <span class="eyebrow"><span class="eyebrow__num">06</span> {p.faqHead.eyebrow}</span>
       </div>
       <h2 id="faq-title" class="content__title" set:html={p.faqHead.titleHtml}></h2>
       <div class="faq">
@@ -369,6 +368,15 @@ const stepColors = [
     padding-top: clamp(2.5rem, 6vw, 5rem);
     position: relative;
   }
+  /* .display — sdílené metriky hero titulků webu (vzor homepage). */
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    font-size: clamp(2.25rem, 6.5vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+  }
+  .display :global(strong) { font-weight: 600; color: var(--color-ink); }
   .hero::before {
     content: "";
     position: absolute;
@@ -379,29 +387,20 @@ const stepColors = [
     pointer-events: none;
     z-index: -1;
   }
-  .hero__kicker {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-ink-faint);
-    display: flex;
-    gap: 1rem;
+  .hero__intro {
+    display: inline-flex;
     align-items: center;
-    margin: 0;
-  }
-  .hero__kicker::after { content: ""; flex: 1; height: 1px; background: var(--color-rule); }
-  .hero__title {
+    gap: 0.625rem;
     font-family: var(--font-sans);
-    font-weight: 250;
-    font-size: clamp(2.3rem, 6vw, 4.9rem);
-    line-height: 1.03;
-    letter-spacing: -0.045em;
-    margin: 1.5rem 0 0;
-    max-width: 20ch;
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    padding: 0.45rem 0.875rem;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
   }
-  .hero__title :global(strong) { font-weight: 600; }
-  .hero__title :global(.u) { box-shadow: inset 0 -0.14em 0 oklch(0.52 0.18 250 / 0.28); }
+  .hero__intro-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+  .hero__title { margin: 2.25rem 0 0; max-width: 18ch; }
   .hero__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -467,13 +466,14 @@ const stepColors = [
   /* ============ KROKY ============ */
   .steps { margin-top: clamp(4.5rem, 10vw, 8rem); }
   .steps__intro {
+    margin-top: 1.4rem;
     font-family: var(--font-sans);
     font-weight: 250;
     font-size: clamp(1.9rem, 4vw, 3.1rem);
     letter-spacing: -0.04em;
     line-height: 1.05;
     max-width: 22ch;
-    margin: 0;
+    margin-bottom: 0;
   }
   .steps__intro :global(strong) { font-weight: 600; }
   .step {
@@ -572,11 +572,14 @@ const stepColors = [
   .crow__price small { font-size: 0.58em; color: var(--color-ink-faint); }
   .crow__analysis { display: block; font-family: var(--font-mono); font-size: 0.66rem; color: var(--color-ink-faint); margin-top: 0.2rem; }
   .crow--compare { margin-top: 2.25rem; border-top: 1px solid var(--color-rule); }
-  .content .ledger__head span:first-child { color: var(--color-aeo); }
-  .ret .ledger__head span:first-child { color: var(--color-seo); }
-  .check-sec .ledger__head span:first-child { color: var(--color-geo); }
-  .myths-sec .ledger__head span:first-child { color: var(--color-signal); }
-  .faq-sec .ledger__head span:first-child { color: var(--color-aio); }
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .sec-head__meta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-faint); }
+  /* číslo eyebrow nese barvu sekce (systémový .eyebrow zůstává netknutý) */
+  .content .eyebrow__num { color: var(--color-aeo); }
+  .ret .eyebrow__num { color: var(--color-seo); }
+  .check-sec .eyebrow__num { color: var(--color-geo); }
+  .myths-sec .eyebrow__num { color: var(--color-signal); }
+  .faq-sec .eyebrow__num { color: var(--color-aio); }
   .analysis { margin-top: 2.25rem; border-left: 3px solid var(--color-aeo); background: var(--color-aeo-tint); border-radius: 0 10px 10px 0; padding: 1.2rem 1.5rem; max-width: 46rem; }
   .analysis h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.4rem; letter-spacing: -0.012em; }
   .analysis p { font-size: 0.92rem; color: var(--color-ink-muted); margin: 0; }
