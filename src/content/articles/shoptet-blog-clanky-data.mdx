@@ -1,0 +1,164 @@
+---
+title: "Blog na Shoptetu: strukturovaná data má jen třetina"
+description: "Měření 30 článků na Shoptetu: 11 má NewsArticle, datum vydání i aktualizace a canonical. U 19 se ta kombinace neobjevila; jeden další nesl jen typ Article."
+answer: "Změřil jsem 30 blogových článků na e-shopech běžících na Shoptetu. Jedenáct z nich mělo kombinaci NewsArticle, data vydání i aktualizace a rel=canonical. Devatenáct nemělo z téhle čtveřice ani jednu položku; jeden další článek nesl jen typ Article, bez dat i bez canonicalu. Ve všech třiceti stálo v meta name=author jméno e-shopu, ne konkrétní osoby."
+slug: "shoptet-blog-clanky-data"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "obsah"
+published: "2026-08-08"
+updated: "2026-08-08"
+keywords:
+  - "shoptet blog"
+  - "shoptet článek schema"
+  - "newsarticle blogposting"
+  - "autor článku eshop"
+  - "datum aktualizace článku"
+variant: "rich"
+stats:
+  - value: "11 / 30"
+    label: "měřených článků s kombinací NewsArticle, obou dat a canonicalu"
+  - value: "0 / 30"
+    label: "měřených článků, kde je v meta name=author jméno konkrétní osoby"
+  - value: "3 / 30"
+    label: "měřených článků se zbytky atributů z chatového rozhraní v HTML"
+faq:
+  - q: "Má článek na Shoptetu pole pro autora?"
+    a: "Podle nápovědy Shoptetu ne. Článek má název, adresu, text, rubriku, datum zveřejnění, externí odkaz, náhledový obrázek a pole pro vyhledávače. Autor mezi nimi není a měření to potvrzuje: ve všech třiceti měřených článcích je jako autor uvedený název e-shopu, nikdy konkrétní člověk."
+  - q: "Vidí návštěvník datum aktualizace?"
+    a: "Tohle měření neověřovalo, jestli návštěvník někde vidí zvlášť datum aktualizace. Zjistil jsem jen, že ve strukturovaných datech je dateModified u jedenácti z třiceti článků a u pěti z nich se liší od data vydání. Co ten rozdíl vyvolalo, jsem neměřil. Nastavení rubriky mimochodem umožňuje datum zveřejnění ve výpisu naopak skrýt."
+  - q: "Proč mají články NewsArticle a ne BlogPosting?"
+    a: "Ve vzorku se tam, kde strukturovaná data byla, objevil typ NewsArticle jedenáctkrát a Article jednou; BlogPosting ani jednou. Jestli je NewsArticle pro radu typu jak vybrat granule nejvýstižnější typ, tohle měření samo neřeší. Pro praxi je důležitější jiná věc: většina měřených článků neměla ani tenhle základní balík dat."
+  - q: "Proč má jen třetina článků strukturovaná data?"
+    a: "To z měření nevyplývá. Vím jen, že rozdělení je binární: jedenáct článků má NewsArticle, obě data i canonical, devatenáct nemá z téhle čtveřice nic a smíšený případ se neobjevil; jeden článek nesl navíc jen typ Article. Vypadá to na dvě generace šablony nebo na nastavení, ale příčinu jsem zvenku neověřil."
+  - q: "Co jsou zbytky atributů z chatového rozhraní?"
+    a: "Ve třech článcích ze třiceti jsou v HTML atributy jako data-start, data-end nebo data-message-author-role, u jednoho z nich dvě stě sedmdesát čtyřikrát. Velmi pravděpodobně pocházejí z vložení odpovědi z chatového rozhraní přes schránku i s doprovodným kódem. Neznamená to, že text psal model — znamená to, jakou cestou se do e-shopu dostal."
+  - q: "Jsou data v článku ve správném formátu?"
+    a: "Ta v microdatech ano, u všech jedenácti. Horší je atribut datetime u zobrazeného data: z dvaceti tří článků, které ho mají, začíná strojově čitelnou hodnotou jen patnáct. U zbylých osmi jsem našel nevyhovující zápis, typicky český tvar jako 22.3.2026."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+U blogových článků na Shoptetu se ve vzorku neukázalo postupné zlepšování, ale **dvě oddělené větve**. Jedenáct z třiceti článků mělo strukturovaná data, datum vydání i aktualizace a canonical. Devatenáct z téhle čtveřice nemělo nic.
+
+Poslední díl bloku měl původně čekat na odpovědi z administrace: má článek pole pro autora a vidí návštěvník datum aktualizace? Odpověděla nápověda Shoptetu.
+
+## Co říká <span class="hl">nápověda</span>
+
+Podle dokumentace má článek pole pro název, adresu, text, rubriku, **datum zveřejnění** (jde naplánovat dopředu), externí odkaz, náhledový obrázek a SEO pole. **Pole pro autora ani pro datum aktualizace tam uvedené není.** Rubrika navíc umí datum zveřejnění ve výpisu skrýt.
+
+Cestou jsem narazil na cizí text, podle kterého mají blogové články na Shoptetu automaticky schema včetně data publikace, autora, publishera i obrázku. **Měření to v téhle podobě nepotvrdilo:** kombinaci `NewsArticle`, obou dat a canonicalu jsem našel u 11 z 30 článků, jeden další nesl typ `Article`. Bez kontroly vlastního zdroje tedy nejde předpokládat, že to váš blog řeší sám.
+
+## Vzorek
+
+Stejných **47 e-shopů** jako v předchozích dílech. Blogovou rubriku jsem našel u 33 z nich, konkrétní článek u **30**. Jedna adresa článku na e-shop, domény neuvádím.
+
+<Insight tone="signal" icon="?" label="Metodická oprava prvního průchodu">
+V prvním průchodu skript chybně zaměnil výpis rubriky za článek, protože obě stránky sdílejí stejnou třídu v `<body>`. Odhalila to až kontrola hloubky adresy — třicet ze třiceti tří „článků" mělo adresu tvaru `/blog/`. Měření jsem opravil a celé zopakoval; čísla níž jsou už z opraveného průchodu.
+
+Stojí za zmínku jedno: skript doběhl bez jediné chybové hlášky. Chybu odhalila až kontrola výstupu proti něčemu, co jsem věděl předem.
+</Insight>
+
+## Hlavní nález: všechno, nebo nic
+
+| Zjištění na článku | Počet |
+|---|---|
+| má typ `NewsArticle` | **11 z 30** |
+| má typ `Article` | 1 z 30 |
+| má typ `BlogPosting` | **0 z 30** |
+| **nemá ani jeden z nich** | **18 z 30** |
+
+Zajímavější než ta čísla je ale to, jak se skládají dohromady:
+
+| Kombinace | Počet |
+|---|---|
+| strukturovaná data **i** `rel=canonical` | **11** |
+| ani jedno | **19** |
+| jen strukturovaná data | **0** |
+| jen `canonical` | **0** |
+
+**Není to škála, je to přepínač.** Jedenáct článků se seskupilo do jedné větve: `NewsArticle`, datum vydání, datum aktualizace i `canonical`. U zbylých devatenácti se ta kombinace neobjevila ani zčásti a smíšený případ ve vzorku nebyl. Mimo tuhle dvojici stojí jeden článek s typem `Article`, ale bez dat i bez canonicalu.
+
+Praktický závěr je jednoduchý: **nepočítejte s tím, že Shoptet blogová data řeší za vás.** Otevřete zdroj jednoho vlastního článku a během minuty zjistíte, ve které větvi jste.
+
+<Insight tone="warn" icon="!" label="Příčinu neznám">
+Vypadá to na dvě generace šablony nebo na nastavení, které to zapíná. **Zvenku jsem to neověřil a netvrdím to.** Pro majitele e-shopu z toho ale plyne konkrétní věc: otevřít zdroj vlastního článku a podívat se, na které straně té čáry stojíte. Není to postupné zlepšování — je to ano, nebo ne.
+</Insight>
+
+## Autor je vždycky e-shop
+
+| Zjištění | Počet |
+|---|---|
+| `<meta name="author">` | **30 z 30** — vždy název e-shopu |
+| `itemprop="author"` | 7 z 30 |
+| **jméno konkrétní osoby v `meta name="author"`** | **0 z 30** |
+
+S nápovědou to sedí: dokumentace pole pro autora neuvádí a ve vzorku se do `meta name="author"` vždy propsal název e-shopu. Pro obsah, u kterého má na důvěryhodnosti záležet zkušenost konkrétního člověka, je to strop — a [autorský profil pro AI](/blog/autorsky-profil-pro-ai/) se na Shoptetu bez zásahu do šablony nedá postavit tak, jak by měl. Rozhodnutí je i tady binární: buď přijmete, že autorem v datech bude značka, nebo si necháte upravit šablonu.
+
+## Datum: v datech dobře, v HTML někdy špatně
+
+`datePublished` i `dateModified` mají všechny články, které vůbec strukturovaná data nesou — a ve správném strojovém tvaru. **Horší je viditelné datum:**
+
+| Zjištění | Počet |
+|---|---|
+| článek má prvek `<time datetime="…">` | 23 z 30 |
+| hodnota začíná datem ve tvaru `RRRR-MM-DD` | **15 z 23** |
+| hodnota, která tomu tvaru neodpovídá (typicky `22.3.2026`) | **8 z 23** |
+
+Atribut `datetime` má nést strojově čitelnou hodnotu data nebo data a času. Česky zapsané `22.3.2026` tuhle podmínku nesplňuje — pro člověka je to čitelné, pro parser ne.
+
+Ještě jedna věc: `dateModified` se u pěti z jedenácti liší od data vydání. **Co ten rozdíl vyvolalo, jsem neměřil** a nedělám z toho závěr o tom, jak čerstvý ten obsah je.
+
+## Vedlejší nález: stopy po vložení z chatu
+
+Tohle jsem nehledal. Ve **3 z 30 článků** zůstaly v HTML atributy jako `data-start`, `data-end` a `data-message-author-role` — u jednoho z nich **274krát**.
+
+Tyhle atributy velmi pravděpodobně pocházejí z toho, že se odpověď z chatového rozhraní zkopírovala do schránky a vložila do editoru i s doprovodným kódem rozhraní.
+
+<Insight tone="aio" icon="i" label="Co to dokazuje a co ne">
+**Nedokazuje to, že text psal model.** Ukazuje to na cestu, kterou se text do e-shopu dostal: přes schránku z chatového rozhraní, bez očištění. Ve vzorku šlo o 3 z 30 článků. Kdo takhle publikuje, má v HTML kód, který tam nepatří, a v redakčním systému balast, se kterým se pak hůř pracuje.
+</Insight>
+
+## Další naměřené signály
+
+Přesně jeden `h1` má 27 z 30 článků, tři jich mají víc; `meta robots` je `index,follow` u všech třiceti. Délka textu se mezi e-shopy hodně liší: medián **1 426 slov**, čtvrtina pod 831 a čtvrtina nad 2 542.
+
+<MistakeGrid>
+<Mistake number="01" title="Předpokládat, že blog data prostě má">
+Ve vzorku je mělo 11 z 30. A protože je to přepínač, nezjistíte to od oka — musíte se podívat do zdroje. Cizí tvrzení, že „Shoptet to dělá automaticky", platí pro necelou třetinu.
+</Mistake>
+
+<Mistake number="02" title="Stavět E-E-A-T na autorovi, kterého platforma neumí">
+Pole pro autora článek nemá a ve všech třiceti měřených článcích je jako autor název e-shopu. Jméno člověka do dat bez zásahu do šablony nedostanete.
+</Mistake>
+
+<Mistake number="03" title="Vkládat text z chatu přes schránku">
+Vezme s sebou atributy rozhraní. Ve třech článcích ze třiceti tam zůstaly, jednou v počtu 274. Vkládejte jako čistý text a formátujte až v editoru.
+</Mistake>
+</MistakeGrid>
+
+<Checklist tone="geo" title="Co si ověřit na vlastním blogu, v tomhle pořadí" items={[
+  { title: "Zjistit, ve které větvi váš článek je", desc: "Otevřít zdroj a hledat NewsArticle. Buď tam je i s daty a canonicalem, nebo tam z téhle čtveřice není nic." },
+  { title: "Rozhodnout se u autora", desc: "Buď vám stačí značka, nebo chcete jméno člověka — a to je úprava šablony, ne políčko v administraci." },
+  { title: "Opravit datetime, pokud je v českém tvaru", desc: "Osm z 23 měřených článků tam mělo zápis, který parser nepřečte." },
+  { title: "Vyčistit HTML od atributů po vložení z chatu", desc: "Hledejte data-start a data-message. Vkládejte jako čistý text a formátujte až v editoru." },
+  { title: "Zkontrolovat nadpisovou osnovu", desc: "Ve vzorku mělo 27 z 30 článků přesně jeden h1. Tři měly víc." },
+]} />
+
+<Insight tone="aio" icon="i" label="Limity měření">
+30 článků a **jeden na e-shop** — jiný článek téhož blogu může vypadat jinak, hlavně u délky a nadpisů. Měřil jsem **jeden den, 8. srpna 2026**. Příčinu binárního rozdělení jsem neověřoval. Blog, na který z homepage nevede odkaz, mi unikl — u 14 e-shopů jsem rubriku nenašel. A neměřil jsem, jestli AI systémy s těmi daty vůbec pracují; vím, co je v HTML.
+</Insight>
+
+## Konec bloku
+
+Za pět dílů se opakovalo totéž: o výsledku nerozhodují jemné nuance v nastavení, ale několik tvrdých limitů platformy a šablony. U blogu je to vidět nejlíp — buď je článek v technicky lépe vybavené větvi, nebo není, a mezistupeň neexistuje.
+
+Jestli si z celé série máte odnést jednu věc: **otevřete si ve zdroji jeden produkt, jednu stránku filtrů a jeden článek.** Za půl hodiny poznáte, co je jen provozní nedodělek a co už bez úpravy šablony neobejdete.
+
+Předchozí díly: [formát strukturovaných dat](/blog/shoptet-strukturovana-data-mereni/), [robots.txt a AI roboti](/blog/shoptet-robots-txt-ai-roboti/), [produktová pole proti požadavkům Googlu](/blog/shoptet-produktova-pole-google/) a [filtry se stránkováním](/blog/shoptet-filtry-strankovani/).
+
+Souvislosti mimo platformu řeší [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/) a [jak často aktualizovat obsah](/blog/aktualizace-obsahu-pro-ai/).

@@ -1,0 +1,51 @@
+E-SHOPŮ: 47 · rubrika nalezena: 33 · ČLÁNEK nalezen: 30
+
+=== kontrola kvality: hloubka URL ===
+  podezřelých (mělká adresa): 0 []
+
+=== STRUKTUROVANÁ DATA ČLÁNKU ===
+  NewsArticle  11 / 30
+  Article      1 / 30
+  BlogPosting  0 / 30
+  žádný z nich: 18 / 30
+
+=== DATA ===
+  datePublished : 11 / 30 · ISO: 11
+  dateModified  : 11 / 30 · ISO: 11
+  dateModified ≠ datePublished: 5
+  <time datetime>: 23 / 30 · z toho ISO: 15
+  neISO hodnoty: ['22.3.2026', '20.7.2026', '19.7.2017', '14.10.2018', '16.3.2026', '2014-11-19']
+
+=== AUTOR ===
+  meta name=author : 30 / 30
+  itemprop=author  : 7 / 30
+
+=== NADPISY / CANONICAL / DÉLKA ===
+  h1 počty : {1: 27, 3: 2, 2: 1}
+  h2: min 1 · medián 6 · max 125
+  canonical: 11 / 30
+  robots   : {'index,follow': 30}
+  slov: min 250 · medián 1426 · max 25215
+
+=== STOPY PO VLOŽENÍ Z CHATU ===
+  článků se stopami: 3 / 30
+    levanduloveudoli.cz {'data-message-author-role': 1, 'data-start=': 2, 'data-end=': 2, 'data-message-id': 1}
+    madvell.cz {'data-start=': 23, 'data-end=': 23}
+    super-granule.cz {'data-start=': 274, 'data-end=': 274}
+
+=== KORELACE: NewsArticle vs canonical vs data ===
+  NewsArticle + canonical  : 11
+  ani jedno                : 19
+  jen NewsArticle          : 0
+  jen canonical            : 0
+
+=== a datum? ===
+  NewsArticle + datePublished: 11
+  bez NewsArticle + datePublished: 0
+
+=== itemprop=author tam, kde je NewsArticle? ===
+  NewsArticle + itemprop author: 5
+  itemprop author celkem       : 7
+
+=== délka článků ===
+  kvartily: 831 1426 2542 · max 25215

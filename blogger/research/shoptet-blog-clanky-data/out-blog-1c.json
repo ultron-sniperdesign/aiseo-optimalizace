@@ -1,0 +1,621 @@
+[
+ {
+  "label": "anela.cz",
+  "base": "https://www.anela.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.anela.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "Anela.cz",
+   "itemprop_author": false,
+   "time_values": [
+    "2026-06-02 18:00:00",
+    "2026-05-26 18:00:00",
+    "2026-05-19 18:00:00"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 15,
+    "h3": 5
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 1142
+  }
+ },
+ {
+  "label": "angrybeards.cz",
+  "base": "https://www.angrybeards.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.angrybeards.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "angrybeards.cz",
+   "itemprop_author": false,
+   "time_values": [
+    "2025-10-22 07:50:00",
+    "2025-09-24 06:00:00",
+    "2025-09-17 10:00:00"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 11,
+    "h3": 10
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 1235
+  }
+ },
+ {
+  "label": "autodoplnky-obchod.cz",
+  "base": "https://www.autodoplnky-obchod.cz",
+  "pages_checked": 1,
+  "rubrika": "/blog/",
+  "article": null
+ },
+ {
+  "label": "baavi.cz",
+  "base": "https://www.baavi.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.baavi.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "BaaVi.cz",
+   "itemprop_author": false,
+   "time_values": [
+    "2023-04-10 00:00:01",
+    "2023-04-03 00:00:01",
+    "2023-03-26 23:31:51"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 6,
+    "h3": 5
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 556
+  }
+ },
+ {
+  "label": "cistedrevo.cz",
+  "base": "https://www.cistedrevo.cz",
+  "pages_checked": 2,
+  "rubrika": "/magazin",
+  "article": {
+   "url": "https://www.cistedrevo.cz/magazin/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "AggregateRating",
+    "Organization",
+    "Product"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "ČistéDřevo.cz",
+   "itemprop_author": false,
+   "time_values": [
+    "2026-05-27 08:00:00",
+    "2026-05-20 08:00:00",
+    "2026-05-13 08:00:00"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 125,
+    "h3": 39
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 15975
+  }
+ },
+ {
+  "label": "drevenysvet.online",
+  "base": "https://www.drevenysvet.online",
+  "pages_checked": 0,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "film-technika.com",
+  "base": "https://www.film-technika.com",
+  "pages_checked": 0,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "gigamat.cz",
+  "base": "https://www.gigamat.cz",
+  "pages_checked": 1,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "giovani.cz",
+  "base": "https://www.giovani.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.giovani.cz/blog/strana-2/",
+   "micro_types": [
+    "Answer",
+    "BreadcrumbList",
+    "FAQPage",
+    "ListItem",
+    "Person",
+    "Question",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "Giovani.cz",
+   "itemprop_author": true,
+   "time_values": [
+    "2025-12-19 12:00:00",
+    "2025-12-19 07:00:00",
+    "2025-12-12 08:00:00"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 41,
+    "h3": 43
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 5386
+  }
+ },
+ {
+  "label": "hobynaradi.cz",
+  "base": "https://www.hobynaradi.cz",
+  "pages_checked": 3,
+  "rubrika": "/magazin/",
+  "article": {
+   "url": "https://www.hobynaradi.cz/magazin/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "Person",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "HobyNaradi.cz",
+   "itemprop_author": true,
+   "time_values": [],
+   "time_iso_ok": null,
+   "headings": {
+    "h1": 1,
+    "h2": 14,
+    "h3": 3
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 2485
+  }
+ },
+ {
+  "label": "konzoliste.cz",
+  "base": "https://www.konzoliste.cz",
+  "pages_checked": 2,
+  "rubrika": "/magazin/",
+  "article": {
+   "url": "https://www.konzoliste.cz/magazin/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "AggregateRating",
+    "Organization",
+    "Product"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "KONZOLIŠTĚ.cz",
+   "itemprop_author": false,
+   "time_values": [
+    "2026-04-08 09:35:16",
+    "2026-04-01 10:00:00",
+    "2026-03-28 08:00:00"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 4,
+    "h3": 3
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 1426
+  }
+ },
+ {
+  "label": "kulina.cz",
+  "base": "https://www.kulina.cz",
+  "pages_checked": 0,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "levanduloveudoli.cz",
+  "base": "https://www.levanduloveudoli.cz",
+  "pages_checked": 3,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.levanduloveudoli.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Answer",
+    "FAQPage",
+    "Organization",
+    "Question"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "Levandulové údolí",
+   "itemprop_author": false,
+   "time_values": [],
+   "time_iso_ok": null,
+   "headings": {
+    "h1": 1,
+    "h2": 5,
+    "h3": 12
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {
+    "data-message-author-role": 1,
+    "data-start=": 2,
+    "data-end=": 2,
+    "data-message-id": 1
+   },
+   "text_words": 912
+  }
+ },
+ {
+  "label": "madvell.cz",
+  "base": "https://www.madvell.cz",
+  "pages_checked": 2,
+  "rubrika": "/zajimavosti-a-rady/",
+  "article": {
+   "url": "https://www.madvell.cz/zajimavosti-a-rady/nejprodavanejsi-damske-chytre-hodinky-v-roce-2026/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ImageObject",
+    "ListItem",
+    "NewsArticle",
+    "Organization",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": "2026-05-20T10:00:00+0200",
+   "datePublished_iso": true,
+   "dateModified": "2026-05-20T11:00:34+0200",
+   "dateModified_iso": true,
+   "meta_author": "Madvell",
+   "itemprop_author": false,
+   "time_values": [],
+   "time_iso_ok": null,
+   "headings": {
+    "h1": 3,
+    "h2": 6,
+    "h3": 4
+   },
+   "canonical": "https://www.madvell.cz/zajimavosti-a-rady/nejprodavanejsi-damske-chytre-hodinky-v-roce-2026/",
+   "robots_meta": "index,follow",
+   "paste_artifacts": {
+    "data-start=": 23,
+    "data-end=": 23
+   },
+   "text_words": 565
+  }
+ },
+ {
+  "label": "nanospace.cz",
+  "base": "https://www.nanospace.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.nanospace.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "nanoSPACE",
+   "itemprop_author": false,
+   "time_values": [
+    "2026-06-10 17:30:22",
+    "2026-06-10 17:23:37",
+    "2026-06-10 17:11:50"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 5,
+    "h3": 7
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 1477
+  }
+ },
+ {
+  "label": "nasegalanterie.cz",
+  "base": "https://www.nasegalanterie.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.nasegalanterie.cz/blog/vyhradni-zastoupeni/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ImageObject",
+    "ListItem",
+    "NewsArticle",
+    "Organization",
+    "Person",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": "2026-03-22T19:23:47+0100",
+   "datePublished_iso": true,
+   "dateModified": "2026-03-23T12:30:06+0100",
+   "dateModified_iso": true,
+   "meta_author": "Naše Galanterie s.r.o",
+   "itemprop_author": true,
+   "time_values": [
+    "22.3.2026"
+   ],
+   "time_iso_ok": false,
+   "headings": {
+    "h1": 3,
+    "h2": 10,
+    "h3": 3
+   },
+   "canonical": "https://www.nasegalanterie.cz/blog/vyhradni-zastoupeni/",
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 3357
+  }
+ },
+ {
+  "label": "nemeckyeshop.cz",
+  "base": "https://www.nemeckyeshop.cz",
+  "pages_checked": 1,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "nonstopstavebniny.cz",
+  "base": "https://www.nonstopstavebniny.cz",
+  "pages_checked": 0,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "olivie.cz",
+  "base": "https://www.olivie.cz",
+  "pages_checked": 2,
+  "rubrika": "/rubriky/blog/",
+  "article": {
+   "url": "https://www.olivie.cz/rubriky/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "Šperky Olivie.cz",
+   "itemprop_author": false,
+   "time_values": [],
+   "time_iso_ok": null,
+   "headings": {
+    "h1": 1,
+    "h2": 7,
+    "h3": 1
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 1608
+  }
+ },
+ {
+  "label": "outdoorstuff.cz",
+  "base": "https://www.outdoorstuff.cz",
+  "pages_checked": 3,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "pff.cz",
+  "base": "https://www.pff.cz",
+  "pages_checked": 0,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "pocitarna.cz",
+  "base": "https://www.pocitarna.cz",
+  "pages_checked": 2,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.pocitarna.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "POČÍTÁRNA.CZ",
+   "itemprop_author": false,
+   "time_values": [
+    "2026-02-16 13:17:29",
+    "2026-02-14 09:56:36",
+    "2026-02-13 09:43:27"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 5,
+    "h3": 4
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 2542
+  }
+ },
+ {
+  "label": "profi-dj.cz",
+  "base": "https://www.profi-dj.cz",
+  "pages_checked": 0,
+  "rubrika": null,
+  "article": null
+ },
+ {
+  "label": "prohackovani.cz",
+  "base": "https://www.prohackovani.cz",
+  "pages_checked": 6,
+  "rubrika": "/blog/",
+  "article": {
+   "url": "https://www.prohackovani.cz/blog/strana-2/",
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "SearchAction",
+    "WebSite"
+   ],
+   "ld_types": [
+    "Organization"
+   ],
+   "datePublished": null,
+   "datePublished_iso": false,
+   "dateModified": null,
+   "dateModified_iso": false,
+   "meta_author": "prohackovani.cz",
+   "itemprop_author": false,
+   "time_values": [
+    "2026-05-26",
+    "2026-05-26",
+    "2026-04-14"
+   ],
+   "time_iso_ok": true,
+   "headings": {
+    "h1": 1,
+    "h2": 5,
+    "h3": 10
+   },
+   "canonical": null,
+   "robots_meta": "index,follow",
+   "paste_artifacts": {},
+   "text_words": 2702
+  }
+ }
+]
