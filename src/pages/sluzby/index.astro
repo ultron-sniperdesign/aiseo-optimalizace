@@ -2,149 +2,342 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
 import ProofStrip from "~/components/blocks/ProofStrip.astro";
-import { getCollection } from "astro:content";
+import * as p from "~/content/pages/sluzby";
+import { buildFaqJsonLd } from "~/lib/jsonld";
 
-const meta = {
-  title: "Služby — kompletní AI SEO pro váš web | aiseo-optimalizace.cz",
-  description:
-    "Od auditu po dlouhodobou správu. 14 služeb pro SEO v AI éře — audit, GEO obsah, technická úprava, monitoring AI viditelnosti, off-page a další.",
-};
+/**
+ * /sluzby/ — kompletní nabídka SEO pro AI (obsah: content/pages/sluzby.ts).
+ *
+ * Přestavba 2026-08: index už není katalog interní kolekce `services`, ale
+ * prezentace finální nabídky (balíčky → audit → moduly → obsah → měření →
+ * retainery → self-check → mýty → FAQ). Detailní stránky /sluzby/<slug>/
+ * z kolekce zůstávají beze změny ([slug].astro) — odkazujeme na ně tam,
+ * kde do nabídky mapují (retainery).
+ */
+const jsonLd = [buildFaqJsonLd(p.faq), p.offerCatalogJsonLd];
 
-const hero = {
-  intro: "Komplet služeb od Sniper Design",
-  title:
-    '<strong>Pomáháme webům</strong>, aby je <span class="hl">citovala AI</span>.',
-  lead:
-    "Od auditu po dlouhodobou správu. 14 služeb, které z vašeho webu udělají zdroj, který si ChatGPT, Perplexity i Google AI Overviews vyberou k citaci. Začněte auditem a pak řešte jen to, co dává smysl pro váš web.",
-};
-
-const bucketDefs = [
-  {
-    key: "audit-strategie",
-    num: "01",
-    eyebrow: "Audit & strategie",
-    title: 'Pochopit, kde stojíte a <strong>kam zamířit</strong>.',
-    lead: "Vstupní vrstva — než investujete do realizace, ujasněte si plán.",
-  },
-  {
-    key: "obsah-pro-ai",
-    num: "02",
-    eyebrow: "Obsah pro AI",
-    title: 'Aby AI mělo <strong>co citovat</strong>.',
-    lead: "Citovatelný obsah — answer blocky, fakt-density, srovnání. Píšeme s lidskou redakcí, ne masově.",
-  },
-  {
-    key: "technika-mereni",
-    num: "03",
-    eyebrow: "Technika & měření",
-    title: 'Strojově čitelný web + <strong>data, jestli to funguje</strong>.',
-    lead: "Schema, crawlery, indexace, GA4 tracking AI traffic. Infrastrukturní vrstva, na které stojí všechno ostatní.",
-  },
-  {
-    key: "rust-autorita",
-    num: "04",
-    eyebrow: "Růst & autorita",
-    title: 'Dlouhodobé retainery a <strong>důkaz ROI</strong>.',
-    lead: "SEO správa, monitoring AI viditelnosti, off-page program, autorita a freshness. Páteř dlouhodobé spolupráce.",
-  },
-  {
-    key: "doplnky",
-    num: "05",
-    eyebrow: "Doplňky",
-    title: 'Když chcete <strong>dělat víc sami</strong>.',
-    lead: "Školení interního týmu, aby SEO pro AI uměli vaši lidé v rutině.",
-  },
-];
-
-const personaIcon: Record<string, string> = { eshop: "🛒", firemni: "🏢" };
-const personaLabel: Record<string, string> = { eshop: "E-shop", firemni: "Firemní web" };
-const typeLabel: Record<string, string> = {
-  vstupni: "Vstupní",
-  jednorazova: "Jednorázová",
-  mesicni: "Měsíční retainer",
-  addon: "Doplněk",
-};
-
-// Načti všechny služby + seskup podle bucketu
-const all = await getCollection("services");
-const byBucket = (key: string) =>
-  all.filter((s) => s.data.bucket === key).sort((a, b) => a.data.order - b.data.order);
+const impactFire = (n: number) => "🔥".repeat(n);
+const impactLabel: Record<number, string> = { 3: "velký vliv", 2: "střední vliv", 1: "menší vliv" };
+const contactHref = (slug: string) => `/kontakt/?sluzba=${slug}`;
 ---
 
-<BaseLayout title={meta.title} description={meta.description} image="/og/default.jpg">
-  <!-- HERO -->
-  <section class="sluzby-hero">
-    <span class="sluzby-hero__intro">{hero.intro}</span>
-    <h1 class="display sluzby-hero__title" set:html={hero.title}></h1>
-    <p class="lead sluzby-hero__lead">{hero.lead}</p>
-  </section>
+<BaseLayout
+  title={p.meta.title}
+  description={p.meta.description}
+  image={p.meta.ogImage}
+  jsonLd={jsonLd}
+  breadcrumb={[{ label: "Služby", href: "/sluzby/" }]}
+>
+  <div class="sl">
+    <!-- ===== HERO ===== -->
+    <section class="sluzby-hero">
+      <span class="sluzby-hero__intro">{p.hero.intro}</span>
+      <h1 class="display sluzby-hero__title" set:html={p.hero.title}></h1>
+      <p class="lead sluzby-hero__lead">{p.hero.lead}</p>
+      <ul class="sluzby-hero__chips" role="list">
+        {p.hero.chips.map((c) => <li>{c}</li>)}
+      </ul>
+    </section>
 
-  <!-- BUCKETY -->
-  {bucketDefs.map((b) => {
-    const items = byBucket(b.key);
-    if (items.length === 0) return null;
-    return (
-      <section class="bucket" id={`bucket-${b.key}`}>
-        <header class="bucket__head">
-          <span class="eyebrow"><span class="eyebrow__num">{b.num}</span> {b.eyebrow}</span>
-          <h2 class="bucket__title" set:html={b.title} />
-          <p class="bucket__lead">{b.lead}</p>
+    <!-- ===== 01 JAK TO FUNGUJE ===== -->
+    <section class="sl-section" aria-labelledby="funnel-title">
+      <header class="sl-head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.funnel.eyebrowNum}</span> {p.funnel.eyebrow}</span>
+        <h2 id="funnel-title" class="sl-title" set:html={p.funnel.title}></h2>
+        <p class="sl-lead">{p.funnel.lead}</p>
+      </header>
+      <ol class="funnel" role="list">
+        {p.funnel.steps.map((s) => (
+          <li class="funnel__step">
+            <span class="funnel__num">{s.num}</span>
+            <span class="funnel__label">{s.label}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="funnel__note">{p.funnel.note}</p>
+    </section>
+
+    <!-- ===== 02 BALÍČKY ===== -->
+    <section class="sl-section sl-section--alt" aria-labelledby="packages-title" id="balicky">
+      <div class="sl-section__inner">
+        <header class="sl-head">
+          <span class="eyebrow"><span class="eyebrow__num">{p.packagesSection.eyebrowNum}</span> {p.packagesSection.eyebrow}</span>
+          <h2 id="packages-title" class="sl-title" set:html={p.packagesSection.title}></h2>
+          <p class="sl-lead">{p.packagesSection.lead}</p>
         </header>
 
-        <div class="cards">
-          {items.map((item) => {
-            // Detail jen pro hasDetailPage; ostatní karty vedou na kontakt
-            // s předvyplněnou službou (stejný pattern jako CTA na detailu).
-            // Bez toho karty bez detailu linkovaly na 404 /sluzby/<slug>/.
-            const href =
-              item.data.href ??
-              (item.data.hasDetailPage
-                ? `/sluzby/${item.data.slug}/`
-                : `/kontakt/?sluzba=${item.data.slug}`);
-            return (
-              <a href={href} class="card" data-bucket={b.key}>
-                <div class="card__chips">
-                  {item.data.personas.map((p) => (
-                    <span class="chip chip--persona" title={personaLabel[p]}>
-                      <span aria-hidden="true">{personaIcon[p]}</span> {personaLabel[p]}
-                    </span>
-                  ))}
-                  <span class={`chip chip--type chip--type-${item.data.type}`}>{typeLabel[item.data.type]}</span>
-                </div>
-                <h3 class="card__title">{item.data.name}</h3>
-                <p class="card__desc">{item.data.oneLine}</p>
-                <span class="card__cta">
-                  {item.data.hasDetailPage ? "Detail služby" : "Mám zájem"} <span aria-hidden="true">→</span>
-                </span>
+        <div class="packs">
+          {p.packages.map((pack) => (
+            <article class={`pack${pack.featured ? " pack--featured" : ""}`}>
+              {pack.badge && <span class="pack__badge">{pack.badge}</span>}
+              <h3 class="pack__name">{pack.name}</h3>
+              <p class="pack__for">{pack.forWhom}</p>
+              <p class="pack__price">{pack.price}</p>
+              <p class="pack__price-note">{pack.priceNote} · bez DPH</p>
+              <p class="pack__saving">
+                Běžná cena modulů {pack.regular} — <strong>ušetříte {pack.saving}</strong>
+              </p>
+              <ul class="pack__items" role="list">
+                {pack.itemsPrefix && <li class="pack__items-prefix">{pack.itemsPrefix}</li>}
+                {pack.items.map((i) => <li>{i}</li>)}
+              </ul>
+              <a href={contactHref(`balicek-${pack.featured ? "technicky" : pack.badge ? "max" : "zaklad"}`)} class={`sl-btn${pack.featured ? " sl-btn--accent" : ""}`}>
+                {pack.cta} <span aria-hidden="true">→</span>
               </a>
-            );
-          })}
+            </article>
+          ))}
         </div>
-      </section>
-    );
-  })}
-
-  <!-- FINÁLNÍ CTA -->
-  <section class="final-cta">
-    <div class="final-cta__inner">
-      <h2 class="final-cta__title">Nevíte, kde začít?</h2>
-      <p class="final-cta__lead">
-        <strong>Začněte auditem.</strong> Levný, konkrétní, dá vám prioritizovaný plán — a teprve pak se rozhodněte, co dál řešit s námi a co sami.
-      </p>
-      <div class="final-cta__btns">
-        <a href="/audit/" class="btn btn--primary">Objednat audit</a>
-        <a href="/kontakt/" class="btn btn--secondary">Napište nám</a>
+        <p class="sl-vat-note">{p.packagesSection.vatNote}</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROOF STRIP — 200 tis. zobrazení v AI odpovědích (trust prvek před pitch) -->
-  <ProofStrip />
-  <SniperDesignBigContact eyebrowNum="06" />
+    <!-- ===== 03 AUDIT ===== -->
+    <section class="sl-section" aria-labelledby="audit-title">
+      <header class="sl-head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.stepAudit.eyebrowNum}</span> {p.stepAudit.eyebrow}</span>
+        <h2 id="audit-title" class="sl-title" set:html={p.stepAudit.title}></h2>
+        <p class="sl-lead">{p.stepAudit.lead}</p>
+      </header>
+      <aside class="audit-card">
+        <div class="audit-card__body">
+          <span class="audit-card__tag">Vstupní služba · pevná cena</span>
+          <p class="audit-card__price">{p.stepAudit.price}</p>
+          <p class="audit-card__note">{p.stepAudit.priceNote}</p>
+          <p class="audit-card__for">{p.stepAudit.forWhom}</p>
+        </div>
+        <a href={p.stepAudit.ctaHref} class="sl-btn sl-btn--accent">
+          {p.stepAudit.cta} <span aria-hidden="true">→</span>
+        </a>
+      </aside>
+    </section>
+
+    <!-- ===== 04 TECHNICKÉ MODULY ===== -->
+    <section class="sl-section sl-section--alt" aria-labelledby="modules-title" id="moduly">
+      <div class="sl-section__inner">
+        <header class="sl-head">
+          <span class="eyebrow"><span class="eyebrow__num">{p.stepModules.eyebrowNum}</span> {p.stepModules.eyebrow}</span>
+          <h2 id="modules-title" class="sl-title" set:html={p.stepModules.title}></h2>
+          <p class="sl-lead">{p.stepModules.lead}</p>
+          <p class="sl-impact-legend">{p.stepModules.impactLegend}</p>
+        </header>
+
+        <div class="mods">
+          {p.modules.map((m) => (
+            <article class="mod">
+              <span class="mod__impact" title={impactLabel[m.impact]}>
+                <span aria-hidden="true">{impactFire(m.impact)}</span> {impactLabel[m.impact]}
+              </span>
+              <h3 class="mod__name">{m.name}</h3>
+              <p class="mod__desc">{m.desc}</p>
+              <div class="mod__foot">
+                <span class="mod__price">{m.price}{m.price.includes("Kč") ? " bez DPH" : ""}</span>
+                <a href={contactHref(m.slug)} class="mod__cta">Chci tento modul <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 05 OBSAH ===== -->
+    <section class="sl-section" aria-labelledby="content-title" id="obsah">
+      <header class="sl-head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.stepContent.eyebrowNum}</span> {p.stepContent.eyebrow}</span>
+        <h2 id="content-title" class="sl-title" set:html={p.stepContent.title}></h2>
+        <p class="sl-lead">{p.stepContent.lead}</p>
+      </header>
+
+      <aside class="analysis-note">
+        <h3 class="analysis-note__title">{p.stepContent.analysisTitle}</h3>
+        <p class="analysis-note__text" set:html={p.stepContent.analysisHtml}></p>
+      </aside>
+
+      {[p.categoryTiers, p.productTiers].map((group) => (
+        <div class="tier-group">
+          <h3 class="tier-group__title">{group.title}</h3>
+          <p class="tier-group__lead">{group.lead}</p>
+          <div class="tiers">
+            {group.tiers.map((t) => (
+              <article class={`tier${t.featured ? " tier--featured" : ""}`}>
+                {t.badge && <span class="pack__badge">{t.badge}</span>}
+                <h4 class="tier__name">{t.name}</h4>
+                <p class="tier__desc">{t.desc}</p>
+                <p class="tier__price">
+                  {t.unitPrice} <span class="tier__unit">/ {t.unit}</span>
+                </p>
+                <p class="tier__analysis">+ {t.analysis}</p>
+                <ul class="tier__items" role="list">
+                  {t.items.map((i) => (
+                    <li>
+                      {i.label} <span class="tier__impact" title={impactLabel[i.impact]} aria-label={impactLabel[i.impact]}>{impactFire(i.impact)}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={contactHref("obsah")} class={`sl-btn${t.featured ? " sl-btn--accent" : ""}`}>
+                  {t.cta} <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <aside class="compare-offer">
+        <div class="compare-offer__body">
+          <h3 class="compare-offer__title">{p.compareOffer.title}</h3>
+          <p class="compare-offer__lead">{p.compareOffer.lead}</p>
+        </div>
+        <div class="compare-offer__buy">
+          <p class="compare-offer__price">{p.compareOffer.price}</p>
+          <p class="compare-offer__note">{p.compareOffer.priceNote} · bez DPH</p>
+          <a href={contactHref(p.compareOffer.slug)} class="sl-btn sl-btn--accent">
+            {p.compareOffer.cta} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ===== 06 MĚŘENÍ ===== -->
+    <section class="sl-section sl-section--alt" aria-labelledby="measure-title">
+      <div class="sl-section__inner">
+        <header class="sl-head">
+          <span class="eyebrow"><span class="eyebrow__num">{p.measurement.eyebrowNum}</span> {p.measurement.eyebrow}</span>
+          <h2 id="measure-title" class="sl-title" set:html={p.measurement.title}></h2>
+          <p class="sl-lead">{p.measurement.lead}</p>
+        </header>
+        <div class="measure">
+          {p.measurement.items.map((m) => (
+            <article class="measure__item">
+              <h3 class="measure__name">{m.name}</h3>
+              <p class="measure__desc">{m.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 07 RETAINERY ===== -->
+    <section class="sl-section" aria-labelledby="retainers-title">
+      <header class="sl-head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.retainers.eyebrowNum}</span> {p.retainers.eyebrow}</span>
+        <h2 id="retainers-title" class="sl-title" set:html={p.retainers.title}></h2>
+        <p class="sl-lead">{p.retainers.lead}</p>
+      </header>
+      <div class="rets">
+        {p.retainers.items.map((r) => (
+          <a href={r.href} class="ret">
+            <span class="ret__type">{r.type}</span>
+            <h3 class="ret__name">{r.name}</h3>
+            <p class="ret__desc">{r.desc}</p>
+            <p class="ret__for">{r.forWhom}</p>
+            <span class="ret__cta">Detail služby <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+      <div class="rets__cta">
+        <a href={contactHref("retainer")} class="sl-btn">{p.retainers.cta} <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ===== 08 SELF-CHECK ===== -->
+    <section class="sl-section sl-section--alt" aria-labelledby="check-title">
+      <div class="sl-section__inner">
+        <header class="sl-head">
+          <span class="eyebrow"><span class="eyebrow__num">{p.selfCheck.eyebrowNum}</span> {p.selfCheck.eyebrow}</span>
+          <h2 id="check-title" class="sl-title" set:html={p.selfCheck.title}></h2>
+          <p class="sl-lead">{p.selfCheck.lead}</p>
+        </header>
+
+        <div class="check" id="ai-selfcheck" data-progress-template={p.selfCheck.progressTemplate}>
+          <ul class="check__list" role="list">
+            {p.selfCheck.items.map((item, i) => (
+              <li class="check__item">
+                <label class="check__label">
+                  <input type="checkbox" class="check__box" data-check-index={i} />
+                  <span>{item}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+          <p class="check__progress" aria-live="polite" data-check-progress>
+            {p.selfCheck.progressTemplate.replace("{n}", "0").replace("{total}", String(p.selfCheck.items.length))}
+          </p>
+          <p class="check__hint">{p.selfCheck.hint}</p>
+          <a href={p.selfCheck.ctaHref} class="sl-btn sl-btn--accent">{p.selfCheck.cta} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 09 MÝTY ===== -->
+    <section class="sl-section" aria-labelledby="myths-title">
+      <header class="sl-head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.myths.eyebrowNum}</span> {p.myths.eyebrow}</span>
+        <h2 id="myths-title" class="sl-title" set:html={p.myths.title}></h2>
+        <p class="sl-lead">{p.myths.lead}</p>
+      </header>
+      <div class="myths">
+        {p.myths.items.map((m) => (
+          <article class="myth">
+            <h3 class="myth__name">{m.name}</h3>
+            <p class="myth__desc">{m.desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== 10 FAQ ===== -->
+    <section class="sl-section sl-section--alt" aria-labelledby="faq-title">
+      <div class="sl-section__inner">
+        <header class="sl-head">
+          <span class="eyebrow"><span class="eyebrow__num">{p.faqHead.eyebrowNum}</span> {p.faqHead.eyebrow}</span>
+          <h2 id="faq-title" class="sl-title" set:html={p.faqHead.title}></h2>
+        </header>
+        <div class="faq">
+          {p.faq.map((f, i) => (
+            <details class="faq__item" open={i === 0}>
+              <summary class="faq__q">{f.q}</summary>
+              <p class="faq__a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINÁLNÍ CTA ===== -->
+    <section class="final-cta">
+      <div class="final-cta__inner">
+        <h2 class="final-cta__title" set:html={p.finalCta.title}></h2>
+        <p class="final-cta__lead">{p.finalCta.lead}</p>
+        <div class="final-cta__btns">
+          <a href={p.finalCta.btnPrimary.href} class="sl-btn sl-btn--accent">{p.finalCta.btnPrimary.label}</a>
+          <a href={p.finalCta.btnSecondary.href} class="sl-btn">{p.finalCta.btnSecondary.label}</a>
+        </div>
+      </div>
+    </section>
+
+    <ProofStrip />
+    <SniperDesignBigContact eyebrowNum="11" />
+  </div>
 </BaseLayout>
 
+<script>
+  /** Self-check: počítadlo zaškrtnutých položek (bez ukládání, čistě klientské). */
+  const root = document.getElementById("ai-selfcheck");
+  if (root) {
+    const boxes = root.querySelectorAll<HTMLInputElement>(".check__box");
+    const progress = root.querySelector("[data-check-progress]");
+    const template = root.getAttribute("data-progress-template") ?? "{n} / {total}";
+    const update = () => {
+      const n = [...boxes].filter((b) => b.checked).length;
+      if (progress)
+        progress.textContent = template.replace("{n}", String(n)).replace("{total}", String(boxes.length));
+    };
+    boxes.forEach((b) => b.addEventListener("change", update));
+  }
+</script>
+
 <style>
-  /* ===== HERO ===== */
+  /* ===== HERO (převzatý vizuál původního indexu) ===== */
   .sluzby-hero {
     max-width: var(--max-section);
     margin: 0 auto;
@@ -173,7 +366,7 @@ const byBucket = (key: string) =>
   .sluzby-hero__title {
     font-family: var(--font-sans);
     font-weight: 250;
-    font-size: clamp(2rem, 5.5vw, 4.5rem);
+    font-size: clamp(2rem, 5.5vw, 4.25rem);
     line-height: 1;
     letter-spacing: -0.04em;
     margin-bottom: 2rem;
@@ -188,221 +381,515 @@ const byBucket = (key: string) =>
     line-height: 1.55;
     color: var(--color-ink-muted);
     max-width: 44rem;
-    margin-bottom: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.75rem;
+  }
+  .sluzby-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin: 0;
+    padding: 0;
+  }
+  .sluzby-hero__chips li {
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--color-ink-muted);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    padding: 0.375rem 0.75rem;
+    background: var(--color-paper);
   }
 
-  /* ===== BUCKETY ===== */
-  .bucket {
+  /* ===== Sekce primitiva ===== */
+  .sl-section {
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
     scroll-margin-top: 4rem;
   }
-  .bucket__head {
-    margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  .sl-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .sl-section--alt .sl-section__inner {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+  }
+  .sl-head {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
   }
-  .bucket__title {
+  .sl-title {
     font-family: var(--font-sans);
     font-weight: 280;
-    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    max-width: 28ch;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0;
     color: var(--color-ink);
+  }
+  .sl-title :global(strong) { font-weight: 600; }
+  .sl-lead {
+    font-size: clamp(0.975rem, 1.2vw, 1.0625rem);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 46rem;
     margin: 0;
   }
-  .bucket__title :global(strong) { font-weight: 600; }
-  .bucket__lead {
-    font-family: var(--font-sans);
-    font-weight: 350;
-    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-    color: var(--color-ink-muted);
-    max-width: 42rem;
-    line-height: 1.55;
+  .sl-impact-legend {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-faint);
     margin: 0;
+  }
+  .sl-vat-note {
+    margin: 1.5rem 0 0;
+    font-size: 0.825rem;
+    color: var(--color-ink-faint);
   }
 
-  /* ===== KARTY SLUŽEB ===== */
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  /* ===== Tlačítka ===== */
+  .sl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.35rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-rule-strong);
+    background: var(--color-paper);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
   }
-  @media (min-width: 640px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .cards { grid-template-columns: repeat(3, 1fr); } }
-  .card {
+  .sl-btn:hover { border-color: var(--color-ink-muted); transform: translateY(-1px); }
+  .sl-btn--accent {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: oklch(0.99 0.003 250);
+  }
+  .sl-btn--accent:hover { background: var(--color-accent-strong); border-color: var(--color-accent-strong); }
+
+  /* ===== 01 Funnel ===== */
+  .funnel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.875rem;
+    margin: 0 0 1.25rem;
+    padding: 0;
+  }
+  .funnel__step {
+    list-style: none;
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    background: var(--color-paper);
+    padding: 1.25rem 1.25rem 1.125rem;
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
-    padding: 1.5rem;
+    gap: 0.5rem;
+  }
+  .funnel__num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+  }
+  .funnel__label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.012em;
+  }
+  .funnel__note {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* ===== 02 Balíčky ===== */
+  .packs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .pack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 14px;
+    padding: 1.75rem 1.625rem;
+  }
+  .pack--featured {
+    border-color: var(--color-accent);
+    border-width: 2px;
+    box-shadow: 0 14px 34px -18px oklch(from var(--color-accent) l c h / 0.4);
+  }
+  .pack__badge {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+    background: var(--color-praxe-tint);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+  }
+  .pack__name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .pack__for { margin: 0; font-size: 0.875rem; line-height: 1.5; color: var(--color-ink-muted); }
+  .pack__price {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+    margin: 0.375rem 0 0;
+    color: var(--color-ink);
+  }
+  .pack__price-note { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-ink-faint); }
+  .pack__saving { margin: 0; font-size: 0.85rem; color: var(--color-ink-muted); }
+  .pack__saving strong { color: var(--color-geo); font-weight: 600; }
+  .pack__items { margin: 0.625rem 0 1rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .pack__items li {
+    list-style: none;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    padding-left: 1.375rem;
+    position: relative;
+  }
+  .pack__items li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-geo);
+    font-weight: 600;
+  }
+  .pack__items li.pack__items-prefix { padding-left: 0; font-weight: 600; font-size: 0.85rem; }
+  .pack__items li.pack__items-prefix::before { content: none; }
+
+  /* ===== 03 Audit karta ===== */
+  .audit-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 6px 14px 14px 6px;
+    background: var(--color-paper);
+    padding: 1.75rem 1.75rem;
+  }
+  .audit-card__tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .audit-card__price {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 2.1rem;
+    letter-spacing: -0.03em;
+    margin: 0.25rem 0 0;
+  }
+  .audit-card__note { margin: 0; font-size: 0.85rem; color: var(--color-ink-muted); }
+  .audit-card__for { margin: 0.625rem 0 0; font-size: 0.85rem; color: var(--color-ink-faint); }
+
+  /* ===== 04 Moduly ===== */
+  .mods {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .mod {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
     border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    position: relative;
-    overflow: hidden;
+    padding: 1.375rem 1.375rem 1.25rem;
   }
-  .card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--color-accent);
-    transform: scaleX(0.15);
-    transform-origin: left;
-    transition: transform 0.35s cubic-bezier(0.5, 0, 0, 1);
+  .mod__impact {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
   }
-  .card:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-accent);
-    box-shadow: 0 10px 24px -14px oklch(0.2 0.05 260 / 0.22);
+  .mod__name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.015em;
+    margin: 0;
+    line-height: 1.3;
   }
-  .card:hover::before { transform: scaleX(1); }
+  .mod__desc { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--color-ink-muted); flex-grow: 1; }
+  .mod__foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--color-rule);
+  }
+  .mod__price { font-family: var(--font-sans); font-weight: 600; font-size: 0.95rem; }
+  .mod__cta { font-size: 0.85rem; font-weight: 500; color: var(--color-accent); text-decoration: none; white-space: nowrap; }
+  .mod__cta:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-  .card__chips {
+  /* ===== 05 Obsah ===== */
+  .analysis-note {
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    background: var(--color-praxe-tint);
+    padding: 1.375rem 1.5rem;
+    margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  }
+  .analysis-note__title { margin: 0 0 0.5rem; font-family: var(--font-sans); font-weight: 600; font-size: 1rem; }
+  .analysis-note__text { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--color-ink-muted); }
+  .analysis-note__text :global(strong) { color: var(--color-ink); font-weight: 600; }
+
+  .tier-group { margin-bottom: clamp(2.25rem, 4vw, 3rem); }
+  .tier-group__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.375rem;
+  }
+  .tier-group__lead { margin: 0 0 1.25rem; font-size: 0.9rem; color: var(--color-ink-muted); }
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+  .tier {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.5rem 1.375rem;
+  }
+  .tier--featured {
+    border-color: var(--color-accent);
+    border-width: 2px;
+    box-shadow: 0 12px 30px -18px oklch(from var(--color-accent) l c h / 0.35);
+  }
+  .tier__name { margin: 0; font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.015em; }
+  .tier__desc { margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--color-ink-muted); }
+  .tier__price { margin: 0.375rem 0 0; font-family: var(--font-sans); font-weight: 600; font-size: 1.6rem; letter-spacing: -0.025em; }
+  .tier__unit { font-size: 0.85rem; font-weight: 400; color: var(--color-ink-muted); }
+  .tier__analysis { margin: 0; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-ink-faint); }
+  .tier__items { margin: 0.625rem 0 1rem; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+  .tier__items li {
+    list-style: none;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    padding-left: 1.375rem;
+    position: relative;
+  }
+  .tier__items li::before { content: "✓"; position: absolute; left: 0; color: var(--color-geo); font-weight: 600; }
+  .tier__impact { font-size: 0.75rem; }
+
+  .compare-offer {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .chip {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 0.22rem 0.6rem;
-    border-radius: 999px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
     border: 1px solid var(--color-rule);
-    color: var(--color-ink-muted);
+    border-radius: 14px;
     background: var(--color-paper-deep);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    line-height: 1.2;
+    padding: 1.75rem;
   }
-  .chip--type-vstupni     { background: oklch(0.96 0.04 60); color: oklch(0.4 0.14 60); border-color: oklch(0.88 0.07 60); }
-  .chip--type-jednorazova { background: oklch(0.96 0.025 250); color: oklch(0.42 0.16 250); border-color: oklch(0.88 0.05 250); }
-  .chip--type-mesicni     { background: oklch(0.96 0.03 155); color: oklch(0.4 0.13 155); border-color: oklch(0.88 0.06 155); }
-  .chip--type-addon       { background: oklch(0.96 0.03 305); color: oklch(0.42 0.14 305); border-color: oklch(0.88 0.05 305); }
+  .compare-offer__body { max-width: 34rem; }
+  .compare-offer__title { margin: 0 0 0.5rem; font-family: var(--font-sans); font-weight: 600; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .compare-offer__lead { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--color-ink-muted); }
+  .compare-offer__buy { display: flex; flex-direction: column; gap: 0.375rem; align-items: flex-start; }
+  .compare-offer__price { margin: 0; font-family: var(--font-sans); font-weight: 600; font-size: 1.75rem; letter-spacing: -0.025em; }
+  .compare-offer__note { margin: 0 0 0.5rem; font-size: 0.8rem; color: var(--color-ink-faint); }
 
-  .card__title {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: -0.012em;
-    color: var(--color-ink);
-    margin: 0;
+  /* ===== 06 Měření ===== */
+  .measure {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
   }
-  .card__desc {
-    font-size: 0.92rem;
-    line-height: 1.5;
-    color: var(--color-ink-muted);
-    margin: 0;
-    flex: 1;
+  .measure__item {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.375rem;
   }
-  .card__cta {
-    font-family: var(--font-sans);
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--color-accent);
-    display: inline-flex;
-    align-items: center;
+  .measure__name { margin: 0 0 0.375rem; font-family: var(--font-sans); font-weight: 600; font-size: 1rem; }
+  .measure__desc { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--color-ink-muted); }
+
+  /* ===== 07 Retainery ===== */
+  .rets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .ret {
+    display: flex;
+    flex-direction: column;
     gap: 0.5rem;
-    transition: gap 0.18s ease;
-    margin-top: 0.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.5rem 1.375rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.25s ease, transform 0.25s ease;
   }
-  .card:hover .card__cta { gap: 0.75rem; }
+  .ret:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+  .ret__type {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .ret__name { margin: 0; font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.015em; }
+  .ret__desc { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--color-ink-muted); flex-grow: 1; }
+  .ret__for { margin: 0; font-size: 0.8rem; color: var(--color-ink-faint); }
+  .ret__cta { margin-top: 0.375rem; font-size: 0.9rem; font-weight: 500; color: var(--color-accent); }
+  .rets__cta { margin-top: 1.5rem; }
 
-  /* ===== FINAL CTA ===== */
+  /* ===== 08 Self-check ===== */
+  .check {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 14px;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .check__list { margin: 0 0 1.25rem; padding: 0; display: flex; flex-direction: column; }
+  .check__item { list-style: none; border-bottom: 1px dashed var(--color-rule); }
+  .check__item:last-child { border-bottom: none; }
+  .check__label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0.25rem;
+    font-size: 0.925rem;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  .check__box {
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.15rem;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+  .check__label:has(.check__box:checked) span { color: var(--color-ink-faint); text-decoration: line-through; }
+  .check__progress { margin: 0 0 0.25rem; font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; }
+  .check__hint { margin: 0 0 1.25rem; font-size: 0.85rem; color: var(--color-ink-faint); }
+
+  /* ===== 09 Mýty ===== */
+  .myths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .myth {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-top: 3px solid var(--color-signal);
+    border-radius: 12px;
+    padding: 1.5rem 1.375rem;
+  }
+  .myth__name { margin: 0 0 0.5rem; font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.015em; }
+  .myth__desc { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--color-ink-muted); }
+
+  /* ===== 10 FAQ ===== */
+  .faq { display: flex; flex-direction: column; gap: 0.625rem; max-width: 52rem; }
+  .faq__item {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+    padding: 0;
+  }
+  .faq__q {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.975rem;
+    letter-spacing: -0.012em;
+    list-style: none;
+    position: relative;
+    padding-right: 2.75rem;
+  }
+  .faq__q::-webkit-details-marker { display: none; }
+  .faq__q::after {
+    content: "+";
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--color-ink-faint);
+  }
+  .faq__item[open] .faq__q::after { content: "−"; }
+  .faq__a { margin: 0; padding: 0 1.25rem 1.125rem; font-size: 0.9rem; line-height: 1.6; color: var(--color-ink-muted); }
+
+  /* ===== Finální CTA ===== */
   .final-cta {
     max-width: var(--max-section);
     margin: 0 auto;
-    padding: clamp(3rem, 5vw, 4rem) var(--space-section-x);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
   }
   .final-cta__inner {
-    background: linear-gradient(
-      135deg,
-      color-mix(in oklch, var(--color-accent) 8%, var(--color-paper)) 0%,
-      color-mix(in oklch, var(--color-aio) 6%, var(--color-paper)) 100%
-    );
-    border: 1px solid color-mix(in oklch, var(--color-accent) 30%, var(--color-rule-strong));
-    border-radius: 14px;
-    padding: clamp(2rem, 4vw, 3rem);
     text-align: center;
+    max-width: 44rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
   .final-cta__title {
     font-family: var(--font-sans);
     font-weight: 280;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: var(--color-ink);
-    margin: 0 0 1rem;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin: 0;
   }
-  .final-cta__lead {
-    font-family: var(--font-sans);
-    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
-    line-height: 1.55;
-    color: var(--color-ink-muted);
-    max-width: 42rem;
-    margin: 0 auto 1.75rem;
-  }
-  .final-cta__lead :global(strong) { font-weight: 600; color: var(--color-ink); }
-  .final-cta__btns {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-  }
-  .btn {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.7rem 1.4rem;
-    border-radius: 999px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-  }
-  .btn--primary {
-    background: var(--color-accent);
-    color: var(--color-paper);
-  }
-  .btn--primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px -6px oklch(0.42 0.2 250 / 0.4);
-  }
-  .btn--secondary {
-    background: var(--color-paper);
-    color: var(--color-ink);
-    border: 1px solid var(--color-rule-strong);
-  }
-  .btn--secondary:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
+  .final-cta__title :global(strong) { font-weight: 600; }
+  .final-cta__lead { margin: 0; font-size: 1rem; line-height: 1.6; color: var(--color-ink-muted); }
+  .final-cta__btns { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 0.5rem; }
 
-  /* ===== EYEBROW (sdílený vzor s ostatními sekcemi) ===== */
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-ink-muted);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-  }
-  .eyebrow__num {
-    background: var(--color-paper-deep);
-    color: var(--color-accent);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    border: 1px solid var(--color-rule);
+  @media (prefers-reduced-motion: reduce) {
+    .sl-btn, .ret, .mod__cta { transition: none; }
+    .sl-btn:hover, .ret:hover { transform: none; }
   }
 </style>
