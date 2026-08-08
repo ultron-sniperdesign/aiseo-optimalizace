@@ -1,0 +1,55 @@
+E-SHOPŮ: 38 · produktová stránka nalezena: 38
+bez nálezu: []
+
+=== PRODUCT — POVINNÉ podle Googlu ===
+  name                   38 / 38
+  image                  38 / 38
+  offers                 38 / 38
+=== PRODUCT — DOPORUČENÉ ===
+  aggregateRating        18 / 38
+  audience                0 / 38
+  brand                  33 / 38
+  category               38 / 38
+  color                   0 / 38
+  description            35 / 38
+  gtin                   27 / 38
+  hasAdultConsideration   0 / 38
+  hasCertification        0 / 38
+  inProductGroupWithID    0 / 38
+  isVariantOf             0 / 38
+  material                0 / 38
+  mpn                     0 / 38
+  pattern                 0 / 38
+  review                 14 / 38
+  size                    0 / 38
+  sku                    30 / 38
+  subjectOf               0 / 38
+
+=== OFFER — POVINNÉ ===
+  price                  38 / 38
+  priceCurrency          38 / 38
+  priceSpecification      0 / 38
+=== OFFER — DOPORUČENÉ ===
+  availability           36 / 38
+  hasMerchantReturnPolicy  0 / 38
+  itemCondition          37 / 38
+  priceValidUntil         3 / 38
+  shippingDetails        38 / 38
+  url                    38 / 38
+  validFrom               0 / 38
+  validThrough            0 / 38
+
+=== VARIANTY ===
+  počet nabídek na stránce: {1: 32, 2: 3, 3: 1, 4: 1, 12: 1}
+  víc než 1 nabídka: 6 / 38
+  ProductGroup: 0
+  isVariantOf v HTML: 0
+  inProductGroupWithID: 0
+
+=== JSON-LD ===
+  {'Organization': 29, 'Product': 6, 'ToyStore': 1}
+  Organization blok: 29 / 38
+  vlastnosti Organization: {'email': 28, 'employee': 28, 'name': 29, 'sameAs': 28, 'telephone': 25, 'url': 29, 'logo': 2}
+
+=== DALŠÍ TYPY V MICRODATECH ===
+  {'AggregateRating': 18, 'Brand': 33, 'BreadcrumbList': 38, 'Comment': 2, 'DefinedRegion': 38, 'ListItem': 38, 'MonetaryAmount': 38, 'Offer': 38, 'OfferShippingDetails': 38, 'Organization': 33, 'Person': 15, 'Product': 38, 'QuantitativeValue': 34, 'Rating': 14, 'Review': 14, 'SearchAction': 38, 'ShippingDeliveryTime': 34, 'WebSite': 38, 'Answer': 1, 'FAQPage': 1, 'Question': 1}

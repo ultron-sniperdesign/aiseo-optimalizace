@@ -1,0 +1,1323 @@
+[
+ {
+  "label": "anela.cz",
+  "base": "https://www.anela.cz/",
+  "sitemap_urls": 370,
+  "product_url": "https://www.anela.cz/detske-masti-a-kremy/mala-carodejka-univerzalni-balzam-do-kabelky/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "Comment",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 4,
+  "has_product_group": false,
+  "product_props": [
+   "(nested)",
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "angrybeards.cz",
+  "base": "https://www.angrybeards.cz/",
+  "sitemap_urls": 622,
+  "product_url": "https://www.angrybeards.cz/dyska/dysko-10-kc/",
+  "micro_types": [
+   "AggregateRating",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "category",
+   "identifier",
+   "image",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "autodoplnky-obchod.cz",
+  "base": "https://www.autodoplnky-obchod.cz/",
+  "sitemap_urls": 31417,
+  "product_url": "https://www.autodoplnky-obchod.cz/ofuky-oken-chevrolet-cruze-4d-2009-zadni-sada-4-ks/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "baavi.cz",
+  "base": "https://www.baavi.cz/",
+  "sitemap_urls": 401,
+  "product_url": "https://www.baavi.cz/drevene-variabilni-kresilko/",
+  "micro_types": [
+   "AggregateRating",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "cistedrevo.cz",
+  "base": "https://www.cistedrevo.cz/",
+  "sitemap_urls": 3187,
+  "product_url": "https://www.cistedrevo.cz/regal-dreveny-r2o-60-x-64-x-39-cm/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "priceValidUntil",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "priceValidUntil",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "priceValidUntil",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization",
+   "Product"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "drevenysvet.online",
+  "base": "https://www.drevenysvet.online/",
+  "sitemap_urls": 6580,
+  "product_url": "https://www.drevenysvet.online/andelska-kridla--typ-4/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "film-technika.com",
+  "base": "https://www.film-technika.com/",
+  "sitemap_urls": 5566,
+  "product_url": "https://www.film-technika.com/baterie/baterie-en-el14-nikon/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "Comment",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "(nested)",
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "url"
+  ]
+ },
+ {
+  "label": "gigamat.cz",
+  "base": "https://www.gigamat.cz/",
+  "sitemap_urls": 8836,
+  "product_url": "https://www.gigamat.cz/lt2074-otvirak-na-lahve-zinc-lamart/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization",
+   "Product"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "giovani.cz",
+  "base": "https://www.giovani.cz/",
+  "sitemap_urls": 276,
+  "product_url": "https://www.giovani.cz/parfemovana-svicka-exclusive-gold/",
+  "micro_types": [
+   "AggregateRating",
+   "Answer",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "FAQPage",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "Question",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "hobynaradi.cz",
+  "base": "https://www.hobynaradi.cz/",
+  "sitemap_urls": 9962,
+  "product_url": "https://www.hobynaradi.cz/meritko-posuvne-150-mm-digitalni-nerezove/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size",
+   "material"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "konzoliste.cz",
+  "base": "https://www.konzoliste.cz/",
+  "sitemap_urls": 12896,
+  "product_url": "https://www.konzoliste.cz/zbozi/sony-dualshock-4-jet-black/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization",
+   "Product"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "url"
+  ]
+ },
+ {
+  "label": "kulina.cz",
+  "base": "https://www.kulina.cz/",
+  "sitemap_urls": 13781,
+  "product_url": "https://www.kulina.cz/dreveny-salatovy-set-eva-trio/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization",
+   "Product"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "levanduloveudoli.cz",
+  "base": "https://www.levanduloveudoli.cz/",
+  "sitemap_urls": 465,
+  "product_url": "https://www.levanduloveudoli.cz/bio-raw-tycinka-divoka-visen-s-levanduli-v-horke-cokolade/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "logo",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "madvell.cz",
+  "base": "https://www.madvell.cz/",
+  "sitemap_urls": 466,
+  "product_url": "https://www.madvell.cz/silikonovy-reminek-motyl-20mm/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "nanospace.cz",
+  "base": "https://www.nanospace.cz/",
+  "sitemap_urls": 2022,
+  "product_url": "https://www.nanospace.cz/refreshing-water-with-liposomes-100ml-nafigate/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "nasegalanterie.cz",
+  "base": "https://www.nasegalanterie.cz/",
+  "sitemap_urls": 9684,
+  "product_url": "https://www.nasegalanterie.cz/vlna-hep-camilla/camilla-modra-8094/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "nemeckyeshop.cz",
+  "base": "https://www.nemeckyeshop.cz/",
+  "sitemap_urls": 5865,
+  "product_url": "https://www.nemeckyeshop.cz/doplnky-k-prani/g-g-sprej-usnadnujici-zehleni-500ml/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "nonstopstavebniny.cz",
+  "base": "https://www.nonstopstavebniny.cz/",
+  "sitemap_urls": 13515,
+  "product_url": "https://www.nonstopstavebniny.cz/chovatelske-pletivo-pilecky-100-cm-10-6-mm-pozinkovane-svarovane-25-m/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size",
+   "material"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "olivie.cz",
+  "base": "https://www.olivie.cz/",
+  "sitemap_urls": 4892,
+  "product_url": "https://www.olivie.cz/3588-stribrne-perlove-nausnice-rose/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size",
+   "material"
+  ],
+  "ld_types": [],
+  "org_props": null
+ }
+]

@@ -1,0 +1,183 @@
+---
+title: "Shoptet plní povinná pole Googlu, doporučená ne"
+description: "Měření 38 e-shopů na Shoptetu proti dokumentaci Googlu: povinné vlastnosti splní každý, z doporučených chybí deklarace vrácení, provázání variant a někde EAN."
+answer: "Změřil jsem produktová data na 38 e-shopech běžících na Shoptetu a porovnal je s tím, co Google dokumentuje jako povinné a doporučené. Povinné vlastnosti splňuje všech 38. Z doporučených chybí deklarace vrácení zboží úplně, u variant se neobjevily prvky ProductGroup, isVariantOf ani inProductGroupWithID a EAN, který se v datech zapisuje jako gtin13, má 27 z 38 obchodů."
+slug: "shoptet-produktova-pole-google"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "mereni"
+published: "2026-08-08"
+updated: "2026-08-08"
+keywords:
+  - "shoptet produktová data"
+  - "hasmerchantreturnpolicy"
+  - "shoptet gtin ean"
+  - "merchant listing strukturovaná data"
+  - "shoptet varianty schema"
+variant: "rich"
+stats:
+  - value: "38 / 38"
+    label: "měřených e-shopů splňuje povinné vlastnosti podle dokumentace Googlu"
+  - value: "0 / 38"
+    label: "měřených e-shopů s deklarací vrácení zboží ve strukturovaných datech"
+  - value: "27 / 38"
+    label: "měřených e-shopů s vyplněným EANem ve strukturovaných datech"
+faq:
+  - q: "Splňuje Shoptet povinné vlastnosti podle Googlu?"
+    a: "V měřeném vzorku ano, u všech 38 e-shopů. Google u merchant listings vyžaduje u produktu název, obrázek a nabídku a u nabídky cenu a měnu. To všechno bylo přítomné pokaždé. Rozdíly jsou až v doporučených vlastnostech."
+  - q: "Proč nikdo nemá deklaraci vrácení zboží?"
+    a: "Vlastnost hasMerchantReturnPolicy se neobjevila ani u jednoho z 38 e-shopů. Google ji uvádí jako doporučenou, ne povinnou. Že chybí napříč různými obchody a šablonami, ukazuje spíš na limit výchozí implementace než na chybu jednotlivých majitelů. Z měření ale neplyne, že by ji nešlo doplnit úpravou šablony nebo doplňkem."
+  - q: "Jak Shoptet zapisuje varianty produktu?"
+    a: "Jako víc objektů Offer pod jedním produktem. V měřeném vzorku mělo šest e-shopů na produktové stránce víc než jednu nabídku, jeden dokonce dvanáct. Typ ProductGroup ani vlastnosti isVariantOf a inProductGroupWithID, které Google u variant doporučuje, se neobjevily ani jednou."
+  - q: "Kolik e-shopů má vyplněný EAN?"
+    a: "Dvacet sedm z třiceti osmi. Měřil jsem přítomnost EANu, který se ve vzorku zapisoval jako vlastnost gtin13; jiná varianta pole se neobjevila. Je to údaj z vašeho katalogu — když ho u produktu vyplníte, propíše se do dat. V prvním díle téhle série jsem uváděl podstatně nižší číslo, protože vzorek obsahoval i šablonová dema s ukázkovými daty."
+  - q: "Znamená chybějící doporučená vlastnost horší viditelnost v AI?"
+    a: "To jsem neměřil a netvrdím to. Google označuje ty vlastnosti za doporučené pro merchant listings ve vyhledávání. Jaký vliv má jejich přítomnost na odpovědi AI nástrojů, je jiná otázka a odpověď na ni z tohohle měření nevyplývá."
+  - q: "Měřil jsi i produktové feedy?"
+    a: "Ne, a to vědomě. Shoptet feedy generuje, ale robots.txt měřených e-shopů zakazuje cestu /export/. Po článku o tom, jak se má robots.txt číst, by bylo divné ho ignorovat. Feed a stránka se navíc můžou lišit, takže z jednoho na druhý usuzovat nejde."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+[První díl](/blog/shoptet-strukturovana-data-mereni/) zjistil, že Shoptet posílá produktová data v microdatech a která pole v nich jsou. Zbývala otázka, na kterou samotný výčet neodpoví: **obstojí to proti tomu, co Google dokumentuje jako povinné a doporučené?**
+
+Rozšířil jsem měření z 13 stránek na **38 produkčních e-shopů** a porovnal je s dokumentací. Odpověď má dvě poloviny a ta druhá je zajímavější.
+
+## Co Google <span class="hl">vyžaduje</span>
+
+Dokumentace Google Search dělí vlastnosti u merchant listings na povinné a doporučené.
+
+**Povinné u produktu:** název, obrázek, nabídka. **Povinné u nabídky:** cena — buď jako `price`, nebo jako `priceSpecification.price` — a měna, opět buď jako `priceCurrency`, nebo uvnitř cenové specifikace.
+
+**Doporučených je pak celá řada** — od značky, kategorie a popisu přes EAN, výrobní číslo a skladové označení až po hodnocení, recenze, barvu, velikost, materiál, deklaraci vrácení zboží, dopravné a platnost ceny.
+
+## Vzorek
+
+**38 produkčních e-shopů** — 31 z výsledků ShopRoku 2025 a 7 z prvního dílu. Šablonová dema jsem tentokrát vynechal schválně; mají ukázková data a v prvním díle mi kvůli nim vyšla dvě čísla nízko (o tom níž).
+
+Produktovou stránku jsem u každého našel přes sitemapu, rovnoměrným odběrem každé N-té adresy. Úspěšnost **38 ze 38**. Konkrétní domény ani tady neuvádím.
+
+Větší a čistší vzorek zároveň **opravuje dva závěry z prvního dílu** — EAN v produkčních obchodech nevychází zdaleka tak nízko a produkt v JSON-LD se v části vzorku objevuje. Detaily níž.
+
+<Insight tone="signal" icon="?" label="Co jsem vědomě neměřil">
+Shoptet generuje produktové feedy, ale robots.txt měřených e-shopů zakazuje cestu `/export/`. Po [článku o tom, jak se robots.txt čte](/blog/shoptet-robots-txt-ai-roboti/), by bylo pokrytecké ji ignorovat. Data z feedu a data na stránce se navíc můžou lišit, takže z jednoho na druhé usuzovat nejde.
+</Insight>
+
+## Povinné: 38 ze 38
+
+| Vlastnost | Kolik z 38 |
+|---|---|
+| název produktu | **38** |
+| obrázek | **38** |
+| nabídka | **38** |
+| cena | **38** |
+| měna | **38** |
+
+**V měřeném vzorku splnil povinné minimum každý e-shop**, aniž by pro to musel cokoli dělat. `priceSpecification` nemá nikdo, ale Google ho uvádí jen jako alternativu k `price`, takže povinnost je splněná i bez něj.
+
+## Doporučené: díry nejsou náhodné
+
+Tady je rozdíl vidět. Doporučené vlastnosti jsem rozdělil do tří skupin podle toho, co má typicky v ruce platforma a co majitel katalogu. **Není to výsledek měření původu dat, jen užitečný způsob, jak výsledky číst** — změřená je přítomnost pole, ne jeho původ.
+
+**Co vychází z nastavení e-shopu, je přítomné skoro vždy:**
+
+| Vlastnost | Kolik z 38 |
+|---|---|
+| kategorie | **38** |
+| dopravné | **38** |
+| adresa nabídky | **38** |
+| stav zboží | 37 |
+| dostupnost | 36 |
+
+**Co závisí na vyplnění katalogu, chybí častěji:**
+
+| Vlastnost | Kolik z 38 |
+|---|---|
+| popis | 35 |
+| značka | 33 |
+| skladové označení | 30 |
+| **`gtin13`** (EAN-13) | **27** |
+| souhrnné hodnocení | 18 |
+| recenze | 14 |
+
+Z téhle tabulky plynou tři věci, které můžete ovlivnit hned: doplnit EAN, zkontrolovat značku a nespoléhat, že parametry variant za vás převezmou strukturovaná data.
+
+**Co se ve vzorku objevilo výjimečně nebo vůbec:**
+
+| Vlastnost | Kolik z 38 |
+|---|---|
+| **deklarace vrácení zboží** | **0** |
+| výrobní číslo | **0** |
+| barva, velikost, materiál, vzor | **0** |
+| struktura variant | **0** |
+| platnost ceny | 3 |
+
+Tahle tabulka naopak není dobrý kandidát na pátrání v administraci. Užitečnější je vědět, že jde nejspíš o limit výchozí implementace, a případně to řešit s doplňkem nebo úpravou šablony.
+
+<Insight tone="warn" icon="!" label="Rozdíl mezi nedbalostí a dírou">
+Prostřední tabulka je práce pro vás — EAN a značka jsou údaje z vašeho katalogu a když je vyplníte, objeví se v datech. **Spodní tabulka práce pro vás nejspíš není.** Že deklaraci vrácení zboží nemá ani jeden z 38 obchodů napříč různými šablonami a velikostmi, ukazuje na limit výchozí implementace, ne na 38 nedbalých majitelů. Měření samo ale neověřuje, jestli ji nejde doplnit úpravou šablony nebo doplňkem.
+</Insight>
+
+## Varianty se nezapisují tak, jak Google doporučuje
+
+Tady je slabina nejčitelnější: Shoptet zapisoval varianty jako **víc objektů `Offer` pod jedním produktem**, ne prvky, které Google pro variantní produkty doporučuje.
+
+Šest z 38 e-shopů mělo na produktové stránce víc než jednu nabídku — dvě, tři, čtyři a v jednom případě dvanáct. Doložit z měření můžu jen přítomnost více nabídek; v praxi to typicky odpovídá variantám téhož produktu.
+
+Shoptet je zapisuje jako **víc objektů nabídky pod jedním produktem**. Typ pro skupinu produktů ani vlastnosti, kterými Google varianty doporučuje provázat, se v celém vzorku **neobjevily ani jednou**.
+
+Bez těchto tří prvků nedostává stroj varianty v doporučené podobě — vidí jeden produkt s několika cenami. U dotazů na velikost nebo barvu je to limit o to větší, že `size` ani `color` se ve vzorku neobjevily ani jednou.
+
+## Co opravuje větší vzorek
+
+Větší a čistší vzorek opravuje dvě čísla z prvního dílu. Obě byla správně spočítaná, jen ze vzorku, který je zkresloval.
+
+<Insight tone="warn" icon="!" label="Otevřená oprava prvního dílu">
+**EAN:** v prvním díle vyšel na **3 z 13**. Na 38 produkčních e-shopech je to **27 z 38**, tedy 71 %. Rozdíl nejspíš z velké části vysvětluje to, že prvních 13 stránek zahrnovalo sedm šablonových dem s ukázkovými daty, kde tohle pole chybí. Formulace „necelá čtvrtina" tedy nebyla dobrý popis produkčních obchodů.
+
+**Produkt v JSON-LD:** v prvním díle vyšel na **0 z 13**. Na větším vzorku ho **6 z 38 e-shopů má** — vedle microdat, ne místo nich. Tvrzení pro tehdejší vzorek platilo, jako obecná věta o platformě bylo příliš silné. Všech šest je zároveň mezi šestnácti obchody, které měly v druhém dílu upravený robots.txt — tedy mezi těmi, kde někdo do technického nastavení sahal. Naznačuje to, že nejde o výchozí stav platformy, ale doplněk nebo zásah do šablony. Šest případů ale není důkaz a příčinu jsem neověřoval.
+</Insight>
+
+Oba údaje jsem doplnil i do prvního dílu.
+
+## Vedlejší zjištění: identita firmy v JSON-LD
+
+Tohle už neleží přímo v požadavcích na merchant listing, ale stojí za krátkou poznámku. Blok s identitou firmy v JSON-LD má **29 z 38** e-shopů. Obsahuje název a adresu u všech, e-mail a odkazy na profily u 28, telefon u 25.
+
+**Logo má ale jen 2 z 29.** Google ho u identity organizace uvádí jako doporučené a pro rozpoznání značky jako entity je to jeden z mála vizuálních záchytů. Jak celý blok postavit, rozebírá [článek o strukturovaných datech pro značku](/blog/organization-schema-pro-znacku/).
+
+## Tři chyby, které z měření plynou
+
+<MistakeGrid>
+<Mistake number="01" title="Nechat prázdný EAN a čekat, že to platforma dořeší">
+Nedořeší. Pole `gtin13` se plní z vašeho katalogu a v měřeném vzorku ho nemělo 11 e-shopů z 38. Je to zároveň jedno z mála polí, kterými se produkt páruje napříč systémy — [proč na něm záleží](/blog/produktovy-feed-gtin/).
+</Mistake>
+
+<Mistake number="02" title="Řešit doporučená pole, která platforma negeneruje">
+Deklarace vrácení zboží, výrobní číslo, barva ani velikost se v datech neobjevily ani jednou ze 38. Nemá smysl je hledat v administraci — buď je doplní platforma, nebo doplněk či zásah do šablony. Pokud je potřebujete, je to úkol pro vývoj nebo dotaz na podporu, ne práce v katalogu.
+</Mistake>
+
+<Mistake number="03" title="Předpokládat, že varianty stroj pochopí">
+Dostane několik cen pod jedním produktem bez prvků, kterými Google varianty doporučuje provázat. Vlastnosti jako velikost nebo barva se ve vzorku neobjevily vůbec — pokud je zákazníci potřebují znát, patří čitelně do obsahu stránky.
+</Mistake>
+</MistakeGrid>
+
+<Checklist tone="geo" title="Co s tím jde udělat dnes" items={[
+  { title: "Doplnit EAN u produktů, kde chybí", desc: "Jediné pole ze spodní části tabulky, které máte celé ve svých rukou a které se do dat propíše." },
+  { title: "Zkontrolovat značku a výrobce", desc: "Stejný princip. V měřeném vzorku chyběla značka pěti e-shopům z 38." },
+  { title: "Napsat parametry do textu produktu", desc: "Barva, velikost ani materiál se ve strukturovaných datech vzorku neobjevily. Vyplatí se je mít čitelně přímo v obsahu stránky." },
+  { title: "Doplnit logo do identity firmy", desc: "V měřeném vzorku ho mělo jen 2 z 29 e-shopů, které blok s identitou vůbec mají." },
+  { title: "Oddělit vlastní úkoly od limitů platformy", desc: "EAN, značku a texty řešte hned. Deklaraci vrácení a provázání variant si poznamenejte jako téma pro doplněk, šablonu nebo dotaz na podporu." },
+]} />
+
+<Insight tone="aio" icon="i" label="Limity měření">
+38 e-shopů a **jedna produktová adresa na e-shop** — jiný produkt téhož obchodu může mít jiná pole, hlavně u EANu, značky a hodnocení. Vzorek je vychýlený k větším obchodům. Měřil jsem **jeden den, 8. srpna 2026**, přítomnost vlastností, ne to, jestli data projdou testem rozšířených výsledků. A neměřil jsem, jaký vliv má cokoli z toho na odpovědi AI nástrojů — **z chybějícího pole neplyne horší viditelnost**, jen chybějící pole.
+</Insight>
+
+## Kam tenhle článek patří
+
+Třetí díl bloku o Shoptetu a viditelnosti v AI. Předchozí měřily [formát strukturovaných dat](/blog/shoptet-strukturovana-data-mereni/) a [robots.txt s AI roboty](/blog/shoptet-robots-txt-ai-roboti/). V dalších dílech navážu tématy filtrů, parametrických adres a blogového modulu.

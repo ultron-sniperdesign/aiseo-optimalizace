@@ -1,0 +1,1301 @@
+[
+ {
+  "label": "outdoorstuff.cz",
+  "base": "https://www.outdoorstuff.cz/",
+  "sitemap_urls": 1266,
+  "product_url": "https://www.outdoorstuff.cz/esbit-termoska-0-5-l/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 3,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "pff.cz",
+  "base": "https://www.pff.cz/",
+  "sitemap_urls": 148,
+  "product_url": "https://www.pff.cz/beco-pets-natural-rubber-hoop-on-rope/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "pocitarna.cz",
+  "base": "https://www.pocitarna.cz/",
+  "sitemap_urls": 8325,
+  "product_url": "https://www.pocitarna.cz/extras/500gb-hdd-3-5--sata-sata-6gb-s/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "profi-dj.cz",
+  "base": "https://www.profi-dj.cz/",
+  "sitemap_urls": 10338,
+  "product_url": "https://www.profi-dj.cz/beamz-professional-bwa536-aluminium-ip65-led-par-18x-12w-4-in-1/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size",
+   "material"
+  ],
+  "ld_types": [
+   "Organization",
+   "Product"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "prohackovani.cz",
+  "base": "https://www.prohackovani.cz/",
+  "sitemap_urls": 11574,
+  "product_url": "https://www.prohackovani.cz/jehlice-kruhove-pony-80-cm-c-4-5/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size",
+   "material"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "prokonzole.cz",
+  "base": "https://www.prokonzole.cz/",
+  "sitemap_urls": 20731,
+  "product_url": "https://www.prokonzole.cz/ps3/ps3-sonic-the-hedgehog-nove/",
+  "micro_types": [
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url",
+   "warranty"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "url"
+  ]
+ },
+ {
+  "label": "prolicence.cz",
+  "base": "https://www.prolicence.cz/",
+  "sitemap_urls": 299,
+  "product_url": "https://www.prolicence.cz/avast-premium-security-1-pc-2-roky/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "SearchAction",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "ptakoviny-cb.cz",
+  "base": "https://www.ptakoviny-cb.cz/",
+  "sitemap_urls": 6057,
+  "product_url": "https://www.ptakoviny-cb.cz/zbozi/maska-kralik/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization",
+   "Product"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "puellavune.cz",
+  "base": "https://www.puellavune.cz/",
+  "sitemap_urls": 421,
+  "product_url": "https://www.puellavune.cz/puella-vonna-svicka-emija/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "logo",
+   "name",
+   "url"
+  ]
+ },
+ {
+  "label": "ususil.cz",
+  "base": "https://www.ususil.cz/",
+  "sitemap_urls": 108,
+  "product_url": "https://www.ususil.cz/100--jerky-hovezi-s-peprem-xl--pulkilo-0-5-kg-kilo-1-kg-2/",
+  "micro_types": [
+   "AggregateRating",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 2,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "utukutu.cz",
+  "base": "https://www.utukutu.cz/",
+  "sitemap_urls": 1844,
+  "product_url": "https://www.utukutu.cz/darkovy-poukaz/darkovy-poukaz-500/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 2,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization",
+   "ToyStore"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "venira.cz",
+  "base": "https://www.venira.cz/",
+  "sitemap_urls": 2098,
+  "product_url": "https://www.venira.cz/venira-arganovy-olej/",
+  "micro_types": [
+   "AggregateRating",
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Person",
+   "Product",
+   "QuantitativeValue",
+   "Rating",
+   "Review",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "aggregateRating",
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "review",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "priceValidUntil",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "priceValidUntil",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "priceValidUntil",
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "super-granule.cz",
+  "base": "https://www.super-granule.cz/",
+  "sitemap_urls": 1912,
+  "product_url": "https://www.super-granule.cz/dokas-tycinky-z-hovezi-kuze-obalene-kurecim-200-g/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [],
+  "org_props": null
+ },
+ {
+  "label": "pesan-krmiva.cz",
+  "base": "https://www.pesan-krmiva.cz/",
+  "sitemap_urls": 1205,
+  "product_url": "https://www.pesan-krmiva.cz/konzervy-pro-psy/dax-knz-kous-dogdrubezi-1240g/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "husse.cz",
+  "base": "https://www.husse.cz/",
+  "sitemap_urls": 388,
+  "product_url": "https://www.husse.cz/sterilised-pate-400-g/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 2,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "bellas.cz",
+  "base": "https://www.bellas.cz/",
+  "sitemap_urls": 227,
+  "product_url": "https://www.bellas.cz/saty/flitrove-saty-aria-2/",
+  "micro_types": [
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "name",
+   "offers",
+   "productID",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "nutrition-shop.cz",
+  "base": "https://www.nutrition-shop.cz/",
+  "sitemap_urls": 989,
+  "product_url": "https://www.nutrition-shop.cz/proteinove-tycinky/excelent-protein-bar-box-18-x-85g/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 12,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "sku",
+   "url"
+  ],
+  "raw_hits": [
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "brainmarket.cz",
+  "base": "https://www.brainmarket.cz/",
+  "sitemap_urls": 6215,
+  "product_url": "https://www.brainmarket.cz/filtracni-vlozka-k1-07-m--mineralizace-/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "QuantitativeValue",
+   "SearchAction",
+   "ShippingDeliveryTime",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "gtin13",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "priceValidUntil",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "priceValidUntil",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "priceValidUntil",
+   "gtin",
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ },
+ {
+  "label": "viviencosmetics.cz",
+  "base": "https://www.viviencosmetics.cz/",
+  "sitemap_urls": 664,
+  "product_url": "https://www.viviencosmetics.cz/vlasove-vody/vlasova-voda-lopuch/",
+  "micro_types": [
+   "Brand",
+   "BreadcrumbList",
+   "DefinedRegion",
+   "ListItem",
+   "MonetaryAmount",
+   "Offer",
+   "OfferShippingDetails",
+   "Organization",
+   "Product",
+   "SearchAction",
+   "WebSite"
+  ],
+  "offer_count": 1,
+  "has_product_group": false,
+  "product_props": [
+   "brand",
+   "category",
+   "description",
+   "identifier",
+   "image",
+   "manufacturer",
+   "name",
+   "offers",
+   "productID",
+   "sku",
+   "url"
+  ],
+  "offer_props": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "offer_props_union": [
+   "availability",
+   "itemCondition",
+   "price",
+   "priceCurrency",
+   "shippingDetails",
+   "url"
+  ],
+  "raw_hits": [
+   "color",
+   "size"
+  ],
+  "ld_types": [
+   "Organization"
+  ],
+  "org_props": [
+   "email",
+   "employee",
+   "name",
+   "sameAs",
+   "telephone",
+   "url"
+  ]
+ }
+]
