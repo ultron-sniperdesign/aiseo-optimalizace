@@ -1,0 +1,19 @@
+OpenAI GPTBot            200 ·   21 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Tue, 04 Aug 2026 23:34:36 GMT
+OpenAI SearchBot         200 ·   35 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Wed, 05 Aug 2026 23:22:09 GMT
+OpenAI ChatGPT-User      200 ·  258 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Fri, 07 Aug 2026 03:03:32 GMT
+Google Googlebot         200 ·  315 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Fri, 07 Aug 2026 14:46:09 GMT
+Google special           200 ·  270 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Fri, 07 Aug 2026 14:46:08 GMT
+Google user-triggered    200 · 1056 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Fri, 07 Aug 2026 14:46:09 GMT
+Google user-trig-goog    200 ·  494 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Fri, 07 Aug 2026 14:46:11 GMT
+Applebot                 200 ·   12 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified Wed, 01 Nov 2023 17:40:07 GMT
+Anthropic ClaudeBot      CHYBA: HTTP Error 404: Not Found
+Perplexity               200 ·    8 prefixů · klíče ['creationTime', 'prefixes'] · Last-Modified —
+
+--- doplňkové ověření adres ---
+Anthropic (bots.json)    200 ·   20 prefixů · klíče ['creationTime', 'prefixes'] · LM —
+     ukázka: {'ipv4Prefix': '216.73.216.0/22'}
+Perplexity (.ai)         200 ·    8 prefixů · klíče ['creationTime', 'prefixes'] · LM —
+     ukázka: {'ipv4Prefix': '107.20.236.150/32'}
+Perplexity user (.com)   200 ·    4 prefixů · klíče ['creationTime', 'prefixes'] · LM —
+     ukázka: {'ipv4Prefix': '44.208.221.197/32'}
+Common Crawl?            200 · není JSON (11137 B)

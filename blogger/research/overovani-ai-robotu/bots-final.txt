@@ -1,0 +1,13 @@
+ZDROJ                        PREFIXŮ   IPv4   IPv6  VYTVOŘENO/ZMĚNĚNO
+GPTBot (OpenAI)                 21     21      0  2025-10-30T11:00:00
+OAI-SearchBot (OpenAI)          35     35      0  2026-01-02T11:00:00
+ChatGPT-User (OpenAI)          258    258      0  2026-08-07T03:03:31
+ClaudeBot ad. (Anthropic)       20     20      0  2026-05-01T20:46:04
+PerplexityBot                    8      8      0  2025-02-07T16:56:00
+Perplexity-User                  4      4      0  2025-10-17T10:17:00
+Googlebot                      315    169    146  2026-08-07T14:45:43
+Google special-crawlers        270    135    135  2026-08-07T14:45:41
+Google user-triggered         1056    528    528  2026-08-07T14:45:42
+Applebot                        12     12      0  2023-10-27T10:00:00
+
+KONTROLA: moje veřejná IP (netisknu) patří do některého oficiálního rozsahu? NE, do žádného

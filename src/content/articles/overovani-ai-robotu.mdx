@@ -1,0 +1,147 @@
+---
+title: "Blokujete AI robota podle jména? Ověřil jsem, že to nestačí"
+description: "Z běžné IP jsem poslal požadavky pod jmény pěti AI robotů a 47 ze 47 webů odpovědělo. Ověřit jde podle IP rozsahů, u Googlu i reverzním DNS."
+answer: "User-agent si nastaví kdokoli, takže blokovat AI robota podle jména je děravé. Sám jsem z běžné IP, která nepatří do žádného oficiálního rozsahu, poslal požadavky pod jmény pěti AI robotů a všech 47 měřených webů odpovědělo. Ověření se u většiny provozovatelů opírá o seznam jejich IP rozsahů; u Googlu je dokumentovaný i postup přes reverzní a zpětný DNS."
+slug: "overovani-ai-robotu"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-08-08"
+updated: "2026-08-08"
+keywords:
+  - "ověření ai robota"
+  - "gptbot ip rozsahy"
+  - "reverzní dns googlebot"
+  - "podvržený user-agent"
+  - "claudebot ip"
+variant: "rich"
+stats:
+  - value: "47 / 47"
+    label: "webů, které odpověděly na požadavek pod jménem AI robota z běžné IP"
+  - value: "4–1 056"
+    label: "rozsah počtu prefixů v deseti měřených oficiálních souborech s IP rozsahy"
+  - value: "1 z 5"
+    label: "provozovatelů mělo v seznamech IPv6 — pouze Google, a to ve všech třech svých souborech"
+faq:
+  - q: "Proč nestačí blokovat podle user-agenta?"
+    a: "Protože je to jen textový řetězec, který si v požadavku nastaví kdokoli. Ověřil jsem si to na sobě: moje veřejná IP nepatří do žádného oficiálního rozsahu žádného z provozovatelů, a přesto jsem pod jmény pěti AI robotů dostal odpověď od všech 47 webů, které jsem měřil. Blokace podle jména zastaví jen toho, kdo se nesnaží."
+  - q: "Kde najdu oficiální seznamy IP rozsahů?"
+    a: "OpenAI má tři soubory na openai.com pro GPTBot, OAI-SearchBot a ChatGPT-User. Anthropic má jeden na claude.com, ne na anthropic.com — hledal jsem ho nejdřív podle domény a dostal 404. Perplexity má dva soubory, Google tři na developers.google.com a Apple jeden. Adresu se nevyplatí hádat; hledejte ji v dokumentaci provozovatele."
+  - q: "Jak ověření prakticky proběhne?"
+    a: "Vezmete IP adresu z logu a porovnáte ji se seznamem rozsahů daného provozovatele; tuhle cestu má všech pět. U Googlu jde navíc ruční postup přes DNS: reverzní dotaz na IP musí vrátit doménu googlebot.com, google.com nebo googleusercontent.com a zpětný dotaz na tu doménu musí vrátit tutéž IP. Anthropic reverzní DNS jako metodu ve své nápovědě neuvádí a odkazuje na seznam IP."
+  - q: "Co když robot přijde přes IPv6?"
+    a: "Pak ho proti těmhle seznamům neověříte, pokud nejde o Googla. V měření z 8. srpna 2026 měly IPv6 prefixy jen soubory Googlu — Googlebot 146, special-crawlers 135 a user-triggered-fetchers 528. OpenAI, Anthropic, Perplexity i Apple mají seznamy čistě IPv4. Neznamená to, že přes IPv6 nechodí; znamená to, že v seznamu ho nenajdete."
+  - q: "Znamená IP mimo seznam, že jde o podvrh?"
+    a: "Nutně ne. Seznam může být neúplný nebo zastaralý — a stáří se mezi provozovateli liší v řádu let. Soubor Perplexity nesl datum z února 2025 a Applebot z října 2023, zatímco Google a ChatGPT-User byly z téhož dne, kdy jsem měřil. IP mimo seznam je důvod k opatrnosti, ne důkaz."
+  - q: "Má smysl blokovat AI roboty podle IP?"
+    a: "Anthropic ve své nápovědě upozorňuje, že blokování podle IP nemusí fungovat spolehlivě, protože robotovi zabrání i v načtení robots.txt, tedy vašeho vlastního pokynu. Ověřování podle IP a blokování podle IP jsou dvě různé věci: první dává smysl vždy, druhé zvažte."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+V [měření Shoptetu](/blog/shoptet-robots-txt-ai-roboti/) jsem stáhl homepage 47 e-shopů pod jmény pěti AI robotů. **Všech 47 vrátilo odpověď 200** — přestože moje veřejná IP nepatří do žádného oficiálního rozsahu těch provozovatelů. Ověřil jsem si to.
+
+Šlo přitom o jeden běžný požadavek na homepage, bez obcházení ochran a bez zátěže; testoval jsem jen to, jestli web identitu robota vůbec nějak kontroluje. **Nekontroloval ji nikdo.**
+
+Tady na to navazuju praktickou otázkou: jak se identita AI robota ověřuje doopravdy. Porovnal jsem oficiální seznamy IP rozsahů pěti provozovatelů, kteří je publikují — OpenAI, Anthropic, Perplexity, Google a Apple.
+
+## Jmenovka není <span class="hl">průkaz</span>
+
+User-agent je textový řetězec, který si v požadavku nastaví kdokoli. Napsat do něj „GPTBot" zabere vteřinu. Blokace podle jména proto zastaví jen toho, kdo se nesnaží — a naopak nezastaví nikoho, kdo se snaží.
+
+Samotný user-agent nestačí. V běžně zdokumentované praxi se ověření opírá hlavně o **zdrojovou IP adresu**, u Googlu navíc o DNS. Jméno robota berte jako nápovědu, **který seznam otevřít** — ne jako důkaz.
+
+Provozovatelé kvůli tomu zveřejňují seznamy svých rozsahů. Vzal jsem všechny oficiální soubory těch pěti, které v článku srovnávám, a změřil, co v nich je.
+
+## Co jsem naměřil
+
+Odečet z 8. srpna 2026, deset oficiálních souborů. Pro praxi jsou z toho podstatné tři věci: kdo publikuje IPv6, jak staré ty soubory jsou a jak široký prostor mají roboti vyvolaní uživatelem.
+
+| Robot / zdroj | Prefixů | z toho IPv6 | Datum v souboru |
+|---|---|---|---|
+| GPTBot (OpenAI) | 21 | **0** | 30. 10. 2025 |
+| OAI-SearchBot (OpenAI) | 35 | **0** | 2. 1. 2026 |
+| ChatGPT-User (OpenAI) | 258 | **0** | 7. 8. 2026 |
+| ClaudeBot a spol. (Anthropic) | 20 | **0** | 1. 5. 2026 |
+| PerplexityBot | 8 | **0** | **7. 2. 2025** |
+| Perplexity-User | 4 | **0** | 17. 10. 2025 |
+| Googlebot | 315 | 146 | 7. 8. 2026 |
+| Google special-crawlers | 270 | 135 | 7. 8. 2026 |
+| Google user-triggered-fetchers | 1 056 | 528 | 7. 8. 2026 |
+| Applebot | 12 | **0** | **27. 10. 2023** |
+
+Tři věci na téhle tabulce stojí za pozornost.
+
+**IPv6 zveřejňuje jen Google.** Ostatní mají seznamy čistě IPv4. Pokud vám robot mimo Google přijde přes IPv6, proti těmhle zveřejněným souborům ho neověříte. Neznamená to, že přes IPv6 nechodí — znamená to, že v seznamu ho nenajdete.
+
+**Stáří se liší od dne měření po bezmála tři roky.** Google i ChatGPT-User měly datum z téhož dne, kdy jsem měřil. Soubor PerplexityBota nesl únor 2025 a Applebota říjen 2023. Nedělám z toho závěr o kvalitě provozovatele — starý soubor může znamenat i stabilní rozsahy.
+
+**Rozdíl mezi procházením a načtením na žádost uživatele je obrovský.** GPTBot má 21 prefixů, ChatGPT-User 258. U Googlu 315 proti 1 056. V publikovaných seznamech mají tedy roboti vyvolaní uživatelem výrazně širší adresní prostor — reálný provoz z těch rozsahů jsem ale netestoval.
+
+Pětice provozovatelů v tabulce není totožná s pěticí user-agentů z předchozího testu: Common Crawl použitelný strojový seznam na obvyklé adrese nemá, a Apple naopak v testu user-agentů nebyl, ale rozsahy publikuje.
+
+<Insight tone="warn" icon="!" label="Adresu souboru nehádejte">
+Adresu Anthropiku jsem nejdřív chybně odhadl jako `anthropic.com/claudebot.json` a dostal **404**. Neznamenalo to, že rozsahy nezveřejňuje — jen jsem hledal špatně. Správný soubor je na `claude.com/crawling/bots.json` a našel jsem ho až v nápovědě. **Adresu proto nehádejte podle domény.**
+</Insight>
+
+## Jak ověření probíhá
+
+Máte IP adresu z logu. Postup je pět kroků:
+
+1. podle user-agentu si **vytipujete provozovatele** (jméno je nápověda, ne důkaz),
+2. v jeho dokumentaci najdete **oficiální seznam rozsahů**,
+3. ověříte, jestli adresa **patří do některého prefixu**,
+4. zkontrolujete **datum v souboru**,
+5. u Googlu můžete výsledek potvrdit ještě **reverzním a zpětným DNS**.
+
+Kroky ale neplatí pro všechny stejně: se seznamem rozsahů pracujete u všech pěti, s DNS podle dokumentace u Googlu.
+
+**Porovnání se seznamem rozsahů.** Vezmete soubor provozovatele a zjistíte, jestli adresa do některého prefixu patří. Funguje u všech pěti, jen si musíte pohlídat, že máte aktuální soubor a že vám adresa nepřišla přes IPv6.
+
+**Reverzní a zpětný DNS.** Google to dokumentuje jako ruční metodu: reverzní dotaz na IP musí vrátit doménu `googlebot.com`, `google.com` nebo `googleusercontent.com`, a zpětný dotaz na tu doménu musí vrátit tutéž IP. Dvoukrokové ověření je důležité — samotný reverzní záznam si může nastavit majitel adresy.
+
+<Insight tone="aio" icon="i" label="U koho co platí">
+Reverzní DNS jako metodu ověření dokumentuje **Google**. Anthropic ji ve své nápovědě ke crawlerům neuvádí a odkazuje na seznam IP: „If a crawler has a source IP address on this list, it indicates that the crawler is coming from Anthropic." U ostatních provozovatelů je zveřejněný seznam rozsahů to, co máte k dispozici.
+</Insight>
+
+## Ověřování a blokování nejsou totéž
+
+Tady je rozdíl, který se často slévá. **Ověřit** při čtení logu, jestli adresa sedí na zveřejněný rozsah, dává smysl — bez toho čísla v logu nic neznamenají. **Neplyne z toho ale, že podle téže adresy máte i blokovat.**
+
+**Blokovat podle IP** je jiné rozhodnutí. Anthropic v nápovědě upozorňuje, že blokování podle adresy nemusí fungovat spolehlivě, protože robotovi zabrání i v načtení `robots.txt` — tedy vašeho vlastního pokynu, kterým mu chcete něco sdělit. Zablokovaná adresa neuslyší ani „nechoď sem".
+
+<MistakeGrid>
+<Mistake number="01" title="Blokovat podle jména v user-agentu">
+Zastaví jen toho, kdo se nesnaží. Sám jsem z běžné IP poslal požadavky pod jmény pěti AI robotů a odpověď 200 dostal od 47 webů ze 47.
+</Mistake>
+
+<Mistake number="02" title="Považovat IP mimo seznam za důkaz podvrhu">
+Seznam může být neúplný nebo starý. Ve vzorku byl soubor z října 2023 i soubor aktualizovaný týž den. Je to důvod k opatrnosti, ne verdikt.
+</Mistake>
+
+<Mistake number="03" title="Zaměnit ověření za blokaci">
+Ověřovat má smysl vždy. Blokovat podle IP je rozhodnutí s vedlejším účinkem — robot pak nepřečte ani váš robots.txt.
+</Mistake>
+</MistakeGrid>
+
+<Checklist tone="geo" title="Postup, když v logu uvidíte AI robota" items={[
+  { title: "Pro ověření berte IP, ne samotné jméno", desc: "User-agent je jen řetězec. Pro ověření rozhoduje adresa, ze které požadavek přišel." },
+  { title: "Najděte oficiální seznam v dokumentaci provozovatele", desc: "Adresu nehádejte podle domény — u Anthropiku je soubor na claude.com, ne na anthropic.com." },
+  { title: "Porovnejte adresu s prefixy v souboru", desc: "A zkontrolujte datum v souboru. Ve vzorku byly rozdíly v řádu let." },
+  { title: "U Googlu můžete použít reverzní a zpětný DNS", desc: "Reverzní dotaz musí vrátit googlebot.com, google.com nebo googleusercontent.com a zpětný tutéž IP." },
+  { title: "U adresy IPv6 počítejte s tím, že ji mimo Google nedohledáte", desc: "IPv6 prefixy měly v měření jen soubory Googlu." },
+]} />
+
+<Insight tone="aio" icon="i" label="Limity měření">
+Jeden odečet, **8. srpna 2026** — seznamy se mění a čísla platí k tomu dni. Měřil jsem, **co provozovatelé zveřejňují**, ne jestli roboti opravdu chodí z těch rozsahů. Reverzní DNS jsem v praxi netestoval, jen jsem přečetl, co o něm říká dokumentace. A podepsané požadavky (Web Bot Auth) jsou pořád ve vývoji, takže se na ně zatím spolehnout nedá.
+</Insight>
+
+## Kam to zapadá
+
+Závěr je prostý: **jméno robota berte jako tvrzení, IP adresu jako první ověřitelnou stopu.**
+
+Tenhle článek uzavírá limit, který jsem si sám přiznal v [měření robots.txt na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/). Jména robotů, jejich účely a co který znamená, rozebírá [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/). Řízení přístupu na úrovni CDN řeší [Cloudflare a AI bot blocking](/blog/cloudflare-ai-bot-blocking/) a zátěž, kterou roboti dělají, [AI roboti a zátěž webu](/blog/ai-roboti-zatez-webu/).
