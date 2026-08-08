@@ -1,0 +1,883 @@
+[
+ {
+  "label": "demo Samba",
+  "base": "https://samba.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://samba.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://samba.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 145132,
+   "text_words": 880
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://samba.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 13,
+  "category": {
+   "url": "https://samba.shoptet.cz/parfemy/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem"
+   ],
+   "bytes": 146005,
+   "text_words": 640
+  },
+  "product": {
+   "url": "https://samba.shoptet.cz/rtenky/kosmetika-8/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Organization",
+    "Brand",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue"
+   ],
+   "bytes": 100192,
+   "product_props": [
+    "brand",
+    "category",
+    "description",
+    "identifier",
+    "image",
+    "manufacturer",
+    "name",
+    "offers",
+    "productID",
+    "sku",
+    "url"
+   ],
+   "offer_props": [
+    "availability",
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "url"
+   ],
+   "availability": "https://schema.org/OutOfStock",
+   "text_words": 580
+  }
+ },
+ {
+  "label": "demo Disco",
+  "base": "https://disco.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://disco.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://disco.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 189656,
+   "text_words": 865
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://disco.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 14,
+  "category": {
+   "url": "https://disco.shoptet.cz/do-domacnosti/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem"
+   ],
+   "bytes": 157593,
+   "text_words": 750
+  },
+  "product": null
+ },
+ {
+  "label": "demo Step",
+  "base": "https://step.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://step.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://step.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 253441,
+   "text_words": 968
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://step.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 12,
+  "category": {
+   "url": "https://step.shoptet.cz/zena/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 178186,
+   "text_words": 780
+  },
+  "product": {
+   "url": "https://step.shoptet.cz/zena/nike-pro-compression/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 118417,
+   "product_props": [
+    "category",
+    "identifier",
+    "image",
+    "name",
+    "offers",
+    "productID",
+    "sku",
+    "url"
+   ],
+   "offer_props": [
+    "availability",
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "url"
+   ],
+   "availability": "https://schema.org/OutOfStock",
+   "text_words": 543
+  }
+ },
+ {
+  "label": "demo Classic",
+  "base": "https://classic.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://classic.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://classic.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 167774,
+   "text_words": 1214
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://774474.myshoptet.com/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 8,
+  "category": {
+   "url": "https://classic.shoptet.cz/novinky/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem"
+   ],
+   "bytes": 182686,
+   "text_words": 1067
+  },
+  "product": {
+   "url": "https://classic.shoptet.cz/dekorace/obraz-mountains/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Organization",
+    "Brand",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue"
+   ],
+   "bytes": 102804,
+   "product_props": [
+    "brand",
+    "category",
+    "description",
+    "identifier",
+    "image",
+    "manufacturer",
+    "name",
+    "offers",
+    "productID",
+    "sku",
+    "url"
+   ],
+   "offer_props": [
+    "availability",
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "url",
+    "warranty"
+   ],
+   "availability": "https://schema.org/InStock",
+   "text_words": 532
+  }
+ },
+ {
+  "label": "demo Waltz",
+  "base": "https://waltz.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://waltz.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://waltz.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 106965,
+   "text_words": 587
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://waltz.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 10,
+  "category": null,
+  "product": {
+   "url": "https://waltz.shoptet.cz/ovoce-a-zelenina/petrzel-korenova-prana-s-nati-svazek/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion"
+   ],
+   "bytes": 84472,
+   "product_props": [
+    "category",
+    "description",
+    "identifier",
+    "image",
+    "name",
+    "offers",
+    "productID",
+    "sku",
+    "url"
+   ],
+   "offer_props": [
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "url"
+   ],
+   "availability": null,
+   "text_words": 486
+  }
+ },
+ {
+  "label": "demo Tango",
+  "base": "https://tango.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://tango.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://tango.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 90126,
+   "text_words": 434
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://tango.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 11,
+  "category": {
+   "url": "https://tango.shoptet.cz/novinky/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [],
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 84507,
+   "text_words": 401
+  },
+  "product": {
+   "url": "https://tango.shoptet.cz/muzi/court-legacy-next-nature/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [],
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Organization",
+    "Brand",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "Offer",
+    "Offer",
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 111622,
+   "product_props": [
+    "brand",
+    "category",
+    "description",
+    "identifier",
+    "image",
+    "manufacturer",
+    "name",
+    "offers",
+    "productID",
+    "url"
+   ],
+   "offer_props": [
+    "availability",
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "sku",
+    "url"
+   ],
+   "availability": "https://schema.org/InStock",
+   "text_words": 520
+  }
+ },
+ {
+  "label": "demo Techno",
+  "base": "https://techno.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://techno.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://techno.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 109000,
+   "text_words": 479
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://techno.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 12,
+  "category": {
+   "url": "https://techno.shoptet.cz/obleceni/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 186770,
+   "text_words": 792
+  },
+  "product": {
+   "url": "https://techno.shoptet.cz/panske-obleceni/burton-haven-sherpa-flannel/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Organization",
+    "Brand",
+    "AggregateRating",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "ShippingDeliveryTime",
+    "QuantitativeValue",
+    "QuantitativeValue",
+    "Offer",
+    "Offer",
+    "Offer",
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 157835,
+   "product_props": [
+    "aggregateRating",
+    "brand",
+    "category",
+    "description",
+    "identifier",
+    "image",
+    "manufacturer",
+    "name",
+    "offers",
+    "productID",
+    "url"
+   ],
+   "offer_props": [
+    "availability",
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "sku",
+    "url",
+    "warranty"
+   ],
+   "availability": "https://schema.org/InStock",
+   "text_words": 797
+  }
+ },
+ {
+  "label": "demo Soul",
+  "base": "https://soul.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://soul.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://soul.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 99898,
+   "text_words": 677
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://soul.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 5,
+  "category": {
+   "url": "https://soul.shoptet.cz/obleceni/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem"
+   ],
+   "bytes": 157787,
+   "text_words": 1014
+  },
+  "product": {
+   "url": "https://soul.shoptet.cz/detske-obleceni/pelle-1978/",
+   "body": [
+    "type-product",
+    "type-detail"
+   ],
+   "ld": [],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "ListItem",
+    "Product",
+    "Organization",
+    "Brand",
+    "AggregateRating",
+    "Offer",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "OfferShippingDetails",
+    "MonetaryAmount",
+    "DefinedRegion",
+    "Review",
+    "Rating",
+    "Person"
+   ],
+   "bytes": 93727,
+   "product_props": [
+    "aggregateRating",
+    "brand",
+    "category",
+    "description",
+    "identifier",
+    "image",
+    "manufacturer",
+    "name",
+    "offers",
+    "productID",
+    "review",
+    "sku",
+    "url"
+   ],
+   "offer_props": [
+    "availability",
+    "itemCondition",
+    "price",
+    "priceCurrency",
+    "shippingDetails",
+    "url",
+    "warranty"
+   ],
+   "availability": "https://schema.org/InStock",
+   "text_words": 400
+  }
+ },
+ {
+  "label": "demo Pop",
+  "base": "https://pop.shoptet.cz/",
+  "home_status": 200,
+  "home_final": "https://pop.shoptet.cz/",
+  "shoptet_marks": [
+   "cdn.myshoptet.com",
+   "shoptet.cz",
+   "Shoptet.",
+   "shoptet-"
+  ],
+  "home": {
+   "url": "https://pop.shoptet.cz/",
+   "body": [
+    "type-index"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction"
+   ],
+   "bytes": 123073,
+   "text_words": 756
+  },
+  "robots_status": 200,
+  "robots": "User-agent: *\nDisallow: /export/\nDisallow: /admin/\nDisallow: /script/\nDisallow: /api/\nDisallow: /action/\nDisallow: /*?priceMax\nDisallow: /*?priceMin\nDisallow: /*?parameterId\nDisallow: /*?order\nDisallow: /*?availabilityId\nDisallow: /*?manufacturerId\nDisallow: /*?stock\nDisallow: /*?pv*=*,\nDisallow: /*&pv*=*,\nDisallow: /*?pv*=*&pv*=\nDisallow: /*&pv*=*&pv*=\nDisallow: /*:*,*/\nDisallow: /*/?backTo=\nDisallow: /*?dd=*,\nDisallow: /*&dd=*,\nDisallow: /*?dd=*&pv*=\nDisallow: /*?pv*=*&dd=\nDisallow: /*/?letter=*\nDisallow: /vyhledavani/\nDisallow: /kosik/\nDisallow: /login/\nDisallow: /registrace/\nDisallow: /klient/zapomenute-heslo/\nDisallow: /affiliate-registrace/\nDisallow: /affiliate-zapomenute-heslo/\nDisallow: /uzivatel/\nDisallow: /klient/moje-objednavka/\nDisallow: /affiliate/accounts/\nDisallow: /affiliate/scripts/\n\nDisallow: /*:diskuse\nDisallow: /*:dotaz\nDisallow: /*:hlidat-cenu\nDisallow: /*:klient-hodnoceni\nDisallow: /*:moznosti-dopravy\nDisallow: /*:wysiwyg\n\n\n\nSitemap: https://pop.shoptet.cz/sitemap.xml\n",
+  "sitemap_status": 200,
+  "pages_fetched": 11,
+  "category": {
+   "url": "https://pop.shoptet.cz/obleceni/",
+   "body": [
+    "type-category"
+   ],
+   "ld": [
+    "Organization"
+   ],
+   "micro_types": [
+    "WebSite",
+    "SearchAction",
+    "BreadcrumbList",
+    "ListItem",
+    "ListItem"
+   ],
+   "bytes": 190892,
+   "text_words": 1126
+  },
+  "product": null
+ }
+]

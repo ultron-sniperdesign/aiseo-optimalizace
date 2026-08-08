@@ -1,0 +1,43 @@
+E-SHOPŮ CELKEM: 15 (demo 9 + produkční 6)
+PRODUKTOVÝCH STRÁNEK ZMĚŘENO: 13
+
+Homepage s JSON-LD Organization: 11/15
+  bez JSON-LD úplně: ['demo Waltz', 'demo Tango', 'demo Soul', 'super-granule.cz']
+
+PRODUKTOVÉ STRÁNKY
+  JSON-LD typu Product      : 0/13
+  microdata typu Product    : 13/13
+  JSON-LD Organization      : 9/13
+  Product.name              13/13
+  Product.url               13/13
+  Product.image             13/13
+  Product.category          13/13
+  Product.identifier        13/13
+  Product.productID         13/13
+  Product.offers            13/13
+  Product.description       12/13
+  Product.sku                9/13
+  Product.brand             10/13
+  Product.aggregateRating    5/13
+  Product.review             4/13
+  Product.manufacturer      10/13
+
+  Offer.price               13/13
+  Offer.priceCurrency       13/13
+  Offer.availability        12/13
+  Offer.itemCondition       13/13
+  Offer.url                 13/13
+  Offer.shippingDetails     13/13
+  Offer.sku                  4/13
+  Offer.warranty             4/13
+
+  gtin (jakýkoli)           : 3/13  ['super-granule.cz', 'nutrition-shop.cz', 'brainmarket.cz']
+  hasMerchantReturnPolicy   : 0/13
+  priceValidUntil           : 0/13
+  text v HTML bez JS        : 400–3371 slov (medián 580)
+
+KATEGORIE (14 změřeno)
+  microdata typy: {'SearchAction': 14, 'BreadcrumbList': 14, 'WebSite': 14, 'ListItem': 14}
+  ItemList: 0
+  Product : 0
+  CollectionPage: 0

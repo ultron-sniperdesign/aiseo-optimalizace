@@ -1,0 +1,180 @@
+---
+title: "Shoptet dává produktová data v microdatech, ne v JSON-LD"
+description: "Měření 15 e-shopů na Shoptetu: produktová data jsou v microdatech, Product v JSON-LD nemá ani jeden. Kategorie sortiment ve strukturovaných datech nepopisují."
+answer: "Změřil jsem 15 e-shopů na Shoptetu — devět šablonových dem a šest produkčních. Ani jedna ze třinácti měřených produktových stránek neměla typ Product v JSON-LD; všechny ho měly v microdatech, včetně ceny, dostupnosti a podrobného dopravného. Na 14 měřených kategoriích nebyl ItemList, CollectionPage ani Product a robots.txt byl u všech patnácti identický."
+slug: "shoptet-strukturovana-data-mereni"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "mereni"
+published: "2026-08-08"
+updated: "2026-08-08"
+keywords:
+  - "shoptet strukturovaná data"
+  - "shoptet json-ld"
+  - "shoptet microdata"
+  - "shoptet robots.txt"
+  - "shoptet ai viditelnost"
+variant: "rich"
+stats:
+  - value: "0 / 13"
+    label: "měřených produktových stránek Shoptetu s typem Product v JSON-LD"
+  - value: "13 / 13"
+    label: "měřených produktových stránek s typem Product v microdatech"
+  - value: "0 / 14"
+    label: "měřených kategorií s ItemList, CollectionPage nebo Product ve strukturovaných datech"
+faq:
+  - q: "Znamená to, že Shoptet nemá strukturovaná data?"
+    a: "Ne, znamená to opak. Všech 13 měřených produktových stránek mělo typ Product — jen zapsaný jako microdata přímo v HTML, ne v samostatném skriptu JSON-LD. Kdo v kódu hledá jen řetězec application/ld+json, mine je."
+  - q: "Jak si ověřím, co má můj vlastní e-shop?"
+    a: "Otevřete zdrojový kód produktové stránky a hledejte itemtype, ne ld+json. Nebo produktovou URL vložte do testu rozšířených výsledků od Googlu, který čte oba formáty. Konkrétní pole si pak projděte proti tabulkám v článku — hlavně EAN, značku, výrobce a dostupnost. U kategorií počítejte s tím, že výpis sortimentu ve strukturovaných datech v měřeném vzorku chyběl, takže se opřete o text."
+  - q: "Čtou AI systémy microdata?"
+    a: "To jsem neměřil a netvrdím to ani jedním směrem. Vím, co je v HTML, ne co si z toho ChatGPT nebo Perplexity berou a jak to váží. Praktické riziko není v modelech, ale v postupu: v návodech, které říkají „přidejte JSON-LD“, a v nástrojích, které jiný formát nehlásí."
+  - q: "Proč je důležité, že kategorie nemají ItemList?"
+    a: "Protože nákupní dotazy typu „jaký X vybrat“ míří obsahem na kategorii, ne na jeden produkt. Na měřených kategoriích byla v microdatech jen drobečková navigace a vyhledávací akce webu — sortiment ani jednotlivé produkty tam strojově popsané nejsou. Text kategorie tím pádem nese hlavní váhu sám."
+  - q: "Co s tím, že robots.txt neřeší AI roboty?"
+    a: "Samo o sobě to není chyba — znamená to jen, že v souboru nemají vlastní pravidlo a spadají pod obecné `User-agent: *`, pokud se tak hlásí. Rozhodnutí, jestli to tak chcete, je vaše. Měřením jsem zjistil jen to, že žádný z 15 e-shopů žádné vlastní pravidlo pro AI roboty nemá."
+  - q: "Platí měření pro každý Shoptet e-shop?"
+    a: "Ne. Patnáct e-shopů je vzorek, ne populace. Devět z nich byly oficiální šablonové demo e-shopy, které ukazují výchozí stav platformy, šest byly reálné e-shopy na vlastních doménách. Placené šablony z tržiště doplňků jsem neměřil a měřil jsem jeden den, 8. srpna 2026."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+Ve [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/) doporučujeme JSON-LD. Je to rozumná rada — jenže když ji vezmete a otevřete zdroj produktové stránky na Shoptetu, nenajdete nic. Snadno z toho vyvodíte, že platforma strukturovaná data nemá.
+
+**Nemá je v tom formátu, ve kterém je hledáte.** Změřil jsem 15 e-shopů, abych zjistil, co Shoptet strojům posílá doopravdy.
+
+## Co jsem <span class="hl">měřil</span> a na čem
+
+Vzorek má dvě části, každou z jiného důvodu.
+
+**Devět šablonových demo e-shopů** — Samba, Disco, Step, Classic, Waltz, Tango, Techno, Soul a Pop. Adresy jsem vzal z oficiálního katalogu šablon na webu Shoptetu, z tlačítek „Demo e-shop“. Mají ukazovat **výchozí stav platformy bez zásahu majitele** a co je podstatné, nevybíral jsem je já — vybral je Shoptet tím, které šablony nabízí.
+
+**Šest produkčních e-shopů na vlastních doménách** — super-granule.cz, pesan-krmiva.cz, husse.cz, bellas.cz, nutrition-shop.cz a brainmarket.cz. Od menších po větší (brainmarket.cz má v sitemapě 6 215 adres). Ty ukazují, jestli to v praxi vypadá stejně. Příslušnost k platformě jsem ověřil otiskem v HTML: adresou `cdn.myshoptet.com` a objektem `Shoptet.` v JavaScriptu. Z dvaceti testovaných domén jich na Shoptetu běželo šest.
+
+Měřil jsem vlastním skriptem, ne nástrojem třetí strany: JSON-LD bloky jsem parsoval jako JSON, microdata parserem se zásobníkem `itemscope`, robots.txt jsem porovnával otiskem SHA-256 a obsah bez JavaScriptu počtem slov v HTML po odstranění skriptů a stylů.
+
+Celkem **15 e-shopů, 13 produktových stránek a 14 kategorií** — dvě dema při procházení produktovou stránku nevydala a jedno kategorii.
+
+## Ve vzorku byl Product vždy v microdatech, ne v JSON-LD
+
+| Co jsem hledal | Kolik e-shopů to má |
+|---|---|
+| Produktová stránka s typem **Product v JSON-LD** | **0 z 13** |
+| Produktová stránka s typem **Product v microdatech** | **13 z 13** |
+| Produktová stránka s blokem `Organization` v JSON-LD | 9 z 13 |
+| Homepage s blokem `Organization` v JSON-LD | 11 z 15 |
+| E-shop **bez jakéhokoli JSON-LD** | 4 z 15 |
+
+V tomhle vzorku jsem v JSON-LD našel jen blok `Organization` s identitou firmy — a ani ten ne všude. Veškerá produktová data jdou přes microdata, tedy atributy `itemtype` a `itemprop` zapsané rovnou v HTML u viditelného obsahu.
+
+<Insight tone="aio" icon="i" label="Microdata nejsou chyba">
+Dokumentace Google Search u strukturovaných dat vyjmenovává tři podporované formáty — **JSON-LD, microdata a RDFa** — a JSON-LD z nich označuje za doporučený, protože se nejsnáz udržuje ve velkém. Neuvádí, že by microdata byla vyloučená. Shoptet tedy nedělá nic zakázaného; jen sází na formát, který dnes většina návodů přeskakuje.
+</Insight>
+
+Prakticky to znamená jedinou věc: **při kontrole vlastního e-shopu hledejte `itemtype`, ne `ld+json`.** Kdo hledá jen to druhé, uvidí prázdno tam, kde prázdno není.
+
+## Která pole produktová data nesou
+
+Tohle je jádro měření — co přesně o produktu Shoptet strojům řekne. Jde o 13 konkrétních produktových adres, zpravidla po jedné na e-shop; celé katalogy jsem neprocházel.
+
+| Pole typu `Product` | Kolik z 13 |
+|---|---|
+| `name`, `url`, `image`, `category`, `offers` a interní identifikátory (`identifier`, `productID`) | **13 z 13** |
+| popis | 12 z 13 |
+| výrobce | 10 z 13 |
+| značka | 10 z 13 |
+| skladové označení (`sku`) | 9 z 13 |
+| souhrnné hodnocení | 5 z 13 |
+| jednotlivé recenze | 4 z 13 |
+| **EAN / GTIN** | **3 z 13** |
+
+| Pole typu `Offer` (nabídka) | Kolik z 13 |
+|---|---|
+| cena, měna, stav zboží, adresa, **dopravné** | **13 z 13** |
+| dostupnost | 12 z 13 |
+| **deklarace vrácení zboží** | **0 z 13** |
+| **platnost ceny do data** | **0 z 13** |
+
+Dvě věci na téhle tabulce stojí za zdržení.
+
+**Dopravné je nezvykle podrobné.** U všech třinácti produktů byla data o dopravě rozepsaná pro každého dopravce zvlášť, včetně ceny a cílové oblasti; u jedenácti z nich i s dodací dobou. Na demu Soul to byly například Zásilkovna, PPL, Česká pošta, GLS a osobní odběr — každý jako samostatná položka. V měřeném vzorku se tahle data propisovala systematicky, na rozdíl od polí, která si plní majitel sám. Prakticky: co máte poctivě nastavené v dopravě, dostanou stroje kompletní.
+
+**EAN má jen necelá čtvrtina.** A tady pozor na příčinu: `gtin` se do dat propíše, když ho majitel vyplní u produktu. Není to nedostatek platformy, ale nevyplněný sloupec v katalogu. Právě EAN je přitom údaj, přes který se produkt páruje napříč systémy — proč na něm záleží, rozebírá [článek o produktovém feedu a GTIN](/blog/produktovy-feed-gtin/).
+
+## Kategorie sortiment ve strukturovaných datech nepopisují
+
+Na **14 ze 14** měřených kategorií byly v microdatech jen čtyři typy: drobečková navigace, její položky, identita webu a vyhledávací akce.
+
+| Typ, který by kategorii popsal | Kolik ze 14 |
+|---|---|
+| `ItemList` (seznam položek) | **0** |
+| `CollectionPage` (stránka výpisu) | **0** |
+| jakýkoli `Product` ve výpisu | **0** |
+
+Kategorie tedy ve strukturovaných datech neříká, jaký sortiment obsahuje ani které produkty ve výpisu jsou. Drobečkovou cestu ano, sortiment ne.
+
+<Insight tone="warn" icon="!" label="Proč je to zrovna u kategorie nepříjemné">
+Nákupní dotazy, na které lidé chtějí od AI odpověď, znějí „jaký X vybrat“ nebo „nejlepší X pro Y“ — a obsahem na ně odpovídá **kategorie**, ne jeden produkt. Na měřených e-shopech nese tuhle odpovědnost hlavně text kategorie, protože strukturovaná data k němu o sortimentu nic nepřidávají. V praxi to znamená mít na kategorii srozumitelný úvod k výběru, rozdíly mezi typy produktů, hlavní parametry a typické použití — ne obecný odstavec o ničem. Jak takový text napsat, řeší [texty kategorií pro AI éru](/blog/kategorie-texty-pro-ai/).
+</Insight>
+
+## robots.txt: patnáctkrát stejný soubor
+
+Tohle mě překvapilo nejvíc. Po normalizaci jediného řádku, který se liší (adresa sitemapy), mají **všech 15 e-shopů byte-identický robots.txt** — jeden a tentýž otisk SHA-256. Jeden blok `User-agent: *`, 40 řádků `Disallow`, žádné `Allow`.
+
+Zmínek o AI robotech: **nula.** Nenašel jsem ani běžně uváděné user-agenty jako GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot nebo Bytespider. Vlastní pravidlo tedy AI roboti v těch souborech nemají; pokud se hlásí user-agentem, na který dopadá `User-agent: *`, platí pro ně stejná obecná omezení jako pro ostatní roboty bez výjimky.
+
+Co soubor blokuje: administraci a exporty, filtrové parametry (řazení, cenové rozpětí, výběr parametrů), vyhledávání, košík, přihlášení, affiliate — a záložky produktu jako diskuse, dotaz nebo hodnocení klientů.
+
+Pro majitele e-shopu z toho plyne jedna věc: pokud chcete přístup AI robotů řešit vědomě, nikdo to za vás zatím neudělal a musíte si vlastní stav ověřit sami.
+
+<Insight tone="signal" icon="?" label="Co z identity souborů NEplyne">
+Neplyne z ní, že robots.txt nejde v administraci upravit. Plyne z ní jen tolik, že **ani jeden z 15 měřených e-shopů ho upravený nemá**. Jestli to jde a jak, je otázka do administrace — a je to téma druhého dílu tohohle bloku. Do té doby netvrdím ani jedno.
+</Insight>
+
+Obecný rozcestník po robotech, jejich jménech a účelech je v [návodu na robots.txt pro AI](/blog/ai-crawler-robots-txt/).
+
+## Obsah je v HTML, JavaScript není potřeba
+
+Po odstranění všech skriptů a stylů zbylo na produktových stránkách **400 až 3 371 slov textu**, medián 580. Textový obsah produktové stránky je tedy v měřeném vzorku dostupný přímo v HTML, bez spouštění JavaScriptu. Neměřil jsem úplnost všech prvků stránky, jen text.
+
+## Tři závěry, které si z toho odnést
+
+<MistakeGrid>
+<Mistake number="01" title="Hledat JSON-LD a usoudit, že data nejsou">
+Nejčastější omyl, do kterého jsem sám málem spadl. Na Shoptetu se v kódu hledá `itemtype`. Data tam jsou a jsou docela úplná — jen v jiném formátu, než na jaký jsou návody zvyklé.
+</Mistake>
+
+<Mistake number="02" title="Spoléhat, že platforma vyplní EAN a značku za vás">
+Cenu, měnu, dostupnost a dopravné Shoptet doplní sám. EAN mělo 3 ze 13 produktů a značku 10 ze 13 — protože tohle jsou údaje z vašeho katalogu. Prázdný sloupec v administraci znamená prázdné pole v datech.
+</Mistake>
+
+<Mistake number="03" title="Čekat, že kategorii vytáhnou strukturovaná data">
+Nevytáhnou, na měřených e-shopech tam k produktům žádná nejsou. Hlavní práci odvede text kategorie. Kdo ho odbude na dva odstavce, nemá stroji co nabídnout.
+</Mistake>
+</MistakeGrid>
+
+## Co udělat hned po dočtení
+
+Nezačínejte doplňovat vlastní JSON-LD naslepo — v měřeném vzorku byla data na místě, jen v jiném formátu. Nejdřív si ověřte, jestli se do stávajících microdat propisují vaše klíčová pole, hlavně EAN, značka a výrobce. A u kategorií počítejte s tím, že informační roli pro stroje nese text výpisu, ne jeho strukturovaná data.
+
+<Checklist tone="geo" title="Co si na svém e-shopu ověřit za deset minut" items={[
+  { title: "Otevřít zdroj produktu a hledat itemtype", desc: "Ne ld+json. Měl by tam být Product, Offer, cena, měna a dostupnost." },
+  { title: "Zkontrolovat EAN u produktů", desc: "Vyplněný EAN se propíše do dat jako gtin. Nevyplněný nikoli, ať děláte cokoli jiného." },
+  { title: "Zkontrolovat značku a výrobce", desc: "Stejný princip — pole se objeví v datech jen tehdy, když je v katalogu vyplněné." },
+  { title: "Přečíst si text kategorie očima stroje", desc: "Ve strukturovaných datech nebylo o sortimentu v měřeném vzorku nic, takže hlavním nositelem zůstává text." },
+  { title: "Podívat se na vlastní robots.txt", desc: "Porovnejte ho s tím, co popisuje článek. Pokud je shodný, nejspíš v něm nemáte žádnou vlastní úpravu." },
+]} />
+
+<Insight tone="aio" icon="i" label="Limity měření">
+Patnáct e-shopů je vzorek, ne populace — Shoptet jich provozuje řádově víc. Měřil jsem **jeden den, 8. srpna 2026**, a platforma se mění. Neměřil jsem placené šablony z tržiště doplňků, protože v katalogu nemají demo adresu. Neměřil jsem administraci, takže netvrdím nic o tom, co v ní jde a nejde nastavit. A hlavně: **neměřil jsem, co s těmi daty dělají AI systémy** — vím, co je v HTML, ne co si z toho který model bere.
+</Insight>
+
+## Kam tenhle článek patří
+
+Je to první díl bloku o Shoptetu a viditelnosti v AI; v dalších navážu robots.txt, datovými poli v administraci, filtry a blogovým modulem.
+
+Obecná doporučení bez ohledu na platformu najdete v [produktových stránkách pro AI](/blog/produktove-stranky-pro-ai/) a v přehledu [AI SEO pro Upgates a Shoptet](/blog/ai-seo-upgates-shoptet/). Co z produktových dat čtou nákupní agenti, rozebírají [AI nákupní agenti](/blog/ai-nakupni-agenti/).

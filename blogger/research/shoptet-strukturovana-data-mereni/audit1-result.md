@@ -1,0 +1,44 @@
+1. [ZÁVAŽNOST střední] Frontmatter `description` → věta „Kategorie strojům neřeknou nic o sortimentu.“ je příliš absolutní a může být vyložena jako „kategorie neobsahují vůbec žádný strojově čitelný signál“, což není pravda: mají `SearchAction`, `BreadcrumbList`, `WebSite`, `ListItem` → navržená oprava: **"Změřil jsem 15 e-shopů na Shoptetu. Produktová data jsou v microdatech — typ Product v JSON-LD nemá ani jeden. Kategorie ve strukturovaných datech nepopisují sortiment ani seznam produktů."**
+
+2. [ZÁVAŽNOST střední] Frontmatter `answer` → formulace „Kategorie nenesou o produktech nic“ je silnější než data. Naměřeno je pouze `ItemList: 0`, `Product: 0`, `CollectionPage: 0` na 14 kategoriích; ne že „nenesou nic“ obecně → navržená oprava: **"Změřil jsem 15 e-shopů na Shoptetu — devět šablonových dem a šest produkčních. Ani jedna ze třinácti měřených produktových stránek neměla typ Product v JSON-LD; všechny ho měly v microdatech, včetně ceny, dostupnosti a podrobného dopravného. Na 14 měřených kategoriích jsem nenašel ItemList, CollectionPage ani Product ve výpisu a robots.txt byl u všech patnácti po normalizaci řádku Sitemap identický."**
+
+3. [ZÁVAŽNOST střední] `stats[2]` → label „měřených kategorií, které strojům říkají, jaké produkty obsahují“ převádí konkrétně měřené typy (`ItemList`, `Product`, `CollectionPage`) na širší interpretační tvrzení. To je zkratka, ale ne přesná → navržená oprava: **label: "měřených kategorií s ItemList, CollectionPage nebo Product ve strukturovaných datech"**
+
+4. [ZÁVAŽNOST drobná] Nadpis „Formát: microdata všude, JSON-LD skoro nikde“ → „skoro nikde“ je vágní. V datech je na homepage `Organization` 11/15 a na produktu `Organization` 9/13; problém není JSON-LD obecně, ale absence `Product` v JSON-LD → navržená oprava: **"Formát: Product vždy v microdatech, ne v JSON-LD"**
+
+5. [ZÁVAŽNOST střední] Věta „Jediný JSON-LD, který se na Shoptetu objevuje, je blok `Organization` s identitou firmy“ → z naměřených dat nelze tvrdit „jediný JSON-LD na Shoptetu“ obecně. Měřeno bylo 15 e-shopů a pouze přítomnost `Organization`; jiné JSON-LD typy jste nevykázal jako systematicky hledané na všech stránkách → navržená oprava: **"V tomhle vzorku jsem v JSON-LD našel jen blok `Organization` s identitou firmy — a ani ten ne na všech stránkách."**
+
+6. [ZÁVAŽNOST střední] Sekce „Která pole produktová data nesou“ → souhrnný řádek „název, adresa, obrázek, zařazení, identifikátor, nabídka | 13 z 13“ míchá více polí do jedné položky a zamlčuje, že jde konkrétně o `name`, `url`, `image`, `category`, `identifier`, `productID`, `offers`. Čtenář může nabýt dojmu, že jde o standardizovaný minimální balík „všech klíčových identifikátorů“, což neplatí, protože `gtin` je jen 3/13 a `sku` 9/13 → navržená oprava: **"name, url, image, category, identifier, productID, offers | 13 z 13"**
+
+7. [ZÁVAŽNOST drobná] FAQ „…hlavně jestli máte vyplněný EAN a značku, protože to jsou údaje z vaší databáze, ne z platformy.“ → u EAN je to daty doloženo jen nepřímo (`gtin` 3/13); u značky (`brand` 10/13) z měření neplyne příčinný vztah „je to z vaší databáze, ne z platformy“, byť to může být pravda. To je interpretace nad rámec měření → navržená oprava: **"…hlavně jestli máte vyplněný EAN a značku. V naměřeném vzorku se tyto údaje v datech neobjevovaly vždy, takže je potřeba je ověřit přímo ve vašem katalogu."**
+
+8. [ZÁVAŽNOST střední] Sekce o kategoriích → věta „Kategorie tedy strojově neříká, jaký sortiment obsahuje ani které produkty ve výpisu jsou.“ je už interpretační závěr z absence tří typů schématu. Bezpečnější je říct, že to neříká **ve strukturovaných datech**, protože sortiment může nést samotný HTML text → navržená oprava: **"Kategorie tedy ve strukturovaných datech neříká, jaký sortiment obsahuje ani které produkty ve výpisu jsou."**
+
+9. [ZÁVAŽNOST střední] Insight „Text kategorie tím pádem nese celou váhu sám.“ / v těle „Na měřených e-shopech nese tuhle odpovědnost výhradně text kategorie“ → „celou váhu“ a „výhradně“ jsou přestřelené. Kromě textu existují i jiné signály v HTML a interním propojení; měření pouze ukazuje absenci konkrétních strukturovaných dat na kategorii → navržená oprava: **"Text kategorie tím pádem nese hlavní váhu sám."** a **"Na měřených e-shopech nese tuhle odpovědnost hlavně text kategorie, protože strukturovaná data k němu nic o sortimentu nepřidávají."**
+
+10. [ZÁVAŽNOST kritická] Sekce `robots.txt` → věta „AI roboti tedy spadají pod obecné pravidlo a mají přesně stejný přístup jako Googlebot.“ je silnější, než data unesou. Naměřeno je jen absence explicitních zmínek o AI robotech a existence `User-agent: *`; neověřoval jste konkrétní user-agent matching jednotlivých robotů ani jejich chování. Navíc některé roboty mohou ctít specifická pravidla jinak nebo použít jiný UA → navržená oprava: **"V naměřených souborech nejsou pro AI roboty žádná samostatná pravidla; pokud se hlásí user-agentem, na který dopadá `User-agent: *`, vztahují se na ně stejná obecná omezení jako na ostatní roboty bez vlastní výjimky."**
+
+11. [ZÁVAŽNOST střední] FAQ „…znamená to, že AI roboti spadají pod pravidlo pro všechny a mají stejný přístup jako Googlebot.“ → stejný problém jako výše, navíc ve FAQ bez podmínky → navržená oprava: **"…znamená to, že v robots.txt nemají vlastní samostatná pravidla. Pokud se na ně vztahuje `User-agent: *`, mají stejná obecná omezení jako ostatní roboti bez vlastní výjimky."**
+
+12. [ZÁVAŽNOST drobná] „Žádný GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot ani Bytespider.“ → výčet může působit jako úplný seznam relevantních AI robotů, ale je jen ilustrativní → navržená oprava: **"Nenašel jsem ani běžně uváděné AI user-agenty typu GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot nebo Bytespider."**
+
+13. [ZÁVAŽNOST střední] Sekce „Obsah je v HTML, JavaScript není potřeba“ → závěr „Robot, který neumí spustit JavaScript, obsah přečte celý.“ je nepodloženě absolutní. Měřil jste jen počet slov po odstranění skriptů a stylů, ne úplnost všech obsahových a navigačních prvků ani to, co konkrétní robot skutečně extrahuje → navržená oprava: **"Na naměřených produktových stránkách zůstalo po odstranění skriptů a stylů 400 až 3 371 slov textu, medián 580. Základní obsah je tedy dostupný přímo v HTML i bez spouštění JavaScriptu."**
+
+14. [ZÁVAŽNOST střední] Tentýž odstavec → věta „To je pro platformu dobrá zpráva a ušetří vám to jednu celou kategorii starostí.“ je hodnotící a zobecňuje dopad na všechny případy. Data jen ukazují text přítomný v HTML u 13 produktů → navržená oprava: **"To snižuje závislost produktových stránek na JavaScriptu alespoň u textového obsahu v naměřeném vzorku."**
+
+15. [ZÁVAŽNOST střední] Mistake 03 „Celou práci odvede text kategorie.“ → opět příliš absolutní a v rozporu s opatrnějším limitem v závěru článku → navržená oprava: **"Hlavní práci odvede text kategorie."**
+
+16. [ZÁVAŽNOST drobná] Checklist „Je to jediné, co o sortimentu kategorie strojově řekne.“ → „jediné“ je příliš silné vzhledem k přítomným breadcrumbs a viditelnému seznamu produktů v HTML. Přesné je, že to jediné říká ve strukturovaných datech o sortimentu naměřený vzorek neobsahoval → navržená oprava: **"Ve strukturovaných datech je to v naměřeném vzorku hlavní nositel informace o sortimentu."**
+
+17. [ZÁVAŽNOST drobná] Věta „Ukazují výchozí stav platformy bez zásahu majitele“ u demo e-shopů → to není přímo doloženo měřením, je to rozumný předpoklad. Bez ověření by měl být formulován opatrněji → navržená oprava: **"Mají sloužit jako ukázka výchozího stavu platformy bez zásahu majitele."**
+
+18. [ZÁVAŽNOST drobná] Věta „Od malých po velký“ → jazykově i významově nepřesné; vzorek 6 produkčních e-shopů není reprezentativní škála trhu → navržená oprava: **"Od menších po větší"** nebo větu vypustit.
+
+19. [ZÁVAŽNOST střední] Celkově v článku chybí explicitní připomenutí, že produktových stránek bylo jen 13, ne 15 e-shopů × více produktů. U některých formulací („Shoptet strojům řekne“, „Shoptet doplní sám“) to může čtenář přečíst jako platformové pravidlo, ne jako zjištění na jedné URL na e-shop → navržená oprava: doplnit hned po první větě tabulkové sekce větu **"Jde o měření na 13 konkrétních produktových URL, typicky po jedné na e-shop; ne o průchod celými katalogy."**
+
+20. [ZÁVAŽNOST střední] Věta „Tuhle práci dělá platforma sama.“ u dopravného → z dat plyne přítomnost `OfferShippingDetails` 13/13 a `ShippingDeliveryTime` 11/13, ale ne mechanismus vzniku ani to, co je default platformy versus konfigurace obchodníka → navržená oprava: **"V naměřeném vzorku se tato data do značky propisovala systematicky."**
+
+3 nejdůležitější věci k opravě:
+1. Zmírnit kategorické tvrzení u `robots.txt` a „stejného přístupu jako Googlebot“.
+2. Opravit absolutní formulace o kategoriích („neřeknou nic“, „celou váhu“, „výhradně text“).
+3. Zúžit tvrzení o JSON-LD z „jediný JSON-LD na Shoptetu“ na „v tomhle vzorku jsem našel jen Organization“.
