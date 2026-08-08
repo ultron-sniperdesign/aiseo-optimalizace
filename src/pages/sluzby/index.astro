@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
+import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import * as p from "~/content/pages/sluzby";
 import { buildFaqJsonLd } from "~/lib/jsonld";
 
@@ -13,7 +14,8 @@ import { buildFaqJsonLd } from "~/lib/jsonld";
  *
  * Obsah: content/pages/sluzby.ts (per-mutace). Kotvy #kroky, #moduly a #obsah
  * jsou odkazované z detailních stránek retainerů — neměnit bez redirectu.
- * ProofStrip tu záměrně není: jeho čísla nese ledger, duplikace by je oslabila.
+ * Důkazy nese sdílený ProofStrip (kompaktní, čísla s vysvětlením) — vlastní
+ * „výkaz" byl vizuálně velký a bez kontextu (zpětná vazba 2026-08-09).
  */
 const jsonLd = [buildFaqJsonLd(p.faq), p.offerCatalogJsonLd];
 
@@ -70,21 +72,8 @@ const stepColors = [
       </div>
     </section>
 
-    <!-- ===== VÝKAZ DŮKAZŮ ===== -->
-    <section class="ledger" aria-label="Výsledky z vlastních dat">
-      <div class="ledger__head">
-        <span>{p.ledger.headLeft}</span>
-        <span>{p.ledger.headRight}</span>
-      </div>
-      {p.ledger.rows.map((row) => (
-        <div class={`lrow${row.hi ? " lrow--hi" : ""}`}>
-          <span class="lrow__label">{row.label}</span>
-          <span class="lrow__leader" aria-hidden="true"></span>
-          <span class="lrow__value">{row.value}<small>{row.unit}</small></span>
-        </div>
-      ))}
-      <p class="ledger__src" set:html={p.ledger.srcHtml}></p>
-    </section>
+    <!-- ===== DŮKAZ — sdílený ProofStrip (kompaktní, s kontextem) ===== -->
+    <ProofStrip />
 
     <!-- ===== TŘI KROKY ===== -->
     <section class="steps" id="kroky" aria-labelledby="steps-title">
@@ -352,17 +341,6 @@ const stepColors = [
     .btn { transition: none; }
   }
 
-  /* mono „hlavička výkazu" — sdílený vzor sekcí */
-  .ledger__head {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-ink-faint);
-  }
 
   /* ============ HERO ============ */
   .hero {
@@ -439,30 +417,6 @@ const stepColors = [
   }
   @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
-  /* ============ LEDGER — tmavá důkazová karta (jazyk ProofStrip) ============ */
-  .ledger {
-    margin-top: clamp(4rem, 9vw, 7rem);
-    border-radius: 24px;
-    background:
-      radial-gradient(120% 160% at 85% -20%, oklch(0.42 0.14 264 / 0.55), transparent 55%),
-      radial-gradient(100% 140% at 0% 110%, oklch(0.4 0.1 155 / 0.35), transparent 50%),
-      oklch(0.21 0.03 262);
-    color: oklch(0.97 0.005 250);
-    padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem);
-    box-shadow:
-      0 32px 80px -32px oklch(0.2 0.06 262 / 0.55),
-      0 6px 16px -8px oklch(0.2 0.06 262 / 0.3);
-  }
-  .ledger .ledger__head { color: oklch(0.78 0.05 250); }
-  .lrow { display: flex; align-items: baseline; gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid oklch(1 0 0 / 0.14); }
-  .lrow:last-of-type { border-bottom: 0; }
-  .lrow__label { font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 500; letter-spacing: -0.01em; flex-shrink: 0; max-width: 26rem; }
-  .lrow__leader { flex: 1; border-bottom: 2px dotted oklch(1 0 0 / 0.25); transform: translateY(-6px); min-width: 2rem; }
-  .lrow__value { font-family: var(--font-mono); font-size: clamp(1.6rem, 3.4vw, 2.8rem); letter-spacing: -0.03em; white-space: nowrap; }
-  .lrow__value small { font-size: 0.45em; color: oklch(0.75 0.03 255); }
-  .lrow--hi .lrow__value { color: oklch(0.82 0.12 250); text-shadow: 0 0 30px oklch(0.6 0.18 250 / 0.5); }
-  .ledger__src { font-family: var(--font-mono); font-size: 0.72rem; color: oklch(0.68 0.03 255); padding-top: 1rem; margin: 0; border-top: 1px solid oklch(1 0 0 / 0.14); }
-  .ledger__src :global(a) { color: oklch(0.82 0.09 250); }
 
   /* ============ KROKY ============ */
   .steps { margin-top: clamp(4.5rem, 10vw, 8rem); }

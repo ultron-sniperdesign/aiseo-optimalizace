@@ -45,20 +45,6 @@ export const heroShot = {
   ariaLabel: "Stylizovaný náhled reportu Search Console — 200 018 zobrazení v AI odpovědích",
 };
 
-/* ============ VÝKAZ DŮKAZŮ (ledger) ============ */
-
-export const ledger = {
-  headLeft: "Výkaz — vlastní data, ne slidy",
-  headRight: "zdroj: GSC + GA4",
-  rows: [
-    { label: "Zobrazení v AI odpovědích Googlu za dva měsíce", value: "200 000", unit: "×", hi: true },
-    { label: "Konverze návštěv z ChatGPT proti Google vyhledávání", value: "4", unit: "× vyšší", hi: false },
-    { label: "E-shopů, kterým stavíme viditelnost od roku 2016", value: "600", unit: "+", hi: false },
-  ],
-  srcHtml:
-    'Čísla z e-shopu MEGA DETAIL (vlastní projekt agentury) — výchozí stav před cílenou optimalizací, veřejně je zlepšujeme. Detail v <a href="/blog/case-study-megadetail-ai-navstevnost/">případové studii</a>.',
-};
-
 /* ============ TŘI KROKY (editorial kapitoly) ============ */
 
 export const steps = {
