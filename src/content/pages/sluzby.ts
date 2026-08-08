@@ -56,6 +56,7 @@ export const steps = {
       title: "Zjistíme, kde ztrácíte",
       desc: "Projdeme technickou i obsahovou část webu a nad výsledky proběhne meeting (30–60 min). Odejdete s prioritizovaným plánem — co vás u AI brzdí, co má smysl řešit a co zvládnete sami.",
       priceHtml: "<b>3 600 Kč</b> <i>· bez DPH · jediná pevně daná cena před auditem</i>",
+      cta: { label: "Objednat audit", href: "/audit/", gold: true },
     },
     {
       num: "02",
@@ -63,6 +64,7 @@ export const steps = {
       title: "Připravíme web, který AI přečte",
       desc: "Prověřené úpravy, které přímo ovlivňují šance na citace — na jakékoli platformě. Postup i pracnost se ale web od webu liší, proto cenu stanovíme po auditu, ne z ceníku, který by neplatil. Co přesně technická příprava obnáší, ukazují karty níže.",
       priceHtml: "<b>Cena na míru</b> <i>· rozsah i cena podle auditu</i>",
+      cta: { label: "Poptat technickou přípravu", href: "/kontakt/?sluzba=technicka-priprava", gold: false },
     },
     {
       num: "03",
@@ -70,6 +72,7 @@ export const steps = {
       title: "Dodáme odpovědi, které AI cituje",
       desc: "Texty ve formátu, ze kterého AI skládá odpovědi — krátké odpovědi, FAQ, fakta místo frází. Jediná část nabídky s garantovanou cenou předem: na platformě totiž nezávisí. Detail úrovní níže.",
       priceHtml: "<b>od 18 Kč</b> <i>/ kategorie</i> · <b>od 34 Kč</b> <i>/ produkt</i>",
+      cta: { label: "Prohlédnout ceník obsahu", href: "#obsah", gold: false },
     },
   ],
 };
