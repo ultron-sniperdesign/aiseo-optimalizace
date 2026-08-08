@@ -58,6 +58,13 @@ export default defineConfig({
    */
   redirects: {
     "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio",
+    // 2026-08-05: 4 detailní stránky služeb stažené při přestavbě /sluzby/
+    // (nová nabídka je má jako sekce indexu, samostatný detail ztratil smysl).
+    // 301 na index, ať se equity ze zaindexovaných URL neztratí.
+    "/sluzby/freshness-program": "/sluzby",
+    "/sluzby/geo-obsah-eshopy": "/sluzby",
+    "/sluzby/off-page-pro-ai": "/sluzby",
+    "/sluzby/technicka-uprava": "/sluzby",
     "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat",
     "/seo-nastroje-2026": "/blog/seo-nastroje-2026",
     "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview",
