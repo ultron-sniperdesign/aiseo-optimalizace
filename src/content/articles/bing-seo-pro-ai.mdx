@@ -1,32 +1,32 @@
 ---
 title: "Bing SEO pro AI: indexace v Bingu krok za krokem 2026"
-description: "Proč může indexace v Bingu pomoct s dohledatelností v AI vyhledávání — a jak nastavit Bing Webmaster Tools a IndexNow krok za krokem."
-answer: "Bing SEO pro AI je technické nastavení webu tak, aby byl dohledatelný v indexu Bingu, který podle dostupných informací patří mezi zdroje využívané ChatGPT při webovém vyhledávání. Základní kroky jsou tři: ověřit web v Bing Webmaster Tools, odeslat sitemapu a zapnout IndexNow. Indexace může zvýšit šanci na dohledatelnost, nezaručuje ale citaci."
+description: "Jak dostat web do Bingu přes Bing Webmaster Tools a IndexNow — a proč stejné oznámení míří i na Seznam.cz. Krok za krokem, s ověřenými zdroji."
+answer: "Bing SEO pro AI je technické nastavení webu pro prostředí Microsoftu, kde Bing Webmaster Tools reportuje citace v Copilotu a v AI shrnutích v Bingu. Postup má pět kroků: ověřit web, odeslat sitemapu, zapnout IndexNow, zkontrolovat klíč a změřit citace. Stejné oznámení přes IndexNow míří i na Seznam.cz. Indexace ale citaci nezaručí."
 slug: "bing-seo-pro-ai"
 category: "tutorial"
 tags:
   - "ai-platformy"
 published: "2026-05-24"
-updated: "2026-05-24"
+updated: "2026-08-08"
 variant: "rich"
 keywords:
   - "bing seo pro ai"
   - "indexace v bingu"
   - "bing webmaster tools"
   - "indexnow"
-  - "chatgpt vyhledávání"
-  - "oai-searchbot"
+  - "indexnow seznam"
+  - "microsoft copilot"
+  - "ai performance report"
   - "ai viditelnost"
-  - "sitemapa"
 stats:
-  - value: "Bing"
-    label: "index, který se vyplatí kontrolovat kvůli AI dohledatelnosti"
+  - value: "7"
+    label: "vyhledávačů přijímá oznámení přes IndexNow — Google mezi nimi není"
   - value: "sekundy"
-    label: "IndexNow umí rychle oznámit změněné URL Bingu"
+    label: "IndexNow umí rychle oznámit změněné URL"
   - value: "zdarma"
     label: "Bing Webmaster Tools i IndexNow"
-  - value: "3 kroky"
-    label: "ověřit web, sitemapa, IndexNow"
+  - value: "5 kroků"
+    label: "ověřit web, sitemapa, IndexNow, kontrola klíče, měření"
 howto:
   name: "Jak dostat web do Bingu pro AI vyhledávání"
   steps:
@@ -35,22 +35,26 @@ howto:
     - name: "Odešlete sitemapu"
       text: "V Bing Webmaster Tools přidejte XML sitemapu, aby Bing snáz objevil všechny vaše stránky."
     - name: "Zapněte IndexNow"
-      text: "IndexNow je otevřený protokol podporovaný Bingem, kterým rychle oznámíte nové nebo změněné URL. Na WordPressu ho zapnete přes SEO plugin (například Rank Math)."
-    - name: "Ověřte indexaci"
-      text: "V Bing Webmaster Tools sledujte stav sitemap a použijte kontrolu konkrétní URL; hledání site:vasedomena.cz v Bingu je jen orientační."
+      text: "IndexNow je otevřený protokol, kterým jedním oznámením řeknete o změněné URL Bingu, Seznamu.cz i dalším zapojeným vyhledávačům. Na WordPressu ho zapnete přes SEO plugin (například Rank Math)."
+    - name: "Zkontrolujte, že IndexNow běží"
+      text: "Ověřte, že klíčový soubor na vaší doméně vrací HTTP 200 a obsahuje přesně ten klíč, a že odeslání končí odpovědí 200 nebo 202."
+    - name: "Ověřte indexaci a měřte citace"
+      text: "V Bing Webmaster Tools sledujte stav sitemap a použijte kontrolu konkrétní URL. Na citace v AI odpovědích je tam od února 2026 report AI Performance."
 faq:
   - q: "Proč u AI SEO řešit Bing?"
-    a: "Protože Bing může být podle dostupných informací důležitým zdrojem pro webové vyhledávání v ChatGPT. Pokud web v Bingu chybí, vzniká technická překážka dohledatelnosti. Neznamená to opustit Google, ale přidat Bing jako další důležitý kanál."
-  - q: "Používá ChatGPT opravdu Bing?"
-    a: "ChatGPT při webovém vyhledávání podle dostupných informací využívá index Bingu pro nalezení aktuálních zdrojů. Neznamená to, že Bing je jediný zdroj nebo že indexace v Bingu zaručí citaci — odstraňuje ale technickou překážku, aby vás ChatGPT vůbec našel."
+    a: "Protože k Bingu Microsoft vztahuje své AI plochy — v Bing Webmaster Tools reportuje citace v Copilotu a v AI shrnutích v Bingu. Pokud web v Bingu chybí, vzniká technická překážka dohledatelnosti v tomhle prostředí. Neznamená to opustit Google, ale přidat Bing jako další kanál."
+  - q: "Používá ChatGPT index Bingu?"
+    a: "Z dokumentace OpenAI to nevyplývá. OpenAI popisuje vlastního robota OAI-SearchBot, který weby pro vyhledávání v ChatGPT sbírá, a žádný cizí index neuvádí. Dřívější verze tohoto článku na vztahu ChatGPT a Bingu stavěla; doložit se nám ho nepodařilo, tak jsme ho přestali používat jako hlavní argument."
+  - q: "Posílá IndexNow data jen Bingu?"
+    a: "Ne. K 8. 8. 2026 jsou v registru protokolu zapojené Bing, Seznam.cz, Yandex, Naver, Yep, Internet Archive a Amazon. Jedním oznámením jde obsloužit všechny zapojené. Google mezi nimi není."
   - q: "Co je IndexNow a jak pomáhá?"
-    a: "IndexNow je otevřený protokol podporovaný Bingem, kterým web okamžitě oznámí, že přibyla, změnila se nebo zmizela stránka — místo čekání na běžné procházení. Oznámení proběhne v řádu sekund; samotné zařazení do indexu a čas zobrazení ale nelze garantovat."
+    a: "IndexNow je otevřený protokol, kterým web jedním požadavkem oznámí, že přibyla, změnila se nebo zmizela stránka — místo čekání na běžné procházení. Oznámení proběhne v řádu sekund; samotné zařazení do indexu a čas zobrazení ale nelze garantovat."
   - q: "Je Bing Webmaster Tools zdarma?"
     a: "Ano, Bing Webmaster Tools i protokol IndexNow jsou zdarma. Stačí ověřit vlastnictví webu; pokud už máte Google Search Console, jde web do Bing Webmaster Tools naimportovat během chvíle."
-  - q: "Zaručí indexace v Bingu citace v ChatGPT?"
-    a: "Ne. Indexace v Bingu je důležitá technická vrstva dohledatelnosti, ne záruka citace. Aby vás ChatGPT skutečně citoval, musí být obsah i relevantní, aktuální, citovatelně strukturovaný a důvěryhodný. Indexace jen otevírá dveře."
+  - q: "Zaručí indexace v Bingu citaci v AI odpovědi?"
+    a: "Ne. Indexace je technická vrstva dohledatelnosti, ne záruka citace. Aby vás AI odpověď skutečně citovala, musí být obsah relevantní, aktuální, citovatelně strukturovaný a důvěryhodný. Indexace jen otevírá dveře."
   - q: "Jak rychle se nový obsah dostane do Bingu?"
-    a: "Bez IndexNow může běžné procházení trvat dny. S IndexNow se oznámení odešle v řádu sekund a Bing může URL objevit dříve. Samotné zařazení do indexu závisí na kvalitě a stavu webu a přesný čas nelze garantovat."
+    a: "Bez IndexNow může běžné procházení trvat dny. S IndexNow se oznámení odešle v řádu sekund a vyhledávač může URL objevit dříve. Samotné zařazení do indexu závisí na kvalitě a stavu webu a přesný čas nelze garantovat."
 ---
 
 import Checklist from "../../components/blocks/Checklist.astro";
@@ -60,15 +64,24 @@ import Mistake from "../../components/blocks/Mistake.astro";
 
 ## Bing SEO pro AI: proč řešit indexaci v Bingu
 
-**Bing SEO pro AI znamená dostat web do indexu Bingu a odstranit technickou překážku dohledatelnosti v AI vyhledávání.** Podle dostupných informací může ChatGPT při webovém vyhledávání využívat Bing jako jeden z důležitých zdrojů, takže pokud web v Bingu chybí, ChatGPT ho hůř najde. Tenhle návod ukazuje, jak web do Bingu dostat a jak indexaci zrychlit — přes Bing Webmaster Tools a protokol IndexNow.
+**Bing SEO pro AI znamená dostat web do indexu Bingu a odstranit technickou překážku dohledatelnosti v prostředí Microsoftu.** Právě sem Microsoft vztahuje své AI plochy: v Bing Webmaster Tools od února 2026 vlastníkům webů reportuje citace v Copilotu a v AI shrnutích v Bingu. Tenhle návod ukazuje, jak web do Bingu dostat, jak indexaci zrychlit a jak si ověřit, že to funguje — přes Bing Webmaster Tools a protokol IndexNow.
 
-Indexace v Bingu je **důležitá technická vrstva dohledatelnosti, ne záruka citace** (stav k květnu 2026). Otevírá dveře; o samotnou citaci pak rozhoduje kvalita a struktura obsahu, kterou řeší [SEO pro ChatGPT](/blog/chatgpt-seo/).
+Indexace je **technická vrstva dohledatelnosti, ne záruka citace**. Otevírá dveře; o samotnou citaci pak rozhoduje kvalita a struktura obsahu, kterou řeší [SEO pro ChatGPT](/blog/chatgpt-seo/).
+
+<Insight tone="warn" icon="!" label="Otevřená oprava k 8. 8. 2026">
+  Původní verze z května 2026 stavěla na tom, že ChatGPT při webovém vyhledávání využívá index Bingu. V dokumentaci OpenAI jsme to **nedoložili** — popisuje vlastního robota OAI-SearchBot a žádný cizí index neuvádí.
+
+  Neznamená to, že jsme dokázali opak. Znamená to, že jsme ten argument stáhli. Důvod řešit Bing zůstává a je doložitelný: **Microsoft citace svých AI ploch sám reportuje.**
+</Insight>
 
 ## Proč Bing pro AI vyhledávání
 
-U klasického SEO se soustředíte na Google. U AI je to jinak: ChatGPT při webovém vyhledávání podle dostupných informací využívá i **index Bingu**. Pro ChatGPT tak může být Bing důležitým kanálem, který přitom většina českých webů nijak neřeší.
+U klasického SEO se soustředíte na Google. Bing dává smysl přidat ze dvou konkrétních důvodů:
 
-Neznamená to opustit Google. Znamená to **přidat Bing** jako druhý kanál, na kterém u AI záleží.
+- **Microsoft citace svých AI ploch reportuje vlastníkům webů.** U reportu AI Performance uvádí, že pokrývá citace v Copilotu, v AI shrnutích v Bingu a ve vybraných partnerských integracích. Nemusíte tedy odhadovat, jestli se tam vaše stránky objevují.
+- **Jsou v něm i dotazy.** Vedle citovaných URL ukazuje grounding queries — fráze, kterými si AI podklad hledala. To je mezi bezplatnými oficiálními reporty vzácné.
+
+Neznamená to opustit Google. Znamená to **přidat druhý kanál**, na kterém u AI záleží — a který většina českých webů nijak neřeší.
 
 <Insight tone="accent" icon="!" label="Co si odnést">
   Bing je technická vrstva dohledatelnosti — otevírá dveře. Indexace ale není citace; o tu rozhoduje kvalita a struktura obsahu.
@@ -80,6 +93,7 @@ Základ je dostat web do Bingu:
 
 - Přidejte web v **Bing Webmaster Tools** a ověřte vlastnictví.
 - Nejrychlejší cesta je **import z Google Search Console** — web i sitemapy se přenesou během chvíle.
+- Když import neprojde (jiný typ property, chybějící oprávnění), ověřte web standardně přes DNS záznam, meta tag nebo soubor v kořeni — podle toho, co hosting dovolí.
 
 ## Krok 2: Odešlete sitemapu
 
@@ -88,16 +102,43 @@ XML sitemapa pomáhá Bingu objevit všechny vaše stránky:
 - V Bing Webmaster Tools přidejte adresu své `sitemap.xml`.
 - Zkontrolujte, že sitemapa vrací HTTP 200 a obsahuje aktuální URL.
 
-## Krok 3: Zapněte IndexNow
+## Krok 3: Zapněte IndexNow — netýká se jen Bingu
 
-**IndexNow** je otevřený protokol podporovaný Bingem, kterým mu **okamžitě oznámíte** nový, změněný nebo smazaný obsah — místo čekání na běžné procházení:
+**IndexNow** je otevřený protokol, kterým jedním požadavkem **oznámíte změnu** URL — nový, změněný nebo smazaný obsah — místo čekání na běžné procházení:
 
-- Oznámení proběhne v řádu **sekund**. Bing díky tomu může obsah objevit rychleji, samotné zařazení do indexu a čas zobrazení ale nelze garantovat.
+- Oznámení proběhne v řádu **sekund**. Vyhledávač díky tomu může obsah objevit rychleji, samotné zařazení do indexu a čas zobrazení ale nelze garantovat.
 - Na WordPressu ho zapnete přes SEO plugin (například Rank Math); řada platforem ho má zabudovaný.
+
+A tady je věc, kterou jsme v původní verzi článku měli špatně: IndexNow **není bingový protokol**. Jedním oznámením jde obsloužit všechny zapojené vyhledávače. K 8. 8. 2026 jsou ve strojovém registru protokolu tyhle:
+
+| Vyhledávač | Kam oznámení míří |
+|---|---|
+| Microsoft Bing | `www.bing.com/indexnow` |
+| **Seznam.cz** | `search.seznam.cz/indexnow` |
+| Yandex | `yandex.com/indexnow` |
+| Naver | `searchadvisor.naver.com/indexnow` |
+| Yep | `indexnow.yep.com/indexnow` |
+| Internet Archive | `web-static.archive.org/indexnow` |
+| Amazon | `indexnow.amazonbot.amazon/indexnow` |
+
+**Google v seznamu není.**
+
+Pro český web je nejzajímavější druhý řádek. Neověřovali jsme to jen podle registru — ten by mohl být zastaralý —, ale i přímo u Seznamu: jeho `meta.json` vrací **HTTP 200** a živou konfiguraci včetně vlastního API endpointu a publikovaných IP rozsahů. Není to zapomenutý záznam v cizí tabulce.
 
 Technické zpřístupnění webu pro AI roboty rozebírá [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/).
 
-## Ověřte indexaci
+## Krok 4: Ověřte, že IndexNow opravdu běží
+
+Zapnout plugin nestačí — nejčastější tichá chyba je, že se klíč nevytvořil správně a oznámení se zahazují. Projděte si čtyři věci:
+
+<Checklist tone="aeo" title="Kontrola IndexNow" items={[
+  { title: "Klíčový soubor je veřejně dostupný", desc: "adresa typu vasedomena.cz/<klic>.txt musí vracet HTTP 200, ne 404 ani přesměrování." },
+  { title: "Obsah souboru je přesně ten klíč", desc: "žádné odřádkování navíc, žádná HTML šablona kolem — jen samotný řetězec." },
+  { title: "Odeslání vrací 200 nebo 202", desc: "v logu pluginu nebo serveru zkontrolujte odpověď endpointu; 403 obvykle znamená nesedící klíč." },
+  { title: "Posíláte jen vlastní URL", desc: "oznámení pro cizí doménu endpoint odmítne." }
+]} />
+
+## Krok 5: Ověřte indexaci a změřte citace
 
 Po nastavení zkontrolujte, že web Bing skutečně zná:
 
@@ -106,34 +147,43 @@ Po nastavení zkontrolujte, že web Bing skutečně zná:
   { title: "Orientační test site:", desc: "hledání site:vasedomena.cz v Bingu napoví, ale přesný stav je v Bing Webmaster Tools." }
 ]} />
 
+Indexace je ale jen vstup. Jestli vás AI plochy Microsoftu opravdu citují, ukáže **report AI Performance** v Bing Webmaster Tools — od února 2026 ve veřejné preview, zdarma, s citovanými URL i s dotazy, kterými si AI podklad hledala.
+
+Dvě věci k němu ale patří rovnou. Microsoft sám uvádí, že **data jsou jen vzorek** celkové aktivity — nedá se z nich počítat podíl ani brát časový vývoj doslova. A u citací výslovně píše, že číslo **neindikuje pozici, autoritu ani roli stránky** v konkrétní odpovědi. Je to signál, ne úplný log.
+
+Co přesně v reportu je a jak s grounding queries pracovat, rozebíráme v samostatném článku: [Bing ukazuje, jak si Copilot hledá podklad](/blog/bing-ai-performance-report/).
+
 ## Co Bing a IndexNow neudělají (a na co dát pozor)
 
 Co je důležité vědět:
 
-- **Indexace není citace** — dostat se do Bingu znamená, že stránka může být technicky dohledatelná, ale ChatGPT cituje podle relevance, aktuálnosti a důvěryhodnosti.
+- **Indexace není citace** — dostat se do Bingu znamená, že stránka může být technicky dohledatelná, ale AI cituje podle relevance, aktuálnosti a důvěryhodnosti.
+- **IndexNow negarantuje indexaci** — protokol sám v dokumentaci uvádí, že odeslání URL okamžitou indexaci nezaručuje; vyhledávač pak váží vlastní crawl kvótu, plánování i kvalitativní signály.
 - **IndexNow nezrychlí kvalitu** — pošle obsah rychleji, ale slabý obsah kvalitnějším neudělá.
 - **Pozor i na roboty** — ověřte, že v `robots.txt` zbytečně neblokujete relevantní vyhledávací roboty, zejména Bingbot a podle strategie i OAI-SearchBot od OpenAI.
-- **Bing není jediný kanál** — je důležitý pro ChatGPT, ale AI viditelnost má víc vrstev (obsah, zmínky, strukturovaná data).
+- **Bing není jediný kanál** — AI viditelnost má víc vrstev (obsah, zmínky, strukturovaná data).
 
 ## Časté chyby
 
 <MistakeGrid>
   <Mistake num="01" title="Řešit jen Google" fix="U AI kontrolujte i Bing.">
-    Bing může být jedním ze zdrojů pro dohledávání obsahu v AI vyhledávání.
+    V prostředí Microsoftu dává Bing smysl sledovat: Bing Webmaster Tools reportuje citace v Copilotu i v AI shrnutích.
   </Mistake>
-  <Mistake num="02" title="Spoléhat jen na sitemapu" fix="Zapněte IndexNow.">
-    IndexNow pomáhá Bingu rychleji zjistit, že se URL změnila.
+  <Mistake num="02" title="Brát IndexNow jako bingový" fix="Zapněte ho i kvůli Seznamu.">
+    Jedno oznámení míří k sedmi vyhledávačům včetně Seznamu.cz. Google mezi nimi není.
   </Mistake>
   <Mistake num="03" title="Čekat citace hned po indexaci" fix="Berte indexaci jako začátek.">
     Indexace je vstup, ne výsledek — citaci řeší kvalita obsahu.
   </Mistake>
-  <Mistake num="04" title="Zapomenout ověřit" fix="Zkontrolujte stav v Bing Webmaster Tools.">
-    Bez kontroly nevíte, jestli vás Bing vůbec zná.
+  <Mistake num="04" title="Nastavit a nezměřit" fix="Otevřete report AI Performance.">
+    Bez měření nevíte, jestli vás Copilot cituje, ani na jaké fráze.
   </Mistake>
 </MistakeGrid>
 
 ## Co dál: zasaďte Bing do celku
 
-Bing je technická vrstva. Jak na ni navázat obsahem a měřením, shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/) a [AI SEO audit](/blog/ai-seo-audit/).
+Shrnuto v pěti krocích: ověřte web v Bing Webmaster Tools, pošlete sitemapu, zapněte IndexNow, zkontrolujte, že klíčový soubor vrací 200, a otevřete report AI Performance. Tím máte technickou vrstvu hotovou i změřenou. Přes IndexNow jste u toho mimochodem obsloužili i Seznam.
 
-Když chcete celý web připravit na AI vyhledávání, pomůže [AI SEO Wireframe Pack](/pack/) za 1 490 Kč. Pro plán na míru je tu produktový [AI SEO audit za 3 600 Kč](/audit/).
+Bing je ale jen ta technická vrstva. Jak na ni navázat obsahem a měřením, shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/) a [AI SEO audit](/blog/ai-seo-audit/).
+
+Kdybyste na to chtěli hotový podklad, máme [AI SEO Wireframe Pack](/pack/) i [audit na míru](/audit/).
