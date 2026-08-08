@@ -46,7 +46,7 @@ const stepColors = [
         <div class="r r3">
           <p class="hero__lead" set:html={p.hero.lead}></p>
           <div class="hero__cta">
-            <a class="btn btn--ink" href={p.hero.ctaPrimary.href}>{p.hero.ctaPrimary.label} <span aria-hidden="true">→</span></a>
+            <a class="btn btn--gold" href={p.hero.ctaPrimary.href}>{p.hero.ctaPrimary.label} <span aria-hidden="true">→</span></a>
             <a class="btn btn--ghost" href={p.hero.ctaSecondary.href}>{p.hero.ctaSecondary.label}</a>
           </div>
           <p class="hero__trust">{p.hero.trustLine}</p>
@@ -191,7 +191,7 @@ const stepColors = [
       <div class="offer__buy">
         <p class="offer__price">{p.offer.price}</p>
         <p class="offer__vat">{p.offer.vat}</p>
-        <a class="btn btn--ink" href={p.offer.cta.href}>{p.offer.cta.label} <span aria-hidden="true">→</span></a>
+        <a class="btn btn--gold" href={p.offer.cta.href}>{p.offer.cta.label} <span aria-hidden="true">→</span></a>
         <p class="offer__risk">{p.offer.risk}</p>
       </div>
     </section>
@@ -242,7 +242,7 @@ const stepColors = [
         <div class="check__bar" aria-hidden="true"><div class="check__fill" data-check-fill></div></div>
         <div class="check__foot">
           <p class="check__hint">{p.selfCheck.hint}</p>
-          <a href={p.selfCheck.ctaHref} class="btn btn--ink">{p.selfCheck.cta} <span aria-hidden="true">→</span></a>
+          <a href={p.selfCheck.ctaHref} class="btn btn--gold">{p.selfCheck.cta} <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -285,7 +285,7 @@ const stepColors = [
       <h2 id="final-title" class="final__title" set:html={p.finalCta.titleHtml}></h2>
       <p class="final__lead">{p.finalCta.lead}</p>
       <div class="final__btns">
-        <a class="btn btn--ink" href={p.finalCta.btnPrimary.href}>{p.finalCta.btnPrimary.label} <span aria-hidden="true">→</span></a>
+        <a class="btn btn--gold" href={p.finalCta.btnPrimary.href}>{p.finalCta.btnPrimary.label} <span aria-hidden="true">→</span></a>
         <a class="btn btn--ghost" href={p.finalCta.btnSecondary.href}>{p.finalCta.btnSecondary.label}</a>
       </div>
     </section>
@@ -335,8 +335,9 @@ const stepColors = [
     padding: 0.85rem 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .btn--ink { background: var(--color-ink); color: var(--color-paper); }
-  .btn--ink:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -14px oklch(0.2 0.012 260 / 0.55); }
+  /* Konverzní zlatá — stejné tokeny jako header CTA „Návod zdarma". */
+  .btn--gold { background: #f7c25c; color: #6a4a06; font-weight: 600; box-shadow: 0 6px 16px rgba(240, 180, 60, 0.4); }
+  .btn--gold:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(240, 180, 60, 0.5); }
   .btn--ghost { border: 1px solid var(--color-rule-strong); color: var(--color-ink); }
   .btn--ghost:hover { border-color: var(--color-ink); }
 
@@ -627,8 +628,7 @@ const stepColors = [
   .offer__price { font-family: var(--font-mono); font-size: clamp(2.5rem, 5vw, 3.5rem); letter-spacing: -0.03em; margin: 0; color: oklch(0.85 0.13 80); text-shadow: 0 0 34px oklch(0.8 0.16 80 / 0.4); }
   .offer__vat { font-family: var(--font-mono); font-size: 0.7rem; color: oklch(0.72 0.03 255); letter-spacing: 0.1em; text-transform: uppercase; margin: 0.3rem 0 1.3rem; }
   .offer__risk { font-size: 0.85rem; color: oklch(0.8 0.02 255); margin: 1rem auto 0; max-width: 24ch; }
-  .offer .btn--ink { background: linear-gradient(180deg, oklch(0.82 0.16 80), oklch(0.7 0.15 75)); color: oklch(0.24 0.06 80); font-weight: 600; box-shadow: 0 14px 34px -14px oklch(0.75 0.16 80 / 0.65); }
-  .offer .btn--ink:hover { box-shadow: 0 20px 40px -14px oklch(0.75 0.16 80 / 0.8); }
+
 
   /* ============ RETAINERY ============ */
   .ret__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 2rem; }
