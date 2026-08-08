@@ -1,14 +1,14 @@
 ---
-title: "AI SEO pro Upgates a Shoptet 2026: hotové vs. doplnit"
-description: "Upgates i Shoptet mají technický SEO základ z velké části hotový. Pro AI vyhledávání doplňte popisy, FAQ, recenze a srovnání."
-answer: "AI SEO na Upgates a Shoptetu znamená využít technický základ, který obě platformy obvykle řeší automaticky — strukturovaná data, sitemap a kanonizaci — a doplnit obsahovou vrstvu pro AI: citovatelné popisy, FAQ na produktech a kategoriích, recenze a srovnávací obsah. Rozdíl často dělá obsah a reputace."
+title: "AI SEO pro Shoptet a Upgates: co je změřené a co ne"
+description: "Shoptet jsme změřili na 47 e-shopech: základ je hotový, ale jinak, než se čeká. Upgates měřený nemáme — a dáváme postup, jak si ho ověříte sami."
+answer: "Na Shoptetu jsme na 47 e-shopech ověřili, že technický základ je z velké části hotový, jen jinak, než se obvykle popisuje: produktová data jdou v microdatech, ne v JSON-LD, a povinné vlastnosti podle Googlu splňuje každý měřený obchod. Upgates jsme v tomhle rozsahu neměřili. U obou platforem ale obvykle rozhoduje i obsahová vrstva: citovatelné popisy, FAQ a recenze."
 slug: "ai-seo-upgates-shoptet"
 category: "tutorial"
 tags:
   - "eshopy"
   - "technicke-zaklady"
 published: "2026-06-05"
-updated: "2026-06-05"
+updated: "2026-08-08"
 variant: "rich"
 keywords:
   - "ai seo upgates shoptet"
@@ -19,36 +19,40 @@ keywords:
   - "strukturovaná data upgates"
   - "robots.txt eshop ai"
 stats:
-  - value: "automaticky"
-    label: "Shoptet i Upgates obvykle generují typy Product, BreadcrumbList a WebSite ve strukturovaných datech"
-  - value: "obsah"
-    label: "AI vrstva = popisy, FAQ, recenze a srovnání nad technickým základem"
-  - value: "Marketing/SEO"
-    label: "v administraci obou platforem lze podle tarifu řešit robots.txt, meta údaje a URL"
-  - value: "CZ + AI"
-    label: "obsah pro AI dotazy „X pro Y“ a „nejlepší X“ bývá u eshopů častá rezerva"
+  - value: "38 / 38"
+    label: "měřených e-shopů na Shoptetu splňuje povinné vlastnosti produktu podle dokumentace Googlu"
+  - value: "microdata"
+    label: "formát, ve kterém Shoptet posílá produktová data — ne JSON-LD, jak radí většina návodů"
+  - value: "0 / 47"
+    label: "měřených e-shopů na Shoptetu, které v robots.txt blokují nějakého AI robota"
+  - value: "neměřeno"
+    label: "Upgates — v článku bez vlastního měření; část o něm je návod k ověření, ne datový výsledek"
 howto:
   name: "Jak připravit eshop na Upgates nebo Shoptetu pro AI vyhledávání"
   steps:
-    - name: "Ověřte, co platforma řeší automaticky"
-      text: "Zkontrolujte v administraci Upgates nebo Shoptetu, že běží strukturovaná data (Product, BreadcrumbList), sitemap a kanonizace. Většinu z toho mají obě platformy ve výchozím stavu."
+    - name: "Podívejte se do zdroje, ne do administrace"
+      text: "Otevřete zdrojový kód produktové stránky a hledejte itemtype, ne ld+json. Na Shoptetu jdou produktová data v microdatech; kdo hledá jen JSON-LD, uvidí prázdno tam, kde prázdno není."
+    - name: "Doplňte, co platforma neplní za vás"
+      text: "EAN a značku si plníte v katalogu a propíšou se do dat. Deklaraci vrácení zboží, parametry variant ani provázání variant Shoptet ve výchozím stavu negeneruje — to je téma pro doplněk nebo úpravu šablony."
     - name: "Doplňte citovatelné popisy"
-      text: "Na začátku produktu a kategorie dejte krátkou odpověď „pro koho a kdy“. Takový odstavec může zvýšit šanci, že AI systém obsah správně pochopí a použije ve shrnutí. Detail nechte níž."
+      text: "Na začátku produktu a kategorie dejte krátkou odpověď „pro koho a kdy“. Kategorie to potřebuje o to víc, že o sortimentu ve strukturovaných datech nic neříká."
     - name: "Přidejte FAQ na produkty a kategorie"
       text: "Krátké otázky a odpovědi přesně mapují to, co kupci zadávají do AI. Tahle sekce je v eshopech největší citační rezerva."
     - name: "Pracujte na recenzích a srovnání"
       text: "Heureka, Zboží, Google Recenze a oborové portály — AI při sestavení odpovědi často čerpá ze zdrojů třetích stran. Doplňte i interní srovnávací obsah."
 faq:
-  - q: "Generuje Shoptet a Upgates strukturovaná data automaticky?"
-    a: "Obvykle ano. Obě platformy ve výchozím stavu generují strukturovaná data typu Product, BreadcrumbList a WebSite. U Product dat se cena a dostupnost většinou propisují automaticky; hodnocení závisí na konkrétním nastavení recenzí, šabloně a doplňcích. Co bývá potřeba doplnit ručně, je typ FAQPage tam, kde má stránka skutečnou FAQ sekci — typicky produktové stránky a kategorie. FAQPage má smysl jen tam, kde je FAQ viditelná i pro uživatele. Nejde o garanci rich výsledku v Googlu; hlavní přínos je jasnější struktura obsahu pro AI i uživatele."
-  - q: "Co konkrétně doplnit v Upgates nebo Shoptetu, aby web vyhovoval AI vyhledávání?"
-    a: "Hlavně obsahovou vrstvu: krátké citovatelné popisy nahoře produktu a kategorie („pro koho a kdy“), FAQ sekce na produktech i kategoriích, jasné srovnání mezi typy zboží a péče o recenze ze třetích zdrojů (Heureka, Zboží, Google). Technické základy nechte na platformě, energii investujte do obsahu a reputace."
-  - q: "Jak nastavit robots.txt v Upgates a Shoptetu pro AI roboty?"
-    a: "V administraci obou platforem můžete upravovat robots.txt podle možností konkrétního tarifu a nastavení. U AI služeb je potřeba rozlišovat: OpenAI používá různé identifikátory pro různé účely (GPTBot pro trénink, OAI-SearchBot pro vyhledávání, ChatGPT-User pro načtení na žádost uživatele), Perplexity má PerplexityBot, Anthropic ClaudeBot. Google-Extended není vyhledávací robot, ale produktový token v robots.txt, kterým Google umožňuje řídit využití obsahu pro některé AI produkty, například Gemini Apps a Vertex AI. Neřídí běžné indexování ve Vyhledávání a nezaměňujte ho s Googlebotem. Detailní rozdíly a příklady řeší [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/)."
-  - q: "Je lepší Upgates nebo Shoptet pro AI SEO?"
-    a: "Obě platformy jsou pro AI SEO použitelné. Upgates dává obvykle víc volnosti v úpravách šablon a snadnější doplnění vlastních strukturovaných dat. Shoptet je víc out-of-the-box, ale na nižších tarifech bývá editace šablon a doplňování vlastních strukturovaných dat omezenější. Pro většinu eshopů ale rozdíl nepřebije kvalita obsahu a reputace."
+  - q: "V jakém formátu posílá Shoptet strukturovaná data?"
+    a: "V microdatech, tedy v atributech itemtype a itemprop přímo v HTML. Na 38 měřených produktových stránkách nebyl typ Product v JSON-LD ani jednou; v microdatech byl pokaždé. Jediný JSON-LD, na který jsme narazili, je blok Organization s identitou firmy. Google ve své dokumentaci uvádí microdata mezi podporovanými formáty, takže to není chyba — jen jiný formát, než na jaký jsou návody zvyklé."
+  - q: "Co Shoptet u produktu vyplní sám a co ne?"
+    a: "Povinné vlastnosti podle dokumentace Googlu splňovalo všech 38 měřených e-shopů: název, obrázek, nabídku, cenu a měnu. Z doporučených byly ve vzorku vždy kategorie, dopravné a adresa nabídky (38 z 38), téměř vždy stav zboží (37) a dostupnost (36). Značku má 33 z 38 a EAN 27 z 38 — to jsou ale údaje z vašeho katalogu. Deklarace vrácení zboží, výrobní číslo, barva ani velikost se neobjevily ani jednou."
+  - q: "Jak nastavit robots.txt na Shoptetu a co v článku víme o Upgates?"
+    a: "Na Shoptetu je pole podle nápovědy ve Vzhled a Obsah → Editor → HTML kód, vložený text se přidává na konec souboru a limit je 8 192 znaků. Pozor na jednu věc: pokud robotovi dáte vlastní skupinu pravidel, přestane pro něj platit obecná skupina User-agent hvězdička. Skupina, ve které stojí jen Allow lomítko, mu tím zruší i výchozí zákazy. U Upgates konkrétní postup nepopisujeme — neměřili jsme ho a neověřovali na vzorku veřejných e-shopů."
+  - q: "Blokuje na Shoptetu někdo AI roboty?"
+    a: "Ve vzorku 47 e-shopů ani jeden. Šest jim naopak přidalo vlastní povolující pravidla a čtyřem z nich tím přestalo platit všech 40 výchozích zákazů. Výchozí robots.txt AI roboty nikde nezmiňuje, takže pro ně platí obecná skupina jako pro kohokoli jiného."
+  - q: "Proč je v článku změřený Shoptet a ne Upgates?"
+    a: "Protože jsme měřili to, na co jsme sehnali dostatečný vzorek. Shoptet jsme změřili na 47 e-shopech v pěti dílech. U Upgates se nám srovnatelný vzorek veřejných e-shopů sehnat nepodařilo, takže jeho část v tomhle článku stojí na dokumentaci a praxi, ne na měření. Nemíchejte prosím obojí dohromady."
   - q: "Stačí na AI SEO automatika platformy?"
-    a: "Sama o sobě ne. Automatická strukturovaná data, sitemap a kanonizace jsou výborný startovací bod, ale AI systémy potřebují srozumitelný obsah a ověřitelné zdroje; bez kvalitních popisů, FAQ, srovnání a externích recenzí se šance na zmínku nebo citaci v ChatGPT či Perplexity obvykle snižuje."
+    a: "Sama o sobě ne. Automatická strukturovaná data, sitemap a kanonizace jsou dobrý startovací bod, ale AI systémy potřebují srozumitelný obsah a ověřitelné zdroje. Bez kvalitních popisů, FAQ, srovnání a externích recenzí se šance na zmínku nebo citaci obvykle snižuje. Platí to pro obě platformy."
   - q: "Pomáhají recenze z Heureky a Zboží pro AI?"
     a: "Recenze ze třetích stran (Heureka, Zboží, Google Recenze, oborové katalogy) mohou AI systémům s webovým vyhledáváním pomoct ověřit důvěryhodnost značky mimo její vlastní web. Nejsou zárukou citace, ale zvyšují množství nezávislých zdrojů, ze kterých může AI při odpovědi čerpat."
 ---
@@ -59,89 +63,113 @@ import CompareTable from "../../components/blocks/CompareTable.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
 
-## AI SEO na Upgates a Shoptetu: kde je práce hotová a kde teprve začíná
+## AI SEO na Shoptetu a Upgates: co jsme změřili a co si ověřit sami
 
-**Shoptet i Upgates mají velkou část technického základu SEO řešenou automaticky — strukturovaná data typu Product, BreadcrumbList a WebSite, sitemap, kanonizaci a editovatelné robots.txt.** Pro klasické vyhledávání je to dobrý startovací bod. Pro AI vyhledávání ale samotná technika nestačí: větší roli hraje srozumitelný obsah, struktura textů na produktech a kategoriích a reputace ze třetích zdrojů.
+**Technický základ má na změřeném vzorku Shoptet z velké části hotový — jen jinak, než se obvykle píše.** V srpnu 2026 jsme ho změřili na 47 e-shopech: produktová data neposílá v JSON-LD, ale v microdatech, a povinné vlastnosti podle Googlu splní každý měřený obchod. Na změřeném Shoptetu leží technické mezery hlavně v několika polích, která se sama negenerují. U obou platforem pak zůstává stejná obsahová práce: citovatelné popisy, FAQ, srovnání a recenze.
 
-Tento návod ukazuje, co obě platformy řeší samy, co reálně doplnit a kde se mezi Shoptetem a Upgates liší práce. Doplňuje obecnější [SEO pro eshopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/) o **konkrétní české platformy**.
+Upgates v článku necháváme, protože čtenáři často řeší volbu mezi oběma platformami. Abychom ale nepředstírali přesnost, kterou nemáme, oddělujeme níž změřený Shoptet od toho, co jde o Upgates říct jen obecně — a přidáváme postup, jak si ho ověříte sami.
 
-> **Poznámka k transparentnosti:** Sniper Design je Zlatý partner Upgates od roku 2016 a zároveň pracuje i na SEO projektech pro eshopy na Shoptetu. Srovnání níže držíme prakticky: kde se co nastavuje, co platformy řeší automaticky a co musí doplnit provozovatel eshopu.
+> **Poznámka k transparentnosti:** Sniper Design je Zlatý partner Upgates od roku 2016 a zároveň pracuje na SEO projektech pro eshopy na Shoptetu. Srovnání držíme prakticky: kde se co nastavuje, co platformy řeší samy a co musí doplnit provozovatel.
 
-<Insight tone="accent" icon="!" label="Co si odnést">
-  Technický základ bývá u Shoptet i Upgates z velké části připravený. AI vrstva u CZ eshopů znamená hlavně obsah: krátké citovatelné popisy, FAQ a recenze ze třetích zdrojů. Tam často vzniká největší praktický prostor ke zlepšení.
+<Insight tone="warn" icon="!" label="Poctivě k rozsahu měření">
+Čísla v tomhle článku pocházejí z **měření Shoptetu**, ne Upgates. Vzorek veřejných e-shopů na Upgates, který by se dal měřit srovnatelně, se nám sehnat nepodařilo, takže jeho část níž stojí na dokumentaci a praxi. **Nemíchejte prosím obojí dohromady** — a když si nejste jistí u vlastního e-shopu, otevřete zdroj a podívejte se.
 </Insight>
 
-## Co Shoptet a Upgates řeší automaticky
+## Co jsme na Shoptetu naměřili
 
-Než cokoli doplníte, mějte přehled, co platforma už pokrývá:
+Pětidílné měření na vzorku 47 e-shopů (31 z výsledků ShopRoku 2025, 7 z dřívějšího měření a 9 oficiálních šablonových dem) přineslo čtyři věci, které mění, jak se má k platformě přistupovat.
 
-<Checklist tone="seo" title="Technický základ ve výchozím stavu" items={[
-  { title: "Strukturovaná data", desc: "typy Product, BreadcrumbList a WebSite obvykle generuje obě platformy bez zásahu; u Product se cena a dostupnost propisují automaticky, hodnocení závisí na nastavení recenzí." },
-  { title: "Sitemap.xml", desc: "automaticky aktualizovaná podle katalogu produktů a kategorií." },
-  { title: "Kanonizace duplicit", desc: "obě platformy řeší kanonizaci podobných URL; u variant, filtrů a stránkování se vyplatí konkrétní canonical zkontrolovat na reálných URL." },
-  { title: "robots.txt a meta robots", desc: "možnosti úprav se liší podle platformy, tarifu a konkrétního nastavení; obvykle v administraci v sekci Marketing nebo SEO." }
+**Data jsou v microdatech, ne v JSON-LD.** Na 38 měřených produktových stránkách nebyl typ `Product` v JSON-LD ani jednou — v microdatech byl pokaždé. Kdo v kódu hledá jen `application/ld+json`, uvidí prázdno tam, kde prázdno není. Detail v článku [Shoptet dává produktová data v microdatech](/blog/shoptet-strukturovana-data-mereni/).
+
+**Povinné vlastnosti podle Googlu splní každý.** Název, obrázek, nabídka, cena a měna: 38 z 38. Rozdíly jsou až v doporučených, a rozpadají se podle toho, kdo je plní — [celé srovnání proti dokumentaci Googlu](/blog/shoptet-produktova-pole-google/).
+
+**AI roboty neblokuje nikdo.** Ve vzorku 47 e-shopů ani jeden. Šest jim naopak přidalo vlastní povolující pravidla a čtyřem z nich tím [zmizely výchozí zákazy](/blog/shoptet-robots-txt-ai-roboti/).
+
+**Filtry jsou ošetřené, stránkování ne.** Filtrované adresy kryje robots.txt a na 43 ze 46 kategorií na ně nevede ani jeden odkaz. Druhá strana kategorie naopak nemá `rel=canonical` ani u jednoho ze třiceti měřených — [podrobnosti](/blog/shoptet-filtry-strankovani/).
+
+## Co platforma vyplní a co zůstane na vás
+
+Tohle je nejpraktičtější výstup celého měření. Doporučené vlastnosti se dělí do tří skupin podle toho, odkud data pocházejí.
+
+<Checklist tone="seo" title="Tři skupiny podle toho, kdo je plní" items={[
+  { title: "Vyplní platforma", desc: "kategorie, dopravné, adresa nabídky (38 z 38), stav zboží (37) a dostupnost (36). Ve vzorku to fungovalo bez zásahu; u vlastního e-shopu se stejně vyplatí výstup zkontrolovat." },
+  { title: "Plníte vy v katalogu", desc: "popis (35 z 38), značka (33), skladové označení (30) a EAN (27). Prázdný sloupec v administraci znamená prázdné pole v datech." },
+  { title: "Nevygeneruje se samo", desc: "deklarace vrácení zboží, výrobní číslo, barva, velikost ani provázání variant se ve vzorku neobjevily ani jednou. Je to téma pro doplněk nebo úpravu šablony, ne pro práci v katalogu." }
 ]} />
 
-Pokud váš eshop tohle běžně používá, jste technicky tam, kde je dobré začít AI vrstvu — ne ji nahrazovat.
+Rozdělení do skupin je naše interpretace, ne výsledek měření — změřená je přítomnost pole, ne jeho původ. Ale pro rozhodování, kam dát čas, funguje dobře.
 
-## Co je potřeba doplnit pro AI vrstvu
+## Co doplnit pro AI vrstvu bez ohledu na platformu
 
-AI systémy potřebují dostupný a srozumitelný obsah; samotné nastavení v adminu k citaci nebo zmínce nestačí. U eshopů na Shoptetu nebo Upgates jsou nejčastější rezervy obsahové:
+Technika je jen startovní čára. Dál rozhoduje obsah, který se dá citovat a ověřit — a tahle část už není změřená ani pro jednu platformu:
 
-- **Krátké citovatelné popisy** nahoře produktu a kategorie — „pro koho a kdy". Takový odstavec může zvýšit šanci, že AI obsah správně pochopí a použije ve shrnutí; detail nechte níž.
-- **FAQ na produktech a kategoriích** — krátké otázky a odpovědi, které přesně mapují, co se kupci ptají AI (rozdíl mezi typy, „X pro Y", „jaké zvolit pro Z").
-- **Srovnávací obsah** — interní X vs Y stránky a „alternativy k X". Jak na ně dobře a férově shrnuje [návod na srovnávací články](/blog/srovnavaci-clanky-pro-ai/).
-- **Recenze a hodnocení ze třetích zdrojů** — Heureka, Zboží, Google Recenze, oborové katalogy. AI nástroje mohou při odpovědích pracovat i se zdroji mimo váš web, takže reputace tam pomáhá ověřitelnosti značky. Detailně to rozebírá [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/) a [zmínky a recenze mimo web](/blog/ai-brand-mentions/).
+- **Krátké citovatelné popisy** nahoře produktu a kategorie — „pro koho a kdy". U kategorie na tom záleží dvojnásob: na 14 měřených kategoriích Shoptetu se o sortimentu nepropsala žádná strukturovaná data typu `ItemList`, `CollectionPage` ani `Product`. Text kategorie tedy nese hlavní váhu sám.
+- **FAQ na produktech a kategoriích** — krátké otázky a odpovědi, které mapují, co se kupci ptají AI (rozdíl mezi typy, „X pro Y", „jaké zvolit pro Z").
+- **Srovnávací obsah** — interní X vs Y stránky a „alternativy k X". Jak na ně férově shrnuje [návod na srovnávací články](/blog/srovnavaci-clanky-pro-ai/).
+- **Recenze a hodnocení ze třetích zdrojů** — Heureka, Zboží, Google Recenze, oborové katalogy. Detailně to rozebírá [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/) a [zmínky a recenze mimo web](/blog/ai-brand-mentions/).
 
-## Upgates a Shoptet: kde se liší práce
+## Jak si Upgates (nebo cokoli jiného) ověříte sami
 
-Obě platformy AI SEO zvládnou, jen s jinou cestou k doplnění obsahu:
+Nemáme pro Upgates měření, ale máme postup, kterým jsme měřili Shoptet. Zabere půl hodiny a nepotřebujete k němu nic než prohlížeč.
+
+<Checklist tone="geo" title="Šest kontrol na libovolné e-shopové platformě" items={[
+  { title: "Otevřete zdroj produktu a hledejte itemtype i ld+json", desc: "Zjistíte formát. Nula v jednom neznamená nulu dat — hledejte oba." },
+  { title: "Projděte pole u typu Product a Offer", desc: "Je tam název, obrázek, cena a měna? A z doporučených značka, EAN, dostupnost, dopravné?" },
+  { title: "Otevřete /robots.txt a spočítejte skupiny User-agent", desc: "Jedna skupina znamená výchozí stav. Víc skupin znamená, že někdo zasahoval — a je dobré vědět jak." },
+  { title: "Zkontrolujte canonical na kategorii a na její druhé straně", desc: "Na Shoptetu má strana 1 canonical vždy a strana 2 nikdy. U jiné platformy to může být jinak." },
+  { title: "Podívejte se, co nese kategorie o sortimentu", desc: "Hledejte ItemList nebo CollectionPage. Když tam nejsou, nese celou váhu text." },
+  { title: "Otevřete zdroj blogového článku", desc: "Je tam Article nebo BlogPosting, datum vydání a autor? Nebo jen text?" }
+]} />
+
+Stejným postupem si během půl hodiny ověříte Upgates i jakoukoli jinou platformu na konkrétním e-shopu, ne podle marketingových slibů.
+
+## Co víme o Shoptetu a co si u Upgates ověřit
+
+Tabulka níž **není datové srovnání dvou změřených platforem.** Pravý sloupec vychází z našeho měření Shoptetu, levý je orientační seznam toho, co si u Upgates ověřit.
 
 <CompareTable
-  leftLabel="Upgates"
+  leftLabel="Upgates (bez měření)"
   leftTone="seo"
-  rightLabel="Shoptet"
+  rightLabel="Shoptet (změřeno)"
   rightTone="aeo"
   rows={[
-    { icon: "🧩", label: "Editace šablon", left: "Větší volnost, vlastní HTML úpravy", right: "Více out-of-the-box, omezenější na nižších tarifech" },
-    { icon: "🏷️", label: "Doplnění FAQ ve strukturovaných datech", left: "Snadnější přes vlastní HTML", right: "Často přes doplněk nebo pokročilejší tarif" },
-    { icon: "📦", label: "Strukturovaná data", left: "Product, BreadcrumbList, WebSite obvykle automaticky", right: "Product, BreadcrumbList, WebSite obvykle automaticky" },
-    { icon: "🛠️", label: "robots.txt a meta", left: "v administraci, sekce Marketing/SEO", right: "v administraci, sekce Marketing → SEO" }
+    { icon: "🧩", label: "Editace šablon", left: "Ověřte, jaké zásahy do šablony váš tarif dovolí", right: "Více out-of-the-box, omezenější na nižších tarifech" },
+    { icon: "📦", label: "Formát strukturovaných dat", left: "Ověřte ve zdroji produktu: itemtype, nebo ld+json?", right: "microdata — 38 z 38 produktů, JSON-LD Product ani jednou" },
+    { icon: "🏷️", label: "FAQ ve strukturovaných datech", left: "Ověřte, jestli jde FAQ vložit bez doplňku a jak se propíše", right: "Často přes doplněk nebo pokročilejší tarif" },
+    { icon: "🛠️", label: "robots.txt", left: "Ověřte, kde se edituje a jestli se změna zapíše do výstupu", right: "Vzhled a Obsah → Editor → HTML kód, přidává se na konec, limit 8 192 znaků" }
   ]}
 />
 
-Volba mezi platformou není to, co rozhoduje o AI viditelnosti — obě jsou použitelné. Důležitější jsou texty, FAQ a reputace.
+Sama volba platformy podle nás není to hlavní, co rozhoduje o AI viditelnosti. Texty, FAQ a reputace jsou u obou práce provozovatele — a to už měření platformy nezachytí.
 
-## Co konkrétně udělat v administraci
+## Co konkrétně udělat
 
-Praktický postup, který platí pro obě platformy:
+1. **Otevřete zdroj produktu a hledejte `itemtype` i `ld+json`.** Na Shoptetu jsme data našli v měření vždy v microdatech. Projděte si u toho, jestli máte vyplněný EAN a značku.
+2. **Doplňte titulky a úvodní texty** podle reálných dotazů: „pro koho je X", „jak vybrat X", „X pro Y". Výrazy typu „nejlepší X" jen u férových srovnání s jasnými kritérii.
+3. **Napište pořádný text kategorie.** Na měřených kategoriích Shoptetu jsme nenašli strukturovaná data, která by sortiment vysvětlila sama; u jiné platformy si to ověřte ve zdroji.
+4. **Přidejte FAQ** — 3 až 6 otázek u top produktů a hlavních kategorií.
+5. **Rozhodněte se u AI robotů vědomě.** Výchozí stav je pouští. Když budete přidávat vlastní pravidla, zopakujte v nich zákazy, které chcete zachovat — jinak si je vypnete. Detaily v [návodu na robots.txt pro AI](/blog/ai-crawler-robots-txt/).
+6. **Pracujte na recenzích** — Heureka, Zboží, Google Recenze, oborové portály.
 
-1. **Ověřte si strukturovaná data** — projděte si pár produktů a kategorií přes Google Rich Results Test. U většiny Shoptet a Upgates eshopů uvidíte typy Product a BreadcrumbList ve výchozím stavu.
-2. **Upravte titulky a meta** — v administraci (typicky v části Marketing/SEO) doplňte na klíčových produktech a kategoriích titulky a úvodní texty podle reálných dotazů: „pro koho je X", „jak vybrat X" nebo „X pro Y". Výrazy typu „nejlepší X" používejte jen u férových srovnávacích stránek s jasnými kritérii.
-3. **Doplňte krátké úvodní texty** — top intro v kategorii a první odstavec u produktu jako „odpověď" na hlavní otázku zákazníka.
-4. **Přidejte FAQ sekce** — minimálně u top produktů a hlavních kategorií. 3–6 otázek a krátkých odpovědí stačí.
-5. **Nastavte přístup pro AI služby v robots.txt** — vědomě podle účelu: OpenAI (GPTBot pro trénink, OAI-SearchBot pro vyhledávání, ChatGPT-User pro načtení na žádost uživatele), PerplexityBot, ClaudeBot. Google-Extended není běžný vyhledávací robot, ale pravidlo pro využití obsahu v AI funkcích Google. Detailně to rozebírá [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/).
-6. **Pracujte na recenzích** — Heureka, Zboží, Google Recenze, oborové portály. Bez nich AI značku špatně ověří.
-
-## Časté chyby na Upgates a Shoptetu
+## Časté chyby při AI SEO na e-shopové platformě
 
 <MistakeGrid>
-  <Mistake num="01" title="Spoléhat jen na automatiku platformy" fix="Doplňte obsahovou vrstvu.">
+  <Mistake num="01" title="Hledat JSON-LD a usoudit, že data nejsou" fix="Hledejte itemtype.">
+    Na Shoptetu jdou produktová data v microdatech. U jiné platformy to může být jinak — nula nálezů v JSON-LD tedy neznamená nulu dat.
+  </Mistake>
+  <Mistake num="02" title="Spoléhat jen na automatiku platformy" fix="Doplňte obsahovou vrstvu.">
     Strukturovaná data a sitemap k citaci v AI samy o sobě nestačí.
   </Mistake>
-  <Mistake num="02" title="Žádné FAQ na produktech a kategoriích" fix="Doplňte 3–6 otázek a odpovědí.">
-    AI hledá krátké odpovědi — FAQ bývá u eshopů častá citační rezerva.
+  <Mistake num="03" title="Hledat v administraci pole, která tam nejsou" fix="Rozlište vlastní úkoly od limitů platformy.">
+    Deklarace vrácení zboží ani parametry variant se ve vzorku neobjevily. Je to úkol pro vývoj, ne pro katalog.
   </Mistake>
-  <Mistake num="03" title="Ignorovat recenze ze třetích zdrojů" fix="Pracujte na Heurece, Zboží a Google.">
-    AI systémy mohou důvěryhodnost značky ověřovat i mimo váš web.
-  </Mistake>
-  <Mistake num="04" title="Bezhlavé úpravy šablon" fix="Měňte cíleně a po jednom.">
-    Některé automatické signály, například kanonická URL nebo strukturovaná data, se snadno rozbijí.
+  <Mistake num="04" title="Přidat robotovi vlastní skupinu jen s Allow" fix="Zopakujte v ní důležité zákazy.">
+    Vlastní skupina nahrazuje obecnou. Ve vzorku si tím čtyři e-shopy otevřely i vyhledávání a košík.
   </Mistake>
 </MistakeGrid>
 
 ## Co dál: zasaďte AI SEO eshopu do celku
 
-Upgates i Shoptet jsou pro AI SEO dobrý základ. Skutečný rozdíl obvykle dělá obsah a reputace. Jak na celý obraz AI viditelnosti shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/).
+Shoptet je podle našeho měření pro AI SEO použitelný základ; u Upgates to na základě měření netvrdíme. Rozdíl každopádně dělá obsah a reputace — a u Shoptetu navíc pár konkrétních polí, o kterých teď víte, že je platforma sama nevyplní. Celý obraz shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/).
 
-Pokud chcete nezávisle posoudit, jak si váš eshop na Shoptetu nebo Upgates stojí v AI vyhledávání a kde má doplnění obsahu největší smysl, pomůže produktový [AI SEO audit za 3 600 Kč](/audit/). Pokud chcete postupovat sami podle hotové předlohy, použijte [AI SEO Wireframe Pack](/pack/) za 1 490 Kč.
+Pokud chcete nezávisle posoudit, jak si váš eshop stojí v AI vyhledávání a kde má doplnění obsahu největší smysl, pomůže produktový [AI SEO audit za 3 600 Kč](/audit/). Pokud chcete postupovat sami podle hotové předlohy, použijte [AI SEO Wireframe Pack](/pack/) za 1 490 Kč.

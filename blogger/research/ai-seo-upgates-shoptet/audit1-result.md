@@ -1,291 +1,104 @@
-## VERDIKT: OPRAVIT PŘED PUBLIKACÍ
-
-Článek je tematicky dobře zacílený, má relevantní CTA, dobré interní odkazy a drží se konkrétních platforem Shoptet/Upgates. Před publikací ale potřebuje opravit několik věcných nepřesností a absolutních formulací — hlavně kolem AI robotů, Google-Extended, automatických strukturovaných dat a příliš jistých tvrzení typu „AI cituje / vytahuje“.
-
----
-
-## Nálezy a opravy
-
-### [BLOCKER] Nepřesné doporučení k AI robotům v robots.txt
-
-**Problémové místo:**
-
-> „Pro AI vyhledávání vědomě povolte AI vyhledávací roboty (GPTBot od OpenAI, ClaudeBot od Anthropic, PerplexityBot, Google-Extended).“
-
-A také:
-
-> „Otevřete cestu AI vyhledávacím robotům — v robots.txt vědomě povolte GPTBot, ClaudeBot, PerplexityBot a Google-Extended.“
-
-**Problém:**  
-Google-Extended není klasický vyhledávací robot. Je to řídicí token v robots.txt pro využití obsahu v některých AI funkcích Google, ne crawler typu „přijde a načte stránku“. U OpenAI je navíc potřeba rozlišovat GPTBot, OAI-SearchBot a ChatGPT-User podle účelu. Tvrzení je pro tutorial příliš zjednodušené a může vést ke špatnému nastavení.
-
-**Návrh opravy:**
-
-> „V robots.txt vědomě nastavte přístup pro AI služby podle účelu. U OpenAI rozlišujte GPTBot, OAI-SearchBot a ChatGPT-User; u Perplexity PerplexityBot; u Anthropic ClaudeBot. Google-Extended není běžný crawler, ale pravidlo pro využití obsahu v AI funkcích Google. Neexistuje univerzálně správné nastavení — rozhodnutí závisí na tom, zda chcete obsah poskytovat AI systémům.“
-
-V CTA odkazu na návod ponechat:
-
-> „Detailní rozdíly a příklady pravidel řeší [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/).“
-
----
-
-### [BLOCKER] Absolutní tvrzení „technický základ je hotový“ je příliš silné
-
-**Problémové místo:**
-
-> „Technika je hotová, rozhoduje obsah a reputace.“
-
-A také:
-
-> „Technický základ je u Shoptet i Upgates hotový.“
-
-**Problém:**  
-U obou platforem je dobrý výchozí technický základ, ale „hotový“ je příliš absolutní. Reálně záleží na šabloně, doplňcích, úpravách, tarifu, variantách produktů, filtraci a tom, zda data skutečně odpovídají obsahu stránky.
-
-**Návrh opravy:**
-
-> „Technický základ bývá u Shoptetu i Upgates z velké části připravený; rozhodující rozdíl pak často dělá obsah, FAQ, recenze a reputace mimo web.“
-
-Ve frontmatter `answer` upravit poslední větu:
-
-> „Technický základ je obvykle připravený, ale o viditelnosti v AI vyhledávání často rozhoduje obsah a reputace.“
-
----
-
-### [WARNING] Používání slova „schema“ je mimo preferovaný slovník značky
-
-**Problémové místo:**
-
-> „Product schema“  
-> „BreadcrumbList a WebSite schema“  
-> „FAQPage schema“  
-> „Doplnění FAQ schema“
-
-**Problém:**  
-Zakázaný termín je výslovně „schema markup“, ten se v článku nevyskytuje. Přesto článek opakovaně používá anglické „schema“ jako zkratku. Podle brand voice má být preferovaný termín „strukturovaná data“. U cílovky e-shopařů je navíc „typ Product ve strukturovaných datech“ srozumitelnější.
-
-**Návrh opravy:**
-
-- „Product schema“ → „typ Product ve strukturovaných datech“
-- „BreadcrumbList a WebSite schema“ → „typy BreadcrumbList a WebSite ve strukturovaných datech“
-- „FAQPage schema“ → „typ FAQPage ve strukturovaných datech“
-- „Doplnění FAQ schema“ → „Doplnění strukturovaných dat pro FAQ“
-
-Příklad opravy FAQ odpovědi:
-
-> „Obě platformy ve výchozím stavu generují strukturovaná data typu Product, BreadcrumbList a WebSite.“
-
----
-
-### [WARNING] Tvrzení o Product datech je příliš obecné
-
-**Problémové místo:**
-
-> „Product schema (cena, dostupnost, hodnocení)“
-
-A také:
-
-> „Product (cena, dostupnost, hodnocení), BreadcrumbList a WebSite schema generuje obě platformy bez zásahu.“
-
-**Problém:**  
-Product strukturovaná data ano, ale cena, dostupnost a hodnocení nemusí být vždy kompletní. Hodnocení závisí na tom, jestli e-shop sbírá a zobrazuje recenze/hodnocení způsobem, který se do strukturovaných dat propíše. Tvrzení „bez zásahu“ je moc široké.
-
-**Návrh opravy:**
-
-> „Obě platformy obvykle generují strukturovaná data typu Product, BreadcrumbList a WebSite. U Product dat se cena a dostupnost většinou propisují automaticky; hodnocení závisí na konkrétním nastavení recenzí, šabloně a doplňcích.“
-
----
-
-### [WARNING] Kanonizace filtrů, variant a stránkování je popsána příliš jistě
-
-**Problémové místo:**
-
-> „platformy automaticky řeší canonical u variant, stránkování a filtrů.“
-
-**Problém:**  
-Zadání potvrzuje, že obě platformy řeší kanonizaci. Detail „u variant, stránkování a filtrů“ už je ale příliš konkrétní a může se lišit podle nastavení, šablony, parametrů URL a doplňků.
-
-**Návrh opravy:**
-
-> „Obě platformy řeší kanonizaci duplicitních nebo podobných URL. U variant, filtrů a stránkování je ale vhodné konkrétní canonical zkontrolovat na reálných URL.“
-
----
-
-### [WARNING] Tvrzení „AI cituje obsah, ne nastavení v adminu“ je zbytečně absolutní
-
-**Problémové místo:**
-
-> „AI cituje obsah, ne nastavení v adminu.“
-
-**Problém:**  
-Dobrá myšlenka, ale formulace je příliš kategorická. Technické nastavení ovlivňuje dostupnost, indexovatelnost a interpretaci obsahu. Lepší je říct, že samotné admin nastavení nestačí.
-
-**Návrh opravy:**
-
-> „AI systémy potřebují dostupný a srozumitelný obsah; samotné nastavení v adminu k citaci nebo zmínce nestačí.“
-
----
-
-### [WARNING] Formulace „tu AI vytahuje“ slibuje víc, než lze doložit
-
-**Problémové místo:**
-
-> „Na začátku produktu a kategorie dejte krátkou odpověď „pro koho a kdy" — tu AI vytahuje.“
-
-A také:
-
-> „Tu AI vytahuje jako úryvek, detail nechte níž.“
-
-**Problém:**  
-Zní to deterministicky. Nelze slíbit, že AI úryvek opravdu vytáhne. Bezpečnější claim má být „může zvýšit šanci“.
-
-**Návrh opravy:**
-
-> „Na začátku produktu a kategorie dejte krátkou odpověď „pro koho a kdy“. Takový odstavec může zvýšit šanci, že AI systém obsah správně pochopí a použije ve shrnutí.“
-
----
-
-### [WARNING] „AI při sestavení odpovědi často čerpá“ potřebuje opatrnější formulaci
-
-**Problémové místo:**
-
-> „AI při sestavení odpovědi často čerpá ze zdrojů třetích stran.“
-
-A také:
-
-> „Tyto signály se promítají i do toho, jak AI nástroje značku zmiňují a jak ji zařazují mezi alternativy.“
-
-**Problém:**  
-Směr je správný, ale formulace „se promítají“ zní jako jistý rankingový mechanismus. U AI odpovědí je to hůř ověřitelné než u klasického SEO.
-
-**Návrh opravy:**
-
-> „AI nástroje mohou při odpovědích pracovat i se zdroji mimo váš web. Recenze a zmínky na Heurece, Zboží, Google Recenzích nebo oborových portálech proto pomáhají ověřitelnosti značky a mohou zvýšit šanci, že bude zmíněna mezi relevantními alternativami.“
-
----
-
-### [WARNING] Titulek je delší než doporučených 50–60 znaků
-
-**Problémové místo:**
-
-> `title: "AI SEO na Upgates a Shoptetu v roce 2026: co je hotové a co doplnit"`
-
-**Problém:**  
-Titulek má přibližně 67 znaků. Cílové klíčové slovo je na začátku, což je dobře, ale délka přesahuje zadání.
-
-**Návrh opravy — varianta cca 52 znaků:**
-
-> `title: "AI SEO pro Upgates a Shoptet 2026: hotové vs. doplnit"`
-
-Nebo přirozenější varianta cca 56 znaků:
-
-> `title: "AI SEO Upgates a Shoptet 2026: co řeší platformy"`
-
-Doporučil bych první variantu, protože lépe odpovídá obsahu „co je hotové / co doplnit“.
-
----
-
-### [WARNING] Potenciální střet zájmů není transparentně uveden
-
-**Problémové místo:**
-
-Článek porovnává Upgates a Shoptet, ale v textu není uvedeno, že provozovatel Sniperdesign je Zlatý partner Upgates od roku 2016.
-
-**Problém:**  
-V zadání je uvedeno, že Sniperdesign je Zlatý partner Upgates. Pokud článek porovnává Upgates a Shoptet a zároveň nabízí „nezávislý audit“, je vhodné vztah k Upgates transparentně přiznat. Jinak může působit jako skrytá preference platformy.
-
-**Návrh opravy:**  
-Doplnit krátkou poznámku například za úvod nebo do závěru:
-
-> „Poznámka k transparentnosti: Sniperdesign je Zlatý partner Upgates od roku 2016 a zároveň pracuje i na SEO projektech pro e-shopy na Shoptetu. Srovnání níže proto držíme prakticky: kde se co nastavuje, co platformy řeší automaticky a co musí doplnit provozovatel e-shopu.“
-
----
-
-### [WARNING] „Nejlepší X“ v doporučení pro titulky může působit jako nepodložený claim
-
-**Problémové místo:**
-
-> „doplňte na klíčových produktech a kategoriích titulky obsahující dotazy typu „pro koho je X" nebo „nejlepší X".“
-
-**Problém:**  
-„Nejlepší X“ je v brand pravidlech rizikový výraz, pokud web nemá férové srovnání a metodiku. Jako dotaz uživatele je v pořádku, ale do titulku produktu/kategorie může působit jako nepodložený superlativ.
-
-**Návrh opravy:**
-
-> „doplňte na klíčových produktech a kategoriích titulky a úvodní texty podle reálných dotazů, například „pro koho je X“, „jak vybrat X“ nebo „X pro Y“. Výrazy typu „nejlepší X“ používejte jen u férových srovnávacích stránek s jasnými kritérii.“
-
----
-
-### [TIP] Frontmatter `answer` je citovatelný, ale zjemnit absolutní závěr
-
-**Problémové místo:**
-
-> `answer: "AI SEO na Upgates a Shoptetu znamená využít, co obě platformy řeší automaticky ... Technika je hotová, rozhoduje obsah a reputace."`
-
-**Co je dobře:**  
-Answer má samostatný smysl, začíná definicí a má přibližně požadovaných 40–60 slov. To je dobré.
-
-**Co opravit:**  
-Závěr „Technika je hotová“ je příliš absolutní.
-
-**Návrh opravy:**
-
-> `answer: "AI SEO na Upgates a Shoptetu znamená využít technický základ, který obě platformy obvykle řeší automaticky — strukturovaná data, sitemap a kanonizaci — a doplnit obsahovou vrstvu pro AI: citovatelné popisy, FAQ na produktech a kategoriích, recenze a srovnávací obsah. Rozdíl často dělá obsah a reputace."`
-
----
-
-### [TIP] Prvních 100 slov těla funguje dobře, jen potřebuje méně absolutní formulace
-
-**Problémové místo:**
-
-> „Shoptet i Upgates mají technický základ SEO řešený automaticky…“
-
-**Co je dobře:**  
-Úvodní odstavec je samostatně pochopitelný, hutný a odpovídá zadání tutorialu.
-
-**Návrh jemné opravy:**
-
-> „Shoptet i Upgates mají velkou část technického základu SEO řešenou automaticky — strukturovaná data typu Product, BreadcrumbList a WebSite, sitemap, kanonizaci a editovatelné robots.txt. Pro klasické vyhledávání je to dobrý startovací bod. Pro AI vyhledávání ale samotná technika nestačí: větší roli hraje srozumitelný obsah, struktura textů na produktech a kategoriích a reputace ze třetích zdrojů.“
-
----
-
-### [TIP] FAQ jsou relevantní a sebestačné, ale jedna odpověď potřebuje věcnou korekci
-
-**Problémové místo:**
-
-> „Jak nastavit robots.txt v Upgates a Shoptetu pro AI roboty?“
-
-**Co je dobře:**  
-Otázka je reálná a odpověď je praktická.
-
-**Co opravit:**  
-Stejný problém jako výše: Google-Extended není AI vyhledávací robot a chybí rozlišení OpenAI crawlerů.
-
-**Návrh opravy odpovědi:**
-
-> „V adminu obou platforem můžete upravovat robots.txt podle možností konkrétního tarifu a nastavení. U AI služeb nerozhodujte jen podle názvu robota: OpenAI používá různé identifikátory pro různé účely, Perplexity má PerplexityBot a Google-Extended není běžný crawler, ale pravidlo pro využití obsahu v AI funkcích Google. Nastavení proto volte podle toho, zda chcete obsah zpřístupnit pro vyhledávání, citace nebo tréninkové/AI využití.“
-
----
-
-### [TIP] CTA je splněné
-
-**Dobré místo:**
-
-> „pomůže produktový [AI SEO audit za 9 990 Kč](/audit/). Pokud chcete postupovat sami podle hotové předlohy, použijte [AI SEO Wireframe Pack](/pack/) za 1 490 Kč.“
-
-**Hodnocení:**  
-CTA je konkrétní, vede na produkty a není jen generické „kontaktujte nás“. Splňuje zadání. Lze ponechat.
-
----
-
-### [TIP] SEO základ je jinak v pořádku
-
-**Co je dobře:**
-
-- Slug `ai-seo-upgates-shoptet` je smysluplný a odpovídá cílovému KW.
-- Meta description má přibližně správnou délku a jasně shrnuje téma.
-- Interní odkazy jsou relevantní: obecný e-commerce pilíř, robots.txt, srovnávací články, E-E-A-T, brand mentions, SEO pro AI.
-- Struktura H2 je logická a odpovídá tutorial/how-to záměru.
-
-**Nutná oprava v této oblasti:**  
-Pouze zkrátit title dle nálezu výše.
+1. **[KRITICKÁ] Frontmatter `answer` + úvodní perex → přisuzuje měřený závěr i Upgates → navržené znění:**  
+   Problém: `answer` říká „Technický základ mají obě platformy z velké části hotový…“ a hned poté navazuje čísly ze Shoptetu. To je přesně typ smíchání, kdy čtenář snadno přisoudí datově podložený stav oběma platformám. U Upgates ale nemáte měření.  
+   **Navržené znění:**  
+   `answer: "Na Shoptetu jsme na 47 e-shopech ověřili, že technický základ pro AI SEO je z velké části hotový, jen jinak, než se obvykle popisuje: produktová data jdou v microdatech a povinné vlastnosti podle Googlu splňuje každý měřený obchod. Upgates jsme v tomto rozsahu neměřili, takže u něj vycházíme z dokumentace a praxe. U obou platforem pak platí, že práci navíc dělá hlavně obsah: citovatelné popisy, FAQ a recenze."`
+
+2. **[KRITICKÁ] H1 + první věta článku → „Technický základ mají obě platformy…“ je silnější, než data unesou → navržené znění:**  
+   Problém: Úvod staví obě platformy vedle sebe jako rovnocenně podložené. Insight sice později asymetrii vysvětluje, ale až ex post. Působí to jako alibi po příliš silném tvrzení.  
+   **Navržené znění:**  
+   `Technický základ má na změřeném vzorku Shoptet z velké části hotový — jen jinak, než se obvykle píše. U Upgates to v tomhle článku netvrdíme na základě měření, ale opíráme se jen o dokumentaci a praktickou zkušenost.`
+
+3. **[VYSOKÁ] Frontmatter `description` → „Co doplnit obsahem, platí pro obě platformy“ je příliš plošné → navržené znění:**  
+   Problém: Tohle může být pravda jako obecné doporučení, ale bez opory v měření Upgates zní kategoricky. Lepší je oddělit univerzální doporučení od datové části.  
+   **Navržené znění:**  
+   `description: "Shoptet jsme změřili na 47 e-shopech: technický základ je z větší části hotový, ale jinak, než se čeká. Upgates v tomto článku měřený nemáme; obsahová doporučení proto berte jako obecně platná pro e-shopy, ne jako výsledek měření obou platforem."`
+
+4. **[VYSOKÁ] Sekce „AI SEO na Upgates a Shoptetu: kde je práce hotová a kde teprve začíná“ → titulkem sugeruje plnohodnotné srovnání → navržené znění:**  
+   Problém: Nadpis a framing pořád slibují srovnávací článek o dvou platformách, ale ve skutečnosti jde primárně o refresh článku „Shoptet změřen, Upgates ne“. To je obsahově asymetrické.  
+   **Navržené znění:**  
+   `## AI SEO na Shoptetu a orientačně i na Upgates: co víme z měření a co jen z praxe`
+
+5. **[VYSOKÁ] CompareTable „Upgates vs Shoptet“ → vedle sebe staví měřené a neměřené body bez dost silného rozlišení → navržené znění:**  
+   Problém: Tabulka vizuálně sugeruje symetrické porovnání. Jen u jednoho řádku je „neměřili jsme“, jinde jsou u Upgates tvrzení („Větší volnost“, „Snadnější přes vlastní HTML“, „v administraci, možnosti podle tarifu“) bez zdroje a bez štítku „z praxe/dokumentace“.  
+   **Navržené znění:**  
+   - přejmenovat tabulku na: `Co víme o obou platformách: Shoptet z měření, Upgates z dokumentace a praxe`  
+   - přepsat hodnoty u Upgates:  
+     - `Editace šablon: "Podle dokumentace a praxe obvykle větší volnost; nemáme ověřeno na vzorku"`  
+     - `Doplnění FAQ ve strukturovaných datech: "Pravděpodobně snazší přes vlastní HTML, ale bez měření na vzorku"`  
+     - `robots.txt: "Možnosti podle tarifu a nastavení; bez vlastního měření"`  
+
+6. **[VYSOKÁ] FAQ „Jak nastavit robots.txt v Upgates a Shoptetu pro AI roboty?“ → míchá přesnou instrukci pro Shoptet s vágním tvrzením pro Upgates → navržené znění:**  
+   Problém: Otázka je položena pro obě platformy, ale odpověď je fakticky jen o Shoptetu. U Upgates je jen dovětek. To vytváří falešný dojem srovnatelného pokrytí.  
+   **Navržené znění:**  
+   `q: "Jak nastavit robots.txt na Shoptetu — a co v tomhle článku víme o Upgates?"`  
+   `a: "Na Shoptetu je pole podle nápovědy ve Vzhled a Obsah → Editor → HTML kód, vložený text se přidává na konec souboru a limit je 8 192 znaků... U Upgates tady konkrétní postup nepopisujeme, protože jsme ho v rámci tohoto článku neměřili a neověřovali na vzorku veřejných e-shopů."`
+
+7. **[VYSOKÁ] Věta „Technický základ je jen startovní čára. AI systémy potřebují…“ → obecně v pořádku, ale v článku funguje jako překlenutí od měření Shoptetu k doporučením pro obě platformy bez dost jasného přechodu → navržené znění:**  
+   Problém: Čtenář může nabýt dojmu, že následující doporučení plynou z měření obou platforem.  
+   **Navržené znění:**  
+   `Technika je na změřeném Shoptetu jen startovní čára. Následující obsahová doporučení nejsou specificky změřená pro Upgates ani Shoptet; berte je jako obecná doporučení pro e-shopy, které chtějí být lépe použitelné pro AI vyhledávání.`
+
+8. **[STŘEDNÍ] Checklist „Vyplní platforma… Tady nemáte co řešit.“ → tvrzení silnější než data unesou → navržené znění:**  
+   Problém: Z měření víte, že pole byla ve výstupu přítomná. Nevíte vždy jistě, že „nemáte co řešit“ ve všech implementacích a situacích. Navíc sami o odstavec níž říkáte, že rozdělení podle původu dat je vaše interpretace.  
+   **Navržené znění:**  
+   `Vyplní platforma: kategorie, dopravné, adresa nabídky (38 z 38), stav zboží (37) a dostupnost (36). Ve změřeném vzorku to fungovalo většinou bez zásahu; u vlastního e-shopu je ale stejně dobré výstup zkontrolovat.`
+
+9. **[STŘEDNÍ] FAQ „Z doporučených je skoro vždy kategorie, dopravné a dostupnost.“ → nepřesné vůči části A → navržené znění:**  
+   Problém: V části A je dostupnost 36/38, stav zboží 37/38, popis 35/38. „Skoro vždy“ je neurčité a navíc zrovna opomíjí adresa nabídky 38/38, která do textu patří.  
+   **Navržené znění:**  
+   `Z doporučených byly ve vzorku vždy kategorie, dopravné a adresa nabídky (38 z 38), téměř vždy stav zboží (37 z 38) a dostupnost (36 z 38).`
+
+10. **[STŘEDNÍ] „Filtry jsou ošetřené, stránkování ne.“ → část tvrzení není v části A explicitně doložená v této zkratce → navržené znění:**  
+    Problém: V A máte pro kategorie a stránkování konkrétní čísla, ale o „filtrované adresy kryje robots.txt a většinou na ně ani nevede odkaz“ tu detailní oporu v tomto briefu nemáte. Možná je v odkazovaném dílu, ale v rámci tohoto auditu jde o tvrzení nad rámec dodaných dat.  
+    **Navržené znění:**  
+    `Kategorie a stránkování mají na Shoptetu smysluplný základ, ale ne bez výhrad. Na 46 z 46 kategorií jsme viděli self-canonical a index,follow; druhá strana kategorie naopak neměla rel=canonical ani u jednoho ze 30 měřených případů.`
+
+11. **[STŘEDNÍ] „Kategorie to potřebuje o to víc, že o sortimentu ve strukturovaných datech nic neříká.“ → formulace je příliš absolutní → navržené znění:**  
+    Problém: Podle A platí, že na 14 měřených kategoriích nebyl `ItemList/CollectionPage/Product`. Tvrzení „nic neříká“ je ale absolutní a může být čteno obecně pro všechny možné signály stránky.  
+    **Navržené znění:**  
+    `Kategorie to potřebuje o to víc, že v námi měřeném vzorku kategorií se o sortimentu nepropsala žádná užitečná strukturovaná data typu ItemList, CollectionPage ani Product.`
+
+12. **[STŘEDNÍ] Sekce „Co dál: zasaďte AI SEO eshopu do celku“ → „Upgates i Shoptet jsou pro AI SEO použitelný základ.“ → nepodložené pro Upgates → navržené znění:**  
+    Problém: Tohle je znovu datový závěr pro obě platformy, když u jedné žádná data nemáte.  
+    **Navržené znění:**  
+    `Shoptet je podle našeho měření pro AI SEO použitelný základ. U Upgates to v tomhle článku nehodnotíme na základě měření; prakticky ale i tam bude rozdíl dělat hlavně obsah a reputace.`
+
+13. **[STŘEDNÍ] Frontmatter `stats` → celek je v zásadě správný, ale štítek „neměřeno“ u Upgates je slabší než zbytek čísel → navržené znění:**  
+    Problém: Vedle tvrdých statistik působí „neměřeno“ jako kosmetické vyvážení. Chybí explicitní vysvětlení proč a co z toho plyne.  
+    **Navržené znění:**  
+    `label: "Upgates — v článku bez vlastního měření; závěry pro tuto platformu nejsou datové, ale opřené o dokumentaci a praxi"`  
+
+14. **[STŘEDNÍ] FAQ „Proč je v článku změřený Shoptet a ne Upgates?“ → obranné, ale pozdní; asymetrie je sice přiznaná, stále však působí jako dodatečné krytí → navržené znění:**  
+    Problém: Samotná FAQ je v pořádku, ale měla by být posunutá výš i do hlavního textu jako samostatná krátká sekce před jakýmkoli srovnáváním.  
+    **Navržené znění do těla článku před CompareTable:**  
+    `## Co v tomto článku srovnáváme — a co ne`  
+    `Shoptet je v článku podložený vlastním měřením. U Upgates nepřidáváme čísla ani "stejné" závěry, protože jsme nesehnali srovnatelný vzorek veřejných e-shopů. Kde níž mluvíme o Upgates, jde o praktickou zkušenost a dokumentaci, ne o měření.`
+
+15. **[STŘEDNÍ] „Práce navíc leží jinde: v obsahu a v pár polích, která platforma sama nevyplní.“ → u „platforma“ není jasné, že jde o Shoptet → navržené znění:**  
+    Problém: V kontextu článku o dvou platformách se z jednotného čísla stává zdroj nejasnosti.  
+    **Navržené znění:**  
+    `Na změřeném Shoptetu leží práce navíc hlavně v obsahu a v několika polích, která se sama negenerují.`
+
+16. **[NIŽŠÍ] Nekonzistence frontmatter vs tělo v míře jistoty o Upgates → frontmatter mluví jistěji než tělo → navržené znění:**  
+    Problém: Tělo má aspoň varovný Insight, ale frontmatter je indexovatelný výtah a musí být ještě opatrnější než text. Teď je to naopak.  
+    **Navržené znění:**  
+    Sjednotit title/description/answer tak, aby žádný z těchto prvků netvrdil nic datového o Upgates. Např. title:  
+    `AI SEO pro Shoptet 2026 + co obecně řešit i na Upgates: hotové vs. doplnit`
+
+17. **[NIŽŠÍ] Článek je po refreshi stále obsahově tenký na srovnávací kus série → chybí konkrétní bloky, které by z něj udělaly silnější díl → navržené doplnění:**  
+    Problém: Narostl jen z 1 023 na 1 135 slov, což je kosmetika. Jako refresh nejslabšího dílu série je to pořád tenké, protože velkou část délky zabírají disclaimery a rekapitulace Shoptetu. Chybí skutečná přidaná hodnota pro čtenáře, který přišel kvůli „Upgates a Shoptet“.  
+    **Navržené doplnění:**  
+    - samostatná sekce `Jak si Upgates ověřit bez našeho měření` s 5–7 kontrolními body: hledat Product v HTML/JSON-LD, ověřit robots.txt, canonical na kategoriích, indexace stránkování, přítomnost FAQ schema, kontrola značky/EAN/sku  
+    - samostatná sekce `Co z měření Shoptetu je pravděpodobně přenositelné a co ne`  
+    - konkrétní mini-audit postup pro obě platformy: produkt, kategorie, robots, recenze, FAQ  
+    - explicitní „co nevíme“ box pro Upgates, aby text působil poctivěji a současně užitečněji
+
+18. **[NIŽŠÍ] Chybí konkrétní vysvětlení, proč vůbec Upgates v článku zůstává, když není měřen → navržené znění:**  
+    Problém: Bez této kotvy může článek působit jako SEO landing na druhou značku, ne jako poctivě omezené srovnání.  
+    **Navržené znění do úvodu:**  
+    `Upgates v článku necháváme proto, že čtenáři často řeší volbu mezi oběma platformami. Abychom ale nesimulovali přesnost, oddělujeme níž to, co víme z měření Shoptetu, od toho, co lze pro Upgates říct jen obecně.`
+
+19. **[NIŽŠÍ] „Volba platformy není to, co rozhoduje o AI viditelnosti.“ → příliš silné a zbytečně široké → navržené znění:**  
+    Problém: To už je obecný strategický soud bez opory v datech článku.  
+    **Navržené znění:**  
+    `Sam
