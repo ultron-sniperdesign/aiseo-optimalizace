@@ -75,7 +75,7 @@ export const steps = {
       num: "02",
       meta: "Technika · na míru",
       title: "Připravíme web, který AI přečte",
-      desc: "Prověřené úpravy, které přímo ovlivňují šance na citace — na jakékoli platformě. Postup i pracnost se ale web od webu liší, proto cenu stanovíme po auditu, ne z ceníku, který by neplatil.",
+      desc: "Prověřené úpravy, které přímo ovlivňují šance na citace — na jakékoli platformě. Postup i pracnost se ale web od webu liší, proto cenu stanovíme po auditu, ne z ceníku, který by neplatil. Co přesně technická příprava obnáší, ukazují karty níže.",
       priceHtml: "<b>Cena na míru</b> <i>· rozsah i cena podle auditu</i>",
     },
     {
@@ -167,73 +167,100 @@ export const stepContent = {
   eyebrow: "Ceník obsahu",
   titleHtml: "Jediné ceny, které <strong>známe předem</strong>",
   lead:
-    "Generování citovatelného obsahu na platformě nezávisí — proto ho umíme garantovat na korunu. Úrovně na sebe navazují, vyšší vždy obsahuje vše z nižší.",
+    "Generování citovatelného obsahu na platformě nezávisí — proto ho umíme garantovat na korunu.",
   analysisTitle: "Proč je u obsahu vstupní analýza?",
   analysisHtml:
     "Negenerujeme texty jedním univerzálním promptem. U každého projektu nejdřív vytvoříme <strong>vstupní analýzu</strong>: branding a tón projektu, konkurence a mezery, audit stávajícího obsahu. Teprve nad těmito daty ladíme generování na míru projektu. <strong>Analýza se platí jednou pro celou skupinu</strong> — při rozšíření na vyšší úroveň se neopakuje.",
 };
 
-export interface ContentRow {
+export interface TierDef {
+  badge?: string;
   name: string;
-  detail: string;
-  price: string;
+  desc: string;
+  unitPrice: string;
   unit: string;
   analysis: string;
+  /** Co úroveň obsahuje — vyšší úroveň vždy zahrnuje vše z nižší. */
+  items: { label: string; impact: Impact }[];
   featured?: boolean;
 }
 
-export const categoryRows: { title: string; rows: ContentRow[] } = {
+export const categoryTiers: { title: string; lead: string; tiers: TierDef[] } = {
   title: "Obsah kategorií",
-  rows: [
+  lead: "Úrovně na sebe navazují — vyšší vždy obsahuje vše z nižší.",
+  tiers: [
     {
-      name: "1 · Krátké odpovědi",
-      detail: "Jasná citovatelná odpověď u každé kategorie — základ všeho dalšího.",
-      price: "18 Kč",
+      name: "1 · Základ",
+      desc: "Jasná citovatelná odpověď u každé kategorie. Základ, bez kterého nemá smysl generovat nic dalšího.",
+      unitPrice: "18 Kč",
       unit: "/ kategorie",
       analysis: "vstupní analýza 1 300 Kč (jednou)",
+      items: [{ label: "Krátké odpovědi do všech kategorií", impact: 3 }],
     },
     {
-      name: "2 · Odpovědi + FAQ",
-      detail: "Krátké odpovědi + reálné otázky a odpovědi ke každé kategorii.",
-      price: "39 Kč",
+      name: "2 · Základ + FAQ",
+      desc: "Krátké odpovědi + reálné otázky a odpovědi ke každé kategorii — zdroj, ze kterého AI skládá odpovědi.",
+      unitPrice: "39 Kč",
       unit: "/ kategorie",
       analysis: "vstupní analýza 2 600 Kč (jednou)",
+      items: [
+        { label: "Krátké odpovědi do všech kategorií", impact: 3 },
+        { label: "FAQ do všech kategorií", impact: 3 },
+      ],
     },
     {
+      badge: "Nejlepší hodnota",
       name: "3 · Kompletní obsah",
-      detail: "Odpovědi, FAQ a přepis obsahu klíčových kategorií.",
-      price: "54 Kč",
+      desc: "Kompletní obsahová výbava: krátké odpovědi, FAQ a přepis obsahu klíčových kategorií.",
+      unitPrice: "54 Kč",
       unit: "/ kategorie",
       analysis: "vstupní analýza 2 600 Kč (jednou)",
+      items: [
+        { label: "Krátké odpovědi do všech kategorií", impact: 3 },
+        { label: "FAQ do všech kategorií", impact: 3 },
+        { label: "Přepis obsahu klíčových kategorií", impact: 2 },
+      ],
       featured: true,
     },
   ],
 };
 
-export const productRows: { title: string; rows: ContentRow[] } = {
+export const productTiers: { title: string; lead: string; tiers: TierDef[] } = {
   title: "Obsah produktů",
-  rows: [
+  lead: "Nejrychlejší cestou k citacím jsou FAQ; strukturované popisy a strojové souhrny na ně navazují.",
+  tiers: [
     {
       name: "1 · FAQ",
-      detail: "Nejrychlejší cesta k obsahu, který může AI citovat u nejprodávanějších produktů.",
-      price: "34 Kč",
+      desc: "Nejrychlejší cesta k obsahu, který může AI citovat u vašich nejprodávanějších produktů.",
+      unitPrice: "34 Kč",
       unit: "/ produkt",
       analysis: "vstupní analýza 2 600 Kč (jednou)",
+      items: [{ label: "FAQ do klíčových produktů", impact: 3 }],
     },
     {
+      badge: "Doporučené kombo",
       name: "2 · FAQ + popisy",
-      detail: "FAQ + popisy s jasnou strukturou a fakty — pro zákazníka i AI vyhledávač.",
-      price: "49 Kč",
+      desc: "FAQ + popisy s jasnou strukturou a fakty — dávají smysl zákazníkovi i AI vyhledávači.",
+      unitPrice: "49 Kč",
       unit: "/ produkt",
       analysis: "vstupní analýza 3 900 Kč (jednou)",
+      items: [
+        { label: "FAQ do klíčových produktů", impact: 3 },
+        { label: "Strukturované popisy klíčových produktů", impact: 3 },
+      ],
       featured: true,
     },
     {
       name: "3 · Kompletní obsah",
-      detail: "FAQ, popisy a strojové souhrny do strukturovaných dat.",
-      price: "55 Kč",
+      desc: "Plná výbava klíčových produktů včetně strojových souhrnů do strukturovaných dat.",
+      unitPrice: "55 Kč",
       unit: "/ produkt",
       analysis: "vstupní analýza 3 900 Kč (jednou)",
+      items: [
+        { label: "FAQ do klíčových produktů", impact: 3 },
+        { label: "Strukturované popisy klíčových produktů", impact: 3 },
+        { label: "Rychlé souhrny do strukturovaných dat", impact: 1 },
+      ],
     },
   ],
 };

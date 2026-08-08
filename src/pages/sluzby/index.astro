@@ -83,7 +83,7 @@ const modulesByImpact = [...p.modules].sort((a, b) => b.impact - a.impact);
     <section class="steps" id="kroky" aria-labelledby="steps-title">
       <h2 id="steps-title" class="steps__intro" set:html={p.steps.introHtml}></h2>
 
-      {p.steps.items.map((s, idx) => (
+      {p.steps.items.map((s, idx) => (<>
         <article class="step" id={idx === 1 ? "moduly" : undefined}>
           <div>
             <div class="step__num">{s.num}</div>
@@ -93,25 +93,28 @@ const modulesByImpact = [...p.modules].sort((a, b) => b.impact - a.impact);
             <h3>{s.title}</h3>
             <p class="step__desc">{s.desc}</p>
 
-            {idx === 1 && (
-              <>
-                <ul class="step__areas" role="list">
-                  {modulesByImpact.map((m) => (
-                    <li title={m.desc}>
-                      <span class="step__glyph" aria-label={impactLabel[m.impact]}>{impactGlyph[m.impact]}</span>
-                      {m.name}
-                    </li>
-                  ))}
-                </ul>
-                <p class="step__legend">{p.modulesFoot.impactLegend}</p>
-                <p class="step__platform" set:html={p.modulesFoot.platformNoteHtml}></p>
-              </>
-            )}
-
             <p class="step__price" set:html={s.priceHtml}></p>
           </div>
         </article>
-      ))}
+
+        {idx === 1 && (
+          <div class="mods-wrap">
+            <div class="mods">
+              {modulesByImpact.map((m) => (
+                <article class="mcard">
+                  <span class={`mcard__impact mcard__impact--${m.impact}`}>
+                    <span aria-hidden="true">{impactGlyph[m.impact]}</span> {impactLabel[m.impact]}
+                  </span>
+                  <h4 class="mcard__name">{m.name}</h4>
+                  <p class="mcard__desc">{m.desc}</p>
+                </article>
+              ))}
+            </div>
+            <p class="step__legend">{p.modulesFoot.impactLegend}</p>
+            <p class="step__platform" set:html={p.modulesFoot.platformNoteHtml}></p>
+          </div>
+        )}
+      </>))}
     </section>
 
     <!-- ===== CENÍK OBSAHU ===== -->
@@ -123,22 +126,29 @@ const modulesByImpact = [...p.modules].sort((a, b) => b.impact - a.impact);
       <h2 id="content-title" class="content__title" set:html={p.stepContent.titleHtml}></h2>
       <p class="content__lead">{p.stepContent.lead}</p>
 
-      {[p.categoryRows, p.productRows].map((group) => (
+      {[p.categoryTiers, p.productTiers].map((group) => (
         <div class="ctable">
           <h3 class="ctable__title">{group.title}</h3>
-          {group.rows.map((row) => (
-            <div class={`crow${row.featured ? " crow--hi" : ""}`}>
-              <div class="crow__main">
-                <span class="crow__name">{row.name}</span>
-                <span class="crow__detail">{row.detail}</span>
-              </div>
-              <span class="lrow__leader" aria-hidden="true"></span>
-              <div class="crow__buy">
-                <span class="crow__price">{row.price} <small>{row.unit}</small></span>
-                <span class="crow__analysis">+ {row.analysis}</span>
-              </div>
-            </div>
-          ))}
+          <p class="ctable__lead">{group.lead}</p>
+          <div class="tiers">
+            {group.tiers.map((tier) => (
+              <article class={`tier${tier.featured ? " tier--hi" : ""}`}>
+                {tier.badge && <span class="tier__badge">{tier.badge}</span>}
+                <h4 class="tier__name">{tier.name}</h4>
+                <p class="tier__desc">{tier.desc}</p>
+                <p class="tier__price">{tier.unitPrice} <small>{tier.unit}</small></p>
+                <p class="tier__analysis">+ {tier.analysis}</p>
+                <ul class="tier__items" role="list">
+                  {tier.items.map((i) => (
+                    <li>
+                      <span class="step__glyph" aria-label={impactLabel[i.impact]} title={impactLabel[i.impact]}>{impactGlyph[i.impact]}</span>
+                      {i.label}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
       ))}
 
@@ -437,16 +447,19 @@ const modulesByImpact = [...p.modules].sort((a, b) => b.impact - a.impact);
   .step__meta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-strong); margin: 0.9rem 0 0; }
   .step h3 { font-family: var(--font-sans); font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.02em; margin: 0 0 0.7rem; }
   .step__desc { color: var(--color-ink-muted); max-width: 38rem; margin: 0; }
-  .step__areas {
-    list-style: none;
-    margin: 1.2rem 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.5rem 1.25rem;
-  }
-  .step__areas li { font-size: 0.92rem; color: var(--color-ink-muted); display: flex; gap: 0.6rem; align-items: baseline; cursor: default; }
   .step__glyph { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent); flex-shrink: 0; }
+
+  /* karty technické přípravy — plný popis služby + vliv */
+  .mods-wrap { padding-bottom: clamp(2rem, 4.5vw, 3.25rem); }
+  .mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.9rem; }
+  .mcard { border: 1px solid var(--color-rule); border-radius: 12px; padding: 1.25rem 1.35rem; background: var(--color-paper); display: flex; flex-direction: column; gap: 0.45rem; transition: border-color 0.2s ease; }
+  .mcard:hover { border-color: var(--color-rule-strong); }
+  .mcard__impact { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .mcard__impact--3 { color: var(--color-accent-strong); }
+  .mcard__impact--2 { color: var(--color-aeo); }
+  .mcard__impact--1 { color: var(--color-ink-faint); }
+  .mcard__name { font-family: var(--font-sans); font-weight: 600; font-size: 1rem; letter-spacing: -0.014em; margin: 0; }
+  .mcard__desc { font-size: 0.88rem; line-height: 1.55; color: var(--color-ink-muted); margin: 0; }
   .step__legend { font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-ink-faint); margin: 1rem 0 0; }
   .step__platform { font-size: 0.9rem; color: var(--color-ink-muted); margin: 0.75rem 0 0; max-width: 38rem; }
   .step__platform :global(a) { color: var(--color-accent-strong); }
@@ -469,10 +482,22 @@ const modulesByImpact = [...p.modules].sort((a, b) => b.impact - a.impact);
   .content__lead { color: var(--color-ink-muted); max-width: 40rem; margin: 0.9rem 0 0; }
   .ctable { margin-top: 2.25rem; }
   .ctable__title { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--color-ink); margin: 0 0 0.35rem; }
+  .ctable__lead { font-size: 0.9rem; color: var(--color-ink-muted); margin: 0 0 1.1rem; }
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.9rem; }
+  .tier { position: relative; border: 1px solid var(--color-rule); border-radius: 12px; padding: 1.4rem 1.35rem; background: var(--color-paper); display: flex; flex-direction: column; }
+  .tier--hi { border: 2px solid var(--color-ink); box-shadow: 0 18px 40px -24px oklch(0.3 0.05 260 / 0.4); }
+  .tier__badge { position: absolute; top: -0.75rem; left: 1.1rem; background: var(--color-ink); color: var(--color-paper); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; padding: 0.28rem 0.7rem; }
+  .tier__name { font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.015em; margin: 0; }
+  .tier__desc { font-size: 0.86rem; color: var(--color-ink-muted); margin: 0.35rem 0 0; }
+  .tier__price { font-family: var(--font-mono); font-size: 1.7rem; letter-spacing: -0.025em; margin: 0.9rem 0 0; }
+  .tier__price small { font-size: 0.55em; color: var(--color-ink-faint); }
+  .tier__analysis { font-family: var(--font-mono); font-size: 0.66rem; color: var(--color-ink-faint); margin: 0.2rem 0 0; }
+  .tier__items { list-style: none; margin: 1rem 0 0; padding: 0.9rem 0 0; border-top: 1px dotted var(--color-rule); display: flex; flex-direction: column; gap: 0.4rem; }
+  .tier__items li { font-size: 0.88rem; color: var(--color-ink-muted); display: flex; gap: 0.6rem; align-items: baseline; }
+
   .crow { display: flex; align-items: baseline; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--color-rule); }
   .crow__main { flex-shrink: 0; max-width: 30rem; display: flex; flex-direction: column; gap: 0.15rem; }
   .crow__name { font-weight: 600; font-size: 1rem; letter-spacing: -0.012em; }
-  .crow--hi .crow__name::after { content: "★ nejlepší hodnota"; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-strong); margin-left: 0.6rem; }
   .crow__detail { font-size: 0.86rem; color: var(--color-ink-muted); }
   .crow__buy { text-align: right; flex-shrink: 0; }
   .crow__price { font-family: var(--font-mono); font-size: clamp(1.15rem, 2vw, 1.55rem); letter-spacing: -0.02em; white-space: nowrap; }
