@@ -1,0 +1,584 @@
+[
+ {
+  "domain": "www.anela.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1003,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.angrybeards.cz",
+  "agents": [
+   "*",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1967,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.autodoplnky-obchod.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1117,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.baavi.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1003,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.cistedrevo.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1747,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.drevenysvet.online",
+  "agents": [
+   "* Disallow: /export/ Disallow: /admin/ Disallow: /script/ Disallow: /api/ Disallow: /action/ Disallow: /*?priceMax Disallow: /*?priceMin Disallow: /*?order Disallow: /*?availabilityId Disallow: /*?stock Disallow: /*:*,*/ Disallow: /*/?backTo= Disallow: /*?dd=*, Disallow: /*?dd=*, Disallow: /*?dd=*&pv*= Disallow: /*?pv*=*&dd= Disallow: /*/?letter=* Disallow: /vyhledavani/ Disallow: /kosik/ Disallow: /login/ Disallow: /registrace/ Disallow: /klient/zapomenute-heslo/ Disallow: /affiliate-registrace/ Disallow: /affiliate-zapomenute-heslo/ Disallow: /uzivatel/ Disallow: /affiliate/accounts/ Disallow: /affiliate/scripts/  Disallow: /*:diskuse Disallow: /*:dotaz Disallow: /*:hlidat-cenu Disallow: /*:klient-hodnoceni Disallow: /*:moznosti-dopravy Disallow: /*:wysiwyg"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 781,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.film-technika.com",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1012,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.gigamat.cz",
+  "agents": [
+   "*",
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "GoogleOther",
+   "GoogleLLM",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "Claude-Web",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot"
+  ],
+  "bytes": 1434,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.giovani.cz",
+  "agents": [
+   "*",
+   "GPTBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "GoogleOther",
+   "GoogleLLM",
+   "ClaudeBot",
+   "Claude-SearchBot",
+   "Claude-User",
+   "Anthropic-AI",
+   "Claude-Web",
+   "PerplexityBot",
+   "Perplexity-User",
+   "Applebot-Extended",
+   "CCBot",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [
+   "GPTBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot"
+  ],
+  "bytes": 2049,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.hobynaradi.cz",
+  "agents": [
+   "*",
+   "MJ12bot",
+   "SemrushBot",
+   "AhrefsBot",
+   "YandexBot",
+   "GeedoProductSearch",
+   "ClaudeBot",
+   "Sogou",
+   "Baiduspider",
+   "YoudaoBot",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [
+   "ClaudeBot"
+  ],
+  "bytes": 1362,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.konzoliste.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1216,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.kulina.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1044,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.levanduloveudoli.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1014,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.madvell.cz",
+  "agents": [
+   "*",
+   "GPTBot",
+   "ChatGPT-user"
+  ],
+  "seznam": [],
+  "ai": [
+   "GPTBot",
+   "ChatGPT-user"
+  ],
+  "bytes": 1072,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.nanospace.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1007,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.nasegalanterie.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1012,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.nemeckyeshop.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1010,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.nonstopstavebniny.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1015,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.olivie.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1004,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.outdoorstuff.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1010,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.pff.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1001,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.pocitarna.cz",
+  "agents": [
+   "*",
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "GoogleOther",
+   "GoogleLLM",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "Claude-Web",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot"
+  ],
+  "bytes": 1892,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.profi-dj.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1011,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.prohackovani.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1010,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.prokonzole.cz",
+  "agents": [
+   "*",
+   "Googlebot",
+   "AdsBot-Google",
+   "Googlebot-Image"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 3065,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.prolicence.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1008,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.ptakoviny-cb.cz",
+  "agents": [
+   "*",
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "GoogleOther",
+   "GoogleLLM",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "Claude-Web",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "ClaudeBot",
+   "Anthropic-AI",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "CCBot"
+  ],
+  "bytes": 1895,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.puellavune.cz",
+  "agents": [
+   "*",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1042,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.ususil.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1004,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.utukutu.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1005,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.venira.cz",
+  "agents": [
+   "*",
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1157,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.super-granule.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1011,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.pesan-krmiva.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1010,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.husse.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1003,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.bellas.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1004,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.nutrition-shop.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1012,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.brainmarket.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1009,
+  "seznam_rules": null
+ },
+ {
+  "domain": "www.viviencosmetics.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1013,
+  "seznam_rules": null
+ },
+ {
+  "domain": "samba.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1007,
+  "seznam_rules": null
+ },
+ {
+  "domain": "disco.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1007,
+  "seznam_rules": null
+ },
+ {
+  "domain": "step.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1006,
+  "seznam_rules": null
+ },
+ {
+  "domain": "classic.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1011,
+  "seznam_rules": null
+ },
+ {
+  "domain": "waltz.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1007,
+  "seznam_rules": null
+ },
+ {
+  "domain": "tango.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1007,
+  "seznam_rules": null
+ },
+ {
+  "domain": "techno.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1008,
+  "seznam_rules": null
+ },
+ {
+  "domain": "soul.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1006,
+  "seznam_rules": null
+ },
+ {
+  "domain": "pop.shoptet.cz",
+  "agents": [
+   "*"
+  ],
+  "seznam": [],
+  "ai": [],
+  "bytes": 1005,
+  "seznam_rules": null
+ }
+]

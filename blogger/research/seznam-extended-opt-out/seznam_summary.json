@@ -1,0 +1,56 @@
+{
+ "n": 33,
+ "seznam_extended": 1,
+ "seznambot": 2,
+ "foreign_ai": 16,
+ "top_foreign": [
+  [
+   "Bytespider",
+   13
+  ],
+  [
+   "GPTBot",
+   11
+  ],
+  [
+   "Amazonbot",
+   11
+  ],
+  [
+   "ClaudeBot",
+   10
+  ],
+  [
+   "Google-Extended",
+   9
+  ],
+  [
+   "PerplexityBot",
+   8
+  ],
+  [
+   "anthropic-ai",
+   6
+  ],
+  [
+   "CCBot",
+   6
+  ],
+  [
+   "Claude-Web",
+   5
+  ],
+  [
+   "Applebot-Extended",
+   5
+  ],
+  [
+   "ChatGPT-User",
+   4
+  ],
+  [
+   "meta-externalagent",
+   3
+  ]
+ ]
+}

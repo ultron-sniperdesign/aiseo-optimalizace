@@ -1,0 +1,727 @@
+[
+ {
+  "domain": "novinky.cz",
+  "bytes": 1280,
+  "agents": [
+   "*",
+   "SeznamSocialBot",
+   "AI"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.idnes.cz",
+  "bytes": 1105,
+  "agents": [
+   "*",
+   "MachineLearning",
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "Omgilibot",
+   "FacebookBot",
+   "Applebot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web",
+   "Diffbot",
+   "ImagesiftBot",
+   "Omgilibot",
+   "Omgili",
+   "YouBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web"
+  ]
+ },
+ {
+  "domain": "www.seznamzpravy.cz",
+  "bytes": 1515,
+  "agents": [
+   "*",
+   "SeznamSocialBot",
+   "AI"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "zpravy.aktualne.cz",
+  "bytes": 350,
+  "agents": [
+   "*",
+   "MachineLearning",
+   "GPTBot",
+   "facebookexternalhit",
+   "Twitterbot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "GPTBot"
+  ]
+ },
+ {
+  "domain": "www.irozhlas.cz",
+  "bytes": 4207,
+  "agents": [
+   "*",
+   "Amazonbot",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "ClaudeBot",
+   "CloudflareBrowserRenderingCrawler",
+   "Google-Extended",
+   "GPTBot",
+   "meta-externalagent",
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Amazonbot",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "ClaudeBot",
+   "Google-Extended",
+   "GPTBot",
+   "meta-externalagent"
+  ]
+ },
+ {
+  "domain": "www.ceskenoviny.cz",
+  "bytes": 941,
+  "agents": [
+   "*",
+   "CCBot",
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "FacebookBot",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "PerplexityBot",
+   "Bytespider",
+   "MistralBot",
+   "Omgilibot",
+   "Amazonbot",
+   "Cohere-ai",
+   "MachineLearning",
+   "AI"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "CCBot",
+   "GPTBot",
+   "ChatGPT-User",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "PerplexityBot",
+   "Bytespider",
+   "Amazonbot"
+  ]
+ },
+ {
+  "domain": "www.denik.cz",
+  "bytes": 1513,
+  "agents": [
+   "Googlebot",
+   "SeznamBot",
+   "Bingbot",
+   "*",
+   "GPTBot",
+   "ChatGPT-User",
+   "OAI-SearchBot",
+   "ClaudeBot",
+   "Claude-Web",
+   "anthropic-ai",
+   "Google-Extended",
+   "Applebot-Extended",
+   "Amazonbot",
+   "Meta-ExternalAgent",
+   "FacebookBot",
+   "PerplexityBot",
+   "YouBot",
+   "Andibot",
+   "DuckAssistBot",
+   "DuckDuckBot-Web-Extraction",
+   "Cohere-ai",
+   "Cohere-Command",
+   "DeepseekBot",
+   "CCBot",
+   "AI2Bot",
+   "Ai2Bot-Dollhouse",
+   "Bytespider",
+   "Diffbot",
+   "FirecrawlAgent",
+   "Brightbot",
+   "Crawlspace",
+   "ImagesiftBot",
+   "FriendlyCrawler",
+   "Meltwater",
+   "Omgili",
+   "Omgilibot",
+   "Character-AI",
+   "Tollbit",
+   "Seznam-Extended",
+   "grapeshot"
+  ],
+  "seznam_extended": [
+   "Seznam-Extended"
+  ],
+  "seznambot": [
+   "SeznamBot"
+  ],
+  "ai": [
+   "GPTBot",
+   "ChatGPT-User",
+   "OAI-SearchBot",
+   "ClaudeBot",
+   "Claude-Web",
+   "anthropic-ai",
+   "Google-Extended",
+   "Applebot-Extended",
+   "Amazonbot",
+   "Meta-ExternalAgent",
+   "PerplexityBot",
+   "CCBot",
+   "Bytespider"
+  ]
+ },
+ {
+  "domain": "www.blesk.cz",
+  "bytes": 1276,
+  "agents": [
+   "*",
+   "AhrefsBot",
+   "AhrefsSiteAudit",
+   "AwarioBot",
+   "BLEXBot",
+   "Bytespider",
+   "CriteoBot",
+   "DataForSeoBot",
+   "DotBot",
+   "GrapeshotCrawler",
+   "grapeshot",
+   "MJ12bot",
+   "MegaIndex",
+   "MojeekBot",
+   "SemrushBot",
+   "YandexBot",
+   "Yeti",
+   "YisouSpider"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Bytespider"
+  ]
+ },
+ {
+  "domain": "www.lidovky.cz",
+  "bytes": 1107,
+  "agents": [
+   "*",
+   "MachineLearning",
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "Omgilibot",
+   "FacebookBot",
+   "Applebot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web",
+   "Diffbot",
+   "ImagesiftBot",
+   "Omgilibot",
+   "Omgili",
+   "YouBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web"
+  ]
+ },
+ {
+  "domain": "echo24.cz",
+  "bytes": 618,
+  "agents": [
+   "*",
+   "MachineLearning",
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "Omgilibot",
+   "FacebookBot",
+   "Applebot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web",
+   "Diffbot",
+   "ImagesiftBot",
+   "Omgilibot",
+   "Omgili",
+   "YouBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web"
+  ]
+ },
+ {
+  "domain": "www.forum24.cz",
+  "bytes": 73,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.info.cz",
+  "bytes": 511,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.e15.cz",
+  "bytes": 1160,
+  "agents": [
+   "*",
+   "AhrefsBot",
+   "AhrefsSiteAudit",
+   "AwarioBot",
+   "BLEXBot",
+   "Bytespider",
+   "CriteoBot",
+   "DataForSeoBot",
+   "DotBot",
+   "GrapeshotCrawler",
+   "grapeshot",
+   "MJ12bot",
+   "MegaIndex",
+   "MojeekBot",
+   "SemrushBot",
+   "YandexBot",
+   "Yeti",
+   "YisouSpider"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Bytespider"
+  ]
+ },
+ {
+  "domain": "archiv.hn.cz",
+  "bytes": 166,
+  "agents": [
+   "GPTBot",
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "GPTBot"
+  ]
+ },
+ {
+  "domain": "www.respekt.cz",
+  "bytes": 603,
+  "agents": [
+   "*",
+   "*",
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.reflex.cz",
+  "bytes": 1289,
+  "agents": [
+   "*",
+   "AhrefsBot",
+   "AhrefsSiteAudit",
+   "AwarioBot",
+   "BLEXBot",
+   "Bytespider",
+   "CriteoBot",
+   "DataForSeoBot",
+   "DotBot",
+   "GrapeshotCrawler",
+   "MJ12bot",
+   "MegaIndex",
+   "MojeekBot",
+   "SemrushBot",
+   "YandexBot",
+   "Yeti",
+   "YisouSpider"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Bytespider"
+  ]
+ },
+ {
+  "domain": "tn.nova.cz",
+  "bytes": 1652,
+  "agents": [
+   "*",
+   "Amazonbot",
+   "Bytespider",
+   "CCBot",
+   "Cohere-ai",
+   "Omgili",
+   "Omgilibot",
+   "YouBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Amazonbot",
+   "Bytespider",
+   "CCBot"
+  ]
+ },
+ {
+  "domain": "ct24.ceskatelevize.cz",
+  "bytes": 794,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.expres.cz",
+  "bytes": 1115,
+  "agents": [
+   "*",
+   "MachineLearning",
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "Omgilibot",
+   "FacebookBot",
+   "Applebot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web",
+   "Diffbot",
+   "ImagesiftBot",
+   "Omgilibot",
+   "Omgili",
+   "YouBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "GPTBot",
+   "Google-Extended",
+   "PerplexityBot",
+   "Amazonbot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Bytespider",
+   "Claude-Web"
+  ]
+ },
+ {
+  "domain": "www.super.cz",
+  "bytes": 1213,
+  "agents": [
+   "*",
+   "SeznamSocialBot",
+   "AI"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.lupa.cz",
+  "bytes": 342,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.root.cz",
+  "bytes": 342,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.zive.cz",
+  "bytes": 1107,
+  "agents": [
+   "Google-Extended",
+   "Google-CloudVertexBot",
+   "GoogleOther",
+   "Gemini-Deep-Research",
+   "GPTBot",
+   "ChatGPT-User",
+   "OAI-SearchBot",
+   "ChatGPT Agent",
+   "ClaudeBot",
+   "Claude-User",
+   "Claude-SearchBot",
+   "PerplexityBot",
+   "Perplexity-User",
+   "Applebot-Extended",
+   "Amazonbot",
+   "FacebookBot",
+   "meta-externalagent",
+   "Bytespider",
+   "CCBot",
+   "cohere-ai",
+   "Diffbot",
+   "DuckAssistBot",
+   "PetalBot",
+   "YouBot",
+   "AhrefsBot",
+   "MachineLearning",
+   "ia_archiver",
+   "archive.org_bot",
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Google-Extended",
+   "GoogleOther",
+   "GPTBot",
+   "ChatGPT-User",
+   "OAI-SearchBot",
+   "ClaudeBot",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "Amazonbot",
+   "meta-externalagent",
+   "Bytespider",
+   "CCBot"
+  ]
+ },
+ {
+  "domain": "www.cnews.cz",
+  "bytes": 343,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.mobilmania.cz",
+  "bytes": 1064,
+  "agents": [
+   "Google-Extended",
+   "Google-CloudVertexBot",
+   "GoogleOther",
+   "Gemini-Deep-Research",
+   "GPTBot",
+   "ChatGPT-User",
+   "OAI-SearchBot",
+   "ChatGPT Agent",
+   "ClaudeBot",
+   "Claude-User",
+   "Claude-SearchBot",
+   "PerplexityBot",
+   "Perplexity-User",
+   "Applebot-Extended",
+   "Amazonbot",
+   "FacebookBot",
+   "meta-externalagent",
+   "Bytespider",
+   "CCBot",
+   "cohere-ai",
+   "Diffbot",
+   "DuckAssistBot",
+   "PetalBot",
+   "YouBot",
+   "AhrefsBot",
+   "MachineLearning",
+   "ia_archiver",
+   "archive.org_bot",
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "Google-Extended",
+   "GoogleOther",
+   "GPTBot",
+   "ChatGPT-User",
+   "OAI-SearchBot",
+   "ClaudeBot",
+   "PerplexityBot",
+   "Applebot-Extended",
+   "Amazonbot",
+   "meta-externalagent",
+   "Bytespider",
+   "CCBot"
+  ]
+ },
+ {
+  "domain": "www.svetandroida.cz",
+  "bytes": 116,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.vtm.cz",
+  "bytes": 160445,
+  "agents": [],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "21stoleti.cz",
+  "bytes": 110,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.kurzy.cz",
+  "bytes": 11666,
+  "agents": [
+   "*",
+   "googlebot",
+   "Seznambot",
+   "PetalBot",
+   "SeekportBot",
+   "trendictionbot",
+   "SentiBot",
+   "DataForSeoBot",
+   "AhrefsBot",
+   "proximic",
+   "Mediapartners-Google*",
+   "Bingbot",
+   "CriteoBot",
+   "SenutoBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [
+   "Seznambot"
+  ],
+  "ai": []
+ },
+ {
+  "domain": "www.penize.cz",
+  "bytes": 604,
+  "agents": [
+   "*",
+   "Riddler",
+   "ClaudeBot",
+   "Claude-web",
+   "Amazonbot",
+   "ImagesiftBot"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": [
+   "ClaudeBot",
+   "Claude-web",
+   "Amazonbot"
+  ]
+ },
+ {
+  "domain": "www.mesec.cz",
+  "bytes": 408,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.podnikatel.cz",
+  "bytes": 379,
+  "agents": [
+   "*"
+  ],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ },
+ {
+  "domain": "www.marketingsales.cz",
+  "bytes": 229753,
+  "agents": [],
+  "seznam_extended": [],
+  "seznambot": [],
+  "ai": []
+ }
+]
