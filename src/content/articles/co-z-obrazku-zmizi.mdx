@@ -1,0 +1,200 @@
+---
+title: "Co z obrázku zmizí cestou na web. Změřeno na 38 e-shopech"
+description: "Porovnal jsem originál se zmenšeninou u 38 e-shopů: z 31 dvojic mělo 15 originálů metadata a nepřežilo ani jedno. Plus měření knihoven sharp a Pillow."
+answer: "Zmenšenina, kterou návštěvník na webu vidí, obvykle nenese metadata o autorovi, licenci ani původu. U 38 reálných e-shopů jsem porovnal originál se zmenšeninou: z 31 použitelných dvojic mělo 15 originálů metadata a ve zmenšenině z nich nepřežilo ani jedno. Stejně se ve výchozím nastavení chovaly knihovny sharp i Pillow."
+slug: "co-z-obrazku-zmizi"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-08-09"
+updated: "2026-08-09"
+variant: "rich"
+keywords:
+  - "metadata obrázku"
+  - "exif na webu"
+  - "iptc xmp"
+  - "content credentials"
+  - "c2pa"
+  - "sharp metadata"
+  - "pillow metadata"
+  - "autorství fotky"
+stats:
+  - value: "15 z 15"
+    label: "originálů s metadaty — ve zmenšenině z nich nezůstal ani jeden segment"
+  - value: "13 439 B"
+    label: "Content Credentials v originálu jednoho e-shopu — ve zobrazené verzi 0"
+  - value: "2 z 2"
+    label: "knihovny ve výchozím nastavení nepřenesly metadata o původu — sharp nenechal nic, Pillow jen hlavičku a komentář"
+  - value: "57 B"
+    label: "jediné, co ve zmenšenině zbylo: podpis knihovny, která to smazala"
+howto:
+  name: "Jak si ověřit, co váš web dělá s metadaty obrázku"
+  steps:
+    - name: "Stáhněte si obrázek ze svého webu"
+      text: "Ne ze svého disku — přímo tu variantu, kterou vidí návštěvník. Klikněte pravým na obrázek na stránce a uložte si ho."
+    - name: "Porovnejte ho s originálem"
+      text: "Najděte tentýž soubor v nejvyšší dostupné variantě nebo ve svém archivu. Rozdíl mezi nimi udělala publikační pipeline, ne fotoaparát."
+    - name: "Podívejte se, co v obou souborech je"
+      text: "Stačí prohlížeč metadat nebo příkaz exiftool. Sledujte EXIF, IPTC, XMP a Content Credentials."
+    - name: "Rozhodněte se, jestli vám to vadí"
+      text: "U produktových fotek většinou ne. U vlastní fotografie, ilustrace nebo obsahu, kde chcete doložit původ, ano."
+faq:
+  - q: "Jsou metadata obrázku faktor pro pozice ve vyhledávání?"
+    a: "Nemám doklad, že by EXIF, IPTC nebo XMP samy o sobě ovlivňovaly pozice, a v tomhle článku to netvrdím. Měřím něco jiného: jestli se z obrázku cestou na web ztrácejí metadatové segmenty, které mohou nést údaj o autorovi, licenci a původu. To je otázka atribuce a doložitelnosti, ne žebříčku."
+  - q: "Co je Content Credentials a proč na nich záleží?"
+    a: "Content Credentials podle standardu C2PA jsou podepsaný záznam o původu souboru, který jde k obrázku připojit. V měřeném vzorku je jeden e-shop v originálu měl, ale ve variantě zobrazené na webu po nich nezůstala ani stopa. Kdo by si chtěl původ ověřit z toho souboru, nemá z čeho. O pozicích ani citacích to neříká nic."
+  - q: "Zachovává metadata knihovna sharp?"
+    a: "V mém testu s jedním JPEGem ne — po zmenšení a exportu ve výchozím volání nezůstalo v souboru nic. S keepMetadata() se vrátily EXIF, ICC, IPTC i XMP, ale ne komentář JPEG. Při převodu do WebP se navíc ztratil IPTC, protože pro něj WebP nemá kontejner."
+  - q: "A knihovna Pillow v Pythonu?"
+    a: "V mém testu nechalo výchozí uložení jen hlavičku JFIF a komentář. EXIF a ICC profil šlo vrátit parametrem, ale IPTC ani XMP se mi do JPEGu vrátit nepodařilo — běžné save() pro ně parametr nemá. U WebP parametr xmp existuje."
+  - q: "Jak zjistím, čím můj web obrázky zpracovává?"
+    a: "Někdy to prozradí sám soubor. Ve zmenšeninách měřených e-shopů zbyl komentář CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 85, což je podpis knihovny PHP GD včetně použité kvality."
+  - q: "Znamená to, že mám metadata do obrázků dávat?"
+    a: "Znamená to hlavně nespoléhat na to, že tam po publikaci zůstanou. Pokud je autorství a licence důležitá, patří i do textu stránky a do strukturovaných dat, kde je platforma nesmaže."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Co z obrázku zmizí cestou na web
+
+**V běžné publikační pipeline není obrázek na stránce ten soubor, který jste nahráli.** Je to zmenšenina, kterou po cestě vyrobila nějaká knihovna — a ta při tom zpravidla zahodí skoro všechna metadata o původu souboru: autora, copyright, popisky i podepsaný záznam o původu. Hlavička a komentář zůstanou, zbytek ne.
+
+Řeč je celou dobu **jen o metadatech uvnitř obrazového souboru**, ne o údajích v HTML stránky. Alternativní text, popisek pod obrázkem ani strukturovaná data se zmenšováním nikam neztrácejí.
+
+Změřil jsem to na dvou místech: na knihovnách, které zmenšování dělají, a na 38 reálných e-shopech, kde to běží v provozu.
+
+## Jak se to dá poznat, aniž byste hádali
+
+Problém takového měření je, že když v obrázku na webu nic nenajdete, nevíte proč. Možná to platforma smazala. Možná tam nikdy nic nebylo.
+
+Šel jsem na to porovnáním. Shoptet ukládá tentýž soubor ve variantách podle velikosti — `orig` je nahraný originál, `big` a `detail` jsou zmenšeniny. **Stáhl jsem obě verze téhož souboru z téhož e-shopu.** Co je v originálu a chybí ve zmenšenině, ubrala prokazatelně transformace.
+
+Metadatové segmenty jsem četl vlastní čtečkou přímo z bajtů souboru — u JPEGu markery (EXIF, XMP, IPTC, ICC, JUMBF pro Content Credentials, komentář), u WebP odpovídající chunky.
+
+## Knihovny: výchozí nastavení metadata nepřenese
+
+Nejdřív kontrolované prostředí. Vyrobil jsem testovací JPEG 1600×1200, do kterého jsem dal všechno naráz: EXIF s autorem a copyrightem, XMP, IPTC, ICC profil a komentář. Pak jsem ho prohnal běžnými voláními.
+
+| Pipeline | Co ve výstupu zbylo |
+|---|---|
+| **vstupní soubor** | JFIF, ICC, komentář, EXIF, IPTC, XMP |
+| **Pillow: resize + save (výchozí)** | jen JFIF a komentář |
+| Pillow: `save(exif=…)` | JFIF, komentář, EXIF |
+| Pillow: `exif` + `icc_profile` + `comment` | JFIF, komentář, EXIF, ICC — **IPTC a XMP ne** |
+| Pillow → WebP (výchozí) | **nic** |
+| **sharp: resize + jpeg (výchozí)** | **nic** |
+| sharp: `keepMetadata()` | ICC, EXIF, IPTC, XMP — **ale komentář pryč** |
+| sharp: `withMetadata()` | totéž, ale ICC menší — knihovna vložila vlastní profil |
+| sharp: `keepMetadata()` → WebP | EXIF, ICC, XMP — **IPTC pryč** |
+
+Tři věci z toho stojí za pozornost.
+
+**Výchozí nastavení je u obou knihoven „nepřenášet".** U sharpu nezůstalo vůbec nic, u Pillow jen hlavička a komentář. Jde o chování bez jakýchkoli dalších parametrů.
+
+**Pillow mi přes běžné `save()` nedostalo do JPEGu zpátky IPTC ani XMP.** Zkusil jsem předat všechno, co dokumentované API nabízí — parametr pro ně tam není. U WebP `xmp=` existuje, u JPEGu ne. Kdo v Pythonu zmenšuje fotky a spoléhá, že „to jde nastavit", naráží u těchhle dvou na omezení samotného `save()`. Jinými cestami to jít může; já měřil tuhle.
+
+**Ani jedna knihovna není nadmnožinou té druhé.** `keepMetadata()` u sharpu zachrání IPTC a XMP, ale zahodí komentář, který Pillow drží. A převod do WebP shodí IPTC bez ohledu na knihovnu — WebP pro něj nemá kam.
+
+<Insight tone="signal" icon="i" label="Drobnost, která prozradí přepis">
+EXIF v souboru po sharpu narostl ze 168 na 310 bajtů. Není to bajtová kopie původního bloku — knihovna ho přepsala po svém. U varianty `withMetadata()` navíc vložila vlastní barevný profil (494 B) místo původního (602 B).
+</Insight>
+
+## V provozu: z 15 originálů nepřežil ani jeden
+
+Pak stejná otázka na živých webech. Vzorek 47 e-shopů z [dřívějšího měření robots.txt](/blog/shoptet-robots-txt-ai-roboti/), z toho 38 reálných; devět demo e-shopů platformy jsem počítal zvlášť, protože nesou ukázková data.
+
+Použitelných dvojic originál ↔ zmenšenina vyšlo **31**. V **15 z nich** nesl originál aspoň jeden metadatový segment — nejčastěji EXIF (14 e-shopů), XMP (10), ICC (7) a IPTC (6).
+
+**Ze segmentů, které originál nesl navíc, se ve zmenšenině nezachoval ani jeden.** Patnáct z patnácti v tomhle vzorku — mezi použitelnými dvojicemi jsem nenašel jedinou výjimku.
+
+Zmenšeniny přitom vypadaly pozoruhodně stejně: ve 109 ze 124 stažených variant přesně hlavička JFIF a jeden komentář, jinak nic.
+
+<Insight tone="warn" icon="!" label="Nejsilnější případ ze vzorku">
+  Jeden e-shop má v nahraném originálu **13 439 bajtů Content Credentials** podle standardu C2PA — podepsaný záznam o původu souboru — a k tomu barevný profil o 3 158 bajtech.
+
+Ve variantě, která je na stránce a kterou si stáhne návštěvník: **hlavička o 14 bajtech a komentář o 57 bajtech.** Nic jiného. (Že tutéž adresu stahuje i robot, je pravděpodobné, ale neměřil jsem to.)
+
+  Někdo ten doklad o původu k fotce vědomě připojil. Do zobrazené verze se nedostal.
+</Insight>
+
+## Co v tom souboru zůstalo místo autora
+
+Ten komentář, který jako jediný přežil, není od e-shopu. Zní takhle:
+
+```
+CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 85
+```
+
+Je to podpis knihovny **PHP GD**. Jediné, co v souboru zbylo, je tedy signatura nástroje, který z něj to ostatní odstranil.
+
+Má to i praktickou stranu: z toho komentáře se rovnou dozvíte, čím platforma obrázky zpracovává a s jakou kvalitou. Nemusíte to odhadovat, soubor to řekne sám.
+
+## WordPress jsem změřit nedokázal
+
+Chtěl jsem stejným způsobem proměřit i WordPress, kde se odvozeniny jmenují `nazev-800x600.jpg` vedle originálu `nazev.jpg`. Prošel jsem 20 domén a **nevyšlo to**.
+
+Osm z nich nebyl WordPress, u devíti se odvozeniny v očekávaném tvaru nenašly a zbyly tři použitelné dvojice — jenže **ani v jedné z nich nemělo metadata už samotný originál**. Bez nich není co porovnávat a nejde oddělit, co ubrala transformace.
+
+**Vzorek závěr o WordPressu neumožnil.** Zapisuju to jako limit měření, ne jako zjištění.
+
+Jedna dílčí stopa přesto padla: odvozenina **na jednom z těch webů** nese komentář `CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 82` — stopu **téže knihovny GD** jako u měřených e-shopů, jen s jinou kvalitou. Je to nález o jednom webu, ne o WordPressu obecně.
+
+## Proč to řešit — a proč to nepřehánět
+
+Tady je potřeba být opatrný, protože se kolem obrázků snadno nasype víc, než unese doklad.
+
+**Netvrdím, že metadata v obrázku ovlivňují pozice ve vyhledávání.** Doklad pro to nemám a v tomhle článku ho nenajdete. Alternativní text, popisky kolem obrázku a strukturovaná data jsou jiná věc — ty jsou v HTML a platforma je nemaže.
+
+Co se ale prokazatelně ztrácí, je **doložitelnost původu**. Když chcete u fotky ukázat, že je vaše, kdy vznikla a za jakých podmínek se smí použít, a jediné místo, kde to máte, je uvnitř souboru, tak to po publikaci nemáte nikde. Platí to i pro Content Credentials — jeden z mechanismů, jak doložit původ nebo zásah do souboru, o kterém píšeme u otázky, [jak se dnes pozná AI obrázek](/blog/jak-poznat-ai-obrazek/).
+
+Z ničeho z toho neplyne, jak s obrázkem naloží vyhledávač nebo AI systém. Plyne z toho jen tolik, že **z toho konkrétního souboru původ neověříte.**
+
+Praktický důsledek z tohohle měření je jednoduchý: **co je důležité, nepatří jen do souboru.**
+
+## Co s tím udělat u sebe
+
+Kolik do toho investovat, se liší podle toho, co publikujete:
+
+- **Produktové fotky z feedu:** většinou to řešit nemusíte. Autorství tu nikdo nedohledává a popis patří stejně do HTML.
+- **Vlastní fotografie a ilustrace:** autora a licenci napište i do stránky a archivujte originály. Verze na webu vám autorství nedoloží.
+- **Obsah, kde je původ podstatný:** počítejte s tím, že platforma metadata nejspíš zahodí, a doklad si držte mimo publikovaný soubor.
+
+<Checklist tone="seo" title="Kontrola na vlastním webu" items={[
+  { title: "Stáhněte obrázek ze stránky, ne z disku", desc: "zajímá vás ta varianta, kterou dostane návštěvník na stránce." },
+  { title: "Porovnejte ji s originálem", desc: "rozdíl udělala publikační pipeline. Bez porovnání nevíte, jestli tam něco vůbec bylo." },
+  { title: "Autorství a licenci napište i do stránky", desc: "popisek u obrázku a strukturovaná data přežijí zmenšení, EXIF ne." },
+  { title: "U vlastní pipeline zapněte přenos vědomě", desc: "u sharpu keepMetadata(), u Pillow předání exif a icc_profile — a počítejte s tím, co se stejně ztratí." },
+  { title: "Archivujte originály", desc: "verze na webu vám autorství nedoloží." }
+]} />
+
+## Limity tohohle měření
+
+Jeden odečet, **9. srpna 2026**. Vzorek e-shopů není náhodný výběr z populace, je to týž seznam jako v dřívějším měření. Testoval jsem JPEG a WebP, ne AVIF.
+
+U platformy měřím **výstup, ne nastavení** — jestli někde v administraci existuje přepínač, jsem neověřoval, do administrace se nedostanu. A u knihoven jde o výchozí volání, ne o všechny možné kombinace parametrů.
+
+## Tři chyby, které se u toho nabízejí
+
+<MistakeGrid>
+  <Mistake number="01" title="Spoléhat, že copyright v souboru někam dojde">
+    Ve všech 15 měřených případech zmizel. Když na autorství záleží, musí být i v textu stránky.
+  </Mistake>
+  <Mistake number="02" title="Považovat prázdná metadata za důkaz, že je platforma smazala">
+    Většina originálů v mém vzorku žádná neměla. Bez porovnání s originálem netvrďte nic — přesně na tom mi ztroskotalo měření WordPressu.
+  </Mistake>
+  <Mistake number="03" title="Čekat, že se metadata přenesou při změně formátu">
+    Převod do WebP shodí IPTC bez ohledu na knihovnu. Formát nemá kam ho uložit.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+Zmenšenina na webu je jiný soubor než ten, který jste nahráli, a metadata v něm zpravidla nejsou. Změřeno na dvou knihovnách v kontrolovaném testu a na 38 e-shopech v provozu, kde z patnácti originálů s metadaty nepřežil ani jeden.
+
+Není to samo o sobě problém pro vyhledávání. Je to problém pro doložitelnost — a řeší se tím, že autorství a licenci napíšete i tam, kde je zmenšování nedosáhne.
+
+Jak se knihovna sharp chová při samotném zmenšování a exportu, rozebírá [předchozí měření](/blog/metadata-obrazku-pri-publikaci/). Co všechno má být na produktové stránce strojově čitelné, shrnuje [návod na strukturovaná data](/blog/strukturovana-data-pro-ai/).

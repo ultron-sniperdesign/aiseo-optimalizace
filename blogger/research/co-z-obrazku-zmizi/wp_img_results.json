@@ -1,0 +1,151 @@
+[
+ {
+  "domain": "wordpress.org",
+  "wordpress": true,
+  "note": "odvozeniny se vzorem -ŠxV nenalezeny"
+ },
+ {
+  "domain": "ma.tt",
+  "wordpress": true,
+  "note": "odvozeniny se vzorem -ŠxV nenalezeny"
+ },
+ {
+  "domain": "techcrunch.com",
+  "wordpress": true,
+  "note": "odvozeniny se vzorem -ŠxV nenalezeny"
+ },
+ {
+  "domain": "variety.com",
+  "wordpress": true,
+  "note": "odvozeniny se vzorem -ŠxV nenalezeny"
+ },
+ {
+  "domain": "wpbeginner.com",
+  "wordpress": true,
+  "pair": {
+   "orig_url": "https://www.wpbeginner.com/wp-content/uploads/2026/07/whats-coming-wp-7-1-thumb.jpg",
+   "derived_url": "https://www.wpbeginner.com/wp-content/uploads/2026/07/whats-coming-wp-7-1-thumb-150x150.jpg",
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 12130,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "derived": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3524,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   }
+  }
+ },
+ {
+  "domain": "yoast.com",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "kinsta.com",
+  "wordpress": true,
+  "pair": {
+   "orig_url": "https://kinsta.com/wp-content/uploads/2025/08/Kinsta-homepage-featured-image.jpg",
+   "derived_url": "https://kinsta.com/wp-content/uploads/2025/08/Kinsta-homepage-featured-image-1024x536.jpg",
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 78658,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 29
+    }
+   },
+   "derived": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 42783,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 29
+    }
+   }
+  }
+ },
+ {
+  "domain": "wpengine.com",
+  "wordpress": true,
+  "note": "odvozeniny se vzorem -ŠxV nenalezeny"
+ },
+ {
+  "domain": "smashingmagazine.com",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "css-tricks.com",
+  "wordpress": true,
+  "pair": {
+   "orig_url": "https://css-tricks.com/wp-content/uploads/2026/01/DSC00364-1.jpg",
+   "derived_url": "https://css-tricks.com/wp-content/uploads/2026/01/DSC00364-1-80x80.jpg",
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 844130,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "derived": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2020,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   }
+  }
+ },
+ {
+  "domain": "vogue.com",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "rollingstone.com",
+  "wordpress": true,
+  "note": "odvozeniny se vzorem -ŠxV nenalezeny"
+ },
+ {
+  "domain": "time.com",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "bbcgoodfood.com",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "thewaltdisneycompany.com",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "novinky.cz",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "lupa.cz",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "root.cz",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "vitalia.cz",
+  "note": "není WordPress (bez /wp-content/)"
+ },
+ {
+  "domain": "zive.cz",
+  "note": "není WordPress (bez /wp-content/)"
+ }
+]

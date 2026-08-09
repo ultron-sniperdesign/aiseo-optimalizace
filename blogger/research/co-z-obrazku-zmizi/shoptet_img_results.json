@@ -1,0 +1,2159 @@
+[
+ {
+  "domain": "www.anela.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 167873,
+    "segments": {
+     "APP2/ICC": 3158,
+     "JUMBF/C2PA": 13439,
+     "APP14/Adobe": 31
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 74637,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 15925,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2244,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2881,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.anela.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.anela.cz/user/shop/detail/1225_nebeska-hydratace-pro-kazdou-plet--mini-balicek-7.jpg"
+ },
+ {
+  "domain": "www.angrybeards.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 79702,
+    "segments": {
+     "EXIF": 290,
+     "XMP": 1282,
+     "IPTC": 330,
+     "APP14/Adobe": 12
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 23981,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 6421,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1638,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2166,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.angrybeards.cz/znacka/bio/",
+  "image": "https://cdn.myshoptet.com/usr/www.angrybeards.cz/user/shop/detail/2699_be-bd001-088ra-100-2512-1400px-1.jpg"
+ },
+ {
+  "domain": "www.autodoplnky-obchod.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 83448,
+    "segments": {
+     "EXIF": 6547,
+     "IPTC": 8498,
+     "XMP": 3451,
+     "APP14/Adobe": 31
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 82539,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 27827,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3077,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 5668,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.autodoplnky-obchod.cz/znacka/ado-pro/",
+  "image": "https://cdn.myshoptet.com/usr/www.autodoplnky-obchod.cz/user/shop/detail/76625-3_kryt-prahu-patych-dveri-vw-touran-ii-2015-2026---nerez---ado-pro.jpg"
+ },
+ {
+  "domain": "www.baavi.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 82975,
+    "segments": {
+     "EXIF": 200,
+     "APP2/ICC": 550
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 38789,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 11033,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1773,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3405,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.baavi.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.baavi.cz/user/shop/detail/1165-5_drevene-mestecko--wooden-city.jpg"
+ },
+ {
+  "domain": "www.cistedrevo.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 57401,
+    "segments": {
+     "EXIF": 4681,
+     "IPTC": 6620,
+     "XMP": 3539,
+     "APP2/ICC": 686,
+     "APP14/Adobe": 31
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 47733,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 15108,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2247,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3418,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.cistedrevo.cz/znacka/dvedeti/",
+  "image": "https://cdn.myshoptet.com/usr/www.cistedrevo.cz/user/shop/detail/57328_h536.jpg"
+ },
+ {
+  "domain": "www.drevenysvet.online",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.film-technika.com",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 36369,
+    "segments": {
+     "EXIF": 186,
+     "APP2/ICC": 470
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 30360,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 10534,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2146,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 6320,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.film-technika.com/znacka/3dfocus/",
+  "image": "https://cdn.myshoptet.com/usr/www.film-technika.com/user/shop/detail/32628_880f0e-9256cf83ec9740ab8e9ace20346a68c7-mv2.jpg"
+ },
+ {
+  "domain": "www.gigamat.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.giovani.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 193425,
+    "segments": {
+     "APP0/JFIF": 14,
+     "EXIF": 186,
+     "XMP": 3850
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 107035,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 25554,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3252,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 5005,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.giovani.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.giovani.cz/user/shop/detail/67-5_zkusebni-balicek-parfemu-do-pracky-giovani.jpg"
+ },
+ {
+  "domain": "www.hobynaradi.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.konzoliste.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 676795,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 69666,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 19616,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3664,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 17036,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.konzoliste.cz/znacka/2k/",
+  "image": "https://cdn.myshoptet.com/usr/www.konzoliste.cz/user/shop/detail/21971_ps4-mafia-trilogy-cz.png"
+ },
+ {
+  "domain": "www.kulina.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 232799,
+    "segments": {
+     "EXIF": 22,
+     "XMP": 895,
+     "APP14/Adobe": 12
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 25772,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 7080,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1561,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1936,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.kulina.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.kulina.cz/user/shop/related/127652.jpg"
+ },
+ {
+  "domain": "www.levanduloveudoli.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 953224,
+    "segments": {
+     "EXIF": 76,
+     "IPTC": 62,
+     "APP2/ICC": 3158,
+     "APP14/Adobe": 31
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 44895,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 11659,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2299,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2923,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.levanduloveudoli.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.levanduloveudoli.cz/user/shop/detail/1082_ostropestrec-160g--dg--2026-03-27-00.jpg"
+ },
+ {
+  "domain": "www.madvell.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 341454,
+    "segments": {
+     "EXIF": 22,
+     "XMP": 896,
+     "APP14/Adobe": 12
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 95770,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 23684,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2729,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 4388,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.madvell.cz/znacka/rewatch/",
+  "image": "https://cdn.myshoptet.com/usr/www.madvell.cz/user/shop/detail/2539-1_4-onyx-3.jpg"
+ },
+ {
+  "domain": "www.nanospace.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 72825,
+    "segments": {
+     "APP0/JFIF": 14,
+     "EXIF": 186,
+     "XMP": 3312
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 50333,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 14378,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1862,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2383,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.nanospace.cz/airbi/",
+  "image": "https://cdn.myshoptet.com/usr/www.nanospace.cz/user/shop/detail/5575-2_airbi-note--4.jpg"
+ },
+ {
+  "domain": "www.nasegalanterie.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 105838,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 11354,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3527,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1180,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1541,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.nasegalanterie.cz/znacka/addi/",
+  "image": "https://cdn.myshoptet.com/usr/www.nasegalanterie.cz/user/shop/detail/114401_addi-colour-2-0.jpg"
+ },
+ {
+  "domain": "www.nemeckyeshop.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 580996,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 433329,
+    "segments": {}
+   },
+   "detail": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 95710,
+    "segments": {}
+   },
+   "related": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 11807,
+    "segments": {}
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 13406,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.nemeckyeshop.cz/znacka/7up/",
+  "image": "https://cdn.myshoptet.com/usr/www.nemeckyeshop.cz/user/shop/detail/307344_7up-limon-da-citron-a-limetka-bez-cukru-330-ml-5741000223963.png"
+ },
+ {
+  "domain": "www.nonstopstavebniny.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 16835,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 21017,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 7156,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1788,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2375,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.nonstopstavebniny.cz/znacka/abb/",
+  "image": "https://cdn.myshoptet.com/usr/www.nonstopstavebniny.cz/user/shop/detail/67170_pim-993738-1.jpg"
+ },
+ {
+  "domain": "www.olivie.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 230986,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 127582,
+    "segments": {}
+   },
+   "detail": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 30078,
+    "segments": {}
+   },
+   "related": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 4703,
+    "segments": {}
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 5158,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.olivie.cz/znacka/minet/",
+  "image": "https://cdn.myshoptet.com/usr/www.olivie.cz/user/shop/detail/47663_20368-large.png"
+ },
+ {
+  "domain": "www.outdoorstuff.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 254140,
+    "segments": {
+     "APP0/JFIF": 14,
+     "EXIF": 14434,
+     "XMP": 3187,
+     "APP2/ICC": 686
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 101131,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 24153,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3771,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 4887,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.outdoorstuff.cz/acron/",
+  "image": "https://cdn.myshoptet.com/usr/www.outdoorstuff.cz/user/shop/related/1665-4_hamaka-s-moskytierou-a-striskou-yate-nidus.jpg"
+ },
+ {
+  "domain": "www.pff.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.pocitarna.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 16994,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 14286,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 4901,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1259,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1967,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.pocitarna.cz/znacka/2-power/",
+  "image": "https://cdn.myshoptet.com/usr/www.pocitarna.cz/user/shop/detail/198627-2_973ed7b6-8b3d-4929-b894-64e805ae84ba.jpg"
+ },
+ {
+  "domain": "www.profi-dj.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.prohackovani.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 83111,
+    "segments": {
+     "APP14/Adobe": 12
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 60310,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 14012,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2318,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2882,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.prohackovani.cz/znacka/2pack/",
+  "image": "https://cdn.myshoptet.com/usr/www.prohackovani.cz/user/shop/detail/104002_lepici-paska-48-mm-x-66-m-hneda.jpg"
+ },
+ {
+  "domain": "www.prokonzole.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 675253,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 64139,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 20836,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3276,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 18085,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.prokonzole.cz/znacka-among-us/",
+  "image": "https://cdn.myshoptet.com/usr/www.prokonzole.cz/user/shop/detail/90740_merch-figurka-among-us-action-1-ks-11-5-cm-random.png"
+ },
+ {
+  "domain": "www.prolicence.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 117599,
+    "segments": {
+     "APP0/JFIF": 14,
+     "EXIF": 74,
+     "IPTC": 54
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 78328,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 20187,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2904,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 5005,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.prolicence.cz/znacka/adobe/",
+  "image": "https://cdn.myshoptet.com/usr/www.prolicence.cz/user/shop/detail/1327_14181-adobe-photoshop-elements-2026-2-zarizeni-3-roky-pc-mac.jpg"
+ },
+ {
+  "domain": "www.ptakoviny-cb.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 194692,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 116614,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 20784,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2790,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3737,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.ptakoviny-cb.cz/znacka/aricona-gmbh/",
+  "image": "https://cdn.myshoptet.com/usr/www.ptakoviny-cb.cz/user/shop/detail/35260-4_kontaktni-cocky-beastflare.jpg"
+ },
+ {
+  "domain": "www.puellavune.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 914309,
+    "segments": {
+     "tEXt": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 371979,
+    "segments": {}
+   },
+   "detail": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 81198,
+    "segments": {}
+   },
+   "related": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 7713,
+    "segments": {}
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 14122,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.puellavune.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.puellavune.cz/user/shop/big/96450_lolie-gule-3.png"
+ },
+ {
+  "domain": "www.ususil.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.utukutu.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 40743,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 43976,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 13761,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2728,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3536,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.utukutu.cz/znacka/2kids-toys/",
+  "image": "https://cdn.myshoptet.com/usr/www.utukutu.cz/user/shop/detail/9054_2d33891-hl.jpg"
+ },
+ {
+  "domain": "www.venira.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 32522,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 44717,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 11096,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1514,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1963,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.venira.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.venira.cz/user/shop/detail/5904-4_sprchova-pe--na--1.jpg"
+ },
+ {
+  "domain": "www.super-granule.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 79191,
+    "segments": {
+     "APP0/JFIF": 14,
+     "EXIF": 186,
+     "XMP": 3653
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 68491,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 12062,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1999,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3514,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.super-granule.cz/4cats/",
+  "image": "https://cdn.myshoptet.com/usr/www.super-granule.cz/user/shop/detail/17736_produktove-obrazky-eshop--63.jpg"
+ },
+ {
+  "domain": "www.pesan-krmiva.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 691800,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 66326,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 14731,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2441,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 9324,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.pesan-krmiva.cz/znacka/acana/",
+  "image": "https://cdn.myshoptet.com/usr/www.pesan-krmiva.cz/user/shop/related/8845_brit-premium-by-nature-sensitive-lamb--15-kg.png"
+ },
+ {
+  "domain": "www.husse.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "www.bellas.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 145650,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 89796,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 26420,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2684,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3396,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.bellas.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.bellas.cz/user/shop/detail/23093-1_cze-pl-saty-svazane-na-rukavech-svetle-ruzova-27613-3.jpg"
+ },
+ {
+  "domain": "www.nutrition-shop.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 324960,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 70808,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 17879,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3053,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 4092,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.nutrition-shop.cz/znacka/alavis/",
+  "image": "https://cdn.myshoptet.com/usr/www.nutrition-shop.cz/user/shop/related/633-2_nutrend-isodrinx-tabs-12tbl--koupite-na-nutrition-shop-cz.jpg"
+ },
+ {
+  "domain": "www.brainmarket.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 228761,
+    "segments": {
+     "EXIF": 7740,
+     "IPTC": 7692,
+     "APP2/ICC": 3158,
+     "XMP": 1394,
+     "APP14/Adobe": 12
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 27531,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 8372,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1989,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2149,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.brainmarket.cz/znacka/3666-by-jiri-langmajer/",
+  "image": "https://cdn.myshoptet.com/usr/www.brainmarket.cz/user/shop/detail/49279-1_arabica-blend-3666.jpg"
+ },
+ {
+  "domain": "www.viviencosmetics.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 25551,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 20805,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 5719,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1286,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1953,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://www.viviencosmetics.cz/",
+  "image": "https://cdn.myshoptet.com/usr/www.viviencosmetics.cz/user/shop/detail/7026_gel-vivien.jpg"
+ },
+ {
+  "domain": "samba.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 95832,
+    "segments": {
+     "APP0/JFIF": 14,
+     "EXIF": 200,
+     "XMP": 2513
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 41273,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 11323,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1941,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3211,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://samba.shoptet.cz/znacka/armani/",
+  "image": "https://cdn.myshoptet.com/usr/samba.shoptet.cz/user/shop/related/678-1_denni-zpevnujici-pece.jpg"
+ },
+ {
+  "domain": "disco.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 91446,
+    "segments": {
+     "APP0/JFIF": 14,
+     "APP14/Adobe": 36
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 53745,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 12510,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2600,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3190,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://disco.shoptet.cz/znacka/andie/",
+  "image": "https://cdn.myshoptet.com/usr/disco.shoptet.cz/user/shop/detail/302-1_13-2--andie-pocket-satchel.jpg"
+ },
+ {
+  "domain": "step.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 415057,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 60
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 32006,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 6687,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1635,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2029,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://step.shoptet.cz/znacka/akademiks/",
+  "image": "https://cdn.myshoptet.com/usr/step.shoptet.cz/user/shop/detail/102_womens-short-suede-skirt-vintage-pink-hm-pink-skirts.jpg"
+ },
+ {
+  "domain": "classic.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 1002403,
+    "segments": {}
+   },
+   "big": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 450633,
+    "segments": {}
+   },
+   "detail": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 84302,
+    "segments": {}
+   },
+   "related": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 6183,
+    "segments": {}
+   },
+   "category": {
+    "http": 200,
+    "format": "PNG",
+    "bytes": 13924,
+    "segments": {}
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://classic.shoptet.cz/",
+  "image": "https://cdn.myshoptet.com/usr/classic.shoptet.cz/user/shop/detail/381_obraz-produktovka.png"
+ },
+ {
+  "domain": "waltz.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 14629,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 43
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 16461,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 6740,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1951,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2449,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://waltz.shoptet.cz/",
+  "image": "https://cdn.myshoptet.com/usr/waltz.shoptet.cz/user/shop/related/348_ezgif-3-ba22d70043.jpg"
+ },
+ {
+  "domain": "tango.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 18788,
+    "segments": {
+     "APP0/JFIF": 14
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 27672,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 8151,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1894,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 2033,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://tango.shoptet.cz/znacka/alpine-pro/",
+  "image": "https://cdn.myshoptet.com/usr/tango.shoptet.cz/user/shop/detail/483_82024-ubtx285009-jpg.jpg"
+ },
+ {
+  "domain": "techno.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 110588,
+    "segments": {
+     "APP0/JFIF": 14,
+     "APP14/Adobe": 36
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 47152,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 21150,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 3822,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 4159,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://techno.shoptet.cz/znacka/akademiks/",
+  "image": "https://cdn.myshoptet.com/usr/techno.shoptet.cz/user/shop/related/32_burton-haven-sherpa-flannel.jpg"
+ },
+ {
+  "domain": "soul.shoptet.cz",
+  "variants": {},
+  "note": "obrázky v očekávaném vzoru nenalezeny"
+ },
+ {
+  "domain": "pop.shoptet.cz",
+  "variants": {
+   "orig": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 54235,
+    "segments": {
+     "APP0/JFIF": 14,
+     "APP14/Adobe": 36
+    }
+   },
+   "big": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 21551,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "detail": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 10003,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "related": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 1740,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "category": {
+    "http": 200,
+    "format": "JPEG",
+    "bytes": 4029,
+    "segments": {
+     "APP0/JFIF": 14,
+     "COM": 57
+    }
+   },
+   "thumb": {
+    "http": 404
+   }
+  },
+  "note": null,
+  "product": "https://pop.shoptet.cz/znacka/akademiks/",
+  "image": "https://cdn.myshoptet.com/usr/pop.shoptet.cz/user/shop/related/18_maui-jim-ho-okipa-tennessee.jpg"
+ }
+]

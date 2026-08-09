@@ -1,0 +1,105 @@
+[
+ {
+  "pipeline": "vstupní soubor",
+  "format": "JPEG",
+  "segments": {
+   "XMP": 465,
+   "IPTC": 82,
+   "COM": 38,
+   "APP0/JFIF": 14,
+   "EXIF": 168,
+   "APP2/ICC": 602
+  },
+  "bytes": 44601
+ },
+ {
+  "pipeline": "Pillow: resize + save (výchozí)",
+  "format": "JPEG",
+  "segments": {
+   "APP0/JFIF": 14,
+   "COM": 38
+  },
+  "bytes": 19214
+ },
+ {
+  "pipeline": "Pillow: save(exif=...)",
+  "format": "JPEG",
+  "segments": {
+   "APP0/JFIF": 14,
+   "EXIF": 168,
+   "COM": 38
+  },
+  "bytes": 19386
+ },
+ {
+  "pipeline": "Pillow: exif + icc_profile + comment ručně",
+  "format": "JPEG",
+  "segments": {
+   "APP0/JFIF": 14,
+   "EXIF": 168,
+   "APP2/ICC": 602,
+   "COM": 38
+  },
+  "bytes": 19992
+ },
+ {
+  "pipeline": "Pillow: → WebP (výchozí)",
+  "format": "WebP",
+  "segments": {},
+  "bytes": 5982
+ },
+ {
+  "pipeline": "Pillow: → WebP (exif+icc+xmp ručně)",
+  "format": "WebP",
+  "segments": {
+   "ICC": 588,
+   "EXIF": 162,
+   "XMP": 436
+  },
+  "bytes": 7210
+ },
+ {
+  "pipeline": "sharp: resize + jpeg (výchozí)",
+  "format": "JPEG",
+  "segments": {},
+  "bytes": 13177
+ },
+ {
+  "pipeline": "sharp: keepMetadata() + jpeg",
+  "format": "JPEG",
+  "segments": {
+   "EXIF": 310,
+   "XMP": 465,
+   "IPTC": 82,
+   "APP2/ICC": 602
+  },
+  "bytes": 14652
+ },
+ {
+  "pipeline": "sharp: withMetadata() + jpeg",
+  "format": "JPEG",
+  "segments": {
+   "EXIF": 310,
+   "XMP": 465,
+   "IPTC": 82,
+   "APP2/ICC": 494
+  },
+  "bytes": 14544
+ },
+ {
+  "pipeline": "sharp: → WebP (výchozí)",
+  "format": "WebP",
+  "segments": {},
+  "bytes": 5986
+ },
+ {
+  "pipeline": "sharp: keepMetadata() → WebP",
+  "format": "WebP",
+  "segments": {
+   "ICC": 588,
+   "EXIF": 310,
+   "XMP": 436
+  },
+  "bytes": 7362
+ }
+]
