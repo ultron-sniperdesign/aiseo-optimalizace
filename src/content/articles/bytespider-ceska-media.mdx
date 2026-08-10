@@ -1,0 +1,170 @@
+---
+title: "Ve vzorku 33 českých médií nevede GPTBot, ale Bytespider"
+description: "V robots.txt 33 českých médií je nejčastěji Bytespider, ne GPTBot. A je to robot, u kterého jsem veřejný oficiální seznam IP rozsahů nenašel."
+answer: "V robots.txt 33 českých médií jsem nejčastěji našel pravidlo pro Bytespider, crawler ByteDance — na třinácti webech, víc než pro GPTBota. Na rozdíl od OpenAI, Anthropicu, Perplexity, Googlu a Applu jsem u něj ale nenašel veřejný oficiální seznam IP rozsahů. Pravidlo na jeho jméno tak nemá stejnou úroveň zpětného ověření jako u ostatních."
+slug: "bytespider-ceska-media"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-08-10"
+updated: "2026-08-10"
+variant: "rich"
+keywords:
+  - "bytespider"
+  - "bytedance crawler"
+  - "ai roboti robots.txt"
+  - "blokování ai robotů"
+  - "ip rozsahy ai robotů"
+  - "gptbot"
+stats:
+  - value: "13 z 33"
+    label: "českých médií má v robots.txt pravidlo pro Bytespider — nejvíc ze všech AI robotů"
+  - value: "11"
+    label: "webů má pravidlo pro GPTBota, o dva míň"
+  - value: "5"
+    label: "provozovatelů, u kterých jsem veřejný oficiální seznam IP rozsahů našel — u ByteDance ne"
+  - value: "17 z 33"
+    label: "médií nemá pravidlo pro žádného sledovaného AI robota"
+faq:
+  - q: "Který AI robot je v českých médiích blokovaný nejčastěji?"
+    a: "V mém vzorku 33 zpravodajských a oborových webů to byl Bytespider, crawler ByteDance, se třinácti výskyty. Následovaly GPTBot a Amazonbot po jedenácti, ClaudeBot deset, Google-Extended devět a PerplexityBot osm. Měřil jsem konfiguraci v robots.txt, ne chování robotů."
+  - q: "Proč jde u některých robotů identitu ověřit proti seznamu IP a u Bytespidera ne?"
+    a: "OpenAI, Anthropic, Perplexity, Google i Apple publikují strojově čitelný soubor s IP rozsahy, proti kterému jde adresu z logu porovnat. U ByteDance jsem obdobný veřejný soubor na obvyklých adresách nenašel a nenašel jsem ani oficiální stránku k tomu robotovi. Netvrdím, že neexistuje ani že ověřit nejde jinak — jen že tuhle cestu jsem nenašel."
+  - q: "Je pravda, že Bytespider nerespektuje robots.txt?"
+    a: "Opakuje to řada zdrojů třetích stran s odkazem na rozbory logů z roku 2023. Sám jsem to netestoval a v tomhle článku to nepodávám jako fakt. Ověřit by to šlo jen na vlastním serveru s přístupem k logům."
+  - q: "Má tedy smysl psát pro Bytespider pravidlo do robots.txt?"
+    a: "Smysl to má jako srozumitelně vyjádřené přání a jako doklad, že jste ho vyjádřili. Nespoléhejte ale na to, že jde o vynucení. Robots.txt je žádost, ne zámek — a u robota, u kterého nemáte veřejný seznam rozsahů, k tomu chybí i zpětná kontrola."
+  - q: "Jak poznám, že soubor s IP rozsahy opravdu existuje?"
+    a: "Nestačí stavový kód. Adresa bytedance.com/en/bots.json vrací HTTP 200, ale s hlavičkou Content-Type: text/html — web vrací 200 pro libovolnou cestu. Kontrolujte typ obsahu a to, co v souboru skutečně je."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Ve vzorku 33 českých médií nevede GPTBot, ale Bytespider
+
+Stáhl jsem robots.txt třiatřiceti českých zpravodajských a oborových webů a spočítal, pro které AI roboty tam mají pravidla. **Čekal jsem, že povede GPTBot. Nevede.**
+
+Nejčastěji je v souborech `Bytespider` — crawler ByteDance, firmy za TikTokem. A je to zároveň jediný z první šestice v tomhle přehledu, u kterého jsem **nenašel veřejný oficiální seznam IP rozsahů**, proti kterému by šlo adresu z logu porovnat.
+
+## Co v těch souborech je
+
+Soubory jsem stáhl **9. srpna 2026** (33 ze 33); 10. srpna jsem k tomu doověřoval jen dostupnost dokumentace provozovatelů.
+
+| Robot | Na kolika webech z 33 |
+|---|---|
+| **Bytespider** | **13** |
+| GPTBot | 11 |
+| Amazonbot | 11 |
+| ClaudeBot | 10 |
+| Google-Extended | 9 |
+| PerplexityBot | 8 |
+| anthropic-ai | 6 |
+| CCBot | 6 |
+| Claude-Web | 5 |
+| Applebot-Extended | 5 |
+
+Vedle toho: **17 webů ze 33 nemá pravidlo pro žádného** ze sledovaných AI robotů, zatímco **devět jich ošetřuje šest a víc naráz**. Rozdělení je tedy dost vyhraněné — buď se tím někdo zabýval pořádně, nebo vůbec.
+
+V praxi se přitom mluví hlavně o GPTBotu. V mém vzorku ho o dva weby předstihl robot, o kterém je slyšet podstatně míň.
+
+## Proč je to zvláštní
+
+U většiny robotů z té tabulky víte, co za nimi stojí a co z toho máte. Perplexity nebo ChatGPT vás v odpovědi mohou citovat a poslat vám návštěvníka. Google-Extended a Applebot-Extended jsou pojmenované přepínače, kterými se odděluje trénování od vyhledávání.
+
+U Bytespidera jsem veřejně nenašel ani stejně přímé podklady k ověření identity, ani zjevnou plochu, **kde by vás na oplátku citoval a odkázal** — což neznamená, že neexistují.
+
+Jedna možná interpretace toho pořadí je, že u něj část provozovatelů nevidí zjevnou protihodnotu v podobě citací nebo přivedené návštěvnosti. **Netestoval jsem to a netvrdím, že je Bytespider škodlivější než ostatní** — jen že v tomhle srovnání u něj nevidím stejnou ověřitelnost identity.
+
+Zajímavější než motivace je stejně otázka, co to pravidlo vlastně dokáže.
+
+## Ověřitelnost: pět provozovatelů ano, ByteDance jsem nenašel
+
+Když jsem v [srpnovém měření](/blog/overovani-ai-robotu/) procházel oficiální seznamy IP rozsahů, našel jsem deset souborů u pěti provozovatelů. Přeověřil jsem je 10. 8. a všechny pořád odpovídají:
+
+| Provozovatel | Kde je seznam |
+|---|---|
+| OpenAI | `openai.com/gptbot.json` |
+| Anthropic | `claude.com/crawling/bots.json` |
+| Perplexity | `perplexity.ai/perplexitybot.json` |
+| Google | soubor v dokumentaci pro vývojáře |
+| Apple | `search.developer.apple.com/applebot.json` |
+
+**U ByteDance jsem obdobný soubor nenašel.** Zkusil jsem `bytedance.com/en/bots.json`, `bytedance.com/bytespider.json`, `developer.bytedance.com/bytespider`, `tiktok.com/bots.json` i `bytespider.bytedance.com`. Nenašel jsem ani oficiální stránku ByteDance k tomuhle robotovi — všechno, co k němu veřejně je, pochází od třetích stran: databází botů, bezpečnostních dodavatelů a blogů.
+
+<Insight tone="warn" icon="!" label="Netvrdím, že to neexistuje">
+  Tvrdím jen, že **jsem to na obvyklých místech nenašel.** Rozdíl je podstatný: u Anthropicu jsem si kdysi adresu takového souboru tipnul, dostal 404 a málem z toho udělal závěr, že rozsahy nezveřejňují. Zveřejňují — jen jinde, než jsem hledal.
+
+  Pokud oficiální seznam ByteDance existuje a je veřejný, rád ho doplním.
+</Insight>
+
+### Drobnost, na které jsem se skoro spálil
+
+`https://www.bytedance.com/en/bots.json` vrací **HTTP 200**. Kdybych se spolehl na stavový kód, napsal bych, že soubor existuje.
+
+V hlavičkách je ale `Content-Type: text/html` a v těle běžná HTML stránka. Web vrací 200 na libovolnou cestu, takže **stavový kód sám o sobě není doklad, že soubor existuje.** Platí to i pro `llms.txt`, ověřovací soubory a sitemapy — kontrolujte typ obsahu a to, co v souboru doopravdy je.
+
+## Co se o Bytespiderovi říká a co jsem netestoval
+
+Napříč zdroji třetích stran se opakují dvě tvrzení:
+
+- že Bytespider **nerespektuje `Disallow`**, s odkazem na rozbory přístupových logů z roku 2023,
+- že jeho podíl na provozu AI crawlerů v poslední době výrazně vzrostl.
+
+**Ani jedno jsem neověřoval a nepodávám to jako fakt.** Uvádím to, protože to je kontext, ve kterém se čtenář rozhoduje — ale mezi „opakuje se to" a „změřil jsem to" je rozdíl, který se v tomhle oboru ztrácí až moc často. Ověřit první tvrzení by šlo jedině na vlastním serveru s přístupem k logům, což je na samostatné měření.
+
+## Co z toho plyne prakticky
+
+Pravidlo v robots.txt na jméno robota je **srozumitelně vyjádřené přání**. U robotů s publikovanými rozsahy si navíc můžete v logu ověřit, jestli návštěva odpovídá tomu, za koho se vydává. U Bytespidera tuhle druhou půlku nemáte.
+
+Připomínám k tomu vlastní test: v [měření na 47 e-shopech](/blog/shoptet-robots-txt-ai-roboti/) jsem z běžné IP poslal požadavky pod jmény pěti AI robotů a **odpověď 200 mi vrátilo 47 webů ze 47**. Jméno v hlavičce si nastaví kdokoli.
+
+<Checklist tone="geo" title="Když Bytespider řešíte" items={[
+  { title: "Vězte, co to pravidlo je", desc: "vyjádřené přání a doklad, že jste ho vyjádřili — ne technické vynucení." },
+  { title: "Nezaměňujte s odhlášením z citací", desc: "u robotů, které vás citují, znamená zákaz i ztrátu odkazů. Tady jsem plochu, kde by citoval, nenašel." },
+  { title: "Skupinu pište samostatně", desc: "skupina pro konkrétního robota nahrazuje skupinu User-agent: *, nesčítá se s ní." },
+  { title: "Chcete-li jistotu, řešte to o patro níž", desc: "vynucení je věc serveru nebo firewallu, ne textového souboru. To už je ale práce pro správce." },
+  { title: "Zapište si datum a důvod", desc: "za rok nikdo nebude vědět, proč tam ten řádek je." }
+]} />
+
+Zápis vypadá takhle:
+
+```
+User-agent: Bytespider
+Disallow: /
+```
+
+Jak se skupiny v robots.txt chovají a proč se nesčítají, rozebírá [návod na robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+
+## Limity tohohle měření
+
+Jeden odečet robots.txt proběhl **9. srpna 2026**; 10. srpna jsem už jen doověřoval dokumentaci provozovatelů. Vzorek 33 médií není náhodný výběr, je to ruční seznam známých českých zpravodajských a oborových webů; jednotlivé weby nejmenuju.
+
+Měřím **konfiguraci v robots.txt, ne chování robotů.** Netestoval jsem, jestli je kdokoli z nich dodržuje — ani Bytespider, ani ostatní.
+
+A ověřoval jsem dostupnost seznamů IP jen u šesti provozovatelů. O Amazonbotu, CCBotu a dalších z tabulky tenhle článek neříká nic.
+
+## Tři chyby, které se u toho nabízejí
+
+<MistakeGrid>
+  <Mistake number="01" title="Brát pravidlo v robots.txt jako zámek">
+    Je to žádost. U robota, u kterého nemáte veřejný seznam rozsahů, je to navíc žádost bez zpětné kontroly.
+  </Mistake>
+  <Mistake number="02" title="Usoudit z HTTP 200, že soubor existuje">
+    Web může vracet 200 s HTML na libovolnou cestu. Kontrolujte Content-Type a obsah.
+  </Mistake>
+  <Mistake number="03" title="Přebírat „robot ignoruje robots.txt" jako fakt">
+    Je to opakované tvrzení třetích stran s kořeny v roce 2023. Já ho neověřoval a neopakuju jako svoje.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+V robots.txt třiatřiceti českých médií je nejčastěji Bytespider — na třinácti webech, o dva víc než GPTBot. Zároveň je to z té šestice jediný, u kterého jsem nenašel veřejný oficiální seznam IP rozsahů, tedy to, proti čemu si adresu z logu porovnávám u ostatních.
+
+Rozhodnutí je pak celkem přímočaré: pokud vám jde o **deklaraci vůle**, pravidlo pro Bytespider smysl má. Pokud vám jde o **vynucení nebo auditovatelnou identitu návštěv**, samotné robots.txt na to nestačí u nikoho — a u něj chybí i to zpětné ověření.
+
+Jak se identita robota ověřuje u těch ostatních, rozebírá [ověřování AI robotů](/blog/overovani-ai-robotu/). Českou vrstvu odhlášení z AI popisuje [Seznam-Extended](/blog/seznam-extended-opt-out/).
