@@ -1,291 +1,128 @@
-## VERDIKT: OPRAVIT PŘED PUBLIKACÍ
-
-Článek má dobrý formát checklistu, správně míří na praktický hub a CTA vede na konkrétní produkty. Před publikací ale vyžaduje opravy kvůli několika věcně rizikovým nebo příliš absolutním tvrzením, hlavně kolem AI robotů, Bingu a Google AI Overviews.
-
----
-
-## Nálezy a doporučené opravy
-
-### [BLOCKER] Nepřesné označení AI robotů, hlavně „Claude“
-
-**Problémové místo:**
-
-> „V souboru robots.txt nechte projít vyhledávací roboty OpenAI (OAI-SearchBot), Perplexity a Claude…“
-
-a v těle:
-
-> „V souboru `robots.txt` nechte projít vyhledávací roboty (OAI-SearchBot, PerplexityBot, Claude)…“
-
-**Problém:**  
-„Claude“ není přesné označení user-agentu. U Anthropic/Claude je potřeba rozlišit konkrétní aktuální user-agenty podle účelu. Takto to může vést k nefunkčnímu zápisu v `robots.txt`.
-
-**Návrh opravy:**
-
-> V souboru `robots.txt` nechte projít vyhledávací roboty AI služeb podle jejich aktuální dokumentace — například `OAI-SearchBot`, `PerplexityBot` a příslušné Anthropic user-agenty pro Claude podle účelu procházení.
-
-Doporučení: doplnit odkazy na oficiální dokumentaci OpenAI, Perplexity a Anthropic.
-
----
-
-### [BLOCKER] Tvrzení „ChatGPT s vyhledáváním využívá index Bingu“ je příliš absolutní
-
-**Problémové místo:**
-
-> „Ověřte web v **Bing Webmaster Tools** — ChatGPT s vyhledáváním využívá index Bingu.“
-
-**Problém:**  
-Formulace působí jako jisté a úplné vysvětlení zdrojů ChatGPT Search. V roce 2026 je bezpečnější netvrdit, že ChatGPT „využívá index Bingu“ jako jediný nebo přímý zdroj. ChatGPT Search může kombinovat více zdrojů a vlastní procházení.
-
-**Návrh opravy:**
-
-> Ověřte web v **Bing Webmaster Tools** — Bing je praktická kontrola dohledatelnosti a pro část AI vyhledávání může být důležitým zdrojem. Zároveň ale ověřujte i přístup vyhledávacích robotů AI služeb a reálné zmínky v odpovědích.
-
----
-
-### [BLOCKER] Omezování Google AI Overviews je popsáno zavádějícím způsobem
-
-**Problémové místo:**
-
-> „Pokud naopak chcete přístup omezit, je to legitimní volba; rozebírá ji [návod, jak omezit AI Overview](/blog/jak-vypnout-ai-overview/).“
-
-**Problém:**  
-U Google AI Overviews nelze jednoduše „vypnout AI Overview“ samostatně bez možných dopadů na běžné vyhledávání. Blokování Googlebotu nebo omezení snippetů může ovlivnit i klasické výsledky. Tvrzení je potřeba výrazně zpřesnit.
-
-**Návrh opravy:**
-
-> Pokud chcete omezit využití obsahu AI nástroji, rozlišujte mezi AI vyhledávacími roboty a Googlem. U Google AI Overviews nejsou možnosti odděleného vypnutí stejné jako blokace konkrétních AI crawlerů a mohou mít dopad i na běžné výsledky vyhledávání.
-
-A upravit anchor:
-
-> [možnosti omezení využití obsahu v AI Overviews](/blog/jak-vypnout-ai-overview/)
-
----
-
-### [WARNING] Claim „jeden web funguje pro Google i AI“ je opakovaně moc silný
-
-**Problémová místa:**
-
-> „jeden dobře strukturovaný, technicky zdravý a důvěryhodný web funguje pro Google i pro nástroje jako ChatGPT a Perplexity“
-
-> „Nepotřebujete novou strategii — jeden technicky zdravý a důvěryhodný web funguje pro Google i pro AI nástroje.“
-
-**Problém:**  
-Směr je správný, ale „funguje“ je moc jisté. Bezpečnější brand voice má používat formulace typu „může zvýšit šanci“, „pomáhá“, „je dobrý základ“.
-
-**Návrh opravy:**
-
-> Jeden dobře strukturovaný, technicky zdravý a důvěryhodný web je společný základ pro Google i AI nástroje jako ChatGPT a Perplexity. AI vrstvu k němu přidáváte navrch — hlavně citovatelnost, jasné odpovědi a lepší doložitelnost.
-
-Stejně upravit i FAQ a `stats`.
-
----
-
-### [WARNING] Statistiky ve frontmatteru obsahují overclaim
-
-**Problémové místo:**
-
-```yaml
-stats:
-  - value: "1 strategie"
-    label: "funguje pro Google i AI vyhledávání"
-  - value: "2–8 týdnů"
-    label: "kdy se technické fixy obvykle projeví"
-```
-
-**Problém:**  
-„Funguje“ je příliš jisté. „2–8 týdnů“ je konkrétní časové tvrzení bez zdroje a může být zavádějící, protože projevení změn v AI odpovědích není tak přímo měřitelné jako technická indexace.
-
-**Návrh opravy:**
-
-```yaml
-stats:
-  - value: "1 základ"
-    label: "pro Google i AI nástroje"
-  - value: "2–8 týdnů"
-    label: "orientační interval pro první kontrolu technických změn"
-```
-
----
-
-### [WARNING] Časové tvrzení o výsledcích potřebuje lepší ukotvení
-
-**Problémové místo:**
-
-> „Podle dostupných pozorování se technické fixy … projeví řádově v týdnech, obsahové úpravy obvykle za 1–3 měsíce.“
-
-**Problém:**  
-Je dobře, že text říká „podle dostupných pozorování“ a „orientační rámec“. Chybí ale zdroj nebo jasnější omezení, že jde o kontrolní interval, ne o garantované výsledky v AI citacích.
-
-**Návrh opravy:**
-
-> Podle dostupných pozorování se technické změny často vyplatí zkontrolovat po několika týdnech. U obsahových úprav dává smysl první vyhodnocení po 1–3 měsících. Nejde o garanci citací v AI odpovědích, ale o praktický interval pro měření změn.
-
----
-
-### [WARNING] Strukturovaná data jsou popsána trochu zjednodušeně
-
-**Problémové místo:**
-
-> „Plošně **Article** a **Organization**, **FAQPage** tam, kde reálně odpovídáte na dotazy.“
-
-> „Ověřte validitu v **Testu rozšířených výsledků** a ve validátoru Schema.org.“
-
-**Problém:**  
-Doporučení je obecně použitelné, ale je potřeba doplnit, že `FAQPage` nemusí přinášet rozšířené výsledky v Googlu a Test rozšířených výsledků nevaliduje všechna strukturovaná data stejně jako obecný validátor Schema.org.
-
-**Návrh opravy:**
-
-> Plošně řešte hlavně `Article` a `Organization`. `FAQPage` použijte jen tam, kde jsou na stránce skutečné otázky a odpovědi. Validitu ověřte ve validátoru Schema.org; Test rozšířených výsledků použijte jako kontrolu toho, co Google u daného typu podporuje.
-
----
-
-### [WARNING] Interní odkaz na strukturovaná data vede pravděpodobně na nerelevantní URL
-
-**Problémové místo:**
-
-> `[Strukturovaná data](/geo/) pomáhají strojům rozpoznat typ obsahu…`
-
-**Problém:**  
-URL `/geo/` pravděpodobně míří na GEO pilíř, ne na konkrétní návod ke strukturovaným datům. Anchor „Strukturovaná data“ by měl vést na stránku, která skutečně řeší strukturovaná data.
-
-**Návrh opravy:**
-
-- Pokud existuje článek:  
-  > `[Strukturovaná data](/blog/strukturovana-data/)`
-- Pokud neexistuje, změnit anchor:  
-  > `Strukturovaná data jsou jednou z technik GEO; širší kontext najdete v [GEO pilíři](/geo/).`
-
----
-
-### [WARNING] „Čerstvost zvyšuje šanci na citaci“ je moc obecné tvrzení
-
-**Problémové místo:**
-
-> „Klíčové stránky pravidelně aktualizujte — čerstvost zvyšuje šanci na citaci.“
-
-**Problém:**  
-Čerstvost pomáhá hlavně u časově citlivých témat. U evergreen obsahu není samoúčelná aktualizace automaticky pozitivní signál.
-
-**Návrh opravy:**
-
-> Klíčové stránky pravidelně kontrolujte. U časově citlivých témat aktualizujte data, příklady a doporučení; u evergreen obsahu měňte jen to, co zlepšuje přesnost nebo srozumitelnost.
-
----
-
-### [WARNING] Měření zmínek v AI odpovědích potřebuje metodickou poznámku
-
-**Problémové místo:**
-
-> „Projděte 15–20 zákaznických dotazů v ChatGPT, Perplexity a Googlu a zapište, jestli a jak jste zmíněni.“
-
-**Problém:**  
-AI odpovědi jsou proměnlivé podle času, modelu, personalizace, lokace a formulace dotazu. Bez metodiky může být baseline nespolehlivá.
-
-**Návrh opravy:**
-
-> Projděte 15–20 zákaznických dotazů v ChatGPT, Perplexity a Googlu. U každého si uložte přesné znění dotazu, datum, nástroj/model a screenshot nebo export odpovědi. Pokud to jde, měřte bez personalizace a stejnou sadu dotazů opakujte ve stejném režimu.
-
----
-
-### [WARNING] FAQ opakuje příliš silný claim o jedné strategii
-
-**Problémové místo:**
-
-> „Nepotřebujete novou strategii — jeden technicky zdravý a důvěryhodný web funguje pro Google i pro AI nástroje.“
-
-**Problém:**  
-Stejný problém jako výše: „funguje“ je moc jisté.
-
-**Návrh opravy:**
-
-> Nepotřebujete dvě oddělené strategie. Technicky zdravý, srozumitelný a důvěryhodný web je společný základ pro Google i AI nástroje. Pro AI pak přidáváte hlavně krátké odpovědi, vyšší hustotu faktů a lepší doložitelnost.
-
----
-
-### [WARNING] FAQ o lokálních a transakčních tématech je příliš zobecňující
-
-**Problémové místo:**
-
-> „U čistě transakčních a lokálních věcí je dopad menší.“
-
-**Problém:**  
-To nemusí platit plošně. Lokální a transakční dotazy se v AI rozhraních mohou chovat různě podle oboru, lokality a typu rozhodování.
-
-**Návrh opravy:**
-
-> U čistě transakčních a lokálních dotazů si prioritu ověřte v baseline měření — v některých oborech může být důležitější klasická lokální viditelnost, jinde se AI odpovědi do rozhodování už zapojují.
-
----
-
-### [TIP] Slovo „baseline“ nahraďte česky
-
-**Problémové místo:**
-
-> „Výsledek si uložte jako baseline…“
-
-**Problém:**  
-Není to zakázaný termín, ale zbytečně vybočuje z věcného a srozumitelného tónu.
-
-**Návrh opravy:**
-
-> Výsledek si uložte jako výchozí měření, ke kterému se budete vracet.
-
----
-
-### [TIP] Upravte formulace „AI robotům“ a „roboti“ pro přesnost
-
-**Problémová místa:**
-
-> „Otevřete web AI robotům a Bingu“
-
-> „Zablokovaní roboti nebo chybějící Bing…“
-
-**Problém:**  
-„AI roboti“ je méně přesné. Doporučený slovník je „vyhledávací roboti“ nebo „vyhledávací roboti AI služeb“.
-
-**Návrh opravy:**
-
-> Otevřete web vyhledávacím robotům AI služeb a zkontrolujte Bing
-
-a:
-
-> Zablokovaní vyhledávací roboti nebo neověřený Bing…
-
----
-
-### [TIP] „Nástroje od Googlu“ zní neobratně
-
-**Problémové místo:**
-
-> „Zkontrolujte pozice a návštěvnost v Nástrojích od Googlu (Google Search Console).“
-
-**Návrh opravy:**
-
-> Zkontrolujte dotazy, pozice a návštěvnost v Google Search Console.
-
----
-
-### [TIP] CTA je dobré, jen lehce zjemnit slib „začnete během odpoledne“
-
-**Problémové místo:**
-
-> „…praktický pracovní rámec za 1 490 Kč, se kterým začnete během odpoledne.“
-
-**Hodnocení:**  
-CTA správně směřuje na Pack za 1 490 Kč a Audit za 9 990 Kč. To je v pořádku. „Začnete během odpoledne“ není zásadní problém, ale lze ho zpřesnit.
-
-**Návrh opravy:**
-
-> …praktický pracovní rámec za 1 490 Kč, se kterým si během odpoledne připravíte první návrh struktury pro klíčové stránky.
-
----
-
-## Co je v pořádku
-
-- Titulek má cca 51 znaků a začíná klíčovým slovem „SEO pro AI“.  
-- Meta description má vhodnou délku a jasně popisuje obsah.  
-- Slug `seo-pro-ai` je smysluplný.  
-- `answer` má vhodnou délku zhruba 40–60 slov a začíná definicí.  
-- H2 struktura odpovídá checklistovému/tutorial formátu.  
-- Článek dobře odkazuje na pilíř a související návody, jen je potřeba opravit odkaz na strukturovaná data a zpřesnit AI Overviews.  
-- Závěrečné CTA správně vede na konkrétní produkty, ne na generické „kontaktujte nás“.
+1. **VÁŽNÉ — článek si protiřečí v pořadí kroků: tělo říká „technika → obsah → měření“, checklist i frontmatter začínají měřením**
+   - **Citace:**  
+     - tělo: „**Postupujte technika → obsah → měření**. Dokud vás AI nenajde, nemá smysl ladit obsah; dokud neměříte, nepoznáte, co funguje.“  
+     - Stepper + howto + FAQ: „**Změřte výchozí stav**“ jako krok 1
+   - **Problém:** Tohle je přímý rozpor. Buď je měření první krok, nebo není. V aktuální podobě článek mate a jako hub/checklist tím ztrácí použitelnost.
+   - **Návrh:**  
+     - Buď přepište insight na něco jako: „Pořadí práce: **výchozí měření → technika → obsah → průběžné měření**.“  
+     - Nebo změňte celé pořadí checklistu, ale to bych nedoporučil — rozbilo by to refreshovou opravu měření. Správnější je opravit ten insight.
+
+2. **VÁŽNÉ — hrozí opačný extrém: reporty jsou nově přepálené jako „základ všeho“, limity jsou upozaděné**
+   - **Citace:**  
+     - description: „**včetně dvou bezplatných oficiálních reportů, kterými se AI viditelnost měří**“  
+     - answer: „**Měření začněte dvěma bezplatnými oficiálními reporty**“  
+     - krok 5: „**Tohle je základ a je to jediné, co máte od samotných provozovatelů.**“
+   - **Problém:** Po opravě článek sklouzává skoro do druhého extrému: jako by stačilo otevřít dva reporty a máte měření hotové. Přitom sám text ví, že:
+     - GSC nedá dotazy ani prokliky,
+     - nerozdělí AI Mode a AI Overviews,
+     - Bing je vzorek a citace neříkají pozici ani autoritu,
+     - ChatGPT a Perplexity oficiální report nemají.
+     To znamená, že reporty jsou **základní vrstva**, ne „měření AI viditelnosti“ v plném smyslu.
+   - **Návrh:**  
+     - Zmírnit formulace ve frontmatter i těle.  
+     - Např. description: „… včetně dvou bezplatných oficiálních reportů, **kterými začnete měřit část AI viditelnosti**.“  
+     - answer: „Měření začněte… **ale doplňte je ruční kontrolou tam, kde reporty nestačí.**“  
+     - krok 5: místo „Tohle je základ…“ dát „Tohle je **první vrstva měření**, ne kompletní obraz.“
+
+3. **VÁŽNÉ — limity reportů jsou uvedené správně věcně, ale nejsou dost výrazné tam, kde vzniká očekávání**
+   - **Citace:**  
+     - krok 1 nejdřív prodává přínos reportů  
+     - teprve pak box: „**Co ty reporty neumí**“
+   - **Problém:** Limity jsou schované až po výčtu benefitů. U takhle citlivé opravy by měly být přibité hned k první zmínce, ne v následném boxu, který část lidí přeskočí. Zvlášť když frontmatter reporty aktivně vytahuje.
+   - **Návrh:**  
+     - Už do první odrážky v kroku 1 přidat zkrácené limity:
+       - GSC: „ukáže imprese…, **ale bez dotazů a prokliků**“
+       - Bing: „ukáže citace…, **ale jen jako vzorek**“
+     - Box ponechat, ale přejmenovat tvrději: „**Nepřeceňujte ty reporty**“ nebo „**Co z nich nevyčtete**“.
+
+4. **VÁŽNÉ — frontmatter `description` přehání jistotu, že těmi reporty se AI viditelnost prostě měří**
+   - **Citace:**  
+     - description: „… **dvou bezplatných oficiálních reportů, kterými se AI viditelnost měří**.“
+   - **Problém:** To je moc hladké a moc definitivní. Neodpovídá to limitům v těle. Správně by tam mělo být, že jde o oficiální výchozí zdroje, ne úplné měření.
+   - **Návrh:**  
+     - Přepsat na: „… včetně dvou bezplatných oficiálních reportů, **kterými začnete AI viditelnost sledovat**.“
+
+5. **VÁŽNÉ — frontmatter `answer` zní příliš normativně a zjednodušeně**
+   - **Citace:**  
+     - answer: „**Měření začněte dvěma bezplatnými oficiálními reporty: v Search Console a v Bing Webmaster Tools.**“
+   - **Problém:** Samo o sobě to není nepravda, ale v answer chybí protiváha. U tak krátkého shrnutí pak čtenář odnese hlavně „otevři dva reporty“. To je přesně riziko, které jsi zmiňoval.
+   - **Návrh:**  
+     - Doplnit jednu brzdu: „… a **doplňte je ruční kontrolou v nástrojích, které vlastní report nemají**.“
+
+6. **DROBNÉ — `stats` opět prodávají reporty bez omezení**
+   - **Citace:**  
+     - stats: „**2 reporty — bezplatné oficiální zdroje o AI viditelnosti**“
+   - **Problém:** U stats chápu zkratku, ale zase je to jednostranné. Pořád stejný vzorec: headline a metadata reporty prodají, limity jsou až níž.
+   - **Návrh:**  
+     - Změnit label na: „2 reporty — **bezplatné oficiální výchozí zdroje pro sledování AI viditelnosti**“
+
+7. **VÁŽNÉ — článek jako checklist pořád funguje, ale krok 1 je přefouknutý a začíná stahovat těžiště k měření**
+   - **Citace:**  
+     - krok 1 má pět odrážek, dva interní odkazy, samostatný limitační box  
+     - kroky 3 a 4 jsou výrazně stručnější
+   - **Problém:** Není to ještě vyloženě „článek o měření“, ale už k tomu uhýbá. U hubu, na který míří 15 článků jako na checklist, je to riziko. Praktický start má být vyvážený. Teď krok 1 působí skoro jako hlavní děj a zbytek jako doprovod.
+   - **Návrh:**  
+     - Zkraťte krok 1 o jednu méně důležitou odrážku („Zkontrolujte dotazy, pozice a návštěvnost v Search Console.“) nebo ji přesuňte do závěru kroku 5.  
+     - Naopak lehce rozšiřte krok 2 nebo 4 o jednu praktickou kontrolu, aby byl checklist proporčnější.
+
+8. **DROBNÉ — v kroku 1 se míchá „AI viditelnost“ s klasickým SEO měřením bez jasného oddělení**
+   - **Citace:**  
+     - „Zkontrolujte dotazy, pozice a návštěvnost v Search Console.“
+   - **Problém:** To je legitimní, ale bez vysvětlení to působí jako páté kolo u vozu. Krok je deklarovaně o AI výchozím stavu, a najednou se tam vrací obecné SEO metriky.
+   - **Návrh:**  
+     - Dopsat jeden půlřádek: „… abyste oddělili změny v AI plochách od běžného organiku.“  
+     - Jinak to vyhoďte.
+
+9. **VÁŽNÉ — formulace o Bingu jsou už opravené, ale pořád flirtují s přehnaným významem přes měření**
+   - **Citace:**  
+     - „**Ověřte web v Bing Webmaster Tools. K Bingu Microsoft vztahuje své AI plochy — v tomtéž rozhraní reportuje citace v Copilotu a v AI shrnutích, takže je to zároveň vstup do měření.**“
+   - **Problém:** Staré tvrzení „Bing bývá pro část AI vyhledávání důležitým zdrojem“ tu už naštěstí není. Dobře. Jenže nová verze Bing stejně funkčně zvýrazňuje tak, že méně zkušený čtenář může zase nabýt dojmu, že Bing je střed všeho AI SEO. Ve skutečnosti je tady hlavně důležitý proto, že **má oficiální report a vlastní AI plochy Microsoftu**.
+   - **Návrh:**  
+     - Upřesnit: „… takže je to zároveň vstup do měření **v ekosystému Microsoftu**.“  
+     - Tím uříznete přenos významu na celý trh.
+
+10. **DROBNÉ — FAQ je v souladu s tělem, ale opakuje stejnou slabinu: reporty ano, limity ne**
+    - **Citace:**  
+      - FAQ „Zvládnu start bez placených nástrojů?“: „**hlavně dva oficiální reporty o AI viditelnosti**…“
+    - **Problém:** Zase jednostranné. FAQ čte hodně lidí izolovaně od těla.
+    - **Návrh:**  
+      - Doplnit: „… **jako základ**, ale pro ChatGPT a Perplexity je musíte doplnit ruční kontrolou.“
+
+11. **DROBNÉ — `howto` je v zásadě konzistentní, ale krok 5 duplikuje krok 1 bez jasného rozlišení „výchozí stav“ vs. „průběžný režim“**
+    - **Citace:**  
+      - krok 1 howto: „Otevřete reporty… Doplňte je ručním projitím…“  
+      - krok 5 howto: „Základ berte z obou bezplatných reportů…“
+    - **Problém:** Není to rozpor, ale je to mělká duplicita. U checklistu by mělo být jasné:
+      - krok 1 = baseline,
+      - krok 5 = pravidelná opakovaná kontrola.
+    - **Návrh:**  
+      - Do kroku 1 přidat slovo „**výchozí**“ i do textu.  
+      - Do kroku 5 přidat „**průběžné**“ nebo „**opakované**“ měření.
+
+12. **DROBNÉ — „ideálně bez personalizace“ je příliš vágní praktická instrukce**
+    - **Citace:**  
+      - „… screenshot odpovědi (**ideálně bez personalizace**).“
+    - **Problém:** Pro checklist je to měkké. Jak to má čtenář udělat? Inkognito? odhlášený stav? nový chat? nic.
+    - **Návrh:**  
+      - Upřesnit jednou větou: „Testujte ideálně odhlášeně nebo v co nejčistším režimu, aby se odpovědi méně zkreslovaly historií.“
+
+13. **DROBNÉ — sekce „Za jak dlouho uvidíte výsledky“ není úplně sladěná se `stats`**
+    - **Citace:**  
+      - stats: „**2–8 týdnů — orientační interval pro kontrolu technických změn**“  
+      - tělo: „kontrolu technických změn po několika týdnech“
+    - **Problém:** Není to konflikt, jen tělo je méně konkrétní než metadata. U refreshovaného hubu bych čekal stejné znění.
+    - **Návrh:**  
+      - Sjednotit na „zhruba po **2–8 týdnech**“.
+
+14. **DROBNÉ — otevřená oprava je správný krok, ale zbytečně dlouhá na tak vysoko umístěný box**
+    - **Citace:**  
+      - celý box „Otevřená oprava k 10. 8. 2026“
+    - **Problém:** Věcně dobré, ale nahoře zabírá moc pozornosti a dál posiluje dojem, že hlavní téma článku je chyba v měření. U nejpropojenějšího checklistu bych držel fokus víc na použití než na interní sebereflexi.
+    - **Návrh:**  
+      - Zkrátit o 30–40 %. Zachovat přiznání chyby i datumy, ale useknout vysvětlování navíc.
+
+## Verdikt
+
+**Publikovat po opravách.**
+
+Hlavní problém není, že by refresh neopravil původní vadu. Opravil. Problém je, že se článek místy překlápí do opačného extrému: **nově prodává dva reporty víc, než unesou jejich limity**, a navíc má **přímý rozpor v pořadí kroků**. To jsou opravy na úrovni formulací a jedné logické kolize, ne důvod článek shodit celý. Bez nich ale není hotový.
