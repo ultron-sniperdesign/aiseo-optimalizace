@@ -186,7 +186,7 @@ aiseo-optimalizace.cz/
 │   ├── components/                       # Header, Footer, EmailCapture, MockupPage, article/, blocks/, sniperdesign/
 │   ├── content/
 │   │   ├── pillar/ sections/ articles/       # dlouhý obsah (MDX) — per-mutace přeložit
-│   │   └── pages/*.ts                        # DATOVÉ MODULY landing/thank-you/audit/pack/index (Fáze 0) — per-mutace přeložit
+│   │   └── pages/*.ts                        # DATOVÉ MODULY landing/thank-you/audit/pack/index/sluzby/contact/privacy — per-mutace přeložit
 │   ├── i18n/                             # I18N VRSTVA — per-mutace přeložit (viz MUTATIONS.md)
 │   │   ├── strings.ts                        # chrome: Header/Footer/EmailCapture (nav, legal, labely, tagy/série UI)
 │   │   ├── sniperdesign.ts                   # agency promo: BigContact/SmallContact
