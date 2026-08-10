@@ -1,40 +1,26 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-
-const pageTitle = "Zásady zpracování osobních údajů — aiseo-optimalizace.cz";
-const pageDescription =
-  "Jak nakládáme s osobními údaji, které nám předáte na aiseo-optimalizace.cz. Správce, účely, právní základ, doba uchování, vaše práva a kontakt.";
-
-/** Datum poslední aktualizace zásad. Aktualizovat při každé věcné změně. */
-const lastUpdated = "2026-05-18";
+import { meta, breadcrumb, lastUpdated, hero, sections } from "~/content/pages/privacy";
 ---
 
 <BaseLayout
-  title={pageTitle}
-  description={pageDescription}
-  breadcrumb={[{ label: "Zásady zpracování osobních údajů", href: "/gdpr/" }]}
+  title={meta.title}
+  description={meta.description}
+  breadcrumb={[breadcrumb]}
 >
   <div class="gdpr">
     <!-- ===== HERO ===== -->
     <section class="gdpr-hero">
       <div class="gdpr-hero__inner">
-        <nav class="gdpr-hero__crumbs" aria-label="Drobečková navigace">
-          <a href="/">Úvod</a>
+        <nav class="gdpr-hero__crumbs" aria-label={hero.crumbsAriaLabel}>
+          <a href="/">{hero.crumbHomeLabel}</a>
           <span aria-hidden="true">›</span>
-          <span>Zásady zpracování osobních údajů</span>
+          <span>{hero.crumbCurrentLabel}</span>
         </nav>
-        <h1 class="gdpr-hero__title">
-          Zásady <strong>zpracování osobních údajů</strong>
-        </h1>
-        <p class="gdpr-hero__lead">
-          Jak nakládáme s&nbsp;osobními údaji, které nám předáte na&nbsp;webu
-          <strong>aiseo-optimalizace.cz</strong> &mdash; přes formuláře pro
-          stažení&nbsp;PDF, objednávku Wireframe Packu nebo poptávku auditu.
-          Stručně, srozumitelně, v&nbsp;souladu s&nbsp;GDPR a&nbsp;českým zákonem
-          o&nbsp;zpracování osobních údajů.
-        </p>
+        <h1 class="gdpr-hero__title" set:html={hero.titleHtml}></h1>
+        <p class="gdpr-hero__lead" set:html={hero.leadHtml}></p>
         <p class="gdpr-hero__meta">
-          <span>Účinné od: <time datetime={lastUpdated}>{lastUpdated}</time></span>
+          <span>{hero.metaLabel} <time datetime={lastUpdated}>{lastUpdated}</time></span>
         </p>
       </div>
     </section>
@@ -42,269 +28,42 @@ const lastUpdated = "2026-05-18";
     <!-- ===== BODY ===== -->
     <article class="gdpr-body">
       <div class="gdpr-body__inner">
-
-        <!-- 01 SPRÁVCE -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">01</span>
-            Kdo je správcem vašich údajů
-          </h2>
-          <p>
-            Správcem osobních údajů zpracovávaných v&nbsp;souvislosti s&nbsp;tímto
-            webem je&nbsp;společnost
-            <strong>CPU&nbsp;s.r.o.</strong> (provozovatel značky Sniper Design),
-            IČO&nbsp;<strong>08125163</strong>, se&nbsp;sídlem
-            <strong>Akademická&nbsp;663/5, Malešice, 108&nbsp;00&nbsp;Praha&nbsp;10</strong>,
-            zapsaná v&nbsp;obchodním rejstříku vedeném Městským soudem v&nbsp;Praze
-            pod&nbsp;spisovou značkou&nbsp;<strong>C&nbsp;313409</strong>.
-          </p>
-          <p>
-            <strong>Kontakt&nbsp;pro&nbsp;věci&nbsp;GDPR:</strong>
-            e-mail <a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>,
-            telefon <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>.
-          </p>
-        </section>
-
-        <!-- 02 JAKÉ ÚDAJE -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">02</span>
-            Jaké údaje zpracováváme a&nbsp;za jakým účelem
-          </h2>
-
-          <h3 class="gdpr-section__sub">a) Stažení PDF&nbsp;návodu zdarma</h3>
-          <p>
-            Pokud vyplníte formulář pro stažení&nbsp;PDF (Návod zdarma,
-            sekce <a href="/navod-zdarma/">/navod-zdarma/</a>), zpracováváme:
-          </p>
-          <ul>
-            <li><strong>E-mailovou adresu</strong> &mdash; abychom vám PDF doručili a&nbsp;mohli vám zasílat navazující edukativní obsah o&nbsp;AI&nbsp;SEO.</li>
-            <li><strong>Označení zdroje (lead&nbsp;source tag)</strong> &mdash; interní informace, ze&nbsp;které stránky jste se přihlásili (pomáhá nám rozumět zájmu čtenářů).</li>
-          </ul>
-
-          <h3 class="gdpr-section__sub">b) Objednávka AI&nbsp;SEO Wireframe Packu</h3>
-          <p>
-            Pokud si zakoupíte placený produkt <a href="/pack/">Wireframe Pack</a>,
-            zpracováváme údaje potřebné pro&nbsp;plnění kupní smlouvy:
-          </p>
-          <ul>
-            <li><strong>E-mailovou adresu</strong> &mdash; pro doručení produktu (odkazy na&nbsp;PDF) a&nbsp;komunikaci o&nbsp;objednávce.</li>
-            <li><strong>Fakturační údaje</strong> &mdash; jméno/firma, adresa, IČO/DIČ &mdash; pro&nbsp;vystavení daňového dokladu (povinnost dle zákona o&nbsp;DPH).</li>
-            <li><strong>Platební údaje</strong> &mdash; zpracovává platební brána Stripe (viz&nbsp;sekce 04), my k&nbsp;číslu karty nemáme přístup.</li>
-          </ul>
-
-          <h3 class="gdpr-section__sub">c) Poptávka AI&nbsp;SEO auditu</h3>
-          <p>
-            Pokud vyplníte formulář pro poptávku auditu (<a href="/audit/">/audit/</a>),
-            zpracováváme:
-          </p>
-          <ul>
-            <li><strong>Jméno, e-mail, telefon</strong> &mdash; pro&nbsp;komunikaci o&nbsp;poptávce.</li>
-            <li><strong>URL vašeho webu a&nbsp;informace o&nbsp;projektu</strong> &mdash; pro&nbsp;předběžnou analýzu a&nbsp;přípravu cenové nabídky.</li>
-          </ul>
-
-          <h3 class="gdpr-section__sub">d) Návštěvnost webu (analytika)</h3>
-          <p>
-            Používáme Google Analytics&nbsp;4 pro&nbsp;měření návštěvnosti
-            a&nbsp;chování uživatelů. GA4 pracuje s&nbsp;anonymizovanými údaji
-            (zkrácená IP&nbsp;adresa, typ zařízení, prohlížeč, zdroj návštěvy)
-            &mdash; nikoli s&nbsp;osobními údaji, podle kterých bychom vás mohli
-            individuálně identifikovat.
-          </p>
-        </section>
-
-        <!-- 03 PRÁVNÍ ZÁKLAD -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">03</span>
-            Právní základ zpracování
-          </h2>
-          <ul>
-            <li>
-              <strong>Souhlas</strong> (čl.&nbsp;6 odst.&nbsp;1 písm.&nbsp;a&nbsp;GDPR)
-              &mdash; pro&nbsp;zasílání e-mailových materiálů po&nbsp;stažení PDF.
-              Souhlas můžete kdykoli odvolat jedním kliknutím v&nbsp;každém
-              našem e-mailu (odkaz „Odhlásit&nbsp;se z&nbsp;odběru").
-            </li>
-            <li>
-              <strong>Plnění smlouvy</strong> (čl.&nbsp;6 odst.&nbsp;1 písm.&nbsp;b&nbsp;GDPR)
-              &mdash; pro&nbsp;dodání zakoupeného Wireframe Packu a&nbsp;realizaci
-              objednaného auditu.
-            </li>
-            <li>
-              <strong>Plnění právní povinnosti</strong> (čl.&nbsp;6 odst.&nbsp;1 písm.&nbsp;c&nbsp;GDPR)
-              &mdash; pro&nbsp;uchování daňových dokladů po&nbsp;dobu stanovenou
-              zákonem (10&nbsp;let dle ZDPH).
-            </li>
-            <li>
-              <strong>Oprávněný zájem</strong> (čl.&nbsp;6 odst.&nbsp;1 písm.&nbsp;f&nbsp;GDPR)
-              &mdash; pro&nbsp;základní analytiku návštěvnosti webu
-              a&nbsp;zabezpečení proti zneužití.
-            </li>
-          </ul>
-        </section>
-
-        <!-- 04 ZPRACOVATELÉ -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">04</span>
-            Komu vaše údaje předáváme (zpracovatelé)
-          </h2>
-          <p>
-            Pro&nbsp;technickou realizaci služby využíváme následující
-            zpracovatele. Všichni mají uzavřenou zpracovatelskou smlouvu
-            a&nbsp;zpracovávají údaje pouze pro&nbsp;účely uvedené v&nbsp;těchto
-            zásadách:
-          </p>
-          <dl class="gdpr-processors">
-            <div class="gdpr-processor">
-              <dt>Ecomail.cz&nbsp;s.r.o.</dt>
-              <dd>
-                Doručování e-mailových materiálů (PDF&nbsp;návod, paid produkt
-                delivery, marketing). E-maily a&nbsp;jména kontaktů jsou uloženy
-                v&nbsp;Ecomailu (server v&nbsp;ČR).
-              </dd>
-            </div>
-            <div class="gdpr-processor">
-              <dt>Stripe Payments Europe, Ltd.</dt>
-              <dd>
-                Zpracování plateb za&nbsp;Wireframe Pack. Stripe je&nbsp;PCI-DSS
-                certifikovaný platební procesor. K&nbsp;číslu vaší platební karty
-                my nemáme přístup.
-              </dd>
-            </div>
-            <div class="gdpr-processor">
-              <dt>Cloudflare,&nbsp;Inc.</dt>
-              <dd>
-                CDN a&nbsp;cloud&nbsp;funkce (přenos webhook eventů ze&nbsp;Stripe
-                do&nbsp;Ecomailu). Datacentra v&nbsp;EU. Cloudflare je&nbsp;součástí
-                DPF (Data Privacy Framework) pro&nbsp;přenosy do&nbsp;USA.
-              </dd>
-            </div>
-            <div class="gdpr-processor">
-              <dt>Forpsi.com (Internet CZ,&nbsp;a.s.)</dt>
-              <dd>
-                Hosting samotného webu (VPS&nbsp;v&nbsp;ČR).
-              </dd>
-            </div>
-            <div class="gdpr-processor">
-              <dt>Google&nbsp;Ireland Limited</dt>
-              <dd>
-                Google&nbsp;Analytics&nbsp;4 &mdash; anonymizovaná analytika
-                návštěvnosti. Datacentra v&nbsp;EU.
-              </dd>
-            </div>
-          </dl>
-        </section>
-
-        <!-- 05 DOBA UCHOVÁNÍ -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">05</span>
-            Jak dlouho údaje uchováváme
-          </h2>
-          <ul>
-            <li>
-              <strong>E-mailové kontakty (newsletter):</strong> do&nbsp;odvolání
-              vašeho souhlasu (odhlášení), nejdéle však 5&nbsp;let od&nbsp;poslední
-              interakce.
-            </li>
-            <li>
-              <strong>Údaje k&nbsp;objednávkám a&nbsp;daňové doklady:</strong>
-              10&nbsp;let od&nbsp;konce zdaňovacího období, ve&nbsp;kterém došlo
-              k&nbsp;plnění (zákonná povinnost dle&nbsp;ZDPH).
-            </li>
-            <li>
-              <strong>Poptávky auditu:</strong> 2&nbsp;roky od&nbsp;poslední
-              komunikace pro&nbsp;případ navazujícího jednání nebo reklamace.
-            </li>
-            <li>
-              <strong>Anonymizovaná analytika:</strong> dle&nbsp;defaultního
-              nastavení GA4 (typicky&nbsp;14&nbsp;měsíců).
-            </li>
-          </ul>
-        </section>
-
-        <!-- 06 VAŠE PRÁVA -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">06</span>
-            Vaše práva
-          </h2>
-          <p>
-            V&nbsp;souladu s&nbsp;GDPR máte ve&nbsp;vztahu ke&nbsp;svým osobním
-            údajům následující práva:
-          </p>
-          <ul>
-            <li><strong>Právo na&nbsp;přístup</strong> &mdash; zjistit, jaké údaje o&nbsp;vás zpracováváme.</li>
-            <li><strong>Právo na&nbsp;opravu</strong> &mdash; nechat opravit nepřesné údaje.</li>
-            <li><strong>Právo na&nbsp;výmaz</strong> („právo být zapomenut") &mdash; nechat údaje smazat, pokud nepřevažuje právní povinnost je&nbsp;uchovávat.</li>
-            <li><strong>Právo na&nbsp;omezení zpracování</strong> &mdash; požadovat dočasné pozastavení zpracování.</li>
-            <li><strong>Právo na&nbsp;přenositelnost</strong> &mdash; získat své údaje v&nbsp;strukturovaném strojově čitelném formátu.</li>
-            <li><strong>Právo vznést námitku</strong> &mdash; proti zpracování na&nbsp;základě oprávněného zájmu.</li>
-            <li><strong>Právo odvolat souhlas</strong> &mdash; jedním kliknutím v&nbsp;každém e-mailu (odkaz „Odhlásit&nbsp;se z&nbsp;odběru").</li>
-            <li><strong>Právo podat stížnost</strong> u&nbsp;<a href="https://www.uoou.cz/" target="_blank" rel="noopener">Úřadu pro&nbsp;ochranu osobních údajů</a>.</li>
-          </ul>
-          <p>
-            Pro&nbsp;uplatnění práv stačí napsat na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.
-            Reagujeme nejpozději do&nbsp;30&nbsp;dní.
-          </p>
-        </section>
-
-        <!-- 07 COOKIES -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">07</span>
-            Cookies
-          </h2>
-          <p>
-            Web aiseo-optimalizace.cz používá <strong>pouze technické
-            a&nbsp;analytické&nbsp;cookies&nbsp;první&nbsp;strany</strong>
-            (vlastní doména). Neukládáme reklamní cookies třetích stran, neprodáváme
-            data inzertním sítím.
-          </p>
-          <ul>
-            <li><strong>Technické cookies</strong> &mdash; nezbytné pro&nbsp;funkci webu (např.&nbsp;preference jazyka). Nevyžadují souhlas.</li>
-            <li><strong>Analytické cookies (GA4)</strong> &mdash; anonymizované měření návštěvnosti. Lze odmítnout v&nbsp;nastavení prohlížeče nebo přes <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a>.</li>
-          </ul>
-        </section>
-
-        <!-- 08 ZMĚNY ZÁSAD -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">08</span>
-            Změny těchto zásad
-          </h2>
-          <p>
-            Tyto zásady můžeme čas&nbsp;od&nbsp;času aktualizovat &mdash;
-            např.&nbsp;při&nbsp;přidání nového nástroje nebo služby. Aktuální
-            verzi vždy najdete na&nbsp;této&nbsp;URL. Datum poslední aktualizace
-            je&nbsp;uvedeno v&nbsp;úvodu této stránky.
-          </p>
-          <p>
-            O&nbsp;podstatných změnách, které se&nbsp;dotýkají vašich práv,
-            vás&nbsp;informujeme e-mailem (pokud máme váš souhlas pro&nbsp;e-mailovou
-            komunikaci).
-          </p>
-        </section>
-
-        <!-- 09 KONTAKT -->
-        <section class="gdpr-section">
-          <h2 class="gdpr-section__title">
-            <span class="gdpr-section__num">09</span>
-            Kontakt
-          </h2>
-          <p>
-            Cokoliv ohledně osobních údajů nebo&nbsp;těchto zásad &mdash;
-            napište&nbsp;nám:
-          </p>
-          <ul class="gdpr-contact">
-            <li>E-mail: <a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a></li>
-            <li>Telefon: <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá&nbsp;10&minus;17)</li>
-            <li>Web správce: <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">sniperdesign.cz</a></li>
-          </ul>
-        </section>
-
+        {sections.map((s) => (
+          <section class="gdpr-section">
+            <h2 class="gdpr-section__title">
+              <span class="gdpr-section__num">{s.num}</span>
+              <Fragment set:html={s.titleHtml} />
+            </h2>
+            {s.blocks.map((b) =>
+              b.type === "p" ? (
+                <p set:html={b.html}></p>
+              ) : b.type === "sub" ? (
+                <h3 class="gdpr-section__sub" set:html={b.html}></h3>
+              ) : b.type === "ul" ? (
+                <ul>
+                  {b.items.map((item) => (
+                    <li set:html={item}></li>
+                  ))}
+                </ul>
+              ) : b.type === "processors" ? (
+                <dl class="gdpr-processors">
+                  {b.items.map((pr) => (
+                    <div class="gdpr-processor">
+                      <dt set:html={pr.dtHtml}></dt>
+                      <dd set:html={pr.ddHtml}></dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : (
+                <ul class="gdpr-contact">
+                  {b.items.map((item) => (
+                    <li set:html={item}></li>
+                  ))}
+                </ul>
+              )
+            )}
+          </section>
+        ))}
       </div>
     </article>
   </div>
@@ -359,7 +118,7 @@ const lastUpdated = "2026-05-18";
     color: var(--color-ink);
     margin: 0 0 1rem;
   }
-  .gdpr-hero__title strong {
+  .gdpr-hero__title :global(strong) {
     font-weight: 600;
     color: var(--gdpr-violet);
   }
@@ -371,7 +130,7 @@ const lastUpdated = "2026-05-18";
     margin: 0 0 1.25rem;
     max-width: 42rem;
   }
-  .gdpr-hero__lead strong {
+  .gdpr-hero__lead :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -430,11 +189,11 @@ const lastUpdated = "2026-05-18";
     color: var(--color-ink-muted);
     margin: 0 0 1rem;
   }
-  .gdpr-section p strong {
+  .gdpr-section p :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
-  .gdpr-section p em {
+  .gdpr-section p :global(em) {
     font-style: italic;
     color: color-mix(in oklch, var(--gdpr-magenta) 80%, var(--color-ink));
     font-weight: 500;
@@ -449,18 +208,18 @@ const lastUpdated = "2026-05-18";
   .gdpr-section ul li {
     margin: 0 0 0.5rem;
   }
-  .gdpr-section ul li strong {
+  .gdpr-section ul li :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
-  .gdpr-section a {
+  .gdpr-section :global(a) {
     color: var(--gdpr-violet);
     text-decoration: underline;
     text-decoration-color: color-mix(in oklch, var(--gdpr-violet) 35%, transparent);
     text-underline-offset: 2px;
     transition: text-decoration-color 0.15s ease;
   }
-  .gdpr-section a:hover {
+  .gdpr-section :global(a:hover) {
     text-decoration-color: var(--gdpr-violet);
   }
 

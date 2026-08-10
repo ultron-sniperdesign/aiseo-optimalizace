@@ -1,258 +1,104 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-
-const pageTitle = "Kontakt — Sniper Design, agentura která provozuje aiseo-optimalizace.cz";
-const pageDescription =
-  "Sniper Design (CPU s.r.o.) — Zlatý Upgates partner od 2016, přes 600 e-shopů na CZ trhu, vlastní e-shop MEGA DETAIL. Specialisté na e-commerce, AI SEO, custom moduly pro Upgates a Shoptet. Kontakt, fakturační údaje, kompletní portfolio služeb.";
-
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "CPU s.r.o.",
-  alternateName: "Sniper Design",
-  url: "https://aiseo-optimalizace.cz/",
-  email: "aiseo-optimalizace@sniperdesign.cz",
-  telephone: "+420 775 181 634",
-  legalName: "CPU s.r.o.",
-  vatID: "CZ08125163",
-  taxID: "08125163",
-  foundingDate: "2019-04-29",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Akademická 663/5",
-    addressLocality: "Praha 10 — Malešice",
-    postalCode: "10800",
-    addressCountry: "CZ",
-  },
-  sameAs: [
-    "https://www.sniperdesign.cz/",
-    "https://www.megadetail.cz/",
-    "https://www.youtube.com/channel/UCgg_pplVfiWhtkULnMHVpOw",
-    "https://www.linkedin.com/company/sniper-design",
-    "https://www.instagram.com/sniperdesign_cz/",
-    "https://www.facebook.com/SniperDesign.cz",
-  ],
-  knowsAbout: [
-    "Upgates",
-    "Shoptet",
-    "E-commerce",
-    "AI SEO",
-    "Generative Engine Optimization",
-    "Schema markup",
-    "Core Web Vitals",
-  ],
-};
+import {
+  meta,
+  breadcrumb,
+  orgJsonLd,
+  hero,
+  services,
+  trust,
+  paths,
+  faq,
+  direct,
+} from "~/content/pages/contact";
 ---
 
 <BaseLayout
-  title={pageTitle}
-  description={pageDescription}
+  title={meta.title}
+  description={meta.description}
   jsonLd={orgJsonLd}
-  image="/og/kontakt.jpg"
-  breadcrumb={[{ label: "Kontakt", href: "/kontakt/" }]}
+  image={meta.ogImage}
+  breadcrumb={[breadcrumb]}
 >
   <div class="kontakt">
     <!-- ===== HERO — agency brand identity ===== -->
     <section class="kontakt-hero" aria-labelledby="kontakt-hero-title">
       <div class="kontakt-hero__inner">
         <a
-          href="https://www.sniperdesign.cz/"
+          href={hero.brandHref}
           target="_blank"
           rel="noopener"
           class="kontakt-hero__brand"
-          aria-label="Sniper Design — domovská stránka agentury"
+          aria-label={hero.brandAriaLabel}
         >
           <img
             src="/sniperdesign/logo-wh.svg"
-            alt="Sniper Design"
+            alt={hero.logoAlt}
             width="200"
             height="40"
             loading="eager"
           />
         </a>
 
-        <span class="kontakt-hero__eyebrow">Kdo provozuje aiseo-optimalizace.cz</span>
+        <span class="kontakt-hero__eyebrow">{hero.eyebrow}</span>
 
-        <h1 id="kontakt-hero-title" class="kontakt-hero__title">
-          Web stojí na 10&nbsp;letech práce s&nbsp;<strong>českými e‑shopy</strong>
-        </h1>
+        <h1 id="kontakt-hero-title" class="kontakt-hero__title" set:html={hero.titleHtml}></h1>
 
-        <p class="kontakt-hero__lead">
-          <strong>AI&nbsp;SEO Wireframe Pack</strong> i&nbsp;tento průvodce
-          stojí na&nbsp;praxi <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener"><strong>Sniper Design</strong></a> &mdash;
-          pražské agentury specializované na <strong>e-commerce, Upgates
-          a&nbsp;Shoptet</strong>, Zlatého partnera Upgates od&nbsp;2016.
-          Učíme a&nbsp;prodáváme to, co denně řešíme v&nbsp;klientských
-          auditech, implementacích a&nbsp;na&nbsp;vlastním e-shopu
-          <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA DETAIL</a>.
-        </p>
+        <p class="kontakt-hero__lead" set:html={hero.leadHtml}></p>
 
         <ul class="kontakt-hero__trust" role="list">
-          <li>
-            <strong>Od 2016 na Upgates</strong>
-            <span>oficiální Zlatý partner</span>
-          </li>
-          <li>
-            <strong>600+ e‑shopů</strong>
-            <span>zkušenost z&nbsp;českého trhu</span>
-          </li>
-          <li>
-            <strong>Vlastní e‑shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA DETAIL</a></strong>
-            <span>řešíme stejné problémy jako klienti</span>
-          </li>
-          <li>
-            <strong>Vlastní nástroje</strong>
-            <span>automatizace (SYNKRO) a&nbsp;AI obsah (GPTfeed)</span>
-          </li>
+          {hero.trust.map((t) => (
+            <li>
+              <strong set:html={t.strongHtml}></strong>
+              <span set:html={t.subHtml}></span>
+            </li>
+          ))}
         </ul>
 
         <div class="kontakt-hero__actions">
-          <a
-            href="/pack/"
-            class="kontakt-btn kontakt-btn--solid"
-          >
-            Podívat se na AI&nbsp;SEO Wireframe Pack
+          <a href={hero.ctaPrimary.href} class="kontakt-btn kontakt-btn--solid">
+            <Fragment set:html={hero.ctaPrimary.labelHtml} />
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </a>
           <a
-            href="https://www.sniperdesign.cz/"
+            href={hero.ctaSecondary.href}
             target="_blank"
             rel="noopener"
             class="kontakt-btn kontakt-btn--ghost"
           >
-            Otevřít sniperdesign.cz
+            {hero.ctaSecondary.label}
           </a>
         </div>
 
-        <p class="kontakt-hero__legal">
-          Provozovatel: <strong>CPU s.r.o.</strong> &middot; IČO 08125163 &middot; plátce DPH
-        </p>
+        <p class="kontakt-hero__legal" set:html={hero.legalHtml}></p>
       </div>
     </section>
 
     <!-- ===== 01 CO DĚLÁME ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">01</span> Co děláme</span>
-        <h2 class="lp-section__title">
-          Tohle <strong>děláme pro klienty každý den</strong>
-        </h2>
-        <p class="lp-section__lead">
-          Nejsme digitální agentura na všechno. Děláme jednu věc &mdash;
-          e-commerce &mdash; ale do hloubky. AI éru vyhledávání řešíme jako
-          součást každého auditu i&nbsp;implementace.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{services.eyebrowNum}</span> <Fragment set:html={services.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={services.titleHtml}></h2>
+        <p class="lp-section__lead" set:html={services.leadHtml}></p>
       </header>
 
       <div class="kontakt-services">
-        <a
-          href="https://www.sniperdesign.cz/optimalizace-e-shopu"
-          target="_blank"
-          rel="noopener"
-          class="kontakt-service"
-        >
-          <span class="kontakt-service__num">01</span>
-          <h3>AI&nbsp;SEO optimalizace e-shopu</h3>
-          <p>
-            Komplet balíček: technické SEO, AI-friendly struktura obsahu,
-            strukturovaná data, mobile UX, Core Web Vitals, košík. Doručíme
-            za 14–30 dní.
-          </p>
-          <span class="kontakt-service__meta">3&nbsp;850&nbsp;– 23&nbsp;000&nbsp;Kč bez DPH</span>
-        </a>
-
-        <a
-          href="https://www.sniperdesign.cz/audity"
-          target="_blank"
-          rel="noopener"
-          class="kontakt-service"
-        >
-          <span class="kontakt-service__num">02</span>
-          <h3>8 typů auditů s konkrétními cenami</h3>
-          <p>
-            Od základního SEO auditu (2&nbsp;500&nbsp;Kč) přes Core Web Vitals
-            a&nbsp;UX po komplexní SEO audit (22&nbsp;900&nbsp;Kč). Žádné
-            „individuální nabídky", konkrétní cena a&nbsp;termín předem.
-          </p>
-          <span class="kontakt-service__meta">od 2&nbsp;500&nbsp;Kč &middot; výstup do&nbsp;14&nbsp;dnů</span>
-        </a>
-
-        <a
-          href="https://www.sniperdesign.cz/co-delame"
-          target="_blank"
-          rel="noopener"
-          class="kontakt-service"
-        >
-          <span class="kontakt-service__num">03</span>
-          <h3>Custom moduly pro Upgates a&nbsp;Shoptet</h3>
-          <p>
-            Konfigurátory produktů, akční bannery, jazykové mutace,
-            mobile-only úpravy, propojení s&nbsp;API a&nbsp;externími službami.
-            Zlatý Upgates partner od&nbsp;2016.
-          </p>
-          <span class="kontakt-service__meta">custom development &middot; 10&nbsp;let na&nbsp;platformě</span>
-        </a>
-
-        <a
-          href="https://www.sniperdesign.cz/syncron"
-          target="_blank"
-          rel="noopener"
-          class="kontakt-service"
-        >
-          <span class="kontakt-service__num">04</span>
-          <h3>SYNKRO &mdash; automatizace bez kódu</h3>
-          <p>
-            Vlastní platforma na automatizaci objednávek, produktů a&nbsp;skladů
-            v&nbsp;Shoptet i&nbsp;Upgates. Multistore management, integrace
-            s&nbsp;Heureka, SuperFaktura, Pohoda, Balíkobot.
-          </p>
-          <span class="kontakt-service__meta">SaaS produkt &middot; bez nutnosti programování</span>
-        </a>
-
-        <a
-          href="https://www.sniperdesign.cz/"
-          target="_blank"
-          rel="noopener"
-          class="kontakt-service"
-        >
-          <span class="kontakt-service__num">05</span>
-          <h3>GPTfeed &mdash; AI generování obsahu</h3>
-          <p>
-            AI generování produktových popisů a&nbsp;kategoriálních textů
-            se SEO logikou a&nbsp;důrazem na&nbsp;srozumitelnou strukturu
-            pro&nbsp;uživatele i&nbsp;AI vyhledávání.
-          </p>
-          <span class="kontakt-service__meta">vlastní AI nástroj &middot; SEO-řízený obsah</span>
-        </a>
-
-        <a
-          href="https://www.sniperdesign.cz/konzultace"
-          target="_blank"
-          rel="noopener"
-          class="kontakt-service"
-        >
-          <span class="kontakt-service__num">06</span>
-          <h3>Konzultace &mdash; jednorázová i&nbsp;dlouhodobá</h3>
-          <p>
-            Rychlé nasměrování pro e-shopy, které už fungují a&nbsp;chtějí
-            růst rychleji. Strategie, architektura, automatizace, migrace,
-            UX, marketing, ekonomika.
-          </p>
-          <span class="kontakt-service__meta">jednorázový call nebo dlouhodobá spolupráce</span>
-        </a>
+        {services.cards.map((c) => (
+          <a href={c.href} target="_blank" rel="noopener" class="kontakt-service">
+            <span class="kontakt-service__num">{c.num}</span>
+            <h3 set:html={c.titleHtml}></h3>
+            <p set:html={c.descHtml}></p>
+            <span class="kontakt-service__meta" set:html={c.metaHtml}></span>
+          </a>
+        ))}
       </div>
 
       <div class="kontakt-bridge">
-        <p>
-          Pokud nechcete rovnou službu od&nbsp;agentury, <strong>AI&nbsp;SEO
-          Wireframe Pack</strong> je nejdostupnější způsob, jak si&nbsp;tenhle
-          postup převést na&nbsp;vlastní web. <strong>1&nbsp;490&nbsp;Kč
-          jednorázově</strong>, master PDF 85&nbsp;stran.
-        </p>
-        <a href="/pack/" class="kontakt-bridge__cta">
-          Zobrazit Pack
+        <p set:html={services.bridge.textHtml}></p>
+        <a href={services.bridge.ctaHref} class="kontakt-bridge__cta">
+          {services.bridge.ctaLabel}
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
@@ -263,238 +109,99 @@ const orgJsonLd = {
     <!-- ===== 02 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">02</span> Proč nám můžete důvěřovat</span>
-        <h2 class="lp-section__title">
-          Reálná zkušenost. <strong>Ne teoretická příručka.</strong>
-        </h2>
+        <span class="eyebrow"><span class="eyebrow__num">{trust.eyebrowNum}</span> <Fragment set:html={trust.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={trust.titleHtml}></h2>
       </header>
 
       <div class="kontakt-trust">
-        <article class="kontakt-trust__item">
-          <h3>Provozujeme vlastní e‑shop</h3>
-          <p>
-            Provozujeme vlastní e-shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener"><strong>MEGA&nbsp;DETAIL</strong></a>, takže
-            neznáme e-commerce jen z&nbsp;prezentací klientů. Řešíme stejná
-            témata jako vy: strukturu kategorií, produktové detailovky,
-            důvěryhodnost, technické limity platformy i&nbsp;obsah, který má
-            prodávat a&nbsp;být dohledatelný.
-          </p>
-        </article>
-
-        <article class="kontakt-trust__item">
-          <h3>Zlatý partner Upgates od&nbsp;2016</h3>
-          <p>
-            S&nbsp;Upgates spolupracujeme od&nbsp;roku 2016 a&nbsp;máme Zlatý
-            partner status. V&nbsp;praxi to znamená, že platformu známe
-            do&nbsp;hloubky a&nbsp;Upgates nás vede mezi doporučenými
-            dodavateli. Pro Shoptet máme Gold partner status.
-          </p>
-        </article>
-
-        <article class="kontakt-trust__item">
-          <h3>Vlastní nástroje, ne&nbsp;jen klientské projekty</h3>
-          <p>
-            Nevyvíjíme jen weby na&nbsp;zakázku. Máme i&nbsp;vlastní nástroje:
-            <strong>SYNKRO</strong> pro automatizaci e-shopových procesů
-            a&nbsp;<strong>GPTfeed</strong> pro práci s&nbsp;produktovým obsahem.
-            Díky tomu řešíme nejen jednorázové úpravy, ale i&nbsp;provoz
-            a&nbsp;škálování v&nbsp;praxi.
-          </p>
-        </article>
-
-        <article class="kontakt-trust__item">
-          <h3>Dohledatelná firma, veřejná práce</h3>
-          <p>
-            Za webem stojí <strong>CPU s.r.o.</strong> s&nbsp;veřejnými
-            kontakty, fakturačními údaji a&nbsp;reálnou historií
-            v&nbsp;e-commerce. Nekupujete anonymní PDF od&nbsp;neznámého
-            autora &mdash; firma má veřejné <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">reference 43&nbsp;klientských
-            realizací</a> a&nbsp;dohledatelné sídlo v&nbsp;Praze.
-          </p>
-        </article>
+        {trust.items.map((t) => (
+          <article class="kontakt-trust__item">
+            <h3 set:html={t.titleHtml}></h3>
+            <p set:html={t.descHtml}></p>
+          </article>
+        ))}
       </div>
     </section>
 
     <!-- ===== 03 JAK SE NÁM OZVAT ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">03</span> Jak se nám ozvat</span>
-        <h2 class="lp-section__title">
-          Vyberte, s čím <strong>potřebujete pomoct</strong>
-        </h2>
+        <span class="eyebrow"><span class="eyebrow__num">{paths.eyebrowNum}</span> <Fragment set:html={paths.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={paths.titleHtml}></h2>
       </header>
 
       <div class="kontakt-paths">
-        <article class="kontakt-path">
-          <span class="kontakt-path__pill">Obecný dotaz</span>
-          <h3>Spolupráce, dotaz k&nbsp;obsahu nebo cokoli jiného</h3>
-          <p>
-            Nezávazná konzultace, dotaz na&nbsp;průvodce, nebo cokoli, co se
-            nehodí níže. Odpovídáme do&nbsp;24&nbsp;hodin v&nbsp;pracovní dny.
-          </p>
-          <a
-            href="https://www.sniperdesign.cz/kontakt"
-            target="_blank"
-            rel="noopener"
-            class="kontakt-path__cta"
-          >
-            sniperdesign.cz/kontakt&nbsp;&rarr;
-          </a>
-        </article>
-
-        <article class="kontakt-path kontakt-path--featured">
-          <span class="kontakt-path__pill kontakt-path__pill--pack">AI&nbsp;SEO Wireframe Pack</span>
-          <h3>Detail produktu, n&aacute;kup nebo pomoc</h3>
-          <p>
-            Ještě zvažujete nákup, nebo už Pack máte? Tady najdete detail
-            produktu, informace k&nbsp;fakturaci i&nbsp;pomoc s&nbsp;použitím.
-          </p>
-          <a href="/pack/" class="kontakt-path__cta">
-            Zobrazit Pack&nbsp;&rarr;
-          </a>
-          <p class="kontakt-path__sub">
-            Technické potíže nebo dotaz:
-            <a href="mailto:aiseo-optimalizace@sniperdesign.cz?subject=AI%20SEO%20Wireframe%20Pack%20%E2%80%94%20dotaz">
-              aiseo-optimalizace@sniperdesign.cz
-            </a>
-          </p>
-        </article>
-
-        <article class="kontakt-path kontakt-path--accent">
-          <span class="kontakt-path__pill kontakt-path__pill--audit">Audit</span>
-          <h3>AI&nbsp;SEO audit &mdash; přesný plán pro váš web</h3>
-          <p>
-            Chcete přesný plán přímo pro váš web? Audit je <strong>navazující
-            krok po&nbsp;Packu</strong> &mdash; nebo samostatná volba, pokud
-            to nechcete řešit sami. 3&nbsp;600&nbsp;Kč, výstup do&nbsp;5&nbsp;dní.
-          </p>
-          <a
-            href="/audit/"
-            class="kontakt-path__cta kontakt-path__cta--accent"
-          >
-            Objednat audit&nbsp;&rarr;
-          </a>
-        </article>
+        {paths.cards.map((c) => (
+          <article class:list={["kontakt-path", c.variant && `kontakt-path--${c.variant}`]}>
+            <span
+              class:list={["kontakt-path__pill", c.pillVariant && `kontakt-path__pill--${c.pillVariant}`]}
+              set:html={c.pillHtml}
+            ></span>
+            <h3 set:html={c.titleHtml}></h3>
+            <p set:html={c.descHtml}></p>
+            <a
+              href={c.cta.href}
+              target={c.cta.external ? "_blank" : undefined}
+              rel={c.cta.external ? "noopener" : undefined}
+              class:list={["kontakt-path__cta", c.cta.accent && "kontakt-path__cta--accent"]}
+              set:html={c.cta.labelHtml}
+            ></a>
+            {c.subHtml && <p class="kontakt-path__sub" set:html={c.subHtml}></p>}
+          </article>
+        ))}
       </div>
     </section>
 
     <!-- ===== 04 FAQ — scam-prevention pojistka ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">04</span> Časté otázky</span>
-        <h2 class="lp-section__title">
-          Než si <strong>koupíte Pack</strong>
-        </h2>
-        <p class="lp-section__lead">
-          Pokud jste si potřebovali hlavně ověřit, komu byste za&nbsp;Pack
-          platili: provozovatelem je <strong>CPU s.r.o.</strong>, běžně
-          dohledatelná česká firma za&nbsp;agenturou Sniper Design.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{faq.eyebrowNum}</span> <Fragment set:html={faq.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={faq.titleHtml}></h2>
+        <p class="lp-section__lead" set:html={faq.leadHtml}></p>
       </header>
 
       <dl class="kontakt-faq">
-        <div>
-          <dt>Kdo Pack vytvořil?</dt>
-          <dd>
-            Tým Sniper Design &mdash; lidé, kteří dělají SEO, UX a&nbsp;strukturu
-            e-shopů jako placené zakázky pro klienty. Pack vychází
-            z&nbsp;reálných úprav, ne&nbsp;z&nbsp;teoretických návodů.
-          </dd>
-        </div>
-        <div>
-          <dt>Komu platím a&nbsp;dostanu fakturu?</dt>
-          <dd>
-            Platíte <strong>CPU s.r.o.</strong> (IČO 08125163, plátce DPH).
-            Faktura dorazí samostatně po&nbsp;platbě. Pokud nemáte fakturu
-            do&nbsp;24&nbsp;hodin, napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.
-          </dd>
-        </div>
-        <div>
-          <dt>Můžu se ozvat, když si&nbsp;nebudu vědět rady?</dt>
-          <dd>
-            Ano. Pack obsahuje detailní kapitolu „Aplikace na&nbsp;váš web" se&nbsp;všemi
-            postupy. Pokud i&nbsp;tak narazíte, pište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> &mdash;
-            odpovídáme do&nbsp;24&nbsp;hodin v&nbsp;pracovní dny.
-          </dd>
-        </div>
-        <div>
-          <dt>Je Pack vhodný pro Upgates, Shoptet i&nbsp;WordPress?</dt>
-          <dd>
-            Ano. Pack je platformově neutrální &mdash; wireframy, texty
-            a&nbsp;ukázky strukturovaných dat aplikujete na&nbsp;libovolný
-            systém. Kapitola „Aplikace na&nbsp;váš web" má samostatný checklist
-            pro Upgates, Shoptet, WordPress i&nbsp;custom weby.
-          </dd>
-        </div>
+        {faq.items.map((f) => (
+          <div>
+            <dt set:html={f.qHtml}></dt>
+            <dd set:html={f.aHtml}></dd>
+          </div>
+        ))}
       </dl>
     </section>
 
     <!-- ===== 05 KONTAKTY + FAKTURACE (compact, ne dominantní) ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">05</span> Přímé kontakty a&nbsp;fakturace</span>
-        <h2 class="lp-section__title">
-          Telefon, e-mail, <strong>fakturační údaje</strong>
-        </h2>
+        <span class="eyebrow"><span class="eyebrow__num">{direct.eyebrowNum}</span> <Fragment set:html={direct.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={direct.titleHtml}></h2>
       </header>
 
       <div class="kontakt-direct">
         <div class="kontakt-direct__col">
-          <h3>Přímé kontakty</h3>
+          <h3>{direct.contactsHeading}</h3>
           <dl class="kontakt-direct__list">
-            <div>
-              <dt>Telefon</dt>
-              <dd>
-                <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>
-                <span class="kontakt-direct__hint">Po–Pá 9:00–17:00</span>
-              </dd>
-            </div>
-            <div>
-              <dt>E-mail</dt>
-              <dd><a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a></dd>
-            </div>
-            <div>
-              <dt>Web agentury</dt>
-              <dd>
-                <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">
-                  sniperdesign.cz
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt>Sídlo</dt>
-              <dd>Akademická 663/5<br />Malešice, 108&nbsp;00 Praha&nbsp;10</dd>
-            </div>
+            {direct.contactRows.map((r) => (
+              <div>
+                <dt>{r.dt}</dt>
+                <dd set:html={r.ddHtml}></dd>
+              </div>
+            ))}
           </dl>
         </div>
 
         <div class="kontakt-direct__col">
-          <h3>Fakturační údaje</h3>
+          <h3>{direct.billingHeading}</h3>
           <dl class="kontakt-direct__list">
-            <div>
-              <dt>Název</dt>
-              <dd>CPU s.r.o.</dd>
-            </div>
-            <div>
-              <dt>IČO</dt>
-              <dd>08125163</dd>
-            </div>
-            <div>
-              <dt>DIČ</dt>
-              <dd>CZ08125163 <span class="kontakt-direct__hint">(plátce DPH)</span></dd>
-            </div>
-            <div>
-              <dt>Zápis</dt>
-              <dd>Obchodní rejstřík vedený Městským&nbsp;soudem v&nbsp;Praze</dd>
-            </div>
+            {direct.billingRows.map((r) => (
+              <div>
+                <dt>{r.dt}</dt>
+                <dd set:html={r.ddHtml}></dd>
+              </div>
+            ))}
           </dl>
 
-          <p class="kontakt-direct__legal">
-            Informace o&nbsp;zpracování osobních údajů (GDPR):
-            <a href="/gdpr/">
-              aiseo-optimalizace.cz/gdpr
-            </a>
-          </p>
+          <p class="kontakt-direct__legal" set:html={direct.legalHtml}></p>
         </div>
       </div>
     </section>
@@ -566,7 +273,7 @@ const orgJsonLd = {
     margin: 0 0 1.25rem;
     max-width: 38rem;
   }
-  .kontakt-hero__title strong {
+  .kontakt-hero__title :global(strong) {
     font-weight: 700;
     color: color-mix(in oklch, var(--sd-magenta) 60%, white);
   }
@@ -578,12 +285,12 @@ const orgJsonLd = {
     margin: 0 0 1.75rem;
     max-width: 38rem;
   }
-  .kontakt-hero__lead a {
+  .kontakt-hero__lead :global(a) {
     color: color-mix(in oklch, var(--sd-magenta) 60%, white);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .kontakt-hero__lead strong { color: var(--sd-paper); font-weight: 600; }
+  .kontakt-hero__lead :global(strong) { color: var(--sd-paper); font-weight: 600; }
 
   /* Trust strip — 4 položky */
   .kontakt-hero__trust {
@@ -620,7 +327,7 @@ const orgJsonLd = {
     line-height: 1.4;
     color: oklch(from var(--sd-paper) l c h / 0.7);
   }
-  .kontakt-hero__trust a {
+  .kontakt-hero__trust :global(a) {
     color: inherit;
     text-decoration: underline;
     text-decoration-color: oklch(from var(--sd-paper) l c h / 0.3);
@@ -670,7 +377,7 @@ const orgJsonLd = {
     letter-spacing: 0.04em;
     color: oklch(from var(--sd-paper) l c h / 0.55);
   }
-  .kontakt-hero__legal strong {
+  .kontakt-hero__legal :global(strong) {
     color: oklch(from var(--sd-paper) l c h / 0.85);
     font-weight: 700;
   }
@@ -707,7 +414,7 @@ const orgJsonLd = {
     color: var(--color-ink);
     margin: 0 0 1rem;
   }
-  .lp-section__title strong {
+  .lp-section__title :global(strong) {
     color: var(--lp-violet);
     font-weight: 700;
   }
@@ -719,7 +426,7 @@ const orgJsonLd = {
     margin: 0;
     max-width: 40rem;
   }
-  .lp-section__lead strong { color: var(--color-ink); font-weight: 600; }
+  .lp-section__lead :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   .eyebrow {
     display: inline-flex;
@@ -820,7 +527,7 @@ const orgJsonLd = {
     color: var(--color-ink);
     flex: 1 1 24rem;
   }
-  .kontakt-bridge p strong { font-weight: 600; }
+  .kontakt-bridge p :global(strong) { font-weight: 600; }
   .kontakt-bridge__cta {
     display: inline-flex;
     align-items: center;
@@ -871,12 +578,12 @@ const orgJsonLd = {
     color: var(--color-ink-muted);
     margin: 0;
   }
-  .kontakt-trust__item p a {
+  .kontakt-trust__item p :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .kontakt-trust__item p strong { color: var(--color-ink); }
+  .kontakt-trust__item p :global(strong) { color: var(--color-ink); }
 
   /* ===== Kontakt paths (3 cards) — sdíleno s předchozí verzí ===== */
   .kontakt-paths {
@@ -913,7 +620,7 @@ const orgJsonLd = {
     margin: 0.25rem 0 0 !important;
     flex: none !important;
   }
-  .kontakt-path__sub a {
+  .kontakt-path__sub :global(a) {
     color: var(--color-ink-muted);
     text-decoration: underline;
     text-underline-offset: 2px;
@@ -948,7 +655,7 @@ const orgJsonLd = {
     color: var(--color-ink);
     margin: 0;
   }
-  .kontakt-path h3 a {
+  .kontakt-path h3 :global(a) {
     color: inherit;
     text-decoration: underline;
     text-decoration-color: oklch(from var(--lp-violet) l c h / 0.4);
@@ -1007,12 +714,12 @@ const orgJsonLd = {
     color: var(--color-ink-muted);
     margin: 0;
   }
-  .kontakt-faq dd a {
+  .kontakt-faq dd :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .kontakt-faq dd strong { color: var(--color-ink); font-weight: 600; }
+  .kontakt-faq dd :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   /* ===== Direct kontakty + fakturace ===== */
   .kontakt-direct {
@@ -1060,12 +767,12 @@ const orgJsonLd = {
     margin: 0;
     line-height: 1.5;
   }
-  .kontakt-direct__list dd a {
+  .kontakt-direct__list dd :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .kontakt-direct__hint {
+  .kontakt-direct__list :global(.kontakt-direct__hint) {
     display: block;
     font-size: 0.8125rem;
     color: var(--color-ink-faint);
@@ -1078,7 +785,7 @@ const orgJsonLd = {
     line-height: 1.5;
     color: var(--color-ink-faint);
   }
-  .kontakt-direct__legal a {
+  .kontakt-direct__legal :global(a) {
     color: var(--color-ink-muted);
     text-decoration: underline;
   }

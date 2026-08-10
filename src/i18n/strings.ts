@@ -355,6 +355,9 @@ export const ui = {
   blocks: {
     doLabel: "Takhle ano",
     dontLabel: "Takhle ne",
+    /** Prompt — tlačítko kopírování + potvrzení po zkopírování (JS v PromptList). */
+    copyLabel: "Kopírovat",
+    copiedLabel: "✓ Zkopírováno",
     /** Insight default label (přepsatelný props `label` z MDX). */
     insightLabel: "Klíčový insight",
     /** Mistake — prefix fix řádku. */

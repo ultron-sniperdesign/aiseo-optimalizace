@@ -22,7 +22,8 @@
       try {
         await navigator.clipboard.writeText(text);
         const original = btn.innerHTML;
-        btn.innerHTML = "<span>✓ Zkopírováno</span>";
+        // Text potvrzení z data atributu (renderuje Prompt.astro z ui.blocks) — fork přeloží v i18n.
+        btn.innerHTML = `<span>${btn.dataset.copiedLabel || "✓"}</span>`;
         btn.classList.add("prmt__copy--done");
         setTimeout(() => {
           btn.innerHTML = original;
