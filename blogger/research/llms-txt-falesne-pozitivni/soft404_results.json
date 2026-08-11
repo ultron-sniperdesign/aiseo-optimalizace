@@ -1,0 +1,1202 @@
+[
+ {
+  "domain": "novinky.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.idnes.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.seznamzpravy.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "zpravy.aktualne.cz",
+  "ghost": {
+   "http": 406,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 406,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.irozhlas.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.ceskenoviny.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.denik.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.blesk.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.lidovky.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "echo24.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.forum24.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.info.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.e15.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "archiv.hn.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.respekt.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.reflex.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "tn.nova.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "ct24.ceskatelevize.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.expres.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.super.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.lupa.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.root.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.zive.cz",
+  "ghost": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  }
+ },
+ {
+  "domain": "www.cnews.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.mobilmania.cz",
+  "ghost": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  }
+ },
+ {
+  "domain": "www.svetandroida.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.vtm.cz",
+  "ghost": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  }
+ },
+ {
+  "domain": "21stoleti.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.kurzy.cz",
+  "ghost": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 2662,
+   "looks_html": true
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 2575,
+   "looks_html": true
+  }
+ },
+ {
+  "domain": "www.penize.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.mesec.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.podnikatel.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  }
+ },
+ {
+  "domain": "www.marketingsales.cz",
+  "ghost": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/html",
+   "bytes": 4096,
+   "looks_html": true
+  }
+ },
+ {
+  "domain": "www.anela.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.angrybeards.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.autodoplnky-obchod.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.baavi.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.cistedrevo.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.drevenysvet.online",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.film-technika.com",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.gigamat.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.giovani.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.hobynaradi.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.konzoliste.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.kulina.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.levanduloveudoli.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.madvell.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.nanospace.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.nasegalanterie.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.nemeckyeshop.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 4096,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.nonstopstavebniny.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.olivie.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.outdoorstuff.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.pff.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.pocitarna.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.profi-dj.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 4096,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.prohackovani.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.prokonzole.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.prolicence.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.ptakoviny-cb.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.puellavune.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.ususil.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.utukutu.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.venira.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.super-granule.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.pesan-krmiva.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.husse.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.bellas.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.nutrition-shop.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.brainmarket.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 2882,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "www.viviencosmetics.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "samba.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "disco.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "step.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "classic.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "waltz.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "tango.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "techno.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "soul.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ },
+ {
+  "domain": "pop.shoptet.cz",
+  "ghost": {
+   "http": 404,
+   "ctype": "text/html",
+   "bytes": 0,
+   "looks_html": null
+  },
+  "llms": {
+   "http": 200,
+   "ctype": "text/plain",
+   "bytes": 0,
+   "looks_html": false
+  }
+ }
+]

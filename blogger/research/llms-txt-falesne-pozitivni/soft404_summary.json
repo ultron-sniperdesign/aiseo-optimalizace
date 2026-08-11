@@ -1,0 +1,28 @@
+{
+ "per_group": {
+  "média": {
+   "n": 33,
+   "soft404": 5,
+   "llms200": 5,
+   "llms_html": 5,
+   "llms_empty": 0,
+   "llms_obsah": 0
+  },
+  "e-shopy (Shoptet)": {
+   "n": 47,
+   "soft404": 0,
+   "llms200": 47,
+   "llms_html": 0,
+   "llms_empty": 44,
+   "llms_obsah": 3
+  }
+ },
+ "total": {
+  "n": 80,
+  "soft404": 5,
+  "llms200": 52,
+  "llms_html": 5,
+  "llms_empty": 44,
+  "llms_obsah": 3
+ }
+}
