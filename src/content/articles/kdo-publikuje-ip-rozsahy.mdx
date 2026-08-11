@@ -1,0 +1,174 @@
+---
+title: "Kdo z provozovatelů AI robotů publikuje IP rozsahy"
+description: "Prošel jsem 13 provozovatelů. U osmi jsem našel strojově čitelný soubor, u Amazonu HTML stránku, u čtyř nic. Stáří se liší skoro o tři roky."
+answer: "Strojově čitelný seznam IP rozsahů jsem našel u osmi provozovatelů ve třinácti souborech: Google, OpenAI, Anthropic, Perplexity, Apple, Microsoft, Common Crawl a DuckDuckGo. Amazon adresy publikuje taky, ale jako HTML stránku. U ByteDance, Mety, Mistralu a Cohere jsem seznam nenašel. Data v souborech jsou stará od nuly do 1 019 dní."
+slug: "kdo-publikuje-ip-rozsahy"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-08-11"
+updated: "2026-08-11"
+variant: "rich"
+keywords:
+  - "ip rozsahy ai robotů"
+  - "ověření ai robota"
+  - "gptbot ip"
+  - "applebot ip"
+  - "bingbot ip"
+  - "amazonbot ip"
+  - "ccbot"
+stats:
+  - value: "13 z 18"
+    label: "sledovaných souborů s IP rozsahy jsem našel jako strojově čitelný JSON"
+  - value: "2 512"
+    label: "prefixů dohromady ve všech nalezených souborech"
+  - value: "1 019 dní"
+    label: "stáří nejstaršího souboru — Applebot nese datum z října 2023"
+  - value: "1"
+    label: "IPv6 prefix mimo Google v celém vzorku"
+faq:
+  - q: "U kterých provozovatelů se dá robot ověřit proti seznamu IP?"
+    a: "V měření z 11. 8. 2026 jsem strojově čitelný soubor našel u osmi: Google, OpenAI, Anthropic, Perplexity, Apple, Microsoft, Common Crawl a DuckDuckGo. Amazon adresy publikuje také, ale jako HTML stránku, ne jako JSON."
+  - q: "Proč nestačí hledat soubor podle konvence?"
+    a: "Protože jednotné nejsou ani adresa, ani formát. Často jde o JSON, ale doména se liší (Anthropic ho má na claude.com, ne na anthropic.com) a Amazon má místo souboru běžné stránky v dokumentaci. Kontrola napsaná jen nad JSON tedy Amazon přehlédne — přesně to se mi při měření stalo."
+  - q: "Jak staré ty seznamy jsou?"
+    a: "Velmi různě. Google aktualizoval v den měření, ChatGPT-User den předtím a CCBot týden předtím. Naproti tomu soubor Applebota nese datum z října 2023 a Bingbota z ledna 2024. Datum si vždy přečtěte přímo v souboru."
+  - q: "Dá se robot ověřit, když přijde přes IPv6?"
+    a: "Většinou ne. V celém vzorku měly IPv6 prefixy jen tři soubory Googlu a jeden prefix u CCBotu. U ostatních jsou seznamy čistě IPv4, takže návštěvu přes IPv6 proti nim neporovnáte."
+  - q: "Co když provozovatel seznam nepublikuje?"
+    a: "Pak zbývá user-agent, což je jen tvrzení, které si nastaví kdokoli. U Mety je to zvlášť nepříjemné: dokumentace doporučuje allow-listovat spíš IP adresy než user-agenty, ale veřejný seznam adres v ní není a odkazuje na kontaktní e-mail."
+  - q: "Znamená nenalezený soubor, že neexistuje?"
+    a: "Ne. Znamená to, že jsem ho na dokumentovaných a konvenčních adresách nenašel. U Anthropicu jsem se kdysi takhle spletl a soubor byl jinde, než jsem hledal."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Kdo z provozovatelů AI robotů publikuje IP rozsahy
+
+Jméno robota v hlavičce je jen tvrzení — [ověřil jsem si to](/blog/overovani-ai-robotu/) tím, že jsem z běžné adresy prošel pod cizími jmény 47 weby ze 47. Pro správce cizího webu vede nejběžnější použitelná cesta přes **seznam IP rozsahů od provozovatele**.
+
+Tak jsem si prošel třináct provozovatelů a osmnáct kandidátních adres a zjišťoval, kdo takový seznam vůbec dává. **Osm ho má ve strojově čitelné podobě, Amazon jako stránku v dokumentaci — a u čtyř jsem žádný seznam nenašel.**
+
+## Co jsem našel
+
+Odečet **11. srpna 2026**. Nejdřív ale k tomu, co přesně jsem hledal, protože u článku s touhle pointou na tom záleží.
+
+Sestavil jsem **18 kandidátních adres u 13 provozovatelů**. Tam, kde jsem dokumentaci znal z dřívějška, jsem šel na doloženou adresu; u zbytku jsem ji odvodil z konvence ostatních (`domena.cz/nazevbota.json`). Za **nalezený** jsem počítal jen ten případ, kdy odpověď byla platný JSON s prefixy uvnitř — ne pouhý kód 200, [proč to nestačí](/blog/llms-txt-falesne-pozitivni/). **Nenalezený** znamená, že jsem na těch adresách takový soubor nedostal; nic víc.
+
+Amazon do těch osmnácti kandidátů v tomhle smyslu nepatřil — jeho stránky jsem našel až dodatečně přes dokumentaci a nejsou to strojové soubory. Proto je uvádím zvlášť.
+
+| Provozovatel | Soubor | Prefixů | z toho IPv6 | Datum | Stáří |
+|---|---|---|---|---|---|
+| Google | vyvolaní uživatelem | 1 056 | 528 | 11. 8. 2026 | 0 dní |
+| DuckDuckGo | DuckAssistBot | 481 | 0 | 3. 7. 2026 | 39 dní |
+| Google | Googlebot | 315 | 146 | 11. 8. 2026 | 0 dní |
+| Google | zvláštní roboti | 270 | 135 | 10. 8. 2026 | 1 den |
+| OpenAI | ChatGPT-User | 256 | 0 | 10. 8. 2026 | 1 den |
+| OpenAI | OAI-SearchBot | 35 | 0 | 2. 1. 2026 | 221 dní |
+| Microsoft | Bingbot | 28 | 0 | 3. 1. 2024 | 951 dní |
+| OpenAI | GPTBot | 21 | 0 | 30. 10. 2025 | 285 dní |
+| Anthropic | ClaudeBot a spol. | 20 | 0 | 1. 5. 2026 | 102 dní |
+| Apple | Applebot | 12 | 0 | 27. 10. 2023 | 1 019 dní |
+| Perplexity | PerplexityBot | 8 | 0 | 7. 2. 2025 | 550 dní |
+| Common Crawl | CCBot | 6 | 1 | 4. 8. 2026 | 7 dní |
+| Perplexity | Perplexity-User | 4 | 0 | 17. 10. 2025 | 298 dní |
+
+Dohromady **2 512 prefixů**.
+
+## Amazon publikuje. Skoro jsem napsal, že ne
+
+Tohle je hlavní metodické poučení z celého měření a málem mě stálo chybu v článku.
+
+V prvním kole mi Amazon vyšel jako „nepublikuje". Hledal jsem totiž soubor `.json` na adresách, které jsem si **odvodil z konvence ostatních** — a dostal 404.
+
+Amazon adresy publikuje. Jen je nemá v JSON, ale ve třech běžných stránkách dokumentace:
+
+| Stránka | Co v ní je |
+|---|---|
+| `amazonbot/ip-addresses/` | 525 samostatných IP adres |
+| `amazonbot/searchbot-ip-addresses/` | 512 zápisů v CIDR |
+| `amazonbot/live-ip-addresses/` | 1 024 samostatných IP adres |
+
+<Insight tone="warn" icon="!" label="Konvence není dokumentace">
+  Odhadnutá adresa mi dala špatný výsledek už potřetí. U **Anthropicu** jsem tipnul `anthropic.com/claudebot.json` a dostal 404, přitom soubor je na `claude.com`. U **ByteDance** vymyšlená adresa vrátila dokonce 200, ale s HTML stránkou. Teď Amazon.
+
+  Pravidlo je pokaždé stejné: **když soubor nenajdete tam, kde ho čekáte, znamená to jen, že jste ho tam nenašli.**
+</Insight>
+
+## Tři věci, které z té tabulky vylezou
+
+### Stáří se liší o skoro tři roky
+
+Google aktualizoval v den měření, ChatGPT-User den předtím, CCBot týden. Naproti tomu **Applebot nese datum z října 2023** — v den měření 1 019 dní — a **Bingbot z ledna 2024**, tedy 951 dní.
+
+Neznamená to, že jsou ty seznamy špatně; provozovatel je mohl prostě nepotřebovat měnit. Znamená to, že **datum si musíte přečíst přímo v souboru**, abyste věděli, jak aktuální podklad zrovna používáte.
+
+### IPv6 se v těch seznamech skoro nevyskytuje
+
+Ve všech třinácti souborech mají IPv6 prefixy jen tři soubory Googlu — a **jediný prefix u CCBotu**. Zbytek je čistě IPv4.
+
+Praktický důsledek: když vám robot přijde přes IPv6, proti těmhle seznamům ho mimo Google skoro jistě neověříte.
+
+### Roboti vyvolaní uživatelem mají mnohem širší prostor
+
+U Googlu 1 056 prefixů proti 315 u Googlebota. U OpenAI 256 u ChatGPT-User proti 21 u GPTBota. Robot, který jde na web proto, že se ho někdo na něco zeptal, přichází z podstatně širší sítě než ten, který web systematicky prochází.
+
+<Insight tone="aio" icon="i" label="Oprava dvou mých starších tvrzení">
+  V článku o [ověřování AI robotů](/blog/overovani-ai-robotu/) z 8. srpna jsem napsal dvě věci, které tohle širší měření vyvrací.
+
+  **Za prvé:** že Common Crawl použitelný strojový seznam na obvyklé adrese nemá. Má ho — `commoncrawl.org/ccbot.json`, šest prefixů, aktualizovaný 4. srpna. Hledal jsem špatně.
+
+  **Za druhé:** že IPv6 zveřejňuje jen Google. Uvnitř tehdejšího vzorku pěti provozovatelů to sedělo, ale napsal jsem to obecně — a **CCBot jeden IPv6 prefix má**.
+
+  Opravu jsem doplnil i přímo do toho staršího článku.
+</Insight>
+
+## U koho jsem seznam nenašel
+
+ByteDance, Meta, Mistral a Cohere. U všech čtyř platí, že **jsem seznam nenašel** — netvrdím, že neexistuje.
+
+Zvlášť stojí za pozornost **Meta**. V dokumentaci k webovým crawlerům výslovně doporučuje dávat na seznam povolených spíš IP adresy než user-agenty, protože je to bezpečnější. **V té dokumentaci ale žádný veřejný seznam adres není** a odkazuje se na kontaktní e-mail. Kdo chce to doporučení splnit, podle té dokumentace si o podklad musí napsat.
+
+U ByteDance jsem hledal i v [minulém článku](/blog/bytespider-ceska-media/) — a je to zrovna robot, kterého mají české weby v robots.txt nejčastěji.
+
+## Jak s tím pracovat
+
+<Checklist tone="geo" title="Když si chcete robota ověřit" items={[
+  { title: "Najděte seznam v dokumentaci, ne podle konvence", desc: "adresa se u provozovatelů liší a formát taky. Amazon má stránky, ostatní JSON." },
+  { title: "Přečtěte datum uvnitř souboru", desc: "ať víte, jak aktuální podklad používáte — rozptyl je v tomhle vzorku 1 019 dní." },
+  { title: "Počítejte s tím, že IPv6 tam nebude", desc: "mimo Google měl v celém vzorku IPv6 jediný prefix." },
+  { title: "U robotů bez seznamu nemáte zpětnou kontrolu", desc: "zbývá user-agent, který si nastaví kdokoli." },
+  { title: "Stáhněte si soubor znovu, než z něj budete vyvozovat", desc: "ChatGPT-User měl 8. srpna 256 prefixů po předchozích 258 — mění se to." }
+]} />
+
+Samotný postup ověření krok za krokem rozebírá [starší článek](/blog/overovani-ai-robotu/).
+
+## Limity
+
+Jeden odečet, **11. srpna 2026**. Sledoval jsem třináct provozovatelů, ne všechny existující roboty. U čtyř nenalezených jsem zkoušel konvenční adresy a u Mety i dokumentaci — nemůžu vyloučit, že seznam je jinde.
+
+Měřím **dostupnost dokumentace, ne provoz**: netestoval jsem, jestli roboti z těch rozsahů skutečně chodí. A počty u Amazonu jsou z parsování HTML stránky, ne ze strukturovaného souboru.
+
+## Tři chyby, které se u toho nabízejí
+
+<MistakeGrid>
+  <Mistake number="01" title="Odvodit adresu souboru z konvence a z 404 udělat závěr">
+    Amazon publikuje, jen jinde a jinak. Konvence není dokumentace.
+  </Mistake>
+  <Mistake number="02" title="Vzít seznam a nepodívat se na datum">
+    Mezi denní aktualizací a rokem 2023 je v tomhle vzorku rozdíl 1 019 dní.
+  </Mistake>
+  <Mistake number="03" title="Čekat, že u IPv6 to bude fungovat stejně">
+    Mimo Google měl IPv6 v celém vzorku jediný prefix.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+Ověřit AI robota proti oficiálnímu seznamu IP jde u osmi provozovatelů rovnou, u Amazonu s ruční prací nad HTML — a **u čtyř dalších jsem v tomhle měření použitelný seznam nenašel**. Seznamy se liší formátem, rozsahem i stářím: od denní aktualizace po soubor z roku 2023.
+
+Nejužitečnější poučení z celého měření ale není v tabulce: **když soubor nenajdete tam, kde ho čekáte, nenašli jste ho — a to je něco jiného než že neexistuje.**

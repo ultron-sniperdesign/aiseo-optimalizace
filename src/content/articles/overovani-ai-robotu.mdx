@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "mereni"
 published: "2026-08-08"
-updated: "2026-08-08"
+updated: "2026-08-11"
 keywords:
   - "ověření ai robota"
   - "gptbot ip rozsahy"
@@ -22,7 +22,7 @@ stats:
   - value: "4–1 056"
     label: "rozsah počtu prefixů v deseti měřených oficiálních souborech s IP rozsahy"
   - value: "1 z 5"
-    label: "provozovatelů mělo v seznamech IPv6 — pouze Google, a to ve všech třech svých souborech"
+    label: "provozovatelů z tehdejší pětice mělo IPv6 — pouze Google, a to ve všech třech souborech"
 faq:
   - q: "Proč nestačí blokovat podle user-agenta?"
     a: "Protože je to jen textový řetězec, který si v požadavku nastaví kdokoli. Ověřil jsem si to na sobě: moje veřejná IP nepatří do žádného oficiálního rozsahu žádného z provozovatelů, a přesto jsem pod jmény pěti AI robotů dostal odpověď od všech 47 webů, které jsem měřil. Blokace podle jména zastaví jen toho, kdo se nesnaží."
@@ -31,7 +31,7 @@ faq:
   - q: "Jak ověření prakticky proběhne?"
     a: "Vezmete IP adresu z logu a porovnáte ji se seznamem rozsahů daného provozovatele; tuhle cestu má všech pět. U Googlu jde navíc ruční postup přes DNS: reverzní dotaz na IP musí vrátit doménu googlebot.com, google.com nebo googleusercontent.com a zpětný dotaz na tu doménu musí vrátit tutéž IP. Anthropic reverzní DNS jako metodu ve své nápovědě neuvádí a odkazuje na seznam IP."
   - q: "Co když robot přijde přes IPv6?"
-    a: "Pak ho proti těmhle seznamům neověříte, pokud nejde o Googla. V měření z 8. srpna 2026 měly IPv6 prefixy jen soubory Googlu — Googlebot 146, special-crawlers 135 a user-triggered-fetchers 528. OpenAI, Anthropic, Perplexity i Apple mají seznamy čistě IPv4. Neznamená to, že přes IPv6 nechodí; znamená to, že v seznamu ho nenajdete."
+    a: "Většinou ne. V měření z 8. srpna 2026 měly IPv6 prefixy jen soubory Googlu — Googlebot 146, special-crawlers 135 a user-triggered-fetchers 528; OpenAI, Anthropic, Perplexity i Apple mají seznamy čistě IPv4. V širším měření z 11. srpna se ale našel ještě jeden IPv6 prefix u CCBotu, takže „jen Google“ neplatí úplně. Neznamená to, že roboti přes IPv6 nechodí; znamená to, že v seznamu je nenajdete."
   - q: "Znamená IP mimo seznam, že jde o podvrh?"
     a: "Nutně ne. Seznam může být neúplný nebo zastaralý — a stáří se mezi provozovateli liší v řádu let. Soubor Perplexity nesl datum z února 2025 a Applebot z října 2023, zatímco Google a ChatGPT-User byly z téhož dne, kdy jsem měřil. IP mimo seznam je důvod k opatrnosti, ne důkaz."
   - q: "Má smysl blokovat AI roboty podle IP?"
@@ -48,6 +48,16 @@ V [měření Shoptetu](/blog/shoptet-robots-txt-ai-roboti/) jsem stáhl homepage
 Šlo přitom o jeden běžný požadavek na homepage, bez obcházení ochran a bez zátěže; testoval jsem jen to, jestli web identitu robota vůbec nějak kontroluje. **Nekontroloval ji nikdo.**
 
 Tady na to navazuju praktickou otázkou: jak se identita AI robota ověřuje doopravdy. Porovnal jsem oficiální seznamy IP rozsahů pěti provozovatelů, kteří je publikují — OpenAI, Anthropic, Perplexity, Google a Apple.
+
+<Insight tone="warn" icon="!" label="Otevřená oprava k 11. 8. 2026">
+  Širší měření o tři dny později ukázalo, že dvě věty v tomhle článku byly moc silné.
+
+  **Common Crawl strojový seznam má** — `commoncrawl.org/ccbot.json`, šest prefixů. Původně tu stálo, že ho na obvyklé adrese nemá; hledal jsem špatně.
+
+  **IPv6 nemá jen Google.** Jeden prefix má i CCBot. Uvnitř tehdejší pětice provozovatelů tvrzení sedělo, ale bylo napsané obecně.
+
+  Čísla z 8. srpna níž zůstávají, jen je čtěte jako měření té pětice. Celý rozšířený přehled je v článku [kdo publikuje IP rozsahy](/blog/kdo-publikuje-ip-rozsahy/).
+</Insight>
 
 ## Jmenovka není <span class="hl">průkaz</span>
 
@@ -76,13 +86,15 @@ Odečet z 8. srpna 2026, deset oficiálních souborů. Pro praxi jsou z toho pod
 
 Tři věci na téhle tabulce stojí za pozornost.
 
-**IPv6 zveřejňuje jen Google.** Ostatní mají seznamy čistě IPv4. Pokud vám robot mimo Google přijde přes IPv6, proti těmhle zveřejněným souborům ho neověříte. Neznamená to, že přes IPv6 nechodí — znamená to, že v seznamu ho nenajdete.
+**IPv6 má z téhle pětice jen Google.** Ostatní čtyři mají seznamy čistě IPv4. Pokud vám robot přijde přes IPv6, proti těmhle souborům ho nejspíš neověříte. Neznamená to, že přes IPv6 nechodí — znamená to, že v seznamu ho nenajdete.
+
+(V [širším měření z 11. srpna](/blog/kdo-publikuje-ip-rozsahy/) se objevil ještě jeden IPv6 prefix u CCBotu. Formulace „IPv6 zveřejňuje jen Google“, kterou tu bylo napsaná dřív, tedy neplatila.)
 
 **Stáří se liší od dne měření po bezmála tři roky.** Google i ChatGPT-User měly datum z téhož dne, kdy jsem měřil. Soubor PerplexityBota nesl únor 2025 a Applebota říjen 2023. Nedělám z toho závěr o kvalitě provozovatele — starý soubor může znamenat i stabilní rozsahy.
 
 **Rozdíl mezi procházením a načtením na žádost uživatele je obrovský.** GPTBot má 21 prefixů, ChatGPT-User 258. U Googlu 315 proti 1 056. V publikovaných seznamech mají tedy roboti vyvolaní uživatelem výrazně širší adresní prostor — reálný provoz z těch rozsahů jsem ale netestoval.
 
-Pětice provozovatelů v tabulce není totožná s pěticí user-agentů z předchozího testu: Common Crawl použitelný strojový seznam na obvyklé adrese nemá, a Apple naopak v testu user-agentů nebyl, ale rozsahy publikuje.
+Pětice provozovatelů v tabulce není totožná s pěticí user-agentů z předchozího testu: Common Crawl jsem tehdy do srovnání nezařadil a Apple naopak v testu user-agentů nebyl, ale rozsahy publikuje.
 
 <Insight tone="warn" icon="!" label="Adresu souboru nehádejte">
 Adresu Anthropiku jsem nejdřív chybně odhadl jako `anthropic.com/claudebot.json` a dostal **404**. Neznamenalo to, že rozsahy nezveřejňuje — jen jsem hledal špatně. Správný soubor je na `claude.com/crawling/bots.json` a našel jsem ho až v nápovědě. **Adresu proto nehádejte podle domény.**
@@ -133,7 +145,7 @@ Ověřovat má smysl vždy. Blokovat podle IP je rozhodnutí s vedlejším úči
   { title: "Najděte oficiální seznam v dokumentaci provozovatele", desc: "Adresu nehádejte podle domény — u Anthropiku je soubor na claude.com, ne na anthropic.com." },
   { title: "Porovnejte adresu s prefixy v souboru", desc: "A zkontrolujte datum v souboru. Ve vzorku byly rozdíly v řádu let." },
   { title: "U Googlu můžete použít reverzní a zpětný DNS", desc: "Reverzní dotaz musí vrátit googlebot.com, google.com nebo googleusercontent.com a zpětný tutéž IP." },
-  { title: "U adresy IPv6 počítejte s tím, že ji mimo Google nedohledáte", desc: "IPv6 prefixy měly v měření jen soubory Googlu." },
+  { title: "U adresy IPv6 počítejte s tím, že ji nejspíš nedohledáte", desc: "IPv6 prefixy měly v tomhle měření jen soubory Googlu; v širším vzorku k nim přibyl jediný prefix u CCBotu." },
 ]} />
 
 <Insight tone="aio" icon="i" label="Limity měření">

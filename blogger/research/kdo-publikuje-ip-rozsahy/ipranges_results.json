@@ -1,0 +1,467 @@
+[
+ {
+  "operator": "OpenAI",
+  "bot": "GPTBot (trénink)",
+  "found": true,
+  "url": "https://openai.com/gptbot.json",
+  "tried": [
+   {
+    "url": "https://openai.com/gptbot.json",
+    "http": 200,
+    "ctype": "application/json; charset=utf-8",
+    "bytes": 1133,
+    "json": true,
+    "prefixes": 21,
+    "ipv6": 0,
+    "date": "2025-10-30T11:00:00"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json; charset=utf-8",
+  "bytes": 1133,
+  "json": true,
+  "prefixes": 21,
+  "ipv6": 0,
+  "date": "2025-10-30T11:00:00"
+ },
+ {
+  "operator": "OpenAI",
+  "bot": "OAI-SearchBot (vyhledávání)",
+  "found": true,
+  "url": "https://openai.com/searchbot.json",
+  "tried": [
+   {
+    "url": "https://openai.com/searchbot.json",
+    "http": 200,
+    "ctype": "application/json; charset=utf-8",
+    "bytes": 1869,
+    "json": true,
+    "prefixes": 35,
+    "ipv6": 0,
+    "date": "2026-01-02T11:00:00"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json; charset=utf-8",
+  "bytes": 1869,
+  "json": true,
+  "prefixes": 35,
+  "ipv6": 0,
+  "date": "2026-01-02T11:00:00"
+ },
+ {
+  "operator": "OpenAI",
+  "bot": "ChatGPT-User (na žádost uživatele)",
+  "found": true,
+  "url": "https://openai.com/chatgpt-user.json",
+  "tried": [
+   {
+    "url": "https://openai.com/chatgpt-user.json",
+    "http": 200,
+    "ctype": "application/octet-stream",
+    "bytes": 9236,
+    "json": true,
+    "prefixes": 256,
+    "ipv6": 0,
+    "date": "2026-08-10T20:03:45"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/octet-stream",
+  "bytes": 9236,
+  "json": true,
+  "prefixes": 256,
+  "ipv6": 0,
+  "date": "2026-08-10T20:03:45"
+ },
+ {
+  "operator": "Anthropic",
+  "bot": "ClaudeBot a spol.",
+  "found": true,
+  "url": "https://claude.com/crawling/bots.json",
+  "tried": [
+   {
+    "url": "https://claude.com/crawling/bots.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 871,
+    "json": true,
+    "prefixes": 20,
+    "ipv6": 0,
+    "date": "2026-05-01T20:46:04"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 871,
+  "json": true,
+  "prefixes": 20,
+  "ipv6": 0,
+  "date": "2026-05-01T20:46:04"
+ },
+ {
+  "operator": "Perplexity",
+  "bot": "PerplexityBot",
+  "found": true,
+  "url": "https://www.perplexity.ai/perplexitybot.json",
+  "tried": [
+   {
+    "url": "https://www.perplexity.ai/perplexitybot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 482,
+    "json": true,
+    "prefixes": 8,
+    "ipv6": 0,
+    "date": "2025-02-07T16:56:00"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 482,
+  "json": true,
+  "prefixes": 8,
+  "ipv6": 0,
+  "date": "2025-02-07T16:56:00"
+ },
+ {
+  "operator": "Perplexity",
+  "bot": "Perplexity-User",
+  "found": true,
+  "url": "https://www.perplexity.ai/perplexity-user.json",
+  "tried": [
+   {
+    "url": "https://www.perplexity.ai/perplexity-user.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 276,
+    "json": true,
+    "prefixes": 4,
+    "ipv6": 0,
+    "date": "2025-10-17T10:17:00"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 276,
+  "json": true,
+  "prefixes": 4,
+  "ipv6": 0,
+  "date": "2025-10-17T10:17:00"
+ },
+ {
+  "operator": "Google",
+  "bot": "Googlebot",
+  "found": true,
+  "url": "https://developers.google.com/static/search/apis/ipranges/googlebot.json",
+  "tried": [
+   {
+    "url": "https://developers.google.com/static/search/apis/ipranges/googlebot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 21630,
+    "json": true,
+    "prefixes": 315,
+    "ipv6": 146,
+    "date": "2026-08-11T14:45:51"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 21630,
+  "json": true,
+  "prefixes": 315,
+  "ipv6": 146,
+  "date": "2026-08-11T14:45:51"
+ },
+ {
+  "operator": "Google",
+  "bot": "zvláštní roboti",
+  "found": true,
+  "url": "https://developers.google.com/static/search/apis/ipranges/special-crawlers.json",
+  "tried": [
+   {
+    "url": "https://developers.google.com/static/search/apis/ipranges/special-crawlers.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 18971,
+    "json": true,
+    "prefixes": 270,
+    "ipv6": 135,
+    "date": "2026-08-10T14:45:53"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 18971,
+  "json": true,
+  "prefixes": 270,
+  "ipv6": 135,
+  "date": "2026-08-10T14:45:53"
+ },
+ {
+  "operator": "Google",
+  "bot": "vyvolaní uživatelem",
+  "found": true,
+  "url": "https://developers.google.com/static/search/apis/ipranges/user-triggered-fetchers.json",
+  "tried": [
+   {
+    "url": "https://developers.google.com/static/search/apis/ipranges/user-triggered-fetchers.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 71686,
+    "json": true,
+    "prefixes": 1056,
+    "ipv6": 528,
+    "date": "2026-08-11T14:45:53"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 71686,
+  "json": true,
+  "prefixes": 1056,
+  "ipv6": 528,
+  "date": "2026-08-11T14:45:53"
+ },
+ {
+  "operator": "Apple",
+  "bot": "Applebot",
+  "found": true,
+  "url": "https://search.developer.apple.com/applebot.json",
+  "tried": [
+   {
+    "url": "https://search.developer.apple.com/applebot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 856,
+    "json": true,
+    "prefixes": 12,
+    "ipv6": 0,
+    "date": "2023-10-27T10:00:00"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 856,
+  "json": true,
+  "prefixes": 12,
+  "ipv6": 0,
+  "date": "2023-10-27T10:00:00"
+ },
+ {
+  "operator": "Microsoft",
+  "bot": "Bingbot",
+  "found": true,
+  "url": "https://www.bing.com/toolbox/bingbot.json",
+  "tried": [
+   {
+    "url": "https://www.bing.com/toolbox/bingbot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 1580,
+    "json": true,
+    "prefixes": 28,
+    "ipv6": 0,
+    "date": "2024-01-03T10:00:00"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 1580,
+  "json": true,
+  "prefixes": 28,
+  "ipv6": 0,
+  "date": "2024-01-03T10:00:00"
+ },
+ {
+  "operator": "ByteDance",
+  "bot": "Bytespider",
+  "found": false,
+  "url": null,
+  "tried": [
+   {
+    "url": "https://www.bytedance.com/en/bots.json",
+    "http": 200,
+    "ctype": "text/html; charset=utf-8",
+    "bytes": 53355,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   },
+   {
+    "url": "https://www.bytedance.com/bytespider.json",
+    "http": 200,
+    "ctype": "text/html; charset=utf-8",
+    "bytes": 201314,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   },
+   {
+    "url": "https://bytespider.bytedance.com/bots.json",
+    "http": "<urlopen error [Errno 8] nodename nor servname provided, or ",
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   }
+  ]
+ },
+ {
+  "operator": "Amazon",
+  "bot": "Amazonbot",
+  "found": false,
+  "url": null,
+  "tried": [
+   {
+    "url": "https://developer.amazon.com/amazonbot.json",
+    "http": 404,
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   },
+   {
+    "url": "https://www.amazon.com/amazonbot.json",
+    "http": 404,
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   }
+  ]
+ },
+ {
+  "operator": "Common Crawl",
+  "bot": "CCBot",
+  "found": true,
+  "url": "https://index.commoncrawl.org/ccbot.json",
+  "tried": [
+   {
+    "url": "https://commoncrawl.org/ccbot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 11782,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   },
+   {
+    "url": "https://index.commoncrawl.org/ccbot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 606,
+    "json": true,
+    "prefixes": 6,
+    "ipv6": 1,
+    "date": "2026-08-04T12:40:20"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 606,
+  "json": true,
+  "prefixes": 6,
+  "ipv6": 1,
+  "date": "2026-08-04T12:40:20"
+ },
+ {
+  "operator": "Meta",
+  "bot": "Meta-ExternalAgent",
+  "found": false,
+  "url": null,
+  "tried": [
+   {
+    "url": "https://developers.facebook.com/meta-externalagent.json",
+    "http": 404,
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   },
+   {
+    "url": "https://www.facebook.com/meta-externalagent.json",
+    "http": 400,
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   }
+  ]
+ },
+ {
+  "operator": "Mistral",
+  "bot": "MistralAI-User",
+  "found": false,
+  "url": null,
+  "tried": [
+   {
+    "url": "https://mistral.ai/mistralai-user.json",
+    "http": 404,
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   }
+  ]
+ },
+ {
+  "operator": "Cohere",
+  "bot": "cohere-ai",
+  "found": false,
+  "url": null,
+  "tried": [
+   {
+    "url": "https://cohere.com/cohere-ai.json",
+    "http": 404,
+    "ctype": "",
+    "bytes": 0,
+    "json": false,
+    "prefixes": 0,
+    "ipv6": 0,
+    "date": null
+   }
+  ]
+ },
+ {
+  "operator": "DuckDuckGo",
+  "bot": "DuckAssistBot",
+  "found": true,
+  "url": "https://duckduckgo.com/duckassistbot.json",
+  "tried": [
+   {
+    "url": "https://duckduckgo.com/duckassistbot.json",
+    "http": 200,
+    "ctype": "application/json",
+    "bytes": 31769,
+    "json": true,
+    "prefixes": 481,
+    "ipv6": 0,
+    "date": "2026-07-03T15:15:37"
+   }
+  ],
+  "http": 200,
+  "ctype": "application/json",
+  "bytes": 31769,
+  "json": true,
+  "prefixes": 481,
+  "ipv6": 0,
+  "date": "2026-07-03T15:15:37"
+ }
+]

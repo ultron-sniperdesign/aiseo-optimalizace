@@ -1,0 +1,26 @@
+{
+ "Amazonbot": {
+  "url": "https://developer.amazon.com/amazonbot/ip-addresses/",
+  "http": 200,
+  "ctype": "text/html;charset=utf-8",
+  "cidr": 0,
+  "bare_ip": 525,
+  "ipv6": 0
+ },
+ "Amzn-SearchBot": {
+  "url": "https://developer.amazon.com/amazonbot/searchbot-ip-addresses/",
+  "http": 200,
+  "ctype": "text/html;charset=utf-8",
+  "cidr": 512,
+  "bare_ip": 1,
+  "ipv6": 0
+ },
+ "Amzn-User": {
+  "url": "https://developer.amazon.com/amazonbot/live-ip-addresses/",
+  "http": 200,
+  "ctype": "text/html;charset=utf-8",
+  "cidr": 0,
+  "bare_ip": 1024,
+  "ipv6": 0
+ }
+}
