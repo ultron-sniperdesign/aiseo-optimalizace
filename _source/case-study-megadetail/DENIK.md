@@ -40,9 +40,13 @@ Screenshoty baseline: `public/ai-viditelnost/gsc-report.png`, `public/ai-viditel
 Formát: jeden řádek na zásah. „Fáze" = vrstva AI SEO dle metodiky webu
 (technika / obsah / strukturovaná data / důvěryhodnost / měření).
 
+> Přesné rozsahy zásahů chodí přes `HLASENI.md` (schránka, do které píše
+> vlákno provádějící úpravy — uživatel mu jednou za čas vloží připravený
+> prompt). Admin hlášení přebírá sem a v HLASENI.md je označí `✅ převzato`.
+
 | Datum | Fáze | Co se změnilo (konkrétně, vč. rozsahu) | Očekávaný dopad | Měřit od |
 |---|---|---|---|---|
-| _(zatím žádný zásah zapsán — baseline je stav před optimalizací)_ | | | | |
+| 2026-08 (průběžně) | obsah | Doplňování textů do kategorií — velká část kategorií (vč. zásadních) neměla žádný text. Přesný rozsah a data nasazení doplní hlášení z pracovního vlákna (HLASENI.md). | růst citovatelnosti kategorií v AI odpovědích + klasické SEO kategorií | po dokončení vlny (+4 týdny) |
 
 <!-- ŠABLONA řádku:
 | 2026-MM-DD | obsah | Doplněny answer bloky na 40 nejnavštěvovanějších článků | růst citací/zobrazení článků v AI Overviews | 2026-MM-DD (+4 týdny) |
