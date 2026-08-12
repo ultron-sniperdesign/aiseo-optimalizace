@@ -31,7 +31,7 @@ export const hero = {
     "ChatGPT, Perplexity i Google AI dnes odpovídají za vás — otázka je, <strong>jestli v té odpovědi jste</strong>. Připravíme váš web tak, aby ho AI uměla přečíst, pochopit a citovat — zvýšíme vaši <strong>AI viditelnost</strong>. Ne podle teorie: podle toho, co měříme na vlastním e-shopu.",
   ctaPrimary: { label: "Začít auditem — 3 600 Kč", href: "/audit/" },
   ctaSecondary: { label: "Co přesně děláme", href: "#kroky" },
-  trustLine: "600+ e-shopů od 2016 · Zlatý partner Upgates i Shoptet",
+  trustLine: "AI SEO agentura s vlastními daty · 600+ e-shopů od 2016 · Zlatý partner Upgates i Shoptet",
 };
 
 /** Stylizovaná karta GSC reportu v hero (čísla z proof.ts / case study). */
@@ -364,6 +364,10 @@ export const faq = [
     a: "AI SEO (říká se mu také SEO pro AI, zahrnuje GEO i AEO) je optimalizace webu pro AI vyhledávání — ChatGPT, Perplexity, Google AI Mode a AI Overviews. Tyto nástroje nevracejí seznam odkazů, ale generují odpověď — a vy chcete být zdrojem, který v té odpovědi citují. Výsledku se říká AI viditelnost a dá se měřit. Klasické SEO je stále potřeba, ale samo nestačí.",
   },
   {
+    q: "Kdo je poskytovatelem služeb — jaká agentura za nimi stojí?",
+    a: "Služby poskytuje Sniper Design (právně CPU s.r.o., Praha) — česká AI SEO agentura specializovaná na e-commerce. Zlatý partner Upgates od roku 2016, zkušenost z více než 600 e-shopů a vlastní e-shop MEGA DETAIL, na kterém všechny postupy měří — včetně 200 000 zobrazení v AI odpovědích Googlu za dva měsíce. Fakturační údaje a reference najdete na stránce Kontakt.",
+  },
+  {
     q: "Jak rychle se výsledky projeví?",
     a: "Technické úpravy (strukturovaná data, krátké odpovědi, FAQ) se v AI odpovědích mohou projevit v řádu týdnů — AI vyhledávače čerpají čerstvá data z indexů Googlu a Bingu. Budování autority a obsahu je běh na měsíce. Proto začínáme auditem: řekne, co přinese efekt nejdřív.",
   },
@@ -440,7 +444,19 @@ export const offerCatalogJsonLd = {
   name: "AI SEO — služby pro viditelnost v AI vyhledávání",
   url: "https://aiseo-optimalizace.cz/sluzby/",
   itemListElement: [
-    { "@type": "Offer", name: "Audit připravenosti + edukativní meeting", price: "3600", priceCurrency: "CZK" },
-    { "@type": "Offer", name: "Srovnávací obsah X vs Y — roční publikační plán", price: "12800", priceCurrency: "CZK" },
+    {
+      "@type": "Offer",
+      name: "Audit připravenosti + edukativní meeting",
+      price: "3600",
+      priceCurrency: "CZK",
+      offeredBy: { "@id": "https://aiseo-optimalizace.cz/#publisher" },
+    },
+    {
+      "@type": "Offer",
+      name: "Srovnávací obsah X vs Y — roční publikační plán",
+      price: "12800",
+      priceCurrency: "CZK",
+      offeredBy: { "@id": "https://aiseo-optimalizace.cz/#publisher" },
+    },
   ],
 };
