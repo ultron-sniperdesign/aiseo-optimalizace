@@ -1,0 +1,131 @@
+---
+title: "Kdy robots.txt nestačí: roboti vyvolaní uživatelem"
+description: "OpenAI, Google i Perplexity mají fetchery vyvolané uživatelem. OpenAI u nich píše, že robots.txt „nemusí platit“, Google a Perplexity, že ji „obvykle ignorují“."
+answer: "Když si obsah vyžádá uživatel v konverzaci, nejde o automatické procházení a na robots.txt se u takového požadavku podle dokumentace nedá spolehnout. OpenAI to u ChatGPT-User píše jako „nemusí platit“, Google u devíti svých fetcherů a Perplexity u Perplexity-User jako „obvykle ignorují“."
+slug: "roboti-vyvolani-uzivatelem"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-08-12"
+updated: "2026-08-12"
+variant: "rich"
+keywords:
+  - "chatgpt-user"
+  - "perplexity-user"
+  - "robots.txt neplatí"
+  - "user-triggered fetchers"
+  - "google-agent"
+  - "blokování ai robotů"
+stats:
+  - value: "3"
+    label: "provozovatelé, jejichž dokumentace u fetcherů vyvolaných uživatelem robots.txt nezaručuje"
+  - value: "9"
+    label: "fetcherů uvádí v téhle kategorii Google — včetně Google-Agent a Gemini Notebooku"
+  - value: "5 z 80"
+    label: "českých webů má v robots.txt pravidlo pro ChatGPT-User"
+  - value: "0 z 80"
+    label: "webů má pravidlo pro kterýkoli z devíti fetcherů Googlu"
+faq:
+  - q: "Platí robots.txt pro ChatGPT-User?"
+    a: "Podle dokumentace OpenAI nemusí. Píše, že akce jsou vyvolané uživatelem, a proto pravidla robots.txt nemusí platit; ChatGPT-User zároveň neslouží k automatickému procházení webu."
+  - q: "Znamená to, že ti roboti robots.txt porušují?"
+    a: "Ne. Provozovatelé to dopředu popisují ve své dokumentaci, takže je to popsané chování, ne porušení pravidla. Robots.txt se podle nich vztahuje na automatické procházení, ne na požadavek vyvolaný uživatelem."
+  - q: "Jak takového robota zablokuju?"
+    a: "Zasáhnout jde jen na úrovni serveru; robots.txt na to podle dokumentace nestačí. Samotný user agent je ale podvrhnutelný, takže spolehlivější je ověření podle IP tam, kde provozovatel rozsahy publikuje. A počítejte s tím, že za takovým požadavkem stojí člověk, kterého k vám poslala AI odpověď."
+  - q: "Které fetchery Google do téhle kategorie řadí?"
+    a: "Devět: Google-CWS, FeedFetcher-Google, Google-GeminiNotebook, Google-Agent, GoogleMessages, Google-Pinpoint, GoogleProducer, Google-Read-Aloud a Google-Site-Verification. Patří sem tedy i agentní použití."
+  - q: "Kolik českých webů to řeší?"
+    a: "Ve vzorku 80 domén k 12. srpnu 2026 mělo pravidlo pro ChatGPT-User pět webů, pro Perplexity-User tři a pro kterýkoli z devíti fetcherů Googlu nikdo."
+  - q: "Jak poznám, že je robot pravý?"
+    a: "Tam, kde provozovatel publikuje IP rozsahy a ověřovací postup, ověřujte podle IP a reverzního DNS. Google to pro tuhle kategorii publikuje a sám upozorňuje, že user agent jde podvrhnout. Postup rozebírá samostatný článek o ověřování AI robotů."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Kdy robots.txt nestačí: roboti vyvolaní uživatelem
+
+**U části AI robotů nemusí robots.txt zabrat.** Nejsou to crawlery, které si procházejí web — je to požadavek, který vznikl z konkrétní otázky konkrétního člověka v konverzaci. A tři velcí provozovatelé to mají takhle popsané ve své dokumentaci.
+
+| Provozovatel | Robot | Co dokumentace říká | Co z toho plyne |
+|---|---|---|---|
+| **OpenAI** | `ChatGPT-User` | akci vyvolal uživatel, proto pravidla robots.txt **nemusí platit** | pravidlo v robots.txt tenhle provoz nezastaví jistě |
+| **Google** | devět fetcherů | o stažení požádal uživatel, proto **obvykle ignorují** robots.txt | totéž, o něco silněji řečeno |
+| **Perplexity** | `Perplexity-User` | o stažení požádal uživatel, proto **obvykle ignoruje** robots.txt | totéž |
+
+Citace jsou z oficiální dokumentace, čteno **12. srpna 2026**, v mém překladu. OpenAI to píše slaběji („nemusí platit") než Google a Perplexity („obvykle ignorují"), ale pro provoz webu z toho plyne totéž: **na tuhle vrstvu se nedá spolehnout.**
+
+<Insight tone="warn" icon="!" label="Není to porušení pravidla">
+  Provozovatelé to popisují předem, takže nejde o obcházení robots.txt. Logika je konzistentní: robots.txt řeší **automatické procházení webu**. Google to má i v opačném gardu — u běžných crawlerů píše, že pravidla vždy dodržují *při automatickém procházení*. Ta podmínka v té větě není omylem.
+</Insight>
+
+## Co s tím na svém webu udělat
+
+Rozhodovat se dá ve třech krocích. Bez prvního nemá smysl dělat druhý.
+
+1. **Zjistěte, jestli ten provoz vůbec máte.** V logu serveru si vyfiltrujte `ChatGPT-User`, `Perplexity-User` a `Google-Agent`. U hodně webů to budou jednotky požadavků měsíčně a je hotovo.
+2. **Rozhodněte, co je pro vás horší.** Přes tyhle roboty chodí obsah k člověku, který se na vás zrovna ptá. Blokace ušetří obsah, ale může znamenat i konec těch návštěv. Odhad hodnoty takové návštěvy má [samostatný článek](/blog/hodnota-navstevy-z-ai/).
+3. **Teprve pak zasáhněte — a na serveru.** V robots.txt to podle dokumentace nedořešíte.
+
+<Checklist tone="geo" title="Když se rozhodnete omezovat" items={[
+  { title: "Nespoléhat na samotný user agent", desc: "jde podvrhnout — Google to u téhle kategorie sám píše. Spolehlivější je ověření podle IP a reverzního DNS tam, kde provozovatel rozsahy publikuje." },
+  { title: "Blokovat úzce, ne plošně", desc: "špatně napsané pravidlo odřízne i běžné návštěvníky. Pište pravidlo na konkrétní user agent, ne na vzor, který sedne na půlku internetu." },
+  { title: "Po nasazení se podívat do logů", desc: "za týden zkontrolujte, koho jste vlastně zablokovali. Tohle je jediný způsob, jak poznat, že pravidlo bere víc, než mělo." },
+  { title: "Nechat robots.txt tak jak je", desc: "pravidlo pro fetcher tam neškodí, jen na něj nespoléhejte jako na jistotu." },
+  { title: "Zapsat si datum a důvod", desc: "seznamy user agentů se mění a za rok už nikdo nebude vědět, proč to pravidlo vzniklo." }
+]} />
+
+Jak ověřit robota podle IP a reverzního DNS, rozebírá [ověřování AI robotů](/blog/overovani-ai-robotu/); kdo rozsahy vůbec publikuje a kdo ne, [samostatný článek](/blog/kdo-publikuje-ip-rozsahy/).
+
+## Kterých robotů se to týká
+
+U OpenAI je to `ChatGPT-User`, u Perplexity `Perplexity-User`. Google jich do téhle kategorie řadí devět:
+
+`Google-CWS` · `FeedFetcher-Google` · `Google-GeminiNotebook` · **`Google-Agent`** · `GoogleMessages` · `Google-Pinpoint` · `GoogleProducer` · `Google-Read-Aloud` · `Google-Site-Verification`
+
+Důležité je, že sem patří i **`Google-Agent`** a **`Google-GeminiNotebook`**. Když se tedy bavíme o agentech, kteří chodí na weby za uživatele, bavíme se o provozu, u kterého robots.txt podle dokumentace neplatí spolehlivě.
+
+## Kolik českých webů to řeší
+
+Ze [stejného měření 80 domén](/blog/gptbot-bez-oai-searchbot/) z 12. srpna 2026:
+
+| Robot | Pravidlo má |
+|---|---|
+| GPTBot (automatický) | 12 z 80 |
+| Google-Extended (automatický) | 10 z 80 |
+| PerplexityBot (automatický) | 9 z 80 |
+| **ChatGPT-User (vyvolaný uživatelem)** | **5 z 80** |
+| OAI-SearchBot (automatický) | 4 z 80 |
+| **Perplexity-User (vyvolaný uživatelem)** | **3 z 80** |
+| kterýkoli z devíti fetcherů Googlu | **0 z 80** |
+
+Věta, kterou si z toho odnést: **pokud máte v robots.txt jen GPTBota nebo Google-Extended, roboty vyvolané uživatelem tím neřešíte.** Všech pět webů s pravidlem pro ChatGPT-User ho má jako přídavek k blokaci tréninku, ne samostatně.
+
+## Tři chyby, které se u toho dělají
+
+<MistakeGrid>
+  <Mistake number="01" title="Považovat robots.txt za hranici, kterou nikdo nepřekročí">
+    U celé jedné kategorie robotů podle dokumentace nejde o spolehlivou řídicí vrstvu.
+  </Mistake>
+  <Mistake number="02" title="Mluvit o porušování pravidel">
+    Provozovatelé to popisují předem. Kdo tvrdí, že roboti robots.txt porušují, míchá dvě různé věci.
+  </Mistake>
+  <Mistake number="03" title="Blokovat jako první krok">
+    Chodí přes ně lidé, které k vám poslala AI odpověď. Blokace je legitimní volba, ale má cenu.
+  </Mistake>
+</MistakeGrid>
+
+## Limity
+
+- **Je to čtení dokumentace k 12. srpnu 2026, ne měření chování.** Netestoval jsem, jestli se roboti podle svých pravidel řídí — ani jedním směrem.
+- **Vlastní čísla jsou z jednoho odečtu robots.txt** na nenáhodném vzorku 80 domén (33 médií, 47 e-shopů z jedné platformy).
+- **Seznamy user agentů se mění.** I během přípravy tohohle článku přibyl v dokumentaci OpenAI čtvrtý agent — `OAI-AdsBot`, který ověřuje bezpečnost stránek nabízených jako reklama v ChatGPT. Doplnil jsem ho do [tabulky v článku o opt-outech](/blog/gptbot-bez-oai-searchbot/), kde jsem do té doby psal, že roboti OpenAI jsou tři.
+
+## Shrnutí
+
+OpenAI, Google i Perplexity popisují kategorii robotů vyvolaných uživatelem, u které robots.txt podle jejich dokumentace není spolehlivá řídicí vrstva. Google do ní řadí i agentní použití.
+
+Ve vzorku 80 českých webů má pravidlo pro ChatGPT-User pět z nich a pro fetchery Googlu nikdo. Kdo po zvážení dopadů chce tenhle provoz omezovat, musí to řešit na serveru — a nejdřív se podívat do logu, jestli ho vůbec má.
