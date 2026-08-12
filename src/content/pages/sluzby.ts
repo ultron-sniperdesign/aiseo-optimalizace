@@ -18,7 +18,7 @@ export const meta = {
   title: "Služby AI SEO — viditelnost v AI vyhledávání, která jde změřit",
   description:
     "Zákazníci se ptají ChatGPT a Google AI Mode. Zvýšíme vaši AI viditelnost — audit za 3 600 Kč, technická příprava na míru a obsah, který AI cituje.",
-  ogImage: "/og/default.jpg",
+  ogImage: "/og/sluzby.jpg",
 };
 
 /* ============ HERO ============ */
