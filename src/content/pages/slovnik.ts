@@ -62,6 +62,21 @@ export const groups: TermGroup[] = [
           "AI SEO není nová disciplína, která by klasické SEO nahrazovala — je to jeho rozšíření o novou otázku: <strong>umí váš obsah přečíst, pochopit a citovat umělá inteligence?</strong> Zatímco klasické SEO optimalizuje pro pozici v seznamu odkazů, AI SEO optimalizuje pro roli zdroje v hotové odpovědi. Uživatel často žádný seznam neuvidí — dostane rovnou odpověď a v ní (nebo pod ní) citace.\n\nV praxi AI SEO stojí na čtyřech pilířích: technicky zdravý a indexovatelný web (bez toho vás žádná AI nenajde), obsah strukturovaný jako odpovědi na konkrétní otázky, strukturovaná data, která obsahu dodají strojově čitelný kontext, a důvěryhodná značka konzistentní napříč internetem.\n\nNa tomto webu pokrýváme AI SEO jako celek: čtyři disciplíny <a href=\"/seo/\">SEO</a>, <a href=\"/geo/\">GEO</a>, <a href=\"/aeo/\">AEO</a> a <a href=\"/aio/\">AIO</a> plus novou vrstvu <a href=\"/ai-mode/\">Google AI Mode</a>. Pokud začínáte, projděte <a href=\"/zacnete-tady/\">kurátorovanou cestu Začněte tady</a>.",
       },
       {
+        id: "ai-viditelnost",
+        term: "AI viditelnost",
+        aka: "AI visibility, viditelnost v AI",
+        def: "Míra, v jaké se web nebo značka objevuje v odpovědích AI systémů — Google AI Overviews a AI Mode, ChatGPT, Perplexity či Copilot. Výsledná metrika AI SEO: měří se zobrazeními v AI odpovědích (Search Console), zmínkami a citacemi značky a návštěvností z AI nástrojů (GA4).",
+        link: { href: "/ai-viditelnost/", label: "AI viditelnost na reálných datech" },
+        long:
+          "AI viditelnost je pro AI éru to, co byla pozice ve vyhledávání pro éru klasického Googlu — <strong>metrika toho, jestli o vás nová vrstva vyhledávání ví a doporučuje vás</strong>. Nezachytí ji běžná analytika: velká část se odehrává ještě před kliknutím, uvnitř odpovědí, které AI složí a uživatel si je přečte bez návštěvy webu.\n\nMěří se třemi vrstvami: <strong>zobrazení v AI odpovědích Googlu</strong> (beta report Search Console „Funkce s generativní AI“), <strong>zmínky a citace značky</strong> v odpovědích na reálné prompty (ručním testem nebo AI visibility trackerem) a <strong>návštěvnost z AI nástrojů</strong> v GA4. Jak vypadá v praxi, ukazujeme na <a href=\"/ai-viditelnost/\">reálných datech vlastního e-shopu</a> — 200 000 zobrazení v AI odpovědích za dva měsíce.\n\nPostup měření krok za krokem: <a href=\"/blog/test-viditelnosti-v-ai/\">Test viditelnosti v AI</a>, <a href=\"/blog/gsc-ai-segmenty-mereni/\">měření v GSC a GA4</a> a metrika <a href=\"/blog/share-of-model-metrika/\">share of model</a>. Zvýšení AI viditelnosti je cílem služby <a href=\"/sluzby/\">AI SEO</a>.",
+      },
+      {
+        id: "ai-vyhledavani",
+        term: "AI vyhledávání",
+        def: "Souhrnné označení pro vyhledávání, kde odpověď skládá generativní AI — Google AI Mode a AI Overviews, ChatGPT s živým vyhledáváním, Perplexity, Copilot nebo český Seznam Asistent. Místo seznamu odkazů vrací hotovou odpověď s citacemi; pro weby to znamená optimalizovat citovatelnost, ne jen pozice.",
+        link: { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce AI érou vyhledávání" },
+      },
+      {
         id: "seo",
         term: "SEO",
         aka: "Search Engine Optimization",

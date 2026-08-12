@@ -10,16 +10,16 @@
  */
 
 export const meta = {
-  title: "200 000 zobrazení v AI odpovědích Googlu za 2 měsíce — reálná data",
+  title: "AI viditelnost: 200 000 zobrazení v AI odpovědích Googlu za 2 měsíce",
   description:
-    "Reálný screenshot ze Search Console: e-shop MEGA DETAIL se za dva měsíce zobrazil 200 000× ve funkcích s generativní AI Googlu. Co to znamená a jak se to dělá.",
+    "Co je AI viditelnost a jak se měří — na reálných datech: e-shop MEGA DETAIL se za dva měsíce zobrazil 200 000× ve funkcích s generativní AI Googlu (Search Console).",
 };
 
 export const hero = {
-  eyebrow: "Reálná data · vlastní e-shop · žádná teorie",
+  eyebrow: "AI viditelnost · reálná data · vlastní e-shop",
   titleHtml:
     "<strong>200&nbsp;000 zobrazení</strong> v&nbsp;AI odpovědích Googlu za&nbsp;dva měsíce",
-  lead: "Když se dnes lidé ptají Googlu, odpověď jim často složí AI přímo ve výsledcích. A skoro čtvrt milionu těch odpovědí za dva měsíce obsahovalo náš vlastní e-shop MEGA DETAIL — dřív, než jsme na něm spustili cílenou AI SEO optimalizaci. Tady je důkaz a návod, jak to funguje.",
+  lead: "Když se dnes lidé ptají Googlu, odpověď jim často složí AI přímo ve výsledcích. A skoro čtvrt milionu těch odpovědí za dva měsíce obsahovalo náš vlastní e-shop MEGA DETAIL — dřív, než jsme na něm spustili cílenou AI SEO optimalizaci. Tady je důkaz, jak vypadá měřitelná AI viditelnost — a návod, jak ji získat.",
   ctaPrimary: { label: "Chci AI SEO audit", href: "/audit/" },
   ctaSecondary: { label: "Prohlédnout všechny služby", href: "/sluzby/" },
 };
@@ -116,8 +116,22 @@ export const finalCta = {
   ctaSecondary: { label: "Nejdřív chci vidět celá data", href: "/blog/case-study-megadetail-ai-navstevnost/" },
 };
 
-/** FAQ (→ FAQPage JSON-LD). */
+/** FAQ (→ FAQPage JSON-LD). Fráze v otázkách záměrně kopírují fan-out
+ * dotazy z AI Mode (GSC: „měření ai viditelnosti", „nástroj pro ai
+ * viditelnost", „kde koupit služby pro optimalizaci viditelnosti v ai"). */
 export const faq = [
+  {
+    q: "Co je AI viditelnost?",
+    a: "AI viditelnost je míra, v jaké se váš web nebo značka objevuje v odpovědích AI systémů — Google AI Overviews a AI Mode, ChatGPT, Perplexity nebo Copilot. Na rozdíl od klasické pozice ve vyhledávání se měří zobrazeními uvnitř AI odpovědí, zmínkami a citacemi značky a návštěvností z AI nástrojů.",
+  },
+  {
+    q: "Jak se AI viditelnost měří a jaký nástroj použít?",
+    a: "Základ je zdarma: report Search Console „Funkce s generativní AI“ (zobrazení v AI odpovědích Googlu), segmenty AI zdrojů v GA4 (návštěvy z ChatGPT, Perplexity a dalších) a pravidelný test reálných promptů napříč platformami. Placené AI visibility trackery přidávají sledování zmínek a share of voice vůči konkurenci. Postup krok za krokem popisujeme v článku Test viditelnosti v AI.",
+  },
+  {
+    q: "Kde koupit služby pro optimalizaci viditelnosti v AI?",
+    a: "Optimalizaci AI viditelnosti nabízíme jako službu AI SEO na tomto webu: vstupním krokem je audit za 3 600 Kč bez DPH s prioritizovaným plánem do 5 pracovních dní, na který navazuje technická příprava webu a tvorba citovatelného obsahu. Poptávka jde odeslat přímo na stránce /sluzby/, bez přeposílání jinam.",
+  },
   {
     q: "Co přesně znamená 200 000 zobrazení v AI odpovědích?",
     a: "Je to počet zobrazení webu megadetail.cz ve funkcích s generativní AI Googlu (především AI Overviews) za období 18. 5. – 15. 7. 2026 podle beta reportu Search Console „Funkce s generativní AI“. Zobrazení = web byl součástí AI odpovědi, kterou uživatel viděl.",

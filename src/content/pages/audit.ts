@@ -153,7 +153,7 @@ export const hero = {
   eyebrow: "AI SEO audit od Sniper Design",
   title:
     "AI už cituje něčí web. <strong>Audit ukáže, proč ne&nbsp;ten&nbsp;váš.</strong>",
-  lead: "Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong> a&nbsp;dáme vám prioritní seznam úprav s&nbsp;odhadem dopadu plus <strong>60 minutovou konzultaci</strong>. Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.",
+  lead: "Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong> a&nbsp;dáme vám prioritní seznam úprav s&nbsp;odhadem dopadu na&nbsp;vaši <strong>AI viditelnost</strong> plus <strong>60 minutovou konzultaci</strong>. Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.",
   outcomes: [
     "<strong>Prioritní seznam úprav</strong>, ne obecný audit bez pořadí",
     "U&nbsp;každého bodu uvidíte <strong>dopad × náročnost</strong>, abyste věděli, co řešit jako první",

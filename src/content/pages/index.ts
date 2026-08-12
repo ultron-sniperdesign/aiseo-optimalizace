@@ -18,9 +18,9 @@ import type { SectionHead } from "~/content/pages/_types";
 
 export const meta = {
   title:
-    "SEO pro AI: GEO, AIO optimalizace webu pro AI vyhledávání",
+    "AI SEO: viditelnost webu v AI vyhledávání (GEO, AI Mode, AI Overviews)",
   description:
-    "Praktický průvodce SEO pro AI na českém trhu — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro Google AI Overviews a AIO jako zastřešující rámec.",
+    "Praktický průvodce AI SEO na českém trhu — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro AI Overviews a AI Mode. Cíl: měřitelná AI viditelnost.",
 };
 
 /**

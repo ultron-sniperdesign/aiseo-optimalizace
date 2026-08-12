@@ -15,20 +15,20 @@
  */
 
 export const meta = {
-  title: "Služby — SEO pro AI, které jde změřit | aiseo-optimalizace.cz",
+  title: "Služby AI SEO — viditelnost v AI vyhledávání, která jde změřit",
   description:
-    "Zákazníci se ptají ChatGPT a Google AI. Připravíme web, který AI cituje — audit za 3 600 Kč, technická příprava na míru a obsah s jednotkovou cenou.",
+    "Zákazníci se ptají ChatGPT a Google AI Mode. Zvýšíme vaši AI viditelnost — audit za 3 600 Kč, technická příprava na míru a obsah, který AI cituje.",
   ogImage: "/og/default.jpg",
 };
 
 /* ============ HERO ============ */
 
 export const hero = {
-  kicker: "Služby · SEO pro AI · Sniper Design",
+  kicker: "Služby · AI SEO · Sniper Design",
   titleHtml:
     '<strong>Zákazníci se přestali ptát Googlu.</strong><br />Ptají se <span class="hl">AI</span> — a ta <span class="hl">doporučuje</span>.',
   lead:
-    "ChatGPT, Perplexity i Google AI dnes odpovídají za vás — otázka je, <strong>jestli v té odpovědi jste</strong>. Připravíme váš web tak, aby ho AI uměla přečíst, pochopit a citovat. Ne podle teorie: podle toho, co měříme na vlastním e-shopu.",
+    "ChatGPT, Perplexity i Google AI dnes odpovídají za vás — otázka je, <strong>jestli v té odpovědi jste</strong>. Připravíme váš web tak, aby ho AI uměla přečíst, pochopit a citovat — zvýšíme vaši <strong>AI viditelnost</strong>. Ne podle teorie: podle toho, co měříme na vlastním e-shopu.",
   ctaPrimary: { label: "Začít auditem — 3 600 Kč", href: "/audit/" },
   ctaSecondary: { label: "Co přesně děláme", href: "#kroky" },
   trustLine: "600+ e-shopů od 2016 · Zlatý partner Upgates i Shoptet",
@@ -291,7 +291,7 @@ export const retainers = {
     {
       type: "Měsíční retainer",
       name: "Klasická pravidelná SEO optimalizace",
-      desc: "Klasické SEO je stále základ celé problematiky — s SEO pro AI se prolíná a je třeba ho budovat, aby mělo AI z čeho čerpat.",
+      desc: "Klasické SEO je stále základ celé problematiky — s AI SEO se prolíná a je třeba ho budovat, aby mělo AI z čeho čerpat.",
       href: "/sluzby/dlouhodobe-seo/",
     },
     {
@@ -312,7 +312,7 @@ export const selfCheck = {
   titleHtml: "Je váš web <strong>připravený na AI?</strong>",
   lead: "Zaškrtněte, co už máte. Co zůstane prázdné, to je vaše zadání.",
   items: [
-    "Vím, o čem je SEO pro AI — umím ho rozdělit na technickou a obsahovou část",
+    "Vím, o čem je AI SEO — umím ho rozdělit na technickou a obsahovou část",
     "Mám hotový audit a vím, kde mám největší mezery — technicky i obsahově",
     "Web splňuje Google Rich Results a v Search Console nejsou kritické chyby",
     "Můžu vkládat FAQ do kategorií a produktů — a jsou ve strukturovaných datech",
@@ -360,8 +360,8 @@ export const faqHead = {
 
 export const faq = [
   {
-    q: "Co je SEO pro AI a proč o něm přemýšlet?",
-    a: "SEO pro AI (zahrnuje GEO i AEO) je optimalizace webu pro AI vyhledávače typu ChatGPT, Perplexity a Google AI Overviews. Tyto nástroje nevracejí seznam odkazů, ale generují odpověď — a vy chcete být zdrojem, který v té odpovědi citují. Klasické SEO je stále potřeba, ale samo nestačí.",
+    q: "Co je AI SEO a proč o něm přemýšlet?",
+    a: "AI SEO (říká se mu také SEO pro AI, zahrnuje GEO i AEO) je optimalizace webu pro AI vyhledávání — ChatGPT, Perplexity, Google AI Mode a AI Overviews. Tyto nástroje nevracejí seznam odkazů, ale generují odpověď — a vy chcete být zdrojem, který v té odpovědi citují. Výsledku se říká AI viditelnost a dá se měřit. Klasické SEO je stále potřeba, ale samo nestačí.",
   },
   {
     q: "Jak rychle se výsledky projeví?",
@@ -411,7 +411,7 @@ export const poptavka = {
     "Obsah kategorií",
     "Obsah produktů",
     "Srovnávací obsah „X vs Y“",
-    "Dlouhodobá SEO optimalizace",
+    "Dlouhodobá AI SEO optimalizace",
     "Monitoring AI viditelnosti",
     "Nevím — poraďte mi",
   ],
@@ -437,7 +437,7 @@ export const finalCta = {
 export const offerCatalogJsonLd = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  name: "SEO pro AI — nabídka služeb",
+  name: "AI SEO — služby pro viditelnost v AI vyhledávání",
   url: "https://aiseo-optimalizace.cz/sluzby/",
   itemListElement: [
     { "@type": "Offer", name: "Audit připravenosti + edukativní meeting", price: "3600", priceCurrency: "CZK" },

@@ -12,7 +12,7 @@ export const llms = {
   title: "AI SEO Optimalizace",
   /** Blockquote souhrn webu (1–3 věty). */
   summary:
-    "Český edukativní web o AI éře vyhledávání: SEO, GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), AIO (AI Optimization) a Google AI Mode. Praktické postupy pro e-shopy a firemní weby, jak být citovaný v ChatGPT, Perplexity, Google AI Overviews i AI Mode.",
+    "Český edukativní web o AI éře vyhledávání: SEO, GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), AIO (AI Optimization) a Google AI Mode. Praktické postupy pro e-shopy a firemní weby, jak zvýšit AI viditelnost — být citovaný v ChatGPT, Perplexity, Google AI Overviews i AI Mode.",
   /** Volný odstavec pod souhrnem (provozovatel, model webu). */
   about:
     "Web aiseo-optimalizace.cz provozuje agentura Sniper Design (CPU s.r.o., Praha) — Zlatý partner Upgates od 2016. Obsah kombinuje edukativní průvodce zdarma s komerčními službami: free PDF návod, placený AI SEO Wireframe Pack a AI SEO audit. Autorem obsahu je Kamil ze Sniper Design; jak obsah vzniká, popisuje stránka autora.",

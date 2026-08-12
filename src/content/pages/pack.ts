@@ -19,7 +19,7 @@ import type { SectionHead } from "~/content/pages/_types";
 export const meta = {
   title: "AI SEO Wireframe Pack — sedm typů stránek pro AI vyhledávání",
   description:
-    "Pack obsahuje sedm typů stránek s hotovými texty: homepage, produkt, kategorie, blog (článek + výpis), prodejní landing a kontakt. Master PDF má 85 stran. Aplikujete na svůj web během odpoledne. 1 490 Kč jednorázově.",
+    "Pack obsahuje sedm typů stránek s hotovými texty: homepage, produkt, kategorie, blog (článek + výpis), prodejní landing a kontakt. Master PDF má 85 stran. Základ AI viditelnosti webu nastavíte během odpoledne. 1 490 Kč jednorázově.",
 };
 
 const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
