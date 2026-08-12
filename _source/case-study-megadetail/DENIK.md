@@ -62,6 +62,16 @@ staré nikdy nepřepisovat (case study potřebuje časovou řadu).
 | Baseline | 18. 5. – 15. 7. 2026 | 200 018 | 1 867 / 12 měs | ~4× | před optimalizací |
 | Q3 2026 | _(plán: říjen 2026)_ | | | | společně s kvartálním reportem |
 
+### 3b) Zmínky a citace v ChatGPT (nástroj „měření AI viditelnosti", jen openai)
+
+Sada 32 stálých promptů přes API s web searchem; volatilní mezi běhy — číst
+jako vzorek, trend až z řady běhů. Runs v `Tools/měření AI viditelnosti/runs/`.
+
+| Běh | Zmínka značky | Citace domény | První v odpovědi | SoV vs 4 konkurenti | Pozn. |
+|---|---|---|---|---|---|
+| 2026-08-07 | 33 % | 33 % | — | 33 % | |
+| 2026-08-12 | 28 % | 25 % | 19 % | 43 % | GA4: 245 AI sessions/30 d (220 ChatGPT) |
+
 ## 4) Kam se čísla propisují (při každé aktualizaci projít vše)
 
 1. `src/i18n/proof.ts` — ProofStrip napříč webem
