@@ -406,6 +406,19 @@ const stepColors = [
           }),
         });
         if (!res.ok) throw new Error(`Server returned ${res.status}`);
+        /* Konverzní eventy až po úspěšném přijetí workerem (audit/EmailCapture
+           měří pokus o submit — tady máme k dispozici výsledek, tak měříme
+           skutečné odeslání). Guard: při Sec-GPC/DNT gtag ani fbq neexistují. */
+        const w = window as unknown as { gtag?: (...a: unknown[]) => void; fbq?: (...a: unknown[]) => void };
+        if (typeof w.gtag === "function") {
+          w.gtag("event", "generate_lead", {
+            lead_type: "sluzba",
+            sluzba,
+            page_path: location.pathname,
+            transport_type: "beacon",
+          });
+        }
+        if (typeof w.fbq === "function") w.fbq("track", "Lead", { content_name: sluzba });
         popForm.hidden = true;
         const ok = document.querySelector<HTMLElement>(".pop__success");
         if (ok) { ok.hidden = false; ok.scrollIntoView({ block: "center", behavior: "smooth" }); }
