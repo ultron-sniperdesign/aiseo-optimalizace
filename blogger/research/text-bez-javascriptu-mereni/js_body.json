@@ -1,0 +1,107 @@
+[
+ {
+  "domain": "www.ceskenoviny.cz",
+  "sitemap_urls": 15,
+  "url": "https://www.ceskenoviny.cz/sport/",
+  "raw_words": 541,
+  "dom_words": 10451,
+  "p_count": 3,
+  "p_len": 613,
+  "probe": "Informace o vaší aktivitě v této službě (například formuláře, které odesíláte, obsah, který si prohlížíte) mohou být uloženy a kombinovány s dalšími i",
+  "hits": "0/3",
+  "verdict": "chybi_v_html"
+ },
+ {
+  "domain": "www.lidovky.cz",
+  "sitemap_urls": 99,
+  "redirects": [
+   "/nastaveni-souhlasu",
+   "/nastaveni-souhlasu",
+   "/nastaveni-souhlasu",
+   "/nastaveni-souhlasu",
+   "/nastaveni-souhlasu",
+   "/nastaveni-souhlasu",
+   "/nastaveni-souhlasu"
+  ],
+  "url": "https://www.espritmagazin.cz/moda/adidas-a-freak-s-store-predstavili-mokasinu-handball-spezial.A260810_131435_esprit-moda_ihou",
+  "raw_words": 1004,
+  "dom_words": 1011,
+  "p_count": 3,
+  "p_len": 270,
+  "probe": "Legendární sálová bota z roku 1979 přišla o tkaničky a dostala nízkoprofilovou konstrukci pravého mokasínu. Přesto si drží svoje: štíhlý, nenafouknutý",
+  "hits": "3/3",
+  "verdict": "v_html"
+ },
+ {
+  "domain": "www.forum24.cz",
+  "sitemap_urls": 35,
+  "url": "https://www.forum24.cz/rubrika/reportaze",
+  "raw_words": 786,
+  "dom_words": 10953,
+  "p_count": 3,
+  "p_len": 613,
+  "probe": "Informace o vaší aktivitě v této službě (například formuláře, které odesíláte, obsah, který si prohlížíte) mohou být uloženy a kombinovány s dalšími i",
+  "hits": "0/3",
+  "verdict": "chybi_v_html"
+ },
+ {
+  "domain": "archiv.hn.cz",
+  "sitemap_urls": 33,
+  "url": "https://byznys.hn.cz/c1-67914020-tip-nejen-pro-prazdninove-cesty-chytra-krabicka-jmenem-telepass-uz-je-i-pro-cizince-tady-je-navod-jak-ji-ziskat",
+  "raw_words": 1659,
+  "dom_words": 1745,
+  "p_count": 3,
+  "p_len": 484,
+  "probe": "Zastavit, čekat frontu, vyzvednout si lístek, jet, zastavit, čekat frontu, najít v autě lístek, doufat, že bude fungovat kartový terminál, případně že",
+  "hits": "3/3",
+  "verdict": "v_html"
+ },
+ {
+  "domain": "www.angrybeards.cz",
+  "sitemap_urls": 615,
+  "url": "https://www.angrybeards.cz/darky-zdarma/cashback-20/",
+  "raw_words": 1288,
+  "dom_words": 3586,
+  "p_count": 3,
+  "p_len": 449,
+  "probe": "Nasraná kosmetika z Třebíče pro všechny normální chlapy. Vlastní receptury dotažené k dokonalosti ve spolupráci s profíky z oboru, prvotřídní fialová ",
+  "hits": "0/3",
+  "verdict": "chybi_v_html"
+ },
+ {
+  "domain": "www.autodoplnky-obchod.cz",
+  "sitemap_urls": 8440,
+  "url": "https://www.autodoplnky-obchod.cz/snehove-retezy-205-60-r16/",
+  "raw_words": 3501,
+  "dom_words": 6764,
+  "p_count": 2,
+  "p_len": 213,
+  "probe": "Rychle pryč – třeba na naší hlavní stránku nebo do magazínu věnovanému autodoplňkům. V případě jakýchkoli dotazů nás kontaktujte na e-mailu info@autod",
+  "hits": "0/2",
+  "verdict": "chybi_v_html"
+ },
+ {
+  "domain": "www.pocitarna.cz",
+  "sitemap_urls": 8180,
+  "url": "https://www.pocitarna.cz/napajeci-adaptery/bezdratova-nabijecka-fast-charge-cerna/",
+  "raw_words": 3257,
+  "dom_words": 4162,
+  "p_count": 3,
+  "p_len": 532,
+  "probe": "Jde hodně ušetřit pokud vám nevadí nejaké ty kosmeticke vady neboli produkty kategorie B (repasované produkty či výstavní kousky atd.). Jednání obchod",
+  "hits": "0/3",
+  "verdict": "chybi_v_html"
+ },
+ {
+  "domain": "www.prokonzole.cz",
+  "sitemap_urls": 12379,
+  "url": "https://www.prokonzole.cz/merch-polstare-deky/polstar-super-mario-bros-bowser-3d-nove/",
+  "raw_words": 1325,
+  "dom_words": 3642,
+  "p_count": 3,
+  "p_len": 123,
+  "probe": "Some of the data collected by this provider is for the purposes of personalization and measuring advertising effectiveness.",
+  "hits": "0/3",
+  "verdict": "chybi_v_html"
+ }
+]

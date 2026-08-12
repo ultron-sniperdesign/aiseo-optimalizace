@@ -1,0 +1,148 @@
+---
+title: "Text bez JavaScriptu: co ukázalo 80 českých domén"
+description: "Změřil jsem 80 českých domén. Hlavní text chyběl v serverovém HTML u nuly z nich — a automatika mě přitom třikrát poslala špatným směrem."
+answer: "Ve vzorku 80 českých domén jsem nenašel web, u kterého by hlavní text stránky chyběl v HTML ze serveru. Porovnatelných bylo 66 domén a text se našel u všech. Neznamená to, že takový web na českém internetu není — jen že v tomhle vzorku nebyl."
+slug: "text-bez-javascriptu-mereni"
+category: "analysis"
+tags:
+  - "mereni"
+  - "technicke-zaklady"
+published: "2026-08-12"
+updated: "2026-08-12"
+variant: "rich"
+keywords:
+  - "javascript a ai roboti"
+  - "serverové html"
+  - "vykreslování stránky"
+  - "gptbot nečitelný web"
+  - "měření ai viditelnosti"
+  - "jak číst studie o ai"
+stats:
+  - value: "0 z 66"
+    label: "porovnatelných domén, u kterých by hlavní text chyběl v HTML ze serveru"
+  - value: "23"
+    label: "chybějících textů nahlásila automatika ve dvou kolech — po ruční kontrole nebyl pravý ani jeden"
+  - value: "14 z 80"
+    label: "domén vypadlo z měřicích důvodů; nepočítám je jako nečitelné"
+  - value: "2"
+    label: "falešné nálezy způsobila chyba v mém vlastním skriptu (kódování)"
+faq:
+  - q: "Kolik českých webů nedá AI robotovi text bez JavaScriptu?"
+    a: "V mém vzorku 80 domén (33 médií, 47 e-shopů) k 12. srpnu 2026 jsem takový případ nenašel — porovnatelných bylo 66 a u všech byl hlavní text v HTML ze serveru. Neznamená to, že na českém webu takový případ není."
+  - q: "Neodporuje to zprávám, že velká část webů je pro AI nečitelná?"
+    a: "Nemusí. Nemám metodiku těch měření, takže je nemůžu porovnat. Rozdíl může být ve vzorku, v typu stránky i v tom, jak se počítají weby, u kterých měření samo selže."
+  - q: "Jak poznám u své stránky, že text v serverovém HTML je?"
+    a: "Stáhněte si ji příkazem curl a hledejte v odpovědi větu ze svého textu. Když ji tam najdete, je to silný signál, že text posílá server rovnou v HTML. Pozor na kódování — na tom mi měření spadlo."
+  - q: "Proč jste 14 domén vyřadil?"
+    a: "Neměly použitelnou sitemapu, přesměrovaly jinam, vrátily chybu při vykreslení, nebo prohlížeč dostal míň textu než prostý HTTP klient. Takový případ se nedá porovnat, tak ho nepočítám ani na jednu stranu."
+  - q: "Znamená to, že se o JavaScript nemusím starat?"
+    a: "Ne. Měřil jsem jednu stránku na doménu a jen to, jestli je text v serverovém HTML. O zbytku webu, o navigaci ani o tom, co s tím který robot udělá, to neříká nic."
+  - q: "Které roboty vůbec JavaScript spouštějí?"
+    a: "Podle veřejného měření z prosince 2024 ho roboti ChatGPT, Claude a Perplexity stahovali, ale nespouštěli; Googlebot a Applebot ho vykreslovaly. Je to jedno měření staré rok a půl a chování se může změnit. Rozebírá to samostatný článek o JavaScriptu a AI robotech."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Text bez JavaScriptu: co ukázalo 80 českých domén
+
+Roboti ChatGPT, Claude a Perplexity podle [měření z prosince 2024](/blog/javascript-a-ai-roboti/) JavaScript stahovali, ale nespouštěli — pracovali s tím, co vrátí server. Novější veřejné měření nemám a chování se může změnit. Kolik textu jim tedy z českých webů zbude?
+
+Vzal jsem stejných **80 domén** jako u [měření opt-outů](/blog/gptbot-bez-oai-searchbot/) — 33 médií a 47 e-shopů. U každé jednu stránku ze sitemapy: stáhl jsem ji prostým HTTP klientem, vykreslil v prohlížeči a hledal, jestli je hlavní text i v té serverové verzi.
+
+| Krok | Počet |
+|---|---|
+| změřených domén | 80 |
+| vyřazeno z měřicích důvodů | 14 |
+| **porovnatelných** | **66** |
+| hlavní text nalezen v serverovém HTML | **66** |
+| **prokazatelně chybějící hlavní text** | **0** |
+
+### Co z toho plyne pro majitele webu
+
+- **Hlavní text bývá v serverovém HTML častěji, než tvrdí zkratkovité titulky** o webech nečitelných pro AI. Aspoň v tomhle vzorku a aspoň u jedné stránky na doménu.
+- **Problém bývá jinde než v textu** — v navigaci, v odlišné odpovědi serveru podle klienta, nebo ve špatně zvolené testovací stránce.
+- **Automatické vyhodnocení bez ruční kontroly je nespolehlivé.** U mě vyrobilo 23 nálezů a pravý nebyl ani jeden.
+
+## Proč vypadlo 14 domén
+
+Vyřazená doména není nečitelná doména. Je to případ, který jsem nezměřil — a proto ho nepočítám ani na jednu stranu.
+
+| Důvod vyřazení | Počet |
+|---|---|
+| bez použitelné sitemapy | 4 |
+| prohlížeč dostal míň textu než HTTP klient (narazil na zeď) | 4 |
+| přesměrování jinam než na měřenou adresu | 2 |
+| žádný odstavec delší než 120 znaků | 2 |
+| chyba vykreslení nebo nedostupná stránka | 2 |
+
+Kdybych těchhle 14 hodil mezi „nečitelné", měl bych titulek o **sedmnácti procentech českých webů**. A byl by nepoctivý.
+
+## Proč automatika hlásí chybějící text falešně
+
+Napoprvé jsem porovnával počty slov. Vyšly poměry přes 100 % — server posílal víc textu než prohlížeč. Metrika nedávala smysl.
+
+Napodruhé jsem hledal v serverovém HTML nejdelší odstavec z vykreslené stránky. **Patnáct z osmdesáti webů vyšlo jako „text chybí".** Ruční kontrola nepotvrdila ani jeden.
+
+<Insight tone="warn" icon="!" label="Čtyři způsoby, jak naměřit chybějící text, který nechybí">
+  **Lišta se souhlasem.** Nejdelší odstavec na stránce nebyl obsah, ale text o zpracování údajů, který přidá až nástroj na souhlas. U dvou webů měla vykreslená stránka přes deset tisíc slov proti pěti stům v serverové verzi — celý ten rozdíl byla lišta.
+
+  **Hláška místo obsahu.** „Váš CSRF token pravděpodobně vypršel." Čtyři weby na jedné e-shopové platformě. Plus text ze stránky 404.
+
+  **Kód v odstavci.** Jeden web měl uvnitř `<p>` kus JavaScriptu — 4 391 znaků, s přehledem nejdelší „odstavec" na stránce.
+
+  **Špatné kódování.** Dva weby posílají stránku ve **windows-1250** a můj skript ji dekódoval natvrdo jako UTF-8. Text se rozsypal na otazníky a porovnání selhalo — vypadalo to jako chybějící obsah. Byla to chyba v mém skriptu, ne na těch webech. Fix: přečíst kódování z hlavičky `Content-Type`, pak z `<meta charset>`, teprve pak hádat.
+</Insight>
+
+Napotřetí jsem přidal filtr na text lišty a chybové hlášky, kontrolu přesměrování a kontrolu, jestli prohlížeč vůbec dostal víc textu než HTTP klient. Zbylo **osm z osmdesáti** — a po ruční kontrole zase žádný pravý.
+
+## Kde bývá problém častěji než v hlavním textu
+
+1. **Odkazy a navigace generované až JavaScriptem.** Text na stránce je, ale robot se na ni nedostane, protože cestu k ní dokresluje prohlížeč.
+2. **Různé HTML pro různé klienty.** Server může odpovídat jinak podle User-Agentu, cookies, geolokace nebo ochrany proti robotům.
+3. **Špatně zvolená testovací stránka.** Homepage, kategorie a článek se chovají různě; test na jedné z nich nevypovídá o zbytku.
+4. **Chyba měření.** Nejčastější „nález" ze všech — a ten se pozná jen tak, že se na něj člověk podívá.
+
+## Jak si to ověříte u sebe
+
+<Checklist tone="geo" title="Test jedné stránky" items={[
+  { title: "Stáhněte si stránku bez prohlížeče", desc: "curl -sS 'https://vasweb.cz/vas-clanek/' > raw.html — uvidíte syrovou odpověď serveru bez JavaScriptu. Konkrétnímu robotovi může server odpovědět jinak." },
+  { title: "Najděte v souboru větu ze svého textu", desc: "grep -c 'kus vaší věty' raw.html — když vrátí nulu, zkuste kratší úsek bez diakritiky." },
+  { title: "Než vyhlásíte poplach, zkontrolujte kódování", desc: "text plný otazníků nechybí, jen ho čtete špatně. Napoví hlavička Content-Type." },
+  { title: "Zopakujte to na třech typech stránek", desc: "článek, produkt, kategorie — chovají se různě." },
+  { title: "Zkontrolujte i odkazy, ne jen text", desc: "když se navigace dogeneruje až v prohlížeči, robot na stránku nemusí dojít." }
+]} />
+
+## Jak číst procenta o nečitelnosti webů pro AI
+
+U čísel typu „X % webů je pro AI nečitelných" je podstatné vědět, jak vznikla. Z tohohle měření mi vyšly tři otázky:
+
+- **Jak poznali, že obsah chybí?** Kolik z toho byly lišty se souhlasem a chybové hlášky?
+- **Kolik nálezů ověřili ručně?** U mě prošlo automatikou 23 nálezů a ruční kontrolu nepřežil ani jeden.
+- **Co udělali s weby, kde měření selhalo?** U mě jich bylo 14 z 80.
+
+Nemám metodiku cizích měření, takže netvrdím, že jsou špatná. Bez odpovědí na tyhle tři otázky se ale jejich čísla hůř interpretují a skoro nedají s ničím porovnat. Delší postup má [článek o čtení studií](/blog/jak-cist-studie-o-ai-viditelnosti/).
+
+<MistakeGrid>
+  <Mistake number="01" title="Počítat neúspěšná měření jako nálezy">
+    Web bez sitemapy nebo s rozbitým vykreslením není nečitelný web. Je to případ, který jste nezměřili.
+  </Mistake>
+  <Mistake number="02" title="Věřit nejdelšímu odstavci">
+    Na hodně stránkách je nejdelší souvislý text lišta se souhlasem, ne obsah.
+  </Mistake>
+  <Mistake number="03" title="Publikovat, co vypadne ze skriptu">
+    Dvacet tři nálezů, nula pravých. Ruční kontrola nebyla formalita, byla to celá práce.
+  </Mistake>
+</MistakeGrid>
+
+## Limity
+
+- **Jeden odečet, 12. srpna 2026, jedna stránka na doménu.** O zbytku webu to neříká nic.
+- **Vzorek není náhodný** — 33 médií je ruční seznam, 47 e-shopů z jedné platformy. Neplatí to jako obrázek českého webu.
+- **Měřím serverové HTML, ne chování robotů.** Chrome není robot OpenAI a server mu může odpovědět jinak než jemu.
+
+## Co udělat dnes
+
+Stáhněte si přes `curl` tři typy svých stránek, najděte v nich jednu větu z hlavního obsahu a zkontrolujte, jestli jde navigace projít bez JavaScriptu. Když něco nesedí, ověřte to očima dřív, než z toho uděláte závěr — u mě to byl rozdíl mezi nulou a patnácti „nálezy".
