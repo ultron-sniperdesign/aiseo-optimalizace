@@ -50,3 +50,11 @@
 - **„Jak se dostat do AI odpovědí: ChatGPT, AI Overviews i AI Mode"** — rozcestníkový hub
   (viz řádek v obsahovy-plan.csv). Kanál po kanálu krátká odpověď + odkaz na detailní návod.
   Vyplňuje díru: na dotazy vzoru „jak se dostat do X" nemáme jednu stránku, která pokryje všechny kanály.
+
+## Refreshe po vyprázdnění fronty
+
+Fronta z baseline 2026-07-19 je celá odbavená. Další refreshe vybírám podle **konkrétních vad**, které si u článků zapíšu při jiné práci — ne podle stáří.
+
+| Datum | Článek | Co se opravilo |
+|---|---|---|
+| 2026-08-12 | `local-seo-cesko-2026` | Čtyři vady, které jsem si zapsal a neopravil: (1) nedoložený podíl Seznamu „~14 %" + nepodložená věta o regionální dominanci → rozsah 11–15 % podle veřejných dat + odkaz na vlastní článek + návod, jak si to změřit ve vlastní analytice; (2) recenze popsané jako ranking signál včetně sub-signálů (frekvence, sentiment, odpovědi majitele), které nápověda Googlu neuvádí → rozděleno na „co je v nápovědě" a „co je oborová praxe"; (3) „GBP Insights" — název, který v UI není, 5× → Přehled výkonu + správné názvy metrik + doplněná záložka s dotazy; (4) anonymní režim jako náhrada rank trackingu → opravný box (anonymní okno nemění polohu). Navíc z auditů: pět dalších nedoložených tvrzení, `answer` zkrácen z 96 na 47 slov, anglicismy do češtiny, přidán blok „Co udělat tento týden". |
