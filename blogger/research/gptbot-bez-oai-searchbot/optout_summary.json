@@ -1,0 +1,33 @@
+{
+ "n": 80,
+ "media": 33,
+ "eshop": 47,
+ "gptbot_only": 8,
+ "oai_only": 0,
+ "both": 4,
+ "none": 68,
+ "google_ext": 10,
+ "seznam_ext": 1,
+ "apple_ext": 6,
+ "freq": {
+  "amazonbot": 11,
+  "anthropic-ai": 7,
+  "applebot": 4,
+  "bytespider": 13,
+  "claude-web": 7,
+  "claudebot": 12,
+  "google-extended": 10,
+  "gptbot": 12,
+  "perplexitybot": 9,
+  "applebot-extended": 6,
+  "ccbot": 7,
+  "meta-externalagent": 5,
+  "chatgpt-user": 5,
+  "bingbot": 1,
+  "googlebot": 3,
+  "oai-searchbot": 4,
+  "seznam-extended": 1,
+  "seznambot": 2,
+  "perplexity-user": 3
+ }
+}

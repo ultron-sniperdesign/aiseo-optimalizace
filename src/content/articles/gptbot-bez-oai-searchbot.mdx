@@ -1,0 +1,159 @@
+---
+title: "Kdo má v robots.txt GPTBota, většinou nemá OAI-SearchBota"
+description: "Ve vzorku 80 webů má pravidlo pro GPTBota dvanáct. Jen čtyři mají i OAI-SearchBota, který podle dokumentace řeší zobrazení ve vyhledávání v ChatGPT."
+answer: "Ve vzorku 80 českých webů má pravidlo pro GPTBota dvanáct z nich, ale jen čtyři mají zároveň OAI-SearchBota. Podle dokumentace OpenAI se ta dvě pravidla týkají různých věcí: GPTBot tréninku, OAI-SearchBot zobrazení ve výsledcích vyhledávání v ChatGPT. Měřím jen obsah robots.txt, ne chování robotů."
+slug: "gptbot-bez-oai-searchbot"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-08-12"
+updated: "2026-08-12"
+variant: "rich"
+keywords:
+  - "gptbot"
+  - "oai-searchbot"
+  - "robots.txt ai"
+  - "opt-out z ai"
+  - "google-extended"
+  - "blokování ai robotů"
+stats:
+  - value: "12"
+    label: "z 80 měřených webů má v robots.txt pravidlo pro GPTBota"
+  - value: "4"
+    label: "z těch dvanácti mají i OAI-SearchBota, kterého OpenAI popisuje pro zobrazení ve výsledcích vyhledávání"
+  - value: "0"
+    label: "webů má OAI-SearchBota bez GPTBota — opačná kombinace se ve vzorku nevyskytla"
+  - value: "20 z 80"
+    label: "webů má vůbec nějaké pravidlo pro sledované AI roboty"
+faq:
+  - q: "Kolik českých webů blokuje GPTBota?"
+    a: "Ve vzorku 80 domén (33 médií a 47 e-shopů) mělo pravidlo pro GPTBota dvanáct. Aspoň jedno pravidlo pro nějakého sledovaného AI robota mělo dvacet webů — sedmnáct médií a tři e-shopy."
+  - q: "Proč záleží na rozdílu mezi GPTBotem a OAI-SearchBotem?"
+    a: "Podle dokumentace OpenAI řeší GPTBot použití obsahu pro trénink, zatímco OAI-SearchBot zobrazení ve výsledcích vyhledávání v ChatGPT. Kdo má jen GPTBota, má tedy podle dokumentace ošetřený trénink, ne zobrazení."
+  - q: "Znamená to, že ty weby udělaly chybu?"
+    a: "Ne. Neznám jejich záměr a netvrdím ho. Vypnout jen trénink je legitimní volba. Článek jen ukazuje, že mezi těmi dvěma pravidly je podle dokumentace rozdíl, který se v praxi snadno přehlédne."
+  - q: "Jak je na tom Google-Extended?"
+    a: "Pravidlo pro Google-Extended mělo deset z osmdesáti webů. Podle dokumentace Googlu ale neřídí zařazení do Search ani generativní AI funkce — na ty je samostatné nastavení v Search Console, které z robots.txt nezjistím."
+  - q: "Který AI robot je v pravidlech nejčastěji?"
+    a: "V aktuálním vzorku 80 domén to byl Bytespider se třinácti výskyty, pak ClaudeBot a GPTBot po dvanácti a Amazonbot s jedenácti. Potvrzuje to dřívější měření na 33 médiích."
+  - q: "Co měření nevidí?"
+    a: "Jen robots.txt. Nevidí nastavení v Search Console, meta tagy, hlavičky ani blokace na úrovni serveru. A neměří chování robotů, jen konfiguraci."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Kdo má v robots.txt GPTBota, většinou nemá OAI-SearchBota
+
+Včera jsem prošel [dokumentaci sedmi nastavení](/blog/co-vypne-ktery-opt-out/) a zjistil, co který příkaz podle provozovatelů dělá. Dneska jsem stáhl robots.txt osmdesáti českých webů a podíval se, co je v nich reálně nasazené.
+
+Nejdůležitější věta předem: **máte-li v robots.txt jen GPTBota, řešíte podle dokumentace OpenAI trénink, ne zobrazení ve výsledcích vyhledávání v ChatGPT.** Na to je samostatný OAI-SearchBot — a ten má ve vzorku jen třetina z těch, kdo mají pravidlo pro GPTBota.
+
+| Kombinace u OpenAI | Počet z 80 |
+|---|---|
+| jen **GPTBot** — podle dokumentace trénink | **8** |
+| **oba** | 4 |
+| jen **OAI-SearchBot** — podle dokumentace zobrazení | **0** |
+| ani jeden | 68 |
+
+Pravidlo pro GPTBota má dvanáct webů. **Jen čtyři z nich mají i OAI-SearchBota.**
+
+## Tři roboti OpenAI, tři různé dopady
+
+Podle dokumentace OpenAI:
+
+| Robot | Co podle dokumentace ovlivňuje |
+|---|---|
+| **GPTBot** | použití obsahu k tréninku modelů |
+| **OAI-SearchBot** | zobrazení ve výsledcích vyhledávání v ChatGPT |
+| **ChatGPT-User** | načtení stránky, o kterou si řekne uživatel v konverzaci |
+
+Osm webů z dvanácti tedy má podle dokumentace ošetřený trénink, ale pravidlo pro OAI-SearchBota v souboru nemá.
+
+<Insight tone="warn" icon="!" label="Nepodsouvám, že je to chyba">
+  **Neznám záměr žádného z těch webů a netvrdím ho.** Vypnout trénink a nechat zobrazení je legitimní volba — je to dokonce ta kombinace, která dává smysl pro vydavatele, který nechce být trénovací data, ale chce, aby ho AI odpověď citovala a poslala mu čtenáře.
+
+  Článek ukazuje jen to, že **mezi těmi dvěma pravidly je podle dokumentace rozdíl** a v tomhle vzorku se nastavuje skoro vždycky jen to první.
+</Insight>
+
+### Kombinace jen OAI-SearchBot se ve vzorku nevyskytla
+
+Ani jednou. Každá nalezená konfigurace pro OpenAI obsahovala GPTBota. Jestli je to tím, že je starší a je v hotových vzorech robots.txt častěji, z měření nepoznám.
+
+### Stejný vzorec je vidět i u Googlu
+
+Pravidlo pro `Google-Extended` má **deset webů z osmdesáti** a blokovací pravidlo pro `Googlebot` z nich má jeden. Podle [dokumentace Googlu](/blog/co-vypne-ktery-opt-out/) přitom Google-Extended neřídí zařazení do Search ani generativní AI funkce — na ty je samostatné nastavení v Search Console, které z robots.txt nevidím.
+
+## Co v těch souborech je celkem
+
+Aspoň jedno pravidlo pro sledované AI roboty má **20 z 80** domén — sedmnáct médií a tři e-shopy. Těch 47 e-shopů běží na jedné platformě s výchozím robots.txt, takže tři výjimky jsou tam, kde do souboru někdo sáhl ručně.
+
+| Robot | Počet z 80 |
+|---|---|
+| Bytespider | 13 |
+| ClaudeBot | 12 |
+| GPTBot | 12 |
+| Amazonbot | 11 |
+| Google-Extended | 10 |
+| PerplexityBot | 9 |
+| anthropic-ai | 7 |
+| Claude-Web | 7 |
+| CCBot | 7 |
+| Applebot-Extended | 6 |
+| Meta-ExternalAgent | 5 |
+| ChatGPT-User | 5 |
+| Applebot | 4 |
+| OAI-SearchBot | 4 |
+
+**Bytespider vede i v tomhle větším vzorku 80 domén** — navazuje to na [dřívější měření na 33 médiích](/blog/bytespider-ceska-media/).
+
+## Rychlá kontrola za minutu
+
+<Checklist tone="geo" title="Co se dá zjistit hned teď" items={[
+  { title: "Otevřete si vlastní /robots.txt", desc: "stačí připsat cestu za doménu; uvidíte přesně to, co uvidí robot." },
+  { title: "Najděte v něm GPTBot", desc: "pokud tam je, máte podle dokumentace ošetřený trénink u OpenAI." },
+  { title: "Podívejte se, jestli je tam i OAI-SearchBot", desc: "pokud není, zobrazení ve výsledcích vyhledávání v ChatGPT tím nastavením neřešíte." },
+  { title: "U Googlu se robots.txt nespoléhejte", desc: "generativní AI funkce ve Search řídí samostatné nastavení v Search Console." },
+  { title: "K řádku si připište datum a důvod", desc: "za rok už nikdo nebude vědět, proč tam je." }
+]} />
+
+Kompletní rozpis, co které nastavení podle dokumentace vypne, je v [samostatném článku](/blog/co-vypne-ktery-opt-out/).
+
+## Limity a metodika
+
+Jeden odečet, **12. srpna 2026**. Vzorky nejsou náhodné: 33 médií je ruční seznam, 47 e-shopů je z jedné platformy — proto uvádím rozdělení odděleně. U části vzorku jde tedy o výchozí soubor platformy, ne o vědomou volbu.
+
+**Měřím konfiguraci, ne chování robotů ani záměr provozovatelů.** Netestoval jsem, jestli se roboti podle těch pravidel řídí.
+
+Parser počítá jen `Disallow` s neprázdnou hodnotou. Jiné mechanismy — meta tagy, hlavičky, blokace na serveru, nastavení v Search Console — nevidí.
+
+<Insight tone="aio" icon="i" label="Kontrola parseru, která odhalila mou chybu">
+  Nový parser jsem si ověřil proti měření z 9. srpna na těch samých 33 médiích. Devět z deseti hodnot sedělo přesně. Desátá ne: u `Claude-Web` dával nový parser 6, publikovaný článek uváděl 5.
+
+  Podíval jsem se do surových dat a **6 je správně** — chybu jsem udělal já při přepisu tabulky do článku, ne měření. Číslo jsem v [tom článku](/blog/bytespider-ceska-media/) opravil a doplnil k němu poznámku.
+</Insight>
+
+## Tři chyby, které se u toho nabízejí
+
+<MistakeGrid>
+  <Mistake number="01" title="Zkopírovat cizí robots.txt a mít pocit hotovo">
+    Vzory kolující po internetu obvykle obsahují GPTBota. Podle dokumentace to řeší trénink, ne zobrazení ve výsledcích vyhledávání v ChatGPT.
+  </Mistake>
+  <Mistake number="02" title="Číst přítomnost pravidla jako záměr">
+    Z řádku v souboru nepoznáte, co tím kdo chtěl. Ani já to z měření nepoznám.
+  </Mistake>
+  <Mistake number="03" title="Myslet si, že robots.txt ukáže celé nastavení">
+    Nastavení v Search Console, meta tagy ani blokace na serveru v něm nejsou.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+Ve vzorku osmdesáti českých webů má pravidlo pro GPTBota dvanáct a jen čtyři mají i OAI-SearchBota. Opačná kombinace se nevyskytla ani jednou.
+
+Neznamená to, že osm webů udělalo chybu. Znamená to jen, že **v tomhle vzorku se samostatné pravidlo pro OAI-SearchBota objevuje výrazně méně často než pravidlo pro GPTBota**, i když dokumentace mezi nimi rozlišuje.
+
+Jak si ověřit, že robot, který se hlásí jménem, je opravdu ten pravý, rozebírá [ověřování AI robotů](/blog/overovani-ai-robotu/).
