@@ -1,13 +1,13 @@
 ---
 title: "Robots.txt pro AI roboty: kdy povolit a kdy omezit přístup"
 description: "Robots.txt pro AI roboty: jak povolit citace, omezit trénink modelů a kdy si nevystačíte jen se souborem, ale potřebujete server nebo firewall."
-answer: "V robots.txt povolte vyhledávací a on-demand roboty (OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User) — tudy vedou citace v AI odpovědích. Tréninkové roboty (GPTBot, ClaudeBot, CCBot) můžete omezit; podle deklarovaného rozdělení rolí by to samo o sobě citace omezit nemělo. Robots.txt je ale žádost, ne zámek: pro tvrdé blokování potřebujete server, firewall nebo CDN."
+answer: "Kvůli citacím neblokujte vyhledávací roboty (OAI-SearchBot, Claude-SearchBot, PerplexityBot). Tréninkové roboty (GPTBot, ClaudeBot, CCBot) můžete omezit; podle deklarovaného rozdělení rolí by to citace omezit nemělo. Robots.txt je ale žádost, ne zámek — a u fetcherů vyvolaných uživatelem se podle dokumentace nemusí uplatnit vůbec."
 slug: "ai-crawler-robots-txt"
 category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-05-24"
-updated: "2026-08-08"
+updated: "2026-08-13"
 variant: "rich"
 keywords:
   - "ai crawler"
@@ -19,7 +19,7 @@ keywords:
   - "google-extended"
   - "llms.txt"
 stats:
-  - value: "13"
+  - value: "15"
     label: "AI robotů a řídicích tokenů, které článek vypisuje jmenovitě"
   - value: "žádost"
     label: "robots.txt je žádost, ne zámek"
@@ -42,7 +42,7 @@ howto:
       text: "Otestujte robots.txt a u robotů, kteří ho ignorují, nasaďte blokování na úrovni serveru, firewallu nebo CDN."
 faq:
   - q: "Jak povolit AI robotům přístup na web?"
-    a: "Kvůli citacím jde hlavně o vyhledávací a on-demand roboty: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User a Claude-User. Těm dejte v robots.txt v kořeni webu Allow. Tréninkové roboty (GPTBot, ClaudeBot, CCBot) řešte zvlášť podle toho, jestli chcete obsah pouštět do tréninku — s citacemi to přímo nesouvisí. Pokud navíc žádné pravidlo robota nezakazuje, většinou má přístup i bez explicitního Allow."
+    a: "Kvůli citacím jde hlavně o vyhledávací roboty: OAI-SearchBot, Claude-SearchBot a PerplexityBot. Těm dejte v robots.txt v kořeni webu Allow. U fetcherů vyvolaných uživatelem (ChatGPT-User, Claude-User) dává povolení smysl taky, ale podle dokumentace se na ně robots.txt nemusí vztahovat. Tréninkové roboty (GPTBot, ClaudeBot, CCBot) řešte zvlášť podle toho, jestli chcete obsah pouštět do tréninku — s citacemi to přímo nesouvisí. Pokud navíc žádné pravidlo robota nezakazuje, většinou má přístup i bez explicitního Allow."
   - q: "Jak dát najevo, že nechci obsah využívat pro trénink modelů?"
     a: "V robots.txt dáte slušným provozovatelům signál pomocí Disallow: / pro konkrétní tréninkové roboty, například GPTBot nebo CCBot. Google-Extended řešte zvlášť jako řídicí token pro generativní služby Google. Není to technická záruka ani ochrana soukromého obsahu; pro tvrdé blokování použijte server, firewall nebo CDN."
   - q: "Zablokuje Google-Extended i moje pozice v Googlu?"
@@ -68,16 +68,24 @@ import Mistake from "../../components/blocks/Mistake.astro";
 
 Pozor na záměnu: tohle není o vypínání Google AI Overviews ve výsledcích (to řeší [samostatný návod](/blog/jak-vypnout-ai-overview/)). Tady jde o **přístup robotů k webu** napříč AI službami.
 
+<Insight tone="geo" icon="✓" label="Odpověď podle toho, co chcete">
+  **Chci být citovaný v AI odpovědích** → neblokovat vyhledávací roboty (`OAI-SearchBot`, `Claude-SearchBot`, `PerplexityBot`).
+
+  **Nechci obsah do tréninku, ale citace ano** → omezit tréninkové roboty (`GPTBot`, `ClaudeBot`, `CCBot`) a vyhledávací nechat projít.
+
+  **Chci roboty opravdu zastavit** → robots.txt na to nestačí; potřebujete server, firewall nebo CDN.
+</Insight>
+
 ## Které AI crawlery povolit v robots.txt
 
-**Krátká odpověď: pokud chcete být citovaní, pusťte vyhledávací a on-demand roboty; u tréninkových se rozhodněte podle sebe.** Tam, kde provozovatel odděluje tréninkového a vyhledávacího robota (typicky OpenAI a Anthropic), by blokace tréninkového neměla přímo omezit citace. Blokace vyhledávacích a on-demand robotů naopak nové citace přes tuhle cestu odřízne — i kdyby byl obsah sebelepší.
+**Krátká odpověď: pokud chcete být citovaní, neblokujte vyhledávací roboty; u tréninkových se rozhodněte podle sebe.** Tam, kde provozovatel odděluje tréninkového a vyhledávacího robota (typicky OpenAI a Anthropic), by blokace tréninkového neměla přímo omezit citace. Blokace vyhledávacích robotů naopak nové citace přes tuhle cestu odřízne — i kdyby byl obsah sebelepší.
 
 Není to ale zákon: role robotů jsou takové, jak je popisuje **dokumentace jednotlivých provozovatelů**, a ti je mohou změnit.
 
 | Kategorie | Konkrétně | Doporučení, pokud chcete být citovaní |
 |---|---|---|
 | **Vyhledávací** | OAI-SearchBot, Claude-SearchBot, PerplexityBot (dle deklarace provozovatele) | **Povolit.** Tohle je obvyklá cesta k novým citacím v AI odpovědích. |
-| **Na vyžádání** | ChatGPT-User, Claude-User | **Povolit.** Načítají stránku typicky na přímý podnět uživatele. |
+| **Na vyžádání** | ChatGPT-User, Claude-User | **Povolit můžete, ale neberte to jako páku.** Načítají stránku na přímý podnět uživatele a podle dokumentace se na ně robots.txt nemusí vztahovat. |
 | **Tréninkové** | GPTBot, ClaudeBot, CCBot | **Podle vás.** Blokace citace nezhorší, ale ani nepomůže. |
 | **Řídicí tokeny** | Google-Extended, Applebot-Extended | **Podle vás.** Neřídí indexaci ani pozice v běžném vyhledávání. |
 | **Sběrači s nejasným přínosem pro citace** | Bytespider, Amazonbot, Meta-ExternalAgent, Diffbot | **Zvážit omezení**, zvlášť když zatěžují server. Pro některé weby přínos mít můžou — posuďte podle logů. |
@@ -93,6 +101,7 @@ Velcí hráči mají víc robotů s různým účelem — jiný pro trénink, ji
 | GPTBot | OpenAI | tréninkový | trénink modelů |
 | OAI-SearchBot | OpenAI | vyhledávací | vyhledávání a citace v ChatGPT |
 | ChatGPT-User | OpenAI | na vyžádání | načtení stránky na vyžádání uživatele |
+| OAI-AdsBot | OpenAI | kontrolní | ověření bezpečnosti stránky nabízené jako reklama v ChatGPT |
 | ClaudeBot | Anthropic | tréninkový | trénink modelů |
 | Claude-SearchBot | Anthropic | vyhledávací | vyhledávání |
 | Claude-User | Anthropic | na vyžádání | načtení na vyžádání |
@@ -103,8 +112,15 @@ Velcí hráči mají víc robotů s různým účelem — jiný pro trénink, ji
 | Bytespider | ByteDance | sběrač | sběr dat; opakovaně hlášeno nerespektování robots.txt |
 | Amazonbot | Amazon | sběrač | procházení pro služby Amazonu |
 | Meta-ExternalAgent | Meta | sběrač | sběr dat pro AI produkty Meta |
+| [Seznam-Extended](/blog/seznam-extended-opt-out/) | Seznam | řídicí token | odhlášení ze služby Seznam AI; uvedený v partnerské nápovědě, ne v dokumentaci procházení |
 
-Kategorie i účel v tabulce jsou **podle aktuální dokumentace jednotlivých provozovatelů** — ti je můžou změnit a názvy přibývají (Diffbot, cohere-ai, YouBot). Aktuální stav proto vždy ověřte u zdroje. V některých zveřejněných souborech webů tvoří tři roboti OpenAI zhruba polovinu až tři pětiny provozu AI robotů a nejaktivnější bývá `ChatGPT-User`. Jsou to sekundární data bez popsané metodiky a bez informace o trhu — na vlastním webu si to ověřte v logech, klidně to bude jinak.
+Kategorie i účel v tabulce jsou **podle aktuální dokumentace jednotlivých provozovatelů** — ti je můžou změnit a názvy přibývají (Diffbot, cohere-ai, YouBot). Počty i názvy se mění, proto aktuální stav vždy ověřte v dokumentaci provozovatele.
+
+<Insight tone="aio" icon="i" label="Co z toho čeští správci reálně nastavují">
+  Vlastní měření 80 českých domén z 12. srpna 2026 (nenáhodný orientační vzorek): aspoň jedno pravidlo pro sledované AI roboty má **20 z 80**, nejčastěji Bytespider, ClaudeBot a GPTBot. Pro citovatelnost je podstatná dvojice u OpenAI — **pravidlo pro GPTBota má dvanáct webů a z těch dvanácti má OAI-SearchBota jen čtyři.**
+
+  Podrobně: [měření na 80 doménách](/blog/gptbot-bez-oai-searchbot/) a [porovnání sedmi nastavení podle dokumentace](/blog/co-vypne-ktery-opt-out/).
+</Insight>
 
 ## Chci zvýšit šanci na citace: pusťte vyhledávací roboty
 
@@ -130,7 +146,7 @@ Allow: /
 
 **Pokud nemáte jiné blokující pravidlo, `Allow: /` obvykle nic nemění** — robota, kterého nic nezakazuje, pustí i tak. Povolení robotů samo o sobě citace nezajistí; jen odstraňuje technickou překážku, aby se obsah mohl dostat do vyhledávacích a odpovědních vrstev.
 
-⚠️ **Pozor, pokud máte v `User-agent: *` nějaké zákazy.** Podle dokumentace Googlu platí pro každého robota **jen jedna skupina pravidel** — ta s nejspecifičtějším odpovídajícím user-agentem. Jakmile tedy dáte robotovi vlastní skupinu, skupina `User-agent: *` se na něj **přestane vztahovat**. Nedoplní se, nahradí se. Skupina, ve které stojí jen `Allow: /`, mu tím pádem zruší i zákazy, které pro něj do té doby platily — typicky vyhledávání, košík, přihlášení a filtrované adresy. Pokud vlastní skupinu chcete, zopakujte v ní zákazy, na kterých vám záleží:
+⚠️ **Pozor, pokud máte v `User-agent: *` nějaké zákazy.** Podle dokumentace Googlu platí pro každého robota **jen jedna skupina pravidel** — ta s nejspecifičtějším odpovídajícím user-agentem. Vlastní skupina **přepíše** `User-agent: *`. Nezdědí ji, nahradí ji. Když tedy robotovi dáte vlastní skupinu jen s `Allow: /`, můžete mu omylem otevřít i to, co obecná skupina zakazovala — třeba košík nebo interní vyhledávání. Skupina, ve které stojí jen `Allow: /`, mu tím pádem zruší i zákazy, které pro něj do té doby platily — typicky vyhledávání, košík, přihlášení a filtrované adresy. Pokud vlastní skupinu chcete, zopakujte v ní zákazy, na kterých vám záleží:
 
 ```txt
 User-agent: OAI-SearchBot
@@ -219,15 +235,12 @@ Tohle je výchozí bod, ne dogma. Když vám na tréninku nezáleží, spodní b
 
 Tohle je nejdůležitější věc, kterou si odnést: **robots.txt je dobrovolná žádost, ne technická zábrana.** Slušní roboti pravidla respektují, ale není to vynutitelné:
 
-- Někteří roboti pravidla ignorují — u Bytespideru se například opakovaně objevují veřejná hlášení a spory o nerespektování robots.txt.
-- Pro **tvrdší blokování** řešte zásah na serveru, firewallu nebo CDN — jak to vypadá v praxi, rozebíráme u [blokování AI botů přes Cloudflare](/blog/cloudflare-ai-bot-blocking/). Samotný user-agent jde podvrhnout, proto ho kombinujte s ověřením IP rozsahů, omezením frekvence a sledováním logů. Počítejte ale s tím, že u části AI robotů není spolehlivé ověření identity zdokumentované tak dobře jako u velkých vyhledávačů.
+- **U celé jedné kategorie robots.txt podle dokumentace neplatí.** Když si obsah vyžádá uživatel v konverzaci, nejde o automatické procházení — OpenAI u `ChatGPT-User` píše, že pravidla „nemusí platit", Google u devíti svých fetcherů a Perplexity u `Perplexity-User`, že je „obvykle ignorují". Není to obcházení pravidla, ale popsané chování: jde o stažení vyvolané konkrétním člověkem, ne o plošné procházení webu, na které robots.txt míří. Prakticky to znamená, že pravidlo pro `ChatGPT-User` tenhle provoz nezastaví jistě — [rozebírá to samostatný článek](/blog/roboti-vyvolani-uzivatelem/).
+- Někteří roboti pravidla ignorují — u Bytespideru se například opakovaně objevují veřejná hlášení a spory o nerespektování robots.txt. Shodou okolností je to ve [vzorku českých médií nejčastěji blokovaný robot](/blog/bytespider-ceska-media/).
+- Pro **tvrdší blokování** řešte zásah na serveru, firewallu nebo CDN — jak to vypadá v praxi, rozebíráme u [blokování AI botů přes Cloudflare](/blog/cloudflare-ai-bot-blocking/). Samotný user-agent jde podvrhnout, proto ho kombinujte s [ověřením podle IP rozsahů](/blog/overovani-ai-robotu/) tam, kde je provozovatel publikuje — u části AI robotů to zdokumentované není. K tomu omezení frekvence a sledování logů.
 - **Nedávejte do robots.txt citlivé nebo neveřejné URL** jako náhradu zabezpečení — soubor je veřejný a `Disallow` nebrání přímému přístupu na stránku.
 
 robots.txt berte jako první vrstvu pro slušné roboty, ne jako záruku.
-
-<Insight tone="accent" icon="!" label="Zapamatujte si">
-  Robots.txt je první vrstva pro slušné roboty. Skutečné blokování i ochranu neveřejného obsahu řešte na serveru, firewallu nebo CDN — ne tímto souborem.
-</Insight>
 
 ## Co se chystá: robots.txt dostává slovník pro AI
 
@@ -257,12 +270,16 @@ Po úpravě `robots.txt` zkontrolujte:
   { title: "Soubor je dostupný", desc: "otevřete https://vasedomena.cz/robots.txt — musí vracet HTTP 200 a obsahovat vaše pravidla." },
   { title: "Správná skupina pravidel", desc: "konkrétní User-agent má u běžných parserů přednost před obecným User-agent: *; chování otestujte." },
   { title: "Sledujte logy serveru", desc: "po nasazení ověřte, že se roboti chovají podle očekávání." },
-  { title: "Hlídejte tvrdou blokaci", desc: "u blokování sledujte odpovědi 403/429 a falešně zablokované roboty." }
+  { title: "Hlídejte tvrdou blokaci", desc: "u blokování sledujte odpovědi 403/429 a falešně zablokované roboty." },
+  { title: "Ověřte, že pravidlo pokrývá to, co chcete", desc: "u OpenAI zkontrolujte pravidla zvlášť pro trénink (GPTBot) a zvlášť pro zobrazení ve vyhledávání v ChatGPT (OAI-SearchBot) — podle toho, co je vaším cílem." },
+  { title: "Připište si k pravidlům datum a důvod", desc: "seznamy user-agentů se mění a za rok už nikdo nebude vědět, proč tam ten řádek je." }
 ]} />
 
 ## A co llms.txt?
 
 Často se zmiňuje soubor `llms.txt`. Berte ho s rezervou: je to návrh formátu, který popisuje obsah webu pro AI, **ne nástroj na řízení přístupu**. Podle dostupných informací ho velcí roboti k roku 2026 spolehlivě nepoužívají. Pro řízení přístupu se proto spoléhejte na `robots.txt` a server, ne na `llms.txt`.
+
+Jak je rozšířený, se navíc špatně měří: ve [vzorku 80 českých domén](/blog/llms-txt-falesne-pozitivni/) vrátí `/llms.txt` kód 200 u 52 z nich, ale neprázdný textový obsah mají tři. Zbytek jsou HTML stránky vrácené omylem a prázdné soubory od platformy. Je to orientační kontrola adresy, ne audit implementace.
 
 ## Časté chyby
 
@@ -280,6 +297,18 @@ Po úpravě `robots.txt` zkontrolujte:
     llms.txt není nástroj na blokování.
   </Mistake>
 </MistakeGrid>
+
+## Kam dál podle toho, co řešíte
+
+| Váš úkol | Kde je odpověď |
+|---|---|
+| Chci pochopit, co které nastavení podle dokumentace vypne | [Co vypne který opt-out](/blog/co-vypne-ktery-opt-out/) |
+| Zajímá mě, co si nastavují ostatní české weby | [Měření 80 domén](/blog/gptbot-bez-oai-searchbot/) |
+| Řeším roboty, na které robots.txt neplatí | [Roboti vyvolaní uživatelem](/blog/roboti-vyvolani-uzivatelem/) |
+| Chci ověřit, že robot je opravdu ten pravý | [Ověřování AI robotů](/blog/overovani-ai-robotu/) · [kdo publikuje IP rozsahy](/blog/kdo-publikuje-ip-rozsahy/) |
+| Chci roboty opravdu zastavit | [Blokování přes Cloudflare](/blog/cloudflare-ai-bot-blocking/) |
+| Řeším český opt-out | [Seznam-Extended](/blog/seznam-extended-opt-out/) |
+| Zajímá mě zátěž od robotů | [Zátěž webu od AI robotů](/blog/ai-roboti-zatez-webu/) |
 
 ## Co dál: nastavte to v rámci celého webu
 
