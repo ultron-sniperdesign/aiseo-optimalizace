@@ -1,0 +1,134 @@
+---
+title: "Šest kontrol, než z měření uděláte závěr"
+description: "Šest praktických kontrol pro ověřování tvrzení o AI a webu, odvozených ze šesti doložených a opravených chyb v publikované praxi."
+answer: "Nejčastější chyby při ověřování nejsou v datech, ale v krocích okolo: odhadnutá adresa souboru, test podle stavového kódu místo obsahu, důvěra ve výstup skriptu, vlastní chyba v nástroji, věta „nenašel jsem“ napsaná jako „neexistuje“, a přepis čísel z dat do textu."
+slug: "sest-kontrol-pred-zaverem"
+category: "analysis"
+tags:
+  - "mereni"
+  - "strategie"
+published: "2026-08-13"
+updated: "2026-08-13"
+variant: "rich"
+keywords:
+  - "ověřování tvrzení"
+  - "metodika měření webu"
+  - "falešně pozitivní nález"
+  - "soft 404"
+  - "jak číst studie o ai"
+  - "ai seo data"
+stats:
+  - value: "3×"
+    label: "po sobě mi dala odhadnutá adresa souboru špatný závěr o provozovateli"
+  - value: "23"
+    label: "nálezů z automatického měření, po ruční kontrole pravý ani jeden"
+  - value: "5 z 80"
+    label: "webů vrátí na neexistující soubor stav 200 s HTML místo 404"
+faq:
+  - q: "Proč psát o vlastních chybách?"
+    a: "Protože každá z nich je pravidlo, které si čtenář může vzít. Všechny případy jsou doložené a už opravené; opravy jsou v příslušných článcích vidět."
+  - q: "Jaká je jedna z častých chyb při ověřování?"
+    a: "Uvěřit stavovému kódu. Odpověď 200 znamená, že server něco vrátil — ne že vrátil to, na co jste se ptali. Ve vzorku 80 webů jich pět odpoví 200 s HTML i na soubor, který nemůže existovat."
+  - q: "Jak poznám, že chyba je v mém nástroji, a ne v měřených datech?"
+    a: "Typický příznak je selhání jen u malé části vzorku. Pak je rozumné nejdřív prověřit vlastní nástroj a potom se podívat, co mají postižené weby společného — často je to legitimní odlišná konfigurace."
+  - q: "Co dělat, když zdroj nenajdu?"
+    a: "Napsat, že jsem ho nenašel, a uvést datum hledání. Věta „neexistuje“ je tvrzení o světě, které skoro nikdy nejde doložit — a stačí jeden protipříklad, aby padlo."
+  - q: "Stačí ověřit data, nebo i hotový text?"
+    a: "Obojí. Měření může být správné a článek přesto špatně — čísla se dají přepsat. Mně se to stalo dvakrát: jednou v tabulce, jednou v nadpisu, který tvrdil počet."
+  - q: "Platí ta pravidla i pro čtení cizích studií?"
+    a: "Ano, jen se ptáte místo sebe autora: jak poznal, že něco chybí, kolik nálezů ověřil ručně a co udělal s případy, kde měření selhalo. Podrobněji to rozebírá samostatný článek o čtení studií."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+
+## Šest kontrol, než z měření uděláte závěr
+
+Při ověřování tvrzení o AI a webu vzniká několik opakovaných typů chyb — a všechny mají společné, že falešný nález vypadá na první pohled stejně jako pravý.
+
+Níže je šest kontrol, které je odhalí. Každá je doložená konkrétním případem z měření publikovaných na tomhle webu; všechny jsou dnes opravené a opravy jsou v příslušných článcích vidět. **A i když sami nic neměříte, stejné otázky se dají položit autorovi studie, kterou čtete** — u každé kontroly proto najdete i tuhle variantu.
+
+## 1. Adresu souboru neodhadujte
+
+Hledal jsem, kteří provozovatelé AI robotů publikují seznamy svých IP adres. U tří jsem si adresu souboru odvodil z konvence ostatních:
+
+| Provozovatel | Co jsem zkusil | Co se stalo | Jak to je |
+|---|---|---|---|
+| Anthropic | `anthropic.com/claudebot.json` | 404 | soubor je na doméně `claude.com` |
+| ByteDance | odvozená adresa | **200, ale s HTML stránkou** | seznam tam nebyl |
+| Amazon | odvozená adresa `.json` | 404 | publikuje **tři HTML stránky** |
+
+Ve všech třech případech byl skoro hotový závěr „tenhle provozovatel nic nepublikuje" a ani jednou to nebyla pravda.
+
+**Kontrola:** nejdřív dohledat oficiální dokumentaci a odkaz v ní, teprve pak testovat konkrétní adresu.
+**Když sami neměříte:** ptejte se, jestli autor uvádí zdroj adresy, nebo si ji odvodil.
+
+## 2. Stavový kód není obsah
+
+Když jsem měřil rozšíření souboru `llms.txt`, zeptal jsem se pro kontrolu 80 webů na soubor s náhodným názvem — takový, který nemůže existovat. **Pět jich odpovědělo 200 s HTML stránkou.**
+
+Test podle samotného stavového kódu proto napočítá **52 webů** se souborem `llms.txt`. Po odfiltrování odpovědí, které jsou ve skutečnosti HTML stránka, jich zbude **47** — a po vyřazení prázdných souborů **[tři](/blog/llms-txt-falesne-pozitivni/)**. Těch 44 prázdných je jedno výchozí nastavení platformy, ne 44 rozhodnutí.
+
+**Kontrola:** ke stavovému kódu vždycky přidat typ obsahu a délku těla.
+**Když sami neměříte:** hledejte, jestli autor ověřoval obsah odpovědi, nebo jen to, že server odpověděl.
+
+## 3. Co vypadne ze skriptu, je hypotéza
+
+Při měření, jestli mají české weby hlavní text už v serverovém HTML, mi automatika ve dvou kolech nahlásila **23 chybějících textů**. Prošel jsem je ručně jeden po druhém. **Pravý nebyl ani jeden.**
+
+Nejdelším souvislým textem na stránce byla nejčastěji **lišta se souhlasem** — u dvou webů dělala rozdíl přes deset tisíc slov. Jinde to byla hláška o vypršelém tokenu, kus JavaScriptu uvnitř odstavce nebo text ze stránky 404.
+
+**Kontrola:** každý nález otevřít, než se z něj stane číslo v tabulce.
+**Když sami neměříte:** ptejte se, kolik nálezů autor ověřil ručně a co u nich našel.
+
+## 4. Selhání u části vzorku ukazuje nejdřív na nástroj
+
+Dva z těch 23 falešných nálezů měly společnou příčinu: můj skript dekódoval stránky natvrdo jako UTF-8. Dva weby posílají **windows-1250** a text se rozsypal na otazníky, takže porovnání selhalo.
+
+Následná kontrola na vzorku 80 domén ukázala, že **ani jedna neposílá jiné kódování, než sama deklaruje**. Pět jich používá windows-1250 a všech pět to [uvádí správně](/blog/kodovani-stranky-a-stroje/).
+
+**Kontrola:** když problém vzniká jen u malé podmnožiny, sepsat postižené případy, najít jejich společný technický jmenovatel a jeden ověřit ručně mimo vlastní nástroj.
+**Když sami neměříte:** ptejte se, co měly odchylky společného — u legitimní odlišné konfigurace to bývá vidět hned.
+
+## 5. „Nenašel jsem" nikdy nepište jako „neexistuje"
+
+Tuhle chybu jsem udělal dvakrát.
+
+- Napsal jsem, že **Common Crawl** strojový seznam na obvyklé adrese nemá. Má — `commoncrawl.org/ccbot.json`. A že IPv6 rozsahy publikuje jen Google; CCBot má jeden prefix. [Obojí opraveno](/blog/kdo-publikuje-ip-rozsahy/).
+- Ve článku o JavaScriptu stálo na čtyřech místech „jediné veřejné měření, které **existuje**". Opraveno na „které jsem našel" — [plus datum, kdy jsem hledal znovu](/blog/javascript-a-ai-roboti/).
+
+**Kontrola:** psát „nenašel jsem" a k tomu datum a místo hledání.
+**Když sami neměříte:** u každého „neexistuje" a „jediný" se ptejte, odkud autor tu jistotu bere.
+
+## 6. Přepis čísel do textu je taky krok, kde se chybuje
+
+Měření může být v pořádku a článek přesto špatně.
+
+- V tabulce publikovaného článku jsem měl u robota `Claude-Web` hodnotu **5**. Naměřeno bylo **6**. Devět z deseti hodnot sedělo; odhalila to až kontrola nového parseru proti starším datům.
+- Jinou tabulku jsem nadepsal „Tři roboti OpenAI". Dokumentace jich popisuje **čtyři** — chyběl `OAI-AdsBot`.
+
+**Kontrola:** čísla v hotovém textu porovnat se zdrojovými daty, ne s pamětí. Nadpis, který tvrdí počet, je taky tvrzení.
+**Když sami neměříte:** když článek zveřejňuje i podkladová data, zkuste dvě čísla namátkou porovnat.
+
+## Tříminutová kontrola cizí studie
+
+<Checklist tone="geo" title="Čtyři otázky na autora" items={[
+  { title: "Ověřoval obsah, nebo jen technický signál?", desc: "stavový kód, přítomnost souboru nebo značky ještě neříká, co v nich je." },
+  { title: "Kolik nálezů zkontroloval ručně?", desc: "a co u nich našel. U mého měření to byl rozdíl mezi 23 nálezy a nulou." },
+  { title: "Co udělal s případy, kde měření selhalo?", desc: "vypadly ze vzorku, nebo se počítají do výsledného procenta? To druhé číslo nafoukne." },
+  { title: "Odkud bere jistotu u slov „neexistuje“ a „jediný“?", desc: "obojí je tvrzení o celém světě a stačí jeden protipříklad." }
+]} />
+
+<Insight tone="warn" icon="!" label="Kdy podle studie ještě nic neměnit">
+  Než kvůli cizímu číslu sáhnete na web, měla by ta studie ukázat aspoň tři věci: **jak definovala nález**, **že ruční kontrolou prošel aspoň vzorek**, a **co udělala s výjimkami a selháními měření**.
+
+  Když chybí kterákoli z nich, není to důvod studii zahodit — je to důvod nedělat podle ní zásah, který se špatně vrací.
+</Insight>
+
+## Shrnutí
+
+Šest kontrol: nehádat adresu, nevěřit stavovému kódu, otevřít každý nález, podezírat nejdřív vlastní nástroj, psát „nenašel jsem" místo „neexistuje" a porovnat čísla v textu se zdrojem.
+
+Společný vzorec je u všech stejný: rychlá zkratka nahradí kontrolu zdroje, obsahu nebo hotového textu. A falešný nález se od pravého na první pohled neliší.
+
+Případů je šest, protože tolik jich mám doložených a opravených — mluvím jen za vlastní práci na tomhle webu, ne za obor. Delší postup pro čtení cizích čísel má [samostatný článek](/blog/jak-cist-studie-o-ai-viditelnosti/).
