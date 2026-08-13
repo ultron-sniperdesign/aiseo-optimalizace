@@ -1,14 +1,14 @@
 ---
 title: "JavaScript a AI roboti: co se nemusí dorenderovat"
-description: "Roboti ChatGPT, Claude a Perplexity podle měření JavaScript nespouštějí, Googlebot a AppleBot ano. Jak zjistíte, co z vaší stránky robot dostane."
-answer: "Podle jediného veřejného měření, které existuje, a to z prosince 2024, roboti ChatGPT, Claude a Perplexity JavaScript stahovali, ale nespouštěli. Pracovali tedy jen se serverem vráceným HTML. Googlebot a AppleBot ho ve stejném měření vykreslovaly; u Gemini to zdroj dovozuje. Ověřit si to jde příkazem curl nebo zobrazením zdroje stránky."
+description: "Podle veřejného měření z prosince 2024 roboti ChatGPT, Claude a Perplexity JavaScript nespouštěli, Googlebot a AppleBot ano. Jak si ověříte, co robot dostane."
+answer: "Podle veřejného měření z prosince 2024, roboti ChatGPT, Claude a Perplexity JavaScript stahovali, ale nespouštěli. Pracovali tedy jen se serverem vráceným HTML. Googlebot a AppleBot ve stejném měření stránku vykreslovaly; u Gemini to zdroj dovozuje. Ověřit si to jde příkazem curl nebo zobrazením zdroje stránky."
 slug: "javascript-a-ai-roboti"
 category: "tutorial"
 tags:
   - "technicke-zaklady"
   - "ai-platformy"
 published: "2026-08-02"
-updated: "2026-08-02"
+updated: "2026-08-13"
 keywords:
   - "javascript a ai roboti"
   - "vykreslují ai roboti javascript"
@@ -18,7 +18,7 @@ keywords:
 variant: "rich"
 stats:
   - value: "1"
-    label: "veřejné měření na tohle téma — a je z prosince 2024"
+    label: "veřejné měření na tohle téma, které jsem našel — a je z prosince 2024"
   - value: "2"
     label: "roboti, u kterých zdroj vykreslování uvádí: Googlebot a AppleBot; u Gemini ho dovozuje"
   - value: "23,84 %"
@@ -33,7 +33,7 @@ faq:
   - q: "Musím kvůli AI přepsat web na serverové vykreslování?"
     a: "Většinou ne celý. Stačí, aby v serverem vráceném HTML byl hlavní obsah: nadpisy, text, cena a dostupnost, odpovědi na otázky a odkazy. Interaktivní prvky, filtry, mapy nebo chat můžou zůstat v JavaScriptu, protože je robot k pochopení stránky nepotřebuje."
   - q: "Jak stará jsou ta data?"
-    a: "Z 17. prosince 2024. Je to jediné veřejné měření na tohle téma a novější se nám najít nepodařilo. Články z roku 2026, které tvrdí, že „AI roboti nevykreslují JavaScript“, se skoro vždy opírají právě o něj, aniž by to uvedly."
+    a: "Z 17. prosince 2024. Je to jediné veřejné měření na tohle téma, které se mi podařilo najít; hledal jsem znovu 13. srpna 2026 a nic novějšího jsem nenašel. V textech z roku 2026, na které jsem narazil, se tvrzení o nevykreslování opakovalo a odkazy vedly ke stejnému měření, jen to většinou nezmiňují."
   - q: "Platí to tvrzení ještě dnes?"
     a: "Pravděpodobně ano, ale doložit to současnými daty nedokážeme. Praktické doporučení se tím naštěstí nemění: serverem vykreslený obsah je správná odpověď v obou případech. Když robot skripty nespouští, je to jediná cesta k obsahu; když je spouštět začne, neuškodí to."
   - q: "Týká se to i AI Overviews a AI Mode v Googlu?"
@@ -47,12 +47,18 @@ import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
 
-Ve vašem prohlížeči stránka vypadá skvěle. Nadpis, text, cena, tlačítko. Jenže část toho, co vidíte, tam nebyla, když se stránka stáhla ze serveru — dokreslil to až JavaScript.
+V prohlížeči stránka vypadá kompletně: má nadpis, text, cenu i tlačítko. Jenže část toho, co vidíte, tam nebyla, když se stránka stáhla ze serveru — dokreslil to až JavaScript.
 
 A robot, který JavaScript nespouští, dostane jen tu první verzi. Tenhle článek je o tom, jak zjistit, jak ta serverem vrácená verze vypadá.
 
+<Insight tone="geo" icon="✓" label="Rychlá odpověď">
+  1. Otevřete si stránku přes `Ctrl+U` (na Macu `Cmd+Alt+U`) nebo příkazem `curl -s`.
+  2. Hledejte v tom výstupu nadpis, hlavní text, cenu a odkazy na další stránky.
+  3. Co tam není, to robot bez vykreslování nedostane. Podrobný postup je [níž v článku](#ověřte-si-to-za-pět-minut).
+</Insight>
+
 <Insight tone="warn" icon="⚠" label="Než začneme: opravdu ten hlavní údaj">
-Všechno, co se o tomhle tématu píše, stojí na **jediném veřejném měření — a to je ze 17. prosince 2024**. Novější se nám najít nepodařilo. Články z roku 2026, které tvrdí, jak to „dnes funguje", většinou citují právě jeho, aniž by to zmínily. Berte to podle toho a čtěte dál i sekci o tom, co z toho plyne.
+Veřejně dohledatelné závěry k tomuhle tématu dnes stojí hlavně na jednom měření **ze 17. prosince 2024**. Hledal jsem znovu **13. srpna 2026** a nic novějšího nenašel; v textech z roku 2026, na které jsem narazil, se tvrzení o nevykreslování vracelo a odkazy vedly ke stejnému měření, jen to většinou nezmíní. To, že jsem novější měření nenašel, neznamená, že neexistuje — jen jsem z něj nemohl vycházet.
 </Insight>
 
 ## Vykreslují AI roboti JavaScript?
@@ -95,7 +101,7 @@ Rozdíl není teoretický. Tady je, co se stane s typickými prvky stránky.
   ]}
 />
 
-Nejzrádnější je předposlední řádek. Když se hlavní text stránky skládá až v prohlížeči, robot bez vykreslování dostane prakticky prázdný dokument — a přitom v prohlížeči i v inspektoru všechno vypadá naprosto v pořádku. Inspektor totiž ukazuje aktuální stav stránky po zásazích skriptů, ne původní odpověď ze serveru.
+Nejzrádnější je předposlední řádek. Když se hlavní text stránky skládá až v prohlížeči, robot bez vykreslování dostane prakticky prázdný dokument — a přitom v prohlížeči i v inspektoru prvků všechno vypadá v pořádku. Proč, vysvětluje první z chyb níž.
 
 U posledního řádku pozor na jednu záměnu, která se často plete: **strukturovaná data v podobě JSON-LD sice bydlí uvnitř značky `script`, ale to neznamená, že je robot bez vykreslování nevidí.** Pokud jsou v serverem vráceném HTML, robot si je přečte i bez vykreslování — nic spouštět nemusí, stačí mu přečíst obsah té značky. Problém nastane až tehdy, když je do stránky dopíše běžící skript nebo správce značek.
 
@@ -118,6 +124,10 @@ Tohle se nemusí odhadovat ani se o tom číst. Jde to ověřit přímo.
       desc: "Ctrl+F a zkuste nadpis, první větu odstavce, cenu, odpověď na otázku z FAQ. Co tam nenajdete, to roboti bez vykreslování nedostanou — a ani u těch vykreslujících na to není spoleh."
     },
     {
+      title: "Než vyhlásíte poplach, zkontrolujte kódování",
+      desc: "Když je text ve výstupu plný otazníků nebo divných znaků, nechybí — jen ho čtete špatně. Část českých webů posílá stránku ve windows-1250, ne v UTF-8. Napoví hlavička Content-Type nebo značka meta charset. Sám jsem si tímhle vyrobil dva falešné nálezy."
+    },
+    {
       title: "Kontrolní zkouška: vypněte JavaScript",
       desc: "V nastavení prohlížeče pro jednu stránku vypněte JavaScript a načtěte ji znovu. Uvidíte přibližně tu verzi, se kterou robot pracuje — tentokrát vizuálně, ne v kódu. Dokonalá simulace robota to není, ale jako kontrola stačí."
     },
@@ -127,6 +137,46 @@ Tohle se nemusí odhadovat ani se o tom číst. Jde to ověřit přímo.
 <Insight tone="aeo" icon="✓" label="Co hledat konkrétně">
 Nestačí ověřit domovskou stránku. Projděte tři typy: **stránku produktu nebo služby** (je tam cena a dostupnost?), **článek** (je tam celý text, nebo se donačítá?) a **kategorii nebo výpis** (jsou tam odkazy na jednotlivé položky?). Často selže právě výpis, protože ho část šablon skládá až v prohlížeči.
 </Insight>
+
+<Insight tone="aio" icon="i" label="Kontext z českých webů">
+  Ve vzorku 80 českých domén (12. 8. 2026) jsem porovnal serverové HTML s vykreslenou stránkou. Porovnatelných bylo 66 a **u všech 66 byl hlavní text už v serverovém HTML**. Neříká to nic o robotech — měřil jsem, co posílá server, ne co s tím kdo udělá. A o vašem webu to negarantuje nic. Postup i falešné nálezy, které mi cestou automatika vyrobila, rozebírá [samostatný článek](/blog/text-bez-javascriptu-mereni/).
+</Insight>
+
+## Kdy zasahovat hned a kdy to počká
+
+Ne všechno, co se dokresluje skriptem, je problém. Rozdíl je v tom, jestli chybí obsah, kvůli kterému na stránku někdo chodí.
+
+| Chybí ve zdroji stránky | Priorita |
+|---|---|
+| nadpis H1, hlavní text, popis produktu | **řešit hned** |
+| cena a dostupnost | **řešit hned** |
+| odkazy na jednotlivé položky ve výpisu | **řešit hned** |
+| filtry, řazení, našeptávač | obvykle nevadí |
+| mapa, chat, kolotoč obrázků | obvykle nevadí |
+| recenze donačítané po odrolování | podle toho, jestli nesou obsah, na který se lidé ptají |
+
+Na kódu je rozdíl vidět hned. Tohle robot bez vykreslování dostane prázdné:
+
+```html
+<body>
+  <div id="app"></div>
+  <script src="/app.js"></script>
+</body>
+```
+
+A tohle dostane celé, i když se skript nikdy nespustí:
+
+```html
+<body>
+  <h1>Vrtačka XY 700 W</h1>
+  <p>Příklepová vrtačka do zdiva i dřeva, hmotnost 1,8 kg.</p>
+  <p>2 490 Kč · skladem</p>
+  <a href="/vrtacky/">Zpět na vrtačky</a>
+  <script src="/app.js"></script>
+</body>
+```
+
+Skript ve druhém případě nezmizel — jen už není jedinou cestou k obsahu.
 
 ## Co má být v HTML a co může zůstat ve skriptu
 
@@ -197,11 +247,12 @@ Kdyby OpenAI zítra oznámila, že GPTBot začíná vykreslovat, **nic z výše 
     { title: "Výpisy a kategorie mají položky v HTML", desc: "Nejčastější místo, kde to selže." },
     { title: "Strukturovaná data jsou ve zdroji", desc: "Když je vkládá až správce značek, část robotů je nevidí." },
     { title: "Zkontrolované tři typy stránek", desc: "Produkt nebo služba, článek, výpis. Ne jen domovská stránka." },
+    { title: "Rozsypaný text není chybějící text", desc: "Otazníky ve výstupu znamenají špatně přečtené kódování, ne prázdné HTML." },
   ]}
 />
 
 ## Kam dál
 
-Tenhle článek řeší, **co robot uvidí, když ho na web pustíte.** Jestli ho pustit a kterého, je jiná otázka — na to je [přehled AI robotů a robots.txt](/blog/ai-crawler-robots-txt/). Když vás zajímá, kolik vás procházení stojí, podívejte se na [zátěž webu od AI robotů](/blog/ai-roboti-zatez-webu/).
+Tenhle článek řeší, **co robot uvidí, když ho na web pustíte.** Jestli ho pustit a kterého, je jiná otázka — na to je [přehled AI robotů a robots.txt](/blog/ai-crawler-robots-txt/) a u části robotů [robots.txt podle dokumentace ani neplatí](/blog/roboti-vyvolani-uzivatelem/). Když vás zajímá, kolik vás procházení stojí, podívejte se na [zátěž webu od AI robotů](/blog/ai-roboti-zatez-webu/).
 
 Technicky navazuje [rychlost webu pro AI](/blog/core-web-vitals-pro-ai/) a praktická kontrola přes [Lighthouse](/blog/lighthouse-ai-check/). A pokud jste si nad datem u zdejšího měření řekli, že podobně opatrně by se měla číst většina čísel v tomhle oboru, máme na to samostatný návod: [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/).
