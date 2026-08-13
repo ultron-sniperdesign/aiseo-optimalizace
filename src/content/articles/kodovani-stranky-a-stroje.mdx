@@ -1,0 +1,152 @@
+---
+title: "Windows-1250 na českém webu: kdo za to opravdu může"
+description: "Pět z osmdesáti webů neposílá UTF-8. Všech pět to ale správně deklaruje — chyba byla v mém nástroji, ne na těch webech."
+answer: "Ve vzorku 80 českých domén posílá pět stránku ve windows-1250 místo UTF-8. Všech pět to ale deklaruje správně, a to v hlavičce i v HTML. Žádný web ve vzorku neposílá jiné kódování, než o sobě tvrdí. Problém vzniká až u nástroje, který deklaraci ignoruje."
+slug: "kodovani-stranky-a-stroje"
+category: "analysis"
+tags:
+  - "mereni"
+  - "technicke-zaklady"
+published: "2026-08-13"
+updated: "2026-08-13"
+variant: "rich"
+keywords:
+  - "kódování stránky"
+  - "windows-1250"
+  - "meta charset"
+  - "content-type charset"
+  - "utf-8 web"
+  - "strojové čtení webu"
+stats:
+  - value: "5 z 80"
+    label: "českých webů posílá homepage ve windows-1250, ne v UTF-8"
+  - value: "0"
+    label: "webů ve vzorku posílá jiné kódování, než o sobě deklaruje"
+  - value: "79 z 80"
+    label: "deklaruje kódování už v hlavičce HTTP, všech 80 pak i v HTML"
+  - value: "3"
+    label: "weby mají deklaraci v HTML až za hranicí 1024 bajtů, kterou žádá specifikace"
+faq:
+  - q: "Kolik českých webů neposílá UTF-8?"
+    a: "Ve vzorku 80 domén (33 médií, 47 e-shopů) k 13. srpnu 2026 pět. Všech pět posílá windows-1250 a všech pět to správně deklaruje v hlavičce Content-Type i ve značce meta charset."
+  - q: "Vadí windows-1250 AI robotům?"
+    a: "To jsem neměřil a netvrdím to. Vím jen, že nástroj, který deklaraci ignoruje a dekóduje natvrdo UTF-8, dostane z takové stránky nesmysl — a může to vypadat, že na ní chybí obsah."
+  - q: "Kde má být kódování deklarované?"
+    a: "Na dvou místech: v hlavičce Content-Type, kterou vrací server, a ve značce meta charset v HTML. Bezpečné je řídit se nejdřív hlavičkou a značku meta použít, když hlavička charset neuvádí. Specifikace zároveň žádá, aby značka meta byla brzy v dokumentu, typicky v prvních 1024 bajtech."
+  - q: "Jak zjistím, co posílá můj web?"
+    a: "Příkazem curl -sSI https://vasweb.cz/ a v odpovědi najděte řádek content-type. Když v něm charset chybí, podívejte se na začátek HTML, jestli tam je značka meta charset."
+  - q: "Je windows-1250 chyba, kterou mám opravit?"
+    a: "Z tohohle měření to netvrdím. Pokud web kódování správně deklaruje, korektní klient si poradí. UTF-8 je dnes bezpečnější volba, ale přechod na něj je zásah do celého webu a data pro tvrzení, že to něco zlepší, nemám."
+  - q: "Co to znamená pro nástroje, které čtou weby strojově?"
+    a: "Respektovat deklaraci: pro jednoduchý čteč HTML je rozumné jít od hlavičky přes značku meta a teprve pak hádat. Napevno zadané UTF-8 selže jen u části webů, což se špatně odhaluje — vypadá to jako chybějící obsah, ne jako chyba čtení."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Windows-1250 na českém webu: kdo za to opravdu může
+
+**Nemohly weby.** Ve všech 80 zkontrolovaných homepage jsem nenašel jedinou, která by posílala jiné kódování, než sama deklaruje. Problém byl v nástroji, který tu deklaraci ignoroval — a byl to můj.
+
+<Insight tone="geo" icon="✓" label="Dvě věty podle toho, kdo jste">
+  **Provozujete web:** pokud správně uvádíte `charset` v hlavičce HTTP i ve značce `meta`, tohle nejspíš není problém vašeho webu. Kontrola je níž a trvá minutu.
+
+  **Píšete nebo pouštíte nástroj, který stahuje stránky:** nečtěte HTML natvrdo jako UTF-8. Selže to jen u části webů a bude to vypadat jako chybějící obsah.
+</Insight>
+
+Vzniklo to při [minulém měření](/blog/text-bez-javascriptu-mereni/), kde mi skript nahlásil, že dvěma zpravodajským webům chybí v HTML hlavní text. Nechyběl — servery posílají stránku ve windows-1250 a já ji dekódoval jako UTF-8. Text se rozsypal na otazníky a porovnání selhalo.
+
+| Zjištění | Počet z 80 |
+|---|---|
+| **posílá jiné kódování, než deklaruje** | **0** |
+| **posílá windows-1250 místo UTF-8** | **5** |
+| deklaruje kódování v hlavičce HTTP | 79 |
+| deklaruje kódování značkou `meta` v HTML | 80 |
+| hlavička a značka `meta` si odporují | 0 |
+| má značku `meta` až za 1024 bajty | 3 |
+
+## Jak poznám problém za minutu
+
+Stáhněte si hlavičky vlastního webu:
+
+```bash
+curl -sSI https://vasweb.cz/ | grep -i content-type
+```
+
+Podle výsledku nastanou tři situace:
+
+| Co uvidíte | Co to znamená |
+|---|---|
+| `content-type: text/html; charset=utf-8` a stejná hodnota i v `meta` | **v pořádku** |
+| v hlavičce `charset` chybí, ve zdroji stránky značka `meta` je | funguje, ale spoléháte na jedno místo — doplňte hlavičku |
+| hlavička říká jedno a značka `meta` druhé | **chyba** — typicky pozůstatek migrace, opravit |
+
+Ve vzorku měla rozpor **nula domén**, takže ta třetí situace je vzácná. Vzniká hlavně při stěhování webu nebo výměně šablony, kdy se změní jedno místo a druhé zůstane.
+
+<Checklist tone="geo" title="Když web provozujete" items={[
+  { title: "Deklarujte na obou místech", desc: "hlavička i značka meta. Když jedno vypadne při úpravě, druhé zachrání situaci." },
+  { title: "Značku meta dejte hned na začátek", desc: "specifikace počítá s prvními 1024 bajty dokumentu, ne až za blokem skriptů." },
+  { title: "windows-1250 samo o sobě nebylo v měření chybou", desc: "když ho správně deklarujete, korektní klient si poradí. Při plánované migraci je ale UTF-8 dnes jednodušší volba." },
+  { title: "Po každé migraci zkontrolujte znovu", desc: "změna serveru nebo šablony je nejčastější příležitost, jak se deklarace rozejde s obsahem." }
+]} />
+
+## Proč problém nevznikl na webech
+
+Kódování se deklaruje na dvou místech a mají pořadí:
+
+1. **Hlavička `Content-Type`**, kterou vrací server: `text/html; charset=utf-8`. Je bezpečné řídit se nejdřív jí.
+2. **Značka `meta` v HTML**: `<meta charset="utf-8">`. Použije se, když hlavička `charset` neuvádí. Specifikace zároveň žádá, aby byla brzy v dokumentu — typicky v prvních **1024 bajtech**.
+
+Ve vzorku má hlavičku 79 domén z 80, značku `meta` má všech 80. Ta jedna doména bez hlavičky má značku na 368. bajtu, takže žádný čtenář nezůstane bez informace.
+
+Tři weby mají značku `meta` až za hranicí 1024 bajtů — na pozicích 1153, 2225 a 2225. Všechny tři zároveň posílají `charset` i v hlavičce. Medián pozice napříč vzorkem je 101 bajtů; drtivá většina to má hned nahoře.
+
+<Insight tone="aio" icon="i" label="Pro vývojáře: pořadí, ve kterém se kódování zjišťuje">
+  Pro jednoduchý strojový čteč HTML: `charset` z hlavičky → značka `meta` v prvních bajtech → teprve pak výchozí hodnota.
+
+  V Pythonu je to rozdíl mezi
+
+  ```python
+  text = body.decode('utf-8')          # spadne nebo rozsype text
+  ```
+
+  a
+
+  ```python
+  cs = charset_z_hlavicky(headers) or charset_z_meta(body) or 'utf-8'
+  text = body.decode(cs)
+  ```
+
+  Pár řádků, které zabrání falešným nálezům u webů mimo UTF-8. Jak to řeší jednotlivé parsery a co se stane u odlišných MIME typů, jsem neměřil.
+</Insight>
+
+## Co tohle měření neříká
+
+- **Nic o celém českém webu.** Vzorek není náhodný: 33 médií je ruční seznam, 47 e-shopů je z jedné platformy. Je to obrázek téhle osmdesátky.
+- **Nic o podstránkách.** Měřil jsem jen homepage; u velkých webů běží různé sekce často na různých systémech.
+- **Nic o chování AI robotů.** Netestoval jsem, co s kódováním udělá GPTBot nebo kterýkoli jiný. Vím jen, co udělá špatně napsaný nástroj — protože jsem ho napsal.
+- **Nezachytí jemné případy.** Všech 80 homepage má českou diakritiku, takže hrubé chybné dekódování bylo na čem poznat. Jiné typy problémů tahle kontrola neodhalí.
+
+Jeden odečet, **13. srpna 2026**.
+
+## Tři chyby okolo kódování
+
+<MistakeGrid>
+  <Mistake number="01" title="Dekódovat natvrdo UTF-8">
+    Projde to na většině webů a selže na menšině. Právě proto se to hledá špatně — nevypadá to jako chyba čtení, ale jako chybějící obsah.
+  </Mistake>
+  <Mistake number="02" title="Číst značku meta a ignorovat hlavičku">
+    Bezpečné pořadí je opačné. Když si obě místa odporují, čtete to špatně.
+  </Mistake>
+  <Mistake number="03" title="Dát meta charset až za blok skriptů">
+    Specifikace počítá s prvními 1024 bajty. Tři weby ve vzorku to mají dál; zároveň posílají charset i v hlavičce.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+Pět z osmdesáti českých homepage posílá stránku ve windows-1250 a všech pět to správně deklaruje. **Rozpor mezi deklarací a obsahem jsem nenašel ani jednou.**
+
+Kdo provozuje web, má minutovou kontrolu výš. Kdo píše nástroj, který stahuje cizí stránky, má v něm respektovat deklarované kódování — jinak si vyrobí nálezy, které vypadají jako chyby cizích webů. Přesně to se povedlo mně.

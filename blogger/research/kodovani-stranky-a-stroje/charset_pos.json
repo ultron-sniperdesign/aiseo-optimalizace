@@ -1,0 +1,402 @@
+[
+ {
+  "domain": "novinky.cz",
+  "meta_pos": 38,
+  "do_1024": true
+ },
+ {
+  "domain": "www.idnes.cz",
+  "meta_pos": 69,
+  "do_1024": true
+ },
+ {
+  "domain": "www.seznamzpravy.cz",
+  "meta_pos": 562,
+  "do_1024": true
+ },
+ {
+  "domain": "zpravy.aktualne.cz",
+  "meta_pos": 52,
+  "do_1024": true
+ },
+ {
+  "domain": "www.irozhlas.cz",
+  "meta_pos": 72,
+  "do_1024": true
+ },
+ {
+  "domain": "www.ceskenoviny.cz",
+  "meta_pos": 1153,
+  "do_1024": false
+ },
+ {
+  "domain": "www.denik.cz",
+  "meta_pos": 65,
+  "do_1024": true
+ },
+ {
+  "domain": "www.blesk.cz",
+  "meta_pos": 84,
+  "do_1024": true
+ },
+ {
+  "domain": "www.lidovky.cz",
+  "meta_pos": 69,
+  "do_1024": true
+ },
+ {
+  "domain": "echo24.cz",
+  "meta_pos": 368,
+  "do_1024": true
+ },
+ {
+  "domain": "www.forum24.cz",
+  "meta_pos": 44,
+  "do_1024": true
+ },
+ {
+  "domain": "www.info.cz",
+  "meta_pos": 37,
+  "do_1024": true
+ },
+ {
+  "domain": "www.e15.cz",
+  "meta_pos": 107,
+  "do_1024": true
+ },
+ {
+  "domain": "archiv.hn.cz",
+  "meta_pos": 64,
+  "do_1024": true
+ },
+ {
+  "domain": "www.respekt.cz",
+  "meta_pos": 37,
+  "do_1024": true
+ },
+ {
+  "domain": "www.reflex.cz",
+  "meta_pos": 107,
+  "do_1024": true
+ },
+ {
+  "domain": "tn.nova.cz",
+  "meta_pos": 204,
+  "do_1024": true
+ },
+ {
+  "domain": "ct24.ceskatelevize.cz",
+  "meta_pos": 37,
+  "do_1024": true
+ },
+ {
+  "domain": "www.expres.cz",
+  "meta_pos": 69,
+  "do_1024": true
+ },
+ {
+  "domain": "www.super.cz",
+  "meta_pos": 38,
+  "do_1024": true
+ },
+ {
+  "domain": "www.lupa.cz",
+  "meta_pos": 200,
+  "do_1024": true
+ },
+ {
+  "domain": "www.root.cz",
+  "meta_pos": 200,
+  "do_1024": true
+ },
+ {
+  "domain": "www.zive.cz",
+  "meta_pos": 47,
+  "do_1024": true
+ },
+ {
+  "domain": "www.cnews.cz",
+  "meta_pos": 200,
+  "do_1024": true
+ },
+ {
+  "domain": "www.mobilmania.cz",
+  "meta_pos": 46,
+  "do_1024": true
+ },
+ {
+  "domain": "www.svetandroida.cz",
+  "meta_pos": 98,
+  "do_1024": true
+ },
+ {
+  "domain": "www.vtm.cz",
+  "meta_pos": 47,
+  "do_1024": true
+ },
+ {
+  "domain": "21stoleti.cz",
+  "meta_pos": 58,
+  "do_1024": true
+ },
+ {
+  "domain": "www.kurzy.cz",
+  "meta_pos": 305,
+  "do_1024": true
+ },
+ {
+  "domain": "www.penize.cz",
+  "meta_pos": 155,
+  "do_1024": true
+ },
+ {
+  "domain": "www.mesec.cz",
+  "meta_pos": 200,
+  "do_1024": true
+ },
+ {
+  "domain": "www.podnikatel.cz",
+  "meta_pos": 200,
+  "do_1024": true
+ },
+ {
+  "domain": "www.marketingsales.cz",
+  "meta_pos": 99,
+  "do_1024": true
+ },
+ {
+  "domain": "www.anela.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.angrybeards.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.autodoplnky-obchod.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.baavi.cz",
+  "meta_pos": 100,
+  "do_1024": true
+ },
+ {
+  "domain": "www.cistedrevo.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.drevenysvet.online",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.film-technika.com",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.gigamat.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.giovani.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.hobynaradi.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.konzoliste.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.kulina.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.levanduloveudoli.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.madvell.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.nanospace.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.nasegalanterie.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.nemeckyeshop.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.nonstopstavebniny.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.olivie.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.outdoorstuff.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.pff.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.pocitarna.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.profi-dj.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.prohackovani.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.prokonzole.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.prolicence.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.ptakoviny-cb.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.puellavune.cz",
+  "meta_pos": 100,
+  "do_1024": true
+ },
+ {
+  "domain": "www.ususil.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.utukutu.cz",
+  "meta_pos": 100,
+  "do_1024": true
+ },
+ {
+  "domain": "www.venira.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.super-granule.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.pesan-krmiva.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.husse.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.bellas.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.nutrition-shop.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.brainmarket.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "www.viviencosmetics.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "samba.shoptet.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "disco.shoptet.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "step.shoptet.cz",
+  "meta_pos": 100,
+  "do_1024": true
+ },
+ {
+  "domain": "classic.shoptet.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "waltz.shoptet.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "tango.shoptet.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "techno.shoptet.cz",
+  "meta_pos": 101,
+  "do_1024": true
+ },
+ {
+  "domain": "soul.shoptet.cz",
+  "meta_pos": 2225,
+  "do_1024": false
+ },
+ {
+  "domain": "pop.shoptet.cz",
+  "meta_pos": 2225,
+  "do_1024": false
+ }
+]
