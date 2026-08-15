@@ -16,11 +16,30 @@
 > **Nepiš prompt od nuly podle vlastního citu.** Zkopíruj preambuli z §5, doplň jen
 > scénu + CZ nadpis a podtitul. Pozadí je **světle modro-šedé**, ne tmavé.
 >
+> **Do promptu nepřidávej vlastní pravidla.** Dodatky v §5 jsou úplný seznam. Když si vymyslíš
+> další zákaz, model ho poslechne doslova a vyprázdní scénu. Konkrétně: **nikdy nepiš
+> `STRICT NO-TEXT-IN-SCENE RULE`** ani nic v tom smyslu. Zákaz `no text` z odstavce výš se
+> týká **náhrady CZ nadpisu**, ne popisků uvnitř scény — schválené obrázky sady popisky mají
+> (`javascript-a-ai-roboti.png` má ve scéně cenovku „1 290 Kč").
+>
+> **Scénu popisuj předměty, ne nepřítomností.** „Prázdné sloty", „dashed outline naznačující
+> chybějící údaj", „abstraktní tvar z geometrických bloků" nejsou scéna — model je vykreslí
+> doslova a vznikne prázdná kostra. Sada stojí na **konkrétních rozpoznatelných objektech**
+> (okno prohlížeče s tečkami v liště, dokument s řádky textu, robot, brána, trychtýř, řada
+> přepínačů) a nejčastěji na **dvojici v kontrastu** — dva stavy vedle sebe se zeleným ✓
+> a jantarovým ✗. Objekty mají **plné barevné výplně**, ne jen obrysy, a zabírají horní dvě
+> třetiny; drobná linková ikonka uprostřed prázdné plochy je v náhledu na kartě nečitelná.
+>
 > *(Historie: v runech 51–62 vznikla série tmavých abstraktních obrázků bez textu, protože
 > se prompty psaly ad-hoc a obsahovaly „absolutely no text". Přegenerováno 2026-07-27.
 > **Přesně totéž se zopakovalo v runech 81–86** — čtyři tmavé obrázky bez textu, opět proto,
-> že se prompt psal od nuly místo kopie preambule. Přegenerováno 2026-08-03. Když se přistihneš,
-> že píšeš `#0B0D10`, `violet` nebo `no text`, jsi mimo sadu — zastav a zkopíruj §5.)*
+> že se prompt psal od nuly místo kopie preambule. Přegenerováno 2026-08-03. **Potřetí
+> v runech 120–121**, tentokrát jinou cestou: preambule i CZ nadpis seděly, ale k promptu
+> jsem si přidal vlastní `STRICT NO-TEXT-IN-SCENE RULE` a dodatek (b) o číslicích jsem
+> použil plošně — u článku, jehož tématem je jedno konkrétní číslo. Výsledkem byla prázdná
+> kostra panelu a beztvarý blob. Přegenerováno 2026-08-15. Když se přistihneš, že píšeš
+> `#0B0D10`, `violet`, `no text`, `abstract shape` nebo vlastní `RULE:`, jsi mimo sadu —
+> zastav a zkopíruj §5.)*
 
 ---
 
@@ -159,14 +178,21 @@ canvas. The bottom third must be empty light background with at most one or two 
 stars, because it gets cropped away.
 ```
 
-**b) Zakaž modelu vymýšlet čísla.** Když je ve scéně cokoli, co vypadá jako údaj (procenta,
-částky, metriky), model si je vymyslí — a nebudou souhlasit s článkem. U článku o tom, že se
-čísla přebírají špatně, je to obzvlášť trapné. Buď do promptu napiš přesnou hodnotu, kterou má
-vykreslit, nebo přidej:
+**b) Zakaž modelu vymýšlet čísla — ale jen když ve scéně žádné být nemají.** Když je ve scéně
+cokoli, co vypadá jako údaj (procenta, částky, metriky), model si je vymyslí — a nebudou
+souhlasit s článkem.
+
+**Přednostní řešení je napsat do promptu přesnou hodnotu**, kterou má vykreslit. Plošný zákaz
+je až druhá volba pro scény, kde číslo nemá co dělat:
 
 ```
 IMPORTANT: do not draw any digits, numbers, percentages or figures anywhere in the scene.
 ```
+
+> ⛔ **Nepoužívej ten zákaz jako výchozí nastavení.** Je podmíněný, ne povinný. U článku,
+> jehož tématem je konkrétní číslo, ho nedávej vůbec — vykresli to číslo. Zákaz plus formulace
+> typu „the bold shape must be abstract geometry, never a numeral" vyrobí beztvarý blob
+> (`miliarda-uzivatelu-ai-mode`, run 121, přegenerováno).
 
 **e) Diakritiku v nadpisu si přečti nahlas — ověřeno 2026-08-04.** Model vykreslí přesně to,
 co v promptu stojí. Když do promptu napíšeš `OBRAZKY`, dostaneš `OBRAZKY` bez čárky a je to
