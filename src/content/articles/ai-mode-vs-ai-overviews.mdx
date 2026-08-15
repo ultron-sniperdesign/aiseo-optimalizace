@@ -1,6 +1,6 @@
 ---
 title: "AI Mode vs. AI Overviews: jiné zdroje, podobná odpověď"
-description: "AI Mode a AI Overviews vypadají podobně, ale citují jiné zdroje. V čem se liší, co to mění pro váš web a proč se nedají měřit jako jeden povrch."
+description: "Google mezi nimi od května 2026 přidal plynulý přechod, ale nesloučil je. Často citují jiné zdroje, takže je nedává smysl měřit jako jeden povrch."
 answer: "AI Overviews je shrnutí nahoře na běžné stránce s výsledky, kde pod ním zůstávají odkazy. AI Mode je samostatný konverzační režim, ve kterém odpověď stojí sama a dá se doptávat. Oba staví odpověď z více zdrojů, ale citují často jiné adresy, takže je nelze brát jako jeden povrch."
 slug: "ai-mode-vs-ai-overviews"
 category: "analysis"
@@ -8,7 +8,7 @@ tags:
   - "ai-platformy"
   - "mereni"
 published: "2026-07-17"
-updated: "2026-07-17"
+updated: "2026-08-13"
 keywords:
   - "ai mode vs ai overviews"
   - "rozdíl ai mode ai overviews"
@@ -18,7 +18,7 @@ keywords:
 variant: "rich"
 stats:
   - value: "dvě místa"
-    label: "AI Overviews jsou nad výsledky, AI Mode je samostatný konverzační režim"
+    label: "AI Overviews jsou nad výsledky, AI Mode je samostatný konverzační režim; od května 2026 mezi nimi vede plynulý přechod"
   - value: "13,7 %"
     label: "shoda citovaných adres — Ahrefs, USA, září 2025; snímek jednotlivých vygenerování, ne stav v čase"
   - value: "~4× delší"
@@ -68,6 +68,8 @@ Zvenčí to působí jako jedna věc: „Google teď odpovídá sám." V praxi j
   ]}
 />
 
+**Pro uživatele je přechod mezi nimi od května 2026 plynulý, pro měření to ale pořád jsou dvě různé plochy.** Proč, rozebírá tenhle článek.
+
 Společný jmenovatel je důležitější, než se zdá: u obou se podle dosavadních pozorování dotaz rozkládá na dílčí otázky a odpověď skládá z víc zdrojů. Jak to funguje, rozebírá článek o [query fan-out](/blog/query-fan-out-ai-mode/).
 
 ## Stejná odpověď, jiné zdroje
@@ -88,6 +90,22 @@ Než si z toho číslo odnesete jako fakt, patří k němu tři výhrady, které
 
 Závěr, který ze studie plyne bezpečně, je střízlivější než to číslo: i když by odpověď mohlo podepřít víc zdrojů, oba povrchy v praxi často sáhnou po jiných.
 
+## Google mezi nimi přidal plynulý přechod
+
+Od **19. května 2026** jde z AI přehledu položit doplňující otázku a plynule přejít do konverzace v AI Mode — kontext se přenese s vámi. Google uvádí, že je to dostupné **celosvětově na desktopu i mobilu**. Na mobilu se podobný přechod objevil už v lednu 2026.
+
+V poznámkách k výsledkům Alphabetu za druhé čtvrtletí 2026 se to popisuje slovy, že Google „nedávno spojil AI přehledy a AI Mode do jednoho plynulého vyhledávacího zážitku". Odtud pochází dojem, že obě plochy splynuly v jednu.
+
+<Insight tone="warn" icon="!" label="Co se změnilo a co ne">
+  **Změnilo se:** z AI přehledu jde plynule přejít do konverzace v AI Mode a kontext se přenese. Bariéra mezi oběma plochami je tedy nižší.
+
+  **Nezměnilo se:** AI Mode zůstává podle Googlu samostatný režim. **Google nikde neuvádí, že by po propojení obě plochy čerpaly ze stejných zdrojů** — samotné propojení tedy není důkaz, že by se citace srovnaly. To by musela ukázat novější data.
+</Insight>
+
+Jak moc to mění chování uživatelů nebo podíl dotazů, které skončí v AI Mode, Google veřejně nevyčíslil.
+
+**Dokud neuvidíte nová data o zdrojích, nemění to základní pravidlo tohohle článku: měřte obě plochy odděleně.** Prakticky z toho plynou tři věci — počítejte s častějším přechodem z přehledu do konverzace, neberte citaci v AI přehledu jako konec cesty a při testech sledujte oba kroky zvlášť.
+
 ## Co to mění pro váš web
 
 **Měřte je odděleně.** Zjištění, že jste v jednom, není zjištění o druhém. Jak si viditelnost ověřit, rozebírá [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/); k datům z Search Console pak [AI segmenty v GSC](/blog/gsc-ai-segmenty-mereni/).
@@ -95,6 +113,8 @@ Závěr, který ze studie plyne bezpečně, je střízlivější než to číslo
 **Jedno spuštění nestačí.** Když se výběr zdrojů mezi běhy mění, jeden test je anekdota. Opakujte s odstupem a na víc dotazech.
 
 **Optimalizace se ale nerozdvojuje.** Základ je pro oba stejný: srozumitelně odpovědět na konkrétní dílčí otázku, mít dohledatelné podklady a konzistentní údaje. Praktickou přípravu obsahu řeší [Google AI Mode](/blog/google-ai-mode/).
+
+Údaj o miliardě měsíčně aktivních uživatelů AI Mode je ke květnu 2026 a co u něj chybí, rozebírá [samostatný článek](/blog/miliarda-uzivatelu-ai-mode/); uživatelský pohled má [vysvětlovák v češtině](/blog/ai-mode-cesky/).
 
 ## Časté chyby
 
@@ -146,7 +166,7 @@ Závěr, který ze studie plyne bezpečně, je střízlivější než to číslo
 
 ## Co si odnést
 
-AI Overviews a AI Mode se snadno slijí do jednoho „Google teď odpovídá sám". Rozdíl je ale praktický: první je shrnutí nad výsledky, které pod sebou nechává odkazy, druhý je samostatná konverzace bez nich.
+AI Overviews a AI Mode se snadno zamění za jednu věc — „Google teď odpovídá sám". Rozdíl je ale praktický: první je shrnutí nad výsledky, které pod sebou nechává odkazy, druhý je samostatná konverzace bez nich.
 
 A hlavně — dostupná analýza naznačuje, že i když říkají podobné věci, opírají je často o jiné zdroje. Takže je sledujte zvlášť, neberte jedno měření jako důkaz a u čísel ze zahraničí se vždycky ptejte, z jakého trhu a kdy jsou.
 
