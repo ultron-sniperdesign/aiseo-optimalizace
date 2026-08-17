@@ -533,6 +533,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 - ~~**Audit landing URL swap**~~ — ✅ HOTOVO (audit 2026-05-24): `/audit/` landing je LIVE; `/pack/` (7×) i `/pack/dekujeme/` (4×) odkazují na `/audit/`, žádný odkaz na `sniperdesign.cz/audity` nezbyl. Zbývá ověřit jen e-mail šablonu `email-pack-paid-v2.html` (mimo web, neověřeno auditem).
 - **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
+- **Další běh měření AI viditelnosti ~20. 8. 2026** — oba configy (aiseo-optimalizace, megadetail) beze změny promptů, výsledek do deníku § 3b + Freelo 31576165. Pokud po 20. 8. neproběhl (kontrola: nejnovější složka v `Tools/měření AI viditelnosti/runs/`), PŘIPOMENOUT uživateli.
 - **Datový check ~25. 8. 2026** — vyhodnocení srpnových zásahů: CTR refreshe (/ai-mode/, jak-vypnout-ai-overview, pripadova-studie), pozice „ai viditelnost", generate_lead lead_type=sluzba, dopad ExitRescue/inline CTA.
 - **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou; společně s Q3 snapshotem deníku megadetail (`_source/case-study-megadetail/DENIK.md`).
 - **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.
