@@ -1,0 +1,142 @@
+---
+title: "Když si AI Mode není jistý, dá místo odpovědi odkazy"
+description: "Google v nápovědě uvádí, že AI Mode v některých případech nabídne místo odpovědi sadu odkazů, když nemá dost vysokou jistotu. Kde ten práh leží, neuvádí."
+answer: "Google v nápovědě uvádí, že AI Mode v některých případech místo odpovědi nabídne sadu odkazů, pokud nemá dost vysokou jistotu v kvalitě a užitečnosti odpovědi. Stejné pravidlo popsal už v březnu 2025. Kde ten práh leží ani jak často k tomu dochází, ale nikde neuvádí."
+slug: "kdyz-si-ai-mode-neni-jisty"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-08-17"
+updated: "2026-08-17"
+variant: "rich"
+keywords:
+  - "ai mode odkazy místo odpovědi"
+  - "kdy se nezobrazí ai odpověď"
+  - "práh jistoty ai mode"
+  - "ai mode nejistota"
+  - "google ai mode odkazy"
+  - "kdy ai neodpoví"
+stats:
+  - value: "2×"
+    label: "doložená formulace o prahu jistoty — v nápovědě a v oznámení z března 2025"
+  - value: "17"
+    label: "měsíců mezi oběma zněními; formulace se za tu dobu nezměnila"
+  - value: "neuvedeno"
+    label: "kde ten práh leží, jak často se to stane a u kterých dotazů"
+faq:
+  - q: "Co Google o nejistotě AI Mode přesně říká?"
+    a: "V nápovědě stojí, že v některých případech AI Mode nabídne sadu odkazů na web, pokud nemá dost vysokou jistotu v kvalitě nebo užitečnosti AI odpovědi. Je to jedna věta a Google ji nijak nekvantifikuje."
+  - q: "Jak často se to stává?"
+    a: "Google to neuvádí, ani řádově. Z veřejných zdrojů se to spočítat nedá a vlastním testováním zjistíte jen to, co jste zrovna vyzkoušeli."
+  - q: "Dá se na to cílit?"
+    a: "Ne. Google neuvádí, kde ten práh leží ani u kterých dotazů se projeví. Snažit se ten stav vyvolat není podložená strategie: neznáte práh, neznáte četnost a nevíte, jestli by to vašemu webu vůbec něco přineslo."
+  - q: "Co z toho plyne pro můj web?"
+    a: "Hlavně to, že klasický odkaz je i v AI Mode dokumentovaný možný výstup, ne jen zbytek po odpovědi. Práce na tom, aby stránka obstála jako odkaz, tedy smysl neztrácí."
+  - q: "Platí totéž pro AI přehledy?"
+    a: "Ne tak, jak se často předpokládá. V nápovědě k AI přehledům jsem srovnatelnou větu o jistotě nenašel — stojí tam jen, že se objeví, když systémy vyhodnotí, že generativní AI pomůže. Že tam žádný práh není, z toho ale neplyne."
+  - q: "Změnil se ten práh, když Google vyměnil model?"
+    a: "O tom Google nic neuvádí. Vím jen, že výchozí model v AI Mode se od prosince 2025 měnil dvakrát; jestli se s ním hnul i práh jistoty, doložit neumím."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Když si AI Mode není jistý, dá místo odpovědi odkazy
+
+Většina textů o AI Mode řeší, jak se dostat **do odpovědi**. Google ale v nápovědě popisuje i druhý případ: **v některých případech nabídne místo AI odpovědi sadu odkazů na web, když nemá dost vysokou jistotu.**
+
+Pro majitele webu je podstatné hlavně tohle: odkazový výstup v AI Mode **není nedoložená domněnka, ale výslovně popsaná možnost** — jen se u ní nedá odhadnout, jak často nastane.
+
+<Insight tone="geo" icon="✓" label="Věta, kterou můžete převzít">
+  „Podle nápovědy Googlu nabídne AI Mode v některých případech místo odpovědi sadu odkazů na web, pokud nemá dost vysokou jistotu v kvalitě nebo užitečnosti odpovědi. Kde ten práh leží ani jak často k tomu dochází, Google neuvádí.“
+
+  **Nepoužívejte:** „AI Mode neodpovídá u složitých dotazů“ · odhady četnosti · rady, jak nízkou jistotu vyvolat.
+</Insight>
+
+## Dvě věty, sedmnáct měsíců od sebe
+
+Zajímavé na tom pravidle je, že ho Google popsal dvakrát — a mezitím se nezměnilo:
+
+| Co Google napsal | Kde | Kdy |
+|---|---|---|
+| v některých případech dá **sadu odkazů**, pokud nemá dost vysokou jistotu v kvalitě nebo užitečnosti odpovědi | nápověda k AI Mode | čteno 17. 8. 2026 |
+| snaží se ukázat AI odpověď co nejčastěji, ale **bez vysoké jistoty** v užitečnosti a kvalitě bude odpovědí sada výsledků vyhledávání | oznámení AI Mode, pasáž o testování v Labs | 5. 3. 2025 |
+
+**Obě věty mluví o AI Mode.** Ta starší stojí v části o testování v Labs. Nápověda mluví o sadě **webových odkazů**, oznámení o sadě **výsledků vyhledávání** — formulace se mírně liší, obě ale míří k témuž: místo AI odpovědi přijde odkazový výstup.
+
+Doložená je tím pádem kontinuita formulace od testovací fáze k dnešní nápovědě. **Neplyne z ní, že se mezitím nezměnilo, jak to funguje uvnitř**, ani jak často se to děje.
+
+
+## Co Google neuvádí
+
+Tady ta doložená část končí. Nikde není:
+
+- **Kde ten práh leží.** Žádná hodnota, žádné kritérium.
+- **Jak často se to stane.** Ani řádově, ani u jakého podílu dotazů.
+- **U kterých dotazů.** Žádný seznam typů, oborů ani formulací.
+- **Jestli se to liší podle trhu.** O Česku ani o jazycích nic.
+- **Jestli se práh mění s modelem.** Výchozí model se od prosince 2025 měnil dvakrát; o prahu Google mlčí.
+
+<Insight tone="warn" icon="!" label="Proč na tom záleží">
+  Bez těchhle údajů **nejde z pravidla udělat cílicí strategii.** Nedá se odhadnout, kolik provozu tou cestou vzniká, ani vybrat dotazy, u kterých se to stane. Takový závěr by přesahoval to, co Google výslovně uvádí.
+</Insight>
+
+## U AI přehledů takovou větu nenajdete
+
+Nabízí se předpoklad, že totéž platí i pro AI přehledy. **V nápovědě k AI přehledům jsem ale žádnou srovnatelnou větu o jistotě nenašel.** Stojí tam jen, že se objeví, *když systémy Googlu vyhodnotí, že generativní AI může být obzvlášť užitečná*.
+
+| Plocha | Co je v nápovědě o tom, kdy AI odpověď nepřijde |
+|---|---|
+| **AI Mode** | výslovně: bez dost vysoké jistoty přijde sada odkazů |
+| **AI přehledy** | jen obecné „když systémy vyhodnotí, že to pomůže“ — o jistotě nic |
+
+Neznamená to, že u AI přehledů žádný takový práh není. Znamená to, že **ho Google v té nápovědě nepopisuje**, takže se na něj nedá odkazovat jako na doložený. Širší rozdíl mezi oběma plochami rozebírá [samostatný článek](/blog/ai-mode-vs-ai-overviews/).
+
+## Co z toho plyne pro web
+
+Doložený je jen ten mechanismus — následující je moje vyvození, ne Googlova věta:
+
+<Checklist tone="geo" title="Tři důsledky" items={[
+  { title: "Odkaz je dokumentovaný výstup, ne zbytek", desc: "Sada odkazů je v AI Mode doložený možný výsledek. Dává tedy smysl nepodceňovat ani klasickou podobu výstupu — konkrétní postup má odkazovaný návod." },
+  { title: "Nejednoznačný text má proti sobě víc rizik", desc: "Nápověda uvádí, že AI Mode může špatně pochopit obsah nebo minout kontext. Že tomu jednoznačný text zabrání, ale zdroj neříká — je to moje opatrné vyvození, ne doložené pravidlo." },
+  { title: "Připravte se na obojí, ne na jedno", desc: "Stránka, která je citovatelná v odpovědi i klikatelná jako odkaz, obstojí v obou případech. Rozdělovat to na dvě různé práce nedává smysl." }
+]} />
+
+Praktický postup pro AI Mode má [samostatný návod](/blog/jak-se-zobrazit-v-ai-mode/), rozpad textu na samostatně čitelné úseky [psaní po pasážích](/blog/pasazova-optimalizace-obsahu/).
+
+## Změřit si to nejde
+
+Kolik vašich dotazů skončí odkazovým výstupem, z dostupných dat nezjistíte. Search Console AI plochy neodděluje, takže se z toho nedá spočítat ani četnost, ani dopad — [proč, rozebírá jiný článek](/blog/mereni-ai-mode-limity/).
+
+## Co z toho neplyne
+
+<MistakeGrid>
+  <Mistake number="01" title="Že složité dotazy zůstanou bez odpovědi">
+    Google mluví o jistotě v kvalitě a užitečnosti, ne o složitosti. Jsou to různé věci a záměna z toho dělá pravidlo, které nikde nestojí.
+  </Mistake>
+  <Mistake number="02" title="Že jde o nízkou jistotu cílit">
+    Neznáte práh ani četnost, takže není na co mířit. A i kdyby to šlo, výsledkem by byl odkaz místo citace — ne nutně lepší výsledek.
+  </Mistake>
+  <Mistake number="03" title="Že z pár vlastních zkoušek plyne četnost">
+    Vlastní zkouška ukáže, co jste zrovna vyzkoušeli, ve své zemi a ve svém účtu. Podíl dotazů z toho nespočítáte.
+  </Mistake>
+</MistakeGrid>
+
+## Limity
+
+Vycházím z **nápovědy Googlu a z jeho oznámení z 5. března 2025**, ověřených 17. srpna 2026. Nic jsem netestoval vlastním měřením, takže netvrdím, jak často k tomu dochází.
+
+**Netvrdím, že je to pro weby dobrá zpráva** — kolik provozu tím vzniká a jestli vůbec nějaký, z veřejných zdrojů neplyne. A u AI přehledů platí, že nenašel neznamená neexistuje; může to být jinde v dokumentaci, kterou jsem nečetl.
+
+## Co si odnést
+
+**Klasický odkaz je i v AI Mode dokumentovaný možný výstup.** Google to popsal dvakrát, v březnu 2025 a v dnešní nápovědě, a formulace se za sedmnáct měsíců nezměnila.
+
+**Nad tenhle rámec už veřejné zdroje nestačí.** Práh, četnost ani typy dotazů Google neuvádí, takže se z toho plán udělat nedá.
+
+**Bezpečné minimum:** odkazový výstup zůstává v AI Mode doloženou možností, takže nemá smysl chystat stránku jen na jednu z obou podob výsledku.
+
+Kde se AI Mode zapíná a co v nápovědě ještě chybí, rozebírá [AI Mode česky](/blog/ai-mode-cesky/); proč se otázka po nahrazení vyhledávání nedá položit jednoduše, [samostatný článek](/blog/nahradi-ai-mode-vyhledavani/).
