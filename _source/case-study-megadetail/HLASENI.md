@@ -31,7 +31,7 @@ Stav celku: N z M kategorií má text (bylo K před začátkem prací).
 
 <!-- HLÁŠENÍ PŘIPOJOVAT POD TUTO ČÁRU -->
 
-## Hlášení 2026-08-16
+## Hlášení 2026-08-16 — ✅ převzato do DENIK.md 2026-08-17
 
 | Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
 |---|---|---|---|

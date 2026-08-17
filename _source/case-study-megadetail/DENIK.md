@@ -46,7 +46,21 @@ Formát: jeden řádek na zásah. „Fáze" = vrstva AI SEO dle metodiky webu
 
 | Datum | Fáze | Co se změnilo (konkrétně, vč. rozsahu) | Očekávaný dopad | Měřit od |
 |---|---|---|---|---|
-| 2026-08 (průběžně) | obsah | Doplňování textů do kategorií — velká část kategorií (vč. zásadních) neměla žádný text. Přesný rozsah a data nasazení doplní hlášení z pracovního vlákna (HLASENI.md). | růst citovatelnosti kategorií v AI odpovědích + klasické SEO kategorií | po dokončení vlny (+4 týdny) |
+| 2026-08-10 – 08-12 | obsah | **Import textů do 196 kategorií** z připraveného dokumentu (267 sekcí, 17 dávek; 234/267 přesná shoda H1↔kategorie; 1× GPT audit proti sortimentu). Struktura: max 2 H2 nad produkty, zbytek pod. Bez FAQ a strukturovaných dat. | růst citovatelnosti kategorií v AI + klasické SEO | 2026-09-09 (+4 týdny) |
+| 2026-08-12 | obsah | **7 značkových stránek** (SWAG, OneWax, Magic Bucket, Mentos, Maxton Design, Snappy Grip, MTM Hydro): lead 253–320 zn. nad produkty + 4× H2 pod (1 100–1 436 zn.); 40 interních odkazů ověřeno živě. 4 značky blokované (0 produktů / neaktivní). | dtto | 2026-09-09 |
+| 2026-08-12 | obsah | **Auto Finesse: 24 prázdných kategorií** dostalo text + **8 částečných doplněno** (selektivní zápis, stávající texty nepřepsány). 51 z 52 sekcí dokumentu nasazeno. | dtto | 2026-09-09 |
+| 2026-08-13 – 08-16 | obsah | **20 kategorií psaných od nuly** plnou pipeline (keyword research → rešerše → draft → 2× GPT audit → validace odkazů → živý render). 5× H2 (2 nad / 3 pod produkty), 346–431 slov (Ø 384). U 5 doplněn chybějící H1, u 2 i title + meta description. Bez FAQ a strukturovaných dat. | dtto; kvalitnější vzorek pro srovnání „import vs od nuly" | 2026-09-14 |
+
+**Stav kategorií k 2026-08-16:** 1 047 z 1 381 produktových kategorií CZ má text
+(mezikrok 2026-08-12: 1 027/1 382). Baseline před začátkem prací nebyl změřen —
+u kategorií se srovnává od mezikroku, ne od nuly. Bez textu zbývá 334, z toho
+110 evergreen (89 s produkty = lze psát hned); zbytek sezónní/akční (104),
+satelit Praha (56), dárkové sady (51), technické (14). Definice „má text" viz
+HLASENI.md (description_text nebo text_pod_produkty).
+
+> Pozn. pro budoucí zásahy: žádná z vln zatím NEnasadila FAQ bloky ani
+> strukturovaná data na kategoriích — to je samostatný budoucí zásah
+> (až přijde, měřit odděleně od textové vlny).
 
 <!-- ŠABLONA řádku:
 | 2026-MM-DD | obsah | Doplněny answer bloky na 40 nejnavštěvovanějších článků | růst citací/zobrazení článků v AI Overviews | 2026-MM-DD (+4 týdny) |
