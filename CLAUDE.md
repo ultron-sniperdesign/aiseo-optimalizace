@@ -136,7 +136,7 @@
 |---|---|
 | Dev server | `npm run dev` → `http://localhost:4321` (Astro default) nebo `4323` (pomocí `.claude/launch.json`) |
 | Build out | `dist/` (statický HTML + CSS + assets) |
-| Stránky (aktuálně live) | **Pilíř + sekce (7):** `/`, `/seo/`, `/geo/`, `/aeo/`, `/aio/`, **`/ai-mode/`**, `/prakticky-postup/`, `/rozhodovaci-matice/`, `/seo-vs-geo-vs-aeo-vs-aio/`. **Huby:** **`/zacnete-tady/`** (vstupní cesta), **`/slovnik/`** (46+ pojmů), **`/serie/ai-seo-pro-eshopy/`**, **`/blog/tema/<slug>/`** (9 tag stránek), `/ai-viditelnost/` (200k landing), `/autor/kamil/`. **Produkt/funnel:** `/pack/`+`/pack/dekujeme/`, `/audit/`+`/audit/dekujeme/`, `/navod-zdarma/`+`/navod-zdarma/dekujeme/`, `/sluzby/`. **Utility:** `/kontakt/`, `/gdpr/`, `/rss.xml`, **`/llms.txt` (generovaný endpointem)**. **Blog:** `/blog/` + **69 článků** `/blog/<slug>/` (Blogger session). Celkem **119 routes** (k 2026-07-18). |
+| Stránky (aktuálně live) | **Pilíř + sekce (7):** `/`, `/seo/`, `/geo/`, `/aeo/`, `/aio/`, **`/ai-mode/`**, `/prakticky-postup/`, `/rozhodovaci-matice/`, `/seo-vs-geo-vs-aeo-vs-aio/`. **Huby:** **`/zacnete-tady/`** (vstupní cesta), **`/slovnik/`** (46+ pojmů), **`/serie/ai-seo-pro-eshopy/`**, **`/blog/tema/<slug>/`** (9 tag stránek), `/ai-viditelnost/` (200k landing), `/autor/kamil/`. **Produkt/funnel:** `/pack/`+`/pack/dekujeme/`, `/audit/`+`/audit/dekujeme/`, `/navod-zdarma/`+`/navod-zdarma/dekujeme/`, `/sluzby/`. **Utility:** `/kontakt/`, `/gdpr/`, `/rss.xml`, **`/llms.txt` (generovaný endpointem)**. **Blog:** `/blog/` + **141 článků** `/blog/<slug>/` (Blogger session). **Slovník:** 60+ hesel s vlastními detaily `/slovnik/<heslo>/`. **/sluzby/** = prodejní landing s poptávkovým formulářem (CF Worker) + GA4/Pixel konverzemi. Celkem **247 routes** (k 2026-08-17). |
 
 ---
 
@@ -149,6 +149,7 @@ aiseo-optimalizace.cz/
 ├── _source/                              # Source materiály pro Claude (mimo build, mimo TS scope)
 │   ├── draft_pillar_seo_geo_aeo_aio.md
 │   ├── mind-map.png
+│   ├── case-study-megadetail/            # evidence pro case study (DENIK.md zásahy+snapshoty, HLASENI.md schránka megadetail vlákna, PROMPT-HLASENI.md)
 │   ├── sniperdesign/agency-positioning.md
 │   └── products/
 │       ├── pack/                         # AI SEO Wireframe Pack zdroj
@@ -480,19 +481,24 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 ## VII — Aktuální stav
 
-> Snapshot k `2026-07-18`. Při auditu A přepsat datum a obsah.
+> Snapshot k `2026-08-17`. Při auditu A přepsat datum a obsah.
 >
-> **Audit 2026-07-18 (Režim A) — souhrn:** Infra (VPS `sd-ultron-vps`, service user uid993/gid984,
-> layout 2775, aktuální release na VPS = poslední commit, DNS apex+www, HTTPS 200, GitHub PUBLIC
-> + 5 secrets, CF Worker 405, Stripe URL na `/pack/` — nyní 4× místo 3×, PDFs `_review` 200)
-> **vše sedí**. Drift od 2026-05-24: (1) **blog 21 → 69 článků**; (2) **routes ~48 → 119** — nové huby
-> `/zacnete-tady/`, `/slovnik/`, `/serie/ai-seo-pro-eshopy/`, 9× `/blog/tema/`, `/ai-viditelnost/`,
-> `/autor/kamil/`, sekce **`/ai-mode/`** (7. sekce, abbr AIMODE), `/sluzby/`, `/rss.xml`;
-> (3) **obsahová infrastruktura**: tagy (povinný frontmatter `tags`), série (registr `series.ts`),
-> `published`/`updated` split, RelatedArticles, FreeStrip, E-E-A-T balík (byline/AuthorBox/Person @id),
-> ProofStrip + 200k landing, **dynamický `/llms.txt`** (endpoint, nahradil statický);
-> (4) **authorized_keys 13→14**; (5) **⚠️ wrangler lokální OAuth expirovaný** (viz §II Cloudflare) —
-> jediný nález k akci. Detaily v `cross-session/aiseo-optimalizace.md` (záznam 2026-07-18).
+> **Audit 2026-08-17 (Režim A) — souhrn:** Infra (VPS `sd-ultron-vps`, service user uid993/gid984,
+> layout 2775, release na VPS = poslední commit `37a7f0d`, DNS apex+www na 80.211.223.175, HTTPS 200,
+> GitHub PUBLIC + 5 secrets, CF Worker 405 + wrangler ultron@ / aktuální verze `f9eec8bd`,
+> Stripe URL na `/pack/` 4×, PDFs `_review` 11× 200, authorized_keys 14 beze změny) **vše sedí,
+> žádný nález k akci**. Ecomail smoke přeskočen (API klíč záměrně jen v CF Worker secret).
+> Drift od 2026-07-18: (1) **blog 69 → 141 článků**, **routes 119 → 247** (slovník má detailní
+> stránky hesel `/slovnik/<heslo>/`); (2) **/sluzby/ kompletně přestavěna** — prodejní landing
+> „editorial důkaz" s poptávkovým formulářem → CF Worker `/audit-inquiry` typ `sluzba`
+> + GA4 `generate_lead`/Meta Pixel `Lead` po úspěšném odeslání; (3) **cena auditu 3 600 Kč**
+> napříč webem, PDF i e-maily; (4) **třívrstvý model názvosloví** (AI SEO / AI vyhledávání /
+> AI viditelnost) dle researche `_source/_keyword-research/nazvoslovi-sluzby-20260811/`
+> promítnut do titulků, slovníku (+2 hesla), i18n a OG `/og/sluzby.jpg`; (5) **evidence case
+> study megadetail** `_source/case-study-megadetail/` (deník zásahů — 4 vlny textů kategorií
+> 08/2026, schránka hlášení, baseline zmínek v ChatGPT); (6) retenční balíček (ExitRescue,
+> inline CTA v článcích) + kontakt/gdpr externalizované do datové vrstvy (contact.ts,
+> privacy.ts). Detaily v `cross-session/aiseo-optimalizace.md` (záznamy 2026-08-10 až 08-17).
 
 ### Web (aiseo-optimalizace.cz)
 
@@ -526,9 +532,9 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 ### Backlog (známé následující úkoly)
 
 - ~~**Audit landing URL swap**~~ — ✅ HOTOVO (audit 2026-05-24): `/audit/` landing je LIVE; `/pack/` (7×) i `/pack/dekujeme/` (4×) odkazují na `/audit/`, žádný odkaz na `sniperdesign.cz/audity` nezbyl. Zbývá ověřit jen e-mail šablonu `email-pack-paid-v2.html` (mimo web, neověřeno auditem).
-- **`npx wrangler login`** — lokální OAuth expirovaný (audit 2026-07-18); nutné před příštím worker deployem. Interaktivní (browser), potřebuje uživatele.
 - **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
-- **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou.
+- **Datový check ~25. 8. 2026** — vyhodnocení srpnových zásahů: CTR refreshe (/ai-mode/, jak-vypnout-ai-overview, pripadova-studie), pozice „ai viditelnost", generate_lead lead_type=sluzba, dopad ExitRescue/inline CTA.
+- **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou; společně s Q3 snapshotem deníku megadetail (`_source/case-study-megadetail/DENIK.md`).
 - **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.
 - **Reálný kartový test celé chain** — volitelné, ověření že Stripe checkout UI + redirect + dekujeme stránka chodí end-to-end. Drobný 1.5 % fee zůstane při refundu.
 - **Stripe Tax (DPH)** — pokud CPU s.r.o. plátce DPH a chce automatické DPH na fakturách
@@ -586,7 +592,7 @@ Když uživatel řekne *„audit CLAUDE.md vs realita"*:
 10. Přepsat datumy „k YYYY-MM-DD" na nový datum
 11. Log do `cross-session/aiseo-optimalizace.md` ve formátu „Audit CLAUDE.md vs realita 2026-MM-DD: …"
 
-Příští audit: **2026-08-18** (měsíční kadence od auditu 2026-07-18).
+Příští audit: **2026-09-17** (měsíční kadence od auditu 2026-08-17).
 
 ---
 
