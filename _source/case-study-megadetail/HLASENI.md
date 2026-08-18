@@ -56,3 +56,32 @@ Poznámka k obsahu pro AI: texty jsou psané jako informační odpověď na nák
 (čím se produkty liší, co si vybrat, čeho se vyvarovat), ne jako výčet sortimentu.
 Strukturovaná data ani FAQ bloky zatím nasazené **nejsou** u žádné z těchto vln.
 Analýza prázdných kategorií (2026-08-13) sama o sobě nic nenasadila, je podkladem pro plán.
+
+## Hlášení 2026-08-18
+
+| Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
+|---|---|---|---|
+| 2026-08-16 – 08-18 | obsah kategorií | **55 kategorií psaných od nuly**, stejná pipeline jako minule: keyword research (Marketing Miner) → ověření sortimentu ze živých produktových stránek → draft → 2× GPT audit (jazyk/struktura/SEO + faktická úplnost a poměr informace:produkt) → validace interních odkazů → zápis → zpětné ověření. Struktura 5× H2, dělení 2 sekce nad produkty / 3 pod produkty. Délka měřená na 45 z nich (u zbylých 10 se datum souborů překrývá s předchozí vlnou): **2 175–2 656 zn., průměr 2 338**. Interní odkazy: 2–4 na kategorii, každý ověřen proti živému stromu kategorií. | jedna kategorie = jeden běh, žádné dávkové generování; bez FAQ bloku a bez strukturovaných dat |
+| 2026-08-17 | technika / obsah | **Oprava patvaru „čistící" → „čisticí"** napříč CZ mutací: 56 kategorií, 123 náhrad (pole `name`, `name_h1`, `seo_title`, `seo_description`, `description_text` a meta `text_pod_produkty`). Ošetřeno i „samočistící → samočisticí". | `seo_url` beze změny; obsah atributů `href`/`src` před náhradou zamaskován, aby se nerozbily odkazy |
+| 2026-08-18 | technika / obsah | **Oprava patvarů „leštící / sušící / ředící" → „lešticí / sušicí / ředicí"**: 160 kategorií, 599 náhrad, stejná pole. Kontrola na přechodníky (výskyt bez následného „í") vrátila 0, takže náhrada byla bezpečná. Součet obou vln = 216 záznamů kategorií, 722 náhrad; překryv obou seznamů jsem nezjišťoval, 216 je tedy horní hranice počtu unikátních kategorií. | zbytkový výskyt všech čtyř patvarů v CZ mutaci je nyní **0**; 267 výskytů zůstává v cizojazyčných mutacích, kam se záměrně nezapisuje |
+| 2026-08-16 – 08-18 | metadata kategorií | Doplněny chybějící `name_h1` u 8 kategorií, `seo_title` a `seo_description` u 8 kategorií. Opraveny 4 vadné hodnoty: rozbitý pád v H1 (KAT-472), překlep „čistění" (KAT-028) a **chybný název značky „Cleante" → „Cleantle"** (NEW-406, oprava v `name`, H1, title i description). U 2 kategorií rozšířen H1 a title o hlavní vyhledávaný tvar: „Detailingové vysavače" → „…a tepovače" (dotaz *tepovač* 9 500/měs) a „Rozmrazovače oken" → „Rozmrazovače skel a oken auta" (dotaz *rozmrazovač skel* 1 400/měs). | u neprázdných H1 se zasahovalo jen po schválení zadavatelem |
+
+**Stav celku: 1 102 z 1 381 produktových kategorií v CZ mutaci má text (k 2026-08-18).**
+Předchozí měřený stav: 1 047 z 1 381 (2026-08-16), tj. **+55 kategorií**.
+Stav před začátkem všech prací nebyl změřen — baseline pro kategorie stále chybí.
+
+Doplňující čísla k 2026-08-18 (stejná metoda měření jako minule):
+- 279 produktových kategorií zůstává bez textu.
+- Z toho **33 evergreen kategorií s produkty**, u kterých jde text napsat hned
+  (na začátku této vlny jich bylo 88).
+- Definice: produktová kategorie = `type == siteWithProducts`, má `url`, název nezačíná
+  znakem rozcestníku. „Má text" = neprázdné `description_text` **nebo** meta `text_pod_produkty`.
+
+Poznámka k obsahu pro AI: texty dál vznikají jako informační odpověď na nákupní otázku,
+ne jako výčet sortimentu. Druhé kolo auditu explicitně hlídá poměr informace : produkt
+(„zbyde po smazání názvů produktů funkční návod?"). Strukturovaná data ani FAQ bloky
+nadále nasazené **nejsou**.
+
+Vedlejší výstup: při ověřování sortimentu bylo zaznamenáno 12 katalogových vad
+(chybně zařazené produkty, prázdné popisy, nesoulad objemu v názvu a ve výpisu).
+Nejsou opravené — jsou předané zadavateli jako seznam.
