@@ -85,6 +85,7 @@ jako vzorek, trend až z řady běhů. Runs v `Tools/měření AI viditelnosti/r
 |---|---|---|---|---|---|
 | 2026-08-07 | 33 % | 33 % | — | 33 % | |
 | 2026-08-12 | 28 % | 25 % | 19 % | 43 % | GA4: 245 AI sessions/30 d (220 ChatGPT) |
+| 2026-08-18 | 41 % | 34 % | 34 % | 65 % | GA4: 246 AI sessions/30 d; první běh PO vlnách textů kategorií (10.–16. 8.) — pohyb nahoru napříč metrikami, ale 1 běh ≠ trend, potvrdit dalšími běhy |
 
 ## 4) Kam se čísla propisují (při každé aktualizaci projít vše)
 
