@@ -15,7 +15,7 @@ export const llms = {
     "Český edukativní web o AI éře vyhledávání: SEO, GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), AIO (AI Optimization) a Google AI Mode. Praktické postupy pro e-shopy a firemní weby, jak zvýšit AI viditelnost — být citovaný v ChatGPT, Perplexity, Google AI Overviews i AI Mode.",
   /** Volný odstavec pod souhrnem (provozovatel, model webu). */
   about:
-    "Web aiseo-optimalizace.cz provozuje agentura Sniper Design (CPU s.r.o., Praha) — Zlatý partner Upgates od 2016. Obsah kombinuje edukativní průvodce zdarma s komerčními službami: free PDF návod, placený AI SEO Wireframe Pack a AI SEO audit. Autorem obsahu je Kamil ze Sniper Design; jak obsah vzniká, popisuje stránka autora.",
+    "Web aiseo-optimalizace.cz je produktem agentury Sniper Design (CPU s.r.o., Praha) — Zlatého partnera Upgates od 2016; agentura pod touto značkou poskytuje i všechny zde nabízené AI SEO služby. Obsah kombinuje edukativní průvodce zdarma s komerčními službami: free PDF návod, placený AI SEO Wireframe Pack a AI SEO audit. Autorem obsahu je Kamil ze Sniper Design; jak obsah vzniká, popisuje stránka autora.",
 
   /** Nadpisy sekcí souboru. */
   sections: {

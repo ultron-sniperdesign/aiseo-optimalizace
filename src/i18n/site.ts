@@ -37,7 +37,7 @@ export const site = {
     name: "Sniper Design",
     alternateName: "CPU s.r.o.",
     description:
-      "Edukativní průvodce AI SEO — viditelností webu v AI vyhledávání (SEO, GEO, AEO, AIO, AI Mode). Provozuje agentura Sniper Design (CPU s.r.o.).",
+      "Edukativní průvodce AI SEO — viditelností webu v AI vyhledávání (SEO, GEO, AEO, AIO, AI Mode). Produkt agentury Sniper Design (CPU s.r.o.).",
     sameAs: [
       "https://www.sniperdesign.cz/",
       "https://www.megadetail.cz/",

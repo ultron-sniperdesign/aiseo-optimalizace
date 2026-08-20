@@ -31,7 +31,7 @@ export const hero = {
     "ChatGPT, Perplexity i Google AI dnes odpovídají za vás — otázka je, <strong>jestli v té odpovědi jste</strong>. Připravíme váš web tak, aby ho AI uměla přečíst, pochopit a citovat — zvýšíme vaši <strong>AI viditelnost</strong>. Ne podle teorie: podle toho, co měříme na vlastním e-shopu.",
   ctaPrimary: { label: "Začít auditem — 3 600 Kč", href: "/audit/" },
   ctaSecondary: { label: "Co přesně děláme", href: "#kroky" },
-  trustLine: "AI SEO agentura s vlastními daty · 600+ e-shopů od 2016 · Zlatý partner Upgates i Shoptet",
+  trustLine: "AI SEO agentura Sniper Design · 600+ e-shopů od 2016 · Zlatý partner Upgates i Shoptet",
 };
 
 /** Stylizovaná karta GSC reportu v hero (čísla z proof.ts / case study). */

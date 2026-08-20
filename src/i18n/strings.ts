@@ -184,7 +184,7 @@ export const footer = {
   tagline:
     "Praktický průvodce AI érou vyhledávání pro český trh. Co je rozdíl mezi SEO, GEO, AEO a AIO — a kdy kterou techniku použít na webu nebo e-shopu.",
   /** Skládá se jako: © {rok} {doména} · {builtNote} */
-  builtNote: "postaveno na Astru · hostováno v ČR",
+  builtNote: "produkt agentury Sniper Design · postaveno na Astru · hostováno v ČR",
   sitemapLabel: "Sitemap",
   rssLabel: "RSS",
   updatedLabel: "Aktualizováno květen 2026",
