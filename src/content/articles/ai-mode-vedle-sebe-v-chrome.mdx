@@ -1,14 +1,14 @@
 ---
 title: "AI Mode v Chromu: web se otevře vedle odpovědi"
 description: "Google v AI Mode v Chromu otevírá odkaz vedle odpovědi, ne místo ní. Co to dělá s vaší stránkou, když vedle ní zůstává otevřený panel AI Mode."
-answer: "Google od 16. dubna 2026 v AI Mode v Chromu na desktopu otevírá kliknutý odkaz vedle odpovědi — AI Mode zůstává otevřený a uživatel se může doptávat dál. Vaše stránka se tedy zobrazí v užším okně a vedle ní zůstává otevřený panel AI Mode. Zatím jen v USA a v tomto oznámení jen pro desktop."
+answer: "Google od 16. dubna 2026 v AI Mode v Chromu na desktopu otevírá kliknutý odkaz vedle odpovědi — AI Mode zůstává otevřený a uživatel se může doptávat dál. Vaše stránka se tedy zobrazí v užším okně a vedle ní zůstává otevřený panel AI Mode. Rozdělené zobrazení Google popsal pro desktop a pro USA; samotný Režim AI v Chromu je podle nápovědy popsaný i pro Android a iOS a rozšiřuje se mimo USA."
 slug: "ai-mode-vedle-sebe-v-chrome"
 category: "analysis"
 tags:
   - "ai-platformy"
   - "obsah"
 published: "2026-08-04"
-updated: "2026-08-04"
+updated: "2026-08-19"
 keywords:
   - "ai mode chrome"
   - "ai mode vedle sebe"
@@ -19,17 +19,17 @@ variant: "rich"
 stats:
   - value: "16. 4."
     label: "2026 — datum oznámení na blogu Googlu, ne srpnová novinka"
-  - value: "1"
-    label: "země, kde to Google při oznámení spustil: USA"
+  - value: "USA"
+    label: "země, kterou Google u rozděleného zobrazení výslovně uvedl; nápověda k Režimu AI v Chromu mluví o rozšiřování mimo USA"
   - value: "desktop"
-    label: "platforma, pro kterou Google rozdělené zobrazení popsal"
+    label: "platforma, pro kterou Google rozdělené zobrazení popsal; Režim AI v Chromu jako takový je popsaný i pro mobil"
 faq:
   - q: "Co se v AI Mode v Chromu změnilo?"
     a: "Google 16. dubna 2026 oznámil, že v AI Mode v Chromu na desktopu se kliknutý odkaz otevře vedle odpovědi. Doslova píše, že kliknutí na odkaz otevře webovou stránku vedle AI Mode. Panel s odpovědí tedy nezmizí a uživatel může pokračovat v dotazech, aniž by přepínal karty."
   - q: "Platí to i na mobilu?"
-    a: "Rozdělené zobrazení Google popisuje pro desktop. Pro mobil zmiňuje v témže oznámení něco jiného — nabídku plus ve vyhledávacím poli na stránce nové karty, přes kterou jde do dotazu přidat nedávné karty."
+    a: "Rozdělené zobrazení Google popisuje pro desktop. Samotný Režim AI v Chromu na mobilu ale existuje: nápověda ho popisuje pro Android i iPhone a iPad a tlačítko AI Mode na stránce nové karty Google oznámil už 5. listopadu 2025. Jsou to dvě různé věci."
   - q: "Funguje to v Česku?"
-    a: "Při oznámení ne. Google napsal, že je funkce dostupná v USA a že ji brzy rozšíří do dalších míst po světě. Žádný termín ani seznam dalších zemí neuvedl, Česko nezmínil. Ověřit si to odsud tedy spolehlivě nejde."
+    a: "Doložit to neumím. Dubnové oznámení mluví o USA a o brzkém rozšíření bez termínu i bez seznamu zemí. Česká nápověda k Režimu AI v Chromu existuje a uvádí, že se funkce postupně zpřístupňuje mimo USA a v jiných jazycích než angličtině — Česko ani češtinu ale nejmenuje. Přeložená nápověda dostupnost nedokazuje."
   - q: "Jak se taková návštěva projeví v analytice?"
     a: "Google to v oznámení neřeší a my to netvrdíme. Není z něj poznat, jak se návštěva chová z hlediska zdroje návštěvnosti ani jestli ji Search Console vykazuje jinak. Bez vlastního testu nebo dalšího zdroje se to z oznámení vyčíst nedá."
   - q: "Co to znamená pro moji stránku?"
@@ -48,14 +48,14 @@ Novinka není v tom, že AI Mode odkazuje na weby. Ta je v tom, **co se stane po
 
 ## Co Google <span class="hl">oznámil</span>
 
-Na svém blogu 16. dubna 2026 — tedy ne v srpnu, jak se to místy podává mezi čerstvými novinkami — Google popsal změnu jednou větou: *„clicking a link opens the webpage side-by-side with AI Mode."* Kliknutí na odkaz otevře stránku **vedle** AI Mode.
+Na svém blogu 16. dubna 2026 — tedy ne v srpnu, jak se to místy podává mezi čerstvými novinkami — Google popsal změnu jednou větou: *„clicking a link opens the webpage side-by-side with AI Mode.“* Kliknutí na odkaz otevře stránku **vedle** AI Mode.
 
 Panel s odpovědí tedy nezmizí. Uživatel si otevře váš text a může se rovnou doptat dál, aniž by přepínal karty.
 
 Ve stejném oznámení Google přidal ještě možnost vzít do dotazu **víc otevřených karet, obrázků nebo souborů PDF** a poslat je do AI Mode jako kontext.
 
 <Insight tone="aeo" icon="i" label="Dostupnost — a proč to odsud nevyzkoušíte">
-Google napsal, že je to *„now available in the U.S., and we'll expand soon to more places around the world."* **Žádný termín, žádný seznam dalších zemí, o Česku ani slovo.** Kdo vám dnes ukazuje, jak se to chová na českých výsledcích, ukazuje něco jiného.
+Google napsal, že je to *„now available in the U.S., and we'll expand soon to more places around the world.“* **Žádný termín, žádný seznam dalších zemí, o Česku ani slovo.** Kdo vám dnes ukazuje české nasazení téhle konkrétní podoby rozděleného zobrazení, měl by k tomu doložit zdroj — z veřejných podkladů to neplyne.
 </Insight>
 
 <Checklist
@@ -64,8 +64,8 @@ Google napsal, že je to *„now available in the U.S., and we'll expand soon to
   items={[
     { title: "Jen v AI Mode", desc: "Ne v běžných výsledcích vyhledávání a ne v AI Overviews." },
     { title: "Popsané pro Chrome", desc: "Google to v tomhle oznámení popisuje pro AI Mode v Chromu; o jiných prohlížečích nic neříká." },
-    { title: "Jen na desktopu", desc: "Pro mobil Google v témže postu popisuje jinou věc — přidávání karet do dotazu." },
-    { title: "Při oznámení jen v USA", desc: "Rozšíření do dalších zemí Google slíbil bez termínu a bez seznamu." },
+    { title: "Jen na desktopu", desc: "Rozdělené zobrazení Google popsal pro desktop. Samotný Režim AI v Chromu je v nápovědě popsaný i pro Android a iOS — to je ale jiná věc než otevírání odkazu vedle odpovědi." },
+    { title: "Při oznámení jen v USA", desc: "Rozšíření do dalších zemí Google slíbil bez termínu a bez seznamu. Nápověda k Režimu AI v Chromu dnes uvádí, že se funkce postupně zpřístupňuje mimo USA a mimo angličtinu — konkrétně o rozdělené zobrazení tam ale nejde." },
   ]}
 />
 
@@ -98,7 +98,7 @@ Jako pracovní závěr z toho plyne, že první obrazovka vašeho textu bude dů
 
 ## Dva výklady <span class="hl">téže změny</span>
 
-Google to rámuje jako pohodlí pro uživatele: díky rozdělenému zobrazení je *„much easier to visit relevant websites"* a porovnávat detaily bez přepínání karet. Vzato doslova, je to argument ve prospěch webů: Google to prezentuje jako snazší cestu na relevantní weby. Že by z toho plynulo víc návštěv, ale v oznámení není.
+Google to rámuje jako pohodlí pro uživatele: díky rozdělenému zobrazení je *„much easier to visit relevant websites“* a porovnávat detaily bez přepínání karet. Vzato doslova, je to argument ve prospěch webů: Google to prezentuje jako snazší cestu na relevantní weby. Že by z toho plynulo víc návštěv, ale v oznámení není.
 
 Vydavatelská čtení bývá opatrnější: dokud panel s odpovědí zůstává na obrazovce, zůstává na ní i nabídka odejít jinam. Návštěva u vás pak nemusí být konec cesty, ale jen jedna z průběžných zastávek.
 
@@ -110,7 +110,28 @@ Obojí se může projevit různě podle typu dotazu a stránky. **Rozhodnout mez
 V oznámení **není** ani slovo o tom, jak se taková návštěva chová v analytice, jestli ji Search Console vykazuje jinak, v jakém poměru je okno rozdělené, ani jestli je to chování výchozí, nebo volitelné. **Nevíme to a netvrdíme to.** Všechno, co v tomhle článku následuje jako doporučení, je odvozené z toho, jak funkce podle popisu vypadá — ne z měření.
 </Insight>
 
-To je důležité hlavně proto, že se u podobných změn rychle objeví „analýzy" s procenty dopadu na CTR. Zatím není z čeho je spočítat.
+To je důležité hlavně proto, že se u podobných změn rychle objeví „analýzy“ s procenty dopadu na CTR. Zatím není z čeho je spočítat.
+
+## Co k tomu přibylo do srpna 2026
+
+Článek vyšel v srpnu 2026 a stál na jediném oznámení z dubna. Při kontrole **19. 8. 2026** jsem k rozdělenému zobrazení **žádné novější oznámení Googlu nenašel** — dubnový post je beze změny, bez poznámky o aktualizaci. Nenašel ale neznamená neexistuje.
+
+Nápověda mezitím říká víc než ten post:
+
+| Co nápověda uvádí (čteno 19. 8. 2026) | Detail |
+|---|---|
+| **český název** | funkce se v češtině jmenuje **Režim AI v Chromu** |
+| **platformy** | popsaná pro **počítač, Android i iPhone a iPad** |
+| **dostupnost** | „momentálně není k dispozici pro všechny uživatele ani na všech zařízeních. Tuto funkci postupně zpřístupňujeme **mimo USA a v jiných jazycích než angličtině**“ |
+| **postranní panel** | u dotazu na právě otevřenou stránku se výsledek zobrazí v **postranním panelu AI Mode** |
+
+Dvě věci z toho stojí za zdůraznění:
+
+<Insight tone="aio" icon="i" label="Co se u téhle funkce nejčastěji plete">
+  Tlačítko AI Mode na stránce nové karty v Chromu Google oznámil už **5. listopadu 2025**, tedy pět měsíců **před** dubnovým postem, a rovnou pro iOS a Android. **Mobilní přítomnost Režimu AI v Chromu je tedy starší než změna, o které je tenhle článek** — a s rozděleným zobrazením nesouvisí.
+</Insight>
+
+Pro čtenáře z Česka platí totéž co u jiných funkcí: **česká nápověda existuje, seznam zemí ne.** Přeložený řetězec dostupnost nedokazuje — u Ask Maps to dopadlo [stejně](/blog/ask-maps-odpovedi-v-mapach/), u AI Mode ve vyhledávání naopak Google [seznam zemí uvádí](/blog/ai-mode-cesky/) a Česko v něm je.
 
 ## V analytice to <strong>nepoznáte</strong> — pokud si to nenastavíte
 
@@ -167,7 +188,7 @@ Přesné rozhraní nenapodobíte, ale to podstatné — kolik vašeho obsahu se 
 
 Ten test má smysl i bez ohledu na AI Mode. Úzká desktopová okna používají lidé i běžně — vedle dokumentu, vedle videohovoru, na rozdělené obrazovce.
 
-Kdy se funkce dostane do Česka, Google neřekl — formulace *„we'll expand soon to more places"* je bez data i bez seznamu zemí. Připravit stránky na užší okno se ale vyplatí bez ohledu na to, protože stejným směrem jde i [AI Mode jako celek](/blog/google-ai-mode/) a rozdíl [proti AI Overviews](/blog/ai-mode-vs-ai-overviews/) se dál stírá.
+Kdy se funkce dostane do Česka, Google neřekl — formulace *„we'll expand soon to more places“* je bez data i bez seznamu zemí. Připravit stránky na užší okno se ale vyplatí bez ohledu na to, protože stejným směrem jde i [AI Mode jako celek](/blog/google-ai-mode/) a rozdíl [proti AI Overviews](/blog/ai-mode-vs-ai-overviews/) se dál stírá.
 
 ## Shrnutí
 
@@ -175,5 +196,5 @@ Kdy se funkce dostane do Česka, Google neřekl — formulace *„we'll expand s
 - **AI Mode zůstává otevřený** a uživatel se může doptávat dál.
 - Pro vaši stránku z toho plyne **užší okno** a to, že **AI Mode zůstává vedle ní otevřený**.
 - Google **neřekl nic** o měření takové návštěvy, o poměru rozdělení okna ani o tom, jestli jde o výchozí chování.
-- Dostupnost při oznámení: **USA**, rozšíření bez termínu.
+- Dostupnost rozděleného zobrazení při oznámení: **USA**, rozšíření bez termínu. Nápověda k Režimu AI v Chromu dnes mluví o postupném zpřístupňování mimo USA a mimo angličtinu, o rozděleném zobrazení ale nic.
 - Co dělat: otestovat stránku v užším okně, dát odpověď nahoru, uklidit sticky prvky. Ty úpravy dávají smysl i mimo tuhle funkci — úzká desktopová okna lidé používají i běžně.
