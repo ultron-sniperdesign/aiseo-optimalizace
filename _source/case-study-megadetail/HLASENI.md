@@ -85,3 +85,50 @@ nadále nasazené **nejsou**.
 Vedlejší výstup: při ověřování sortimentu bylo zaznamenáno 12 katalogových vad
 (chybně zařazené produkty, prázdné popisy, nesoulad objemu v názvu a ve výpisu).
 Nejsou opravené — jsou předané zadavateli jako seznam.
+
+## Hlášení 2026-08-20
+
+| Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
+|---|---|---|---|
+| 2026-08-18 – 08-20 | obsah kategorií | **55 kategorií psaných od nuly**, stejná pipeline jako v předchozích vlnách: keyword research (Marketing Miner) → ověření sortimentu ze živých produktových stránek → draft → 2× GPT audit → validace interních odkazů → zápis → zpětné ověření přes API. Struktura 5× H2, dělení 2 sekce nad produkty / 3 pod produkty. Délka (bez HTML) **1 950–2 453 zn., průměr 2 212**; jediný text pod 2 000 zn. je NEW-583 (1 950). Interní odkazy 1–3 na kategorii, každý ověřen proti živému stromu kategorií. | jedna kategorie = jeden běh, žádné dávkové generování; bez FAQ bloku a bez strukturovaných dat |
+| 2026-08-19 – 08-20 | obsah kategorií / lokální SEO | Z těch 55 je **30 lokálních landingů „značka + Praha"** (Gyeon, Koch Chemie, CarPro, Meguiar's, Soft99, Menzerna, ValetPro, Nuke Guys, Chemical Guys, Rupes, SCANGRIP, Work Stuff, Poka Premium, Bilt Hamber, Angelwax, Liquid Elements, Ultracoat, Gliptone, ChemicalWorkz, OneWax, Bad Boys, BigBoi, AVA of Norway, NexDiag, Millers Oils, California Scents, FRESSO, Imao Parfums, Smell of Life + obecná „Autokosmetika Praha“). Před touto vlnou měl text jediný z nich (Auto Finesse Praha, ~1 050 zn., 1× H2). **Nyní má text všech 31.** Do textů jsou zapracované ověřené provozní údaje z webu: adresa a otevírací doba prodejny Praha 10 – Malešice, parkování, osobní odběr zdarma, MEGA HALA Praha 9 – Horní Počernice, certifikace Koch Chemie. | každý landing má vlastní věcnou osu (značení řad, systém past, výběr podle materiálu…), aby 30 stránek o téže prodejně nebylo 30× totéž |
+| 2026-08-18 – 08-20 | metadata kategorií | Doplněno **35× chybějící `name_h1`** a **6× chybějící `seo_title` + `seo_description`** (UV lampy, Motorové oleje, Reflektory, Ochranné koberečky, Organizéry hadic, Koncentráty vůní). Neprázdné hodnoty se nepřepisovaly. Po vlně mají všechny 4 pole vyplněné všechny zpracované kategorie (55/55). | zásah do neprázdných polí se nekonal |
+
+**Stav celku: 1 191 z 1 381 produktových kategorií v CZ mutaci má text (k 2026-08-20).**
+Předchozí hlášený stav: 1 102 z 1 381 (2026-08-18). Rozdíl je **+89**, ale v tomto vlákně vzniklo
+**55** textů. Zbylých ~34 kategorií neumím doložit vlastní prací — buď je psal někdo jiný, nebo byl
+údaj 1 102 měřen nad snapshotem, do kterého se ještě nepropsaly všechny zápisy. **Nedopočítávám to**,
+uvádím jen měřený stav a vlastní ověřený příspěvek.
+
+Doplňující čísla k 2026-08-20 (stejná metoda měření jako v minulých hlášeních):
+- 190 produktových kategorií zůstává bez textu.
+- Evergreen fronta s produkty je vyčerpaná — zbývající kategorie jsou akční a sezónní stránky,
+  dárkové sady, brandové „sady pro detailing", duplicitní SEO uzly a kategorie bez produktů.
+- Definice: produktová kategorie = `type == siteWithProducts`, má `url`, název nezačíná
+  znakem rozcestníku. „Má text" = neprázdné `description_text` **nebo** meta `text_pod_produkty`.
+
+Poznámka k obsahu pro AI: druhé kolo auditu dál hlídá poměr informace : produkt. V této vlně
+zachytilo mimo jiné pět věcných chyb, které se do textů dostaly a byly opraveny před zápisem:
+záměna významu barevného kódu kotoučů mezi dvěma řadami jedné značky, špatná definice GSM
+(uvedeno jako hustota vlákna místo gramáže), tvrzení o vytvrzení laku po leštění bez ochrany,
+protimluv u protiotřesových rukavic (doporučení k leštičce vs. zákaz u rotujících dílů)
+a přiřazení vlastnosti „bez plnidel" celé řadě past místo jediného produktu.
+Strukturovaná data ani FAQ bloky nadále nasazené **nejsou**.
+
+Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou opravené, jen předané):
+- **17 kategorií má 0 produktů** (Gyeon PPF EVO, Ultracoat Scoat / CARBON / ONE, Rain-X, Epoca,
+  Biemmedue, Meclube, Parní čističe, Čističe skla na lodě, Ředicí láhve, Prachovky, Odstraňovače
+  škrábanců, Sady na čištění motoru, Sady příslušenství, Odmašťovače na pasty, Kartáčky na vosky).
+- **KiurLab** (`/kiurlab`) a **Motorové oleje** (`/motorove-oleje`, NEW-301) vracejí **404**;
+  u olejů jde o duplicitu k funkční `/motorove-oleje-1`.
+- **NEW-414 „Rukavice na čištění skla" je podmnožinou NEW-415 „Waffle rukavice na sklo"** —
+  jediný produkt první kategorie je i ve druhé, která má navíc tři další. Kandidát na sloučení.
+- **Chemical Guys** je v e-shopu už jen ve 3 SKU, všechny z řady MOTO, ale meta description
+  kategorie slibuje šampony, vosky a detailery.
+- **Dvě různé adresy prodejny na webu**: stránka prodejny i patička uvádějí *Akademická 5,
+  Malešice, Praha 10*, kontaktní widget v hlavičce a obchodní podmínky *Karlovarská 1698/1,
+  163 00 Bílá hora*. Do textů byla použita jen první varianta.
+- Překlepy v katalogu: slug značky Angelwax `/autokosmettika-angelwax` (dvě „t"), značka
+  **Gliptone** vedená jako „Glipton" v názvu i slugu.
+- Rozpor v popisu produktu Black Mamba Heavy Duty Gloves: v jednom odstavci „černé rukavice",
+  o kus dál „vyrobeny ve žluté barvě s vysokou viditelností".
