@@ -1,0 +1,152 @@
+---
+title: "Je ta AI funkce v Česku? Jak si to ověřit u zdroje"
+description: "Šest kroků, kterými zjistíte, jestli je konkrétní AI funkce Googlu dostupná v ČR — a pět příkladů, kde jsem tou metodou došel k odpovědi ano, částečně i ne."
+answer: "Dostupnost AI funkce v Česku se ověřuje ve dvou zdrojích: v oznámení výrobce a v nápovědě. Rozhoduje, jestli nápověda obsahuje výslovný seznam zemí a jazyků. Česká verze nápovědy sama o sobě nic nedokazuje — dokládá jen existenci překladu. Když seznam chybí, rozhodne až vlastní test."
+slug: "jak-overit-dostupnost-ai-funkce"
+category: "tutorial"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-08-19"
+updated: "2026-08-19"
+variant: "rich"
+keywords:
+  - "je ai mode dostupný v česku"
+  - "dostupnost ai funkcí v čr"
+  - "jak ověřit ai funkci"
+  - "podporované země google ai"
+  - "ai funkce čeština"
+  - "google ai dostupnost"
+stats:
+  - value: "2"
+    label: "zdroje, které rozhodují: oznámení výrobce a nápověda se seznamem zemí"
+  - value: "5"
+    label: "funkcí, na kterých je metoda v článku předvedená — s výsledkem ano, částečně i ne"
+  - value: "0"
+    label: "co o dostupnosti dokazuje samotný překlad nápovědy do češtiny"
+faq:
+  - q: "Proč nestačí přečíst oznámení?"
+    a: "Protože oznámení popisuje stav v den vydání a formulace bývají nepřesné. Věta o rozšíření do stovek zemí v angličtině neříká nic o tom, jestli funkce běží v češtině. A příspěvky se zpětně neaktualizují."
+  - q: "Dokazuje česká nápověda, že funkce v Česku funguje?"
+    a: "Ne. Dokazuje jen to, že existuje přeložený text nápovědy. U funkce Zeptat se Map i u rozděleného zobrazení v AI Mode v Chromu je česká nápověda a seznam zemí v ní chybí; u AI Mode ve vyhledávání je naopak seznam a Česko v něm je."
+  - q: "Co když nápověda seznam zemí neuvádí?"
+    a: "Pak z veřejných zdrojů odpověď nedostanete a rozhodne jen vlastní test. Ten ale platí pro jeden účet, jednu zemi a jeden okamžik, takže z něj nedělejte závěr o celém trhu."
+  - q: "Znamená nedoložená dostupnost, že funkce v Česku není?"
+    a: "Ne. Znamená to jen, že to z veřejných zdrojů doložit neumíte. Rozdíl mezi nedoloženo a nedostupné je zásadní, protože se podle něj rozhoduje o práci a penězích."
+  - q: "K čemu je to prakticky?"
+    a: "Rozhodujete se, jestli něco měnit na webu. Příprava na funkci, která tu není doložená, je náklad bez opory. Naopak u funkce, která tu doložená je, nemá smysl čekat."
+  - q: "Platí ta metoda i mimo Google?"
+    a: "Princip ano: oznámení, dokumentace, seznam zemí, vlastní test. Příklady v článku jsou z Googlu, protože u něj je dokumentace nejpodrobnější a nejčastěji se na ni odkazuje."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Je ta AI funkce v Česku? Jak si to ověřit u zdroje
+
+Skoro každá novinka v AI vyhledávání přijde s větou „už je to venku“. O pár dní později se ptá klient, jestli se na to má připravit. A odpověď na tu otázku skoro nikdy není v článku, ze kterého se to člověk dozvěděl.
+
+Následující postup používám u každé funkce, o které tady píšu. Není složitý, jen ho skoro nikdo nedělá.
+
+<Insight tone="geo" icon="✓" label="Věta, kterou můžete převzít">
+  „Dostupnost AI funkce v Česku veřejně dokládá **výslovný seznam zemí a jazyků v nápovědě** — buď u té funkce, nebo u funkce, na kterou se výslovně odkazuje. Ne oznámení a ne to, že nápověda existuje v češtině. Když takový seznam chybí, dostupnost z veřejných zdrojů doložit nejde.“
+
+  **Nepoužívejte:** česká nápověda jako důkaz · „stovky zemí v angličtině“ jako důkaz pro češtinu · nedoloženo jako synonymum pro nedostupné.
+</Insight>
+
+## Krátká odpověď
+
+- **Rozhodují dva zdroje:** oznámení výrobce a nápověda.
+- **Klíčové je, jestli nápověda má výslovný seznam zemí a jazyků.** Když v něm je Česko a čeština, máte veřejně doloženou dostupnost — ne ale automaticky stejný stav pro každý účet a zařízení.
+- **Překlad nápovědy nic nedokazuje** a nedoložené není totéž co nedostupné.
+
+## Šest kroků
+
+<Stepper tone="accent" steps={[
+  { label: "Krok 1", title: "Najděte oznámení a vypište si větu o dostupnosti", text: "Doslova, i s datem příspěvku. Oznámení popisuje stav v den vydání a zpětně se skoro nikdy neaktualizuje, takže datum je součást informace." },
+  { label: "Krok 2", title: "Rozpoznejte typ formulace", text: "Opakují se tři: výčet zemí, jazykový rozsah typu ve stovkách zemí v angličtině, a odkaz na jinou funkci typu všude, kde je dostupný AI Mode." },
+  { label: "Krok 3", title: "Otevřete nápovědu k funkci", text: "Rozhoduje, jestli obsahuje výslovný seznam zemí a jazyků, nebo jen větu, že funkce není dostupná pro všechny uživatele." },
+  { label: "Krok 4", title: "Přepněte jazyk nápovědy a nenechte se zmást", text: "Česká verze stránky dokazuje jen existenci překladu. Seznam zemí je ta část, na které záleží — a bývá v obou verzích stejný." },
+  { label: "Krok 5", title: "Zkontrolujte podmínky přístupu", text: "Zeměpis a jazyk nejsou jediné osy. Rozhodovat může typ účtu (část funkcí na firemních účtech Workspace neběží), přihlášení, platforma, verze aplikace nebo to, že je funkce vedená jako experiment. Negativní výsledek bez téhle kontroly nic nedokazuje." },
+  { label: "Krok 6", title: "Teprve pak testujte sami", text: "Vlastní test platí pro jeden účet, jednu zemi a jeden okamžik. Zapište si datum, zařízení a jestli jste byli přihlášení." }
+]} />
+
+## Tři formulace, na kterých to nejčastěji padá
+
+| Formulace v oznámení | Co skutečně znamená |
+|---|---|
+| *„available in the U.S. and India“* | oznámení jmenuje výslovně jen tyhle země; pro jinou zemi z něj dostupnost nevyčtete |
+| *„over 150 countries and territories **in English**“* | rozsah **jazykový**, ne územní. O češtině neříká nic, i kdyby Česko do těch zemí patřilo |
+| *„wherever AI Mode is available“* | odpověď je jinde — jděte po odkazu do nápovědy té druhé funkce |
+
+Ta prostřední je nejzrádnější. **Stovky zemí v angličtině není totéž co dostupnost v češtině** a rozdíl mezi tím rozhoduje o tom, jestli funkci uvidí váš zákazník.
+
+## Pět funkcí, na kterých to ukážu
+
+Všechno níž je ověřené v srpnu 2026 touhle metodou:
+
+| Funkce | Co rozhodlo | Závěr pro ČR |
+|---|---|---|
+| **AI Mode ve vyhledávání** | nápověda má seznam zemí a jazyků; **Česko i čeština v něm jsou** | **ano, doloženo** |
+| **Search Live** | oznámení říká, že je dostupný všude, kde je AI Mode, a odkazuje na jeho nápovědu | **ano, doloženo přes odkaz** |
+| **Propojené aplikace v AI Mode** | Gmail a Fotky Google podle oznámení široce, ale u Kalendáře stojí *„only available in the US in English“* | **částečně** |
+| **Zeptat se Map (Ask Maps)** | oznámení jmenuje jiné země a přidává 150+ zemí v angličtině; nápověda seznam nemá | **nedoloženo** |
+| **Rozdělené zobrazení v AI Mode v Chromu** | oznámení mluví o USA; nápověda říká, že se funkce postupně zpřístupňuje mimo USA — bez seznamu | **nedoloženo** |
+
+Detaily jednotlivých případů mají samostatné články: [AI Mode v Googlu česky](/blog/ai-mode-cesky/), [propojené aplikace v AI Mode](/blog/propojene-aplikace-v-ai-mode/), [Ask Maps](/blog/ask-maps-odpovedi-v-mapach/) a [AI Mode v Chromu](/blog/ai-mode-vedle-sebe-v-chrome/).
+
+<Insight tone="warn" icon="!" label="Nedoloženo není nedostupné">
+  U dvou z pěti funkcí jsem skončil na „nevím“. **To není totéž jako „v Česku to není.“**
+
+  Rozdíl je praktický: u nedoložené funkce se nedá stavět plán ani rozpočet, ale taky se nedá tvrdit, že ji váš zákazník nevidí. Když někdo prodává přípravu na takovou funkci, měl by dostupnost doložit — ne naopak.
+</Insight>
+
+## Co si zapsat, když už testujete sami
+
+<Checklist tone="geo" title="Pět údajů, bez kterých test nemá cenu" items={[
+  { title: "Datum a čas", desc: "Dostupnost se mění po týdnech. Test bez data je za měsíc bezcenný." },
+  { title: "Země a jazyk rozhraní", desc: "Nastavení jazyka i fyzická poloha můžou rozhodovat každé zvlášť." },
+  { title: "Přihlášení", desc: "Zapište, jestli jste byli přihlášení a na jakém typu účtu — část funkcí na firemních účtech Workspace nefunguje." },
+  { title: "Zařízení a prohlížeč", desc: "Řada funkcí vychází nejdřív na jedné platformě. Desktop a mobil jsou dva různé testy." },
+  { title: "Přesné znění dotazu", desc: "Aby šlo test zopakovat. Bez toho neporovnáte, jestli se změnila funkce, nebo jen vaše zadání." }
+]} />
+
+Kolikrát dotaz opakovat, aby výsledek něco znamenal, rozebírá [volatilita AI odpovědí](/blog/volatilita-ai-odpovedi/); jak z toho udělat pravidelné měření, [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake number="01" title="Brát českou nápovědu jako důkaz">
+    Přeložený text znamená jen to, že ho někdo přeložil. Rozhoduje seznam zemí, ne jazyk stránky.
+  </Mistake>
+  <Mistake number="02" title="Číst jazykový rozsah jako územní">
+    Formulace o stovkách zemí v angličtině neříká nic o češtině. Jsou to dvě různé osy dostupnosti.
+  </Mistake>
+  <Mistake number="03" title="Spoléhat na datum článku, ze kterého se to člověk dozvěděl">
+    Rozhoduje datum oznámení výrobce, ne datum přehledu novinek, který ho převzal o tři měsíce později.
+  </Mistake>
+  <Mistake number="04" title="Vyvozovat z jednoho testu závěr o trhu">
+    Jedno pozorování platí pro jeden účet, jednu zemi a jeden okamžik. Nic víc z něj nevytáhnete.
+  </Mistake>
+</MistakeGrid>
+
+## Limity
+
+Metoda odpoví jen na otázku **dostupnosti**, ne na to, jak dobře funkce v češtině funguje. To je jiná otázka a odpovídá na ni jen vlastní zkoušení.
+
+**Nápovědy se mění bez oznámení.** Ověření platí ke dni, kdy jste ho udělali — proto si u každého tvrzení píšu datum odečtu.
+
+**Nenašel neznamená neexistuje.** Když seznam zemí nenajdu, může být v dokumentaci, kterou jsem nečetl.
+
+## Co si odnést
+
+**Rozhoduje výslovný seznam zemí a jazyků v nápovědě.** Oznámení říká, jak to bylo v den vydání; nápověda je obvykle nejlepší veřejný zdroj aktuálního stavu.
+
+**Překlad není dostupnost.** Česká nápověda je nejčastější past v celém tomhle postupu.
+
+**Nedoloženo není nedostupné.** Je to důvod nestavět plán, ne důvod tvrdit opak.
+
+Jak číst čísla, která se u takových funkcí objevují, rozebírá [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/).
