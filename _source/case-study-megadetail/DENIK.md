@@ -50,6 +50,13 @@ Formát: jeden řádek na zásah. „Fáze" = vrstva AI SEO dle metodiky webu
 | 2026-08-12 | obsah | **7 značkových stránek** (SWAG, OneWax, Magic Bucket, Mentos, Maxton Design, Snappy Grip, MTM Hydro): lead 253–320 zn. nad produkty + 4× H2 pod (1 100–1 436 zn.); 40 interních odkazů ověřeno živě. 4 značky blokované (0 produktů / neaktivní). | dtto | 2026-09-09 |
 | 2026-08-12 | obsah | **Auto Finesse: 24 prázdných kategorií** dostalo text + **8 částečných doplněno** (selektivní zápis, stávající texty nepřepsány). 51 z 52 sekcí dokumentu nasazeno. | dtto | 2026-09-09 |
 | 2026-08-13 – 08-16 | obsah | **20 kategorií psaných od nuly** plnou pipeline (keyword research → rešerše → draft → 2× GPT audit → validace odkazů → živý render). 5× H2 (2 nad / 3 pod produkty), 346–431 slov (Ø 384). U 5 doplněn chybějící H1, u 2 i title + meta description. Bez FAQ a strukturovaných dat. | dtto; kvalitnější vzorek pro srovnání „import vs od nuly" | 2026-09-14 |
+| 2026-08-16 – 08-18 | obsah | **55 kategorií psaných od nuly** (stejná pipeline; 2. audit hlídá poměr informace:produkt). Délka Ø 2 338 zn. (měřeno na 45), 2–4 ověřené interní odkazy/kategorii. Bez FAQ a strukturovaných dat. | dtto | 2026-09-16 |
+| 2026-08-17 – 08-18 | technika/obsah | **Jazyková oprava patvarů** „čistící/leštící/sušící/ředící" → spisovné „-icí": 216 záznamů kategorií (horní hranice), 722 náhrad napříč name/H1/title/description/texty; zbytkový výskyt v CZ = 0. `seo_url` beze změny. | konzistence a důvěryhodnost textů (kvalitativní signál) | 2026-09-16 |
+| 2026-08-16 – 08-18 | obsah/metadata | **Metadata kategorií**: doplněno 8× chybějící H1, 8× title+description; opraveny 4 vadné hodnoty (vč. názvu značky „Cleante"→„Cleantle"); 2× H1/title rozšířen o hlavní hledaný tvar („tepovače" 9 500/měs, „rozmrazovač skel" 1 400/měs). | zachycení reálných dotazů + oprava entit značek | 2026-09-16 |
+
+**Stav kategorií k 2026-08-18:** 1 102 z 1 381 má text (+55 od 16. 8.); bez textu
+279, z toho 33 evergreen s produkty (na začátku vlny 88). Vedlejší výstup: 12
+katalogových vad předáno zadavateli (neopraveno).
 
 **Stav kategorií k 2026-08-16:** 1 047 z 1 381 produktových kategorií CZ má text
 (mezikrok 2026-08-12: 1 027/1 382). Baseline před začátkem prací nebyl změřen —

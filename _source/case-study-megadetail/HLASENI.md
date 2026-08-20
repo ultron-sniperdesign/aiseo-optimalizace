@@ -57,7 +57,7 @@ Poznámka k obsahu pro AI: texty jsou psané jako informační odpověď na nák
 Strukturovaná data ani FAQ bloky zatím nasazené **nejsou** u žádné z těchto vln.
 Analýza prázdných kategorií (2026-08-13) sama o sobě nic nenasadila, je podkladem pro plán.
 
-## Hlášení 2026-08-18
+## Hlášení 2026-08-18 — ✅ převzato do DENIK.md 2026-08-18
 
 | Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
 |---|---|---|---|
