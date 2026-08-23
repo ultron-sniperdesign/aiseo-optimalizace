@@ -1,0 +1,146 @@
+---
+title: "Jaký podíl má Seznam? Záleží, co vlastně měříte"
+description: "Čísla o podílu Seznamu se rozcházejí o deset bodů. Není to spor o přesnost — každý zdroj měří něco jiného a hledání bez prokliku nevidí ani jeden."
+answer: "Podíl Seznamu na českém vyhledávání se v různých zdrojích liší o víc než deset procentních bodů, protože veřejně dostupné zdroje počet hledání neměří. StatCounter měří prokliky na weby se svým kódem, NetMonitor zásah webů z panelu. Pro rozhodování je použitelnější vlastní poměr návštěv a konverzí."
+slug: "podil-seznamu-v-ceskem-vyhledavani"
+category: "analysis"
+tags:
+  - "mereni"
+  - "strategie"
+published: "2026-08-23"
+updated: "2026-08-23"
+variant: "rich"
+keywords:
+  - "podíl seznamu"
+  - "market share seznam google"
+  - "podíl vyhledávačů v česku"
+  - "statcounter česko"
+  - "kolik lidí používá seznam"
+  - "seznam vs google podíl"
+stats:
+  - value: "14,05 %"
+    label: "podíl Seznamu v datech StatCounteru za červenec 2026 (odečteno 18. 8. 2026)"
+  - value: "veřejně nikdo"
+    label: "kdo přímo měří počet hledání na českých vyhledávačích"
+  - value: "prokliky"
+    label: "co StatCounter ve skutečnosti počítá — ne dotazy"
+faq:
+  - q: "Jaký podíl má tedy Seznam?"
+    a: "V datech StatCounteru za červenec 2026 měl Seznam 14,05 procenta, Google 81,07 a Bing 3,72 (odečteno 18. srpna 2026). Je to jeden zdroj, jedna metoda a jeden měsíc — ne definitivní číslo."
+  - q: "Proč se čísla tak liší?"
+    a: "Protože měří různé věci. StatCounter počítá prokliky z vyhledávačů na weby, které mají jeho měřicí kód. NetMonitor měří zásah webů a platforem z panelu a data velkých zahraničních platforem modeluje. Ani jeden nepočítá, kolik lidí kde hledalo."
+  - q: "Měří StatCounter špatně?"
+    a: "Ne. Měří poctivě to, co deklaruje: zobrazení stránek a prokliky ze svého vzorku webů, bez vážení. Chyba vzniká až tím, že se jeho číslo cituje jako podíl na hledání."
+  - q: "Co s tím dělá AI vyhledávání?"
+    a: "Ještě víc to omezuje vypovídací hodnotu takového měření. Když uživatel dostane odpověď a nikam neklikne, v měření postaveném na prokliku se ta interakce vůbec neobjeví. Čím víc odpovědí bez kliknutí, tím míň takové číslo o hledání vypovídá."
+  - q: "Které číslo mám dát do prezentace?"
+    a: "To, u kterého uvedete zdroj, období a co měří. Když potřebujete jednu větu: podle StatCounteru za červenec 2026 měl Seznam kolem 14 procent prokliků z vyhledávání na weby v jeho vzorku."
+  - q: "Podle čeho se tedy rozhodovat?"
+    a: "Podle vlastních dat. Kolik návštěv a hlavně konverzí vám reálně přijde ze Seznamu a kolik z Googlu, si změříte v analytice. To je váš trh, ne průměr napříč weby, které s vaším oborem nemají nic společného."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Jaký podíl má Seznam? Záleží, co vlastně měříte
+
+Zeptejte se pěti lidí z oboru a dostanete pět čísel: čtyři procenta, deset, dvanáct, čtrnáct, dvacet. Vypadá to jako spor o přesnost. **Není.** Každé z těch čísel odpovídá na trochu jinou otázku a **ani jedno z veřejně dostupných měření nepočítá, kolik lidí kde hledalo**.
+
+<Insight tone="geo" icon="✓" label="Věta, kterou můžete převzít">
+  „Podíl Seznamu na českém vyhledávání se mezi zdroji liší o víc než deset procentních bodů, protože **veřejně dostupné zdroje hledání nepočítají**. StatCounter měří prokliky na weby se svým měřicím kódem, NetMonitor zásah webů z panelu. V datech StatCounteru za červenec 2026 vychází Seznam na **14,05 %**.“
+
+  **Nepoužívejte:** jedno číslo bez zdroje a období · „podíl na hledání“ tam, kde jde o prokliky · trend z jednoho měsíce.
+</Insight>
+
+## Krátká odpověď
+
+- **Počet hledání na českých vyhledávačích veřejně nikdo neměří.**
+- **StatCounter měří prokliky** ze svého vzorku webů; za červenec 2026 vychází Seznam na 14,05 %, Google na 81,07 %, Bing na 3,72 %.
+- **Pro rozhodování je silnější vlastní poměr** návštěv a konverzí než tržní průměr.
+
+## Co StatCounter doopravdy měří
+
+Tohle číslo se cituje nejčastěji, takže stojí za to vědět, jak vzniká. Vše níž je z jejich vlastní dokumentace, čtené 23. 8. 2026:
+
+| Co uvádějí | Co to znamená pro čtení čísla |
+|---|---|
+| měřicí kód na **víc než milionu webů**, přes **3 miliardy zobrazení stránek měsíčně** | velký vzorek, ale **samovýběr** — jsou to weby, které si kód nainstalovaly |
+| statistiky staví na **zobrazeních stránek, ne na unikátních uživatelích** | jeden aktivní uživatel váží víc než jeden příležitostný |
+| *„We do not impose artificial weightings on our stats“* | vzorek se **nedováží** na strukturu populace |
+| proklik se započítá, když uživatel klikne ve výsledcích a **cílový web má jejich kód** | měří se **doručené prokliky**, ne dotazy |
+| data se **45 dní od zveřejnění revidují** | čerstvý měsíc není konečný |
+
+Nic z toho není výtka. **Měří poctivě to, co deklarují.** Chyba vzniká až u nás, když se z toho udělá věta „tolik procent Čechů hledá na Seznamu“.
+
+<Insight tone="warn" icon="!" label="Hledání bez prokliku je pro tohle měření neviditelné">
+  Podíl se počítá z prokliků, které někam dorazily. **Když uživatel dostane odpověď přímo ve vyhledávači a nikam neklikne, v takovém měření po něm nezůstane stopa.**
+
+  Právě tyhle odpovědi přitom přibývají — a nikdo veřejně neuvádí, jak často. Rozbor toho čísla má [jak často se zobrazuje AI přehled](/blog/jak-casto-se-zobrazuje-ai-prehled/). Čím větší podíl hledání skončí bez kliknutí, tím míň o hledání vypovídá jakákoli metrika postavená na prokliku.
+</Insight>
+
+## A co české měření?
+
+Nabízí se NetMonitor od SPIR, protože je to česká měna pro návštěvnost. Od 6. března 2025 zveřejňuje data i za velké zahraniční platformy — Google, Metu, Microsoft.
+
+Jenže: ty se měření neúčastní jako čeští provozovatelé, takže se jejich návštěvnost v NetMonitoru **modeluje z českého softwarového PC panelu Gemius a z panelů sousedních trhů**. A hlavně — metriky jsou reální uživatelé, zásah a strávený čas.
+
+**To je zásah služby, ne počet hledání.** Odpovídá na otázku, kolik Čechů za měsíc potkalo Google nebo Seznam, ne kolik dotazů kde položili.
+
+## Tři otázky, které se pletou dohromady
+
+| Otázka | Kdo na ni umí odpovědět |
+|---|---|
+| Kolik lidí kde **hledá** | veřejně nikdo |
+| Kolik **prokliků** který vyhledávač doručí | StatCounter, na svém vzorku webů |
+| Kolik lidí web nebo platformu **potkalo** | NetMonitor, panelem a u zahraničních platforem modelem |
+
+Tři různé otázky, tři různé metody — a proto tři různá čísla, která se nedají srovnávat, natož míchat.
+
+## Jak čísla cestují a co s tím
+
+Při hledání podkladů k tomuhle článku mi vyhledávání nabídlo jako zdroj **náš vlastní starší text**. Číslo, které jsme kdysi odněkud převzali, se nám vrátilo jako doklad.
+
+Takhle „známá“ čísla v oboru často vznikají: jednou se odhad zaokrouhlí, podruhé se ztratí období, potřetí se z rozsahu stane jedno číslo. Proto v tomhle článku uvádím u každé hodnoty zdroj, období i to, co měří — a proto jsem starší rozsah **nepoužil jako oporu**.
+
+## Co dělat místo hledání jednoho čísla
+
+<Checklist tone="geo" title="Čtyři kroky k číslu, které vám k něčemu bude" items={[
+  { title: "Změřte si vlastní poměr", desc: "V analytice se podívejte, kolik návštěv vám přijde ze Seznamu a kolik z Googlu. To je váš trh, ne průměr napříč cizími weby." },
+  { title: "Doplňte konverze, ne jen návštěvy", desc: "Podíl na návštěvách a podíl na objednávkách bývají dvě odlišná čísla. Rozhoduje to druhé." },
+  { title: "Rozdělte to podle typu dotazu", desc: "U navigačních a lokálních dotazů vychází poměr jinak než u odborných. Průměr přes všechny vám tenhle rozdíl zakryje." },
+  { title: "K cizímu číslu vždycky přidejte tři údaje", desc: "Zdroj, období a co měří. Bez nich se to nedá použít v žádném rozhodnutí ani prezentaci." }
+]} />
+
+Jestli se Seznamem vůbec zabývat a co na něm dnes hraje roli, rozebírá [Seznam.cz a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/); jak číst cizí studie obecně, [jak číst studie o AI viditelnosti](/blog/jak-cist-studie-o-ai-viditelnosti/).
+
+## Co z toho neplyne
+
+<MistakeGrid>
+  <Mistake number="01" title="Že 14 procent je správné číslo">
+    Je to jeden zdroj, jedna metoda a jeden měsíc. Správné číslo pro otázku „kolik lidí kde hledá“ veřejně neexistuje.
+  </Mistake>
+  <Mistake number="02" title="Že Seznam roste nebo klesá">
+    Na trend je potřeba časová řada z jednoho zdroje se stejnou metodou. Porovnat dvě čísla z různých měření nestačí.
+  </Mistake>
+  <Mistake number="03" title="Že na podílu záleží nejvíc">
+    U vašeho webu rozhoduje, odkud chodí objednávky. Tržní průměr je orientace, ne podklad k rozpočtu.
+  </Mistake>
+</MistakeGrid>
+
+## Limity
+
+Ověřoval jsem **dokumentaci dvou měření** (StatCounter a NetMonitor přes zprávu o rozšíření projektu) a **jeden odečet hodnot** ze StatCounteru, 18. 8. 2026.
+
+**Vlastní měření podílu jsem nedělal** a nemám k němu data. Ostatní kolující hodnoty — „95 % a 4 %“, „10–12 %“ — jsem k primárnímu zdroji s uvedeným obdobím a metodou nedohledal, takže je tu neuvádím jako alternativu.
+
+Časovou řadu jsem nestavěl, takže o vývoji podílu netvrdím nic.
+
+## Co si odnést
+
+**Žádné z veřejně citovaných čísel, která tu rozebírám, neměří přímo hledání.** Měří prokliky nebo zásah, a to jsou jiné veličiny.
+
+**Bez zdroje, období a metody je číslo nepoužitelné.** Tři údaje, které zaberou půl řádku a rozhodují o tom, jestli se dá tvrzení obhájit.
+
+**Vlastní poměr návštěv a konverzí je silnější podklad** než tržní průměr — už proto, že popisuje váš obor a vaše zákazníky.
