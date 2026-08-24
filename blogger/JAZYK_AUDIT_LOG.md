@@ -11,6 +11,7 @@
 | 4 | 2026-08-23 | `jak-strukturovat-pillar-content` | 2026-05-03 | v4 → v5 | 3 820 | 154 | 15 | **40,8 → 0,0 ⛔** | 90+ | +15 |
 | 5 | 2026-08-23 | `local-seo-cesko-2026` | 2026-05-03 | v5 → v6 | 4 615 | 21 | 17 | **4,6 → 0,0** | 45 | +19 |
 | 6 | 2026-08-23 | `mereni-seo-vykonu-2026` | 2026-05-03 | v6 → v7 | 4 189 | 94 | 12 | **22,7 → 0,0** | 110 | +12 |
+| 7 | 2026-08-23 | `seo-nastroje-2026` | 2026-05-03 | v7 → v8 | 3 223 | 52 | 26 | **16,4 → 0,0** | 73 | +24 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -116,6 +117,16 @@ Druhý nejhustší po pilíři: **94 strojových nálezů, 22,7 na 1 000 slov**.
 **Rozhodnutí u názvů metrik:** české GA4 má vlastní překlady, takže `sessions` → **relace**, `impressions` → **zobrazení**. To není purismus — čtenář ta slova musí najít ve svém rozhraní, které je česky.
 
 **Zpětný dopad v7:** `sessions` se objevilo i ve třech dřívějších článcích (pilíř 2×, měření, jak-vypnout). Opraveno.
+
+### 7 · seo-nastroje-2026 (2026-08-23)
+
+**16,4 na 1 000 slov.** Přehled nástrojů má vlastní typ znečištění: **popisy funkcí a ceníků přebrané z anglických stránek výrobců**.
+
+**Nová vrstva: ceníkový a produktový žargon** — `credit-based`, `pull report`, `custom pricing`, `best value`, `industry-standard`, `difficulty score`, `vendor report`, `mention rate`, `sources cited`. Tyhle výrazy se do textu nedostaly z hlavy autora, ale kopírováním z produktových stránek.
+
+**Nejčastější jednotlivé slovo:** `baseline` 13× — pokaždé ve významu „základní sada zdarma" nebo „výchozí stav".
+
+**Kde jsem auditora neposlechl:** navrhoval hlásit i `importovat` a `validovat`. To jsou zavedená česká slovesa, ne anglicismy — nechal jsem je. Podobně `leady` v marketingovém významu.
 
 ## ⛔ Otevřený nález pro celý korpus: glosářové termíny
 

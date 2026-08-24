@@ -1,7 +1,7 @@
 ---
 title: "Měření SEO výkonu 2026: 8 metrik, KPI hierarchie a nástroje od GSC po AI citation tracking"
 description: "Co opravdu měřit u SEO v roce 2026 — pozice, návštěvnost, CTR, Core Web Vitals i podíl citací v AI. KPI hierarchie podle příjemce reportu a podle typu byznysu."
-answer: "Měření SEO výkonu v roce 2026 stojí na osmi metrikách rozdělených do čtyř vrstev: visibility (pozice, CTR z GSC), návštěvnost & engagement (relace a chování v GA4), zdraví webu (Core Web Vitals, indexace v GSC Pages reportu, backlinks v Ahrefs), AI výskyt (podíl citací v AI přes Otterly nebo Profound a od června 2026 report Generative AI features v Search Console). Priorita metrik se liší podle typu byznysu — lokální služba, B2B lead-gen, e-shop a vydavatel mají jiné P0/P1. Pro malou firmu stačí GSC + GA4 zdarma; placený stack přidávejte podle konkrétního use case."
+answer: "Měření SEO výkonu v roce 2026 stojí na osmi metrikách rozdělených do čtyř vrstev: visibility (pozice, CTR z GSC), návštěvnost & engagement (relace a chování v GA4), zdraví webu (Core Web Vitals, indexace v GSC Pages reportu, backlinks v Ahrefs), AI výskyt (podíl citací v AI přes Otterly nebo Profound a od června 2026 report Generative AI features v Search Console). Priorita metrik se liší podle typu byznysu — lokální služba, B2B lead-gen, e-shop a vydavatel mají jiné P0/P1. Pro malou firmu stačí GSC + GA4 zdarma; placený stack přidávejte podle konkrétního scénář použití."
 slug: "mereni-seo-vykonu-2026"
 category: "tutorial"
 tags:
@@ -42,11 +42,11 @@ faq:
 howto:
   name: "Praktický postup: postavit SEO measurement od nuly"
   steps:
-    - name: "Setup GSC + GA4 + Bing Webmaster + Seznam Webmaster"
+    - name: "Nastavení GSC + GA4 + Bing Webmaster + Seznam Webmaster"
       text: "Den 1. Verifikovat vlastnictví všech 4 properties. Google Analytics 4 propojit s Google Search Console v admin sekci (umožní 'Search Console' report v GA4). Submitnout sitemap.xml na všech 4 platformách."
     - name: "Definovat 5–10 strategických KW + 5–10 stránek"
       text: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) plus 5–10 long-tail variant. K nim přiřadit 5–10 cílových stránek (pillar + cluster). Toto je váš strategic measurement rozsah."
-    - name: "Setup výchozí stav measurements"
+    - name: "Nastavení výchozí stav measurements"
       text: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organické relace, CTR, počet indexovaných stránek, Domain Rating. Toto je výchozí stav, proti kterému budete měřit progress. Bez výchozí stav nelze říct, jestli rosteme nebo klesáme."
     - name: "Postavit Looker Studio dashboard"
       text: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organické relace denně plus YoY srovnání, top 20 stránek podle organické návštěvnosti, Core Web Vitals stav. Sdílet read-only link s týmem. Looker Studio je zdarma, napojený na GSC + GA4."
@@ -76,7 +76,7 @@ Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 - **Vrstva 1 — Visibility (pozice, CTR, zobrazení)** — kde vás Google vidí
 - **Vrstva 2 — Návštěvnost a zapojení (relace, time on page, konverze)** — co s tím uživatelé dělají
 - **Vrstva 3 — Health (Core Web Vitals, indexovatelnost, backlinks)** — jestli je web technicky způsobilý držet pozice
-- **Vrstva 4 — AI výskyt (podíl citací, mention rate)** — jak vás vidí AI nástroje (doplňková emerging vrstva, ne KPI první úrovně pro většinu firem)
+- **Vrstva 4 — AI výskyt (podíl citací, míra zmínek)** — jak vás vidí AI nástroje (doplňková emerging vrstva, ne KPI první úrovně pro většinu firem)
 
 ## <span class="hl">Osm klíčových metrik</span> s <strong>benchmarky</strong>
 
@@ -198,19 +198,19 @@ Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 - **Bounce rate** — orientačně pod 60 %, ale **bez kontextu typu stránky a zdroje návštěvnosti tato metrika neříká moc**: u informačních článků může být vysoký bounce normální (uživatel získal odpověď a odešel), u BOFU vstupní stránky je vysoký bounce problém. Hodnotit ve dvojici se sekundární metrikou (aktivní relace, scroll depth, conversion rate)
 - **Stránek na relaci** — 1,8+ je benchmark pro weby se záměrně navrženou obsahovou cestou (rozcestník a navazující články s cluster prolinkováním). U dobře zodpovězeného samostatného článku může být 1,0–1,2 v pořádku
 
-### 8. podíl citací v AI (mention rate v ChatGPT, Perplexity)
+### 8. podíl citací v AI (míra zmínek v ChatGPT, Perplexity)
 
-**Emerging doplňková metrika.** podíl citací v AI = podíl relevantních AI odpovědí (ChatGPT, Perplexity, Gemini, Copilot) na definovanou sadu dotazů, kde je váš brand citován jako zdroj nebo doporučení. Mention rate je obecnější — % odpovědí, kde je brand jakkoli zmíněn. **Pozor:** jde o experimentální vrstvu s omezenou reprodukovatelností (vysoká závislost na prompt setu, geolokaci, personalizaci, modelových updatech a metodice nástroje). Pro většinu firem to **není KPI první úrovně** — sledujte jako trend, ne jako přesné číslo, a metodická konzistence je důležitější než absolutní hodnota.
+**Emerging doplňková metrika.** podíl citací v AI = podíl relevantních AI odpovědí (ChatGPT, Perplexity, Gemini, Copilot) na definovanou sadu dotazů, kde je váš brand citován jako zdroj nebo doporučení. Míra zmínek je obecnější — % odpovědí, kde je brand jakkoli zmíněn. **Pozor:** jde o experimentální vrstvu s omezenou reprodukovatelností (vysoká závislost na prompt setu, geolokaci, personalizaci, modelových updatech a metodice nástroje). Pro většinu firem to **není KPI první úrovně** — sledujte jako trend, ne jako přesné číslo, a metodická konzistence je důležitější než absolutní hodnota.
 
 **Zdroj:** Otterly AI ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs Machine plan, CZ trh). *Ceny uvedené v tomto článku jsou k květnu 2026 — před nákupem si je ověřte v aktuálním ceníku, mění se průběžně.*
 
 **Frekvence:** měsíčně.
 
 **Co měřit:**
-- **Mention rate** — % odpovědí, které obsahují váš brand
+- **Míra zmínek** — % odpovědí, které obsahují váš brand
 - **Podíl citací vs konkurence** — kdo je citován častěji
 - **Sentiment** — pozitivní / neutrální / negativní kontext zmínky
-- **Sources cited** — z kterých zdrojů AI tahá informace o vás
+- **Citované zdroje** — z kterých zdrojů AI tahá informace o vás
 
 **Klíčové:** v 2026 měřte podíl citací v AI **vůči konkurenci**, ne v absolutních číslech — celý prostor je nový a meziroční srovnání postrádá kontext. Priorita této metriky závisí na tom, jestli vaše cílovka prokazatelně používá AI nástroje při výběru — u lokálních služeb a transakčních e-shopů má často nižší prioritu než klasické SEO measurement.
 
@@ -218,7 +218,7 @@ Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 
 Než půjdete do nástrojového stacku, projděte si, kde leží P0/P1 pro váš typ projektu — measurement je silně kontextový a generický seznam metrik dává jen polovinu hodnoty:
 
-| Typ projektu | P0 (bez toho nezačnete) | P1 (přidat po 30 dnech) | P2 (jen když je use case) |
+| Typ projektu | P0 (bez toho nezačnete) | P1 (přidat po 30 dnech) | P2 (jen když je scénář použití) |
 |---|---|---|---|
 | **Lokální služba** | GBP Insights, GSC pozice na lokální KW, organické relace z GA4 | Local pack tracking, růst počtu recenzí, NAP konzistence | Brand Radar pro lokální zmínky o značce |
 | **B2B lead-gen / SaaS** | GSC top KW, organické relace, **konverze (demo, trial)**, top entry pages | Brandové vs. nebrandové dotazy poměr v GSC, engagement na hlavní prodejní stránky | podíl citací v AI — pokud cílovka používá AI při výběru |
@@ -262,9 +262,9 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
 ## <strong>Praktický postup</strong>: postavit <span class="hl">SEO measurement od nuly</span>
 
 <Stepper tone="seo" steps={[
-  { title: "Setup GSC + GA4 + Bing Webmaster + Seznam Webmaster", desc: "Den 1. Verifikovat vlastnictví všech 4 properties. GA4 propojit s GSC v admin sekci (umožní 'Search Console' report v GA4). Submitnout sitemap.xml všude." },
+  { title: "Nastavení GSC + GA4 + Bing Webmaster + Seznam Webmaster", desc: "Den 1. Verifikovat vlastnictví všech 4 properties. GA4 propojit s GSC v admin sekci (umožní 'Search Console' report v GA4). Submitnout sitemap.xml všude." },
   { title: "Definovat 5–10 strategických KW + 5–10 stránek", desc: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) + 5–10 long-tail. K nim přiřadit 5–10 cílových stránek (pillar + cluster)." },
-  { title: "Setup výchozí stav measurements", desc: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organické relace, CTR, počet indexovaných stránek, DR. Toto je výchozí stav, proti kterému budete měřit progress." },
+  { title: "Nastavení výchozí stav measurements", desc: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organické relace, CTR, počet indexovaných stránek, DR. Toto je výchozí stav, proti kterému budete měřit progress." },
   { title: "Postavit Looker Studio dashboard", desc: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organické relace denně + YoY, top 20 stránek podle organic, CWV stav. Sdílet read-only link s týmem." },
   { title: "Nastavit alerty na anomálie", desc: "Týden 3. GA4 vlastní insights pro propad organické relace o 20 % a víc den-na-den. E-mailová upozornění z GSC na indexační problémy. PageSpeed Insights manuální check čtvrtletně." },
   { title: "Měsíční review + iterace", desc: "Měsíčně. 1× za měsíc: review dashboardu, identifikovat 1–3 stránky s největším potenciálem (vysoké zobrazení, nízký CTR = kandidáti na přepis titulku). Aktualizace reportu pro klienta nebo vedení." }
@@ -291,7 +291,7 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
 2. **Reportovat snapshot, ne trend** — „tento týden jsme #4 na 'seo praha'“ nic neříká. Důležitý je trend přes 4–8 týdnů a YoY srovnání.
 3. **Sledovat moc KW** — 50+ KW v rank trackeru je šum. Top 10 strategických KW vysoká kadence, zbytek měsíční.
 4. **Ignorovat sezónnost** — meziměsíční srovnání může vypadat jako propad, přitom je to normální Q1 dip. Vždy porovnávejte i meziročně.
-5. **Žádné alerty** — propad návštěvnosti o 30 % zjistíte za týden místo za hodinu. Setup GA4 vlastní insights.
+5. **Žádné alerty** — propad návštěvnosti o 30 % zjistíte za týden místo za hodinu. Nastavení GA4 vlastní insights.
 6. **Manuální export do Excelu každý měsíc** — promarněný čas. Looker Studio + automatizace.
 7. **Mixovat dashboardy** — jeden dashboard pro klienta, jeden pro tým. Mixování končí reportem, který nikdo nečte.
 8. **Ignorovat AI vrstvu jako celek** — pokud vaše cílovka používá AI nástroje při výběru, nesledování podíl citací znamená neměřené pokrytí jednoho z akvizičních kanálů. Priorita ale závisí na typu byznysu, nejde o universal must.
@@ -331,7 +331,7 @@ Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** �
 - **Pokud chcete oddělit dashboard pro tým a report pro management** — architektura dvou pohledů: SEO pohled pro tým (denní operativa) + pohled pro vedení (kvartální business impact)
 - **Implementace** — Looker Studio dashboard nad GSC + GA4, automatizovaný měsíční reporting, alerty na anomálie
 
-První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme to nad vaším konkrétním measurement setup, ne nad obecnou metodikou.
+První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme to nad vaším konkrétním measurement nastavení, ne nad obecnou metodikou.
 
 ## <strong>Zdroje</strong> a <span class="hl">další čtení</span>
 

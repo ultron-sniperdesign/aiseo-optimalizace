@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 7** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 6/147) · audituje skill `cestina-audit`
+> **Verze: 8** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 7/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -54,6 +54,23 @@
 | ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\buse case(s)?\b` | scénář použití | produktový anglicismus | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bbottleneck\b` | hlavní omezení, úzké hrdlo | anglicismus | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bcredit-?based\b` | účtovaný po kreditech | ceníkový žargon z anglických stránek nástrojů | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bpull report\b` | spuštění reportu | produktový slang | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bcustom pricing\b` | individuální cena | totéž | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bbest value\b` | nejlepší poměr ceny a výkonu | reklamní klišé | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bindustry-?standard\b` | oborový standard | reklamní angličtina z produktových popisů | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bdifficulty score\b` | skóre obtížnosti | popis funkce převzatý z cizího webu | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bdeploy(em|e|i|u)?\b` | nasazení | vývojářský slang | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\boverkill\b` | zbytečně robustní řešení | anglicismus | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bAI visibility\b` | viditelnost v AI | web sám používá české „AI viditelnost“ | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bsetup\b` | nastavení | anglicismus v instrukci | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bsubmit\b` | odeslat | totéž | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bmention rate\b|\bsources cited\b` | míra zmínek, citované zdroje | popisy metrik z anglických nástrojů | seo-nastroje-2026 2026-08-23 |
+| ⚠️ | `\bdashboard(y|ů|em|u|ech)?\b` | přehled | v agenturách zdomácnělé, u laika ne | seo-nastroje-2026 2026-08-23 |
+| ⚠️ | `\bFortune 500\b` | největší nadnárodní firmy | kulturně cizí zkratka, u prvního výskytu vysvětlit | seo-nastroje-2026 2026-08-23 |
+| ⚠️ | `\betablovan\w* hráč\b` | zavedený nástroj | PR klišé | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bsession(s)?\b` | relace | české GA4 používá „relace“ | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bstakeholder(a|e|em|ům|y)?\b` | příjemce reportu | manažerský anglicismus | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bdefaultn(í|ího|ím|ích)\b` | výchozí | počeštěný tvar zakázaného „default“ | mereni-seo-vykonu-2026 2026-08-23 |
@@ -177,6 +194,13 @@
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bAI (Answer feature|summaries)\b` | funkce AI odpovědí, shrnutí od AI | anglický název funkce v české větě, když nejde o oficiální název v rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bGoogle features\b` | funkce Googlu | totéž | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bvendor report(u|em)?\b|\bvendor-?collected\b` | report dodavatele, sesbíraný dodavatelem | hybrid | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bmainstream volb\w*\b` | nejčastější volba | hybrid | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bmanagement úrovn\w*\b` | úroveň vedení | hybrid | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bactive Ads účet\b` | aktivní účet v Google Ads | hybrid | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bbusiness model(u|em)?\b` | obchodní model | hybrid | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\brevenue attribution\b` | přiřazení tržeb | hybrid | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bSEO tool\b` | SEO nástroj | hybrid | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bbrand recognition\b` | znalost značky | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\b(team|management) view\b` | pohled pro tým, pohled pro vedení | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bmature web\b` | zavedený web | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
