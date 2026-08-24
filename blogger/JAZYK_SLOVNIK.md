@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 4** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 3/147) · audituje skill `cestina-audit`
+> **Verze: 5** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 4/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -27,7 +27,7 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `\btraffic\b` | návštěvnost | totéž; „traffic“ v české větě je čirý kalk | seed 2026-08-23 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `(?<!mixed )\bcontent\b(?! (marketing|management))` | obsah | jednoslovná náhrada existuje; „mixed content“ je technický termín HTTPS a hlásit se nemá | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update))` | obsah | jednoslovná náhrada existuje; „mixed content“ je technický termín HTTPS a hlásit se nemá | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
 | ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |
@@ -54,6 +54,16 @@
 | ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bblueprint(u|em|y)?\b` | osnova, schéma | anglicismus i v titulku | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\boutline\b` | osnova, struktura | redakční žargon | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bwall of text\b` | jednolitá stěna textu | nepřeložený slang | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bnext steps\b` | další kroky | anglicismus ve výčtu | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `(?<!core )(?<!Core )(?<!Content )(?<!Google )\b(update|updatem|updatu|updated|outdated)\b` | aktualizace, zastaralý | počeštěný i nepřeložený tvar; **názvy aktualizací Googlu** (core update, Helpful Content Update) jsou vlastní jména a hlásit se nemají | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\btimestamp\b` | datum aktualizace | technicismus v běžné větě | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bstep-by-step\b` | krok za krokem | anglicismus | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bbroken\b` | rozbitý, neplatný | hovorový anglicismus | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bthought leadership\b` | oborová autorita | marketingový žargon | jak-strukturovat-pillar-content 2026-08-23 |
+| ⚠️ | `\bevergreen\b` | nadčasový | obsahový žargon | jak-strukturovat-pillar-content 2026-08-23 |
 | ⚠️ | `\bniche\b` | úzký segment, nika | anglicismus, v marketingu zdomácnělý | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\broadmap(a|u|ou|y)?\b` | plán kroků | web ho používá napříč texty, ale u laika je lepší česky | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bproduktovk(a|y|ám|ách|ek|ou)\b` | produktová stránka | interní slang, pro laika neprůhledný | seo-pro-eshopy-ai-era-2026 2026-08-23 |
@@ -150,6 +160,11 @@
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bAI (Answer feature|summaries)\b` | funkce AI odpovědí, shrnutí od AI | anglický název funkce v české větě, když nejde o oficiální název v rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bGoogle features\b` | funkce Googlu | totéž | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bbody text(u|em)?\b` | hlavní text | hybrid | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bAI engine(s)?\b` | AI nástroj, AI systém | hybrid, není to název produktu | jak-strukturovat-pillar-content 2026-08-23 |
+| ⚠️ | `\bbrand mention(s)?\b` | zmínka o značce | web má článek se slugem ai-brand-mentions a používá to jako termín — u prvního výskytu vysvětlit česky, nenahrazovat všude | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\branking tracking\b` | sledování pozic | dvojitý slang | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `\bcitation monitoring\b` | sledování citací | totéž | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bcitation (hook|rate)\b` | místo vhodné k citaci, míra citování | agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbrand exposure\b` | viditelnost značky | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\blong[‑-]?form\b` | dlouhý, rozsáhlý | polovičatý hybrid | seo-pro-eshopy-ai-era-2026 2026-08-23 |
@@ -191,3 +206,7 @@
 1. Regex musí být `„[^„“\n<>=]{0,160}"` (vylučuje `<>=`).
 2. Řádky s JSX prop (`title:`, `desc:`, `text:`, `label=`) opravovat **ručně, jeden po druhém**, ne dávkově.
 3. **Po každé dávce úprav `npm run build`** — build je jediná pojistka, která tuhle třídu chyb chytí.
+
+| `jak-strukturovat-pillar-content` 2026-08-23 | dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky (`import \`Stepper\` from …`) |
+
+4. **Žádná dávková náhrada nesmí sáhnout na řádky `import`, `export` a frontmatter klíče.** Před zápisem si vždy vypiš, kolik řádků se změní, a zkontroluj, jestli mezi nimi nejsou technické.

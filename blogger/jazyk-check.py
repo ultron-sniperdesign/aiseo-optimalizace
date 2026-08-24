@@ -17,6 +17,7 @@ INLINE_CODE = re.compile(r'`[^`]*`')
 URL = re.compile(r'https?://\S+|\]\([^)]*\)|/blog/[a-z0-9-]+/|/slovnik/[a-z0-9-]+/')
 JSX = re.compile(r'</?[A-Z][A-Za-z]*')
 JSXATTR = re.compile(r'\b[a-zA-Z]+=(?=["\{])')   # nazvy atributu (fix=, tone=, title=)
+HTMLVAL = re.compile(r'\b(class|id|style|href|src|rel|aria-\w+)="[^"]*"')   # hodnoty technickych atributu
 
 def load_rules(path):
     rules, section = [], '?'
@@ -44,6 +45,7 @@ def mask(line):
     line = INLINE_CODE.sub(lambda m: ' ' * len(m.group(0)), line)
     line = URL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSX.sub(lambda m: ' ' * len(m.group(0)), line)   # nazvy komponent nejsou text pro ctenare
+    line = HTMLVAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSXATTR.sub(lambda m: ' ' * len(m.group(0)), line)
     return line
 
@@ -100,17 +102,31 @@ def main():
             for m in r['rx'].finditer(line):
                 hits.append((n, r, m.group(0), raw.strip(), quoted))
 
+    # ⚠️ pravidla znamenaji "vysvetli pri prvnim pouziti" — staci prvni vyskyt na pravidlo
+    seen, folded, skipped = set(), [], {}
+    for h in hits:
+        r = h[1]
+        if r['level'] == '⚠️':
+            if r['raw'] in seen:
+                skipped[r['raw']] = skipped.get(r['raw'], 1) + 1
+                continue
+            seen.add(r['raw'])
+        folded.append(h)
+    hits_all, hits = hits, folded
+
     print(f'== {os.path.basename(args.soubor)} · {words} slov · pravidel: {len(rules)}')
     order = {'⛔': 0, '⚠️': 1}
     if not args.strucne:
         for n, r, found, ctx, quoted in sorted(hits, key=lambda h: (order[h[1]['level']], h[0])):
             flag = ' [citace?]' if quoted else ''
-            print(f'{r["level"]} r.{n}{flag} · {r["section"]}')
+            more = skipped.get(r['raw'])
+            extra = f' (+{more - 1}x dal v textu)' if more else ''
+            print(f'{r["level"]} r.{n}{flag}{extra} · {r["section"]}')
             print(f'    nalezeno: {found!r}  ->  {r["repl"]}')
             print(f'    kontext : {ctx[:150]}')
-    hard = sum(1 for h in hits if h[1]['level'] == '⛔')
-    per1000 = len(hits) / words * 1000 if words else 0
-    print(f'-- celkem {len(hits)} nalezu ({hard}x ⛔) · {per1000:.1f} na 1000 slov')
+    hard = sum(1 for h in hits_all if h[1]['level'] == '⛔')
+    per1000 = len(hits_all) / words * 1000 if words else 0
+    print(f'-- celkem {len(hits_all)} nalezu ({hard}x ⛔, {len(hits)} k reseni) · {per1000:.1f} na 1000 slov')
 
 if __name__ == '__main__':
     main()

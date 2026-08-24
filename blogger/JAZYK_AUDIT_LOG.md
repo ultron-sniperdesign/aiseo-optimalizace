@@ -8,6 +8,7 @@
 | 1 | 2026-08-23 | `jak-vypnout-ai-overview` | 2026-04-29 | v1 → v2 | 2 296 | 15 | 29 | **6,6 → 0,0** | 46 | +21 |
 | 2 | 2026-08-23 | `seo-audit-co-kontrolovat` | 2026-05-02 | v2 → v3 | 2 397 | 12+5 | 24 | **6,6 → 0,0** | 33 (+9 zpětně z v4) | +23 |
 | 3 | 2026-08-23 | `seo-pro-eshopy-ai-era-2026` | 2026-05-02 | v3 → v4 | 2 796 | 20 | 32 | **7,3 → 0,0** | 61 | +27 |
+| 4 | 2026-08-23 | `jak-strukturovat-pillar-content` | 2026-05-03 | v4 → v5 | 3 820 | 154 | 15 | **40,8 → 0,0 ⛔** | 90+ | +15 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -68,3 +69,24 @@ Nejhustší nález zatím: **7,3 na 1 000 slov** strojově, k tomu 32 dalších 
 **Zpětný dopad na starší články:** slovník v4 našel **9 dalších nálezů v článku 2** (`niche` 3×, `roadmapa` 3×, `na škálu`, `free nástroje`) a 0 v článku 1. Opraveno hned — jinak by se rozdíl mezi „projeto podle v2" a „projeto podle v4" tiše hromadil.
 
 **Chyba nástroje odhalená při práci:** checker hlásil **názvy JSX atributů** (`fix="…"` v komponentě `<Mistake>`) jako anglicismus. Do masky přibyly názvy atributů; předtím maskoval jen názvy komponent.
+
+### 4 · jak-strukturovat-pillar-content (2026-08-23)
+
+**Rekord: 154 strojových nálezů, 40,8 na 1 000 slov** — šestkrát víc než u předchozích. Článek je zároveň nejdelší (3 800 slov) a je psaný pro obsahové stratégy, takže drží nejvíc oborového žargonu.
+
+**Nejzávažnější: vlastní glosář porušený 23×**
+- `answer block` **14×** (10 malým, 4 velkým písmenem)
+- `schema markup` **5×**
+- `hub-and-spoke` **4×**
+
+To jsou tři termíny, které si projekt sám zakázal v `CLAUDE.md` — a v jednom článku jsou dohromady třiadvacetkrát.
+
+**Další vrstva:** obsahový a redakční žargon — `blueprint`, `outline`, `wall of text`, `evergreen`, `body text`, `AI engines`, `thought leadership`, `ranking tracking`, `citation monitoring`, `next steps`, `update/outdated`, `timestamp`, `broken`, `step-by-step`.
+
+**Rozhodnutí k termínu `pillar` (39 výskytů):** neměnit. Je to téma článku, má ho web ve slugu i v navigaci. Místo plošné náhrady jsem **doplnil definici k prvnímu užití v těle** („Pilířová stránka (anglicky *pillar*) je hlavní, nejobsáhlejší text k tématu…") — přesně to, co úroveň ⚠️ požaduje.
+
+**Dvě opravy nástroje:**
+1. **⚠️ pravidla se nově skládají na první výskyt** a hlásí, kolikrát se opakují (`+38x dál v textu`). Jejich smysl je „vysvětli při prvním použití", ne „nahraď všude" — bez toho tenhle článek generoval 68 hlášení o jednom slově.
+2. **Maska na hodnoty technických atributů** (`class="pb-content"` hlásilo `content`) a výjimka pro název aktualizace `Helpful Content Update`.
+
+**Čtvrtá chyba mého vlastního zásahu:** dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky a rozbilo MDX. Chytil build. Slovník má nové pravidlo § 9.4: žádná dávková náhrada nesmí sáhnout na `import`, `export` a frontmatter klíče.
