@@ -16,6 +16,7 @@ CODE_FENCE = re.compile(r'^```')
 INLINE_CODE = re.compile(r'`[^`]*`')
 URL = re.compile(r'https?://\S+|\]\([^)]*\)|/blog/[a-z0-9-]+/|/slovnik/[a-z0-9-]+/')
 JSX = re.compile(r'</?[A-Z][A-Za-z]*')
+JSXATTR = re.compile(r'\b[a-zA-Z]+=(?=["\{])')   # nazvy atributu (fix=, tone=, title=)
 
 def load_rules(path):
     rules, section = [], '?'
@@ -43,6 +44,7 @@ def mask(line):
     line = INLINE_CODE.sub(lambda m: ' ' * len(m.group(0)), line)
     line = URL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSX.sub(lambda m: ' ' * len(m.group(0)), line)   # nazvy komponent nejsou text pro ctenare
+    line = JSXATTR.sub(lambda m: ' ' * len(m.group(0)), line)
     return line
 
 TECH_KEYS = re.compile(r'^\s*(slug|published|updated|category|variant|tags|keywords|seoTitle|image|og|howto|faq|stats|-)\s*:?\s*$')

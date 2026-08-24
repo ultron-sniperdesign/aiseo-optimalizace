@@ -6,7 +6,8 @@
 | # | Datum | Článek | Publ. | Verze slovníku | Slov | Nálezů (stroj) | Nálezů LLM | na 1 000 slov | Opraveno | Nová pravidla |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 2026-08-23 | `jak-vypnout-ai-overview` | 2026-04-29 | v1 → v2 | 2 296 | 15 | 29 | **6,6 → 0,0** | 46 | +21 |
-| 2 | 2026-08-23 | `seo-audit-co-kontrolovat` | 2026-05-02 | v2 → v3 | 2 386 | 12+5 | 24 | **6,6 → 0,0** | 33 | +23 |
+| 2 | 2026-08-23 | `seo-audit-co-kontrolovat` | 2026-05-02 | v2 → v3 | 2 397 | 12+5 | 24 | **6,6 → 0,0** | 33 (+9 zpětně z v4) | +23 |
+| 3 | 2026-08-23 | `seo-pro-eshopy-ai-era-2026` | 2026-05-02 | v3 → v4 | 2 796 | 20 | 32 | **7,3 → 0,0** | 61 | +27 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -51,3 +52,19 @@ Druhý nejstarší článek, tentokrát prošlý proti slovníku v2. Stejná hus
 Checker teď audituje textová pole frontmatteru (`title`, `description`, `answer`, `q`, `a`, `label`, `desc`, `text`, `value`) a technické klíče (`slug`, `tags`, `keywords`, `category`) dál přeskakuje — anglická klíčová slova tam patří.
 
 Okamžitý dopad: **+5 nálezů v článku 2 a +2 v článku 1**, všechny ve FAQ. Oba články mají po opravě 0.
+
+### 3 · seo-pro-eshopy-ai-era-2026 (2026-08-23)
+
+Nejhustší nález zatím: **7,3 na 1 000 slov** strojově, k tomu 32 dalších z LLM průchodu. Text pro e-shopy je psaný agenturním jazykem skoro celý.
+
+**Nové jevy oproti článkům 1 a 2:** e-commerce a produktový slang — `listing`, `produktovka`, `custom úpravy`, `research fáze`, `basic audit`, `time-to-result`, `citation hook`, `brand exposure`, `citation rate`. Slovník tím dostal třetí vrstvu (po technické a obchodní).
+
+**Nejzávažnější:**
+- **`answer block` potřetí v korpusu** — a tentokrát i jako text odkazu na heslo ve slovníku.
+- **`research fází` pětkrát** v jednom článku, včetně titulku persony.
+- **`Tenhle format`** — nečeský pravopis, ne termín.
+- **`citation hook`, `brand exposure`, `citation rate`** ve třech větách za sebou v sekci o strategii vůči AI Overviews.
+
+**Zpětný dopad na starší články:** slovník v4 našel **9 dalších nálezů v článku 2** (`niche` 3×, `roadmapa` 3×, `na škálu`, `free nástroje`) a 0 v článku 1. Opraveno hned — jinak by se rozdíl mezi „projeto podle v2" a „projeto podle v4" tiše hromadil.
+
+**Chyba nástroje odhalená při práci:** checker hlásil **názvy JSX atributů** (`fix="…"` v komponentě `<Mistake>`) jako anglicismus. Do masky přibyly názvy atributů; předtím maskoval jen názvy komponent.

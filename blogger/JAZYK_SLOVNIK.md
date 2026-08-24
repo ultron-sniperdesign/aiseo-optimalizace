@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 3** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 2/147) · audituje skill `cestina-audit`
+> **Verze: 4** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 3/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -38,6 +38,28 @@
 | ⛔ | `\bcost(u|em)?\b` | náklady | jednoslovný anglicismus | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bintent(y|ů|ům|ech)\b` | záměry hledajících | „intenty“ je slang; jednotné „search intent“ se toleruje jako ⚠️ | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\btie[‑-]?breaker\b` | rozhodne až mezi vyrovnanými výsledky | anglicismus | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bintro\b` | úvod | zbytečný anglicismus i v nadpisu | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\blisting(em|u|y|ů)?\b` | výpis produktů | e-shopový slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bcustom\w*\b` | na míru, vlastní | rozlezlý agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bfocus\b` | zaměření | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bformat\b` | formát | nečeský pravopis, ne termín | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bbest practice(s)?\b` | osvědčený postup | anglicismus s přesnou náhradou | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\btrade[‑-]?off(y|ů|ům)?\b` | kompromis | manažerský slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bclick[‑-]?through\b` | proklik | mimo ustálenou zkratku CTR | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bscope\b` | rozsah, zadání | projektový slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bpresence\b` | výskyt, přítomnost | nepřeložený výraz v české větě | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\borganic search\b` | organické vyhledávání | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bcontent manager\b` | správce obsahu | role se dá pojmenovat česky | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\btime[‑-]to[‑-]result\b` | doba do prvních výsledků | manažerský slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⚠️ | `\bniche\b` | úzký segment, nika | anglicismus, v marketingu zdomácnělý | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⚠️ | `\broadmap(a|u|ou|y)?\b` | plán kroků | web ho používá napříč texty, ale u laika je lepší česky | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⚠️ | `\bproduktovk(a|y|ám|ách|ek|ou)\b` | produktová stránka | interní slang, pro laika neprůhledný | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⚠️ | `\bfix(ů|y|em)?\b` | oprava, úprava | vývojářský slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⚠️ | `\btop (problém|kategori|produktovk|stránk)` | hlavní, nejdůležitější | reklamní zkratka; „top 10“ u pozic ve výsledcích je ✅ | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ✅ | `\btop \d+\b` | — | u pozic ve výsledcích vyhledávání zavedené (top 10 = první stránka) | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bmoney page(s)?\b` | hlavní prodejní stránky | agenturní slang, u laika nesrozumitelný | seo-audit-co-kontrolovat 2026-08-23 |
 | ⚠️ | `\bproof points\b` | důkazy důvěryhodnosti | totéž | seo-audit-co-kontrolovat 2026-08-23 |
 | ⚠️ | `\bexact match\b` | přesná shoda | při prvním výskytu vysvětlit | seo-audit-co-kontrolovat 2026-08-23 |
@@ -128,6 +150,11 @@
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bAI (Answer feature|summaries)\b` | funkce AI odpovědí, shrnutí od AI | anglický název funkce v české větě, když nejde o oficiální název v rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bGoogle features\b` | funkce Googlu | totéž | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bcitation (hook|rate)\b` | místo vhodné k citaci, míra citování | agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bbrand exposure\b` | viditelnost značky | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\blong[‑-]?form\b` | dlouhý, rozsáhlý | polovičatý hybrid | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bresearch fáz(e|i|í|e)\b` | fáze zvažování | hybrid, v článku 3 pětkrát | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bbuying[- ]journey\b|\bbuyer'?s? journey\b` | fáze nákupního rozhodování | slepenec | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bcontent freshness\b` | aktuálnost obsahu | totéž | seo-audit-co-kontrolovat 2026-08-23 |

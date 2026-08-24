@@ -26,9 +26,9 @@ faq:
   - q: "V jakém pořadí řešit nálezy z auditu?"
     a: "Vrstvy mají doporučené pořadí, ne dogma: technická → on‑page → off‑page. Kritické technické problémy (5xx chyby, robots.txt blok, noindex na klíčových stránkách) mají přednost, protože omezují indexaci a crawling. Pokud ale technika nic neblokuje, mohou mít on‑page úpravy vyšší business dopad než drobné technické nedostatky. Uvnitř vrstvy řazení podle dopadu a pracnosti: P0 (kritické, blokuje crawling/indexaci/dostupnost), P1 (vysoký dopad, plánovat do měsíce), P2 (drobné optimalizace, podle kapacity)."
   - q: "Můžu si SEO audit udělat sám?"
-    a: "Záleží na velikosti a typu webu. Free nástroje (Google Search Console, PageSpeed Insights, Rich Results Test, Screaming Frog do 500 URL) pokryjí technickou vrstvu i základní on‑page kontrolu. Slabší místo svépomocí: backlink profil (potřebujete placený Ahrefs/Semrush) a interpretace priorit (zkušenost). Pro malý web do 100 stránek a téma s nízkou konkurencí dává smysl udělat audit sám; pro 500+ stránek, e‑commerce s parametrickou navigací nebo konkurenční niche se vyplatí agentura."
+    a: "Záleží na velikosti a typu webu. Nástroje zdarma (Google Search Console, PageSpeed Insights, Rich Results Test, Screaming Frog do 500 URL) pokryjí technickou vrstvu i základní on‑page kontrolu. Slabší místo svépomocí: backlink profil (potřebujete placený Ahrefs/Semrush) a interpretace priorit (zkušenost). Pro malý web do 100 stránek a téma s nízkou konkurencí dává smysl udělat audit sám; pro 500+ stránek, e‑shop s parametrickou navigací nebo konkurenční segment se vyplatí agentura."
   - q: "Kolik stojí SEO audit od agentury?"
-    a: "Široký rozptyl podle rozsahu a typu webu — orientační modely (k 5/2026, ceny se mění): základní audit (title/meta + URL struktura, několik desítek nálezů, několik dnů práce) typicky v jednotkách tisíc Kč. Komplexní audit (3 vrstvy, prioritní nálezy P0/P1/P2, roadmapa, závěrečný hovor, 2–4 týdny práce) typicky v desítkách tisíc Kč podle velikosti webu. Specializované audity (Page Speed, UX, accessibility) v rozmezí mezi tím. Co byste měli vždy znát před zahájením: konkrétní výstup, počet hodin, pro jak velký web je cena, co je zahrnuté a co ne. Návratnost auditu závisí na implementační kapacitě — bez implementace zůstává audit jen diagnostickým dokumentem."
+    a: "Široký rozptyl podle rozsahu a typu webu — orientační modely (k 5/2026, ceny se mění): základní audit (title/meta + URL struktura, několik desítek nálezů, několik dnů práce) typicky v jednotkách tisíc Kč. Komplexní audit (3 vrstvy, prioritní nálezy P0/P1/P2, plán kroků, závěrečný hovor, 2–4 týdny práce) typicky v desítkách tisíc Kč podle velikosti webu. Specializované audity (Page Speed, UX, accessibility) v rozmezí mezi tím. Co byste měli vždy znát před zahájením: konkrétní výstup, počet hodin, pro jak velký web je cena, co je zahrnuté a co ne. Návratnost auditu závisí na implementační kapacitě — bez implementace zůstává audit jen diagnostickým dokumentem."
   - q: "Jaké nástroje na SEO audit potřebuju?"
     a: "Základní sada zdarma: Google Search Console (oficiální data), PageSpeed Insights (Core Web Vitals), Rich Results Test (schema), Screaming Frog (free do 500 URL pro crawl audit). Placený stack pro hloubkový audit: Ahrefs nebo Semrush (backlink profil, srovnání s konkurencí, analýza mezer), Screaming Frog full version (větší crawly), Marketing Miner pro CZ keyword research. Pro většinu malých webů stačí základní sada zdarma a jeden placený nástroj na zpětné odkazy."
 ---
@@ -55,7 +55,7 @@ Strukturovaný audit pracuje se **třemi vrstvami** v doporučeném pořadí:
 
 Pořadí má praktický důvod, ne magický: kritické technické problémy (5xx na klíčových URL, robots.txt blok, noindex tam, kde nemá být) mohou **omezit crawling nebo indexaci**, takže žádné title/meta tweaky pak nepomohou. Pokud ale technika nic neblokuje, mohou mít on‑page úpravy a obsahové opravy vyšší business dopad než drobné technické nedostatky.
 
-Stejně tak backlinky nejsou ve vakuu: u low‑competition dotazů a niche témat může stačit dobrá relevance obsahu i bez silného link profilu. U konkurenčních témat naopak slabá on‑page struktura snižuje šanci, že link autorita dopadne na správné URL a správné dotazy. Pořadí proto chápejte jako **diagnostickou kostru**, ne jako rigidní waterfall.
+Stejně tak backlinky nejsou ve vakuu: u málo konkurenčních dotazů a úzce zaměřených témat může stačit dobrá relevance obsahu i bez silného link profilu. U konkurenčních témat naopak slabá on‑page struktura snižuje šanci, že link autorita dopadne na správné URL a správné dotazy. Pořadí proto chápejte jako **diagnostickou kostru**, ne jako rigidní waterfall.
 
 <Checklist tone="seo" title="1. Technická vrstva" items={[
   { title: "Crawl & indexovatelnost", desc: "sitemap.xml v rootu, advertised v robots.txt, validní XML; canonical pages bez konfliktu s noindex." },
@@ -103,7 +103,7 @@ Velikost webu (počet URL) je užitečná osa, ale nestačí. Audit pro lokáln�
 | **E‑shop** (do ~5 tis. produktů) | Indexace kategorií, faceted navigation a parametry, product feed, canonical strategy pro varianty, dostupnost produktů, schema Product s validní cenou a stock. |
 | **B2B sběr poptávek / SaaS** | Pokrytí záměrů ve fázích nákupního rozhodování (poznávání → zvažování → rozhodnutí), hlavní prodejní stránky s konverzními prvky, interní prolinkování na ceník a ukázku produktu, důkazy důvěryhodnosti (případové studie, loga zákazníků). |
 | **Vydavatel a blog** | Hospodaření s crawl budgetem, šablony článků, interní odkazy, tematické shluky článků, Article + Breadcrumb schema, aktuálnost obsahu. |
-| **Velký katalog / marketplace** | Parametry a duplicity, stránkování, log file analysis, šablonové title/meta na škálu, indexační hygiena. |
+| **Velký katalog / marketplace** | Parametry a duplicity, stránkování, log file analysis, šablonové title a meta popisky napříč celým katalogem, indexační hygiena. |
 
 Pokud audit obsahuje univerzální seznam P0 bez ohledu na typ webu, požádejte o přesegmentování. Univerzální checklist je nástroj, ne výstup.
 
@@ -116,8 +116,8 @@ Pokud audit obsahuje univerzální seznam P0 bez ohledu na typ webu, požádejte
 | Situace | Doporučení |
 |---|---|
 | **Malý web (do 100 stránek), nízká konkurence, vlastník má čas a chuť** | Audit svépomocí přes free nástroje. Technickou vrstvu a základní on‑page zvládnete; slabší místo bude backlink profil (potřebujete Ahrefs/Semrush trial nebo placenou verzi) a interpretace priorit. |
-| **Střední web (100–500 stránek), bez SEO znalosti** | Hybrid: agenturní audit + roadmap, vlastník postupně implementuje. Udrží náklady níž a strukturu dostanete. |
-| **Velký web (500+ stránek), e‑commerce s parametry, konkurenční niche** | Komplexní agenturní audit. Bez něj řešíte problémy nahodile a parametrická navigace bývá nejčastější zdroj indexačních problémů. |
+| **Střední web (100–500 stránek), bez SEO znalosti** | Hybrid: agenturní audit a plán kroků, vlastník postupně implementuje. Udrží náklady níž a strukturu dostanete. |
+| **Velký web (500+ stránek), e‑shop s parametry, konkurenční segment** | Komplexní agenturní audit. Bez něj řešíte problémy nahodile a parametrická navigace bývá nejčastější zdroj indexačních problémů. |
 | **Po major redesignu nebo migraci platformy** | Audit okamžitě, ne čekat na výroční rytmus — regrese se objeví do prvních týdnů a tehdy se nejlépe opraví. |
 | **Agentura už SEO řeší kontinuálně** | Refresh audit každých 6 měsíců, nezávisle (ne stejnou agenturou). |
 
@@ -149,7 +149,7 @@ Tohle je dobré vědět dopředu — audit se vyplatí firmám, které mají kap
 Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** se specializací na e‑commerce (Upgates, Shoptet) a B2B weby. Pokud zvažujete strukturovaný [SEO audit](https://www.sniperdesign.cz/audity), tady je rámec:
 
 - **Pro koho audit dává smysl:** weby po redesignu nebo migraci, při poklesu organické návštěvnosti, před migrací redakčního systému, při stagnaci poptávek nebo organické návštěvnosti, weby se 100+ URL bez vlastního SEO specialistya
-- **Co dostanete jako výstup:** seznam nálezů ve 3 vrstvách (technická / on-page / off-page), priority P0/P1/P2 s odhadem dopadu a pracnosti, implementační poznámky, roadmapa na 3 měsíce
+- **Co dostanete jako výstup:** seznam nálezů ve 3 vrstvách (technická / on-page / off-page), priority P0/P1/P2 s odhadem dopadu a pracnosti, implementační poznámky, plán kroků na 3 měsíce
 - **Jak probíhá spolupráce:** úvodní hovor → 2–4 týdny audit → závěrečný hovor (60 min) → předání dokumentace
 - **Co audit standardně neobsahuje:** implementaci, psaní textů, výrobu obsahu, budování odkazů (pokud není domluveno zvlášť)
 
