@@ -182,6 +182,8 @@ Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna d
 
 **Zbylý ⛔ nález** je text odkazu citující titulek jiného našeho článku („Jak strukturovat pillar content") — doložená výjimka od článku 8.
 
+**Nález mimo jazykový audit — přegenerovaný OG obrázek.** Původní obrázek nesl **vymyšlená čísla „+127 %" a „+64 %"**, která v článku ani v datech nemají oporu. Na kartě článku o datech působila jako údaj. Obrázek přegenerován (jas 235,6, v sadě): stejný headline „AI SEO TRENDY", podtitul aktualizovaný na „Data a podíly na trhu 2026", odznaky obsahují **jen ikony, žádné hodnoty**. Připomínka pro IMAGE_GUIDE: u vizuálů k datovým článkům platí zákaz číslic dvojnásob — čtenář je čte jako fakt.
+
 ## ⛔ Kontrola kontextu je od 23. 8. 2026 povinná — a proč
 
 Na pokyn uživatele jsem zavedl povinnou kontrolu kontextu u **každé** náhrady (`SKILL.md` krok 3, slovník § 9.4) a hned ji použil zpětně: nechal jsem gpt-5.4 projet **všech 430 řádků, které jsem během sedmi auditů změnil**.
