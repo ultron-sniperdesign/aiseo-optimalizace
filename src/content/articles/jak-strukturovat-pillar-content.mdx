@@ -1,7 +1,7 @@
 ---
 title: "Jak strukturovat pilířový obsah: osnova pro dlouhý průvodce v AI éře"
 description: "Anatomie pilířového obsahu — krátká odpověď, kontext, FAQ, schema. Kdy pillar dává smysl a kdy je vhodnější jiný formát."
-answer: "Pilířový obsah je obvykle rozsáhlejší průvodce, který pokrývá téma v šířce i hloubce — v praxi typicky 2 500–3 500 slov, ale rozhoduje pokrytí intentu, ne samotný word count. Pracovní rámec pěti vrstev: (1) hero s H1 a podtitulem, (2) krátká odpověď 40–60 slov pro snadnou citovatelnost, (3) 6–10 H2 sekcí s detailním rozborem, (4) FAQ sekce s 6–10 otázkami, (5) strukturovaná data (Article + FAQPage JSON-LD). Doplněno rozcestník a navazující články prolinkováním na cluster články. Pillar dává smysl primárně u témat s opakovanou poptávkou a potenciálem pro cluster — ne univerzálně pro každý článek."
+answer: "Pilířový obsah je obvykle rozsáhlejší průvodce, který pokrývá téma v šířce i hloubce — v praxi typicky 2 500–3 500 slov, ale rozhoduje pokrytí intentu, ne samotný word count. Pracovní rámec pěti vrstev: (1) hero s H1 a podtitulem, (2) krátká odpověď 40–60 slov pro snadnou citovatelnost, (3) 6–10 H2 sekcí s detailním rozborem, (4) FAQ sekce s 6–10 otázkami, (5) strukturovaná data (Article + FAQPage JSON-LD). Doplněno o rozcestník a navazující články s prolinkováním na cluster články. Pillar dává smysl primárně u témat s opakovanou poptávkou a potenciálem pro cluster — ne univerzálně pro každý článek."
 slug: "jak-strukturovat-pillar-content"
 category: "tutorial"
 tags:
@@ -31,11 +31,11 @@ faq:
     a: "Hub = pillar (široké téma, ~3 000 slov). Spokes = cluster články (úzká podtémata, 800–1 500 slov), které se prolinkují s pillar a mezi sebou. Příklad: pillar 'SEO vs GEO vs AEO vs AIO' + 6 cluster článků (SEO, GEO, AEO, AIO, Praktický postup, Rozhodovací matice). Tato struktura signalizuje Googlu hluboké pokrytí tématu, posiluje autoritu domény a zvyšuje rank pillar stránky."
   - q: "Kolik H2/H3 sekcí má pillar mít?"
     a: "Pracovní heuristika: 6–10 hlavních H2 sekcí, každá orientačně s 300–500 slovy. H3 použít, když jedna H2 sekce má víc než 500 slov a logicky se dá rozdělit. H4–H6 dávají smysl jen u opravdu hlubokých struktur — jinak narušují čitelnost a fragmentují téma. Počet sekcí ale není metrika kvality, rozhoduje pokrytí intentu. H2 nadpisy by měly tvořit pyramidovou osnovu, kde z první sekce poznáte, o čem zbytek bude."
-  - q: "Jaké strukturovaná data pilířový obsah potřebuje?"
+  - q: "Jaká strukturovaná data pilířový obsah potřebuje?"
     a: "Minimum: Article JSON-LD (headline, description, datePublished, dateModified, author, vydavatel). Pro tutoriálové pillary HowTo JSON-LD pokud má článek stepwise průvodce. FAQPage JSON-LD pro FAQ sekci je vhodný pro strojovou čitelnost, rozšířený výsledek už ale nepřinese — Google zobrazování FAQ ve Vyhledávání 7. května 2026 ukončil. Schema neovlivňuje ranking přímo; pomáhá strojovému pochopení obsahu a může podpořit vybrané rich result formáty, pokud je daný typ výsledku v SERPu pro vaše dotazy dostupný."
   - q: "Jak často pilířový obsah aktualizovat?"
     a: "Strukturálně 1× ročně (procházíte celý článek, přepisujete sekce, kde se realita posunula). Dílčí aktualizace na klíčových místech (data, ceny, citace) podle potřeby — minimálně každé 3 měsíce u rychle se měnících oborů (AI, kryptoměny, regulace). U nadčasových témat (matematika, klasické postupy) stačí 1× za 18–24 měsíců. Datum poslední aktualizace zobrazit viditelně + v Article schema."
-  - q: "Pomáhá pilířový obsah i s podílu citací v AI?"
+  - q: "Pomáhá pilířový obsah i s podílem citací v AI?"
     a: "U citovaných zdrojů v AI odpovědích se v praxi často objevuje obsah, který pokrývá téma z více úhlů a má jasné citovatelné formulace — pilířový obsah s krátkou odpovědí na začátku, strukturou H2/H3 a FAQ sekcí těmto vlastnostem typicky vyhovuje. Mechanismus výběru zdrojů u různých AI nástrojů (ChatGPT, Perplexity, Gemini) ale není veřejně publikovaný a liší se mezi nástroji — berte to jako pracovní hypotézu, ne jako garantovaný vztah. Měřte vlastní výskyt v odpovědích u definované sady dotazů (Otterly, Brand Radar)."
 howto:
   name: "Praktický postup: napsat pilířový obsah od nuly"
@@ -43,7 +43,7 @@ howto:
     - name: "Průzkum klíčových slov a osnova"
       text: "Marketing Miner nebo Ahrefs: identifikovat 1 primary KW (search volume 200+) a 10–15 long-tail variant. Sepsat osnovu 6–10 sekcí H2 podle univerzálního vzorce. Cílit na search intent — pilířový obsah je obvykle informační intent, ne transakční."
     - name: "Napsat krátká odpověď jako první"
-      text: "40–60 slov, definice + mechanismus + praktický důsledek. Pošlete to ChatGPT nebo Claude s promptem 'shrň tento text v 1 větě' — pokud AI shrnutí dobře vystihuje téma, krátká odpověď je dobrý. Pokud ne, přepište. Tučně zvýraznit 2–3 klíčové termíny."
+      text: "40–60 slov, definice + mechanismus + praktický důsledek. Pošlete to ChatGPT nebo Claude s promptem 'shrň tento text v 1 větě' — pokud AI shrnutí dobře vystihuje téma, krátká odpověď je dobrá. Pokud ne, přepište. Tučně zvýraznit 2–3 klíčové termíny."
     - name: "Naplnit 6–10 H2 sekcí (300–500 slov každá)"
       text: "Začít sekcí 'Co je X' (kontext) a 'Jak X funguje' (mechanika). Pokračovat 'Klíčové signály', 'Praktický postup', 'Časté chyby', 'Měření', 'Budoucnost'. Každá sekce končí buď konkrétním takeaway nebo přechodem k další."
     - name: "Přidat 2–3 `Insight` + 1 Compare + 1 `Stepper` + 1 `Checklist` + 1 tabulku"
@@ -273,7 +273,7 @@ Pro tutoriálové pillary (postupy, návody) navíc **HowTo JSON-LD** s postupem
 ## <strong>Časté chyby</strong> v <span class="hl">pilířového obsahu</span>
 
 1. **Generický H1** — „Vše o SEO“, „Kompletní průvodce SEO“ — u většiny webů bude mít slabší šanci se prosadit proti specifičtějším variantám.
-2. **Žádný krátká odpověď** nebo krátká odpověď schovaný v 3. odstavci — uživatel i strojové systémy hlavní odpověď najdou pozdě nebo vůbec.
+2. **Žádná krátká odpověď** nebo krátká odpověď schovaná ve třetím odstavci — uživatel i strojové systémy hlavní odpověď najdou pozdě nebo vůbec.
 3. **Jednolitá stěna textu bez vizuálních bloků** — zhoršuje orientaci, snižuje šanci, že čtenář rychle najde odpověď, často vede k nižšímu engagementu.
 4. **FAQ jako duplikace hlavního textu** — odpovědi na otázky, které už pillar text pokryl. Je to redundantní a nepřidává to novou informační hodnotu.
 5. **Nezvládnutá délka vůči SERPu** — u většiny konkurenčních informačních témat bývá 1 800 slov na plnohodnotný pillar málo. Pokud se ale do 1 800 slov vejde kompletní intent a konkurence je slabá, formálně to problém být nemusí. 5 000+ slov bývá 2 různá pillar témata stlačená do jednoho.
@@ -293,7 +293,7 @@ Pro tutoriálové pillary (postupy, návody) navíc **HowTo JSON-LD** s postupem
 | **Case study** | 1 200–2 000 slov | Konkrétní výsledek, čísla, postup | "Jak jsme zvedli organická návštěvnost o 340 %" |
 | **Krátká aktualita** | 300–600 slov | Aktuální zpráva, reakce na dění | "Google update XYZ — co to znamená" |
 
-Pro **strategicky důležitá témata, která čtenář déle zvažuje a potenciálem clusteru** = pillar. Pro **podtémata** = cluster nebo tutorial. Krátký obsah pod 800 slov má smysl u news, jednoduchých definic, lokálních transakčních dotazů a aktualit. Pillar není výherní formát pro každý článek — nasazujte ho cíleně.
+Pro **strategicky důležitá témata, která čtenář déle zvažuje a mají potenciál pro cluster** = pillar. Pro **podtémata** = cluster nebo tutorial. Krátký obsah pod 800 slov má smysl u news, jednoduchých definic, lokálních transakčních dotazů a aktualit. Pillar není výherní formát pro každý článek — nasazujte ho cíleně.
 
 ## <strong>Měření výkonu</strong> <span class="hl">pilířového obsahu</span>
 
@@ -306,7 +306,7 @@ Pro **strategicky důležitá témata, která čtenář déle zvažuje a potenci
 | Scroll depth (75 %+) | GA4, Hotjar | měsíčně | 40 %+ uživatelů |
 | Bounce rate | GA4 | měsíčně | pod 60 % (orientačně) |
 | Backlinks | Ahrefs, Semrush | čtvrtletně | rostoucí počet kvalitních referring domains |
-| podílu citací v AI | Otterly, Brand Radar | měsíčně | mention v ChatGPT/Perplexity, srovnávat vůči konkurenci |
+| Podíl citací v AI | Otterly, Brand Radar | měsíčně | mention v ChatGPT/Perplexity, srovnávat vůči konkurenci |
 
 Konkrétní cíle (čas k top 10, počet relací) **nastavte jako interní benchmark po prvních 3–6 měsících** podle reálné konkurence, autority domény a intentu — generický benchmark přes všechny niky je nepřesný. Pro většinu webů stačí GSC + GA4 (zdarma) + měsíční manuální kontrola pozic na top 5 KW. Pro agentury nebo enterprise pillar pages se vyplatí Ahrefs nebo SE Ranking na sledování pozic a citací v AI odpovědích.
 
@@ -314,7 +314,7 @@ Konkrétní cíle (čas k top 10, počet relací) **nastavte jako interní bench
 
 Pracovní rámec popsaný v tomto článku funguje hlavně pro:
 
-- **Obsahové weby a vydavately** s 50+ informačními články a ambicí na topical authority
+- **Obsahové weby a vydavatelé** s 50+ informačními články a ambicí na topical authority
 - **B2B SaaS a software firmy** s nákupní cestou založenou na hledání informací a s edukativní obsahovou vrstvou
 - **Konzultační a profesionální služby** s blogem a ambicí být oborovou autoritou
 - **Odborné weby** v konkurenčních informačních tématech (B2B/B2C s delší fází zvažování)

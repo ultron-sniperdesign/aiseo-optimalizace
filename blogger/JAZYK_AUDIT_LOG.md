@@ -134,6 +134,22 @@ Druhý nejhustší po pilíři: **94 strojových nálezů, 22,7 na 1 000 slov**.
 
 Vedlejší zjištění: moje náhrada „P1 podle **scénář použití**" byla navíc gramaticky rozbitá — dávková náhrada podstatného jména neupraví pád. Další důvod, proč se každý zásah musí přečíst v kontextu.
 
+## ⛔ Kontrola kontextu je od 23. 8. 2026 povinná — a proč
+
+Na pokyn uživatele jsem zavedl povinnou kontrolu kontextu u **každé** náhrady (`SKILL.md` krok 3, slovník § 9.4) a hned ji použil zpětně: nechal jsem gpt-5.4 projet **všech 430 řádků, které jsem během sedmi auditů změnil**.
+
+**Výsledek: 35 gramatických chyb, které jsem sám vyrobil dávkovými náhradami a byly živě na webu.**
+
+| Typ chyby | Příklad |
+|---|---|
+| **špatný pád po předložce** | „P1 podle **scénář použití**", „Bez **výchozí stav** nelze říct", „s lokálním **budování odkazůem**" |
+| **neshoda rodu** | „krátká odpověď je **dobrý**", „krátká odpověď **schovaný**", „**Žádný** krátká odpověď", „**Jaké** strukturovaná data" |
+| **neshoda čísla** | „1 000 **organické relace**/měsíc", „propad **organické relace**", „**vysoké zobrazení, nízký** CTR" |
+| **rozbitá vazba** | „Pro **obsluhované území firmu**", „na **účtovaný po kreditech** systém", „nad vaším konkrétním **measurement nastavení**" |
+| **zdvojení a překlepy** | „výpisem produktů **produktů**", „bez vlastního SEO **specialistya**", „**vydavately**" |
+
+Všech 35 opraveno v šesti článcích. **Poučení je jednoznačné:** regex umí najít slovo, ale neumí ho ohnout. Dávková náhrada je návrh, ne úprava — a bez přečtení výsledné věty produkuje text horší než ten, který opravuje.
+
 ## ⛔ Otevřený nález pro celý korpus: glosářové termíny
 
 Rozšíření regexů o skloňované tvary (`answer blockem`, `schema markupu`) odhalilo, že jde o **plošný problém, ne jednotlivosti**:

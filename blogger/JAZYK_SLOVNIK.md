@@ -266,4 +266,8 @@
 
 | `jak-strukturovat-pillar-content` 2026-08-23 | dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky (`import \`Stepper\` from …`) |
 
-4. **Žádná dávková náhrada nesmí sáhnout na řádky `import`, `export` a frontmatter klíče.** Před zápisem si vždy vypiš, kolik řádků se změní, a zkontroluj, jestli mezi nimi nejsou technické.
+4. **Kontrola kontextu je povinná u každé náhrady.** Dávkovou náhradou se připraví návrh; před commitem se `git diff` čte řádek po řádku a každá změněná věta se přečte celá. Kontroluje se **pád, číslo a rod**, **význam v daném textu** a jestli nejde o citaci, popisek rozhraní nebo vlastní jméno.
+
+   ⛔ Doklad, proč: náhrada `use case` → `scénář použití` vyrobila větu „P1 podle **scénář použití**" a byla živě na webu. Regex pád neupraví.
+
+5. **Žádná dávková náhrada nesmí sáhnout na řádky `import`, `export` a frontmatter klíče.** Před zápisem si vždy vypiš, kolik řádků se změní, a zkontroluj, jestli mezi nimi nejsou technické.

@@ -23,9 +23,9 @@ keywords:
   - "google search console"
 faq:
   - q: "Jaký je nejlepší SEO nástroj pro malou firmu v roce 2026?"
-    a: "Pro malou firmu (web do 100 stránek, 1–2 lidé na SEO) doporučujeme: Google Search Console (zdarma, oficiální data) + PageSpeed Insights + Rich Results Test jako základní sada zdarma, plus jeden placený nástroj na konkurenci. Volba placeného: SE Ranking Essential ($65/měs) má nejlepší poměr cena/výkon, Ahrefs Starter ($29/měs) má v praxi jednu z nejsilnějších backlink databází na trhu ale účtovaný po kreditech limit, Marketing Miner Miner Plan ($29/měs) pro CZ-specifická data."
+    a: "Pro malou firmu (web do 100 stránek, 1–2 lidé na SEO) doporučujeme: Google Search Console (zdarma, oficiální data) + PageSpeed Insights + Rich Results Test jako základní sada zdarma, plus jeden placený nástroj na konkurenci. Volba placeného: SE Ranking Essential ($65/měs) má nejlepší poměr cena/výkon, Ahrefs Starter ($29/měs) má v praxi jednu z nejsilnějších backlink databází na trhu, ale má limit účtovaný po kreditech, Marketing Miner Miner Plan ($29/měs) pro CZ-specifická data."
   - q: "Ahrefs vs. Semrush — co si vybrat?"
-    a: "Ahrefs v praxi patří k nejsilnějším backlink databázím na trhu a od 2025 přešel na účtovaný po kreditech systém s Starter plánem za $29/měs (proti Semrush Pro za $139,95/měs). Semrush má širší ekosystém (PPC, sociální sítě, obsah) a Semrush One AI bundle ($199/měs) s tracking brand visibility v ChatGPT, Perplexity, Gemini. Pro čistý SEO + backlinks: Ahrefs. Pro all-in-one marketingovou platformu: Semrush. Pro CZ trh často vyhrává levnější SE Ranking ($65/měs) s podobnou funkčností."
+    a: "Ahrefs v praxi patří k nejsilnějším backlink databázím na trhu a od 2025 přešel na systém účtovaný po kreditech s Starter plánem za $29/měs (proti Semrush Pro za $139,95/měs). Semrush má širší ekosystém (PPC, sociální sítě, obsah) a Semrush One AI bundle ($199/měs) s tracking brand visibility v ChatGPT, Perplexity, Gemini. Pro čistý SEO + backlinks: Ahrefs. Pro all-in-one marketingovou platformu: Semrush. Pro CZ trh často vyhrává levnější SE Ranking ($65/měs) s podobnou funkčností."
   - q: "Co je AI citation tracking a kdo ho potřebuje?"
     a: "AI citation tracking sleduje, jak často je váš brand zmiňován v odpovědích AI nástrojů (ChatGPT, Perplexity, Gemini, Copilot, Google AI Overviews). Klíčové metriky: míra zmínek, podíl citací proti konkurenci, sentiment, citované zdroje. Než sáhnete po placeném nástroji, zkontrolujte bezplatné oficiální reporty: Bing AI Performance (od 2/2026) a Generative AI features v Search Console (od 6/2026). Nepokrývají ale ChatGPT, Perplexity ani Claude — tam nastupují placené nástroje: Otterly AI (od $29/měs) pro malé a střední firmy, Profound (enterprise, individuální cena typicky $500+/měs) pro velké brandy s dedikovaným reportingem. Potřebujete to, pokud máte B2B/prémiový brand a vaše cílovka aktivně používá AI nástroje pro research. Pozor: AI citation tracking je emerging vrstva, ne KPI první úrovně pro většinu firem."
   - q: "Stačí jen Google Search Console?"
@@ -44,7 +44,7 @@ import CompareCol from "../../components/blocks/CompareCol.astro";
 
 ## Proč v roce <span class="hl">2026</span> SEO stack <strong>vypadá jinak</strong>
 
-Klasický SEO stack se v posledních dvou letech nerozpadl, ale **rozšířil o novou vrstvu**: [měření viditelnost v AI](/blog/test-viditelnosti-v-ai/). Vedle nástrojů pro keyword research, backlinky, rank tracking a [technický audit](/blog/seo-audit-co-kontrolovat/) (Ahrefs, Semrush, SE Ranking, Marketing Miner) přibyly platformy, které sledují [citace](/blog/jak-ai-cituje-zdroje/) a [brand mentions](/blog/ai-brand-mentions/) v odpovědích AI systémů (Otterly, Profound, Brand Radar). Klasické nástroje pořád pokrývají většinu práce; AI vrstva je doplněk pro specifické use case, ne náhrada.
+Klasický SEO stack se v posledních dvou letech nerozpadl, ale **rozšířil o novou vrstvu**: [měření viditelnosti v AI](/blog/test-viditelnosti-v-ai/). Vedle nástrojů pro keyword research, backlinky, rank tracking a [technický audit](/blog/seo-audit-co-kontrolovat/) (Ahrefs, Semrush, SE Ranking, Marketing Miner) přibyly platformy, které sledují [citace](/blog/jak-ai-cituje-zdroje/) a [brand mentions](/blog/ai-brand-mentions/) v odpovědích AI systémů (Otterly, Profound, Brand Radar). Klasické nástroje pořád pokrývají většinu práce; AI vrstva je doplněk pro specifické use case, ne náhrada.
 
 Druhá změna: **vstupní cena klesla**. Ahrefs uvedl Starter plán za $29/měs (z dřívějších $99 minima). Marketing Miner má Miner Plan za $29/měs. To posunulo SEO nástroje z „luxusu pro agentury“ do dostupnosti pro malé týmy, které SEO aktivně řeší. Cena dnes přestává být primární bariérou — hlavní omezení u většiny malých webů je čas, znalost a implementační kapacita, ne $29/měs.
 
@@ -99,7 +99,7 @@ Pro CZ projekty má Marketing Miner výhodu v lokálním zaměření: pracuje s 
 <ToolGrid tone="seo" items={[
   { name: "Marketing Miner", tier: "paid", category: "Keyword research (CZ)", desc: "CZ-first hledanost, sezónnost, intent, AIO výskyt atribut. Miner Plan $29, Digger $59, Machine $99/měs. Pro CZ trh nejdostupnější.", url: "https://www.marketingminer.com/cs" },
   { name: "Google Keyword Planner", tier: "free", category: "Keyword research (free)", desc: "Hledanost a CPC odhady přímo z Google Ads (vyžaduje aktivní účet v Google Ads pro přesná čísla). Orientačně i pro organic.", url: "https://ads.google.com/intl/cs_cz/home/tools/keyword-planner/" },
-  { name: "Ahrefs Keywords Explorer", tier: "paid", category: "Keyword research (global)", desc: "Globální hledanost, intent klastry, SERP features, klíčový skóre obtížnosti klíčového slova. Součástí Ahrefs předplatného." }
+  { name: "Ahrefs Keywords Explorer", tier: "paid", category: "Keyword research (global)", desc: "Globální hledanost, intent klastry, SERP features, skóre obtížnosti klíčového slova. Součástí Ahrefs předplatného." }
 ]} />
 
 ### 4. Technický audit a crawl
@@ -147,7 +147,7 @@ Nová kategorie nástrojů, která vznikla 2024–2025. Sleduje, jak často je v
 ]} />
 
 <Insight tone="seo" icon="✦" label="Vendor data k AI éře">
-  Podle reportu dodavatele Otterly (2026) se v jejich měřeném vzorku objevuje **rostoucí podíl AI agentů a AI-related referralů**, mezi search referrals dominuje ChatGPT (řádově desítky procent). Nelze z toho vyvozovat univerzální podíl pro každý web — vzorek je sesbíraný dodavatelem, metodika nepublikovaná. U vlastního webu ověřte data v GA4 a v server lozích (user-agent filtering pro `GPTBot`, `OAI-SearchBot`, `PerplexityBot`, `ClaudeBot`).
+  Podle reportu dodavatele Otterly (2026) se v jejich měřeném vzorku objevuje **rostoucí podíl AI agentů a AI-related referralů**, mezi search referrals dominuje ChatGPT (řádově desítky procent). Nelze z toho vyvozovat univerzální podíl pro každý web — vzorek je sesbíraný dodavatelem, metodika nepublikovaná. U vlastního webu ověřte data v GA4 a v log souborech serveru (user-agent filtering pro `GPTBot`, `OAI-SearchBot`, `PerplexityBot`, `ClaudeBot`).
 </Insight>
 
 ## <strong>Doporučené stacky</strong> podle <span class="hl">situace</span>
@@ -186,7 +186,7 @@ Reálné rozpětí: **$150–450/měs** podle toho, jestli berete Lite/Standard 
 
 ### Stack 4 — Enterprise / globální brand ($2 000+/měs)
 
-- **Bing AI Performance + Generative AI features v Search Console** jako bezplatná výchozí stav
+- **Bing AI Performance + Generative AI features v Search Console** jako bezplatný výchozí stav
 - **Profound** (individuální cena od $500+/měs) pro AI tracking mimo Google a Bing
 - **Ahrefs Advanced** ($449/měs) + **Semrush Business** ($499,95/měs)
 - **Conductor / BrightEdge** (enterprise SEO platformy, $50k+/rok)
@@ -210,7 +210,7 @@ Po měsíci máte základní měřicí a benchmark vrstvu (funkční výchozí s
 Volba stacku závisí na typu webu, obchodním modelu, velikosti týmu a fázi růstu — ne jen na cenovce nástroje. Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** se specializací na e-commerce (Upgates, Shoptet) a B2B weby. Pokud nevíte, který stack zvolit, [60min konzultace](https://www.sniperdesign.cz/konzultace) projde:
 
 - **Doporučený stack** podle typu webu, trhu (ČR vs. zahraničí), rozpočtu a interní kapacity
-- **Co koupit teď, co odložit a co vůbec nepotřebujete** — místo paušálního „kupte si Ahrefs“ nebo „pořiďte si Otterly“ nejdřív ověříme, co pokryje bezplatná výchozí stav a co už ne
+- **Co koupit teď, co odložit a co vůbec nepotřebujete** — místo paušálního „kupte si Ahrefs“ nebo „pořiďte si Otterly“ nejdřív ověříme, co pokryje bezplatný výchozí stav a co už ne
 - **Kdy nástroj ještě nedává smysl** — pokud nemáte vyřešené měření leadů nebo přiřazení tržeb, druhý SEO nástroj typicky neplatí; pokud máte web o 20 URL, enterprise crawling stack je zbytečně robustní řešení
 - **Implementační návaznost** — stack bez procesu je drahý dashboard
 
