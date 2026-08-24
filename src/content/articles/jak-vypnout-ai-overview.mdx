@@ -2,7 +2,7 @@
 title: "Jak vypnout AI Overviews v Googlu — co jde a co ne (2026)"
 seoTitle: "Jak vypnout AI v Googlu: 3 funkční způsoby (návod 2026)"
 description: "Návod, jak vypnout AI odpovědi (AI Overviews) v Googlu: přes Search Labs, filtr &udm=14 nebo změnu vyhledávače. Pro Chrome, Edge, Firefox i mobil."
-answer: "Google AI Overviews nelze garantovaně globálně vypnout — Google nenabízí hlavní vypínač. Lze je ale omezit nebo obejít: (1) přes Search Labs experiment v Google účtu (dostupnost závisí na účtu, regionu, rollout fázi); (2) přes web filter `&udm=14`, který aktuálně potlačuje AIO i další SERP prvky; (3) přepnutím výchozího vyhledávače na Brave Search nebo DuckDuckGo. Pro vlastní web pak `data-nosnippet` nebo `nosnippet` direktivy selektivně, podle typu dotazu."
+answer: "Google AI Overviews nelze garantovaně globálně vypnout — Google nenabízí hlavní vypínač. Lze je ale omezit nebo obejít: (1) přes Search Labs experiment v Google účtu (dostupnost závisí na účtu, regionu a fázi zpřístupňování); (2) přes web filter `&udm=14`, který aktuálně potlačuje AIO i další SERP prvky; (3) přepnutím výchozího vyhledávače na Brave Search nebo DuckDuckGo. Pro vlastní web pak `data-nosnippet` nebo `nosnippet` direktivy selektivně, podle typu dotazu."
 slug: "jak-vypnout-ai-overview"
 category: "defensive"
 tags:
@@ -28,7 +28,7 @@ faq:
   - q: "Jak omezit AI Overviews pro vlastní web?"
     a: "Použít snippet direktivy podle Google dokumentace: `<meta name=\"robots\" content=\"nosnippet\">` plošně (omezí použití textu ve snippetech i AI Overviews na celé stránce — i klasické featured snippets) nebo `data-nosnippet` selektivně na konkrétních HTML blocích, kde nechcete, aby Google obsah použil. Není to blokace samostatného AIO crawleru — Google AIO pracuje s Googlebotem a indexovaným obsahem, snippet direktivy omezují použití obsahu, ne crawl."
   - q: "Proč by někdo chtěl omezit AI Overviews?"
-    a: "Hlavní důvody: (1) AIO odpovědi mohou být u některých dotazů nepřesné nebo vynechávat kontext; (2) panel zabírá horní část SERPu a u některých dotazů může snižovat CTR organických výsledků; (3) preference pro klasické vyhledávání. Reálný dopad AIO na traffic se ale výrazně liší podle typu dotazu, intentu, vertikály i toho, zda je váš web v AIO citovaný — než se rozhodnete pro snippet restrikce, vyhodnoťte data v GSC."
+    a: "Hlavní důvody: (1) AIO odpovědi mohou být u některých dotazů nepřesné nebo vynechávat kontext; (2) panel zabírá horní část SERPu a u některých dotazů může snižovat CTR organických výsledků; (3) preference pro klasické vyhledávání. Reálný dopad AIO na návštěvnost se ale výrazně liší podle typu dotazu, záměru hledajícího, vertikály i toho, zda je váš web v AIO citovaný — než se rozhodnete pro snippet restrikce, vyhodnoťte data v GSC."
   - q: "Funguje vypnutí AI Overviews i v Bingu / Copilotu?"
     a: "Bing Chat a Copilot jsou integrální součástí Bing.com a Edge a Microsoft pro ně standardní vypínač nedává. Lze je obejít přepnutím na klasický Bing search bez Chat módu nebo použitím jiného search enginu. V Edge prohlížeči lze postranní Copilot panel deaktivovat v Settings → Sidebar → Copilot."
 howto:

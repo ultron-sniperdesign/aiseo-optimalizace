@@ -45,14 +45,26 @@ def mask(line):
     line = JSX.sub(lambda m: ' ' * len(m.group(0)), line)   # nazvy komponent nejsou text pro ctenare
     return line
 
+TECH_KEYS = re.compile(r'^\s*(slug|published|updated|category|variant|tags|keywords|seoTitle|image|og|howto|faq|stats|-)\s*:?\s*$')
+TEXT_KEY  = re.compile(r'^\s*(title|seoTitle|description|answer|label|a|q|desc|text|value)\s*:\s*')
+
 def body_lines(text):
-    """Vrati (cislo_radku, text) pro telo clanku bez frontmatteru a bez kodu."""
+    """Vrati (cislo_radku, text) pro telo clanku + textova pole frontmatteru.
+
+    Frontmatter se neaudituje cely — jen pole, ktera ctenar vidi (answer,
+    description, FAQ, popisky statu). Technicke klice (slug, tags, keywords)
+    se preskakuji, protoze tam anglicka klicova slova patri.
+    """
     lines = text.split('\n')
     start = 0
     if lines and lines[0].strip() == '---':
         for i in range(1, len(lines)):
             if lines[i].strip() == '---':
-                start = i + 1; break
+                start = i + 1
+                for j in range(1, i):
+                    if TEXT_KEY.match(lines[j]) and not TECH_KEYS.match(lines[j]):
+                        yield j + 1, lines[j]
+                break
     in_code = False
     for n in range(start, len(lines)):
         raw = lines[n]

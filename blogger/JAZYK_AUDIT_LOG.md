@@ -6,7 +6,7 @@
 | # | Datum | Článek | Publ. | Verze slovníku | Slov | Nálezů (stroj) | Nálezů LLM | na 1 000 slov | Opraveno | Nová pravidla |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 2026-08-23 | `jak-vypnout-ai-overview` | 2026-04-29 | v1 → v2 | 2 296 | 15 | 29 | **6,6 → 0,0** | 46 | +21 |
-| 2 | 2026-08-23 | `seo-audit-co-kontrolovat` | 2026-05-02 | v2 → v3 | 1 855 | 12 | 24 | **6,6 → 0,0** | 26 | +23 |
+| 2 | 2026-08-23 | `seo-audit-co-kontrolovat` | 2026-05-02 | v2 → v3 | 2 386 | 12+5 | 24 | **6,6 → 0,0** | 33 | +23 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -43,3 +43,11 @@ Druhý nejstarší článek, tentokrát prošlý proti slovníku v2. Stejná hus
 1. Checker hlásil **názvy komponent** (`<Insight>`) jako anglicismus → do masky přibyly JSX tagy.
 2. Pravidlo na `content` hlásilo **`mixed content`** (technický termín HTTPS) → doplněna výjimka.
 3. Normalizace uvozovek podruhé rozbila kód — tentokrát **uzavírací uvozovku JSX prop** `desc: "…"`, takže se nepřeložilo MDX. Zachytil to `npm run build`. Slovník i skill mají od té chvíle § 9 s povinným postupem.
+
+### Oprava nástroje po článku 2: audit frontmatteru
+
+Živá kontrola po nasazení ukázala, že slovo `deliverable` je pořád na stránce, ale checker hlásí nulu. Důvod: **přeskakoval celý frontmatter** — a v něm jsou `answer`, `description` a celé FAQ, tedy text, který čtenář vidí a který se dostává do vyhledávačů.
+
+Checker teď audituje textová pole frontmatteru (`title`, `description`, `answer`, `q`, `a`, `label`, `desc`, `text`, `value`) a technické klíče (`slug`, `tags`, `keywords`, `category`) dál přeskakuje — anglická klíčová slova tam patří.
+
+Okamžitý dopad: **+5 nálezů v článku 2 a +2 v článku 1**, všechny ve FAQ. Oba články mají po opravě 0.
