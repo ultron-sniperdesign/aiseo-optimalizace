@@ -44,7 +44,7 @@ import CompareCol from "../../components/blocks/CompareCol.astro";
 
 ## Proč v roce <span class="hl">2026</span> SEO stack <strong>vypadá jinak</strong>
 
-Klasický SEO stack se v posledních dvou letech nerozpadl, ale **rozšířil o novou vrstvu**: [měření viditelnost v AI](/blog/test-viditelnosti-v-ai/). Vedle nástrojů pro keyword research, backlinky, rank tracking a [technický audit](/blog/seo-audit-co-kontrolovat/) (Ahrefs, Semrush, SE Ranking, Marketing Miner) přibyly platformy, které sledují [citace](/blog/jak-ai-cituje-zdroje/) a [brand mentions](/blog/ai-brand-mentions/) v odpovědích AI systémů (Otterly, Profound, Brand Radar). Klasické nástroje pořád pokrývají většinu práce; AI vrstva je doplněk pro specifické scénář použití, ne náhrada.
+Klasický SEO stack se v posledních dvou letech nerozpadl, ale **rozšířil o novou vrstvu**: [měření viditelnost v AI](/blog/test-viditelnosti-v-ai/). Vedle nástrojů pro keyword research, backlinky, rank tracking a [technický audit](/blog/seo-audit-co-kontrolovat/) (Ahrefs, Semrush, SE Ranking, Marketing Miner) přibyly platformy, které sledují [citace](/blog/jak-ai-cituje-zdroje/) a [brand mentions](/blog/ai-brand-mentions/) v odpovědích AI systémů (Otterly, Profound, Brand Radar). Klasické nástroje pořád pokrývají většinu práce; AI vrstva je doplněk pro specifické use case, ne náhrada.
 
 Druhá změna: **vstupní cena klesla**. Ahrefs uvedl Starter plán za $29/měs (z dřívějších $99 minima). Marketing Miner má Miner Plan za $29/měs. To posunulo SEO nástroje z „luxusu pro agentury“ do dostupnosti pro malé týmy, které SEO aktivně řeší. Cena dnes přestává být primární bariérou — hlavní omezení u většiny malých webů je čas, znalost a implementační kapacita, ne $29/měs.
 
@@ -108,7 +108,7 @@ Pro audit webu potřebujete crawler, který projde celý web a najde 4xx/5xx, ro
 
 <ToolGrid tone="seo" items={[
   { name: "Screaming Frog SEO Spider", tier: "both", category: "Crawl + Technical", desc: "Industry-standard crawler. Free do 500 URL, full $259/rok (≈$22/měs). Vlastní crawl konfigurace, vlastní extraction, schema validace.", url: "https://www.screamingfrog.co.uk/seo-spider/" },
-  { name: "Sitebulb", tier: "paid", category: "Crawl + Technical", desc: "Vizuální alternativa ke Screaming Frog. Lepší přehledy a reportování pro klienty. Lite $13,50/měs, Pro $35/měs.", url: "https://sitebulb.com" },
+  { name: "Sitebulb", tier: "paid", category: "Crawl + Technical", desc: "Vizuální alternativa ke Screaming Frog. Lepší dashboardy a reportování pro klienty. Lite $13,50/měs, Pro $35/měs.", url: "https://sitebulb.com" },
   { name: "Ahrefs Site Audit", tier: "paid", category: "Crawl + Technical", desc: "Součástí Ahrefs předplatného. Méně detailní než Screaming Frog, ale propojeno s vlastními backlinks/keywords daty." }
 ]} />
 
@@ -119,7 +119,7 @@ Core Web Vitals jsou page experience signály od 2021. V praxi typicky **rozhodn
 <ToolGrid tone="seo" items={[
   { name: "Google PageSpeed Insights", tier: "free", category: "Performance", desc: "LCP, INP, CLS měření na laboratorních i reálných datech (Chrome UX Report). Oficiální Google nástroj.", url: "https://pagespeed.web.dev/" },
   { name: "WebPageTest", tier: "free", category: "Performance", desc: "Detailnější analýza než PSI: waterfall, filmstrip, repeat view. Vhodné pro hloubkovou analýzu výkonu.", url: "https://www.webpagetest.org" },
-  { name: "Lighthouse CI", tier: "free", category: "Performance + CI/CD", desc: "Automatizovaný Lighthouse audit v GitHub Actions / GitLab CI. Detekuje regrese před nasazením.", url: "https://github.com/GoogleChrome/lighthouse-ci" }
+  { name: "Lighthouse CI", tier: "free", category: "Performance + CI/CD", desc: "Automatizovaný Lighthouse audit v GitHub Actions / GitLab CI. Detekuje regrese před deployem.", url: "https://github.com/GoogleChrome/lighthouse-ci" }
 ]} />
 
 ### 6. Strukturovaná data + schema
@@ -167,7 +167,7 @@ Místo „nejlepší nástroj 2026“ hledejte stack, který sedí vaší situac
 Strukturovat podle priority, ne všechno najednou:
 
 - **P0 nutné:** GSC + GA4/Matomo + konverzní měření + PageSpeed/Rich Results Test (základní sada zdarma + analytika)
-- **P1 podle scénář použití:** jeden hlavní nástroj pro konkurenci a rank tracking — Ahrefs Lite/Standard ($129–249/měs) **nebo** Semrush Pro ($139,95/měs) **nebo** SE Ranking Essential/Pro ($65–139/měs)
+- **P1 podle use case:** jeden hlavní nástroj pro konkurenci a rank tracking — Ahrefs Lite/Standard ($129–249/měs) **nebo** Semrush Pro ($139,95/měs) **nebo** SE Ranking Essential/Pro ($65–139/měs)
 - **P1 pro CZ projekty:** Marketing Miner Digger ($59/měs) — pokud řešíte primárně český trh
 - **AI výchozí stav zdarma:** Bing AI Performance + Generative AI features v Search Console
 - **P2 až při škálování:** Otterly Pro ($99/měs) — jen když potřebujete i platformy, které oficiální reporty nepokrývají, AI research reálně ovlivňuje nákupní cestu cílovky a máte na to budget
@@ -212,7 +212,7 @@ Volba stacku závisí na typu webu, obchodním modelu, velikosti týmu a fázi r
 - **Doporučený stack** podle typu webu, trhu (ČR vs. zahraničí), rozpočtu a interní kapacity
 - **Co koupit teď, co odložit a co vůbec nepotřebujete** — místo paušálního „kupte si Ahrefs“ nebo „pořiďte si Otterly“ nejdřív ověříme, co pokryje bezplatná výchozí stav a co už ne
 - **Kdy nástroj ještě nedává smysl** — pokud nemáte vyřešené měření leadů nebo přiřazení tržeb, druhý SEO nástroj typicky neplatí; pokud máte web o 20 URL, enterprise crawling stack je zbytečně robustní řešení
-- **Implementační návaznost** — stack bez procesu je drahý přehled
+- **Implementační návaznost** — stack bez procesu je drahý dashboard
 
 Neprodáváme stacky podle affiliate provize, ale podle návratnosti a implementační náročnosti. První konzultace je nezávazná.
 

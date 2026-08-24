@@ -16,6 +16,8 @@
 | **Proč** | bez důvodu se pravidlo nezapisuje |
 | **Odkud** | slug článku a datum, kde se to poprvé objevilo |
 
+⛔ **Zavedená oborová mluva není anglicismus.** Když se výraz běžně používá i v českém prostředí oboru (marketing, vývoj, produkt), patří na úroveň ✅ — přísnost má mířit na kalky, strojové obraty a texty opsané z anglických stránek. Rozhodnuto 23. 8. 2026 u výrazů *industry-standard, best practice, benchmark, deploy, dashboard, use case*.
+
 ⛔ **Citace jsou z auditu vyňaté.** Doslovná anglická věta z oznámení výrobce je doklad, ne styl.
 
 ---
@@ -43,7 +45,7 @@
 | ⛔ | `\bcustom\w*\b` | na míru, vlastní | rozlezlý agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bfocus\b` | zaměření | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bformat\b` | formát | nečeský pravopis, ne termín | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\bbest practice(s)?\b` | osvědčený postup | anglicismus s přesnou náhradou | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ✅ | `\bbest practice(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\btrade[‑-]?off(y|ů|ům)?\b` | kompromis | manažerský slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bclick[‑-]?through\b` | proklik | mimo ustálenou zkratku CTR | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bscope\b` | rozsah, zadání | projektový slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
@@ -54,7 +56,7 @@
 | ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\buse case(s)?\b` | scénář použití | produktový anglicismus | seo-nastroje-2026 2026-08-23 |
+| ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bbottleneck\b` | hlavní omezení, úzké hrdlo | anglicismus | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bcredit-?based\b` | účtovaný po kreditech | ceníkový žargon z anglických stránek nástrojů | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bpull report\b` | spuštění reportu | produktový slang | seo-nastroje-2026 2026-08-23 |
@@ -62,23 +64,23 @@
 | ⛔ | `\bbest value\b` | nejlepší poměr ceny a výkonu | reklamní klišé | seo-nastroje-2026 2026-08-23 |
 | ✅ | `\bindustry-?standard\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji je to běžně používaný výraz i v Česku, nejde o reklamní klišé. Původně jsem ho zařadil jako ⛔, chybně. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bdifficulty score\b` | skóre obtížnosti | popis funkce převzatý z cizího webu | seo-nastroje-2026 2026-08-23 |
-| ⛔ | `\bdeploy(em|e|i|u)?\b` | nasazení | vývojářský slang | seo-nastroje-2026 2026-08-23 |
+| ✅ | `\bdeploy\w*\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\boverkill\b` | zbytečně robustní řešení | anglicismus | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bAI visibility\b` | viditelnost v AI | web sám používá české „AI viditelnost“ | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bsetup\b` | nastavení | anglicismus v instrukci | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bsubmit\b` | odeslat | totéž | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bmention rate\b|\bsources cited\b` | míra zmínek, citované zdroje | popisy metrik z anglických nástrojů | seo-nastroje-2026 2026-08-23 |
-| ⚠️ | `\bdashboard(y|ů|em|u|ech)?\b` | přehled | v agenturách zdomácnělé, u laika ne | seo-nastroje-2026 2026-08-23 |
+| ✅ | `\bdashboard\w*\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. Platí i pro tvar „dashboarding“. | seo-nastroje-2026 2026-08-23 |
 | ⚠️ | `\bFortune 500\b` | největší nadnárodní firmy | kulturně cizí zkratka, u prvního výskytu vysvětlit | seo-nastroje-2026 2026-08-23 |
 | ⚠️ | `\betablovan\w* hráč\b` | zavedený nástroj | PR klišé | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bsession(s)?\b` | relace | české GA4 používá „relace“ | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bstakeholder(a|e|em|ům|y)?\b` | příjemce reportu | manažerský anglicismus | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bdefaultn(í|ího|ím|ích)\b` | výchozí | počeštěný tvar zakázaného „default“ | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bgrowth\b` | růst | jednoslovný anglicismus | mereni-seo-vykonu-2026 2026-08-23 |
-| ⛔ | `\bdashboarding\b` | tvorba přehledů | v češtině nepřirozené | mereni-seo-vykonu-2026 2026-08-23 |
+| ✅ | `\bdashboarding\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bsolid\b` | slušný, dobrý | anglické hodnocení v české větě | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bhealthy\b` | zdravý vývoj | totéž | mereni-seo-vykonu-2026 2026-08-23 |
-| ⚠️ | `\bbenchmark(y|em|u|ů)?\b` | srovnání, orientační hodnoty | v měřicím kontextu zavedené, ale často nahraditelné | mereni-seo-vykonu-2026 2026-08-23 |
+| ✅ | `\bbenchmark(y|em|u|ů)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bdirect link\b` | přímý odkaz | anglicismus | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bduplicates\b` | duplicity | anglické slovo v české větě | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\breinstate\b` | obnovit profil | projektový slang | local-seo-cesko-2026 2026-08-23 |

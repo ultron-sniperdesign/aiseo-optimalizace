@@ -130,6 +130,10 @@ Druhý nejhustší po pilíři: **94 strojových nálezů, 22,7 na 1 000 slov**.
 
 **Oprava po připomínce (23. 8. 2026):** `industry-standard` jsem zařadil jako ⛔ a v článku nahradil za „oborový standard". **Chybně** — v marketingu a vývoji je to běžně používaný výraz i v Česku. Původní znění vráceno, pravidlo přepsáno na ✅ s odůvodněním, aby se to neřešilo znovu. Poučení pro další články: u výrazu, který se v oboru běžně používá **i v českém prostředí**, patří ✅, ne ⛔ — přísnost má mířit na kalky a strojové obraty, ne na zavedenou oborovou mluvu.
 
+**Druhá revize téhož dne:** po dotazu na další kandidáty uživatel potvrdil jako v pořádku i **best practice, benchmark, deploy, dashboard (i dashboarding), use case**. Všech pět přepsáno na ✅, náhrady v článcích 2, 3, 6 a 7 vráceny do původního znění. Slovník má nově v hlavičce explicitní pravidlo: *zavedená oborová mluva není anglicismus*.
+
+Vedlejší zjištění: moje náhrada „P1 podle **scénář použití**" byla navíc gramaticky rozbitá — dávková náhrada podstatného jména neupraví pád. Další důvod, proč se každý zásah musí přečíst v kontextu.
+
 ## ⛔ Otevřený nález pro celý korpus: glosářové termíny
 
 Rozšíření regexů o skloňované tvary (`answer blockem`, `schema markupu`) odhalilo, že jde o **plošný problém, ne jednotlivosti**:
