@@ -195,6 +195,12 @@ Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna d
 
 **Role v RACI matici** byly anglicky (`Content | Dev/SEO | Brand | Analytics`) — přeloženo na `Obsah | Vývoj a SEO | Značka | Analytika`. Tabulka rolí je něco, co si čtenář má překreslit k sobě do firmy; anglické popisky tomu překážejí.
 
+### Poznámka k názvu vlastního frameworku
+
+Článek 11 pracuje s **AIO Maturity Model™** — vlastním pojmenovaným frameworkem webu. Obecná spojení („maturity level", „maturity levelu") jsem přeložil na „úroveň zralosti", ale **samotný název jsem nechal** a zapsal ho ve slovníku jako ✅.
+
+⛔ Vzniká tím ale nesoulad: **titulek článku už říká „model zralosti", tělo pořád „AIO Maturity Model™".** Přejmenovat framework je značkové rozhodnutí, ne jazykové — čeká na vyjádření uživatele.
+
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
 Diff odhalil **systematickou chybu z dřívějších runů**: náhrada `organic traffic` → `organická návštěvnost` nechala v genitivních vazbách zbytek koncovky a vyrobila tvar **„organická návštěvnostu"**. Byl ve **třech článcích** (aio-strategie 2×, aeo-optimalizace-v-praxi 1×) a dva z nich jsem den předtím uzavřel jako čisté.

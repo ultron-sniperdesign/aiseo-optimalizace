@@ -58,7 +58,8 @@
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\b90-?day\b` | plán na 90 dní, devadesátidenní | hybrid, byl i v titulku | aio-strategie 2026-08-23 |
-| ⛔ | `\bmaturity model\w*\b` | model zralosti | hybrid | aio-strategie 2026-08-23 |
+| ✅ | `\bAIO Maturity Model\b` | — | **název vlastního frameworku webu** (uvádí se s ™). Jméno se nepřekládá; obecné použití „maturity level“ ano. Pokud by se framework přejmenoval, je to značková, ne jazyková změna. | aio-strategie 2026-08-24 |
+| ⛔ | `(?<!AIO )\bmaturity\s?(model|level|score)?\w*\b` | zralost, úroveň zralosti | hybrid; pozor, „maturity level" a „maturity levelu" unikly první verzi pravidla mířené jen na „maturity model" | aio-strategie 2026-08-24 |
 | ⛔ | `\borg chart\b` | rozdělení rolí | anglicismus | aio-strategie 2026-08-23 |
 | ⛔ | `\bsocial listening\b` | sledování sociálních sítí | anglicismus | aio-strategie 2026-08-23 |
 | ⚠️ | `\bcross-funkční\b` | mezioborový | zdomácnělý hybrid, ale česky je to srozumitelnější | aio-strategie 2026-08-23 |
