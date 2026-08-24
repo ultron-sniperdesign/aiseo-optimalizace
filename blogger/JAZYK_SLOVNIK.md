@@ -60,7 +60,7 @@
 | ⛔ | `\bpull report\b` | spuštění reportu | produktový slang | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bcustom pricing\b` | individuální cena | totéž | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bbest value\b` | nejlepší poměr ceny a výkonu | reklamní klišé | seo-nastroje-2026 2026-08-23 |
-| ⛔ | `\bindustry-?standard\b` | oborový standard | reklamní angličtina z produktových popisů | seo-nastroje-2026 2026-08-23 |
+| ✅ | `\bindustry-?standard\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji je to běžně používaný výraz i v Česku, nejde o reklamní klišé. Původně jsem ho zařadil jako ⛔, chybně. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bdifficulty score\b` | skóre obtížnosti | popis funkce převzatý z cizího webu | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bdeploy(em|e|i|u)?\b` | nasazení | vývojářský slang | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\boverkill\b` | zbytečně robustní řešení | anglicismus | seo-nastroje-2026 2026-08-23 |
