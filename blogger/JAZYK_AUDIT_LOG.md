@@ -12,6 +12,7 @@
 | 5 | 2026-08-23 | `local-seo-cesko-2026` | 2026-05-03 | v5 → v6 | 4 615 | 21 | 17 | **4,6 → 0,0** | 45 | +19 |
 | 6 | 2026-08-23 | `mereni-seo-vykonu-2026` | 2026-05-03 | v6 → v7 | 4 189 | 94 | 12 | **22,7 → 0,0** | 110 | +12 |
 | 7 | 2026-08-23 | `seo-nastroje-2026` | 2026-05-03 | v7 → v8 | 3 223 | 52 | 26 | **16,4 → 0,0** | 73 | +24 |
+| 8 | 2026-08-23 | `caste-chyby-v-seo-2026-update` | 2026-05-06 | v8 → v9 | 3 958 | 98 | 8 | **24,9 → 0,5** | 62 | +9 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -133,6 +134,20 @@ Druhý nejhustší po pilíři: **94 strojových nálezů, 22,7 na 1 000 slov**.
 **Druhá revize téhož dne:** po dotazu na další kandidáty uživatel potvrdil jako v pořádku i **best practice, benchmark, deploy, dashboard (i dashboarding), use case**. Všech pět přepsáno na ✅, náhrady v článcích 2, 3, 6 a 7 vráceny do původního znění. Slovník má nově v hlavičce explicitní pravidlo: *zavedená oborová mluva není anglicismus*.
 
 Vedlejší zjištění: moje náhrada „P1 podle **scénář použití**" byla navíc gramaticky rozbitá — dávková náhrada podstatného jména neupraví pád. Další důvod, proč se každý zásah musí přečíst v kontextu.
+
+### 8 · caste-chyby-v-seo-2026-update (2026-08-23)
+
+První článek projetý **podle nového postupu s povinnou kontrolou kontextu**. 98 strojových nálezů (24,9 na 1 000 slov), 62 oprav.
+
+**Co nová povinná kontrola chytila:** při čtení diffu před commitem jsem našel vlastní chybu — náhrada `content gap` → „obsahové gap" (špatný rod). Opraveno na „mezery v obsahu" **ještě před zápisem**. U předchozích sedmi článků by to skončilo živě na webu a našlo se to až zpětnou kontrolou.
+
+**Nové jevy:** `guest post farmy`, `link exchanges`, `fact-density`, `content depth`, `research-driven`, `recovery`, `merge`, `gatekeeper`.
+
+**Dvě nové výjimky ve slovníku:**
+- **názvy publikací** — `Search Engine Land` není anglicismus, regex dostal negativní lookahead
+- **texty odkazů citující titulek vlastního článku** — „Jak strukturovat pillar content" se cituje tak, jak zní; měnit to by znamenalo měnit slug
+
+Zbylé dva ⛔ nálezy jsou právě ty odkazy na vlastní titulek. Nejsou to chyby, ale checker je hlásit bude, dokud se nezmění titulek toho článku.
 
 ## ⛔ Kontrola kontextu je od 23. 8. 2026 povinná — a proč
 

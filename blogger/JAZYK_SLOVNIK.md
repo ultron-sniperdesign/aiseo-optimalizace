@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 8** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 7/147) · audituje skill `cestina-audit`
+> **Verze: 9** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 8/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,6 +57,15 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bguest post farm\w*\b` | farmy hostovaných článků | hybrid | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\blink exchange(s)?\b` | výměna odkazů | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\bfact[‑-]?density\b` | hustota faktů | produktový slang | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\bcontent depth\b` | hloubka obsahu | hybrid | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\bresearch[‑-]?driven\b` | opřený o výzkum | anglický přívlastek | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\brecovery\b` | obnovení výkonu | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\bmerge\b|\bmergnout\b` | sloučit | pracovní slang | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⛔ | `\bgatekeeper\b` | vstupní podmínka | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⚠️ | `\bcontent gap\b` | mezery v obsahu | ⛔ pozor na pád: „obsahové gap“ je špatně, je potřeba přeformulovat celou vazbu | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\bbottleneck\b` | hlavní omezení, úzké hrdlo | anglicismus | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bcredit-?based\b` | účtovaný po kreditech | ceníkový žargon z anglických stránek nástrojů | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bpull report\b` | spuštění reportu | produktový slang | seo-nastroje-2026 2026-08-23 |
@@ -115,7 +124,7 @@
 | ⚠️ | `\bshare of voice\b` | podíl zmínek | odborný termín, první výskyt vysvětlit | seed 2026-08-23 |
 | ⛔ | `\bmaster switch\b` | hlavní vypínač | anglicismus s přesnou českou náhradou | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bdefault\b(?!-)` | výchozí | web sám jinde píše „výchozí model“, „výchozí režim“ | jak-vypnout-ai-overview 2026-08-23 |
-| ⛔ | `\bsearch engine(s)?\b` | vyhledávač | mimo doslovné popisky rozhraní prohlížeče | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bsearch engine(s)?\b(?! Land| Journal| Roundtable| Watch)` | vyhledávač | mimo doslovné popisky rozhraní prohlížeče a **názvy publikací** (Search Engine Land, Journal, Roundtable) | jak-vypnout-ai-overview 2026-08-23, upřesněno u článku 8 |
 | ⛔ | `\bbrowser\b` | prohlížeč | v české větě zbytečné | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bsearch bar\b` | vyhledávací pole | mimo doslovné popisky rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bbackup\b` | záloha, záložní varianta | běžné slovo, není důvod k angličtině | jak-vypnout-ai-overview 2026-08-23 |
@@ -248,6 +257,7 @@
 | Doslovné popisky rozhraní (`Settings → Search engine → Manage search engines`, `Add a Search Engine`) | jsou to skutečné položky menu v anglickém prohlížeči; překlad by čtenáře poslal hledat něco, co tam není. **Piš je do zpětných apostrofů** — checker je pak přeskočí a čtenář je odliší od běžného textu |
 | Anglické citace ze zdrojů | doklad, ne styl |
 | Názvy funkcí a produktů (Search Labs, AI Overviews, DuckAssist) | vlastní jména |
+| Názvy publikací (Search Engine Land) a **texty odkazů citující titulek vlastního článku** | titulek se cituje tak, jak zní — měnit ho by znamenalo měnit slug |
 | Direktivy a parametry (`data-nosnippet`, `&udm=14`, `max-snippet`) | kód |
 
 ## 9. Pojistky proti poškození kódu
