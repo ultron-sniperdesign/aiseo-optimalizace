@@ -137,9 +137,9 @@
 
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
-| ⛔ | `\banswer block\b` | krátká odpověď | glosář v CLAUDE.md § X | seed 2026-08-23 |
-| ⛔ | `\bschema markup\b` | strukturovaná data | glosář v CLAUDE.md § X | seed 2026-08-23 |
-| ⛔ | `\bhub-and-spoke\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
+| ⛔ | `\banswer block\w*\b` | krátká odpověď | glosář v CLAUDE.md § X. Regex musí pokrýt **skloňované tvary** („answer blockem“) — bez toho unikl výskyt v článku 4 | seed 2026-08-23, rozšířeno 2026-08-23 |
+| ⛔ | `\bschema markup\w*\b` | strukturovaná data | glosář v CLAUDE.md § X | seed 2026-08-23 |
+| ⛔ | `\bhub-and-spoke\w*\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
 
 ## 6. Typografie a interpunkce
 

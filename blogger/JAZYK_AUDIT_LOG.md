@@ -90,3 +90,19 @@ To jsou tři termíny, které si projekt sám zakázal v `CLAUDE.md` — a v jed
 2. **Maska na hodnoty technických atributů** (`class="pb-content"` hlásilo `content`) a výjimka pro název aktualizace `Helpful Content Update`.
 
 **Čtvrtá chyba mého vlastního zásahu:** dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky a rozbilo MDX. Chytil build. Slovník má nové pravidlo § 9.4: žádná dávková náhrada nesmí sáhnout na `import`, `export` a frontmatter klíče.
+
+## ⛔ Otevřený nález pro celý korpus: glosářové termíny
+
+Rozšíření regexů o skloňované tvary (`answer blockem`, `schema markupu`) odhalilo, že jde o **plošný problém, ne jednotlivosti**:
+
+| Termín | Výskytů |
+|---|---|
+| `answer block*` (block, blocku, bloky, bloků, blockem) | 55 |
+| `schema markup*` | 20 |
+| `hub-and-spoke*` | 4 |
+
+**79 výskytů v 11 článcích.** Nejhorší: `aeo-optimalizace-v-praxi` (33), `aio-strategie` (17), `geo-optimalizace` (12).
+
+Všechny tři termíny má projekt **zakázané ve vlastním glosáři v `CLAUDE.md`**. Nejde tedy o stylistickou preferenci, ale o rozpor s vlastním pravidlem.
+
+⛔ **Neopravovat plošným sedem.** Skloňování vyžaduje mapování tvarů (blocku → krátké odpovědi, bloky → krátké odpovědi, blockem → krátkou odpovědí) a každá věta se musí přečíst. Vhodné jako **jeden vyhrazený sweep** s buildem a kontrolou po každém článku.
