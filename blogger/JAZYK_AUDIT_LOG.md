@@ -10,6 +10,7 @@
 | 3 | 2026-08-23 | `seo-pro-eshopy-ai-era-2026` | 2026-05-02 | v3 → v4 | 2 796 | 20 | 32 | **7,3 → 0,0** | 61 | +27 |
 | 4 | 2026-08-23 | `jak-strukturovat-pillar-content` | 2026-05-03 | v4 → v5 | 3 820 | 154 | 15 | **40,8 → 0,0 ⛔** | 90+ | +15 |
 | 5 | 2026-08-23 | `local-seo-cesko-2026` | 2026-05-03 | v5 → v6 | 4 615 | 21 | 17 | **4,6 → 0,0** | 45 | +19 |
+| 6 | 2026-08-23 | `mereni-seo-vykonu-2026` | 2026-05-03 | v6 → v7 | 4 189 | 94 | 12 | **22,7 → 0,0** | 110 | +12 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -103,6 +104,18 @@ Nejdelší článek korpusu (4 615 slov), ale **nejnižší hustota zatím: 4,6 
 **Kontextová past:** `listingy` slovník překládal jako „výpis produktů" (z e-shopového článku), tady ale znamená **zápisy v katalozích**. Doklad, že náhrada ve slovníku je návrh, ne příkaz — každý výskyt se musí přečíst v kontextu.
 
 **11 nedovřených uvozovek** — nejvíc z dosavadních článků, většinou v příkladech dotazů („instalatér Praha").
+
+### 6 · mereni-seo-vykonu-2026 (2026-08-23)
+
+Druhý nejhustší po pilíři: **94 strojových nálezů, 22,7 na 1 000 slov**. Článek o měření je logicky plný anglických názvů metrik.
+
+**Nejčastější jednotlivá slova:** `share` 17× (většinou „citation share"), `traffic` 11×, `impressions` 7×, `sessions` 10×, `custom` 4×, `baseline` 4×.
+
+**Nová vrstva: analytický žargon a anglická hodnocení.** Kromě metrik článek hodnotil česky-anglicky: „Pozice 4–10 = **solid**", „Rostoucí trend meziročně = **healthy**", „**mature web**", „**brand-conscious** dotazy", „**team view** + **management view**", „**stakeholder**", „**defaultní** KPI", „**dashboarding**".
+
+**Rozhodnutí u názvů metrik:** české GA4 má vlastní překlady, takže `sessions` → **relace**, `impressions` → **zobrazení**. To není purismus — čtenář ta slova musí najít ve svém rozhraní, které je česky.
+
+**Zpětný dopad v7:** `sessions` se objevilo i ve třech dřívějších článcích (pilíř 2×, měření, jak-vypnout). Opraveno.
 
 ## ⛔ Otevřený nález pro celý korpus: glosářové termíny
 

@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 6** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 5/147) · audituje skill `cestina-audit`
+> **Verze: 7** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 6/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -54,6 +54,14 @@
 | ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bsession(s)?\b` | relace | české GA4 používá „relace“ | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bstakeholder(a|e|em|ům|y)?\b` | příjemce reportu | manažerský anglicismus | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bdefaultn(í|ího|ím|ích)\b` | výchozí | počeštěný tvar zakázaného „default“ | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bgrowth\b` | růst | jednoslovný anglicismus | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bdashboarding\b` | tvorba přehledů | v češtině nepřirozené | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bsolid\b` | slušný, dobrý | anglické hodnocení v české větě | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bhealthy\b` | zdravý vývoj | totéž | mereni-seo-vykonu-2026 2026-08-23 |
+| ⚠️ | `\bbenchmark(y|em|u|ů)?\b` | srovnání, orientační hodnoty | v měřicím kontextu zavedené, ale často nahraditelné | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bdirect link\b` | přímý odkaz | anglicismus | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bduplicates\b` | duplicity | anglické slovo v české větě | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\breinstate\b` | obnovit profil | projektový slang | local-seo-cesko-2026 2026-08-23 |
@@ -169,6 +177,10 @@
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bAI (Answer feature|summaries)\b` | funkce AI odpovědí, shrnutí od AI | anglický název funkce v české větě, když nejde o oficiální název v rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bGoogle features\b` | funkce Googlu | totéž | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bbrand recognition\b` | znalost značky | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\b(team|management) view\b` | pohled pro tým, pohled pro vedení | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bmature web\b` | zavedený web | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bbrand-conscious\b` | značkově orientovaný | hybrid | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bper-?pobočkov\w*\b` | stránky pro jednotlivé pobočky | anglicko-český slepenec | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bservice-?area\b` | firma s obsluhovaným územím | totéž | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bservice\+lokalit\w*\b` | stránky typu služba + lokalita | interní zkratka | local-seo-cesko-2026 2026-08-23 |
