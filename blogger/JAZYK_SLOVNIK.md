@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 10** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 9/147) · audituje skill `cestina-audit`
+> **Verze: 11** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 10/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,6 +57,11 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bOS-?level\b` | na úrovni operačního systému | hybrid | ai-search-trendy-cesko-2026 2026-08-23 |
+| ⛔ | `\bknowledge-heavy\b` | postavený na odborném obsahu | hybrid | ai-search-trendy-cesko-2026 2026-08-23 |
+| ⛔ | `\bgrowth hack\w*\b` | trik | marketingový slang | ai-search-trendy-cesko-2026 2026-08-23 |
+| ⛔ | `\btopic cluster\w*\b` | tematický shluk článků | hybrid | ai-search-trendy-cesko-2026 2026-08-23 |
+| ⛔ | `\bcontent angles\b` | návrhy témat | hybrid | ai-search-trendy-cesko-2026 2026-08-23 |
 | ⛔ | `\banswer engine(s)?\b(?! Optimization)` | odpovídací systém | mimo název disciplíny Answer Engine Optimization | aeo-optimalizace-v-praxi 2026-08-23 |
 | ⛔ | `\bcontent-driven\b|\bcontent base\b|\bcontent tým\b` | postavený na obsahu, obsahová základna, obsahový tým | hybridy | aeo-optimalizace-v-praxi 2026-08-23 |
 | ⛔ | `\bAI presence\b|\bAIO presence\b` | viditelnost v AI, výskyt v AIO | hybrid | aeo-optimalizace-v-praxi 2026-08-23 |

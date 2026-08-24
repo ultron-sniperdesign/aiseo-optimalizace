@@ -14,6 +14,7 @@
 | 7 | 2026-08-23 | `seo-nastroje-2026` | 2026-05-03 | v7 → v8 | 3 223 | 52 | 26 | **16,4 → 0,0** | 73 | +24 |
 | 8 | 2026-08-23 | `caste-chyby-v-seo-2026-update` | 2026-05-06 | v8 → v9 | 3 958 | 98 | 8 | **24,9 → 0,5** | 62 | +9 |
 | 9 | 2026-08-23 | `aeo-optimalizace-v-praxi` | 2026-05-08 | v9 → v10 | 4 970 | 113 | — | **22,7 → 0,0** | 92 | +4 |
+| 10 | 2026-08-23 | `ai-search-trendy-cesko-2026` | 2026-05-08 | v10 → v11 | 6 101 | 101 | — | **16,5 → 0,2** | 84 | +5 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -168,6 +169,18 @@ Zbylé dva ⛔ nálezy jsou právě ty odkazy na vlastní titulek. Nejsou to chy
 **Kontrola kontextu chytila tři chyby, které jsem vyrobil:** „bez **hustota faktů**" (chybí genitiv), „Anatomie **ideálního krátké odpovědi**" (neshoda rodu po náhradě) a tautologii „Krátká odpověď je **krátká** strukturovaná odpověď". Všechny opraveny před commitem.
 
 **Devátá díra v nástroji: `<Dont>` bloky.** Checker hlásil frázi „V dnešní digitální éře je důležité…" jako strojový obrat — jenže je to **záměrná odstrašující ukázka** v bloku `<Dont>`, kterou článek uvádí jako příklad špatného textu. Opravit ji by zničilo smysl příkladu. Checker od článku 9 obsah `<Dont>` bloků přeskakuje.
+
+### 10 · ai-search-trendy-cesko-2026 (2026-08-23)
+
+Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna dvakrát refreshoval kvůli faktům — jazykově ale projetý nebyl. **101 nálezů, 16,5 na 1 000 slov.**
+
+**Změna titulku.** Titulek i seoTitle obsahovaly „market share": *„AI search trendy 2026: data, market share a co to znamená pro CZ marketéry"* → *„…data, podíly na trhu a…"*. Slug zůstal beze změny. OG obrázek jsem předem zkontroloval — jeho headline zní „AI SEO trendy / Data a trendy 2026", takže se s novým titulkem nebije.
+
+**Nejčastější:** `share` 12× (citation share, share-of-voice, market share) · `citation rate` 8× → míra citování · `traffic` 8× · `content` 6× · `fact-density` 4× · `baseline` 4×.
+
+**Desátá díra v nástroji:** checker hlásil `icon: "content"` — **technickou hodnotu ve vlastnosti komponenty**, ne text. Maska nově pokrývá `icon`, `tone`, `variant`, `key`, `slug`.
+
+**Zbylý ⛔ nález** je text odkazu citující titulek jiného našeho článku („Jak strukturovat pillar content") — doložená výjimka od článku 8.
 
 ## ⛔ Kontrola kontextu je od 23. 8. 2026 povinná — a proč
 

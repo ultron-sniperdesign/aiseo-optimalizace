@@ -17,7 +17,8 @@ INLINE_CODE = re.compile(r'`[^`]*`')
 URL = re.compile(r'https?://\S+|\]\([^)]*\)|/blog/[a-z0-9-]+/|/slovnik/[a-z0-9-]+/')
 JSX = re.compile(r'</?[A-Z][A-Za-z]*')
 JSXATTR = re.compile(r'\b[a-zA-Z]+=(?=["\{])')   # nazvy atributu (fix=, tone=, title=)
-HTMLVAL = re.compile(r'\b(class|id|style|href|src|rel|aria-\w+)="[^"]*"')   # hodnoty technickych atributu
+HTMLVAL = re.compile(r'\b(class|id|style|href|src|rel|aria-\w+)="[^"]*"')
+ICONVAL = re.compile(r'\b(icon|tone|variant|key|slug)\s*[:=]\s*"[^"]*"')   # technicke hodnoty, ne text   # hodnoty technickych atributu
 
 def load_rules(path):
     rules, section = [], '?'
@@ -46,6 +47,7 @@ def mask(line):
     line = URL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSX.sub(lambda m: ' ' * len(m.group(0)), line)   # nazvy komponent nejsou text pro ctenare
     line = HTMLVAL.sub(lambda m: ' ' * len(m.group(0)), line)
+    line = ICONVAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSXATTR.sub(lambda m: ' ' * len(m.group(0)), line)
     return line
 
