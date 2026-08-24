@@ -9,6 +9,7 @@
 | 2 | 2026-08-23 | `seo-audit-co-kontrolovat` | 2026-05-02 | v2 → v3 | 2 397 | 12+5 | 24 | **6,6 → 0,0** | 33 (+9 zpětně z v4) | +23 |
 | 3 | 2026-08-23 | `seo-pro-eshopy-ai-era-2026` | 2026-05-02 | v3 → v4 | 2 796 | 20 | 32 | **7,3 → 0,0** | 61 | +27 |
 | 4 | 2026-08-23 | `jak-strukturovat-pillar-content` | 2026-05-03 | v4 → v5 | 3 820 | 154 | 15 | **40,8 → 0,0 ⛔** | 90+ | +15 |
+| 5 | 2026-08-23 | `local-seo-cesko-2026` | 2026-05-03 | v5 → v6 | 4 615 | 21 | 17 | **4,6 → 0,0** | 45 | +19 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -90,6 +91,18 @@ To jsou tři termíny, které si projekt sám zakázal v `CLAUDE.md` — a v jed
 2. **Maska na hodnoty technických atributů** (`class="pb-content"` hlásilo `content`) a výjimka pro název aktualizace `Helpful Content Update`.
 
 **Čtvrtá chyba mého vlastního zásahu:** dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky a rozbilo MDX. Chytil build. Slovník má nové pravidlo § 9.4: žádná dávková náhrada nesmí sáhnout na `import`, `export` a frontmatter klíče.
+
+### 5 · local-seo-cesko-2026 (2026-08-23)
+
+Nejdelší článek korpusu (4 615 slov), ale **nejnižší hustota zatím: 4,6 na 1 000 slov**. Důvod je vidět v textu — článek prošel refreshem v srpnu 2026, takže polovina je psaná už podle ustáleného stylu. Starší vrstva se pozná okamžitě.
+
+**Nová vrstva slovníku: hybridní přívlastky.** Tenhle článek jich má nejvíc z celého korpusu — `per-pobočkové`, `service-area`, `service+lokalita`, `grid-based`, `geo-modifikované`, `single-location`, `multi-pobočkový`. Vzorec je pořád stejný: anglické přídavné jméno nalepené na české podstatné.
+
+**Strojové obraty:** „Lokálnost odkazu **není binární definice**" (kalk), „**lokálně orientovaných** firem", „**rozeznatelnou** značku", „po **validaci přínosu**".
+
+**Kontextová past:** `listingy` slovník překládal jako „výpis produktů" (z e-shopového článku), tady ale znamená **zápisy v katalozích**. Doklad, že náhrada ve slovníku je návrh, ne příkaz — každý výskyt se musí přečíst v kontextu.
+
+**11 nedovřených uvozovek** — nejvíc z dosavadních článků, většinou v příkladech dotazů („instalatér Praha").
 
 ## ⛔ Otevřený nález pro celý korpus: glosářové termíny
 

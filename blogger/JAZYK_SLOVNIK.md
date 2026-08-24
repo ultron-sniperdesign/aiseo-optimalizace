@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 5** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 4/147) · audituje skill `cestina-audit`
+> **Verze: 6** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 5/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -54,6 +54,11 @@
 | ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bdirect link\b` | přímý odkaz | anglicismus | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bduplicates\b` | duplicity | anglické slovo v české větě | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\breinstate\b` | obnovit profil | projektový slang | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\blink building\b` | budování odkazů | zavedené, ale přeložitelné | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\blanding pages\b` | vstupní stránky | množné číslo anglicky uprostřed české věty | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bblueprint(u|em|y)?\b` | osnova, schéma | anglicismus i v titulku | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\boutline\b` | osnova, struktura | redakční žargon | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bwall of text\b` | jednolitá stěna textu | nepřeložený slang | jak-strukturovat-pillar-content 2026-08-23 |
@@ -108,6 +113,10 @@
 
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
+| ⛔ | `\bnení binární definice\b` | není to otázka ano, nebo ne | kalk | local-seo-cesko-2026 2026-08-23 |
+| ⚠️ | `\blokálně orientovan\w*\b` | místní | strojová vazba | local-seo-cesko-2026 2026-08-23 |
+| ⚠️ | `\brozeznateln\w* značk\w*\b` | známá značka | doslovný překlad | local-seo-cesko-2026 2026-08-23 |
+| ⚠️ | `\bvalidac[ei] přínosu\b` | ověření přínosu | manažerský kalk | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `je důležité (poznamenat|zmínit|si uvědomit)` | vypustit, nebo říct věc rovnou | typický výplňkový obrat generovaného textu | seed 2026-08-23 |
 | ⛔ | `v dnešní (digitální )?(době|éře)` | vypustit | prázdná kulisa | seed 2026-08-23 |
 | ⛔ | `hraje (klíčovou|zásadní|důležitou) roli` | konkrétně co dělá | nic neříká, jen zvyšuje důležitost | seed 2026-08-23 |
@@ -160,6 +169,16 @@
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bAI (Answer feature|summaries)\b` | funkce AI odpovědí, shrnutí od AI | anglický název funkce v české větě, když nejde o oficiální název v rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bGoogle features\b` | funkce Googlu | totéž | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bper-?pobočkov\w*\b` | stránky pro jednotlivé pobočky | anglicko-český slepenec | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bservice-?area\b` | firma s obsluhovaným územím | totéž | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bservice\+lokalit\w*\b` | stránky typu služba + lokalita | interní zkratka | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bgrid-?based\b` | mřížkový | popis, ne název produktu | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bgeo-?modifikovan\w*\b` | dotaz s uvedenou lokalitou | hybrid | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bsingle-?location\b` | s jednou provozovnou | hybrid | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bmulti-?pobočkov\w*\b` | s víc pobočkami | hybrid | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\bfree verze\b` | bezplatná verze | hybrid | local-seo-cesko-2026 2026-08-23 |
+| ⛔ | `\breview GBP\b|\bmap ranking check\b` | kontrola GBP, kontrola pozic v mapách | anglické sloveso s českou zkratkou | local-seo-cesko-2026 2026-08-23 |
+| ⚠️ | `\bpremium (varianta|verze|listing\w*)\b` | placená varianta, placené zápisy | anglický přívlastek | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bbody text(u|em)?\b` | hlavní text | hybrid | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bAI engine(s)?\b` | AI nástroj, AI systém | hybrid, není to název produktu | jak-strukturovat-pillar-content 2026-08-23 |
 | ⚠️ | `\bbrand mention(s)?\b` | zmínka o značce | web má článek se slugem ai-brand-mentions a používá to jako termín — u prvního výskytu vysvětlit česky, nenahrazovat všude | jak-strukturovat-pillar-content 2026-08-23 |
