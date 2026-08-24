@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 9** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 8/147) · audituje skill `cestina-audit`
+> **Verze: 10** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 9/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,6 +57,10 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\banswer engine(s)?\b(?! Optimization)` | odpovídací systém | mimo název disciplíny Answer Engine Optimization | aeo-optimalizace-v-praxi 2026-08-23 |
+| ⛔ | `\bcontent-driven\b|\bcontent base\b|\bcontent tým\b` | postavený na obsahu, obsahová základna, obsahový tým | hybridy | aeo-optimalizace-v-praxi 2026-08-23 |
+| ⛔ | `\bAI presence\b|\bAIO presence\b` | viditelnost v AI, výskyt v AIO | hybrid | aeo-optimalizace-v-praxi 2026-08-23 |
+| ⛔ | `\bbrand awareness\b` | známost značky | hybrid | aeo-optimalizace-v-praxi 2026-08-23 |
 | ⛔ | `\bguest post farm\w*\b` | farmy hostovaných článků | hybrid | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\blink exchange(s)?\b` | výměna odkazů | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\bfact[‑-]?density\b` | hustota faktů | produktový slang | caste-chyby-v-seo-2026-update 2026-08-23 |
@@ -258,6 +262,7 @@
 | Anglické citace ze zdrojů | doklad, ne styl |
 | Názvy funkcí a produktů (Search Labs, AI Overviews, DuckAssist) | vlastní jména |
 | Názvy publikací (Search Engine Land) a **texty odkazů citující titulek vlastního článku** | titulek se cituje tak, jak zní — měnit ho by znamenalo měnit slug |
+| **Obsah bloků `<Dont>`** | jsou to záměrné odstrašující ukázky („V dnešní digitální éře je důležité…“). Opravit je znamená zničit smysl příkladu. Checker je od článku 9 přeskakuje. |
 | Direktivy a parametry (`data-nosnippet`, `&udm=14`, `max-snippet`) | kód |
 
 ## 9. Pojistky proti poškození kódu

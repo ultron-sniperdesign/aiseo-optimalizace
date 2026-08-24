@@ -70,11 +70,17 @@ def body_lines(text):
                         yield j + 1, lines[j]
                 break
     in_code = False
+    in_dont = False
     for n in range(start, len(lines)):
         raw = lines[n]
         if CODE_FENCE.match(raw.strip()):
             in_code = not in_code; continue
-        if in_code or raw.lstrip().startswith('import '):
+        # <Dont> bloky jsou zamerne odstrasujici ukazky — auditovat je nema smysl
+        if '<Dont>' in raw:
+            in_dont = True
+        if '</Dont>' in raw:
+            in_dont = False; continue
+        if in_code or in_dont or raw.lstrip().startswith('import '):
             continue
         yield n + 1, raw
 

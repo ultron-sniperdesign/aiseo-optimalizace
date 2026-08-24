@@ -13,6 +13,7 @@
 | 6 | 2026-08-23 | `mereni-seo-vykonu-2026` | 2026-05-03 | v6 → v7 | 4 189 | 94 | 12 | **22,7 → 0,0** | 110 | +12 |
 | 7 | 2026-08-23 | `seo-nastroje-2026` | 2026-05-03 | v7 → v8 | 3 223 | 52 | 26 | **16,4 → 0,0** | 73 | +24 |
 | 8 | 2026-08-23 | `caste-chyby-v-seo-2026-update` | 2026-05-06 | v8 → v9 | 3 958 | 98 | 8 | **24,9 → 0,5** | 62 | +9 |
+| 9 | 2026-08-23 | `aeo-optimalizace-v-praxi` | 2026-05-08 | v9 → v10 | 4 970 | 113 | — | **22,7 → 0,0** | 92 | +4 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -148,6 +149,25 @@ První článek projetý **podle nového postupu s povinnou kontrolou kontextu**
 - **texty odkazů citující titulek vlastního článku** — „Jak strukturovat pillar content" se cituje tak, jak zní; měnit to by znamenalo měnit slug
 
 Zbylé dva ⛔ nálezy jsou právě ty odkazy na vlastní titulek. Nejsou to chyby, ale checker je hlásit bude, dokud se nezmění titulek toho článku.
+
+### 9 · aeo-optimalizace-v-praxi (2026-08-23)
+
+Článek s nejvyšším počtem porušení vlastního glosáře: **`answer block` ve čtyřech pádech, dohromady 28× v jednom textu**, k tomu `schema markup` 2×.
+
+**Skloňování bylo hlavní práce.** Náhrada nešla udělat jedním regexem — bylo potřeba namapovat tvary:
+
+| Původní tvar | Náhrada |
+|---|---|
+| answer block | krátká odpověď |
+| answer blocku | krátké odpovědi |
+| answer blocků | krátkých odpovědí |
+| answer blockem | krátkou odpovědí |
+| ideálního answer blocku | ideální krátké odpovědi |
+| strukturovaný answer block | strukturovaná krátká odpověď |
+
+**Kontrola kontextu chytila tři chyby, které jsem vyrobil:** „bez **hustota faktů**" (chybí genitiv), „Anatomie **ideálního krátké odpovědi**" (neshoda rodu po náhradě) a tautologii „Krátká odpověď je **krátká** strukturovaná odpověď". Všechny opraveny před commitem.
+
+**Devátá díra v nástroji: `<Dont>` bloky.** Checker hlásil frázi „V dnešní digitální éře je důležité…" jako strojový obrat — jenže je to **záměrná odstrašující ukázka** v bloku `<Dont>`, kterou článek uvádí jako příklad špatného textu. Opravit ji by zničilo smysl příkladu. Checker od článku 9 obsah `<Dont>` bloků přeskakuje.
 
 ## ⛔ Kontrola kontextu je od 23. 8. 2026 povinná — a proč
 
