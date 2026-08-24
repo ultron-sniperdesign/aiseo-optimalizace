@@ -15,6 +15,7 @@
 | 8 | 2026-08-23 | `caste-chyby-v-seo-2026-update` | 2026-05-06 | v8 → v9 | 3 958 | 98 | 8 | **24,9 → 0,5** | 62 | +9 |
 | 9 | 2026-08-23 | `aeo-optimalizace-v-praxi` | 2026-05-08 | v9 → v10 | 4 970 | 113 | — | **22,7 → 0,0** | 92 | +4 |
 | 10 | 2026-08-23 | `ai-search-trendy-cesko-2026` | 2026-05-08 | v10 → v11 | 6 101 | 101 | — | **16,5 → 0,2** | 84 | +5 |
+| 11 | 2026-08-24 | `aio-strategie` | 2026-05-08 | v11 → v12 | 5 090 | 139 | — | **27,6 → 0,0** | 118 | +5 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -183,6 +184,22 @@ Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna d
 **Zbylý ⛔ nález** je text odkazu citující titulek jiného našeho článku („Jak strukturovat pillar content") — doložená výjimka od článku 8.
 
 **Nález mimo jazykový audit — přegenerovaný OG obrázek.** Původní obrázek nesl **vymyšlená čísla „+127 %" a „+64 %"**, která v článku ani v datech nemají oporu. Na kartě článku o datech působila jako údaj. Obrázek přegenerován (jas 235,6, v sadě): stejný headline „AI SEO TRENDY", podtitul aktualizovaný na „Data a podíly na trhu 2026", odznaky obsahují **jen ikony, žádné hodnoty**. Připomínka pro IMAGE_GUIDE: u vizuálů k datovým článkům platí zákaz číslic dvojnásob — čtenář je čte jako fakt.
+
+### 11 · aio-strategie (2026-08-24)
+
+**139 nálezů, 27,6 na 1 000 slov** — druhá nejvyšší hustota po pilíři. Strategický text plný manažerské angličtiny.
+
+**Změna titulku i podtitulku.** Titulek nesl tři anglicismy najednou: *„AIO jako strategie: **maturity model**, **90-day plán** a **org chart** pro AI viditelnost"* → *„AIO jako strategie: model zralosti, plán na 90 dní a rozdělení rolí"*. OG obrázek předem zkontrolován — headline „SEO AIO / Strategie pro AI viditelnost" se s novým titulkem nebije.
+
+**Nejčastější:** `content` 27× (včetně rolí v RACI tabulce) · `traffic` 12× · `share` 9× · `presence` 8× · `baseline` 6× · `answer block` 8× ve čtyřech pádech.
+
+**Role v RACI matici** byly anglicky (`Content | Dev/SEO | Brand | Analytics`) — přeloženo na `Obsah | Vývoj a SEO | Značka | Analytika`. Tabulka rolí je něco, co si čtenář má překreslit k sobě do firmy; anglické popisky tomu překážejí.
+
+## ⛔ Kontrola kontextu podruhé zachránila publikaci
+
+Diff odhalil **systematickou chybu z dřívějších runů**: náhrada `organic traffic` → `organická návštěvnost` nechala v genitivních vazbách zbytek koncovky a vyrobila tvar **„organická návštěvnostu"**. Byl ve **třech článcích** (aio-strategie 2×, aeo-optimalizace-v-praxi 1×) a dva z nich jsem den předtím uzavřel jako čisté.
+
+Slovník má nově v § 9.4 explicitní varování: **po každé náhradě podstatného jména projeď grep na okolní tvary.**
 
 ## ⛔ Kontrola kontextu je od 23. 8. 2026 povinná — a proč
 

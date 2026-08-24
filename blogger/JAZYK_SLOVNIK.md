@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 11** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 10/147) · audituje skill `cestina-audit`
+> **Verze: 12** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 11/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,6 +57,11 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\b90-?day\b` | plán na 90 dní, devadesátidenní | hybrid, byl i v titulku | aio-strategie 2026-08-23 |
+| ⛔ | `\bmaturity model\w*\b` | model zralosti | hybrid | aio-strategie 2026-08-23 |
+| ⛔ | `\borg chart\b` | rozdělení rolí | anglicismus | aio-strategie 2026-08-23 |
+| ⛔ | `\bsocial listening\b` | sledování sociálních sítí | anglicismus | aio-strategie 2026-08-23 |
+| ⚠️ | `\bcross-funkční\b` | mezioborový | zdomácnělý hybrid, ale česky je to srozumitelnější | aio-strategie 2026-08-23 |
 | ⛔ | `\bOS-?level\b` | na úrovni operačního systému | hybrid | ai-search-trendy-cesko-2026 2026-08-23 |
 | ⛔ | `\bknowledge-heavy\b` | postavený na odborném obsahu | hybrid | ai-search-trendy-cesko-2026 2026-08-23 |
 | ⛔ | `\bgrowth hack\w*\b` | trik | marketingový slang | ai-search-trendy-cesko-2026 2026-08-23 |
@@ -286,7 +291,7 @@
 
 | `jak-strukturovat-pillar-content` 2026-08-23 | dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky (`import \`Stepper\` from …`) |
 
-4. **Kontrola kontextu je povinná u každé náhrady.** Dávkovou náhradou se připraví návrh; před commitem se `git diff` čte řádek po řádku a každá změněná věta se přečte celá. Kontroluje se **pád, číslo a rod**, **význam v daném textu** a jestli nejde o citaci, popisek rozhraní nebo vlastní jméno.
+4. **Kontrola kontextu je povinná u každé náhrady.** ⛔ **Pozor na náhrady uvnitř pádových vazeb.** Náhrada `organic traffic` → `organická návštěvnost` vyrobila ve třech článcích tvar **„organická návštěvnostu"** (zbylá koncovka po „trafficu"). Chytila to až kontrola diffu. Po každé náhradě podstatného jména projeď `grep` na okolní tvary. Dávkovou náhradou se připraví návrh; před commitem se `git diff` čte řádek po řádku a každá změněná věta se přečte celá. Kontroluje se **pád, číslo a rod**, **význam v daném textu** a jestli nejde o citaci, popisek rozhraní nebo vlastní jméno.
 
    ⛔ Doklad, proč: náhrada `use case` → `scénář použití` vyrobila větu „P1 podle **scénář použití**" a byla živě na webu. Regex pád neupraví.
 
