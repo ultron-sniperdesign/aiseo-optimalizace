@@ -50,7 +50,7 @@ def mask(line):
     return line
 
 TECH_KEYS = re.compile(r'^\s*(slug|published|updated|category|variant|tags|keywords|seoTitle|image|og|howto|faq|stats|-)\s*:?\s*$')
-TEXT_KEY  = re.compile(r'^\s*(title|seoTitle|description|answer|label|a|q|desc|text|value)\s*:\s*')
+TEXT_KEY  = re.compile(r'^\s*-?\s*(title|seoTitle|description|answer|label|a|q|desc|text|value)\s*:\s*')
 
 def body_lines(text):
     """Vrati (cislo_radku, text) pro telo clanku + textova pole frontmatteru.

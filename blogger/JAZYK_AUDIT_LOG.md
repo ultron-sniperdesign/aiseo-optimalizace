@@ -150,6 +150,25 @@ Na pokyn uživatele jsem zavedl povinnou kontrolu kontextu u **každé** náhrad
 
 Všech 35 opraveno v šesti článcích. **Poučení je jednoznačné:** regex umí najít slovo, ale neumí ho ohnout. Dávková náhrada je návrh, ne úprava — a bez přečtení výsledné věty produkuje text horší než ten, který opravuje.
 
+### Osmá díra v nástroji: položky seznamu ve frontmatteru
+
+Živá kontrola po opravě gramatiky ukázala výraz `organic search` na stránce, který checker nehlásil. Důvod: regex na textová pole frontmatteru neuměl tvar **položky seznamu** — `  - q: "…"` a `  - a: "…"`. Viděl tedy `answer:` a `description:`, ale **ne jednotlivé otázky a odpovědi ve FAQ**.
+
+Opraveno, checker nově chytá i položky seznamu. Okamžitý dopad: 2 nálezy ve dvou už uzavřených článcích.
+
+Přehled dosud nalezených děr v nástroji — jedna na článek:
+
+| Článek | Co nástroj neuměl |
+|---|---|
+| 1 | plošná náhrada uvozovek rozbila HTML atribut |
+| 2 | neauditoval frontmatter, plošná náhrada rozbila JSX prop |
+| 3 | hlásil názvy JSX atributů (`fix=`) |
+| 4 | hlásil hodnoty technických atributů (`class="pb-content"`), ⚠️ pravidla zaplavila výstup |
+| 5 | — (chyba byla v obsahu slovníku: kontextově špatná náhrada) |
+| 6 | — |
+| 7 | glosářové regexy nepokrývaly skloňování |
+| po 7 | **neviděl položky seznamu ve frontmatteru (`- q:`, `- a:`)** |
+
 ## ⛔ Otevřený nález pro celý korpus: glosářové termíny
 
 Rozšíření regexů o skloňované tvary (`answer blockem`, `schema markupu`) odhalilo, že jde o **plošný problém, ne jednotlivosti**:
