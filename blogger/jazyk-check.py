@@ -15,6 +15,7 @@ ROW = re.compile(r'^\|\s*(⛔|⚠️|✅)\s*\|\s*`(.+?)`\s*\|(.*)$')
 CODE_FENCE = re.compile(r'^```')
 INLINE_CODE = re.compile(r'`[^`]*`')
 URL = re.compile(r'https?://\S+|\]\([^)]*\)|/blog/[a-z0-9-]+/|/slovnik/[a-z0-9-]+/')
+JSX = re.compile(r'</?[A-Z][A-Za-z]*')
 
 def load_rules(path):
     rules, section = [], '?'
@@ -41,6 +42,7 @@ def load_rules(path):
 def mask(line):
     line = INLINE_CODE.sub(lambda m: ' ' * len(m.group(0)), line)
     line = URL.sub(lambda m: ' ' * len(m.group(0)), line)
+    line = JSX.sub(lambda m: ' ' * len(m.group(0)), line)   # nazvy komponent nejsou text pro ctenare
     return line
 
 def body_lines(text):

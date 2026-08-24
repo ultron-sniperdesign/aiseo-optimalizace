@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 2** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 1/147) · audituje skill `cestina-audit`
+> **Verze: 3** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 2/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -27,9 +27,24 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `\btraffic\b` | návštěvnost | totéž; „traffic“ v české větě je čirý kalk | seed 2026-08-23 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `\bcontent\b(?! (marketing|management))` | obsah | jednoslovná náhrada existuje | seed 2026-08-23 |
+| ⛔ | `(?<!mixed )\bcontent\b(?! (marketing|management))` | obsah | jednoslovná náhrada existuje; „mixed content“ je technický termín HTTPS a hlásit se nemá | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
+| ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\borganic traffic(u|em)?\b` | organická návštěvnost | totéž | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\borganik(u|em)?\b` | organická návštěvnost | zkomolenina, ne termín | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bdeliverable(s)?\b` | výstup | projektová angličtina | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bhandover\b` | předání | totéž | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bcost(u|em)?\b` | náklady | jednoslovný anglicismus | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bintent(y|ů|ům|ech)\b` | záměry hledajících | „intenty“ je slang; jednotné „search intent“ se toleruje jako ⚠️ | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\btie[‑-]?breaker\b` | rozhodne až mezi vyrovnanými výsledky | anglicismus | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bmoney page(s)?\b` | hlavní prodejní stránky | agenturní slang, u laika nesrozumitelný | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bproof points\b` | důkazy důvěryhodnosti | totéž | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bexact match\b` | přesná shoda | při prvním výskytu vysvětlit | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bkeyword stuffing\b` | přehnané opakování klíčových slov | zavedený termín, ale pro laika mlha | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bproxy (indikátor|signál)` | nepřímý ukazatel, nepřímý signál | kalk | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bfield data\b` | data z reálného provozu | kalk z PSI terminologie | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\bpillar\b` | pilířová stránka | web termín používá v URL i v titulcích, ale v běžné větě ho vysvětli | seo-audit-co-kontrolovat 2026-08-23 |
 | ⚠️ | `\brollout\b` | postupné zpřístupňování | u oznámení výrobců se hodí, ale první výskyt vysvětlit | seed 2026-08-23 |
 | ⚠️ | `\blanding page\b` | prodejní stránka | zavedené v oboru, ale ne u laika | seed 2026-08-23 |
 | ⛔ | `\bshare\b(?! of voice)` | podíl | „share dotazů“ místo „podíl dotazů“ — kalk, který projde i tam, kde je market share pokrytý | jak-vypnout-ai-overview 2026-08-23 |
@@ -113,6 +128,14 @@
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bAI (Answer feature|summaries)\b` | funkce AI odpovědí, shrnutí od AI | anglický název funkce v české větě, když nejde o oficiální název v rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bGoogle features\b` | funkce Googlu | totéž | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bbuying[- ]journey\b|\bbuyer'?s? journey\b` | fáze nákupního rozhodování | slepenec | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bcontent freshness\b` | aktuálnost obsahu | totéž | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\boffer fit\b` | soulad nabídky s trhem | nesrozumitelné v české větě | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\bgap analýz(a|y|ou|u)\b` | analýza mezer | hybrid | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\binbound intern` | příchozí interní odkazy | hybrid | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `\b(kickoff|debrief|discovery) call\b` | úvodní / závěrečný hovor | firemní slang | seo-audit-co-kontrolovat 2026-08-23 |
+| ⚠️ | `\branking faktor\b` | faktor hodnocení | poloviční překlad, v oboru zavedený | seo-audit-co-kontrolovat 2026-08-23 |
 | ⚠️ | `\bbrand vs\.? non-?brand\b` | brandové vs. nebrandové dotazy | při prvním výskytu rozepsat | jak-vypnout-ai-overview 2026-08-23 |
 | ⚠️ | `\bquery mix(u|em)?\b` | skladba dotazů | žargon | jak-vypnout-ai-overview 2026-08-23 |
 | ⚠️ | `\bcluster URL\b` | skupina URL | žargon | jak-vypnout-ai-overview 2026-08-23 |
@@ -127,3 +150,17 @@
 | Anglické citace ze zdrojů | doklad, ne styl |
 | Názvy funkcí a produktů (Search Labs, AI Overviews, DuckAssist) | vlastní jména |
 | Direktivy a parametry (`data-nosnippet`, `&udm=14`, `max-snippet`) | kód |
+
+## 9. Pojistky proti poškození kódu
+
+⛔ **Normalizaci uvozovek NIKDY nepouštěj plošně přes celý soubor.** Dvakrát to rozbilo kód:
+
+| Kdy | Co se stalo |
+|---|---|
+| `jak-vypnout-ai-overview` 2026-08-23 | regex `„…"` sáhl na uvozovku HTML atributu → `class="hl“` |
+| `seo-audit-co-kontrolovat` 2026-08-23 | tentýž regex sebral **uzavírací uvozovku JSX prop** `desc: "…"` → MDX se nepřeložilo |
+
+**Povinný postup:**
+1. Regex musí být `„[^„“\n<>=]{0,160}"` (vylučuje `<>=`).
+2. Řádky s JSX prop (`title:`, `desc:`, `text:`, `label=`) opravovat **ručně, jeden po druhém**, ne dávkově.
+3. **Po každé dávce úprav `npm run build`** — build je jediná pojistka, která tuhle třídu chyb chytí.
