@@ -57,6 +57,16 @@
 | 57 | 2026-08-26 | `rag-ai-vyhledavani` | 2026-07-11 | v40 → v41 | — | 0 | 0 | **→ 0,0** | 0 | — |
 | 58 | 2026-08-26 | `share-of-model-metrika` | 2026-07-11 | v40 → v41 | — | 29 | 0 | **→ 0,0** | 2 | — |
 | 59 | 2026-08-26 | `stranka-sluzby-pro-ai` | 2026-07-11 | v40 → v41 | — | 2 | 0 | **→ 0,0** | 2 | — |
+| 60 | 2026-08-26 | `stredni-cast-trychtyre-ai` | 2026-07-11 | v41 | 1 540 | 8 | 0 | **5,2 → 0,0** | 8 | — |
+| 61 | 2026-08-26 | `youtube-pro-ai-viditelnost` | 2026-07-11 | v41 | — | 0 | 0 | **0,0** | 0 | — |
+| 62 | 2026-08-26 | `ai-mode-vs-ai-overviews` | 2026-07-17 | v41 → v43 | 1 730 | 4 | 0 | **2,3 → 0,0** | 26 | — |
+| 63 | 2026-08-26 | `case-study-megadetail-ai-navstevnost` | 2026-07-17 | v42 | 2 080 | 16 | 6 | **7,7 → 0,0** | 20 | +1 výjimka |
+| 64 | 2026-08-26 | `ceny-na-webu-a-ai` | 2026-07-17 | v42 | 1 720 | 6 | 1 | **3,5 → 0,0** | 7 | — |
+| 65 | 2026-08-26 | `ai-mode-a-eshopy` | 2026-07-18 | v42 → v43 | 1 560 | 4 | 6 | **2,6 → 0,0** | 13 | +2 |
+| 66 | 2026-08-26 | `blokovat-ai-odpovedi-gsc` | 2026-07-18 | v43 | 2 100 | 3 | 6 | **1,4 → 0,0** | 8 | +2 |
+| 67 | 2026-08-26 | `jak-se-zobrazit-v-ai-mode` | 2026-07-18 | v43 | 1 700 | 5 | 7 | **2,9 → 0,0** | 13 | +1 |
+| 68 | 2026-08-26 | `mereni-ai-mode-limity` | 2026-07-18 | v43 | 1 500 | 1 | 1 | **0,7 → 0,0** | 13 | +1 |
+| 69 | 2026-08-26 | `nahradi-ai-mode-vyhledavani` | 2026-07-18 | v43 | 1 810 | 2 | 3 | **1,1 → 0,0** | 13 | +1 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -724,6 +734,21 @@ Od tohoto běhu jde audit **po deseti článcích** (rozhodnutí uživatele). Po
 **Chyba, kterou jsem si vyrobil a hned opravil:** roury v alternaci uvnitř regexu ve slovníku jsem napsal jako `\|` (escapované), protože jsem se bál rozbití markdownové tabulky. Alternace se tím změnila na literál a pravidlo přestalo fungovat — místo 29 nálezů jich bylo 40. Roury patří **bez** zpětného lomítka; poznámka je v § 9.
 
 **Nová pravidla v41:** `\bbackground \w+ů?\b`, `\be-commerce (AI )?SEO\b` (⛔) · `\bkategorijn\w+`, `\bkanonick\w+ profil\w*` (⚠️) · zúženo `\bshare\b` a `share of voice`.
+
+
+### 60–69 · druhá dávka deseti (2026-08-26)
+
+Deset článků po jednom (mechanická kontrola → LLM → kontrola kontextu → oprava), report až na konci. Většina článků je z klastru o AI Mode, což vyneslo **jeden terminologický kalk napříč celým webem**.
+
+**Hlavní nález: „povrch“ jako překlad „surface“.** Google svým AI plochám říká *surfaces*; články to překládaly jako **povrch** — jenže česky je povrch to, co má stůl. Čtenář zakopne. Sjednoceno na **prostředí** (v jednom prostředí, obě prostředí, po jednotlivých prostředích) ve čtyřech článcích dávky, celkem **38 výskytů**. Nové pravidlo `\bpovrch\w*` (⛔).
+
+**Zbytek korpusu:** „povrch“ je ještě v šesti dosud neauditovaných článcích (`aio-vs-geo`, `geo-vs-aeo`, `preferovane-zdroje-google`, `google-ai-mode`, `ai-prohlizece-atlas-comet`, `e-e-a-t-pro-ai`, `aeo-vs-seo`, `jak-strukturovat-pillar-content`) — opraví se, až na ně přijde řada.
+
+**Druhý opakovaný nález: „vygenerování“** jako podstatné jméno („mezi jednotlivými vygenerováními“) — nominalizace, kterou čeština nepotřebuje. Nahrazeno „mezi jednotlivými odpověďmi“ v `ai-mode-vs-ai-overviews`, `jak-se-zobrazit-v-ai-mode`, `mereni-ai-mode-limity`.
+
+**Gramatická chyba v nadpisu:** `jak-se-zobrazit-v-ai-mode` měl H2 „Když naopak nechcete být **použití**“ → „Když naopak nechcete, aby vás AI použila“.
+
+**Nová pravidla v43:** `\bpovrch\w*`, `\bbrand search\w*|\bbenefit nadpis\w*|\bbrand voice\b` (⛔) · `\bcelowebov\w+`, `\bvygenerování\w*`, `\bzaktualiz\w+`, `\bservír\w+ …`, `\bkonvertující návštěv\w+`, `\bdobr\w+ zkušenost se stránkou\b` (⚠️) · výjimka pro „dark (AI) traffic“ v pravidle `traffic`.
 
 ---
 

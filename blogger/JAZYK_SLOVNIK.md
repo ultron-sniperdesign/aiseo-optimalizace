@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 41** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 50–59/147) · audituje skill `cestina-audit`
+> **Verze: 43** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 60–69/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -27,7 +27,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
-| ⛔ | `\btraffic\w*` | návštěvnost | totéž; „traffic“ v české větě je čirý kalk. **Rozšířeno o skloňování** („trafficu“, „trafficem“) — úzká verze `\btraffic\b` je 33 článků přehlížela | seed 2026-08-23, rozšířeno kolik-stoji-ai-seo 2026-08-25 |
+| ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
 | ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update))` | obsah | jednoslovná náhrada existuje; „mixed content“ je technický termín HTTPS a hlásit se nemá | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
@@ -276,6 +276,14 @@
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bpovrch\w*` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu; česky „povrch“ znamená fyzický povrch | ai-mode-a-eshopy 2026-08-26 |
+| ⛔ | `\bbrand search\w*|\bbenefit nadpis\w*|\bbrand voice\b` | vyhledávání značky, nadpis s hlavním přínosem, hlas značky | hybridní slepence | case-study-megadetail 2026-08-26 |
+| ⚠️ | `\bcelowebov\w+` | pro celý web | mechanicky odvozené přídavné jméno | blokovat-ai-odpovedi-gsc 2026-08-26 |
+| ⚠️ | `\bvygenerování\w*` | odpověď, běh | nominalizace, kterou čeština nepotřebuje | ai-mode-a-eshopy 2026-08-26 |
+| ⚠️ | `\bzaktualiz\w+` | aktualizovat | zdvojená předpona u převzatého slovesa | mereni-ai-mode-limity 2026-08-26 |
+| ⚠️ | `\bservír\w+ (odpověď|obsah|výsledk\w+)|\b(odpověď|obsah) se servír\w+` | podávat, zobrazovat | publicistický převod z „served“ | nahradi-ai-mode-vyhledavani 2026-08-26 |
+| ⚠️ | `\bkonvertující návštěv\w+` | návštěvy, které konvertují | doslovný převod „converting visits“ | blokovat-ai-odpovedi-gsc 2026-08-26 |
+| ⚠️ | `\bdobr\w+ zkušenost se stránkou\b` | aby se stránka dobře používala | kalk z „page experience“ | jak-se-zobrazit-v-ai-mode 2026-08-26 |
 | ⛔ | `\bbackground \w+ů?\b` | na pozadí, podkladový | anglický přívlastek v české vazbě („background dotazů“) | query-fan-out-ai-mode 2026-08-26 |
 | ⛔ | `\be-commerce (AI )?SEO\b` | AI SEO pro e-shopy | řetězení anglických výrazů v české větě | kategorie-texty-pro-ai 2026-08-26 |
 | ⚠️ | `\bkategorijn\w+` | stránky kategorií | mechanicky odvozené přídavné jméno | kategorie-texty-pro-ai 2026-08-26 |

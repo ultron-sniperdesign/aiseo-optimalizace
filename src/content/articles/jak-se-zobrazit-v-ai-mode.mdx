@@ -37,7 +37,7 @@ howto:
     - name: "Doložte, co tvrdíte"
       text: "Uveďte, odkud čerpáte, doplňte vlastní data a informaci o autorovi. Strukturovaná data přidávejte jen tam, kde odpovídají viditelnému textu; Google shodu vyžaduje. Zvláštní značení kvůli AI funkcím podle jeho dokumentace potřeba není."
     - name: "Měřte opakovaně a odděleně"
-      text: "Otestujte víc dotazů, s odstupem a každý povrch zvlášť. Výběr zdrojů mezi jednotlivými spuštěními může kolísat, takže jedno měření je anekdota. Sledujte spíš opakovaný vzorec než jednotlivou odpověď."
+      text: "Otestujte víc dotazů, s odstupem a každé prostředí zvlášť. Výběr zdrojů mezi jednotlivými spuštěními může kolísat, takže jedno měření je anekdota. Sledujte spíš opakovaný vzorec než jednotlivou odpověď."
 faq:
   - q: "Existuje zvláštní optimalizace pro AI Mode?"
     a: "Podle dokumentace Googlu ne. Uvádí se v ní, že pro zobrazení v AI Overviews ani v AI Mode nejsou žádné dodatečné požadavky ani zvláštní optimalizace. Platí stejné základy jako pro běžné vyhledávání: být zaindexovaný, dostupný k procházení, způsobilý pro úryvky a mít užitečný obsah v textové podobě."
@@ -48,7 +48,7 @@ faq:
   - q: "Proč se mluví o pasážích, a ne o celých stránkách?"
     a: "Protože odpověď podle dosavadních popisů vzniká z úseků z více zdrojů. Dotaz se rozkládá na dílčí otázky a ke každé se hledá vhodná pasáž. Prakticky to znamená, že užitečnější než dokonalá stránka jako celek je úsek, který má vlastní nadpis, odpovídá hned na začátku a dává smysl i vytržený z kontextu."
   - q: "Zaručí splnění těchto kroků citaci?"
-    a: "Ne. Splnění podmínek dělá stránku způsobilou, ne citovanou. Podle analýzy Ahrefs (americká data ze září 2025) navíc jednotlivé AI povrchy citují často odlišné adresy a dřívější výzkum ukázal, že se výběr citací mezi vygenerováními mění. Kdokoli slibuje zobrazení v AI Mode jako výsledek, slibuje víc, než může doložit."
+    a: "Ne. Splnění podmínek dělá stránku způsobilou, ne citovanou. Podle analýzy Ahrefs (americká data ze září 2025) navíc jednotlivá AI prostředí citují často odlišné adresy a dřívější výzkum ukázal, že se výběr citací mezi jednotlivými odpověďmi mění. Kdokoli slibuje zobrazení v AI Mode jako výsledek, slibuje víc, než může doložit."
   - q: "Jak poznám, že mi to funguje?"
     a: "Opakovaným měřením, ne jedním testem. Zkuste víc formulací dotazu, opakujte je s odstupem a sledujte, jestli se objevuje vzorec. Jednotlivá odpověď je anekdota, protože se výběr zdrojů mezi běhy může měnit."
 ---
@@ -64,11 +64,11 @@ import Dont from "~/components/blocks/Dont.astro";
 
 **Google AI Mode je konverzační režim vyhledávání, pro který podle dokumentace Googlu neexistují zvláštní požadavky ani samostatné značení.** Stránka proto musí splnit stejné základy jako pro běžné vyhledávání: být zaindexovaná, povolená k procházení a způsobilá pro úryvky, mít podstatu v textu a strukturovaná data odpovídající tomu, co je vidět.
 
-To zní jako antiklimax, a docela záměrně. Kolem AI Mode se prodává hodně „speciálních postupů" — a nejužitečnější věc, kterou k tomu jde říct, je, že podle samotného Googlu žádné nejsou potřeba.
+To zní jako antiklimax, a docela záměrně. Kolem AI Mode se prodává hodně „speciálních postupů“ — a nejužitečnější věc, kterou k tomu jde říct, je, že podle samotného Googlu žádné nejsou potřeba.
 
 ## Co k tomu Google vlastně říká
 
-V dokumentaci k AI funkcím stojí, že pro zobrazení v AI Overviews ani v AI Mode **nejsou dodatečné požadavky ani zvláštní optimalizace**. Uvádí se tam běžný seznam: mít stránku zaindexovanou a způsobilou pro úryvky, povolit procházení, propojit obsah interními odkazy, mít dobrou zkušenost se stránkou, držet podstatu v textové podobě a mít strukturovaná data, která odpovídají viditelnému textu.
+V dokumentaci k AI funkcím stojí, že pro zobrazení v AI Overviews ani v AI Mode **nejsou dodatečné požadavky ani zvláštní optimalizace**. Uvádí se tam běžný seznam: mít stránku zaindexovanou a způsobilou pro úryvky, povolit procházení, propojit obsah interními odkazy, postarat se, aby se stránka dobře používala, držet podstatu v textové podobě a mít strukturovaná data, která odpovídají viditelnému textu.
 
 Stejně užitečné je, co se tam píše o věcech, které potřeba **nejsou**: vytvářet nové strojově čitelné soubory, zvláštní textové soubory pro AI ani speciální strukturovaná data kvůli AI funkcím.
 
@@ -88,7 +88,7 @@ Stejně užitečné je, co se tam píše o věcech, které potřeba **nejsou**: 
 <Insight tone="accent">
 Pointa tohohle článku není v triku, ale v odstranění mýtu. **Pokud někdo slibuje zvláštní vstupenku do AI Mode, jde nad rámec toho, co Google ve své dokumentaci potvrzuje.** Práce zůstává stejná — jen se přísněji pozná, když je odbytá.
 
-Že „soubory pro AI" nejsou vstupenkou, rozebírá i článek o [llms.txt](/blog/llms-txt-navod/).
+Že „soubory pro AI“ nejsou vstupenkou, rozebírá i článek o [llms.txt](/blog/llms-txt-navod/).
 </Insight>
 
 ## Postup
@@ -118,7 +118,7 @@ Pointa tohohle článku není v triku, ale v odstranění mýtu. **Pokud někdo 
     {
       label: "Měření",
       title: "Měřte opakovaně",
-      text: "Víc dotazů, s odstupem, každý povrch zvlášť. Jedno spuštění je anekdota, výběr zdrojů může kolísat.",
+      text: "Víc dotazů, s odstupem, každé prostředí zvlášť. Jedno spuštění je anekdota, výběr zdrojů může kolísat.",
     },
   ]}
 />
@@ -129,10 +129,10 @@ Tohle je část, která jde nad rámec úplného základu — a není to trik, a
 
 Prakticky z toho plyne pár velmi konkrétních věcí:
 
-- **Vlastní nadpis pro každou dílčí otázku.** Ne „Další informace", ale otázka, na kterou úsek odpovídá.
+- **Vlastní nadpis pro každou dílčí otázku.** Ne „Další informace“, ale otázka, na kterou úsek odpovídá.
 - **Odpověď hned na začátku úseku**, rozvedení až potom.
-- **Žádné „jak jsme psali výše".** Pasáž vytržená z kontextu má pořád držet smysl.
-- **Doplňte do věty, o čem je řeč.** Místo „u něj to platí taky" napište, u čeho.
+- **Žádné „jak jsme psali výše“.** Pasáž vytržená z kontextu má pořád držet smysl.
+- **Doplňte do věty, o čem je řeč.** Místo „u něj to platí taky“ napište, u čeho.
 
 ## Čeho se vyvarovat
 
@@ -152,10 +152,10 @@ Prakticky z toho plyne pár velmi konkrétních věcí:
 </MistakeGrid>
 
 <Insight tone="warn">
-Splnění všech kroků dělá stránku **způsobilou**, ne citovanou. Podle analýzy Ahrefs nad americkými daty ze září 2025 navíc jednotlivé AI povrchy sahají často po jiných adresách a dřívější výzkum ukázal, že se výběr citací mezi vygenerováními mění — proč se to nedá měřit dohromady, rozebírá [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
+Splnění všech kroků dělá stránku **způsobilou**, ne citovanou. Podle analýzy Ahrefs nad americkými daty ze září 2025 navíc jednotlivá AI prostředí často vybírají jisto po jiných adresách a dřívější výzkum ukázal, že se výběr citací mezi jednotlivými odpověďmi mění — proč se to nedá měřit dohromady, rozebírá [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/).
 </Insight>
 
-## Když naopak nechcete být použití
+## Když naopak nechcete, aby vás AI použila
 
 Stejná dokumentace popisuje i opačný směr. Rozsah toho, co se smí z vaší stránky použít do úryvku, jde řídit direktivami `nosnippet`, `data-nosnippet` a `max-snippet`, případně stránku úplně vyřadit přes `noindex`. Je to hrubý nástroj — omezuje i běžné výsledky, ne jen AI odpovědi. Podrobněji [jak omezit AI Overviews](/blog/jak-vypnout-ai-overview/).
 
@@ -165,7 +165,7 @@ Stejná dokumentace popisuje i opačný směr. Rozsah toho, co se smí z vaší 
 
 **Neřeší dostupnost AI Mode v Česku.** Zavádí se postupně a liší se podle trhu, účtu i fáze zavádění, takže konkrétní stav tu radši neuvádíme.
 
-**Vychází z dokumentace dodavatele.** Vyjádření Googlu o vlastních produktech je autoritativní pro jeho povrchy, ale pořád je to zdroj od dodavatele; ostatní AI systémy se chovají po svém.
+**Vychází z dokumentace dodavatele.** Vyjádření Googlu o vlastních produktech je směrodatné pro jeho vlastní AI funkce, ale pořád je to zdroj od dodavatele; ostatní AI systémy se chovají po svém.
 
 <DoDont>
   <Do>
@@ -176,14 +176,14 @@ Stejná dokumentace popisuje i opačný směr. Rozsah toho, co se smí z vaší 
   - Podstatu držte v textu, ne jen v grafice nebo videu
   - Každé dílčí otázce vlastní nadpis a odpověď na začátku
   - Strukturovaná data shodná s viditelným textem
-  - Měřte opakovaně a každý povrch zvlášť
+  - Měřte opakovaně a každé prostředí zvlášť
 
   </Do>
   <Dont>
 
   **Nedělejte**
 
-  - Kupovat „tajný postup na AI Mode"
+  - Kupovat „tajný postup na AI Mode“
   - Vyrábět zvláštní soubory pro AI jako vstupenku
   - Psát pasáže, které bez okolního textu ztratí smysl
   - Přidávat strukturovaná data, která na stránce nejsou vidět
@@ -198,7 +198,7 @@ Nejužitečnější věc na téhle otázce je, že odpověď je nudná. Google u
 
 V praxi se proto hodí myslet i na čitelnost po pasážích. Ne kvůli algoritmu, ale proto, že odpověď obvykle vzniká z úseků — a úsek, který bez okolí ztratí smysl, se použije hůř.
 
-A pak měření: opakovaně, na víc dotazech a každý povrch zvlášť. Co začít testovat, popisuje [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
+A pak měření: opakovaně, na víc dotazech a každé prostředí zvlášť. Co začít testovat, popisuje [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
 
 ---
 

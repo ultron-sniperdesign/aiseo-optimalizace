@@ -31,13 +31,13 @@ faq:
   - q: "Co k tomu říká sám Google?"
     a: "Uvádí, že AI Overviews byly navržené tak, aby se objevovaly u dotazů, kde přidají užitek nad rámec toho, co uživatel z Vyhledávání dostane už teď. Tedy jako doplněk, ne náhrada. V oznámení z 19. května 2026 pak píše, že uživatelé budou dál dostávat různé typy výsledků z Vyhledávání jako dnes. Obojí je vyjádření dodavatele o vlastním produktu, ne nezávisle ověřený dopad."
   - q: "Znamená to, že se návštěvnost nezmění?"
-    a: "Neznamená. Google uvádí, že prokliky ze stránek s AI Overviews jsou kvalitnější, protože lidé na webu stráví víc času. Stojí za povšimnutí, že se tím tvrdí kvalita, ne množství. O celkovém počtu prokliků z toho vyjádření nic neplyne a nezávislá čísla pro český trh k dispozici nejsou."
+    a: "Neznamená. Google uvádí, že prokliky ze stránek s AI Overviews jsou kvalitnější, protože lidé na webu stráví víc času. Pozor na to, že se tím tvrdí kvalita, ne množství. O celkovém počtu prokliků z toho vyjádření nic neplyne a nezávislá čísla pro český trh k dispozici nejsou."
   - q: "Nedokazuje rostoucí hledanost termínu, že AI Mode přebírá vyhledávání?"
     a: "Nedokazuje. Rostoucí hledanost pojmu měří zájem o to slovo, ne rozšíření technologie ani přesun chování. Když lidé hledají, co AI Mode je, spíš to naznačuje, že ho zatím neznají. Adopci by ukázal až podíl relací nebo dotazů, a ten veřejně dostupný není."
   - q: "Mám kvůli tomu přesouvat rozpočet ze SEO?"
-    a: "Rozhodovat se podle predikcí je riskantní, protože podíl AI povrchů zatím nejde spolehlivě změřit a základ je pro obojí společný. Stránka se musí dát najít, přečíst a ověřit, ať ji čte člověk nebo model. Většina práce se tedy nezdvojuje a přesouvat rozpočet podle titulků nedává smysl."
+    a: "Rozhodovat se podle predikcí je riskantní, protože podíl jednotlivých AI prostředí zatím nejde spolehlivě změřit a základ je pro obojí společný. Stránka se musí dát najít, přečíst a ověřit, ať ji čte člověk nebo model. Většina práce se tedy nezdvojuje a přesouvat rozpočet podle titulků nedává smysl."
   - q: "Co tedy dnes o té otázce jde říct?"
-    a: "Že se mění rozhraní a role prokliku, ne zdroj odpovědí. Že Google svoje AI funkce popisuje jako doplněk. A že tvrzení o rozsahu nahrazení dnes nikdo nemá čím doložit, protože jednotlivé AI povrchy se z běžně dostupných dat oddělit nedají."
+    a: "Že se mění rozhraní a role prokliku, ne zdroj odpovědí. Že Google svoje AI funkce popisuje jako doplněk. A že tvrzení o rozsahu nahrazení dnes nikdo nemá čím doložit, protože jednotlivá AI prostředí se z běžně dostupných dat oddělit nedají."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
@@ -56,7 +56,7 @@ Na tuhle otázku dnes nejde odpovědět prostým ano, nebo ne — a právě to j
 
 Zní to, jako by proti sobě stály dva systémy: staré vyhledávání a nová AI. Podle dokumentace Googlu ale AI Mode nečerpá z odděleného indexu: aby se v něm stránka mohla objevit, musí být **zaindexovaná a způsobilá pro úryvky** — tedy splnit přesně to, co potřebuje pro běžné výsledky. Že k tomu Google neuvádí žádné zvláštní požadavky ani samostatné značení, rozebírá [jak se zobrazit v AI Mode](/blog/jak-se-zobrazit-v-ai-mode/).
 
-Jinými slovy: je to **jiné rozhraní nad stejným indexem**. Co se mění, je způsob, jakým se odpověď servíruje, a co z toho plyne pro proklik — ne to, odkud se odpovědi berou.
+Jinými slovy: je to **jiné rozhraní nad stejným indexem**. Co se mění, je způsob, jakým se odpověď podává, a co z toho plyne pro proklik — ne to, odkud se odpovědi berou.
 
 ## Co Google říká — a co neříká
 
@@ -74,12 +74,12 @@ Zajímavější je ale číst, co se tvrdí a co ne.
   rows={[
     { icon: "➕", label: "Doplněk", left: "AI funkce mají přidat užitek nad rámec Vyhledávání", right: "Že se rozsah použití nezmění" },
     { icon: "⭐", label: "Kvalita prokliku", left: "Prokliky z AI Overviews jsou podle Googlu kvalitnější", right: "Že jich je víc — o množství se nic netvrdí" },
-    { icon: "🔗", label: "Šíře odkazů", left: "Rozklad dotazu umožňuje zobrazit pestřejší sadu odkazů", right: "Že z nich přijde víc návštěv" },
+    { icon: "🔗", label: "Šíře odkazů", left: "Rozložení dotazu na části umožňuje zobrazit pestřejší sadu odkazů", right: "Že z nich přijde víc návštěv" },
     { icon: "🎯", label: "Splnění podmínek", left: "Stránka musí být zaindexovaná a způsobilá pro úryvky", right: "Že se pak zobrazí — Google to výslovně negarantuje" },
   ]}
 />
 
-Není to obvinění, jen doporučení číst pozorně. U tvrzení o kvalitě prokliku prostě stojí za povšimnutí, že se mluví o kvalitě, ne o počtu.
+Není to obvinění, jen doporučení číst pozorně. U tvrzení o kvalitě prokliku je dobré si všimnout, že se mluví o kvalitě, ne o počtu.
 
 ## Co Google označil za výchozí
 
@@ -117,11 +117,11 @@ Přesun dotazů by ukázalo srovnání „kolik dotazů skončilo v AI Mode mís
   <Mistake num="01" title="Číst hledanost jako adopci">
     Růst hledanosti pojmu ukazuje zájem o slovo, ne změnu chování uživatelů.
   </Mistake>
-  <Mistake num="02" title="Brát AI jako jeden povrch">
-    Jednotlivé povrchy se v citacích rozcházejí. Tvrzení o „AI“ obecně slučuje věci, které se chovají jinak.
+  <Mistake num="02" title="Brát AI jako jedno prostředí">
+    Jednotlivá prostředí se v citacích rozcházejí. Tvrzení o „AI“ obecně slučuje věci, které se chovají jinak.
   </Mistake>
   <Mistake num="03" title="Přesouvat rozpočet podle predikcí">
-    Podíl AI povrchů zatím nejde změřit a základ je pro obojí společný. Rozhodovat podle titulků je sázka, ne strategie.
+    Podíl jednotlivých AI prostředí zatím nejde změřit a základ je pro obojí společný. Rozhodovat podle titulků je sázka, ne strategie.
   </Mistake>
   <Mistake num="04" title="Vydávat vyjádření dodavatele za důkaz">
     I Googlova tvrzení o vlastních produktech jsou tvrzení Googlu. Popisují záměr, ne nezávisle ověřený dopad.
@@ -159,7 +159,7 @@ Co dává smysl sledovat, není předpověď, ale vlastní čísla: podíl náv�
 
   - Číst růst hledanosti termínu jako důkaz adopce
   - Přesouvat rozpočet na základě predikcí
-  - Slučovat všechny AI povrchy do jednoho tvrzení
+  - Slučovat všechna AI prostředí do jednoho tvrzení
   - Brát vyjádření dodavatele jako nezávislé měření
 
   </Dont>
@@ -169,7 +169,7 @@ Co dává smysl sledovat, není předpověď, ale vlastní čísla: podíl náv�
 
 Podle dokumentace Googlu nejde o oddělený systém, ale o jiný způsob podání téhož výsledkového základu. Google svoje AI funkce popisuje jako doplněk a u prokliků mluví o kvalitě, ne o množství.
 
-Kolik toho reálně přebírá, dnes nikdo doložit nedokáže, protože jednotlivé povrchy se z dostupných dat oddělit nedají. To není důvod nic nedělat. Je to důvod nedělat velká rozhodnutí podle čísel, která měří něco jiného, než se tvrdí.
+Kolik toho reálně přebírá, dnes nikdo doložit nedokáže, protože jednotlivá prostředí se z dostupných dat oddělit nedají. To není důvod nic nedělat. Je to důvod nedělat velká rozhodnutí podle čísel, která měří něco jiného, než se tvrdí.
 
 **Kam dál podle toho, co řešíte:** proč se podíl AI Mode nedá změřit má [limity měření](/blog/mereni-ai-mode-limity/), co přesně Google označil za výchozí [rozbor obou významů](/blog/ai-mode-jako-vychozi-rezim/), rozdíl mezi plochami [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) a praktický dopad na prodej [AI Mode a e-shopy](/blog/ai-mode-a-eshopy/).
 
