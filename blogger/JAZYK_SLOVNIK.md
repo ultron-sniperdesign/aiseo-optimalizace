@@ -284,7 +284,7 @@
 | ⚠️ | `\budržovat \w+ živ\w+|\budržujte \w+ živ\w+` | udržovat aktivní | kalk z „keep alive“ | recenze-srovnavace-pro-ai 2026-08-26 |
 | ⚠️ | `\bz definice\b` | ze své podstaty | nalepený obrat z angličtiny („by definition“) | produktovy-feed-gtin 2026-08-26 |
 | ⚠️ | `\bsilně závislý na\b` | hodně závisí na | překlad „heavily dependent on“ | pasazova-optimalizace-obsahu 2026-08-26 |
-| ⛔ | `\bpovrch\w*` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu; česky „povrch“ znamená fyzický povrch | ai-mode-a-eshopy 2026-08-26 |
+| ⛔ | `\bpovrch(?:u|y|ů|em|ích|ům)?\b` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu. **Nehlásí** „povrchní / povrchně“ — to je jiné slovo | ai-mode-a-eshopy 2026-08-26, zúženo 2026-08-26 |
 | ⛔ | `\bbrand search\w*|\bbrand voice\b` | vyhledávání značky, hlas značky | hybridní slepence s anglickým „brand“ | case-study-megadetail 2026-08-26 |
 | ⚠️ | `\bcelowebov\w+` | pro celý web | mechanicky odvozené přídavné jméno | blokovat-ai-odpovedi-gsc 2026-08-26 |
 | ⚠️ | `\bvygenerování\w*` | odpověď, běh | nominalizace, kterou čeština nepotřebuje | ai-mode-a-eshopy 2026-08-26 |
