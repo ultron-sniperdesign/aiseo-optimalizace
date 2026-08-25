@@ -280,6 +280,10 @@ Ten nález mi zároveň ukázal, že článek sám měl **obě formy vedle sebe*
 
 Pravidlo teď nese obě náhrady s poznámkou, že volba závisí na kontextu — stejně jako u `listingy` (výpis produktů vs. zápisy v katalozích).
 
+**Oprava po připomínce (24. 8. 2026):** `research` je podle uživatele **běžně užívané české slovo** — platí to i pro spojení „research fáze" a sloveso „researchovat". Pravidlo přehozeno na ✅, v článku 30 vráceno původní znění (5 míst).
+
+⛔ **Zbylá nekonzistence k rozhodnutí:** v článcích 3, 4, 9, 11 a 12 jsem `research fázi` dřív nahradil za „fázi zvažování" / „sortiment, který zákazník dlouho zvažuje". Ty texty jsou česky správně, ale web teď používá **dva různé výrazy pro totéž**. Buď se vrátí „research fáze" i tam, nebo se nechá česká varianta jako preferovaná a ✅ bude znamenat jen „nehlásit". Čeká na rozhodnutí.
+
 **`shortlist` zůstává jako ✅:** článek termín sám definuje („Vendor shortlist je užší výběr dodavatelů, ze kterého kupec vybírá…"), má ho v titulku i v klíčových slovech a v B2B nákupu je zavedený.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci

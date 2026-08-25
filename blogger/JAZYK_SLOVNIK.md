@@ -79,7 +79,7 @@
 | ⛔ | `\blink exchange(s)?\b` | výměna odkazů | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\bfact[‑-]?density\b` | hustota faktů | produktový slang | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\bcontent depth\b` | hloubka obsahu | hybrid | caste-chyby-v-seo-2026-update 2026-08-23 |
-| ⛔ | `\bresearch[‑-]?driven\b` | opřený o výzkum | anglický přívlastek | caste-chyby-v-seo-2026-update 2026-08-23 |
+| ⚠️ | `\bresearch[‑-]?driven\b` | opřený o výzkum | samotný „research“ je ✅, ale spřežka s pomlčkou je stále hybrid | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\brecovery\b` | obnovení výkonu | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\bmerge\b|\bmergnout\b` | sloučit | pracovní slang | caste-chyby-v-seo-2026-update 2026-08-23 |
 | ⛔ | `\bgatekeeper\b` | vstupní podmínka | anglicismus | caste-chyby-v-seo-2026-update 2026-08-23 |
@@ -252,8 +252,7 @@
 | ⛔ | `\bcitation (hook|rate)\b` | místo vhodné k citaci, míra citování | agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbrand exposure\b` | viditelnost značky | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\blong[‑-]?form\b` | dlouhý, rozsáhlý | polovičatý hybrid | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\bresearch fáz(e|i|í)\b` | fáze zvažování; u B2B „fáze zjišťování" | hybrid | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\bresearchuj\w*\b` | zjišťovat, hledat informace | počeštěné anglické sloveso | ai-seo-b2b 2026-08-24 |
+| ✅ | `\bresearch\w*\b` | — | **Rozhodnutí uživatele 24. 8. 2026:** „research“ je v češtině běžně užívané slovo (research fáze, dělat research). Nehlásit. Platí i pro spojení „research fáze“ a pro sloveso „researchovat“. | seo-pro-eshopy-ai-era-2026 2026-08-23, přehodnoceno 2026-08-24 |
 | ⛔ | `\bvendor compare\b` | porovnání dodavatelů | anglicismus | ai-seo-b2b 2026-08-24 |
 | ✅ | `\bvendor shortlist\b|\bshortlist\w*\b` | — | článek termín **sám definuje** („Vendor shortlist je užší výběr dodavatelů…“) a má ho v titulku i klíčových slovech; je to zavedený termín B2B nákupu | ai-seo-b2b 2026-08-24 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
