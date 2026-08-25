@@ -277,6 +277,7 @@
 | Názvy funkcí a produktů (Search Labs, AI Overviews, DuckAssist) | vlastní jména |
 | Názvy publikací (Search Engine Land) a **texty odkazů citující titulek vlastního článku** | titulek se cituje tak, jak zní — měnit ho by znamenalo měnit slug |
 | **Záporné příklady citované v textu** (např. „v dnešní digitální éře“ → prázdný marketingový jazyk) | článek je uvádí právě proto, že jsou špatné. Checker je hlásit bude — u každého takového nálezu se rozhoduje ručně. |
+| **Titulek a nadpis, které jsou zároveň cílovým klíčovým slovem** (např. „AI SEO content“ u článku se slugem `ai-seo-content`) | titulek nese hledaný výraz a slug se po publikaci nemění; přepsat titulek by znamenalo rozejít se se slugem i s tím, co lidé hledají |
 | **Obsah bloků `<Dont>`** | jsou to záměrné odstrašující ukázky („V dnešní digitální éře je důležité…“). Opravit je znamená zničit smysl příkladu. Checker je od článku 9 přeskakuje. |
 | Direktivy a parametry (`data-nosnippet`, `&udm=14`, `max-snippet`) | kód |
 

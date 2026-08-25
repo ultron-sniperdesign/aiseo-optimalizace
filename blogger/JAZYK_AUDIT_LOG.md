@@ -18,6 +18,7 @@
 | 11 | 2026-08-24 | `aio-strategie` | 2026-05-08 | v11 → v12 | 5 090 | 139 | — | **27,6 → 0,0** | 118 | +5 |
 | 12 | 2026-08-24 | `geo-optimalizace` | 2026-05-08 | v12 → v13 | 4 630 | 155 | — | **33,8 → 0,4** | 96 | +2 |
 | 13 | 2026-08-24 | `ai-seo-audit` | 2026-05-23 | v13 → v14 | 1 924 | 2 | 5 | **1,0 → 0,0** | 3 | +3 |
+| 14 | 2026-08-24 | `ai-seo-content` | 2026-05-23 | v14 | 1 264 | 7 | — | **5,5 → 1,6** | 4 | 0 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -220,6 +221,12 @@ Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna d
 Strojově jen 2 nálezy, LLM průchod přidal 5 jemnějších: `DIY checklist`, „ztratíte krok s rychlým vývojem" (publicistické klišé), „převést na vlastní web" (kalk), „připravili jsme" (prodejní tón ve věcném textu).
 
 **Poznámka k ⚠️ nálezu, který zůstal:** text píše „podíl zmínek, tzv. share of voice" — termín **vysvětlený u prvního užití**, což je přesně to, co úroveň ⚠️ vyžaduje. Není to vada, je to správně provedené pravidlo.
+
+### 14 · ai-seo-content (2026-08-24)
+
+Krátký text (1 264 slov), 7 nálezů. Čtyři opravy: tři nedovřené uvozovky a „připravili jsme" → „k dispozici je".
+
+**Nová výjimka: titulek, který je zároveň cílovým klíčovým slovem.** Článek se jmenuje „AI SEO content" a má slug `ai-seo-content`. Slovo `content` je tu ⛔ podle pravidla, ale **titulek nese hledaný výraz a slug se po publikaci nemění** — přepsat titulek by znamenalo rozejít se se slugem i s tím, co lidé hledají. Zbylé dva ⛔ nálezy jsou právě titulek a stejně znějící H2.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
