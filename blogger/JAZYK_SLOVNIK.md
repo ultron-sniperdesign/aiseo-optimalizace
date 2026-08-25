@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 21** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 33/147) · audituje skill `cestina-audit`
+> **Verze: 22** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 34/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -27,7 +27,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
-| ⛔ | `\btraffic\b` | návštěvnost | totéž; „traffic“ v české větě je čirý kalk | seed 2026-08-23 |
+| ⛔ | `\btraffic\w*` | návštěvnost | totéž; „traffic“ v české větě je čirý kalk. **Rozšířeno o skloňování** („trafficu“, „trafficem“) — úzká verze `\btraffic\b` je 33 článků přehlížela | seed 2026-08-23, rozšířeno kolik-stoji-ai-seo 2026-08-25 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
 | ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update))` | obsah | jednoslovná náhrada existuje; „mixed content“ je technický termín HTTPS a hlásit se nemá | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
@@ -57,6 +57,9 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bv produkci\b` | na živém webu, v ostrém provozu | kalk z „in production“; u vývojářů běžné, u majitele webu ne | strukturovana-data-pro-ai 2026-08-24 |
+| ⚠️ | `\bv abstraktu\b` | jen v obecné rovině, příliš obecné | kostrbatá vazba, působí jako strojový překlad | kolik-stoji-ai-seo 2026-08-25 |
+| ⚠️ | `\bseparátní\w*` | samostatný | zbytečný latinismus tam, kde čeština má běžné slovo | kolik-stoji-ai-seo 2026-08-25 |
+| ⚠️ | `\bcenov\w+ kotv\w+` | orientační cena, číslo pro srovnání | kalk z „price anchor“; v české větě marketingový žargon | kolik-stoji-ai-seo 2026-08-25 |
 | ⛔ | `\broot úrov\w+` | v kořeni domény, na kořenové úrovni | kalk z „root level“; česky nepřirozené | llms-txt-navod 2026-08-25 |
 | ⚠️ | `\blinkovan\w+` | odkazovaný | mechanický překlad „linked“; česky se odkazuje, nelinkuje | llms-txt-navod 2026-08-25 |
 | ⚠️ | `\b[a-zá-ž.]+ check\b` | kontrola X, ověření X | anglicko-český slepenec typu „llms.txt check“; česky se popíše funkce | llms-txt-navod 2026-08-25 |
@@ -261,6 +264,7 @@
 | ✅ | `\bresearch\w*\b` | — | **Rozhodnutí uživatele 24. 8. 2026:** „research“ je v češtině běžně užívané slovo (research fáze, dělat research). Nehlásit. Platí i pro spojení „research fáze“ a pro sloveso „researchovat“. | seo-pro-eshopy-ai-era-2026 2026-08-23, přehodnoceno 2026-08-24 |
 | ⛔ | `\bvendor compare\b` | porovnání dodavatelů | anglicismus | ai-seo-b2b 2026-08-24 |
 | ✅ | `\bvendor shortlist\b|\bshortlist\w*\b` | — | článek termín **sám definuje** („Vendor shortlist je užší výběr dodavatelů…“) a má ho v titulku i klíčových slovech; je to zavedený termín B2B nákupu | ai-seo-b2b 2026-08-24 |
+| ✅ | `\btransparentn\w+` | — | „transparentní ceník / nabídka“ je zavedená česká obchodní mluva (transparentní účet, transparentní výběrové řízení), ne kalk | kolik-stoji-ai-seo 2026-08-25 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bbuying[- ]journey\b|\bbuyer'?s? journey\b` | fáze nákupního rozhodování | slepenec | seo-audit-co-kontrolovat 2026-08-23 |

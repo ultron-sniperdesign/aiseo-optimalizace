@@ -31,6 +31,7 @@
 | 31 | 2026-08-24 | `ai-seo-upgates-shoptet` | 2026-06-05 | v18 → v19 | 2 249 | 8 | 2 | **3,6 → 0,0** | 10 | +1 |
 | 32 | 2026-08-24 | `strukturovana-data-pro-ai` | 2026-06-08 | v19 → v20 | 1 660 | 0 | 1 | **0,0** | 1 | +1 |
 | 33 | 2026-08-25 | `llms-txt-navod` | 2026-06-08 | v20 → v21 | 1 565 | 1 | 4 | **0,6 → 0,0** | 6 | +4 |
+| 34 | 2026-08-25 | `kolik-stoji-ai-seo` | 2026-06-10 | v21 → v22 | 1 689 | 1 | 4 | **0,6 → 0,0** | 8 (+2 zpětně) | +4 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -390,3 +391,35 @@ Samotný název **llms.txt**, Markdown, robots.txt i „standard“ zůstávají
 Nová pravidla v21: `\broot úrov\w+` (⛔), `\blinkovan\w+` (⚠️), `\b[a-zá-ž.]+ check\b` (⚠️), `\b\d+[–-]\d+ stránkov\w+` (⚠️).
 
 **Korpusový dopad nových pravidel:** „linkovan*“ / „root úrov*“ se vyskytuje ještě ve dvou dosud neauditovaných článcích (`ai-friendly-url-struktura`, `interni-prolinkovani-pro-ai`) — vyřeší se, až na ně přijde řada.
+
+### 34 · kolik-stoji-ai-seo (2026-08-25)
+
+Osm zásahů v článku, z toho **dva vznikly z jednoho nálezu v nástroji**:
+
+| Bylo | Je | Proč |
+|---|---|---|
+| „objem trafficu vs konkrétní citace“ | „objem návštěvnosti vs konkrétní citace“ | kalk; navíc skloňovaný tvar, který pravidlo přehlíželo |
+| „vyšší kvalitu než běžný organický traffic“ | „vyšší kvalitu než běžné organické návštěvy“ | totéž; „návštěvnost“ by se ve větě opakovala třikrát |
+| „Aby cenové úrovně nezůstaly v abstraktu“ | „… nezůstaly jen v obecné rovině“ | kostrbatá vazba, působí strojově |
+| „práce na reputaci jako separátní položka“ | „… jako samostatná položka“ | zbytečný latinismus |
+| „## Konkrétní cenové kotvy“ | „## Konkrétní ceny pro srovnání“ | kalk z „price anchor“ |
+| „Pokud chcete konkrétní cenovou kotvu“ | „Pokud chcete konkrétní číslo, se kterým se dá srovnávat“ | totéž ve výzvě k akci |
+| „Jak na celý obraz AI viditelnosti shrnuje…“ | „Celý obraz AI viditelnosti shrnuje…“ | rozbitá vazba („Jak na…“ + „shrnuje“) |
+
+**Ponecháno:** „transparentnější nabídka“ — „transparentní ceník / nabídka“ je zavedená česká obchodní mluva (transparentní účet, transparentní výběrové řízení), ne kalk. Zapsáno jako ✅, aby se nevracelo.
+
+**Díra v nástroji (opravena):** pravidlo `\btraffic\b` nechytalo skloňování — „trafficu“, „trafficem“ mu 33 článků procházelo pod rukama. Rozšířeno na `\btraffic\w*`.
+
+**Zpětné opravy, které rozšířené pravidlo odhalilo** (oba články už auditované):
+- `mereni-seo-vykonu-2026` — „místo růstu trafficu“ → „místo růstu návštěvnosti“
+- `jak-vypnout-ai-overview` — „bez separátní analýzy dopadu“ → „bez samostatné analýzy dopadu“
+
+Nová pravidla v22: `\bv abstraktu\b` (⚠️), `\bseparátní\w*` (⚠️), `\bcenov\w+ kotv\w+` (⚠️), `\btransparentn\w+` (✅).
+
+---
+
+## Drift starších článků — fronta na doauditování
+
+Slovník roste, takže článek uzavřený ve v5 dnes neprojde pravidly v22. Zjištěno při běhu 34: `mereni-seo-vykonu-2026` (auditováno ve starší verzi, dnes **1,7 na 1 000 slov**) obsahuje „Field data“, `pillar` 4× v české větě i v popisku odkazu, „manuální check“ 2× a hybridní slepenec **„strategic measurement rozsah“**, který dosud nemá pravidlo.
+
+**Plán:** drift neřešit po kouskách uvnitř cizího běhu. Po dojetí všech 147 článků projet korpus **mechanickou kontrolou s finálním slovníkem** (bez LLM, tedy levně) a doopravit zbytky jedním průchodem. Výjimka: zásah, který odhalí pravidlo změněné v právě běžícím auditu — ten se opraví hned (jako výše u `traffic\w*`).
