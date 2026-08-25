@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 25** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 36/147) · audituje skill `cestina-audit`
+> **Verze: 26** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 36/147, revize) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -192,7 +192,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\brevolučn(í|ě)\b` | vypustit nebo doložit | hodnotící superlativ, web ho zakazuje v tonalitě | seed 2026-08-23 |
-| ⛔ | `\bunikátní\b` | jedinečný, nebo doložit čím | nadužívané, obvykle nepravdivé | seed 2026-08-23 |
+| ✅ | `\bunikátn\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „unikátní“ je běžné české slovo. Vata je až prázdný nárok („unikátní řešení“ bez doložení), ne slovo samo | revize 2026-08-25 |
 | ⛔ | `\bšpičkov(ý|á|é|ých)\b` | vypustit | hodnocení bez měřítka | seed 2026-08-23 |
 | ⚠️ | `\bzásadním způsobem\b` | výrazně, nebo číslo | často zakrývá, že chybí data | seed 2026-08-23 |
 
@@ -265,10 +265,10 @@
 | ✅ | `\bvendor shortlist\b|\bshortlist\w*\b` | — | článek termín **sám definuje** („Vendor shortlist je užší výběr dodavatelů…“) a má ho v titulku i klíčových slovech; je to zavedený termín B2B nákupu | ai-seo-b2b 2026-08-24 |
 | ✅ | `\btransparentn\w+` | — | „transparentní ceník / nabídka“ je zavedená česká obchodní mluva (transparentní účet, transparentní výběrové řízení), ne kalk | kolik-stoji-ai-seo 2026-08-25 |
 | ✅ | `\bseparátní\w*` | — | **Rozhodnutí uživatele 25. 8. 2026:** „separátní“ je relativně normální české slovo, ne latinismus k odstranění | kolik-stoji-ai-seo 2026-08-25 |
+| ✅ | `\bdohledan\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „dohledaný“ je běžné české slovo (dohledat zdroj), ne strojový obrat | revize 2026-08-25 |
 | ⛔ | `\bblog post\w*` | článek na blogu, blogový článek | anglicismus tam, kde čeština má běžné slovo | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bguide\b(?! *`)` | průvodce | anglické slovo v české větě („Google guide“, „ve svém guide“); **výjimka:** URL a klíčová slova | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bfundamentáln\w+ (SEO|obsah\w*)` | základy SEO, základní | publicistický kalk z „fundamental“ | aeo-geo-je-porad-seo 2026-08-25 |
-| ⚠️ | `\bdohledan\w+ zdroj\w*` | nalezené zdroje | strojově znějící obrat | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bjak \w+ [A-Z][\w ]+ podmínky, tak` | jak podmínky pro X, tak Y | rozpadlá vazba „jak…, tak…“ s anglickým slovosledem | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bbrand (mentions|zmínky)\b` | zmínky o značce | hybridní slepenec (české slovo v anglické vazbě) | aeo-geo-je-porad-seo 2026-08-25 |
 | ⛔ | `\breviewer\w*` | posuzovatel, recenzent | anglicismus pro roli, působí jako interní slang | znacka-na-wikipedii-pro-ai 2026-08-25 |
