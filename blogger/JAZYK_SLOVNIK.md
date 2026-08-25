@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 47** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 80–89/147) · audituje skill `cestina-audit`
+> **Verze: 48** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 90–99/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,7 +57,7 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bv produkci\b` | na živém webu, v ostrém provozu | kalk z „in production“; u vývojářů běžné, u majitele webu ne | strukturovana-data-pro-ai 2026-08-24 |
-| ⚠️ | `\bv abstraktu\b` | jen v obecné rovině, příliš obecné | kostrbatá vazba, působí jako strojový překlad | kolik-stoji-ai-seo 2026-08-25 |
+| ⚠️ | `\b(zůst\w+|nezůst\w+|zůstal\w*) v abstraktu\b` | jen v obecné rovině | kostrbatá vazba „zůstat v abstraktu“. **Pozor:** „v abstraktu studie“ je odborný význam (shrnutí článku), ten se nehlásí | kolik-stoji-ai-seo 2026-08-25, zúženo co-rozhoduje-o-ai-citaci 2026-08-26 |
 | ⚠️ | `\bcenov\w+ kotv\w+` | orientační cena, číslo pro srovnání | kalk z „price anchor“; v české větě marketingový žargon | kolik-stoji-ai-seo 2026-08-25 |
 | ⛔ | `\broot úrov\w+` | v kořeni domény, na kořenové úrovni | kalk z „root level“; česky nepřirozené | llms-txt-navod 2026-08-25 |
 | ⚠️ | `\blinkovan\w+` | odkazovaný | mechanický překlad „linked“; česky se odkazuje, nelinkuje | llms-txt-navod 2026-08-25 |

@@ -87,6 +87,16 @@
 | 87 | 2026-08-26 | `ymyl-obsah-pro-ai` | 2026-07-24 | v47 | 1 700 | 6 | 5 | **3,5 → 0,0** | 11 | +2 |
 | 88 | 2026-08-26 | `schema-markup-ai-citace-test` | 2026-07-25 | v46 | 1 600 | 8 (5 planých) | 0 | **5,0 → 0,0** | 3 | +výjimka |
 | 89 | 2026-08-26 | `seo-vs-ai-citace-platformy` | 2026-07-25 | v46 | 1 600 | 4 | 1 | **2,5 → 0,0** | 5 | — |
+| 90 | 2026-08-26 | `aio-vs-geo` | 2026-07-25 | v47 → v48 | 1 620 | 12 | 2 | **7,4 → 0,0** | 11 | — |
+| 91 | 2026-08-26 | `geo-vs-aeo` | 2026-07-25 | v48 | 1 760 | 16 | 5 | **9,1 → 0,0** | 16 | — |
+| 92 | 2026-08-26 | `aeo-vs-seo` | 2026-07-26 | v48 | 1 540 | 2 | 0 | **1,3 → 0,0** | 2 | — |
+| 93 | 2026-08-26 | `licencni-dohody-ai-obsah` | 2026-07-26 | v48 | — | 0 | 0 | **0,0** | 0 | — |
+| 94 | 2026-08-26 | `pripadova-studie-pro-ai` | 2026-07-26 | v48 | — | 0 | 0 | **0,0** | 0 | — |
+| 95 | 2026-08-26 | `ai-prohlizece-atlas-comet` | 2026-07-27 | v48 | 2 220 | 6 | 6 | **2,7 → 0,0** | 8 | — |
+| 96 | 2026-08-26 | `co-rozhoduje-o-ai-citaci` | 2026-07-27 | v48 | 2 080 | 5 (1 planý) | 0 | **2,4 → 0,0** | 4 | zúženo 1 |
+| 97 | 2026-08-26 | `google-cituje-sam-sebe` | 2026-07-27 | v48 | 2 400 | 1 | 7 | **0,4 → 0,0** | 3 | — |
+| 98 | 2026-08-26 | `jak-funguje-chatgpt` | 2026-07-27 | v48 | 1 940 | 1 | 0 | **0,5 → 0,0** | 1 | — |
+| 99 | 2026-08-26 | `jak-se-dostat-do-ai-odpovedi` | 2026-07-27 | v48 | — | 0 | 3 | **0,0** | 2 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -807,6 +817,17 @@ Poučení: **build je jediná pojistka proti tomu, aby dávková oprava uvozovek
 **Zpětná oprava driftu:** `strukturovana-data-pro-ai` (běh 32) měl „blog post“, což je pravidlo z v25 — doopraveno.
 
 **Nová pravidla v47:** `\bkredencial\w*`, `\bnehypeov\w+`, `\b\w*crouluj\w*` (⛔) · `\bznačka nevyšla\b`, `\bstandard důvěry\b` (⚠️) · `playbook|tracker|retainer|škálovat` (✅).
+
+
+### 90–99 · pátá dávka deseti (2026-08-26)
+
+**Doklizený kalk „povrch“.** Dávka obsahovala všech osm článků, které měly „povrch“ ve významu Googlova *surface* (`aio-vs-geo` 6×, `geo-vs-aeo` 6×, `aeo-vs-seo` 1×, `ai-prohlizece-atlas-comet` 1×). Sjednoceno na **prostředí** — v korpusu už nezůstal žádný.
+
+**Zásahy dávky:** 47 uvozovek napříč sedmi články · „ani **organiku**“ → „ani **návštěvnost z vyhledávání**“ · „**rollout** je omezený“ → „**zpřístupňuje se postupně**“ · „ve svém **guide**“ → „ve svém **průvodci**“ · „**Stojí za povšimnutí, že** řešení identity přichází…“ → „Řešení identity **navíc** přichází…“ · „umí klikat **způsobem, který** působí“ → „**dokáže klikat tak, že to** působí“ · „Mění se **místo doručení**“ → „Mění se **místo, kde uživatel odpověď uvidí**“ · „Týká se vás **produktová větev**“ → „**produktová část tématu**“ · „šanci **se ověřitelně objevit**“ → „šanci **se objevit a ověřit si to**“ · „tohle **živí všechny**“ → „to je **společný základ pro všechny**“ · „**Srovnávejte** se stejným obdobím“ → „**Srovnávejte je** se stejným obdobím“.
+
+**Planý poplach (opraven):** pravidlo `\bv abstraktu\b` z v22 hlásilo větu „**V abstraktu** jsou jen ty nejsilnější faktory“ — jenže tady jde o **abstrakt studie**, ne o „zůstat v abstraktu“. Regex zúžen na `\b(zůst\w+|nezůst\w+) v abstraktu\b`.
+
+**Co jsem nechal být** (LLM navrhoval, ale je to běžná odborná čeština): prioritizace, prioritně, lokace, atribuce, hostovat obsah, sada dotazů, širší zásah, jeden běh, vrstva mezi uživatelem a webem.
 
 ---
 
