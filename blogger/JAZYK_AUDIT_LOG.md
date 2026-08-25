@@ -43,6 +43,7 @@
 | 43 | 2026-08-25 | `originalni-data-pro-ai` | 2026-06-11 | v35 → v36 | 2 476 | 7 | 6 | **2,8 → 0,0** | 13 | +5 |
 | 44 | 2026-08-25 | `produktove-stranky-pro-ai` | 2026-06-11 | v36 | 2 266 | 1 | 0 | **0,4 → 0,0** | 1 | +0 |
 | 45 | 2026-08-25 | `seznam-cz-ai-vyhledavani` | 2026-06-11 | v36 → v38 | 2 488 | 1 | 5 | **0,4 → 0,0** | 4 | +3 (2 ✅) |
+| 46 | 2026-08-25 | `test-viditelnosti-v-ai` | 2026-06-11 | v38 → v39 | 3 055 | 2 (oba plané) | 0 | **0,0 → 0,0** | 0 | +1 ✅ (1 zúženo) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -644,6 +645,17 @@ Terminologická poznámka: náhradu „odpovědní systémy“ jsem nevybral pod
 Je to **šestá korekce stejného typu**. Nově vidím i její užší vzorec: LLM označí za vadu **spojení, které samo o sobě vadné není, protože se mu nelíbí přívlastek** („čistě česká“ cílovka). Do skillu proto přibylo: **když je podezřelý jen přívlastek, oprav přívlastek, ne celé sousloví** — a když ani ten není doložitelně vadný, nech větu být.
 
 **Do fronty na doauditování:** „figuruje“ / „odpovědní enginy“ jsou ještě v `firmy-cz-pro-ai` a `aio-strategie` (druhý je auditovaný ve v12, tedy drift).
+
+
+### 46 · test-viditelnosti-v-ai (2026-08-25)
+
+**Druhý článek beze změny textu** — a poprvé byly oba strojové nálezy **plané**.
+
+Pravidlo `\bAI visibility\b` hlásilo „Ahrefs **AI Visibility** Checker“ a „Semrush **AI Search Visibility** Checker“. To jsou **názvy nástrojů**, ne anglicismy — přeložit je by znamenalo vymyslet neexistující produkt. Regex zúžen na `\bAI (Search )?[Vv]isibility\b(?! ?(Checker|Tracker|Index))`.
+
+LLM průchod nenašel nic. Ruční kontrola: 0 rovných uvozovek, 0 prázdných popisů kroků, „monitoring“ 9× ponecháno jako zdomácnělé slovo (zapsáno ✅).
+
+Pozorování: **články o nástrojích potřebují ve slovníku výjimky na názvy produktů.** Je to už druhý případ (po „Schema Custom Editor“ v běhu 38) — proto každé nové pravidlo na anglický termín rovnou kontroluju proti tomu, jestli se ten termín nevyskytuje i jako součást názvu.
 
 ---
 

@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 38** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 45/147, revize) · audituje skill `cestina-audit`
+> **Verze: 39** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 46/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -101,7 +101,7 @@
 | ⛔ | `\bdifficulty score\b` | skóre obtížnosti | popis funkce převzatý z cizího webu | seo-nastroje-2026 2026-08-23 |
 | ✅ | `\bdeploy\w*\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\boverkill\b` | zbytečně robustní řešení | anglicismus | seo-nastroje-2026 2026-08-23 |
-| ⛔ | `\bAI visibility\b` | viditelnost v AI | web sám používá české „AI viditelnost“ | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bAI (Search )?[Vv]isibility\b(?! ?(Checker|Tracker|Index))` | viditelnost v AI | web sám používá české „AI viditelnost“. **Výjimka:** názvy nástrojů („Ahrefs AI Visibility Checker“, „Semrush AI Search Visibility Checker“) — vlastní jména | seo-nastroje-2026 2026-08-23, zúženo test-viditelnosti-v-ai 2026-08-25 |
 | ⛔ | `\bsetup\b` | nastavení | anglicismus v instrukci | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bsubmit\b` | odeslat | totéž | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bmention rate\b|\bsources cited\b` | míra zmínek, citované zdroje | popisy metrik z anglických nástrojů | seo-nastroje-2026 2026-08-23 |
@@ -274,6 +274,7 @@
 | ✅ | `\bobsahov\w+ strategi\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „obsahová strategie“ je běžně používaný výraz, ne kulhavá vazba | lighthouse-ai-check 2026-08-25 |
 | ✅ | `\bcílov\w+ skupin\w+|\bcílovk\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „cílová skupina“ (i hovorová „cílovka“) je běžně užívaný výraz | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
+| ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `\bodpovědní\w* engin\w*` | odpovědní systémy | mechanický překlad „answer engines“; web i slovník používají „odpovědní systémy“ | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⚠️ | `\bzvyklý vstup\b|\bvstup do internetu\b` | vstupní brána na internet | nepřirozená vazba | seznam-cz-ai-vyhledavani 2026-08-25 |
