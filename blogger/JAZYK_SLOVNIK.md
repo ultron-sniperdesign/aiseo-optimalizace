@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 40** · založeno 2026-08-23 · poslední změna 2026-08-26 (článek 48/147) · audituje skill `cestina-audit`
+> **Verze: 41** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 50–59/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -146,8 +146,8 @@
 | ⚠️ | `\bpillar\b` | pilířová stránka | web termín používá v URL i v titulcích, ale v běžné větě ho vysvětli | seo-audit-co-kontrolovat 2026-08-23 |
 | ⚠️ | `\brollout\b` | postupné zpřístupňování | u oznámení výrobců se hodí, ale první výskyt vysvětlit | seed 2026-08-23 |
 | ⚠️ | `\blanding page\b` | prodejní stránka | zavedené v oboru, ale ne u laika | seed 2026-08-23 |
-| ⛔ | `\bshare\b(?! of voice)` | podíl | „share dotazů“ místo „podíl dotazů“ — kalk, který projde i tam, kde je market share pokrytý | jak-vypnout-ai-overview 2026-08-23 |
-| ⚠️ | `\bshare of voice\b` | podíl zmínek | odborný termín, první výskyt vysvětlit | seed 2026-08-23 |
+| ⛔ | `\bshare\b(?! of (voice|model|search))` | podíl | „share dotazů“ místo „podíl dotazů“. **Výjimka:** názvy metrik Share of Model / Voice / Search | jak-vypnout-ai-overview 2026-08-23, zúženo share-of-model-metrika 2026-08-26 |
+| ⚠️ | `\b(?-i:share of voice)\b` | podíl zmínek | odborný termín. **Hlásí se jen v malých písmenech** — „Share of Voice“ velkými je název metriky (viz `share-of-model-metrika`), `(?-i:…)` vypne ignorování velikosti jen pro tenhle výraz | seed 2026-08-23, zúženo 2026-08-26 |
 | ⛔ | `\bmaster switch\b` | hlavní vypínač | anglicismus s přesnou českou náhradou | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bdefault\b(?!-)` | výchozí | web sám jinde píše „výchozí model“, „výchozí režim“ | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bsearch engine(s)?\b(?! Land| Journal| Roundtable| Watch)` | vyhledávač | mimo doslovné popisky rozhraní prohlížeče a **názvy publikací** (Search Engine Land, Journal, Roundtable) | jak-vypnout-ai-overview 2026-08-23, upřesněno u článku 8 |
@@ -276,6 +276,10 @@
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bbackground \w+ů?\b` | na pozadí, podkladový | anglický přívlastek v české vazbě („background dotazů“) | query-fan-out-ai-mode 2026-08-26 |
+| ⛔ | `\be-commerce (AI )?SEO\b` | AI SEO pro e-shopy | řetězení anglických výrazů v české větě | kategorie-texty-pro-ai 2026-08-26 |
+| ⚠️ | `\bkategorijn\w+` | stránky kategorií | mechanicky odvozené přídavné jméno | kategorie-texty-pro-ai 2026-08-26 |
+| ⚠️ | `\bkanonick\w+ profil\w*` | hlavní profil | „kanonický“ je zavedený u URL, u profilu autora je to kalk | person-data-pro-autora 2026-08-26 |
 | ⛔ | `\bSniperdesign\b` | Sniper Design | název značky se píše **dvěma slovy** (10× v `src/i18n/`); **výjimka:** URL a účty na sítích (`facebook.com/SniperDesign.cz`) | ai-nakupni-agenti 2026-08-26 |
 | ⛔ | `\bodpovědní\w* engin\w*` | odpovědní systémy | mechanický překlad „answer engines“; web i slovník používají „odpovědní systémy“ | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⚠️ | `\bzvyklý vstup\b|\bvstup do internetu\b` | vstupní brána na internet | nepřirozená vazba | seznam-cz-ai-vyhledavani 2026-08-25 |
@@ -367,3 +371,6 @@
    ⛔ Doklad, proč: náhrada `use case` → `scénář použití` vyrobila větu „P1 podle **scénář použití**" a byla živě na webu. Regex pád neupraví.
 
 5. **Žádná dávková náhrada nesmí sáhnout na řádky `import`, `export` a frontmatter klíče.** Před zápisem si vždy vypiš, kolik řádků se změní, a zkontroluj, jestli mezi nimi nejsou technické.
+
+
+**Rozlišení názvu od kalku velikostí písmen.** Checker porovnává bez ohledu na velikost, takže „Share of Model“ (název metriky) a „share dotazů“ (kalk) spadnou pod stejné pravidlo. Když je rozdíl právě ve velikosti, napiš do regexu `(?-i:…)` — uvnitř té skupiny se velikost **respektuje**. Použito u `share of voice`. Pozor: v tabulce se roury `|` píšou **bez zpětného lomítka**, jinak z alternace vznikne literál a pravidlo přestane fungovat (stalo se 26. 8. 2026).

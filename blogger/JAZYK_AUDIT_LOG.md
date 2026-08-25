@@ -47,6 +47,16 @@
 | 47 | 2026-08-26 | `ai-generovany-obsah-viditelnost` | 2026-07-11 | v39 | 1 485 | 6 (2 plané) | 0 | **4,0 → 0,0** | 4 | +0 (mask rozšířen) |
 | 48 | 2026-08-26 | `ai-nakupni-agenti` | 2026-07-11 | v39 → v40 | 1 581 | 3 | 0 | **1,9 → 0,0** | 3 (+2 zpětně) | +1 |
 | 49 | 2026-08-26 | `ai-seo-migrace-redesign` | 2026-07-11 | v40 | 1 784 | 0 | 0 | **0,0 → 0,0** | 0 | +0 |
+| 50 | 2026-08-26 | `chybna-informace-o-firme-v-ai` | 2026-07-11 | v40 → v41 | — | 1 | 1 | **→ 0,0** | 2 | — |
+| 51 | 2026-08-26 | `interni-prolinkovani-pro-ai` | 2026-07-11 | v40 → v41 | — | 1 | 0 | **→ 0,0** | 1 | — |
+| 52 | 2026-08-26 | `kategorie-texty-pro-ai` | 2026-07-11 | v40 → v41 | — | 5 | 2 | **→ 0,0** | 7 | — |
+| 53 | 2026-08-26 | `konec-faq-rich-results` | 2026-07-11 | v40 → v41 | — | 0 | 0 | **→ 0,0** | 0 | — |
+| 54 | 2026-08-26 | `linkedin-pro-ai-citace` | 2026-07-11 | v40 → v41 | — | 0 | 0 | **→ 0,0** | 0 | — |
+| 55 | 2026-08-26 | `person-data-pro-autora` | 2026-07-11 | v40 → v41 | — | 2 | 1 | **→ 0,0** | 3 | — |
+| 56 | 2026-08-26 | `query-fan-out-ai-mode` | 2026-07-11 | v40 → v41 | — | 0 | 4 | **→ 0,0** | 4 | — |
+| 57 | 2026-08-26 | `rag-ai-vyhledavani` | 2026-07-11 | v40 → v41 | — | 0 | 0 | **→ 0,0** | 0 | — |
+| 58 | 2026-08-26 | `share-of-model-metrika` | 2026-07-11 | v40 → v41 | — | 29 | 0 | **→ 0,0** | 2 | — |
+| 59 | 2026-08-26 | `stranka-sluzby-pro-ai` | 2026-07-11 | v40 → v41 | — | 2 | 0 | **→ 0,0** | 2 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -684,6 +694,36 @@ Nové pravidlo v40: `\bSniperdesign\b` → Sniper Design (⛔), s výjimkou pro 
 **Třetí článek beze změny.** Mechanická kontrola 0, LLM průchod 0, ruční kontrola slepých míst 0 (žádné rovné uvozovky, žádné prázdné popisy kroků, žádné anglické slovo v české větě mimo `crawler` a `audit`, což jsou zavedené výrazy; `updated` je klíč ve frontmatteru).
 
 Trend za posledních deset běhů: hustota nálezů padá (běhy 40–49 dávají průměr **1,5 na 1 000 slov** proti **12,4** u prvních deseti). Není to tím, že by pozdější články byly psané lépe — je to tím, že **slovník už pokrývá i vady, které se v korpusu opakují**, takže je autor v novějších textech nedělá stejně často. Zbývající nálezy jsou čím dál víc jednorázové vazby, ne opakující se vzorce.
+
+
+### 50–59 · první dávka deseti článků (2026-08-26)
+
+Od tohoto běhu jde audit **po deseti článcích** (rozhodnutí uživatele). Postup zůstal stejný, jen LLM průchody běží paralelně (5 + 5) a commit je jeden pro celou dávku.
+
+| # | Článek | Zásahy |
+|---|---|---|
+| 50 | `chybna-informace-o-firme-v-ai` | uvozovka `„AI o nás lže"`; „**kadence přebírání změn** není zveřejněná“ → „**jak často systémy změny přebírají**, není zveřejněné“ |
+| 51 | `interni-prolinkovani-pro-ai` | uvozovka `„síly"` |
+| 52 | `kategorie-texty-pro-ai` | 4 uvozovky; „z přehledových a **kategorijních stránek**“ → „z přehledových **stránek a stránek kategorií**“; „průvodců k **e-commerce AI SEO**“ → „k **AI SEO pro e-shopy**“ |
+| 53 | `konec-faq-rich-results` | beze změny |
+| 54 | `linkedin-pro-ai-citace` | beze změny |
+| 55 | `person-data-pro-autora` | `publisher`, `author`, `@id` do zpětných apostrofů (článek tak píše i `sameAs`); „aspoň jeden **kanonický profil**“ → „**hlavní profil**“ |
+| 56 | `query-fan-out-ai-mode` | „**background dotazů**“ → „**dotazů na pozadí**“; „vygenerovat **intenzivnější Deep Search** desítky až stovky…“ → „vygenerovat **v režimu Deep Search** desítky až stovky…“; nadpis „Jaké podotázky **vějíř generuje**“ → „**se ve vějíři objevují**“; popis „co mění pro **citovaný obsah**“ → „co znamená **pro obsah, který AI cituje**“ |
+| 57 | `rag-ai-vyhledavani` | beze změny |
+| 58 | `share-of-model-metrika` | 2 uvozovky (29 nálezů na „Share“ byly **plané** — viz níže) |
+| 59 | `stranka-sluzby-pro-ai` | 2 uvozovky |
+
+**Zpětná oprava:** `autorsky-profil-pro-ai` (běh 39) měl taky „kanonický profil“ → „hlavní profil“; nové pravidlo ho odhalilo, tak jsem ho opravil rovnou.
+
+**Dva plané poplachy a co z nich plyne pro nástroj:**
+
+1. `share-of-model-metrika` hlásil **29× „Share“** — jenže článek je **o metrice Share of Model** a jmenuje i Share of Voice a Share of Search. Pravidlo `\bshare\b` dostalo výjimku na názvy metrik.
+2. U `share of voice` nešlo rozlišit název od kalku jinak než velikostí písmen. Checker porovnává case-insensitive, tak jsem využil **scoped inline flag** `(?-i:…)`: `\b(?-i:share of voice)\b` hlásí jen malá písmena, „Share of Voice“ jako název projde. Návod na tenhle trik je nově v § 9 slovníku.
+3. `person-data-pro-autora` hlásil `publisher` 2× — byly to **názvy vlastností schema.org** ve větě („na vydavatele přes publisher“). Místo výjimky v pravidle jsem je dal do zpětných apostrofů, protože článek tak píše i ostatní vlastnosti. Čtenář vidí, že jde o název, a checker je přeskočí jako inline kód.
+
+**Chyba, kterou jsem si vyrobil a hned opravil:** roury v alternaci uvnitř regexu ve slovníku jsem napsal jako `\|` (escapované), protože jsem se bál rozbití markdownové tabulky. Alternace se tím změnila na literál a pravidlo přestalo fungovat — místo 29 nálezů jich bylo 40. Roury patří **bez** zpětného lomítka; poznámka je v § 9.
+
+**Nová pravidla v41:** `\bbackground \w+ů?\b`, `\be-commerce (AI )?SEO\b` (⛔) · `\bkategorijn\w+`, `\bkanonick\w+ profil\w*` (⚠️) · zúženo `\bshare\b` a `share of voice`.
 
 ---
 

@@ -35,14 +35,14 @@ howto:
     - name: "Přiřaďte stabilní @id a opakujte ho"
       text: "Autorovi dejte jeden stabilní identifikátor @id, například vasweb.cz/#autor-jmeno. Ten samý @id použijte u všech jeho článků, což zvyšuje šanci, že si AI a Google jednotlivé zmínky spojí s jedním autorem místo mnoha různých osob."
     - name: "Propojte článek s autorem přes @id"
-      text: "V JSON-LD článku (Article) odkažte na autora přes author s jeho @id a na vydavatele přes publisher. Autor se tak definuje jednou a články na něj jen odkazují."
+      text: "V JSON-LD článku (Article) odkažte na autora přes `author` s jeho `@id` a na vydavatele přes `publisher`. Autor se tak definuje jednou a články na něj jen odkazují."
     - name: "Ověřte soulad s viditelným obsahem"
       text: "Zkontrolujte, že strukturovaná data odpovídají tomu, co je na stránce reálně vidět — jméno, role, profily. Nevymýšlejte tituly ani profily, které autor nemá; nesoulad je riziko."
 faq:
   - q: "Co je Person a k čemu autorovi je?"
     a: "Person je typ ze slovníku Schema.org, kterým strojově čitelně popíšete autora: jméno, roli, profily a oblasti expertízy. Pomáhá Googlu i AI rozpoznat autora jako entitu a propojit signály o něm napříč webem. V éře AI, kde roste váha toho, kdo obsah píše (E-E-A-T), tato data technicky popisují autora a mohou pomoci systémům propojit obsah s dalšími signály o něm."
   - q: "Co je sameAs a proč je pro autora klíčové?"
-    a: "sameAs je vlastnost, do které dáte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata, X nebo osobní web. Právě to Googlu a AI pomáhá odlišit vašeho autora od kohokoli jiného se stejným jménem. Důvěryhodné a dobře udržované profily mohou toto odlišení usnadnit. Doporučuje se aspoň jeden kanonický profil, ideálně víc."
+    a: "sameAs je vlastnost, do které dáte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata, X nebo osobní web. Právě to Googlu a AI pomáhá odlišit vašeho autora od kohokoli jiného se stejným jménem. Důvěryhodné a dobře udržované profily mohou toto odlišení usnadnit. Doporučuje se aspoň jeden hlavní profil, ideálně víc."
   - q: "Co je @id a proč ho opakovat?"
     a: "@id je stabilní identifikátor autora, například adresa jeho profilu s kotvou. Když ten samý @id použijete v Person datech na profilu i ve všech článcích, které napsal, zvýší se šance, že si Google a AI jednotlivé zmínky spojí s jedním autorem místo toho, aby ho na každé stránce chápaly jako jinou osobu. Konzistentní @id je proto silnější než definovat autora znovu na každé stránce."
   - q: "Kam JSON-LD s Person vložit?"
@@ -153,7 +153,7 @@ Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organiz
     {
       label: "Propojení",
       title: "Propojte článek s autorem",
-      text: "V datech článku odkažte na autora přes jeho @id a na vydavatele přes publisher. Autor se tak definuje jednou a články na něj jen odkazují.",
+      text: "V datech článku odkažte na autora přes jeho `@id` a na vydavatele přes `publisher`. Autor se tak definuje jednou a články na něj jen odkazují.",
     },
     {
       label: "Kontrola",
