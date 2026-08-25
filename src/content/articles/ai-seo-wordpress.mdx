@@ -88,7 +88,7 @@ Pro AI SEO základ ve WordPressu fungují všechny hlavní pluginy srovnatelně.
   rightLabel="Rank Math / SEOPress"
   rightTone="accent"
   rows={[
-    { icon: "📊", label: "Strukturovaná data", left: "Article, Organization, BreadcrumbList, WebSite automaticky; FAQPage a HowTo přes bloky v Gutenbergu", right: "Schema generator s řadou typů (Article, FAQ, HowTo, Product, Review); flexibilnější customizace na úrovni postu" },
+    { icon: "📊", label: "Strukturovaná data", left: "Article, Organization, BreadcrumbList, WebSite automaticky; FAQPage a HowTo přes bloky v Gutenbergu", right: "Schema generator s řadou typů (Article, FAQ, HowTo, Product, Review); flexibilnější nastavení na úrovni příspěvku" },
     { icon: "🤖", label: "robots.txt editor", left: "Vestavěný editor v UI; pravidla pro AI user-agenty musíte doplnit ručně", right: "Vestavěný editor; Rank Math má v některých modulech předpřipravené šablony" },
     { icon: "🔗", label: "Integrace s llms.txt pluginy", left: "Plná integrace s Website LLMs.txt pluginem (přebírá data ze SEO pluginu)", right: "Také podporováno; Website LLMs.txt umí číst metadata všech čtyř hlavních SEO pluginů" },
     { icon: "💰", label: "Bezplatná verze", left: "Yoast — funkční bezplatná, premium pro pokročilé. AIOSEO — bezplatný základ, placený pro Schema Custom Editor", right: "Rank Math — štědrá bezplatná verze s většinou funkcí. SEOPress — funkční bezplatný, placený pro pokročilejší funkce" },
@@ -166,10 +166,10 @@ Tady je minimální funkční šablona, kterou doporučujeme jako start. Konkré
     Starší identifikátory Claude-Web a anthropic-ai už nejsou aktivní. Aktuální vyhledávací robot Anthropic je ClaudeBot. Pokud chcete pravidla skutečně aplikovat, používejte ClaudeBot.
   </Mistake>
   <Mistake num="03" title="GPTBot ≠ OAI-SearchBot">
-    Blokování GPTBot neblokuje OAI-SearchBot. GPTBot stahuje data pro trénink modelů, OAI-SearchBot je live search agent ChatGPT. Pro AI SEO chceme oba dostupné; pro blokaci tréninkových dat je potřeba dvě pravidla.
+    Blokování GPTBot neblokuje OAI-SearchBot. GPTBot stahuje data pro trénink modelů, OAI-SearchBot je vyhledávací robot ChatGPT, který stahuje stránky v reálném čase. Pro AI SEO chceme oba dostupné; pro blokaci tréninkových dat jsou potřeba dvě pravidla.
   </Mistake>
-  <Mistake num="04" title="Regrese robots.txt po update">
-    Změny v robots.txt vznikají při migracích WordPressu, theme update, instalaci security pluginu nebo změně konfigurace CDN. Po každém větším zásahu ověřte `curl https://vasweb.cz/robots.txt` a porovnejte s očekávaným stavem.
+  <Mistake num="04" title="Regrese robots.txt po aktualizaci">
+    Změny v robots.txt vznikají při migracích WordPressu, aktualizaci šablony, instalaci bezpečnostního pluginu nebo změně konfigurace CDN. Po každém větším zásahu ověřte `curl https://vasweb.cz/robots.txt` a porovnejte s očekávaným stavem.
   </Mistake>
 </MistakeGrid>
 
@@ -184,7 +184,7 @@ Pro WordPress e-shopy postavené na WooCommerce (zhruba 25 až 30 % e-shopů) p�
 
   - Mít Product strukturovaná data s Offer (cena, dostupnost), AggregateRating (recenze) — generuje SEO plugin automaticky, doplnit chybějící.
   - Přidat FAQ blok na produktovou stránku — odpovídá přesně na dotazy, které kupci kladou AI.
-  - Texty kategorií (top + bottom intro) s konkrétními informacemi — takový obsah může zvýšit šanci, že se stránka objeví v AI odpovědích u dotazů „nejlepší X“ nebo „X pro Y“.
+  - Texty kategorií (úvodní text nad výpisem i doplňující pod ním) s konkrétními informacemi — takový obsah může zvýšit šanci, že se stránka objeví v AI odpovědích u dotazů „nejlepší X“ nebo „X pro Y“.
   - Integrace recenzí (Heureka, Trusted Shops, Google Reviews) zpět na produkt přes strukturovaná data typu Review.
 
   </Do>
@@ -205,7 +205,7 @@ Pluginy řeší technickou vrstvu. Pro reálnou AI viditelnost značky je ale po
 - **Pravidelná aktualizace obsahu** — u témat, která se rychle mění, může pravidelná aktualizace zvýšit šanci, že AI systémy budou obsah považovat za aktuální.
 - **Konkrétní čísla a vlastní data** — vlastní průzkum, A/B test nebo případová studie s konkrétními čísly mohou zvýšit šanci, že bude obsah pro AI odpovědi zajímavější a citovatelnější.
 - **Krátké citovatelné úseky** 50 až 150 slov — AI jednodušeji vybírá samostatně stojící odpovědi.
-- **Autor entity** — autorská stránka s LinkedIn, foto, krátkou bio = signál důvěry pro AI i Google.
+- **Autor jako dohledatelná entita** — autorská stránka s odkazem na LinkedIn, fotkou a krátkým medailonkem = signál důvěry pro AI i Google.
 
 <Insight tone="warn">
 Žádný plugin nezaručí AI citace. Pluginy zajistí technický základ (strukturovaná data, llms.txt, neblokovaný robots.txt), ale samotná AI viditelnost závisí na kvalitě obsahu a autoritě značky, kterou si plugin nekoupíte.
@@ -216,7 +216,7 @@ Pluginy řeší technickou vrstvu. Pro reálnou AI viditelnost značky je ale po
 - **AI SEO ve WordPressu** = SEO plugin (Yoast, Rank Math, SEOPress nebo AIOSEO) + llms.txt plugin + neblokovaní AI user-agenty v robots.txt + strukturovaná data + Core Web Vitals.
 - **5 hlavních AI user-agentů 2026**: GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent. Samostatně Google-Extended. GPTBot ≠ OAI-SearchBot.
 - **Cloudflare Block AI Bots přepínač** v praxi přebíjí robots.txt — pro AI SEO ho **nezapínat**.
-- **WooCommerce** vyžaduje doplnit FAQ na produkty, kategoriové texty a integraci recenzí.
+- **WooCommerce** vyžaduje doplnit FAQ k produktům, texty kategorií a napojení recenzí.
 - **Pluginy řeší techniku.** Pro reálné AI citace je potřeba kvalitní obsah, aktualizace a autorita značky.
 
 ---

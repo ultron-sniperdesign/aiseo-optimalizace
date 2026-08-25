@@ -35,6 +35,7 @@
 | 35 | 2026-08-25 | `znacka-na-wikipedii-pro-ai` | 2026-06-10 | v23 → v24 | 2 448 | 12 | 8 | **4,9 → 0,0** | 16 | +9 |
 | 36 | 2026-08-25 | `aeo-geo-je-porad-seo` | 2026-06-11 | v24 → v26 | 2 164 | 15 | 5 | **6,9 → 0,0** | 36 | +4 |
 | 37 | 2026-08-25 | `ai-citace-reddit` | 2026-06-11 | v26 → v27 | 2 341 | 4 | 6 | **1,7 → 0,0** | 10 | +4 |
+| 38 | 2026-08-25 | `ai-seo-wordpress` | 2026-06-11 | v27 → v28 | 2 485 | 5 | 4 | **2,0 → 0,0** | 8 | +4 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -495,3 +496,22 @@ Kontrola korpusu: žádný dřívější audit „unikátní“ na „jedinečn�
 **Ponecháno:** „volatilita / volatilní“ (5×) — v češtině zavedené a čtenáři srozumitelné slovo, ne cizí žargon; zapsáno jako ✅. Dál Reddit, subreddit, karma, upvote, AMA — zavedená mluva platformy.
 
 **Nová pravidla v27:** `\bpromov(at|uje|ala?|ovat)\b` (⛔) · `\balgoritmick\w+ posun\w*`, `\b(Splňte|Splníte) to přes\b` (⚠️) · `\bvolatil\w+` (✅). Korpusová kontrola: „promovat“ ani „algoritmický posun“ nikde jinde v článcích nejsou.
+
+### 38 · ai-seo-wordpress (2026-08-25)
+
+Technický článek, a podle toho i vady: **anglická vazba s českou koncovkou** místo překladu.
+
+| Bylo | Je | Proč |
+|---|---|---|
+| „flexibilnější **customizace** na úrovni **postu**“ | „flexibilnější **nastavení** na úrovni **příspěvku**“ | agenturní slang |
+| „Regrese robots.txt po **update**“ (nadpis chyby) | „…po **aktualizaci**“ | anglicismus v nadpisu |
+| „při migracích WordPressu, **theme update**, instalaci **security pluginu**“ | „…, **aktualizaci šablony**, instalaci **bezpečnostního pluginu**“ | hybridní slepenec 2× v jedné větě |
+| „Texty kategorií (**top + bottom intro**)“ | „(**úvodní text nad výpisem i doplňující pod ním**)“ | žargon z e-shopových administrací |
+| „OAI-SearchBot je **live search agent** ChatGPT“ | „…je **vyhledávací robot ChatGPT, který stahuje stránky v reálném čase**“ | kus anglické dokumentace |
+| „**Autor entity** — … s LinkedIn, foto, **krátkou bio**“ | „**Autor jako dohledatelná entita** — … s odkazem na LinkedIn, fotkou a **krátkým medailonkem**“ | slepenec + neshoda rodu |
+| „doplnit FAQ na produkty, **kategoriové texty**“ | „doplnit FAQ k produktům, **texty kategorií**“ | kostrbaté přídavné jméno |
+| „**je potřeba dvě pravidla**“ | „**jsou potřeba dvě pravidla**“ | shoda přísudku s podmětem (nález navíc, mimo obě kontroly) |
+
+**Ponecháno:** „Schema Custom Editor“ — název funkce v AIOSEO. Kvůli němu zúženo pravidlo `\bcustom\w*\b`, aby nehlásilo názvy funkcí (`Custom Editor`, `Custom Fields`, `Custom Post`, `Custom Taxonomy`).
+
+**Nová pravidla v28:** `\blive search\b|\bsearch agent\b` (⛔) · `\bkategoriov\w+ text\w*`, `\bkrátk\w+ bio\b`, `\btheme update\b|\bsecurity plugin\w*` (⚠️). Zároveň smazáno **duplicitní** pravidlo na „brand mentions“ z v25 — starší pravidlo rozšířeno o „brand zmínky“, aby stejný nález nehlásily dva řádky.

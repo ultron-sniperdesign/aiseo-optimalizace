@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 27** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 37/147) · audituje skill `cestina-audit`
+> **Verze: 28** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 38/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -42,7 +42,7 @@
 | ⛔ | `\btie[‑-]?breaker\b` | rozhodne až mezi vyrovnanými výsledky | anglicismus | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bintro\b` | úvod | zbytečný anglicismus i v nadpisu | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\blisting(em|u|y|ů)?\b` | výpis produktů | e-shopový slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\bcustom\w*\b` | na míru, vlastní | rozlezlý agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bcustom\w*\b(?![ ]?(Editor|Fields?|Post|Taxonom))` | na míru, vlastní | rozlezlý agenturní slang. **Výjimka:** názvy funkcí produktů („Schema Custom Editor“ v AIOSEO, „Custom Fields“ ve WordPressu) — vlastní jména rozhraní | seo-pro-eshopy-ai-era-2026 2026-08-23, výjimka ai-seo-wordpress 2026-08-25 |
 | ⛔ | `\bfocus\b` | zaměření | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bformat\b` | formát | nečeský pravopis, ne termín | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\bbest practice(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-pro-eshopy-ai-era-2026 2026-08-23 |
@@ -254,7 +254,7 @@
 | ⚠️ | `\bpremium (varianta|verze|listing\w*)\b` | placená varianta, placené zápisy | anglický přívlastek | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `\bbody text(u|em)?\b` | hlavní text | hybrid | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bAI engine(s)?\b` | AI nástroj, AI systém | hybrid, není to název produktu | jak-strukturovat-pillar-content 2026-08-23 |
-| ⚠️ | `\bbrand mention(s)?\b` | zmínka o značce | web má článek se slugem ai-brand-mentions a používá to jako termín — u prvního výskytu vysvětlit česky, nenahrazovat všude | jak-strukturovat-pillar-content 2026-08-23 |
+| ⚠️ | `\bbrand (mention(s)?|zmínk\w+)\b` | zmínka o značce | web má článek se slugem ai-brand-mentions a používá to jako termín — u prvního výskytu vysvětlit česky, nenahrazovat všude | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\branking tracking\b` | sledování pozic | dvojitý slang | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bcitation monitoring\b` | sledování citací | totéž | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bcitation (hook|rate)\b` | místo vhodné k citaci, míra citování | agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
@@ -267,6 +267,10 @@
 | ✅ | `\bseparátní\w*` | — | **Rozhodnutí uživatele 25. 8. 2026:** „separátní“ je relativně normální české slovo, ne latinismus k odstranění | kolik-stoji-ai-seo 2026-08-25 |
 | ✅ | `\bdohledan\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „dohledaný“ je běžné české slovo (dohledat zdroj), ne strojový obrat | revize 2026-08-25 |
 | ✅ | `\bvolatil\w+` | — | „volatilita/volatilní“ je v češtině zavedené (i mimo finance) a čtenáři srozumitelné; vada by byl až prázdný žargon | ai-citace-reddit 2026-08-25 |
+| ⛔ | `\blive search\b|\bsearch agent\b` | vyhledávací robot, stahování v reálném čase | kus anglické dokumentace v české větě | ai-seo-wordpress 2026-08-25 |
+| ⚠️ | `\bkategoriov\w+ text\w*` | texty kategorií | kostrbaté přídavné jméno místo přivlastňovací vazby | ai-seo-wordpress 2026-08-25 |
+| ⚠️ | `\bkrátk\w+ bio\b|\bbio\b(?! *\()` | medailonek, profil autora | eliptický převod z angličtiny; česky se rod neshoduje | ai-seo-wordpress 2026-08-25 |
+| ⚠️ | `\btheme update\b|\bsecurity plugin\w*` | aktualizace šablony, bezpečnostní plugin | hybridní slepenec — anglická vazba s českou koncovkou | ai-seo-wordpress 2026-08-25 |
 | ⛔ | `\bpromov(at|uje|ala?|ovat)\b` | propagovat | slangový kalk z „promote“; česky se propaguje | ai-citace-reddit 2026-08-25 |
 | ⚠️ | `\balgoritmick\w+ posun\w*` | změna algoritmu | doslovný převod „algorithmic shift“ | ai-citace-reddit 2026-08-25 |
 | ⚠️ | `\b(Splňte|Splníte) to přes\b` | toho dosáhnete čím | kalk z „through“; česky se cíle dosahuje, ne „přes“ | ai-citace-reddit 2026-08-25 |
@@ -274,7 +278,6 @@
 | ⚠️ | `\bguide\b(?! *`)` | průvodce | anglické slovo v české větě („Google guide“, „ve svém guide“); **výjimka:** URL a klíčová slova | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bfundamentáln\w+ (SEO|obsah\w*)` | základy SEO, základní | publicistický kalk z „fundamental“ | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bjak \w+ [A-Z][\w ]+ podmínky, tak` | jak podmínky pro X, tak Y | rozpadlá vazba „jak…, tak…“ s anglickým slovosledem | aeo-geo-je-porad-seo 2026-08-25 |
-| ⚠️ | `\bbrand (mentions|zmínky)\b` | zmínky o značce | hybridní slepenec (české slovo v anglické vazbě) | aeo-geo-je-porad-seo 2026-08-25 |
 | ⛔ | `\breviewer\w*` | posuzovatel, recenzent | anglicismus pro roli, působí jako interní slang | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\bnative advertising\b` | nativní reklama | česká podoba je zavedená, anglická v české větě ne | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\beditorální\w*` | redakční | tvar mimo českou normu (kalk z „editorial“) | znacka-na-wikipedii-pro-ai 2026-08-25 |
