@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 18** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 30/147) · audituje skill `cestina-audit`
+> **Verze: 19** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 31/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -56,6 +56,7 @@
 | ⛔ | `\breview(uje|ovat|oval|ují|ovala)\b` | vyhodnocovat, kontrolovat | počeštěné anglické sloveso | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bout-of-the-?box\b` | hotové v základu, bez úprav | anglicismus, navíc marketingově neurčitý | ai-seo-upgates-shoptet 2026-08-24 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bDIY checklist\b` | kontrolní seznam, který zvládnete sami | slepenec | ai-seo-audit 2026-08-24 |
 | ⚠️ | `\bztrat\w+ krok s\b` | přestanete zachycovat změny | publicistické klišé | ai-seo-audit 2026-08-24 |

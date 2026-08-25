@@ -27,7 +27,8 @@
 | 20 | 2026-08-24 | `bing-seo-pro-ai` | 2026-05-23 | v15 | — | 0 | — | **0,0** | 0 | 0 |
 | 21–28 | 2026-08-24 | série z 24.–26. 5. 2026 (8 článků) | 2026-05-24+ | v15 → v16 | ~15 000 | 34 | — | **prům. 2,5 → 0,1** | 22 | 0 |
 | 29 | 2026-08-24 | `ai-navstevnost-konverze` | 2026-05-30 | v16 → v17 | 1 538 | 6 | — | **3,9 → 0,0** | 4 | 0 |
-| 30 | 2026-08-24 | `ai-seo-b2b` | 2026-06-01 | v17 → v18 | 1 657 | 9 | — | **5,4 → 0,0** | 8 | +3 |
+| 30 | 2026-08-24 | `ai-seo-b2b` | 2026-06-01 | v17 → v18 | 1 657 | 9 | — | **5,4 → 0,0** | 8 (5 vráceno) | +3 |
+| 31 | 2026-08-24 | `ai-seo-upgates-shoptet` | 2026-06-05 | v18 → v19 | 2 249 | 8 | 2 | **3,6 → 0,0** | 10 | +1 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -285,6 +286,21 @@ Pravidlo teď nese obě náhrady s poznámkou, že volba závisí na kontextu �
 **Rozhodnutí uživatele: varianta a) — vrátit „research fáze" napříč webem.** Provedeno v sedmi článcích (3, 4, 6, 9, 10, 11, 12), celkem 20 míst. Termín je teď na celém webu jednotný a checker ho nehlásí.
 
 **`shortlist` zůstává jako ✅:** článek termín sám definuje („Vendor shortlist je užší výběr dodavatelů, ze kterého kupec vybírá…"), má ho v titulku i v klíčových slovech a v B2B nákupu je zavedený.
+
+### 31 · ai-seo-upgates-shoptet (2026-08-24)
+
+Strojově **jen nedovřené uvozovky** — osm jich bylo na čtyřech řádcích, všechny v příkladech dotazů („pro koho a kdy", „X pro Y", „nejlepší X"). Žádný anglicismus, žádný strojový obrat.
+
+LLM průchod s **novým, opatrnějším zadáním** (výslovně: nehlas anglická slova jen proto, že jsou anglická) našel dvě věci:
+
+| Bylo | Je |
+|---|---|
+| Více **out-of-the-box**, omezenější na nižších tarifech | **Víc hotového v základu**, omezenější na nižších tarifech |
+| Co dál: zasaďte **AI SEO eshopu** do celku | zasaďte **AI SEO e-shopu do širšího celku** |
+
+To druhé nebyl anglicismus, ale **kostrbatá vazba** — dva přívlastky nalepené za sebou bez předložky.
+
+**Změna metodiky po připomínkách:** zadání pro LLM průchod teď obsahuje výslovnou instrukci, že zavedená oborová mluva je v pořádku a hlásit se mají jen kalky, strojové obraty, hybridní slepence a text opsaný z anglických stránek. Výsledek je vidět hned — dva nálezy místo dvaceti, oba oprávněné.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
