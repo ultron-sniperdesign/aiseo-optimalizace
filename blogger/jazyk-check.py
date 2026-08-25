@@ -55,7 +55,16 @@ def mask(line):
     line = ZKRATKA.sub(lambda m: ' ' * len(m.group(0)), line)
     line = ORIGINAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSXATTR.sub(lambda m: ' ' * len(m.group(0)), line)
+    line = CITACE_EN.sub(lambda m: ' ' * len(m.group(0)) if _je_anglicka(m.group(0)) else m.group(0), line)
     return line
+
+
+# citace v anglictine uvnitr ceskych uvozovek — doklad, ne styl (§ 8 slovniku)
+CITACE_EN = re.compile(r'„[^„“\n]{15,400}“')
+def _je_anglicka(txt):
+    if len(txt.split()) < 4:
+        return False
+    return not re.search(r'[ěščřžýáíéúůňťďó]', txt, re.I)
 
 TECH_KEYS = re.compile(r'^\s*(slug|published|updated|category|variant|tags|keywords|seoTitle|image|og|howto|faq|stats|-)\s*:?\s*$')
 TEXT_KEY  = re.compile(r'^\s*-?\s*(title|seoTitle|description|answer|label|a|q|desc|text|value)\s*:\s*')

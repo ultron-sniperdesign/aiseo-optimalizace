@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 23** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 34/147, revize) · audituje skill `cestina-audit`
+> **Verze: 24** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 35/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -265,6 +265,15 @@
 | ✅ | `\bvendor shortlist\b|\bshortlist\w*\b` | — | článek termín **sám definuje** („Vendor shortlist je užší výběr dodavatelů…“) a má ho v titulku i klíčových slovech; je to zavedený termín B2B nákupu | ai-seo-b2b 2026-08-24 |
 | ✅ | `\btransparentn\w+` | — | „transparentní ceník / nabídka“ je zavedená česká obchodní mluva (transparentní účet, transparentní výběrové řízení), ne kalk | kolik-stoji-ai-seo 2026-08-25 |
 | ✅ | `\bseparátní\w*` | — | **Rozhodnutí uživatele 25. 8. 2026:** „separátní“ je relativně normální české slovo, ne latinismus k odstranění | kolik-stoji-ai-seo 2026-08-25 |
+| ⛔ | `\breviewer\w*` | posuzovatel, recenzent | anglicismus pro roli, působí jako interní slang | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `\bnative advertising\b` | nativní reklama | česká podoba je zavedená, anglická v české větě ne | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `\beditorální\w*` | redakční | tvar mimo českou normu (kalk z „editorial“) | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `\bcoverage\b` | mediální pokrytí, pokrytí tématu | anglické slovo v české větě. **Výjimka:** názvy funkcí („coverage report“ v GSC, „merchant listings“ u Google) — vlastní jména rozhraní | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `\blisting\w*` | zápis v katalogu, výpis produktů | dvojí význam — v e-shopu výpis produktů, v katalozích zápis. **Výjimka:** „merchant listings“ = oficiální název typu výsledku u Google | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `\bwireframe \w+ (šablon\w+|sad\w+)` | wireframy, šablony | anglické přívlastkové postavení („wireframe šablony“) je slepenec; česky se skloňuje | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ✅ | `\bPack\b` | — | krátký název produktu **AI SEO Wireframe Pack**, ustálený napříč webem (4 články) — vlastní jméno, ne anglicismus | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ✅ | `\btop \w+` | — | „top 5“ i „top zdroje“ je běžná česká hovorová i marketingová vazba, ne kalk | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ✅ | `\bautoconfirmed\b|\bPaid\b|\binstance of\b` | — | názvy oprávnění, šablon a polí Wikipedie/Wikidat — vlastní jména rozhraní (§ 8) | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bbuying[- ]journey\b|\bbuyer'?s? journey\b` | fáze nákupního rozhodování | slepenec | seo-audit-co-kontrolovat 2026-08-23 |

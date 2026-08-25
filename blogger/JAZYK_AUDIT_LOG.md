@@ -32,6 +32,7 @@
 | 32 | 2026-08-24 | `strukturovana-data-pro-ai` | 2026-06-08 | v19 → v20 | 1 660 | 0 | 1 | **0,0** | 1 | +1 |
 | 33 | 2026-08-25 | `llms-txt-navod` | 2026-06-08 | v20 → v21 | 1 565 | 1 | 4 | **0,6 → 0,0** | 6 | +4 |
 | 34 | 2026-08-25 | `kolik-stoji-ai-seo` | 2026-06-10 | v21 → v23 | 1 689 | 1 | 4 | **0,6 → 0,0** | 6 (+1 zpětně) | +4 |
+| 35 | 2026-08-25 | `znacka-na-wikipedii-pro-ai` | 2026-06-10 | v23 → v24 | 2 448 | 12 | 8 | **4,9 → 0,0** | 16 | +9 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -423,3 +424,28 @@ Nová pravidla v22: `\bv abstraktu\b` (⚠️), `\bcenov\w+ kotv\w+` (⚠️), `
 Slovník roste, takže článek uzavřený ve v5 dnes neprojde pravidly v22. Zjištěno při běhu 34: `mereni-seo-vykonu-2026` (auditováno ve starší verzi, dnes **1,7 na 1 000 slov**) obsahuje „Field data“, `pillar` 4× v české větě i v popisku odkazu, „manuální check“ 2× a hybridní slepenec **„strategic measurement rozsah“**, který dosud nemá pravidlo.
 
 **Plán:** drift neřešit po kouskách uvnitř cizího běhu. Po dojetí všech 147 článků projet korpus **mechanickou kontrolou s finálním slovníkem** (bez LLM, tedy levně) a doopravit zbytky jedním průchodem. Výjimka: zásah, který odhalí pravidlo změněné v právě běžícím auditu — ten se opraví hned (jako výše u `traffic\w*`).
+
+### 35 · znacka-na-wikipedii-pro-ai (2026-08-25)
+
+Nejvyšší hustota od článku 12 — a **11 z 12 strojových nálezů byla jedna a tatáž chyba**: česká uvozovka `„` zavřená rovným `"`. Sedí v textu o Wikipedii, kde je citací a uvozených dotazů hodně („kdo je to“, „kdy vznikla“, „top 100“…).
+
+| Bylo | Je | Proč |
+|---|---|---|
+| `„…"` na 6 řádcích (11 párů) | `„…“` | rovná uvozovka místo české |
+| „v médiích s **editorální** nezávislostí“ (2×) | „s **redakční** nezávislostí“ | tvar mimo českou normu |
+| „sponzorované články, **listingy v databázích**“ | „…, **zápisy v katalozích**“ | anglicismus; česky zápis/záznam |
+| `title="Listingy v databázích"` | `title="Zápisy v katalozích a databázích"` | totéž v nadpisu chyby |
+| „nejsou významnou nezávislou **coverage**“ | „nejsou významným nezávislým **mediálním pokrytím**“ | anglické slovo v české větě |
+| „sponzorované články, **native advertising**“ | „…, **nativní reklama**“ | česká podoba je zavedená |
+| „otázky **reviewerů**“ | „otázky **posuzovatelů**“ | anglicismus pro roli |
+| „získejte **autoconfirmed status**“ (2×) | „získejte **oprávnění autoconfirmed**“ | opis z anglické dokumentace; název oprávnění zůstal |
+| „(label, description, instance of, country)“ | „(`label`, `description`, `instance of`, `country`)“ | názvy polí Wikidat označené jako názvy |
+| „sada **wireframe šablon** a checklistů“ | „sada **wireframů** a checklistů“ | anglické přívlastkové postavení |
+
+**Ponecháno:** „top zdroje“ (běžná česká marketingová vazba), „Pack“ (krátký název produktu, ustálený ve 4 článcích), „šablonu Paid“, „autoconfirmed“ jako název oprávnění, anglická citace pravidla WP:NCORP.
+
+**Nová díra v nástroji (opravena):** anglická citace uvnitř českých uvozovek se hlásila jako vada. Přidán mask `CITACE_EN` — úsek `„…“` delší než 4 slova a **bez jediné české diakritiky** se přeskakuje. Regresní test na 4 hotových článcích: pořád 0 nálezů.
+
+**Nová pravidla v24:** `\breviewer\w*` (⛔) · `\bnative advertising\b`, `\beditorální\w*`, `\bcoverage\b`, `\blisting\w*`, `\bwireframe \w+ šablon\w+` (⚠️) · `\bPack\b`, `\btop \w+`, názvy rozhraní Wikipedie (✅).
+
+**Do fronty na doauditování** (mimo tento běh, dle pravidla z běhu 34): `coverage` v české větě má ještě `aio-strategie` (6×), `aeo-optimalizace-v-praxi` (2×), `mereni-seo-vykonu-2026`, `caste-chyby-v-seo-2026-update`, `seo-pro-eshopy-ai-era-2026`; `listing*` má `shoptet-produktova-pole-google` (5× — část je „merchant listings“, což je oficiální název typu výsledku a zůstane).
