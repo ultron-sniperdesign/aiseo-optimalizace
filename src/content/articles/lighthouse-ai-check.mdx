@@ -48,7 +48,7 @@ faq:
   - q: "Co je WebMCP a musím to implementovat?"
     a: "WebMCP je frontendový protokol, který webu umožňuje nabídnout AI agentovi konkrétní akce (přidej do košíku, odešli formulář, vyhledej produkt). Liší se od běžných MCP serverů na backendu — WebMCP funguje v prohlížeči uživatele. V roce 2026 je standard ještě experimentální. Smysl má hlavně pro e-shopy, rezervační weby a SaaS aplikace, kde agent může provádět konkrétní akce."
   - q: "Jak souvisí Agentic Browsing s accessibility?"
-    a: "AI agenti se při čtení stránky podle dostupné dokumentace spoléhají na takzvaný accessibility tree — stejnou strukturu, kterou používají screen readery pro nevidomé uživatele. Lighthouse v Agentic Browsing kontroluje konkrétní podmnožinu accessibility auditů kritických pro stroje, hlavně programově rozpoznatelná pojmenování interaktivních prvků. Optimalizace pro AI agenty proto často pomůže i pro klasické accessibility skóre."
+    a: "AI agenti se při čtení stránky podle dostupné dokumentace spoléhají na takzvaný accessibility tree — stejnou strukturu, kterou používají screen readery pro nevidomé uživatele. Lighthouse v Agentic Browsing kontroluje konkrétní podmnožinu auditů přístupnosti kritických pro stroje, hlavně programově rozpoznatelná pojmenování interaktivních prvků. Optimalizace pro AI agenty proto často pomůže i pro klasické skóre přístupnosti."
   - q: "Kde Lighthouse audit nejlépe spustit?"
     a: "Doporučená cesta je Chrome DevTools (záložka Lighthouse) — funguje na nasazené stránce i lokálním webu, na přihlášených stránkách a dovolí výběr kategorií. Pro veřejně dostupné adresy stačí PageSpeed Insights na pagespeed.web.dev. Pro CI/CD pipeline existuje Lighthouse CLI. Starší rozšíření do Chrome už nejsou k červnu 2026 doporučovaná."
 ---
@@ -82,7 +82,7 @@ Lighthouse Agentic Browsing testuje čtyři specifické oblasti:
 <Checklist title="Kontroly v Agentic Browsing kategorii" items={[
   { title: "llms.txt", desc: "Strojově čitelný souhrn obsahu v rootu domény (například /llms.txt). Lighthouse kontroluje přítomnost a základní strukturu." },
   { title: "WebMCP", desc: "Frontend protokol, který umožňuje agentovi provádět konkrétní akce na webu (přidat do košíku, odeslat formulář). Stále experimentální." },
-  { title: "Accessibility tree", desc: "Konkrétní podmnožina accessibility auditů kritických pro AI agenty (programově rozpoznatelná pojmenování, ARIA atributy)." },
+  { title: "Accessibility tree", desc: "Konkrétní podmnožina auditů přístupnosti kritických pro AI agenty (programově rozpoznatelná pojmenování, ARIA atributy)." },
   { title: "Stabilita rozvržení (CLS)", desc: "Cumulative Layout Shift — pokud se prvky posouvají, agent i návštěvník mohou cílit na nesprávné místo. Doporučená hodnota CLS < 0,1." },
 ]} />
 
@@ -98,7 +98,7 @@ V roce 2026 je standard **stále experimentální** a aktivně ho podporuje jen 
 
 ### 3. Accessibility tree
 
-Podle dostupné dokumentace je accessibility tree pro agentické čtení stránky klíčový datový model. Agentické nástroje se při čtení stránky spoléhají na stejnou strukturu, kterou používají čtečky obrazovky pro nevidomé uživatele. Lighthouse kontroluje konkrétní podmnožinu accessibility auditů, hlavně:
+Podle dostupné dokumentace je accessibility tree pro agentické čtení stránky klíčový datový model. Agentické nástroje se při čtení stránky spoléhají na stejnou strukturu, kterou používají čtečky obrazovky pro nevidomé uživatele. Lighthouse kontroluje konkrétní podmnožinu auditů přístupnosti, hlavně:
 
 - **Names and labels** — každé interaktivní tlačítko, odkaz a vstup musí mít čitelný popis (text v tlačítku, `aria-label` u ikony, `<label>` u inputu).
 - **ARIA atributy** — správné `role`, `aria-label`, `aria-describedby`.
@@ -201,7 +201,7 @@ Lighthouse Agentic Browsing dává okamžitý seznam toho, co opravit. Pro **max
   **V tomto pořadí opravovat**
 
   - 1. llms.txt — typicky 5 až 30 minut práce, vysoký dopad. Statický textový soubor v rootu domény.
-  - 2. Accessibility tree (names and labels) — 1 až 4 hodiny podle velikosti webu. Pomáhá i klasickému accessibility skóre.
+  - 2. Accessibility tree (names and labels) — 1 až 4 hodiny podle velikosti webu. Pomáhá i klasickému skóre přístupnosti.
   - 3. Stabilita rozvržení (CLS) — sdílená práce s klasickými Core Web Vitals. Explicit width/height u obrázků, přednačtení fontů, rezervace místa pro lazy-loaded obsah.
   - 4. WebMCP — náročná implementace, pouze pro e-shopy a aplikace, kde agent skutečně provádí akce.
 

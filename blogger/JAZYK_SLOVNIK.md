@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 33** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 42/147) · audituje skill `cestina-audit`
+> **Verze: 34** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 42/147, doplněk) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -272,6 +272,7 @@
 | ✅ | `\bplatformov\w+` | — | „platformová specifika“ je běžné české tvoření (platformové řešení); vada by byl až telegrafický „plus“ mezi podstatnými jmény, ne přídavné jméno | jak-ai-cituje-zdroje 2026-08-25 |
 | ✅ | `\b(frontend|backend)\w*` | — | „frontendový protokol“, „na backendu“ je zavedená česká mluva vývojářů, ne slepenec | lighthouse-ai-check 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\baccessibility (skóre|audit\w*|kontrol\w*)\b` | skóre / audity přístupnosti | hybridní slepenec. **Výjimka:** `accessibility tree` a název kategorie „Accessibility“ v Lighthouse — vlastní jména | lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\bbooking web\w*|\bbooking\b(?! ?\.com)` | rezervační web, rezervace | polopřeložený slepenec | lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\bagent akc\w+|\b\w+ akc(e|emi|ích) agent\w*` | akce, které provádí agent | anglický přívlastek bez skloňování | lighthouse-ai-check 2026-08-25 |
 | ⚠️ | `\blistov\w+ stránk\w+` | stránka s výpisem | doslovný převod „listing page“ | lighthouse-ai-check 2026-08-25 |

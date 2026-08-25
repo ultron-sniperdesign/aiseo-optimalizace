@@ -39,7 +39,7 @@
 | 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
 | 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
 | 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 (+1 novým pravidlem) | 1 | **0,9 → 0,0** | 5 | +2 |
-| 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v33 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 13 | +5 (1 zúženo) |
+| 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v34 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 17 | +6 (1 zúženo) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -573,7 +573,7 @@ Nejtechničtější článek zatím a taky nejvíc smíšených nálezů: kus va
 | `description: "Lighthouse AI check v roce 2026: …"` | „Lighthouse pro AI v roce 2026: co Agentic Browsing prověřuje…“ | totéž v popisu |
 | „Pasáže jako **tab order** nebo **focus management**“ | „Pasáže jako **pořadí prvků při procházení tabulátorem** nebo **práce s fokusem**“ | anglická dokumentace v české větě |
 | „soustředí se hlavně na **names and labels** a ARIA“ | „…na **skupinu kontrol `names and labels`** a ARIA“ | název kontroly označený jako název |
-| „klasické **accessibility skóre**“ | „klasické **skóre přístupnosti**“ | slepenec |
+| „klasické **accessibility skóre**“, „podmnožina **accessibility auditů**“ (5×) | „**skóre přístupnosti**“, „**auditů přístupnosti**“ | slepenec |
 | „e-shopy, **booking weby** a SaaS aplikace“ (2×) | „e-shopy, **rezervační weby** a SaaS aplikace“ | polopřeložený slepenec |
 | „**preview** ve vývojářské verzi prohlížeče **není podpora ve stabilním**“ | „**náhled** … **není totéž co podpora ve stabilní verzi**“ | anglicismus + uťatá vazba |
 | `title: "Únor 2026 — preview v Chrome Canary"` | „Únor 2026 — **náhled** v Chrome Canary“ | totéž v časové ose |
@@ -589,3 +589,5 @@ Nejtechničtější článek zatím a taky nejvíc smíšených nálezů: kus va
 **Nová pravidla v33:** `\bbooking\b`, `\bagent akc\w+` (⛔) · `\blistov\w+ stránk\w+`, `\bpreview\b` (⚠️) · `\b(frontend|backend)\w*` (✅).
 
 **Do fronty:** „preview“ je ještě v `bing-seo-pro-ai` (dosud neauditovaný).
+
+**Doplněk po živé kontrole (běh 42):** ověření stránky na webu ukázalo, že „accessibility skóre“ zůstalo ještě **na čtyřech dalších místech** (v krátké odpovědi, ve FAQ, v popisku a v seznamu priorit) — opravu jsem udělal jen tam, kam ukázal LLM, a **nezaložil na ni pravidlo**, takže ji checker nehlásil. Doplněno pravidlo `\baccessibility (skóre|audit\w*|kontrol\w*)\b` a opraveno všech 5 výskytů. Poučení: **každá ruční oprava z LLM průchodu musí skončit pravidlem ve slovníku**, jinak zbytek výskytů projde.
