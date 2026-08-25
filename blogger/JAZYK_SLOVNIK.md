@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 12** · založeno 2026-08-23 · poslední změna 2026-08-23 (článek 11/147) · audituje skill `cestina-audit`
+> **Verze: 13** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 12/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -58,7 +58,7 @@
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\b90-?day\b` | plán na 90 dní, devadesátidenní | hybrid, byl i v titulku | aio-strategie 2026-08-23 |
-| ✅ | `\bAIO Maturity Model\b` | — | **název vlastního frameworku webu** (uvádí se s ™). Jméno se nepřekládá; obecné použití „maturity level“ ano. Pokud by se framework přejmenoval, je to značková, ne jazyková změna. | aio-strategie 2026-08-24 |
+| ✅ | `\bAIO Maturity Model\b` | — | **název vlastního frameworku webu** (uvádí se s ™). Jméno se nepřekládá; obecné použití „maturity level“ ano. **Rozhodnutí uživatele 24. 8. 2026: název zůstává anglicky.** Obecná spojení („maturity level“) se překládají, název ne. | aio-strategie 2026-08-24 |
 | ⛔ | `(?<!AIO )\bmaturity\s?(model|level|score)?\w*\b` | zralost, úroveň zralosti | hybrid; pozor, „maturity level" a „maturity levelu" unikly první verzi pravidla mířené jen na „maturity model" | aio-strategie 2026-08-24 |
 | ⛔ | `\borg chart\b` | rozdělení rolí | anglicismus | aio-strategie 2026-08-23 |
 | ⛔ | `\bsocial listening\b` | sledování sociálních sítí | anglicismus | aio-strategie 2026-08-23 |
@@ -273,6 +273,7 @@
 | Anglické citace ze zdrojů | doklad, ne styl |
 | Názvy funkcí a produktů (Search Labs, AI Overviews, DuckAssist) | vlastní jména |
 | Názvy publikací (Search Engine Land) a **texty odkazů citující titulek vlastního článku** | titulek se cituje tak, jak zní — měnit ho by znamenalo měnit slug |
+| **Záporné příklady citované v textu** (např. „v dnešní digitální éře“ → prázdný marketingový jazyk) | článek je uvádí právě proto, že jsou špatné. Checker je hlásit bude — u každého takového nálezu se rozhoduje ručně. |
 | **Obsah bloků `<Dont>`** | jsou to záměrné odstrašující ukázky („V dnešní digitální éře je důležité…“). Opravit je znamená zničit smysl příkladu. Checker je od článku 9 přeskakuje. |
 | Direktivy a parametry (`data-nosnippet`, `&udm=14`, `max-snippet`) | kód |
 
@@ -292,7 +293,12 @@
 
 | `jak-strukturovat-pillar-content` 2026-08-23 | dávkové obalení názvů komponent do zpětných apostrofů zasáhlo i `import` řádky (`import \`Stepper\` from …`) |
 
-4. **Kontrola kontextu je povinná u každé náhrady.** ⛔ **Pozor na náhrady uvnitř pádových vazeb.** Náhrada `organic traffic` → `organická návštěvnost` vyrobila ve třech článcích tvar **„organická návštěvnostu"** (zbylá koncovka po „trafficu"). Chytila to až kontrola diffu. Po každé náhradě podstatného jména projeď `grep` na okolní tvary. Dávkovou náhradou se připraví návrh; před commitem se `git diff` čte řádek po řádku a každá změněná věta se přečte celá. Kontroluje se **pád, číslo a rod**, **význam v daném textu** a jestli nejde o citaci, popisek rozhraní nebo vlastní jméno.
+4. **Kontrola kontextu je povinná u každé náhrady.** ⛔ **Pozor na náhrady uvnitř pádových vazeb.** Náhrada `organic traffic` → `organická návštěvnost` vyrobila ve třech článcích tvar **„organická návštěvnostu"** (zbylá koncovka po „trafficu"). Chytila to až kontrola diffu. Po každé náhradě podstatného jména projeď `grep` na okolní tvary.
+
+   **Hotový kontrolní příkaz na pády po předložkách** (najde „pro krátká odpověď“, „bez hustota faktů“ apod.):
+   ```
+   grep -rnE "(bez|na|pro|s|se|do|od|k|ke|podle) (hustota faktů|krátká odpověď|organická návštěvnost|výchozí stav|míra citování|podíl citací)" src/content/articles/
+   ``` Dávkovou náhradou se připraví návrh; před commitem se `git diff` čte řádek po řádku a každá změněná věta se přečte celá. Kontroluje se **pád, číslo a rod**, **význam v daném textu** a jestli nejde o citaci, popisek rozhraní nebo vlastní jméno.
 
    ⛔ Doklad, proč: náhrada `use case` → `scénář použití` vyrobila větu „P1 podle **scénář použití**" a byla živě na webu. Regex pád neupraví.
 

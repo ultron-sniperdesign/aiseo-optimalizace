@@ -16,6 +16,7 @@
 | 9 | 2026-08-23 | `aeo-optimalizace-v-praxi` | 2026-05-08 | v9 → v10 | 4 970 | 113 | — | **22,7 → 0,0** | 92 | +4 |
 | 10 | 2026-08-23 | `ai-search-trendy-cesko-2026` | 2026-05-08 | v10 → v11 | 6 101 | 101 | — | **16,5 → 0,2** | 84 | +5 |
 | 11 | 2026-08-24 | `aio-strategie` | 2026-05-08 | v11 → v12 | 5 090 | 139 | — | **27,6 → 0,0** | 118 | +5 |
+| 12 | 2026-08-24 | `geo-optimalizace` | 2026-05-08 | v12 → v13 | 4 630 | 155 | — | **33,8 → 0,4** | 96 | +2 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -199,7 +200,17 @@ Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna d
 
 Článek 11 pracuje s **AIO Maturity Model™** — vlastním pojmenovaným frameworkem webu. Obecná spojení („maturity level", „maturity levelu") jsem přeložil na „úroveň zralosti", ale **samotný název jsem nechal** a zapsal ho ve slovníku jako ✅.
 
-⛔ Vzniká tím ale nesoulad: **titulek článku už říká „model zralosti", tělo pořád „AIO Maturity Model™".** Přejmenovat framework je značkové rozhodnutí, ne jazykové — čeká na vyjádření uživatele.
+**Rozhodnutí uživatele 24. 8. 2026: název „AIO Maturity Model" zůstává.** Je to značka frameworku, ne jazyková vada. V textu tedy platí dvojí režim: **název frameworku anglicky, obecná spojení česky** („úroveň zralosti", „model zralosti" v titulku jako popis). Uzavřeno, znovu se neotevírá.
+
+### 12 · geo-optimalizace (2026-08-24)
+
+**155 nálezů, 33,8 na 1 000 slov** — po pilíři nejhustší text korpusu. 96 oprav.
+
+**Nejčastější:** `share` 13× (citation share 9×, source share, market share) · `fact-density` 8× · `citation rate` 6× · `baseline` 6× · `answer block` 8× ve třech pádech · **28 nedovřených uvozovek**, nejvíc z celého korpusu.
+
+**Kontrola kontextu chytila potřetí pád:** „Zvyšte **hustota faktů** obsahu" (mělo být „hustotu faktů v obsahu"), a to hned ve třech místech včetně nadpisu kroku. Slovník má nově **hotový kontrolní příkaz** na pády po předložkách — jeden grep, který tuhle třídu chyb najde napříč korpusem. Rovnou odhalil ještě „Pravidla pro **krátká odpověď**" v článku 4.
+
+**Nová výjimka:** záporné příklady **citované v běžném textu** (ne jen v `<Dont>` blocích) — „v dnešní digitální éře“ → prázdný marketingový jazyk. Checker je hlásit bude, u každého se rozhoduje ručně.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
