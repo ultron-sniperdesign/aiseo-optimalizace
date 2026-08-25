@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 37** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 45/147) · audituje skill `cestina-audit`
+> **Verze: 38** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 45/147, revize) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -272,11 +272,11 @@
 | ✅ | `\bplatformov\w+` | — | „platformová specifika“ je běžné české tvoření (platformové řešení); vada by byl až telegrafický „plus“ mezi podstatnými jmény, ne přídavné jméno | jak-ai-cituje-zdroje 2026-08-25 |
 | ✅ | `\b(frontend|backend)\w*` | — | „frontendový protokol“, „na backendu“ je zavedená česká mluva vývojářů, ne slepenec | lighthouse-ai-check 2026-08-25 |
 | ✅ | `\bobsahov\w+ strategi\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „obsahová strategie“ je běžně používaný výraz, ne kulhavá vazba | lighthouse-ai-check 2026-08-25 |
+| ✅ | `\bcílov\w+ skupin\w+|\bcílovk\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „cílová skupina“ (i hovorová „cílovka“) je běžně užívaný výraz | seznam-cz-ai-vyhledavani 2026-08-25 |
+| ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `\bodpovědní\w* engin\w*` | odpovědní systémy | mechanický překlad „answer engines“; web i slovník používají „odpovědní systémy“ | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⚠️ | `\bzvyklý vstup\b|\bvstup do internetu\b` | vstupní brána na internet | nepřirozená vazba | seznam-cz-ai-vyhledavani 2026-08-25 |
-| ⚠️ | `\bčistě česk\w+ (cílov\w+|publik\w+)` | zákazníci jen v Česku | významově nejasné („čistě česká“ cílovka) | seznam-cz-ai-vyhledavani 2026-08-25 |
-| ⚠️ | `\bfiguruje\w*\b` | je, objevuje se | úřední sloveso v návodové větě | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⛔ | `\bpočítá\w* za (origináln|kvalitn|dobr)\w+` | považuje se za, počítá se jako | nečeská vazba „počítat za“ ve významu „považovat za“ | originalni-data-pro-ai 2026-08-25 |
 | ⛔ | `\bnež by \w+ potenciál odpovídal\w*` | než by odpovídalo jejich potenciálu | obrácený slovosled rozbíjí vazbu — potenciál ničemu „neodpovídá“ | originalni-data-pro-ai 2026-08-25 |
 | ⚠️ | `\bzískává vyšší šanci stát se\b` | zvyšuje se šance, že se stane | překladový obrat; česky se šance zvyšuje, nezískává | originalni-data-pro-ai 2026-08-25 |
