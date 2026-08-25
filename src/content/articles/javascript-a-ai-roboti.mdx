@@ -63,9 +63,9 @@ Veřejně dohledatelné závěry k tomuhle tématu dnes stojí hlavně na jednom
 
 ## Vykreslují AI roboti JavaScript?
 
-**Liší se to podle robota a plošná odpověď „ne" je nepřesná.** V měření z prosince 2024 roboti, kteří sbírají obsah pro ChatGPT, Claude a Perplexity, soubory JavaScriptu stahovali, ale nespouštěli. Googlebot a AppleBot je naopak spouštěly a stránku vykreslovaly.
+**Liší se to podle robota a plošná odpověď „ne“ je nepřesná.** V měření z prosince 2024 roboti, kteří sbírají obsah pro ChatGPT, Claude a Perplexity, soubory JavaScriptu stahovali, ale nespouštěli. Googlebot a AppleBot je naopak spouštěly a stránku vykreslovaly.
 
-Rozdíl mezi „stáhne" a „spustí" je tady podstatný: v logu serveru uvidíte, že si robot skript vyžádal, a snadno z toho usoudíte, že s ním něco dělá. Podle měření si ho vyžádá, ale nespustí.
+Rozdíl mezi „stáhne“ a „spustí“ je tady podstatný: v logu serveru uvidíte, že si robot skript vyžádal, a snadno z toho usoudíte, že s ním něco dělá. Podle měření si ho vyžádá, ale nespustí.
 
 | Robot | Vykresloval JavaScript (měření 12/2024)? | Co z toho plyne |
 |---|---|---|
@@ -79,7 +79,7 @@ Rozdíl mezi „stáhne" a „spustí" je tady podstatný: v logu serveru uvidí
 Čísla pocházejí z měření společností Vercel a MERJ zveřejněného 17. prosince 2024. Měřilo se na webu `nextjs.org`, napříč sítí Vercelu a na dvou pracovních portálech s odlišnými technologiemi. Robot Microsoft Copilotu byl z měření vyřazen, protože nemá vlastní identifikaci, podle které by se dal v logu odlišit.
 
 <Insight tone="signal" icon="◆" label="Dvě jména, která z té věty vypadávají">
-Pokud jste zvyklí na tvrzení „AI roboti nevykreslují JavaScript", všimněte si dvou řádků v tabulce. **AppleBot podle zdroje vykresluje** — a ve stejném měření byl třetím nejaktivnějším robotem po Googlebotovi. **U Gemini to zdroj dovozuje** z toho, že sdílí infrastrukturu s Googlem; přímo změřené to není. Ta plošná věta je tedy nepřesná i podle zdroje, ze kterého pochází.
+Pokud jste zvyklí na tvrzení „AI roboti nevykreslují JavaScript“, všimněte si dvou řádků v tabulce. **AppleBot podle zdroje vykresluje** — a ve stejném měření byl třetím nejaktivnějším robotem po Googlebotovi. **U Gemini to zdroj dovozuje** z toho, že sdílí infrastrukturu s Googlem; přímo změřené to není. Ta plošná věta je tedy nepřesná i podle zdroje, ze kterého pochází.
 </Insight>
 
 ## Co robot uvidí, když skripty nespustí
@@ -225,7 +225,7 @@ U navigace stojí za zvláštní pozornost jedna věc: **odkaz musí být odkaz.
 
 Přepis celé aplikace kvůli AI robotům se skoro nikdy nevyplatí. Reálné jsou tři levnější cesty.
 
-**Serverové vykreslení jen pro obsahové stránky.** Většina moderních frameworků to umí zapnout po jednotlivých šablonách. Nasadíte ho na články, produkty a kategorie a zbytek aplikace necháte být.
+**Vykreslování na serveru jen pro obsahové stránky.** Většina moderních frameworků to umí zapnout po jednotlivých šablonách. Nasadíte ho na články, produkty a kategorie a zbytek aplikace necháte být.
 
 **Předgenerování statického HTML.** Pokud se obsah nemění po každé návštěvě, dá se vygenerovat dopředu. Robot i návštěvník pak dostanou hotovou stránku.
 

@@ -97,6 +97,16 @@
 | 97 | 2026-08-26 | `google-cituje-sam-sebe` | 2026-07-27 | v48 | 2 400 | 1 | 7 | **0,4 → 0,0** | 3 | — |
 | 98 | 2026-08-26 | `jak-funguje-chatgpt` | 2026-07-27 | v48 | 1 940 | 1 | 0 | **0,5 → 0,0** | 1 | — |
 | 99 | 2026-08-26 | `jak-se-dostat-do-ai-odpovedi` | 2026-07-27 | v48 | — | 0 | 3 | **0,0** | 2 | — |
+| 100 | 2026-08-26 | `odpovedi-firmy-na-recenze` | 2026-07-30 | v49 | 2 100 | 3 | 3 | **1,4 → 0,0** | 3 | — |
+| 101 | 2026-08-26 | `jak-cist-studie-o-ai-viditelnosti` | 2026-07-31 | v49 | 3 020 | 16 | 6 | **5,3 → 0,0** | 14 | +skip |
+| 102 | 2026-08-26 | `preferovane-zdroje-google` | 2026-08-01 | v49 | 1 760 | 3 | 0 | **1,7 → 0,0** | 3 | — |
+| 103 | 2026-08-26 | `vydelavat-na-ai-robotech` | 2026-08-01 | v49 | 2 100 | 5 | 0 | **2,4 → 0,0** | 5 | — |
+| 104 | 2026-08-26 | `hodnota-navstevy-z-ai` | 2026-08-02 | v49 | — | 0 | 3 | **0,0** | 2 | — |
+| 105 | 2026-08-26 | `javascript-a-ai-roboti` | 2026-08-02 | v49 | 2 500 | 5 (1 planý) | 1 | **2,0 → 0,0** | 4 | zúženo 1 |
+| 106 | 2026-08-26 | `bing-ai-performance-report` | 2026-08-03 | v49 | 1 700 | 1 | 0 | **0,6 → 0,0** | 1 | — |
+| 107 | 2026-08-26 | `falesne-screenshoty-seo-funkci` | 2026-08-03 | v49 | 1 760 | 3 | 4 | **1,7 → 0,0** | 6 | — |
+| 108 | 2026-08-26 | `propady-navstevnosti-vydavatelu` | 2026-08-03 | v49 | 2 380 | 5 | 1 | **2,1 → 0,0** | 6 | — |
+| 109 | 2026-08-26 | `volatilita-ai-odpovedi` | 2026-08-03 | v49 | 1 710 | 6 | 0 | **3,5 → 0,0** | 6 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -828,6 +838,19 @@ Poučení: **build je jediná pojistka proti tomu, aby dávková oprava uvozovek
 **Planý poplach (opraven):** pravidlo `\bv abstraktu\b` z v22 hlásilo větu „**V abstraktu** jsou jen ty nejsilnější faktory“ — jenže tady jde o **abstrakt studie**, ne o „zůstat v abstraktu“. Regex zúžen na `\b(zůst\w+|nezůst\w+) v abstraktu\b`.
 
 **Co jsem nechal být** (LLM navrhoval, ale je to běžná odborná čeština): prioritizace, prioritně, lokace, atribuce, hostovat obsah, sada dotazů, širší zásah, jeden běh, vrstva mezi uživatelem a webem.
+
+
+### 100–109 · šestá dávka deseti (2026-08-26)
+
+**Kalk „povrch“ je z celého korpusu pryč** — poslední dva výskyty byly v `preferovane-zdroje-google`.
+
+**Zásahy:** 31 rovných uvozovek napříč devíti články · „citované stránky mají **schema markup** třikrát častěji“ → „**je mají** třikrát častěji“ (věta už „strukturovaná data“ obsahovala) · „z ní **plyne poptávka** po jeho produktu“ → „**může přinést poptávku**“ · „AI Overviews se **v reálném čase skrývaly**“ → „**při zobrazení skrývaly**“ · „na **třetí větev pokusu** se zapomíná“ → „na **třetí skupinu v pokusu** přehledy zapomínají“ · „zvyšuje to **nárok na metodiku**“ → „je pak namístě **posuzovat metodiku přísněji**“ · „**Přiřknout AI kanálu všechno, co přišel poptat**“ → „**Připsat AI kanálu každou poptávku, která nakonec přišla**“ · „**Atribuce takové cesty vidí jen část**“ → „**Atribuce takovou cestu zachytí jen zčásti**“ · „ne **odpálili šablonu**“ → „ne **poslali šablonovou odpověď**“ · „data se **slila do celkových čísel**“ → „**započítala do celkových čísel**“ · „**naváže se na ně rozhodnutí**“ → „**opře se o ně rozhodnutí**“ · „**strávíte dvě minuty na stránce výrobce**“ → „**ověříte si to dvě minuty u výrobce**“ · „tlak … **ukazují reálný**“ → „**reálný tlak** … ukazují“ · „**Serverové vykreslení**“ → „**Vykreslování na serveru**“.
+
+**Planý poplach (opraven):** pravidlo na `content` hlásilo hlavičku **`Content-Type`** v technickém článku o kódování. Doplněna výjimka na názvy HTTP hlaviček (`Content-Type|Length|Encoding|Security`).
+
+**Druhá výjimka `[skip:…]`:** `jak-cist-studie-o-ai-viditelnosti` odkazuje na článek o testu „schema markupu“ jeho vlastním názvem — slug přidán do skip-listu pravidla.
+
+**Co jsem nechal být:** prioritizace, defenzivně, atribuce, stanovisko upravil, serverové vykreslování jako termín.
 
 ---
 

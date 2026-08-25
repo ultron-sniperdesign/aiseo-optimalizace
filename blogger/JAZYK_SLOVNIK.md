@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 48** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 90–99/147) · audituje skill `cestina-audit`
+> **Verze: 49** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 100–109/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -29,7 +29,7 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update))` | obsah | jednoslovná náhrada existuje; „mixed content“ je technický termín HTTPS a hlásit se nemá | seo-audit-co-kontrolovat 2026-08-23 |
+| ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update))(?!-(Type|Length|Encoding|Security))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“ a názvy HTTP hlaviček (`Content-Type`) | seed 2026-08-23, doplněno javascript-a-ai-roboti 2026-08-26 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
 | ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |
@@ -208,7 +208,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\banswer block\w*\b` | krátká odpověď | glosář v CLAUDE.md § X. Regex musí pokrýt **skloňované tvary** („answer blockem“) — bez toho unikl výskyt v článku 4 | seed 2026-08-23, rozšířeno 2026-08-23 |
-| ⛔ | `\bschema markup\w*` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech | seed 2026-08-23, výjimka 2026-08-26 |
+| ⛔ | `\bschema markup\w*` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test,jak-cist-studie-o-ai-viditelnosti]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech | seed 2026-08-23, výjimka 2026-08-26 |
 | ⛔ | `\bhub-and-spoke\w*\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
 
 ## 6. Typografie a interpunkce
