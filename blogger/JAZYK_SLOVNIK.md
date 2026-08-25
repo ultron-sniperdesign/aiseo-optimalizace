@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 44** · založeno 2026-08-23 · poslední změna 2026-08-26 (revize: top a benefit jsou ✅) · audituje skill `cestina-audit`
+> **Verze: 45** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 70–79/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -275,6 +275,10 @@
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bprokliká(ní|vání)\b` | klikání v rozhraní | počeštěné podstatné jméno ze slovesa, zní nečesky | produktovy-feed-gtin 2026-08-26 |
+| ⚠️ | `\budržovat \w+ živ\w+|\budržujte \w+ živ\w+` | udržovat aktivní | kalk z „keep alive“ | recenze-srovnavace-pro-ai 2026-08-26 |
+| ⚠️ | `\bz definice\b` | ze své podstaty | nalepený obrat z angličtiny („by definition“) | produktovy-feed-gtin 2026-08-26 |
+| ⚠️ | `\bsilně závislý na\b` | hodně závisí na | překlad „heavily dependent on“ | pasazova-optimalizace-obsahu 2026-08-26 |
 | ⛔ | `\bpovrch\w*` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu; česky „povrch“ znamená fyzický povrch | ai-mode-a-eshopy 2026-08-26 |
 | ⛔ | `\bbrand search\w*|\bbrand voice\b` | vyhledávání značky, hlas značky | hybridní slepence s anglickým „brand“ | case-study-megadetail 2026-08-26 |
 | ⚠️ | `\bcelowebov\w+` | pro celý web | mechanicky odvozené přídavné jméno | blokovat-ai-odpovedi-gsc 2026-08-26 |

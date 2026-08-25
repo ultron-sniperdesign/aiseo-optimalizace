@@ -67,6 +67,16 @@
 | 67 | 2026-08-26 | `jak-se-zobrazit-v-ai-mode` | 2026-07-18 | v43 | 1 700 | 5 | 7 | **2,9 → 0,0** | 13 | +1 |
 | 68 | 2026-08-26 | `mereni-ai-mode-limity` | 2026-07-18 | v43 | 1 500 | 1 | 1 | **0,7 → 0,0** | 13 | +1 |
 | 69 | 2026-08-26 | `nahradi-ai-mode-vyhledavani` | 2026-07-18 | v43 | 1 810 | 2 | 3 | **1,1 → 0,0** | 13 | +1 |
+| 70 | 2026-08-26 | `pasazova-optimalizace-obsahu` | 2026-07-18 | v44 | 1 650 | 17 | 1 | **10,3 → 0,0** | 18 | — |
+| 71 | 2026-08-26 | `produktovy-feed-gtin` | 2026-07-18 | v44 → v45 | 1 660 | 5 | 7 | **3,0 → 0,0** | 11 | +2 |
+| 72 | 2026-08-26 | `recenze-a-hodnoceni-pro-ai` | 2026-07-18 | v44 | — | 0 | 0 | **0,0** | 0 | — |
+| 73 | 2026-08-26 | `ai-roboti-zatez-webu` | 2026-07-19 | v44 | 1 360 | 3 | 0 | **2,2 → 0,0** | 3 | — |
+| 74 | 2026-08-26 | `cloudflare-ai-bot-blocking` | 2026-07-19 | v44 | 1 760 | 6 | 1 | **3,4 → 0,0** | 7 | — |
+| 75 | 2026-08-26 | `firmy-cz-pro-ai` | 2026-07-19 | v44 | 1 430 | 1 | 0 | **0,7 → 0,0** | 1 | — |
+| 76 | 2026-08-26 | `listicly-top-n-pro-ai` | 2026-07-19 | v44 | — | 0 | 1 | **0,0** | 1 | — |
+| 77 | 2026-08-26 | `multimodalni-vyhledavani-ai` | 2026-07-19 | v44 | — | 0 | 2 | **0,0** | 2 | — |
+| 78 | 2026-08-26 | `recenze-srovnavace-pro-ai` | 2026-07-19 | v44 → v45 | 2 000 | 7 | 1 | **3,5 → 0,0** | 8 | +1 |
+| 79 | 2026-08-26 | `seznam-asistent-sellma` | 2026-07-19 | v44 | 1 250 | 2 | 5 | **1,6 → 0,0** | 2 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -749,6 +759,19 @@ Deset článků po jednom (mechanická kontrola → LLM → kontrola kontextu �
 **Gramatická chyba v nadpisu:** `jak-se-zobrazit-v-ai-mode` měl H2 „Když naopak nechcete být **použití**“ → „Když naopak nechcete, aby vás AI použila“.
 
 **Nová pravidla v43:** `\bpovrch\w*`, `\bbrand search\w*|\bbenefit nadpis\w*|\bbrand voice\b` (⛔) · `\bcelowebov\w+`, `\bvygenerování\w*`, `\bzaktualiz\w+`, `\bservír\w+ …`, `\bkonvertující návštěv\w+`, `\bdobr\w+ zkušenost se stránkou\b` (⚠️) · výjimka pro „dark (AI) traffic“ v pravidle `traffic`.
+
+
+### 70–79 · třetí dávka deseti (2026-08-26)
+
+**Vlastní chyba, kterou stojí za to zapsat:** rozšířil jsem opravovač uvozovek tak, aby uměl i escapované `\"` uvnitř JSX props — jenže rozpoznávání „řádek je prop“ znal jen klíče `title|desc|text|label|value|q|a|left|right`. Řádky v `rows={[…]}` ale začínají klíčem `icon:`, takže spadly do větve pro běžný text a regex v nich přepsal **i uzavírací uvozovku samotné vlastnosti** → `Unterminated string constant`, build spadl. Opraveno ručně na čtyřech řádcích, opravovač nově pozná prop podle obecného `[a-zA-Z]+\s*:\s*"`.
+
+Poučení: **build je jediná pojistka proti tomu, aby dávková oprava uvozovek rozbila JSX.** Proto se pouští po každém článku, ne až na konci dávky.
+
+**Zásahy:** `pasazova-optimalizace-obsahu` 17 uvozovek + „silně závislý na“ → „hodně závisí na“; `produktovy-feed-gtin` 5 uvozovek + 6 vazeb („z definice“, „vlastní formát a vlastní dokumentaci“, „opisovat zpaměti“, „proklikání rozhraní“, rozpadlá souřadnost s „důvěryhodností údajů“); `ai-roboti-zatez-webu` a `cloudflare-ai-bot-blocking` uvozovky + „aby na něj umělo odpovídat“; `firmy-cz-pro-ai`, `listicly-top-n-pro-ai`, `multimodalni-vyhledavani-ai`, `recenze-srovnavace-pro-ai`, `seznam-asistent-sellma` drobnosti.
+
+**Co jsem u `seznam-asistent-sellma` NEopravil, i když to LLM navrhl:** „obchodní kanál“, „parametry modelu“, „který model text formuluje“, „s vaší viditelností hýbou zdroje dat“, „řádek pro vyhledávač“. Všechno je to běžná česká odborná nebo publicistická mluva — po sedmi korekcích od uživatele je jasné, kde je hranice: **hlásí se kalk, ne styl.**
+
+**Nová pravidla v45:** `\bprokliká(ní|vání)\b` (⛔) · `\budržovat/udržujte … živé`, `\bz definice\b`, `\bsilně závislý na\b` (⚠️).
 
 ---
 

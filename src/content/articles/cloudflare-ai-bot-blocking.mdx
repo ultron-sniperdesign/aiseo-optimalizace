@@ -38,7 +38,7 @@ howto:
       text: "Blokace kategorie Training zasáhne podle Cloudflare i roboty, kteří zároveň patří do Search. Pokud vám na jejich přístupu záleží, tohle si zkontrolujte."
 faq:
   - q: "Co Cloudflare u AI robotů vlastně rozlišuje?"
-    a: "Tři chování místo jmen robotů. Search je chování, které sbírá nebo indexuje obsah, aby na něj později umělo odpovídat. Agent je automatická činnost jednající v reálném čase za konkrétního člověka. Training je procházení, které bere obsah na trénink nebo doladění modelu. U každé kategorie se rozhodujete samostatně."
+    a: "Tři chování místo jmen robotů. Search je chování, které sbírá nebo indexuje obsah, aby z něj později mohlo čerpat při odpovědích. Agent je automatická činnost jednající v reálném čase za konkrétního člověka. Training je procházení, které bere obsah na trénink nebo doladění modelu. U každé kategorie se rozhodujete samostatně."
   - q: "Co se mění 15. září 2026?"
     a: "Podle změnového logu Cloudflare dostanou k tomuto datu nově zakládané domény jiné výchozí hodnoty: Training a Agent blokované na stránkách s reklamou, Search povolený. Ke stejnému dni mají pod blokaci tréninku spadnout i roboti, kteří kombinují Search a Training. Existující doméně se ale nic samo nepřepne a vlastní nastavení si můžete zvolit kdykoli."
   - q: "Přijdu blokací tréninku o citace v AI odpovědích?"
@@ -59,7 +59,7 @@ import Mistake from "~/components/blocks/Mistake.astro";
 
 **Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training.** U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nově zakládané domény jiné výchozí hodnoty; existující doméně se nic samo nepřepne.
 
-Pokud jste někdy četli návod ve stylu „zablokujte Bytespider a povolte GPTBot", je zastaralý. Cloudflare dnes nabízí řízení podle **kategorií chování**, ne podle jednotlivých jmen robotů.
+Pokud jste někdy četli návod ve stylu „zablokujte Bytespider a povolte GPTBot“, je zastaralý. Cloudflare dnes nabízí řízení podle **kategorií chování**, ne podle jednotlivých jmen robotů.
 
 ## Co se změnilo a proč to má termín
 
@@ -96,7 +96,7 @@ Rozdíl mezi nimi není akademický. Jako důvod, proč nechává **Search povol
 Tady je nejdůležitější věta celého článku, a je přímo z oznámení Cloudflare: **blokace kategorie Training zasáhne i roboty, kteří kombinují Search a Training zároveň.**
 
 <Insight tone="warn">
-Cloudflare u toho nepíše, co to udělá s vaší viditelností — to si musíte domyslet sami. Praktický důsledek může být ten, že robot z takového obsahu nebude mít z čeho čerpat. Přesný dopad na citace ani na návštěvnost z toho ale odvodit nejde. Rozšířená úvaha „zakážu trénink, ale zbytek si nechám" proto nemusí vyjít tak, jak si ji člověk představuje.
+Cloudflare u toho nepíše, co to udělá s vaší viditelností — to si musíte domyslet sami. Praktický důsledek může být ten, že robot z takového obsahu nebude mít z čeho čerpat. Přesný dopad na citace ani na návštěvnost z toho ale odvodit nejde. Rozšířená úvaha „zakážu trénink, ale zbytek si nechám“ proto nemusí vyjít tak, jak si ji člověk představuje.
 </Insight>
 
 Podle dokumentace spadají pod starý přepínač **i smíšení roboti**. Pokud jste se na tuhle volbu spoléhali, **ověřte si její aktuální chování v dokumentaci** — zvlášť právě u smíšených robotů.
@@ -120,7 +120,7 @@ Univerzální odpověď neexistuje, ale rozcestník ano. A jestli řešíte tu o
 
 - **Chcete hlavně omezit použití obsahu pro trénink modelů?** Řešte kategorii Training — a počítejte s tím, co je napsané výš o smíšených robotech.
 - **Záleží vám, aby vás AI nástroje mohly citovat?** Pak je Search ta kategorie, kterou nechcete zavírat jako první.
-- **Vyděláváte hlavně reklamou?** Volba „blokovat jen na stránkách s reklamou" existuje přesně pro tenhle případ.
+- **Vyděláváte hlavně reklamou?** Volba „blokovat jen na stránkách s reklamou“ existuje přesně pro tenhle případ.
 - **Nevíte, co vám AI kanál nese?** Tohle je nejčastější stav — a nejlepší první krok není nastavovat, ale změřit.
 
 ## Jak to souvisí s robots.txt
@@ -157,7 +157,7 @@ Rozumné je mít obojí a pro většinu majitelů webů stačí zapamatovat si j
 
 ## Co si odnést
 
-Změna je hlavně pojmová: **místo hádání, který robot je ten zlý, se rozhodujete o třech chováních.** Otázka „chci, aby si mě někdo mohl načíst a odpovědět na dotaz?" se odpovídá líp než „mám blokovat CCBot?".
+Změna je hlavně pojmová: **místo hádání, který robot je ten zlý, se rozhodujete o třech chováních.** Otázka „chci, aby si mě někdo mohl načíst a odpovědět na dotaz?“ se odpovídá líp než „mám blokovat CCBot?“.
 
 Prakticky si odneste tři věci. Podívejte se, jaké nastavení váš web dnes má. U kategorie Training počítejte s tím, že zasáhne i smíšené roboty. A pokud netušíte, co vám AI kanál nese, není prvním krokem nastavovat, ale změřit.
 
@@ -165,4 +165,4 @@ Prakticky si odneste tři věci. Podívejte se, jaké nastavení váš web dnes 
 
 Pokud nejdřív potřebujete zjistit, jestli vám z AI nástrojů vůbec někdo chodí, dává smysl začít měřením: **[AI SEO audit](/audit/)** za 3 600 Kč projde měření i viditelnost a řekne, z čeho se rozhodovat.
 
-*Zdroje: oznámení Cloudflare „Your site, your rules", changelog z 1. 7. 2026 a dokumentace AI Crawl Control. Stav k 19. 7. 2026 — nastavení i termíny se můžou měnit, článek budeme aktualizovat.*
+*Zdroje: oznámení Cloudflare „Your site, your rules“, changelog z 1. 7. 2026 a dokumentace AI Crawl Control. Stav k 19. 7. 2026 — nastavení i termíny se můžou měnit, článek budeme aktualizovat.*
