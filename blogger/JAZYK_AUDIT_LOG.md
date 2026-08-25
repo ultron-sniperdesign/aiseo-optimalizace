@@ -42,6 +42,7 @@
 | 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v35 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 16 | +7 (1 zúženo) |
 | 43 | 2026-08-25 | `originalni-data-pro-ai` | 2026-06-11 | v35 → v36 | 2 476 | 7 | 6 | **2,8 → 0,0** | 13 | +5 |
 | 44 | 2026-08-25 | `produktove-stranky-pro-ai` | 2026-06-11 | v36 | 2 266 | 1 | 0 | **0,4 → 0,0** | 1 | +0 |
+| 45 | 2026-08-25 | `seznam-cz-ai-vyhledavani` | 2026-06-11 | v36 → v37 | 2 488 | 1 | 5 | **0,4 → 0,0** | 8 | +4 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -624,3 +625,21 @@ Nejčistší článek zatím: **jediný zásah**.
 LLM průchod nenašel nic. Ruční kontrola slepých míst (uvozovky v JSX props, anglická slova v české větě, frontmatter) taky nic — anglické výrazy v textu (`price`, `availability`, `items`, `hasMerchantReturnPolicy`) jsou **názvy vlastností schema.org**, tedy vlastní jména, ne anglicismy.
 
 Dvě pozorování k metodice po 44 článcích: (1) tutoriály o strukturovaných datech mají přirozeně vysoký podíl anglických řetězců, ale skoro nulovou jazykovou vadovost — jde o názvy, ne o mluvu; (2) uvozovkový problém (`„…"`) se objevil v **28 ze 44 článků**, ale v tomhle ani jednou.
+
+### 45 · seznam-cz-ai-vyhledavani (2026-08-25)
+
+| Bylo | Je | Proč |
+|---|---|---|
+| „**Špičkové modely** (Claude Opus 4.x, GPT-5.x, Gemini 2.x) výrazně větší“ | „**Claude Opus 4.x, GPT-5.x nebo Gemini 2.x jsou výrazně větší**“ | vata; věta si vystačí s fakty |
+| „AI nástroje a **odpovědní enginy**“ | „AI nástroje a **odpovědní systémy**“ | mechanický překlad „answer engines“ — web i slovník pojmů používají „odpovědní systémy“ |
+| „Seznam.cz je u této skupiny stále **zvyklý vstup do internetu**“ | „…je pro ni pořád **obvyklá vstupní brána na internet**“ | nepřirozená vazba |
+| „Pokud máte **čistě českou cílovou skupinu**“ | „Pokud máte **zákazníky jen v Česku**“ | významově nejasné |
+| „vedle Google Ads u **čistě české cílovky**“ (2×) | „…**pokud cílíte jen na Česko**“ | totéž |
+| „jestli mezi nimi **figuruje** váš web“ | „jestli **je** mezi nimi váš web“ | úřední sloveso v návodu |
+| „**Beta od května 2026 je čerstvá** —“ | „**Beta běží teprve od května 2026** —“ | nedomyšlená vazba |
+
+Terminologická poznámka: náhradu „odpovědní systémy“ jsem nevybral podle citu, ale **podle toho, co už používá slovník pojmů na webu** — jinak by vznikly dva různé překlady téhož termínu na jednom webu.
+
+**Nová pravidla v37:** `\bodpovědní\w* engin\w*` (⛔) · `\bzvyklý vstup\b|\bvstup do internetu\b`, `\bčistě česk\w+ (cílov\w+|publik\w+)`, `\bfiguruje\w*\b` (⚠️).
+
+**Do fronty na doauditování:** „figuruje“ / „odpovědní enginy“ jsou ještě v `firmy-cz-pro-ai` a `aio-strategie` (druhý je auditovaný ve v12, tedy drift).
