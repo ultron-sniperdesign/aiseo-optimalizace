@@ -26,6 +26,7 @@
 | 19 | 2026-08-24 | `ai-seo-nastroje` | 2026-05-23 | v15 | 2 150 | 6 | — | **2,8 → 0,0 ⛔** | 1 | 0 |
 | 20 | 2026-08-24 | `bing-seo-pro-ai` | 2026-05-23 | v15 | — | 0 | — | **0,0** | 0 | 0 |
 | 21–28 | 2026-08-24 | série z 24.–26. 5. 2026 (8 článků) | 2026-05-24+ | v15 → v16 | ~15 000 | 34 | — | **prům. 2,5 → 0,1** | 22 | 0 |
+| 29 | 2026-08-24 | `ai-navstevnost-konverze` | 2026-05-30 | v16 → v17 | 1 538 | 6 | — | **3,9 → 0,0** | 4 | 0 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -254,6 +255,21 @@ Osm článků najednou: `seo-pro-ai`, `seo-vs-geo`, `google-ai-mode`, `aktualiza
 Z 34 nálezů bylo **13 nedovřených uvozovek**; skutečné jazykové vady jen devět (`organiku` 2×, `baseline`, `impressions` 2×, `ranking faktor`, `připravili jsme`, „převést na").
 
 **Nová výjimka: rozepsané zkratky.** „SEO **(Search Engine Optimization)**" — závorka zkratku vysvětluje, je to služba čtenáři, ne anglicismus. Checker je od článku 21 maskuje. Je to stejná logika jako u vět, které anglický termín uvádějí: **audit nesmí trestat autora za to, že cizí slovo přeložil.**
+
+### 29 · ai-navstevnost-konverze (2026-08-24)
+
+Zpět po jednom článku. 6 nálezů, 4 opravy — všechny se točí kolem **názvů v rozhraní GA4**.
+
+| Bylo | Je |
+|---|---|
+| AI Assistant do **Default Channel Group** | do **výchozí skupiny kanálů** |
+| kanál v **Default Channel Group** GA4 | kanál ve **výchozí skupině kanálů** GA4 |
+| než u klasického **organiku** | než u klasického **organického vyhledávání** |
+| report organického vyhledávání **(„Organic Search")** | **(v GA4 „Organické vyhledávání")** |
+
+**Nová výjimka: anglický originál v závorce za českým termínem.** Článek na jednom místě psal „ve výchozí skupině kanálů **(Default Channel Group)**" — a to je **správná forma**, ne vada: čtenář dostane český výraz i to, co uvidí v anglickém rozhraní. Checker závorku od článku 29 maskuje.
+
+Ten nález mi zároveň ukázal, že článek sám měl **obě formy vedle sebe** — na jednom místě správnou českou s originálem, na třech jiných jen anglickou. Právě takové nekonzistence uvnitř jednoho textu jsou to, co audit hledá.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 

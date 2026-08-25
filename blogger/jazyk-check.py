@@ -21,6 +21,7 @@ HTMLVAL = re.compile(r'\b(class|id|style|href|src|rel|aria-\w+)="[^"]*"')
 ICONVAL = re.compile(r'\b(icon|tone|variant|key|slug)\s*[:=]\s*"[^"]*"')   # technicke hodnoty, ne text
 # radek, ktery anglicky termin VYSVETLUJE, se neaudituje (clanek ho uvadi jako cizi slovo)
 ZKRATKA = re.compile(r'\b[A-Z][A-Za-z-]{1,6}\s*\([A-Z][^)]{3,60}\)')   # rozepsana zkratka: SEO (Search Engine Optimization)
+ORIGINAL = re.compile(r'\((?:v [A-Za-zěščřžýáíéúůň]+ )?[A-Z][A-Za-z][A-Za-z ]{2,40}\)')   # cesky termin s anglickym originalem v zavorce
 CITUJE = re.compile(r'v angličtin|anglicky|v zahraničí|pod názv|anglick(ý|ého|ém) (termín|název|výraz)|zkratk[ay] z angli')   # hodnoty technickych atributu
 
 def load_rules(path):
@@ -52,6 +53,7 @@ def mask(line):
     line = HTMLVAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = ICONVAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = ZKRATKA.sub(lambda m: ' ' * len(m.group(0)), line)
+    line = ORIGINAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSXATTR.sub(lambda m: ' ' * len(m.group(0)), line)
     return line
 

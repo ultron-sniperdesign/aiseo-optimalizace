@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 16** · založeno 2026-08-23 · poslední změna 2026-08-24 (články 21–28/147) · audituje skill `cestina-audit`
+> **Verze: 17** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 29/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -280,6 +280,7 @@
 | **Titulek a nadpis, které jsou zároveň cílovým klíčovým slovem** (např. „AI SEO content“ u článku se slugem `ai-seo-content`) | titulek nese hledaný výraz a slug se po publikaci nemění; přepsat titulek by znamenalo rozejít se se slugem i s tím, co lidé hledají |
 | **Věta, která anglický termín vysvětluje** („v angličtině *AI brand mentions*“, „v zahraničí je potkáte pod názvy *AI visibility tracker*“) | článek termín uvádí jako cizí slovo, ne ho používá. Checker takové řádky od článku 15 přeskakuje (hledá „v angličtině“, „v zahraničí“, „pod názvem“ apod.). |
 | **Názvy technických identifikátorů** (`Content-Usage`, `Google-Extended`) | jsou to řetězce z protokolu, ne text |
+| **Anglický originál v závorce za českým termínem** („ve výchozí skupině kanálů (Default Channel Group)“) | je to **správná forma** — čtenář dostane český výraz i to, co uvidí v anglickém rozhraní. Checker závorku maskuje od článku 29. |
 | **Rozepsané zkratky** („SEO (Search Engine Optimization)“, „GEO (Generative Engine Optimization)“) | závorka zkratku **vysvětluje**; je to služba čtenáři, ne anglicismus. Checker je od článku 21 maskuje. |
 | **Obsah bloků `<Dont>`** | jsou to záměrné odstrašující ukázky („V dnešní digitální éře je důležité…“). Opravit je znamená zničit smysl příkladu. Checker je od článku 9 přeskakuje. |
 | Direktivy a parametry (`data-nosnippet`, `&udm=14`, `max-snippet`) | kód |
