@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 28** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 38/147) · audituje skill `cestina-audit`
+> **Verze: 29** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 39/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -269,7 +269,7 @@
 | ✅ | `\bvolatil\w+` | — | „volatilita/volatilní“ je v češtině zavedené (i mimo finance) a čtenáři srozumitelné; vada by byl až prázdný žargon | ai-citace-reddit 2026-08-25 |
 | ⛔ | `\blive search\b|\bsearch agent\b` | vyhledávací robot, stahování v reálném čase | kus anglické dokumentace v české větě | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bkategoriov\w+ text\w*` | texty kategorií | kostrbaté přídavné jméno místo přivlastňovací vazby | ai-seo-wordpress 2026-08-25 |
-| ⚠️ | `\bkrátk\w+ bio\b|\bbio\b(?! *\()` | medailonek, profil autora | eliptický převod z angličtiny; česky se rod neshoduje | ai-seo-wordpress 2026-08-25 |
+| ⚠️ | `\bbio\b(?![ ]?[(-])` | medailonek, profil autora | eliptický převod z angličtiny („krátká bio“ navíc neshoduje rod); česky je to medailonek. **Výjimka:** „bio“ ve významu biopotravin a v názvech (BIO, bio-) | ai-seo-wordpress 2026-08-25, rozšířeno autorsky-profil-pro-ai 2026-08-25 |
 | ⚠️ | `\btheme update\b|\bsecurity plugin\w*` | aktualizace šablony, bezpečnostní plugin | hybridní slepenec — anglická vazba s českou koncovkou | ai-seo-wordpress 2026-08-25 |
 | ⛔ | `\bpromov(at|uje|ala?|ovat)\b` | propagovat | slangový kalk z „promote“; česky se propaguje | ai-citace-reddit 2026-08-25 |
 | ⚠️ | `\balgoritmick\w+ posun\w*` | změna algoritmu | doslovný převod „algorithmic shift“ | ai-citace-reddit 2026-08-25 |

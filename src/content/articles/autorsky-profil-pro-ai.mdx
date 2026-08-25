@@ -30,13 +30,13 @@ howto:
     - name: "Zrušte anonymní autory"
       text: "Nahraďte každé generické označení autora „Redakce“, „Admin“ nebo „Team“ jménem konkrétní osoby. Anonymní autorství nepřidává jasný autorský signál. Jmenovaný expert s dohledatelnou identitou je pro AI čitelná entita."
     - name: "Sesbírejte základní autorská data"
-      text: "Pro každý podpis autora potřebujete: celé jméno, roli nebo pozici, portrétní foto odpovídající skutečné identitě autora (stock fotografie identitu samy nepotvrzují), jednu až dvě věty bio a alespoň jeden kanonický profil (například LinkedIn). Jméno musí být všude stejné."
+      text: "Pro každý podpis autora potřebujete: celé jméno, roli nebo pozici, portrétní foto odpovídající skutečné identitě autora (stock fotografie identitu samy nepotvrzují), jednu až dvě věty medailonku a alespoň jeden kanonický profil (například LinkedIn). Jméno musí být všude stejné."
     - name: "Vytvořte autorskou stránku"
-      text: "Založte stránku /autori/jmeno/ s bio, portrétní fotkou, kvalifikací (tituly, certifikace, licence), odkazy na externí profily a seznamem článků autora. Tuto stránku propojte z každého článku daného autora."
+      text: "Založte stránku /autori/jmeno/ s medailonkem, portrétní fotkou, kvalifikací (tituly, certifikace, licence), odkazy na externí profily a seznamem článků autora. Tuto stránku propojte z každého článku daného autora."
     - name: "Doplňte Person strukturovaná data"
       text: "Přidejte strukturovaná data typu Person (podle schema.org) vnořená do Article. Klíčová pole: name (přesně jako podpis autora), url na autorskou stránku, image, jobTitle a sameAs se dvěma a více ověřenými profily. Ověřte syntaxi ve validátoru strukturovaných dat."
     - name: "Rozšiřte sameAs a buďte konzistentní"
-      text: "Doplňte sameAs o další ověřené profily (Wikidata, ORCID u akademiků, odborné registry). Držte stejné jméno, stejnou fotku a konzistentní bio napříč webem i externími profily. Nekonzistence oslabuje entitu."
+      text: "Doplňte sameAs o další ověřené profily (Wikidata, ORCID u akademiků, odborné registry). Držte stejné jméno, stejnou fotku a stejný medailonek napříč webem i externími profily. Nekonzistence oslabuje entitu."
 faq:
   - q: "Co je autorská entita a proč na ní záleží?"
     a: "Autorská entita je konkrétní osoba, kterou vyhledávače a AI dokážou jednoznačně spojit s obsahem — ne jen jméno v textu. Skládá se z podpisu autora u článku, autorské stránky, strukturovaných dat typu Person a propojení sameAs na ověřené externí profily. Podle dostupných analýz bývá obsah se jmenovaným expertem citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce“."
@@ -62,9 +62,9 @@ import DoDont from "~/components/blocks/DoDont.astro";
 import Do from "~/components/blocks/Do.astro";
 import Dont from "~/components/blocks/Dont.astro";
 
-**Autorská entita je konkrétní osoba, kterou AI a vyhledávače dokážou jednoznačně spojit s obsahem díky podpisu autora, autorské stránce, strukturovaným datům typu Person a ověřeným profilům sameAs.** Pomáhá jim k tomu viditelný podpis autora, autorská stránka a ověřitelné odkazy na profily mimo web. Podle dostupných analýz bývá obsah se jmenovaným expertem citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce". Tento návod ukazuje, jak autorskou entitu vybudovat — od podpisu autora přes autorskou stránku po strukturovaná data typu Person a propojení sameAs.
+**Autorská entita je konkrétní osoba, kterou AI a vyhledávače dokážou jednoznačně spojit s obsahem díky podpisu autora, autorské stránce, strukturovaným datům typu Person a ověřeným profilům sameAs.** Pomáhá jim k tomu viditelný podpis autora, autorská stránka a ověřitelné odkazy na profily mimo web. Podle dostupných analýz bývá obsah se jmenovaným expertem citovaný častěji než obsah podepsaný anonymně nebo jako „Redakce“. Tento návod ukazuje, jak autorskou entitu vybudovat — od podpisu autora přes autorskou stránku po strukturovaná data typu Person a propojení sameAs.
 
-Pojmem „citace" v tomto článku myslíme zařazení stránky mezi zdroje, které AI odpověď odkazuje nebo z nich vychází.
+Pojmem „citace“ v tomto článku myslíme zařazení stránky mezi zdroje, které AI odpověď odkazuje nebo z nich vychází.
 
 ## Co je autorská entita
 
@@ -72,10 +72,10 @@ Autorská entita (v angličtině author entity) je **konkrétní osoba, kterou v
 
 <Checklist title="Pět vrstev autorské entity" items={[
   { title: "Podpis autora u článku", desc: "Jméno konkrétní osoby na článku, ne „Redakce“ nebo „Admin“." },
-  { title: "Autorská stránka", desc: "Vlastní stránka autora s bio, portrétní fotkou, kvalifikací a seznamem článků." },
+  { title: "Autorská stránka", desc: "Vlastní stránka autora s medailonkem, portrétní fotkou, kvalifikací a seznamem článků." },
   { title: "Person strukturovaná data", desc: "Strojově čitelný popis autora podle schema.org (name, url, image, jobTitle, sameAs)." },
   { title: "sameAs propojení", desc: "Odkazy na ověřené externí profily (LinkedIn, Wikidata, ORCID, odborné registry)." },
-  { title: "Konzistence", desc: "Stejné jméno, foto a bio napříč webem i externími profily." },
+  { title: "Konzistence", desc: "Stejné jméno, fotka a medailonek napříč webem i externími profily." },
 ]} />
 
 <Insight tone="accent">
@@ -114,7 +114,7 @@ Jádrem technické vrstvy je typ **Person** podle schema.org, vnořený do `Arti
 
 ## Autorská stránka
 
-Autorská stránka je místo, kde se autorská entita „usadí". Bez ní zůstává podpis autora prázdným jménem.
+Autorská stránka je místo, kde se autorská entita „usadí“. Bez ní zůstává podpis autora prázdným jménem.
 
 <Stepper
   steps={[
@@ -124,9 +124,9 @@ Autorská stránka je místo, kde se autorská entita „usadí". Bez ní zůst�
       text: "Nahoře stránky celé jméno autora, jeho role nebo pozice a reálná portrétní fotka. Stock foto nebo generovaný portrét samy o sobě nepomáhají ověřitelnosti a u expertního obsahu mohou vyvolávat pochybnosti, pokud nejde o skutečnou identitu autora.",
     },
     {
-      label: "Bio a kvalifikace",
+      label: "Medailonek a kvalifikace",
       title: "Konkrétní zkušenost a doklady",
-      text: "Bio s konkrétní zkušeností (roky praxe, obor, čím se autor zabývá). U odborných témat doplňte kvalifikaci: tituly, certifikace, licence. U citlivých témat je ověřitelná kvalifikace klíčová.",
+      text: "Medailonek s konkrétní zkušeností (roky praxe, obor, čím se autor zabývá). U odborných témat doplňte kvalifikaci: tituly, certifikace, licence. U citlivých témat je ověřitelná kvalifikace klíčová.",
     },
     {
       label: "Externí profily",
@@ -181,7 +181,7 @@ U citlivých témat bez ověřitelné kvalifikace autora bývá šance na citace
     Jméno ve strukturovaných datech by se mělo shodovat s viditelným podpisem autora. Rozdíl typu „Jan Novák“ versus „Jan M. Novák“ může zbytečně zhoršit jednoznačnost identity.
   </Mistake>
   <Mistake num="04" title="Prázdná autorská stránka">
-    Autorská stránka bez bio, kvalifikace a odkazů na externí profily nepřidává důvěru. Samotná existence stránky nestačí — musí mít obsah, který autora jako entitu doloží.
+    Autorská stránka bez medailonku, kvalifikace a odkazů na externí profily nepřidává důvěru. Samotná existence stránky nestačí — musí mít obsah, který autora jako entitu doloží.
   </Mistake>
 </MistakeGrid>
 
@@ -189,9 +189,9 @@ U citlivých témat bez ověřitelné kvalifikace autora bývá šance na citace
   <Do>
 
   - Podepisovat články konkrétní osobou s dohledatelnou identitou.
-  - Mít autorskou stránku s bio, portrétní fotkou, kvalifikací a seznamem článků.
+  - Mít autorskou stránku s medailonkem, portrétní fotkou, kvalifikací a seznamem článků.
   - Přidat Person strukturovaná data se dvěma a více ověřenými profily v sameAs.
-  - Držet stejné jméno, fotku a bio napříč webem i externími profily.
+  - Držet stejné jméno, fotku a medailonek napříč webem i externími profily.
   - U citlivých témat doplnit ověřitelnou kvalifikaci (ČLK, ČAK, ČNB, ORCID).
 
   </Do>

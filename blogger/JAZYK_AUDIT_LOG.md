@@ -36,6 +36,7 @@
 | 36 | 2026-08-25 | `aeo-geo-je-porad-seo` | 2026-06-11 | v24 → v26 | 2 164 | 15 | 5 | **6,9 → 0,0** | 36 | +4 |
 | 37 | 2026-08-25 | `ai-citace-reddit` | 2026-06-11 | v26 → v27 | 2 341 | 4 | 6 | **1,7 → 0,0** | 10 | +4 |
 | 38 | 2026-08-25 | `ai-seo-wordpress` | 2026-06-11 | v27 → v28 | 2 485 | 5 | 4 | **2,0 → 0,0** | 8 | +4 |
+| 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -515,3 +516,19 @@ Technický článek, a podle toho i vady: **anglická vazba s českou koncovkou*
 **Ponecháno:** „Schema Custom Editor“ — název funkce v AIOSEO. Kvůli němu zúženo pravidlo `\bcustom\w*\b`, aby nehlásilo názvy funkcí (`Custom Editor`, `Custom Fields`, `Custom Post`, `Custom Taxonomy`).
 
 **Nová pravidla v28:** `\blive search\b|\bsearch agent\b` (⛔) · `\bkategoriov\w+ text\w*`, `\bkrátk\w+ bio\b`, `\btheme update\b|\bsecurity plugin\w*` (⚠️). Zároveň smazáno **duplicitní** pravidlo na „brand mentions“ z v25 — starší pravidlo rozšířeno o „brand zmínky“, aby stejný nález nehlásily dva řádky.
+
+### 39 · autorsky-profil-pro-ai (2026-08-25)
+
+První článek, kde **LLM průchod nenašel nic** — všech 13 zásahů odhalila mechanická kontrola. Zásluhu má pravidlo přidané o článek dřív: `bio` z běhu 38 tady zabralo **desetkrát**, protože článek je celý o autorských profilech.
+
+| Bylo | Je | Kolikrát |
+|---|---|---|
+| „jednu až dvě věty **bio**“, „stránka s **bio**“, „konzistentní **bio**“, „bez **bio**“ | „medailonku / s medailonkem / stejný medailonek / bez medailonku“ | 8 |
+| `label: "Bio a kvalifikace"`, `text: "Bio s konkrétní zkušeností…"` | „Medailonek a kvalifikace“, „Medailonek s konkrétní zkušeností“ | 2 |
+| `„…"` (Redakce, citace, usadí) | `„…“` | 3 |
+
+Slovo **medailonek** drží pád i rod ve všech vazbách (s medailonkem, bez medailonku, stejný medailonek) — u „bio“ to nešlo, protože rod nemá; odtud i původní „krátkou bio“.
+
+**Pravidlo rozšířeno (v29):** `\bkrátk\w+ bio\b` → `\bbio\b(?![ ]?[(-])`, aby chytalo i samostatné „bio“, ale nehlásilo biopotraviny a názvy s „bio-“.
+
+**Do fronty na doauditování:** samostatné „bio“ je ještě ve třech dosud neauditovaných článcích (`caste-chyby-v-seo-2026-update`, `geo-optimalizace`, `seo-audit-co-kontrolovat`).
