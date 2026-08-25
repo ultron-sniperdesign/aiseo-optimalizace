@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 26** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 36/147, revize) · audituje skill `cestina-audit`
+> **Verze: 27** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 37/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -266,6 +266,10 @@
 | ✅ | `\btransparentn\w+` | — | „transparentní ceník / nabídka“ je zavedená česká obchodní mluva (transparentní účet, transparentní výběrové řízení), ne kalk | kolik-stoji-ai-seo 2026-08-25 |
 | ✅ | `\bseparátní\w*` | — | **Rozhodnutí uživatele 25. 8. 2026:** „separátní“ je relativně normální české slovo, ne latinismus k odstranění | kolik-stoji-ai-seo 2026-08-25 |
 | ✅ | `\bdohledan\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „dohledaný“ je běžné české slovo (dohledat zdroj), ne strojový obrat | revize 2026-08-25 |
+| ✅ | `\bvolatil\w+` | — | „volatilita/volatilní“ je v češtině zavedené (i mimo finance) a čtenáři srozumitelné; vada by byl až prázdný žargon | ai-citace-reddit 2026-08-25 |
+| ⛔ | `\bpromov(at|uje|ala?|ovat)\b` | propagovat | slangový kalk z „promote“; česky se propaguje | ai-citace-reddit 2026-08-25 |
+| ⚠️ | `\balgoritmick\w+ posun\w*` | změna algoritmu | doslovný převod „algorithmic shift“ | ai-citace-reddit 2026-08-25 |
+| ⚠️ | `\b(Splňte|Splníte) to přes\b` | toho dosáhnete čím | kalk z „through“; česky se cíle dosahuje, ne „přes“ | ai-citace-reddit 2026-08-25 |
 | ⛔ | `\bblog post\w*` | článek na blogu, blogový článek | anglicismus tam, kde čeština má běžné slovo | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bguide\b(?! *`)` | průvodce | anglické slovo v české větě („Google guide“, „ve svém guide“); **výjimka:** URL a klíčová slova | aeo-geo-je-porad-seo 2026-08-25 |
 | ⚠️ | `\bfundamentáln\w+ (SEO|obsah\w*)` | základy SEO, základní | publicistický kalk z „fundamental“ | aeo-geo-je-porad-seo 2026-08-25 |

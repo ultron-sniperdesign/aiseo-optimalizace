@@ -34,6 +34,7 @@
 | 34 | 2026-08-25 | `kolik-stoji-ai-seo` | 2026-06-10 | v21 → v23 | 1 689 | 1 | 4 | **0,6 → 0,0** | 6 (+1 zpětně) | +4 |
 | 35 | 2026-08-25 | `znacka-na-wikipedii-pro-ai` | 2026-06-10 | v23 → v24 | 2 448 | 12 | 8 | **4,9 → 0,0** | 16 | +9 |
 | 36 | 2026-08-25 | `aeo-geo-je-porad-seo` | 2026-06-11 | v24 → v26 | 2 164 | 15 | 5 | **6,9 → 0,0** | 36 | +4 |
+| 37 | 2026-08-25 | `ai-citace-reddit` | 2026-06-11 | v26 → v27 | 2 341 | 4 | 6 | **1,7 → 0,0** | 10 | +4 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -477,3 +478,20 @@ Titulek zkrácen na 43 znaků (limit 60), popis 106 znaků (limit 70–160), slu
 **Revize v26 — rozhodnutí uživatele 25. 8. 2026:** „unikátní“ i „dohledaný“ jsou běžná česká slova. Sedm náhrad vráceno (4× „jedinečný“ → zpět „unikátní“, 3× „nalezený“ → zpět „dohledaný“; opravená vazba ve větě o RAG zůstala). Pravidlo `\bunikátn\w+` přeřazeno ze ⛔ **vaty** na ✅ s upřesněním: **vada je prázdný nárok** („unikátní řízení“ bez doložení), **ne slovo samo**. Pravidlo `\bdohledan\w+ zdroj\w*` zrušeno a nahrazeno ✅.
 
 Kontrola korpusu: žádný dřívější audit „unikátní“ na „jedinečný“ neměnil (`git log -S`), takže revert se týkal jen tohoto článku.
+
+### 37 · ai-citace-reddit (2026-08-25)
+
+Čistý článek: čtyři strojové nálezy byly zase jen nezavřené české uvozovky (dvě řádky, čtyři páry). LLM průchod přidal šest formulací, z nichž jedna byla **vnitřně rozporné pojmenování kroku**.
+
+| Bylo | Je | Proč |
+|---|---|---|
+| `„…"` na 2 řádcích (4 páry) | `„…“` | rovná uvozovka místo české |
+| „ChatGPT po **algoritmickém posunu** méně“ | „ChatGPT po **změně algoritmu** méně“ | doslovný převod „algorithmic shift“ |
+| krok „**Aktivní pasivní fáze**“ | krok „**Zapojení bez propagace**“ | protimluv; název kroku říkal opak toho, co popisuje |
+| „**Splňte to přes** komentáře a hlasování“ | „**Toho dosáhnete** komentáři a hlasováním“ | kalk z „through“ |
+| „**Promovat** zároveň napříč mnoha subreddity“ (2×) | „**Propagovat se** zároveň…“ | slangový kalk z „promote“ |
+| „**CZ profesní síť je velká**“ | „**česká profesní síť je tu silná**“ | kostrbatá vazba |
+
+**Ponecháno:** „volatilita / volatilní“ (5×) — v češtině zavedené a čtenáři srozumitelné slovo, ne cizí žargon; zapsáno jako ✅. Dál Reddit, subreddit, karma, upvote, AMA — zavedená mluva platformy.
+
+**Nová pravidla v27:** `\bpromov(at|uje|ala?|ovat)\b` (⛔) · `\balgoritmick\w+ posun\w*`, `\b(Splňte|Splníte) to přes\b` (⚠️) · `\bvolatil\w+` (✅). Korpusová kontrola: „promovat“ ani „algoritmický posun“ nikde jinde v článcích nejsou.
