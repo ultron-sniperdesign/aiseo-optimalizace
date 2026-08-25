@@ -29,6 +29,7 @@
 | 29 | 2026-08-24 | `ai-navstevnost-konverze` | 2026-05-30 | v16 → v17 | 1 538 | 6 | — | **3,9 → 0,0** | 4 | 0 |
 | 30 | 2026-08-24 | `ai-seo-b2b` | 2026-06-01 | v17 → v18 | 1 657 | 9 | — | **5,4 → 0,0** | 8 (5 vráceno) | +3 |
 | 31 | 2026-08-24 | `ai-seo-upgates-shoptet` | 2026-06-05 | v18 → v19 | 2 249 | 8 | 2 | **3,6 → 0,0** | 10 | +1 |
+| 32 | 2026-08-24 | `strukturovana-data-pro-ai` | 2026-06-08 | v19 → v20 | 1 660 | 0 | 1 | **0,0** | 1 | +1 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -301,6 +302,18 @@ LLM průchod s **novým, opatrnějším zadáním** (výslovně: nehlas anglick�
 To druhé nebyl anglicismus, ale **kostrbatá vazba** — dva přívlastky nalepené za sebou bez předložky.
 
 **Změna metodiky po připomínkách:** zadání pro LLM průchod teď obsahuje výslovnou instrukci, že zavedená oborová mluva je v pořádku a hlásit se mají jen kalky, strojové obraty, hybridní slepence a text opsaný z anglických stránek. Výsledek je vidět hned — dva nálezy místo dvaceti, oba oprávněné.
+
+### 32 · strukturovana-data-pro-ai (2026-08-24)
+
+**Strojově nula nálezů** — čtvrtý takový článek korpusu. LLM průchod našel jedinou věc:
+
+| Bylo | Je |
+|---|---|
+| ukázka JSON-LD (**v produkci** obvykle doplníte…) | (**na živém webu** obvykle doplníte…) |
+
+Je to kalk z *in production*. Vývojář ho přečte bez zaváhání, majitel e-shopu ne — a článek je psaný pro toho druhého. Zapsáno jako ⚠️, protože v textu určeném vývojářům by vadit nemuselo.
+
+Za povšimnutí stojí, co článek **nedostal vytknuto**: `schema`, `JSON-LD`, `markup` v názvech typů, `sitemap`, `crawler`. Po úpravě zadání LLM průchod přestal hlásit zavedenou oborovou mluvu a soustředí se na skutečné vady.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
