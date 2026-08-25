@@ -33,6 +33,7 @@
 | 33 | 2026-08-25 | `llms-txt-navod` | 2026-06-08 | v20 → v21 | 1 565 | 1 | 4 | **0,6 → 0,0** | 6 | +4 |
 | 34 | 2026-08-25 | `kolik-stoji-ai-seo` | 2026-06-10 | v21 → v23 | 1 689 | 1 | 4 | **0,6 → 0,0** | 6 (+1 zpětně) | +4 |
 | 35 | 2026-08-25 | `znacka-na-wikipedii-pro-ai` | 2026-06-10 | v23 → v24 | 2 448 | 12 | 8 | **4,9 → 0,0** | 16 | +9 |
+| 36 | 2026-08-25 | `aeo-geo-je-porad-seo` | 2026-06-11 | v24 → v25 | 2 164 | 15 | 5 | **6,9 → 0,0** | 43 | +6 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -449,3 +450,28 @@ Nejvyšší hustota od článku 12 — a **11 z 12 strojových nálezů byla jed
 **Nová pravidla v24:** `\breviewer\w*` (⛔) · `\bnative advertising\b`, `\beditorální\w*`, `\bcoverage\b`, `\blisting\w*`, `\bwireframe \w+ šablon\w+` (⚠️) · `\bPack\b`, `\btop \w+`, názvy rozhraní Wikipedie (✅).
 
 **Do fronty na doauditování** (mimo tento běh, dle pravidla z běhu 34): `coverage` v české větě má ještě `aio-strategie` (6×), `aeo-optimalizace-v-praxi` (2×), `mereni-seo-vykonu-2026`, `caste-chyby-v-seo-2026-update`, `seo-pro-eshopy-ai-era-2026`; `listing*` má `shoptet-produktova-pole-google` (5× — část je „merchant listings“, což je oficiální název typu výsledku a zůstane).
+
+### 36 · aeo-geo-je-porad-seo (2026-08-25)
+
+Nejvíc zásahů od článku 12 — a skoro všechny na **jednom jediném slově**. Článek o oficiálním průvodci Googlu psal o dokumentu důsledně jako o **„guide“**: „Google guide“, „ve svém guide“, „podle guide“, „po vydání guide“ — **24 výskytů v české větě**, včetně titulku, popisku a krátké odpovědi. Přitom hned v úvodu sám používá české „průvodce“. Sjednoceno na **průvodce** se správným skloňováním (v průvodci, podle průvodce, průvodce od Googlu).
+
+| Bylo | Je | Kolikrát |
+|---|---|---|
+| „Google guide“, „v guide“, „podle guide“, „Guide popisuje“ | „průvodce od Googlu“, „v průvodci“, „podle průvodce“, „Průvodce popisuje“ | 24 |
+| `title: "…Co říká Google guide 2026"` | `title: "…Co říká průvodce od Googlu"` | 1 (titulek + H1) |
+| `„…"` rovná uvozovka | `„…“` | 11 párů na 6 řádcích |
+| „unikátní obsah / Unikátní, hodnotný obsah“ | „jedinečný obsah / Jedinečný, hodnotný obsah“ | 4 |
+| „brand mentions“, „brand zmínky“ | „zmínky o značce“ | 4 |
+| „zveřejnil i **blog post**“ | „zveřejnil i **článek na blogu**“ | 1 |
+| „z **dohledaných** zdrojů“ | „ze zdrojů **nalezených** v Search indexu“ | 3 |
+| „splňuje **jak Google AI Overviews podmínky**, tak i…“ | „splňuje **jak podmínky pro Google AI Overviews**, tak…“ | 2 |
+| „Držet se **fundamentálního SEO**“ | „Držet se **základů SEO**“ | 1 |
+| „u některých nástrojů **může přínos být**“ | „u některých nástrojů **přínos mít mohou**“ | 1 |
+| „Claude a **Gemini konkurentech**“ | „Claude a **Gemini**“ | 1 |
+| „**Neděláme čistě „AEO/GEO“ prázdné nálepky**“ | „**Neprodáváme prázdné nálepky „AEO/GEO“**“ | 1 |
+
+Titulek zkrácen na 43 znaků (limit 60), popis 106 znaků (limit 70–160), slug beze změny.
+
+**Ponecháno:** anglické citace z dokumentace Googlu (mask `CITACE_EN` je po opravě uvozovek konečně chytil), název dokumentu, URL s `ai-optimization-guide`, klíčové slovo „google ai optimization guide“ ve frontmatteru.
+
+**Nová pravidla v25:** `\bblog post\w*` (⛔) · `\bguide\b`, `\bfundamentáln\w+ SEO`, `\bdohledan\w+ zdroj\w*`, `\bjak … podmínky, tak`, `\bbrand (mentions|zmínky)\b` (⚠️).
