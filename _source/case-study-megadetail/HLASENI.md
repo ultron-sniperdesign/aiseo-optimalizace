@@ -132,3 +132,75 @@ Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou oprav
   **Gliptone** vedená jako „Glipton" v názvu i slugu.
 - Rozpor v popisu produktu Black Mamba Heavy Duty Gloves: v jednom odstavci „černé rukavice",
   o kus dál „vyrobeny ve žluté barvě s vysokou viditelností".
+
+---
+
+## Hlášení 2026-08-25
+
+| Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
+|---|---|---|---|
+| 2026-08-24 | metadata kategorií | **313× přepsán `name_h1`** v CZ mutaci. Podklad: audit H1 všech **1 434** kategorií CZ (1 031 vyhodnoceno jako OK, **403** k opravě: 177 „nadpis neříká, na co produkt je", 92 prázdných H1, 77 překlepů, 31 pouze značka bez sortimentu, 26 obecných). Ze 403 návrhů jich uživatel schválil 313 (sekce Left menu, Autokosmetika, Slovník pojmů, EXTERIÉR, INTERIÉR, LEŠTĚNÍ, PŘÍSLUŠENSTVÍ, VYBAVENÍ GARÁŽE, ZNAČKY, Bottom menu, MEGA KOMUNITA). Pravidlo H1: z nadpisu musí být jednoznačné, jaké produkty kategorie obsahuje, bez další informace. 180 z návrhů bylo před schválením přepsáno ověřovacím průchodem proti reálným produktům v kategorii. | zapsáno jen `name_h1`, `name` ani `seo_url` se neměnily → žádné přesměrování nebylo potřeba; ověřeno 313/313 přes API + namátkově na živých stránkách |
+| 2026-08-24 | technika / nastavení kategorií | Opraveno `type_of_items` u **NEW-412 Ředicí láhve, odměrky a postřikovače** z hodnoty `default` na `withoutSubcategories`. Kategorie měla celou dobu přiřazených **94 živých produktů**, ale kvůli rozbitému nastavení je nezobrazovala. | hodnotu `default` mělo na celém e-shopu jen **5 kategorií a všech 5 bylo rozbitých** (zbylé 4 — KiurLab, Epoca, Meclube, Biemmedue — vracely 404 a nemají jediný produkt, ani archivovaný) |
+| 2026-08-24 – 08-25 | katalog / zařazení produktů | Do **16 prázdných kategorií** doplněny produkty: **1 372 zařazení** na **900 unikátních produktů** (PUT na produkt, vždy celá stávající sada kategorií + nová jako vedlejší; hlavní kategorie se nikde neměnila). Kategorie: Odmašťovače, Odstraňovače škrábanců, Sady příslušenství, Gyeon PPF EVO, Antifog, Extraktor, Keramika na skla, Metoda dvou kbelíků, Ruční mytí auta, Autokosmetika, Autokosmetika Profi, Profesionální autokosmetika, Nejlepší autokosmetika, Autokosmetika Praha, Autokosmetika pro odstranění usazené špíny, Tašky na leštičky. | počty ověřené na živém webu (unikátní produktové URL napříč stránkováním), ne z API |
+| 2026-08-25 | obsah kategorií | **5 kategorií psaných od nuly** stejnou pipeline jako minulé vlny: keyword research (Marketing Miner) → ověření sortimentu z lokálního katalogu → draft → 2× GPT audit → validace interních odkazů → zápis → zpětné ověření. Struktura 5× H2, dělení 2 sekce nad produkty / 3 pod produkty. Délka (bez HTML) **2 091–2 296 zn., průměr 2 202**. Kategorie: Autokosmetika interier (327 produktů), Autokosmetika Profi (281), Profesionální autokosmetika (281), Autokosmetika na kůži (80), Nejlepší autokosmetika (60). | jedna kategorie = jeden běh; bez FAQ bloku a bez strukturovaných dat |
+
+**Stav celku: 1 194 z 1 361 produktových kategorií v CZ mutaci má text (k 2026-08-25).**
+Předchozí hlášený stav: 1 191 z 1 381 (2026-08-20). Jmenovatel klesl o **20** — během práce mazal
+kategorie i někdo jiný. Doložit umím **8 smazání** (Epoca, Meclube, Biemmedue a pět kategorií větve
+Ultracoat keramických ochran), zbylých ~12 **nedopočítávám**, protože k nim nemám vlastní záznam.
+V tomto vlákně vzniklo **5** nových textů (+3 v čitateli oproti minulému hlášení; rozdíl opět
+nedopočítávám).
+
+Doplňující čísla k 2026-08-25 (stejná metoda měření jako v minulých hlášeních):
+- **167** produktových kategorií zůstává bez textu. Z toho 82 má 5+ produktů, 50 má 1–4 produkty,
+  21 je prázdných a 19 vrací 404.
+- **60 kategorií je prázdných** (0 produktů na živé stránce), z toho 53 je zapnutých v menu
+  a 29 už má napsaný text — popisují tedy sortiment, který na stránce není.
+- Definice nezměněné: produktová kategorie = `type == siteWithProducts`, má `url`, název nezačíná
+  znakem rozcestníku. „Má text" = neprázdné `description_text` **nebo** meta `text_pod_produkty`.
+
+Metodická poznámka: kategorie **Nejlepší autokosmetika** není redakční výběr. Vznikla z analýzy
+**4 460 reálných objednávek** za 6 měsíců (2026-02-25 – 2026-08-25), sečtením prodaných kusů
+podle produktu; do kategorie šlo 60 nejprodávanějších kosmetických položek. Důvod: pole `rating`
+má v katalogu vyplněné **5 produktů ze 4 335** a štítky typu „nejprodávanější" API neexportuje —
+jiný datový podklad pro „nejlepší" na e-shopu neexistuje.
+
+Poznámka k obsahu pro AI: druhé kolo auditu i v této vlně zachytilo věcné chyby opravené před
+zápisem — (1) odstraňovače polétavé rzi zařazené ke kyselé chemii, ačkoli pracují chemickou reakcí
+se železem a bývají pH neutrální; (2) tvrzení, že velkoobjemová balení jsou koncentráty, ačkoli
+v kategorii je 40 hotových roztoků a jen 6 produktů má koncentrát v názvu; (3) statistika
+„až třetina škrábanců na plastech jsou usazeniny" doložená jediným blogem — číslo vypuštěno.
+Auditor se naopak dvakrát mýlil (tvrdil, že kategorie neobsahuje alcantaru a že nemá kyselou
+chemii) — obojí ověřeno proti katalogu a jeho námitka zamítnuta. Strukturovaná data ani FAQ bloky
+nadále nasazené **nejsou**.
+
+### Diagnostika: proč jsou kategorie prázdné (nový poznatek této vlny)
+Prázdná kategorie má na tomto e-shopu **tři různé příčiny** a každá se řeší jinak:
+1. **`archived_yn: true` u produktů** — v API vypadají aktivně (`active_yn: true`), ale e-shop je
+   nezobrazuje. Z 4 766 „aktivních" produktů je **431 archivovaných**. Tímhle je způsobeno
+   11 prázdných kategorií; zařazením se řešit nedají.
+2. **`type_of_items: "default"`** — rozbité nastavení kategorie (viz výše, 5 případů).
+3. **Nic nepřiřazeno** — jediný případ, kdy má doplňování produktů smysl.
+
+Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou opravené, jen předané):
+- **AVA of Norway se vypíná**: ze 100 produktů značky je **91 archivovaných**, živých zbývá 9.
+  Řady AVA Easy, GO i Master jsou archivované celé, jejich kategorie proto zejí prázdnotou.
+- **CarPro je na 11 živých produktech** (DLight, WheelX, DQUARTZ GO, jeden sušicí ručník).
+  Značková větev má přitom podkategorie na štětce a kartáče, které značka nevede.
+- **Ultracoat se vypíná**: 7 ze 14 produktů archivováno.
+- **ADBL „Parfémy do auta" je duplicita** k ADBL „Osvěžovače vzduchu" — všech 12 ADBL Magic Mist
+  je ve druhé jmenované. Kandidát na zrušení.
+- **8 zapnutých kategorií vracelo 404**, z toho **3 měly odkaz přímo z hlavní stránky**
+  (Epoca, Meclube, Biemmedue). Ověřeno nálezem `href` v HTML titulní strany. Mezitím smazány.
+- **KAT-060 „Univerzální čističe (APC)"** (`/cistice-karoserie-a-exterieru-auta`) je vypnutá
+  (`active_yn: false`) → 404, **bez přesměrování**. Podle Search Console má za posledních 180 dní
+  **132 zobrazení** (57 za 28 dní) na dotazy „víceúčelový čistič apc" (pozice 12,2), „cistic
+  karoserie" (pozice 11) a další. Pod EXTERIÉREM po ní nezůstal nástupce. Buď oživit, nebo starý
+  slug zapsat do `redirect_301` živé APC kategorie.
+- **Duplicita `/autokosmetika-profi` × `/profesionalni-autokosmetika`** — obě mají **identických
+  281 produktů**. Dostaly různě vedené texty, aby si nekonkurovaly doslova, ale správné řešení je
+  sloučit a jednu přesměrovat.
+- **H1 kategorie „Nejlepší autokosmetika" slibuje leštění**, které v ní není — mezi 60 bestsellery
+  není jediná lešticí pasta ani leštička. Návrh: „Nejlepší autokosmetika na mytí, čištění a ochranu auta".
+- Překlepy v názvech kategorií: **„Autokosmetika pro motorvý prostor"**, **„🔥 Péče o plasty od
+  Auto Finese"**.
