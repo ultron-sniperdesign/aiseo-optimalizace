@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 45** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 70–79/147) · audituje skill `cestina-audit`
+> **Verze: 47** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 80–89/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -208,7 +208,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\banswer block\w*\b` | krátká odpověď | glosář v CLAUDE.md § X. Regex musí pokrýt **skloňované tvary** („answer blockem“) — bez toho unikl výskyt v článku 4 | seed 2026-08-23, rozšířeno 2026-08-23 |
-| ⛔ | `\bschema markup\w*\b` | strukturovaná data | glosář v CLAUDE.md § X | seed 2026-08-23 |
+| ⛔ | `\bschema markup\w*` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech | seed 2026-08-23, výjimka 2026-08-26 |
 | ⛔ | `\bhub-and-spoke\w*\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
 
 ## 6. Typografie a interpunkce
@@ -275,6 +275,11 @@
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bkredencial\w*` | doložitelná kvalifikace | neustálený přepis „credentials“ | ymyl-obsah-pro-ai 2026-08-26 |
+| ⛔ | `\bnehypeov\w+|\bhypeov\w+` | střízlivý, bez marketingové omáčky | počeštěné „hype“ s českou příponou | core-web-vitals-pro-ai 2026-08-26 |
+| ⛔ | `\b\w*crouluj\w*|\bcrawluj\w*` | projít, stáhnout stránku | počeštěné sloveso z „crawl“ | core-web-vitals-pro-ai 2026-08-26 |
+| ⚠️ | `\bznačka nevyšla\b|\bnevyšl\w+ v odpovědi\b` | značka se neobjevila | překladový obrat | ai-seo-zdarma 2026-08-26 |
+| ⚠️ | `\bstandard důvěry\b` | nároky na důvěryhodnost | kalk „standard of trust“ | ymyl-obsah-pro-ai 2026-08-26 |
 | ⛔ | `\bprokliká(ní|vání)\b` | klikání v rozhraní | počeštěné podstatné jméno ze slovesa, zní nečesky | produktovy-feed-gtin 2026-08-26 |
 | ⚠️ | `\budržovat \w+ živ\w+|\budržujte \w+ živ\w+` | udržovat aktivní | kalk z „keep alive“ | recenze-srovnavace-pro-ai 2026-08-26 |
 | ⚠️ | `\bz definice\b` | ze své podstaty | nalepený obrat z angličtiny („by definition“) | produktovy-feed-gtin 2026-08-26 |
@@ -324,6 +329,7 @@
 | ✅ | `\bPack\b` | — | krátký název produktu **AI SEO Wireframe Pack**, ustálený napříč webem (4 články) — vlastní jméno, ne anglicismus | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ✅ | `\btop\w*` | — | **Rozhodnutí uživatele 26. 8. 2026:** „top“ je běžný výraz — „top 10“, „top zdroje“, „TOP stránky“. Dřívější ⚠️ pravidlo na „top stránky / top kategorie“ zrušeno | znacka-na-wikipedii-pro-ai 2026-08-25, rozšířeno 2026-08-26 |
 | ✅ | `\bbenefit\w*` | — | **Rozhodnutí uživatele 26. 8. 2026:** „benefit“ je v češtině normální výraz (benefity zaměstnancům, benefit produktu) | 2026-08-26 |
+| ✅ | `\bplaybook\w*|\btracker\w*|\bretainer\w*|\bškálov\w+` | — | zavedená česká agenturní a technická mluva; opakovaně potvrzeno rozhodnutími uživatele o téže třídě výrazů | 2026-08-26 |
 | ✅ | `\bautoconfirmed\b|\bPaid\b|\binstance of\b` | — | názvy oprávnění, šablon a polí Wikipedie/Wikidat — vlastní jména rozhraní (§ 8) | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
@@ -386,3 +392,5 @@
 
 
 **Rozlišení názvu od kalku velikostí písmen.** Checker porovnává bez ohledu na velikost, takže „Share of Model“ (název metriky) a „share dotazů“ (kalk) spadnou pod stejné pravidlo. Když je rozdíl právě ve velikosti, napiš do regexu `(?-i:…)` — uvnitř té skupiny se velikost **respektuje**. Použito u `share of voice`. Pozor: v tabulce se roury `|` píšou **bez zpětného lomítka**, jinak z alternace vznikne literál a pravidlo přestane fungovat (stalo se 26. 8. 2026).
+
+**Výjimka pro jeden článek.** Když je termín vadou obecně, ale v jednom článku je to téma („schema markup“ v `schema-markup-ai-citace-test`, „Share of Model“ v `share-of-model-metrika`), napiš do pravidla marker `[skip:slug]` (víc slugů odděl čárkou). Checker pravidlo pro ten soubor vynechá, jinde platí dál.

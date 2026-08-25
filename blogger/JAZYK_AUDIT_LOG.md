@@ -77,6 +77,16 @@
 | 77 | 2026-08-26 | `multimodalni-vyhledavani-ai` | 2026-07-19 | v44 | — | 0 | 2 | **0,0** | 2 | — |
 | 78 | 2026-08-26 | `recenze-srovnavace-pro-ai` | 2026-07-19 | v44 → v45 | 2 000 | 7 | 1 | **3,5 → 0,0** | 8 | +1 |
 | 79 | 2026-08-26 | `seznam-asistent-sellma` | 2026-07-19 | v44 | 1 250 | 2 | 5 | **1,6 → 0,0** | 2 | — |
+| 80 | 2026-08-26 | `ai-seo-agentura-sluzby` | 2026-07-20 | v46 | — | 0 | 1 | **0,0** | 0 | — |
+| 81 | 2026-08-26 | `roi-ai-seo` | 2026-07-20 | v46 | 1 950 | 1 | 3 | **0,5 → 0,0** | 2 | — |
+| 82 | 2026-08-26 | `organization-schema-pro-znacku` | 2026-07-21 | v46 | — | 0 | 4 | **0,0** | 3 | — |
+| 83 | 2026-08-26 | `pr-pro-ai-citace` | 2026-07-22 | v46 | 2 000 | 8 | 2 | **4,0 → 0,0** | 8 | — |
+| 84 | 2026-08-26 | `ai-friendly-url-struktura` | 2026-07-23 | v46 | 1 960 | 10 | 0 | **5,1 → 0,0** | 10 | — |
+| 85 | 2026-08-26 | `ai-seo-zdarma` | 2026-07-23 | v46 → v47 | 2 060 | 7 | 6 | **3,4 → 0,0** | 8 | +1 |
+| 86 | 2026-08-26 | `core-web-vitals-pro-ai` | 2026-07-24 | v47 | 1 950 | 9 | 3 | **4,6 → 0,0** | 11 | +2 |
+| 87 | 2026-08-26 | `ymyl-obsah-pro-ai` | 2026-07-24 | v47 | 1 700 | 6 | 5 | **3,5 → 0,0** | 11 | +2 |
+| 88 | 2026-08-26 | `schema-markup-ai-citace-test` | 2026-07-25 | v46 | 1 600 | 8 (5 planých) | 0 | **5,0 → 0,0** | 3 | +výjimka |
+| 89 | 2026-08-26 | `seo-vs-ai-citace-platformy` | 2026-07-25 | v46 | 1 600 | 4 | 1 | **2,5 → 0,0** | 5 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -772,6 +782,31 @@ Poučení: **build je jediná pojistka proti tomu, aby dávková oprava uvozovek
 **Co jsem u `seznam-asistent-sellma` NEopravil, i když to LLM navrhl:** „obchodní kanál“, „parametry modelu“, „který model text formuluje“, „s vaší viditelností hýbou zdroje dat“, „řádek pro vyhledávač“. Všechno je to běžná česká odborná nebo publicistická mluva — po sedmi korekcích od uživatele je jasné, kde je hranice: **hlásí se kalk, ne styl.**
 
 **Nová pravidla v45:** `\bprokliká(ní|vání)\b` (⛔) · `\budržovat/udržujte … živé`, `\bz definice\b`, `\bsilně závislý na\b` (⚠️).
+
+
+### 80–89 · čtvrtá dávka deseti (2026-08-26)
+
+**Nová schopnost nástroje: výjimka pro jeden článek.** `schema-markup-ai-citace-test` je článek *o termínu* „schema markup“ — má ho v titulku, v klíčových slovech i v otázce, na kterou odpovídá. Pravidlo `\bschema markup\w*` ho proto hlásilo pětkrát a přeložit ho nešlo. Checker teď rozumí markeru **`[skip:slug]`** v pravidle: pro uvedené soubory se pravidlo vynechá, jinde platí dál. Návod je v § 9 slovníku.
+
+**Nejzajímavější nálezy dávky — počeštěná anglická slovesa a přepisy:**
+
+| Bylo | Je | Kde |
+|---|---|---|
+| „konkrétní a **nehypeový**“ | „konkrétní a **střízlivý**“ | core-web-vitals |
+| „stránku **nedocrouluje** vůbec“ | „stránku **neprojde** vůbec“ | core-web-vitals |
+| „ověřitelné **kredencials** autora“ (5×) | „**doložitelná kvalifikace** autora“ | ymyl-obsah |
+| „**po dobré prahy**, a pak přestat“ | „**na dobré prahy**, a pak přestat“ | core-web-vitals |
+| „běh, ve kterém vás **značka nevyšla**“ | „ve kterém se **vaše značka neobjevila**“ | ai-seo-zdarma |
+| „očekává vyšší **standard důvěry**“ | „vyšší **nároky na důvěryhodnost**“ | ymyl-obsah |
+| „CiteLens **pustila** 320 dotazů **přes** ChatGPT“ | „**položila** 320 dotazů **v** ChatGPT“ | seo-vs-ai-citace |
+| „stojí na **výkladovém mapování**“ | „stojí na **mapování, které jsme odvodili**“ | organization-schema |
+| „strojově čitelný **náznak** té vazby“ | „strojově čitelný **údaj o té vazbě**“ | organization-schema |
+
+**Co jsem nechal být:** „playbook“, „tracker“, „retainer“, „škálovat“, „sebejistá procenta“, „ležet na stole“, „silné E-E-A-T“ — zavedená agenturní a technická mluva, případně autorský styl. Zapsáno jako ✅, aby to LLM nehlásil znovu.
+
+**Zpětná oprava driftu:** `strukturovana-data-pro-ai` (běh 32) měl „blog post“, což je pravidlo z v25 — doopraveno.
+
+**Nová pravidla v47:** `\bkredencial\w*`, `\bnehypeov\w+`, `\b\w*crouluj\w*` (⛔) · `\bznačka nevyšla\b`, `\bstandard důvěry\b` (⚠️) · `playbook|tracker|retainer|škálovat` (✅).
 
 ---
 

@@ -116,6 +116,10 @@ def main():
         rules = [r for r in rules if r['level'] == args.uroven]
 
     text = open(args.soubor, encoding='utf-8').read()
+    slug = os.path.basename(args.soubor).removesuffix('.mdx')
+    # pravidlo muze mit v posledni bunce marker [skip:slug1,slug2] — pro ten clanek se nehlasi
+    rules = [r for r in rules
+             if slug not in [x.strip() for m in re.findall(r'\[skip:([^\]]+)\]', r['why'] + ' ' + r['src']) for x in m.split(',')]]
     hits, words = [], 0
     for n, raw in body_lines(text):
         line = mask(raw)

@@ -112,7 +112,7 @@ U jednoduchého firemního webu je to jedna stránka a jeden blok. Složitějš�
   rightTone="accent"
   rows={[
     { icon: "🏷️", label: "name a alternateName", left: "Jméno, pod kterým vás lidé znají, a zkratka či varianta", right: "Nejčastější tvar, kterým vás někdo hledá" },
-    { icon: "⚖️", label: "legalName", left: "Obchodní firma přesně podle rejstříku", right: "Nese oficiální název z rejstříku; spolu s name a sameAs je to na webu často jediný strojově čitelný náznak té vazby" },
+    { icon: "⚖️", label: "legalName", left: "Obchodní firma přesně podle rejstříku", right: "Nese oficiální název z rejstříku; spolu s name a sameAs je to na webu často jediný strojově čitelný údaj o té vazbě" },
     { icon: "🖼️", label: "logo", left: "Odkaz na soubor s logem", right: "Google uvádí, že ovlivňuje, které logo se ukáže ve výsledcích a ve znalostním panelu" },
     { icon: "🔗", label: "sameAs", left: "Profily, které jednoznačně ukazují tutéž firmu", right: "Podle definice jde o jednoznačnost identity, ne o počet odkazů" },
     { icon: "🧾", label: "taxID a vatID", left: "IČO a DIČ s prefixem CZ", right: "Administrativní identifikátory, které jsou pro každou firmu jedinečné; v ČR se vykládají jako IČO a DIČ" },
@@ -164,7 +164,7 @@ Prakticky z toho plyne rozhodnutí: pokud mapování použijete, dělejte to kon
 }
 ```
 
-Ukázka kombinuje běžné položky s volitelnými — `taxID` a `vatID` stojí na výkladovém mapování z předchozí části, `sameAs` závisí na tom, kde firma opravdu je. `@id` je stabilní identifikátor, na který pak odkazujete z dalších dat — třeba jako `publisher` u článků. Mechaniku `@id` rozebírá článek o [Person datech pro autora](/blog/person-data-pro-autora/), u firmy funguje stejně.
+Ukázka kombinuje běžné položky s volitelnými — `taxID` a `vatID` stojí na mapování, které jsme odvodili v předchozí části, `sameAs` závisí na tom, kde firma opravdu je. `@id` je stabilní identifikátor, na který pak odkazujete z dalších dat — třeba jako `publisher` u článků. Mechaniku `@id` rozebírá článek o [Person datech pro autora](/blog/person-data-pro-autora/), u firmy funguje stejně.
 
 Související: [ostatní typy strukturovaných dat](/blog/strukturovana-data-pro-ai/) · [profil na Firmy.cz](/blog/firmy-cz-pro-ai/) · [značka na Wikipedii a ve Wikidatech](/blog/znacka-na-wikipedii-pro-ai/).
 
@@ -184,7 +184,7 @@ Související: [ostatní typy strukturovaných dat](/blog/strukturovana-data-pro
 
 <MistakeGrid>
   <Mistake num="01" title="Nevědět, co web vypisuje">
-    Google doporučuje domovskou nebo jednu stránku popisující organizaci. Je-li blok konzistentní a správný, opakování samo o sobě doložený problém není — řešte hlavně rozpory mezi verzemi a to, že o obsahu svých dat pak nerozhodujete vy, ale plugin.
+    Google doporučuje domovskou nebo jednu stránku popisující organizaci. Je-li blok konzistentní a správný, opakování samo o sobě doložený problém není — řešte hlavně rozpory mezi verzemi a to, že o tom, co v datech je, pak nerozhodujete vy, ale plugin.
   </Mistake>
   <Mistake num="02" title="sameAs jako odkazovník">
     Definice mluví o stránce, která **jednoznačně ukazuje identitu**. Není to sekce „naše profily“ a počet odkazů není skóre.

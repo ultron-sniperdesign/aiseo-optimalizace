@@ -62,14 +62,14 @@ import Checklist from "~/components/blocks/Checklist.astro";
 
 **AI-friendly URL struktura znamená krátkou, popisnou a stabilní adresu bez zbytečných parametrů — tedy přesně to, co doporučuje klasické SEO.** Pro URL jako samostatný signál pro AI není důkaz; pomáhá nepřímo přes běžné SEO mechanismy, hlavně dostupnost obsahu ve vyhledávačích a čitelnost pro lidi. Žádný zvláštní AI trik to není.
 
-Kolem „AI-friendly URL" se dá snadno prodat dojem, že existuje tajný způsob, jak adresu naladit na modely. Nenajdete ho tady, protože žádný doložený není. Zato tu najdete, co na URL dává smysl doopravdy — a proč byste na starém webu neměli sahat.
+Kolem „AI-friendly URL“ se dá snadno prodat dojem, že existuje tajný způsob, jak adresu naladit na modely. Nenajdete ho tady, protože žádný doložený není. Zato tu najdete, co na URL dává smysl doopravdy — a proč byste na starém webu neměli sahat.
 
 ## Nejdřív narovnat: žádný zvláštní AI signál
 
-Obecné návody rády tvrdí, že „modely preferují popisné URL". Když se ale podíváte, o co se to opírá, je to optimalizační doporučení, ne otestovaný efekt. Tvrdá data o tom, co žene citace v AI, ukazují jinam: autorita značky, kvalita obsahu, čerstvost a srozumitelná struktura textu.
+Obecné návody rády tvrdí, že „modely preferují popisné URL“. Když se ale podíváte, o co se to opírá, je to optimalizační doporučení, ne otestovaný efekt. Tvrdá data o tom, co žene citace v AI, ukazují jinam: autorita značky, kvalita obsahu, čerstvost a srozumitelná struktura textu.
 
 <Insight tone="accent">
-Dobrý test skepse: loni proběhla velká kauzální studie u strukturovaných dat — přes tisíc stránek s přidaným JSON-LD proti tisícům kontrolních. Výsledek byl u citací v AI nulový až mírně záporný a několik modelů schema při vyhledávání ignorovalo. Ta studie se týkala **výhradně JSON-LD, ne URL**; zmiňuji ji jen jako důvod k opatrnosti vůči neověřeným „AI trikům" obecně. Poučení není „nedělejte schema", ale „u technických triků na AI čekejte důkaz, ne slib". U URL žádný takový důkaz zatím není.
+Dobrý test skepse: loni proběhla velká kauzální studie u strukturovaných dat — přes tisíc stránek s přidaným JSON-LD proti tisícům kontrolních. Výsledek byl u citací v AI nulový až mírně záporný a několik modelů schema při vyhledávání ignorovalo. Ta studie se týkala **výhradně JSON-LD, ne URL**; zmiňuji ji jen jako důvod k opatrnosti vůči neověřeným „AI trikům“ obecně. Poučení není „nedělejte schema“, ale „u technických triků na AI čekejte důkaz, ne slib“. U URL žádný takový důkaz zatím není.
 </Insight>
 
 To ale neznamená, že je URL jedno. Znamená to, že pomáhá **jinudy, než se říká.**
@@ -81,7 +81,7 @@ Tři mechanismy, všechny nepřímé a všechny reálné:
 - **Procházení a indexace.** Parametrový chaos, nekonečné varianty a řetězce přesměrování ztěžují procházení a můžou bránit tomu, aby se obsah dostal do indexu. To je jeden z technických předpokladů dostupnosti obsahu — v praxi ale bývá vliv tvaru URL menší než vliv obsahu, interního prolinkování, renderingu a celkové kvality webu.
 - **Lidé, kteří odkaz vidí a sdílejí.** Popisnou adresu si člověk spíš přečte a pošle dál a nese trochu kontextu o tom, co za ní je. Může to nepřímo pomoct distribuci a odkazům — samostatná AI páka to ale není, a na rozdíl od adresy plné náhodných čísel aspoň nic nekazí.
 
-Souvislost, proč je tohle pořád spíš SEO než „AI SEO", rozebírá článek [AEO a GEO je pořád SEO](/blog/aeo-geo-je-porad-seo/).
+Souvislost, proč je tohle pořád spíš SEO než „AI SEO“, rozebírá článek [AEO a GEO je pořád SEO](/blog/aeo-geo-je-porad-seo/).
 
 ## Jak má dobrá adresa vypadat
 
@@ -117,10 +117,10 @@ Dvě věci, které obecné anglické návody neřeší, ale český web na ně n
 
 **Diakritika ve slugu.** Znaky `č`, `ř`, `ž`, `ě` se v adrese zakódují do tvaru se znaky procenta (`%C4%8D`). Moderní systémy to většinou zvládnou, ale výsledek je hůř čitelný a v některých nástrojích nebo při ruční práci s odkazy dělá potíže. Praktičtější je proto přepis do základní latinky: `cesky-clanek`, ne `český-článek`. Adresa je pak čitelná i konzistentní.
 
-**E-shopy s filtry.** Parametrická navigace na Shoptetu, Upgates nebo WooCommerce generuje spoustu URL variant téže kategorie. Neřešte to mazáním filtrů, ale kanonikalizací a pravidly indexace. Pozor ale: **ne každá filtrovaná URL je automaticky špatně** — pokud má vlastní hledanost a unikátní výběr produktů (třeba „běžecké boty do terénu"), může dávat smysl nechat ji indexovat. Canonical není univerzální kladivo. Víc v článku o [produktových stránkách pro AI](/blog/produktove-stranky-pro-ai/).
+**E-shopy s filtry.** Parametrická navigace na Shoptetu, Upgates nebo WooCommerce generuje spoustu URL variant téže kategorie. Neřešte to mazáním filtrů, ale kanonikalizací a pravidly indexace. Pozor ale: **ne každá filtrovaná URL je automaticky špatně** — pokud má vlastní hledanost a unikátní výběr produktů (třeba „běžecké boty do terénu“), může dávat smysl nechat ji indexovat. Canonical není univerzální kladivo. Víc v článku o [produktových stránkách pro AI](/blog/produktove-stranky-pro-ai/).
 
 <Insight tone="warn">
-Nejdůležitější věta pro každého, kdo tohle čte nad existujícím webem: **nepřepisujte adresy kvůli AI.** Změna URL je riziko — rozbité odkazy, ztráta nasbírané autority, chyby v přesměrování. Neprokázaný přínos čisté adresy pro AI to nevyváží. Čisté URL řešte u nových stránek; staré nechte být, pokud vás k migraci netlačí silnější důvod než „prý to pomáhá AI".
+Nejdůležitější věta pro každého, kdo tohle čte nad existujícím webem: **nepřepisujte adresy kvůli AI.** Změna URL je riziko — rozbité odkazy, ztráta nasbírané autority, chyby v přesměrování. Neprokázaný přínos čisté adresy pro AI to nevyváží. Čisté URL řešte u nových stránek; staré nechte být, pokud vás k migraci netlačí silnější důvod než „prý to pomáhá AI“.
 </Insight>
 
 ## Nejčastější chyby
@@ -130,7 +130,7 @@ Nejdůležitější věta pro každého, kdo tohle čte nad existujícím webem:
     Migrace URL na existujícím webu je práce s reálným rizikem výměnou za přínos, který nikdo nedoložil. Skoro vždy špatný obchod.
   </Mistake>
   <Mistake num="02" title="Cpát do URL klíčová slova">
-    Adresa s pětkrát zopakovaným klíčovým slovem nevypadá relevantněji, vypadá spamově a hůř se čte. Popisný slug ano, keyword stuffing ne.
+    Adresa s pětkrát zopakovaným klíčovým slovem nevypadá relevantněji, vypadá spamově a hůř se čte. Popisný slug ano, přeplácání klíčovými slovy ne.
   </Mistake>
   <Mistake num="03" title="Nechat parametrový chaos být">
     Každá kombinace filtrů jako samostatná indexovaná URL dělá nepořádek: u velkých webů plýtvá rozpočtem na procházení, u menších tvoří duplicity a komplikuje výběr kanonické verze. Řešení není jen canonical, ale kombinace s řízením indexace a interním prolinkováním.
@@ -159,7 +159,7 @@ AI-friendly URL je jen **dobrá URL podle klasického SEO** — krátká, popisn
 
 Rozhodnutí je proto podle toho, kde stojíte:
 
-- **Neměnit URL** — když jde jen o estetiku nebo „AI-friendly" pocit a web nemá indexační problém.
+- **Neměnit URL** — když jde jen o estetiku nebo „AI-friendly“ pocit a web nemá indexační problém.
 - **Měnit URL** — jen u migrace, rebrandu, konsolidace skutečných duplicit nebo zásadního nepořádku ve struktuře. Vždy s 301 a opravou interních odkazů.
 - **Nejdřív auditovat** — když tušíte parametrový chaos, řetězce přesměrování, osiřelé stránky nebo filtrované landingy s vlastní hledaností.
 
