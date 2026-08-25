@@ -27,6 +27,7 @@
 | 20 | 2026-08-24 | `bing-seo-pro-ai` | 2026-05-23 | v15 | — | 0 | — | **0,0** | 0 | 0 |
 | 21–28 | 2026-08-24 | série z 24.–26. 5. 2026 (8 článků) | 2026-05-24+ | v15 → v16 | ~15 000 | 34 | — | **prům. 2,5 → 0,1** | 22 | 0 |
 | 29 | 2026-08-24 | `ai-navstevnost-konverze` | 2026-05-30 | v16 → v17 | 1 538 | 6 | — | **3,9 → 0,0** | 4 | 0 |
+| 30 | 2026-08-24 | `ai-seo-b2b` | 2026-06-01 | v17 → v18 | 1 657 | 9 | — | **5,4 → 0,0** | 8 | +3 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -270,6 +271,16 @@ Zpět po jednom článku. 6 nálezů, 4 opravy — všechny se točí kolem **n�
 **Nová výjimka: anglický originál v závorce za českým termínem.** Článek na jednom místě psal „ve výchozí skupině kanálů **(Default Channel Group)**" — a to je **správná forma**, ne vada: čtenář dostane český výraz i to, co uvidí v anglickém rozhraní. Checker závorku od článku 29 maskuje.
 
 Ten nález mi zároveň ukázal, že článek sám měl **obě formy vedle sebe** — na jednom místě správnou českou s originálem, na třech jiných jen anglickou. Právě takové nekonzistence uvnitř jednoho textu jsou to, co audit hledá.
+
+### 30 · ai-seo-b2b (2026-08-24)
+
+9 nálezů ze dvou termínů: `business case` 5× a `research fáze` 4×. 8 oprav.
+
+**Slovník mě tu podruhé málem svedl.** U `business case` navrhoval náhradu **„obchodní problém"** — ta vznikla v článku 1, kde šlo o „řešit AIO jako business problém". Jenže v B2B nákupu je `business case` **interní zdůvodnění nákupu**, tedy podklad pro schválení. Mechanická náhrada by vyrobila nesmysl („staví interní obchodní problém").
+
+Pravidlo teď nese obě náhrady s poznámkou, že volba závisí na kontextu — stejně jako u `listingy` (výpis produktů vs. zápisy v katalozích).
+
+**`shortlist` zůstává jako ✅:** článek termín sám definuje („Vendor shortlist je užší výběr dodavatelů, ze kterého kupec vybírá…"), má ho v titulku i v klíčových slovech a v B2B nákupu je zavedený.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 

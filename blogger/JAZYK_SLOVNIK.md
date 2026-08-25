@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 17** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 29/147) · audituje skill `cestina-audit`
+> **Verze: 18** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 30/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -217,7 +217,7 @@
 
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
-| ⛔ | `\bbusiness (problém|case|model)\b` | obchodní problém | anglicko-český hybrid | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bbusiness (problém|case|model)\b` | obchodní problém; **v B2B kontextu „interní zdůvodnění nákupu"** | anglicko-český hybrid. ⛔ Náhrada závisí na kontextu: „business case" u nákupního procesu není „obchodní problém", ale podklad pro schválení nákupu | jak-vypnout-ai-overview 2026-08-23, upřesněno u článku 30 |
 | ⛔ | `\bweb-?only\b` | jen na webu, režim jen s weby | polovičatý slepenec | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bquery-?level\b` | na úrovni dotazů | totéž | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\baccount-?specific\b` | pro konkrétní účet | totéž | jak-vypnout-ai-overview 2026-08-23 |
@@ -252,7 +252,10 @@
 | ⛔ | `\bcitation (hook|rate)\b` | místo vhodné k citaci, míra citování | agenturní slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbrand exposure\b` | viditelnost značky | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\blong[‑-]?form\b` | dlouhý, rozsáhlý | polovičatý hybrid | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\bresearch fáz(e|i|í|e)\b` | fáze zvažování | hybrid, v článku 3 pětkrát | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bresearch fáz(e|i|í)\b` | fáze zvažování; u B2B „fáze zjišťování" | hybrid | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `\bresearchuj\w*\b` | zjišťovat, hledat informace | počeštěné anglické sloveso | ai-seo-b2b 2026-08-24 |
+| ⛔ | `\bvendor compare\b` | porovnání dodavatelů | anglicismus | ai-seo-b2b 2026-08-24 |
+| ✅ | `\bvendor shortlist\b|\bshortlist\w*\b` | — | článek termín **sám definuje** („Vendor shortlist je užší výběr dodavatelů…“) a má ho v titulku i klíčových slovech; je to zavedený termín B2B nákupu | ai-seo-b2b 2026-08-24 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bbuying[- ]journey\b|\bbuyer'?s? journey\b` | fáze nákupního rozhodování | slepenec | seo-audit-co-kontrolovat 2026-08-23 |
