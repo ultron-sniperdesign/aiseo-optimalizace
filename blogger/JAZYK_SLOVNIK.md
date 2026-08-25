@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 39** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 46/147) · audituje skill `cestina-audit`
+> **Verze: 40** · založeno 2026-08-23 · poslední změna 2026-08-26 (článek 48/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -276,6 +276,7 @@
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bSniperdesign\b` | Sniper Design | název značky se píše **dvěma slovy** (10× v `src/i18n/`); **výjimka:** URL a účty na sítích (`facebook.com/SniperDesign.cz`) | ai-nakupni-agenti 2026-08-26 |
 | ⛔ | `\bodpovědní\w* engin\w*` | odpovědní systémy | mechanický překlad „answer engines“; web i slovník používají „odpovědní systémy“ | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⚠️ | `\bzvyklý vstup\b|\bvstup do internetu\b` | vstupní brána na internet | nepřirozená vazba | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⛔ | `\bpočítá\w* za (origináln|kvalitn|dobr)\w+` | považuje se za, počítá se jako | nečeská vazba „počítat za“ ve významu „považovat za“ | originalni-data-pro-ai 2026-08-25 |

@@ -45,6 +45,7 @@
 | 45 | 2026-08-25 | `seznam-cz-ai-vyhledavani` | 2026-06-11 | v36 → v38 | 2 488 | 1 | 5 | **0,4 → 0,0** | 4 | +3 (2 ✅) |
 | 46 | 2026-08-25 | `test-viditelnosti-v-ai` | 2026-06-11 | v38 → v39 | 3 055 | 2 (oba plané) | 0 | **0,0 → 0,0** | 0 | +1 ✅ (1 zúženo) |
 | 47 | 2026-08-26 | `ai-generovany-obsah-viditelnost` | 2026-07-11 | v39 | 1 485 | 6 (2 plané) | 0 | **4,0 → 0,0** | 4 | +0 (mask rozšířen) |
+| 48 | 2026-08-26 | `ai-nakupni-agenti` | 2026-07-11 | v39 → v40 | 1 581 | 3 | 0 | **1,9 → 0,0** | 3 (+2 zpětně) | +1 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -666,6 +667,15 @@ Pozorování: **články o nástrojích potřebují ve slovníku výjimky na ná
 **Další díra v nástroji (opravena):** dva nálezy na slovo `content` byly plané — stály uvnitř **anglického originálu uvedeného v závorce**: „zneužití masově tvořeného obsahu (v anglické verzi *scaled content abuse*)“. Mask `CITUJE` znal „v angličtině“, ale ne „v anglické verzi“ ani „v originále“. Doplněno. Regresní test na čtyřech hotových článcích: pořád 0.
 
 Tohle je **třetí planý poplach v pěti bězích** (procenta u přídavného jména, názvy nástrojů, teď anglický originál v závorce). Vzorec je jasný: čím delší slovník, tím víc pravidel naráží na místa, kde anglický text být **má**. Proto u každého nálezu nejdřív čtu, *proč tam ten výraz stojí*, a teprve pak sahám na text.
+
+
+### 48 · ai-nakupni-agenti (2026-08-26)
+
+Tři rovné uvozovky (`„Přijdou agenti?"`, `„Jsou moje produktová data úplná a konzistentní?"`, `„vyhrát"`), LLM průchod nic.
+
+**Nález nad rámec jazyka — špatně psaná značka.** V doložce o partnerství stálo „**Sniperdesign** je Zlatý partner platformy Upgates“. Kanonický tvar je **Sniper Design** dvěma slovy — tak ho má `src/i18n/` desetkrát a tak ho píše sedm dalších článků. Jednoslovná varianta byla ve **třech článcích** ve stejné doložce; opraveny všechny tři (`ai-nakupni-agenti`, `chybna-informace-o-firme-v-ai`, `interni-prolinkovani-pro-ai`), i když dva z nich na řadu ještě nepřišly — jde o název firmy, ne o stylistiku, a chyba byla v identické větě.
+
+Nové pravidlo v40: `\bSniperdesign\b` → Sniper Design (⛔), s výjimkou pro URL a účty na sítích (`facebook.com/SniperDesign.cz` je správně).
 
 ---
 
