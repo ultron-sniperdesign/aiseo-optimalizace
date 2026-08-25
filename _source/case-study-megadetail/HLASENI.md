@@ -204,3 +204,64 @@ Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou oprav
   není jediná lešticí pasta ani leštička. Návrh: „Nejlepší autokosmetika na mytí, čištění a ochranu auta".
 - Překlepy v názvech kategorií: **„Autokosmetika pro motorvý prostor"**, **„🔥 Péče o plasty od
   Auto Finese"**.
+
+## Hlášení 2026-08-25 (produktové texty)
+
+Jiná oblast než předchozí bloky: tohle vlákno nepracovalo s kategoriemi, ale s **popisy produktů**
+(pole `short_description` + `long_description` ve slotu `cs`, kontrolní meta `vlastni_ai_text`).
+
+| Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
+|---|---|---|---|
+| 2026-08-24 – 08-25 | produkty / Meguiar's | **206 karet ve 4 dávkách** (50 + 50 + 50 + 56). Tím je značka **Meguiar's kompletní: 256 z 256 karet** má vlastní text. Pipeline na každý produkt zvlášť: načtení stávající karty přes API → research u výrobce → draft → 1. GPT audit → zapracování → 2. GPT audit → finál → 1 PUT na dávku → ověření GETem. Délka dlouhého popisu **550–4 330 zn., průměr 2 386**; perex průměr 232 zn. (rozsah držen 200–340). | žádné dávkové generování, do auditora šel vždy jeden produkt; bez FAQ bloku a bez strukturovaných dat |
+| 2026-08-25 | produkty / ADBL | **145 karet ve 3 dávkách** (50 mytí a dekontaminace + 48 kola, pneumatiky, sklo a ochrana + 47 interiér a kůže). Stav značky: **145 z 223**. Stejná pipeline. Délka dlouhého popisu **1 233–2 619 zn., průměr 1 668**; perex 202–306 zn., průměr 234. | u nářadí (Clay Mitt, Glass Cube) bez benefitové sekce, jen 1 kolo auditu |
+| 2026-08-25 | produkty / SCANGRIP | **6 karet** přepsáno mimo pořadí značek — byly to jediné karty v katalogu, které v textu jmenovaly konkurenční e-shop (viz níže). 4 z nich byly prakticky prázdné (dvě baterie měly celý popis „Určeno pro světla Scangrip… Naše společnost Escape6 s.r.o. …“ a žádný perex). | doplněny parametry od výrobce a vysvětlení bateriové platformy CAS |
+| 2026-08-25 | názvy produktů | **14 oprav názvu** (pole `title`, `seo_url` beze změny): 4× Vampire Elixir „z laku a alu kol“ → „z alu kol“ (výrobce ho vede jen na kola), 1× Clay Bar Violet „dekontaminační hlína“ → „clay“ (interní rejstřík zakázaných formulací), 1× „Lesklý oživovač“ → saténový (název odporoval funkci), 8× sjednocení názvu uvnitř rodiny, kde se stejný produkt v různých objemech jmenoval jinak. | jen po vlastním ověření u výrobce; slug se nikde neměnil, odkazy drží |
+| 2026-08-25 | diagnostika katalogu | **2 celokatalogové skeny přes API** (96 stran, 4 758 aktivních karet): (1) inventura textů podle značek, (2) hledání zmínek o dodavatelích a konkurenci v textech. | výsledky níže |
+
+**Stav celku: 1 135 z 4 758 aktivních produktů mělo vlastní text (měřeno skenem 2026-08-25, po dokončení Meguiar's).**
+Po tomto měření přibylo v tomto vlákně dalších **151 karet** (145 ADBL + 6 SCANGRIP), tedy dopočtem
+**~1 286 z 4 758**. Dopočet neměřím znovu, uvádím ho jako odvozený.
+Stav před začátkem prací na produktových textech **nebyl měřen** — baseline chybí.
+
+Inventura podle značek (sken 2026-08-25, aktivní karty): Gyeon 276/276 a Meguiar's 256/256 hotovo,
+Auto Finesse zbývá 32 (z 303), CarPro 22 (z 234), ValetPro 11 (z 120). Kompletně bez textu:
+3M 297, ADBL 223 (teď 78), AMBASADOR 221, Bad Boys 212, Koch Chemie 185, Nuke Guys 179,
+SWAG 163, MEGA DETAIL 159, ChemicalWorkz 151, Angelwax 145, Rupes 133, Work Stuff 131,
+SCANGRIP 108 (teď 102), AVA of Norway 100, Soft99 97, Poka Premium 93 a dalších.
+
+### Sken zmínek o dodavatelích a konkurenci (2026-08-25)
+Hledáno `Escape6`, `Ahifi`, „oficiální/výhradní dovozce“, „importér“ a názvy jiných e-shopů
+v názvu, perexu i dlouhém popisu všech 4 758 aktivních karet.
+- **V našich textech (`vlastni_ai_text = true`): 0 nálezů.**
+- **88 karet s dodavatelským textem** takovou zmínku má: „oficiální/výhradní dovozce, distributor“
+  81 karet (SWAG 39, ADBL 24, bez značky 10, SCANGRIP 6, Cleantle 2), **Ahifi** 41 karet
+  (ADBL 28, bez značky 11, ValetPro 2), **Escape6** 6 karet (všech 6 SCANGRIP).
+- Šest karet s Escape6 bylo hned přepsáno (viz tabulka), zbylých 82 zmizí s přepisem příslušných značek.
+
+### Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou opravené, jen předané)
+- **Karty s textem cizího produktu:** D11101 (šampon Meguiar's s perexem o impregnaci plastů),
+  G9524 (čistič kol, jehož celý dlouhý popis patřil šamponu Gold Class, navíc slovensky),
+  G250708 (osvěžovač Black Chrome prodávaný 4× jako vůně nového auta).
+- **Uniklé AI prompty v popisech:** D180101 měl v perexu „Prosím vložte text, který chcete
+  sumarizovat.“ a prázdný dlouhý popis — třetí takový nález po WRWC8 a WRWHC7.
+- **Prázdné perexy:** 11 karet Meguiar's, 5 karet v 1. dávce ADBL, 3 v druhé, 2 ve třetí,
+  všech 6 karet SCANGRIP.
+- **Chybná dávkování na kartách:** všechny tři karty ADBL Yeti Pearl uváděly dávkování běžného
+  Yeti (1:9–1:14, resp. 1:200), přitom Pearl se dávkuje 50 ml na 1 l, resp. 1:500.
+  ADBL Industrial TFR neměl v popisu žádné ředění ani postup.
+- **Chybějící bezpečnostní údaje:** Wheel Warrior Gel nevaroval před leštěným hliníkem,
+  Tire and Rubber Cleaner před kontaktem s nelakovanými koly, Meguiar's brusné pasty
+  před probroušením čirého laku.
+- **32 karet nemá vyplněnou značku**, z toho nejméně 12 je prokazatelně ADBL (Leather Twister,
+  Twister, Roller) — ve výpisu značky se nezobrazí. Mají navíc nestandardní kódy
+  (`ADBL LEATHER TWISTER 125` místo `108-ADB…`).
+- **Markdown v HTML:** karty X2010 a D11101 měly celý popis zabalený v `<pre><code class="language-markdown">`.
+- **Opakované chyby překladu** na dodavatelských kartách: „sealant“ → **tmel** (4×), Swirl Remover
+  → **„Odstraňovač vírov“**, „drill polishing attachment“ → **„nástavec na leštění vrtáků“**,
+  „cracking“ → **„puchří“** (3×), „flying rust“ → **„létající rez“**, „water beading“ → **„korálkování“**.
+- **Slovenština** v popisech ~20 karet Meguiar's.
+
+Poznámka k obsahu pro AI: texty jsou psané jako odpověď na otázku „co to je, komu to pomůže, jak
+se to používá a kdy to nepoužít“, ne jako výčet parametrů. Do každého textu jde ředění, doba
+působení a bezpečnostní omezení od výrobce, protože právě tahle čísla dodavatelské popisy vynechávaly.
+Strukturovaná data ani FAQ bloky u produktů nasazené **nejsou**.
