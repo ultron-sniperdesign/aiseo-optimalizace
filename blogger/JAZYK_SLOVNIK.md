@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 20** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 32/147) · audituje skill `cestina-audit`
+> **Verze: 21** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 33/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,6 +57,10 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bv produkci\b` | na živém webu, v ostrém provozu | kalk z „in production“; u vývojářů běžné, u majitele webu ne | strukturovana-data-pro-ai 2026-08-24 |
+| ⛔ | `\broot úrov\w+` | v kořeni domény, na kořenové úrovni | kalk z „root level“; česky nepřirozené | llms-txt-navod 2026-08-25 |
+| ⚠️ | `\blinkovan\w+` | odkazovaný | mechanický překlad „linked“; česky se odkazuje, nelinkuje | llms-txt-navod 2026-08-25 |
+| ⚠️ | `\b[a-zá-ž.]+ check\b` | kontrola X, ověření X | anglicko-český slepenec typu „llms.txt check“; česky se popíše funkce | llms-txt-navod 2026-08-25 |
+| ⚠️ | `\b\d+[–-]\d+ stránkov\w+` | web o jedné až třech stránkách | číselný slepenec s přídavným jménem; česky se rozepíše | llms-txt-navod 2026-08-25 |
 | ⛔ | `\bout-of-the-?box\b` | hotové v základu, bez úprav | anglicismus, navíc marketingově neurčitý | ai-seo-upgates-shoptet 2026-08-24 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bDIY checklist\b` | kontrolní seznam, který zvládnete sami | slepenec | ai-seo-audit 2026-08-24 |

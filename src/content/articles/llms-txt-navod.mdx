@@ -34,9 +34,9 @@ howto:
     - name: "Napište Markdown soubor"
       text: "Vytvořte llms.txt s názvem webu, krátkým popisem a seznamem klíčových stránek s jednovětnými popisy. Volitelně i llms-full.txt s podrobnějším obsahem."
     - name: "Umístěte do kořene domény"
-      text: "Soubor musí být dostupný na https://vasedomena.cz/llms.txt. Stejně jako robots.txt — root úroveň, ne v podsložce."
+      text: "Soubor musí být dostupný na https://vasedomena.cz/llms.txt. Stejně jako robots.txt — v kořeni domény, ne v podsložce."
     - name: "Otestujte a udržujte"
-      text: "Lighthouse od dubna 2026 obsahuje llms.txt check. Dotazem v Claude nebo Perplexity orientačně ověřte, jestli linkované stránky najdou. Aktualizujte při větších změnách obsahu."
+      text: "Lighthouse od dubna 2026 obsahuje kontrolu llms.txt. Dotazem v Claude nebo Perplexity orientačně ověřte, jestli odkazované stránky najdou. Aktualizujte při větších změnách obsahu."
 faq:
   - q: "Co je llms.txt a kdo ho podporuje?"
     a: "llms.txt je navržený standard od Jeremyho Howarda z roku 2024: Markdown soubor v kořeni domény, který velkým jazykovým modelům říká, které stránky vašeho webu jsou důležité. V roce 2026 ho oficiálně podporuje Anthropic Claude (od ledna 2026) a Perplexity (od poloviny 2025). ChatGPT podporu oficiálně nepotvrdil — pokud llms.txt testujete, berte výsledky jen jako orientační pozorování. Google ho podle vyjádření Garyho Illyese a Johna Muellera nepodporuje a podporu neplánuje."
@@ -60,7 +60,7 @@ import Mistake from "../../components/blocks/Mistake.astro";
 
 ## Co je llms.txt a proč o něm slyšet v roce 2026
 
-**llms.txt je navržený standard od Jeremyho Howarda z roku 2024 — Markdown soubor v kořeni domény, který AI nástrojům a jejich vyhledávacím systémům napovídá, které stránky vašeho webu jsou důležité, a dává k nim krátký popis.** Je to mladý nápad: ne formální standard, ale komunitně spravovaná specifikace. V roce 2026 podporu deklarují Claude a Perplexity, zatímco Google ji podle veřejných vyjádření nepoužívá. Otázka pro většinu webů proto není „jak ho napsat", ale **jestli ho vůbec teď řešit**.
+**llms.txt je navržený standard od Jeremyho Howarda z roku 2024 — Markdown soubor v kořeni domény, který AI nástrojům a jejich vyhledávacím systémům napovídá, které stránky vašeho webu jsou důležité, a dává k nim krátký popis.** Je to mladý nápad: ne formální standard, ale komunitně spravovaná specifikace. V roce 2026 podporu deklarují Claude a Perplexity, zatímco Google ji podle veřejných vyjádření nepoužívá. Otázka pro většinu webů proto není „jak ho napsat“, ale **jestli ho vůbec teď řešit**.
 
 Tento návod ukazuje, **kdo llms.txt v roce 2026 podporuje a kdo ne**, **jak ho správně napsat a umístit**, **kdy má smysl ho nasadit** a **kdy je čas lépe investovat jinam**. Odlišuje se od [návodu na robots.txt pro AI](/blog/ai-crawler-robots-txt/), který řeší přístup AI robotů, nikoli navigaci pro AI.
 
@@ -76,7 +76,7 @@ Adopce llms.txt je k polovině roku 2026 nerovnoměrná. Níže uvedený stav vy
   { title: "Anthropic Claude", desc: "podporu llms.txt deklaruje v dokumentaci (od ledna 2026); soubor může sloužit jako navigační pomůcka pro výběr důležitých stránek." },
   { title: "Perplexity", desc: "podporu deklaruje (od poloviny 2025); soubor může využívat k orientaci v důležitých URL webu." },
   { title: "ChatGPT (OpenAI)", desc: "podporu oficiálně nepotvrdil; pokud llms.txt testujete, berte výsledky jen jako orientační pozorování." },
-  { title: "Google", desc: "podle vyjádření z července 2025 nepodporuje a podporu neplánuje; v dubnu 2026 přesto přidal llms.txt check do Lighthouse jako kontrolu kvality." }
+  { title: "Google", desc: "podle vyjádření z července 2025 nepodporuje a podporu neplánuje; v dubnu 2026 přesto přidal kontrolu llms.txt do Lighthouse jako kontrolu kvality." }
 ]} />
 
 Klíčový závěr: **pokud je vaším primárním kanálem Google, neočekávejte od llms.txt přímý přínos pro klasické vyhledávání ani AI Overviews**. Pokud cílíte na uživatele Claude nebo Perplexity (typicky B2B, dokumentace, vývojářské nástroje), llms.txt může mít smysl, protože tyto nástroje jeho podporu deklarují.
@@ -145,7 +145,7 @@ Rozhodnutí podle typu webu:
     Pro Google žádný přímý vliv; pro Claude a Perplexity navigace, ne řazení.
   </Mistake>
   <Mistake num="02" title="Nasadit ho pro malý web bez plánu údržby" fix="Zvažte, jestli má smysl.">
-    Pro 1–3 stránkový web nepřináší hodnotu; zastaralý je pak rušivý.
+    Pro web o jedné až třech stránkách nepřináší hodnotu; zastaralý je pak rušivý.
   </Mistake>
   <Mistake num="03" title="Plést llms.txt s robots.txt" fix="Jsou to dva různé soubory s jiným účelem.">
     robots.txt řídí přístup, llms.txt navádí na obsah.

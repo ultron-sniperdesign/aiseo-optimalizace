@@ -30,6 +30,7 @@
 | 30 | 2026-08-24 | `ai-seo-b2b` | 2026-06-01 | v17 → v18 | 1 657 | 9 | — | **5,4 → 0,0** | 8 (5 vráceno) | +3 |
 | 31 | 2026-08-24 | `ai-seo-upgates-shoptet` | 2026-06-05 | v18 → v19 | 2 249 | 8 | 2 | **3,6 → 0,0** | 10 | +1 |
 | 32 | 2026-08-24 | `strukturovana-data-pro-ai` | 2026-06-08 | v19 → v20 | 1 660 | 0 | 1 | **0,0** | 1 | +1 |
+| 33 | 2026-08-25 | `llms-txt-navod` | 2026-06-08 | v20 → v21 | 1 565 | 1 | 4 | **0,6 → 0,0** | 6 | +4 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -371,3 +372,21 @@ Rozšíření regexů o skloňované tvary (`answer blockem`, `schema markupu`) 
 Všechny tři termíny má projekt **zakázané ve vlastním glosáři v `CLAUDE.md`**. Nejde tedy o stylistickou preferenci, ale o rozpor s vlastním pravidlem.
 
 ⛔ **Neopravovat plošným sedem.** Skloňování vyžaduje mapování tvarů (blocku → krátké odpovědi, bloky → krátké odpovědi, blockem → krátkou odpovědí) a každá věta se musí přečíst. Vhodné jako **jeden vyhrazený sweep** s buildem a kontrolou po každém článku.
+
+### 33 · llms-txt-navod (2026-08-25)
+
+Nejčistší delší článek dosud hned po mechanické stránce: **jediný** strojový nález (nezavřená česká uvozovka v krátké odpovědi). LLM průchod přidal čtyři formulace, všechny stejného typu — **anglická vazba doslova převedená do češtiny**, ne anglicismus jako takový:
+
+| Bylo | Je | Proč |
+|---|---|---|
+| „root úroveň, ne v podsložce“ | „v kořeni domény, ne v podsložce“ | kalk z „root level“ |
+| „Lighthouse … obsahuje llms.txt check“ | „… obsahuje kontrolu llms.txt“ | anglicko-český slepenec |
+| „přidal llms.txt check do Lighthouse“ | „přidal kontrolu llms.txt do Lighthouse“ | totéž ve druhé instanci |
+| „jestli linkované stránky najdou“ | „jestli odkazované stránky najdou“ | „linked pages“ přeložené mechanicky |
+| „Pro 1–3 stránkový web“ | „Pro web o jedné až třech stránkách“ | číselný slepenec s přídavným jménem |
+
+Samotný název **llms.txt**, Markdown, robots.txt i „standard“ zůstávají — jsou to názvy a zavedená oborová mluva, ne vada.
+
+Nová pravidla v21: `\broot úrov\w+` (⛔), `\blinkovan\w+` (⚠️), `\b[a-zá-ž.]+ check\b` (⚠️), `\b\d+[–-]\d+ stránkov\w+` (⚠️).
+
+**Korpusový dopad nových pravidel:** „linkovan*“ / „root úrov*“ se vyskytuje ještě ve dvou dosud neauditovaných článcích (`ai-friendly-url-struktura`, `interni-prolinkovani-pro-ai`) — vyřeší se, až na ně přijde řada.
