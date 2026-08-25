@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-06-09"
-updated: "2026-07-21"
+updated: "2026-08-25"
 variant: "rich"
 keywords:
   - "llms.txt"
@@ -41,7 +41,7 @@ faq:
   - q: "Co je llms.txt a kdo ho podporuje?"
     a: "llms.txt je navržený standard od Jeremyho Howarda z roku 2024: Markdown soubor v kořeni domény, který velkým jazykovým modelům říká, které stránky vašeho webu jsou důležité. V roce 2026 ho oficiálně podporuje Anthropic Claude (od ledna 2026) a Perplexity (od poloviny 2025). ChatGPT podporu oficiálně nepotvrdil — pokud llms.txt testujete, berte výsledky jen jako orientační pozorování. Google ho podle vyjádření Garyho Illyese a Johna Muellera nepodporuje a podporu neplánuje."
   - q: "Podporuje Google llms.txt?"
-    a: "Google llms.txt nepodporuje. Gary Illyes z Googlu v červenci 2025 uvedl, že Google podporu neplánuje; John Mueller ho přirovnal k diskreditovanému keywords meta tagu. Z pohledu klasického vyhledávání ani AI Overviews proto od llms.txt nečekejte přímý přínos. Hodnotu má hlavně pro Claude a Perplexity. Google v dubnu 2026 přesto přidal jeho kontrolu do Lighthouse jako kontrolu kvality, ne jako signál pro řazení výsledků."
+    a: "Google llms.txt nepodporuje — a od června 2026 to má i v dokumentaci Search Central, takže to není jen výrok zaměstnance: Gary Illyes v červenci 2025 uvedl, že podporu neplánuje, John Mueller ho přirovnal k diskreditovanému keywords meta tagu. Z pohledu klasického vyhledávání ani AI Overviews proto od llms.txt nečekejte přímý přínos. Hodnotu má hlavně pro Claude a Perplexity. Google v dubnu 2026 přesto přidal jeho kontrolu do Lighthouse jako kontrolu kvality, ne jako signál pro řazení výsledků."
   - q: "Kde llms.txt umístit?"
     a: "llms.txt umístěte do kořene domény, typicky na adresu `https://vasedomena.cz/llms.txt`. Podle návrhu specifikace ho mají AI nástroje hledat tam — pokud ho dáte jinam, nemůžete spoléhat na to, že ho najdou. Pokud máte samostatnou subdoménu (například dokumentaci), zvažte i `https://docs.vasedomena.cz/llms.txt`."
   - q: "Jaký je rozdíl mezi llms.txt a robots.txt?"
@@ -76,7 +76,7 @@ Adopce llms.txt je k polovině roku 2026 nerovnoměrná. Níže uvedený stav vy
   { title: "Anthropic Claude", desc: "podporu llms.txt deklaruje v dokumentaci (od ledna 2026); soubor může sloužit jako navigační pomůcka pro výběr důležitých stránek." },
   { title: "Perplexity", desc: "podporu deklaruje (od poloviny 2025); soubor může využívat k orientaci v důležitých URL webu." },
   { title: "ChatGPT (OpenAI)", desc: "podporu oficiálně nepotvrdil; pokud llms.txt testujete, berte výsledky jen jako orientační pozorování." },
-  { title: "Google", desc: "podle vyjádření z července 2025 nepodporuje a podporu neplánuje; v dubnu 2026 přesto přidal kontrolu llms.txt do Lighthouse jako kontrolu kvality." }
+  { title: "Google", desc: "nepodporuje — od června 2026 to stojí přímo v dokumentaci Search Central, dřív šlo jen o vyjádření zaměstnanců. Uvnitř Googlu přitom panuje rozpor: Lighthouse kontrolu llms.txt naopak vede v kategorii Agentic Browsing." }
 ]} />
 
 Klíčový závěr: **pokud je vaším primárním kanálem Google, neočekávejte od llms.txt přímý přínos pro klasické vyhledávání ani AI Overviews**. Pokud cílíte na uživatele Claude nebo Perplexity (typicky B2B, dokumentace, vývojářské nástroje), llms.txt může mít smysl, protože tyto nástroje jeho podporu deklarují.

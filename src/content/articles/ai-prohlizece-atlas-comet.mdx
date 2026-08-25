@@ -1,20 +1,21 @@
 ---
-title: "AI prohlížeče: co Atlas a Comet dělají s vaším webem"
-description: "ChatGPT Atlas a Perplexity Comet se hlásí jako Chrome. Proč je robots.txt neoddělí, co to dělá s vaší analytikou a kde vzniká riziko u placené reklamy."
-answer: "AI prohlížeče nejsou vyhledávací roboti, ale prohlížeče v rukou uživatele. ChatGPT Atlas i Perplexity Comet se podle dostupných testů hlásí v user-agentu jako Chrome, takže je přes robots.txt ani podle user-agentu selektivně neoddělíte. Co se mění, není obsahová práce, ale měření: návštěva z nich často spadne do přímé."
+title: "AI prohlížeče: co dělají s vaším webem (a co zbylo po Atlasu)"
+description: "AI prohlížeče se hlásí jako Chrome. Proč je robots.txt neoddělí, co to dělá s analytikou a kde vzniká riziko u reklamy. Aktualizováno po konci Atlasu."
+answer: "AI prohlížeče nejsou vyhledávací roboti, ale prohlížeče v rukou uživatele. Podle dostupných testů se hlásí v user-agentu jako Chrome, takže je přes robots.txt ani podle user-agentu selektivně neoddělíte. Co se mění, není obsahová práce, ale měření: návštěva z nich často spadne do přímé. ChatGPT Atlas byl 9. 8. 2026 vypnut, jeho agentní funkce se přesunuly do aplikace ChatGPT a rozšíření pro Chrome — princip zůstává stejný."
 slug: "ai-prohlizece-atlas-comet"
 category: "analysis"
 tags:
   - "ai-platformy"
   - "mereni"
 published: "2026-07-28"
-updated: "2026-07-28"
+updated: "2026-08-25"
 keywords:
   - "ai prohlížeče"
   - "chatgpt atlas"
   - "perplexity comet"
   - "ai prohlížeč měření návštěvnosti"
   - "atlas user agent"
+  - "konec chatgpt atlas"
 variant: "rich"
 stats:
   - value: "Chrome"
@@ -50,6 +51,10 @@ import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 
 **AI prohlížeče nejsou vyhledávací roboti, ale prohlížeče v rukou uživatele.** ChatGPT Atlas i Perplexity Comet se podle dostupných testů hlásí v user-agentu jako Chrome, takže je přes robots.txt ani podle user-agentu selektivně neoddělíte. Co se mění, není obsahová práce, ale měření: návštěva z nich často spadne do přímé.
+
+<Insight tone="warning">
+**Aktualizace 25. 8. 2026:** OpenAI 9. 7. 2026 oznámil konec samostatného prohlížeče **ChatGPT Atlas**; ten přestal fungovat **9. 8. 2026**. Agentní funkce se přesunuly do desktopové aplikace ChatGPT a do rozšíření pro Chrome. Text níže proto čtěte tak, že **Atlas je doložený příklad, ne aktuálně dostupný produkt** — mechanika (prohlížeč s modelem, user-agent Chromu, neviditelnost v analytice) platí dál pro Perplexity Comet, Claude for Chrome i pro zmíněné rozšíření.
+</Insight>
 
 Kolem AI prohlížečů se rychle nabalila vrstva rad typu „připravte web na Atlas". Většina z nich řeší špatný problém. Ta zajímavá změna není v tom, co na web napíšete — je v tom, co uvidíte v reportech a za co zaplatíte v reklamě.
 
