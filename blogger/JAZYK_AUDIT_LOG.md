@@ -46,6 +46,7 @@
 | 46 | 2026-08-25 | `test-viditelnosti-v-ai` | 2026-06-11 | v38 → v39 | 3 055 | 2 (oba plané) | 0 | **0,0 → 0,0** | 0 | +1 ✅ (1 zúženo) |
 | 47 | 2026-08-26 | `ai-generovany-obsah-viditelnost` | 2026-07-11 | v39 | 1 485 | 6 (2 plané) | 0 | **4,0 → 0,0** | 4 | +0 (mask rozšířen) |
 | 48 | 2026-08-26 | `ai-nakupni-agenti` | 2026-07-11 | v39 → v40 | 1 581 | 3 | 0 | **1,9 → 0,0** | 3 (+2 zpětně) | +1 |
+| 49 | 2026-08-26 | `ai-seo-migrace-redesign` | 2026-07-11 | v40 | 1 784 | 0 | 0 | **0,0 → 0,0** | 0 | +0 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -676,6 +677,13 @@ Tři rovné uvozovky (`„Přijdou agenti?"`, `„Jsou moje produktová data úp
 **Nález nad rámec jazyka — špatně psaná značka.** V doložce o partnerství stálo „**Sniperdesign** je Zlatý partner platformy Upgates“. Kanonický tvar je **Sniper Design** dvěma slovy — tak ho má `src/i18n/` desetkrát a tak ho píše sedm dalších článků. Jednoslovná varianta byla ve **třech článcích** ve stejné doložce; opraveny všechny tři (`ai-nakupni-agenti`, `chybna-informace-o-firme-v-ai`, `interni-prolinkovani-pro-ai`), i když dva z nich na řadu ještě nepřišly — jde o název firmy, ne o stylistiku, a chyba byla v identické větě.
 
 Nové pravidlo v40: `\bSniperdesign\b` → Sniper Design (⛔), s výjimkou pro URL a účty na sítích (`facebook.com/SniperDesign.cz` je správně).
+
+
+### 49 · ai-seo-migrace-redesign (2026-08-26)
+
+**Třetí článek beze změny.** Mechanická kontrola 0, LLM průchod 0, ruční kontrola slepých míst 0 (žádné rovné uvozovky, žádné prázdné popisy kroků, žádné anglické slovo v české větě mimo `crawler` a `audit`, což jsou zavedené výrazy; `updated` je klíč ve frontmatteru).
+
+Trend za posledních deset běhů: hustota nálezů padá (běhy 40–49 dávají průměr **1,5 na 1 000 slov** proti **12,4** u prvních deseti). Není to tím, že by pozdější články byly psané lépe — je to tím, že **slovník už pokrývá i vady, které se v korpusu opakují**, takže je autor v novějších textech nedělá stejně často. Zbývající nálezy jsou čím dál víc jednorázové vazby, ne opakující se vzorce.
 
 ---
 
