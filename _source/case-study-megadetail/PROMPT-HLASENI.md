@@ -17,8 +17,10 @@ Připoj nový blok NA KONEC souboru:
 /Users/ultroncloudehome/Desktop/Ultron DISK/SNIPER DESIGN ULTRON/SNIPER DESIGN/aiseo-optimalizace.cz/_source/case-study-megadetail/HLASENI.md
 
 Pravidla (jsou i v hlavičce souboru):
-1. Podívej se na poslední blok v souboru a hlas jen změny, které v něm ještě nejsou (od posledního hlášení). Pokud žádný blok není, shrň všechny dosavadní práce.
-2. Formát bloku (šablona je v souboru): nadpis „## Hlášení YYYY-MM-DD" + tabulka řádků: Nasazeno (datum) | Oblast (obsah kategorií / produkty / technika / schema / …) | Co přesně — POČTY a rozsah (kolik kategorií dostalo text, které zásadní, ~délka, struktura: úvodní odpověď/FAQ, strukturovaná data ano/ne) | Pozn. Pod tabulku řádek „Stav celku: N z M kategorií má text (bylo K před začátkem)".
-3. Jen fakta z tohoto vlákna — přesná čísla z Upgates/tvé práce. Co nevíš jistě, označ ~ jako odhad, nebo vynech. Nic neodhaduj mlčky.
-4. Starší bloky neupravuj. Necommituj nic jiného: git add pouze tento soubor, commit message „Case study megadetail: hlášení YYYY-MM-DD", push na main.
+1. Do HLASENI.md hlásí VÍC vláken (kategorie / produkty / blog / technika). Nadpis bloku proto VŽDY nese roli: „## Hlášení YYYY-MM-DD — <role>" (např. „— kategorie", „— produktové texty", „— blog"). Datum v nadpisu = den zápisu hlášení.
+2. Najdi v souboru POSLEDNÍ blok SVÉ role a hlas jen změny od něj. Cizí bloky ignoruj (ale nečti z nich čísla do svých součtů). Pokud tvá role ještě blok nemá, shrň všechny dosavadní práce.
+3. Formát: tabulka řádků Nasazeno (PŘESNÉ datum nebo rozmezí dnů — nikdy „~měsíc"; u blogu datum publikace/aktivace + article_id) | Oblast | Co přesně — POČTY, rozsah, KTERÁ POLE se zapisovala (name_h1, description_text, short_description…) | Pozn. (FAQ/schema ano-ne).
+4. Odděluj „VLASTNÍ PŘÍSPĚVEK: N" (co prokazatelně vzniklo v tomto vlákně) od „MĚŘENÝ STAV: X z Y" (sken katalogu). Měřený stav celku uvádí JEN vlákno, které metriku vlastní: kategorie → kategorické vlákno, produkty → produktové, blog → blogové. Když měřený stav nesedí s minulým hlášením (čitatel i jmenovatel), rozdíl NEDOPOČÍTÁVEJ — jen ho konstatuj.
+5. Jen fakta z tohoto vlákna — přesná čísla z Upgates/tvé práce. Co nevíš jistě, označ ~ jako odhad, nebo vynech. Nic neodhaduj mlčky. Hraniční den překrývající se s minulou vlnou: napiš, jak jsi ho započítal.
+6. Starší bloky neupravuj. Necommituj nic jiného: git add pouze tento soubor, commit message „Case study megadetail: hlášení YYYY-MM-DD <role>", push na main. Pokud push selže na non-fast-forward, udělej git pull --rebase a push znovu (do souboru zapisuje víc vláken).
 ```

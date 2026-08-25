@@ -53,10 +53,23 @@ Formát: jeden řádek na zásah. „Fáze" = vrstva AI SEO dle metodiky webu
 | 2026-08-16 – 08-18 | obsah | **55 kategorií psaných od nuly** (stejná pipeline; 2. audit hlídá poměr informace:produkt). Délka Ø 2 338 zn. (měřeno na 45), 2–4 ověřené interní odkazy/kategorii. Bez FAQ a strukturovaných dat. | dtto | 2026-09-16 |
 | 2026-08-17 – 08-18 | technika/obsah | **Jazyková oprava patvarů** „čistící/leštící/sušící/ředící" → spisovné „-icí": 216 záznamů kategorií (horní hranice), 722 náhrad napříč name/H1/title/description/texty; zbytkový výskyt v CZ = 0. `seo_url` beze změny. | konzistence a důvěryhodnost textů (kvalitativní signál) | 2026-09-16 |
 | 2026-08-16 – 08-18 | obsah/metadata | **Metadata kategorií**: doplněno 8× chybějící H1, 8× title+description; opraveny 4 vadné hodnoty (vč. názvu značky „Cleante"→„Cleantle"); 2× H1/title rozšířen o hlavní hledaný tvar („tepovače" 9 500/měs, „rozmrazovač skel" 1 400/měs). | zachycení reálných dotazů + oprava entit značek | 2026-09-16 |
+| 2026-08-18 – 08-20 | obsah | **55 kategorií od nuly** (Ø 2 212 zn.), z toho **30 lokálních landingů „značka + Praha"** + obecná „Autokosmetika Praha" (31/31 má text; ověřené provozní údaje prodejny). Metadata: 35× H1, 6× title+description. Bez FAQ/schema. | lokální AI viditelnost (Praha) + dokončení evergreen fronty | 2026-09-17 |
+| 2026-08-24 | obsah/metadata | **Plošný audit H1 celé CZ** (1 434 kategorií, 403 nálezů) → **313 přepsaných `name_h1`** dle pravidla „z nadpisu jednoznačný sortiment" (180 návrhů před schválením ověřeno proti reálným produktům). `name` i `seo_url` beze změny. Pozn.: přepis mohl přepsat i H1 doplněné vlnami 16.–20. 8. — H1 zásah datovat k 24. 8. | čitelnost kategorií pro AI i SERP | 2026-09-21 |
+| 2026-08-24 – 08-25 | technika/katalog | Oprava `type_of_items` (NEW-412: 94 produktů zviditelněno); **1 372 zařazení produktů** (900 unikátních) do 16 prázdných kategorií; **5 kategorií od nuly** (Ø 2 202 zn.). Diagnóza prázdných kategorií (archived_yn / type_of_items / nezařazeno). | prázdné kategorie přestávají být slepé uličky pro crawl i AI | 2026-09-22 |
+| 2026-08-24 – 08-25 | obsah (produkty) | **Produktové texty** (nová vrstva, pole short/long_description): **Meguiar's komplet 256/256** (206 nových), **ADBL 145/223**, SCANGRIP 6; **14 oprav názvů produktů**; sken 4 758 karet: vlastní texty bez zmínek konkurence, 88 dodavatelských karet se zmínkami (Escape6/Ahifi/„výhradní dovozce") — 6 přepsáno hned. Bez FAQ/schema. | citovatelnost produktových karet + očista od dodavatelských textů | 2026-09-22 |
+| 08/2026 (přesná data u aktivace draftů) | obsah (blog) | **13 nových blogových článků** (AUTO BLOG/MEGA aktuality; answer block 40–60 slov, FAQ, CTA, 2× GPT audit, ověřené odkazy; 12× brandový cover). Stav: 4 aktivní, 9 draftů čeká na aktivaci. Baseline blogu ~295 aktivních článků. #359 „Jak nás začal doporučovat ChatGPT" odkazuje na aiseo case study. | posílení vrstvy, která už dnes nese top 10 v gen. AI (edukativní obsah) | po aktivaci draftů +4 týdny |
 
-**Stav kategorií k 2026-08-18:** 1 102 z 1 381 má text (+55 od 16. 8.); bez textu
-279, z toho 33 evergreen s produkty (na začátku vlny 88). Vedlejší výstup: 12
-katalogových vad předáno zadavateli (neopraveno).
+**Stav kategorií k 2026-08-25:** 1 194 z 1 361 má text (řada: 1 027 → 1 047 →
+1 102 → 1 191 → 1 194; jmenovatel 1 381 → 1 361). **Produktové texty k 25. 8.:**
+měřeno 1 135 z 4 758 aktivních karet (+151 po měření, odvozeně ~1 286). **Blog:**
++13 článků (4 aktivní / 9 draft), baseline ~295.
+
+> ⚠️ Známé nesrovnalosti mezi vlákny (nedopočítávat, jen evidovat): (a) 20. 8.
+> +89 v čitateli při 55 vlastních textech — ~34 kategorií psal někdo jiný nebo
+> šlo o zpožděný snapshot; (b) 25. 8. jmenovatel −20, doloženo 8 smazání, ~12
+> bez záznamu; (c) H1 z vln 16.–20. 8. mohly být přepsány plošným auditem 24. 8.
+> Od hlášení 25. 8. platí zpřísněná pravidla (role v nadpisu, vlastník metriky,
+> zákaz dopočtů) — viz hlavička HLASENI.md.
 
 **Stav kategorií k 2026-08-16:** 1 047 z 1 381 produktových kategorií CZ má text
 (mezikrok 2026-08-12: 1 027/1 382). Baseline před začátkem prací nebyl změřen —

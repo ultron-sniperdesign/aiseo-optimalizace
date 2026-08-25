@@ -5,13 +5,18 @@
 > **Kdo odsud čte:** admin session `aiseo-optimalizace` — záznamy přebírá do
 > `DENIK.md` (deník zásahů case study) a označí je jako zpracované.
 >
-> **Pravidla pro píšící vlákno:**
-> - Nový blok VŽDY připojit NA KONEC souboru, nikdy neupravovat starší bloky.
-> - Jen fakta z vlastního vlákna: přesné počty, názvy, data nasazení.
->   Co nevíš přesně, označ `~` (odhad) nebo vynech — neodhaduj mlčky.
-> - Hlásit jen změny OD POSLEDNÍHO hlášení (podívej se na poslední blok níže).
-> - Commit pouze tohoto souboru: `git add` jen tento soubor, message
->   `Case study megadetail: hlášení YYYY-MM-DD`. Nic jiného v repu neměnit.
+> **Pravidla pro píšící vlákna** (přispívá jich víc: kategorie / produkty / blog / technika):
+> - Nadpis bloku VŽDY s rolí: `## Hlášení YYYY-MM-DD — <role>`. Nový blok NA KONEC
+>   souboru, starší bloky nikdy neupravovat.
+> - Hlásit jen změny od POSLEDNÍHO bloku SVÉ role; cizí bloky nečíst do vlastních součtů.
+> - Data nasazení přesně (den/rozmezí, u blogu article_id + datum aktivace) — nikdy „~měsíc".
+>   Uvádět, do KTERÝCH POLÍ se zapisovalo.
+> - Oddělit „vlastní příspěvek: N" od „měřený stav: X z Y". Měřený stav celku hlásí jen
+>   vlákno, které metriku vlastní (kategorie/produkty/blog). Nesoulad s minulým hlášením
+>   NEdopočítávat — jen konstatovat.
+> - Jen fakta z vlastního vlákna; nejisté označ `~` nebo vynech — neodhaduj mlčky.
+> - Commit pouze tohoto souboru, message `Case study megadetail: hlášení YYYY-MM-DD <role>`;
+>   při non-fast-forward `git pull --rebase` a push znovu.
 
 ---
 
@@ -86,7 +91,7 @@ Vedlejší výstup: při ověřování sortimentu bylo zaznamenáno 12 katalogov
 (chybně zařazené produkty, prázdné popisy, nesoulad objemu v názvu a ve výpisu).
 Nejsou opravené — jsou předané zadavateli jako seznam.
 
-## Hlášení 2026-08-20
+## Hlášení 2026-08-20 — ✅ převzato do DENIK.md 2026-08-25
 
 | Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
 |---|---|---|---|
@@ -135,7 +140,7 @@ Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou oprav
 
 ---
 
-## Hlášení 2026-08-25
+## Hlášení 2026-08-25 — kategorie — ✅ převzato do DENIK.md 2026-08-25
 
 | Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
 |---|---|---|---|
@@ -205,7 +210,7 @@ Vedlejší výstup — katalogové vady zaznamenané v této vlně (nejsou oprav
 - Překlepy v názvech kategorií: **„Autokosmetika pro motorvý prostor"**, **„🔥 Péče o plasty od
   Auto Finese"**.
 
-## Hlášení 2026-08-25 (produktové texty)
+## Hlášení 2026-08-25 (produktové texty) — ✅ převzato do DENIK.md 2026-08-25
 
 Jiná oblast než předchozí bloky: tohle vlákno nepracovalo s kategoriemi, ale s **popisy produktů**
 (pole `short_description` + `long_description` ve slotu `cs`, kontrolní meta `vlastni_ai_text`).
@@ -267,7 +272,7 @@ působení a bezpečnostní omezení od výrobce, protože právě tahle čísla
 Strukturovaná data ani FAQ bloky u produktů nasazené **nejsou**.
 
 
-## Hlášení 2026-08-25 — blogové články (AUTO BLOG / MEGA aktuality)
+## Hlášení 2026-08-25 — blogové články (AUTO BLOG / MEGA aktuality) — ✅ převzato do DENIK.md 2026-08-25
 
 > Jiná oblast než předchozí bloky (ty řeší produktové a kategoriové texty). Toto vlákno
 > vytvořilo **nové blogové články** na megadetail.cz přes **UpGates API** (`POST /articles`,
