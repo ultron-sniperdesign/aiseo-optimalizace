@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 43** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 60–69/147) · audituje skill `cestina-audit`
+> **Verze: 44** · založeno 2026-08-23 · poslední změna 2026-08-26 (revize: top a benefit jsou ✅) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -135,7 +135,6 @@
 | ⚠️ | `\broadmap(a|u|ou|y)?\b` | plán kroků | web ho používá napříč texty, ale u laika je lepší česky | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bproduktovk(a|y|ám|ách|ek|ou)\b` | produktová stránka | interní slang, pro laika neprůhledný | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bfix(ů|y|em)?\b` | oprava, úprava | vývojářský slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⚠️ | `\btop (problém|kategori|produktovk|stránk)` | hlavní, nejdůležitější | reklamní zkratka; „top 10“ u pozic ve výsledcích je ✅ | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\btop \d+\b` | — | u pozic ve výsledcích vyhledávání zavedené (top 10 = první stránka) | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bmoney page(s)?\b` | hlavní prodejní stránky | agenturní slang, u laika nesrozumitelný | seo-audit-co-kontrolovat 2026-08-23 |
 | ⚠️ | `\bproof points\b` | důkazy důvěryhodnosti | totéž | seo-audit-co-kontrolovat 2026-08-23 |
@@ -277,7 +276,7 @@
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `\bpovrch\w*` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu; česky „povrch“ znamená fyzický povrch | ai-mode-a-eshopy 2026-08-26 |
-| ⛔ | `\bbrand search\w*|\bbenefit nadpis\w*|\bbrand voice\b` | vyhledávání značky, nadpis s hlavním přínosem, hlas značky | hybridní slepence | case-study-megadetail 2026-08-26 |
+| ⛔ | `\bbrand search\w*|\bbrand voice\b` | vyhledávání značky, hlas značky | hybridní slepence s anglickým „brand“ | case-study-megadetail 2026-08-26 |
 | ⚠️ | `\bcelowebov\w+` | pro celý web | mechanicky odvozené přídavné jméno | blokovat-ai-odpovedi-gsc 2026-08-26 |
 | ⚠️ | `\bvygenerování\w*` | odpověď, běh | nominalizace, kterou čeština nepotřebuje | ai-mode-a-eshopy 2026-08-26 |
 | ⚠️ | `\bzaktualiz\w+` | aktualizovat | zdvojená předpona u převzatého slovesa | mereni-ai-mode-limity 2026-08-26 |
@@ -319,7 +318,8 @@
 | ⚠️ | `\blisting\w*` | zápis v katalogu, výpis produktů | dvojí význam — v e-shopu výpis produktů, v katalozích zápis. **Výjimka:** „merchant listings“ = oficiální název typu výsledku u Google | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\bwireframe \w+ (šablon\w+|sad\w+)` | wireframy, šablony | anglické přívlastkové postavení („wireframe šablony“) je slepenec; česky se skloňuje | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ✅ | `\bPack\b` | — | krátký název produktu **AI SEO Wireframe Pack**, ustálený napříč webem (4 články) — vlastní jméno, ne anglicismus | znacka-na-wikipedii-pro-ai 2026-08-25 |
-| ✅ | `\btop \w+` | — | „top 5“ i „top zdroje“ je běžná česká hovorová i marketingová vazba, ne kalk | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ✅ | `\btop\w*` | — | **Rozhodnutí uživatele 26. 8. 2026:** „top“ je běžný výraz — „top 10“, „top zdroje“, „TOP stránky“. Dřívější ⚠️ pravidlo na „top stránky / top kategorie“ zrušeno | znacka-na-wikipedii-pro-ai 2026-08-25, rozšířeno 2026-08-26 |
+| ✅ | `\bbenefit\w*` | — | **Rozhodnutí uživatele 26. 8. 2026:** „benefit“ je v češtině normální výraz (benefity zaměstnancům, benefit produktu) | 2026-08-26 |
 | ✅ | `\bautoconfirmed\b|\bPaid\b|\binstance of\b` | — | názvy oprávnění, šablon a polí Wikipedie/Wikidat — vlastní jména rozhraní (§ 8) | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |

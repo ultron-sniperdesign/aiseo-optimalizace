@@ -759,3 +759,5 @@ Pri overovani reverty v behu 45 na zivem webu chybela veta, ktera v souboru byla
 **Oprava (rozhodnuti uzivatele: varianta A):** komponenta prijima oboji — `{step.desc ?? step.text}`, `Step` ma `desc`, `text` i `label` volitelne. Po buildu: **0 prazdnych popisu** v celem `dist/` (driv 42). Do `ARTICLE_TEMPLATE.md` pribyla tabulka klicu komponent a kontrola v predpublikacnim checklistu.
 
 Pouceni pro jazykovy audit: **zeleny build ani mechanicka kontrola nereknou, ze se text vubec nezobrazil.** Proto po kazdem behu overuji konkretni vety na zive strance — prave tak se tohle naslo.
+
+**Revize v44 — rozhodnutí uživatele 26. 8. 2026:** „benefit“ i „top / TOP“ jsou běžné výrazy. Pravidlo na „benefit nadpis“ z v43 zrušeno (zůstala jen `brand search` a `brand voice`), ⚠️ pravidlo na „top stránky / top kategorie“ zrušeno a ✅ rozšířeno na `\btop\w*`. **Text se zpětně nevrací** (výslovné rozhodnutí uživatele) — jen se to přestává hlásit. Sedmá korekce tohoto typu; do zadání pro LLM přibyla i „zdomácnělá marketingová slova“.
