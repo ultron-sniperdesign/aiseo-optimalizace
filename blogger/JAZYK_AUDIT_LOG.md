@@ -38,6 +38,7 @@
 | 38 | 2026-08-25 | `ai-seo-wordpress` | 2026-06-11 | v27 → v28 | 2 485 | 5 | 4 | **2,0 → 0,0** | 8 | +4 |
 | 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
 | 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
+| 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 | 1 | **0,9 → 0,0** | 4 | +2 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -544,3 +545,17 @@ Zvažoval jsem dvě náhrady a **obě zamítl s odůvodněním**, aby se k nim p
 - **„kliky“ (27×)** — běžná česká podoba; české rozhraní píše „kliknutí“, ale text není citace rozhraní. Ponecháno, zapsáno ✅.
 
 Poučení do metodiky: **u článků o konkrétním nástroji kontroluj, jestli navrhovaná česká náhrada už v textu nemá jiný význam.** Sjednocení terminologie nesmí vyrobit homonymii.
+
+### 41 · jak-ai-cituje-zdroje (2026-08-25)
+
+Čistý článek, čtyři zásahy.
+
+| Bylo | Je | Proč |
+|---|---|---|
+| `„být dobrý"`, `„2026"` | `„být dobrý“`, `„2026“` | rovná uvozovka místo české |
+| „Vyplatí se univerzální základ **plus** platformová specifika.“ | „…základ **a k tomu** platformová specifika.“ | telegrafické „plus“ místo spojky |
+| „klasické SEO **plus** strukturovaná data a E-E-A-T“ | „klasické SEO **doplněné o** strukturovaná data a E-E-A-T“ | totéž ve druhé instanci |
+
+**Ponecháno:** „platformová specifika“ (3×) — LLM to navrhoval rozepsat, ale je to běžné české tvoření (platformové řešení). Vada byla ta spojka, ne přídavné jméno. Zapsáno ✅.
+
+**Nová pravidla v31:** `\b(základ|obsah|SEO|struktura) plus \w` (⚠️) · `\bplatformov\w+` (✅).

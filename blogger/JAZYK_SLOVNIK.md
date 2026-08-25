@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 30** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 40/147) · audituje skill `cestina-audit`
+> **Verze: 31** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 41/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -269,6 +269,8 @@
 | ✅ | `\bvolatil\w+` | — | „volatilita/volatilní“ je v češtině zavedené (i mimo finance) a čtenáři srozumitelné; vada by byl až prázdný žargon | ai-citace-reddit 2026-08-25 |
 | ✅ | `\bimpres\w+` | — | počeštěné „imprese“ je zavedená česká mluva SEO i PPC. Navíc v článku o Search Console je „zobrazení“ obsazené významem *pohled na data* („zobrazení Search“) — plošná náhrada by vyrobila dvojznačnost | gsc-ai-segmenty-mereni 2026-08-25 |
 | ✅ | `\bklik\w+` | — | „klik / kliky / kliků“ je běžná česká podoba; UI píše „kliknutí“, ale text není citace rozhraní | gsc-ai-segmenty-mereni 2026-08-25 |
+| ✅ | `\bplatformov\w+` | — | „platformová specifika“ je běžné české tvoření (platformové řešení); vada by byl až telegrafický „plus“ mezi podstatnými jmény, ne přídavné jméno | jak-ai-cituje-zdroje 2026-08-25 |
+| ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `\blive search\b|\bsearch agent\b` | vyhledávací robot, stahování v reálném čase | kus anglické dokumentace v české větě | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bkategoriov\w+ text\w*` | texty kategorií | kostrbaté přídavné jméno místo přivlastňovací vazby | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bbio\b(?![ ]?[(-])` | medailonek, profil autora | eliptický převod z angličtiny („krátká bio“ navíc neshoduje rod); česky je to medailonek. **Výjimka:** „bio“ ve významu biopotravin a v názvech (BIO, bio-) | ai-seo-wordpress 2026-08-25, rozšířeno autorsky-profil-pro-ai 2026-08-25 |
