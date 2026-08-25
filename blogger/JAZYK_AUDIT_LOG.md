@@ -37,6 +37,7 @@
 | 37 | 2026-08-25 | `ai-citace-reddit` | 2026-06-11 | v26 → v27 | 2 341 | 4 | 6 | **1,7 → 0,0** | 10 | +4 |
 | 38 | 2026-08-25 | `ai-seo-wordpress` | 2026-06-11 | v27 → v28 | 2 485 | 5 | 4 | **2,0 → 0,0** | 8 | +4 |
 | 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
+| 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -532,3 +533,14 @@ Slovo **medailonek** drží pád i rod ve všech vazbách (s medailonkem, bez me
 **Pravidlo rozšířeno (v29):** `\bkrátk\w+ bio\b` → `\bbio\b(?![ ]?[(-])`, aby chytalo i samostatné „bio“, ale nehlásilo biopotraviny a názvy s „bio-“.
 
 **Do fronty na doauditování:** samostatné „bio“ je ještě ve třech dosud neauditovaných článcích (`caste-chyby-v-seo-2026-update`, `geo-optimalizace`, `seo-audit-co-kontrolovat`).
+
+### 40 · gsc-ai-segmenty-mereni (2026-08-25)
+
+**První článek beze změny textu.** Mechanická kontrola 0 nálezů, LLM průchod 0 nálezů. Ruční kontrola slepých míst nástroje (uvozovky uvnitř JSX props, anglická slova v české větě) taky nic nenašla.
+
+Zvažoval jsem dvě náhrady a **obě zamítl s odůvodněním**, aby se k nim příště nevracelo:
+
+- **„imprese“ (15×)** — počeštěný tvar je zavedená česká mluva SEO i PPC. Navíc by plošná náhrada za „zobrazení“ v tomhle článku vyrobila **dvojznačnost**: „zobrazení“ je tu už obsazené významem *pohled na data* („ve zobrazení Search“). Ponecháno, zapsáno ✅. Pravidlo na anglické `impressions` zůstává — rozdíl je v tom, že vada je anglické slovo v české větě, ne počeštěný tvar.
+- **„kliky“ (27×)** — běžná česká podoba; české rozhraní píše „kliknutí“, ale text není citace rozhraní. Ponecháno, zapsáno ✅.
+
+Poučení do metodiky: **u článků o konkrétním nástroji kontroluj, jestli navrhovaná česká náhrada už v textu nemá jiný význam.** Sjednocení terminologie nesmí vyrobit homonymii.

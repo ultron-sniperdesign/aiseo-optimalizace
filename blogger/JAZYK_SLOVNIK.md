@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 29** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 39/147) · audituje skill `cestina-audit`
+> **Verze: 30** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 40/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -158,7 +158,7 @@
 | ⛔ | `\bweb owner\b` | provozovatel webu | role se v češtině pojmenovat dá | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bprivacy-first\b` | zaměřený na soukromí | anglická nálepka místo popisu | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\btest-first\b` | nejdřív otestovat, pak nasadit | módní kalk | jak-vypnout-ai-overview 2026-08-23 |
-| ⛔ | `\bimpressions\b` | zobrazení | česká Search Console používá „zobrazení“ | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `\bimpressions\b` | zobrazení | česká Search Console používá „zobrazení“. **Pozor na rozdíl:** vada je *anglické* „impressions“ v české větě, ne počeštěné „imprese“ (viz ✅ níže) | jak-vypnout-ai-overview 2026-08-23, upřesněno 2026-08-25 |
 | ⛔ | `\bbaseline\b(?! měření)` | výchozí stav, výchozí metriky | v textu pro čtenáře; v interních poznámkách projektu se toleruje | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bpublisher(ů|i|y|em)?\b` | vydavatel | běžný český termín existuje | jak-vypnout-ai-overview 2026-08-23 |
 | ⚠️ | `\bopt-?in\b` | volitelné, zapíná se ručně | u ovládání robotů je opt-in/opt-out zavedený pár (web má články se slugem opt-out), jinde nahradit | jak-vypnout-ai-overview 2026-08-23 |
@@ -267,6 +267,8 @@
 | ✅ | `\bseparátní\w*` | — | **Rozhodnutí uživatele 25. 8. 2026:** „separátní“ je relativně normální české slovo, ne latinismus k odstranění | kolik-stoji-ai-seo 2026-08-25 |
 | ✅ | `\bdohledan\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „dohledaný“ je běžné české slovo (dohledat zdroj), ne strojový obrat | revize 2026-08-25 |
 | ✅ | `\bvolatil\w+` | — | „volatilita/volatilní“ je v češtině zavedené (i mimo finance) a čtenáři srozumitelné; vada by byl až prázdný žargon | ai-citace-reddit 2026-08-25 |
+| ✅ | `\bimpres\w+` | — | počeštěné „imprese“ je zavedená česká mluva SEO i PPC. Navíc v článku o Search Console je „zobrazení“ obsazené významem *pohled na data* („zobrazení Search“) — plošná náhrada by vyrobila dvojznačnost | gsc-ai-segmenty-mereni 2026-08-25 |
+| ✅ | `\bklik\w+` | — | „klik / kliky / kliků“ je běžná česká podoba; UI píše „kliknutí“, ale text není citace rozhraní | gsc-ai-segmenty-mereni 2026-08-25 |
 | ⛔ | `\blive search\b|\bsearch agent\b` | vyhledávací robot, stahování v reálném čase | kus anglické dokumentace v české větě | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bkategoriov\w+ text\w*` | texty kategorií | kostrbaté přídavné jméno místo přivlastňovací vazby | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bbio\b(?![ ]?[(-])` | medailonek, profil autora | eliptický převod z angličtiny („krátká bio“ navíc neshoduje rod); česky je to medailonek. **Výjimka:** „bio“ ve významu biopotravin a v názvech (BIO, bio-) | ai-seo-wordpress 2026-08-25, rozšířeno autorsky-profil-pro-ai 2026-08-25 |
