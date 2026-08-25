@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 34** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 42/147, doplněk) · audituje skill `cestina-audit`
+> **Verze: 35** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 42/147, revize) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -271,6 +271,7 @@
 | ✅ | `\bklik\w+` | — | „klik / kliky / kliků“ je běžná česká podoba; UI píše „kliknutí“, ale text není citace rozhraní | gsc-ai-segmenty-mereni 2026-08-25 |
 | ✅ | `\bplatformov\w+` | — | „platformová specifika“ je běžné české tvoření (platformové řešení); vada by byl až telegrafický „plus“ mezi podstatnými jmény, ne přídavné jméno | jak-ai-cituje-zdroje 2026-08-25 |
 | ✅ | `\b(frontend|backend)\w*` | — | „frontendový protokol“, „na backendu“ je zavedená česká mluva vývojářů, ne slepenec | lighthouse-ai-check 2026-08-25 |
+| ✅ | `\bobsahov\w+ strategi\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „obsahová strategie“ je běžně používaný výraz, ne kulhavá vazba | lighthouse-ai-check 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `\baccessibility (skóre|audit\w*|kontrol\w*)\b` | skóre / audity přístupnosti | hybridní slepenec. **Výjimka:** `accessibility tree` a název kategorie „Accessibility“ v Lighthouse — vlastní jména | lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\bbooking web\w*|\bbooking\b(?! ?\.com)` | rezervační web, rezervace | polopřeložený slepenec | lighthouse-ai-check 2026-08-25 |

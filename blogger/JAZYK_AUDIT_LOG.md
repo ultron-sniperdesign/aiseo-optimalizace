@@ -39,7 +39,7 @@
 | 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
 | 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
 | 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 (+1 novým pravidlem) | 1 | **0,9 → 0,0** | 5 | +2 |
-| 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v34 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 17 | +6 (1 zúženo) |
+| 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v35 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 16 | +7 (1 zúženo) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -579,7 +579,6 @@ Nejtechničtější článek zatím a taky nejvíc smíšených nálezů: kus va
 | `title: "Únor 2026 — preview v Chrome Canary"` | „Únor 2026 — **náhled** v Chrome Canary“ | totéž v časové ose |
 | „aplikace s **reálnými agent akcemi**“ | „aplikace, **kde agent skutečně provádí akce**“ | anglický přívlastek bez skloňování |
 | „kategorii nebo **listovou stránku**“ | „kategorii nebo **stránku s výpisem**“ | doslovný převod „listing page“ |
-| „Doplňte ho měřením … **a obsahovou strategií**“ | „…**a prací s obsahem**“ | kulhavá vazba |
 | `„3 of 4 checks passed"`, `„chtěl jsem…"`, `„pokud"` | `„…“` | rovné uvozovky |
 
 **Ponecháno:** „frontendový protokol“, „na backendu“ — zavedená česká mluva vývojářů (✅). Názvy Lighthouse, Agentic Browsing, Chrome Canary, WebMCP, CLS, ARIA.
@@ -591,3 +590,7 @@ Nejtechničtější článek zatím a taky nejvíc smíšených nálezů: kus va
 **Do fronty:** „preview“ je ještě v `bing-seo-pro-ai` (dosud neauditovaný).
 
 **Doplněk po živé kontrole (běh 42):** ověření stránky na webu ukázalo, že „accessibility skóre“ zůstalo ještě **na čtyřech dalších místech** (v krátké odpovědi, ve FAQ, v popisku a v seznamu priorit) — opravu jsem udělal jen tam, kam ukázal LLM, a **nezaložil na ni pravidlo**, takže ji checker nehlásil. Doplněno pravidlo `\baccessibility (skóre|audit\w*|kontrol\w*)\b` a opraveno všech 5 výskytů. Poučení: **každá ruční oprava z LLM průchodu musí skončit pravidlem ve slovníku**, jinak zbytek výskytů projde.
+
+**Revize v35 — rozhodnutí uživatele 25. 8. 2026:** „obsahová strategie“ je běžně používaný výraz. Náhrada „a prací s obsahem“ vrácena zpět na „a obsahovou strategií“, pravidlo zapsáno jako ✅. Kontrola korpusu (`git log -S`): jiný audit tenhle výraz nikde neodstranil — v `seo-audit-co-kontrolovat` větu „Nenahrazuje obsahovou strategii“ audit 2 nechal beze změny, takže revert se týkal jen tohoto článku.
+
+Je to **pátá korekce stejného typu** (industry-standard, research, separátní, unikátní/dohledaný, obsahová strategie). Vzorec je pokaždé stejný: LLM průchod označí zavedený český odborný výraz za „kulhavý“ nebo „strojový“. Proto v zadání pro LLM nově stojí i to, že **běžná česká odborná spojení nejsou vada** — hlásit se má jen kalk, slepenec a rozbitá vazba.
