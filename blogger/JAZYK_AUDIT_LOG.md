@@ -38,7 +38,7 @@
 | 38 | 2026-08-25 | `ai-seo-wordpress` | 2026-06-11 | v27 → v28 | 2 485 | 5 | 4 | **2,0 → 0,0** | 8 | +4 |
 | 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
 | 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
-| 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 | 1 | **0,9 → 0,0** | 4 | +2 |
+| 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 (+1 novým pravidlem) | 1 | **0,9 → 0,0** | 5 | +2 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -558,4 +558,6 @@ Poučení do metodiky: **u článků o konkrétním nástroji kontroluj, jestli 
 
 **Ponecháno:** „platformová specifika“ (3×) — LLM to navrhoval rozepsat, ale je to běžné české tvoření (platformové řešení). Vada byla ta spojka, ne přídavné jméno. Zapsáno ✅.
 
-**Nová pravidla v31:** `\b(základ|obsah|SEO|struktura) plus \w` (⚠️) · `\bplatformov\w+` (✅).
+| „**Klasické SEO plus** strukturovaná data“ (nadpis kroku) | „Klasické SEO **a k tomu** strukturovaná data“ | třetí instance — odhalilo ji až nově přidané pravidlo |
+
+**Nová pravidla v31:** `\b(základ|obsah|SEO|struktura) plus \w` (⚠️) · `\bplatformov\w+` (✅). Pravidlo si hned po zapsání našlo třetí výskyt téže vady v JSX props, kam LLM průchod nedohlédl.
