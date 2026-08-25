@@ -25,6 +25,7 @@
 | 18 | 2026-08-24 | `ai-crawler-robots-txt` | 2026-05-23 | v15 | 2 900 | 7 | — | **2,4 → 0,0** | 5 | 0 |
 | 19 | 2026-08-24 | `ai-seo-nastroje` | 2026-05-23 | v15 | 2 150 | 6 | — | **2,8 → 0,0 ⛔** | 1 | 0 |
 | 20 | 2026-08-24 | `bing-seo-pro-ai` | 2026-05-23 | v15 | — | 0 | — | **0,0** | 0 | 0 |
+| 21–28 | 2026-08-24 | série z 24.–26. 5. 2026 (8 článků) | 2026-05-24+ | v15 → v16 | ~15 000 | 34 | — | **prům. 2,5 → 0,1** | 22 | 0 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -243,6 +244,16 @@ Krátký text (1 264 slov), 7 nálezů. Čtyři opravy: tři nedovřené uvozovk
 **Nová výjimka: věta, která anglický termín vysvětluje.** Články píšou „(v angličtině *AI brand mentions*)" nebo „v zahraničí je potkáte pod názvy *AI visibility tracker*" — termín tam **není použit, ale představen**. Checker takové řádky od článku 15 přeskakuje (hledá „v angličtině", „v zahraničí", „pod názvem"). Bez toho by hlásil právě ta místa, kde autor dělá to, co slovník požaduje.
 
 Druhá výjimka: **názvy technických identifikátorů** (`Content-Usage`, `Google-Extended`). Řešení není výjimka v pravidle, ale správná typografie — patří do zpětných apostrofů, čímž je checker přeskočí sám.
+
+### 21–28 · série z konce května (2026-08-24)
+
+Osm článků najednou: `seo-pro-ai`, `seo-vs-geo`, `google-ai-mode`, `aktualizace-obsahu-pro-ai`, `e-e-a-t-pro-ai`, `srovnavaci-clanky-pro-ai`, `claude-gemini-seo`, `zero-click-ai`.
+
+**Dva z nich měly nulu rovnou** (`google-ai-mode`, `claude-gemini-seo`) — spolu s `bing-seo-pro-ai` už tři články, které audit nepotřebovaly.
+
+Z 34 nálezů bylo **13 nedovřených uvozovek**; skutečné jazykové vady jen devět (`organiku` 2×, `baseline`, `impressions` 2×, `ranking faktor`, `připravili jsme`, „převést na").
+
+**Nová výjimka: rozepsané zkratky.** „SEO **(Search Engine Optimization)**" — závorka zkratku vysvětluje, je to služba čtenáři, ne anglicismus. Checker je od článku 21 maskuje. Je to stejná logika jako u vět, které anglický termín uvádějí: **audit nesmí trestat autora za to, že cizí slovo přeložil.**
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
