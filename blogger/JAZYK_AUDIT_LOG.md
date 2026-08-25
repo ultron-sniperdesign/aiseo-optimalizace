@@ -41,6 +41,7 @@
 | 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 (+1 novým pravidlem) | 1 | **0,9 → 0,0** | 5 | +2 |
 | 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v35 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 16 | +7 (1 zúženo) |
 | 43 | 2026-08-25 | `originalni-data-pro-ai` | 2026-06-11 | v35 → v36 | 2 476 | 7 | 6 | **2,8 → 0,0** | 13 | +5 |
+| 44 | 2026-08-25 | `produktove-stranky-pro-ai` | 2026-06-11 | v36 | 2 266 | 1 | 0 | **0,4 → 0,0** | 1 | +0 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -611,3 +612,15 @@ Sedm strojových nálezů byly zase jen rovné uvozovky (článek je plný ukáz
 | „rovnou se **správným formátem** pro AI citace“ | „rovnou s **formátem vhodným** pro AI citace“ | vágní nárok |
 
 **Nová pravidla v36:** `\bpočítá\w* za (origináln|kvalitn|dobr)\w+`, `\bnež by \w+ potenciál odpovídal\w*` (⛔) · `\bzískává vyšší šanci stát se\b`, `\bvýzkumn\w+ materiál\w*`, `\bsprávn\w+ formát\w* pro\b` (⚠️).
+
+### 44 · produktove-stranky-pro-ai (2026-08-25)
+
+Nejčistší článek zatím: **jediný zásah**.
+
+| Bylo | Je | Proč |
+|---|---|---|
+| „Není to doložený samostatný **ranking faktor**.“ | „…samostatný **faktor hodnocení**.“ | hybridní slepenec (pravidlo z v8) |
+
+LLM průchod nenašel nic. Ruční kontrola slepých míst (uvozovky v JSX props, anglická slova v české větě, frontmatter) taky nic — anglické výrazy v textu (`price`, `availability`, `items`, `hasMerchantReturnPolicy`) jsou **názvy vlastností schema.org**, tedy vlastní jména, ne anglicismy.
+
+Dvě pozorování k metodice po 44 článcích: (1) tutoriály o strukturovaných datech mají přirozeně vysoký podíl anglických řetězců, ale skoro nulovou jazykovou vadovost — jde o názvy, ne o mluvu; (2) uvozovkový problém (`„…"`) se objevil v **28 ze 44 článků**, ale v tomhle ani jednou.
