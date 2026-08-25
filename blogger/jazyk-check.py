@@ -22,7 +22,7 @@ ICONVAL = re.compile(r'\b(icon|tone|variant|key|slug)\s*[:=]\s*"[^"]*"')   # tec
 # radek, ktery anglicky termin VYSVETLUJE, se neaudituje (clanek ho uvadi jako cizi slovo)
 ZKRATKA = re.compile(r'\b[A-Z][A-Za-z-]{1,6}\s*\([A-Z][^)]{3,60}\)')   # rozepsana zkratka: SEO (Search Engine Optimization)
 ORIGINAL = re.compile(r'\((?:v [A-Za-zěščřžýáíéúůň]+ )?[A-Z][A-Za-z][A-Za-z ]{2,40}\)')   # cesky termin s anglickym originalem v zavorce
-CITUJE = re.compile(r'v angličtin|anglicky|v zahraničí|pod názv|anglick(ý|ého|ém) (termín|název|výraz)|zkratk[ay] z angli')   # hodnoty technickych atributu
+CITUJE = re.compile(r'v angličtin|anglicky|v zahraničí|pod názv|anglick(ý|ého|ém|é) (termín|název|výraz|verzi)|v originále|zkratk[ay] z angli')   # hodnoty technickych atributu
 
 def load_rules(path):
     rules, section = [], '?'

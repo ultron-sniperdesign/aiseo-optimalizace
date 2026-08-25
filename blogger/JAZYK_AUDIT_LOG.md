@@ -44,6 +44,7 @@
 | 44 | 2026-08-25 | `produktove-stranky-pro-ai` | 2026-06-11 | v36 | 2 266 | 1 | 0 | **0,4 → 0,0** | 1 | +0 |
 | 45 | 2026-08-25 | `seznam-cz-ai-vyhledavani` | 2026-06-11 | v36 → v38 | 2 488 | 1 | 5 | **0,4 → 0,0** | 4 | +3 (2 ✅) |
 | 46 | 2026-08-25 | `test-viditelnosti-v-ai` | 2026-06-11 | v38 → v39 | 3 055 | 2 (oba plané) | 0 | **0,0 → 0,0** | 0 | +1 ✅ (1 zúženo) |
+| 47 | 2026-08-26 | `ai-generovany-obsah-viditelnost` | 2026-07-11 | v39 | 1 485 | 6 (2 plané) | 0 | **4,0 → 0,0** | 4 | +0 (mask rozšířen) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -656,6 +657,15 @@ Pravidlo `\bAI visibility\b` hlásilo „Ahrefs **AI Visibility** Checker“ a �
 LLM průchod nenašel nic. Ruční kontrola: 0 rovných uvozovek, 0 prázdných popisů kroků, „monitoring“ 9× ponecháno jako zdomácnělé slovo (zapsáno ✅).
 
 Pozorování: **články o nástrojích potřebují ve slovníku výjimky na názvy produktů.** Je to už druhý případ (po „Schema Custom Editor“ v běhu 38) — proto každé nové pravidlo na anglický termín rovnou kontroluju proti tomu, jestli se ten termín nevyskytuje i jako součást názvu.
+
+
+### 47 · ai-generovany-obsah-viditelnost (2026-08-26)
+
+Čtyři zásahy, všechny rovné uvozovky (`„Google penalizuje AI obsah"`, `„psala to AI?"` 2×, `„je tam něco, co by jinde nebylo?"`). LLM průchod nenašel nic.
+
+**Další díra v nástroji (opravena):** dva nálezy na slovo `content` byly plané — stály uvnitř **anglického originálu uvedeného v závorce**: „zneužití masově tvořeného obsahu (v anglické verzi *scaled content abuse*)“. Mask `CITUJE` znal „v angličtině“, ale ne „v anglické verzi“ ani „v originále“. Doplněno. Regresní test na čtyřech hotových článcích: pořád 0.
+
+Tohle je **třetí planý poplach v pěti bězích** (procenta u přídavného jména, názvy nástrojů, teď anglický originál v závorce). Vzorec je jasný: čím delší slovník, tím víc pravidel naráží na místa, kde anglický text být **má**. Proto u každého nálezu nejdřív čtu, *proč tam ten výraz stojí*, a teprve pak sahám na text.
 
 ---
 
