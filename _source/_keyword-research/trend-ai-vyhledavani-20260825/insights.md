@@ -78,14 +78,17 @@ jak vypnout režim ai google* → celá rodina how-to dotazů, kterou zatím pok
 
 ## Doporučené další kroky
 
-**A) Refreshe (admin, data v ruce)**
+**A) Refreshe (admin, data v ruce)** — stav k 26. 8.: 1 a 2 ✅ hotové, 3 zamítnuto (viz níže)
 1. `ai-prohlizece-atlas-comet` — **fakticky zastaralý** (Atlas vypnut 9. 8.). Buď přepsat na
    „AI prohlížeče po konci Atlasu" (Comet, Claude for Chrome, rozšíření ChatGPT), nebo doplnit
    datovanou poznámku nahoře. Priorita vysoká — jde o důvěryhodnost.
 2. `llms-txt-navod` — přitvrdit zdroj (dokumentace Search Central 06/2026 místo výroků) + doplnit
    rozpor Lighthouse 13.3. Naše `/llms.txt` necháváme, ale argumentace má být přesná.
-3. `seznam-cz-ai-vyhledavani` — pokles pozic 4,8 → 8,7; doplnit stav Asistenta (veřejný od 25. 5.,
-   SeLLMa 70B na Llama 3.1, zdroje Zboží/Firmy/Počasí).
+3. ~~`seznam-cz-ai-vyhledavani`~~ — **ZAMÍTNUTO po kontrole obsahu (26. 8.)**: článek už veřejné
+   spuštění Asistenta 25. 5. 2026, SeLLMa 70B na Llama 3.1 i dočasné modely OpenAI obsahuje —
+   fakticky zastaralý není. GSC ukazuje jen 10 impresí/28 d na dotazy typu „seo seznam.cz"
+   (pozice 15–18); jde o ztrátu pozic, ne o zastaralost. Kosmetický refresh by nepomohl;
+   téma řeší plánovaný bloggerův deep-dive „Seznam Asistent a SeLLMa v praxi".
 
 **B) Nová témata pro bloggera (zapsáno do plánu)**
 1. „Režim AI v Googlu: jak ho zapnout, vypnout a co v něm najdete" — 13 000/měs, jen zčásti pokryto.
