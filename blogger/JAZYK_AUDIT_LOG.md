@@ -39,6 +39,7 @@
 | 39 | 2026-08-25 | `autorsky-profil-pro-ai` | 2026-06-11 | v28 → v29 | 2 296 | 13 | 0 | **5,7 → 0,0** | 13 | +0 (1 rozšířeno) |
 | 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
 | 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 (+1 novým pravidlem) | 1 | **0,9 → 0,0** | 5 | +2 |
+| 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v33 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 13 | +5 (1 zúženo) |
 
 ## Poznámky k jednotlivým článkům
 
@@ -561,3 +562,30 @@ Poučení do metodiky: **u článků o konkrétním nástroji kontroluj, jestli 
 | „**Klasické SEO plus** strukturovaná data“ (nadpis kroku) | „Klasické SEO **a k tomu** strukturovaná data“ | třetí instance — odhalilo ji až nově přidané pravidlo |
 
 **Nová pravidla v31:** `\b(základ|obsah|SEO|struktura) plus \w` (⚠️) · `\bplatformov\w+` (✅). Pravidlo si hned po zapsání našlo třetí výskyt téže vady v JSX props, kam LLM průchod nedohlédl.
+
+### 42 · lighthouse-ai-check (2026-08-25)
+
+Nejtechničtější článek zatím a taky nejvíc smíšených nálezů: kus vad, kus názvů rozhraní, které se hlásit nemají, a **jeden planý poplach nástroje**.
+
+| Bylo | Je | Proč |
+|---|---|---|
+| `title: "…: AI check v roce 2026"` | `„…: kontrola pro AI 2026“` (49 znaků) | anglicko-český slepenec v titulku |
+| `description: "Lighthouse AI check v roce 2026: …"` | „Lighthouse pro AI v roce 2026: co Agentic Browsing prověřuje…“ | totéž v popisu |
+| „Pasáže jako **tab order** nebo **focus management**“ | „Pasáže jako **pořadí prvků při procházení tabulátorem** nebo **práce s fokusem**“ | anglická dokumentace v české větě |
+| „soustředí se hlavně na **names and labels** a ARIA“ | „…na **skupinu kontrol `names and labels`** a ARIA“ | název kontroly označený jako název |
+| „klasické **accessibility skóre**“ | „klasické **skóre přístupnosti**“ | slepenec |
+| „e-shopy, **booking weby** a SaaS aplikace“ (2×) | „e-shopy, **rezervační weby** a SaaS aplikace“ | polopřeložený slepenec |
+| „**preview** ve vývojářské verzi prohlížeče **není podpora ve stabilním**“ | „**náhled** … **není totéž co podpora ve stabilní verzi**“ | anglicismus + uťatá vazba |
+| `title: "Únor 2026 — preview v Chrome Canary"` | „Únor 2026 — **náhled** v Chrome Canary“ | totéž v časové ose |
+| „aplikace s **reálnými agent akcemi**“ | „aplikace, **kde agent skutečně provádí akce**“ | anglický přívlastek bez skloňování |
+| „kategorii nebo **listovou stránku**“ | „kategorii nebo **stránku s výpisem**“ | doslovný převod „listing page“ |
+| „Doplňte ho měřením … **a obsahovou strategií**“ | „…**a prací s obsahem**“ | kulhavá vazba |
+| `„3 of 4 checks passed"`, `„chtěl jsem…"`, `„pokud"` | `„…“` | rovné uvozovky |
+
+**Ponecháno:** „frontendový protokol“, „na backendu“ — zavedená česká mluva vývojářů (✅). Názvy Lighthouse, Agentic Browsing, Chrome Canary, WebMCP, CLS, ARIA.
+
+**Planý poplach nástroje (opraven):** pravidlo `\d%` hlásilo „**100% podíl** splněných kontrol“ jako chybějící mezeru — jenže tady je „100%“ **přídavné jméno** a mezera by byla chyba. Regex zúžen na `\d%(?![ ]?[\wá-ž])`: když za procentem následuje slovo, nástroj mlčí, protože „50 % webů“ od „50% nárůstu“ rozlišit neumí. Radši žádný nález než špatná oprava.
+
+**Nová pravidla v33:** `\bbooking\b`, `\bagent akc\w+` (⛔) · `\blistov\w+ stránk\w+`, `\bpreview\b` (⚠️) · `\b(frontend|backend)\w*` (✅).
+
+**Do fronty:** „preview“ je ještě v `bing-seo-pro-ai` (dosud neauditovaný).

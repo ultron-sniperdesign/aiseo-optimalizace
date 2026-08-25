@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 31** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 41/147) · audituje skill `cestina-audit`
+> **Verze: 33** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 42/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -217,7 +217,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `„[^„“\n<>=]{0,160}"` | zavřít českou uvozovkou “ | opakovaná chyba, rozbíjí i MDX a Python. Regex vylučuje `<>=`, aby nematchoval uvozovky HTML atributů — plošná náhrada bez téhle pojistky rozbila `class="hl"` | jak-vypnout-ai-overview 2026-08-23 |
-| ⛔ | `\d%` | mezera před % (25 %) | česká sazba; výjimka jen v přídavném jméně (25% podíl) | seed 2026-08-23 |
+| ⛔ | `\d%(?![ ]?[\wá-ž])` | mezera před % (25 %) | česká sazba. **Regex vynechává přídavné jméno** („100% podíl“, „50% nárůst“) — dřív je hlásil jako chybu; nástroj nedokáže rozlišit „50 % webů“ od „50% nárůstu“, proto raději mlčí | seed 2026-08-23, zúženo lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\w\s-\s\w` | pomlčka – | spojovník mezi slovy místo pomlčky (odrážky a složeniny se nehlásí) | seed 2026-08-23 |
 | ⛔ | `\b\d{4}-\d{2}-\d{2}\b(?![^<]*>)` | české datum (23. 8. 2026) | anglický formát data v textu | seed 2026-08-23 |
 
@@ -270,7 +270,12 @@
 | ✅ | `\bimpres\w+` | — | počeštěné „imprese“ je zavedená česká mluva SEO i PPC. Navíc v článku o Search Console je „zobrazení“ obsazené významem *pohled na data* („zobrazení Search“) — plošná náhrada by vyrobila dvojznačnost | gsc-ai-segmenty-mereni 2026-08-25 |
 | ✅ | `\bklik\w+` | — | „klik / kliky / kliků“ je běžná česká podoba; UI píše „kliknutí“, ale text není citace rozhraní | gsc-ai-segmenty-mereni 2026-08-25 |
 | ✅ | `\bplatformov\w+` | — | „platformová specifika“ je běžné české tvoření (platformové řešení); vada by byl až telegrafický „plus“ mezi podstatnými jmény, ne přídavné jméno | jak-ai-cituje-zdroje 2026-08-25 |
+| ✅ | `\b(frontend|backend)\w*` | — | „frontendový protokol“, „na backendu“ je zavedená česká mluva vývojářů, ne slepenec | lighthouse-ai-check 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bbooking web\w*|\bbooking\b(?! ?\.com)` | rezervační web, rezervace | polopřeložený slepenec | lighthouse-ai-check 2026-08-25 |
+| ⛔ | `\bagent akc\w+|\b\w+ akc(e|emi|ích) agent\w*` | akce, které provádí agent | anglický přívlastek bez skloňování | lighthouse-ai-check 2026-08-25 |
+| ⚠️ | `\blistov\w+ stránk\w+` | stránka s výpisem | doslovný převod „listing page“ | lighthouse-ai-check 2026-08-25 |
+| ⚠️ | `\bpreview\b` | náhled | anglické slovo v české větě; **výjimka:** názvy kanálů a produktů (Chrome Canary, Preview build) | lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\blive search\b|\bsearch agent\b` | vyhledávací robot, stahování v reálném čase | kus anglické dokumentace v české větě | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bkategoriov\w+ text\w*` | texty kategorií | kostrbaté přídavné jméno místo přivlastňovací vazby | ai-seo-wordpress 2026-08-25 |
 | ⚠️ | `\bbio\b(?![ ]?[(-])` | medailonek, profil autora | eliptický převod z angličtiny („krátká bio“ navíc neshoduje rod); česky je to medailonek. **Výjimka:** „bio“ ve významu biopotravin a v názvech (BIO, bio-) | ai-seo-wordpress 2026-08-25, rozšířeno autorsky-profil-pro-ai 2026-08-25 |
