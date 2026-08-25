@@ -265,3 +265,27 @@ Poznámka k obsahu pro AI: texty jsou psané jako odpověď na otázku „co to 
 se to používá a kdy to nepoužít“, ne jako výčet parametrů. Do každého textu jde ředění, doba
 působení a bezpečnostní omezení od výrobce, protože právě tahle čísla dodavatelské popisy vynechávaly.
 Strukturovaná data ani FAQ bloky u produktů nasazené **nejsou**.
+
+
+## Hlášení 2026-08-25 — blogové články (AUTO BLOG / MEGA aktuality)
+
+> Jiná oblast než předchozí bloky (ty řeší produktové a kategoriové texty). Toto vlákno
+> vytvořilo **nové blogové články** na megadetail.cz přes **UpGates API** (`POST /articles`,
+> nativní zdroj `/articles`). Publikováno vždy jako DRAFT (`active_yn=false`); aktivaci dělá klient v adminu.
+
+| Nasazeno | Oblast | Co přesně (počty, rozsah) | Pozn. |
+|---|---|---|---|
+| ~2026-08 | blog / AUTO BLOG | **13 nových blogových článků** přes UpGates API. Délka těla 5 100–8 200 znaků HTML. Struktura každého: úvodní krátká odpověď (40–60 slov, tučně, sebestačná pro AI citaci) → lead → 4–6× H2 (+H3) → FAQ (2–4 otázky) → CTA na konkrétní produkt/kategorii. Interní prolinky: produktové + kategoriové + cross-linky na existující články. Bez H1 v těle (generuje UpGates z titulku). | Strukturovaná data (JSON-LD) neřešeno v tomto vlákně (render UpGates) |
+| ~2026-08 | blog / obrázky | Všech 13 článků má **hlavní obrázek**: 12× generovaný brandový cover (gpt-image-2, oranžová #ff7200 + černá, CZ titulek), 1× reálná produktová fotka z katalogu (#341). Nahráno binárně přes `POST /files/file` → `images[].file_id`. | — |
+| ~2026-08 | blog / QA | Každý článek prošel **2 koly nezávislého OpenAI auditu** (věcná správnost, brand voice bez hype, citovatelnost pro AI, SEO) a **ověřením všech interních + produktových URL na HTTP 200**. | — |
+
+**Seznam 13 článků** (article_id · rubrika · stav):
+- #341 Auto Finesse Citrus Power — aktivní
+- #352 Jak vybrat leštičku na auto — aktivní
+- #353 Nejlepší vůně do auta 2026 — aktivní
+- #359 Jak nás začal doporučovat ChatGPT (ze zákulisí, MEGA aktuality; obsahuje 2 odkazy na aiseo-optimalizace.cz vč. této case study) — aktivní
+- #372 Tekuté stěrače · #373 Nejlepší vosk na auto · #374 Jak vyčistit alcantaru · #375 Jak často mýt auto · #376 Aktivní pěna (snow foam) · #377 Nejlepší autošampon · #378 Jak vybrat vysavač do auta · #379 Grafenová ochrana laku · #380 Nejlepší oživovač plastů — **draft, čeká na aktivaci v adminu**
+
+Rubriky: 12× zakládáno do AUTO BLOG (category_id 1746), 1× MEGA aktuality (#359). U 3 aktivovaných (#341/#352/#353) klient v adminu rubriky přeřadil (BLOG 158 / MEGA produkty 773 / Jak na detailing exteriéru 398).
+
+Stav celku: **+13 nových blogových článků** na megadetail.cz (4 aktivní, 9 draftů čeká na aktivaci). Blog měl na začátku prací ~295 aktivních článků (baseline z UpGates `/articles`).
