@@ -644,3 +644,13 @@ Terminologická poznámka: náhradu „odpovědní systémy“ jsem nevybral pod
 Je to **šestá korekce stejného typu**. Nově vidím i její užší vzorec: LLM označí za vadu **spojení, které samo o sobě vadné není, protože se mu nelíbí přívlastek** („čistě česká“ cílovka). Do skillu proto přibylo: **když je podezřelý jen přívlastek, oprav přívlastek, ne celé sousloví** — a když ani ten není doložitelně vadný, nech větu být.
 
 **Do fronty na doauditování:** „figuruje“ / „odpovědní enginy“ jsou ještě v `firmy-cz-pro-ai` a `aio-strategie` (druhý je auditovaný ve v12, tedy drift).
+
+---
+
+## Nalez mimo jazyk — prazdne popisy kroku (25. 8. 2026)
+
+Pri overovani reverty v behu 45 na zivem webu chybela veta, ktera v souboru byla. Pricina: `src/components/blocks/Stepper.astro` cetl popis kroku z `step.desc`, ale **42 bloku ve 41 clancich** ho predavalo jako `text:`. Astro chybejici vlastnost neohlasi — vykreslil se `<p class="stp__desc"></p>`, tedy prazdny odstavec. Build byl zeleny celou dobu.
+
+**Oprava (rozhodnuti uzivatele: varianta A):** komponenta prijima oboji — `{step.desc ?? step.text}`, `Step` ma `desc`, `text` i `label` volitelne. Po buildu: **0 prazdnych popisu** v celem `dist/` (driv 42). Do `ARTICLE_TEMPLATE.md` pribyla tabulka klicu komponent a kontrola v predpublikacnim checklistu.
+
+Pouceni pro jazykovy audit: **zeleny build ani mechanicka kontrola nereknou, ze se text vubec nezobrazil.** Proto po kazdem behu overuji konkretni vety na zive strance — prave tak se tohle naslo.

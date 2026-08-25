@@ -139,6 +139,24 @@ curl -sSI https://example.com/api
 
 Inline kód jako `proměnná` nebo `cesta/k/souboru`.
 
+## Komponenty — názvy vlastností (kontrola před publikací)
+
+Komponenta vykreslí jen ty klíče, které zná. **Překlep nebo cizí název klíče build nezastaví** — text prostě tiše zmizí ze stránky. Ověřeno 25. 8. 2026: `<Stepper>` měl ve 41 článcích popisy kroků v klíči `text:`, komponenta ale četla `desc:` → 42 bloků se vykreslovalo s prázdným odstavcem.
+
+| Komponenta | Klíče, které se vykreslí |
+|---|---|
+| `<Stepper steps={[…]} />` | `title`, `desc` (**kanonický**; `text` funguje jako alias). `label` se **nevykresluje** — je to jen poznámka v kódu. |
+| `<Checklist items={[…]} />` | `title`, `desc` |
+| `<CompareTable rows={[…]} />` | `icon`, `label`, `left`, `right` |
+| `<Persona>` / `<AntiPersona>` | obsah mezi tagy |
+| `<Mistake num title>` | `num`, `title` + obsah mezi tagy |
+
+**Po designové úpravě (blok D1) zkontroluj v buildu, že se text opravdu vykreslil:**
+
+```bash
+grep -o 'stp__desc[^<]*></p>' dist/blog/<slug>/index.html | wc -l   # musí být 0
+```
+
 ## Závěr a CTA
 
 Krátký odstavec (3–5 vět) syntézy: **co si čtenář odnese**, ne shrnutí.
@@ -161,6 +179,7 @@ Pak jedno CTA relevantní pro kontext:
 - [ ] `answer` je 40–60 slov, sebestačná, bez „výše v článku"
 - [ ] `faq` má 4–8 otázek (silně doporučeno, ne povinné)
 - [ ] `npm run build` projde bez errors
+- [ ] **Komponenty opravdu vykreslily text** — `grep -o 'stp__desc[^<]*></p>' dist/blog/<slug>/index.html | wc -l` musi byt `0` (chybny nazev klice build nezastavi, text jen zmizi)
 - [ ] Lokálně otestováno na `npm run dev` → `/blog/<slug>/`
 - [ ] Článek je v `/blog/` listingu (`npm run dev` → `/blog/`)
 - [ ] Code blocks mají jazyk v fence (` ```bash`, ` ```typescript`)

@@ -6,10 +6,15 @@
  *     { title: "Keyword research", desc: "Použijte Ahrefs nebo SE Ranking…" },
  *     { title: "Information architecture", desc: "Postavte pillar + cluster…" },
  *   ]} tone="seo" />
+ *
+ * Popis kroku se píše do `desc`. Alias `text` je podporovaný kvůli článkům,
+ * které ho používají (šablona ho dřív učila) — bez něj se popis nevykreslil.
  */
 interface Step {
   title: string;
-  desc: string;
+  desc?: string;
+  text?: string;
+  label?: string;
 }
 
 interface Props {
@@ -29,7 +34,7 @@ const { steps, tone = "accent" } = Astro.props;
         </div>
         <div class="stp__body">
           <h3 class="stp__title">{step.title}</h3>
-          <p class="stp__desc">{step.desc}</p>
+          <p class="stp__desc">{step.desc ?? step.text}</p>
         </div>
       </li>
     ))
