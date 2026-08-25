@@ -40,6 +40,7 @@
 | 40 | 2026-08-25 | `gsc-ai-segmenty-mereni` | 2026-06-11 | v29 → v30 | 2 654 | 0 | 0 | **0,0 → 0,0** | 0 | +2 (✅) |
 | 41 | 2026-08-25 | `jak-ai-cituje-zdroje` | 2026-06-11 | v30 → v31 | 2 316 | 2 (+1 novým pravidlem) | 1 | **0,9 → 0,0** | 5 | +2 |
 | 42 | 2026-08-25 | `lighthouse-ai-check` | 2026-06-11 | v31 → v35 | 2 783 | 7 (1 planý) | 6 | **2,5 → 0,0** | 16 | +7 (1 zúženo) |
+| 43 | 2026-08-25 | `originalni-data-pro-ai` | 2026-06-11 | v35 → v36 | 2 476 | 7 | 6 | **2,8 → 0,0** | 13 | +5 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -594,3 +595,19 @@ Nejtechničtější článek zatím a taky nejvíc smíšených nálezů: kus va
 **Revize v35 — rozhodnutí uživatele 25. 8. 2026:** „obsahová strategie“ je běžně používaný výraz. Náhrada „a prací s obsahem“ vrácena zpět na „a obsahovou strategií“, pravidlo zapsáno jako ✅. Kontrola korpusu (`git log -S`): jiný audit tenhle výraz nikde neodstranil — v `seo-audit-co-kontrolovat` větu „Nenahrazuje obsahovou strategii“ audit 2 nechal beze změny, takže revert se týkal jen tohoto článku.
 
 Je to **pátá korekce stejného typu** (industry-standard, research, separátní, unikátní/dohledaný, obsahová strategie). Vzorec je pokaždé stejný: LLM průchod označí zavedený český odborný výraz za „kulhavý“ nebo „strojový“. Proto v zadání pro LLM nově stojí i to, že **běžná česká odborná spojení nejsou vada** — hlásit se má jen kalk, slepenec a rozbitá vazba.
+
+### 43 · originalni-data-pro-ai (2026-08-25)
+
+Sedm strojových nálezů byly zase jen rovné uvozovky (článek je plný ukázkových titulků v uvozovkách). LLM průchod tentokrát trefil **šest skutečných vad ve vazbách** — a s novým zadáním („běžná česká odborná spojení nejsou vada“) **nehlásil ani jeden zavedený výraz**, což byl u předchozích běhů pravidelný šum.
+
+| Bylo | Je | Proč |
+|---|---|---|
+| `„…"` na 7 řádcích | `„…“` | rovné uvozovky |
+| „co se **počítá za** originální data“ | „co se **považuje za** originální data“ | nečeská vazba |
+| „průzkum **získává vyšší šanci stát se** primárním zdrojem“ | „**zvyšuje se šance, že se stane** primárním zdrojem“ | překladový obrat |
+| „dá vytvořit **výzkumný materiál**“ | „dá vytvořit **vlastní studie**“ | vágní úřední sousloví |
+| „záleží na tom, **jak je výzkum publikovaný**“ | „…**jak výzkum zveřejníte**“ | těžkopádný trpný tvar |
+| „méně, než by **jejich potenciál odpovídal**“ | „méně, než by **odpovídalo jejich potenciálu**“ | obrácený slovosled rozbil vazbu |
+| „rovnou se **správným formátem** pro AI citace“ | „rovnou s **formátem vhodným** pro AI citace“ | vágní nárok |
+
+**Nová pravidla v36:** `\bpočítá\w* za (origináln|kvalitn|dobr)\w+`, `\bnež by \w+ potenciál odpovídal\w*` (⛔) · `\bzískává vyšší šanci stát se\b`, `\bvýzkumn\w+ materiál\w*`, `\bsprávn\w+ formát\w* pro\b` (⚠️).

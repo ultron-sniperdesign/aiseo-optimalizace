@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 35** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 42/147, revize) · audituje skill `cestina-audit`
+> **Verze: 36** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 43/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -273,6 +273,11 @@
 | ✅ | `\b(frontend|backend)\w*` | — | „frontendový protokol“, „na backendu“ je zavedená česká mluva vývojářů, ne slepenec | lighthouse-ai-check 2026-08-25 |
 | ✅ | `\bobsahov\w+ strategi\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „obsahová strategie“ je běžně používaný výraz, ne kulhavá vazba | lighthouse-ai-check 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `\bpočítá\w* za (origináln|kvalitn|dobr)\w+` | považuje se za, počítá se jako | nečeská vazba „počítat za“ ve významu „považovat za“ | originalni-data-pro-ai 2026-08-25 |
+| ⛔ | `\bnež by \w+ potenciál odpovídal\w*` | než by odpovídalo jejich potenciálu | obrácený slovosled rozbíjí vazbu — potenciál ničemu „neodpovídá“ | originalni-data-pro-ai 2026-08-25 |
+| ⚠️ | `\bzískává vyšší šanci stát se\b` | zvyšuje se šance, že se stane | překladový obrat; česky se šance zvyšuje, nezískává | originalni-data-pro-ai 2026-08-25 |
+| ⚠️ | `\bvýzkumn\w+ materiál\w*` | studie, datový podklad | vágní úřední sousloví | originalni-data-pro-ai 2026-08-25 |
+| ⚠️ | `\bsprávn\w+ formát\w* pro\b` | formát vhodný pro | vágní nárok („správný“ bez doložení čím) | originalni-data-pro-ai 2026-08-25 |
 | ⛔ | `\baccessibility (skóre|audit\w*|kontrol\w*)\b` | skóre / audity přístupnosti | hybridní slepenec. **Výjimka:** `accessibility tree` a název kategorie „Accessibility“ v Lighthouse — vlastní jména | lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\bbooking web\w*|\bbooking\b(?! ?\.com)` | rezervační web, rezervace | polopřeložený slepenec | lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\bagent akc\w+|\b\w+ akc(e|emi|ích) agent\w*` | akce, které provádí agent | anglický přívlastek bez skloňování | lighthouse-ai-check 2026-08-25 |
