@@ -52,7 +52,7 @@ faq:
   - q: "Mám AI roboty blokovat, nebo pustit?"
     a: "Záleží na cíli. Pokud chcete zvýšit šanci na citace v ChatGPT a Perplexity, vyhledávací roboty pusťte. Pokud nechcete dávat obsah k tréninku modelů, omezte tréninkové roboty. Často dává smysl kombinace: pustit vyhledávací, omezit tréninkové."
   - q: "Chystá se standard, abych nemusel vypisovat roboty jménem?"
-    a: "Ano, ale zatím není hotový. V IETF běží pracovní skupina AIPREF, která navrhuje slovník pro vyjádření preferencí — v aktuálním znění draftu dvě kategorie (train-ai a search) a hodnoty y nebo n, připojené HTTP hlavičkou Content-Usage nebo pravidlem v robots.txt. Syntaxe i názvy se ještě můžou změnit. Jsou to ale adoptované drafty před standardizací, ne ratifikovaný standard: doprovodný draft má milník poslat specifikaci do IESG v srpnu 2026. Do té doby vypisujte roboty jménem a podle draftu nic nepřestavujte."
+    a: "Ano, ale zatím není hotový. V IETF běží pracovní skupina AIPREF, která navrhuje slovník pro vyjádření preferencí — v aktuálním znění draftu dvě kategorie (train-ai a search) a hodnoty y nebo n, připojené HTTP hlavičkou `Content-Usage` nebo pravidlem v robots.txt. Syntaxe i názvy se ještě můžou změnit. Jsou to ale adoptované drafty před standardizací, ne ratifikovaný standard: doprovodný draft má milník poslat specifikaci do IESG v srpnu 2026. Do té doby vypisujte roboty jménem a podle draftu nic nepřestavujte."
   - q: "Pomáhá soubor llms.txt řídit přístup AI?"
     a: "llms.txt je návrh formátu pro popis důležitého obsahu webu pro AI nástroje, ne nástroj na řízení přístupu. Podle dostupných informací ho velcí roboti k roku 2026 spolehlivě nepoužívají. Pro řízení přístupu používejte robots.txt, serverová pravidla nebo firewall."
 ---
@@ -157,7 +157,7 @@ Disallow: /*?order
 ```
 
 <Insight tone="warn" icon="!" label="Otevřená oprava (8. 8. 2026)">
-Do 8. 8. 2026 tady stálo, že `Allow: /` má smysl „hlavně pro přehlednost a v případě, kdy máte obecné `User-agent: *` s blokací". **Druhá polovina té věty to měla obráceně** a opravili jsme ji. Vyplavalo to při [měření 47 e-shopů na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/), kde výchozí `User-agent: *` obsahuje 40 zákazů: čtyři e-shopy si přidaly skupiny s pouhým `Allow: /` pro AI roboty a tím jim otevřely i stránky, které měly zavřené.
+Do 8. 8. 2026 tady stálo, že `Allow: /` má smysl „hlavně pro přehlednost a v případě, kdy máte obecné `User-agent: *` s blokací“. **Druhá polovina té věty to měla obráceně** a opravili jsme ji. Vyplavalo to při [měření 47 e-shopů na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/), kde výchozí `User-agent: *` obsahuje 40 zákazů: čtyři e-shopy si přidaly skupiny s pouhým `Allow: /` pro AI roboty a tím jim otevřely i stránky, které měly zavřené.
 </Insight>
 
 Tahle vrstva navazuje na [SEO pro ChatGPT](/blog/chatgpt-seo/) a patří do širšího [AI SEO auditu](/blog/ai-seo-audit/).
@@ -181,7 +181,7 @@ User-agent: Google-Extended
 Disallow: /
 ```
 
-**Pozor na zápis `Google-Extended`:** není to crawler, ale řídicí token — Google ho ale nastavuje právě přes `User-agent` v `robots.txt`. Ve stejném tvaru funguje i `Applebot-Extended` (podle dokumentace Applu). Neberte to jako univerzální pravidlo: že má nějaký provozovatel token s příponou „Extended", neznamená, že ho tak má každý.
+**Pozor na zápis `Google-Extended`:** není to crawler, ale řídicí token — Google ho ale nastavuje právě přes `User-agent` v `robots.txt`. Ve stejném tvaru funguje i `Applebot-Extended` (podle dokumentace Applu). Neberte to jako univerzální pravidlo: že má nějaký provozovatel token s příponou „Extended“, neznamená, že ho tak má každý.
 
 Rozlišujte přitom roboty pro trénink a pro vyhledávání: můžete zakázat trénink (GPTBot) a přitom nechat projít vyhledávání (OAI-SearchBot), abyste zůstali citovatelní. Blokace všeho najednou citovatelnost obětuje.
 
@@ -235,7 +235,7 @@ Tohle je výchozí bod, ne dogma. Když vám na tréninku nezáleží, spodní b
 
 Tohle je nejdůležitější věc, kterou si odnést: **robots.txt je dobrovolná žádost, ne technická zábrana.** Slušní roboti pravidla respektují, ale není to vynutitelné:
 
-- **U celé jedné kategorie robots.txt podle dokumentace neplatí.** Když si obsah vyžádá uživatel v konverzaci, nejde o automatické procházení — OpenAI u `ChatGPT-User` píše, že pravidla „nemusí platit", Google u devíti svých fetcherů a Perplexity u `Perplexity-User`, že je „obvykle ignorují". Není to obcházení pravidla, ale popsané chování: jde o stažení vyvolané konkrétním člověkem, ne o plošné procházení webu, na které robots.txt míří. Prakticky to znamená, že pravidlo pro `ChatGPT-User` tenhle provoz nezastaví jistě — [rozebírá to samostatný článek](/blog/roboti-vyvolani-uzivatelem/).
+- **U celé jedné kategorie robots.txt podle dokumentace neplatí.** Když si obsah vyžádá uživatel v konverzaci, nejde o automatické procházení — OpenAI u `ChatGPT-User` píše, že pravidla „nemusí platit“, Google u devíti svých fetcherů a Perplexity u `Perplexity-User`, že je „obvykle ignorují“. Není to obcházení pravidla, ale popsané chování: jde o stažení vyvolané konkrétním člověkem, ne o plošné procházení webu, na které robots.txt míří. Prakticky to znamená, že pravidlo pro `ChatGPT-User` tenhle provoz nezastaví jistě — [rozebírá to samostatný článek](/blog/roboti-vyvolani-uzivatelem/).
 - Někteří roboti pravidla ignorují — u Bytespideru se například opakovaně objevují veřejná hlášení a spory o nerespektování robots.txt. Shodou okolností je to ve [vzorku českých médií nejčastěji blokovaný robot](/blog/bytespider-ceska-media/).
 - Pro **tvrdší blokování** řešte zásah na serveru, firewallu nebo CDN — jak to vypadá v praxi, rozebíráme u [blokování AI botů přes Cloudflare](/blog/cloudflare-ai-bot-blocking/). Samotný user-agent jde podvrhnout, proto ho kombinujte s [ověřením podle IP rozsahů](/blog/overovani-ai-robotu/) tam, kde je provozovatel publikuje — u části AI robotů to zdokumentované není. K tomu omezení frekvence a sledování logů.
 - **Nedávejte do robots.txt citlivé nebo neveřejné URL** jako náhradu zabezpečení — soubor je veřejný a `Disallow` nebrání přímému přístupu na stránku.
@@ -260,7 +260,7 @@ Obojí jsou **adoptované drafty IETF, ne ratifikované standardy.** Slovníkov�
 Prakticky: **kvůli tomu teď na `robots.txt` nesahejte.** Má smysl o tom vědět, aby vás to za rok nepřekvapilo — ne podle nehotového draftu přestavovat web.
 </Insight>
 
-Nad tím se rýsuje ještě třetí vrstva: licencování a placený přístup (iniciativy typu RSL nebo pay-per-crawl u Cloudflare). Pro malou a střední českou firmu to zatím nejsou nástroje k použití, spíš signál, kam se to celé posouvá — od „zakaž jménem" k „vyjádři podmínky".
+Nad tím se rýsuje ještě třetí vrstva: licencování a placený přístup (iniciativy typu RSL nebo pay-per-crawl u Cloudflare). Pro malou a střední českou firmu to zatím nejsou nástroje k použití, spíš signál, kam se to celé posouvá — od „zakaž jménem“ k „vyjádři podmínky“.
 
 ## Jak ověřit nastavení
 

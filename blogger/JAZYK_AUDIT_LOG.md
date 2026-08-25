@@ -19,6 +19,12 @@
 | 12 | 2026-08-24 | `geo-optimalizace` | 2026-05-08 | v12 → v13 | 4 630 | 155 | — | **33,8 → 0,4** | 96 | +2 |
 | 13 | 2026-08-24 | `ai-seo-audit` | 2026-05-23 | v13 → v14 | 1 924 | 2 | 5 | **1,0 → 0,0** | 3 | +3 |
 | 14 | 2026-08-24 | `ai-seo-content` | 2026-05-23 | v14 | 1 264 | 7 | — | **5,5 → 1,6** | 4 | 0 |
+| 15 | 2026-08-24 | `chatgpt-seo` | 2026-05-23 | v14 | 2 430 | 9 | — | **3,7 → 0,0** | 8 | 0 |
+| 16 | 2026-08-24 | `perplexity-seo` | 2026-05-23 | v14 | 1 430 | 2 | — | **1,4 → 0,0** | 3 | 0 |
+| 17 | 2026-08-24 | `ai-brand-mentions` | 2026-05-23 | v15 | 1 200 | 3 | — | **2,5 → 0,0** | 1 | 0 |
+| 18 | 2026-08-24 | `ai-crawler-robots-txt` | 2026-05-23 | v15 | 2 900 | 7 | — | **2,4 → 0,0** | 5 | 0 |
+| 19 | 2026-08-24 | `ai-seo-nastroje` | 2026-05-23 | v15 | 2 150 | 6 | — | **2,8 → 0,0 ⛔** | 1 | 0 |
+| 20 | 2026-08-24 | `bing-seo-pro-ai` | 2026-05-23 | v15 | — | 0 | — | **0,0** | 0 | 0 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -227,6 +233,16 @@ Strojově jen 2 nálezy, LLM průchod přidal 5 jemnějších: `DIY checklist`, 
 Krátký text (1 264 slov), 7 nálezů. Čtyři opravy: tři nedovřené uvozovky a „připravili jsme" → „k dispozici je".
 
 **Nová výjimka: titulek, který je zároveň cílovým klíčovým slovem.** Článek se jmenuje „AI SEO content" a má slug `ai-seo-content`. Slovo `content` je tu ⛔ podle pravidla, ale **titulek nese hledaný výraz a slug se po publikaci nemění** — přepsat titulek by znamenalo rozejít se se slugem i s tím, co lidé hledají. Zbylé dva ⛔ nálezy jsou právě titulek a stejně znějící H2.
+
+### 15–20 · série z 23. 5. 2026 (2026-08-24)
+
+Šest článků v jednom průchodu — a poprvé **jeden článek s nulou nálezů rovnou** (`bing-seo-pro-ai`). Hustoty 3,7 · 1,4 · 2,5 · 2,4 · 2,8 · 0,0. Celkem 18 oprav, z toho **10 nedovřených uvozovek**.
+
+**Skutečné jazykové nálezy** byly jen čtyři: `baseline` 3× v `chatgpt-seo` (naše vlastní měření), „Stojí za zmínku, že" (výplňkový obrat), `niche` a dvakrát „připravili jsme" (prodejní tón).
+
+**Nová výjimka: věta, která anglický termín vysvětluje.** Články píšou „(v angličtině *AI brand mentions*)" nebo „v zahraničí je potkáte pod názvy *AI visibility tracker*" — termín tam **není použit, ale představen**. Checker takové řádky od článku 15 přeskakuje (hledá „v angličtině", „v zahraničí", „pod názvem"). Bez toho by hlásil právě ta místa, kde autor dělá to, co slovník požaduje.
+
+Druhá výjimka: **názvy technických identifikátorů** (`Content-Usage`, `Google-Extended`). Řešení není výjimka v pravidle, ale správná typografie — patří do zpětných apostrofů, čímž je checker přeskočí sám.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 

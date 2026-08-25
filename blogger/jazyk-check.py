@@ -18,7 +18,9 @@ URL = re.compile(r'https?://\S+|\]\([^)]*\)|/blog/[a-z0-9-]+/|/slovnik/[a-z0-9-]
 JSX = re.compile(r'</?[A-Z][A-Za-z]*')
 JSXATTR = re.compile(r'\b[a-zA-Z]+=(?=["\{])')   # nazvy atributu (fix=, tone=, title=)
 HTMLVAL = re.compile(r'\b(class|id|style|href|src|rel|aria-\w+)="[^"]*"')
-ICONVAL = re.compile(r'\b(icon|tone|variant|key|slug)\s*[:=]\s*"[^"]*"')   # technicke hodnoty, ne text   # hodnoty technickych atributu
+ICONVAL = re.compile(r'\b(icon|tone|variant|key|slug)\s*[:=]\s*"[^"]*"')   # technicke hodnoty, ne text
+# radek, ktery anglicky termin VYSVETLUJE, se neaudituje (clanek ho uvadi jako cizi slovo)
+CITUJE = re.compile(r'v angličtin|anglicky|v zahraničí|pod názv|anglick(ý|ého|ém) (termín|název|výraz)|zkratk[ay] z angli')   # hodnoty technickych atributu
 
 def load_rules(path):
     rules, section = [], '?'
@@ -106,6 +108,8 @@ def main():
         line = mask(raw)
         words += len(line.split())
         quoted = raw.lstrip().startswith('>') or '*„' in raw or '“*' in raw
+        if CITUJE.search(raw):   # veta vysvetluje anglicky termin — neni to vada
+            continue
         for r in rules:
             for m in r['rx'].finditer(line):
                 hits.append((n, r, m.group(0), raw.strip(), quoted))

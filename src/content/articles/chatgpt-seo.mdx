@@ -83,13 +83,13 @@ Důležité upřesnění: bavíme se o **ChatGPT s webovým vyhledáváním**, k
 Ten jediný úspěšný případ měl jedno zjevné specifikum: **dotaz obsahoval „v Česku“ a mezi citovanými zdroji převažovaly české weby.** Nabízí se výklad, že u takového dotazu globální anglické zdroje prostě neodpovídají na to, na co se ptáte — kdo hledá dodavatele v Česku, tomu je Search Engine Land k ničemu. Je to ale hypotéza z jednoho pozorování, ne doložená příčina.
 
 <Insight tone="warn" label="Střet zájmu">
-Ten jediný český zásah byl **náš vlastní web.** Vlastní test, ve kterém najdeme sami sebe, není nezávislý výzkum — a zvyšuje riziko, že si z výsledku vybereme výklad příznivý pro vlastní byznys. Proto uvádíme metodiku i to, co jsme nezaznamenali, a berte to jako náš interní baseline, ne jako data o trhu. Nejlepší kontrola je udělat si stejný test na svém webu a svých dotazech.
+Ten jediný český zásah byl **náš vlastní web.** Vlastní test, ve kterém najdeme sami sebe, není nezávislý výzkum — a zvyšuje riziko, že si z výsledku vybereme výklad příznivý pro vlastní byznys. Proto uvádíme metodiku i to, co jsme nezaznamenali, a berte to jako naše interní výchozí měření, ne jako data o trhu. Nejlepší kontrola je udělat si stejný test na svém webu a svých dotazech.
 </Insight>
 
 ### Metodika, ať je jasné, jak jsme postupovali
 
-- **Dotazů:** 15, česky, z oboru AI SEO — všechny informační nebo návodové typu „co je X" a „jak udělat Y". **Geograficky ukotvený byl jediný z nich** a je to zároveň ten, u kterého se objevily české weby. **Datum:** 19. 7. 2026. **Běhů:** jeden.
-- **Prompt:** pokaždé stejný — „Vyhledej na webu a odpověz s odkazy na zdroje: &lt;dotaz&gt;".
+- **Dotazů:** 15, česky, z oboru AI SEO — všechny informační nebo návodové typu „co je X“ a „jak udělat Y“. **Geograficky ukotvený byl jediný z nich** a je to zároveň ten, u kterého se objevily české weby. **Datum:** 19. 7. 2026. **Běhů:** jeden.
+- **Prompt:** pokaždé stejný — „Vyhledej na webu a odpověz s odkazy na zdroje: &lt;dotaz&gt;“.
 - **Zapisovali jsme** citované domény v pořadí, ve kterém je nástroj uvedl.
 - **Co jsme nezaznamenali:** verzi modelu a tarif, jazyk rozhraní, geolokaci, stav paměti
   a historii konverzace. Kdo bude test opakovat, může kvůli tomu dostat jiné výsledky.
@@ -122,7 +122,7 @@ Je to stejná logika jako u [optimalizace pro odpovědi (AEO)](/aeo/) a u [pilí
 
 ## Krok 3: Ukotvěte obsah v českém kontextu
 
-Tohle je krok, který v návodech přeložených z angličtiny nenajdete. Náš test ho nedokazuje — u jednoho pozitivního případu je „společná vlastnost" skoro tautologie. Stojí za ním spíš úvaha: **na obecné dotazy má ChatGPT k dispozici stovky anglických zdrojů s velkou autoritou a konkurovat jim českým článkem o tomtéž je těžké.** Šance spíš vzniká tam, kde ty zdroje odpověď nemají.
+Tohle je krok, který v návodech přeložených z angličtiny nenajdete. Náš test ho nedokazuje — u jednoho pozitivního případu je „společná vlastnost“ skoro tautologie. Stojí za ním spíš úvaha: **na obecné dotazy má ChatGPT k dispozici stovky anglických zdrojů s velkou autoritou a konkurovat jim českým článkem o tomtéž je těžké.** Šance spíš vzniká tam, kde ty zdroje odpověď nemají.
 
 <Checklist tone="seo" title="Čím se obsah ukotví v Česku" items={[
   { title: "České ceny a částky", desc: "kolik co stojí na českém trhu, v korunách, s datem — globální zdroje tohle nemají." },
@@ -139,14 +139,14 @@ Neznamená to psát jen lokální témata. Znamená to u každého tématu zvá�
 V citacích ChatGPT se častěji objevují zdroje, které v daném tématu publikují konzistentně a dají se rozpoznat jako důvěryhodná entita:
 
 <Checklist tone="geo" title="Stavební kameny autority" items={[
-  { title: "Tematická autorita", desc: "pravidelný obsah ve své niche, ne jeden osamělý článek." },
+  { title: "Tematická autorita", desc: "pravidelný obsah ve svém oboru, ne jeden osamělý článek." },
   { title: "Strukturovaná data a autor", desc: "Article, FAQPage a Organization plus jasné autorské údaje pomáhají rozpoznat, kdo za obsahem stojí. Je to hygiena strojové čitelnosti, ne garantovaný signál pro výběr citace." },
   { title: "Konzistentní značka", desc: "stejný název, popis a kontaktní údaje napříč webem i profily." }
 ]} />
 
 ## Krok 5: Získejte zmínky mimo vlastní web
 
-Tohle většina firem podceňuje: v praktických testech i neformálních analýzách se mezi citovanými zdroji pravidelně objevují i **cizí weby** — recenze, oborové weby, srovnávače a diskuse — ne jen web samotné značky. Stojí za zmínku, že v našem měření se mezi citovanými zdroji objevil i Reddit; jak s ním pracovat bez spamu, rozebírá [AI citace z Redditu](/blog/ai-citace-reddit/).
+Tohle většina firem podceňuje: v praktických testech i neformálních analýzách se mezi citovanými zdroji pravidelně objevují i **cizí weby** — recenze, oborové weby, srovnávače a diskuse — ne jen web samotné značky. V našem měření se mezi citovanými zdroji objevil i Reddit; jak s ním pracovat bez spamu, rozebírá [AI citace z Redditu](/blog/ai-citace-reddit/).
 
 - Oborové weby, srovnávače a recenze, kde vás zmiňují.
 - Autentická účast v diskuzích — věcně, ne promo příspěvky.
@@ -162,7 +162,7 @@ Test je zdarma a zabere hodinu. Jeden detail ale rozhoduje o tom, jestli měří
 **Bez explicitního pokynu k vyhledání odpovídal ChatGPT v našem testu z natrénovaných dat a webové zdroje neuváděl.** Chování se může lišit podle režimu i verze, proto používejte konzistentně stejný prompt, například „Vyhledej na webu a odpověz s odkazy na zdroje: &lt;dotaz&gt;“. Jinak porovnáváte dva různé režimy.
 </Insight>
 
-Postup, kterým jsme dělali vlastní baseline a který si můžete zopakovat:
+Postup, kterým jsme dělali vlastní výchozí měření a který si můžete zopakovat:
 
 1. **Sepište 15–20 dotazů**, jak je píší zákazníci — ne klíčová slova, ale celé otázky.
 2. **Zadejte je s vynuceným vyhledáváním**, pokaždé stejným promptem.
@@ -193,6 +193,6 @@ Jeden běh je orientační snapshot, ne přesné měření — odpovědi se mezi
 
 Citace v ChatGPT nejsou jeden trik, ale souběh techniky, obsahu a autority — a u českého webu nejspíš i toho, jestli se ptá někdo na české téma.
 
-**Než cokoli koupíte, udělejte si vlastní baseline** podle metodiky výše: patnáct až dvacet zákaznických dotazů, vynucené vyhledávání, zápis citovaných domén. Zabere to hodinu a řekne vám víc než jakýkoli obecný návod.
+**Než cokoli koupíte, udělejte si vlastní výchozí měření** podle metodiky výše: patnáct až dvacet zákaznických dotazů, vynucené vyhledávání, zápis citovaných domén. Zabere to hodinu a řekne vám víc než jakýkoli obecný návod.
 
 Teprve pak má smysl řešit nástroje: rámec pro celý web má [AI SEO Wireframe Pack](/pack/) za 1 490 Kč, plán pro konkrétní web [AI SEO audit](/audit/) za 3 600 Kč.
