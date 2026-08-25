@@ -27,7 +27,7 @@ faq:
   - q: "Co přesně jsem testoval?"
     a: "Testovací JPEG s vyplněným EXIF blokem a XMP packetem, ve kterém byla IPTC hodnota DigitalSourceType označující plně vygenerovaný obsah — tedy zapsaná v XMP, ne jako samostatný IPTC IIM blok. Soubor prošel knihovnou sharp ve verzi 0.34.5 v šesti variantách zpracování a u každého výstupu jsem kontroloval, které metadatové části zbyly — u JPEG segmenty, u WebP chunky."
   - q: "Proč zrovna sharp?"
-    a: "Je to knihovna, kterou pod kapotou používá Astro a řada dalších Node pipeline pro zpracování obrázků. Výsledek se tedy týká hodně webů, ale neplatí automaticky pro WordPress, Shoptet ani pro transformace na CDN — ty jsem netestoval."
+    a: "Je to knihovna, kterou pod kapotou používá Astro a řada dalších nástrojů v Node.js pro zpracování obrázků. Výsledek se tedy týká hodně webů, ale neplatí automaticky pro WordPress, Shoptet ani pro transformace na CDN — ty jsem netestoval."
   - q: "Jak se metadata zachovají?"
     a: "V tomhle testu na sharpu je zachovalo volání keepMetadata() v řetězci zpracování — EXIF i XMP, a deklarace o původu přežila i konverzi do WebP. Testovací JPEG se tím zvětšil o 693 bajtů, WebP o 690 bajtů."
   - q: "Proč keepExif nestačí?"
@@ -44,7 +44,7 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
-V článku o tom, [jak se pozná AI obrázek](/blog/jak-poznat-ai-obrazek/), jsme skončili doporučením ověřit si, co z metadat přežije vaši publikační pipeline. Tak jsem to změřil.
+V článku o tom, [jak se pozná AI obrázek](/blog/jak-poznat-ai-obrazek/), jsme skončili doporučením ověřit si, co z metadat přežije váš publikační řetězec. Tak jsem to změřil.
 
 **V tomhle testu vyšel výsledek jednoznačně.**
 
@@ -52,7 +52,7 @@ V článku o tom, [jak se pozná AI obrázek](/blog/jak-poznat-ai-obrazek/), jsm
 
 Testovací JPEG 1600 × 1000 se dvěma bloky metadat: **EXIF** (autor, copyright, software, popis) a **XMP packet** se značkou `IPTC DigitalSourceType` označující plně vygenerovaný obsah. Tedy deklarace o způsobu vzniku, kterou metadata unesou — ne kryptograficky ověřený důkaz.
 
-Soubor pak prošel knihovnou **sharp ve verzi 0.34.5** — tu používá pod kapotou Astro; podobně se nasazuje i v dalších Node pipeline. Vždy `resize({ width: 1200 })` a export s výchozím nastavením enkodéru kromě kvality — jedna běžná varianta publikačního zpracování, ne jediná možná. U JPEG jsem kontroloval APP1 segmenty nesoucí EXIF a XMP a také APP13, u WebP RIFF chunky `EXIF` a `XMP `; přítomnost řetězce `trainedAlgorithmicMedia` sloužila jen jako doplňková kontrola.
+Soubor pak prošel knihovnou **sharp ve verzi 0.34.5** — tu používá pod kapotou Astro; podobně se nasazuje i v dalších nástrojích v Node.js. Vždy `resize({ width: 1200 })` a export s výchozím nastavením enkodéru kromě kvality — jedna běžná varianta publikačního zpracování, ne jediná možná. U JPEG jsem kontroloval APP1 segmenty nesoucí EXIF a XMP a také APP13, u WebP RIFF chunky `EXIF` a `XMP `; přítomnost řetězce `trainedAlgorithmicMedia` sloužila jen jako doplňková kontrola.
 
 ## Výsledek
 
@@ -69,7 +69,7 @@ Soubor pak prošel knihovnou **sharp ve verzi 0.34.5** — tu používá pod kap
 <Insight tone="warn" icon="!" label="Tři zjištění z tabulky">
 **Za prvé:** nešlo o částečné zachování — EXIF ani XMP se do výstupu **nepřenesly vůbec**, u JPEG i u WebP.
 **Za druhé:** v tomhle testu jedno volání `keepMetadata()` zachovalo obojí a deklarace přežila i konverzi do WebP.
-**Za třetí, a to je nejzajímavější:** `keepExif()` deklaraci o původu **nezachránil**, protože ta seděla v XMP, ne v EXIF. „Zachovat EXIF" není totéž co „zachovat informaci o původu".
+**Za třetí, a to je nejzajímavější:** `keepExif()` deklaraci o původu **nezachránil**, protože ta seděla v XMP, ne v EXIF. „Zachovat EXIF“ není totéž co „zachovat informaci o původu“.
 </Insight>
 
 ### Jak si to ověřit na vlastním souboru
@@ -129,7 +129,7 @@ Kdo hledá v dokumentaci přepínač, narazí nejdřív na EXIF — je to znám�
   ]}
 />
 
-Prakticky: kdo si myslí, že „zapnul zachování metadat", a přitom sáhl jen po EXIF, si nepřenese deklaraci o způsobu vzniku.
+Prakticky: kdo si myslí, že „zapnul zachování metadat“, a přitom sáhl jen po EXIF, si nepřenese deklaraci o způsobu vzniku.
 
 ## Argument o výkonu tady <span class="hl">nesedí</span>
 
@@ -157,7 +157,7 @@ Podstatné je, že **je to rozhodnutí, ne náhoda.** V tomhle testu to za vás 
 ## Co s tím udělat <span class="hl">u sebe</span>
 
 <Checklist
-  title="Pětiminutová kontrola vlastní pipeline"
+  title="Pětiminutová kontrola vlastního řetězce"
   tone="seo"
   items={[
     { title: "Vezměte obrázek, o kterém víte, co v něm je", desc: "Fotka rovnou z fotoaparátu nebo soubor, do kterého jste metadata vědomě zapsali." },

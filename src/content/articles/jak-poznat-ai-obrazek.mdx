@@ -35,7 +35,7 @@ faq:
   - q: "Dokazuje C2PA, že je fotka pravdivá?"
     a: "Ne. Může doložit, co o souboru tvrdí zachovaný podepsaný řetězec — třeba že vznikl v konkrétním zařízení nebo prošel konkrétním nástrojem. Neříká nic o tom, jestli je pravda, co je na snímku, ani jestli nebyl pořízený zavádějícím způsobem."
   - q: "Co z toho plyne pro můj web?"
-    a: "Pokud publikujete vlastní fotografie jako doklad — produkty, provozovnu, případové studie — jsou C2PA credentials cestou, jak původ doložit. Háček je v publikační pipeline: běžný resize, konverze do WebP nebo optimalizační pluginy metadata i credentials často zahazují, takže se vyplatí ověřit konkrétní publikační pipeline."
+    a: "Pokud publikujete vlastní fotografie jako doklad — produkty, provozovnu, případové studie — jsou C2PA credentials cestou, jak původ doložit. Háček je v publikačním řetězci: běžný resize, konverze do WebP nebo optimalizační pluginy metadata i credentials často zahazují, takže se vyplatí ověřit konkrétní publikační řetězec."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
@@ -58,28 +58,28 @@ Když jsme psali o tom, že si [AI přehled obrázek vytvoří sám](/blog/ai-ob
   rows={[
     { icon: "◆", label: "SynthID", left: "v obrazových datech, neviditelně", right: "že obsah nese značení SynthID" },
     { icon: "▤", label: "C2PA Content Credentials", left: "připojená, podepsaná", right: "co o vzniku a úpravách tvrdí zachovaný řetězec" },
-    { icon: "◈", label: "IPTC metadata", left: "v metadatech, nepodepsané", right: "jak byl obsah deklarativně popsán" },
+    { icon: "◈", label: "IPTC metadata", left: "v metadatech, nepodepsané", right: "jak obsah popisují metadata" },
   ]}
 />
 
-**SynthID** je podle stránky DeepMindu nástroj *„to watermark and identify content generated through AI"*. Vkládá neviditelný vodoznak do **obrázků, videa, zvuku i textu** — u obrázků má odolávat oříznutí, filtrům i kompresi, u zvuku je *„inaudible to the human ear"*, u textu se jemně upravují pravděpodobnosti slov.
+**SynthID** je podle stránky DeepMindu nástroj *„to watermark and identify content generated through AI“*. Vkládá neviditelný vodoznak do **obrázků, videa, zvuku i textu** — u obrázků má odolávat oříznutí, filtrům i kompresi, u zvuku je *„inaudible to the human ear“*, u textu se jemně upravují pravděpodobnosti slov.
 
-**C2PA Content Credentials** jsou kryptograficky podepsaná provenance data, která mohou doložit, v jakém zařízení nebo nástroji soubor vznikl a jaké úpravy se do zaznamenaného řetězce zapsaly. Google k I/O 2026 oznámil, že přidává jejich ověřování — *„to easily check if content is an unaltered original from a camera or if it has been modified, and by what tools."*
+**C2PA Content Credentials** jsou kryptograficky podepsaná provenance data, která mohou doložit, v jakém zařízení nebo nástroji soubor vznikl a jaké úpravy se do zaznamenaného řetězce zapsaly. Google k I/O 2026 oznámil, že přidává jejich ověřování — *„to easily check if content is an unaltered original from a camera or if it has been modified, and by what tools.“*
 
 **IPTC metadata** jsou starší standardizovaný slovník pro popis obrazového obsahu; hodnota označující plně vygenerovaný obsah v něm existuje. Tuhle vrstvu popisujeme podle oborových přehledů, ne podle vlastního primárního zdroje.
 
 <Insight tone="warn" icon="!" label="Nejsou to tři verze téže věci">
-**SynthID** je značení vložené do obrazových dat. **C2PA** je podepsaný řetězec o původu a úpravách, připojený k souboru. **IPTC** je běžný popisný slovník, který nikdo nepodepisuje. Chovají se jinak, dají se ztratit jinak a váží jinak — směšovat je do jedné „kontroly původu" je nejčastější zdroj omylů v tomhle tématu.
+**SynthID** je značení vložené do obrazových dat. **C2PA** je podepsaný řetězec o původu a úpravách, připojený k souboru. **IPTC** je běžný popisný slovník, který nikdo nepodepisuje. Chovají se jinak, dají se ztratit jinak a váží jinak — směšovat je do jedné „kontroly původu“ je nejčastější zdroj omylů v tomhle tématu.
 </Insight>
 
 ## Jak se na původ <strong>zeptat</strong>
 
 Nejpraktičtější zjištění je, že se na to jde zeptat rovnou. Google v přehledu oznámení z I/O 2026 píše:
 
-> *„You can learn about an image's origin by using Search features like Lens, AI Mode, and Circle to Search, as well as Gemini in Chrome. Just ask, 'Is this made with AI?' or 'Is this AI generated?'"*
+> *„You can learn about an image's origin by using Search features like Lens, AI Mode, and Circle to Search, as well as Gemini in Chrome. Just ask, 'Is this made with AI?' or 'Is this AI generated?'“*
 
 <Insight tone="aeo" icon="i" label="Kde to dnes reálně funguje">
-Podle téhož zdroje se to **rozjíždí v aplikaci Gemini** a do Vyhledávání a Chromu se to má dostat *„in the coming months"*. Když to tedy dnes ve vyhledávání nenajdete, nemusí to znamenat nic jiného, než že tam funkce ještě není. Nezávisle na tom existuje **veřejný portál SynthID Detector**, kam jde obsah nahrát k ověření.
+Podle téhož zdroje se to **rozjíždí v aplikaci Gemini** a do Vyhledávání a Chromu se to má dostat *„in the coming months“*. Když to tedy dnes ve vyhledávání nenajdete, nemusí to znamenat nic jiného, než že tam funkce ještě není. Nezávisle na tom existuje **veřejný portál SynthID Detector**, kam jde obsah nahrát k ověření.
 </Insight>
 
 ## Jak si obrázek <strong>projít sami</strong>
@@ -97,7 +97,7 @@ Když potřebujete u konkrétního snímku zjistit, odkud je, dá se postupovat 
   ]}
 />
 
-Pořadí není náhodné. První dva kroky hledají signály AI vzniku nebo AI značení, třetí a čtvrtý odpovídají na otázku „odkud to je". To jsou dvě různé věci a u sporného obrázku obvykle potřebujete obě.
+Pořadí není náhodné. První dva kroky hledají signály AI vzniku nebo AI značení, třetí a čtvrtý odpovídají na otázku „odkud to je“. To jsou dvě různé věci a u sporného obrázku obvykle potřebujete obě.
 
 ## Proč ani jedna vrstva <span class="hl">není důkaz</span>
 
@@ -117,13 +117,13 @@ Tohle je nejdůležitější část článku a v přehledech se obvykle přeskak
   ]}
 />
 
-Praktický důsledek: **odpověď „nenašli jsme značku" je slabá informace.** Silnější signál je nález podepsaných C2PA credentials nebo detekovaného SynthID; u nepodepsaných IPTC metadat jde ale pořád jen o deklaraci, ne o doklad.
+Praktický důsledek: **odpověď „nenašli jsme značku“ je slabá informace.** Silnější signál je nález podepsaných C2PA credentials nebo detekovaného SynthID; u nepodepsaných IPTC metadat jde ale pořád jen o deklaraci, ne o doklad.
 
 ## Co z toho plyne <strong>pro váš web</strong>
 
 Dvě situace, každá jinak.
 
-**Publikujete vlastní fotografie jako doklad.** Fotky produktů, provozovny, reálné práce, případové studie. Tady jsou credentials nástroj, jak původ doložit — a v době, kdy [obrázek umí vyrobit i vyhledávač](/blog/ai-obrazky-v-ai-prehledech/), to má cenu. Háček je v publikační pipeline: běžný resize, konverze do WebP nebo optimalizační plugin metadata i credentials často zahodí. Vyplatí se ověřit, co z nich na webu opravdu zbude.
+**Publikujete vlastní fotografie jako doklad.** Fotky produktů, provozovny, reálné práce, případové studie. Tady jsou credentials nástroj, jak původ doložit — a v době, kdy [obrázek umí vyrobit i vyhledávač](/blog/ai-obrazky-v-ai-prehledech/), to má cenu. Háček je v publikačním řetězci: běžný resize, konverze do WebP nebo optimalizační plugin metadata i credentials často zahodí. Vyplatí se ověřit, co z nich na webu opravdu zbude.
 
 **Publikujete generované ilustrace.** Počítejte s tím, že označení může přežít i tam, kde ho nečekáte — a že se na něj někdo může zeptat. Nejde o to se bát, ale o to vědět, co publikujete. Jak to souvisí s viditelností, rozebírá článek o [generovaném obsahu](/blog/ai-generovany-obsah-viditelnost/).
 
@@ -156,4 +156,4 @@ Neplatí ale, že by značení nahradilo ostatní signály. Autorství, jméno, 
 - **SynthID** značkuje obrázky, video, zvuk i text, je neviditelný a u obrázků má odolávat oříznutí, filtrům a kompresi. Existuje veřejný detektor.
 - Google od I/O 2026 umožňuje **zeptat se na původ přímo** — nejdřív v Gemini, do Vyhledávání a Chromu to teprve míří.
 - **Ani jedna vrstva není důkaz.** Chybějící značka nedokazuje nic, přítomná nedokládá pravdivost obsahu.
-- Pro weby platí: kdo publikuje fotky jako doklad, má v credentials nástroj — ale **musí si ověřit, co z metadat přežije jeho vlastní publikační pipeline.**
+- Pro weby platí: kdo publikuje fotky jako doklad, má v credentials nástroj — ale **musí si ověřit, co z metadat přežije jeho vlastní publikační řetězec.**

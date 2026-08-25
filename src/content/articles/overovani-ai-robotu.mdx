@@ -61,7 +61,7 @@ Tady na to navazuju praktickou otázkou: jak se identita AI robota ověřuje doo
 
 ## Jmenovka není <span class="hl">průkaz</span>
 
-User-agent je textový řetězec, který si v požadavku nastaví kdokoli. Napsat do něj „GPTBot" zabere vteřinu. Blokace podle jména proto zastaví jen toho, kdo se nesnaží — a naopak nezastaví nikoho, kdo se snaží.
+User-agent je textový řetězec, který si v požadavku nastaví kdokoli. Napsat do něj „GPTBot“ zabere vteřinu. Blokace podle jména proto zastaví jen toho, kdo se nesnaží — a naopak nezastaví nikoho, kdo se snaží.
 
 Samotný user-agent nestačí. V běžně zdokumentované praxi se ověření opírá hlavně o **zdrojovou IP adresu**, u Googlu navíc o DNS. Jméno robota berte jako nápovědu, **který seznam otevřít** — ne jako důkaz.
 
@@ -69,7 +69,7 @@ Provozovatelé kvůli tomu zveřejňují seznamy svých rozsahů. Vzal jsem vše
 
 ## Co jsem naměřil
 
-Odečet z 8. srpna 2026, deset oficiálních souborů. Pro praxi jsou z toho podstatné tři věci: kdo publikuje IPv6, jak staré ty soubory jsou a jak široký prostor mají roboti vyvolaní uživatelem.
+Odečet z 8. srpna 2026, deset oficiálních souborů. Pro praxi jsou z toho podstatné tři věci: kdo publikuje IPv6, jak staré ty soubory jsou a jak široký prostor mají roboti spuštění uživatelem.
 
 | Robot / zdroj | Prefixů | z toho IPv6 | Datum v souboru |
 |---|---|---|---|
@@ -92,7 +92,7 @@ Tři věci na téhle tabulce stojí za pozornost.
 
 **Stáří se liší od dne měření po bezmála tři roky.** Google i ChatGPT-User měly datum z téhož dne, kdy jsem měřil. Soubor PerplexityBota nesl únor 2025 a Applebota říjen 2023. Nedělám z toho závěr o kvalitě provozovatele — starý soubor může znamenat i stabilní rozsahy.
 
-**Rozdíl mezi procházením a načtením na žádost uživatele je obrovský.** GPTBot má 21 prefixů, ChatGPT-User 258. U Googlu 315 proti 1 056. V publikovaných seznamech mají tedy roboti vyvolaní uživatelem výrazně širší adresní prostor — reálný provoz z těch rozsahů jsem ale netestoval.
+**Rozdíl mezi procházením a načtením na žádost uživatele je obrovský.** GPTBot má 21 prefixů, ChatGPT-User 258. U Googlu 315 proti 1 056. V publikovaných seznamech mají tedy roboti spuštění uživatelem výrazně širší adresní prostor — reálný provoz z těch rozsahů jsem ale netestoval.
 
 Pětice provozovatelů v tabulce není totožná s pěticí user-agentů z předchozího testu: Common Crawl jsem tehdy do srovnání nezařadil a Apple naopak v testu user-agentů nebyl, ale rozsahy publikuje.
 
@@ -117,14 +117,14 @@ Kroky ale neplatí pro všechny stejně: se seznamem rozsahů pracujete u všech
 **Reverzní a zpětný DNS.** Google to dokumentuje jako ruční metodu: reverzní dotaz na IP musí vrátit doménu `googlebot.com`, `google.com` nebo `googleusercontent.com`, a zpětný dotaz na tu doménu musí vrátit tutéž IP. Dvoukrokové ověření je důležité — samotný reverzní záznam si může nastavit majitel adresy.
 
 <Insight tone="aio" icon="i" label="U koho co platí">
-Reverzní DNS jako metodu ověření dokumentuje **Google**. Anthropic ji ve své nápovědě ke crawlerům neuvádí a odkazuje na seznam IP: „If a crawler has a source IP address on this list, it indicates that the crawler is coming from Anthropic." U ostatních provozovatelů je zveřejněný seznam rozsahů to, co máte k dispozici.
+Reverzní DNS jako metodu ověření dokumentuje **Google**. Anthropic ji ve své nápovědě ke crawlerům neuvádí a odkazuje na seznam IP: „If a crawler has a source IP address on this list, it indicates that the crawler is coming from Anthropic.“ U ostatních provozovatelů je zveřejněný seznam rozsahů to, co máte k dispozici.
 </Insight>
 
 ## Ověřování a blokování nejsou totéž
 
-Tady je rozdíl, který se často slévá. **Ověřit** při čtení logu, jestli adresa sedí na zveřejněný rozsah, dává smysl — bez toho čísla v logu nic neznamenají. **Neplyne z toho ale, že podle téže adresy máte i blokovat.**
+Tady je rozdíl, který se často slévá. **Ověřit** při čtení logu, jestli adresa spadá do zveřejněného rozsahu, dává smysl — bez toho čísla v logu nic neznamenají. **Neplyne z toho ale, že podle téže adresy máte i blokovat.**
 
-**Blokovat podle IP** je jiné rozhodnutí. Anthropic v nápovědě upozorňuje, že blokování podle adresy nemusí fungovat spolehlivě, protože robotovi zabrání i v načtení `robots.txt` — tedy vašeho vlastního pokynu, kterým mu chcete něco sdělit. Zablokovaná adresa neuslyší ani „nechoď sem".
+**Blokovat podle IP** je jiné rozhodnutí. Anthropic v nápovědě upozorňuje, že blokování podle adresy nemusí fungovat spolehlivě, protože robotovi zabrání i v načtení `robots.txt` — tedy vašeho vlastního pokynu, kterým mu chcete něco sdělit. Zablokovaná adresa neuslyší ani „nechoď sem“.
 
 <MistakeGrid>
 <Mistake number="01" title="Blokovat podle jména v user-agentu">

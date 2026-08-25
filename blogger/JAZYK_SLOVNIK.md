@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 49** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 100–109/147) · audituje skill `cestina-audit`
+> **Verze: 51** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 110–119/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -29,7 +29,7 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update))(?!-(Type|Length|Encoding|Security))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“ a názvy HTTP hlaviček (`Content-Type`) | seed 2026-08-23, doplněno javascript-a-ai-roboti 2026-08-26 |
+| ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update|[Cc]redentials))(?!-(Type|Length|Encoding|Security))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)** a názvy HTTP hlaviček | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
 | ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |
@@ -275,6 +275,10 @@
 | ✅ | `\bfiguruj\w+` | — | **Rozhodnutí uživatele 25. 8. 2026:** „figurovat“ je běžné české slovo, ne úřední balast | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
+| ⛔ | `(?<!CI/)\b\w+ pipeline\b` | řetězec, proces | anglické jádro v českém sousloví („publikační pipeline“, „Node pipeline“). **Nehlásí** „CI/CD pipeline“ — zavedený termín vývojářů | jak-poznat-ai-obrazek 2026-08-26 |
+| ⚠️ | `\bvyvolan\w+ uživatelem\b` | spuštěný uživatelem | doslovný převod „user-triggered“ | overovani-ai-robotu 2026-08-26 |
+| ⚠️ | `\bsedí na (zveřejněn|publikovan)\w+ rozsah\w*` | spadá do rozsahu | rozbitá vazba | overovani-ai-robotu 2026-08-26 |
+| ⚠️ | `\bzodpovídá \w*otázk\w+` | odpovídá na otázku | chybná valence slovesa | platform-properties-search-console 2026-08-26 |
 | ⛔ | `\bkredencial\w*` | doložitelná kvalifikace | neustálený přepis „credentials“ | ymyl-obsah-pro-ai 2026-08-26 |
 | ⛔ | `\bnehypeov\w+|\bhypeov\w+` | střízlivý, bez marketingové omáčky | počeštěné „hype“ s českou příponou | core-web-vitals-pro-ai 2026-08-26 |
 | ⛔ | `\b\w*crouluj\w*|\bcrawluj\w*` | projít, stáhnout stránku | počeštěné sloveso z „crawl“ | core-web-vitals-pro-ai 2026-08-26 |
@@ -287,7 +291,7 @@
 | ⛔ | `\bpovrch(?:u|y|ů|em|ích|ům)?\b` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu. **Nehlásí** „povrchní / povrchně“ — to je jiné slovo | ai-mode-a-eshopy 2026-08-26, zúženo 2026-08-26 |
 | ⛔ | `\bbrand search\w*|\bbrand voice\b` | vyhledávání značky, hlas značky | hybridní slepence s anglickým „brand“ | case-study-megadetail 2026-08-26 |
 | ⚠️ | `\bcelowebov\w+` | pro celý web | mechanicky odvozené přídavné jméno | blokovat-ai-odpovedi-gsc 2026-08-26 |
-| ⚠️ | `\bvygenerování\w*` | odpověď, běh | nominalizace, kterou čeština nepotřebuje | ai-mode-a-eshopy 2026-08-26 |
+| ⚠️ | `\bvygenerování(mi|ch)\b|jednotliv\w+ vygenerování\b` | odpověď, běh | nominalizace v množném čísle („mezi jednotlivými vygenerováními“). **Nehlásí** běžné „k vygenerování obrázku“ | ai-mode-a-eshopy 2026-08-26, zúženo ai-obrazky-v-ai-prehledech 2026-08-26 |
 | ⚠️ | `\bzaktualiz\w+` | aktualizovat | zdvojená předpona u převzatého slovesa | mereni-ai-mode-limity 2026-08-26 |
 | ⚠️ | `\bservír\w+ (odpověď|obsah|výsledk\w+)|\b(odpověď|obsah) se servír\w+` | podávat, zobrazovat | publicistický převod z „served“ | nahradi-ai-mode-vyhledavani 2026-08-26 |
 | ⚠️ | `\bkonvertující návštěv\w+` | návštěvy, které konvertují | doslovný převod „converting visits“ | blokovat-ai-odpovedi-gsc 2026-08-26 |

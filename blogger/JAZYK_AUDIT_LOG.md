@@ -107,6 +107,16 @@
 | 107 | 2026-08-26 | `falesne-screenshoty-seo-funkci` | 2026-08-03 | v49 | 1 760 | 3 | 4 | **1,7 → 0,0** | 6 | — |
 | 108 | 2026-08-26 | `propady-navstevnosti-vydavatelu` | 2026-08-03 | v49 | 2 380 | 5 | 1 | **2,1 → 0,0** | 6 | — |
 | 109 | 2026-08-26 | `volatilita-ai-odpovedi` | 2026-08-03 | v49 | 1 710 | 6 | 0 | **3,5 → 0,0** | 6 | — |
+| 110 | 2026-08-26 | `vysoce-citovany-stitek-google` | 2026-08-03 | v50 | 1 660 | 6 | 0 | **3,6 → 0,0** | 6 | — |
+| 111 | 2026-08-26 | `ai-mode-vedle-sebe-v-chrome` | 2026-08-04 | v50 | — | 0 | 0 | **0,0** | 0 | — |
+| 112 | 2026-08-26 | `ai-obrazky-v-ai-prehledech` | 2026-08-04 | v50 | 1 700 | 7 (2 plané) | 0 | **4,1 → 0,0** | 4 | zúženo 1 |
+| 113 | 2026-08-26 | `generativni-ai-v-discoveru` | 2026-08-04 | v50 | 1 500 | 3 | 0 | **2,0 → 0,0** | 3 | — |
+| 114 | 2026-08-26 | `platform-properties-search-console` | 2026-08-04 | v51 | 2 100 | 4 | 1 | **1,9 → 0,0** | 5 | +1 |
+| 115 | 2026-08-26 | `yelp-licencuje-data-openai` | 2026-08-04 | v51 | — | 0 | 0 | **0,0** | 0 | — |
+| 116 | 2026-08-26 | `jak-poznat-ai-obrazek` | 2026-08-07 | v50 → v51 | 1 740 | 16 (6 planých) | 2 | **9,2 → 0,0** | 11 | +1 |
+| 117 | 2026-08-26 | `metadata-obrazku-pri-publikaci` | 2026-08-07 | v51 | 1 600 | 4 | 5 | **2,5 → 0,0** | 6 | — |
+| 118 | 2026-08-26 | `overovani-ai-robotu` | 2026-08-08 | v51 | 1 880 | 3 | 5 | **1,6 → 0,0** | 6 | +2 |
+| 119 | 2026-08-26 | `shoptet-blog-clanky-data` | 2026-08-08 | v51 | 1 800 | 2 | 0 | **1,1 → 0,0** | 2 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -851,6 +861,22 @@ Poučení: **build je jediná pojistka proti tomu, aby dávková oprava uvozovek
 **Druhá výjimka `[skip:…]`:** `jak-cist-studie-o-ai-viditelnosti` odkazuje na článek o testu „schema markupu“ jeho vlastním názvem — slug přidán do skip-listu pravidla.
 
 **Co jsem nechal být:** prioritizace, defenzivně, atribuce, stanovisko upravil, serverové vykreslování jako termín.
+
+
+### 110–119 · sedmá dávka deseti (2026-08-26)
+
+Dávka technických článků o obrázcích, metadatech a robotech. **Osm z šestnácti nálezů v `jak-poznat-ai-obrazek` bylo planých** — šlo o **Content Credentials**, název standardu C2PA. Pravidlo na `content` dostalo další výjimku.
+
+**Zásahy:** 30 rovných uvozovek · „publikační **pipeline**“ (3×) → „publikační **řetězec**“ · „další **Node pipeline**“ (2×) → „další **nástroje v Node.js**“ · „kontrola vlastní **pipeline**“ → „kontrola vlastního **řetězce**“ · „jak byl obsah **deklarativně popsán**“ → „**jak obsah popisují metadata**“ · „roboti **vyvolaní uživatelem**“ (2×) → „roboti **spuštění uživatelem**“ · „adresa **sedí na zveřejněný rozsah**“ → „**spadá do zveřejněného rozsahu**“ · „kterou otázku které z nich **zodpovídá**“ → „**na kterou otázku** které z nich **odpovídá**“.
+
+**Zpětná oprava:** `jak-funguje-chatgpt` (běh 98) měl „popis skutečné **pipeline**“ → „popis toho, **jak to uvnitř skutečně běží**“.
+
+**Tři zúžení pravidel, aby nehlásila správný text:**
+- `content` nehlásí **Content Credentials** (název standardu).
+- `vygenerování` hlásí jen množné tvary — „**k vygenerování obrázku**“ je běžná čeština.
+- `pipeline` nehlásí **CI/CD pipeline** (zavedený termín vývojářů). Lookbehind musel být `(?<!CI/)`, protože regex jinak chytal „CD pipeline“ zevnitř.
+
+**Vlastní chyba, hned opravená:** náhrada „zodpovídá otázku“ → „odpovídá na otázku“ vyrobila překlep „odpo**o**vídá“. Chytila to kontrola diffu před buildem.
 
 ---
 
