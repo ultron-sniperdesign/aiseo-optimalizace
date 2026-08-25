@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 13** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 12/147) · audituje skill `cestina-audit`
+> **Verze: 14** · založeno 2026-08-23 · poslední změna 2026-08-24 (článek 13/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -57,6 +57,9 @@
 | ⛔ | `\bna škálu\b` | ve velkém rozsahu, napříč katalogem | kalk z at scale | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ✅ | `\buse case(s)?\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | seo-nastroje-2026 2026-08-23 |
+| ⛔ | `\bDIY checklist\b` | kontrolní seznam, který zvládnete sami | slepenec | ai-seo-audit 2026-08-24 |
+| ⚠️ | `\bztrat\w+ krok s\b` | přestanete zachycovat změny | publicistické klišé | ai-seo-audit 2026-08-24 |
+| ⚠️ | `\bpřipravili jsme\b` | k dispozici je | prodejní tón ve věcném textu | ai-seo-audit 2026-08-24 |
 | ⛔ | `\b90-?day\b` | plán na 90 dní, devadesátidenní | hybrid, byl i v titulku | aio-strategie 2026-08-23 |
 | ✅ | `\bAIO Maturity Model\b` | — | **název vlastního frameworku webu** (uvádí se s ™). Jméno se nepřekládá; obecné použití „maturity level“ ano. **Rozhodnutí uživatele 24. 8. 2026: název zůstává anglicky.** Obecná spojení („maturity level“) se překládají, název ne. | aio-strategie 2026-08-24 |
 | ⛔ | `(?<!AIO )\bmaturity\s?(model|level|score)?\w*\b` | zralost, úroveň zralosti | hybrid; pozor, „maturity level" a „maturity levelu" unikly první verzi pravidla mířené jen na „maturity model" | aio-strategie 2026-08-24 |

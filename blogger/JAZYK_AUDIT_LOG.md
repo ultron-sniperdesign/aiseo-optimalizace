@@ -17,6 +17,7 @@
 | 10 | 2026-08-23 | `ai-search-trendy-cesko-2026` | 2026-05-08 | v10 → v11 | 6 101 | 101 | — | **16,5 → 0,2** | 84 | +5 |
 | 11 | 2026-08-24 | `aio-strategie` | 2026-05-08 | v11 → v12 | 5 090 | 139 | — | **27,6 → 0,0** | 118 | +5 |
 | 12 | 2026-08-24 | `geo-optimalizace` | 2026-05-08 | v12 → v13 | 4 630 | 155 | — | **33,8 → 0,4** | 96 | +2 |
+| 13 | 2026-08-24 | `ai-seo-audit` | 2026-05-23 | v13 → v14 | 1 924 | 2 | 5 | **1,0 → 0,0** | 3 | +3 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -211,6 +212,14 @@ Nejdelší text korpusu (6 100 slov) a zároveň ten, který jsem během srpna d
 **Kontrola kontextu chytila potřetí pád:** „Zvyšte **hustota faktů** obsahu" (mělo být „hustotu faktů v obsahu"), a to hned ve třech místech včetně nadpisu kroku. Slovník má nově **hotový kontrolní příkaz** na pády po předložkách — jeden grep, který tuhle třídu chyb najde napříč korpusem. Rovnou odhalil ještě „Pravidla pro **krátká odpověď**" v článku 4.
 
 **Nová výjimka:** záporné příklady **citované v běžném textu** (ne jen v `<Dont>` blocích) — „v dnešní digitální éře“ → prázdný marketingový jazyk. Checker je hlásit bude, u každého se rozhoduje ručně.
+
+### 13 · ai-seo-audit (2026-08-24)
+
+**Zlom v datech: 1,0 nálezu na 1 000 slov** proti 33,8 u předchozího článku. Rozdíl není v délce ani v tématu — je v datu. Články z **23. 5. 2026 a novější** už vznikaly po ustálení stylu.
+
+Strojově jen 2 nálezy, LLM průchod přidal 5 jemnějších: `DIY checklist`, „ztratíte krok s rychlým vývojem" (publicistické klišé), „převést na vlastní web" (kalk), „připravili jsme" (prodejní tón ve věcném textu).
+
+**Poznámka k ⚠️ nálezu, který zůstal:** text píše „podíl zmínek, tzv. share of voice" — termín **vysvětlený u prvního užití**, což je přesně to, co úroveň ⚠️ vyžaduje. Není to vada, je to správně provedené pravidlo.
 
 ## ⛔ Kontrola kontextu podruhé zachránila publikaci
 
