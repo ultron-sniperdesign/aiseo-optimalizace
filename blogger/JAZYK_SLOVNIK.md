@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 22** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 34/147) · audituje skill `cestina-audit`
+> **Verze: 23** · založeno 2026-08-23 · poslední změna 2026-08-25 (článek 34/147, revize) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -58,7 +58,6 @@
 | ⛔ | `\bbasic audit\b` | základní audit | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⚠️ | `\bv produkci\b` | na živém webu, v ostrém provozu | kalk z „in production“; u vývojářů běžné, u majitele webu ne | strukturovana-data-pro-ai 2026-08-24 |
 | ⚠️ | `\bv abstraktu\b` | jen v obecné rovině, příliš obecné | kostrbatá vazba, působí jako strojový překlad | kolik-stoji-ai-seo 2026-08-25 |
-| ⚠️ | `\bseparátní\w*` | samostatný | zbytečný latinismus tam, kde čeština má běžné slovo | kolik-stoji-ai-seo 2026-08-25 |
 | ⚠️ | `\bcenov\w+ kotv\w+` | orientační cena, číslo pro srovnání | kalk z „price anchor“; v české větě marketingový žargon | kolik-stoji-ai-seo 2026-08-25 |
 | ⛔ | `\broot úrov\w+` | v kořeni domény, na kořenové úrovni | kalk z „root level“; česky nepřirozené | llms-txt-navod 2026-08-25 |
 | ⚠️ | `\blinkovan\w+` | odkazovaný | mechanický překlad „linked“; česky se odkazuje, nelinkuje | llms-txt-navod 2026-08-25 |
@@ -265,6 +264,7 @@
 | ⛔ | `\bvendor compare\b` | porovnání dodavatelů | anglicismus | ai-seo-b2b 2026-08-24 |
 | ✅ | `\bvendor shortlist\b|\bshortlist\w*\b` | — | článek termín **sám definuje** („Vendor shortlist je užší výběr dodavatelů…“) a má ho v titulku i klíčových slovech; je to zavedený termín B2B nákupu | ai-seo-b2b 2026-08-24 |
 | ✅ | `\btransparentn\w+` | — | „transparentní ceník / nabídka“ je zavedená česká obchodní mluva (transparentní účet, transparentní výběrové řízení), ne kalk | kolik-stoji-ai-seo 2026-08-25 |
+| ✅ | `\bseparátní\w*` | — | **Rozhodnutí uživatele 25. 8. 2026:** „separátní“ je relativně normální české slovo, ne latinismus k odstranění | kolik-stoji-ai-seo 2026-08-25 |
 | ⛔ | `\brecommendation\b` | doporučení | anglické slovo u názvu služby | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bintent coverage\b` | pokrytí záměrů | dvojitý kalk | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bbuying[- ]journey\b|\bbuyer'?s? journey\b` | fáze nákupního rozhodování | slepenec | seo-audit-co-kontrolovat 2026-08-23 |
