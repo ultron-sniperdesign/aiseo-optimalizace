@@ -282,7 +282,7 @@ Pravidlo teď nese obě náhrady s poznámkou, že volba závisí na kontextu �
 
 **Oprava po připomínce (24. 8. 2026):** `research` je podle uživatele **běžně užívané české slovo** — platí to i pro spojení „research fáze" a sloveso „researchovat". Pravidlo přehozeno na ✅, v článku 30 vráceno původní znění (5 míst).
 
-⛔ **Zbylá nekonzistence k rozhodnutí:** v článcích 3, 4, 9, 11 a 12 jsem `research fázi` dřív nahradil za „fázi zvažování" / „sortiment, který zákazník dlouho zvažuje". Ty texty jsou česky správně, ale web teď používá **dva různé výrazy pro totéž**. Buď se vrátí „research fáze" i tam, nebo se nechá česká varianta jako preferovaná a ✅ bude znamenat jen „nehlásit". Čeká na rozhodnutí.
+**Rozhodnutí uživatele: varianta a) — vrátit „research fáze" napříč webem.** Provedeno v sedmi článcích (3, 4, 6, 9, 10, 11, 12), celkem 20 míst. Termín je teď na celém webu jednotný a checker ho nehlásí.
 
 **`shortlist` zůstává jako ✅:** článek termín sám definuje („Vendor shortlist je užší výběr dodavatelů, ze kterého kupec vybírá…"), má ho v titulku i v klíčových slovech a v B2B nákupu je zavedený.
 
