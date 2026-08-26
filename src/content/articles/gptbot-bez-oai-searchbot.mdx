@@ -34,7 +34,7 @@ faq:
   - q: "Znamená to, že ty weby udělaly chybu?"
     a: "Ne. Neznám jejich záměr a netvrdím ho. Vypnout jen trénink je legitimní volba. Článek jen ukazuje, že mezi těmi dvěma pravidly je podle dokumentace rozdíl, který se v praxi snadno přehlédne."
   - q: "Jak je na tom Google-Extended?"
-    a: "Pravidlo pro Google-Extended mělo deset z osmdesáti webů. Podle dokumentace Googlu ale neřídí zařazení do Search ani generativní AI funkce — na ty je samostatné nastavení v Search Console, které z robots.txt nezjistím."
+    a: "Pravidlo pro Google-Extended mělo deset z osmdesáti webů. Podle dokumentace Googlu ale neřídí zařazení do Search ani funkce s generativní AI — na ty je samostatné nastavení v Search Console, které z robots.txt nezjistím."
   - q: "Který AI robot je v pravidlech nejčastěji?"
     a: "V aktuálním vzorku 80 domén to byl Bytespider se třinácti výskyty, pak ClaudeBot a GPTBot po dvanácti a Amazonbot s jedenácti. Potvrzuje to dřívější měření na 33 médiích."
   - q: "Co měření nevidí?"
@@ -88,7 +88,7 @@ Ani jednou. Každá nalezená konfigurace pro OpenAI obsahovala GPTBota. Jestli 
 
 ### Stejný vzorec je vidět i u Googlu
 
-Pravidlo pro `Google-Extended` má **deset webů z osmdesáti** a blokovací pravidlo pro `Googlebot` z nich má jeden. Podle [dokumentace Googlu](/blog/co-vypne-ktery-opt-out/) přitom Google-Extended neřídí zařazení do Search ani generativní AI funkce — na ty je samostatné nastavení v Search Console, které z robots.txt nevidím.
+Pravidlo pro `Google-Extended` má **deset webů z osmdesáti** a blokovací pravidlo pro `Googlebot` z nich má jeden. Podle [dokumentace Googlu](/blog/co-vypne-ktery-opt-out/) přitom Google-Extended neřídí zařazení do Search ani funkce s generativní AI — na ty je samostatné nastavení v Search Console, které z robots.txt nevidím.
 
 ## Co v těch souborech je celkem
 
@@ -119,7 +119,7 @@ Aspoň jedno pravidlo pro sledované AI roboty má **20 z 80** domén — sedmn�
   { title: "Otevřete si vlastní /robots.txt", desc: "stačí připsat cestu za doménu; uvidíte přesně to, co uvidí robot." },
   { title: "Najděte v něm GPTBot", desc: "pokud tam je, máte podle dokumentace ošetřený trénink u OpenAI." },
   { title: "Podívejte se, jestli je tam i OAI-SearchBot", desc: "pokud není, zobrazení ve výsledcích vyhledávání v ChatGPT tím nastavením neřešíte." },
-  { title: "U Googlu se robots.txt nespoléhejte", desc: "generativní AI funkce ve Search řídí samostatné nastavení v Search Console." },
+  { title: "U Googlu se robots.txt nespoléhejte", desc: "funkce s generativní AI ve Search řídí samostatné nastavení v Search Console." },
   { title: "K řádku si připište datum a důvod", desc: "za rok už nikdo nebude vědět, proč tam je." }
 ]} />
 
