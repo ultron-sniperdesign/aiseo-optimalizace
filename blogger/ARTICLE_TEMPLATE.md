@@ -178,6 +178,7 @@ Pak jedno CTA relevantní pro kontext:
 - [ ] `updated` je dnešní nebo dřívější datum (`YYYY-MM-DD`)
 - [ ] `answer` je 40–60 slov, sebestačná, bez „výše v článku"
 - [ ] `faq` má 4–8 otázek (silně doporučeno, ne povinné)
+- [ ] **Jazyková kontrola (BLOK C6) — `python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md` musí hlásit 0 nálezů** + LLM průchod dle skillu `cestina-audit`
 - [ ] `npm run build` projde bez errors
 - [ ] **Komponenty opravdu vykreslily text** — `grep -o 'stp__desc[^<]*></p>' dist/blog/<slug>/index.html | wc -l` musi byt `0` (chybny nazev klice build nezastavi, text jen zmizi)
 - [ ] Lokálně otestováno na `npm run dev` → `/blog/<slug>/`

@@ -976,3 +976,19 @@ Slovník i checker byly do teď **dvakrát**: kanonicky v `blogger/`, a jako kop
 **Vyřešeno symlinky:** `~/.claude/skills/cestina-audit/JAZYK_SLOVNIK.md` a `scripts/check.py` teď ukazují na soubory v projektu. Pravidla se přidávají jen v `blogger/`; skill je vidí okamžitě a `cp` z postupu zmizelo. Ověřeno spuštěním checkeru přes cestu ve skillu (259 pravidel, stejný výsledek jako z projektu).
 
 **Omezení, které je v SKILL.md napsané:** když projekt není připojený, symlink nikam nevede a mechanický průchod nejde spustit — pak se dělá jen LLM průchod a napíše se to do reportu.
+
+---
+
+## Jazyková kontrola je povinný krok při psaní (26. 8. 2026)
+
+Audit vznikl až po `CONTENT_WORKFLOW.md`, takže nový článek jím procházel jen když si na to někdo vzpomněl. Doplněno na čtyřech místech, aby to nešlo minout:
+
+| Kde | Co přibylo |
+|---|---|
+| `blogger/CONTENT_WORKFLOW.md` | **BLOK C6 — Jazyková kontrola (POVINNÁ, před buildem)** se čtyřmi kroky: mechanický průchod na 0 nálezů → LLM průchod → kontrola kontextu u každé náhrady → nový nález se povyšuje na pravidlo (slovník + log ve stejném commitu) |
+| tamtéž, per-run checklist | řádek `C6: jazyková kontrola` mezi audity a designem |
+| `blogger/ARTICLE_TEMPLATE.md` | položka v předpublikačním checklistu, hned nad `npm run build` |
+| `blogger/README.md` | krok B v lokální verifikaci (před buildem) + jazykové soubory v quick reference |
+| `~/.claude/skills/cestina-audit/SKILL.md` | sekce **Kdy se pouští** — povinně u každého nového článku (BLOK C6), jinak na vyžádání |
+
+Při té příležitosti opraven název značky v kontextovém rámci pro auditora: „Sniperdesign“ → **„Sniper Design“**. Rámec se vkládá do každého auditního briefu, takže špatný tvar chodil do každého runu.

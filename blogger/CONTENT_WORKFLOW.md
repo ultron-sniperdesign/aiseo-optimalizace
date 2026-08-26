@@ -10,6 +10,7 @@
 > - `marketing/05-messaging-a-tonalita.md` — brand voice + zakázaný slovník.
 > - `docs/section-page-standard.md` — komponenty pro design optimalizaci (BLOK D1).
 > - `blogger/IMAGE_GUIDE.md` — featured / OG image (BLOK D2).
+> - `blogger/JAZYK_SLOVNIK.md` + `blogger/jazyk-check.py` — jazyková kontrola (BLOK C6), skill `cestina-audit`.
 >
 > **Režim provozu:** plná autonomie. Jediný lidský dotyk je závěrečný report URL
 > do vlákna (D4). Roli „recenzenta" během tvorby plní OpenAI auditor (BLOK C), ne uživatel.
@@ -78,13 +79,25 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **C3 — Oprava #1:** zapracuj audit + vlastní úsudek (auditor není absolutní — rozhoduješ ty).
 - **C4 — Audit #2 (OpenAI Core):** pošli opravenou verzi, v briefu **uveď, že jde o verzi po 1. auditu** (přilož i shrnutí, co jsi změnil). Stejné volání, `audit2-*`.
 - **C5 — Oprava #2:** zapracuj + vlastní úsudek → **finální text**.
+- **C6 — Jazyková kontrola (POVINNÁ, před buildem):** finální text projeď skillem `cestina-audit`. Bez ní se článek nepublikuje.
+
+  ```bash
+  python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md
+  ```
+
+  1. **Mechanický průchod** — cíl je **0 nálezů** (⛔ i ⚠️). Nejčastější vada celého korpusu: česká uvozovka `„` zavřená rovnou `"`.
+  2. **LLM průchod** — článek + celý slovník na gpt-5.4 se zadáním z `SKILL.md` (obsahuje i výčet toho, **co vadou není** — zavedená oborová mluva, zdomácnělé latinismy, běžná česká odborná spojení, názvy nástrojů a metrik).
+  3. **Kontrola kontextu u každé náhrady** — pád, číslo, rod, význam v tomhle textu. Slovník navrhuje slovo, ne tvar.
+  4. **Nový nález → nové pravidlo** ve `blogger/JAZYK_SLOVNIK.md` (úroveň, regex, náhrada, důvod, původ) + řádek do `blogger/JAZYK_AUDIT_LOG.md`. Slovník i článek jdou **v jednom commitu**.
+
+  > Plný postup a pojistky: `~/.claude/skills/cestina-audit/SKILL.md`. Slovník i checker jsou tam symlinky na soubory v tomhle projektu — pravidla se přidávají jen tady.
 
 ### Kontextový rámec pro auditora (vkládá se do briefu)
 
 > Toto je marketingový a vzdělávací článek pro web **aiseo-optimalizace.cz** — edukativní web
 > o AI éře vyhledávání (SEO/GEO/AEO/AIO). Web informuje o tématu a zároveň nabízí ke koupi
 > **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **AI SEO audit** (3 600 Kč). Provozovatel:
-> Sniperdesign (Zlatý partner Upgates od 2016, vlastní e-shop MEGA DETAIL).
+> Sniper Design (Zlatý partner Upgates od 2016, vlastní e-shop MEGA DETAIL).
 > Auditor hodnotí: věcnou správnost, soulad s brand voice (žádný zakázaný žargon, žádný overclaim),
 > citovatelnost pro AI (answer block, hustota faktů, FAQ), SEO (titulek, description 70–160, struktura),
 > relevanci CTA. Uveď aktuální rok (např. 2026), podle kterého má auditor hodnotit aktuálnost.
@@ -145,6 +158,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - [ ] B: vybrán první volný řádek, **přečten sloupec C**, hloubkový research + KW
 - [ ] C1: draft s answer + FAQ + CTA, brand voice OK
 - [ ] C2–C5: 2 kola OpenAI auditu zapracována (`--max-tokens` ≥ 5000)
+- [ ] **C6: jazyková kontrola — `jazyk-check.py` na 0 nálezů + LLM průchod + případná nová pravidla do slovníku**
 - [ ] D1: design komponenty, `.mdx` + `variant: rich`, žádný wall of text
 - [ ] D2: featured image `public/og/<slug>.png` (gpt-image-2, 1536×1024, CZ text v horních ~84 %, zkontrolováno)
 - [ ] D3: `npm run build` OK → commit (článek + OG image) → push → CI → curl 200 (článek i `og/<slug>.png`)

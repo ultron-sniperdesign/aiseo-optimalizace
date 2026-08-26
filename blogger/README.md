@@ -177,7 +177,11 @@ npm run dev
 # → http://localhost:4321/blog/<slug>/
 # → http://localhost:4321/blog/ (článek vidět v listingu)
 
-# B) Production build — finální validace (CI dělá totéž)
+# B) Jazyková kontrola (POVINNÁ, BLOK C6 v CONTENT_WORKFLOW.md)
+python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md
+# → musí hlásit 0 nálezů. Postup a LLM průchod: skill `cestina-audit`.
+
+# C) Production build — finální validace (CI dělá totéž)
 npm run build
 # → musí projít BEZ errors. Astro check validuje frontmatter proti Zod schema.
 # → výstup do dist/, 28+ stránek.
@@ -308,6 +312,10 @@ curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+js
 |---|---|
 | `README.md` (tento soubor) | Kompletní guide — kde, co, jak, čeho se vyvarovat |
 | `ARTICLE_TEMPLATE.md` | Kopírovatelná šablona článku s plně vyplněným frontmatter + ukázkou body |
+| `CONTENT_WORKFLOW.md` | Celý pipeline research → draft → audit → jazyková kontrola → publikace |
+| `JAZYK_SLOVNIK.md` | Slovník hlídaných výrazů (⛔ / ⚠️ / ✅) — jediný zdroj pravdy, skill na něj má symlink |
+| `jazyk-check.py` | Mechanická jazyková kontrola článku proti slovníku |
+| `JAZYK_AUDIT_LOG.md` | Log jazykových auditů — hustota nálezů na 1 000 slov před/po |
 
 ---
 
