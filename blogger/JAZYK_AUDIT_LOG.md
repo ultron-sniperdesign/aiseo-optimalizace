@@ -966,3 +966,13 @@ Pri overovani reverty v behu 45 na zivem webu chybela veta, ktera v souboru byla
 Pouceni pro jazykovy audit: **zeleny build ani mechanicka kontrola nereknou, ze se text vubec nezobrazil.** Proto po kazdem behu overuji konkretni vety na zive strance — prave tak se tohle naslo.
 
 **Revize v44 — rozhodnutí uživatele 26. 8. 2026:** „benefit“ i „top / TOP“ jsou běžné výrazy. Pravidlo na „benefit nadpis“ z v43 zrušeno (zůstala jen `brand search` a `brand voice`), ⚠️ pravidlo na „top stránky / top kategorie“ zrušeno a ✅ rozšířeno na `\btop\w*`. **Text se zpětně nevrací** (výslovné rozhodnutí uživatele) — jen se to přestává hlásit. Sedmá korekce tohoto typu; do zadání pro LLM přibyla i „zdomácnělá marketingová slova“.
+
+---
+
+## Slovník má jednu kopii (26. 8. 2026)
+
+Slovník i checker byly do teď **dvakrát**: kanonicky v `blogger/`, a jako kopie ve skillu `~/.claude/skills/cestina-audit/`. Kopie se srovnávaly ručně (`cp`) po každé změně pravidel — jednou zapomenout znamenalo, že skill mimo projekt běží proti staršímu slovníku a hlásí jinak.
+
+**Vyřešeno symlinky:** `~/.claude/skills/cestina-audit/JAZYK_SLOVNIK.md` a `scripts/check.py` teď ukazují na soubory v projektu. Pravidla se přidávají jen v `blogger/`; skill je vidí okamžitě a `cp` z postupu zmizelo. Ověřeno spuštěním checkeru přes cestu ve skillu (259 pravidel, stejný výsledek jako z projektu).
+
+**Omezení, které je v SKILL.md napsané:** když projekt není připojený, symlink nikam nevede a mechanický průchod nejde spustit — pak se dělá jen LLM průchod a napíše se to do reportu.
