@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "mereni"
 published: "2026-05-03"
-updated: "2026-08-03"
+updated: "2026-08-26"
 variant: "rich"
 keywords:
   - "měření seo"
@@ -34,24 +34,24 @@ faq:
   - q: "Jak měřit podíl citací v AI v ChatGPT a Perplexity?"
     a: "Manuálně přes prompty se značkovým KW (např. 'doporuč mi seo agenturu v praze') a sledování, jestli jste citováni. Reliably ale jen přes specializované nástroje: Otterly AI ($29/měs Lite, $99/měs Pro) sleduje 50+ promptů, vrací podíl citací, sentiment, sources. Profound (enterprise, $500+) má hlubší tracking. Marketing Miner Brand Radar ($99/měs Machine plan) má sledování zmínek v AI pro český trh. Ceny jsou k květnu 2026. Klíčové: měřit podíl citací **vůči konkurenci**, ne absolutně."
   - q: "Co jsou Core Web Vitals a jak je měřit?"
-    a: "Core Web Vitals jsou tři metriky uživatelského zážitku, které Google používá jako ranking signál: LCP (Largest Contentful Paint, kdy se načte hlavní obsah, cíl <2.5 s), INP (Interaction to Next Paint, jak rychle reaguje na akce, cíl <200 ms), CLS (Cumulative Layout Shift, jak moc se rozvržení stránky neočekávaně posouvá, cíl <0.1). Měření: PageSpeed Insights (zdarma, lab + data z reálného provozu z Chrome UX Report), GSC Core Web Vitals report (data z reálného provozu), Lighthouse v Chrome DevTools (lab data). Field data jsou důležitější než lab — odráží reálné uživatele."
+    a: "Core Web Vitals jsou tři metriky uživatelského zážitku, které Google používá jako ranking signál: LCP (Largest Contentful Paint, kdy se načte hlavní obsah, cíl <2.5 s), INP (Interaction to Next Paint, jak rychle reaguje na akce, cíl <200 ms), CLS (Cumulative Layout Shift, jak moc se rozvržení stránky neočekávaně posouvá, cíl <0.1). Měření: PageSpeed Insights (zdarma, lab + data z reálného provozu z Chrome UX Report), GSC Core Web Vitals report (data z reálného provozu), Lighthouse v Chrome DevTools (data z laboratorního testu). Data z reálného provozu jsou důležitější než laboratorní — odrážejí skutečné uživatele."
   - q: "Jak postavit SEO dashboard?"
     a: "Minimum: Looker Studio (zdarma) napojený na GSC + GA4 + Google Ads, který agreguje metriky do 1 view. 4 widgety: (1) trend pozic top 10 KW za posledních 90 dní, (2) organické relace denně + meziroční srovnání, (3) top 20 stránek podle organické návštěvnosti, (4) Core Web Vitals stav. Aktualizace daily. Pro agenturu kompletnější: AgencyAnalytics ($59/měs, cena k květnu 2026) nebo SE Ranking dashboard. Klíčové: 1 dashboard pro klienta, 1 hlubší pro interní tým."
   - q: "Co dělat, když pozice klíčového slova klesnou?"
-    a: "Diagnostika ve čtyřech krocích: (1) GSC — zkontrolovat, jestli klesly i zobrazení, nebo jen pozice (zobrazení stejné = pravděpodobně změna rozvržení výsledků; ověřte ručně, jestli se u dotazu neobjevil AI přehled, reklamy nebo jiný prvek — z čísel v GSC to nepoznáte); (2) GSC Coverage — je stránka stále indexovaná?; (3) Ahrefs — posunula se konkurence dopředu? Nové výsledky v top 10? Ztratili jste backlinky?; (4) PageSpeed Insights — zhoršily se Core Web Vitals (nový bundle, špatný image)?. Po diagnóze cílená akce, ne plošná 're-optimalizace'. Řada propadů se dá zvrátit, ale jak rychle, se paušálně říct nedá — závisí na příčině."
+    a: "Diagnostika ve čtyřech krocích: (1) GSC — zkontrolovat, jestli klesly i zobrazení, nebo jen pozice (zobrazení stejné = pravděpodobně změna rozvržení výsledků; ověřte ručně, jestli se u dotazu neobjevil AI přehled, reklamy nebo jiný prvek — z čísel v GSC to nepoznáte); (2) v Search Console report Indexování stránek — je stránka stále indexovaná?; (3) Ahrefs — posunula se konkurence dopředu? Nové výsledky v top 10? Ztratili jste backlinky?; (4) PageSpeed Insights — zhoršily se Core Web Vitals (nový bundle, špatný image)?. Po diagnóze cílená akce, ne plošná 're-optimalizace'. Řada propadů se dá zvrátit, ale jak rychle, se paušálně říct nedá — závisí na příčině."
 howto:
   name: "Praktický postup: postavit SEO measurement od nuly"
   steps:
     - name: "Nastavení GSC + GA4 + Bing Webmaster + Seznam Webmaster"
       text: "Den 1. Verifikovat vlastnictví všech 4 properties. Google Analytics 4 propojit s Google Search Console v admin sekci (umožní 'Search Console' report v GA4). Submitnout sitemap.xml na všech 4 platformách."
     - name: "Definovat 5–10 strategických KW + 5–10 stránek"
-      text: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) plus 5–10 long-tail variant. K nim přiřadit 5–10 cílových stránek (pillar + cluster). Toto je váš strategic measurement rozsah."
+      text: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) plus 5–10 long-tail variant. K nim přiřadit 5–10 cílových stránek (pilířová stránka a navazující články). Tohle je rozsah, který budete měřit."
     - name: "Nastavení výchozí stav measurements"
       text: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organické relace, CTR, počet indexovaných stránek, Domain Rating. Toto je výchozí stav, proti kterému budete měřit progress. Bez výchozího stavu nelze říct, jestli rosteme nebo klesáme."
     - name: "Postavit Looker Studio dashboard"
       text: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organické relace denně plus YoY srovnání, top 20 stránek podle organické návštěvnosti, Core Web Vitals stav. Sdílet read-only link s týmem. Looker Studio je zdarma, napojený na GSC + GA4."
     - name: "Nastavit alerty na anomálie"
-      text: "Týden 3. GA4 vlastní insights pro propad organických relací o 20+ % den-na-den. E-mailová upozornění z GSC na indexační problémy (nejde o konfigurovatelné alerty jako v GA4). PageSpeed Insights manuální check čtvrtletně. Bez alertů zjistíte propad za týden místo za hodinu."
+      text: "Týden 3. GA4 vlastní insights pro propad organických relací o 20+ % den-na-den. E-mailová upozornění z GSC na indexační problémy (nejde o konfigurovatelné alerty jako v GA4). PageSpeed Insights kontrolovat ručně čtvrtletně. Bez alertů zjistíte propad za týden místo za hodinu."
     - name: "Měsíční review a iterace"
       text: "Měsíčně. 1× za měsíc review dashboardu, identifikovat 1–3 stránky s největším potenciálem (vysoká zobrazení, nízké CTR = kandidáti na přepis titulku). Aktualizace reportu pro klienta nebo vedení. Po 90 dnech první trend evaluation."
 ---
@@ -91,7 +91,7 @@ Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 **Co je dobré:**
 - Pozice 1–3 pro primary KW = top tier
 - Pozice 4–10 pro primary KW = slušné, ale nechytá zlomek návštěvnosti
-- Pozice 11–20 = stránka je relevantní, ale zatím nestačí kombinací relevance, autority, interní podpory nebo SERP atraktivity (může jít o intent mismatch, slabší topical coverage, SERP feature crowding nebo silnou konkurenci — diagnóza vyžaduje SERP analýzu, ne mechanický „chybí 1–2 signály“ verdikt)
+- Pozice 11–20 = stránka je relevantní, ale zatím nestačí kombinací relevance, autority, interní podpory nebo SERP atraktivity (může jít o nesoulad se záměrem dotazu, slabší pokrytí tématu, přeplněné výsledky prvky Googlu nebo silnou konkurenci — diagnóza vyžaduje rozbor výsledků, ne mechanický verdikt „chybí 1–2 signály“)
 - Pozice 21+ = vyžaduje výraznou intervenci
 
 **Klíčová věc, kterou většina lidí ignoruje:** sledujte **pozici v čase**, ne snapshot. Týdenní výkyv ±3 pozic je normální. Trend přes 4 týdny dolů = problém.
@@ -172,9 +172,9 @@ Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 
 ### 6. Indexovatelnost (Pages report)
 
-**Co měří:** kolik stránek vašeho webu je indexovaných v Googlu, kolik má chybu, kolik je vyloučeno. Sledujte hlavně **relevantní URL**, ne absolutní počet všech indexovaných adres — některé stránky (filtry, paginace, taxonomy archives) z definice indexované být nemají.
+**Co měří:** kolik stránek vašeho webu je indexovaných v Googlu, kolik má chybu, kolik je vyloučeno. Sledujte hlavně **relevantní URL**, ne absolutní počet všech indexovaných adres — některé stránky (filtry, stránkování, archivy taxonomií) ze své podstaty indexované být nemají.
 
-**Zdroj:** Google Search Console — Indexing / Pages report (dříve Coverage).
+**Zdroj:** Google Search Console — Indexing / Pages report (dřív pod názvem Coverage).
 
 **Frekvence:** měsíčně, plus po každém deploymentu nového obsahu / aktualizaci sitemapy.
 
@@ -234,7 +234,7 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
 
   **Klient / vedení (1 stránka, měsíčně)**
 
-    Organická návštěvnost + meziroční srovnání · konverze z organic · pozice top 5 strategických KW · 2–3 highlight wins (nový top 3 ranking, nový pillar v top 10) · 1 challenge / příští kroky
+    Organická návštěvnost + meziroční srovnání · konverze z organic · pozice top 5 strategických KW · 2–3 highlight wins (nová pozice v top 3, nová pilířová stránka v top 10) · 1 challenge / příští kroky
   </Do>
   <Dont>
 
@@ -263,10 +263,10 @@ Ne všechny metriky patří do všech reportů. Hierarchie podle příjemce:
 
 <Stepper tone="seo" steps={[
   { title: "Nastavení GSC + GA4 + Bing Webmaster + Seznam Webmaster", desc: "Den 1. Verifikovat vlastnictví všech 4 properties. GA4 propojit s GSC v admin sekci (umožní 'Search Console' report v GA4). Submitnout sitemap.xml všude." },
-  { title: "Definovat 5–10 strategických KW + 5–10 stránek", desc: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) + 5–10 long-tail. K nim přiřadit 5–10 cílových stránek (pillar + cluster)." },
+  { title: "Definovat 5–10 strategických KW + 5–10 stránek", desc: "Týden 1. Z keyword research vybrat top 5 primary KW (vysoký intent, dosažitelná konkurence) + 5–10 long-tail. K nim přiřadit 5–10 cílových stránek (pilířová stránka a navazující články)." },
   { title: "Nastavení výchozí stav measurements", desc: "Týden 1–2. Zaznamenat 'kde jsme dnes' — pozice, organické relace, CTR, počet indexovaných stránek, DR. Toto je výchozí stav, proti kterému budete měřit progress." },
   { title: "Postavit Looker Studio dashboard", desc: "Týden 2. 4 widgety: trend pozic top 10 KW (90 dní), organické relace denně + YoY, top 20 stránek podle organic, CWV stav. Sdílet read-only link s týmem." },
-  { title: "Nastavit alerty na anomálie", desc: "Týden 3. GA4 vlastní insights pro propad organických relací o 20 % a víc den-na-den. E-mailová upozornění z GSC na indexační problémy. PageSpeed Insights manuální check čtvrtletně." },
+  { title: "Nastavit alerty na anomálie", desc: "Týden 3. GA4 vlastní insights pro propad organických relací o 20 % a víc den-na-den. E-mailová upozornění z GSC na indexační problémy. PageSpeed Insights kontrolovat ručně čtvrtletně." },
   { title: "Měsíční review + iterace", desc: "Měsíčně. 1× za měsíc: review dashboardu, identifikovat 1–3 stránky s největším potenciálem (vysoká zobrazení, nízké CTR = kandidáti na přepis titulku). Aktualizace reportu pro klienta nebo vedení." }
 ]} />
 
@@ -327,7 +327,7 @@ V roce 2026 přibývají k klasickému SEO measurementu tři vrstvy, které maj�
 Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud řešíte konkrétní pain point z měření a reportingu, [nabízíme tyto služby](https://www.sniperdesign.cz/audity):
 
 - **Pokud máte data, ale ne jasnou KPI hierarchii** — audit measurement frameworku, návrh KPI vrstev podle typu byznysu, odlišení dashboardu pro tým a reportu pro management
-- **Pokud reportujete SEO, ale vedení z něj nevidí obchodní dopad** — překlad SEO metrik do business outcomes (lead-gen, assisted conversions, brand search lift), jasná hierarchie pro pohled pro vedení
+- **Pokud reportujete SEO, ale vedení z něj nevidí obchodní dopad** — překlad SEO metrik do business outcomes (lead-gen, assisted conversions, nárůst vyhledávání značky), jasná hierarchie pro pohled pro vedení
 - **Pokud chcete oddělit dashboard pro tým a report pro management** — architektura dvou pohledů: SEO pohled pro tým (denní operativa) + pohled pro vedení (kvartální business impact)
 - **Implementace** — Looker Studio dashboard nad GSC + GA4, automatizovaný měsíční reporting, alerty na anomálie
 
@@ -335,7 +335,7 @@ První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — proj
 
 ## <strong>Zdroje</strong> a <span class="hl">další čtení</span>
 
-- **[SEO — pillar sekce](/seo/)** — kontext klasického SEO, kde measurement zapadá
+- **[SEO — pilířová sekce](/seo/)** — kontext klasického SEO, kde measurement zapadá
 - **[SEO nástroje 2026](/seo-nastroje-2026/)** — detail Ahrefs vs Semrush vs SE Ranking + AI tracking nástroje
 - **[SEO audit — co kontrolovat 1× ročně](/seo-audit-co-kontrolovat/)** — measurement jako součást ročního auditu
 - **[Local SEO Česko 2026](/local-seo-cesko-2026/)** — specifické metriky pro lokální SEO (GBP Insights, local pack pozice)
