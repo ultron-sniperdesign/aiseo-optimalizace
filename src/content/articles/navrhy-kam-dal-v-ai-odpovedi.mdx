@@ -1,0 +1,129 @@
+---
+title: "Návrhy „kam dál“ na konci AI odpovědi: co s nimi"
+seoTitle: "Návrhy na konci AI odpovědi a co znamenají pro weby"
+description: "Google podle oznámení z května 2026 ukazuje na konci AI odpovědí odkazy na dílčí úhly tématu. Proč se chovají jinak než hlavní citace."
+answer: "Návrhy „kam dál“ jsou sekce na konci odpovědi v AI Overviews a v režimu AI. Google v oznámení z května 2026 píše, že tam odkazuje na jedinečné články a hloubkové rozbory různých stránek tématu. Míří tedy na dílčí podtéma, ne na obecný přehled jako hlavní citace."
+slug: "navrhy-kam-dal-v-ai-odpovedi"
+category: "analysis"
+tags:
+  - "strategie"
+  - "ai-platformy"
+published: "2026-08-26"
+updated: "2026-08-26"
+variant: "rich"
+keywords:
+  - "návrhy na konci ai odpovědi"
+  - "odkazy v ai overviews"
+  - "further exploration google"
+  - "citace v ai mode"
+  - "jak získat odkaz z ai odpovědi"
+stats:
+  - value: "5"
+    label: "změn v zobrazování odkazů oznámil Google pro AI Overviews i režim AI v květnu 2026"
+  - value: "1"
+    label: "z nich míří na dílčí úhly tématu — návrhy na konci odpovědi"
+  - value: "úhel"
+    label: "podle oznámení Googlu míří sekce na různé stránky tématu; kritéria výběru zveřejněná nejsou"
+faq:
+  - q: "Co jsou návrhy „kam dál“ na konci AI odpovědi?"
+    a: "Sekce pod odpovědí v AI Overviews a v režimu AI, kde Google nabízí odkazy na související články a rozbory jiných úhlů téhož tématu. Google ji oznámil v květnu 2026 jako jednu z pěti změn v zobrazování odkazů."
+  - q: "Čím se liší od hlavní citace v odpovědi?"
+    a: "Hlavní citace podpírá tvrzení v odpovědi a je jich pár. Návrhy na konci naopak nabízejí pokračování — dílčí úhel, srovnání nebo zkušenost. Je to jiná role v odpovědi, a tomu odpovídá i jiný typ obsahu."
+  - q: "Proč je to zajímavé pro menší weby?"
+    a: "Protože sekce míří na dílčí úhly, ne na obecný přehled tématu. Konkrétní podtéma zpracované do hloubky tak může mít šanci i na menším webu — Google ale kritéria výběru nezveřejnil, takže to není zaručená cesta."
+  - q: "Jaký obsah má do téhle sekce šanci?"
+    a: "Text, který pojmenuje jeden úhel a drží se ho: srovnání dvou konkrétních řešení, popis vlastní zkušenosti s čísly, rozbor jedné chyby. Obecné „vše o tématu“ nemá do sekce s návrhy co nabídnout."
+  - q: "Jde to nějak měřit?"
+    a: "Spolehlivě jen ručním testem. Search Console neukazuje, ze které části odpovědi proklik přišel, a report funkcí s generativní AI dává zobrazení bez rozpadu podle místa odkazu. Testujte opakovaně u dotazů, na kterých vám záleží."
+  - q: "Platí to i v Česku?"
+    a: "Podle přejímajících médií se změny objevily nejdřív v anglickém vyhledávání v USA. Jak to vypadá v češtině, se dá zjistit jen ručním testem — konkrétní termín pro další jazyky Google neuvedl."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Konec odpovědi přestal být slepá ulička
+
+**Návrhy „kam dál“ jsou sekce na konci odpovědi v AI Overviews a v režimu AI, kde Google podle vlastního oznámení z května 2026 nabízí odkazy na jedinečné články a hloubkové rozbory různých stránek tématu.** Na rozdíl od hlavní citace se tam nesoutěží o obecný přehled, ale o konkrétní podtéma.
+
+Většina rad, jak se dostat do AI odpovědí, míří na jedno místo: být citovaný přímo v textu odpovědi. Jenže Google v květnu 2026 přidal do odpovědí několik dalších míst, kde odkaz na web může být — a jedno z nich funguje podle úplně jiné logiky.
+
+## Pět změn, o kterých je řeč
+
+Google to popsal ve svém oznámení **[5 new ways to explore the web with generative AI in Search](https://blog.google/products-and-platforms/products/search/explore-web-generative-ai-search/)** z května 2026. Přejímající média uvádějí, že se změny objevily nejdřív v anglickém vyhledávání v USA.
+
+<Checklist title="Co se změnilo" items={[
+  { title: "Odkaz u věty, ke které patří", desc: "Citace se přesunuly k relevantnímu tvrzení místo do panelu pod odpovědí." },
+  { title: "Náhled při najetí myší", desc: "Na počítači se ukáže název webu a titulek stránky, ještě než člověk klikne." },
+  { title: "Návrhy na konci odpovědi", desc: "Odkazy na jedinečné články a hloubkové rozbory různých stránek tématu — tomu se věnuje zbytek článku." },
+  { title: "Štítek u předplaceného obsahu", desc: "Odkazy na média, která uživatel předplácí, dostávají viditelné označení." },
+  { title: "Atribuce u příspěvků z komunit", desc: "U obsahu z diskusí a sociálních sítí se ukazuje jméno autora, účet a komunita." },
+]} />
+
+## Proč se návrhy chovají jinak než hlavní citace
+
+<CompareTable
+  leftLabel="Hlavní citace v odpovědi"
+  rightLabel="Návrh „kam dál“ na konci"
+  rows={[
+    { icon: "🎯", label: "Role", left: "Podepřít tvrzení, které odpověď zrovna říká", right: "Nabídnout pokračování, když člověk chce vědět víc" },
+    { icon: "📚", label: "Co se hodí", left: "Přehledný, důvěryhodný zdroj k jádru dotazu", right: "Dílčí úhel: srovnání, zkušenost, rozbor jedné části" },
+    { icon: "🏁", label: "S kým soutěžíte", left: "S velkými značkami a zavedenými weby", right: "S kýmkoli, kdo zpracoval právě tenhle úhel" },
+    { icon: "🧭", label: "Co s tím udělat", left: "Kvalita, doložitelnost, konzistence údajů", right: "Jeden článek = jeden úhel, pojmenovaný v titulku" },
+  ]}
+/>
+
+<Insight tone="geo" label="Kde je v tom příležitost">
+  Obecné „vše o tématu“ do sekce s návrhy nepatří — ta míří na **jiné úhly**, ne na tentýž přehled znovu. Web, který má deset textů o deseti konkrétních věcech, má do ní co nabídnout spíš než web s jedním velkým článkem o všem. Google ale nezveřejnil, podle čeho odkazy vybírá.
+</Insight>
+
+## Co to znamená pro strukturu obsahu
+
+<Stepper
+  steps={[
+    { title: "Jeden článek, jeden úhel", desc: "Místo přehledu „všechno o X“ napište text, který zodpoví jednu konkrétní otázku a dotáhne ji." },
+    { title: "Úhel pojmenujte v titulku", desc: "Z titulku má být poznat, čím se text liší od ostatních — ne že je nejúplnější." },
+    { title: "Myslete na navazující otázku", desc: "Co si člověk řekne, když dostane obecnou odpověď? Ta druhá otázka je vaše téma." },
+    { title: "Propojte texty mezi sebou", desc: "Skupina článků, které na sebe odkazují, dělá jednotlivé úhly dohledatelnými — a to je předpoklad, aby se vůbec mohly nabídnout." },
+  ]}
+/>
+
+## Jak to poznat v praxi
+
+Přímé měření neexistuje: Search Console neukáže, ze které části odpovědi proklik přišel; report funkcí s generativní AI dává zobrazení, ne rozpad podle místa odkazu. Rozebírá to článek o [limitech měření v režimu AI](/blog/mereni-ai-mode-limity/).
+
+Zbývá ruční test. Vezměte pět dotazů, na kterých vám záleží, projděte je v režimu AI a všímejte si nejen odpovědi, ale i toho, co je pod ní. Testujte opakovaně — výběr zdrojů mezi jednotlivými pokusy kolísá, jak ukazuje článek o [proměnlivosti AI odpovědí](/blog/volatilita-ai-odpovedi/).
+
+## Časté omyly
+
+<MistakeGrid>
+  <Mistake num="01" title="Psát ještě obsáhlejší přehled">
+    Delší „vše o tématu“ podle popisu téhle sekce nepomůže — Google u ní mluví o **různých stránkách tématu**, ne o obsáhlejším přehledu téhož.
+  </Mistake>
+  <Mistake num="02" title="Čekat, že to bude vidět v datech">
+    Proklik z návrhu vypadá v analytice stejně jako jakýkoli jiný. Kdo slibuje měření „návštěv ze sekce s návrhy“, slibuje něco, co dostupné nástroje neumí.
+  </Mistake>
+  <Mistake num="03" title="Brát americké chování jako české">
+    Podle přejímajících médií se změny objevily nejdřív v anglickém vyhledávání v USA. Jak přesně to vypadá v češtině, se dá zjistit jen ručním testem.
+  </Mistake>
+  <Mistake num="04" title="Dělat z jednoho testu závěr">
+    Výběr odkazů kolísá mezi jednotlivými pokusy. Jeden běh je anekdota, ne zjištění.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Google podle vlastního oznámení z května 2026 ukazuje na konci AI odpovědí návrhy** na jedinečné články a hloubkové rozbory různých stránek tématu.
+- **Je to jiná soutěž než hlavní citace.** Nejde o obecný přehled, ale o konkrétní podtéma.
+- **Pro menší weby to může být schůdnější pole** — váha značky tu nemusí rozhodovat tolik jako u hlavní citace, ale zaručené to není.
+- **Měřit to přímo nejde**, poznat se to dá opakovaným ručním testem.
+
+Souvislost s tím, jak se vůbec vybírají zdroje do odpovědi, rozebírá článek [co rozhoduje o citaci v AI](/blog/co-rozhoduje-o-ai-citaci/). Technické podmínky, které musí stránka splnit, aby se do odpovědí režimu AI vůbec mohla dostat, shrnuje návod [jak se zobrazit v AI Mode](/blog/jak-se-zobrazit-v-ai-mode/) — tenhle text na něj navazuje o krok dál, u výběru mezi stránkami, které je splňují. Přehled kanálů, do kterých má smysl mířit, najdete v textu [jak se dostat do AI odpovědí](/blog/jak-se-dostat-do-ai-odpovedi/). Čísla o dopadu AI odpovědí na návštěvnost rozebírá [analýza propadů u vydavatelů](/blog/propady-navstevnosti-vydavatelu/).
+
+**Nevíte, které úhly vašeho tématu máte pokryté a které chybí?** [AI SEO audit za 3 600 Kč](/audit/) projde obsah i viditelnost v AI nástrojích a dá plán priorit. Kdo chce začít sám, má k dispozici [návod zdarma](/navod-zdarma/) a šablony stránek v [AI SEO Wireframe Packu za 1 490 Kč](/pack/).
+
+*Zdroje: [5 new ways to explore the web with generative AI in Search](https://blog.google/products-and-platforms/products/search/explore-web-generative-ai-search/), blog Googlu, květen 2026 (přejímající média uvádějí 6.–7. 5. 2026; brief v našem obsahovém plánu uváděl 27. 5. 2026 — den se v pramenech rozchází, proto v článku není) · [Google Updates AI Overviews and AI Mode to Drive More Clicks to Publishers](https://seohandbook.co.uk/seo-news-updates/google-ai-overviews-link-updates-may-2026/), SEO Handbook · [Google highlights links from subscribed publications](https://www.niemanlab.org/2026/05/google-highlights-links-from-subscribed-publications-in-new-ai-overviews-update/), Nieman Lab. Stav k 26. 8. 2026.*
