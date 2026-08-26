@@ -186,7 +186,7 @@ npm run build
 # → musí projít BEZ errors. Astro check validuje frontmatter proti Zod schema.
 # → výstup do dist/, 28+ stránek.
 
-# C) Preview production build
+# D) Preview production build
 npm run preview
 # → http://localhost:4321 — totožné s tím, co bude live
 ```
