@@ -51,6 +51,12 @@
   (viz řádek v obsahovy-plan.csv). Kanál po kanálu krátká odpověď + odkaz na detailní návod.
   Vyplňuje díru: na dotazy vzoru „jak se dostat do X" nemáme jednu stránku, která pokryje všechny kanály.
 
+## Odbavené refreshe podle konkrétních vad
+
+| Datum | Článek | Co se opravilo |
+|---|---|---|
+| 2026-08-26 | `mereni-seo-vykonu-2026` | Vady zapsané při jazykovém auditu (běh 6 a drift ve v43): „Field data“ → data z reálného provozu · „strategic measurement rozsah“ → rozsah, který budete měřit · „pillar + cluster“ → pilířová stránka a navazující články (4×) · „manuální check“ → kontrolovat ručně (2×) · „GSC Coverage“ → report Indexování stránek · „brand search lift“ → nárůst vyhledávání značky · „intent mismatch / SERP feature crowding / topical coverage“ → česky. Hustota 2,9 → 0,0 na 1 000 slov. Kadence 2:1 po třech nových článcích. |
+
 ## Refreshe po vyprázdnění fronty
 
 Fronta z baseline 2026-07-19 je celá odbavená. Další refreshe vybírám podle **konkrétních vad**, které si u článků zapíšu při jiné práci — ne podle stáří.
