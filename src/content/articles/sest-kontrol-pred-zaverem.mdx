@@ -58,7 +58,7 @@ Hledal jsem, kteří provozovatelé AI robotů publikují seznamy svých IP adre
 | ByteDance | odvozená adresa | **200, ale s HTML stránkou** | seznam tam nebyl |
 | Amazon | odvozená adresa `.json` | 404 | publikuje **tři HTML stránky** |
 
-Ve všech třech případech byl skoro hotový závěr „tenhle provozovatel nic nepublikuje" a ani jednou to nebyla pravda.
+Ve všech třech případech byl skoro hotový závěr „tenhle provozovatel nic nepublikuje“ a ani jednou to nebyla pravda.
 
 **Kontrola:** nejdřív dohledat oficiální dokumentaci a odkaz v ní, teprve pak testovat konkrétní adresu.
 **Když sami neměříte:** ptejte se, jestli autor uvádí zdroj adresy, nebo si ji odvodil.
@@ -90,22 +90,22 @@ Následná kontrola na vzorku 80 domén ukázala, že **ani jedna neposílá jin
 **Kontrola:** když problém vzniká jen u malé podmnožiny, sepsat postižené případy, najít jejich společný technický jmenovatel a jeden ověřit ručně mimo vlastní nástroj.
 **Když sami neměříte:** ptejte se, co měly odchylky společného — u legitimní odlišné konfigurace to bývá vidět hned.
 
-## 5. „Nenašel jsem" nikdy nepište jako „neexistuje"
+## 5. „Nenašel jsem“ nikdy nepište jako „neexistuje“
 
 Tuhle chybu jsem udělal dvakrát.
 
 - Napsal jsem, že **Common Crawl** strojový seznam na obvyklé adrese nemá. Má — `commoncrawl.org/ccbot.json`. A že IPv6 rozsahy publikuje jen Google; CCBot má jeden prefix. [Obojí opraveno](/blog/kdo-publikuje-ip-rozsahy/).
-- Ve článku o JavaScriptu stálo na čtyřech místech „jediné veřejné měření, které **existuje**". Opraveno na „které jsem našel" — [plus datum, kdy jsem hledal znovu](/blog/javascript-a-ai-roboti/).
+- Ve článku o JavaScriptu stálo na čtyřech místech „jediné veřejné měření, které **existuje**“. Opraveno na „které jsem našel“ — [plus datum, kdy jsem hledal znovu](/blog/javascript-a-ai-roboti/).
 
-**Kontrola:** psát „nenašel jsem" a k tomu datum a místo hledání.
-**Když sami neměříte:** u každého „neexistuje" a „jediný" se ptejte, odkud autor tu jistotu bere.
+**Kontrola:** psát „nenašel jsem“ a k tomu datum a místo hledání.
+**Když sami neměříte:** u každého „neexistuje“ a „jediný“ se ptejte, odkud autor tu jistotu bere.
 
 ## 6. Přepis čísel do textu je taky krok, kde se chybuje
 
 Měření může být v pořádku a článek přesto špatně.
 
 - V tabulce publikovaného článku jsem měl u robota `Claude-Web` hodnotu **5**. Naměřeno bylo **6**. Devět z deseti hodnot sedělo; odhalila to až kontrola nového parseru proti starším datům.
-- Jinou tabulku jsem nadepsal „Tři roboti OpenAI". Dokumentace jich popisuje **čtyři** — chyběl `OAI-AdsBot`.
+- Jinou tabulku jsem nadepsal „Tři roboti OpenAI“. Dokumentace jich popisuje **čtyři** — chyběl `OAI-AdsBot`.
 
 **Kontrola:** čísla v hotovém textu porovnat se zdrojovými daty, ne s pamětí. Nadpis, který tvrdí počet, je taky tvrzení.
 **Když sami neměříte:** když článek zveřejňuje i podkladová data, zkuste dvě čísla namátkou porovnat.
@@ -127,7 +127,7 @@ Měření může být v pořádku a článek přesto špatně.
 
 ## Shrnutí
 
-Šest kontrol: nehádat adresu, nevěřit stavovému kódu, otevřít každý nález, podezírat nejdřív vlastní nástroj, psát „nenašel jsem" místo „neexistuje" a porovnat čísla v textu se zdrojem.
+Šest kontrol: nehádat adresu, nevěřit stavovému kódu, otevřít každý nález, podezírat nejdřív vlastní nástroj, psát „nenašel jsem“ místo „neexistuje“ a porovnat čísla v textu se zdrojem.
 
 Společný vzorec je u všech stejný: rychlá zkratka nahradí kontrolu zdroje, obsahu nebo hotového textu. A falešný nález se od pravého na první pohled neliší.
 

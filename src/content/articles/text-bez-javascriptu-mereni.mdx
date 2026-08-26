@@ -78,22 +78,22 @@ Vyřazená doména není nečitelná doména. Je to případ, který jsem nezmě
 | žádný odstavec delší než 120 znaků | 2 |
 | chyba vykreslení nebo nedostupná stránka | 2 |
 
-Kdybych těchhle 14 hodil mezi „nečitelné", měl bych titulek o **sedmnácti procentech českých webů**. A byl by nepoctivý.
+Kdybych těchhle 14 hodil mezi „nečitelné“, měl bych titulek o **sedmnácti procentech českých webů**. A byl by nepoctivý.
 
 ## Proč automatika hlásí chybějící text falešně
 
 Napoprvé jsem porovnával počty slov. Vyšly poměry přes 100 % — server posílal víc textu než prohlížeč. Metrika nedávala smysl.
 
-Napodruhé jsem hledal v serverovém HTML nejdelší odstavec z vykreslené stránky. **Patnáct z osmdesáti webů vyšlo jako „text chybí".** Ruční kontrola nepotvrdila ani jeden.
+Napodruhé jsem hledal v serverovém HTML nejdelší odstavec z vykreslené stránky. **Patnáct z osmdesáti webů vyšlo jako „text chybí“.** Ruční kontrola nepotvrdila ani jeden.
 
 <Insight tone="warn" icon="!" label="Čtyři způsoby, jak naměřit chybějící text, který nechybí">
   **Lišta se souhlasem.** Nejdelší odstavec na stránce nebyl obsah, ale text o zpracování údajů, který přidá až nástroj na souhlas. U dvou webů měla vykreslená stránka přes deset tisíc slov proti pěti stům v serverové verzi — celý ten rozdíl byla lišta.
 
-  **Hláška místo obsahu.** „Váš CSRF token pravděpodobně vypršel." Čtyři weby na jedné e-shopové platformě. Plus text ze stránky 404.
+  **Hláška místo obsahu.** „Váš CSRF token pravděpodobně vypršel.“ Čtyři weby na jedné e-shopové platformě. Plus text ze stránky 404.
 
-  **Kód v odstavci.** Jeden web měl uvnitř `<p>` kus JavaScriptu — 4 391 znaků, s přehledem nejdelší „odstavec" na stránce.
+  **Kód v odstavci.** Jeden web měl uvnitř `<p>` kus JavaScriptu — 4 391 znaků, s přehledem nejdelší „odstavec“ na stránce.
 
-  **Špatné kódování.** Dva weby posílají stránku ve **windows-1250** a můj skript ji dekódoval natvrdo jako UTF-8. Text se rozsypal na otazníky a porovnání selhalo — vypadalo to jako chybějící obsah. Byla to chyba v mém skriptu, ne na těch webech. Fix: přečíst kódování z hlavičky `Content-Type`, pak z `<meta charset>`, teprve pak hádat.
+  **Špatné kódování.** Dva weby posílají stránku ve **windows-1250** a můj skript ji dekódoval natvrdo jako UTF-8. Text se rozsypal na otazníky a porovnání selhalo — vypadalo to jako chybějící obsah. Byla to chyba v mém skriptu, ne na těch webech. Oprava: přečíst kódování z hlavičky `Content-Type`, pak z `<meta charset>`, teprve pak hádat.
 </Insight>
 
 Napotřetí jsem přidal filtr na text lišty a chybové hlášky, kontrolu přesměrování a kontrolu, jestli prohlížeč vůbec dostal víc textu než HTTP klient. Zbylo **osm z osmdesáti** — a po ruční kontrole zase žádný pravý.
@@ -103,7 +103,7 @@ Napotřetí jsem přidal filtr na text lišty a chybové hlášky, kontrolu pře
 1. **Odkazy a navigace generované až JavaScriptem.** Text na stránce je, ale robot se na ni nedostane, protože cestu k ní dokresluje prohlížeč.
 2. **Různé HTML pro různé klienty.** Server může odpovídat jinak podle User-Agentu, cookies, geolokace nebo ochrany proti robotům.
 3. **Špatně zvolená testovací stránka.** Homepage, kategorie a článek se chovají různě; test na jedné z nich nevypovídá o zbytku.
-4. **Chyba měření.** Nejčastější „nález" ze všech — a ten se pozná jen tak, že se na něj člověk podívá.
+4. **Chyba měření.** Nejčastější „nález“ ze všech — a ten se pozná jen tak, že se na něj člověk podívá.
 
 ## Jak si to ověříte u sebe
 
@@ -117,7 +117,7 @@ Napotřetí jsem přidal filtr na text lišty a chybové hlášky, kontrolu pře
 
 ## Jak číst procenta o nečitelnosti webů pro AI
 
-U čísel typu „X % webů je pro AI nečitelných" je podstatné vědět, jak vznikla. Z tohohle měření mi vyšly tři otázky:
+U čísel typu „X % webů je pro AI nečitelných“ je podstatné vědět, jak vznikla. Z tohohle měření mi vyšly tři otázky:
 
 - **Jak poznali, že obsah chybí?** Kolik z toho byly lišty se souhlasem a chybové hlášky?
 - **Kolik nálezů ověřili ručně?** U mě prošlo automatikou 23 nálezů a ruční kontrolu nepřežil ani jeden.
@@ -145,4 +145,4 @@ Nemám metodiku cizích měření, takže netvrdím, že jsou špatná. Bez odpo
 
 ## Co udělat dnes
 
-Stáhněte si přes `curl` tři typy svých stránek, najděte v nich jednu větu z hlavního obsahu a zkontrolujte, jestli jde navigace projít bez JavaScriptu. Když něco nesedí, ověřte to očima dřív, než z toho uděláte závěr — u mě to byl rozdíl mezi nulou a patnácti „nálezy".
+Stáhněte si přes `curl` tři typy svých stránek, najděte v nich jednu větu z hlavního obsahu a zkontrolujte, jestli jde navigace projít bez JavaScriptu. Když něco nesedí, ověřte to očima dřív, než z toho uděláte závěr — u mě to byl rozdíl mezi nulou a patnácti „nálezy“.

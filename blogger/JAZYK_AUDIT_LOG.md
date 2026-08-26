@@ -127,6 +127,16 @@
 | 127 | 2026-08-26 | `co-vypne-ktery-opt-out` | 2026-08-11 | v53 | 1 600 | 14 | 4 | **8,7 → 0,0** | 13 | — |
 | 128 | 2026-08-26 | `kdo-publikuje-ip-rozsahy` | 2026-08-11 | v53 | 1 680 | 3 | 3 | **1,8 → 0,0** | 6 | — |
 | 129 | 2026-08-26 | `llms-txt-falesne-pozitivni` | 2026-08-11 | v53 | 1 800 | 14 | 1 | **7,8 → 0,0** | 15 | — |
+| 130 | 2026-08-26 | `gptbot-bez-oai-searchbot` | 2026-08-12 | v54 | 1 340 | 2 | 0 | **1,5 → 0,0** | 2 | — |
+| 131 | 2026-08-26 | `roboti-vyvolani-uzivatelem` | 2026-08-12 | v54 | 1 250 | 12 (11 planých) | 0 | **9,6 → 0,0** | 1 | ✅ revize |
+| 132 | 2026-08-26 | `text-bez-javascriptu-mereni` | 2026-08-12 | v54 | 1 450 | 8 | 0 | **5,5 → 0,0** | 8 | — |
+| 133 | 2026-08-26 | `ai-mode-cesky` | 2026-08-13 | v54 | 1 220 | 5 | 0 | **4,1 → 0,0** | 5 | — |
+| 134 | 2026-08-26 | `kodovani-stranky-a-stroje` | 2026-08-13 | v54 | — | 0 | 0 | **0,0** | 0 | — |
+| 135 | 2026-08-26 | `miliarda-uzivatelu-ai-mode` | 2026-08-13 | v54 | 1 070 | 8 | 0 | **7,5 → 0,0** | 8 | — |
+| 136 | 2026-08-26 | `sest-kontrol-pred-zaverem` | 2026-08-13 | v54 | 1 330 | 11 | 0 | **8,3 → 0,0** | 11 | — |
+| 137 | 2026-08-26 | `ai-mode-jako-vychozi-rezim` | 2026-08-15 | v54 | — | 0 | 0 | **0,0** | 0 | — |
+| 138 | 2026-08-26 | `delsi-dotazy-v-ai-mode` | 2026-08-15 | v54 | — | 0 | 1 | **0,0** | 0 | — |
+| 139 | 2026-08-26 | `agentni-rezervace-v-ai-mode` | 2026-08-17 | v54 | 1 300 | 0 | 5 | **0,0** | 3 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -896,6 +906,15 @@ Dávka technických článků o obrázcích, metadatech a robotech. **Osm z šes
 **Zásahy:** 32 rovných uvozovek · „publikační **pipeline**“ (4×) → „publikační **řetězec**“ se správným rodem („rozdíl **udělal**“ → „**vznikl v** publikačním řetězci“) · „roboti/akce **vyvolaní uživatelem**“ (5×) → „**spuštění uživatelem**“ · „platformní **default**“ (2×) → „**výchozí nastavení platformy**“ · „**stojí za povšimnutí, že**“ → „**je dobré si všimnout, že**“ · „jestli s ním jde **v administraci hýbat**“ → „jestli **ho jde v administraci upravit**“ · „měření **vydalo** nepříjemnou věc“ → „měření **ukázalo**“ · „**je platná vždy jen jedna skupina**“ → „**se použije vždy jen jedna skupina**“ · „odpovídá **tomu, co jste zamýšleli**“ → „odpovídá **vašemu záměru**“ · „kde to **běží v provozu**“ → „kde to **běží naostro**“ · „ukládá tentýž **soubor ve variantách podle velikosti**“ → „**obrázek v několika velikostech**“ · „na **živých** webech“ → „na **reálných** webech“ · „**stopa přesto padla**“ → „**přesto se našla** jedna dílčí stopa“ · „**generativní AI funkce**“ → „**funkce s generativní AI**“ (5× po živé kontrole, včetně H2 a H3) · „jestli **vás uvidí uživatel**“ → „jestli **se váš web objeví**“ · „našel až dodatečně **přes dokumentaci**“ → „**v dokumentaci**“ · „Amazon **vyšel jako „nepublikuje“**“ → „**u Amazonu vyšlo, že nepublikuje**“ · „mají mnohem širší **prostor**“ → „širší **rozsah adres**“ · „skutečně **servírovaných** textových souborů“ → „textových souborů, **které web opravdu vrací**“.
 
 **Planý poplach (opraven ve dvou pravidlech):** „**merchant listing(s)**“ je oficiální název typu výsledku u Google — obě pravidla na `listing` dostala lookbehind `(?<!merchant )`.
+
+
+### 130–139 · devátá dávka deseti (2026-08-26)
+
+**Opravil jsem vlastní chybné rozhodnutí z dávky 110–119.** Tehdy jsem „roboti **vyvolaní** uživatelem“ měnil na „**spuštění** uživatelem“ (v `overovani-ai-robotu`, `co-vypne-ktery-opt-out`, `kdo-publikuje-ip-rozsahy`). V téhle dávce se ukázalo, že web má **vlastní zavedený termín**: článek 131 se jmenuje „Kdy robots.txt nestačí: roboti vyvolaní uživatelem“ a má ho i ve slugu. Platí stejné pravidlo jako u „odpovědních systémů“ v běhu 45 — **náhrada se vybírá podle toho, co už web používá**, ne podle citu. Všechny tři náhrady vráceny, pravidlo přeřazeno na ✅ i s vysvětlením, proč.
+
+**Zásahy:** 28 rovných uvozovek (nejvíc `sest-kontrol-pred-zaverem` a `miliarda-uzivatelu-ai-mode` — články plné citací a uvozených tvrzení) · „**Fix:** přečíst kódování“ → „**Oprava:** přečíst kódování“ · „předá **odkaz k dokončení**“ → „předá **odkaz, přes který rezervaci dokončíte**“ · „**Vrátí** vybraný seznam“ → „**Nabídne** vybraný seznam“ · „Z popsaného mechanismu **se dá jedna věc vyvodit**“ → „**plyne jedna věc**“.
+
+**Tři články byly úplně čisté** (`kodovani-stranky-a-stroje`, `ai-mode-jako-vychozi-rezim`, `delsi-dotazy-v-ai-mode`) — nejnovější texty, psané už v době, kdy audit běžel.
 
 ---
 

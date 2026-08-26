@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 53** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 120–129/147) · audituje skill `cestina-audit`
+> **Verze: 54** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 130–139/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -277,7 +277,7 @@
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `(?<!CI/)\b\w+ pipeline\b` | řetězec, proces | anglické jádro v českém sousloví („publikační pipeline“, „Node pipeline“). **Nehlásí** „CI/CD pipeline“ — zavedený termín vývojářů | jak-poznat-ai-obrazek 2026-08-26 |
 | ⚠️ | `\bgenerativní AI funkc\w+` | funkce s generativní AI | anglický slovosled přívlastku; česká Search Console i web používají „funkce s generativní AI“. **Výjimka `[skip:generativni-ai-v-discoveru]`:** ten článek cituje formulaci z nápovědy Googlu | co-vypne-ktery-opt-out 2026-08-26 |
-| ⚠️ | `\bvyvolan\w+ uživatelem\b` | spuštěný uživatelem | doslovný převod „user-triggered“ | overovani-ai-robotu 2026-08-26 |
+| ✅ | `\bvyvolan\w+ uživatelem\b` | — | **Oprava vlastního rozhodnutí (26. 8. 2026):** nejdřív jsem to měnil na „spuštěný uživatelem“, jenže web má vlastní zavedený termín — článek `roboti-vyvolani-uzivatelem` ho má v titulku i ve slugu. Sjednoceno zpátky na „vyvolaní uživatelem“ | overovani-ai-robotu 2026-08-26, revidováno 2026-08-26 |
 | ⚠️ | `\bsedí na (zveřejněn|publikovan)\w+ rozsah\w*` | spadá do rozsahu | rozbitá vazba | overovani-ai-robotu 2026-08-26 |
 | ⚠️ | `\bzodpovídá \w*otázk\w+` | odpovídá na otázku | chybná valence slovesa | platform-properties-search-console 2026-08-26 |
 | ⛔ | `\bkredencial\w*` | doložitelná kvalifikace | neustálený přepis „credentials“ | ymyl-obsah-pro-ai 2026-08-26 |

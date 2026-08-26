@@ -32,7 +32,7 @@ faq:
   - q: "Vyřadí zákaz GPTBota web z odpovědí ChatGPT?"
     a: "Ne. GPTBot podle OpenAI řeší jen použití obsahu pro trénink foundation modelů. Z výsledků vyhledávání v ChatGPT vyřadí až zákaz OAI-SearchBota — a i pak dokumentace uvádí, že se web může objevit jako navigační odkaz."
   - q: "Dá se spolehlivě zakázat ChatGPT-User?"
-    a: "Dokumentace OpenAI u akcí spuštěných uživatelem uvádí, že pravidla robots.txt nemusí platit, protože nejde o automatické procházení. Netvrdím, že je OpenAI ignoruje; tvrdím, že u téhle kategorie se na robots.txt jako na spolehlivý opt-out spoléhat nedá."
+    a: "Dokumentace OpenAI u akcí vyvolaných uživatelem uvádí, že pravidla robots.txt nemusí platit, protože nejde o automatické procházení. Netvrdím, že je OpenAI ignoruje; tvrdím, že u téhle kategorie se na robots.txt jako na spolehlivý opt-out spoléhat nedá."
   - q: "Co vypne Applebot-Extended?"
     a: "Podle Applu jen použití obsahu pro trénink jeho generativních modelů. Obsah zůstává dohledatelný přes Spotlight, Siri a Safari, protože obyčejný Applebot dál prochází web."
   - q: "Čím se liší Seznam-Extended od ostatních?"
@@ -97,7 +97,7 @@ Druhý rozšířený omyl. U OpenAI jsou to tři různí roboti se třemi různ�
 Kdo chce ven z odpovědí ChatGPT, potřebuje tedy **OAI-SearchBota**, ne GPTBota. A i pak podle dokumentace zůstává možnost objevit se jako navigační odkaz.
 
 <Insight tone="aio" icon="i" label="Třetí případ je nejistý">
-  U akcí spuštěných uživatelem dokumentace uvádí, že pravidla robots.txt **nemusí platit**, protože nejde o automatické procházení.
+  U akcí vyvolaných uživatelem dokumentace uvádí, že pravidla robots.txt **nemusí platit**, protože nejde o automatické procházení.
 
   **Netvrdím, že OpenAI robots.txt ignoruje.** Tvrdím, že to, co většina lidí považuje za spolehlivý opt-out, u téhle kategorie podle dokumentace spolehlivé být nemusí. Že jde o jiný provozní režim, naznačuje i to, že ChatGPT-User má [256 publikovaných IP prefixů proti 21 u GPTBota](/blog/kdo-publikuje-ip-rozsahy/) — nic to ale nedokazuje o dodržování robots.txt.
 </Insight>
@@ -156,6 +156,6 @@ Stav k **11. srpna 2026**; formulace se mění a stojí za to si je před nastav
 
 Porovnávaných nastavení je sedm a **každé se vztahuje k jiné platformě a jinému použití; zaměnit je nelze**. Dvě často zmiňovaná — Google-Extended a GPTBot — řeší podle dokumentace trénink, ne to, jestli se váš web objeví v AI odpovědi. Na to jsou jiná nastavení: v Search Console u Googlu a OAI-SearchBot u OpenAI.
 
-Než něco nastavíte, mějte jasno, co vlastně chcete vypnout. A počítejte s tím, že u Seznamu za to podle jeho nápovědy zaplatíte návštěvností a u robotů spuštěných uživatelem si jistí být nemůžete.
+Než něco nastavíte, mějte jasno, co vlastně chcete vypnout. A počítejte s tím, že u Seznamu za to podle jeho nápovědy zaplatíte návštěvností a u robotů vyvolaných uživatelem si jistí být nemůžete.
 
 Jak si ověřit, že robot, který se hlásí jménem, je opravdu ten správný, rozebírá [ověřování AI robotů](/blog/overovani-ai-robotu/).
