@@ -34,7 +34,7 @@ howto:
     - name: "Stáhněte si obrázek ze svého webu"
       text: "Ne ze svého disku — přímo tu variantu, kterou vidí návštěvník. Klikněte pravým na obrázek na stránce a uložte si ho."
     - name: "Porovnejte ho s originálem"
-      text: "Najděte tentýž soubor v nejvyšší dostupné variantě nebo ve svém archivu. Rozdíl mezi nimi udělala publikační pipeline, ne fotoaparát."
+      text: "Najděte tentýž soubor v nejvyšší dostupné variantě nebo ve svém archivu. Rozdíl mezi nimi vznikl v publikačním řetězci, ne ve fotoaparátu."
     - name: "Podívejte se, co v obou souborech je"
       text: "Stačí prohlížeč metadat nebo příkaz exiftool. Sledujte EXIF, IPTC, XMP a Content Credentials."
     - name: "Rozhodněte se, jestli vám to vadí"
@@ -61,17 +61,17 @@ import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
 ## Co z obrázku zmizí cestou na web
 
-**V běžné publikační pipeline není obrázek na stránce ten soubor, který jste nahráli.** Je to zmenšenina, kterou po cestě vyrobila nějaká knihovna — a ta při tom zpravidla zahodí skoro všechna metadata o původu souboru: autora, copyright, popisky i podepsaný záznam o původu. Hlavička a komentář zůstanou, zbytek ne.
+**V běžném publikačním řetězci není obrázek na stránce ten soubor, který jste nahráli.** Je to zmenšenina, kterou po cestě vyrobila nějaká knihovna — a ta při tom zpravidla zahodí skoro všechna metadata o původu souboru: autora, copyright, popisky i podepsaný záznam o původu. Hlavička a komentář zůstanou, zbytek ne.
 
 Řeč je celou dobu **jen o metadatech uvnitř obrazového souboru**, ne o údajích v HTML stránky. Alternativní text, popisek pod obrázkem ani strukturovaná data se zmenšováním nikam neztrácejí.
 
-Změřil jsem to na dvou místech: na knihovnách, které zmenšování dělají, a na 38 reálných e-shopech, kde to běží v provozu.
+Změřil jsem to na dvou místech: na knihovnách, které zmenšování dělají, a na 38 reálných e-shopech, kde to běží naostro.
 
 ## Jak se to dá poznat, aniž byste hádali
 
 Problém takového měření je, že když v obrázku na webu nic nenajdete, nevíte proč. Možná to platforma smazala. Možná tam nikdy nic nebylo.
 
-Šel jsem na to porovnáním. Shoptet ukládá tentýž soubor ve variantách podle velikosti — `orig` je nahraný originál, `big` a `detail` jsou zmenšeniny. **Stáhl jsem obě verze téhož souboru z téhož e-shopu.** Co je v originálu a chybí ve zmenšenině, ubrala prokazatelně transformace.
+Šel jsem na to porovnáním. Shoptet ukládá tentýž obrázek v několika velikostech — `orig` je nahraný originál, `big` a `detail` jsou zmenšeniny. **Stáhl jsem obě verze téhož souboru z téhož e-shopu.** Co je v originálu a chybí ve zmenšenině, ubrala prokazatelně transformace.
 
 Metadatové segmenty jsem četl vlastní čtečkou přímo z bajtů souboru — u JPEGu markery (EXIF, XMP, IPTC, ICC, JUMBF pro Content Credentials, komentář), u WebP odpovídající chunky.
 
@@ -93,9 +93,9 @@ Nejdřív kontrolované prostředí. Vyrobil jsem testovací JPEG 1600×1200, do
 
 Tři věci z toho stojí za pozornost.
 
-**Výchozí nastavení je u obou knihoven „nepřenášet".** U sharpu nezůstalo vůbec nic, u Pillow jen hlavička a komentář. Jde o chování bez jakýchkoli dalších parametrů.
+**Výchozí nastavení je u obou knihoven „nepřenášet“.** U sharpu nezůstalo vůbec nic, u Pillow jen hlavička a komentář. Jde o chování bez jakýchkoli dalších parametrů.
 
-**Pillow mi přes běžné `save()` nedostalo do JPEGu zpátky IPTC ani XMP.** Zkusil jsem předat všechno, co dokumentované API nabízí — parametr pro ně tam není. U WebP `xmp=` existuje, u JPEGu ne. Kdo v Pythonu zmenšuje fotky a spoléhá, že „to jde nastavit", naráží u těchhle dvou na omezení samotného `save()`. Jinými cestami to jít může; já měřil tuhle.
+**Pillow mi přes běžné `save()` nedostalo do JPEGu zpátky IPTC ani XMP.** Zkusil jsem předat všechno, co dokumentované API nabízí — parametr pro ně tam není. U WebP `xmp=` existuje, u JPEGu ne. Kdo v Pythonu zmenšuje fotky a spoléhá, že „to jde nastavit“, naráží u těchhle dvou na omezení samotného `save()`. Jinými cestami to jít může; já měřil tuhle.
 
 **Ani jedna knihovna není nadmnožinou té druhé.** `keepMetadata()` u sharpu zachrání IPTC a XMP, ale zahodí komentář, který Pillow drží. A převod do WebP shodí IPTC bez ohledu na knihovnu — WebP pro něj nemá kam.
 
@@ -105,7 +105,7 @@ EXIF v souboru po sharpu narostl ze 168 na 310 bajtů. Není to bajtová kopie p
 
 ## V provozu: z 15 originálů nepřežil ani jeden
 
-Pak stejná otázka na živých webech. Vzorek 47 e-shopů z [dřívějšího měření robots.txt](/blog/shoptet-robots-txt-ai-roboti/), z toho 38 reálných; devět demo e-shopů platformy jsem počítal zvlášť, protože nesou ukázková data.
+Pak stejná otázka na reálných webech. Vzorek 47 e-shopů z [dřívějšího měření robots.txt](/blog/shoptet-robots-txt-ai-roboti/), z toho 38 reálných; devět demo e-shopů platformy jsem počítal zvlášť, protože nesou ukázková data.
 
 Použitelných dvojic originál ↔ zmenšenina vyšlo **31**. V **15 z nich** nesl originál aspoň jeden metadatový segment — nejčastěji EXIF (14 e-shopů), XMP (10), ICC (7) a IPTC (6).
 
@@ -141,7 +141,7 @@ Osm z nich nebyl WordPress, u devíti se odvozeniny v očekávaném tvaru nenaš
 
 **Vzorek závěr o WordPressu neumožnil.** Zapisuju to jako limit měření, ne jako zjištění.
 
-Jedna dílčí stopa přesto padla: odvozenina **na jednom z těch webů** nese komentář `CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 82` — stopu **téže knihovny GD** jako u měřených e-shopů, jen s jinou kvalitou. Je to nález o jednom webu, ne o WordPressu obecně.
+Přesto se našla jedna dílčí stopa: odvozenina **na jednom z těch webů** nese komentář `CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 82` — stopu **téže knihovny GD** jako u měřených e-shopů, jen s jinou kvalitou. Je to nález o jednom webu, ne o WordPressu obecně.
 
 ## Proč to řešit — a proč to nepřehánět
 
@@ -165,9 +165,9 @@ Kolik do toho investovat, se liší podle toho, co publikujete:
 
 <Checklist tone="seo" title="Kontrola na vlastním webu" items={[
   { title: "Stáhněte obrázek ze stránky, ne z disku", desc: "zajímá vás ta varianta, kterou dostane návštěvník na stránce." },
-  { title: "Porovnejte ji s originálem", desc: "rozdíl udělala publikační pipeline. Bez porovnání nevíte, jestli tam něco vůbec bylo." },
+  { title: "Porovnejte ji s originálem", desc: "rozdíl vznikl v publikačním řetězci. Bez porovnání nevíte, jestli tam něco vůbec bylo." },
   { title: "Autorství a licenci napište i do stránky", desc: "popisek u obrázku a strukturovaná data přežijí zmenšení, EXIF ne." },
-  { title: "U vlastní pipeline zapněte přenos vědomě", desc: "u sharpu keepMetadata(), u Pillow předání exif a icc_profile — a počítejte s tím, co se stejně ztratí." },
+  { title: "U vlastního řetězce zapněte přenos vědomě", desc: "u sharpu keepMetadata(), u Pillow předání exif a icc_profile — a počítejte s tím, co se stejně ztratí." },
   { title: "Archivujte originály", desc: "verze na webu vám autorství nedoloží." }
 ]} />
 

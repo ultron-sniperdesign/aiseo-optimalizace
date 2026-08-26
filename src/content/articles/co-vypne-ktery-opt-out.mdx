@@ -32,7 +32,7 @@ faq:
   - q: "Vyřadí zákaz GPTBota web z odpovědí ChatGPT?"
     a: "Ne. GPTBot podle OpenAI řeší jen použití obsahu pro trénink foundation modelů. Z výsledků vyhledávání v ChatGPT vyřadí až zákaz OAI-SearchBota — a i pak dokumentace uvádí, že se web může objevit jako navigační odkaz."
   - q: "Dá se spolehlivě zakázat ChatGPT-User?"
-    a: "Dokumentace OpenAI u akcí vyvolaných uživatelem uvádí, že pravidla robots.txt nemusí platit, protože nejde o automatické procházení. Netvrdím, že je OpenAI ignoruje; tvrdím, že u téhle kategorie se na robots.txt jako na spolehlivý opt-out spoléhat nedá."
+    a: "Dokumentace OpenAI u akcí spuštěných uživatelem uvádí, že pravidla robots.txt nemusí platit, protože nejde o automatické procházení. Netvrdím, že je OpenAI ignoruje; tvrdím, že u téhle kategorie se na robots.txt jako na spolehlivý opt-out spoléhat nedá."
   - q: "Co vypne Applebot-Extended?"
     a: "Podle Applu jen použití obsahu pro trénink jeho generativních modelů. Obsah zůstává dohledatelný přes Spotlight, Siri a Safari, protože obyčejný Applebot dál prochází web."
   - q: "Čím se liší Seznam-Extended od ostatních?"
@@ -48,7 +48,7 @@ import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
 ## Co přesně vypne který opt-out z AI
 
-„Zakázali jsme AI robotům" je věta, která sama o sobě neříká skoro nic. Nastavení je víc, každé se vztahuje k něčemu jinému a **u dvou často zmiňovaných se účel plete nejčastěji**.
+„Zakázali jsme AI robotům“ je věta, která sama o sobě neříká skoro nic. Nastavení je víc, každé se vztahuje k něčemu jinému a **u dvou často zmiňovaných se účel plete nejčastěji**.
 
 Prošel jsem oficiální dokumentaci sedmi z nich. **Tenhle článek není měření chování** — je to porovnání toho, co provozovatelé sami píšou, ke dni **11. srpna 2026**. Netestoval jsem, jestli se roboti podle svých pravidel opravdu řídí.
 
@@ -62,13 +62,13 @@ Prošel jsem oficiální dokumentaci sedmi z nich. **Tenhle článek není měř
 | **Applebot-Extended** | trénink modelů Applu | Spotlight, Siri, Safari |
 | **Seznam-Extended** | obsah v Seznam AI **i** přivádění uživatelů | — |
 
-## Google-Extended podle Googlu neřídí generativní AI funkce
+## Google-Extended podle Googlu neřídí funkce s generativní AI
 
 Tohle je nejčastější omyl a Google to říká sám, na dvou místech.
 
-V dokumentaci crawlerů: *„Google-Extended does not impact a site's inclusion in Google Search nor is it used as a ranking signal in Google Search."* Slouží k řízení toho, jestli se obsah použije pro trénink budoucích modelů Gemini a pro grounding v Gemini a Vertex AI.
+V dokumentaci crawlerů: *„Google-Extended does not impact a site's inclusion in Google Search nor is it used as a ranking signal in Google Search.“* Slouží k řízení toho, jestli se obsah použije pro trénink budoucích modelů Gemini a pro grounding v Gemini a Vertex AI.
 
-Na stránce o AI funkcích ve vyhledávání je to ještě přímější: *„AI is built into Search and integral to how Search functions, which is why robots.txt directives for Googlebot is the control for site owners to manage access to how their sites are crawled for Search."*
+Na stránce o AI funkcích ve vyhledávání je to ještě přímější: *„AI is built into Search and integral to how Search functions, which is why robots.txt directives for Googlebot is the control for site owners to manage access to how their sites are crawled for Search.“*
 
 Ze součtu obou dokumentů plyne: **generativní AI funkce Google popisuje jako součást Search.** Podle téhle nápovědy řídí přístup k Search pravidla pro Googlebota — tedy stejný režim, který rozhoduje i o přístupu do běžných výsledků.
 
@@ -80,9 +80,9 @@ Ze součtu obou dokumentů plyne: **generativní AI funkce Google popisuje jako 
 
 ### Co tedy generativní AI funkce vypne
 
-Nastavení **Search generative AI control** v Search Console. Podle aktuální nápovědy vyloučení znamená, že *„Your site's content is prevented from being visible to users in Search generative AI features, including being linked to within these features."*
+Nastavení **Search generative AI control** v Search Console. Podle aktuální nápovědy vyloučení znamená, že *„Your site's content is prevented from being visible to users in Search generative AI features, including being linked to within these features.“*
 
-A zároveň platí opačná záruka: *„this control isn't used as a ranking or inclusion signal affecting other parts of Search."* Obsah navíc *„may still be used to power Google Search as a whole"*.
+A zároveň platí opačná záruka: *„this control isn't used as a ranking or inclusion signal affecting other parts of Search.“* Obsah navíc *„may still be used to power Google Search as a whole“*.
 
 Proč ten přepínač vznikl a co mu předcházelo, rozebírá [samostatný článek](/blog/blokovat-ai-odpovedi-gsc/).
 
@@ -90,21 +90,21 @@ Proč ten přepínač vznikl a co mu předcházelo, rozebírá [samostatný čl�
 
 Druhý rozšířený omyl. U OpenAI jsou to tři různí roboti se třemi různými dopady:
 
-- **GPTBot** — *„Disallowing GPTBot indicates a site's content should not be used in training generative AI foundation models."* Týká se tréninku, nic víc.
-- **OAI-SearchBot** — *„Sites that are opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links."*
+- **GPTBot** — *„Disallowing GPTBot indicates a site's content should not be used in training generative AI foundation models.“* Týká se tréninku, nic víc.
+- **OAI-SearchBot** — *„Sites that are opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links.“*
 - **ChatGPT-User** — načítání stránky proto, že se uživatel na něco zeptal.
 
 Kdo chce ven z odpovědí ChatGPT, potřebuje tedy **OAI-SearchBota**, ne GPTBota. A i pak podle dokumentace zůstává možnost objevit se jako navigační odkaz.
 
 <Insight tone="aio" icon="i" label="Třetí případ je nejistý">
-  U akcí vyvolaných uživatelem dokumentace uvádí, že pravidla robots.txt **nemusí platit**, protože nejde o automatické procházení.
+  U akcí spuštěných uživatelem dokumentace uvádí, že pravidla robots.txt **nemusí platit**, protože nejde o automatické procházení.
 
   **Netvrdím, že OpenAI robots.txt ignoruje.** Tvrdím, že to, co většina lidí považuje za spolehlivý opt-out, u téhle kategorie podle dokumentace spolehlivé být nemusí. Že jde o jiný provozní režim, naznačuje i to, že ChatGPT-User má [256 publikovaných IP prefixů proti 21 u GPTBota](/blog/kdo-publikuje-ip-rozsahy/) — nic to ale nedokazuje o dodržování robots.txt.
 </Insight>
 
 ## Applebot-Extended nevypne Siri ani Spotlight
 
-Apple to má rozdělené podobně jako Google. Zákaz `Applebot-Extended` je opt-out z tréninku generativních modelů, ale obsah *„will remain discoverable through Spotlight, Siri, and Safari"* — obyčejný Applebot dál prochází.
+Apple to má rozdělené podobně jako Google. Zákaz `Applebot-Extended` je opt-out z tréninku generativních modelů, ale obsah *„will remain discoverable through Spotlight, Siri, and Safari“* — obyčejný Applebot dál prochází.
 
 V měřených českých médiích to má nastavené pět webů z 33.
 
@@ -112,7 +112,7 @@ V měřených českých médiích to má nastavené pět webů z 33.
 
 A tady je rozdíl, kvůli kterému stojí za to číst českou dokumentaci zvlášť.
 
-Nápověda Seznam Partner uvádí u zákazu `Seznam-Extended` obojí v jedné větě: *„Na váš web již nadále nebudeme uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat."*
+Nápověda Seznam Partner uvádí u zákazu `Seznam-Extended` obojí v jedné větě: *„Na váš web již nadále nebudeme uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat.“*
 
 **To je jiný dokumentovaný dopad než u Googlu.** U Google-Extended nepřijdete o nic ve vyhledávání. U Seznam-Extended je opt-out z AI zároveň opt-out z návštěvnosti, kterou by ten kanál přinesl. Podrobněji [tady](/blog/seznam-extended-opt-out/).
 
@@ -154,8 +154,8 @@ Stav k **11. srpna 2026**; formulace se mění a stojí za to si je před nastav
 
 ## Shrnutí
 
-Porovnávaných nastavení je sedm a **každé se vztahuje k jiné platformě a jinému použití; zaměnit je nelze**. Dvě často zmiňovaná — Google-Extended a GPTBot — řeší podle dokumentace trénink, ne to, jestli vás uvidí uživatel v AI odpovědi. Na to jsou jiná nastavení: v Search Console u Googlu a OAI-SearchBot u OpenAI.
+Porovnávaných nastavení je sedm a **každé se vztahuje k jiné platformě a jinému použití; zaměnit je nelze**. Dvě často zmiňovaná — Google-Extended a GPTBot — řeší podle dokumentace trénink, ne to, jestli se váš web objeví v AI odpovědi. Na to jsou jiná nastavení: v Search Console u Googlu a OAI-SearchBot u OpenAI.
 
-Než něco nastavíte, mějte jasno, co vlastně chcete vypnout. A počítejte s tím, že u Seznamu za to podle jeho nápovědy zaplatíte návštěvností a u robotů vyvolaných uživatelem si jistí být nemůžete.
+Než něco nastavíte, mějte jasno, co vlastně chcete vypnout. A počítejte s tím, že u Seznamu za to podle jeho nápovědy zaplatíte návštěvností a u robotů spuštěných uživatelem si jistí být nemůžete.
 
 Jak si ověřit, že robot, který se hlásí jménem, je opravdu ten správný, rozebírá [ověřování AI robotů](/blog/overovani-ai-robotu/).

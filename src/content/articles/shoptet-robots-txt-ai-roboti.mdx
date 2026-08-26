@@ -43,7 +43,7 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
-[První díl](/blog/shoptet-strukturovana-data-mereni/) skončil otevřenou otázkou: robots.txt byl u všech patnácti měřených e-shopů identický, ale jestli s ním jde v administraci hýbat, jsem netvrdil ani jedním směrem.
+[První díl](/blog/shoptet-strukturovana-data-mereni/) skončil otevřenou otázkou: robots.txt byl u všech patnácti měřených e-shopů identický, ale jestli ho jde v administraci upravit, jsem netvrdil ani jedním směrem.
 
 Odpověď byla v nápovědě Shoptetu. **A když jsem pak rozšířil vzorek na 47 e-shopů, našel jsem něco, co jsem nehledal: u čtyř obchodů vedlo přidání vlastních pravidel pro AI roboty k tomu, že pro ně přestalo platit všech 40 zákazů, které platforma nastavuje ve výchozím stavu.**
 
@@ -55,7 +55,7 @@ Co následuje, platí pro obsah souboru `robots.txt` a pro odpověď homepage na
 
 Shoptet to má popsané v sekci HTML kódy: robots.txt se edituje v **Vzhled a Obsah → Editor → HTML kód**, sekce má limit **8 192 znaků** a — to je důležité — „vložený text se přidá na konec souboru robots.txt“. Tedy přílepek, ne přepis. Výchozích 40 zákazů zůstává.
 
-Tatáž stránka mimochodem popisuje ještě jedno pole, o kterém se moc neví: **`llms.txt` — vlastní text pro AI nástroje.** K němu se dostanu níž, protože měření u něj vydalo nepříjemnou věc.
+Tatáž stránka mimochodem popisuje ještě jedno pole, o kterém se moc neví: **`llms.txt` — vlastní text pro AI nástroje.** K němu se dostanu níž, protože měření u něj ukázalo nepříjemnou věc.
 
 ## Vzorek
 
@@ -85,7 +85,7 @@ Jediné `Disallow: /` v celém vzorku patří robotu YoudaoBot, tedy nikomu ze s
 
 Šest e-shopů má pro AI roboty vlastní pravidla. Všechna povolují. A právě tím vznikl problém.
 
-Dokumentace Googlu k robots.txt to říká jednou větou: **pro konkrétního robota je platná vždy jen jedna skupina** — ta s nejspecifičtějším odpovídajícím user-agentem. Jakmile tedy GPTBot dostane vlastní skupinu, skupina `User-agent: *` se na něj **přestane vztahovat**. Nedoplní se. Nahradí se.
+Dokumentace Googlu k robots.txt to říká jednou větou: **u konkrétního robota se použije vždy jen jedna skupina** — ta s nejspecifičtějším odpovídajícím user-agentem. Jakmile tedy GPTBot dostane vlastní skupinu, skupina `User-agent: *` se na něj **přestane vztahovat**. Nedoplní se. Nahradí se.
 
 Podívejte se, co to udělá se souborem, který má ve výchozím stavu 40 zákazů:
 
@@ -133,7 +133,7 @@ Disallow: /login/
 Disallow: /*?order
 ```
 
-Trochu se to opisuje, ale robot pak čte skupinu, která odpovídá tomu, co jste zamýšleli.
+Trochu se to opisuje, ale robot pak čte skupinu, která odpovídá vašemu záměru.
 
 ## llms.txt: dvoustovka na všech, obsah na třech
 

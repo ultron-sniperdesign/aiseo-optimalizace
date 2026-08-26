@@ -117,6 +117,16 @@
 | 117 | 2026-08-26 | `metadata-obrazku-pri-publikaci` | 2026-08-07 | v51 | 1 600 | 4 | 5 | **2,5 → 0,0** | 6 | — |
 | 118 | 2026-08-26 | `overovani-ai-robotu` | 2026-08-08 | v51 | 1 880 | 3 | 5 | **1,6 → 0,0** | 6 | +2 |
 | 119 | 2026-08-26 | `shoptet-blog-clanky-data` | 2026-08-08 | v51 | 1 800 | 2 | 0 | **1,1 → 0,0** | 2 | — |
+| 120 | 2026-08-26 | `shoptet-filtry-strankovani` | 2026-08-08 | v52 | 1 760 | 3 | 0 | **1,7 → 0,0** | 3 | — |
+| 121 | 2026-08-26 | `shoptet-produktova-pole-google` | 2026-08-08 | v52 | 1 880 | 6 (5 planých) | 0 | **3,2 → 0,0** | 1 | zúženo 2 |
+| 122 | 2026-08-26 | `shoptet-robots-txt-ai-roboti` | 2026-08-08 | v52 | 2 000 | 0 | 5 | **0,0** | 4 | — |
+| 123 | 2026-08-26 | `shoptet-strukturovana-data-mereni` | 2026-08-08 | v52 | 1 900 | 1 | 0 | **0,5 → 0,0** | 1 | — |
+| 124 | 2026-08-26 | `co-z-obrazku-zmizi` | 2026-08-09 | v52 | 2 060 | 6 | 5 | **2,9 → 0,0** | 11 | — |
+| 125 | 2026-08-26 | `seznam-extended-opt-out` | 2026-08-09 | v53 | 1 580 | 4 | 2 | **2,5 → 0,0** | 5 | +1 ✅ |
+| 126 | 2026-08-26 | `bytespider-ceska-media` | 2026-08-10 | v53 | 1 660 | 2 | 0 | **1,2 → 0,0** | 2 | — |
+| 127 | 2026-08-26 | `co-vypne-ktery-opt-out` | 2026-08-11 | v53 | 1 600 | 14 | 4 | **8,7 → 0,0** | 13 | — |
+| 128 | 2026-08-26 | `kdo-publikuje-ip-rozsahy` | 2026-08-11 | v53 | 1 680 | 3 | 3 | **1,8 → 0,0** | 6 | — |
+| 129 | 2026-08-26 | `llms-txt-falesne-pozitivni` | 2026-08-11 | v53 | 1 800 | 14 | 1 | **7,8 → 0,0** | 15 | — |
 
 ## Poznámky k jednotlivým článkům
 
@@ -877,6 +887,15 @@ Dávka technických článků o obrázcích, metadatech a robotech. **Osm z šes
 - `pipeline` nehlásí **CI/CD pipeline** (zavedený termín vývojářů). Lookbehind musel být `(?<!CI/)`, protože regex jinak chytal „CD pipeline“ zevnitř.
 
 **Vlastní chyba, hned opravená:** náhrada „zodpovídá otázku“ → „odpovídá na otázku“ vyrobila překlep „odpo**o**vídá“. Chytila to kontrola diffu před buildem.
+
+
+### 120–129 · osmá dávka deseti (2026-08-26)
+
+**Rozhodnutí o druhém překladu „surface“:** vedle „povrchu“ (opraveno) používá web i **„plocha“** — „plochy Googlu“, „AI plochy“, 11+ výskytů. Tohle jsem **nechal**: „plocha“ v tomhle významu česky funguje (reklamní plocha, zobrazovací plocha), zatímco „povrch“ ne. Zapsáno jako ✅ i s odůvodněním, aby se to nepřepisovalo tam a zpět.
+
+**Zásahy:** 32 rovných uvozovek · „publikační **pipeline**“ (4×) → „publikační **řetězec**“ se správným rodem („rozdíl **udělal**“ → „**vznikl v** publikačním řetězci“) · „roboti/akce **vyvolaní uživatelem**“ (5×) → „**spuštění uživatelem**“ · „platformní **default**“ (2×) → „**výchozí nastavení platformy**“ · „**stojí za povšimnutí, že**“ → „**je dobré si všimnout, že**“ · „jestli s ním jde **v administraci hýbat**“ → „jestli **ho jde v administraci upravit**“ · „měření **vydalo** nepříjemnou věc“ → „měření **ukázalo**“ · „**je platná vždy jen jedna skupina**“ → „**se použije vždy jen jedna skupina**“ · „odpovídá **tomu, co jste zamýšleli**“ → „odpovídá **vašemu záměru**“ · „kde to **běží v provozu**“ → „kde to **běží naostro**“ · „ukládá tentýž **soubor ve variantách podle velikosti**“ → „**obrázek v několika velikostech**“ · „na **živých** webech“ → „na **reálných** webech“ · „**stopa přesto padla**“ → „**přesto se našla** jedna dílčí stopa“ · „**generativní AI funkce**“ → „**funkce s generativní AI**“ · „jestli **vás uvidí uživatel**“ → „jestli **se váš web objeví**“ · „našel až dodatečně **přes dokumentaci**“ → „**v dokumentaci**“ · „Amazon **vyšel jako „nepublikuje“**“ → „**u Amazonu vyšlo, že nepublikuje**“ · „mají mnohem širší **prostor**“ → „širší **rozsah adres**“ · „skutečně **servírovaných** textových souborů“ → „textových souborů, **které web opravdu vrací**“.
+
+**Planý poplach (opraven ve dvou pravidlech):** „**merchant listing(s)**“ je oficiální název typu výsledku u Google — obě pravidla na `listing` dostala lookbehind `(?<!merchant )`.
 
 ---
 

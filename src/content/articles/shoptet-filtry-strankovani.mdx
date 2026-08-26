@@ -35,7 +35,7 @@ faq:
   - q: "Je absence canonicalu na stránkování chyba?"
     a: "Sama o sobě ne. Google od roku 2019 nepoužívá rel=next a rel=prev jako indexační signál a stránkované stránky bere jako samostatné dokumenty. Navíc jsem neměřil, jestli jsou ty adresy skutečně v indexu — jen jaké signály e-shop vydává. Je to rozhodnutí, které za vás udělala platforma, a stojí za to o něm vědět."
   - q: "Jak velký je ten filtrovaný prostor?"
-    a: "Na jedné měřené kategorii bylo až 437 zaškrtávacích políček a 399 hodnot filtrů. Kombinací by z toho vzniklo obrovské množství adres. Právě proto stojí za povšimnutí, že se na ně robot nedostane odkazem ani přes robots.txt."
+    a: "Na jedné měřené kategorii bylo až 437 zaškrtávacích políček a 399 hodnot filtrů. Kombinací by z toho vzniklo obrovské množství adres. Právě proto je dobré si všimnout, že se na ně robot nedostane odkazem ani přes robots.txt."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
@@ -100,7 +100,7 @@ Zbylých třicet vypadá takhle:
 | **má `rel=canonical`** | **0 z 30** |
 | `meta robots` = `index,follow` | **30 z 30** |
 | `rel=prev` na předchozí stranu | 30 z 30 |
-| vlastní titulek se slovem „Strana" | 30 z 30 |
+| vlastní titulek se slovem „Strana“ | 30 z 30 |
 
 Všimněte si toho prvního řádku pořádně: **není to canonical mířící na stranu 1. Je to absence značky.** Strana 1 canonical má a míří sama na sebe. Strana 2 nemá v hlavičce `rel=canonical` vůbec.
 
@@ -124,7 +124,7 @@ Pořadí, ve kterém to dává smysl řešit:
 
 <MistakeGrid>
 <Mistake number="01" title="Řešit filtry, protože se to tak dělá">
-Ve vzorku proti nim působí dva faktory zároveň — zákaz v robots.txt a to, že z kategorie na ně většinou nevede odkaz. Čas strávený jejich „opravováním" je čas, který jinde chybí.
+Ve vzorku proti nim působí dva faktory zároveň — zákaz v robots.txt a to, že z kategorie na ně většinou nevede odkaz. Čas strávený jejich „opravováním“ je čas, který jinde chybí.
 </Mistake>
 
 <Mistake number="02" title="Dávat noindex na adresy zakázané v robots.txt">

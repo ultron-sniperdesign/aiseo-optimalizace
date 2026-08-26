@@ -59,11 +59,11 @@ Odečet **11. srpna 2026**. Nejdřív ale k tomu, co přesně jsem hledal, proto
 
 Sestavil jsem **18 kandidátních adres u 13 provozovatelů**. Tam, kde jsem dokumentaci znal z dřívějška, jsem šel na doloženou adresu; u zbytku jsem ji odvodil z konvence ostatních (`domena.cz/nazevbota.json`). Za **nalezený** jsem počítal jen ten případ, kdy odpověď byla platný JSON s prefixy uvnitř — ne pouhý kód 200, [proč to nestačí](/blog/llms-txt-falesne-pozitivni/). **Nenalezený** znamená, že jsem na těch adresách takový soubor nedostal; nic víc.
 
-Amazon do těch osmnácti kandidátů v tomhle smyslu nepatřil — jeho stránky jsem našel až dodatečně přes dokumentaci a nejsou to strojové soubory. Proto je uvádím zvlášť.
+Amazon do těch osmnácti kandidátů v tomhle smyslu nepatřil — jeho stránky jsem našel až dodatečně v dokumentaci a nejsou to strojové soubory. Proto je uvádím zvlášť.
 
 | Provozovatel | Soubor | Prefixů | z toho IPv6 | Datum | Stáří |
 |---|---|---|---|---|---|
-| Google | vyvolaní uživatelem | 1 056 | 528 | 11. 8. 2026 | 0 dní |
+| Google | spuštění uživatelem | 1 056 | 528 | 11. 8. 2026 | 0 dní |
 | DuckDuckGo | DuckAssistBot | 481 | 0 | 3. 7. 2026 | 39 dní |
 | Google | Googlebot | 315 | 146 | 11. 8. 2026 | 0 dní |
 | Google | zvláštní roboti | 270 | 135 | 10. 8. 2026 | 1 den |
@@ -83,7 +83,7 @@ Dohromady **2 512 prefixů**.
 
 Tohle je hlavní metodické poučení z celého měření a málem mě stálo chybu v článku.
 
-V prvním kole mi Amazon vyšel jako „nepublikuje". Hledal jsem totiž soubor `.json` na adresách, které jsem si **odvodil z konvence ostatních** — a dostal 404.
+V prvním kole mi u Amazonu vyšlo, že nepublikuje. Hledal jsem totiž soubor `.json` na adresách, které jsem si **odvodil z konvence ostatních** — a dostal 404.
 
 Amazon adresy publikuje. Jen je nemá v JSON, ale ve třech běžných stránkách dokumentace:
 
@@ -113,7 +113,7 @@ Ve všech třinácti souborech mají IPv6 prefixy jen tři soubory Googlu — a 
 
 Praktický důsledek: když vám robot přijde přes IPv6, proti těmhle seznamům ho mimo Google skoro jistě neověříte.
 
-### Roboti vyvolaní uživatelem mají mnohem širší prostor
+### Roboti spuštění uživatelem mají mnohem širší rozsah adres
 
 U Googlu 1 056 prefixů proti 315 u Googlebota. U OpenAI 256 u ChatGPT-User proti 21 u GPTBota. Robot, který jde na web proto, že se ho někdo na něco zeptal, přichází z podstatně širší sítě než ten, který web systematicky prochází.
 

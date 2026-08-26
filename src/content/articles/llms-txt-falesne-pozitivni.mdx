@@ -58,12 +58,12 @@ Chtěl jsem vědět, kolik českých webů na `/llms.txt` něco vrací — a kol
 
 Mezi prvním a posledním řádkem je sedmnáctinásobek. A obě ztráty mají úplně jinou příčinu.
 
-Hned na začátku k tomu patří upřesnění, které si článek nese celý: **prázdný soubor pořád existuje.** U 44 e-shopů `/llms.txt` doopravdy je, jen v něm nic není. Nepočítám tedy „kdo soubor má", ale „kdo v něm má obsah" — a ten rozdíl je tady celá pointa.
+Hned na začátku k tomu patří upřesnění, které si článek nese celý: **prázdný soubor pořád existuje.** U 44 e-shopů `/llms.txt` doopravdy je, jen v něm nic není. Nepočítám tedy „kdo soubor má“, ale „kdo v něm má obsah“ — a ten rozdíl je tady celá pointa.
 
 <Insight tone="warn" icon="!" label="Proč jsem to měřil">
   Při psaní [minulého článku](/blog/bytespider-ceska-media/) jsem hledal dokumentaci ByteDance a adresa `bytedance.com/en/bots.json` vrátila **HTTP 200**. Skoro jsem z toho napsal, že ten soubor existuje.
 
-  V hlavičkách bylo `Content-Type: text/html` a v těle běžná stránka. Web vrací 200 na libovolnou cestu. **Zajímalo mě, jak často se to stává** — a co to dělá s tvrzeními typu „tenhle web má llms.txt".
+  V hlavičkách bylo `Content-Type: text/html` a v těle běžná stránka. Web vrací 200 na libovolnou cestu. **Zajímalo mě, jak často se to stává** — a co to dělá s tvrzeními typu „tenhle web má llms.txt“.
 </Insight>
 
 ## Jak se to dá změřit
@@ -73,9 +73,9 @@ Každé z osmdesáti domén jsem poslal dva požadavky:
 1. **Cestu, která nemůže existovat** — `/aiseo-neexistuje-<otisk domény>.txt`. Správná odpověď je 404.
 2. **`/llms.txt`** — soubor, o kterém se v souvislosti s AI mluví nejvíc.
 
-U obou jsem si uložil stavový kód, hlavičku `Content-Type` a délku těla; z těla jsem četl jen začátek, protože mi šlo o rozlišení „HTML fallback / prázdný / neprázdný", ne o posouzení kvality obsahu. Vzorek: **33 zpravodajských a oborových webů a 47 e-shopů**, odečet 11. srpna 2026. Odpověděly všechny.
+U obou jsem si uložil stavový kód, hlavičku `Content-Type` a délku těla; z těla jsem četl jen začátek, protože mi šlo o rozlišení „HTML fallback / prázdný / neprázdný“, ne o posouzení kvality obsahu. Vzorek: **33 zpravodajských a oborových webů a 47 e-shopů**, odečet 11. srpna 2026. Odpověděly všechny.
 
-První požadavek je tam schválně. **Bez něj nevíte, jestli váš test vůbec něco měří** — když web vrací 200 na cokoli, je i „nalezený" llms.txt bezcenný.
+První požadavek je tam schválně. **Bez něj nevíte, jestli váš test vůbec něco měří** — když web vrací 200 na cokoli, je i „nalezený“ llms.txt bezcenný.
 
 ## Nález 1: pět webů odpoví 200 na soubor, který neexistuje
 
@@ -99,7 +99,7 @@ Když se ty výsledky rozdělí, ukáže se, že každá skupina selhává jinak
 | E-shopy (jedna platforma) | 47 | 0 | 47 | 0 | 44 | **3** |
 | **Celkem** | **80** | **5** | **52** | **5** | **44** | **3** |
 
-**U médií** je všech pět „nálezů" jenom ten soft 404. U žádného z 33 měřených médií jsem nenašel neprázdný textový `/llms.txt` — přesto by je hrubý sken napočítal pět.
+**U médií** je všech pět „nálezů“ jenom ten soft 404. U žádného z 33 měřených médií jsem nenašel neprázdný textový `/llms.txt` — přesto by je hrubý sken napočítal pět.
 
 **U e-shopů** je to opačně. Soubor tam je doopravdy, servíruje ho platforma všem — jenže **u 44 ze 47 je prázdný**. Obsah do něj doplnili tři provozovatelé.
 
@@ -111,15 +111,15 @@ Když se ty výsledky rozdělí, ukáže se, že každá skupina selhává jinak
 
 Jinými slovy: 52 odpovědí s kódem 200 se rozpadá na 5 HTML fallbacků a 47 textových odpovědí; z těch 47 je 44 prázdných a 3 neprázdné.
 
-Těch 44 prázdných souborů není 44 samostatných rozhodnutí. Je to **jedno výchozí nastavení platformy**, na které jsem narazil už při [měření robots.txt na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/). Uvádím to takhle schválně: kdyby se to počítalo jako „44 e-shopů si pořídilo llms.txt", bylo by to zavádějící.
+Těch 44 prázdných souborů není 44 samostatných rozhodnutí. Je to **jedno výchozí nastavení platformy**, na které jsem narazil už při [měření robots.txt na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/). Uvádím to takhle schválně: kdyby se to počítalo jako „44 e-shopů si pořídilo llms.txt“, bylo by to zavádějící.
 
 ## Co z toho plyne pro čísla o adopci
 
 **Tenhle článek nehodnotí konkrétní průzkumy adopce llms.txt** — metodiku jejich autorů neznám a netvrdím o nich nic. Ukazuje jen, že sken opřený o samotný stavový kód může vést k výrazně vyššímu číslu než sken, který se dívá na obsah.
 
-A hlavně: **v mém vzorku ten rozdíl nafoukla jedna platforma.** 44 ze 47 e-shopů má prázdný soubor proto, že ho tak servíruje platforma. Není to odhad českého webu obecně, je to ukázka, jak daleko může číslo ujet, když se sejde soft 404 a platformní default.
+A hlavně: **v mém vzorku ten rozdíl nafoukla jedna platforma.** 44 ze 47 e-shopů má prázdný soubor proto, že ho tak servíruje platforma. Není to odhad českého webu obecně, je to ukázka, jak daleko může číslo ujet, když se sejde soft 404 a výchozí nastavení platformy.
 
-A pro pořádek kontext, který k tématu patří: Google ve své dokumentaci k AI uvádí, že tyhle soubory ignoruje — *„Doing so will neither harm nor help your site's visibility or rankings in Google Search, as Google Search ignores them"* (stránka naposledy aktualizovaná 10. 7. 2026 — různé přehledy třetích stran uvádějí jiné datum, beru to ze stránky samotné). Jestli llms.txt dělat, tenhle článek neřeší. Řeší, jestli se dá věřit tvrzení, že ho někdo má.
+A pro pořádek kontext, který k tématu patří: Google ve své dokumentaci k AI uvádí, že tyhle soubory ignoruje — *„Doing so will neither harm nor help your site's visibility or rankings in Google Search, as Google Search ignores them“* (stránka naposledy aktualizovaná 10. 7. 2026 — různé přehledy třetích stran uvádějí jiné datum, beru to ze stránky samotné). Jestli llms.txt dělat, tenhle článek neřeší. Řeší, jestli se dá věřit tvrzení, že ho někdo má.
 
 ## Jak testovat existenci souboru pořádně
 
@@ -146,20 +146,20 @@ Schválně tam není `curl -I`. To posílá požadavek HEAD, na který se server
 
 ## Netýká se to jen llms.txt
 
-Stejný typ chyby může nastat i jinde, kde se ptáte „existuje ten soubor?". Tohle už jsem neměřil, je to obecný technický princip:
+Stejný typ chyby může nastat i jinde, kde se ptáte „existuje ten soubor?“. Tohle už jsem neměřil, je to obecný technický princip:
 
 - **ověřovací soubory** pro Search Console, Bing Webmaster Tools nebo jiné služby,
 - **klíč pro IndexNow**, který musí být veřejně dostupný a obsahovat přesně ten řetězec,
 - **`ads.txt`** a podobné deklarace,
 - **sitemapy**, kde web může vrátit 200 a poslat něco jiného, než čekáte.
 
-U klíče IndexNow je to nejcitelnější: soubor „je" (200), ale obsahuje HTML, takže ověření selže a vy nevíte proč. Souvislosti rozebírá [návod na IndexNow a Bing](/blog/bing-seo-pro-ai/).
+U klíče IndexNow je to nejcitelnější: soubor „je“ (200), ale obsahuje HTML, takže ověření selže a vy nevíte proč. Souvislosti rozebírá [návod na IndexNow a Bing](/blog/bing-seo-pro-ai/).
 
 ## Limity tohohle měření
 
 Jeden odečet, **11. srpna 2026**. Vzorky nejsou náhodné: 33 médií je ruční seznam, 47 e-shopů běží na jedné platformě — proto výsledky uvádím odděleně a prázdný soubor přisuzuji platformě, ne českému webu obecně.
 
-Četl jsem jen **první 4 kB** těla. To stačí na rozlišení „prázdný / neprázdný", ne na posouzení, jestli je obsah dobrý.
+Četl jsem jen **první 4 kB** těla. To stačí na rozlišení „prázdný / neprázdný“, ne na posouzení, jestli je obsah dobrý.
 
 A netestoval jsem, jestli kterýkoli AI systém tyhle soubory čte. Tenhle článek o tom nic netvrdí.
 
@@ -172,14 +172,14 @@ A netestoval jsem, jestli kterýkoli AI systém tyhle soubory čte. Tenhle člá
   <Mistake number="02" title="Spokojit se s kontrolou Content-Type">
     Prázdný soubor je korektní text/plain a projde. V mém vzorku jich bylo 44.
   </Mistake>
-  <Mistake number="03" title="Vydávat platformní default za rozhodnutí majitelů">
+  <Mistake number="03" title="Vydávat výchozí nastavení platformy za rozhodnutí majitelů">
     Když soubor servíruje platforma všem, není to údaj o tom, kolik lidí si ho pořídilo.
   </Mistake>
 </MistakeGrid>
 
 ## Shrnutí
 
-Podle stavového kódu vrátí `/llms.txt` osmdesáti webů 52 z nich. Po vyloučení HTML fallbacků zbyde 47 skutečně servírovaných textových souborů a **neprázdný obsah mají tři**. Která z těch odpovědí je „správná", záleží na tom, na co se ptáte — jen je potřeba vědět, kterou z nich zrovna měříte.
+Podle stavového kódu vrátí `/llms.txt` osmdesáti webů 52 z nich. Po vyloučení HTML fallbacků zbyde 47 textových souborů, které web opravdu vrací a **neprázdný obsah mají tři**. Která z těch odpovědí je „správná“, záleží na tom, na co se ptáte — jen je potřeba vědět, kterou z nich zrovna měříte.
 
 Dvě příčiny toho rozdílu jsou různé a obě běžné — server, který vrací 200 na cokoli, a platforma, která rozdá prázdný soubor. První odhalíte hlavičkou, druhou až délkou.
 

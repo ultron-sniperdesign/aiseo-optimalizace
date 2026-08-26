@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 51** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 110–119/147) · audituje skill `cestina-audit`
+> **Verze: 53** · založeno 2026-08-23 · poslední změna 2026-08-26 (články 120–129/147) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -41,7 +41,7 @@
 | ⛔ | `\bintent(y|ů|ům|ech)\b` | záměry hledajících | „intenty“ je slang; jednotné „search intent“ se toleruje jako ⚠️ | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\btie[‑-]?breaker\b` | rozhodne až mezi vyrovnanými výsledky | anglicismus | seo-audit-co-kontrolovat 2026-08-23 |
 | ⛔ | `\bintro\b` | úvod | zbytečný anglicismus i v nadpisu | seo-pro-eshopy-ai-era-2026 2026-08-23 |
-| ⛔ | `\blisting(em|u|y|ů)?\b` | výpis produktů | e-shopový slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
+| ⛔ | `(?<!merchant )\blisting(em|u|y|ů)?\b` | výpis produktů | e-shopový slang | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bcustom\w*\b(?![ ]?(Editor|Fields?|Post|Taxonom))` | na míru, vlastní | rozlezlý agenturní slang. **Výjimka:** názvy funkcí produktů („Schema Custom Editor“ v AIOSEO, „Custom Fields“ ve WordPressu) — vlastní jména rozhraní | seo-pro-eshopy-ai-era-2026 2026-08-23, výjimka ai-seo-wordpress 2026-08-25 |
 | ⛔ | `\bfocus\b` | zaměření | totéž | seo-pro-eshopy-ai-era-2026 2026-08-23 |
 | ⛔ | `\bformat\b` | formát | nečeský pravopis, ne termín | seo-pro-eshopy-ai-era-2026 2026-08-23 |
@@ -289,6 +289,7 @@
 | ⚠️ | `\bz definice\b` | ze své podstaty | nalepený obrat z angličtiny („by definition“) | produktovy-feed-gtin 2026-08-26 |
 | ⚠️ | `\bsilně závislý na\b` | hodně závisí na | překlad „heavily dependent on“ | pasazova-optimalizace-obsahu 2026-08-26 |
 | ⛔ | `\bpovrch(?:u|y|ů|em|ích|ům)?\b` | prostředí, místo ve vyhledávání | kalk z „surface“ v produktové angličtině Googlu. **Nehlásí** „povrchní / povrchně“ — to je jiné slovo | ai-mode-a-eshopy 2026-08-26, zúženo 2026-08-26 |
+| ✅ | `\bploch\w+` | — | „plocha“ jako překlad *surface* česky **funguje** (reklamní plocha, zobrazovací plocha) — na rozdíl od „povrchu“. Ponecháno záměrně | 2026-08-26 |
 | ⛔ | `\bbrand search\w*|\bbrand voice\b` | vyhledávání značky, hlas značky | hybridní slepence s anglickým „brand“ | case-study-megadetail 2026-08-26 |
 | ⚠️ | `\bcelowebov\w+` | pro celý web | mechanicky odvozené přídavné jméno | blokovat-ai-odpovedi-gsc 2026-08-26 |
 | ⚠️ | `\bvygenerování(mi|ch)\b|jednotliv\w+ vygenerování\b` | odpověď, běh | nominalizace v množném čísle („mezi jednotlivými vygenerováními“). **Nehlásí** běžné „k vygenerování obrázku“ | ai-mode-a-eshopy 2026-08-26, zúženo ai-obrazky-v-ai-prehledech 2026-08-26 |
@@ -328,7 +329,7 @@
 | ⚠️ | `\bnative advertising\b` | nativní reklama | česká podoba je zavedená, anglická v české větě ne | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\beditorální\w*` | redakční | tvar mimo českou normu (kalk z „editorial“) | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\bcoverage\b` | mediální pokrytí, pokrytí tématu | anglické slovo v české větě. **Výjimka:** názvy funkcí („coverage report“ v GSC, „merchant listings“ u Google) — vlastní jména rozhraní | znacka-na-wikipedii-pro-ai 2026-08-25 |
-| ⚠️ | `\blisting\w*` | zápis v katalogu, výpis produktů | dvojí význam — v e-shopu výpis produktů, v katalozích zápis. **Výjimka:** „merchant listings“ = oficiální název typu výsledku u Google | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `(?<!merchant )\blisting\w*` | zápis v katalogu, výpis produktů | dvojí význam — v e-shopu výpis produktů, v katalozích zápis. **Nehlásí** „merchant listing(s)“ = oficiální název typu výsledku u Google | znacka-na-wikipedii-pro-ai 2026-08-25, zúženo shoptet-produktova-pole-google 2026-08-26 |
 | ⚠️ | `\bwireframe \w+ (šablon\w+|sad\w+)` | wireframy, šablony | anglické přívlastkové postavení („wireframe šablony“) je slepenec; česky se skloňuje | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ✅ | `\bPack\b` | — | krátký název produktu **AI SEO Wireframe Pack**, ustálený napříč webem (4 články) — vlastní jméno, ne anglicismus | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ✅ | `\btop\w*` | — | **Rozhodnutí uživatele 26. 8. 2026:** „top“ je běžný výraz — „top 10“, „top zdroje“, „TOP stránky“. Dřívější ⚠️ pravidlo na „top stránky / top kategorie“ zrušeno | znacka-na-wikipedii-pro-ai 2026-08-25, rozšířeno 2026-08-26 |
