@@ -48,6 +48,7 @@ def load_rules(path):
 
 def mask(line):
     line = INLINE_CODE.sub(lambda m: ' ' * len(m.group(0)), line)
+    line = LINK_LABEL.sub(lambda m: ' ' * len(m.group(0)) if _je_anglicka(m.group(1), 2) else m.group(0), line)
     line = URL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSX.sub(lambda m: ' ' * len(m.group(0)), line)   # nazvy komponent nejsou text pro ctenare
     line = HTMLVAL.sub(lambda m: ' ' * len(m.group(0)), line)
@@ -61,8 +62,10 @@ def mask(line):
 
 # citace v anglictine uvnitr ceskych uvozovek — doklad, ne styl (§ 8 slovniku)
 CITACE_EN = re.compile(r'„[^„“\n]{15,400}“')
-def _je_anglicka(txt):
-    if len(txt.split()) < 4:
+# anglicky nazev zdroje jako popisek odkazu: [Title of the source](https://…) — doklad, ne styl
+LINK_LABEL = re.compile(r'\[([^\]\n]{8,200})\]\(https?://\S+?\)(?=[\s.,;·)]|$)')
+def _je_anglicka(txt, min_slov=4):
+    if len(txt.split()) < min_slov:
         return False
     return not re.search(r'[ěščřžýáíéúůňťďó]', txt, re.I)
 

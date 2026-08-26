@@ -1,0 +1,138 @@
+---
+title: "Konec ChatGPT Atlasu: co to znamená pro weby"
+seoTitle: "Konec ChatGPT Atlasu (2026): čím ho OpenAI nahradil"
+description: "OpenAI vypnul prohlížeč ChatGPT Atlas 9. 8. 2026 po necelých deseti měsících. Co ho nahradilo, co zbylo z konkurence a co to mění pro weby."
+answer: "ChatGPT Atlas byl samostatný prohlížeč OpenAI s ChatGPT uvnitř. Podle zpravodajství oznámila OpenAI jeho konec 9. 7. 2026 a 9. 8. 2026 přestal fungovat, necelých deset měsíců po spuštění. Agentní funkce nezmizely — přesunuly se do rozšíření ChatGPT pro Chrome a do režimu prohlížení v desktopové aplikaci. Pro weby se tím v běžné analytice prakticky nic nemění."
+slug: "konec-chatgpt-atlas"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-08-26"
+updated: "2026-08-26"
+variant: "rich"
+keywords:
+  - "chatgpt atlas"
+  - "konec chatgpt atlas"
+  - "chatgpt atlas končí"
+  - "ai prohlížeč"
+  - "rozšíření chatgpt pro chrome"
+stats:
+  - value: "9. 8. 2026"
+    label: "den, kdy ChatGPT Atlas přestal fungovat"
+  - value: "necelých 10"
+    label: "měsíců fungování — od spuštění v říjnu 2025 do vypnutí 9. 8. 2026"
+  - value: "2"
+    label: "produkty, do kterých se agentní funkce přesunuly: rozšíření pro Chrome a desktopová aplikace"
+faq:
+  - q: "Kdy přesně ChatGPT Atlas skončil?"
+    a: "OpenAI oznámil konec 9. 7. 2026 a prohlížeč přestal fungovat 9. 8. 2026. Od spuštění v říjnu 2025 to bylo necelých deset měsíců."
+  - q: "Proč OpenAI Atlas vypnul?"
+    a: "Podle zpravodajství šlo o součást širšího omezení vedlejších projektů. Samostatný prohlížeč se neprosadil proti Chromu a agentní funkce dávají smysl i bez vlastního prohlížeče."
+  - q: "Čím OpenAI Atlas nahradil?"
+    a: "Dvěma věcmi: rozšířením ChatGPT pro Chrome, které čte kontext otevřené stránky a umí z ní spustit delší úkol, a režimem prohlížení v desktopové aplikaci ChatGPT s víc kartami, stahováním a přihlašováním k účtům."
+  - q: "Znamená to konec AI prohlížečů?"
+    a: "Ne. Comet od Perplexity funguje dál a do stejné mezery míří i Edge s Copilotem. Skončil jeden produkt, ne celá kategorie."
+  - q: "Mění konec Atlasu něco na měření návštěvnosti?"
+    a: "Pro většinu webů prakticky nic. Atlas se podle dostupných testů hlásil user-agentem jako Chrome, takže v běžné analytice pravděpodobně nebyl samostatně rozlišitelný a jeho vypnutí v datech nejspíš nepoznáte."
+  - q: "Musím kvůli tomu měnit robots.txt?"
+    a: "Ne. Robots.txt míří na roboty, kteří web procházejí sami. Agentní návštěva je vyvolaná uživatelem a k 26. 8. 2026 neměl Atlas ani uvedení nástupci veřejně popsaný vlastní řídicí token."
+  - q: "Co dělat, když jsme web „připravovali na Atlas“?"
+    a: "Zkontrolujte, co z těch úprav dává smysl bez ohledu na produkt: čitelný obsah bez JavaScriptu, konzistentní údaje o firmě a měřitelné vlastní kanály. Zbytek byl vázaný na jeden nástroj, který za deset měsíců zmizel."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Prohlížeč skončil, agenti zůstali
+
+**Podle zpravodajství oznámila OpenAI 9. 7. 2026 konec samostatného prohlížeče ChatGPT Atlas a 9. 8. 2026 přestal fungovat — necelých deset měsíců po spuštění.** Agentní funkce nezmizely — přesunuly se do rozšíření ChatGPT pro Chrome a do režimu prohlížení v desktopové aplikaci. Pro weby se tím v běžné analytice prakticky nic nemění.
+
+Na podzim 2025 se psalo, že AI prohlížeče změní pravidla webu. V srpnu 2026 jeden z nich skončil. Stojí za to projít, co se stalo, protože z toho plyne užitečnější poučení než z většiny tehdejších předpovědí.
+
+## Co se stalo a v jakém pořadí
+
+<Stepper
+  steps={[
+    { title: "Říjen 2025 — spuštění", desc: "OpenAI uvádí Atlas jako samostatný prohlížeč s ChatGPT uvnitř. Dostupný je pro macOS." },
+    { title: "9. 7. 2026 — oznámení konce", desc: "OpenAI oznamuje, že samostatný prohlížeč dál nepovede a funkce přesune jinam." },
+    { title: "9. 8. 2026 — vypnutí", desc: "Atlas přestává fungovat, necelých deset měsíců po spuštění." },
+    { title: "Po vypnutí — přesun funkcí", desc: "Agentní úkoly na webu pokračují v rozšíření ChatGPT pro Chrome a v desktopové aplikaci ChatGPT." },
+  ]}
+/>
+
+## Proč samostatný prohlížeč nevydržel
+
+Zpravodajství uvádí dva důvody a ani jeden není překvapivý.
+
+První je strategický: OpenAI omezoval vedlejší projekty a Atlas mezi ně spadl. Druhý je tržní — samostatný prohlížeč musí přesvědčit člověka, aby změnil něco, co používá každý den. Chrome má dlouhodobě dominantní pozici a Atlas na tom za deset měsíců nic nezměnil.
+
+<Insight tone="accent" label="Co si z toho odnést o produktech, ne o AI">
+  Agentní funkce se ukázaly jako **vlastnost, ne produkt**. Když stejnou věc umí rozšíření do prohlížeče, který lidé už mají, samostatná aplikace ztrácí důvod existence. Přesně tohle OpenAI udělal.
+</Insight>
+
+## Čím ho OpenAI nahradil
+
+<CompareTable
+  leftLabel="Rozšíření ChatGPT pro Chrome"
+  rightLabel="Desktopová aplikace ChatGPT"
+  rows={[
+    { icon: "📄", label: "Práce se stránkou", left: "Čte kontext otevřené stránky, odpovídá na otázky o ní, shrnuje", right: "Vlastní režim prohlížení uvnitř aplikace" },
+    { icon: "🧩", label: "Kde běží", left: "V prohlížeči, který už používáte", right: "V aplikaci ChatGPT, mimo váš běžný prohlížeč" },
+    { icon: "🛠️", label: "Co přibylo", left: "Spuštění delšího úkolu přímo ze stránky", right: "Víc karet, stahování souborů, přihlašování k účtům" },
+    { icon: "🤖", label: "Agentní úkoly", left: "Předá je dál asistentovi", right: "Zvládne je i ve vzdáleném prohlížeči v cloudu" },
+  ]}
+/>
+
+Popis funkcí vychází ze zpravodajství k oznámení a z nápovědy OpenAI, stav k 26. 8. 2026. Podle dostupných popisů je **agentní režim dostupný jen v placených účtech** (Plus, Pro, Business). To ale pochází z druhotných zdrojů, ne z primární dokumentace — berte to jako orientační informaci a ověřte si aktuální stav u svého účtu.
+
+## Co zbylo z konkurence
+
+Konec Atlasu neznamená konec kategorie. **Comet od Perplexity** podle dostupných informací funguje dál a od října 2025 je otevřený i bez původního placeného omezení. Do stejné mezery míří i **Edge s Copilotem**. Mění se tedy jen jméno na dveřích, ne to, co za nimi je.
+
+## Co to mění pro weby: prakticky nic
+
+Tady je pointa, kvůli které tenhle článek stojí za čtení, i když Atlas nikdy nepoužijete.
+
+<MistakeGrid>
+  <Mistake num="01" title="Čekat, že po Atlasu bude v datech klid">
+    Atlas se podle dostupných testů hlásil user-agentem **jako Chrome**. V běžné analytice proto pravděpodobně neuvidíte samostatný řádek pro Atlas — a jeho vypnutí tak v datech nejspíš nepoznáte.
+  </Mistake>
+  <Mistake num="02" title="Řešit to v robots.txt">
+    Robots.txt míří na roboty, kteří procházejí web sami. Návštěva vyvolaná uživatelem v agentním režimu pod něj nespadá a k 26. 8. 2026 neměly tyhle nástroje veřejně popsaný samostatný identifikátor pro pravidla v robots.txt. Rozebíráme to v článku o [robotech vyvolaných uživatelem](/blog/roboti-vyvolani-uzivatelem/) a v textu o [ověřování AI robotů](/blog/overovani-ai-robotu/).
+  </Mistake>
+  <Mistake num="03" title="Vyhodit všechno, co jste kvůli AI prohlížečům udělali">
+    Většina těch úprav — čitelný obsah bez JavaScriptu, konzistentní údaje, přehledná struktura — nebyla nikdy vázaná na Atlas. Zůstává v platnosti bez ohledu na to, který produkt zrovna žije.
+  </Mistake>
+  <Mistake num="04" title="Připravovat web na konkrétní nástroj">
+    Deset měsíců je krátká doba na to, aby se vyplatilo psát pravidla pro jeden prohlížeč. Rady „připravte web na Atlas“ zestárly rychleji, než stačily zabrat.
+  </Mistake>
+</MistakeGrid>
+
+## Co dělat místo přípravy na jeden produkt
+
+<Stepper
+  tone="geo"
+  steps={[
+    { title: "Ověřte, že se obsah načte bez JavaScriptu", desc: "Agentní nástroje i roboti čtou stránku strojově. Co je dostupné jen po spuštění skriptu, nemusí být vidět." },
+    { title: "Držte konzistentní údaje o firmě", desc: "Název, adresa, ceny a kontakty stejně na webu, v profilech i ve strukturovaných datech." },
+    { title: "Měřte to, co změřit jde", desc: "Návštěvy z odkazů v AI nástrojích v analytice vidíte; agentní kroky uvnitř prohlížeče ne. Nestavte rozhodnutí na číslech, která neexistují." },
+    { title: "Sledujte chování, ne jména produktů", desc: "Prohlížeče se mění každý rok. To, co se z nich odehrává na vašem webu, zůstává stejné." },
+  ]}
+/>
+
+## Shrnutí
+
+- **ChatGPT Atlas skončil 9. 8. 2026**, oznámení přišlo měsíc předtím. Fungoval necelých deset měsíců.
+- **Agentní funkce se přesunuly** do rozšíření ChatGPT pro Chrome a do desktopové aplikace ChatGPT.
+- **Kategorie AI prohlížečů žije dál** — Comet od Perplexity, Edge s Copilotem.
+- **Pro weby se prakticky nic nemění.** Atlas nebyl v datech vidět, robots.txt se ho netýkal a úpravy, které dávaly smysl, dávají smysl dál.
+
+Mechaniku AI prohlížečů — proč je robots.txt neoddělí, co dělají s analytikou a kde vzniká riziko u reklamy — rozebírá podrobněji článek [AI prohlížeče: co dělají s vaším webem](/blog/ai-prohlizece-atlas-comet/). Na agentní nakupování se dívá [AI nákupní agenti](/blog/ai-nakupni-agenti/).
+
+**Chcete vědět, jestli váš web obstojí, když ho čte stroj — ať už z prohlížeče, nebo z AI odpovědi?** [AI SEO audit za 3 600 Kč](/audit/) projde dostupnost obsahu, strukturovaná data i viditelnost v AI nástrojích a dá vám plán priorit. Kdo si chce základ projít sám, začne [návodem zdarma](/navod-zdarma/).
+
+*Zdroje: [OpenAI is shutting down Atlas, but its AI browser ambitions are still growing](https://techcrunch.com/2026/07/09/openai-is-shutting-down-atlas-but-its-ai-browser-ambitions-are-still-growing/), TechCrunch, 9. 7. 2026 · [Evolving Atlas into ChatGPT for browser-based agentic work](https://help.openai.com/en/articles/20001371-evolving-atlas-into-chatgpt-for-browser-based-agentic-work), nápověda OpenAI · [ChatGPT Atlas ends on August 9](https://www.notebookcheck.net/ChatGPT-Atlas-ends-on-August-9-Here-s-how-to-save-your-data.1358764.0.html), Notebookcheck · [OpenAI's ChatGPT Atlas Browser Is Shutting Down](https://www.macrumors.com/2026/07/10/openais-chatgpt-atlas-browser-shutting-down/), MacRumors, 10. 7. 2026 · [Comet (browser)](https://en.wikipedia.org/wiki/Comet_(browser)), Wikipedia. Údaj o vázanosti agentního režimu na placené účty a o otevření Cometu pochází z druhotných zdrojů. Stav k 26. 8. 2026.*
