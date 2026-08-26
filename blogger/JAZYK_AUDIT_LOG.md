@@ -137,6 +137,14 @@
 | 137 | 2026-08-26 | `ai-mode-jako-vychozi-rezim` | 2026-08-15 | v54 | — | 0 | 0 | **0,0** | 0 | — |
 | 138 | 2026-08-26 | `delsi-dotazy-v-ai-mode` | 2026-08-15 | v54 | — | 0 | 1 | **0,0** | 0 | — |
 | 139 | 2026-08-26 | `agentni-rezervace-v-ai-mode` | 2026-08-17 | v54 | 1 300 | 0 | 5 | **0,0** | 3 | — |
+| 140 | 2026-08-26 | `jak-casto-se-zobrazuje-ai-prehled` | 2026-08-17 | v55 | — | 0 | 1 | **0,0** | 0 | — |
+| 141 | 2026-08-26 | `kdyz-si-ai-mode-neni-jisty` | 2026-08-17 | v55 | — | 0 | 2 | **0,0** | 1 | +1 |
+| 142 | 2026-08-26 | `typy-dotazu-v-ai-mode` | 2026-08-17 | v55 | — | 0 | 0 | **0,0** | 0 | — |
+| 143 | 2026-08-26 | `propojene-aplikace-v-ai-mode` | 2026-08-18 | v55 | — | 0 | 0 | **0,0** | 0 | — |
+| 144 | 2026-08-26 | `ask-maps-odpovedi-v-mapach` | 2026-08-19 | v55 | — | 0 | 0 | **0,0** | 0 | — |
+| 145 | 2026-08-26 | `jak-overit-dostupnost-ai-funkce` | 2026-08-20 | v55 | — | 0 | 0 | **0,0** | 0 | — |
+| 146 | 2026-08-26 | `podil-seznamu-v-ceskem-vyhledavani` | 2026-08-23 | v55 | — | 0 | 1 | **0,0** | 0 | — |
+| 147 | 2026-08-26 | `videoobject-strukturovana-data` | 2026-07-17 | v55 | — | 0 | 1 | **0,0** | 2 | +1 |
 
 ## Poznámky k jednotlivým článkům
 
@@ -915,6 +923,37 @@ Dávka technických článků o obrázcích, metadatech a robotech. **Osm z šes
 **Zásahy:** 28 rovných uvozovek (nejvíc `sest-kontrol-pred-zaverem` a `miliarda-uzivatelu-ai-mode` — články plné citací a uvozených tvrzení) · „**Fix:** přečíst kódování“ → „**Oprava:** přečíst kódování“ · „předá **odkaz k dokončení**“ → „předá **odkaz, přes který rezervaci dokončíte**“ · „**Vrátí** vybraný seznam“ → „**Nabídne** vybraný seznam“ · „Z popsaného mechanismu **se dá jedna věc vyvodit**“ → „**plyne jedna věc**“.
 
 **Tři články byly úplně čisté** (`kodovani-stranky-a-stroje`, `ai-mode-jako-vychozi-rezim`, `delsi-dotazy-v-ai-mode`) — nejnovější texty, psané už v době, kdy audit běžel.
+
+
+### 140–147 · poslední dávka (2026-08-26) — **korpus hotový**
+
+Osm nejnovějších článků prošlo mechanickou kontrolou **bez jediného nálezu**. LLM našel čtyři věci, ze kterých obstály dvě:
+
+| Bylo | Je | Proč |
+|---|---|---|
+| „co **v videu** zaznělo“ | „co **ve videu** zaznělo“ | chybějící vokalizace předložky — **skutečná gramatická chyba** |
+| „udělat **cílicí** strategii“ | „udělat **cílenou** strategii“ | mechanicky odvozené příčestí |
+
+**Ponecháno:** „citovatelné číslo“, „klikatelná jako odkaz“, „česká měna pro návštěvnost“ (zavedený termín mediálního výzkumu), „na neověřené ploše“ (✅ z běhu 125).
+
+**Nové pravidlo odhalilo starší chybu:** `\bv videu\b` našlo tentýž překlep **dvakrát v `youtube-pro-ai-viditelnost`** (běh 61, tehdy prošel čistě, protože pravidlo neexistovalo). Opraveno.
+
+**Doplněno chybějící `published`:** `videoobject-strukturovana-data` nemělo datum prvního publikování (schema má fallback na `updated`, takže se nic nerozbilo, ale řazení nebylo deterministické). Doplněno `2026-07-17` — ověřeno proti datu přidání souboru do gitu.
+
+---
+
+## Souhrn celého auditu (147/147, 23.–26. 8. 2026)
+
+| Metrika | Hodnota |
+|---|---|
+| Auditovaných článků | **147 / 147** |
+| Slovník | v1 → **v55**, přes 260 pravidel ve třech úrovních (⛔ / ⚠️ / ✅) |
+| Hustota nálezů | první desítka **12,4** na 1 000 slov → poslední desítka **0,0** |
+| Nejčastější vada | česká uvozovka zavřená rovnou (`„…"`) — ve **112 článcích** |
+| Nejrozsáhlejší jednotlivý kalk | „povrch“ jako překlad *surface* — **57 výskytů ve 14 článcích** |
+| Korekce od uživatele | 8 (industry-standard, research, separátní, unikátní/dohledaný, obsahová strategie, cílová skupina/figurovat, benefit/top) |
+| Vlastní chyby, které jsem musel opravit | rozbitý build 2×, překlep při náhradě 1×, špatně zvolený termín 1× (vyvolaní → spuštění → zpět) |
+| Nálezy mimo jazyk | prázdné popisy kroků v 41 článcích (Stepper), špatně psaná značka ve 3 článcích, chybějící `published` v 1 |
 
 ---
 
