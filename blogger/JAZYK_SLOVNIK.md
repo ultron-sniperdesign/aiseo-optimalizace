@@ -276,6 +276,7 @@
 | ✅ | `\bmonitoring\w*` | — | v češtině zdomácnělé (monitoring médií, monitoring provozu); ne kalk | test-viditelnosti-v-ai 2026-08-25 |
 | ⚠️ | `\b(základ|obsah|SEO|struktura) plus \w` | a k tomu, doplněné o | telegrafické „plus“ místo spojky je anglický styl; česky se doplňuje | jak-ai-cituje-zdroje 2026-08-25 |
 | ⛔ | `(?<!CI/)\b\w+ pipeline\b` | řetězec, proces | anglické jádro v českém sousloví („publikační pipeline“, „Node pipeline“). **Nehlásí** „CI/CD pipeline“ — zavedený termín vývojářů | jak-poznat-ai-obrazek 2026-08-26 |
+| ⚠️ | `\bgenerativní AI funkc\w+` | funkce s generativní AI | anglický slovosled přívlastku; česká Search Console i web používají „funkce s generativní AI“ | co-vypne-ktery-opt-out 2026-08-26 |
 | ⚠️ | `\bvyvolan\w+ uživatelem\b` | spuštěný uživatelem | doslovný převod „user-triggered“ | overovani-ai-robotu 2026-08-26 |
 | ⚠️ | `\bsedí na (zveřejněn|publikovan)\w+ rozsah\w*` | spadá do rozsahu | rozbitá vazba | overovani-ai-robotu 2026-08-26 |
 | ⚠️ | `\bzodpovídá \w*otázk\w+` | odpovídá na otázku | chybná valence slovesa | platform-properties-search-console 2026-08-26 |
