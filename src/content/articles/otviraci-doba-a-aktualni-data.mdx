@@ -1,0 +1,170 @@
+---
+title: "Otevírací doba v AI odpovědi: proč se zobrazuje starý údaj"
+seoTitle: "Otevírací doba a aktuální data firmy v AI (2026)"
+description: "Otevírací doba a aktuální data firmy žijí na webu, v mapách i v katalogu. Jak je sjednotit a ověřit, co o vás systémy skutečně říkají."
+answer: "Údaj o otevírací době vaší firmy existuje na několika místech zároveň: na webu, ve strukturovaných datech, ve firemním profilu na Googlu, v katalozích a v mapách. Když se hodnoty rozejdou, systém použije některou z nich a vy nevíte, kterou. Řešením je jeden zdroj pravdy, svátky zadané předem a pravidelná kontrola."
+slug: "otviraci-doba-a-aktualni-data"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "duveryhodnost"
+published: "2026-08-29"
+updated: "2026-08-29"
+variant: "rich"
+keywords:
+  - "otevírací doba ai"
+  - "otevírací doba strukturovaná data"
+  - "openingHoursSpecification"
+  - "špatná otevírací doba google"
+  - "aktuální údaje o firmě ai"
+stats:
+  - value: "6"
+    label: "typických míst, kde se otevírací doba o firmě může objevit zároveň"
+  - value: "2"
+    label: "vlastnosti ve strukturovaných datech: běžná doba a výjimka na svátky"
+  - value: "0"
+    label: "garantovaných lhůt, za jak dlouho se změna promítne do AI odpovědi"
+faq:
+  - q: "Proč AI ukazuje starou otevírací dobu?"
+    a: "Protože údaj čte z některého ze zdrojů, které o vaší firmě existují — z webu, firemního profilu na Googlu, katalogu nebo map. Když se hodnoty liší, systém použije jednu z nich a kritéria výběru veřejně popsaná nejsou."
+  - q: "Kde všude mám otevírací dobu opravit?"
+    a: "Na webu (text i strukturovaná data), ve firemním profilu na Googlu, v katalozích typu Firmy.cz, v mapách, na sociálních sítích a v rezervačních systémech, pokud je používáte. Stačí jedno zapomenuté místo a rozpor je zpátky."
+  - q: "Jak se ve strukturovaných datech zapisují svátky?"
+    a: "Přes výjimku, která má pro dané datum přednost před běžnou dobou: uvede se datum platnosti a časy. U zavřeného dne se v implementačních návodech obvykle uvádí otevírací i zavírací čas 00:00, výsledek je ale vhodné ověřit v konkrétním systému."
+  - q: "Zaručí strukturovaná data správný údaj v AI odpovědi?"
+    a: "Nezaručí. Jsou to strojově čitelná data, která systému usnadní práci, ale výběr zdroje neřídíte. Snižujete tím pravděpodobnost chyby, ne riziko na nulu."
+  - q: "Za jak dlouho se změna projeví?"
+    a: "Jednotná lhůta, na kterou by se dalo spolehnout, veřejně garantovaná není. Počítejte s prodlevou a nespoléhejte na to, že změna zadaná den předem bude v odpovědích včas."
+  - q: "Jak zjistím, co o mé firmě systémy říkají?"
+    a: "Zeptejte se jich. Vyzkoušejte dotaz na otevírací dobu v AI nástroji, v mapách i ve vyhledávání, opakovaně a s odstupem. Kontrola dotazem zvenčí je nejpraktičtější způsob, jak zjistit, co systém skutečně odpovídá."
+howto:
+  name: "Jak sjednotit otevírací dobu napříč zdroji"
+  steps:
+    - name: "Určete jeden zdroj pravdy"
+      text: "Vyberte místo, které platí — obvykle web nebo interní systém. Všechno ostatní se z něj přepisuje."
+    - name: "Sepište místa, kde údaj žije"
+      text: "Web, strukturovaná data, firemní profil na Googlu, katalogy, mapy a sociální sítě, rezervační systém."
+    - name: "Aktualizujte odshora dolů"
+      text: "Nejdřív zdroj pravdy, pak firemní profil, katalogy a mapy. Zapište si datum u každého místa."
+    - name: "Svátky zadejte předem"
+      text: "Výjimky na svátky a dovolenou nastavte s předstihem, ne v den, kdy platí."
+    - name: "Ověřte dotazem"
+      text: "Zeptejte se na otevírací dobu v AI nástroji, v mapách i ve vyhledávání. Opakujte s odstupem."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Otevírací doba a aktuální data: jeden údaj na více místech
+
+**Údaj o otevírací době vaší firmy existuje na několika místech zároveň: na webu, ve strukturovaných datech, ve firemním profilu na Googlu, v katalozích a v mapách.** Když se hodnoty rozejdou, systém použije některou z nich a vy nevíte, kterou. Řešením je jeden zdroj pravdy, svátky zadané předem a pravidelná kontrola.
+
+Je to nenápadná chyba s hlasitým dopadem. Zákazník se zeptá asistenta, dostane starou dobu, přijede k zavřeným dveřím — a viní vás, ne systém.
+
+## Kde všude ten údaj žije
+
+<Checklist title="Místa, na která se zapomíná" items={[
+  { title: "Text na webu", desc: "Patička, kontaktní stránka, stránka pobočky. I na jednom webu se hodnoty mohou lišit." },
+  { title: "Strukturovaná data", desc: "Strojově čitelný zápis v kódu stránky. Když ho nikdo neaktualizuje, žije si vlastním životem." },
+  { title: "Firemní profil na Googlu", desc: "V administraci vedený jako Google Business Profile. U místních dotazů bývá velmi viditelný zdroj." },
+  { title: "Katalogy", desc: "Firmy.cz a oborové katalogy. Co v zápisu zkontrolovat, rozebírá samostatný článek níže." },
+  { title: "Mapy a sociální sítě", desc: "Mapy.cz, Facebook, Instagram. Údaj tam může snadno zastarat, protože se po založení profilu nemusí pravidelně kontrolovat." },
+  { title: "Rezervační a objednávkové systémy", desc: "Když přes ně zákazník objednává, mají vlastní kalendář otevírací doby." },
+]} />
+
+## Proč si systém vybere zrovna ten špatný
+
+Tady je jádro problému: **výběr zdroje neřídíte.** Když se hodnoty liší, rozhoduje se podle kritérií, která provozovatelé nezveřejňují — může hrát roli stáří údaje, důvěryhodnost zdroje i to, odkud systém data čerpá pro daný typ dotazu.
+
+<Insight tone="warn" label="Co z toho plyne prakticky">
+  Nemá smysl hádat, který zdroj „vyhraje“. Smysl má postarat se, aby **žádný zdroj neříkal něco jiného** — pak je jedno, který si systém vybere.
+</Insight>
+
+## Postup, který to udrží v pořádku
+
+<Stepper
+  steps={[
+    { title: "Určete jeden zdroj pravdy", desc: "Obvykle web nebo interní systém. Všechno ostatní se z něj přepisuje, ne naopak." },
+    { title: "Sepište všechna místa", desc: "Udělejte si seznam s odkazy a přístupy. Bez seznamu se na některé místo snadno zapomene." },
+    { title: "Aktualizujte odshora dolů", desc: "Nejdřív zdroj pravdy, pak profily a katalogy. U každého si zapište datum změny." },
+    { title: "Svátky zadejte předem", desc: "Výjimky nastavte s předstihem. Změna zadaná v den, kdy platí, se do odpovědí nemusí stihnout promítnout." },
+    { title: "Ověřte dotazem, ne pohledem do administrace", desc: "Zeptejte se na otevírací dobu v AI nástroji, v mapách i ve vyhledávání — a opakovaně." },
+  ]}
+/>
+
+## Strukturovaná data: běžná doba a výjimka
+
+Pro přesnější strojově čitelný zápis se u místních firem používá `openingHoursSpecification`: objekt s dny a časy, ne jen volná věta v textu stránky. Google ho ve své dokumentaci k místním firmám doporučuje — má `dayOfWeek`, `opens` a `closes` a zvládne i sezonní platnost přes `validFrom` a `validThrough`.
+
+Pro svátky a dočasné změny slouží samostatná výjimka `specialOpeningHoursSpecification`, která má pro uvedené datum **přednost** před běžnou dobou. Zavřený den se v implementačních návodech obvykle zapisuje jako otevírací i zavírací čas `00:00`; podpora se ale mezi systémy liší, takže výsledek je potřeba ověřit.
+
+Níže je zjednodušený fragment, ne kompletní blok strukturovaných dat — patří dovnitř zápisu firmy.
+
+```json
+"openingHoursSpecification": [{
+  "@type": "OpeningHoursSpecification",
+  "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+  "opens": "09:00",
+  "closes": "17:00"
+}],
+"specialOpeningHoursSpecification": [{
+  "@type": "OpeningHoursSpecification",
+  "opens": "00:00",
+  "closes": "00:00",
+  "validFrom": "2026-12-24",
+  "validThrough": "2026-12-26"
+}]
+```
+
+<Insight tone="aeo" label="Co strukturovaná data udělají a co ne">
+  Usnadní strojům čtení aktuálního údaje a mohou snížit riziko, že systém sáhne po méně přesném nebo starším zápisu. **Nezaručí** ale, že se v odpovědi objeví právě váš údaj — kritéria výběru zdroje nejsou veřejně popsaná do té míry, aby se na ně dalo spolehnout. Je to signál, ne přepínač.
+</Insight>
+
+<Insight tone="accent" label="Platí i pro ostatní údaje">
+  Stejný postup použijte i pro adresu, telefon, adresu webu, názvy poboček, nabízené služby a dočasná uzavření. Otevírací doba je jen nejviditelnější příklad, protože se na ní chyba pozná okamžitě — u dveří.
+</Insight>
+
+## Jak si ověřit, co o vás systémy říkají
+
+Kontrola v administraci ukazuje, co jste zadali. Ne to, co systém odpovídá. Zeptejte se přímo:
+
+- v AI nástroji (dotaz ve tvaru „kdy má otevřeno“ + název vaší firmy a města),
+- ve vyhledávání a v mapách,
+- v katalogu, kde máte profil.
+
+Opakujte to s odstupem. U AI odpovědí se výsledek může měnit podle dotazu i času, takže jeden test nestačí — stejná logika jako u [proměnlivosti AI odpovědí](/blog/volatilita-ai-odpovedi/). U map a vyhledávání zase ověřujte, co vidí uživatel, ne co máte zadané v administraci.
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Opravit jen web">
+    Nejrychlejší cesta k rozporu. Profily a katalogy mohou držet starou hodnotu dlouho a u místních dotazů bývají viditelnější než web.
+  </Mistake>
+  <Mistake num="02" title="Zadat svátky na poslední chvíli">
+    Změna zadaná v den, kdy platí, se nemusí stihnout promítnout. Garantovaná lhůta neexistuje, takže předstih a následné ověření jsou nejbezpečnější postup.
+  </Mistake>
+  <Mistake num="03" title="Spoléhat na strukturovaná data jako na jistotu">
+    Pomáhají, ale výběr zdroje neřídí. Když firemní profil na Googlu říká něco jiného, rozpor trvá.
+  </Mistake>
+  <Mistake num="04" title="Kontrolovat pohledem do administrace">
+    Administrace ukazuje váš zápis, ne odpověď systému. Ověřuje se dotazem zvenčí.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Údaj žije na šesti typických místech.** Rozpor mezi nimi vznikne snadno — stačí jedno vynechané místo při aktualizaci.
+- **Výběr zdroje neřídíte** — kritéria zveřejněná nejsou. Řídíte jen to, aby se zdroje nerozcházely.
+- **Strukturovaná data mají dvě vrstvy:** běžnou dobu a výjimku na svátky, která má pro dané datum přednost.
+- **Ověřuje se dotazem zvenčí**, opakovaně, ne pohledem do administrace.
+
+Když už chyba v odpovědi je, postup na její opravu rozebírá článek o [chybné informaci o firmě v AI](/blog/chybna-informace-o-firme-v-ai/). Profil v českém katalogu řeší [Firmy.cz pro AI](/blog/firmy-cz-pro-ai/), širší kontext místní viditelnosti [Local SEO v Česku](/blog/local-seo-cesko-2026/) a identitu firmy ve strukturovaných datech [Organization schema](/blog/organization-schema-pro-znacku/).
+
+---
+
+**Chcete vědět, jestli se údaje o vaší firmě někde nerozcházejí?** [AI SEO audit za 3 600 Kč](/audit/) projde strukturovaná data, profily i viditelnost v AI nástrojích a dá plán priorit. Pokud chcete rovnou přestavět kontaktní stránku podle hotové předlohy, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) má návrh kontaktu i dalších typů stránek.
+
+*Zdroje: [Local Business (LocalBusiness) structured data](https://developers.google.com/search/docs/appearance/structured-data/local-business), Google Search Central, ověřeno 29. 8. 2026 · schema.org, vlastnosti `openingHoursSpecification` a `specialOpeningHoursSpecification`. Zápis zavřeno přes `00:00`–`00:00` vychází z implementačních přehledů, ne z primární dokumentace. Stav k 29. 8. 2026.*

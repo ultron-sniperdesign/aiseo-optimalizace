@@ -992,3 +992,21 @@ Audit vznikl až po `CONTENT_WORKFLOW.md`, takže nový článek jím procházel
 | `~/.claude/skills/cestina-audit/SKILL.md` | sekce **Kdy se pouští** — povinně u každého nového článku (BLOK C6), jinak na vyžádání |
 
 Při té příležitosti opraven název značky v kontextovém rámci pro auditora: „Sniperdesign“ → **„Sniper Design“**. Rámec se vkládá do každého auditního briefu, takže špatný tvar chodil do každého runu.
+
+---
+
+## C6 při psaní: `otviraci-doba-a-aktualni-data` (29. 8. 2026)
+
+První nový článek, který prošel C6 jako součástí runu, ne dodatečně.
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický (260 pravidel) | **0 nálezů**, 0,0 na 1 000 slov — poprvé čistý napoprvé |
+| LLM (gpt-5.4) | 2 nálezy |
+
+| Bylo | Je | Rozhodnutí |
+|---|---|---|
+| „kdy má otevřeno *název firmy*“ | „dotaz ve tvaru ‚kdy má otevřeno‘ + název vaší firmy a města“ | **přijato** — zástupný text vložený doprostřed dotazu nedává česky smysl |
+| „v mapách“ | „na mapách“ | **odmítnuto** — korpus webu má „v mapách“ 11×, „na mapách“ 1×; u mapové aplikace je „v mapách“ správně (náhrada se řídí tím, co web už používá) |
+
+Nové pravidlo do slovníku z toho nevzniklo: první nález je jednorázová formulace, ne opakující se kalk.
