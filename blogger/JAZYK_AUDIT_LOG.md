@@ -1010,3 +1010,42 @@ První nový článek, který prošel C6 jako součástí runu, ne dodatečně.
 | „v mapách“ | „na mapách“ | **odmítnuto** — korpus webu má „v mapách“ 11×, „na mapách“ 1×; u mapové aplikace je „v mapách“ správně (náhrada se řídí tím, co web už používá) |
 
 Nové pravidlo do slovníku z toho nevzniklo: první nález je jednorázová formulace, ne opakující se kalk.
+
+---
+
+## Závěrečný průchod driftu (29. 8. 2026)
+
+Plán z konce korpusového auditu: až bude korpus hotový, projet ho **znovu finálním slovníkem**. Články auditované na začátku (v4, v11) se totiž nikdy neviděly s pravidly, která přibyla později.
+
+| Metrika | Hodnota |
+|---|---|
+| Projeto článků | **152 / 152** |
+| Články s driftem | **19** |
+| Nejhorší | `jak-strukturovat-pillar-content` 10,8 · `caste-chyby-v-seo-2026-update` 10,1 · `aio-strategie` 7,5 na 1 000 slov |
+| Po opravě | **1 nález v celém korpusu** — dokumentovaný falešný poplach („v dnešní digitální éře“ jako záporný příklad v `geo-optimalizace`) |
+
+### Tři nové masky v checkeru
+
+Všechny tři vznikly z falešných poplachů, ne z vad:
+
+| Maska | Co maskuje | Odkud |
+|---|---|---|
+| `TZV` | výraz za „tzv.“ — „podíl zmínek, tzv. share of voice“ | `ai-seo-audit` |
+| `ORIGINAL_LC` | glosa malými písmeny v závorce — „podíl zmínek (share of voice)“; dosud se maskovala jen glosa s velkým počátečním písmenem | `ai-seo-nastroje` |
+| — | k tomu dvě výjimky přímo v pravidlech: `(?<!AI SEO )content` (cílová fráze a slug článku `ai-seo-content`) a `(?<!AEO )coverage` (vlastní metrika **AEO Coverage Score™**) | `ai-seo-content`, `aeo-optimalizace-v-praxi` |
+
+### Největší jednotlivá vada nebyla jazyková
+
+Drift odhalil, že web má **tři různé názvy pro jeden report v Search Console**:
+
+| Varianta | Kde | Výskytů |
+|---|---|---|
+| „Generativní AI funkce“ (hybrid, špatný slovosled) | 10 článků | 42 |
+| „Generative AI features“ (anglicky) | 5 článků | 21 |
+| „funkce s generativní AI“ (popis funkcí, ne název reportu) | 8 článků | 14 |
+
+Podle ověřené nápovědy (support.google.com/webmasters/answer/16984139?hl=cs, 29. 8. 2026) se report jmenuje **„Přehled výkonu v generativní AI“** (zobrazení Vyhledávání) a **„Přehled výkonu generativní AI (feed Objevit)“**; kolektivní označení funkcí je **„funkce s generativní AI“**. Ani jedna z variant na webu tedy nebyla správná — čtenář hledal v rozhraní report, který se tak nejmenuje.
+
+Sjednoceno na **77 míst v 18 článcích**. Anglický název zůstal jednou jako glosa v kanonickém článku `gsc-ai-segmenty-mereni` (v anglickém rozhraní se report jmenuje `Generative AI features`) a v doslovných citacích anglické dokumentace (`aeo-geo-je-porad-seo`, `co-vypne-ktery-opt-out`). Při té příležitosti sjednocena i zobrazení: „Search“ → **Vyhledávání**.
+
+**Poučení do dalších runů:** mechanická jazyková kontrola je zároveň levný detektor nekonzistentních názvů rozhraní. Hybridní slovosled („Generativní AI funkce“) byl jediný signál, že název nikdo neověřil proti nápovědě.

@@ -1,13 +1,13 @@
 ---
 title: "SEO audit: co kontrolovat 1× ročně a jak nálezy prioritizovat"
 description: "Strukturovaný SEO audit ve třech vrstvách. Co projít, jak prioritizovat podle typu webu a kdy audit dělat sami nebo s agenturou."
-answer: "SEO audit kontroluje tři vrstvy — technickou (crawl, indexovatelnost, Core Web Vitals, mobile, HTTPS, schema), on‑page (title/meta, H1–H6, interní prolinkování, image alt, canonical) a off‑page + reputační (backlink profil, anchor text, brand mentions, NAP, E‑E‑A‑T jako rámec důvěryhodnosti). Pořadí je praktická pomůcka, ne dogma — kritické technické problémy mají přednost, protože blokují indexaci. Výstup: desítky nálezů s prioritou P0/P1/P2 podle typu webu. Audit dělejte 1× ročně nebo po major redesignu."
+answer: "SEO audit kontroluje tři vrstvy — technickou (crawl, indexovatelnost, Core Web Vitals, mobile, HTTPS, schema), on‑page (title/meta, H1–H6, interní prolinkování, image alt, canonical) a off‑page + reputační (backlink profil, anchor text, zmínky o značce, NAP, E‑E‑A‑T jako rámec důvěryhodnosti). Pořadí je praktická pomůcka, ne dogma — kritické technické problémy mají přednost, protože blokují indexaci. Výstup: desítky nálezů s prioritou P0/P1/P2 podle typu webu. Audit dělejte 1× ročně nebo po major redesignu."
 slug: "seo-audit-co-kontrolovat"
 category: "tutorial"
 tags:
   - "audit-nastroje"
 published: "2026-05-02"
-updated: "2026-08-04"
+updated: "2026-08-29"
 variant: "rich"
 keywords:
   - "seo audit"
@@ -20,7 +20,7 @@ keywords:
   - "seo audit nástroje"
 faq:
   - q: "Co je SEO audit a co by měl obsahovat?"
-    a: "SEO audit je strukturovaná diagnostika tří vrstev: (1) technická — crawl chyby, indexovatelnost, sitemap, robots.txt, Core Web Vitals, mobile usability; (2) on‑page — title/meta, struktura H1–H6, interní prolinkování, image alty, canonical URL, strukturovaná data tam, kde mají SERP eligibility; (3) off‑page + reputační — backlink profil (kvalita, anchor text distribuce, toxické odkazy), brand mentions, autorské profily, transparentní informace o firmě. Výstupem je seznam priorit s odhadem dopadu a pracnosti. Audit dává smysl udělat 1× ročně nebo po major redesignu."
+    a: "SEO audit je strukturovaná diagnostika tří vrstev: (1) technická — crawl chyby, indexovatelnost, sitemap, robots.txt, Core Web Vitals, mobile usability; (2) on‑page — title/meta, struktura H1–H6, interní prolinkování, image alty, canonical URL, strukturovaná data tam, kde mají SERP eligibility; (3) off‑page + reputační — backlink profil (kvalita, anchor text distribuce, toxické odkazy), zmínky o značce, autorské profily, transparentní informace o firmě. Výstupem je seznam priorit s odhadem dopadu a pracnosti. Audit dává smysl udělat 1× ročně nebo po major redesignu."
   - q: "Jak často dělat SEO audit?"
     a: "Standardní rytmus: kompletní audit 1× ročně, mini‑audit (technická vrstva + Core Web Vitals) každý kvartál. Po major redesignu nebo migraci platformy okamžitě, ať odhalíte regresi do prvních pár týdnů. Pokud se o SEO průběžně stará agentura, refresh každých 6 měsíců."
   - q: "V jakém pořadí řešit nálezy z auditu?"
@@ -51,7 +51,7 @@ Strukturovaný audit pracuje se **třemi vrstvami** v doporučeném pořadí:
 
 1. **Technická** — crawl, indexovatelnost, Core Web Vitals, mobile, HTTPS, [strukturovaná data](/blog/strukturovana-data-pro-ai/) tam, kde dávají smysl
 2. **On‑page** — title/meta, H1–H6 struktura, interní prolinkování, image alt, canonical
-3. **Off‑page + reputační** — backlink profil, anchor text, [brand mentions](/blog/ai-brand-mentions/), NAP, [E‑E‑A‑T](/blog/e-e-a-t-pro-ai/) jako rámec důvěryhodnosti (ne jako přímý faktor hodnocení)
+3. **Off‑page + reputační** — backlink profil, anchor text, [zmínky o značce](/blog/ai-brand-mentions/), NAP, [E‑E‑A‑T](/blog/e-e-a-t-pro-ai/) jako rámec důvěryhodnosti (ne jako přímý faktor hodnocení)
 
 Pořadí má praktický důvod, ne magický: kritické technické problémy (5xx na klíčových URL, robots.txt blok, noindex tam, kde nemá být) mohou **omezit crawling nebo indexaci**, takže žádné title/meta tweaky pak nepomohou. Pokud ale technika nic neblokuje, mohou mít on‑page úpravy a obsahové opravy vyšší business dopad než drobné technické nedostatky.
 
@@ -78,9 +78,9 @@ Stejně tak backlinky nejsou ve vakuu: u málo konkurenčních dotazů a úzce z
 <Checklist tone="seo" title="3. Off-page + reputační vrstva" items={[
   { title: "Backlink profil", desc: "DR/UR vývoj v Ahrefs, podíl follow/nofollow, geografická distribuce, žádné zjevně manipulační nebo spamové zdroje odkazů (PBN, link farms, nerelevantní paid placements, sitewide spam)." },
   { title: "Anchor text distribuce", desc: "rozmanitá, ne z 80 % přesná shoda s klíčovým slovem — vypadá uměle." },
-  { title: "Brand mentions", desc: "sledovat v Google Alerts + nástroji jako Brand24; hledání značky v GSC je užitečný nepřímý ukazatel poptávky po značce a reputace, ne samostatný důkaz autority." },
+  { title: "Zmínky o značce", desc: "sledovat v Google Alerts + nástroji jako Brand24; hledání značky v GSC je užitečný nepřímý ukazatel poptávky po značce a reputace, ne samostatný důkaz autority." },
   { title: "NAP konzistence", desc: "pro local business v Seznam Firmy, GBP, dalších katalozích." },
-  { title: "E-E-A-T jako rámec", desc: "autorské profily tam, kde dávají smysl; jasné kontakty a informace o firmě; transparentní obchodní podmínky; citace zdrojů; konzistence informací napříč kanály. E‑E‑A‑T berte jako hodnoticí rámec ze Search Quality Rater Guidelines, který algoritmus odhaduje přes nepřímé signály — ne jako izolovaný faktor hodnocení, který se „doplní bio autora“." }
+  { title: "E-E-A-T jako rámec", desc: "autorské profily tam, kde dávají smysl; jasné kontakty a informace o firmě; transparentní obchodní podmínky; citace zdrojů; konzistence informací napříč kanály. E‑E‑A‑T berte jako hodnoticí rámec ze Search Quality Rater Guidelines, který algoritmus odhaduje přes nepřímé signály — ne jako izolovaný faktor hodnocení, který se „doplní medailonek autora“." }
 ]} />
 
 ## <strong>Výstup auditu</strong> — jak <span class="hl">prioritizovat</span>

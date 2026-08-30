@@ -1,14 +1,14 @@
 ---
 title: "Generativní AI v Discoveru: imprese neznámo čeho"
 description: "Search Console má zobrazení pro generativní AI v Discoveru. V nápovědě k němu ale neuvádí, které funkce to jsou — a dává o rozměr míň než u Vyhledávání."
-answer: "Search Console má samostatné zobrazení pro generativní AI funkce v Discoveru. Google v nápovědě k tomu reportu neuvádí, které funkce to jsou, takže dostanete počty impresí u něčeho, co tam není blíž popsané — a číslo se pak špatně interpretuje i vykazuje. Oproti zobrazení pro Vyhledávání navíc chybí rozpad podle zařízení. Podle novinářských zdrojů jde nejspíš o AI přepisování titulků, v ověřené nápovědě to ale Google s reportem nespojuje."
+answer: "Search Console má samostatné zobrazení Přehled výkonu generativní AI (feed Objevit). Google v nápovědě k tomu reportu neuvádí, které funkce to jsou, takže dostanete počty impresí u něčeho, co tam není blíž popsané — a číslo se pak špatně interpretuje i vykazuje. Oproti zobrazení pro Vyhledávání navíc chybí rozpad podle zařízení. Podle novinářských zdrojů jde nejspíš o AI přepisování titulků, v ověřené nápovědě to ale Google s reportem nespojuje."
 slug: "generativni-ai-v-discoveru"
 category: "analysis"
 tags:
   - "mereni"
   - "obsah"
 published: "2026-08-04"
-updated: "2026-08-04"
+updated: "2026-08-29"
 keywords:
   - "generativní ai v discoveru"
   - "google discover ai"
@@ -26,8 +26,8 @@ stats:
   - value: "1 000"
     label: "řádků je strop tabulky; co je pod ním, v exportu neuvidíte"
 faq:
-  - q: "Co jsou generativní AI funkce v Discoveru?"
-    a: "Google to na ověřené stránce nápovědy k tomu reportu neuvádí. U zobrazení pro Vyhledávání funkce vyjmenoval (AI Overviews a AI Mode), u Discoveru mluví jen obecně o generativních AI funkcích. O tom, co uživatel vidí, se dozvíte pouze to, že obsah se objeví jako běžná karta v Discoveru nebo vložený v karuselu."
+  - q: "Co jsou funkce s generativní AI v Discoveru?"
+    a: "Google to na ověřené stránce nápovědy k tomu reportu neuvádí. U zobrazení pro Vyhledávání funkce vyjmenoval (AI Overviews a AI Mode), u Discoveru mluví jen obecně o funkcích s generativní AI. O tom, co uživatel vidí, se dozvíte pouze to, že obsah se objeví jako běžná karta v Discoveru nebo vložený v karuselu."
   - q: "Co ten report ukazuje?"
     a: "Imprese s rozpadem podle stránek, zemí a data. Oproti zobrazení pro Vyhledávání chybí rozpad podle zařízení. Kliky, míru prokliku ani dotazy neukazuje ani jedno ze zobrazení."
   - q: "Přepisuje Google v Discoveru titulky?"
@@ -46,7 +46,7 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
-Report generativních AI funkcí v Search Console má dvě zobrazení. O reportu pro Vyhledávání se píše všude. To druhé — **Discover** — se obvykle odbude jednou větou, i v [našem vlastním článku o tom reportu](/blog/gsc-ai-segmenty-mereni/).
+Report Přehled výkonu v generativní AI má v Search Console dvě zobrazení. O reportu pro Vyhledávání se píše všude. To druhé — **Discover** — se obvykle odbude jednou větou, i v [našem vlastním článku o tom reportu](/blog/gsc-ai-segmenty-mereni/).
 
 Když jsem si ho ale otevřel pořádně, je v něm zajímavější věc než čísla.
 
@@ -54,7 +54,7 @@ Když jsem si ho ale otevřel pořádně, je v něm zajímavější věc než č
 
 U zobrazení pro Vyhledávání Google v nápovědě vyjmenuje, co do něj patří: **AI Overviews a AI Mode.** Víte tedy, co měříte.
 
-Na ověřené stránce nápovědy k zobrazení pro Discover **nic takového neuvádí.** Mluví o „generativních AI funkcích v Discoveru“ a tím to končí. Jediné, co se o podobě dozvíte, je, že se obsah objeví jako běžná karta v Discoveru nebo vložený v karuselu.
+Na ověřené stránce nápovědy k zobrazení pro Discover **nic takového neuvádí.** Mluví o „funkcích s generativní AI v Discoveru“ a tím to končí. Jediné, co se o podobě dozvíte, je, že se obsah objeví jako běžná karta v Discoveru nebo vložený v karuselu.
 
 <Insight tone="warn" icon="⚠" label="Co to prakticky znamená">
 Dostanete metriku něčeho, co v nápovědě k reportu není blíž popsané. Když číslo vyroste, nevíte, čeho přibylo — a když klesne, nevíte, co se ztratilo. **Bez pojmenování funkce je to obtížně interpretovatelné**, i kdyby to číslo bylo přesné.
@@ -99,7 +99,7 @@ To poslední pravidlo je zrádné hlavně proto, že se projeví až v tabulce �
 
 ## A teď to, co Google neřekl
 
-Nabízí se otázka, co ty „generativní AI funkce v Discoveru“ vlastně jsou. V ověřeném primárním zdroji odpověď není, takže je potřeba oddělit dvě roviny.
+Nabízí se otázka, co ty „funkce s generativní AI v Discoveru“ vlastně jsou. V ověřeném primárním zdroji odpověď není, takže je potřeba oddělit dvě roviny.
 
 <Insight tone="signal" icon="◆" label="Doložené versus pravděpodobné">
 **Doložené (ověřená nápověda Googlu):** report existuje, měří imprese, funkce v ní nepojmenovává.

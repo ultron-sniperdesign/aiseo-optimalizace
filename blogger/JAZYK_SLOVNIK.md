@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 56** · založeno 2026-08-23 · poslední změna 2026-08-26 (nové články A–C) · audituje skill `cestina-audit`
+> **Verze: 57** · založeno 2026-08-23 · poslední změna 2026-08-29 (závěrečný průchod driftu: 3 nové masky, 2 výjimky) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -29,7 +29,7 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `(?<!mixed )(?<!Helpful )\bcontent\b(?! (marketing|management|update|[Cc]redentials))(?!-(Type|Length|Encoding|Security))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)** a názvy HTTP hlaviček | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26 |
+| ⛔ | `(?<!mixed )(?<!Helpful )(?<!AI SEO )\bcontent\b(?! (marketing|management|update|[Cc]redentials))(?!-(Type|Length|Encoding|Security))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)**, názvy HTTP hlaviček a **„AI SEO content“ — cílová fráze a slug článku `ai-seo-content`, mění se jen se slugem** | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26, AI SEO content 2026-08-29 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
 | ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |
@@ -332,7 +332,7 @@
 | ⛔ | `\breviewer\w*` | posuzovatel, recenzent | anglicismus pro roli, působí jako interní slang | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\bnative advertising\b` | nativní reklama | česká podoba je zavedená, anglická v české větě ne | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `\beditorální\w*` | redakční | tvar mimo českou normu (kalk z „editorial“) | znacka-na-wikipedii-pro-ai 2026-08-25 |
-| ⚠️ | `\bcoverage\b` | mediální pokrytí, pokrytí tématu | anglické slovo v české větě. **Výjimka:** názvy funkcí („coverage report“ v GSC, „merchant listings“ u Google) — vlastní jména rozhraní | znacka-na-wikipedii-pro-ai 2026-08-25 |
+| ⚠️ | `(?<!AEO )(?<!AEO Answer )\bcoverage\b` | mediální pokrytí, pokrytí tématu | anglické slovo v české větě. **Výjimka:** vlastní název metriky **„AEO Coverage Score™“** (rámec webu, má vlastní sekci i klíčové slovo) a názvy funkcí („coverage report“ v GSC, „merchant listings“ u Google) — vlastní jména rozhraní | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ⚠️ | `(?<!merchant )\blisting\w*` | zápis v katalogu, výpis produktů | dvojí význam — v e-shopu výpis produktů, v katalozích zápis. **Nehlásí** „merchant listing(s)“ = oficiální název typu výsledku u Google | znacka-na-wikipedii-pro-ai 2026-08-25, zúženo shoptet-produktova-pole-google 2026-08-26 |
 | ⚠️ | `\bwireframe \w+ (šablon\w+|sad\w+)` | wireframy, šablony | anglické přívlastkové postavení („wireframe šablony“) je slepenec; česky se skloňuje | znacka-na-wikipedii-pro-ai 2026-08-25 |
 | ✅ | `\bPack\b` | — | krátký název produktu **AI SEO Wireframe Pack**, ustálený napříč webem (4 články) — vlastní jméno, ne anglicismus | znacka-na-wikipedii-pro-ai 2026-08-25 |

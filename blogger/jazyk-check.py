@@ -22,6 +22,8 @@ ICONVAL = re.compile(r'\b(icon|tone|variant|key|slug)\s*[:=]\s*"[^"]*"')   # tec
 # radek, ktery anglicky termin VYSVETLUJE, se neaudituje (clanek ho uvadi jako cizi slovo)
 ZKRATKA = re.compile(r'\b[A-Z][A-Za-z-]{1,6}\s*\([A-Z][^)]{3,60}\)')   # rozepsana zkratka: SEO (Search Engine Optimization)
 ORIGINAL = re.compile(r'\((?:v [A-Za-zěščřžýáíéúůň]+ )?[A-Z][A-Za-z][A-Za-z ]{2,40}\)')   # cesky termin s anglickym originalem v zavorce
+ORIGINAL_LC = re.compile(r'\(([a-z][a-z0-9 /-]{2,40})\)')   # glosa malymi pismeny: „podíl zmínek (share of voice)"
+TZV = re.compile(r'tzv\.\s+[^,.;:)\n]{2,40}')   # „…(podil zmineni, tzv. share of voice)" — termin za „tzv." je uvedeny originál, ne vada
 CITUJE = re.compile(r'v angličtin|anglicky|v zahraničí|pod názv|anglick(ý|ého|ém|é) (termín|název|výraz|verzi)|v originále|zkratk[ay] z angli')   # hodnoty technickych atributu
 
 def load_rules(path):
@@ -55,6 +57,8 @@ def mask(line):
     line = ICONVAL.sub(lambda m: ' ' * len(m.group(0)), line)
     line = ZKRATKA.sub(lambda m: ' ' * len(m.group(0)), line)
     line = ORIGINAL.sub(lambda m: ' ' * len(m.group(0)), line)
+    line = ORIGINAL_LC.sub(lambda m: ' ' * len(m.group(0)) if _je_anglicka(m.group(1), 2) else m.group(0), line)
+    line = TZV.sub(lambda m: ' ' * len(m.group(0)), line)
     line = JSXATTR.sub(lambda m: ' ' * len(m.group(0)), line)
     line = CITACE_EN.sub(lambda m: ' ' * len(m.group(0)) if _je_anglicka(m.group(0)) else m.group(0), line)
     return line

@@ -1,14 +1,14 @@
 ---
 title: "Bing ukazuje, jak si Copilot hledá podklad"
 description: "Bing má report o citacích v AI odpovědích a v něm fráze, kterými si AI v prostředí Microsoftu hledá podklad. Sám ale píše, že jde o vzorek."
-answer: "Bing Webmaster Tools má od února 2026 report AI Performance s citacemi v Copilotu a v AI shrnutích. Dává v něm grounding queries — fráze, kterými si AI vyhledává podkladový obsah. Report Generative AI features v Search Console dotazy neposkytuje. Microsoft ale sám uvádí, že data jsou jen vzorek celkové aktivity, takže z nich nejde počítat podíl a časový vývoj je jen orientační."
+answer: "Bing Webmaster Tools má od února 2026 report AI Performance s citacemi v Copilotu a v AI shrnutích. Dává v něm grounding queries — fráze, kterými si AI vyhledává podkladový obsah. Report Přehled výkonu v generativní AI v Search Console dotazy neposkytuje. Microsoft ale sám uvádí, že data jsou jen vzorek celkové aktivity, takže z nich nejde počítat podíl a časový vývoj je jen orientační."
 slug: "bing-ai-performance-report"
 category: "analysis"
 tags:
   - "mereni"
   - "ai-platformy"
 published: "2026-08-03"
-updated: "2026-08-03"
+updated: "2026-08-29"
 keywords:
   - "bing ai performance report"
   - "copilot citace měření"
@@ -46,7 +46,7 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
-O měření AI viditelnosti se v Česku píše skoro výhradně přes Google. Přitom **Microsoft spustil svůj report o čtyři měsíce dřív** — a dává v něm jednu věc, kterou v reportu Generative AI features v Search Console nenajdete.
+O měření AI viditelnosti se v Česku píše skoro výhradně přes Google. Přitom **Microsoft spustil svůj report o čtyři měsíce dřív** — a dává v něm jednu věc, kterou v reportu Přehled výkonu v generativní AI v Search Console nenajdete.
 
 Zároveň v jeho popisu stojí věta, kterou nikdo necituje a která mění, jak se ta čísla dají použít.
 
@@ -76,7 +76,7 @@ Tohle je nejzajímavější položka celého reportu a stojí za rozlišení.
 Klasické SEO pracuje s tím, co píšou lidé. Tady poprvé vidíte, **co si k tomu napíše stroj** — a ta formulace bývá jiná: delší, popisnější, často složená z několika dílčích otázek. Když se vaše stránky trefují do dotazů uživatelů, ale ne do těchhle frází, může to být jedno z vysvětlení, proč se citace neobjevují častěji.
 </Insight>
 
-V reportech Bingu a Googlu — tedy u dvou, které jsem ověřoval přímo u výrobců — jsou to **jediná data na úrovni dotazových frází**. Report Generative AI features v Search Console dotazy neposkytuje vůbec.
+V reportech Bingu a Googlu — tedy u dvou, které jsem ověřoval přímo u výrobců — jsou to **jediná data na úrovni dotazových frází**. Report Přehled výkonu v generativní AI v Search Console dotazy neposkytuje vůbec.
 
 <Insight tone="warn" icon="⚠" label="Ale platí to jen pro Microsoft">
 Microsoft popisuje své vlastní prostředí. **Nepřenášejte to na ChatGPT ani Perplexity** — jak si podklad hledají ony, veřejně doložené není. Že to dělají podobně, je pravděpodobné, ale je to domněnka.
@@ -112,7 +112,7 @@ Obojí mám ověřené přímo u výrobců. Tady je rozdíl přehledně.
 <CompareTable
   leftLabel="Bing AI Performance"
   leftTone="accent"
-  rightLabel="GSC Generative AI features"
+  rightLabel="GSC — Přehled výkonu v generativní AI"
   rightTone="aio"
   rows={[
     { icon: "▲", label: "Spuštěno", left: "10. 2. 2026", right: "3. 6. 2026" },

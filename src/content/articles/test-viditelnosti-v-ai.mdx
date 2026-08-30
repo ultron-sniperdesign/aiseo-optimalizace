@@ -8,7 +8,7 @@ tags:
   - "audit-nastroje"
   - "mereni"
 published: "2026-06-11"
-updated: "2026-08-11"
+updated: "2026-08-29"
 keywords:
   - "test ai viditelnost"
   - "jestli me cituje ai"
@@ -18,6 +18,7 @@ keywords:
   - "měření ai viditelnosti"
   - "ai performance report"
   - "generativní ai funkce"
+  - "přehled výkonu v generativní ai"
 variant: "rich"
 stats:
   - value: "15–20"
@@ -27,12 +28,12 @@ stats:
   - value: "~1 hod."
     label: "kolik zabere základní ruční test napříč hlavními AI platformami"
   - value: "2"
-    label: "bezplatné oficiální reporty: Generativní AI funkce v Search Console a AI Performance v Bing Webmaster Tools"
+    label: "bezplatné oficiální reporty: Přehled výkonu v generativní AI v Search Console a AI Performance v Bing Webmaster Tools"
 howto:
   name: "Jak otestovat AI viditelnost vlastní značky"
   steps:
     - name: "Otevřete bezplatné oficiální reporty"
-      text: "Máte-li přístup k Search Console a Bing Webmaster Tools, začněte reportem Generativní AI funkce a reportem AI Performance. Řeknou vám, jestli vaše URL v AI plochách Googlu vůbec dostávají imprese a jestli vás Copilot cituje. Dotazy u Googlu nedávají, proto ruční test nenahrazují."
+      text: "Máte-li přístup k Search Console a Bing Webmaster Tools, začněte reportem Přehled výkonu v generativní AI a reportem AI Performance. Řeknou vám, jestli vaše URL v AI plochách Googlu vůbec dostávají imprese a jestli vás Copilot cituje. Dotazy u Googlu nedávají, proto ruční test nenahrazují."
     - name: "Sestavte 15 až 20 dotazů jazykem zákazníka"
       text: "Napište dotazy, jaké reálně kladou vaši zákazníci, ve čtyřech typech: značkové (co je vaše značka), kategoriové (nejlepší X v Praze), problém-řešení (jak vyřešit Y) a srovnávací (vaše značka vs konkurent). Kategoriové dotazy jsou nejdůležitější."
     - name: "Spusťte dotazy napříč hlavními platformami"
@@ -53,9 +54,9 @@ faq:
   - q: "Jaké dotazy mám na test použít?"
     a: "Sestavte 15 až 20 dotazů ve čtyřech typech: značkové (co je vaše značka, recenze), kategoriové (nejlepší X v Praze, firmy v oboru), problém-řešení (jak vyřešit konkrétní potíž) a srovnávací (vaše značka versus konkurent). Nejdůležitější jsou kategoriové a problémové dotazy — tam vás lidé hledají, aniž by vaši značku znali."
   - q: "Potřebuju placený nástroj, nebo stačí ruční test?"
-    a: "Pro první audit kombinujte obojí a obojí je zdarma. U Googlu a Microsoftu nejdřív otevřete jejich oficiální reporty (Generativní AI funkce v Search Console, AI Performance v Bing Webmaster Tools), pak ručně otestujte konkrétní dotazy a platformy, pro které oficiální data neexistují — hlavně ChatGPT a Perplexity. Existují i bezplatné kontroly třetích stran (Ahrefs AI Visibility Checker, Semrush AI Search Visibility Checker) a placené nástroje pro průběžný monitoring; ceny a funkce se v čase mění."
+    a: "Pro první audit kombinujte obojí a obojí je zdarma. U Googlu a Microsoftu nejdřív otevřete jejich oficiální reporty (Přehled výkonu v generativní AI v Search Console, AI Performance v Bing Webmaster Tools), pak ručně otestujte konkrétní dotazy a platformy, pro které oficiální data neexistují — hlavně ChatGPT a Perplexity. Existují i bezplatné kontroly třetích stran (Ahrefs AI Visibility Checker, Semrush AI Search Visibility Checker) a placené nástroje pro průběžný monitoring; ceny a funkce se v čase mění."
   - q: "Co mi řekne oficiální report a co jen ruční test?"
-    a: "Ruční test odpoví na otázku „objevím se u tohohle konkrétního dotazu“ — a u ChatGPT a Perplexity je to jediná cesta, oficiální report tam neexistuje. Generativní AI funkce v Search Console naproti tomu ukážou, jestli vaše URL vůbec dostávají imprese v AI plochách Googlu, ale bez dotazů a bez rozlišení AI Mode od AI Overviews. Bing AI Performance dává citace v Copilotu včetně frází, kterými si AI podklad hledala, ale Microsoft sám uvádí, že jde o vzorek."
+    a: "Ruční test odpoví na otázku „objevím se u tohohle konkrétního dotazu“ — a u ChatGPT a Perplexity je to jediná cesta, oficiální report tam neexistuje. Přehled výkonu v generativní AI v Search Console naproti tomu ukážou, jestli vaše URL vůbec dostávají imprese v AI plochách Googlu, ale bez dotazů a bez rozlišení AI Mode od AI Overviews. Bing AI Performance dává citace v Copilotu včetně frází, kterými si AI podklad hledala, ale Microsoft sám uvádí, že jde o vzorek."
   - q: "Co dělat, když se v AI odpovědích vůbec neobjevím?"
     a: "Postupně vylučte příčiny: zkontrolujte, jestli web neomezuje přístup vyhledávacím robotům (robots.txt, případně přepínač Block AI Bots v Cloudflare) — samotná blokace ale není jediný důvod. Ověřte, jestli máte vůbec obsah k dané otázce. Zvažte, jestli je značka dost známá a má dost zmínek mimo vlastní web. A podívejte se, kdo se zobrazuje místo vás a čím je jeho obsah nebo autorita silnější."
 ---
@@ -75,7 +76,7 @@ import Dont from "~/components/blocks/Dont.astro";
 Výsledek berte jako orientační snímek pro konkrétní jazyk, trh a okamžik, ne jako definitivní měření všech AI odpovědí.
 
 <Insight tone="warn" icon="!" label="Otevřená oprava k 11. 8. 2026">
-Předchozí verze tohohle návodu vysvětlovala, čím měřit zdarma, ale **neuváděla ani jeden ze dvou bezplatných oficiálních reportů** o AI viditelnosti. Přitom **AI Performance v Bing Webmaster Tools běží od 10. 2. 2026** a **Generativní AI funkce v Search Console od 3. 6. 2026** — oba tedy existovaly už při vydání článku i při jeho poslední aktualizaci.
+Předchozí verze tohohle návodu vysvětlovala, čím měřit zdarma, ale **neuváděla ani jeden ze dvou bezplatných oficiálních reportů** o AI viditelnosti. Přitom **AI Performance v Bing Webmaster Tools běží od 10. 2. 2026** a **Přehled výkonu v generativní AI v Search Console od 3. 6. 2026** — oba tedy existovaly už při vydání článku i při jeho poslední aktualizaci.
 
 Existovaly tedy už při vydání článku **11. 6. 2026** i při jeho minulé aktualizaci **3. 8. 2026**. Ruční test nenahrazují, doplňují ho — kde přesně, rozebírá nová sekce níž.
 </Insight>
@@ -94,7 +95,7 @@ Bez testu měříte pocitem. Konkrétní dotazy spuštěné napříč platformam
 
 U dvou ekosystémů — Googlu a Microsoftu — máte pro jejich AI plochy k dispozici oficiální data zdarma. Neřeknou vám, jestli se objevíte u konkrétní formulace dotazu, ale ukážou aspoň agregovaně, jestli se tam vaše stránky vůbec vyskytují.
 
-- **Generativní AI funkce v Search Console** (od 3. 6. 2026) — imprese vašich URL v AI plochách Googlu. Rozbor v [samostatném článku](/blog/gsc-ai-segmenty-mereni/).
+- **Přehled výkonu v generativní AI v Search Console** (od 3. 6. 2026) — imprese vašich URL v AI plochách Googlu. Rozbor v [samostatném článku](/blog/gsc-ai-segmenty-mereni/).
 - **AI Performance v Bing Webmaster Tools** (od 10. 2. 2026) — citace v Copilotu a v AI shrnutích, k tomu **grounding queries**, tedy fráze, kterými si AI podklad hledala. Detail [tady](/blog/bing-ai-performance-report/).
 
 <Insight tone="aio" icon="i" label="Proč ruční test i tak nevynecháte">
@@ -216,14 +217,14 @@ Ruční test je skvělý pro **první audit**. Pro **průběžný monitoring** s
     { icon: "🔁", label: "Frekvence", left: "Jednorázově nebo občas", right: "Automaticky a pravidelně" },
     { icon: "📊", label: "Rozsah", left: "Ručně zvládnete desítky dotazů", right: "Stovky až tisíce dotazů napříč platformami" },
     { icon: "🏁", label: "Příklady", left: "ChatGPT, Perplexity, Google AI Overviews ručně", right: "Bezplatné kontroly i placené tarify pro monitoring (viz seznam níže)" },
-    { icon: "🏛️", label: "Oficiální data", left: "u ChatGPT a Perplexity neexistují", right: "Generativní AI funkce (GSC) a AI Performance (Bing) — zdarma, ale jen pro plochy Googlu a Microsoftu" },
+    { icon: "🏛️", label: "Oficiální data", left: "u ChatGPT a Perplexity neexistují", right: "Přehled výkonu v generativní AI (GSC) a AI Performance (Bing) — zdarma, ale jen pro plochy Googlu a Microsoftu" },
   ]}
 />
 
 Konkrétní nástroje (funkce a ceny se v čase mění, ověřte si aktuální stav u poskytovatele):
 
 <Checklist title="Nástroje na sledování AI viditelnosti" items={[
-  { title: "Zdarma od provozovatelů (ověřeno 11. 8. 2026)", desc: "Generativní AI funkce v Search Console a AI Performance v Bing Webmaster Tools — reálná data, ale jen pro AI plochy Googlu a Microsoftu." },
+  { title: "Zdarma od provozovatelů (ověřeno 11. 8. 2026)", desc: "Přehled výkonu v generativní AI v Search Console a AI Performance v Bing Webmaster Tools — reálná data, ale jen pro AI plochy Googlu a Microsoftu." },
   { title: "Zdarma, bez registrace (orientačně, k červnu 2026)", desc: "Ahrefs AI Visibility Checker, Semrush AI Search Visibility Checker, Search-visibility.ai — rychlá jednorázová kontrola napříč platformami." },
   { title: "Freemium a zkušební verze", desc: "Hall Lite (bezplatný tarif s limitem projektů a otázek), Otterly.ai (zkušební období)." },
   { title: "Placené pro průběžný monitoring", desc: "Ahrefs Brand Radar, Semrush AI Toolkit, Otterly.ai, Passionfruit Labs — automatické sledování, více značek, konkurenční srovnání." },
@@ -276,7 +277,7 @@ Konkrétní nástroje (funkce a ceny se v čase mění, ověřte si aktuální s
 - **Minimálně tři platformy** (ChatGPT, Perplexity, Google AI Overviews); pro CZ doplňte Seznam Asistenta.
 - **Opakujte třikrát až pětkrát**, protože AI odpovědi nejsou pokaždé stejné, a zaznamenávejte objevení, pozici, konkurenci a zdroje.
 - **Testujte v odhlášeném režimu** pro objektivní obrázek.
-- **Dva bezplatné oficiální reporty** (Generativní AI funkce v GSC, AI Performance v Bingu) otevřete jako první — ruční test nenahradí, ale k plochám Googlu a Microsoftu dají data.
+- **Dva bezplatné oficiální reporty** (Přehled výkonu v generativní AI v GSC, AI Performance v Bingu) otevřete jako první — ruční test nenahradí, ale k plochám Googlu a Microsoftu dají data.
 - **Automatizovaný nástroj** má smysl až pro průběžný monitoring, ne pro první audit.
 
 ---

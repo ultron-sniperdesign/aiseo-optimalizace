@@ -9,7 +9,7 @@ tags:
   - "obsah"
   - "strukturovana-data"
 published: "2026-05-08"
-updated: "2026-08-04"
+updated: "2026-08-29"
 variant: "rich"
 keywords:
   - "aeo optimalizace"
@@ -35,7 +35,7 @@ faq:
   - q: 'Jaký je rozdíl mezi AEO a SEO?'
     a: 'SEO chce dostat web na první pozice v klasickém SERPu. AEO chce dostat krátkou odpověď přímo do Featured Snippet nebo Google AI Overview panelu. Sdílí společný technický základ (indexovatelnost, struktura, schema), ale způsob psaní je jiný — AEO vyžaduje krátké, definitivní odpovědi 40–60 slov hned po nadpisu, FAQ s reálnými dotazy a hustota faktů místo marketingové omáčky. SEO dostane uživatele na web, AEO ho promění v citovaný zdroj.'
   - q: 'Jaký je rozdíl mezi AEO a GEO?'
-    a: 'AEO cílí specificky na odpovídací systémy napojené na vyhledávač — Google AI Overviews, Featured Snippets, Bing Copilot. GEO pokrývá širší pole generativní AI včetně ChatGPT, Perplexity a Claude, které vyhledávač nepoužívají v klasickém slova smyslu. Většina playbooku se ale překrývá: krátké odpovědi, hustota faktů, FAQ schema, brand mentions. Pro CZ trh má AEO obvykle přímější dopad na návštěvnost, GEO buduje známost značky a podíl citací v dlouhodobém horizontu.'
+    a: 'AEO cílí specificky na odpovídací systémy napojené na vyhledávač — Google AI Overviews, Featured Snippets, Bing Copilot. GEO pokrývá širší pole generativní AI včetně ChatGPT, Perplexity a Claude, které vyhledávač nepoužívají v klasickém slova smyslu. Většina playbooku se ale překrývá: krátké odpovědi, hustota faktů, FAQ schema, zmínky o značce. Pro CZ trh má AEO obvykle přímější dopad na návštěvnost, GEO buduje známost značky a podíl citací v dlouhodobém horizontu.'
   - q: 'Za jak dlouho budou výsledky AEO viditelné?'
     a: 'Featured Snippets typicky 2–8 týdnů po implementaci FAQPage schema a krátkých odpovědí, pokud už ranknete v top 10. AI Overviews je méně předvídatelný — záleží, jestli Google pro daný dotaz AIO panel vůbec generuje a jak často. Realistický horizont: první AIO citace 1–3 měsíce po implementaci u stránek s dobrými pozicemi, systematický výskyt v AIO napříč ranou 4–6 měsíců. Bez SEO základů (top 10 pozic) AEO playbook efekt nevyvolá — Featured Snippets čerpá Google primárně z top 10 výsledků.'
   - q: 'Funguje AEO pro malé firmy a B2B?'
@@ -45,7 +45,7 @@ faq:
   - q: 'Stačí mi přidat FAQ sekci a FAQPage schema?'
     a: 'Pomáhá to, ale samo o sobě nestačí. Bez krátké odpovědi 40–60 slov hned po H1, bez hustoty faktů v textu a bez správné struktury H2/H3 nadpisů Google FAQPage schema často ignoruje. Rich snippety u FAQ se zobrazují jen tam, kde Google vyhodnotí celou stránku jako kvalitní odpověď na konkrétní dotaz. FAQPage schema je nezbytná, ne ale dostatečná podmínka. Plný playbook v 7 krocích níže.'
   - q: 'Můžu měřit AEO bez placených nástrojů?'
-    a: 'Ano, free výchozí stav stačí pro většinu malých webů. Google Search Console: pozice a imprese hlavních dotazů, report Generativní AI funkce (pokud ho už máte) a pokrytí. Typ zobrazení pro doporučené úryvky v Search Console není a u FAQ skončil 7. května 2026 — tyhle dvě věci se zjišťují ruční kontrolou SERP. Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner Brand Radar) má smysl s 20+ článků v top 10.'
+    a: 'Ano, free výchozí stav stačí pro většinu malých webů. Google Search Console: pozice a imprese hlavních dotazů, report Přehled výkonu v generativní AI (pokud ho už máte) a pokrytí. Typ zobrazení pro doporučené úryvky v Search Console není a u FAQ skončil 7. května 2026 — tyhle dvě věci se zjišťují ruční kontrolou SERP. Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner Brand Radar) má smysl s 20+ článků v top 10.'
 howto:
   name: "Jak optimalizovat web pro AEO v 7 krocích"
   steps:
@@ -80,7 +80,7 @@ import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 
 AEO (Answer Engine Optimization) **upravuje obsah tak**, aby dokázal rychle a jednoznačně odpovědět na konkrétní dotazy uživatelů — a aby Google AI Overviews, Featured Snippets a Bing Copilot tuto odpověď použili a citovali váš web jako zdroj. Když uživatel napíše do Googlu otázku „jak vybrat CRM pro malou firmu“ nebo „rozdíl mezi SEO a GEO“, obvykle se nad výsledky zobrazí panel s krátkou odpovědí. Pokud v něm nejste, ztrácíte návštěvnost i přes pozici v top 10.
 
-Klasické SEO řeší pozice ve výsledcích vyhledávání — bez dobrých pozic AEO většinou nefunguje, protože Google čerpá Featured Snippets a AIO citace **typicky z top 10 výsledků** (ne výhradně, ale ve většině případů). AEO je vrstva, která zvyšuje pravděpodobnost, že **z dobře rankujících stránek** Google vybere právě váš obsah jako přímou odpověď. U webů postavených na obsahu ale dává smysl AEO principy zapracovat už při tvorbě obsahu, ne až jako nadstavbu. Detailněji o vztahu disciplín pojednává pillar [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) a o samotné disciplíně sekce [AEO — Answer Engine Optimization](/aeo/).
+Klasické SEO řeší pozice ve výsledcích vyhledávání — bez dobrých pozic AEO většinou nefunguje, protože Google čerpá Featured Snippets a AIO citace **typicky z top 10 výsledků** (ne výhradně, ale ve většině případů). AEO je vrstva, která zvyšuje pravděpodobnost, že **z dobře rankujících stránek** Google vybere právě váš obsah jako přímou odpověď. U webů postavených na obsahu ale dává smysl AEO principy zapracovat už při tvorbě obsahu, ne až jako nadstavbu. Detailněji o vztahu disciplín pojednává pilířová stránka [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) a o samotné disciplíně sekce [AEO — Answer Engine Optimization](/aeo/).
 
 ### AEO vs SEO vs GEO — kde je hranice
 
@@ -125,7 +125,7 @@ Featured Snippets existují jako Google funkce už od roku 2014 (původně „an
 Všechno výše jsou **měření na zahraničních, převážně anglických datasetech**. Česká čísla veřejně doložená nemáme a přenášet je jedna k jedné by bylo zavádějící. Berte je jako řádovou orientaci a směr vývoje, ne jako benchmark pro váš web.
 </Insight>
 
-**Co jde změřit u vás:** od června 2026 je v Search Console report generativních funkcí. Ukazuje **zobrazení v generativních funkcích Googlu, ne kliky ani dotazy**, a rollout je omezený — nemusíte ho tedy vidět. Podrobně ho rozebírá [měření AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/).
+**Co jde změřit u vás:** od června 2026 je v Search Console report Přehled výkonu v generativní AI. Ukazuje **zobrazení v generativních funkcích Googlu, ne kliky ani dotazy**, a zpřístupňuje se postupně — nemusíte ho tedy vidět. Podrobně ho rozebírá [měření AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/).
 
 **Praktický důsledek:** citace může částečně zmírnit ztrátu pozornosti oproti situaci, kdy v panelu nejste vůbec — veřejná data ale neumí spolehlivě vyčíslit, kolik z toho je čistý přínos. Jisté je jen to, že když panel nad výsledky je a vy v něm nejste, přicházíte o obojí: o část kliků i o zmínku.
 
@@ -328,7 +328,7 @@ Detailní průvodce schema implementací v článku [Časté chyby v SEO 2026](/
 
 Tohle je vlastní framework, který používáme jako kontrolní průchod u klientů — **5 dimenzí, každá 0–20 bodů, celkem 0–100**. Pomáhá rychle identifikovat, kde má stránka rezervu.
 
-### Dimenze 1 — Krátká odpověď coverage (0–20)
+### Dimenze 1 — Pokrytí krátké odpovědi (0–20)
 
 - **20 bodů:** Krátká odpověď 40–60 slov hned po H1, definice „X je…“, konkrétní fakt s atribucí, praktický důsledek
 - **10–15 bodů:** Krátká odpověď existuje, ale chybí jeden z prvků (typicky atribuce nebo důsledek)
@@ -372,9 +372,9 @@ Free výchozí stav pro většinu malých webů stačí — placené nástroje m
 
 ### Co měřit v GSC
 
-**Report Generativní AI funkce** (pokud ho už na webu máte):
+**Report Přehled výkonu v generativní AI** (pokud ho už na webu máte):
 
-- **imprese v generativních AI funkcích** — ve dvou zobrazeních, Vyhledávání a Discover
+- **imprese ve funkcích s generativní AI** — ve dvou zobrazeních, Vyhledávání a Discover
 - pozor: report nedává kliky ani dotazy a [AI Overviews neoddělí od AI Mode](/blog/gsc-ai-segmenty-mereni/)
 
 **Co v Search Console nehledejte:**
@@ -387,7 +387,7 @@ Free výchozí stav pro většinu malých webů stačí — placené nástroje m
 - Filtr **CTR pod 5 %** s alespoň 100 zobrazení = kandidáti na AEO úpravu (vidí vás, ale neklikají = pravděpodobně berou odpověď z AIO/snippetu jiného webu)
 - Filtr **position 1–3** s nízkým CTR = potenciálně ztrácíte na AIO panel nad výsledky
 
-**Coverage:**
+**Co pokrývá:**
 
 - Indexovatelnost stránek (předpoklad pro vše)
 - Mobile usability (Google preferuje mobile-friendly stránky pro AIO citace)
@@ -427,7 +427,7 @@ Pravidlo: **AEO playbook = 30 % výsledku, SEO základ + autorita + unikátnost 
 
 <MistakeGrid>
   <Mistake num="01" title="Over-optimalizace krátké odpovědi" fix="Jedna krátká odpověď = jeden hlavní dotaz. Pro 5 různých dotazů mějte 5 stránek nebo 5 H2 sekcí, každou s vlastní krátkou odpovědí.">
-    Některé weby nacpou do prvních 60 slov **pět variant klíčového slova** a snaží se pokrýt všechny dotazy najednou. Výsledek: text vypadá strojově, Google ho vyhodnotí jako keyword stuffing a snippet ignoruje.
+    Některé weby nacpou do prvních 60 slov **pět variant klíčového slova** a snaží se pokrýt všechny dotazy najednou. Výsledek: text vypadá strojově, Google to vyhodnotí jako přehnané opakování klíčových slov a úryvek ignoruje.
   </Mistake>
   <Mistake num="02" title="FAQ schema bez korespondence s HTML" fix="Otázky a odpovědi v HTML a JSON-LD se musí přesně shodovat slovo od slova. Validace v každém deploy cyklu.">
     Nejčastější issue v praxi: **FAQ otázky v JSON-LD se liší od textu na stránce** (typicky plugin tahá data z DB, ale text edituje copywriter ručně). Důsledek: schema ignorováno.
@@ -457,7 +457,7 @@ Pravidlo: **AEO playbook = 30 % výsledku, SEO základ + autorita + unikátnost 
 2. **Iterace podle dat** — co získalo Featured Snippet, kde stagnujeme
 3. **Po 90 dnech** vyhodnocení AEO Coverage Score posunů — kde investice přinesla měřitelné výsledky
 
-Pokud váháte, kterou strategii řešit jako první, [Rozhodovací matice](/rozhodovaci-matice/) pomůže prioritizovat. Pro vztah disciplín a širší kontext doporučujeme [pillar SEO vs GEO vs AEO vs AIO](/seo-vs-geo-vs-aeo-vs-aio/).
+Pokud váháte, kterou strategii řešit jako první, [Rozhodovací matice](/rozhodovaci-matice/) pomůže prioritizovat. Pro vztah disciplín a širší kontext doporučujeme [pilířovou stránku SEO vs GEO vs AEO vs AIO](/seo-vs-geo-vs-aeo-vs-aio/).
 
 ## Reálné <strong>výsledky</strong> v <span class="hl">praxi</span>
 
