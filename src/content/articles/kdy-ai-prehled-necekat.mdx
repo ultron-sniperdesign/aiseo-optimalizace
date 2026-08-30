@@ -1,0 +1,159 @@
+---
+title: "Kdy AI přehled nečekat a proč to není špatná zpráva"
+seoTitle: "Kdy se spustí AI přehled a kdy ho nečekat (2026)"
+description: "Google seznam dotazů bez AI přehledu nezveřejnil, popsal jen princip. Co z toho plyne pro obsah a kdy může být chybějící panel výhoda."
+answer: "AI přehled se podle nápovědy Googlu zobrazí tehdy, když systémy vyhodnotí, že generativní AI bude pro uživatele užitečná. Seznam dotazů, u kterých panel nebude, Google nezveřejnil — rozhoduje se pro každé hledání zvlášť. Prakticky to znamená plánovat obsah na obě situace a chybějící panel nečíst jako neúspěch."
+slug: "kdy-ai-prehled-necekat"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "obsah"
+published: "2026-08-30"
+updated: "2026-08-30"
+variant: "rich"
+keywords:
+  - "kdy se zobrazí ai přehled"
+  - "ai overview se nezobrazuje"
+  - "spouštění ai přehledu"
+  - "proč nemám ai overview"
+  - "ai přehled u značkových dotazů"
+  - "kdy se spustí ai overview"
+stats:
+  - value: "1"
+    label: "podmínka, kterou Google pro zobrazení panelu skutečně uvádí"
+  - value: "bez výčtu"
+    label: "Google neuvádí uzavřený seznam dotazů, u kterých panel nebude"
+  - value: "2"
+    label: "situace, na které má obsah počítat: s panelem i bez něj"
+faq:
+  - q: "Kdy se AI přehled zobrazí?"
+    a: "Podle nápovědy Vyhledávání se zobrazí, když systémy Googlu vyhodnotí, že by generativní AI mohla být užitečná — jmenovaným příkladem je situace, kdy chce člověk rychle porozumět informacím z různých zdrojů. Konkrétnější podmínku Google nezveřejnil."
+  - q: "Existuje seznam dotazů, u kterých panel nebude?"
+    a: "Ne. Google žádný výčet témat ani typů dotazů nezveřejnil. Pozorování třetích stran o tom, kde se panel objevuje méně, existují, ale jsou to měření na cizích vzorcích, ne pravidlo od Googlu — a v čase se mění."
+  - q: "Proč se mi u vlastní značky panel nezobrazuje?"
+    a: "U dotazů, kde člověk míří na konkrétní web, shrnutí z více zdrojů obvykle nepřidává hodnotu. Nejde ale o zaručené pravidlo: chování se u stejného dotazu mění v čase i mezi uživateli, takže jediný test nestačí."
+  - q: "Je chybějící AI přehled problém?"
+    a: "Sám o sobě ne. U dotazů, kde chce člověk jít rovnou k vám, je klasický odkaz na první pozici přímější cesta než shrnutí. Problém je jen tehdy, když panel u vašich informačních dotazů běží a vy v něm nefigurujete."
+  - q: "Dá se spouštění vyčíst ze Search Console?"
+    a: "Ne na úrovni konkrétního dotazu. Report Přehled výkonu v generativní AI ukazuje imprese, stránky, země a datum, členit se podle dotazů ale nedá — u kterého hledání se panel objevil ani proč tedy neřekne. Zůstává ruční kontrola opakovaná s odstupem."
+  - q: "Dá se zobrazení AI přehledu nějak vyžádat?"
+    a: "Ne. Panel nejde u konkrétního dotazu ručně zapnout ani si o něj říct. Web může obsah připravit tak, aby byl pro shrnutí srozumitelný a doložitelný, ale o zobrazení rozhodují systémy Googlu pro každé hledání zvlášť."
+  - q: "Mám kvůli tomu psát obsah jinak?"
+    a: "Ne jinak, spíš dvojmo použitelně. Text má fungovat jako podklad pro shrnutí i jako cíl prokliku: krátká odpověď hned na začátku, samostatné pasáže a důvod, proč kliknout dál — konkrétní čísla, postup, doklady."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Seznam neexistuje, princip ano
+
+**AI přehled se podle nápovědy Googlu zobrazí tehdy, když systémy vyhodnotí, že generativní AI bude pro uživatele užitečná.** Seznam dotazů, u kterých panel nebude, Google nezveřejnil — rozhoduje se pro každé hledání zvlášť. Prakticky to znamená plánovat obsah na obě situace a chybějící panel nečíst jako neúspěch.
+
+Otázka „proč se mi u toho dotazu nezobrazuje panel“ nemá odpověď v podobě pravidla. Má ji v podobě principu — a ten se dá použít.
+
+## Co Google doopravdy říká
+
+Česká nápověda Vyhledávání Google k AI přehledům to formuluje jednou větou ([zdroj](https://support.google.com/websearch/answer/14901683), ověřeno 30. 8. 2026):
+
+> Přehledy od AI se ve výsledcích Vyhledávání Google zobrazí, když naše systémy zjistí, že by pro vás mohla být generativní umělá inteligence užitečná.
+
+A přidává jediný jmenovaný příklad: *když chcete rychle porozumět informacím z různých zdrojů.* Anglická verze říká totéž slovy „when our systems determine that generative AI can be especially helpful“.
+
+<Insight tone="aeo" label="Co v té větě je a co není">
+  **Je v ní podmínka:** užitečnost posuzuje systém, hledání po hledání.
+
+  **Není v ní výčet.** Žádné téma, žádný typ dotazu, žádná kategorie, u které by Google zobrazení vylučoval. Kdo vám nabízí uzavřený seznam, nabízí odhad.
+</Insight>
+
+## Proč s uzavřeným seznamem nejde pracovat
+
+Google k 30. 8. 2026 nezveřejnil seznam dotazů, u kterých se panel nespustí — a nezveřejnil ani signály, podle kterých se to rozhoduje. Podmínka je popsaná jako úsudek systému nad konkrétním hledáním, ne jako vlastnost klíčového slova. Stejný dotaz se proto může chovat jinak dnes a za měsíc; jak se kvůli tomu rozcházejí i veřejná čísla o četnosti panelu, rozebírá [jak často se zobrazuje AI přehled](/blog/jak-casto-se-zobrazuje-ai-prehled/).
+
+V praxi se vyplatí kontrolovat zvlášť dotazy, u kterých člověk míří na konkrétní web nebo chce rovnou nakoupit: shrnutí z více zdrojů tam nemusí přidávat stejnou hodnotu jako u vysvětlení nebo srovnání. **Je to úvaha z principu, ne pravidlo od Googlu** — a ověřuje se testem, ne odhadem.
+
+## Situace, kde panel nemusí přidat hodnotu
+
+Z principu užitečnosti se dá opatrně odvodit, kde shrnutí z více zdrojů dává menší smysl. **Není to pravidlo od Googlu, je to pomůcka na plánování** — a tak s ní zacházejte:
+
+<Checklist title="Situace, kde shrnutí přidává málo" items={[
+  { title: "Míříte na konkrétní web", desc: "Dotaz na název firmy, přihlášení, kontakt. Uživatel nechce přehled, chce jednu adresu." },
+  { title: "Rozhodnutí už padlo", desc: "Nákupní dotaz na konkrétní produkt nebo model. Shrnutí variant přichází pozdě." },
+  { title: "Odpověď je jedna hodnota", desc: "Kurz, čas, skóre, otevírací doba. Není co skládat z různých zdrojů." },
+  { title: "Odpověď je čerstvá a mění se", desc: "Dnešní událost, průběžný stav. Shrnutí by zestárlo dřív, než ho někdo přečte." },
+]} />
+
+Naopak u dotazů, kde člověk potřebuje rychle porozumět informacím z více zdrojů, dává panel větší smysl — typicky u vysvětlení, srovnání a postupů. To je přesně ten případ, který Google ve své nápovědě jmenuje.
+
+## Jak připravit stránku na obě situace
+
+Cíl stránky se liší podle toho, do jaké situace míří:
+
+<CompareTable
+  leftLabel="Dotaz, kde panel běží"
+  rightLabel="Dotaz bez panelu"
+  rows={[
+    { icon: "🎯", label: "Cíl stránky", left: "být použitelným podkladem pro shrnutí a zvýšit šanci na proklik", right: "být klikatelným výsledkem, který dovede člověka až k akci" },
+    { icon: "✍️", label: "Co v textu rozhoduje", left: "krátká odpověď na začátku, samostatné pasáže, doložená fakta", right: "jasný titulek a popisek, rychlé načtení, přímá cesta ke kroku dál" },
+    { icon: "📐", label: "Struktura", left: "nadpisy jako otázky, jeden úsek = jedna odpověď", right: "orientace na stránce, viditelné ceny, kontakty, tlačítka" },
+    { icon: "📊", label: "Co sledovat", left: "imprese ve funkcích s generativní AI, zmínky v odpovědích", right: "pozice, míra prokliku, dokončení akce" },
+  ]}
+/>
+
+Dobrá zpráva je, že se ty dva sloupce nevylučují. **Krátká odpověď nahoře pomáhá i člověku**, který přijde z klasického výsledku. U dotazu bez panelu jen nepřinese nic navíc v AI přehledu, protože se žádný nezobrazil.
+
+## Proč je chybějící panel často dobrá zpráva
+
+U dotazu, kde člověk míří přímo k vám, je panel spíš překážka: přidává mezikrok mezi hledáním a vaším webem. Když se nezobrazí, vede z výsledků nejkratší cesta.
+
+<Insight tone="warn" label="Kdy chybějící panel naopak dobrá zpráva není">
+  Když panel běží u vašich **důležitých informačních** dotazů a váš web v něm nefiguruje. To není klid — to je situace, kdy odpověď skládá někdo jiný z cizích zdrojů.
+</Insight>
+
+Rozdíl mezi „panel tu není“ a „panel tu je a nejsem v něm“ je zásadní a plete se. První je neutrální stav, druhý je práce k udělání.
+
+## Jak si to zjistit u svých dotazů
+
+Search Console na tuhle otázku neodpoví na úrovni konkrétního dotazu. Report Přehled výkonu v generativní AI ukazuje imprese, stránky, země a datum — **podle dotazů se ale členit nedá**, takže z něj nevyčtete, u kterého hledání se panel objevil. Zbývá ruční kontrola:
+
+<Stepper
+  steps={[
+    { title: "Sepište dotazy podle situace", desc: "Zvlášť značkové a navigační, zvlášť informační a srovnávací, zvlášť nákupní. Bez rozdělení se výsledek nedá číst." },
+    { title: "Projděte je opakovaně", desc: "Nejméně třikrát s odstupem dnů. Jeden průchod ukazuje jeden okamžik, ne stav." },
+    { title: "Zapisujte výsledek každého pokusu", desc: "Ne ano/ne, ale kolikrát z kolika pokusů se panel objevil. Tím se pozná rozdíl mezi stabilním a náhodným." },
+    { title: "U panelu si všímejte zdrojů", desc: "Jestli je mezi nimi váš web, konkurence, nebo úplně jiné weby. To rozhoduje, co dělat dál." },
+  ]}
+/>
+
+Proč jeden test nestačí, rozebírá [proměnlivost AI odpovědí](/blog/volatilita-ai-odpovedi/); co report v Search Console ukáže a co ne, [limity měření Režimu AI](/blog/mereni-ai-mode-limity/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Číst chybějící panel jako neúspěch">
+    U navigačních a značkových dotazů je to spíš pohodlnější stav. Řešit je potřeba hlavně opačný případ: panel u vašich důležitých informačních dotazů, ve kterém váš web není.
+  </Mistake>
+  <Mistake num="02" title="Spoléhat na seznam typů dotazů">
+    Žádný oficiální neexistuje. Odvození z principu je pomůcka na plánování, ne záruka chování.
+  </Mistake>
+  <Mistake num="03" title="Testovat jednou a uzavřít to">
+    Stejný dotaz se může v čase chovat různě. Jeden průchod proto není zjištění.
+  </Mistake>
+  <Mistake num="04" title="Psát obsah jen pro panel">
+    Když stránka nedá důvod kliknout, u dotazů bez panelu nezískáte nic. Obě situace potřebují jeden text, který obstojí v obou.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Google zveřejnil princip, ne seznam.** Panel se zobrazí, když systémy vyhodnotí generativní AI jako užitečnou.
+- **Uzavřený výčet dotazů bez panelu neexistuje** a nabídky takového seznamu jsou odhady.
+- **Chybějící panel není neúspěch.** Práce k udělání je opačný případ — panel u vašich důležitých informačních dotazů, ve kterém váš web není.
+- **Zjišťuje se ručně, opakovaně a po skupinách dotazů.** Search Console na tuhle otázku odpověď nemá.
+
+**Nevíte, u kterých vašich dotazů panel běží a jestli v něm jste?** [AI SEO audit za 3 600 Kč](/audit/) projde vzorek vašich dotazů, ověří výskyt panelu i zdroje v něm a doporučí stránky, které mají upravit odpověď, strukturu i důvod k prokliku.
+
+*Zdroje: nápověda Vyhledávání Google, [AI Overviews](https://support.google.com/websearch/answer/14901683) — česká i anglická verze, ověřeno 30. 8. 2026. Tvrzení o typech dotazů, u kterých se panel objevuje méně, jsou pozorování třetích stran na zahraničních vzorcích, ne pravidlo od Googlu; čísla o četnosti panelu tenhle článek záměrně neuvádí, rozebírá je [samostatný text](/blog/jak-casto-se-zobrazuje-ai-prehled/).*

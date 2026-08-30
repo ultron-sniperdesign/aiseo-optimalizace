@@ -1066,3 +1066,16 @@ Sjednoceno na **77 míst v 18 článcích**. Anglický název zůstal jednou jak
 Pravidlo do slovníku nevzniklo: `kdo-publikuje-ip-rozsahy` používá „kandidátních adres“ v metodické pasáži, kde to čte dobře a je to spárované s „kandidáty“. Plošné pravidlo by vyrobilo falešný poplach.
 
 **Připomínka k heredocu:** psaní `.mdx` přes `cat <<'EOF'` opakovaně vyrábí `„…"` místo `„…“`. Mechanická kontrola to chytá spolehlivě, ale stojí to jeden průchod navíc.
+
+---
+
+## C6 při psaní: `kdy-ai-prehled-necekat` (30. 8. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | **0 nálezů napoprvé** (soubor psán s českými uvozovkami rovnou správně) |
+| LLM (gpt-5.4) | 1 nález — **odmítnut** |
+
+| Bylo | Návrh | Rozhodnutí |
+|---|---|---|
+| „ty dva sloupce“ | „tyto dva sloupce“ | **odmítnuto** — není to kalk ani kostrbatá vazba, ale stylistická preference. Korpus používá „ty dvě / ta dvě“ 12×, tedy hlas webu; pravidlo skillu říká, že stylistické preference se nehlásí a náhrada se řídí tím, co web už používá. |
