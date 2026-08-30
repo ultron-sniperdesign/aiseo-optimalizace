@@ -1049,3 +1049,20 @@ Podle ověřené nápovědy (support.google.com/webmasters/answer/16984139?hl=cs
 Sjednoceno na **77 míst v 18 článcích**. Anglický název zůstal jednou jako glosa v kanonickém článku `gsc-ai-segmenty-mereni` (v anglickém rozhraní se report jmenuje `Generative AI features`) a v doslovných citacích anglické dokumentace (`aeo-geo-je-porad-seo`, `co-vypne-ktery-opt-out`). Při té příležitosti sjednocena i zobrazení: „Search“ → **Vyhledávání**.
 
 **Poučení do dalších runů:** mechanická jazyková kontrola je zároveň levný detektor nekonzistentních názvů rozhraní. Hybridní slovosled („Generativní AI funkce“) byl jediný signál, že název nikdo neověřil proti nápovědě.
+
+---
+
+## C6 při psaní: `co-ai-seo-nezvladne` (29. 8. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 5 nálezů napoprvé — **všech pět byla česká uvozovka zavřená rovnou** (past heredocu, ne obsahová vada). Po opravě 0. |
+| LLM (gpt-5.4) | 1 nález |
+
+| Bylo | Je | Rozhodnutí |
+|---|---|---|
+| „kdy se mezi **kandidátní zdroje** dostane“ | „kdy se mezi **kandidáty** dostane“ | **přijato** — článek sám o dva odstavce výš píše „budete mezi kandidáty“; přívlastek byl mechanický |
+
+Pravidlo do slovníku nevzniklo: `kdo-publikuje-ip-rozsahy` používá „kandidátních adres“ v metodické pasáži, kde to čte dobře a je to spárované s „kandidáty“. Plošné pravidlo by vyrobilo falešný poplach.
+
+**Připomínka k heredocu:** psaní `.mdx` přes `cat <<'EOF'` opakovaně vyrábí `„…"` místo `„…“`. Mechanická kontrola to chytá spolehlivě, ale stojí to jeden průchod navíc.
