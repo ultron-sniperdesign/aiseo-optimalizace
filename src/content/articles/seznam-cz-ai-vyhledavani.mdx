@@ -7,7 +7,7 @@ category: "analysis"
 tags:
   - "ai-platformy"
 published: "2026-06-11"
-updated: "2026-07-19"
+updated: "2026-08-31"
 keywords:
   - "seznam ai vyhledavani"
   - "seznam asistent"
@@ -69,13 +69,26 @@ Seznam zůstává v Česku významným hráčem, ale ne dominantním. Pro větš
 
 ## Seznam Asistent a SeLLMa — český vstup do AI vyhledávání
 
-V listopadu 2025 uvedl Seznam **Seznam Asistenta** v testovacím provozu — vlastní konverzační AI nástroj, který kombinuje prvky chatového asistenta a vyhledávání. **25. května 2026** ho zpřístupnil v beta verzi **všem přihlášeným uživatelům zdarma**. Dostupný je přes samostatnou adresu `asistent.seznam.cz` a podle aktuální podoby služby i z rozhraní Seznam.cz.
+V listopadu 2025 uvedl Seznam **Seznam Asistenta** v testovacím provozu — vlastní konverzační AI nástroj, který kombinuje prvky chatového asistenta a vyhledávání. **25. května 2026** ho zpřístupnil v beta verzi **všem přihlášeným uživatelům zdarma** — a v beta verzi zůstává i k 31. 8. 2026, tedy víc než tři měsíce od zpřístupnění. Dostupný je přes samostatnou adresu `asistent.seznam.cz` a podle aktuální podoby služby i z rozhraní Seznam.cz.
 
 ### Jazykový model SeLLMa
 
 Asistent stojí na vlastním českém jazykovém modelu Seznamu — **SeLLMa**. Podle veřejně citovaných informací jde o model postavený na open-source základu Llama 3.1 od Mety, v rozsahu kolem 70 miliard parametrů, s investicí Seznamu řádově přes 100 milionů Kč.
 
 **Není to ale celý obrázek.** Seznam v listopadu 2025 uvedl, že Asistent používá vlastní model SeLLMa **a dočasně i komerční modely od OpenAI** provozované v evropských datacentrech přes Microsoft Azure, s dlouhodobým cílem provozovat ho výhradně na interních modelech. Oznámení z května 2026 už zmiňuje jen SeLLMa, takže veřejně není jednoznačné, jestli ten dočasný stav trvá. Podrobněji to rozebírá [samostatný článek o Seznam Asistentovi](/blog/seznam-asistent-sellma/).
+
+### Z jakých zdrojů Asistent skládá odpovědi
+
+Tohle je pro firmy praktičtější informace než velikost modelu. Seznam ve svém oznámení vyjmenoval, odkud Asistent čerpá: **z Vyhledávání, zpravodajských webů, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, jízdních řádů a TV programu.**
+
+Dvě položky z toho seznamu jsou přímo ovlivnitelné:
+
+- **Firmy.cz** — zápis firmy je vstupenka do odpovědí na lokální a firemní dotazy. Co v něm zkontrolovat, rozebírá [zápis na Firmy.cz](/blog/firmy-cz-pro-ai/).
+- **Zboží.cz** — produktový feed rozhoduje o tom, s jakými údaji o vašem zboží Asistent pracuje. Na co si dát pozor, má [produktový feed a GTIN](/blog/produktovy-feed-gtin/).
+
+<Insight tone="warn" label="Co v tom seznamu není">
+  Seznam mezi zdroji Asistenta **nejmenuje Mapy.cz, Heureku ani Sreality.cz**, i když patří do jeho širšího ekosystému. Zmínky o „napojení na celý ekosystém Seznamu“ proto berte opatrně — ověřený je jen ten výčet výše, stav k 31. 8. 2026.
+</Insight>
 
 ### Hlavní odlišnost proti Google AI Overviews a ChatGPT
 
@@ -88,7 +101,7 @@ V roce 2026 jsou [Google AI Overviews](/aio/) rozšířené ve více než 200 ze
   rightTone="accent"
   rows={[
     { icon: "🇨🇿", label: "Jazyk a kontext", left: "Doladěný na češtinu, idiomy a kontext CZ trhu", right: "Funguje v češtině, ale primárně trénovaný na globálních datech" },
-    { icon: "🔗", label: "Propojení", left: "Přímé napojení na Mapy.cz, Firmy.cz, počasí, jízdní řády, Heureku, Sreality.cz", right: "Globální data + běžný web; Google AI Overviews navíc vlastní znalostní databázi Googlu" },
+    { icon: "🔗", label: "Propojení", left: "Seznam jmenuje Vyhledávání, zpravodajské weby, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, jízdní řády a TV program", right: "Globální data + běžný web; Google AI Overviews navíc vlastní znalostní databázi Googlu" },
     { icon: "🛡️", label: "Datová centra a GDPR", left: "Evropská datová centra; podle veřejných vyjádření Seznamu důraz na evropské zpracování dat", right: "Globální datová centra (US, EU); EU varianty jsou možné, ale ne výchozí" },
     { icon: "🤖", label: "Kvalita modelu", left: "70 miliard parametrů; přizpůsobený, ale menší než nejlepší světové modely", right: "Claude Opus 4.x, GPT-5.x nebo Gemini 2.x jsou výrazně větší; v obecných mezinárodních benchmarcích a šíři použití obvykle silnější" },
     { icon: "📊", label: "Tržní rozsah", left: "CZ trh ~11–15 % organic + adopce Asistenta ještě roste", right: "Google ~79–82 % CZ organic, ChatGPT/Perplexity rostou mezinárodně" },
@@ -190,7 +203,7 @@ Pro většinu českých firem zůstává **Google primárním vyhledávacím kan
 
 ## Co je v roce 2026 nejisté
 
-- **Adopce Seznam Asistenta.** Beta běží teprve od května 2026 — zatím není veřejně dokumentované, kolik uživatelů ho reálně používá místo klasického Seznam vyhledávání.
+- **Adopce Seznam Asistenta.** Beta běží od května 2026 a k 31. 8. 2026 z ní Asistent nevystoupil — veřejně dokumentované není ani to, kolik uživatelů ho reálně používá místo klasického Seznam vyhledávání, ani kdy má beta skončit.
 - **Tržní podíl Seznam.cz** dál klesá vs. Google. Bez novějších veřejných dat nelze potvrdit, zda se podíl Seznamu stabilizuje, nebo bude dál klesat.
 - **Kvalita SeLLMy** v praxi — 70 miliard parametrů je menší než nejlepší světové modely. Pokud budou uživatelé odpovědi vnímat jako slabší než u zavedených globálních nástrojů, nemusí se k Asistentovi vracet.
 - **Konkurence Googlu** je řádově silnější — Google investuje do AI Overviews a Gemini desítky miliard USD globálně, Seznam stovky milionů Kč v CZ kontextu.
@@ -202,8 +215,8 @@ Seznam Asistent je v polovině roku 2026 zajímavá novinka, ale není to garanc
 ## Co si z článku odnést
 
 - **Seznam.cz drží v Česku zhruba 11 až 15 procent organického vyhledávání** vedle 79 až 82 procent Googlu; trend je dlouhodobě klesající.
-- **Seznam Asistent** běží na vlastním českém modelu **SeLLMa** (70 mld. parametrů, postavený na Llama 3.1, investice 100+ mil. Kč) a od **25. května 2026** je v beta pro všechny přihlášené uživatele zdarma.
-- **Hlavní výhoda Seznam Asistenta** je v českém kontextu a propojení s vlastním ekosystémem (Mapy.cz, Firmy.cz, Heureka, Sreality.cz), ne v samotné kvalitě jazykového modelu.
+- **Seznam Asistent** běží na vlastním českém modelu **SeLLMa** a od **25. května 2026** je v beta pro všechny přihlášené uživatele zdarma; v beta je i k 31. 8. 2026. Technické údaje (70 mld. parametrů, základ Llama 3.1, investice 100+ mil. Kč) pocházejí z tiskových zdrojů — Seznam je ve vlastním oznámení neuvádí a mluví jen o „vlastní technologii jazykových modelů SeLLMa“.
+- **Hlavní výhoda Seznam Asistenta** je v českém kontextu a v napojení na vlastní zdroje. Seznam jmenuje Vyhledávání, zpravodajské weby, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, jízdní řády a TV program — Mapy.cz, Heureka ani Sreality.cz v tom výčtu nejsou.
 - **Pro značku v Česku** je Seznam důležitý sekundární kanál — primárně u starší cílovky, lokálních dotazů a oborů jako reality, automotive nebo finance.
 - **Sklik vedle Google Ads** dává smysl pro čistě českou cílovku; orientační start 70:30 Google:Sklik.
 - **Pro AI viditelnost** primárně optimalizovat pro Google, ChatGPT a Perplexity; Seznam Asistenta sledovat a testovat.
@@ -212,4 +225,4 @@ Seznam Asistent je v polovině roku 2026 zajímavá novinka, ale není to garanc
 
 **Chcete odhadnout, jak velký význam má pro vaši cílovou skupinu Seznam oproti Googlu a kde má investice do Seznam ekosystému (Firmy.cz, Heureka, Sklik) největší smysl?** [AI SEO audit za 3 600 Kč](/audit/) projde vaši analytiku, zhodnotí pozici v Seznam i Google organic i v AI vyhledávačích a navrhne, kam alokovat rozpočet a obsahovou práci. Pokud chcete pravidla pro CZ trh zvládnout sami, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje checklisty pro Seznam Search Console, Firmy.cz, Heureku i základ Sklik kampaně.
 
-*Transparentně: Upgates plně podporuje feedy do Heureka, Zboží.cz, Google Shopping i Sklik, takže s technickým napojením e-shopu na český ekosystém máme dlouhodobou praktickou zkušenost. Tržní podíly a popis Seznam Asistenta v tomto článku vycházejí z veřejně dostupných dat k červnu 2026; konkrétní čísla i adopce nového Asistenta se v čase mění. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
+*Transparentně: Upgates plně podporuje feedy do Heureka, Zboží.cz, Google Shopping i Sklik, takže s technickým napojením e-shopu na český ekosystém máme dlouhodobou praktickou zkušenost. Tržní podíly vycházejí z veřejně dostupných dat 2024–2025; popis Seznam Asistenta a výčet jeho zdrojů je z oznámení Seznamu, ověřeno 31. 8. 2026. Konkrétní čísla i adopce Asistenta se v čase mění. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
