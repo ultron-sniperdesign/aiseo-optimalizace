@@ -1079,3 +1079,19 @@ Pravidlo do slovníku nevzniklo: `kdo-publikuje-ip-rozsahy` používá „kandid
 | Bylo | Návrh | Rozhodnutí |
 |---|---|---|
 | „ty dva sloupce“ | „tyto dva sloupce“ | **odmítnuto** — není to kalk ani kostrbatá vazba, ale stylistická preference. Korpus používá „ty dvě / ta dvě“ 12×, tedy hlas webu; pravidlo skillu říká, že stylistické preference se nehlásí a náhrada se řídí tím, co web už používá. |
+
+---
+
+## C6 při psaní: `nove-vstupy-do-vyhledavani` (31. 8. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 8 nálezů napoprvé — **všech osm česká uvozovka zavřená rovnou** u anglických citací z oznámení Googlu (past heredocu). Po hromadné opravě 0. |
+| LLM (gpt-5.4) | 2 nálezy — 1 přijat, 1 odmítnut |
+
+| Bylo | Je | Rozhodnutí |
+|---|---|---|
+| „Google to u obou **ploch** uvádí výslovně“ | „u obou **funkcí**“ | **přijato** — „plocha“ je na webu zavedená pro AI plochy (AI Overviews, Režim AI), tady ale šlo o dvě funkce vstupu; význam neseděl |
+| „jedna sekce **=** jedna zodpovězená otázka“ | rozepsat bez `=` | **odmítnuto** — zkratka s rovnítkem je idiom webu, používá ji **24 článků** („jeden článek = jedna otázka“, „text = body“). Stylistická preference, ne kalk. |
+
+**Opakuje se potřetí:** psaní `.mdx` přes heredoc vyrábí `„…"` místo `„…“`, a u článků s anglickými citacemi to zasáhne každou z nich. Mechanická kontrola to chytá spolehlivě; hromadná oprava jedním regulárním výrazem trvá vteřinu.
