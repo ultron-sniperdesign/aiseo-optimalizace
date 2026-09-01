@@ -1,0 +1,142 @@
+---
+title: "Personalizace AI odpovědí: proč test závisí na účtu"
+seoTitle: "Personalizace AI odpovědí: co platí v Česku (2026)"
+description: "Osobní inteligence může ovlivnit AI odpověď podle účtu. Oznámení a nápověda Googlu uvádějí jiný rozsah. Co je doložené a co to dělá s testem."
+answer: "Osobní inteligence je označení pro personalizační funkce v Režimu AI; nápověda Googlu u nich uvádí využití předchozího vyhledávání a aktivity uložené v historii. K 1. 9. 2026 popisuje Google rozsah dvojím způsobem: oznámení mluví o bezmála 200 zemích, nápověda u paměti o USA a angličtině. Pro měření z toho plyne, že účet je proměnná."
+slug: "personalizace-ai-odpovedi"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-09-01"
+updated: "2026-09-01"
+variant: "rich"
+keywords:
+  - "personalizace ai odpovědí"
+  - "osobní inteligence google"
+  - "personal intelligence ai mode"
+  - "proč má každý jinou ai odpověď"
+  - "test ai viditelnosti účet"
+stats:
+  - value: "2"
+    label: "zdroje Googlu, které uvádějí jiný rozsah dostupnosti"
+  - value: "18+"
+    label: "věková podmínka, kterou nápověda u personalizace uvádí"
+  - value: "0"
+    label: "oficiálních čísel Googlu o tom, jak moc se odpovědi mezi účty liší"
+faq:
+  - q: "Co je Osobní inteligence v Režimu AI?"
+    a: "Podle české nápovědy Googlu funkce, která využívá předchozí vyhledávání a aktivitu uloženou v historii vyhledávacích služeb, aby nabízela návrhy přizpůsobené vkusu a preferencím uživatele. Oznámení z I/O 2026 u širší Personal Intelligence navíc zmiňuje možnost dobrovolně připojit aplikace jako Gmail a Fotky Google."
+  - q: "Platí personalizace i v Česku?"
+    a: "Záleží na tom, o kterou část jde. Oznámení z I/O 2026 mluví o rozšíření Personal Intelligence do bezmála 200 zemí a 98 jazyků. Nápověda ale u paměti v Režimu AI uvádí dostupnost v USA a v angličtině. Z oznámení samotného tedy dostupnost té dílčí funkce v Česku odvodit nejde."
+  - q: "Jak se personalizace liší od proměnlivosti odpovědí?"
+    a: "Jsou to dvě různé osy. Proměnlivost znamená, že stejný člověk může při opakování dostat jiný výsledek. Personalizace znamená, že dva lidé mohou ve stejnou chvíli dostat jiný výsledek kvůli historii a nastavení účtu. Test musí počítat s oběma."
+  - q: "Co to znamená pro test AI viditelnosti?"
+    a: "Že účet, na kterém testujete, je proměnná stejně jako dotaz. Výsledek platí pro daný účet, nastavení a chvíli — ne pro všechny uživatele. Bez zapsaného kontextu se test nedá po čase zopakovat ani obhájit."
+  - q: "Dá se personalizace vypnout?"
+    a: "Nápověda uvádí, že se dá kdykoli zapnout i vypnout, a že uživatel může Režimu AI říct, aby si konkrétní detail zapamatoval nebo zapomněl. U této funkce nápověda uvádí podmínky: věk nad 18 let a zapnutou historii a personalizovaná doporučení."
+  - q: "Jak moc se odpovědi mezi lidmi liší?"
+    a: "Google k tomu v citovaných zdrojích žádné číslo neuvádí a vlastní měření nemáme, takže procento rozdílu mezi účty neuvádíme ani my. Kdo takové číslo publikuje, měl by k němu doložit vzorek, období a způsob, jak testoval napříč účty."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Váš test je váš výsledek
+
+**Osobní inteligence je označení pro personalizační funkce v Režimu AI; nápověda Googlu u nich uvádí využití předchozího vyhledávání a aktivity uložené v historii.** K 1. 9. 2026 popisuje Google rozsah dvojím způsobem: oznámení mluví o bezmála 200 zemích, nápověda u paměti o USA a angličtině. Pro měření z toho plyne, že účet je proměnná.
+
+Česky se ta funkce jmenuje **Osobní inteligence** — v anglickém rozhraní *Personal Intelligence*. Pod tím názvem ji najdete i v nápovědě.
+
+## Dva zdroje Googlu, dva různé rozsahy
+
+Tohle je jádro článku, proto obě věty doslova a s uvedením zdroje.
+
+<CompareTable
+  leftLabel="Oznámení z I/O 2026"
+  rightLabel="Nápověda Vyhledávání"
+  rows={[
+    { icon: "🌍", label: "Rozsah", left: "„expanding Personal Intelligence in AI Mode to more people in nearly 200 countries and territories across 98 languages“", right: "„Tato funkce je dostupná v USA, v angličtině.“" },
+    { icon: "📅", label: "Datum", left: "19. 5. 2026, blog.google", right: "stav ověřený 1. 9. 2026" },
+    { icon: "🎯", label: "O čem přesně mluví", left: "o Personal Intelligence šířeji, včetně připojení Gmailu a Fotek", right: "o paměti v Režimu AI — o schopnosti zapamatovat si detaily, které uživatel sám sdělí" },
+  ]}
+/>
+
+<Insight tone="warn" label="Není to spor, je to jiný rozsah">
+  Obě věty mohou platit zároveň, protože **nemluví o tomtéž**. Pod jedním názvem je víc dílčích funkcí a každá má vlastní dostupnost. Praktický důsledek: **číslo z oznámení samo o sobě nedokládá, že je konkrétní dílčí funkce dostupná ve vašem prostředí** — u té je potřeba sáhnout po aktuální nápovědě. Postup rozebírá [jak ověřit dostupnost AI funkce](/blog/jak-overit-dostupnost-ai-funkce/).
+</Insight>
+
+## Co je doložené a co ne pro českého čtenáře
+
+<Checklist title="Stav k 1. 9. 2026" items={[
+  { title: "Paměť v Režimu AI: jen USA a angličtina", desc: "Nápověda to uvádí výslovně. Pro české prostředí tedy doložená není." },
+  { title: "Historie a personalizovaná doporučení: podmínka této funkce", desc: "Nápověda u personalizace v Režimu AI uvádí věk nad 18 let a zapnutou historii a personalizovaná doporučení." },
+  { title: "Připojení Gmailu a Fotek: podle oznámení dobrovolné", desc: "Oznámení ho popisuje jako volbu uživatele. Samo o sobě ale není dokladem, že je každá dílčí funkce dostupná v českém účtu. Souhlas a jeho rozsah rozebírá samostatný článek o propojených aplikacích." },
+  { title: "Vypnutí kdykoli", desc: "Nápověda uvádí, že personalizaci jde zapnout i vypnout a paměti lze říct, aby detail zapomněla." },
+]} />
+
+Co z připojených aplikací Google bere a čeho se souhlas týká, popisuje [propojení aplikací v Režimu AI](/blog/propojene-aplikace-v-ai-mode/).
+
+## Dvě různé osy, které se pletou
+
+Proměnlivost a personalizace nejsou totéž, i když se projevují stejně — jinou odpovědí.
+
+<CompareTable
+  leftLabel="Proměnlivost mezi běhy"
+  rightLabel="Personalizace mezi lidmi"
+  rows={[
+    { icon: "🔁", label: "Kdo se ptá", left: "stejný člověk, stejný dotaz, jindy — a může dostat jiný výsledek", right: "dva různí lidé, stejný dotaz, ve stejnou chvíli — a mohou dostat jiný výsledek" },
+    { icon: "🧩", label: "Příčina", left: "systém skládá odpověď pokaždé znovu", right: "do odpovědi vstupuje historie a nastavení konkrétního účtu" },
+    { icon: "📏", label: "Jak se s tím měří", left: "opakovat a zapsat podíl výskytů", right: "zapsat účet a nastavení jako součást metodiky" },
+  ]}
+/>
+
+Kolikrát má smysl testovat kvůli proměnlivosti, rozebírá [proměnlivost AI odpovědí](/blog/volatilita-ai-odpovedi/). Personalizace k tomu přidává druhou proměnnou: **na jakém účtu test běžel.**
+
+## Co to dělá s testem viditelnosti
+
+Ruční test zůstává nejdostupnějším způsobem, jak zjistit, co o vás AI říká — u ChatGPT a Perplexity k tomu navíc k 1. 9. 2026 není veřejně dostupný oficiální přehled viditelnosti od provozovatele. Personalizace ale mění, co výsledek znamená:
+
+<Stepper
+  steps={[
+    { title: "Zapište účet a nastavení", desc: "Přihlášený nebo nepřihlášený, země, jazyk, zapnutá historie. Bez toho se test nedá po čase zopakovat." },
+    { title: "Testujte i mimo vlastní účet", desc: "Váš účet má za sebou roky vaší práce v oboru. Anonymní okno je jiná situace než účet člověka, který o vás už četl." },
+    { title: "Nezaměňujte anonymní okno za průměrného uživatele", desc: "Omezí lokální historii a obvykle oddělí test od přihlášeného účtu. Neodstraní ale region, jazyk, aktuální kontext ani proměnlivost. Je to podmínka testu, ne jeho řešení." },
+    { title: "Do výstupu napište, pro koho výsledek platí", desc: "Pro daný účet, prostředí a chvíli. Obecnější tvrzení než tohle test neunese." },
+  ]}
+/>
+
+Širší postup má [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/), limity oficiálních dat [měření Režimu AI](/blog/mereni-ai-mode-limity/).
+
+## Co z toho neplyne
+
+<MistakeGrid>
+  <Mistake num="01" title="„V Česku personalizace není“">
+    Doložené je jen to, že omezení na USA a angličtinu stojí u paměti v Režimu AI. Historii a personalizovaná doporučení má Google i jinde.
+  </Mistake>
+  <Mistake num="02" title="„Měření tím ztrácí smysl“">
+    Neztrácí, jen se mění jeho výklad. Trend při stabilní metodice je pořád použitelný; jednorázové absolutní číslo nikdy nebylo.
+  </Mistake>
+  <Mistake num="03" title="„Stačí testovat z anonymního okna“">
+    Omezí lokální historii a obvykle oddělí test od přihlášeného účtu. Neodstraní ale region, jazyk ani samotnou proměnlivost — je to podmínka testu, ne řešení.
+  </Mistake>
+  <Mistake num="04" title="„Personalizaci jde optimalizovat“">
+    Web tuhle osobní vrstvu neumí přímo nastavit. Ovlivnitelné zůstává, jestli je obsah dohledatelný, srozumitelný a doložitelný — tedy jestli má AI vůbec z čeho vybírat. Souvisí to s [hranicemi AI SEO](/blog/co-ai-seo-nezvladne/).
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Osobní inteligence** může využívat historii vyhledávání konkrétního člověka. Personalizaci jde podle nápovědy zapnout i vypnout; u paměti v Režimu AI může uživatel říct, co si má zapamatovat nebo zapomenout.
+- **Dva zdroje Googlu uvádějí jiný rozsah.** Oznámení mluví o Personal Intelligence šířeji, nápověda omezuje paměť v Režimu AI na USA a angličtinu. Dostupnost konkrétní funkce se ověřuje v aktuální nápovědě.
+- **Proměnlivost a personalizace jsou dvě různé osy** — mezi běhy a mezi lidmi. Test musí počítat s oběma.
+- **Účet je proměnná.** Bez zapsaného účtu, prostředí a období není výsledek testu obhajitelný.
+- **Google v citovaných zdrojích neuvádí, jak moc se odpovědi mezi účty liší** — a vlastní měření nemáme.
+
+**Chcete test viditelnosti, který obstojí i za rok?** [AI SEO audit za 3 600 Kč](/audit/) projde vzorek vašich dotazů se zapsanou metodikou — účet, prostředí, období — a řekne, co z výsledku plyne a co ne.
+
+*Zdroje: nápověda Vyhledávání Google, [Osobní inteligence v režimu AI](https://support.google.com/websearch/answer/17212611) — česká i anglická verze, ověřeno 1. 9. 2026 · [100 things we announced at Google I/O 2026](https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/), blog.google, 19. 5. 2026. Rozdíl mezi oběma zdroji je v článku popsaný záměrně: nemluví o stejné dílčí funkci.*

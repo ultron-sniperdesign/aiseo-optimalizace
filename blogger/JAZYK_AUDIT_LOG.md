@@ -1095,3 +1095,32 @@ Pravidlo do slovníku nevzniklo: `kdo-publikuje-ip-rozsahy` používá „kandid
 | „jedna sekce **=** jedna zodpovězená otázka“ | rozepsat bez `=` | **odmítnuto** — zkratka s rovnítkem je idiom webu, používá ji **24 článků** („jeden článek = jedna otázka“, „text = body“). Stylistická preference, ne kalk. |
 
 **Opakuje se potřetí:** psaní `.mdx` přes heredoc vyrábí `„…"` místo `„…“`, a u článků s anglickými citacemi to zasáhne každou z nich. Mechanická kontrola to chytá spolehlivě; hromadná oprava jedním regulárním výrazem trvá vteřinu.
+
+---
+
+## C6 při psaní: `personalizace-ai-odpovedi` (1. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | **0 nálezů napoprvé** (soubor psán rovnou s českými uvozovkami) |
+| LLM (gpt-5.4) | 8 nálezů — **5 přijato, 3 odmítnuta** |
+
+**Přijato** (gramatika a srozumitelnost):
+
+| Bylo | Je |
+|---|---|
+| „detaily, které **jí** uživatel sám sdělí“ | „detaily, které uživatel sám sdělí“ — zájmeno mohlo odkazovat k paměti i k AI |
+| „Pod tím názvem ji **taky** najdete v nápovědě“ | „…ji najdete **i** v nápovědě“ — nešlo o slovo „taky“, ale o slovosled |
+| „nedokládá **dostupnost funkce u vás**“ | „nedokládá, že je funkce dostupná **ve vašem prostředí**“ |
+| „Trend **na** stabilní metodice“ | „Trend **při** stabilní metodice“ — chybná předložková vazba |
+| „jestli **je** vůbec z čeho vybírat“ | „jestli **má AI** vůbec z čeho vybírat“ — chyběl podmět |
+
+**Odmítnuto** (stylistické preference, které skill hlásit nemá):
+
+| Návrh | Proč ne |
+|---|---|
+| „co Google **bere**“ → „využívá“ | zrcadlí nadpis vlastního článku `propojene-aplikace-v-ai-mode` („Co z propojených dat Google bere“) — hlas webu |
+| „**zůstává** nejdostupnějším“ → „je dál“ | významově totéž, jen jiná chuť |
+| „**řekne**, co z výsledku plyne“ → „ukáže“ | totéž |
+
+**Poznámka:** LLM průchod tentokrát našel dvě skutečné gramatické chyby (předložka „na“, chybějící podmět), které mechanická kontrola chytit neumí. Potvrzuje to, proč jsou v C6 oba průchody.
