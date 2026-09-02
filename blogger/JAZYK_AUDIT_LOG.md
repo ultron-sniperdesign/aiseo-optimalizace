@@ -1124,3 +1124,18 @@ Pravidlo do slovníku nevzniklo: `kdo-publikuje-ip-rozsahy` používá „kandid
 | „**řekne**, co z výsledku plyne“ → „ukáže“ | totéž |
 
 **Poznámka:** LLM průchod tentokrát našel dvě skutečné gramatické chyby (předložka „na“, chybějící podmět), které mechanická kontrola chytit neumí. Potvrzuje to, proč jsou v C6 oba průchody.
+
+---
+
+## C6 při psaní: `ai-prehled-prihlaseni-zarizeni` (2. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 0 nálezů napoprvé |
+| LLM (gpt-5.4) | 7 nálezů — **6 přijato, 1 odmítnut** |
+
+Přijaté opravy: „není potřeba **se přihlásit**“ → „není potřeba **přihlášení**“ · „odhlášeným zobrazují“ → „odhlášeným **uživatelům** zobrazují“ (chyběl předmět) · „potvrdil **Search Engine Landu**“ → „potvrdil **webu** Search Engine Land“ (holý dativ názvu) · „Vzorek neuvedený“ → „Neuvedený vzorek“ · „Cizí studie **je** nemusí uvádět“ → „tyto proměnné“ (nejasné zájmeno) · „s **uvedeným** účtem“ → „s **uvedením** účtu“ (chybná vazba).
+
+**Odmítnuto:** „spuštění přehledu“ → „zobrazení“. Slovo „spustí/spouštění“ je pro AI přehled zavedené v korpusu (titulek `kdy-ai-prehled-necekat`: „Kdy se spustí AI přehled“) — náhrada se řídí tím, co web už používá.
+
+**Vedlejší nález mimo jazyk:** po druhém kole auditu jsem překročil limity `description` (167 znaků) a `answer` (63 slov) a build spadl. Auditor navrhuje delší formulace a limity nehlídá — po každém kole je nutné přeměřit oba údaje, ne jen po prvním draftu.

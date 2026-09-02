@@ -1,0 +1,141 @@
+---
+title: "AI přehled podle přihlášení a zařízení: co Google doložil"
+seoTitle: "AI přehled u přihlášených a podle zařízení (2026)"
+description: "AI přehled nevyžaduje přihlášení k účtu Google. Rozdíly podle přihlášení a zařízení Google nepotvrzuje; známé měření je z USA z roku 2024. Co si zapsat k testu."
+answer: "AI přehled je odpověď složená generativní AI přímo ve výsledcích Googlu. Přihlášení k účtu není jeho podmínkou: v USA se od srpna 2024 zobrazuje i odhlášeným uživatelům a od března 2025 Google uvádí, že přihlášení není potřeba. Rozdíl v četnosti podle přihlášení nebo zařízení Google nedokumentuje; dostupné je jen měření nástroje z roku 2024. Účet a zařízení si zapisujte."
+slug: "ai-prehled-prihlaseni-zarizeni"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-09-02"
+updated: "2026-09-02"
+variant: "rich"
+keywords:
+  - "ai přehled přihlášení"
+  - "ai overviews přihlášený uživatel"
+  - "ai přehled mobil desktop"
+  - "proč nevidím ai přehled"
+  - "ai overview odhlášený incognito"
+stats:
+  - value: "2"
+    label: "data, kdy Google zrušil požadavek na přihlášení: srpen 2024 (USA) a březen 2025"
+  - value: "2024"
+    label: "rok jediného měření, ze kterého pochází tvrzení „přihlášeným častěji“"
+  - value: "0"
+    label: "vět v nápovědě o tom, že by se zobrazení lišilo podle zařízení"
+faq:
+  - q: "Musím být přihlášený, aby se mi AI přehled zobrazil?"
+    a: "Ne. Google v březnu 2025 napsal, že k přístupu k AI přehledům už není potřeba přihlášení; v USA se odhlášeným uživatelům zobrazují od srpna 2024. Přihlášení hraje roli jinde — u vypínání přes Search Labs, které je vázané na účet."
+  - q: "Zobrazuje se AI přehled přihlášeným častěji?"
+    a: "Google to nikde neuvádí. Tvrzení pochází z měření nástroje BrightEdge ze srpna 2024, tedy z prvních týdnů po rozšíření na odhlášené uživatele v USA. Na stav v roce 2026 se to přenést nedá."
+  - q: "Liší se AI přehled na mobilu a na počítači?"
+    a: "V rozložení stránky ano. Rozdíl v podmínkách zobrazení podle zařízení nápověda neuvádí: záložky pro počítač, Android a iPhone se liší jen v postupu klikání a dostupnost nápověda popisuje jednotně pro všechny uživatele v daných zemích a jazycích."
+  - q: "Proč vidím jiný výsledek než uvádí cizí studie?"
+    a: "Protože cizí číslo vzniklo na jiném vzorku dotazů, v jiném období, často v jiné zemi a bez uvedení účtu a zařízení. Váš test může mít jiné hodnoty v jedné nebo více z těchto proměnných. Rozdíl je proto očekávaný, ne důkaz chyby."
+  - q: "Mám testovat v anonymním okně?"
+    a: "Ano, ale jako jednu z podmínek, ne jako řešení. Anonymní okno oddělí test od účtu, neodstraní region, jazyk ani proměnlivost odpovědí. K výsledku si zapište, v jakém režimu a na jakém zařízení vznikl."
+  - q: "Jde AI přehled vypnout podle účtu?"
+    a: "Ne úplně. Nápověda uvádí, že AI přehledy jsou základní funkce vyhledávání a vypnout se nedají. Přihlášený účet hraje roli u nastavení experimentu v Search Labs; co jde a nejde, rozebírá samostatný návod."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Dvě otázky, dvě různé odpovědi
+
+**AI přehled je odpověď složená generativní AI přímo ve výsledcích Googlu. Přihlášení k účtu není jeho podmínkou:** v USA se od srpna 2024 zobrazuje i odhlášeným uživatelům a od března 2025 Google uvádí, že přihlášení není potřeba. Rozdíl v četnosti podle přihlášení nebo zařízení Google nedokumentuje; dostupné je jen měření nástroje z roku 2024. Účet a zařízení si zapisujte.
+
+Otázka z titulku se totiž skládá ze dvou: **jestli přihlášení rozhoduje o tom, že přehled vůbec uvidíte** — na to Google odpověděl — a **jestli se podle přihlášení nebo zařízení zobrazuje častěji** — k tomu Google žádné potvrzení nezveřejnil a dostupné je jen měření nástroje z roku 2024.
+
+## Co Google doložil o přihlášení
+
+<CompareTable
+  leftLabel="Srpen 2024"
+  rightLabel="Březen 2025"
+  rows={[
+    { icon: "🌐", label: "Rozsah", left: "USA", right: "přístup k AI přehledům bez přihlášení tam, kde jsou dostupné" },
+    { icon: "📝", label: "Formulace ve zdroji", left: "Search Engine Land po potvrzení od Googlu: „AI Overviews will now appear for all users in the United States, even if they are not signed into their Google account“", right: "Google doslova: „you'll no longer need to sign in to get access“ a „teens can now use AI Overviews“" },
+    { icon: "📌", label: "Zdroj", left: "Google potvrdil webu Search Engine Land, 15. 8. 2024", right: "blog.google, 5. 3. 2025" },
+  ]}
+/>
+
+Anonymní režim je jiná věc: Search Engine Land i výrobce nástroje seoClarity v srpnu 2024 **pozorovali** přehledy v inkognitu. Je to pozorování, ne prohlášení Googlu — a od té doby se podmínky uvolnily, ne zpřísnily.
+
+<Insight tone="aeo" label="Kde přihlášení roli má">
+  U nastavení v Search Labs, ne u zobrazení. Nastavení experimentu je vázané na přihlášený účet; základní AI přehledy ale podle nápovědy vypnout nejdou — jsou to základní funkce vyhledávání. Co jde a nejde, rozebírá [jak vypnout AI přehled](/blog/jak-vypnout-ai-overview/).
+</Insight>
+
+## Odkud se vzalo „přihlášeným častěji“
+
+Tvrzení má jeden zdroj: měření nástroje BrightEdge Generative Parser ze **srpna 2024**. Nástroj tehdy hlásil nižší viditelnost přehledů u odhlášených uživatelů, s největším rozdílem u e-shopových dotazů. Přesná čísla sem záměrně nepřebírám — patří do rozboru četnosti přehledů, ne sem.
+
+Tři věci, bez kterých to číslo nejde použít:
+
+<Checklist title="Kontext měření BrightEdge" items={[
+  { title: "První týdny po změně", desc: "Měřilo se hned po rozšíření na odhlášené uživatele v USA. Popisovalo náběh, ne ustálený stav." },
+  { title: "Neuvedený vzorek", desc: "Příspěvek neuvádí počet klíčových slov ani jejich složení; jen že se obory lišily." },
+  { title: "Dva roky staré", desc: "Od té doby Google uvedl, že přihlášení pro přístup k AI přehledům není potřeba. Měření popisuje jinou fázi nasazení." },
+]} />
+
+V některých rešerších a AI výstupech z roku 2026 se tohle měření objevuje bez data — nebo s datem špatným. **Google sám nic o rozdílné četnosti podle přihlášení nezveřejnil.**
+
+## Zařízení: co nápověda říká a co ne
+
+[Nápověda k AI přehledům](https://support.google.com/websearch/answer/14901683) má tři záložky — počítač, Android a iPhone. Liší se jen v tom, kam kliknout. Dostupnost popisuje jednotně: pro všechny uživatele v uvedených zemích a jazycích. U samotného spuštění přehledu pro konkrétní dotaz uvádí obecné pravidlo: přehled se může objevit, když systémy vyhodnotí, že by generativní AI mohla být užitečná. Zařízení v té formulaci nefiguruje (ověřeno 2. 9. 2026).
+
+Rozdíl na mobilu tedy **existuje v rozložení** — panel zabírá jinou část obrazovky — ale **není doložený v podmínkách zobrazení**. Kdo tvrdí, že se na mobilu přehled objevuje častěji, musí to doložit vlastním měřením — Google takový rozdíl v nápovědě neuvádí.
+
+## Proč se váš test rozchází s cizím číslem
+
+Cizí číslo o četnosti přehledu a váš ruční test se často liší ve čtyřech proměnných. Cizí studie tyto proměnné nemusí uvádět a u vlastního testu si je lidé obvykle nezapisují:
+
+<CompareTable
+  leftLabel="Cizí číslo"
+  rightLabel="Váš test"
+  rows={[
+    { icon: "🔑", label: "Účet", left: "neuvedeno, často směs", right: "váš účet s roky historie v oboru — nebo anonymní okno" },
+    { icon: "📱", label: "Zařízení", left: "neuvedeno nebo sloučeno", right: "to, ze kterého zrovna testujete" },
+    { icon: "🌍", label: "Země a jazyk", left: "nejčastěji USA a angličtina", right: "Česko a čeština" },
+    { icon: "📅", label: "Období", left: "z jiného období, často neuvedeného", right: "konkrétní den měření" },
+  ]}
+/>
+
+Rozdíl je proto očekávaný stav, ne důkaz, že jedna strana měří špatně. Proč se rozcházejí i cizí čísla mezi sebou, rozebírá [jak často se zobrazuje AI přehled](/blog/jak-casto-se-zobrazuje-ai-prehled/).
+
+## Jak testovat, aby šel výsledek srovnat
+
+Pro srovnání stačí zapsat k výsledku čtyři věci: **účet nebo anonymní okno, zařízení, zemi a jazyk, datum měření.** Anonymní okno přitom oddělí test od účtu, ale neodstraní region, jazyk ani proměnlivost — je to podmínka, ne řešení. Mobil a počítač do jednoho čísla neslučujte.
+
+Podrobný postup měření řeší samostatný návod [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/); proč je účet proměnná i u obsahu odpovědi, ne jen u zobrazení panelu, vysvětluje [personalizace AI odpovědí](/blog/personalizace-ai-odpovedi/).
+
+## Co z toho neplyne
+
+<MistakeGrid>
+  <Mistake num="01" title="„Přihlášení nehraje roli“">
+    Přihlášení není podmínkou přístupu k AI přehledům. Rozdíl v četnosti podle přihlášení Google nedokumentuje; roli má přihlášení hlavně u nastavení experimentu v Search Labs.
+  </Mistake>
+  <Mistake num="02" title="„Na mobilu se přehled zobrazuje častěji“">
+    Google to nedokumentuje. Doložený je rozdíl v rozložení stránky, ne v podmínkách zobrazení.
+  </Mistake>
+  <Mistake num="03" title="Citovat měření BrightEdge z roku 2024 jako stav v roce 2026">
+    Měření popisovalo náběh v USA před dvěma lety, bez uvedeného vzorku. Četnost v roce 2026 z něj neplyne.
+  </Mistake>
+  <Mistake num="04" title="„Můj test vyvrací cizí studii“">
+    Nevyvrací. Liší se účet, zařízení, trh i období. Srovnávat jde jen dva vlastní testy se stejnými zápisy.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Přihlášení není podmínka zobrazení.** USA od srpna 2024; od března 2025 Google uvádí, že pro přístup k AI přehledům přihlášení není potřeba — obojí doložené Googlem.
+- **„Přihlášeným častěji“ stojí na jednom měření nástroje z roku 2024**, z prvních týdnů po změně, bez uvedeného vzorku. Google nic takového nezveřejnil.
+- **Zařízení nápověda v podmínkách zobrazení nezmiňuje.** Doložený rozdíl je v rozložení stránky; rozdíl v tom, jestli se přehled objeví, Google v nápovědě neuvádí.
+- **Vlastní test se od cizího čísla liší ve čtyřech proměnných** — účet, zařízení, trh, období. Zapisujte je, jinak se nedá srovnat ani vlastní test s vlastním.
+
+**Chcete vědět, u kterých vašich dotazů se přehled objevuje, se zápisem, ke kterému se dá později vrátit?** [AI SEO audit za 3 600 Kč](/audit/) projde vzorek dotazů z Česka, na mobilu i počítači, s uvedením účtu a období — a řekne, co z výsledku plyne a co ne.
+
+*Zdroje: [Expanding AI Overviews and introducing AI Mode](https://blog.google/products/search/ai-mode-search/), blog.google, 5. 3. 2025 · [Google AI Overviews now show for signed-out users in the US](https://searchengineland.com/google-ai-overviews-now-show-for-signed-out-users-in-the-us-445232), Search Engine Land, 15. 8. 2024 (potvrzení od Googlu, pozorování inkognita) · [August Brings Significant Changes in AI Overviews Rollout and Behavior](https://www.brightedge.com/blog/august-brings-significant-changes-ai-overviews-rollout-and-behavior), BrightEdge, srpen 2024 · nápověda Vyhledávání Google, [AI Overviews](https://support.google.com/websearch/answer/14901683), záložky pro počítač a Android, ověřeno 2. 9. 2026.*
