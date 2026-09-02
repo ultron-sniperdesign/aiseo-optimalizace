@@ -1,0 +1,200 @@
+---
+title: "Content Signals: řízení AI botů podle účelu"
+seoTitle: "Content Signals v robots.txt: řízení AI botů podle účelu"
+description: "Content Signals přidává do robots.txt preference podle účelu: vyhledávání, AI odpovědi, trénink. Jak to zapsat, s čím to zkombinovat a kdo to dnes vůbec čte."
+answer: "Content Signals je rozšíření robots.txt od Cloudflare, kterým web vyjadřuje preferenci použití obsahu: pro vyhledávání, jako vstup do AI odpovědí a pro trénink modelů. Zapisuje se jednou řádkou vedle běžných pravidel; jména robotů nenahrazuje, doplňuje je. K 2. 9. 2026 žádný velký provozovatel veřejně nepotvrdil, že ho čte; Cloudflare ho řeší hlavně u ověřených botů ve své síti."
+slug: "content-signals-rizeni-ai-botu"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "ai-platformy"
+published: "2026-09-02"
+updated: "2026-09-02"
+variant: "rich"
+keywords:
+  - "content signals robots.txt"
+  - "content-signal cloudflare"
+  - "řízení ai botů robots.txt"
+  - "ai-train ai-input search robots.txt"
+  - "jak povolit citace a zakázat trénink"
+stats:
+  - value: "3"
+    label: "signály účelu: search, ai-input, ai-train — plus parametr use= od července 2026"
+  - value: "3,8 mil."
+    label: "domén s výchozím nastavením přes spravovaný robots.txt Cloudflare (údaj Cloudflare, září 2025)"
+  - value: "0"
+    label: "velkých provozovatelů botů, kteří k 2. 9. 2026 veřejně potvrdili, že Content Signals čtou"
+faq:
+  - q: "Co je Content Signals?"
+    a: "Rozšíření robots.txt, které Cloudflare zveřejnil 24. září 2025 pod licencí CC0. Řádkou Content-Signal web vyjadřuje preferenci, k čemu se obsah má a nemá použít: search (vyhledávací index a výsledky s odkazy a úryvky), ai-input (vstup do AI odpovědí, například RAG) a ai-train (trénink modelů). Od července 2026 přibyl parametr use= s hodnotami immediate, reference a full."
+  - q: "Nahrazuje Content Signals pravidla podle jmen robotů?"
+    a: "Ne. Je to doplněk. Jména (GPTBot, OAI-SearchBot, ClaudeBot…) řídí, kdo smí na web; Content Signals vyjadřuje preferenci, k čemu se obsah má a nemá použít. Dává smysl mít obojí — a jména zůstávají tím, co provozovatelé botů skutečně dokumentují."
+  - q: "Kdo Content Signals respektuje?"
+    a: "K 2. 9. 2026 to ve své dokumentaci neuvádí OpenAI ani Anthropic a John Mueller z Googlu napsal, že direktiva nemá žádný účinek na žádný crawler ani model. Vymáhání existuje jen v síti Cloudflare: ověřené boty, které signály ignorují, mohou přijít o status."
+  - q: "Má tedy smysl to nastavovat?"
+    a: "Jako vyjádření preference ano. Samotná řádka Content-Signal by indexaci rozbít neměla, protože neznámé direktivy roboti ignorují; riziko vzniká jen při chybě v Disallow nebo při zapnutí spravovaného robots.txt v Cloudflare bez kontroly výsledného souboru. Jako ochranu ne — cokoli musí platit dnes, řešte jmény robotů a na úrovni serveru nebo CDN."
+  - q: "Jak zapsat, že chci citace, ale ne trénink?"
+    a: "Kombinací: vyhledávací roboty (OAI-SearchBot, Claude-SearchBot, PerplexityBot) povolit jménem, tréninkové (GPTBot, ClaudeBot, CCBot) omezit jménem, a k tomu do skupiny User-agent: * přidat Content-Signal. Pro vyhledávání s odkazy a úryvky stačí search=yes, ai-train=no; pokud chcete výslovně povolit i použití obsahu v AI odpovědích, přidejte ai-input=yes. K 2. 9. 2026 ale žádný velký provozovatel veřejně nepotvrdil, že tuto preferenci čte."
+  - q: "Jak ověřit, že jsem si nerozbil indexaci?"
+    a: "Otevřete robots.txt v prohlížeči, zkontrolujte klíčové adresy v Search Console přes kontrolu URL, po pár dnech projděte report Indexování stránek a v logu serveru ověřte, že Googlebot i vyhledávací AI roboti dál chodí. Řádka Content-Signal sama nic neblokuje; rozbít indexaci může jen chyba v Disallow."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Účel místo jména — a jedna poctivá výhrada
+
+**Content Signals je rozšíření robots.txt od Cloudflare, kterým web vyjadřuje preferenci použití obsahu: pro vyhledávání, jako vstup do AI odpovědí a pro trénink modelů.** Zapisuje se jednou řádkou vedle běžných pravidel; jména robotů nenahrazuje, doplňuje je. K 2. 9. 2026 žádný velký provozovatel veřejně nepotvrdil, že ho čte; Cloudflare ho řeší hlavně u ověřených botů ve své síti.
+
+Základ — které roboty povolit a které omezit jménem — má [řízení AI robotů v robots.txt](/blog/ai-crawler-robots-txt/). Tento text přidává další vrstvu: co Content Signals umí vyjádřit, jak se přesně zapisuje, s čím ho zkombinovat a co od něj čekat.
+
+## Proč jména nestačí
+
+Každý velký provozovatel má dnes dva až tři roboty s různým účelem — a jména jsou si často podobná a snadno se spletou:
+
+<CompareTable
+  leftLabel="Trénink"
+  rightLabel="Vyhledávání a citace"
+  rows={[
+    { icon: "🤖", label: "OpenAI", left: "GPTBot — „crawl content that may be used in training“; zákaz znamená nepoužít obsah pro trénink", right: "OAI-SearchBot — „surface websites in search results in ChatGPT's search features“; kdo ho zakáže, nemá se zobrazovat v odpovědích vyhledávání ChatGPT, podle OpenAI se ale může dál objevit jako navigační odkaz" },
+    { icon: "🟠", label: "Anthropic", left: "ClaudeBot — sbírá obsah, který „could potentially contribute to their training“", right: "Claude-SearchBot — „improve search result quality for users“" },
+    { icon: "👤", label: "Na dotaz uživatele", left: "ChatGPT-User — podle OpenAI se na něj pravidla robots.txt „may not apply“", right: "Claude-User — Anthropic uvádí, že robots.txt respektuje i u něj" },
+  ]}
+/>
+
+Plynou z toho tři problémy. **Jména přibývají** — kdo před rokem zakázal GPTBot, tím nezakázal roboty, kteří přibyli později. **Jméno neříká účel** — musíte ho dohledat v dokumentaci každého provozovatele. A **roboti vyvolaní uživatelem** se robots.txt buď neřídí, nebo řídí podle libosti provozovatele; rozebírá je [roboti vyvolaní uživatelem](/blog/roboti-vyvolani-uzivatelem/).
+
+Content Signals obrací logiku: místo „kdo smí“ říká **„k čemu se obsah podle preference webu má použít“**. Je formulovaný obecně, i pro roboty, které ještě neexistují — účinek ale má jen tehdy, když ho konkrétní provozovatel začne číst a respektovat.
+
+## Co Content Signals umí vyjádřit
+
+Cloudflare politiku zveřejnil **24. září 2025** pod licencí CC0, aby ji mohl převzít kdokoli. Syntaxe je jedna řádka ve skupině pravidel:
+
+```txt
+User-Agent: *
+Content-Signal: search=yes, ai-train=no
+Allow: /
+```
+
+Tři signály mají v dokumentu tyhle definice:
+
+<Checklist title="Tři signály účelu" items={[
+  { title: "search", desc: "„building a search index and providing search results (e.g., returning hyperlinks and short excerpts)“ — klasické vyhledávání s odkazy a úryvky." },
+  { title: "ai-input", desc: "„inputting content into one or more AI models (e.g., retrieval augmented generation, grounding)“ — obsah jako vstup do AI odpovědi." },
+  { title: "ai-train", desc: "„training or fine-tuning AI models“ — trénink a doladění modelů." },
+]} />
+
+Dvě pravidla k tomu: **neuvedený signál je neutrální** — web podle Cloudflare „neither grants nor restricts permission“. A u tří signálů `search`, `ai-input` a `ai-train` jsou hodnoty jen `yes` a `no`; parametr `use=` (níže) má vlastní hodnoty.
+
+<Insight tone="aeo" label="Co přibylo v červenci 2026">
+  Cloudflare 1. 7. 2026 přidal parametr **`use=`** se třemi hodnotami: `immediate` („interact, but store and reuse nothing“), `reference` — výchozí („index, excerpt, and link back“) a `full` („summarize and reproduce“). Příklad z oznámení: `Content-Signal: search=yes,ai-train=no,use=reference`. Spravovaný robots.txt Cloudflare dnes vkládá řádku v přesném tvaru `Content-signal: search=yes, ai-train=no, use=reference` pod `User-Agent: *`: svou část **vloží před váš existující robots.txt** a obě části spojí do jedné odpovědi.
+</Insight>
+
+Údaj o rozšíření pochází ze stejného oznámení ze září 2025: spravovaný robots.txt s výchozím `search=yes, ai-train=no` měly zapnutý „over 3.8 million domains“. Novější číslo Cloudflare neuvádí.
+
+## Kdo to čte — poctivě
+
+Tady je ta výhrada z úvodu. **K 2. 9. 2026 žádný velký provozovatel botů veřejně neuvádí, že Content Signals čte.** Dokumentace OpenAI ani Anthropicu k robotům je nezmiňuje. A John Mueller z Googlu na Redditu podle Search Engine Roundtable (6. 7. 2026) napsal, že direktiva nemá „no effects whatsoever for any crawler or LLM“ a jen „adds bloat & future maintenance“ — a že neví o žádném crawleru ani modelu, který by ji potvrdil.
+
+Cloudflare to sám nezastírá: v oznámení stojí, že signály „express preferences; they are not technical countermeasures against scraping. Some companies might simply ignore them.“ Vymáhání existuje jen **uvnitř jeho sítě**: ověřené boty (Verified Bots), které signály ignorují nebo obsah reprodukují celý, mohou přijít o status ověření — a Cloudflare od července 2026 uvádí, že boty reprodukující obsah v plném rozsahu ověřené být nemohou.
+
+<Insight tone="warn" label="Co z toho plyne">
+  Content Signals je **jazyk pro vyjádření preference**, ne přepínač. Samotná řádka by indexaci blokovat neměla — neznámé direktivy roboti obvykle ignorují, jak Mueller sám připomíná; riziko vzniká až při chybě ve skupinách a `Disallow` nebo při nekontrolovaném zapnutí spravovaného souboru. Spoléhat na signál jako na ochranu bezpečné není. Cokoli musí platit dnes, řešte **jmény robotů** a **na úrovni serveru nebo CDN** — tam, kde se dá přístup skutečně odepřít.
+</Insight>
+
+## Návod: vyhledávání ano, trénink ne
+
+Nejčastější přání českého webu: být k nalezení a citovaný, ale nekrmit trénink. Zapisuje se to jmény a Content Signals dohromady — jména pro provozovatele, kteří je dokumentují, signály pro všechny ostatní i pro budoucnost. Pokud tím myslíte klasické vyhledávání s odkazy a úryvky, stačí varianta A níže; pokud chcete výslovně povolit i použití obsahu jako vstupu do AI odpovědí, je přesnější varianta B.
+
+<Stepper
+  steps={[
+    { title: "Rozhodněte, kde pravidlo vzniká", desc: "Máte-li zapnutý spravovaný robots.txt v Cloudflare, nejdřív si otevřete výsledný /robots.txt a najděte vloženou řádku Content-signal. Ruční řádku přidávejte jen tehdy, když tím nevytvoříte druhou skupinu User-agent: * nebo protichůdné hodnoty." },
+    { title: "Vyhledávací roboty povolte jménem", desc: "OAI-SearchBot, Claude-SearchBot, PerplexityBot dostanou vlastní skupinu s Allow. Tohle je jediná část, kterou provozovatelé skutečně dokumentují." },
+    { title: "Tréninkové roboty omezte jménem", desc: "GPTBot, ClaudeBot, CCBot — Disallow na to, co nechcete v tréninku. Google-Extended řešte zvlášť, je to řídicí token, ne robot." },
+    { title: "Do skupiny User-agent: * přidejte Content-Signal", desc: "Základ je search=yes, ai-train=no — vyhledávání s odkazy a úryvky ano, trénink ne. Pokud chcete výslovně povolit i použití obsahu v AI odpovědích, přidejte ai-input=yes; bez něj zůstává tenhle účel neutrální." },
+    { title: "Parametr use= jen když víte, co chcete", desc: "reference je výchozí a odpovídá „citace s odkazem“. Hodnotu immediate nebo full nastavujte jen s jasným důvodem." },
+    { title: "Ověřte a zapište datum", desc: "Po nasazení projděte kontroly níže a k souboru si poznamenejte, k jakému datu jste ho nastavovali. Podpora signálů se může změnit." },
+  ]}
+/>
+
+Takhle vypadá výsledek v celku — jména nahoře, signály ve výchozí skupině. Ukázka je modelová: nepřepisujte podle ní celý soubor naslepo, doplňte skupiny do svého existujícího robots.txt tak, aby zůstala zachovaná vaše pravidla pro indexaci. Seznam robotů je příklad, aktuální tabulku má [základní článek](/blog/ai-crawler-robots-txt/).
+
+```txt
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: *
+Content-Signal: search=yes, ai-train=no
+Allow: /
+```
+
+To je **varianta A**: vyhledávání s odkazy a úryvky ano, trénink ne, použití v AI odpovědích nechává neutrální. Kdo chce výslovně říct i „ano“ AI odpovědím, použije **variantu B** — `Content-Signal: search=yes, ai-input=yes, ai-train=no` — s vědomím, že k 2. 9. 2026 žádný velký provozovatel veřejně nepotvrdil, že tuhle preferenci čte.
+
+Pořadí skupin nerozhoduje: konkrétní `User-agent` má u běžných parserů přednost před `*`. Cloudflare uvádí zápis `Content-Signal` ve skupině `*` jako obecnou preferenci webu; jak by případný čtenář signálů řešil vztah mezi konkrétní skupinou a skupinou `*`, veřejně potvrzené není. Kdo chce nejasnost snížit, zopakuje řádku i v konkrétních skupinách, na kterých mu záleží.
+
+Pro úplnost: náš vlastní robots.txt k 2. 9. 2026 Content Signals nepoužívá a řídí přístup jmény. Přidáme ho ve chvíli, kdy ho aspoň jeden provozovatel, na kterém nám záleží, veřejně potvrdí — do té doby by to bylo jen tvrzení bez adresáta.
+
+## Jak ověřit, že se nic nerozbilo
+
+Řádka `Content-Signal` sama **nic neblokuje** — rozbít indexaci může jen chyba v `Disallow`. Právě proto má smysl kontrola:
+
+<Checklist title="Čtyři kontroly po nasazení" items={[
+  { title: "Soubor je dostupný a čitelný", desc: "Otevřete https://vasedomena.cz/robots.txt — HTTP 200, vaše skupiny na správných místech. U Cloudflare zkontrolujte, jestli spravovaná část nepřibyla před tu vaši." },
+  { title: "Kontrola URL v Search Console", desc: "Projděte klíčové adresy přes kontrolu URL. Stav „blokováno souborem robots.txt“ by se měl objevit jen tam, kde jste ho chtěli." },
+  { title: "Report Indexování stránek po pár dnech", desc: "Sledujte, jestli nepřibyly stránky „blokováno souborem robots.txt“." },
+  { title: "Log serveru", desc: "Googlebot i vyhledávací AI roboti (OAI-SearchBot, Claude-SearchBot, PerplexityBot) mají chodit dál. Tréninkové roboty, které jste omezili jménem, by měly přestat stahovat zakázané adresy — samotný robots.txt mohou načítat dál." },
+]} />
+
+## Dvě věci, se kterými se to plete
+
+**AIPREF (IETF)** má stejný princip — vyjádřit účel, ne jméno — ale **jiný slovník**: hlavička nebo pravidlo `Content-Usage: train-ai=n`. Slovníkový draft je z dubna 2026 s expirací v říjnu, doprovodný draft o připojení preferencí propadl bez nové revize. Není to totéž co Content Signals a není to standard; co z toho plyne, rozebírá základní článek [o robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+
+**Kategorie botů v Cloudflare** (Search, Agent, Training) jsou jiná vrstva — nastavení v účtu Cloudflare, které přístup skutečně odepře, ne řádka v robots.txt. Rozebírá je [řízení AI robotů v Cloudflare](/blog/cloudflare-ai-bot-blocking/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Nahradit jména signály">
+    Signály nikdo z velkých provozovatelů nepotvrdil; jména dokumentují všichni. Signály jsou doplněk, jména základ.
+  </Mistake>
+  <Mistake num="02" title="Spoléhat na signál jako na ochranu">
+    Cloudflare sám píše, že jde o preference, ne o technické opatření. Co musí platit dnes, řešte na serveru nebo v CDN.
+  </Mistake>
+  <Mistake num="03" title="Zakázat ai-input a divit se, že citace mizí">
+    Signál ai-input=no říká „nepoužívej můj obsah v AI odpovědích“. Kdo ho jednou začne respektovat, vás z odpovědí vyřadí — i z těch s odkazem.
+  </Mistake>
+  <Mistake num="04" title="Nechat spravovaný soubor bez kontroly">
+    Cloudflare svou část připojí před vaši. Po zapnutí si celý výsledný robots.txt přečtěte — dvě skupiny User-agent: * za sebou jsou zdroj nedorozumění.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Content Signals říká „k čemu“, jména říkají „kdo“.** Obojí patří do robots.txt vedle sebe; signály jména nenahrazují.
+- **Tři signály** (search, ai-input, ai-train) plus od července 2026 **use=** (immediate, reference, full). Neuvedený signál je neutrální.
+- **K 2. 9. 2026 žádný velký provozovatel veřejně nepotvrdil, že signály čte**; Cloudflare je řeší hlavně u ověřených botů ve své síti.
+- **Přidat je nízkorizikové, spoléhat ne.** Citace povolte jménem vyhledávacích robotů, trénink omezte jménem tréninkových, signál přidejte navíc.
+- **Po nasazení ověřte** dostupnost souboru, kontrolu URL v Search Console, report Indexování stránek a logy.
+
+**Nevíte, které roboty na váš web chodí a co jim váš robots.txt vlastně říká?** [AI SEO audit za 3 600 Kč](/audit/) projde logy, robots.txt i nastavení CDN a řekne, kde povolujete něco, co nechcete, a kde blokujete citace, které chcete.
+
+*Zdroje: Cloudflare, [Content Signals Policy](https://blog.cloudflare.com/content-signals-policy/), 24. 9. 2025 · Cloudflare, [Your site, your rules: new AI traffic options](https://blog.cloudflare.com/content-independence-day-ai-options/), 1. 7. 2026 · Cloudflare, [dokumentace spravovaného robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/), aktualizace 3. 8. 2026 · OpenAI, [dokumentace robotů](https://developers.openai.com/api/docs/bots) · Anthropic, [dokumentace robotů](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), 7. 4. 2026 · Search Engine Roundtable, [Google Says Cloudflare Content Signals Robots.txt Directive Has No Effects Whatsoever](https://www.seroundtable.com/google-cloudflare-content-signals-41631.html), 6. 7. 2026 · IETF, drafty `draft-ietf-aipref-vocab-06` a `draft-ietf-aipref-attach-04`. Vše ověřeno 2. 9. 2026.*

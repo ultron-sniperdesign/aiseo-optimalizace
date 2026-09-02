@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 57** · založeno 2026-08-23 · poslední změna 2026-08-29 (závěrečný průchod driftu: 3 nové masky, 2 výjimky) · audituje skill `cestina-audit`
+> **Verze: 58** · založeno 2026-08-23 · poslední změna 2026-09-02 (výjimka Content Signals / Content-Signal / Content-Usage) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
@@ -29,7 +29,7 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `(?<!mixed )(?<!Helpful )(?<!AI SEO )\bcontent\b(?! (marketing|management|update|[Cc]redentials))(?!-(Type|Length|Encoding|Security))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)**, názvy HTTP hlaviček a **„AI SEO content“ — cílová fráze a slug článku `ai-seo-content`, mění se jen se slugem** | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26, AI SEO content 2026-08-29 |
+| ⛔ | `(?<!mixed )(?<!Helpful )(?<!AI SEO )\bcontent\b(?! (marketing|management|update|[Cc]redentials|Signals?))(?!-(Type|Length|Encoding|Security|Signal|Usage))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)**, názvy HTTP hlaviček, **„Content Signals“ / `Content-Signal` (politika Cloudflare) a `Content-Usage` (draft IETF AIPREF)** a **„AI SEO content“ — cílová fráze a slug článku `ai-seo-content`, mění se jen se slugem** | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26, AI SEO content 2026-08-29, Content Signals 2026-09-02 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
 | ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |

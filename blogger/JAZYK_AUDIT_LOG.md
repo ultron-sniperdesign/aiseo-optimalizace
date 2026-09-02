@@ -1153,3 +1153,20 @@ Přijato: „**regulačně** je zařazený“ → „**z hlediska regulace**“ 
 Odmítnuto: „pohled **majitele webu**“ → „provozovatele webových stránek“ (zavedený obrat webu i zadání) · „může se **upřesňovat**“ → „upřesnit“ (nedokonavý vid je záměr: průběžné upřesňování).
 
 **Vlastní chyba mimo jazyk (chytil ji auditor, ne jazyková kontrola):** hromadná náhrada `vykázal → vykázala` proběhla i na řetězcích, které už „vykázala“ obsahovaly, a vyrobila „vykázalaa“ na čtyřech místech včetně meta description a krátké odpovědi. Poučení: u hromadných náhrad rodu používat hranici slova (`\bvykázal\b`), ne prostý `replace`.
+
+---
+
+## C6 při psaní: `content-signals-rizeni-ai-botu` (2. 9. 2026, PRIORITA B)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 23 nálezů napoprvé — **všech 23 bylo slovo „Content“ v názvu politiky Content Signals** (a v direktivách `Content-Signal`, `Content-Usage`). Falešný poplach pravidla `content` → doplněna výjimka, slovník **v58**. Po opravě 0. |
+| LLM (gpt-5.4) | 1 nález — **odmítnut** |
+
+| Bylo | Návrh | Rozhodnutí |
+|---|---|---|
+| „být k nalezení a **citovaný**“ | „citován“ | **odmítnuto** — „být citovaný“ je hlas webu (mj. titulek `chatgpt-seo`: „Jak být citovaný v ChatGPT“), jmenný tvar „citován“ je knižní; korpus používá „citovaný“ opakovaně |
+
+**Vedlejší nález:** v `ai-crawler-robots-txt` byla v pasáži doplněné adminem 2. 9. jedna česká uvozovka zavřená rovnou — opraveno při této kontrole.
+
+**Poznámka k auditům:** první běh auditu #1 vrátil prázdný soubor při `max_completion_tokens=8000` (model vyčerpal rozpočet). Pomohlo zvýšit limit na 14 000. U delších tutorialů s ukázkami kódu počítat s vyšším limitem rovnou.
