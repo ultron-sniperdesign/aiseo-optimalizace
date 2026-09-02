@@ -1170,3 +1170,17 @@ Odmítnuto: „pohled **majitele webu**“ → „provozovatele webových strán
 **Vedlejší nález:** v `ai-crawler-robots-txt` byla v pasáži doplněné adminem 2. 9. jedna česká uvozovka zavřená rovnou — opraveno při této kontrole.
 
 **Poznámka k auditům:** první běh auditu #1 vrátil prázdný soubor při `max_completion_tokens=8000` (model vyčerpal rozpočet). Pomohlo zvýšit limit na 14 000. U delších tutorialů s ukázkami kódu počítat s vyšším limitem rovnou.
+
+---
+
+## C6 při psaní: `ceska-studie-ai-viditelnosti` (2. 9. 2026, PRIORITA C)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 0 nálezů napoprvé (1 rovná uvozovka opravena hromadně hned po zápisu) |
+| LLM (gpt-5.4) | 4 nálezy — **3 přijaty, 1 odmítnut** |
+
+Přijato: „v jeho **pokrytí**“ → „v článcích, které o něm vyšly“ (kalk z *coverage*) · „z českých **IP** bez historie“ → „IP adres“ · „studie **vykazuje viditelnost v procentech**“ → „uvádí viditelnost jako podíl odpovědí“.
+Odmítnuto: „souhrnné ‚jsme v AI vidět‘ **nemá jmenovatel**“ → „nemá jasný základ srovnání“ — „jmenovatel“ je zavedená metafora webu (`jak-casto-se-zobrazuje-ai-prehled`: „smysl má ptát se na vzorek, období a jmenovatel“).
+
+**Poznámka k limitům:** i tentokrát audit navrhl delší krátkou odpověď (69 slov) — přeměřeno a zkráceno na 58. Pravidlo z minulého runu platí: po každém kole přeměřit `answer` i `description`.

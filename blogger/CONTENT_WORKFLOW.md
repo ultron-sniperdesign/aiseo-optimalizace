@@ -53,7 +53,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 - **B1 — Výběr tématu:** vezmi **první volný řádek** (`Publikováno = ne`) — **pokud neplatí přednost níže**.
 
-  > 🟠 **Přednost z 2. 9. 2026 (série k aktuálnosti):** tři řádky v pořadí A `chatgpt jako vyhledavac dsa` (do 4. 9.) → B `content signals rizeni ai botu` (do 8. 9.) → C `ceska studie ai viditelnosti` (do 11. 9.). Zadání a pravidla: `blogger/PRIORITA_2026-09-02.md`. Po vydání série zase běžné pořadí.
+  > ✅ **Přednost z 2. 9. 2026 (série k aktuálnosti) je splněná** — A, B i C vyšly 2. 9. 2026. Historie zadání: `blogger/PRIORITA_2026-09-02.md`. Platí běžné pořadí fronty.
   >
   > ✅ **Přednost z 26. 8. 2026 je splněná** — všechny tři články (`rezim ai google`, `konec chatgpt atlas`, `nakupovani pres ai`) vyšly 26. 8. 2026, řádky jsou uzavřené. Platí zase běžné pořadí fronty a v něm starší přednost otevřených témat k AI Mode. Historie zadání: `blogger/PRIORITA_2026-08-26.md`. **Nejdřív přečti sloupec C (Pokyny)** — některé řádky mají varování (kanibalizace, „updatovat existující místo nového", riziko překryvu s pilířem). Pokud pokyn říká *nepsat / updatovat existující*, vyřeš řádek podle něj (např. UPDATE `geo-optimalizace.mdx` + bump `updated:`), ne slepě nový článek. Když řádek vyústí v „nepsat", nastav `E` smysluplně a přejdi na další volný.
 - **B2 — Hloubkový research tématu:** cílený `WebSearch` na vybrané téma (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na **Marketing Miner** (přesná hledanost, long-tail, sezónnost, rising queries pro FAQ).
