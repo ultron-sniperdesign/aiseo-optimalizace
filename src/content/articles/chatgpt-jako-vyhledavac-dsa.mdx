@@ -1,0 +1,144 @@
+---
+title: "ChatGPT je podle EU vyhledávač: co znamená VLOSE pro weby"
+seoTitle: "ChatGPT jako vyhledávač podle DSA: co mění VLOSE"
+description: "Komise 31. 8. 2026 označila ChatGPT za velmi velký online vyhledávač podle DSA. Co rozhodla, co vykázala OpenAI za ChatGPT search a co z toho plyne pro web."
+answer: "ChatGPT jako vyhledávač podle DSA znamená, že Evropská komise 31. srpna 2026 zařadila ChatGPT mezi velmi velké online vyhledávače (VLOSE). Práh je 45 milionů měsíčních uživatelů v EU; OpenAI pro účely DSA vykázala u vyhledávací funkce ChatGPT 159,1 milionu průměrných měsíčních aktivních příjemců. Pro weby to nevytváří nové povinnosti, ale posiluje důvod měřit citace v ChatGPT jako vyhledávací viditelnost."
+slug: "chatgpt-jako-vyhledavac-dsa"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-09-02"
+updated: "2026-09-02"
+variant: "rich"
+keywords:
+  - "chatgpt vyhledávač eu"
+  - "vlose chatgpt"
+  - "chatgpt dsa"
+  - "velmi velký online vyhledávač"
+  - "chatgpt regulace 2026"
+stats:
+  - value: "45 mil."
+    label: "průměrných měsíčních uživatelů v EU — práh pro označení podle DSA"
+  - value: "159,1 mil."
+    label: "průměrných měsíčních aktivních příjemců vyhledávací funkce ChatGPT v EU, které OpenAI vykázala za šest měsíců do 31. 3. 2026"
+  - value: "4 měsíce"
+    label: "od oznámení, po kterých pro OpenAI začnou platit povinnosti VLOSE"
+faq:
+  - q: "Co přesně Komise rozhodla?"
+    a: "Že ChatGPT je velmi velký online vyhledávač (VLOSE) podle nařízení o digitálních službách, protože dosahuje aspoň 45 milionů průměrných měsíčních uživatelů v EU. Ve stejné zprávě z 31. srpna 2026 označila Reddit a Roblox za velmi velké online platformy."
+  - q: "Odkud je číslo 159,1 milionu?"
+    a: "Uvádí ho OpenAI na své stránce k DSA podle článku 24(2): za šest měsíců do 31. března 2026 měla vyhledávací funkce ChatGPT v EU průměrně 159,1 milionu měsíčních aktivních příjemců. Je to číslo za vyhledávání v ChatGPT, ne za ChatGPT jako celek."
+  - q: "Co musí OpenAI splnit?"
+    a: "Posuzovat a zmírňovat systémová rizika své služby a algoritmů, podrobit se nezávislému auditu — první rok po prvním posouzení rizik — a další povinnosti pro největší služby. Platit začnou čtyři měsíce od oznámení, tedy na přelomu roku 2026 a 2027."
+  - q: "Mění se něco pro můj web?"
+    a: "Žádná nová povinnost pro provozovatele webu z toho neplyne. Mění se výklad: regulátor zařadil ChatGPT mezi vyhledávače a veřejný údaj OpenAI k prahu je za vyhledávací funkci. Citace v ChatGPT tedy dává smysl měřit jako samostatnou vyhledávací viditelnost."
+  - q: "Je ChatGPT první AI chatbot s tímhle označením?"
+    a: "Tak to popisují média, například Search Engine Journal. Ve zprávě Komise takové tvrzení není — Komise jen uvádí, které služby označila a proč."
+  - q: "Souvisí to s AI Actem a DMA?"
+    a: "Přímo ne, jsou to tři různé předpisy. Vedle sebe ale dávají obraz: Komise podle DSA zařadila ChatGPT mezi vyhledávače, AI Act má od 2. srpna 2026 použitelné povinnosti transparentnosti podle článku 50 včetně strojově čitelného označování vybraných AI výstupů (u starších systémů s odkladem do 2. 12. 2026) a rozhodnutí podle DMA ze 16. července 2026 uvádí AI chatboty s vyhledávací funkcí mezi možnými příjemci dat z vyhledávání Googlu."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Komise zařadila ChatGPT mezi velmi velké online vyhledávače
+
+**ChatGPT jako vyhledávač podle DSA znamená, že Evropská komise 31. srpna 2026 zařadila ChatGPT mezi velmi velké online vyhledávače (VLOSE).** Práh je 45 milionů měsíčních uživatelů v EU; OpenAI pro účely DSA vykázala u vyhledávací funkce ChatGPT 159,1 milionu průměrných měsíčních aktivních příjemců. Pro weby to nevytváří nové povinnosti, ale posiluje důvod měřit citace v ChatGPT jako vyhledávací viditelnost.
+
+Tenhle text není právní rozbor. Je to pohled majitele webu: co se stalo, jaké číslo je k tomu veřejně dohledatelné a co z toho plyne — a neplyne — pro měření viditelnosti. Stav k 2. 9. 2026; praktický výklad se může s prvními kroky dohledu upřesňovat.
+
+## Co Komise rozhodla
+
+Zpráva Komise z 31. srpna 2026 označuje tři služby: ChatGPT jako **velmi velký online vyhledávač** (v angličtině *Very Large Online Search Engine*, VLOSE), Reddit a Roblox jako velmi velké online platformy. Podmínka je u všech stejná — dosáhnout aspoň **45 milionů průměrných měsíčních uživatelů v EU**. Komise v oznámení mluví o uživatelích; OpenAI ve svém vykazování pro DSA používá právní metriku „aktivní příjemci“ — jde o totéž měřítko, jen s přesnějším názvem.
+
+<Insight tone="aeo" label="Proč zrovna „vyhledávač“">
+  DSA rozlišuje platformy a vyhledávače. Komise zařadila ChatGPT do druhé škatulky, tedy vedle Googlu a Bingu — ne vedle sociálních sítí. Pro web je to podstatnější než samotné označení: **z hlediska regulace je ChatGPT zařazený jako služba, která lidem dohledává informace z webu.**
+</Insight>
+
+Zpráva Komise nepíše, že jde o první AI chatbot s takovým označením. Tak to popisují média, například Search Engine Journal. Rozdíl stojí za zmínku, protože přesně takové „první“ se v přehledech rychle mění v fakt.
+
+## Údaj OpenAI za vyhledávací funkci ChatGPT
+
+Komise ve zprávě žádné konkrétní číslo za ChatGPT neuvádí. Veřejně dohledatelný údaj pochází **od OpenAI** — ze stránky k DSA, kde podle článku 24(2) publikuje průměrné měsíční aktivní příjemce:
+
+> For the six-month period ending 31 March 2026, ChatGPT search had approximately 159.1 million average monthly active recipients in the European Union.
+
+Dvě věci z té věty jsou důležitější než samotná výše čísla:
+
+<Checklist title="Co v tom čísle je a co ne" items={[
+  { title: "Je to číslo za vyhledávání", desc: "OpenAI ho vykazuje za „ChatGPT search“, tedy za online vyhledávací funkci — ne za ChatGPT jako celek. Veřejný údaj OpenAI se tedy týká toho, kolik lidí využívá vyhledávací funkci ChatGPT." },
+  { title: "Je to průměr za šest měsíců", desc: "Období končí 31. března 2026. Číslo je víc než trojnásobek prahu, takže o označení nerozhodovaly jednotky procent." },
+  { title: "OpenAI ho označuje jako číslo jen pro DSA", desc: "Stránka výslovně píše, že průměr je spočítaný jen pro účely DSA a nemá se používat jinak. Pro odhad podílu na trhu ho tedy nepoužívejte." },
+]} />
+
+## Co OpenAI čeká — a proč to web řešit nemusí
+
+Povinnosti pro označené služby začínají platit **čtyři měsíce od oznámení**, tedy na přelomu roku 2026 a 2027. Podle Komise jde hlavně o:
+
+- **posouzení a zmírnění systémových rizik** — dopadů služby a jejích algoritmů na šíření nezákonného obsahu, nezletilé, duševní pohodu uživatelů, základní práva, volby a veřejnou bezpečnost;
+- **nezávislý audit podle DSA** — první rok po prvním posouzení rizik a poté každoročně;
+- další povinnosti pro největší služby, které Komise u těchto označení uplatňuje.
+
+Z tohoto označení neplyne nová povinnost pro běžného provozovatele webu. Povinnosti VLOSE míří na OpenAI jako provozovatelku označené služby. Komisařka Henna Virkkunen to podle Search Engine Journalu shrnula tak, že označené služby budou v EU podléhat „vyšší míře dohledu a odpovědnosti“.
+
+## Tři regulační linky vedle sebe
+
+Označení podle DSA je nejnovější ze tří věcí, které se v roce 2026 sešly. Každá stojí na jiném předpisu a každá je samostatné téma; vedle sebe ale dávají obraz.
+
+<CompareTable
+  leftLabel="Co platí"
+  rightLabel="Co z toho plyne pro web"
+  rows={[
+    { icon: "⚖️", label: "DSA — 31. 8. 2026", left: "ChatGPT je zařazený mezi velmi velké online vyhledávače; veřejný údaj OpenAI k prahu je za vyhledávací funkci", right: "dává smysl měřit citace v ChatGPT vedle pozic ve vyhledávačích" },
+    { icon: "🏷️", label: "AI Act — od 2. 8. 2026", left: "článek 50 řeší transparentní označování vybraných AI výstupů; u systémů uvedených na trh před 2. 8. 2026 platí pro označování odklad do 2. 12. 2026", right: "transparentnost AI výstupů je samostatné téma, které tenhle článek jen časově zasazuje — vyjde zvlášť" },
+    { icon: "🔁", label: "DMA — 16. 7. 2026", left: "Komise rozhodla o specifikaci, podle které má Google za stanovených podmínek zpřístupňovat anonymizovaná data z vyhledávání", right: "AI chatboti s vyhledávací funkcí jsou v rozhodnutí uvedeni jako možní příjemci těch dat — samostatné téma, vyjde zvlášť" },
+  ]}
+/>
+
+Rozhodnutí podle DMA ze 16. července je tu jen jako samostatná datová linka. Podrobněji k AI Actu i k DMA vyjdou samostatné články.
+
+## Co to mění pro český web
+
+Prakticky jednu věc, ale podstatnou: **posiluje se argument, proč citace v ChatGPT měřit podobně systematicky jako pozice ve vyhledávání.** Není to nová povinnost ani nárok na citaci — je to zařazení, o které se ten argument dá opřít.
+
+<Checklist title="Co s tím udělat" items={[
+  { title: "Zařaďte ChatGPT mezi měřené vyhledávače", desc: "Ne jako doplněk k Googlu, ale jako samostatný kanál s vlastním testem. Konkrétní postup popisuje článek o testu viditelnosti v AI." },
+  { title: "Měřte vyhledávací funkci, ne „chat“", desc: "Veřejně dohledatelné číslo k prahu je za vyhledávání v ChatGPT. Testujte dotazy, u kterých ChatGPT dohledává a cituje web." },
+  { title: "Nečekejte přenos z Googlu", desc: "Že vás cituje Google, neznamená, že vás cituje ChatGPT. Různé platformy vybírají zdroje jinak." },
+  { title: "Datujte si závěry", desc: "Praktický výklad se může v průběhu plnění povinností OpenAI upřesňovat. Zapisujte, k jakému datu co platilo." },
+]} />
+
+Jak být v ChatGPT citovaný, rozebírá [ChatGPT SEO](/blog/chatgpt-seo/); proč se citace mezi platformami liší, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/); postup měření [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
+
+## Co z toho neplyne
+
+<MistakeGrid>
+  <Mistake num="01" title="„Web má nové povinnosti“">
+    Nemá. Povinnosti podle DSA míří na OpenAI jako provozovatele označené služby, ne na weby, které ChatGPT cituje.
+  </Mistake>
+  <Mistake num="02" title="„Vzniká nárok na citaci“">
+    Nevzniká. Označení říká, jak velká služba je a co musí dělat — ne koho má citovat. Hranice zůstávají stejné jako u Googlu: [co AI SEO nezvládne](/blog/co-ai-seo-nezvladne/).
+  </Mistake>
+  <Mistake num="03" title="„ChatGPT má 159 milionů uživatelů v EU“">
+    Číslo je za vyhledávací funkci, průměr za šest měsíců do 31. 3. 2026, spočítané jen pro DSA. OpenAI sama píše, že se nemá používat jinak.
+  </Mistake>
+  <Mistake num="04" title="„Od ledna bude ChatGPT jiný“">
+    Termín se týká povinností OpenAI vůči regulátorovi. Co se změní v samotné odpovědi a jejích zdrojích, z rozhodnutí neplyne.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Komise 31. 8. 2026 označila ChatGPT za velmi velký online vyhledávač** podle DSA; práh je 45 milionů měsíčních uživatelů v EU.
+- **Veřejně dohledatelný údaj k překročení prahu uvádí OpenAI:** 159,1 milionu průměrných měsíčních aktivních příjemců **vyhledávací funkce ChatGPT** za šest měsíců do 31. 3. 2026.
+- **Povinnosti — posouzení rizik, nezávislý audit — dopadají na OpenAI**, ne na weby; platit začnou čtyři měsíce od oznámení.
+- **Pro web se mění výklad, ne pravidla:** označení VLOSE podporuje měření citací v ChatGPT jako samostatné vyhledávací viditelnosti.
+- **„První AI chatbot“ je popis médií**, ne Komise. Stav k 2. 9. 2026.
+
+**Chcete vědět, jestli vás ChatGPT při vyhledávání cituje — a z jakých zdrojů?** [AI SEO audit za 3 600 Kč](/audit/) projde vzorek vašich dotazů v ChatGPT, Perplexity i Googlu se zapsanou metodikou a řekne, kde jste a kde ne.
+
+*Zdroje: Evropská komise, [Commission designates ChatGPT, Reddit, Roblox under Digital Services Act](https://digital-strategy.ec.europa.eu/en/news/commission-designates-chatgpt-reddit-roblox-under-digital-services-act), 31. 8. 2026 · Evropská komise, [dohled nad označenými VLOP a VLOSE](https://digital-strategy.ec.europa.eu/en/policies/list-designated-vlops-and-vloses) (čtyři měsíce, posouzení rizik, audit) · OpenAI, [EU Digital Services Act (DSA)](https://help.openai.com/en/articles/8959649-eu-digital-services-act-dsa), údaj podle čl. 24(2) · Evropská komise, [Transparency obligations under Article 50 of the AI Act](https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act) · Evropská komise, [Alphabet specification proceedings — Sharing of Google Search data](https://digital-markets-act.ec.europa.eu/developer-portal/data-access/alphabet-specification-proceedings-sharing-google-search-data_en), 16. 7. 2026 · Search Engine Journal, 31. 8. 2026 (formulace „první AI chatbot“ a citát komisařky). Vše ověřeno 2. 9. 2026.*

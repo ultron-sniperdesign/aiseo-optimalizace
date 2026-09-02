@@ -1139,3 +1139,17 @@ Přijaté opravy: „není potřeba **se přihlásit**“ → „není potřeba 
 **Odmítnuto:** „spuštění přehledu“ → „zobrazení“. Slovo „spustí/spouštění“ je pro AI přehled zavedené v korpusu (titulek `kdy-ai-prehled-necekat`: „Kdy se spustí AI přehled“) — náhrada se řídí tím, co web už používá.
 
 **Vedlejší nález mimo jazyk:** po druhém kole auditu jsem překročil limity `description` (167 znaků) a `answer` (63 slov) a build spadl. Auditor navrhuje delší formulace a limity nehlídá — po každém kole je nutné přeměřit oba údaje, ne jen po prvním draftu.
+
+---
+
+## C6 při psaní: `chatgpt-jako-vyhledavac-dsa` (2. 9. 2026, PRIORITA A)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 0 nálezů (2 rovné uvozovky po anglických citacích opraveny hromadně hned po zápisu) |
+| LLM (gpt-5.4) | 4 nálezy — **2 přijaty, 2 odmítnuty** |
+
+Přijato: „**regulačně** je zařazený“ → „**z hlediska regulace**“ · „Platformy vybírají zdroje jinak“ → „**Různé** platformy…“ (bez přívlastku věta zněla useknutě).
+Odmítnuto: „pohled **majitele webu**“ → „provozovatele webových stránek“ (zavedený obrat webu i zadání) · „může se **upřesňovat**“ → „upřesnit“ (nedokonavý vid je záměr: průběžné upřesňování).
+
+**Vlastní chyba mimo jazyk (chytil ji auditor, ne jazyková kontrola):** hromadná náhrada `vykázal → vykázala` proběhla i na řetězcích, které už „vykázala“ obsahovaly, a vyrobila „vykázalaa“ na čtyřech místech včetně meta description a krátké odpovědi. Poučení: u hromadných náhrad rodu používat hranici slova (`\bvykázal\b`), ne prostý `replace`.
