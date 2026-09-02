@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-05-24"
-updated: "2026-08-13"
+updated: "2026-09-02"
 variant: "rich"
 keywords:
   - "ai crawler"
@@ -252,7 +252,9 @@ V IETF běží pracovní skupina **AIPREF**, která navrhuje slovník pro vyjád
 Content-Usage: train-ai=n
 ```
 
-Draft počítá s tím, že se preference připojí buď HTTP hlavičkou, nebo pravidlem přímo v `robots.txt`. Souběžně vzniká **Web Bot Auth** — návrh, aby robot každý požadavek kryptograficky podepisoval. Míří přesně na díru popsanou výš: dnes si do user-agentu může kdokoli napsat cokoli.
+Draft počítá s tím, že se preference připojí buď HTTP hlavičkou, nebo pravidlem přímo v `robots.txt`.
+
+**Nečeká se na hotový standard.** Cloudflare mezitím rozšířil `robots.txt` o **Content Signals** — tentýž princip „vyjádři účel, ne jméno robota" (oddělené preference pro trénink, vyhledávání a AI odpovědi). Podle Cloudflare je nasazený na zhruba **3,8 milionu domén** a firma ho posílá ke standardizaci právě do AIPREF. Pro vás to znamená dvě věci: pokud jste za Cloudflare, možná už signály posíláte, aniž byste o tom věděli — a formát, který se dnes učíte, má slušnou šanci být tím, co z AIPREF vyleze. Jména robotů v `robots.txt` tím ale zatím nenahradíte; funguje to jako doplněk, ne náhrada (stav k září 2026). Souběžně vzniká **Web Bot Auth** — návrh, aby robot každý požadavek kryptograficky podepisoval. Míří přesně na díru popsanou výš: dnes si do user-agentu může kdokoli napsat cokoli.
 
 <Insight tone="warn" label="Nic z toho zatím nenasazujte">
 Obojí jsou **adoptované drafty IETF, ne ratifikované standardy.** Slovníkový draft je na Proposed Standard track s expirací v říjnu 2026, doprovodný draft o připojení preferencí má milník poslat specifikaci do IESG v srpnu 2026. Plný konsenzus zatím není — **může se změnit syntaxe, názvy kategorií i to, jestli se hlavička bude nakonec jmenovat `Content-Usage`.** Ukázku výš berte jako ilustraci směru, ne jako předpis k opsání.
