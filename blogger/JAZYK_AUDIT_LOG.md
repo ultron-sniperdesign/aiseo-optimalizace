@@ -1184,3 +1184,17 @@ Přijato: „v jeho **pokrytí**“ → „v článcích, které o něm vyšly�
 Odmítnuto: „souhrnné ‚jsme v AI vidět‘ **nemá jmenovatel**“ → „nemá jasný základ srovnání“ — „jmenovatel“ je zavedená metafora webu (`jak-casto-se-zobrazuje-ai-prehled`: „smysl má ptát se na vzorek, období a jmenovatel“).
 
 **Poznámka k limitům:** i tentokrát audit navrhl delší krátkou odpověď (69 slov) — přeměřeno a zkráceno na 58. Pravidlo z minulého runu platí: po každém kole přeměřit `answer` i `description`.
+
+---
+
+## C6 při psaní: `hasmerchantreturnpolicy-schema` (2. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 2 nálezy napoprvé — obojí **„Content API for Shopping"**, název rozhraní Googlu. Falešný poplach pravidla `content`; doplněna výjimka, slovník **v59**. Po opravě 0. |
+| LLM (gpt-5.4) | 6 nálezů — **4 přijaty, 2 odmítnuty** |
+
+Přijato (gramatika): třikrát chybná valence „vlastnost, **kterou** e-shop deklaruje pravidla" → „**ve které** e-shop deklaruje pravidla" (v krátké odpovědi, v úvodu i ve FAQ) · obrácený slovosled „kolik dnů **zákazník má**" → „kolik dnů **má zákazník**".
+Odmítnuto: „neměl **ani jeden**" → „žádný" (idiom webu, v korpusu běžný) · skloňování v poli `keywords` („merchantreturnpolicy e-shop") — klíčová slova jsou vyhledávací fráze, ne prozaický text.
+
+**Poznámka:** slovník v59 má teď u pravidla `content` čtyři výjimky (mixed content, Helpful Content Update, AI SEO content, Content Signals / Content-Signal / Content-Usage, Content API). Pravidlo je tím pádem nejčastěji doplňované — každý nový název rozhraní s „Content" ho spustí.

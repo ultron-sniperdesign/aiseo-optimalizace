@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "eshopy"
 published: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-09-02"
 keywords:
   - "produktove stranky pro ai"
   - "produkt pro ai vyhledavani"
@@ -21,7 +21,7 @@ stats:
   - value: "GTIN"
     label: "kód produktu (EAN/čárový kód), který pomáhá se správnou identifikací ve srovnávacích nákupních dotazech"
   - value: "hasMerchantReturnPolicy"
-    label: "deklarace pravidel vrácení zboží, která se v analýzách 2026 objevuje častěji u citovaných nákupních stránek"
+    label: "deklarace pravidel vrácení zboží — Google ji uvádí jako doporučenou; v našem měření 38 e-shopů chyběla u všech"
   - value: "4–6"
     label: "reálných otázek a odpovědí ve FAQ na produktu, které AI snadno cituje"
 howto:
@@ -30,7 +30,7 @@ howto:
     - name: "Doplňte základní strukturovaná data produktu"
       text: "Přidejte strukturovaná data typu Product (name, description, image, brand, GTIN), Offer (price, priceCurrency, availability) a AggregateRating s Review. Ověřte v Google Rich Results Test nebo ve validátoru strukturovaných dat, že jsou bez chyb a shodují se s obsahem stránky."
     - name: "Přidejte hasMerchantReturnPolicy"
-      text: "Deklarujte pravidla pro vrácení zboží ve strukturovaných datech (hasMerchantReturnPolicy). Podle dostupných analýz nákupní odpovědi ChatGPT preferují produkty z e-shopů, které vrácení explicitně uvádějí. V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů (s výjimkami), takže pole vyplňte podle skutečných podmínek e-shopu."
+      text: "Deklarujte pravidla pro vrácení zboží ve strukturovaných datech (hasMerchantReturnPolicy); celý zápis včetně hodnot rozebírá samostatný návod na /blog/hasmerchantreturnpolicy-schema/. Google ji uvádí jako doporučenou vlastnost pro nabídky obchodníků; dokumentace OpenAI naopak vrácení jako signál výběru neuvádí (ověřeno 2. 9. 2026). V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů (s výjimkami), takže pole vyplňte podle skutečných podmínek e-shopu."
     - name: "Zveřejněte parametry strukturovaně, ne jen v textu"
       text: "Klíčové specifikace (rozměry, materiál, hmotnost, výkon, kompatibilita) uveďte v přehledné tabulce nebo seznamu, ne schované v marketingovém odstavci. AI i kupující tak parametr najdou rychle."
     - name: "Pište obsah, který odpovídá reálným dotazům"
@@ -43,7 +43,7 @@ faq:
   - q: "Co je GTIN a proč ho AI potřebuje?"
     a: "GTIN je globální identifikátor produktu — v praxi nejčastěji EAN nebo čárový kód. AI ho používá k tomu, aby jednoznačně poznala, o který produkt jde, a mohla ho zařadit do srovnávacích nákupních odpovědí. České e-shopy GTIN u produktů často neuvádějí, přitom je to jedno z polí, která mohou pomoci se správnou identifikací produktu. Uvádějte ho ve strukturovaných datech i ve feedu do srovnávačů."
   - q: "Co je hasMerchantReturnPolicy a musím ho řešit?"
-    a: "hasMerchantReturnPolicy je pole ve strukturovaných datech, které deklaruje pravidla pro vrácení zboží (lhůta, podmínky). Podle dostupných analýz nákupní odpovědi ChatGPT preferují produkty z e-shopů, které vrácení explicitně uvádějí, a jeho doplnění může pomoci důvěryhodnosti a strojové čitelnosti údajů o vrácení. V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů (s výjimkami), takže pole vyplňte podle skutečných podmínek e-shopu."
+    a: "hasMerchantReturnPolicy je pole ve strukturovaných datech, které deklaruje pravidla pro vrácení zboží (lhůta, podmínky). Google ji uvádí jako doporučenou vlastnost pro nabídky obchodníků; dokumentace OpenAI naopak vrácení jako signál výběru neuvádí (ověřeno 2. 9. 2026), a jeho doplnění může pomoci důvěryhodnosti a strojové čitelnosti údajů o vrácení. V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů (s výjimkami), takže pole vyplňte podle skutečných podmínek e-shopu."
   - q: "Stačí zkopírovat popis produktu od výrobce?"
     a: "Nestačí. Generický popis převzatý od výrobce používají desítky e-shopů, takže nepřidává žádnou hodnotu a AI nemá důvod citovat právě vás. Doplňte vlastní úhel: konkrétní parametry v tabulce, odpovědi na reálné otázky kupujících, praktické použití a reálné recenze. Unikátní a strukturovaný obsah má u AI i klasického vyhledávání výrazně vyšší šanci."
   - q: "Musí cena ve strukturovaných datech sedět s cenou na stránce?"
@@ -100,7 +100,7 @@ Podle dostupných analýz potřebují AI platformy pro zařazení produktu do sr
 České e-shopy často **neuvádějí GTIN** — přitom je to jedno z polí, která pomáhají se správnou identifikací produktu, zejména u srovnávacích nákupních dotazů.
 
 <Insight tone="warn">
-Užitečný doplněk, který se v analýzách 2026 objevuje častěji u citovaných nákupních stránek, je hasMerchantReturnPolicy — deklarace pravidel pro vrácení zboží. Podle dostupných analýz nákupní odpovědi ChatGPT preferují produkty z e-shopů, které vrácení explicitně uvádějí. V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů, existují ale výjimky — pole vyplňte podle skutečných podmínek e-shopu.
+Užitečný doplněk, který se v analýzách 2026 objevuje častěji u citovaných nákupních stránek, je hasMerchantReturnPolicy — deklarace pravidel pro vrácení zboží. Google ji uvádí jako doporučenou vlastnost pro nabídky obchodníků; dokumentace OpenAI naopak vrácení jako signál výběru neuvádí (ověřeno 2. 9. 2026). V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů, existují ale výjimky — pole vyplňte podle skutečných podmínek e-shopu.
 </Insight>
 
 ## Co dál patří na produktovou stránku

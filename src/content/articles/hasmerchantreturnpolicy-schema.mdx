@@ -1,0 +1,166 @@
+---
+title: "hasMerchantReturnPolicy: chybělo u 38 měřených e-shopů"
+seoTitle: "hasMerchantReturnPolicy schema: vrácení zboží e-shopu"
+description: "hasMerchantReturnPolicy deklaruje pravidla vrácení zboží. V našem měření 38 českých e-shopů chybělo u všech. Kam ho zapsat, jaké hodnoty a jak ověřit."
+answer: "hasMerchantReturnPolicy je vlastnost strukturovaných dat, ve které e-shop deklaruje pravidla pro vrácení zboží: typ pravidel, zemi a u konečné lhůty také počet dnů. Google ji uvádí jako doporučenou pro nabídky obchodníků, ne povinnou. V našem měření 38 českých e-shopů na Shoptetu ji neměl ani jeden, přestože u běžného B2C e-shopu bývá výchozí hodnota daná zákonem."
+slug: "hasmerchantreturnpolicy-schema"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "eshopy"
+published: "2026-09-02"
+updated: "2026-09-02"
+variant: "rich"
+keywords:
+  - "hasMerchantReturnPolicy"
+  - "strukturovaná data vrácení zboží"
+  - "merchantreturnpolicy e-shop"
+  - "return policy schema"
+  - "vrácení zboží strukturovaná data"
+stats:
+  - value: "0 z 38"
+    label: "českých e-shopů na Shoptetu mělo vlastnost hasMerchantReturnPolicy (vlastní měření, 8. 8. 2026)"
+  - value: "1 URL nebo 2–3 pole"
+    label: "podle Googlu: buď merchantReturnLink, nebo applicableCountry a returnPolicyCategory; u konečné lhůty navíc merchantReturnDays"
+  - value: "14"
+    label: "dnů na odstoupení od smlouvy podle § 1829 občanského zákoníku — obvyklá výchozí hodnota u českého B2C e-shopu, ne právní rada"
+faq:
+  - q: "Co je hasMerchantReturnPolicy?"
+    a: "Vlastnost strukturovaných dat, ve které web strojově čitelně uvádí pravidla pro vrácení zboží: pro které země platí, jestli je lhůta konečná, bez časového omezení, nebo vrácení není možné, a kolik dnů má zákazník. Zapisuje se buď u organizace pro celý web, nebo u konkrétní nabídky."
+  - q: "Je povinná?"
+    a: "Ne. Google ji u nabídek obchodníků uvádí jako doporučenou vlastnost a zobrazení negarantuje. Pokud ji ale použijete s konečnou lhůtou, musí zápis obsahovat také merchantReturnDays."
+  - q: "Preferuje ChatGPT e-shopy, které vrácení deklarují?"
+    a: "Nápověda OpenAI k nákupnímu výzkumu nic takového neuvádí. Popisuje, že ChatGPT čte veřejné stránky obchodníků, cituje zdroje a vyhýbá se nekvalitním webům; vrácení zboží zmiňuje jen jako radu kupujícímu, ať si podmínky přečte. Tvrzení o preferenci proto nemá oporu v dokumentaci provozovatele."
+  - q: "Kam to mám zapsat — do dat na stránce, nebo do Merchant Center?"
+    a: "Google uvádí pořadí priority: Content API for Shopping, pak nastavení v Merchant Center nebo Search Console, pak strukturovaná data u produktu a nakonec u organizace. Kdo prodává přes Merchant Center, měl by pravidla nastavit hlavně tam; strukturovaná data na webu jsou doplněk, ne náhrada."
+  - q: "Jaké hodnoty bývají typické pro běžný český B2C e-shop?"
+    a: "Typicky applicableCountry CZ, returnPolicyCategory MerchantReturnFiniteReturnWindow a merchantReturnDays 14. Čtrnáctidenní lhůta vychází z § 1829 občanského zákoníku pro spotřebitelské smlouvy uzavřené na dálku. Není to právní rada: delší lhůty, výjimky i konkrétní podmínky zapište podle svých obchodních podmínek."
+  - q: "Co když mám delší lhůtu nebo sezonní výjimku?"
+    a: "Delší lhůtu prostě uveďte v merchantReturnDays — data mají odpovídat vašim podmínkám, ne minimu ze zákona. Na dočasnou změnu, třeba prodloužené vánoční vrácení, má Google vlastnost returnPolicySeasonalOverride s datem od a do."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Doporučené pole, které chybělo ve všech 38 měřených e-shopech
+
+**hasMerchantReturnPolicy je vlastnost strukturovaných dat, ve které e-shop deklaruje pravidla pro vrácení zboží: typ pravidel, zemi a u konečné lhůty také počet dnů.** Google ji uvádí jako doporučenou pro nabídky obchodníků, ne povinnou. V našem měření 38 českých e-shopů na Shoptetu ji neměl ani jeden, přestože u běžného B2C e-shopu bývá výchozí hodnota daná zákonem.
+
+To je celý důvod, proč o tom psát. Není to složité pole, není drahé a hodnota se u běžného e-shopu nevymýšlí. Přesto se v měřeném vzorku neobjevilo ani jednou — rozebírá to [měření produktových polí na Shoptetu](/blog/shoptet-produktova-pole-google/).
+
+## Co Google doopravdy říká
+
+Dokumentace k deklaraci vrácení (naposledy aktualizovaná 10. 12. 2025) je v tomhle střízlivá: vlastnost je **doporučená**, Google její obsah „může použít“ a zobrazení negarantuje.
+
+Zapsat se dá na dvou úrovních:
+
+<CompareTable
+  leftLabel="Pro celý web"
+  rightLabel="Pro konkrétní nabídku"
+  rows={[
+    { icon: "🏢", label: "Kam", left: "do objektu Organization nebo OnlineStore přes hasMerchantReturnPolicy", right: "dovnitř objektu Offer u produktu" },
+    { icon: "🎯", label: "Kdy dává smysl", left: "jednotná pravidla pro celý sortiment — typický český e-shop", right: "když se pravidla liší podle produktu nebo kategorie" },
+    { icon: "⚖️", label: "Váha podle Googlu", left: "nejslabší z uvedených zdrojů", right: "silnější než organizační, slabší než nastavení v Merchant Center" },
+  ]}
+/>
+
+<Insight tone="warn" label="Pořadí, které se přehlíží">
+  Google uvádí zdroje pravidel od nejsilnějšího po nejslabší: **Content API for Shopping → nastavení v Merchant Center nebo Search Console → data u produktu → data u organizace.** Kdo prodává přes Merchant Center, řeší vrácení hlavně tam — strukturovaná data na webu jsou doplněk, ne náhrada.
+</Insight>
+
+## Co říká dokumentace OpenAI — a co v ní není
+
+Kolem tohohle pole koluje tvrzení, že **ChatGPT preferuje e-shopy s deklarovanými pravidly vrácení**. V nápovědě OpenAI k nákupnímu výzkumu (aktualizované koncem srpna 2026) taková věta není.
+
+Co tam je: ChatGPT při nákupním výzkumu používá „merchant product data provided through the Agentic Commerce Protocol (ACP)“, veřejně dostupné informace o produktech a další maloobchodní zdroje. Výsledky popisuje jako organické, založené na veřejných stránkách obchodníků — „reading product pages directly, citing sources, and avoiding low-quality or spammy sites“. Vrácení zboží zmiňuje jedinkrát, a to jako **radu kupujícímu**: ať si podmínky vrácení a záruky přečte, pokud jsou pro nákup důležité.
+
+<Insight tone="aeo" label="Co z toho plyne prakticky">
+  Deklarujte vrácení proto, že to **doporučuje Google** a že je to pravdivý údaj o vašem obchodě — ne proto, že to slíbí lepší místo v ChatGPT. OpenAI naopak výslovně zmiňuje jiný problém: pokud obchod blokuje automatický přístup, nákupní výzkum může zdroj **přeskočit nebo se opřít o jiné weby**. To je doložené riziko dohledatelnosti — ne důkaz, že sama deklarace vrácení viditelnost zlepší.
+</Insight>
+
+## Návod: minimální zápis
+
+Minimální zápis podle Googlu stojí na `applicableCountry` a `returnPolicyCategory`. Pokud použijete konečnou lhůtu, je povinné doplnit i `merchantReturnDays`. Alternativou je `merchantReturnLink`.
+
+Do HTML se JSON-LD vkládá do `<script type="application/ld+json">`; níže je samotný obsah skriptu:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "Název vašeho e-shopu",
+  "url": "https://www.vasobchod.cz/",
+  "hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "applicableCountry": "CZ",
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": 14
+  }
+}
+```
+
+Volitelné hodnoty jako `returnMethod` (jak se zboží vrací) nebo `returnFees` (kdo platí zpětné poslání) doplňte **jen tehdy, když odpovídají vašim obchodním podmínkám** — například `"returnFees": "https://schema.org/FreeReturn"` říká, že vrácení je zdarma.
+
+Tři poznámky k hodnotám:
+
+<Checklist title="Co kam patří" items={[
+  { title: "returnPolicyCategory má tři možnosti", desc: "MerchantReturnFiniteReturnWindow (konečná lhůta), MerchantReturnUnlimitedWindow (bez omezení) a MerchantReturnNotPermitted (vrácení není možné). U běžného českého B2C e-shopu to často bude první možnost, pokud obchodní podmínky nebo výjimky neříkají něco jiného." },
+  { title: "merchantReturnDays je povinné u konečné lhůty", desc: "Bez něj Google u kategorie s konečnou lhůtou neví, jak dlouhá je. V českém B2C kontextu bývá výchozí hodnotou 14 dnů podle § 1829 občanského zákoníku — berte to jako kontext, ne právní radu; zápis musí odpovídat vašim obchodním podmínkám, delším lhůtám i výjimkám." },
+  { title: "Alternativou je merchantReturnLink", desc: "Odkaz na stránku s pravidly vrácení. Je méně explicitní než rozepsané hodnoty, protože se z něj stroj konkrétní lhůtu nedozví — berte ho jako jednodušší variantu, ne jako plnohodnotný popis podmínek." },
+]} />
+
+Kdo chce jít dál, může doplnit `returnShippingFeesAmount` (kolik stojí zpětné poslání), `refundType` (jak se vrací peníze), `itemCondition`, `restockingFee` nebo `returnPolicySeasonalOverride` pro dočasné odchylky — třeba vánoční prodloužení lhůty. Zapisuje se jako samostatný objekt s datem začátku a konce a s hodnotami, které se v daném období liší.
+
+## Kam to zapsat
+
+<Stepper
+  steps={[
+    { title: "Nejdřív zjistěte, jestli máte Merchant Center", desc: "Pokud produkty posíláte do Googlu feedem, nastavte pravidla vrácení tam. Podle pořadí priority přebijí cokoli v datech na webu." },
+    { title: "Pravidla pro celý web dejte k organizaci", desc: "Jeden objekt Organization nebo OnlineStore s hasMerchantReturnPolicy, ideálně na stránce s obchodními podmínkami nebo v patičce šablony." },
+    { title: "Výjimky řešte u nabídky", desc: "Jen tam, kde se pravidla liší od zbytku sortimentu. Nemá smysl duplikovat stejná data u každého produktu." },
+    { title: "Ověřte, že hodnoty sedí s obchodními podmínkami", desc: "Data mají popisovat, jak to u vás doopravdy chodí. Rozpor mezi daty a stránkou je horší než chybějící pole." },
+  ]}
+/>
+
+## Jak ověřit, že se data načítají
+
+<Checklist title="Tři kontroly" items={[
+  { title: "Validátor strukturovaných dat", desc: "Vložte adresu do testu bohatých výsledků nebo do validátoru schema.org a zkontrolujte, že se objekt MerchantReturnPolicy načetl bez chyb. Neznamená to nárok na zobrazení ve výsledcích." },
+  { title: "Zdrojový kód stránky", desc: "Hledejte hasMerchantReturnPolicy v JSON-LD. Když ho tam nenajdete, šablona ho nevypisuje — bez ohledu na to, co máte nastavené v administraci." },
+  { title: "Shoda s obchodními podmínkami", desc: "Počet dnů v datech a na stránce s podmínkami musí být stejný. Tenhle rozpor odhalí každý, kdo si to přečte." },
+]} />
+
+Obecný postup validace strukturovaných dat má [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/); širší checklist má [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Čekat od toho lepší pozici v AI odpovědích">
+    Dokumentace OpenAI vrácení jako signál výběru neuvádí a Google zobrazení negarantuje. Je to doporučená vlastnost, ne páka.
+  </Mistake>
+  <Mistake num="02" title="Zapsat lhůtu, která neodpovídá podmínkám">
+    Data mají popisovat realitu obchodu. Rozpor mezi daty a stránkou s podmínkami je horší než chybějící deklarace.
+  </Mistake>
+  <Mistake num="03" title="Duplikovat pravidla u každého produktu">
+    Když platí pro celý sortiment stejná lhůta, patří jednou k organizaci. U nabídky se řeší jen výjimky.
+  </Mistake>
+  <Mistake num="04" title="Spolehnout se na strukturovaná data místo Merchant Center">
+    Kdo posílá feed, má nastavení v Merchant Center silnější než data na webu. Strukturovaná data na stránce ho nepřebijí.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **hasMerchantReturnPolicy je doporučená, ne povinná** — Google její obsah může použít, zobrazení negarantuje.
+- **V našem měření ji nemělo ani jedno z 38 českých e-shopů** na Shoptetu (8. 8. 2026).
+- **Minimum jsou applicableCountry a returnPolicyCategory**; u konečné lhůty je povinné také merchantReturnDays. Alternativou podle Googlu je merchantReturnLink.
+- **U běžného českého B2C e-shopu bývá výchozí hodnotou 14 dnů** podle § 1829 občanského zákoníku; zápis ale musí odpovídat vašim obchodním podmínkám.
+- **Tvrzení, že to preferuje ChatGPT, nemá oporu** v dokumentaci OpenAI. Doložené je jen to, že blokovaný automatický přístup může vést k přeskočení zdroje nebo použití jiných webů.
+
+**Nevíte, co všechno vaše produktové stránky o sobě strojově říkají?** [AI SEO audit za 3 600 Kč](/audit/) projde strukturovaná data, feed i dohledatelnost a ukáže, která doporučená pole vám chybí a která máte v rozporu se stránkou.
+
+*Zdroje: Google Search Central, [Merchant return policy (MerchantReturnPolicy) structured data](https://developers.google.com/search/docs/appearance/structured-data/return-policy), aktualizováno 10. 12. 2025 · OpenAI, [Using shopping research in ChatGPT](https://help.openai.com/en/articles/12911370-using-shopping-research-in-chatgpt), čteno 2. 9. 2026 · zákon č. 89/2012 Sb., § 1829 (čtrnáctidenní lhůta pro odstoupení od smlouvy uzavřené distančním způsobem) — uvedeno jako kontext, ne právní rada · vlastní měření 38 e-shopů na Shoptetu, 8. 8. 2026. Vše ověřeno 2. 9. 2026.*
