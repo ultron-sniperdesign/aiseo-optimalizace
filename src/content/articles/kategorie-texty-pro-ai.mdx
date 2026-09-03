@@ -8,7 +8,7 @@ tags:
   - "eshopy"
   - "obsah"
 published: "2026-07-11"
-updated: "2026-07-11"
+updated: "2026-09-03"
 keywords:
   - "texty kategorii eshop"
   - "kategorie pro ai"
@@ -35,7 +35,7 @@ howto:
     - name: "Segmentujte a srovnejte typy"
       text: "Rozdělte sortiment podle toho, pro koho je (pro začátečníky, pro profesionály, do bytu, na cesty), a pokud kategorie obsahuje víc typů produktů, vysvětlete rozdíly, ideálně srovnávací tabulkou."
     - name: "Přidejte strukturovaná data kategorie"
-      text: "Doplňte strukturovaná data CollectionPage (typ stránky), ItemList (seznam produktů) a BreadcrumbList (drobečková navigace). Dají AI i vyhledávačům strojově čitelnou mapu toho, co kategorie obsahuje a jak zapadá do struktury e-shopu."
+      text: "Doplňte strukturovaná data CollectionPage (typ stránky), ItemList (seznam produktů) a BreadcrumbList (drobečková navigace). Dají strojům čitelnou mapu toho, co kategorie obsahuje a jak zapadá do struktury e-shopu. Dokumentovanou funkci ve výsledcích má u Googlu z těch tří jen BreadcrumbList."
     - name: "Prolinkujte na podkategorie a průvodce"
       text: "Odkažte na relevantní podkategorie, hlavní produkty a na blogový nákupní průvodce nebo srovnání. Prolinkování pomáhá zákazníkovi i AI lépe se zorientovat v nabídce a souvisejících tématech."
 faq:
@@ -46,7 +46,7 @@ faq:
   - q: "Kam text kategorie umístit — nad, nebo pod výpis?"
     a: "Vyplatí se obojí. Nad výpis dejte krátkou odpověď a nejdůležitější kritéria, protože je uživatel i AI vidí hned. Rozšířený obsah, jako podrobná nákupní kritéria, srovnávací tabulky nebo FAQ, umístěte pod výpis produktů. Vyhněte se tomu, aby byl veškerý text schovaný pod odkazem číst více nebo až úplně dole bez shrnutí nahoře."
   - q: "Jaká strukturovaná data ke kategorii přidat?"
-    a: "Pro kategorii dávají smysl tři typy: CollectionPage popisuje, že jde o stránku s výběrem obsahu, ItemList vyjmenovává produkty v kategorii a BreadcrumbList popisuje cestu (kategorie a podkategorie). Dohromady dají AI i Googlu strojově čitelnou mapu toho, co kategorie obsahuje a jak zapadá do struktury e-shopu. Strukturovaná data by ale měla odpovídat tomu, co je na stránce reálně vidět."
+    a: "Pro kategorii dávají smysl tři typy: CollectionPage popisuje, že jde o stránku s výběrem obsahu, ItemList vyjmenovává produkty v kategorii a BreadcrumbList popisuje cestu (kategorie a podkategorie). Dohromady dají strojům čitelnou mapu toho, co kategorie obsahuje a jak zapadá do struktury e-shopu. Dokumentovanou funkci ve výsledcích má u Googlu z těch tří jen BreadcrumbList; ItemList a CollectionPage jsou strojově čitelný popis bez nároku na zobrazení. A strukturovaná data by měla odpovídat tomu, co je na stránce reálně vidět."
   - q: "Musí mít každá kategorie vlastní text?"
     a: "Ideálně ano, pokud má být text užitečný. Generické nebo automaticky duplikované texty napříč kategoriemi mívají pro AI i vyhledávače menší přínos a kupujícímu často nepomáhají. Nemusíte psát romány — i pár vět s konkrétními kritérii a segmentací je lepší než prázdná kategorie nebo stejný odstavec všude. U velkého sortimentu začněte od nejdůležitějších a nejpoptávanějších kategorií."
   - q: "Platí to i pro Upgates a Shoptet?"
@@ -112,7 +112,7 @@ Když se v jedné kategorii potkává víc typů produktů, rozdíly nejlíp une
     {
       label: "Data",
       title: "Přidejte strukturovaná data kategorie",
-      text: "Doplňte strukturovaná data CollectionPage, ItemList a BreadcrumbList. Dají AI i vyhledávačům strojově čitelnou mapu toho, co kategorie obsahuje a jak zapadá do struktury e-shopu.",
+      text: "Doplňte strukturovaná data CollectionPage, ItemList a BreadcrumbList. Dají strojům čitelnou mapu toho, co kategorie obsahuje a jak zapadá do struktury e-shopu; dokumentovanou funkci u Googlu má z nich jen BreadcrumbList.",
     },
     {
       label: "Prolinkování",
@@ -129,7 +129,7 @@ Vedle textu pomáhá i strojově čitelný popis kategorie pomocí [strukturovan
 <CompareTable
   leftLabel="Typ"
   leftTone="accent"
-  rightLabel="Co říká AI a Googlu"
+  rightLabel="Co ten typ říká strojům"
   rightTone="accent"
   rows={[
     { icon: "🗂️", label: "CollectionPage", left: "Typ stránky", right: "Že jde o stránku s výběrem obsahu, tedy kategorii nebo výpis" },
@@ -137,6 +137,8 @@ Vedle textu pomáhá i strojově čitelný popis kategorie pomocí [strukturovan
     { icon: "🧭", label: "BreadcrumbList", left: "Drobečková navigace", right: "Kam kategorie patří ve struktuře e-shopu (kategorie a podkategorie)" },
   ]}
 />
+
+Pozor na rozdíl mezi „stroj to přečte“ a „Google za to dá funkci ve výsledcích“. Dokumentovanou funkci má z těch tří typů u Googlu jen BreadcrumbList: karusel z ItemList Google popisuje pro kurzy, filmy, recepty a restaurace (produkty mezi nimi nejsou) a CollectionPage v jeho galerii strukturovaných dat vůbec není. Zapsat je můžete, jen z nich neplyne nárok na zobrazení — podrobně to i s ukázkami JSON-LD rozebírá [strukturovaná data pro kategorii e-shopu](/blog/strukturovana-data-kategorie-eshopu/).
 
 <Insight tone="warn">
 Strukturovaná data musí odpovídat tomu, co je na stránce reálně vidět. Když ItemList vyjmenuje produkty, které na stránce nejsou, nebo popis slibuje sortiment, který nemáte, vzniká nesoulad, který AI ani Googlu nepomáhá.
@@ -185,7 +187,7 @@ Strukturovaná data musí odpovídat tomu, co je na stránce reálně vidět. Kd
 - **Kategorie mohou být pro AI jedním ze zdrojů u nákupních dotazů** — u „nejlepší X“ AI často čerpá z přehledu, nejen z produktů.
 - **Krátká odpověď a kritéria patří nad výpis** — uživatel i AI je vidí hned.
 - **Text má pomoct rozhodnout** — kritéria, segmentace, srovnání typů, ne jen výčet.
-- **Přidejte CollectionPage, ItemList a BreadcrumbList** — strojově čitelná mapa kategorie.
+- **Přidejte CollectionPage, ItemList a BreadcrumbList** — strojově čitelná mapa kategorie; dokumentovanou funkci u Googlu má z nich jen BreadcrumbList.
 - **Každá důležitá kategorie vlastní text** — generické duplicitní popisy nepomáhají.
 - **Prolinkujte a ověřte** výsledky napříč AI platformami; kontext e-shopů rozebíráme i v článku o [SEO pro e-shopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/).
 

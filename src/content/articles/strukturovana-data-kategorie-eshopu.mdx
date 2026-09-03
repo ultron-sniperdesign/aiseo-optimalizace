@@ -1,0 +1,199 @@
+---
+title: "Kategorie e-shopu: co z ItemList a CollectionPage Google čte"
+seoTitle: "CollectionPage a ItemList pro kategorie e-shopu (2026)"
+description: "BreadcrumbList, ItemList a CollectionPage na kategorii e-shopu: co z toho má u Googlu dokumentovanou funkci, co ne a co ukázalo měření 14 kategorií."
+answer: "U kategorie e-shopu se nejčastěji zmiňují tři typy strukturovaných dat: BreadcrumbList, ItemList a CollectionPage. Pro produktovou kategorii má u Googlu dokumentovanou funkci jen BreadcrumbList. Karusel z ItemList Google popisuje pro kurzy, filmy, recepty a restaurace — produkty mezi nimi nejsou. Pro CollectionPage nedokumentuje žádnou funkci ve výsledcích."
+slug: "strukturovana-data-kategorie-eshopu"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "eshopy"
+published: "2026-09-03"
+updated: "2026-09-03"
+variant: "rich"
+keywords:
+  - "collectionpage schema"
+  - "itemlist kategorie e-shopu"
+  - "strukturovaná data kategorie"
+  - "breadcrumblist e-shop"
+  - "schema pro kategorii eshopu"
+stats:
+  - value: "1 ze 3"
+    label: "typy řešené v článku má pro produktovou kategorii u Googlu dokumentovanou funkci — BreadcrumbList"
+  - value: "0 ze 14"
+    label: "měřených kategorií na Shoptetu mělo ItemList, CollectionPage nebo Product (vlastní měření, 8. 8. 2026)"
+  - value: "4"
+    label: "typy obsahu, pro které Google dokumentuje karusel z ItemList: kurzy, filmy, recepty, restaurace"
+faq:
+  - q: "Dokumentuje Google nějakou funkci pro CollectionPage?"
+    a: "Ne. V galerii strukturovaných dat Googlu se CollectionPage neobjevuje a nezmiňuje ho ani návod ke karuselu. Je to platný typ schema.org a zapsat ho můžete; jen z něj neplyne žádná funkce ve výsledcích, kterou by Google popisoval. Návody třetích stran, které slibují opak, se o dokumentaci Googlu neopírají."
+  - q: "Můžu na kategorii použít ItemList a získat karusel?"
+    a: "U produktů ne. Google dokumentuje karusel z ItemList pro čtyři typy obsahu: kurzy, filmy, recepty a restaurace. Produkty mezi nimi nejsou, takže e-shopová kategorie podmínky té funkce nesplňuje."
+  - q: "Co tedy na kategorii zapsat?"
+    a: "BreadcrumbList, který má u Googlu dokumentovanou funkci a říká, kam kategorie patří ve struktuře webu. ItemList a CollectionPage můžete doplnit jako strojově čitelný popis, ale bez očekávání, že spustí funkci ve výsledcích."
+  - q: "Pomůžou strukturovaná data kategorie k citaci v AI?"
+    a: "Google ve svém průvodci k optimalizaci pro generativní AI uvádí, že strukturovaná data pro generativní vyhledávání nejsou povinná a žádné zvláštní značení podle schema.org přidávat nemusíte — zároveň doporučuje je dál používat kvůli rozšířeným výsledkům. Data tedy pomáhají strojům porozumět stránce, ale nejsou vstupenkou do AI odpovědí."
+  - q: "Jaké vlastnosti má BreadcrumbList povinné?"
+    a: "Povinné je itemListElement a v každém ListItem položky position a name; item, tedy adresa, je povinná kromě poslední položky řetězce — tam si Google podle dokumentace vezme adresu samotné stránky."
+  - q: "Musí ItemList odpovídat tomu, co je na stránce?"
+    a: "Ano. Obecné pokyny Googlu ke strukturovaným datům to říkají přímo: neoznačujte obsah, který čtenář na stránce nevidí. Když seznam vyjmenuje produkty, které ve výpisu nejsou, data neodpovídají stránce — a to platí pro všechny typy, nejen pro kategorie."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Tři typy, jedna dokumentovaná funkce
+
+**U kategorie e-shopu se nejčastěji zmiňují tři typy strukturovaných dat: BreadcrumbList, ItemList a CollectionPage.** Pro produktovou kategorii má u Googlu dokumentovanou funkci jen BreadcrumbList. Karusel z ItemList Google popisuje jen v kombinaci se čtyřmi typy obsahu — kurzy, filmy, recepty a restaurace — a produkty mezi nimi nejsou. Pro CollectionPage nedokumentuje žádnou funkci ve výsledcích: v galerii strukturovaných dat ani v návodu ke karuselu se neobjevuje.
+
+To není důvod nedělat nic. Je to důvod vědět, co od kterého typu čekat — protože rozdíl mezi „platný typ schema.org“ a „funkce, kterou Google dokumentuje“ se v návodech běžně stírá.
+
+Tenhle návod řeší jen strojově čitelný zápis těch tří typů na kategorii. Psaní samotného textu kategorie má vlastní návod, obecná validace strukturovaných dat taky — odkazy na obojí najdete níž.
+
+## Co ukázalo měření
+
+Než se dostaneme k tomu, co zapsat: v našem vzorku kategorie e-shopů svůj sortiment strojově nepopisovaly vůbec. Měřili jsme patnáct e-shopů na Shoptetu; u čtrnácti se při procházení podařilo načíst kategorii a **ani na jedné z nich nebyl ItemList, CollectionPage ani Product**. Rozebírá to [měření strukturovaných dat na Shoptetu](/blog/shoptet-strukturovana-data-mereni/).
+
+Patnáct e-shopů je vzorek, ne populace, a měřili jsme jeden den. Pro tenhle návod z toho plyne jen tolik: kategorie v něm nesly text a odkazy, ale žádný strojově čitelný popis toho, co v nich je.
+
+## Co který typ doopravdy znamená
+
+<CompareTable
+  leftLabel="Typ"
+  rightLabel="Status u Googlu (ověřeno 3. 9. 2026)"
+  rows={[
+    { icon: "🧭", label: "BreadcrumbList", left: "kam kategorie patří ve struktuře webu", right: "dokumentovaná funkce „Breadcrumb“ v galerii strukturovaných dat; dokumentace naposledy aktualizovaná 10. 12. 2025" },
+    { icon: "📋", label: "ItemList", left: "seznam položek na stránce", right: "funkce karuselu existuje, ale jen pro kurzy, filmy, recepty a restaurace; produkty mezi podporovanými typy nejsou" },
+    { icon: "🗂️", label: "CollectionPage", left: "že stránka je výpis", right: "v galerii strukturovaných dat ani v návodu ke karuselu se neobjevuje" },
+  ]}
+/>
+
+<Insight tone="warn" label="Rozšířený omyl">
+  Pokud narazíte na návod, podle kterého CollectionPage sama o sobě spouští rozšířený výsledek pro kategorii nebo zlepšuje viditelnost výpisu, ověřte si to proti dokumentaci Googlu. **Opora pro takovou funkci v ní není.** Neznamená to, že je ten typ škodlivý — jen že za něj žádnou dokumentovanou funkci nedostanete.
+</Insight>
+
+## Proč produktová kategorie podmínky karuselu nesplňuje
+
+Dokumentace ke karuselu z ItemList je v podmínkách konkrétní. Stojí za to je znát, protože vysvětlují, proč se ItemList na kategorii chová jinak, než se čeká:
+
+<Checklist title="Podmínky karuselu podle Googlu" items={[
+  { title: "Jen čtyři typy obsahu", desc: "Kurzy, filmy, recepty a restaurace. Produktová kategorie e-shopu mezi ně nepatří." },
+  { title: "Všechny položky stejného typu", desc: "Doslova: „All items in the list must be of the same type.“ Míchat typy v jednom seznamu nejde." },
+  { title: "Nejméně dvě položky", desc: "Seznam musí obsahovat aspoň dva prvky ListItem." },
+  { title: "Dvě varianty zápisu", desc: "Buď souhrnná stránka, kde má každá položka jen pozici a adresu, nebo celý obsah položek přímo na jedné stránce." },
+]} />
+
+Pro e-shop z toho plyne prostá věc: **ItemList na kategorii se dá zapsat, ale Google pro produktovou kategorii žádný karusel nedokumentuje** — nárok na tu funkci z něj tedy odvozovat nelze. Zůstane strojově čitelný seznam, což může mít smysl, ale je to jiný cíl.
+
+## Co na kategorii zapsat
+
+Nejjistější je začít tím, co má dokumentovanou funkci. BreadcrumbList vyžaduje `itemListElement` a v každé položce `position` a `name`; adresa `item` je povinná u všech kromě poslední položky řetězce — tam si Google podle dokumentace vezme adresu samotné stránky.
+
+Do HTML se JSON-LD vkládá do `<script type="application/ld+json">`; níže je samotný obsah skriptu:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Nábytek",
+    "item": "https://www.vasobchod.cz/nabytek/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Židle"
+  }]
+}
+```
+
+Kdo chce doplnit i seznam produktů, může přidat ItemList — ale s realistickým očekáváním:
+
+<Checklist title="Kdy ItemList na kategorii dává smysl" items={[
+  { title: "Když chcete strojově čitelný sortiment", desc: "Seznam produktů s pozicemi a adresami může strojům usnadnit pochopení toho, co stránka vypisuje. Karusel z toho ale podle dokumentace Googlu čekat nelze." },
+  { title: "Když seznam odpovídá tomu, co je vidět", desc: "Obecné pokyny Googlu říkají, že se nemá označovat obsah, který čtenář na stránce nevidí. Data tedy musí popisovat výpis, ne přání." },
+  { title: "Když nemáte důležitější mezery", desc: "Na produktové stránce se řeší typy s přímější vazbou na dokumentované funkce Googlu — identifikátory, dostupnost, pravidla vrácení. Kategorie je až další krok." },
+]} />
+
+Zápis souhrnné stránky pak vypadá takhle — je to strojově čitelný seznam podle schema.org, ne cesta ke karuselu:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "url": "https://www.vasobchod.cz/nabytek/zidle/kancelarska-alfa/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "url": "https://www.vasobchod.cz/nabytek/zidle/jidelni-beta/"
+  }]
+}
+```
+
+Adresy musí vést na produkty, které jsou ve výpisu skutečně vidět. U stránkovaného výpisu popisujte vždy jen tu stránku, na které skript je — ne celý sortiment kategorie. V praxi to znamená hodnoty generovat šablonou: názvy a adresy z drobečkové navigace, pořadí produktů podle aktuálního výpisu a jen produkty z právě zobrazené stránky nebo filtru.
+
+Ukázku CollectionPage tu záměrně nedáváme jako doporučený krok. Typ je ve schema.org platný, ale Google pro něj u kategorií žádnou funkci nedokumentuje — pokud ho nasadíte, berte ho jen jako obecný popis typu stránky.
+
+Co patří na produktovou stránku, rozebírají [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/) a návod na [deklaraci vrácení zboží](/blog/hasmerchantreturnpolicy-schema/); jak psát samotný text kategorie, [texty kategorií pro AI](/blog/kategorie-texty-pro-ai/).
+
+## Funkce Googlu versus strojová čitelnost
+
+U kategorií e-shopu je tenhle rozdíl zásadní: BreadcrumbList míří na dokumentovanou funkci Googlu, zatímco ItemList a CollectionPage jsou tu hlavně strojově čitelný popis. Obecně se od toho odvozuje skoro celé rozhodování o strukturovaných datech:
+
+<CompareTable
+  leftLabel="Dokumentovaná funkce"
+  rightLabel="Strojově čitelný popis"
+  rows={[
+    { icon: "🎯", label: "Co to je", left: "typ, u kterého Google popisuje konkrétní zobrazení ve výsledcích", right: "platný typ schema.org, který je strojově zpracovatelný, i když z něj Google nedokumentuje žádné zobrazení" },
+    { icon: "📐", label: "Jak se pozná", left: "má vlastní stránku v galerii strukturovaných dat a podmínky", right: "je na schema.org, ale v galerii Googlu chybí" },
+    { icon: "🤖", label: "Vztah k AI", left: "Google u AI funkcí uvádí, že zvláštní typ potřeba není — data ale doporučuje dál používat kvůli rozšířeným výsledkům", right: "totéž — čitelnost pomáhá, nárok nezakládá" },
+  ]}
+/>
+
+Google to sám shrnuje v [průvodci optimalizací pro generativní AI](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide): strukturovaná data pro generativní vyhledávání nejsou povinná a žádné zvláštní značení podle schema.org přidávat nemusíte — Google zároveň doporučuje je dál používat, protože otevírají cestu k rozšířeným výsledkům. Celý dokument rozebírá [průvodce od Googlu a co v něm stojí](/blog/aeo-geo-je-porad-seo/).
+
+## Jak ověřit, že se data načítají
+
+<Checklist title="Tři kontroly" items={[
+  { title: "Správný nástroj k typu", desc: "BreadcrumbList ověřte v testu bohatých výsledků od Googlu — ten kontroluje typy s dokumentovanou funkcí. ItemList a CollectionPage ověřujte ve validátoru schema.org: řekne vám, že je zápis validní, ne že Google něco zobrazí." },
+  { title: "Zdrojový kód stránky", desc: "Hledejte BreadcrumbList v JSON-LD. Když ho tam nenajdete, šablona ho nevypisuje — nebo ho vypisuje v microdatech, což platformy dělají často." },
+  { title: "Shoda s viditelnou stránkou", desc: "Řetězec v datech musí odpovídat drobečkové navigaci, kterou vidí člověk. Data, která nemají oporu ve viditelném obsahu, jsou proti obecným pokynům Googlu." },
+]} />
+
+Obecný postup validace má [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Čekat od CollectionPage rozšířený výsledek">
+    V galerii strukturovaných dat Googlu ten typ není. Zapsat ho můžete, ale žádnou funkci ve výsledcích pro něj Google nepopisuje.
+  </Mistake>
+  <Mistake num="02" title="Zapsat ItemList a čekat karusel produktů">
+    Karusel Google dokumentuje pro kurzy, filmy, recepty a restaurace. Produktová kategorie mezi ně nepatří.
+  </Mistake>
+  <Mistake num="03" title="Vyjmenovat v datech produkty, které na stránce nejsou">
+    Google v obecných pokynech říká, že se nemá označovat obsah, který čtenář na stránce nevidí. Platí to i pro stránkované výpisy.
+  </Mistake>
+  <Mistake num="04" title="Řešit kategorie dřív než produkty">
+    V měření chyběla kategoriím data úplně, ale na produktové stránce se řeší typy s přímější vazbou na dokumentované funkce Googlu.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Ze tří typů má pro produktovou kategorii dokumentovanou funkci jeden:** BreadcrumbList.
+- **Karusel z ItemList Google dokumentuje jen se čtyřmi typy obsahu** — kurzy, filmy, recepty, restaurace; produkty mezi nimi nejsou.
+- **Pro CollectionPage Google žádnou funkci nedokumentuje** — v galerii strukturovaných dat ani v návodu ke karuselu se neobjevuje.
+- **Ani jedna ze 14 měřených kategorií** neměla ItemList, CollectionPage ani Product.
+- **Pro AI funkce Google žádný zvláštní typ nevyžaduje** — strojová čitelnost pomáhá, nárok nezakládá.
+
+**Nevíte, co vaše kategorie a produkty o sobě strojově říkají?** [AI SEO audit za 3 600 Kč](/audit/) projde strukturovaná data napříč šablonami a ukáže, kde chybí dokumentovaná funkce a kde jsou data v rozporu se stránkou. Kdo chce postupovat sám, má strukturu stránek popsanou v [AI SEO Wireframe Packu za 1 490 Kč](/pack/).
+
+*Zdroje: Google Search Central — [galerie strukturovaných dat](https://developers.google.com/search/docs/appearance/structured-data/search-gallery), [Carousel (ItemList) structured data](https://developers.google.com/search/docs/appearance/structured-data/carousel) a [Breadcrumb structured data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb) — poslední dva dokumenty naposledy aktualizované 10. 12. 2025 · [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) · [General structured data guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies) (aktualizované 10. 7. 2026) · vlastní měření 15 e-shopů na Shoptetu, 8. 8. 2026. Vše ověřeno 3. 9. 2026.*

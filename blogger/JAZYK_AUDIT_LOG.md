@@ -1198,3 +1198,16 @@ Přijato (gramatika): třikrát chybná valence „vlastnost, **kterou** e-shop 
 Odmítnuto: „neměl **ani jeden**" → „žádný" (idiom webu, v korpusu běžný) · skloňování v poli `keywords` („merchantreturnpolicy e-shop") — klíčová slova jsou vyhledávací fráze, ne prozaický text.
 
 **Poznámka:** slovník v59 má teď u pravidla `content` čtyři výjimky (mixed content, Helpful Content Update, AI SEO content, Content Signals / Content-Signal / Content-Usage, Content API). Pravidlo je tím pádem nejčastěji doplňované — každý nový název rozhraní s „Content" ho spustí.
+
+---
+
+## C6 při psaní: `strukturovana-data-kategorie-eshopu` (3. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 0 nálezů napoprvé i po obou kolech auditu. Slovník v59 beze změny — názvy typů schema.org (BreadcrumbList, ItemList, CollectionPage, ListItem) žádné pravidlo nespouštějí. |
+| LLM (gpt-5.4) | 1 nález — **přijat** |
+
+Přijato: „v našem vzorku **kategorie sortiment** strojově nepopisovaly vůbec" → „v našem vzorku **kategorie e-shopů svůj sortiment** strojově nepopisovaly vůbec". Bez upřesnění se dvě podstatná jména v řadě četla jako „vzorek kategorie".
+
+**Poznámka:** vada vznikla při opravě po auditu #1 (zúžení zobecnění „na českých e-shopech" na vzorek). Znovu se potvrdilo, že věty přepsané kvůli faktické opravě je potřeba přečíst nahlas — auditor hlídá fakta, ne plynulost.
