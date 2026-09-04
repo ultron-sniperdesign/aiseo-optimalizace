@@ -1211,3 +1211,17 @@ Odmítnuto: „neměl **ani jeden**" → „žádný" (idiom webu, v korpusu bě
 Přijato: „v našem vzorku **kategorie sortiment** strojově nepopisovaly vůbec" → „v našem vzorku **kategorie e-shopů svůj sortiment** strojově nepopisovaly vůbec". Bez upřesnění se dvě podstatná jména v řadě četla jako „vzorek kategorie".
 
 **Poznámka:** vada vznikla při opravě po auditu #1 (zúžení zobecnění „na českých e-shopech" na vzorek). Znovu se potvrdilo, že věty přepsané kvůli faktické opravě je potřeba přečíst nahlas — auditor hlídá fakta, ne plynulost.
+
+---
+
+## C6 při refreshi: `strukturovana-data-pro-ai` (4. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 1 nález — **„schema markup"** v kotvě odkazu na článek `schema-markup-ai-citace-test` (jeho vlastní titulek ten termín nese jako cílové klíčové slovo). Přepsáno na „test vlivu strukturovaných dat na citace"; slug beze změny. Po opravě 0. Slovník v59 beze změny. |
+| LLM (gpt-5.4) | 3 nálezy — **2 přijaty, 1 odmítnut** |
+
+Přijato: „Co se ale liší typ od typu, je **co** za ně dostanete" → „je **to, co** za ně dostanete" (chybějící ukazovací zájmeno) · „projde **typy stránku po stránce**" → „projde **šablony typ po typu**" (nesourodá vazba, vznikla při zpřesňování CTA po auditu #2).
+Odmítnuto: chybějící tečka na konci věty v bloku `<Insight>` — věta pokračuje za pomlčkou a tečku má; model si ji uřízl na tučném úseku.
+
+**Poznámka:** obě přijaté vady vznikly až při opravách po auditech, ne v prvním psaní. Potvrzuje to zápis z 3. 9.: věty přepsané kvůli faktické opravě je potřeba přečíst znovu celé.

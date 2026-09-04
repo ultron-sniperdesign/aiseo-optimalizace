@@ -1,13 +1,13 @@
 ---
 title: "Strukturovaná data pro AI: typy a validace v roce 2026"
-description: "Jaká strukturovaná data v JSON-LD pomáhají AI lépe pochopit obsah, co se v roce 2026 mění u FAQ rozšířených výsledků a jak je krok za krokem validovat."
-answer: "Strukturovaná data pro AI jsou strojově čitelné popisy obsahu ve formátu JSON-LD, které pomáhají AI nástrojům jako ChatGPT, Perplexity nebo Google AI správně rozpoznat, co stránka obsahuje. Klíčové typy v roce 2026 jsou Article, FAQPage, HowTo, Product, Organization a BreadcrumbList. Musí ale odpovídat viditelnému textu — nepravdivá strukturovaná data mohou být vyhodnocená jako spam a důvěryhodnosti stránky nepomohou."
+description: "Které typy mají u Googlu dokumentovanou funkci, co se stalo s FAQ a HowTo a jak data validovat. Stav ověřený v dokumentaci Googlu k 4. 9. 2026."
+answer: "Strukturovaná data jsou strojově čitelné popisy obsahu, obvykle v JSON-LD. Dokumentovanou funkci u Googlu má jen část typů — Article, Product, Organization nebo BreadcrumbList ano, FAQPage a HowTo už nespouštějí rozšířené výsledky. Google zároveň uvádí, že pro generativní AI žádné zvláštní značení potřeba není. Data musí odpovídat viditelnému obsahu."
 slug: "strukturovana-data-pro-ai"
 category: "tutorial"
 tags:
   - "strukturovana-data"
 published: "2026-06-07"
-updated: "2026-06-07"
+updated: "2026-09-04"
 variant: "rich"
 keywords:
   - "strukturovaná data pro ai"
@@ -19,37 +19,28 @@ keywords:
   - "rich results 2026"
 stats:
   - value: "JSON-LD"
-    label: "doporučený formát pro Google a běžně podporovaná cesta pro strukturovaná data"
-  - value: "6 typů"
-    label: "Article, FAQPage, HowTo, Product, Organization a BreadcrumbList jako praktický základ pro většinu webů"
-  - value: "2026"
-    label: "Google FAQ rozšířené výsledky pro běžné weby v roce 2026 v podstatě skončily"
+    label: "formát, který Google v dokumentaci doporučuje jako preferovaný pro strukturovaná data"
+  - value: "7. 5. 2026"
+    label: "den, od kterého Google nezobrazuje FAQ rozšířené výsledky (changelog Search Central)"
+  - value: "13. 9. 2023"
+    label: "den, kdy Google označil HowTo rozšířené výsledky za ukončené"
   - value: "musí sedět"
-    label: "strukturovaná data musí odpovídat viditelnému textu na stránce"
-howto:
-  name: "Jak nasadit strukturovaná data pro AI v roce 2026"
-  steps:
-    - name: "Vyberte relevantní typy"
-      text: "Article pro článek, Product pro produkt, Organization na úrovni webu, BreadcrumbList všude, HowTo jen pro skutečné postupy a FAQPage jen tam, kde je FAQ viditelná i pro uživatele."
-    - name: "Zapište je v JSON-LD"
-      text: "Použijte JSON-LD ve značce script type application/ld+json v head nebo na konci body. JSON-LD je preferovaný formát napříč Google, Bing i AI nástroji."
-    - name: "Zkontrolujte shodu s textem"
-      text: "Strukturovaná data musí odpovídat viditelnému obsahu stránky. Falešné nebo přidané údaje jsou považované za spam a mohou web poškodit."
-    - name: "Validujte a otestujte v AI"
-      text: "Použijte validator.schema.org pro kontrolu syntaxe a souladu se Schema.org a Google Rich Results Test pro podporu rozšířených výsledků. Pak se zeptejte ChatGPT nebo Perplexity na obsah stránky a sledujte, jestli ji zmiňují (orientačně, v režimech s přístupem k webu)."
+    label: "obecné pokyny Googlu: neoznačujte obsah, který čtenář na stránce nevidí"
 faq:
   - q: "Jaká strukturovaná data nasadit pro AI vyhledávání?"
-    a: "V roce 2026 tvoří jádro Article (pro články), Product (pro produkty), Organization (na úrovni webu pro identifikaci značky), BreadcrumbList (pro navigaci), HowTo (pro skutečné postupy) a FAQPage (kde je FAQ viditelná i pro uživatele). Pro specifické typy obsahu pak Recipe, VideoObject, LocalBusiness, Event nebo DefinedTerm. Pro většinu webů začněte tímto jádrem."
-  - q: "Jaký formát strukturovaných dat se doporučuje pro AI vyhledávání?"
-    a: "JSON-LD. Je to formát, který v roce 2026 preferují Google, Bing i AI nástroje včetně ChatGPT a Perplexity. Jeho výhoda je, že žije v samostatném skriptu odděleně od HTML, snáz se udržuje a méně se rozbíjí při změně šablony. Microdata a RDFa fungují, ale doporučená a běžně používaná cesta je JSON-LD."
-  - q: "Pomáhá FAQPage v Googlu po květnu 2026?"
-    a: "Pro klasické rozšířené výsledky v Googlu už ne. Google FAQ rozšířené výsledky v posledních letech výrazně omezil a v roce 2026 s nimi pro běžné weby nelze počítat jako se zdrojem lepšího zobrazení ve výsledcích. Existující FAQPage strukturovaná data mohou zůstat v pořádku, pokud přesně odpovídají viditelnému FAQ na stránce. Hodnota FAQPage v roce 2026 je hlavně v jasnější struktuře obsahu pro AI a uživatele — nasazujte ho jen tam, kde je FAQ reálně viditelná."
+    a: "Začněte typy, které popisují, co na stránce opravdu je: Article pro články, Product pro produkty, Organization pro identitu značky a BreadcrumbList pro navigaci. Ty mají u Googlu i dokumentovanou funkci. Podle obsahu pak Recipe, VideoObject, LocalBusiness nebo Event. Person berte jako strojový popis autora — samostatnou funkci Google dokumentuje u profilové stránky, ne u typu Person. Žádný typ není zvláštní vstupenka do AI odpovědí."
+  - q: "Jaký formát strukturovaných dat se doporučuje?"
+    a: "JSON-LD. Google ho v dokumentaci uvádí jako preferovaný a jeho výhoda je, že žije v samostatném skriptu odděleně od HTML. Microdata a RDFa Google zpracovává taky — a některé e-shopové platformy je vypisují automaticky, takže se před nasazením JSON-LD vyplatí zkontrolovat, co už na stránce je."
+  - q: "Pomáhá FAQPage v Googlu v roce 2026?"
+    a: "K rozšířenému výsledku ne. Google podle changelogu Search Central FAQ rozšířené výsledky od 7. května 2026 nezobrazuje a v červnu 2026 jejich dokumentaci odstranil. Samotný FAQPage zůstává platný typ schema.org a Google výslovně uvádí, že nevyužitá strukturovaná data ve Vyhledávání problém nedělají — jen z nich neplyne žádné zobrazení."
+  - q: "Co je s HowTo?"
+    a: "HowTo rozšířené výsledky Google ukončil dřív než FAQ. V aktualizaci z 14. září 2023 píše, že od 13. září je na počítačích nezobrazuje a typ je ukončený; do 30 dnů zmizel typ zobrazení, report i podpora v testu. Značení můžete nechat, ale počítejte s tím, že žádné zobrazení nespustí."
   - q: "Jak validovat strukturovaná data?"
-    a: "Použijte dva nástroje vedle sebe: validator.schema.org pro striktní kontrolu shody se Schema.org a Google Rich Results Test pro ověření podpory rozšířených výsledků v Googlu. Oba nástroje vám rovnou ukážou chyby a varování. Po nasazení se navíc vyplatí přímo se zeptat ChatGPT nebo Perplexity na obsah stránky a sledovat, jestli ji zmiňují."
+    a: "Podle toho, co ověřujete. Test rozšířených výsledků od Googlu kontroluje typy s dokumentovanou funkcí a chybějící povinná pole. Validátor schema.org kontroluje shodu se slovníkem u čehokoli. Ani jeden neřekne, jestli vás bude AI citovat — a validní zápis není příslib zobrazení."
   - q: "Musí strukturovaná data odpovídat textu na stránce?"
-    a: "Ano. Google to považuje za jasné pravidlo: strukturovaná data musí přesně odpovídat obsahu, který uživatel reálně vidí. Přidávání údajů, které na stránce nejsou, je spam a může vést k manuální penalizaci. U produktu se to týká ceny, dostupnosti i hodnocení; u FAQ otázek a odpovědí; u článku autora, data publikace a aktualizace."
+    a: "Ano. Obecné pokyny Googlu to říkají přímo: neoznačujte obsah, který čtenář na stránce nevidí. U produktu jde o cenu, dostupnost a hodnocení, u článku o autora a data, u FAQ o otázky a odpovědi. Nesoulad je porušení pokynů, ne detail."
   - q: "Pomáhají strukturovaná data k citaci v ChatGPT a Perplexity?"
-    a: "Dostupné testy a praxe z let 2025–2026 naznačují, že validní strukturovaná data mohou zvýšit šanci, že AI nástroje obsah správně pochopí a použijí. Nejde ale o samostatný faktor, který by citaci zajistil. Strukturovaná data pomáhají strojové čitelnosti obsahu, samotnou citaci ale neřeší — bez kvalitního a důvěryhodného obsahu samy o sobě nestačí."
+    a: "Z veřejných zdrojů to doložit nejde. Google k vlastním AI funkcím uvádí, že strukturovaná data pro generativní vyhledávání povinná nejsou a žádné zvláštní značení přidávat nemusíte. Ostatní systémy o svých vstupech nic srovnatelného nezveřejňují. Data pomáhají strojové čitelnosti, citaci ale nezakládají."
 ---
 
 import Checklist from "../../components/blocks/Checklist.astro";
@@ -57,43 +48,73 @@ import Insight from "../../components/blocks/Insight.astro";
 import CompareTable from "../../components/blocks/CompareTable.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
 
 ## Strukturovaná data pro AI: co to je a proč na nich záleží
 
-**Strukturovaná data jsou strojově čitelné popisy obsahu ve formátu JSON-LD, které AI nástrojům jako ChatGPT, Perplexity nebo Google AI pomáhají správně rozpoznat, co stránka obsahuje.** Pro AI vyhledávání mají dvě role: usnadňují vytahování faktů (cena, autor, datum, kroky postupu) a pomáhají správně zařadit typ obsahu. Dostupné testy a praxe z let 2025–2026 naznačují, že validní strukturovaná data mohou zvýšit šanci, že AI nástroje obsah správně pochopí a použijí — nejde ale o garanci citace.
+**Strukturovaná data jsou strojově čitelné popisy obsahu, nejčastěji v JSON-LD, které strojům říkají, co stránka obsahuje: kdo je autor, kolik produkt stojí, kam stránka patří ve struktuře webu.** Vyhledávačům i dalším systémům, které stránku strojově zpracovávají, můžou usnadnit rozpoznání faktů a typu obsahu. Neplyne z nich ale povinnost pro generativní AI ani nárok na citaci.
 
-Tento návod ukazuje, **které typy nasadit v roce 2026**, **jak je správně napsat v JSON-LD**, **co se změnilo s koncem FAQ rich results** a **jak je validovat**. Doplňuje obecnější [obsah pro AI éru](/blog/ai-seo-content/) o technickou vrstvu.
+Co se ale liší typ od typu, je **to, co za ně dostanete od Googlu**. U některých typů Google popisuje konkrétní zobrazení ve výsledcích, u jiných ne — a dva typy, které se ještě donedávna doporučovaly plošně, mezitím zobrazení ztratily. Tenhle návod je proto postavený na jednom rozlišení: **typ s dokumentovanou funkcí versus typ, který je jen strojově čitelný popis.**
 
 <Insight tone="accent" icon="!" label="Co si odnést">
-  Strukturovaná data pomáhají AI obsah pochopit, ale nejsou spínač citace. Vždy musí odpovídat viditelnému textu — nepravdivá strukturovaná data jsou spam. JSON-LD je v roce 2026 preferovaný formát napříč vyhledávači i AI nástroji.
+  Strukturovaná data pomáhají strojům obsah pochopit, ale nejsou spínač citace. Google sám uvádí, že pro generativní AI žádná speciální data potřeba nejsou. Vždy musí odpovídat viditelnému textu — jinak jdou proti jeho obecným pokynům.
 </Insight>
 
-## Klíčové typy strukturovaných dat pro AI v 2026
+## Co Google říká o strukturovaných datech a AI
 
-Pro většinu webů je praktické začít těmito šesti typy a doplňovat další podle konkrétního obsahu:
+Tady se vyplatí číst primární zdroj, protože kolem tématu je hodně dohadů. Google v [průvodci optimalizací pro generativní AI](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) píše, že strukturovaná data **pro generativní vyhledávání povinná nejsou a žádné zvláštní značení podle schema.org přidávat nemusíte** — a hned dodává, že je má smysl dál používat, protože otevírají cestu k rozšířeným výsledkům.
 
-<Checklist tone="seo" title="Jádro typů pro AI vyhledávání" items={[
+Z toho plyne rámec celého článku. Strukturovaná data nasazujte kvůli tomu, co dokládají o stránce, a kvůli funkcím, které Google popisuje. Ne kvůli představě, že jde o vstupenku do AI odpovědí. Co ten průvodce říká celý, rozebírá [průvodce od Googlu a co v něm stojí](/blog/aeo-geo-je-porad-seo/).
+
+## Typy s dokumentovanou funkcí a typy bez ní
+
+Rozdělení, které vydrží déle než jakýkoli seznam „nejlepších typů“: otevřete si [galerii strukturovaných dat](https://developers.google.com/search/docs/appearance/structured-data/search-gallery) a podívejte se, jestli tam typ je. Když ano, Google u něj popisuje konkrétní zobrazení a s ním i podmínky. Když ne, může jít pořád o platný typ schema.org — Google u něj ale v Search Central žádný rozšířený výsledek ani podmínky pro jeho získání nedokumentuje.
+
+<CompareTable
+  leftLabel="Typ s dokumentovanou funkcí"
+  leftTone="seo"
+  rightLabel="Typ bez dokumentované funkce"
+  rightTone="aeo"
+  rows={[
+    { icon: "🎯", label: "Příklady", left: "Article, Product, Organization, BreadcrumbList (v galerii vedený jako Breadcrumb), Event, Recipe, VideoObject", right: "FAQPage, HowTo, CollectionPage a další typy ze slovníku schema.org" },
+    { icon: "📐", label: "Jak se pozná", left: "má vlastní stránku v galerii strukturovaných dat, včetně povinných polí", right: "je na schema.org, ale v galerii Googlu ho nenajdete" },
+    { icon: "🔍", label: "Čím ověřit", left: "test rozšířených výsledků od Googlu", right: "validátor schema.org" },
+    { icon: "🤖", label: "Vztah k AI", left: "žádný zvláštní — Google zvláštní typ pro AI nevyžaduje", right: "totéž; strojová čitelnost pomáhá, nárok nezakládá" },
+  ]}
+/>
+
+Praktické jádro pro většinu webů je proto úzké a nudné, což je dobře:
+
+<Checklist tone="seo" title="Čím začít" items={[
   { title: "Article", desc: "pro článek nebo příspěvek na blogu; autor, datum publikace a aktualizace, hlavní obrázek." },
-  { title: "Product", desc: "pro produkt na e-shopu; cena, dostupnost, hodnocení — vše musí sedět s viditelným obsahem." },
-  { title: "Organization", desc: "na úrovni webu pro identifikaci značky; logo, sociální profily (sameAs), kontakty." },
-  { title: "BreadcrumbList", desc: "drobečková navigace na všech stránkách hierarchie — pomáhá AI pochopit strukturu webu." },
-  { title: "HowTo", desc: "jen tam, kde stránka obsahuje skutečný postup krok za krokem." },
-  { title: "FAQPage", desc: "jen tam, kde je FAQ viditelná i pro uživatele (pozor: rich results v Googlu už ne — viz níže)." }
+  { title: "Product", desc: "pro produkt na e-shopu; cena, dostupnost, identifikátory — vše musí sedět s viditelným obsahem." },
+  { title: "Organization", desc: "na úrovni webu pro identitu značky; logo, profily (sameAs), kontakty." },
+  { title: "BreadcrumbList", desc: "drobečková navigace všude v hierarchii; u kategorií e-shopu je to nejbezpečnější základ, další typy řešte podle obsahu konkrétní stránky." },
 ]} />
 
-Pro specifické obsahy pak doplňte Recipe (recept), VideoObject (video), LocalBusiness (provozovna), Event (událost) nebo DefinedTerm (definice pojmu).
+Podle obsahu pak přidejte Recipe, VideoObject, LocalBusiness nebo Event. U autora pozor na rozdíl: samostatný typ `Person` v galerii není, dokumentovaná funkce se váže k profilové stránce (Profile page) — `Person` proto berte jako strojový popis autora, ne jako nárok na zobrazení. Rozebírá to [Person pro autora](/blog/person-data-pro-autora/). Typy bez dokumentované funkce nejsou zakázané — jen si od nich neslibujte zobrazení.
+
+## Co se stalo s FAQ a HowTo
+
+Dva typy, které se v minulých letech doporučovaly plošně, už podle dokumentace Googlu rozšířené výsledky ve Vyhledávání nespouštějí. U obou to Google oznámil sám a u obou je dobré znát datum:
+
+<Checklist title="Doložený stav (ověřeno 4. 9. 2026)" items={[
+  { title: "FAQ rozšířené výsledky skončily 7. 5. 2026", desc: "Changelog Search Central k 8. 5. 2026: funkce se od 7. května ve Vyhledávání neobjevuje. V červnu 2026 Google dokumentaci k FAQ rozšířeným výsledkům odstranil úplně — původní adresa dnes vede na changelog." },
+  { title: "HowTo skončilo už 13. 9. 2023", desc: "Aktualizace oznámení z 14. 9. 2023: od 13. září Google HowTo rozšířené výsledky nezobrazuje ani na počítačích a typ je ukončený. Do 30 dnů zmizel typ zobrazení, report i podpora v testu, do 180 dnů v API." },
+  { title: "Značení kvůli tomu mazat nemusíte", desc: "Google v témže oznámení píše, že nevyužitá strukturovaná data ve Vyhledávání problémy nedělají — jen nemají viditelný efekt. Odstraňte je tam, kde popisují obsah, který na stránce není." },
+]} />
+
+Praktický dopad: **nezavádějte FAQPage ani HowTo kvůli výsledku ve Vyhledávání.** Nasazujte je jen tam, kde odpovídají viditelnému obsahu a kde vám dávají smysl jako popis stránky. Když otázky a odpovědi na stránce viditelné jsou, FAQPage dál slouží jako strojový popis obsahu — což je i případ tohohle článku. Jen od něj k 4. 9. 2026 nečekejte rozšířený výsledek. Celou časovou osu i rozhodnutí, kdy značení nechat a kdy odstranit, rozebírá [konec FAQ rozšířených výsledků](/blog/konec-faq-rich-results/).
 
 ## JSON-LD jako preferovaný formát
 
-JSON-LD je v roce 2026 standardní volba pro strukturovaná data. Důvody:
+JSON-LD je standardní volba a Google ho v dokumentaci uvádí jako preferovaný. Žije v samostatném skriptu (`<script type="application/ld+json">`) odděleně od HTML, takže se snáz udržuje a méně se rozbíjí při změně šablony. Na jedné stránce jich může být víc, pro různé typy.
 
-- **Google a Bing JSON-LD běžně podporují** a AI nástrojům jako ChatGPT, Perplexity nebo Claude tento formát může usnadnit strojové čtení obsahu, pokud mají ke stránce přístup.
-- **Žije v samostatném skriptu** (`<script type="application/ld+json">`) odděleně od HTML — snáz se udržuje a méně se rozbíjí při změně šablony.
-- **Více strukturovaných dat na jedné stránce** lze zapsat do jednoho nebo více `script` bloků bez vlivu na vzhled.
+<Insight tone="warn" label="Než začnete psát vlastní JSON-LD">
+  Zkontrolujte, co už šablona vypisuje. V našem měření patnácti e-shopů na Shoptetu (8. 8. 2026) měly **všechny produktové stránky data v microdatech a ani jedna v JSON-LD** — kdo tam nasadí JSON-LD naslepo, vyrobí druhou sadu údajů o téže stránce, kterou musí držet v souladu. Není to reprezentativní vzorek celé platformy, ale kontrola reálných implementací — podrobnosti má [měření strukturovaných dat na Shoptetu](/blog/shoptet-strukturovana-data-mereni/).
+</Insight>
 
-Microdata a RDFa fungují také, ale doporučená a běžně používaná cesta je JSON-LD.
-
-Krátká, **zjednodušená** ukázka, jak vypadá JSON-LD pro typ `Article` (na živém webu obvykle doplníte i `mainEntityOfPage`, `publisher` a další pole podle typu stránky):
+Zjednodušená ukázka pro typ `Article` (na živém webu obvykle doplníte i `mainEntityOfPage`, `publisher` a další pole):
 
 ```html
 <script type="application/ld+json">
@@ -103,71 +124,88 @@ Krátká, **zjednodušená** ukázka, jak vypadá JSON-LD pro typ `Article` (na 
   "headline": "Titulek článku",
   "author": { "@type": "Person", "name": "Jméno autora" },
   "datePublished": "2026-06-07",
-  "dateModified": "2026-06-07",
+  "dateModified": "2026-09-04",
   "image": "https://example.com/og/clanek.png"
 }
 </script>
 ```
 
-V hlavičce nebo na konci `body` může být víc takových bloků pro různé typy (Article, BreadcrumbList, Organization).
-
-## POZOR: FAQ rich results v Googlu už v roce 2026 nelze brát jako přínos
-
-To je významná změna, kterou je potřeba znát:
-
-<Insight tone="seo" icon="i" label="Konec FAQ rich results">
-  Google FAQ rozšířené výsledky v posledních letech výrazně omezil a v roce 2026 s nimi pro běžné weby nelze počítat jako se zdrojem lepšího zobrazení ve výsledcích. Existující FAQPage strukturovaná data mohou zůstat v pořádku, pokud přesně odpovídají viditelnému FAQ na stránce. Smysl mají hlavně pro lepší strukturu obsahu pro uživatele a strojové čtení.
-</Insight>
-
-Praktický dopad: nezavádějte FAQPage plošně kvůli SERPu. Nasazujte ho jen tam, kde je FAQ reálně viditelná pro uživatele a kde dává smysl pro orientaci v obsahu. Pro AI citaci pomáhá hlavně to, že odpovědi jsou krátké a věcné.
+Berte ji jako syntaktickou ukázku. Produkční zápis musí odpovídat konkrétní stránce, šabloně a povinným polím, která Google u daného typu uvádí.
 
 ## Strukturovaná data musí odpovídat textu
 
-Toto je klíčové pravidlo Googlu: strukturovaná data musí **přesně odpovídat tomu, co uživatel reálně vidí**. Přidávání údajů, které na stránce nejsou, je spam a může vést k manuální penalizaci.
+Tohle je pravidlo, ne doporučení. Obecné pokyny Googlu ke strukturovaným datům (aktualizované 10. 7. 2026) říkají doslova, že se nemá označovat obsah, který čtenář na stránce nevidí, a že označení má stránku popisovat celou — když vypíšete část recenzí, mají tam být všechny viditelné.
 
-- U **Product** se to týká ceny, dostupnosti a hodnocení.
-- U **FAQPage** otázek a odpovědí.
-- U **Article** autora, data publikace a aktualizace.
-- U **Organization** kontaktů a sociálních profilů.
+- U **Product** jde o cenu, dostupnost, identifikátory a hodnocení.
+- U **Article** o autora, datum publikace a aktualizace.
+- U **FAQPage** o otázky a odpovědi, které na stránce reálně jsou.
+- U **Organization** o kontakty a profily.
+
+Nesoulad není kosmetická vada: je to porušení pokynů, které může skončit ručním opatřením. A u AI systémů platí totéž z jiného důvodu — data, která si protiřečí s textem, snižují důvěryhodnost obojího.
 
 ## Jak strukturovaná data validovat
 
-Před nasazením a po každé větší změně použijte dva nástroje vedle sebe:
+Dva nástroje, každý na něco jiného — [test rozšířených výsledků](https://search.google.com/test/rich-results) od Googlu a [validátor schema.org](https://validator.schema.org/):
 
 <CompareTable
-  leftLabel="validator.schema.org"
+  leftLabel="Test rozšířených výsledků"
   leftTone="seo"
-  rightLabel="Google Rich Results Test"
+  rightLabel="validator.schema.org"
   rightTone="aeo"
   rows={[
-    { icon: "🎯", label: "K čemu slouží", left: "Přísnější kontrola shody se Schema.org", right: "Ověření podpory rozšířených výsledků v Googlu" },
-    { icon: "✅", label: "Co odhalí", left: "Strukturální chyby, neexistující vlastnosti", right: "Chybějící povinná pole pro rozšířené výsledky" },
-    { icon: "🔧", label: "Kdy použít", left: "Vždy — základní kontrola validity", right: "Když cílíte na rozšířený výsledek v Googlu" },
-    { icon: "🤖", label: "AI kontrola", left: "Neřeší AI nástroje", right: "Neřeší AI nástroje" }
+    { icon: "🎯", label: "K čemu slouží", left: "ověření typů, u kterých Google popisuje zobrazení", right: "kontrola syntaxe a použití typů a vlastností podle slovníku schema.org" },
+    { icon: "✅", label: "Co odhalí", left: "chybějící povinná pole pro konkrétní funkci", right: "strukturální chyby a neexistující vlastnosti u jakéhokoli typu" },
+    { icon: "🔧", label: "Kdy použít", left: "u Article, Product, Organization, Breadcrumb a dalších z galerie", right: "u typů, které Google nedokumentuje, a jako základní kontrola" },
+    { icon: "🤖", label: "AI kontrola", left: "neřeší AI nástroje", right: "neřeší AI nástroje" },
   ]}
 />
 
-Po nasazení a validaci se navíc vyplatí přímo se **zeptat ChatGPT nebo Perplexity** na obsah stránky a sledovat, jestli ji zmiňují, případně jaké údaje z ní vytahují. Žádný validátor nepotvrdí, že vás AI začne citovat. Ruční dotaz v ChatGPT nebo Perplexity berte jen jako orientační kontrolu — a jen u režimů, které mají přístup k webu nebo aktuálnímu indexu.
+Po nasazení se vyplatí zeptat se ChatGPT nebo Perplexity na obsah stránky a sledovat, jaké údaje z ní berou. Berte to jako orientační kontrolu, ne jako měření — a jen u režimů, které mají přístup k webu. Systematičtější postup má [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/) a co z vlastního testování vyšlo nám, shrnuje [test vlivu strukturovaných dat na citace](/blog/schema-markup-ai-citace-test/).
+
+## Postup krok za krokem
+
+<Stepper tone="seo" steps={[
+  { title: "Zjistěte, co má dokumentovanou funkci", desc: "Projděte galerii strukturovaných dat a rozdělte si typy na ty, u kterých Google popisuje zobrazení ve výsledcích, a na ty ostatní." },
+  { title: "Vyberte typy podle obsahu stránky", desc: "Article pro článek, Product pro produkt, Organization na úrovni webu, BreadcrumbList všude v hierarchii. Typy bez dokumentované funkce nasazujte jen tam, kde popisují něco, co na stránce reálně je." },
+  { title: "Ověřte, co už šablona vypisuje", desc: "Ve zdrojovém kódu hledejte application/ld+json, itemscope a itemtype. Projděte po jedné reprezentativní adrese od každé šablony: článek, produkt, kategorie, homepage." },
+  { title: "Zapište je v JSON-LD", desc: "Když stránka data ještě nemá, zapište je do značky script type=application/ld+json. Když už šablona vypisuje microdata, nejdřív rozhodněte, jestli opravíte je, nebo přidáte JSON-LD a udržíte obě sady v souladu." },
+  { title: "Zkontrolujte shodu s viditelným obsahem", desc: "Věcné údaje, které data o stránce tvrdí — cena, dostupnost, hodnocení, autor, otázky a odpovědi — musí odpovídat tomu, co čtenář vidí. To je pravidlo z obecných pokynů Googlu, ne doporučení." },
+  { title: "Validujte správným nástrojem", desc: "Test rozšířených výsledků na typy z galerie, validátor schema.org na ostatní. Výsledek pak porovnejte s tím, co je na stránce vidět — validní zápis není příslib zobrazení." },
+]} />
+
+## Kam dál podle typu stránky
+
+Tenhle článek je rozcestník. Jednotlivé typy mají vlastní návody:
+
+<Checklist tone="seo" title="Návody k jednotlivým typům" items={[
+  { title: "Značka a autor", desc: "Organization pro identitu značky a Person pro autora — dva typy, u kterých se nejčastěji plete, co vlastně dokládají." },
+  { title: "E-shop", desc: "produktová stránka, kategorie e-shopu, deklarace vrácení zboží, ceny a recenze — každá vrstva má jiné povinné pole." },
+  { title: "Ostatní obsah", desc: "video, otevírací doba provozovny a konec FAQ rozšířených výsledků." },
+]} />
+
+Konkrétně: [Organization schema pro značku](/blog/organization-schema-pro-znacku/) · [Person pro autora](/blog/person-data-pro-autora/) · [produktové stránky pro AI](/blog/produktove-stranky-pro-ai/) · [strukturovaná data kategorie e-shopu](/blog/strukturovana-data-kategorie-eshopu/) · [deklarace vrácení zboží](/blog/hasmerchantreturnpolicy-schema/) · [ceny na webu a AI](/blog/ceny-na-webu-a-ai/) · [recenze a hodnocení pro AI](/blog/recenze-a-hodnoceni-pro-ai/) · [VideoObject pro video](/blog/videoobject-strukturovana-data/) · [otevírací doba v AI odpovědi](/blog/otviraci-doba-a-aktualni-data/).
 
 ## Časté chyby
 
 <MistakeGrid>
-  <Mistake num="01" title="Plošný FAQPage kvůli rich results" fix="Nasazujte ho jen tam, kde je FAQ viditelná.">
-    Google FAQ rozšířené výsledky pro běžné weby v roce 2026 v podstatě skončily; FAQPage kvůli lepšímu zobrazení ve výsledcích už nepomáhá.
+  <Mistake num="01" title="Nasadit FAQPage nebo HowTo kvůli výsledku ve Vyhledávání" fix="Nasazujte je jen tam, kde odpovídají viditelnému obsahu.">
+    FAQ rozšířené výsledky Google nezobrazuje od 7. 5. 2026, HowTo od 13. 9. 2023. Strukturovaná data zůstávají validní, rozšířený výsledek z nich ale podle dokumentace nevznikne.
   </Mistake>
-  <Mistake num="02" title="Strukturovaná data neodpovídají textu" fix="Vždy musí přesně sedět s viditelným obsahem.">
-    Nepravdivé nebo přidané údaje jsou spam — riskujete manuální penalizaci.
+  <Mistake num="02" title="Strukturovaná data neodpovídají textu" fix="Vždy musí sedět s viditelným obsahem.">
+    Obecné pokyny Googlu říkají, že se nemá označovat obsah, který čtenář nevidí. Nesoulad může skončit ručním opatřením.
   </Mistake>
-  <Mistake num="03" title="Spoléhat jen na schéma, ne na obsah" fix="Strukturovaná data jsou pomůcka, ne náhrada.">
-    Bez kvalitního a důvěryhodného obsahu samotná strukturovaná data citaci nezajistí.
+  <Mistake num="03" title="Nasadit JSON-LD, aniž zjistíte, co už na stránce je" fix="Nejdřív projděte zdrojový kód a hledejte itemtype.">
+    Řada e-shopových platforem vypisuje data v microdatech. Druhá sada v JSON-LD pak znamená dvě místa, která si musí odpovídat.
   </Mistake>
-  <Mistake num="04" title="Nevalidovat po nasazení" fix="Projděte validator.schema.org i Rich Results Test.">
-    Chyba v JSON-LD může zneplatnit konkrétní blok strukturovaných dat nebo zabránit jeho správnému zpracování.
+  <Mistake num="04" title="Čekat od strukturovaných dat citaci v AI" fix="Berte je jako doklad o stránce, ne jako páku na viditelnost.">
+    Google k vlastním AI funkcím uvádí, že zvláštní značení potřeba není. Bez kvalitního obsahu samotná data nic nezajistí.
   </Mistake>
 </MistakeGrid>
 
 ## Co dál: zasaďte strukturovaná data do celku
 
-Strukturovaná data jsou technická vrstva, která pomáhá AI obsah pochopit. Bez kvalitního obsahu a důvěryhodnosti samy o sobě nestačí. Jak na celý obraz AI viditelnosti shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/), důvěryhodnost rozebírá [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/).
+Strukturovaná data jsou technická vrstva, která pomáhá stroji obsah pochopit. Bez kvalitního obsahu a důvěryhodnosti samy o sobě nestačí. Celý obraz shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/), důvěryhodnost rozebírá [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/) a obsahovou stránku [obsah pro AI éru](/blog/ai-seo-content/).
 
-Pokud chcete nezávisle posoudit, jak má váš web strukturovaná data nastavená a co konkrétně doplnit, pomůže produktový [AI SEO audit za 3 600 Kč](/audit/). Pokud chcete postupovat sami podle hotové předlohy, použijte [AI SEO Wireframe Pack](/pack/) za 1 490 Kč.
+Máte hotový web a potřebujete najít chyby v datech napříč šablonami? [AI SEO audit za 3 600 Kč](/audit/) projde šablony typ po typu a ukáže, kde chybí povinná pole a kde jsou data v rozporu s obsahem. Připravujete nové šablony nebo zadání pro vývojáře? Pak dává větší smysl [AI SEO Wireframe Pack za 1 490 Kč](/pack/).
+
+*Zdroje: Google Search Central — [galerie strukturovaných dat](https://developers.google.com/search/docs/appearance/structured-data/search-gallery), [obecné pokyny ke strukturovaným datům](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [changelog dokumentace](https://developers.google.com/search/updates) (záznamy k FAQ z 8. 5. a června 2026), [Changes to HowTo and FAQ rich results](https://developers.google.com/search/blog/2023/08/howto-faq-changes) (8. 8. 2023, aktualizace 14. 9. 2023) a [průvodce optimalizací pro generativní AI](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) · vlastní měření 15 e-shopů na Shoptetu, 8. 8. 2026. Vše ověřeno 4. 9. 2026.*
