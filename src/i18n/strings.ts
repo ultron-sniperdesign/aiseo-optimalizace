@@ -333,7 +333,7 @@ export const ui = {
    * karta v „Souvisejících" ale musí zůstat krátká, proto samostatná mapa.
    */
   sectionHeroBadge: {
-    AIMODE: "GOOGLE REŽIM AI",
+    AIMODE: "GOOGLE REŽIM AI",
   } as Record<string, string>,
 
   sectionBadgeDative: {

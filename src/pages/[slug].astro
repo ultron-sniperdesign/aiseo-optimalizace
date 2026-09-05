@@ -228,13 +228,16 @@ function renderFaqMarkdown(text: string): string {
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">{ui.answerDefinition}</span>
+        <div class="answer__meta">
+          <span class="answer__mark">{ui.answerDefinition}</span>
+          {updatedStamp && (
+            <p class="answer__updated">
+              {ui.metaUpdated} {updatedStamp}
+              <span class="answer__updated-note">{ui.sectionUpdatedNote}</span>
+            </p>
+          )}
+        </div>
         <p class="answer__text">{entry.data.answer}</p>
-        {updatedStamp && (
-          <p class="answer__updated">
-            {ui.metaUpdated} {updatedStamp} · {ui.sectionUpdatedNote}
-          </p>
-        )}
       </div>
     </section>
 
@@ -400,12 +403,24 @@ function renderFaqMarkdown(text: string): string {
     --answer-pad: clamp(1.75rem, 2.5vw, 2.25rem);
     --answer-border: 3px;
     padding: var(--answer-pad);
+    /* Pás přes celou šířku rámu. Štítek a datum drží úzký levý sloupec,
+       definice zabírá zbytek — bez toho zůstávala pravá polovina prázdná. */
+    display: grid;
+    grid-template-columns: minmax(8rem, 11rem) 1fr;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    align-items: start;
+    max-width: var(--w-wide);
+  }
+  .answer__meta {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    /* Krátká definice je vizuální pás přes celou šířku rámu; text uvnitř
-       si drží čitelné měřítko (viz .answer__text). */
-    max-width: var(--w-wide);
+    gap: 0.5rem;
+  }
+  @media (max-width: 860px) {
+    .answer__inner {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
   .answer__mark {
     font-family: var(--font-sans);
@@ -426,11 +441,22 @@ function renderFaqMarkdown(text: string): string {
     border-radius: 50%;
   }
   .answer__updated {
-    margin: 0.75rem 0 0;
+    margin: 0;
     font-size: 0.8125rem;
     line-height: 1.5;
     color: var(--color-ink-faint);
     font-variant-numeric: tabular-nums;
+  }
+  .answer__updated-note {
+    display: block;
+  }
+  @media (max-width: 860px) {
+    .answer__updated-note {
+      display: inline;
+    }
+    .answer__updated-note::before {
+      content: " · ";
+    }
   }
 
   .answer__text {
@@ -440,9 +466,6 @@ function renderFaqMarkdown(text: string): string {
     line-height: 1.55;
     color: var(--color-ink);
     margin: 0;
-    /* Text uvnitř karty končí na stejném okraji jako sloupec textu níž —
-       odečteme odsazení karty, jinak vznikne třetí svislý okraj. */
-    max-width: calc(var(--w-read) - var(--answer-pad) - var(--answer-border));
   }
 
   /* ===== ARTICLE BODY ===== */
