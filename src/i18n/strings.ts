@@ -225,8 +225,6 @@ export const ui = {
   metaFaqs: "častých otázek",
   metaReadingMins: "minut čtení",
   metaUpdated: "Aktualizováno:",
-  /** Doplněk k viditelnému datu v sekcích — říká, že datum platí i pro fakta. */
-  sectionUpdatedNote: "stav funkcí a čísel k tomuto datu",
 
   /** Figure — popisek odkazu na plnou velikost obrázku. */
   figure: {

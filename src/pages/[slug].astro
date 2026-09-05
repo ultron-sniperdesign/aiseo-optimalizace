@@ -223,20 +223,15 @@ function renderFaqMarkdown(text: string): string {
         <span class="d-hero__subtitle">{heroSubtitle}</span>
       </h1>
       {heroTagline && <p class="d-hero__tagline">{heroTagline}</p>}
+      {updatedStamp && (
+        <p class="d-hero__meta">{ui.metaUpdated} {updatedStamp}</p>
+      )}
     </section>
 
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <div class="answer__meta">
-          <span class="answer__mark">{ui.answerDefinition}</span>
-          {updatedStamp && (
-            <p class="answer__updated">
-              {ui.metaUpdated} {updatedStamp}
-              <span class="answer__updated-note">{ui.sectionUpdatedNote}</span>
-            </p>
-          )}
-        </div>
+        <span class="answer__mark">{ui.answerDefinition}</span>
         <p class="answer__text">{entry.data.answer}</p>
       </div>
     </section>
@@ -411,11 +406,6 @@ function renderFaqMarkdown(text: string): string {
     align-items: start;
     max-width: var(--w-wide);
   }
-  .answer__meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
   @media (max-width: 860px) {
     .answer__inner {
       grid-template-columns: 1fr;
@@ -440,23 +430,13 @@ function renderFaqMarkdown(text: string): string {
     background: var(--d);
     border-radius: 50%;
   }
-  .answer__updated {
-    margin: 0;
+  .d-hero__meta {
+    margin: 1rem 0 0;
+    font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1.5;
     color: var(--color-ink-faint);
     font-variant-numeric: tabular-nums;
-  }
-  .answer__updated-note {
-    display: block;
-  }
-  @media (max-width: 860px) {
-    .answer__updated-note {
-      display: inline;
-    }
-    .answer__updated-note::before {
-      content: " · ";
-    }
   }
 
   .answer__text {
