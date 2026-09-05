@@ -16,6 +16,15 @@ export const MIN_HEADINGS = 4;
 export const INSERT_AFTER_HEADING = 2;
 
 /**
+ * Dlouhé stránky dostanou druhé CTA. Sekce mají 7+ H2 a přes 2 000 slov —
+ * jediný blok po druhém H2 je pro ně málo, spodní polovina textu zůstává
+ * bez nabídky. Druhý blok NESMÍ opakovat tentýž cíl, jinak čtenář vidí
+ * dvakrát totéž; proto se použije druhá varianta (audit → Pack a naopak).
+ */
+export const SECOND_INSERT_MIN_HEADINGS = 7;
+export const SECOND_INSERT_AFTER_HEADING = 5;
+
+/**
  * Cíl podle `category` ve frontmatteru — stejné rozdělení, jaké má
  * blogger/ARTICLE_TEMPLATE.md: analysis/case-study → audit, ostatní → Pack.
  */
@@ -38,3 +47,6 @@ export const INLINE_CTA = {
 
 /** Fallback, když kategorie nesedí do žádné skupiny. */
 export const DEFAULT_VARIANT = "audit";
+
+/** Druhá varianta k dané první (pro druhý blok na dlouhé stránce). */
+export const ALTERNATE_VARIANT = { audit: "pack", pack: "audit" };

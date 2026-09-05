@@ -65,6 +65,16 @@
   --space-section-y: clamp(4rem, 7vw, 6.5rem);
   --space-section-x: clamp(1.25rem, 4vw, 4rem);
   --max-section: 80rem;
+
+  /* ---- Dvě šířky obsahu (2026-09-05) --------------------------------------
+     Do revize mělo `/ai-mode/` čtyři různé pravé okraje: 640 (text), 800
+     (odpovědi FAQ), 960 (karta krátké odpovědi a seznam FAQ) a 1280 (rám).
+     Nově platí jen dvě: text drží čitelné měřítko, všechno ostatní — tabulky,
+     srovnání, datové bloky — sahá až na okraj obsahového rámu.
+     `--w-wide` je počítaná, aby prvek uvnitř úzkého sloupce textu dorazil
+     přesně na pravý okraj rámu (levý okraj sdílí s textem). */
+  --w-read: 40rem;
+  --w-wide: calc(min(var(--max-section), 100vw) - 2 * var(--space-section-x));
 }
 
 /* ===== Mobil (telefony ≤600px) — utáhnout vertikální rytmus =====
