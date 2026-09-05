@@ -1,0 +1,168 @@
+---
+title: "Filtry v e-shopu: co nechat procházet a co zavřít"
+seoTitle: "Filtry a faceted navigace: co pustit robotům (2026)"
+description: "Filtry umí vyrobit nekonečný prostor adres. Co k nim Google dokumentuje, čím je zavřít, co z toho platí pro AI roboty a kdy dát filtru vlastní stránku."
+answer: "Faceted navigace je filtrování výpisu podle parametrů, které umí vyrobit obrovské množství adres. Google ji rámuje hlavně jako správu procházení: filtry, které v indexu nepotřebujete, robotům nepouštějte; ty potřebné musí mít čistou strukturu adres a nesou náklad navíc. Canonical a nofollow označuje za dlouhodobě méně účinné."
+slug: "filtry-faceted-navigace-eshopu"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "technicke-zaklady"
+published: "2026-09-05"
+updated: "2026-09-05"
+variant: "rich"
+keywords:
+  - "faceted navigace"
+  - "filtry e-shop indexace"
+  - "parametry v url"
+  - "robots.txt filtry"
+  - "filtrované adresy eshopu"
+stats:
+  - value: "2 cesty"
+    label: "které Google dokumentuje: zakázat procházení filtrů, nebo je nechat procházet a nést náklad"
+  - value: "404"
+    label: "kód, který má podle dokumentace vrátit kombinace filtrů bez výsledků — ne přesměrování na chybovou stránku"
+  - value: "3 podmínky"
+    label: "které musí filtrovaná kombinace splnit najednou, aby z ní dávalo smysl udělat samostatnou stránku"
+faq:
+  - q: "Mám filtrované adresy pustit k procházení?"
+    a: "Výchozí volba je nepouštět. Google píše, že často není dobrý důvod nechat filtrované položky procházet, protože to spotřebovává zdroje bez užitku. Když některá kombinace odpovídá reálné poptávce, nedělejte z ní náhodnou filtrovanou adresu, ale samostatnou stránku s vlastním obsahem a běžným odkazem."
+  - q: "Proč jsou filtry problém, když je obsah v pořádku?"
+    a: "Protože kombinace parametrů vytvářejí prakticky nekonečný prostor adres. Google popisuje dva důsledky: roboti projdou obrovské množství filtrovaných adres, než poznají, že jsou k ničemu, a o ten čas přijde objevování nových užitečných stránek na webu."
+  - q: "Funguje na filtry rel=canonical?"
+    a: "Funguje slabě. Google ho spolu s rel=nofollow označuje za dlouhodobě méně účinný než zákaz procházení. U canonicalu píše, že objem procházení nekanonických adres může časem snížit — tedy postupně a nezaručeně. U nofollow platí, že musí být na každém odkazu na tu adresu; jinak na ni pořád vede aspoň jedna procházená cesta."
+  - q: "Co udělat s kombinací filtrů, která nemá výsledky?"
+    a: "Vrátit stavový kód 404 přímo na té adrese. Dokumentace to říká výslovně a zároveň nedoporučuje přesměrování na společnou chybovou stránku. Totéž platí pro nesmyslné kombinace, duplicitní filtry a neexistující stránkovací adresy."
+  - q: "Můžu na filtrované adresy dát noindex?"
+    a: "Jen když nejsou zakázané v robots.txt. Google píše, že pravidlo noindex vyhledávací robot na blokované stránce nikdy neuvidí a adresa se pořád může objevit ve výsledcích. Zákaz procházení platí dál — neúčinkuje jen ten noindex, takže kombinace obou signál nezesílí."
+  - q: "Platí to i pro AI roboty?"
+    a: "Dokument o filtrech je psaný pro Googlebota a o AI robotech nic neuvádí. Pravidla v robots.txt platí pro každého robota, který je respektuje a kterého v souboru pojmenujete. Jak se AI roboti chovají k rozpočtu procházení, ale doložit neumím — nikdo z nich to nepopisuje."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Filtry jsou hlavně problém procházení
+
+**Faceted navigace je filtrování výpisu podle parametrů — barvy, velikosti, ceny, značky. Když každá kombinace vytvoří vlastní adresu, vyrobí i pár zaškrtávátek v kategorii tisíce až desetitisíce adres — obvykle mnohem víc, než kolik má kategorie užitečných vstupních stránek.** Google to popisuje stejně: implementace filtrů přes parametry v adrese umí vyrobit nekonečný prostor adres.
+
+Dokumentace jmenuje dva následky. Když jsou takové adresy pro robota objevitelné, projde jich velké množství, než vyhodnotí, že jsou k ničemu. A protože ten čas někde chybí, **objevování nových užitečných stránek se zpomalí**. V dokumentaci je to tedy především otázka procházení a spotřeby zdrojů. Jakmile ale z nějaké kombinace uděláte indexovatelnou stránku, přidá se k tomu i obsah: bez vlastního textu z ní snadno vznikne tenká stránka.
+
+Pro AI éru z toho neplyne, že máte spekulovat o rozpočtu procházení AI robotů — doklad k tomu nikdo nezveřejnil. Plyne z toho něco jednoduššího: stránky, na kterých vám záleží, musí být normálně dostupné a prolinkované, zatímco nekonečné kombinace filtrů nemají zdržovat nikoho.
+
+## Co Google dokumentuje — a co ne
+
+Dokument *Managing crawling of faceted navigation URLs* (naposledy aktualizovaný 18. 12. 2025) nabízí dvě cesty a je u nich nezvykle přímý:
+
+<CompareTable
+  leftLabel="Nepotřebujete filtry v indexu"
+  leftTone="seo"
+  rightLabel="Potřebujete je tam"
+  rightTone="aeo"
+  rows={[
+    { icon: "🎯", label: "Co Google radí", left: "zabránit procházení filtrovaných adres", right: "držet se pravidel pro tvar adres a počítat s náklady" },
+    { icon: "⚙️", label: "Čím to udělat", left: "zákaz v robots.txt nebo filtrování přes fragment adresy", right: "oddělovač &, stabilní pořadí filtrů v cestě, žádné duplicitní filtry" },
+    { icon: "💸", label: "Co to stojí", left: "výrazně menší náklad na procházení; robot blokované adresy nemá načítat", right: "podle dokumentace „velké množství výpočetních zdrojů“ kvůli počtu adres a jejich vykreslování" },
+  ]}
+/>
+
+Fragment ale není univerzální řešení architektury filtrů. Dává smysl jen tam, kde filtrovaný stav nepotřebujete jako samostatnou stránku a kde zvládnete udržet ovládání použitelné pro lidi — sdílení adresy filtrovaného výpisu tím ztratíte.
+
+K první cestě Google dodává větu, kterou stojí za to citovat celou: často není dobrý důvod nechat filtrované položky procházet, protože to spotřebovává zdroje serveru bez užitku nebo se zanedbatelným užitkem — a místo toho stačí nechat procházet stránky jednotlivých produktů a jeden výpis bez filtrů.
+
+<Insight tone="warn" label="Co v dokumentaci není">
+  Nenajdete v ní doporučení „nechte indexovat poptávané kombinace filtrů“. To je oborová praxe, ne pokyn Googlu — a v tomhle článku ji držím oddělenou. Dokument řeší **procházení**, ne strategii, které stránky mít v indexu.
+</Insight>
+
+## Čtyři nástroje a jejich skutečná síla
+
+Tohle je nejpraktičtější část dokumentace, protože Google sám říká, co funguje líp a co hůř:
+
+<Checklist title="Od nejsilnějšího po nejslabší" items={[
+  { title: "Zákaz v robots.txt", desc: "Dokumentace uvádí přímo ukázku se zákazem parametrů typu ?color= a ?size= a s výjimkou pro jeden nefiltrovaný výpis. Robot blokovanou adresu nemá načítat, takže náklad na stažení nevznikne — samotnou adresu ale znát může." },
+  { title: "Filtrování přes fragment adresy", desc: "Google fragmenty (část za #) při procházení a indexaci obecně nepodporuje. Filtr zapsaný jako #color=green tak podle dokumentace nemá na procházení žádný vliv — ani kladný, ani záporný." },
+  { title: "rel=canonical na nefiltrovanou verzi", desc: "Označené jako dlouhodobě méně účinné. Objem procházení nekanonických adres může časem klesnout; je to postupný a nezaručený efekt, ne zákaz." },
+  { title: "rel=nofollow na odkazech", desc: "Také méně účinné a navíc křehké: atribut musí být na každém odkazu, který na tu adresu míří. Stačí jeden odkaz bez něj a efekt padá." },
+]} />
+
+Pořadí není náhoda. První dva nástroje snižují počet samostatně procházených filtrovaných adres: robots.txt blokuje načtení konkrétních adres, fragment za `#` obvykle samostatnou adresu k procházení vůbec nevytvoří. `rel=canonical` se vyhodnocuje až po stažení stránky, takže náklad na procházení už vznikl. `rel=nofollow` sice robot vidí dřív, na odkazující stránce, ale je křehký: stačí jeden odkaz bez něj a spolehlivá zábrana to není.
+
+## Kdy filtrovaná stránka zaslouží vlastní místo
+
+Teď ta část, kterou Google nedokumentuje a která je rozhodnutím majitele webu. Filtrovaná stránka dává smysl jako samostatná stránka jen tehdy, když splní všechny tři podmínky najednou:
+
+<Checklist tone="seo" title="Tři podmínky, ne jedna" items={[
+  { title: "Lidé tu kombinaci opravdu hledají", desc: "Doložte to daty, ne dojmem: hledanost fráze, dotazy ve vyhledávání na webu, dotazy v Search Console. „Dámské zimní bundy do −20 °C“ ano, „bundy seřazené od nejlevnějších“ ne." },
+  { title: "Stránka nese vlastní obsah", desc: "Nadpis, úvodní odstavec k výběru, případně vlastní FAQ. Když je jediný rozdíl proti kategorii jiné pořadí stejných produktů, vlastní stránku si nezaslouží." },
+  { title: "Kombinace je stabilní a nevyprázdní se", desc: "Adresa, která dnes vrací dvacet produktů a příští měsíc nula, je horší než žádná. Sezónní a skladově vratké kombinace nechte zavřené." },
+]} />
+
+Pokud kombinace projde, přestaňte s ní zacházet jako s filtrem. **Udělejte z ní řádnou stránku s vlastní adresou v cestě** (`/bundy/zimni-damske/`), prolinkujte ji z kategorie normálním odkazem a dejte ji do sitemapy. Filtr pak zůstane jen ovládacím prvkem pro člověka, ne cestou k indexovatelné adrese. Jak má taková adresa vypadat, rozebírá [URL struktura pro AI](/blog/ai-friendly-url-struktura/), co má být v jejím textu [texty kategorií pro AI](/blog/kategorie-texty-pro-ai/).
+
+## Prázdné kombinace a prázdné kategorie
+
+Dvě situace, u kterých má Google konkrétní pokyn, a obě se v praxi dělají špatně:
+
+<Checklist title="Co vracet" items={[
+  { title: "Kombinace filtrů bez výsledků → 404", desc: "Dokumentace to říká výslovně: vrátit stavový kód 404 přímo na té adrese, kde k tomu došlo, a nepřesměrovávat na společnou chybovou stránku. Platí to i pro nesmyslné kombinace, duplicitní filtry a neexistující stránkovací adresy; výjimku dokumentace připouští u jednostránkových aplikací." },
+  { title: "Kategorie bez produktů → noindex, nebo 404", desc: "Průvodce adresami pro e-shopy radí u kategorie bez položek použít meta značku noindex; když web prázdné kategorie sám odstraňuje, zvážit rovnou 404." },
+  { title: "Nikam neodkazovat na stránky bez užitečného obsahu", desc: "Tentýž průvodce to formuluje jako obecné pravidlo: na stránky bez užitečného obsahu neodkazujte, nebo je aspoň neindexujte." },
+]} />
+
+<Insight tone="warn" label="Past, do které se chodí často">
+  `noindex` na adrese, kterou zároveň zakazuje robots.txt, **neúčinkuje**. Google to má v dokumentaci černé na bílém: aby pravidlo `noindex` fungovalo, stránka nesmí být blokovaná v robots.txt — jinak ho vyhledávací robot nikdy neuvidí a adresa se pořád může objevit ve výsledcích. Zákaz procházení přitom platí dál; neplatný je jen ten `noindex`. Rozhodněte se tedy pro jedno: buď zákaz procházení, nebo přístupná stránka s `noindex`. Podrobněji to na konkrétním měření ukazuje [filtry na Shoptetu kryje robots.txt](/blog/shoptet-filtry-strankovani/).
+</Insight>
+
+## Jak to udělat krok za krokem
+
+<Stepper tone="seo" steps={[
+  { title: "Zjistěte, jak filtry vypadají v adrese", desc: "Zaškrtněte filtr a podívejte se, co se stane s adresou. Parametr (?color=), cesta (/zelene/), nebo fragment (#color=)? Každá varianta má jiné důsledky." },
+  { title: "Zjistěte, jestli na ně vede odkaz", desc: "Filtry jako zaškrtávátka ve formuláři robot odkazem neprojde, filtry jako odkazy ano. V našem měření Shoptetu nemělo 43 ze 46 vyhodnotitelných kategorií na filtrovanou adresu ani jeden odkaz — u většiny kontrolovaných kategorií to vypadalo jako výchozí chování platformy. Neplatí to ale pro každou šablonu a úpravu, takže si to ověřte na vlastním webu." },
+  { title: "Projděte robots.txt", desc: "Najdete ho na vasedomena.cz/robots.txt. Hledejte pravidla pro parametry filtrů — ?color=, ?size=, ?price= nebo parametry vaší platformy. Když už blokované jsou, nepřidávejte k tomu noindex a hlavně si filtry sami neprolinkujte vlastní úpravou šablony." },
+  { title: "Vyberte kombinace, které si zaslouží vlastní stránku", desc: "Podle tří podmínek výš. Obvykle jich budou jednotky, ne desítky. Zbytek nechte zavřený." },
+  { title: "Ověřte prázdné kombinace", desc: "Zaškrtejte kombinaci, která nemůže mít výsledky, a zkontrolujte stavový kód — v prohlížeči na kartě Síť nebo příkazem curl -I s tou adresou. Má být 404 na té adrese, ne 200 s prázdným výpisem ani přesměrování." },
+  { title: "Zkontrolujte, co je v sitemapě", desc: "Do sitemapy patří kanonické adresy, které chcete v indexu — typicky samostatné vstupní stránky. Běžné parametrické a filtrované varianty tam nepatří." },
+]} />
+
+## Co z toho platí pro AI roboty
+
+Tady je potřeba být opatrný. **Dokument o filtrech je psaný pro Googlebota a o AI robotech neuvádí nic.** Co se dá říct doloženě:
+
+- Pravidla v `robots.txt` platí pro roboty, kteří soubor respektují, a jen když na ně dopadnou: buď obecnou skupinou `User-agent: *`, nebo skupinou s jejich vlastním jménem. Pozor na to, že když robot vlastní skupinu má, obecná pravidla z `*` se na něj už použít nemusí. Který AI robot se jak jmenuje a co povolit, rozebírá [AI roboti v robots.txt](/blog/ai-crawler-robots-txt/).
+- Jak AI roboti hospodaří s procházením, nikdo z jejich provozovatelů veřejně nepopisuje. Nemám tedy doklad, že se filtrovaný prostor projeví u nich stejně jako u Googlu.
+- Co platí bez ohledu na robota: **stránka, která není normálně prolinkovaná a zároveň je zakázaná v robots.txt, není spolehlivě dostupný zdroj** pro vyhledávač ani pro AI systémy, které pravidla respektují. Když si tedy filtrovanou kombinaci vyberete jako důležitou, musí na ni vést běžný odkaz.
+
+Přehled ostatních vrstev e-shopu má [SEO pro e-shopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/).
+
+## Časté chyby
+
+<MistakeGrid>
+  <Mistake num="01" title="Zákaz v robots.txt plus noindex na téže adrese">
+    Zákaz procházení funguje, ale zároveň brání tomu, aby vyhledávací robot `noindex` vůbec uviděl. Chcete-li stránku dostat z indexu pravidlem `noindex`, nesmí být blokovaná.
+  </Mistake>
+  <Mistake num="02" title="Prázdná kombinace vrací 200 s prázdným výpisem">
+    Dokumentace chce 404 na té adrese. Prázdná stránka s kódem 200 je pro robota platná stránka bez obsahu.
+  </Mistake>
+  <Mistake num="03" title="Spoléhat na canonical jako na zákaz">
+    Google ho označuje za dlouhodobě méně účinný. Náklad na procházení navíc vznikne tak jako tak, protože stránka se musí stáhnout.
+  </Mistake>
+  <Mistake num="04" title="Prolinkovat filtry vlastní úpravou šablony">
+    Na platformě, kde filtry odkazem nejsou, je to jediná změna potřebná k tomu, aby se z nevinných zaškrtávátek stal procházený prostor adres.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Filtry jsou hlavně problém procházení** — Google jmenuje nadměrné procházení a pomalejší objevování nových stránek. Jakmile z kombinace uděláte indexovatelnou stránku, přidá se k tomu i její vlastní obsah.
+- **Výchozí volba je nepustit robota dovnitř:** zákaz v robots.txt, nebo filtrování přes fragment adresy, který se neprochází.
+- **Canonical a nofollow jsou podle dokumentace slabší:** canonical se vyhodnocuje až po stažení stránky, nofollow sice dřív, ale musí být na každém odkazu, jinak spolehlivou zábranou není.
+- **Vlastní stránku si zaslouží jen kombinace s doloženou poptávkou, vlastním obsahem a stabilním výsledkem** — a pak z ní udělejte řádnou adresu, ne filtr.
+- **Prázdná kombinace má vrátit 404** na své adrese, ne přesměrování.
+
+**Nevíte, kolik adres váš e-shop robotům nabízí a kolik z nich k něčemu je?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje strukturu kategorie i produktu včetně toho, co má být odkaz a co jen ovládací prvek. Pokud chcete stav svého webu posoudit zvenčí, [AI SEO audit za 3 600 Kč](/audit/) projde robots.txt, parametrické adresy i sitemapu a ukáže, kde se procházení tříští.
+
+*Zdroje: Google Search Central — [Managing crawling of faceted navigation URLs](https://developers.google.com/search/docs/crawling-indexing/crawling-managing-faceted-navigation) (aktualizováno 18. 12. 2025), [Designing a URL structure for ecommerce websites](https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites) a [Block Search indexing with noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing) (obojí aktualizováno 10. 12. 2025) · vlastní měření 47 e-shopů na Shoptetu (8. 8. 2026); pro kontrolu odkazů na filtrované adresy bylo vyhodnotitelných 46 kategorií. Vše ověřeno 5. 9. 2026.*

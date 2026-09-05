@@ -1225,3 +1225,16 @@ Přijato: „Co se ale liší typ od typu, je **co** za ně dostanete" → „je
 Odmítnuto: chybějící tečka na konci věty v bloku `<Insight>` — věta pokračuje za pomlčkou a tečku má; model si ji uřízl na tučném úseku.
 
 **Poznámka:** obě přijaté vady vznikly až při opravách po auditech, ne v prvním psaní. Potvrzuje to zápis z 3. 9.: věty přepsané kvůli faktické opravě je potřeba přečíst znovu celé.
+
+---
+
+## C6 při psaní: `filtry-faceted-navigace-eshopu` (5. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 0 nálezů napoprvé i po obou kolech auditu. Slovník v59 beze změny. |
+| LLM (gpt-5.4) | 3 nálezy — **všechny přijaty** |
+
+Přijato: „Následky dokumentace jmenuje dva" → „Dokumentace jmenuje dva následky" (neobratný slovosled) · čárka před „nebo" ve výčtu nástrojů, kde nepatří · „na svojí adrese" → „na své adrese".
+
+**Poznámka — opakovaná past plošné náhrady.** Po auditu #1 jsem nahrazoval „crawler" → „vyhledávací robot" plošným `s.replace()` a rozbil tím interní odkaz: z `/blog/ai-crawler-robots-txt/` se stalo `/blog/ai-vyhledávací robot-robots-txt/`. Mechanická kontrola to nenašla (není to jazyková vada) a jazykový model taky ne — chytil to až auditor #2 jako blokující nález. Je to týž vzorec jako „vykázalaa" z 2. 9.: **plošná náhrada musí vynechat adresy, kód a slugy**, jinak opraví i to, co opravovat nemá. Pravidlo do příště: po každé plošné náhradě projet kontrolu interních odkazů proti `src/content/articles/`.
