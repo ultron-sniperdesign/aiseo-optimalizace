@@ -170,7 +170,7 @@ aiseo-optimalizace.cz/
 │   ├── fonts/                                # self-host Geist + JBM
 │   ├── og/                                   # OG images per stránka
 │   ├── pack/preview/                         # hero PNG náhledy pro /pack/ landing
-│   ├── screenshots/                          # snímky obrazovky do obsahu (Figure.astro); chybějící soubor se v produkci nevykreslí
+│   ├── screenshots/                          # snímky obrazovky do obsahu (Figure.astro); chybějící soubor se v produkci nevykreslí, zadání v _source/snimky-rezim-ai.md
 │   ├── sniperdesign/                         # Kumbh Sans fonts (sekce 06)
 │   └── _review/                              # produkční PDFs Packu (11 souborů, blocked v robots.txt)
 │       ├── pack-master-v1.pdf

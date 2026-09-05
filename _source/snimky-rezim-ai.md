@@ -1,5 +1,8 @@
 # Snímky obrazovky — režim AI
 
+> **Kam soubory patří:** `public/screenshots/rezim-ai/`
+> (Tenhle návod je záměrně mimo `public/`, aby ho neservíroval web.)
+
 Sem patří tři soubory. Dokud tu nejsou, bloky `<Figure>` v `src/content/sections/ai-mode.mdx`
 se v produkčním buildu **nevykreslí** a stránka vypadá jako dnes. Jakmile soubory přibudou,
 naskočí samy při dalším buildu — v obsahu není potřeba nic měnit.
@@ -26,5 +29,4 @@ Automatické pořízení Google zablokoval: prohlížeči bez okna vrátil ově�
 „Nejsem robot". CAPTCHA se neobchází, a snímat obrazovku uživatele kvůli tomu
 není namístě — zabírá i soukromá okna. Proto to zůstává na ruční pořízení.
 
-Tenhle README v buildu nikomu nevadí (Astro kopíruje `public/` beze změny),
-ale klidně ho po doplnění snímků smaž.
+Po doplnění snímků je tenhle soubor možné smazat.
