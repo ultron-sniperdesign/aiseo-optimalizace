@@ -227,6 +227,11 @@ export const ui = {
   metaUpdated: "Aktualizováno:",
   /** Doplněk k viditelnému datu v sekcích — říká, že datum platí i pro fakta. */
   sectionUpdatedNote: "stav funkcí a čísel k tomuto datu",
+
+  /** Figure — popisek odkazu na plnou velikost obrázku. */
+  figure: {
+    openFull: "Otevřít obrázek v plné velikosti",
+  },
   metaMinShort: "min", // krátká forma na blog kartách (acard__time)
 
   // Obsah (TOC)
@@ -305,7 +310,7 @@ export const ui = {
   // RelatedSections blok (konec všech 6 sekcí): eyebrow / titulek / CTA.
   // `{abbr}` v titulku nahradí šablona (= display badge aktuální sekce).
   relatedEyebrow: "Související",
-  relatedTitleHtml: 'Tři sekce, které <strong>jdou dohromady s {abbr}</strong>',
+  relatedTitleHtml: 'Tři sekce, které <strong>jdou dohromady {abbr}</strong>',
   relatedCta: "Číst sekci",
   // Velký display badge v kartě (klíč = abbr enum). CZ = identita;
   // EN fork přepíše AIO → "AI SEO" (stejný princip jako homepage PillDef.badge).
@@ -322,6 +327,15 @@ export const ui = {
   // Skloňované tvary display badge pro věty v šablonách. Zkratky (SEO/GEO/AEO/AIO)
   // jsou nesklonné, víceslovné názvy ne — bez těchto map vzniká „k PRAXE" a
   // „s REŽIM AI". Fork přepíše podle gramatiky svého jazyka (nebo nechá 1:1).
+  /**
+   * Název sekce ve velkém nadpisu stránky. Fallback je `sectionBadge`; přepis
+   * má smysl tam, kde krátká zkratka sama o sobě nestačí k rozpoznání — malá
+   * karta v „Souvisejících" ale musí zůstat krátká, proto samostatná mapa.
+   */
+  sectionHeroBadge: {
+    AIMODE: "GOOGLE REŽIM AI",
+  } as Record<string, string>,
+
   sectionBadgeDative: {
     SEO: "SEO",
     GEO: "GEO",
@@ -331,14 +345,16 @@ export const ui = {
     PRAXE: "praxi",
     MATICE: "matici",
   } as Record<string, string>,
+  // Pozor: hodnota nese i předložku. Čeština ji vokalizuje podle následujícího
+  // slova („se SEO", ale „s GEO"), takže ji nelze nechat natvrdo v šabloně.
   sectionBadgeInstrumental: {
-    SEO: "SEO",
-    GEO: "GEO",
-    AEO: "AEO",
-    AIO: "AIO",
-    AIMODE: "režimem AI",
-    PRAXE: "praxí",
-    MATICE: "maticí",
+    SEO: "se SEO",
+    GEO: "s GEO",
+    AEO: "s AEO",
+    AIO: "s AIO",
+    AIMODE: "s režimem AI",
+    PRAXE: "s praxí",
+    MATICE: "s maticí",
   } as Record<string, string>,
 
   // Blog kategorie (crumb + filter chips + card tag); klíč = frontmatter category

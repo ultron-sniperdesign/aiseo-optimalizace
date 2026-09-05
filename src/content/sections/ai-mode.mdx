@@ -1,5 +1,5 @@
 ---
-title: "Režim AI — konverzační vyhledávání Googlu (a jak v něm být vidět)"
+title: "Režim AI — konverzační vyhledávání místo seznamu odkazů (a jak v něm být vidět)"
 seoTitle: "Režim AI (Google AI Mode): jak funguje a jak být vidět"
 description: "Režim AI (AI Mode) je konverzační vyhledávání Googlu. V Česku od října 2025, 13 000 hledání měsíčně. Jak funguje query fan-out a jak se dostat do odpovědí."
 answer: "Režim AI (anglicky AI Mode) je konverzační režim vyhledávání Googlu: místo seznamu odkazů složí odpověď z mnoha zdrojů a nechá vás doptávat se. Dotaz přitom rozloží na řadu souběžných souvisejících dotazů, takzvaný query fan-out. V češtině funguje od 7. října 2025 a je to dnes nejhledanější český dotaz k AI vyhledávání: 13 000 hledání měsíčně (Marketing Miner, 9/2026)."
@@ -49,6 +49,7 @@ howto:
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
+import Figure from "~/components/blocks/Figure.astro";
 
 ## Co je režim AI a proč vznikl
 
@@ -65,6 +66,15 @@ každý účet (nápověda Chrome, bez data).
 Tomu odpovídá i poptávka. Český tvar je dnes výrazně hledanější než anglický, takže **v textech
 používejte oba** — český „režim AI" kvůli hledanosti, anglický „AI Mode" kvůli odborné shodě.
 
+<Figure
+  src="/screenshots/rezim-ai/zalozka.png"
+  alt="Výsledky vyhledávání Googlu v češtině s aktivní záložkou Režim AI vedle záložek Vše, Obrázky, Videa a Zprávy"
+  caption="Takhle režim AI vypadá ve výsledcích: je to samostatná záložka hned vedle klasického vyhledávání."
+  credit="Google, české rozhraní"
+  width={1280}
+  height={820}
+/>
+
 <Insight icon="↳" tone="accent" label="Kam dál">
 Hledáte návod, ne teorii? Zapnutí, historii konverzací a časté omyly řeší článek
 [Režim AI v Googlu: zapnutí, vypnutí a co v něm najdete](/blog/rezim-ai-google/).
@@ -78,6 +88,15 @@ Tahle stránka je o něčem jiném: jak režim AI funguje a jak se do jeho odpov
 Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě"), režim AI ho **rozloží na řadu souběžných souvisejících dotazů** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Google to popisuje jako „multitude of queries" (20. 5. 2025), v oficiálním příkladu v dokumentaci z 10. 7. 2026 jde o tři podotázky; v režimu Deep Search jich systém pouští až stovky. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
 
 Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz", ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/) a v hesle slovníku [query fan-out](/slovnik/query-fan-out/).
+
+<Figure
+  src="/screenshots/rezim-ai/odpoved.png"
+  alt="Odpověď v režimu AI na dotaz co je režim AI v Googlu: souvislý text rozdělený do odrážek s odkazy na zdroje přímo v textu"
+  caption="Místo seznamu odkazů dostane uživatel složenou odpověď. Zdroje jsou vyznačené přímo v textu, ne až pod ním."
+  credit="Google, české rozhraní"
+  width={1280}
+  height={820}
+/>
 
 Pozor na obvyklý omyl: Google ve své dokumentaci **výslovně nedoporučuje** krájet obsah na kousky ani zakládat samostatné stránky pro varianty dotazu. Masová produkce mikro-článků spadá pod scaled content abuse. Lepší je jedna stránka, která téma pokryje do šířky — viz [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/) a [jak se zobrazit v režimu AI](/blog/jak-se-zobrazit-v-ai-mode/).
 
@@ -135,6 +154,15 @@ Zobrazení v režimu AI a v Přehledech od AI **neuvidíte v Google Analytics** 
 2. **Roste hodnota toho být zdrojem.** Režim AI podle Ahrefs z 15. 12. 2025 cituje v 97 % odpovědí a s Přehledy od AI se citace překrývají jen ze 13,7 % — je to samostatný kanál, ne odvozenina. Návštěvník, který přes AI doporučení přijde, [konvertuje výrazně lépe](/blog/case-study-megadetail-ai-navstevnost/).
 3. **Malý web to má těžší, než se říká.** Na úrovni jedné stránky může konkrétní odpověď porazit obecnější text silnějšího webu — jen 38 % citovaných URL v Přehledech od AI je zároveň v první desítce (Ahrefs, 3/2026). Na úrovni značky je to naopak: podle analýzy 75 000 značek (Ahrefs, 12. 12. 2025) je režim AI ze všech AI platforem nejvíc nakloněný značkám, které lidé už znají. Pro menší weby je vstupní branou spíš ChatGPT.
 4. **E-shopy: produktová data rozhodují.** U nákupních dotazů skládá režim AI srovnání z parametrů, cen a recenzí. Strukturovaná data a [kvalitní produktové stránky](/blog/produktove-stranky-pro-ai/) jsou vstupní podmínka; celý postup pro e-shop vede [série AI SEO pro e-shopy](/serie/ai-seo-pro-eshopy/) a článek o [režimu AI a e-shopech](/blog/ai-mode-a-eshopy/).
+
+<Figure
+  src="/screenshots/rezim-ai/zdroje.png"
+  alt="Panel zdrojů v režimu AI: karty webů, ze kterých Google odpověď složil, s názvem webu a titulkem stránky"
+  caption="Panel zdrojů je místo, o které se hraje. Rozhoduje o něm název webu a titulek stránky, ne délka textu."
+  credit="Google, české rozhraní"
+  width={1280}
+  height={820}
+/>
 
 Aby to celé drželo pohromadě, používáme tři pojmy důsledně: **[AI SEO](/slovnik/ai-seo/)** je práce, kterou děláme, **[AI vyhledávání](/slovnik/ai-vyhledavani/)** je místo, kde se to odehrává (režim AI, Přehledy od AI, ChatGPT — ten je v EU od 31. 8. 2026 [oficiálně vyhledávač](/blog/chatgpt-jako-vyhledavac-dsa/)), a **[AI viditelnost](/slovnik/ai-viditelnost/)** je výsledek, který měříme.
 

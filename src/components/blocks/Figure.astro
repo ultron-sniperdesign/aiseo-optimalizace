@@ -1,0 +1,146 @@
+---
+/**
+ * Figure — obrázek s popiskem pro obsah článků a sekcí.
+ *
+ * Proč vznikla (2026-09-05): web do té doby neměl v obsahu jediný obrázek
+ * (`grep '<img' src/content/` vracel 0) a žádnou komponentu pro něj. Snímky
+ * obrazovky ale u návodových témat plní konkrétní úkol — čtenář na první
+ * pohled pozná, že mluvíme o tom, co sám vidí.
+ *
+ * Chování:
+ * - Soubory leží v `public/` a odkazují se absolutní cestou (`/screenshots/...`),
+ *   stejně jako OG obrázky. Žádný import přes `astro:assets`, ať jde obrázek
+ *   vyměnit bez zásahu do obsahu.
+ * - **Chybějící soubor nikdy nerozbije stránku.** V produkčním buildu se blok
+ *   prostě nevykreslí, v dev režimu se ukáže nápadný placeholder s cestou.
+ *   Díky tomu smí být `<Figure>` v MDX dřív, než snímek existuje.
+ * - `width` a `height` jsou povinné kvůli CLS (rezervace místa před načtením).
+ * - Obrázek je odkaz na sebe sama, aby šel otevřít v plné velikosti.
+ *
+ * Šířka: blok patří mezi „široké" prvky (viz `--w-wide` v global.css), takže
+ * se v šabloně přidává do breakout seznamu vedle `.table-wrap`.
+ *
+ * ```mdx
+ * <Figure
+ *   src="/screenshots/rezim-ai/odpoved.png"
+ *   alt="Odpověď v režimu AI s citacemi zdrojů"
+ *   caption="Režim AI skládá odpověď a cituje zdroje přímo v textu."
+ *   credit="Google, snímek 5. 9. 2026"
+ *   width={1280} height={820}
+ * />
+ * ```
+ */
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { ui } from "~/i18n/strings";
+
+interface Props {
+  /** Absolutní cesta v rámci `public/`, např. `/screenshots/rezim-ai/odpoved.png`. */
+  src: string;
+  /** Popis pro čtečky a pro případ, že se obrázek nenačte. Povinný. */
+  alt: string;
+  /** Viditelný popisek pod obrázkem. */
+  caption?: string;
+  /** Zdroj a datum pořízení — u snímků cizích rozhraní to patří k věci. */
+  credit?: string;
+  /** Rozměry originálu v pixelech (povinné kvůli rezervaci místa). */
+  width: number;
+  height: number;
+}
+
+const { src, alt, caption, credit, width, height } = Astro.props;
+
+// Existenci ověřujeme proti `public/` v době buildu — `src` je vždy cesta od kořene webu.
+const publicDir = fileURLToPath(new URL("../../../public", import.meta.url));
+const exists = existsSync(`${publicDir}${src.split("?")[0]}`);
+const isDev = import.meta.env.DEV;
+---
+
+{
+  exists ? (
+    <figure class="figure">
+      <a class="figure__link" href={src} target="_blank" rel="noopener" aria-label={ui.figure.openFull}>
+        <img
+          class="figure__img"
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      {(caption || credit) && (
+        <figcaption class="figure__caption">
+          {caption}
+          {credit && <span class="figure__credit">{credit}</span>}
+        </figcaption>
+      )}
+    </figure>
+  ) : (
+    isDev && (
+      <div class="figure figure--missing" role="note">
+        <strong>Chybí obrázek:</strong> <code>public{src}</code>
+        <br />
+        <small>{alt}</small>
+        <br />
+        <small>V produkčním buildu se tenhle blok nevykreslí.</small>
+      </div>
+    )
+  )
+}
+
+<style>
+  .figure {
+    margin: 2rem 0;
+  }
+
+  .figure__link {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper);
+    text-decoration: none;
+  }
+
+  .figure__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .figure__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .figure__caption {
+    margin: 0.75rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    /* Popisek se čte, takže drží čitelné měřítko i pod širokým obrázkem. */
+    max-width: var(--w-read);
+  }
+
+  .figure__credit {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    color: var(--color-ink-faint);
+  }
+
+  /* Jen dev: nápadné, ať si toho autor všimne. */
+  .figure--missing {
+    margin: 2rem 0;
+    padding: 1rem 1.25rem;
+    border: 2px dashed var(--color-ink-faint);
+    border-radius: 10px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+</style>
