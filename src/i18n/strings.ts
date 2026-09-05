@@ -187,7 +187,14 @@ export const footer = {
   builtNote: "produkt agentury Sniper Design · postaveno na Astru · hostováno v ČR",
   sitemapLabel: "Sitemap",
   rssLabel: "RSS",
-  updatedLabel: "Aktualizováno květen 2026",
+  /** Prefix pro dynamické datum v patičce; Footer.astro dopočítá nejnovější
+   *  `updated` napříč kolekcemi a doplní měsíc v lokálu (viz footerMonths). */
+  updatedPrefix: "Aktualizováno",
+  /** Měsíce v 6. pádě („v září"), aby patička dávala smysl česky. */
+  footerMonths: [
+    "v lednu", "v únoru", "v březnu", "v dubnu", "v květnu", "v červnu",
+    "v červenci", "v srpnu", "v září", "v říjnu", "v listopadu", "v prosinci",
+  ],
 };
 
 /**
@@ -218,6 +225,8 @@ export const ui = {
   metaFaqs: "častých otázek",
   metaReadingMins: "minut čtení",
   metaUpdated: "Aktualizováno:",
+  /** Doplněk k viditelnému datu v sekcích — říká, že datum platí i pro fakta. */
+  sectionUpdatedNote: "stav funkcí a čísel k tomuto datu",
   metaMinShort: "min", // krátká forma na blog kartách (acard__time)
 
   // Obsah (TOC)
@@ -308,6 +317,28 @@ export const ui = {
     AIMODE: "REŽIM AI",
     PRAXE: "PRAXE",
     MATICE: "MATICE",
+  } as Record<string, string>,
+
+  // Skloňované tvary display badge pro věty v šablonách. Zkratky (SEO/GEO/AEO/AIO)
+  // jsou nesklonné, víceslovné názvy ne — bez těchto map vzniká „k PRAXE" a
+  // „s REŽIM AI". Fork přepíše podle gramatiky svého jazyka (nebo nechá 1:1).
+  sectionBadgeDative: {
+    SEO: "SEO",
+    GEO: "GEO",
+    AEO: "AEO",
+    AIO: "AIO",
+    AIMODE: "režimu AI",
+    PRAXE: "praxi",
+    MATICE: "matici",
+  } as Record<string, string>,
+  sectionBadgeInstrumental: {
+    SEO: "SEO",
+    GEO: "GEO",
+    AEO: "AEO",
+    AIO: "AIO",
+    AIMODE: "režimem AI",
+    PRAXE: "praxí",
+    MATICE: "maticí",
   } as Record<string, string>,
 
   // Blog kategorie (crumb + filter chips + card tag); klíč = frontmatter category

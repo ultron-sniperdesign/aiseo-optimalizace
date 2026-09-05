@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "mereni"
 published: "2026-06-11"
-updated: "2026-08-29"
+updated: "2026-09-05"
 keywords:
   - "gsc ai report"
   - "search console ai overviews"
@@ -21,14 +21,14 @@ stats:
   - value: "imprese"
     label: "hlavní metrika reportu — kolikrát se vaše URL objevily ve funkcích s generativní AI"
   - value: "0"
-    label: "kliků, CTR i dotazů v reportu — ověřeno v nápovědě Googlu 2. 8. 2026"
+    label: "kliků, CTR i dotazů v reportu — ověřeno v nápovědě Googlu 5. 9. 2026"
   - value: "2"
     label: "samostatná zobrazení: Vyhledávání (AI Overviews + AI Mode dohromady) a Discover"
 howto:
   name: "Jak měřit AI viditelnost v Google Search Console"
   steps:
     - name: "Ověřte, jestli máte report k dispozici"
-      text: "Report se rozšiřuje postupně a nejdřív ho dostaly weby v Británii. Google v nápovědě i dva měsíce po spuštění píše, že ho dostává jen část majitelů webů (ověřeno 2. 8. 2026). Zkontrolujte v Search Console v sekci Výkon, jestli je dostupná sekce Přehled výkonu v generativní AI. Pokud ještě není, doplňte měření ručním testem AI viditelnosti."
+      text: "Od 31. srpna 2026 má report každý web na světě a nic se nezapíná — dřívější postupné zpřístupňování skončilo. V Search Console otevřete sekci Výkon a najděte Přehled výkonu v generativní AI. Pokud v účtu chybí, jde o problém s ověřením služby, ne o čekání na rollout."
     - name: "Otevřete report a přepněte na Search"
       text: "V Search Console přejděte do sekce Výkon a otevřete Přehled výkonu v generativní AI. Přepněte mezi zobrazením Vyhledávání (AI Overviews + AI Mode) a Discover. Pro AI vyhledávání sledujte hlavně zobrazení Vyhledávání."
     - name: "Segmentujte podle stránky, země a času"
@@ -39,11 +39,11 @@ howto:
       text: "Search Console pokrývá jen Google AI, ne ChatGPT, Perplexity nebo Claude, a neukazuje kliky. Doplňte GA4 (návštěvnost z AI), UTM parametry v odkazech a ruční test napříč platformami. GSC je jedna vrstva, ne kompletní obrázek."
 faq:
   - q: "Co Google spustil v Search Console v červnu 2026?"
-    a: "Google 3. června 2026 spustil v Search Console report Přehled výkonu v generativní AI, který ukazuje, jak často se stránky webu objevují ve funkcích s generativní AI ve Vyhledávání (AI Overviews a AI Mode) a v Discoveru. Report má dvě samostatná zobrazení — Search a Discover. Zpřístupňuje se postupně: nejdřív ho dostaly weby v Británii a Google v nápovědě i k 2. srpnu 2026 píše, že ho dostává jen část majitelů webů. Dva měsíce po spuštění ho tedy pořád nemá každý."
+    a: "Google 3. června 2026 spustil v Search Console report Přehled výkonu v generativní AI, který ukazuje, jak často se stránky webu objevují ve funkcích s generativní AI ve Vyhledávání (AI Overviews a AI Mode) a v Discoveru. Report má dvě samostatná zobrazení — Search a Discover. Zpřístupňoval se postupně, ale od 31. srpna 2026 ho podle nápovědy Googlu mají všechny weby po celém světě."
   - q: "Poznám v reportu, kolik impresí je z AI Mode?"
-    a: "Ne. Nápověda Search Console uvádí AI Overviews i AI Mode v jednom výčtu toho, co report pokrývá, a k 2. srpnu 2026 v něm není žádný filtr ani rozměr, který by je oddělil — rozpady jsou v tomto zobrazení jen podle stránek, zemí, data a zařízení. Ve zobrazení Vyhledávání jsou tedy imprese za obě funkce zahrnuté společně. Rozdíl mezi nimi si musíte doplnit ručním testem."
+    a: "Ne. Nápověda Search Console uvádí AI Overviews i AI Mode v jednom výčtu toho, co report pokrývá, a ani k 5. září 2026 v něm není žádný filtr ani rozměr, který by je oddělil — rozpady jsou v tomto zobrazení jen podle stránek, zemí, data a zařízení. Ve zobrazení Vyhledávání jsou tedy imprese za obě funkce zahrnuté společně. Rozdíl mezi nimi si musíte doplnit ručním testem."
   - q: "Jaké metriky report ukazuje?"
-    a: "Report ukazuje imprese (kolikrát se vaše URL objevily ve funkcích s generativní AI), stránky (které konkrétní URL se objevily), země (viditelnost podle zemí), zařízení (jen u Search) a datum s hodinovým, denním, týdenním i měsíčním intervalem. Neukazuje ale kliky, míru prokliku (CTR), pozici ani dotazy a k 2. srpnu 2026 neumí oddělit AI Overviews od AI Mode — imprese za obě funkce jsou společně. Ověřeno v nápovědě Googlu."
+    a: "Report ukazuje imprese (kolikrát se vaše URL objevily ve funkcích s generativní AI), stránky (které konkrétní URL se objevily), země (viditelnost podle zemí), zařízení (jen u Search) a datum s hodinovým, denním, týdenním i měsíčním intervalem. Neukazuje ale kliky, míru prokliku (CTR), pozici ani dotazy a ani k 5. září 2026 neumí oddělit AI Overviews od AI Mode — imprese za obě funkce jsou společně. Ověřeno v nápovědě Googlu."
   - q: "Proč report neukazuje kliky?"
     a: "To je nejvýznamnější omezení reportu. Google důvod v nápovědě nevysvětluje; jedním z pravděpodobných je, že přiřazení prokliku zpět na konkrétní zdroj v syntetizované odpovědi funguje jinak než klik na klasický výsledek. Jisté je, že imprese v AI odpovědi neznamená proklik — AI odpovědi jsou navržené odpovědět přímo, takže míra prokliku z generativních funkcí bývá nižší než u klasických modrých odkazů."
   - q: "Jak mám imprese v reportu číst?"
@@ -51,7 +51,7 @@ faq:
   - q: "Nahrazuje GSC report ruční test AI viditelnosti?"
     a: "Ne, doplňuje ho. Search Console report pokrývá jen Google AI (AI Overviews, AI Mode, Discover), ne ChatGPT, Perplexity, Claude ani Gemini. Neukazuje kliky ani kvalitu návštěvnosti. Pro celý AI ekosystém potřebujete i ruční test napříč platformami a měření návštěvnosti v GA4. GSC report je silná nová vrstva měření Google AI, ne kompletní obrázek."
   - q: "Platí report i pro české weby?"
-    a: "Nemusíte ho ještě mít. Zpřístupňování začalo u webů v Británii a Google k 2. srpnu 2026 pořád píše, že report dostává jen část majitelů webů. Pokud ho zpřístupněný máte, zachytí i českou AI viditelnost — rozpad podle zemí v reportu je. Než ho dostanete, měřte ručním testem a nezapomeňte, že Search Console nepokrývá Seznam Asistenta ani ChatGPT, Perplexity a Claude."
+    a: "Ano. Od 31. srpna 2026 mají report všechny weby po celém světě, takže ho má i každý český web. Českou AI viditelnost zachytí — rozpad podle zemí v reportu je. Počítejte ale s tím, že Search Console nepokrývá Seznam Asistenta ani ChatGPT, Perplexity a Claude, takže ho doplňte ručním testem."
 ---
 
 import Checklist from "~/components/blocks/Checklist.astro";
@@ -64,17 +64,23 @@ import DoDont from "~/components/blocks/DoDont.astro";
 import Do from "~/components/blocks/Do.astro";
 import Dont from "~/components/blocks/Dont.astro";
 
-**Google 3. června 2026 spustil v Search Console report Přehled výkonu v generativní AI (v anglickém rozhraní *Generative AI features*) — první oficiální přehled o tom, jak často se vaše stránky objevují v AI Overviews (AI shrnutí ve výsledcích Vyhledávání Google), AI Mode (konverzačním režimu vyhledávání) a generativních funkcích v Discoveru.** Má ale tři výrazná omezení, ověřená k 2. srpnu 2026: ukazuje jen imprese, neoddělí AI Overviews od AI Mode a dva měsíce po spuštění ho pořád nemá každý web. Tento návod ukazuje, kde report najít, jak ho segmentovat a hlavně jak imprese číst správně — jako signál výskytu v AI funkcích, ne jako návštěvnost.
+**Google 3. června 2026 spustil v Search Console report Přehled výkonu v generativní AI (v anglickém rozhraní *Generative AI features*) — první oficiální přehled o tom, jak často se vaše stránky objevují v AI Overviews (AI shrnutí ve výsledcích Vyhledávání Google), AI Mode (konverzačním režimu vyhledávání) a generativních funkcích v Discoveru.** Od 31. srpna 2026 ho mají všechny weby na světě. Zůstávají ale dvě výrazná omezení, ověřená k 5. září 2026: ukazuje jen imprese a neoddělí AI Overviews od AI Mode. Tento návod ukazuje, kde report najít, jak ho segmentovat a hlavně jak imprese číst správně — jako signál výskytu v AI funkcích, ne jako návštěvnost.
 
 ## Co Google spustil
 
-Report **Přehled výkonu v generativní AI** je v Search Console dostupný od 3. června 2026. Zpřístupňuje se postupně: v den spuštění ho dostávaly weby v Británii a Google ve své nápovědě **i k 2. srpnu 2026** píše, že report dostává jen část majitelů webů. Dva měsíce po spuštění ho tedy pořád nemá každý. Má dvě samostatná zobrazení:
+Report **Přehled výkonu v generativní AI** je v Search Console dostupný od 3. června 2026. Zpřístupňoval se postupně — v den spuštění ho dostávaly weby v Británii — ale **od 31. srpna 2026 ho podle nápovědy Googlu mají všechny weby po celém světě** a nic se nezapíná. Má dvě samostatná zobrazení:
 
 - **Search** — AI Overviews a AI Mode ve Vyhledávání.
 - **Discover** — funkce s generativní AI v Discoveru.
 
+Spolu s celosvětovým zpřístupněním přibylo 31. srpna 2026 i nastavení **Generativní AI ve Vyhledávání**
+(Nastavení › Generativní AI ve Vyhledávání) se třemi volbami — **Zahrnout**, **Vyloučit** a
+**Zdědit nastavení z nadřazené služby**. Týká se zobrazování ve funkcích s generativní AI, ne trénování
+modelů; na to je token `Google-Extended`. Co přesně která volba vypne, rozebíráme v článku
+[Jak zablokovat AI odpovědi přes Search Console](/blog/blokovat-ai-odpovedi-gsc/).
+
 <Insight tone="accent">
-Před tímto reportem neexistoval oficiální zdroj dat od Googlu o tom, jak často se web objevuje v jeho AI funkcích. Doteď se měření opíralo hlavně o odhady, [ruční test AI viditelnosti](/blog/test-viditelnosti-v-ai/) a nepřímé signály. Report je proto významná nová vrstva — ale pořád ne kompletní obrázek. A je to produkt v pohybu: rozsah reportu i jeho dostupnost se během zpřístupňování můžou dál měnit, proto jsou všechna stavová tvrzení v tomhle článku ověřená k 2. srpnu 2026.
+Před tímto reportem neexistoval oficiální zdroj dat od Googlu o tom, jak často se web objevuje v jeho AI funkcích. Doteď se měření opíralo hlavně o odhady, [ruční test AI viditelnosti](/blog/test-viditelnosti-v-ai/) a nepřímé signály. Report je proto významná nová vrstva — ale pořád ne kompletní obrázek. A je to produkt v pohybu: rozsah reportu i jeho dostupnost se během zpřístupňování můžou dál měnit, proto jsou všechna stavová tvrzení v tomhle článku ověřená k 5. září 2026.
 </Insight>
 
 ## Co report ukazuje
@@ -89,7 +95,7 @@ Před tímto reportem neexistoval oficiální zdroj dat od Googlu o tom, jak ča
 
 ## Kritické omezení: žádné kliky
 
-Nejdůležitější věc, kterou o reportu potřebujete vědět: **sleduje pouze imprese.** Žádné kliky, míru prokliku (CTR), pozici ani dotazy. Ověřeno v nápovědě Search Console k **2. srpnu 2026** — od spuštění se v tomhle nic nezměnilo.
+Nejdůležitější věc, kterou o reportu potřebujete vědět: **sleduje pouze imprese.** Žádné kliky, míru prokliku (CTR), pozici ani dotazy. Ověřeno v nápovědě Search Console k **5. září 2026** — od spuštění se v tomhle nic nezměnilo, ani po celosvětovém zpřístupnění 31. srpna 2026.
 
 Google v reportu kliky, CTR, pozici ani dotazy nezveřejňuje. Prakticky to znamená, že z reportu nevyčtete návštěvnost ani výkonnost po prokliku. Jedním z možných vysvětlení je odlišný způsob interakce s AI odpověďmi — ty často odpovídají přímo v rozhraní, takže proklik nemusí být hlavní výsledek interakce. Podrobně se tomuto efektu věnujeme v článku o [efektu bez prokliku](/blog/zero-click-ai/).
 
@@ -103,7 +109,7 @@ Tohle je otázka, se kterou k reportu většina lidí přijde: **kolik z těch i
 Odpověď je, že se to nedozvíte.
 
 Nápověda Search Console uvádí obě funkce v jednom výčtu toho, co report pokrývá — AI Overviews
-a AI Mode — a **k 2. srpnu 2026 v reportu není žádný filtr ani rozměr, který by je od sebe oddělil.**
+a AI Mode — a **ani k 5. září 2026 v reportu není žádný filtr ani rozměr, který by je od sebe oddělil.**
 Rozpady jsou tam jen podle stránek, zemí, data a zařízení. Ve zobrazení Search jsou tedy imprese
 za obě funkce zahrnuté společně a report je neumí rozlišit.
 
@@ -250,9 +256,9 @@ Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hod
 
 ## Co si z článku odnést
 
-- **Google spustil 3. června 2026** v Search Console report Přehled výkonu v generativní AI — první oficiální data o Google AI viditelnosti. Zpřístupňuje se postupně, začal u britských webů a k 2. srpnu 2026 ho pořád nemá každý.
+- **Google spustil 3. června 2026** v Search Console report Přehled výkonu v generativní AI — první oficiální data o Google AI viditelnosti. Zpřístupňoval se postupně od britských webů, ale **od 31. srpna 2026 ho mají všechny weby na světě**.
 - **Ukazuje imprese, stránky, země a datum** — ve dvou zobrazeních (Vyhledávání a Discover). Rozpad podle zařízení je jen u Vyhledávání; [co dává zobrazení pro Discover](/blog/generativni-ai-v-discoveru/) rozebíráme zvlášť.
-- **Neukazuje kliky, CTR, pozici ani dotazy** — sleduje jen imprese. A **AI Overviews od AI Mode k 2. srpnu 2026 neoddělí** — imprese za obě funkce jsou společně.
+- **Neukazuje kliky, CTR, pozici ani dotazy** — sleduje jen imprese. A **AI Overviews od AI Mode ani k 5. září 2026 neoddělí** — imprese za obě funkce jsou společně.
 - **Imprese čtěte jako signál výskytu v Google AI funkcích**, ne jako návštěvnost; porovnejte je s organickými kliky.
 - **Report pokrývá jen Google AI** — pro ChatGPT, Perplexity a Claude potřebujete ruční test.
 - **Doplňte GSC** o GA4, UTM a ruční test — je to jedna vrstva, ne kompletní obrázek. Jak vypadá [měření AI viditelnosti na reálných datech](/ai-viditelnost/), ukazujeme na vlastním e-shopu.
@@ -261,4 +267,4 @@ Search Console je jedna vrstva. Pro úplný obrázek AI viditelnosti a její hod
 
 **Chcete nastavit kompletní měření AI viditelnosti napříč Search Console, GA4 i ručním testem?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje checklist měření AI viditelnosti — jak číst Generative AI report, jak ho doplnit o GA4 a UTM a jak interpretovat imprese versus návštěvnost. Pokud chcete kompletní audit AI viditelnosti napříč platformami, [AI SEO audit za 3 600 Kč](/audit/) propojí data ze Search Console, GA4 i ručního testu a navrhne, kde má úprava největší dopad.
 
-*Transparentně: AI audity děláme s měřením napříč vrstvami (Search Console, GA4, ruční test). Popis reportu vychází z veřejné nápovědy Search Console, ověřené k 2. srpnu 2026; rozsah reportu i jeho dostupnost se mohou měnit. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
+*Transparentně: AI audity děláme s měřením napříč vrstvami (Search Console, GA4, ruční test). Popis reportu vychází z veřejné nápovědy Search Console, ověřené k 5. září 2026; rozsah reportu i jeho dostupnost se mohou měnit. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*

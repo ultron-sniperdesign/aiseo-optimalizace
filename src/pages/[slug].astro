@@ -53,6 +53,14 @@ const crumb = ui.sectionContext[entry.data.abbr] ?? entry.data.abbr;
 // breadcrumb a Article schema (about/articleSection). Raw enum `entry.data.abbr`
 // zůstává pro CSS hooky (data-abbr), colorByAbbr lookup a currentAbbr do RelatedSections.
 const displayAbbr = ui.sectionBadge[entry.data.abbr] ?? entry.data.abbr;
+// Skloňované tvary pro věty v šabloně (viz strings.ts) — bez nich vzniká „k PRAXE".
+const displayAbbrDative = ui.sectionBadgeDative[entry.data.abbr] ?? displayAbbr;
+// Viditelné datum aktualizace pod krátkou odpovědí (dosud jen v JSON-LD dateModified).
+const updatedStamp = entry.data.updated
+  ? new Date(`${entry.data.updated}T00:00:00Z`).toLocaleDateString("cs-CZ", {
+      day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC",
+    })
+  : null;
 const heroAbbr = displayAbbr;
 const titleParts = entry.data.title.split(" — ");
 const afterDash = titleParts.length > 1 ? titleParts.slice(1).join(" — ") : entry.data.title;
@@ -221,6 +229,11 @@ function renderFaqMarkdown(text: string): string {
       <div class="answer__inner">
         <span class="answer__mark">{ui.answerDefinition}</span>
         <p class="answer__text">{entry.data.answer}</p>
+        {updatedStamp && (
+          <p class="answer__updated">
+            {ui.metaUpdated} {updatedStamp} · {ui.sectionUpdatedNote}
+          </p>
+        )}
       </div>
     </section>
 
@@ -255,7 +268,7 @@ function renderFaqMarkdown(text: string): string {
               <span class="eyebrow__num">{ui.faqEyebrowNum}</span>
               {ui.faqEyebrow}
             </span>
-            <h2 id="faq-title" class="faq__title" set:html={ui.sectionFaqTitleHtml.replace("{abbr}", entry.data.abbr)} />
+            <h2 id="faq-title" class="faq__title" set:html={ui.sectionFaqTitleHtml.replace("{abbr}", displayAbbrDative)} />
           </header>
 
           <dl class="faq__list">
@@ -407,6 +420,14 @@ function renderFaqMarkdown(text: string): string {
     background: var(--d);
     border-radius: 50%;
   }
+  .answer__updated {
+    margin: 0.75rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
   .answer__text {
     font-family: var(--font-sans);
     font-weight: 380;

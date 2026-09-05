@@ -1,102 +1,161 @@
 ---
-title: "AI Mode — konverzační režim Googlu (a jak v něm být vidět)"
-seoTitle: "Režim AI v Googlu (AI Mode): co to je a jak funguje 2026"
-description: "Režim AI (AI Mode) je konverzační vyhledávání Googlu: místo odkazů složí odpověď. Jak funguje query fan-out, dostupnost v Česku a jak se do odpovědí dostat."
-answer: "Režim AI (anglicky AI Mode) je konverzační režim vyhledávání Googlu: místo seznamu odkazů složí kompletní odpověď z mnoha zdrojů najednou a umožňuje pokládat navazující otázky. Typicky rozloží dotaz na desítky dílčích (query fan-out) a cituje stránky, které odpovídají na konkrétní podotázky. V Česku zájem o AI Mode meziročně vyrostl o tisíce procent."
+title: "Režim AI — konverzační vyhledávání Googlu (a jak v něm být vidět)"
+seoTitle: "Režim AI (Google AI Mode): jak funguje a jak být vidět"
+description: "Režim AI (AI Mode) je konverzační vyhledávání Googlu. V Česku od října 2025, 13 000 hledání měsíčně. Jak funguje query fan-out a jak se dostat do odpovědí."
+answer: "Režim AI (anglicky AI Mode) je konverzační režim vyhledávání Googlu: místo seznamu odkazů složí odpověď z mnoha zdrojů a nechá vás doptávat se. Dotaz přitom rozloží na řadu souběžných souvisejících dotazů, takzvaný query fan-out. V češtině funguje od 7. října 2025 a je to dnes nejhledanější český dotaz k AI vyhledávání: 13 000 hledání měsíčně (Marketing Miner, 9/2026)."
 slug: "ai-mode"
 order: 7
 abbr: "AIMODE"
 published: "2026-07-17"
-updated: "2026-08-25"
+updated: "2026-09-05"
 faq:
-  - q: "Co je Google AI Mode?"
-    a: "AI Mode je samostatný konverzační režim vyhledávání Googlu (záložka vedle klasických výsledků). Na dotaz odpoví souvislým textem složeným z mnoha zdrojů, s citacemi a možností pokládat navazující otázky — jako chat, ale nad aktuálním indexem Googlu."
-  - q: "Jak se AI Mode liší od AI Overviews?"
-    a: "AI Overviews je AI souhrn NAD klasickými výsledky — jeden blok, pod ním modré odkazy. AI Mode je celý konverzační zážitek: žádný seznam výsledků, jen odpověď s citacemi a follow-up otázky. AI Overviews vidí každý; AI Mode si uživatel volí záměrně."
-  - q: "Je AI Mode dostupný v Česku?"
-    a: "Google AI Mode postupně rozšiřuje do dalších zemí a jazyků; v Česku zájem prudce roste — hledanost dotazu „ai mode\" vyrostla meziročně o více než 6 000 % (Marketing Miner, květen 2026). Přesná dostupnost funkcí se mění; aktuální stav ověříte přímo ve vyhledávání."
-  - q: "Jak AI Mode vybírá, které weby cituje?"
-    a: "Dotaz rozkládá na desítky dílčích podotázek (query fan-out) a pro každou hledá nejlepší odpověď v indexu. Šanci na citaci mají stránky, které na konkrétní podotázku odpovídají přímo, fakticky a čitelně — často jiné stránky, než které vyhrávají klasický SERP na hlavní dotaz."
-  - q: "Jak poznám, že se můj web v AI Mode zobrazuje?"
-    a: "Search Console má beta report „Funkce s generativní AI\", který ukazuje zobrazení webu ve funkcích generativního vyhledávání (AI Mode i AI Overviews dohromady). Kliknutí zatím oddělit nejdou. Na vlastním e-shopu jsme takto naměřili 200 000 zobrazení za dva měsíce."
-  - q: "Znamená AI Mode konec klasického SEO?"
-    a: "Ne — AI Mode staví na stejném indexu a odměňuje stejné základy: technicky zdravý web, strukturovaný obsah a důvěryhodnou značku. Mění se ale jednotka optimalizace: místo pozice na dotaz jde o odpověď na podotázku. Kvalitní SEO je vstupenka, citovatelný obsah je výhra."
+  - q: "Co je režim AI (Google AI Mode)?"
+    a: "Režim AI je samostatný konverzační režim vyhledávání Googlu — záložka a tlačítko vedle klasických výsledků. Na dotaz odpoví souvislým textem složeným z mnoha zdrojů, s citacemi a možností doptat se. Anglicky se jmenuje AI Mode, česky Google používá název režim AI."
+  - q: "Jak se režim AI liší od Přehledů od AI?"
+    a: "Přehledy od AI (AI Overviews) jsou souhrn nad klasickými výsledky — jeden blok, pod ním modré odkazy. Režim AI je celý konverzační zážitek bez seznamu výsledků. Od 19. 5. 2026 jsou propojené: navazující otázka z Přehledu od AI pokračuje v režimu AI."
+  - q: "Je režim AI dostupný v Česku?"
+    a: "Ano. Google ho v češtině spustil 7. 10. 2025 a podle nápovědy je dostupný ve více než 200 zemích a územích a ve 100+ jazycích (ověřeno 5. 9. 2026). Českým uživatelům se plošně objevoval zhruba od poloviny října 2025. Podrobný návod máme v článku o režimu AI v Googlu."
+  - q: "Jak režim AI zapnu?"
+    a: "Otevřete google.com/ai, klepnete na tlačítko Režim AI u vyhledávacího pole nebo použijete aplikaci Google. V Chromu je tlačítko také v adresním řádku a na nové kartě. Krok za krokem to popisuje náš návod na /blog/rezim-ai-google/."
+  - q: "Dá se režim AI vypnout nebo nastavit jako výchozí?"
+    a: "Vypínač neexistuje — je to režim, do kterého vstupujete sami, takže ho stačí nepoužívat. Přehledy od AI nad výsledky vypnout nelze, pomáhá jen filtr Web. Google zároveň v červnu 2026 odmítl, že by chystal režim AI jako výchozí (sekundární zdroj)."
+  - q: "Proč mi režim AI nefunguje a kde ho najdu?"
+    a: "Nejčastější důvody jsou odhlášený účet, jiný jazyk rozhraní, jiná země nebo starší prohlížeč. Funkce se navíc zavádějí postupně, takže dva účty ve stejné zemi ji nemusí mít současně. Řešení popisujeme v článku o režimu AI v Googlu."
+  - q: "Jak se režim AI liší od aplikace Gemini?"
+    a: "Režim AI je součást vyhledávání a staví na živém indexu Googlu — vždycky hledá. Gemini je samostatná aplikace nad modelem, která vyhledávání používá jako nástroj, když ho vyhodnotí jako potřebné. Pro web to znamená, že se do režimu AI dostanete SEO, do Gemini spíš známostí značky."
+  - q: "Kolik lidí režim AI používá?"
+    a: "Google na I/O 19. 5. 2026 uvedl miliardu uživatelů měsíčně napříč AI funkcemi vyhledávání. Nezávislá analýza SparkToro z 9. 6. 2026 ale ukazuje, že do režimu AI míří jen 0,34 % vyhledávání. Obě čísla platí: dosah je velký, podíl na dotazech zatím malý."
+  - q: "Jak režim AI vybírá, které weby cituje?"
+    a: "Dotaz rozloží na řadu souběžných souvisejících dotazů (query fan-out) a pro každý hledá nejlepší odpověď v indexu. Šanci mají stránky, které odpovídají na konkrétní podotázku přímo a fakticky. Podle Ahrefs z března 2026 je jen 38 % citovaných URL zároveň v první desítce klasických výsledků."
+  - q: "Jak poznám, že se můj web v režimu AI zobrazuje?"
+    a: "V Search Console je report „Přehled výkonu v generativní AI (Vyhledávání)“. Od 31. 8. 2026 ho mají všechny weby na světě a nic se nezapíná. Ukazuje jen imprese, a to za Přehledy od AI i režim AI dohromady — kliky, dotazy ani pozice v něm nejsou."
+  - q: "Jsou v režimu AI reklamy?"
+    a: "Uvnitř odpovědí v Česku zatím ne. Reklamy nad Přehledy od AI a pod nimi běží běžně z kampaní Search, Shopping i PMax. Formáty přímo pro režim AI Google oznámil v květnu 2026 a testuje je. Detail vedeme na stránce o Přehledech od AI."
+  - q: "Znamená režim AI konec klasického SEO?"
+    a: "Ne. Režim AI staví na stejném indexu a odměňuje stejné základy: technicky zdravý web, strukturovaný obsah a důvěryhodnou značku. Mění se jednotka optimalizace — místo pozice na dotaz jde o odpověď na podotázku. Kvalitní SEO je vstupenka, citovatelný obsah je výhra."
 howto:
-  name: "Jak připravit web na Google AI Mode"
+  name: "Jak připravit web na režim AI"
   steps:
-    - name: "Pokryjte podotázky, ne jen hlavní dotaz"
-      text: "Rozepište téma do konkrétních otázek a odpovědí (H2/H3 jako otázka, odpověď 40–60 slov hned pod ní) — přesně tak AI Mode skládá odpovědi přes query fan-out."
-    - name: "Držte fakta hutná a citovatelná"
-      text: "Čísla, parametry, postupy, tabulky. Obecné marketingové odstavce AI Mode přeskočí — cituje pasáže, které něco tvrdí."
-    - name: "Nasaďte strukturovaná data"
-      text: "Article, Product, FAQPage, Organization a Person schema pomáhají systému pochopit, kdo jste a o čem stránka je."
-    - name: "Zpřístupněte web AI crawlerům"
-      text: "Zkontrolujte robots.txt (Googlebot a Google-Extended), rychlost načítání a indexaci v Search Console — co není v indexu, nemůže být citováno."
-    - name: "Měřte zobrazení v generativní AI"
-      text: "Zapněte si v Search Console report Funkce s generativní AI a sledujte trend zobrazení; doplňte GA4 segment pro AI referraly."
+    - name: "Pokryjte podotázky na jedné stránce"
+      text: "Rozepište téma do konkrétních otázek a odpovědí — přesně tak režim AI skládá odpověď přes query fan-out. Google výslovně nedoporučuje dělit obsah na mikro-stránky k jednotlivým variantám dotazu (dokumentace z 10. 7. 2026)."
+    - name: "Pohlídejte název webu a titulek"
+      text: "Od 6. 5. 2026 zobrazuje režim AI odkazy přímo v textu odpovědi a při najetí ukáže náhled webu. O tom, jestli na citaci někdo klikne, tak rozhoduje název webu a titulek stránky, ne jen text odpovědi."
+    - name: "Držte obsah aktuální"
+      text: "U vyvíjejících se témat přidal Google v srpnu 2026 karusely odkazů. Přednost dostávají stránky s čerstvým a datovaným obsahem, takže se vyplatí refreshovat, co už máte, dřív než psát nové."
+    - name: "Nechte web dostupný Googlebotu"
+      text: "Režim AI čerpá z indexu Googlu, takže rozhoduje Googlebot, indexace a povolené úryvky (nosnippet, max-snippet). Token Google-Extended se týká trénování modelů, na zobrazení v režimu AI nemá vliv."
+    - name: "Měřte v Search Console"
+      text: "Sledujte report „Přehled výkonu v generativní AI (Vyhledávání)“ — od 31. 8. 2026 pro všechny weby. Ukazuje jen imprese za Přehledy od AI a režim AI dohromady, proto ho doplňte klasickým reportem Výkon a segmentem pro AI referraly v GA4."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
 
-## Co je AI Mode a proč vznikl
+## Co je režim AI a proč vznikl
 
-**AI Mode je největší změna Google vyhledávání za poslední dekádu.** Zatímco [AI Overviews](/aeo/) přidaly AI souhrn nad klasické výsledky, AI Mode klasické výsledky úplně opouští: je to samostatná záložka, kde Google odpovídá souvislým textem, cituje zdroje a čeká na navazující otázku. Vyhledávání se mění v rozhovor.
+**Režim AI je největší změna Google vyhledávání za poslední dekádu.** Zatímco [Přehledy od AI (AI Overviews)](/aio/) přidaly souhrn nad klasické výsledky, režim AI klasické výsledky úplně opouští: je to samostatná záložka, kde Google odpovídá souvislým textem, cituje zdroje a čeká na navazující otázku. Vyhledávání se mění v rozhovor.
 
 Pro uživatele je to pohodlné. Pro weby je to nové rozdání karet: **buď jste součástí odpovědi, nebo neexistujete.** Žádná desátá pozice, na kterou někdo doscrolluje.
 
-### „Režim AI" = tentýž nástroj česky
+### „Režim AI" je český název téhož nástroje
 
-V českém rozhraní Googlu i v Chromu se AI Mode jmenuje **režim AI**. Od srpna 2026 na něj vede
-tlačítko **přímo ve vyhledávacím poli Chromu** (na nové kartě, vedle mikrofonu a Lens) — uživatel
-ho tedy nemusí hledat v záložkách výsledků, má ho na očích při každém otevření prohlížeče.
+V českém rozhraní Googlu i v Chromu se AI Mode jmenuje **režim AI**. Chrome na něj nabízí tlačítko
+v adresním řádku a na nové kartě; mimo Spojené státy ho Google zavádí postupně, takže ho nemusí mít
+každý účet (nápověda Chrome, bez data).
 
-Tomu odpovídá i poptávka: dotaz **„režim AI" má v Česku 13 000 hledání měsíčně** (peak červen 2026:
-21 000), zatímco anglické „ai mode" 3 100 (Marketing Miner, srpen 2026). Lidé to tlačítko vidí
-a hledají, co dělá. Pro autory obsahu z toho plyne praktická věc: **v textech používejte oba tvary** —
-český „režim AI" kvůli hledanosti, anglický „AI Mode" kvůli odborné shodě.
+Tomu odpovídá i poptávka. Český tvar je dnes výrazně hledanější než anglický, takže **v textech
+používejte oba** — český „režim AI" kvůli hledanosti, anglický „AI Mode" kvůli odborné shodě.
 
-## Jak AI Mode funguje: query fan-out
-
-Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě"), AI Mode ho **rozloží na desítky dílčích podotázek** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
-
-Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz", ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Malý specializovaný článek tak může porazit velkou autoritu — pokud odpovídá přesněji. Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/).
-
-<Insight tone="key">
-V AI Mode se jednotkou optimalizace stává **odpověď na podotázku**, ne pozice na klíčové slovo. Web strukturovaný jako sada jasných otázek a odpovědí má matematicky víc „losů v osudí" než jeden dlouhý text optimalizovaný na jediný dotaz.
+<Insight icon="↳" tone="accent" label="Kam dál">
+Hledáte návod, ne teorii? Zapnutí, historii konverzací a časté omyly řeší článek
+[Režim AI v Googlu: zapnutí, vypnutí a co v něm najdete](/blog/rezim-ai-google/).
+Co režim AI umí a co o něm nápověda mlčí, rozebírá [AI Mode v Googlu česky](/blog/ai-mode-cesky/).
+Vypnout jdou jen [Přehledy od AI nad výsledky](/blog/jak-vypnout-ai-overview/) — a i tam jen filtrem Web.
+Tahle stránka je o něčem jiném: jak režim AI funguje a jak se do jeho odpovědí dostane váš web.
 </Insight>
 
-## AI Mode vs. AI Overviews vs. ChatGPT
+## Jak režim AI funguje: query fan-out
 
-| | **AI Mode** | **AI Overviews** | **ChatGPT** |
+Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě"), režim AI ho **rozloží na řadu souběžných souvisejících dotazů** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Google to popisuje jako „multitude of queries" (20. 5. 2025), v oficiálním příkladu v dokumentaci z 10. 7. 2026 jde o tři podotázky; v režimu Deep Search jich systém pouští až stovky. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
+
+Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz", ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/) a v hesle slovníku [query fan-out](/slovnik/query-fan-out/).
+
+Pozor na obvyklý omyl: Google ve své dokumentaci **výslovně nedoporučuje** krájet obsah na kousky ani zakládat samostatné stránky pro varianty dotazu. Masová produkce mikro-článků spadá pod scaled content abuse. Lepší je jedna stránka, která téma pokryje do šířky — viz [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/) a [jak se zobrazit v režimu AI](/blog/jak-se-zobrazit-v-ai-mode/).
+
+<Insight icon="✦" tone="signal">
+V režimu AI se jednotkou optimalizace stává **odpověď na podotázku**, ne pozice na klíčové slovo. Web strukturovaný jako sada jasných otázek a odpovědí má matematicky víc „losů v osudí" než jeden dlouhý text optimalizovaný na jediný dotaz. Jak systém pracuje pod kapotou, vysvětluje heslo [RAG](/slovnik/rag/).
+</Insight>
+
+## Google AI: co je co
+
+Tři věci od Googlu se pletou nejčastěji. Takhle se liší:
+
+| | **Režim AI** | **Přehledy od AI** | **Gemini (aplikace)** |
 |---|---|---|---|
-| Kde | záložka v Googlu | nad výsledky Googlu | samostatná aplikace |
-| Podoba | celá konverzace | jeden souhrn + odkazy | konverzace |
-| Zdroj dat | živý index Googlu | živý index Googlu | trénink + vlastní vyhledávání |
-| Uživatel | volí záměrně | vidí automaticky | volí záměrně |
-| Optimalizace | query fan-out, citovatelné odpovědi | [AEO](/aeo/) — krátké odpovědi, FAQ | [GEO](/geo/) — citace, brand |
+| Kde to je | záložka a tlačítko ve vyhledávání, v Chromu i v adresním řádku | nad organickými výsledky vyhledávání | samostatná aplikace a web |
+| Kdy se spustí | zvolíte ho sami, nebo navazující otázkou z Přehledu od AI (od 19. 5. 2026) | automaticky u části dotazů | ptáte se sami |
+| Zdroj dat | živý index Googlu | živý index Googlu | model; vyhledávání použije jako nástroj, když ho vyhodnotí jako potřebné |
+| Model | Gemini 3.5 Flash výchozí (od 19. 5. 2026); předplatné Pro/Ultra umí zvolit 3.7 Flash (8/2026) a 3.8 Flash (2. 9. 2026) | Google model samostatně neuvádí | podle plánu uživatele |
+| Jak měřit | report Přehled výkonu v generativní AI (jen imprese) | tentýž report, oddělit nejde | referral z gemini.google.com v GA4 |
+| Kde optimalizovat | tato stránka + [AEO](/aeo/) | [Přehledy od AI](/aio/) | [GEO](/geo/) — zmínky a značka |
 
-Praktická zpráva: **stejný obsahový základ živí všechny tři.** Krátké odpovědi, fakta, struktura a důvěryhodná značka fungují napříč — liší se jen důrazy.
+**Mimo Google:** ChatGPT staví na vlastním crawleru OAI-SearchBot a partnerském indexu, Perplexity a Copilot mají vlastní roboty a český protějšek je **Seznam Asistent**, dostupný všem přihlášeným od 25. 5. 2026 — jak funguje a jak se do něj dostat, rozebírá článek o [Seznam Asistentovi a modelu SeLLMa](/blog/seznam-asistent-sellma/). Optimalizaci pro tyhle kanály řeší [GEO](/geo/).
 
-## Co říkají data: AI Mode právě přichází do Česka
+## Režim AI v Česku: časová osa a co se změnilo v roce 2026
 
-Tohle není budoucnost, děje se to teď:
+Tahle stránka je na webu jediným místem, kde časovou osu držíme. Ostatní stránky sem odkazují.
 
-- Česky se funkci říká **„režim AI"** — a právě tenhle tvar je dnes v ČR nejhledanější: **13 000 hledání/měsíc** (peak červen 2026: 21 000). Anglické „ai mode" má 3 100/měs (+2 620 % meziročně), „jak zapnout režim ai" 260/měs (Marketing Miner, srpen 2026).
-- **AI Overviews**: 380 hledání/měs, +61 % (dtto).
-- Na vlastním e-shopu MEGA DETAIL jsme v beta reportu Search Console naměřili **[200 000 zobrazení ve funkcích s generativní AI za dva měsíce](/ai-viditelnost/)** — ještě před cílenou optimalizací.
+| Datum | Co se stalo | Co to znamená pro web |
+|---|---|---|
+| 7. 10. 2025 | Google spouští režim AI v češtině, podle nápovědy ve 200+ zemích a územích a 100+ jazycích | česká verze existuje od začátku, nejde o americkou funkci |
+| ~15. 10. 2025 | dostupné plošně českým uživatelům (sekundární zdroj) | konec fáze „mají to jen někteří" |
+| 6. 5. 2026 | odkazy přímo v textu odpovědi a náhled webu při najetí | rozhoduje název webu a titulek stránky |
+| 19. 5. 2026 | Google I/O: propojení s Přehledy od AI, Gemini 3.5 Flash jako výchozí model, miliarda uživatelů měsíčně | z přehledu se dá plynule přejít do konverzace |
+| 27. 5. a 3. 6. 2026 | Preferované zdroje v Přehledech od AI i v režimu AI, tlačítko od 20. 8. 2026 | uživatel si může zvolit weby, které chce vidět častěji |
+| 25. 8. 2026 | karusely odkazů u vyvíjejících se témat | zvýhodňuje čerstvý a datovaný obsah |
+| 31. 8. 2026 | report „Přehled výkonu v generativní AI" a přepínač pro všechny weby na světě | poprvé jde měřit imprese bez čekání na beta přístup |
+| 2. 9. 2026 | Gemini 3.8 Flash pro předplatitele Pro a Ultra; 3.7 Flash volitelně od 14. 8. 2026 (sekundární zdroj) | odpovědi se liší podle plánu uživatele |
 
-<Insight tone="warning">
-Zobrazení v AI Mode a AI Overviews **neuvidíte v Google Analytics** — odehrávají se před kliknutím. Jediné přímé měřítko je beta report „Funkce s generativní AI" v Search Console (zatím jen zobrazení, kliknutí neoddělí). Jak s tím pracovat, popisujeme v návodu na [měření GSC AI segmentů](/blog/gsc-ai-segmenty-mereni/).
+Agentní funkce jako rezervace, telefonování za uživatele nebo Information Agents zatím běží **jen ve Spojených státech**. Personal Intelligence, tedy přizpůsobení odpovědí podle účtu, Google spustil ve 98 jazycích — dvě různé osoby proto na stejný dotaz dostanou různé odpovědi.
+
+## Co říkají data: režim AI je v Česku od října 2025 a hledanost roste
+
+Tohle není budoucnost ani americká novinka, je to rok stará funkce s rostoucí poptávkou:
+
+- Rodina českých i anglických tvarů dává dohromady **zhruba 27 500 hledání měsíčně**: režim ai 13 000, rezim ai 8 900 (bez diakritiky), ai mode 3 100, ai režim 1 000, režim ai google 870, google ai mode 520 (Marketing Miner, běh 5. 9. 2026). Vrchol v červnu a červenci 2026 byl 31 000. Hodnoty za duben a srpen 2026 jsou v datech zjevné artefakty, proto uvádíme roční průměr, ne jeden měsíc.
+- **Přehledy od AI**: ai overviews 380 hledání/měs (+61 %), přehled od ai 130 (+169 %) — český tvar roste rychleji než anglický.
+- Na vlastním e-shopu MEGA DETAIL jsme v Search Console naměřili **[200 000 zobrazení ve funkcích s generativní AI za dva měsíce](/ai-viditelnost/)** — ještě před cílenou optimalizací. V Sniper Design to na tomhle webu i na e-shopu měříme od května 2026.
+
+<Insight icon="!" tone="warn">
+Zobrazení v režimu AI a v Přehledech od AI **neuvidíte v Google Analytics** — odehrávají se před kliknutím. Jediné přímé měřítko je report **„Přehled výkonu v generativní AI (Vyhledávání)"** v Search Console. Od 31. 8. 2026 ho mají všechny weby na světě, nic se nezapíná a ukazuje jen imprese za obě funkce dohromady. Vedle reportu přibylo v Search Console nastavení „Generativní AI ve Vyhledávání" s volbami Zahrnout, Vyloučit a Zdědit — co přesně vypne, [rozebíráme zvlášť](/blog/blokovat-ai-odpovedi-gsc/). Jak s reportem pracovat, popisuje návod na [měření AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/) a jeho limity shrnuje článek o [mezích měření režimu AI](/blog/mereni-ai-mode-limity/).
 </Insight>
 
 ## Co to znamená pro váš web nebo e-shop
 
-1. **Informační dotazy přestávají nosit kliky** — odpověď dostane uživatel přímo. Obsah musí buď prodávat vaši značku uvnitř odpovědi (citace), nebo cílit na dotazy, kde AI odpověď nestačí (transakce, lokální služby, srovnání s osobní zkušeností).
-2. **Roste hodnota „being the source"** — když AI Mode cituje váš web, získáváte důvěru a brand awareness i bez kliknutí. A návštěvník, který skrz AI doporučení přijde, [konvertuje výrazně lépe](/blog/case-study-megadetail-ai-navstevnost/).
-3. **E-shopy: produktová data rozhodují** — AI Mode u nákupních dotazů skládá srovnání z parametrů, cen a recenzí. Strukturovaná data a [kvalitní produktové stránky](/blog/produktove-stranky-pro-ai/) jsou vstupní podmínka.
+1. **Informační dotazy přestávají nosit kliky.** Podle SparkToro z 9. 6. 2026 míří do režimu AI jen 0,34 % vyhledávání, ale uvnitř něj končí klikem na web jen zhruba 4,5 % relací proti 24 % v klasickém vyhledávání (iPullRank 2025, přes keypers a MediaGuru 10/2025). Obecná zero-click čísla pro celé vyhledávání rozebírá článek [zero-click a AI](/blog/zero-click-ai/).
+2. **Roste hodnota toho být zdrojem.** Režim AI podle Ahrefs z 15. 12. 2025 cituje v 97 % odpovědí a s Přehledy od AI se citace překrývají jen ze 13,7 % — je to samostatný kanál, ne odvozenina. Návštěvník, který přes AI doporučení přijde, [konvertuje výrazně lépe](/blog/case-study-megadetail-ai-navstevnost/).
+3. **Malý web to má těžší, než se říká.** Na úrovni jedné stránky může konkrétní odpověď porazit obecnější text silnějšího webu — jen 38 % citovaných URL v Přehledech od AI je zároveň v první desítce (Ahrefs, 3/2026). Na úrovni značky je to naopak: podle analýzy 75 000 značek (Ahrefs, 12. 12. 2025) je režim AI ze všech AI platforem nejvíc nakloněný značkám, které lidé už znají. Pro menší weby je vstupní branou spíš ChatGPT.
+4. **E-shopy: produktová data rozhodují.** U nákupních dotazů skládá režim AI srovnání z parametrů, cen a recenzí. Strukturovaná data a [kvalitní produktové stránky](/blog/produktove-stranky-pro-ai/) jsou vstupní podmínka; celý postup pro e-shop vede [série AI SEO pro e-shopy](/serie/ai-seo-pro-eshopy/) a článek o [režimu AI a e-shopech](/blog/ai-mode-a-eshopy/).
 
-## Jak se připravit — pět kroků
+Aby to celé drželo pohromadě, používáme tři pojmy důsledně: **[AI SEO](/slovnik/ai-seo/)** je práce, kterou děláme, **[AI vyhledávání](/slovnik/ai-vyhledavani/)** je místo, kde se to odehrává (režim AI, Přehledy od AI, ChatGPT — ten je v EU od 31. 8. 2026 [oficiálně vyhledávač](/blog/chatgpt-jako-vyhledavac-dsa/)), a **[AI viditelnost](/slovnik/ai-viditelnost/)** je výsledek, který měříme.
 
-Praktický postup je ve struktuře výše (a v HowTo schematu této stránky): pokrýt podotázky, hutná fakta, strukturovaná data, přístupné crawlery, měření. Kompletní metodiku krok za krokem rozepisujeme v [praktickém postupu](/prakticky-postup/) a k AI Mode máme sérii článků — od [srovnání s AI Overviews](/blog/ai-mode-vs-ai-overviews/) přes [praktický návod, jak se v AI Mode zobrazit](/blog/jak-se-zobrazit-v-ai-mode/), až po [limity měření](/blog/mereni-ai-mode-limity/).
+## Jak se připravit: pět kroků pro režim AI
+
+Kroky jsou ve strukturovaných datech této stránky a v přehledu výše: pokrýt podotázky na jedné stránce, pohlídat název webu a titulek kvůli inline odkazům, držet obsah aktuální kvůli karuselům, nechat web dostupný Googlebotu a měřit v Search Console.
+
+**Strukturovaná data sem záměrně nepatří jako páka.** Google v dokumentaci z 10. 7. 2026 uvádí, že pro generativní AI žádné speciální značkování nevyžaduje, Ahrefs v květnu 2026 u citovaných stránek žádný vliv na citace nenaměřil a FAQ rich results Google ukončil 7. 5. 2026. Držte je jako součást běžného SEO, ne jako nástroj na citace — proč, rozebírá [test schema markupu a AI citací](/blog/schema-markup-ai-citace-test/) a článek [AEO a GEO je pořád SEO](/blog/aeo-geo-je-porad-seo/).
+
+Obecný playbook napříč všemi kanály je v [praktickém postupu](/prakticky-postup/). K režimu AI máme sérii článků — od [srovnání s Přehledy od AI](/blog/ai-mode-vs-ai-overviews/) přes [praktický návod, jak se v něm zobrazit](/blog/jak-se-zobrazit-v-ai-mode/), až po [limity měření](/blog/mereni-ai-mode-limity/) a [co AI SEO nezvládne](/blog/co-ai-seo-nezvladne/).
 
 Pokud chcete vědět, jak je na tom váš web s [AI viditelností](/ai-viditelnost/) už dnes, [AI SEO audit](/audit/) ji změří a navrhne priority.
+
+## Odkud čísla a data bereme
+
+Stavová tvrzení na této stránce jsou ověřená k 5. 9. 2026 proti primárním zdrojům:
+
+- [Jak funkce s generativní AI fungují ve Vyhledávání](https://developers.google.com/search/docs/appearance/ai-features) — dokumentace Google Search Central
+- [Průvodce optimalizací pro AI funkce Googlu](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) — dokumentace z 10. 7. 2026, včetně stanoviska ke strukturovaným datům a chunkingu
+- [Nápověda k režimu AI](https://support.google.com/websearch/answer/16011537?hl=cs) — dostupné země, jazyky a ovládání
+- [Nápověda k reportu Přehled výkonu v generativní AI](https://support.google.com/webmasters/answer/16984139) — rozsah reportu a celosvětové zpřístupnění 31. 8. 2026
+- [Oznámení o rozšíření režimu AI](https://blog.google/products-and-platforms/products/search/ai-mode-expands-languages-locations/) — Google, 7. 10. 2025, čeština a 200+ zemí
+
+Hledanost pochází z Marketing Mineru (běh 5. 9. 2026, jazyk cs), výkonnostní čísla našich stránek ze Search Console za období 7. 6. až 5. 9. 2026. Studie třetích stran jsou u každého tvrzení jmenované s datem.

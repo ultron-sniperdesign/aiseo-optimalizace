@@ -39,6 +39,29 @@ function rehypeTaskListA11y() {
  * i do detekce interních odkazů v rehypeExternalLinks níže. Žádná jiná doména
  * se v configu natvrdo nevyskytuje.
  */
+/**
+ * Rehype plugin: markdownové tabulky obalí do `div.table-wrap` s vlastním
+ * horizontálním scrollem. Bez toho se široká tabulka na mobilu ořízne —
+ * `.article__prose table` má `width: 100%` + `overflow: hidden`, takže
+ * sloupce za okrajem nebyly dostupné vůbec (ověřeno 2026-09-05 na /ai-mode/,
+ * tabulka 525 px v kontejneru 335 px). Wrapper je fokusovatelný (tabindex=0),
+ * aby scroll šel i z klávesnice (landmark roli nedáváme — bez názvu je to a11y nález).
+ */
+function rehypeScrollableTables() {
+  return (/** @type {any} */ tree) => {
+    visit(tree, "element", (/** @type {any} */ node, /** @type {any} */ index, /** @type {any} */ parent) => {
+      if (node.tagName !== "table" || !parent || index === null || index === undefined) return;
+      if (parent.type === "element" && parent.properties?.className?.includes?.("table-wrap")) return;
+      parent.children[index] = {
+        type: "element",
+        tagName: "div",
+        properties: { className: ["table-wrap"], tabIndex: 0 },
+        children: [node],
+      };
+    });
+  };
+}
+
 const SITE = "https://aiseo-optimalizace.cz";
 const SITE_HOST = new URL(SITE).host;
 
@@ -83,6 +106,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [
       rehypeTaskListA11y,
+      rehypeScrollableTables,
       /**
        * Wikipedizace: první výskyt slovníkového pojmu v MDX obsahu se
        * automaticky prolinkuje na /slovnik/<id>/ (jen neskloňované

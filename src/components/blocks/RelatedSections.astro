@@ -24,7 +24,7 @@ interface Props {
 const { currentAbbr } = Astro.props;
 
 // Display badge aktuální sekce (CZ = abbr; EN přepíše AIO → "AI SEO"). Vloží se do titulku.
-const currentBadge = ui.sectionBadge[currentAbbr] ?? currentAbbr;
+const currentBadge = ui.sectionBadgeInstrumental[currentAbbr] ?? ui.sectionBadge[currentAbbr] ?? currentAbbr;
 const relatedTitleHtml = ui.relatedTitleHtml.replace("{abbr}", currentBadge);
 
 type ColorTriple = { d: string; tint: string };

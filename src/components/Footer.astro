@@ -1,7 +1,25 @@
 ---
+import { getCollection } from "astro:content";
 import { nav, footer } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 const year = new Date().getFullYear();
+
+/**
+ * Datum v patičce se dopočítává z obsahu, ne z napevno zapsaného řetězce.
+ * Bereme nejnovější `updated` (fallback `published`) napříč články, sekcemi
+ * a pilířem — patička tak nikdy neuvádí starší měsíc, než kdy web reálně žil.
+ */
+const dated = [
+  ...(await getCollection("articles")),
+  ...(await getCollection("sections")),
+  ...(await getCollection("pillar")),
+].map((e) => (e.data as { updated?: string; published?: string }).updated
+  ?? (e.data as { published?: string }).published);
+const newest = dated.filter(Boolean).sort().at(-1);
+const parsed = newest ? new Date(`${newest}T00:00:00Z`) : new Date();
+// Pojistka proti rozbitému datu ve frontmatteru: raději dnešek než „undefined NaN".
+const stamp = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+const updatedLabel = `${footer.updatedPrefix} ${footer.footerMonths[stamp.getUTCMonth()]} ${stamp.getUTCFullYear()}`;
 ---
 
 <footer class="site-footer">
@@ -35,7 +53,7 @@ const year = new Date().getFullYear();
       <span aria-hidden="true">·</span>
       <a href="/rss.xml" class="ftr-bottom__sitemap">{footer.rssLabel}</a>
       <span aria-hidden="true">·</span>
-      {footer.updatedLabel}
+      {updatedLabel}
     </span>
   </div>
 </footer>

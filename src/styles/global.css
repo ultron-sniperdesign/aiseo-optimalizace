@@ -367,3 +367,31 @@ pre.astro-code .line span[style*="color:#22863a"] {
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Široké tabulky — horizontální scroll místo ořezu.
+   `div.table-wrap` kolem každé markdownové tabulky doplňuje rehype plugin
+   `rehypeScrollableTables` v astro.config.mjs. Bez wrapperu se tabulka širší
+   než sloupec textu na mobilu ořízla (table má width:100% + overflow:hidden)
+   a sloupce za okrajem nešly zobrazit vůbec.
+   --------------------------------------------------------------------------- */
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.table-wrap:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Na úzkých displejích dostane tabulka minimum, pod které ji nemá smysl mačkat,
+   a přeteče do scrollu wrapperu. Desktop zůstává beze změny (width: 100%). */
+@media (max-width: 720px) {
+  .table-wrap > table {
+    min-width: 34rem;
+  }
+}
