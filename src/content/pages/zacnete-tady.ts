@@ -16,7 +16,7 @@ export const meta = {
 export const hero = {
   eyebrow: "Začněte tady",
   title: "Jak na AI SEO — cesta pro ty, kdo začínají",
-  lead: "Na webu máme přes 60 článků, 7 sekcí a slovník. Tahle stránka vám řekne, co číst v jakém pořadí — podle toho, kde právě jste. Za tři fáze projdete od „co to vůbec je“ k měřitelným výsledkům.",
+  lead: "Na webu máme přes 160 článků, 8 sekcí a slovník. Tahle stránka vám řekne, co číst v jakém pořadí — podle toho, kde právě jste. Za tři fáze projdete od „co to vůbec je“ k měřitelným výsledkům.",
   /** Krátká odpověď 40–60 slov — citovatelný blok pro AI. */
   answer:
     "AI SEO je optimalizace webu pro AI éru vyhledávání: klasické SEO základy doplněné o citovatelnost v ChatGPT, Perplexity, Gemini a ve funkcích Googlu s generativní AI. Začíná se pochopením disciplín (SEO, GEO, AEO, AIO), pokračuje úpravami obsahu a technického stavu webu a končí měřením v Search Console a GA4.",

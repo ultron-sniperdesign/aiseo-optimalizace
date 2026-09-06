@@ -381,7 +381,7 @@ export const pillarPromo = {
 export const contentNavHead: SectionHead = {
   eyebrowNum: "05",
   eyebrow: "Kudy do obsahu",
-  title: "Přes 60 článků. <strong>Tady jsou čtyři vstupy</strong>, ať se neztratíte",
+  title: "Přes 160 článků. <strong>Tady jsou čtyři vstupy</strong>, ať se neztratíte",
 };
 
 export const contentNav = [
@@ -394,8 +394,8 @@ export const contentNav = [
   {
     href: "/serie/ai-seo-pro-eshopy/",
     title: "Série pro e-shopy",
-    desc: "Osm dílů v pořadí jako kurz: od produktových stránek po AI nákupní agenty.",
-    label: "8 dílů",
+    desc: "Deset dílů v pořadí jako kurz: od produktových stránek po AI nákupní agenty.",
+    label: "10 dílů",
   },
   {
     href: "/blog/tema/strategie/",
@@ -407,7 +407,7 @@ export const contentNav = [
     href: "/slovnik/",
     title: "Slovník pojmů",
     desc: "AI Mode, GEO, query fan-out, zero-click — krátké definice s kotvami k citování.",
-    label: "46+ pojmů",
+    label: "50+ pojmů",
   },
 ];
 

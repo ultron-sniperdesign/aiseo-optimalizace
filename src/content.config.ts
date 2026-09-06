@@ -125,7 +125,7 @@ const pillar = defineCollection({
 
 /**
  * Articles — samostatné dlouhé články (defenzivní/tutoriálové, case studies, blog).
- * Nepatří do hub-and-spoke struktury 6 sekcí; mají vlastní slug pod root URL.
+ * Nepatří do hub-and-spoke struktury 8 sekcí; mají vlastní slug pod root URL.
  */
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),

@@ -325,7 +325,7 @@ export const ui = {
     MATICE: "Rozhodování · Kdy co použít",
   } as Record<string, string>,
 
-  // RelatedSections blok (konec všech 6 sekcí): eyebrow / titulek / CTA.
+  // RelatedSections blok (konec všech 8 sekcí): eyebrow / titulek / CTA.
   // `{abbr}` v titulku nahradí šablona (= display badge aktuální sekce).
   relatedEyebrow: "Související",
   relatedTitleHtml: 'Tři sekce, které <strong>jdou dohromady {abbr}</strong>',
