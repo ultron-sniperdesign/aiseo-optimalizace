@@ -88,6 +88,18 @@ export default defineConfig({
     "/sluzby/geo-obsah-eshopy": "/sluzby",
     "/sluzby/off-page-pro-ai": "/sluzby",
     "/sluzby/technicka-uprava": "/sluzby",
+    // 2026-09-06: rozcestníkový článek o režimu AI vznikl dřív než sekce /ai-mode/
+    // a jeho kapitoly dnes pokrývají čtyři jiné články + sekce. Za 90 dní nesebral
+    // ani jednu impresi, přestože jeho cílový dotaz „google ai mode" má 520 hledání
+    // měsíčně (+913 % meziročně) — klasický nejslabší duplikát v klastru.
+    // Přesměrování na sekci, která ten dotaz vlastní už titulkem.
+    // POZOR: Astro ve statickém buildu negeneruje HTTP 301, ale stránku
+    // s `<meta http-equiv="refresh">` a stavem 200 (ověřeno 6. 9. 2026 na
+    // živých /seo-a-geo/ i /sluzby/freshness-program/). Google to jako
+    // přesměrování bere, ale je to slabší a pomalejší signál než 301.
+    // Skutečné 301 by musela dělat Caddy — sdílený soubor, jde přes
+    // sd-server-admin. Platí pro všech pět přesměrování v tomhle bloku.
+    "/blog/google-ai-mode": "/ai-mode",
     "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat",
     "/seo-nastroje-2026": "/blog/seo-nastroje-2026",
     "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview",

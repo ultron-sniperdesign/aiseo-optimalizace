@@ -50,7 +50,7 @@ import DoDont from "~/components/blocks/DoDont.astro";
 import Do from "~/components/blocks/Do.astro";
 import Dont from "~/components/blocks/Dont.astro";
 
-**RAG neboli generování rozšířené o vyhledávání (anglicky retrieval-augmented generation) je způsob, jak AI vyhledávání odpovídá: místo aby model čerpal jen z tréninku, nejdřív si k dotazu dohledá relevantní úseky obsahu z indexu a z nich složí odpověď s odkazy.** Podle veřejných popisů na tomto principu fungují i [Google AI Overviews a AI Mode](/blog/google-ai-mode/) nad indexem Vyhledávání — takže klasické SEO a indexovatelnost dál hrají velkou roli. Tento článek vysvětluje, jak RAG funguje a co z toho plyne pro obsah, který chce být v AI vidět.
+**RAG neboli generování rozšířené o vyhledávání (anglicky retrieval-augmented generation) je způsob, jak AI vyhledávání odpovídá: místo aby model čerpal jen z tréninku, nejdřív si k dotazu dohledá relevantní úseky obsahu z indexu a z nich složí odpověď s odkazy.** Podle veřejných popisů na tomto principu fungují i [Google AI Overviews a AI Mode](/blog/ai-mode-vs-ai-overviews/) nad indexem Vyhledávání — takže klasické SEO a indexovatelnost dál hrají velkou roli. Tento článek vysvětluje, jak RAG funguje a co z toho plyne pro obsah, který chce být v AI vidět.
 
 ## Co je RAG
 
@@ -91,7 +91,7 @@ Klíčový posun: model neodpovídá zpaměti, ale z toho, co si právě dohleda
 
 ## Jak to používá Google
 
-Podle veřejných popisů stojí [Google AI Overviews i AI Mode](/blog/google-ai-mode/) na principu podobném RAG nad **standardním indexem Vyhledávání Google**. Dohledávají tedy podklady z živého indexu, ne jen z toho, co se model naučil při tréninku — proto mohou být odpovědi aktuálnější a mohou se do nich dostat i čerstvé stránky.
+Podle veřejných popisů stojí [Google AI Overviews i AI Mode](/blog/ai-mode-vs-ai-overviews/) na principu podobném RAG nad **standardním indexem Vyhledávání Google**. Dohledávají tedy podklady z živého indexu, ne jen z toho, co se model naučil při tréninku — proto mohou být odpovědi aktuálnější a mohou se do nich dostat i čerstvé stránky.
 
 RAG také souvisí s tím, jak AI Mode rozkládá dotaz. Systém dotaz rozdělí na víc podotázek a pro každou dělá vlastní dohledání — mechaniku rozebíráme v článku o [query fan-out](/blog/query-fan-out-ai-mode/). To, jak se z dohledaných úseků nakonec vybere citace, pak popisujeme v článku o tom, [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/).
 
