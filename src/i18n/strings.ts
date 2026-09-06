@@ -93,8 +93,19 @@ export const nav = {
         desc: "Také konkrétní funkce Google AI Overviews. Dvojí význam, který se v praxi často plete.",
       },
       {
+        d: "aiprehled",
+        label: "Přehled od AI",
+        href: "/prehled-od-ai/",
+        badge: "PŘEHLED OD AI",
+        fullName: "Přehled od AI — Google AI Overviews",
+        lead: "Souhrn nad výsledky, který bere kliknutí.",
+        desc: "V Česku od 20. 5. 2025 zhruba u pětiny dotazů. Buď vás cituje, nebo odpoví za vás — a obojí se dá ovlivnit.",
+        /** Předěl: odsud níž nejde o disciplíny, ale o konkrétní funkce Googlu. */
+        groupStart: "Funkce Googlu",
+      },
+      {
         d: "aimode",
-        label: "Režim AI (AI Mode)",
+        label: "Režim AI",
         href: "/ai-mode/",
         badge: "REŽIM AI",
         fullName: "Režim AI — Google AI Mode",
@@ -108,7 +119,6 @@ export const nav = {
     addons: [
       { href: "/blog/", label: "Blog" },
       { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce" },
-      { href: "/slovnik/", label: "Slovník" },
     ],
     /** Akviziční blok (řádek 1 vpravo). Variant řídí barvu tlačítka. */
     acquisitions: [
@@ -130,7 +140,8 @@ export const nav = {
     { href: "/geo/", label: "GEO", d: "geo" },
     { href: "/aeo/", label: "AEO", d: "aeo" },
     { href: "/aio/", label: "AIO", d: "aio" },
-    { href: "/ai-mode/", label: "Režim AI (AI Mode)", d: "aimode" },
+    { href: "/prehled-od-ai/", label: "Přehled od AI", d: "aiprehled" },
+    { href: "/ai-mode/", label: "Režim AI", d: "aimode" },
     { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
     { href: "/blog/", label: "Blog" },
   ] as NavLink[],
@@ -153,6 +164,7 @@ export const nav = {
         { href: "/geo/", label: "GEO", d: "geo" },
         { href: "/aeo/", label: "AEO", d: "aeo" },
         { href: "/aio/", label: "AIO", d: "aio" },
+        { href: "/prehled-od-ai/", label: "Přehled od AI (AI Overviews)", d: "aiprehled" },
         { href: "/ai-mode/", label: "Režim AI (Google AI Mode)", d: "aimode" },
       ],
     },
@@ -303,7 +315,8 @@ export const ui = {
     GEO: "Druhá disciplína · GEO",
     AEO: "Třetí disciplína · AEO",
     AIO: "Čtvrtá disciplína · AIO",
-    AIMODE: "Nová vrstva Googlu · Režim AI",
+    AIMODE: "Funkce Googlu · Režim AI",
+    AIPREHLED: "Funkce Googlu · Přehled od AI",
     PRAXE: "Návod · Praktický postup",
     MATICE: "Rozhodování · Kdy co použít",
   } as Record<string, string>,
@@ -321,6 +334,7 @@ export const ui = {
     AEO: "AEO",
     AIO: "AIO",
     AIMODE: "REŽIM AI",
+    AIPREHLED: "PŘEHLED OD AI",
     PRAXE: "PRAXE",
     MATICE: "MATICE",
   } as Record<string, string>,
@@ -335,6 +349,7 @@ export const ui = {
    */
   sectionHeroBadge: {
     AIMODE: "GOOGLE REŽIM AI",
+    AIPREHLED: "PŘEHLED OD AI",
   } as Record<string, string>,
 
   sectionBadgeDative: {
@@ -343,6 +358,7 @@ export const ui = {
     AEO: "AEO",
     AIO: "AIO",
     AIMODE: "režimu AI",
+    AIPREHLED: "Přehledu od AI",
     PRAXE: "praxi",
     MATICE: "matici",
   } as Record<string, string>,
@@ -354,6 +370,7 @@ export const ui = {
     AEO: "s AEO",
     AIO: "s AIO",
     AIMODE: "s režimem AI",
+    AIPREHLED: "s Přehledem od AI",
     PRAXE: "s praxí",
     MATICE: "s maticí",
   } as Record<string, string>,

@@ -26,7 +26,11 @@ const DISC = {
   geo: { color: "#12854a", bg: "#edf8f1", border: "#bfe6cd" },
   aeo: { color: "#a06514", bg: "#fdf5e6", border: "#f0dcb4" },
   aio: { color: "#7a34c9", bg: "#f6eefc", border: "#ddc7f5" },
-  aimode: { color: "#1466ff", bg: "#eef3fd", border: "#bcd0f7" },
+  /* Funkce Googlu — sdílená rodina, ať je v liště poznat, že patří k sobě.
+     Režim AI měl dřív #1466ff, tedy skoro totéž co SEO (#2b4fd8) — a navíc
+     se to bilo s jeho vlastním tokenem v global.css, který je teal už dávno. */
+  aimode: { color: "#007a97", bg: "#eafafe", border: "#b0e3f0" },
+  aiprehled: { color: "#007d7e", bg: "#eafbfa", border: "#afe5e4" },
 } as Record<string, { color: string; bg: string; border: string }>;
 ---
 
@@ -89,6 +93,13 @@ const DISC = {
           const t = DISC[item.d];
           const active = isActive(item.href);
           return (
+            <>
+            {item.groupStart && (
+              <span class="dnav__group" aria-hidden="true">
+                <span class="dnav__group-rule"></span>
+                <span class="dnav__group-label">{item.groupStart}</span>
+              </span>
+            )}
             <a
               href={item.href}
               class:list={["dnav__link", { "dnav__link--active": active }]}
@@ -99,6 +110,7 @@ const DISC = {
               <span class="dnav__dot" aria-hidden="true"></span>
               {item.label}
             </a>
+            </>
           );
         })}
       </nav>
@@ -422,6 +434,36 @@ const DISC = {
   .dnav__link--active {
     background: var(--h-field);
     color: var(--dc);
+  }
+
+  /* Předěl mezi disciplínami a funkcemi Googlu. Popisek je dekorace nad
+     odkazy, které mluví samy za sebe — proto aria-hidden a ne <h*>. */
+  .dnav__group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0.35rem 0 0.6rem;
+    flex: none;
+  }
+
+  .dnav__group-rule {
+    width: 1px;
+    height: 18px;
+    background: var(--h-line);
+  }
+
+  .dnav__group-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    white-space: nowrap;
+  }
+
+  /* Pod 1100 px se popisek schová, čára zůstane — pořád odděluje. */
+  @media (max-width: 1100px) {
+    .dnav__group-label { display: none; }
   }
 
   .hdr__sep {

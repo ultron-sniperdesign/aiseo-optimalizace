@@ -1,0 +1,210 @@
+---
+title: "Přehled od AI — souhrn Googlu nad výsledky a jak se do něj dostat"
+seoTitle: "Přehled od AI (AI Overviews): jak funguje a jak být vidět"
+description: "Přehled od AI (Google AI Overviews) běží v Česku od 20. 5. 2025 zhruba u pětiny dotazů. Jak vybírá zdroje, jak se do něj dostat, jak měřit a jak ho omezit."
+answer: "Přehled od AI (anglicky AI Overviews) je generovaný souhrn, který Google zobrazí nad organickými výsledky a doplní odkazy na zdroje. V Česku běží od 20. 5. 2025 a objevuje se zhruba u pětiny dotazů. Skládá ho model Gemini ze stránek, které má v indexu — dostat se do něj je práce SEO."
+slug: "prehled-od-ai"
+order: 8
+abbr: "AIPREHLED"
+published: "2026-09-06"
+updated: "2026-09-06"
+inlineRelated: true
+inlineSmallContact: true
+faq:
+  - q: "Co je Přehled od AI?"
+    a: "Přehled od AI (anglicky AI Overviews) je generovaný souhrn nad organickými výsledky Googlu. Model Gemini poskládá odpověď z několika stránek, které má Google v indexu, a doplní odkazy na zdroje. Není to samostatný vyhledávač ani zvláštní index — čerpá ze stejného indexu jako klasické výsledky, takže se do něj dostanete prací na běžném [SEO](/seo/)."
+  - q: "Jak se Přehled od AI liší od režimu AI?"
+    a: "Přehled od AI je souhrn nad výsledky, který se objeví sám. [Režim AI](/ai-mode/) je samostatná záložka, kterou si uživatel musí zapnout, a odpovídá konverzačně — na odpověď se dá navázat další otázkou. Od Google I/O 19. 5. 2026 jsou propojené: navazující otázka z přehledu pokračuje přímo v režimu AI. Oba přitom rozkládají dotaz na podotázky ([query fan-out](/slovnik/query-fan-out/)). Podrobné srovnání má [Režim AI vs. Přehledy od AI](/blog/ai-mode-vs-ai-overviews/)."
+  - q: "Jak často se Přehled od AI v Česku zobrazuje?"
+    a: "Marketing Miner naměřil v září 2025 Přehled od AI u **19,6 % českých dotazů**, mezinárodně Conductor uvádí 25,1 % (7/2026). Výrazně se to liší podle záměru: podle Seer Interactive (4/2026) u 36 % informačních dotazů, ale jen u 8 % komerčních a 5 % transakčních. **Aktuální český podíl k 9/2026 zveřejněný není** ⚠️. Čísla rozebírá [jak často se zobrazuje AI přehled](/blog/jak-casto-se-zobrazuje-ai-prehled/)."
+  - q: "Proč se mi Přehled od AI nezobrazuje?"
+    a: "Nejčastěji proto, že dotaz na něj není. U navigačních a čistě nákupních dotazů se objevuje zřídka, u citlivých témat (zdraví, peníze, právo) je Google opatrnější. Roli hraje i to, jestli jste přihlášení a na jakém zařízení — testovací funkce se nasazují postupně. Kdy přehled nečekat, rozebírá [tenhle přehled](/blog/kdy-ai-prehled-necekat/) a vliv přihlášení [tady](/blog/ai-prehled-prihlaseni-zarizeni/)."
+  - q: "Jak se do Přehledu od AI dostat?"
+    a: "Neexistuje na to přepínač — je to práce na obsahu. Stránka musí být v indexu a způsobilá pro snippet, hned pod nadpisem má mít krátkou samonosnou odpověď a pokrývat i podotázky, na které se dotaz rozpadá. Pomáhá aktuálnost a jasný titulek s názvem webu, protože se zobrazují v náhledu odkazu. Řemeslo rozebírá sekce [AEO](/aeo/) a [AEO optimalizace v praxi](/blog/aeo-optimalizace-v-praxi/)."
+  - q: "Jak zjistím, kolik zobrazení mám z Přehledu od AI?"
+    a: "Od **31. 8. 2026** má každý web v Search Console report „Přehled výkonu v generativní AI“. Ukazuje **jen zobrazení** — bez kliků, dotazů a pozic — a slučuje Přehled od AI s režimem AI. V GA4 se návštěvy z obojího slévají do `google / organic` a oddělit se nedají. Postup má [měření v Search Console](/blog/gsc-ai-segmenty-mereni/) a limity [tenhle článek](/blog/mereni-ai-mode-limity/)."
+  - q: "Jsou v Přehledech od AI v Česku reklamy?"
+    a: "Uvnitř přehledu zatím ne. Reklamy přímo v panelu Google spustil jen ve dvanácti anglicky mluvících zemích a Česko mezi nimi není. Nad přehledem a pod ním se ale běžné reklamy ve vyhledávání zobrazují i u nás — z pohledu uživatele to splývá, z pohledu inzerenta jde o klasickou kampaň ve vyhledávání."
+  - q: "Dá se Přehled od AI vypnout?"
+    a: "Jako uživatel ne — jde ho jen obejít filtrem „Web“ ve výsledcích. Jako vlastník webu ano: od 31. 8. 2026 je v Search Console přepínač pro funkce generativní AI a **není to signál pro hodnocení**, pozice se tím nemění. Selektivně jde použít `data-nosnippet`. Pozor, plošné `nosnippet` vás připraví i o featured snippety a obsah zmizí i ze Seznam Asistenta — rozpad má [co vypne který opt-out](/blog/co-vypne-ktery-opt-out/)."
+howto:
+  name: "Jak zvýšit šanci, že vás Přehled od AI odcituje"
+  steps:
+    - name: "Ověřte, že je stránka v indexu a smí do snippetu"
+      text: "Přehled od AI nepotřebuje zvláštního robota — stačí Googlebot a stránka v indexu. Zkontrolujte, že ji neblokuje `robots.txt` a že na ní není `nosnippet` ani `max-snippet:0`. Bez toho nemá Google z čeho citovat."
+    - name: "Dejte odpověď na začátek"
+      text: "Krátká samonosná odpověď 40 až 60 slov hned pod nadpisem. Musí dávat smysl vytržená z kontextu, protože přesně tak s ní model pracuje. Strukturovaná data přidejte pro strojovou srozumitelnost, ne jako páku — Google pro funkce AI žádná nevyžaduje."
+    - name: "Pokryjte podotázky na jedné stránce"
+      text: "Dotaz se rozkládá na podotázky a odpověď se skládá z několika zdrojů. Vyplatí se tedy téma pokrýt do šířky na jedné stránce, ne krájet na mikročlánky — hromadnou výrobu krátkých stránek Google navíc řadí pod scaled content abuse."
+    - name: "Pohlídejte titulek a název webu"
+      text: "Od 6. 5. 2026 jsou odkazy vloženy přímo do textu odpovědi a po najetí ukážou náhled s názvem webu a titulkem. To jsou jediné dvě věci, které čtenář o vašem webu uvidí, než klikne."
+    - name: "Držte obsah aktuální"
+      text: "U témat, která se vyvíjejí, hraje roli čerstvost. Podle Seer Interactive (24. 7. 2026) bylo 75 % stránek citovaných v odpovědích AI aktualizováno během posledního roku."
+    - name: "Přihlaste web do preferovaných zdrojů"
+      text: "Od 27. 5. 2026 si čtenář může označit weby, které chce v přehledech vidět přednostně; od 20. 8. 2026 k tomu Google nabízí i tlačítko, které jde umístit na vlastní web. Funguje to na úrovni domény, ne jednotlivých stránek."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Figure from "~/components/blocks/Figure.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import ArticleCard from "~/components/blocks/ArticleCard.astro";
+import ArticleGrid from "~/components/blocks/ArticleGrid.astro";
+import RelatedSections from "~/components/blocks/RelatedSections.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+
+## Jak <span class="hl">Přehled od AI</span> vypadá a <strong>kdy se objeví</strong>
+
+Přehled od AI je panel nad organickými výsledky. Google do něj vloží generovanou odpověď a odkazy na stránky, ze kterých ji poskládal. V Česku běží **oficiálně od 20. 5. 2025** (u části uživatelů se testoval od poloviny května 2025) a skládá ho model Gemini.
+
+<Figure
+  src="/screenshots/prehled-od-ai/panel.webp"
+  alt="Schéma Přehledu od AI ve výsledcích vyhledávání: panel s generovanou odpovědí nad organickými odkazy, uvnitř odpovědi vložené odkazy na zdroje"
+  caption="Přehled od AI sedí nad organickými výsledky. Odkazy na zdroje jsou od 6. 5. 2026 vložené přímo do textu odpovědi, ne až pod ním."
+  credit="Schéma Sniper Design podle rozhraní Googlu, stav 9/2026. Není to snímek obrazovky."
+  width={1309}
+  height={917}
+/>
+
+Neobjevuje se všude. Rozhoduje **záměr dotazu** — čím víc jde o vysvětlení a čím víc má Google důvěryhodných zdrojů, tím spíš panel naskočí:
+
+| Typ dotazu | Jak často má přehled | Příklad |
+|---|---|---|
+| Informační („co je“, „jak funguje“) | **36 %** | „co je query fan-out“ |
+| Komerční s porovnáváním | **8 %** | „nejlepší CRM pro malou firmu“ |
+| Transakční, nákupní | **5 %** | „koupit hyundai i30 praha“ |
+| Navigační (hledám konkrétní web) | zřídka | „aiseo optimalizace přihlášení“ |
+
+*Zdroj: Seer Interactive, 4/2026 (mezinárodní vzorek).*
+
+## Jak často se zobrazuje <span class="hl">v Česku</span> — <strong>a co to udělalo s návštěvností</strong>
+
+Pro český trh je nejlepší dostupné číslo z **Marketing Mineru (9/2025): Přehled od AI u 19,6 % českých dotazů**, zhruba polovina citovaných zdrojů přitom pochází z první desítky výsledků. Mezinárodně uvádí Conductor 25,1 % (7/2026).
+
+**Aktuální český podíl k září 2026 zveřejněný není** ⚠️ — kdo tvrdí konkrétní číslo pro letošek, odhaduje.
+
+Co je ale doložené, je dopad na kliknutí:
+
+- **68 % vyhledávání na Googlu končí bez kliknutí** (SparkToro, 6/2026) — souvislost s panelem je zřejmá, ale zero-click existoval i před ním
+- Pew Research (7/2025) naměřil u stránek s přehledem **8 % prokliků oproti 15 %** bez něj
+- Čeští vydavatelé hlásili v květnu 2026 propady zobrazení stránek v řádu desítek procent (MediaGuru)
+- Zároveň platí, že **jen 38 % citací v přehledu pochází z první desítky** (Ahrefs, 3/2026) — panel není odměna za pozici, je to samostatná loterie
+
+Čísla i metodiku rozebírá [vyhledávání bez kliknutí](/blog/zero-click-ai/) a [propady návštěvnosti vydavatelů](/blog/propady-navstevnosti-vydavatelu/).
+
+<Insight tone="aio" icon="!" label="Co si z toho odnést">
+  **Přehled od AI není důvod přestat dělat SEO — je důvod dělat ho jinak.** Do panelu se dostanete stejnou cestou jako do výsledků: indexem. Mění se ale to, co za tu viditelnost dostanete. U informačních témat počítejte s méně kliky při stejných pozicích, u nákupních dotazů se skoro nic nemění.
+</Insight>
+
+## <span class="hl">Přehled od AI</span> a režim AI — <strong>dva vstupy do jednoho vyhledávání</strong>
+
+Pletou se, protože obojí dělá Google a obojí generuje odpověď. Rozdíl je v tom, kdo je spustí:
+
+| | Přehled od AI | [Režim AI](/ai-mode/) |
+|---|---|---|
+| **Kde se objeví** | sám nad organickými výsledky | ve vlastní záložce, kterou uživatel zapne |
+| **Kdo ho vyvolá** | Google podle záměru dotazu | uživatel vědomě |
+| **Jak odpovídá** | jeden souhrn | konverzačně, dá se navázat další otázkou |
+| **Jak vybírá zdroje** | rozpad dotazu na podotázky | totéž, jen do větší hloubky |
+
+Od **Google I/O 19. 5. 2026** jsou propojené: navazující otázka z přehledu pokračuje rovnou v režimu AI. Není to sloučení do jedné funkce, je to průchod z jedné do druhé.
+
+V praxi jsou to zatím nesouměřitelné veličiny — do režimu AI podle SparkToro (6/2026) zamíří jen **0,34 % vyhledávání**, zatímco přehled vidí pětina dotazů. Překryv citací mezi nimi měřil Ahrefs na 13,7 % (12/2025), Wellows později na 24,5 % (7/2026): **stejná práce vám pomůže v obou, ale nezaručí obojí.**
+
+## Jak se do <span class="hl">Přehledu od AI</span> <strong>dostat</strong>
+
+Přepínač na to není. Je to šest kroků, které z velké části děláte i pro klasické SEO:
+
+<Stepper tone="aio" steps={[
+  { title: "Být v indexu a smět do snippetu", desc: "Stačí Googlebot — Přehled od AI nemá vlastního robota. Zkontrolujte, že stránku neblokuje robots.txt a že na ní není nosnippet ani max-snippet:0." },
+  { title: "Odpověď na začátek", desc: "Krátká samonosná odpověď 40 až 60 slov hned pod nadpisem. Musí dávat smysl i vytržená z kontextu — přesně tak s ní model pracuje." },
+  { title: "Pokrýt podotázky na jedné stránce", desc: "Dotaz se rozkládá na podotázky. Pokryjte téma do šířky na jedné stránce místo krájení na mikročlánky; hromadnou výrobu krátkých stránek Google navíc řadí pod zásadu proti scaled content abuse." },
+  { title: "Titulek a název webu", desc: "Od 6. 5. 2026 jsou odkazy vložené přímo do textu odpovědi a po najetí ukážou náhled s názvem webu a titulkem. Jediné dvě věci, které o vás čtenář uvidí, než klikne." },
+  { title: "Držet obsah aktuální", desc: "U vyvíjejících se témat rozhoduje čerstvost — 75 % stránek citovaných v odpovědích AI bylo aktualizováno během posledního roku (Seer, 24. 7. 2026)." },
+  { title: "Preferované zdroje", desc: "Od 27. 5. 2026 si čtenář může označit weby, které chce vidět přednostně; od 20. 8. 2026 k tomu Google nabízí tlačítko pro vlastní web. Funguje na úrovni domény." },
+]} />
+
+Řemeslo krátkých odpovědí a otázkových sekcí rozebírá do hloubky sekce [AEO](/aeo/) a článek [AEO optimalizace v praxi](/blog/aeo-optimalizace-v-praxi/). Co naopak **nepomůže**: `llms.txt`, krájení obsahu na kousky ani zvláštní strukturovaná data — Google nic z toho pro funkce AI nevyžaduje a [měřený vliv schématu na citace se nepotvrdil](/blog/schema-markup-ai-citace-test/).
+
+## Co se v <span class="hl">Přehledu od AI</span> změnilo <strong>za rok 2026</strong>
+
+| Kdy | Co | Co to znamená pro web |
+|---|---|---|
+| 6. 5. 2026 | odkazy vložené přímo do textu odpovědi, s náhledem po najetí | v náhledu se ukáže **název webu a titulek** — obojí si pohlídejte |
+| 27. 5. 2026 | preferované zdroje (changelog Search Central; blog Googlu 3. 6.) | čtenář si vás může přednastavit jako oblíbený zdroj |
+| 20. 8. 2026 | oficiální tlačítko preferovaných zdrojů pro vlastní web | dá se umístit na web, funguje na úrovni domény |
+| 25. 8. 2026 | karusely u témat, která se vyvíjejí | u aktuálních témat se vyplatí čerstvost |
+| 28. 8. 2026 ⚠️ | dynamicky rozbalované přehledy | dle sekundárních zdrojů |
+| 31. 8. 2026 | report generativní AI v Search Console pro všechny weby | poprvé vidíte zobrazení z přehledů — jen zobrazení |
+| 8/2026 | generování obrázků v přehledu | test Google pozastavil |
+| 7. 5. 2026 | konec rozšířených výsledků pro otázky a odpovědi | `FAQPage` má dál smysl pro stroje, ne pro vzhled ve výsledcích |
+
+## Jak zjistit, jestli vás <span class="hl">přehled cituje</span> — <strong>a co ta čísla neřeknou</strong>
+
+Měření je tady slabší, než by člověk čekal. Poskládá se ze čtyř zdrojů a ani jeden nedá úplný obrázek:
+
+- **Search Console → Přehled výkonu v generativní AI** (od 31. 8. 2026 pro všechny weby). Ukazuje **jen zobrazení** — bez kliků, dotazů a pozic — a slučuje Přehled od AI s režimem AI dohromady.
+- **Klasický report výkonu.** Varovný signál je kombinace **rostoucích zobrazení a klesající míry prokliku** na stránkách, které drží pozice.
+- **GA4.** Návštěvy z přehledu i z režimu AI se slévají do `google / organic` a **oddělit se nedají**. Návštěvy z ChatGPT poznáte podle `utm_source=chatgpt.com`.
+- **Nástroje na sledování citací** — Marketing Miner (měření AI viditelnosti), Ahrefs Brand Radar, Otterly. Dávají smysl až s desítkami stránek v horních pozicích.
+
+Featured snippety Search Console samostatně nefiltruje, na ty jsou potřeba externí nástroje. Postup krok za krokem má [měření v Search Console](/blog/gsc-ai-segmenty-mereni/), limity rozebírá [co se z reportu nedozvíte](/blog/mereni-ai-mode-limity/).
+
+## Když ho <span class="hl">nechcete</span> — <strong>co jde vypnout a co ne</strong>
+
+Jako uživatel Přehled od AI vypnout nejde; jde ho jen obejít filtrem „Web“. To se v datech pozná: dotaz „jak vypnout ai v google“ hledá podle Marketing Mineru (5. 9. 2026) sto lidí měsíčně a **meziročně vyrostl o 456 %**.
+
+Jako vlastník webu máte tři možnosti, každou s jinou cenou:
+
+| Nástroj | Co udělá | Cena |
+|---|---|---|
+| Přepínač v Search Console (od 31. 8. 2026) | vyřadí celý web z funkcí generativní AI | **není signál pro hodnocení** — pozice zůstávají |
+| `data-nosnippet` na blocích | vyřadí jen označené pasáže | zbytek stránky zůstává citovatelný |
+| `nosnippet` nebo `max-snippet:0` plošně | vyřadí celou stránku | přijdete i o featured snippety a o Seznam Asistenta |
+
+Celý postup má [návod, jak omezit Přehled od AI](/blog/jak-vypnout-ai-overview/), rozdíly mezi přepínači [co vypne který opt-out](/blog/co-vypne-ktery-opt-out/) a nastavení v Search Console [tenhle článek](/blog/blokovat-ai-odpovedi-gsc/).
+
+## <span class="hl">Reklamy a odpovědnost</span> — <strong>co se kolem přehledů řeší</strong>
+
+**Reklamy uvnitř panelu** Google spustil jen ve dvanácti anglicky mluvících zemích a Česko mezi nimi není. Nad přehledem a pod ním se ale běžné reklamy ve vyhledávání zobrazují i u nás.
+
+**Za obsah odpovědi Google odpovídá.** Zemský soud v Mnichově v červnu 2026 rozhodl, že za nepravdivá tvrzení v generovaném přehledu nese odpovědnost provozovatel, ne citovaný web. Pokud o vaší firmě odpověď tvrdí nesmysly, není to jen kosmetický problém — postup rozebírá [chybná informace o firmě v AI](/blog/chybna-informace-o-firme-v-ai/). Evropská asociace vydavatelů podala v únoru 2026 na Přehledy od AI stížnost; kontext má [licenční dohody o obsahu pro AI](/blog/licencni-dohody-ai-obsah/).
+
+## AI odpovědi <span class="hl">mimo Google</span> — <strong>kde se řeší</strong>
+
+Přehled od AI je jen jedno místo z několika. Seznam Asistent běží pro všechny přihlášené od 25. 5. 2026 a čerpá z indexu Seznamu, Firmy.cz a Zboží.cz. Copilot staví na Bingu, ChatGPT má vlastní index doplněný partnerskými vyhledávači, Perplexity vlastní. Každý posílá jiného robota a měří se jinde — přehled má sekce [GEO](/geo/), [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/) a hesla [Copilot](/slovnik/copilot/), [Claude](/slovnik/claude/) a [Perplexity](/slovnik/perplexity/).
+
+<Insight tone="aio" icon="✦" label="Nevíte, jestli vás přehled cituje?">
+  **Report v Search Console vám řekne, že zobrazení máte — ne u kterých dotazů a ne jestli konkurence není vidět víc.** [SEO a AI audit od Sniper Design](/audit/) za 3 600 Kč bez DPH projde vaše klíčová témata, ukáže, kde se Přehled od AI zobrazuje a kdo je v něm citovaný, a řekne, co s tím. Dlouhodobé sledování řeší [monitoring AI](/sluzby/monitoring-ai/), na dotaz odpovíme přes [kontakt](/kontakt/).
+</Insight>
+
+## <strong>Hlubší témata</strong> k <span class="hl">Přehledu od AI</span>
+
+<ArticleGrid>
+  <ArticleCard tone="aio" href="/blog/jak-casto-se-zobrazuje-ai-prehled/" tag="Analýza" time="9 min" words="~1 700 slov" title="Jak často se zobrazuje AI přehled">
+    Kolik dotazů má panel podle typu záměru, jak se čísla liší mezi studiemi a proč se český podíl špatně měří.
+  </ArticleCard>
+
+  <ArticleCard tone="aio" href="/blog/kdy-ai-prehled-necekat/" tag="Analýza" time="7 min" words="~1 300 slov" title="Kdy AI přehled nečekat">
+    Typy dotazů, u kterých se panel skoro neobjevuje — a proč to u nákupních témat mění priority.
+  </ArticleCard>
+
+  <ArticleCard tone="aio" href="/blog/preferovane-zdroje-google/" tag="Tutorial" time="8 min" words="~1 400 slov" title="Preferované zdroje v Googlu">
+    Jak funkce funguje, jak si vás čtenář může přednastavit a jak tlačítko umístit na vlastní web.
+  </ArticleCard>
+
+  <ArticleCard tone="aio" href="/blog/blokovat-ai-odpovedi-gsc/" tag="Tutorial" time="7 min" words="~1 300 slov" title="Přepínač v Search Console">
+    Co přesně vypne nastavení pro funkce generativní AI, co nechá běžet a proč to není signál pro hodnocení.
+  </ArticleCard>
+
+  <ArticleCard tone="aio" href="/blog/ai-mode-vs-ai-overviews/" tag="Srovnání" time="10 min" words="~1 800 slov" title="Režim AI vs. Přehledy od AI">
+    Dvě funkce, které se pletou nejčastěji — čím se liší ve výběru zdrojů a jak velký je překryv citací.
+  </ArticleCard>
+
+  <ArticleCard tone="aio" href="/blog/ai-obrazky-v-ai-prehledech/" tag="Analýza" time="6 min" words="~1 100 slov" title="Obrázky v AI přehledech">
+    Google testoval generované obrázky přímo v panelu a test pozastavil. Co to naznačuje o směru funkce.
+  </ArticleCard>
+</ArticleGrid>
+
+<RelatedSections currentAbbr="AIPREHLED" />
+
+<SniperDesignSmallContact />

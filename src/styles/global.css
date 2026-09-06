@@ -45,10 +45,17 @@
   --color-aio-tint: oklch(0.96 0.022 305);
   --color-aio-soft: oklch(0.86 0.06 305);
 
-  /* AI Mode — pátá disciplína (Google AI Mode), teal */
+  /* Funkce Googlu — dvojice, která NEJSOU disciplíny, ale konkrétní místa
+     v jednom vyhledávači. Drží společnou rodinu (teal → cyan), aby je čtenář
+     v navigaci i v obsahu poznal jako pár. Sousední odstíny, stejná světlost
+     i sytost: liší se jen tónem. */
   --color-aimode: oklch(0.46 0.13 215);
   --color-aimode-tint: oklch(0.96 0.022 215);
   --color-aimode-soft: oklch(0.86 0.06 215);
+
+  --color-aiprehled: oklch(0.46 0.12 195);
+  --color-aiprehled-tint: oklch(0.96 0.022 195);
+  --color-aiprehled-soft: oklch(0.86 0.06 195);
 
   /* Sekce mimo 4 disciplíny — používané v /prakticky-postup/ a /rozhodovaci-matice/ */
   --color-praxe: var(--color-accent);
