@@ -373,7 +373,9 @@ export const ui = {
     wordsApprox: "~3 000 slov",
     readingApprox: "~12 minut čtení",
     compareTable: "Srovnávací tabulka",
-    faqTitleHtml: 'Sedm <span class="hl">častých otázek</span> ke <strong>4 zkratkám</strong>',
+    /** `{count}` nahradí šablona skutečným počtem otázek — dřív tu bylo napevno
+     *  „Sedm", zatímco stránka jich vykreslovala deset. */
+    faqTitleHtml: '<span class="hl">{count} častých otázek</span> ke <strong>4 zkratkám</strong>',
   },
 
   // Sekce [slug] — rich FAQ titulek ({abbr} nahradí šablona)

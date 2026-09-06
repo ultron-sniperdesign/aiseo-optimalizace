@@ -191,7 +191,7 @@ const faqCount = entry.data.faq?.length ?? 0;
         <section class="faq" aria-labelledby="faq-title">
           <header class="faq__head">
             <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
-            <h2 id="faq-title" class="faq__title" set:html={ui.pillar.faqTitleHtml} />
+            <h2 id="faq-title" class="faq__title" set:html={ui.pillar.faqTitleHtml.replace("{count}", String(faqCount))} />
           </header>
 
           <dl class="faq__list">
@@ -493,9 +493,21 @@ const faqCount = entry.data.faq?.length ?? 0;
   .article {
     min-width: 0;
   }
+  /* Dvě šířky jako v sekcích, jen v užším sloupci vedle obsahu stránky:
+     text drží čitelné měřítko (--w-read), tabulky a datové bloky vyplní
+     celý sloupec článku. Levý okraj se od sekcí liší kvůli obsahu vlevo,
+     pravý okraj širokých bloků sedí na stejných 1295 px. */
   .article__prose {
-    max-width: 42rem;
+    max-width: none;
     font-family: var(--font-sans);
+  }
+  .article__prose :global(p),
+  .article__prose :global(ul),
+  .article__prose :global(ol),
+  .article__prose :global(h2),
+  .article__prose :global(h3),
+  .article__prose :global(blockquote) {
+    max-width: var(--w-read);
   }
 
   /* Wide-block: na pillar layoutu (s TOC sidebarem) je article column užší
@@ -511,7 +523,9 @@ const faqCount = entry.data.faq?.length ?? 0;
   .article__prose :global(.src-card),
   .article__prose :global(.prmt-list),
   .article__prose :global(.acards-grid),
-  .article__prose :global(.related) {
+  .article__prose :global(.related),
+  .article__prose :global(.table-wrap),
+  .article__prose :global(.inline-cta) {
     width: 100%;
     max-width: none;
   }
@@ -794,7 +808,7 @@ const faqCount = entry.data.faq?.length ?? 0;
   .faq__title strong { font-weight: 600; }
 
   .faq__list {
-    max-width: 60rem;
+    max-width: var(--w-read);
     margin: 0;
   }
   .faq__item {
@@ -833,7 +847,7 @@ const faqCount = entry.data.faq?.length ?? 0;
     font-size: 1rem;
     line-height: 1.7;
     color: var(--color-ink-muted);
-    max-width: 50rem;
+    max-width: calc(var(--w-read) - 3rem);
     margin: 0 0 0 3rem;
   }
 
