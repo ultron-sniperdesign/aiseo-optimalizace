@@ -98,6 +98,19 @@ howto:
       text: "Co konkrétně udělat + jak ověřit, že to funguje (např. „Rich Results Test")."
 ---
 
+> **Formát H2 je závazný pro celý web.** Čtenář skenuje po nadpisech, takže holý text
+> v H2 je chyba. Každý H2 kombinuje `<span class="hl">klíčový pojem</span>` (dostane barvu),
+> `<strong>pointu</strong>` (to zajímavé) a prostý text mezi tím. H3 zůstávají prostý text.
+>
+> ```md
+> ## Jak <span class="hl">režim AI</span> funguje — <strong>query fan-out</strong>
+> ## <strong>Časté chyby</strong> v <span class="hl">AEO</span>
+> ## Pro koho má <span class="hl">GEO</span> <strong>největší smysl</strong>
+> ```
+>
+> Plné znění pravidla je v `CLAUDE.md` § VI. Sekce a pilíř ho drží ve 100 % nadpisů,
+> blog zatím jen v 13 % — u nových článků ho dodržuj, u refreshovaných doplň.
+
 ## H2 lead — krátká rozcestníková věta navazující na `answer`
 
 První odstavec **prohlubuje** `answer` o jednu úroveň. Nepřepisuje ho — `answer` čte AI, tohle čte člověk.
