@@ -16,7 +16,7 @@ export const sniperDesign = {
   title: "Nechcete to řešit interně? <strong>Postavíme to za vás.</strong>",
   hrefHome: "https://www.sniperdesign.cz/",
   hrefSeo: "https://www.sniperdesign.cz/seo-pro-ai",
-  hrefConsult: "https://www.sniperdesign.cz/konzultace",
+  hrefConsult: "/kontakt/",
   ctaOpen: "Otevřít Sniper Design",
   ctaConsult: "Nezávazná konzultace",
 

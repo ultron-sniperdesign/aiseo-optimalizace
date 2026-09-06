@@ -45,7 +45,7 @@ faq:
   - q: 'Stačí mi přidat FAQ sekci a FAQPage schema?'
     a: 'Pomáhá to, ale samo o sobě nestačí. Bez krátké odpovědi 40–60 slov hned po H1, bez hustoty faktů v textu a bez správné struktury H2/H3 nadpisů Google FAQPage schema často ignoruje. Rich snippety u FAQ se zobrazují jen tam, kde Google vyhodnotí celou stránku jako kvalitní odpověď na konkrétní dotaz. FAQPage schema je nezbytná, ne ale dostatečná podmínka. Plný playbook v 7 krocích níže.'
   - q: 'Můžu měřit AEO bez placených nástrojů?'
-    a: 'Ano, free výchozí stav stačí pro většinu malých webů. Google Search Console: pozice a imprese hlavních dotazů, report Přehled výkonu v generativní AI (pokud ho už máte) a pokrytí. Typ zobrazení pro doporučené úryvky v Search Console není a u FAQ skončil 7. května 2026 — tyhle dvě věci se zjišťují ruční kontrolou SERP. Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner Brand Radar) má smysl s 20+ článků v top 10.'
+    a: 'Ano, free výchozí stav stačí pro většinu malých webů. Google Search Console: pozice a imprese hlavních dotazů, report Přehled výkonu v generativní AI (pokud ho už máte) a pokrytí. Typ zobrazení pro doporučené úryvky v Search Console není a u FAQ skončil 7. května 2026 — tyhle dvě věci se zjišťují ruční kontrolou SERP. Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner) má smysl s 20+ článků v top 10.'
 howto:
   name: "Jak optimalizovat web pro AEO v 7 krocích"
   steps:
@@ -60,7 +60,7 @@ howto:
     - name: "People Also Ask extension"
       text: "V Google Search Console → Performance → Queries vyfiltrujte dotazy s zobrazení ale CTR pod 5 % — to jsou kandidáti na AEO úpravu. Doplňte tyto dotazy jako FAQ otázky na cílových stránkách. Pro reálné formulace dotazů kombinujte: GSC queries, Reddit a Quora vlákna v oboru, oborové diskuze (lupa.cz, marketingjournal.cz pro CZ), záznamy zákaznické podpory. Cíl: 5–10 reálných otázek na stránku v FAQ sekci."
     - name: "Měření přes GSC + manuální AIO audit"
-      text: "Search Console nemá typ zobrazení pro doporučené úryvky a u FAQ ho od 7. května 2026 nemá také — obojí se dá zjistit jen ruční kontrolou výsledků. Pro funkce s generativní AI naopak od června 2026 report existuje, ukazuje ale jen imprese a nemá ho každý web; doplňte ho ručním testem top 10 dotazů jednou měsíčně a zapisujte výskyt v AIO. Profesionální tracking Otterly, Profound nebo Marketing Miner Brand Radar má smysl s 20+ článků v top 10."
+      text: "Search Console nemá typ zobrazení pro doporučené úryvky a u FAQ ho od 7. května 2026 nemá také — obojí se dá zjistit jen ruční kontrolou výsledků. Pro funkce s generativní AI naopak od června 2026 report existuje, ukazuje ale jen imprese a nemá ho každý web; doplňte ho ručním testem top 10 dotazů jednou měsíčně a zapisujte výskyt v AIO. Profesionální tracking Otterly, Profound nebo Marketing Miner (měření AI viditelnosti) má smysl s 20+ článků v top 10."
     - name: "Iterace podle dat — co optimalizovat dál"
       text: "Po 60–90 dnech vyhodnoťte: které stránky získaly Featured Snippet, kde se objevil AIO panel s vaší citací, kde stagnujeme. Pro každou stagnující stránku zkontrolujte AEO Coverage Score (sekce níže) a doplňte chybějící dimenze. Iterujte ne plošnými změnami, ale cílenými úpravami jednotlivých stránek. Featured Snippets jsou pohyblivý cíl — Google průběžně mění, koho vybírá; měsíční audit pomáhá zachytit ztráty i nové příležitosti."
 ---
@@ -119,7 +119,7 @@ Featured Snippets existují jako Google funkce už od roku 2014 (původně „an
 - **Zhruba 48 % sledovaných dotazů** mělo v únoru 2026 panel AI Overviews podle měření BrightEdge — o rok dřív to bylo kolem 31 %. Jiné datasety uvádějí i vyšší podíly, kolem 60 %. Není to novější pravda — jsou to jiné metodiky a jiné sady sledovaných dotazů, takže se čísla mezi zdroji srovnávat nedají.
 - **Rozptyl podle oboru je obrovský:** u zdravotnictví a vzdělávání se panel objevuje výrazně častěji než u zábavy nebo e-commerce. Průměr proto o vašem oboru neříká skoro nic.
 - **CTR pokles** při zobrazení panelu bývá v analýzách řádově **desítky procent**, s velkým rozptylem podle typu dotazu a podoby výsledku.
-- **CZ trh:** AI Overviews dostupné od léta 2025, generuje je model Gemini. Featured Snippets běží v plné šíři.
+- **CZ trh:** Přehled od AI dostupný od 20. 5. 2025, generuje ho model Gemini. Featured Snippets běží v plné šíři.
 
 <Insight tone="warn" label="Odkud ta čísla jsou">
 Všechno výše jsou **měření na zahraničních, převážně anglických datasetech**. Česká čísla veřejně doložená nemáme a přenášet je jedna k jedné by bylo zavádějící. Berte je jako řádovou orientaci a směr vývoje, ne jako benchmark pro váš web.
@@ -406,7 +406,7 @@ Investice 99–500 $/měsíc do trackingu **se vyplatí při reálné obsahové 
 |---|---|---|
 | **Otterly AI** | $29 Lite, $99 Pro | Sleduje 50+ promptů, podíl citací, sentiment, zdroje. Free tier pro vyzkoušení. |
 | **Profound** | $500+/měs | Enterprise. Hlubší tracking, integrace s reportingem, dashboard pro management. |
-| **Marketing Miner Brand Radar** | $99/měs | **CZ trh first**, výskyt v AIO pro česká klíčová slova, integrace s ostatními moduly platformy. |
+| **Marketing Miner (měření AI viditelnosti)** | $99/měs | **CZ trh first**, výskyt v AIO pro česká klíčová slova, integrace s ostatními moduly platformy. |
 | **Ahrefs Brand Radar** | součást Ahrefs | Pokud už Ahrefs platíte, Brand Radar je nadstavba bez příplatku. |
 
 Detailní průvodce nástroji v článku [SEO nástroje 2026](/blog/seo-nastroje-2026/) a metodikou v [Měření SEO výkonu 2026](/blog/mereni-seo-vykonu-2026/).
@@ -473,10 +473,10 @@ U části klientů s **existujícími top 10 pozicemi** vídáme po systematick�
 
 ## Kde si nechat <strong>poradit</strong> nebo <span class="hl">implementaci</span>
 
-AEO playbook se nejlépe škáluje, když je součást **kombinovaného AI viditelnostního auditu** — ne jako jednorázová úprava 5 stránek. Pokud máte web s **20+ URL v top 10** a chcete vědět, kde má AEO největší ROI, [Sniper Design nabízí AEO audit](https://www.sniperdesign.cz/audity):
+AEO playbook se nejlépe škáluje, když je součást **kombinovaného AI viditelnostního auditu** — ne jako jednorázová úprava 5 stránek. Pokud máte web s **20+ URL v top 10** a chcete vědět, kde má AEO největší ROI, [Sniper Design nabízí AEO audit](/audit/):
 
 - **Co dostanete:** shortlist top 20 stránek seřazených podle AEO Coverage Score, prioritizace 1–10, přepis 3 krátkých odpovědí jako šablona pro váš tým, schema checklist pro CMS, nastavení reportingu v Search Console nad tím, co dnes reálně měřit jde.
 - **Pro koho:** B2B SaaS, vydavatele stavějící na obsahu, e-shopy s research fází sortimentu, konzultanty a agentury s 20+ článků v top 10.
 - **Kdy se vyplatí:** pokud už platíte za SEO obsah, ale v doporučených úryvcích se neobjevujete, nebo pokud vidíte vaše konkurenty v AIO panelu, ale vás ne.
 
-První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme výchozí stav AEO Coverage Score na 5 vašich stránkách a doporučíme, jestli má smysl pokračovat plným auditem.
+První [konzultace](/kontakt/) nezávazná — projdeme výchozí stav AEO Coverage Score na 5 vašich stránkách a doporučíme, jestli má smysl pokračovat plným auditem.

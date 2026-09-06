@@ -149,7 +149,7 @@ export const services = {
       metaHtml: "vlastní AI nástroj &middot; SEO-řízený obsah",
     },
     {
-      href: "https://www.sniperdesign.cz/konzultace",
+      href: "/kontakt/",
       num: "06",
       titleHtml: "Konzultace &mdash; jednorázová i&nbsp;dlouhodobá",
       descHtml:

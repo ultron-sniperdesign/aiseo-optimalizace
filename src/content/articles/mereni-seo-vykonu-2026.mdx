@@ -32,7 +32,7 @@ faq:
   - q: "Jak v Search Console poznám viditelnost v AI Overviews?"
     a: "Jen částečně a nepřímo. V běžném reportu Výkon to nepoznáte vůbec: data z AI funkcí jsou podle dokumentace Googlu započtená v celkových číslech a žádný filtr na jejich oddělení neexistuje. Od 3. června 2026 existuje samostatný report Přehled výkonu v generativní AI, který ukazuje imprese, stránky, země, zařízení a datum — ale ne kliky, CTR ani dotazy, a AI Overviews od AI Mode neoddělí. Navíc se zpřístupňuje postupně, takže ho k srpnu 2026 nemá každý web."
   - q: "Jak měřit podíl citací v AI v ChatGPT a Perplexity?"
-    a: "Manuálně přes prompty se značkovým KW (např. 'doporuč mi seo agenturu v praze') a sledování, jestli jste citováni. Reliably ale jen přes specializované nástroje: Otterly AI ($29/měs Lite, $99/měs Pro) sleduje 50+ promptů, vrací podíl citací, sentiment, sources. Profound (enterprise, $500+) má hlubší tracking. Marketing Miner Brand Radar ($99/měs Machine plan) má sledování zmínek v AI pro český trh. Ceny jsou k květnu 2026. Klíčové: měřit podíl citací **vůči konkurenci**, ne absolutně."
+    a: "Manuálně přes prompty se značkovým KW (např. 'doporuč mi seo agenturu v praze') a sledování, jestli jste citováni. Reliably ale jen přes specializované nástroje: Otterly AI ($29/měs Lite, $99/měs Pro) sleduje 50+ promptů, vrací podíl citací, sentiment, sources. Profound (enterprise, $500+) má hlubší tracking. Marketing Miner ($99/měs Machine plan) má sledování zmínek v AI pro český trh. Ceny jsou k květnu 2026. Klíčové: měřit podíl citací **vůči konkurenci**, ne absolutně."
   - q: "Co jsou Core Web Vitals a jak je měřit?"
     a: "Core Web Vitals jsou tři metriky uživatelského zážitku, které Google používá jako ranking signál: LCP (Largest Contentful Paint, kdy se načte hlavní obsah, cíl <2.5 s), INP (Interaction to Next Paint, jak rychle reaguje na akce, cíl <200 ms), CLS (Cumulative Layout Shift, jak moc se rozvržení stránky neočekávaně posouvá, cíl <0.1). Měření: PageSpeed Insights (zdarma, lab + data z reálného provozu z Chrome UX Report), GSC Core Web Vitals report (data z reálného provozu), Lighthouse v Chrome DevTools (data z laboratorního testu). Data z reálného provozu jsou důležitější než laboratorní — odrážejí skutečné uživatele."
   - q: "Jak postavit SEO dashboard?"
@@ -202,7 +202,7 @@ Pro reálný obraz výkonu potřebujete **4 vrstvy metrik**:
 
 **Doplňková metrika, která teprve vzniká.** Podíl citací v AI = podíl relevantních AI odpovědí (ChatGPT, Perplexity, Gemini, Copilot) pro definovanou sadu dotazů, kde je váš brand citován jako zdroj nebo doporučení. Míra zmínek je obecnější — % odpovědí, kde je brand jakkoli zmíněn. **Pozor:** jde o experimentální vrstvu s omezenou reprodukovatelností (vysoká závislost na prompt setu, geolokaci, personalizaci, modelových updatech a metodice nástroje). Pro většinu firem to **není KPI první úrovně** — sledujte jako trend, ne jako přesné číslo, a metodická konzistence je důležitější než absolutní hodnota.
 
-**Zdroj:** Otterly AI ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs Machine plan, CZ trh). *Ceny uvedené v tomto článku jsou k květnu 2026 — před nákupem si je ověřte v aktuálním ceníku, mění se průběžně.*
+**Zdroj:** Otterly AI ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner ($99/měs Machine plan, CZ trh). *Ceny uvedené v tomto článku jsou k květnu 2026 — před nákupem si je ověřte v aktuálním ceníku, mění se průběžně.*
 
 **Frekvence:** měsíčně.
 
@@ -324,14 +324,14 @@ V roce 2026 přibývají k klasickému SEO measurementu tři vrstvy, které maj�
 
 ## Kde si nechat <strong>poradit</strong>
 
-Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud řešíte konkrétní pain point z měření a reportingu, [nabízíme tyto služby](https://www.sniperdesign.cz/audity):
+Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud řešíte konkrétní pain point z měření a reportingu, [nabízíme tyto služby](/sluzby/):
 
 - **Pokud máte data, ale ne jasnou KPI hierarchii** — audit measurement frameworku, návrh KPI vrstev podle typu byznysu, odlišení dashboardu pro tým a reportu pro management
 - **Pokud reportujete SEO, ale vedení z něj nevidí obchodní dopad** — překlad SEO metrik do business outcomes (lead-gen, assisted conversions, nárůst vyhledávání značky), jasná hierarchie pro pohled pro vedení
 - **Pokud chcete oddělit dashboard pro tým a report pro management** — architektura dvou pohledů: SEO pohled pro tým (denní operativa) + pohled pro vedení (kvartální business impact)
 - **Implementace** — Looker Studio dashboard nad GSC + GA4, automatizovaný měsíční reporting, alerty na anomálie
 
-První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme to nad vaším konkrétním nastavením měření, ne nad obecnou metodikou.
+První [konzultace](/kontakt/) nezávazná — projdeme to nad vaším konkrétním nastavením měření, ne nad obecnou metodikou.
 
 ## <strong>Zdroje</strong> a <span class="hl">další čtení</span>
 

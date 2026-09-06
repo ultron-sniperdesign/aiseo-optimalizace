@@ -141,7 +141,7 @@ export const faqJsonLd = {
       name: "Můžu se na něco zeptat předem?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Samozřejmě. Napište nám na aiseo-optimalizace@sniperdesign.cz nebo zavolejte +420 775 181 634 (Po-Pá 10-17). Pokud chcete spíš nezávaznou konzultaci než audit, máme i tuto možnost na sniperdesign.cz/konzultace.",
+        text: "Samozřejmě. Napište nám na aiseo-optimalizace@sniperdesign.cz nebo zavolejte +420 775 181 634 (Po-Pá 10-17). Pokud chcete spíš nezávazně probrat situaci než rovnou audit, napište přes kontaktní formulář.",
       },
     },
   ],
@@ -468,7 +468,7 @@ export const faq: RichFaqItem[] = [
   },
   {
     q: "Můžu se na&nbsp;něco zeptat předem?",
-    a: 'Samozřejmě. Napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá 10&minus;17). Pokud preferujete nezávaznou konzultaci, máme i&nbsp;tuto možnost na&nbsp;<a href="https://www.sniperdesign.cz/konzultace" target="_blank" rel="noopener">sniperdesign.cz/konzultace</a>.',
+    a: 'Samozřejmě. Napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá 10&minus;17). Pokud preferujete nezávazně probrat situaci, ozvěte se přes&nbsp;<a href="/kontakt/">kontaktní formulář</a>.',
   },
 ];
 

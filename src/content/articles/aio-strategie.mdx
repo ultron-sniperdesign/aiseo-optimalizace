@@ -40,7 +40,7 @@ faq:
   - q: 'Jaké KPI sledovat pro AIO?'
     a: 'Mix leading a lagging metrik. Leading (předstihové, sledují aktivitu): počet stránek s krátkou odpovědí, pokrytí FAQPage schematem, AIO a výskyt v AI Mode z opakovaného ručního auditu vzorku top dotazů (vzorek, ne reprezentativní měření), citation count v ChatGPT/Perplexity. Lagging (výsledné, sledují dopad): organická návštěvnost, návštěvnost z AI, hledanost značky, podíl zmínek v AI odpovědích, conversion z AI referral. Doporučená kadence: leading týdně, lagging měsíčně, kvartální vyhodnocení trendu.'
   - q: 'Build vs buy stack — co si pořídit?'
-    a: 'Pro malou firmu (do 10 zaměstnanců) stačí bezplatná vrstva: Google Search Console včetně reportu Přehled výkonu v generativní AI, pokud je pro daný web dostupný, Bing Webmaster Tools s reportem AI Performance, manuální AIO audit v tabulce, případně Otterly Lite ($29/měs). Ceny jsou k květnu 2026 a při aktualizaci v srpnu jsme je znovu neověřovali. Pro střední firmu (10–100): Otterly Pro ($99) + Marketing Miner Brand Radar ($99) pro CZ trh + Ahrefs/Semrush pro SEO základ. Pro enterprise: Profound ($500+) s integrací do BI dashboardu, vlastní přenos dat z GSC do Looker Studia, Brandwatch pro podíl zmínek. Pravidlo: investice do trackingu má smysl s 20+ článků v top 10 a aktivním obsahovým týmem, který data využije.'
+    a: 'Pro malou firmu (do 10 zaměstnanců) stačí bezplatná vrstva: Google Search Console včetně reportu Přehled výkonu v generativní AI, pokud je pro daný web dostupný, Bing Webmaster Tools s reportem AI Performance, manuální AIO audit v tabulce, případně Otterly Lite ($29/měs). Ceny jsou k květnu 2026 a při aktualizaci v srpnu jsme je znovu neověřovali. Pro střední firmu (10–100): Otterly Pro ($99) + Marketing Miner ($99) pro CZ trh + Ahrefs/Semrush pro SEO základ. Pro enterprise: Profound ($500+) s integrací do BI dashboardu, vlastní přenos dat z GSC do Looker Studia, Brandwatch pro podíl zmínek. Pravidlo: investice do trackingu má smysl s 20+ článků v top 10 a aktivním obsahovým týmem, který data využije.'
   - q: 'Kolik trvá, než AIO strategie přinese měřitelné výsledky?'
     a: 'Záleží na výchozím levelu. Pro firmu na L1 (Reactive) typicky 90 dní na dosažení L2–L3 — první měřitelné posuny v pozicích hlavních dotazů, v výskyt v AIO z ručního auditu a v citation count v AI nástrojích. Pro firmu na L3 (Operational) typicky 90 dní na L4 — systematický podíl citací napříč obory a měřitelný posun v návštěvnost z AI. Plný dopad na známost značky a přísun poptávek 6–12 měsíců. Bez SEO základů (top 10 pozic na hlavních KW) bývá efekt AIO slabý, pomalý a hůř měřitelný.'
   - q: 'Funguje AIO strategie pro malou firmu nebo jen pro enterprise?'
@@ -110,7 +110,7 @@ Firma **sleduje** data — ví, že AIO existuje, dělá ad-hoc úpravy podle ak
 
 Firma má **definované procesy** — týdenní tracking, měsíční review, přidělená zodpovědnost za AIO napříč 2–3 lidmi. RACI matice existuje.
 
-**Symptomy:** Otterly nebo Marketing Miner Brand Radar pro tracking, přehled KPI, obsahový kalendář s ohledem na AIO, FAQPage schema na 80 %+ stránek, ověřování strukturovaných dat při nasazení.
+**Symptomy:** Otterly nebo Marketing Miner (měření AI viditelnosti) pro tracking, přehled KPI, obsahový kalendář s ohledem na AIO, FAQPage schema na 80 %+ stránek, ověřování strukturovaných dat při nasazení.
 
 ### L4 — Strategic
 
@@ -163,7 +163,7 @@ Suma: **0–4 = L1 Reactive**, 5–8 = L2 Aware, 9–12 = L3 Operational, 13–1
 | Den | Akce | Vlastník |
 |---|---|---|
 | **1–14** | RACI matice — obsah, vývoj, značka, analytika | VP Marketing |
-| **15–30** | Tooling: Otterly Lite ($29) nebo Marketing Miner Brand Radar | Marketing + Finance |
+| **15–30** | Tooling: Otterly Lite ($29) nebo Marketing Miner (měření AI viditelnosti) | Marketing + Finance |
 | **30–60** | Plošné pokrytí FAQPage schematem na 80 %+ stránek | Obsah + vývoj |
 | **60–75** | Plán zmínek o značce: 3 podcasty, 2 guest posty, 1 vlastní studie | Brand |
 | **75–90** | Měsíční review s management týmem, KPI dashboard | VP Marketing |
@@ -273,7 +273,7 @@ Ceny placených nástrojů níže jsou **ke květnu 2026** a při aktualizaci v 
 ### Mid-tier (10–100 zaměstnanců, 50–500 článků)
 
 - **Otterly Pro** ($99/měs) — podíl citací napříč 5+ AI nástroji
-- **Marketing Miner Brand Radar** ($99/měs) — **CZ trh first**, výskyt v AIO pro české KW
+- **Marketing Miner (měření AI viditelnosti)** ($99/měs) — **CZ trh first**, výskyt v AIO pro české KW
 - **Ahrefs nebo Semrush** ($129–229/měs) — SEO základ + zmínky o značce
 - **GSC napojení do Looker Studio** — automatický reporting, free pokud máte Google Workspace
 
@@ -388,10 +388,10 @@ Pokud váháte, kterou strategii řešit jako první, [Rozhodovací matice](/roz
 
 ## Kde si nechat <strong>poradit</strong> nebo <span class="hl">implementaci</span>
 
-AIO strategie dává největší smysl jako **6–12měsíční transformace**, ne jako jednorázový projekt. Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud chcete pomoct s implementací AIO playbooku u vaší firmy, [nabízíme AIO konzultaci](https://www.sniperdesign.cz/audity):
+AIO strategie dává největší smysl jako **6–12měsíční transformace**, ne jako jednorázový projekt. Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud chcete pomoct s implementací AIO playbooku u vaší firmy, [nabízíme AIO konzultaci](/audit/):
 
 - **Co dostanete:** 60min audit call, sebehodnocení zralosti AIO podle 5 dimenzí, návrh RACI matice pro vaši firmu, seznam quick wins na první 30 dní, prioritní plán na 90 dní pro váš aktuální úroveň zralosti, doporučení trackingu a KPI dashboardu.
 - **Pro koho:** B2B SaaS, vydavatele stavějící na obsahu, e-shopy s 50+ stránkami v top 10, konzultanty a agentury s vlastní obsahovou produkcí.
 - **Kdy se vyplatí:** pokud máte SEO základ, ale AI viditelnost stagnuje. Pokud chcete strategický rámec pro tým, ne jen ad-hoc taktiku. Pokud řešíte, jestli AIO je pro vás teď priorita, nebo má počkat 6 měsíců.
 
-První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná — projdeme AIO Maturity self-assessment a doporučíme, jestli má smysl pokračovat plnou implementací.
+První [konzultace](/kontakt/) nezávazná — projdeme AIO Maturity self-assessment a doporučíme, jestli má smysl pokračovat plnou implementací.
