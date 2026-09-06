@@ -412,6 +412,9 @@ export const ui = {
     insightLabel: "Klíčové zjištění",
     /** Mistake — prefix fix řádku. */
     mistakeFixLabel: "Fix:",
+    /** Mindset — popisky dvojice karet (přepsatelné props `badChip` / `goodChip`). */
+    mindsetBadLabel: "Špatný přístup",
+    mindsetGoodLabel: "Správný přístup",
     /** SourceCard defaulty (přepsatelné props). */
     sourceBadge: "Zdroj",
     sourceLinkLabel: "Otevřít zdroj",

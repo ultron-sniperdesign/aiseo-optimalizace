@@ -1,7 +1,10 @@
 ---
 /**
- * Mindset — dvojice pull-quote karet „špatný / správný mindset".
- * Pro sekce typu „co si lidé pletou" / „mindset shift".
+ * Mindset — dvojice zvýrazněných karet „špatný / správný přístup“.
+ * Pro pasáže typu „co si lidé pletou“ / „změna přístupu“.
+ *
+ * Popisky karet drží `ui.blocks.mindset*` v `src/i18n/strings.ts` (překladová vrstva),
+ * `badChip` / `goodChip` je přebijí jen tam, kde má karta jiný smysl.
  *
  * Použití:
  *   <Mindset
@@ -11,6 +14,8 @@
  *     goodWhy="SEO a GEO se posilují — strukturovaný obsah vyhrává v obou kanálech."
  *   />
  */
+
+import { ui } from "~/i18n/strings";
 
 interface Props {
   badQuote: string;
@@ -26,20 +31,20 @@ const {
   badWhy,
   goodQuote,
   goodWhy,
-  badChip = "Špatný mindset",
-  goodChip = "Správný mindset",
+  badChip = ui.blocks.mindsetBadLabel,
+  goodChip = ui.blocks.mindsetGoodLabel,
 } = Astro.props;
 ---
 
 <div class="mindset">
   <div class="mindset__card mindset__card--bad">
     <span class="mindset__chip mindset__chip--bad">❌ {badChip}</span>
-    <p class="mindset__quote">„{badQuote}"</p>
+    <p class="mindset__quote">„{badQuote}“</p>
     {badWhy && <p class="mindset__why">{badWhy}</p>}
   </div>
   <div class="mindset__card mindset__card--good">
     <span class="mindset__chip mindset__chip--good">✅ {goodChip}</span>
-    <p class="mindset__quote">„{goodQuote}"</p>
+    <p class="mindset__quote">„{goodQuote}“</p>
     {goodWhy && <p class="mindset__why">{goodWhy}</p>}
   </div>
 </div>

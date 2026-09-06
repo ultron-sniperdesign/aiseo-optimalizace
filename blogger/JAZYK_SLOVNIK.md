@@ -1,8 +1,10 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 59** · založeno 2026-08-23 · poslední změna 2026-09-02 (výjimky Content Signals a Content API for Shopping) · audituje skill `cestina-audit`
+> **Verze: 61** · založeno 2026-08-23 · poslední změna 2026-09-06 (10 pravidel na anglická sousloví z pilíře a sekcí, výjimka pro „scaled content abuse“; rozsah rozšířen mimo blog) · audituje skill `cestina-audit`
 >
-> Jediný zdroj pravdy pro jazykový audit článků. Čte ho člověk i `blogger/jazyk-check.py`
+> Jediný zdroj pravdy pro jazykový audit **všech textů webu** — článků, sekcí, pilíře
+> i řetězců v `src/i18n/*`. Do 6. 9. 2026 se pouštěl jen na blog, proto mají sekce
+> a pilíř nasbíraný dluh (419 nálezů, měřeno 6. 9. 2026). Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
 > Pravidla přibývají **článek po článku** — každé má povinně důvod a původ.
 
@@ -29,7 +31,7 @@
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
 | ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
-| ⛔ | `(?<!mixed )(?<!Helpful )(?<!AI SEO )\bcontent\b(?! (marketing|management|update|[Cc]redentials|Signals?|API))(?!-(Type|Length|Encoding|Security|Signal|Usage))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)**, názvy HTTP hlaviček, **„Content Signals“ / `Content-Signal` (politika Cloudflare) a `Content-Usage` (draft IETF AIPREF), **„Content API for Shopping“ (název rozhraní Googlu)** a **„AI SEO content“ — cílová fráze a slug článku `ai-seo-content`, mění se jen se slugem** | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26, AI SEO content 2026-08-29, Content Signals 2026-09-02, Content API 2026-09-02 |
+| ⛔ | `(?<!mixed )(?<!Helpful )(?<!AI SEO )(?<!scaled )\bcontent\b(?! (marketing|management|update|[Cc]redentials|Signals?|API))(?!-(Type|Length|Encoding|Security|Signal|Usage))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)**, názvy HTTP hlaviček, **„Content Signals“ / `Content-Signal` (politika Cloudflare) a `Content-Usage` (draft IETF AIPREF), **„Content API for Shopping“ (název rozhraní Googlu)** a **„AI SEO content“ — cílová fráze a slug článku `ai-seo-content`, mění se jen se slugem**, **„scaled content abuse“ (název zásady Googlu proti hromadné výrobě obsahu)** | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26, AI SEO content 2026-08-29, Content Signals 2026-09-02, Content API 2026-09-02, scaled content abuse 2026-09-06 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
 | ⛔ | `\brecentnost\b` | čerstvost, aktuálnost | kalk z recency, čeština to má | seed 2026-08-23 |
 | ⛔ | `\beffort(u|em)?\b` | pracnost, náročnost | agenturní slang s přesnou českou náhradou | seo-audit-co-kontrolovat 2026-08-23 |
@@ -149,7 +151,7 @@
 | ⚠️ | `\b(?-i:share of voice)\b` | podíl zmínek | odborný termín. **Hlásí se jen v malých písmenech** — „Share of Voice“ velkými je název metriky (viz `share-of-model-metrika`), `(?-i:…)` vypne ignorování velikosti jen pro tenhle výraz | seed 2026-08-23, zúženo 2026-08-26 |
 | ⛔ | `\bmaster switch\b` | hlavní vypínač | anglicismus s přesnou českou náhradou | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bdefault\b(?!-)` | výchozí | web sám jinde píše „výchozí model“, „výchozí režim“ | jak-vypnout-ai-overview 2026-08-23 |
-| ⛔ | `\bsearch engine(s)?\b(?! Land| Journal| Roundtable| Watch)` | vyhledávač | mimo doslovné popisky rozhraní prohlížeče a **názvy publikací** (Search Engine Land, Journal, Roundtable) | jak-vypnout-ai-overview 2026-08-23, upřesněno u článku 8 |
+| ⛔ | `\bsearch engine(s)?\b(?! Land| Journal| Roundtable| Watch| Optimization| Results Page)` | vyhledávač | mimo doslovné popisky rozhraní prohlížeče a **názvy publikací** (Search Engine Land, Journal, Roundtable) | jak-vypnout-ai-overview 2026-08-23, upřesněno u článku 8 |
 | ⛔ | `\bbrowser\b` | prohlížeč | v české větě zbytečné | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bsearch bar\b` | vyhledávací pole | mimo doslovné popisky rozhraní | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bbackup\b` | záloha, záložní varianta | běžné slovo, není důvod k angličtině | jak-vypnout-ai-overview 2026-08-23 |
@@ -354,6 +356,17 @@
 | ⚠️ | `\bcluster URL\b` | skupina URL | žargon | jak-vypnout-ai-overview 2026-08-23 |
 | ⚠️ | `\bseed dotaz(u|em)?\b` | výchozí dotaz | žargon | jak-vypnout-ai-overview 2026-08-23 |
 | ⚠️ | `\brising queries\b` | rychle rostoucí dotazy | název sloupce v Trends, ale v české větě vysvětlit | jak-vypnout-ai-overview 2026-08-23 |
+
+| ⛔ | `\bModern Search Visibility Stack\b` | vrstvy viditelnosti, přehled vrstev | vymyšlený anglický název sekce v české větě; nejde o oficiální termín ani o produkt | pilíř 2026-09-06 |
+| ⛔ | `\bAI (Search )?Visibility Readiness Framework\b` | rámec připravenosti na AI viditelnost | totéž — vlastní framework s anglickým názvem | prakticky-postup 2026-09-06 |
+| ⛔ | `\bAIO (bypass|embrace)\b` | vyhnout se přehledům / cílit na přehledy | anglické sloveso použité jako české podstatné jméno | aio + rozhodovaci-matice 2026-09-06 |
+| ⛔ | `\bcitation hook\b` | háček pro citaci | žargon bez zavedeného užití v češtině | prakticky-postup 2026-09-06 |
+| ⛔ | `\bAI crawler hits\b` | přístupy AI robotů | hybrid; „hits" má českou náhradu | prakticty-postup 2026-09-06 |
+| ⛔ | `\bbrand entity\b` | entita značky | hybrid, obě slova mají českou náhradu | aeo 2026-09-06 |
+| ⛔ | `\blead-?gen\b` | generování poptávek | zkrácený anglicismus | pilíř 2026-09-06 |
+| ⛔ | `\bbullet list(u|em)?\b` | odrážky | česká náhrada je kratší | aio 2026-09-06 |
+| ⛔ | `\bmindset\w*` | přístup, nastavení hlavy | i jako popisek karty; komponenta `Mindset.astro` si název ponechá (kód není text pro čtenáře) | pilíř 2026-09-06 |
+| ⛔ | `(?<!brand )\bawareness\b` | povědomí, ohled na … | obecný případ vedle `brand awareness`; „bez GEO/AEO awareness“ česky nedává pád | pilíř 2026-09-06 |
 
 ## 8. Co se NEauditovalo (výjimky)
 

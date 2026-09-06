@@ -57,14 +57,14 @@ import Figure from "~/components/blocks/Figure.astro";
 
 Pro uživatele je to pohodlné. Pro weby je to nové rozdání karet: **buď jste součástí odpovědi, nebo neexistujete.** Žádná desátá pozice, na kterou někdo doscrolluje.
 
-### „Režim AI" je český název téhož nástroje
+### „Režim AI“ je český název téhož nástroje
 
 V českém rozhraní Googlu i v Chromu se AI Mode jmenuje **režim AI**. Chrome na něj nabízí tlačítko
 v adresním řádku a na nové kartě; mimo Spojené státy ho Google zavádí postupně, takže ho nemusí mít
 každý účet (nápověda Chrome, bez data).
 
 Tomu odpovídá i poptávka. Český tvar je dnes výrazně hledanější než anglický, takže **v textech
-používejte oba** — český „režim AI" kvůli hledanosti, anglický „AI Mode" kvůli odborné shodě.
+používejte oba** — český „režim AI“ kvůli hledanosti, anglický „AI Mode“ kvůli odborné shodě.
 
 <Figure
   src="/screenshots/rezim-ai/zalozka.webp"
@@ -85,9 +85,9 @@ Tahle stránka je o něčem jiném: jak režim AI funguje a jak se do jeho odpov
 
 ## Jak <span class="hl">režim AI</span> funguje — <strong>query fan-out</strong>
 
-Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě"), režim AI ho **rozloží na řadu souběžných souvisejících dotazů** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Google to popisuje jako „multitude of queries" (20. 5. 2025), v oficiálním příkladu v dokumentaci z 10. 7. 2026 jde o tři podotázky; v režimu Deep Search jich systém pouští až stovky. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
+Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě“), režim AI ho **rozloží na řadu souběžných souvisejících dotazů** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Google to popisuje jako „multitude of queries“ (20. 5. 2025), v oficiálním příkladu v dokumentaci z 10. 7. 2026 jde o tři podotázky; v režimu Deep Search jich systém pouští až stovky. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
 
-Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz", ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/) a v hesle slovníku [query fan-out](/slovnik/query-fan-out/).
+Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz“, ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/) a v hesle slovníku [query fan-out](/slovnik/query-fan-out/).
 
 <Figure
   src="/screenshots/rezim-ai/odpoved.webp"
@@ -101,7 +101,7 @@ Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz",
 Pozor na obvyklý omyl: Google ve své dokumentaci **výslovně nedoporučuje** krájet obsah na kousky ani zakládat samostatné stránky pro varianty dotazu. Masová produkce mikro-článků spadá pod scaled content abuse. Lepší je jedna stránka, která téma pokryje do šířky — viz [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/) a [jak se zobrazit v režimu AI](/blog/jak-se-zobrazit-v-ai-mode/).
 
 <Insight icon="✦" tone="signal">
-V režimu AI se jednotkou optimalizace stává **odpověď na podotázku**, ne pozice na klíčové slovo. Web strukturovaný jako sada jasných otázek a odpovědí má matematicky víc „losů v osudí" než jeden dlouhý text optimalizovaný na jediný dotaz. Jak systém pracuje pod kapotou, vysvětluje heslo [RAG](/slovnik/rag/).
+V režimu AI se jednotkou optimalizace stává **odpověď na podotázku**, ne pozice na klíčové slovo. Web strukturovaný jako sada jasných otázek a odpovědí má matematicky víc „losů v osudí“ než jeden dlouhý text optimalizovaný na jediný dotaz. Jak systém pracuje pod kapotou, vysvětluje heslo [RAG](/slovnik/rag/).
 </Insight>
 
 ## <span class="hl">Google AI</span> — <strong>co je co</strong>
@@ -126,12 +126,12 @@ Tahle stránka je na webu jediným místem, kde časovou osu držíme. Ostatní 
 | Datum | Co se stalo | Co to znamená pro web |
 |---|---|---|
 | 7. 10. 2025 | Google spouští režim AI v češtině, podle nápovědy ve 200+ zemích a územích a 100+ jazycích | česká verze existuje od začátku, nejde o americkou funkci |
-| ~15. 10. 2025 | dostupné plošně českým uživatelům (sekundární zdroj) | konec fáze „mají to jen někteří" |
+| ~15. 10. 2025 | dostupné plošně českým uživatelům (sekundární zdroj) | konec fáze „mají to jen někteří“ |
 | 6. 5. 2026 | odkazy přímo v textu odpovědi a náhled webu při najetí | rozhoduje název webu a titulek stránky |
 | 19. 5. 2026 | Google I/O: propojení s Přehledy od AI, Gemini 3.5 Flash jako výchozí model, miliarda uživatelů měsíčně | z přehledu se dá plynule přejít do konverzace |
 | 27. 5. a 3. 6. 2026 | Preferované zdroje v Přehledech od AI i v režimu AI, tlačítko od 20. 8. 2026 | uživatel si může zvolit weby, které chce vidět častěji |
 | 25. 8. 2026 | karusely odkazů u vyvíjejících se témat | zvýhodňuje čerstvý a datovaný obsah |
-| 31. 8. 2026 | report „Přehled výkonu v generativní AI" a přepínač pro všechny weby na světě | poprvé jde měřit imprese bez čekání na beta přístup |
+| 31. 8. 2026 | report „Přehled výkonu v generativní AI“ a přepínač pro všechny weby na světě | poprvé jde měřit imprese bez čekání na beta přístup |
 | 2. 9. 2026 | Gemini 3.8 Flash pro předplatitele Pro a Ultra; 3.7 Flash volitelně od 14. 8. 2026 (sekundární zdroj) | odpovědi se liší podle plánu uživatele |
 
 Agentní funkce jako rezervace, telefonování za uživatele nebo Information Agents zatím běží **jen ve Spojených státech**. Personal Intelligence, tedy přizpůsobení odpovědí podle účtu, Google spustil ve 98 jazycích — dvě různé osoby proto na stejný dotaz dostanou různé odpovědi.
@@ -145,7 +145,7 @@ Tohle není budoucnost ani americká novinka, je to rok stará funkce s rostouc�
 - Na vlastním e-shopu MEGA DETAIL jsme v Search Console naměřili **[200 000 zobrazení ve funkcích s generativní AI za dva měsíce](/ai-viditelnost/)** — ještě před cílenou optimalizací. V Sniper Design to na tomhle webu i na e-shopu měříme od května 2026.
 
 <Insight icon="!" tone="warn">
-Zobrazení v režimu AI a v Přehledech od AI **neuvidíte v Google Analytics** — odehrávají se před kliknutím. Jediné přímé měřítko je report **„Přehled výkonu v generativní AI (Vyhledávání)"** v Search Console. Od 31. 8. 2026 ho mají všechny weby na světě, nic se nezapíná a ukazuje jen imprese za obě funkce dohromady. Vedle reportu přibylo v Search Console nastavení „Generativní AI ve Vyhledávání" s volbami Zahrnout, Vyloučit a Zdědit — co přesně vypne, [rozebíráme zvlášť](/blog/blokovat-ai-odpovedi-gsc/). Jak s reportem pracovat, popisuje návod na [měření AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/) a jeho limity shrnuje článek o [mezích měření režimu AI](/blog/mereni-ai-mode-limity/).
+Zobrazení v režimu AI a v Přehledech od AI **neuvidíte v Google Analytics** — odehrávají se před kliknutím. Jediné přímé měřítko je report **„Přehled výkonu v generativní AI (Vyhledávání)“** v Search Console. Od 31. 8. 2026 ho mají všechny weby na světě, nic se nezapíná a ukazuje jen imprese za obě funkce dohromady. Vedle reportu přibylo v Search Console nastavení „Generativní AI ve Vyhledávání“ s volbami Zahrnout, Vyloučit a Zdědit — co přesně vypne, [rozebíráme zvlášť](/blog/blokovat-ai-odpovedi-gsc/). Jak s reportem pracovat, popisuje návod na [měření AI segmentů v GSC](/blog/gsc-ai-segmenty-mereni/) a jeho limity shrnuje článek o [mezích měření režimu AI](/blog/mereni-ai-mode-limity/).
 </Insight>
 
 ## Co <span class="hl">režim AI</span> znamená <strong>pro váš web a e-shop</strong>
@@ -170,7 +170,7 @@ Aby to celé drželo pohromadě, používáme tři pojmy důsledně: **[AI SEO](
 
 Kroky jsou ve strukturovaných datech této stránky a v přehledu výše: pokrýt podotázky na jedné stránce, pohlídat název webu a titulek kvůli inline odkazům, držet obsah aktuální kvůli karuselům, nechat web dostupný Googlebotu a měřit v Search Console.
 
-**Strukturovaná data sem záměrně nepatří jako páka.** Google v dokumentaci z 10. 7. 2026 uvádí, že pro generativní AI žádné speciální značkování nevyžaduje, Ahrefs v květnu 2026 u citovaných stránek žádný vliv na citace nenaměřil a FAQ rich results Google ukončil 7. 5. 2026. Držte je jako součást běžného SEO, ne jako nástroj na citace — proč, rozebírá [test schema markupu a AI citací](/blog/schema-markup-ai-citace-test/) a článek [AEO a GEO je pořád SEO](/blog/aeo-geo-je-porad-seo/).
+**Strukturovaná data sem záměrně nepatří jako páka.** Google v dokumentaci z 10. 7. 2026 uvádí, že pro generativní AI žádné speciální značkování nevyžaduje, Ahrefs v květnu 2026 u citovaných stránek žádný vliv na citace nenaměřil a FAQ rich results Google ukončil 7. 5. 2026. Držte je jako součást běžného SEO, ne jako nástroj na citace — proč, rozebírá [test strukturovaných dat a AI citací](/blog/schema-markup-ai-citace-test/) a článek [AEO a GEO je pořád SEO](/blog/aeo-geo-je-porad-seo/).
 
 Obecný playbook napříč všemi kanály je v [praktickém postupu](/prakticky-postup/). K režimu AI máme sérii článků — od [srovnání s Přehledy od AI](/blog/ai-mode-vs-ai-overviews/) přes [praktický návod, jak se v něm zobrazit](/blog/jak-se-zobrazit-v-ai-mode/), až po [limity měření](/blog/mereni-ai-mode-limity/) a [co AI SEO nezvládne](/blog/co-ai-seo-nezvladne/).
 
