@@ -398,19 +398,12 @@ function renderFaqMarkdown(text: string): string {
     --answer-pad: clamp(1.75rem, 2.5vw, 2.25rem);
     --answer-border: 3px;
     padding: var(--answer-pad);
-    /* Pás přes celou šířku rámu. Štítek a datum drží úzký levý sloupec,
-       definice zabírá zbytek — bez toho zůstávala pravá polovina prázdná. */
-    display: grid;
-    grid-template-columns: minmax(8rem, 11rem) 1fr;
-    gap: clamp(1rem, 2.5vw, 2.5rem);
-    align-items: start;
+    /* Pás přes celou šířku rámu: štítek nad textem, definice využije
+       celou šířku. Dřívější dvousloupcová varianta text zbytečně odsouvala. */
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
     max-width: var(--w-wide);
-  }
-  @media (max-width: 860px) {
-    .answer__inner {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
   }
   .answer__mark {
     font-family: var(--font-sans);
