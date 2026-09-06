@@ -221,6 +221,10 @@ export const footer = {
  * i se značkami a v jiném slovosledu. `{abbr}` placeholder nahradí šablona.
  */
 export const ui = {
+  /** Odkaz z článku na rodičovskou sekci (frontmatter `hub`). `{name}` nahradí šablona. */
+  hubPrefix: "Součást sekce",
+  hubSuffix: "— tam najdete celé téma přehledně na jednom místě.",
+
   // Breadcrumbs (viditelné ve stránce; JSON-LD breadcrumb root řeší site.breadcrumbRoot)
   crumbHome: "Úvod",
   crumbBlog: "Blog",
@@ -350,6 +354,22 @@ export const ui = {
   sectionHeroBadge: {
     AIMODE: "GOOGLE REŽIM AI",
     AIPREHLED: "PŘEHLED OD AI",
+  } as Record<string, string>,
+
+  /**
+   * Název sekce v 1. pádě a normální velikostí písmen — do běžných vět.
+   * `sectionBadge` je verzálkami (display), `sectionBadgeDative` je 3. pád,
+   * ani jedno se do věty „Součást sekce …" nehodí.
+   */
+  sectionName: {
+    SEO: "SEO",
+    GEO: "GEO",
+    AEO: "AEO",
+    AIO: "AIO",
+    AIMODE: "Režim AI",
+    AIPREHLED: "Přehled od AI",
+    PRAXE: "Praktický postup",
+    MATICE: "Rozhodovací matice",
   } as Record<string, string>,
 
   sectionBadgeDative: {

@@ -12,7 +12,7 @@
  *
  * Opt-in přes frontmatter `variant: rich`.
  */
-import type { CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { existsSync } from "node:fs";
 import { createHeadingSlugger } from "~/lib/heading-slug.mjs";
 
@@ -53,6 +53,16 @@ interface Props {
 
 const { entry, Content, crumbLabel, wordCountRounded, readingMinutes, faqCount } =
   Astro.props as Props;
+
+// Rodičovská sekce (frontmatter `hub`) — kontextový odkaz na rozcestník tématu.
+// Sekce odkazují ven na desítky článků; bez tohohle se zpátky skoro nic nevrací
+// a Google nemá signál, která stránka je pro téma kanonická (naměřeno 6. 9. 2026).
+const hubSection = entry.data.hub
+  ? (await getCollection("sections")).find((sec) => sec.data.abbr === entry.data.hub)
+  : undefined;
+const hubName = hubSection
+  ? ui.sectionName[hubSection.data.abbr] ?? hubSection.data.abbr
+  : undefined;
 
 /** Build-time check: WebP varianta hero obrázku (viz blogger/IMAGE_GUIDE.md §2b).
  *  Když chybí, <picture> nedostane <source> a padá se na PNG — nikdy rozbitý obrázek. */
@@ -180,6 +190,16 @@ const _bundlerHints = [
       <p class="ranswer__text">{entry.data.answer}</p>
     </div>
   </section>
+
+  {hubSection && (
+    <section class="rhub">
+      <p class="rhub__line">
+        <span class="rhub__label">{ui.hubPrefix}</span>{" "}
+        <a class="rhub__link" href={`/${hubSection.data.slug}/`}>{hubName}</a>{" "}
+        <span>{ui.hubSuffix}</span>
+      </p>
+    </section>
+  )}
 
   <!-- SÉRIE — jen u článků, které patří do série (registr i18n/series.ts) -->
   <section class="rseries">
@@ -496,6 +516,42 @@ const _bundlerHints = [
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 3.5rem);
   }
+  /* Odkaz na rodičovskou sekci (frontmatter `hub`). */
+  .rhub {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+  }
+
+  /* Levý okraj drží zarovnání s krátkou odpovědí i tělem článku — proto
+     odsazení nese `padding-left` na proužku, ne na kontejneru. */
+  .rhub__line {
+    max-width: var(--w-read);
+    margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
+    padding: 0.7rem 0 0.7rem 0.9rem;
+    border-left: 3px solid var(--color-rule);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+
+  .rhub__label {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .rhub__link {
+    font-weight: 600;
+    color: var(--color-accent);
+    text-underline-offset: 2px;
+  }
+
+  .rhub__link:hover,
+  .rhub__link:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+
   /* SeriesNav container — přisunutý pod answer block; prázdný (článek mimo
      sérii) nezabírá místo, SeriesNav pak nic nerendruje. */
   .rseries {

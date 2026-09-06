@@ -160,6 +160,17 @@ const articles = defineCollection({
      * NEPOJMENOVÁVAT `layout` — koliduje s Astro MDX speciální direktivou,
      * která se snaží resolvovat hodnotu jako layout component import.
      */
+    /**
+     * Zkratka sekce, pod kterou článek tematicky patří (`abbr` z kolekce
+     * `sections`). Šablona z toho vykreslí kontextový odkaz na rozcestník.
+     *
+     * Proč to existuje: sekce odkazovaly ven na desítky článků, ale zpátky
+     * se skoro nic nevracelo — autorita z rozcestníku odtékala a Google
+     * neměl signál, která stránka je pro téma kanonická. Naměřeno 6. 9. 2026
+     * na klastru „režim AI": 17 článků, zpětný odkaz mělo 2 z nich, a na
+     * dotaz `ai mode` jsme fieldovali šest vlastních URL proti sobě.
+     */
+    hub: z.enum(["SEO", "GEO", "AEO", "AIO", "AIMODE", "AIPREHLED", "PRAXE", "MATICE"]).optional(),
     variant: z.enum(["classic", "rich"]).optional().default("classic"),
     /**
      * Volitelný hero stat block pro rich layout — 3–4 dlaždice s číslem + popiskem.

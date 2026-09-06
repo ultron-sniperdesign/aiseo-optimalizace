@@ -27,6 +27,15 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const useRich = entry.data.variant === "rich";
 
+// Rodičovská sekce (frontmatter `hub`) — kontextový odkaz na rozcestník tématu.
+// Dohledáváme ji z kolekce `sections`, ať slug ani název nejsou zdvojené v datech.
+const hubSection = entry.data.hub
+  ? (await getCollection("sections")).find((sec) => sec.data.abbr === entry.data.hub)
+  : undefined;
+const hubName = hubSection
+  ? ui.sectionName[hubSection.data.abbr] ?? hubSection.data.abbr
+  : undefined;
+
 /**
  * Per-category crumb context label — z i18n vrstvy (fork přeloží ui.category).
  */
@@ -186,6 +195,16 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
       </div>
     </section>
 
+    {hubSection && (
+      <section class="hub-slot">
+        <p class="hub-slot__line">
+          <span class="hub-slot__label">{ui.hubPrefix}</span>{" "}
+          <a class="hub-slot__link" href={`/${hubSection.data.slug}/`}>{hubName}</a>{" "}
+          <span class="hub-slot__tail">{ui.hubSuffix}</span>
+        </p>
+      </section>
+    )}
+
     <!-- SÉRIE — jen u článků z registru i18n/series.ts -->
     <section class="series-slot">
       <SeriesNav slug={entry.data.slug} />
@@ -252,6 +271,35 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
 </BaseLayout>
 
 <style>
+  /* ===== Odkaz na rodičovskou sekci (frontmatter `hub`) ===== */
+  .hub-slot {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+  }
+
+  .hub-slot__line {
+    max-width: var(--w-read);
+    margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--color-rule);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+
+  .hub-slot__label {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .hub-slot__link {
+    font-weight: 600;
+    color: var(--color-accent);
+    text-underline-offset: 2px;
+  }
+
   /* ===== PAGE ROOT — analytical article používá indigo (SEO color) jako discipline accent ===== */
   .page {
     --d: var(--color-seo);
