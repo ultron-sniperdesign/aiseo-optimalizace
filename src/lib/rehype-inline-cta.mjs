@@ -54,6 +54,12 @@ function buildCta(cfg) {
       {
         type: "element",
         tagName: "p",
+        properties: { className: ["inline-cta__eyebrow"] },
+        children: [{ type: "text", value: cfg.eyebrow }],
+      },
+      {
+        type: "element",
+        tagName: "p",
         properties: { className: ["inline-cta__label"] },
         children: [{ type: "text", value: cfg.label }],
       },

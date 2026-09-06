@@ -31,16 +31,24 @@ export const SECOND_INSERT_AFTER_HEADING = 5;
 export const INLINE_CTA = {
   audit: {
     categories: ["analysis", "case-study"],
-    label: "Chcete to posoudit na svém webu?",
-    text: "AI SEO audit projde vaše stránky ve třech vrstvách a vrátí prioritní seznam úprav.",
-    linkText: "Prohlédnout audit",
+    eyebrow: "AI SEO audit od Sniper Design",
+    label: "Zjistěte, proč AI cituje konkurenci, a ne vás",
+    text:
+      "Projdeme váš konkrétní web ve třech vrstvách — technika, obsah, důvěryhodnost — " +
+      "a dostanete prioritní seznam úprav. U každé uvidíte dopad i náročnost, takže víte, " +
+      "co řešit první. Výstup do 5 pracovních dní a 60minutová konzultace nad výsledky.",
+    linkText: "Získat audit",
     href: "/audit/",
   },
   pack: {
     categories: ["tutorial", "defensive"],
-    label: "Chcete to udělat podle předlohy?",
-    text: "AI SEO Wireframe Pack má hotové wireframy a šablony textů pro klíčové typy stránek.",
-    linkText: "Prohlédnout Pack",
+    eyebrow: "AI SEO Wireframe Pack od Sniper Design",
+    label: "Nevymýšlejte strukturu stránek od nuly",
+    text:
+      "Osm typů stránek na 85 stranách: homepage, produkt, kategorie, článek, výpis, " +
+      "prodejní landing, kontakt a aplikace. U každé wireframe, pořadí bloků a šablony " +
+      "textů, které AI umí přečíst. Ke stažení hned po zaplacení.",
+    linkText: "Získat Pack",
     href: "/pack/",
   },
 };
