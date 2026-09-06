@@ -117,12 +117,12 @@ export const services = {
       metaHtml: "3&nbsp;850&nbsp;– 23&nbsp;000&nbsp;Kč bez DPH",
     },
     {
-      href: "https://www.sniperdesign.cz/audity",
+      href: "/audit/",
       num: "02",
-      titleHtml: "8 typů auditů s konkrétními cenami",
+      titleHtml: "AI&nbsp;SEO audit s&nbsp;cenou předem",
       descHtml:
-        "Od základního SEO auditu (2&nbsp;500&nbsp;Kč) přes Core Web Vitals a&nbsp;UX po komplexní SEO audit (22&nbsp;900&nbsp;Kč). Žádné „individuální nabídky\", konkrétní cena a&nbsp;termín předem.",
-      metaHtml: "od 2&nbsp;500&nbsp;Kč &middot; výstup do&nbsp;14&nbsp;dnů",
+        "Technika, obsah a&nbsp;důvěryhodnost webu. Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu a&nbsp;60&nbsp;minut konzultace, kde ho projdeme spolu. Cena i&nbsp;termín předem.",
+      metaHtml: "3&nbsp;600&nbsp;Kč bez DPH &middot; výstup do&nbsp;5&nbsp;pracovních dnů",
     },
     {
       href: "https://www.sniperdesign.cz/co-delame",
