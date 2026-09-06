@@ -19,6 +19,7 @@
 
 interface SignalItem {
   key: string;
+  /** Smí nést inline HTML (odkazy do slovníku a na články) — vkládá se přes `set:html`. */
   desc: string;
 }
 
@@ -101,7 +102,7 @@ const { cards, tone = "accent" } = Astro.props;
             <li class="sg__item">
               <strong class="sg__key">{item.key}</strong>
               <span class="sg__sep" aria-hidden="true">—</span>
-              <span class="sg__desc">{item.desc}</span>
+              <span class="sg__desc" set:html={item.desc} />
             </li>
           ))}
         </ul>
@@ -202,4 +203,24 @@ const { cards, tone = "accent" } = Astro.props;
   .sg__key { font-weight: 600; color: var(--color-ink); }
   .sg__sep { margin: 0 0.3rem; color: var(--color-ink-faint); }
   .sg__desc { color: var(--color-ink-muted); }
+
+  /* `set:html` obchází Astro scope, potomek proto potřebuje :global()
+     (viz gotcha „set:html + scoped CSS" v CLAUDE.md). */
+  .sg__desc :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule-strong, var(--color-rule));
+    text-underline-offset: 2px;
+  }
+
+  .sg__desc :global(a:hover),
+  .sg__desc :global(a:focus-visible) {
+    color: var(--color-accent);
+    text-decoration-color: currentColor;
+  }
+
+  .sg__desc :global(code) {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.9em;
+  }
 </style>
