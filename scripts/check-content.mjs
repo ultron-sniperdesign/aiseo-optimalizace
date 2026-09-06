@@ -23,6 +23,15 @@ const REQUIRED_WRAPPERS = [
   { child: "Persona", parent: "PersonaGrid" },
 ];
 
+/**
+ * Maximální délka titulku, který jde do výsledku vyhledávání.
+ * Přes ~60 znaků Google titulek ořízne a čtenář neuvidí konec — u článku
+ * `mereni-seo-vykonu-2026` (90 znaků) se utnul přesně na části, která
+ * slibovala nástroje. Do SERPu jde `seoTitle`, a když chybí, tak `title`.
+ * Naměřeno 7. 9. 2026: 6 ze 162 článků bylo nad limitem.
+ */
+const SERP_TITLE_MAX = 60;
+
 const problems = [];
 
 for (const dir of CONTENT_DIRS) {
@@ -36,6 +45,16 @@ for (const dir of CONTENT_DIRS) {
   for (const file of files) {
     const path = join(dir, file);
     const text = readFileSync(path, "utf8");
+
+    // Titulek pro SERP — `seoTitle` má přednost, jinak `title`.
+    const fm = text.split("---")[1] ?? "";
+    const serpTitle =
+      /^seoTitle: "(.*?)"$/m.exec(fm)?.[1] ?? /^title: "(.*?)"$/m.exec(fm)?.[1];
+    if (serpTitle && serpTitle.length > SERP_TITLE_MAX) {
+      problems.push(
+        `${path}: titulek pro SERP má ${serpTitle.length} znaků (max ${SERP_TITLE_MAX}) — Google ho ořízne`,
+      );
+    }
 
     for (const { child, parent } of REQUIRED_WRAPPERS) {
       // `<Mistake ` ano, `<MistakeGrid` ne — hranice na mezeře nebo `/>`

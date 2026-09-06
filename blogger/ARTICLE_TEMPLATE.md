@@ -7,6 +7,30 @@
 
 title: "Titulek článku — 50 až 60 znaků, klíčové slovo nahoru"
 
+# VOLITELNÝ, ale ROZMYSLI SI HO. Titulek pro výsledek vyhledávání.
+# Když chybí, do SERPu jde `title` — což je často v pořádku, ale ne vždy.
+#
+# DOPLŇ HO, KDYŽ:
+#   - `title` přesáhne 60 znaků (Google ho ořízne a konec čtenář neuvidí)
+#   - `title` je psaný jako nadpis na stránce, ne jako slib ve výsledku
+#     („Co umí X" popisuje; „Jak X zapnout: 3 způsoby" slibuje akci)
+#   - článek cílí dotaz, který se v `title` nevyskytuje v tom tvaru,
+#     jak ho lidé píšou
+#
+# JAK HO NAPSAT — měřeno na vlastních datech 7. 9. 2026:
+#   Dva nejúspěšnější články blogu mají český seoTitle SE SLOVESEM,
+#   ten nejlepší navíc slibuje počet způsobů:
+#     „Jak vypnout AI v Googlu: 3 funkční způsoby"  → CTR 1,06 %
+#     „Režim AI: co umí, k čemu se nehodí"          → CTR 0,06 %
+#   Rozdíl nedělá jazyk, ale SLIB. Popis nestačí.
+#
+#   - do 60 znaků (delší se ořízne)
+#   - klíčové slovo v prvních 30 znacích
+#   - sloveso nebo číslo tam, kde to dotaz unese — ne u analytických textů,
+#     kde by to znělo falešně
+#   - NIKDY neslibuj, co článek nemá. Radši nudné a pravdivé.
+# seoTitle: "Jak X zapnout: 3 způsoby (návod 2026)"
+
 # 70–160 znaků (validuje se!). Hook + benefit. Co čtenář získá za 30 vteřin čtení.
 description: "Co článek řeší a komu pomůže. Krátce, konkrétně, bez frází typu 'v dnešní dynamické době'. Cílem je proklik z SERPu."
 
@@ -186,6 +210,8 @@ Pak jedno CTA relevantní pro kontext:
 ## 📋 Checklist před `git commit`
 
 - [ ] Frontmatter: všech 7 povinných polí vyplněno
+- [ ] **Titulek pro SERP do 60 znaků** — `seoTitle`, a když chybí, tak `title`. Nad 60 znaků Google ořízne a čtenář neuvidí konec. Kontroluje `npm run build`.
+- [ ] **Rozmyšleno, jestli článek potřebuje vlastní `seoTitle`** — `title` je nadpis na stránce, `seoTitle` slib ve výsledku vyhledávání. Rozdíl v CTR dělá slib akce, ne jazyk (měřeno 7. 9. 2026).
 - [ ] `description` 70–160 znaků
 - [ ] `slug` jen `[a-z0-9-]`, bez diakritiky a podtržítek
 - [ ] `updated` je dnešní nebo dřívější datum (`YYYY-MM-DD`)

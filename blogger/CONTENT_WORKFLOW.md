@@ -161,6 +161,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - [ ] A: trend research → ≥ 2 nové řádky v `obsahovy-plan.csv`
 - [ ] B: vybrán první volný řádek, **přečten sloupec C**, hloubkový research + KW
 - [ ] C1: draft s answer + FAQ + CTA, brand voice OK
+- [ ] **C1b: titulek pro SERP** — `seoTitle` do 60 znaků, nebo vědomé rozhodnutí, že stačí `title`. Popis nestačí, rozhoduje slib akce (viz `ARTICLE_TEMPLATE.md`)
 - [ ] C2–C5: 2 kola OpenAI auditu zapracována (`--max-tokens` ≥ 5000)
 - [ ] **C6: jazyková kontrola — `jazyk-check.py` na 0 nálezů + LLM průchod + případná nová pravidla do slovníku**
 - [ ] D1: design komponenty, `.mdx` + `variant: rich`, žádný wall of text
