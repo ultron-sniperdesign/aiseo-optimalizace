@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 61** · založeno 2026-08-23 · poslední změna 2026-09-06 (10 pravidel na anglická sousloví z pilíře a sekcí, výjimka pro „scaled content abuse“; rozsah rozšířen mimo blog) · audituje skill `cestina-audit`
+> **Verze: 62** · založeno 2026-08-23 · poslední změna 2026-09-06 (11 pravidel z revize sekcí; nově jednotné číslo „Přehled od AI“ dle rozhraní Googlu a dat o hledanosti) · audituje skill `cestina-audit`
 >
 > Jediný zdroj pravdy pro jazykový audit **všech textů webu** — článků, sekcí, pilíře
 > i řetězců v `src/i18n/*`. Do 6. 9. 2026 se pouštěl jen na blog, proto mají sekce
@@ -212,6 +212,7 @@
 | ⛔ | `\banswer block\w*\b` | krátká odpověď | glosář v CLAUDE.md § X. Regex musí pokrýt **skloňované tvary** („answer blockem“) — bez toho unikl výskyt v článku 4 | seed 2026-08-23, rozšířeno 2026-08-23 |
 | ⛔ | `\bschema markup\w*` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test,jak-cist-studie-o-ai-viditelnosti]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech | seed 2026-08-23, výjimka 2026-08-26 |
 | ⛔ | `\bhub-and-spoke\w*\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
+| ⛔ | `Přehled(y|ech|ů|ům) od AI` | Přehled od AI (jednotné číslo, se správným pádem) | Google v rozhraní píše **„Přehled od AI“** v jednotném čísle a hledá se tak i v datech: `přehled od ai` 130/měs a +169 % meziročně, množné číslo nemá měřitelnou hledanost (Marketing Miner 6. 9. 2026). **Pozor, není to prostá záměna** — mění se pád i shoda přísudku („Přehledy od AI čerpají“ → „Přehled od AI čerpá“). **Výjimka `[skip:kdy-ai-prehled-necekat,seo-vs-geo-vs-aeo-vs-aio]`:** ten článek cituje doslova českou nápovědu Googlu (Google sám v dokumentaci množné číslo používá, i když v rozhraní píše jednotné) a pilíř nese v seznamu zdrojů doslovný titulek oznámení „Google spouští v Česku Přehledy od AI“. Obojí jsou názvy cizích dokumentů, nepřepisují se | G9, revize 2026-09-06 |
 
 ## 6. Typografie a interpunkce
 
