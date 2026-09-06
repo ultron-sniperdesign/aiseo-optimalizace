@@ -88,6 +88,15 @@
   --sd-gold-deep: oklch(0.7 0.18 60);
   --sd-paper: oklch(0.985 0.004 250);
 
+  /* ---- Štítky nad bloky (eyebrow) ------------------------------------------
+     Drobný text nad blokem často nese podstatnou informaci — u kontextového CTA
+     dokonce jméno služby a agentury. Do 6. 9. 2026 měly tyhle štítky 11–13 px
+     a v textu zanikaly. Jedna škála pro všechny, ať se znovu nerozejdou:
+     `.eyebrow`, `.inline-cta__eyebrow`, `.insight__label`, `.answer__mark`. */
+  --label-size: 0.875rem;
+  --label-weight: 700;
+  --label-tracking: 0.08em;
+
   --w-read: 40rem;
   --w-wide: calc(min(var(--max-section), 100vw) - 2 * var(--space-section-x));
 }
@@ -142,9 +151,9 @@ body {
 /* Eyebrow — sans uppercase label nad sekcemi (NE mono) */
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-tracking);
   text-transform: uppercase;
   color: var(--color-ink-muted);
   display: inline-flex;
@@ -372,11 +381,11 @@ pre.astro-code .line span[style*="color:#22863a"] {
 .inline-cta__eyebrow {
   margin: 0 0 0.75rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-tracking);
   text-transform: uppercase;
-  color: oklch(from var(--sd-gold) l c h / 0.85);
+  color: var(--sd-gold);
 }
 .inline-cta__label {
   margin: 0 0 0.625rem;

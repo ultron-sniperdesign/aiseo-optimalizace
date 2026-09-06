@@ -407,7 +407,7 @@ export const ui = {
     copyLabel: "Kopírovat",
     copiedLabel: "✓ Zkopírováno",
     /** Insight default label (přepsatelný props `label` z MDX). */
-    insightLabel: "Klíčový insight",
+    insightLabel: "Klíčové zjištění",
     /** Mistake — prefix fix řádku. */
     mistakeFixLabel: "Fix:",
     /** SourceCard defaulty (přepsatelné props). */
