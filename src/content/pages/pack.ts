@@ -264,7 +264,7 @@ export const structureHead: SectionHead = {
   eyebrowNum: "03",
   eyebrow: "Co je uvnitř jedné stránky",
   title: "Ukázka struktury — <strong>produktová stránka v Packu</strong>",
-  lead: "Každý ze 7 typů stránek obsahuje wireframe, anotace, šablonu textů a ukázku strukturovaných dat. Tady je, jak se to skládá u produktové stránky:",
+  lead: "Každý z 8 typů stránek obsahuje wireframe, anotace, šablonu textů a ukázku strukturovaných dat. Tady je, jak se to skládá u produktové stránky:",
 };
 
 export const sampleSteps = [
@@ -296,7 +296,7 @@ export const sampleSteps = [
 ];
 
 export const sampleNote =
-  "Stejný princip drží pro všech 7 typů stránek — homepage, produkt, kategorii, blog článek, blog výpis, prodejní landing i kontakt.";
+  "Stejný princip drží pro všech 8 typů stránek — homepage, produkt, kategorii, blog článek, blog výpis, prodejní landing, kontakt i aplikaci.";
 
 /** Sekce 04 — Co dostanete po koupi. */
 export const deliverablesHead: SectionHead = {
@@ -405,7 +405,7 @@ export const decision = {
     {
       need: "Aplikovat rámec na&nbsp;<strong>celý web</strong> sám nebo s&nbsp;týmem",
       choice:
-        "<strong>AI&nbsp;SEO Wireframe Pack</strong> &mdash; 7 typů stránek, 85 stran PDF",
+        "<strong>AI&nbsp;SEO Wireframe Pack</strong> &mdash; 8 typů stránek, 85 stran PDF",
       price: "<strong>1&nbsp;490&nbsp;Kč</strong>",
       featured: true,
     },

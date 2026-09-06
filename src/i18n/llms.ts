@@ -64,7 +64,7 @@ export const llms = {
     {
       path: "/pack/",
       label: "AI SEO Wireframe Pack (1 490 Kč)",
-      desc: "Wireframy a šablony pro 7 typů stránek webu + aplikační návod. 9 PDF + master 85 stran.",
+      desc: "Wireframy a šablony pro 8 typů stránek webu + aplikační návod. 9 PDF + master 85 stran.",
     },
     {
       path: "/audit/",
