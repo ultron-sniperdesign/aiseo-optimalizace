@@ -229,6 +229,9 @@ export const ui = {
   /** Figure — popisek odkazu na plnou velikost obrázku. */
   figure: {
     openFull: "Otevřít obrázek v plné velikosti",
+    /** Nápověda pod obrázkem; ukazuje se jen na úzkých displejích, kde je
+     *  snímek rozhraní zmenšený na nečitelnou velikost. */
+    tapToZoom: "Klepnutím otevřete v plné velikosti",
   },
   metaMinShort: "min", // krátká forma na blog kartách (acard__time)
 

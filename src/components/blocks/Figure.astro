@@ -31,7 +31,7 @@
  * ```
  */
 import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { ui } from "~/i18n/strings";
 
 interface Props {
@@ -51,7 +51,11 @@ interface Props {
 const { src, alt, caption, credit, width, height } = Astro.props;
 
 // Existenci ověřujeme proti `public/` v době buildu — `src` je vždy cesta od kořene webu.
-const publicDir = fileURLToPath(new URL("../../../public", import.meta.url));
+// POZOR: cesta se NESMÍ odvozovat od `import.meta.url`. V dev režimu ukazuje na
+// zdrojový soubor, ale v produkčním buildu na zabalený chunk (`dist/chunks/*.mjs`),
+// takže `../../../public` mine kořen projektu o jednu úroveň a obrázky se tiše
+// nevykreslí. `process.cwd()` je při `astro build` i `astro dev` kořen projektu.
+const publicDir = join(process.cwd(), "public");
 const exists = existsSync(`${publicDir}${src.split("?")[0]}`);
 const isDev = import.meta.env.DEV;
 ---
@@ -74,6 +78,7 @@ const isDev = import.meta.env.DEV;
         <figcaption class="figure__caption">
           {caption}
           {credit && <span class="figure__credit">{credit}</span>}
+          <span class="figure__zoom">{ui.figure.tapToZoom}</span>
         </figcaption>
       )}
     </figure>
@@ -123,6 +128,21 @@ const isDev = import.meta.env.DEV;
     color: var(--color-ink-muted);
     /* Popisek se čte, takže drží čitelné měřítko i pod širokým obrázkem. */
     max-width: var(--w-read);
+  }
+
+  /* Na širokém displeji je snímek čitelný sám o sobě; pod 720 px se zmenší
+     natolik, že uživatel potřebuje vědět, že jde otevřít. */
+  .figure__zoom {
+    display: none;
+  }
+
+  @media (max-width: 720px) {
+    .figure__zoom {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.8125rem;
+      color: var(--color-accent);
+    }
   }
 
   .figure__credit {

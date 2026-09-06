@@ -1,3 +1,9 @@
+> **✅ SPLNĚNO 6. 9. 2026.** Snímky dodal uživatel, jsou zpracované a nasazené
+> (`public/screenshots/rezim-ai/{zalozka,odpoved,zdroje}.webp`). Originály zůstávají
+> v `_source/screen-google-ai-mode/` a **necommitují se** — na snímku nové karty jsou
+> vidět osobní zástupci v Chromu, do veřejného repa nepatří.
+> Soubor si nech jako předlohu, kdyby se snímky obnovovaly.
+
 # Snímky obrazovky — režim AI
 
 > **Kam soubory patří:** `public/screenshots/rezim-ai/`
