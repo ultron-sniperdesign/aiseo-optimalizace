@@ -1238,3 +1238,37 @@ Odmítnuto: chybějící tečka na konci věty v bloku `<Insight>` — věta pok
 Přijato: „Následky dokumentace jmenuje dva" → „Dokumentace jmenuje dva následky" (neobratný slovosled) · čárka před „nebo" ve výčtu nástrojů, kde nepatří · „na svojí adrese" → „na své adrese".
 
 **Poznámka — opakovaná past plošné náhrady.** Po auditu #1 jsem nahrazoval „crawler" → „vyhledávací robot" plošným `s.replace()` a rozbil tím interní odkaz: z `/blog/ai-crawler-robots-txt/` se stalo `/blog/ai-vyhledávací robot-robots-txt/`. Mechanická kontrola to nenašla (není to jazyková vada) a jazykový model taky ne — chytil to až auditor #2 jako blokující nález. Je to týž vzorec jako „vykázalaa" z 2. 9.: **plošná náhrada musí vynechat adresy, kód a slugy**, jinak opraví i to, co opravovat nemá. Pravidlo do příště: po každé plošné náhradě projet kontrolu interních odkazů proti `src/content/articles/`.
+
+---
+
+## Přepis názvosloví v klastru „režim AI“ a „Přehled od AI“ (6. 9. 2026)
+
+Zadání admin session: `_source/_keyword-research/blog-nazvoslovi-20260906/PROMPT-PRO-BLOGGERA.md`
+(data: Search Console 8. 6. – 6. 9. 2026, Marketing Miner 6. 9. 2026).
+
+**Co se změnilo:** 14 článků mělo v tom, co jde do výsledků vyhledávání, anglický název funkce.
+Třinácti z nich `seoTitle` **chyběl úplně**, takže do SERPu šel anglický `title`; `aeo-optimalizace-v-praxi`
+měl anglický `seoTitle`. Všem je teď doplněný nebo přepsaný český, všechny do 60 znaků. `title` srovnán taky.
+U pěti článků byl první H2 doslova týž řetězec jako `title` (šablona ho tak má) — srovnán, aby stránka
+nemluvila jinak nahoře a jinak v textu.
+
+| Zůstalo anglicky záměrně | Proč |
+|---|---|
+| `Jak se zobrazit v režimu AI (AI Mode): 5 kroků` | pravidlo 4 zadání — anglický tvar smí zůstat v závorce; článek cílí i dotaz `ai mode` (3 100/měs) |
+| `Query fan-out: jak režim AI (AI Mode) čte obsah` | totéž; `query fan-out` je zavedený odborný termín, nepřekládá se |
+| `AEO v praxi: featured snippets a Přehled od AI` | `featured snippets` je cílové klíčové slovo článku; česky se přepsal jen název funkce Googlu |
+| `Zero-click a Přehled od AI: jak měřit a kompenzovat` | `zero-click` je slug i hledaný termín; analýza navrhovala „Vyhledávání bez kliknutí“, ale tím by titulek ztratil dotaz, na který článek stojí |
+
+**Čísla nechávám v titulku jen tam, kde je článek unese.** `jak-se-zobrazit-v-ai-mode` má v poli `howto`
+pět kroků, takže „5 kroků“ je ověřitelné. Nikde jinde jsem číslo ani sloveso nepřidával — u analytických
+článků by slib návodu neseděl (pravidlo 7 zadání).
+
+**Množné číslo „Přehledy od AI“** (pravidlo v58+ → v62, G9): `preferovane-zdroje-google.mdx` byl poslední
+článek blogu, který ho nesl — 5 výskytů ve čtyřech pádech. Opraveno včetně pádů („v přehledech od AI“ →
+„v Přehledu od AI“, „mezi přehledy od AI a režimem AI“ → „mezi Přehledem od AI a režimem AI“). Při tom
+přepsaná i kotva odkazu „AI Mode a AI Overviews“ na český tvar. Checker: 5 → 0.
+
+**Co jsem NEdělal:** anglický název funkce zůstává v **tělech článků — 680 výskytů v 92 článcích**.
+To je jiná úloha než titulky: část z nich je legitimní glosa u prvního výskytu a přepis se nedá udělat
+plošnou náhradou (viz past z 5. 9., kdy plošné `replace` rozbilo adresu v odkazu). Je to rozhodnutí
+pro uživatele, ne vedlejší efekt téhle práce.
