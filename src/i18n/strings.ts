@@ -447,8 +447,8 @@ export const ui = {
     copiedLabel: "✓ Zkopírováno",
     /** Insight default label (přepsatelný props `label` z MDX). */
     insightLabel: "Klíčové zjištění",
-    /** Mistake — prefix fix řádku. */
-    mistakeFixLabel: "Fix:",
+    /** Mistake — prefix řádku s nápravou. */
+    mistakeFixLabel: "Řešení:",
     /** Mindset — popisky dvojice karet (přepsatelné props `badChip` / `goodChip`). */
     mindsetBadLabel: "Špatný přístup",
     mindsetGoodLabel: "Správný přístup",
@@ -457,9 +457,9 @@ export const ui = {
     sourceLinkLabel: "Otevřít zdroj",
     /** ToolGrid tier labely (klíč = tier enum). */
     tier: {
-      free: "Free",
+      free: "Zdarma",
       paid: "Placený",
-      both: "Free + Placený",
+      both: "Zdarma i placený",
     } as Record<string, string>,
     /** HeroVideo — aria-label play tlačítka (default, přepsatelný props). */
     playVideo: "Přehrát video",

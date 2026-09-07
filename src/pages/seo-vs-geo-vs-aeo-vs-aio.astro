@@ -56,6 +56,16 @@ const articleImageURL = `${SITE_ORIGIN}/og/pillar.jpg`;
  * JSON-LD — Article + FAQPage. Pillar = hlavní průvodce, dostává
  * articleSection "Hlavní průvodce" pro odlišení od běžných sekcí/blogu.
  */
+// Viditelné datum aktualizace — český formát, stejně jako v [slug].astro.
+// Pilíř do 7. 9. 2026 vypisoval syrové ISO („Aktualizováno: 2026-09-06"),
+// zatímco všech sedm sekcí ukazovalo „6. 9. 2026". Slovník to hlásí jako
+// „české datum"; ve zdroji se to nenajde, protože tvar vzniká až v šabloně.
+const updatedStamp = entry.data.updated
+  ? new Date(`${entry.data.updated}T00:00:00Z`).toLocaleDateString("cs-CZ", {
+      day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC",
+    })
+  : entry.data.updated;
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -137,7 +147,7 @@ const faqCount = entry.data.faq?.length ?? 0;
         <span>{faqCount} {ui.metaFaqs}</span>
         <span>{ui.pillar.compareTable}</span>
         <span>{ui.pillar.readingApprox}</span>
-        <span>{ui.metaUpdated} {entry.data.updated}</span>
+        <span>{ui.metaUpdated} {updatedStamp}</span>
       </div>
     </section>
 
