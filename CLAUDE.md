@@ -556,6 +556,19 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 - **Revize sekcí 9/2026 — rozpracovaná** — zdroj `_source/_keyword-research/revize-sekci-20260905/` (necommitováno, obsahuje GSC exporty). Pracovní evidence: `CHECKLIST.md` (20 stránek + 7 globálních oprav + část B pro bloggera), počítadlo `polozky.csv` (723 položek, 691 k práci), přepočet `python3 stav.py`. Rozhodnutí uživatele 2026-09-05: AIO = „Přehledy od AI“ (datum v ČR 20. 5. 2025), cookie lišta odložena, `/cenik/` zamítnut, `/nastroje/ai-check/` odložen.
 - ~~**Audit landing URL swap**~~ — ČÁSTEČNĚ (audit 2026-05-24): `/pack/` a `/pack/dekujeme/` odkazují na `/audit/`. **Neplatí pro celý web** — revize 2026-09-05 našla `sniperdesign.cz/audity` v 18 souborech (sekce, pilíř, 10 článků, `contact.ts`); vede se jako G2 v CHECKLIST.md. E-mail šablona `email-pack-paid-v2.html` stále neověřena (mimo web).
+- **Přeměřit dopad změněných titulků — 5. 10. 2026, pak 2. 11. 2026.** 6.–7. 9. 2026
+  se změnil titulek pro SERP u **25 stránek** (14 blogger, 11 admin). Baseline,
+  metoda i kritéria: `_source/_keyword-research/blog-gsc-20260907/MERENI-TITULKU.md`,
+  přeměření skriptem `premereni.py`. Měří se **kohortně proti kontrolní skupině**
+  (rozdíl rozdílů) — po článcích to nejde, u 20 z 24 přebije šum jakýkoli efekt.
+  Práh průkaznosti ±0,55 p.b.
+- **🟠 Prověřit dosah blogu — 95 článků ze 162 má pod 10 zobrazení za čtvrtletí.**
+  Skutečný problém blogu není CTR (zbylých 159 článků mimo tři velké má CTR 1,05 %,
+  dvakrát nad průměrem webu), ale to, že se většina článků prakticky nezobrazuje.
+  Ověřit, jestli za tím není kanibalizace jako u klastru „režim AI", kde šest URL
+  soupeřilo o jeden dotaz a spravilo se to bez psaní obsahu. Podklad:
+  `_source/_keyword-research/blog-gsc-20260907/ANALYZA.md`. **Jediná cesta
+  s řádovým dopadem** — titulky ani CTR to nevyřeší.
 - **Vyhodnotit přejmenování rodiny „režim AI" — 3. 10. 2026** (4 týdny od zásahu 5. 9.). Baseline, kritéria úspěchu a postup: `_source/_keyword-research/revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md`. Rodina `/ai-mode/` + `rezim-ai-google` + `ai-mode-cesky` = 14 429 impresí / 28 kliků za 90 d; `/ai-mode/` mělo 1 276 impresí a 0 kliků na pozici 6,1. Přesměrování NEbylo nasazeno — zvažovat až podle dat.
 - **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
 - **Další běh měření AI viditelnosti ~20. 8. 2026** — oba configy (aiseo-optimalizace, megadetail) beze změny promptů, výsledek do deníku § 3b + Freelo 31576165. Pokud po 20. 8. neproběhl (kontrola: nejnovější složka v `Tools/měření AI viditelnosti/runs/`), PŘIPOMENOUT uživateli.
