@@ -1,0 +1,165 @@
+---
+title: "Informační články, na které AI odpovídá sama: co s nimi"
+seoTitle: "Informační obsah v AI éře: přepsat, sloučit, nebo nechat"
+description: "Přehled od AI může na „co je X“ odpovědět přímo ve výsledcích. Podle čeho poznat, který článek přepsat, který sloučit a který nechat být."
+answer: "Informační článek, na který AI odpovídá sama, má čtyři možné osudy: nechat beze změny, přepsat na rozhodovací nebo srovnávací obsah, sloučit s příbuzným článkem, nebo nechat jako citovatelný zdroj. Rozhoduje poptávka a to, co článek umí navíc oproti běžné znalosti."
+slug: "informacni-obsah-v-ai-ere"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-09-07"
+updated: "2026-09-07"
+variant: "rich"
+keywords:
+  - "informační obsah v ai éře"
+  - "co dělat se starými články"
+  - "sloučení článků seo"
+  - "přepsat článek pro ai"
+  - "commodity obsah"
+stats:
+  - value: "4 osudy"
+    label: "nechat, přepsat na rozhodovací obsah, sloučit, nebo nechat jako citovatelný zdroj"
+  - value: "„No, it won’t“"
+    label: "odpověď Googlu na mazání staršího obsahu hlavně kvůli dojmu čerstvosti webu"
+  - value: "0 kliků"
+    label: "při nízkém počtu zobrazení samy o sobě nedokazují, že je problém v článku"
+faq:
+  - q: "Mám informační články mazat, když na ně AI odpovídá sama?"
+    a: "Plošně ne. Google v dokumentaci k užitečnému obsahu přímo odpovídá na otázku, jestli odstraňování staršího obsahu zlepší hodnocení webu, protože bude působit čerstvěji: „No, it won’t.“ Mazání je úklid duplicit nebo obsahu, který už neplatí — ne páka na pozice."
+  - q: "Podle čeho poznám, který článek přepsat?"
+    a: "Podle toho, co v něm je navíc oproti běžné znalosti. Google rozlišuje obsah, který jen shrnuje, co ví každý, a obsah s vlastní zkušeností nebo odborným pohledem. Když článek jen vysvětluje pojem, přepis mu pomůže jen tehdy, když do něj něco vlastního přibude."
+  - q: "Znamená nula prokliků, že je článek špatný?"
+    a: "Ne nutně. Při nízkém počtu zobrazení je nula kliků slabý signál. Ilustrativně: při dvaceti čtyřech zobrazeních a míře prokliku 3 % vychází 0,72 očekávaného kliku, takže nula není překvapivý výsledek. Nejdřív se dívejte na zobrazení, pozici a dotazy, až potom na text."
+  - q: "Kdy má smysl dva články sloučit?"
+    a: "Když si konkurují o týž dotaz a ani jeden nemá vlastní podstatu. Google k duplicitám píše, že plýtvají zdroji na procházení a že je vhodné je omezit. Slučte je do té adresy, která má lepší pozici, a slabší trvale přesměrujte."
+  - q: "Pomůže, když místo toho napíšu víc článků?"
+    a: "Samo o sobě ne. Google uvádí, že vysoký počet stránek z webu nedělá kvalitnější ani relevantnější web. A vyrábět stránku na každou variantu dotazu hlavně kvůli ovlivnění hodnocení nebo generativních odpovědí označuje za porušení zásady o hromadně tvořeném obsahu."
+  - q: "Co je „citovatelný zdroj“, když článek nemá prokliky?"
+    a: "Stránka, ze které mohou vyhledávání i AI systémy převzít přesnou odpověď a případně ji uvést jako zdroj. Smysl to dává hlavně u vlastní definice, metodiky, dat, případu z praxe nebo výkladu vlastní kategorie. Obecnou definici bez vlastního přínosu je lepší zkrátit a použít jako úvod rozhodovacího článku. Měřte to jako viditelnost, ne jako návštěvnost."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Co se stalo s <span class="hl">informačním obsahem</span> — <strong>ubylo prokliků, ne poptávky</strong>
+
+**Starý informační článek nemusíte hned mazat ani přepisovat. Rozhodujte mezi čtyřmi možnostmi: nechat beze změny, přepsat na rozhodovací nebo srovnávací obsah, sloučit s příbuzným článkem, nebo ho udržovat jako citovatelný zdroj.** Rozhoduje poptávka a to, co článek umí navíc oproti běžné znalosti.
+
+Důvod, proč se ta otázka vůbec otevřela, je známý: u dotazů typu „co je X“ a „jak na Y“ může Přehled od AI uspokojit část poptávky přímo ve výsledcích. Poptávka po odpovědi nezmizela — jen se část lidí nemusí prokliknout. Kolik z toho je měřitelná ztráta a jak ji sledovat, rozebírá [vyhledávání bez kliknutí](/blog/zero-click-ai/); proč se rozhodování přesouvá níž v trychtýři, [střední část trychtýře](/blog/stredni-cast-trychtyre-ai/).
+
+Tenhle článek řeší jinou otázku: **co s konkrétním starým textem, který na disku máte.** Odpověď není „smazat“ ani „nechat být“ — jsou čtyři možnosti a rozhoduje se mezi nimi podle dvou věcí.
+
+## Vodítko dává <span class="hl">Google</span> vlastními slovy — <strong>běžná znalost versus vlastní zkušenost</strong>
+
+V průvodci optimalizací pro generativní AI Google rozlišuje dva druhy obsahu a u obou uvádí příklad. Běžný obsah popisuje jako text „založený na běžné znalosti, která by mohla pocházet od kohokoli“ a který „čtenáři přidává jen málo jedinečného vhledu“ — jeho příklad je *„7 tipů pro první nákup nemovitosti“*. Proti tomu staví obsah, který „přináší jedinečný odborný nebo zkušenostní pohled jdoucí za běžnou znalost“ — a jeho příklad zní *„Proč jsme vynechali inspekci a ušetřili: pohled do kanalizační přípojky“*.
+
+Není to rozhodovací pravidlo pro staré články, ale použitelné vodítko — dá se totiž aplikovat na konkrétní odstavec. Otázka nezní „je ten článek dobrý“, ale:
+
+<Checklist tone="seo" title="Dvě otázky na každý informační článek" items={[
+  { title: "Je v něm něco, co jinde není?", desc: "Vlastní měření, zkušenost z projektu, případ, který jsem viděl, ověření u zdroje. Když ne, je to shrnutí běžné znalosti — a přesně na to teď odpovídá AI." },
+  { title: "Hledá to ještě někdo?", desc: "Zobrazení a pozice v Search Console za poslední čtvrtletí. Bez poptávky nepomůže ani přepis, ani nový titulek." },
+]} />
+
+Ze dvou odpovědí vyjde rozhodnutí. Pro běžnou revizi obsahu stačí čtyři výchozí volby níž — a nejhorší bývá ta pátá, nevyslovená: nechat starý článek ležet a napsat vedle něj nový text na totéž.
+
+## <span class="hl">Čtyři možnosti</span>, ne dvě — <strong>mazání není výchozí reakce</strong>
+
+Ze dvou otázek výš vyjdou čtyři situace. Tahle matice říká, do které možnosti která vede:
+
+<Checklist tone="seo" title="Poptávka × vlastní přínos" items={[
+  { title: "Poptávka ano, vlastní přínos ano", desc: "Nechat a udržovat. Rozšiřovat jen podle toho, co lidé na tom dotazu opravdu hledají." },
+  { title: "Poptávka ano, vlastní přínos ne", desc: "Přepsat na rozhodovací obsah, nebo sloučit se silnějším článkem na totéž téma. Tady je největší návratnost práce." },
+  { title: "Poptávka ne, ale stránka má roli", desc: "Nechat jako podpůrnou nebo citovatelnou stránku a neměřit ji návštěvností. Typicky výklad vlastní metodiky nebo kategorie." },
+  { title: "Poptávka ne a role žádná", desc: "Sloučit a přesměrovat. Odstranit až tehdy, když obsah neplatí a nemá nástupce." },
+]} />
+
+<CompareTable
+  leftLabel="Kdy tuhle cestu zvolit"
+  leftTone="seo"
+  rightLabel="Co konkrétně udělat"
+  rightTone="aeo"
+  rows={[
+    { icon: "✍️", label: "Přepsat na rozhodovací obsah", left: "poptávka je, ale článek jen vysvětluje pojem", right: "doplnit srovnání možností, kritéria výběru a vlastní zkušenost; definici zkrátit na úvodní odstavec, ne na celý text" },
+    { icon: "🔗", label: "Sloučit", left: "dva články soupeří o týž dotaz a ani jeden nemá vlastní podstatu", right: "silnější adresu doplnit o to, co má slabší navíc, a slabší trvale přesměrovat" },
+    { icon: "📌", label: "Nechat jako citovatelný zdroj", left: "stránka nese vlastní definici, metodiku, data nebo výklad vlastní kategorie", right: "nechat být a hlídat aktuálnost; nemusí přinést návštěvy, ale může nést jméno značky do odpovědi" },
+    { icon: "🤚", label: "Nechat beze změny", left: "zobrazení je málo a téma není vaše priorita", right: "nic — čas dát článku, který se aspoň zobrazuje" },
+  ]}
+/>
+
+Nejčastější chyba není špatná volba mezi nimi. Je to **přeskočení první otázky**: přepsat článek, na který se nikdo nedívá, zabere stejně času jako přepsat ten, který má sto zobrazení měsíčně.
+
+## Proč <span class="hl">mazání kvůli čerstvosti</span> nefunguje — <strong>Google to říká přímo</strong>
+
+Oborová pověra zní, že když se web zbaví slabých článků, zbytku se uleví. Google má v dokumentaci k užitečnému obsahu seznam otázek k sebehodnocení a jedna z nich míří přesně sem:
+
+<Insight tone="warn" label="Přeloženo z dokumentace Googlu">
+  „Přidáváte hodně nového obsahu nebo odstraňujete hodně staršího hlavně proto, že věříte, že to zlepší vaše hodnocení ve vyhledávání tím, že web bude působit čerstvěji? **(Ne, nezlepší.)**“ — dokumentace Googlu k užitečnému obsahu, aktualizováno 10. 12. 2025.
+</Insight>
+
+Mazat se tedy má z jiných důvodů: obsah už neplatí, nemá nástupce, nebo popisuje službu, kterou neděláte. Když má nástupce, patří místo mazání sloučení a přesměrování. K duplicitám Google dodává mírnější formulaci — plýtvají zdroji na procházení a „pokud máte čas, zkuste je omezit“. Je to úklid, ne páka na pozice.
+
+Stejně tak neplatí obrácená úvaha, že řešením je psát víc. **Google uvádí, že samotný vysoký počet stránek z webu nedělá kvalitnější ani relevantnější web.** A pokud někdo vyrábí stránku na každou variantu dotazu hlavně proto, aby ovlivnil hodnocení nebo generativní odpovědi, může jít o porušení zásady o hromadně tvořeném obsahu — podmínkou je ten záměr, ne počet sám.
+
+## Jak to rozhodnout na <span class="hl">datech</span> — <strong>nula kliků nic nedokazuje</strong>
+
+Tohle je místo, kde se rozhodování nejčastěji podělá. Článek s nulou prokliků vypadá jako důkaz, že je s ním něco špatně. Obvykle je to důkaz o něčem jiném.
+
+<Insight tone="accent" label="Spočítejte si to, než přepíšete">
+  **Při nízkém počtu zobrazení nula kliků sama o sobě nedokazuje, že je článek špatný** — dokazuje hlavně to, že je vzorek malý. Ilustrativně: při dvaceti čtyřech zobrazeních a míře prokliku 3 % vychází 0,72 očekávaného kliku, takže nula není překvapivý výsledek. Než u takového článku začnete měnit titulek nebo text, podívejte se na zobrazení, pozici a dotazy.
+</Insight>
+
+Pořadí, ve kterém se na čísla dívat:
+
+<Checklist title="Tři čísla v tomhle pořadí" items={[
+  { title: "Zobrazení za 90 dní", desc: "Pod deset za čtvrtletí znamená, že se článek prakticky nezobrazuje a dopad úprav titulku ani textu z dat nepoznáte. Nejdřív řešte, jestli má stránka vůbec na čem se zobrazovat." },
+  { title: "Průměrná pozice", desc: "Nad deset obvykle znamená, že se stránka zobrazuje mimo první desítku a prokliků bývá málo. Pak dává větší smysl řešit relevanci a prolinkování než přepis odstavců." },
+  { title: "Dotazy, na které se zobrazuje", desc: "Až tady se pozná, jestli článek odpovídá na to, co lidé hledají. Když se zobrazuje na relevantní dotaz, který v textu chybí, může mít přepis smysl. Dotaz mimo záměr stránky raději nechte na samostatný text." },
+]} />
+
+## Když sloučíte: <span class="hl">jedna adresa</span>, <strong>ne dvě poloviční</strong>
+
+Slučování je nejvíc podceňovaná ze čtyř možností, protože nevypadá jako tvorba. Přitom u dvou článků, které si konkurují o týž dotaz, dělá víc než přepis obou.
+
+<Stepper tone="seo" steps={[
+  { title: "Vyberte cílovou adresu", desc: "Zpravidla tu s lepší pozicí a více odkazy — ale jen když odpovídá záměru dotazu a tomu, čím má článek být. Když neodpovídá, zvolte vhodnější stránku a přesměrujte na ni." },
+  { title: "Přeneste, co má slabší článek navíc", desc: "Ne celý text — jen pasáže, které v cílovém článku nejsou. Zbytek je duplicita, kterou byste si do cílové stránky přinesli." },
+  { title: "Nastavte trvalé přesměrování", desc: "Ze slabší adresy na cílovou. Bez něj přijdete o to, co slabší článek nasbíral, a čtenář narazí na chybu. Podrobně to řeší návod k migraci." },
+  { title: "Opravte odkazy uvnitř webu", desc: "Projděte, co na starou adresu odkazovalo, a přesměrujte odkazy rovnou na cílovou. Odkaz přes přesměrování funguje, ale je to zbytečná zastávka." },
+  { title: "Zapište si datum", desc: "Sloučení se vyhodnocuje po měsících, ne po dnech. Bez data si za čtvrt roku nespojíte změnu s výsledkem." },
+]} />
+
+Tenhle článek řeší triáž: který text nechat, přepsat, sloučit. Samotný postup aktualizace — jak ověřit fakta, co doplnit a jak změnu označit — má [aktualizace obsahu pro AI](/blog/aktualizace-obsahu-pro-ai/). Technickou stránku přesměrování rozebírá [migrace a redesign webu](/blog/ai-seo-migrace-redesign/), práci s odkazy [interní prolinkování pro AI](/blog/interni-prolinkovani-pro-ai/). Jak psát úseky, aby obstály samostatně — což je u přepisu na rozhodovací obsah polovina práce — má [psaní po pasážích](/blog/pasazova-optimalizace-obsahu/).
+
+## <span class="hl">Časté chyby</span> — <strong>a co dělat místo nich</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Přepsat článek, který nemá zobrazení" fix="Nejdřív se podívejte na zobrazení za 90 dní.">
+    Přepis stojí stejně času u článku, který má sto zobrazení, jako u toho se třemi. Efekt se ale projeví jen u prvního.
+  </Mistake>
+  <Mistake num="02" title="Smazat slabé články kvůli „čerstvosti webu“" fix="Mazejte jen to, co neplatí nebo duplikuje.">
+    Google na tuhle otázku odpovídá v dokumentaci přímo: hodnocení to nezlepší.
+  </Mistake>
+  <Mistake num="03" title="Napsat vedle starého článku nový na totéž" fix="Sloučit, ne přidat.">
+    Vzniknou dvě stránky, které si konkurují o týž dotaz. Google navíc uvádí, že počet stránek kvalitu webu nedělá.
+  </Mistake>
+  <Mistake num="04" title="Číst nulu kliků jako verdikt o textu" fix="Porovnejte ji s počtem zobrazení.">
+Při nízkém počtu zobrazení je nula kliků slabý signál o velikosti vzorku, ne verdikt o textu.
+  </Mistake>
+</MistakeGrid>
+
+## <span class="hl">Shrnutí</span> — <strong>čtyři osudy a dvě otázky</strong>
+
+- **Čtyři možnosti:** nechat, přepsat na rozhodovací obsah, sloučit, nebo nechat jako citovatelný zdroj.
+- **Rozhodují dvě otázky:** je v článku něco, co jinde není, a hledá to ještě někdo.
+- **Kritérium „něco navíc“ má Google popsané** — běžná znalost proti vlastní zkušenosti nebo odbornému pohledu.
+- **Mazání kvůli čerstvosti webu Google odmítá.** Mazat se má, co neplatí nebo duplikuje.
+- **Nula kliků při dvaceti zobrazeních není nález.** Nejdřív zobrazení, pak pozice, pak dotazy — a teprve potom text.
+
+**Nevíte, které články na vašem webu mají poptávku a které se jen nezobrazují?** [AI SEO audit za 3 600 Kč](/audit/) projde obsah proti datům z vyhledávání a rozdělí ho do těch čtyř skupin, takže víte, kde má přepis smysl a kde je to jen čas. Kdo chce postupovat sám, má strukturu rozhodovacího i informačního obsahu popsanou v [AI SEO Wireframe Packu za 1 490 Kč](/pack/).
+
+*Zdroje: Google Search Central — [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (aktualizováno 10. 7. 2026) a [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) (aktualizováno 10. 12. 2025). Citace z dokumentace přeložené, originální znění v odkazech. Ověřeno 7. 9. 2026.*

@@ -1272,3 +1272,18 @@ přepsaná i kotva odkazu „AI Mode a AI Overviews“ na český tvar. Checker:
 To je jiná úloha než titulky: část z nich je legitimní glosa u prvního výskytu a přepis se nedá udělat
 plošnou náhradou (viz past z 5. 9., kdy plošné `replace` rozbilo adresu v odkazu). Je to rozhodnutí
 pro uživatele, ne vedlejší efekt téhle práce.
+
+---
+
+## C6 při psaní: `informacni-obsah-v-ai-ere` (7. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 2 nálezy napoprvé — **„content"** v anglickém názvu dokumentu Googlu uvnitř citace a **„z definice"** (pravidlo míchání jazyků). Obojí opraveno v textu, ne výjimkou ve slovníku: anglický titulek dokumentu nahrazen českým popisem („dokumentace Googlu k užitečnému obsahu"), plné znění zůstalo v odkazu ve zdrojích, kde ho checker maskuje. Po opravě 0. |
+| LLM (gpt-5.4) | 5 nálezů — **všechny přijaty** |
+
+Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 kliků **sama** o sobě nedokazují" → „**samy** o sobě" (shoda s množným podmětem) · „je něco špatně s ním" → „je s ním něco špatně" · „s víc odkazy" → „s **více** odkazy" (chybný tvar po číslovkovém výrazu) · „u článku se sto zobrazeními" přeformulováno na „u článku, který má sto zobrazení".
+
+**Poznámka:** tři z pěti nálezů byly ve větách přepsaných po auditech, ne v prvním psaní — potřetí za sebou (2. 9., 3. 9., 5. 9.). Bere se to jako pravidlo: věta upravená kvůli faktické opravě jde znovu celá přečíst, ne jen zkontrolovat to opravené slovo.
+
+**Vedlejší úklid:** `gsc-ai-segmenty-mereni` nesl v těle „rollout" (předáno admin session 7. 9.) → „čekání, až se report zpřístupní". Checker 1 → 0.
