@@ -571,7 +571,12 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   s řádovým dopadem** — titulky ani CTR to nevyřeší.
 - **Vyhodnotit přejmenování rodiny „režim AI" — 3. 10. 2026** (4 týdny od zásahu 5. 9.). Baseline, kritéria úspěchu a postup: `_source/_keyword-research/revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md`. Rodina `/ai-mode/` + `rezim-ai-google` + `ai-mode-cesky` = 14 429 impresí / 28 kliků za 90 d; `/ai-mode/` mělo 1 276 impresí a 0 kliků na pozici 6,1. Přesměrování NEbylo nasazeno — zvažovat až podle dat.
 - **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
-- **Další běh měření AI viditelnosti ~20. 8. 2026** — oba configy (aiseo-optimalizace, megadetail) beze změny promptů, výsledek do deníku § 3b + Freelo 31576165. Pokud po 20. 8. neproběhl (kontrola: nejnovější složka v `Tools/měření AI viditelnosti/runs/`), PŘIPOMENOUT uživateli.
+- **Další běh měření AI viditelnosti ~7. 10. 2026** (měsíční kadence). Poslední
+  proběhl 7. 9. 2026, oba configy přes OpenAI. Výsledky a metodický závěr:
+  `cross-session/aiseo-optimalizace.md` a deník § 3b. **Pozor:** rozptyl mezi
+  běhy (28–41 % u megadetailu) je větší než dopad jednotlivých zásahů — sada
+  slouží ke sledování trendu na půl roku, ne jako měřítko konkrétní změny
+  a ne jako důkaz do case study.
 - **Datový check ~25. 8. 2026** — vyhodnocení srpnových zásahů: CTR refreshe (/ai-mode/, jak-vypnout-ai-overview, pripadova-studie), pozice „ai viditelnost", generate_lead lead_type=sluzba, dopad ExitRescue/inline CTA.
 - **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou; společně s Q3 snapshotem deníku megadetail (`_source/case-study-megadetail/DENIK.md`).
 - **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.

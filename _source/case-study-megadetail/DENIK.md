@@ -106,6 +106,26 @@ jako vzorek, trend až z řady běhů. Runs v `Tools/měření AI viditelnosti/r
 | 2026-08-07 | 33 % | 33 % | — | 33 % | |
 | 2026-08-12 | 28 % | 25 % | 19 % | 43 % | GA4: 245 AI sessions/30 d (220 ChatGPT) |
 | 2026-08-18 | 41 % | 34 % | 34 % | 65 % | GA4: 246 AI sessions/30 d; první běh PO vlnách textů kategorií (10.–16. 8.) — pohyb nahoru napříč metrikami, ale 1 běh ≠ trend, potvrdit dalšími běhy |
+| 2026-09-07 | **34 %** | 34 % | 31 % | **69 %** | GA4: 229 AI sessions/30 d (200 ChatGPT). **Vzestup z 18. 8. se NEPOTVRDIL** — viz rozbor pod tabulkou |
+
+**Rozbor běhu 7. 9. 2026 — co ta čísla znamenají**
+
+Předchozí zápis žádal potvrzení vzestupu dalšími běhy. **Nepotvrdil se.**
+
+- **Zmínka značky 41 % → 34 %.** Celá řada zní 33 · 28 · 41 · 34 %. Číslo 41 %
+  z 18. 8. bylo výkyv, ne bod na rostoucí křivce; řada kolísá kolem ~34 %.
+- **Share of voice 65 % → 69 % vzrostl, ale ne naší zásluhou.** Vlastních zmínek
+  ubylo (13 → 11), zatímco konkurenci ubylo víc (7 → 5; Autokosmetika-eshop.cz
+  spadla ze 4 na 0). SoV je podíl — roste i tehdy, když klesají všichni, jen my
+  pomaleji. **Jako důkaz úspěchu se použít nedá.**
+- **GA4 AI sessions 246 → 229** (−7 %), z toho ChatGPT 200.
+
+**Co z toho plyne:** čtyři běhy za pět týdnů na 32 promptech jsou pořád málo na
+trend. Rozptyl mezi běhy (28–41 %) je větší než jakýkoli zásah, který jsme mezi
+nimi udělali. Do case study se tahle metrika **nedá dávat jako důkaz** — na to
+slouží čísla ze Search Console (200 000 zobrazení), která mají jiný a stabilnější
+zdroj. Tuhle sadu ber jako sledování trendu na půl roku, ne jako měřítko
+jednotlivých zásahů.
 
 ## 4) Kam se čísla propisují (při každé aktualizaci projít vše)
 
