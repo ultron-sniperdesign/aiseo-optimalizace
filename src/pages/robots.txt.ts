@@ -67,7 +67,12 @@ Allow: /
 Disallow: /_review/
 Disallow: /download/
 
-User-agent: anthropic-ai
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /_review/
+Disallow: /download/
+
+User-agent: Claude-User
 Allow: /
 Disallow: /_review/
 Disallow: /download/

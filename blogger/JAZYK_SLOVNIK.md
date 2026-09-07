@@ -1,6 +1,13 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 62** · založeno 2026-08-23 · poslední změna 2026-09-06 (11 pravidel z revize sekcí; nově jednotné číslo „Přehled od AI“ dle rozhraní Googlu a dat o hledanosti) · audituje skill `cestina-audit`
+> **Verze: 63** · založeno 2026-08-23 · poslední změna 2026-09-07 (revize `/geo/`: nové pravidlo `scraper`) · audituje skill `cestina-audit`
+>
+> ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
+> (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
+> a pravidlo přestane platit úplně. Když je nálezem název produktu (tarif Growth, Starter…),
+> přeformuluj text, nebo postav výjimku na okolních slovech — ne na velkém písmenu.
+> Ověřeno 7. 9. 2026 při revizi `/geo/`. Sesterská past: `\|` uvnitř zpětných apostrofů
+> rozbije alternaci, pipe se píše bez zpětného lomítka.
 >
 > Jediný zdroj pravdy pro jazykový audit **všech textů webu** — článků, sekcí, pilíře
 > i řetězců v `src/i18n/*`. Do 6. 9. 2026 se pouštěl jen na blog, proto mají sekce
@@ -289,6 +296,7 @@
 | ⛔ | `\bkredencial\w*` | doložitelná kvalifikace | neustálený přepis „credentials“ | ymyl-obsah-pro-ai 2026-08-26 |
 | ⛔ | `\bnehypeov\w+|\bhypeov\w+` | střízlivý, bez marketingové omáčky | počeštěné „hype“ s českou příponou | core-web-vitals-pro-ai 2026-08-26 |
 | ⛔ | `\b\w*crouluj\w*|\bcrawluj\w*` | projít, stáhnout stránku | počeštěné sloveso z „crawl“ | core-web-vitals-pro-ai 2026-08-26 |
+| ⛔ | `\bscraper\w*|\bscrapov\w*` | robot, AI nástroj (podle kontextu) | anglicismus bez opory v české terminologii — pro tutéž věc web jinde píše „robot“. `crawler` má výjimku, protože ho máme v titulcích vlastních článků; `scraper` v titulku není nikde. Výskyty k dořešení v příslušných běhech revize: `aeo.mdx`, `prakticky-postup.mdx`, `jak-strukturovat-pillar-content.mdx`, `pages/blog.ts` | geo 2026-09-07 |
 | ⚠️ | `\bznačka nevyšla\b|\bnevyšl\w+ v odpovědi\b` | značka se neobjevila | překladový obrat | ai-seo-zdarma 2026-08-26 |
 | ⚠️ | `\bstandard důvěry\b` | nároky na důvěryhodnost | kalk „standard of trust“ | ymyl-obsah-pro-ai 2026-08-26 |
 | ⛔ | `\bprokliká(ní|vání)\b` | klikání v rozhraní | počeštěné podstatné jméno ze slovesa, zní nečesky | produktovy-feed-gtin 2026-08-26 |

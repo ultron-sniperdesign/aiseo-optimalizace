@@ -5,7 +5,7 @@ import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import { getEntry, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
-import { buildPersonRef } from "~/lib/jsonld";
+import { buildPersonRef, faqPlainText } from "~/lib/jsonld";
 
 const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
 if (!entry) {
@@ -35,6 +35,7 @@ function renderFaqMarkdown(text: string): string {
     )
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
+
 
 /**
  * Word count z entry.body — pro Article schema.
@@ -83,7 +84,7 @@ const faqJsonLd =
           name: item.q,
           acceptedAnswer: {
             "@type": "Answer",
-            text: item.a,
+            text: faqPlainText(item.a),
           },
         })),
       }

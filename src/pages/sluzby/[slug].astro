@@ -4,6 +4,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import type { GetStaticPaths } from "astro";
+import { faqPlainText } from "~/lib/jsonld";
 
 export const getStaticPaths = (async () => {
   const services = await getCollection("services");
@@ -55,7 +56,7 @@ const faqLd = entry.data.faq && entry.data.faq.length > 0
       mainEntity: entry.data.faq.map((q) => ({
         "@type": "Question",
         name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
+        acceptedAnswer: { "@type": "Answer", text: faqPlainText(q.a) },
       })),
     }
   : undefined;

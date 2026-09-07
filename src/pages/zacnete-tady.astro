@@ -11,6 +11,7 @@ import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { ui } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 import * as p from "~/content/pages/zacnete-tady";
+import { faqPlainText } from "~/lib/jsonld";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const pageUrl = `${SITE_ORIGIN}/zacnete-tady/`;
@@ -36,7 +37,7 @@ const faqJsonLd = {
   mainEntity: p.faq.map((item) => ({
     "@type": "Question",
     name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
+    acceptedAnswer: { "@type": "Answer", text: faqPlainText(item.a) },
   })),
 };
 ---

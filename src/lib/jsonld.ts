@@ -33,6 +33,24 @@ export function buildPersonRef(siteOrigin: string): Record<string, unknown> {
   };
 }
 
+/**
+ * FAQ odpověď jako čistá věta pro JSON-LD.
+ *
+ * Odpovědi ve frontmatteru nesou mini markdown (odkaz, tučné, code) — čtenář
+ * ho v HTML dostane vykreslený, ale do `acceptedAnswer.text` patří text, ne
+ * jeho zápis. Bez tohohle kroku četly stroje „...rozpad nákladů](/blog/...)...".
+ * Zjištěno 7. 9. 2026 na /geo/, kde takhle odcházelo 8 z 10 odpovědí.
+ *
+ * JEDINÉ místo, kde se to řeší — všechny stránky, které staví FAQPage ručně,
+ * tuhle funkci importují, aby oprava nezůstala jen v části šablon.
+ */
+export function faqPlainText(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1");
+}
+
 /** Postaví schema.org FAQPage z pole FAQ položek. */
 export function buildFaqJsonLd(faq: FaqItem[]): Record<string, unknown> {
   return {
@@ -43,7 +61,7 @@ export function buildFaqJsonLd(faq: FaqItem[]): Record<string, unknown> {
       name: item.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.a,
+        text: faqPlainText(item.a),
       },
     })),
   };

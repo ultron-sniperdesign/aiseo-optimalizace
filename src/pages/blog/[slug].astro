@@ -12,7 +12,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
-import { buildPersonRef } from "~/lib/jsonld";
+import { buildPersonRef, faqPlainText } from "~/lib/jsonld";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -107,7 +107,7 @@ const faqJsonLd =
           name: item.q,
           acceptedAnswer: {
             "@type": "Answer",
-            text: item.a,
+            text: faqPlainText(item.a),
           },
         })),
       }
