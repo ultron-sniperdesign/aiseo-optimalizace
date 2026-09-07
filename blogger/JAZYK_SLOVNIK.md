@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 63** · založeno 2026-08-23 · poslední změna 2026-09-07 (revize `/geo/`: nové pravidlo `scraper`) · audituje skill `cestina-audit`
+> **Verze: 63** · založeno 2026-08-23 · poslední změna 2026-09-07 (revize `/geo/`: pravidlo `scraper`; revize `/slovnik/`: výjimky pro názvy polí `updated:` a jejich ISO hodnoty) · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
@@ -36,7 +36,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\bmarket share\b` | podíl na trhu | má přesnou českou náhradu, kterou web jinde používá | seed 2026-08-23 |
-| ⛔ | `(?<!dark )(?<!dark AI )\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
+| ⛔ | `(?<!dark )(?<!dark AI )(?<!dark-ai-)\btraffic\w*` | návštěvnost | „traffic“ v české větě je kalk, včetně skloňování („trafficu“). **Výjimka:** „dark traffic“ / „dark AI traffic“ — pojmenovaný jev, který článek uvádí v uvozovkách a vysvětluje | seed 2026-08-23, výjimka case-study-megadetail 2026-08-26 |
 | ⛔ | `\binsight(y|ů|ům)?\b` | poznatky, zjištění | agenturní žargon bez přidané informace | seed 2026-08-23 |
 | ⛔ | `(?<!mixed )(?<!Helpful )(?<!AI SEO )(?<!scaled )\bcontent\b(?! (marketing|management|update|[Cc]redentials|Signals?|API))(?!-(Type|Length|Encoding|Security|Signal|Usage))` | obsah | jednoslovná náhrada existuje. **Nehlásí:** „mixed content“, „Helpful Content Update“, **„Content Credentials“ (název standardu C2PA)**, názvy HTTP hlaviček, **„Content Signals“ / `Content-Signal` (politika Cloudflare) a `Content-Usage` (draft IETF AIPREF), **„Content API for Shopping“ (název rozhraní Googlu)** a **„AI SEO content“ — cílová fráze a slug článku `ai-seo-content`, mění se jen se slugem**, **„scaled content abuse“ (název zásady Googlu proti hromadné výrobě obsahu)** | seed 2026-08-23, doplněno jak-poznat-ai-obrazek 2026-08-26, AI SEO content 2026-08-29, Content Signals 2026-09-02, Content API 2026-09-02, scaled content abuse 2026-09-06 |
 | ⛔ | `\bkomprehenzivní\b` | ucelený, souhrnný | otrocký překlad comprehensive | seed 2026-08-23 |
@@ -134,7 +134,7 @@
 | ⛔ | `\boutline\b` | osnova, struktura | redakční žargon | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bwall of text\b` | jednolitá stěna textu | nepřeložený slang | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bnext steps\b` | další kroky | anglicismus ve výčtu | jak-strukturovat-pillar-content 2026-08-23 |
-| ⛔ | `(?<!core )(?<!Core )(?<!Content )(?<!Google )\b(update|updatem|updatu|updated|outdated)\b` | aktualizace, zastaralý | počeštěný i nepřeložený tvar; **názvy aktualizací Googlu** (core update, Helpful Content Update) jsou vlastní jména a hlásit se nemají | jak-strukturovat-pillar-content 2026-08-23 |
+| ⛔ | `(?<!core )(?<!Core )(?<!Content )(?<!Google )\b(update|updatem|updatu|updated|outdated)\b(?!\??:)` | aktualizace, zastaralý | počeštěný i nepřeložený tvar; **názvy aktualizací Googlu** (core update, Helpful Content Update) jsou vlastní jména a hlásit se nemají. **Výjimka `(?!\??:)`:** `updated:` / `updated?:` je název pole v datovém modelu (`slovnik.ts`, frontmatter článků), ne text pro čtenáře — v próze pravidlo platí dál | jak-strukturovat-pillar-content 2026-08-23, výjimka slovnik 2026-09-07 |
 | ⛔ | `\btimestamp\b` | datum aktualizace | technicismus v běžné větě | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bstep-by-step\b` | krok za krokem | anglicismus | jak-strukturovat-pillar-content 2026-08-23 |
 | ⛔ | `\bbroken\b` | rozbitý, neplatný | hovorový anglicismus | jak-strukturovat-pillar-content 2026-08-23 |
@@ -228,7 +228,7 @@
 | ⛔ | `„[^„“\n<>=]{0,160}"` | zavřít českou uvozovkou “ | opakovaná chyba, rozbíjí i MDX a Python. Regex vylučuje `<>=`, aby nematchoval uvozovky HTML atributů — plošná náhrada bez téhle pojistky rozbila `class="hl"` | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\d%(?![ ]?[\wá-ž])` | mezera před % (25 %) | česká sazba. **Regex vynechává přídavné jméno** („100% podíl“, „50% nárůst“) — dřív je hlásil jako chybu; nástroj nedokáže rozlišit „50 % webů“ od „50% nárůstu“, proto raději mlčí | seed 2026-08-23, zúženo lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\w\s-\s\w` | pomlčka – | spojovník mezi slovy místo pomlčky (odrážky a složeniny se nehlásí) | seed 2026-08-23 |
-| ⛔ | `\b\d{4}-\d{2}-\d{2}\b(?![^<]*>)` | české datum (23. 8. 2026) | anglický formát data v textu | seed 2026-08-23 |
+| ⛔ | `(?<!updated: ")(?<!published: ")\b\d{4}-\d{2}-\d{2}\b(?![^<]*>)` | české datum (23. 8. 2026) | anglický formát data v textu. **Výjimka:** hodnota polí `updated:` / `published:` v datových modulech — do ISO se ukládá schválně, čtenáři se zobrazuje přes `toLocaleDateString` | seed 2026-08-23, výjimka slovnik 2026-09-07 |
 
 ## 7. Míchání jazyků v jednom sousloví
 

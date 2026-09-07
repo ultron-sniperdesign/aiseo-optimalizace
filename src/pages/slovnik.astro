@@ -10,12 +10,26 @@
  * Postaveno na keyword researchi _source/_keyword-research/slovnik-ai-20260718/.
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
 import * as p from "~/content/pages/slovnik";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const pageUrl = `${SITE_ORIGIN}/slovnik/`;
 
 const termCount = p.groups.reduce((n, g) => n + g.terms.length, 0);
+
+/**
+ * Viditelné datum revize slovníku v českém formátu (ne syrové ISO) — a totéž
+ * datum jde do `dateModified` v DefinedTermSet. Do 7. 9. 2026 stránka žádné
+ * datum neukazovala a schéma ho nemělo, takže ani čtenář, ani stroj nepoznal,
+ * jak je slovník čerstvý.
+ */
+const updatedStamp = p.meta.updated
+  ? new Date(`${p.meta.updated}T00:00:00Z`).toLocaleDateString("cs-CZ", {
+      day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC",
+    })
+  : null;
 
 /** DefinedTermSet JSON-LD — každé heslo jako DefinedTerm s URL kotvy. */
 const termSetJsonLd = {
@@ -25,6 +39,8 @@ const termSetJsonLd = {
   name: p.meta.title,
   description: p.meta.description,
   url: pageUrl,
+  inLanguage: site.inLanguage,
+  ...(p.meta.updated ? { dateModified: p.meta.updated } : {}),
   hasDefinedTerm: p.groups.flatMap((g) =>
     g.terms.map((t) => ({
       "@type": "DefinedTerm",
@@ -52,6 +68,15 @@ const termSetJsonLd = {
       <span class="gl-hero__eyebrow">{p.hero.eyebrow} · {termCount} pojmů</span>
       <h1 class="gl-hero__title">{p.hero.title}</h1>
       <p class="gl-hero__lead">{p.hero.lead}</p>
+
+      <div class="gl-answer">
+        <span class="gl-answer__mark">{ui.answerDefinition}</span>
+        <p class="gl-answer__text">{p.hero.answer}</p>
+      </div>
+
+      <p class="gl-model" set:html={p.hero.model} />
+
+      {updatedStamp && <p class="gl-updated">{ui.metaUpdated} {updatedStamp}</p>}
 
       <!-- Navigace skupin -->
       <nav class="gl-nav" aria-label="Skupiny pojmů">
@@ -124,6 +149,51 @@ const termSetJsonLd = {
     color: var(--color-ink);
     margin: 0 0 1rem;
   }
+  .gl-answer {
+    margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+    max-width: var(--w-read);
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(1.1rem, 2.2vw, 1.4rem);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0.5rem;
+    background: var(--surface-soft, transparent);
+  }
+
+  .gl-answer__mark {
+    display: block;
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .gl-answer__text {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .gl-model {
+    max-width: var(--w-read);
+    margin-top: 1rem;
+    color: var(--text-secondary, inherit);
+  }
+
+  .gl-model :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .gl-updated {
+    max-width: var(--w-read);
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-muted, inherit);
+  }
+
   .gl-hero__lead {
     font-family: var(--font-sans);
     font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);

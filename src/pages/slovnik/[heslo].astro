@@ -25,6 +25,16 @@ const { term, group } = Astro.props;
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const pageUrl = `${SITE_ORIGIN}/slovnik/${term.id}/`;
 
+/**
+ * Data v české podobě, ne syrové ISO. Týká se dvou míst: revize hesla
+ * (nové pole `updated`) a data u odkazovaných článků, které se do 7. 9. 2026
+ * vypisovalo jako „2026-09-05".
+ */
+const czDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString("cs-CZ", {
+    day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC",
+  });
+
 /** Rozšířený výklad → odstavce. */
 const longParas = term.long ? term.long.split("\n\n") : [];
 
@@ -56,6 +66,7 @@ const termJsonLd = {
   url: pageUrl,
   inDefinedTermSet: `${SITE_ORIGIN}/slovnik/#set`,
   inLanguage: site.inLanguage,
+  ...(term.updated ? { dateModified: term.updated } : {}),
 };
 ---
 
@@ -89,6 +100,9 @@ const termJsonLd = {
       <div class="th-answer__inner">
         <span class="th-answer__mark">{ui.answerDefinition}</span>
         <p class="th-answer__text">{term.def}</p>
+        {term.updated && (
+          <p class="th-answer__updated">{ui.metaUpdated} {czDate(term.updated)}</p>
+        )}
       </div>
     </section>
 
@@ -122,7 +136,7 @@ const termJsonLd = {
                 <a class="th-arts__link" href={`/blog/${a.data.slug}/`}>
                   {a.data.title}
                 </a>
-                <span class="th-arts__meta">{ui.metaUpdated} {a.data.updated}</span>
+                <span class="th-arts__meta">{ui.metaUpdated} {czDate(a.data.updated)}</span>
               </li>
             ))}
           </ul>
@@ -154,6 +168,13 @@ const termJsonLd = {
 </BaseLayout>
 
 <style>
+  .th-answer__updated {
+    margin: 0.6rem 0 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-muted, inherit);
+  }
+
   .th {
     max-width: 46rem;
     margin: 0 auto;

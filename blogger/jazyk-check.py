@@ -75,6 +75,16 @@ def _je_anglicka(txt, min_slov=4):
 
 TECH_KEYS = re.compile(r'^\s*(slug|published|updated|category|variant|tags|keywords|seoTitle|image|og|howto|faq|stats|-)\s*:?\s*$')
 TEXT_KEY  = re.compile(r'^\s*-?\s*(title|seoTitle|description|answer|label|a|q|desc|text|value)\s*:\s*')
+# Radky datovych modulu (*.ts), ktere nejsou proza pro ctenare:
+#   id / slug / href  – identifikatory a URL, nikdy se nevypisuji jako text
+#   updated / published – ISO datum, ctenari se ukazuje pres toLocaleDateString
+#   aka – pole ALTERNATIVNICH nazvu vcetne anglickych, ktere lide hledaji.
+#         Prave proto tam patri "answer block" nebo "schema markup": slovnik je
+#         zaznamenava, aby heslo na ne bylo k nalezeni — neznamena to, ze je
+#         web pouziva. Auditovat je znamena mazat presne ty synonyma, kvuli
+#         kterym heslo existuje.
+# Ostatni pole (term, def, long, label) se auditují normalne.
+DATA_KEYS = re.compile(r'^\s*(id|slug|href|updated|published|aka)\s*:\s*')
 
 def body_lines(text):
     """Vrati (cislo_radku, text) pro telo clanku + textova pole frontmatteru.
@@ -105,6 +115,8 @@ def body_lines(text):
         if '</Dont>' in raw:
             in_dont = False; continue
         if in_code or in_dont or raw.lstrip().startswith('import '):
+            continue
+        if DATA_KEYS.match(raw):
             continue
         yield n + 1, raw
 
