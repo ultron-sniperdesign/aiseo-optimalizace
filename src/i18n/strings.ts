@@ -478,7 +478,7 @@ export const ui = {
  */
 export const freeStrip = {
   eyebrow: "Návod zdarma · 0 Kč",
-  title: "Šest signálů AI-friendly stránky jako",
+  title: "Šest signálů stránky připravené pro AI jako",
   titleHighlight: "hotový návod pro vaši homepage",
   description:
     "Wireframe s anotacemi, tři principy, které drží strukturu, a šablony textů. Šest stran A4 v PDF — výměnou za e-mail.",

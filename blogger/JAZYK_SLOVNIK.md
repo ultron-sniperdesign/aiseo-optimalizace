@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 63** · založeno 2026-08-23 · poslední změna 2026-09-07 (revize `/geo/`: pravidlo `scraper`; revize `/slovnik/`: výjimky pro názvy polí `updated:` a jejich ISO hodnoty) · audituje skill `cestina-audit`
+> **Verze: 63** · založeno 2026-08-23 · poslední změna 2026-09-07 (revize `/geo/`: pravidlo `scraper`; revize `/slovnik/`: výjimky pro názvy polí `updated:` a jejich ISO hodnoty; revize `/aeo/`: výjimka pro „Schema Markup Validator“ a nové pravidlo `AI-friendly`) · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
@@ -217,7 +217,7 @@
 | Úroveň | Regex | Náhrada | Proč | Odkud |
 |---|---|---|---|---|
 | ⛔ | `\banswer block\w*\b` | krátká odpověď | glosář v CLAUDE.md § X. Regex musí pokrýt **skloňované tvary** („answer blockem“) — bez toho unikl výskyt v článku 4 | seed 2026-08-23, rozšířeno 2026-08-23 |
-| ⛔ | `\bschema markup\w*` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test,jak-cist-studie-o-ai-viditelnosti]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech | seed 2026-08-23, výjimka 2026-08-26 |
+| ⛔ | `\bschema markup\w*(?! Validator)` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test,jak-cist-studie-o-ai-viditelnosti]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech. **Výjimka `(?! Validator)`:** „Schema Markup Validator“ je oficiální název nástroje schema.org, vlastní jméno se nepřekládá | seed 2026-08-23, výjimky 2026-08-26 a aeo 2026-09-07 |
 | ⛔ | `\bhub-and-spoke\w*\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
 | ⛔ | `Přehled(y|ech|ů|ům) od AI` | Přehled od AI (jednotné číslo, se správným pádem) | Google v rozhraní píše **„Přehled od AI“** v jednotném čísle a hledá se tak i v datech: `přehled od ai` 130/měs a +169 % meziročně, množné číslo nemá měřitelnou hledanost (Marketing Miner 6. 9. 2026). **Pozor, není to prostá záměna** — mění se pád i shoda přísudku („Přehledy od AI čerpají“ → „Přehled od AI čerpá“). **Výjimka `[skip:kdy-ai-prehled-necekat,seo-vs-geo-vs-aeo-vs-aio]`:** ten článek cituje doslova českou nápovědu Googlu (Google sám v dokumentaci množné číslo používá, i když v rozhraní píše jednotné) a pilíř nese v seznamu zdrojů doslovný titulek oznámení „Google spouští v Česku Přehledy od AI“. Obojí jsou názvy cizích dokumentů, nepřepisují se | G9, revize 2026-09-06 |
 
@@ -297,6 +297,7 @@
 | ⛔ | `\bnehypeov\w+|\bhypeov\w+` | střízlivý, bez marketingové omáčky | počeštěné „hype“ s českou příponou | core-web-vitals-pro-ai 2026-08-26 |
 | ⛔ | `\b\w*crouluj\w*|\bcrawluj\w*` | projít, stáhnout stránku | počeštěné sloveso z „crawl“ | core-web-vitals-pro-ai 2026-08-26 |
 | ⛔ | `\bscraper\w*|\bscrapov\w*` | robot, AI nástroj (podle kontextu) | anglicismus bez opory v české terminologii — pro tutéž věc web jinde píše „robot“. `crawler` má výjimku, protože ho máme v titulcích vlastních článků; `scraper` v titulku není nikde. Výskyty k dořešení v příslušných běhech revize: `aeo.mdx`, `prakticky-postup.mdx`, `jak-strukturovat-pillar-content.mdx`, `pages/blog.ts` | geo 2026-09-07 |
+| ⛔ | `\bAI[- ]friendly\w*` | připravený pro AI, čitelný pro AI | anglický kalk; web pro tutéž věc jinde píše česky („obsah psaný pro AI“, „stránka připravená pro AI“). Zbývající výskyty k dořešení v příslušných bězích revize: `content/pages/index.ts` (4×, homepage), `content/pages/contact.ts` (1×) | aeo 2026-09-07 |
 | ⚠️ | `\bznačka nevyšla\b|\bnevyšl\w+ v odpovědi\b` | značka se neobjevila | překladový obrat | ai-seo-zdarma 2026-08-26 |
 | ⚠️ | `\bstandard důvěry\b` | nároky na důvěryhodnost | kalk „standard of trust“ | ymyl-obsah-pro-ai 2026-08-26 |
 | ⛔ | `\bprokliká(ní|vání)\b` | klikání v rozhraní | počeštěné podstatné jméno ze slovesa, zní nečesky | produktovy-feed-gtin 2026-08-26 |
