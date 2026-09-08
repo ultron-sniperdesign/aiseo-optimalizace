@@ -41,6 +41,7 @@ import TagChips from "~/components/article/TagChips.astro";
 import SeriesNav from "~/components/article/SeriesNav.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
+import { renderFaqMarkdown } from "~/lib/jsonld";
 
 interface Props {
   entry: CollectionEntry<"articles">;
@@ -264,7 +265,7 @@ const _bundlerHints = [
                 <span class="rfaq__q-text">{item.q}</span>
                 <span class="rfaq__q-chevron" aria-hidden="true">+</span>
               </summary>
-              <div class="rfaq__a">{item.a}</div>
+              <div class="rfaq__a" set:html={renderFaqMarkdown(item.a)}></div>
             </details>
           ))}
         </div>
@@ -935,6 +936,28 @@ const _bundlerHints = [
     line-height: 1.65;
     color: var(--color-ink-muted);
     padding: 0 1rem 1.5rem 2.625rem;
+  }
+  /* Odpověď se vkládá přes set:html, takže potomci nedostanou scope atribut —
+     pravidla pro ně musí být v :global (CLAUDE.md § VI). Bez toho by inline kód
+     a odkazy v FAQ ztratily styl. */
+  .rfaq__a :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep, var(--color-paper));
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+    color: var(--color-ink);
+    word-break: break-word;
+  }
+  .rfaq__a :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .rfaq__a :global(strong) {
+    font-weight: 600;
+    color: var(--color-ink);
   }
 
   /* ===== BACK CTA ===== */

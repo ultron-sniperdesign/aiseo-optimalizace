@@ -51,6 +51,34 @@ export function faqPlainText(text: string): string {
     .replace(/`([^`]+)`/g, "$1");
 }
 
+/**
+ * FAQ odpověď jako HTML pro čtenáře — protějšek `faqPlainText`.
+ *
+ * Odpovědi ve frontmatteru nesou mini markdown (tučné, inline kód, odkaz).
+ * Tahle funkce ho vykreslí; nejdřív ale escapuje `&`, `<` a `>`, takže se
+ * z obsahu nedá propašovat vlastní značka. Plný markdown záměrně neumí —
+ * tyhle tři vzory jsou všechno, co v FAQ používáme.
+ *
+ * Proč to sedí tady a ne v šabloně: funkce existovala ve dvou identických
+ * kopiích (`[slug].astro`, `seo-vs-geo-vs-aeo-vs-aio.astro`) a `RichLayout`
+ * ji neměl vůbec — vykresloval `{item.a}` jako holý text, takže čtenář viděl
+ * zpětné apostrofy. Naměřeno 9. 9. 2026: **13 odpovědí na 10 blogových
+ * stránkách**, z toho 4 na `jak-vypnout-ai-overview` (nejčtenější článek webu),
+ * kde se takhle rozbil i parametr `&udm=14`, který má čtenář opsat.
+ */
+export function renderFaqMarkdown(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (_, label, href) => `<a href="${href}">${label}</a>`,
+    )
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
 /** Postaví schema.org FAQPage z pole FAQ položek. */
 export function buildFaqJsonLd(faq: FaqItem[]): Record<string, unknown> {
   return {

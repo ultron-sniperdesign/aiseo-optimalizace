@@ -7,7 +7,7 @@ import HeroVideo from "~/components/blocks/HeroVideo.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
-import { buildPersonRef, faqPlainText } from "~/lib/jsonld";
+import { buildPersonRef, faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -181,23 +181,6 @@ const heroStyle = `--d: ${c.d}; --d-tint: ${c.tint}; --d-soft: ${c.soft};`;
 /** OG image per slug (každá sekce má vlastní vizuál v public/og/<slug>.jpg). */
 const ogImage = `/og/${entry.data.slug}.jpg`;
 
-/**
- * Mini markdown → HTML pro FAQ answer stringy v frontmatteru.
- * Stačí 3 patterny, které v FAQ používáme: bold, inline code, link.
- * Pro plnou markdown sílu by bylo nutné použít remark — zatím přebytek.
- */
-function renderFaqMarkdown(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      (_, label, href) => `<a href="${href}">${label}</a>`,
-    )
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-}
 ---
 
 <BaseLayout

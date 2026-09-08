@@ -5,7 +5,7 @@ import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import { getEntry, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
-import { buildPersonRef, faqPlainText } from "~/lib/jsonld";
+import { buildPersonRef, faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
 
 const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
 if (!entry) {
@@ -18,24 +18,6 @@ const { Content, headings } = await render(entry);
  * Každý heading má slug (auto-generated od Astro content), který je href anchor.
  */
 const tocItems = headings.filter((h) => h.depth === 2);
-
-/**
- * Mini markdown → HTML pro FAQ answer stringy (bold, code, link).
- * Sjednoceno s [slug].astro template.
- */
-function renderFaqMarkdown(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      (_, label, href) => `<a href="${href}">${label}</a>`,
-    )
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-}
-
 
 /**
  * Word count z entry.body — pro Article schema.
