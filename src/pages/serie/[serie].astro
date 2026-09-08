@@ -14,6 +14,7 @@ import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { SERIES, SERIES_BASE } from "~/i18n/series";
+import { czDate } from "~/lib/date";
 
 export async function getStaticPaths() {
   return SERIES.map((s) => ({ params: { serie: s.slug }, props: { s } }));
@@ -116,7 +117,7 @@ const collectionJsonLd = {
       <div class="se-hero__meta">
         <span>{parts.length} dílů</span>
         <span>~{totalMinutes} minut čtení celkem</span>
-        <span>{ui.metaUpdated} {newestUpdated}</span>
+        {newestUpdated && <span>{ui.metaUpdated} {czDate(newestUpdated)}</span>}
       </div>
 
       <picture>
@@ -162,7 +163,7 @@ const collectionJsonLd = {
                 </a>
                 <p class="se-part__note">{p.note}</p>
                 <p class="se-part__meta">
-                  ~{p.minutes} {ui.metaMinShort} · {ui.metaUpdated} {p.updated}
+                  ~{p.minutes} {ui.metaMinShort} · {ui.metaUpdated} {czDate(p.updated)}
                 </p>
               </div>
             </li>

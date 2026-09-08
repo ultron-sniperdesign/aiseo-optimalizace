@@ -14,6 +14,7 @@ import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { buildPersonRef, faqPlainText } from "~/lib/jsonld";
 import type { GetStaticPaths } from "astro";
+import { czDate } from "~/lib/date";
 
 export const getStaticPaths = (async () => {
   const articles = await getCollection("articles");
@@ -179,7 +180,7 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
         <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
         <span>{faqCount} {ui.metaFaqs}</span>
         <span>~{readingMinutes} {ui.metaReadingMins}</span>
-        <span>{ui.metaUpdated} {entry.data.updated}</span>
+        <span>{ui.metaUpdated} {czDate(entry.data.updated)}</span>
       </div>
 
       <div class="hero__tags">

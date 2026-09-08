@@ -42,6 +42,7 @@ import SeriesNav from "~/components/article/SeriesNav.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { renderFaqMarkdown } from "~/lib/jsonld";
+import { czDate } from "~/lib/date";
 
 interface Props {
   entry: CollectionEntry<"articles">;
@@ -164,7 +165,7 @@ const _bundlerHints = [
       <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
       <span>{faqCount} {ui.metaFaqs}</span>
       <span>~{readingMinutes} {ui.metaReadingMins}</span>
-      <span>{ui.metaUpdated} {entry.data.updated}</span>
+      <span>{ui.metaUpdated} {czDate(entry.data.updated)}</span>
     </div>
 
     <div class="rhero__tags">
