@@ -26,6 +26,13 @@ export interface Props {
    * Příklad: [{ label: "Blog", href: "/blog/" }, { label: "Článek", href: "/blog/foo/" }]
    */
   breadcrumb?: Array<{ label: string; href: string }>;
+  /**
+   * Datum poslední revize (ISO `YYYY-MM-DD`). Když je předané, BaseLayout
+   * vygeneruje `WebPage` schema s `dateModified`. Pro stránky bez vlastního
+   * `Article` schématu — homepage a rozcestníky — je to jediné místo, kde se
+   * datum revize dostane do strukturovaných dat.
+   */
+  dateModified?: string;
 }
 
 const {
@@ -37,6 +44,7 @@ const {
   noindex = false,
   ogType = "website",
   breadcrumb,
+  dateModified,
 } = Astro.props;
 
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
@@ -78,6 +86,25 @@ const websiteSchema = {
 };
 
 /**
+ * WebPage s `dateModified` — stránky bez vlastního Article schématu (homepage,
+ * rozcestníky) dřív neuváděly datum revize vůbec, přestože ho viditelně
+ * vykreslují. Prop `dateModified` je volitelná: kdo ji nepředá, schema nedostane.
+ */
+const webPageSchema = dateModified
+  ? {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${canonicalURL}#webpage`,
+      url: canonicalURL,
+      name: title,
+      description,
+      inLanguage: site.inLanguage,
+      isPartOf: { "@id": `${siteOrigin}/#website` },
+      dateModified,
+    }
+  : null;
+
+/**
  * BreadcrumbList — auto-generuje se z prop `breadcrumb`. Vždy prependuje
  * "Úvod" jako position 1. Položky musí mít absolutní href v Schema.org.
  */
@@ -100,6 +127,7 @@ const breadcrumbSchema = breadcrumb && breadcrumb.length > 0
 const allJsonLd = [
   orgSchema,
   websiteSchema,
+  ...(webPageSchema ? [webPageSchema] : []),
   ...(breadcrumbSchema ? [breadcrumbSchema] : []),
   ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
 ];

@@ -5,9 +5,36 @@ import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import * as p from "~/content/pages/index";
 import { site } from "~/i18n/site";
+import { getCollection } from "astro:content";
+import { groups as glossaryGroups } from "~/content/pages/slovnik";
+import { SERIES } from "~/i18n/series";
+import { BLOG_TAGS } from "~/i18n/tags";
+import { ui } from "~/i18n/strings";
+import { siteUpdatedIso } from "~/lib/site-updated";
+
+/**
+ * Počty do rozcestníku „Kudy do obsahu" se čtou z kolekcí, ne z ručně psaných
+ * čísel v datovém modulu — ta se rozešla se skutečností pokaždé (8. 9. 2026
+ * homepage tvrdila „50+ pojmů“, slovník jich měl 64). Text zůstává v `index.ts`
+ * kvůli mutacím, dosazují se jen čísla.
+ */
+const counts: Record<string, number> = {
+  articles: (await getCollection("articles")).length,
+  terms: glossaryGroups.reduce((sum, g) => sum + g.terms.length, 0),
+  parts: SERIES[0]?.parts.length ?? 0,
+  tags: BLOG_TAGS.length,
+};
+const fillCounts = (s: string) =>
+  s.replace(/\{(articles|terms|parts|tags)\}/g, (_, k: string) => String(counts[k]));
+
+/** Datum poslední revize obsahu — viditelné v hero i v `dateModified` schématu. */
+const updatedIso = await siteUpdatedIso();
+const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-CZ", {
+  day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC",
+});
 ---
 
-<BaseLayout title={p.meta.title} description={p.meta.description} image="/og/default.jpg">
+<BaseLayout title={p.meta.title} description={p.meta.description} image="/og/default.jpg" dateModified={updatedIso}>
   <!-- HERO -->
   <section class:list={["hero", { "hero--has-media": !!p.video }]}>
     <div class="hero__head">
@@ -19,6 +46,13 @@ import { site } from "~/i18n/site";
     <div class="hero__body">
     <div class="hero__text">
     <p class="lead hero__lead">{p.hero.lead}</p>
+
+    <aside class="hero__answer" role="note">
+      <span class="hero__answer-mark">{p.answer.mark}</span>
+      <p class="hero__answer-text" set:html={p.answer.text}></p>
+    </aside>
+
+    <p class="hero__updated">{ui.metaUpdated} {updatedStamp}</p>
 
     <p class="hero__pills-hint">
       <span class="hero__pills-hint-arrow" aria-hidden="true">↓</span>
@@ -240,11 +274,11 @@ import { site } from "~/i18n/site";
   <section class="stat-bar" aria-label="Proč začít s AI SEO">
     <div class="stat-bar__inner">
       {p.statBar.map((s) => (
-        <div class="stat">
+        <a class="stat" href={s.href}>
           <div class="stat__num" set:html={s.num}></div>
           <p class="stat__label">{s.label}</p>
           <p class="stat__src">{s.src}</p>
-        </div>
+        </a>
       ))}
     </div>
   </section>
@@ -360,10 +394,10 @@ import { site } from "~/i18n/site";
             <text x="446" y="435" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">5</text>
           </g>
 
-          <!-- ❻ Schema markup (footer area) -->
+          <!-- ❻ Strukturovaná data (footer area) -->
           <rect x="40" y="510" width="380" height="48" rx="6" fill="var(--color-ink)"></rect>
           <text x="56" y="532" font-family="JetBrains Mono, monospace" font-size="10" fill="oklch(0.78 0.13 145)">&lt;script type="application/ld+json"&gt;</text>
-          <text x="56" y="548" font-family="JetBrains Mono, monospace" font-size="10" fill="oklch(0.85 0.06 220)">"@type": "FAQPage", "mainEntity": [...]</text>
+          <text x="56" y="548" font-family="JetBrains Mono, monospace" font-size="10" fill="oklch(0.85 0.06 220)">"@type": "Article", "dateModified": "{updatedIso}"</text>
           <g class="anatomy-mark">
             <circle cx="446" cy="534" r="14" fill="var(--color-accent)"></circle>
             <text x="446" y="539" font-family="Geist, sans-serif" font-size="13" font-weight="600" fill="var(--color-paper)" text-anchor="middle">6</text>
@@ -425,13 +459,13 @@ import { site } from "~/i18n/site";
     <section class="section">
       <header class="section__head">
         <span class="eyebrow"><span class="eyebrow__num">{p.contentNavHead.eyebrowNum}</span> {p.contentNavHead.eyebrow}</span>
-        <h2 class="section__title" set:html={p.contentNavHead.title}></h2>
+        <h2 class="section__title" set:html={fillCounts(p.contentNavHead.title)}></h2>
       </header>
 
       <div class="cnav">
         {p.contentNav.map((c) => (
           <a href={c.href} class="cnav-card">
-            <span class="cnav-card__label">{c.label}</span>
+            <span class="cnav-card__label">{fillCounts(c.label)}</span>
             <span class="cnav-card__title">{c.title} <span aria-hidden="true">→</span></span>
             <span class="cnav-card__desc">{c.desc}</span>
           </a>
@@ -513,6 +547,11 @@ import { site } from "~/i18n/site";
         </a>
       ))}
     </div>
+
+    <p class="offers__footer">
+      {p.offersFooter.text}{" "}
+      <a href={p.offersFooter.href}>{p.offersFooter.linkLabel} →</a>
+    </p>
   </section>
   )}
 
@@ -673,6 +712,68 @@ import { site } from "~/i18n/site";
   .hero__lead {
     max-width: 38rem;
     margin-bottom: 3rem;
+  }
+  /* Krátká odpověď v hero — štítek bere velikost z globální škály štítků
+     (--label-*), ne z vlastní hodnoty. Karta drží šířku textu, ne celého hera. */
+  .offers__footer {
+    margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    text-align: center;
+  }
+  .offers__footer a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .offers__footer a:hover,
+  .offers__footer a:focus-visible {
+    text-decoration: underline;
+  }
+  .hero__answer {
+    margin: 0 0 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 8px;
+  }
+  .hero__answer-mark {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.375rem;
+  }
+  .hero__answer-text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+  }
+  .hero__answer-text :global(strong) {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  /* set:html potomci nedostanou scope atribut — proto :global (CLAUDE.md § VI). */
+  .hero__answer-text :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .hero__answer-text :global(a:hover),
+  .hero__answer-text :global(a:focus-visible) {
+    text-decoration-thickness: 2px;
+  }
+  .hero__updated {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    margin: 0 0 1.25rem;
   }
   .hero__pills-hint {
     font-family: var(--font-sans);
@@ -1375,6 +1476,15 @@ import { site } from "~/i18n/site";
   }
   .stat {
     display: flex;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease;
+  }
+  .stat:hover,
+  .stat:focus-visible {
+    background: color-mix(in oklch, var(--color-accent) 5%, transparent);
+  }
+  .stat {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem 1.5rem 1rem 1.25rem;

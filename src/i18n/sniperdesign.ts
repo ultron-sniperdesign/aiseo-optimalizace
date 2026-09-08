@@ -37,12 +37,12 @@ export const sniperDesign = {
       {
         num: "02",
         title: "Audit AI&nbsp;viditelnosti",
-        desc: "Komplexní průchod technickým SEO, on‑page strukturou, schema markupem a obsahem. Konkrétní seznam priorit s odhadem dopadu a effort.",
+        desc: "Komplexní průchod technikou webu, strukturou stránek, strukturovanými daty a obsahem. Konkrétní seznam priorit s odhadem dopadu a pracnosti.",
       },
       {
         num: "03",
         title: "Optimalizace a&nbsp;implementace",
-        desc: "Nasadíme strukturovaná data, přepíšeme klíčové stránky do AI‑friendly struktury, zoptimalizujeme rychlost a Core Web Vitals. Custom moduly pro Upgates a Shoptet.",
+        desc: "Nasadíme strukturovaná data, přepíšeme klíčové stránky do struktury čitelné pro AI, zoptimalizujeme rychlost a Core Web Vitals. Moduly na míru pro Upgates a Shoptet.",
       },
       {
         num: "04",

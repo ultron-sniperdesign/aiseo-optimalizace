@@ -86,7 +86,17 @@ TEXT_KEY  = re.compile(r'^\s*-?\s*(title|seoTitle|description|answer|label|a|q|d
 # Ostatni pole (term, def, long, label) se auditují normalne.
 DATA_KEYS = re.compile(r'^\s*(id|slug|href|updated|published|aka)\s*:\s*')
 
-def body_lines(text):
+# Nazev vlastnosti v datovem modulu je kod, ne text pro ctenare. Bez tohohle
+# hlasil checker `intro:` jako anglicismus (revize homepage 8. 9. 2026),
+# prestoze cesky text je az za dvojteckou. Klic proto z radku odstrizneme
+# a auditujeme jen jeho hodnotu — narozdil od DATA_KEYS, kde se zahazuje
+# cely radek. Plati JEN pro .ts/.js moduly: v MDX by stejny vzor schoval
+# realny nalez v proze typu "Fix: udelejte X".
+TS_PROP_KEY = re.compile(r'^(\s*)([A-Za-z_$][A-Za-z0-9_$]*)(\s*:)')
+# Totez pro deklarace: `export const sniperDesign = {` je nazev promenne.
+TS_DECL = re.compile(r'\b(const|let|var|function|interface|type)\s+([A-Za-z_$][A-Za-z0-9_$]*)')
+
+def body_lines(text, is_module=False):
     """Vrati (cislo_radku, text) pro telo clanku + textova pole frontmatteru.
 
     Frontmatter se neaudituje cely — jen pole, ktera ctenar vidi (answer,
@@ -118,6 +128,9 @@ def body_lines(text):
             continue
         if DATA_KEYS.match(raw):
             continue
+        if is_module:
+            raw = TS_PROP_KEY.sub(lambda m: m.group(1) + ' ' * len(m.group(2)) + m.group(3), raw)
+            raw = TS_DECL.sub(lambda m: m.group(1) + ' ' + ' ' * len(m.group(2)), raw)
         yield n + 1, raw
 
 def main():
@@ -140,7 +153,8 @@ def main():
     rules = [r for r in rules
              if slug not in [x.strip() for m in re.findall(r'\[skip:([^\]]+)\]', r['why'] + ' ' + r['src']) for x in m.split(',')]]
     hits, words = [], 0
-    for n, raw in body_lines(text):
+    is_module = args.soubor.endswith(('.ts', '.js', '.mjs'))
+    for n, raw in body_lines(text, is_module):
         line = mask(raw)
         words += len(line.split())
         quoted = raw.lstrip().startswith('>') or '*„' in raw or '“*' in raw

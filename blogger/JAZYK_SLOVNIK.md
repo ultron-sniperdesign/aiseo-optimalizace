@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 63** · založeno 2026-08-23 · poslední změna 2026-09-07 (revize `/geo/`: pravidlo `scraper`; revize `/slovnik/`: výjimky pro názvy polí `updated:` a jejich ISO hodnoty; revize `/aeo/`: výjimka pro „Schema Markup Validator“ a nové pravidlo `AI-friendly`) · audituje skill `cestina-audit`
+> **Verze: 64** · založeno 2026-08-23 · poslední změna 2026-09-09 (revize homepage: lookahead `(?!\.)` u `Sniperdesign` kvůli doménám; checker nově v `.ts`/`.js` modulech neaudituje **názvy vlastností a proměnných**, jen jejich hodnoty — dřív hlásil `intro:` a `scope:` jako anglicismy) · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
@@ -228,7 +228,7 @@
 | ⛔ | `„[^„“\n<>=]{0,160}"` | zavřít českou uvozovkou “ | opakovaná chyba, rozbíjí i MDX a Python. Regex vylučuje `<>=`, aby nematchoval uvozovky HTML atributů — plošná náhrada bez téhle pojistky rozbila `class="hl"` | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\d%(?![ ]?[\wá-ž])` | mezera před % (25 %) | česká sazba. **Regex vynechává přídavné jméno** („100% podíl“, „50% nárůst“) — dřív je hlásil jako chybu; nástroj nedokáže rozlišit „50 % webů“ od „50% nárůstu“, proto raději mlčí | seed 2026-08-23, zúženo lighthouse-ai-check 2026-08-25 |
 | ⛔ | `\w\s-\s\w` | pomlčka – | spojovník mezi slovy místo pomlčky (odrážky a složeniny se nehlásí) | seed 2026-08-23 |
-| ⛔ | `(?<!updated: ")(?<!published: ")\b\d{4}-\d{2}-\d{2}\b(?![^<]*>)` | české datum (23. 8. 2026) | anglický formát data v textu. **Výjimka:** hodnota polí `updated:` / `published:` v datových modulech — do ISO se ukládá schválně, čtenáři se zobrazuje přes `toLocaleDateString` | seed 2026-08-23, výjimka slovnik 2026-09-07 |
+| ⛔ | `(?<!updated: ")(?<!published: ")(?<!dateModified": ")\b\d{4}-\d{2}-\d{2}\b(?![^<]*>)` | české datum (23. 8. 2026) | anglický formát data v textu. **Výjimka:** hodnota polí `updated:` / `published:` v datových modulech a `dateModified` v ukázkách JSON-LD — schema ISO 8601 vyžaduje, čtenáři se datum zobrazuje přes `toLocaleDateString`. Poslední výjimka doplněna 9. 9. 2026 (drátěný model na homepage ukazuje vzorek JSON-LD) | seed 2026-08-23, výjimka slovnik 2026-09-07 |
 
 ## 7. Míchání jazyků v jednom sousloví
 
@@ -297,7 +297,7 @@
 | ⛔ | `\bnehypeov\w+|\bhypeov\w+` | střízlivý, bez marketingové omáčky | počeštěné „hype“ s českou příponou | core-web-vitals-pro-ai 2026-08-26 |
 | ⛔ | `\b\w*crouluj\w*|\bcrawluj\w*` | projít, stáhnout stránku | počeštěné sloveso z „crawl“ | core-web-vitals-pro-ai 2026-08-26 |
 | ⛔ | `\bscraper\w*|\bscrapov\w*` | robot, AI nástroj (podle kontextu) | anglicismus bez opory v české terminologii — pro tutéž věc web jinde píše „robot“. `crawler` má výjimku, protože ho máme v titulcích vlastních článků; `scraper` v titulku není nikde. Výskyty k dořešení v příslušných běhech revize: `aeo.mdx`, `prakticky-postup.mdx`, `jak-strukturovat-pillar-content.mdx`, `pages/blog.ts` | geo 2026-09-07 |
-| ⛔ | `\bAI[- ]friendly\w*` | připravený pro AI, čitelný pro AI | anglický kalk; web pro tutéž věc jinde píše česky („obsah psaný pro AI“, „stránka připravená pro AI“). Zbývající výskyty k dořešení v příslušných bězích revize: `content/pages/index.ts` (4×, homepage), `content/pages/contact.ts` (1×) | aeo 2026-09-07 |
+| ⛔ | `\bAI[-‑ ]friendly\w*` | připravený pro AI, čitelný pro AI | anglický kalk; web pro tutéž věc jinde píše česky („obsah psaný pro AI“, „stránka připravená pro AI“). Třída musí obsahovat i **nezlomitelný spojovník** `‑` (U+2011) — bez něj pravidlo minulo `AI‑friendly` v `i18n/sniperdesign.ts` (nalezeno 9. 9. 2026). Zbývá `content/pages/contact.ts` (1×) | aeo 2026-09-07 |
 | ⚠️ | `\bznačka nevyšla\b|\bnevyšl\w+ v odpovědi\b` | značka se neobjevila | překladový obrat | ai-seo-zdarma 2026-08-26 |
 | ⚠️ | `\bstandard důvěry\b` | nároky na důvěryhodnost | kalk „standard of trust“ | ymyl-obsah-pro-ai 2026-08-26 |
 | ⛔ | `\bprokliká(ní|vání)\b` | klikání v rozhraní | počeštěné podstatné jméno ze slovesa, zní nečesky | produktovy-feed-gtin 2026-08-26 |
@@ -317,7 +317,7 @@
 | ⛔ | `\be-commerce (AI )?SEO\b` | AI SEO pro e-shopy | řetězení anglických výrazů v české větě | kategorie-texty-pro-ai 2026-08-26 |
 | ⚠️ | `\bkategorijn\w+` | stránky kategorií | mechanicky odvozené přídavné jméno | kategorie-texty-pro-ai 2026-08-26 |
 | ⚠️ | `\bkanonick\w+ profil\w*` | hlavní profil | „kanonický“ je zavedený u URL, u profilu autora je to kalk | person-data-pro-autora 2026-08-26 |
-| ⛔ | `\bSniperdesign\b` | Sniper Design | název značky se píše **dvěma slovy** (10× v `src/i18n/`); **výjimka:** URL a účty na sítích (`facebook.com/SniperDesign.cz`) | ai-nakupni-agenti 2026-08-26 |
+| ⛔ | `\bSniperdesign\b(?!\.)` | Sniper Design | název značky se píše **dvěma slovy** (10× v `src/i18n/`); **výjimka:** domény a účty na sítích — lookahead `(?!\.)` vyřadí `sniperdesign.cz` i `facebook.com/SniperDesign.cz`, doplněn při revizi homepage 8. 9. 2026, kdy pravidlo hlásilo doménu v komentáři | ai-nakupni-agenti 2026-08-26 |
 | ⛔ | `\bodpovědní\w* engin\w*` | odpovědní systémy | mechanický překlad „answer engines“; web i slovník používají „odpovědní systémy“ | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⚠️ | `\bzvyklý vstup\b|\bvstup do internetu\b` | vstupní brána na internet | nepřirozená vazba | seznam-cz-ai-vyhledavani 2026-08-25 |
 | ⛔ | `\bpočítá\w* za (origináln|kvalitn|dobr)\w+` | považuje se za, počítá se jako | nečeská vazba „počítat za“ ve významu „považovat za“ | originalni-data-pro-ai 2026-08-25 |
