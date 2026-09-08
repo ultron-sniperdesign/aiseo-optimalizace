@@ -71,7 +71,7 @@ export const nav = {
         href: "/geo/",
         badge: "GEO",
         fullName: "Generative Engine Optimization",
-        lead: "Citace v ChatGPT, Perplexity, Claude a Gemini.",
+        lead: "Citace v ChatGPT, Gemini, Claude a Perplexity.",
         desc: "Místo modrého odkazu cílíte na to být zdrojem, ze kterého AI čerpá fakta při generování odpovědi.",
       },
       {
@@ -80,7 +80,7 @@ export const nav = {
         href: "/aeo/",
         badge: "AEO",
         fullName: "Answer Engine Optimization",
-        lead: "Google AI Overviews a Bing Chat.",
+        lead: "Přehled od AI, režim AI a Microsoft Copilot.",
         desc: "Užší disciplína — FAQ sekce, návody a krátké odpovědi hned po nadpisu. To je její řemeslo.",
       },
       {
@@ -88,9 +88,9 @@ export const nav = {
         label: "AIO",
         href: "/aio/",
         badge: "AIO",
-        fullName: "AI Optimization (zastřešující)",
-        lead: "Strategický deštník nad SEO, GEO a AEO.",
-        desc: "Také konkrétní funkce Google AI Overviews. Dvojí význam, který se v praxi často plete.",
+        fullName: "AI Optimization (zastřešující rámec)",
+        lead: "Zastřešující rámec nad SEO, GEO a AEO.",
+        desc: "Zkratka má i druhé čtení — konkrétní funkci Googlu. Tu na webu vedeme pod názvem Přehled od AI.",
       },
       {
         d: "aiprehled",
