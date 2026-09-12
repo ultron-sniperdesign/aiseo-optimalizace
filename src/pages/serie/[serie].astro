@@ -197,6 +197,9 @@ const collectionJsonLd = {
 </BaseLayout>
 
 <style>
+  /* FreeStrip má vlastní rám sekce; tenhle obal už odsazení aplikoval,
+     takže ho komponentě vypneme, ať se nesečte dvakrát. */
+  .se { --free-strip-px: 0; }
   .se {
     --d: var(--color-seo);
     --d-tint: var(--color-seo-tint);

@@ -74,10 +74,17 @@ const {
 </aside>
 
 <style>
+  /**
+   * Rám sekce: `max-width` + vodorovný odsazení stránky. Stránky, které mají
+   * vlastní orámovaný obal (`.st` na /zacnete-tady/, `.se` na landingu série),
+   * si ten odsazení už aplikovaly — bez `--free-strip-px: 0` by se sečetlo
+   * dvakrát a tmavá karta by začínala o 58 px vpravo od zbytku obsahu
+   * (naměřeno 12. 9. 2026 při 1440 px: 188 místo 130).
+   */
   .free-strip {
     max-width: var(--max-section);
     margin: var(--free-strip-mt, 4rem) auto 0;
-    padding: 0 var(--space-section-x);
+    padding: 0 var(--free-strip-px, var(--space-section-x));
   }
   .free-strip__inner {
     position: relative;

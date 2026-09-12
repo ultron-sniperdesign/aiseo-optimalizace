@@ -203,6 +203,9 @@ const faqJsonLd = {
 </BaseLayout>
 
 <style>
+  /* FreeStrip má vlastní rám sekce; tenhle obal už odsazení aplikoval,
+     takže ho komponentě vypneme, ať se nesečte dvakrát. */
+  .st { --free-strip-px: 0; }
   .st {
     max-width: var(--max-section);
     margin: 0 auto;
