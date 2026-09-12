@@ -11,10 +11,28 @@ import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { ui } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 import * as p from "~/content/pages/zacnete-tady";
-import { faqPlainText } from "~/lib/jsonld";
+import { buildPersonRef, faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
+import { czDate } from "~/lib/date";
+import { getCollection } from "astro:content";
+import { groups as glossaryGroups } from "~/content/pages/slovnik";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const pageUrl = `${SITE_ORIGIN}/zacnete-tady/`;
+
+/**
+ * Počty v hero leadu se čtou z kolekcí — ručně psaná čísla zastarávají
+ * (homepage tvrdila „50+ pojmů“, slovník jich měl 58). Stejný vzor jako
+ * v `index.astro`: text zůstává v datovém modulu kvůli mutacím, dosazuje se
+ * jen číslo.
+ */
+const counts: Record<string, number> = {
+  articles: (await getCollection("articles")).length,
+  terms: glossaryGroups.reduce((sum, g) => sum + g.terms.length, 0),
+};
+const heroLead = p.hero.lead.replace(
+  /\{(articles|terms)\}/g,
+  (_, k: string) => String(counts[k]),
+);
 
 const howtoJsonLd = {
   "@context": "https://schema.org",
@@ -29,6 +47,15 @@ const howtoJsonLd = {
     text: ph.goal,
     url: `${pageUrl}#faze-${ph.num}`,
   })),
+  /**
+   * `totalTime` a autorství: HowTo dnes rich results nedělá (Google je zrušil
+   * v roce 2023), ale schema zůstává strojově čitelné pro systémy AI — a bez
+   * data revize a autora je to anonymní návod bez stáří.
+   */
+  totalTime: "P90D",
+  dateModified: p.meta.updated,
+  author: buildPersonRef(SITE_ORIGIN),
+  publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
 const faqJsonLd = {
@@ -54,7 +81,8 @@ const faqJsonLd = {
     <section class="st-hero">
       <span class="st-hero__eyebrow">{p.hero.eyebrow}</span>
       <h1 class="st-hero__title">{p.hero.title}</h1>
-      <p class="st-hero__lead">{p.hero.lead}</p>
+      <p class="st-hero__lead">{heroLead}</p>
+      <p class="st-hero__updated">{ui.metaUpdated} {czDate(p.meta.updated)}</p>
     </section>
 
     <!-- ===== KRÁTKÁ ODPOVĚĎ ===== -->
@@ -83,13 +111,33 @@ const faqJsonLd = {
                   <a class="st-step__link" href={s.href}>
                     {s.label} <span aria-hidden="true">→</span>
                   </a>
-                  <p class="st-step__why">{s.why}</p>
+                  <p class="st-step__why">
+                    {s.why}
+                    {s.also && (
+                      <>
+                        {" "}
+                        <a class="st-step__also" href={s.also.href}>
+                          {s.also.label} <span aria-hidden="true">→</span>
+                        </a>
+                      </>
+                    )}
+                  </p>
                 </li>
               ))}
             </ol>
           </article>
         ))
       }
+      <p class="st-timeframe">
+        {p.timeframe.text}{" "}
+        {p.timeframe.links.map((l, i) => (
+          <>
+            {i > 0 && <span> a </span>}
+            <a href={l.href}>{l.label}</a>
+          </>
+        ))}
+        <span>.</span>
+      </p>
     </section>
 
     <!-- ===== PODLE ROLE ===== -->
@@ -99,12 +147,17 @@ const faqJsonLd = {
       <div class="st-roles__grid">
         {
           p.roles.items.map((r) => (
-            <a class="st-role" href={r.href}>
-              <span class="st-role__title">
-                {r.title} <span aria-hidden="true">→</span>
-              </span>
-              <span class="st-role__desc">{r.desc}</span>
-            </a>
+            <div class="st-role">
+              <h3 class="st-role__title">{r.title}</h3>
+              <p class="st-role__desc">{r.desc}</p>
+              <ul class="st-role__links">
+                {r.links.map((l) => (
+                  <li>
+                    <a href={l.href}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))
         }
       </div>
@@ -117,7 +170,10 @@ const faqJsonLd = {
       <div class="st-cta__inner">
         <div>
           <h2 class="st-cta__title">{p.cta.title}</h2>
-          <p class="st-cta__lead">{p.cta.lead}</p>
+          <p class="st-cta__lead" set:html={renderFaqMarkdown(p.cta.lead)}></p>
+          <p class="st-cta__soft">
+            <a href={p.cta.soft.href}>{p.cta.soft.label} →</a>
+          </p>
         </div>
         <a class="st-cta__btn" href={p.cta.href}>{p.cta.button}</a>
       </div>
@@ -137,7 +193,7 @@ const faqJsonLd = {
                 <span class="st-faq__q-num">{i + 1}</span>
                 <span>{item.q}</span>
               </dt>
-              <dd class="st-faq__a">{item.a}</dd>
+              <dd class="st-faq__a" set:html={renderFaqMarkdown(item.a)}></dd>
             </div>
           ))
         }
@@ -332,6 +388,36 @@ const faqJsonLd = {
     max-width: 44rem;
     margin: 0 0 1.25rem;
   }
+  .st-hero__updated {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    margin: 0.75rem 0 0;
+  }
+  .st-step__also {
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .st-step__also:hover,
+  .st-step__also:focus-visible {
+    text-decoration: underline;
+  }
+  .st-timeframe {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    margin: clamp(1.25rem, 2.5vw, 2rem) 0 0;
+  }
+  .st-timeframe a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .st-timeframe a:hover,
+  .st-timeframe a:focus-visible {
+    text-decoration: underline;
+  }
   .st-roles__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -348,12 +434,51 @@ const faqJsonLd = {
     border: 1px solid var(--color-rule);
     border-radius: 8px;
     padding: 1.25rem 1.5rem;
-    text-decoration: none;
-    transition: border-color 0.2s ease, background 0.2s ease;
   }
-  .st-role:hover {
-    border-color: var(--color-accent);
-    background: var(--color-paper-deep);
+  .st-role__links {
+    list-style: none;
+    margin: 0.625rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  .st-role__links a {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .st-role__links a:hover,
+  .st-role__links a:focus-visible {
+    text-decoration: underline;
+  }
+  .st-cta__soft {
+    margin: 0.625rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+  }
+  .st-cta__soft a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    opacity: 0.85;
+  }
+  /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
+  .st-cta__lead :global(strong) { font-weight: 600; }
+  .st-cta__lead :global(a),
+  .st-faq__a :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .st-faq__a :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep, var(--color-paper));
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
   }
   .st-role__title {
     font-family: var(--font-sans);

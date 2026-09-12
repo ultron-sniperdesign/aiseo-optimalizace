@@ -41,7 +41,7 @@ export const SERIES: Series[] = [
     title: "AI SEO pro e-shopy: kompletní série",
     shortTitle: "AI SEO pro e-shopy",
     description:
-      "Osmidílná série pro provozovatele e-shopů: od kontextu přes produktové stránky, kategorie a strukturovaná data až po AI nákupní agenty a reálná čísla.",
+      "Desetidílná série pro provozovatele e-shopů: od kontextu přes produktové stránky, kategorie a strukturovaná data až po nákupní agenty a reálná čísla.",
     intro:
       "Díly na sebe navazují jako kurz — začněte prvním a projděte je popořadě. Každý díl je samostatný článek s konkrétním postupem; dohromady pokrývají celou cestu e-shopu k viditelnosti v AI odpovědích.",
     parts: [
