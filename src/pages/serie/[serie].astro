@@ -15,6 +15,7 @@ import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { SERIES, SERIES_BASE } from "~/i18n/series";
 import { czDate } from "~/lib/date";
+import { buildPersonRef, faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
 
 export async function getStaticPaths() {
   return SERIES.map((s) => ({ params: { serie: s.slug }, props: { s } }));
@@ -55,6 +56,7 @@ const parts = s.parts
 /** Meta řádek hero — jako na článku: díly, celkový čas, poslední aktualizace. */
 const totalMinutes = parts.reduce((n, p) => n + p.minutes, 0);
 const newestUpdated = parts.map((p) => p.updated).sort().at(-1);
+const oldestPublished = parts.map((p) => p.published).filter(Boolean).sort().at(0);
 
 const collectionJsonLd = {
   "@context": "https://schema.org",
@@ -83,13 +85,35 @@ const collectionJsonLd = {
       },
     })),
   },
+  /**
+   * Autor, vydavatel a data — stránka je vizuálně nesla (byline i „Aktualizováno“),
+   * ale strukturovaná data o nich mlčela. `datePublished` = nejstarší díl,
+   * `dateModified` = nejnovější revize napříč díly.
+   */
+  author: buildPersonRef(SITE_ORIGIN),
+  publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
+  ...(oldestPublished ? { datePublished: oldestPublished } : {}),
+  ...(newestUpdated ? { dateModified: newestUpdated } : {}),
 };
+
+/** FAQPage — jen pro strojovou čitelnost; odznaky za FAQ Google zrušil 7. 5. 2026. */
+const faqJsonLd = s.faq?.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: s.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: faqPlainText(item.a) },
+      })),
+    }
+  : null;
 ---
 
 <BaseLayout
-  title={s.title}
+  title={s.seoTitle ?? s.title}
   description={s.description}
-  jsonLd={collectionJsonLd}
+  jsonLd={faqJsonLd ? [collectionJsonLd, faqJsonLd] : collectionJsonLd}
   image={heroImage}
   breadcrumb={[
     { label: ui.crumbBlog, href: "/blog/" },
@@ -137,7 +161,8 @@ const collectionJsonLd = {
     <section class="se-answer">
       <div class="se-answer__inner">
         <span class="se-answer__mark">{ui.seriesEyebrow}</span>
-        <p class="se-answer__text">{s.intro}</p>
+        <p class="se-answer__text">{s.answer ?? s.intro}</p>
+        {s.answer && <p class="se-answer__intro">{s.intro}</p>}
       </div>
     </section>
 
@@ -185,6 +210,77 @@ const collectionJsonLd = {
         )
       }
     </section>
+
+    {s.platforms && (
+      <section class="se-block" id="kde-muze-byt-eshop-videt">
+        <h2 class="se-block__title">{s.platforms.title}</h2>
+        <p class="se-block__lead">{s.platforms.lead}</p>
+        <div class="se-table-wrap" tabindex="0">
+          <table class="se-table">
+            <thead>
+              <tr>{s.platforms.head.map((h) => <th>{h}</th>)}</tr>
+            </thead>
+            <tbody>
+              {s.platforms.rows.map((row) => (
+                <tr>{row.map((cell) => <td set:html={renderFaqMarkdown(cell)} />)}</tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {s.platforms.note && <p class="se-block__note">{s.platforms.note}</p>}
+      </section>
+    )}
+
+    {s.related && (
+      <section class="se-block">
+        <h2 class="se-block__title">{s.related.title}</h2>
+        <p class="se-block__lead">{s.related.lead}</p>
+        <div class="se-related">
+          {s.related.groups.map((g) => (
+            <div class="se-related__group">
+              <h3 class="se-related__title">{g.title}</h3>
+              <ul class="se-related__links">
+                {g.links.map((l) => (
+                  <li><a href={l.href}>{l.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {s.faq && s.faq.length > 0 && (
+      <section class="se-block" aria-labelledby="se-faq-title">
+        <h2 class="se-block__title" id="se-faq-title">{ui.faqEyebrow}</h2>
+        <dl class="se-faq">
+          {s.faq.map((item, i) => (
+            <div class="se-faq__item">
+              <dt class="se-faq__q">
+                <span class="se-faq__num">{String(i + 1).padStart(2, "0")}</span>
+                <span>{item.q}</span>
+              </dt>
+              <dd class="se-faq__a" set:html={renderFaqMarkdown(item.a)} />
+            </div>
+          ))}
+        </dl>
+      </section>
+    )}
+
+    {s.cta && (
+      <section class="se-cta">
+        <div class="se-cta__inner">
+          <div>
+            <h2 class="se-cta__title">{s.cta.title}</h2>
+            <p class="se-cta__lead" set:html={renderFaqMarkdown(s.cta.lead)} />
+            {s.cta.soft && (
+              <p class="se-cta__soft"><a href={s.cta.soft.href}>{s.cta.soft.label} →</a></p>
+            )}
+          </div>
+          <a class="se-cta__btn" href={s.cta.href}>{s.cta.button}</a>
+        </div>
+      </section>
+    )}
 
     <FreeStrip />
 
@@ -438,6 +534,190 @@ const collectionJsonLd = {
   }
 
   /* ===== BACK ===== */
+  /* ===== OBSAHOVE BLOKY (tabulka, souvisejici, FAQ, CTA) =====
+     Drzi tutez sirku jako seznam dilu (.se-parts, 60rem). Bez toho by
+     tabulka a karty bezely na 1165 px vedle seznamu na 960 px a stranka
+     by mela dva ruzne obsahove sloupce. */
+  .se-block,
+  .se-cta {
+    max-width: 60rem;
+  }
+  .se-block {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+  .se-block__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+  .se-block__lead {
+    font-family: var(--font-sans);
+    color: var(--color-ink-muted);
+    margin: 0 0 1.25rem;
+    max-width: var(--w-read);
+  }
+  .se-block__note {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    margin: 0.875rem 0 0;
+    max-width: var(--w-read);
+  }
+  .se-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+  }
+  .se-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+  }
+  @media (max-width: 720px) {
+    .se-table { min-width: 34rem; }
+  }
+  .se-table th,
+  .se-table td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+  .se-table th {
+    background: var(--color-paper);
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .se-table tr:last-child td { border-bottom: none; }
+  .se-table td :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .se-related {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .se-related__group {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .se-related__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.625rem;
+    color: var(--color-ink);
+  }
+  .se-related__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  .se-related__links a {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .se-related__links a:hover,
+  .se-related__links a:focus-visible { text-decoration: underline; }
+  .se-faq { margin: 0; }
+  .se-faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding: 1.125rem 0;
+  }
+  .se-faq__q {
+    display: flex;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .se-faq__num {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .se-faq__a {
+    margin: 0.5rem 0 0 2.0625rem;
+    font-family: var(--font-sans);
+    color: var(--color-ink-muted);
+    line-height: 1.65;
+    max-width: var(--w-read);
+  }
+  /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
+  .se-faq__a :global(a),
+  .se-cta__lead :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .se-faq__a :global(strong),
+  .se-cta__lead :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .se-answer__intro {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    margin: 0.75rem 0 0;
+  }
+  .se-cta {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 8px;
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+  .se-cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .se-cta__title {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--color-ink);
+  }
+  .se-cta__lead {
+    font-family: var(--font-sans);
+    color: var(--color-ink-muted);
+    margin: 0;
+    max-width: 42rem;
+  }
+  .se-cta__soft {
+    margin: 0.625rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+  }
+  .se-cta__soft a { color: inherit; text-decoration: underline; opacity: 0.85; }
+  .se-cta__btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-accent);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .se-cta__btn:hover,
+  .se-cta__btn:focus-visible { filter: brightness(1.1); }
+
   .se-back {
     margin-top: clamp(2rem, 4vw, 3rem);
   }

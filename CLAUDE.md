@@ -196,7 +196,7 @@ aiseo-optimalizace.cz/
 │   │   ├── author.ts                         # autor entita (byline/AuthorBox/autorská stránka/Person @id)
 │   │   ├── proof.ts                          # ProofStrip (200k trust komponenta)
 │   │   ├── tags.ts                           # registr 9 blog témat (id stabilní, slug/label přeložit)
-│   │   ├── series.ts                         # registr sérií článků (AI SEO pro e-shopy, 8 dílů)
+│   │   ├── series.ts                         # registr sérií článků (SEO pro e-shop v éře AI, 10 dílů)
 │   │   └── llms.ts                           # texty pro generovaný /llms.txt
 │   ├── layouts/BaseLayout.astro              # SEO meta + JSON-LD + Header/Footer (čte site.ts)
 │   ├── pages/

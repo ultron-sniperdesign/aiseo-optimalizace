@@ -174,6 +174,7 @@ export const nav = {
         { href: "/zacnete-tady/", label: "Začněte tady" },
         { href: "/prakticky-postup/", label: "Praktický postup" },
         { href: "/rozhodovaci-matice/", label: "Rozhodovací matice" },
+        { href: "/serie/ai-seo-pro-eshopy/", label: "Série pro e-shopy" },
         { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Hlavní průvodce" },
         { href: "/blog/", label: "Blog" },
         { href: "/slovnik/", label: "Slovník pojmů" },
