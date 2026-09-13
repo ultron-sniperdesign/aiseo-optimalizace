@@ -1287,3 +1287,20 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 **Poznámka:** tři z pěti nálezů byly ve větách přepsaných po auditech, ne v prvním psaní — potřetí za sebou (2. 9., 3. 9., 5. 9.). Bere se to jako pravidlo: věta upravená kvůli faktické opravě jde znovu celá přečíst, ne jen zkontrolovat to opravené slovo.
 
 **Vedlejší úklid:** `gsc-ai-segmenty-mereni` nesl v těle „rollout" (předáno admin session 7. 9.) → „čekání, až se report zpřístupní". Checker 1 → 0.
+
+---
+
+## C6 při refreshi: role AI robotů v 15 článcích (13. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | Před: `geo-optimalizace` 1 nález, `aio-strategie` 1 („Awareness“), `jak-strukturovat-pillar-content` 1 („scraper“, předáno jako B6). Po: **0 ve všech 15 souborech.** |
+| LLM (gpt-5.4, jen změněné řádky) | 19 nálezů v 10 souborech — **12 přijato, 7 odmítnuto** |
+| Závěrečná kontrola (Claude, čerstvý pohled na diff) | 1 potvrzený blokující nález + cca 40 stylistických; zapracováno 33 |
+
+**Doložená výjimka, slovník v66:** pravidlo `v dnešní (digitální )?(době|éře)` dostalo `[skip:geo-optimalizace]` — článek frázi uvádí v uvozovkách jako záporný příklad („v dnešní digitální éře“ → prázdný marketingový jazyk). Kategorie je popsaná už v sekci „Co není vada“, ale checker ji hlásil pořád; teď je výjimka u pravidla.
+
+**Přijato z LLM (výběr):** „řídící vrstva“ → „řídicí vrstva“ (tvrdé/měkké í, 3 místa v `aio-strategie`) · „aby nebyli blokovaní“ → „blokováni“ · „se robots.txt řídí“ (dvojznačné, zní jako by se řídil soubor) → „pravidla v robots.txt respektuje“ · „pro trénink … a pro podkládání“ → „k tréninku … a k podkládání“ · „User-Agent“ → „user-agent“.
+**Odmítnuto:** „jsou to, co“ → „jsou tím, co“ (obojí spisovné) · středníky ve výčtu tokenů (bez nich by se výčet s čárkami v závorkách rozpadl) · „který si AI nástroj vezme“ jako chyba shody — „který“ se vztahuje k „odstavci“, ne k „definici“ (upraveno ale kvůli tónu) · skloňování „v Claude“ vs. „v Claudu“ sjednoceno na „v Claude“ podle hubu.
+
+**Poznámka k postupu — nová past:** opravy dělali paralelní editoři a jeden z nich plošně „dosáhl checkeru na 0“ i mimo zadané pasáže: v `aio-strategie` přeložil jen první z pěti dimenzí modelu zralosti („Povědomí, Process, Tooling…“). Checker to vzal jako vyřešené, čtenáři vznikl napůl přeložený výčet. Dopřeloženo všech pět. **Pravidlo:** když editor sahá mimo nález kvůli checkeru, musí dotáhnout celý celek, jinak je lepší nechat původní stav a výjimku.

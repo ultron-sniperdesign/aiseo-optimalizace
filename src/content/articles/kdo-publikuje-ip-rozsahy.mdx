@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "mereni"
 published: "2026-08-11"
-updated: "2026-08-11"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "ip rozsahy ai robotů"
@@ -115,7 +115,7 @@ Praktický důsledek: když vám robot přijde přes IPv6, proti těmhle seznam�
 
 ### Roboti vyvolaní uživatelem mají mnohem širší rozsah adres
 
-U Googlu 1 056 prefixů proti 315 u Googlebota. U OpenAI 256 u ChatGPT-User proti 21 u GPTBota. Robot, který jde na web proto, že se ho někdo na něco zeptal, přichází z podstatně širší sítě než ten, který web systematicky prochází.
+U Googlu 1 056 prefixů proti 315 u Googlebota. U OpenAI 256 u ChatGPT-User proti 21 u GPTBota. Robot, který jde na web na pokyn uživatele, přichází z podstatně širší sítě než ten, který web systematicky prochází. U ChatGPT-User jde typicky o dotaz v ChatGPT, u Googlu do stejné skupiny patří i roboti pro ověření webu (Google Site Verifier) nebo předčítání stránky (Google Read Aloud).
 
 <Insight tone="aio" icon="i" label="Oprava dvou mých starších tvrzení">
   V článku o [ověřování AI robotů](/blog/overovani-ai-robotu/) z 8. srpna jsem napsal dvě věci, které tohle širší měření vyvrací.
@@ -133,7 +133,7 @@ ByteDance, Meta, Mistral a Cohere. U všech čtyř platí, že **jsem seznam nen
 
 Zvlášť stojí za pozornost **Meta**. V dokumentaci k webovým crawlerům výslovně doporučuje dávat na seznam povolených spíš IP adresy než user-agenty, protože je to bezpečnější. **V té dokumentaci ale žádný veřejný seznam adres není** a odkazuje se na kontaktní e-mail. Kdo chce to doporučení splnit, podle té dokumentace si o podklad musí napsat.
 
-U ByteDance jsem hledal i v [minulém článku](/blog/bytespider-ceska-media/) — a je to zrovna robot, kterého mají české weby v robots.txt nejčastěji.
+U ByteDance jsem hledal i v [minulém článku](/blog/bytespider-ceska-media/) — a právě její Bytespider měl v tamním vzorku českých médií pravidlo v robots.txt nejčastěji.
 
 ## Jak s tím pracovat
 

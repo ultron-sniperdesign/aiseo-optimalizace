@@ -1,14 +1,14 @@
 ---
 title: "Co přesně vypne který opt-out z AI podle dokumentace"
 description: "Podle dokumentace: Google-Extended neřídí AI Overviews, GPTBot nevyřadí z ChatGPT a Seznam-Extended vypne i návštěvnost. Sedm nastavení vedle sebe."
-answer: "Každé nastavení se vztahuje k jiné platformě a jinému použití. Google-Extended podle Googlu neovlivňuje Search; funkce s generativní AI ve Search popisuje Google jako součást Search se samostatným ovládáním v Search Console. GPTBot podle OpenAI řeší jen trénink, ze zobrazení v ChatGPT vyřadí až OAI-SearchBot. Seznam-Extended jako jediný z porovnávaných vypne i přivádění uživatelů."
+answer: "Každé nastavení se vztahuje k jiné platformě a jinému použití. Google-Extended podle Googlu neovlivňuje Search; funkce s generativní AI ve Search popisuje Google jako součást Search se samostatným ovládáním v Search Console. GPTBot podle OpenAI řeší jen trénink, ze zobrazení v ChatGPT vyřadí až OAI-SearchBot. Seznam-Extended jako jediný z porovnávaných neoddělí použití obsahu v AI od přivádění uživatelů."
 slug: "co-vypne-ktery-opt-out"
 category: "analysis"
 tags:
   - "technicke-zaklady"
   - "ai-platformy"
 published: "2026-08-11"
-updated: "2026-08-29"
+updated: "2026-09-13"
 hub: "AIPREHLED"
 variant: "rich"
 keywords:
@@ -26,7 +26,7 @@ stats:
   - value: "9 z 33"
     label: "českých médií má v robots.txt Google-Extended"
   - value: "1 ze 7"
-    label: "porovnávaných nastavení, u kterého opt-out znamená i konec přivádění uživatelů — Seznam-Extended"
+    label: "porovnávaných nastavení, u kterého nejde oddělit použití obsahu v AI od přivádění uživatelů — Seznam-Extended"
 faq:
   - q: "Vypne Google-Extended zobrazování v AI Overviews?"
     a: "Podle dokumentace Googlu ne. Slouží k řízení tréninku a groundingu v aplikacích Gemini a Vertex AI a nemá vliv na zařazení ani na hodnocení v Google Search. Na AI Overviews a AI Mode je samostatné nastavení v Search Console."
@@ -109,7 +109,7 @@ Apple to má rozdělené podobně jako Google. Zákaz `Applebot-Extended` je opt
 
 V měřených českých médiích to má nastavené pět webů z 33.
 
-## Seznam-Extended je jediný, který stojí i návštěvnost
+## Seznam-Extended jako jediný neoddělí AI od návštěvnosti
 
 A tady je rozdíl, kvůli kterému stojí za to číst českou dokumentaci zvlášť.
 
@@ -124,7 +124,7 @@ Nápověda Seznam Partner uvádí u zákazu `Seznam-Extended` obojí v jedné v�
 ## Jak si vybrat
 
 <Checklist tone="geo" title="Podle toho, čeho chcete dosáhnout" items={[
-  { title: "Nechci, aby se obsah používal na trénink", desc: "Google-Extended, GPTBot, Applebot-Extended. Ve vyhledávání ani v AI plochách vás to nikam neposune." },
+  { title: "Nechci, aby se obsah používal na trénink", desc: "Google-Extended, GPTBot, Applebot-Extended. Ve vyhledávání vás to nikam neposune. Google-Extended ale podle dokumentace vyřadí obsah i z podkládání odpovědí (grounding) v aplikacích Gemini a ve službě Grounding with Google Search na Vertex AI." },
   { title: "Nechci být ve funkcích s generativní AI ve Vyhledávání", desc: "nastavení Search generative AI control v Search Console. Google-Extended na to podle dokumentace nestačí." },
   { title: "Nechci být v odpovědích ChatGPT", desc: "OAI-SearchBot, ne GPTBot. Počítejte s tím, že navigační odkaz může zůstat." },
   { title: "Nechci být v Seznam AI", desc: "Seznam-Extended — ale ztratíte i uživatele, které by ten kanál přivedl." },
@@ -149,13 +149,13 @@ Stav k **11. srpna 2026**; formulace se mění a stojí za to si je před nastav
     GPTBot řeší trénink. Z odpovědí vyhledávání vyřadí až OAI-SearchBot.
   </Mistake>
   <Mistake number="03" title="Nastavit Seznam-Extended bez rozmyslu">
-    Jako jediný ze sledovaných vypne i přivádění uživatelů. U ostatních tenhle náklad nemáte.
+    Jako jediný ze sledovaných vypne najednou použití obsahu v Seznam AI i přivádění uživatelů, rozdělit to nejde. U OpenAI i Googlu se trénink vypíná odděleně od zobrazení ve vyhledávání.
   </Mistake>
 </MistakeGrid>
 
 ## Shrnutí
 
-Porovnávaných nastavení je sedm a **každé se vztahuje k jiné platformě a jinému použití; zaměnit je nelze**. Dvě často zmiňovaná — Google-Extended a GPTBot — řeší podle dokumentace trénink, ne to, jestli se váš web objeví v AI odpovědi. Na to jsou jiná nastavení: v Search Console u Googlu a OAI-SearchBot u OpenAI.
+Porovnávaných nastavení je sedm a **každé se vztahuje k jiné platformě a jinému použití; zaměnit je nelze**. Dvě často zmiňovaná — Google-Extended a GPTBot — podle dokumentace nerozhodují o tom, jestli se váš web objeví ve funkcích s generativní AI ve Vyhledávání nebo ve vyhledávání v ChatGPT. Na to jsou jiná nastavení: v Search Console u Googlu a OAI-SearchBot u OpenAI. GPTBot přitom řeší jen trénink, Google-Extended trénink a podkládání odpovědí v aplikacích Gemini a ve službě Grounding with Google Search na Vertex AI.
 
 Než něco nastavíte, mějte jasno, co vlastně chcete vypnout. A počítejte s tím, že u Seznamu za to podle jeho nápovědy zaplatíte návštěvností a u robotů vyvolaných uživatelem si jistí být nemůžete.
 

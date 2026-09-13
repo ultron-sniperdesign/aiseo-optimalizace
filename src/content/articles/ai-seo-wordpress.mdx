@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-06-11"
-updated: "2026-06-11"
+updated: "2026-09-13"
 keywords:
   - "ai seo wordpress"
   - "wordpress pro ai vyhledavani"
@@ -18,8 +18,8 @@ variant: "rich"
 stats:
   - value: "~40 %"
     label: "podíl WordPressu mezi všemi weby podle veřejně citovaných odhadů k roku 2026"
-  - value: "5"
-    label: "často řešených identifikátorů AI vyhledávacích robotů + pravidlo Google-Extended, které se vyplatí v roce 2026 zkontrolovat"
+  - value: "3"
+    label: "vyhledávací roboti, které kvůli citacím v AI nechte neblokované: OAI-SearchBot, Claude-SearchBot a PerplexityBot"
   - value: "~30 000+"
     label: "aktivních instalací nejpoužívanějšího WordPress pluginu pro llms.txt (k červnu 2026)"
   - value: "4"
@@ -32,7 +32,7 @@ howto:
     - name: "Přidejte llms.txt"
       text: "Nainstalujte plugin Website LLMs.txt (k červnu 2026 zhruba 30 000+ aktivních instalací, integrace s hlavními SEO pluginy) nebo vytvořte llms.txt ručně v rootu domény. Ověřte přes `curl -I https://vasweb.cz/llms.txt` (HTTP 200) a otevřete soubor v prohlížeči, abyste viděli i obsah."
     - name: "Ujistěte se, že AI vyhledávací roboti nejsou blokovaní v robots.txt"
-      text: "Pro citace v AI odpovědích je potřeba, aby hlavní AI user-agenty nebyly blokované. Mezi ně patří GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a Meta-ExternalAgent. Samostatně řešte pravidlo Google-Extended, kterým Google řídí využití obsahu pro některé AI účely. Pozor: blokování GPTBot neblokuje OAI-SearchBot — jsou to dvě samostatná pravidla."
+      text: "Pro citace v AI odpovědích je potřeba, aby nebyli blokováni vyhledávací roboti OAI-SearchBot (OpenAI), Claude-SearchBot (Anthropic) a PerplexityBot (Perplexity). Tréninkové roboty GPTBot, ClaudeBot a Meta-ExternalAgent povolte nebo zakažte podle toho, jestli chcete obsah pouštět do tréninku modelů. Zvlášť rozhodněte i o pravidle Google-Extended, kterým Google řídí využití obsahu pro některé AI účely. Pozor: blokování GPTBot neblokuje OAI-SearchBot — jsou to dvě samostatná pravidla."
     - name: "Doplňte strukturovaná data, která SEO plugin nedělá automaticky"
       text: "Manuálně přidejte FAQPage (FAQ blok na produktové nebo službové stránce), Product s Offer u WooCommerce a Person na autorské stránce. Většina SEO pluginů má pro tyto typy generátor v editoru postu."
     - name: "Sledujte Core Web Vitals a konfiguraci CDN"
@@ -43,7 +43,7 @@ faq:
   - q: "Který WordPress SEO plugin je pro AI SEO nejlepší v roce 2026?"
     a: "Pro AI SEO základ fungují všechny čtyři hlavní pluginy srovnatelně: Yoast SEO, Rank Math, SEOPress a All in One SEO (AIOSEO). Liší se hlavně rozsahem bezplatné verze a uživatelským prostředím. Rank Math má štědrou bezplatnou verzi s generátorem strukturovaných dat, Yoast je nejrozšířenější s dobrou integrací třetích pluginů (mimo jiné Website LLMs.txt). Přechod mezi nimi je možný, ale měl by být provedený opatrně kvůli ztrátě nastavení."
   - q: "Které AI vyhledávací roboty mám v robots.txt řešit?"
-    a: "Mezi často řešené identifikátory pro rok 2026 patří GPTBot (OpenAI training), OAI-SearchBot (OpenAI live search), ClaudeBot (Anthropic), PerplexityBot (Perplexity) a Meta-ExternalAgent (Meta AI). Samostatně řešte pravidlo Google-Extended, kterým Google řídí využití obsahu pro některé AI účely. Pozor: GPTBot a OAI-SearchBot jsou samostatné. V novější dokumentaci a praxi se obvykle řeší hlavně ClaudeBot; starší identifikátory Claude-Web a anthropic-ai se v aktuálních návodech objevují méně. Někteří správci webů uvádějí, že Bytespider (ByteDance) respektuje robots.txt jen omezeně — pokud to vidíte i v logách, bývá účinnější blokace přes CDN nebo firewall."
+    a: "Kvůli citacím jde hlavně o vyhledávací roboty OAI-SearchBot (vyhledávání v ChatGPT), Claude-SearchBot (vyhledávání v Claude) a PerplexityBot (Perplexity). Stránku na přímý dotaz uživatele načítají ChatGPT-User a Claude-User. Claude-User podle Anthropicu pravidla v robots.txt respektuje, u ChatGPT-User OpenAI uvádí, že se pravidla uplatnit nemusí. Tréninkové roboty GPTBot (OpenAI), ClaudeBot (Anthropic) a Meta-ExternalAgent (Meta) povolte nebo zakažte podle toho, jestli chcete obsah pouštět do tréninku modelů. Zvlášť rozhodněte i o pravidle Google-Extended, kterým Google řídí využití obsahu pro některé AI účely. Pozor: GPTBot a OAI-SearchBot jsou samostatné. Starší identifikátory Claude-Web a anthropic-ai v aktuální dokumentaci Anthropicu nejsou; pravidla proto pište pro aktuální identifikátory ClaudeBot, Claude-SearchBot a Claude-User, podle toho, kterého se mají týkat. Někteří správci webů uvádějí, že Bytespider (ByteDance) respektuje robots.txt jen omezeně — pokud to vidíte i v logách, bývá účinnější blokace přes CDN nebo firewall."
   - q: "Jak doplnit llms.txt na WordPress bez pluginu?"
     a: "Vytvořte textový soubor llms.txt s krátkým markdown přehledem hlavních stránek webu a uploadujte ho do rootu domény (například přes FTP nebo File Manager v hostingu). Ověřte přes `curl -I https://vasweb.cz/llms.txt` (HTTP 200) a otevřete soubor v prohlížeči, abyste viděli i obsah. Plugin Website LLMs.txt to ale dělá automaticky a aktualizuje při změnách webu, takže pro většinu uživatelů je výhodnější."
   - q: "Pokud používám Cloudflare, mám zapnout Block AI Bots přepínač?"
@@ -68,7 +68,7 @@ import Dont from "~/components/blocks/Dont.astro";
 
 AI vyhledávání přidává k tradičnímu SEO několik nových technických prvků. Pro WordPress weby to v roce 2026 znamená především:
 
-- **Mít neblokované hlavní AI vyhledávací roboty** v [robots.txt](/blog/ai-crawler-robots-txt/). Mezi často řešené identifikátory patří GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a Meta-ExternalAgent. Samostatně doporučujeme zkontrolovat pravidlo Google-Extended. Seznam ale není definitivní a v čase se může měnit.
+- **Mít neblokované hlavní AI vyhledávací roboty** v [robots.txt](/blog/ai-crawler-robots-txt/). Kvůli citacím jde hlavně o OAI-SearchBot, Claude-SearchBot a PerplexityBot. O tréninkových robotech (GPTBot, ClaudeBot, Meta-ExternalAgent) se rozhoduje zvlášť. Doporučujeme zkontrolovat i pravidlo Google-Extended. Seznam ale není definitivní a v čase se může měnit.
 - **Zvážit llms.txt** jako doplňkový orientační soubor pro AI systémy. Není to univerzálně potvrzený standard, ale může zjednodušit orientaci v obsahu webu.
 - **Mít [strukturovaná data](/blog/strukturovana-data-pro-ai/)** (Article, Organization, BreadcrumbList, FAQPage, Product) — většinu už dělá SEO plugin.
 - **Zaměřit obsah** na krátké úseky a otázky a odpovědi, které se AI systémům snáz používají v odpovědích.
@@ -122,7 +122,7 @@ Přechod mezi nimi je možný, ale měl by být **proveden opatrně** — kvůli
     {
       label: "robots.txt",
       title: "Ujistěte se, že AI vyhledávací roboti nejsou blokovaní",
-      text: "Pro citace v AI odpovědích musí mít hlavní AI vyhledávací roboti přístup. Mezi často řešené identifikátory patří GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot a Meta-ExternalAgent. Samostatně řešte Google-Extended. Pokud máte restriktivní robots.txt, přidejte pro relevantní identifikátory výjimky. Pozor: GPTBot a OAI-SearchBot jsou dvě samostatná pravidla.",
+      text: "Pro citace v AI odpovědích musí mít přístup hlavní AI vyhledávací roboti: OAI-SearchBot, Claude-SearchBot a PerplexityBot. Tréninkové roboty (GPTBot, ClaudeBot, Meta-ExternalAgent) povolte nebo zakažte podle toho, jestli chcete obsah pouštět do tréninku modelů, a zvlášť rozhodněte o Google-Extended. Pokud máte restriktivní robots.txt, přidejte pro relevantní identifikátory výjimky. Pozor: GPTBot a OAI-SearchBot jsou dvě samostatná pravidla.",
     },
     {
       label: "Strukturovaná data",
@@ -147,7 +147,7 @@ Přechod mezi nimi je možný, ale měl by být **proveden opatrně** — kvůli
 Tady je minimální funkční šablona, kterou doporučujeme jako start. Konkrétní úpravy podle specifik webu (přihlášené sekce, vlastní URL struktura, parametry):
 
 <Checklist title="Co WordPress robots.txt pro AI SEO obsahuje" items={[
-  { title: "Neblokovat hlavní AI user-agenty", desc: "GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent — pokud máte restriktivní pravidla, přidejte pro ně výjimky." },
+  { title: "Neblokovat AI vyhledávací roboty", desc: "Pokud máte restriktivní pravidla, přidejte výjimky pro vyhledávací roboty OAI-SearchBot, Claude-SearchBot a PerplexityBot i pro Claude-User, který načítá stránky na dotaz uživatele. U tréninkových robotů GPTBot, ClaudeBot a Meta-ExternalAgent rozhodněte, jestli chcete obsah pouštět do tréninku modelů." },
   { title: "Pravidlo Google-Extended", desc: "Samostatně rozhodněte, jestli chcete Googlu povolit využití obsahu pro některé AI účely." },
   { title: "Disallow admin", desc: "/wp-admin/, /wp-login.php — admin sekce nemá být v indexu žádného vyhledávače." },
   { title: "Disallow interní vyhledávání", desc: "Parametry typu /?s= nebo /search/ — vede k tisícům duplicit obsahu." },
@@ -163,10 +163,10 @@ Tady je minimální funkční šablona, kterou doporučujeme jako start. Konkré
     Pokud máte Cloudflare a zapnutý přepínač Block AI Bots (přidaný 2024), blokace na úrovni CDN je v praxi silnější než pravidla v robots.txt a může AI vyhledávací roboty zastavit ještě před tím, než váš web vůbec uvidí. Web pak nemůže být citovaný v AI odpovědích, i když máte vše ostatní správně. Pokud chcete být v AI odpovědích vidět, přepínač vypněte.
   </Mistake>
   <Mistake num="02" title="Blokujete jen Claude-Web a anthropic-ai">
-    Starší identifikátory Claude-Web a anthropic-ai už nejsou aktivní. Aktuální vyhledávací robot Anthropic je ClaudeBot. Pokud chcete pravidla skutečně aplikovat, používejte ClaudeBot.
+    Starší identifikátory Claude-Web a anthropic-ai v aktuální dokumentaci Anthropicu nejsou. Anthropic dnes uvádí tři identifikátory: ClaudeBot sbírá obsah pro trénink modelů, Claude-SearchBot prochází web pro vyhledávání a Claude-User načítá stránky na dotaz uživatele. Každý se v robots.txt nastavuje samostatným pravidlem, takže pravidlo pište pro ten, kterého se má týkat.
   </Mistake>
   <Mistake num="03" title="GPTBot ≠ OAI-SearchBot">
-    Blokování GPTBot neblokuje OAI-SearchBot. GPTBot stahuje data pro trénink modelů, OAI-SearchBot je vyhledávací robot ChatGPT, který stahuje stránky v reálném čase. Pro AI SEO chceme oba dostupné; pro blokaci tréninkových dat jsou potřeba dvě pravidla.
+    Blokování GPTBot neblokuje OAI-SearchBot. GPTBot stahuje data pro trénink modelů. OAI-SearchBot prochází web pro vyhledávání v ChatGPT. Web, který ho v robots.txt zakáže, se v odpovědích vyhledávání ChatGPT nezobrazí; objevit se může nejvýš jako navigační odkaz. Stránky na přímý dotaz uživatele načítá ChatGPT-User a u něj se pravidla robots.txt podle OpenAI nemusí uplatnit. Kdo nechce obsah pouštět do tréninku, zakáže GPTBot a OAI-SearchBot nechá povolený.
   </Mistake>
   <Mistake num="04" title="Regrese robots.txt po aktualizaci">
     Změny v robots.txt vznikají při migracích WordPressu, aktualizaci šablony, instalaci bezpečnostního pluginu nebo změně konfigurace CDN. Po každém větším zásahu ověřte `curl https://vasweb.cz/robots.txt` a porovnejte s očekávaným stavem.
@@ -214,7 +214,7 @@ Pluginy řeší technickou vrstvu. Pro reálnou AI viditelnost značky je ale po
 ## Co si z článku odnést
 
 - **AI SEO ve WordPressu** = SEO plugin (Yoast, Rank Math, SEOPress nebo AIOSEO) + llms.txt plugin + neblokovaní AI user-agenty v robots.txt + strukturovaná data + Core Web Vitals.
-- **5 hlavních AI user-agentů 2026**: GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent. Samostatně Google-Extended. GPTBot ≠ OAI-SearchBot.
+- **Kvůli citacím neblokovat vyhledávací roboty**: OAI-SearchBot, Claude-SearchBot, PerplexityBot. Tréninkové roboty (GPTBot, ClaudeBot, Meta-ExternalAgent) řešit zvlášť. Samostatně Google-Extended. GPTBot ≠ OAI-SearchBot.
 - **Cloudflare Block AI Bots přepínač** v praxi přebíjí robots.txt — pro AI SEO ho **nezapínat**.
 - **WooCommerce** vyžaduje doplnit FAQ k produktům, texty kategorií a napojení recenzí.
 - **Pluginy řeší techniku.** Pro reálné AI citace je potřeba kvalitní obsah, aktualizace a autorita značky.
@@ -223,4 +223,4 @@ Pluginy řeší technickou vrstvu. Pro reálnou AI viditelnost značky je ale po
 
 **Pokud nechcete jednotlivé kroky skládat ručně**, [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje přesně ty šablony a checklisty, které tento návod popisuje: checklist pro nastavení SEO pluginu, vzor llms.txt, šablonu robots.txt pro AI user-agenty a kontrolní seznam pro WooCommerce. Pokud chcete profesionální audit konkrétně vašeho WordPress webu s plánem priorit, [AI SEO audit za 3 600 Kč](/audit/) projde hlavní stránky, zkontroluje strukturovaná data, robots.txt, konfiguraci CDN a navrhne opravy s odhadem dopadu.
 
-*Transparentně: Sniper Design je Zlatý partner platformy Upgates od roku 2016. Naše hlavní specializace je e-shopová platforma Upgates, ale principy AI SEO popisované v tomto článku platí podobně pro WordPress, WooCommerce, Shoptet i jiné CMS — liší se hlavně konkrétní implementace přes pluginy nebo šablony. Konfigurace AI user-agentů a jejich váha se v čase mění; tento článek vychází z veřejných dat dostupných k červnu 2026.*
+*Transparentně: Sniper Design je Zlatý partner platformy Upgates od roku 2016. Naše hlavní specializace je e-shopová platforma Upgates, ale principy AI SEO popisované v tomto článku platí podobně pro WordPress, WooCommerce, Shoptet i jiné CMS — liší se hlavně konkrétní implementace přes pluginy nebo šablony. Konfigurace AI user-agentů a jejich váha se v čase mění; tento článek vychází z veřejných dat dostupných k červnu 2026, údaje o AI robotech jsou ověřené k září 2026.*

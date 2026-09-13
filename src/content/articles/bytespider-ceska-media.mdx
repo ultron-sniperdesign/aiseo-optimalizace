@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "mereni"
 published: "2026-08-10"
-updated: "2026-08-12"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "bytespider"
@@ -48,7 +48,7 @@ import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
 Stáhl jsem robots.txt třiatřiceti českých zpravodajských a oborových webů a spočítal, pro které AI roboty tam mají pravidla. **Čekal jsem, že povede GPTBot. Nevede.**
 
-Nejčastěji je v souborech `Bytespider` — crawler ByteDance, firmy za TikTokem. A je to zároveň jediný z první šestice v tomhle přehledu, u kterého jsem **nenašel veřejný oficiální seznam IP rozsahů**, proti kterému by šlo adresu z logu porovnat.
+Nejčastěji je v souborech `Bytespider` — crawler ByteDance, firmy za TikTokem. A na rozdíl od OpenAI, Anthropicu, Perplexity, Googlu a Applu jsem u jeho provozovatele **nenašel veřejný oficiální seznam IP rozsahů**, proti kterému by šlo adresu z logu porovnat.
 
 ## Co v těch souborech je
 
@@ -73,7 +73,7 @@ V praxi se přitom mluví hlavně o GPTBotu. V mém vzorku ho o dva weby předst
 
 ## Proč je to zvláštní
 
-U většiny robotů z té tabulky víte, co za nimi stojí a co z toho máte. Perplexity nebo ChatGPT vás v odpovědi mohou citovat a poslat vám návštěvníka. Google-Extended a Applebot-Extended jsou pojmenované přepínače, kterými se odděluje trénování od vyhledávání.
+U většiny robotů z té tabulky víte, co za nimi stojí a k čemu slouží. PerplexityBot obsluhuje vyhledávání Perplexity, kde vás odpověď může citovat a poslat vám návštěvníka. GPTBot a ClaudeBot sbírají data pro trénink modelů. O citacích ve vyhledávání ChatGPT a v Claude rozhodují jiní roboti (OAI-SearchBot, Claude-SearchBot a Claude-User, který stránku načte na dotaz uživatele), kteří v tabulce nejsou. Google-Extended řídí trénink Gemini a podkládání odpovědí v aplikacích Gemini, ne Vyhledávání Google; Applebot-Extended odhlašuje obsah z tréninku modelů Apple.
 
 U Bytespidera jsem veřejně nenašel ani stejně přímé podklady k ověření identity, ani zjevnou plochu, **kde by vás na oplátku citoval a odkázal** — což neznamená, že neexistují.
 
@@ -165,7 +165,7 @@ A ověřoval jsem dostupnost seznamů IP jen u šesti provozovatelů. O Amazonbo
 
 ## Shrnutí
 
-V robots.txt třiatřiceti českých médií je nejčastěji Bytespider — na třinácti webech, o dva víc než GPTBot. Zároveň je to z té šestice jediný, u kterého jsem nenašel veřejný oficiální seznam IP rozsahů, tedy to, proti čemu si adresu z logu porovnávám u ostatních.
+V robots.txt třiatřiceti českých médií je nejčastěji Bytespider — na třinácti webech, o dva víc než GPTBot. Zároveň jsem ze šesti prověřovaných provozovatelů jen u ByteDance nenašel veřejný oficiální seznam IP rozsahů, tedy to, proti čemu si adresu z logu porovnávám u ostatních.
 
 Rozhodnutí je pak celkem přímočaré: pokud vám jde o **deklaraci vůle**, pravidlo pro Bytespider smysl má. Pokud vám jde o **vynucení nebo auditovatelnou identitu návštěv**, samotné robots.txt na to nestačí u nikoho — a u něj chybí i to zpětné ověření.
 

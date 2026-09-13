@@ -9,7 +9,7 @@ tags:
   - "technicke-zaklady"
   - "ai-platformy"
 published: "2026-09-02"
-updated: "2026-09-02"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "content signals robots.txt"
@@ -54,7 +54,7 @@ Základ — které roboty povolit a které omezit jménem — má [řízení AI 
 
 ## Proč jména nestačí
 
-Každý velký provozovatel má dnes dva až tři roboty s různým účelem — a jména jsou si často podobná a snadno se spletou:
+Každý velký provozovatel má dnes několik robotů s různým účelem (OpenAI jich dokumentuje čtyři, Anthropic tři) — a jména jsou si často podobná a snadno se spletou:
 
 <CompareTable
   leftLabel="Trénink"
@@ -62,9 +62,10 @@ Každý velký provozovatel má dnes dva až tři roboty s různým účelem —
   rows={[
     { icon: "🤖", label: "OpenAI", left: "GPTBot — „crawl content that may be used in training“; zákaz znamená nepoužít obsah pro trénink", right: "OAI-SearchBot — „surface websites in search results in ChatGPT's search features“; kdo ho zakáže, nemá se zobrazovat v odpovědích vyhledávání ChatGPT, podle OpenAI se ale může dál objevit jako navigační odkaz" },
     { icon: "🟠", label: "Anthropic", left: "ClaudeBot — sbírá obsah, který „could potentially contribute to their training“", right: "Claude-SearchBot — „improve search result quality for users“" },
-    { icon: "👤", label: "Na dotaz uživatele", left: "ChatGPT-User — podle OpenAI se na něj pravidla robots.txt „may not apply“", right: "Claude-User — Anthropic uvádí, že robots.txt respektuje i u něj" },
   ]}
 />
+
+Roboti, kteří stránku načtou až na dotaz uživatele, v tabulce nejsou, protože nejde o trénink ani o vyhledávací index. OpenAI u ChatGPT-User píše, že se na něj pravidla robots.txt „may not apply“; Anthropic u Claude-User uvádí, že robots.txt respektuje stejně jako u ClaudeBota a Claude-SearchBota.
 
 Plynou z toho tři problémy. **Jména přibývají** — kdo před rokem zakázal GPTBot, tím nezakázal roboty, kteří přibyli později. **Jméno neříká účel** — musíte ho dohledat v dokumentaci každého provozovatele. A **roboti vyvolaní uživatelem** se robots.txt buď neřídí, nebo řídí podle libosti provozovatele; rozebírá je [roboti vyvolaní uživatelem](/blog/roboti-vyvolani-uzivatelem/).
 
@@ -113,7 +114,7 @@ Nejčastější přání českého webu: být k nalezení a citovaný, ale nekrm
 <Stepper
   steps={[
     { title: "Rozhodněte, kde pravidlo vzniká", desc: "Máte-li zapnutý spravovaný robots.txt v Cloudflare, nejdřív si otevřete výsledný /robots.txt a najděte vloženou řádku Content-signal. Ruční řádku přidávejte jen tehdy, když tím nevytvoříte druhou skupinu User-agent: * nebo protichůdné hodnoty." },
-    { title: "Vyhledávací roboty povolte jménem", desc: "OAI-SearchBot, Claude-SearchBot, PerplexityBot dostanou vlastní skupinu s Allow. Tohle je jediná část, kterou provozovatelé skutečně dokumentují." },
+    { title: "Vyhledávací roboty povolte jménem", desc: "OAI-SearchBot, Claude-SearchBot, PerplexityBot dostanou vlastní skupinu s Allow. Na rozdíl od Content Signals provozovatelé jména svých robotů, vyhledávacích i tréninkových, skutečně dokumentují." },
     { title: "Tréninkové roboty omezte jménem", desc: "GPTBot, ClaudeBot, CCBot — Disallow na to, co nechcete v tréninku. Google-Extended řešte zvlášť, je to řídicí token, ne robot." },
     { title: "Do skupiny User-agent: * přidejte Content-Signal", desc: "Základ je search=yes, ai-train=no — vyhledávání s odkazy a úryvky ano, trénink ne. Pokud chcete výslovně povolit i použití obsahu v AI odpovědích, přidejte ai-input=yes; bez něj zůstává tenhle účel neutrální." },
     { title: "Parametr use= jen když víte, co chcete", desc: "reference je výchozí a odpovídá „citace s odkazem“. Hodnotu immediate nebo full nastavujte jen s jasným důvodem." },

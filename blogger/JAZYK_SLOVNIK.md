@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 65** · založeno 2026-08-23 · poslední změna 2026-09-13 (checker nově v `.astro` přeskakuje bloky `<style>` a `<script>` — hlásil CSS klíčová slova jako anglicismy: 169 falešných nálezů v `index.astro`) · audituje skill `cestina-audit`
+> **Verze: 66** · založeno 2026-08-23 · poslední změna 2026-09-13 (doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ — citovaný záporný příklad) · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
@@ -188,7 +188,7 @@
 | ⚠️ | `\brozeznateln\w* značk\w*\b` | známá značka | doslovný překlad | local-seo-cesko-2026 2026-08-23 |
 | ⚠️ | `\bvalidac[ei] přínosu\b` | ověření přínosu | manažerský kalk | local-seo-cesko-2026 2026-08-23 |
 | ⛔ | `je důležité (poznamenat|zmínit|si uvědomit)` | vypustit, nebo říct věc rovnou | typický výplňkový obrat generovaného textu | seed 2026-08-23 |
-| ⛔ | `v dnešní (digitální )?(době|éře)` | vypustit | prázdná kulisa | seed 2026-08-23 |
+| ⛔ | `v dnešní (digitální )?(době|éře)` | vypustit | prázdná kulisa. **Výjimka `[skip:geo-optimalizace]`:** článek frázi uvádí v uvozovkách jako záporný příklad v seznamu toho, co snižuje hustotu faktů („v dnešní digitální éře“ → prázdný marketingový jazyk); opravit ji by zničilo smysl příkladu | seed 2026-08-23; výjimka 2026-09-13 |
 | ⛔ | `hraje (klíčovou|zásadní|důležitou) roli` | konkrétně co dělá | nic neříká, jen zvyšuje důležitost | seed 2026-08-23 |
 | ⛔ | `v neposlední řadě` | vypustit | výplň bez informace | seed 2026-08-23 |
 | ⛔ | `posouvá .{0,20}na (novou úroveň|vyšší level)` | konkrétní změna | marketingová fráze | seed 2026-08-23 |

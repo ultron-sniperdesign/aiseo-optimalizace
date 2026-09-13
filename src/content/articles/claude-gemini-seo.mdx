@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "ai-platformy"
 published: "2026-05-27"
-updated: "2026-08-02"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "claude gemini seo"
@@ -25,12 +25,12 @@ stats:
   - value: "3 roboti"
     label: "Anthropic: ClaudeBot, Claude-User a Claude-SearchBot"
   - value: "HTML"
-    label: "vyhledávací roboti AI čtou hlavně HTML; obsah z JS nemusí vidět"
+    label: "AI roboti čtou hlavně HTML; obsah z JS nemusí vidět"
 howto:
   name: "Jak připravit obsah pro Claude a Gemini"
   steps:
     - name: "Dejte obsah do procházitelného HTML"
-      text: "Důležitý text ať je v HTML zdroji, ne jen v JavaScriptu. Vyhledávací roboti AI čtou hlavně HTML; rychlý a technicky čistý web jim usnadní zpracování."
+      text: "Důležitý text ať je v HTML zdroji, ne jen v JavaScriptu. AI roboti čtou hlavně HTML; rychlý a technicky čistý web jim usnadní zpracování."
     - name: "Strukturujte do extrahovatelných pasáží"
       text: "Jasné sekce, krátká odpověď nahoře a strukturovaná data (Article, FAQPage), aby šel obsah snadno použít."
     - name: "Pro Gemini stavte na klasickém SEO"
@@ -45,10 +45,10 @@ faq:
   - q: "Liší se optimalizace pro Claude a Gemini?"
     a: "Základ je společný: dobře procházitelný a srozumitelný obsah, strukturovaná data, čerstvost a důvěryhodnost. Liší se důrazy — Gemini těží z kvalitního klasického SEO a autoritativních zdrojů (opírá se o Google Search), zatímco u Clauda se v analýzách častěji sledují recenze a reputace. Nejde o dvě různé strategie, spíš o různé akcenty."
   - q: "Co je Google-Extended a mám ho blokovat?"
-    a: "Google-Extended je pravidlo, kterým podle Googlu řídíte, zda váš obsah může pomáhat zlepšovat generativní produkty Googlu (Gemini Apps a Vertex AI). Neovlivňuje zařazení ani pozice v klasickém Vyhledávání — ty řeší Googlebot. Když ho zablokujete, omezíte použití obsahu v rozsahu, který toto pravidlo pokrývá. Není to přepínač SEO pozic."
-  - q: "Které vyhledávací roboty používá Claude?"
-    a: "Anthropic uvádí tři roboty: ClaudeBot (tréninkový vyhledávací robot), Claude-User (načte stránku, když se uživatel na něco Clauda zeptá) a Claude-SearchBot (webové vyhledávání Clauda). Všichni se řídí pravidly v robots.txt. V něm tak můžete jejich přístup povolit nebo omezit podle své strategie."
-  - q: "Vidí vyhledávací roboti AI obsah načítaný JavaScriptem?"
+    a: "Google-Extended není robot a nemá vlastní user-agent. Je to řídicí token v robots.txt: podle Googlu jím určujete, zda smí obsah stažený z vašeho webu sloužit k tréninku budoucích modelů Gemini a k podkládání odpovědí (grounding) v Gemini Apps a ve službě Grounding with Google Search na Vertex AI. Neovlivňuje zařazení ani pozice v klasickém Vyhledávání, ty řeší Googlebot. Neřídí ani Přehled od AI, ani režim AI."
+  - q: "Které roboty používá Claude?"
+    a: "Anthropic uvádí tři roboty: ClaudeBot (tréninkový robot), Claude-User (načte stránku, když se uživatel na něco Clauda zeptá) a Claude-SearchBot (webové vyhledávání Clauda). Všichni se řídí pravidly v robots.txt. V něm tak můžete jejich přístup povolit nebo omezit podle své strategie."
+  - q: "Vidí AI roboti obsah načítaný JavaScriptem?"
     a: "U Clauda spíš ne, u Gemini spíš ano — a v tom je právě rozdíl. Podle měření Vercelu a MERJ z prosince 2024 robot Claude soubory JavaScriptu stahoval, ale nespouštěl; u Gemini zdroj vykreslování uvádí, protože běží na infrastruktuře Googlu. Důležité informace proto patří přímo do HTML, ať už se spoléháte na kohokoli."
 ---
 
@@ -112,12 +112,12 @@ Než začnete ladit rozdíly, postavte základ, který platí pro obě platformy
   { title: "Čerstvost a zdroje", desc: "aktuální obsah a doložená tvrzení posilují důvěryhodnost." }
 ]} />
 
-## Vyhledávací roboti a robots.txt: na co dát pozor
+## AI roboti a robots.txt: na co dát pozor
 
 U Claude i Gemini se vyplatí vědět, kdo a jak vám obsah čte:
 
 <Insight tone="seo" icon="i" label="Google-Extended není přepínač pozic">
-  Google-Extended není přepínač pozic ve Vyhledávání. Podle Googlu slouží k řízení použití obsahu pro vybrané generativní produkty, jako jsou Gemini Apps a Vertex AI generativní API. Zařazení a pozice v klasickém Vyhledávání řeší Googlebot.
+  Google-Extended není přepínač pozic ve Vyhledávání. Podle Googlu je to samostatný řídicí token, ne robot s vlastním user-agentem. Určuje, zda smí obsah, který Google z webu stáhne, sloužit k tréninku budoucích modelů Gemini a k podkládání odpovědí (grounding) v Gemini Apps a ve službě Grounding with Google Search na Vertex AI. Zařazení a pozice v klasickém Vyhledávání řeší Googlebot.
 </Insight>
 
 Anthropic v dokumentaci uvádí tři roboty — **ClaudeBot** (tréninkové procházení), **Claude-User** (načtení stránky na žádost uživatele) a **Claude-SearchBot** (webové vyhledávání Clauda). Jejich přístup řešte podle aktuálních pravidel Anthropic pro `robots.txt`. Detailně řízení AI robotů rozebírá [návod na robots.txt pro AI](/blog/ai-crawler-robots-txt/).

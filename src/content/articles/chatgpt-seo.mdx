@@ -1,13 +1,13 @@
 ---
 title: "Jak být citovaný v ChatGPT: test na 15 českých dotazech"
 description: "Jak být citovaný v ChatGPT: technická dostupnost, přímé odpovědi a český kontext. Co ukázal náš test 15 dotazů — a proč z něj neděláme pravidlo."
-answer: "Být citovaný v ChatGPT znamená dostat se do odpovědí režimu s webovým vyhledáváním. Základ je stejný jako u SEO: být dostupný vyhledávacím robotům OpenAI, dohledatelný v Bingu a psát přímé odpovědi. V našem testu patnácti českých dotazů se navíc český web prosadil jen u dotazu ukotveného v českém kontextu — berte to jako indicii, ne jako pravidlo."
+answer: "Být citovaný v ChatGPT znamená dostat se do odpovědí režimu s webovým vyhledáváním. Základ je stejný jako u SEO: být dostupný vyhledávacímu robotovi OpenAI, dohledatelný v Bingu a psát přímé odpovědi. V našem testu patnácti českých dotazů se navíc český web prosadil jen u dotazu ukotveného v českém kontextu — berte to jako indicii, ne jako pravidlo."
 slug: "chatgpt-seo"
 category: "tutorial"
 tags:
   - "ai-platformy"
 published: "2026-05-23"
-updated: "2026-09-02"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "jak být citovaný v chatgpt"
@@ -31,7 +31,7 @@ howto:
   name: "Jak být citovaný v ChatGPT"
   steps:
     - name: "Buďte dohledatelní pro vyhledávání OpenAI a Bing"
-      text: "V robots.txt zkontrolujte hlavně pravidla pro OAI-SearchBot a načítání přes ChatGPT-User; GPTBot je primárně robot pro trénink, takže jeho povolení samo o sobě citace nezajistí. Ověřte i dohledatelnost webu v Bingu."
+      text: "V robots.txt zkontrolujte hlavně pravidla pro OAI-SearchBot: web, který ho zakáže, se podle OpenAI v odpovědích ChatGPT s vyhledáváním neukáže. ChatGPT-User načítá stránky na pokyn uživatele, o zobrazení ve vyhledávání podle OpenAI nerozhoduje a pravidla v robots.txt se na něj nemusí vztahovat. GPTBot slouží k tréninku, takže jeho povolení samo o sobě citace nezajistí. Ověřte i dohledatelnost webu v Bingu."
     - name: "Pište krátké, přímé odpovědi"
       text: "Na začátek každé sekce dejte přímou odpověď v 1–2 větách s konkrétními fakty, čísly a názvy nástrojů."
     - name: "Ukotvěte obsah v českém kontextu"
@@ -44,11 +44,11 @@ howto:
       text: "Testujte dotazy v ChatGPT s vynuceným vyhledáváním, sledujte podíl zmínek a u témat, kde záleží na aktuálnosti, kontrolujte data, ceny, nástroje a FAQ."
 faq:
   - q: "Jak být citovaný v ChatGPT?"
-    a: "Musíte projít třemi vrstvami. Technicky: nechat projít vyhledávací roboty OpenAI a být dohledatelní v Bingu. Obsahově: psát přímé odpovědi na konkrétní otázky, ne obecné texty. A pro český web navíc geograficky: obsah ukotvit v českém kontextu, protože u obecných dotazů ChatGPT sahá po globálních anglických zdrojích. Zaručit citaci nelze, ovlivnit ji jde."
+    a: "Musíte projít třemi vrstvami. Technicky: nechat projít vyhledávacího robota OpenAI (OAI-SearchBot) a být dohledatelní v Bingu. Obsahově: psát přímé odpovědi na konkrétní otázky, ne obecné texty. A pro český web navíc geograficky: obsah ukotvit v českém kontextu, protože u obecných dotazů ChatGPT sahá po globálních anglických zdrojích. Zaručit citaci nelze, ovlivnit ji jde."
   - q: "Cituje ChatGPT české weby?"
     a: "Jen výjimečně a hlavně u geograficky ukotvených dotazů. V našem měření z července 2026 citoval ChatGPT u čtrnácti z patnácti oborových dotazů výhradně globální anglické zdroje. Jediný dotaz, kde se prosadily české weby, byl ten, který obsahoval „v Česku“. Jde o jeden běh a patnáct dotazů jednoho oboru, takže to berte jako indicii, ne jako změřený trh."
   - q: "Které roboty OpenAI mám pustit na web?"
-    a: "Pro ChatGPT s vyhledáváním jsou nejdůležitější pravidla pro OAI-SearchBot a načítání přes ChatGPT-User. GPTBot je primárně robot pro trénink, takže ho neberte jako hlavní signál citovatelnosti. Zkontrolujte, že v robots.txt neblokujete relevantní vyhledávací roboty OpenAI a že klíčové stránky nejsou zakázané pro indexaci."
+    a: "Pro ChatGPT s vyhledáváním je rozhodující OAI-SearchBot: OpenAI ho doporučuje v robots.txt povolit a web, který ho zakáže, se v odpovědích ChatGPT s vyhledáváním neukáže. ChatGPT-User načítá stránky na pokyn uživatele, o zobrazení ve vyhledávání podle OpenAI nerozhoduje a pravidla v robots.txt se na něj nemusí vztahovat. GPTBot slouží k tréninku, takže ho neberte jako signál citovatelnosti. Zkontrolujte, že v robots.txt neblokujete OAI-SearchBot a že klíčové stránky nejsou zakázané pro indexaci."
   - q: "Proč u citací v ChatGPT řešit Bing?"
     a: "Bing bývá praktickým signálem dohledatelnosti webu pro AI vyhledávání a kontrola je levná. Neznamená to ale, že indexace v Bingu citaci zajistí. Zkontrolujte web v Bing Webmaster Tools, odešlete sitemapu a odstraňte technické překážky, které mohou bránit nalezení důležitých stránek."
   - q: "Stačí dobré pozice v Googlu?"
@@ -66,7 +66,7 @@ import Mistake from "~/components/blocks/Mistake.astro";
 
 ## Jak být citovaný v ChatGPT: tři vrstvy, přes které se to láme
 
-**Být citovaný v ChatGPT znamená dostat se do odpovědí režimu s webovým vyhledáváním.** Základ je stejný jako u SEO: být dostupný vyhledávacím robotům OpenAI, dohledatelný v Bingu a psát přímé odpovědi. V našem testu patnácti českých dotazů se navíc český web prosadil jen u dotazu ukotveného v českém kontextu — berte to jako indicii, ne jako pravidlo.
+**Být citovaný v ChatGPT znamená dostat se do odpovědí režimu s webovým vyhledáváním.** Základ je stejný jako u SEO: být dostupný vyhledávacímu robotovi OpenAI, dohledatelný v Bingu a psát přímé odpovědi. V našem testu patnácti českých dotazů se navíc český web prosadil jen u dotazu ukotveného v českém kontextu — berte to jako indicii, ne jako pravidlo.
 
 Důležité upřesnění: bavíme se o **ChatGPT s webovým vyhledáváním**, který tahá živé zdroje a uvádí citace — ne o odpovědích z natrénovaných dat, které ovlivnit přímo nejde. Jak výběr zdrojů funguje obecně napříč nástroji, rozebírá [jak AI cituje zdroje](/blog/jak-ai-cituje-zdroje/); pojmy najdete i ve [slovníku](/slovnik/#citace-ai).
 
@@ -103,7 +103,7 @@ Je to **jeden běh, patnáct dotazů a jeden obor.** AI odpovědi jsou nedetermi
 
 Než řešíte obsah, ověřte, že vás ChatGPT vůbec může najít:
 
-- **Nezakazujte vyhledávací roboty OpenAI.** OpenAI ve své dokumentaci rozlišuje user-agenty podle účelu: `GPTBot` primárně pro trénink, `OAI-SearchBot` a `ChatGPT-User` pro vyhledávání a načtení na vyžádání. Co z toho plyne pro citovatelnost, je už praktická inference, ne deklarace OpenAI. Příliš restriktivní pravidla v `robots.txt` mohou snížit šanci, že ChatGPT váš obsah najde a použije. Pokud přístup omezit chcete, je to legitimní volba — počítejte ale s nižší citovatelností. Podrobně to řeší [které AI crawlery povolit](/blog/ai-crawler-robots-txt/).
+- **Nezakazujte vyhledávacího robota OpenAI.** OpenAI ve své dokumentaci rozlišuje roboty podle účelu: `GPTBot` pro trénink, `OAI-SearchBot` pro vyhledávání a `ChatGPT-User` pro načtení stránky na pokyn uživatele. U `OAI-SearchBot` to OpenAI říká přímo: weby, které ho zakážou, se v odpovědích ChatGPT s vyhledáváním neukážou, nanejvýš jako navigační odkaz. Proto ho OpenAI doporučuje povolit. `ChatGPT-User` podle OpenAI o zobrazení ve vyhledávání nerozhoduje a pravidla v `robots.txt` se na něj nemusí vztahovat, protože požadavek vyvolal člověk. Příliš restriktivní pravidla v `robots.txt` mohou snížit šanci, že ChatGPT váš obsah najde a použije. Pokud přístup omezit chcete, je to legitimní volba — počítejte ale s nižší citovatelností. Podrobně to řeší [které AI crawlery povolit](/blog/ai-crawler-robots-txt/).
 - **Buďte dohledatelní v Bingu.** Bing dává smysl kontrolovat jako praktický signál dohledatelnosti webu — zaručit se ale nedá, že indexace v Bingu sama o sobě povede k citaci. Zkontrolujte web v Bing Webmaster Tools a odešlete sitemapu. Protokol IndexNow může urychlit nahlášení změn vyhledávačům, na pravděpodobnost citace ale sám o sobě nemá vliv.
 
 Tahle vrstva je **nutná podmínka, ne postačující**: bez dostupnosti pro relevantní roboty se šance na citaci výrazně snižuje, samotná dostupnost ji ale nezajistí. Patří to i do širšího [AI SEO auditu](/blog/ai-seo-audit/).
@@ -181,8 +181,8 @@ Jeden běh je orientační snapshot, ne přesné měření — odpovědi se mezi
   <Mistake num="02" title="Psát obecný text na obecné téma" fix="Doplňte českou vrstvu — ceny, platformy, vlastní data.">
     Na obecné dotazy sahá ChatGPT po globálních anglických zdrojích s velkou autoritou. Český článek o tomtéž nemá čím vyhrát.
   </Mistake>
-  <Mistake num="03" title="Příliš restriktivní robots.txt" fix="Nechte projít OAI-SearchBot a ChatGPT-User.">
-    Blokace vyhledávacích robotů OpenAI může výrazně snížit šanci na citace.
+  <Mistake num="03" title="Příliš restriktivní robots.txt" fix="Nechte projít OAI-SearchBot.">
+    Web, který zakáže OAI-SearchBot, se podle OpenAI v odpovědích ChatGPT s vyhledáváním neukáže.
   </Mistake>
   <Mistake num="04" title="Pozice v Googlu jako záruka" fix="Měřte AI citace zvlášť, kanál po kanálu.">
     Na stejných patnácti dotazech se náš web objevil pětkrát v Google AI Mode a jednou v ChatGPT. Jsou to různé plochy a měřit se musí zvlášť.

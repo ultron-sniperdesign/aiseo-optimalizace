@@ -1,14 +1,14 @@
 ---
 title: "Kdy robots.txt nestačí: roboti vyvolaní uživatelem"
 description: "OpenAI, Google i Perplexity mají fetchery vyvolané uživatelem. OpenAI u nich píše, že robots.txt „nemusí platit“, Google a Perplexity, že ji „obvykle ignorují“."
-answer: "Když si obsah vyžádá uživatel v konverzaci, nejde o automatické procházení a na robots.txt se u takového požadavku podle dokumentace nedá spolehnout. OpenAI to u ChatGPT-User píše jako „nemusí platit“, Google u devíti svých fetcherů a Perplexity u Perplexity-User jako „obvykle ignorují“."
+answer: "Když si obsah vyžádá uživatel v konverzaci, nejde o automatické procházení. U OpenAI, Googlu a Perplexity se proto na robots.txt podle dokumentace nedá spolehnout. OpenAI to u ChatGPT-User píše jako „nemusí platit“, Google u devíti svých fetcherů a Perplexity u Perplexity-User jako „obvykle ignorují“. Anthropic naopak u Claude-User uvádí, že robots.txt respektuje."
 slug: "roboti-vyvolani-uzivatelem"
 category: "analysis"
 tags:
   - "technicke-zaklady"
   - "mereni"
 published: "2026-08-12"
-updated: "2026-08-12"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "chatgpt-user"
@@ -19,7 +19,7 @@ keywords:
   - "blokování ai robotů"
 stats:
   - value: "3"
-    label: "provozovatelé, jejichž dokumentace u fetcherů vyvolaných uživatelem robots.txt nezaručuje"
+    label: "provozovatelé (OpenAI, Google, Perplexity), u jejichž fetcherů vyvolaných uživatelem robots.txt nemusí platit"
   - value: "9"
     label: "fetcherů uvádí v téhle kategorii Google — včetně Google-Agent a Gemini Notebooku"
   - value: "5 z 80"
@@ -56,7 +56,7 @@ import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 | **Google** | devět fetcherů | o stažení požádal uživatel, proto **obvykle ignorují** robots.txt | totéž, o něco silněji řečeno |
 | **Perplexity** | `Perplexity-User` | o stažení požádal uživatel, proto **obvykle ignoruje** robots.txt | totéž |
 
-Citace jsou z oficiální dokumentace, čteno **12. srpna 2026**, v mém překladu. OpenAI to píše slaběji („nemusí platit“) než Google a Perplexity („obvykle ignorují“), ale pro provoz webu z toho plyne totéž: **na tuhle vrstvu se nedá spolehnout.**
+Citace jsou z oficiální dokumentace, čteno **12. srpna 2026**, v mém překladu. OpenAI to píše slaběji („nemusí platit“) než Google a Perplexity („obvykle ignorují“), ale pro provoz webu z toho plyne totéž: **na tuhle vrstvu se nedá spolehnout.** Anthropic to má jinak: u `Claude-User` uvádí, že robots.txt respektuje (dokumentace aktualizovaná 7. 4. 2026, čteno 13. 9. 2026).
 
 <Insight tone="warn" icon="!" label="Není to porušení pravidla">
   Provozovatelé to popisují předem, takže nejde o obcházení robots.txt. Logika je konzistentní: robots.txt řeší **automatické procházení webu**. Google to má i v opačném gardu — u běžných crawlerů píše, že pravidla vždy dodržují *při automatickém procházení*. Ta podmínka v té větě není omylem.
@@ -120,7 +120,7 @@ Věta, kterou si z toho odnést: **pokud máte v robots.txt jen GPTBota nebo Goo
 
 ## Limity
 
-- **Je to čtení dokumentace k 12. srpnu 2026, ne měření chování.** Netestoval jsem, jestli se roboti podle svých pravidel řídí — ani jedním směrem.
+- **Je to čtení dokumentace k 12. srpnu 2026 (údaj o Anthropicu k 13. září 2026), ne měření chování.** Netestoval jsem, jestli se roboti podle svých pravidel řídí — ani jedním směrem.
 - **Vlastní čísla jsou z jednoho odečtu robots.txt** na nenáhodném vzorku 80 domén (33 médií, 47 e-shopů z jedné platformy).
 - **Seznamy user agentů se mění.** I během přípravy tohohle článku přibyl v dokumentaci OpenAI čtvrtý agent — `OAI-AdsBot`, který ověřuje bezpečnost stránek nabízených jako reklama v ChatGPT. Doplnil jsem ho do [tabulky v článku o opt-outech](/blog/gptbot-bez-oai-searchbot/), kde jsem do té doby psal, že roboti OpenAI jsou tři.
 

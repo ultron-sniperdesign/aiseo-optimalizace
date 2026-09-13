@@ -2,13 +2,13 @@
 title: "GEO optimalizace: jak připravit web pro ChatGPT, Perplexity a Google AI Overviews"
 seoTitle: "SEO GEO: jak připravit web pro ChatGPT a Perplexity"
 description: "Praktický průvodce SEO GEO (Generative Engine Optimization) v 7 krocích — audit, krátká odpověď, hustota faktů, schema, AI crawlery a měření."
-answer: "GEO optimalizace upravuje obsah a strukturu webu tak, aby AI systémy (ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews) dokázaly váš obsah snadno pochopit, použít a případně citovat v odpovědích. Jádro postupu: jasné definice, krátké odpovědi 40–60 slov nahoře, datově hutný obsah, FAQPage a HowTo schema, povolení AI crawlerů v robots.txt a zmínky o značce v autoritních zdrojích. Princeton paper z roku 2023 ukázal, že strukturovaný obsah s konkrétními fakty může míru citování u testovaného vzorku zvýšit v řádu desítek procent."
+answer: "GEO optimalizace upravuje obsah a strukturu webu, aby ho AI systémy jako ChatGPT, Perplexity nebo Gemini snadno pochopily a případně citovaly. Jádro: jasné definice, krátké odpovědi nahoře, hutný obsah, strukturovaná data, přístup vyhledávacích robotů a zmínky o značce. Princeton paper z roku 2023 ukázal, že strukturovaný obsah s fakty může míru citování u testovaného vzorku zvýšit v řádu desítek procent."
 slug: "geo-optimalizace"
 category: "tutorial"
 tags:
   - "strategie"
 published: "2026-05-08"
-updated: "2026-08-29"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "geo optimalizace"
@@ -36,7 +36,7 @@ faq:
   - q: 'Stačí mi klasické SEO?'
     a: 'SEO zůstává nezbytný základ — bez dobrého SEO vás vyhledávače ani AI nástroje nenajdou (ChatGPT search, Perplexity a Gemini čerpají z indexovaného obsahu). GEO buduje na SEO základech a přidává navrch citovatelnost v generativních AI. Pokud vaše cílovka aktivně používá ChatGPT, Perplexity nebo Gemini při rozhodování (B2B, prémiové B2C, konzultační služby, edukativní obsah), GEO má reálný dopad. U čistě transakčních produktů a lokálních služeb bez research fáze je primární investice klasické SEO.'
   - q: 'Musím kvůli GEO optimalizaci přepisovat celý web?'
-    a: 'Ne. Drtivou část GEO playbooku můžete aplikovat postupně na existující obsah při běžných aktualizacích — přidat krátkou odpověď 40–60 slov k článku, FAQ sekci pod text, doplnit konkrétní čísla, povolit AI crawlery v robots.txt. Kompletní přepis je nutný jen u stránek, kde plně chybí struktura (žádné podnadpisy, jen narativní text bez fakt) — ale ty obvykle nepřinášejí ani návštěvnost z SEO. Doporučený postup: začněte s top 20 stránkami podle organické návštěvnosti.'
+    a: 'Ne. Drtivou část GEO playbooku můžete aplikovat postupně na existující obsah při běžných aktualizacích — přidat krátkou odpověď 40–60 slov k článku, FAQ sekci pod text, doplnit konkrétní čísla, zkontrolovat, že robots.txt neblokuje vyhledávací roboty AI. Kompletní přepis je nutný jen u stránek, kde plně chybí struktura (žádné podnadpisy, jen narativní text bez fakt) — ale ty obvykle nepřinášejí ani návštěvnost z SEO. Doporučený postup: začněte s top 20 stránkami podle organické návštěvnosti.'
   - q: 'Funguje GEO optimalizace pro CZ trh a Seznam?'
     a: 'Hlavní principy GEO playbooku (jasné definice, fakta, FAQ, schema, zmínky o značce) fungují univerzálně. Pro CZ trh stojí za pozornost: Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření je zatím marginální oproti Google AIO a ChatGPT. Marketing Miner přidal tracking výskyt v AIO pro CZ keywords. Reddit má v ČR menší dosah než v US — pro zmínky o značce zvažte české alternativy: oborové diskuze (lupa.cz, marketingjournal.cz), podcasty, guest posty na autoritních CZ blogách, a profil na Wikipedia.cz pokud váš brand splňuje notability criteria.'
 howto:
@@ -50,8 +50,8 @@ howto:
       text: "Cíl: 3+ konkrétní fakta na 100 slov textu. Konkrétní = číslo, procento, datum, jméno nástroje, citace zdroje, název studie. Nahraďte obecné formulace konkrétními (ne výkon je lepší, ale výkon o 30 procent vyšší). Datum tvrzení (k 5/2026, Q1 2026 data). Inline atribuce zdrojů (Princeton paper 2023, GSC data za H1 2026). Žádné marketingové vatové formulace bez fakt."
     - name: "Implementace strukturovaných dat"
       text: "Tři typy strukturovaných dat do hlavičky stránky: Article (headline, description, datePublished, dateModified, author), FAQPage (mainEntity array s otázkami a odpověďmi), HowTo (step array pro postupy). Validujte přes Google Rich Results Test a Schema.org Validator. FAQ otázky v HTML musejí přesně odpovídat otázkám v JSON-LD. Schema neovlivňuje ranking přímo, ale pomáhá strojové čitelnosti."
-    - name: "Povolte AI crawlerům přístup k webu"
-      text: "Výchozí robots.txt mnoha redakčních systémů bývá restriktivní — zkontrolujte a explicitně povolte AI crawlery. Standardní set: GPTBot a OAI-SearchBot (OpenAI/ChatGPT), PerplexityBot a Perplexity-User (Perplexity), ClaudeBot a anthropic-ai (Anthropic/Claude), Google-Extended (Gemini training). Pro každého User-agent řádek + Allow: /. Bez explicitního povolení mohou některé AI nástroje váš web ignorovat."
+    - name: "Zkontrolujte přístup AI robotů k webu"
+      text: "Zkontrolujte, že robots.txt neblokuje vyhledávací roboty AI. Přehled tokenů: OAI-SearchBot (vyhledávání v ChatGPT), ChatGPT-User (načtení stránky na dotaz uživatele) a GPTBot (trénink modelů) od OpenAI; PerplexityBot a Perplexity-User od Perplexity; Claude-SearchBot (vyhledávání v Claude), Claude-User (načtení stránky na dotaz uživatele) a ClaudeBot (trénink modelů) od Anthropicu; Google-Extended (řídicí token Googlu k tréninku modelů Gemini a k podkládání odpovědí v aplikacích Gemini). Robot, kterému žádné pravidlo nic nezakazuje, má přístup i bez výslovného povolení. Pravidlo Allow je potřeba jen tam, kde soubor obsahuje širší zákaz, například Disallow: / pro všechny roboty. Pokud nechcete, aby se obsah používal k tréninku modelů, nastavte pro GPTBot, ClaudeBot a Google-Extended pravidlo Disallow: /. U Google-Extended tím obsah vyřadíte i z podkládání odpovědí v aplikacích Gemini."
     - name: "Budujte zmínky o značce v autoritních zdrojích"
       text: "AI nástroje váží zmínky v autoritních komunitách jako signál důvěryhodnosti. Pět cest: oborové diskuze (Reddit, Quora pro EN, lupa.cz, marketingjournal.cz pro CZ), guest posty na autoritních blogách, podcasty (transcripty se indexují), press releases s vlastními daty, Wikipedia entry pokud splňujete notability criteria. Klíč: budujte autoritní mentions souběžně s obsahovým marketingem, ne jako oddělený budování odkazů."
     - name: "Měřte podíl citací — manuálně i přes nástroje"
@@ -137,7 +137,7 @@ GEO není relevantní pro každý byznys stejně. Největší dopad má tam, kde
 
 Než půjdete do detailu 7 kroků, je užitečné vědět, **podle čeho hodnotíme připravenost webu pro GEO**. Pět vrstev, kterými procházíme u klientů — každý krok níže mapuje na jednu z těchto vrstev:
 
-1. **Technical readiness** — indexovatelnost, povolení AI crawlerů (`GPTBot`, `PerplexityBot`, `ClaudeBot`, `Google-Extended`) v `robots.txt`, technické zdraví webu. Bez tohoto základu se AI systémy k webu vůbec nedostanou.
+1. **Technical readiness** — indexovatelnost, přístup vyhledávacích robotů AI (`OAI-SearchBot`, `PerplexityBot`, `Claude-SearchBot`) podle `robots.txt`, technické zdraví webu. Bez tohoto základu se AI systémy k webu vůbec nedostanou. Trénovací roboti `GPTBot` a `ClaudeBot` o zobrazení ve vyhledávání nerozhodují, jejich povolení je samostatná volba.
 2. **Srozumitelnost obsahu** — jasné definice ve formátu „X je…“, krátké odpovědi 40–60 slov hned po nadpisech, pyramidové uspořádání obsahu. **Tato vrstva má v Princeton paperu nejvyšší dopad** na míru citování.
 3. **Entity consistency** — konzistentní zápis značky napříč webem, schema.org `Organization` a `Person` markup, propojené identifikátory (Wikidata, oborové katalogy). Pomáhá AI jednoznačně identifikovat, kdo jste.
 4. **AI trust signals** — hustota faktů (čísla, procenta, datace), inline citace zdrojů, autorské profily u YMYL témat, zmínky o značce v autoritních komunitách (Reddit, Quora, oborové weby).
@@ -226,11 +226,11 @@ Princeton paper explicitně ukázal, že **statistiky a citace patří mezi nej�
 
 Strukturovaná data neovlivňují pořadí přímo, ale pomáhá strojové čitelnosti — otázky a odpovědi ve FAQPage dostane stroj v jednoznačné podobě, bez nutnosti parsovat HTML. Rozšířený výsledek pro FAQ ve Vyhledávání [skončil 7. května 2026](/blog/konec-faq-rich-results/), samotný markup ale platí dál.
 
-### Krok 5 — Povolte AI crawlerům přístup k webu
+### Krok 5 — Zkontrolujte přístup AI robotů k webu
 
 **Cíl:** zajistit, že webové prohledávače AI nástrojů se k vašemu webu vůbec dostanou.
 
-Výchozí `robots.txt` mnoha redakčních systémů (WordPress, Shopify) **bývá restriktivní**. Pokud cílíte na GEO, explicitně povolte AI crawlery:
+Pokud cílíte na GEO, ověřte, že `robots.txt` **neblokuje vyhledávací roboty AI**. Ukázka povoluje všechny, včetně trénovacích robotů `GPTBot` a `ClaudeBot` a tokenu `Google-Extended`:
 
 ```
 User-agent: GPTBot
@@ -251,21 +251,30 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: anthropic-ai
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 ```
 
-**Pro koho jsou crawlery:**
+Pokud nechcete, aby se obsah používal k tréninku modelů, nastavte u `GPTBot`, `ClaudeBot` a `Google-Extended` místo `Allow: /` pravidlo `Disallow: /`. U `Google-Extended` tím obsah vyřadíte i z podkládání odpovědí v aplikacích Gemini.
 
-- **GPTBot, OAI-SearchBot, ChatGPT-User** — OpenAI / ChatGPT
+**Co který robot dělá:**
+
+- **GPTBot** — OpenAI, sběr obsahu pro trénink modelů
+- **OAI-SearchBot** — OpenAI, procházení webu pro vyhledávání v ChatGPT
+- **ChatGPT-User** — OpenAI, načtení stránky na dotaz uživatele; podle OpenAI se na něj pravidla `robots.txt` nemusí vztahovat
 - **PerplexityBot, Perplexity-User** — Perplexity
-- **ClaudeBot, anthropic-ai** — Anthropic / Claude
-- **Google-Extended** — Google Gemini training
+- **ClaudeBot** — Anthropic, sběr obsahu pro trénink modelů
+- **Claude-SearchBot** — Anthropic, procházení webu pro vyhledávání v Claude
+- **Claude-User** — Anthropic, načtení stránky, když se uživatel ptá Clauda; podle dokumentace Anthropicu `robots.txt` respektuje
+- **Google-Extended** — Google, řídicí token bez vlastního robota. Určuje, jestli se obsah smí použít k tréninku modelů Gemini a k podkládání odpovědí (aplikace Gemini, Grounding with Google Search na Vertex AI). Na zařazení do Vyhledávání Google vliv nemá
 
-Bez explicitního povolení mohou některé AI nástroje váš web ignorovat. Tohle je technické nastavení **pro vašeho vývojáře nebo agenturu**, není to obsahový úkol.
+Robot, kterému `robots.txt` žádným pravidlem nic nezakazuje, má přístup i bez výslovného povolení. `Allow` je potřeba jen tam, kde soubor obsahuje širší zákaz, například `Disallow: /` pro všechny roboty. Tohle je technické nastavení **pro vašeho vývojáře nebo agenturu**, není to obsahový úkol.
 
 ### Krok 6 — Budujte zmínky o značce v autoritních zdrojích
 
@@ -308,10 +317,10 @@ Drtivá většina GEO playbooku funguje napříč všemi AI nástroji, ale každ
 
 | Platforma | Jak vybírá zdroje | Co preferuje | CZ specifika |
 |---|---|---|---|
-| **ChatGPT (search)** | Bing index + vlastní crawl (GPTBot) + training data | Ucelený, dobře strukturovaný obsah s autoritou. Méně transparent než Perplexity | Bing CZ podíl na trhu < 5 %, ale roste díky Windows Copilot |
+| **ChatGPT (search)** | Bing index + vlastní vyhledávací robot (OAI-SearchBot) + znalosti modelu z tréninku | Ucelený, dobře strukturovaný obsah s autoritou. Méně transparent než Perplexity | Bing CZ podíl na trhu < 5 %, ale roste díky Windows Copilot |
 | **Perplexity** | Real-time web search + vlastní index | **Recentní obsah** (typicky < 6–18 měsíců), citation-friendly struktura, transparentní citace | Funguje plně v češtině, real-time |
 | **Claude (search)** | Vlastní Brave search backend + indexovaný obsah | Strukturovaný obsah s jasnými fakty, méně marketingu | Brave search nemá CZ-first index, výsledky obecnější |
-| **Gemini** | Google index (Google-Extended) + Google AI Overviews | Stejné signály jako Google SERP — dobrý SEO obsah typicky funguje pro AIO | Plný CZ Google index |
+| **Gemini** | Google index + Google AI Overviews. Token Google-Extended řídí použití obsahu k tréninku modelů Gemini a k podkládání odpovědí v aplikacích Gemini, AI Overviews ale neřídí | Stejné signály jako Google SERP — dobrý SEO obsah typicky funguje pro AIO | Plný CZ Google index |
 | **Bing Copilot** | Bing index + GPT-4 | Strukturovaný obsah, FAQ schema, IndexNow protokol | Pro CZ trh marginální |
 
 **Praktický důsledek:** pokud cílíte na **Perplexity**, dbejte na **čerstvost obsahu** (datace, freshness signály). Pokud cílíte na **ChatGPT**, soustřeďte se na **autoritu a zmínky o značce**. Pokud cílíte na **Gemini a Google AI Overviews**, **klasické SEO** je foundationální — viz [AEO playbook](/aeo/).
@@ -404,7 +413,7 @@ Pokud jste dočetli až sem, máte přehled. Konkrétní plán:
 **Tento týden:**
 
 1. **Audit AI viditelnosti** — vzít 20 KW z vašeho oboru, projet v ChatGPT, Perplexity, Claude, Gemini, Google AIO. Tabulka kde stojíte.
-2. **Validace `robots.txt`** — povolit GPTBot, PerplexityBot, ClaudeBot, Google-Extended.
+2. **Validace `robots.txt`** — ověřit, že nic neblokuje vyhledávací roboty OAI-SearchBot, PerplexityBot a Claude-SearchBot. O trénovacích robotech GPTBot a ClaudeBot a o tokenu Google-Extended rozhodnout zvlášť.
 3. **Identifikovat top 5 stránek** podle organické návštěvnosti — ty budou kandidáti na GEO úpravu.
 
 **Tento měsíc:**

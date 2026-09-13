@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "audit-nastroje"
 published: "2026-05-23"
-updated: "2026-08-29"
+updated: "2026-09-13"
 variant: "rich"
 keywords:
   - "ai seo audit"
@@ -33,7 +33,7 @@ howto:
     - name: "Zmapujte viditelnost v AI"
       text: "Zadejte 15–20 dotazů, jak je píší vaši zákazníci, do ChatGPT, Perplexity a do Googlu (kde sledujte, jestli se zobrazí AI Overview a které zdroje cituje), a zaznamenejte, jestli a jak jste zmíněni a kdo se objevuje místo vás."
     - name: "Zkontrolujte přístup AI robotů"
-      text: "V souboru robots.txt ověřte, že omylem neblokujete relevantní user agenty jako GPTBot, ClaudeBot nebo PerplexityBot. Google-Extended posuzujte zvlášť — slouží ke kontrole využití obsahu v některých AI funkcích Googlu a jeho povolení samo o sobě citaci nezaručuje."
+      text: "V souboru robots.txt ověřte, že omylem neblokujete roboty, přes které se obsah dostává do odpovědí AI: OAI-SearchBot (vyhledávání v ChatGPT), Claude-SearchBot a Claude-User (vyhledávání a načtení stránky na dotaz uživatele v Claude) a PerplexityBot (Perplexity). GPTBot a ClaudeBot sbírají obsah pro trénink modelů a o zobrazení ve vyhledávání nerozhodují. Jejich povolení posuďte zvlášť. Google-Extended není robot, ale řídicí token pro trénink modelů Gemini a podkládání odpovědí v aplikacích Gemini. Zařazení do Vyhledávání Google neovlivňuje a neřídí ani AI Overviews."
     - name: "Ověřte strukturovaná data"
       text: "Otestujte Article, FAQPage, Organization a drobečkovou navigaci přes Test rozšířených výsledků a validátor strukturovaných dat Schema.org."
     - name: "Upravte strukturu obsahu"
@@ -94,12 +94,12 @@ Na ruční zmapování stačí pár promptů a tabulka. Na **průběžné měře
 
 Pokud chcete být citovatelní, musí se k vašemu obsahu AI systémy vůbec dostat. V souboru `robots.txt` ověřte, že **omylem neblokujete** relevantní AI roboty a user agenty:
 
-- `GPTBot` (OpenAI / ChatGPT)
-- `ClaudeBot` (Anthropic)
+- `OAI-SearchBot` (vyhledávání v ChatGPT; tréninkový `GPTBot` je samostatný robot a jeho blokace vás z vyhledávání v ChatGPT nevyřadí)
+- `Claude-SearchBot` a `Claude-User` (vyhledávání v Claude a načtení stránky na dotaz uživatele; `ClaudeBot` od Anthropicu sbírá obsah pro trénink modelů)
 - `PerplexityBot` (Perplexity)
 - `Google-Extended` (řízení využití obsahu pro některé AI funkce Googlu)
 
-Rozlišujte přitom mezi roboty pro klasickou indexaci, pro trénink modelů a pro živé načítání obsahu — `Google-Extended` například není indexovací robot jako Googlebot, ale kontrolní token pro využití obsahu v některých AI produktech Googlu. **Povolení přístupu samo o sobě citaci nezaručuje, jen odstraňuje technickou překážku.** Spousta webů přitom roboty blokuje, aniž by o tom věděla — typicky převzatým pravidlem ze šablony. Pokud chcete přístup naopak **omezit**, je to legitimní volba; jak na to a jaké má důsledky, rozebírá [návod, jak omezit AI Overview](/blog/jak-vypnout-ai-overview/).
+Rozlišujte přitom mezi roboty pro klasickou indexaci, pro trénink modelů a pro živé načítání obsahu — `Google-Extended` například není indexovací robot jako Googlebot, ale řídicí token pro využití obsahu v některých AI produktech Googlu. **Povolení přístupu samo o sobě citaci nezaručuje, jen odstraňuje technickou překážku.** Spousta webů přitom roboty blokuje, aniž by o tom věděla — typicky převzatým pravidlem ze šablony. Pokud chcete přístup naopak **omezit**, je to legitimní volba; jak na to a jaké má důsledky, rozebírá [návod, jak omezit AI Overview](/blog/jak-vypnout-ai-overview/).
 
 Často se zmiňuje i soubor `llms.txt`. Berte ho s rezervou: popisuje, co na webu je, ale podle dostupných analýz z roku 2025 nebylo jeho plošné využívání velkými AI platformami prokázané. V roce 2026 ho proto berte jako doplněk — prioritou jsou strukturovaná data a obsah.
 
@@ -146,7 +146,7 @@ Celý audit pak **opakujte jednou za čtvrtletí**. Prostředí se mění rychle
   <Mistake num="01" title="Pozice v Googlu = AI viditelnost" fix="Měřte AI viditelnost zvlášť — ruční dotazy v ChatGPT a Perplexity.">
     Podle analýz z roku 2025 mívá řada stránek citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu.
   </Mistake>
-  <Mistake num="02" title="Omylem zablokovaní AI roboti" fix="Zkontrolujte robots.txt — GPTBot, ClaudeBot, PerplexityBot.">
+  <Mistake num="02" title="Omylem zablokovaní AI roboti" fix="Zkontrolujte robots.txt — hlavně vyhledávací roboty OAI-SearchBot, Claude-SearchBot a PerplexityBot.">
     Blokace převzatá ze šablony snižuje šanci, že AI systémy obsah najdou, pochopí a použijí jako zdroj.
   </Mistake>
   <Mistake num="03" title="Spoléhání na llms.txt" fix="Prioritou jsou strukturovaná data a citovatelný obsah.">
