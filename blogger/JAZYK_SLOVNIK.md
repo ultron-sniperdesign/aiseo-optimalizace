@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 64** · založeno 2026-08-23 · poslední změna 2026-09-09 (revize homepage: lookahead `(?!\.)` u `Sniperdesign` kvůli doménám; checker nově v `.ts`/`.js` modulech neaudituje **názvy vlastností a proměnných**, jen jejich hodnoty — dřív hlásil `intro:` a `scope:` jako anglicismy) · audituje skill `cestina-audit`
+> **Verze: 65** · založeno 2026-08-23 · poslední změna 2026-09-13 (checker nově v `.astro` přeskakuje bloky `<style>` a `<script>` — hlásil CSS klíčová slova jako anglicismy: 169 falešných nálezů v `index.astro`) · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“

@@ -5,8 +5,8 @@
  * Template stránku jen renderuje (styly + buy-button SVG + sticky JS + mockup
  * struktura zůstávají v .astro). Text s inline HTML i &nbsp; přes set:html.
  *
- * FAQ je SINGLE SOURCE: HTML i FAQPage JSON-LD se generují z `faqJsonLd`
- * (acceptedAnswer = plain text bez markupu). Při změně FAQ stačí jeden zdroj.
+ * FAQ je jeden zdroj (`faq`): viditelný text i FAQPage JSON-LD z něj skládá
+ * sdílená komponenta Faq. Odpověď smí nést mini markdown.
  *
  * Per-mutace config: `siteOrigin`, `stripeCheckoutUrl` (každá doména/market
  * má vlastní). `priceValidUntil` se počítá při buildu (rok dopředu).
@@ -15,6 +15,7 @@
  */
 
 import type { SectionHead } from "~/content/pages/_types";
+import type { FaqItem } from "~/content/pages/_types";
 
 export const meta = {
   title: "AI SEO Wireframe Pack — sedm typů stránek pro AI vyhledávání",
@@ -60,60 +61,33 @@ export const productJsonLd = {
 };
 
 /** FAQPage JSON-LD — SINGLE SOURCE pro HTML FAQ i structured data (6 položek). */
-export const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Co konkrétně Pack obsahuje?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou anotovaný wireframe, šablony textů a ukázky strukturovaných dat (pro produkt, časté dotazy, článek, místní firmu). Plus krok-za-krokem návod, jak to aplikovat na váš web. Vše v jednom master PDF (85 stran).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Mohu Pack použít na jakémkoli CMS?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ano. Pack je praktický pracovní rámec, ne plugin. Wireframy, šablony textů a ukázky strukturovaných dat aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Co když si nejsem jistý, jestli to zvládnu?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, struktura) zvládnete sami za odpoledne. Strukturovaná data připravíte jako podklad a předáte vývojáři nebo správci webu. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniper Design za 3 600 Kč — projdeme váš web a předáme prioritní seznam úprav.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Dostanu aktualizace Packu, pokud se AI SEO změní?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ano. Koupí nezískáte statické PDF, které za měsíc zastará. Drobné aktualizace této edice (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje) posíláme držitelům licence zdarma e-mailem. Můžete začít aplikovat Pack teď a nečekat, až se trh ustálí — pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Je Pack vhodný i pro web bez blogu nebo bez e-shopu?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ano. Pack obsahuje sedm typů stránek, ale nemusíte aplikovat všechny. Pokud máte jen služby (žádný e-shop), využijete homepage, prodejní landing, kontakt — případně blog článek. Pokud máte e-shop bez blogu, naopak produkt, kategorii a kontakt. Pack je modulární, vezmete si jen typy, které váš web obsahuje.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Jak je to s vrácením peněz?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pack je digitální produkt s okamžitým přístupem po platbě. Po doručení PDF na e-mail jej nelze standardně vracet. Proto na této stránce ukazujeme náhled tří stran z první kapitoly, ukázku struktury produktové stránky a vzor šablony textu — abyste se mohli rozhodnout přesně podle obsahu, který v Packu skutečně dostanete.",
-      },
-    },
-  ],
-};
+/** FAQ — jediný zdroj; viditelný text i FAQPage JSON-LD z něj skládá komponenta Faq. */
+export const faq: FaqItem[] = [
+  {
+    q: "Co konkrétně Pack obsahuje?",
+    a: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou anotovaný wireframe, šablony textů a ukázky strukturovaných dat (pro produkt, časté dotazy, článek, místní firmu). Plus krok-za-krokem návod, jak to aplikovat na váš web. Vše v jednom master PDF (85 stran).",
+  },
+  {
+    q: "Mohu Pack použít na jakémkoli CMS?",
+    a: "Ano. Pack je praktický pracovní rámec, ne plugin. Wireframy, šablony textů a ukázky strukturovaných dat aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
+  },
+  {
+    q: "Co když si nejsem jistý, jestli to zvládnu?",
+    a: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, struktura) zvládnete sami za odpoledne. Strukturovaná data připravíte jako podklad a předáte vývojáři nebo správci webu. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniper Design za 3 600 Kč — projdeme váš web a předáme prioritní seznam úprav.",
+  },
+  {
+    q: "Dostanu aktualizace Packu, pokud se AI SEO změní?",
+    a: "Ano. Koupí nezískáte statické PDF, které za měsíc zastará. Drobné aktualizace této edice (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje) posíláme držitelům licence zdarma e-mailem. Můžete začít aplikovat Pack teď a nečekat, až se trh ustálí — pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
+  },
+  {
+    q: "Je Pack vhodný i pro web bez blogu nebo bez e-shopu?",
+    a: "Ano. Pack obsahuje sedm typů stránek, ale nemusíte aplikovat všechny. Pokud máte jen služby (žádný e-shop), využijete homepage, prodejní landing, kontakt — případně blog článek. Pokud máte e-shop bez blogu, naopak produkt, kategorii a kontakt. Pack je modulární, vezmete si jen typy, které váš web obsahuje.",
+  },
+  {
+    q: "Jak je to s vrácením peněz?",
+    a: "Pack je digitální produkt s okamžitým přístupem po platbě. Po doručení PDF na e-mail jej nelze standardně vracet. Proto na této stránce ukazujeme náhled tří stran z první kapitoly, ukázku struktury produktové stránky a vzor šablony textu — abyste se mohli rozhodnout přesně podle obsahu, který v Packu skutečně dostanete.",
+  },
+];
 
 /** Sedm typů stránek (sekce 01 grid). */
 export const pageTypes = [
@@ -427,7 +401,7 @@ export const decision = {
   note: "<strong>Pack je nejlepší volba, pokud už máte tým nebo správce webu</strong> a&nbsp;chcete jim dát hotové zadání. Implementaci si&nbsp;udělá interně, nebo ji&nbsp;na&nbsp;základě Packu předá kterémukoli vývojáři.",
 };
 
-/** FAQ hlavička (položky = faqJsonLd.mainEntity). */
+/** FAQ hlavička (položky = `faq`). */
 export const faqHead: SectionHead = {
   eyebrowNum: "FAQ",
   eyebrow: "Časté otázky",

@@ -1,20 +1,18 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import EmailCapture from "~/components/EmailCapture.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import * as p from "~/content/pages/navod-zdarma";
-import { buildFaqJsonLd } from "~/lib/jsonld";
 import ExitRescue from "~/components/blocks/ExitRescue.astro";
 
 // Obsah stránky je v datovém modulu src/content/pages/navod-zdarma.ts.
 // Tato stránka je čistý template — refaktor Fáze 0 (i18n příprava).
-const faqJsonLd = buildFaqJsonLd(p.faq);
 ---
 
 <BaseLayout
   title={p.meta.title}
   description={p.meta.description}
-  jsonLd={faqJsonLd}
   image={p.meta.ogImage}
   breadcrumb={[{ label: "Návod zdarma", href: "/navod-zdarma/" }]}
 >
@@ -157,23 +155,13 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section class="lp-section lp-section--alt">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{p.faqHead.eyebrowNum}</span> {p.faqHead.eyebrow}</span>
-        <h2 class="lp-section__title" set:html={p.faqHead.title}></h2>
-      </header>
-
-      <dl class="lp-faq">
-        {p.faq.map((item, i) => (
-          <div class="lp-faq__item">
-            <dt class="lp-faq__q">
-              <span class="lp-faq__q-num">{String(i + 1).padStart(2, "0")}</span>
-              <span>{item.q}</span>
-            </dt>
-            <dd class="lp-faq__a">{item.a}</dd>
-          </div>
-        ))}
-      </dl>
+    <section class="lp-section lp-section--alt lp-section--faq">
+      <Faq
+        items={p.faq}
+        eyebrowNum={p.faqHead.eyebrowNum}
+        eyebrow={p.faqHead.eyebrow}
+        titleHtml={p.faqHead.title}
+      />
     </section>
 
     <!-- ===== FINAL CTA ===== -->
@@ -210,6 +198,12 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-x);
+  }
+  /* FAQ komponenta má vlastní svislý odstup; sekce ho už dává paddingem. */
+  
+  /* FAQ komponenta má vlastní svislý odstup; sekce ho už dává paddingem. */
+  .lp-section--faq {
+    --faq-my: 0;
   }
   .lp-section--alt {
     background: var(--color-paper-deep);
@@ -710,42 +704,7 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
   }
 
   /* ===== FAQ ===== */
-  .lp-faq {
-    max-width: 60rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .lp-faq__item {
-    border-top: 1px solid var(--color-rule);
-    padding-top: 1.5rem;
-  }
-  .lp-faq__q {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    margin-bottom: 0.625rem;
-    display: flex;
-    gap: 0.875rem;
-    align-items: baseline;
-    line-height: 1.3;
-  }
-  .lp-faq__q-num {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--lp-violet);
-    flex-shrink: 0;
-  }
-  .lp-faq__a {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--color-ink-muted);
-    margin: 0 0 0 2rem;
-  }
+  
 
   /* ===== FINAL CTA ===== */
   .lp-final {

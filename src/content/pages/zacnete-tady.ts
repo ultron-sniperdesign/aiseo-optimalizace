@@ -314,5 +314,9 @@ export const faq = [
   },
 ];
 
+/** Nadpis FAQ — H2 s konvencí webu (span.hl + strong). Dřív zadrátovaný v šabloně bez ní. */
+export const faqTitleHtml =
+  'Otázky těch, kdo <span class="hl">začínají</span> <strong>s AI SEO</strong>';
+
 /** HowTo JSON-LD — název + kroky skládá šablona z `phases` (goal texty). */
 export const howtoName = "Jak začít s AI SEO ve třech fázích";

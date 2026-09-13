@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import {
   meta,
   breadcrumb,
@@ -153,21 +154,14 @@ import {
     </section>
 
     <!-- ===== 04 FAQ — scam-prevention pojistka ===== -->
-    <section class="lp-section">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{faq.eyebrowNum}</span> <Fragment set:html={faq.eyebrowHtml} /></span>
-        <h2 class="lp-section__title" set:html={faq.titleHtml}></h2>
-        <p class="lp-section__lead" set:html={faq.leadHtml}></p>
-      </header>
-
-      <dl class="kontakt-faq">
-        {faq.items.map((f) => (
-          <div>
-            <dt set:html={f.qHtml}></dt>
-            <dd set:html={f.aHtml}></dd>
-          </div>
-        ))}
-      </dl>
+    <section class="lp-section lp-section--faq">
+      <Faq
+        items={faq.items}
+        eyebrowNum={faq.eyebrowNum}
+        eyebrow={faq.eyebrow}
+        titleHtml={faq.titleHtml}
+        leadHtml={faq.leadHtml}
+      />
     </section>
 
     <!-- ===== 05 KONTAKTY + FAKTURACE (compact, ne dominantní) ===== -->
@@ -387,6 +381,12 @@ import {
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  /* Sekce už dává rám i svislý odstup — komponentě FAQ je vypneme,
+     jinak by se odsazení sečetlo dvakrát. */
+  .lp-section--faq {
+    --faq-px: 0;
+    --faq-my: 0;
   }
   .lp-section--alt {
     background: var(--color-paper-deep);
@@ -684,42 +684,8 @@ import {
   .kontakt-path__cta--accent:hover { color: oklch(0.45 0.27 335); }
 
   /* ===== FAQ (scam-prevention) ===== */
-  .kontakt-faq {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 48rem;
-    margin: 0;
-  }
-  @media (min-width: 768px) {
-    .kontakt-faq { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  }
-  .kontakt-faq > div {
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-radius: 10px;
-    padding: 1.25rem 1.375rem 1.125rem;
-  }
-  .kontakt-faq dt {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    margin: 0 0 0.5rem;
-    line-height: 1.35;
-  }
-  .kontakt-faq dd {
-    font-size: 0.875rem;
-    line-height: 1.55;
-    color: var(--color-ink-muted);
-    margin: 0;
-  }
-  .kontakt-faq dd :global(a) {
-    color: var(--lp-violet);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .kontakt-faq dd :global(strong) { color: var(--color-ink); font-weight: 600; }
+  
+  
 
   /* ===== Direct kontakty + fakturace ===== */
   .kontakt-direct {

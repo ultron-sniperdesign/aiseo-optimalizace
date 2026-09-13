@@ -96,7 +96,7 @@ TS_PROP_KEY = re.compile(r'^(\s*)([A-Za-z_$][A-Za-z0-9_$]*)(\s*:)')
 # Totez pro deklarace: `export const sniperDesign = {` je nazev promenne.
 TS_DECL = re.compile(r'\b(const|let|var|function|interface|type)\s+([A-Za-z_$][A-Za-z0-9_$]*)')
 
-def body_lines(text, is_module=False):
+def body_lines(text, is_module=False, is_astro=False):
     """Vrati (cislo_radku, text) pro telo clanku + textova pole frontmatteru.
 
     Frontmatter se neaudituje cely — jen pole, ktera ctenar vidi (answer,
@@ -115,8 +115,21 @@ def body_lines(text, is_module=False):
                 break
     in_code = False
     in_dont = False
+    in_astro_block = False
     for n in range(start, len(lines)):
         raw = lines[n]
+        # V .astro souborech jsou <style> a <script> kód, ne text pro čtenáře —
+        # bez tohohle checker hlásil CSS klíčová slova (solid, outline, content:)
+        # jako anglicismy: 169 falešných nálezů v index.astro, 8 v Faq.astro (13. 9. 2026).
+        if is_astro:
+            st = raw.lstrip()
+            if re.match(r'<(style|script)\b', st):
+                in_astro_block = not re.search(r'</(style|script)>', st)
+                continue
+            if in_astro_block:
+                if re.search(r'</(style|script)>', st):
+                    in_astro_block = False
+                continue
         if CODE_FENCE.match(raw.strip()):
             in_code = not in_code; continue
         # <Dont> bloky jsou zamerne odstrasujici ukazky — auditovat je nema smysl
@@ -154,7 +167,8 @@ def main():
              if slug not in [x.strip() for m in re.findall(r'\[skip:([^\]]+)\]', r['why'] + ' ' + r['src']) for x in m.split(',')]]
     hits, words = [], 0
     is_module = args.soubor.endswith(('.ts', '.js', '.mjs'))
-    for n, raw in body_lines(text, is_module):
+    is_astro = args.soubor.endswith('.astro')
+    for n, raw in body_lines(text, is_module, is_astro):
         line = mask(raw)
         words += len(line.split())
         quoted = raw.lstrip().startswith('>') or '*„' in raw or '“*' in raw

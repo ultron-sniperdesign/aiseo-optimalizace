@@ -3,7 +3,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
 import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import * as p from "~/content/pages/sluzby";
-import { buildFaqJsonLd } from "~/lib/jsonld";
+import Faq from "~/components/blocks/Faq.astro";
 
 /**
  * /sluzby/ — prodejní landing „Editorial důkaz" (koncept A, 2026-08).
@@ -17,7 +17,7 @@ import { buildFaqJsonLd } from "~/lib/jsonld";
  * Důkazy nese sdílený ProofStrip (kompaktní, čísla s vysvětlením) — vlastní
  * „výkaz" byl vizuálně velký a bez kontextu (zpětná vazba 2026-08-09).
  */
-const jsonLd = [buildFaqJsonLd(p.faq), p.offerCatalogJsonLd];
+const jsonLd = [p.offerCatalogJsonLd];
 
 /** Glyf vlivu — mono, bez emoji (editorial tón): ● velký · ◐ střední · ○ menší */
 const impactGlyph: Record<number, string> = { 3: "●", 2: "◐", 1: "○" };
@@ -320,19 +320,13 @@ const stepColors = [
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section class="faq-sec wrap" aria-labelledby="faq-title">
-      <div class="sec-head">
-        <span class="eyebrow"><span class="eyebrow__num">07</span> {p.faqHead.eyebrow}</span>
-      </div>
-      <h2 id="faq-title" class="content__title" set:html={p.faqHead.titleHtml}></h2>
-      <div class="faq">
-        {p.faq.map((f, i) => (
-          <details class="faq__item" open={i === 0}>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
+    <section class="faq-sec wrap">
+      <Faq
+        items={p.faq}
+        eyebrowNum="07"
+        eyebrow={p.faqHead.eyebrow}
+        titleHtml={p.faqHead.titleHtml}
+      />
     </section>
 
     <!-- ===== FINÁLNÍ CTA ===== -->
@@ -681,7 +675,7 @@ const stepColors = [
   .ret .eyebrow__num { color: var(--color-seo); }
   .check-sec .eyebrow__num { color: var(--color-geo); }
   .myths-sec .eyebrow__num { color: var(--color-signal); }
-  .faq-sec .eyebrow__num { color: var(--color-aio); }
+  .faq-sec { --faq-px: 0; --faq-my: 0; --d: var(--color-aio); }
   .analysis { margin-top: 2.25rem; border-left: 3px solid var(--color-aeo); background: var(--color-aeo-tint); border-radius: 0 10px 10px 0; padding: 1.2rem 1.5rem; max-width: 46rem; }
   .analysis h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.4rem; letter-spacing: -0.012em; }
   .analysis p { font-size: 0.92rem; color: var(--color-ink-muted); margin: 0; }
@@ -785,23 +779,7 @@ const stepColors = [
   .myth h3 { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 0.45rem; }
   .myth p { font-size: 0.92rem; color: var(--color-ink-muted); margin: 0; }
 
-  /* ============ FAQ ============ */
-  .faq { margin-top: 1.9rem; }
-  .faq__item { border-bottom: 1px solid var(--color-rule); }
-  .faq__item summary {
-    font-weight: 600;
-    font-size: 1.02rem;
-    letter-spacing: -0.012em;
-    padding: 1.05rem 2rem 1.05rem 0;
-    cursor: pointer;
-    list-style: none;
-    position: relative;
-  }
-  .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary::after { content: "+"; position: absolute; right: 0.25rem; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); color: var(--color-aio); transition: transform 0.2s ease; }
-  .faq__item[open] summary { color: var(--color-aio); }
-  .faq__item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
-  .faq__item p { color: var(--color-ink-muted); margin: 0 0 1.2rem; max-width: 46rem; font-size: 0.95rem; }
+
 
   /* ============ POPTÁVKA ============ */
   .pop { margin-top: clamp(4.5rem, 10vw, 7.5rem); border-top: 1px solid var(--color-ink); padding-top: 0.9rem; }

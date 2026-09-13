@@ -41,7 +41,7 @@ import TagChips from "~/components/article/TagChips.astro";
 import SeriesNav from "~/components/article/SeriesNav.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
-import { renderFaqMarkdown } from "~/lib/jsonld";
+import Faq from "~/components/blocks/Faq.astro";
 import { czDate } from "~/lib/date";
 
 interface Props {
@@ -250,27 +250,12 @@ const _bundlerHints = [
   <!-- FAQ — collapsible <details> -->
   {
     entry.data.faq && entry.data.faq.length > 0 && (
-      <section class="rfaq" aria-labelledby="rfaq-title">
-        <header class="rfaq__head">
-          <span class="rfaq__eyebrow">{ui.richFaqEyebrowHtml.replace("{n}", String(entry.data.faq.length))}</span>
-          <h2 id="rfaq-title" class="rfaq__title">
-            {ui.richFaqTitle}
-          </h2>
-        </header>
-
-        <div class="rfaq__list">
-          {entry.data.faq.map((item, i) => (
-            <details class="rfaq__item">
-              <summary class="rfaq__q">
-                <span class="rfaq__q-num">{String(i + 1).padStart(2, "0")}</span>
-                <span class="rfaq__q-text">{item.q}</span>
-                <span class="rfaq__q-chevron" aria-hidden="true">+</span>
-              </summary>
-              <div class="rfaq__a" set:html={renderFaqMarkdown(item.a)}></div>
-            </details>
-          ))}
-        </div>
-      </section>
+      <Faq
+        items={entry.data.faq}
+        eyebrowNum={ui.faqEyebrowNum}
+        eyebrow={ui.faqEyebrow}
+        titleHtml={ui.blogFaqTitleHtml}
+      />
     )
   }
 
@@ -854,113 +839,6 @@ const _bundlerHints = [
   }
 
   /* ===== FAQ — collapsible <details> ===== */
-  .rfaq {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 4.5rem);
-  }
-  .rfaq__head {
-    max-width: 50rem;
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-  }
-  .rfaq__eyebrow {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--d);
-    margin-bottom: 0.625rem;
-  }
-  .rfaq__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 250;
-    letter-spacing: -0.025em;
-    margin: 0;
-    color: var(--color-ink);
-    line-height: 1.1;
-  }
-  .rfaq__list {
-    max-width: 60rem;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .rfaq__item {
-    border-top: 1px solid var(--color-rule);
-    padding: 0;
-  }
-  .rfaq__item:last-child {
-    border-bottom: 1px solid var(--color-rule);
-  }
-  .rfaq__item[open] {
-    background: var(--color-paper-deep);
-  }
-  .rfaq__q {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    cursor: pointer;
-    list-style: none;
-    padding: 1.25rem 1rem 1.25rem 0;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 0.875rem;
-    align-items: baseline;
-    line-height: 1.35;
-    transition: color 0.15s ease;
-  }
-  .rfaq__q::-webkit-details-marker { display: none; }
-  .rfaq__q:hover { color: var(--d); }
-  .rfaq__q-num {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--d);
-  }
-  .rfaq__q-text { min-width: 0; }
-  .rfaq__q-chevron {
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
-    font-weight: 250;
-    color: var(--d);
-    line-height: 1;
-    transition: transform 0.2s ease;
-  }
-  .rfaq__item[open] .rfaq__q-chevron { transform: rotate(45deg); }
-  .rfaq__a {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--color-ink-muted);
-    padding: 0 1rem 1.5rem 2.625rem;
-  }
-  /* Odpověď se vkládá přes set:html, takže potomci nedostanou scope atribut —
-     pravidla pro ně musí být v :global (CLAUDE.md § VI). Bez toho by inline kód
-     a odkazy v FAQ ztratily styl. */
-  .rfaq__a :global(code) {
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-    background: var(--color-paper-deep, var(--color-paper));
-    border: 1px solid var(--color-rule);
-    border-radius: 4px;
-    padding: 0.1em 0.35em;
-    color: var(--color-ink);
-    word-break: break-word;
-  }
-  .rfaq__a :global(a) {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .rfaq__a :global(strong) {
-    font-weight: 600;
-    color: var(--color-ink);
-  }
-
   /* ===== BACK CTA ===== */
   .rback {
     max-width: var(--max-section);

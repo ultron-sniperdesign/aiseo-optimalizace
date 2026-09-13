@@ -1,0 +1,257 @@
+---
+/**
+ * Faq — jediná FAQ komponenta webu.
+ *
+ * Proč existuje: do 13. 9. 2026 web vykresloval FAQ ve 14 souborech, každý
+ * po svém — tři způsoby chování (rozbalené / akordeon / akordeon v JS), tři
+ * styly číslování, tři formáty odpovědí (holý text, markdown, HTML) a čtyři
+ * způsoby strukturovaných dat. `/audit/` navíc držel FAQ dvakrát — zvlášť
+ * pro zobrazení a zvlášť pro schéma — a 6 z 10 odpovědí se rozešlo.
+ *
+ * Pravidla, která komponenta vynucuje:
+ * - **Jeden vzhled.** Změna designu FAQ se dělá tady a projeví se všude.
+ * - **Jeden zdroj.** Viditelný text i FAQPage JSON-LD vznikají ze stejných
+ *   `items`, takže se nemůžou rozejít. Stránka FAQ do `jsonLd` v BaseLayout
+ *   NEpředává — schéma vypisuje tahle komponenta.
+ * - **Jeden formát odpovědi:** mini markdown (`**tučné**`, `` `kód` ``,
+ *   `[odkaz](/url/)`). Pro zobrazení `renderFaqMarkdown`, pro schéma
+ *   `faqPlainText`. HTML entity do dat nepatří — `&` se escapuje, takže
+ *   `&nbsp;` by se vypsalo doslova; použij přímo znak (nezlomitelná mezera).
+ * - **Akordeon, první otázka otevřená.** Nativní `<details>` bez JavaScriptu;
+ *   ovládá se z klávesnice a Google obsah uvnitř indexuje.
+ * - **Bez čísel.** Otázky nejsou posloupnost — číslo by nic nesdělovalo.
+ *
+ * Rám sekce: komponenta si standardně nasadí rám stránky (`--max-section`
+ * + vodorovné odsazení), protože většina míst ji vkládá přímo do těla stránky.
+ * Obal, který odsazení už aplikoval (`.st` na /zacnete-tady/, `.se` na landingu
+ * série), nastaví `--faq-px: 0` — jinak by se sečetlo dvakrát. Stejný idiom
+ * jako `--free-strip-px` u FreeStripu. Uvnitř drží čitelnou šířku textu
+ * (`--w-read`). Svislý odstup jde přepsat přes `--faq-my`.
+ *
+ * (První verze rám nenasazovala a blogové FAQ pak běželo od okraje k okraji
+ * obrazovky — naměřeno 13. 9. 2026 při 1440 px: 0 až 1425 místo 73 až 1353.)
+ */
+import { faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
+import type { FaqItem } from "~/content/pages/_types";
+
+interface Props {
+  items: FaqItem[];
+  /** Štítek nad nadpisem. */
+  eyebrow?: string;
+  /** Číslo sekce ve štítku — pro stránky, které číslují sekce („07 Časté otázky“). */
+  eyebrowNum?: string;
+  /** Nadpis H2 jako HTML s konvencí webu: `<span class="hl">…</span>` + `<strong>…</strong>`. */
+  titleHtml?: string;
+  /** Odstavec pod nadpisem (HTML). */
+  leadHtml?: string;
+  /** Id sekce pro kotvy. */
+  id?: string;
+  /** Vypsat FAQPage JSON-LD. Vypínej jen tam, kde by na jedné stránce byly dvě FAQ. */
+  schema?: boolean;
+}
+
+const {
+  items,
+  eyebrow,
+  eyebrowNum,
+  titleHtml,
+  leadHtml,
+  id = "faq",
+  schema = true,
+} = Astro.props;
+
+const titleId = `${id}-title`;
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: faqPlainText(item.q),
+    acceptedAnswer: { "@type": "Answer", text: faqPlainText(item.a) },
+  })),
+};
+/**
+ * `<` jako `\u003c`: JSON zůstane platný, ale text odpovědi s „</script>“
+ * nemůže ukončit značku předčasně. Obsah je náš vlastní, riziko je nulové —
+ * ale komponenta se použije na ~190 stránkách, tak ať to platí napořád.
+ */
+const faqJsonLdSafe = JSON.stringify(faqJsonLd).replace(/</g, "\\u003c");
+---
+
+{
+  items.length > 0 && (
+    <section class="faq" id={id} aria-labelledby={titleHtml ? titleId : undefined}>
+      {(eyebrow || titleHtml || leadHtml) && (
+        <header class="faq__head">
+          {eyebrow && (
+            <span class="eyebrow">
+              {eyebrowNum && <span class="eyebrow__num">{eyebrowNum}</span>}
+              {eyebrow}
+            </span>
+          )}
+          {titleHtml && <h2 class="faq__title" id={titleId} set:html={titleHtml} />}
+          {leadHtml && <p class="faq__lead" set:html={leadHtml} />}
+        </header>
+      )}
+
+      <div class="faq__list">
+        {items.map((item, i) => (
+          <details class="faq__item" open={i === 0}>
+            <summary class="faq__q">
+              <span class="faq__q-text" set:html={renderFaqMarkdown(item.q)} />
+              <span class="faq__icon" aria-hidden="true" />
+            </summary>
+            <div class="faq__a" set:html={renderFaqMarkdown(item.a)} />
+          </details>
+        ))}
+      </div>
+
+      {schema && <script is:inline type="application/ld+json" set:html={faqJsonLdSafe} />}
+    </section>
+  )
+}
+
+<style>
+  .faq {
+    /* Barva akcentu následuje disciplínu stránky (--d), jinak accent webu —
+       stejně jako `h2 .hl`. Není to druhý design, je to tentýž systém barev. */
+    --faq-accent: var(--d, var(--color-accent));
+    max-width: var(--max-section);
+    margin: var(--faq-my, clamp(3rem, 6vw, 4.5rem)) auto;
+    padding-inline: var(--faq-px, var(--space-section-x));
+  }
+
+  .faq__head .eyebrow__num {
+    color: var(--faq-accent);
+  }
+  .faq__head {
+    max-width: var(--w-read);
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .faq__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 250;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--color-ink);
+    margin: 0.625rem 0 0;
+    text-wrap: balance;
+  }
+  .faq__lead {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0.875rem 0 0;
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+  }
+  .faq__item {
+    border-top: 1px solid var(--color-rule);
+  }
+  .faq__item:last-child {
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .faq__q {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.125rem 0;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-ink);
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.15s ease;
+  }
+  .faq__q::-webkit-details-marker {
+    display: none;
+  }
+  .faq__q:hover {
+    color: var(--faq-accent);
+  }
+  .faq__q:focus-visible {
+    outline: 2px solid var(--faq-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  .faq__q-text {
+    min-width: 0;
+    max-width: var(--w-read);
+  }
+
+  /* Plus, který se u otevřené otázky otočí na křížek. Kreslený dvěma pruhy,
+     ne znakem „+“ — znak má v každém fontu jinou tloušťku i účaří. */
+  .faq__icon {
+    position: relative;
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .faq__icon::before,
+  .faq__icon::after {
+    content: "";
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 1.5px;
+    margin-top: -0.75px;
+    background: var(--faq-accent);
+    border-radius: 1px;
+  }
+  .faq__icon::after {
+    transform: rotate(90deg);
+  }
+  .faq__item[open] .faq__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq__a {
+    max-width: var(--w-read);
+    padding: 0 0 1.375rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink-muted);
+  }
+
+  /* Otázka i odpověď se vkládají přes set:html — potomci nedostanou atribut
+     `data-astro-cid`, takže pravidla pro ně musí být v :global (CLAUDE.md § VI). */
+  .faq__a :global(a) {
+    color: var(--faq-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .faq__a :global(strong),
+  .faq__q-text :global(strong) {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .faq__a :global(code),
+  .faq__q-text :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper-deep, var(--color-paper));
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+    color: var(--color-ink);
+    word-break: break-word;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq__q,
+    .faq__icon {
+      transition: none;
+    }
+  }
+</style>

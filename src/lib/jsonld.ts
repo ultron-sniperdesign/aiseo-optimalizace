@@ -6,7 +6,6 @@
  * stránkách duplicitní (zvlášť v JSON-LD, zvlášť v HTML).
  */
 
-import type { FaqItem } from "~/content/pages/_types";
 import { author } from "~/i18n/author";
 
 /**
@@ -79,18 +78,3 @@ export function renderFaqMarkdown(text: string): string {
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
 
-/** Postaví schema.org FAQPage z pole FAQ položek. */
-export function buildFaqJsonLd(faq: FaqItem[]): Record<string, unknown> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faq.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faqPlainText(item.a),
-      },
-    })),
-  };
-}

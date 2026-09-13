@@ -5,15 +5,16 @@
  * Template stránku jen renderuje (styly + struktura formuláře + inline JS
  * zůstávají v .astro). Text s inline HTML i &nbsp; se renderuje přes set:html.
  *
- * POZOR — FAQ má DVA zdroje držené v sync (10 = 10):
- * `faqJsonLd` (plain text pro structured data — acceptedAnswer NESMÍ mít markup)
- * a HTML `faq` (RichFaqItem[] s inline markupem). Negenerují se z jednoho zdroje
- * (markup constraint), proto při změně FAQ uprav VŽDY OBA + drž stejné pořadí.
+ * FAQ má JEDEN zdroj (`faq`, mini markdown): viditelný text i FAQPage JSON-LD
+ * z něj skládá sdílená komponenta Faq. Do 13. 9. 2026 tu byly dvě ručně
+ * držené kopie (HTML pro stránku a prostý text pro schéma) a 6 z 10 odpovědí
+ * se obsahově rozešlo — proto teď jen jedna.
  *
  * Mutace: EN/DE/PL fork má vlastní kopii s překladem.
  */
 
-import type { SectionHead, RichFaqItem } from "~/content/pages/_types";
+import type { SectionHead } from "~/content/pages/_types";
+import type { FaqItem } from "~/content/pages/_types";
 
 export const meta = {
   title: "AI SEO audit od Sniper Design — přesný plán pro váš web, 3 600 Kč",
@@ -59,93 +60,6 @@ export const serviceJsonLd = {
   },
 };
 
-/** FAQPage JSON-LD (10 položek, plain text — drženo v sync s HTML faq). */
-export const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Pro koho je audit určený?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Audit je pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a firemních webů, kteří chtějí konkrétní plán, co změnit pro AI éru vyhledávání. Hodí se pro weby s ročním obratem 1+ mil. Kč a s ambicí být citovaný v ChatGPT, Perplexity a Google AI Overviews.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Co když nemám AI SEO Wireframe Pack?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pack i audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1 490 Kč), audit je hands-on analýza vašeho webu se 60min konzultací (3 600 Kč). Audit můžete objednat samostatně — nepotřebujete předem Pack. Pokud máte Pack, audit se vám hodí jako navazující krok pro implementaci na váš konkrétní sortiment.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Jak dlouho audit trvá?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Výstup audit dokumentu do 5 pracovních dní od potvrzení objednávky. Po vyplnění formuláře vás kontaktujeme do 24 hodin (v pracovní dny) s upřesněním a fakturou. Po platbě začneme auditovat. 60min online konzultaci si domluvíme po dodání auditu.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Co konkrétně dostanu jako výstup?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Audit dokument (PDF nebo Notion / Google Doc, dle preference) obsahující: 1) technický audit (Core Web Vitals, schema markup, indexace, mobile UX), 2) obsahový audit (pillar coverage, on-page optimalizace, content gaps proti konkurenci), 3) E-E-A-T a důvěryhodnost (NAP konzistence, brand mentions, backlink profil). Plus prioritní seznam úprav s odhadem dopadu a effortu, a 60min online konzultaci s naším týmem.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Komu platím a dostanu fakturu?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Platíte CPU s.r.o. (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena 3 600 Kč je bez DPH (s DPH = 4 356 Kč).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Co audit nezahrnuje?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Audit je samostatný akční plán — obsahuje analýzu, prioritizaci a konzultaci. Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy. Nejste vázaní na naši realizaci.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Mohu objednávku zrušit?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ano, do potvrzení rozsahu a vystavení faktury bez problémů. Jakmile je rozsah potvrzen a audit zahájen, jde o službu připravovanou na míru a storno řešíme individuálně podle rozpracovanosti.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ano, pokud chcete nezávislý pohled na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Výstup můžete předat internímu týmu, copywriterovi, vývojáři nebo stávající agentuře.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Co když audit neodhalí zásadní problém?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "I to je užitečný výsledek. Získáte potvrzení, že technika, obsah a důvěryhodnost nejsou hlavní brzda, a doporučíme, kam zaměřit další úsilí. V praxi ale ve většině auditů nacházíme kombinaci technických, obsahových i důvěryhodnostních rezerv.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Můžu se na něco zeptat předem?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Samozřejmě. Napište nám na aiseo-optimalizace@sniperdesign.cz nebo zavolejte +420 775 181 634 (Po-Pá 10-17). Pokud chcete spíš nezávazně probrat situaci než rovnou audit, napište přes kontaktní formulář.",
-      },
-    },
-  ],
-};
 
 /** HERO — copy (levý sloupec). */
 export const hero = {
@@ -429,46 +343,46 @@ export const faqHead: SectionHead = {
   title: "Než si <strong>objednáte audit</strong>",
 };
 
-export const faq: RichFaqItem[] = [
+export const faq: FaqItem[] = [
   {
     q: "Pro koho je audit určený?",
-    a: "Pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a&nbsp;firemních webů, kteří chtějí <strong>konkrétní plán</strong>, co změnit pro AI éru vyhledávání. Hodí se pro weby s&nbsp;ročním obratem 1+&nbsp;mil.&nbsp;Kč a&nbsp;s&nbsp;ambicí být citovaný v&nbsp;ChatGPT, Perplexity a&nbsp;Google AI Overviews.",
+    a: "Pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a firemních webů, kteří chtějí **konkrétní plán**, co změnit pro AI éru vyhledávání. Hodí se pro weby s ročním obratem 1+ mil. Kč a s ambicí být citovaný v ChatGPT, Perplexity a Google AI Overviews.",
   },
   {
     q: "Co když nemám AI SEO Wireframe Pack?",
-    a: "Pack i&nbsp;audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1&nbsp;490&nbsp;Kč), audit je hands-on analýza vašeho webu se&nbsp;60min konzultací. <strong>Audit můžete objednat samostatně</strong> &mdash; nepotřebujete předem Pack.",
+    a: "Pack i audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1 490 Kč), audit je hands-on analýza vašeho webu se 60min konzultací. **Audit můžete objednat samostatně** — nepotřebujete předem Pack.",
   },
   {
     q: "Jak dlouho audit trvá?",
-    a: "Výstup audit dokumentu <strong>do&nbsp;5&nbsp;pracovních dní</strong> od&nbsp;potvrzení objednávky. Po&nbsp;vyplnění formuláře vás kontaktujeme do&nbsp;24&nbsp;hodin v&nbsp;pracovní dny s&nbsp;upřesněním a&nbsp;fakturou. Po&nbsp;platbě začneme auditovat.",
+    a: "Výstup audit dokumentu **do 5 pracovních dní** od potvrzení objednávky. Po vyplnění formuláře vás kontaktujeme do 24 hodin v pracovní dny s upřesněním a fakturou. Po platbě začneme auditovat.",
   },
   {
     q: "Co konkrétně dostanu jako výstup?",
-    a: "Audit dokument (PDF nebo Notion / Google Doc, dle preference) se&nbsp;třemi vrstvami analýzy + <strong>prioritní seznam úprav</strong> s&nbsp;odhadem dopadu a&nbsp;effortu + <strong>60min online konzultaci</strong> s&nbsp;naším týmem.",
+    a: "Audit dokument (PDF nebo Notion / Google Doc, dle preference) se třemi vrstvami analýzy + **prioritní seznam úprav** s odhadem dopadu a effortu + **60min online konzultaci** s naším týmem.",
   },
   {
-    q: "Komu platím a&nbsp;dostanu fakturu?",
-    a: "Platíte <strong>CPU s.r.o.</strong> (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po&nbsp;potvrzení objednávky. Cena <strong>3&nbsp;600&nbsp;Kč bez DPH</strong> (s&nbsp;DPH = 4&nbsp;356&nbsp;Kč).",
+    q: "Komu platím a dostanu fakturu?",
+    a: "Platíte **CPU s.r.o.** (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena **3 600 Kč bez DPH** (s DPH = 4 356 Kč).",
   },
   {
     q: "Co audit nezahrnuje?",
-    a: "Audit je <strong>samostatný akční plán</strong> &mdash; obsahuje analýzu, prioritizaci a&nbsp;konzultaci. <strong>Implementaci si&nbsp;můžete udělat interně, předat ji&nbsp;své agentuře nebo vývojáři, nebo si&nbsp;od&nbsp;nás nechat nacenit navazující úpravy.</strong> Nejste vázaní na&nbsp;naši realizaci.",
+    a: "Audit je **samostatný akční plán** — obsahuje analýzu, prioritizaci a konzultaci. **Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy.** Nejste vázaní na naši realizaci.",
   },
   {
     q: "Mohu objednávku zrušit?",
-    a: "Ano, <strong>do&nbsp;potvrzení rozsahu a&nbsp;vystavení faktury</strong> bez problémů. Jakmile je rozsah potvrzen a&nbsp;audit zahájen, jde o&nbsp;službu připravovanou na&nbsp;míru a&nbsp;storno řešíme individuálně podle rozpracovanosti.",
+    a: "Ano, **do potvrzení rozsahu a vystavení faktury** bez problémů. Jakmile je rozsah potvrzen a audit zahájen, jde o službu připravovanou na míru a storno řešíme individuálně podle rozpracovanosti.",
   },
   {
     q: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
-    a: "Ano, pokud chcete <strong>nezávislý pohled</strong> na&nbsp;připravenost webu pro&nbsp;AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu &mdash; dává vašemu týmu konkrétní priority, které může zapracovat. Výstup můžete předat internímu týmu, copywriterovi, vývojáři nebo stávající agentuře.",
+    a: "Ano, pokud chcete **nezávislý pohled** na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Výstup můžete předat internímu týmu, copywriterovi, vývojáři nebo stávající agentuře.",
   },
   {
     q: "Co když audit neodhalí zásadní problém?",
-    a: "I&nbsp;to je užitečný výsledek. Získáte <strong>potvrzení</strong>, že technika, obsah a&nbsp;důvěryhodnost nejsou hlavní brzda, a&nbsp;doporučíme, kam zaměřit další úsilí. V&nbsp;praxi ale ve&nbsp;většině auditů nacházíme kombinaci technických, obsahových i&nbsp;důvěryhodnostních rezerv.",
+    a: "I to je užitečný výsledek. Získáte **potvrzení**, že technika, obsah a důvěryhodnost nejsou hlavní brzda, a doporučíme, kam zaměřit další úsilí. V praxi ale ve většině auditů nacházíme kombinaci technických, obsahových i důvěryhodnostních rezerv.",
   },
   {
-    q: "Můžu se na&nbsp;něco zeptat předem?",
-    a: 'Samozřejmě. Napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá 10&minus;17). Pokud preferujete nezávazně probrat situaci, ozvěte se přes&nbsp;<a href="/kontakt/">kontaktní formulář</a>.',
+    q: "Můžu se na něco zeptat předem?",
+    a: "Samozřejmě. Napište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz) nebo zavolejte [+420 775 181 634](tel:+420775181634) (Po–Pá 10–17). Pokud preferujete nezávazně probrat situaci, ozvěte se přes [kontaktní formulář](/kontakt/).",
   },
 ];
 

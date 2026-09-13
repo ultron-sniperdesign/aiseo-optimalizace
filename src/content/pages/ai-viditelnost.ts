@@ -179,7 +179,7 @@ export const finalCta = {
 /** FAQ (→ FAQPage JSON-LD). Fráze v otázkách záměrně kopírují fan-out
  * dotazy z režimu AI (GSC: „měření ai viditelnosti“, „nástroj pro ai
  * viditelnost“, „kde koupit služby pro optimalizaci viditelnosti v ai“).
- * Odpovědi smí nést mini markdown — vykreslují se přes renderFaqMarkdown. */
+ * Odpovědi smí nést mini markdown — vykresluje je komponenta Faq. */
 export const faq = [
   {
     q: "Co je AI viditelnost?",
@@ -214,6 +214,10 @@ export const faq = [
     a: "Odpovědi AI se liší mezi pokusy, mezi uživateli i v čase — i na stejný dotaz. Jeden test proto nic nedokazuje; sledujte průměr opakovaných běhů. Víc v článcích o [kolísání odpovědí](/blog/volatilita-ai-odpovedi/) a [personalizaci](/blog/personalizace-ai-odpovedi/).",
   },
 ];
+
+/** Nadpis FAQ — H2 s konvencí webu (span.hl + strong). */
+export const faqTitleHtml =
+  'Na co se k <span class="hl">těm číslům</span> <strong>nejčastěji ptáte</strong>';
 
 /** Transparentní poznámka pod čarou. */
 export const disclaimer =

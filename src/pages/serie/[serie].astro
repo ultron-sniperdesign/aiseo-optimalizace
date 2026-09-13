@@ -7,6 +7,7 @@
  * neklikatelná sekce „Připravujeme".
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import AuthorByline from "~/components/article/AuthorByline.astro";
 import { existsSync } from "node:fs";
@@ -15,7 +16,7 @@ import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { SERIES, SERIES_BASE } from "~/i18n/series";
 import { czDate } from "~/lib/date";
-import { buildPersonRef, faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
+import { buildPersonRef, renderFaqMarkdown } from "~/lib/jsonld";
 
 export async function getStaticPaths() {
   return SERIES.map((s) => ({ params: { serie: s.slug }, props: { s } }));
@@ -96,24 +97,12 @@ const collectionJsonLd = {
   ...(newestUpdated ? { dateModified: newestUpdated } : {}),
 };
 
-/** FAQPage — jen pro strojovou čitelnost; odznaky za FAQ Google zrušil 7. 5. 2026. */
-const faqJsonLd = s.faq?.length
-  ? {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: s.faq.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: faqPlainText(item.a) },
-      })),
-    }
-  : null;
 ---
 
 <BaseLayout
   title={s.seoTitle ?? s.title}
   description={s.description}
-  jsonLd={faqJsonLd ? [collectionJsonLd, faqJsonLd] : collectionJsonLd}
+  jsonLd={collectionJsonLd}
   image={heroImage}
   breadcrumb={[
     { label: ui.crumbBlog, href: "/blog/" },
@@ -253,19 +242,13 @@ const faqJsonLd = s.faq?.length
     )}
 
     {s.faq && s.faq.length > 0 && (
-      <section class="se-block" aria-labelledby="se-faq-title">
-        <h2 class="se-block__title" id="se-faq-title">{ui.faqEyebrow}</h2>
-        <dl class="se-faq">
-          {s.faq.map((item, i) => (
-            <div class="se-faq__item">
-              <dt class="se-faq__q">
-                <span class="se-faq__num">{String(i + 1).padStart(2, "0")}</span>
-                <span>{item.q}</span>
-              </dt>
-              <dd class="se-faq__a" set:html={renderFaqMarkdown(item.a)} />
-            </div>
-          ))}
-        </dl>
+      <section class="se-block">
+        <Faq
+          items={s.faq}
+          eyebrowNum={ui.faqEyebrowNum}
+          eyebrow={ui.faqEyebrow}
+          titleHtml={ui.seriesFaqTitleHtml}
+        />
       </section>
     )}
 
@@ -297,7 +280,7 @@ const faqJsonLd = s.faq?.length
 <style>
   /* FreeStrip má vlastní rám sekce; tenhle obal už odsazení aplikoval,
      takže ho komponentě vypneme, ať se nesečte dvakrát. */
-  .se { --free-strip-px: 0; }
+  .se { --free-strip-px: 0; --faq-px: 0; --faq-my: 0; }
   .se {
     --d: var(--color-seo);
     --d-tint: var(--color-seo-tint);
@@ -631,40 +614,8 @@ const faqJsonLd = s.faq?.length
   }
   .se-related__links a:hover,
   .se-related__links a:focus-visible { text-decoration: underline; }
-  .se-faq { margin: 0; }
-  .se-faq__item {
-    border-top: 1px solid var(--color-rule);
-    padding: 1.125rem 0;
-  }
-  .se-faq__q {
-    display: flex;
-    gap: 0.75rem;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    color: var(--color-ink);
-  }
-  .se-faq__num {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    color: var(--color-accent);
-    flex-shrink: 0;
-  }
-  .se-faq__a {
-    margin: 0.5rem 0 0 2.0625rem;
-    font-family: var(--font-sans);
-    color: var(--color-ink-muted);
-    line-height: 1.65;
-    max-width: var(--w-read);
-  }
   /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
-  .se-faq__a :global(a),
-  .se-cta__lead :global(a) {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .se-faq__a :global(strong),
-  .se-cta__lead :global(strong) { font-weight: 600; color: var(--color-ink); }
+  
   .se-answer__intro {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
@@ -733,4 +684,12 @@ const faqJsonLd = s.faq?.length
     text-decoration: none;
   }
   .se-back__link:hover { text-decoration: underline; }
+  /* Obnoveno: část seskupeného pravidla, které sdílelo deklarace se
+     smazaným FAQ selektorem (migrace na komponentu Faq). */
+  .se-cta__lead :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .se-cta__lead :global(strong) { font-weight: 600; color: var(--color-ink); }
 </style>

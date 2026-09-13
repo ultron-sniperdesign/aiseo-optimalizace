@@ -12,7 +12,8 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
-import { buildPersonRef, faqPlainText } from "~/lib/jsonld";
+import { buildPersonRef } from "~/lib/jsonld";
+import Faq from "~/components/blocks/Faq.astro";
 import type { GetStaticPaths } from "astro";
 import { czDate } from "~/lib/date";
 
@@ -98,22 +99,6 @@ const articleJsonLd = {
     : {}),
 };
 
-const faqJsonLd =
-  entry.data.faq && entry.data.faq.length > 0
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: entry.data.faq.map((item) => ({
-          "@type": "Question",
-          name: item.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faqPlainText(item.a),
-          },
-        })),
-      }
-    : undefined;
-
 const howToJsonLd = entry.data.howto
   ? {
       "@context": "https://schema.org",
@@ -130,7 +115,6 @@ const howToJsonLd = entry.data.howto
 
 const allLd: Record<string, unknown>[] = [
   articleJsonLd,
-  faqJsonLd,
   howToJsonLd,
 ].filter(Boolean) as Record<string, unknown>[];
 
@@ -230,24 +214,12 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
     <!-- FAQ -->
     {
       entry.data.faq && entry.data.faq.length > 0 && (
-        <section class="faq" aria-labelledby="faq-title">
-          <header class="faq__head">
-            <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
-            <h2 id="faq-title" class="faq__title" set:html={ui.blogFaqTitleHtml} />
-          </header>
-
-          <dl class="faq__list">
-            {entry.data.faq.map((item, i) => (
-              <div class="faq__item">
-                <dt class="faq__q">
-                  <span class="faq__q-num">{i + 1}</span>
-                  <span>{item.q}</span>
-                </dt>
-                <dd class="faq__a">{item.a}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+        <Faq
+          items={entry.data.faq}
+          eyebrowNum={ui.faqEyebrowNum}
+          eyebrow={ui.faqEyebrow}
+          titleHtml={ui.blogFaqTitleHtml}
+        />
       )
     }
 
@@ -578,65 +550,6 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
   .eyebrow__num {
     color: var(--d);
     font-weight: 600;
-  }
-
-  /* ===== FAQ ===== */
-  .faq {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
-  }
-  .faq__head {
-    max-width: 50rem;
-    margin-bottom: clamp(2rem, 4vw, 3rem);
-  }
-  .faq__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 250;
-    letter-spacing: -0.025em;
-    margin: 0.75rem 0 0;
-    color: var(--color-ink);
-    line-height: 1.1;
-  }
-  .faq__title strong {
-    font-weight: 600;
-    color: var(--d);
-  }
-  .faq__list {
-    max-width: 60rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .faq__item {
-    border-top: 1px solid var(--color-rule);
-    padding-top: 1.5rem;
-  }
-  .faq__q {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    margin-bottom: 0.625rem;
-    display: flex;
-    gap: 0.875rem;
-    align-items: baseline;
-    line-height: 1.35;
-  }
-  .faq__q-num {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--d);
-    flex-shrink: 0;
-  }
-  .faq__a {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--color-ink-muted);
-    margin: 0 0 0 1.875rem;
   }
 
   /* ===== BACK CTA ===== */

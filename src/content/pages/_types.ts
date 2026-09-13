@@ -22,22 +22,18 @@ export interface PageMeta {
   ogImage: string;
 }
 
-/** FAQ položka — renderuje se do HTML i do FAQPage JSON-LD (jeden zdroj). */
+/**
+ * FAQ položka — jediný typ pro FAQ na celém webu. Vykresluje ji výhradně
+ * komponenta `components/blocks/Faq.astro`, která z téže položky složí
+ * viditelný text i FAQPage JSON-LD.
+ */
 export interface FaqItem {
   q: string;
-  /** Plain text (bez HTML) — JSON-LD acceptedAnswer nesmí mít markup. */
-  a: string;
-}
-
-/**
- * FAQ položka pro HTML render s inline markupem v odpovědi (<strong>, <a>, &nbsp;).
- * POZOR: NEpoužívat přímo pro JSON-LD acceptedAnswer (ten markup nesmí mít) —
- * stránky s rich FAQ drží JSON-LD jako samostatný plain-text zdroj.
- */
-export interface RichFaqItem {
-  /** Otázka. Smí obsahovat entity (&nbsp;). */
-  q: string;
-  /** Odpověď. Smí obsahovat inline HTML. */
+  /**
+   * Mini markdown: `**tučné**`, `` `kód` ``, `[odkaz](/url/)`. Komponenta ho pro
+   * zobrazení převede na HTML a pro JSON-LD odstraní. Nepiš HTML ani entity
+   * (`&nbsp;` by se vypsalo doslova) — použij přímo znak.
+   */
   a: string;
 }
 

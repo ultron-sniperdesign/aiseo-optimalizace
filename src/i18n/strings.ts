@@ -428,6 +428,13 @@ export const ui = {
   // Blog reading page [slug] (non-rich) — FAQ titulek (set:html)
   blogFaqTitleHtml:
     '<span class="hl">Časté otázky</span>, které k tématu <strong>nejčastěji padají</strong>',
+  // Detail služby /sluzby/<slug>/ — FAQ titulek (set:html). Dřív zadrátovaný
+  // v šabloně bez span.hl — porušoval konvenci H2 i model mutací.
+  serviceFaqTitleHtml:
+    'Otázky, které se k <span class="hl">této službě</span> <strong>nejčastěji ptají</strong>',
+  // Landing série — FAQ titulek (set:html)
+  seriesFaqTitleHtml:
+    'Na co se k <span class="hl">sérii</span> <strong>nejčastěji ptáte</strong>',
   // Blog index — FAQ titulek (set:html)
   blogIndexFaqTitleHtml:
     'Šest otázek, které k <span class="hl">blogu</span> <strong>nejčastěji padají</strong>',

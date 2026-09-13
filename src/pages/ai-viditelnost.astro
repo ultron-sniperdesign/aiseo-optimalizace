@@ -8,19 +8,17 @@
  * tokeny webu; tmavý hero je stejná rodina jako ProofStrip panel.
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import DataBars from "~/components/blocks/DataBars.astro";
 import * as p from "~/content/pages/ai-viditelnost";
-import { buildFaqJsonLd, renderFaqMarkdown } from "~/lib/jsonld";
 import { czDate } from "~/lib/date";
 import { ui } from "~/i18n/strings";
 
-const faqJsonLd = buildFaqJsonLd(p.faq);
 ---
 
 <BaseLayout
   title={p.meta.title}
   description={p.meta.description}
-  jsonLd={faqJsonLd}
   image="/og/ai-viditelnost.jpg"
   dateModified={p.meta.updated}
   breadcrumb={[{ label: "AI viditelnost", href: "/ai-viditelnost/" }]}
@@ -199,26 +197,15 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
       </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
-    <section class="aiv-faq" aria-labelledby="aiv-faq-title">
-      <header class="aiv-head">
-        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-        <h2 id="aiv-faq-title" class="aiv-title">Na co se k těm číslům ptáte</h2>
-      </header>
-      <dl class="aiv-faq__list">
-        {
-          p.faq.map((item, i) => (
-            <div class="aiv-faq__item">
-              <dt class="aiv-faq__q">
-                <span class="aiv-faq__q-num">{i + 1}</span>
-                <span>{item.q}</span>
-              </dt>
-              <dd class="aiv-faq__a" set:html={renderFaqMarkdown(item.a)} />
-            </div>
-          ))
-        }
-      </dl>
-      <p class="aiv-disclaimer">{p.disclaimer}</p>
+    <!-- ===== FAQ + poznámka pod čarou ===== -->
+    <section class="aiv-faq-wrap">
+      <Faq
+        items={p.faq}
+        eyebrowNum="FAQ"
+        eyebrow="Časté otázky"
+        titleHtml={p.faqTitleHtml}
+      />
+      <div class="aiv-disclaimer"><p>{p.disclaimer}</p></div>
     </section>
   </div>
 </BaseLayout>
@@ -386,13 +373,6 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
   }
   /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
   .aiv-answer__text :global(strong) { font-weight: 600; }
-  .aiv-answer__text :global(a),
-  .aiv-faq__a :global(a) {
-    color: var(--d);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .aiv-faq__a :global(strong) { font-weight: 600; color: var(--color-ink); }
   .aiv-answer__terms {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -634,54 +614,27 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
   }
 
   /* ===== FAQ ===== */
-  .aiv-faq {
-    margin: clamp(3rem, 7vw, 5rem) auto;
-  }
-  .aiv-faq__list {
-    max-width: 52rem;
-    margin: 1.75rem auto 0;
-    padding: 0 var(--space-section-x);
-  }
-  .aiv-faq__item {
-    border-bottom: 1px solid var(--color-rule);
-    padding: 1.25rem 0;
-  }
-  .aiv-faq__q {
-    display: flex;
-    gap: 0.85rem;
-    font-family: var(--font-sans);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--color-ink);
-  }
-  .aiv-faq__q-num {
-    flex-shrink: 0;
-    width: 1.7rem;
-    height: 1.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--color-seo-tint);
-    color: var(--color-seo);
-    font-size: 0.85rem;
-  }
-  .aiv-faq__a {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--color-ink-muted);
-    margin: 0.6rem 0 0 2.55rem;
-  }
+  
+  /* Stejný rám jako komponenta FAQ, text na čitelné šířce — dřív byl
+     vycentrovaný (52rem) a vedle zarovnaného FAQ by visel mimo osu. */
   .aiv-disclaimer {
-    max-width: 52rem;
-    margin: 2rem auto 0;
-    padding: 0 var(--space-section-x);
+    max-width: var(--max-section);
+    margin: 1.5rem auto 0;
+    padding-inline: var(--space-section-x);
+  }
+  .aiv-disclaimer p {
+    max-width: var(--w-read);
+    margin: 0;
     font-family: var(--font-sans);
     font-size: 0.8rem;
     line-height: 1.6;
     font-style: italic;
     color: var(--color-ink-faint);
+  }
+  /* Obal řídí svislý rytmus stránky; komponentě vlastní odstup vypneme. */
+  .aiv-faq-wrap {
+    margin: clamp(3rem, 7vw, 5rem) auto;
+    --faq-my: 0;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -694,5 +647,12 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
     .aiv-how__list {
       grid-template-columns: 1fr;
     }
+  }
+  /* Obnoveno: část seskupeného pravidla, které sdílelo deklarace se
+     smazaným FAQ selektorem (migrace na komponentu Faq). */
+  .aiv-answer__text :global(a) {
+    color: var(--d);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>

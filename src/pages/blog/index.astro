@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-import { faqPlainText } from "~/lib/jsonld";
+import Faq from "~/components/blocks/Faq.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
@@ -107,17 +107,7 @@ const breadcrumbJsonLd = {
   ],
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faq.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: faqPlainText(item.a) },
-  })),
-};
-
-const allLd = [blogJsonLd, itemListJsonLd, breadcrumbJsonLd, faqJsonLd];
+const allLd = [blogJsonLd, itemListJsonLd, breadcrumbJsonLd];
 
 /** Answer block — obsah v datovém modulu. */
 const answerText = blogPage.answerText;
@@ -240,24 +230,12 @@ const answerText = blogPage.answerText;
     <SniperDesignSmallContact />
 
     <!-- FAQ -->
-    <section class="faq" aria-labelledby="faq-title">
-      <header class="faq__head">
-        <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
-        <h2 id="faq-title" class="faq__title" set:html={ui.blogIndexFaqTitleHtml} />
-      </header>
-
-      <dl class="faq__list">
-        {faq.map((item, i) => (
-          <div class="faq__item">
-            <dt class="faq__q">
-              <span class="faq__q-num">{i + 1}</span>
-              <span>{item.q}</span>
-            </dt>
-            <dd class="faq__a">{item.a}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
+    <Faq
+      items={faq}
+      eyebrowNum={ui.faqEyebrowNum}
+      eyebrow={ui.faqEyebrow}
+      titleHtml={ui.blogIndexFaqTitleHtml}
+    />
   </div>
 </BaseLayout>
 
@@ -624,15 +602,7 @@ const answerText = blogPage.answerText;
   }
 
   /* ===== FAQ (sjednocený s article pages) ===== */
-  .faq {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: clamp(2rem, 4vw, 3rem) var(--space-section-x) clamp(4rem, 8vw, 6rem);
-  }
-  .faq__head {
-    max-width: 50rem;
-    margin-bottom: clamp(2rem, 4vw, 3rem);
-  }
+  
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -647,49 +617,5 @@ const answerText = blogPage.answerText;
   .eyebrow__num {
     color: var(--d);
     font-weight: 600;
-  }
-  .faq__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 250;
-    letter-spacing: -0.025em;
-    margin: 0.75rem 0 0;
-    color: var(--color-ink);
-    line-height: 1.1;
-  }
-  .faq__list {
-    max-width: 60rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .faq__item {
-    border-top: 1px solid var(--color-rule);
-    padding-top: 1.5rem;
-  }
-  .faq__q {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    margin-bottom: 0.625rem;
-    display: flex;
-    gap: 0.875rem;
-    align-items: baseline;
-    line-height: 1.35;
-  }
-  .faq__q-num {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--d);
-    flex-shrink: 0;
-  }
-  .faq__a {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--color-ink-muted);
-    margin: 0 0 0 1.875rem;
   }
 </style>

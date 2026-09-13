@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import * as p from "~/content/pages/audit";
 import ExitRescue from "~/components/blocks/ExitRescue.astro";
 ---
@@ -7,7 +8,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
 <BaseLayout
   title={p.meta.title}
   description={p.meta.description}
-  jsonLd={[p.serviceJsonLd, p.faqJsonLd]}
+  jsonLd={[p.serviceJsonLd]}
   image="/og/audit.jpg"
   breadcrumb={[{ label: "AI SEO audit", href: "/audit/" }]}
 >
@@ -313,20 +314,13 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     </section>
 
     <!-- ===== 04 FAQ ===== -->
-    <section class="lp-section lp-section--alt">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{p.faqHead.eyebrowNum}</span> {p.faqHead.eyebrow}</span>
-        <h2 class="lp-section__title" set:html={p.faqHead.title}></h2>
-      </header>
-
-      <dl class="audit-faq">
-        {p.faq.map((item) => (
-          <div>
-            <dt set:html={item.q}></dt>
-            <dd set:html={item.a}></dd>
-          </div>
-        ))}
-      </dl>
+    <section class="lp-section lp-section--alt lp-section--faq">
+      <Faq
+        items={p.faq}
+        eyebrowNum={p.faqHead.eyebrowNum}
+        eyebrow={p.faqHead.eyebrow}
+        titleHtml={p.faqHead.title}
+      />
     </section>
 
     <!-- ===== FINAL CTA — opakování pro návštěvníky co projeli celou stránku ===== -->
@@ -1132,6 +1126,10 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     margin: 0 auto;
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
   }
+  /* FAQ komponenta má vlastní svislý odstup; sekce ho už dává paddingem. */
+  .lp-section--faq {
+    --faq-my: 0;
+  }
   .lp-section--alt {
     background: var(--color-paper-deep);
     max-width: none;
@@ -1430,42 +1428,8 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
   .audit-compare__cta--accent:hover { background: color-mix(in oklch, var(--lp-magenta) 85%, black); }
 
   /* ===== FAQ ===== */
-  .audit-faq {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 48rem;
-    margin: 0;
-  }
-  @media (min-width: 768px) {
-    .audit-faq { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  }
-  .audit-faq > div {
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-radius: 10px;
-    padding: 1.25rem 1.375rem 1.125rem;
-  }
-  .audit-faq dt {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    margin: 0 0 0.5rem;
-    line-height: 1.35;
-  }
-  .audit-faq dd {
-    font-size: 0.875rem;
-    line-height: 1.55;
-    color: var(--color-ink-muted);
-    margin: 0;
-  }
-  .audit-faq dd :global(a) {
-    color: var(--lp-violet);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .audit-faq dd :global(strong) { color: var(--color-ink); font-weight: 600; }
+  
+  
 
   /* ===== ORDER FORM ===== */
   .audit-form {

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import * as p from "~/content/pages/pack";
 import ExitRescue from "~/components/blocks/ExitRescue.astro";
@@ -8,7 +9,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
 <BaseLayout
   title={p.meta.title}
   description={p.meta.description}
-  jsonLd={[p.productJsonLd, p.faqJsonLd]}
+  jsonLd={[p.productJsonLd]}
   image="/og/pack.jpg"
   ogType="product"
   breadcrumb={[{ label: "AI SEO Wireframe Pack", href: "/pack/" }]}
@@ -307,23 +308,13 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     <SniperDesignSmallContact />
 
     <!-- ===== FAQ ===== -->
-    <section class="lp-section lp-section--alt">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{p.faqHead.eyebrowNum}</span> {p.faqHead.eyebrow}</span>
-        <h2 class="lp-section__title" set:html={p.faqHead.title}></h2>
-      </header>
-
-      <dl class="lp-faq">
-        {p.faqJsonLd.mainEntity.map((q, i) => (
-          <div class="lp-faq__item">
-            <dt class="lp-faq__q">
-              <span class="lp-faq__q-num">{String(i + 1).padStart(2, "0")}</span>
-              <span>{q.name}</span>
-            </dt>
-            <dd class="lp-faq__a">{q.acceptedAnswer.text}</dd>
-          </div>
-        ))}
-      </dl>
+    <section class="lp-section lp-section--alt lp-section--faq">
+      <Faq
+        items={p.faq}
+        eyebrowNum={p.faqHead.eyebrowNum}
+        eyebrow={p.faqHead.eyebrow}
+        titleHtml={p.faqHead.title}
+      />
     </section>
 
     <!-- ===== Mobile sticky CTA bar — viditelný po opuštění hero =====
@@ -399,6 +390,12 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-x);
+  }
+  /* FAQ komponenta má vlastní svislý odstup; sekce ho už dává paddingem. */
+  
+  /* FAQ komponenta má vlastní svislý odstup; sekce ho už dává paddingem. */
+  .lp-section--faq {
+    --faq-my: 0;
   }
   .lp-section--alt {
     background: var(--color-paper-deep);
@@ -1465,44 +1462,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     font-weight: 600;
   }
   /* ===== FAQ (sdílený s /navod-zdarma/) ===== */
-  .lp-faq {
-    max-width: 60rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .lp-faq__item {
-    border-top: 1px solid var(--color-rule);
-    padding-top: 1.5rem;
-  }
-  .lp-faq__q {
-    font-family: var(--font-sans);
-    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
-    margin: 0 0 0.625rem;
-    display: flex;
-    gap: 0.75rem;
-  }
-  .lp-faq__q-num {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--lp-violet);
-    flex: none;
-    padding-top: 0.125rem;
-  }
-  .lp-faq__a {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--color-ink-muted);
-    margin: 0;
-    padding-left: 2.25rem;
-  }
+  
 
   /* ===== Final CTA ===== */
   .pack-final {

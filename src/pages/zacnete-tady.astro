@@ -7,11 +7,12 @@
  * FAQPage; breadcrumb přes BaseLayout.
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Faq from "~/components/blocks/Faq.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { ui } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 import * as p from "~/content/pages/zacnete-tady";
-import { buildPersonRef, faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
+import { buildPersonRef, renderFaqMarkdown } from "~/lib/jsonld";
 import { czDate } from "~/lib/date";
 import { getCollection } from "astro:content";
 import { groups as glossaryGroups } from "~/content/pages/slovnik";
@@ -58,21 +59,12 @@ const howtoJsonLd = {
   publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: p.faq.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: faqPlainText(item.a) },
-  })),
-};
 ---
 
 <BaseLayout
   title={p.meta.title}
   description={p.meta.description}
-  jsonLd={[howtoJsonLd, faqJsonLd]}
+  jsonLd={[howtoJsonLd]}
   image="/og/zacnete-tady.jpg"
   breadcrumb={[{ label: p.hero.eyebrow, href: "/zacnete-tady/" }]}
 >
@@ -180,32 +172,19 @@ const faqJsonLd = {
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section class="st-faq" aria-labelledby="faq-title">
-      <header class="st-faq__head">
-        <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
-        <h2 id="faq-title" class="st-faq__title">Otázky těch, kdo začínají</h2>
-      </header>
-      <dl class="st-faq__list">
-        {
-          p.faq.map((item, i) => (
-            <div class="st-faq__item">
-              <dt class="st-faq__q">
-                <span class="st-faq__q-num">{i + 1}</span>
-                <span>{item.q}</span>
-              </dt>
-              <dd class="st-faq__a" set:html={renderFaqMarkdown(item.a)}></dd>
-            </div>
-          ))
-        }
-      </dl>
-    </section>
+    <Faq
+      items={p.faq}
+      eyebrowNum={ui.faqEyebrowNum}
+      eyebrow={ui.faqEyebrow}
+      titleHtml={p.faqTitleHtml}
+    />
   </div>
 </BaseLayout>
 
 <style>
   /* FreeStrip má vlastní rám sekce; tenhle obal už odsazení aplikoval,
      takže ho komponentě vypneme, ať se nesečte dvakrát. */
-  .st { --free-strip-px: 0; }
+  .st { --free-strip-px: 0; --faq-px: 0; }
   .st {
     max-width: var(--max-section);
     margin: 0 auto;
@@ -469,20 +448,6 @@ const faqJsonLd = {
   }
   /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
   .st-cta__lead :global(strong) { font-weight: 600; }
-  .st-cta__lead :global(a),
-  .st-faq__a :global(a) {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .st-faq__a :global(code) {
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-    background: var(--color-paper-deep, var(--color-paper));
-    border: 1px solid var(--color-rule);
-    border-radius: 4px;
-    padding: 0.1em 0.35em;
-  }
   .st-role__title {
     font-family: var(--font-sans);
     font-size: 1.05rem;
@@ -542,43 +507,12 @@ const faqJsonLd = {
   .st-cta__btn:hover { background: var(--color-accent); }
 
   /* ===== FAQ ===== */
-  .st-faq {
-    margin-top: clamp(2.5rem, 6vw, 4rem);
-  }
-  .st-faq__head { margin-bottom: 1.5rem; }
-  .st-faq__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--color-ink);
-    margin: 0.75rem 0 0;
-  }
-  .st-faq__list { margin: 0; }
-  .st-faq__item {
-    border-top: 1px solid var(--color-rule);
-    padding: 1.25rem 0;
-  }
-  .st-faq__q {
-    display: flex;
-    gap: 0.9rem;
-    align-items: baseline;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 1.05rem;
-    color: var(--color-ink);
-    margin-bottom: 0.5rem;
-  }
-  .st-faq__q-num {
-    flex: none;
-    font-size: 0.8rem;
+  
+  /* Obnoveno: část seskupeného pravidla, které sdílelo deklarace se
+     smazaným FAQ selektorem (migrace na komponentu Faq). */
+  .st-cta__lead :global(a) {
     color: var(--color-accent);
-  }
-  .st-faq__a {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--color-ink-muted);
-    margin: 0 0 0 1.9rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>

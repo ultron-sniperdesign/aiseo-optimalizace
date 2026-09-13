@@ -14,6 +14,7 @@
  */
 
 import type { PageMeta } from "~/content/pages/_types";
+import type { FaqItem } from "~/content/pages/_types";
 
 export const meta: PageMeta = {
   title: "Kontakt — Sniper Design, agentura která provozuje aiseo-optimalizace.cz",
@@ -258,32 +259,30 @@ export const paths = {
 /** Sekce 04 — FAQ (scam-prevention pojistka). */
 export const faq = {
   eyebrowNum: "04",
-  eyebrowHtml: "Časté otázky",
-  titleHtml: "Než si <strong>koupíte Pack</strong>",
+  eyebrow: "Časté otázky",
+  /** H2 s konvencí webu — span.hl + strong. */
+  titleHtml: 'Než si <strong>koupíte</strong> <span class="hl">Pack</span>',
   leadHtml:
     "Pokud jste si potřebovali hlavně ověřit, komu byste za&nbsp;Pack platili: provozovatelem je <strong>CPU s.r.o.</strong>, běžně dohledatelná česká firma za&nbsp;agenturou Sniper Design.",
+  /** Položky v mini markdownu; viditelný text i FAQPage z nich skládá komponenta Faq. */
   items: [
     {
-      qHtml: "Kdo Pack vytvořil?",
-      aHtml:
-        "Tým Sniper Design &mdash; lidé, kteří dělají SEO, UX a&nbsp;strukturu e-shopů jako placené zakázky pro klienty. Pack vychází z&nbsp;reálných úprav, ne&nbsp;z&nbsp;teoretických návodů.",
+      q: "Kdo Pack vytvořil?",
+      a: "Tým Sniper Design — lidé, kteří dělají SEO, UX a strukturu e-shopů jako placené zakázky pro klienty. Pack vychází z reálných úprav, ne z teoretických návodů.",
     },
     {
-      qHtml: "Komu platím a&nbsp;dostanu fakturu?",
-      aHtml:
-        'Platíte <strong>CPU s.r.o.</strong> (IČO 08125163, plátce DPH). Faktura dorazí samostatně po&nbsp;platbě. Pokud nemáte fakturu do&nbsp;24&nbsp;hodin, napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.',
+      q: "Komu platím a dostanu fakturu?",
+      a: "Platíte **CPU s.r.o.** (IČO 08125163, plátce DPH). Faktura dorazí samostatně po platbě. Pokud nemáte fakturu do 24 hodin, napište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz).",
     },
     {
-      qHtml: "Můžu se ozvat, když si&nbsp;nebudu vědět rady?",
-      aHtml:
-        'Ano. Pack obsahuje detailní kapitolu „Aplikace na&nbsp;váš web\" se&nbsp;všemi postupy. Pokud i&nbsp;tak narazíte, pište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> &mdash; odpovídáme do&nbsp;24&nbsp;hodin v&nbsp;pracovní dny.',
+      q: "Můžu se ozvat, když si nebudu vědět rady?",
+      a: "Ano. Pack obsahuje detailní kapitolu „Aplikace na váš web“ se všemi postupy. Pokud i tak narazíte, pište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz) — odpovídáme do 24 hodin v pracovní dny.",
     },
     {
-      qHtml: "Je Pack vhodný pro Upgates, Shoptet i&nbsp;WordPress?",
-      aHtml:
-        "Ano. Pack je platformově neutrální &mdash; wireframy, texty a&nbsp;ukázky strukturovaných dat aplikujete na&nbsp;libovolný systém. Kapitola „Aplikace na&nbsp;váš web\" má samostatný checklist pro Upgates, Shoptet, WordPress i&nbsp;custom weby.",
+      q: "Je Pack vhodný pro Upgates, Shoptet i WordPress?",
+      a: "Ano. Pack je platformově neutrální — wireframy, texty a ukázky strukturovaných dat aplikujete na libovolný systém. Kapitola „Aplikace na váš web“ má samostatný checklist pro Upgates, Shoptet, WordPress i custom weby.",
     },
-  ],
+  ] as FaqItem[],
 };
 
 /** Sekce 05 — Přímé kontakty + fakturace. */
