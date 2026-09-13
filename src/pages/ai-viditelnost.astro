@@ -1,6 +1,6 @@
 ---
 /**
- * /ai-viditelnost/ — landing „200 000 zobrazení v AI odpovědích Googlu".
+ * /ai-viditelnost/ — prodejní stránka „200 000 zobrazení v Přehledu od AI“.
  *
  * Marketingová landing nad reálnými daty (GSC screenshoty + čísla z case
  * study MEGA DETAIL). Cíl ProofStrip komponenty napříč webem. Texty:
@@ -10,7 +10,9 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import DataBars from "~/components/blocks/DataBars.astro";
 import * as p from "~/content/pages/ai-viditelnost";
-import { buildFaqJsonLd } from "~/lib/jsonld";
+import { buildFaqJsonLd, renderFaqMarkdown } from "~/lib/jsonld";
+import { czDate } from "~/lib/date";
+import { ui } from "~/i18n/strings";
 
 const faqJsonLd = buildFaqJsonLd(p.faq);
 ---
@@ -20,6 +22,7 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
   description={p.meta.description}
   jsonLd={faqJsonLd}
   image="/og/ai-viditelnost.jpg"
+  dateModified={p.meta.updated}
   breadcrumb={[{ label: "AI viditelnost", href: "/ai-viditelnost/" }]}
 >
   <div class="aiv">
@@ -29,6 +32,9 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
         <span class="aiv-hero__eyebrow">{p.hero.eyebrow}</span>
         <h1 id="aiv-hero-title" class="aiv-hero__title" set:html={p.hero.titleHtml} />
         <p class="aiv-hero__lead">{p.hero.lead}</p>
+        <p class="aiv-hero__meta">
+          Data: {p.meta.dataPeriod} · {ui.metaUpdated} {czDate(p.meta.updated)}
+        </p>
         <div class="aiv-hero__actions">
           <a class="aiv-cta aiv-cta--light" href={p.hero.ctaPrimary.href}>
             {p.hero.ctaPrimary.label}
@@ -38,6 +44,23 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
             {p.hero.ctaSecondary.label}
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== KRÁTKÁ ODPOVĚĎ + tři pojmy, které se pletou ===== -->
+    <section class="aiv-answer">
+      <div class="aiv-answer__inner">
+        <span class="aiv-answer__mark">{p.answer.mark}</span>
+        <p class="aiv-answer__text" set:html={p.answer.text} />
+        <dl class="aiv-answer__terms">
+          {p.answer.distinctions.map((d) => (
+            <div class="aiv-answer__term">
+              <dt>{d.term}</dt>
+              <dd>{d.text}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="aiv-answer__note">{p.answer.distinctionsNote}</p>
       </div>
     </section>
 
@@ -137,6 +160,27 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
       </p>
     </section>
 
+    <!-- ===== JAK SE TO MĚŘÍ — tři vrstvy ===== -->
+    <section class="aiv-measure" aria-labelledby="aiv-measure-title">
+      <header class="aiv-head">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> {p.measure.eyebrow}</span>
+        <h2 id="aiv-measure-title" class="aiv-title">{p.measure.title}</h2>
+      </header>
+      <div class="aiv-measure__grid">
+        {p.measure.layers.map((layer) => (
+          <article class="aiv-measure__card">
+            <h3 class="aiv-measure__name">{layer.name}</h3>
+            <p class="aiv-measure__text">{layer.text}</p>
+            <ul class="aiv-measure__links">
+              {layer.links.map((l) => (
+                <li><a href={l.href}>{l.label} <span aria-hidden="true">→</span></a></li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
     <!-- ===== FINÁLNÍ CTA ===== -->
     <section class="aiv-final" aria-labelledby="aiv-final-title">
       <div class="aiv-final__inner">
@@ -169,7 +213,7 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
                 <span class="aiv-faq__q-num">{i + 1}</span>
                 <span>{item.q}</span>
               </dt>
-              <dd class="aiv-faq__a">{item.a}</dd>
+              <dd class="aiv-faq__a" set:html={renderFaqMarkdown(item.a)} />
             </div>
           ))
         }
@@ -301,6 +345,131 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
   }
 
   /* ===== SCREENSHOTY ===== */
+  /* ===== Datum a období pod hero ===== */
+  .aiv-hero__meta {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: oklch(0.78 0.02 250);
+    margin: -0.75rem 0 1.75rem;
+  }
+
+  /* ===== Krátká odpověď — stejný rám jako screenshoty (--max-section) ===== */
+  .aiv-answer {
+    max-width: var(--max-section);
+    margin: clamp(2rem, 5vw, 3rem) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .aiv-answer__inner {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 8px;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+  }
+  .aiv-answer__mark {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--d);
+    margin-bottom: 0.5rem;
+  }
+  .aiv-answer__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+    margin: 0;
+    max-width: var(--w-read);
+  }
+  /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
+  .aiv-answer__text :global(strong) { font-weight: 600; }
+  .aiv-answer__text :global(a),
+  .aiv-faq__a :global(a) {
+    color: var(--d);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .aiv-faq__a :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .aiv-answer__terms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0 0;
+  }
+  .aiv-answer__term dt {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+  }
+  .aiv-answer__term dd {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .aiv-answer__note {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    margin: 1rem 0 0;
+  }
+
+  /* ===== Tři vrstvy měření ===== */
+  .aiv-measure {
+    margin: clamp(3rem, 7vw, 5rem) auto;
+  }
+  .aiv-measure__grid {
+    max-width: var(--max-section);
+    margin: 1.75rem auto 0;
+    padding: 0 var(--space-section-x);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .aiv-measure__card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .aiv-measure__name {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .aiv-measure__text {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .aiv-measure__links {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .aiv-measure__links a {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--d);
+    text-decoration: none;
+  }
+  .aiv-measure__links a:hover,
+  .aiv-measure__links a:focus-visible { text-decoration: underline; }
+
   .aiv-shot {
     max-width: var(--max-section);
     margin: clamp(2.5rem, 6vw, 4rem) auto;
@@ -517,7 +686,9 @@ const faqJsonLd = buildFaqJsonLd(p.faq);
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    .aiv-means__grid {
+    .aiv-means__grid,
+    .aiv-measure__grid,
+    .aiv-answer__terms {
       grid-template-columns: 1fr;
     }
     .aiv-how__list {

@@ -1,5 +1,5 @@
 /**
- * ProofStrip — sdílený trust prvek „čeho se dá běžně dosáhnout".
+ * ProofStrip — sdílený prvek důvěry „čeho se dá běžně dosáhnout“.
  *
  * Ověřitelná čísla z vlastních dat (case study MEGA DETAIL) promítaná
  * napříč webem jako tmavý výrazný panel před Sniper Design pitch bloky.
@@ -7,8 +7,8 @@
  * čísla a zdroj jsou sdílená fakta (vlastní e-shop agentury).
  * Při aktualizaci case study aktualizovat i tady.
  *
- * POCTIVOST: vždy „zobrazení" (impressions), nikdy „návštěvy". Čísla jsou
- * z GSC beta reportu „Funkce s generativní AI" (18. 5. – 15. 7. 2026)
+ * POCTIVOST: vždy „zobrazení“ (metrika Search Console), nikdy „návštěvy“. Čísla jsou
+ * z GSC reportu „Funkce s generativní AI“ (18. 5. – 15. 7. 2026)
  * a GA4 (12 měsíců, detail v case study).
  */
 

@@ -9,7 +9,7 @@ tags:
   - "mereni"
   - "eshopy"
 published: "2026-07-17"
-updated: "2026-07-17"
+updated: "2026-09-13"
 keywords:
   - "ai navstevnost eshopu"
   - "chatgpt navstevnost data"
@@ -35,13 +35,13 @@ faq:
   - q: "Proč AI doporučuje e-shop, který AI SEO zatím neřešil?"
     a: "Protože roky staví na tom, co AI systémy vyhledávají přirozeně: edukativní články odpovídající na reálné otázky, strukturované produktové texty, jasnou značku a fyzické důkazy (prodejna, detailingové studio, kurzy). Deset nejnavštěvovanějších stránek z Googlu jsou články, ne produkty."
   - q: "Kolik zobrazení má e-shop v Google AI Overviews?"
-    a: "Podle nového reportu Search Console „Funkce s generativní AI“ (Beta) měl MEGA DETAIL 200 000 zobrazení ve funkcích s generativní AI Googlu za necelé dva měsíce (18. 5. – 15. 7. 2026), v průměru kolem 3 400 denně. Všech deset nejzobrazovanějších stránek jsou edukativní články."
+    a: "Podle reportu Search Console „Funkce s generativní AI“ měl MEGA DETAIL 200 000 zobrazení ve funkcích s generativní AI Googlu za necelé dva měsíce (18. 5. – 15. 7. 2026), v průměru kolem 3 400 denně. Všech deset nejzobrazovanějších stránek jsou edukativní články."
   - q: "Co je „dark AI traffic“?"
     a: "Vliv AI doporučení, který v analytice není vidět jako AI referral. Uživatel si nechá poradit v ChatGPT nebo v AI Overviews, ale pak značku vyhledá v Googlu nebo zadá adresu napřímo — návštěva se započítá jako organic či direct. Měřitelné AI referraly jsou proto spodní odhad skutečného vlivu AI nástrojů."
   - q: "Dají se tahle čísla přenést na jiný e-shop?"
     a: "Řádově ano, přesně ne. Podíl i kvalita AI návštěvnosti závisí na oboru, síle značky a hlavně na tom, jestli web má citovatelný obsah. Vzorec „málo návštěv, vysoká konverze“ se ale opakuje napříč veřejnými analýzami AI návštěvnosti z let 2025–2026."
   - q: "Jak se návštěvnost z AI nástrojů měří?"
-    a: "V GA4 přes dimenzi Zdroj relace: chatgpt.com, perplexity (.ai), gemini.google.com, copilot.com, claude.ai a grok.com. Zobrazení ve funkcích s generativní AI Googlu ukazuje nový beta report Search Console; kliknutí z AI Overviews se ale od běžného organicu stále oddělit nedají — i proto jsou AI referraly spodní odhad."
+    a: "V GA4 přes dimenzi Zdroj relace: chatgpt.com, perplexity (.ai), gemini.google.com, copilot.com, claude.ai a grok.com. Zobrazení ve funkcích s generativní AI Googlu ukazuje report Search Console Funkce s generativní AI (od 31. 8. 2026 pro všechny weby); kliknutí z AI Overviews se ale od běžného organicu stále oddělit nedají — i proto jsou AI referraly spodní odhad."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
@@ -133,10 +133,10 @@ Vedle homepage vedou **edukativní články a stránky, které dokládají, že 
 
 ## Google AI Overviews: 200 tisíc zobrazení za dva měsíce
 
-Referraly jsou ale jen ta viditelná část. Search Console v roce 2026 dostala nový beta report **Funkce s generativní AI** — a ten ukazuje, jak často se web objevuje přímo v AI odpovědích Googlu (AI Overviews a spol.). U MEGA DETAIL: **200 000 zobrazení od 18. května do 15. července 2026**, tedy v průměru kolem **3 400 zobrazení denně**.
+Referraly jsou ale jen ta viditelná část. Search Console v roce 2026 dostala report **Funkce s generativní AI** (od 31. 8. 2026 pro všechny weby) — a ten ukazuje, jak často se web objevuje přímo v odpovědích Googlu, tedy v Přehledu od AI a v režimu AI; report ty dvě funkce nerozlišuje. U MEGA DETAIL: **200 000 zobrazení od 18. května do 15. července 2026**, tedy v průměru kolem **3 400 zobrazení denně**.
 
 <DataBars
-  caption="Nejčastější stránky ve funkcích s generativní AI Googlu — zobrazení (Search Console, Beta, 18. 5. – 15. 7. 2026)"
+  caption="Nejčastější stránky ve funkcích s generativní AI Googlu — zobrazení (Search Console, 18. 5. – 15. 7. 2026)"
   unit="zobrazení"
   tableValueLabel="Zobrazení"
   rows={[
@@ -149,7 +149,7 @@ Referraly jsou ale jen ta viditelná část. Search Console v roce 2026 dostala 
   ]}
 />
 
-Dvě věci stojí za pozornost. Zaprvé objem: e-shop s autokosmetikou je **stotisíckrát za dva měsíce vidět uvnitř AI odpovědí** — to je vrstva viditelnosti, která v GA4 vůbec není vidět, protože zobrazení v AI odpovědi nevyvolá návštěvu. Zadruhé struktura: **všech deset nejzobrazovanějších stránek jsou opět edukativní články**, ne produkty ani homepage. Stejný obsah, který vyhrává klasické vyhledávání, živí i AI odpovědi. Reálné screenshoty ze Search Console k tomuto číslu najdete na stránce [200 000 zobrazení v AI odpovědích](/ai-viditelnost/).
+Dvě věci stojí za pozornost. Zaprvé objem: e-shop s autokosmetikou je **200 000× za necelé dva měsíce vidět uvnitř AI odpovědí** — to je vrstva viditelnosti, která v GA4 vůbec není vidět, protože zobrazení v AI odpovědi nevyvolá návštěvu. Zadruhé struktura: **všech deset nejzobrazovanějších stránek jsou opět edukativní články**, ne produkty ani homepage. Stejný obsah, který vyhrává klasické vyhledávání, živí i AI odpovědi. Reálné screenshoty ze Search Console k tomuto číslu najdete na stránce [200 000 zobrazení v AI odpovědích](/ai-viditelnost/).
 
 ## Proč AI doporučuje web, který AI SEO neřešil
 
@@ -192,4 +192,4 @@ Za 3–6 měsíců sem doplníme stejné grafy znovu — před/po. Pokud podíl 
 
 **Chcete vědět, co by AI nástroje citovaly z vašeho webu?** [AI SEO audit za 3 600 Kč](/audit/) projde váš obsah stejnou optikou, jakou teď nasazujeme na MEGA DETAIL: co je citovatelné, co chybí a v jakém pořadí to doplnit.
 
-*Transparentně: MEGA DETAIL je vlastní e-shop agentury Sniper Design, která provozuje i tento web — data proto známe z první ruky a publikujeme je se souhlasem. Čísla pocházejí z GA4 (dimenze Zdroj relace, období 17. 7. 2025 – 16. 7. 2026) a Google Search Console téhož období; zobrazení ve funkcích s generativní AI z beta reportu Search Console, který má data od 18. 5. 2026. Konverzní míra = míra klíčových událostí relace v GA4. Kliknutí z Google AI Overviews nelze v datech oddělit od běžného organicu; hodnoty AI referralů jsou proto spodní odhad. Článek aktualizujeme s novými daty po nasazení AI SEO optimalizace.*
+*Transparentně: MEGA DETAIL je vlastní e-shop agentury Sniper Design, která provozuje i tento web — data proto známe z první ruky a publikujeme je se souhlasem. Čísla pocházejí z GA4 (dimenze Zdroj relace, období 17. 7. 2025 – 16. 7. 2026) a Google Search Console téhož období; zobrazení ve funkcích s generativní AI z reportu Search Console Funkce s generativní AI, který má data od 18. 5. 2026. Konverzní míra = míra klíčových událostí relace v GA4. Kliknutí z Google AI Overviews nelze v datech oddělit od běžného organicu; hodnoty AI referralů jsou proto spodní odhad. Článek aktualizujeme s novými daty po nasazení AI SEO optimalizace.*
