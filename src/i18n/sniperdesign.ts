@@ -19,12 +19,42 @@ export const sniperDesign = {
   hrefConsult: "/kontakt/",
   ctaOpen: "Otevřít Sniper Design",
   ctaConsult: "Nezávazná konzultace",
+  /** aria-label seznamu důvěryhodnostních signálů (dřív natvrdo anglicky „Trust signals“). */
+  trustAria: "Proč Sniper Design",
+
+  /**
+   * Partnerství u e-shopových platforem — vykresluje komponenta PartnerBadges.
+   * Ověřeno na veřejných profilech 14. 9. 2026: Upgates Marketplace uvádí
+   * „Zlatý partner Upgates od roku 2016“ a hodnocení 4,5 z 19 recenzí; Shoptet
+   * Partneři odznak „Zlatý partner“ a 2 hodnocení (průměr na profilu není
+   * v textu, proto se nevypisuje). Hodnocení se mění — při úpravě znovu ověřit.
+   * PER-MUTACE: české platformy; fork mimo CZ komponentu nevkládá.
+   */
+  partners: {
+    aria: "Ověřená partnerství u e-shopových platforem",
+    profileLabel: "partnerský profil u platformy",
+    newWindow: "otevře se v novém okně",
+    items: [
+      {
+        platform: "Upgates",
+        level: "Zlatý partner",
+        meta: "od 2016 · 4,5 z 5 (19 hodnocení)",
+        href: "https://marketplace.upgates.cz/agencies/sniper-design/",
+      },
+      {
+        platform: "Shoptet",
+        level: "Zlatý partner",
+        meta: "",
+        href: "https://partneri.shoptet.cz/profesionalove/sniper-design/",
+      },
+    ],
+  },
 
   big: {
-    lead: 'Tento průvodce vám dá přehled. Co s ním reálně udělá web nebo e‑shop, je druhá věc — a obvykle to chce někoho, kdo už tím prošel. V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong>: od strategie přes audit a implementaci až po finální obsah. Zlatý Upgates partner od&nbsp;2016, přes 600 e‑shopů na CZ trhu, vlastní e‑shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA&nbsp;DETAIL</a>.',
+    lead: 'Tento průvodce vám dá přehled. Co s ním reálně udělá web nebo e‑shop, je druhá věc — a obvykle to chce někoho, kdo už tím prošel. V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong>: od strategie přes audit a implementaci až po finální obsah. Zlatý partner Upgates i Shoptetu, přes 600 e‑shopů na CZ trhu, vlastní e‑shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA&nbsp;DETAIL</a>.',
+    /** Partnerství u platforem nese komponenta PartnerBadges nad tímto seznamem. */
     trust: [
-      "<strong>Zlatý Upgates partner</strong> od 2016",
-      "<strong>600+</strong> e‑shopů",
+      "<strong>600+</strong> e‑shopů od 2016",
       "Vlastní e‑shop <strong>MEGA&nbsp;DETAIL</strong>",
     ],
     pkg: "<strong>Vše dodáváme jako jeden balík.</strong> Strategie, znalost, audity, optimalizace i obsah — pod jednou střechou, s jednou kontaktní osobou, s jedním cílem.",
@@ -47,7 +77,7 @@ export const sniperDesign = {
       {
         num: "04",
         title: "Tvorba a&nbsp;aktualizace obsahu",
-        desc: "AI‑řízené generování produktových popisů, FAQ a článků v tonalitě vašeho brandu. Vstup do citation poolu ChatGPT, Perplexity a Google AI Overview.",
+        desc: "Popisy produktů, FAQ a články generované s pomocí AI v tónu vaší značky — ve formátu, ze kterého mohou citovat ChatGPT, Perplexity i Přehled od AI.",
       },
     ],
     scopeEyebrow: "Konkrétní záběr",
@@ -55,21 +85,21 @@ export const sniperDesign = {
       "Co konkrétně upravíme na vašem <strong>webu nebo e‑shopu</strong>",
     scope: [
       "Struktura kategorií a služeb",
-      "Answer bloky pod nadpisy",
+      "Krátké odpovědi pod nadpisy",
       "FAQ sekce s reálnými dotazy",
-      "Schema — Product, Article, Organization",
+      "Strukturovaná data — Product, Article, Organization",
       "Interní prolinkování",
-      "Technické SEO (Core Web Vitals, indexace, mobile)",
-      "<code>robots.txt</code> pro AI crawlery",
+      "Technické SEO (Core Web Vitals, indexace, mobilní verze)",
+      "<code>robots.txt</code> pro roboty AI",
       "Obsahové mezery proti konkurenci",
-      "Měření AI citací a brand zmínek",
+      "Měření citací a zmínek o značce v AI",
     ],
   },
 
   small: {
-    lead: 'V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong> — strategii, audit, implementaci i obsah. Zlatý Upgates partner od&nbsp;2016, přes 600 e‑shopů na CZ trhu. <strong>AI vyhledávání implementujeme</strong> do návrhů homepage, obsahové struktury i auditů klientských webů.',
+    lead: 'V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong> — strategii, audit, implementaci i obsah. Zlatý partner Upgates i Shoptetu, přes 600 e‑shopů na CZ trhu. <strong>AI vyhledávání implementujeme</strong> do návrhů homepage, obsahové struktury i auditů klientských webů.',
+    /** Partnerství u platforem nese komponenta PartnerBadges nad tímto seznamem. */
     trust: [
-      "<strong>Zlatý Upgates partner</strong>",
       "<strong>600+</strong> e‑shopů",
       "Vlastní e‑shop <strong>MEGA&nbsp;DETAIL</strong>",
     ],

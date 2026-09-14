@@ -29,6 +29,7 @@
  *   eyebrow?: string — vlastní eyebrow text (default „Pomoc s implementací")
  */
 import { sniperDesign as sd } from "~/i18n/sniperdesign";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
 
 interface Props {
   eyebrow?: string;
@@ -59,7 +60,11 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
       <h2 id="sd-small-title" class="sd-small__title" set:html={sd.title}></h2>
       <p class="sd-small__lead" set:html={sd.small.lead}></p>
 
-      <ul class="sd-small__trust" aria-label="Trust signals">
+      <div class="sd-small__partners">
+        <PartnerBadges />
+      </div>
+
+      <ul class="sd-small__trust" aria-label={sd.trustAria}>
         {sd.small.trust.map((item) => <li set:html={item}></li>)}
       </ul>
 
@@ -97,16 +102,14 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
   /* ===== SniperDesign Small Contact =====
    * Kompaktní varianta Big bloku — stejný brand styl (deep violet,
    * magenta highlight, gold CTA), ale méně obsahu a menší padding.
-   * Self-contained, scopované přes .sd-small prefix. */
+   * Self-contained, scopované přes .sd-small prefix. Paleta --sd-* přichází
+   * z global.css (lokální kopie smazaná 14. 9. 2026). */
   .sd-small {
-    --font-agency: "Kumbh Sans", var(--font-sans);
-    --sd-deep: oklch(0.22 0.13 305);
-    --sd-deeper: oklch(0.16 0.11 305);
-    --sd-violet: oklch(0.55 0.25 305);
-    --sd-magenta: oklch(0.5 0.27 335);
-    --sd-gold: oklch(0.82 0.16 80);
-    --sd-gold-deep: oklch(0.7 0.18 60);
-    --sd-paper: oklch(0.985 0.004 250);
+    /* Partnerské odznaky na tmavém panelu. */
+    --partner-fg: var(--sd-paper);
+    --partner-muted: color-mix(in oklch, var(--sd-paper) 72%, transparent);
+    --partner-border: color-mix(in oklch, var(--sd-paper) 22%, transparent);
+    --partner-bg: color-mix(in oklch, var(--sd-paper) 6%, transparent);
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x);
@@ -200,6 +203,9 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
   }
   .sd-small__lead a:hover { opacity: 0.8; }
 
+  .sd-small__partners {
+    margin: 0 0 0.875rem;
+  }
   .sd-small__trust {
     list-style: none;
     margin: 0 0 1.5rem;

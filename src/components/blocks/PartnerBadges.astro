@@ -1,0 +1,139 @@
+---
+/**
+ * PartnerBadges — partnerství Sniper Design u e-shopových platforem.
+ *
+ * Proč existuje: „Zlatý partner Upgates“ bylo na webu jen tvrzení v textu —
+ * čtenář ho neměl jak ověřit a Shoptet chyběl úplně, přestože je agentura
+ * Zlatým partnerem obou platforem (potvrdil uživatel 14. 9. 2026). Odznak
+ * vede přímo na profil u platformy, kde je partnerství i hodnocení vidět.
+ *
+ * Jeden zdroj: položky jsou v `i18n/sniperdesign.ts` (`partners`). Komponenta
+ * se vkládá tam, kde web mluví o agentuře — bloky Sniper Design, hero
+ * prodejních stránek. Nepsat partnerství ručně do textu.
+ *
+ * Barvy přes custom properties: výchozí jsou pro světlý podklad, tmavý panel
+ * Sniper Design si nastaví `--partner-fg`, `--partner-muted`, `--partner-border`
+ * a `--partner-bg`. Zlatá medaile je vždy `--sd-gold`.
+ */
+import { sniperDesign as sd } from "~/i18n/sniperdesign";
+
+const { partners } = sd;
+---
+
+{partners.items.length > 0 && (
+<ul class="partners" aria-label={partners.aria}>
+  {
+    partners.items.map((item) => (
+      <li class="partners__item">
+        <a class="partner" href={item.href} target="_blank" rel="noopener">
+          <svg class="partner__medal" viewBox="0 0 20 20" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" />
+            <path d="M6 10.4l2.6 2.5L14 7.4" />
+          </svg>
+          <span class="partner__label">
+            {item.level} <strong>{item.platform}</strong>
+          </span>
+          {item.meta && <span class="partner__meta">{item.meta}</span>}
+          <span class="partner__sr">
+            — {partners.profileLabel} ({partners.newWindow})
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+)}
+
+<style>
+  /* Barvy nastavuje obal (tmavý panel) — tady jen výchozí hodnoty ve fallbacku,
+     jinak by definice na .partners přebila hodnoty zděděné z obalu.
+     Selektory nesou .partners jako předka: odznaky stojí i uvnitř .article__prose
+     v sekcích, jejíž :global styly pro ul, li a a by jinak vyhrály (čárka před
+     položkou, odsazení 26 px, barva a podtržení odkazu). */
+  .partners.partners {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .partners .partners__item {
+    position: static;
+    display: flex;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .partners .partners__item::before {
+    content: none;
+  }
+  .partners .partner {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.375rem 0.875rem 0.375rem 0.375rem;
+    border: 1px solid var(--partner-border, var(--color-rule));
+    /* Polovina výšky jednořádkového odznaku: na řádku vypadá jako pilulka,
+       na úzkém displeji, kde se text zalomí, zůstane zaoblený obdélník. */
+    border-radius: 1.125rem;
+    background: var(--partner-bg, var(--color-paper));
+    color: var(--partner-fg, var(--color-ink));
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.25;
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+  .partners .partner:hover {
+    border-color: var(--sd-gold);
+  }
+  .partners .partner:focus-visible {
+    outline: 2px solid var(--sd-gold);
+    outline-offset: 2px;
+  }
+  .partners .partner__medal {
+    width: 1.375rem;
+    height: 1.375rem;
+    flex-shrink: 0;
+  }
+  .partners .partner__medal circle {
+    fill: var(--sd-gold);
+  }
+  .partners .partner__medal path {
+    fill: none;
+    stroke: var(--sd-deeper);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .partners .partner__label strong {
+    font-weight: 700;
+  }
+  .partners .partner__meta {
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--partner-border, var(--color-rule));
+    color: var(--partner-muted, var(--color-ink-muted));
+    font-variant-numeric: tabular-nums;
+  }
+  /* Text jen pro čtečky: kam odkaz vede a že se otevře v novém okně. */
+  .partners .partner__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .partners .partner {
+      transition: none;
+    }
+  }
+</style>

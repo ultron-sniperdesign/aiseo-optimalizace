@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 66** · založeno 2026-08-23 · poslední změna 2026-09-13 (doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ — citovaný záporný příklad) · audituje skill `cestina-audit`
+> **Verze: 67** · založeno 2026-08-23 · poslední změna 2026-09-14 (`jazyk-check.py` v šablonách `.astro` přeskakuje HTML komentáře, výrazy `{…}` a hodnoty technických atributů jako `type="submit"` — dřív je hlásil jako anglicismy; text pro čtenáře dál hlídá kontrola vykreslené stránky z `dist/`) · v66: doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“

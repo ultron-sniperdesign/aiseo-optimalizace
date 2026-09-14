@@ -27,6 +27,7 @@
  *   eyebrowNum?: string — vlastní pořadové číslo nahoře (default "06")
  */
 import { sniperDesign as sd } from "~/i18n/sniperdesign";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
 
 interface Props {
   eyebrowNum?: string;
@@ -59,7 +60,11 @@ const { eyebrowNum = "06" } = Astro.props as Props;
       <h2 id="sd-big-title" class="sd-big__title" set:html={sd.title}></h2>
       <p class="sd-big__lead" set:html={sd.big.lead}></p>
 
-      <ul class="sd-big__trust" aria-label="Trust signals">
+      <div class="sd-big__partners">
+        <PartnerBadges />
+      </div>
+
+      <ul class="sd-big__trust" aria-label={sd.trustAria}>
         {sd.big.trust.map((item) => <li set:html={item}></li>)}
       </ul>
     </header>
@@ -128,16 +133,14 @@ const { eyebrowNum = "06" } = Astro.props as Props;
   /* ===== SniperDesign Big Contact =====
    * Sniper Design brand palette — deep violet, magenta highlights, gold CTA.
    * Self-contained — všechny styly scopované přes .sd-big prefix,
-   * neovlivní nadřazený layout. Kumbh Sans přichází z global.css. */
+   * neovlivní nadřazený layout. Paleta --sd-* i Kumbh Sans přichází
+   * z global.css (lokální kopie palety smazaná 14. 9. 2026). */
   .sd-big {
-    --font-agency: "Kumbh Sans", var(--font-sans);
-    --sd-deep: oklch(0.22 0.13 305);
-    --sd-deeper: oklch(0.16 0.11 305);
-    --sd-violet: oklch(0.55 0.25 305);
-    --sd-magenta: oklch(0.5 0.27 335);
-    --sd-gold: oklch(0.82 0.16 80);
-    --sd-gold-deep: oklch(0.7 0.18 60);
-    --sd-paper: oklch(0.985 0.004 250);
+    /* Partnerské odznaky na tmavém panelu. */
+    --partner-fg: var(--sd-paper);
+    --partner-muted: color-mix(in oklch, var(--sd-paper) 72%, transparent);
+    --partner-border: color-mix(in oklch, var(--sd-paper) 22%, transparent);
+    --partner-bg: color-mix(in oklch, var(--sd-paper) 6%, transparent);
     max-width: var(--max-section);
     margin: 0 auto;
     padding: var(--space-section-y) var(--space-section-x);
@@ -247,9 +250,12 @@ const { eyebrowNum = "06" } = Astro.props as Props;
   }
   .sd-big__lead a:hover { opacity: 0.8; }
 
+  .sd-big__partners {
+    margin: 1.25rem 0 0;
+  }
   .sd-big__trust {
     list-style: none;
-    margin: 1.25rem 0 0;
+    margin: 0.875rem 0 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;

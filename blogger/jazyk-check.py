@@ -96,6 +96,34 @@ TS_PROP_KEY = re.compile(r'^(\s*)([A-Za-z_$][A-Za-z0-9_$]*)(\s*:)')
 # Totez pro deklarace: `export const sniperDesign = {` je nazev promenne.
 TS_DECL = re.compile(r'\b(const|let|var|function|interface|type)\s+([A-Za-z_$][A-Za-z0-9_$]*)')
 
+# Sablona .astro: kod uvnitr markupu neni text pro ctenare. Do 14. 9. 2026
+# checker hlasil `type="submit"` a `class="pop__submit"` jako anglicismus
+# „submit“, `{p.deliverable.title}` jako „deliverable“ a vyvojarske poznamky
+# v HTML komentarich (<!-- content based on active pill -->) jako prozu.
+# Maskujeme: vyrazy {…} (i vnorene a neuzavrene na konci radku), radky
+# s arrow funkci bez markupu, hodnoty technickych atributu a HTML komentare.
+# Textove atributy (alt, title, placeholder, props komponent jako eyebrow=)
+# zustavaji — ty ctenar vidi.
+ASTRO_EXPR = re.compile(r'\{[^{}\n]*\}')
+ASTRO_OPEN_EXPR = re.compile(r'\{[^{}\n]*$')
+ASTRO_ATTR = re.compile(r'\b(?:type|name|for|target|method|action|autocomplete|role|loading|decoding|fetchpriority|width|height|viewBox|fill|stroke(?:-[a-z]+)?|d|tabindex|xmlns|srcset|sizes|media|lang|dir|image|as|kind|data-[\w-]+)="[^"]*"')
+ASTRO_COMMENT = re.compile(r'<!--.*?-->')
+
+def _blank(m):
+    return ' ' * len(m.group(0))
+
+def mask_astro(raw):
+    raw = ASTRO_COMMENT.sub(_blank, raw)
+    prev = None
+    while prev != raw:
+        prev = raw
+        raw = ASTRO_EXPR.sub(_blank, raw)
+    raw = ASTRO_OPEN_EXPR.sub(_blank, raw)
+    raw = ASTRO_ATTR.sub(_blank, raw)
+    if '=>' in raw and '<' not in raw:
+        raw = ' ' * len(raw)
+    return raw
+
 def body_lines(text, is_module=False, is_astro=False):
     """Vrati (cislo_radku, text) pro telo clanku + textova pole frontmatteru.
 
@@ -116,6 +144,7 @@ def body_lines(text, is_module=False, is_astro=False):
     in_code = False
     in_dont = False
     in_astro_block = False
+    in_astro_comment = False
     for n in range(start, len(lines)):
         raw = lines[n]
         # V .astro souborech jsou <style> a <script> kód, ne text pro čtenáře —
@@ -130,6 +159,17 @@ def body_lines(text, is_module=False, is_astro=False):
                 if re.search(r'</(style|script)>', st):
                     in_astro_block = False
                 continue
+            # víceřádkový HTML komentář
+            if in_astro_comment:
+                if '-->' in raw:
+                    in_astro_comment = False
+                    raw = raw[raw.index('-->') + 3:]
+                else:
+                    continue
+            if '<!--' in raw and '-->' not in raw[raw.index('<!--'):]:
+                in_astro_comment = True
+                raw = raw[:raw.index('<!--')]
+            raw = mask_astro(raw)
         if CODE_FENCE.match(raw.strip()):
             in_code = not in_code; continue
         # <Dont> bloky jsou zamerne odstrasujici ukazky — auditovat je nema smysl

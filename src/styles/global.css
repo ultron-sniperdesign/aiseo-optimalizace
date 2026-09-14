@@ -85,7 +85,8 @@
      Do 6. 9. 2026 byla naklonovaná v `audit/index.astro`, `kontakt.astro`
      a v obou `sniperdesign/*Contact.astro`; kvůli konzistenci (a proto, aby
      kontextové CTA v článcích vypadalo jako stránka, na kterou vede) je
-     kanonická tady. Lokální kopie jsou identické a časem se dají smazat. */
+     kanonická tady. Z obou bloků Sniper Design kopie zmizela 14. 9. 2026;
+     v `audit/index.astro` a `kontakt.astro` zbývá — smazat při jejich revizi. */
   --font-agency: "Kumbh Sans", var(--font-sans);
   --sd-deep: oklch(0.22 0.13 305);
   --sd-deeper: oklch(0.16 0.11 305);
