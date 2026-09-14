@@ -1304,3 +1304,21 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 **Odmítnuto:** „jsou to, co“ → „jsou tím, co“ (obojí spisovné) · středníky ve výčtu tokenů (bez nich by se výčet s čárkami v závorkách rozpadl) · „který si AI nástroj vezme“ jako chyba shody — „který“ se vztahuje k „odstavci“, ne k „definici“ (upraveno ale kvůli tónu) · skloňování „v Claude“ vs. „v Claudu“ sjednoceno na „v Claude“ podle hubu.
 
 **Poznámka k postupu — nová past:** opravy dělali paralelní editoři a jeden z nich plošně „dosáhl checkeru na 0“ i mimo zadané pasáže: v `aio-strategie` přeložil jen první z pěti dimenzí modelu zralosti („Povědomí, Process, Tooling…“). Checker to vzal jako vyřešené, čtenáři vznikl napůl přeložený výčet. Dopřeloženo všech pět. **Pravidlo:** když editor sahá mimo nález kvůli checkeru, musí dotáhnout celý celek, jinak je lepší nechat původní stav a výjimku.
+
+---
+
+## C6: `za-jak-dlouho-se-projevi-ai-seo` (15. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 8 nálezů napoprvé: „Přehledy od AI“ / „Přehledech od AI“ 5× (glosář webu: jednotné číslo) → „Přehled od AI“; „Organic Search“ 2× (název kanálu v GA4) → „kanál organického vyhledávání“; „Growth“ 1× v názvu agentury FP Growth, citované jako zdroj. Po opravách **0**. |
+| LLM (gpt-5.4) | 5 nálezů — **všechny přijaty, žádné nové pravidlo** |
+
+**Slovník v68:** pravidlo `\bgrowth\b` → `(?<!fp )\bgrowth\b`. Výjimka stojí na předchozím slově, ne na velkém písmenu (hlavička slovníku: IGNORECASE by výjimku postavenou na „Growth“ rozbila). Obecné „growth“ checker hlídá dál.
+
+**Přijato z LLM:** „objevení značky ovlivněné AI“ (překlad „AI-influenced discovery“) → „objevení značky přes AI“ · „Teď běží čas zákazníka“ → „Od té chvíle záleží na zákazníkovi“ · „Kde se v AI éře rozhoduje“ → „Jak se zákazníci v AI éře rozhodují“ · „Po celém cyklu spočítejte“ → „Po skončení celého cyklu spočítejte“ · „kolik je vám jedna poptávka vlastně k užitku“ → „jakou hodnotu pro vás má jedna poptávka“.
+
+**Proč bez pravidel:** všech pět jsou kontextové obraty. Regex na „po celém cyklu“ by chytal i správné distributivní „vyhodnocovat po celých cyklech“, ostatní se v korpusu jinde nevyskytují.
+
+**Vedlejší úprava:** `geo-optimalizace` (přepsaná sekce „Časový horizont“ a FAQ „Za jak dlouho budou výsledky?“) — checker 0.
+

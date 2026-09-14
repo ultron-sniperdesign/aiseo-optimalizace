@@ -1,0 +1,215 @@
+---
+title: "Za jak dlouho se AI SEO projeví v poptávkách"
+seoTitle: "Za jak dlouho se AI SEO projeví v poptávkách a jak to změřit"
+description: "Doložené obecné číslo, za jak dlouho se AI SEO promítne do poptávek, jsme nenašli. Z čeho se prodleva skládá a jak ji měřit v GA4, Search Console a CRM."
+answer: "Prodleva, za kterou se AI SEO projeví v poptávkách, má dva úseky: než se obsah objeví v odpovědích AI a než z takového kontaktu vznikne poptávka. Veřejně doložené obecné číslo pro ni jsme nenašli. Odhadnout ji jde jen na vlastních datech a po částech — ze Search Console, GA4, CRM a otázky ve formuláři."
+slug: "za-jak-dlouho-se-projevi-ai-seo"
+category: "analysis"
+tags:
+  - "mereni"
+  - "strategie"
+published: "2026-09-15"
+updated: "2026-09-15"
+variant: "rich"
+keywords:
+  - "za jak dlouho se projeví ai seo"
+  - "geo funnel velocity"
+  - "sales velocity"
+  - "měření ai viditelnosti"
+  - "atribuce návštěv z ai v ga4"
+  - "jak jste se o nás dozvěděli"
+stats:
+  - value: "90 dní"
+    label: "výchozí hloubka pohledu v GA4 — starší kontaktní bod při přiřazení poptávky kredit nedostane"
+  - value: "0,5 %"
+    label: "podíl návštěv z AI ve vzorku 97 webů pro B2B a sběr poptávek (Orbit Media, 7/2025–6/2026)"
+  - value: "14 měsíců"
+    label: "nejdelší doba, po kterou standardní vlastnost GA4 drží data pro průzkumy a kohorty"
+faq:
+  - q: "Za jak dlouho se AI SEO projeví?"
+    a: "Veřejně doložené obecné číslo jsme nenašli. Google u klasického vyhledávání píše, že se některé změny projeví za pár hodin a jiné za několik měsíců, a doporučuje počkat několik týdnů, než výsledek vyhodnotíte. Do poptávek k tomu přibude doba, po kterou se zákazník rozhoduje — a tu znáte jen z vlastních dat."
+  - q: "Co je GEO funnel velocity?"
+    a: "Pojem z blogu firmy, která prodává digitální reklamu autodealerům: rychlost, s jakou se objevení značky přes AI promění v kvalifikovanou poptávku, schůzku nebo prodej. Vzorec neuvádí. Nejbližší použitelná podoba je obchodní metrika sales velocity — počet příležitostí × průměrná hodnota obchodu × úspěšnost, děleno délkou obchodního cyklu — spočítaná zvlášť pro poptávky z AI."
+  - q: "Proč v GA4 nevidím návštěvy z Přehledu od AI?"
+    a: "Protože je GA4 počítá do kanálu organického vyhledávání. Kanál AI Assistant, který GA4 zavedl 13. 5. 2026, pokrývá samostatné asistenty jako ChatGPT, Gemini nebo Copilot a Přehled od AI i režim AI od Googlu výslovně vylučuje."
+  - q: "Jak dlouho zpětně GA4 připíše poptávku návštěvě z AI?"
+    a: "U běžných klíčových událostí standardně 90 dní, v nastavení atribuce jde zvolit i 30 nebo 60 dní. Změna platí jen dopředu. Kdo se rozhoduje déle, tomu GA4 poptávku k dřívější návštěvě z AI nepřipíše. Dimenze První uživatel – zdroj si původní zdroj pamatuje dál, ale jen když se člověk vrátí ze stejného prohlížeče a GA4 ho pozná."
+  - q: "Konvertují návštěvy z AI lépe než z vyhledávání?"
+    a: "Záleží na vzorku. Studie publikovaná v časopise Marketing Science na vzorku 973 e-shopů s daty ze srpna 2024 až července 2025 našla u organického vyhledávání o 13 % vyšší pravděpodobnost konverze než u návštěv z ChatGPT. Ve vzorku 97 webů pro B2B a sběr poptávek od Orbit Media se návštěvy z AI měnily na poptávku třikrát častěji než přímé návštěvy a organické vyhledávání a Amsive na 54 webech statisticky významný rozdíl nenašla."
+  - q: "Má smysl ptát se ve formuláři, jak se o nás zákazník dozvěděl?"
+    a: "Ano, jako doplněk analytiky. Otázka zachytí i doporučení, které analytika nevidí — třeba když si člověk přečte odpověď v ChatGPT a adresu webu pak napíše ručně. Odpověď ale stojí na paměti a neřekne, co bylo první a co rozhodlo, proto ji porovnávejte s daty z analytiky, ne místo nich."
+  - q: "Za jak dlouho se web dostane do odpovědí ChatGPT?"
+    a: "OpenAI nezveřejňuje lhůtu, za jak dlouho se web objeví v odpovědích ChatGPT. U výsledků vyhledávání v ChatGPT uvádí jen to, že po změně souboru robots.txt může trvat zhruba 24 hodin, než se změna projeví. Aby se web v tomto vyhledávání mohl objevit, musí mít povolený robot OAI-SearchBot."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+## Doložené číslo pro <span class="hl">rychlost AI SEO</span> jsme nenašli — <strong>kolují hlavně odhady bez metodiky</strong>
+
+**Za jak dlouho se AI SEO projeví v poptávkách, závisí na dvou úsecích: jak rychle se obsah dostane do odpovědí AI a jak dlouho se pak zákazník rozhoduje.** Veřejné měření s popsanou metodikou, které by celou cestu od zmínky v odpovědi AI k poptávce vyčíslilo, jsme při přípravě článku nenašli. Když někdo uvádí pevnou lhůtu, ptejte se na vzorek, období a metodiku — a prodlevu si změřte na vlastních datech. Tenhle článek ukazuje, na kterých místech a s jakými limity.
+
+Otázka se v posledních měsících objevuje pod anglickým názvem „GEO funnel velocity“. V květnu 2026 ho v přehledu dvaceti statistik použil blog firmy Demand Local, která prodává digitální reklamu autodealerům. Definuje ho jako rychlost, s jakou se objevení značky přes AI promění v kvalifikovanou poptávku, schůzku nebo prodej. Vzorec článek neuvádí a vlastní data nemá — vyjmenovává metriky a statistiky převzaté z jiných zdrojů.
+
+Konkrétní čísla o rychlosti se objevují jinde, ale nejsou o nic lépe podložená. Blog agentury FP Growth z 23. 7. 2026 píše, že obchody se zájemci přivedenými přes AI se „typicky“ uzavírají o 10–20 % rychleji než u zájemců z organického vyhledávání a že změny v citacích předbíhají obchodní výsledky o jeden až tři týdny. Zdroj ani data neuvádí. V tabulce téhož článku přitom stojí u rychlosti obchodů zpoždění 6–12 týdnů a v častých otázkách 4–8 týdnů.
+
+<Insight tone="warn" label="Když na takové číslo narazíte">
+  Zeptejte se na tři věci: **na jakém vzorku, za jaké období a jak se měřilo**. Když odpověď chybí, je to odhad autora, ne naměřená hodnota.
+</Insight>
+
+Jak vratká jsou čísla i u jednodušší otázky, ukazuje konverze. Jestli návštěvy z AI konvertují lépe než z vyhledávání, ukazují tři veřejné analýzy s popsaným vzorkem tři různé věci:
+
+<CompareTable
+  leftLabel="Vzorek a období"
+  leftTone="seo"
+  rightLabel="Co vyšlo"
+  rightTone="aeo"
+  rows={[
+    { icon: "🛒", label: "Kaiser a Schulze, Marketing Science 2026", left: "973 e-shopů, data ze srpna 2024 až července 2025, konverze připsaná poslednímu kliku", right: "organické vyhledávání vede ke konverzi o 13 % pravděpodobněji než návštěvy z ChatGPT; v části kontrolních výpočtů rozdíl přestane být statisticky významný" },
+    { icon: "🏢", label: "Orbit Media, analýza 2026", left: "97 webů pro B2B a sběr poptávek, červenec 2025 až červen 2026", right: "návštěvy z AI tvoří půl procenta návštěvnosti, ale na poptávku se mění třikrát častěji než přímé návštěvy a organické vyhledávání" },
+    { icon: "📊", label: "Amsive, analýza 2025", left: "54 webů, posledních šest měsíců dat z GA4", right: "organické vyhledávání 4,60 %, návštěvy z AI 4,87 % — rozdíl statisticky nevýznamný" },
+  ]}
+/>
+
+Rozdíly nevysvětluje jen kvalita analýz, ale hlavně vzorek: e-shopy proti webům, které sbírají poptávky, a různá období. U rychlosti, pro kterou jsme veřejné měření s metodikou nenašli vůbec, to platí dvojnásob — číslo z cizího trhu vám o vašem obchodu nic neřekne. Jak takové studie číst a proč společný znak citovaných stránek není příčina, rozebírá [článek o čtení studií](/blog/jak-cist-studie-o-ai-viditelnosti/).
+
+<Insight tone="accent" label="Z čeho „funnel velocity“ vychází">
+  V obchodě se běžně používá metrika **sales velocity**: počet obchodních příležitostí × průměrná hodnota obchodu × úspěšnost, děleno délkou obchodního cyklu. Když délku cyklu počítáte ve dnech, vyjde tržba za den. Ilustrativně: 12 příležitostí × 40 000 Kč × 25 % ÷ 60 dní = 2 000 Kč za den. **Spočítaná zvlášť pro poptávky, které přišly přes AI, a zvlášť pro ostatní, je to nejbližší použitelná podoba „GEO funnel velocity“.**
+</Insight>
+
+## Prodleva má dva úseky — <span class="hl">cesta do odpovědi AI</span> a <strong>rozhodování zákazníka</strong>
+
+**První úsek je doba, než se k vašemu obsahu AI vůbec dostane.** U Googlu platí, že stránka se může objevit jako podpůrný odkaz v Přehledu od AI nebo v režimu AI, jen když je v indexu a smí se ve Vyhledávání zobrazit s úryvkem. Novější průvodce Googlu k optimalizaci pro generativní AI k tomu přidává, že web musí mít v Search Console povolené zahrnutí do funkcí s generativní AI — to je ale výchozí nastavení.
+
+Jak rychle se změny projeví, popisuje Google u klasického vyhledávání jen obecně: některé za pár hodin, jiné za několik měsíců, a vyhodnocovat má smysl až po několika týdnech. OpenAI uvádí jen to, že po změně souboru robots.txt může trvat zhruba 24 hodin, než se to promítne do výsledků vyhledávání v ChatGPT — za předpokladu, že máte povolený robot OAI-SearchBot (viz [robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/)). Konkrétnější lhůtu, za jak dlouho se nový obsah dostane do odpovědí, jsme u Googlu ani u OpenAI nenašli.
+
+**Druhý úsek začíná ve chvíli, kdy vás AI zmíní.** Od té chvíle záleží na zákazníkovi: jestli kupuje drobnost na e-shopu, nebo vybírá dodavatele zakázky, o které rozhoduje víc lidí. Že si v jedné konverzaci s AI rychleji udělá přehled, ještě neznamená, že se rychleji rozhodne. Jak se zákazníci v AI éře rozhodují, popisuje [střední část trychtýře](/blog/stredni-cast-trychtyre-ai/).
+
+<CompareTable
+  leftLabel="Co ho ovlivní"
+  leftTone="seo"
+  rightLabel="Kde ho uvidíte"
+  rightTone="aeo"
+  rows={[
+    { icon: "🔎", label: "Cesta do odpovědi AI", left: "index a zobrazení s úryvkem u Googlu, povolený robot OAI-SearchBot u ChatGPT, konkurence v odpovědích na váš dotaz", right: "zobrazení v Search Console, citace v Bing Webmaster Tools, opakované vlastní dotazy" },
+    { icon: "🤝", label: "Rozhodování zákazníka", left: "co prodáváte, kolik to stojí a kolik lidí o nákupu rozhoduje", right: "GA4 (dny do klíčové události, kohorty), CRM (datum poptávky a uzavření obchodu), otázka ve formuláři" },
+  ]}
+/>
+
+Při měření se snadno pletou tři různé prodlevy. Na otázku z titulku odpovídají první dvě, třetí ukazuje obchodní dopad:
+
+<Checklist tone="seo" title="Tři prodlevy, které nepleťte" items={[
+  { title: "Úprava webu → zmínka nebo zobrazení v AI", desc: "Jak rychle se změna projeví v odpovědích. Vidíte ji v Search Console, v Bing Webmaster Tools a v opakovaných vlastních dotazech." },
+  { title: "Zmínka nebo návštěva z AI → poptávka", desc: "Jak dlouho se zákazník rozhoduje, než se ozve. GA4 to vidí jen od první rozpoznané návštěvy z AI; kdo po zmínce neklikl a přišel jinudy, toho zachytí nanejvýš značkové hledání nebo odpověď ve formuláři." },
+  { title: "Poptávka → uzavřený obchod", desc: "Délka vašeho obchodního cyklu. Tu znáte z CRM a patří do výpočtu sales velocity." },
+]} />
+
+První prodlevu ovlivníte jen zčásti, další dvě se dají aspoň odhadnout z vlastních poptávek a obchodů. Proto se jim věnuje zbytek článku.
+
+## Kde se <span class="hl">viditelnost v AI</span> v datech ukáže — <strong>pět míst, každé vidí jiný kus cesty</strong>
+
+Mezi zmínkou v odpovědi AI a uzavřeným obchodem nevede jeden ukazatel, ale řetěz. Každý jeho článek vidí jiný nástroj:
+
+<Stepper tone="seo" steps={[
+  { title: "Citace a zmínky", desc: "Opakované vlastní dotazy v ChatGPT, Gemini nebo Copilotu — berte je jako orientační kontrolu, ne jako měření všech uživatelů — a přehled AI Performance v Bing Webmaster Tools, spuštěný v únoru 2026 jako veřejná zkušební verze, který počítá citace v Copilotu a v AI shrnutích Bingu. Prokliky neukazuje." },
+  { title: "Zobrazení ve funkcích Googlu", desc: "Přehled výkonu v generativní AI v Search Console: jen zobrazení v Přehledu od AI a v režimu AI, podle stránek, zemí, zařízení a dnů. Od 31. 8. 2026 ho mají všechny weby, kliky v něm nejsou." },
+  { title: "Hledání značky", desc: "Kdo o vás slyší v AI, může vás pak vyhledat jménem. Search Console umí značkové dotazy oddělit filtrem, ale ne u webů s nízkým počtem zobrazení — menším webům zbude vlastní filtr na název značky." },
+  { title: "Návštěvy", desc: "Kanál AI Assistant v GA4 (od 13. 5. 2026) pozná návštěvy z ChatGPT, Gemini nebo Copilotu podle webu, ze kterého přišly. Přehled od AI a režim AI v něm nejsou, ty GA4 počítá do organického vyhledávání." },
+  { title: "Poptávky a obchody", desc: "Formulář, telefon, objednávka — a v CRM datum poptávky, datum uzavření obchodu a zdroj. Až tady se ukáže, jestli viditelnost něco přinesla." },
+]} />
+
+**Pořadí je pracovní model, ne naměřená posloupnost.** Když se zobrazení v Search Console zvednou a o dva měsíce později přibude poptávek, může za tím být souvislost, sezóna i náhoda. Proč jeden test citací nestačí, vysvětluje [kolísání odpovědí AI](/blog/volatilita-ai-odpovedi/); jak číst podíl zmínek proti konkurenci, [Share of Model](/blog/share-of-model-metrika/); co přesně ukazuje přehled v Search Console, [přehled výkonu v generativní AI](/blog/gsc-ai-segmenty-mereni/); a citace v Copilotu [přehled AI Performance v Bingu](/blog/bing-ai-performance-report/).
+
+## Co z prodlevy vyčtete v <span class="hl">GA4</span> — <strong>atribuční trasy sahají nejvýš 90 dní zpátky</strong>
+
+GA4 má přehled, který se na prodlevu ptá přímo. V české nápovědě se jmenuje **Atribuční trasy klíčových událostí** a najdete ho v sekci Reklamy pod nabídkou Klíčové události. Kromě počtu klíčových událostí ukazuje metriky **Dny do klíčové události** a **Kontaktní body do klíčové události**, a to zvlášť pro jednotlivé trasy podle kanálů.
+
+<Checklist tone="seo" title="Než z přehledu tras něco vyčtete" items={[
+  { title: "Vyberte jen poptávku", desc: "Ve výchozím stavu přehled sčítá všechny klíčové události. Trasu navíc ukáže jen u lidí, kteří vybranou událost opravdu udělali — kdo o vás slyšel v AI a zatím nepoptal, v přehledu není." },
+  { title: "Čtěte dny jako orientační údaj", desc: "Reference metrik popisuje dny do klíčové události jako počet dní „od interakce s reklamou“ a neuvádí, od kterého kontaktního bodu v trase se počítají. Porovnávejte proto trasy mezi sebou, ne absolutní číslo." },
+  { title: "Hlídejte hloubku pohledu", desc: "Kontaktní bod starší než nastavená hloubka pohledu kredit nedostane. U běžných klíčových událostí je výchozích 90 dní, volitelně 30 nebo 60, a změna platí jen dopředu." },
+]} />
+
+Kdo se rozhoduje déle, tomu přehled tras dřívější návštěvu z AI nepřipíše. Pro takové případy je v GA4 dimenze **První uživatel – zdroj**: zůstává stejná, když se člověk na web vrací, a změna atribučního modelu ji neovlivní. V přehledu akvizice uživatelů podle ní uvidíte, kolik klíčových událostí udělali lidé, kteří k vám poprvé přišli z ChatGPT — pokud se vrátili ze stejného prohlížeče a GA4 je poznal.
+
+Za kolik dní, týdnů nebo měsíců od první návštěvy lidé poptají, ukáže **Průzkum kohorty**. Kohorty ale stojí jen na datech zařízení a přihlášení uživatele (User-ID) se v nich nebere v potaz. Aby výsledek k něčemu byl, potřebujete tři nastavení:
+
+<Checklist title="Nastavení, bez kterého prodlevu nezměříte" items={[
+  { title: "Poptávka je klíčová událost", desc: "Označení platí od chvíle, kdy ho zapnete, historická data se nezmění. Každý měsíc bez něj je měsíc, který už nedoměříte." },
+  { title: "Uchovávání dat na 14 měsíců", desc: "Nastavení se týká průzkumů a přehledů trychtýře, tedy i kohort. Standardní vlastnost GA4 nabízí jen 2, nebo 14 měsíců — při dvou rok zpátky neuvidíte." },
+  { title: "Vlastní skupina kanálů pro AI", desc: "Vlastní skupiny kanálů lze v přehledech použít i zpětně. U výchozího kanálu AI Assistant Google zpětnou platnost neuvádí. V přehledu atribučních tras ale vlastní skupinu použít nejde." },
+]} />
+
+## Proč se <span class="hl">cesta k poptávce</span> v datech trhá — <strong>cookies, druhé zařízení, chybějící zdroj</strong>
+
+GA4 propojí jen tu část cesty, kterou dokáže přiřadit jednomu člověku. Tři věci ji přetrhávají i při dobře nastaveném měření.
+
+**Souhlas s cookies.** Podle § 89 odst. 3 zákona o elektronických komunikacích je od 1. 1. 2022 k ukládání netechnických cookies potřeba předem prokazatelný souhlas. Když ho návštěvník nedá, GA4 podle nápovědy Googlu nepozná, že jeho události patří stejnému uživateli. Modelování chování, které mezeru dopočítává, vyžaduje mimo jiné, aby vlastnost aspoň 7 dní z posledních 28 měla denně alespoň 1 000 uživatelů se souhlasem. Průzkum kohorty modelovaná data nepodporuje.
+
+**Druhé zařízení.** Kdo si doporučení přečte v telefonu a objedná z počítače, je pro GA4 dva lidé. Objednávka se připíše zdroji návštěvy z počítače, ne odpovědi AI v telefonu.
+
+**Chybějící zdroj.** Když aplikace nebo zkopírovaný odkaz nepředá, odkud návštěvník přišel, zapíše ho GA4 jako přímou návštěvu. ChatGPT sice k odkazům z výsledků vyhledávání přidává parametr `utm_source=chatgpt.com`, ale to pomůže jen tehdy, když návštěvník přijde přes ten odkaz. Jak takovou návštěvnost poznat, popisuje heslo [neviditelná návštěvnost z AI](/slovnik/dark-ai-traffic/), kontroly přímé návštěvnosti [článek o AI prohlížečích](/blog/ai-prohlizece-atlas-comet/) a nastavení segmentu pro AI zdroje [měření AI návštěvnosti v GA4](/blog/ai-navstevnost-konverze/).
+
+## Delší rozhodování doměříte v <span class="hl">CRM a ve formuláři</span> — <strong>dvě data a jedna otázka</strong>
+
+**Co GA4 ztratí, zachytíte tam, kde poptávka vzniká.** U každé poptávky stačí zapsat dvě data a zdroj: kdy poptávka přišla, kdy se uzavřel obchod a odkud zákazník přišel.
+
+CRM to umí automaticky. Třeba HubSpot zapisuje u kontaktu původní a poslední zdroj návštěvnosti a obchody přidružené ke kontaktu tyto hodnoty přebírají. Počet dní od vytvoření obchodu do jeho uzavření nabízí jako vlastnost pro vlastní přehledy. Kdo CRM nemá, vystačí si s tabulkou: datum poptávky, zdroj podle analytiky, zdroj podle zákazníka, datum objednávky a hodnota.
+
+**Druhým zdrojem je sám zákazník.** Pole „Jak jste se o nás dozvěděli?“ ve formuláři nebo otázka při prvním hovoru zachytí i doporučení, které analytika nevidí — třeba když si člověk přečte odpověď v ChatGPT a adresu webu pak napíše ručně. Rand Fishkin ze SparkToro ale upozorňuje na tři slabiny takové otázky: lidská paměť je nespolehlivá, není jasné, jestli se ptáte na první kontakt, nebo na ten rozhodující, a lidé, kteří o vás nikdy neslyšeli, vám neřeknou, čemu věnují pozornost. Doporučuje otázku nerušit a kombinovat ji s dalšími daty.
+
+<Insight tone="accent" label="Vyhodnocujte po celých cyklech">
+  Když od poptávky k objednávce uplynou v průměru tři měsíce, měsíční srovnání zachytí hlavně náhodu. **Období pro vyhodnocení musí být delší než váš obchodní cyklus** — pro výpočet návratnosti počítejte aspoň se šesti, ideálně dvanácti měsíci, jak rozebírá [návratnost AI SEO](/blog/roi-ai-seo/). Jakou hodnotu pro vás má jedna poptávka z AI, spočítáte podle [hodnoty návštěvy z AI](/blog/hodnota-navstevy-z-ai/).
+</Insight>
+
+## Jak si prodlevu <span class="hl">spočítat sami</span> — <strong>šest kroků a trpělivost</strong>
+
+<Stepper tone="seo" steps={[
+  { title: "Zapište výchozí stav a datum zásahu", desc: "Zobrazení v přehledu výkonu v generativní AI, značkové dotazy, návštěvy z AI a počet poptávek za poslední tři měsíce. Bez data zásahu nespojíte změnu s výsledkem." },
+  { title: "Nastavte měření", desc: "Poptávka jako klíčová událost, uchovávání dat na 14 měsíců, vlastní skupina kanálů pro AI a pole „Jak jste se o nás dozvěděli?“ ve formuláři." },
+  { title: "Každý měsíc zapište pět čísel", desc: "Citace, zobrazení v Search Console, značkové dotazy, návštěvy z AI a poptávky. Zapisujte, nevyhodnocujte — jeden měsíc je šum." },
+  { title: "U každé poptávky dvě data a dva zdroje", desc: "Kdy přišla a kdy se uzavřela; zdroj podle analytiky a zdroj podle zákazníka. Rozpor mezi nimi je informace, ne chyba." },
+  { title: "Po skončení celého cyklu spočítejte dva mediány", desc: "Dny od první návštěvy do poptávky (z GA4) a dny od poptávky do objednávky (z CRM), zvlášť pro zákazníky z AI a pro ostatní. Při několika poptávkách průkazný rozdíl nečekejte — malý vzorek ukáže spíš náhodu." },
+  { title: "Porovnejte sales velocity podle zdroje", desc: "Příležitosti × průměrná hodnota × úspěšnost ÷ délka cyklu, zvlášť pro AI a pro ostatní. Sledujte vývoj mezi čtvrtletími, ne jedno číslo." },
+]} />
+
+Pro představu o objemech: e-shopu z [naší případové studie](/blog/case-study-megadetail-ai-navstevnost/) poslaly AI nástroje za 12 měsíců 1 867 návštěv, zhruba půl procenta návštěvnosti. U menšího webu může jít za čtvrtletí jen o několik poptávek z AI — proto se prodleva vyplatí sledovat dlouhodobě, ne honit v jednom měsíci.
+
+## <span class="hl">Časté chyby</span> — <strong>a co dělat místo nich</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Věřit číslu „o X % rychleji“ bez vzorku" fix="Ptejte se na vzorek, období a metodiku.">
+    Tvrzení o týdnech a procentech, která kolují, zatím nemají zveřejněná data.
+  </Mistake>
+  <Mistake num="02" title="Měřit jen kanál AI Assistant" fix="Přidejte Search Console, značkové dotazy a formulář.">
+    Přehled od AI a režim AI v kanálu nejsou a návštěvy bez informace o zdroji skončí v přímé návštěvnosti.
+  </Mistake>
+  <Mistake num="03" title="Hodnotit po měsíci" fix="Vyhodnocujte po celých obchodních cyklech.">
+    Když zakázka trvá čtvrt roku, měsíční srovnání zachytí hlavně náhodu.
+  </Mistake>
+  <Mistake num="04" title="Nemít poptávku jako klíčovou událost" fix="Označte ji hned, zpětně to nejde.">
+    Přehled atribučních tras ji pak nevidí a označení historická data nedoplní.
+  </Mistake>
+  <Mistake num="05" title="Brát odpověď ve formuláři jako přesnou" fix="Porovnávejte ji s analytikou.">
+    Lidé si nepamatují, co bylo první, a neřeknou, co rozhodlo.
+  </Mistake>
+</MistakeGrid>
+
+## <span class="hl">Shrnutí</span> — <strong>rychlost se nedá převzít, jen změřit</strong>
+
+- **Veřejně doložené číslo jsme nenašli.** Tvrzení o týdnech a procentech nemají zveřejněná data.
+- **U „GEO funnel velocity“ jsme zveřejněný vzorec nenašli.** Nejbližší použitelná podoba je sales velocity spočítaná zvlášť pro poptávky z AI.
+- **Prodleva má dva úseky:** cestu obsahu do odpovědí AI a rozhodování zákazníka. Změřit se dá hlavně ten druhý.
+- **Atribuční trasy v GA4 sahají nejvýš 90 dní zpátky** a cestu přetrhne odmítnutý souhlas s cookies i druhé zařízení. Delší rozhodování doplňte z CRM a formuláře.
+- **Delší cyklus doměříte v CRM a ve formuláři** — dvě data a zdroj u každé poptávky.
+- **Vyhodnocujte po celých cyklech**, ne po měsících.
+
+Google doporučuje zeptat se každého, kdo vám nabízí SEO, jaké výsledky čekat, v jakém časovém rámci a jak se bude úspěch měřit. Platí to i pro AI SEO — a poctivá odpověď na otázku „kdy“ zní: změříme to na vašich datech.
+
+**Nevíte, jestli má váš web v odpovědích AI vůbec z čeho vybírat?** [AI SEO audit za 3 600 Kč](/audit/) projde web v technice, obsahu a důvěryhodnosti a dá vám prioritní seznam úprav s odhadem dopadu. Na 60minutové konzultaci se můžete doptat i na to, co po úpravách sledovat jako první — zobrazení v Search Console, značkové dotazy, návštěvy z AI, nebo poptávky. Kdo chce postupovat sám, najde strukturu stránek pro AI vyhledávání v [AI SEO Wireframe Packu za 1 490 Kč](/pack/).
+
+*Zdroje: Google Search Central — [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) (aktualizováno 10. 12. 2025), [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) (10. 12. 2025), [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) (10. 7. 2026), [Do you need an SEO?](https://developers.google.com/search/docs/fundamentals/do-i-need-seo) (5. 6. 2026) a [filtr značkových dotazů](https://developers.google.com/search/blog/2025/11/search-console-branded-filter) (20. 11. 2025, aktualizace 11. 3. 2026); nápověda Google Analytics — [atribuční trasy](https://support.google.com/analytics/answer/10595568), [nastavení atribuce](https://support.google.com/analytics/answer/10597962), [výchozí skupina kanálů](https://support.google.com/analytics/answer/9756891), [vlastní skupiny kanálů](https://support.google.com/analytics/answer/13051316), [průzkum kohorty](https://support.google.com/analytics/answer/9670133), [klíčové události](https://support.google.com/analytics/answer/13128484), [uchovávání dat](https://support.google.com/analytics/answer/7667196) a [modelování chování](https://support.google.com/analytics/answer/11161109); nápověda Search Console — [Přehled výkonu v generativní AI](https://support.google.com/webmasters/answer/16984139); [Bing Webmaster Blog](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) (10. 2. 2026); OpenAI — [Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots) a [Publishers and Developers FAQ](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq); HubSpot — [vlastnosti zdroje návštěvnosti](https://knowledge.hubspot.com/properties/understand-traffic-source-properties); [zákon č. 127/2005 Sb., § 89 odst. 3](https://e-sbirka.gov.cz/sb/2005/127/2026-01-01#par_89-odst_3); studie [Kaiser a Schulze](https://www.maximiliankaiser.org/publication/organic-llm-traffic/), [Orbit Media](https://www.orbitmedia.com/blog/conversion-rates-ai-search/) a [Amsive](https://www.amsive.com/insights/seo/does-llm-traffic-convert-better-than-organic-a-new-data-backed-study/); [Demand Local](https://www.demandlocal.com/blog/geo-funnel-velocity-statistics/) (14. 5. 2026), [FP Growth](https://fpgrowth.io/signals/measure-pipeline-roi-of-ai-search/) (23. 7. 2026), [Salesforce](https://www.salesforce.com/blog/sales/sales-velocity/) a [SparkToro](https://sparktoro.com/blog/the-3-big-problems-with-asking-how-did-you-hear-about-us-5-minute-whiteboard/). Ověřeno 14.–15. 9. 2026.*
