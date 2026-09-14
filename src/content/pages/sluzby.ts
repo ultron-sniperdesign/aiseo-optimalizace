@@ -407,7 +407,7 @@ export const myths = {
     },
     {
       name: "„Klasické SEO už neřešte“",
-      desc: "Přehled od AI stojí na indexu Googlu a ChatGPT při hledání spolupracuje s Bingem. Bez funkčního SEO základu se k vám AI ani nedostane — řešíme obojí paralelně. [Kde se SEO a AI citace liší](/blog/seo-vs-ai-citace-platformy/)",
+      desc: "Přehled od AI stojí na indexu Googlu a ChatGPT i Perplexity sbírají weby vlastními roboty. Bez funkčního SEO základu — přístupného, indexovaného a srozumitelného webu — se k vám AI ani nedostane. Řešíme obojí paralelně. [Kde se SEO a AI citace liší](/blog/seo-vs-ai-citace-platformy/)",
     },
   ],
 };
