@@ -9,6 +9,7 @@ import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { buildPersonRef } from "~/lib/jsonld";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -196,15 +197,10 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
       )}
     </section>
 
-    <!-- ANSWER BLOCK -->
-    <section class="answer">
-      <div class="answer__inner">
-        <span class="answer__mark">{ui.answerDefinition}</span>
-        <p class="answer__text">{entry.data.answer}</p>
-      </div>
-    </section>
+    <!-- KRÁTKÁ ODPOVĚĎ -->
+    <Answer kind="definice" text={entry.data.answer} />
 
-    {/* Volitelný video explainer pod answer blockem (per-section, frontmatter `video`). */}
+    {/* Volitelný video explainer pod krátkou odpovědí (per-section, frontmatter `video`). */}
     {entry.data.video && (
       <HeroVideo
         youtubeId={entry.data.video.youtubeId}
@@ -224,7 +220,6 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
     <ProofStrip />
     <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ, pokud frontmatter nemá inlineSmallContact: true -->
     {!entry.data.inlineSmallContact && <SniperDesignSmallContact />}
-
 
     <!-- FAQ -->
     {
@@ -337,45 +332,6 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
   .d-hero > *:nth-child(2) { animation-delay: 0.18s; }
   .d-hero > *:nth-child(3) { animation-delay: 0.32s; }
 
-  /* ===== ANSWER BLOCK ===== */
-  .answer {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
-  }
-  .answer__inner {
-    background: var(--color-paper-deep);
-    border: 1px solid var(--color-rule);
-    border-left: var(--answer-border) solid var(--d);
-    border-radius: 8px;
-    --answer-pad: clamp(1.75rem, 2.5vw, 2.25rem);
-    --answer-border: 3px;
-    padding: var(--answer-pad);
-    /* Pás přes celou šířku rámu: štítek nad textem, definice využije
-       celou šířku. Dřívější dvousloupcová varianta text zbytečně odsouvala. */
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-    max-width: var(--w-wide);
-  }
-  .answer__mark {
-    font-family: var(--font-sans);
-    font-size: var(--label-size);
-    font-weight: var(--label-weight);
-    color: var(--d);
-    letter-spacing: var(--label-tracking);
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .answer__mark::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    background: var(--d);
-    border-radius: 50%;
-  }
   .d-hero__meta {
     margin: 1rem 0 0;
     font-family: var(--font-sans);
@@ -383,15 +339,6 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
     line-height: 1.5;
     color: var(--color-ink-faint);
     font-variant-numeric: tabular-nums;
-  }
-
-  .answer__text {
-    font-family: var(--font-sans);
-    font-weight: 380;
-    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
-    line-height: 1.55;
-    color: var(--color-ink);
-    margin: 0;
   }
 
   /* ===== ARTICLE BODY ===== */

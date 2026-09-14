@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
 import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
@@ -47,10 +48,7 @@ const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-
     <div class="hero__text">
     <p class="lead hero__lead">{p.hero.lead}</p>
 
-    <aside class="hero__answer" role="note">
-      <span class="hero__answer-mark">{p.answer.mark}</span>
-      <p class="hero__answer-text" set:html={p.answer.text}></p>
-    </aside>
+    <Answer as="div" kind="definice" text={p.answer.text} />
 
     <p class="hero__updated">{ui.metaUpdated} {updatedStamp}</p>
 
@@ -590,6 +588,8 @@ const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-
   /* Hero head (intro chip + h1) jede přes celou šířku. 2-sloupcové až .hero__body
      (text vlevo, video vpravo) — jen když je video; fork bez videa = jednosloupcový. */
   .hero__head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  /* Krátká odpověď ve sloupci hero: rám dává .hero, komponentě ho vypneme. */
+  .hero__text { --answer-px: 0; --answer-pb: 1rem; }
   @media (min-width: 880px) {
     .hero--has-media .hero__body {
       display: grid;
@@ -730,44 +730,6 @@ const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-
   .offers__footer a:hover,
   .offers__footer a:focus-visible {
     text-decoration: underline;
-  }
-  .hero__answer {
-    margin: 0 0 1rem;
-    padding: 1rem 1.25rem;
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--color-accent);
-    border-radius: 8px;
-  }
-  .hero__answer-mark {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: var(--label-size);
-    font-weight: var(--label-weight);
-    letter-spacing: var(--label-tracking);
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.375rem;
-  }
-  .hero__answer-text {
-    margin: 0;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--color-ink);
-  }
-  .hero__answer-text :global(strong) {
-    font-weight: 600;
-    color: var(--color-ink);
-  }
-  /* set:html potomci nedostanou scope atribut — proto :global (CLAUDE.md § VI). */
-  .hero__answer-text :global(a) {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .hero__answer-text :global(a:hover),
-  .hero__answer-text :global(a:focus-visible) {
-    text-decoration-thickness: 2px;
   }
   .hero__updated {
     font-family: var(--font-sans);

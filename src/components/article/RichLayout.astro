@@ -42,6 +42,7 @@ import SeriesNav from "~/components/article/SeriesNav.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import { czDate } from "~/lib/date";
 
 interface Props {
@@ -185,13 +186,8 @@ const _bundlerHints = [
     </picture>
   </section>
 
-  <!-- ANSWER BLOCK -->
-  <section class="ranswer">
-    <div class="ranswer__inner">
-      <span class="ranswer__mark">{ui.answerShort}</span>
-      <p class="ranswer__text">{entry.data.answer}</p>
-    </div>
-  </section>
+  <!-- KRÁTKÁ ODPOVĚĎ -->
+  <Answer text={entry.data.answer} />
 
   {hubSection && (
     <section class="rhub">
@@ -371,6 +367,9 @@ const _bundlerHints = [
 <style>
   /* ===== DESIGN TOKENS — discipline color (analysis category default = SEO indigo) ===== */
   .rich-page {
+    /* Spodní odstup krátké odpovědi drží návaznost na SeriesNav (.rseries
+       se k ní přisouvá záporným okrajem). */
+    --answer-pb: clamp(2.5rem, 5vw, 3.5rem);
     --d: var(--color-seo);
     --d-tint: var(--color-seo-tint);
     --d-soft: var(--color-seo-soft);
@@ -497,12 +496,6 @@ const _bundlerHints = [
     background: var(--color-paper-deep);
   }
 
-  /* ===== ANSWER BLOCK ===== */
-  .ranswer {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 3.5rem);
-  }
   /* Odkaz na rodičovskou sekci (frontmatter `hub`). */
   .rhub {
     max-width: var(--max-section);
@@ -539,7 +532,7 @@ const _bundlerHints = [
     text-decoration-thickness: 2px;
   }
 
-  /* SeriesNav container — přisunutý pod answer block; prázdný (článek mimo
+  /* SeriesNav container — přisunutý pod krátkou odpověď; prázdný (článek mimo
      sérii) nezabírá místo, SeriesNav pak nic nerendruje. */
   .rseries {
     max-width: var(--max-section);
@@ -548,32 +541,6 @@ const _bundlerHints = [
   }
   .rseries:has(> :first-child) {
     padding-bottom: clamp(2rem, 4vw, 3rem);
-  }
-  .ranswer__inner {
-    background: var(--color-paper-deep);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--d);
-    border-radius: 10px;
-    padding: clamp(1.5rem, 2.4vw, 2rem);
-    max-width: 60rem;
-  }
-  .ranswer__mark {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--d);
-    margin-bottom: 0.5rem;
-  }
-  .ranswer__text {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    color: var(--color-ink);
-    margin: 0;
   }
 
   /* ===== ARTICLE GRID — TOC + content ===== */

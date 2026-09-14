@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
@@ -109,7 +110,7 @@ const breadcrumbJsonLd = {
 
 const allLd = [blogJsonLd, itemListJsonLd, breadcrumbJsonLd];
 
-/** Answer block — obsah v datovém modulu. */
+/** Krátká odpověď — obsah v datovém modulu. */
 const answerText = blogPage.answerText;
 ---
 
@@ -139,13 +140,8 @@ const answerText = blogPage.answerText;
       </p>
     </section>
 
-    <!-- ANSWER BLOCK -->
-    <section class="answer">
-      <div class="answer__inner">
-        <span class="answer__mark">{ui.answerDefinition}</span>
-        <p class="answer__text">{answerText}</p>
-      </div>
-    </section>
+    <!-- KRÁTKÁ ODPOVĚĎ -->
+    <Answer kind="definice" text={answerText} />
 
     <!-- FILTER CHIPS -->
     <section class="filter-bar" aria-label={ui.ariaArticleFilter}>
@@ -565,40 +561,6 @@ const answerText = blogPage.answerText;
     margin-left: auto;
     color: var(--d);
     font-weight: 600;
-  }
-
-  /* ===== ANSWER BLOCK (sjednocený s article pages) ===== */
-  .answer {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
-  }
-  .answer__inner {
-    background: var(--color-paper-deep);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--d);
-    border-radius: 8px;
-    padding: clamp(1.75rem, 2.5vw, 2.25rem);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 60rem;
-  }
-  .answer__mark {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--d);
-  }
-  .answer__text {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.55;
-    color: var(--color-ink);
-    margin: 0;
   }
 
   /* ===== FAQ (sjednocený s article pages) ===== */

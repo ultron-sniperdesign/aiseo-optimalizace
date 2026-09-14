@@ -14,7 +14,7 @@
  *   `items`, takže se nemůžou rozejít. Stránka FAQ do `jsonLd` v BaseLayout
  *   NEpředává — schéma vypisuje tahle komponenta.
  * - **Jeden formát odpovědi:** mini markdown (`**tučné**`, `` `kód` ``,
- *   `[odkaz](/url/)`). Pro zobrazení `renderFaqMarkdown`, pro schéma
+ *   `[odkaz](/url/)`). Pro zobrazení `renderInlineMarkdown`, pro schéma
  *   `faqPlainText`. HTML entity do dat nepatří — `&` se escapuje, takže
  *   `&nbsp;` by se vypsalo doslova; použij přímo znak (nezlomitelná mezera).
  * - **Akordeon, první otázka otevřená.** Nativní `<details>` bez JavaScriptu;
@@ -31,7 +31,7 @@
  * (První verze rám nenasazovala a blogové FAQ pak běželo od okraje k okraji
  * obrazovky — naměřeno 13. 9. 2026 při 1440 px: 0 až 1425 místo 73 až 1353.)
  */
-import { faqPlainText, renderFaqMarkdown } from "~/lib/jsonld";
+import { faqPlainText, renderInlineMarkdown } from "~/lib/jsonld";
 import type { FaqItem } from "~/content/pages/_types";
 
 interface Props {
@@ -99,10 +99,10 @@ const faqJsonLdSafe = JSON.stringify(faqJsonLd).replace(/</g, "\\u003c");
         {items.map((item, i) => (
           <details class="faq__item" open={i === 0}>
             <summary class="faq__q">
-              <span class="faq__q-text" set:html={renderFaqMarkdown(item.q)} />
+              <span class="faq__q-text" set:html={renderInlineMarkdown(item.q)} />
               <span class="faq__icon" aria-hidden="true" />
             </summary>
-            <div class="faq__a" set:html={renderFaqMarkdown(item.a)} />
+            <div class="faq__a" set:html={renderInlineMarkdown(item.a)} />
           </details>
         ))}
       </div>

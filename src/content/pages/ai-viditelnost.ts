@@ -40,8 +40,8 @@ export const hero = {
  * tří pojmů, které se v praxi pletou.
  */
 export const answer = {
-  mark: "Co je AI viditelnost",
-  text: "<strong>AI viditelnost</strong> je míra, v jaké se web objevuje v odpovědích systémů AI — v Přehledu od AI a v režimu AI v Googlu, v ChatGPT, Gemini, Claude, Perplexity, Copilotu i v Seznam Asistentovi. Měří se zobrazeními, návštěvami a zmínkami. Plná definice je ve <a href=\"/slovnik/ai-viditelnost/\">slovníku</a>.",
+  /** Mini markdown — vykresluje komponenta Answer (štítek „Stručná definice“). */
+  text: "**AI viditelnost** je míra, v jaké se web objevuje v odpovědích systémů AI — v Přehledu od AI a v režimu AI v Googlu, v ChatGPT, Gemini, Claude, Perplexity, Copilotu i v Seznam Asistentovi. Měří se zobrazeními, návštěvami a zmínkami. Plná definice je ve [slovníku](/slovnik/ai-viditelnost/).",
   distinctions: [
     { term: "Zmínka", text: "odpověď jmenuje vaši značku — bez odkazu" },
     { term: "Citace", text: "odpověď uvede váš web jako zdroj s odkazem" },

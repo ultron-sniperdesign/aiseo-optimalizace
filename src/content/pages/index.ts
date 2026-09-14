@@ -70,11 +70,11 @@ export const hero = {
  * Krátká odpověď pod hero — jediné místo na webu, kde je definice „AI SEO“
  * na homepage. Do 8. 9. 2026 tu nebyla vůbec (audit F13), přestože ji vlastní
  * sekce 03 předepisuje jako první prvek stránky připravené pro AI.
- * Drží 40–60 slov; `mark` je štítek nad textem.
+ * Drží 40–60 slov; štítek („Stručná definice“) dává komponenta Answer.
  */
 export const answer = {
-  mark: "Co je AI SEO",
-  text: "<strong>AI SEO</strong> je práce s webem tak, aby ho kromě lidí zvládly přečíst a citovat i systémy AI. Odehrává se ve třech vrstvách: <strong>AI SEO</strong> je to, co děláte; <strong>AI vyhledávání</strong> je místo, kde se to projeví — <a href=\"/ai-mode/\">režim AI</a>, <a href=\"/prehled-od-ai/\">Přehled od AI</a>, ChatGPT, Gemini, Claude, Perplexity a Seznam Asistent; <strong>AI viditelnost</strong> je výsledek, který <a href=\"/ai-viditelnost/\">měříte</a>.",
+  /** Mini markdown — vykresluje komponenta Answer (štítek „Stručná definice“). */
+  text: "**AI SEO** je práce s webem tak, aby ho kromě lidí zvládly přečíst a citovat i systémy AI. Odehrává se ve třech vrstvách: **AI SEO** je to, co děláte; **AI vyhledávání** je místo, kde se to projeví — [režim AI](/ai-mode/), [Přehled od AI](/prehled-od-ai/), ChatGPT, Gemini, Claude, Perplexity a Seznam Asistent; **AI viditelnost** je výsledek, který [měříte](/ai-viditelnost/).",
 };
 
 export const pillDefs: PillDef[] = [

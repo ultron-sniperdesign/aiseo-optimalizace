@@ -9,6 +9,7 @@
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import DataBars from "~/components/blocks/DataBars.astro";
 import * as p from "~/content/pages/ai-viditelnost";
 import { czDate } from "~/lib/date";
@@ -46,10 +47,7 @@ import { ui } from "~/i18n/strings";
     </section>
 
     <!-- ===== KRÁTKÁ ODPOVĚĎ + tři pojmy, které se pletou ===== -->
-    <section class="aiv-answer">
-      <div class="aiv-answer__inner">
-        <span class="aiv-answer__mark">{p.answer.mark}</span>
-        <p class="aiv-answer__text" set:html={p.answer.text} />
+    <Answer kind="definice" text={p.answer.text}>
         <dl class="aiv-answer__terms">
           {p.answer.distinctions.map((d) => (
             <div class="aiv-answer__term">
@@ -59,8 +57,7 @@ import { ui } from "~/i18n/strings";
           ))}
         </dl>
         <p class="aiv-answer__note">{p.answer.distinctionsNote}</p>
-      </div>
-    </section>
+    </Answer>
 
     <!-- ===== DŮKAZ 1 — reálný screenshot reportu ===== -->
     <section class="aiv-shot" aria-label="Reálný screenshot ze Search Console">
@@ -213,6 +210,8 @@ import { ui } from "~/i18n/strings";
 <style>
   .aiv {
     --d: var(--color-seo);
+    --answer-mt: clamp(2rem, 5vw, 3rem);
+    --answer-pb: 0;
   }
 
   /* ===== Sdílené hlavičky sekcí ===== */
@@ -340,44 +339,12 @@ import { ui } from "~/i18n/strings";
     margin: -0.75rem 0 1.75rem;
   }
 
-  /* ===== Krátká odpověď — stejný rám jako screenshoty (--max-section) ===== */
-  .aiv-answer {
-    max-width: var(--max-section);
-    margin: clamp(2rem, 5vw, 3rem) auto 0;
-    padding: 0 var(--space-section-x);
-  }
-  .aiv-answer__inner {
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--d);
-    border-radius: 8px;
-    padding: clamp(1.25rem, 3vw, 1.75rem);
-  }
-  .aiv-answer__mark {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: var(--label-size);
-    font-weight: var(--label-weight);
-    letter-spacing: var(--label-tracking);
-    text-transform: uppercase;
-    color: var(--d);
-    margin-bottom: 0.5rem;
-  }
-  .aiv-answer__text {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--color-ink);
-    margin: 0;
-    max-width: var(--w-read);
-  }
-  /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
-  .aiv-answer__text :global(strong) { font-weight: 600; }
+  /* ===== Krátká odpověď — rozlišení pojmů ve slotu komponenty Answer ===== */
   .aiv-answer__terms {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin: 1.25rem 0 0;
+    margin: 0.375rem 0 0;
   }
   .aiv-answer__term dt {
     font-family: var(--font-sans);
@@ -395,7 +362,7 @@ import { ui } from "~/i18n/strings";
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--color-ink-muted);
-    margin: 1rem 0 0;
+    margin: 0;
   }
 
   /* ===== Tři vrstvy měření ===== */
@@ -650,9 +617,4 @@ import { ui } from "~/i18n/strings";
   }
   /* Obnoveno: část seskupeného pravidla, které sdílelo deklarace se
      smazaným FAQ selektorem (migrace na komponentu Faq). */
-  .aiv-answer__text :global(a) {
-    color: var(--d);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
 </style>

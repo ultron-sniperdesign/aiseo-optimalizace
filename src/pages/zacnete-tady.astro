@@ -8,11 +8,12 @@
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { ui } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 import * as p from "~/content/pages/zacnete-tady";
-import { buildPersonRef, renderFaqMarkdown } from "~/lib/jsonld";
+import { buildPersonRef, renderInlineMarkdown } from "~/lib/jsonld";
 import { czDate } from "~/lib/date";
 import { getCollection } from "astro:content";
 import { groups as glossaryGroups } from "~/content/pages/slovnik";
@@ -78,12 +79,7 @@ const howtoJsonLd = {
     </section>
 
     <!-- ===== KRÁTKÁ ODPOVĚĎ ===== -->
-    <section class="st-answer">
-      <div class="st-answer__inner">
-        <span class="st-answer__mark">{ui.answerShort}</span>
-        <p class="st-answer__text">{p.hero.answer}</p>
-      </div>
-    </section>
+    <Answer text={p.hero.answer} />
 
     <!-- ===== 3 FÁZE ===== -->
     <section class="st-phases" aria-label={p.howtoName}>
@@ -162,7 +158,7 @@ const howtoJsonLd = {
       <div class="st-cta__inner">
         <div>
           <h2 class="st-cta__title">{p.cta.title}</h2>
-          <p class="st-cta__lead" set:html={renderFaqMarkdown(p.cta.lead)}></p>
+          <p class="st-cta__lead" set:html={renderInlineMarkdown(p.cta.lead)}></p>
           <p class="st-cta__soft">
             <a href={p.cta.soft.href}>{p.cta.soft.label} →</a>
           </p>
@@ -184,7 +180,7 @@ const howtoJsonLd = {
 <style>
   /* FreeStrip má vlastní rám sekce; tenhle obal už odsazení aplikoval,
      takže ho komponentě vypneme, ať se nesečte dvakrát. */
-  .st { --free-strip-px: 0; --faq-px: 0; }
+  .st { --free-strip-px: 0; --faq-px: 0; --answer-px: 0; --answer-mt: clamp(1.75rem, 4vw, 2.5rem); --answer-pb: 0; }
   .st {
     max-width: var(--max-section);
     margin: 0 auto;
@@ -223,36 +219,6 @@ const howtoJsonLd = {
     line-height: 1.6;
     color: var(--color-ink-muted);
     max-width: 44rem;
-    margin: 0;
-  }
-
-  /* ===== KRÁTKÁ ODPOVĚĎ ===== */
-  .st-answer {
-    margin-top: clamp(1.75rem, 4vw, 2.5rem);
-  }
-  .st-answer__inner {
-    border-left: 3px solid var(--color-accent);
-    background: var(--color-paper-deep);
-    border-radius: 0 8px 8px 0;
-    padding: 1.25rem 1.5rem;
-    max-width: 52rem;
-  }
-  .st-answer__mark {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-  }
-  .st-answer__text {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--color-ink);
     margin: 0;
   }
 

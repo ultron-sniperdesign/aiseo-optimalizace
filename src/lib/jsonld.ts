@@ -37,7 +37,7 @@ export function buildPersonRef(siteOrigin: string): Record<string, unknown> {
  *
  * Odpovědi ve frontmatteru nesou mini markdown (odkaz, tučné, code) — čtenář
  * ho v HTML dostane vykreslený, ale do `acceptedAnswer.text` patří text, ne
- * jeho zápis. Bez tohohle kroku četly stroje „...rozpad nákladů](/blog/...)...".
+ * jeho zápis. Bez tohohle kroku četly stroje „...rozpad nákladů](/blog/...)...“.
  * Zjištěno 7. 9. 2026 na /geo/, kde takhle odcházelo 8 z 10 odpovědí.
  *
  * JEDINÉ místo, kde se to řeší — všechny stránky, které staví FAQPage ručně,
@@ -51,12 +51,13 @@ export function faqPlainText(text: string): string {
 }
 
 /**
- * FAQ odpověď jako HTML pro čtenáře — protějšek `faqPlainText`.
+ * Mini markdown jako HTML pro čtenáře — protějšek `faqPlainText`.
  *
- * Odpovědi ve frontmatteru nesou mini markdown (tučné, inline kód, odkaz).
- * Tahle funkce ho vykreslí; nejdřív ale escapuje `&`, `<` a `>`, takže se
- * z obsahu nedá propašovat vlastní značka. Plný markdown záměrně neumí —
- * tyhle tři vzory jsou všechno, co v FAQ používáme.
+ * Krátké texty v datech (FAQ, krátká odpověď, buňky tabulek, věty v CTA) nesou
+ * mini markdown: tučné, inline kód, odkaz. Tahle funkce ho vykreslí; nejdřív
+ * ale escapuje `&`, `<` a `>`, takže se z obsahu nedá propašovat vlastní
+ * značka. Plný markdown záměrně neumí — tyhle tři vzory jsou všechno, co
+ * v krátkých textech používáme.
  *
  * Proč to sedí tady a ne v šabloně: funkce existovala ve dvou identických
  * kopiích (`[slug].astro`, `seo-vs-geo-vs-aeo-vs-aio.astro`) a `RichLayout`
@@ -64,8 +65,11 @@ export function faqPlainText(text: string): string {
  * zpětné apostrofy. Naměřeno 9. 9. 2026: **13 odpovědí na 10 blogových
  * stránkách**, z toho 4 na `jak-vypnout-ai-overview` (nejčtenější článek webu),
  * kde se takhle rozbil i parametr `&udm=14`, který má čtenář opsat.
+ *
+ * Do 14. 9. 2026 se jmenovala `renderFaqMarkdown`; přejmenovaná, když ji
+ * kromě FAQ začala používat i komponenta krátké odpovědi.
  */
-export function renderFaqMarkdown(text: string): string {
+export function renderInlineMarkdown(text: string): string {
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")

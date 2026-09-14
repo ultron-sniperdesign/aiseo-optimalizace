@@ -10,6 +10,7 @@
  * JSON-LD: DefinedTerm navázaný na DefinedTermSet indexu.
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
@@ -95,16 +96,12 @@ const termJsonLd = {
       {term.aka && <p class="th-hero__aka">{term.aka}</p>}
     </section>
 
-    <!-- Definice = answer block (citovatelná) -->
-    <section class="th-answer">
-      <div class="th-answer__inner">
-        <span class="th-answer__mark">{ui.answerDefinition}</span>
-        <p class="th-answer__text">{term.def}</p>
-        {term.updated && (
-          <p class="th-answer__updated">{ui.metaUpdated} {czDate(term.updated)}</p>
-        )}
-      </div>
-    </section>
+    <!-- Definice = krátká odpověď (citovatelná) -->
+    <Answer kind="definice" text={term.def}>
+      {term.updated && (
+        <p class="th-answer__updated">{ui.metaUpdated} {czDate(term.updated)}</p>
+      )}
+    </Answer>
 
     {
       longParas.length > 0 && (
@@ -168,14 +165,19 @@ const termJsonLd = {
 </BaseLayout>
 
 <style>
+  /* Datum revize hesla — vkládá se do slotu komponenty Answer. */
   .th-answer__updated {
-    margin: 0.6rem 0 0;
+    margin: 0;
     font-size: 0.875rem;
     font-weight: 400;
     color: var(--text-muted, inherit);
   }
 
   .th {
+    /* Obal odsazuje sám — krátké odpovědi rám vypneme. */
+    --answer-px: 0;
+    --answer-mt: clamp(1.5rem, 3vw, 2rem);
+    --answer-pb: 0;
     max-width: 46rem;
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
@@ -226,33 +228,6 @@ const termJsonLd = {
     font-family: var(--font-sans);
     font-size: 1rem;
     color: var(--color-ink-muted);
-    margin: 0;
-  }
-
-  .th-answer { margin-top: clamp(1.5rem, 3vw, 2rem); }
-  .th-answer__inner {
-    background: var(--color-paper-deep);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--color-accent);
-    border-radius: 10px;
-    padding: clamp(1.25rem, 2.4vw, 1.75rem);
-  }
-  .th-answer__mark {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-  }
-  .th-answer__text {
-    font-family: var(--font-sans);
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.65;
-    color: var(--color-ink);
     margin: 0;
   }
 

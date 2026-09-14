@@ -14,6 +14,7 @@ import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { buildPersonRef } from "~/lib/jsonld";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import type { GetStaticPaths } from "astro";
 import { czDate } from "~/lib/date";
 
@@ -172,13 +173,8 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
       </div>
     </section>
 
-    <!-- ANSWER BLOCK -->
-    <section class="answer">
-      <div class="answer__inner">
-        <span class="answer__mark">{ui.answerShort}</span>
-        <p class="answer__text">{entry.data.answer}</p>
-      </div>
-    </section>
+    <!-- KRÁTKÁ ODPOVĚĎ -->
+    <Answer text={entry.data.answer} />
 
     {hubSection && (
       <section class="hub-slot">
@@ -383,12 +379,6 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
   .hero > *:nth-child(3) { animation-delay: 0.28s; }
   .hero > *:nth-child(4) { animation-delay: 0.40s; }
 
-  /* ===== ANSWER BLOCK ===== */
-  .answer {
-    max-width: var(--max-section);
-    margin: 0 auto;
-    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
-  }
   .series-slot {
     max-width: var(--max-section);
     margin: calc(-1 * clamp(1.25rem, 2.5vw, 2rem)) auto 0;
@@ -396,33 +386,6 @@ const ogImage = `/og/${entry.data.slug}.jpg`;
   }
   .series-slot:has(> :first-child) {
     padding-bottom: clamp(2rem, 4vw, 3rem);
-  }
-  .answer__inner {
-    background: var(--color-paper-deep);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--d);
-    border-radius: 8px;
-    padding: clamp(1.75rem, 2.5vw, 2.25rem);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 60rem;
-  }
-  .answer__mark {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--d);
-  }
-  .answer__text {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.55;
-    color: var(--color-ink);
-    margin: 0;
   }
 
   /* ===== ARTICLE ===== */

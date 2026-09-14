@@ -5,6 +5,7 @@ import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import type { GetStaticPaths } from "astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import { ui } from "~/i18n/strings";
 
 export const getStaticPaths = (async () => {
@@ -95,15 +96,8 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
       </div>
     </section>
 
-    <!-- ANSWER BLOCK -->
-    {entry.data.answer && (
-      <section class="svc-answer">
-        <div class="svc-answer__inner">
-          <span class="svc-answer__mark">Stručná odpověď</span>
-          <p class="svc-answer__text">{entry.data.answer}</p>
-        </div>
-      </section>
-    )}
+    <!-- KRÁTKÁ ODPOVĚĎ -->
+    {entry.data.answer && <Answer kind="definice" text={entry.data.answer} />}
 
     <!-- CO SLUŽBA OBSAHUJE — MDX body -->
     <section class="svc-body">
@@ -170,9 +164,13 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     max-width: var(--max-section);
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(2rem, 4vw, 3rem);
-    /* Obal už dává vodorovné odsazení — komponentě FAQ ho vypneme,
-       jinak by začínala o 58 px vpravo (188 místo 130 px při 1440). */
+    /* Obal už dává vodorovné odsazení — komponentám FAQ a krátké odpovědi
+       ho vypneme, jinak by začínaly o 58 px vpravo (188 místo 130 px při 1440). */
     --faq-px: 0;
+    --answer-px: 0;
+    --answer-mt: clamp(1.5rem, 3vw, 2.5rem);
+    /* Spodní mezeru dává horní okraj .svc-body (48 px) — vlastní by se přičetla. */
+    --answer-pb: 0;
   }
 
   /* ===== HERO ===== */
@@ -254,40 +252,6 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     margin-top: 0.5rem;
   }
 
-  /* ===== ANSWER BLOCK ===== */
-  .svc-answer {
-    margin: clamp(1.5rem, 3vw, 2.5rem) 0;
-  }
-  .svc-answer__inner {
-    background: linear-gradient(
-      135deg,
-      color-mix(in oklch, var(--color-accent) 7%, var(--color-paper)) 0%,
-      color-mix(in oklch, var(--color-aio) 5%, var(--color-paper)) 100%
-    );
-    border-left: 3px solid var(--color-accent);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    max-width: 52rem;
-  }
-  .svc-answer__mark {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-  }
-  .svc-answer__text {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 1.0625rem;
-    line-height: 1.55;
-    color: var(--color-ink);
-    margin: 0;
-  }
-
   /* ===== BODY (MDX) ===== */
   .svc-body {
     margin: clamp(2rem, 4vw, 3rem) 0;
@@ -367,8 +331,6 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     color: var(--color-ink);
     margin: 0;
   }
-
-
 
   /* ===== UPSELL ===== */
   .svc-upsell {

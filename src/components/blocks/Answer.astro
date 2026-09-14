@@ -1,0 +1,125 @@
+---
+/**
+ * Answer — krátká odpověď nahoře na stránce. Jediná implementace webu.
+ *
+ * Proč existuje: do 14. 9. 2026 vykresloval web krátkou odpověď ve 12 souborech,
+ * každý po svém — na 238 stránkách čtyři různé pravé okraje karty (962 / 1023 /
+ * 1090 / 1295 px při 1440), pět velikostí štítku (11,5–14 px, přestože pravidlo
+ * štítků určuje jednu) a pět různých popisků („Stručná odpověď“, „Stručná
+ * definice“, „Série“, „Co je AI viditelnost“, „Co je AI SEO“). Šablona série
+ * v komentáři přiznávala „kopie .ranswer* z článku“. Stejný vzor, jaký
+ * 13. 9. 2026 vyřešila komponenta Faq.
+ *
+ * Pravidla, která komponenta vynucuje:
+ * - **Jeden vzhled** — převzatý ze sekcí, jediné varianty popsané v CLAUDE.md:
+ *   karta sahá na `--w-wide`, štítek je nad textem a bere tokeny `--label-*`.
+ * - **Dva štítky podle významu, žádný vlastní.** `kind="definice"` pro stránku,
+ *   která říká, co něco je (sekce, slovník, detail služby), `kind="odpoved"` pro
+ *   stránku, která odpovídá na otázku (článek, pilíř, rozcestník).
+ * - **Jeden formát textu:** mini markdown (`**tučné**`, `` `kód` ``,
+ *   `[odkaz](/url/)`) přes `renderInlineMarkdown`. HTML entity do dat nepatří.
+ * - Doplňkový obsah pod textem (rozlišení pojmů, datum revize) jde přes slot;
+ *   jeho styly drží stránka, která ho vkládá.
+ *
+ * Rám: komponenta si nasadí rám stránky (`--max-section` + vodorovné odsazení),
+ * stejně jako Faq. Obal, který odsazuje sám, nastaví `--answer-px: 0`, jinak by
+ * se odsazení sečetlo. Svislé odstupy přes `--answer-mt` a `--answer-pb`
+ * (výchozí je spodní odstup ze sekcí). Akcent následuje `--d` stránky.
+ *
+ * Velikost textu a vnitřní odsazení se řídí šířkou bloku (jednotky `cqi`), ne
+ * oknem: v pásu přes celý rám (sekce, článek) má text 20 px, ve sloupci hero
+ * na homepage nebo ve sloupci slovníku klesne k 16 px. Jeden vzhled, který
+ * funguje v obou místech — bez druhé varianty komponenty.
+ */
+import { renderInlineMarkdown } from "~/lib/jsonld";
+import { ui } from "~/i18n/strings";
+
+interface Props {
+  /** Text odpovědi v mini markdownu. */
+  text: string;
+  /** Co blok nese — určuje štítek. */
+  kind?: "definice" | "odpoved";
+  /** `div`, když blok stojí uvnitř jiné sekce (třeba v hero). */
+  as?: "section" | "div";
+}
+
+const { text, kind = "odpoved", as: Tag = "section" } = Astro.props;
+const label = kind === "definice" ? ui.answerDefinition : ui.answerShort;
+---
+
+<Tag class="answer">
+  <div class="answer__inner">
+    <span class="answer__mark">{label}</span>
+    <p class="answer__text" set:html={renderInlineMarkdown(text)} />
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .answer {
+    --answer-accent: var(--d, var(--color-accent));
+    container-type: inline-size;
+    max-width: var(--max-section);
+    margin: var(--answer-mt, 0) auto 0;
+    padding: 0 var(--answer-px, var(--space-section-x)) var(--answer-pb, clamp(2.5rem, 5vw, 4rem));
+  }
+  .answer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    max-width: var(--w-wide);
+    /* 3cqi: v rámu 1165 px (sekce při 1440) = 35 px, ve sloupci 580 px = 20 px. */
+    padding: clamp(1.25rem, 3cqi, 2.25rem);
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--answer-accent);
+    border-radius: 8px;
+  }
+  .answer__mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--answer-accent);
+  }
+  .answer__mark::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--answer-accent);
+  }
+  .answer__text {
+    margin: 0;
+    font-family: var(--font-sans);
+    /* 1.7cqi: v rámu 1165 px = 20 px, ve sloupci do ~940 px = 16 px. */
+    font-size: clamp(1rem, 1.7cqi, 1.25rem);
+    font-weight: 380;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+
+  /* Text se vkládá přes set:html — potomci nedostanou atribut `data-astro-cid`,
+     proto :global (CLAUDE.md § VI). */
+  .answer__text :global(strong) {
+    font-weight: 600;
+  }
+  .answer__text :global(a) {
+    color: var(--answer-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .answer__text :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+    word-break: break-word;
+  }
+</style>

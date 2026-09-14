@@ -8,6 +8,7 @@
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import AuthorByline from "~/components/article/AuthorByline.astro";
 import { existsSync } from "node:fs";
@@ -16,7 +17,7 @@ import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { SERIES, SERIES_BASE } from "~/i18n/series";
 import { czDate } from "~/lib/date";
-import { buildPersonRef, renderFaqMarkdown } from "~/lib/jsonld";
+import { buildPersonRef, renderInlineMarkdown } from "~/lib/jsonld";
 
 export async function getStaticPaths() {
   return SERIES.map((s) => ({ params: { serie: s.slug }, props: { s } }));
@@ -148,14 +149,10 @@ const collectionJsonLd = {
       </picture>
     </section>
 
-    <!-- ANSWER BLOCK — jako na článku -->
-    <section class="se-answer">
-      <div class="se-answer__inner">
-        <span class="se-answer__mark">{ui.seriesEyebrow}</span>
-        <p class="se-answer__text">{s.answer ?? s.intro}</p>
-        {s.answer && <p class="se-answer__intro">{s.intro}</p>}
-      </div>
-    </section>
+    <!-- KRÁTKÁ ODPOVĚĎ -->
+    <Answer text={s.answer ?? s.intro}>
+      {s.answer && <p class="se-answer__intro">{s.intro}</p>}
+    </Answer>
 
     <section class="se-start">
       {
@@ -213,7 +210,7 @@ const collectionJsonLd = {
             </thead>
             <tbody>
               {s.platforms.rows.map((row) => (
-                <tr>{row.map((cell) => <td set:html={renderFaqMarkdown(cell)} />)}</tr>
+                <tr>{row.map((cell) => <td set:html={renderInlineMarkdown(cell)} />)}</tr>
               ))}
             </tbody>
           </table>
@@ -257,7 +254,7 @@ const collectionJsonLd = {
         <div class="se-cta__inner">
           <div>
             <h2 class="se-cta__title">{s.cta.title}</h2>
-            <p class="se-cta__lead" set:html={renderFaqMarkdown(s.cta.lead)} />
+            <p class="se-cta__lead" set:html={renderInlineMarkdown(s.cta.lead)} />
             {s.cta.soft && (
               <p class="se-cta__soft"><a href={s.cta.soft.href}>{s.cta.soft.label} →</a></p>
             )}
@@ -280,7 +277,7 @@ const collectionJsonLd = {
 <style>
   /* FreeStrip má vlastní rám sekce; tenhle obal už odsazení aplikoval,
      takže ho komponentě vypneme, ať se nesečte dvakrát. */
-  .se { --free-strip-px: 0; --faq-px: 0; --faq-my: 0; }
+  .se { --free-strip-px: 0; --faq-px: 0; --faq-my: 0; --answer-px: 0; --answer-mt: clamp(2rem, 4vw, 3rem); --answer-pb: 0; }
   .se {
     --d: var(--color-seo);
     --d-tint: var(--color-seo-tint);
@@ -395,36 +392,6 @@ const collectionJsonLd = {
   }
   .se-hero__cta:hover { background: var(--d); }
 
-  /* ===== ANSWER BLOCK — kopie .ranswer* z článku ===== */
-  .se-answer {
-    margin-top: clamp(2rem, 4vw, 3rem);
-  }
-  .se-answer__inner {
-    background: var(--color-paper-deep);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--d);
-    border-radius: 10px;
-    padding: clamp(1.5rem, 2.4vw, 2rem);
-    max-width: 60rem;
-  }
-  .se-answer__mark {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--d);
-    margin-bottom: 0.5rem;
-  }
-  .se-answer__text {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    color: var(--color-ink);
-    margin: 0;
-  }
   .se-start {
     margin-top: clamp(1.5rem, 3vw, 2rem);
   }
@@ -616,11 +583,12 @@ const collectionJsonLd = {
   .se-related__links a:focus-visible { text-decoration: underline; }
   /* set:html potomci nedostanou scope atribut (CLAUDE.md § VI). */
   
+  /* Úvod série pod krátkou odpovědí — vkládá se do slotu komponenty Answer. */
   .se-answer__intro {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
     color: var(--color-ink-muted);
-    margin: 0.75rem 0 0;
+    margin: 0;
   }
   .se-cta {
     margin-top: clamp(2.5rem, 5vw, 4rem);

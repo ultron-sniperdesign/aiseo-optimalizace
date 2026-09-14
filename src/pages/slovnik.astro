@@ -10,6 +10,7 @@
  * Postaveno na keyword researchi _source/_keyword-research/slovnik-ai-20260718/.
  */
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Answer from "~/components/blocks/Answer.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import * as p from "~/content/pages/slovnik";
@@ -69,10 +70,7 @@ const termSetJsonLd = {
       <h1 class="gl-hero__title">{p.hero.title}</h1>
       <p class="gl-hero__lead">{p.hero.lead}</p>
 
-      <div class="gl-answer">
-        <span class="gl-answer__mark">{ui.answerDefinition}</span>
-        <p class="gl-answer__text">{p.hero.answer}</p>
-      </div>
+      <Answer as="div" kind="definice" text={p.hero.answer} />
 
       <p class="gl-model" set:html={p.hero.model} />
 
@@ -124,6 +122,10 @@ const termSetJsonLd = {
 
 <style>
   .gl {
+    /* Obal odsazuje sám — krátké odpovědi rám vypneme (jinak +58 px vpravo). */
+    --answer-px: 0;
+    --answer-mt: clamp(1.25rem, 2.5vw, 1.75rem);
+    --answer-pb: 0;
     max-width: 56rem;
     margin: 0 auto;
     padding: clamp(3rem, 8vh, 5rem) var(--space-section-x) clamp(3rem, 6vw, 5rem);
@@ -148,31 +150,6 @@ const termSetJsonLd = {
     font-size: clamp(2.25rem, 5.5vw, 3.75rem);
     color: var(--color-ink);
     margin: 0 0 1rem;
-  }
-  .gl-answer {
-    margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
-    max-width: var(--w-read);
-    padding: clamp(1rem, 2vw, 1.25rem) clamp(1.1rem, 2.2vw, 1.4rem);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--color-accent);
-    border-radius: 0.5rem;
-    background: var(--surface-soft, transparent);
-  }
-
-  .gl-answer__mark {
-    display: block;
-    font-size: var(--label-size);
-    font-weight: var(--label-weight);
-    letter-spacing: var(--label-tracking);
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.4rem;
-  }
-
-  .gl-answer__text {
-    margin: 0;
-    font-weight: 600;
-    line-height: 1.6;
   }
 
   .gl-model {
