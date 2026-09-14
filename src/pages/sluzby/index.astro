@@ -1,9 +1,13 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
 import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import * as p from "~/content/pages/sluzby";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
+import { renderInlineMarkdown as md } from "~/lib/jsonld";
+import { czDate } from "~/lib/date";
+import { ui } from "~/i18n/strings";
 
 /**
  * /sluzby/ — prodejní landing „Editorial důkaz" (koncept A, 2026-08).
@@ -13,15 +17,60 @@ import Faq from "~/components/blocks/Faq.astro";
  * karta v hero. Důkazy nesou přesvědčení, grafika ustupuje.
  *
  * Obsah: content/pages/sluzby.ts (per-mutace). Kotvy #kroky, #moduly a #obsah
- * jsou odkazované z detailních stránek retainerů — neměnit bez redirectu.
+ * jsou odkazované z detailních stránek služeb — neměnit bez redirectu.
  * Důkazy nese sdílený ProofStrip (kompaktní, čísla s vysvětlením) — vlastní
- * „výkaz" byl vizuálně velký a bez kontextu (zpětná vazba 2026-08-09).
+ * „výkaz“ byl vizuálně velký a bez kontextu (zpětná vazba 2026-08-09).
+ *
+ * Cíl stránky je objednat audit (uživatel, 14. 9. 2026) — proto tu už není
+ * blok Sniper Design s nabídkou nezávazné konzultace.
  */
-const jsonLd = [p.offerCatalogJsonLd];
+
+/* JSON-LD katalog — ceny se skládají z dat stránky, aby se schéma nerozešlo
+   s ceníkem (dřív v něm byly jen 2 nabídky ze 7 cen na stránce). */
+const PUBLISHER = { "@id": "https://aiseo-optimalizace.cz/#publisher" };
+const bezDph = (price: string, unitText?: string) => ({
+  "@type": unitText ? "UnitPriceSpecification" : "PriceSpecification",
+  price,
+  priceCurrency: "CZK",
+  valueAddedTaxIncluded: false,
+  ...(unitText ? { unitText } : {}),
+});
+const cislo = (cena: string) => cena.replace(/[^\d]/g, "");
+const offerCatalog = {
+  ...p.offerCatalogJsonLd,
+  itemListElement: [
+    {
+      "@type": "Offer",
+      name: p.offer.jsonLdName,
+      price: p.offer.priceValue,
+      priceCurrency: "CZK",
+      priceSpecification: bezDph(p.offer.priceValue),
+      url: "https://aiseo-optimalizace.cz/audit/",
+      offeredBy: PUBLISHER,
+    },
+    ...[p.categoryTiers, p.productTiers].flatMap((group) =>
+      group.tiers.map((tier) => ({
+        "@type": "Offer",
+        name: `${group.title} — ${tier.name}`,
+        priceSpecification: bezDph(cislo(tier.unitPrice), group.unitText),
+        offeredBy: PUBLISHER,
+      })),
+    ),
+    {
+      "@type": "Offer",
+      name: p.compareOffer.name,
+      price: p.compareOffer.priceValue,
+      priceCurrency: "CZK",
+      priceSpecification: bezDph(p.compareOffer.priceValue),
+      offeredBy: PUBLISHER,
+    },
+  ],
+};
+const jsonLd = [offerCatalog];
 
 /** Glyf vlivu — mono, bez emoji (editorial tón): ● velký · ◐ střední · ○ menší */
 const impactGlyph: Record<number, string> = { 3: "●", 2: "◐", 1: "○" };
-const impactLabel: Record<number, string> = { 3: "velký vliv", 2: "střední vliv", 1: "menší vliv" };
+const impactLabel = p.labels.impact;
 const modulesByImpact = [...p.modules].sort((a, b) => b.impact - a.impact);
 
 /** Disciplínové barvy kroků: audit=accent, technika=AI Mode, obsah=AEO. */
@@ -37,6 +86,7 @@ const stepColors = [
   description={p.meta.description}
   image={p.meta.ogImage}
   jsonLd={jsonLd}
+  dateModified={p.meta.updated}
   breadcrumb={[{ label: "Služby", href: "/sluzby/" }]}
 >
   <div class="ed">
@@ -52,6 +102,8 @@ const stepColors = [
             <a class="btn btn--ghost" href={p.hero.ctaSecondary.href}>{p.hero.ctaSecondary.label}</a>
           </div>
           <p class="hero__trust">{p.hero.trustLine}</p>
+          <div class="hero__partners"><PartnerBadges /></div>
+          <p class="hero__updated">{ui.metaUpdated} {czDate(p.meta.updated)}</p>
         </div>
 
         <figure class="shot r r4" aria-label={p.heroShot.ariaLabel}>
@@ -72,12 +124,15 @@ const stepColors = [
       </div>
     </section>
 
+    <!-- ===== KRÁTKÁ ODPOVĚĎ ===== -->
+    <Answer text={p.answer.text} />
+
     <!-- ===== DŮKAZ — sdílený ProofStrip (kompaktní, s kontextem) ===== -->
     <ProofStrip />
 
     <!-- ===== TŘI KROKY ===== -->
     <section class="steps wrap" id="kroky" aria-labelledby="steps-title">
-      <span class="eyebrow"><span class="eyebrow__num">01</span> Postup</span>
+      <span class="eyebrow"><span class="eyebrow__num">01</span> {p.labels.stepsEyebrow}</span>
       <h2 id="steps-title" class="steps__intro" set:html={p.steps.introHtml}></h2>
 
       {p.steps.items.map((s, idx) => (<>
@@ -88,11 +143,11 @@ const stepColors = [
           </div>
           <div>
             <h3>{s.title}</h3>
-            <p class="step__desc">{s.desc}</p>
+            <p class="step__desc" set:html={md(s.desc)}></p>
 
             <div class="step__act">
               <p class="step__price" set:html={s.priceHtml}></p>
-              <a class={`btn ${s.cta.gold ? "btn--gold" : "btn--ghost"}`} href={s.cta.href} data-sluzba={("sluzba" in s.cta && s.cta.sluzba) || undefined}>
+              <a class={`btn ${s.cta.gold ? "btn--gold" : "btn--ghost"}`} href={s.cta.href}>
                 {s.cta.label} <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -108,7 +163,7 @@ const stepColors = [
                     <span aria-hidden="true">{impactGlyph[m.impact]}</span> {impactLabel[m.impact]}
                   </span>
                   <h4 class="mcard__name">{m.name}</h4>
-                  <p class="mcard__desc">{m.desc}</p>
+                  <p class="mcard__desc" set:html={md(m.desc)}></p>
                 </article>
               ))}
             </div>
@@ -123,7 +178,7 @@ const stepColors = [
     <section class="content wrap" id="obsah" aria-labelledby="content-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">02</span> {p.stepContent.eyebrow}</span>
-        <span class="sec-head__meta">ceny bez DPH</span>
+        <span class="sec-head__meta">{p.labels.pricesMeta}</span>
       </div>
       <h2 id="content-title" class="content__title" set:html={p.stepContent.titleHtml}></h2>
       <p class="content__lead">{p.stepContent.lead}</p>
@@ -150,8 +205,8 @@ const stepColors = [
                     </li>
                   ))}
                 </ul>
-                <a class="btn btn--ghost tier__cta" href="#poptavka" data-sluzba={gi === 0 ? "Obsah kategorií" : "Obsah produktů"}>
-                  Poptat <span aria-hidden="true">→</span>
+                <a class="btn btn--ghost tier__cta" href="#poptavka" data-sluzba={group.sluzba}>
+                  {p.labels.inquire} <span aria-hidden="true">→</span>
                 </a>
               </article>
             ))}
@@ -159,15 +214,25 @@ const stepColors = [
         </div>
       ))}
 
+      {p.eshopAside.items.length > 0 && (
+        <aside class="eshop" aria-labelledby="eshop-title">
+          <h3 id="eshop-title" class="eshop__title">{p.eshopAside.title}</h3>
+          <ul class="eshop__list" role="list">
+            {p.eshopAside.items.map((item) => <li set:html={md(item)}></li>)}
+          </ul>
+          <p class="eshop__note" set:html={md(p.eshopAside.note)}></p>
+        </aside>
+      )}
+
       <div class="crow crow--compare">
         <div class="crow__main">
           <span class="crow__name">{p.compareOffer.name}</span>
-          <span class="crow__detail">{p.compareOffer.detail}</span>
+          <span class="crow__detail" set:html={md(p.compareOffer.detail)}></span>
         </div>
         <span class="lrow__leader" aria-hidden="true"></span>
         <div class="crow__buy">
           <span class="crow__price">{p.compareOffer.price} <small>{p.compareOffer.unit}</small></span>
-          <a class="crow__cta" href="#poptavka" data-sluzba="Srovnávací obsah „X vs Y“">Poptat <span aria-hidden="true">→</span></a>
+          <a class="crow__cta" href="#poptavka" data-sluzba={p.compareOffer.sluzba}>{p.labels.inquire} <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
@@ -200,7 +265,7 @@ const stepColors = [
     <section class="ret wrap" aria-labelledby="ret-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">03</span> {p.retainers.eyebrow}</span>
-        <span class="sec-head__meta">měsíční spolupráce</span>
+        <span class="sec-head__meta">{p.labels.retainersMeta}</span>
       </div>
       <h2 id="ret-title" class="content__title" set:html={p.retainers.titleHtml}></h2>
       <p class="content__lead">{p.retainers.lead}</p>
@@ -210,18 +275,18 @@ const stepColors = [
             <span class="ret__type">{r.type}</span>
             <h3>{r.name}</h3>
             <p>{r.desc}</p>
-            <span class="ret__cta">Detail služby <span aria-hidden="true">→</span></span>
+            <span class="ret__cta">{p.labels.serviceDetail} <span aria-hidden="true">→</span></span>
           </a>
         ))}
       </div>
-      <p class="ret__measure">{p.retainers.measureNote}</p>
+      <p class="ret__measure" set:html={md(p.retainers.measureNote)}></p>
     </section>
 
     <!-- ===== POPTÁVKA ===== -->
     <section class="pop wrap" id="poptavka" aria-labelledby="pop-title">
       <div class="sec-head">
         <span class="eyebrow"><span class="eyebrow__num">04</span> {p.poptavka.eyebrow}</span>
-        <span class="sec-head__meta">odpověď do 1 pracovního dne</span>
+        <span class="sec-head__meta">{p.labels.inquiryMeta}</span>
       </div>
       <h2 id="pop-title" class="content__title" set:html={p.poptavka.titleHtml}></h2>
       <p class="content__lead">{p.poptavka.lead}</p>
@@ -313,7 +378,7 @@ const stepColors = [
         {p.myths.items.map((m) => (
           <article class="myth">
             <h3>{m.name}</h3>
-            <p>{m.desc}</p>
+            <p set:html={md(m.desc)}></p>
           </article>
         ))}
       </div>
@@ -341,7 +406,6 @@ const stepColors = [
     </section>
     </div>
 
-    <SniperDesignBigContact eyebrowNum="08" />
   </div>
 </BaseLayout>
 
@@ -425,7 +489,15 @@ const stepColors = [
     });
   }
 
-  /** Prefill výběru služby z CTA s data-sluzba (kroky, týry, srovnávací obsah). */
+  /** Předvyplnění služby z parametru ?sluzba= — vede sem tlačítko z detailu
+   *  služby (dřív vedlo na /kontakt/?sluzba=, kde parametr nikdo nečetl). */
+  const chtena = new URLSearchParams(location.search).get("sluzba");
+  if (chtena) {
+    const sel = document.getElementById("pop-sluzba") as HTMLSelectElement | null;
+    if (sel && [...sel.options].some((o) => o.value === chtena)) sel.value = chtena;
+  }
+
+  /** Prefill výběru služby z CTA s data-sluzba (ceník obsahu, srovnávací obsah). */
   document.querySelectorAll<HTMLAnchorElement>('a[data-sluzba][href="#poptavka"]').forEach((a) => {
     a.addEventListener("click", () => {
       const sel = document.getElementById("pop-sluzba") as HTMLSelectElement | null;
@@ -438,10 +510,12 @@ const stepColors = [
 <style>
   /* ============ EDITORIAL ZÁKLAD ============ */
   .ed {
-    /* Obal NEnese kontejner — sdílené komponenty (ProofStrip, BigContact)
+    /* Obal NEnese kontejner — sdílené komponenty (ProofStrip, Answer)
        mají vlastní max-width + padding a druhé odsazení by je posunulo
        (zpětná vazba 2026-08-09). Šířku nese každá sekce přes .wrap. */
     font-size: 1.03rem;
+    --answer-mt: clamp(3rem, 6vw, 4.5rem);
+    --answer-pb: 0;
   }
   .wrap {
     max-width: var(--max-section);
@@ -517,7 +591,7 @@ const stepColors = [
     border-radius: 999px;
   }
   .hero__intro-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
-  .hero__title { margin: 2.25rem 0 0; max-width: 18ch; }
+  .hero__title { margin: 2.25rem 0 0; max-width: 18ch; text-wrap: balance; }
   .hero__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -528,7 +602,10 @@ const stepColors = [
   .hero__lead { font-size: clamp(1rem, 1.5vw, 1.18rem); color: var(--color-ink-muted); max-width: 36rem; margin: 0; }
   .hero__lead :global(strong) { color: var(--color-ink); font-weight: 600; }
   .hero__cta { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.75rem; align-items: center; }
+  .hero__lead :global(a) { color: var(--color-accent-strong); text-decoration: underline; text-underline-offset: 2px; }
   .hero__trust { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-ink-faint); margin: 1rem 0 0; }
+  .hero__partners { margin-top: 0.75rem; }
+  .hero__updated { font-size: 0.8125rem; color: var(--color-ink-faint); margin: 0.75rem 0 0; font-variant-numeric: tabular-nums; }
 
   .shot {
     border: 1px solid var(--color-rule);
@@ -590,6 +667,14 @@ const stepColors = [
   .step__meta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sc-strong, var(--color-accent-strong)); margin: 0.9rem 0 0; }
   .step h3 { font-family: var(--font-sans); font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.02em; margin: 0 0 0.7rem; }
   .step__desc { color: var(--color-ink-muted); max-width: 38rem; margin: 0; }
+  /* set:html potomci nedostanou scope atribut — :global (CLAUDE.md § VI). */
+  .step__desc :global(a), .mcard__desc :global(a), .crow__detail :global(a),
+  .ret__measure :global(a), .myth p :global(a), .eshop :global(a) {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .eshop :global(strong) { color: var(--color-ink); font-weight: 600; }
   .step__glyph { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent); flex-shrink: 0; }
 
   /* karty technické přípravy — plný popis služby + vliv */
@@ -657,6 +742,13 @@ const stepColors = [
   .tier__items li { font-size: 0.88rem; color: var(--color-ink-muted); display: flex; gap: 0.6rem; align-items: baseline; }
   .tier__items .step__glyph { color: var(--gc, var(--color-accent)); }
 
+  /* Rozcestník pro e-shopy pod ceníkem obsahu */
+  .eshop { margin-top: 2.25rem; border: 1px solid var(--color-rule); border-radius: 12px; padding: 1.25rem 1.5rem; background: var(--color-paper); }
+  .eshop__title { font-size: 1rem; font-weight: 600; letter-spacing: -0.012em; margin: 0 0 0.6rem; }
+  .eshop__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+  .eshop__list li { font-size: 0.92rem; color: var(--color-ink-muted); padding-left: 1rem; position: relative; }
+  .eshop__list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--color-geo); }
+  .eshop__note { font-size: 0.9rem; color: var(--color-ink-muted); margin: 0.75rem 0 0; }
   .crow { display: flex; align-items: baseline; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--color-rule); }
   /* tečkovaný leader řádku srovnávacího obsahu (třída zbyla po ledgeru) */
   .lrow__leader { flex: 1; border-bottom: 2px dotted var(--color-rule-strong); transform: translateY(-6px); min-width: 2rem; }

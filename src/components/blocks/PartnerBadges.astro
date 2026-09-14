@@ -31,9 +31,9 @@ const { partners } = sd;
             <path d="M6 10.4l2.6 2.5L14 7.4" />
           </svg>
           <span class="partner__label">
-            {item.level} <strong>{item.platform}</strong>
+            {item.level}{" "}<strong>{item.platform}</strong>
           </span>
-          {item.meta && <span class="partner__meta">{item.meta}</span>}
+          {item.meta && <>{" "}<span class="partner__meta">{item.meta}</span></>}
           <span class="partner__sr">
             — {partners.profileLabel} ({partners.newWindow})
           </span>

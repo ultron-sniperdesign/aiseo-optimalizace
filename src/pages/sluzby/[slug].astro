@@ -7,6 +7,8 @@ import type { GetStaticPaths } from "astro";
 import Faq from "~/components/blocks/Faq.astro";
 import Answer from "~/components/blocks/Answer.astro";
 import { ui } from "~/i18n/strings";
+import { renderInlineMarkdown } from "~/lib/jsonld";
+import { czDate } from "~/lib/date";
 
 export const getStaticPaths = (async () => {
   const services = await getCollection("services");
@@ -23,31 +25,25 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const personaIcon: Record<string, string> = { eshop: "🛒", firemni: "🏢" };
-const personaLabel: Record<string, string> = { eshop: "E-shop", firemni: "Firemní web" };
-const typeLabel: Record<string, string> = {
-  vstupni: "Vstupní",
-  jednorazova: "Jednorázová",
-  mesicni: "Měsíční retainer",
-  addon: "Doplněk",
-};
+const t = ui.service;
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const pageURL = `${SITE_ORIGIN}/sluzby/${entry.data.slug}/`;
-const ctaHref = `/kontakt/?sluzba=${entry.data.slug}`;
-const ctaLabel = entry.data.cta ?? "Mám zájem o tuto službu";
+/* Poptávka vede na formulář /sluzby/ s předvyplněnou službou. Do 14. 9. 2026
+   vedla na /kontakt/?sluzba=<slug>, kde parametr nic nečetl a formulář tam není.
+   Hodnota = `name` služby, musí sedět s volbou v content/pages/sluzby.ts. */
+const inquiryHref = `/sluzby/?sluzba=${encodeURIComponent(entry.data.name)}#poptavka`;
+const inquiryLabel = entry.data.cta ?? t.ctaInquiryDefault;
 
-/* JSON-LD: Article + FAQPage (pokud existuje faq). */
+/* JSON-LD: Service (FAQPage přidává komponenta Faq). Poskytovatel je stejná
+   entita jako vydavatel webu (#publisher), ne druhá kopie Organization. */
 const articleLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: entry.data.name,
   description: entry.data.description ?? entry.data.oneLine,
   url: pageURL,
-  provider: {
-    "@type": "Organization",
-    name: site.org.name,
-    url: "https://www.sniperdesign.cz/",
-  },
+  provider: { "@id": `${SITE_ORIGIN}/#publisher` },
   areaServed: "CZ",
   inLanguage: site.inLanguage,
 };
@@ -57,23 +53,24 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
 ---
 
 <BaseLayout
-  title={entry.data.seoTitle ?? `${entry.data.name} | Služby aiseo-optimalizace.cz`}
+  title={entry.data.seoTitle ?? `${entry.data.name} | ${t.seoTitleSuffix}`}
   description={entry.data.description ?? entry.data.oneLine}
   jsonLd={allLd}
   image={ogImage}
   ogType="article"
+  dateModified={entry.data.updated}
   breadcrumb={[
-    { label: "Služby", href: "/sluzby/" },
+    { label: t.crumbServices, href: "/sluzby/" },
     { label: entry.data.name, href: `/sluzby/${entry.data.slug}/` },
   ]}
 >
   <div class="svc-page">
     <!-- HERO -->
     <section class="svc-hero">
-      <nav class="svc-crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
+      <nav class="svc-crumbs" aria-label={t.crumbAria}>
+        <a href="/">{ui.crumbHome}</a>
         <span class="crumb-sep">›</span>
-        <a href="/sluzby/">Služby</a>
+        <a href="/sluzby/">{t.crumbServices}</a>
         <span class="crumb-sep">›</span>
         <span class="svc-crumb-pill">{entry.data.name}</span>
       </nav>
@@ -81,18 +78,21 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
       <div class="svc-hero__chips">
         {entry.data.personas.map((p) => (
           <span class="chip chip--persona">
-            <span aria-hidden="true">{personaIcon[p]}</span> {personaLabel[p]}
+            <span aria-hidden="true">{personaIcon[p]}</span> {t.persona[p]}
           </span>
         ))}
-        <span class={`chip chip--type chip--type-${entry.data.type}`}>{typeLabel[entry.data.type]}</span>
+        <span class={`chip chip--type chip--type-${entry.data.type}`}>{t.type[entry.data.type]}</span>
       </div>
 
       <h1 class="display svc-hero__title">{entry.data.name}</h1>
       <p class="lead svc-hero__lead">{entry.data.oneLine}</p>
+      {entry.data.updated && (
+        <p class="svc-hero__updated">{ui.metaUpdated} {czDate(entry.data.updated)}</p>
+      )}
 
       <div class="svc-hero__cta">
-        <a href={ctaHref} class="btn btn--primary">{ctaLabel}</a>
-        <a href="/audit/" class="btn btn--ghost">Nebo začněte auditem →</a>
+        <a href="/audit/" class="btn btn--primary">{t.ctaAudit}</a>
+        <a href={inquiryHref} class="btn btn--ghost">{inquiryLabel}</a>
       </div>
     </section>
 
@@ -110,13 +110,13 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     <section class="svc-meta">
       {entry.data.forWhom && (
         <div class="svc-meta__card">
-          <h3 class="svc-meta__head">Pro koho</h3>
+          <h3 class="svc-meta__head">{t.forWhom}</h3>
           <p class="svc-meta__text">{entry.data.forWhom}</p>
         </div>
       )}
       {entry.data.model && (
         <div class="svc-meta__card">
-          <h3 class="svc-meta__head">Výstup a model spolupráce</h3>
+          <h3 class="svc-meta__head">{t.model}</h3>
           <p class="svc-meta__text">{entry.data.model}</p>
         </div>
       )}
@@ -136,9 +136,9 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     {entry.data.upsell && (
       <section class="svc-upsell">
         <div class="svc-upsell__inner">
-          <span class="eyebrow"><span class="eyebrow__num">Co dál</span></span>
-          <h2 class="svc-upsell__title">S čím to <strong>kombinovat</strong></h2>
-          <p class="svc-upsell__text">{entry.data.upsell}</p>
+          <span class="eyebrow"><span class="eyebrow__num">{t.upsellEyebrow}</span></span>
+          <h2 class="svc-upsell__title" set:html={t.upsellTitleHtml}></h2>
+          <p class="svc-upsell__text" set:html={renderInlineMarkdown(entry.data.upsell)}></p>
         </div>
       </section>
     )}
@@ -146,11 +146,11 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     <!-- FINÁLNÍ CTA -->
     <section class="svc-cta">
       <div class="svc-cta__inner">
-        <h2 class="svc-cta__title">Pojďme to probrat</h2>
-        <p class="svc-cta__lead">Napište nám, co řešíte. Vrátíme se obvykle do 1 pracovního dne.</p>
+        <h2 class="svc-cta__title" set:html={t.ctaTitleHtml}></h2>
+        <p class="svc-cta__lead">{t.ctaLead}</p>
         <div class="svc-cta__btns">
-          <a href={ctaHref} class="btn btn--primary">{ctaLabel}</a>
-          <a href="/sluzby/" class="btn btn--ghost">Zpět na všechny služby</a>
+          <a href="/audit/" class="btn btn--primary">{t.ctaAudit}</a>
+          <a href={inquiryHref} class="btn btn--ghost">{inquiryLabel}</a>
         </div>
       </div>
     </section>
@@ -235,6 +235,13 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     color: var(--color-ink);
     margin: 0;
     max-width: 26ch;
+  }
+  .svc-hero__updated {
+    margin: -0.5rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-faint);
+    font-variant-numeric: tabular-nums;
   }
   .svc-hero__lead {
     font-family: var(--font-sans);
@@ -353,6 +360,13 @@ const ogImage = "/og/default.jpg"; // později per-service OG; zatím sdílený
     margin: 0.75rem 0 0.875rem;
   }
   .svc-upsell__title strong { font-weight: 600; }
+  /* Upsell nese mini markdown s odkazy — do 14. 9. 2026 se vypisoval jako text
+     a čtenář viděl syrové „[monitoringem](/sluzby/…)“. */
+  .svc-upsell__text :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
   .svc-upsell__text {
     font-family: var(--font-sans);
     font-size: 0.98rem;

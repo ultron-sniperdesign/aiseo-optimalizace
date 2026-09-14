@@ -30,7 +30,7 @@ export const proof = {
   stats: [
     {
       value: "200 000",
-      label: "zobrazení v AI odpovědích Googlu (AI Overviews) za dva měsíce",
+      label: "zobrazení v Přehledu od AI a v režimu AI za dva měsíce",
     },
     {
       value: "4×",

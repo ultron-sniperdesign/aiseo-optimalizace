@@ -432,6 +432,29 @@ export const ui = {
   // v šabloně bez span.hl — porušoval konvenci H2 i model mutací.
   serviceFaqTitleHtml:
     'Otázky, které se k <span class="hl">této službě</span> <strong>nejčastěji ptají</strong>',
+  // Detail služby /sluzby/<slug>/ — popisky šablony (do 14. 9. 2026 natvrdo v [slug].astro,
+  // mutace by musela přepisovat šablonu). Cesta vede přes audit: po něm víte, co objednat.
+  service: {
+    crumbServices: "Služby",
+    crumbAria: "Drobečková navigace",
+    persona: { eshop: "E-shop", firemni: "Firemní web" } as Record<string, string>,
+    type: {
+      vstupni: "Vstupní",
+      jednorazova: "Jednorázová",
+      mesicni: "Měsíční služba",
+      addon: "Doplněk",
+    } as Record<string, string>,
+    seoTitleSuffix: "Služby Sniper Design",
+    ctaAudit: "Začít auditem za 3 600 Kč",
+    ctaInquiryDefault: "Poptat službu",
+    forWhom: "Pro koho",
+    model: "Výstup a model spolupráce",
+    upsellEyebrow: "Co dál",
+    upsellTitleHtml: 'S čím <span class="hl">službu</span> <strong>kombinovat</strong>',
+    ctaTitleHtml: 'Začněte <span class="hl">auditem</span> <strong>za 3 600 Kč</strong>',
+    ctaLead:
+      "Audit ukáže, jestli a v jakém rozsahu tahle služba dává smysl právě pro váš web. Výstup do 5 pracovních dní, pak meeting s plánem dalších kroků.",
+  },
   // Landing série — FAQ titulek (set:html)
   seriesFaqTitleHtml:
     'Na co se k <span class="hl">sérii</span> <strong>nejčastěji ptáte</strong>',
