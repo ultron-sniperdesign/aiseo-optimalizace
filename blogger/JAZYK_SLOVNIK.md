@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 68** · založeno 2026-08-23 · poslední změna 2026-09-15 (výjimka `(?<!fp )` u pravidla `\bgrowth\b` — název agentury FP Growth citovaný jako zdroj) · v67 2026-09-14 (`jazyk-check.py` v šablonách `.astro` přeskakuje HTML komentáře, výrazy `{…}` a hodnoty technických atributů jako `type="submit"` — dřív je hlásil jako anglicismy; text pro čtenáře dál hlídá kontrola vykreslené stránky z `dist/`) · v66: doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ · audituje skill `cestina-audit`
+> **Verze: 69** · založeno 2026-08-23 · poslední změna 2026-09-15 (v69: dvě úzká pravidla pro vazby „cílí konkrétní zemi“ a „použijte stejný zákaznický problém“; výjimka `(?<!x-)` pro oficiální hodnotu hreflang `x-default`, dokumentace Google Search Central; jazykove-mutace-pro-ai) · v68 2026-09-15 (výjimka `(?<!fp )` u pravidla `\bgrowth\b` — název agentury FP Growth citovaný jako zdroj) · v67 2026-09-14 (`jazyk-check.py` v šablonách `.astro` přeskakuje HTML komentáře, výrazy `{…}` a hodnoty technických atributů jako `type="submit"` — dřív je hlásil jako anglicismy; text pro čtenáře dál hlídá kontrola vykreslené stránky z `dist/`) · v66: doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
@@ -119,6 +119,8 @@
 | ⚠️ | `\betablovan\w* hráč\b` | zavedený nástroj | PR klišé | seo-nastroje-2026 2026-08-23 |
 | ⛔ | `\bsession(s)?\b` | relace | české GA4 používá „relace“ | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `\bstakeholder(a|e|em|ům|y)?\b` | příjemce reportu | manažerský anglicismus | mereni-seo-vykonu-2026 2026-08-23 |
+| ⛔ | `\bcílí konkrétní zem[iě]\b` | cílí na konkrétní zemi / konkrétní země | cílit v tomto významu vyžaduje předložku na; opravit pád podle věty | jazykove-mutace-pro-ai 2026-09-15 |
+| ⛔ | `\bpoužijte stejný zákaznický problém česky\b` | formulujte dotaz ke stejnému zákaznickému problému česky | problém se nepoužívá v jazyce, formuluje se dotaz; samotné sousloví zákaznický problém je v pořádku | jazykove-mutace-pro-ai 2026-09-15 |
 | ⛔ | `\bdefaultn(í|ího|ím|ích)\b` | výchozí | počeštěný tvar zakázaného „default“ | mereni-seo-vykonu-2026 2026-08-23 |
 | ⛔ | `(?<!fp )\bgrowth\b` | růst | jednoslovný anglicismus; výjimka postavená na předchozím slově (ne na velkém písmenu): název agentury FP Growth, citovaný jako zdroj | mereni-seo-vykonu-2026 2026-08-23 · výjimka za-jak-dlouho-se-projevi-ai-seo 2026-09-15 |
 | ✅ | `\bdashboarding\b` | — | **Rozhodnutí uživatele 23. 8. 2026:** v marketingu a vývoji zavedený výraz, v českém prostředí běžný. Nehlásit. | mereni-seo-vykonu-2026 2026-08-23 |
@@ -157,7 +159,7 @@
 | ⛔ | `\bshare\b(?! of (voice|model|search))` | podíl | „share dotazů“ místo „podíl dotazů“. **Výjimka:** názvy metrik Share of Model / Voice / Search | jak-vypnout-ai-overview 2026-08-23, zúženo share-of-model-metrika 2026-08-26 |
 | ⚠️ | `\b(?-i:share of voice)\b` | podíl zmínek | odborný termín. **Hlásí se jen v malých písmenech** — „Share of Voice“ velkými je název metriky (viz `share-of-model-metrika`), `(?-i:…)` vypne ignorování velikosti jen pro tenhle výraz | seed 2026-08-23, zúženo 2026-08-26 |
 | ⛔ | `\bmaster switch\b` | hlavní vypínač | anglicismus s přesnou českou náhradou | jak-vypnout-ai-overview 2026-08-23 |
-| ⛔ | `\bdefault\b(?!-)` | výchozí | web sám jinde píše „výchozí model“, „výchozí režim“ | jak-vypnout-ai-overview 2026-08-23 |
+| ⛔ | `(?<!x-)\bdefault\b(?!-)` | výchozí | web sám jinde píše „výchozí model“, „výchozí režim“ | jak-vypnout-ai-overview 2026-08-23; výjimka x-default: oficiální hodnota hreflang, https://developers.google.com/search/docs/specialty/international/localized-versions#xdefault, jazykove-mutace-pro-ai 2026-09-15 |
 | ⛔ | `\bsearch engine(s)?\b(?! Land| Journal| Roundtable| Watch| Optimization| Results Page)` | vyhledávač | mimo doslovné popisky rozhraní prohlížeče a **názvy publikací** (Search Engine Land, Journal, Roundtable) | jak-vypnout-ai-overview 2026-08-23, upřesněno u článku 8 |
 | ⛔ | `\bbrowser\b` | prohlížeč | v české větě zbytečné | jak-vypnout-ai-overview 2026-08-23 |
 | ⛔ | `\bsearch bar\b` | vyhledávací pole | mimo doslovné popisky rozhraní | jak-vypnout-ai-overview 2026-08-23 |

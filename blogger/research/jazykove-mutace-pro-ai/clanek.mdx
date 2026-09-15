@@ -1,0 +1,159 @@
+---
+title: "Hreflang a jazykové mutace: připravte web pro AI"
+seoTitle: "Hreflang: jak propojit jazykové mutace webu pro AI"
+description: "Návod pro český web s dalšími jazyky: propojení přes hreflang, správný canonical, překlad obsahu a kontrola jazykové verze v AI odpovědích."
+answer: "Hreflang označuje jazykové nebo regionální varianty stejné stránky a pomáhá Googlu vybrat vhodnou verzi. Český web s německým překladem potřebuje samostatné dostupné adresy, vzájemné odkazy mezi variantami a přeložený hlavní obsah. Technické nastavení ověřujte zvlášť od citací v AI: správný hreflang sám nezaručuje, kterou stránku AI použije ani v jakém jazyce odpoví."
+slug: "jazykove-mutace-pro-ai"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "obsah"
+published: "2026-09-15"
+updated: "2026-09-15"
+variant: "rich"
+keywords:
+  - "hreflang"
+  - "jazykové mutace"
+  - "vícejazyčný web"
+  - "hreflang canonical"
+  - "hreflang kontrola"
+  - "jazykové mutace pro AI"
+  - "mezinárodní SEO 2026"
+faq:
+  - q: "Co je hreflang a kam se vkládá?"
+    a: "Hreflang propojuje jazykové nebo regionální varianty stejného obsahu. U HTML stránek ho můžete zapsat pomocí link rel=alternate do hlavičky head. Google podporuje také zápis v HTTP hlavičkách nebo XML sitemapě; tyto tři způsoby považuje za rovnocenné."
+  - q: "Jaký je rozdíl mezi hreflang a canonical?"
+    a: "Hreflang označuje jazykové a regionální alternativy. Canonical navrhuje preferovanou adresu z duplicitních nebo velmi podobných stránek. Plnohodnotný německý překlad proto nesměrujte automaticky pomocí canonical na český originál."
+  - q: "Je pro češtinu správně cs, nebo cz?"
+    a: "Kód jazyka je cs. Zápis cs-CZ označuje češtinu pro Česko; samotné cz není správný kód češtiny pro hreflang. Region přidávejte tehdy, když verze opravdu cílí na konkrétní zemi."
+  - q: "Funguje hreflang mezi dvěma různými doménami?"
+    a: "Ano, Google podporuje alternativy na různých doménách. Propojujte odpovídající stránky plnými adresami a kontrolujte i zpětný odkaz z druhé varianty. Nestačí jednostranně označit jinou doménu za překlad."
+  - q: "Zaručí hreflang českou citaci v AI odpovědi?"
+    a: "Takový příslib z dokumentace Googlu neplyne. Hreflang je pomůcka pro přiřazení jazykových a regionálních variant. Jazyk odpovědi a skutečně citovanou adresu ověřujte v konkrétní AI službě a podmínky testu si zapisujte."
+  - q: "Potřebuje každá stránka x-default?"
+    a: "X-default označuje výchozí stránku pro jazyková nastavení, která neodpovídají uvedeným variantám. Google ho doporučuje zejména pro výběr jazyka. Není to kód dalšího jazyka ani povinná součást každé dvojice překladů."
+howto:
+  name: "Jak propojit českou a německou verzi stránky"
+  steps:
+    - name: "Spárujte odpovídající stránky"
+      text: "Zapište českou a německou adresu ke stejnému produktu, službě nebo článku. Chybějící překlady nenahrazujte odkazem na úvodní stránku."
+    - name: "Zpřístupněte obě verze"
+      text: "Každá varianta má vlastní adresu a přeložený obsah dostupný bez přihlášení a bez nutnosti nejdřív přepnout jazyk."
+    - name: "Propojte varianty a zkontrolujte canonical"
+      text: "Na obou stránkách uveďte hreflang na obě varianty včetně právě otevřené stránky. U samostatných překladů nastavte canonical na příslušnou jazykovou adresu."
+    - name: "Ověřte techniku i výsledky"
+      text: "Zkontrolujte výsledné HTML, návratové odkazy a dostupnost adres. V AI službě pak odděleně zaznamenejte jazyk odpovědi a adresu citovaného zdroje."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
+
+## U <span class="hl">jazykových mutací</span> začněte <strong>odpovídajícími stránkami</strong>
+
+Máte český web a přidáváte němčinu. Zákazník má po přepnutí jazyka najít stejnou službu nebo produkt, rozumět nabídce a vědět, zda pro jeho zemi platí uvedené podmínky. **Hreflang popisuje vztah mezi takovými variantami.** Překlad obsahu, výběr kanonické adresy a kontrola citací jsou další samostatné úkoly.
+
+Začněte malým přehledem. Pro každou důležitou stránku zapište její protějšek. Následující adresy jsou modelový příklad českého prodejce, nikoli měření skutečného e-shopu:
+
+| Obsah | Česká verze | Německá verze |
+|---|---|---|
+| Konkrétní produkt | `/cs/produkt-a/` | `/de/produkt-a/` |
+| Doprava a doručení | `/cs/doprava/` | `/de/versand/` |
+| Článek bez překladu | `/cs/jak-vybrat/` | Zatím chybí |
+
+U třetího řádku překlad nejdřív připravte. Odkaz na německou úvodní stránku čtenáře ke stejnému článku nedovede. Do skupiny jazykových alternativ proto patří až skutečný protějšek.
+
+## U <span class="hl">německé verze</span> zajistěte <strong>dostupný překlad</strong>
+
+Google doporučuje **samostatné URL pro jednotlivé jazyky**. Přepínání obsahu jediné adresy podle cookies nebo nastavení prohlížeče může ztížit nalezení všech variant. Stejně tak nedoporučuje automaticky přesměrovávat uživatele mezi jazyky podle odhadu jejich preference. Popisuje to v [pokynech pro vícejazyčné weby](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites).
+
+Pro první kontrolu otevřete německou adresu přímo v novém okně. Zobrazí se obsah německy i bez předchozí návštěvy české verze? Je přeložený nadpis, popis, navigace i informace nutné k nákupu? Nabízí přepínač jazyka odkaz na český protějšek?
+
+<Insight tone="seo" label="Jazyk musí být patrný z obsahu">
+Google určuje jazyk z viditelného textu, nikoli z atributu hreflang nebo lang. Přeložené menu nad českým popisem produktu nenahradí německou produktovou stránku.
+</Insight>
+
+Atribut `lang` přesto vyplňte podle jazyka dokumentu, například `<html lang="de">`. [W3C vysvětluje jeho použití](https://www.w3.org/International/questions/qa-html-language-declarations) pro zpracování textu a asistivní technologie. Jde o jiný účel než propojení alternativ přes hreflang.
+
+Při přípravě překladu doporučuji zvlášť projít **měnu, dostupnost, dopravu a kontakty**. Německý jazyk ještě neříká, zda posíláte do Německa, Rakouska nebo obou zemí. Podmínky napište přímo na příslušnou stránku; překladem české věty se nabídka pro další trh sama nevytvoří.
+
+## Nastavte <span class="hl">hreflang a canonical</span> <strong>každý podle jeho účelu</strong>
+
+`Canonical` označuje preferovanou adresu mezi duplicitními nebo velmi podobnými stránkami. Google při použití hreflang doporučuje kanonickou stránku ve stejném jazyce, pokud existuje. Viz [pokyny ke kanonickým adresám](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls).
+
+**Každá ze dvou samostatných, plně přeložených produktových stránek** tedy v našem příkladu odkazuje pomocí canonical sama na sebe. Na české stránce bude:
+
+```html
+<link rel="canonical" href="https://example.com/cs/produkt-a/" />
+<link rel="alternate" hreflang="cs"
+      href="https://example.com/cs/produkt-a/" />
+<link rel="alternate" hreflang="de"
+      href="https://example.com/de/produkt-a/" />
+```
+
+Na německé stránce zůstane stejná dvojice alternativ, změní se canonical:
+
+```html
+<link rel="canonical" href="https://example.com/de/produkt-a/" />
+<link rel="alternate" hreflang="cs"
+      href="https://example.com/cs/produkt-a/" />
+<link rel="alternate" hreflang="de"
+      href="https://example.com/de/produkt-a/" />
+```
+
+Oba bloky patří do HTML hlavičky `head`. Adresu `example.com` nahraďte vlastní doménou a cesty skutečnými adresami. Ukázka řeší pouze vztah těchto dvou stránek, není to kompletní hlavička webu.
+
+<Checklist title="Před předáním vývojáři" items={[
+  { title: "Celé adresy", desc: "Do hreflang patří úplná URL včetně https a domény. Alternativy mohou být i na různých doménách." },
+  { title: "Odkaz oběma směry", desc: "Česká stránka uvádí německou a německá českou. Každá uvádí i sebe. Udržujte jednu shodnou sadu alternativ." },
+  { title: "Správný jazyk", desc: "Čeština má kód cs. Pro češtinu určenou Česku lze použít cs-CZ; němčina má de, němčina pro Německo de-DE." },
+]} />
+
+Pravidla zápisu a vzájemného propojení popisuje [dokumentace hreflang od Googlu](https://developers.google.com/search/docs/specialty/international/localized-versions). Vedle HTML podporuje HTTP hlavičky a XML sitemapu. Vyberte způsob, který umíte spolehlivě udržovat; kombinování všech tří nepřináší samo o sobě výhodu.
+
+Hodnota `x-default` může označit výchozí stránku pro ostatní jazyková nastavení, například rozcestník s výběrem jazyka. Pro jednoduchou dvojici z ukázky ji nepotřebujete povinně. Samostatně řešte **téměř totožné regionální varianty ve stejném jazyce**: tam může dávat smysl zvolit jednu preferovanou adresu. Pravidlo pro dva překlady na takový případ nepřenášejte automaticky.
+
+## Ve <span class="hl">strukturovaných datech</span> přeložte <strong>obsah, nikoli názvy polí</strong>
+
+Pokud stránka vypisuje strojově čitelná data, zkontrolujte při překladu také je. Německý nadpis se může na stránce změnit, zatímco ve vložených datech zůstane český. Pro návaznost na viditelný text projděte například `headline`, `name`, `description` a odkazy na příslušnou stránku. Názvy vlastností schema.org zachovejte.
+
+Vlastnost [inLanguage](https://schema.org/inLanguage) popisuje jazyk obsahu a používá kódy podle BCP 47. Pro německou stránku může malá ukázka vypadat takto:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://example.com/de/versand/",
+  "name": "Versand und Lieferung",
+  "inLanguage": "de"
+}
+```
+
+Tohle je příklad popisu stránky, nikoli podmínka pro citaci v AI. U produktů porovnejte skutečné údaje o nabídce s tím, co čtenář vidí. Nezaměňte překlad textu za změnu ceny, dostupnosti nebo identity produktu.
+
+<Insight tone="warn" label="Samotný údaj o jazyku nestačí">
+Vlastnost `inLanguage` popisuje jazyk obsahu. Hreflang propojuje alternativní stránky. Ani jeden zápis nenahradí přeložený text a srozumitelnou nabídku pro konkrétní trh.
+</Insight>
+
+Podrobnější výběr typů a způsob kontroly najdete v návodu na [strukturovaná data pro AI](/blog/strukturovana-data-pro-ai/).
+
+## U <span class="hl">AI odpovědí</span> ověřujte <strong>jazyk i citovanou adresu</strong>
+
+Google uvádí, že pro zařazení mezi podpůrné odkazy v AI přehledu nebo režimu AI musí být stránka zařazená do vyhledávání a způsobilá zobrazit se s textovým úryvkem. **Zvláštní technické požadavky navíc neuvádí** a splnění podmínek nezaručuje zobrazení. Zdroj: [AI funkce a váš web](https://developers.google.com/search/docs/appearance/ai-features).
+
+Z těchto pokynů neplyne, že hreflang řídí jazyk odpovědi. Stejný závěr nelze bez vlastního dokladu přenést ani na ChatGPT, Perplexity nebo Seznam Asistenta. Pro praktickou kontrolu doporučuji následující postup:
+
+<Stepper tone="seo" steps={[
+  { title: "Nejdřív ověřte obě stránky", desc: "Zkontrolujte dostupnost adres, výsledné HTML, canonical a odkazy mezi překlady. Ověřte, že indexaci neblokuje noindex a přístup k obsahu nevyžaduje přihlášení." },
+  { title: "Připravte srovnatelné dotazy", desc: "Formulujte dotaz ke stejnému zákaznickému problému česky i německy. Zemi doplňte výslovně, pokud na ní záleží. Doslovný překlad dotazu nechte posoudit člověkem, který jazyk používá." },
+  { title: "Zapište podmínky a zdroj", desc: "Uložte datum, službu, režim, účet, jazyk a zemi testu. Odděleně zaznamenejte jazyk odpovědi, přesnou citovanou URL a to, zda stránka odpovídá potřebám zákazníka." },
+  { title: "Test zopakujte", desc: "Pro první orientaci doporučuji každý dotaz zopakovat třikrát v oddělených konverzacích. Je to malý pracovní vzorek, nikoli statistický důkaz účinku hreflang." },
+]} />
+
+Za chybu nepovažujte automaticky každou cizojazyčnou citaci. Nejprve ji otevřete: může obsahovat správnou odpověď. Problém pro zákazníka nastává například tehdy, když německý dotaz na doručení do Německa dostane české podmínky platné pouze pro Česko. Takový případ si zapište jako **nesoulad trhu a nabídky**, nikoli rovnou jako poruchu hreflang.
+
+Pro širší sestavu dotazů můžete navázat [testem viditelnosti v AI](/blog/test-viditelnosti-v-ai/). Technicky správné propojení je kontrolovatelný výsledek vaší práce. Výběr zdroje v jednotlivé AI odpovědi zůstává výsledkem konkrétní služby.
+
+Začněte jednou dvojicí nejdůležitějších stránek. Po ověření rozšiřte stejný postup na další překlady. Pokud současně připravujete obsah a zadání šablon pro nový web, podívejte se na [AI SEO Wireframe Pack](/pack/).
+
+*Technická doporučení ověřena v uvedených primárních zdrojích 15. září 2026. Ukázky adres a postup testování jsou modelový příklad a redakční doporučení; článek nedokládá změřené zvýšení citací po nasazení hreflang.*

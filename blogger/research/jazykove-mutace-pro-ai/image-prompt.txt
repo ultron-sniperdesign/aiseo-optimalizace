@@ -1,0 +1,14 @@
+Flat vector editorial illustration, 16:9 landscape, modern minimal tech aesthetic.
+Palette: royal indigo blue and dark slate navy line art and flat fills, on a very
+light blue-gray background, small soft accent badges in green and amber. Subtle
+four-point sparkle star motifs suggesting AI. Clean rounded rectangles, thin 2px
+line work, generous whitespace, flat design, no gradients, no photorealism.
+Scene: two large browser windows side by side below the headline, each with rounded browser chrome, three small dots in the top bar, and a filled product card showing the same blue desk lamp. A pair of bold blue arrows connect the two matching product cards in opposite directions, representing language versions that link back to each other. Each card has clear horizontal text lines, a small speech bubble and a green check badge. Keep key elements in the upper and middle area.
+CRITICAL COMPOSITION RULE: place every meaningful element within the upper two thirds of the canvas. The bottom third must be empty light background with at most one or two faint sparkle stars, because it gets cropped away.
+Include legible Czech text: a large bold sans-serif headline reading exactly:
+JAZYKOVÉ MUTACE
+in dark navy in the upper-left, and a smaller medium-weight subtitle directly below reading exactly:
+Propojte stejné stránky
+Spell the Czech text exactly with correct diacritics. No other text, no logos, no brand marks.
+PUNCTUATION RULE: render the subtitle without any trailing period, comma or other punctuation at its end.
+TYPESETTING RULE: render that headline as exactly two whole words on a single line with one normal space between them; never split, hyphenate or add extra spacing inside a word.

@@ -1335,3 +1335,11 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 **Proč bez pravidel:** navržené regexy by chytaly i správnou češtinu. „Přiřadit témata“ je sama o sobě v pořádku, vadná byla jen vazba s „kterou“; slovosled a vazbu „počítat s něčím jako s …“ regex nepozná; „ostrý provoz / ostrá verze“ je zavedená česká mluva vývojářů — tady šlo jen o srozumitelnost pro laika.
 
 **Vedlejší úprava:** `person-data-pro-autora` (knowsAbout už není „signál odbornosti“, autor v datech článku s typem, jménem a url) — při první verzi checker 2× ⛔ `publisher` v prostém textu kroku a HowTo; přeformulováno na „doplňte vydavatele“, pak **0**.
+
+## Nový článek — 2026-09-15 — jazykove-mutace-pro-ai
+
+- Publikace: 2026-09-15; slovník v68 → v69.
+- Původní text: 1 449 slov, 2 strojové nálezy (1,4 / 1 000 slov), oba doložená výjimka x-default; 5 nálezů jazykového auditora (3,5 / 1 000 slov), všech 5 opraveno.
+- Celkem před opravou: 7 hlášení, 4,8 / 1 000 slov; z toho 2 technické výjimky.
+- Finální mechanický průchod: 0 nálezů. Nová pravidla: 2 úzké vazby, 1 aktualizovaná výjimka. Kontextové opravy se nezobecňují na zákaz slov.
+- Podrobnosti: research/jazykove-mutace-pro-ai/audit-jazyk.md a vyporadani.md.
