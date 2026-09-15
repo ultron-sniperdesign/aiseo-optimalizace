@@ -1,0 +1,206 @@
+---
+title: "knowsAbout: jak zapsat, čemu autor rozumí, a co od toho čekat"
+seoTitle: "knowsAbout ve strukturovaných datech: jak ji zapsat správně"
+description: "Vlastnost knowsAbout popisuje, čemu autor nebo firma rozumí. Co o ní říká schema.org a Google, jak ji zapsat s odkazem na Wikidata a co od ní nečekat."
+answer: "knowsAbout je vlastnost slovníku schema.org, kterou u autora (Person) nebo firmy (Organization) vypíšete témata, kterým rozumí. Podle definice naznačuje možnou odbornost, ale nedokládá ji. Google ji v dokumentaci ke strukturovaným datům neuvádí a doložený vliv na citace v AI jsme nenašli. Smysl má jako přesný popis toho, co ukazuje stránka autora."
+slug: "knowsabout-strukturovana-data"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "duveryhodnost"
+published: "2026-09-15"
+updated: "2026-09-15"
+variant: "rich"
+keywords:
+  - "knowsAbout"
+  - "knowsAbout strukturovaná data"
+  - "témata autora ve strukturovaných datech"
+  - "Person knowsAbout"
+  - "Organization knowsAbout"
+  - "knowsAbout Wikidata"
+stats:
+  - value: "0 z 38"
+    label: "stránek dokumentace Googlu ke strukturovaným datům zmiňuje knowsAbout (všechny návody z galerie a obecné stránky; kontrola 15. 9. 2026)"
+  - value: "od 2018"
+    label: "je knowsAbout ve slovníku schema.org — a pořád v oblasti nových termínů, jejichž definice se ještě ladí"
+  - value: "1–10 mil."
+    label: "domén ji používá podle statistiky schema.org z indexu Googlu (srpen 2026)"
+faq:
+  - q: "Co je knowsAbout?"
+    a: "Vlastnost slovníku schema.org pro osobu (Person) a méně často pro organizaci (Organization). Říká, o jakém tématu daný subjekt ví. Podle definice tím naznačuje možnou odbornost, ale neznamená ji, a nerozlišuje úroveň znalostí. Hodnotou může být text, věc (Thing) nebo adresa URL."
+  - q: "Posiluje knowsAbout E-E-A-T?"
+    a: "Doložené to není. Google píše, že E-E-A-T samo o sobě není konkrétní faktor řazení, a knowsAbout v dokumentaci ke strukturovaným datům neuvádí. U autora článku doporučuje uvést typ a `url`, případně `sameAs`. Odbornost se dokládá obsahem a ověřitelnými profily; knowsAbout ji jen popisuje."
+  - q: "Zvýší knowsAbout šanci na citaci v ChatGPT nebo v režimu AI?"
+    a: "Veřejný doklad jsme nenašli. Google uvádí, že pro Přehled od AI ani režim AI nejsou potřeba žádná zvláštní strukturovaná data ze schema.org. Test Ahrefs na 1 885 stránkách po přidání JSON-LD nenašel významný nárůst citací; vlastnost knowsAbout ale neměřil samostatně. Dokumentaci AI asistentů, podle které by knowsAbout četli, jsme nenašli."
+  - q: "Mám hodnoty psát jako text, nebo s odkazem na Wikidata?"
+    a: "Platné je obojí. Prostý text stačí u jednoznačných témat. U pojmů, které mohou znamenat víc věcí, zapište hodnotu jako Thing s názvem a vlastností `sameAs`, která vede na položku Wikidat. Schema.org uvádí Wikidata přímo jako příklad stránky, která jednoznačně určuje identitu. Položka má navíc názvy v mnoha jazycích."
+  - q: "Patří knowsAbout do dat každého článku?"
+    a: "Není to potřeba. Plný popis autora včetně knowsAbout stačí jednou, typem Person na jeho autorské stránce se stabilním `@id`. V datech článku uveďte u autora typ, jméno a `url`, jak doporučuje Google, a stejné `@id`. Firmu popíšete typem Organization na domovské stránce nebo na stránce o firmě — podle Googlu nemusí být na každé stránce webu."
+  - q: "Jak zkontrolovat, že je zápis správně?"
+    a: "Použijte [validátor schema.org](https://validator.schema.org/), který kontroluje zápis proti celému slovníku. Test rozšířených výsledků od Googlu je stavěný na typy, pro které Google rozšířené výsledky zobrazuje, a knowsAbout v jejich dokumentaci není. Pak data porovnejte se stránkou: témata v knowsAbout má stránka autora ukazovat i čtenáři."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**knowsAbout je vlastnost strukturovaných dat, do které u autora nebo firmy zapíšete témata, kterým rozumí.** V oboru se objevuje i tvrzení, že podle ní režim AI vybírá zdroje. Tam, kde jsme ho našli, nestál odkaz na dokumentaci ani na test — a v dokumentaci Googlu jsme pro něj oporu nenašli.
+
+Tenhle návod proto odděluje dvě věci: co knowsAbout podle definice znamená a jak ji zapsat, aby popisovala skutečnost, a co u ní zatím není doložené. Navazuje na [strukturovaná data pro autora](/blog/person-data-pro-autora/) a [Organization pro značku](/blog/organization-schema-pro-znacku/).
+
+## Co <span class="hl">knowsAbout</span> znamená — <strong>témata, ne doklad odbornosti</strong>
+
+Slovník schema.org definuje knowsAbout jako vlastnost osoby a méně typicky organizace, která označuje téma, o němž daný subjekt ví. Definice k tomu výslovně dodává, že vlastnost **naznačuje možnou odbornost, ale neznamená ji**, a že nerozlišuje úroveň znalostí. Hodnotou může být prostý text, položka typu Thing pro pojmenované téma, nebo adresa URL.
+
+Ve slovníku je od verze 3.4 z června 2018, kdy přibyla s dalšími návrhy projektu The Trust Project. V aktuální verzi 30.0 z 19. 3. 2026 ji schema.org pořád vede v oblasti nových termínů, u kterých se definice ještě ladí podle zkušeností z nasazení. Používá se přesto široce: podle statistiky schema.org z indexu Googlu ji v srpnu 2026 mělo 1 až 10 milionů domén.
+
+Vedle ní stojí vlastnosti, se kterými se snadno plete. Rozdíl je v tom, co popisují, a v tom, co s nimi Google v dokumentaci dělá:
+
+<CompareTable
+  leftLabel="Co vlastnost popisuje"
+  leftTone="accent"
+  rightLabel="Co o ní píše dokumentace Googlu"
+  rightTone="accent"
+  rows={[
+    { icon: "🧠", label: "knowsAbout", left: "Témata, kterým osoba nebo firma rozumí", right: "Neuvádí ji v žádném návodu ani v obecných pokynech ke strukturovaným datům" },
+    { icon: "🔗", label: "sameAs", left: "Odkaz na stránku, která jednoznačně určuje identitu — profil, Wikidata", right: "U autora článku ji uvádí jako alternativu k url; u Organization je mezi doporučenými vlastnostmi" },
+    { icon: "🌐", label: "url", left: "Adresa stránky o osobě nebo firmě", right: "U autora článku důrazně doporučuje uvést typ a url, případně sameAs" },
+    { icon: "💼", label: "jobTitle", left: "Pracovní pozice", right: "Pozici autora máte dát sem, ne do jeho jména" },
+  ]}
+/>
+
+## Co s <span class="hl">knowsAbout</span> dělá Google — <strong>v dokumentaci chybí</strong>
+
+Prošli jsme 38 stránek dokumentace Googlu ke strukturovaným datům — návody ke všem typům z galerie, úvod, obecné pokyny a stránku o generování dat JavaScriptem. **knowsAbout není zmíněná ani na jedné** (kontrola 15. 9. 2026). Konkrétně:
+
+- **Organization:** mezi doporučenými vlastnostmi jsou třeba `legalName`, `sameAs`, `taxID` nebo `vatID`, knowsAbout ne. Účel Google popisuje jako lepší porozumění administrativním údajům firmy a její odlišení od jiných firem.
+- **Stránka profilu (ProfilePage):** u osoby vyjmenovává jméno, alternativní jméno, identifikátor, obrázek, `sameAs`, popis a statistiky interakcí.
+- **Autor článku (Article):** Google důrazně doporučuje uvést typ a `url`, případně `sameAs`.
+
+To neznamená, že je knowsAbout chyba. Google v úvodu ke strukturovaným datům píše, že schema.org obsahuje víc vlastností, než vyhledávání Google potřebuje, a že mohou být užitečné pro jiné vyhledávače, služby a nástroje. Pro chování Vyhledávání Google máte ale brát jako rozhodující jeho dokumentaci, ne schema.org.
+
+<Insight tone="warn" label="Tvrzení bez opory">
+Google píše, že **E-E-A-T samo o sobě není konkrétní faktor řazení**. Tvrzení, že knowsAbout E-E-A-T posiluje nebo že podle ní režim AI vybírá zdroje, jsme v dokumentaci Googlu ani v dostupných testech nenašli. Když ho někde čtete, hledejte odkaz na dokumentaci nebo na test.
+</Insight>
+
+## <span class="hl">AI odpovědi</span> a knowsAbout — <strong>doložený vliv jsme nenašli</strong>
+
+U funkcí s AI je Google konkrétní. Pro zobrazení v Přehledu od AI a v režimu AI podle něj **nemusíte přidávat žádná zvláštní strukturovaná data ze schema.org**. Připomíná jen, že strukturovaná data mají odpovídat viditelnému textu stránky.
+
+Nejbližší měření je [test Ahrefs s kontrolní skupinou z 11. 5. 2026](/blog/schema-markup-ai-citace-test/). Sledoval 1 885 stránek, které mezi srpnem 2025 a březnem 2026 přidaly JSON-LD, a porovnal je se 4 000 kontrolními stránkami. Za 30 dní po přidání nenašel významný nárůst citací v režimu AI ani v ChatGPT. V Přehledu od AI klesly citace o 4,6 % víc než u kontrolních stránek, podle Ahrefs statisticky významně. Test ale všechny typy dat sloučil dohromady, takže o knowsAbout samotné nic neříká — a na knowsAbout zvlášť jsme test nenašli.
+
+Nenašli jsme ani dokumentaci, podle které by knowsAbout četl ChatGPT, Perplexity nebo jiný AI asistent. Proč ji tedy vůbec psát? Může dávat smysl jako doplněk popisu autora nebo firmy, pokud témata na stránce skutečně dokládáte a strukturovaná data už používáte. Jako s pákou na citace s ní ale nepočítejte.
+
+## Jak <span class="hl">knowsAbout</span> zapsat — <strong>text, nebo odkaz na Wikidata</strong>
+
+Hodnota může mít tři tvary. Prostý text je nejjednodušší, ale u slov s více významy nechává výklad na stroji. Hodnota typu Thing s názvem a vlastností `sameAs` odkazuje na konkrétní položku — a schema.org u `sameAs` uvádí Wikidata přímo jako příklad stránky, která jednoznačně určuje identitu. Adresa URL je platná také, ale nenese název tématu.
+
+Krátce k pojmům v ukázce: `@id` je trvalý identifikátor osoby nebo firmy uvnitř strukturovaných dat, `url` je běžná stránka pro čtenáře a `sameAs` vede na profil nebo položku, která identitu jednoznačně určuje. `Thing` je nejobecnější typ slovníku — tady slouží k pojmenování tématu s odkazem na jeho položku.
+
+Takhle může vypadat autor na své autorské stránce. Dvě témata jsou zapsaná s odkazem na Wikidata, třetí jako prostý text:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.example.com/autor/jan-novak/#person",
+  "name": "Jan Novák",
+  "url": "https://www.example.com/autor/jan-novak/",
+  "jobTitle": "SEO konzultant",
+  "knowsAbout": [
+    {
+      "@type": "Thing",
+      "name": "optimalizace pro vyhledávače",
+      "sameAs": "https://www.wikidata.org/wiki/Q180711"
+    },
+    {
+      "@type": "Thing",
+      "name": "elektronické obchodování",
+      "sameAs": "https://www.wikidata.org/wiki/Q484847"
+    },
+    "strukturovaná data pro e-shopy"
+  ]
+}
+```
+
+Položky Wikidat mají názvy v mnoha jazycích — Q180711 nese český název „optimalizace pro vyhledávače“ i anglický „search engine optimization“. Do `name` proto můžete psát česky a identita tématu zůstane stejná. K autorovi patří i `sameAs` s odkazy na jeho skutečné profily; podrobně to rozebírá [návod ke strukturovaným datům autora](/blog/person-data-pro-autora/).
+
+U firmy je zápis stejný, jen typ je Organization a témata popisují, čím se firma zabývá. Ukázka se soustředí na knowsAbout; ve skutečném zápisu na webu k identitě firmy patří i `sameAs` s odkazy na profily, které firmě skutečně patří — víc v návodu k [Organization](/blog/organization-schema-pro-znacku/):
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.example.com/#organization",
+  "name": "Vaše firma s.r.o.",
+  "url": "https://www.example.com/",
+  "knowsAbout": [
+    {
+      "@type": "Thing",
+      "name": "elektronické obchodování",
+      "sameAs": "https://www.wikidata.org/wiki/Q484847"
+    },
+    "tvorba e-shopů na platformě Upgates"
+  ]
+}
+```
+
+## Kam <span class="hl">knowsAbout</span> patří a co do ní dát — <strong>jen doložená témata</strong>
+
+Strukturovaná data mají podle obecných pokynů Googlu **věrně odpovídat obsahu stránky** a nemají označovat nic, co čtenář na stránce nevidí. U knowsAbout Google žádné použití nedokumentuje, ale stejné pravidlo drží data poctivá: témata v ní mají odpovídat tomu, co autor na webu skutečně dokládá.
+
+<Checklist
+  title="Kde a jak knowsAbout použít"
+  items={[
+    { title: "Plný popis autora jednou, na autorské stránce", desc: "Typ Person se stabilním @id a s knowsAbout. V datech článku stačí u autora typ, jméno, url a stejné @id." },
+    { title: "Firma jednou, na domovské stránce nebo na stránce o firmě", desc: "Google u Organization doporučuje právě tato místa a píše, že údaje nemusí být na každé stránce webu." },
+    { title: "Témata, která stránka ukazuje", desc: "Co je v knowsAbout, má být vidět i v medailonku, v článcích nebo v referencích." },
+    { title: "Konkrétní pojmy místo obecných", desc: "„strukturovaná data pro e-shopy“ řekne víc než „marketing“." },
+    { title: "Stejné pojmy jako v textu", desc: "Když stránka píše „elektronické obchodování“, nepište do dat jiný výraz pro totéž." },
+  ]}
+/>
+
+<Stepper
+  steps={[
+    { title: "Sepište témata z důkazů", desc: "Vycházejte z článků, projektů a praxe, které autor nebo firma na webu dokládá — ne ze seznamu klíčových slov." },
+    { title: "Porovnejte je se stránkou", desc: "Každé téma má být vidět na autorské stránce nebo na stránce o firmě. Co vidět není, doplňte do textu, nebo z dat vyřaďte." },
+    { title: "U nejednoznačných pojmů najděte položku Wikidat", desc: "Zapište hodnotu jako Thing s názvem a sameAs. Zkontrolujte, že položka opravdu popisuje vaše téma, ne jmenovce." },
+    { title: "Vložte data na jedno místo", desc: "Person na autorskou stránku, Organization na domovskou stránku nebo stránku o firmě. V článcích nechte u autora jen typ, jméno, url a stejné @id." },
+    { title: "Ověřte zápis", desc: "Projeďte kód validátorem schema.org a znovu porovnejte s viditelným textem. Validní zápis sám o sobě nezaručuje zobrazení ani citaci." },
+  ]}
+/>
+
+## <strong>Časté chyby</strong> u <span class="hl">knowsAbout</span>
+
+<MistakeGrid>
+  <Mistake num="01" title="Seznam klíčových slov místo témat" fix="Pár témat, která autor nebo firma dokládá obsahem.">
+    Dlouhý výčet všeho, na co chcete být vidět, nic nevysvětluje. Definice mluví o tématech, o kterých subjekt ví, ne o dotazech, na které cílíte.
+  </Mistake>
+  <Mistake num="02" title="Témata, která stránka nedokládá" fix="Doplnit do textu, nebo z dat vyřadit.">
+    Data mají popisovat, co je na stránce. Když autor v knowsAbout „rozumí“ oboru, o kterém na webu nic nenapsal, je to rozpor, ne signál.
+  </Mistake>
+  <Mistake num="03" title="Čekat od knowsAbout citace v AI" fix="Brát ji jako popis, ne jako páku na viditelnost.">
+    Google pro funkce s AI žádná zvláštní strukturovaná data nevyžaduje a vliv knowsAbout na citace jsme doložený nenašli.
+  </Mistake>
+  <Mistake num="04" title="knowsAbout místo sameAs a url" fix="Identitu autora nesou url a sameAs; knowsAbout je doplněk.">
+    U autora článku Google doporučuje typ a url, případně sameAs. Témata nejsou identifikační údaj — k odlišení autora od jmenovce slouží hlavně odkazy na jeho autorskou stránku a ověřitelné profily.
+  </Mistake>
+  <Mistake num="05" title="Jiné hodnoty na každé stránce" fix="Plný popis jednou na autorské stránce, v článcích stručný odkaz se stejným @id.">
+    Když šablona vypisuje autora v každém článku s jiným výčtem témat, data si protiřečí. Jedna definice se udržuje snáz a nerozchází se.
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **knowsAbout popisuje témata, kterým autor nebo firma rozumí** — podle definice schema.org naznačuje možnou odbornost, ale nedokládá ji.
+- **Google ji v dokumentaci ke strukturovaným datům neuvádí**; u autora článku doporučuje typ a url, případně sameAs.
+- **Vliv na citace v AI jsme doložený nenašli.** Google pro funkce s AI žádná zvláštní strukturovaná data nevyžaduje a test Ahrefs vlastnosti zvlášť neměřil.
+- **Zapisujte jen doložená témata na jednom stabilním místě** — u autora na autorské stránce, u firmy na domovské stránce nebo na stránce o firmě; u nejednoznačných pojmů s odkazem na Wikidata.
+- **Ověřte zápis validátorem schema.org** a porovnejte ho s tím, co stránka ukazuje čtenáři.
+
+**Nevíte, jak váš web popisuje autory a firmu?** [AI SEO audit za 3 600 Kč](/audit/) projde strukturovaná data i signály důvěryhodnosti — kdo za obsahem stojí a jak je to ověřitelné — a dá vám prioritní seznam úprav s odhadem dopadu a 60minutovou konzultaci.
+
+*Zdroje: schema.org, [knowsAbout](https://schema.org/knowsAbout), verze 30.0 z 19. 3. 2026, a [poznámky k vydáním](https://schema.org/docs/releases.html) (verze 3.4 z 15. 6. 2018) · Google Search Central, [Introduction to structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data), aktualizováno 10. 12. 2025 · [Organization](https://developers.google.com/search/docs/appearance/structured-data/organization), [ProfilePage](https://developers.google.com/search/docs/appearance/structured-data/profile-page) a [Article](https://developers.google.com/search/docs/appearance/structured-data/article), aktualizováno 8. 9. 2026 · [General structured data guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), aktualizováno 10. 7. 2026 · [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) a [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), aktualizováno 10. 12. 2025 · Ahrefs, [We Tracked 1885 Pages Adding Schema](https://ahrefs.com/blog/schema-ai-citations/), 11. 5. 2026 · Wikidata, položky [Q180711](https://www.wikidata.org/wiki/Q180711) a [Q484847](https://www.wikidata.org/wiki/Q484847). Vše ověřeno 15. 9. 2026.*

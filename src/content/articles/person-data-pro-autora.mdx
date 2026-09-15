@@ -8,7 +8,7 @@ tags:
   - "strukturovana-data"
   - "duveryhodnost"
 published: "2026-07-11"
-updated: "2026-07-11"
+updated: "2026-09-15"
 keywords:
   - "person schema autor"
   - "autor strukturovaná data"
@@ -23,8 +23,6 @@ stats:
     label: "stabilní @id opakovaný ve všech článcích zvyšuje šanci na konzistentní propojení autora do jedné entity"
   - value: "E-E-A-T"
     label: "Person data pomáhají AI i Googlu lépe pochopit, kdo je autorem a s jakými signály odbornosti ho spojit"
-  - value: "~40 %"
-    label: "podle vybraných studií GEO orientačně vyšší citace v AI odpovědích u kombinace strukturovaných dat, citací a statistik"
 howto:
   name: "Jak nasadit Person strukturovaná data pro autora"
   steps:
@@ -34,8 +32,8 @@ howto:
       text: "Do vlastnosti sameAs přidejte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata a další veřejné profily, které autora skutečně reprezentují. Důvěryhodné a udržované profily mohou odlišení autora usnadnit."
     - name: "Přiřaďte stabilní @id a opakujte ho"
       text: "Autorovi dejte jeden stabilní identifikátor @id, například vasweb.cz/#autor-jmeno. Ten samý @id použijte u všech jeho článků, což zvyšuje šanci, že si AI a Google jednotlivé zmínky spojí s jedním autorem místo mnoha různých osob."
-    - name: "Propojte článek s autorem přes @id"
-      text: "V JSON-LD článku (Article) odkažte na autora přes `author` s jeho `@id` a na vydavatele přes `publisher`. Autor se tak definuje jednou a články na něj jen odkazují."
+    - name: "Propojte článek s autorem"
+      text: "V JSON-LD článku (Article) uveďte u autora typ, jméno a url se stejným @id a doplňte vydavatele. Plný popis autora zůstane jednou na jeho profilu."
     - name: "Ověřte soulad s viditelným obsahem"
       text: "Zkontrolujte, že strukturovaná data odpovídají tomu, co je na stránce reálně vidět — jméno, role, profily. Nevymýšlejte tituly ani profily, které autor nemá; nesoulad je riziko."
 faq:
@@ -46,7 +44,7 @@ faq:
   - q: "Co je @id a proč ho opakovat?"
     a: "@id je stabilní identifikátor autora, například adresa jeho profilu s kotvou. Když ten samý @id použijete v Person datech na profilu i ve všech článcích, které napsal, zvýší se šance, že si Google a AI jednotlivé zmínky spojí s jedním autorem místo toho, aby ho na každé stránce chápaly jako jinou osobu. Konzistentní @id je proto silnější než definovat autora znovu na každé stránce."
   - q: "Kam JSON-LD s Person vložit?"
-    a: "JSON-LD vložte do značky script s typem application/ld+json na stránce. Osvědčený postup je definovat autora typem Person jednou na jeho autorském profilu a v jednotlivých článcích na něj jen odkazovat přes @id. V praxi to bývá součást šablony článku nebo autorské stránky ve vašem systému nebo CMS."
+    a: "JSON-LD vložte do značky script s typem application/ld+json na stránce. Osvědčený postup je definovat autora typem Person jednou na jeho autorském profilu a v jednotlivých článcích u autora uvést typ, jméno a url se stejným @id. V praxi to bývá součást šablony článku nebo autorské stránky ve vašem systému nebo CMS."
   - q: "Musí data sedět s viditelným obsahem stránky?"
     a: "Ano, a je to zásadní. Strukturovaná data by měla odpovídat tomu, co je na stránce reálně vidět — jméno autora, jeho role a profily. Nevymýšlejte tituly, kredence ani profily, které autor nemá. Nesoulad mezi daty a obsahem je riziko a u citlivých témat, jako je zdraví, finance nebo právo, obzvlášť."
   - q: "Platí to i pro české autory?"
@@ -87,10 +85,12 @@ Nemusíte vyplnit všechno, ale některé vlastnosti mají větší váhu než j
     { icon: "🪪", label: "name", left: "Jméno", right: "Celé jméno autora; musí sedět s tím, jak je uvedený u článků" },
     { icon: "🔗", label: "sameAs", left: "Profily", right: "Odkazy na LinkedIn, Wikidata, osobní web — odliší autora od jmenovců" },
     { icon: "💼", label: "jobTitle a worksFor", left: "Role a firma", right: "Pozice autora a organizace, pro kterou pracuje (uvádějte, jen když vztah reálně platí)" },
-    { icon: "🧠", label: "knowsAbout", left: "Expertíza", right: "Témata, kterým autor rozumí — signál odbornosti" },
+    { icon: "🧠", label: "knowsAbout", left: "Expertíza", right: "Témata, kterým autor rozumí; Google ji v dokumentaci neuvádí" },
     { icon: "🆔", label: "@id", left: "Identita", right: "Stabilní identifikátor, který pomáhá propojit články autora do jedné entity" },
   ]}
 />
+
+Co od knowsAbout čekat a jak ji zapsat s odkazem na Wikidata, rozebírá [samostatný návod ke knowsAbout](/blog/knowsabout-strukturovana-data/).
 
 ## sameAs a @id — srdce autorské entity
 
@@ -117,14 +117,19 @@ Takhle může vypadat zjednodušená definice autora typem Person na jeho profil
 }
 ```
 
-Vlastní profil autora na stejném webu patří primárně do `url`; `sameAs` míří hlavně na další veřejné profily a referenční identity (LinkedIn, Wikidata). V článku pak na autora jen odkážete přes ten samý `@id`, takže ho definujete jednou a nemusíte ho opakovat celý na každé stránce. V datech článku (`Article`) na autora ukážete přes `author` a na vydavatele přes `publisher`:
+Vlastní profil autora na stejném webu patří primárně do `url`; `sameAs` míří hlavně na další veřejné profily a referenční identity (LinkedIn, Wikidata). V článku pak u autora uvedete typ, jméno a `url` se stejným `@id`, takže plný popis zůstane jednou na profilu. Typ a `url`, případně `sameAs`, Google u autora článku důrazně doporučuje. V datech článku (`Article`) na autora ukážete přes `author` a na vydavatele přes `publisher`:
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Název článku",
-  "author": { "@id": "https://vasweb.cz/#autor-jan-novak" },
+  "author": {
+    "@type": "Person",
+    "@id": "https://vasweb.cz/#autor-jan-novak",
+    "name": "Jan Novák",
+    "url": "https://vasweb.cz/o-nas/jan-novak/"
+  },
   "publisher": { "@type": "Organization", "name": "Vaše firma s.r.o." }
 }
 ```
@@ -153,7 +158,7 @@ Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organiz
     {
       label: "Propojení",
       title: "Propojte článek s autorem",
-      text: "V datech článku odkažte na autora přes jeho `@id` a na vydavatele přes `publisher`. Autor se tak definuje jednou a články na něj jen odkazují.",
+      text: "V datech článku uveďte u autora typ, jméno a url se stejným @id a doplňte vydavatele. Plný popis autora zůstane jednou na jeho profilu.",
     },
     {
       label: "Kontrola",
@@ -206,7 +211,7 @@ Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organiz
 - **Person data popisují autora jako entitu** — jméno, role, profily a expertíza pro AI i Google.
 - **sameAs patří k nejdůležitějším** — odkazy na LinkedIn a Wikidata pomáhají odlišit autora od jmenovců.
 - **Stabilní @id opakujte** u všech článků, aby se autor sloučil do jedné entity.
-- **Článek odkazuje na autora přes @id** — autora definujete jednou.
+- **Článek uvádí u autora typ, jméno a url se stejným @id** — plný popis je jednou na profilu.
 - **Data musí sedět s viditelným obsahem** — žádné vymyšlené tituly.
 - **Person data pomáhají pochopit, kdo je autorem** — ověřte výsledek [testem AI viditelnosti](/blog/test-viditelnosti-v-ai/).
 

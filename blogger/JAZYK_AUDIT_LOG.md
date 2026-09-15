@@ -1322,3 +1322,16 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 
 **Vedlejší úprava:** `geo-optimalizace` (přepsaná sekce „Časový horizont“ a FAQ „Za jak dlouho budou výsledky?“) — checker 0.
 
+
+## C6: `knowsabout-strukturovana-data` (15. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | **0 nálezů** už v prvním konceptu i po obou auditech. |
+| LLM (gpt-5.4) | 4 nálezy — **všechny přijaty v textu, žádné nové pravidlo** |
+
+**Přijato z LLM:** „vlastnost, kterou autorovi nebo firmě přiřadíte témata“ → „vlastnost, do které u autora nebo firmy zapíšete témata“ · „Dokumentaci … jsme nenašli také“ (přilepené „také“ na konci) → „Nenašli jsme ani dokumentaci …“ · „Jako páku na citace ji ale nepočítejte“ → „Jako s pákou na citace s ní ale nepočítejte“ · „v ostrém zápisu“ → „ve skutečném zápisu na webu“.
+
+**Proč bez pravidel:** navržené regexy by chytaly i správnou češtinu. „Přiřadit témata“ je sama o sobě v pořádku, vadná byla jen vazba s „kterou“; slovosled a vazbu „počítat s něčím jako s …“ regex nepozná; „ostrý provoz / ostrá verze“ je zavedená česká mluva vývojářů — tady šlo jen o srozumitelnost pro laika.
+
+**Vedlejší úprava:** `person-data-pro-autora` (knowsAbout už není „signál odbornosti“, autor v datech článku s typem, jménem a url) — při první verzi checker 2× ⛔ `publisher` v prostém textu kroku a HowTo; přeformulováno na „doplňte vydavatele“, pak **0**.
