@@ -12,3 +12,10 @@
 - Bezpečnostní kontrola dle security-review: statický MDX, známé komponenty, žádný nový script ani endpoint. Prohledány injection/XSS/deserializace/SQL/SSRF/credentials/crypto/auth/cookies/redirects/Actions/prototype/XXE vzory; 0 nálezů. Slovníkové regexy bez složitého zpětného prohledávání.
 - IndexNow při lokálním buildu: odeslání 26 změněných URL skončilo HTTP 403. Pro publikaci nutné ověřit CI a skutečný stav, nelze tvrdit úspěšné odeslání jen podle hlášky submission complete.
 - Cizí změny dokumentace a .astro-indexnow-cache.json ponechány mimo commit.
+
+## Publikace
+
+- Publikační commit `a9e151e90e10333f97f97b1bf36831cf3555f516`, CI run [34984624513](https://github.com/ultron-sniperdesign/aiseo-optimalizace/actions/runs/34984624513) úspěšný. Release `20260915-145356-a9e151e` aktivován 15. 9. 2026 ve 14:54 UTC.
+- Živý článek https://aiseo-optimalizace.cz/blog/jazykove-mutace-pro-ai/ HTTP 200; JPG i WebP HTTP 200; slug přítomen ve výpisu i sitemap-0.xml; všech 6 JSON-LD bloků parsovatelných. V prohlížeči ověřen titulek, hero i karta s WebP.
+- IndexNow: CI odeslalo 266 URL, odpověď 403. Následný POST jediné publikované URL s explicitním keyLocation také 403 (`UserForbiddedToAccessSite`). Veřejný ověřovací soubor vrací 200 a správný obsah. Přesnou příčinu odmítnutí neznáme, předáno do projektového boardu. Odeslání ani zaindexování netvrdíme; viz [oficiální dokumentace IndexNow](https://www.indexnow.org/documentation).
+- D4: řádek `jazykove mutace pro ai` označen ano, doplněna veřejná URL.
