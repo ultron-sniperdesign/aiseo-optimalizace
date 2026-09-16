@@ -316,18 +316,19 @@ protože integrace chybu jen warnuje, nikdo si toho nevšimne.
 > je — jen ji publikační postup nikdy nedával do `git add`. **Tohle opravit je
 > správně bez ohledu na cokoli dalšího.**
 
-> **Commitnuto 16. 9. 2026 (`44c6345`) — a nestačilo to.** Nejbližší CI build hlásil
-> `submitting 261 changed URLs`. Cache porovnává **sha256 zbuildovaného `index.html`**,
-> ne seznam URL. Baseline v commitu pocházela z lokálního buildu v 20:09, jenže ve
-> 20:10 a 20:13 přišly cizí commity přestavby `/audit/` a přepsaly stovky stránek —
-> takže 261 změn je v tomhle běhu legitimní, ne důkaz, že cache nefunguje.
+> **Commitnuto 16. 9. 2026 (`44c6345`) — a NEFUNGUJE to.** Dva nasledujici CI buildy
+> hlasily shodne `submitting 261 changed URLs`, druhy z nich (`e925d7e`) pritom
+> nemenil jedinou stranku webu — jen soubory v `blogger/`, ktere se nedeployuji.
+> Kdyby cache fungovala, bylo by tam `submitting 0`.
 >
-> **Neověřeno:** CI je ephemeral a svoji verzi cache nikam nezapisuje. Commitnutá
-> baseline se tedy sama neaktualizuje a pomůže jen tehdy, když ji agent po lokálním
-> buildu commitne **ve stejném commitu** jako článek (proto je v `git add` výš) —
-> a jen pokud je build deterministický napříč stroji. **To zatím nikdo neměřil.**
-> Ukáže to první build, do kterého nezasáhne cizí commit: `submitting 0` = funguje,
-> znovu stovky = cache je pro CI k ničemu a musí ji po buildu commitovat bot.
+> **Proc:** cache porovnava **sha256 zbuildovaneho `index.html`**, ne seznam URL.
+> Baseline v repu pochazi z lokalniho buildu a CI produkuje jine hashe. CI je navic
+> ephemeral a svoji verzi cache nikam nezapisuje, takze se to nesrovna nikdy.
+>
+> **Rucni commit cache tedy problem neresi** a `git add` vyse ji drzi jen proto, aby
+> se stav neztracel. Skutecna oprava je na spravci: bud cache po buildu commituje
+> bot, nebo se detekce zmen prestane opirat o hash HTML. Dokud to plati, bude kazdy
+> build podavat stovky URL znovu.
 
 > ### ⛔ IndexNow pro tento web teď NEFUNGUJE — nezkoušej to obcházet
 >
