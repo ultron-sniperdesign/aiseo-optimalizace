@@ -107,7 +107,7 @@ export const audiencePrimary: AudienceBlock = {
 export const audienceNegative: AudienceBlock = {
   tag: "PDF NENÍ pro vás, pokud",
   items: [
-    'čekáte <strong>kompletní audit celého webu</strong> &mdash; k&nbsp;tomu slouží <a href="/audit/">AI&nbsp;SEO audit</a>',
+    'čekáte <strong>kompletní audit celého webu</strong> &mdash; k&nbsp;tomu slouží <a href="/audit/">Audit AI&nbsp;viditelnosti</a>',
     'chcete <strong>hotové texty</strong> pro produktové / kategoriální stránky &mdash; rozšířený <a href="/pack/">Pack</a>',
     "řešíte <strong>čistě technické SEO</strong> bez úprav obsahu",
     "nechcete po&nbsp;stažení dostat <strong>žádné navazující e-maily</strong>",
@@ -138,8 +138,8 @@ export const upsellTiers: PricingTier[] = [
     num: "Audit · uděláme to za vás",
     featured: true,
     pill: "★&nbsp;To nejlepší",
-    title: "AI&nbsp;SEO audit od Sniper Design",
-    body: "Získáte přesný plán, co změnit na každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u vašeho oboru, kde má konkurence díry a jak ji předběhnout. Plus 60min konzultace. Výstup do 5 pracovních dní.",
+    title: "Audit AI&nbsp;viditelnosti od Sniper Design",
+    body: "Získáte přesný plán, co změnit na každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u vašeho oboru, kde má konkurence díry a jak ji předběhnout. Plus meeting 30–60 minut. Výstup do 5 pracovních dní od úhrady.",
     chip: "✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet",
     price: "3&nbsp;600&nbsp;Kč",
     priceNote: "jednorázově, bez DPH",
@@ -174,7 +174,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Co když chci, ať to za mě uděláte vy?",
-    a: "Sniper Design nabízí AI SEO audit za 3 600 Kč. Projdeme váš web, najdeme problémy ve třech vrstvách (technika, obsah, autorita), dáme vám prioritní seznam úprav a 60min konzultaci. Výstup do 5 pracovních dní.",
+    a: "Sniper Design nabízí Audit AI viditelnosti za 3 600 Kč. Projdeme váš web ve čtyřech vrstvách (viditelnost v AI dnes, technika, obsah, důvěryhodnost), dáme vám prioritní seznam úprav a meeting 30–60 minut. Výstup do 5 pracovních dní od úhrady.",
   },
   {
     q: "Můžu se kdykoli odhlásit z e-mailů?",

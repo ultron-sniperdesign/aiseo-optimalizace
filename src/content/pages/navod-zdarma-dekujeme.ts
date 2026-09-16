@@ -54,8 +54,8 @@ export const tiers: PricingTier[] = [
     num: "Audit · uděláme to za vás",
     featured: true,
     pill: "★&nbsp;To nejlepší",
-    title: "AI&nbsp;SEO audit od Sniper Design",
-    body: "Získáte přesný plán, co změnit na&nbsp;každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u&nbsp;vašeho oboru, kde má konkurence díry a&nbsp;jak ji předběhnout. Plus 60min konzultace.",
+    title: "Audit AI&nbsp;viditelnosti od Sniper Design",
+    body: "Získáte přesný plán, co změnit na&nbsp;každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u&nbsp;vašeho oboru, kde má konkurence díry a&nbsp;jak ji předběhnout. Plus meeting 30&ndash;60 minut.",
     chip: "✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet",
     price: "3&nbsp;600&nbsp;Kč",
     priceNote: "jednorázově, bez DPH",
@@ -69,7 +69,7 @@ export const agency = {
   eyebrow: "Za návodem stojí",
   title:
     "<strong>E-commerce praxe Sniper Design</strong>, ne obecný SEO checklist",
-  lead: "AI&nbsp;SEO návod nevznikl jako univerzální šablona pro všechny weby. Připravili ho lidé ze&nbsp;Sniper Design, kteří se dlouhodobě specializují na e-shopy, produktová data, obsah a&nbsp;automatizaci. Díky vlastnímu e-shopu i&nbsp;vlastním nástrojům řešíme AI&nbsp;SEO v&nbsp;kontextu reálného provozu, ne jen jako teorii.",
+  lead: "AI&nbsp;SEO návod nevznikl jako univerzální šablona pro všechny weby. Připravili ho lidé ze&nbsp;Sniper Design, kteří se dlouhodobě specializují na e-shopy, produktová data, obsah a&nbsp;automatizaci. Díky vlastnímu e-shopu i&nbsp;každodenní práci na&nbsp;klientských webech řešíme AI&nbsp;SEO v&nbsp;kontextu reálného provozu, ne jen jako teorii.",
   tiles: [
     {
       title: "Upgates od&nbsp;roku 2016",
@@ -85,7 +85,7 @@ export const agency = {
     },
     {
       title: "Vlastní e-commerce nástroje",
-      body: "Vyvíjíme <strong>GPTfeed</strong> pro AI tvorbu produktových a&nbsp;kategoriových textů a&nbsp;<strong>SYNKRO</strong> pro automatizaci e-shopových procesů. Nezůstáváme jen u&nbsp;doporučení &mdash; stavíme nástroje pro konkrétní provozní problémy e-shopů.",
+      body: "Vyvíjíme <strong>GPTfeed</strong> pro tvorbu produktových textů a&nbsp;textů kategorií a&nbsp;<strong>SYNKRO</strong> pro automatizaci e-shopových procesů. Nezůstáváme jen u&nbsp;doporučení &mdash; stavíme nástroje pro konkrétní provozní problémy e-shopů.",
     },
   ] as TileItem[],
   ctaLabel: "Podívat se na vybrané reference&nbsp;→",

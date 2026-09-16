@@ -30,7 +30,7 @@ export const hero = {
   titleHtml:
     "<strong>200&nbsp;000 zobrazení</strong> v&nbsp;Přehledu od AI a&nbsp;v&nbsp;režimu AI za&nbsp;dva měsíce",
   lead: "Když se dnes lidé ptají Googlu, odpověď jim často složí AI přímo ve výsledcích. Za necelé dva měsíce se v těch odpovědích 200 000× objevil náš vlastní e-shop MEGA DETAIL. Tahle čísla jsou výchozí stav — od 10. 8. 2026 e-shop cíleně optimalizujeme a data budeme zveřejňovat průběžně.",
-  ctaPrimary: { label: "Chci AI SEO audit", href: "/audit/" },
+  ctaPrimary: { label: "Chci audit AI viditelnosti", href: "/audit/" },
   ctaSecondary: { label: "Prohlédnout všechny služby", href: "/sluzby/" },
 };
 
@@ -171,8 +171,8 @@ export const methodology = {
 export const finalCta = {
   eyebrow: "Váš web",
   titleHtml: "Kolikrát se v AI odpovědích zobrazuje <strong>váš web</strong>?",
-  lead: "AI SEO audit vám na to odpoví přesně: projdeme váš obsah, strukturu i měření stejnou optikou, jakou optimalizujeme MEGA DETAIL — a dostanete seznam kroků seřazený podle dopadu.",
-  ctaPrimary: { label: "Objednat AI SEO audit za 3 600 Kč", href: "/audit/" },
+  lead: "Audit AI viditelnosti vám na to odpoví přesně: projdeme váš obsah, strukturu i měření stejnou optikou, jakou optimalizujeme MEGA DETAIL — a dostanete seznam kroků seřazený podle dopadu.",
+  ctaPrimary: { label: "Objednat audit za 3 600 Kč", href: "/audit/" },
   ctaSecondary: { label: "Nejdřív chci vidět celá data", href: "/blog/case-study-megadetail-ai-navstevnost/" },
 };
 

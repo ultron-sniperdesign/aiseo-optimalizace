@@ -12,10 +12,10 @@ export const llms = {
   title: "AI SEO Optimalizace",
   /** Blockquote souhrn webu (1–3 věty). */
   summary:
-    "Český edukativní web o AI éře vyhledávání: SEO, GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), AIO (AI Optimization) a Google AI Mode. Praktické postupy pro e-shopy a firemní weby, jak zvýšit AI viditelnost — být citovaný v ChatGPT, Perplexity, Google AI Overviews i AI Mode.",
+    "Český edukativní web o AI éře vyhledávání: SEO, GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), AIO (AI Optimization), Přehled od AI a režim AI v Googlu. Praktické postupy pro e-shopy a firemní weby, jak zvýšit AI viditelnost — být citovaný v ChatGPT, Perplexity, Přehledu od AI i v režimu AI.",
   /** Volný odstavec pod souhrnem (provozovatel, model webu). */
   about:
-    "Web aiseo-optimalizace.cz je produktem agentury Sniper Design (CPU s.r.o., Praha) — Zlatého partnera Upgates od 2016; agentura pod touto značkou poskytuje i všechny zde nabízené AI SEO služby. Obsah kombinuje edukativní průvodce zdarma s komerčními službami: free PDF návod, placený AI SEO Wireframe Pack a AI SEO audit. Autorem obsahu je Kamil ze Sniper Design; jak obsah vzniká, popisuje stránka autora.",
+    "Web aiseo-optimalizace.cz je produktem agentury Sniper Design (CPU s.r.o., Praha) — Zlatého partnera Upgates od 2016; agentura pod touto značkou poskytuje i všechny zde nabízené AI SEO služby. Obsah kombinuje edukativní průvodce zdarma s komerčními službami: PDF návod zdarma, placený AI SEO Wireframe Pack a Audit AI viditelnosti. Autorem obsahu je Kamil ze Sniper Design; jak obsah vzniká, popisuje stránka autora.",
 
   /** Nadpisy sekcí souboru. */
   sections: {
@@ -27,7 +27,7 @@ export const llms = {
     topics: "Témata blogu",
     articles: "Všechny články",
     products: "Služby a produkty",
-    optional: "Optional",
+    optional: "Doplňkové odkazy",
   },
 
   /** Kurátorované statické položky (huby, produkty) — popisy ručně. */
@@ -42,7 +42,7 @@ export const llms = {
     {
       path: "/slovnik/",
       label: "Slovník pojmů AI éry vyhledávání",
-      desc: "46+ definic (40–60 slov, citovatelné samostatně) s kotvami — AI Mode, AI Overviews, GEO, AEO, LLM, RAG, query fan-out a další.",
+      desc: "46+ definic (40–60 slov, citovatelné samostatně) s kotvami — režim AI, Přehled od AI, GEO, AEO, LLM, RAG, query fan-out a další.",
     },
     {
       path: "/ai-viditelnost/",
@@ -68,7 +68,7 @@ export const llms = {
     },
     {
       path: "/audit/",
-      label: "AI SEO audit",
+      label: "Audit AI viditelnosti",
       desc: "Změříme viditelnost webu v AI odpovědích a navrhneme prioritní kroky.",
     },
     {

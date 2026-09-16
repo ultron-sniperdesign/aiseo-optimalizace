@@ -73,6 +73,9 @@ const orgSchema = {
     height: 180,
   },
   sameAs: site.org.sameAs,
+  email: site.org.email,
+  telephone: site.org.telephone,
+  address: { "@type": "PostalAddress", ...site.org.address },
 };
 
 const websiteSchema = {

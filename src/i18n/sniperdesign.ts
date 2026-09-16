@@ -77,7 +77,7 @@ export const sniperDesign = {
       {
         num: "04",
         title: "Tvorba a&nbsp;aktualizace obsahu",
-        desc: "Popisy produktů, FAQ a články generované s pomocí AI v tónu vaší značky — ve formátu, ze kterého mohou citovat ChatGPT, Perplexity i Přehled od AI.",
+        desc: "Popisy produktů, FAQ a články v tónu vaší značky — ve formátu, ze kterého mohou citovat ChatGPT, Perplexity i Přehled od AI.",
       },
     ],
     scopeEyebrow: "Konkrétní záběr",
@@ -97,7 +97,7 @@ export const sniperDesign = {
   },
 
   small: {
-    lead: 'V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong> — strategii, audit, implementaci i obsah. Zlatý partner Upgates i Shoptetu, přes 600 e‑shopů na CZ trhu. <strong>AI vyhledávání implementujeme</strong> do návrhů homepage, obsahové struktury i auditů klientských webů.',
+    lead: 'V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong> — strategii, audit, implementaci i obsah. Zlatý partner Upgates i Shoptetu, přes 600 e‑shopů na CZ trhu. <strong>Na AI vyhledávání připravujeme</strong> návrhy homepage, obsahovou strukturu i audity klientských webů.',
     /** Partnerství u platforem nese komponenta PartnerBadges nad tímto seznamem. */
     trust: [
       "<strong>600+</strong> e‑shopů",

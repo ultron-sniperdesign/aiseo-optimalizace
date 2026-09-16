@@ -186,7 +186,7 @@ export const stepContent = {
   eyebrow: "Ceník obsahu",
   titleHtml: "Jediné ceny, které <strong>známe předem</strong>",
   lead:
-    "Generování citovatelného obsahu na platformě nezávisí — proto ho umíme garantovat na korunu.",
+    "Tvorba citovatelného obsahu na platformě nezávisí — proto ji umíme garantovat na korunu.",
   analysisTitle: "Proč je u obsahu vstupní analýza?",
   analysisHtml:
     "Negenerujeme texty jedním univerzálním promptem. U každého projektu nejdřív vytvoříme <strong>vstupní analýzu</strong>: branding a tón projektu, konkurence a mezery, audit stávajícího obsahu. Teprve nad těmito daty ladíme generování na míru projektu. <strong>Analýza se platí jednou pro celou skupinu</strong> — při rozšíření na vyšší úroveň se neopakuje.",
@@ -337,7 +337,7 @@ export const offer = {
   cta: { label: "Objednat audit", href: "/audit/" },
   risk: "Bez závazku pokračovat. Plán je váš, ať ho realizuje kdokoli.",
   /** Název nabídky ve strukturovaných datech. */
-  jsonLdName: "AI SEO audit s meetingem",
+  jsonLdName: "Audit AI viditelnosti s meetingem",
 };
 
 /* ============ DLOUHODOBĚ + MĚŘENÍ ============ */

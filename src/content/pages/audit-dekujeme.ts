@@ -17,13 +17,13 @@ import type {
 export const meta = {
   title: "Děkujeme za poptávku auditu — brzy se ozveme",
   description:
-    "Poptávka AI SEO auditu odeslána. Brzy se vám ozveme s upřesněním rozsahu, fakturou a termínem startu auditu.",
+    "Poptávka auditu AI viditelnosti odeslána. Brzy se vám ozveme s upřesněním rozsahu, fakturou a termínem startu auditu.",
 };
 
 export const hero: ThankYouHero = {
   title: "Děkujeme za poptávku &mdash;<br /><strong>brzy se ozveme</strong>",
   lead:
-    "Vaše poptávka <strong>AI&nbsp;SEO auditu</strong> dorazila. Ozveme se vám v&nbsp;<strong>následujících pracovních dnech</strong> s&nbsp;upřesněním rozsahu, fakturou a&nbsp;termínem startu auditu.",
+    "Vaše poptávka <strong>auditu AI&nbsp;viditelnosti</strong> dorazila. Ozveme se vám v&nbsp;<strong>následujících pracovních dnech</strong> s&nbsp;upřesněním rozsahu, fakturou a&nbsp;termínem startu auditu.",
   meta:
     'Pokud máte dotaz, který nemůže čekat, napište nám přímo na <a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá&nbsp;10&minus;17).',
 };
@@ -59,7 +59,7 @@ export const steps: NumberedStep[] = [
   {
     num: 5,
     html:
-      "<strong>Projdeme plán společně.</strong> Na&nbsp;60minutové online konzultaci vysvětlíme nálezy, odpovíme na&nbsp;otázky a&nbsp;srovnáme pořadí prací. Po hovoru víte, co změnit jako první a&nbsp;jak implementaci předat dál.",
+      "<strong>Projdeme plán společně.</strong> Na&nbsp;online meetingu (30&ndash;60 minut) vysvětlíme nálezy, odpovíme na&nbsp;otázky a&nbsp;srovnáme pořadí prací. Po hovoru víte, co změnit jako první a&nbsp;jak implementaci předat dál.",
   },
 ];
 

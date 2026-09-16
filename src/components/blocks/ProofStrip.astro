@@ -9,8 +9,19 @@
  * src/i18n/proof.ts (fork přeloží).
  *
  * Použití: <ProofStrip /> těsně před Sniper Design pitch blokem.
+ *
+ * `hideCta` schová dvojici tlačítek. Na prodejní stránce (/audit/) by
+ * soupeřila s objednávkovým formulářem a odváděla z ní pryč; jinde je
+ * naopak CTA smyslem panelu, proto je výchozí stav „zobrazit“.
  */
 import { proof } from "~/i18n/proof";
+
+interface Props {
+  /** Skryje dvojici CTA — pro stránky s vlastním konverzním cílem. */
+  hideCta?: boolean;
+}
+
+const { hideCta = false } = Astro.props;
 ---
 
 <section class="proof" aria-label={proof.aria}>
@@ -32,15 +43,17 @@ import { proof } from "~/i18n/proof";
       }
     </dl>
 
-    <div class="proof__actions">
-      <a class="proof__cta proof__cta--primary" href={proof.ctaPrimary.href}>
-        {proof.ctaPrimary.label}
-        <span aria-hidden="true">→</span>
-      </a>
-      <a class="proof__cta proof__cta--secondary" href={proof.ctaSecondary.href}>
-        {proof.ctaSecondary.label}
-      </a>
-    </div>
+    {!hideCta && (
+      <div class="proof__actions">
+        <a class="proof__cta proof__cta--primary" href={proof.ctaPrimary.href}>
+          {proof.ctaPrimary.label}
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="proof__cta proof__cta--secondary" href={proof.ctaSecondary.href}>
+          {proof.ctaSecondary.label}
+        </a>
+      </div>
+    )}
 
     <p class="proof__source">{proof.source}</p>
   </div>

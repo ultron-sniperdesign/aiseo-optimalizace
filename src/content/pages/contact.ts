@@ -60,7 +60,8 @@ export const orgJsonLd = {
     "E-commerce",
     "AI SEO",
     "Generative Engine Optimization",
-    "Schema markup",
+    "Strukturovaná data",
+    "AI viditelnost",
     "Core Web Vitals",
   ],
 };
@@ -92,7 +93,7 @@ export const hero = {
     },
     {
       strongHtml: "Vlastní nástroje",
-      subHtml: "automatizace (SYNKRO) a&nbsp;AI obsah (GPTfeed)",
+      subHtml: "automatizace (SYNKRO) a&nbsp;produktový obsah (GPTfeed)",
     },
   ],
   ctaPrimary: { labelHtml: "Podívat se na AI&nbsp;SEO Wireframe Pack", href: "/pack/" },
@@ -114,16 +115,16 @@ export const services = {
       num: "01",
       titleHtml: "AI&nbsp;SEO optimalizace e-shopu",
       descHtml:
-        "Komplet balíček: technické SEO, AI-friendly struktura obsahu, strukturovaná data, mobile UX, Core Web Vitals, košík. Doručíme za 14–30 dní.",
+        "Komplet balíček: technické SEO, struktura obsahu čitelná pro AI, strukturovaná data, mobilní použitelnost, Core Web Vitals, košík. Doručíme za 14–30 dní.",
       metaHtml: "3&nbsp;850&nbsp;– 23&nbsp;000&nbsp;Kč bez DPH",
     },
     {
       href: "/audit/",
       num: "02",
-      titleHtml: "AI&nbsp;SEO audit s&nbsp;cenou předem",
+      titleHtml: "Audit AI&nbsp;viditelnosti s&nbsp;cenou předem",
       descHtml:
-        "Technika, obsah a&nbsp;důvěryhodnost webu. Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu a&nbsp;60&nbsp;minut konzultace, kde ho projdeme spolu. Cena i&nbsp;termín předem.",
-      metaHtml: "3&nbsp;600&nbsp;Kč bez DPH &middot; výstup do&nbsp;5&nbsp;pracovních dnů",
+        "Viditelnost v&nbsp;AI dnes, technika, obsah a&nbsp;důvěryhodnost webu. Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu a&nbsp;meeting 30&ndash;60 minut, kde ho projdeme spolu. Cena i&nbsp;termín předem.",
+      metaHtml: "3&nbsp;600&nbsp;Kč bez DPH &middot; výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady",
     },
     {
       href: "https://www.sniperdesign.cz/co-delame",
@@ -144,10 +145,10 @@ export const services = {
     {
       href: "https://www.sniperdesign.cz/",
       num: "05",
-      titleHtml: "GPTfeed &mdash; AI generování obsahu",
+      titleHtml: "GPTfeed &mdash; produktové texty ve&nbsp;velkém",
       descHtml:
-        "AI generování produktových popisů a&nbsp;kategoriálních textů se SEO logikou a&nbsp;důrazem na&nbsp;srozumitelnou strukturu pro&nbsp;uživatele i&nbsp;AI vyhledávání.",
-      metaHtml: "vlastní AI nástroj &middot; SEO-řízený obsah",
+        "Produktové popisy a&nbsp;texty kategorií ve&nbsp;velkém. Skládáme je s&nbsp;pomocí AI a&nbsp;ladíme na&nbsp;tón značky &mdash; se&nbsp;SEO logikou a&nbsp;strukturou srozumitelnou uživatelům i&nbsp;AI vyhledávání.",
+      metaHtml: "vlastní platforma &middot; obsah se&nbsp;SEO logikou",
     },
     {
       href: "/kontakt/",
@@ -248,7 +249,7 @@ export const paths = {
       variant: "accent",
       pillVariant: "audit",
       pillHtml: "Audit",
-      titleHtml: "AI&nbsp;SEO audit &mdash; přesný plán pro váš web",
+      titleHtml: "Audit AI&nbsp;viditelnosti &mdash; přesný plán pro váš web",
       descHtml:
         "Chcete přesný plán přímo pro váš web? Audit je <strong>navazující krok po&nbsp;Packu</strong> &mdash; nebo samostatná volba, pokud to nechcete řešit sami. 3&nbsp;600&nbsp;Kč, výstup do&nbsp;5&nbsp;dní.",
       cta: { labelHtml: "Objednat audit&nbsp;&rarr;", href: "/audit/", accent: true },

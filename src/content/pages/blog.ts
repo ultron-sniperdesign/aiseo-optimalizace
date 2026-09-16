@@ -26,11 +26,11 @@ export const heroTitleHtml = '<span class="hl">Aktuální obsah</span> o AI&nbsp
 
 /** Hero lead — set:html (strong + non-breaking hyphen). */
 export const heroLeadHtml =
-  "Tutoriály, analýzy a defenzivní průvodce pro provozovatele webů a e&#8209;shopů, kteří chtějí být <strong>citováni v ChatGPT, Perplexity i v Google AI Overviews</strong>. Nový článek pravidelně, bez vaty.";
+  "Tutoriály, analýzy a defenzivní průvodce pro provozovatele webů a e&#8209;shopů, kteří chtějí být <strong>citováni v ChatGPT, Perplexity i v Přehledu od AI</strong>. Nový článek pravidelně, bez vaty.";
 
 /** Answer block — 40–60 slov, definice 'Blog je…' pro AI scrapery + lidské. */
 export const answerText =
-  "Blog aiseo-optimalizace.cz je sbírka praktických tutoriálů, analýz a defenzivních průvodců pro AI éru vyhledávání. Každý článek je strukturovaný pro citovatelnost v ChatGPT, Perplexity i Google AI Overviews — answer block, FAQPage schema, 3+ konkrétní fakta na 100 slov. Pro provozovatele webů, e-shopů a marketéry, kteří chtějí, aby AI engine jejich obsah citoval, ne přeskočil.";
+  "Blog aiseo-optimalizace.cz je sbírka praktických tutoriálů, analýz a defenzivních průvodců pro AI éru vyhledávání. Každý článek je strukturovaný pro citovatelnost v ChatGPT, Perplexity i v Přehledu od AI — krátká odpověď nahoře, strukturovaná data FAQPage, tři a víc konkrétních faktů na 100 slov. Pro provozovatele webů, e-shopů a marketéry, kteří chtějí, aby AI nástroje jejich obsah citovaly, ne přeskočily.";
 
 /** FAQ — 6 reálných otázek o blogu (zdroje pro AI scrapery + lidské čtenáře). */
 export const faq: FaqItem[] = [

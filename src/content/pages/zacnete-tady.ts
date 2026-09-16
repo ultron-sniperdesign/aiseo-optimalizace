@@ -264,8 +264,8 @@ export const roles = {
 
 export const cta = {
   title: "Nechcete to řešit sami?",
-  lead: "**AI SEO audit od Sniper Design za 3 600 Kč bez DPH** změří, jak je na tom váš web v ChatGPT, v režimu AI a v Přehledu od AI, a navrhne priority — dostanete konkrétní plán místo hádání. Dlouhodobou spolupráci řeší [služby agentury](/sluzby/).",
-  button: "Chci AI SEO audit",
+  lead: "**Audit AI viditelnosti od Sniper Design za 3 600 Kč bez DPH** změří, jak je na tom váš web v ChatGPT, v režimu AI a v Přehledu od AI, a navrhne priority — dostanete konkrétní plán místo hádání. Dlouhodobou spolupráci řeší [služby agentury](/sluzby/).",
+  button: "Chci audit AI viditelnosti",
   href: "/audit/",
   /** Měkká alternativa pro ty, kdo chtějí nejdřív zjistit, jak na tom jsou. */
   soft: { href: "/blog/test-viditelnosti-v-ai/", label: "Nebo si udělejte test viditelnosti zdarma za hodinu" },
@@ -310,7 +310,7 @@ export const faq = [
   },
   {
     q: "Nemám na to kapacitu — dá se to zadat?",
-    a: "Ano. Nejmenší smysluplný krok je [AI SEO audit](/audit/) za 3 600 Kč bez DPH: změříme viditelnost webu v odpovědích AI, projdeme technický stav i obsah a dostanete prioritizovaný plán. Realizaci pak zvládnete interně podle návodů na tomhle webu, nebo ji převezmou [služby agentury](/sluzby/).",
+    a: "Ano. Nejmenší smysluplný krok je [Audit AI viditelnosti](/audit/) za 3 600 Kč bez DPH: změříme viditelnost webu v odpovědích AI, projdeme technický stav i obsah a dostanete prioritizovaný plán. Realizaci pak zvládnete interně podle návodů na tomhle webu, nebo ji převezmou [služby agentury](/sluzby/).",
   },
 ];
 

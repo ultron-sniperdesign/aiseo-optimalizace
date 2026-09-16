@@ -200,7 +200,7 @@ export const SERIES: Series[] = [
     },
     cta: {
       title: "Chcete vědět, jak je na tom váš e-shop?",
-      lead: "**AI SEO audit od Sniper Design za 3 600 Kč bez DPH** projde produktové stránky, kategorie i produktová data a dá vám prioritní seznam úprav. Výstup do pěti pracovních dní. Dlouhodobou spolupráci řeší [služby agentury](/sluzby/).",
+      lead: "**Audit AI viditelnosti od Sniper Design za 3 600 Kč bez DPH** projde produktové stránky, kategorie i produktová data a dá vám prioritní seznam úprav. Výstup do pěti pracovních dní. Dlouhodobou spolupráci řeší [služby agentury](/sluzby/).",
       button: "Objednat audit e-shopu",
       href: "/audit/",
       soft: { href: "/blog/test-viditelnosti-v-ai/", label: "Nebo si nejdřív udělejte test viditelnosti zdarma" },

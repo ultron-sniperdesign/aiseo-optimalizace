@@ -31,12 +31,12 @@ export const SECOND_INSERT_AFTER_HEADING = 5;
 export const INLINE_CTA = {
   audit: {
     categories: ["analysis", "case-study"],
-    eyebrow: "AI SEO audit od Sniper Design",
+    eyebrow: "Audit AI viditelnosti od Sniper Design",
     label: "Zjistěte, proč AI cituje konkurenci, a ne vás",
     text:
-      "Projdeme váš konkrétní web ve třech vrstvách — technika, obsah, důvěryhodnost — " +
+      "Projdeme váš konkrétní web ve čtyřech vrstvách — viditelnost v AI dnes, technika, obsah, důvěryhodnost — " +
       "a dostanete prioritní seznam úprav. U každé uvidíte dopad i náročnost, takže víte, " +
-      "co řešit první. Výstup do 5 pracovních dní a 60minutová konzultace nad výsledky.",
+      "co řešit první. Výstup do 5 pracovních dní od úhrady a meeting 30–60 minut nad výsledky.",
     linkText: "Získat audit",
     href: "/audit/",
   },

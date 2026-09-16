@@ -1,9 +1,16 @@
 /**
- * Datový modul — prodejní landing /audit/ (AI SEO audit, 3 600 Kč).
+ * Datový modul — prodejní landing /audit/ (Audit AI viditelnosti, 3 600 Kč).
  *
  * Fáze 0 refaktor: veškerý dříve inline obsah `audit/index.astro` je tady.
  * Template stránku jen renderuje (styly + struktura formuláře + inline JS
  * zůstávají v .astro). Text s inline HTML i &nbsp; se renderuje přes set:html.
+ *
+ * NÁZEV PRODUKTU (rozhodnutí uživatele 16. 9. 2026): služba se jmenuje
+ * **Audit AI viditelnosti**, ne „AI SEO audit“. Starý název se četl jako
+ * „klasický SEO audit, akorát dělaný pomocí AI“, což je jiná služba než ta,
+ * kterou agentura prodává: kontrola, jestli je web připravený na vyhledávání
+ * v AI nástrojích. Slovo „SEO audit“ smí na stránce stát jen jako kontrast
+ * („není to klasický SEO audit“), nikdy jako název téhle služby.
  *
  * FAQ má JEDEN zdroj (`faq`, mini markdown): viditelný text i FAQPage JSON-LD
  * z něj skládá sdílená komponenta Faq. Do 13. 9. 2026 tu byly dvě ručně
@@ -17,34 +24,41 @@ import type { SectionHead } from "~/content/pages/_types";
 import type { FaqItem } from "~/content/pages/_types";
 
 export const meta = {
-  title: "AI SEO audit od Sniper Design — přesný plán pro váš web, 3 600 Kč",
+  title: "Audit AI viditelnosti e-shopu i webu za 3 600 Kč | Sniper Design",
   description:
-    "AI SEO audit od Sniper Design za 3 600 Kč bez DPH. Projdeme váš konkrétní web v technice, obsahu a důvěryhodnosti. Prioritní seznam úprav s odhadem dopadu + 60min konzultace. Výstup do 5 pracovních dní. Zlatý Upgates partner od 2016, 600+ e-shopů.",
+    "Audit AI viditelnosti za 3 600 Kč: je váš web připravený na ChatGPT, Perplexity a režim AI a kde má obsahové mezery? Ne klasický SEO audit. Do 5 dní.",
+  /**
+   * Datum revize — vykresluje se pod krátkou odpovědí a jde do `dateModified`
+   * ve WebPage schématu. Při věcné změně textu ho posuň; sitemap `lastmod`
+   * je čas buildu, ne obsahu.
+   */
+  updated: "2026-09-16",
 };
 
-/** Service schema.org JSON-LD. */
+/**
+ * Krátká odpověď pod hero (komponenta Answer, kind="definice").
+ * Mini markdown — žádné HTML entity. Pravidlo webu je 40–60 slov.
+ */
+export const answer =
+  "Audit AI viditelnosti je kontrola toho, jestli je váš web připravený na [AI vyhledávání](/slovnik/ai-vyhledavani/) — ChatGPT, Perplexity, [Přehled od AI](/prehled-od-ai/) a [režim AI](/ai-mode/) — a jestli nemá obsahové mezery, kvůli kterým AI doporučuje konkurenci. Není to klasický SEO audit. Sniper Design ho dělá za 3 600 Kč: prioritní seznam úprav do pěti pracovních dní od úhrady a meeting.";
+
+/**
+ * Service schema.org JSON-LD.
+ *
+ * `provider` odkazuje přes `@id` na Organization, kterou vykresluje BaseLayout
+ * (`/#publisher`) — do 16. 9. 2026 tu byla druhá, ručně držená kopie téže
+ * firmy, takže Google dostával dva subjekty se stejným jménem a bez vazby.
+ * Adresa, telefon a e-mail jsou proto v `i18n/site.ts`, ne tady.
+ */
 export const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "AI SEO audit",
-  provider: {
-    "@type": "Organization",
-    name: "CPU s.r.o.",
-    alternateName: "Sniper Design",
-    url: "https://www.sniperdesign.cz/",
-    email: "aiseo-optimalizace@sniperdesign.cz",
-    telephone: "+420 775 181 634",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Akademická 663/5",
-      addressLocality: "Praha 10 — Malešice",
-      postalCode: "10800",
-      addressCountry: "CZ",
-    },
-  },
+  name: "Audit AI viditelnosti",
+  serviceType: "Audit AI viditelnosti",
+  provider: { "@id": "https://aiseo-optimalizace.cz/#publisher" },
   areaServed: { "@type": "Country", name: "Czech Republic" },
   description:
-    "Komplexní audit webu pro AI éru vyhledávání. Technický audit (Core Web Vitals, schema markup), obsahový audit (pillar coverage, on-page) a důvěryhodnost (E-E-A-T, NAP). Prioritní seznam úprav s odhadem dopadu + 60min konzultace s týmem. Výstup do 5 pracovních dní.",
+    "Kontrola připravenosti webu na vyhledávání v AI nástrojích: co o značce dnes říkají ChatGPT, Perplexity a Přehled od AI, jestli mají AI roboti k webu přístup, jestli obsah nabízí citovatelné odpovědi a kde jsou obsahové mezery. Výstupem je prioritní seznam úprav s odhadem dopadu do pěti pracovních dní od úhrady a meeting 30–60 minut. Není to klasický SEO audit zaměřený na pozice ve výsledcích vyhledávání.",
   offers: {
     "@type": "Offer",
     price: "3600",
@@ -60,18 +74,17 @@ export const serviceJsonLd = {
   },
 };
 
-
 /** HERO — copy (levý sloupec). */
 export const hero = {
   brandLabel: "Sniper Design",
-  eyebrow: "AI SEO audit od Sniper Design",
+  eyebrow: "Audit AI viditelnosti od Sniper Design",
   title:
-    "AI už cituje něčí web. <strong>Audit ukáže, proč ne&nbsp;ten&nbsp;váš.</strong>",
-  lead: "Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong> a&nbsp;dáme vám prioritní seznam úprav s&nbsp;odhadem dopadu na&nbsp;vaši <strong>AI viditelnost</strong> plus <strong>60 minutovou konzultaci</strong>. Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.",
+    "Audit AI viditelnosti: <strong>je váš web připravený na&nbsp;ChatGPT, Perplexity a&nbsp;režim AI?</strong>",
+  lead: "Projdeme váš konkrétní web optikou <strong>ChatGPT, Perplexity, Přehledu od&nbsp;AI a&nbsp;režimu AI</strong>: co o&nbsp;vás dnes říkají, jestli k&nbsp;vám jejich roboti mají přístup a&nbsp;kde má obsah mezery. Dostanete prioritní seznam úprav a&nbsp;<strong>meeting 30&ndash;60 minut</strong>. Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong> od&nbsp;úhrady.",
   outcomes: [
     "<strong>Prioritní seznam úprav</strong>, ne obecný audit bez pořadí",
-    "U&nbsp;každého bodu uvidíte <strong>dopad × náročnost</strong>, abyste věděli, co řešit jako první",
-    "Výstup přizpůsobíme vaší <strong>platformě a&nbsp;sortimentu</strong> a&nbsp;projdeme ho s&nbsp;vámi na&nbsp;60min konzultaci",
+    "U&nbsp;každého bodu uvidíte <strong>dopad &times; náročnost</strong>, abyste věděli, co řešit jako první",
+    "Výstup přizpůsobíme vaší <strong>platformě a&nbsp;sortimentu</strong> a&nbsp;projdeme ho s&nbsp;vámi na&nbsp;meetingu",
   ],
   audience:
     "<strong>Pro koho</strong>: e-shopy a firemní weby, kde organická viditelnost přímo ovlivňuje poptávky nebo&nbsp;tržby. Největší smysl dává u&nbsp;webů s&nbsp;obratem 1+&nbsp;mil.&nbsp;Kč ročně.",
@@ -102,21 +115,62 @@ export const heroForm = {
     { value: "WordPress", label: "WordPress" },
     { value: "Webflow", label: "Webflow" },
     { value: "Shopify", label: "Shopify" },
-    { value: "Custom / vlastní", label: "Custom / vlastní řešení" },
+    { value: "Vlastní řešení", label: "Vlastní řešení na míru" },
     { value: "Nevím", label: "Nevím / poradíte" },
   ],
   labelCil: "Hlavní cíl auditu",
   hintCil: "(volitelně, ale pomůže nám)",
   phCil:
-    "např. pokles z Googlu, slabá viditelnost, příprava na rebrand, lepší citace v AI nástrojích…",
+    "např. chceme vědět, jestli nás ChatGPT doporučuje; příprava na režim AI; slabá viditelnost v AI odpovědích…",
   gdprLabel:
     'Souhlasím se&nbsp;<a href="/gdpr/">zpracováním osobních údajů</a> za&nbsp;účelem zpracování této poptávky.',
   submitLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   legal:
-    "Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu za&nbsp;3&nbsp;600&nbsp;Kč bez DPH</strong>. Do&nbsp;24&nbsp;hodin potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme. Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;platby. Údaje použijeme pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash; bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových e&#8209;mailů.",
+    "Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu za&nbsp;3&nbsp;600&nbsp;Kč bez DPH</strong>. Do&nbsp;jednoho pracovního dne potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme. Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady. Údaje použijeme pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash; bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových e&#8209;mailů.",
 };
 
-/** URGENCY blok (Proč to řešit teď). */
+/**
+ * ROZLIŠENÍ — hned pod hero, před vším prodejním.
+ *
+ * Nejdůležitější blok stránky: odděluje tuhle službu od klasického SEO auditu
+ * i od „SEO auditu dělaného pomocí AI“. Obojí je běžná záměna a bez tohohle
+ * bloku si ji čtenář udělá sám z názvu.
+ */
+export const distinction = {
+  pill: "Aby v tom bylo jasno",
+  title:
+    "Audit AI viditelnosti <strong>není klasický SEO audit</strong>",
+  lead: "Překryv existuje &mdash; co je rozbité pro Google, obvykle nefunguje ani pro AI, takže techniku kontrolujeme také. Ale cíl je jiný, a&nbsp;proto se&nbsp;liší i&nbsp;to, co v&nbsp;auditu hledáme.",
+  columns: [
+    {
+      mod: "classic",
+      label: "Klasický SEO audit",
+      claim: "Řeší pozice ve&nbsp;výsledcích vyhledávání.",
+      items: [
+        "Klíčová slova a&nbsp;pozice v&nbsp;Googlu",
+        "Míra prokliku z&nbsp;odkazů ve&nbsp;výsledcích",
+        "Zpětné odkazy a&nbsp;síla domény",
+        "Technické chyby, které brzdí procházení",
+      ],
+      outcome: "Výstup: jak se&nbsp;posunout výš mezi&nbsp;odkazy.",
+    },
+    {
+      mod: "ai",
+      label: "Audit AI viditelnosti",
+      claim: "Řeší, jestli vás AI najde, pochopí a&nbsp;doporučí.",
+      items: [
+        "Co o&nbsp;vás dnes říkají ChatGPT, Perplexity a&nbsp;Přehled od&nbsp;AI",
+        "Jestli k&nbsp;vám <a href=\"/blog/ai-crawler-robots-txt/\">AI roboti mají přístup</a> a&nbsp;co si přečtou",
+        "Jestli obsah nabízí <a href=\"/slovnik/answer-block/\">odpovědi, které jde citovat</a>",
+        "Kde má obsah mezery proti&nbsp;tomu, na&nbsp;co se&nbsp;lidé ptají",
+      ],
+      outcome: "Výstup: co změnit, aby vás AI začala doporučovat.",
+    },
+  ],
+  note: "<strong>A&nbsp;není to ani SEO audit dělaný pomocí AI.</strong> Nástroj s&nbsp;AI umí projet kontrolní seznam za&nbsp;minutu. Tohle je kontrola toho, jak s&nbsp;vaším webem zachází ChatGPT, Perplexity, Claude, Přehled od&nbsp;AI a&nbsp;režim AI v&nbsp;Googlu &mdash; a&nbsp;tu za&nbsp;vás žádný nástroj neudělá, protože musí vědět, na&nbsp;co se&nbsp;vašich zákazníků ptát.",
+};
+
+/** URGENCY blok (Proč to řešit teď) — čísla se zdrojem a datem. */
 export const urgency = {
   pill: "Proč to řešit teď",
   title:
@@ -124,18 +178,18 @@ export const urgency = {
   cards: [
     {
       num: "01",
-      title: "AI už odpovídá za vyhledávač",
-      desc: "ChatGPT, Perplexity i&nbsp;Google AI&nbsp;Overviews dnes odpovídají zákazníkům přímo &mdash; místo klasického seznamu odkazů. Klikne se jen na&nbsp;to, co AI vybere jako zdroj.",
+      title: "AI odpovídá místo seznamu odkazů",
+      desc: 'Podle <a href="/blog/zero-click-ai/">SparkToro (6/2026, data z&nbsp;USA)</a> končí <strong>68&nbsp;% vyhledávání na&nbsp;Googlu bez&nbsp;kliknutí</strong>. V&nbsp;Česku naměřil Marketing Miner (9/2025) Přehled od&nbsp;AI u&nbsp;<strong>19,6&nbsp;% dotazů</strong>. Klikne se&nbsp;jen na&nbsp;to, co si&nbsp;AI vybere jako zdroj.',
     },
     {
       num: "02",
-      title: "Bez signálů AI vybírá někoho jiného",
-      desc: "Pokud váš web nemá jasné krátké odpovědi, strukturovaná data a&nbsp;signály důvěryhodnosti, AI sáhne pro&nbsp;zdroj, který je má. Často konkurence, která to&nbsp;začala řešit dřív.",
+      title: "Bez signálů si AI vybere někoho jiného",
+      desc: "Pokud web nemá jasné krátké odpovědi, <a href=\"/blog/strukturovana-data-pro-ai/\">strukturovaná data</a> a&nbsp;signály důvěryhodnosti, AI sáhne pro&nbsp;zdroj, který je&nbsp;má. Často konkurence, která to&nbsp;začala řešit dřív.",
     },
     {
       num: "03",
-      title: "Každý měsíc čekání = ztracené pozice",
-      desc: "Témata a&nbsp;dotazy, na&nbsp;které AI dnes odpovídá, někdo obsadí. Pozdější příchod znamená přepisovat víc obsahu, dohánět autoritu, soutěžit o&nbsp;už zacementované citace.",
+      title: "Vyhledávačů, kde musíte být, přibývá",
+      desc: 'Režim AI je v&nbsp;Česku od&nbsp;října&nbsp;2025, <a href="/slovnik/seznam-asistent/">Seznam Asistent</a> běží pro&nbsp;všechny přihlášené od&nbsp;25.&nbsp;5.&nbsp;2026 a&nbsp;<a href="/blog/chatgpt-jako-vyhledavac-dsa/">ChatGPT je&nbsp;od&nbsp;31.&nbsp;8.&nbsp;2026 v&nbsp;EU oficiálně vyhledávač</a> (159,1&nbsp;mil. uživatelů měsíčně). Náskok se&nbsp;dohání hůř, než&nbsp;získává.',
     },
   ],
 };
@@ -143,10 +197,10 @@ export const urgency = {
 /** Sekce 01 — Co je v auditu. */
 export const whatHead: SectionHead = {
   eyebrowNum: "01",
-  eyebrow: "Co je v auditu",
+  eyebrow: "Co audit obsahuje",
   title:
     "Co v auditu zkontrolujeme &mdash; <strong>a co dostanete jako výstup</strong>",
-  lead: "Používáme stejný postup jako u&nbsp;klientských webů, které dlouhodobě spravujeme na&nbsp;Upgates, Shoptetu i&nbsp;vlastních řešeních. <strong>Ne generický checklist</strong>, ale audit přizpůsobený vašemu webu a&nbsp;platformě.",
+  lead: 'Používáme stejný postup jako u&nbsp;klientských webů, které dlouhodobě spravujeme na&nbsp;<a href="/blog/ai-seo-upgates-shoptet/">Upgates, Shoptetu</a> i&nbsp;vlastních řešeních. <strong>Ne generický kontrolní seznam</strong>, ale audit přizpůsobený vašemu webu a&nbsp;platformě.',
 };
 
 export const impactFrame = {
@@ -160,7 +214,7 @@ export const impactFrame = {
     {
       mod: "quick",
       label: "Rychlé výhry",
-      desc: "Úpravy, které lze nasadit bez&nbsp;velkého vývoje &mdash; nejlepší poměr dopad&nbsp;/&nbsp;effort.",
+      desc: "Úpravy, které jde nasadit bez&nbsp;velkého vývoje &mdash; nejlepší poměr dopadu a&nbsp;práce.",
     },
     {
       mod: "strat",
@@ -170,62 +224,83 @@ export const impactFrame = {
   ],
 };
 
+/**
+ * Vrstvy auditu. Pořadí je záměrné: začíná se tím, co o značce říká AI dnes
+ * (kvůli tomu si audit lidé objednávají), teprve pak se hledají příčiny.
+ * Měření jako samostatná vrstva vědomě NENÍ (rozhodnutí uživatele 16. 9. 2026)
+ * — měření prodává /sluzby/monitoring-ai/, audit je jednorázový snímek.
+ */
 export const layers = [
   {
     num: "01",
-    tone: "seo",
-    title: "Technika",
+    tone: "aio",
+    title: "Viditelnost v AI dnes",
     items: [
-      "Core Web Vitals (rychlost, stabilita, interaktivita)",
-      "Mobile UX a&nbsp;čitelnost na&nbsp;telefonu",
-      "Indexace v&nbsp;Google &mdash; co Google vidí, co ne",
-      "Strukturovaná data (Product, FAQPage, Article, drobečková navigace)",
-      "robots.txt a&nbsp;přístup crawlerů &mdash; jestli si vyhledávače a&nbsp;AI nástroje mohou správně přečíst to, co chcete",
-      "Sitemap, canonical, noindex &mdash; technické pokyny pro vyhledávače",
+      'Jestli vás <a href="/slovnik/citace-ai/">AI odpovědi zmiňují a&nbsp;citují</a> u&nbsp;dotazů, které souvisí s&nbsp;vaším sortimentem',
+      "Kdo se&nbsp;objevuje místo vás a&nbsp;čím si&nbsp;to&nbsp;zasloužil",
+      'Z&nbsp;jakých stránek AI čerpá &mdash; jestli z&nbsp;vašich, nebo ze&nbsp;srovnávačů a&nbsp;diskuzí',
+      'Výchozí stav, proti&nbsp;kterému půjde <a href="/blog/test-viditelnosti-v-ai/">měřit posun</a>',
     ],
   },
   {
     num: "02",
-    tone: "geo",
-    title: "Obsah",
+    tone: "seo",
+    title: "Technická připravenost",
     items: [
-      "Pokrytí hlavních témat oboru &mdash; jestli web odpovídá na&nbsp;důležité otázky zákazníků",
-      "On-page optimalizace klíčových stránek (homepage, top kategorie, top produkty)",
-      "Krátké, jasné odpovědi u&nbsp;klíčových témat &mdash; aby měl Google i&nbsp;AI nástroje co citovat",
-      "Časté dotazy se&nbsp;strukturovanými daty (FAQPage)",
-      "Content gaps proti konkurenci &mdash; co konkurence pokrývá a&nbsp;vy ne",
-      "Prolinkování mezi stránkami (hub-and-spoke)",
+      'Přístup <a href="/blog/ai-crawler-robots-txt/">AI robotů podle účelu</a> &mdash; vyhledávání versus trénink (OAI-SearchBot, Claude-SearchBot, PerplexityBot, Seznam-Extended) a&nbsp;<a href="/blog/co-vypne-ktery-opt-out/">co který opt-out vypne</a>',
+      '<a href="/blog/strukturovana-data-pro-ai/">Strukturovaná data</a> pro rozšířené výsledky a&nbsp;nabídky (Product, Organization, drobečková navigace, Article)',
+      '<a href="/slovnik/indexace/">Indexace</a>, kanonické adresy a&nbsp;<a href="/slovnik/robots-txt/">robots.txt</a> &mdash; co vyhledávače vidí a&nbsp;co ne',
+      '<a href="/blog/core-web-vitals-pro-ai/">Core Web Vitals</a> a&nbsp;čitelnost na&nbsp;telefonu',
     ],
   },
   {
     num: "03",
-    tone: "aeo",
-    title: "Důvěryhodnost",
+    tone: "geo",
+    title: "Obsah a obsahové mezery",
     items: [
-      "Signály důvěryhodnosti &mdash; kdo za&nbsp;obsahem stojí, jak je ověřitelný a&nbsp;proč mu vyhledávače věřit (E-E-A-T)",
-      "Kontaktní údaje (NAP) konzistence napříč webem a&nbsp;katalogy",
-      "Backlink profil &mdash; odkazy z&nbsp;jiných webů, které na&nbsp;vás vedou",
-      "Schema Organization a&nbsp;strukturovaná data pro místní firmu",
-      "Reputace v&nbsp;Heuréce, Zboží, Google reviews",
+      '<a href="/slovnik/answer-block/">Krátké odpovědi</a> u&nbsp;klíčových témat &mdash; aby měla AI co citovat',
+      'Texty <a href="/blog/kategorie-texty-pro-ai/">kategorií</a> a&nbsp;<a href="/blog/produktove-stranky-pro-ai/">produktů</a>: fakta místo frází',
+      '<a href="/blog/konec-faq-rich-results/">Časté dotazy jako citovatelný obsah</a> &mdash; ne kvůli rozšířenému výsledku, ten u&nbsp;běžných webů skončil',
+      "Aktuálnost obsahu a&nbsp;viditelné datum úpravy",
+      "Obsahové mezery proti&nbsp;konkurenci a&nbsp;proti&nbsp;tomu, na&nbsp;co se&nbsp;lidé ptají",
+    ],
+  },
+  {
+    num: "04",
+    tone: "aeo",
+    title: "Důvěryhodnost a zmínky",
+    items: [
+      '<a href="/blog/e-e-a-t-pro-ai/">Signály důvěryhodnosti</a> &mdash; kdo za&nbsp;obsahem stojí a&nbsp;proč mu věřit',
+      '<a href="/blog/ai-brand-mentions/">Zmínky značky mimo vlastní web</a> &mdash; oborová média, videa, diskuze',
+      '<a href="/blog/recenze-a-hodnoceni-pro-ai/">Recenze a&nbsp;hodnocení</a> na&nbsp;Heurece, Zboží a&nbsp;u&nbsp;Googlu',
+      'Kontaktní údaje <a href="/blog/local-seo-cesko-2026/">konzistentně napříč katalogy</a> a&nbsp;schema Organization',
     ],
   },
 ];
 
+/**
+ * Poctivá poznámka o metodě měření.
+ *
+ * Do 16. 9. 2026 tu stál blok s anglickým názvem, který sliboval ověření
+ * ve třech platformách. Vlastní nástroj měl ale aktivní klíč jen pro ChatGPT.
+ * Anglický název zmizel i proto, že web píše česky.
+ * Text teď říká, co je automatizované a co ruční.
+ */
 export const visibility = {
-  pill: "★ Součástí auditu",
+  pill: "★ Jak to měříme",
   title:
-    "AI Visibility Check &mdash; <strong>jste viditelní v&nbsp;AI&nbsp;odpovědích?</strong>",
-  desc: "Ověříme, jestli se&nbsp;vaše značka objevuje v&nbsp;odpovědích ChatGPT, Perplexity a&nbsp;Google AI&nbsp;Overviews u&nbsp;dotazů, které souvisí s&nbsp;vaším sortimentem nebo službou &mdash; a&nbsp;jestli AI nástroje místo vás nezmiňují&nbsp;konkurenci.",
+    "Kontrola AI viditelnosti &mdash; <strong>čím se měří a&nbsp;co má limity</strong>",
+  desc: 'Zmínky v&nbsp;ChatGPT měříme vlastním nástrojem, Přehled od&nbsp;AI přes Marketing Miner. Perplexity, Claude a&nbsp;Gemini kontrolujeme ručně na&nbsp;sadě dotazů, kterou sestavíme podle vašeho sortimentu. <strong>Každý běh dopadne trochu jinak</strong> &mdash; AI odpovědi nejsou stabilní, takže výsledek čtěte jako výchozí stav, ne jako přesné skóre. Proč to&nbsp;tak je, rozebírá <a href="/blog/mereni-ai-mode-limity/">článek o&nbsp;limitech měření</a>.',
 };
 
 export const deliverable = {
   pill: "★ Výstup",
   title: "Co konkrétně dostanete jako <strong>audit dokument</strong>",
-  lead: "Strukturovaný dokument (PDF / Notion / Google Doc &mdash; podle vaší preference), který obsahuje:",
+  lead: "Strukturovaný dokument (PDF, Notion nebo Google Doc &mdash; podle vaší preference), který obsahuje:",
   items: [
     {
       label: "Kritická zjištění",
-      desc: "Co teď nejvíc brzdí viditelnost ve&nbsp;vyhledávačích a&nbsp;AI nástrojích.",
+      desc: "Co teď nejvíc brzdí vaši viditelnost v&nbsp;AI odpovědích i&nbsp;ve&nbsp;vyhledávačích.",
     },
     {
       label: "Prioritní tabulka úprav",
@@ -233,14 +308,14 @@ export const deliverable = {
     },
     {
       label: "Technické problémy",
-      desc: "Konkrétní URL, screenshot/citace, doporučená oprava. Připravené k&nbsp;předání vývojáři.",
+      desc: "Konkrétní adresa, snímek nebo citace, doporučená oprava. Připravené k&nbsp;předání vývojáři.",
     },
     {
       label: "Obsahové mezery proti konkurenci",
       desc: "Témata a&nbsp;dotazy, kde konkurence pokrývá a&nbsp;vy ne &mdash; s&nbsp;odhadem priority.",
     },
     {
-      label: "Doporučení pro&nbsp;AI citovatelnost",
+      label: "Doporučení pro&nbsp;citovatelnost",
       desc: "Konkrétní úpravy textu, strukturovaných dat a&nbsp;signálů důvěryhodnosti, aby vás AI začala citovat.",
     },
     {
@@ -248,56 +323,90 @@ export const deliverable = {
       desc: "Co řešit první týden, druhý, třetí, čtvrtý &mdash; v&nbsp;pořadí, které dává smysl.",
     },
     {
-      label: "60min konzultace s&nbsp;týmem",
-      desc: "Projdeme závěry, dáme prostor na&nbsp;otázky, doladíme priority dle&nbsp;vašich možností.",
+      label: "Meeting 30&ndash;60 minut",
+      desc: "Projdeme závěry, dáme prostor na&nbsp;otázky, doladíme priority podle&nbsp;vašich možností.",
     },
   ],
 };
 
-/** Sekce 02 — Proč nám můžete důvěřovat. */
-export const trustHead: SectionHead = {
+/** Sekce 02 — Jak audit probíhá (4 kroky s časovou osou). */
+export const processHead: SectionHead = {
   eyebrowNum: "02",
+  eyebrow: "Jak audit probíhá",
+  title: "Od objednávky k&nbsp;plánu <strong>za necelý týden</strong>",
+};
+
+export const processSteps = [
+  {
+    num: "01",
+    when: "dnes",
+    title: "Vyplníte formulář",
+    desc: "Adresa webu, platforma a&nbsp;čím se&nbsp;trápíte. Nic dalšího zatím nepotřebujeme.",
+  },
+  {
+    num: "02",
+    when: "do 1 pracovního dne",
+    title: "Potvrdíme rozsah a&nbsp;pošleme fakturu",
+    desc: "Ozveme se&nbsp;e-mailem nebo telefonem, upřesníme, co dává u&nbsp;vašeho webu smysl, a&nbsp;vystavíme fakturu.",
+  },
+  {
+    num: "03",
+    when: "do 5 pracovních dní od úhrady",
+    title: "Zpracujeme audit",
+    desc: "Projdeme čtyři vrstvy, sestavíme prioritní tabulku a&nbsp;30denní plán. Dokument dostanete předem, ať si&nbsp;ho&nbsp;stihnete přečíst.",
+  },
+  {
+    num: "04",
+    when: "podle vašeho termínu",
+    title: "Projdeme to&nbsp;spolu na&nbsp;meetingu",
+    desc: "Online, 30&ndash;60 minut. Odpovíme na&nbsp;otázky a&nbsp;doladíme pořadí podle&nbsp;toho, co reálně zvládnete.",
+  },
+];
+
+/** Sekce 03 — Proč nám můžete důvěřovat. */
+export const trustHead: SectionHead = {
+  eyebrowNum: "03",
   eyebrow: "Proč nám můžete důvěřovat",
   title: "Reálná zkušenost <strong>z&nbsp;denodenní praxe</strong>",
 };
 
 export const trustItems = [
   {
-    title: "Praxe z&nbsp;600+ e-shopů na&nbsp;CZ trhu",
-    body: 'Za roky praxe jsme pracovali pro <strong>600+ e-shopů</strong> na&nbsp;CZ trhu. Na&nbsp;webu agentury najdete <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">43&nbsp;veřejných referencí</a>, další jsou neveřejné. Nekupujete audit od&nbsp;anonymního freelancera, ale od&nbsp;týmu s&nbsp;dlouhodobou praxí v&nbsp;e-commerce.',
+    title: "600+ klientů od roku 2016",
+    body: 'Od&nbsp;roku&nbsp;2016 jsme pracovali pro <strong>600+ klientů</strong>, převážně e-shopy na&nbsp;Upgates a&nbsp;Shoptetu. Na&nbsp;webu agentury najdete <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">58&nbsp;vybraných referencí</a>, další jsou neveřejné. Nekupujete audit od&nbsp;anonymního dodavatele, ale od&nbsp;týmu s&nbsp;dlouhodobou praxí v&nbsp;e-commerce.',
   },
   {
-    title: "Zlatý partner Upgates a&nbsp;Gold partner Shoptet",
-    body: "Jsme oficiální Zlatý partner Upgates (od&nbsp;roku&nbsp;2016) a&nbsp;Gold partner Shoptet. Známe limity i&nbsp;možnosti obou platforem, takže <strong>doporučení v&nbsp;auditu nejsou odtržená od&nbsp;reality implementace</strong>.",
+    title: "Zlatý partner Upgates i&nbsp;Shoptetu",
+    body: "Jsme oficiální Zlatý partner obou platforem (u&nbsp;Upgates od&nbsp;roku&nbsp;2016). Známe jejich limity i&nbsp;možnosti, takže <strong>doporučení v&nbsp;auditu nejsou odtržená od&nbsp;reality implementace</strong>. Partnerské profily jsou odkazované z&nbsp;odznaků v&nbsp;záhlaví stránky, kde si&nbsp;to&nbsp;ověříte.",
   },
   {
     title: "Ověřujeme i&nbsp;na&nbsp;vlastním e-shopu",
-    body: 'Doporučení nebereme z&nbsp;prezentací. Ověřujeme je i&nbsp;na&nbsp;vlastním e-shopu <a href="https://www.megadetail.cz/" target="_blank" rel="noopener"><strong>MEGA&nbsp;DETAIL</strong></a>, kde řešíme stejná témata jako naši klienti: obsah, výkon, UX i&nbsp;viditelnost.',
+    body: 'Doporučení nebereme z&nbsp;prezentací. Ověřujeme je i&nbsp;na&nbsp;vlastním e-shopu <a href="https://www.megadetail.cz/" target="_blank" rel="noopener"><strong>MEGA&nbsp;DETAIL</strong></a>, kde řešíme stejná témata jako naši klienti &mdash; a&nbsp;<a href="/blog/case-study-megadetail-ai-navstevnost/">zveřejňujeme z&nbsp;toho čísla</a>.',
   },
   {
-    title: "Vlastní nástroje pro e-commerce",
-    body: "Nevnímáme web jen optikou SEO checklistu. Díky vlastním nástrojům (<strong>SYNKRO</strong> pro automatizaci a&nbsp;<strong>GPTfeed</strong> pro obsah) a&nbsp;provozu e-shopů řešíme i&nbsp;to, co je reálně udržitelné v&nbsp;provozu: obsahové workflow, feedy a&nbsp;škálování úprav.",
+    title: "Sami provozujeme e-shopy",
+    body: "Nevnímáme web jen optikou kontrolního seznamu. Protože e-shopy sami provozujeme a&nbsp;stavíme pro&nbsp;ně vlastní nástroje (<strong>SYNKRO</strong> pro automatizaci a&nbsp;<strong>GPTfeed</strong> pro obsah), řešíme i&nbsp;to, co je udržitelné v&nbsp;každodenním provozu: obsahové postupy, feedy a&nbsp;škálování úprav.",
   },
 ];
 
 export const examples = {
   title: "Co typicky nacházíme v&nbsp;reálných auditech",
   items: [
-    "<strong>Upgates e-shop:</strong> chybějící strukturovaná data u&nbsp;klíčových kategorií + nejasné krátké odpovědi na&nbsp;nákupní dotazy &mdash; konkurence je obsadila v&nbsp;AI Overviews dřív.",
-    "<strong>Shoptet e-shop:</strong> obsahové mezery proti konkurenci v&nbsp;top kategoriích, žádná FAQ se&nbsp;strukturou pro AI citace, chybí E&#8209;E&#8209;A&#8209;T signály u&nbsp;autorů obsahu.",
-    '<strong>Firemní web (služby):</strong> NAP nekonzistence napříč katalogy, žádný schema Organization, brand mentions jen na&nbsp;vlastní doméně &mdash; ChatGPT a&nbsp;Perplexity o&nbsp;značce „nevědí".',
+    "<strong>Upgates e-shop:</strong> chybějící strukturovaná data u&nbsp;klíčových kategorií a&nbsp;nejasné odpovědi na&nbsp;nákupní dotazy &mdash; konkurence má krátké odpovědi, které Přehled od&nbsp;AI cituje, a&nbsp;e-shop ne.",
+    "<strong>Shoptet e-shop:</strong> obsahové mezery proti&nbsp;konkurenci v&nbsp;top kategoriích, žádné krátké odpovědi na&nbsp;nákupní dotazy, chybějící signály důvěryhodnosti u&nbsp;autorů obsahu.",
+    '<strong>Firemní web (služby):</strong> nekonzistentní kontaktní údaje napříč katalogy, žádné schema Organization, zmínky značky jen na&nbsp;vlastní doméně &mdash; ChatGPT a&nbsp;Perplexity o&nbsp;značce „nevědí“.',
   ],
 };
 
-/** Sekce 03 — Pack vs. audit. */
+/** Sekce 04 — Pack vs. audit. */
 export const compareHead: SectionHead = {
-  eyebrowNum: "03",
+  eyebrowNum: "04",
   eyebrow: "Pack vs. audit",
   title: "Co je pro vás <strong>vhodnější</strong>?",
 };
 
 export const bridge =
-  "<strong>Nejste si jistí, jestli stačí Pack?</strong> Pokud váš web generuje tržby a&nbsp;nechcete ztrácet týdny samostatnou analýzou, <strong>audit je správná volba</strong> &mdash; dostanete přesný plán pro&nbsp;váš konkrétní web a&nbsp;sortiment, nikoli obecný framework. Neplatíte za&nbsp;objem textu, ale za&nbsp;prioritizaci, kontext a&nbsp;konzultaci.";
+  "<strong>Nejste si jistí, jestli stačí Pack?</strong> Pokud váš web generuje tržby a&nbsp;nechcete ztrácet týdny samostatnou analýzou, <strong>audit je správná volba</strong> &mdash; dostanete přesný plán pro&nbsp;váš konkrétní web a&nbsp;sortiment, nikoli obecný návod. Neplatíte za&nbsp;objem textu, ale za&nbsp;prioritizaci, kontext a&nbsp;meeting.";
 
 export const compare = [
   {
@@ -307,8 +416,8 @@ export const compare = [
     price: "1&nbsp;490&nbsp;Kč &middot; jednorázově",
     items: [
       "Máte čas si&nbsp;doporučení sami vyhodnotit a&nbsp;převést do&nbsp;praxe",
-      "Chcete obecný recept pro 7&nbsp;typů stránek webu (homepage, produkt, kategorie, blog, prodejní landing, kontakt)",
-      "Hodí se i&nbsp;agenturám / copywriterům pro klientské weby",
+      "Chcete obecný recept pro 8&nbsp;typů stránek (homepage, produkt, kategorie, blogový článek, výpis blogu, prodejní landing, kontakt, aplikace)",
+      "Hodí se i&nbsp;agenturám a&nbsp;copywriterům pro klientské weby",
       "Vhodné jako pracovní podklad pro vlastní úpravy nebo zadání pro tým",
       "Master PDF 85&nbsp;stran + 9&nbsp;jednotlivých kapitol",
     ],
@@ -323,11 +432,11 @@ export const compare = [
     title: "Když chcete <strong>plán pro váš konkrétní web</strong>",
     price: "3&nbsp;600&nbsp;Kč bez DPH &middot; jednorázově",
     items: [
-      "Chcete <strong>přesnou analýzu vašeho webu</strong>, ne&nbsp;obecný framework",
+      "Chcete <strong>přesnou analýzu vašeho webu</strong>, ne&nbsp;obecný návod",
       "Potřebujete <strong>prioritní seznam úprav</strong> &mdash; co změnit jako první, proč a&nbsp;jaký to bude mít dopad",
-      "Chcete <strong>konzultaci s&nbsp;týmem</strong>, kde si projdete závěry osobně",
-      "Nemáte čas / chuť projít Pack vlastní silou a&nbsp;preferujete hotový plán",
-      "Výstup do&nbsp;5&nbsp;pracovních dní + 60min konzultace",
+      "Chcete <strong>meeting s&nbsp;týmem</strong>, kde si projdete závěry osobně",
+      "Nemáte čas ani chuť projít Pack vlastní silou a&nbsp;preferujete hotový plán",
+      "Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady + meeting 30&ndash;60 minut",
     ],
     ctaLabel: "Chci konkrétní plán pro&nbsp;svůj web&nbsp;&rarr;",
     ctaHref: "#objednat",
@@ -336,60 +445,80 @@ export const compare = [
   },
 ];
 
-/** Sekce 04 — FAQ (10 položek, HTML). */
+/** Sekce 05 — FAQ. Jeden zdroj pro text i FAQPage JSON-LD (komponenta Faq). */
 export const faqHead: SectionHead = {
-  eyebrowNum: "04",
+  eyebrowNum: "05",
   eyebrow: "Časté otázky",
   title: "Než si <strong>objednáte audit</strong>",
 };
 
 export const faq: FaqItem[] = [
   {
-    q: "Pro koho je audit určený?",
-    a: "Pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a firemních webů, kteří chtějí **konkrétní plán**, co změnit pro AI éru vyhledávání. Hodí se pro weby s ročním obratem 1+ mil. Kč a s ambicí být citovaný v ChatGPT, Perplexity a Google AI Overviews.",
+    q: "Je to klasický SEO audit?",
+    a: "Ne. Klasický SEO audit řeší pozice ve výsledcích Googlu — klíčová slova, prokliky, zpětné odkazy. Audit AI viditelnosti řeší, jestli vás najdou, pochopí a doporučí ChatGPT, Perplexity, Přehled od AI a režim AI. Techniku kontrolujeme také, protože co je rozbité pro Google, obvykle nefunguje ani pro AI — ale hledáme jiné věci a výstup vede jinam. Rozdíl rozebírá [srovnání obou auditů](/blog/ai-seo-audit/) a [co kontroluje klasický SEO audit](/blog/seo-audit-co-kontrolovat/).",
   },
   {
-    q: "Co když nemám AI SEO Wireframe Pack?",
-    a: "Pack i audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1 490 Kč), audit je hands-on analýza vašeho webu se 60min konzultací. **Audit můžete objednat samostatně** — nepotřebujete předem Pack.",
+    q: "Je to SEO audit dělaný pomocí AI?",
+    a: "Také ne. Nástroje s AI umí projet kontrolní seznam za minutu a takových je na webu zdarma několik. Tady jde o opak: kontrolujeme, **jak s vaším webem zacházejí AI nástroje** — jestli k němu jejich roboti mají přístup, co si z něj přečtou a koho u vašich témat doporučují. Sadu dotazů sestavujeme podle vašeho sortimentu, protože žádný nástroj neví, na co se ptají vaši zákazníci.",
+  },
+  {
+    q: "Pro koho je audit určený?",
+    a: "Pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a firemních webů, kteří chtějí **konkrétní plán**, co změnit pro éru AI vyhledávání. Hodí se pro weby s ročním obratem 1+ mil. Kč a s ambicí být citovaný v ChatGPT, Perplexity a v Přehledu od AI.",
+  },
+  {
+    q: "Je audit vhodný pro Shoptet nebo Upgates?",
+    a: "Ano, jsou to nejčastější zadání. Jsme Zlatý partner obou platforem, takže doporučení rovnou rozdělíme na to, co jde nastavit v administraci, co potřebuje zásah do šablony a co se na dané platformě nedá. Co je na nich jinak, shrnuje [článek o AI SEO na Upgates a Shoptetu](/blog/ai-seo-upgates-shoptet/) a [série pro e-shopy](/serie/ai-seo-pro-eshopy/).",
+  },
+  {
+    q: "Jaký je rozdíl mezi auditem a monitoringem AI viditelnosti?",
+    a: "Audit je jednorázový snímek a plán: kde stojíte dnes a co s tím. [Monitoring](/sluzby/monitoring-ai/) je měsíční služba, která sleduje, jak se čísla vyvíjejí, a porovnává vás s konkurencí. Dává smysl až potom, co jsou úpravy z auditu nasazené — jinak měříte stav, se kterým nic neděláte.",
   },
   {
     q: "Jak dlouho audit trvá?",
-    a: "Výstup audit dokumentu **do 5 pracovních dní** od potvrzení objednávky. Po vyplnění formuláře vás kontaktujeme do 24 hodin v pracovní dny s upřesněním a fakturou. Po platbě začneme auditovat.",
+    a: "Výstup **do 5 pracovních dní od úhrady**. Po vyplnění formuláře se ozveme **do jednoho pracovního dne** s upřesněním rozsahu a fakturou.",
   },
   {
     q: "Co konkrétně dostanu jako výstup?",
-    a: "Audit dokument (PDF nebo Notion / Google Doc, dle preference) se třemi vrstvami analýzy + **prioritní seznam úprav** s odhadem dopadu a effortu + **60min online konzultaci** s naším týmem.",
+    a: "Audit dokument (PDF, Notion nebo Google Doc podle preference) se čtyřmi vrstvami analýzy, **prioritní seznam úprav** s odhadem dopadu a náročnosti, 30denní akční plán a **meeting 30–60 minut** s naším týmem.",
   },
   {
-    q: "Komu platím a dostanu fakturu?",
-    a: "Platíte **CPU s.r.o.** (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena **3 600 Kč bez DPH** (s DPH = 4 356 Kč).",
+    q: "Proč stojí audit jen 3 600 Kč?",
+    a: "Protože nechceme, aby cena byla důvod, proč web zůstane nepřipravený. Je to jedna z nejnižších pevných cen mezi nabídkami, které jsme na českém webu veřejně našli (stav 5. 9. 2026) — běžně se za audit viditelnosti v AI platí 10 000 až 20 000 Kč. Vyděláváme na navazujících úpravách, ne na auditu. Jak vypadají ceny na trhu, rozebírá [Kolik stojí AI SEO](/blog/kolik-stoji-ai-seo/).",
+  },
+  {
+    q: "Komu platím a dostanu fakturu?",
+    a: "Platíte **CPU s.r.o.** (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena **3 600 Kč bez DPH** (s DPH 4 356 Kč).",
   },
   {
     q: "Co audit nezahrnuje?",
-    a: "Audit je **samostatný akční plán** — obsahuje analýzu, prioritizaci a konzultaci. **Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy.** Nejste vázaní na naši realizaci.",
+    a: "Audit je **samostatný akční plán** — obsahuje analýzu, prioritizaci a meeting. **Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy.** Nejste vázaní na naši realizaci.",
   },
   {
     q: "Mohu objednávku zrušit?",
-    a: "Ano, **do potvrzení rozsahu a vystavení faktury** bez problémů. Jakmile je rozsah potvrzen a audit zahájen, jde o službu připravovanou na míru a storno řešíme individuálně podle rozpracovanosti.",
+    a: "Ano, **do potvrzení rozsahu a vystavení faktury** bez problémů. Jakmile je rozsah potvrzený a audit zahájený, jde o službu připravovanou na míru a storno řešíme individuálně podle rozpracovanosti.",
   },
   {
     q: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
-    a: "Ano, pokud chcete **nezávislý pohled** na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Výstup můžete předat internímu týmu, copywriterovi, vývojáři nebo stávající agentuře.",
+    a: "Ano, pokud chcete **nezávislý pohled** na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Co od agentury v téhle oblasti čekat, shrnuje [článek o službách AI SEO agentury](/blog/ai-seo-agentura-sluzby/).",
   },
   {
     q: "Co když audit neodhalí zásadní problém?",
-    a: "I to je užitečný výsledek. Získáte **potvrzení**, že technika, obsah a důvěryhodnost nejsou hlavní brzda, a doporučíme, kam zaměřit další úsilí. V praxi ale ve většině auditů nacházíme kombinaci technických, obsahových i důvěryhodnostních rezerv.",
+    a: "I to je užitečný výsledek. Získáte **potvrzení**, že technika, obsah a důvěryhodnost nejsou hlavní brzda, a doporučíme, kam zaměřit další úsilí. V praxi ale ve většině auditů nacházíme kombinaci technických, obsahových i důvěryhodnostních rezerv.",
   },
   {
-    q: "Můžu se na něco zeptat předem?",
-    a: "Samozřejmě. Napište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz) nebo zavolejte [+420 775 181 634](tel:+420775181634) (Po–Pá 10–17). Pokud preferujete nezávazně probrat situaci, ozvěte se přes [kontaktní formulář](/kontakt/).",
+    q: "Co když nemám AI SEO Wireframe Pack?",
+    a: "Pack i audit jsou samostatné produkty. Pack je návod pro úpravy vlastními silami (1 490 Kč), audit je analýza vašeho webu s meetingem. **Audit můžete objednat samostatně** — Pack předem nepotřebujete.",
+  },
+  {
+    q: "Můžu se na něco zeptat předem?",
+    a: "Samozřejmě. Napište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz) nebo zavolejte [+420 775 181 634](tel:+420775181634) (Po–Pá 10–17). Pokud chcete situaci nezávazně probrat, ozvěte se přes [kontaktní formulář](/kontakt/).",
   },
 ];
 
 /** FINAL CTA banner. */
 export const finalCta = {
-  title: "Připraveni na audit? <strong>Začneme do&nbsp;24&nbsp;hodin.</strong>",
-  lead: "3&nbsp;600&nbsp;Kč bez DPH · prioritní seznam úprav · 60min konzultace · výstup do&nbsp;5&nbsp;pracovních dní.",
+  title: "Připraveni na audit? <strong>Ozveme se do&nbsp;jednoho pracovního dne.</strong>",
+  lead: "3&nbsp;600&nbsp;Kč bez DPH · prioritní seznam úprav · meeting 30&ndash;60 minut · výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady.",
   btnLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   btnHref: "#objednat",
   trust:
@@ -398,7 +527,7 @@ export const finalCta = {
 
 /**
  * Záchranná síť pod finálním CTA (GA4 2026-08-01): remarketingový provoz sem
- * chodil a do 20 s mizel, protože stránka nenabízela nic mezi „koupit" a „odejít".
+ * chodil a do 20 s mizel, protože stránka nenabízela nic mezi „koupit“ a „odejít“.
  */
 export const exitRescue = {
   eyebrow: "Ještě nejste rozhodnutí?",
@@ -411,8 +540,8 @@ export const exitRescue = {
     },
     {
       href: "/blog/ai-seo-audit/",
-      title: "Co je AI SEO audit",
-      desc: "Co se v auditu prochází, co je výstupem a kdy má smysl.",
+      title: "Zkuste si základní průchod sami",
+      desc: "Návod krok za krokem, co si na webu zkontrolovat vlastními silami, než si audit objednáte.",
     },
     {
       href: "/zacnete-tady/",

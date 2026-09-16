@@ -37,14 +37,30 @@ export const site = {
     name: "Sniper Design",
     alternateName: "CPU s.r.o.",
     description:
-      "Edukativní průvodce AI SEO — viditelností webu v AI vyhledávání (SEO, GEO, AEO, AIO, AI Mode). Produkt agentury Sniper Design (CPU s.r.o.).",
+      "Edukativní průvodce AI SEO — viditelností webu v AI vyhledávání (SEO, GEO, AEO, AIO, Přehled od AI a režim AI). Produkt agentury Sniper Design (CPU s.r.o.).",
     sameAs: [
       "https://www.sniperdesign.cz/",
       "https://www.megadetail.cz/",
+      "https://marketplace.upgates.cz/agencies/sniper-design/",
+      "https://partneri.shoptet.cz/profesionalove/sniper-design/",
       "https://www.youtube.com/channel/UCgg_pplVfiWhtkULnMHVpOw",
       "https://www.linkedin.com/company/sniper-design",
       "https://www.instagram.com/sniperdesign_cz/",
       "https://www.facebook.com/SniperDesign.cz",
     ],
+    /**
+     * Kontaktní údaje provozovatele. Do 16. 9. 2026 je držel jen Service
+     * na /audit/ ve vlastní, ručně psané kopii Organization — Google tak
+     * dostával dva subjekty se stejným jménem a bez vazby. Teď je nese
+     * `/#publisher` a prodejní stránky na něj odkazují přes `@id`.
+     */
+    email: "aiseo-optimalizace@sniperdesign.cz",
+    telephone: "+420 775 181 634",
+    address: {
+      streetAddress: "Akademická 663/5",
+      addressLocality: "Praha 10 — Malešice",
+      postalCode: "10800",
+      addressCountry: "CZ",
+    },
   },
 };

@@ -1,8 +1,13 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
+import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import * as p from "~/content/pages/audit";
 import ExitRescue from "~/components/blocks/ExitRescue.astro";
+import { ui } from "~/i18n/strings";
+import { czDate } from "~/lib/date";
 ---
 
 <BaseLayout
@@ -10,7 +15,8 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
   description={p.meta.description}
   jsonLd={[p.serviceJsonLd]}
   image="/og/audit.jpg"
-  breadcrumb={[{ label: "AI SEO audit", href: "/audit/" }]}
+  breadcrumb={[{ label: "Audit AI viditelnosti", href: "/audit/" }]}
+  dateModified={p.meta.updated}
 >
   <div class="audit">
     <!-- ===== HERO — 2-col split: copy + form card ===== -->
@@ -51,6 +57,13 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
           <p class="audit-hero__audience" set:html={p.hero.audience}></p>
 
           <p class="audit-hero__legal" set:html={p.hero.legal}></p>
+
+          {/* Partnerství u platforem — jediná implementace webu (CLAUDE.md).
+              Prodejní stránky ho dávají do hero; odznak vede na profil
+              u platformy, kde si čtenář partnerství ověří. */}
+          <div class="audit-hero__partners">
+            <PartnerBadges />
+          </div>
         </div>
 
         <section class="audit-hero__form-card" id="objednat" aria-labelledby="audit-hero-form-title">
@@ -174,9 +187,48 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
       </div>
     </section>
 
-    <!-- ===== URGENCY / FOMO „proč to řešit teď" — hned za hero ===== -->
-    <!-- Po hero (kde uživatel vidí formulář vpravo) přichází 3-card urgency
-         blok — silný FOMO argument PRED tím, než pokračuje k „Co je v auditu". -->
+    {/* ===== KRÁTKÁ ODPOVĚĎ — jediná definice služby na stránce =====
+         Sdílená komponenta Answer (kind="definice"): stejný vzhled jako
+         sekce a slovník. Datum revize jde slotem pod text a zároveň do
+         WebPage schématu přes prop `dateModified` v BaseLayout. */}
+    <Answer text={p.answer} kind="definice">
+      <p class="audit-answer__revised">{ui.metaUpdated} {czDate(p.meta.updated)}</p>
+    </Answer>
+
+    {/* ===== ROZLIŠENÍ — proti záměně s klasickým SEO auditem =====
+         Nejdůležitější blok stránky. Bez něj si čtenář z názvu domyslí
+         buď „SEO audit“, nebo „SEO audit dělaný pomocí AI“ — obojí je
+         jiná služba, než jakou tahle stránka prodává. */}
+    <section class="audit-distinction" aria-labelledby="audit-distinction-title">
+      <div class="audit-distinction__inner">
+        <header class="audit-distinction__head">
+          <span class="audit-distinction__pill">{p.distinction.pill}</span>
+          <h2 id="audit-distinction-title" class="audit-distinction__title" set:html={p.distinction.title}></h2>
+          <p class="audit-distinction__lead" set:html={p.distinction.lead}></p>
+        </header>
+
+        <div class="audit-distinction__grid">
+          {p.distinction.columns.map((col) => (
+            <article class={`audit-distinction__col audit-distinction__col--${col.mod}`}>
+              <h3 class="audit-distinction__label">{col.label}</h3>
+              <p class="audit-distinction__claim" set:html={col.claim}></p>
+              <ul class="audit-distinction__items">
+                {col.items.map((item) => (
+                  <li set:html={item}></li>
+                ))}
+              </ul>
+              <p class="audit-distinction__outcome" set:html={col.outcome}></p>
+            </article>
+          ))}
+        </div>
+
+        <p class="audit-distinction__note" set:html={p.distinction.note}></p>
+      </div>
+    </section>
+
+    {/* ===== URGENCY — „proč to řešit teď“ =====
+         Stojí až za krátkou odpovědí a blokem rozlišení: nejdřív ať čtenář ví,
+         co se mu tu prodává, teprve pak proč to spěchá. Čísla mají zdroj a datum. */}
     <section class="audit-urgency" aria-labelledby="audit-urgency-title">
       <div class="audit-urgency__inner">
         <header class="audit-urgency__head">
@@ -231,7 +283,9 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
         ))}
       </div>
 
-      <!-- AI Visibility Check — elevated callout (audit #12) -->
+      {/* Kontrola AI viditelnosti — poctivá poznámka o metodě.
+          Dřív tu stál blok anglický název, který sliboval tři
+          platformy; vlastní nástroj měl ale klíč jen pro ChatGPT. */}
       <aside class="audit-visibility" aria-labelledby="audit-visibility-title">
         <div class="audit-visibility__inner">
           <span class="audit-visibility__pill">{p.visibility.pill}</span>
@@ -259,7 +313,35 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
       </article>
     </section>
 
-    <!-- ===== 02 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
+    {/* ===== 02 JAK AUDIT PROBÍHÁ — 4 kroky s časovou osou =====
+         Konverzní prvek: mezi „zaplať 3 600“ a „odejdi“ nebylo nic, co by
+         ukázalo, co se po objednávce stane. HowTo JSON-LD tu vědomě není
+         — rozšířený výsledek pro HowTo skončil v září 2023. */}
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">{p.processHead.eyebrowNum}</span> {p.processHead.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.processHead.title}></h2>
+      </header>
+
+      <ol class="audit-process">
+        {p.processSteps.map((step) => (
+          <li class="audit-process__step">
+            <span class="audit-process__num">{step.num}</span>
+            <div class="audit-process__body">
+              <span class="audit-process__when">{step.when}</span>
+              <h3 class="audit-process__title" set:html={step.title}></h3>
+              <p class="audit-process__desc" set:html={step.desc}></p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {/* Data z vlastního e-shopu. Bez CTA — na téhle stránce by soupeřilo
+       s objednávkovým formulářem v hero. */}
+    <ProofStrip hideCta />
+
+    <!-- ===== 03 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">{p.trustHead.eyebrowNum}</span> {p.trustHead.eyebrow}</span>
@@ -286,7 +368,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
       </aside>
     </section>
 
-    <!-- ===== 03 PACK VS AUDIT ===== -->
+    <!-- ===== 04 PACK VS AUDIT ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">{p.compareHead.eyebrowNum}</span> {p.compareHead.eyebrow}</span>
@@ -313,7 +395,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
       </div>
     </section>
 
-    <!-- ===== 04 FAQ ===== -->
+    <!-- ===== 05 FAQ ===== -->
     <section class="lp-section lp-section--alt lp-section--faq">
       <Faq
         items={p.faq}
@@ -411,19 +493,217 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
 </script>
 
 <style>
+  /* Paleta značky je v global.css (--sd-*, --font-agency) — lokální kopie
+     tady byla do 16. 9. 2026 a držela identické hodnoty dvakrát.
+     Zůstávají jen aliasy a tóny vrstev, které nikde jinde nejsou. */
   .audit {
-    --font-agency: "Kumbh Sans", var(--font-sans);
-    --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.5 0.27 335);
-    --sd-deep: oklch(0.22 0.13 305);
-    --sd-deeper: oklch(0.16 0.11 305);
-    --sd-violet: oklch(0.55 0.25 305);
-    --sd-magenta: oklch(0.5 0.27 335);
-    --sd-gold: oklch(0.82 0.16 80);
-    --sd-paper: oklch(0.985 0.004 250);
+    --lp-violet: var(--sd-violet);
+    --lp-magenta: var(--sd-magenta);
+    --tone-aio: oklch(0.55 0.25 305);
     --tone-seo: oklch(0.6 0.18 240);
     --tone-geo: oklch(0.6 0.18 145);
     --tone-aeo: oklch(0.72 0.13 80);
+  }
+
+  /* ===== KRÁTKÁ ODPOVĚĎ — datum revize ve slotu =====
+     Komponenta si nese vlastní spodní odstup. Blok rozlišení pod ní má svůj
+     horní margin, takže by se sečetly (102 px proti 52 px mezi ostatními bloky)
+     — přesně to sčítání, před kterým varuje CLAUDE.md. Nulujeme `--answer-pb`. */
+  .audit :global(.answer) {
+    --answer-pb: 0;
+  }
+
+  .audit-answer__revised {
+    margin: 0.75rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--ink-faint, oklch(0.55 0.02 260));
+  }
+
+  /* ===== ROZLIŠENÍ proti klasickému SEO auditu ===== */
+  .audit-distinction {
+    max-width: var(--max-section);
+    margin: clamp(2.5rem, 5vw, 4rem) auto;
+    padding: 0 var(--space-section-x);
+  }
+  .audit-distinction__inner {
+    border: 1px solid color-mix(in oklch, var(--sd-violet) 22%, transparent);
+    border-radius: 16px;
+    background: color-mix(in oklch, var(--sd-violet) 4%, var(--surface, white));
+    padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  }
+  .audit-distinction__head {
+    max-width: 44rem;
+  }
+  .audit-distinction__pill {
+    display: inline-block;
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--sd-violet);
+    margin-bottom: 0.625rem;
+  }
+  .audit-distinction__title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .audit-distinction__title :global(strong) {
+    color: var(--sd-violet);
+  }
+  .audit-distinction__lead {
+    margin: 0;
+    color: var(--ink-muted, oklch(0.45 0.02 260));
+    line-height: 1.6;
+  }
+  .audit-distinction__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1rem;
+    margin-top: clamp(1.25rem, 3vw, 2rem);
+  }
+  .audit-distinction__col {
+    border: 1px solid var(--border, oklch(0.9 0.01 260));
+    border-radius: 12px;
+    background: var(--surface, white);
+    padding: clamp(1.125rem, 2.5vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .audit-distinction__col--ai {
+    border-color: color-mix(in oklch, var(--sd-violet) 38%, transparent);
+    box-shadow: 0 1px 3px color-mix(in oklch, var(--sd-violet) 12%, transparent);
+  }
+  .audit-distinction__label {
+    margin: 0;
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--ink-faint, oklch(0.55 0.02 260));
+  }
+  .audit-distinction__col--ai .audit-distinction__label {
+    color: var(--sd-violet);
+  }
+  .audit-distinction__claim {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.4;
+  }
+  .audit-distinction__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .audit-distinction__items li {
+    position: relative;
+    padding-left: 1.125rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--ink-muted, oklch(0.45 0.02 260));
+  }
+  .audit-distinction__items li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ink-faint, oklch(0.6 0.02 260));
+  }
+  .audit-distinction__col--ai .audit-distinction__items li::before {
+    background: var(--sd-violet);
+  }
+  /* Odkazy a tučné uvnitř set:html nedostanou scope atribut — musí přes :global(),
+     jinak se vykreslí jako běžný text (gotcha projektu, CLAUDE.md § VI). */
+  .audit-distinction__items li :global(a) { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+  .audit-distinction__note :global(a) { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+  .audit-distinction__lead :global(strong) { color: var(--color-ink); font-weight: 600; }
+  .audit-distinction__outcome {
+    margin: auto 0 0;
+    padding-top: 0.625rem;
+    border-top: 1px dashed var(--border, oklch(0.9 0.01 260));
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .audit-distinction__note {
+    margin: clamp(1.25rem, 3vw, 1.75rem) 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in oklch, var(--sd-violet) 18%, transparent);
+    line-height: 1.6;
+    color: var(--ink-muted, oklch(0.45 0.02 260));
+  }
+  .audit-distinction__note :global(strong) {
+    color: var(--ink, oklch(0.25 0.02 260));
+  }
+
+  /* ===== JAK AUDIT PROBÍHÁ — 4 kroky ===== */
+  .audit-process {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    counter-reset: none;
+  }
+  .audit-process__step {
+    display: flex;
+    gap: 0.875rem;
+    border: 1px solid var(--border, oklch(0.9 0.01 260));
+    border-radius: 12px;
+    background: var(--surface, white);
+    padding: clamp(1.125rem, 2.2vw, 1.375rem);
+  }
+  .audit-process__num {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    background: color-mix(in oklch, var(--sd-violet) 12%, transparent);
+    color: var(--sd-violet);
+  }
+  .audit-process__body {
+    display: grid;
+    gap: 0.25rem;
+  }
+  .audit-process__when {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--sd-magenta);
+  }
+  .audit-process__title {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .audit-process__desc {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink-muted, oklch(0.45 0.02 260));
+  }
+
+  /* ===== HERO — odznaky partnerství ===== */
+  .audit-hero__partners {
+    margin-top: 1.25rem;
+    --partner-fg: var(--sd-paper);
+    --partner-muted: color-mix(in oklch, var(--sd-paper) 62%, transparent);
+    --partner-border: color-mix(in oklch, var(--sd-paper) 25%, transparent);
+    --partner-bg: color-mix(in oklch, var(--sd-paper) 8%, transparent);
   }
 
   /* ===== HERO ===== */
@@ -820,7 +1100,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     font-weight: 700;
   }
 
-  /* ===== AI Visibility Check callout (audit #12 — elevace brand mentions) ===== */
+  /* ===== Kontrola AI viditelnosti — callout s metodou měření ===== */
   .audit-visibility {
     max-width: 56rem;
     margin: clamp(2rem, 4vw, 3rem) 0 0;
@@ -869,6 +1149,8 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     color: var(--color-ink-muted);
     margin: 0;
   }
+  .audit-visibility__desc :global(a) { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+  .audit-visibility__desc :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   /* ===== „Co konkrétně dostanete" — sample output struktura (audit #5) ===== */
   .audit-deliverable {
@@ -1052,6 +1334,8 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     color: var(--color-ink-muted);
     margin: 0;
   }
+  .audit-urgency-card__desc :global(a) { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+  .audit-urgency-card__desc :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   /* ===== Final CTA banner — opakování CTA pod stránkou ===== */
   .audit-cta-final {
@@ -1226,6 +1510,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
   .audit-layer__num[data-tone="seo"] { background: oklch(from var(--tone-seo) l c h / 0.15); color: oklch(from var(--tone-seo) 0.42 c h); }
   .audit-layer__num[data-tone="geo"] { background: oklch(from var(--tone-geo) l c h / 0.15); color: oklch(from var(--tone-geo) 0.42 c h); }
   .audit-layer__num[data-tone="aeo"] { background: oklch(from var(--tone-aeo) l c h / 0.18); color: oklch(from var(--tone-aeo) 0.45 c h); }
+  .audit-layer__num[data-tone="aio"] { background: oklch(from var(--tone-aio) l c h / 0.15); color: oklch(from var(--tone-aio) 0.45 c h); }
   .audit-layer__num--bonus {
     background: var(--lp-violet);
     color: #fff;
@@ -1265,6 +1550,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
     font-size: 0.85rem;
   }
   .audit-layer li :global(strong) { color: var(--color-ink); font-weight: 600; }
+  .audit-layer li :global(a) { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
 
   /* ===== Trust block (reused from /kontakt/ style) ===== */
   .audit-trust {

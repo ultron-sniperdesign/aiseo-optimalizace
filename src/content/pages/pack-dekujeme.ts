@@ -99,8 +99,8 @@ export const deliverablesSub = "Co konkrétně získáte";
 export const deliverables: TileItem[] = [
   {
     num: 1,
-    title: "Diagnostiku webu ve&nbsp;třech vrstvách",
-    body: "Projdeme techniku, obsah a&nbsp;důvěryhodnost webu. Cílem je zjistit, jestli AI systémy stránkám rozumí, mají z&nbsp;čeho citovat a&nbsp;mají důvod brát váš web jako relevantní zdroj.",
+    title: "Diagnostiku webu ve&nbsp;čtyřech vrstvách",
+    body: "Projdeme, co o&nbsp;vás dnes říkají AI nástroje, a&nbsp;pak techniku, obsah a&nbsp;důvěryhodnost webu. Cílem je zjistit, jestli AI systémy stránkám rozumí, mají z&nbsp;čeho citovat a&nbsp;mají důvod brát váš web jako relevantní zdroj.",
   },
   {
     num: 2,
@@ -109,7 +109,7 @@ export const deliverables: TileItem[] = [
   },
   {
     num: 3,
-    title: "60min konzultaci 1:1",
+    title: "meeting 1:1 (30&ndash;60 minut)",
     body: "Nálezy s&nbsp;vámi projdeme na&nbsp;online konzultaci. Vysvětlíme priority, odpovíme na&nbsp;otázky a&nbsp;pomůžeme vám rozhodnout, co řešit jako první.",
   },
 ];
@@ -128,20 +128,20 @@ export const qualifyClose =
 
 /** BLOK 4 — Trust řádek. */
 export const trust =
-  "<strong>Audit vede stejný tým, který vytvořil Pack.</strong> Sniper Design je Zlatý Upgates partner od&nbsp;roku 2016, má zkušenost s&nbsp;více než 600 e-shopy na&nbsp;českém trhu a&nbsp;vyvíjí vlastní AI nástroje GPTfeed a&nbsp;SYNKRO.";
+  "<strong>Audit vede stejný tým, který vytvořil Pack.</strong> Sniper Design je Zlatý Upgates partner od&nbsp;roku 2016, má zkušenost s&nbsp;více než 600 e-shopy na&nbsp;českém trhu a&nbsp;sám provozuje e-shop MEGA&nbsp;DETAIL, na&nbsp;kterém si doporučení ověřuje.";
 
 /** BIG CTA karta. */
 export const auditCard = {
   pill: "Doporučený další krok po Packu",
-  title: "AI&nbsp;SEO audit od Sniper Design",
+  title: "Audit AI&nbsp;viditelnosti od Sniper Design",
   bodies: [
     "Projdeme váš konkrétní web a&nbsp;připravíme prioritní plán úprav pro AI&nbsp;SEO. Zaměříme se na&nbsp;techniku, obsah a&nbsp;důvěryhodnost &mdash; tedy na&nbsp;oblasti, které rozhodují, jestli AI systémy stránkám rozumí, mají z&nbsp;čeho citovat a&nbsp;mají důvod váš web doporučit.",
-    "Součástí je <strong>60min konzultace 1:1</strong>, kde projdeme hlavní nálezy, vysvětlíme priority a&nbsp;doporučíme další postup pro váš tým, copywritera nebo vývojáře.",
+    "Součástí je <strong>meeting 1:1 (30&ndash;60 minut)</strong>, kde projdeme hlavní nálezy, vysvětlíme priority a&nbsp;doporučíme další postup pro váš tým, copywritera nebo vývojáře.",
   ],
   chip: "✓ Stejný tým, který vytvořil Pack &mdash; Sniper Design",
   priceMain: "3&nbsp;600&nbsp;Kč",
   priceNote: "bez DPH (4&nbsp;356&nbsp;Kč s&nbsp;DPH)",
-  ctaLabel: "Objednat AI&nbsp;SEO audit&nbsp;→",
+  ctaLabel: "Objednat audit AI&nbsp;viditelnosti&nbsp;→",
   ctaHref: "/audit/",
   secondary:
     "Chcete nejdřív projít Pack? V&nbsp;pořádku. K&nbsp;auditu se můžete vrátit, až budete chtít konkrétní review vašeho webu.",

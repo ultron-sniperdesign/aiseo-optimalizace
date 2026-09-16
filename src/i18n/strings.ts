@@ -186,7 +186,7 @@ export const nav = {
         { href: "/sluzby/", label: "Všechny služby" },
         { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
         { href: "/pack/", label: "AI SEO Wireframe Pack" },
-        { href: "/audit/", label: "AI SEO audit", variant: "audit" },
+        { href: "/audit/", label: "Audit AI viditelnosti", variant: "audit" },
         { href: "/kontakt/", label: "Kontakt" },
       ],
     },

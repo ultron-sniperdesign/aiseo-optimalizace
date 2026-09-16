@@ -38,9 +38,9 @@ export const BLOG_TAGS: BlogTag[] = [
     id: "ai-platformy",
     slug: "ai-platformy",
     label: "AI platformy",
-    title: "AI platformy: ChatGPT, Perplexity, Gemini a AI Mode",
+    title: "AI platformy: ChatGPT, Perplexity, Gemini a režim AI",
     description:
-      "Jak jednotlivé AI vyhledávače vybírají a citují zdroje — ChatGPT, Perplexity, Gemini, Bing, Seznam i Google AI Mode — a jak se v nich zobrazit.",
+      "Jak jednotlivé AI vyhledávače vybírají a citují zdroje — ChatGPT, Perplexity, Gemini, Bing, Seznam i režim AI v Googlu — a jak se v nich zobrazit.",
   },
   {
     id: "technicke-zaklady",
@@ -94,7 +94,7 @@ export const BLOG_TAGS: BlogTag[] = [
     id: "audit-nastroje",
     slug: "audit-nastroje",
     label: "Audity a nástroje",
-    title: "Audity a nástroje pro AI SEO",
+    title: "Audity a nástroje pro AI viditelnost",
     description:
       "Co kontrolovat při auditu AI viditelnosti, jaké nástroje na to existují a jak si stav webu otestovat vlastními silami krok za krokem.",
   },

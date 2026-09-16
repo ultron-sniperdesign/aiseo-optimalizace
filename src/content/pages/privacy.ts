@@ -97,7 +97,7 @@ export const sections: PrivacySection[] = [
           "<strong>Platební údaje</strong> &mdash; zpracovává platební brána Stripe (viz&nbsp;sekce 04), my k&nbsp;číslu karty nemáme přístup.",
         ],
       },
-      { type: "sub", html: "c) Poptávka AI&nbsp;SEO auditu" },
+      { type: "sub", html: "c) Poptávka auditu AI&nbsp;viditelnosti" },
       {
         type: "p",
         html: 'Pokud vyplníte formulář pro poptávku auditu (<a href="/audit/">/audit/</a>), zpracováváme:',
