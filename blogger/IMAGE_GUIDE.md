@@ -47,7 +47,7 @@
 
 - **Skill:** `open-ai-api-core` (`~/.claude/skills/open-ai-api-core/scripts/image.py`)
 - **Model: `gpt-image-2`** (umí renderovat **český text včetně diakritiky** — ověřeno; difúzní modely jako Nano Banana text komolí, proto GPT Image 2).
-- **API klíč:** `OPENAI_API_KEY` (env, v `~/.zshenv` — netřeba řešit).
+- **API klíč:** `OPENAI_API_KEY` — je v `~/.zshenv` i v `~/.claude/skills/open-ai-api-core/.env`, netřeba řešit.
 
 ### Přesný příkaz
 
@@ -82,13 +82,12 @@ python3 "$SKILL_DIR/scripts/image.py" \
 
 ---
 
-## 2b. POVINNÉ: tři soubory, ne jeden
+## 2b. POVINNÉ: dva soubory do repa, PNG je jen mezikrok
 
 ⚠️ **Opraveno 2026-07-27 podle skutečného chování šablony.** `RichLayout.astro` sahá na
 `/og/<slug>.jpg` (hero `<img>` + `og:image`) a `/og/<slug>.webp` (`<source>` v `<picture>`).
-**Na `.png` se nikde neodkazuje** — je to jen master pro pozdější regeneraci.
-Když `.jpg` chybí, `og:image` vrací 404 a náhledy při sdílení jsou rozbité (stalo se
-u 12 článků, opraveno commitem `ff3fa1b`).
+**Na `.png` se nikde neodkazuje.** Když `.jpg` chybí, `og:image` vrací 404 a náhledy při
+sdílení jsou rozbité (stalo se u 12 článků, opraveno commitem `ff3fa1b`).
 
 Po vygenerování PNG **vždy vyrob obě odvozeniny**:
 
@@ -99,11 +98,19 @@ sharp('public/og/'+s+'.png').resize(1200,800,{fit:'cover'}).jpeg({quality:82}).t
 sharp('public/og/'+s+'.png').webp({quality:78}).toFile('public/og/'+s+'.webp');"
 ```
 
-Commituj všechny tři (`.png` master, `.jpg`, `.webp`).
+> ⚠️ **Do repa jde jen `.jpg` a `.webp`. PNG smaž** (rozhodnutí z 15. 9. 2026):
+>
+> ```bash
+> rm "public/og/<slug>.png"
+> ```
+>
+> Pořadí kroků: vygeneruj PNG → zkontroluj ho na ořezu (§6 krok 3) → vyrob odvozeniny → smaž PNG → commituj `.jpg` a `.webp`. **Kontrola proběhne dřív než smazání**, takže o nic nepřijdeš.
+>
+> Když bude potřeba obrázek přegenerovat, vygeneruje se znovu z promptu (~5–6k tokenů). 98 starších článků má PNG v repu z doby před tímhle pravidlem — nechává se, nové se nepřidávají.
 
 ## 3. Kam uložit
 
-- **`public/og/<slug>.{png,jpg,webp}`** — trojice, která slouží zároveň jako:
+- **`public/og/<slug>.jpg` + `public/og/<slug>.webp`** — dvojice, která slouží zároveň jako:
   1. **featured image** na kartě výpisu + hero v detailu (odvozeno ze slugu, žádné frontmatter pole netřeba),
   2. **og:image** pro sociální sdílení (BaseLayout bere `/og/<slug>.jpg`).
 - **Žádné jiné umístění.** Nepatří do `public/blog/<slug>/` (tam jdou jen inline obrázky v textu).
@@ -194,7 +201,7 @@ IMPORTANT: do not draw any digits, numbers, percentages or figures anywhere in t
 > typu „the bold shape must be abstract geometry, never a numeral" vyrobí beztvarý blob
 > (`miliarda-uzivatelu-ai-mode`, run 121, přegenerováno).
 
-**e) Diakritiku v nadpisu si přečti nahlas — ověřeno 2026-08-04.** Model vykreslí přesně to,
+**c) Diakritiku v nadpisu si přečti nahlas — ověřeno 2026-08-04.** Model vykreslí přesně to,
 co v promptu stojí. Když do promptu napíšeš `OBRAZKY`, dostaneš `OBRAZKY` bez čárky a je to
 tvoje chyba, ne modelova. Před odesláním projdi nadpis i podtitul znak po znaku. Pojistka
 u nadpisů s diakritikou:
@@ -215,7 +222,7 @@ at its end.
 
 Nebo tečku v promptu vůbec nepoužívat a instrukci ukončit koncem řádku.
 
-**c) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
+**e) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
 (`PROPADY V YDAVATELŮ`). Pojistka:
 
 ```
@@ -251,7 +258,7 @@ normal space between them; never split, hyphenate or add extra spacing inside a 
 4. `npm run build` — musí projít.
 5. Vizuálně ověř kartu `/blog/` i detail `/blog/<slug>/` (text obrázku se nikde
    neusekne; spodní ořez ~16 % nesmí brát nic důležitého).
-6. Commit + push (obrázek jde spolu s `.md` článku).
+6. **Smaž `public/og/<slug>.png`** (§2b), pak commit + push — do repa jde `.mdx` článek + `.jpg` + `.webp`.
 
 ---
 
@@ -259,7 +266,8 @@ normal space between them; never split, hyphenate or add extra spacing inside a 
 
 ```bash
 SLUG="<slug>"
-curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.png" | head -1   # → 200
+curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.jpg" | head -1   # → 200
+curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.webp" | head -1  # → 200
 # + očima: karta /blog/ a hero /blog/<slug>/ ukazují obrázek, text celý
 ```
 
@@ -272,10 +280,10 @@ curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.png" | head -1   # → 200
 - ❌ Negeneruj přes difúzní modely (Nano Banana, DALL·E) když má být v obrázku text — komolí češtinu. **Vždy gpt-image-2.**
 - ❌ Nedávej text ani klíčový obsah do **spodních ~16 %** (ořízne se).
 - ❌ Nezapomeň na `.jpg` + `.webp` odvozeniny (§2b) — bez `.jpg` je og:image 404.
-- ❌ **Nemaž `.png` master po vytvoření odvozenin.** Commituje se celý trojlístek (§2b);
-  bez masteru se obrázek nedá přegenerovat ani zkontrolovat na ořezu.
+- ❌ **Necommituj `.png`.** Je to pracovní mezikrok — po kontrole na ořezu a vytvoření
+  odvozenin ho smaž (§2b). Do repa jde jen `.jpg` a `.webp`.
 - ❌ **Neposuzuj obrázek podle originálu 3:2** — vždy podle náhledu po ořezu (§6 krok 3).
-- ❌ Neukládej jinam než `public/og/<slug>.*`.
+- ❌ Neukládej jinam než `public/og/<slug>.jpg` a `.webp`.
 - ❌ Žádná reálná loga/značky v obrázku.
 - ❌ Apostrof `'` uvnitř `--prompt` (rozbije shell). Diakritika OK, dvojité uvozovky OK.
 
@@ -283,5 +291,8 @@ curl -sSI "https://aiseo-optimalizace.cz/og/$SLUG.png" | head -1   # → 200
 
 > **Pozn. k poměru:** existující OG obrázky jsou 16:9 (1200×669), nově generované
 > 3:2 (1536×1024). Zobrazení je sjednocené na 1200/669 + `object-position: center top`,
-> takže 3:2 ztratí jen nedůležitý spodek. Master kopie nově generovaných drž i v
-> `_source/_blog-images/<slug>.png` (volitelné, pro pozdější regeneraci).
+> takže 3:2 ztratí jen nedůležitý spodek.
+>
+> **Master kopie do `_source/_blog-images/` nedělej** — je to mimo blogger scope
+> (viz `CONTENT_WORKFLOW.md` blok D2). Složka existuje se 7 soubory z dřívějška,
+> nové se tam nepřidávají.

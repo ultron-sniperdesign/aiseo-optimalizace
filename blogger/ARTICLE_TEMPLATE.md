@@ -66,7 +66,7 @@ published: "2026-05-17"
 
 # Datum poslední aktualizace v ISO formátu YYYY-MM-DD. ≤ dnes.
 # Aktualizuj při každém významném update obsahu (ne při fix typu).
-updated: "2026-05-17"
+updated: "2026-09-15"
 
 # 5–10 klíčových slov / long-tail variant. Pro <meta keywords> + interní reference.
 keywords:
@@ -135,7 +135,7 @@ howto:
 > Plné znění pravidla je v `CLAUDE.md` § VI. Sekce a pilíř ho drží ve 100 % nadpisů,
 > blog zatím jen v 13 % — u nových článků ho dodržuj, u refreshovaných doplň.
 
-## H2 lead — krátká rozcestníková věta navazující na `answer`
+## H2 lead — <span class="hl">rozcestníková věta</span> navazující na <strong>answer</strong>
 
 První odstavec **prohlubuje** `answer` o jednu úroveň. Nepřepisuje ho — `answer` čte AI, tohle čte člověk.
 Dva odstavce maximum. Hned za leadem skoč do první H2 sekce.
@@ -143,18 +143,18 @@ Dva odstavce maximum. Hned za leadem skoč do první H2 sekce.
 Třeba že **AI éra vyhledávání** přidává tři režimy (klasické Google, AIO, generativní nástroje
 jako ChatGPT/Perplexity), pro každý platí jiná pravidla, a článek čtenáři ukáže, **jak rozhodnout, kde investovat**.
 
-## H2 sekce 1 — první vlastní pointa článku
+## H2 sekce 1 — <span class="hl">první pointa</span>, <strong>jedna hlavní myšlenka</strong>
 
 Každá H2 sekce má **jednu hlavní myšlenku** + 2–4 odstavce textu nebo seznam.
 Konkrétní fakta, čísla, příklady. Žádné fluff věty typu „je důležité si uvědomit, že…".
 
-### H3 podsekce (volitelná)
+### H3 podsekce (volitelná) — zůstává prostý text
 
 Když H2 sekce řeší dvě varianty, použij H3 jako split. Max H3, výjimečně H4.
 
-Použij `<span class="hl">žluté podtržení</span>` na klíčový pojem, jen 1–2× za článek.
+`<span class="hl">` patří **jen do nadpisů**. `global.css` ho stylizuje selektorem `h1 .hl, h2 .hl, h3 .hl` (modrá `--color-accent`, font-weight 500) — v běžném odstavci se nevykreslí nijak, je to mrtvý span. Zvýraznění uvnitř textu dělá `**tučně**`.
 
-## H2 sekce 2 — druhá vlastní pointa
+## H2 sekce 2 — <span class="hl">druhá pointa</span>, třeba <strong>srovnávací tabulka</strong>
 
 | Tabulky | Jsou |
 |---|---|
@@ -165,7 +165,7 @@ Použij `<span class="hl">žluté podtržení</span>` na klíčový pojem, jen 1
 
 > Blockquote pro citaci nebo extra důležitou tezi. Používej jednou za 2–3 sekce, ne víc.
 
-## H2 sekce 3 — třetí pointa
+## H2 sekce 3 — <span class="hl">třetí pointa</span> s <strong>příkazem nebo kódem</strong>
 
 Code block s jazykem v fence:
 
@@ -177,6 +177,8 @@ curl -sSI https://example.com/api
 Inline kód jako `proměnná` nebo `cesta/k/souboru`.
 
 ## Komponenty — názvy vlastností (kontrola před publikací)
+
+> **Tahle sekce není součástí článku** — je to kontrola před publikací, proto ji jako jediný H2 níže nedrží formát nadpisů. Do článku ji nekopíruj; kostra končí sekcí Závěr a CTA.
 
 Komponenta vykreslí jen ty klíče, které zná. **Překlep nebo cizí název klíče build nezastaví** — text prostě tiše zmizí ze stránky. Ověřeno 25. 8. 2026: `<Stepper>` měl ve 41 článcích popisy kroků v klíči `text:`, komponenta ale četla `desc:` → 42 bloků se vykreslovalo s prázdným odstavcem.
 
@@ -194,7 +196,7 @@ Komponenta vykreslí jen ty klíče, které zná. **Překlep nebo cizí název k
 grep -o 'stp__desc[^<]*></p>' dist/blog/<slug>/index.html | wc -l   # musí být 0
 ```
 
-## Závěr a CTA
+## <strong>Závěr</strong> a <span class="hl">CTA</span>
 
 Krátký odstavec (3–5 vět) syntézy: **co si čtenář odnese**, ne shrnutí.
 Pak jedno CTA relevantní pro kontext:
@@ -209,13 +211,17 @@ Pak jedno CTA relevantní pro kontext:
 
 ## 📋 Checklist před `git commit`
 
-- [ ] Frontmatter: všech 7 povinných polí vyplněno
+- [ ] Frontmatter: všech **8** povinných polí vyplněno (title, description, answer, slug, category, **tags**, updated, keywords)
 - [ ] **Titulek pro SERP do 60 znaků** — `seoTitle`, a když chybí, tak `title`. Nad 60 znaků Google ořízne a čtenář neuvidí konec. Kontroluje `npm run build`.
 - [ ] **Rozmyšleno, jestli článek potřebuje vlastní `seoTitle`** — `title` je nadpis na stránce, `seoTitle` slib ve výsledku vyhledávání. Rozdíl v CTR dělá slib akce, ne jazyk (měřeno 7. 9. 2026).
 - [ ] `description` 70–160 znaků
 - [ ] `slug` jen `[a-z0-9-]`, bez diakritiky a podtržítek
 - [ ] `updated` je dnešní nebo dřívější datum (`YYYY-MM-DD`)
 - [ ] `answer` je 40–60 slov, sebestačná, bez „výše v článku"
+- [ ] **Každý H2 nese `<span class="hl">` i `<strong>`** — závazný formát celého webu (CLAUDE.md § VI). H3 naopak zůstávají prostý text. Kontrola **musí vypsat prázdno** (ověřeno 16. 9. 2026); co vypíše, tomu jedno z obojího chybí:
+      ```bash
+      grep -n '^## ' src/content/articles/<slug>.mdx | grep -Ev 'class="hl".*<strong>|<strong>.*class="hl"'
+      ```
 - [ ] `faq` má 4–8 otázek (silně doporučeno, ne povinné)
 - [ ] **Jazyková kontrola (BLOK C6) — `python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md` musí hlásit 0 nálezů** + LLM průchod dle skillu `cestina-audit`
 - [ ] `npm run build` projde bez errors

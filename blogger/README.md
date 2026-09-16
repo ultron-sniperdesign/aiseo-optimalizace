@@ -4,13 +4,16 @@
 > s tagem `aiseo-blogger`), které **dostává hotový článek** (psaný ručně nebo
 > vlastním copy skillem) a potřebuje ho **dostat na živý web** `aiseo-optimalizace.cz`.
 >
-> **Co tato složka NEPOPISUJE:** jak článek napsat. Tonalitu, briefy, klíčová slova
-> a osnovy řeší vlastní content skill blogger session. Sem přijde **už hotový text**
-> a my ho jen správně uložíme, otestujeme a deploynem.
+> **Co tato složka NEPOPISUJE:** jak článek napsat. Celý postup od researche přes draft
+> a audit až po publikaci má **`CONTENT_WORKFLOW.md`** (bloky A–D). Tenhle soubor řeší
+> jen to, kam hotový text uložit, jak ho otestovat a nasadit.
 >
-> **Stav infrastruktury:** Web je LIVE od května 2026. Articles collection má aktuálně
-> 12 článků, automatický deploy přes GitHub Actions (~1–2 min), URL pattern
-> `https://aiseo-optimalizace.cz/blog/<slug>/`.
+> **Když si tyhle dva soubory odporují, platí `CONTENT_WORKFLOW.md`** — je konkrétnější
+> a udržovanější.
+>
+> **Stav infrastruktury:** Web je LIVE od května 2026. Articles collection má
+> **165 článků** (stav k 15. 9. 2026), automatický deploy přes GitHub Actions (~1–2 min),
+> URL pattern `https://aiseo-optimalizace.cz/blog/<slug>/`.
 
 ---
 
@@ -20,15 +23,16 @@
 # 1. Ujisti se, že jsi v project rootu
 cd "/Users/ultroncloudehome/Desktop/Ultron DISK/SNIPER DESIGN ULTRON/SNIPER DESIGN/aiseo-optimalizace.cz"
 
-# 2. Vytvoř soubor článku (název = slug + .md nebo .mdx)
-# Frontmatter + obsah → src/content/articles/<slug>.md
+# 2. Vytvoř soubor článku (název = slug + .mdx)
+# Frontmatter + obsah → src/content/articles/<slug>.mdx
 # Šablona: blogger/ARTICLE_TEMPLATE.md (zkopíruj, vyplň, ulož)
 
 # 3. Lokální verifikace (Astro check + build)
 npm run build
 
 # 4. Commit + push → CI automaticky deploynue do ~1–2 min
-git add src/content/articles/<slug>.md
+git add src/content/articles/<slug>.mdx public/og/<slug>.jpg public/og/<slug>.webp
+git add .astro-indexnow-cache.json   # POVINNÉ — viz „Proč se cache commituje" níže
 git commit -m "Blog: <krátký popis článku>"
 git push origin main
 ```
@@ -41,32 +45,31 @@ URL po deployi: `https://aiseo-optimalizace.cz/blog/<slug>/` (slug je z frontmat
 
 | Co | Kam | Poznámka |
 |---|---|---|
-| Markdown / MDX soubor | `src/content/articles/<slug>.md` (nebo `.mdx`) | Název souboru je libovolný, kanonický slug je v frontmatteru |
+| MDX soubor | `src/content/articles/<slug>.mdx` | Vždy `.mdx`, viz níže. Název souboru je libovolný, kanonický slug je ve frontmatteru |
 | Custom obrázky v textu | `public/blog/<slug>/<obrazek>.{webp,png,jpg}` | Referencuj jako `/blog/<slug>/obrazek.webp` |
-| OG image (volitelné) | `public/og/<slug>.png` (1200×630) | Pokud chybí, použije se default; není povinné |
+| Featured / OG image | `public/og/<slug>.jpg` + `public/og/<slug>.webp` | **Obojí povinné. `.png` do repa NEPATŘÍ** — je to jen pracovní mezikrok generování, po vytvoření odvozenin se maže (rozhodnutí z 15. 9. 2026). Postup: `IMAGE_GUIDE.md` |
 | Nikam jinam **nesahej** | `src/components/`, `src/layouts/`, `src/pages/`, `_source/`, `public/_review/`, `worker/` | To je doména hlavní project session |
 
-**Důležitý kontrast:** Bloger session edituje **JEN** `src/content/articles/`, `public/blog/<slug>/` a (volitelně) `public/og/<slug>.png`. Nic jiného. Pokud si myslíš, že potřebuješ něco jinde — ozvi se hlavnímu vláknu.
+**Důležitý kontrast:** Bloger session edituje **JEN** `src/content/articles/`, `public/blog/<slug>/` a `public/og/<slug>.jpg` + `.webp`. Nic jiného. Pokud si myslíš, že potřebuješ něco jinde — ozvi se hlavnímu vláknu.
 
 ---
 
-## 📄 Volba `.md` vs `.mdx`
+## 📄 Formát článku: vždy `.mdx` + `variant: "rich"`
 
-| Použij `.md` když | Použij `.mdx` když |
-|---|---|
-| Článek je čistý prose (markdown) + frontmatter | Potřebuješ Astro komponentu (např. inline `<RichLayout>` blok, custom callout) |
-| **Default volba — preferuj `.md`** | Jen když je vážně potřeba JSX |
+**Žádná volba tu není.** Článek je `.mdx` kvůli importu komponent a ve frontmatteru má `variant: "rich"`. Bez toho se nevykreslí rich layout.
 
-Drtivá většina článků na tomto webu je `.md`. MDX umí v repo dvě věci: hero stat bloky (lépe řešit přes `stats` ve frontmatteru) a inline komponenty (zbytečné pro standardní článek).
+Ověřeno proti repu 15. 9. 2026: **všech 165 článků v `src/content/articles/` je `.mdx` a všech 165 má `variant: "rich"`.** Žádná výjimka.
+
+> Do 15. 9. 2026 tu stálo, že se má preferovat `.md` a MDX používat jen výjimečně. To bylo zastaralé a odporovalo to `CONTENT_WORKFLOW.md` i reálnému stavu repa. Kdyby se ti někde ještě objevil starý pokyn na `.md`, platí tenhle.
 
 ---
 
-## 🧾 Povinný frontmatter (článek se bez něj neсбuilduje)
+## 🧾 Povinný frontmatter (článek se bez něj nesbuilduje)
 
 Astro 5 používá Content Collections se Zod schématem v `src/content.config.ts`.
-**Pokud frontmatter nepasuje, `npm run build` selže s validation error a článek se neпublikuje.**
+**Pokud frontmatter nepasuje, `npm run build` selže s validation error a článek se nepublikuje.**
 
-### Minimální frontmatter (povinná pole)
+### Minimální frontmatter (8 povinných polí)
 
 ```yaml
 ---
@@ -75,7 +78,10 @@ description: "Meta description 70–160 znaků. Hook + benefit. Co čtenář zí
 answer: "40–60 slovní krátká definice tématu pro AI scrapery. Tučně vykreslená nahoře v článku, čte ji ChatGPT/Perplexity/AIO. Musí dávat samostatný smysl bez kontextu zbytku článku. Konkrétní fakta, žádné fráze."
 slug: "url-slug-clanku"
 category: "analysis"
-updated: "2026-05-17"
+tags:
+  - "strukturovana-data"
+  - "duveryhodnost"
+updated: "2026-09-15"
 keywords:
   - "klíčové slovo 1"
   - "klíčové slovo 2"
@@ -85,9 +91,11 @@ keywords:
 
 ### Volitelná pole
 
+> ⚠️ **`variant: "rich"` už volitelné NENÍ** — má ho všech 165 článků a bez něj se nevykreslí rich layout. Ber ho jako povinné pole, i když ho schéma nevynucuje. Zbytek níže volitelný je.
+
 ```yaml
-variant: "rich"          # default "classic". "rich" = sticky TOC, dividery, progress bar
-stats:                   # 3–4 dlaždice nad textem (jen pro variant: rich)
+variant: "rich"          # POVINNÉ v praxi. sticky TOC, dividery, progress bar
+stats:                   # 3–4 dlaždice nad textem
   - value: "12"
     label: "chyb v auditu"
   - value: "4–6"
@@ -111,10 +119,11 @@ howto:                   # HowTo schema (jen u tutoriálových článků)
 | `answer` | string | „Krátká odpověď" 40–60 slov. AI scraper hook. Vykresluje se tučně nahoře. **Sebestačná** — bez kontextu zbytku článku musí dát smysl. |
 | `slug` | `^[a-z0-9-]+$` | Lowercase, bez diakritiky, slovní oddělovač = pomlčka. **Toto je finální URL** (`/blog/<slug>/`). Nikdy neměnit po publikaci (rozbije linky a indexy). |
 | `category` | enum: `defensive` / `case-study` / `tutorial` / `analysis` | Volba ovlivňuje breadcrumb label a filter chip v `/blog/`. Viz tabulka níže. |
+| `tags` | string array | **Povinné.** Tematické štítky článku, používají se pro filtrování a související články. Drž se zavedených (`ai-platformy`, `strategie`, `mereni`, `obsah`, `technicke-zaklady`, `duveryhodnost`, `eshopy`, `strukturovana-data`, `audit-nastroje`) — nové zaváděj jen s důvodem. Zjistíš je: `grep -hA6 "^tags:" src/content/articles/*.mdx \| grep -oE '"[a-z-]+"' \| sort \| uniq -c \| sort -rn` |
 | `updated` | `^\d{4}-\d{2}-\d{2}$` (ISO date) | Datum poslední aktualizace. Vykresluje se na článku + jde do `<meta>` a JSON-LD `dateModified`. **Aktualizuj při každém významném update.** |
 | `keywords` | string array | Pro `<meta keywords>` + interní reference. 5–10 klíčových slov + variant. |
-| `variant` | `classic` (default) nebo `rich` | `rich` = enhanced design (sticky TOC, section dividers, numbered H3 cards, reading progress bar, stat tiles). Pro flagship články. |
-| `stats` | array `{ value, label }` | Jen pro `variant: rich`. 3–4 dlaždice s číslem + popiskem nad lead odstavcem. |
+| `variant` | vždy `"rich"` | Sticky TOC, section dividers, numbered H3 cards, reading progress bar, stat tiles. **Má ho všech 165 článků** — `classic` se nepoužívá, nepiš ho. |
+| `stats` | array `{ value, label }` | 3–4 dlaždice s číslem + popiskem nad lead odstavcem. |
 | `faq` | array `{ q, a }` | **Silně doporučeno.** Generuje FAQPage JSON-LD = AI scrapery citují odsud. 4–8 reálných otázek čtenáře. |
 | `howto` | object | Generuje HowTo schema. Jen pro tutoriálové (krok-za-krokem) články. |
 
@@ -184,7 +193,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 # C) Production build — finální validace (CI dělá totéž)
 npm run build
 # → musí projít BEZ errors. Astro check validuje frontmatter proti Zod schema.
-# → výstup do dist/, 28+ stránek.
+# → výstup do dist/, 276 stránek (stav k 15. 9. 2026).
 
 # D) Preview production build
 npm run preview
@@ -198,8 +207,8 @@ npm run preview
 | `String must contain at least 70 character(s)` (description) | description < 70 nebo > 160 znaků | Přepsat description na 70–160 znaků |
 | `Invalid enum value` (category) | category mimo povolenou množinu | Použij `defensive` / `case-study` / `tutorial` / `analysis` |
 | `Invalid string` (slug) | slug obsahuje velká písmena, diakritiku nebo speciální znaky | Lowercase + pomlčky + `[a-z0-9-]` only |
-| `Invalid string` (updated) | datum není ISO `YYYY-MM-DD` | Použij formát `2026-05-17` |
-| `Required` | chybí povinné pole | Doplň všech 7 povinných polí (title, description, answer, slug, category, updated, keywords) |
+| `Invalid string` (updated) | datum není ISO `YYYY-MM-DD` | Použij formát `2026-09-15` |
+| `Required` | chybí povinné pole | Doplň všech **8** povinných polí (title, description, answer, slug, category, **tags**, updated, keywords) |
 | Cokoli jiného | viz Astro stack trace, ozvi se hlavnímu vláknu | — |
 
 ---
@@ -229,13 +238,15 @@ Pattern: `Blog: <stručný popis> (<volitelná poznámka>)`.
 
 ```bash
 # Nový článek
-git add src/content/articles/jak-pridat-organization-schema.md
-git add public/blog/jak-pridat-organization-schema/  # pokud máš obrázky
+git add src/content/articles/jak-pridat-organization-schema.mdx
+git add public/og/jak-pridat-organization-schema.*        # featured image, povinné
+git add public/blog/jak-pridat-organization-schema/       # pokud máš obrázky v textu
+git add .astro-indexnow-cache.json                        # POVINNÉ, build ji přepsal
 git commit -m "Blog: jak přidat Organization schema (tutorial)"
 git push origin main
 
 # Update existujícího článku (bumpni `updated:` ve frontmatteru!)
-git add src/content/articles/seo-pro-eshopy-ai-era-2026.md
+git add src/content/articles/seo-pro-eshopy-ai-era-2026.mdx
 git commit -m "Blog: SEO pro e-shopy 2026 — update cen služeb po Q2"
 git push origin main
 
@@ -280,15 +291,95 @@ curl -s https://aiseo-optimalizace.cz/sitemap-0.xml | grep "$SLUG"
 curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+json'
 # → ≥ 2 (Article + BreadcrumbList; +FAQPage pokud frontmatter má faq; +HowTo pokud má howto)
 
-# 5. IndexNow ho submitnul (rychlejší indexace v Bing/Yandex/Seznam)
-# Toto se děje automaticky při buildu, hlášení v CI logu:
-# „[astro-indexnow] submitting N changed URLs"
+# 5. IndexNow — čti VÝSLEDEK, ne jen že se odesílalo
+# Hláška „[astro-indexnow] submitting N changed URLs" oznamuje jen ZAČÁTEK pokusu.
+# Závěrečné „IndexNow submission complete" se vypíše VŽDY, i když všechny batche
+# selhaly — ověřeno ve zdroji knihovny 16. 9. 2026: `saveCache` i ta hláška jsou
+# mimo jakoukoli kontrolu úspěchu. Skutečný výsledek nese jen warn mezi nimi:
+#   „[astro-indexnow] batch N failed (403)"       ← HTTP chyba
+#   „[astro-indexnow] batch N submission failed"  ← síťová chyba
+# Když je v logu warn, odeslání NEPROBĚHLO. Cache si URL přesto zapsala jako
+# hotovou, takže se příštím buildem samo NEZOPAKUJE — musíš ji podat ručně.
 ```
+
+### Proč se `.astro-indexnow-cache.json` commituje
+
+CI build je ephemeral — checkoutne repo a nic si nepamatuje. Cache v repu mu říká,
+které URL už šly do IndexNow. **Když se cache necommitne, každý build považuje celý
+web za nový a znovu podá všechny URL.** Po čase to IndexNow odmítne (HTTP 403) a
+protože integrace chybu jen warnuje, nikdo si toho nevšimne.
+
+> **Stav k 16. 9. 2026 — necommitnutá cache se reálně děje.** Cache je naposled
+> commitnutá **17. 5. 2026 s 39 URL**, v pracovním stromu jich je **277**. Rozdíl
+> 238 URL se podává znovu při každém buildu už čtyři měsíce. `.gitignore` má na
+> řádku 58 výjimku `!.astro-indexnow-cache.json`, takže úmysl sledovat ji gitem tam
+> je — jen ji publikační postup nikdy nedával do `git add`. **Tohle opravit je
+> správně bez ohledu na cokoli dalšího.**
+
+> **Commitnuto 16. 9. 2026 (`44c6345`) — a nestačilo to.** Nejbližší CI build hlásil
+> `submitting 261 changed URLs`. Cache porovnává **sha256 zbuildovaného `index.html`**,
+> ne seznam URL. Baseline v commitu pocházela z lokálního buildu v 20:09, jenže ve
+> 20:10 a 20:13 přišly cizí commity přestavby `/audit/` a přepsaly stovky stránek —
+> takže 261 změn je v tomhle běhu legitimní, ne důkaz, že cache nefunguje.
+>
+> **Neověřeno:** CI je ephemeral a svoji verzi cache nikam nezapisuje. Commitnutá
+> baseline se tedy sama neaktualizuje a pomůže jen tehdy, když ji agent po lokálním
+> buildu commitne **ve stejném commitu** jako článek (proto je v `git add` výš) —
+> a jen pokud je build deterministický napříč stroji. **To zatím nikdo neměřil.**
+> Ukáže to první build, do kterého nezasáhne cizí commit: `submitting 0` = funguje,
+> znovu stovky = cache je pro CI k ničemu a musí ji po buildu commitovat bot.
+
+> ### ⛔ IndexNow pro tento web teď NEFUNGUJE — nezkoušej to obcházet
+>
+> Ověřeno ručním podáním 16. 9. 2026 (`jazykove-mutace-pro-ai`, stránka živá, HTTP 200):
+>
+> ```
+> {"errorCode":"UserForbiddedToAccessSite",
+>  "message":"User is unauthorized to access the site. Please verify the site using the key and try again"}
+> → HTTP 403
+> ```
+>
+> **Klíč za to nemůže — ověřeno vyčerpávajícím způsobem** týž den:
+> `/929226a175c657aac3ba73a765ee364d.txt` vrací HTTP 200, `content-type: text/plain`,
+> obsah je přesně 32 bajtů shodných s klíčem (bez BOM, bez koncového odřádkování,
+> ověřeno přes `xxd`), `www` varianta dělá 301 na apex. **Zpráva od API tě posílá
+> klíč ověřovat — je to slepá ulička, tudy to nevede.**
+>
+> **Příčina není známá.** Odmítnutí je na straně poskytovatele, ne v repu. Podezření
+> padá na to, že se čtyři měsíce při každém buildu znovu podávalo 238 URL (viz cache
+> výš) a host se tím zablokoval — **je to ale jen hypotéza, chybová hláška ji
+> nepotvrzuje.** Ověřit se dá jen z účtu v Bing Webmaster Tools.
+>
+> **Co z toho plyne pro psaní článků:** IndexNow je momentálně rozbitý pro **celý
+> web**, ne pro tvůj článek. Nepodávej URL ručně, nezkoušej to opakovaně a neřeš to
+> v rámci runu — jen to zapiš do reportu. Řeší to správce. Do té doby použij **Bing
+> Webmaster Tools → Submit URL** ručně.
+
+
+### Když IndexNow selže
+
+1. **Nezkoušej ověřovat klíč** — je ověřený (viz blok výš) a API tě tam posílá zbytečně.
+2. **Rebuild nepomůže** — cache už URL eviduje jako podanou, takže další build napíše
+   „no changed URLs detected, skipping submission".
+3. **Ruční podání teď taky nepomůže** — vrací stejné 403 pro celý web, ověřeno.
+4. **Zapiš to do reportu a pokračuj.** IndexNow je urychlovač indexace, ne podmínka
+   publikace. Náhrada je Bing Webmaster Tools → Submit URL.
+
+Až bude blokace vyřešená, ruční podání jedné URL vypadá takto (**neopakovat, jednou**):
+
+```bash
+curl -sS -w '\n%{http_code}\n' \
+  "https://api.indexnow.org/indexnow?url=https://aiseo-optimalizace.cz/blog/<slug>/&key=929226a175c657aac3ba73a765ee364d"
+# 200 nebo 202 = přijato
+```
+
+> **Publikace je hotová po úspěšném deployi a kontrole veřejné stránky (kroky 1–4).**
+> Odeslání do IndexNow vykazuj zvlášť — není součástí definice hotového článku.
 
 ### Po publikaci doporučené
 
 - **Google Search Console** → URL Inspection → „Request indexing" pro nový článek
-- **Bing Webmaster Tools** → Submit URL (volitelné, IndexNow už podaný)
+- **Bing Webmaster Tools** → Submit URL — **udělej to vždycky, když v logu byl warn o selhaném batchi.** Formulace „IndexNow už podaný" platí jen tehdy, když log žádný warn neobsahoval.
 - **Sociální sdílení** → ozvi se marketing session (`marketing/`), kdy a kam postnout
 
 ---
@@ -310,12 +401,19 @@ curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+js
 
 | Soubor | Co je |
 |---|---|
-| `README.md` (tento soubor) | Kompletní guide — kde, co, jak, čeho se vyvarovat |
-| `ARTICLE_TEMPLATE.md` | Kopírovatelná šablona článku s plně vyplněným frontmatter + ukázkou body |
-| `CONTENT_WORKFLOW.md` | Celý pipeline research → draft → audit → jazyková kontrola → publikace |
+| `README.md` (tento soubor) | Mechanika publikace — kam uložit, jak ověřit, jak nasadit |
+| `CONTENT_WORKFLOW.md` | **Celý pipeline** research → draft → audit → jazyk → publikace. Při rozporu s tímhle souborem platí on |
+| `Content Workflow Codex.md` | Varianta pipeline pro Codex (nemá přístup ke Claude skillům) |
+| `ARTICLE_TEMPLATE.md` | Kopírovatelná šablona článku s vyplněným frontmatterem + ukázkou body |
+| `IMAGE_GUIDE.md` | Featured / OG image — prompt, kompozice, odvozeniny |
+| `auditor-system.md` | Systémový prompt pro OpenAI auditora (bloky C2, C4) |
+| `obsahovy-plan.csv` | Fronta témat + evidence publikací. **Velký soubor, prohledávej grepem** |
+| `REFRESH_QUEUE.md` | Fronta článků k aktualizaci (kadence 2:1, blok A6). **Velký soubor** |
 | `JAZYK_SLOVNIK.md` | Slovník hlídaných výrazů (⛔ / ⚠️ / ✅) — jediný zdroj pravdy, skill na něj má symlink |
 | `jazyk-check.py` | Mechanická jazyková kontrola článku proti slovníku |
-| `JAZYK_AUDIT_LOG.md` | Log jazykových auditů — hustota nálezů na 1 000 slov před/po |
+| `JAZYK_AUDIT_LOG.md` | Log jazykových auditů — hustota nálezů na 1 000 slov před/po. **Velký soubor** |
+| `research/<slug>/` | Podklady k jednotlivým článkům. **Nečti plošně**, jen konkrétní soubor |
+| `PRIORITA_*.md`, `PLAN_KOLIZE_*.md`, `REVIZE_PLANU_*.md` | Archiv historických zadání. Pro běžný run je nepotřebuješ |
 
 ---
 
