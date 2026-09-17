@@ -1,0 +1,175 @@
+---
+title: "Přepis videa a podcastu: jak připravit text pro web a AI"
+seoTitle: "Přepis videa a podcastu: 5 kroků pro web a AI"
+description: "Jak z videa nebo podcastu připravit přepis pro web. Kontrola podle nahrávky, zachování významu a ověření, zda Google vidí text stránky."
+answer: "Přepis videa nebo podcastu je textová podoba mluveného obsahu, doplněná podle potřeby o důležité zvuky a informace z obrazu. Na vlastním webu umožní obsah číst, prohledávat a ověřovat. Pro vyhledávání a AI publikujte zkontrolovaný text s jasným členěním a odkazem na nahrávku. Samotný přepis citaci ani zařazení do vyhledávání nezaručuje."
+slug: "prepis-videa-a-podcastu-pro-ai"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "technicke-zaklady"
+published: "2026-09-17"
+updated: "2026-09-17"
+keywords:
+  - "přepis videa"
+  - "přepis podcastu"
+  - "přepis videa do textu"
+  - "přepis zvuku na text"
+  - "automatické titulky"
+  - "přepis pro AI vyhledávání"
+  - "přepis videa na web 2026"
+variant: "rich"
+howto:
+  name: "Jak připravit přepis videa nebo podcastu pro vlastní web"
+  steps:
+    - name: "Získejte výchozí text"
+      text: "Vyjděte z titulků nebo z automatického přepisu konečné verze nahrávky. K přepisu si poznamenejte odkaz na tuto nahrávku nebo název zvukového souboru."
+    - name: "Porovnejte přepis s nahrávkou"
+      text: "Poslechem ověřte věty, jména, čísla, jednotky a zápory. Nesrozumitelné místo označte a nedoplňujte ho odhadem."
+    - name: "Označte mluvčí a doplňte údaje z obrazu"
+      text: "Rozlište jednotlivé mluvčí a označte důležité údaje z obrazu jako redakční doplnění. Nepřipisujte je mluvčímu. Zachyťte i zvuky důležité pro pochopení, například potvrzovací tón."
+    - name: "Upravte text pro čtení"
+      text: "Rozdělte přepis do tematických částí, zachovejte význam výroků a oddělte shrnutí od přepisu."
+    - name: "Zveřejněte a zkontrolujte stránku"
+      text: "Publikujte přepis jako text na webu, propojte ho s nahrávkou a ověřte, že je dostupný i bez spuštění přehrávače."
+faq:
+  - q: "Jak převést české video do textu?"
+    a: "Začněte titulky nebo nástrojem pro převod řeči na text s podporou češtiny. YouTube podporuje automatické titulky u nahraných českých videí, jejich vytvoření ale není zaručené u každého záznamu. Výsledek zkontrolujte proti nahrávce, zejména jména, čísla a odborné výrazy."
+  - q: "Stačí automatické titulky bez kontroly?"
+    a: "Automatické titulky berte jako podklad k opravě. Chybný přepis může změnit jméno, číslo i význam věty; YouTube proto doporučuje automatické titulky vždy projít. Na web publikujte text, který jste porovnali s nahrávkou."
+  - q: "Stačí u podcastu krátké shrnutí?"
+    a: "Shrnutí pomůže rozhodnout, zda si epizodu pustit, ale nenahrazuje přepis jejích odpovědí a vysvětlení. Pokud zveřejníte jen vybranou část, označte ji jako výňatek. Pro čtenáře, který potřebuje dohledat přesné znění, ponechte úplný přepis."
+  - q: "Musí být přepis doslovný?"
+    a: "U běžného webového obsahu lze vynechat nepodstatná zaváhání nebo opakování, pokud se nezmění význam. Zachovejte zápory, podmínky i míru jistoty mluvčího. Vlastní vysvětlení oddělte jako redakční poznámku."
+  - q: "Kam dát přepis na vlastním webu?"
+    a: "Nejlépe na stránku epizody nebo videa, kde ho čtenář najde u přehrávače. Pokud potřebujete samostatnou stránku, propojte ji s nahrávkou oběma směry. Text má být čitelný i bez spuštění videa."
+  - q: "Zajistí přepis citaci v AI odpovědi?"
+    a: "Přepis přidá text, ze kterého může vyhledávání čerpat, ale citaci neslibuje. Pro odkaz v AI Overviews nebo režimu AI musí být stránka mimo jiné zařazená do indexu Googlu a způsobilá k zobrazení s úryvkem. Ani splnění podmínek neznamená, že ji Google vybere."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+import SourceCard from "../../components/blocks/SourceCard.astro";
+import CompareTable from "../../components/blocks/CompareTable.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+**Přepis videa nebo podcastu je textová podoba mluveného obsahu, doplněná podle potřeby o důležité zvuky a informace z obrazu.** Na vlastním webu umožní obsah číst, prohledávat a ověřovat. Pro vyhledávání a AI publikujte zkontrolovaný text s jasným členěním a odkazem na nahrávku. Samotný přepis citaci ani zařazení do vyhledávání nezaručuje.
+
+Máte natočený návod nebo rozhovor s odborníkem. Odpověď na zákazníkovu otázku v něm zazněla, ale na stránce zůstává jen přehrávač a dvě věty. Přepis dá čtenáři možnost konkrétní odpověď najít bez procházení celého záznamu. Postup vás provede přípravou přepisu pro vlastní web: od porovnání s nahrávkou po kontrolu zveřejněného textu.
+
+## Proč má <span class="hl">přepis</span> smysl i pro <strong>AI vyhledávání</strong>
+
+K září 2026 nelze tvrdit, že AI video obecně neumí zpracovat. [Dokumentace Gemini API](https://ai.google.dev/gemini-api/docs/video-understanding) popisuje práci s dodaným videem včetně vizuálních informací. **Schopnost modelu porozumět videu ale sama neříká, co konkrétní vyhledávací služba z vašeho webu získá.**
+
+Důvod pro textovou verzi je praktičtější. Máte pod kontrolou přesné znění, jména mluvčích i doplnění zdrojů. Zákazník může najít výraz v textu a poslat kolegovi odkaz na příslušnou část. Zároveň přidáváte běžný obsah webové stránky, se kterým mohou vyhledávače pracovat.
+
+<SourceCard badge="Dokumentace Google" href="https://developers.google.com/search/docs/appearance/ai-features" linkLabel="Doporučení pro AI funkce ve Vyhledávání">
+Google doporučuje zpřístupnit důležitý obsah i textově. Pro AI Overviews a režim AI přitom nevyžaduje zvláštní soubor ani speciální strukturovaná data.
+</SourceCard>
+
+Přepis tedy dává smysl jako součást [srozumitelného obsahu pro AI](/blog/ai-seo-content/). Samotné zveřejnění přepisu nezaručuje vyšší návštěvnost ani více citací.
+
+## Rozlište <span class="hl">titulky, přepis a shrnutí</span> podle <strong>účelu</strong>
+
+Z jednoho záznamu mohou vzniknout tři různé texty. Rozhodněte, který čtenáři nabízíte, a tak ho také označte.
+
+<CompareTable
+  leftLabel="Co obsahuje"
+  rightLabel="K čemu slouží"
+  leftTone="accent"
+  rightTone="geo"
+  rows={[
+    { icon: "▶", label: "Titulky", left: "Text přiřazený ke konkrétnímu času ve videu", right: "Sledování záznamu se souběžným čtením" },
+    { icon: "≡", label: "Přepis", left: "Souvislý text obsahu nahrávky", right: "Čtení, hledání a ověřování konkrétních výroků" },
+    { icon: "→", label: "Shrnutí", left: "Redakčně vybrané hlavní body", right: "Rychlá orientace před čtením nebo poslechem" },
+  ]}
+/>
+
+Rozlišení přepisu a časovaných titulků vychází z [návodu W3C k titulkům](https://www.w3.org/WAI/media/av/captions/). Pro webovou stránku nemusíte ponechat časový kód na každém řádku. Užitečnější může být čas u začátku tématu, podle kterého se čtenář vrátí do nahrávky.
+
+Shrnutí dejte zvlášť nad přepis. Pokud vyberete jen několik odpovědí z hodinového rozhovoru, pojmenujte je „Vybrané odpovědi“ nebo „Výňatek z přepisu“. Čtenář pak ví, že část záznamu v textu nenajde.
+
+## Připravte <span class="hl">text z nahrávky</span> v <strong>pěti krocích</strong>
+
+Následující pořadí je doporučený redakční postup. Není to seznam podmínek, za jejichž splnění vyhledávač přiděluje lepší pozice.
+
+<Stepper steps={[
+  { label: "Podklad", title: "Získejte výchozí text", text: "Použijte titulky nebo automatický přepis konečné verze nahrávky. Text ze staršího střihu by mohl obsahovat pasáže, které ve zveřejněném videu už nejsou." },
+  { label: "Poslech", title: "Porovnejte text se záznamem", text: "Projděte nahrávku a opravujte přepis podle skutečně řečeného. Zvlášť si označte jména, číselné údaje, jednotky a zápory. Nejasné místo si poslechněte znovu. Pokud mu stále nerozumíte, označte ho v přepisu jako nesrozumitelné." },
+  { label: "Kontext", title: "Označte mluvčí a popište důležité dění v obraze", text: "Označte, kdo odpovídá. Pokud se řečník odkazuje na graf nebo tlačítko, doplňte podstatnou informaci z obrazu a zřetelně ji oddělte od jeho slov. Zapište také zvuk důležitý pro pochopení návodu, například [zazní potvrzovací tón]." },
+  { label: "Čtení", title: "Rozdělte text podle témat", text: "Dlouhé pasáže rozčleňte. Nadpis pojmenuje otázku, kterou část řeší. Úpravy nesmějí změnit význam, podmínky ani míru jistoty původního výroku." },
+  { label: "Web", title: "Publikujte text a zkontrolujte dostupnost", text: "Přepis spojte s nahrávkou a doplňte datum záznamu. Na zveřejněné stránce ověřte, že najdete i větu z konce přepisu bez spuštění přehrávače." },
+]} />
+
+Jako výchozí text můžete použít automatické titulky, které YouTube podporuje i pro nahraná česká videa. [Jeho nápověda](https://support.google.com/youtube/answer/6373554?hl=cs) ale upozorňuje na chyby a doporučuje kontrolu. Samotná podpora češtiny nezaručuje, že se titulky u konkrétního videa vytvoří.
+
+Máte-li soubor z podcastu, můžete začít v nástroji pro přepis řeči. Například [český návod Beey](https://www.beey.io/cs/docs/manual/rychly-start/) popisuje nahrání souboru a otevření výsledného textu v editoru. Ať zvolíte kterýkoli nástroj, výsledný text porovnejte s nahrávkou.
+
+<Insight tone="warn" label="Co neopravovat potichu">
+Když mluvčí řekne chybný údaj, přesný přepis musí odlišit **chybu v nahrávce od chyby rozpoznání řeči**. Opravu věcného údaje přidejte jako označenou redakční poznámku. Jinak byste mu připsali něco, co neřekl.
+</Insight>
+
+## Na <span class="hl">ukázce přepisu</span> hlídejte hlavně <strong>zachování významu</strong>
+
+Následující příklad je modelový. Představte si návod, v němž řečník ukazuje na tlačítko „Uložit“ a říká:
+
+> „Tady ještě neklikejte. Nejdřív zkontrolujte název produktu.“
+
+Automatický přepis však zní: „Tady ještě klikejte. Nejdřív zkontrolujte název produktu.“ Chybí zápor a pokyn se obrátil. Opravený text může vypadat takto:
+
+<Insight tone="accent" label="Zkontrolovaný přepis">
+**03:20 — Uložení změn**
+
+**Lektor:** „Tady ještě neklikejte. Nejdřív zkontrolujte název produktu.“
+
+**[Redakční poznámka: lektor ukazuje na tlačítko Uložit.]**
+</Insight>
+
+Nadpis a čas pomáhají s orientací. Výrok zůstává věrný nahrávce a doplnění vysvětluje ukazovací slovo „tady“. Nevznikla z něj nová citace, kterou by lektor nikdy nevyslovil.
+
+[W3C doporučuje přepisovat přesně](https://www.w3.org/WAI/media/av/transcribing/) a výslovně upozorňuje, že vynechaný zápor může obrátit význam. U běžného webového obsahu připouští vynechání nepodstatných zvuků váhání, například „ehm“, pokud tím neutrpí význam sdělení. To ale není pokyn uhladit každý výrok do sebejisté rady.
+
+<MistakeGrid>
+  <Mistake num="01" title="Z možnosti uděláte jistotu">
+    Výrok „v některých případech to může pomoci“ nezkracujte na „to pomůže“. Původní podmínka nese část informace.
+  </Mistake>
+  <Mistake num="02" title="Doplníte nejasný název odhadem">
+    Pokud si nejste jistí názvem produktu, vraťte se k nahrávce a dostupným podkladům. Nevymýšlejte název, který pouze zní podobně.
+  </Mistake>
+  <Mistake num="03" title="Smícháte přepis s komentářem">
+    Pozdější opravu ceny nebo vlastní vysvětlení jasně označte. Čtenář má poznat, co zaznělo a co přidala redakce.
+  </Mistake>
+</MistakeGrid>
+
+## Na <span class="hl">stránce epizody</span> propojte <strong>text se záznamem</strong>
+
+Doporučené pořadí je jednoduché: název a datum nahrávky, jména účastníků, stručné shrnutí, přehrávač a přepis. U dlouhého textu přidejte obsah s odkazy na témata. Když po čase připojíte věcnou opravu, uveďte datum poznámky, aby se nepletla s původním záznamem.
+
+[Průvodce W3C pro přepisy](https://www.w3.org/WAI/media/av/transcripts/) doporučuje text snadno zpřístupnit u média; obvykle na stejné stránce. Oddělená stránka také dává smysl, pokud na ni u nahrávky zřetelně odkážete. Důležité vizuální informace, které ze zvuku nevyplývají, patří do popisného přepisu.
+
+<Insight tone="accent" label="Praktický test stránky">
+Otevřete stránku bez přihlášení a nespouštějte přehrávač. Najdete odpověď na otázku, která zazní až na konci záznamu? Dokážete podle jména a času ověřit, kdo ji řekl? Pokud ne, upravte umístění a členění přepisu.
+</Insight>
+
+Pro textovou stránku je podstatné, aby obsah nebyl dostupný jen uvnitř cizího přehrávače. Doporučujeme ho publikovat jako HTML, tedy běžný text stránky. Přepis nenačítejte až po kliknutí na tlačítko. Google ve [své dokumentaci k postupnému načítání](https://developers.google.com/search/docs/crawling-indexing/javascript/lazy-loading) uvádí, že pro zpřístupnění obsahu neprovádí uživatelské akce, například klikání. V Google Search Console vložte adresu stránky a spusťte [test aktuální publikované URL](https://support.google.com/webmasters/answer/9012289?hl=cs). Otevřete zobrazení testované stránky a v jejím HTML vyhledejte konkrétní větu z přepisu, ideálně i z jeho konce. Stav zařazení do indexu zkontrolujte zvlášť; živý test ho nepotvrzuje.
+
+Pokud chcete řešit i zobrazení samotného videa ve výsledcích, jde o další úkol. Google má pro [video vlastní požadavky](https://developers.google.com/search/docs/appearance/video); přepis na stránce jejich splnění nedokazuje. Strukturovaná data pro video popisuje samostatný návod k [VideoObject](/blog/videoobject-strukturovana-data/).
+
+## Nejprve zkontrolujte <span class="hl">zveřejněný přepis</span>, potom sledujte <strong>AI citace</strong>
+
+Začněte tím, co lze přímo zkontrolovat: přesností textu, dostupností stránky a odkazem z přehledu epizod. V Google Search Console také ověřte, zda má Google stránku zařazenou ve svém indexu. Teprve potom sledujte, zda se stránka objevuje při hledání konkrétních témat.
+
+Pro ruční kontrolu AI odpovědí si zapište dotaz, datum, použitou službu a citovanou URL. Rozlišujte, zda odkaz vede na vaši stránku s přepisem, nebo na video na jiné platformě. Srovnatelný postup popisuje [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
+
+<Insight tone="warn" label="Co z citace nepoznáte">
+Jedna nalezená citace ukazuje, že služba stránku v dané odpovědi uvedla jako zdroj. Zkontrolujte také, zda text stránky skutečně podporuje tvrzení, ke kterému odkaz patří. Samotný odkaz nedokazuje, že citaci způsobil přepis. Stejně tak jedna odpověď bez odkazu nedokazuje, že text není dostupný.
+</Insight>
+
+V praxi začněte jednou epizodou, u které má přesné znění odpovědí hodnotu pro zákazníky. Její přepis celý porovnejte s nahrávkou a jeho členění použijte jako vzor pro přepisy dalších epizod. Hlavním výsledkem je čitelný a ověřený obsah, který na webu dosud chyběl.
+
+---
+
+**Přepis už máte a potřebujete uspořádat stránku kolem něj?** [AI SEO Wireframe Pack za 1 490 Kč bez DPH](/pack/) obsahuje mimo jiné vzor blogového článku, šablony textů a ukázky strukturovaných dat. Můžete z něj vyjít při návrhu úvodu, členění a souvisejících odkazů na stránce s přepisem.
+
+*Dokumentace ověřena 17. září 2026. Ukázka přepisu je modelová; článek neprezentuje měření nárůstu AI citací.*

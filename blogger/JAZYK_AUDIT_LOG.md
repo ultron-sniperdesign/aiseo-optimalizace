@@ -1376,3 +1376,27 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 - Po C4: 2 004 slov, mechanická C6 0 nálezů včetně varování. Detail každého bodu v research/chatbot-na-webu-a-ai-viditelnost/vyporadani.md.
 - C5-02: odstraněn opakovaný příklad kliknutí ze sousední věty. C5-03: „další podmínka“ → „základní podmínky Googlu“, aby věta nenaznačovala zvláštní technickou podmínku AI funkcí. Kontextové opravy bez regexu. C5-01 o délce seoTitle odmítnut proti přesnému C1b do60; nejde o jazykový nález.
 - Finální C6 po C5: 2 001 slov, 0 nálezů včetně varování. Druhý build úspěšný.
+
+## Nový článek — 2026-09-17 — prepis-videa-a-podcastu-pro-ai
+
+C3 samostatný jazykový auditor, C2 samostatný faktický auditor. Po úplné rešerši. Jazyk: 12 nálezů, všechny přijaty; faktický audit: 0 zásadních, 1 drobný TIP přijat. Mechanický checker před: 0 / 1 756 slov; po opravách: 0 / 1 801 slov, 275 aktivních pravidel. Slovník v70 se nemění.
+
+| ID | Nález | Oprava / rozhodnutí |
+|---|---|---|
+| J1 | „o kolik zvýší návštěvnost“ předpokládá nárůst | „nezaručuje vyšší návštěvnost ani více citací“; závisí na významu výroku, bez regexu |
+| J2 | Description a úvod slibují „opravy/kontrolu češtiny“ | Zpřesněno na porovnání s nahrávkou, zachování významu a ověření textu Googlu; bez regexu |
+| J3 | „doplňte obraz“, „doplnění obrazu“, „kontext obrazu a mluvčích“ | Údaje z obrazu, označení mluvčích, redakční poznámka; změněny tři výskyty, bez plošného zákazu slova obraz |
+| J4 | „stav zařazení URL v Google Search Console“ | Samostatná věta o zařazení stránky do indexu Googlu, které se v nástroji kontroluje |
+| J5 | „Nejasné místo vraťte k poslechu“ | „Nejasné místo si poslechněte znovu“ a označení nesrozumitelného úseku; jednorázový kontextový pokyn, bez zobecnění |
+| J6 | „Volbu nástroje oddělte… práci neuzavírá“ | Přímý pokyn u každého nástroje porovnat text s nahrávkou |
+| J7 | „nepodstatné výplně“ nedourčeno | Konkrétní zvuk váhání „ehm“ a podmínka zachování významu |
+| J8 | „Podrobnosti značení … VideoObject“ | Vysvětlení „Strukturovaná data pro video“ před oficiálním názvem |
+| J9 | „Mez výsledku“ nepřirozený štítek | „Co z citace nepoznáte“; nezakazovat správná jiná použití slova mez |
+| J10 | „Zkontrolujte ji… její strukturu“ odkazuje k epizodě | Výslovně kontrola přepisu a jeho členění, ne rada k natáčení |
+| J11 | „Uchovejte vazbu na původní záznam“ abstraktní | Konkrétně zapsat odkaz nebo název souboru konečné nahrávky |
+| J12 | „Výsledek publikace … odděleně od citací“ široké | H2 říká posloupnost kontroly přepisu a následného sledování citací |
+| F1 | „služba stránku použila“ silnější než pozorovaný odkaz | „uvedla jako zdroj“ + kontrola opory tvrzení v cílovém textu; metodika, ne regex |
+
+Úplné reporty a důvody jsou v `research/prepis-videa-a-podcastu-pro-ai/`. Žádný nález nepřeveden na široké mechanické pravidlo: o problému rozhoduje význam, referent nebo konkrétní slib textu.
+
+Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené indexované verzi; C5-02 přidává relevantní zvuky do obou sad praktických kroků; C5-03 sjednocuje CTA s údajem „bez DPH“ v nabídce. Všechny tři drobné nálezy přijaty, bez nových regexů. Mechanická kontrola konečné verze zůstává na 0.
