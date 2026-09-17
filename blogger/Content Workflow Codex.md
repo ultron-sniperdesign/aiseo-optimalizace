@@ -123,7 +123,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **B1 — Výběr tématu:** vezmi **první volný řádek pro nový článek** (`Publikováno = ne`), který po kontrole Pokynů a překryvu s webem nevyžaduje aktualizaci existujícího obsahu. Pořadí plánu zachovej; **žádná mimořádná přednost neplatí**.
 
   > **Nejdřív přečti sloupec C (Pokyny).** Řádky s pokynem *refresh / update / aktualizovat existující / nepsat nový* **přeskoč a ponech beze změny**, včetně stavu publikace a URL. Patří jinému nástroji; neoznačuj je jako hotové. Stejně postupuj, pokud až kontrola překryvu ukáže, že téma vyžaduje aktualizaci existujícího článku. Důvod přeskočení zapiš do podkladů svého běhu a pokračuj dalším způsobilým řádkem. Pokud žádný nezbývá, oznam nedostatek témat pro nový článek; nenahrazuj úkol refreshem ani duplicitou.
-- **B2 — Hloubkový research tématu:** cílený web search (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na Marketing Mineru (hledanost, long-tail, sezónnost, rising queries pro FAQ).
+- **B2 — Hloubkový research tématu:** cílený web search (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na Marketing Mineru (hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
 - **B3 — Uložení podkladů:** kurátorovaný záznam ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, Trends, poznámky o konkurenci, **zdroje s URL**). Hrubé dumpy do repa nedávej. Složka `research/` je mimo `src/` a `public/`, nedeployuje se.
 
   > **Zdroje si zapisuj pečlivě.** Auditor faktů v bloku C je dostane jako výchozí bod — nevidí tvou historii hledání. **Vlastní zdroje si ale dohledá sám** (viz C2), takže tvůj výběr ho neomezuje.
@@ -155,6 +155,25 @@ Podle `blogger/ARTICLE_TEMPLATE.md` + `blogger/README.md`:
   **Formát H2 je závazný pro celý web.** Každý H2 nese `<span class="hl">klíčový pojem</span>` **i** `<strong>pointu</strong>` a prostý text mezi tím; H3 zůstávají prostý text. Plné znění v `CLAUDE.md` § VI, vzory nahoře v `ARTICLE_TEMPLATE.md`. Stav k 16. 9. 2026: sekce a pilíř 100 %, **blog jen 142 z 1 359 H2** — u nových článků to drž od začátku, retrofit starých je jiná práce.
 
 - Tělo: `answer` (40–60 slov, sebestačná) → lead → 3–6 H2 sekcí (fakta z B2) → **FAQ** (z rising queries) → CTA na konkrétní produkt (tutorial/defensive → Pack nebo Free PDF; analysis/case-study → Audit).
+
+  **Když Trends mlčí — FAQ stojí na stupňovaném zdroji, ne na jednom.** Rising queries
+  jsou u úzkých českých témat běžně prázdné. Změřeno 17. 9. 2026: `geo optimalizace`,
+  `aeo optimalizace` i `llms txt` vrátily **0 rising queries**. Google Suggest to
+  zachrání jen někdy — `llms txt` dal 10 návrhů, `geo optimalizace` vrátil jen sám
+  sebe a `aeo optimalizace` nic. Ber první neprázdnou vrstvu:
+  1. **Rising queries** z Trends (po filtru na šum, viz A2).
+  2. **Google Suggest** (`--enrich suggest`) a „people also ask" v SERP.
+  3. **FAQ konkurence** na stejné téma.
+  4. **Doložené praktické problémy** — co se reálně řešilo v zakázkách, v měřeních
+     nebo v předchozích článcích. Tahle vrstva nezávisí na žádném nástroji a u
+     nejužších témat bývá jediná dostupná.
+
+  **Prázdná data nejsou nulový zájem.** Znamenají, že to nástroj neměří — u českých
+  odborných spojení je to normální stav, ne signál o tématu. Nedělej z toho závěr a
+  nevyhazuj kvůli tomu řádek z plánu.
+
+  **U každé otázky si poznač, odkud je** (Trends / Suggest / SERP / konkurence / praxe)
+  a zapiš to do `research.md`. Bez toho nejde poznat, jestli FAQ stojí na datech, nebo na dojmu.
 - Brand voice + zakázaný slovník dle `marketing/05-messaging-a-tonalita.md`.
 - **Vazba na aktuální rok:** kde to dává smysl, ukotvi titulek / obsah / `keywords` na aktuální rok. Rok zjisti z dnešního data.
 - **Design komponenty rovnou tady, ne až v bloku D** (změna z 15. 9. 2026): rozbij text komponentami podle `docs/section-page-standard.md` — výčet a pravidla v **D1**. Důvod: při převodu odstavce do tabulky nebo kroků se ztrácejí výhrady („podle dokumentace", „většinou"), které se do buňky nevejdou. **Auditoři musí vidět text v podobě, která půjde ven**, ne polotovar.

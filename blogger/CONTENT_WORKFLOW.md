@@ -120,7 +120,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   > **Nejdřív přečti sloupec C (Pokyny).** Některé řádky mají varování: kanibalizace, „updatovat existující místo nového", riziko překryvu s pilířem. Pokud pokyn říká *nepsat / updatovat existující*, vyřeš řádek podle něj (např. UPDATE `geo-optimalizace.mdx` + bump `updated:`), ne slepě nový článek. Když řádek vyústí v „nepsat", nastav `E` smysluplně a přejdi na další volný.
   >
   > **Když přednost vznikne**, zapíše se sem jako samostatný odstavec s datem. Po splnění se odsud **maže** — historie zůstane v `blogger/PRIORITA_<datum>.md`. (Dvě splněné přednosti z 26. 8. a 2. 9. 2026 odsud odstraněny 15. 9. 2026.)
-- **B2 — Hloubkový research tématu:** cílený `WebSearch` na vybrané téma (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na **Marketing Miner** (přesná hledanost, long-tail, sezónnost, rising queries pro FAQ).
+- **B2 — Hloubkový research tématu:** cílený `WebSearch` na vybrané téma (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na **Marketing Miner** (přesná hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
 - **B3 — Uložení podkladů:** kurátorovaný záznam runu ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, highlighty z Trends, poznámky o konkurenci, zdroje) — commituje se jako stopa rozhodnutí. **Hrubé dumpy z Marketing Mineru** (kandidátní CSV, JSON) nech v `output/` skillu, do repa nedávej. Složka `blogger/research/` je mimo `src/` a `public/` → nedeployuje se.
 
 ---
@@ -137,6 +137,25 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
     **Formát H2 je závazný pro celý web.** Každý H2 nese `<span class="hl">klíčový pojem</span>` **i** `<strong>pointu</strong>` a prostý text mezi tím; H3 zůstávají prostý text. Plné znění v `CLAUDE.md` § VI, vzory nahoře v `ARTICLE_TEMPLATE.md`. Stav k 16. 9. 2026: sekce a pilíř 100 %, **blog jen 142 z 1 359 H2** — u nových článků to drž od začátku, retrofit starých je jiná práce.
 
 - Tělo: `answer` (40–60 slov, sebestačná) → lead → 3–6 H2 sekcí (fakta z B2) → **FAQ** (z rising queries / „people also ask") → CTA na konkrétní produkt (tutorial/defensive → Pack nebo Free PDF; analysis/case-study → Audit).
+
+  **Když Trends mlčí — FAQ stojí na stupňovaném zdroji, ne na jednom.** Rising queries
+  jsou u úzkých českých témat běžně prázdné. Změřeno 17. 9. 2026: `geo optimalizace`,
+  `aeo optimalizace` i `llms txt` vrátily **0 rising queries**. Google Suggest to
+  zachrání jen někdy — `llms txt` dal 10 návrhů, `geo optimalizace` vrátil jen sám
+  sebe a `aeo optimalizace` nic. Ber první neprázdnou vrstvu:
+  1. **Rising queries** z Trends (po filtru na šum, viz A2).
+  2. **Google Suggest** (`--enrich suggest`) a „people also ask" v SERP.
+  3. **FAQ konkurence** na stejné téma.
+  4. **Doložené praktické problémy** — co se reálně řešilo v zakázkách, v měřeních
+     nebo v předchozích článcích. Tahle vrstva nezávisí na žádném nástroji a u
+     nejužších témat bývá jediná dostupná.
+
+  **Prázdná data nejsou nulový zájem.** Znamenají, že to nástroj neměří — u českých
+  odborných spojení je to normální stav, ne signál o tématu. Nedělej z toho závěr a
+  nevyhazuj kvůli tomu řádek z plánu.
+
+  **U každé otázky si poznač, odkud je** (Trends / Suggest / SERP / konkurence / praxe)
+  a zapiš to do podkladů runu. Bez toho nejde poznat, jestli FAQ stojí na datech, nebo na dojmu.
   - Brand voice + zakázaný slovník dle `marketing/05-messaging-a-tonalita.md`.
   - **Vazba na aktuální rok:** kde to dává smysl, ukotvi titulek / obsah / `keywords` na aktuální rok (např. „…2026"); aktuální rok zjisti z dnešního data. Při aktualizaci staršího článku bumpni rok i `updated:`.
   - **Design komponenty rovnou tady, ne až v bloku D** (změna z 15. 9. 2026): rozbij text komponentami podle `docs/section-page-standard.md` — postup a výčet v **D1**. Důvod: při převodu odstavce do tabulky nebo kroků se ztrácejí výhrady („podle dokumentace", „většinou"), které se do buňky nevejdou. **Auditor musí vidět text v podobě, která půjde ven**, ne polotovar.
