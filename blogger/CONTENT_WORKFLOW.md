@@ -188,7 +188,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   1. **Mechanický průchod** — cíl je **0 nálezů** (⛔ i ⚠️). Nejčastější vada celého korpusu: česká uvozovka `„` zavřená rovnou `"`.
   2. **LLM průchod** — článek + celý slovník na gpt-5.4 se zadáním z `SKILL.md` (obsahuje i výčet toho, **co vadou není** — zavedená oborová mluva, zdomácnělé latinismy, běžná česká odborná spojení, názvy nástrojů a metrik).
   3. **Kontrola kontextu u každé náhrady** — pád, číslo, rod, význam v tomhle textu. Slovník navrhuje slovo, ne tvar.
-  4. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do ``blogger/JAZYK_AUDIT_LOG.md`` u **každého** nálezu. Do ``blogger/JAZYK_SLOVNIK.md`` ale přidej regex jen tehdy, projde-li testem:
+  4. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do `blogger/JAZYK_AUDIT_LOG.md` u **každého** nálezu. Do `blogger/JAZYK_SLOVNIK.md` ale přidej regex jen tehdy, projde-li testem:
 
      > Poznám tu vadu spolehlivě **bez toho, abych rozuměl zbytku věty**?
 

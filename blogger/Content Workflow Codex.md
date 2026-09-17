@@ -259,7 +259,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 
 1. **Cíl je 0 nálezů** (⛔ i ⚠️). Nejčastější vada korpusu: česká uvozovka `„` zavřená rovnou `"`.
 2. **Kontrola kontextu u každé náhrady** — pád, číslo, rod, význam v tomhle textu. Slovník navrhuje slovo, ne tvar.
-3. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do ``JAZYK_AUDIT_LOG.md`` u **každého** nálezu. Do ``JAZYK_SLOVNIK.md`` ale přidej regex jen tehdy, projde-li testem:
+3. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do `JAZYK_AUDIT_LOG.md` u **každého** nálezu. Do `JAZYK_SLOVNIK.md` ale přidej regex jen tehdy, projde-li testem:
 
      > Poznám tu vadu spolehlivě **bez toho, abych rozuměl zbytku věty**?
 
