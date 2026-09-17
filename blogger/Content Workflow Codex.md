@@ -154,6 +154,14 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   > doložený univerzální počet slov* není totéž jako *na délce nezáleží*. Tahle záměna
   > je nejčastější vada zděděná z plánu.
 - **B2 — Hloubkový research tématu:** cílený web search (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na Marketing Mineru (hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
+  > **Navazující článek z plánu je kandidát na odkaz, ne povinný odkaz.** Než na něj
+  > odkážeš, **otevři ho a přečti**. Když v něm najdeš nedoložené tvrzení, **odkaz
+  > vynech** — interní odkaz je doporučení a nemá vést na text, který bys sám nenapsal.
+  > Nález zapiš do tabulky „Otevřené kandidáty" v `REFRESH_QUEUE.md` a **článek neopravuj**;
+  > refreshe dělá jiný nástroj. Vzor: 17. 9. 2026 měl nový text o délce obsahu odkazovat
+  > na `aktualizace-obsahu-pro-ai`, ten má ale v dlaždicích intervaly „30–90 dní" se
+  > zdrojem uvedeným jen jako „analýzy". Odkaz vypuštěn, nález předán.
+
 - **B3 — Uložení podkladů:** kurátorovaný záznam ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, Trends, poznámky o konkurenci, **zdroje s URL**). Hrubé dumpy do repa nedávej. Složka `research/` je mimo `src/` a `public/`, nedeployuje se.
 
   > **U tvrzení o cizí platformě ulož do `research.md` přehled podmínek.** Shrnutí
@@ -353,6 +361,8 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
     - `blogger/JAZYK_AUDIT_LOG.md` — řádek z C6, přidává se **vždy**
     - `blogger/JAZYK_SLOVNIK.md` — jen když v C6 vzniklo nové pravidlo
     - `blogger/obsahovy-plan.csv` — uzávěr z D4 (může jít i samostatným commitem)
+    - `blogger/REFRESH_QUEUE.md` — **jen zápis nálezu** do tabulky „Otevřené kandidáty".
+      Refresh existujícího článku neděláš, ale nález o něm zapsat smíš a máš.
 
     Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` → `git push origin main` → CI ~1–2 min

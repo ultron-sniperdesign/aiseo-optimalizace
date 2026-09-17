@@ -147,6 +147,14 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   >
   > **Když přednost vznikne**, zapíše se sem jako samostatný odstavec s datem. Po splnění se odsud **maže** — historie zůstane v `blogger/PRIORITA_<datum>.md`. (Dvě splněné přednosti z 26. 8. a 2. 9. 2026 odsud odstraněny 15. 9. 2026.)
 - **B2 — Hloubkový research tématu:** cílený `WebSearch` na vybrané téma (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na **Marketing Miner** (přesná hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
+  > **Navazující článek z plánu je kandidát na odkaz, ne povinný odkaz.** Než na něj
+  > odkážeš, **otevři ho a přečti**. Když v něm najdeš nedoložené tvrzení, **odkaz
+  > vynech** — interní odkaz je doporučení a nemá vést na text, který bys sám nenapsal.
+  > Nález zapiš do tabulky „Otevřené kandidáty" v `REFRESH_QUEUE.md` a **článek neopravuj**;
+  > refreshe dělá jiný nástroj. Vzor: 17. 9. 2026 měl nový text o délce obsahu odkazovat
+  > na `aktualizace-obsahu-pro-ai`, ten má ale v dlaždicích intervaly „30–90 dní" se
+  > zdrojem uvedeným jen jako „analýzy". Odkaz vypuštěn, nález předán.
+
 - **B3 — Uložení podkladů:** kurátorovaný záznam runu ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, highlighty z Trends, poznámky o konkurenci, zdroje) — commituje se jako stopa rozhodnutí. **Hrubé dumpy z Marketing Mineru** (kandidátní CSV, JSON) nech v `output/` skillu, do repa nedávej. Složka `blogger/research/` je mimo `src/` a `public/` → nedeployuje se.
 
   > **U tvrzení o cizí platformě ulož do `research.md` přehled podmínek.** Shrnutí
