@@ -419,6 +419,14 @@ export const faqHead = {
   titleHtml: "Na co se <strong>nejčastěji ptáte</strong>",
 };
 
+/**
+ * FAQ. Drží se **tématu služeb a AI vyhledávání** (pokyn uživatele 17. 9. 2026,
+ * stejné pravidlo jako na `/audit/`): nová otázka sem patří, jen když odpovídá
+ * na něco o nabídce nebo o vyhledávání v AI. Administrativa — fakturace, storno,
+ * kontaktní údaje — patří k formuláři, do závěrečného CTA a na `/kontakt/`,
+ * ne sem. Otázka „kdo službu poskytuje“ zůstává: nese doložitelná fakta
+ * (CPU s.r.o., od 2016, Zlatý partner obou platforem), na která se AI ptají.
+ */
 export const faq = [
   {
     q: "Co je AI SEO a proč o něm přemýšlet?",
@@ -430,7 +438,7 @@ export const faq = [
   },
   {
     q: "Kdo je poskytovatelem služeb — jaká agentura za nimi stojí?",
-    a: "Služby poskytuje **Sniper Design** (právně CPU s.r.o., Praha) — česká AI SEO agentura specializovaná na e-shopy. Od roku 2016 má za sebou 600+ klientů a je [Zlatým partnerem Upgates](https://marketplace.upgates.cz/agencies/sniper-design/) i [Zlatým partnerem Shoptetu](https://partneri.shoptet.cz/profesionalove/sniper-design/). Všechny postupy měří na vlastním e-shopu MEGA DETAIL — včetně [200 000 zobrazení v AI odpovědích Googlu za necelé dva měsíce](/blog/case-study-megadetail-ai-navstevnost/). Fakturační údaje najdete na stránce [Kontakt](/kontakt/).",
+    a: "Služby poskytuje **Sniper Design** (právně CPU s.r.o., Praha) — česká AI SEO agentura specializovaná na e-shopy. Od roku 2016 má za sebou 600+ klientů a je [Zlatým partnerem Upgates](https://marketplace.upgates.cz/agencies/sniper-design/) i [Zlatým partnerem Shoptetu](https://partneri.shoptet.cz/profesionalove/sniper-design/). Všechny postupy měří na vlastním e-shopu MEGA DETAIL — včetně [200 000 zobrazení v AI odpovědích Googlu za necelé dva měsíce](/blog/case-study-megadetail-ai-navstevnost/).",
   },
   {
     q: "Jak rychle se výsledky projeví?",

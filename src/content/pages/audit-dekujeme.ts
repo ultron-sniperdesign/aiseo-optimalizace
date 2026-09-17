@@ -74,7 +74,7 @@ export const packHead: SectionHead = {
 export const packCard = {
   pill: "Pack &middot; 1 490 Kč jednorázově",
   title: "AI&nbsp;SEO Wireframe Pack &mdash; kompletní framework pro celý web",
-  body: "Sedm typů stránek (homepage, produkt, kategorie, blog článek + výpis, prodejní landing, kontakt), šablony textů ke&nbsp;kopírování, ukázky strukturovaných dat a&nbsp;krok-za-krokem návod aplikace. Aplikujete na&nbsp;svůj web během odpoledne.",
+  body: "Sedm typů stránek (homepage, produkt, kategorie, blogový článek, výpis blogu, prodejní landing, kontakt), šablony textů ke&nbsp;kopírování, ukázky strukturovaných dat a&nbsp;krok-za-krokem návod aplikace. Aplikujete na&nbsp;svůj web během odpoledne.",
   ctaLabel: "Zobrazit Pack &rarr;",
   ctaHref: "/pack/",
 };

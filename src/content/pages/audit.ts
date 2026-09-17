@@ -416,7 +416,7 @@ export const compare = [
     price: "1&nbsp;490&nbsp;Kč &middot; jednorázově",
     items: [
       "Máte čas si&nbsp;doporučení sami vyhodnotit a&nbsp;převést do&nbsp;praxe",
-      "Chcete obecný recept pro 8&nbsp;typů stránek (homepage, produkt, kategorie, blogový článek, výpis blogu, prodejní landing, kontakt, aplikace)",
+      "Chcete obecný recept pro 7&nbsp;typů stránek (homepage, produkt, kategorie, blogový článek, výpis blogu, prodejní landing, kontakt) plus kapitolu, jak ho aplikovat",
       "Hodí se i&nbsp;agenturám a&nbsp;copywriterům pro klientské weby",
       "Vhodné jako pracovní podklad pro vlastní úpravy nebo zadání pro tým",
       "Master PDF 85&nbsp;stran + 9&nbsp;jednotlivých kapitol",

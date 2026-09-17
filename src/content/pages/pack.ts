@@ -62,7 +62,17 @@ export const productJsonLd = {
 
 /** FAQPage JSON-LD — SINGLE SOURCE pro HTML FAQ i structured data (6 položek). */
 /** FAQ — jediný zdroj; viditelný text i FAQPage JSON-LD z něj skládá komponenta Faq. */
+/**
+ * FAQ. Drží se **tématu produktu a AI vyhledávání** (pokyn uživatele 17. 9. 2026,
+ * stejné pravidlo jako na `/audit/`). Prošlo 17. 9. bez škrtů: vrácení peněz
+ * u digitálního produktu není předpoklad, ale skutečná otázka před koupí, a zbytek
+ * se ptá na obsah Packu. Administrativa typu „komu platím“ sem nepatří.
+ */
 export const faq: FaqItem[] = [
+  {
+    q: "Zaručí Pack, že mě ChatGPT začne citovat?",
+    a: "Ne — takovou záruku nemůže dát nikdo. Pack řeší tu část, kterou máte pod kontrolou: strukturu stránky, krátké odpovědi, fakta místo frází a strukturovaná data. Tedy důvody, proč vás AI citovat **může**. Jestli vás skutečně cituje, rozhoduje navíc autorita webu, [zmínky mimo vlastní doménu](/blog/ai-brand-mentions/) a konkurence ve vašem oboru. Pack je nutný základ, ne vypínač.",
+  },
   {
     q: "Co konkrétně Pack obsahuje?",
     a: "Sedm typů stránek (homepage, produkt, kategorie, blog článek, blog výpis, prodejní landing, kontakt) — pro každou anotovaný wireframe, šablony textů a ukázky strukturovaných dat (pro produkt, časté dotazy, článek, místní firmu). Plus krok-za-krokem návod, jak to aplikovat na váš web. Vše v jednom master PDF (85 stran).",
@@ -238,7 +248,7 @@ export const structureHead: SectionHead = {
   eyebrowNum: "03",
   eyebrow: "Co je uvnitř jedné stránky",
   title: "Ukázka struktury — <strong>produktová stránka v Packu</strong>",
-  lead: "Každý z 8 typů stránek obsahuje wireframe, anotace, šablonu textů a ukázku strukturovaných dat. Tady je, jak se to skládá u produktové stránky:",
+  lead: "Každý ze sedmi typů stránek obsahuje wireframe, anotace, šablonu textů a ukázku strukturovaných dat. Tady je, jak se to skládá u produktové stránky:",
 };
 
 export const sampleSteps = [
@@ -270,7 +280,7 @@ export const sampleSteps = [
 ];
 
 export const sampleNote =
-  "Stejný princip drží pro všech 8 typů stránek — homepage, produkt, kategorii, blog článek, blog výpis, prodejní landing, kontakt i aplikaci.";
+  "Stejný princip drží pro všech sedm typů stránek — homepage, produkt, kategorii, blog článek, blog výpis, prodejní landing i kontakt. Osmá kapitola pak řeší, jak to celé nasadit.";
 
 /** Sekce 04 — Co dostanete po koupi. */
 export const deliverablesHead: SectionHead = {
@@ -379,7 +389,7 @@ export const decision = {
     {
       need: "Aplikovat rámec na&nbsp;<strong>celý web</strong> sám nebo s&nbsp;týmem",
       choice:
-        "<strong>AI&nbsp;SEO Wireframe Pack</strong> &mdash; 8 typů stránek, 85 stran PDF",
+        "<strong>AI&nbsp;SEO Wireframe Pack</strong> &mdash; 7 typů stránek, 85 stran PDF",
       price: "<strong>1&nbsp;490&nbsp;Kč</strong>",
       featured: true,
     },
