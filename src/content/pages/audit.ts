@@ -126,7 +126,7 @@ export const heroForm = {
     'Souhlasím se&nbsp;<a href="/gdpr/">zpracováním osobních údajů</a> za&nbsp;účelem zpracování této poptávky.',
   submitLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   legal:
-    "Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu za&nbsp;3&nbsp;600&nbsp;Kč bez DPH</strong>. Do&nbsp;jednoho pracovního dne potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme. Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady. Údaje použijeme pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash; bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových e&#8209;mailů.",
+    "Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu za&nbsp;3&nbsp;600&nbsp;Kč bez DPH</strong>. Do&nbsp;jednoho pracovního dne potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme. Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady. <strong>Do&nbsp;potvrzení rozsahu a&nbsp;vystavení faktury můžete objednávku bez&nbsp;problémů zrušit</strong>; po&nbsp;zahájení auditu jde o&nbsp;službu na&nbsp;míru a&nbsp;storno řešíme podle rozpracovanosti. Údaje použijeme pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash; bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových e&#8209;mailů.",
 };
 
 /**
@@ -452,10 +452,23 @@ export const faqHead: SectionHead = {
   title: "Než si <strong>objednáte audit</strong>",
 };
 
+/**
+ * FAQ. Jeden zdroj pro viditelný text i FAQPage JSON-LD (komponenta Faq).
+ *
+ * Drží se **tématu auditu a AI vyhledávání** (pokyn uživatele 17. 9. 2026).
+ * Do té doby tu bylo 15 otázek a šest z nich byla administrativa nebo obsah,
+ * který stránka říká jinde a líp: „Komu platím a dostanu fakturu“ (předpoklad;
+ * IČO a plátce DPH stojí pod hero i pod formulářem), „Jak dlouho audit trvá“
+ * a „Co konkrétně dostanu“ (celá sekce „Jak audit probíhá“ a výčet výstupu),
+ * „Co když nemám Pack“ (srovnávací sekce přímo nad FAQ), „Mohu objednávku
+ * zrušit“ (přesunuto do právní věty u formuláře) a „Můžu se zeptat předem“
+ * (kontakt i hodiny jsou ve finálním CTA). **Nová otázka sem patří jen tehdy,
+ * když odpovídá na něco o auditu nebo o vyhledávání v AI.**
+ */
 export const faq: FaqItem[] = [
   {
     q: "Je to klasický SEO audit?",
-    a: "Ne. Klasický SEO audit řeší pozice ve výsledcích Googlu — klíčová slova, prokliky, zpětné odkazy. Audit AI viditelnosti řeší, jestli vás najdou, pochopí a doporučí ChatGPT, Perplexity, Přehled od AI a režim AI. Techniku kontrolujeme také, protože co je rozbité pro Google, obvykle nefunguje ani pro AI — ale hledáme jiné věci a výstup vede jinam. Rozdíl rozebírá [srovnání obou auditů](/blog/ai-seo-audit/) a [co kontroluje klasický SEO audit](/blog/seo-audit-co-kontrolovat/).",
+    a: "Ne. Klasický SEO audit řeší pozice ve výsledcích Googlu — klíčová slova, prokliky, zpětné odkazy. Audit AI viditelnosti řeší, jestli vás najdou, pochopí a doporučí ChatGPT, Perplexity, Přehled od AI a režim AI. Techniku kontrolujeme také, protože co je rozbité pro Google, obvykle nefunguje ani pro AI — ale hledáme jiné věci a výstup vede jinam. Rozdíl rozebírá [průvodce auditem pro AI vyhledávání](/blog/ai-seo-audit/) a [co kontroluje klasický SEO audit](/blog/seo-audit-co-kontrolovat/).",
   },
   {
     q: "Je to SEO audit dělaný pomocí AI?",
@@ -470,48 +483,36 @@ export const faq: FaqItem[] = [
     a: "Ano, jsou to nejčastější zadání. Jsme Zlatý partner obou platforem, takže doporučení rovnou rozdělíme na to, co jde nastavit v administraci, co potřebuje zásah do šablony a co se na dané platformě nedá. Co je na nich jinak, shrnuje [článek o AI SEO na Upgates a Shoptetu](/blog/ai-seo-upgates-shoptet/) a [série pro e-shopy](/serie/ai-seo-pro-eshopy/).",
   },
   {
+    q: "Zahrnuje audit i Seznam Asistenta?",
+    a: "Ano, v rozsahu, který dává smysl pro český trh. Kontrolujeme, jestli web pouští robota [Seznam-Extended](/blog/seznam-asistent-sellma/) — bez něj Seznam přes svoje AI přestane posílat návštěvníky — a jestli sedí firemní údaje na [Firmy.cz](/blog/firmy-cz-pro-ai/), odkud Asistent čerpá. Viditelnost v něm testujeme ručně na vzorku dotazů, automatické měření pro něj zatím neexistuje.",
+  },
+  {
     q: "Jaký je rozdíl mezi auditem a monitoringem AI viditelnosti?",
     a: "Audit je jednorázový snímek a plán: kde stojíte dnes a co s tím. [Monitoring](/sluzby/monitoring-ai/) je měsíční služba, která sleduje, jak se čísla vyvíjejí, a porovnává vás s konkurencí. Dává smysl až potom, co jsou úpravy z auditu nasazené — jinak měříte stav, se kterým nic neděláte.",
   },
   {
-    q: "Jak dlouho audit trvá?",
-    a: "Výstup **do 5 pracovních dní od úhrady**. Po vyplnění formuláře se ozveme **do jednoho pracovního dne** s upřesněním rozsahu a fakturou.",
+    q: "Uvidím v Search Console, jestli se AI viditelnost zlepšila?",
+    a: "Částečně. Search Console má od 31. 8. 2026 pro všechny weby report **Funkce s generativní AI**, který ukazuje, jak často se vaše stránky objevily v Přehledu od AI a v režimu AI. Dává ale **jen zobrazení** — žádné kliky, dotazy ani pozice, a Přehled od AI od režimu AI neoddělí. Je to signál výskytu, ne návštěvnost. Zmínky v ChatGPT nebo Perplexity v něm nejsou vůbec. Co report umí a co ne, rozebírá [článek o měření v Search Console a GA4](/blog/gsc-ai-segmenty-mereni/).",
   },
   {
-    q: "Co konkrétně dostanu jako výstup?",
-    a: "Audit dokument (PDF, Notion nebo Google Doc podle preference) se čtyřmi vrstvami analýzy, **prioritní seznam úprav** s odhadem dopadu a náročnosti, 30denní akční plán a **meeting 30–60 minut** s naším týmem.",
-  },
-  {
-    q: "Proč stojí audit jen 3 600 Kč?",
-    a: "Protože nechceme, aby cena byla důvod, proč web zůstane nepřipravený. Je to jedna z nejnižších pevných cen mezi nabídkami, které jsme na českém webu veřejně našli (stav 5. 9. 2026) — běžně se za audit viditelnosti v AI platí 10 000 až 20 000 Kč. Vyděláváme na navazujících úpravách, ne na auditu. Jak vypadají ceny na trhu, rozebírá [Kolik stojí AI SEO](/blog/kolik-stoji-ai-seo/).",
-  },
-  {
-    q: "Komu platím a dostanu fakturu?",
-    a: "Platíte **CPU s.r.o.** (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena **3 600 Kč bez DPH** (s DPH 4 356 Kč).",
-  },
-  {
-    q: "Co audit nezahrnuje?",
-    a: "Audit je **samostatný akční plán** — obsahuje analýzu, prioritizaci a meeting. **Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy.** Nejste vázaní na naši realizaci.",
-  },
-  {
-    q: "Mohu objednávku zrušit?",
-    a: "Ano, **do potvrzení rozsahu a vystavení faktury** bez problémů. Jakmile je rozsah potvrzený a audit zahájený, jde o službu připravovanou na míru a storno řešíme individuálně podle rozpracovanosti.",
+    q: "Jak často má smysl audit zopakovat?",
+    a: "Zhruba **jednou za čtvrtletí**, pokud AI viditelnost aktivně řešíte. Prostředí se mění rychle: přibývají noví roboti, platformy mění pravidla i způsob citování a konkurence mezitím obsazuje témata. Roční rytmus, na který jsme zvyklí z klasického SEO, je tady krátký. Mezi audity dává smysl spíš [průběžné měření](/sluzby/monitoring-ai/) než další plná kontrola.",
   },
   {
     q: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
     a: "Ano, pokud chcete **nezávislý pohled** na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Co od agentury v téhle oblasti čekat, shrnuje [článek o službách AI SEO agentury](/blog/ai-seo-agentura-sluzby/).",
   },
   {
+    q: "Co audit nezahrnuje?",
+    a: "Audit je **samostatný akční plán** — obsahuje analýzu, prioritizaci a meeting. **Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy.** Nejste vázaní na naši realizaci.",
+  },
+  {
     q: "Co když audit neodhalí zásadní problém?",
     a: "I to je užitečný výsledek. Získáte **potvrzení**, že technika, obsah a důvěryhodnost nejsou hlavní brzda, a doporučíme, kam zaměřit další úsilí. V praxi ale ve většině auditů nacházíme kombinaci technických, obsahových i důvěryhodnostních rezerv.",
   },
   {
-    q: "Co když nemám AI SEO Wireframe Pack?",
-    a: "Pack i audit jsou samostatné produkty. Pack je návod pro úpravy vlastními silami (1 490 Kč), audit je analýza vašeho webu s meetingem. **Audit můžete objednat samostatně** — Pack předem nepotřebujete.",
-  },
-  {
-    q: "Můžu se na něco zeptat předem?",
-    a: "Samozřejmě. Napište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz) nebo zavolejte [+420 775 181 634](tel:+420775181634) (Po–Pá 10–17). Pokud chcete situaci nezávazně probrat, ozvěte se přes [kontaktní formulář](/kontakt/).",
+    q: "Proč stojí audit jen 3 600 Kč?",
+    a: "Protože nechceme, aby cena byla důvod, proč web zůstane nepřipravený. Je to jedna z nejnižších pevných cen mezi nabídkami, které jsme na českém webu veřejně našli (stav 5. 9. 2026) — běžně se za audit viditelnosti v AI platí 10 000 až 20 000 Kč. Vyděláváme na navazujících úpravách, ne na auditu. Jak vypadají ceny na trhu, rozebírá [Kolik stojí AI SEO](/blog/kolik-stoji-ai-seo/).",
   },
 ];
 
@@ -522,7 +523,7 @@ export const finalCta = {
   btnLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   btnHref: "#objednat",
   trust:
-    'Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.',
+    'Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>. Chcete se nejdřív zeptat? Voláme Po&ndash;Pá&nbsp;10&ndash;17, nebo napište přes <a href="/kontakt/">kontaktní formulář</a>.',
 };
 
 /**
