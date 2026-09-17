@@ -1343,3 +1343,13 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 - Celkem před opravou: 7 hlášení, 4,8 / 1 000 slov; z toho 2 technické výjimky.
 - Finální mechanický průchod: 0 nálezů. Nová pravidla: 2 úzké vazby, 1 aktualizovaná výjimka. Kontextové opravy se nezobecňují na zákaz slov.
 - Podrobnosti: research/jazykove-mutace-pro-ai/audit-jazyk.md a vyporadani.md.
+
+## Nový článek — 2026-09-17 — delka-obsahu-pro-ai
+
+- Původní text: 1 665 slov, 2 mechanická hlášení (1,2 / 1 000 slov), obě falešná; jazykový auditor 2 drobné nálezy (1,2 / 1 000 slov), oba opraveny. Celkem 4 hlášení, 2,4 / 1 000 slov, z toho 2 falešná.
+- M1 „pro jaký povrch je určený“: čistič působí na fyzický povrch; správná čeština. M2 „o nevhodném povrchu“: stejný význam, správná čeština. Slovník v69 → v70: původní plošný zákaz změněn na varování v digitálním kontextu vyhledávání. Vysvětlení je u pravidla; 3 negativní a 2 pozitivní příklady prošly. Záměr zákazu kalku zachován, běžné slovo se nezakazuje.
+- J1 „článek … má kde zkracovat“ → „… je co zkrátit“. Bez regexu: správnost závisí na podmětu.
+- J2 „Se samostatnou srozumitelností úseků“ → „Aby jednotlivé úseky dávaly smysl i samy o sobě“. Bez regexu: konkrétní významový vztah.
+- Po zapracování C2/C3: 1 695 slov, mechanická kontrola 0 včetně varování. Žádné nové plošné zákazy slov.
+- Podklady: research/delka-obsahu-pro-ai/audit-jazyk.md a vyporadani.md.
+- C5: dvě drobná zpřesnění (samostatná praktická odpověď v leadu, definice délky počtem slov) přijata. Obě závisejí na obsahu a významu, bez regexu. Finální C6: 1 698 slov, 0 nálezů.
