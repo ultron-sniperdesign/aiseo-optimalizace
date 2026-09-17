@@ -157,6 +157,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 - **B3 — Uložení podkladů:** kurátorovaný záznam runu ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, highlighty z Trends, poznámky o konkurenci, zdroje) — commituje se jako stopa rozhodnutí. **Hrubé dumpy z Marketing Mineru** (kandidátní CSV, JSON) nech v `output/` skillu, do repa nedávej. Složka `blogger/research/` je mimo `src/` a `public/` → nedeployuje se.
 
+  > **Když nástroj selže, zapiš to — nedopočítávej a nezamlčuj.** Do `research.md` patří
+  > jednotný řádek: **který nástroj · kolik pokusů · jaká chyba · která tvrzení proto
+  > nelze použít**. Příklad z 17. 9. 2026: *Google Trends — 2 pokusy, oba HTTP 429
+  > (rate limit); sezónnost a rising queries proto v článku netvrdíme.*
+  >
+  > Selhání nástroje **není důvod zastavit článek**, když téma unesou jiné zdroje. Je to
+  > ale důvod nepsat závěry, které se o chybějící data opíraly. **Nedostupná data nejsou
+  > nulová poptávka** — stejné pravidlo jako u prázdných rising queries v A2.
+
   > **U tvrzení o cizí platformě ulož do `research.md` přehled podmínek.** Shrnutí
   > dokumentace snadno zachytí hlavní podmínku a tiše zahodí vedlejší — a chybějící
   > podmínka z článku udělá nepravdu, i když je zbytek správně. Tabulka to drží
@@ -289,7 +298,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
     Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` (obrázek jde se článkem) → `git push origin main` → CI ~1–2 min
-  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); očima karta + hero (text obrázku se neusekne)
+  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); **na mobilu (375 px) projdi článek shora dolů a zkontroluj KAŽDÝ použitý typ bloku** — nic nesmí přetékat za okraj. Build ani obsahové audity přesah nechytí, pozná se jen okem. Když přeteče komponenta, ne tvůj text, **neobcházej to zkrácením obsahu** — zapiš nález do `cross-session/aiseo-optimalizace.md` pro vývojovou session (vzor: `SourceCard` a dlouhý `linkLabel`, 17. 9. 2026); očima karta + hero (text obrázku se neusekne)
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` u řádku nastav `Publikováno = ano` a `URL = https://aiseo-optimalizace.cz/blog/<slug>/`. Commituj (`Blog: obsahový plán — <slug> publikováno`).
 - **D5 — Report:** vlož URL nového článku do vlákna ke kontrole obsahu. Po netriviálním researchi krátký záznam do `cross-session/aiseo-optimalizace.md`.
 

@@ -164,6 +164,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 - **B3 — Uložení podkladů:** kurátorovaný záznam ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, Trends, poznámky o konkurenci, **zdroje s URL**). Hrubé dumpy do repa nedávej. Složka `research/` je mimo `src/` a `public/`, nedeployuje se.
 
+  > **Když nástroj selže, zapiš to — nedopočítávej a nezamlčuj.** Do `research.md` patří
+  > jednotný řádek: **který nástroj · kolik pokusů · jaká chyba · která tvrzení proto
+  > nelze použít**. Příklad z 17. 9. 2026: *Google Trends — 2 pokusy, oba HTTP 429
+  > (rate limit); sezónnost a rising queries proto v článku netvrdíme.*
+  >
+  > Selhání nástroje **není důvod zastavit článek**, když téma unesou jiné zdroje. Je to
+  > ale důvod nepsat závěry, které se o chybějící data opíraly. **Nedostupná data nejsou
+  > nulová poptávka** — stejné pravidlo jako u prázdných rising queries v A2.
+
   > **U tvrzení o cizí platformě ulož do `research.md` přehled podmínek.** Shrnutí
   > dokumentace snadno zachytí hlavní podmínku a tiše zahodí vedlejší — a chybějící
   > podmínka z článku udělá nepravdu, i když je zbytek správně. Tabulka to drží
@@ -366,7 +375,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 
     Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` → `git push origin main` → CI ~1–2 min
-  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); očima karta + hero
+  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); **na mobilu (375 px) projdi článek shora dolů a zkontroluj KAŽDÝ použitý typ bloku** — nic nesmí přetékat za okraj. Build ani obsahové audity přesah nechytí, pozná se jen okem. Když přeteče komponenta, ne tvůj text, **neobcházej to zkrácením obsahu** — zapiš nález do `cross-session/aiseo-optimalizace.md` pro vývojovou session (vzor: `SourceCard` a dlouhý `linkLabel`, 17. 9. 2026); očima karta + hero
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` nastav `Publikováno = ano` a `URL` **jen u právě publikovaného nového článku**. Přeskočené řádky neměň. Commituj.
 - **D5 — Report:** vlož URL nového článku do vlákna. Po netriviálním researchi krátký záznam do `cross-session/aiseo-optimalizace.md`.
 
