@@ -10,3 +10,4 @@
 - C5 tip 1 (drobný): přijato. Lead rovnou doporučuje určit rozsah podle potřebných informací, odstranit opakování a doplnit podmínky či důkazy.
 - C5 tip 2 (drobný): přijato. Answer nyní definuje délku jako počet slov, nikoli účel textu. Rozsah answer zůstává 40–60 slov.
 - Konečná C6 kontrola: 1 698 slov, 0 nálezů. Žádné zásadní nálezy, C5b se neuplatní.
+- Kontrola D5 odhalila změnu názvu služby z 16. 9. 2026: cross-session/aiseo-optimalizace.md a src/content/pages/audit.ts už používají „Audit AI viditelnosti“. Šablona a auditor-system stále „AI SEO audit“. Opraven pouze text CTA nového článku na „Objednejte Audit AI viditelnosti“, URL /audit/ zachována. Nejde o změnu nabídky ani slibu. Checker po opravě 0.

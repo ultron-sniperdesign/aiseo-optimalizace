@@ -38,3 +38,6 @@ Tři studie nejsou společný žebříček. Čísla připsat zdrojům a vzorkům
 - npm run build dokončen s exit0 po poslední úpravě. 5JSON-LD; sitemap a listing obsahují slug; všechny texty Stepper/Checklist se vykreslily, žádné prázdné stp__desc. Finálníúvod ianswer ověřeny vdist.
 - Pět externích zdrojů HTTP200; interní cíle existují vdist. Obsahová kontrola diff/secrets/injection podle security-review beználezu, žádné endpointy/skripty/přístupy přidány; regex bez vnořených opakování.
 - Lokální náhled na127.0.0.1:4330: desktop1280px a mobil375px, hero načtené, ořez a českýtext celé, mobil bez vodorovného přetékání. Karta článku ve výpisu a odkaz funkční.
+
+## Nasazení
+První obsahový commit f9134dc, GitHub Actions35170886942 success, veřejná URL HTTP200. Po ověření provedeno D4: pouze řádek112 E=ano,F=URL, ostatníbajty CSV zachovány. Následná redakční oprava názvu CTA podle skutečné nabídky /audit/: Audit AI viditelnosti (změna16.9.2026); starý název v šabloně/auditor-system nahlášen. Finální build s novým názvem exit0, jazykovýchecker0.

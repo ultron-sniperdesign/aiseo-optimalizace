@@ -1353,3 +1353,4 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 - Po zapracování C2/C3: 1 695 slov, mechanická kontrola 0 včetně varování. Žádné nové plošné zákazy slov.
 - Podklady: research/delka-obsahu-pro-ai/audit-jazyk.md a vyporadani.md.
 - C5: dvě drobná zpřesnění (samostatná praktická odpověď v leadu, definice délky počtem slov) přijata. Obě závisejí na obsahu a významu, bez regexu. Finální C6: 1 698 slov, 0 nálezů.
+- Závěrečná kontrola názvosloví: „Objednejte AI SEO audit“ → „Objednejte Audit AI viditelnosti“, podle aktuálního názvu služby v src/content/pages/audit.ts a projektového záznamu ze 16. 9. 2026. Bez regexu, produktové pojmenování; checker 0.
