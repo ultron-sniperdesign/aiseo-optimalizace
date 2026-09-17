@@ -25,7 +25,7 @@ import type {
 export const meta: PageMeta = {
   title: "Návod zdarma — Jak má vypadat homepage pro AI vyhledávání",
   description:
-    "Stáhněte si zdarma 6stránkový PDF průvodce s wireframem, anotacemi a třemi principy. Jak má homepage vypadat, aby ji našel Google, citoval ChatGPT a vytahoval Google AI Overviews. Výměnou za e-mail.",
+    "Stáhněte si zdarma 6stránkový PDF průvodce s wireframem, anotacemi a třemi principy. Jak má homepage vypadat, aby ji našel Google, citoval ChatGPT a vytáhl Přehled od AI. Výměnou za e-mail.",
   ogImage: "/og/navod-zdarma.jpg",
 };
 
@@ -58,14 +58,14 @@ export const featuresHead: SectionHead = {
   eyebrowNum: "01",
   eyebrow: "Co najdete v PDF",
   title:
-    "Postavte homepage tak, aby vás <strong>AI citovala, doporučovala a vytahovala do AI Overviews</strong>",
+    "Postavte homepage tak, aby vás <strong>AI citovala, doporučovala a vytahovala do Přehledu od AI</strong>",
 };
 
 export const features: NumberedFeature[] = [
   {
     num: 1,
     title: "Wireframe s 10 anotacemi",
-    desc: "Homepage, podle které okamžitě poznáte slabá místa svého webu. Každý prvek má vysvětlení, jaký signál pro Google, ChatGPT a AI Overviews generuje a proč na něm záleží.",
+    desc: "Homepage, podle které okamžitě poznáte slabá místa svého webu. Každý prvek má vysvětlení, jaký signál pro Google, ChatGPT a Přehled od AI generuje a proč na něm záleží.",
   },
   {
     num: 2,
@@ -155,30 +155,38 @@ export const faqHead: SectionHead = {
   title: "Než si stáhnete PDF, <strong>tady jsou odpovědi</strong>",
 };
 
+/**
+ * FAQ. Drží se **tématu návodu a AI vyhledávání** (pokyn uživatele 17. 9. 2026,
+ * stejné pravidlo jako na `/audit/`). Pryč šly 17. 9. dvě otázky — „Jak rychle
+ * dostanu PDF“ a „Můžu se kdykoli odhlásit z e-mailů“: obojí říká právní věta
+ * u formuláře (`emailCapture.legalHtml`) podrobněji a hlavně v místě, kde se
+ * člověk rozhoduje — včetně složky Hromadné, obsahu navazujících e-mailů
+ * a odhlášení jedním kliknutím. Administrativa sem nepatří.
+ */
 export const faq: FaqItem[] = [
   {
     q: "Co je v PDF a kolik to má stránek?",
-    a: "Šest stran: anotovaný wireframe homepage, tři principy SEO/GEO/AEO, mikro-case před/po a pět nejčastějších chyb. Praktický framework, ne teoretický ebook — pochopíte logiku za každým prvkem.",
+    a: "Šest stran: anotovaný wireframe homepage, tři principy SEO/GEO/AEO, ukázka před/po a pět nejčastějších chyb. Praktický rámec, ne teoretický ebook — pochopíte logiku za každým prvkem.",
+  },
+  {
+    q: "Proč zrovna homepage?",
+    a: "Protože z ní si AI skládá základní představu o tom, kdo jste a co nabízíte — a tu pak používá i u dotazů na konkrétní produkty nebo služby. Návod na ní ukazuje tři principy, které platí i na ostatních stránkách: jeden hlavní nadpis, který řekne, o čem web je, [krátkou odpověď](/slovnik/answer-block/) 40–60 slov hned pod úvodem a časté otázky se [strukturovanými daty](/blog/strukturovana-data-pro-ai/) na konci. Naučíte se je na homepage a přenesete na zbytek webu.",
   },
   {
     q: "Pro koho je návod určený?",
-    a: "Pro provozovatele webů a e-shopů, marketing/SEO specialisty, B2B agentury, copywritery, designéry a vývojáře, kteří chtějí, aby jejich homepage byla připravená nejen na klasický Google, ale i na AI vyhledávače jako ChatGPT, Perplexity nebo Google AI Overviews.",
-  },
-  {
-    q: "Jak rychle dostanu PDF po vyplnění e-mailu?",
-    a: "Okamžitě. Do několika sekund po odeslání formuláře vám pošleme e-mail s odkazem ke stažení. Pokud zprávu nevidíte, zkontrolujte složku Hromadné nebo Promo akce.",
+    a: "Pro provozovatele webů a e-shopů, marketéry a SEO specialisty, agentury, copywritery, designéry a vývojáře, kteří chtějí, aby jejich homepage byla připravená nejen na klasický Google, ale i na AI vyhledávání — ChatGPT, Perplexity a Přehled od AI.",
   },
   {
     q: "Funguje to i pro e-shop?",
-    a: "PDF je primárně pro homepage. E-shopaři ho využijí pro hlavní stránku a základní principy AI vyhledávání. Produktové a kategoriální stránky řeší až rozšířený Wireframe Pack za 1 490 Kč, kde je sedm typů stránek včetně produktové a kategoriální.",
+    a: "PDF je primárně pro homepage. E-shopaři z něj využijí hlavní stránku a základní principy AI vyhledávání. Produktové a kategoriální stránky řeší až [Wireframe Pack](/pack/) za 1 490 Kč, kde je sedm typů stránek včetně produktové a kategoriální.",
+  },
+  {
+    q: "Co návod nepokrývá?",
+    a: "Je to šest stran o homepage, ne kompletní metodika. Neřeší ostatní typy stránek ani technickou vrstvu — [přístup AI robotů](/blog/ai-crawler-robots-txt/), indexaci a rychlost — a neřeší měření. Ostatní typy stránek má [Wireframe Pack](/pack/), zbytek najdete zdarma na tomhle webu; kudy začít, ukáže [rozcestník](/zacnete-tady/).",
   },
   {
     q: "Co když chci, ať to za mě uděláte vy?",
-    a: "Sniper Design nabízí Audit AI viditelnosti za 3 600 Kč. Projdeme váš web ve čtyřech vrstvách (viditelnost v AI dnes, technika, obsah, důvěryhodnost), dáme vám prioritní seznam úprav a meeting 30–60 minut. Výstup do 5 pracovních dní od úhrady.",
-  },
-  {
-    q: "Můžu se kdykoli odhlásit z e-mailů?",
-    a: "Ano. Neposíláme denní newsletter. Po PDF dostanete několik navazujících e-mailů s praktickými tipy k AI SEO a občasnou nabídkou našich produktů / služeb. V každém e-mailu je odhlašovací odkaz — jedním kliknutím vás odstraníme z databáze.",
+    a: "Sniper Design nabízí [Audit AI viditelnosti](/audit/) za 3 600 Kč. Projdeme váš web ve čtyřech vrstvách (viditelnost v AI dnes, technika, obsah, důvěryhodnost), dáme vám prioritní seznam úprav a meeting 30–60 minut. Výstup do 5 pracovních dní od úhrady.",
   },
 ];
 

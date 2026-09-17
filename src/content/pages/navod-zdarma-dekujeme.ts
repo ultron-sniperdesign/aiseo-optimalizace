@@ -107,12 +107,12 @@ export const suggestedLinks: LinkItem[] = [
   {
     href: "/blog/aeo-optimalizace-v-praxi/",
     title: "AEO optimalizace v praxi",
-    desc: "Detailní průvodce, jak dostat web do Google AI Overviews a Featured Snippets — praktický postup ve 12 krocích.",
+    desc: "Detailní průvodce, jak dostat web do Přehledu od AI a mezi doporučené úryvky — praktický postup ve 12 krocích.",
   },
   {
     href: "/blog/geo-optimalizace/",
     title: "GEO optimalizace",
-    desc: "Jak připravit obsah, aby ho citovaly ChatGPT, Perplexity a Claude. Citation hooks, fact density, brand mentions.",
+    desc: "Jak připravit obsah, aby ho citovaly ChatGPT, Perplexity a Claude — citovatelné pasáže, hustota faktů a zmínky o značce mimo web.",
   },
 ];
 
