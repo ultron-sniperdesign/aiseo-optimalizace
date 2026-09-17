@@ -2,13 +2,13 @@
 title: "Měření SEO výkonu 2026: 8 metrik, KPI hierarchie a nástroje od GSC po AI citation tracking"
 seoTitle: "Měření SEO výkonu 2026: 8 metrik a čím je sledovat"
 description: "Co opravdu měřit u SEO v roce 2026 — pozice, návštěvnost, CTR, Core Web Vitals i podíl citací v AI. KPI hierarchie podle příjemce reportu a podle typu byznysu."
-answer: "Měření SEO výkonu v roce 2026 stojí na osmi metrikách rozdělených do čtyř vrstev: visibility (pozice, CTR z GSC), návštěvnost & engagement (relace a chování v GA4), zdraví webu (Core Web Vitals, indexace v GSC Pages reportu, backlinks v Ahrefs), AI výskyt (podíl citací v AI přes Otterly nebo Profound a od června 2026 report Přehled výkonu v generativní AI v Search Console). Priorita metrik se liší podle typu byznysu — lokální služba, B2B lead-gen, e-shop a vydavatel mají jiné P0/P1. Pro malou firmu stačí GSC + GA4 zdarma; placený stack přidávejte podle konkrétního use case."
+answer: "Měření SEO výkonu v roce 2026 stojí na osmi metrikách rozdělených do čtyř vrstev: visibility (pozice, CTR z GSC), návštěvnost & engagement (relace a chování v GA4), zdraví webu (Core Web Vitals, indexace v GSC Pages reportu, backlinks v Ahrefs), AI výskyt (podíl citací v AI přes Otterly nebo Profound a od června 2026 report Přehled výkonu v generativní AI v Search Console). Priorita metrik se liší podle typu byznysu — lokální služba, B2B se sběrem poptávek, e-shop a vydavatel mají jiné P0/P1. Pro malou firmu stačí GSC + GA4 zdarma; placený stack přidávejte podle konkrétního use case."
 slug: "mereni-seo-vykonu-2026"
 category: "tutorial"
 tags:
   - "mereni"
 published: "2026-05-03"
-updated: "2026-08-29"
+updated: "2026-09-17"
 variant: "rich"
 keywords:
   - "měření seo"
@@ -31,7 +31,7 @@ faq:
   - q: "Co je dobrý CTR v organickém vyhledávání?"
     a: "Závisí silně na pozici. Orientační benchmark (Backlinko 2025, US trh): pozice 1 = 28–30 % CTR, pozice 2 = 15–18 %, pozice 3 = 10–12 %, pozice 4–5 = 6–8 %, pozice 6–10 = 2–4 %. Pokud máte dlouhodobě výrazně nižší CTR, než je obvyklé pro srovnatelný typ dotazu a SERP layout, je vhodné prověřit snippet, intent fit a přítomnost SERP features (AI Overview, ads, map pack, video blok mohou CTR výrazně srazit, aniž by šlo o vaši chybu). Brandové dotazy mívají jinou dynamiku než non-brand. Pozici a CTR vždy hodnotit společně."
   - q: "Jak v Search Console poznám viditelnost v AI Overviews?"
-    a: "Jen částečně a nepřímo. V běžném reportu Výkon to nepoznáte vůbec: data z AI funkcí jsou podle dokumentace Googlu započtená v celkových číslech a žádný filtr na jejich oddělení neexistuje. Od 3. června 2026 existuje samostatný report Přehled výkonu v generativní AI, který ukazuje imprese, stránky, země, zařízení a datum — ale ne kliky, CTR ani dotazy, a AI Overviews od AI Mode neoddělí. Navíc se zpřístupňuje postupně, takže ho k srpnu 2026 nemá každý web."
+    a: "Jen částečně a nepřímo. V běžném reportu Výkon to nepoznáte vůbec: data z AI funkcí jsou podle dokumentace Googlu započtená v celkových číslech a žádný filtr na jejich oddělení neexistuje. Od 3. června 2026 existuje samostatný report Přehled výkonu v generativní AI, který ukazuje imprese, stránky, země, zařízení a datum — ale ne kliky, CTR ani dotazy, a AI Overviews od AI Mode neoddělí. Od 31. srpna 2026 ho podle nápovědy Googlu mají všechny weby po celém světě."
   - q: "Jak měřit podíl citací v AI v ChatGPT a Perplexity?"
     a: "Manuálně přes prompty se značkovým KW (např. 'doporuč mi seo agenturu v praze') a sledování, jestli jste citováni. Reliably ale jen přes specializované nástroje: Otterly AI ($29/měs Lite, $99/měs Pro) sleduje 50+ promptů, vrací podíl citací, sentiment, sources. Profound (enterprise, $500+) má hlubší tracking. Marketing Miner ($99/měs Machine plan) má sledování zmínek v AI pro český trh. Ceny jsou k květnu 2026. Klíčové: měřit podíl citací **vůči konkurenci**, ne absolutně."
   - q: "Co jsou Core Web Vitals a jak je měřit?"
@@ -222,9 +222,9 @@ Než půjdete do nástrojového stacku, projděte si, kde leží P0/P1 pro váš
 | Typ projektu | P0 (bez toho nezačnete) | P1 (přidat po 30 dnech) | P2 (jen když je use case) |
 |---|---|---|---|
 | **Lokální služba** | GBP Insights, GSC pozice na lokální KW, organické relace z GA4 | Local pack tracking, růst počtu recenzí, NAP konzistence | Brand Radar pro lokální zmínky o značce |
-| **B2B lead-gen / SaaS** | GSC top KW, organické relace, **konverze (demo, trial)**, top entry pages | Poměr brandových a nebrandových dotazů v GSC, engagement na hlavní prodejní stránky | podíl citací v AI — pokud cílovka používá AI při výběru |
+| **B2B se sběrem poptávek / SaaS** | GSC top KW, organické relace, **konverze (demo, trial)**, top entry pages | Poměr brandových a nebrandových dotazů v GSC, engagement na hlavní prodejní stránky | podíl citací v AI — pokud cílovka používá AI při výběru |
 | **E-shop / katalog** | GSC indexace, Core Web Vitals, organické relace, **revenue z organic v GA4** | Per-kategorie pozice, product schema validita, CTR podle SERP layoutu | AI citation pro kategorie s research fází sortimentu |
-| **Vydavatel / blog** | Organic relace, nejnavštěvovanější stránky, čerstvost obsahu, indexace | Engagement (scroll depth, time on page), podíl dotazů/stránka, CTR podle pozice | podíl citací v AI, viditelnost v AI funkcích Googlu (jen přes report Přehled výkonu v generativní AI, pokud ho máte) |
+| **Vydavatel / blog** | Organic relace, nejnavštěvovanější stránky, čerstvost obsahu, indexace | Engagement (scroll depth, time on page), podíl dotazů/stránka, CTR podle pozice | podíl citací v AI, viditelnost v AI funkcích Googlu (jen přes report Přehled výkonu v generativní AI) |
 
 ## <span class="hl">KPI hierarchie</span> — <strong>co reportovat komu</strong>
 
@@ -316,7 +316,7 @@ V roce 2026 přibývají k klasickému SEO measurementu tři vrstvy, které maj�
 
 
 1. **podíl citací v AI** — viz metrika #8. Důležitost roste, není ale pro každý byznys stejně relevantní.
-2. **Viditelnost v AI funkcích Googlu** — od **3. června 2026** má Search Console samostatný report **Přehled výkonu v generativní AI**. Ukazuje imprese, stránky, země, zařízení a datum; **kliky, CTR, pozici ani dotazy ne** a AI Overviews od AI Mode neoddělí. Zpřístupňuje se postupně, takže ho možná ještě nemáte. Detailně v článku o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/).
+2. **Viditelnost v AI funkcích Googlu** — od **3. června 2026** má Search Console samostatný report **Přehled výkonu v generativní AI**. Ukazuje imprese, stránky, země, zařízení a datum; **kliky, CTR, pozici ani dotazy ne** a AI Overviews od AI Mode neoddělí. Od 31. srpna 2026 ho podle nápovědy Googlu mají všechny weby po celém světě. Detailně v článku o [GSC AI reportu](/blog/gsc-ai-segmenty-mereni/).
 3. **Branded vs generic queries** — v ChatGPT / Perplexity uživatelé chodí spíš se značkově orientovanými dotazy („nejlepší seo agentura v praze“) než s generic („co je seo“). Sledujte poměr brandové vs. nebrandové dotazy v GSC i v AI tracking nástrojích — zvlášť u B2B SaaS a prémiových brandů, kde je rozhodovací cesta delší.
 
 <Insight tone="seo" icon="!" label="Strategická poznámka">
@@ -328,7 +328,7 @@ V roce 2026 přibývají k klasickému SEO measurementu tři vrstvy, které maj�
 Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud řešíte konkrétní pain point z měření a reportingu, [nabízíme tyto služby](/sluzby/):
 
 - **Pokud máte data, ale ne jasnou KPI hierarchii** — audit measurement frameworku, návrh KPI vrstev podle typu byznysu, odlišení dashboardu pro tým a reportu pro management
-- **Pokud reportujete SEO, ale vedení z něj nevidí obchodní dopad** — překlad SEO metrik do business outcomes (lead-gen, assisted conversions, nárůst vyhledávání značky), jasná hierarchie pro pohled pro vedení
+- **Pokud reportujete SEO, ale vedení z něj nevidí obchodní dopad** — překlad SEO metrik do business outcomes (sběr poptávek, asistované konverze, nárůst vyhledávání značky), jasná hierarchie pro pohled pro vedení
 - **Pokud chcete oddělit dashboard pro tým a report pro management** — architektura dvou pohledů: SEO pohled pro tým (denní operativa) + pohled pro vedení (kvartální business impact)
 - **Implementace** — Looker Studio dashboard nad GSC + GA4, automatizovaný měsíční reporting, alerty na anomálie
 

@@ -1425,3 +1425,18 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 - Jazykový auditor našel 33 kontextových nálezů; všech 33 bylo přijato. Šlo o význam answer, tři mluvnické vazby, vysvětlení technických podmínek, anglické kalky, referenty a srozumitelnost CTA. Žádný nový regex: všechny nálezy závisely na kontextu.
 - Faktický auditor našel 1 zásadní a 2 drobné nálezy; všechny byly opraveny. Po C4: 2 053 slov, mechanická kontrola 0 nálezů. Podrobnosti: `research/srovnani-s-konkurenci-v-ai/vyporadani.md`.
 - C5b: jediný zásadní nález F1 doověřen faktickým auditorem jako plně vyřešený. Závěrečný auditor nenašel nový doložitelný nález a vrátil verdikt PUBLIKOVAT; všech 36 předchozích nálezů bylo skutečně vypořádáno.
+
+## C6 při refreshi: dostupnost reportu v 10 článcích (17. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | Před: 9 souborů 0 nálezů, `mereni-seo-vykonu-2026` 3× ⛔ „lead-gen“ (pravidlo přidané po jeho poslední revizi). Po: **0 ve všech 10 souborech.** |
+| LLM (gpt-5.4, jen přepsané řádky) | 7 nálezů — **3 přijaty, 4 odmítnuty, 1 předán do fronty jako samostatné téma** |
+
+**Přijato:** `geo-vs-aeo` — „report zobrazení v generativních funkcích“ a „report generativních funkcí“ → oficiální název „report Přehled výkonu v generativní AI“ (dvě místa, konzistence s ostatním korpusem) · `mereni-ai-mode-limity` — elipsa „prostředí ale pořád nerozlišuje“ → „Přehled od AI a režim AI v něm ale pořád nejdou oddělit“.
+
+**Odmítnuto:** „ne kliky ani dotazy“ (spisovné, souměrnost věty není vada) · „stojí na osmi metrikách“ (běžná česká vazba) · „Zero-click“ (téma článku `zero-click-ai` a heslo slovníku — stejná logika jako výjimka „schema markup“ v `schema-markup-ai-citace-test`) · návrh pravidla `\bzero-?click\b` (rozbil by titulek i slug vlastního tématu).
+
+**Do fronty, ne do slovníku:** `\bstack\b`. Je to oprávněný nález, ale výraz nese **15 míst v `seo-nastroje-2026`** (včetně H2 a mezititulků „Stack 1–4“), H2 „Nástrojový stack“ v `mereni-seo-vykonu-2026` a dvě místa v pilíři; k tomu vlastní jména Stack Overflow a Stackmatix, která by potřebovala výjimku. Přepis je samostatný refresh, ne vedlejší úklid faktické opravy — zapsáno do `REFRESH_QUEUE.md`.
+
+**Poznámka k rozsahu:** LLM dostal jen přepsané řádky, takže část nálezů mířila na věty, které refresh nezměnil (jen je diff zobrazil celé). Tam platí pravidlo „refresh opravuje svoje pasáže, ne celý článek“.

@@ -167,29 +167,26 @@ obsah, duveryhodnost, eshopy, mereni, audit-nastroje).
 
 | Co | Hodnota |
 |---|---|
-| Článků v `src/content/articles/` | **166** |
-| Obsahový plán | **338 řádků, 145 volných** |
-| Složek v `blogger/research/` | 163 |
-| `JAZYK_SLOVNIK.md` | **v69** (poslední změna 15. 9. 2026) |
-| `REFRESH_QUEUE.md` | 33 datovaných řádků (fronta + otevření kandidáti) |
-| Poslední runy | `5d6c927` za-jak-dlouho-se-projevi-ai-seo · `9d94848` knowsabout-strukturovana-data · `a9e151e` hreflang a jazykové mutace (vše 15. 9. 2026) |
-| Kadence | Dva nové články hotové → **příští run je refresh** |
+| Článků v `src/content/articles/` | **172** |
+| Obsahový plán | **340 řádků, 141 volných** |
+| Složek v `blogger/research/` | 169 |
+| `JAZYK_SLOVNIK.md` | **v70** |
+| `REFRESH_QUEUE.md` | 37 datovaných řádků |
+| Poslední refresh | 17. 9. 2026 — dostupnost reportu Přehled výkonu v generativní AI v 10 článcích |
+| Kadence | Refresh odbavený → na řadě jsou **dva nové články** |
 
 **Otevřené k odbavení:**
 
 - **Přejmenování auditu do blogu** — starý název („AI SEO audit“, „SEO a AI audit“) je
   v **90 článcích, 125 výskytů** (měřeno 17. 9. 2026). Adresa `/blog/ai-seo-audit/` zůstává,
   mění se text. Je to editorská práce bloggera, ne skript.
-- Refresh kandidát č. 1: tvrzení „přehled výkonu v generativní AI nemá každý web“ v 9 článcích
-  (od 31. 8. 2026 ho mají všechny weby).
-- Další v REFRESH_QUEUE: časové odhady bez zdroje, tvrzení o konverzích z AI bez zdroje,
-  `person-data-pro-autora` (zbytek tvrzení o AI), 61 článků s `howto`.
-- **V `public/og/` je 98 verzovaných `.png`** z doby, kdy se commitovaly (pravidlo se změnilo
-  17. 9. 2026). Úklid nikdo nezadal — rozhodnout, jestli je smazat z repa.
-- **Neznámý soubor `blogger/Content Workflow Codex.md`** (17. 9. 2026, 02:53) — nevytvořil jsem ho
+- V `REFRESH_QUEUE.md`: časové odhady bez zdroje, tvrzení o konverzích z AI bez zdroje,
+  `person-data-pro-autora` (zbytek tvrzení o AI), 61 článků s `howto`, anglicismus „stack“
+  napříč korpusem, intervaly čerstvosti v `aktualizace-obsahu-pro-ai`.
+- **Neznámý soubor `blogger/Content Workflow Codex.md`** (17. 9. 2026) — nevytvořil jsem ho
   a nevím, jestli má nahradit `CONTENT_WORKFLOW.md`. Ověřit u uživatele, než se podle něj pojede.
-
----
+- **Souběh je reálný:** 17. 9. 2026 do `blogger/` a do článků commitovala i jiná session
+  (pravidlo o PNG, úpravy workflow, nové články). Před každým runem `git fetch` a `git log`.
 
 ## VIII — Pointery
 
