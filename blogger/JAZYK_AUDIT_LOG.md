@@ -1417,3 +1417,11 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 - F1 rozlišen `alternateName` u WebSite a Organization; F2 doplněny technické podmínky názvu webu; F3 doplněna přesná kritéria Firemního profilu; F4 rozlišeno přesměrování od 404/410; F5 doplněny podmínky nástroje Změna adresy; F6 zúžen výklad citací a zdrojů v AI odpovědích.
 - Slovník v70 beze změny. Podrobné vypořádání: `research/rebranding-a-ai/vyporadani.md`.
 - C5 doplnil dvě podmínky Firemního profilu, přesné použití Změny adresy, oddělení velkých změn webu a přímé odkazy na zdroje. Následná cílená kontrola opravila shodu `Organization.name` / `alternateName` s názvem webu a dva nedokončené obecné výskyty „homepage“ či „cizí zmínky“. Kontextové nálezy bez nového regexu; konečná mechanická kontrola: 1 848 slov, 0 nálezů.
+
+## Nový článek — 2026-09-17 — srovnani-s-konkurenci-v-ai
+
+- První verze: 1 962 slov, mechanická kontrola 0 nálezů při 275 pravidlech.
+- Cílený jazykový audit a vypořádání jsou v `research/srovnani-s-konkurenci-v-ai/`.
+- Jazykový auditor našel 33 kontextových nálezů; všech 33 bylo přijato. Šlo o význam answer, tři mluvnické vazby, vysvětlení technických podmínek, anglické kalky, referenty a srozumitelnost CTA. Žádný nový regex: všechny nálezy závisely na kontextu.
+- Faktický auditor našel 1 zásadní a 2 drobné nálezy; všechny byly opraveny. Po C4: 2 053 slov, mechanická kontrola 0 nálezů. Podrobnosti: `research/srovnani-s-konkurenci-v-ai/vyporadani.md`.
+- C5b: jediný zásadní nález F1 doověřen faktickým auditorem jako plně vyřešený. Závěrečný auditor nenašel nový doložitelný nález a vrátil verdikt PUBLIKOVAT; všech 36 předchozích nálezů bylo skutečně vypořádáno.
