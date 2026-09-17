@@ -28,7 +28,8 @@ Hodnoť v těchto osách:
 5) AKTUÁLNOST — obsah vázaný na rok uvedený v zadání. Žádné neukotvené „letos / příští
    rok"; data, trendy a příklady musí odpovídat tomuto roku.
 
-6) CTA — závěr směřuje na konkrétní produkt (Pack 1 490 Kč / Audit 3 600 Kč / Free PDF),
+6) CTA — závěr směřuje na konkrétní produkt (Pack 1 490 Kč / Audit AI viditelnosti 3 600 Kč / Free PDF;
+   kanonické názvy a ceny jsou v `src/content/pages/{pack,audit,navod-zdarma}.ts`),
    ne generické „kontaktujte nás".
 
 VÝSTUP (česky, strukturovaně):

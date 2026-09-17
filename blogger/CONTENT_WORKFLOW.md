@@ -162,7 +162,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   3. Sloupec C (Pokyny) u některých řádků nese starší značku `Kategorie: …` i s kontextem (např. „tutorial (+ howto schema)"). **Přednost má sloupec D**; značka v Pokynech je jen doplňující text.
     **Formát H2 je závazný pro celý web.** Každý H2 nese `<span class="hl">klíčový pojem</span>` **i** `<strong>pointu</strong>` a prostý text mezi tím; H3 zůstávají prostý text. Plné znění v `CLAUDE.md` § VI, vzory nahoře v `ARTICLE_TEMPLATE.md`. Stav k 16. 9. 2026: sekce a pilíř 100 %, **blog jen 142 z 1 359 H2** — u nových článků to drž od začátku, retrofit starých je jiná práce.
 
-- Tělo: `answer` (40–60 slov, sebestačná) → lead → 3–6 H2 sekcí (fakta z B2) → **FAQ** (z rising queries / „people also ask") → CTA na konkrétní produkt (tutorial/defensive → Pack nebo Free PDF; analysis/case-study → Audit).
+- Tělo: `answer` (40–60 slov, sebestačná) → lead → 3–6 H2 sekcí (fakta z B2) → **FAQ** (z rising queries / „people also ask") → CTA na konkrétní produkt (tutorial/defensive → Pack nebo Free PDF; analysis/case-study → Audit). **Název a cenu produktu přečti před psaním CTA v `src/content/pages/{pack,audit,navod-zdarma}.ts`** — je to jediný zdroj pravdy. Nabídky se přejmenovávají (audit 16. 9. 2026) a opsaný název z dokumentace znamená druhé nasazení.
 
   **Když Trends mlčí — FAQ stojí na stupňovaném zdroji, ne na jednom.** Rising queries
   jsou u úzkých českých témat běžně prázdné. Změřeno 17. 9. 2026: `geo optimalizace`,
@@ -229,7 +229,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 > Toto je marketingový a vzdělávací článek pro web **aiseo-optimalizace.cz** — edukativní web
 > o AI éře vyhledávání (SEO/GEO/AEO/AIO). Web informuje o tématu a zároveň nabízí ke koupi
-> **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **AI SEO audit** (3 600 Kč). Provozovatel:
+> **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **Audit AI viditelnosti** (3 600 Kč) — **aktuální znění vždy ověř v `src/content/pages/pack.ts` a `audit.ts`**, ne odsud. Provozovatel:
 > Sniper Design (Zlatý partner Upgates od 2016, vlastní e-shop MEGA DETAIL).
 > Auditor hodnotí: věcnou správnost, soulad s brand voice (žádný zakázaný žargon, žádný overclaim),
 > citovatelnost pro AI (answer block, hustota faktů, FAQ), SEO (titulek, description 70–160, struktura),

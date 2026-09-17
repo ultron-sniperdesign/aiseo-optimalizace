@@ -202,8 +202,15 @@ Krátký odstavec (3–5 vět) syntézy: **co si čtenář odnese**, ne shrnutí
 Pak jedno CTA relevantní pro kontext:
 
 - Tutorial / defensive → CTA na **Pack** (1 490 Kč): `[Stáhněte AI SEO Wireframe Pack](/pack/)`
-- Analysis / case-study → CTA na **Audit** (3 600 Kč): `[Objednejte AI SEO audit](/audit/)`
+- Analysis / case-study → CTA na **Audit**: `[<aktuální název z audit.ts>](/audit/)`
 - Defensive / široký pojem → CTA na **Free PDF**: `[Stáhněte návod zdarma](/navod-zdarma/)`
+
+> ⚠️ **Název a cenu produktu neopisuj odsud — vezmi je z datového modulu.** Tahle
+> tabulka určuje jen **kam** má CTA vést. Aktuální znění je v `src/content/pages/`:
+> `audit.ts`, `pack.ts`, `navod-zdarma.ts`. Přečti si ho **před psaním CTA**.
+>
+> Důvod: 16. 9. 2026 se audit přejmenoval z „AI SEO audit" na **„Audit AI viditelnosti"**
+> a zastaralý název přežil v šabloně. Článek se kvůli tomu nasazoval dvakrát.
 
 Žádné generické „kontaktujte nás" — vždy konkrétní produkt.
 
