@@ -64,7 +64,10 @@ komponentu, eskalace na admin session přes board.
 
 ## III — Kadence a výběr tématu
 
-- **2:1 od 21. 7. 2026:** po dvou nových článcích jeden refresh z `REFRESH_QUEUE.md`.
+- **Kadence 2 + 1 + 1 (od 17. 9. 2026):** nový článek · nový článek · **refresh jednoho článku** ·
+  **blok oprav** (jedna plošná vada napříč korpusem). Refresh není dávka článků a oprava není refresh —
+  rozhodnutí uživatele 17. 9. 2026, protože se to dřív mísilo a nebylo poznat, co run je.
+  Plošnou vadu nalezenou během jiného runu **zapiš do fronty a pokračuj**.
 - Nový článek = **první volný řádek** `obsahovy-plan.csv` (`Publikováno = ne`), pokud neplatí
   zapsaná přednost. **Vždy nejdřív číst sloupec C (Pokyny)** — bývá tam brzda („nepsat“,
   „updatovat existující“, kolize s jiným článkem) i seznam faktů k ověření.
@@ -172,8 +175,9 @@ obsah, duveryhodnost, eshopy, mereni, audit-nastroje).
 | Složek v `blogger/research/` | 169 |
 | `JAZYK_SLOVNIK.md` | **v70** |
 | `REFRESH_QUEUE.md` | 37 datovaných řádků |
-| Poslední refresh | 17. 9. 2026 — dostupnost reportu Přehled výkonu v generativní AI v 10 článcích |
-| Kadence | Refresh odbavený → na řadě jsou **dva nové články** |
+| Poslední blok oprav | 17. 9. 2026 — dostupnost reportu Přehled výkonu v generativní AI, 20 míst v 10 článcích |
+| Poslední refresh jednoho článku | zatím žádný podle nové definice (13. a 17. 9. byly plošné opravy) |
+| Kadence | Blok oprav odbavený → na řadě jsou **dva nové články**, pak refresh jednoho článku |
 
 **Otevřené k odbavení:**
 

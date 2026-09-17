@@ -118,7 +118,12 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
   Návěští `Data:` u nedoloženého tvrzení je past pro toho, kdo bude řádek zpracovávat —
   vezme ho jako hotové zadání a postaví na něm článek.
-- **A6 — Refresh kadence 2:1 (od 2026-07-21):** po každých **2 nových článcích** odbav **1 refresh** z `blogger/REFRESH_QUEUE.md` (postup i priority tam). Důvod: baseline citací ukázala, že AI Mode/ChatGPT citují čerstvý obsah — starší články padají z citací na freshness.
+- **A6 — Kadence 2 + 1 + 1 (od 17. 9. 2026, dřív 2:1):** cyklus má čtyři runy a jede pořád dokola:
+  **(1) nový článek · (2) nový článek · (3) refresh jednoho článku · (4) blok oprav.**
+  - **Refresh = právě jeden článek, do hloubky** — fakta, cílení krátké odpovědi a H2 na dotaz, CZ-ukotvení, odkazy, `updated` (postup níž v `REFRESH_QUEUE.md`). Ne dávka článků.
+  - **Blok oprav** = plošná faktická korekce jedné vady napříč korpusem (zastaralý stav funkce, číslo bez zdroje, vnitřní rozpor). Sem patří řádky fronty typu „tvrdí to 10 článků“. Oprava se drží jen té jedné vady, článek se jinak nevylepšuje.
+  - **Rozhodnutí uživatele 17. 9. 2026:** dřív se obojí mísilo do jednoho „refreshe“ (13. 9. 15 článků, 17. 9. 10 článků) a přestalo být poznat, co run vlastně je. Když při novém článku nebo refreshi najdeš plošnou vadu, **zapiš ji do fronty a pokračuj** — odbaví se ve svém runu.
+  - Důvod kadence: baseline citací ukázala, že AI Mode a ChatGPT citují čerstvý obsah — starší články padají z citací na freshness.
 
   > ⚠️ **Refreshe dělá výhradně tahle (Claude) větev** — rozhodnutí z 15. 9. 2026. Codexová varianta (`Content Workflow Codex.md`) je má vypnuté a píše jen nové články. Fronta v `REFRESH_QUEUE.md` tedy stojí a padá na tomhle bloku; když ho vynecháš, neodbaví ji nikdo jiný. K 15. 9. 2026 v ní čeká 57 položek.
 - **A7 — CZ-ukotvení (od 2026-07-21):** kde to dává smysl, ukotvi title/answer geograficky („v Česku", „pro český trh"). Z měření: ChatGPT u obecných dotazů cituje globální EN zdroje — český web se do citací dostane právě CZ-specifickou formulací.

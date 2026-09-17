@@ -5,10 +5,15 @@
 > Naše květnové/červnové články padají z citací na freshness — refresh je levnější
 > a rychlejší páka než nový obsah.
 >
-> **Kadence: po každých 2 nových článcích udělej 1 refresh z této fronty (2:1).**
-> Odbavené řádky označ ✅ + datum. Po vyprázdnění fronty se vracíme k ročnímu cyklu.
+> **Kadence od 17. 9. 2026: nový článek · nový článek · refresh · blok oprav.**
+> **Refresh = jeden článek do hloubky** (postup níž). **Blok oprav = jedna plošná vada napříč korpusem**
+> (zastaralý stav funkce, číslo bez zdroje, vnitřní rozpor) — řádky typu „tvrdí to 10 článků“ patří sem,
+> ne do refreshe. Odbavené řádky označ ✅ + datum. Po vyprázdnění fronty se vracíme k ročnímu cyklu.
 
 ## Jak refresh vypadá
+
+> Platí pro run typu **refresh** — jeden článek. Plošná oprava jedné vady ve víc článcích
+> je jiný typ runu: mění se jen dotčená pasáž a `updated`, body 2–4 se nedělají.
 
 1. Aktualizuj fakta a čísla (stav k datu refreshe), oprav zastaralá tvrzení.
 2. Zacil answer block a H2 přesně na frázi dotazu, kterou lidé pokládají AI (viz „cílový dotaz" u úkolu).
