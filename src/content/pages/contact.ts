@@ -258,30 +258,43 @@ export const paths = {
 };
 
 /** Sekce 04 — FAQ (scam-prevention pojistka). */
+/**
+ * FAQ. Drží se **tématu kontaktu a spolupráce** (pokyn uživatele 17. 9. 2026,
+ * stejné pravidlo jako na `/audit/`).
+ *
+ * Do 17. 9. tu stály čtyři otázky o **Packu** („Kdo Pack vytvořil“, „Komu platím
+ * a dostanu fakturu“, „Můžu se ozvat, když si nebudu vědět rady“, „Je Pack vhodný
+ * pro Upgates, Shoptet i WordPress“) — tedy prodejní FAQ jiného produktu na
+ * kontaktní stránce, navíc s nadpisem „Než si koupíte Pack“. Dvě z nich má
+ * `/pack/` ve vlastním FAQ a otázku „komu platím“ uživatel označil za předpoklad;
+ * fakturační údaje navíc stojí o sekci níž v tabulce, která je řekne líp.
+ * Původní účel bloku (doložit, že za webem stojí dohledatelná firma) nese
+ * sekce 02 „Dohledatelná firma“ a sekce 05 s IČO, DIČ a zápisem v rejstříku.
+ */
 export const faq = {
   eyebrowNum: "04",
   eyebrow: "Časté otázky",
   /** H2 s konvencí webu — span.hl + strong. */
-  titleHtml: 'Než si <strong>koupíte</strong> <span class="hl">Pack</span>',
+  titleHtml: 'Než se <span class="hl">ozvete</span>: <strong>na co se ptáte nejčastěji</strong>',
   leadHtml:
-    "Pokud jste si potřebovali hlavně ověřit, komu byste za&nbsp;Pack platili: provozovatelem je <strong>CPU s.r.o.</strong>, běžně dohledatelná česká firma za&nbsp;agenturou Sniper Design.",
+    "Fakturační údaje, sídlo i zápis v&nbsp;obchodním rejstříku najdete níž v&nbsp;sekci <strong>Přímé kontakty a&nbsp;fakturace</strong>.",
   /** Položky v mini markdownu; viditelný text i FAQPage z nich skládá komponenta Faq. */
   items: [
     {
-      q: "Kdo Pack vytvořil?",
-      a: "Tým Sniper Design — lidé, kteří dělají SEO, UX a strukturu e-shopů jako placené zakázky pro klienty. Pack vychází z reálných úprav, ne z teoretických návodů.",
+      q: "Jak rychle se ozvete?",
+      a: "Na poptávky z formulářů odpovídáme **do jednoho pracovního dne**. Telefon +420 775 181 634 bereme Po–Pá 10:00–17:00. Píšeme z adresy aiseo-optimalizace@sniperdesign.cz — pokud odpověď nevidíte, zkontrolujte složku Hromadné nebo Promo akce.",
     },
     {
-      q: "Komu platím a dostanu fakturu?",
-      a: "Platíte **CPU s.r.o.** (IČO 08125163, plátce DPH). Faktura dorazí samostatně po platbě. Pokud nemáte fakturu do 24 hodin, napište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz).",
+      q: "Děláte i klasické SEO, nebo jen optimalizaci pro AI?",
+      a: "Obojí, a v jednom plánu. Bez slušného klasického SEO se do odpovědí AI nedostanete — systémy AI čerpají z indexu vyhledávačů, takže co není dohledatelné a indexované, nemůže být citované. V měsíční správě proto běží klasické SEO i příprava pro AI vedle sebe a priority určí [audit](/audit/). Čím se disciplíny liší, rozebírá [hlavní průvodce](/seo-vs-geo-vs-aeo-vs-aio/).",
     },
     {
-      q: "Můžu se ozvat, když si nebudu vědět rady?",
-      a: "Ano. Pack obsahuje detailní kapitolu „Aplikace na váš web“ se všemi postupy. Pokud i tak narazíte, pište na [aiseo-optimalizace@sniperdesign.cz](mailto:aiseo-optimalizace@sniperdesign.cz) — odpovídáme do 24 hodin v pracovní dny.",
+      q: "Pracujete i pro weby mimo Upgates a Shoptet?",
+      a: "Ano. U obou platforem jsme Zlatý partner, takže je známe nejlíp, ale běžně pracujeme i na WooCommerce, WordPressu, Shopify, Webflow a na webech na míru. Platforma nerozhoduje o tom, jestli se to dá udělat — rozhoduje o ceně technické části, protože na krabicovém e-shopu je to jiná práce než v zastaralém agenturním systému.",
     },
     {
-      q: "Je Pack vhodný pro Upgates, Shoptet i WordPress?",
-      a: "Ano. Pack je platformově neutrální — wireframy, texty a ukázky strukturovaných dat aplikujete na libovolný systém. Kapitola „Aplikace na váš web“ má samostatný checklist pro Upgates, Shoptet, WordPress i custom weby.",
+      q: "Musím si koupit audit, abyste se mnou mluvili?",
+      a: "Ne. Ozvat se můžete s čímkoli — dotaz k obsahu webu, konzultace, spolupráce. [Audit AI viditelnosti](/audit/) za 3 600 Kč bez DPH doporučujeme jako první **placený** krok, protože bez něj bychom u vašeho konkrétního webu jen hádali. Nezávazně probrat situaci ale jde i bez něj.",
     },
   ] as FaqItem[],
 };
@@ -297,7 +310,7 @@ export const direct = {
     {
       dt: "Telefon",
       ddHtml:
-        '<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> <span class="kontakt-direct__hint">Po–Pá 9:00–17:00</span>',
+        '<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> <span class="kontakt-direct__hint">Po–Pá 10:00–17:00</span>',
     },
     {
       dt: "E-mail",

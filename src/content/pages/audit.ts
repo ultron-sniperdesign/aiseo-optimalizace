@@ -523,7 +523,7 @@ export const finalCta = {
   btnLabel: "Objednat audit za 3&nbsp;600&nbsp;Kč",
   btnHref: "#objednat",
   trust:
-    'Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>. Chcete se nejdřív zeptat? Voláme Po&ndash;Pá&nbsp;10&ndash;17, nebo napište přes <a href="/kontakt/">kontaktní formulář</a>.',
+    'Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>. Chcete se nejdřív zeptat? Voláme Po&ndash;Pá&nbsp;10:00&ndash;17:00, nebo napište přes <a href="/kontakt/">kontaktní formulář</a>.',
 };
 
 /**
