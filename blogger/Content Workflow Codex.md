@@ -91,11 +91,11 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
   **Prostředí je hotové — nezakládej venv a nic neinstaluj.** Venv skillu má `pytrends`, `pandas`, `requests` i `python-dotenv`; token se načte sám z `.env` skillu, nemusí být v shellu. Ověřeno 15. 9. 2026:
 
-  ``bash
+  ```bash
   ~/.claude/skills/marketing-miner-api/.venv/bin/python \
     ~/.claude/skills/marketing-miner-api/scripts/research_enrich.py \
     --keywords-file <složka>/keywords.csv --top 10 --enrich trends --geo CZ
-  ``
+  ```
 
   Vstup je CSV se sloupcem `keyword`. Skript si cesty doplní sám, jde spustit z libovolného adresáře. Dvě varování na startu (LibreSSL, pandas `FutureWarning`) jsou neškodná — na výsledek nemají vliv. Výstup: `enrichment_trends.json` + `enrichment.md` vedle vstupního CSV. Zbylé enrichery (`suggest,wikipedia,youtube`) a ostatní skripty skillu běží přes stejný Python.
 
@@ -104,10 +104,10 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   Pravidlo: **rising query, která nesdílí ani slovo se seed keywordem a není jeho známé synonymum, je šum → zahoď ji.** Když je takových víc než polovina, Trends pro to keyword nepoužívej vůbec a do `research.md` napiš, že data nebyla použitelná. Nikdy nepřebírej řádek „Souhrnně rostou" z `enrichment.md` bez téhle kontroly — skript ho skládá z nefiltrovaného výstupu.
 - **A3 — Porovnání s webem (dvoukrokově):** k 15. 9. 2026 je v `src/content/articles/` **165 článků**, načíst je celé nejde. Postupuj takto:
   1. **Sken metadat všech článků** — vytáhni si jen `title`, `slug`, `tags` a nadpisy H2:
-     ``bash
+     ```bash
      grep -h "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
      grep -h "^## " src/content/articles/*.mdx | sort -u
-     ``
+     ```
   2. **Celé čti jen obsahově blízké kandidáty** — typicky 2–5 článků, ne 165.
 
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
@@ -253,13 +253,13 @@ U nálezů označených jako **zásadní** nestačí je označit za opravené �
 
 ### C6 — Jazyková kontrola strojem (POVINNÁ, před buildem)
 
-``bash
+```bash
 python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md
-``
+```
 
 1. **Cíl je 0 nálezů** (⛔ i ⚠️). Nejčastější vada korpusu: česká uvozovka `„` zavřená rovnou `"`.
 2. **Kontrola kontextu u každé náhrady** — pád, číslo, rod, význam v tomhle textu. Slovník navrhuje slovo, ne tvar.
-3. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do `JAZYK_AUDIT_LOG.md` u **každého** nálezu. Do `JAZYK_SLOVNIK.md` ale přidej regex jen tehdy, projde-li testem:
+3. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do ``JAZYK_AUDIT_LOG.md`` u **každého** nálezu. Do ``JAZYK_SLOVNIK.md`` ale přidej regex jen tehdy, projde-li testem:
 
      > Poznám tu vadu spolehlivě **bez toho, abych rozuměl zbytku věty**?
 

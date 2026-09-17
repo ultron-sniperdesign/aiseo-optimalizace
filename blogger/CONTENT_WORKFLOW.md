@@ -43,10 +43,10 @@ Aktuálně nasazené (stav k 15. 9. 2026, všechny ověřeny jako dostupné v AP
 
 Aktuální seznam si zjistíš takto:
 
-``bash
+```bash
 curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/models \
   | python3 -c "import sys,json;[print(m['id']) for m in sorted(json.load(sys.stdin)['data'],key=lambda x:x['id']) if m['id'].startswith(('gpt-5','gpt-6','gpt-image'))]"
-``
+```
 
 | Účel | Skill / nástroj | Cesta / volání |
 |---|---|---|
@@ -84,11 +84,11 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
   **Prostředí je hotové — nezakládej venv a nic neinstaluj.** README skillu sice popisuje `python3 -m venv .venv`, ale to je jednorázový setup, který už proběhl. Venv má `pytrends`, `pandas`, `requests` i `python-dotenv`; token se načte sám z `.env` skillu. Ověřeno 15. 9. 2026:
 
-  ``bash
+  ```bash
   ~/.claude/skills/marketing-miner-api/.venv/bin/python \
     ~/.claude/skills/marketing-miner-api/scripts/research_enrich.py \
     --keywords-file <složka>/keywords.csv --top 10 --enrich trends --geo CZ
-  ``
+  ```
 
   Vstup je CSV se sloupcem `keyword`. Skript si cesty doplní sám, jde spustit z libovolného adresáře. Dvě varování na startu (LibreSSL, pandas `FutureWarning`) jsou neškodná.
 
@@ -97,10 +97,10 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   Pravidlo: **rising query, která nesdílí ani slovo se seed keywordem a není jeho známé synonymum, je šum → zahoď ji.** Když je takových víc než polovina, Trends pro to keyword nepoužívej vůbec a do `research.md` napiš, že data nebyla použitelná. Nikdy nepřebírej řádek „Souhrnně rostou" z `enrichment.md` bez téhle kontroly — skript ho skládá z nefiltrovaného výstupu.
 - **A3 — Porovnání s webem (dvoukrokově):** k 15. 9. 2026 je v `src/content/articles/` **165 článků**, načíst je celé nejde. Postupuj takto:
   1. **Sken metadat všech článků** — vytáhni si jen `title`, `slug`, `tags`, `keywords` a nadpisy H2. Levně, jedním průchodem:
-     ``bash
+     ```bash
      grep -h "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
      grep -h "^## " src/content/articles/*.mdx | sort -u
-     ``
+     ```
   2. **Celé čti jen obsahově blízké kandidáty** — ty, kde se překrývá téma nebo klíčové slovo. Typicky 2–5 článků, ne 165.
 
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
@@ -163,7 +163,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
   > **Auditor si smí a má hledat vlastní zdroje** (změna z 15. 9. 2026). Nedávej mu jen svůj výběr z B3 — na tom by ověřil jen to, cos našel ty, a nenašel by, cos přehlédl. Do briefu napiš výslovně: *ověř tvrzení proti zdrojům, které si najdeš sám, a aktivně hledej protidůkaz — nesnaž se tvrzení potvrdit, snaž se ho vyvrátit.* Nález bez doloženého zdroje se nezapracovává.
 
-  ``bash
+  ```bash
   python3 ~/.claude/skills/open-ai-api-core/scripts/chat.py \
     --system "$(cat blogger/auditor-system.md)" \
     --input-file "blogger/research/<slug>/audit1-brief.md" \
@@ -171,7 +171,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
     --max-tokens 8000 \
     --output "blogger/research/<slug>/audit1-result.md" \
     --verbose
-  ``
+  ```
   > `gpt-5.5` NEpodporuje `--temperature` (nech default). `--max-tokens` min. 5000, doporučeno 8000 — reasoning tokeny se počítají do limitu, jinak hrozí oříznutá odpověď.
 - **C3 — Oprava #1:** zapracuj audit + vlastní úsudek (auditor není absolutní — rozhoduješ ty).
 - **C4 — Audit #2 (OpenAI Core):** pošli opravenou verzi, v briefu **uveď, že jde o verzi po 1. auditu** (přilož i shrnutí, co jsi změnil). Stejné volání, `audit2-*`.
@@ -181,14 +181,14 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   - **Strop: jedno kolo navíc.** Když ani po něm nálezy nezmizí, **eskaluj na člověka** do vlákna — nepokračuj v dalších kolech, smyčka by neskončila.
 - **C6 — Jazyková kontrola (POVINNÁ, před buildem):** finální text projeď skillem `cestina-audit`. Bez ní se článek nepublikuje.
 
-  ``bash
+  ```bash
   python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md
-  ``
+  ```
 
   1. **Mechanický průchod** — cíl je **0 nálezů** (⛔ i ⚠️). Nejčastější vada celého korpusu: česká uvozovka `„` zavřená rovnou `"`.
   2. **LLM průchod** — článek + celý slovník na gpt-5.4 se zadáním z `SKILL.md` (obsahuje i výčet toho, **co vadou není** — zavedená oborová mluva, zdomácnělé latinismy, běžná česká odborná spojení, názvy nástrojů a metrik).
   3. **Kontrola kontextu u každé náhrady** — pád, číslo, rod, význam v tomhle textu. Slovník navrhuje slovo, ne tvar.
-  4. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do `blogger/JAZYK_AUDIT_LOG.md` u **každého** nálezu. Do `blogger/JAZYK_SLOVNIK.md` ale přidej regex jen tehdy, projde-li testem:
+  4. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do ``blogger/JAZYK_AUDIT_LOG.md`` u **každého** nálezu. Do ``blogger/JAZYK_SLOVNIK.md`` ale přidej regex jen tehdy, projde-li testem:
 
      > Poznám tu vadu spolehlivě **bez toho, abych rozuměl zbytku věty**?
 
