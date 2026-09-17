@@ -231,7 +231,17 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   - **Vyrob `.jpg` (1200×800) + `.webp` odvozeniny** — to jsou jediné dva soubory, které jdou do repa. Šablona sahá na `.jpg` (hero + og:image) a `.webp`. Příkaz v `IMAGE_GUIDE.md` §2b. Volitelnou master kopii do `_source/_blog-images/` **přeskakuji** — mimo blogger scope.
 - **D3 — Publikace** (dle `blogger/README.md`):
   - `npm run build` (validace frontmatteru + komponent)
-  - `git add` JEN vlastní soubory: `src/content/articles/<slug>.mdx` + **`public/og/<slug>.jpg` a `public/og/<slug>.webp`** (obojí povinné) + případně `public/blog/<slug>/` — nikdy `-A`. **`.png` do commitu nepatří**, viz D2.
+  - `git add` JEN vlastní soubory, **nikdy `-A`**. Úplný výčet toho, co run smí commitovat:
+    - `src/content/articles/<slug>.mdx` — článek
+    - `public/og/<slug>.jpg` a `public/og/<slug>.webp` — **vyjmenuj oba, nepoužívej hvězdičku** (`public/og/<slug>.*` by přibalilo zakázané `.png`, viz D2)
+    - `public/blog/<slug>/` — jen když má článek obrázky v textu
+    - `blogger/research/<slug>/` — podklady a audity tvého runu (B3)
+    - `blogger/JAZYK_AUDIT_LOG.md` — řádek z C6, přidává se **vždy**
+    - `blogger/JAZYK_SLOVNIK.md` — jen když v C6 vzniklo nové pravidlo
+    - `blogger/obsahovy-plan.csv` — uzávěr z bloku D (může jít i samostatným commitem)
+    - `blogger/REFRESH_QUEUE.md` — jen u refresh runu (A6)
+
+    Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` (obrázek jde se článkem) → `git push origin main` → CI ~1–2 min
   - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2), ruční Submit URL v Bing Webmaster Tools (IndexNow je vypnutý); očima karta + hero (text obrázku se neusekne)
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` u řádku nastav `Publikováno = ano` a `URL = https://aiseo-optimalizace.cz/blog/<slug>/`. Commituj (`Blog: obsahový plán — <slug> publikováno`).
