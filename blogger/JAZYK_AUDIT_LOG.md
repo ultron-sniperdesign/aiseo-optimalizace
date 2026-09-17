@@ -1440,3 +1440,14 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 **Do fronty, ne do slovníku:** `\bstack\b`. Je to oprávněný nález, ale výraz nese **15 míst v `seo-nastroje-2026`** (včetně H2 a mezititulků „Stack 1–4“), H2 „Nástrojový stack“ v `mereni-seo-vykonu-2026` a dvě místa v pilíři; k tomu vlastní jména Stack Overflow a Stackmatix, která by potřebovala výjimku. Přepis je samostatný refresh, ne vedlejší úklid faktické opravy — zapsáno do `REFRESH_QUEUE.md`.
 
 **Poznámka k rozsahu:** LLM dostal jen přepsané řádky, takže část nálezů mířila na věty, které refresh nezměnil (jen je diff zobrazil celé). Tam platí pravidlo „refresh opravuje svoje pasáže, ne celý článek“.
+
+## C6: `obsah-za-formularem-a-ai` (17. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | **0 nálezů** už v prvním konceptu a po obou auditech znovu 0. |
+| LLM (gpt-5.4) | 5 nálezů — **všechny přijaty v textu, žádné nové pravidlo** |
+
+**Přijato z LLM:** vsuvka v prvním odstavci („Obsah za formulářem… systémy, které web procházejí samy, nepřečtou“) přestavěna na „Roboti, kteří web procházejí sami, nepřečtou obsah za formulářem, registrací ani přihlášením“ · „Google k procházení odkazů uvádí“ → „o procházení odkazů“ · „kde má Google hranici maskování“ → „kde je podle Googlu hranice maskování“ · „obsah za bránou z ní nemá“ → „nezíská“ · „co s bránou udělají“ → „jak se k bráně zachovají“.
+
+**Proč bez pravidel:** navržené regexy (`kde má Google hranici`, `obsah za bránou z ní nemá`, `co s bránou udělají`) jsou celé fráze z tohoto článku — v korpusu se nikde jinde nevyskytují a checkeru by nic nepřinesly. Vada byla ve stavbě věty, ne ve výrazu.

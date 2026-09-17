@@ -1,0 +1,170 @@
+---
+title: "Obsah za formulářem: co AI nepřečte a co zveřejnit"
+seoTitle: "Obsah za formulářem: co AI nepřečte a jak ho rozdělit"
+description: "Co je za registrací, přihlášením nebo formulářem, systémy samy nepřečtou. Co o tom píše Google, kde je hranice maskování a jak obsah rozdělit."
+answer: "Obsah za formulářem je část webu dostupná až po registraci, přihlášení nebo odeslání údajů. Roboti, kteří web procházejí sami, ji běžně nepřečtou: přihlašovací údaje nemají a formuláře nevyplňují. Google takovou bránu nepovažuje za maskování, pokud vidí totéž co člověk s přístupem a web dodržuje jeho pravidla pro vzorkování. Podstata proto patří do veřejné části."
+slug: "obsah-za-formularem-a-ai"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "technicke-zaklady"
+published: "2026-09-17"
+updated: "2026-09-17"
+variant: "rich"
+keywords:
+  - "obsah za formulářem"
+  - "obsah za registrací a ai"
+  - "paywall a ai"
+  - "materiály ke stažení pro ai"
+  - "co ai nepřečte na webu"
+  - "maskování obsahu google"
+stats:
+  - value: "dvě podmínky"
+    label: "Google nepovažuje bránu za maskování, pokud vidí celý obsah za ní stejně jako člověk s přístupem a web dodržuje obecná pravidla pro vzorkování (zásady proti spamu, aktualizované 28. 8. 2026)"
+  - value: "i registrace"
+    label: "za bránu Google počítá i bariéru, která vyžaduje pouze registraci, ne platbu"
+  - value: "6–10"
+    label: "článků na uživatele za měsíc Google očekává u většiny denních zpravodajských vydavatelů; jako výchozí bod doporučuje 10 článků měsíčně pro uživatele z Vyhledávání"
+faq:
+  - q: "Přečte AI obsah, který je za formulářem?"
+    a: "Roboti, kteří web procházejí sami, ne. Přihlašovací údaje nemají a formuláře za vás nevyplní. Google uvádí, že obecně prochází hlavně odkazy zapsané jako `<a href>`; když adresa materiálu vznikne až po odeslání formuláře a nikde se neodkazuje, nemusí ji najít. A když ji najde, ale bez přístupu vidí jen formulář, obsah za bránou z ní nezíská. OpenAI ve své dokumentaci k robotům o přihlašování ani o obsahu za bránou nepíše vůbec."
+  - q: "Je zpřístupnění obsahu robotům maskování?"
+    a: "Samo o sobě ne. Zásady proti spamu říkají, že bránu Google za maskování nepovažuje, pokud vidí celý obsah za ní stejně jako člověk s přístupem a web se drží obecných pravidel pro vzorkování. Pro placený obsah k tomu Google dokumentuje strukturovaná data, která mu pomáhají placenou část od maskování odlišit: označí se, že obsah není dostupný zdarma, a pomocí `hasPart` a `cssSelector` se vyznačí část stránky za bránou."
+  - q: "Platí to i pro registraci, za kterou se neplatí?"
+    a: "Ano. Google v pravidlech pro vzorkování výslovně uvádí, že slovo paywall v tomto kontextu platí stejně pro bariéry, které vyžadují předplatné, i pro ty, které chtějí jen registraci. Formulář za e-mail je tedy z hlediska pravidel stejná brána jako platba."
+  - q: "Co má zůstat veřejné a co může jít za bránu?"
+    a: "Veřejná část má nést podstatu: co to je, jak se to dělá, jaká čísla platí a z čeho vycházejí. Za bránu patří spíš forma než obsah — šablona, tabulka k vyplnění, kalkulačka, záznam, individuální ocenění nebo data na míru. Když je za bránou samotná odpověď, nemá vás stroj z čeho citovat."
+  - q: "Jak zjistím, co z mé stránky Google opravdu viděl?"
+    a: "V Search Console v nástroji Kontrola adresy URL. Odkaz Zobrazit procházenou stránku ukáže odpověď serveru i stažený kód HTML a k tomu snímek vykreslené stránky, jak ji vidí Google-InspectionTool. Když je ve staženém kódu i ve vykreslené verzi jen upoutávka a formulář, samotný obsah za bránou z té stránky Google nevidí — proto je potřeba porovnat obojí."
+  - q: "Má smysl dávat za formulář ceník?"
+    a: "Kdo cenu schová, zvyšuje riziko, že systém sáhne po cizím zdroji — a klidně po zastaralém čísle odjinud. Jak dát cenový signál i tam, kde konkrétní číslo uvést nejde, rozebírá [ceny na webu a AI](/blog/ceny-na-webu-a-ai/)."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Roboti, kteří web procházejí sami, nepřečtou obsah za formulářem, registrací ani přihlášením.** Nemají přihlašovací údaje a formuláře za nikoho nevyplňují. Firma, která má důležitý materiál schovaný za e-mailem, si tím snižuje šanci, že odpověď AI vyjde z jejího vlastního zdroje. Systém se pak může opřít spíš o veřejnou stránku, která stejnou otázku vysvětluje dostupně.
+
+Tenhle návod ukazuje, co brána znamená technicky, kde je podle Googlu hranice maskování a jak obsah rozdělit, aby veřejná část nesla podstatu a formulář zůstal na tom, co za ním dává smysl.
+
+## Co brána znamená pro stroje — <strong>žádné přihlášení, žádné vyplněné formuláře</strong>
+
+Vyhledávací robot při běžném automatickém procházení nevytvoří účet a neodešle formulář. Google o procházení odkazů uvádí, že obecně dokáže projít odkaz tehdy, když je zapsaný jako prvek `<a>` s atributem `href`; většinu odkazů v jiných podobách jeho prohledávače nezpracují. Adresa, která vznikne až po odeslání formuláře a nikde se běžně neodkazuje, tedy pro něj nemusí existovat vůbec. A když se na dostupné adrese bez přístupu zobrazí jen formulář nebo upoutávka, obsah za bránou z ní nezíská.
+
+U systémů s AI je potřeba rozlišovat. OpenAI ve svém přehledu robotů popisuje tři identity — `OAI-SearchBot` pro vyhledávání v ChatGPT, `GPTBot` pro trénink modelů a `ChatGPT-User` pro stránku otevřenou na žádost uživatele. O přihlašování ani o obsahu za bránou tam není ani řádka, takže o tom, jak se k bráně zachovají, nemáme dokumentovaný podklad; u robotů, kteří web procházejí sami, je bezpečné počítat s tím, že se nepřihlásí a formulář nevyplní.
+
+U robotů vyvolaných uživatelem OpenAI uvádí, že pravidla v souboru robots.txt „nemusí platit“, protože akci spustil člověk — podrobně to rozebírá [článek o robotech vyvolaných uživatelem](/blog/roboti-vyvolani-uzivatelem/). Neznamená to ale, že by dokumentace slibovala přihlášení, vyplnění formuláře nebo přístup k neveřejnému obsahu.
+
+<Insight tone="accent" label="Praktický důsledek">
+Za bránou může být velmi užitečný materiál. Když veřejná část nenese podstatu, zůstává pro stroj nedostupný — a odpověď na dotaz vašeho zákazníka se poskládá z toho, co je dostupné jinde.
+</Insight>
+
+## Kde je hranice <span class="hl">maskování</span> — <strong>Google chce vidět totéž co člověk s přístupem</strong>
+
+Napadne vás obejít to opačně: robotovi poslat plný text, člověku formulář. To je přesně ta hranice, kterou Google popisuje v zásadách proti spamu. Maskování definuje jako **předkládání jiného obsahu lidem a jiného vyhledávačům se záměrem manipulovat hodnocením a uvést uživatele v omyl**.
+
+Pro brány k tomu ale dodává výjimku: pokud provozujete paywall nebo mechanismus, který obsah uzavírá, **nepovažuje to za maskování za dvou podmínek** — Google musí vidět celý obsah za bránou stejně jako člověk, který k materiálu má přístup, a web se musí držet obecných pravidel pro vzorkování obsahu, tedy řízeného zpřístupnění části obsahu lidem, kteří přišli z Vyhledávání.
+
+Pro placený obsah k tomu Google dokumentuje strukturovaná data: u typu `CreativeWork` se vlastností `isAccessibleForFree: false` a odkazem na část stránky přes `hasPart` a `cssSelector` označí, která část je za bránou. Podle dokumentace právě tahle data Googlu **pomáhají odlišit placený obsah od maskování**. Platí to jen pro obsah, který chcete mít v indexu; nápověda Search Console na strukturovaná data pro placený obsah odkazuje i u problémů s procházením.
+
+<CompareTable
+  leftLabel="Co to znamená"
+  leftTone="accent"
+  rightLabel="Jak to Google popisuje"
+  rightTone="accent"
+  rows={[
+    { icon: "🚫", label: "Maskování", left: "Robot vidí jiný obsah než člověk, se záměrem manipulovat hodnocením", right: "Porušení zásad proti spamu" },
+    { icon: "🔓", label: "Brána podle pravidel", left: "Robot vidí totéž co člověk s přístupem a web dodržuje pravidla pro vzorkování", right: "Za maskování se nepovažuje" },
+    { icon: "🏷️", label: "Označený placený obsah", left: "Data u typu CreativeWork říkají, která část stránky je za bránou", right: "Pomáhají placený obsah od maskování odlišit" },
+    { icon: "📝", label: "Jen upoutávka a formulář", left: "Robot dostane pár řádků a prázdné místo", right: "Není to porušení, ale není z čeho citovat" },
+  ]}
+/>
+
+## Bránou je podle Googlu i <span class="hl">registrace</span> — <strong>nejen platba</strong>
+
+V pravidlech pro vzorkování obsahu Google výslovně uvádí, že slovo paywall v tom textu platí **stejně pro bariéry vyžadující předplatné i pro ty, které chtějí jen registraci**. Formulář za e-mail tedy spadá do stejné kategorie jako platba — včetně toho, co Google k bránám doporučuje:
+
+- **Měřit po měsících, ne po dnech.** Podle Googlu dává měsíční limit víc volnosti a bezpečnější prostředí pro testování než denní.
+- **Kolik zpřístupnit.** U většiny denních zpravodajských vydavatelů Google očekává hodnotu mezi šesti a deseti články na uživatele za měsíc; jako výchozí bod doporučuje deset článků měsíčně pro uživatele z Vyhledávání Google a postupné doladění podle vlastních dat.
+- **Nechat na očích úvod.** Vydavatelé, kteří nad bránou nechají prvních několik vět textu, podle Googlu dělají dobře — čtenář si hodnotu obsahu ověří sám.
+
+Čísla platí pro zpravodajský obsah, ne pro firemní web s jednou případovou studií. Princip ale sedí i tam: **přes bránu má jít nějaká hodnota, ne jen její obal.**
+
+## Jak obsah rozdělit — <strong>veřejná podstata, chráněná forma</strong>
+
+Praktické dělítko není „důležité versus nedůležité“, ale **odpověď versus nástroj**. Odpověď na otázku patří na veřejnou stránku, protože z ní vzniká citace i důvěra. Za formulář patří to, co má individuální hodnotu nebo se dá použít jen s vaší pomocí.
+
+<CompareTable
+  leftLabel="Patří veřejně"
+  leftTone="accent"
+  rightLabel="Může zůstat za formulářem"
+  rightTone="accent"
+  rows={[
+    { icon: "📘", label: "Metodika", left: "Postup, kritéria, na co si dát pozor", right: "Šablona, kontrolní seznam k vyplnění, tabulka" },
+    { icon: "🔢", label: "Čísla", left: "Výsledek a metoda, ze které vyšel", right: "Celý datový soubor, surová měření" },
+    { icon: "🏢", label: "Případová studie", left: "Zadání, co jste udělali, jak to skončilo", right: "Podrobný audit klienta, interní podklady" },
+    { icon: "💰", label: "Cena", left: "Rozpětí, od-cena nebo způsob výpočtu", right: "Individuální kalkulace na míru" },
+    { icon: "🎥", label: "Záznam webináře", left: "Souhrn hlavních bodů v textu", right: "Celý záznam a prezentace" },
+  ]}
+/>
+
+<Checklist
+  title="Test, jestli je brána na správném místě"
+  items={[
+    { title: "Odpoví veřejná část na otázku z titulku?", desc: "Když ne, brána stojí přes odpověď, ne přes nástroj." },
+    { title: "Přežije text bez souboru ke stažení?", desc: "Materiál má být doplněk, ne jediný nositel obsahu." },
+    { title: "Je za bránou něco, co jinde nedostanou?", desc: "Za obecný text dostupný na mnoha jiných webech lidé e-mail obvykle nedají — a vy si jím zhoršíte i cestu do odpovědí." },
+    { title: "Dostává Google totéž co člověk s přístupem — a držíte pravidla pro vzorkování?", desc: "Google popisuje obě podmínky jako výjimku z maskování. Když se robotovi navíc posílá jiná verze se záměrem ovlivnit hodnocení, je to riziko maskování." },
+    { title: "Je veřejná část dohledatelná?", desc: "Vlastní adresa, odkaz zapsaný jako a href, žádné blokování v souboru robots.txt." },
+  ]}
+/>
+
+## Jak si ověřit, co z brány zbývá
+
+<Stepper
+  steps={[
+    { title: "Podívejte se na stránku očima Googlu", desc: "V Search Console v nástroji Kontrola adresy URL otevřete Zobrazit procházenou stránku. Uvidíte odpověď serveru, stažený kód HTML i snímek vykreslené stránky." },
+    { title: "Stáhněte stránku bez prohlížeče", desc: "Odhlášeně a bez JavaScriptu, třeba příkazem curl. Když ho nepoužíváte, vyžádejte si od správce webu stažený kód stránky pro odhlášeného návštěvníka. Je to konzervativní kontrola, porovnejte ji s vykreslenou verzí ze Search Console — Google stránku vykreslit umí." },
+    { title: "Zkontrolujte, co je v indexu", desc: "U stránek s bránou v Search Console ověřte, jestli jsou indexované a v jakém stavu. Prázdná stránka s formulářem bývá bez obsahu k indexaci." },
+    { title: "Zeptejte se na svoje téma", desc: "Položte v ChatGPT, Perplexity nebo režimu AI dotaz, na který váš materiál odpovídá, a sledujte, kdo je citovaný. Berte to jako orientační kontrolu, ne jako měření." },
+    { title: "Doplňte, co chybí", desc: "Podstatu z materiálu přepište na veřejnou stránku s vlastní adresou. Formulář nechte u toho, co má opravdu individuální hodnotu." },
+  ]}
+/>
+
+Systematičtější postup, jak sledovat vlastní viditelnost, rozebírá [test viditelnosti v AI](/blog/test-viditelnosti-v-ai/).
+
+## <strong>Časté chyby</strong> u obsahu za formulářem
+
+<MistakeGrid>
+  <Mistake num="01" title="Celá odpověď jen v souboru za formulářem" fix="Podstatu přepsat na veřejnou stránku, soubor nechat jako bonus.">
+    Nejčastější případ: firma má své postupy v PDF, veřejně jen upoutávku. Pro stroje je to prázdné místo a odpověď se opře o dostupnější zdroje jinde.
+  </Mistake>
+  <Mistake num="02" title="Dvě verze — plný text robotovi, formulář člověku" fix="Ukázat Googlu totéž co člověku s přístupem, držet pravidla pro vzorkování a u placeného obsahu k indexaci doplnit strukturovaná data.">
+    Tohle je přesně maskování podle zásad proti spamu, pokud je záměrem manipulovat hodnocením. Pravidla mají výjimku pro brány, ne pro dvě různé verze.
+  </Mistake>
+  <Mistake num="03" title="Brána na obsahu, který nikdo nehledá" fix="Brána patří na to, co má samostatnou hodnotu.">
+    Za obecný přehled dostupný na deseti jiných webech e-mail nikdo nenechá. Snížíte tím šanci na poptávky i na citace: veřejná část nedává důvod formulář vyplnit a strojům nedává obsah k odpovědi.
+  </Mistake>
+  <Mistake num="04" title="Materiál bez vlastní veřejné stránky" fix="Každému materiálu dát adresu s popisem, ukázkou a shrnutím.">
+    Když se ke stažení dostanete jen přes vyskakovací okno, neexistuje adresa, kterou by mohl někdo citovat ani odkazovat.
+  </Mistake>
+  <Mistake num="05" title="Znalosti jen v chatbotu nebo v přihlášené aplikaci" fix="Časté dotazy přepsat do veřejných stránek.">
+    Odpovědi, které umí jen váš chatbot, jsou pro vyhledávání i pro AI neviditelné — rozebírá to [chatbot na webu a AI viditelnost](/blog/chatbot-na-webu-a-ai-viditelnost/).
+  </Mistake>
+</MistakeGrid>
+
+## Shrnutí
+
+- **Co je za formulářem, registrací nebo přihlášením, si systém sám nepřečte** — nemá přihlašovací údaje a formuláře nevyplňuje.
+- **Google bránu za maskování nepovažuje** při splnění dvou podmínek: vidí celý obsah za ní stejně jako člověk s přístupem a web se drží obecných pravidel pro vzorkování.
+- **Za bránu Google počítá i registraci bez platby** a u většiny denních zpravodajských vydavatelů očekává šest až deset článků na uživatele za měsíc, jako výchozí bod deset.
+- **U placeného obsahu existují strukturovaná data**, která Googlu pomáhají poznat, která část stránky je za bránou.
+- **Dělte podle logiky odpověď versus nástroj:** metodika, čísla a výsledky veřejně, šablony a data na míru za formulář.
+
+**Nevíte, kolik z vašeho obsahu je pro stroje neviditelné?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) je PDF se sedmi drátěnými modely typů stránek. Ukazuje, co má být na veřejné stránce a v jakém pořadí — od prodejní stránky po článek na blogu.
+
+*Zdroje: Google Search Central, [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies), aktualizováno 28. 8. 2026 (maskování a výjimka pro brány) · [Flexible Sampling](https://developers.google.com/search/docs/appearance/flexible-sampling), aktualizováno 10. 12. 2025 (měření po měsících, šest až deset článků, úvod nad bránou, registrace jako paywall) · [Structured data for subscription and paywalled content](https://developers.google.com/search/docs/appearance/structured-data/paywalled-content), aktualizováno 8. 9. 2026 · [Make your links crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable), aktualizováno 10. 12. 2025 · nápověda Search Console, [Kontrola adresy URL](https://support.google.com/webmasters/answer/9012289) · OpenAI, [Bots](https://developers.openai.com/api/docs/bots), čteno 17. 9. 2026. Vše ověřeno 17. 9. 2026.*
