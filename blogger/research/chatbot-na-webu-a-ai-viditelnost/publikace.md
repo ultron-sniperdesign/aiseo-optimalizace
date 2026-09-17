@@ -11,3 +11,13 @@
 - Desktopová karta ve výpisu vizuálně zkontrolována: oba české nápisy a celý motiv viditelné; nový článek první ve výpisu.
 - Finální C6 po C5: 2001 slov, 0 nálezů. Druhý build po C5-02/03 exit0, validace beze změny. Mobilní karta také vizuálně ověřena celá; šířka dokumentu360px při viewport375px, bez přetékání stránky.
 - C5 fáze2 uzavřena: PUBLIKOVAT,0otevřených nálezů; C5-01 auditor stáhl, všechny opravy ověřil. C5b bez zásadních nálezů není aktivní. Finální soubor shodný s auditem.
+
+## Publikováno
+
+- URL: https://aiseo-optimalizace.cz/blog/chatbot-na-webu-a-ai-viditelnost/
+- Publikační commit: d8245cd. GitHub Actions35174595003 úspěšné, včetně upload/activate a HTTPS smoke testu.
+- Veřejná kontrola17.9.2026: článek111796B, JPG86939B, WebP47438B, listing a sitemap-0.xml všeHTTP200. Slug v obou seznamech, canonical přesnáURL, og:image JPG. Pět platných JSON-LD bloků. Finální opravená formulace o základních podmínkách Googlu přítomná.
+- Živý hero zkontrolován očima; odpovídá schválenému ořezu. Lokální karta a mobil ověřeny před publikací.
+- Bing Webmaster Tools: správný web aiseo-optimalizace.cz → URL Submission → Submit URLs → odeslána jediná nováURL. Potvrzení v seznamu Submitted URLs: přesnáURL, Today at04:31; kvóta99→98. Odeslání přijato, samotné zařazení do indexu zatím netvrdíme. IndexNow nezapínán.
+- Obsahový plán: změněn pouze řádek114, Eano,FpublikovanáURL. Nový řádek v tomto běhu nepřidán.
+- CI informativně upozorňuje na starší Node20runtime akcí checkout/setup-node; nasazení úspěšné, workflow mimo scope neupravován.
