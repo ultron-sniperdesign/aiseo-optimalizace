@@ -221,6 +221,10 @@ aiseo-optimalizace.cz/
 │   ├── package.json + tsconfig.json
 │   ├── README.md                             # deploy návod + flow popis
 │   └── .gitignore                            # .wrangler/, node_modules/, .dev.vars
+├── scripts/
+│   ├── indexnow.mjs                      # IndexNow: git diff → URL → podání (v CI po deployi)
+│   ├── check-content.mjs
+│   └── og-publish.mjs
 ├── .github/workflows/deploy.yml          # Astro build → rsync VPS (worker se deployuje samostatně přes wrangler)
 ├── astro.config.mjs
 ├── package.json
@@ -412,6 +416,31 @@ python3 ~/.claude/skills/open-ai-api-core/scripts/chat.py \
 # Pozor: gpt-5.5 nepodporuje --temperature 0.3, jen default (1.0)
 ```
 
+### IndexNow — podání změněných URL (od 17. 9. 2026 vlastní krok, ne integrace)
+
+Podání běží **v CI po deployi**, ne při buildu: `.github/workflows/deploy.yml` →
+krok „IndexNow“ volá `scripts/indexnow.mjs` s rozsahem commitů z pushe.
+
+```bash
+node scripts/indexnow.mjs --base <sha> --head <sha>   # vypíše, co by podal
+node scripts/indexnow.mjs --files "src/content/sections/geo.mdx"   # test bez gitu
+INDEXNOW_ENABLED=1 node scripts/indexnow.mjs --base … --head …     # skutečně podá
+```
+
+Detekce jde **z gitu**, ne z hashů zbuildovaného HTML — proč, viz § VI. Mapování
+zdroj → URL se odvozuje z kódu (šablony v `src/pages/` samy říkají, který datový
+modul čtou), takže nová stránka mapování aktualizuje sama. Sdílené soubory (i18n,
+komponenty, layouty, styly, config) vědomě negenerují žádnou URL. Každá URL se před
+podáním ověří proti `dist/` a nad 60 URL se nepodává nic (pojistka proti chybě
+v mapování).
+
+**Stav: podání je VYPNUTÉ** (`INDEXNOW_ENABLED: "0"` ve workflow). `api.indexnow.org`
+vrací na tuhle doménu HTTP 403 `UserForbiddedToAccessSite`; u podpory Bingu běží
+ticket **UCM000007490076** (e-maily na info@sniperdesign.cz). Klíč je vyloučený jako
+příčina — `public/929226a175c657aac3ba73a765ee364d.txt` vrací 200, `text/plain`,
+přesně 32 bajtů shodných s klíčem. **Klíč neměnit**, návody na 403 to radí, tady je to
+slepá ulička. Krok zatím jen vypisuje, co by podal, takže je detekce vidět v logu CI.
+
 ### Jazyková kontrola stránky (povinná před commitem při revizi)
 
 Revize jede stránku po stránce; **než stránku commitnu, pustím na ni checker** — jinak se
@@ -474,6 +503,18 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 ### Rizika specifická pro tento projekt
 
+- **Detekce změn pro IndexNow se nesmí opírat o hash zbuildovaného HTML** (změřeno
+  17. 9. 2026). Balíček `astro-indexnow` to dělal a na tomhle projektu to nemohlo
+  fungovat ze dvou nezávislých důvodů: (1) `PUBLIC_GSC_VERIFICATION` a
+  `PUBLIC_GA4_MEASUREMENT_ID` jsou Secrets — lokální build je nemá, CI ano, takže se
+  liší `<head>` **každé** stránky a baseline z lokálního buildu nikdy nesedne;
+  (2) každá stránka odkazuje na `/_astro/*.HASH.css`, takže **změna jedné hodnoty
+  v `global.css` překlopila hash u 268 z 284 stránek**. Proto ani commitování cache
+  z CI („bot commit“) problém neřeší — fungovalo by do prvního zásahu do CSS.
+  Balíček byl odstraněn, nahradil ho `scripts/indexnow.mjs` s detekcí z gitu.
+  **Sesterská past v té knihovně:** po neúspěšném podání zapisovala cache a vypsala
+  „IndexNow submission complete“ — jediný pravdivý signál byl `warn` mezi tím. Náš
+  skript naopak na 4xx vrací nenulový kód a selhání nezamlčí.
 - **macOS Finder `Icon\r`** — Excludováno v `.gitignore`. Pokud se objeví v `.git/refs/heads/Icon`, vyřešit dle log entry 2026-04-27.
 - **Caddy je sdílený** — před reloadem heads-up do `server-admin.md`. Reload dělá sd-server-admin.
 - **Tailwind 4 + Vite plugin Type mismatch** — `astro.config.mjs` má `/** @type {any} */` cast. Funkčně OK.
@@ -634,6 +675,12 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   a ne jako důkaz do case study.
 - **Datový check ~25. 8. 2026** — vyhodnocení srpnových zásahů: CTR refreshe (/ai-mode/, jak-vypnout-ai-overview, pripadova-studie), pozice „ai viditelnost", generate_lead lead_type=sluzba, dopad ExitRescue/inline CTA.
 - **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou; společně s Q3 snapshotem deníku megadetail (`_source/case-study-megadetail/DENIK.md`).
+- **IndexNow — zapnout po odpovědi Bingu na ticket UCM000007490076.** Detekce změn
+  je od 17. 9. 2026 opravená (`scripts/indexnow.mjs`, git místo hashů HTML) a ověřená
+  proti reálným commitům: commit, který měnil jen `blogger/`, hlásí 0 URL místo
+  dřívějších 261. Podání zůstává vypnuté, protože `api.indexnow.org` vrací 403.
+  Po vyřešení tiketu nastavit `INDEXNOW_ENABLED: "1"` v `deploy.yml` a v logu CI
+  ověřit, že se podává jednotkový počet URL a že krok neskončil varováním.
 - **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.
 - **Reálný kartový test celé chain** — volitelné, ověření že Stripe checkout UI + redirect + dekujeme stránka chodí end-to-end. Drobný 1.5 % fee zůstane při refundu.
 - **Stripe Tax (DPH)** — pokud CPU s.r.o. plátce DPH a chce automatické DPH na fakturách

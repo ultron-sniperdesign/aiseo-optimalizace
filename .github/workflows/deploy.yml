@@ -13,7 +13,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-24.04
     steps:
+      # fetch-depth: 0 — krok IndexNow potřebuje historii, aby uměl `git diff`
+      # mezi minulým a současným commitem. Mělký klon by rozsah neznal.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -31,9 +35,6 @@ jobs:
           # prázdný a BaseLayout meta/script se nevykreslí (default fallback).
           PUBLIC_GSC_VERIFICATION: ${{ secrets.PUBLIC_GSC_VERIFICATION }}
           PUBLIC_GA4_MEASUREMENT_ID: ${{ secrets.PUBLIC_GA4_MEASUREMENT_ID }}
-          # IndexNow klíč je veřejný (k ověření vlastnictví v public/<key>.txt),
-          # ale Secret nech ho dovoluje rotaci bez code change. Fallback je v astro.config.mjs.
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: npm run build
 
       - name: Setup SSH key
@@ -89,3 +90,21 @@ jobs:
           done
           echo "Smoke test nevrátil 2xx/3xx přes loopback — možná chybí Caddy blok (request je v cross-session/server-admin.md). Build a deploy proběhl, jen ne reachable."
           exit 0
+
+      # IndexNow — podá jen URL, jejichž zdroj se v tomhle pushi změnil.
+      # Detekce jde z gitu, ne z hashů zbuildovaného HTML: PUBLIC_* Secrets mění
+      # `<head>` každé stránky a `/_astro/*.HASH.css` se mění při každém zásahu do
+      # CSS (změřeno: jedna hodnota v global.css = 268 z 284 stránek). Podrobnosti
+      # v hlavičce scripts/indexnow.mjs.
+      #
+      # ⛔ PODÁNÍ JE VYPNUTÉ. api.indexnow.org vrací na tuhle doménu HTTP 403
+      # {"errorCode":"UserForbiddedToAccessSite"}; u podpory Bingu běží ticket
+      # UCM000007490076. Krok zatím jen vypíše, co by podal — detekce je tak vidět
+      # v logu, aniž by se do Bingu posílalo cokoli. Až ticket doběhne, nastav
+      # INDEXNOW_ENABLED na "1".
+      - name: IndexNow (zatím jen výpis, nepodává)
+        if: github.event_name == 'push'
+        env:
+          INDEXNOW_ENABLED: "0"
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: node scripts/indexnow.mjs --base "${{ github.event.before }}" --head "${{ github.sha }}"
