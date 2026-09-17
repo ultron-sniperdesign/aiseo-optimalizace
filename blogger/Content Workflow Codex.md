@@ -178,9 +178,16 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   > podmínka z článku udělá nepravdu, i když je zbytek správně. Tabulka to drží
   > pohromadě pro tebe i pro auditory:
   >
-  > | Tvrzení | Podmínky | Výjimky | Primární zdroj |
-  > |---|---|---|---|
-  > | Stránka může být použita v AI funkcích Googlu | indexace · způsobilost k úryvku · **zahrnutí webu** (nastavení *Search generative AI* v Search Console) | zobrazení není zaručené | odkaz na aktuální dokumentaci |
+  > | Tvrzení | Podmínky | **Konzistence** | Výjimky | Primární zdroj |
+  > |---|---|---|---|---|
+  > | Stránka může být použita v AI funkcích Googlu | indexace · způsobilost k úryvku · **zahrnutí webu** (nastavení *Search generative AI* v Search Console) | — | zobrazení není zaručené | odkaz na aktuální dokumentaci |
+  > | `alternateName` u `Organization` pomůže s alternativním názvem značky | platná strukturovaná data | **název v `Organization` se musí shodovat s názvem webu** | — | odkaz na aktuální dokumentaci |
+  >
+  > **Sloupec „Konzistence" je tam schválně.** Doporučení platformy často nestojí jen na
+  > tom, co uděláš na té stránce, ale na tom, co musí souhlasit **jinde na webu**. To
+  > není podmínka ani výjimka a v tabulce bez tohoto sloupce nemělo kam — proto se
+  > požadavek na shodu názvů v běhu 17. 9. 2026 ztratil. Prázdná buňka znamená, že jsi
+  > konzistenční požadavky hledal a žádné nejsou.
   >
   > Řádek ten příklad ukazuje i s vadou, která ho vyvolala: první rešerše (17. 9. 2026)
   > zachytila indexaci a úryvek, ale zahrnutí webu vynechala. Našel to až auditor faktů.
@@ -294,6 +301,18 @@ Projdi oba audity a u **každého nálezu** zapiš, jak jsi ho vyřešil:
 
 Záznam ulož do `blogger/research/<slug>/vyporadani.md`. Slouží jako vstup pro C5.
 
+> **„Opraveno" zapiš až po kontrole celého souboru.** Oprava výrazu nebo opakovaného
+> tvrzení skoro nikdy nesedí jen na jednom místě — stejná formulace bývá v nadpisu,
+> v tabulce, v `answer`, ve `faq` i v propsech komponent. Projeď celý `.mdx`
+> **včetně frontmatteru**:
+>
+> ```bash
+> grep -n -i "<opravovaný výraz>" src/content/articles/<slug>.mdx
+> ```
+>
+> Když některý výskyt zůstává záměrně, uveď ho ve `vyporadani.md` i s důvodem. Nezkontrolovaný
+> výskyt je horší než neopravený nález — vypořádání pak tvrdí nepravdu.
+
 > **Auditor neurčuje, rozhoduješ ty** — ale odmítnutí musí být doložené stejně jako nález.
 
 ### C5 — Závěrečný auditor (subagent, nový, nepodílel se)
@@ -311,7 +330,21 @@ U nálezů označených jako **zásadní** nestačí je označit za opravené �
 
 - **Rozsah:** jen zásadní nálezy (chybné číslo, neplatné tvrzení o platformě, nedoložený slib). Stylistika a formulace se nedoověřují.
 - **Jak:** pošli opravenou pasáž zpět auditorovi faktů s otázkou, jestli oprava obstojí. Stačí pasáž a kontext, ne celý článek.
-- **Strop: jedno kolo navíc.** Když ani po něm nálezy nezmizí, **eskaluj do vlákna na člověka**. Nepokračuj v dalších kolech — smyčka by neskončila a každé kolo stojí kontext.
+> **Před předáním auditorovi dokonči všechny související editace.** Během ověřování
+> kontrolovanou pasáž **neupravuj** — auditor by posuzoval stav, který už neplatí, a
+> vrátil by nález na něco, co je mezitím opravené. Když je změna během ověřování
+> nezbytná, ověřování zruš, změnu dokonči a pošli novou verzi.
+
+- **Strop se počítá na nález, ne na článek — ale článek má vlastní strop.**
+  - **Doověření téhož zásadního nálezu: jedno kolo navíc.** Když oprava ani po něm
+    neobstojí, eskaluj do vlákna na člověka.
+  - **Nový zásadní nález závěrečného auditora** není další kolo téhož — oprav ho a nech
+    **jednou cíleně ověřit tím auditorem, který ho našel**.
+  - **Ověření dokončené stylistické náhrady není kolo faktického auditu.**
+  - **Globální strop: nejvýš dva nové zásadní nálezy po C5 odbav sám. Třetí eskaluj**,
+    i když je nový a i kdyby byla oprava triviální. Tři nové zásadní nálezy po třech
+    auditech neznamenají tři nehody, ale že s článkem je něco systémově špatně —
+    a to je informace pro člověka, ne důvod k dalšímu kolu.
 
 ### C6 — Jazyková kontrola strojem (POVINNÁ, před buildem)
 
@@ -369,14 +402,59 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
     - `blogger/research/<slug>/` — podklady a audity tvého runu (B3, C2–C5)
     - `blogger/JAZYK_AUDIT_LOG.md` — řádek z C6, přidává se **vždy**
     - `blogger/JAZYK_SLOVNIK.md` — jen když v C6 vzniklo nové pravidlo
-    - `blogger/obsahovy-plan.csv` — uzávěr z D4 (může jít i samostatným commitem)
+    - `blogger/obsahovy-plan.csv` — **NE v publikačním commitu.** Uzávěr jde samostatným commitem až po zeleném CI, viz níže
     - `blogger/REFRESH_QUEUE.md` — **jen zápis nálezu** do tabulky „Otevřené kandidáty".
       Refresh existujícího článku neděláš, ale nález o něm zapsat smíš a máš.
 
     Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` → `git push origin main` → CI ~1–2 min
-  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); **na mobilu (375 px) projdi článek shora dolů a zkontroluj KAŽDÝ použitý typ bloku** — nic nesmí přetékat za okraj. Build ani obsahové audity přesah nechytí, pozná se jen okem. Když přeteče komponenta, ne tvůj text, **neobcházej to zkrácením obsahu** — zapiš nález do `cross-session/aiseo-optimalizace.md` pro vývojovou session (vzor: `SourceCard` a dlouhý `linkLabel`, 17. 9. 2026); očima karta + hero
+  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); **mobilní kontrola na 375 px ve dvou krocích, viz níže**.; očima karta + hero
+
+  **Mobilní kontrola (375 px) — dva kroky, nezaměňovat.**
+
+  **1. Strojově změř přesah.** Nespoléhej na oko, přesah je měřitelný. V náhledu
+  nastav viewport na **375 px** (ne 390) a spusť v konzoli:
+
+  ```js
+  (() => {
+    const vw = document.documentElement.clientWidth;
+    const klipuje = el => ['auto','scroll','hidden','clip'].includes(getComputedStyle(el).overflowX);
+    const bad = [];
+    document.querySelectorAll('main *').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || (r.right <= vw + 1 && r.left >= -1)) return;
+      let p = el.parentElement, orezano = false;
+      while (p && p !== document.documentElement) { if (klipuje(p)) { orezano = true; break; } p = p.parentElement; }
+      if (!orezano) bad.push({ tag: el.tagName.toLowerCase(), cls: (el.className||'').toString().slice(0,45) });
+    });
+    return { strankaScrollujeVodorovne: document.documentElement.scrollWidth > vw, pretekajicich: bad.length, nalez: bad.slice(0,5) };
+  })()
+  ```
+
+  Musí vrátit `pretekajicich: 0` a `strankaScrollujeVodorovne: false`. **Ověřeno
+  17. 9. 2026** oběma směry: na čistém článku vrací 0, na nasimulovaném dlouhém
+  `linkLabel` v `SourceCard` vadu chytí. Klipující předky přeskakuje schválně —
+  široká tabulka ve scrollovacím obalu není vada.
+
+  **2. Teprve pak projdi článek okem.** Nejdřív si **vypiš použité typy bloků** a
+  každý zkontroluj v čitelné velikosti shora dolů. Oko řeší to, co skript neumí
+  posoudit: čitelnost, ořez obrázků, zalomení nadpisů, pořadí prvků.
+  **Celostránkový zmenšený snímek ani šířka dokumentu vizuální kontrolu nenahrazují.**
+
+  Do reportu piš **jen skutečně provedené kontroly**. Po dokončení vrať viewport zpět.
+
+  Když přeteče komponenta a ne tvůj text, **neobcházej to zkrácením obsahu** — zapiš
+  nález do `cross-session/aiseo-optimalizace.md` pro vývojovou session.
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` nastav `Publikováno = ano` a `URL` **jen u právě publikovaného nového článku**. Přeskočené řádky neměň. Commituj.
+
+  > **Pořadí je závazné, uzávěr jde až nakonec.**
+  > 1. Commitni článek, obrázky, rešerši a audity. **Bez `obsahovy-plan.csv`.**
+  > 2. Pushni, počkej na **zelené CI** a ověř živou stránku (D3).
+  > 3. Teprve pak nastav `Publikováno = ano` + URL a udělej **samostatný commit uzávěru**.
+  >
+  > Důvod: ve sloučeném commitu tabulka tvrdí `ano` dřív, než CI doběhne — a když
+  > nasazení spadne, zůstane v plánu nepublikovaný článek označený jako publikovaný.
+  > Řádek plánu je evidence, ne předpověď.
 - **D5 — Report:** vlož URL nového článku do vlákna. Po netriviálním researchi krátký záznam do `cross-session/aiseo-optimalizace.md`.
 
 ---
