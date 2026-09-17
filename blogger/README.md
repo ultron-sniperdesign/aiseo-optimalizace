@@ -289,8 +289,6 @@ curl -s https://aiseo-optimalizace.cz/sitemap-0.xml | grep "$SLUG"
 curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+json'
 # → ≥ 2 (Article + BreadcrumbList; +FAQPage pokud frontmatter má faq; +HowTo pokud má howto)
 
-# 5. Bing — podej URL ručně (IndexNow je vypnutý, viz níže)
-# Bing Webmaster Tools → Submit URL. Automatické podávání při buildu nefunguje.
 ```
 
 ### ⛔ IndexNow je vypnutý (16. 9. 2026) — nic s ním nedělej
@@ -303,7 +301,7 @@ Důvod: `api.indexnow.org` vracel na tuhle doménu HTTP 403
 v pořádku a web je v Bing Webmaster Tools ověřený — příčina je na straně
 poskytovatele. U podpory Bingu běží ticket založený 16. 9. 2026.
 
-**Náhrada po publikaci:** Bing Webmaster Tools → **Submit URL** ručně.
+**Nic za to nenasazuj.** Ruční odesílání URL přes Bing Webmaster Tools se **nedělá** (rozhodnutí 17. 9. 2026): běžné procházení článek najde samo, sitemap se generuje při každém buildu a ruční podávání jednotlivých URL tenhle rozdíl nevyváží.
 
 Podrobnosti o vadě i postup obnovení jsou v komentáři u zakomentovaného bloku
 v `astro.config.mjs`. Až Bing ticket vyřeší, vrátí to tam správce — ne bloger.
@@ -311,7 +309,6 @@ v `astro.config.mjs`. Až Bing ticket vyřeší, vrátí to tam správce — ne 
 ### Po publikaci doporučené
 
 - **Google Search Console** → URL Inspection → „Request indexing" pro nový článek
-- **Bing Webmaster Tools** → Submit URL — **povinné u každého nového článku**, dokud je IndexNow vypnutý.
 - **Sociální sdílení** → ozvi se marketing session (`marketing/`), kdy a kam postnout
 
 ---
