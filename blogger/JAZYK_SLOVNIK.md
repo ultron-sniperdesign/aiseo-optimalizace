@@ -25,6 +25,20 @@
 | **Proč** | bez důvodu se pravidlo nezapisuje |
 | **Odkud** | slug článku a datum, kde se to poprvé objevilo |
 
+⛔ **U významově závislého výrazu nezakazuj slovo plošně.** Když o vadě rozhoduje kontext,
+zúži regex na ten kontext a do sloupce **Proč** připiš **protipříklad** ve tvaru
+`Nechytá: «správné použití»`. Bez něj nejde poznat, jestli pravidlo nezasahuje i do
+správné češtiny.
+
+Vzor z praxe (v70, 17. 9. 2026): pravidlo proti kalku *surface* zakazovalo slovo
+„povrch“ plošně a označilo i povrch, na který se používá čistič. Zúženo na digitální
+kontext (`vyhledávací povrch`, `povrch Googlu`) — `Nechytá: «povrch stolu»`.
+
+> **Stav k 17. 9. 2026:** protipříklad nemá zatím **žádné** z 313 pravidel. Týká se to
+> hlavně 82 pravidel na úrovni ⚠️, kde o vadě rozhoduje význam. Doplňuje se **při
+> úpravě pravidla**, ne plošně — u pravidla, kterého se nikdo nedotkl, není důvod
+> hádat protipříklad zpětně.
+
 ⛔ **Zavedená oborová mluva není anglicismus.** Když se výraz běžně používá i v českém prostředí oboru (marketing, vývoj, produkt), patří na úroveň ✅ — přísnost má mířit na kalky, strojové obraty a texty opsané z anglických stránek. Rozhodnuto 23. 8. 2026 u výrazů *industry-standard, best practice, benchmark, deploy, dashboard, use case*.
 
 ⛔ **Citace jsou z auditu vyňaté.** Doslovná anglická věta z oznámení výrobce je doklad, ne styl.

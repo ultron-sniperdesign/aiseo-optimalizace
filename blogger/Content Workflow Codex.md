@@ -296,7 +296,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
      - **Ano** → pravidlo do slovníku (úroveň, regex, náhrada, důvod, původ). Typicky: anglicismus s českou náhradou, typografická vada, konkrétní fráze marketingové vaty.
      - **Ne** → **žádný regex**, jen záznam v auditním logu. Typicky: vada, o které rozhoduje význam věty, doloženost tvrzení nebo to, co je kolem. Mechanické zobecnění by začalo hlásit i správnou češtinu a checker by se stal nedůvěryhodným.
 
-     Regex piš s hranicí slova `\b`, ať nechytá delší slova — drží to 299 z 313 současných pravidel (ověřeno 17. 9. 2026). Když vada závisí na kontextu, ale chceš na ni upozorňovat, patří na úroveň **⚠️** (řeší se u prvního výskytu), ne **⛔**. Slovník i článek jdou **v jednom commitu**.
+     Regex piš s hranicí slova `\b`, ať nechytá delší slova — drží to 299 z 313 současných pravidel (ověřeno 17. 9. 2026). Když vada závisí na kontextu, ale chceš na ni upozorňovat, patří na úroveň **⚠️** (řeší se u prvního výskytu), ne **⛔**. **A zúži ji na ten kontext** — plošný zákaz jednoho slova označí i správnou češtinu (pravidlo proti kalku *surface* hlásilo „povrch, na který se používá čistič"). K takovému pravidlu připiš do sloupce Proč **protipříklad** `Nechytá: «správné použití»`. Slovník i článek jdou **v jednom commitu**.
 
 > Tenhle krok je mechanický a **subagentem se nenahrazuje** — je to skript proti slovníku.
 
