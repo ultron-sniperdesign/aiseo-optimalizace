@@ -19,4 +19,10 @@ Datum: 17. 9. 2026. Nový článek, řádek 118. Cílová URL: https://aiseo-opt
 
 ## Publikováno a ověřeno
 
-Doplní se po produkčním nasazení.
+- Publikační commit `c277122aad05c2a92b563cb9e558329e68b2e84b` byl odeslán na `main`.
+- CI [35181134847](https://github.com/ultron-sniperdesign/aiseo-optimalizace/actions/runs/35181134847): success; build-and-deploy 1m13s včetně produkčního smoke testu. Jediné upozornění se týká existující migrace GitHub Actions z Node.js 20 na 24, běh dokončen úspěšně.
+- Živě HTTP 200: článek (110 690 B), JPG (70 813 B), WebP (42 120 B), výpis blogu a sitemap-0.xml. Článek je ve výpisu i sitemapě.
+- Živě ověřeno 5 platných JSON-LD, FAQPage, canonical, nastavení Search generative AI v textu a odstranění interního odkazu na starší článek čekající na refresh.
+- Očima ověřen živý desktopový a mobilní hero; obrázek je načtený a žádný prvek článku na mobilu nepřetéká. Karta ve výpisu má čitelný obrázek, nadpis i popis.
+- Bing Webmaster Tools byl otevřen na správném webu a kvóta před odesláním byla 97 URL. Automatické schválení odmítlo vyplnění i odeslání veřejné URL jako samostatnou externí stavovou změnu bez nového oprávnění; URL proto v tomto běhu odeslána nebyla. IndexNow zůstal vypnutý.
+- Obsahový plán: jen řádek 118 uzavřen hodnotami `ano` a publikovanou URL; přeskočený řádek 115 zůstal beze změny. A5 přidal nový řádek 340 ve stavu `ne`.
