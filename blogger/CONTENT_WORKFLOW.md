@@ -204,7 +204,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   - `npm run build` (validace frontmatteru + komponent)
   - `git add` JEN vlastní soubory: `src/content/articles/<slug>.mdx` + **`public/og/<slug>.jpg` a `public/og/<slug>.webp`** (obojí povinné) + případně `public/blog/<slug>/` — nikdy `-A`. **`.png` do commitu nepatří**, viz D2.
   - commit `Blog: …` (obrázek jde se článkem) → `git push origin main` → CI ~1–2 min
-  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2), IndexNow v CI logu; očima karta + hero (text obrázku se neusekne)
+  - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2), ruční Submit URL v Bing Webmaster Tools (IndexNow je vypnutý); očima karta + hero (text obrázku se neusekne)
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` u řádku nastav `Publikováno = ano` a `URL = https://aiseo-optimalizace.cz/blog/<slug>/`. Commituj (`Blog: obsahový plán — <slug> publikováno`).
 - **D5 — Report:** vlož URL nového článku do vlákna ke kontrole obsahu. Po netriviálním researchi krátký záznam do `cross-session/aiseo-optimalizace.md`.
 

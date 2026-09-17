@@ -32,7 +32,6 @@ npm run build
 
 # 4. Commit + push → CI automaticky deploynue do ~1–2 min
 git add src/content/articles/<slug>.mdx public/og/<slug>.jpg public/og/<slug>.webp
-git add .astro-indexnow-cache.json   # POVINNÉ — viz „Proč se cache commituje" níže
 git commit -m "Blog: <krátký popis článku>"
 git push origin main
 ```
@@ -218,7 +217,7 @@ npm run preview
 ### Co se stane po `git push origin main`
 
 1. **GitHub Actions workflow** `.github/workflows/deploy.yml` se spustí automaticky
-2. Kroky: `npm ci` → `npm run build` (Astro + sitemap + IndexNow) → rsync `dist/` na VPS
+2. Kroky: `npm ci` → `npm run build` (Astro + sitemap) → rsync `dist/` na VPS
 3. **Smoke test** kontroluje `curl https://aiseo-optimalizace.cz` → 200
 4. Doba: **~1–2 minuty**
 5. Po úspěchu je článek **live na `https://aiseo-optimalizace.cz/blog/<slug>/`**
@@ -241,7 +240,6 @@ Pattern: `Blog: <stručný popis> (<volitelná poznámka>)`.
 git add src/content/articles/jak-pridat-organization-schema.mdx
 git add public/og/jak-pridat-organization-schema.*        # featured image, povinné
 git add public/blog/jak-pridat-organization-schema/       # pokud máš obrázky v textu
-git add .astro-indexnow-cache.json                        # POVINNÉ, build ji přepsal
 git commit -m "Blog: jak přidat Organization schema (tutorial)"
 git push origin main
 
@@ -291,96 +289,29 @@ curl -s https://aiseo-optimalizace.cz/sitemap-0.xml | grep "$SLUG"
 curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+json'
 # → ≥ 2 (Article + BreadcrumbList; +FAQPage pokud frontmatter má faq; +HowTo pokud má howto)
 
-# 5. IndexNow — čti VÝSLEDEK, ne jen že se odesílalo
-# Hláška „[astro-indexnow] submitting N changed URLs" oznamuje jen ZAČÁTEK pokusu.
-# Závěrečné „IndexNow submission complete" se vypíše VŽDY, i když všechny batche
-# selhaly — ověřeno ve zdroji knihovny 16. 9. 2026: `saveCache` i ta hláška jsou
-# mimo jakoukoli kontrolu úspěchu. Skutečný výsledek nese jen warn mezi nimi:
-#   „[astro-indexnow] batch N failed (403)"       ← HTTP chyba
-#   „[astro-indexnow] batch N submission failed"  ← síťová chyba
-# Když je v logu warn, odeslání NEPROBĚHLO. Cache si URL přesto zapsala jako
-# hotovou, takže se příštím buildem samo NEZOPAKUJE — musíš ji podat ručně.
+# 5. Bing — podej URL ručně (IndexNow je vypnutý, viz níže)
+# Bing Webmaster Tools → Submit URL. Automatické podávání při buildu nefunguje.
 ```
 
-### Proč se `.astro-indexnow-cache.json` commituje
+### ⛔ IndexNow je vypnutý (16. 9. 2026) — nic s ním nedělej
 
-CI build je ephemeral — checkoutne repo a nic si nepamatuje. Cache v repu mu říká,
-které URL už šly do IndexNow. **Když se cache necommitne, každý build považuje celý
-web za nový a znovu podá všechny URL.** Po čase to IndexNow odmítne (HTTP 403) a
-protože integrace chybu jen warnuje, nikdo si toho nevšimne.
+Integrace v `astro.config.mjs` je **zakomentovaná**, build ji nevolá a v logu po ní
+nic nezbylo. Nehledej ji, neřeš ji a nezkoušej URL podávat ručně.
 
-> **Stav k 16. 9. 2026 — necommitnutá cache se reálně děje.** Cache je naposled
-> commitnutá **17. 5. 2026 s 39 URL**, v pracovním stromu jich je **277**. Rozdíl
-> 238 URL se podává znovu při každém buildu už čtyři měsíce. `.gitignore` má na
-> řádku 58 výjimku `!.astro-indexnow-cache.json`, takže úmysl sledovat ji gitem tam
-> je — jen ji publikační postup nikdy nedával do `git add`. **Tohle opravit je
-> správně bez ohledu na cokoli dalšího.**
+Důvod: `api.indexnow.org` vracel na tuhle doménu HTTP 403
+`{"errorCode":"UserForbiddedToAccessSite"}` u každého podání. Klíč je přitom
+v pořádku a web je v Bing Webmaster Tools ověřený — příčina je na straně
+poskytovatele. U podpory Bingu běží ticket založený 16. 9. 2026.
 
-> **Commitnuto 16. 9. 2026 (`44c6345`) — a NEFUNGUJE to.** Dva nasledujici CI buildy
-> hlasily shodne `submitting 261 changed URLs`, druhy z nich (`e925d7e`) pritom
-> nemenil jedinou stranku webu — jen soubory v `blogger/`, ktere se nedeployuji.
-> Kdyby cache fungovala, bylo by tam `submitting 0`.
->
-> **Proc:** cache porovnava **sha256 zbuildovaneho `index.html`**, ne seznam URL.
-> Baseline v repu pochazi z lokalniho buildu a CI produkuje jine hashe. CI je navic
-> ephemeral a svoji verzi cache nikam nezapisuje, takze se to nesrovna nikdy.
->
-> **Rucni commit cache tedy problem neresi** a `git add` vyse ji drzi jen proto, aby
-> se stav neztracel. Skutecna oprava je na spravci: bud cache po buildu commituje
-> bot, nebo se detekce zmen prestane opirat o hash HTML. Dokud to plati, bude kazdy
-> build podavat stovky URL znovu.
+**Náhrada po publikaci:** Bing Webmaster Tools → **Submit URL** ručně.
 
-> ### ⛔ IndexNow pro tento web teď NEFUNGUJE — nezkoušej to obcházet
->
-> Ověřeno ručním podáním 16. 9. 2026 (`jazykove-mutace-pro-ai`, stránka živá, HTTP 200):
->
-> ```
-> {"errorCode":"UserForbiddedToAccessSite",
->  "message":"User is unauthorized to access the site. Please verify the site using the key and try again"}
-> → HTTP 403
-> ```
->
-> **Klíč za to nemůže — ověřeno vyčerpávajícím způsobem** týž den:
-> `/929226a175c657aac3ba73a765ee364d.txt` vrací HTTP 200, `content-type: text/plain`,
-> obsah je přesně 32 bajtů shodných s klíčem (bez BOM, bez koncového odřádkování,
-> ověřeno přes `xxd`), `www` varianta dělá 301 na apex. **Zpráva od API tě posílá
-> klíč ověřovat — je to slepá ulička, tudy to nevede.**
->
-> **Příčina není známá.** Odmítnutí je na straně poskytovatele, ne v repu. Podezření
-> padá na to, že se čtyři měsíce při každém buildu znovu podávalo 238 URL (viz cache
-> výš) a host se tím zablokoval — **je to ale jen hypotéza, chybová hláška ji
-> nepotvrzuje.** Ověřit se dá jen z účtu v Bing Webmaster Tools.
->
-> **Co z toho plyne pro psaní článků:** IndexNow je momentálně rozbitý pro **celý
-> web**, ne pro tvůj článek. Nepodávej URL ručně, nezkoušej to opakovaně a neřeš to
-> v rámci runu — jen to zapiš do reportu. Řeší to správce. Do té doby použij **Bing
-> Webmaster Tools → Submit URL** ručně.
-
-
-### Když IndexNow selže
-
-1. **Nezkoušej ověřovat klíč** — je ověřený (viz blok výš) a API tě tam posílá zbytečně.
-2. **Rebuild nepomůže** — cache už URL eviduje jako podanou, takže další build napíše
-   „no changed URLs detected, skipping submission".
-3. **Ruční podání teď taky nepomůže** — vrací stejné 403 pro celý web, ověřeno.
-4. **Zapiš to do reportu a pokračuj.** IndexNow je urychlovač indexace, ne podmínka
-   publikace. Náhrada je Bing Webmaster Tools → Submit URL.
-
-Až bude blokace vyřešená, ruční podání jedné URL vypadá takto (**neopakovat, jednou**):
-
-```bash
-curl -sS -w '\n%{http_code}\n' \
-  "https://api.indexnow.org/indexnow?url=https://aiseo-optimalizace.cz/blog/<slug>/&key=929226a175c657aac3ba73a765ee364d"
-# 200 nebo 202 = přijato
-```
-
-> **Publikace je hotová po úspěšném deployi a kontrole veřejné stránky (kroky 1–4).**
-> Odeslání do IndexNow vykazuj zvlášť — není součástí definice hotového článku.
+Podrobnosti o vadě i postup obnovení jsou v komentáři u zakomentovaného bloku
+v `astro.config.mjs`. Až Bing ticket vyřeší, vrátí to tam správce — ne bloger.
 
 ### Po publikaci doporučené
 
 - **Google Search Console** → URL Inspection → „Request indexing" pro nový článek
-- **Bing Webmaster Tools** → Submit URL — **udělej to vždycky, když v logu byl warn o selhaném batchi.** Formulace „IndexNow už podaný" platí jen tehdy, když log žádný warn neobsahoval.
+- **Bing Webmaster Tools** → Submit URL — **povinné u každého nového článku**, dokud je IndexNow vypnutý.
 - **Sociální sdílení** → ozvi se marketing session (`marketing/`), kdy a kam postnout
 
 ---

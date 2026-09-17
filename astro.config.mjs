@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import indexnow from "astro-indexnow";
+// import indexnow from "astro-indexnow";  // vypnuto 16. 9. 2026, viz blok integraci nize
 import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 import rehypeExternalLinks from "rehype-external-links";
@@ -193,15 +193,25 @@ export default defineConfig({
       // Google `lastmod` používá, pokud je konzistentně přesné — přesně to děláme.
       lastmod: new Date(),
     }),
-    // IndexNow — push změněných URL při buildu na Bing, Yandex, Seznam, Naver, Yep.
-    // Key je VEŘEJNÝ (k ověření vlastnictví je v `public/<key>.txt`), takže fallback
-    // přímo v configu není leak. Env var dovoluje rotaci klíče bez code change.
-    // Cache `.astro-indexnow-cache.json` MUSÍ být commitnutá (CI build = ephemeral,
-    // bez cache by se každý build chápal jako první a re-submitoval všechny URL).
-    indexnow({
-      key:
-        process.env.INDEXNOW_KEY || "929226a175c657aac3ba73a765ee364d",
-    }),
+    // ⛔ IndexNow VYPNUTO 16. 9. 2026 — api.indexnow.org vraci na tuto domenu
+    // HTTP 403 {"errorCode":"UserForbiddedToAccessSite"} u kazdeho podani.
+    // Klic je v poradku (public/<key>.txt vraci 200, text/plain, presne 32 bajtu
+    // shodnych s klicem, dostupny i pro bingbot) a web je v Bing Webmaster Tools
+    // overeny a sbira data. Pricina je na strane poskytovatele — u podpory Bingu
+    // bezi ticket zalozeny 16. 9. 2026.
+    //
+    // Druha, nezavisla vada: detekce zmen porovnava sha256 zbuildovaneho
+    // index.html. Baseline v repu je z lokalniho buildu, CI produkuje jine hashe
+    // a svoji verzi cache nikam nezapisuje → kazdy build hlasil 261 zmenenych URL
+    // misto skutecne zmenenych. Tohle plati i po vyreseni 403 a musi se vyresit
+    // zvlast (bot commit cache po buildu, nebo jina detekce zmen).
+    //
+    // OBNOVENI: az Bing ticket vyresi, odkomentuj blok nize a vrat import na
+    // radku 5. Klic, cache i balicek zustavaji na miste, nic dalsiho netreba.
+    // indexnow({
+    //   key:
+    //     process.env.INDEXNOW_KEY || "929226a175c657aac3ba73a765ee364d",
+    // }),
   ],
   vite: {
     // Cast: @tailwindcss/vite a astro/vite mohou mít odlišný Plugin<any> typ
