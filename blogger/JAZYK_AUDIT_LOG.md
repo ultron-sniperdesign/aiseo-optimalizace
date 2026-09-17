@@ -1354,3 +1354,25 @@ Přijato: „dává u obou příklad" → „u obou uvádí příklad" · „0 k
 - Podklady: research/delka-obsahu-pro-ai/audit-jazyk.md a vyporadani.md.
 - C5: dvě drobná zpřesnění (samostatná praktická odpověď v leadu, definice délky počtem slov) přijata. Obě závisejí na obsahu a významu, bez regexu. Finální C6: 1 698 slov, 0 nálezů.
 - Závěrečná kontrola názvosloví: „Objednejte AI SEO audit“ → „Objednejte Audit AI viditelnosti“, podle aktuálního názvu služby v src/content/pages/audit.ts a projektového záznamu ze 16. 9. 2026. Bez regexu, produktové pojmenování; checker 0.
+
+## Nový článek — 2026-09-17 — chatbot-na-webu-a-ai-viditelnost
+
+- Původní text: 1 900 slov, mechanicky 0 nálezů při 275 pravidlech, slovník v70. Ruční C3: 12 nálezů + 3 doporučení, všech 15 přijato. Povinné nálezy 6,3 / 1 000 slov; včetně doporučení 7,9 / 1 000 slov.
+- J1 „doloženou zárukou“ → „nezaručuje“; významová záměna důkazu a slibu.
+- J2 „pro Fin“ → „jeho AI asistent Fin“; samostatná srozumitelnost FAQ.
+- J3 „kde odpověď žije“ → zda je jen v chatu, nebo na veřejné stránce; odstraněna neurčitá metafora.
+- J4 „import nepopisuje“ → „popis importu nedokládá“; správný podmět a mez důkazu.
+- J5 „provádět interakce“ → klikat nebo psát do formulářů; konkrétní činnost a správný aktér.
+- J6 „rozdělení znalostí a publikace“ → rozdíl mezi podklady a veřejnými články.
+- J7 „režim unlisted, tedy článek“ → článek v režimu unlisted; neurčitá „kontrola“ nahrazena dohledatelností URL.
+- J8 „Doporučené veřejné místo“ → „Kde má být informace dostupná“; zákaznický účet už nespadá pod veřejná místa.
+- J9 „opakovatelný problém“ → otázka společná dalším zákazníkům; významový rozdíl reprodukovatelnosti a obecnosti.
+- J10 „existující místo: produkt, dopravu“ → konkrétní stránky a sekce; doplněn chybějící význam.
+- J11 „spravovatelná odpověď“ a „citace externí AI“ → aktualizovatelný text na určeném místě a jasná věta, že AI cituje stránku.
+- J12 „potřebujete promyšlený veřejný obsah“ → zveřejněte odpovědi, které mají být dohledatelné mimo chat; zpřesněn rozsah doporučení.
+- D1 FAQ a HTML vysvětleny, description používá český opis FAQ. D2 konkrétní H2 „Podklady chatbotu mohou zůstat neveřejné“. D3 interakce pojmenovány jako kliknutí a odeslání otázky.
+- C2 F2: popis interního odkazu opraven podle skutečného obsahu cíle; F3 dobrovolně zpřesněn Googlebot a přidán Google-Agent. F1 auditor stáhl po kontrole specifického pravidla seoTitle do 60 znaků.
+- Žádné nové regexy: všechny vady závisí na větném významu nebo obsahu cíle; nezakazujeme samostatná správná slova. Slovník v70 beze změny.
+- Po C4: 2 004 slov, mechanická C6 0 nálezů včetně varování. Detail každého bodu v research/chatbot-na-webu-a-ai-viditelnost/vyporadani.md.
+- C5-02: odstraněn opakovaný příklad kliknutí ze sousední věty. C5-03: „další podmínka“ → „základní podmínky Googlu“, aby věta nenaznačovala zvláštní technickou podmínku AI funkcí. Kontextové opravy bez regexu. C5-01 o délce seoTitle odmítnut proti přesnému C1b do60; nejde o jazykový nález.
+- Finální C6 po C5: 2 001 slov, 0 nálezů včetně varování. Druhý build úspěšný.
