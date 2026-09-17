@@ -59,3 +59,5 @@ _source/products/pack/output/
 
 # OG obrázky: .png je jen pracovní mezikrok (blogger/CONTENT_WORKFLOW.md D2) — do repa jde .jpg a .webp
 public/og/*.png
+# osirely hero slot (commit cb1e3f8) — na zadny soubor hero-* uz nic neodkazuje
+public/og/hero-*
