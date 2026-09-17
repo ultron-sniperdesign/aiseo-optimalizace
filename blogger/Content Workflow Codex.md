@@ -120,6 +120,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
 - **A4 — Porovnání s tabulkou:** grepni `obsahovy-plan.csv` na řádky `Publikováno = ne` → nepřidávej, co už čeká.
 - **A5 — Zápis 1 nového řádku** do `obsahovy-plan.csv` (změna z 15. 9. 2026 — dřív dva). Vyplň A–E (**D = kategorie** ze čtveřice `tutorial`/`analysis`/`defensive`/`case-study`, E = `ne`), F nech prázdné. Důvod: dvě témata na jeden publikovaný článek frontu soustavně nafukují; k 15. 9. 2026 v ní čeká 145 položek proti 192 publikovaným. **Přidávej podle hodnoty tématu, ne pro splnění kvóty** — když v daném běhu nenajdeš nic, co by stálo za zařazení, nepřidávej nic a napiš to do reportu.
+
+  **U analytických témat rozlišuj tři věci a nepiš je do jedné věty:**
+  1. **Otázka**, kterou má článek zodpovědět → sloupec B (Téma).
+  2. **Teze k ověření** → sloupec C, uveď ji návěštím **`Teze:`**, ne `Data:`.
+  3. **Doložená skutečnost** → sloupec C jako **`Data:`**, ale jen když k ní máš zdroj
+     nebo vlastní měření, a ten zdroj rovnou uveď.
+
+  Návěští `Data:` u nedoloženého tvrzení je past pro toho, kdo bude řádek zpracovávat —
+  vezme ho jako hotové zadání a postaví na něm článek.
   - Přidávej jen témata pro **nový článek bez obsahové duplicity**. Pokud zjištění patří do aktualizace existujícího článku, zapiš nález a jeho URL do `research/<slug>/research.md` a závěrečného projektového záznamu podle D5; článek neupravuj a nezakládej jeho duplicitní náhradu.
 - **A6 — CZ-ukotvení:** kde to dává smysl, ukotvi title/answer geograficky („v Česku", „pro český trh"). Z měření: ChatGPT u obecných dotazů cituje globální EN zdroje.
 
@@ -130,6 +139,20 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **B1 — Výběr tématu:** vezmi **první volný řádek pro nový článek** (`Publikováno = ne`), který po kontrole Pokynů a překryvu s webem nevyžaduje aktualizaci existujícího obsahu. Pořadí plánu zachovej; **žádná mimořádná přednost neplatí**.
 
   > **Nejdřív přečti sloupec C (Pokyny).** Řádky s pokynem *refresh / update / aktualizovat existující / nepsat nový* **přeskoč a ponech beze změny**, včetně stavu publikace a URL. Patří jinému nástroji; neoznačuj je jako hotové. Stejně postupuj, pokud až kontrola překryvu ukáže, že téma vyžaduje aktualizaci existujícího článku. Důvod přeskočení zapiš do podkladů svého běhu a pokračuj dalším způsobilým řádkem. Pokud žádný nezbývá, oznam nedostatek témat pro nový článek; nenahrazuj úkol refreshem ani duplicitou.
+
+  > **Pokyn v plánu je teze k ověření, ne doložený fakt.** Sloupec C u 218 z 338 řádků
+  > začíná návěštím „Data:" a rovnou tvrdí závěr (ověřeno 17. 9. 2026; návěští „Teze:"
+  > mají jen 2 řádky). To návěští neznamená, že je tvrzení doložené — znamená, že ho
+  > někdo považoval za pravděpodobné, když řádek zakládal.
+  >
+  > **Teze z plánu proto vždy ověř v B2 a piš závěr podle zdrojů, ne podle plánu.**
+  > Když ji zdroje nepotvrdí, uprav závěr článku a **rozdíl zapiš do `research.md`** — jinak se
+  > stejná neověřená teze vrátí příště v dalším řádku.
+  >
+  > **Pozor na záměnu „nedoloženo" za „prokázaně nulové".** Že se nenašla univerzální
+  > hodnota, neznamená, že daná věc nemá vliv. Formuluj to, co zdroje unesou: *nemáme
+  > doložený univerzální počet slov* není totéž jako *na délce nezáleží*. Tahle záměna
+  > je nejčastější vada zděděná z plánu.
 - **B2 — Hloubkový research tématu:** cílený web search (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na Marketing Mineru (hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
 - **B3 — Uložení podkladů:** kurátorovaný záznam ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, Trends, poznámky o konkurenci, **zdroje s URL**). Hrubé dumpy do repa nedávej. Složka `research/` je mimo `src/` a `public/`, nedeployuje se.
 
@@ -339,7 +362,6 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 
 ## 🚫 Pravidla a hranice (no-go)
 
-- **Existující soubory upravuj přímo.** Nevytvářej fyzické záložní kopie (`.bak`, `.bak2`, kopie s časovou značkou, `-old` apod.). Historii sledovaných souborů zajišťuje Git; záložní kopii vytvoř jen na výslovnou žádost uživatele. Toto pravidlo neruší požadované samostatné podklady a auditní výstupy v `research/<slug>/`.
 - **Edituji:** `src/content/articles/<slug>.mdx`, `public/blog/<slug>/`, `public/og/<slug>.jpg` + `.webp`, `blogger/obsahovy-plan.csv`, `blogger/research/<slug>/`. Importuji (ne edituji) komponenty z `src/components/blocks/`.
 - **NESahám** na `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`, `src/content/sections|pillar/`, `_source/`, `worker/`, `astro.config.mjs`, `package.json`, `.github/`, `CLAUDE.md`.
 - **Neaktualizuji již publikované články.** Refreshe řeší jiný nástroj; související nález pouze doložím v podkladech a projektovém záznamu.

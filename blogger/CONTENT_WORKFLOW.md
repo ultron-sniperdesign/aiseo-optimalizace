@@ -109,6 +109,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
 - **A4 — Porovnání s tabulkou:** projdi `obsahovy-plan.csv` (řádky `Publikováno = ne`) → nepřidávej, co už čeká.
 - **A5 — Zápis ≥ 2 nových řádků** do `obsahovy-plan.csv` (formát sloupců viz legenda níže). Vyplň A–E (**D = kategorie** ze čtveřice `tutorial`/`analysis`/`defensive`/`case-study`, E = `ne`), F nech prázdné.
+
+  **U analytických témat rozlišuj tři věci a nepiš je do jedné věty:**
+  1. **Otázka**, kterou má článek zodpovědět → sloupec B (Téma).
+  2. **Teze k ověření** → sloupec C, uveď ji návěštím **`Teze:`**, ne `Data:`.
+  3. **Doložená skutečnost** → sloupec C jako **`Data:`**, ale jen když k ní máš zdroj
+     nebo vlastní měření, a ten zdroj rovnou uveď.
+
+  Návěští `Data:` u nedoloženého tvrzení je past pro toho, kdo bude řádek zpracovávat —
+  vezme ho jako hotové zadání a postaví na něm článek.
 - **A6 — Refresh kadence 2:1 (od 2026-07-21):** po každých **2 nových článcích** odbav **1 refresh** z `blogger/REFRESH_QUEUE.md` (postup i priority tam). Důvod: baseline citací ukázala, že AI Mode/ChatGPT citují čerstvý obsah — starší články padají z citací na freshness.
 
   > ⚠️ **Refreshe dělá výhradně tahle (Claude) větev** — rozhodnutí z 15. 9. 2026. Codexová varianta (`Content Workflow Codex.md`) je má vypnuté a píše jen nové články. Fronta v `REFRESH_QUEUE.md` tedy stojí a padá na tomhle bloku; když ho vynecháš, neodbaví ji nikdo jiný. K 15. 9. 2026 v ní čeká 57 položek.
@@ -121,6 +130,20 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **B1 — Výběr tématu:** vezmi **první volný řádek** (`Publikováno = ne`). K 15. 9. 2026 jich čeká 145 a **žádná mimořádná přednost neplatí** — jede se pořadí fronty.
 
   > **Nejdřív přečti sloupec C (Pokyny).** Některé řádky mají varování: kanibalizace, „updatovat existující místo nového", riziko překryvu s pilířem. Pokud pokyn říká *nepsat / updatovat existující*, vyřeš řádek podle něj (např. UPDATE `geo-optimalizace.mdx` + bump `updated:`), ne slepě nový článek. Když řádek vyústí v „nepsat", nastav `E` smysluplně a přejdi na další volný.
+
+  > **Pokyn v plánu je teze k ověření, ne doložený fakt.** Sloupec C u 218 z 338 řádků
+  > začíná návěštím „Data:" a rovnou tvrdí závěr (ověřeno 17. 9. 2026; návěští „Teze:"
+  > mají jen 2 řádky). To návěští neznamená, že je tvrzení doložené — znamená, že ho
+  > někdo považoval za pravděpodobné, když řádek zakládal.
+  >
+  > **Teze z plánu proto vždy ověř v B2 a piš závěr podle zdrojů, ne podle plánu.**
+  > Když ji zdroje nepotvrdí, uprav závěr článku a **rozdíl zapiš do podkladů runu** — jinak se
+  > stejná neověřená teze vrátí příště v dalším řádku.
+  >
+  > **Pozor na záměnu „nedoloženo" za „prokázaně nulové".** Že se nenašla univerzální
+  > hodnota, neznamená, že daná věc nemá vliv. Formuluj to, co zdroje unesou: *nemáme
+  > doložený univerzální počet slov* není totéž jako *na délce nezáleží*. Tahle záměna
+  > je nejčastější vada zděděná z plánu.
   >
   > **Když přednost vznikne**, zapíše se sem jako samostatný odstavec s datem. Po splnění se odsud **maže** — historie zůstane v `blogger/PRIORITA_<datum>.md`. (Dvě splněné přednosti z 26. 8. a 2. 9. 2026 odsud odstraněny 15. 9. 2026.)
 - **B2 — Hloubkový research tématu:** cílený `WebSearch` na vybrané téma (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na **Marketing Miner** (přesná hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
