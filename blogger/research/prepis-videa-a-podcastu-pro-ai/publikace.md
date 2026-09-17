@@ -17,6 +17,15 @@ Datum: 17. 9. 2026. Nový článek, řádek 117. Cílová URL: https://aiseo-opt
 - Interní odkaz `/blog/ai-seo-content/`, u kterého měl auditor problém s webovým nástrojem, nezávisle ověřen HTTP 200.
 - Před publikací fetch origin/main: 0 commitů rozdílu. Změny jiných prací nepřibírány.
 
-## Zbývající kroky
+## Publikováno a ověřeno
 
-Commit/push a CI, živé HTTP+HTML+vizuální kontroly, ruční Bing Submit URLs, uzávěr řádku 117 a projektový záznam. Stav se doplní po skutečném provedení.
+- Publikační commit `094378c701a0b36b2e38c71708294c6547e4bbba`, push na main úspěšný.
+- CI [35179124969](https://github.com/ultron-sniperdesign/aiseo-optimalizace/actions/runs/35179124969): success, build-and-deploy 1m11s, včetně produkčního smoke testu.
+- Živě HTTP 200: článek (110 344 B), JPG (77 903 B), WebP (38 356 B), výpis blogu a sitemap-0.xml. Článek uveden ve výpisu i sitemapě.
+- Živě ověřeno všech 6 JSON-LD, canonical a všechny tři poslední opravy C5.
+- Očima ověřen živý desktopový nadpis a celý hero; mobilní karta ve výpisu má čitelný nadpis, ilustraci i popis bez ořezu. Obrázek je skutečně načtený. Mobilní článek a tabulka byly ověřeny již lokálně před publikací.
+- Bing Webmaster Tools → URL Submission → Submit URLs: ručně odeslána nová URL, potvrzena v seznamu `Today at 05:44`, kvóta 98 → 97. Jde o přijetí URL, nikoli důkaz indexace. IndexNow nezapínán.
+- Obsahový plán: pouze řádek 117, E = ano, F = publikovaná URL; ostatní řádky beze změny. Nové téma v A5 nepřidáno.
+- CI upozorňuje na Node 20 runtime v akcích checkout/setup-node; běh dokončen úspěšně. Jde o existující konfiguraci mimo publikační scope, neupravována.
+
+Hotový článek: https://aiseo-optimalizace.cz/blog/prepis-videa-a-podcastu-pro-ai/
