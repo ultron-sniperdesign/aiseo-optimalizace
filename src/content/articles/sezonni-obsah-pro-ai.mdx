@@ -1,0 +1,148 @@
+---
+title: "Sezónní obsah a AI: jednu URL, nebo každý rok novou?"
+seoTitle: "Sezónní obsah: proč zachovat jednu URL pro každý rok"
+description: "Jak zacházet se stránkou pro Vánoce, Black Friday nebo výprodej: kdy držet jednu URL, co změnit před sezónou a co zobrazit po skončení akce."
+answer: "Sezónní obsah je stránka určená pro pravidelně se vracející období, například Vánoce, Black Friday nebo povánoční výprodej. U opakované akce používejte jednu stabilní URL a aktualizujte nabídku, datum i odkazy. Novou adresu založte jen tehdy, když jde o jednorázovou událost nebo samostatný archiv s trvalou hodnotou."
+slug: "sezonni-obsah-pro-ai"
+category: "analysis"
+tags:
+  - "obsah"
+  - "eshopy"
+published: "2026-09-17"
+updated: "2026-09-17"
+keywords:
+  - "sezónní obsah"
+  - "sezónní SEO"
+  - "black friday stránka"
+  - "black friday 2026"
+  - "vánoční nabídka e-shopu"
+  - "povánoční výprodej"
+  - "sezónní stránka jedna URL"
+  - "sezónní obsah pro AI"
+variant: "rich"
+faq:
+  - q: "Má mít Black Friday každý rok novou URL?"
+    a: "Ne, pokud jde každý rok o stejný typ akce. Google doporučuje opakovanou adresu bez roku, například /akce/black-friday místo nové adresy /akce/black-friday-2026. Na stejné stránce měňte aktuální nabídku, termín a odkazy."
+  - q: "Může být rok v titulku, když není v URL?"
+    a: "Ano. Stabilní URL může zůstat bez roku, zatímco viditelný nadpis a titulek stránky uvedou aktuální rok. Rok změňte až při skutečné aktualizaci nabídky; starý rok ani neplatnou slevu na stránce nenechávejte."
+  - q: "Co má být na sezónní stránce po skončení akce?"
+    a: "Napište, že akce skončila, odstraňte neplatné ceny a kupony a nabídněte užitečné odkazy, například na hlavní kategorie nebo informace o příštím ročníku. Pokud se akce vrátí a stránka nabízí užitečné informace, ponechte ji dostupnou se stavem 200 a zpravidla indexovatelnou. Prázdnou kategorii bez užitečného obsahu lze dočasně vyřadit z výsledků; před další sezónou ale počítejte s časem na nové zařazení. Trvale zrušenou kategorii bez náhrady lze odstranit."
+  - q: "Jak brzy před sezónou stránku zveřejnit?"
+    a: "Google doporučuje vytvořit sezónní stránku s předstihem, aby ji jeho robot stihl najít a zařadit. Pevný počet dnů neurčuje. Začněte na stránku odkazovat z běžně navštěvovaných částí webu dřív, než poptávka dosáhne vrcholu."
+  - q: "Stačí změnit datum aktualizace?"
+    a: "Nestačí. Viditelné datum a údaj `dateModified` ve strukturovaných datech změňte až po významné úpravě stránky. Údaj o poslední významné změně (`lastmod`) v mapě webu musí být také přesný; Google mezi příklady uvádí změnu hlavního obsahu, strukturovaných dat nebo odkazů. Samotné přepsání data z neplatné nabídky aktuální stránku neudělá."
+  - q: "Pomůže jedna sezónní URL i v AI odpovědích?"
+    a: "Může usnadnit nalezení aktuální stránky, ale citaci nezaručuje. Google uvádí, že jeho generativní funkce využívají index Vyhledávání a opírají se o běžné postupy SEO. Stránka musí být indexovaná, způsobilá k zobrazení s úryvkem a web musí mít v Search Console povolené zahrnutí v nastavení Search generative AI."
+---
+
+import SourceCard from "~/components/blocks/SourceCard.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Sezónní obsah je stránka určená pro pravidelně se vracející období, například Vánoce, Black Friday nebo povánoční výprodej.** U opakované akce používejte jednu stabilní URL a aktualizujte nabídku, datum i odkazy. Novou adresu založte jen tehdy, když jde o jednorázovou událost nebo samostatný archiv s trvalou hodnotou.
+
+Sezónní poptávka nepřichází rovnoměrně. Marketing Miner 17. září 2026 odhadoval u dotazu „black friday“ průměrnou měsíční hledanost 13 000. Pro listopad 2025 však uváděl měsíční odhad 110 000; u dotazu „vánoční dárky“ pak 26 000 v listopadu i prosinci. Jde o [modelovanou hledanost](https://help.marketingminer.com/cs/clanek/hledanost-klicovych-slov-api/), nikoli o přesně pozorovaný počet dotazů. Kvůli krátkému vrcholu je nepraktické každý rok čekat, až vyhledávače novou adresu objeví a zařadí.
+
+## U <span class="hl">opakované akce</span> držte <strong>jednu stabilní URL</strong>
+
+Google u Black Friday a Cyber Monday doporučuje vytvořit vstupní stránku včas a pro každý další ročník použít stejnou popisnou URL bez roku. Jeho příklad staví `/sale/black-friday` proti každoročně nové `/sale/2020/black-friday`.
+
+<SourceCard badge="Google Search Central" href="https://developers.google.com/search/blog/2020/10/best-practices-black-friday" linkLabel="Doporučení pro stránky Black Friday">
+Google radí stránku založit s předstihem, odkázat na ni z domovské stránky, použít opakovanou URL bez roku a po významné úpravě požádat o nové projití.
+</SourceCard>
+
+Na stejnou URL dál vedou dosavadní interní i externí odkazy a vyhledávač nemusí každý rok objevovat novou adresu. Samotné stáří URL však lepší pozici nezaručuje. Každý rok tak nezačínáte s novou stránkou, kterou musí robot znovu objevit a posoudit.
+
+Rada platí, když se opakuje stejný **účel stránky**. Vánoční dárky, Black Friday nebo letní výprodej se vracejí ve stejné roli, i když se produkty a podmínky mění. Jednorázové výročí firmy, neopakovatelná konference nebo výsledky konkrétního ročníku mohou mít vlastní adresu, protože jejich obsah zůstane historickým záznamem.
+
+## <span class="hl">Rok</span> patří do aktuálního obsahu, <strong>ne do adresy</strong>
+
+Stabilní adresa neznamená nadčasový text. Naopak: viditelný nadpis, úvod, nabídka, termín, dostupnost i obrázek musí odpovídat právě probíhající sezóně. Rok 2026 může být v titulku a v textu, i když URL zůstane `/black-friday/`.
+
+<CompareTable
+  leftLabel="Opakovaná stránka"
+  rightLabel="Samostatná stránka"
+  leftTone="accent"
+  rightTone="aeo"
+  rows={[
+    { icon: "↻", label: "Black Friday", left: "Jedna URL bez roku, každý rok nová nabídka", right: "Archiv výsledků ročníku jen tehdy, když má trvalou informační hodnotu" },
+    { icon: "🎄", label: "Vánoce", left: "Stálý rozcestník s tipy na dárky nebo s vánoční nabídkou", right: "Jednorázový článek o konkrétní kampani či průzkumu" },
+    { icon: "%", label: "Výprodej", left: "Opakovaná sezónní kategorie, do které se každý rok vracejí produkty", right: "Jednorázový doprodej sortimentu, který se už nevrátí" },
+  ]}
+/>
+
+Nevytvářejte vedle sebe stránky pro roky 2024, 2025 a 2026 se skoro stejným obsahem. Google ve svém průvodci pro generativní vyhledávání doporučuje omezovat duplicity a varuje před vytvářením samostatné stránky pro každou variantu dotazu jen kvůli ovlivnění pořadí nebo generativních odpovědí. Jedna aktuální vstupní stránka je pro opakovaný účel srozumitelnější než řada starých kopií.
+
+Pokud už více ročních adres existuje, vyberte jednu dlouhodobou adresu a skutečně duplicitní stránky na ni trvale přesměrujte. Historický článek s vlastními daty ponechte jako archiv a zřetelně ho označte rokem. Obě situace nelze řešit jedním automatickým pravidlem.
+
+## Mimo sezónu musí <span class="hl">stránka</span> dál <strong>říkat pravdu</strong>
+
+Po skončení akce odstraňte neplatný kupon, starou cenu a tvrzení „končí dnes“. Stránka může zůstat dostupná s oznámením, že akce skončila, s obecnými informacemi a s odkazy na aktuální kategorie. Pokud znáte datum dalšího ročníku, uveďte ho. Pokud ho neznáte, nehádejte.
+
+<Insight tone="warn" label="Stabilní URL neznamená povinnost držet prázdnou stránku">
+Zachovat URL pro příští ročník není totéž jako držet ji stále v indexu. Pokud stránka mimo sezónu nabízí pravdivé a užitečné informace, ponechte ji se stavem 200 a zpravidla indexovatelnou. U prázdné kategorie bez užitečného obsahu lze zvážit vyřazení z výsledků pomocí direktivy `noindex`; před další sezónou pak počítejte s časem na nové zařazení. Stav 404 či 410 dává smysl až tehdy, když kategorii rušíte, odstranili jste ji i z interního procházení a nemá náhradu.
+</Insight>
+
+Rozhodněte podle role stránky:
+
+- **Vrátí se stejná akce a stránka má užitečný mimosezónní obsah:** ponechte URL se stavem 200 a zpravidla indexovatelnou; oznamte konec akce a nabídněte užitečné odkazy nebo známý termín návratu.
+- **Obsah je hodnotný jako záznam:** vytvořte nebo zachovejte archiv s rokem a odkažte na hlavní opakovanou stránku.
+- **Akce se nevrátí a stránka nemá nástupce:** odstraňte ji; starý obsah nevydávejte za aktuální.
+- **Existuje přímý nástupce se stejným účelem:** použijte trvalé přesměrování na něj, ne automaticky na domovskou stránku.
+
+U e-shopu zkontrolujte také produktová data. [Google Merchant Center](https://support.google.com/merchants/answer/6324460) umožňuje k akční ceně přidat interval `sale_price_effective_date` včetně času a časového pásma. Po skončení akce musí údaje na webu, produktová data pro Merchant Center i stav dostupnosti souhlasit. Jak má vypadat trvale užitečný text kategorie, rozebírá [návod pro kategorie e-shopu](/blog/kategorie-texty-pro-ai/).
+
+## <span class="hl">Datum úpravy</span> měňte až po <strong>skutečné změně</strong>
+
+[Google rozlišuje](https://developers.google.com/search/docs/appearance/publication-dates) datum publikace či významné úpravy stránky od data události, kterou stránka popisuje. Viditelné „Aktualizováno“ a údaj `dateModified` ve strukturovaných datech mají odpovídat skutečné změně obsahu. Datum Black Friday nebo konec slevy patří do textu nabídky, ne do pole, které předstírá redakční aktualizaci.
+
+Totéž platí pro údaj o poslední významné změně (`lastmod`) v XML mapě webu. [Google uvádí](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), že ho používá tehdy, když je konzistentně a ověřitelně přesný. Za významnou změnu považuje úpravu hlavního obsahu, strukturovaných dat nebo odkazů; automaticky přepsané datum vytvoření mapy webu nestačí. [Bing obdobně uvádí](https://blogs.bing.com/webmaster/July-2025/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search), že podle údaje `lastmod` může plánovat nové projití časově citlivých stránek.
+
+<MistakeGrid>
+  <Mistake num="01" title="Každý rok nová adresa" fix="Držte jednu URL pro stejný účel stránky.">
+    Novou roční stránku musíte znovu přidat do interních odkazů a mapy webu; vyhledávač ji pak musí objevit a zařadit. Staré kopie navíc mohou zůstat dostupné vedle ní.
+  </Mistake>
+  <Mistake num="02" title="Jen přepsat rok" fix="Ověřte nabídku, ceny, odkazy i obrázek.">
+    Změna 2025 na 2026 neřeší neplatný kupon, vyprodaný produkt ani staré podmínky dopravy.
+  </Mistake>
+  <Mistake num="03" title="Denně nový lastmod" fix="Zapisujte poslední významnou úpravu.">
+    Nepřesné datum ztrácí pro vyhledávač informační hodnotu a čtenáři neřekne, kdy se obsah skutečně změnil.
+  </Mistake>
+  <Mistake num="04" title="Po akci přesměrovat na úvod" fix="Nejdřív určete skutečného nástupce.">
+    Domovská stránka obvykle nenabízí informace, které člověk po otevření odkazu na konkrétní sezónní akci očekává.
+  </Mistake>
+</MistakeGrid>
+
+U sezónní stránky je potřeba zkontrolovat časově omezené ceny, skladovost, termíny a propojení s kampaní.
+
+## Pro <span class="hl">AI vyhledávání</span> platí <strong>stejný technický základ</strong>
+
+Google ve svém aktuálním průvodci uvádí, že AI Overviews a AI Mode používají jeho základní systémy Vyhledávání a získávají aktuální webové stránky z indexu. Pro zobrazení v generativních funkcích musí být stránka zařazená do indexu a způsobilá k zobrazení s úryvkem. Od 31. srpna 2026 musí být web také zahrnutý v nastavení [Search generative AI v Search Console](https://support.google.com/webmasters/answer/16908024); výchozí volbou je zahrnutí, ale vlastník ho může vypnout. Zvláštní sezónní soubor ani speciální strukturovaná data pro AI Google nepožaduje.
+
+<SourceCard badge="Dokumentace Google" href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" linkLabel="Průvodce AI funkcemi Googlu">
+Pro AI funkce zůstávají základem běžné SEO postupy: veřejně dostupná stránka, užitečný obsah, jasná technická struktura a přesné údaje o produktech. Splnění podmínek nezaručuje zobrazení ani citaci.
+</SourceCard>
+
+Praktický význam stabilní URL pro AI je tedy nepřímý. Usnadňuje udržet jednu dohledatelnou stránku aktuální a omezuje duplicity. Není to důkaz, že Google automaticky zvýhodňuje starší URL. Stejně tak požadavek na nové projití v Search Console může urychlit objevení změny, ale nezaručí, kdy se změna projeví v odpovědi.
+
+Pokud chcete zjistit dopad, zapisujte datum skutečné aktualizace a před sezónou sledujte zobrazení a dotazy dané URL v Search Console. AI viditelnost testujte opakovaně na stejné sadě otázek; jedna odpověď bez odkazu není důkaz, že stránka nebyla nalezena.
+
+## Před sezónou na <span class="hl">stránku</span> <strong>odkazujte z důležitých částí webu</strong>
+
+Stabilní URL nepomůže, když na ni nikdo neodkazuje a návštěvník ji najde jen interním vyhledáváním. Google doporučuje s předstihem odkázat na sezónní stránku z domovské nebo jiné významné stránky. U e-shopu dává smysl přidat ji také do relevantních kategorií, průvodců a kampaní.
+
+<Checklist tone="accent" title="Kontrola před návratem sezóny" items={[
+  { title: "Nabídka a termín", desc: "Platí sleva, datum začátku a konce, kód i podmínky?" },
+  { title: "Produkty a dostupnost", desc: "Odpovídají produkty, ceny, dostupnost a produktová data aktuální nabídce?" },
+  { title: "Titulek a obrázek", desc: "Odpovídají aktuálnímu ročníku a podobě akce, pokud je rok pro čtenáře užitečný?" },
+  { title: "Odkazy", desc: "Vede na stránku běžný odkaz z domovské stránky, kategorie nebo sezónního rozcestníku?" },
+  { title: "Technická kontrola", desc: "Vrací URL stav 200, má správně nastavený kanonický odkaz (`canonical`) a odpovídá údaj `lastmod` poslední významné změně?" },
+  { title: "Nové projití", desc: "Po významné změně otestujte živou URL v Search Console a požádejte Google o nové projití." },
+]} />
+
+Jedna URL je správná volba tehdy, když se vrací stejná potřeba zákazníka. Její obsah se přitom musí měnit spolu s realitou nabídky. Tak udržujete jednu adresu aktuální a dohledatelnou pro zákazníky i vyhledávače, včetně generativních funkcí založených na jejich indexu.
+
+Chcete ověřit, jestli jsou vaše sezónní stránky dostupné, aktuální a srozumitelné i pro AI vyhledávání? [Audit AI viditelnosti za 3 600 Kč bez DPH](/audit/) prověří technické nastavení, obsah a důvěryhodnost vašeho webu a předá vám prioritní seznam úprav.
