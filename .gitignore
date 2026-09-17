@@ -56,3 +56,6 @@ _source/products/pack/output/
 # IndexNow cache MUSÍ být commitnutá (CI build je ephemeral — bez cache by se
 # každý build chápal jako první a re-submitoval všechny URL na IndexNow).
 !.astro-indexnow-cache.json
+
+# OG obrázky: .png je jen pracovní mezikrok (blogger/CONTENT_WORKFLOW.md D2) — do repa jde .jpg a .webp
+public/og/*.png
