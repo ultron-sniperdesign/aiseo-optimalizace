@@ -188,7 +188,14 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   1. **Mechanický průchod** — cíl je **0 nálezů** (⛔ i ⚠️). Nejčastější vada celého korpusu: česká uvozovka `„` zavřená rovnou `"`.
   2. **LLM průchod** — článek + celý slovník na gpt-5.4 se zadáním z `SKILL.md` (obsahuje i výčet toho, **co vadou není** — zavedená oborová mluva, zdomácnělé latinismy, běžná česká odborná spojení, názvy nástrojů a metrik).
   3. **Kontrola kontextu u každé náhrady** — pád, číslo, rod, význam v tomhle textu. Slovník navrhuje slovo, ne tvar.
-  4. **Nový nález → nové pravidlo** ve `blogger/JAZYK_SLOVNIK.md` (úroveň, regex, náhrada, důvod, původ) + řádek do `blogger/JAZYK_AUDIT_LOG.md`. Slovník i článek jdou **v jednom commitu**.
+  4. **Nový nález → pravidlo jen když je strojově rozpoznatelný.** Zapiš řádek do ``blogger/JAZYK_AUDIT_LOG.md`` u **každého** nálezu. Do ``blogger/JAZYK_SLOVNIK.md`` ale přidej regex jen tehdy, projde-li testem:
+
+     > Poznám tu vadu spolehlivě **bez toho, abych rozuměl zbytku věty**?
+
+     - **Ano** → pravidlo do slovníku (úroveň, regex, náhrada, důvod, původ). Typicky: anglicismus s českou náhradou, typografická vada, konkrétní fráze marketingové vaty.
+     - **Ne** → **žádný regex**, jen záznam v auditním logu. Typicky: vada, o které rozhoduje význam věty, doloženost tvrzení nebo to, co je kolem. Mechanické zobecnění by začalo hlásit i správnou češtinu a checker by se stal nedůvěryhodným.
+
+     Regex piš s hranicí slova `\b`, ať nechytá delší slova — drží to 299 z 313 současných pravidel (ověřeno 17. 9. 2026). Když vada závisí na kontextu, ale chceš na ni upozorňovat, patří na úroveň **⚠️** (řeší se u prvního výskytu), ne **⛔**. Slovník i článek jdou **v jednom commitu**.
 
   > Plný postup a pojistky: `~/.claude/skills/cestina-audit/SKILL.md`. Slovník i checker jsou tam symlinky na soubory v tomhle projektu — pravidla se přidávají jen tady.
 
