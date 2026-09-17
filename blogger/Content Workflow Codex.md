@@ -43,6 +43,10 @@ než se dostaneš k práci** (ověřeno 14. 9. 2026 — session spadla na
 |---|---|
 | `README.md`, `ARTICLE_TEMPLATE.md`, tenhle soubor | Přečti celé, dohromady ~45 kB |
 | `IMAGE_GUIDE.md` | Přečti až v bloku D2 |
+| `CONTENT_WORKFLOW.md` (25 kB) | **Nečti celý.** Je to Claude varianta; platí z ní jen obsahová pravidla (struktura článku, tonalita, metadata) a i ta jsou shrnutá tady. Otevři **cíleně grepem**, když tenhle dokument něco neřeší |
+| `marketing/05-messaging-a-tonalita.md` (10 kB) | Přečti celý **před C1**. Brand voice a zakázaný slovník, bez toho nenapíšeš draft |
+| `docs/section-page-standard.md` (10 kB) | Přečti až v bloku **D1**, když sázíš komponenty |
+| `auditor-system.md` (2 kB) | Přečti **před C2**. System prompt pro auditorské subagenty |
 | `obsahovy-plan.csv` (213 kB) | **Jen grep**, nikdy celé |
 | `JAZYK_AUDIT_LOG.md` (123 kB), `REFRESH_QUEUE.md` (51 kB), `JAZYK_SLOVNIK.md` (58 kB) | **Jen grep** |
 | `research/` — **cizí podsložky** (8,5 MB, 164 z minulých runů) | **Nečti je**, ani plošně ani namátkou. Jen konkrétní soubor, na který tě někdo pošle |
@@ -103,12 +107,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
   Pravidlo: **rising query, která nesdílí ani slovo se seed keywordem a není jeho známé synonymum, je šum → zahoď ji.** Když je takových víc než polovina, Trends pro to keyword nepoužívej vůbec a do `research.md` napiš, že data nebyla použitelná. Nikdy nepřebírej řádek „Souhrnně rostou" z `enrichment.md` bez téhle kontroly — skript ho skládá z nefiltrovaného výstupu.
 - **A3 — Porovnání s webem (dvoukrokově):** k 15. 9. 2026 je v `src/content/articles/` **165 článků**, načíst je celé nejde. Postupuj takto:
-  1. **Sken metadat všech článků** — vytáhni si jen `title`, `slug`, `tags` a nadpisy H2:
+  1. **Sken metadat všech článků s názvy souborů** — bez nich nepoznáš, ke kterému článku nález patří:
      ```bash
-     grep -h "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
-     grep -h "^## " src/content/articles/*.mdx | sort -u
+     grep -H "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
      ```
-  2. **Celé čti jen obsahově blízké kandidáty** — typicky 2–5 článků, ne 165.
+  2. **H2 filtruj na téma, nedumpuj celý web.** Neomezený výpis má 1 076 unikátních nadpisů a 50 kB (měřeno 17. 9. 2026) — je to tři čtvrtiny celého skenu a nejmíň užitečná část. Cílený filtr na jedno téma vyjde na jednotky kB:
+     ```bash
+     grep -H "^## " src/content/articles/*.mdx | grep -i "<téma>"
+     ```
+  3. **Celé čti jen obsahově blízké kandidáty** — typicky 2–5 článků, ne 165.
 
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
 - **A4 — Porovnání s tabulkou:** grepni `obsahovy-plan.csv` na řádky `Publikováno = ne` → nepřidávej, co už čeká.
@@ -300,7 +307,16 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
   - **PNG smaž** (`rm public/og/<slug>.png`) — je to pracovní mezikrok, šablona na něj nesahá.
 - **D3 — Publikace** (dle `blogger/README.md`):
   - `npm run build` (validace frontmatteru + komponent)
-  - `git add` JEN vlastní soubory: `src/content/articles/<slug>.mdx` + **`public/og/<slug>.jpg` a `.webp`** + případně `public/blog/<slug>/` — nikdy `-A`. **`.png` do commitu nepatří.**
+  - `git add` JEN vlastní soubory, **nikdy `-A`**. Úplný výčet toho, co run smí commitovat:
+    - `src/content/articles/<slug>.mdx` — článek
+    - `public/og/<slug>.jpg` a `public/og/<slug>.webp` — **vyjmenuj oba, nepoužívej hvězdičku** (`public/og/<slug>.*` by přibalilo zakázané `.png`)
+    - `public/blog/<slug>/` — jen když má článek obrázky v textu
+    - `blogger/research/<slug>/` — podklady a audity tvého runu (B3, C2–C5)
+    - `blogger/JAZYK_AUDIT_LOG.md` — řádek z C6, přidává se **vždy**
+    - `blogger/JAZYK_SLOVNIK.md` — jen když v C6 vzniklo nové pravidlo
+    - `blogger/obsahovy-plan.csv` — uzávěr z D4 (může jít i samostatným commitem)
+
+    Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` → `git push origin main` → CI ~1–2 min
   - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2), ruční Submit URL v Bing Webmaster Tools (IndexNow je vypnutý); očima karta + hero
 - **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` nastav `Publikováno = ano` a `URL` **jen u právě publikovaného nového článku**. Přeskočené řádky neměň. Commituj.

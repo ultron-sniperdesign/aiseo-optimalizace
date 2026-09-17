@@ -96,12 +96,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
   Pravidlo: **rising query, která nesdílí ani slovo se seed keywordem a není jeho známé synonymum, je šum → zahoď ji.** Když je takových víc než polovina, Trends pro to keyword nepoužívej vůbec a do `research.md` napiš, že data nebyla použitelná. Nikdy nepřebírej řádek „Souhrnně rostou" z `enrichment.md` bez téhle kontroly — skript ho skládá z nefiltrovaného výstupu.
 - **A3 — Porovnání s webem (dvoukrokově):** k 15. 9. 2026 je v `src/content/articles/` **165 článků**, načíst je celé nejde. Postupuj takto:
-  1. **Sken metadat všech článků** — vytáhni si jen `title`, `slug`, `tags`, `keywords` a nadpisy H2. Levně, jedním průchodem:
+  1. **Sken metadat všech článků s názvy souborů** — bez nich nepoznáš, ke kterému článku nález patří:
      ```bash
-     grep -h "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
-     grep -h "^## " src/content/articles/*.mdx | sort -u
+     grep -H "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
      ```
-  2. **Celé čti jen obsahově blízké kandidáty** — ty, kde se překrývá téma nebo klíčové slovo. Typicky 2–5 článků, ne 165.
+  2. **H2 filtruj na téma, nedumpuj celý web.** Neomezený výpis má 1 076 unikátních nadpisů a 50 kB (měřeno 17. 9. 2026) — je to tři čtvrtiny celého skenu a nejmíň užitečná část. Cílený filtr na jedno téma vyjde na jednotky kB:
+     ```bash
+     grep -H "^## " src/content/articles/*.mdx | grep -i "<téma>"
+     ```
+  3. **Celé čti jen obsahově blízké kandidáty** — ty, kde se překrývá téma nebo klíčové slovo. Typicky 2–5 článků, ne 165.
 
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
 - **A4 — Porovnání s tabulkou:** projdi `obsahovy-plan.csv` (řádky `Publikováno = ne`) → nepřidávej, co už čeká.

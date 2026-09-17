@@ -99,7 +99,7 @@ stats:                   # 3–4 dlaždice nad textem
     label: "chyb v auditu"
   - value: "4–6"
     label: "typicky vidíme"
-faq:                     # FAQ pod článkem + FAQPage JSON-LD (důležité pro AI citace)
+faq:                     # FAQ pod článkem + FAQPage JSON-LD
   - q: "Otázka, jak ji napíše uživatel"
     a: "Odpověď v 1–3 větách. Sebestačná, žádné odkazy na 'výše v článku'."
 howto:                   # HowTo schema (jen u tutoriálových článků)
@@ -238,7 +238,7 @@ Pattern: `Blog: <stručný popis> (<volitelná poznámka>)`.
 ```bash
 # Nový článek
 git add src/content/articles/jak-pridat-organization-schema.mdx
-git add public/og/jak-pridat-organization-schema.*        # featured image, povinné
+git add public/og/jak-pridat-organization-schema.jpg public/og/jak-pridat-organization-schema.webp   # oba, nikdy hvězdička — přibalila by zakázané .png
 git add public/blog/jak-pridat-organization-schema/       # pokud máš obrázky v textu
 git commit -m "Blog: jak přidat Organization schema (tutorial)"
 git push origin main
@@ -323,7 +323,7 @@ v `astro.config.mjs`. Až Bing ticket vyřeší, vrátí to tam správce — ne 
 - **Nedeklarovat datum v budoucnosti** — `updated:` musí být ≤ dnes (search engines to penalizují jako manipulaci).
 - **Nepsat duplicit obsah** — pokud podobný článek existuje, raději update existujícího (a bumpni `updated:`).
 - **Nesahat mimo svou doménu** — viz tabulka „Kam článek patří" výše.
-- **Negenerovat článek bez `answer` a `faq`** — bez nich je článek pro AI éru poloviční. Frontmatter projde, ale nedostaneš AI citace.
+- **Negenerovat článek bez `answer` a `faq`** — frontmatter bez nich projde, ale článek nesplňuje náš obsahový standard. `answer` dá čtenáři odpověď hned v úvodu, `faq` pokrývá navazující otázky a generuje FAQPage JSON-LD. Obojí je o čitelnosti a struktuře; **co z toho plyne pro citace v AI, netvrdíme** — neměříme to.
 - **Nepoužívat `npm run build --no-check` ani `git push --no-verify`** — vždy ať schema-validation projde.
 - **Nedeploynout přes `git push --force`** — nikdy. Když je problém, ozvi se hlavnímu vláknu.
 
