@@ -149,6 +149,21 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **B2 — Hloubkový research tématu:** cílený `WebSearch` na vybrané téma (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na **Marketing Miner** (přesná hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
 - **B3 — Uložení podkladů:** kurátorovaný záznam runu ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, highlighty z Trends, poznámky o konkurenci, zdroje) — commituje se jako stopa rozhodnutí. **Hrubé dumpy z Marketing Mineru** (kandidátní CSV, JSON) nech v `output/` skillu, do repa nedávej. Složka `blogger/research/` je mimo `src/` a `public/` → nedeployuje se.
 
+  > **U tvrzení o cizí platformě ulož do `research.md` přehled podmínek.** Shrnutí
+  > dokumentace snadno zachytí hlavní podmínku a tiše zahodí vedlejší — a chybějící
+  > podmínka z článku udělá nepravdu, i když je zbytek správně. Tabulka to drží
+  > pohromadě pro tebe i pro auditory:
+  >
+  > | Tvrzení | Podmínky | Výjimky | Primární zdroj |
+  > |---|---|---|---|
+  > | Stránka může být použita v AI funkcích Googlu | indexace · způsobilost k úryvku · **zahrnutí webu** (nastavení *Search generative AI* v Search Console) | zobrazení není zaručené | odkaz na aktuální dokumentaci |
+  >
+  > Řádek ten příklad ukazuje i s vadou, která ho vyvolala: první rešerše (17. 9. 2026)
+  > zachytila indexaci a úryvek, ale zahrnutí webu vynechala. Našel to až auditor faktů.
+  >
+  > **Vyplň všechny čtyři sloupce.** Prázdné „Výjimky" znamenají, že jsi je hledal a
+  > žádné nejsou — ne že jsi na ně zapomněl.
+
 ---
 
 ## BLOK C — Draft a dvoukolová audit smyčka

@@ -156,6 +156,21 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **B2 — Hloubkový research tématu:** cílený web search (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na Marketing Mineru (hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
 - **B3 — Uložení podkladů:** kurátorovaný záznam ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, Trends, poznámky o konkurenci, **zdroje s URL**). Hrubé dumpy do repa nedávej. Složka `research/` je mimo `src/` a `public/`, nedeployuje se.
 
+  > **U tvrzení o cizí platformě ulož do `research.md` přehled podmínek.** Shrnutí
+  > dokumentace snadno zachytí hlavní podmínku a tiše zahodí vedlejší — a chybějící
+  > podmínka z článku udělá nepravdu, i když je zbytek správně. Tabulka to drží
+  > pohromadě pro tebe i pro auditory:
+  >
+  > | Tvrzení | Podmínky | Výjimky | Primární zdroj |
+  > |---|---|---|---|
+  > | Stránka může být použita v AI funkcích Googlu | indexace · způsobilost k úryvku · **zahrnutí webu** (nastavení *Search generative AI* v Search Console) | zobrazení není zaručené | odkaz na aktuální dokumentaci |
+  >
+  > Řádek ten příklad ukazuje i s vadou, která ho vyvolala: první rešerše (17. 9. 2026)
+  > zachytila indexaci a úryvek, ale zahrnutí webu vynechala. Našel to až auditor faktů.
+  >
+  > **Vyplň všechny čtyři sloupce.** Prázdné „Výjimky" znamenají, že jsi je hledal a
+  > žádné nejsou — ne že jsi na ně zapomněl.
+
   > **Zdroje si zapisuj pečlivě.** Auditor faktů v bloku C je dostane jako výchozí bod — nevidí tvou historii hledání. **Vlastní zdroje si ale dohledá sám** (viz C2), takže tvůj výběr ho neomezuje.
 
 ---

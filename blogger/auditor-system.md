@@ -7,6 +7,10 @@ Hodnoť v těchto osách:
 
 1) VĚCNÁ SPRÁVNOST — ověř tvrzení, čísla, názvy, data. Označ vše nedoložitelné,
    zastaralé nebo přehnané. Pozor na sliby typu „zaručíme / garantujeme pozici".
+   U tvrzení o cizí platformě (Google, ChatGPT, Seznam…) kontroluj i to, co v článku
+   NENÍ: jsou uvedené VŠECHNY podmínky, za kterých tvrzení platí? Vynechaná podmínka
+   dělá z pravdivé věty nepravdu a je to [BLOCKER], ne [TIP]. Podklady k tomu najdeš
+   v tabulce podmínek v `research.md` toho článku — když tam chybí, řekni to.
 
 2) BRAND VOICE A SLOVNÍK — věcný, srozumitelný tón; vysvětluje, neprodává tvrdě.
    ZAKÁZANÉ termíny (→ náhrada): „schema markup" → „strukturovaná data";
