@@ -1409,3 +1409,11 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 - Žádný nový regex: všechny vady závisejí na kontextu, referentu, přesnosti atribuce nebo doloženosti tvrzení. Plošné zákazy slov „záměr“, „stav“, „model“, „zapojit“ či technických názvů by hlásily správné věty.
 - Po C4: 1 828 slov, mechanická kontrola 0. Slovník v70 beze změny. Podrobné vypořádání: `research/sezonni-obsah-pro-ai/vyporadani.md`.
 - C5-01 oddělena stabilita URL od celoroční indexace; C5-02 odstraněn interní odkaz na zdroj čekající na refresh; C5-03 doplněny primární odkazy k produktovým datům a datům změny. Jde o věcný kontext a citovatelnost, bez nového regexu.
+
+## Nový článek — 2026-09-17 — rebranding-a-ai
+
+- Konečný text: 1 850 slov, mechanicky 0 nálezů při 275 pravidlech. Jazykový auditor našel 20 kontextových nálezů; všech 20 bylo přijato. Faktický auditor našel 6 zásadních nálezů; všech 6 bylo opraveno a úspěšně doověřeno v jednom kole C5b.
+- J1–J20: sjednoceno vykání, opraveny vazby a referenty, konkretizovány abstraktní formulace, zpřesněny dva H2, FAQ, meta description, popis zpracování názvu a CTA. Žádný nález nebyl vhodný pro mechanický regex: všechny závisely na významu věty, referentu nebo konkrétním kontextu rebrandingu.
+- F1 rozlišen `alternateName` u WebSite a Organization; F2 doplněny technické podmínky názvu webu; F3 doplněna přesná kritéria Firemního profilu; F4 rozlišeno přesměrování od 404/410; F5 doplněny podmínky nástroje Změna adresy; F6 zúžen výklad citací a zdrojů v AI odpovědích.
+- Slovník v70 beze změny. Podrobné vypořádání: `research/rebranding-a-ai/vyporadani.md`.
+- C5 doplnil dvě podmínky Firemního profilu, přesné použití Změny adresy, oddělení velkých změn webu a přímé odkazy na zdroje. Následná cílená kontrola opravila shodu `Organization.name` / `alternateName` s názvem webu a dva nedokončené obecné výskyty „homepage“ či „cizí zmínky“. Kontextové nálezy bez nového regexu; konečná mechanická kontrola: 1 848 slov, 0 nálezů.

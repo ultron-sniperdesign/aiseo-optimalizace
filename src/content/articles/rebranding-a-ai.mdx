@@ -1,0 +1,168 @@
+---
+title: "Rebranding a AI: propojte starý a nový název firmy"
+seoTitle: "Rebranding a AI: propojte starý a nový název firmy"
+description: "Praktický postup rebrandingu pro web, Google a AI: co změnit, jak propojit oba názvy a proč nelze slíbit, kdy se nový název projeví všude."
+answer: "Rebranding pro AI znamená propojit starý a nový název firmy v důvěryhodných zdrojích, aby vyhledávače a AI nástroje pochopily, že jde o tutéž organizaci. Aktualizujte vlastní web, strukturovaná data, firemní profily a důležité zmínky na jiných webech; při změně domény přesměrujte staré URL na odpovídající nové stránky a u obsahu bez náhrady vraťte stav 404 nebo 410."
+slug: "rebranding-a-ai"
+category: "tutorial"
+tags:
+  - "duveryhodnost"
+  - "technicke-zaklady"
+published: "2026-09-17"
+updated: "2026-09-17"
+keywords:
+  - "rebranding"
+  - "rebranding firmy"
+  - "změna názvu firmy"
+  - "přejmenování firmy"
+  - "rebranding a AI"
+variant: "rich"
+howto:
+  name: "Jak po rebrandingu propojit starý a nový název firmy"
+  steps:
+    - name: "Sepište všechna místa se starým názvem"
+      text: "Projděte vlastní web, strukturovaná data, profily, katalogy, dokumenty a důležité odkazy z jiných webů."
+    - name: "Změňte hlavní zdroj identity"
+      text: "Na webu sjednoťte nový název v textu, metadatech a relevantních strukturovaných datech."
+    - name: "Vysvětlete přechod lidem"
+      text: "Po omezenou dobu uveďte srozumitelnou větu, že nový název je pokračováním původní značky."
+    - name: "Aktualizujte spravované profily"
+      text: "Změňte název, adresu webu, logo a popis; respektujte pravidla každé služby."
+    - name: "Při změně domény přesměrujte URL"
+      text: "Staré adresy s náhradou přesměrujte trvale na odpovídající nové stránky. U obsahu bez náhrady vraťte stav 404 nebo 410."
+    - name: "Měřte starý i nový název"
+      text: "Testujte oba názvy ve vyhledávání i AI odpovědích, ukládejte datum, dotaz, zdroje a nalezené chyby."
+faq:
+  - q: "Co je rebranding firmy?"
+    a: "Rebranding je řízená změna toho, jak se firma nebo služba jmenuje a prezentuje. Pro vyhledávání a AI je podstatné, aby nový název navazoval na stejnou organizaci, web, profily a důvěryhodné zmínky. Samotná výměna loga tenhle vztah strojům nevysvětlí."
+  - q: "Jak dlouho trvá, než se nový název objeví ve vyhledávání?"
+    a: "Jednotná lhůta neexistuje. Google uvádí, že nové zpracování názvu webu může trvat několik dní až několik týdnů podle toho, jak často stránku prochází. U přesunu celé domény mohou změny trvat týdny nebo déle. Tyto intervaly neplatí automaticky pro AI nástroje ani cizí profily."
+  - q: "Mám ve strukturovaných datech ponechat starý název?"
+    a: "Hlavní vlastnost name nastavte na aktuální název. Google doporučuje, aby hodnoty name a alternateName u Organization odpovídaly hodnotám použitým pro název webu. Starý název proto nedávejte jen do Organization.alternateName, pokud jej už nechcete nabízet také jako WebSite.alternateName; historii raději vysvětlete viditelnou přechodovou větou."
+  - q: "Musím při rebrandingu měnit doménu?"
+    a: "Nemusíte. Pokud současná doména neobsahuje starý název nebo dál dává obchodní smysl, lze změnit značku bez stěhování webu. Změna domény přidává technickou migraci, přesměrování a dočasné kolísání ve vyhledávání, proto má mít samostatný důvod."
+  - q: "Mám po přejmenování založit nový Firemní profil na Googlu?"
+    a: "Ne automaticky. Stávající profil lze přejmenovat při menší změně, pokud zůstanou stejné vlastní názvy a služby popsané v názvu i kategorie firmy; zvláštní způsobilost může platit pro firmu s více pobočkami. Google může chtít nové ověření. Pokud změna nesplní ani jednu podmínku, původní profil se má zavřít a pro nový název vytvořit nový; při nejasnosti kontaktujte podporu."
+  - q: "Proč AI pořád uvádí starý název firmy?"
+    a: "ChatGPT bez vyhledávání vychází z informací získaných při trénování; s vyhledáváním může použít aktuální webové zdroje. U jiných služeb se význam odkazů liší. Stránku se starým názvem nejprve prověřte: samotný zobrazený odkaz nedokazuje, že způsobil konkrétní tvrzení. Z jediné odpovědi příčinu neurčíte."
+---
+
+import Stepper from "~/components/blocks/Stepper.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import SourceCard from "~/components/blocks/SourceCard.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Rebranding pro AI znamená propojit starý a nový název firmy v důvěryhodných zdrojích, aby vyhledávače a AI nástroje pochopily, že jde o tutéž organizaci.** Aktualizujte vlastní web, strukturovaná data, firemní profily a důležité zmínky na jiných webech; při změně domény přesměrujte staré URL na odpovídající nové stránky a u obsahu bez náhrady vraťte stav 404 nebo 410.
+
+Google, firemní profily a jednotlivé AI nástroje přebírají nový název odděleně a každý vlastním tempem. Musíte proto zvlášť upravit vlastní web, spravované profily a nejdůležitější zmínky na jiných webech. Dobře provedený rebranding proto nevypadá jako okamžité smazání minulosti, ale jako **čitelná vazba mezi původní a novou identitou**.
+
+## <span class="hl">Rebranding</span> není jen nové logo — <strong>měníte veřejnou identitu</strong>
+
+Pro lidi může stačit kampaň a nové logo. Stroje však porovnávají více míst: název na úvodní stránce, titulky stránek, profily, strukturovaná data, odkazy a texty na dalších webech. Když se tato místa rozcházejí, není jisté, kterou podobu použijí.
+
+<CompareTable
+  leftLabel="Vrstva"
+  leftTone="accent"
+  rightLabel="Co po změně hlídat"
+  rightTone="accent"
+  rows={[
+    { icon: "🏠", label: "Vlastní web", left: "Úvodní stránka, kontakt, patička, titulky", right: "Nový název a krátké vysvětlení návaznosti" },
+    { icon: "{ }", label: "Strojový popis", left: "WebSite a Organization", right: "Aktuální name, URL, logo a relevantní alternateName" },
+    { icon: "📍", label: "Spravované profily", left: "Google, sociální sítě, oborové katalogy", right: "Název, odkaz, logo, popis a případné nové ověření" },
+    { icon: "🔗", label: "Cizí weby", left: "Partneři, média, asociace", right: "Přednostně opravit nejnavštěvovanější a nejdůvěryhodnější zmínky" },
+    { icon: "🤖", label: "AI odpovědi", left: "Výstup s citacemi i bez nich", right: "Testovat oba názvy a rozlišit zdroj odpovědi" },
+  ]}
+/>
+
+Google u názvu webu výslovně uvádí, že jeho výběr je automatický. Bere v úvahu úvodní stránku i odkazy na web; strukturovaná data `WebSite` jsou nejdůležitějším způsobem, jak Googlu sdělit, který název upřednostňujete; ani ta však nezaručí, jaký název zobrazí.
+
+<SourceCard
+  badge="Primární zdroj"
+  href="https://developers.google.com/search/docs/appearance/site-names"
+  linkLabel="Názvy webů v Googlu"
+  tone="accent"
+>
+  **Google doporučuje držet název na úvodní stránce konzistentně** a u `WebSite` umožňuje volitelné `alternateName` jako náhradní návrh zobrazeného názvu. Než Google stránku znovu navštíví a změnu zpracuje, může uplynout několik dní až několik týdnů.
+</SourceCard>
+
+Značení `WebSite` patří na procházetelnou kořenovou úvodní stránku domény nebo subdomény. Na duplicitních variantách úvodní stránky držte stejné hodnoty. Google podporuje jeden název pro doménu či subdoménu; samostatný název podadresáře nepodporuje.
+
+## <span class="hl">Pořadí změn</span> rozhoduje — <strong>nejdřív vlastní web, potom profily a jiné weby</strong>
+
+Začněte u míst, která ovládáte. Teprve až nový název a vysvětlení návaznosti sedí na vlastním webu, upravujte profily a žádejte cizí weby o změnu. Jinak mohou aktualizované profily odkazovat na web, který ještě používá starou identitu.
+
+<Stepper
+  tone="accent"
+  steps={[
+    { title: "Udělejte soupis", desc: "Najděte starý název na webu, ve strukturovaných datech, dokumentech, profilech, katalozích a důležitých zmínkách. Rozdělte místa na vlastní, spravovaná a cizí." },
+    { title: "Sjednoťte vlastní web", desc: "Změňte viditelné texty, metadata, logo a relevantní bloky WebSite či Organization. Na přechodnou dobu napište srozumitelně, že nový název pokračuje v činnosti původní značky." },
+    { title: "Aktualizujte profily", desc: "Upravte název, URL, logo a popis. Každá služba má vlastní pravidla; Firemní profil na Googlu může po změně názvu vyžadovat nové ověření." },
+    { title: "Opravte důležité zmínky na jiných webech", desc: "Začněte partnery, médii, profesními profily a zdroji, které přivádějí návštěvy. Není nutné honit každý historický výskyt na webu." },
+    { title: "Zkontrolujte vyhledávání a AI", desc: "Ptejte se na starý i nový název. Ukládejte přesný dotaz, datum, výstup a citované zdroje, abyste poznali změnu místo dojmu." },
+  ]}
+/>
+
+<Insight tone="warn" icon="!" label="Starý název nemažte bez rozmyslu">
+Krátká věta typu **„Nový název, dříve Starý název“** může lidem i strojům vysvětlit návaznost. Starý název však v hlavním označení firmy nenechávejte natrvalo. Délku přechodného období určete podle toho, zda lidé starý název stále hledají a zda se vrací ve výsledcích a odpovědích.
+</Insight>
+
+## Při <span class="hl">změně domény</span> stěhujete i web — <strong>každé staré URL určete správný osud</strong>
+
+Přejmenování firmy neznamená automaticky změnu domény. Pokud ji měníte, řešíte identitu značky i stěhování webu. Google doporučuje u složitých migrací měnit vždy jednu velkou věc: pokud to projekt dovolí, oddělte změnu domény od přechodu na nový redakční systém, zásadního redesignu a plošné změny URL. Google doporučuje vytvořit mapu starých a nových URL, nastavit trvalé serverové přesměrování na odpovídající stránky a opravit interní odkazy, kanonické adresy i sitemapu. URL s odpovídajícím nebo sloučeným obsahem přesměrujte na relevantní nový cíl. Obsah bez náhrady nepřesměrovávejte; vraťte stav 404 nebo 410.
+
+Nesměrujte všechny staré stránky na novou úvodní stránku. Přesměrování všech starých adres na úvodní stránku bývá pro návštěvníky neužitečné a Google je může vyhodnotit jako měkkou chybu 404. Po zprovoznění přesměrování použijte při přesunu domény nebo subdomény nástroj **Změna adresy** v Google Search Console. Ve stejném účtu Search Console ověřte všechny varianty starého i nového webu. Změnu adresy podejte pro každou variantu staré domény, včetně varianty `www`, dalších subdomén a momentálně nepoužívaných variant. Nástroj neslouží pro změnu cest, HTTP na HTTPS ani přechod mezi variantou `www` a adresou bez `www`. Přesměrování ponechte alespoň rok; pro uživatele může mít smysl déle.
+
+<SourceCard
+  badge="Technický postup"
+  href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes"
+  linkLabel="Migrace webu"
+  tone="seo"
+>
+  **Google neuvádí pevnou dobu migrace.** U středně velkého webu mohou nové URL nahrazovat staré několik týdnů nebo déle. Rychlost závisí mimo jiné na počtu URL a možnostech serveru.
+</SourceCard>
+
+## <span class="hl">Google a profily</span> mají vlastní pravidla — <strong>nepoužívejte jeden návod všude</strong>
+
+Při volbě názvu webu Google vychází hlavně z úvodní stránky. U [Firemního profilu](https://support.google.com/business/answer/3038177?hl=en#rebranding) naproti tomu požaduje název odpovídající skutečnému označení firmy. Stávající profil lze přejmenovat při menší změně, pokud zůstanou stejné vlastní názvy a služby popsané v názvu i kategorie firmy; zvláštní způsobilost může platit také pro firmu s více pobočkami. Google může podle [návodu k úpravě profilu](https://support.google.com/business/answer/3039617?hl=en) vyžádat nové ověření. Pokud změna kritéria nesplní, Google ji považuje za novou firmu: původní profil se má označit jako zavřený a pro nový název vytvořit nový.
+
+Stejná opatrnost platí u strukturovaných dat. Google doporučuje držet `Organization.name` a `Organization.alternateName` shodné s hodnotami, které používáte pro název webu. U `WebSite` je `alternateName` náhradní návrh názvu, který může Google zobrazit. Starou značku proto neponechávejte jen v `Organization.alternateName`, pokud ji už nechcete nabízet také jako název webu; návaznost vysvětlete viditelnou přechodovou větou.
+
+<MistakeGrid>
+  <Mistake num="01" title="Všechno smazat v jeden den">
+    Bez vysvětlení návaznosti zůstane nový název oddělený od historie, kterou lidé stále hledají.
+  </Mistake>
+  <Mistake num="02" title="Přepsat jen logo">
+    Texty, metadata, strukturovaná data a profily dál nesou původní identitu.
+  </Mistake>
+  <Mistake num="03" title="Založit každý profil znovu">
+    Můžete rozdělit recenze a historii. Nejdřív ověřte pravidla konkrétní služby.
+  </Mistake>
+  <Mistake num="04" title="Slíbit den, kdy AI převezme nový název">
+    Jednotlivé služby zpracují změnu vlastním tempem a jednotnou lhůtu nezveřejňují. Výsledek proto měřte, neslibujte konkrétní den.
+  </Mistake>
+</MistakeGrid>
+
+## <span class="hl">AI odpovědi</span> testujte podle zdrojů — <strong>jeden výstup nestačí</strong>
+
+Podle [dokumentace OpenAI](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth) ChatGPT bez vyhledávání odpovídá z informací získaných při trénování; se Search nebo Deep Research může použít aktuální webové zdroje a uvést citace. U jiných služeb se význam odkazů liší. Stránka se starým názvem je kandidát k prověření: nejdřív ověřte, zda skutečně obsahuje chybný nebo zastaralý údaj. Samotné zobrazení odkazu nedokazuje, že způsobil konkrétní tvrzení. Bez uvedeného zdroje příčinu z jediné odpovědi spolehlivě neurčíte.
+
+Testujte alespoň čtyři typy dotazů:
+
+- nový název samotný;
+- starý název samotný;
+- „Jak se dnes jmenuje Starý název?“;
+- „Je Nový název stejná firma jako Starý název?“
+
+Výsledky ukládejte s datem, přesným zněním otázky, platformou a citacemi. Sledujte zvlášť **správné propojení identity**, **správný popis služeb** a **odkazy na aktuální web**. Když AI uvádí konkrétní chybný údaj, postupujte podle článku [jak opravit chybnou informaci o firmě v AI](/blog/chybna-informace-o-firme-v-ai/).
+
+<Insight tone="accent" icon="✓" label="Co je hotový rebranding">
+Přechod je prakticky zvládnutý, když lidé najdou firmu pod oběma názvy, hlavní spravované zdroje používají nový název, staré URL vedou na správné nové stránky a AI nástroje při opakovaných testech už nezaměňují značku za jinou firmu ani jí nepřisuzují zastaralou nabídku.
+</Insight>
+
+---
+
+**Chcete změny převést do konkrétní struktury webu?** [AI SEO Wireframe Pack za 1 490 Kč](/pack/) obsahuje šablony pro homepage, kontakt, články, produkty a další typy stránek. Ukáže vám, kam na webu umístit jasné údaje o firmě, krátkou odpověď a strukturovaná data; konkrétní podobu odpovědí AI však nezaručí.
+
+*Stav dokumentace ověřen k 17. 9. 2026. Pravidla profilů i způsob zpracování názvů se mohou měnit. Článek řeší digitální viditelnost rebrandingu, nikoli právní změnu obchodní firmy v rejstříku.*
