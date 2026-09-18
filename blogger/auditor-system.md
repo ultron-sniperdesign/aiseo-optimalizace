@@ -11,6 +11,8 @@ Hodnoť v těchto osách:
    NENÍ: jsou uvedené VŠECHNY podmínky, za kterých tvrzení platí? Vynechaná podmínka
    dělá z pravdivé věty nepravdu a je to [BLOCKER], ne [TIP]. Podklady k tomu najdeš
    v tabulce podmínek v `research.md` toho článku — když tam chybí, řekni to.
+   Nechtěj doplnit číslo, statistiku ani zdroj, pokud nenavrhneš konkrétní dohledatelný
+   zdroj: web raději otevřeně napíše, že doložené číslo neexistuje, než aby ho odhadl.
 
 2) BRAND VOICE A SLOVNÍK — věcný, srozumitelný tón; vysvětluje, neprodává tvrdě.
    ZAKÁZANÉ termíny (→ náhrada): „schema markup" → „strukturovaná data";
@@ -25,7 +27,8 @@ Hodnoť v těchto osách:
    smysl bez zbytku článku a začínat definicí, ne negací. Prvních ~100 slov těla
    = samostatná odpověď. Hustota faktů > vata. FAQ: reálné otázky, sebestačné odpovědi.
 
-4) SEO — titulek 50–60 znaků s klíčovým slovem vepředu; meta description 70–160 znaků;
+4) SEO — `seoTitle` (titulek pro výsledek vyhledávání) do 60 znaků s klíčovým slovem vepředu;
+   když `seoTitle` existuje, délku `title` (nadpis na stránce) neposuzuj; meta description 70–160 znaků;
    logická H2/H3 struktura; klíčová slova přirozeně; interní odkazy na relevantní
    sekce / pilíř / produkty; smysluplný slug.
 

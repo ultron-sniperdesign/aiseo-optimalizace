@@ -9,7 +9,8 @@
 > jen to, kam hotový text uložit, jak ho otestovat a nasadit.
 >
 > **Když si tyhle dva soubory odporují, platí `CONTENT_WORKFLOW.md`** — je konkrétnější
-> a udržovanější.
+> a udržovanější. Závazná pravidla obsahu i provozu jsou tam v sekci **Z1–Z13**;
+> tady se neopakují, jen se na ně odkazuje.
 >
 > **Stav infrastruktury:** Web je LIVE od května 2026. Articles collection má
 > **165 článků** (stav k 15. 9. 2026), automatický deploy přes GitHub Actions (~1–2 min),
@@ -316,7 +317,9 @@ v `astro.config.mjs`. Až Bing ticket vyřeší, vrátí to tam správce — ne 
 ## 🚫 Co NIKDY nedělat
 
 - **Neměnit `slug` po publikaci** — rozbije Google index, interní linky, sociální sdílení. Pokud opravdu musíš, zařiď 301 redirect (ale to už není doména blogger session — eskaluj).
-- **Necommitovat secrets** — žádné API klíče, hesla, tokeny v markdownu ani frontmatteru.
+- **Necommitovat secrets** — žádné API klíče, hesla, tokeny v markdownu ani frontmatteru. Před commitem:
+  `grep -nE "(^|[^A-Za-z0-9])sk-(proj-)?[A-Za-z0-9_-]{20,}|sk_live_[A-Za-z0-9]{10,}|gh[op]_[A-Za-z0-9]{10,}|AKIA[0-9A-Z]{12,}|xoxb-[A-Za-z0-9-]{10,}|whsec_[A-Za-z0-9]{10,}|BEGIN [A-Z ]*PRIVATE KEY" <soubory k commitu>`
+  Vzorce chtějí za prefixem skutečnou hodnotu, takže netrefí slug typu `ask-maps-…` ani dokumentaci, která prefixy jen vyjmenovává (obojí dávalo 17. 9. 2026 falešný poplach).
 - **Nedeklarovat datum v budoucnosti** — `updated:` musí být ≤ dnes (search engines to penalizují jako manipulaci).
 - **Nepsat duplicit obsah** — pokud podobný článek existuje, raději update existujícího (a bumpni `updated:`).
 - **Nesahat mimo svou doménu** — viz tabulka „Kam článek patří" výše.

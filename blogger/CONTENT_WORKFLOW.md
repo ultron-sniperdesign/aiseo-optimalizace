@@ -62,6 +62,66 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
 
 ---
 
+## 📌 Závazná pravidla Z1–Z13 (od 18. 9. 2026)
+
+> Dřív byla jen v paměti Claude session nebo ve vlákně, takže je druhá větev neviděla
+> a běh nešel zkontrolovat z repa. Schválil uživatel 18. 9. 2026 bod po bodu.
+> **Obsahová pravidla platí pro obě blogger větve** (Codex podle své hlavičky přebírá
+> obsahová pravidla z tohoto dokumentu); u procesních je napsané, pro koho platí.
+> Číslování je stálé — odkazuj na „Z4“, ne na pořadí.
+
+- **Z1 — Strop na ověřování** *(tahle větev)*. Na jeden run nejvýš **~15 agentů celkem**
+  a ověřovat jen tvrzení, která opravdu půjdou do textu. Větší rozsah jen po dotazu
+  uživatele s odhadem počtu agentů a tokenů. Běžný run zvládne research sám:
+  vyhledávání, curl na primární zdroje, Marketing Miner. *(výtka uživatele 14. 9. 2026)*
+- **Z2 — Nejmenovat měřené weby a osoby** *(obě větve)*. V publikovaném textu nikdy
+  konkrétní měřené e-shopy a média, ani osoby dohledané ve veřejných souborech.
+  Tvrzení cizího webu, které vyvracíme, popsat bez jména.
+- **Z3 — Pack má sedm typů stránek** *(obě větve)*. AI SEO Wireframe Pack jsou drátěné
+  modely sedmi typů stránek; osmá kapitola „Aplikace“ je návod na nasazení, ne typ
+  stránky. Formát: 9 PDF souborů + souhrnné PDF. Platí pro CTA i zmínky v textu.
+- **Z4 — Název auditu** *(obě větve)*. Placený audit za 3 600 Kč je **„Audit AI
+  viditelnosti“**; „SEO audit“ smí stát jen jako kontrast („není to klasický SEO audit“).
+  Starý název („AI SEO audit“, „SEO a AI audit“) je k 18. 9. 2026 ve **90 článcích,
+  125 výskytech** — odbaví ho blok oprav, adresa `/blog/ai-seo-audit/` zůstává.
+- **Z5 — Kdo co píše** *(obě větve)*. Blog mají dvě blogger větve: **tahle (Claude,
+  tento dokument)** píše nové články, refreshe a bloky oprav; **Codex**
+  (`Content Workflow Codex.md`) píše **jen nové články**. Admin session zasahuje do blogu
+  jen refreshem podloženým daty z GSC nebo GA. Obě blogger větve berou první volný řádek
+  plánu, proto platí Z8 a Z10.
+- **Z6 — Obrázek nikdy od nuly** *(obě větve)*. Prompt se skládá z preambule
+  v `IMAGE_GUIDE.md` §5 + scény + českého textu + pojistek odtamtud. Nepřidávat vlastní
+  zákazy ani „no text“ — tmavá abstraktní série bez nadpisu byla reklamovaná dvakrát.
+- **Z7 — Zápis do plánu** *(obě větve)*. Šest sloupců, zápis přes
+  `csv.writer(lineterminator='\r\n')`, čtení s `newline=''`. Po každém zápisu ověřit, že
+  počet fyzických `\r\n` je roven počtu parsovaných řádků — rozbitá uvozovka jinak
+  spolkne téma a nikdo si toho nevšimne.
+- **Z8 — Souběh** *(obě větve)*. Na začátku runu a znovu před commitem `git fetch`
+  a `git log origin/main`: druhá větev i admin mění ve stejném repu soubory i pravidla
+  (17. 9. 2026 se během jednoho runu změnilo pravidlo o PNG). `git add` jmenovitě jen
+  vlastní soubory, nikdy nevracet cizí rozdělanou práci.
+- **Z9 — Vlastní čísla z GA4** *(obě větve)*. Provoz webu je většinově z placených
+  kampaní na Facebooku a Instagramu. Každé číslo z GA4 v článku musí být segmentované
+  podle kanálu, jinak se čte špatně.
+- **Z10 — Kolizní kontrola před psaním** *(obě větve)*. Než začneš research:
+  (a) projdi názvy souborů v `src/content/articles/` a grepni v nich klíčová slova
+  řádku; (b) po `git fetch` ověř, že řádek mezitím nevzala druhá větev. Když téma
+  existuje, **tahle větev** řádek uzavře jako SLOUČENO — `Publikováno = ano`, URL
+  cílového článku, důvod do sloupce C (vzor: `produktovy feed pro ai`, 17. 9. 2026).
+  Codex takový řádek podle svého B1 jen přeskočí.
+- **Z11 — Uzávěr po publikaci** *(tahle větev)*. Po vydání článku projdi volné řádky
+  plánu, které nový článek pokrývá, a uzavři je stejně jako v Z10. Řádek pro už
+  existující téma vzniká nejčastěji tak, že ho někdo zapsal dřív, než článek vyšel.
+- **Z12 — Hledání při bloku oprav** *(tahle větev)*. Zastaralé tvrzení hledat podle
+  entity (název funkce, produktu, čísla), ne podle jedné formulace, a po buildu to
+  samé grepnout i v `dist/`. 17. 9. 2026 utekla tři místa ze dvaceti, protože byla
+  napsaná jinými slovy.
+- **Z13 — Kontrola vykreslení** *(obě větve)*. Po buildu grepnout v `dist/blog/<slug>/`
+  aspoň jeden text z každé komponenty (`Stepper`, `Checklist`, `CompareTable`…).
+  Překlep v názvu vlastnosti build nezastaví a text tiše zmizí.
+
+---
+
 ## BLOK A — Údržba obsahového plánu (start každého runu)
 
 Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.

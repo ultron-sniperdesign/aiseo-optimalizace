@@ -51,14 +51,11 @@ komponentu, eskalace na admin session přes board.
 - `git add` jmenovitě jen vlastní soubory. Nikdy `-A`, nikdy celý adresář.
 - Nikdy `--force`, `--no-verify`, `--no-check`, `git reset --hard`, změna `git config`.
 - Před pushem `git merge-base --is-ancestor origin/main HEAD`.
-- **Nestagovat `.astro-indexnow-cache.json`** — mění ho build.
 - Nikdy necommitovat macOS soubory `Icon`.
 - Z `research/<slug>/` se commituje jen `research.md`, `audit1-result.md`, `audit2-result.md`
   (+ případná surová měření). Soubory `*-brief.md`, `_audit*-context.md`, `_c6-*` jsou meziprodukt.
 - **Slug po publikaci se nikdy nemění.** `updated:` nikdy v budoucnosti.
-- Žádné secrets v textu, promptu ani logu. Před commitem grep na `sk-`, `sk_live_`, `gho_`,
-  `ghp_`, `AKIA`, `xoxb-`, `whsec_`, privátní klíče (pozor na falešný poplach: slug
-  `ask-maps-…` vyhoví vzoru `sk-`, proto hranice slova).
+- Žádné secrets v textu, promptu ani logu. Příkaz na kontrolu před commitem je v `README.md` („Co NIKDY nedělat“).
 
 ---
 
@@ -117,32 +114,15 @@ Keyword research: `~/.claude/skills/marketing-miner-api/scripts/keyword_search_v
 
 ## V — Pravidla obsahu
 
-**Co hlídá build (Zod v `src/content.config.ts`) — mimo rozsah spadne:**
-`description` 70–160 znaků · `category` jen `defensive | case-study | tutorial | analysis` ·
-`slug` jen malá písmena, číslice a pomlčky · `updated` ve tvaru ISO · `tags` z registru
-`src/i18n/tags.ts` (9 id: strategie, ai-platformy, technicke-zaklady, strukturovana-data,
-obsah, duveryhodnost, eshopy, mereni, audit-nastroje).
+Jedno pravidlo, jedno místo — tady jen rozcestník:
 
-**Co build nehlídá a stejně platí:**
-
-- `answer` 40–60 slov, začíná definicí, dává smysl samostatně.
-- `seoTitle` do 60 znaků; slibuje akci, ne popis (měřeno na vlastním CTR 7. 9. 2026).
-- **H2 nese `<span class="hl">pojem</span>` + `<strong>pointu</strong>` + prostý text.** H3 prostý text.
-- FAQ 4–8 otázek ve frontmatteru; vykresluje je komponenta, JSON-LD se generuje z týchž dat.
-- `howto:` do nových článků **nepřidávat** — Google HowTo ukončil, 61 starších článků to má
-  a je to v REFRESH_QUEUE.
-- Vizuální předěl po 200–300 slovech: komponenty `Insight`, `Checklist`, `CompareTable`,
-  `Stepper`, `Mistake`/`MistakeGrid`, `DoDont`, `Persona`, `SourceCard`, `Figure`.
-  **Překlep v názvu vlastnosti build nezastaví — text tiše zmizí.** Po zásahu kontrolovat `dist/`.
-- CTA na konkrétní produkt: tutorial a defensive → Pack 1 490 Kč nebo návod zdarma,
-  analysis a case-study → **Audit AI viditelnosti 3 600 Kč**.
-- Názvosloví: **„Audit AI viditelnosti“, ne „AI SEO audit“** (rozhodnutí 16. 9. 2026) ·
-  „Přehled od AI“ **v jednotném čísle** · „strukturovaná data“, ne „schema markup“ ·
-  „krátká odpověď“, ne „answer block“ · české uvozovky „…“ · datum česky, ne ISO.
-- Nikdy nejmenovat konkrétní měřené e-shopy a média ani osoby dohledané ve veřejných souborech.
-- Tvrzení bez doloženého zdroje do textu nepatří. Když se číslo nedá doložit, článek to napíše
-  („doložené číslo jsme nenašli“), ne obejde. Absolutní formulace typu „nemá nikdo“ nahrazovat
-  „nenašli jsme“ — obojí vytkl auditor 15. 9. 2026.
+- **Závazná pravidla Z1–Z13** (strop na ověřování, jména, Pack, název auditu, kdo co píše,
+  obrázek, zápis do plánu, souběh, čísla z GA4, kolizní kontrola, uzávěr, bloky oprav,
+  kontrola vykreslení) → `CONTENT_WORKFLOW.md`, sekce před blokem A.
+- **Struktura článku, krátká odpověď, H2, FAQ, CTA, názvosloví** → `CONTENT_WORKFLOW.md` blok C
+  a `ARTICLE_TEMPLATE.md`.
+- **Frontmatter, co hlídá build, publikace a ověření** → `README.md`.
+- **Obrázek** → `IMAGE_GUIDE.md`. **Jazyk** → `JAZYK_SLOVNIK.md` a `jazyk-check.py`.
 
 ---
 
@@ -165,9 +145,7 @@ obsah, duveryhodnost, eshopy, mereni, audit-nastroje).
 - **`ugrep` spadne na `mismatched [ ]`** u regexu se závorkami; na složitější hledání python.
 - Ukázky JSON-LD v článku se dají ověřit přes `validator.schema.org/validate`
   (POST, pole `html`) — použito 15. 9. 2026, 0 chyb.
-- **Agenti a workflow:** na jeden run **do ~15 agentů celkem**, ověřovat jen tvrzení, která
-  opravdu půjdou do textu; větší rozsah až po dotazu s odhadem (zpětná vazba uživatele 14. 9. 2026).
-  Běžný run zvládne research sám: WebSearch, curl na primární zdroje, Marketing Miner.
+- **Agenti a workflow:** strop je pravidlo Z1 v `CONTENT_WORKFLOW.md`.
 
 ---
 
