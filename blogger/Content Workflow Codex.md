@@ -77,6 +77,12 @@ než se dostaneš k práci** (ověřeno 14. 9. 2026 — session spadla na
 
 Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
+- **A0 — Ověř souběh před výběrem:** na začátku každého runu spusť `git fetch origin`
+  a prohlédni `git log --oneline HEAD..origin/main`. Pokud má vzdálená větev nové
+  commity, nejdřív si je prohlédni a synchronizuj pracovní větev; teprve potom čti
+  sdílený plán. Obě blogger větve vybírají z jedné fronty a řádek mohl mezitím převzít
+  někdo jiný.
+
 - **A1 — Trend research (širokozáběr):** web search napříč tématem → aktuální trendy, nové dotazy, co řeší konkurence. Zkratky *AI SEO · GEO · AEO · AIO* jsou jen jedním z okruhů, ne celý záběr. Reálné pokrytí webu (podle tagů, k 15. 9. 2026):
 
   | Okruh | Co pod něj patří |
@@ -106,20 +112,43 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   **⚠️ Rising queries u málo hledaných spojení lžou — filtruj je.** Google k víceslovným dotazům s nízkou hledaností přimíchává nesouvisející výrazy a tváří se, že rostou. Změřeno 15. 9. 2026 na `ai seo` (CZ): vrátilo `books, pasta, vegetables, movies, museums` — žádné s tématem nesouvisí. U `e-shop`, `shoptet`, `chatgpt`, `seo` i `ai` přitom vrací data správně. Neexistující výraz vrátí prázdno, takže **šum nepoznáš podle toho, že chybí data — poznáš ho jen podle obsahu**.
 
   Pravidlo: **rising query, která nesdílí ani slovo se seed keywordem a není jeho známé synonymum, je šum → zahoď ji.** Když je takových víc než polovina, Trends pro to keyword nepoužívej vůbec a do `research.md` napiš, že data nebyla použitelná. Nikdy nepřebírej řádek „Souhrnně rostou" z `enrichment.md` bez téhle kontroly — skript ho skládá z nefiltrovaného výstupu.
-- **A3 — Porovnání s webem (dvoukrokově):** k 15. 9. 2026 je v `src/content/articles/` **165 článků**, načíst je celé nejde. Postupuj takto:
+- **A3 — Porovnání s webem a kolizní kontrola:** k 15. 9. 2026 je v `src/content/articles/` **165 článků**, načíst je celé nejde. Kontrolu udělej **před hloubkovou rešerší**, ne až po draftu:
   1. **Sken metadat všech článků s názvy souborů** — bez nich nepoznáš, ke kterému článku nález patří:
      ```bash
      grep -H "^title:\|^slug:\|^tags:" src/content/articles/*.mdx
      ```
-  2. **H2 filtruj na téma, nedumpuj celý web.** Neomezený výpis má 1 076 unikátních nadpisů a 50 kB (měřeno 17. 9. 2026) — je to tři čtvrtiny celého skenu a nejmíň užitečná část. Cílený filtr na jedno téma vyjde na jednotky kB:
+  2. **Prohledej názvy souborů i celé články klíčovými slovy řádku.** Samotný titul nemusí
+     překryv odhalit. Začni názvy a cíleným hledáním, například:
+     ```bash
+     rg --files src/content/articles | rg -i '<téma|synonymum>'
+     rg -il '<klíčové slovo|synonymum>' src/content/articles src/content/sections src/content/pillar
+     ```
+  3. **H2 filtruj na téma, nedumpuj celý web.** Neomezený výpis má 1 076 unikátních nadpisů a 50 kB (měřeno 17. 9. 2026) — je to tři čtvrtiny celého skenu a nejmíň užitečná část. Cílený filtr na jedno téma vyjde na jednotky kB:
      ```bash
      grep -H "^## " src/content/articles/*.mdx | grep -i "<téma>"
      ```
-  3. **Celé čti jen obsahově blízké kandidáty** — typicky 2–5 článků, ne 165.
+  4. **Celé čti jen obsahově blízké kandidáty** — typicky 2–5 článků, ne 165.
 
   Tím zkontroluješ celý web a nezahltíš kontext. Přidej i pilíř a sekce (`src/content/sections|pillar/`).
 - **A4 — Porovnání s tabulkou:** grepni `obsahovy-plan.csv` na řádky `Publikováno = ne` → nepřidávej, co už čeká.
 - **A5 — Zápis 1 nového řádku** do `obsahovy-plan.csv` (změna z 15. 9. 2026 — dřív dva). Vyplň A–E (**D = kategorie** ze čtveřice `tutorial`/`analysis`/`defensive`/`case-study`, E = `ne`), F nech prázdné. Důvod: dvě témata na jeden publikovaný článek frontu soustavně nafukují; k 15. 9. 2026 v ní čeká 145 položek proti 192 publikovaným. **Přidávej podle hodnoty tématu, ne pro splnění kvóty** — když v daném běhu nenajdeš nic, co by stálo za zařazení, nepřidávej nic a napiš to do reportu.
+
+  Plán má vždy **šest sloupců**. Čti ho s `newline=''` a zapisuj přes
+  `csv.writer(..., lineterminator='\r\n')`; neskládej řádek ručně. Po každé změně
+  ověř, že všechny parsované řádky mají šest polí a počet fyzických `CRLF` odpovídá
+  počtu řádků vrácených `csv.reader`:
+
+  ```python
+  import csv
+  from pathlib import Path
+
+  plan = Path("blogger/obsahovy-plan.csv")
+  with plan.open(newline="", encoding="utf-8") as f:
+      rows = list(csv.reader(f))
+  raw = plan.read_bytes()
+  assert all(len(row) == 6 for row in rows)
+  assert raw.count(b"\r\n") == len(rows)
+  ```
 
   **U analytických témat rozlišuj tři věci a nepiš je do jedné věty:**
   1. **Otázka**, kterou má článek zodpovědět → sloupec B (Téma).
@@ -136,7 +165,12 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 ## BLOK B — Výběr tématu a hloubkový research
 
-- **B1 — Výběr tématu:** vezmi **první volný řádek pro nový článek** (`Publikováno = ne`), který po kontrole Pokynů a překryvu s webem nevyžaduje aktualizaci existujícího obsahu. Pořadí plánu zachovej; **žádná mimořádná přednost neplatí**.
+- **B1 — Výběr tématu:** po A0 znovu ověř, že kandidátní řádek má stále
+  `Publikováno = ne`. Dočasná výjimka z běžného pořadí: dokud je otevřený řádek
+  **`osobni inteligence cesky nazev`**, vyber ho před ostatními tématy k novému článku.
+  Po jeho uzavření tuhle výjimku z dokumentu smaž. Jinak vezmi **první volný řádek pro
+  nový článek**, který po kontrole Pokynů a překryvu s webem nevyžaduje aktualizaci
+  existujícího obsahu.
 
   > **Nejdřív přečti sloupec C (Pokyny).** Řádky s pokynem *refresh / update / aktualizovat existující / nepsat nový* **přeskoč a ponech beze změny**, včetně stavu publikace a URL. Patří jinému nástroji; neoznačuj je jako hotové. Stejně postupuj, pokud až kontrola překryvu ukáže, že téma vyžaduje aktualizaci existujícího článku. Důvod přeskočení zapiš do podkladů svého běhu a pokračuj dalším způsobilým řádkem. Pokud žádný nezbývá, oznam nedostatek témat pro nový článek; nenahrazuj úkol refreshem ani duplicitou.
 
@@ -154,6 +188,16 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   > doložený univerzální počet slov* není totéž jako *na délce nezáleží*. Tahle záměna
   > je nejčastější vada zděděná z plánu.
 - **B2 — Hloubkový research tématu:** cílený web search (fakta, zdroje, co pokrývají konkurenti) + cílená analýza KW na Marketing Mineru (hledanost, long-tail, sezónnost, rising queries pro FAQ — u úzkých témat bývají prázdné, náhrady viz C1).
+  > **Měřený vzorek anonymizuj.** V publikovaném článku nejmenuj konkrétní e-shopy,
+  > média ani osoby, které jsi identifikoval ve veřejně dostupných souborech měření.
+  > Popiš typ subjektu a zjištění. Stejně anonymně popiš cizí web a jeho tvrzení, když
+  > je v článku vyvracíš. Toto omezení se netýká autora nebo vydavatele záměrně citovaného
+  > zdroje, pokud se do rešerše nedostal jen přes soubor měřeného vzorku.
+  >
+  > **Číslo z GA4 bez kanálu nepoužívej.** Většinu provozu webu tvoří placené kampaně
+  > na Facebooku a Instagramu. Každou metriku z GA4 proto rozpadni alespoň podle
+  > kanálu a v textu řekni, zda jde o placenou, organickou nebo celkovou návštěvnost.
+  > Když segmentaci nemáš, agregované číslo do článku nedávej.
   > **Navazující článek z plánu je kandidát na odkaz, ne povinný odkaz.** Než na něj
   > odkážeš, **otevři ho a přečti**. Když v něm najdeš nedoložené tvrzení, **odkaz
   > vynech** — interní odkaz je doporučení a nemá vést na text, který bys sám nenapsal.
@@ -211,19 +255,37 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 > část slepých skvrn**. Proto mají povinnost opírat nálezy o ověřitelný zdroj, ne o dojem.
 > Nález bez zdroje nebo bez citované pasáže se nezapracovává.
 
+**Strop ověřování v běžném runu:** použij tři auditorské subagenty z C2, C3 a C5.
+Zásadní opravy vrať podle C5b agentovi, který nález našel; nezakládej kvůli nim další
+role. Výzkum, data ani obrázek nerozděluj mezi další agenty. Limity kol a eskalace v
+C5b platí i tehdy, když by další kontrola byla levná — po jejich vyčerpání už opakování
+nezvyšuje jistotu úměrně času.
+
 ### C1 — První verze článku
 
 Podle `blogger/ARTICLE_TEMPLATE.md` + `blogger/README.md`:
 
 - Frontmatter: **8 povinných polí** — `title`, `description`, `answer`, `slug`, `category`, **`tags`**, `updated`, `keywords`. (`tags` se dřív v dokumentaci nepočítalo; ověřeno proti `src/content.config.ts` 15. 9. 2026, má je všech 165 článků.) Plus **`variant: "rich"`**, které schéma nevynucuje, ale bez něj se nevykreslí rich layout. `keywords` z B2.
 
+  **Pole `howto` a `stats` nepoužívej.** `howto` vytvářelo jen neviditelná strukturovaná
+  data a `stats` žádná šablona nevykreslovala; obě byla 20. 9. 2026 z korpusu odstraněna.
+  Kroky patří do viditelného `Stepper`u, čísla do viditelného textu nebo komponenty.
+  Před přidáním jakéhokoli jiného pole frontmatteru nejdřív prohledej `src/pages/`,
+  `src/components/` a `src/layouts/` a ověř, že se hodnota skutečně vykreslí čtenáři.
+
   **`category` = sloupec D tabulky.** Schéma zná jen `tutorial`, `analysis`, `defensive`, `case-study` (`z.enum` v `src/content.config.ts`) — jiná hodnota shodí build. Sloupec D nese kategorii **od 16. 9. 2026**; do té doby se jmenoval „Typ" a měl `článek` ve všech 338 řádcích (nulová informace). Naplněn byl ze značek `Kategorie:` v Pokynech. Pořadí:
   1. **Hodnota ve sloupci D** — vyplněná u 276 z 338 řádků (analysis 145, tutorial 130, case-study 1).
-  2. **Když je D prázdné** (62 řádků, z toho 46 reálně k napsání), urči kategorii podle obsahu — tabulka „Kategorie — co kam patří" v `README.md`. Orientačně: krok-za-krokem postup = `tutorial` (+ pole `howto`), měření / trend / rozbor dat = `analysis`, „jak omezit/vypnout" = `defensive`, konkrétní klient s čísly = `case-study`. Volbu zdůvodni v `research.md` a **zvolenou hodnotu rovnou doplň do sloupce D**, ať ji příští běh neřeší znovu.
-  3. Sloupec C (Pokyny) u některých řádků nese starší značku `Kategorie: …` i s kontextem (např. „tutorial (+ howto schema)"). **Přednost má sloupec D**; značka v Pokynech je jen doplňující text.
+  2. **Když je D prázdné** (62 řádků, z toho 46 reálně k napsání), urči kategorii podle obsahu — tabulka „Kategorie — co kam patří" v `README.md`. Orientačně: krok-za-krokem postup = `tutorial` (kroky ve viditelném `Stepper`u), měření / trend / rozbor dat = `analysis`, „jak omezit/vypnout" = `defensive`, konkrétní klient s čísly = `case-study`. Volbu zdůvodni v `research.md` a **zvolenou hodnotu rovnou doplň do sloupce D**, ať ji příští běh neřeší znovu.
+  3. Sloupec C (Pokyny) u některých řádků nese starší značku `Kategorie: …` i s kontextem (např. „tutorial (+ howto schema)"). **Přednost má sloupec D**; značka v Pokynech je historická poznámka a odstraněné pole se podle ní neobnovuje.
   **Formát H2 je závazný pro celý web.** Každý H2 nese `<span class="hl">klíčový pojem</span>` **i** `<strong>pointu</strong>` a prostý text mezi tím; H3 zůstávají prostý text. Plné znění v `CLAUDE.md` § VI, vzory nahoře v `ARTICLE_TEMPLATE.md`. Stav k 16. 9. 2026: sekce a pilíř 100 %, **blog jen 142 z 1 359 H2** — u nových článků to drž od začátku, retrofit starých je jiná práce.
 
 - Tělo: `answer` (40–60 slov, sebestačná) → lead → 3–6 H2 sekcí (fakta z B2) → **FAQ** (z rising queries) → CTA na konkrétní produkt (tutorial/defensive → Pack nebo Free PDF; analysis/case-study → Audit). **Název a cenu produktu přečti před psaním CTA v `src/content/pages/{pack,audit,navod-zdarma}.ts`** — je to jediný zdroj pravdy. Nabídky se přejmenovávají (audit 16. 9. 2026) a opsaný název z dokumentace znamená druhé nasazení.
+
+  **Produktová terminologie:** Pack pokrývá sedm typů stránek; osmá obsahová kapitola
+  je návod na nasazení. Dodávka obsahuje devět dílčích PDF a jeden souhrnný dokument.
+  Audit se jmenuje **Audit AI viditelnosti**. Staré označení „AI SEO audit" ani jiné
+  zkratky v CTA nepoužívej; mimo CTA smí stát jen jako výslovný kontrast ke klasickému
+  SEO auditu. Aktuální název a cenu přesto vždy ověř v datových modulech.
 
   **Když Trends mlčí — FAQ stojí na stupňovaném zdroji, ne na jednom.** Rising queries
   jsou u úzkých českých témat běžně prázdné. Změřeno 17. 9. 2026: `geo optimalizace`,
@@ -273,6 +335,13 @@ Zadání pro auditora faktů:
 >
 > Text needituj, jen reportuj.
 
+Pro C2 i C5 platí dvě pojistky proti falešným nálezům:
+
+- Pokud auditor požaduje doplnit číslo, statistiku nebo zdroj, musí zároveň navrhnout
+  konkrétní dohledatelný zdroj. Obecný požadavek „doplňte data" není nález.
+- Délku titulku pro výsledek vyhledávání posuzuje podle `seoTitle`. Když `seoTitle`
+  existuje, délku `title` neposuzuje; bez `seoTitle` je pro kontrolu relevantní `title`.
+
 Výstup ulož do `blogger/research/<slug>/audit-fakta.md`.
 
 ### C3 — Jazykový auditor (subagent, běží souběžně s C2)
@@ -317,7 +386,9 @@ Záznam ulož do `blogger/research/<slug>/vyporadani.md`. Slouží jako vstup pr
 
 ### C5 — Závěrečný auditor (subagent, nový, nepodílel se)
 
-Třetí subagent. **Nesmí to být žádný z předchozích dvou.** Postupuje ve dvou krocích:
+Třetí subagent. **Nesmí to být žádný z předchozích dvou.** Dostane systémový prompt
+z `blogger/auditor-system.md`, kontextový rámec a obě pojistky uvedené za C2. Postupuje
+ve dvou krocích:
 
 1. **Nejdřív posoudí opravený text samostatně**, bez znalosti předchozích nálezů — aby nebyl zaujatý tím, co už se řešilo. Hledá, co oběma předchozím uniklo.
 2. **Teprve pak dostane** `audit-fakta.md`, `audit-jazyk.md` a `vyporadani.md` a ověří, jestli jsou nálezy skutečně vypořádané a jestli odmítnutí obstojí.
@@ -369,12 +440,16 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 
 > Toto je marketingový a vzdělávací článek pro web **aiseo-optimalizace.cz** — edukativní web
 > o AI éře vyhledávání (SEO/GEO/AEO/AIO). Web informuje o tématu a zároveň nabízí ke koupi
-> **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **Audit AI viditelnosti** (3 600 Kč) — **aktuální znění vždy ověř v `src/content/pages/pack.ts` a `audit.ts`**, ne odsud. Provozovatel:
+> **AI SEO Wireframe Pack** (sedm typů stránek + návod na nasazení; devět dílčích PDF
+> a souhrnný dokument) a **Audit AI viditelnosti** — **aktuální cenu a znění vždy ověř
+> v `src/content/pages/pack.ts` a `audit.ts`**, ne odsud. Provozovatel:
 > Sniper Design (Zlatý partner Upgates od 2016, vlastní e-shop MEGA DETAIL).
 > Auditor hodnotí: věcnou správnost, soulad s brand voice (žádný zakázaný žargon, žádný overclaim),
-> citovatelnost pro AI (answer block, hustota faktů, FAQ), SEO (titulek, description 70–160, struktura),
+> citovatelnost pro AI (answer block, hustota faktů, FAQ), SEO (`seoTitle` do 60 znaků;
+> když existuje, neposuzuj délku `title`; description 70–160; struktura),
 > relevanci CTA. Aktuální rok je <doplň>, podle něj posuzuj aktuálnost.
-> Vrať konkrétní seznam oprav s důkazy, ne obecnosti.
+> Vrať konkrétní seznam oprav s důkazy, ne obecnosti. Požadavek na nové číslo,
+> statistiku nebo zdroj uváděj jen spolu s konkrétním dohledatelným zdrojem.
 
 ---
 
@@ -387,7 +462,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 
   > **Tohle Codex sám neudělá** — obrázek se generuje voláním OpenAI Images API, model `gpt-image-2`, `--size 1536x1024`, `--quality high`. Klíč `OPENAI_API_KEY` je v `~/.zshenv`. Použít jde i hotový skript `~/.claude/skills/open-ai-api-core/scripts/image.py` — je to obyčejný Python soubor, spustíš ho přímo.
 
-  - Prompt = konstantní stylová preambule + scéna k tématu + **CZ text vlevo nahoře**. Šablona v `IMAGE_GUIDE.md` §5.
+  - Prompt = **doslovně převzatá** konstantní stylová preambule z `IMAGE_GUIDE.md` §5 + scéna k tématu + **CZ text vlevo nahoře** + pojistky předepsané guidem. Preambuli neskládej z paměti a nepřidávej vlastní zákazy.
   - **Kompozice:** důležitý obsah do horních **~84 %** — zobrazení ořízne spodních ~16 %.
   - ⛔ **Do promptu NIKDY `no text` / `no letters`** — CZ nadpis je povinná součást stylu. Na tomhle spadly runy 51–62, 81–86 i 120–121.
   - **Zkontroluj vygenerovaný obrázek na ořezu**, ne na originálu (postup v `IMAGE_GUIDE.md` §6 krok 3).
@@ -395,6 +470,14 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
   - **PNG smaž** (`rm public/og/<slug>.png`) — je to pracovní mezikrok, šablona na něj nesahá.
 - **D3 — Publikace** (dle `blogger/README.md`):
   - `npm run build` (validace frontmatteru + komponent)
+  - **Ověř vykreslení použitých komponent v `dist/`.** Z článku si vypiš každý typ
+    importované komponenty a pro každou vyber alespoň jeden její skutečný, jedinečný
+    textový řetězec. Po buildu ho najdi v `dist/blog/<slug>/index.html` přes přesnou
+    shodu. Samotný úspěšný build nestačí: překlep v názvu vlastnosti může text tiše
+    zahodit. Kontrola prázdného `Stepper`u z D1 zůstává navíc.
+  - **Těsně před commitem znovu** proveď `git fetch origin` a prohlédni
+    `git log --oneline HEAD..origin/main`. Když přibyly změny, nejdřív je sluč se svou
+    prací, znovu ověř zvolený řádek plánu a zopakuj build i kontroly, kterých se dotkly.
   - `git add` JEN vlastní soubory, **nikdy `-A`**. Úplný výčet toho, co run smí commitovat:
     - `src/content/articles/<slug>.mdx` — článek
     - `public/og/<slug>.jpg` a `public/og/<slug>.webp` — **vyjmenuj oba, nepoužívej hvězdičku** (`public/og/<slug>.*` by přibalilo zakázané `.png`)
@@ -445,7 +528,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 
   Když přeteče komponenta a ne tvůj text, **neobcházej to zkrácením obsahu** — zapiš
   nález do `cross-session/aiseo-optimalizace.md` pro vývojovou session.
-- **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` nastav `Publikováno = ano` a `URL` **jen u právě publikovaného nového článku**. Přeskočené řádky neměň. Commituj.
+- **D4 — Uzávěr tabulky:** v `obsahovy-plan.csv` nastav `Publikováno = ano` a `URL` **jen u právě publikovaného nového článku**. Přeskočené ani další tematicky příbuzné řádky neměň. Zápis a kontrolu CRLF proveď stejně jako v A5. Commituj.
 
   > **Pořadí je závazné, uzávěr jde až nakonec.**
   > 1. Commitni článek, obrázky, rešerši a audity. **Bez `obsahovy-plan.csv`.**
@@ -477,6 +560,8 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 - **Edituji:** `src/content/articles/<slug>.mdx`, `public/blog/<slug>/`, `public/og/<slug>.jpg` + `.webp`, `blogger/obsahovy-plan.csv`, `blogger/research/<slug>/`. Importuji (ne edituji) komponenty z `src/components/blocks/`.
 - **NESahám** na `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`, `src/content/sections|pillar/`, `_source/`, `worker/`, `astro.config.mjs`, `package.json`, `.github/`, `CLAUDE.md`.
 - **Neaktualizuji již publikované články.** Refreshe řeší jiný nástroj; související nález pouze doložím v podkladech a projektovém záznamu.
+- **Neuzavírám jiné řádky plánu** jen proto, že je nový článek částečně pokrývá. Codex
+  uzavírá výhradně řádek právě publikovaného článku; slučování a bloky oprav patří druhé větvi.
 - **Slug po publikaci NIKDY neměnit.** `updated:` nikdy v budoucnosti.
 - **Žádné secrets** v textu, promptu, logu ani gitu.
 - **Žádné `--no-verify`, `--force`, `--no-check`.**
@@ -488,9 +573,10 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 ## ✅ Per-run checklist
 
 - [ ] Nenačetl jsem `blogger/` plošně ani **cizí podsložky** `research/` (do vlastní `research/<slug>/` zapisovat mám)
-- [ ] A: trend research → **1 nový řádek** v `obsahovy-plan.csv` (nebo žádný, když nic nestojí za zařazení); **duplicity kontrolovány dvoukrokově**
-- [ ] B: vybrán první volný řádek **pro nový článek**, **přečten sloupec C**, řádky pro refresh přeskočeny beze změny, research + KW, **zdroje zapsané v `research.md`**
-- [ ] C1: draft s answer + FAQ + CTA, **8 povinných polí včetně `tags`**, `variant: "rich"`, **design komponenty hotové**, brand voice OK
+- [ ] Start: `git fetch origin` + kontrola nových commitů proti `origin/main`
+- [ ] A: trend research → **1 nový řádek** v `obsahovy-plan.csv` (nebo žádný, když nic nestojí za zařazení); **duplicity kontrolovány dvoukrokově**; šest sloupců a CRLF ověřeny
+- [ ] B: vybrán prioritní, jinak první volný řádek **pro nový článek**, **přečten sloupec C**, stav ověřen po fetchi, názvy i text korpusu prohledány, řádky pro refresh přeskočeny beze změny, research + KW, **zdroje zapsané v `research.md`**
+- [ ] C1: draft s answer + FAQ + CTA, **8 povinných polí včetně `tags`**, `variant: "rich"`, **bez `howto` a `stats`**, design komponenty hotové, brand voice OK
 - [ ] **C1b: titulek pro SERP** — `seoTitle` do 60 znaků, nebo vědomé rozhodnutí, že stačí `title`
 - [ ] C2 + C3: **dva samostatní subagenti** (fakta, jazyk), nálezy s důkazy a **označením zásadní/drobný**; auditor faktů měl pokyn hledat vlastní zdroje a protidůkazy
 - [ ] C4: vypořádání každého nálezu zapsané v `vyporadani.md`, odmítnutí doložená
@@ -498,7 +584,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 - [ ] **C5b: zásadní nálezy doověřeny** (max 1 kolo navíc, pak eskalace na člověka)
 - [ ] **C6: `jazyk-check.py` na 0 nálezů** + případná nová pravidla do slovníku
 - [ ] D1: design komponenty hotové **už před audity** (v C1), `.mdx` + `variant: rich`, žádný wall of text
-- [ ] D2: featured image `.jpg` + `.webp` (CZ text v horních ~84 %, zkontrolováno na ořezu), **PNG smazané**
-- [ ] D3: `npm run build` OK → commit → push → CI → curl 200 (článek i `og/<slug>.jpg`)
-- [ ] D4: tabulka `E = ano`, `F = URL`
+- [ ] D2: featured image z doslovné preambule §5, `.jpg` + `.webp` (CZ text v horních ~84 %, zkontrolováno na ořezu), **PNG smazané**
+- [ ] D3: `npm run build` OK + text každé použité komponenty nalezen v `dist/` → druhý fetch a kontrola souběhu → jmenovité stagování → commit → push → CI → curl 200 (článek i `og/<slug>.jpg`)
+- [ ] D4: jen vlastní řádek tabulky `E = ano`, `F = URL`; šest sloupců a CRLF znovu ověřeny
 - [ ] D5: URL do vlákna
