@@ -1451,3 +1451,16 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 **Přijato z LLM:** vsuvka v prvním odstavci („Obsah za formulářem… systémy, které web procházejí samy, nepřečtou“) přestavěna na „Roboti, kteří web procházejí sami, nepřečtou obsah za formulářem, registrací ani přihlášením“ · „Google k procházení odkazů uvádí“ → „o procházení odkazů“ · „kde má Google hranici maskování“ → „kde je podle Googlu hranice maskování“ · „obsah za bránou z ní nemá“ → „nezíská“ · „co s bránou udělají“ → „jak se k bráně zachovají“.
 
 **Proč bez pravidel:** navržené regexy (`kde má Google hranici`, `obsah za bránou z ní nemá`, `co s bránou udělají`) jsou celé fráze z tohoto článku — v korpusu se nikde jinde nevyskytují a checkeru by nic nepřinesly. Vada byla ve stavbě věty, ne ve výrazu.
+
+## C6: `ceske-nazvy-ai-funkci-google` (20. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | 13 nálezů napoprvé — všechny „Přehledy od AI“, což je **téma článku**: cituje oficiální název z nápovědy. Doplněno do existující výjimky u pravidla `Přehled(y\|ech\|ů\|ům) od AI` (**slovník v71**), pak **0**. |
+| LLM (gpt-5.4) | 6 nálezů — **všechny přijaty, žádné nové pravidlo** |
+
+**Slovník v71:** `[skip:kdy-ai-prehled-necekat,seo-vs-geo-vs-aeo-vs-aio,ceske-nazvy-ai-funkci-google]`. K důvodu pravidla přibylo zjištění z tohohle runu: Google množné číslo používá pro funkci jako celek (titulek nápovědy „…s Přehledy od AI…“) a jednotné pro jednu konkrétní odpověď („v dolní části přehledu od AI“). Korpus zůstává u jednotného čísla, protože tak se to hledá.
+
+**Přijato z LLM:** „dohledá se v nápovědě“ → „dohledá ho“ · „tvary vytažené z titulku“ → „převzaté z“ · „odvodit praktický klíč“ → „vyvodit praktické pravidlo“ (a navazující věta) · „U velkých písmen to vychází podobně“ → „Podobně je to s psaním velkých písmen“ · „záchytný bod“ → „výchozí bod“ · uvozovky kolem názvů v kontrolním seznamu.
+
+**Proč bez nových pravidel:** `\bdohledá\w* se\b` by chytalo i správné pasivní „informace se dohledá“; `\btvary vytažené z\b` a `\bodvodit praktick\w+ klíč\b` jsou celé fráze z tohohle článku, v korpusu se nikde jinde nevyskytují. „Záchytný bod“ je na hraně a plošné pravidlo by přestřelilo.
