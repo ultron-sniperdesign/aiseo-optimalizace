@@ -1464,3 +1464,14 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 **Přijato z LLM:** „dohledá se v nápovědě“ → „dohledá ho“ · „tvary vytažené z titulku“ → „převzaté z“ · „odvodit praktický klíč“ → „vyvodit praktické pravidlo“ (a navazující věta) · „U velkých písmen to vychází podobně“ → „Podobně je to s psaním velkých písmen“ · „záchytný bod“ → „výchozí bod“ · uvozovky kolem názvů v kontrolním seznamu.
 
 **Proč bez nových pravidel:** `\bdohledá\w* se\b` by chytalo i správné pasivní „informace se dohledá“; `\btvary vytažené z\b` a `\bodvodit praktick\w+ klíč\b` jsou celé fráze z tohohle článku, v korpusu se nikde jinde nevyskytují. „Záchytný bod“ je na hraně a plošné pravidlo by přestřelilo.
+
+## C6: `jak-pojmenovat-sluzbu-pro-ai` (20. 9. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Mechanický | **0 nálezů** v konceptu i po auditech; 1 540 slov, 0,0 nálezu na 1 000 slov. |
+| LLM | Externí průchod gpt-5.4 automatické schvalování nepovolilo; oddělený jazykový subagent našel 6 konkrétních míst a všechna byla opravena. |
+
+**Opraveno:** `answer` nově začíná vymezením a má 41 slov · „stejné období“ → „stejně dlouhá a srovnatelná období“ · neurčité používání vysvětlení nahrazeno jazykem skutečných poptávek · odstraněna tautologie o názvu značky · nadpis zpřesněn na strukturovaná data · neobratné „použijte jasně“ nahrazeno použitím na viditelných místech bez křečovitého opakování.
+
+**Slovník v71 beze změny:** všechny nálezy závisely na kontextu konkrétní věty; spolehlivé obecné pravidlo z nich nevzniklo.
