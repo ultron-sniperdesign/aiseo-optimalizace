@@ -121,7 +121,7 @@
 
 | Položka | Hodnota |
 |---|---|
-| Cena | **1 490 Kč** jednorázově (LIVE Stripe Payment Link) |
+| Cena | **1 490 Kč včetně DPH** jednorázově (LIVE Stripe Payment Link) — konečná cena, potvrzeno uživatelem 20. 9. 2026. Do té doby web tvrdil „bez DPH“. Audit má naopak cenu **bez DPH** (3 600 / 4 356), proto se u obou vždy uvádí, co platí. **Edice se nevedou** — distribuuje se jedno PDF. |
 | Formát | 9 PDF souborů + master PDF (vše v `public/_review/`, blokované v `robots.txt` pro bots) |
 | Master PDF | `pack-master-v1.pdf` (85 stran, 29.7 MB) — kompletní dokument |
 | Kapitoly | 00 Úvod a glosář · 01 Homepage · 02 Produkt · 03 Kategorie · 04 Blog článek · 05 Blog výpis · 06 Prodejní landing · 07 Kontakt · 08 Aplikace |
@@ -169,7 +169,7 @@ aiseo-optimalizace.cz/
 │   ├── robots.txt                            # AI crawlers Allow, /_review/ Disallow
 │   ├── fonts/                                # self-host Geist + JBM
 │   ├── og/                                   # OG images per stránka
-│   ├── pack/preview/                         # hero PNG náhledy pro /pack/ landing
+│   ├── pack/nahledy/                         # hero PNG náhledy pro /pack/ landing
 │   ├── screenshots/                          # snímky obrazovky do obsahu (Figure.astro); chybějící soubor se v produkci nevykreslí, zadání v _source/snimky-rezim-ai.md
 │   ├── sniperdesign/                         # Kumbh Sans fonts (sekce 06)
 │   └── _review/                              # produkční PDFs Packu (11 souborů, blocked v robots.txt)
@@ -639,7 +639,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 |---|---|---|
 | 9 PDFs + master | ✅ schválené | všech 8 obsahových kapitol + úvod + master 85 stran, GPT-5.5 auditované |
 | /_review/ produkční PDFs | ✅ live, 11 souborů | path je v robots.txt Disallow, ale veřejně dostupný |
-| `/pack/` landing | ✅ live | Stripe Payment Link aktivní, 3 CTA, reálné hero PDF náhledy v `public/pack/preview/` |
+| `/pack/` landing | ✅ live | Stripe Payment Link aktivní, 3 CTA, reálné hero PDF náhledy v `public/pack/nahledy/` |
 | `/pack/dekujeme/` | ✅ live | success URL pro Stripe redirect |
 | Stripe Product + Payment Link | ✅ LIVE | „AI SEO Wireframe Pack" 1 490 Kč CZK, `https://buy.stripe.com/4gM9AU8Km1wm6vY4Hw0VO00` |
 | Stripe webhook endpoint | ✅ LIVE | „aiseo-optimalizace PRO PDF" Active, `checkout.session.completed` jen |

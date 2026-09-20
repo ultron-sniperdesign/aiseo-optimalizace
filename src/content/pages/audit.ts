@@ -413,7 +413,7 @@ export const compare = [
     pillMod: "pack",
     pill: "Pack",
     title: "Když chcete <strong>řešit věci sami</strong>",
-    price: "1&nbsp;490&nbsp;Kč &middot; jednorázově",
+    price: "1&nbsp;490&nbsp;Kč včetně DPH &middot; jednorázově",
     items: [
       "Máte čas si&nbsp;doporučení sami vyhodnotit a&nbsp;převést do&nbsp;praxe",
       "Chcete obecný recept pro 7&nbsp;typů stránek (homepage, produkt, kategorie, blogový článek, výpis blogu, prodejní landing, kontakt) plus kapitolu, jak ho aplikovat",

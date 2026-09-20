@@ -19,14 +19,21 @@ import type { FaqItem } from "~/content/pages/_types";
 
 export const meta = {
   title: "AI SEO Wireframe Pack — sedm typů stránek pro AI vyhledávání",
+  /**
+   * Datum revize — vykresluje se pod krátkou odpovědí a jde do `dateModified`
+   * ve WebPage schématu. Edice se vědomě NEvedou (rozhodnutí uživatele
+   * 20. 9. 2026): distribuuje se vždy jedno PDF, takže číslo edice by na
+   * stránce jen stárlo a rozcházelo se s tím, co zákazník dostane.
+   */
+  updated: "2026-09-20",
   description:
-    "Pack obsahuje sedm typů stránek s hotovými texty: homepage, produkt, kategorie, blog (článek + výpis), prodejní landing a kontakt. Master PDF má 85 stran. Základ AI viditelnosti webu nastavíte během odpoledne. 1 490 Kč jednorázově.",
+    "PDF od Sniper Design pro sedm typů stránek: wireframy, šablony textů a strukturovaná data pro homepage, produkt, kategorii, blog, landing i kontakt. 1 490 Kč.",
 };
 
 const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
 
 /**
- * STRIPE CHECKOUT URL — LIVE Payment Link. Update jen tady, propíše se do
+ * STRIPE CHECKOUT URL — živý Payment Link. Měnit jen tady, propíše se do
  * všech CTA tlačítek i productJsonLd offers.url.
  */
 export const stripeCheckoutUrl = "https://buy.stripe.com/4gM9AU8Km1wm6vY4Hw0VO00";
@@ -53,6 +60,15 @@ export const productJsonLd = {
     url: stripeCheckoutUrl,
     price: "1490",
     priceCurrency: "CZK",
+    // 1 490 Kč je KONEČNÁ cena včetně DPH (potvrzeno uživatelem 20. 9. 2026).
+    // Do 20. 9. stránka i tohle schéma tvrdily „bez DPH“ — věcná chyba na živé
+    // prodejní stránce. Audit má naopak cenu bez DPH, proto se u obou uvádí, co platí.
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: "1490",
+      priceCurrency: "CZK",
+      valueAddedTaxIncluded: true,
+    },
     priceValidUntil: PRICE_VALID_UNTIL,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
@@ -79,7 +95,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Mohu Pack použít na jakémkoli CMS?",
-    a: "Ano. Pack je praktický pracovní rámec, ne plugin. Wireframy, šablony textů a ukázky strukturovaných dat aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, custom Astro, Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
+    a: "Ano. Pack je praktický pracovní rámec, ne doplněk do redakčního systému. Wireframy, šablony textů a ukázky strukturovaných dat aplikujete na libovolný systém — Upgates, Shoptet, WordPress, Webflow, web na míru v Astru nebo Next.js i statické HTML. Specifické instrukce pro Upgates a Shoptet jsou navíc.",
   },
   {
     q: "Co když si nejsem jistý, jestli to zvládnu?",
@@ -87,7 +103,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Dostanu aktualizace Packu, pokud se AI SEO změní?",
-    a: "Ano. Koupí nezískáte statické PDF, které za měsíc zastará. Drobné aktualizace této edice (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje) posíláme držitelům licence zdarma e-mailem. Můžete začít aplikovat Pack teď a nečekat, až se trh ustálí — pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
+    a: "Ano. Koupí nezískáte statické PDF, které za měsíc zastará. Drobné aktualizace (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje) posíláme držitelům licence zdarma e-mailem. Můžete začít aplikovat Pack teď a nečekat, až se trh ustálí — pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
   },
   {
     q: "Je Pack vhodný i pro web bez blogu nebo bez e-shopu?",
@@ -106,13 +122,21 @@ export const pageTypes = [
     title: "Homepage",
     desc: "Wireframe + anotace + šablony textů. Stejný framework jako v free PDF — rozšířený o varianty pro různé typy byznysu (e-shop, služby, agentura, freelance).",
     pageTitle: "Homepage",
+    links: [
+      { href: "/navod-zdarma/", label: "Návod pro homepage zdarma" },
+      { href: "/blog/ai-seo-content/", label: "Jak psát citovatelný obsah" },
+    ],
     tone: "primary" as const,
   },
   {
     num: 2,
     title: "Produktová stránka",
-    desc: "Detail produktu — vzor titulku, strukturovaná data pro produkt (Product), časté dotazy se strukturovanými daty, související produkty. Díky Product datům, FAQ a internímu prolinkování dáváte AI jasný signál, že jde o produktovou stránku připravenou k nákupu.",
+    desc: "Detail produktu — vzor titulku, strukturovaná data pro produkt (Product s nabídkou a hodnocením), časté dotazy se strukturovanými daty, související produkty. Díky Product datům, FAQ a internímu prolinkování dáváte AI jasný signál, že jde o produktovou stránku připravenou k nákupu.",
     pageTitle: "Produkt",
+    links: [
+      { href: "/blog/produktove-stranky-pro-ai/", label: "Produktové stránky pro AI" },
+      { href: "/serie/ai-seo-pro-eshopy/", label: "Série pro e-shopy" },
+    ],
     tone: "primary" as const,
   },
   {
@@ -120,20 +144,31 @@ export const pageTypes = [
     title: "Kategoriální stránka",
     desc: "Výpis s filtry, kategoriální popis pro AI, strukturovaná data pro kategorii (CollectionPage, ItemList), přehledná hierarchie značek a podtřídění.",
     pageTitle: "Kategorie",
+    links: [
+      { href: "/blog/kategorie-texty-pro-ai/", label: "Texty kategorií pro AI" },
+      { href: "/blog/strukturovana-data-kategorie-eshopu/", label: "Strukturovaná data kategorií" },
+    ],
     tone: "primary" as const,
   },
   {
     num: 4,
     title: "Blog článek",
-    desc: "Detail článku s krátkou odpovědí 40–60 slov, strukturovanými daty pro časté dotazy (FAQPage) a informacemi o autorovi. Citovatelný v ChatGPT i Google AI Overviews.",
+    desc: "Detail článku s krátkou odpovědí 40–60 slov, strukturovanými daty pro časté dotazy (FAQPage) a informacemi o autorovi. Citovatelný v ChatGPT, v Přehledu od AI i v režimu AI Googlu.",
     pageTitle: "Blog článek",
+    links: [
+      { href: "/slovnik/answer-block/", label: "Co je krátká odpověď" },
+      { href: "/blog/ai-seo-content/", label: "Citovatelný obsah krok za krokem" },
+    ],
     tone: "accent" as const,
   },
   {
     num: 5,
     title: "Blog výpis článků",
-    desc: "Výpis článků s filtry, stránkování, prolinkování mezi hlavními a podpůrnými články (hub-and-spoke) pro AI rozpoznání tématu.",
+    desc: "Výpis článků s filtry, stránkování a prolinkování mezi hlavními a podpůrnými články, aby AI rozpoznala téma.",
     pageTitle: "Blog výpis",
+    links: [
+      { href: "/blog/interni-prolinkovani-pro-ai/", label: "Interní prolinkování pro AI" },
+    ],
     tone: "accent" as const,
   },
   {
@@ -141,6 +176,9 @@ export const pageTypes = [
     title: "Prodejní landing",
     desc: "Pro službu nebo produkt. Varianta pro získávání kontaktů (formulář pro sběr e-mailů) i pro přímý prodej (tlačítko s odkazem na pokladnu). Reference, časté dotazy, snížení obav — vše připravené.",
     pageTitle: "Prodejní landing",
+    links: [
+      { href: "/blog/stranka-sluzby-pro-ai/", label: "Stránka služby pro AI" },
+    ],
     tone: "accent" as const,
   },
   {
@@ -148,11 +186,24 @@ export const pageTypes = [
     title: "Kontaktní stránka",
     desc: "Kontaktní formulář, mapa, kontaktní údaje — název, adresa, telefon (NAP), strukturovaná data pro místní firmu (LocalBusiness). NAP údaje a LocalBusiness data pomáhají AI ověřit, že jde o oficiální kontakt firmy.",
     pageTitle: "Kontakt",
+    links: [
+      { href: "/blog/firmy-cz-pro-ai/", label: "Firmy.cz pro AI" },
+      { href: "/blog/local-seo-cesko-2026/", label: "Lokální SEO v Česku" },
+    ],
     tone: "neutral" as const,
   },
 ];
 
 /** HERO. */
+/**
+ * Krátká odpověď pod hero (komponenta Answer, kind="definice").
+ * Mini markdown — žádné HTML entity. Do 20. 9. 2026 stránka neměla nikde větu,
+ * která by řekla, co si čtenář kupuje: hero.urgency straší a hero.lead popisuje
+ * obsah, ale entita, cena ani autor v jedné větě nebyly.
+ */
+export const answer =
+  "AI SEO Wireframe Pack je PDF od agentury Sniper Design (85 stran) s anotovanými wireframy, šablonami textů a ukázkami strukturovaných dat pro sedm typů stránek — homepage, produkt, kategorii, blogový článek, výpis blogu, prodejní landing a kontakt. Je pro e-shopy a firemní weby, které chtějí být citované v [AI vyhledávání](/slovnik/ai-vyhledavani/). Stojí 1 490 Kč včetně DPH.";
+
 export const hero = {
   eyebrow: "Pack · pro celý web",
   title:
@@ -164,12 +215,12 @@ export const hero = {
     eyebrowPill: "Po zaplacení",
     eyebrowText: "vše okamžitě na e-mail",
     price: "1&nbsp;490&nbsp;Kč",
-    priceDetail: "jednorázově, bez DPH",
+    priceDetail: "jednorázově · konečná cena včetně DPH",
     priceFrame:
       "Méně než hodina senior konzultanta. Místo týdnů rešerší dostanete <strong>hotovou strukturu pro 7&nbsp;typů stránek</strong>.",
     deliveryList: [
-      "Připravíte web na citace v ChatGPT, Perplexity i AI Overviews",
-      "Předběhnete konkurenci, která o AI SEO zatím neví",
+      "Připravíte web na citace v ChatGPT, Perplexity, Claude, Gemini, Přehledu od AI i v režimu AI",
+      "Stejnou logiku nasadíte na celý web, ne jen na homepage",
       "Aplikujete za odpoledne, ne za týdny zkoumání",
       "Vlastní framework — bez konzultantů, bez měsíců",
     ],
@@ -177,7 +228,7 @@ export const hero = {
     buyBtnAria: "Koupit AI SEO Wireframe Pack za 1 490 Kč",
     microcopy:
       "<strong>Kupte dnes, předejte týmu ještě dnes.</strong> První šablonu upravíte během odpoledne. PDF dorazí na&nbsp;e-mail do&nbsp;několika sekund po&nbsp;platbě.",
-    trustLine: "Platba kartou (Stripe) · faktura na firmu · bez předplatného",
+    trustLine: "Platba kartou (Stripe) · fakturu vystaví CPU s.r.o. (IČO 08125163) · bez předplatného",
   },
 };
 
@@ -213,19 +264,19 @@ export const insideHead: SectionHead = {
 
 export const previews = [
   {
-    src: "/pack/preview/hero-wireframe-homepage.png",
+    src: "/pack/nahledy/hero-wireframe-homepage.png",
     alt: "Ukázka strany 7 master PDF — wireframe homepage s 10 anotacemi",
     chapter: "Kap. 01 · str. 7",
     title: "Wireframe homepage s 10 anotacemi",
   },
   {
-    src: "/pack/preview/hero-tri-principy.png",
+    src: "/pack/nahledy/hero-tri-principy.png",
     alt: "Ukázka strany 8 master PDF — tři principy SEO/GEO/AEO color-coded",
     chapter: "Kap. 01 · str. 8",
     title: "Tři principy SEO / GEO / AEO",
   },
   {
-    src: "/pack/preview/hero-sablony-textu.png",
+    src: "/pack/nahledy/hero-sablony-textu.png",
     alt: "Ukázka strany 11 master PDF — šablony textů ke kopírování",
     chapter: "Kap. 01 · str. 11",
     title: "Šablony textů ke kopírování",
@@ -265,17 +316,17 @@ export const sampleSteps = [
   {
     num: "03",
     label: "Časté dotazy pro nákupní námitky",
-    desc: "Otázky a odpovědi se strukturovanými daty (FAQPage) — ChatGPT a Perplexity vytahují přímé citace, Google AI Overviews je zobrazuje.",
+    desc: "Otázky a odpovědi přímo na stránce — text, ze kterého AI cituje. Strukturovaná data FAQPage přikládáme jako strojový podklad, ale Google od 7. 5. 2026 rozšířené výsledky pro FAQ nezobrazuje.",
   },
   {
     num: "04",
     label: "Strukturovaná data pro produkt (Product, JSON-LD)",
-    desc: "Údaje o produktu, ceně a dostupnosti ve strojově čitelném formátu — připravené pro Google Rich Results Test i AI nástroje. Podklad k předání vývojáři.",
+    desc: "Údaje o produktu, ceně a dostupnosti ve strojově čitelném formátu. Ověříte je v Testu rozšířených výsledků (Product a nabídka obchodníka platí dál). Pro AI nástroje jsou strukturovaná data doplněk, ne páka na citace.",
   },
   {
     num: "05",
     label: "Související produkty + interní prolinkování",
-    desc: "Prolinkování mezi stránkami (hub-and-spoke), aby AI rozpoznala kategorii a propojila váš sortiment do tematických celků.",
+    desc: "Prolinkování mezi stránkami, aby AI rozpoznala kategorii a propojila váš sortiment do tematických celků.",
   },
 ];
 
@@ -295,7 +346,7 @@ export const deliverables = [
   "<strong>Šablony textů pro každý typ stránky</strong> — vzor titulku, meta popisek, nadpisy, hlavní text, časté dotazy — vše ready ke kopírování",
   "<strong>Ukázky strukturovaných dat</strong> — Product, FAQPage, Article, BreadcrumbList, LocalBusiness, Organization v JSON-LD — podklad k předání vývojáři",
   "<strong>Krok-za-krokem návod aplikace</strong> — checklist, jak Pack aplikovat na váš stávající web, podle CMS (Upgates, Shoptet, WordPress, custom)",
-  "<strong>Anti-pattern checklist</strong> — čemu se vyhnout u&nbsp;každého typu stránky. Vychází z&nbsp;praxe Sniper Design na&nbsp;600+&nbsp;českých e-shopech, kde se&nbsp;opakovaně objevují stejné chyby: chybějící odpovědi, nejasné kategorie, slabé interní prolinkování, nevyužitá strukturovaná data.",
+  "<strong>Anti-pattern checklist</strong> — čemu se vyhnout u&nbsp;každého typu stránky. Vychází z&nbsp;praxe Sniper Design u&nbsp;600+&nbsp;klientů od&nbsp;roku 2016, kde se&nbsp;opakovaně objevují stejné chyby: chybějící odpovědi, nejasné kategorie, slabé interní prolinkování, nevyužitá strukturovaná data.",
 ];
 
 export const trustTieIn =
@@ -336,7 +387,7 @@ export const firstAfternoon = {
     "<strong>Stejný postup použijete na&nbsp;další šablony</strong> &mdash; postupně, ne najednou. Pack máte na&nbsp;ruku navždy.",
   ],
   fallback:
-    'Pokud čekáte <strong>plně-managed implementaci</strong> (někdo upraví web za&nbsp;vás), Pack není to&nbsp;pravé. Zvolte raději <a href="/audit/">Audit AI&nbsp;viditelnosti za&nbsp;3&nbsp;600&nbsp;Kč</a> nebo <a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener">Sniper Design konzultaci</a>.',
+    'Pokud čekáte <strong>plně-managed implementaci</strong> (někdo upraví web za&nbsp;vás), Pack není to&nbsp;pravé. Zvolte raději <a href="/audit/">Audit AI&nbsp;viditelnosti za&nbsp;3&nbsp;600&nbsp;Kč</a> nebo <a href="/sluzby/">naše služby</a>.',
 };
 
 /** Sekce 06 — Komu se Pack hodí. */
@@ -364,7 +415,7 @@ export const audienceNegative = {
     "čekáte, že někdo upraví web <strong>za vás</strong>",
     "nemáte přístup do CMS ani člověka, který web spravuje",
     "hledáte <strong>garantované pozice</strong> v&nbsp;Google nebo ChatGPT",
-    'chcete <strong>custom analýzu</strong> svého webu &mdash; k&nbsp;tomu slouží <a href="/audit/">Audit AI&nbsp;viditelnosti</a>',
+    'chcete <strong>analýzu svého webu na&nbsp;míru</strong> &mdash; k&nbsp;tomu slouží <a href="/audit/">Audit AI&nbsp;viditelnosti</a>',
   ],
 };
 
@@ -390,20 +441,20 @@ export const decision = {
       need: "Aplikovat rámec na&nbsp;<strong>celý web</strong> sám nebo s&nbsp;týmem",
       choice:
         "<strong>AI&nbsp;SEO Wireframe Pack</strong> &mdash; 7 typů stránek, 85 stran PDF",
-      price: "<strong>1&nbsp;490&nbsp;Kč</strong>",
+      price: "<strong>1&nbsp;490&nbsp;Kč</strong><br /><small>včetně DPH</small>",
       featured: true,
     },
     {
       need: "Konkrétní doporučení pro&nbsp;<strong>můj web</strong> od&nbsp;specialisty",
       choice:
         '<a href="/audit/" class="pack-decision__link">Audit AI&nbsp;viditelnosti</a> &mdash; prioritní seznam + meeting 30&ndash;60&nbsp;minut',
-      price: "<strong>3&nbsp;600&nbsp;Kč</strong>",
+      price: "<strong>3&nbsp;600&nbsp;Kč</strong><br /><small>bez DPH</small>",
       featured: false,
     },
     {
       need: "Implementaci nechat <strong>na&nbsp;agentuře</strong>",
       choice:
-        '<a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener" class="pack-decision__link">Sniper Design &mdash; konzultace</a>',
+        '<a href="/sluzby/" class="pack-decision__link">Služby Sniper Design</a> &mdash; technika, obsah i&nbsp;měsíční správa',
       price: "individuálně",
       featured: false,
     },
@@ -421,7 +472,7 @@ export const faqHead: SectionHead = {
 /** Mobile sticky CTA bar. */
 export const stickyCta = {
   price: "1&nbsp;490&nbsp;Kč",
-  priceNote: "jednorázově",
+  priceNote: "jednorázově, s DPH",
   btnLabel: "Koupit Pack",
   btnAria: "Koupit Pack za 1 490 Kč",
 };
@@ -430,11 +481,11 @@ export const stickyCta = {
 export const finalCta = {
   title:
     "Nečekejte, až budete AI&nbsp;SEO řešit při&nbsp;redesignu <strong>za&nbsp;desítky tisíc</strong>",
-  lead: "Začněte strukturou, kterou můžete <strong>dát copywriterovi, správci webu nebo vývojáři ještě dnes</strong>. Pack obsahuje 7&nbsp;typů stránek, textové šablony, JSON-LD ukázky a&nbsp;checklist aplikace. Jednorázově 1&nbsp;490&nbsp;Kč. PDF dorazí na&nbsp;e-mail po&nbsp;platbě.",
+  lead: "Začněte strukturou, kterou můžete <strong>dát copywriterovi, správci webu nebo vývojáři ještě dnes</strong>. Pack obsahuje 7&nbsp;typů stránek, textové šablony, JSON-LD ukázky a&nbsp;checklist aplikace. Jednorázově 1&nbsp;490&nbsp;Kč včetně DPH. PDF dorazí na&nbsp;e-mail po&nbsp;platbě.",
   btnLabel: "Koupit Pack a&nbsp;začít dnes",
   btnAria: "Koupit AI SEO Wireframe Pack za 1 490 Kč",
   trust:
-    'Platba kartou (Stripe) · faktura na&nbsp;firmu · okamžitý přístup po&nbsp;platbě.<br />Chcete místo šablon custom doporučení pro&nbsp;svůj web? <a href="/audit/">Zvolte Audit AI&nbsp;viditelnosti za&nbsp;3&nbsp;600&nbsp;Kč</a>.',
+    'Platba kartou (Stripe) · faktura na&nbsp;firmu · okamžitý přístup po&nbsp;platbě.<br />Chcete místo šablon doporučení na&nbsp;míru pro&nbsp;svůj web? <a href="/audit/">Zvolte Audit AI&nbsp;viditelnosti za&nbsp;3&nbsp;600&nbsp;Kč</a>.',
 };
 
 /**

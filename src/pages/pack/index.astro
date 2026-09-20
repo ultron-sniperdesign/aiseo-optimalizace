@@ -1,9 +1,13 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import * as p from "~/content/pages/pack";
 import ExitRescue from "~/components/blocks/ExitRescue.astro";
+import { ui } from "~/i18n/strings";
+import { czDate } from "~/lib/date";
 ---
 
 <BaseLayout
@@ -13,6 +17,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
   image="/og/pack.jpg"
   ogType="product"
   breadcrumb={[{ label: "AI SEO Wireframe Pack", href: "/pack/" }]}
+  dateModified={p.meta.updated}
 >
   <div class="pack">
     <!-- ===== HERO ===== -->
@@ -23,6 +28,13 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
           <h1 class="pack-hero__title" set:html={p.hero.title}></h1>
           <p class="pack-hero__urgency" set:html={p.hero.urgency}></p>
           <p class="pack-hero__lead" set:html={p.hero.lead}></p>
+
+          {/* Partnerství u platforem — jediná implementace webu (CLAUDE.md).
+              Prodejní stránky ho dávají do hero; odznak vede na profil
+              u platformy, kde si to čtenář ověří. */}
+          <div class="pack-hero__partners">
+            <PartnerBadges />
+          </div>
 
           <!-- ===== PRIMARY CTA card — cena + delivery + buy button ===== -->
           <!-- Vizuálně oddělené z hero copy, aby uživatel nepřehlédl, že tohle
@@ -75,22 +87,22 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
         <div class="pack-hero__mockup" aria-hidden="true">
           <div class="hero-focus">
             <div class="hero-focus__back hero-focus__back--1">
-              <img src="/pack/preview/free-p4-pred-po.jpg"
+              <img src="/pack/nahledy/free-p4-pred-po.jpg"
                    alt="" loading="eager" width="414" height="585"
                    class="hero-focus__img" />
             </div>
             <div class="hero-focus__back hero-focus__back--2">
-              <img src="/pack/preview/free-p3-principy.jpg"
+              <img src="/pack/nahledy/free-p3-principy.jpg"
                    alt="" loading="eager" width="414" height="585"
                    class="hero-focus__img" />
             </div>
             <div class="hero-focus__back hero-focus__back--3">
-              <img src="/pack/preview/free-p2-wireframe.jpg"
+              <img src="/pack/nahledy/free-p2-wireframe.jpg"
                    alt="" loading="eager" width="414" height="585"
                    class="hero-focus__img" />
             </div>
             <div class="hero-focus__hero">
-              <img src="/pack/preview/free-p1-cover.jpg"
+              <img src="/pack/nahledy/free-p1-cover.jpg"
                    alt="" loading="eager" width="414" height="585"
                    class="hero-focus__img" />
             </div>
@@ -98,6 +110,14 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
         </div>
       </div>
     </section>
+
+    {/* ===== KRÁTKÁ ODPOVĚĎ — jediná definice produktu na stránce =====
+         Sdílená komponenta Answer (kind="definice"). Odsazení nulujeme,
+         jinak by se sečetlo s horním okrajem další sekce — komponenta
+         atribut `style` nepropouští, musí to být CSS pravidlem. */}
+    <Answer text={p.answer} kind="definice">
+      <p class="pack-answer__revised">{ui.metaUpdated} {czDate(p.meta.updated)}</p>
+    </Answer>
 
     <!-- ===== 01 CO PACK OBSAHUJE ===== -->
     <section class="lp-section">
@@ -113,6 +133,16 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
             <span class="page-type__num">{pt.num}</span>
             <h3 class="page-type__title">{pt.title}</h3>
             <p class="page-type__desc">{pt.desc}</p>
+            {/* Ke každému typu stránky návod zdarma. Landing dřív neodkazoval
+                na žádný článek k jednotlivým typům ani na heslo slovníku —
+                jediný interní obsah byl v ExitRescue. */}
+            {pt.links && (
+              <ul class="page-type__links">
+                {pt.links.map((l) => (
+                  <li><a href={l.href}>{l.label}</a></li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </div>
@@ -378,6 +408,35 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
 </BaseLayout>
 
 <style>
+  .page-type__links {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+  .page-type__links a {
+    color: var(--lp-violet, var(--sd-violet));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Komponenta Answer si nese vlastní spodní odstup; další sekce má svůj
+     horní, takže by se sečetly. Viz gotcha v CLAUDE.md § VI. */
+  .pack :global(.answer) {
+    --answer-pb: 0;
+  }
+  .pack-answer__revised {
+    margin: 0.75rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+  }
+  .pack-hero__partners {
+    margin: 1.25rem 0 0;
+  }
+
   /* ===== Page root ===== */
   .pack {
     --lp-violet: oklch(0.55 0.25 305);
