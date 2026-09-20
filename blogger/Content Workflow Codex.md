@@ -166,11 +166,8 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 ## BLOK B — Výběr tématu a hloubkový research
 
 - **B1 — Výběr tématu:** po A0 znovu ověř, že kandidátní řádek má stále
-  `Publikováno = ne`. Dočasná výjimka z běžného pořadí: dokud je otevřený řádek
-  **`osobni inteligence cesky nazev`**, vyber ho před ostatními tématy k novému článku.
-  Po jeho uzavření tuhle výjimku z dokumentu smaž. Jinak vezmi **první volný řádek pro
-  nový článek**, který po kontrole Pokynů a překryvu s webem nevyžaduje aktualizaci
-  existujícího obsahu.
+  `Publikováno = ne`. Vezmi **první volný řádek pro nový článek**, který po kontrole
+  Pokynů a překryvu s webem nevyžaduje aktualizaci existujícího obsahu.
 
   > **Nejdřív přečti sloupec C (Pokyny).** Řádky s pokynem *refresh / update / aktualizovat existující / nepsat nový* **přeskoč a ponech beze změny**, včetně stavu publikace a URL. Patří jinému nástroji; neoznačuj je jako hotové. Stejně postupuj, pokud až kontrola překryvu ukáže, že téma vyžaduje aktualizaci existujícího článku. Důvod přeskočení zapiš do podkladů svého běhu a pokračuj dalším způsobilým řádkem. Pokud žádný nezbývá, oznam nedostatek témat pro nový článek; nenahrazuj úkol refreshem ani duplicitou.
 
@@ -575,7 +572,7 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 - [ ] Nenačetl jsem `blogger/` plošně ani **cizí podsložky** `research/` (do vlastní `research/<slug>/` zapisovat mám)
 - [ ] Start: `git fetch origin` + kontrola nových commitů proti `origin/main`
 - [ ] A: trend research → **1 nový řádek** v `obsahovy-plan.csv` (nebo žádný, když nic nestojí za zařazení); **duplicity kontrolovány dvoukrokově**; šest sloupců a CRLF ověřeny
-- [ ] B: vybrán prioritní, jinak první volný řádek **pro nový článek**, **přečten sloupec C**, stav ověřen po fetchi, názvy i text korpusu prohledány, řádky pro refresh přeskočeny beze změny, research + KW, **zdroje zapsané v `research.md`**
+- [ ] B: vybrán první volný řádek **pro nový článek**, **přečten sloupec C**, stav ověřen po fetchi, názvy i text korpusu prohledány, řádky pro refresh přeskočeny beze změny, research + KW, **zdroje zapsané v `research.md`**
 - [ ] C1: draft s answer + FAQ + CTA, **8 povinných polí včetně `tags`**, `variant: "rich"`, **bez `howto` a `stats`**, design komponenty hotové, brand voice OK
 - [ ] **C1b: titulek pro SERP** — `seoTitle` do 60 znaků, nebo vědomé rozhodnutí, že stačí `title`
 - [ ] C2 + C3: **dva samostatní subagenti** (fakta, jazyk), nálezy s důkazy a **označením zásadní/drobný**; auditor faktů měl pokyn hledat vlastní zdroje a protidůkazy
