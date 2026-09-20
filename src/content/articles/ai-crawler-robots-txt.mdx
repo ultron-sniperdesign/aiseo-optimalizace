@@ -27,19 +27,6 @@ stats:
     label: "blokace neovlivní pozice v Google Search"
   - value: "draft"
     label: "AIPREF je zatím jen draft IETF, ne standard"
-howto:
-  name: "Jak řídit přístup AI robotů přes robots.txt"
-  steps:
-    - name: "Zmapujte, kteří roboti web navštěvují"
-      text: "Z logů serveru nebo statistik zjistěte, jaké identifikátory robotů (user-agenty) se na web připojují — například GPTBot, ClaudeBot, PerplexityBot nebo Bytespider."
-    - name: "Rozhodněte: citovatelnost, nebo omezení tréninku?"
-      text: "Pro vyšší šanci na citace v AI odpovědích nechte projít vyhledávací roboty. Pokud nechcete dávat obsah k tréninku nebo generativním službám, nastavte pravidla pro tréninkové roboty a řídicí tokeny. Soukromý obsah chraňte přihlášením nebo serverem, ne robots.txt."
-    - name: "Napište pravidla do robots.txt"
-      text: "Pro každého robota uveďte User-agent a Allow nebo Disallow. Typicky povolte vyhledávací a on-demand roboty a zvažte omezení těch tréninkových. Soubor patří do kořene webu (například /robots.txt)."
-    - name: "Google-Extended řešte zvlášť"
-      text: "Google-Extended řídí využití obsahu k tréninku budoucích modelů Gemini a k podkládání odpovědí v aplikacích Gemini; jeho blokace neovlivní zařazení ani pozice v běžném vyhledávání Googlu."
-    - name: "Ověřte a doplňte tvrdé blokování"
-      text: "Otestujte robots.txt a u robotů, kteří ho ignorují, nasaďte blokování na úrovni serveru, firewallu nebo CDN."
 faq:
   - q: "Jak povolit AI robotům přístup na web?"
     a: "Kvůli citacím jde hlavně o vyhledávací roboty: OAI-SearchBot, Claude-SearchBot a PerplexityBot. Těm dejte v robots.txt v kořeni webu Allow. U robotů vyvolaných uživatelem se to liší podle provozovatele: Claude-User podle Anthropicu robots.txt respektuje, takže jeho zákaz opravdu vypne načítání stránky na dotaz v Claude; u ChatGPT-User OpenAI píše, že se na něj pravidla nemusí vztahovat. Tréninkové roboty (GPTBot, ClaudeBot, CCBot) řešte zvlášť podle toho, jestli chcete obsah pouštět do tréninku — s citacemi to přímo nesouvisí. Pokud navíc žádné pravidlo robota nezakazuje, většinou má přístup i bez explicitního Allow."

@@ -47,7 +47,7 @@ slug: "url-slug-clanku-bez-diakritiky"
 # Jedna z: defensive / case-study / tutorial / analysis
 # - defensive: „Jak omezit/vypnout/zabránit…" (obrana proti AIO, scraperům)
 # - case-study: konkrétní zákazník/web, before/after metriky
-# - tutorial: krok-za-krokem postup (typicky doplň `howto:` pole)
+# - tutorial: krok-za-krokem postup
 # - analysis: trendy, datové rozbory, srovnání platforem
 category: "analysis"
 
@@ -107,19 +107,11 @@ faq:
   - q: "Čtvrtá otázka — edge case nebo námitka"
     a: "Čtvrtá odpověď. Připustit limit / variantu, kde radíš jinak."
 
-# HowTo schema — JEN pro tutoriálové články (`category: tutorial`).
-# Generuje strukturované kroky pro Google rich results + AI scrapery.
-howto:
-  name: "Název postupu (např. „Jak přidat Organization schema na Upgates")"
-  steps:
-    - name: "Otevři admin"
-      text: "Konkrétní akce. 1 věta, ne odstavec."
-    - name: "Najdi sekci X"
-      text: "Co konkrétně udělat."
-    - name: "Vlož snippet"
-      text: "Co konkrétně udělat."
-    - name: "Ulož a otestuj"
-      text: "Co konkrétně udělat + jak ověřit, že to funguje (např. „Rich Results Test")."
+# ⛔ Pole `howto:` se od 20. 9. 2026 NEPOUŽÍVÁ.
+# Generovalo jen neviditelná data pro Google (HowTo JSON-LD). Google zobrazování
+# HowTo ukončil v roce 2023 a rozhodnutí uživatele z 20. 9. 2026 zní: obsah, který
+# není vidět, je zbytečný. Ze všech 63 článků bylo pole odstraněno; kroky postupu
+# patří do textu jako komponenta `Stepper`, kterou čtenář vidí.
 ---
 
 > **Formát H2 je závazný pro celý web.** Čtenář skenuje po nadpisech, takže holý text

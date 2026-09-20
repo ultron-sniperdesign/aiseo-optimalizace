@@ -25,19 +25,6 @@ stats:
     label: "přesměrování je povinné, pokud už existující URL opravdu měníte"
   - value: "crawl"
     label: "reálný mechanismus, kterým URL pomáhá — procházení a index, na kterém AI stojí"
-howto:
-  name: "Jak nastavit URL, která nepřekáží AI ani lidem"
-  steps:
-    - name: "Držte slug krátký a popisný"
-      text: "Spíš krátký a výstižný, často dvě až pět slov, malá písmena, oddělená spojovníkem. Slug je ta část adresy za lomítkem, která pojmenovává stránku. Bez diakritiky — háčky a čárky se v URL zakódují na hůř čitelné znaky."
-    - name: "Vynechte zbytečnosti"
-      text: "Datum, číselné ID, spojky a předložky ani koncovku html tam, kde nemusí být. Systémové části cesty s provozním důvodem samy o sobě problém nejsou — jde o zbytečnou vatu."
-    - name: "Udržte mělkou a logickou hierarchii"
-      text: "Struktura má odpovídat tomu, jak web opravdu funguje. Samotný počet lomítek není zvláštní negativní signál — problém dělá hluboká a neudržovaná architektura, která se špatně prolinkuje a spravuje."
-    - name: "Parametry vyřešte kanonikalizací"
-      text: "Filtry, řazení a sledovací parametry generují spoustu variant téže stránky. Duplicitní a málo hodnotné varianty řešte kombinací: canonical, řízení indexace, omezení interního prolinkování a podle potřeby i crawl cest. Samotný canonical často nestačí."
-    - name: "Na existujícím webu neměňte bez důvodu"
-      text: "Změna adresy je riziko, ne vylepšení. Když ji přesto děláte, vždy nastavte trvalé přesměrování 301 ze staré adresy na novou."
 faq:
   - q: "Vážou AI nástroje strukturu URL jako signál?"
     a: "Doložený samostatný signál to není. Obecné návody uvádějí, že modely mají rády popisné adresy, ale jde o optimalizační doporučení, ne o rigorózně otestovaný efekt. Hlavní signály pro citace v AI jsou jinde: autorita, kvalita obsahu, čerstvost a srozumitelná struktura. URL pomáhá nepřímo, ne jako zvláštní páka."

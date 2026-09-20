@@ -25,19 +25,6 @@ stats:
     label: "označit lze jen recenze, které jsou na stránce reálně k přečtení"
   - value: "bez přetahování"
     label: "Google uvádí, že se recenze ani hodnocení z jiných webů nemají agregovat"
-howto:
-  name: "Jak z recenzí udělat použitelný signál"
-  steps:
-    - name: "Sbírejte hodnocení od skutečných zákazníků"
-      text: "Google uvádí, že hodnocení mají pocházet přímo od uživatelů. Oslovte zákazníka po doručení, navažte dotaz na konkrétní objednávku a nevynucujte známku. Ověřený nákup je zároveň praktický způsob, jak falešné recenze omezit."
-    - name: "Rozlište, co vlastně označujete"
-      text: "Recenze produktu, který prodáváte, se označuje u typu Product. Pozor na hodnocení firmy jako celku (typy Organization a LocalBusiness): pokud hodnocený subjekt recenze o sobě sám kontroluje, jeho stránky podle Googlu nejsou pro hvězdičky způsobilé. Cesta vede přes recenze produktů, ne přes známku e-shopu na vlastním webu."
-    - name: "Označte jen to, co je vidět"
-      text: "Google požaduje, aby byl označený obsah recenzí na stránce běžně dostupný ke čtení. Strukturovaná data mají popisovat viditelné hodnocení, ne doplňovat číslo, které na stránce nikde není."
-    - name: "Doplňte povinné vlastnosti"
-      text: "U AggregateRating je potřeba ratingValue, alespoň jedno z ratingCount nebo reviewCount a vazba na hodnocenou položku přes itemReviewed s názvem; při vnoření pod Product se vazba i název přebírají z rodiče. U jednotlivé recenze navíc author a reviewRating s hodnotou. Jméno autora má být kratší než sto znaků."
-    - name: "Vytěžte text, nejen číslo"
-      text: "Průměrná známka je jeden údaj. Cennější je, co se v recenzích opakuje: na co si zákazníci stěžují, k čemu produkt používají, co je překvapilo. Shrňte to do samostatné pasáže vlastními slovy a nechte pod ní původní recenze."
 faq:
   - q: "Proč jsou recenze pro AI zajímavější než popis produktu?"
     a: "Protože je nenapsal prodejce. Popis od výrobce má na svém webu i konkurence, takže do srovnání nepřidává nic odlišujícího. Recenze obsahují formulace zákazníků, tedy jazyk, kterým se lidé na produkt ptají, a pokrývají dílčí otázky, na které popis nedosáhne: jak to sedí, jak dlouho to vydrží, na co si dát pozor."

@@ -25,19 +25,6 @@ stats:
     label: "stránka, feed a strukturovaná data se vyplatí držet shodné — jinak si systém vybere sám"
   - value: "ověřit zdroj"
     label: "u GTINů z cizích zdrojů Google doporučuje ověřit jejich legitimitu"
-howto:
-  name: "Jak dát dohromady produktová data a identifikátory"
-  steps:
-    - name: "Zjistěte, které produkty GTIN mají"
-      text: "GTIN najdete na obalu vedle čárového kódu. Google uvádí, že ne každý produkt GTIN má — typicky vlastní výroba, sady nebo zakázková výroba. U takových produktů se identifikátor nevymýšlí; jako praktická náhrada pomůže značka a katalogové označení výrobce, pokud je máte."
-    - name: "Doplňte identifikátory do feedu"
-      text: "GTIN se do produktových dat posílá v atributu gtin. Google uvádí, že to pomáhá jeho systémům produkty zařadit a zobrazit. U produktů bez GTINu se v praxi vyplácí doplnit značku a katalogové označení, aby šel záznam identifikovat aspoň takto."
-    - name: "Sjednoťte údaje napříč vrstvami"
-      text: "Cena, dostupnost, název a klíčové parametry se vyplatí držet shodné na stránce, ve feedu i ve strukturovaných datech. Když se zdroje rozcházejí, nemá systém jak rozhodnout, který údaj platí — a vy nevíte, který si vybere."
-    - name: "Ověřte identifikátory z cizích zdrojů"
-      text: "Pokud GTINy přebíráte od dodavatele nebo z databáze, Google doporučuje ověřit jejich legitimitu. Když identifikátor na obalu nenajdete, obraťte se na výrobce. Nesprávný identifikátor může vést k tomu, že se váš záznam zařadí k jinému produktu."
-    - name: "Kontrolujte pravidelně"
-      text: "Feed se generuje automaticky, ale stránky a ceník se mění ručně. Rozejít se to dokáže samo. Zaveďte pravidelnou kontrolu klíčových údajů u vzorku produktů, ne jen jednorázové nastavení."
 faq:
   - q: "Co je GTIN a kde ho najdu?"
     a: "GTIN je podle Googlu mezinárodně uznávaný jedinečný identifikátor produktu. Najdete ho na obalu vedle čárového kódu; v Česku se často mluví o EAN, což je jedna z jeho podob. Slouží k tomu, aby šel konkrétní produkt identifikovat jednoznačně, a ne jen podle názvu, který si každý prodejce píše po svém."

@@ -24,19 +24,6 @@ stats:
     label: "deklarace pravidel vrácení zboží — Google ji uvádí jako doporučenou; v našem měření 38 e-shopů chyběla u všech"
   - value: "4–6"
     label: "reálných otázek a odpovědí ve FAQ na produktu, které AI snadno cituje"
-howto:
-  name: "Jak připravit produktovou stránku pro AI vyhledávání"
-  steps:
-    - name: "Doplňte základní strukturovaná data produktu"
-      text: "Přidejte strukturovaná data typu Product (name, description, image, brand, GTIN), Offer (price, priceCurrency, availability) a AggregateRating s Review. Ověřte v Google Rich Results Test nebo ve validátoru strukturovaných dat, že jsou bez chyb a shodují se s obsahem stránky."
-    - name: "Přidejte hasMerchantReturnPolicy"
-      text: "Deklarujte pravidla pro vrácení zboží ve strukturovaných datech (hasMerchantReturnPolicy); celý zápis včetně hodnot rozebírá samostatný návod na /blog/hasmerchantreturnpolicy-schema/. Google ji uvádí jako doporučenou vlastnost pro nabídky obchodníků; dokumentace OpenAI naopak vrácení jako signál výběru neuvádí (ověřeno 2. 9. 2026). V Česku má spotřebitel u většiny nákupů na dálku právo odstoupit do 14 dnů (s výjimkami), takže pole vyplňte podle skutečných podmínek e-shopu."
-    - name: "Zveřejněte parametry strukturovaně, ne jen v textu"
-      text: "Klíčové specifikace (rozměry, materiál, hmotnost, výkon, kompatibilita) uveďte v přehledné tabulce nebo seznamu, ne schované v marketingovém odstavci. AI i kupující tak parametr najdou rychle."
-    - name: "Pište obsah, který odpovídá reálným dotazům"
-      text: "Přemýšlejte, jak se lidé na tento typ produktu ptají AI („je vodotěsný?“, „kolik váží?“, „na co se hodí?“) a odpovězte na to přímo v popisu nebo ve FAQ. Doplňte 4 až 6 reálných otázek s krátkými odpověďmi a strukturovanými daty FAQPage."
-    - name: "Ukažte reálné recenze a hlídejte techniku"
-      text: "Recenze zobrazte přímo na stránce (ne za přihlášením) a napojte na AggregateRating; pro české e-shopy pomáhá integrace recenzí z Heureky a Zboží.cz. Hlídejte rychlost načítání a čistou indexaci — bez ní se ke stránce AI nedostane."
 faq:
   - q: "Jaká strukturovaná data potřebuje produktová stránka pro AI?"
     a: "Základ jsou tři typy: Product (name, description, image, brand, GTIN), Offer (price, priceCurrency, availability) a AggregateRating s jednotlivými Review (pokud máte reálné recenze na stránce). Pro nákupní odpovědi AI pomáhá doplnit GTIN, značku a hasMerchantReturnPolicy. Bez těchto polí mají podle analýz produkty nižší šanci se v těchto odpovědích objevit, protože AI hůře přečte cenu, dostupnost i hodnocení z prostého HTML."

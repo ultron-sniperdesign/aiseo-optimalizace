@@ -31,19 +31,6 @@ faq:
     a: "Hlavní důvody: (1) AIO odpovědi mohou být u některých dotazů nepřesné nebo vynechávat kontext; (2) panel zabírá horní část SERPu a u některých dotazů může snižovat CTR organických výsledků; (3) preference pro klasické vyhledávání. Reálný dopad AIO na návštěvnost se ale výrazně liší podle typu dotazu, záměru hledajícího, vertikály i toho, zda je váš web v AIO citovaný — než se rozhodnete pro snippet restrikce, vyhodnoťte data v GSC."
   - q: "Jde vypnout AI odpovědi i v Bingu a v Copilotu?"
     a: "Od června 2026 částečně ano. Generativní odpovědi v Bingu se jmenují Copilot Search a samostatný přepínač přímo v nastavení Bingu zatím není. Nejjednodušší cesta je připsat k dotazu operátor `-ai`, který odpovědi Copilota u daného hledání potlačí — nic se neinstaluje. Microsoft k tomu v červnu 2026 vydal doplněk prohlížeče Bing AI Search Choice (Chrome i Edge, zatím ve zkušebním provozu), který je vypne natrvalo; při instalaci si ale zároveň nastaví Bing jako výchozí vyhledávač a otevírá ho na nových kartách. V Edgi se postranní panel Copilota vypíná v Nastavení → Copilot a postranní panel. Jeden přepínač už nepokryje všechno: tlačítko na liště, panel na nové kartě a novější funkce Copilota se vypínají zvlášť."
-howto:
-  name: "Jak omezit AI Overviews v Google vyhledávání"
-  steps:
-    - name: "Přihlaste se do Google účtu"
-      text: "Search Labs experimenty fungují jen pro přihlášené uživatele. Otevřete google.com a klikněte na profilovou ikonu vpravo nahoře."
-    - name: "Otevřete Search Labs"
-      text: "Přejděte na labs.google.com nebo přes Google → Settings → Search Labs. Dostupnost experimentů se liší podle účtu a regionu — pokud Search Labs nevidíte, přejděte rovnou ke kroku 4 nebo 5."
-    - name: "Vypněte AI Overviews experiment (pokud ho vidíte)"
-      text: "V seznamu experimentálních funkcí najděte 'AI Overviews and more in Search'. Vypnutí může omezit experimentální AI prvky, ale Google může AIO zobrazovat i mimo Labs — nejde o garantovaný globální vypínač."
-    - name: "Použijte web filter `&udm=14` (alternativa)"
-      text: "Přidejte parametr &udm=14 na konec Google URL — typicky potlačuje AIO i další rozšířené SERP prvky a vrací klasické modré odkazy. Není to oficiální dlouhodobá direktiva; Google může chování parametru kdykoli změnit."
-    - name: "Zvažte alternativní vyhledávač"
-      text: "Brave Search a DuckDuckGo neimplementují Google AIO panel. Pozor: nestačí používat Brave jako prohlížeč — musíte změnit výchozí vyhledávač. Brave Search má vlastní AI odpovědní funkce, které je vhodné zkontrolovat v nastavení."
 ---
 import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
 import Persona from "../../components/blocks/Persona.astro";

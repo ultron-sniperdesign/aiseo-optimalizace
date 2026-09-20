@@ -24,19 +24,6 @@ stats:
     label: "obsah videa přepis převádí do textu, se kterým AI často pracuje"
   - value: "shoda"
     label: "označit jde jen video, které je na stránce reálně vidět; jinak jde o porušení politiky"
-howto:
-  name: "Jak označit video přes VideoObject"
-  steps:
-    - name: "Ověřte, že video je na stránce reálně vidět"
-      text: "Strukturovaná data se dělají k videu, které na stránce skutečně je, ne jako doplněk navíc. Označit video, které tam není, je porušení politiky strukturovaných dat od Googlu. Nejdřív tedy video na stránku vložte, pak ho popisujte."
-    - name: "Vyplňte tři povinné vlastnosti"
-      text: "Podle dokumentace Googlu jsou povinné name (unikátní název videa), thumbnailUrl (odkaz na náhledový obrázek, který je přímo dostupný pro crawlery, ne schovaný za přihlášením) a uploadDate (datum publikování ve formátu ISO 8601, ideálně s časovou zónou)."
-    - name: "Přidejte odkaz na video a délku"
-      text: "Doplňte aspoň jedno z contentUrl (přímý odkaz na soubor videa, třeba MP4) nebo embedUrl (odkaz na přehrávač). Google preferuje contentUrl; ideál je uvést obojí. Přidejte i duration, tedy délku ve formátu ISO 8601, například PT4M12S."
-    - name: "Dejte na stránku přepis videa"
-      text: "Tohle je pro AI často velmi užitečný krok. Textový model obvykle vychází z textu na stránce, takže bez přepisu zůstává obsah videa z velké části skrytý. Přepis dejte na stránku jako úplný text, ne zkrácený. Strukturovaná data dají fakta o videu, přepis dá jeho obsah."
-    - name: "Ověřte shodu a platnost"
-      text: "Hodnoty ve strukturovaných datech mají odpovídat tomu, co je na stránce vidět. Otestujte značení v nástroji pro kontrolu strukturovaných dat a hlídejte, aby uploadDate nebylo v budoucnu a formáty seděly."
 faq:
   - q: "Co je VideoObject?"
     a: "VideoObject je typ strukturovaných dat ze slovníku schema.org, kterým se k videu na stránce doplní strojově čitelná fakta: název, náhledový obrázek, datum publikování, délka a odkaz na soubor nebo přehrávač. Vyhledávače i AI systémy z něj čtou základní informace o videu, které by jinak musely dolovat z okolního textu, nebo by je neměly vůbec."

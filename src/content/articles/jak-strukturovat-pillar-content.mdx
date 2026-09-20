@@ -38,23 +38,6 @@ faq:
     a: "Strukturálně 1× ročně (procházíte celý článek, přepisujete sekce, kde se realita posunula). Dílčí aktualizace na klíčových místech (data, ceny, citace) podle potřeby — minimálně každé 3 měsíce u rychle se měnících oborů (AI, kryptoměny, regulace). U nadčasových témat (matematika, klasické postupy) stačí 1× za 18–24 měsíců. Datum poslední aktualizace zobrazit viditelně + v Article schema."
   - q: "Pomáhá pilířový obsah i s podílem citací v AI?"
     a: "U citovaných zdrojů v AI odpovědích se v praxi často objevuje obsah, který pokrývá téma z více úhlů a má jasné citovatelné formulace — pilířový obsah s krátkou odpovědí na začátku, strukturou H2/H3 a FAQ sekcí těmto vlastnostem typicky vyhovuje. Mechanismus výběru zdrojů u různých AI nástrojů (ChatGPT, Perplexity, Gemini) ale není veřejně publikovaný a liší se mezi nástroji — berte to jako pracovní hypotézu, ne jako garantovaný vztah. Měřte vlastní výskyt v odpovědích u definované sady dotazů (Otterly, Brand Radar)."
-howto:
-  name: "Praktický postup: napsat pilířový obsah od nuly"
-  steps:
-    - name: "Průzkum klíčových slov a osnova"
-      text: "Marketing Miner nebo Ahrefs: identifikovat 1 primary KW (search volume 200+) a 10–15 long-tail variant. Sepsat osnovu 6–10 sekcí H2 podle univerzálního vzorce. Cílit na search intent — pilířový obsah je obvykle informační intent, ne transakční."
-    - name: "Napsat krátká odpověď jako první"
-      text: "40–60 slov, definice + mechanismus + praktický důsledek. Pošlete to ChatGPT nebo Claude s promptem 'shrň tento text v 1 větě' — pokud AI shrnutí dobře vystihuje téma, krátká odpověď je dobrá. Pokud ne, přepište. Tučně zvýraznit 2–3 klíčové termíny."
-    - name: "Naplnit 6–10 H2 sekcí (300–500 slov každá)"
-      text: "Začít sekcí 'Co je X' (kontext) a 'Jak X funguje' (mechanika). Pokračovat 'Klíčové signály', 'Praktický postup', 'Časté chyby', 'Měření', 'Budoucnost'. Každá sekce končí buď konkrétním takeaway nebo přechodem k další."
-    - name: "Přidat 2–3 `Insight` + 1 Compare + 1 `Stepper` + 1 `Checklist` + 1 tabulku"
-      text: "Vizuální bloky rozbijí jednolitou stěnu textu. Doporučená frekvence: 1 vizuální blok na každých 600–800 slov textu. `Insight` typicky pro klíčová pravidla, Compare pro 'starý vs nový' nebo 'tenký vs pilířový', `Stepper` pro postupy, `Checklist` pro kontrolní seznamy."
-    - name: "Napsat FAQ sekci (6–10 otázek z reálných zdrojů)"
-      text: "Otázky z Google 'People Also Ask', Reddit, Marketing Miner. Žádné vymyšlené dotazy. Každá odpověď 50–120 slov, jasná struktura. Vyhnout se duplikaci s hlavním textem — FAQ pokrývá to, na co text explicitně neodpověděl."
-    - name: "Strukturovaná data + cross-linking"
-      text: "Article + FAQPage JSON-LD do <head>. Pro tutoriálové pilíře navíc HowTo JSON-LD. Pro každou H2 sekci, kterou by šlo rozvést do vlastního článku, přidat cross-link na cluster článek (`Insight` 'Samostatný průvodce' box, ne jen inline link)."
-    - name: "Reread, cut, AI test"
-      text: "Přečíst celý pilíř nahlas. Vyhodit redundantní odstavce (pravidlo: pokud věta neodpovídá na 'co tím říkám nového?', vyhodit). Zkopírovat URL do ChatGPT s promptem 'shrň hlavní body tohoto článku' — kvalita shrnutí indikuje, jestli AI nástroj pilířovou stránku správně chápe."
 ---
 
 import Insight from "../../components/blocks/Insight.astro";

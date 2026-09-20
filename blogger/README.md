@@ -103,7 +103,7 @@ stats:                   # 3–4 dlaždice nad textem
 faq:                     # FAQ pod článkem + FAQPage JSON-LD
   - q: "Otázka, jak ji napíše uživatel"
     a: "Odpověď v 1–3 větách. Sebestačná, žádné odkazy na 'výše v článku'."
-howto:                   # HowTo schema (jen u tutoriálových článků)
+# (pole howto: se od 20. 9. 2026 nepoužívá — viz tabulka níž)
   name: "Název postupu"
   steps:
     - name: "Krok 1"
@@ -125,14 +125,14 @@ howto:                   # HowTo schema (jen u tutoriálových článků)
 | `variant` | vždy `"rich"` | Sticky TOC, section dividers, numbered H3 cards, reading progress bar, stat tiles. **Má ho všech 165 článků** — `classic` se nepoužívá, nepiš ho. |
 | `stats` | array `{ value, label }` | 3–4 dlaždice s číslem + popiskem nad lead odstavcem. |
 | `faq` | array `{ q, a }` | **Silně doporučeno.** Generuje FAQPage JSON-LD = AI scrapery citují odsud. 4–8 reálných otázek čtenáře. |
-| `howto` | object | Generuje HowTo schema. Jen pro tutoriálové (krok-za-krokem) články. |
+| ~~`howto`~~ | — | **Nepoužívat (od 20. 9. 2026).** Generovalo neviditelná data (HowTo JSON-LD); Google zobrazování ukončil 2023. Ze všech 63 článků odstraněno, kroky patří do textu jako `Stepper`. |
 
 ### Kategorie — co kam patří
 
 | `category` | Popisek v UI | Typický obsah |
 |---|---|---|
 | `analysis` | „Analýza" | Trendy, datové rozbory, srovnání platforem, „co se mění" |
-| `tutorial` | „Tutorial" | Krok-za-krokem postupy s `howto` polem (přidání schema, audit, instalace) |
+| `tutorial` | „Tutorial" | Krok-za-krokem postupy (přidání strukturovaných dat, audit, instalace) |
 | `defensive` | „Defenzivní" | „Jak omezit/zabránit/vypnout" — obrana proti AIO, scraperům, atd. |
 | `case-study` | „Case study" | Konkrétní zákazník/web, before/after metriky |
 
@@ -288,7 +288,7 @@ curl -s https://aiseo-optimalizace.cz/sitemap-0.xml | grep "$SLUG"
 
 # 4. JSON-LD se vykreslil
 curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+json'
-# → ≥ 2 (Article + BreadcrumbList; +FAQPage pokud frontmatter má faq; +HowTo pokud má howto)
+# → ≥ 2 (Article + BreadcrumbList; +FAQPage pokud frontmatter má faq)
 
 ```
 

@@ -23,19 +23,6 @@ stats:
     label: "stabilní @id opakovaný ve všech článcích zvyšuje šanci na konzistentní propojení autora do jedné entity"
   - value: "E-E-A-T"
     label: "Person data pomáhají AI i Googlu lépe pochopit, kdo je autorem a s jakými signály odbornosti ho spojit"
-howto:
-  name: "Jak nasadit Person strukturovaná data pro autora"
-  steps:
-    - name: "Definujte autora typem Person na jeho profilu"
-      text: "Na autorskou stránku vložte JSON-LD s typem Person — jméno, roli, popis a odkaz na profil. Jméno v datech musí přesně sedět s tím, jak je autor uvedený u článků."
-    - name: "Doplňte sameAs s odkazy na profily"
-      text: "Do vlastnosti sameAs přidejte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata a další veřejné profily, které autora skutečně reprezentují. Důvěryhodné a udržované profily mohou odlišení autora usnadnit."
-    - name: "Přiřaďte stabilní @id a opakujte ho"
-      text: "Autorovi dejte jeden stabilní identifikátor @id, například vasweb.cz/#autor-jmeno. Ten samý @id použijte u všech jeho článků, což zvyšuje šanci, že si AI a Google jednotlivé zmínky spojí s jedním autorem místo mnoha různých osob."
-    - name: "Propojte článek s autorem"
-      text: "V JSON-LD článku (Article) uveďte u autora typ, jméno a url se stejným @id a doplňte vydavatele. Plný popis autora zůstane jednou na jeho profilu."
-    - name: "Ověřte soulad s viditelným obsahem"
-      text: "Zkontrolujte, že strukturovaná data odpovídají tomu, co je na stránce reálně vidět — jméno, role, profily. Nevymýšlejte tituly ani profily, které autor nemá; nesoulad je riziko."
 faq:
   - q: "Co je Person a k čemu autorovi je?"
     a: "Person je typ ze slovníku Schema.org, kterým strojově čitelně popíšete autora: jméno, roli, profily a oblasti expertízy. Pomáhá Googlu i AI rozpoznat autora jako entitu a propojit signály o něm napříč webem. V éře AI, kde roste váha toho, kdo obsah píše (E-E-A-T), tato data technicky popisují autora a mohou pomoci systémům propojit obsah s dalšími signály o něm."

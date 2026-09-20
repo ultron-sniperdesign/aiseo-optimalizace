@@ -25,19 +25,6 @@ stats:
     label: "krátký časový limit robotů; liší se podle robota a situace, řádově sekundy"
   - value: "březen 2024"
     label: "INP plně nahradil starší metriku FID; měří celý životní cyklus interakce"
-howto:
-  name: "Jak řešit Core Web Vitals s ohledem na AI"
-  steps:
-    - name: "Změřte zdarma"
-      text: "PageSpeed Insights ukáže laboratorní test vždy a reálná data tam, kde má stránka nebo doména dost dat z CrUX. Report Core Web Vitals v Search Console je taky zdarma. Stačí to k rozhodnutí, jestli vůbec máte problém."
-    - name: "Přečtěte tři metriky"
-      text: "LCP pod 2,5 sekundy, INP pod 200 milisekund, CLS pod 0,1. Cílem jsou tyhle prahy dobré hodnoty, ne skóre 100 ze 100."
-    - name: "Priorita: ať se stránka vůbec stihne načíst"
-      text: "Kvůli krátkému časovému limitu robota je u AI nejrizikovější extrémně pomalá stránka. Nejdřív vyřešte tu, ne poslední body do plného skóre."
-    - name: "Opravte jednu nejhorší věc"
-      text: "Nejčastěji velké neoptimalizované obrázky, které kazí LCP, nebo těžký JavaScript, který zhoršuje INP. Jedna velká oprava udělá víc než deset drobných."
-    - name: "Překontrolujte s odstupem"
-      text: "Reálná data se počítají z 28 dní provozu, takže se změna neprojeví hned. Změřte znovu za pár týdnů, ne druhý den."
 faq:
   - q: "Jsou Core Web Vitals faktor pro citace v AI?"
     a: "Doložené to není. Žádná z platforem — Google, OpenAI, Microsoft ani Perplexity — nepotvrdila Core Web Vitals jako faktor pro výběr zdrojů do generativních odpovědí. Studie z ledna 2026 navíc našla jen velmi slabou korelaci mezi rychlostí webu a viditelností v AI, blízko nuly. Rychlost řešte kvůli základu a lidem, ne kvůli domnělé páce na citace."

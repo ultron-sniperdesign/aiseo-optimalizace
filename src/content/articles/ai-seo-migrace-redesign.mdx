@@ -24,19 +24,6 @@ stats:
     label: "smazaná adresa bez přesměrování může vést ke ztrátě signálů, propadu viditelnosti i ztrátě cíle pro dosavadní citace"
   - value: "prodleva"
     label: "u některých AI služeb se změny projeví později než v běžném vyhledávání — počítejte s ní"
-howto:
-  name: "Jak provést migraci webu bez ztráty AI viditelnosti"
-  steps:
-    - name: "Udělejte inventuru URL a změřte výchozí stav"
-      text: "Vyexportujte všechny indexované adresy ze Search Console, sitemap a procházení webu. Zaznamenejte si výchozí stav návštěvnosti a viditelnosti, ať máte s čím po spuštění porovnávat."
-    - name: "Sestavte mapu starých adres na nové"
-      text: "Ke každé staré URL přiřaďte konkrétní novou adresu se stejným nebo velmi podobným obsahem. Přednost dejte stránkám, které mají návštěvnost z AI nebo bývají citované."
-    - name: "Nasaďte trvalá přesměrování 301"
-      text: "Při trvalé migraci je správná volba 301; 302 je určené pro dočasné přesuny a může prodloužit období, kdy si systémy drží starou adresu. Vyhněte se řetězcům, kde jedna adresa vede na druhou a ta na třetí; ideální je jeden skok na cílovou stránku."
-    - name: "Přeneste strukturovaná data a zkontrolujte robots.txt"
-      text: "Ověřte, že nová šablona obsahuje stejná strukturovaná data jako původní. Zkontrolujte robots.txt, značku noindex a kanonické adresy — z testovacího prostředí často zůstane zákaz procházení nebo indexace."
-    - name: "Odešlete sitemap a měřte po spuštění"
-      text: "Odešlete novou sitemap do Search Console i Bing Webmaster Tools. Pak sledujte indexaci, chyby procházení a návštěvnost z AI a porovnávejte je s výchozím stavem."
 faq:
   - q: "Co hrozí při migraci nebo redesignu webu?"
     a: "Migrace mění adresy, šablony nebo doménu, takže vyhledávače i mnohé AI služby pak pracují s jinými adresami a šablonami než dříve. Hrozí ztráta indexace a pozic, a v AI éře navíc ztráta opory pro citace: mnohé AI služby odkazují na konkrétní URL, a když ta přestane fungovat, citace ztrácí cíl."

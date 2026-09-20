@@ -27,19 +27,6 @@ stats:
     label: "měřených e-shopů na Shoptetu, které v robots.txt blokují nějakého AI robota"
   - value: "neměřeno"
     label: "Upgates — v článku bez vlastního měření; část o něm je návod k ověření, ne datový výsledek"
-howto:
-  name: "Jak připravit eshop na Upgates nebo Shoptetu pro AI vyhledávání"
-  steps:
-    - name: "Podívejte se do zdroje, ne do administrace"
-      text: "Otevřete zdrojový kód produktové stránky a hledejte itemtype, ne ld+json. Na Shoptetu jdou produktová data v microdatech; kdo hledá jen JSON-LD, uvidí prázdno tam, kde prázdno není."
-    - name: "Doplňte, co platforma neplní za vás"
-      text: "EAN a značku si plníte v katalogu a propíšou se do dat. Deklaraci vrácení zboží, parametry variant ani provázání variant Shoptet ve výchozím stavu negeneruje — to je téma pro doplněk nebo úpravu šablony."
-    - name: "Doplňte citovatelné popisy"
-      text: "Na začátku produktu a kategorie dejte krátkou odpověď „pro koho a kdy“. Kategorie to potřebuje o to víc, že o sortimentu ve strukturovaných datech nic neříká."
-    - name: "Přidejte FAQ na produkty a kategorie"
-      text: "Krátké otázky a odpovědi přesně mapují to, co kupci zadávají do AI. Tahle sekce je v eshopech největší citační rezerva."
-    - name: "Pracujte na recenzích a srovnání"
-      text: "Heureka, Zboží, Google Recenze a oborové portály — AI při sestavení odpovědi často čerpá ze zdrojů třetích stran. Doplňte i interní srovnávací obsah."
 faq:
   - q: "V jakém formátu posílá Shoptet strukturovaná data?"
     a: "V microdatech, tedy v atributech itemtype a itemprop přímo v HTML. Na 38 měřených produktových stránkách nebyl typ Product v JSON-LD ani jednou; v microdatech byl pokaždé. Jediný JSON-LD, na který jsme narazili, je blok Organization s identitou firmy. Google ve své dokumentaci uvádí microdata mezi podporovanými formáty, takže to není chyba — jen jiný formát, než na jaký jsou návody zvyklé."

@@ -116,6 +116,16 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   entity (název funkce, produktu, čísla), ne podle jedné formulace, a po buildu to
   samé grepnout i v `dist/`. 17. 9. 2026 utekla tři místa ze dvaceti, protože byla
   napsaná jinými slovy.
+- **Z14 — Přednost témat k AI Mode** *(obě větve)*. Dokud je v plánu otevřený řádek
+  k Google AI Mode, bere se přednostně před prvním volným řádkem. K 20. 9. 2026 zbývá
+  jeden: `osobni inteligence cesky nazev`. Až bude uzavřený, tohle pravidlo zaniká —
+  smaž ho i s touhle větou. *(pravidlo z 13. 8. 2026, potvrzeno uživatelem 20. 9. 2026;
+  do 18. 9. bylo jen v paměti session a jeden run ho proto minul)*
+- **Z15 — Neviditelná data do článku nepatří** *(obě větve)*. Co čtenář na stránce
+  nevidí, nemá smysl psát: pole `howto:` se od 20. 9. 2026 nepoužívá a ze všech 63 článků
+  bylo odstraněno (generovalo jen HowTo JSON-LD, jehož zobrazování Google ukončil v roce
+  2023). Kroky postupu patří do textu jako komponenta `Stepper`. Totéž platí pro každé
+  další pole, které se nikde nevykresluje. *(rozhodnutí uživatele 20. 9. 2026)*
 - **Z13 — Kontrola vykreslení** *(obě větve)*. Po buildu grepnout v `dist/blog/<slug>/`
   aspoň jeden text z každé komponenty (`Stepper`, `Checklist`, `CompareTable`…).
   Překlep v názvu vlastnosti build nezastaví a text tiše zmizí.

@@ -25,19 +25,6 @@ stats:
     label: "doporučená hodnota pro stabilitu rozvržení v Agentic Browsing i Core Web Vitals"
   - value: "desítky s"
     label: "typická doba běhu Lighthouse auditu v Chrome DevTools"
-howto:
-  name: "Jak spustit Lighthouse Agentic Browsing audit"
-  steps:
-    - name: "Otevřete stránku v Chrome a spusťte DevTools"
-      text: "V Chrome otevřete adresu, kterou chcete auditovat. Pravým tlačítkem klikněte na stránku a zvolte Inspect (česky často Prozkoumat), nebo stiskněte F12. V DevTools přejděte na záložku Lighthouse."
-    - name: "Vyberte kategorie a zařízení"
-      text: "Zaškrtněte Agentic Browsing spolu s Performance, Accessibility, Best Practices a SEO. Vyberte zařízení (mobile nebo desktop) podle toho, co chcete auditovat. Zachovejte Navigation jako režim měření."
-    - name: "Spusťte audit a počkejte"
-      text: "Klikněte na tlačítko Analyze page load. Lighthouse otevře novou instanci stránky, projde ji v emulovaném prostředí a vyhodnotí všechny zaškrtnuté kategorie. Běh zabere typicky desítky sekund, podle výkonu počítače a složitosti stránky."
-    - name: "Prostudujte výstup Agentic Browsing"
-      text: "U Agentic Browsing neuvidíte klasické 0 až 100 skóre, ale podíl splněných kontrol (například „3 of 4 checks passed“). Každá jednotlivá kontrola je rozkliknutelná s podrobností, co chybí a kde začít s opravou."
-    - name: "Postupujte podle priority oprav"
-      text: "Začněte s llms.txt (nejlevnější oprava), pak accessibility tree (names and labels) a stabilita rozvržení (CLS). WebMCP nechte na konec — implementace je náročnější a smysl má hlavně pro e-shopy a aplikace, kde agent může provádět akce."
 faq:
   - q: "Co je Lighthouse Agentic Browsing audit?"
     a: "Nová kategorie v Google Lighthouse vedle Performance, Accessibility, Best Practices a SEO. Kontroluje, jak je web připravený pro práci AI agentů se stránkou. Audit testuje čtyři oblasti: přítomnost llms.txt, podporu protokolu WebMCP, kvalitu accessibility tree a stabilitu rozvržení (CLS). Lighthouse 13.3 ji v květnu 2026 zařadil do výchozího nastavení."
