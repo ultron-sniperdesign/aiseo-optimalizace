@@ -122,10 +122,13 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   smaž ho i s touhle větou. *(pravidlo z 13. 8. 2026, potvrzeno uživatelem 20. 9. 2026;
   do 18. 9. bylo jen v paměti session a jeden run ho proto minul)*
 - **Z15 — Neviditelná data do článku nepatří** *(obě větve)*. Co čtenář na stránce
-  nevidí, nemá smysl psát: pole `howto:` se od 20. 9. 2026 nepoužívá a ze všech 63 článků
-  bylo odstraněno (generovalo jen HowTo JSON-LD, jehož zobrazování Google ukončil v roce
-  2023). Kroky postupu patří do textu jako komponenta `Stepper`. Totéž platí pro každé
-  další pole, které se nikde nevykresluje. *(rozhodnutí uživatele 20. 9. 2026)*
+  nevidí, nemá smysl psát. Od 20. 9. 2026 se **nepoužívají dvě pole frontmatteru**:
+  `howto:` (generovalo jen HowTo JSON-LD, jehož zobrazování Google ukončil v roce 2023 —
+  odstraněno 318 kroků z 63 článků) a `stats:` (dlaždice, které nečetla žádná šablona —
+  odstraněno 585 dlaždic ze 158 článků). Kroky postupu patří do textu jako komponenta
+  `Stepper`, čísla do textu článku. **Než přidáš jakékoli nové pole frontmatteru, ověř
+  grepem v `src/pages/` a `src/components/`, že ho něco vykresluje.**
+  *(rozhodnutí uživatele 20. 9. 2026)*
 - **Z13 — Kontrola vykreslení** *(obě větve)*. Po buildu grepnout v `dist/blog/<slug>/`
   aspoň jeden text z každé komponenty (`Stepper`, `Checklist`, `CompareTable`…).
   Překlep v názvu vlastnosti build nezastaví a text tiše zmizí.

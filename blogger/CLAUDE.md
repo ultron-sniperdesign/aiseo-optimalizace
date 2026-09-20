@@ -136,11 +136,8 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
   kde ve scéně žádné číslo být nemá. Do promptu nikdy „no text“ — CZ nadpis je součást stylu.
 - **Šablona sahá na `.jpg` a `.webp`, ne na `.png`.** Chybějící `.jpg` = 404 v `og:image`;
   proto se `.png` po kontrole ořezu maže a necommituje.
-- **Dlaždice `stats` z frontmatteru se v blogu nevykreslují** (naměřeno 17. 9. 2026: ani `0 z 38`
-  v `knowsabout-strukturovana-data`, ani `dvě podmínky` v `obsah-za-formularem-a-ai` nejsou v `dist/`;
-  `RichLayout.astro` ani `blog/[slug].astro` pole `stats` nečtou). Šablona článku je přitom vyžaduje.
-  Pole plním dál (je v `ARTICLE_TEMPLATE.md`), ale **nepočítat s tím, že je čtenář uvidí** — a nedávat
-  do nich fakt, který v těle chybí. Zapsáno na board pro admina.
+- **Pole `stats` a `howto` se nepoužívají** (od 20. 9. 2026, pravidlo Z15) — nic je nevykreslovalo.
+  Před přidáním nového pole frontmatteru ověř grepem, že ho šablona čte.
 - **IndexNow při lokálním buildu vrací 403** — normální, v CI projde.
 - **`ugrep` spadne na `mismatched [ ]`** u regexu se závorkami; na složitější hledání python.
 - Ukázky JSON-LD v článku se dají ověřit přes `validator.schema.org/validate`

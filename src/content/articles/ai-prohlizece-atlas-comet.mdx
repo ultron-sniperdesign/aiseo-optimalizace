@@ -18,15 +18,6 @@ keywords:
   - "atlas user agent"
   - "konec chatgpt atlas"
 variant: "rich"
-stats:
-  - value: "Chrome"
-    label: "za co se AI prohlížeče vydávají v user-agentu"
-  - value: "Direct"
-    label: "kam návštěva z AI prohlížeče často spadne, když se nepropíše referrer (nebo do not set)"
-  - value: "žádný"
-    label: "veřejně známý samostatný token v robots.txt pro AI prohlížeč"
-  - value: "OAI-SearchBot"
-    label: "veřejně popsaný crawler, kterým OpenAI obsah objevuje pro vyhledávání"
 faq:
   - q: "Můžu AI prohlížeč zablokovat v robots.txt?"
     a: "Selektivně ne. Robots.txt míří na roboty a Atlas ani Comet nemají vlastní řídicí token; v user-agentu se navíc hlásí jako Chrome, takže pravidlo, které by je zachytilo, by zablokovalo i běžné návštěvníky. Neznamená to, že provozovatel žádné instrukce ze stránky nerespektuje — jen že vy je přes robots.txt cíleně neoddělíte."

@@ -85,16 +85,10 @@ keywords:
 # Default je „classic" — nevyplňuj, pokud chceš classic.
 variant: "rich"
 
-# Jen pro variant: rich. 3–4 dlaždice s číslem + popiskem nad lead odstavcem.
-# Optimální: konkrétní čísla z článku, ne marketingové fluff.
-stats:
-  - value: "12"
-    label: "chyb v auditu"
-  - value: "4–6"
-    label: "typicky vidíme"
-  - value: "85 %"
-    label: "weby ignorují"
-
+# ⛔ Pole `stats:` se od 20. 9. 2026 NEPOUŽÍVÁ.
+# Dlaždice se nikde nevykreslovaly — žádná šablona to pole nečetla. Rozhodnutí
+# uživatele: obsah, který není vidět, je zbytečný (stejně jako `howto`). Ze 158 článků
+# bylo odstraněno 585 dlaždic. Čísla patří do textu článku, kde je čtenář uvidí.
 # FAQ — silně doporučeno. Generuje FAQPage JSON-LD = AI scrapery citují odsud.
 # 4–8 reálných otázek, jak je čtenář formuluje. Odpověď 1–3 věty, sebestačná.
 faq:

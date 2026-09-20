@@ -16,13 +16,6 @@ keywords:
   - "webp metadata"
   - "iptc digitalsourcetype"
 variant: "rich"
-stats:
-  - value: "0"
-    label: "sledovaných metadatových částí (EXIF, XMP), které ve výchozím testu přešly do výstupu"
-  - value: "1"
-    label: "volání, které je v testu zachovalo: keepMetadata()"
-  - value: "693 B"
-    label: "přírůstek testovacího JPEG se zachovanými metadaty (5 557 → 6 250 B)"
 faq:
   - q: "Co přesně jsem testoval?"
     a: "Testovací JPEG s vyplněným EXIF blokem a XMP packetem, ve kterém byla IPTC hodnota DigitalSourceType označující plně vygenerovaný obsah — tedy zapsaná v XMP, ne jako samostatný IPTC IIM blok. Soubor prošel knihovnou sharp ve verzi 0.34.5 v šesti variantách zpracování a u každého výstupu jsem kontroloval, které metadatové části zbyly — u JPEG segmenty, u WebP chunky."

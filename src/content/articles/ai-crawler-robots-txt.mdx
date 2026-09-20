@@ -18,15 +18,6 @@ keywords:
   - "perplexitybot"
   - "google-extended"
   - "llms.txt"
-stats:
-  - value: "18"
-    label: "AI robotů a řídicích tokenů v hlavní tabulce článku (stav k 13. 9. 2026)"
-  - value: "žádost"
-    label: "robots.txt je žádost, ne zámek"
-  - value: "Google-Extended"
-    label: "blokace neovlivní pozice v Google Search"
-  - value: "draft"
-    label: "AIPREF je zatím jen draft IETF, ne standard"
 faq:
   - q: "Jak povolit AI robotům přístup na web?"
     a: "Kvůli citacím jde hlavně o vyhledávací roboty: OAI-SearchBot, Claude-SearchBot a PerplexityBot. Těm dejte v robots.txt v kořeni webu Allow. U robotů vyvolaných uživatelem se to liší podle provozovatele: Claude-User podle Anthropicu robots.txt respektuje, takže jeho zákaz opravdu vypne načítání stránky na dotaz v Claude; u ChatGPT-User OpenAI píše, že se na něj pravidla nemusí vztahovat. Tréninkové roboty (GPTBot, ClaudeBot, CCBot) řešte zvlášť podle toho, jestli chcete obsah pouštět do tréninku — s citacemi to přímo nesouvisí. Pokud navíc žádné pravidlo robota nezakazuje, většinou má přístup i bez explicitního Allow."

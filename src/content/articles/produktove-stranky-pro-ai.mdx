@@ -15,15 +15,6 @@ keywords:
   - "eshop ai citace"
   - "produktova stranka ai"
 variant: "rich"
-stats:
-  - value: "Product + Offer"
-    label: "základní strukturovaná data, která pomáhají AI spolehlivěji pochopit cenu a dostupnost produktu"
-  - value: "GTIN"
-    label: "kód produktu (EAN/čárový kód), který pomáhá se správnou identifikací ve srovnávacích nákupních dotazech"
-  - value: "hasMerchantReturnPolicy"
-    label: "deklarace pravidel vrácení zboží — Google ji uvádí jako doporučenou; v našem měření 38 e-shopů chyběla u všech"
-  - value: "4–6"
-    label: "reálných otázek a odpovědí ve FAQ na produktu, které AI snadno cituje"
 faq:
   - q: "Jaká strukturovaná data potřebuje produktová stránka pro AI?"
     a: "Základ jsou tři typy: Product (name, description, image, brand, GTIN), Offer (price, priceCurrency, availability) a AggregateRating s jednotlivými Review (pokud máte reálné recenze na stránce). Pro nákupní odpovědi AI pomáhá doplnit GTIN, značku a hasMerchantReturnPolicy. Bez těchto polí mají podle analýz produkty nižší šanci se v těchto odpovědích objevit, protože AI hůře přečte cenu, dostupnost i hodnocení z prostého HTML."

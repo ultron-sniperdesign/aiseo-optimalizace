@@ -95,9 +95,7 @@ keywords:
 
 ```yaml
 variant: "rich"          # POVINNÉ v praxi. sticky TOC, dividery, progress bar
-stats:                   # 3–4 dlaždice nad textem
-  - value: "12"
-    label: "chyb v auditu"
+# (pole stats: se od 20. 9. 2026 nepoužívá — viz tabulka níž)
   - value: "4–6"
     label: "typicky vidíme"
 faq:                     # FAQ pod článkem + FAQPage JSON-LD
@@ -122,8 +120,8 @@ faq:                     # FAQ pod článkem + FAQPage JSON-LD
 | `tags` | string array | **Povinné.** Tematické štítky článku, používají se pro filtrování a související články. Drž se zavedených (`ai-platformy`, `strategie`, `mereni`, `obsah`, `technicke-zaklady`, `duveryhodnost`, `eshopy`, `strukturovana-data`, `audit-nastroje`) — nové zaváděj jen s důvodem. Zjistíš je: `grep -hA6 "^tags:" src/content/articles/*.mdx \| grep -oE '"[a-z-]+"' \| sort \| uniq -c \| sort -rn` |
 | `updated` | `^\d{4}-\d{2}-\d{2}$` (ISO date) | Datum poslední aktualizace. Vykresluje se na článku + jde do `<meta>` a JSON-LD `dateModified`. **Aktualizuj při každém významném update.** |
 | `keywords` | string array | Pro `<meta keywords>` + interní reference. 5–10 klíčových slov + variant. |
-| `variant` | vždy `"rich"` | Sticky TOC, section dividers, numbered H3 cards, reading progress bar, stat tiles. **Má ho všech 165 článků** — `classic` se nepoužívá, nepiš ho. |
-| `stats` | array `{ value, label }` | 3–4 dlaždice s číslem + popiskem nad lead odstavcem. |
+| `variant` | vždy `"rich"` | Sticky TOC, section dividers, numbered H3 cards, reading progress bar. **Má ho všech 165 článků** — `classic` se nepoužívá, nepiš ho. |
+| ~~`stats`~~ | — | **Nepoužívat (od 20. 9. 2026).** Dlaždice se nikde nevykreslovaly; ze 158 článků odstraněno 585 kusů. Čísla patří do textu. |
 | `faq` | array `{ q, a }` | **Silně doporučeno.** Generuje FAQPage JSON-LD = AI scrapery citují odsud. 4–8 reálných otázek čtenáře. |
 | ~~`howto`~~ | — | **Nepoužívat (od 20. 9. 2026).** Generovalo neviditelná data (HowTo JSON-LD); Google zobrazování ukončil 2023. Ze všech 63 článků odstraněno, kroky patří do textu jako `Stepper`. |
 
