@@ -23,10 +23,54 @@ import type {
 } from "~/content/pages/_types";
 
 export const meta: PageMeta = {
-  title: "Návod zdarma — Jak má vypadat homepage pro AI vyhledávání",
+  title: "Návod zdarma: homepage pro AI vyhledávání (PDF, 6 stran)",
   description:
-    "Stáhněte si zdarma 6stránkový PDF průvodce s wireframem, anotacemi a třemi principy. Jak má homepage vypadat, aby ji našel Google, citoval ChatGPT a vytáhl Přehled od AI. Výměnou za e-mail.",
+    "Návod zdarma, jak postavit homepage, aby ji našel Google, citoval ChatGPT a vytáhl Přehled od AI i režim AI. Wireframe, tři principy, pět chyb. PDF za e-mail.",
   ogImage: "/og/navod-zdarma.jpg",
+  /** Datum revize — pod krátkou odpovědí a v `dateModified` WebPage schématu. */
+  updated: "2026-09-20",
+};
+
+/**
+ * Krátká odpověď pod hero (komponenta Answer, kind="definice").
+ * Mini markdown — žádné HTML entity. Stránka do 20. 9. 2026 definici neměla,
+ * přestože v PDF sama učí, že patří nahoru (princip 2).
+ */
+export const answer =
+  "Homepage pro AI vyhledávání je hlavní stránka, ze které si Google, ChatGPT, Perplexity, Claude i Gemini umí vytáhnout, co firma dělá, pro koho a čím to dokládá. Rozhodují tři prvky: konkrétní hlavní nadpis, [krátká odpověď](/slovnik/answer-block/) 40–60 slov a otázky z reálných dotazů zákazníků. Návod zdarma ukazuje všech deset prvků na wireframu.";
+
+/** Pět chyb, které PDF rozebírá — dřív jen slib „Pět typických chyb“ bez obsahu. */
+export const mistakes = {
+  eyebrow: "Co PDF rozebírá",
+  title: "Pět chyb, kvůli kterým <strong>AI vaši homepage špatně pochopí</strong>",
+  lead: "Vidíme je opakovaně při auditech. PDF u každé ukazuje opravu na wireframu; tady je shrnutí s odkazem na podrobnosti.",
+  items: [
+    {
+      num: "01",
+      title: "Hlavní nadpis neřekne, co firma dělá",
+      desc: 'Slogan místo věty „co, pro koho“. AI z něj nemá co vytáhnout. Rozdíl ukazuje <a href="/blog/ai-seo-content/">citovatelný obsah</a>.',
+    },
+    {
+      num: "02",
+      title: "Nahoře chybí krátká odpověď",
+      desc: 'Text začne příběhem firmy. <a href="/slovnik/answer-block/">Krátká odpověď</a> 40–60 slov hned pod úvodem je to, co AI cituje nejčastěji.',
+    },
+    {
+      num: "03",
+      title: "Tvrzení bez důkazu",
+      desc: 'Přídavná jména místo čísel, dat a zdrojů. Proč na tom záleží, rozebírá <a href="/blog/e-e-a-t-pro-ai/">důvěryhodnost pro AI</a>.',
+    },
+    {
+      num: "04",
+      title: "Firma není popsaná strojově",
+      desc: 'Chybí <a href="/blog/organization-schema-pro-znacku/">schema Organization</a> a konzistentní název, adresa a telefon napříč katalogy.',
+    },
+    {
+      num: "05",
+      title: "Homepage nikam nevede",
+      desc: 'Bez <a href="/blog/interni-prolinkovani-pro-ai/">prolinkování</a> na hlavní témata AI nepozná, čemu se web doopravdy věnuje.',
+    },
+  ],
 };
 
 export const hero = {
@@ -49,7 +93,7 @@ export const hero = {
     buttonLabel: "Stáhnout AI SEO návod zdarma",
     leadSourceTag: "Lead — Návod zdarma (homepage)",
     trust:
-      'Připravilo <strong><a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a></strong> &mdash; Zlatý partner Upgates od&nbsp;2016, 600+&nbsp;e-shopů na&nbsp;CZ&nbsp;trhu.',
+      'Připravilo <strong><a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a></strong> &mdash; 600+ klientů od&nbsp;roku 2016, Zlatý partner Upgates i&nbsp;Shoptetu.',
   },
 };
 
@@ -65,12 +109,12 @@ export const features: NumberedFeature[] = [
   {
     num: 1,
     title: "Wireframe s 10 anotacemi",
-    desc: "Homepage, podle které okamžitě poznáte slabá místa svého webu. Každý prvek má vysvětlení, jaký signál pro Google, ChatGPT a Přehled od AI generuje a proč na něm záleží.",
+    desc: "Homepage, podle které okamžitě poznáte slabá místa svého webu. Každý prvek má vysvětlení, jaký signál pro Google (Přehled od AI a <a href=\"/ai-mode/\">režim AI</a>), ChatGPT, Perplexity, Claude i Gemini generuje a proč na něm záleží.",
   },
   {
     num: 2,
     title: "Tři klíčové principy",
-    desc: "Hlavní nadpis, krátká odpověď 40–60 slov a FAQ se strukturovanými daty. Tři vrstvy, díky kterým vás AI nástroje pochopí a ocitují — místo aby doporučily konkurenci.",
+    desc: "Hlavní nadpis, <a href=\"/slovnik/answer-block/\">krátká odpověď</a> 40–60 slov a <a href=\"/blog/ai-seo-content/\">časté otázky z reálných dotazů</a> zákazníků. Tři vrstvy, díky kterým vás AI nástroje pochopí a ocitují. Strukturovaná data <a href=\"/blog/konec-faq-rich-results/\">FAQPage</a> jsou volitelný doplněk — Google pro ně rozšířené výsledky od 7. 5. 2026 nezobrazuje a pro AI odpovědi je nevyžaduje.",
   },
   {
     num: 3,
@@ -80,7 +124,7 @@ export const features: NumberedFeature[] = [
   {
     num: 4,
     title: "Pět typických chyb",
-    desc: "Pět chyb, kvůli kterým AI špatně chápe váš homepage — i&nbsp;když máte dobrý produkt. Vychází z&nbsp;praxe Sniper Design při&nbsp;návrzích a&nbsp;auditech klientských webů (Zlatý partner Upgates od&nbsp;2016, 600+ e-shopů na&nbsp;CZ trhu).",
+    desc: "Pět chyb, kvůli kterým AI špatně chápe vaši homepage — i&nbsp;když máte dobrý produkt. Vychází z&nbsp;auditů klientských webů, které děláme průběžně; každou chybu na&nbsp;stránce níž vypisujeme i&nbsp;s&nbsp;odkazem na&nbsp;řešení.",
   },
 ];
 
@@ -97,9 +141,9 @@ export const audiencePrimary: AudienceBlock = {
   tag: "Primárně",
   heading: "PDF je pro vás",
   items: [
-    "<strong>Provozovatelé webů a&nbsp;e-shopů</strong> &mdash; víte, že je&nbsp;třeba něco změnit, ale nevíte, kde začít.",
+    '<strong>Provozovatelé webů a&nbsp;e-shopů</strong> &mdash; víte, že je&nbsp;třeba něco změnit, ale nevíte, kde začít. Cestu webem ukáže <a href="/zacnete-tady/">rozcestník</a>; e-shopy na&nbsp;Shoptetu a&nbsp;Upgates mají <a href="/serie/ai-seo-pro-eshopy/">vlastní sérii</a>.',
     "<strong>SEO a&nbsp;marketing specialisté</strong> &mdash; potřebujete framework, který předáte klientovi nebo internímu&nbsp;týmu.",
-    "<strong>Copywriteři, designéři, vývojáři</strong> &mdash; chcete navrhovat homepage, které AI chápe stejně dobře jako člověk.",
+    '<strong>Copywriteři, designéři, vývojáři</strong> &mdash; chcete navrhovat homepage, které AI chápe stejně dobře jako člověk. Formát obsahu rozebírá <a href="/blog/ai-seo-content/">citovatelný obsah</a>.',
     "<strong>B2B agentury</strong> &mdash; hledáte vlastní pracovní rámec pro klientské weby v&nbsp;AI&nbsp;éře.",
   ],
 };
@@ -109,7 +153,7 @@ export const audienceNegative: AudienceBlock = {
   items: [
     'čekáte <strong>kompletní audit celého webu</strong> &mdash; k&nbsp;tomu slouží <a href="/audit/">Audit AI&nbsp;viditelnosti</a>',
     'chcete <strong>hotové texty</strong> pro produktové / kategoriální stránky &mdash; rozšířený <a href="/pack/">Pack</a>',
-    "řešíte <strong>čistě technické SEO</strong> bez úprav obsahu",
+    'řešíte <strong>čistě technické SEO</strong> bez úprav obsahu &mdash; začněte u <a href="/blog/ai-crawler-robots-txt/">přístupu AI robotů</a>',
     "nechcete po&nbsp;stažení dostat <strong>žádné navazující e-maily</strong>",
   ],
 };
@@ -118,7 +162,7 @@ export const audienceNegative: AudienceBlock = {
 export const upsellHead: SectionHead = {
   eyebrowNum: "03",
   eyebrow: "Co dál — pokud chcete víc",
-  proof: "600+ e‑shopů · specialisté na Upgates a Shoptet",
+  proof: "Zlatý partner Upgates i Shoptetu · vlastní e-shop MEGA DETAIL",
   title:
     "Tohle PDF řeší jednu stránku. <strong>AI vyhledávání ale hodnotí celý web.</strong>",
   lead: "PDF vám pomůže začít na&nbsp;homepage. Pokud později budete chtít rozšířit stejný princip na&nbsp;produktové stránky, kategorie a&nbsp;blog, existují <strong>dvě cesty</strong> &mdash; podle toho, kolik chcete dělat sami.",
@@ -130,7 +174,7 @@ export const upsellTiers: PricingTier[] = [
     title: "Kompletní AI&nbsp;SEO Wireframe Pack",
     body: "Návod pokryl homepage. Pack pokryje celý e‑shop — sedm typů stránek s hotovými texty, kterým AI rozumí. Otevřete, dosaďte vlastní obsah, máte hotovo. Bez konzultantů.",
     price: "1&nbsp;490&nbsp;Kč",
-    priceNote: "jednorázově, bez DPH",
+    priceNote: "jednorázově, včetně DPH",
     ctaLabel: "Koupit Pack&nbsp;→",
     ctaHref: "/pack/",
   },
@@ -140,9 +184,9 @@ export const upsellTiers: PricingTier[] = [
     pill: "★&nbsp;To nejlepší",
     title: "Audit AI&nbsp;viditelnosti od Sniper Design",
     body: "Získáte přesný plán, co změnit na každé stránce, aby vás AI začala doporučovat zákazníkům. Víte, co AI hledá u vašeho oboru, kde má konkurence díry a jak ji předběhnout. Plus meeting 30–60 minut. Výstup do 5 pracovních dní od úhrady.",
-    chip: "✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet",
+    chip: "✓ 600+ klientů od roku 2016, převážně e-shopy na Upgates a Shoptetu",
     price: "3&nbsp;600&nbsp;Kč",
-    priceNote: "jednorázově, bez DPH",
+    priceNote: "jednorázově, bez DPH (4 356 Kč s DPH)",
     ctaLabel: "Objednat&nbsp;→",
     ctaHref: "/audit/",
   },

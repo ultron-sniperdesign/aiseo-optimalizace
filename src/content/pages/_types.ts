@@ -19,7 +19,13 @@ export interface PageMeta {
   title: string;
   description: string;
   /** OG image path, např. "/og/navod-zdarma.jpg". */
-  ogImage: string;
+  ogImage: string;  /**
+   * Datum revize obsahu (ISO `YYYY-MM-DD`). Když stránka pole má, předává ho
+   * do `dateModified` ve WebPage schématu a vykresluje ho viditelně. Sitemap
+   * `lastmod` je čas buildu, ne obsahu — proto tohle pole.
+   */
+  updated?: string;
+
 }
 
 /**
@@ -91,7 +97,7 @@ export interface ThankYouHero {
 /** Číslovaný krok (thank-you "co bude následovat" / "co teď"). Jedna HTML věta s úvodním <strong>. */
 export interface NumberedStep {
   num: number;
-  /** Smí obsahovat inline HTML (vede <strong> intro). */
+  /** Smí obsahovat inline HTML (vede <strong> v úvodu). */
   html: string;
 }
 

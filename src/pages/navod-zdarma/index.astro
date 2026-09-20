@@ -3,8 +3,12 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
 import EmailCapture from "~/components/EmailCapture.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import Answer from "~/components/blocks/Answer.astro";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
 import * as p from "~/content/pages/navod-zdarma";
 import ExitRescue from "~/components/blocks/ExitRescue.astro";
+import { ui } from "~/i18n/strings";
+import { czDate } from "~/lib/date";
 
 // Obsah stránky je v datovém modulu src/content/pages/navod-zdarma.ts.
 // Tato stránka je čistý template — refaktor Fáze 0 (i18n příprava).
@@ -15,6 +19,7 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
   description={p.meta.description}
   image={p.meta.ogImage}
   breadcrumb={[{ label: "Návod zdarma", href: "/navod-zdarma/" }]}
+  dateModified={p.meta.updated}
 >
   <div class="lp">
     <!-- ===== HERO ===== -->
@@ -53,19 +58,39 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
         <!-- Hero illustration — AI gen Tech C portrait s baked-in SEO/GEO/AEO
              pily (PIL post-processing). Transparent bg, jeden <img>, žádný overlay. -->
         <div class="lp-hero__mockup" aria-hidden="true">
-          <figure class="hero-illustration">
+          {/* Reálné strany z PDF místo stylizované ilustrace — čtenář vidí,
+              co dostane. Soubory v public/navod-zdarma/ už existovaly, jen se
+              nepoužívaly (dřív tu byla jen hero-illustration.png). */}
+          <figure class="hero-illustration hero-illustration--pages">
             <img
-              src={p.hero.image}
-              alt=""
-              width="1024"
-              height="1536"
+              src="/navod-zdarma/wireframe.jpg"
+              alt="Strana z návodu: wireframe homepage s anotacemi"
+              width="1240"
+              height="1754"
               loading="eager"
               decoding="async"
+              class="hero-illustration__page hero-illustration__page--back"
+            />
+            <img
+              src="/navod-zdarma/cover.jpg"
+              alt="Titulní strana návodu Homepage pro AI vyhledávání"
+              width="1240"
+              height="1754"
+              loading="eager"
+              decoding="async"
+              class="hero-illustration__page hero-illustration__page--front"
             />
           </figure>
         </div>
       </div>
     </section>
+
+    {/* ===== KRÁTKÁ ODPOVĚĎ — stránka sama učí, že patří nahoru ===== */}
+    <Answer text={p.answer} kind="definice">
+      {p.meta.updated && (
+        <p class="lp-answer__revised">{ui.metaUpdated} {czDate(p.meta.updated)}</p>
+      )}
+    </Answer>
 
     <!-- ===== CO DOSTANETE ===== -->
     <section class="lp-section">
@@ -83,6 +108,27 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
           </article>
         ))}
       </div>
+    </section>
+
+    {/* ===== PĚT CHYB — dřív jen slib ve výčtu, teď obsah na stránce ===== */}
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow">{p.mistakes.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.mistakes.title}></h2>
+        <p class="lp-section__lead">{p.mistakes.lead}</p>
+      </header>
+
+      <ol class="lp-mistakes">
+        {p.mistakes.items.map((m) => (
+          <li class="lp-mistake">
+            <span class="lp-mistake__num">{m.num}</span>
+            <div>
+              <h3 class="lp-mistake__title">{m.title}</h3>
+              <p class="lp-mistake__desc" set:html={m.desc}></p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <!-- ===== PRO KOHO (audit #8 — sjednotit s FAQ, #9 — přidat „pro koho NE") ===== -->
@@ -186,6 +232,84 @@ import ExitRescue from "~/components/blocks/ExitRescue.astro";
 </BaseLayout>
 
 <style>
+  /* Komponenta Answer nese vlastní spodní odstup, další sekce svůj horní —
+     bez tohohle by se sečetly (gotcha v CLAUDE.md § VI). */
+  .lp :global(.answer) {
+    --answer-pb: 0;
+  }
+  .lp-answer__revised {
+    margin: 0.75rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* Dvě reálné strany PDF přes sebe místo jedné ilustrace. */
+  .hero-illustration--pages {
+    position: relative;
+    margin: 0;
+  }
+  .hero-illustration--pages .hero-illustration__page {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.18);
+  }
+  .hero-illustration--pages .hero-illustration__page--back {
+    position: absolute;
+    inset: 0;
+    transform: rotate(-4deg) translate(6%, -3%);
+    width: 92%;
+    opacity: 0.85;
+  }
+  .hero-illustration--pages .hero-illustration__page--front {
+    position: relative;
+  }
+
+  /* Pět chyb */
+  .lp-mistakes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.875rem;
+    max-width: var(--w-read, 40rem);
+  }
+  .lp-mistake {
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+  .lp-mistake__num {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    background: color-mix(in oklch, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+  }
+  .lp-mistake__title {
+    margin: 0 0 0.125rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .lp-mistake__desc {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .lp-mistake__desc :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   /* ===== Page root ===== */
   .lp {
     --lp-violet: oklch(0.55 0.25 305);
