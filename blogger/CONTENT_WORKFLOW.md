@@ -559,11 +559,21 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 - [ ] A: trend research → ≥ 2 nové řádky v `obsahovy-plan.csv`; **duplicity kontrolovány dvoukrokově** (metadata všech → celé jen blízké)
 - [ ] B: vybrán první volný řádek, **přečten sloupec C**, hloubkový research + KW
+- [ ] **B3: `research.md` má hlavičku „Co je ověřeno a čím“** — dokumentace · rozhraní · měření ·
+      nelze ověřit (Z16). Prázdný řádek „rozhraní“ znamená, že v článku nesmí být tvrzení o UI
 - [ ] C1: draft s answer + FAQ + CTA, **8 povinných polí včetně `tags`**, `variant: "rich"`, brand voice OK
 - [ ] **C1b: titulek pro SERP** — `seoTitle` do 60 znaků, nebo vědomé rozhodnutí, že stačí `title`. Popis nestačí, rozhoduje slib akce (viz `ARTICLE_TEMPLATE.md`)
-- [ ] C2–C5: 2 kola OpenAI auditu zapracována (`--max-tokens` ≥ 5000), **auditor měl pokyn hledat vlastní zdroje a protidůkazy**
+- [ ] C2–C5: 2 kola OpenAI auditu zapracována (`--max-tokens` ≥ 5000), **auditor měl pokyn hledat
+      vlastní zdroje a protidůkazy**, a **každé kolo mělo svou osu** — kolo 1 fakta, kolo 2 jazyk
+      a struktura + kontrola vypořádání (Z19)
+- [ ] **Z17: každá oprava dohledána grepem v celém `.mdx` včetně frontmatteru** (`answer`, `faq`,
+      vlastnosti komponent) — ne jen na místě, které audit citoval
+- [ ] **Z18: `vyporadani.md`** — zapracováno / nezapracováno + důvod / jazykový průchod; přiloženo
+      do briefu 2. kola a commituje se s článkem
 - [ ] **C5b: zásadní nálezy doověřeny** auditorem (max 1 kolo navíc, pak eskalace)
-- [ ] **C6: jazyková kontrola — `jazyk-check.py` na 0 nálezů + LLM průchod + případná nová pravidla do slovníku**
+- [ ] **C6: jazyková kontrola — `jazyk-check.py` na 0 nálezů k řešení + LLM průchod + případná nová
+      pravidla do slovníku.** Nález, který je předmětem článku, řeší **marker `jazyk-vyjimka:`
+      ve frontmatteru** (s důvodem), ne nový slug ve slovníku
 - [ ] D1: design komponenty hotové **už před audity** (v C1), `.mdx` + `variant: rich`, žádný wall of text
 - [ ] D2: featured image `public/og/<slug>.jpg` + `.webp` (gpt-image-2, 1536×1024, CZ text v horních ~84 %, zkontrolováno) — **pracovní `.png` smazáno, do repa nejde**
 - [ ] D3: `npm run build` OK → commit (článek + `.jpg` + `.webp`) → push → CI → curl 200 (článek i `og/<slug>.jpg`)
