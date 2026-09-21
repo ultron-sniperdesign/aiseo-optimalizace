@@ -1475,3 +1475,26 @@ Doplnění C5: C5-01 zpřesňuje aktuální živý test URL oproti uložené ind
 **Opraveno:** `answer` nově začíná vymezením a má 41 slov · „stejné období“ → „stejně dlouhá a srovnatelná období“ · neurčité používání vysvětlení nahrazeno jazykem skutečných poptávek · odstraněna tautologie o názvu značky · nadpis zpřesněn na strukturovaná data · neobratné „použijte jasně“ nahrazeno použitím na viditelných místech bez křečovitého opakování.
 
 **Slovník v71 beze změny:** všechny nálezy závisely na kontextu konkrétní věty; spolehlivé obecné pravidlo z nich nevzniklo.
+
+## 2026-09-21 · `imageobject-strukturovana-data` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 180 |
+| Mechanický checker | **2 → 0** nálezy (0,9 na 1000 slov před opravou) |
+| LLM průchod (gpt-5.4) | 7 nálezů, 7 opraveno |
+| Nová pravidla | **žádné** — všech 7 nálezů závisí na významu věty |
+
+**Mechanické nálezy:** 2× množné číslo „v Přehledech od AI“ ve vlastní větě (ne v citaci) →
+opraveno na jednotné „v Přehledu od AI“. Výjimka na úrovni souboru se nepoužila a použít nesměla:
+článek ten tvar necituje.
+
+**Nálezy LLM průchodu (všechny jednorázové, jen do logu):** „Google k němu podle své dokumentace
+pracuje s víc signály“ → „Google podle své dokumentace pracuje u obrázku s více signály“ ·
+„platí to ale nad rámec běžné způsobilosti“ → „jen při splnění běžné způsobilosti“ · „stránka
+k vyřízení licence“ → „stránka pro vyřízení licence“ (sjednoceno na třech místech) · slovosled
+„nepřežila metadata ani jedna dvojice“ → „nepřežila metadata ani v jedné dvojici“ · „nechce nic
+navíc nad běžnou způsobilostí“ → „nevyžaduje nic nad běžnou způsobilost“ (2 místa) · „čtenému
+obsahu přičítaly“ → „k ImageObject při čtení obsahu přihlížely“ · „z čeho má systém co citovat“
+→ „z čeho může systém citovat“.

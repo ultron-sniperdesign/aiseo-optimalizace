@@ -1,0 +1,221 @@
+---
+title: "ImageObject: strukturovaná data pro obrázky a AI"
+seoTitle: "ImageObject: co u obrázku označit a co to dokládá"
+description: "Co u obrázku označit přes ImageObject, co Google doopravdy dokumentuje (licenci a autorství) a co u odpovědí s AI nečekat. S ukázkou kódu a hranicemi."
+answer: "ImageObject jsou strukturovaná data, kterými se k obrázku na stránce doplní strojově čitelná fakta o licenci a autorství. Google u nich dokumentuje jediný efekt: způsobilost k odznaku licence v Obrázcích. Pro odpovědi s AI podle své dokumentace nevyžaduje nic nad běžnou způsobilost ve Vyhledávání. Kontext obrázku dává hlavně popisný alt text a okolní text."
+slug: "imageobject-strukturovana-data"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "technicke-zaklady"
+published: "2026-09-21"
+updated: "2026-09-21"
+keywords:
+  - "imageobject"
+  - "strukturovaná data pro obrázky"
+  - "licence obrázku ve strukturovaných datech"
+  - "alt text"
+  - "iptc metadata obrázku"
+variant: "rich"
+faq:
+  - q: "Co je ImageObject?"
+    a: "ImageObject je typ strukturovaných dat ze slovníku schema.org pro obrázek. Doplňuje k němu strojově čitelná fakta — odkaz na soubor, autora, uvedení zdroje, licenci a popisek. Google k němu dokumentuje jedno konkrétní použití: informace o licenci a autorství obrázku v Google Obrázcích. Že by z něj čerpaly odpovědi s AI, dokumentace netvrdí."
+  - q: "Které vlastnosti jsou povinné?"
+    a: "U obrázkových metadat je podle dokumentace Googlu povinné contentUrl, tedy odkaz na samotný soubor obrázku, a k tomu aspoň jedna z vlastností creator, creditText, copyrightNotice nebo license. Doporučené je uvést je všechny plus acquireLicensePage, tedy stránku pro vyřízení licence. Pro způsobilost k odznaku licence je ale license povinná."
+  - q: "Pomůže ImageObject k lepší viditelnosti v odpovědích s AI?"
+    a: "Vliv ImageObject na viditelnost v odpovědích s AI není doložený. Google v dokumentaci k funkcím s AI píše, že pro zobrazení v Přehledu od AI ani v režimu AI nejsou žádné další požadavky nad běžnou způsobilost ve Vyhledávání: stránka musí být indexovaná, způsobilá k úryvku a neomezená direktivami jako nosnippet, data-nosnippet, max-snippet nebo noindex. Obrázky dokumentace zmiňuje jen jako doplnění textového obsahu. ImageObject proto dělejte kvůli licenci a autorství, ne kvůli slibu citace."
+  - q: "Stačí metadata v souboru, nebo mám dělat strukturovaná data?"
+    a: "U licenčních údajů k obrázku uvádí Google dvě rovnocenné cesty a stačí jedna z nich: strukturovaná data na stránce, nebo IPTC metadata uvnitř souboru. V praxi má druhá cesta slabé místo — při zmenšování a exportu se metadata mohou ztratit; stalo se to v našem testu knihovny sharp 0.34.5 i u všech měřených zmenšenin z e-shopů. Strukturovaná data na stránce nejsou závislá na tom, jestli zmenšování a export metadata uvnitř souboru zachovají."
+  - q: "Co s dekorativními obrázky?"
+    a: "Dekorativní obrázek, který nenese informaci, má mít podle W3C prázdný alt, tedy alt=\"\". Prázdný, ne vynechaný — když atribut chybí, může čtečka přečíst název souboru. Dekoraci je navíc vhodnější řešit jako pozadí v CSS. Strukturovaná data k dekoraci nepatří vůbec."
+  - q: "Dostanu díky značení odznak licence?"
+    a: "Značení dělá obrázek způsobilým k odznaku licence, zobrazení odznaku zaručené není. Google výslovně píše, že nezaručuje, že se strukturovaná data nebo IPTC metadata ve výsledcích objeví. Značení dělá obrázek způsobilým, ne zobrazeným — a stejně jako u jiných typů platí, že označit se smí jen to, co je na stránce vidět."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+
+**ImageObject jsou strukturovaná data, kterými se k obrázku na stránce doplní strojově čitelná fakta o licenci a autorství.** Google u nich dokumentuje jediný efekt: způsobilost k odznaku licence v Obrázcích. Pro odpovědi s AI podle své dokumentace nevyžaduje nic nad běžnou způsobilost ve Vyhledávání. Kontext obrázku dává hlavně popisný alt text a okolní text.
+
+Obrázek je pro stroj jiný případ než odstavec. Google podle své dokumentace pracuje u obrázku s více signály současně: *„Google uses alt text along with computer vision algorithms and the contents of the page to understand the subject matter of the image.“* Vy z toho ovlivníte dva — alt text a obsah stránky. Tenhle návod proto rozděluje dvě věci, které se u obrázků pletou dohromady: **čí ten obrázek je** (to řeší `ImageObject`) a **co na něm je a k čemu na stránce slouží** (to vysvětluje alt text, popisek, okolní text a název souboru).
+
+## Co <span class="hl">ImageObject</span> dokládá — a co <strong>nedokládá</strong>
+
+Dokumentace Googlu k obrázkovým metadatům má jeden konkrétní účel: informace o licenci a autorství v Google Obrázcích, včetně způsobilosti k odznaku licence. Nic o tom, že by značení pomáhalo stroji pochopit, co je na obrázku vidět.
+
+A u funkcí s AI je Google ještě přímější. V dokumentaci k nim stojí, že pro zobrazení v Přehledu od AI ani v režimu AI **nejsou žádné další požadavky a není potřeba žádná zvláštní optimalizace** — platí to ale jen při splnění běžné způsobilosti ve Vyhledávání: stránka musí být indexovaná a způsobilá k úryvku, a zobrazení jde omezit direktivami `nosnippet`, `data-nosnippet`, `max-snippet` a `noindex`. Obrázky tam mají jedinou zmínku: podpořit textový obsah kvalitními obrázky a videi, kde to má smysl.
+
+<CompareTable
+  leftLabel="Zdroj"
+  leftTone="accent"
+  rightLabel="Co z něj stroj získá"
+  rightTone="accent"
+  rows={[
+    { icon: "🏷️", label: "ImageObject", left: "Kdo a za jakých podmínek", right: "Autor, uvedení zdroje, oznámení o autorských právech, licence, stránka pro vyřízení licence" },
+    { icon: "📝", label: "Alt text a popisek", left: "Co na obrázku je", right: "Popis obsahu obrázku slovy — podle Googlu nejdůležitější doplňující informace u obrázku" },
+    { icon: "🔗", label: "Okolní text a název souboru", left: "Kontext", right: "O čem stránka je a jak s ní obrázek souvisí" },
+  ]}
+/>
+
+<Insight tone="accent">
+Tyhle tři vrstvy se doplňují, nenahrazují. `ImageObject` řekne, **čí** obrázek je a co s ním smíte. Alt text a okolní text řeknou, **co** na něm je. Když chcete obrázku pomoct slovy, začněte druhou vrstvou — ta první je o právech.
+</Insight>
+
+## Šest vlastností <span class="hl">ImageObject</span>, které mají <strong>doložený účel</strong>
+
+Povinné je podle dokumentace Googlu `contentUrl` a k němu **aspoň jedna** z následujících. Doporučené je vyplnit je všechny — a pro způsobilost k odznaku licence je `license` povinná, ne volitelná.
+
+| Vlastnost | Co do ní patří | Stav podle Googlu |
+|---|---|---|
+| `contentUrl` | odkaz přímo na soubor obrázku | povinné |
+| `license` | odkaz na stránku s podmínkami použití | doporučené; **pro odznak licence povinné** |
+| `acquireLicensePage` | stránka pro vyřízení licence | doporučené |
+| `creator` | autor obrázku (osoba nebo organizace) | doporučené |
+| `creditText` | jak má být zdroj uveden | doporučené |
+| `copyrightNotice` | oznámení o autorských právech | doporučené |
+
+Slovník schema.org k tomu přidává vlastnosti, které Google v téhle funkci nepožaduje, ale dávají smysl: `caption` (popisek), `representativeOfPage` (jestli obrázek reprezentuje obsah stránky), `width`, `height` a `thumbnail`.
+
+<Stepper
+  steps={[
+    {
+      label: "Obrázek",
+      title: "Označujte obrázek, který na stránce je",
+      text: "Obecné pokyny ke strukturovaným datům to říkají jednou větou: neoznačujte obsah, který čtenář na stránce nevidí. Porušení může skončit ručním zásahem a ztrátou způsobilosti k rozšířenému výsledku.",
+    },
+    {
+      label: "Dostupnost",
+      title: "Ověřte, že se k obrázku dostane vyhledávací robot",
+      text: "Všechny odkazy na obrázky ve strukturovaných datech musí být dostupné pro procházení a indexaci. Obrázek za přihlášením nebo blokovaný v robots.txt značení zneplatní.",
+    },
+    {
+      label: "Práva",
+      title: "Doplňte licenci a autorství",
+      text: "contentUrl plus aspoň jedno z creator, creditText, copyrightNotice, license. Pro odznak licence je license povinná, acquireLicensePage je doporučená.",
+    },
+    {
+      label: "Popis",
+      title: "Napište alt text a popisek",
+      text: "Tohle je vrstva, kterou obsahu obrázku dodáte slovy — podle Googlu je alt text nejdůležitější doplňující informace u obrázku. Popisuje, co na obrázku je, ne jaká klíčová slova chcete umístit.",
+    },
+    {
+      label: "Kontrola",
+      title: "Nechte značení zkontrolovat",
+      text: "Ověřte platnost v nástroji pro kontrolu strukturovaných dat a shodu hodnot s tím, co je na stránce vidět. Ukázku níž jsme 21. 9. 2026 poslali do validátoru schema.org — bez chyb.",
+    },
+  ]}
+/>
+
+## Jak vypadá <span class="hl">značení</span> — <strong>ukázka k jednomu obrázku</strong>
+
+Značení se dá zapsat samostatně, nebo vložit do typu, který obrázek používá — třeba jako hodnotu vlastnosti `image` u `Article` nebo `Product`. Samostatná ukázka s licencí a autorstvím vypadá takhle:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://example.cz/fotky/vyroba-kolecek.jpg",
+  "license": "https://example.cz/licence-obrazku/",
+  "acquireLicensePage": "https://example.cz/licence-obrazku/objednavka/",
+  "creator": { "@type": "Person", "name": "Jana Nováková" },
+  "creditText": "Foto: Jana Nováková pro example.cz",
+  "copyrightNotice": "© 2026 example.cz",
+  "caption": "Ruční výroba dřevěných koleček v dílně"
+}
+```
+
+Když obrázek vkládáte do jiného typu, hlídejte technické minimum **v dokumentaci toho typu**. U `Article` ho Google uvádí takhle: soubor ve formátu podporovaném Google Obrázky, dostupný pro procházení a indexaci, **aspoň 50 000 pixelů** po vynásobení šířky a výšky a ideálně víc rozlišení v poměrech 16 : 9, 4 : 3 a 1 : 1. Jinde — třeba u `Product` — si čísla ověřte v dokumentaci daného rozšířeného výsledku, obecné pravidlo to není. Co platí všude: obrázek má reprezentovat označený obsah — ne logo, ne dekoraci. Kde `ImageObject` zapadá do širšího celku, rozebírá článek o [strukturovaných datech pro AI](/blog/strukturovana-data-pro-ai/); stejnou logiku pro video má [VideoObject](/blog/videoobject-strukturovana-data/).
+
+## <span class="hl">IPTC metadata</span> jsou druhá cesta — <strong>při exportu se mohou ztratit</strong>
+
+Google uvádí, že mu stačí **jedna** z cest: strukturovaná data na stránce, nebo IPTC metadata zapsaná uvnitř souboru. Mapování mezi nimi je přímé.
+
+| IPTC pole v souboru | Odpovídá vlastnosti |
+|---|---|
+| Creator | `creator` |
+| Credit Line | `creditText` |
+| Copyright Notice | `copyrightNotice` |
+| Web Statement of Rights | `license` |
+| Licensor URL | `acquireLicensePage` |
+
+Pole *Digital Source Type* navíc může nést klasifikaci způsobu vzniku digitálního obsahu — například označení obrázku vytvořeného algoritmicky, tedy generativním modelem.
+
+<Insight tone="warn">
+Druhá cesta má slabé místo, na které jsme narazili ve vlastních měřeních: **metadata se při zmenšování a exportu mohou ztratit.** Knihovna sharp 0.34.5 v našem testu ve výchozím nastavení nepřenesla do výstupu ani EXIF, ani XMP ([celý test](/blog/metadata-obrazku-pri-publikaci/)); u zmenšenin z reálných e-shopů nepřežila metadata ani v jedné dvojici z těch, kde je originál měl ([měření na 38 e-shopech](/blog/co-z-obrazku-zmizi/)). Netvrdíme, že to tak dělá každý redakční systém a každé nastavení exportu — tvrdíme, že se to stává a že se to nepozná bez kontroly. Když stavíte na IPTC, ověřte si, co z metadat zbylo v tom souboru, který je doopravdy na webu.
+</Insight>
+
+## <span class="hl">Alt text</span> popisuje obsah obrázku — <strong>ImageObject řeší práva</strong>
+
+Dokumentace Google Obrázků je v tomhle jednoznačná: **nejdůležitější doplňující informace u obrázku je alt text.** K tomu přidává tři věci, které se dělají mimo strukturovaná data a mají větší vliv na to, jak stroj obrázku rozumí:
+
+- **Obrázek u relevantního textu.** Google to píše výslovně: obrázky mají být umístěné u souvisejícího textu a na stránkách, které k jejich tématu patří.
+- **Popisný název souboru** místo `image1.jpg`.
+- **Obrázek jako `<img>`, ne jako pozadí v CSS** — jinak není objevitelný. Podporované formáty v `src` jsou BMP, GIF, JPEG, PNG, WebP, SVG a AVIF; k nalezení pomůže mapa obrázků v sitemapě.
+
+U dekorativních obrázků platí opačný postup: podle W3C má mít dekorace **prázdný `alt=""`**, aby ji čtečky přeskočily. Prázdný, ne vynechaný — bez atributu může čtečka přečíst název souboru.
+
+## Kde má <span class="hl">ImageObject</span> hranice — <strong>nezaručí odznak ani citaci v AI</strong>
+
+**Nezaručí odznak ani zobrazení.** Google výslovně píše, že nezaručuje, že se strukturovaná data nebo IPTC metadata ve výsledcích objeví. Funkce je dostupná na mobilu i na počítači ve všech regionech a jazycích, kde je Google Vyhledávání — dostupnost funkce ale není totéž jako zobrazení u vašeho obrázku.
+
+**Nedokládá roli v odpovědích s AI.** Že by systémy s AI k `ImageObject` při čtení obsahu přihlížely, nebo podle něj vybíraly obrázky do odpovědí, nemáme z čeho tvrdit. Google k funkcím s AI uvádí, že žádné zvláštní značení nepotřebují — podmínkou je běžná způsobilost ve Vyhledávání: indexovaná stránka, způsobilost k úryvku a žádné omezení direktivami `nosnippet`, `data-nosnippet`, `max-snippet` nebo `noindex`.
+
+**Nenahradí popis.** Licence a autorství neříkají nic o tom, co na obrázku je. To zůstává na alt textu, popisku a okolním textu.
+
+<MistakeGrid>
+  <Mistake num="01" title="Data k obrázku, který na stránce není">
+    Obecné pokyny ke strukturovaným datům zakazují označovat obsah, který čtenář nevidí. U obrázků to platí stejně jako u textu.
+  </Mistake>
+  <Mistake num="02" title="Odkaz na obrázek, ke kterému se vyhledávací robot nedostane">
+    Odkazy na obrázky ve strukturovaných datech musí být dostupné pro procházení a indexaci. Obrázek za přihlášením nebo blokovaný v robots.txt značení zneplatní.
+  </Mistake>
+  <Mistake num="03" title="Sázka na IPTC bez kontroly výstupu">
+    Metadata se při zmenšení a exportu mohou ztratit — v našich testech se to stalo u výchozího nastavení knihovny i u všech měřených zmenšenin. Zkontrolujte ten soubor, který je na webu, ne originál v archivu.
+  </Mistake>
+  <Mistake num="04" title="Alt text jako místo na klíčová slova">
+    Alt text popisuje obsah obrázku pro člověka, který ho nevidí. Seznam klíčových slov tuhle práci neudělá a čtečkám uškodí.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont>
+  <Do>
+
+  **Dělejte**
+
+  - `contentUrl` plus aspoň jedno z `creator`, `creditText`, `copyrightNotice`, `license`
+  - `license` vždy, když chcete být způsobilí k odznaku licence
+  - Popisný alt text u každého obrázku, který nese informaci
+  - Obrázek umístěný u textu, ke kterému patří, a s popisným názvem souboru
+  - Kontrolu, že se k souboru dostane vyhledávací robot — odkaz dostupný pro procházení a indexaci
+
+  </Do>
+  <Dont>
+
+  **Nedělejte**
+
+  - Strukturovaná data k obrázku, který na stránce není
+  - Spoléhat na IPTC metadata bez kontroly zmenšeniny na webu
+  - Dekorativní obrázky bez `alt=""` nebo naopak s popisem
+  - Klíčová slova místo popisu v alt textu
+  - Čekat od `ImageObject` lepší pozici v odpovědích s AI
+
+  </Dont>
+</DoDont>
+
+## Co si odnést o <span class="hl">ImageObject</span> — <strong>práva a obsah jsou dvě různé práce</strong>
+
+`ImageObject` je vrstva o právech: kdo obrázek vytvořil, jak ho uvést a za jakých podmínek se smí použít. Má doložený účel v Google Obrázcích a jednu povinnost, na kterou se zapomíná — bez `license` není obrázek způsobilý k odznaku licence.
+
+Vrstva o obsahu je jiná práce a dělá se mimo strukturovaná data: popisný alt text, popisek, umístění u souvisejícího textu a název souboru. Tohle je to, z čeho stroj pozná, co na obrázku je.
+
+A u obojího platí totéž, co u každých strukturovaných dat: popisují to, co je na stránce vidět. Co si od nich slíbit nelze, píše Google sám — zobrazení nezaručuje a pro odpovědi s AI po vás žádné zvláštní značení nechce.
+
+---
+
+Nevíte, jestli máte obrázky, licence a strukturovaná data na webu v pořádku? **[Audit AI viditelnosti](/audit/)** za **3 600 Kč bez DPH** projde strukturovaná data i to, z čeho může systém citovat. Hotové vzory sedmi typů stránek včetně strukturovaných dat najdete v **[AI SEO Wireframe Packu](/pack/)** — PDF návodu za **1 490 Kč včetně DPH**.
