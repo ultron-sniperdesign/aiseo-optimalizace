@@ -222,6 +222,25 @@ at its end.
 
 Nebo tečku v promptu vůbec nepoužívat a instrukci ukončit koncem řádku.
 
+**e) Text uvnitř scény si model vymyslí — a může si vymyslet i vaši věcnou chybu.** Ověřeno
+21. 9. 2026 u `imageobject-strukturovana-data`. Scéna měla „code panel showing a few abstract
+bracket and key-value lines“; model do panelu vykreslil **skutečné názvy vlastností** včetně
+`copyrightHolder`, který v Googlem dokumentovaném výčtu **není** a v článku se nevyskytuje —
+obrázek by tedy tvrdil něco jiného než text. Ve stejném běhu si k tomu přidal **značku Creative
+Commons**, přestože prompt logo nezakazoval jinak než obecným „no logos“.
+
+Stejné pravidlo jako u čísel v dodatku b: **buď napiš přesné znění, které má ve scéně stát,
+nebo čitelná slova zakaž.** Pojistka pro schémata, rozhraní a ukázky kódu ve scéně:
+
+```
+IMPORTANT: inside the code panel and on the badges draw NO readable words or letters at all,
+only abstract bars — the only text in the whole image is the headline and subtitle described
+next. Do not draw any Creative Commons mark, copyright symbol, or any other logo or brand mark.
+```
+
+Když ve scéně čitelný text chceš (název vlastnosti, štítek v rozhraní), **napiš ho do promptu
+doslova** a zkontroluj ho proti článku — obrázek je součástí tvrzení článku, ne dekorace.
+
 **e) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
 (`PROPADY V YDAVATELŮ`). Pojistka:
 
