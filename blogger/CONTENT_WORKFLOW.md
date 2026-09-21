@@ -62,13 +62,15 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
 
 ---
 
-## 📌 Závazná pravidla Z1–Z13 (od 18. 9. 2026)
+## 📌 Závazná pravidla Z1–Z19 (od 18. 9. 2026)
 
 > Dřív byla jen v paměti Claude session nebo ve vlákně, takže je druhá větev neviděla
 > a běh nešel zkontrolovat z repa. Schválil uživatel 18. 9. 2026 bod po bodu.
 > **Obsahová pravidla platí pro obě blogger větve** (Codex podle své hlavičky přebírá
 > obsahová pravidla z tohoto dokumentu); u procesních je napsané, pro koho platí.
 > Číslování je stálé — odkazuj na „Z4“, ne na pořadí.
+> **Z16–Z19 doplněny 21. 9. 2026** po retrospektivě runu `ceske-nazvy-ai-funkci-google`:
+> každé z nich stojí na konkrétní vadě toho běhu, ne na obecné dobré praxi.
 
 - **Z1 — Strop na ověřování** *(tahle větev)*. Na jeden run nejvýš **~15 agentů celkem**
   a ověřovat jen tvrzení, která opravdu půjdou do textu. Větší rozsah jen po dotazu
@@ -116,6 +118,9 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   entity (název funkce, produktu, čísla), ne podle jedné formulace, a po buildu to
   samé grepnout i v `dist/`. 17. 9. 2026 utekla tři místa ze dvaceti, protože byla
   napsaná jinými slovy.
+- **Z13 — Kontrola vykreslení** *(obě větve)*. Po buildu grepnout v `dist/blog/<slug>/`
+  aspoň jeden text z každé komponenty (`Stepper`, `Checklist`, `CompareTable`…).
+  Překlep v názvu vlastnosti build nezastaví a text tiše zmizí.
 - **Z14 — Přednost témat k AI Mode: SPLNĚNO 20. 9. 2026.** Poslední otevřený řádek klastru
   (`osobni inteligence cesky nazev`) vyšel jako `ceske-nazvy-ai-funkci-google`. Pravidlo z 13. 8. 2026
   tím zaniká; nová témata k režimu AI jdou normálním pořadím fronty. Řádek tu zůstává jako záznam,
@@ -128,9 +133,52 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   `Stepper`, čísla do textu článku. **Než přidáš jakékoli nové pole frontmatteru, ověř
   grepem v `src/pages/` a `src/components/`, že ho něco vykresluje.**
   *(rozhodnutí uživatele 20. 9. 2026)*
-- **Z13 — Kontrola vykreslení** *(obě větve)*. Po buildu grepnout v `dist/blog/<slug>/`
-  aspoň jeden text z každé komponenty (`Stepper`, `Checklist`, `CompareTable`…).
-  Překlep v názvu vlastnosti build nezastaví a text tiše zmizí.
+- **Z16 — Co je ověřeno a čím** *(obě větve)*. Nestačí, že jsou fakta pravdivá — musí být
+  vidět, **jakým druhem dokladu** jsou doložená. `research.md` proto začíná touhle hlavičkou
+  a tvrzení v článku smí být jen tak silné, jak silný je jeho řádek:
+
+  | Druh dokladu | Co do řádku patří | Co z toho smí být v článku |
+  |---|---|---|
+  | **Dokumentace / nápověda** | odkaz + datum načtení | „podle nápovědy Googlu k <datu>“ |
+  | **Rozhraní (UI)** | co jsem skutečně viděl: účet, jazyk, region, datum | „v rozhraní uvidíte“ |
+  | **Měření** | GSC / GA4 / Marketing Miner + segmentace podle Z9 | číslo se zdrojem a obdobím |
+  | **Nelze ověřit** | výslovný výčet | nic, nebo věta, že doklad neexistuje |
+
+  Řádek **Rozhraní (UI) je u téhle větve prakticky vždy prázdný** — do přihlášeného Googlu
+  se nedostanu. Tvrzení o tom, co uživatel „uvidí ve svém Googlu“, proto přepiš na tvrzení
+  o dokumentaci **ještě před prvním auditem**, ne až podle nálezu.
+  *(Precedens: `ceske-nazvy-ai-funkci-google`, 20. 9. 2026 — oba audity označily záměnu
+  nápovědy za rozhraní jako [BLOCKER] a přepis stál dvě kola.)*
+- **Z17 — Oprava se hledá v celém souboru, ne na citovaném místě** *(obě větve)*. Po zapracování
+  každého nálezu — v obou kolech auditu i v bloku oprav — projeď celý `.mdx` **včetně
+  frontmatteru** (`answer`, `faq`, `keywords`, vlastnosti komponent):
+
+  ```bash
+  grep -n -i "<opravovaný výraz>" src/content/articles/<slug>.mdx
+  ```
+
+  „Opraveno“ smíš napsat až po tomhle grepu. Výskyt, který zůstává záměrně, patří
+  do `vyporadani.md` s důvodem. *(Precedens: `ceske-nazvy-ai-funkci-google`, 20. 9. 2026 —
+  po 1. auditu opravené tělo, ale FAQ dál tvrdilo „název článku v nápovědě je ten oficiální“;
+  2. auditor to označil doslova jako zbytkový problém z 1. auditu. Pravidlo dosud platilo
+  jen pro C5, chyba se stala v C3 — proto je teď závazné pro každou opravu.)*
+- **Z18 — `vyporadani.md` ke každému auditu** *(obě větve; vzor převzatý z Codex větve)*.
+  Po každém kole auditu zapiš `blogger/research/<slug>/vyporadani.md` se třemi částmi:
+  **Zapracováno** (řádek na nález), **Nezapracováno + důvod** (co auditor navrhl špatně
+  a proč — samotné „neplatí“ nestačí), **Jazykový průchod** (mechanický i LLM: kolik nálezů,
+  co s nimi). Commituje se s článkem. Je to vstup do 2. kola (C4) a **jediná stopa, která
+  přežije session** — v konverzaci se vypořádání po zhuštění kontextu ztrácí.
+- **Z19 — Dvě kola auditu mají dvě různé osy** *(tahle větev)*. Dřív se posílalo dvakrát totéž
+  zadání, takže se nálezy překrývaly: `ceske-nazvy-ai-funkci-google` měl 29 nálezů a 7 WARNINGů
+  se vracelo v obou kolech. Od 21. 9. 2026:
+  - **Kolo 1 = fakta a tvrzení** (`blogger/auditor-osa-fakta.md`),
+  - **Kolo 2 = jazyk, struktura, SEO, čtenářská hodnota** *a* kontrola, že vypořádání
+    z kola 1 opravdu sedí (`blogger/auditor-osa-jazyk-struktura.md`).
+
+  Osa se **přidává** k základnímu zadání jako druhý soubor, základ (`auditor-system.md`)
+  zůstává sdílený. Nález z jiné osy auditor napsat smí, když je to blocker — jen ho po něm
+  nemá nikdo chtít.
+
 
 ---
 
@@ -232,7 +280,10 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   > na `aktualizace-obsahu-pro-ai`, ten má ale v dlaždicích intervaly „30–90 dní" se
   > zdrojem uvedeným jen jako „analýzy". Odkaz vypuštěn, nález předán.
 
-- **B3 — Uložení podkladů:** kurátorovaný záznam runu ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, highlighty z Trends, poznámky o konkurenci, zdroje) — commituje se jako stopa rozhodnutí. **Hrubé dumpy z Marketing Mineru** (kandidátní CSV, JSON) nech v `output/` skillu, do repa nedávej. Složka `blogger/research/` je mimo `src/` a `public/` → nedeployuje se.
+- **B3 — Uložení podkladů:** `research.md` **začíná hlavičkou „Co je ověřeno a čím“ podle Z16** —
+  čtyři řádky (dokumentace · rozhraní · měření · nelze ověřit), každý s odkazem a datem.
+  Prázdný řádek znamená „hledal jsem a nemám“, ne „zapomněl jsem“. Zbytek: kurátorovaný
+  záznam runu ulož do `blogger/research/<slug>/research.md` (cílové KW, long-tail, highlighty z Trends, poznámky o konkurenci, zdroje) — commituje se jako stopa rozhodnutí. **Hrubé dumpy z Marketing Mineru** (kandidátní CSV, JSON) nech v `output/` skillu, do repa nedávej. Složka `blogger/research/` je mimo `src/` a `public/` → nedeployuje se.
 
   > **Když nástroj selže, zapiš to — nedopočítávej a nezamlčuj.** Do `research.md` patří
   > jednotný řádek: **který nástroj · kolik pokusů · jaká chyba · která tvrzení proto
@@ -301,13 +352,13 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   - Brand voice + zakázaný slovník dle `marketing/05-messaging-a-tonalita.md`.
   - **Vazba na aktuální rok:** kde to dává smysl, ukotvi titulek / obsah / `keywords` na aktuální rok (např. „…2026"); aktuální rok zjisti z dnešního data. Při aktualizaci staršího článku bumpni rok i `updated:`.
   - **Design komponenty rovnou tady, ne až v bloku D** (změna z 15. 9. 2026): rozbij text komponentami podle `docs/section-page-standard.md` — postup a výčet v **D1**. Důvod: při převodu odstavce do tabulky nebo kroků se ztrácejí výhrady („podle dokumentace", „většinou"), které se do buňky nevejdou. **Auditor musí vidět text v podobě, která půjde ven**, ne polotovar.
-- **C2 — Audit #1 (OpenAI Core):** sestav brief = celý článek **včetně komponent** + **kontextový rámec** (viz blok níže, vč. aktuálního roku) → pošli auditorovi (system prompt = kanonický `blogger/auditor-system.md`, sdílený napříč runy):
+- **C2 — Audit #1 = osa faktů (OpenAI Core):** sestav brief = celý článek **včetně komponent** + **kontextový rámec** (viz blok níže, vč. aktuálního roku) + **hlavičku „Co je ověřeno a čím“ z `research.md`** (Z16) → pošli auditorovi. System prompt = sdílený základ `blogger/auditor-system.md` **plus osa** `blogger/auditor-osa-fakta.md` (Z19):
 
   > **Auditor si smí a má hledat vlastní zdroje** (změna z 15. 9. 2026). Nedávej mu jen svůj výběr z B3 — na tom by ověřil jen to, cos našel ty, a nenašel by, cos přehlédl. Do briefu napiš výslovně: *ověř tvrzení proti zdrojům, které si najdeš sám, a aktivně hledej protidůkaz — nesnaž se tvrzení potvrdit, snaž se ho vyvrátit.* Nález bez doloženého zdroje se nezapracovává.
 
   ```bash
   python3 ~/.claude/skills/open-ai-api-core/scripts/chat.py \
-    --system "$(cat blogger/auditor-system.md)" \
+    --system "$(cat blogger/auditor-system.md blogger/auditor-osa-fakta.md)" \
     --input-file "blogger/research/<slug>/audit1-brief.md" \
     --model gpt-5.5 \
     --max-tokens 8000 \
@@ -316,19 +367,25 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   ```
   > `gpt-5.5` NEpodporuje `--temperature` (nech default). `--max-tokens` min. 5000, doporučeno 8000 — reasoning tokeny se počítají do limitu, jinak hrozí oříznutá odpověď.
 - **C3 — Oprava #1:** zapracuj audit + vlastní úsudek (auditor není absolutní — rozhoduješ ty).
-- **C4 — Audit #2 (OpenAI Core):** pošli opravenou verzi, v briefu **uveď, že jde o verzi po 1. auditu** (přilož i shrnutí, co jsi změnil). Stejné volání, `audit2-*`.
+  Každou opravu dohledej **v celém souboru podle Z17** (tělo, `answer`, `faq`, vlastnosti komponent)
+  a rozhodnutí zapiš do `vyporadani.md` podle Z18 — ten soubor je vstupem do C4.
+- **C4 — Audit #2 = osa jazyka a struktury (OpenAI Core):** pošli opravenou verzi a v briefu **uveď,
+  že jde o verzi po 1. auditu** — přilož celé `vyporadani.md` (Z18), ať auditor kontroluje i to,
+  jestli opravy sedí, místo aby hledal totéž znovu. Volání stejné, jen osa a výstupy `audit2-*`:
+
+  ```bash
+  python3 ~/.claude/skills/open-ai-api-core/scripts/chat.py \
+    --system "$(cat blogger/auditor-system.md blogger/auditor-osa-jazyk-struktura.md)" \
+    --input-file "blogger/research/<slug>/audit2-brief.md" \
+    --model gpt-5.5 \
+    --max-tokens 8000 \
+    --output "blogger/research/<slug>/audit2-result.md" \
+    --verbose
+  ```
 - **C5 — Oprava #2:** zapracuj + vlastní úsudek → **finální text**.
-  > **„Opraveno" zapiš až po kontrole celého souboru.** Oprava výrazu nebo opakovaného
-  > tvrzení skoro nikdy nesedí jen na jednom místě — stejná formulace bývá v nadpisu,
-  > v tabulce, v `answer`, ve `faq` i v propsech komponent. Projeď celý `.mdx`
-  > **včetně frontmatteru**:
-  >
-  > ```bash
-  > grep -n -i "<opravovaný výraz>" src/content/articles/<slug>.mdx
-  > ```
-  >
-  > Když některý výskyt zůstává záměrně, uveď ho v podkladech runu i s důvodem. Nezkontrolovaný
-  > výskyt je horší než neopravený nález — vypořádání pak tvrdí nepravdu.
+  > **„Opraveno" zapiš až po kontrole celého souboru — pravidlo Z17.** Stejná formulace bývá
+  > v nadpisu, v tabulce, v `answer`, ve `faq` i ve vlastnostech komponent. Nezkontrolovaný
+  > výskyt je horší než neopravený nález: vypořádání pak tvrdí nepravdu. Doplň `vyporadani.md` (Z18).
 - **C5b — Doověření zásadních oprav** (od 15. 9. 2026): u nálezů, které auditor označil za **zásadní** (chybné číslo, neplatné tvrzení o platformě, nedoložený slib), **nestačí je označit za opravené**. Pošli opravenou pasáž zpátky auditorovi s otázkou, jestli oprava obstojí.
   - **Rozsah:** jen zásadní nálezy, ne stylistika.
     > **Před předáním auditorovi dokonči všechny související editace.** Během ověřování
@@ -364,6 +421,22 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
      Regex piš s hranicí slova `\b`, ať nechytá delší slova — drží to 299 z 313 současných pravidel (ověřeno 17. 9. 2026). Když vada závisí na kontextu, ale chceš na ni upozorňovat, patří na úroveň **⚠️** (řeší se u prvního výskytu), ne **⛔**. **A zúži ji na ten kontext** — plošný zákaz jednoho slova označí i správnou češtinu (pravidlo proti kalku *surface* hlásilo „povrch, na který se používá čistič"). K takovému pravidlu připiš do sloupce Proč **protipříklad** `Nechytá: «správné použití»`. Slovník i článek jdou **v jednom commitu**.
 
+  5. **Nález, který je předmětem článku → výjimka do souboru, ne do slovníku** (od 21. 9. 2026).
+     Článek o názvosloví musí citovat tvar, který slovník hlídá. Marker patří do frontmatteru
+     kontrolovaného souboru (YAML komentář se nevykresluje):
+
+     ```yaml
+     # jazyk-vyjimka: `Přehled(y|ech|ů|ům) od AI` — slovníček názvů, cituje titulky nápovědy
+     ```
+
+     Checker pak vypíše `~ výjimka v souboru · <regex> · 13x potlačeno · <důvod>` a nález
+     nepočítá do „k řešení“. **Překlep v regexu, chybějící důvod i rozbitý tvar markeru hlásí
+     `!!` a výjimka se neuplatní** — tichá falešná výjimka tedy nejde vyrobit. Do slovníku
+     patří jen výjimka platná pro **celý web** (vlastní jméno, oficiální název zásady);
+     do markeru `[skip:slug]` se nové slugy **nepřidávají**. *(Precedens:
+     `ceske-nazvy-ai-funkci-google` měl 13 nálezů na vlastní téma — dřív by to znamenalo
+     třetí slug u globálního pravidla, teď je výjimka u článku, kterého se týká.)*
+
   > Plný postup a pojistky: `~/.claude/skills/cestina-audit/SKILL.md`. Slovník i checker jsou tam symlinky na soubory v tomhle projektu — pravidla se přidávají jen tady.
 
 ### Kontextový rámec pro auditora (vkládá se do briefu)
@@ -373,7 +446,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 > **AI SEO Wireframe Pack** (PDF návod, 1 490 Kč) a **Audit AI viditelnosti** (3 600 Kč) — **aktuální znění vždy ověř v `src/content/pages/pack.ts` a `audit.ts`**, ne odsud. Provozovatel:
 > Sniper Design (Zlatý partner Upgates od 2016, vlastní e-shop MEGA DETAIL).
 > Auditor hodnotí: věcnou správnost, soulad s brand voice (žádný zakázaný žargon, žádný overclaim),
-> citovatelnost pro AI (answer block, hustota faktů, FAQ), SEO (titulek, description 70–160, struktura),
+> citovatelnost pro AI (krátká odpověď, hustota faktů, FAQ), SEO (titulek, description 70–160, struktura),
 > relevanci CTA. Uveď aktuální rok (např. 2026), podle kterého má auditor hodnotit aktuálnost.
 > Vrať konkrétní seznam oprav, ne obecnosti.
 

@@ -57,3 +57,11 @@ _source/products/pack/output/
 public/og/*.png
 # osirely hero slot (commit cb1e3f8) — na zadny soubor hero-* uz nic neodkazuje
 public/og/hero-*
+
+# Blogger — meziprodukty runu (pravidlo Z18 v blogger/CONTENT_WORKFLOW.md).
+# Commituje se research.md, audit*-result.md a vyporadani.md; brief a kontext
+# auditora jsou polotovar. Bez tohohle leželo v git status 221 neversionovaných
+# souborů (9,3 MB, měřeno 21. 9. 2026) a nešlo v něm poznat cizí rozdělanou práci.
+blogger/research/**/_*.md
+blogger/research/**/*-brief.md
+blogger/__pycache__/

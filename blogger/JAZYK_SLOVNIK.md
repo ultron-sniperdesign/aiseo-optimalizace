@@ -1,6 +1,6 @@
 # JAZYK_SLOVNIK.md — hlídané výrazy
 
-> **Verze: 71** · založeno 2026-08-23 · poslední změna 2026-09-20 (v71: `ceske-nazvy-ai-funkci-google` doplněn do výjimky u pravidla „Přehledy od AI“) · v69 2026-09-15 ( dvě úzká pravidla pro vazby „cílí konkrétní zemi“ a „použijte stejný zákaznický problém“; výjimka `(?<!x-)` pro oficiální hodnotu hreflang `x-default`, dokumentace Google Search Central; jazykove-mutace-pro-ai) · v68 2026-09-15 (výjimka `(?<!fp )` u pravidla `\bgrowth\b` — název agentury FP Growth citovaný jako zdroj) · v67 2026-09-14 (`jazyk-check.py` v šablonách `.astro` přeskakuje HTML komentáře, výrazy `{…}` a hodnoty technických atributů jako `type="submit"` — dřív je hlásil jako anglicismy; text pro čtenáře dál hlídá kontrola vykreslené stránky z `dist/`) · v66: doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ · audituje skill `cestina-audit`
+> **Verze: 72** · založeno 2026-08-23 · poslední změna 2026-09-21 (v72: výjimka pro jeden soubor se zapisuje **do toho souboru**, ne sem — `jazyk-check.py` čte marker `jazyk-vyjimka:`; `ceske-nazvy-ai-funkci-google` převeden ze seznamu slugů na marker) · v71 2026-09-20 (`ceske-nazvy-ai-funkci-google` doplněn do výjimky u pravidla „Přehledy od AI“) · v69 2026-09-15 ( dvě úzká pravidla pro vazby „cílí konkrétní zemi“ a „použijte stejný zákaznický problém“; výjimka `(?<!x-)` pro oficiální hodnotu hreflang `x-default`, dokumentace Google Search Central; jazykove-mutace-pro-ai) · v68 2026-09-15 (výjimka `(?<!fp )` u pravidla `\bgrowth\b` — název agentury FP Growth citovaný jako zdroj) · v67 2026-09-14 (`jazyk-check.py` v šablonách `.astro` přeskakuje HTML komentáře, výrazy `{…}` a hodnoty technických atributů jako `type="submit"` — dřív je hlásil jako anglicismy; text pro čtenáře dál hlídá kontrola vykreslené stránky z `dist/`) · v66: doložená výjimka `[skip:geo-optimalizace]` u pravidla „v dnešní digitální éře“ · audituje skill `cestina-audit`
 >
 > ⚠️ **Výjimku nelze postavit na velikosti písmen.** Checker regexy kompiluje s `re.IGNORECASE`
 > (`jazyk-check.py:44`), takže `(?<! Growth)` u pravidla `\bgrowth\b` vyřadí i obecné „growth“
@@ -14,6 +14,26 @@
 > a pilíř nasbíraný dluh (419 nálezů, měřeno 6. 9. 2026). Čte ho člověk i `blogger/jazyk-check.py`
 > (tentýž skript má skill `cestina-audit` v `~/.claude/skills/cestina-audit/scripts/`).
 > Pravidla přibývají **článek po článku** — každé má povinně důvod a původ.
+
+## Výjimka na úrovni souboru (od 21. 9. 2026)
+
+Když pravidlo hlásí nález, **který je předmětem toho textu** — článek o názvosloví musí
+citovat tvar, který slovník hlídá — výjimka **nepatří sem, ale do toho souboru**. Marker se
+píše jako komentář ve frontmatteru (YAML komentář se nikdy nevykreslí) a `jazyk-check.py` ho čte:
+
+```yaml
+# jazyk-vyjimka: `Přehled(y|ech|ů|ům) od AI` — slovníček názvů, cituje titulky nápovědy
+```
+
+- **Regex musí být přesně ten ze slovníku** (bez uvozovek, ve zpětných apostrofech). Překlep
+  checker nahlásí jako `!!` a výjimka se neuplatní — nemůže tedy tiše vyrobit falešnou výjimku.
+- **Důvod je povinný** (min. 10 znaků). Bez důvodu se výjimka neuplatní.
+- **Pravidlo se nevypne.** Nálezy se jen odloží a checker je vypíše zvlášť
+  (`~ výjimka v souboru · … · 13x potlačeno · důvod`), takže je v reportu vidět, co se skrylo.
+- **Sem do slovníku patří jen výjimka platná napříč webem** (vlastní jméno, oficiální název
+  zásady, rozepsaná zkratka) — tedy lookahead/lookbehind v regexu. Starý marker
+  `[skip:slug1,slug2]` funguje dál, ale **nové položky se do něj nepřidávají**: seznam rostl
+  s každým dalším článkem o názvosloví a pravidlo se tím oslabovalo pro celý web.
 
 ## Jak číst tabulky
 
@@ -235,7 +255,7 @@ kontext (`vyhledávací povrch`, `povrch Googlu`) — `Nechytá: «povrch stolu�
 | ⛔ | `\banswer block\w*\b` | krátká odpověď | glosář v CLAUDE.md § X. Regex musí pokrýt **skloňované tvary** („answer blockem“) — bez toho unikl výskyt v článku 4 | seed 2026-08-23, rozšířeno 2026-08-23 |
 | ⛔ | `\bschema markup\w*(?! Validator)` | strukturovaná data | anglický termín tam, kde web používá české „strukturovaná data“. **Výjimka `[skip:schema-markup-ai-citace-test,jak-cist-studie-o-ai-viditelnosti]`:** ten článek termín sám rozebírá a má ho v titulku i v klíčových slovech. **Výjimka `(?! Validator)`:** „Schema Markup Validator“ je oficiální název nástroje schema.org, vlastní jméno se nepřekládá | seed 2026-08-23, výjimky 2026-08-26 a aeo 2026-09-07 |
 | ⛔ | `\bhub-and-spoke\w*\b` | prolinkování mezi stránkami | glosář v CLAUDE.md § X | seed 2026-08-23 |
-| ⛔ | `Přehled(y|ech|ů|ům) od AI` | Přehled od AI (jednotné číslo, se správným pádem) | Google v rozhraní píše **„Přehled od AI“** v jednotném čísle a hledá se tak i v datech: `přehled od ai` 130/měs a +169 % meziročně, množné číslo nemá měřitelnou hledanost (Marketing Miner 6. 9. 2026). **Pozor, není to prostá záměna** — mění se pád i shoda přísudku („Přehledy od AI čerpají“ → „Přehled od AI čerpá“). **Výjimka `[skip:kdy-ai-prehled-necekat,seo-vs-geo-vs-aeo-vs-aio,ceske-nazvy-ai-funkci-google]`:** ten článek cituje doslova českou nápovědu Googlu (Google sám v dokumentaci množné číslo používá, i když v rozhraní píše jednotné) a pilíř nese v seznamu zdrojů doslovný titulek oznámení „Google spouští v Česku Přehledy od AI“. Třetí přírůstek 20. 9. 2026: `ceske-nazvy-ai-funkci-google` je slovníček oficiálních názvů, cituje titulky nápovědy včetně množného čísla a dokládá, kdy Google které číslo používá (množné = funkce jako celek, jednotné = jedna konkrétní odpověď). Všechno jsou názvy cizích dokumentů, nepřepisují se | G9, revize 2026-09-06 |
+| ⛔ | `Přehled(y|ech|ů|ům) od AI` | Přehled od AI (jednotné číslo, se správným pádem) | Google v rozhraní píše **„Přehled od AI“** v jednotném čísle a hledá se tak i v datech: `přehled od ai` 130/měs a +169 % meziročně, množné číslo nemá měřitelnou hledanost (Marketing Miner 6. 9. 2026). **Pozor, není to prostá záměna** — mění se pád i shoda přísudku („Přehledy od AI čerpají“ → „Přehled od AI čerpá“). **Výjimka `[skip:kdy-ai-prehled-necekat,seo-vs-geo-vs-aeo-vs-aio]`:** ten článek cituje doslova českou nápovědu Googlu (Google sám v dokumentaci množné číslo používá, i když v rozhraní píše jednotné) a pilíř nese v seznamu zdrojů doslovný titulek oznámení „Google spouští v Česku Přehledy od AI“. Od 21. 9. 2026 má `ceske-nazvy-ai-funkci-google` **marker ve vlastním frontmatteru** místo záznamu tady (slovníček oficiálních názvů: cituje titulky nápovědy včetně množného čísla a dokládá, kdy Google které číslo používá — množné = funkce jako celek, jednotné = jedna konkrétní odpověď). Všechno jsou názvy cizích dokumentů, nepřepisují se | G9, revize 2026-09-06 |
 
 ## 6. Typografie a interpunkce
 

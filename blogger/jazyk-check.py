@@ -26,6 +26,41 @@ ORIGINAL_LC = re.compile(r'\(([a-z][a-z0-9 /-]{2,40})\)')   # glosa malymi pisme
 TZV = re.compile(r'tzv\.\s+[^,.;:)\n]{2,40}')   # „…(podil zmineni, tzv. share of voice)" — termin za „tzv." je uvedeny originál, ne vada
 CITUJE = re.compile(r'v angličtin|anglicky|v zahraničí|pod názv|anglick(ý|ého|ém|é) (termín|název|výraz|verzi)|v originále|zkratk[ay] z angli')   # hodnoty technickych atributu
 
+# Vyjimka zapsana v KONTROLOVANEM SOUBORU, ne ve slovniku. Tvar (MDX komentar,
+# do vykreslene stranky nejde):
+#   {/* jazyk-vyjimka: `Přehled(y|ech|ů|ům) od AI` — článek je o tvarech názvů v nápovědě */}
+# Regex musi byt presne ten ze slovniku, duvod je povinny. Pravidlo se NEVYPINA:
+# jeho nalezy se odlozi do samostatneho souhrnu, aby bylo videt, co se potlacilo a proc.
+# Dopsano 21. 9. 2026: clanek o nazvoslovi musi citovat tvar, ktery pravidlo hlida
+# (ceske-nazvy-ai-funkci-google, 13 nalezu na vlastni tema). Dokladat to slugem
+# u globalniho pravidla znamenalo, ze ten seznam roste s kazdym dalsim clankem.
+# POZOR na re.M: bez nej `$` znamena konec CELEHO textu, ne konec radku — marker
+# ve frontmatteru se pak nenasel a checker o tom ani nemukl (naměřeno 21. 9. 2026
+# pri zavadeni mechanismu). Proto je tu i pojistka NEPRECTENY_MARKER niz.
+VYJIMKA = re.compile(r'jazyk-vyjimka:\s*`([^`]+)`(?:\s*[—–-]+\s*(.+?))?\s*(?:\*/\}|-->|$)', re.M)
+
+
+def nacti_vyjimky(text, rules):
+    znama = {r['raw'] for r in rules}
+    ok, chyby = {}, []
+    nalezeno = 0
+    for m in VYJIMKA.finditer(text):
+        nalezeno += 1
+        rx, duvod = m.group(1).strip(), (m.group(2) or '').strip()
+        if rx not in znama:
+            chyby.append(f'vyjimka `{rx}` neodpovida zadnemu pravidlu ve slovniku — prepis, nebo jina verze pravidla?')
+        elif len(duvod) < 10:
+            chyby.append(f'vyjimka `{rx}` nema duvod — bez duvodu se neuplatni')
+        else:
+            ok[rx] = duvod
+    # marker v souboru je, ale nepodarilo se ho precist — nikdy to nesmi projit mlcky
+    zminek = text.count('jazyk-vyjimka:')
+    if zminek > nalezeno:
+        chyby.append(f'{zminek - nalezeno}x marker `jazyk-vyjimka:` ve spatnem tvaru '
+                     '(cekam: jazyk-vyjimka: `regex ze slovniku` — duvod)')
+    return ok, chyby
+
+
 def load_rules(path):
     rules, section = [], '?'
     for line in open(path, encoding='utf-8'):
@@ -179,6 +214,8 @@ def body_lines(text, is_module=False, is_astro=False):
             in_dont = False; continue
         if in_code or in_dont or raw.lstrip().startswith('import '):
             continue
+        if 'jazyk-vyjimka:' in raw:   # marker vyjimky neni text pro ctenare
+            continue
         if DATA_KEYS.match(raw):
             continue
         if is_module:
@@ -205,7 +242,8 @@ def main():
     # pravidlo muze mit v posledni bunce marker [skip:slug1,slug2] — pro ten clanek se nehlasi
     rules = [r for r in rules
              if slug not in [x.strip() for m in re.findall(r'\[skip:([^\]]+)\]', r['why'] + ' ' + r['src']) for x in m.split(',')]]
-    hits, words = [], 0
+    vyjimky, vyjimky_chyby = nacti_vyjimky(text, rules)
+    hits, potlacene, words = [], [], 0
     is_module = args.soubor.endswith(('.ts', '.js', '.mjs'))
     is_astro = args.soubor.endswith('.astro')
     for n, raw in body_lines(text, is_module, is_astro):
@@ -216,7 +254,8 @@ def main():
             continue
         for r in rules:
             for m in r['rx'].finditer(line):
-                hits.append((n, r, m.group(0), raw.strip(), quoted))
+                zapis = (n, r, m.group(0), raw.strip(), quoted)
+                (potlacene if r['raw'] in vyjimky else hits).append(zapis)
 
     # ⚠️ pravidla znamenaji "vysvetli pri prvnim pouziti" — staci prvni vyskyt na pravidlo
     seen, folded, skipped = set(), [], {}
@@ -231,6 +270,11 @@ def main():
     hits_all, hits = hits, folded
 
     print(f'== {os.path.basename(args.soubor)} · {words} slov · pravidel: {len(rules)}')
+    for ch in vyjimky_chyby:
+        print(f'!! {ch}')
+    for rx, duvod in vyjimky.items():
+        kolik = sum(1 for h in potlacene if h[1]['raw'] == rx)
+        print(f'~  vyjimka v souboru · `{rx}` · {kolik}x potlaceno · {duvod}')
     order = {'⛔': 0, '⚠️': 1}
     if not args.strucne:
         for n, r, found, ctx, quoted in sorted(hits, key=lambda h: (order[h[1]['level']], h[0])):
@@ -242,7 +286,8 @@ def main():
             print(f'    kontext : {ctx[:150]}')
     hard = sum(1 for h in hits_all if h[1]['level'] == '⛔')
     per1000 = len(hits_all) / words * 1000 if words else 0
-    print(f'-- celkem {len(hits_all)} nalezu ({hard}x ⛔, {len(hits)} k reseni) · {per1000:.1f} na 1000 slov')
+    tail = f' · {len(potlacene)} potlaceno vyjimkou v souboru' if potlacene else ''
+    print(f'-- celkem {len(hits_all)} nalezu ({hard}x ⛔, {len(hits)} k reseni) · {per1000:.1f} na 1000 slov{tail}')
 
 if __name__ == '__main__':
     main()

@@ -52,8 +52,9 @@ komponentu, eskalace na admin session přes board.
 - Nikdy `--force`, `--no-verify`, `--no-check`, `git reset --hard`, změna `git config`.
 - Před pushem `git merge-base --is-ancestor origin/main HEAD`.
 - Nikdy necommitovat macOS soubory `Icon`.
-- Z `research/<slug>/` se commituje jen `research.md`, `audit1-result.md`, `audit2-result.md`
-  (+ případná surová měření). Soubory `*-brief.md`, `_audit*-context.md`, `_c6-*` jsou meziprodukt.
+- Co se z `research/<slug>/` commituje, určuje **Z18** v `CONTENT_WORKFLOW.md` (jedno místo).
+  Meziprodukty (`*-brief.md`, `_*.md`) jsou od 21. 9. 2026 v `.gitignore`, takže `git status`
+  zůstává čitelný — je to jediná pojistka proti stažení cizí rozdělané práce.
 - **Slug po publikaci se nikdy nemění.** `updated:` nikdy v budoucnosti.
 - Žádné secrets v textu, promptu ani logu. Příkaz na kontrolu před commitem je v `README.md` („Co NIKDY nedělat“).
 
@@ -147,33 +148,28 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
 
 ---
 
-## VII — Aktuální stav (ověřeno 21. 9. 2026)
+## VII — Aktuální stav
 
-| Co | Hodnota |
-|---|---|
-| Článků v `src/content/articles/` | **175** |
-| Obsahový plán | **345 řádků, 142 volných** |
-| Složek v `blogger/research/` | 172 |
-| `JAZYK_SLOVNIK.md` | **v71** |
-| `REFRESH_QUEUE.md` | 21 řádků ve frontě podle priority, 7 otevřených kandidátů, 13 odbavených vad |
-| Poslední blok oprav | 20. 9. 2026 — pole `stats` ze 158 článků (předtím `howto` ze 63) |
-| Poslední refresh jednoho článku | zatím žádný podle nové definice (13., 17. a 20. 9. byly plošné opravy) |
-| Kadence | První nový článek hotový (`ceske-nazvy-ai-funkci-google`, 20. 9.) → na řadě **druhý nový článek**, pak refresh jednoho článku, pak blok oprav |
+**Čísla se tady nedrží.** Zastarají do jednoho runu — 17. 9. 2026 tu stálo 172 článků
+a slovník v70, o tři dny později to bylo 175 a v71. Změřený stav vypíše:
 
-**Otevřené k odbavení:**
+```bash
+bash blogger/stav.sh
+```
 
-- **Přejmenování auditu do blogu** — starý název („AI SEO audit“, „SEO a AI audit“) je
-  v **90 článcích, 125 výskytů** (měřeno 17. 9. 2026). Adresa `/blog/ai-seo-audit/` zůstává,
-  mění se text. Je to editorská práce bloggera, ne skript. Dalšího bloku oprav se drží jako první.
-- V `REFRESH_QUEUE.md`: časové odhady bez zdroje, tvrzení o konverzích z AI bez zdroje,
-  `person-data-pro-autora` (zbytek tvrzení o AI), anglicismus „stack“ napříč korpusem,
-  intervaly čerstvosti v `aktualizace-obsahu-pro-ai`. (`howto` i `stats` odbavené 20. 9. 2026.)
-- **`blogger/Content Workflow Codex.md` je run-book druhé blogger větve** (potvrzeno uživatelem
-  20. 9. 2026) — **nenahrazuje** `CONTENT_WORKFLOW.md` a tato session podle něj nejede. Pravidla
-  Z1–Z15 si druhá větev promítla commitem `23bd61f`.
-- **Souběh je reálný:** 20. 9. 2026 druhá větev publikovala `jak-pojmenovat-sluzbu-pro-ai`
-  (`e106d1b`) a uzavřela řádek `terminologie sluzeb pro ai`. Před každým runem `git fetch`
-  a `git log origin/main` — jinak se vezme obsazený řádek plánu.
+Vypíše počet článků, řádky a první volný řádek plánu, verzi a počet pravidel slovníku,
+délku obou front, posledních 8 zásahů do blogu (z nich se čte pozice v kadenci 2 + 1 + 1)
+a jestli lokální větev nezaostává za `origin/main`.
+
+**Co je otevřené** patří do `REFRESH_QUEUE.md` (vady k refreshi a kandidáti) a do
+`obsahovy-plan.csv` (témata). Ne sem — jinak to tu leží po odbavení dál. Jediná výjimka
+je trvalý stav souběhu:
+
+- **Blog píšou dvě blogger větve** (pravidlo Z5): tahle a Codex (`Content Workflow Codex.md`,
+  jeho run-book — `CONTENT_WORKFLOW.md` nenahrazuje). Admin session dělá jen refreshe
+  podložené daty. Před každým runem `git fetch` a `git log origin/main` (Z8, Z10).
+- **Nejbližší blok oprav** je přejmenování auditu do blogu (Z4) — starý název je
+  v 90 článcích, 125 výskytech.
 
 ## VIII — Pointery
 
