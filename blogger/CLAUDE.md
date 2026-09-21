@@ -116,9 +116,10 @@ Keyword research: `~/.claude/skills/marketing-miner-api/scripts/keyword_search_v
 
 Jedno pravidlo, jedno místo — tady jen rozcestník:
 
-- **Závazná pravidla Z1–Z13** (strop na ověřování, jména, Pack, název auditu, kdo co píše,
+- **Závazná pravidla Z1–Z15** (strop na ověřování, jména, Pack, název auditu, kdo co píše,
   obrázek, zápis do plánu, souběh, čísla z GA4, kolizní kontrola, uzávěr, bloky oprav,
-  kontrola vykreslení) → `CONTENT_WORKFLOW.md`, sekce před blokem A.
+  kontrola vykreslení, přednost AI Mode — splněno, neviditelná data) → `CONTENT_WORKFLOW.md`,
+  sekce před blokem A.
 - **Struktura článku, krátká odpověď, H2, FAQ, CTA, názvosloví** → `CONTENT_WORKFLOW.md` blok C
   a `ARTICLE_TEMPLATE.md`.
 - **Frontmatter, co hlídá build, publikace a ověření** → `README.md`.
@@ -146,31 +147,33 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
 
 ---
 
-## VII — Aktuální stav (ověřeno 17. 9. 2026)
+## VII — Aktuální stav (ověřeno 21. 9. 2026)
 
 | Co | Hodnota |
 |---|---|
-| Článků v `src/content/articles/` | **172** |
-| Obsahový plán | **340 řádků, 141 volných** |
-| Složek v `blogger/research/` | 169 |
-| `JAZYK_SLOVNIK.md` | **v70** |
-| `REFRESH_QUEUE.md` | 37 datovaných řádků |
-| Poslední blok oprav | 17. 9. 2026 — dostupnost reportu Přehled výkonu v generativní AI, 20 míst v 10 článcích |
-| Poslední refresh jednoho článku | zatím žádný podle nové definice (13. a 17. 9. byly plošné opravy) |
-| Kadence | Blok oprav odbavený → na řadě jsou **dva nové články**, pak refresh jednoho článku |
+| Článků v `src/content/articles/` | **175** |
+| Obsahový plán | **345 řádků, 142 volných** |
+| Složek v `blogger/research/` | 172 |
+| `JAZYK_SLOVNIK.md` | **v71** |
+| `REFRESH_QUEUE.md` | 21 řádků ve frontě podle priority, 7 otevřených kandidátů, 13 odbavených vad |
+| Poslední blok oprav | 20. 9. 2026 — pole `stats` ze 158 článků (předtím `howto` ze 63) |
+| Poslední refresh jednoho článku | zatím žádný podle nové definice (13., 17. a 20. 9. byly plošné opravy) |
+| Kadence | První nový článek hotový (`ceske-nazvy-ai-funkci-google`, 20. 9.) → na řadě **druhý nový článek**, pak refresh jednoho článku, pak blok oprav |
 
 **Otevřené k odbavení:**
 
 - **Přejmenování auditu do blogu** — starý název („AI SEO audit“, „SEO a AI audit“) je
   v **90 článcích, 125 výskytů** (měřeno 17. 9. 2026). Adresa `/blog/ai-seo-audit/` zůstává,
-  mění se text. Je to editorská práce bloggera, ne skript.
+  mění se text. Je to editorská práce bloggera, ne skript. Dalšího bloku oprav se drží jako první.
 - V `REFRESH_QUEUE.md`: časové odhady bez zdroje, tvrzení o konverzích z AI bez zdroje,
-  `person-data-pro-autora` (zbytek tvrzení o AI), 61 článků s `howto`, anglicismus „stack“
-  napříč korpusem, intervaly čerstvosti v `aktualizace-obsahu-pro-ai`.
-- **Neznámý soubor `blogger/Content Workflow Codex.md`** (17. 9. 2026) — nevytvořil jsem ho
-  a nevím, jestli má nahradit `CONTENT_WORKFLOW.md`. Ověřit u uživatele, než se podle něj pojede.
-- **Souběh je reálný:** 17. 9. 2026 do `blogger/` a do článků commitovala i jiná session
-  (pravidlo o PNG, úpravy workflow, nové články). Před každým runem `git fetch` a `git log`.
+  `person-data-pro-autora` (zbytek tvrzení o AI), anglicismus „stack“ napříč korpusem,
+  intervaly čerstvosti v `aktualizace-obsahu-pro-ai`. (`howto` i `stats` odbavené 20. 9. 2026.)
+- **`blogger/Content Workflow Codex.md` je run-book druhé blogger větve** (potvrzeno uživatelem
+  20. 9. 2026) — **nenahrazuje** `CONTENT_WORKFLOW.md` a tato session podle něj nejede. Pravidla
+  Z1–Z15 si druhá větev promítla commitem `23bd61f`.
+- **Souběh je reálný:** 20. 9. 2026 druhá větev publikovala `jak-pojmenovat-sluzbu-pro-ai`
+  (`e106d1b`) a uzavřela řádek `terminologie sluzeb pro ai`. Před každým runem `git fetch`
+  a `git log origin/main` — jinak se vezme obsazený řádek plánu.
 
 ## VIII — Pointery
 
