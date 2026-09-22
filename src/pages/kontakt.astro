@@ -1,11 +1,15 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
+import Answer from "~/components/blocks/Answer.astro";
+import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
 import {
   meta,
   breadcrumb,
   orgJsonLd,
+  contactPageJsonLd,
   hero,
+  about,
   services,
   trust,
   paths,
@@ -17,7 +21,7 @@ import {
 <BaseLayout
   title={meta.title}
   description={meta.description}
-  jsonLd={orgJsonLd}
+  jsonLd={[orgJsonLd, contactPageJsonLd]}
   image={meta.ogImage}
   breadcrumb={[breadcrumb]}
 >
@@ -47,6 +51,26 @@ import {
 
         <p class="kontakt-hero__lead" set:html={hero.leadHtml}></p>
 
+        <ul class="kontakt-hero__contacts" role="list">
+          {hero.contacts.map((c) => (
+            <li class="kontakt-contact">
+              <span class="kontakt-contact__label">{c.label}</span>
+              <a
+                href={c.href}
+                class="kontakt-contact__value"
+                target={c.external ? "_blank" : undefined}
+                rel={c.external ? "noopener" : undefined}
+                set:html={c.valueHtml}
+              ></a>
+              <span class="kontakt-contact__note">{c.note}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="kontakt-hero__partners">
+          <PartnerBadges />
+        </div>
+
         <ul class="kontakt-hero__trust" role="list">
           {hero.trust.map((t) => (
             <li>
@@ -56,75 +80,11 @@ import {
           ))}
         </ul>
 
-        <div class="kontakt-hero__actions">
-          <a href={hero.ctaPrimary.href} class="kontakt-btn kontakt-btn--solid">
-            <Fragment set:html={hero.ctaPrimary.labelHtml} />
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
-          <a
-            href={hero.ctaSecondary.href}
-            target="_blank"
-            rel="noopener"
-            class="kontakt-btn kontakt-btn--ghost"
-          >
-            {hero.ctaSecondary.label}
-          </a>
-        </div>
-
         <p class="kontakt-hero__legal" set:html={hero.legalHtml}></p>
       </div>
     </section>
 
-    <!-- ===== 01 CO DĚLÁME ===== -->
-    <section class="lp-section">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{services.eyebrowNum}</span> <Fragment set:html={services.eyebrowHtml} /></span>
-        <h2 class="lp-section__title" set:html={services.titleHtml}></h2>
-        <p class="lp-section__lead" set:html={services.leadHtml}></p>
-      </header>
-
-      <div class="kontakt-services">
-        {services.cards.map((c) => (
-          <a href={c.href} target="_blank" rel="noopener" class="kontakt-service">
-            <span class="kontakt-service__num">{c.num}</span>
-            <h3 set:html={c.titleHtml}></h3>
-            <p set:html={c.descHtml}></p>
-            <span class="kontakt-service__meta" set:html={c.metaHtml}></span>
-          </a>
-        ))}
-      </div>
-
-      <div class="kontakt-bridge">
-        <p set:html={services.bridge.textHtml}></p>
-        <a href={services.bridge.ctaHref} class="kontakt-bridge__cta">
-          {services.bridge.ctaLabel}
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- ===== 02 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
-    <section class="lp-section lp-section--alt">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{trust.eyebrowNum}</span> <Fragment set:html={trust.eyebrowHtml} /></span>
-        <h2 class="lp-section__title" set:html={trust.titleHtml}></h2>
-      </header>
-
-      <div class="kontakt-trust">
-        {trust.items.map((t) => (
-          <article class="kontakt-trust__item">
-            <h3 set:html={t.titleHtml}></h3>
-            <p set:html={t.descHtml}></p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <!-- ===== 03 JAK SE NÁM OZVAT ===== -->
+    <!-- ===== 01 JAK SE NÁM OZVAT — kontaktni cesty ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">{paths.eyebrowNum}</span> <Fragment set:html={paths.eyebrowHtml} /></span>
@@ -153,7 +113,71 @@ import {
       </div>
     </section>
 
-    <!-- ===== 04 FAQ — scam-prevention pojistka ===== -->
+    <!-- ===== 02 KDO JSME — kratka odpoved s citacni hodnotou ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">{about.eyebrowNum}</span> <Fragment set:html={about.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={about.titleHtml}></h2>
+      </header>
+
+      <Answer kind="definice" text={about.answer} />
+
+      <p class="kontakt-about__links" set:html={about.linksHtml}></p>
+    </section>
+
+    <!-- ===== 03 CO DĚLÁME ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">{services.eyebrowNum}</span> <Fragment set:html={services.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={services.titleHtml}></h2>
+        <p class="lp-section__lead" set:html={services.leadHtml}></p>
+      </header>
+
+      <div class="kontakt-services">
+        {services.cards.map((c) => (
+          <a
+            href={c.href}
+            target={c.external ? "_blank" : undefined}
+            rel={c.external ? "noopener" : undefined}
+            class="kontakt-service"
+          >
+            <span class="kontakt-service__num">{c.num}</span>
+            <h3 set:html={c.titleHtml}></h3>
+            <p set:html={c.descHtml}></p>
+            <span class="kontakt-service__meta" set:html={c.metaHtml}></span>
+          </a>
+        ))}
+      </div>
+
+      <div class="kontakt-bridge">
+        <p set:html={services.bridge.textHtml}></p>
+        <a href={services.bridge.ctaHref} class="kontakt-bridge__cta">
+          {services.bridge.ctaLabel}
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== 04 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">{trust.eyebrowNum}</span> <Fragment set:html={trust.eyebrowHtml} /></span>
+        <h2 class="lp-section__title" set:html={trust.titleHtml}></h2>
+      </header>
+
+      <div class="kontakt-trust">
+        {trust.items.map((t) => (
+          <article class="kontakt-trust__item">
+            <h3 set:html={t.titleHtml}></h3>
+            <p set:html={t.descHtml}></p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== 05 ČASTÉ OTÁZKY ===== -->
     <section class="lp-section lp-section--faq">
       <Faq
         items={faq.items}
@@ -164,8 +188,8 @@ import {
       />
     </section>
 
-    <!-- ===== 05 KONTAKTY + FAKTURACE (compact, ne dominantní) ===== -->
-    <section class="lp-section lp-section--alt">
+    <!-- ===== 06 FAKTURAČNÍ ÚDAJE A SÍDLO ===== -->
+    <section class="lp-section">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">{direct.eyebrowNum}</span> <Fragment set:html={direct.eyebrowHtml} /></span>
         <h2 class="lp-section__title" set:html={direct.titleHtml}></h2>
@@ -203,16 +227,11 @@ import {
 </BaseLayout>
 
 <style>
+  /* Paleta Sniper Design je globalni (global.css). Tady jen dva aliasy,
+     ktere pouzivaji akcentove CTA teto stranky. */
   .kontakt {
-    --font-agency: "Kumbh Sans", var(--font-sans);
-    --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.5 0.27 335);
-    --sd-deep: oklch(0.22 0.13 305);
-    --sd-deeper: oklch(0.16 0.11 305);
-    --sd-violet: oklch(0.55 0.25 305);
-    --sd-magenta: oklch(0.5 0.27 335);
-    --sd-gold: oklch(0.82 0.16 80);
-    --sd-paper: oklch(0.985 0.004 250);
+    --lp-violet: var(--sd-violet);
+    --lp-magenta: var(--sd-magenta);
   }
 
   /* ===== HERO — Sniper Design brand box ===== */
@@ -328,42 +347,84 @@ import {
   }
 
   /* Actions — CTA buttons */
-  .kontakt-hero__actions {
+
+  /* ===== Kontaktni dlazdice v hero (od 22. 9. 2026) =====
+     Telefon, e-mail a formular jsou prvni obsah stranky. Drive tu stala dve
+     tlacitka, ktera vedla na Pack a na web agentury — tedy nikam, kde se da
+     ozvat. Odkazy jsou v set:html, proto :global() (CLAUDE.md § VI). */
+  .kontakt-hero__contacts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 640px) {
+    .kontakt-hero__contacts { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  }
+  .kontakt-contact {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 1.125rem;
+    border-radius: 10px;
+    background: oklch(from var(--sd-paper) l c h / 0.07);
+    border: 1px solid oklch(from var(--sd-paper) l c h / 0.14);
   }
-  .kontakt-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
+  .kontakt-contact__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     font-weight: 600;
-    padding: 0.875rem 1.5rem;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(from var(--sd-gold) l c h / 0.85);
   }
-  .kontakt-btn--solid {
-    background: var(--sd-gold);
-    color: var(--sd-deep);
-  }
-  .kontakt-btn--solid:hover {
-    background: color-mix(in oklch, var(--sd-gold) 85%, white);
-    transform: translateY(-1px);
-  }
-  .kontakt-btn--ghost {
-    background: transparent;
+  .kontakt-contact__value {
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    font-weight: 600;
     color: var(--sd-paper);
-    border: 1px solid oklch(from var(--sd-paper) l c h / 0.25);
+    text-decoration: none;
+    overflow-wrap: anywhere;
   }
-  .kontakt-btn--ghost:hover {
-    background: oklch(from var(--sd-paper) l c h / 0.08);
-    border-color: oklch(from var(--sd-paper) l c h / 0.4);
+  .kontakt-contact__value:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .kontakt-contact__note {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: oklch(from var(--sd-paper) l c h / 0.72);
   }
 
-  /* ===== Mini legal line pod hero CTA ===== */
+  /* Odznaky partnerstvi — komponenta nese vlastni styl, tady jen odsazeni
+     a barvy pro tmave pozadi hero. */
+  .kontakt-hero__partners {
+    margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+  .kontakt-hero__partners :global(.partner),
+  .kontakt-hero__partners :global(.partner__label) {
+    color: var(--sd-paper);
+  }
+  .kontakt-hero__partners :global(.partner__meta) {
+    color: oklch(from var(--sd-paper) l c h / 0.72);
+  }
+  .kontakt-hero__partners :global(.partner__medal) {
+    color: var(--sd-gold);
+  }
+
+  /* ===== 02 Kdo jsme ===== */
+  .kontakt-about__links {
+    max-width: var(--w-read);
+    margin: 1.25rem auto 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-ink-soft);
+  }
+  .kontakt-about__links :global(a) {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ===== Mini legal line pod hero ===== */
   .kontakt-hero__legal {
     margin: 1.25rem 0 0;
     font-family: var(--font-mono);

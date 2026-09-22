@@ -24,8 +24,9 @@ export const sniperDesign = {
 
   /**
    * Partnerství u e-shopových platforem — vykresluje komponenta PartnerBadges.
-   * Ověřeno na veřejných profilech 14. 9. 2026: Upgates Marketplace uvádí
-   * „Zlatý partner Upgates od roku 2016“ a hodnocení 4,5 z 19 recenzí; Shoptet
+   * Ověřeno na veřejných profilech 21. 9. 2026: Upgates Marketplace uvádí
+   * „Zlatý partner Upgates od roku 2016“, „600+ realizovaných e-shopů“
+   * a hodnocení 4,5 z 20 recenzí; Shoptet
    * Partneři odznak „Zlatý partner“ a 2 hodnocení (průměr na profilu není
    * v textu, proto se nevypisuje). Hodnocení se mění — při úpravě znovu ověřit.
    * PER-MUTACE: české platformy; fork mimo CZ komponentu nevkládá.
@@ -38,7 +39,7 @@ export const sniperDesign = {
       {
         platform: "Upgates",
         level: "Zlatý partner",
-        meta: "od 2016 · 4,5 z 5 (19 hodnocení)",
+        meta: "od 2016 · 4,5 z 5 (20 hodnocení)",
         href: "https://marketplace.upgates.cz/agencies/sniper-design/",
       },
       {

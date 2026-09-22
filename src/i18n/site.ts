@@ -57,9 +57,15 @@ export const site = {
     email: "aiseo-optimalizace@sniperdesign.cz",
     telephone: "+420 775 181 634",
     address: {
-      streetAddress: "Akademická 663/5",
-      addressLocality: "Praha 10 — Malešice",
-      postalCode: "10800",
+      /**
+       * Dle ARES (IČO 08125163): obec Praha, část obce Malešice, PSČ 10800.
+       * Do 22. 9. 2026 bylo v `addressLocality` napsané „Praha 10 — Malešice“,
+       * tedy obec, správní obvod i část obce v jednom poli — stroj z toho
+       * nepřečte město. Část obce patří k ulici, město stojí samostatně.
+       */
+      streetAddress: "Akademická 663/5, Malešice",
+      addressLocality: "Praha",
+      postalCode: "108 00",
       addressCountry: "CZ",
     },
   },
