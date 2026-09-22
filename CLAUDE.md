@@ -550,9 +550,19 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   Rozhodnutí je v `localStorage` pod `aiseo-consent` (ne v cookie: nepotřebujeme ho na serveru).
   **Past, která se nesmí vrátit:** `<noscript>` sledovací obrázek `facebook.com/tr` se načte
   vždycky a souhlas respektovat neumí — obešel by celou lištu. Odstraněn 22. 9. 2026, nevracet.
-  **Druhá past:** odmítnutí musí být stejně snadné jako souhlas — dvě tlačítka shodné velikosti
-  i řezu, ne odkaz drobným písmem. Nerovnocenné odmítnutí je v dozoru nejčastější důvod pokuty.
-  Texty v `i18n/strings.ts` → `consent`; vstup pro změnu rozhodnutí je v patičce (`data-cc-open`),
+  **Souhlas musí být konkrétní pro každý účel** (GDPR čl. 4 odst. 11, EDPB 05/2020) — měření
+  návštěvnosti a reklama jsou dva různé účely a nejde je svázat do jednoho tlačítka. První verze
+  lišty (22. 9.) to dělala a bylo to špatně; opraveno 23. 9. na kategorie s vlastními přepínači
+  (`analytics`, `ads`), uložené nezávisle. **Nová měřicí kategorie = nový přepínač**, ne přilepení
+  k existujícímu.
+  **Druhá past:** odmítnutí musí být stejně snadné jako souhlas — tlačítka shodné velikosti i řezu,
+  ne odkaz drobným písmem. Nerovnocenné odmítnutí je v dozoru nejčastější důvod pokuty. **Pozor
+  na mobil:** s `flex: 1 1 auto` se dvě tlačítka vešla vedle sebe a na „Přijmout vše“ zbyl celý
+  řádek — vypadalo to jako hlavní volba. Na úzkém displeji patří `flex: 1 1 100%`, tedy shodná šířka.
+  **Text lišty je jedna věta.** Co se měří, nesou názvy kategorií v nastavení; odstavec v liště
+  nikdo nečte a souhlas informovanějším nedělá.
+  Texty v `i18n/strings.ts` → `consent`; vstup pro změnu rozhodnutí je v patičce (`data-cc-open`)
+  a přepínače se při otevření přednastaví z uloženého stavu přes `__aiseoConsent.get()`,
   protože odvolat souhlas musí jít stejně snadno jako ho dát (GDPR čl. 7 odst. 3).
   **`/gdpr/` musí souhlasit s realitou** — do 22. 9. tvrdila „neukládáme reklamní cookies
   třetích stran“, zatímco Pixel běžel. Při přidání měřicího nástroje se sekce 07 přepisuje taky.

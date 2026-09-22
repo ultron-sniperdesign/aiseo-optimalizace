@@ -231,7 +231,10 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <script is:inline>
       (function () {
         var KLIC = "aiseo-consent";
-        var VERZE = 1;
+        // VERZE 2 (23. 9. 2026): souhlas je nově konkrétní pro každý účel.
+        // Uložená rozhodnutí z verze 1 svazovala měření a reklamu dohromady,
+        // takže se na ně nedá spolehnout — bump je vyhodí a zeptáme se znovu.
+        var VERZE = 2;
         var PIXEL_ID = "990248353397178";
 
         // Sec-GPC / Do-Not-Track bereme jako vyjádřené odmítnutí. Kdo ho
@@ -293,16 +296,19 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
           fbq("track", "PageView");
         }
 
+        // Dvě nezávislé kategorie, ne jeden vypínač: měření návštěvnosti
+        // a reklama jsou různé účely a souhlas musí jít dát zvlášť.
         function uplatni(stav) {
           if (!stav) return;
-          var ok = stav.analytics === true;
+          var mereni = stav.analytics === true;
+          var reklama = stav.ads === true;
           gtag("consent", "update", {
-            ad_storage: ok ? "granted" : "denied",
-            ad_user_data: ok ? "granted" : "denied",
-            ad_personalization: ok ? "granted" : "denied",
-            analytics_storage: ok ? "granted" : "denied",
+            analytics_storage: mereni ? "granted" : "denied",
+            ad_storage: reklama ? "granted" : "denied",
+            ad_user_data: reklama ? "granted" : "denied",
+            ad_personalization: reklama ? "granted" : "denied",
           });
-          if (ok) nactiPixel();
+          if (reklama) nactiPixel();
         }
 
         var stav = nacti();
@@ -314,11 +320,18 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
           shouldAsk: function () {
             return !gpc && nacti() === null;
           },
-          set: function (souhlas) {
+          /** Poslední uložený stav — lišta z něj přednastaví přepínače. */
+          get: function () {
+            return nacti();
+          },
+          /** `volba` je objekt { analytics: bool, ads: bool }. Chybějící
+           *  kategorie se bere jako odmítnutá — mlčení není souhlas. */
+          set: function (volba) {
+            volba = volba || {};
             var novy = {
               v: VERZE,
-              analytics: souhlas === true,
-              ads: souhlas === true,
+              analytics: volba.analytics === true,
+              ads: volba.ads === true,
               ts: new Date().toISOString(),
             };
             try {

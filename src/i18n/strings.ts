@@ -213,26 +213,51 @@ export const footer = {
 /**
  * Lišta souhlasu s měřením (CookieConsent.astro).
  *
- * Právní minimum, které tyhle texty musí splnit: odmítnutí je stejně snadné
- * jako souhlas (dvě rovnocenná tlačítka, ne „Souhlasím“ vedle odkazu drobným
- * písmem), návštěvník se před kliknutím dozví, KDO měří a PROČ, a rozhodnutí
- * jde kdykoli změnit — proto `manageLabel` v patičce.
+ * Dvě pravidla, která tyhle texty musí splnit:
  *
- * Nezbytné cookies se nezmiňují jako volba, protože volba nejsou.
+ * 1. **Souhlas je konkrétní pro každý účel.** Měření návštěvnosti a reklama
+ *    jsou dva různé účely; svázat je do jednoho tlačítka je sdružený souhlas
+ *    a ten podle EDPB 05/2020 neobstojí. Proto kategorie a přepínače.
+ * 2. **Odmítnutí je stejně snadné jako souhlas.** Obě tlačítka mají shodnou
+ *    velikost i řez; „Odmítnout vše“ není odkaz drobným písmem.
+ *
+ * Záměrně krátké. Informaci o tom, co se měří, nesou **názvy kategorií**
+ * v nastavení, ne odstavec v liště — odstavec stejně nikdo nečte a delší text
+ * souhlas informovanějším nedělá.
  */
 export const consent = {
   /** Přístupný název lišty pro čtečku. */
-  aria: "Souhlas s měřením návštěvnosti",
-  titleHtml: "Měříme návštěvnost — jen když nám to dovolíte",
-  bodyHtml:
-    "Abychom věděli, které články lidem pomáhají, rádi bychom použili <strong>Google&nbsp;Analytics</strong> a&nbsp;<strong>Meta&nbsp;Pixel</strong>. Bez souhlasu web funguje úplně stejně a&nbsp;nic neměříme.",
-  /** Obě tlačítka mají stejnou váhu — viz komentář nad objektem. */
-  acceptLabel: "Souhlasím",
-  rejectLabel: "Odmítnout",
-  detailsLabel: "Co přesně měříme",
+  aria: "Nastavení cookies",
+  /** Jedna věta. Účely jmenuje, nevysvětluje je. */
+  bodyHtml: "Používáme cookies k&nbsp;měření návštěvnosti a&nbsp;k&nbsp;reklamě.",
+  detailsLabel: "Podrobnosti",
   detailsHref: "/gdpr/#cookies",
+
+  acceptAllLabel: "Přijmout vše",
+  rejectAllLabel: "Odmítnout vše",
+  settingsLabel: "Nastavení",
+  saveLabel: "Uložit volbu",
+
+  /** Kategorie v nastavení. `necessary` je vždy zapnutá a nejde vypnout —
+   *  není to volba, proto se v liště ani nenabízí jako přepínač. */
+  categories: {
+    necessary: {
+      label: "Nezbytné",
+      note: "Vždy zapnuto",
+      desc: "Zapamatování této volby. Bez nich web nefunguje.",
+    },
+    analytics: {
+      label: "Měření návštěvnosti",
+      desc: "Google Analytics — které články lidem pomáhají.",
+    },
+    ads: {
+      label: "Reklama",
+      desc: "Meta Pixel — účinnost reklamy na Facebooku a Instagramu.",
+    },
+  },
+
   /** Odkaz v patičce, kterým se rozhodnutí vrátí zpět na stůl. */
-  manageLabel: "Nastavení měření",
+  manageLabel: "Nastavení cookies",
 };
 
 /**

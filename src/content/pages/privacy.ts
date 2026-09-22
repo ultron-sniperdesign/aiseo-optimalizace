@@ -223,7 +223,7 @@ export const sections: PrivacySection[] = [
     blocks: [
       {
         type: "p",
-        html: "Měřicí nástroje spouštíme <strong>až po&nbsp;vašem souhlasu</strong>. Při&nbsp;první návštěvě se&nbsp;zeptáme lištou, kde má odmítnutí stejnou váhu jako souhlas. Než rozhodnete, neměříme nic &mdash; web funguje úplně stejně.",
+        html: "Měřicí nástroje spouštíme <strong>až po&nbsp;vašem souhlasu</strong>. Při&nbsp;první návštěvě se&nbsp;zeptáme lištou, kde má odmítnutí stejnou váhu jako souhlas a&nbsp;kde si&nbsp;<strong>každou kategorii můžete povolit zvlášť</strong>. Než rozhodnete, neměříme nic &mdash; web funguje úplně stejně.",
       },
       {
         type: "ul",
@@ -235,7 +235,7 @@ export const sections: PrivacySection[] = [
       },
       {
         type: "p",
-        html: "Rozhodnutí můžete kdykoli změnit odkazem <strong>Nastavení měření</strong> v&nbsp;patičce každé stránky. Pokud váš prohlížeč posílá signál <strong>Sec-GPC</strong> nebo <strong>Do&nbsp;Not&nbsp;Track</strong>, bereme to jako odmítnutí a&nbsp;na&nbsp;nic se&nbsp;neptáme.",
+        html: "Rozhodnutí můžete kdykoli změnit odkazem <strong>Nastavení cookies</strong> v&nbsp;patičce každé stránky. Pokud váš prohlížeč posílá signál <strong>Sec-GPC</strong> nebo <strong>Do&nbsp;Not&nbsp;Track</strong>, bereme to jako odmítnutí a&nbsp;na&nbsp;nic se&nbsp;neptáme.",
       },
       {
         type: "p",
