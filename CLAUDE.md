@@ -553,6 +553,21 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   v ~95 odkazech (editorská práce bloggera); adresa `/blog/ai-seo-audit/` zůstává.
   Stejné pravidlo platí pro formulace, kde AI vystupuje jako **náš nástroj** místo jako
   místo, kde chce být klient vidět („AI generování obsahu“, „AI vyhledávání implementujeme“).
+- **Agentura se nepopisuje jako „AI SEO agentura“** (rozhodnutí uživatele 22. 9. 2026).
+  Dva důvody: pojem „AI SEO“ se čte jako obor („klasické SEO dělané pomocí AI“), a hlavně
+  **zužuje firmu na jednu službu**. Jádro Sniper Design je **vývoj a úpravy e-shopů na
+  Upgates a Shoptetu** — viditelnost v AI je nejnovější nadstavba nad tím, ne celá agentura.
+  Správně: „vývojářská agentura“, „specialisté na Upgates a Shoptet“, „viditelnost v AI“,
+  „AI viditelnost“, „SEO pro AI“. Titulky po opravě: `/kontakt/` „Kontakt na Sniper Design —
+  vývoj e-shopů Upgates a Shoptet“, `/sluzby/` „Viditelnost e-shopu v AI: služby a ceník“.
+  Adresa `/blog/ai-seo-agentura-sluzby/` zůstává, stejně jako `/blog/ai-seo-audit/`.
+  **Značka se nikdy neskloňuje** — „Sniper Design“, ne „Sniper Designu“.
+  **Cena nepatří do nadpisů, titulků ani tlačítek**, jen do ceníku a do vět, které přímo
+  odpovídají na dotaz na cenu.
+  **Klientská výkonová čísla se nezveřejňují vůbec**, ani opisem („jednomu klientovi
+  vzrostlo…“) — je to vývojářská, ne marketingová agentura a výsledky popisuje kvalitativně.
+  Jediná čísla k volnému použití jsou z vlastního e-shopu megadetail.cz. Podklad k profilu
+  agentury: `sniperdesign.cz - ADMIN/MARKETING/profil-agentury-podklad-2026-09-22.md`.
 - **Partnerství agentury jen přes komponentu `components/blocks/PartnerBadges.astro`** (od 2026-09-14) —
   Zlatý partner Upgates (profil na Upgates Marketplace uvádí „od roku 2016“) a Zlatý partner Shoptet,
   každý odznak vede na profil u platformy, kde si to čtenář ověří. Data v `i18n/sniperdesign.ts` → `partners`;
