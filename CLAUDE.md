@@ -434,12 +434,23 @@ komponenty, layouty, styly, config) vědomě negenerují žádnou URL. Každá U
 podáním ověří proti `dist/` a nad 60 URL se nepodává nic (pojistka proti chybě
 v mapování).
 
-**Stav: podání je VYPNUTÉ** (`INDEXNOW_ENABLED: "0"` ve workflow). `api.indexnow.org`
-vrací na tuhle doménu HTTP 403 `UserForbiddedToAccessSite`; u podpory Bingu běží
-ticket **UCM000007490076** (e-maily na info@sniperdesign.cz). Klíč je vyloučený jako
-příčina — `public/929226a175c657aac3ba73a765ee364d.txt` vrací 200, `text/plain`,
-přesně 32 bajtů shodných s klíčem. **Klíč neměnit**, návody na 403 to radí, tady je to
-slepá ulička. Krok zatím jen vypisuje, co by podal, takže je detekce vidět v logu CI.
+**Stav: podání je VYPNUTÉ** (`INDEXNOW_ENABLED: "0"` ve workflow). Blok je **jen na
+straně Microsoftu**: `api.indexnow.org` i `www.bing.com/indexnow` vrací na tuhle doménu
+HTTP 403 `UserForbiddedToAccessSite` (naposledy změřeno 21. 9. 2026). U podpory Bingu
+běží ticket **UCM000007490076** (e-maily na info@sniperdesign.cz) — 17. 9. převzat,
+18. 9. eskalován na vývoj, bez termínu.
+
+**Klíč je prokazatelně v pořádku, neměnit ho.** Důkaz není jen to, že
+`public/929226a175c657aac3ba73a765ee364d.txt` vrací 200 / `text/plain` / 32 bajtů, ale
+hlavně to, že **`search.seznam.cz/indexnow` přijme tentýž požadavek s HTTP 200** a klíč
+si přitom skutečně stahuje a ověřuje — negativní kontrola 21. 9.: smyšlený klíč i cizí
+doména dostanou 403 „The key couldn't be loaded or it doesn't match the URLs“. Nezávislý
+účastník IndexNow tedy klíč uznal a Bing na identický požadavek odpovídá 403.
+
+**`yandex.com/indexnow` neber jako důkaz** — vrací 202 i na smyšlený klíč a na cizí
+doménu (změřeno 21. 9.), ověřuje až dodatečně. Jako signál „podání prošlo“ je bezcenný.
+
+Krok zatím jen vypisuje, co by podal, takže je detekce vidět v logu CI.
 
 ### Jazyková kontrola stránky (povinná před commitem při revizi)
 
@@ -529,7 +540,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 - **Anglicismy hlídá `blogger/JAZYK_SLOVNIK.md` — slovník platí pro celý web**, ne jen pro blog: články, sekce, pilíř i řetězce v `src/i18n/*` a v komponentách. Do 6. 9. 2026 se checker pouštěl jen na blog, takže sekce a pilíř měly nasbíraný dluh (419 nálezů). Příklady nálezů: „Klíčový insight" porušoval zakázané `\binsight\b` (→ „Klíčové zjištění"), H2 „Modern Search Visibility Stack" v pilíři (→ „Vrstvy viditelnosti"), popisky „Špatný / Správný mindset" zadrátované v `Mindset.astro` (→ „přístup", přesunuto do `ui.blocks.mindset*`). **Před přidáním nového mikrotextu ho projdi proti slovníku.**
 - **Uzavírací česká uvozovka je `“`, ne `"`** — checker to hlásí jako „Typografie a interpunkce" a v pilíři jich bylo 21, v `/ai-mode/` 11. Když opravuješ hromadně skriptem, pozor na dvě pasti: JSX/HTML atributy (`class="…"`) se nesmí trefit a v YAML frontmatteru byl uzavírací znak escapovaný (`\"`) — po záměně zůstane `\“`, což je neplatná escape sekvence a build spadne na `unknown escape sequence`. Po hromadné záměně vždy `npm run build`.
 - **Nadpisy H2 mají povinné formátování — platí pro celý web** — čtenář stránku skenuje po nadpisech, takže holý text v H2 je chyba, ne volba. Každý H2 v sekcích, pilíři i v článcích nese **obojí, ne jen jedno** (78 z 79 nadpisů sekcí a pilíře to tak má): `<span class="hl">klíčový pojem</span>` (entita nebo téma, dostane barvu disciplíny přes `h2 .hl` v `global.css`), `<strong>pointa</strong>` (to, co čtenáře zastaví, `font-weight: 600`) a prostý text, který větu drží pohromadě. Příklad: `## Jak <span class="hl">režim AI</span> funguje — <strong>query fan-out</strong>`. **H3 zůstávají prostý text.** Stejný jazyk používají i rich titulky v `strings.ts` (`sectionFaqTitleHtml`, `relatedTitleHtml`). Stav k 2026-09-06: 7 sekcí + pilíř 100 %, **blog jen 174 z 1 337 H2** (24 ze 163 článků) — retrofit blogu je editorská práce pro blogger session, nedá se skriptovat.
-- **Paleta značky Sniper Design je v `global.css`** (od 2026-09-06) — `--sd-deep`, `--sd-deeper`, `--sd-violet`, `--sd-magenta`, `--sd-gold`, `--sd-gold-deep`, `--sd-paper`, `--font-agency`. Používá ji `/audit/`, `/kontakt/`, oba Sniper Design kontaktní bloky a kontextové CTA v článcích. `audit/index.astro` a `kontakt.astro` mají zatím vlastní identické kopie — při zásahu do nich je smaž a nech globální (z `sniperdesign/*Contact.astro` smazané 14. 9. 2026). **Nová komerční plocha má nosit tuhle paletu**, ne obecný modrý accent, jinak splyne s obsahem.
+- **Paleta značky Sniper Design je v `global.css`** (od 2026-09-06) — `--sd-deep`, `--sd-deeper`, `--sd-violet`, `--sd-magenta`, `--sd-gold`, `--sd-gold-deep`, `--sd-paper`, `--font-agency`. Používá ji `/audit/`, `/kontakt/`, oba Sniper Design kontaktní bloky a kontextové CTA v článcích. Vlastní kopie palety už nemá žádná stránka — `sniperdesign/*Contact.astro` 14. 9., `audit/index.astro` 16. 9. a `kontakt.astro` 22. 9. 2026. **Nová komerční plocha má nosit tuhle paletu**, ne obecný modrý accent, jinak splyne s obsahem.
 - **Placený audit se jmenuje „Audit AI viditelnosti“, ne „AI SEO audit“** (rozhodnutí
   uživatele 16. 9. 2026). Starý název se četl jako „klasický SEO audit, akorát dělaný
   pomocí AI“ — což je jiná služba. Prodáváme **kontrolu připravenosti webu na vyhledávání
@@ -545,11 +556,19 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 - **Partnerství agentury jen přes komponentu `components/blocks/PartnerBadges.astro`** (od 2026-09-14) —
   Zlatý partner Upgates (profil na Upgates Marketplace uvádí „od roku 2016“) a Zlatý partner Shoptet,
   každý odznak vede na profil u platformy, kde si to čtenář ověří. Data v `i18n/sniperdesign.ts` → `partners`;
-  hodnocení (4,5 z 19 recenzí na Upgates) je stav k 14. 9. 2026 a mění se — při úpravě ho znovu ověř.
+  hodnocení (4,5 z 20 recenzí na Upgates) je stav k 22. 9. 2026 a mění se — při úpravě ho znovu ověř
+  (za osm dní přibyla jedna recenze). **Shoptet svoji úroveň nazývá česky „Zlatý partner“** — „Gold
+  partner“ je jen interní kód v jeho datech, do textu nepatří; `/kontakt/` to tvrdila až do 22. 9. 2026.
   Vložené v obou blocích Sniper Design (181 stránek), prodejní stránky ho dávají do hero. Nepsat partnerství
   ručně do textu. Gotcha: blok Sniper Design stojí v sekcích uvnitř `.article__prose`, jejíž `:global` styly
   pro `ul li`, `li::before` a `a` by odznakům přidaly čárku, odsazení a podtržení — komponenta proto nese
   `.partners` jako předka ve všech selektorech.
+- **Kontaktní údaje patří nahoru, ne na konec stránky** (naměřeno 22. 9. 2026 na `/kontakt/`) —
+  stránka měla telefon a e-mail až v šesté, poslední sekci; kdo na ni přišel, musel projít šest
+  karet služeb, čtyři důkazy důvěryhodnosti, tři konverzní cesty a FAQ, než se dostal k číslu.
+  Obě tlačítka v hero navíc vedla jinam (Pack a web agentury), takže „ozvat se“ v hero nebylo
+  vůbec. **U stránky pojmenované podle akce ověř, že ta akce jde udělat z prvního zhlédnutí.**
+  Fakturační údaje jsou výjimka — ty jsou referenční a patří dolů.
 - **Dvě šířky obsahu — závazné pravidlo (od 2026-09-05)** — v `global.css` jsou tokeny `--w-read` (40rem, čitelné měřítko textu) a `--w-wide` (okraj obsahového rámu). **Text drží `--w-read`, všechno ostatní — tabulky, srovnání, datové bloky — `--w-wide`.** Levý okraj je společný, liší se jen pravý. Nezavádět třetí šířku: `/ai-mode/` mělo před opravou čtyři pravé okraje (770 / 978 / 1090 / 1353 px při 1440 px viewportu), po opravě dva (770 / 1295). Karta krátké odpovědi je výjimka: sahá na `--w-wide` a text v ní tu šířku využívá — štítek „Stručná definice" je nad textem, ne vedle něj (od 14. 9. 2026 na celém webu přes komponentu `Answer`). Hotovo v `src/pages/[slug].astro` (7 sekcí). **Zbývá** pilíř, blogové layouty (`RichLayout`, `blog/[slug]`) a datové stránky — každý má zatím vlastní šířky. Po zásahu do layoutu změř pravé okraje v prohlížeči, ne odhadem.
 - **FAQ jen přes komponentu `components/blocks/Faq.astro` — nikdy ručně** (od 2026-09-13).
   Do té doby web vykresloval FAQ ve **14 souborech** po svém: tři způsoby chování, tři
@@ -675,12 +694,15 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   a ne jako důkaz do case study.
 - **Datový check ~25. 8. 2026** — vyhodnocení srpnových zásahů: CTR refreshe (/ai-mode/, jak-vypnout-ai-overview, pripadova-studie), pozice „ai viditelnost", generate_lead lead_type=sluzba, dopad ExitRescue/inline CTA.
 - **Kvartální datový report** — říjen 2026 (Q3 data): refresh case study + proof.ts + ai-viditelnost.ts + screenshoty najednou; společně s Q3 snapshotem deníku megadetail (`_source/case-study-megadetail/DENIK.md`).
-- **IndexNow — zapnout po odpovědi Bingu na ticket UCM000007490076.** Detekce změn
-  je od 17. 9. 2026 opravená (`scripts/indexnow.mjs`, git místo hashů HTML) a ověřená
-  proti reálným commitům: commit, který měnil jen `blogger/`, hlásí 0 URL místo
-  dřívějších 261. Podání zůstává vypnuté, protože `api.indexnow.org` vrací 403.
-  Po vyřešení tiketu nastavit `INDEXNOW_ENABLED: "1"` v `deploy.yml` a v logu CI
-  ověřit, že se podává jednotkový počet URL a že krok neskončil varováním.
+- **IndexNow — rozhodnout o podávání do Seznamu, Bing čeká na ticket UCM000007490076.**
+  Detekce změn je od 17. 9. 2026 opravená (`scripts/indexnow.mjs`, git místo hashů HTML)
+  a ověřená proti reálným commitům: commit, který měnil jen `blogger/`, hlásí 0 URL
+  místo dřívějších 261. Podání je vypnuté. Bing odpověděl 18. 9. jen eskalací na vývoj
+  a **403 platí dál (změřeno 21. 9. 2026)**. Nové zjištění z téhož měření: **Seznam
+  tentýž požadavek přijímá (HTTP 200) a klíč si ověřuje** — pro český web je to druhý
+  nejdůležitější cíl a dá se zapnout nezávisle na Bingu. Až se ticket vyřeší, nastavit
+  `INDEXNOW_ENABLED: "1"` v `deploy.yml` a v logu CI ověřit, že se podává jednotkový
+  počet URL a že krok neskončil varováním.
 - **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.
 - **Reálný kartový test celé chain** — volitelné, ověření že Stripe checkout UI + redirect + dekujeme stránka chodí end-to-end. Drobný 1.5 % fee zůstane při refundu.
 - **Stripe Tax (DPH)** — pokud CPU s.r.o. plátce DPH a chce automatické DPH na fakturách
