@@ -1498,3 +1498,22 @@ k vyřízení licence“ → „stránka pro vyřízení licence“ (sjednoceno 
 navíc nad běžnou způsobilostí“ → „nevyžaduje nic nad běžnou způsobilost“ (2 místa) · „čtenému
 obsahu přičítaly“ → „k ImageObject při čtení obsahu přihlížely“ · „z čeho má systém co citovat“
 → „z čeho může systém citovat“.
+
+## 2026-09-22 · `ai-brand-mentions` (refresh)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 027 (z 1 224) |
+| Mechanický checker | **0** nálezů na první průchod |
+| LLM průchod (gpt-5.4) | 6 nálezů, 6 opraveno |
+| Nová pravidla | **žádné** — všech 6 závisí na významu věty |
+
+**Nálezy LLM průchodu:** „prominenci nevysvětluje“ → „pořadí v doporučeních nevysvětluje“ ·
+„které značky se vytáhnou“ → „které značky model vybere“ · shoda přísudku „uchází“ → „ucházejí
+dva zdroje“ · „proměnná, se kterou studie našla souvislost“ → „u které“ · „doplnit odjinud“
+→ „zjistit odjinud“ · „aby zmínky měly na co navázat“ → „z čeho vycházet“.
+
+**Poznámka k refreshi:** čistý mechanický průchod na první pokus u článku, který se přepisoval
+ze 60 %, je dobrá zpráva o slovníku — 275 pravidel na 2 027 slov nenašlo nic. Nálezy LLM
+průchodu jsou všechny jednorázové vazby, žádný vzorec k zobecnění.
