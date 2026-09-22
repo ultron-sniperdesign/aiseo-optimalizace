@@ -9,8 +9,9 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
   noindex={true}
 >
   {/* Meta Pixel — Lead konverze (uživatel odeslal e-mail na free PDF a je tady).
-      Guard `window.fbq`: base pixel v BaseLayout definuje fbq jen když uživatel
-      NEsignalizuje Sec-GPC / DNT → Lead respektuje stejný opt-out jako PageView. */}
+      Guard `window.fbq`: od 22. 9. 2026 se pixel načítá až po uděleném souhlasu
+      (Consent Mode v2, viz BaseLayout). Bez souhlasu `fbq` neexistuje a tenhle
+      Lead se tiše přeskočí — stejné pravidlo jako u PageView. */}
   <Fragment slot="head">
     <script is:inline>
       if (window.fbq) fbq("track", "Lead");

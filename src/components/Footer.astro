@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { nav, footer } from "~/i18n/strings";
+import { nav, footer, consent } from "~/i18n/strings";
 import { site } from "~/i18n/site";
 const year = new Date().getFullYear();
 
@@ -53,12 +53,29 @@ const updatedLabel = `${footer.updatedPrefix} ${footer.footerMonths[stamp.getUTC
       <span aria-hidden="true">·</span>
       <a href="/rss.xml" class="ftr-bottom__sitemap">{footer.rssLabel}</a>
       <span aria-hidden="true">·</span>
+      {/* Odvolat souhlas musí jít stejně snadno jako ho dát (GDPR čl. 7 odst. 3),
+          proto je vstup do lišty v patičce každé stránky. Obsluhu má
+          components/CookieConsent.astro přes atribut data-cc-open. */}
+      <button type="button" class="ftr-bottom__sitemap ftr-bottom__consent" data-cc-open>
+        {consent.manageLabel}
+      </button>
+      <span aria-hidden="true">·</span>
       {updatedLabel}
     </span>
   </div>
 </footer>
 
 <style>
+  /* Tlačítko, ne odkaz: nikam nevede, otevírá lištu. Vizuálně ale patří
+     mezi sousední odkazy v patičce, proto sdílí .ftr-bottom__sitemap. */
+  .ftr-bottom__consent {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
   .site-footer {
     border-top: 1px solid var(--color-rule);
     background: var(--color-paper-deep);

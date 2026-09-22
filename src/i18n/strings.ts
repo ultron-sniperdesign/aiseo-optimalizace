@@ -211,6 +211,31 @@ export const footer = {
 };
 
 /**
+ * Lišta souhlasu s měřením (CookieConsent.astro).
+ *
+ * Právní minimum, které tyhle texty musí splnit: odmítnutí je stejně snadné
+ * jako souhlas (dvě rovnocenná tlačítka, ne „Souhlasím“ vedle odkazu drobným
+ * písmem), návštěvník se před kliknutím dozví, KDO měří a PROČ, a rozhodnutí
+ * jde kdykoli změnit — proto `manageLabel` v patičce.
+ *
+ * Nezbytné cookies se nezmiňují jako volba, protože volba nejsou.
+ */
+export const consent = {
+  /** Přístupný název lišty pro čtečku. */
+  aria: "Souhlas s měřením návštěvnosti",
+  titleHtml: "Měříme návštěvnost — jen když nám to dovolíte",
+  bodyHtml:
+    "Abychom věděli, které články lidem pomáhají, rádi bychom použili <strong>Google&nbsp;Analytics</strong> a&nbsp;<strong>Meta&nbsp;Pixel</strong>. Bez souhlasu web funguje úplně stejně a&nbsp;nic neměříme.",
+  /** Obě tlačítka mají stejnou váhu — viz komentář nad objektem. */
+  acceptLabel: "Souhlasím",
+  rejectLabel: "Odmítnout",
+  detailsLabel: "Co přesně měříme",
+  detailsHref: "/gdpr/#cookies",
+  /** Odkaz v patičce, kterým se rozhodnutí vrátí zpět na stůl. */
+  manageLabel: "Nastavení měření",
+};
+
+/**
  * UI microcopy vykreslované přímo ve sdílených šablonách (pillar, sekce
  * [slug], blog reading pages, homepage chrome) — opakující se popisky, které
  * NEjsou ani „chrome" komponent (nav/footer/emailCapture výš), ani obsah

@@ -25,7 +25,7 @@ export const meta = {
 export const breadcrumb = { label: "Zásady zpracování osobních údajů", href: "/gdpr/" };
 
 /** Datum poslední aktualizace zásad. Aktualizovat při každé věcné změně. */
-export const lastUpdated = "2026-05-18";
+export const lastUpdated = "2026-09-22";
 
 /** Hero — drobečková navigace + titulek + lead. */
 export const hero = {
@@ -51,6 +51,10 @@ export interface PrivacySection {
   num: string;
   titleHtml: string;
   blocks: PrivacyBlock[];
+  /** Volitelná kotva pro odkazování zvenčí (`/gdpr/#cookies`). Bez ní se
+   *  sekce vykreslí bez `id` — čísla sekcí se časem posouvají, takže kotvu
+   *  dostane jen to, na co skutečně odjinud odkazujeme. */
+  id?: string;
 }
 
 export const sections: PrivacySection[] = [
@@ -214,18 +218,28 @@ export const sections: PrivacySection[] = [
   },
   {
     num: "07",
-    titleHtml: "Cookies",
+    id: "cookies",
+    titleHtml: "Cookies a měření",
     blocks: [
       {
         type: "p",
-        html: "Web aiseo-optimalizace.cz používá <strong>pouze technické a&nbsp;analytické&nbsp;cookies&nbsp;první&nbsp;strany</strong> (vlastní doména). Neukládáme reklamní cookies třetích stran, neprodáváme data inzertním sítím.",
+        html: "Měřicí nástroje spouštíme <strong>až po&nbsp;vašem souhlasu</strong>. Při&nbsp;první návštěvě se&nbsp;zeptáme lištou, kde má odmítnutí stejnou váhu jako souhlas. Než rozhodnete, neměříme nic &mdash; web funguje úplně stejně.",
       },
       {
         type: "ul",
         items: [
-          "<strong>Technické cookies</strong> &mdash; nezbytné pro&nbsp;funkci webu (např.&nbsp;preference jazyka). Nevyžadují souhlas.",
-          '<strong>Analytické cookies (GA4)</strong> &mdash; anonymizované měření návštěvnosti. Lze odmítnout v&nbsp;nastavení prohlížeče nebo přes <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a>.',
+          "<strong>Technické úložiště</strong> &mdash; nezbytné pro&nbsp;funkci webu, včetně zapamatování toho, jak jste se&nbsp;rozhodli o&nbsp;měření. Nevyžaduje souhlas.",
+          "<strong>Google&nbsp;Analytics&nbsp;4</strong> (Google Ireland Ltd.) &mdash; měření návštěvnosti s&nbsp;anonymizovanou IP. Bez souhlasu běží v&nbsp;režimu <em>Consent&nbsp;Mode</em>, kdy neukládá žádné identifikátory a&nbsp;Googlu posílá jen anonymní údaj, že stránka byla načtena.",
+          "<strong>Meta&nbsp;Pixel</strong> (Meta Platforms Ireland Ltd.) &mdash; měření účinnosti reklamy na&nbsp;Facebooku a&nbsp;Instagramu. Je&nbsp;to nástroj třetí strany a&nbsp;<strong>bez souhlasu se&nbsp;vůbec nenačte</strong>.",
         ],
+      },
+      {
+        type: "p",
+        html: "Rozhodnutí můžete kdykoli změnit odkazem <strong>Nastavení měření</strong> v&nbsp;patičce každé stránky. Pokud váš prohlížeč posílá signál <strong>Sec-GPC</strong> nebo <strong>Do&nbsp;Not&nbsp;Track</strong>, bereme to jako odmítnutí a&nbsp;na&nbsp;nic se&nbsp;neptáme.",
+      },
+      {
+        type: "p",
+        html: "<strong>Data z&nbsp;měření neprodáváme</strong> a&nbsp;nepředáváme je&nbsp;dál nad&nbsp;rámec zpracování u&nbsp;výše uvedených poskytovatelů.",
       },
     ],
   },

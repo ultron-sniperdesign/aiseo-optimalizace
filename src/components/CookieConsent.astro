@@ -1,0 +1,235 @@
+---
+/**
+ * CookieConsent — lišta souhlasu s měřením.
+ *
+ * Proč existuje: do 22. 9. 2026 se GA4 i Meta Pixel načítaly bezpodmínečně.
+ * Sec-GPC a DNT se sice respektovaly, ale to je signál menšiny prohlížečů,
+ * ne souhlas podle § 89 zák. 127/2005 Sb. (opt-in od 1. 1. 2022) a GDPR.
+ *
+ * Model souhlasu (rozhodnutí uživatele 22. 9. 2026): **Consent Mode v2.**
+ * GA4 se načte hned, ale s `analytics_storage: denied` — posílá bezcookie
+ * pingy, takže v GA4 zůstane modelovaná návštěvnost i od lidí, kteří odmítnou.
+ * **Meta Pixel se nenačte vůbec, dokud není souhlas** — je to reklamní nástroj
+ * třetí strany a tam je souhlas nesporný.
+ *
+ * Rozhodnutí se ukládá do localStorage, ne do cookie: nepotřebujeme ho posílat
+ * na server a technické úložiště bez souhlasu použít smíme.
+ *
+ * DŮLEŽITÉ — dvě rovnocenná tlačítka. „Odmítnout" má stejnou velikost, stejný
+ * řez i stejné místo jako „Souhlasím". Ne odkaz drobným písmem vedle velkého
+ * barevného tlačítka; nerovnocenné odmítnutí je samostatná vada (SLOP-H-A8)
+ * a v dozoru nejčastější důvod pokuty.
+ *
+ * Stav a logika žijí v `window.__aiseoConsent` — nastavuje ho BaseLayout
+ * v <head> JEŠTĚ PŘED načtením gtag.js, protože `consent default` musí
+ * doběhnout dřív než samotné měření. Tahle komponenta je jen jeho UI.
+ */
+import { consent } from "~/i18n/strings";
+---
+
+<div
+  class="cc"
+  id="cookie-consent"
+  role="dialog"
+  aria-labelledby="cc-title"
+  aria-describedby="cc-body"
+  aria-label={consent.aria}
+  hidden
+>
+  <div class="cc__inner">
+    <div class="cc__text">
+      <p class="cc__title" id="cc-title" set:html={consent.titleHtml}></p>
+      <p class="cc__body" id="cc-body" set:html={consent.bodyHtml}></p>
+    </div>
+    <div class="cc__actions">
+      <button type="button" class="cc__btn cc__btn--reject" data-cc-reject>
+        {consent.rejectLabel}
+      </button>
+      <button type="button" class="cc__btn cc__btn--accept" data-cc-accept>
+        {consent.acceptLabel}
+      </button>
+      <a class="cc__details" href={consent.detailsHref}>{consent.detailsLabel}</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const box = document.getElementById("cookie-consent");
+    if (!box) return;
+    const api = (window as any).__aiseoConsent;
+    if (!api) return;
+
+    const zobraz = () => {
+      box.hidden = false;
+      box.classList.add("is-open");
+    };
+    const skryj = () => {
+      box.classList.remove("is-open");
+      box.hidden = true;
+    };
+
+    box.querySelector("[data-cc-accept]")?.addEventListener("click", () => {
+      api.set(true);
+      skryj();
+    });
+    box.querySelector("[data-cc-reject]")?.addEventListener("click", () => {
+      api.set(false);
+      skryj();
+    });
+
+    // Escape = odmítnutí? NE. Zavřít lištu bez volby by znamenalo, že se
+    // zeptáme znovu při dalším načtení — což je otravné, ale korektní.
+    // Escape proto jen schová, rozhodnutí se neukládá.
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !box.hidden) skryj();
+    });
+
+    // Odkaz v patičce vrací rozhodnutí zpět na stůl (GDPR: odvolat souhlas
+    // musí jít stejně snadno jako ho dát).
+    document.addEventListener("click", (e) => {
+      const t = e.target as HTMLElement;
+      if (t && t.closest && t.closest("[data-cc-open]")) {
+        e.preventDefault();
+        zobraz();
+        box.querySelector<HTMLButtonElement>("[data-cc-reject]")?.focus();
+      }
+    });
+
+    if (api.shouldAsk()) zobraz();
+  })();
+</script>
+
+<style>
+  .cc {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 80;
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-rule-strong);
+    box-shadow: 0 -8px 32px -16px oklch(0.2 0.02 260 / 0.35);
+  }
+  .cc.is-open {
+    animation: ccUp 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @keyframes ccUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  .cc__inner {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 1rem var(--space-section-x) 1.1rem;
+    display: grid;
+    gap: 0.9rem 1.75rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .cc__inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+
+  .cc__title {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.975rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+  .cc__body {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    max-width: 62ch;
+  }
+  /* Obsah jde do set:html, takže vložený <strong> nedostane Astro scope
+     atribut a scoped pravidlo `.cc__body strong` by ho minulo. Viz CLAUDE.md
+     § VI — nejčastější tichá regrese na tomhle webu. */
+  .cc__body :global(strong) {
+    color: var(--color-ink);
+    font-weight: 650;
+  }
+
+  .cc__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.9rem;
+  }
+
+  /* Obě tlačítka mají ZÁMĚRNĚ shodnou geometrii i řez. Liší se jen výplní,
+     aby bylo poznat, které je potvrzovací — ne aby bylo odmítnutí schované. */
+  .cc__btn {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 0.6rem 1.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+  }
+  .cc__btn--reject {
+    background: var(--color-paper);
+    border-color: var(--color-rule-strong);
+    color: var(--color-ink);
+  }
+  .cc__btn--reject:hover {
+    background: var(--color-paper-hover);
+    border-color: var(--color-ink-muted);
+  }
+  .cc__btn--accept {
+    background: var(--color-accent-strong);
+    color: var(--color-paper);
+  }
+  .cc__btn--accept:hover {
+    background: var(--color-ink);
+  }
+  .cc__btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Stojí samostatně, ne uvnitř věty, takže na něj platí WCAG 2.5.8 v plné
+     šíři — 24 px na výšku je minimum, ne doporučení. */
+  .cc__details {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .cc__details:hover {
+    color: var(--color-ink);
+  }
+  .cc__details:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 480px) {
+    .cc__btn {
+      flex: 1 1 auto;
+    }
+    .cc__details {
+      flex: 1 0 100%;
+    }
+  }
+</style>

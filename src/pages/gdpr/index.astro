@@ -29,7 +29,7 @@ import { meta, breadcrumb, lastUpdated, hero, sections } from "~/content/pages/p
     <article class="gdpr-body">
       <div class="gdpr-body__inner">
         {sections.map((s) => (
-          <section class="gdpr-section">
+          <section class="gdpr-section" id={s.id}>
             <h2 class="gdpr-section__title">
               <span class="gdpr-section__num">{s.num}</span>
               <Fragment set:html={s.titleHtml} />

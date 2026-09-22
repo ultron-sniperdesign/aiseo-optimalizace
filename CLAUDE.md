@@ -185,7 +185,7 @@ aiseo-optimalizace.cz/
 │       ├── pack-08-aplikace-v3.{html,pdf}
 │       └── free-homepage-final.{html,pdf}    # free PDF (Ecomail A1 link)
 ├── src/
-│   ├── components/                       # Header, Footer, EmailCapture, MockupPage, article/, blocks/, sniperdesign/
+│   ├── components/                       # Header, Footer, EmailCapture, CookieConsent, MockupPage, article/, blocks/, sniperdesign/
 │   ├── content/
 │   │   ├── pillar/ sections/ articles/       # dlouhý obsah (MDX) — per-mutace přeložit
 │   │   └── pages/*.ts                        # DATOVÉ MODULY landing/thank-you/audit/pack/index/sluzby/contact/privacy — per-mutace přeložit
@@ -540,6 +540,22 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 - **Anglicismy hlídá `blogger/JAZYK_SLOVNIK.md` — slovník platí pro celý web**, ne jen pro blog: články, sekce, pilíř i řetězce v `src/i18n/*` a v komponentách. Do 6. 9. 2026 se checker pouštěl jen na blog, takže sekce a pilíř měly nasbíraný dluh (419 nálezů). Příklady nálezů: „Klíčový insight" porušoval zakázané `\binsight\b` (→ „Klíčové zjištění"), H2 „Modern Search Visibility Stack" v pilíři (→ „Vrstvy viditelnosti"), popisky „Špatný / Správný mindset" zadrátované v `Mindset.astro` (→ „přístup", přesunuto do `ui.blocks.mindset*`). **Před přidáním nového mikrotextu ho projdi proti slovníku.**
 - **Uzavírací česká uvozovka je `“`, ne `"`** — checker to hlásí jako „Typografie a interpunkce" a v pilíři jich bylo 21, v `/ai-mode/` 11. Když opravuješ hromadně skriptem, pozor na dvě pasti: JSX/HTML atributy (`class="…"`) se nesmí trefit a v YAML frontmatteru byl uzavírací znak escapovaný (`\"`) — po záměně zůstane `\“`, což je neplatná escape sekvence a build spadne na `unknown escape sequence`. Po hromadné záměně vždy `npm run build`.
 - **Nadpisy H2 mají povinné formátování — platí pro celý web** — čtenář stránku skenuje po nadpisech, takže holý text v H2 je chyba, ne volba. Každý H2 v sekcích, pilíři i v článcích nese **obojí, ne jen jedno** (78 z 79 nadpisů sekcí a pilíře to tak má): `<span class="hl">klíčový pojem</span>` (entita nebo téma, dostane barvu disciplíny přes `h2 .hl` v `global.css`), `<strong>pointa</strong>` (to, co čtenáře zastaví, `font-weight: 600`) a prostý text, který větu drží pohromadě. Příklad: `## Jak <span class="hl">režim AI</span> funguje — <strong>query fan-out</strong>`. **H3 zůstávají prostý text.** Stejný jazyk používají i rich titulky v `strings.ts` (`sectionFaqTitleHtml`, `relatedTitleHtml`). Stav k 2026-09-06: 7 sekcí + pilíř 100 %, **blog jen 174 z 1 337 H2** (24 ze 163 článků) — retrofit blogu je editorská práce pro blogger session, nedá se skriptovat.
+- **Měřicí skripty jen po souhlasu — Consent Mode v2** (od 22. 9. 2026, slop audit nález
+  `2026-09-22/001`). Do té doby se GA4 i Meta Pixel načítaly bezpodmínečně; respektovaly
+  sice `Sec-GPC` a `DNT`, ale to je signál menšiny prohlížečů, **ne souhlas** podle § 89
+  zák. 127/2005 Sb. (opt-in od 1. 1. 2022). Pořadí je závazné: blok souhlasu v `BaseLayout`
+  musí doběhnout **před** `gtag.js`, protože `consent default` se nedá doplnit zpětně.
+  GA4 běží od začátku s `analytics_storage: denied` (bezcookie pingy → modelovaná data
+  i od odmítnuvších), **Meta Pixel se bez souhlasu nenačte vůbec** — je to třetí strana.
+  Rozhodnutí je v `localStorage` pod `aiseo-consent` (ne v cookie: nepotřebujeme ho na serveru).
+  **Past, která se nesmí vrátit:** `<noscript>` sledovací obrázek `facebook.com/tr` se načte
+  vždycky a souhlas respektovat neumí — obešel by celou lištu. Odstraněn 22. 9. 2026, nevracet.
+  **Druhá past:** odmítnutí musí být stejně snadné jako souhlas — dvě tlačítka shodné velikosti
+  i řezu, ne odkaz drobným písmem. Nerovnocenné odmítnutí je v dozoru nejčastější důvod pokuty.
+  Texty v `i18n/strings.ts` → `consent`; vstup pro změnu rozhodnutí je v patičce (`data-cc-open`),
+  protože odvolat souhlas musí jít stejně snadno jako ho dát (GDPR čl. 7 odst. 3).
+  **`/gdpr/` musí souhlasit s realitou** — do 22. 9. tvrdila „neukládáme reklamní cookies
+  třetích stran“, zatímco Pixel běžel. Při přidání měřicího nástroje se sekce 07 přepisuje taky.
 - **Paleta značky Sniper Design je v `global.css`** (od 2026-09-06) — `--sd-deep`, `--sd-deeper`, `--sd-violet`, `--sd-magenta`, `--sd-gold`, `--sd-gold-deep`, `--sd-paper`, `--font-agency`. Používá ji `/audit/`, `/kontakt/`, oba Sniper Design kontaktní bloky a kontextové CTA v článcích. Vlastní kopie palety už nemá žádná stránka — `sniperdesign/*Contact.astro` 14. 9., `audit/index.astro` 16. 9. a `kontakt.astro` 22. 9. 2026. **Nová komerční plocha má nosit tuhle paletu**, ne obecný modrý accent, jinak splyne s obsahem.
 - **Placený audit se jmenuje „Audit AI viditelnosti“, ne „AI SEO audit“** (rozhodnutí
   uživatele 16. 9. 2026). Starý název se četl jako „klasický SEO audit, akorát dělaný
@@ -684,7 +700,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
 
 ### Backlog (známé následující úkoly)
 
-- **Revize sekcí 9/2026 — rozpracovaná** — zdroj `_source/_keyword-research/revize-sekci-20260905/` (necommitováno, obsahuje GSC exporty). Pracovní evidence: `CHECKLIST.md` (20 stránek + 7 globálních oprav + část B pro bloggera), počítadlo `polozky.csv` (723 položek, 691 k práci), přepočet `python3 stav.py`. Rozhodnutí uživatele 2026-09-05: AIO = „Přehledy od AI“ (datum v ČR 20. 5. 2025), cookie lišta odložena, `/cenik/` zamítnut, `/nastroje/ai-check/` odložen.
+- **Revize sekcí 9/2026 — rozpracovaná** — zdroj `_source/_keyword-research/revize-sekci-20260905/` (necommitováno, obsahuje GSC exporty). Pracovní evidence: `CHECKLIST.md` (20 stránek + 7 globálních oprav + část B pro bloggera), počítadlo `polozky.csv` (723 položek, 691 k práci), přepočet `python3 stav.py`. Rozhodnutí uživatele 2026-09-05: AIO = „Přehledy od AI“ (datum v ČR 20. 5. 2025), `/cenik/` zamítnut, `/nastroje/ai-check/` odložen. **Cookie lišta už odložená není** — nasazena 22. 9. 2026, viz § VI.
 - ~~**Audit landing URL swap**~~ — ČÁSTEČNĚ (audit 2026-05-24): `/pack/` a `/pack/dekujeme/` odkazují na `/audit/`. **Neplatí pro celý web** — revize 2026-09-05 našla `sniperdesign.cz/audity` v 18 souborech (sekce, pilíř, 10 článků, `contact.ts`); vede se jako G2 v CHECKLIST.md. E-mail šablona `email-pack-paid-v2.html` stále neověřena (mimo web).
 - **Přeměřit dopad změněných titulků — 5. 10. 2026, pak 2. 11. 2026.** 6.–7. 9. 2026
   se změnil titulek pro SERP u **25 stránek** (14 blogger, 11 admin). Baseline,
@@ -718,6 +734,14 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   nejdůležitější cíl a dá se zapnout nezávisle na Bingu. Až se ticket vyřeší, nastavit
   `INDEXNOW_ENABLED: "1"` v `deploy.yml` a v logu CI ověřit, že se podává jednotkový
   počet URL a že krok neskončil varováním.
+- **Meta Conversions API — vrátit část atribuce ztracené souhlasem.** Od 22. 9. 2026 se
+  Pixel spouští až po souhlasu, takže konverze od lidí, kteří odmítnou nebo lištu ignorují,
+  Meta neuvidí. Při provozu, který je většinově placený z FB/IG, to zkreslí optimalizaci
+  kampaní. Server-side měření přes Conversions API část dat vrátí (posílá se s `event_id`
+  kvůli deduplikaci proti Pixelu) — **a posílat se smí jen to, na co souhlas je**.
+  Zadáno uživatelem 22. 9. 2026 jako samostatný úkol, ne součást nasazení lišty.
+  Před nasazením změřit v GA4 a v Meta Events Manageru, o kolik konverzí se reálně přišlo —
+  bez toho je to práce naslepo.
 - **Stažitelné checklisty (lead magnets)** — ODLOŽENO uživatelem 2026-07-18 („jiné PDF zatím vytvářet nechci") — nenavrhovat, dokud sám neotevře.
 - **Reálný kartový test celé chain** — volitelné, ověření že Stripe checkout UI + redirect + dekujeme stránka chodí end-to-end. Drobný 1.5 % fee zůstane při refundu.
 - **Stripe Tax (DPH)** — pokud CPU s.r.o. plátce DPH a chce automatické DPH na fakturách

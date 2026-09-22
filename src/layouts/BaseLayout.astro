@@ -2,6 +2,7 @@
 import "~/styles/global.css";
 import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
+import CookieConsent from "~/components/CookieConsent.astro";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
@@ -219,6 +220,118 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
       <meta name="google-site-verification" content={gscVerification} />
     )}
 
+    {/* ---------------------------------------------------------------------
+        SOUHLAS S MĚŘENÍM — musí doběhnout PŘED gtag.js.
+        Consent Mode v2: výchozí stav je `denied`, takže GA4 od prvního pingu
+        ví, že nesmí ukládat. `wait_for_update` dá liště půl vteřiny na to,
+        aby uložené rozhodnutí stihla propsat dřív, než odejde první event.
+        Meta Pixel se tu NENAČÍTÁ — jen se připraví funkce, kterou zavolá
+        až udělený souhlas. Viz components/CookieConsent.astro.
+        --------------------------------------------------------------------- */}
+    <script is:inline>
+      (function () {
+        var KLIC = "aiseo-consent";
+        var VERZE = 1;
+        var PIXEL_ID = "990248353397178";
+
+        // Sec-GPC / Do-Not-Track bereme jako vyjádřené odmítnutí. Kdo ho
+        // posílá, už jednou řekl ne — ptát se ho znovu lištou je nezdvořilé.
+        var gpc =
+          navigator.globalPrivacyControl === true || navigator.doNotTrack === "1";
+
+        function nacti() {
+          if (gpc) return { analytics: false, ads: false, gpc: true };
+          try {
+            var raw = localStorage.getItem(KLIC);
+            if (!raw) return null;
+            var v = JSON.parse(raw);
+            return v && v.v === VERZE ? v : null;
+          } catch (e) {
+            // Private mode nebo zablokované úložiště: nemáme kam uložit,
+            // takže se ptáme pokaždé a do té doby neměříme. Správné pořadí.
+            return null;
+          }
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          functionality_storage: "granted",
+          security_storage: "granted",
+          wait_for_update: 500,
+        });
+
+        var pixelNacten = false;
+        function nactiPixel() {
+          if (pixelNacten || gpc) return;
+          pixelNacten = true;
+          !(function (f, b, e, v, n, t, s2) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+              n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s2 = b.getElementsByTagName(e)[0];
+            s2.parentNode.insertBefore(t, s2);
+          })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+          fbq("init", PIXEL_ID);
+          fbq("track", "PageView");
+        }
+
+        function uplatni(stav) {
+          if (!stav) return;
+          var ok = stav.analytics === true;
+          gtag("consent", "update", {
+            ad_storage: ok ? "granted" : "denied",
+            ad_user_data: ok ? "granted" : "denied",
+            ad_personalization: ok ? "granted" : "denied",
+            analytics_storage: ok ? "granted" : "denied",
+          });
+          if (ok) nactiPixel();
+        }
+
+        var stav = nacti();
+        uplatni(stav);
+
+        window.__aiseoConsent = {
+          /** Lišta se ptá jen tehdy, když rozhodnutí ještě nepadlo a prohlížeč
+           *  sám neposlal Sec-GPC / DNT. */
+          shouldAsk: function () {
+            return !gpc && nacti() === null;
+          },
+          set: function (souhlas) {
+            var novy = {
+              v: VERZE,
+              analytics: souhlas === true,
+              ads: souhlas === true,
+              ts: new Date().toISOString(),
+            };
+            try {
+              localStorage.setItem(KLIC, JSON.stringify(novy));
+            } catch (e) {
+              /* bez úložiště platí rozhodnutí jen pro tuhle návštěvu */
+            }
+            uplatni(novy);
+          },
+        };
+      })();
+    </script>
+
     {/* Google Analytics 4 (volitelné, build-time env) — honoruje Sec-GPC */}
     {ga4Id && (
       <>
@@ -227,16 +340,11 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
             expression child se vyrenderuje jako řetězec, který se nikdy
             nespustí (GA4 kvůli tomu od 2026-04-29 do 2026-07-19 neměřilo). */}
         <script is:inline define:vars={{ ga4Id }}>
-          // Honor Sec-GPC (Global Privacy Control) a Do-Not-Track — neload analytics
-          if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") {
-            console.info("[ga4] respektuji Sec-GPC / DNT — analytics není aktivní");
-          } else {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            window.gtag = gtag;
-            gtag("js", new Date());
-            gtag("config", ga4Id, { anonymize_ip: true });
-          }
+          // dataLayer, gtag i `consent default` už nastavil blok souhlasu výš.
+          // Sec-GPC / DNT se řeší tamtéž — kdo je posílá, dostane trvalé
+          // `denied`, takže gtag tu smí běžet bez další podmínky.
+          gtag("js", new Date());
+          gtag("config", ga4Id, { anonymize_ip: true });
         </script>
         <script is:inline>
           // GA4 konverzní eventy — delegovaně, guard na gtag (u GPC/DNT neexistuje).
@@ -268,27 +376,12 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
       </>
     )}
 
-    {/* Meta Pixel (Facebook) — pixel ID 990248353397178. Honor Sec-GPC / DNT
-        stejně jako GA4 — pokud uživatel signalizuje opt-out, pixel se nenačte
-        a žádný PageView event nepošle. <noscript> fallback se v takovém případě
-        neuplatní (browser by neměl JS, a tudíž nemůže Sec-GPC vyhodnotit). */}
-    <script is:inline>
-      if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") {
-        console.info("[meta-pixel] respektuji Sec-GPC / DNT — pixel není aktivní");
-      } else {
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '990248353397178');
-        fbq('track', 'PageView');
-      }
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=990248353397178&ev=PageView&noscript=1" alt="" /></noscript>
+    {/* Meta Pixel se načítá až po uděleném souhlasu — kód je ve funkci
+        `nactiPixel()` v bloku souhlasu výš. Tady schválně nic není.
+
+        <noscript> varianta (sledovací obrázek na facebook.com/tr) je od
+        22. 9. 2026 ODSTRANĚNÁ: obrázek se načte vždycky a souhlas respektovat
+        neumí, takže by celou lištu obešel. */}
 
     {allJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
 
@@ -307,5 +400,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     </main>
 
     <Footer />
+
+    <CookieConsent />
   </body>
 </html>
