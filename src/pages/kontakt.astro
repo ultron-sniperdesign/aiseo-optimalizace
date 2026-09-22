@@ -320,7 +320,7 @@ import {
     .kontakt-hero__trust { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 960px) {
-    .kontakt-hero__trust { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .kontakt-hero__trust { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   }
   .kontakt-hero__trust li {
     display: flex;
@@ -398,16 +398,15 @@ import {
      a barvy pro tmave pozadi hero. */
   .kontakt-hero__partners {
     margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
-  }
-  .kontakt-hero__partners :global(.partner),
-  .kontakt-hero__partners :global(.partner__label) {
-    color: var(--sd-paper);
-  }
-  .kontakt-hero__partners :global(.partner__meta) {
-    color: oklch(from var(--sd-paper) l c h / 0.72);
-  }
-  .kontakt-hero__partners :global(.partner__medal) {
-    color: var(--sd-gold);
+    /* Barvy odznaku se komponente predavaji PROMENNYMI, ne pres :global().
+       22. 9. 2026 tu byl primy zapis `:global(.partner) { color: … }`, ktery
+       prebil jen popredi — pozadi zustalo bile z fallbacku komponenty a text
+       zmizel bila na bile. Stejne ctyri promenne pouziva /audit/ i oba bloky
+       Sniper Design. */
+    --partner-fg: var(--sd-paper);
+    --partner-muted: color-mix(in oklch, var(--sd-paper) 62%, transparent);
+    --partner-border: color-mix(in oklch, var(--sd-paper) 25%, transparent);
+    --partner-bg: color-mix(in oklch, var(--sd-paper) 8%, transparent);
   }
 
   /* ===== 02 Kdo jsme ===== */

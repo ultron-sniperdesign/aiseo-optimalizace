@@ -102,9 +102,9 @@ export const hero = {
   brandAriaLabel: "Sniper Design — domovská stránka agentury",
   logoAlt: "Sniper Design",
   eyebrow: "Kontakt",
-  titleHtml: "Ozvěte se <strong>Sniper Designu</strong>",
+  titleHtml: "Spojte se s&nbsp;agenturou <strong>Sniper Design</strong>",
   leadHtml:
-    'Tenhle průvodce i&nbsp;<strong>AI&nbsp;SEO Wireframe Pack</strong> vydává <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener"><strong>Sniper Design</strong></a> &mdash; pražská agentura pro e-shopy na&nbsp;Upgates a&nbsp;Shoptetu. Zavolejte, napište, nebo si&nbsp;rovnou vyberte jednu ze&nbsp;tří cest níž.',
+    'Tenhle průvodce i&nbsp;<strong>AI&nbsp;SEO Wireframe Pack</strong> vydává <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener"><strong>Sniper Design</strong></a> &mdash; agentura pro e-shopy na&nbsp;Upgates a&nbsp;Shoptetu. Zavolejte, napište, nebo si&nbsp;rovnou rezervujte termín.',
   /**
    * Kontaktní dlaždice. Od 22. 9. 2026 stojí v hero — dřív byly až v poslední
    * sekci stránky. `note` je doplňkový řádek pod hodnotou (hodiny, doba odezvy).
@@ -161,15 +161,18 @@ export const paths = {
   titleHtml: 'Vyberte <span class="hl">cestu</span> podle toho, <strong>s čím potřebujete pomoct</strong>',
   cards: [
     {
-      pillHtml: "Obecný dotaz",
-      titleHtml: "Spolupráce, dotaz k&nbsp;obsahu nebo cokoli jiného",
+      variant: "featured",
+      pillHtml: "Konzultace zdarma",
+      titleHtml: "Rezervujte si&nbsp;30&nbsp;minut a&nbsp;pojďme to probrat",
       descHtml:
-        "Nezávazná konzultace, dotaz na&nbsp;průvodce, nebo cokoli, co se nehodí níže. Odpovídáme do&nbsp;jednoho pracovního dne.",
+        "Projdeme váš e-shop, řekneme, co bychom řešili první a&nbsp;co může počkat. <strong>Nezávazně a&nbsp;zdarma</strong>, online přes Google&nbsp;Meet. Vyberte si&nbsp;termín, který vám sedí.",
       cta: {
-        labelHtml: "sniperdesign.cz/kontakty&nbsp;&rarr;",
-        href: "https://www.sniperdesign.cz/kontakty",
+        labelHtml: "Vybrat termín&nbsp;&rarr;",
+        href: "https://www.sniperdesign.cz/rezervace-online-schuzky",
         external: true,
       },
+      subHtml:
+        'Radši napsat? <a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo <a href="https://www.sniperdesign.cz/kontakty" target="_blank" rel="noopener">formulář agentury</a>.',
     },
     {
       variant: "accent",
@@ -181,7 +184,6 @@ export const paths = {
       cta: { labelHtml: "Objednat audit&nbsp;&rarr;", href: "/audit/", accent: true },
     },
     {
-      variant: "featured",
       pillVariant: "pack",
       pillHtml: "AI&nbsp;SEO Wireframe Pack",
       titleHtml: "Chci to zvládnout sám",
@@ -323,9 +325,9 @@ export const trust = {
         'Nevyvíjíme jen weby na&nbsp;zakázku. Máme i&nbsp;vlastní platformu <strong>SYNKRO</strong> pro automatizaci e-shopových procesů &mdash; objednávky, produkty, sklady, propojení s&nbsp;účetnictvím a&nbsp;marketplace. Díky tomu řešíme nejen jednorázové úpravy, ale i&nbsp;provoz a&nbsp;škálování v&nbsp;praxi.',
     },
     {
-      titleHtml: "Dohledatelná firma, veřejná práce",
+      titleHtml: "Veřejné reference, ne&nbsp;anonymní PDF",
       descHtml:
-        'Za webem stojí <strong>CPU s.r.o.</strong> s&nbsp;veřejnými kontakty, fakturačními údaji a&nbsp;reálnou historií v&nbsp;e-commerce. Nekupujete anonymní PDF od&nbsp;neznámého autora &mdash; firma má veřejné <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">reference klientských realizací</a> a&nbsp;dohledatelné sídlo v&nbsp;Praze. Proč na&nbsp;tom pro AI záleží, vysvětluje text o&nbsp;<a href="/blog/e-e-a-t-pro-ai/">E‑E‑A‑T</a>.',
+        'Každou radu na&nbsp;tomhle webu si&nbsp;můžete dohledat u&nbsp;konkrétních projektů &mdash; agentura vede <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">veřejné reference klientských realizací</a> a&nbsp;fakturační údaje i&nbsp;sídlo najdete o&nbsp;kus níž. Proč na&nbsp;tom pro AI záleží, vysvětluje text o&nbsp;<a href="/blog/e-e-a-t-pro-ai/">E‑E‑A‑T</a>.',
     },
   ],
 };
