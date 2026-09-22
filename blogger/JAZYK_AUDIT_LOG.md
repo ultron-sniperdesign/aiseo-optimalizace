@@ -1517,3 +1517,23 @@ dva zdroje“ · „proměnná, se kterou studie našla souvislost“ → „u k
 **Poznámka k refreshi:** čistý mechanický průchod na první pokus u článku, který se přepisoval
 ze 60 %, je dobrá zpráva o slovníku — 275 pravidel na 2 027 slov nenašlo nic. Nálezy LLM
 průchodu jsou všechny jednorázové vazby, žádný vzorec k zobecnění.
+
+## 2026-09-22 · `odkazovani-na-zdroje-v-obsahu` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 1 899 |
+| Mechanický checker | **0** nálezů v konceptu i po opravách |
+| LLM průchod | Oddělený jazykový subagent: 9 nálezů + 3 drobné tipy; všechny oprávněné opraveny |
+| Nová pravidla | **žádné** — nálezy byly významové vazby konkrétních vět |
+
+**Opraveno:** nepřesná vazba „instituce připojená k tvrzení“ · „změna se vyskytuje na webu“ ·
+opakování v odstavci a kartě o DOI · abstraktní „nechat rozsah věty vzniknout“ · nesouměřitelné
+srovnání procenta s „opatrným rozsahem“ · příliš široké „čísla z GA4“ zúženo na údaje o
+návštěvnosti a placené versus neplacené kanály · chybný čtenářský důvod proti `nofollow` ·
+nedoložená pomoc „systému“ zúžena na kontrolu čtenářem a doložený kontext odkazu v Googlu ·
+zpřesněny vazby u uživatelů v USA, tiskové zprávy a výpočtu procenta.
+
+**Odmítnuto:** změna sedmi typů stránek Packu na osm. Aktuální produktový modul a Z3 potvrzují
+sedm typů; kapitola 08 je návod k nasazení. Nejde o jazykový nález.
