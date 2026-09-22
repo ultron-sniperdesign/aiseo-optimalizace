@@ -23,7 +23,7 @@
  */
 
 export const meta = {
-  title: "AI SEO agentura pro e-shopy: služby a ceník | Sniper Design",
+  title: "Viditelnost e-shopu v AI: služby a ceník | Sniper Design",
   description:
     "Začněte auditem za 3 600 Kč: rozbor webu a plán dalších kroků. Technické úpravy po fázích a obsah od 18 Kč. Aby vás citovaly ChatGPT i Přehled od AI.",
   ogImage: "/og/sluzby.jpg",
@@ -438,7 +438,7 @@ export const faq = [
   },
   {
     q: "Kdo je poskytovatelem služeb — jaká agentura za nimi stojí?",
-    a: "Služby poskytuje **Sniper Design** (právně CPU s.r.o., Praha) — česká AI SEO agentura specializovaná na e-shopy. Od roku 2016 má za sebou 600+ klientů a je [Zlatým partnerem Upgates](https://marketplace.upgates.cz/agencies/sniper-design/) i [Zlatým partnerem Shoptetu](https://partneri.shoptet.cz/profesionalove/sniper-design/). Všechny postupy měří na vlastním e-shopu MEGA DETAIL — včetně [200 000 zobrazení v AI odpovědích Googlu za necelé dva měsíce](/blog/case-study-megadetail-ai-navstevnost/).",
+    a: "Služby poskytuje **Sniper Design** (právně CPU s.r.o., Praha) — česká vývojářská agentura specializovaná na e-shopy na Upgates a Shoptetu. Od roku 2016 má za sebou 600+ klientů a je [Zlatým partnerem Upgates](https://marketplace.upgates.cz/agencies/sniper-design/) i [Zlatým partnerem Shoptetu](https://partneri.shoptet.cz/profesionalove/sniper-design/). Všechny postupy měří na vlastním e-shopu MEGA DETAIL — včetně [200 000 zobrazení v AI odpovědích Googlu za necelé dva měsíce](/blog/case-study-megadetail-ai-navstevnost/).",
   },
   {
     q: "Jak rychle se výsledky projeví?",

@@ -27,7 +27,7 @@ import type { PageMeta } from "~/content/pages/_types";
 import type { FaqItem } from "~/content/pages/_types";
 
 export const meta: PageMeta = {
-  title: "Kontakt na Sniper Design — AI SEO agentura pro e-shopy",
+  title: "Kontakt na Sniper Design — vývoj e-shopů Upgates a Shoptet",
   description:
     "Telefon, e-mail a fakturační údaje agentury Sniper Design (CPU s.r.o., IČO 08125163). Stavíme e-shopy na Upgates a Shoptetu, voláme Po–Pá 10–17.",
   ogImage: "/og/kontakt.jpg",

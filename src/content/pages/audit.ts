@@ -500,7 +500,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
-    a: "Ano, pokud chcete **nezávislý pohled** na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Co od agentury v téhle oblasti čekat, shrnuje [článek o službách AI SEO agentury](/blog/ai-seo-agentura-sluzby/).",
+    a: "Ano, pokud chcete **nezávislý pohled** na připravenost webu pro AI vyhledávání. Audit nenahrazuje dlouhodobou SEO správu — dává vašemu týmu konkrétní priority, které může zapracovat. Co od agentury v téhle oblasti čekat, shrnuje [článek o tom, co od dodavatele čekat](/blog/ai-seo-agentura-sluzby/).",
   },
   {
     q: "Co audit nezahrnuje?",
