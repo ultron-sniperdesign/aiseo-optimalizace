@@ -228,7 +228,7 @@ export const about = {
     "aiseo-optimalizace.cz provozuje **Sniper Design** (CPU s.r.o., Praha) — agentura pro e-shopy na platformách Upgates a Shoptet, Zlatý partner obou. Od roku 2016 jsme jich postavili přes 600 a jeden provozujeme sami: [MEGA DETAIL](https://www.megadetail.cz/). Na tomhle webu učíme, jak být vidět v ChatGPT, Perplexity, [Přehledu od AI](/aio/) a [režimu AI](/ai-mode/).",
   /** Odkazy pod odpovědí — kdo obsah píše a co jsme na vlastním e-shopu naměřili. */
   linksHtml:
-    'Kdo obsah píše: <a href="/autor/kamil/">Kamil ze Sniper Design</a>. Co jsme naměřili na&nbsp;vlastním e-shopu: <a href="/ai-viditelnost/">200&nbsp;000 zobrazení v&nbsp;odpovědích AI za&nbsp;dva měsíce</a>.',
+    'Kdo obsah píše: <a href="/autor/kamil/">Kamil ze Sniper Design</a>. Co jsme naměřili na&nbsp;vlastním e-shopu: <a href="/ai-viditelnost/">200&nbsp;000 zobrazení v&nbsp;odpovědích AI za&nbsp;dva měsíce</a>. Kolik to stojí: <a href="/blog/kolik-stoji-ai-seo/">ceny AI&nbsp;SEO v&nbsp;roce 2026</a>.',
 };
 
 /** Sekce 03 — Co děláme (6 služeb agentury + bridge na Pack). */
@@ -310,12 +310,12 @@ export const trust = {
     {
       titleHtml: "Provozujeme vlastní e‑shop",
       descHtml:
-        'Provozujeme vlastní e-shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener"><strong>MEGA&nbsp;DETAIL</strong></a>, takže neznáme e-commerce jen z&nbsp;prezentací klientů. Řešíme stejná témata jako vy: strukturu kategorií, produktové detailovky, důvěryhodnost, technické limity platformy i&nbsp;obsah, který má prodávat a&nbsp;být dohledatelný.',
+        'Provozujeme vlastní e-shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener"><strong>MEGA&nbsp;DETAIL</strong></a>, takže neznáme e-commerce jen z&nbsp;prezentací klientů. Co nám to na&nbsp;něm přineslo, jsme sepsali v&nbsp;<a href="/blog/case-study-megadetail-ai-navstevnost/">případové studii</a>. Řešíme stejná témata jako vy: strukturu kategorií, produktové detailovky, důvěryhodnost, technické limity platformy i&nbsp;obsah, který má prodávat a&nbsp;být dohledatelný.',
     },
     {
       titleHtml: "Platformy známe zevnitř",
       descHtml:
-        'S&nbsp;Upgates pracujeme od&nbsp;roku 2016, se&nbsp;Shoptetem také &mdash; u&nbsp;obou jsme na&nbsp;nejvyšší partnerské úrovni a&nbsp;odznaky nahoře vedou na&nbsp;profily, kde si&nbsp;to ověříte. V&nbsp;praxi to znamená, že známe limity obou platforem dřív, než na&nbsp;ně narazíte. Pracujeme ale i&nbsp;na&nbsp;WooCommerce, Shopify a&nbsp;webech na&nbsp;míru.',
+        'S&nbsp;Upgates pracujeme od&nbsp;roku 2016, se&nbsp;Shoptetem také &mdash; u&nbsp;obou jsme na&nbsp;nejvyšší partnerské úrovni a&nbsp;odznaky nahoře vedou na&nbsp;profily, kde si&nbsp;to ověříte. V&nbsp;praxi to znamená, že známe limity obou platforem dřív, než na&nbsp;ně narazíte. Co se na&nbsp;obou platformách dá udělat pro AI vyhledávání, rozebírá <a href="/blog/ai-seo-upgates-shoptet/">samostatný návod</a>. Pracujeme ale i&nbsp;na&nbsp;WooCommerce, Shopify a&nbsp;webech na&nbsp;míru.',
     },
     {
       titleHtml: "Vlastní nástroje, ne&nbsp;jen klientské projekty",
@@ -325,7 +325,7 @@ export const trust = {
     {
       titleHtml: "Dohledatelná firma, veřejná práce",
       descHtml:
-        'Za webem stojí <strong>CPU s.r.o.</strong> s&nbsp;veřejnými kontakty, fakturačními údaji a&nbsp;reálnou historií v&nbsp;e-commerce. Nekupujete anonymní PDF od&nbsp;neznámého autora &mdash; firma má veřejné <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">reference klientských realizací</a> a&nbsp;dohledatelné sídlo v&nbsp;Praze.',
+        'Za webem stojí <strong>CPU s.r.o.</strong> s&nbsp;veřejnými kontakty, fakturačními údaji a&nbsp;reálnou historií v&nbsp;e-commerce. Nekupujete anonymní PDF od&nbsp;neznámého autora &mdash; firma má veřejné <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">reference klientských realizací</a> a&nbsp;dohledatelné sídlo v&nbsp;Praze. Proč na&nbsp;tom pro AI záleží, vysvětluje text o&nbsp;<a href="/blog/e-e-a-t-pro-ai/">E‑E‑A‑T</a>.',
     },
   ],
 };
@@ -368,7 +368,7 @@ export const faq = {
     },
     {
       q: "Musím si koupit audit, abyste se mnou mluvili?",
-      a: "Ne. Ozvat se můžete s čímkoli — dotaz k obsahu webu, konzultace, spolupráce. [Audit AI viditelnosti](/audit/) za 3 600 Kč bez DPH doporučujeme jako první **placený** krok, protože bez něj bychom u vašeho konkrétního webu jen hádali. Nezávazně probrat situaci ale jde i bez něj.",
+      a: "Ne. Ozvat se můžete s čímkoli — dotaz k obsahu webu, konzultace, spolupráce. [Audit AI viditelnosti](/audit/) za 3 600 Kč bez DPH doporučujeme jako první **placený** krok, protože bez něj bychom u vašeho konkrétního webu jen hádali. Nezávazně probrat situaci ale jde i bez něj. Na co se ptát každého dodavatele, sepsali jsme v [průvodci výběrem](/blog/ai-seo-agentura-sluzby/).",
     },
   ] as FaqItem[],
 };
