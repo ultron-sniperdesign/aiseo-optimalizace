@@ -144,6 +144,11 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
 - **`ugrep` spadne na `mismatched [ ]`** u regexu se závorkami; na složitější hledání python.
 - Ukázky JSON-LD v článku se dají ověřit přes `validator.schema.org/validate`
   (POST, pole `html`) — použito 15. 9. 2026, 0 chyb.
+- **`git status --cached` neexistuje** a v řetězu příkazů shodí všechno za sebou. Stav indexu
+  se čte `git diff --cached --name-only`. Naměřeno dvakrát (20. a 26. 9. 2026) — pokaždé to
+  vypadalo, že `git add` selhal, přestože proběhl.
+- **`git add $PROMENNA` v zsh nefunguje** — proměnná se nerozdělí na slova. Seznam cest do souboru
+  a pak `tr '\n' '\0' | xargs -0 git add`, commit s `-- $(tr '\n' ' ' < seznam)`.
 - **Agenti a workflow:** strop je pravidlo Z1 v `CONTENT_WORKFLOW.md`.
 
 ---
