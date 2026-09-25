@@ -125,7 +125,7 @@ sharp('public/og/'+s+'.png').webp({quality:78}).toFile('public/og/'+s+'.webp');"
 - **AI motiv:** jemné čtyřcípé „sparkle" hvězdičky.
 - **Provedení:** zaoblené obdélníky, tenká 2px linka, hodně bílého prostoru, **flat — žádné gradienty, žádný fotorealismus.**
 - **Scéna:** konceptuálně k tématu článku (prohlížeč / dashboard / karty / ikony / grafy).
-- **CZ text v obrázku:** velký bold sans-serif **nadpis vlevo nahoře** (typicky hlavní klíčové slovo, např. `SEO GEO`, `AI SEO audit`) + menší **podtitul** pod ním. Diakritiku piš správně, krátce, přesně.
+- **CZ text v obrázku:** velký bold sans-serif **nadpis vlevo nahoře** (typicky hlavní klíčové slovo, např. `SEO GEO`, `AUDIT AI VIDITELNOSTI`) + menší **podtitul** pod ním. Diakritiku piš správně, krátce, přesně.
 - **Bez log a značek** (NE reálné logo ChatGPT/Google — ochranné známky).
 
 ---

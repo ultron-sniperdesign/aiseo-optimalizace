@@ -1,13 +1,14 @@
 ---
-title: "AI SEO audit webu: co kontrolovat pro viditelnost v AI"
-description: "Praktický AI SEO audit krok za krokem: zjistěte, jestli vás citují ChatGPT, Perplexity a Google AI Overviews — a co na webu opravit pro lepší viditelnost."
-answer: "AI SEO audit je strukturovaná kontrola toho, jak dobře váš web chápou a citují nástroje AI vyhledávání — ChatGPT, Perplexity a Google AI Overviews. Projdete pět vrstev: viditelnost značky v jejich odpovědích, přístupnost pro AI roboty, strukturovaná data, citovatelnost obsahu a měření v čase. Výstupem je seznam konkrétních úprav. Doporučená frekvence je jednou za čtvrtletí."
+title: "Audit AI viditelnosti svépomocí: pět vrstev, které projdete"
+seoTitle: "Audit AI viditelnosti svépomocí: co zkontrolovat"
+description: "Praktický audit AI viditelnosti krok za krokem: zjistěte, jestli vás citují ChatGPT, Perplexity a Google AI Overviews — a co na webu opravit."
+answer: "Audit AI viditelnosti je strukturovaná kontrola toho, jak dobře váš web chápou a citují nástroje AI vyhledávání — ChatGPT, Perplexity a Google AI Overviews. Projdete pět vrstev: viditelnost značky v jejich odpovědích, přístupnost pro AI roboty, strukturovaná data, citovatelnost obsahu a měření v čase. Výstupem je seznam konkrétních úprav. Doporučená frekvence je jednou za čtvrtletí."
 slug: "ai-seo-audit"
 category: "tutorial"
 tags:
   - "audit-nastroje"
 published: "2026-05-23"
-updated: "2026-09-13"
+updated: "2026-09-26"
 variant: "rich"
 keywords:
   - "ai seo audit"
@@ -19,17 +20,17 @@ keywords:
   - "strukturovaná data pro AI"
   - "llms.txt"
 faq:
-  - q: "Co je AI SEO audit?"
-    a: "AI SEO audit je strukturovaná kontrola toho, jak dobře váš web chápou a citují AI vyhledávače jako ChatGPT, Perplexity a Google AI Overviews. Prochází viditelnost značky v jejich odpovědích, technickou přístupnost pro AI roboty, strukturovaná data a strukturu obsahu. Výstupem je seznam konkrétních úprav podle priority."
+  - q: "Co je audit AI viditelnosti?"
+    a: "Audit AI viditelnosti je strukturovaná kontrola toho, jak dobře váš web chápou a citují AI vyhledávače jako ChatGPT, Perplexity a Google AI Overviews. Prochází viditelnost značky v jejich odpovědích, technickou přístupnost pro AI roboty, strukturovaná data a strukturu obsahu. Výstupem je seznam konkrétních úprav podle priority."
   - q: "Jak zjistím, jestli mě cituje ChatGPT nebo Perplexity?"
     a: "Zadejte 15–20 dotazů, jaké píší vaši zákazníci, přímo do ChatGPT, Perplexity a do Googlu (kde sledujte, jestli se zobrazí AI Overview) a zaznamenejte, jestli a jak jste zmíněni. Pro průběžné sledování existují nástroje jako Otterly, Profound nebo AirOps, které měří podíl zmínek a citací napříč platformami."
-  - q: "Liší se AI SEO audit od klasického SEO auditu?"
-    a: "Ano. Klasický audit řeší pozice v Googlu, AI SEO audit řeší citace v AI odpovědích — a ty spolu nemusí souviset. Podle analýz z roku 2025 mívá řada stránek citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu. Klasický audit je základ, AI vrstva je doplněk nad ním."
+  - q: "Liší se audit AI viditelnosti od klasického SEO auditu?"
+    a: "Ano. Klasický audit řeší pozice v Googlu, audit AI viditelnosti řeší citace v AI odpovědích — a ty spolu nemusí souviset. Podle analýz z roku 2025 mívá řada stránek citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu. Klasický audit je základ, AI vrstva je doplněk nad ním."
   - q: "Pomůže soubor llms.txt k lepší viditelnosti v AI?"
     a: "Zatím jen okrajově. Soubor llms.txt popisuje, co na webu je, ale podle dostupných analýz z roku 2025 nebylo jeho plošné využívání velkými AI roboty (GPTBot, ClaudeBot, PerplexityBot) prokázané. Nastavit ho můžete, ale jako prioritu berte strukturovaná data a citovatelný obsah."
-  - q: "Jak často dělat AI SEO audit?"
+  - q: "Jak často dělat audit AI viditelnosti?"
     a: "Doporučená frekvence je jednou za čtvrtletí. Prostředí AI vyhledávání se mění rychle — přibývají noví roboti, mění se pravidla i způsob citování — takže roční rytmus jako u klasického SEO je tu příliš pomalý."
-  - q: "Musím si na AI SEO audit platit nástroje?"
+  - q: "Musím si na audit AI viditelnosti platit nástroje?"
     a: "Základ zvládnete zdarma: ruční dotazy v ChatGPT a Perplexity, Test rozšířených výsledků a validátor strukturovaných dat Schema.org a kontrola souboru robots.txt. Placené nástroje (Otterly, Profound) se hodí až na průběžné měření podílu zmínek u více dotazů a konkurence."
 ---
 
@@ -38,9 +39,9 @@ import Insight from "../../components/blocks/Insight.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
 
-## AI SEO audit krok za krokem: pět vrstev, které projdete
+## <span class="hl">Audit AI viditelnosti</span> krok za krokem — <strong>pět vrstev, které projdete</strong>
 
-**AI SEO audit je kontrola, jak je váš web připravený na citace a zmínky v AI odpovědích.** Projde **pět vrstev** v logickém pořadí: jestli vás AI vyhledávače vůbec zmiňují, jestli k vašemu webu pustí své roboty, jestli vašemu obsahu rozumí stroje, jestli je text napsaný tak, aby šel citovat, a jak si to celé měřit v čase. Tenhle návod je **na svépomoc** — základní průchod na menším nebo středním webu většinou zvládnete během jednoho odpoledne, převážně se zdarma dostupnými nástroji.
+**Audit AI viditelnosti je kontrola, jak je váš web připravený na citace a zmínky v AI odpovědích.** Projde **pět vrstev** v logickém pořadí: jestli vás AI vyhledávače vůbec zmiňují, jestli k vašemu webu pustí své roboty, jestli vašemu obsahu rozumí stroje, jestli je text napsaný tak, aby šel citovat, a jak si to celé měřit v čase. Tenhle návod je **na svépomoc** — základní průchod na menším nebo středním webu většinou zvládnete během jednoho odpoledne, převážně se zdarma dostupnými nástroji.
 
 Proč to vůbec řešit odděleně od klasického SEO? Protože pozice v Googlu a citace v AI odpovědích spolu nemusí souviset. Podle analýz z roku 2025 mívá značná část stránek často citovaných v ChatGPT slabou až nulovou organickou viditelnost v Googlu. Dobrý klasický [SEO audit](/blog/seo-audit-co-kontrolovat/) je základ, ale AI vrstvu nepokryje.
 
@@ -110,7 +111,7 @@ I dobře přístupný a otagovaný obsah AI přeskočí, pokud z něj nejde snad
 
 ## Krok 5: Měřte a opakujte
 
-AI SEO audit není jednorázová akce. Nastavte si **základní měření** — kolik z vašich testovacích dotazů vás zmíní (podíl zmínek, tzv. share of voice) a u kterých témat citaci ztrácíte ve prospěch konkurence. Veďte si jednoduchý kalendář aktualizací klíčových stránek.
+Audit AI viditelnosti není jednorázová akce. Nastavte si **základní měření** — kolik z vašich testovacích dotazů vás zmíní (podíl zmínek, tzv. share of voice) a u kterých témat citaci ztrácíte ve prospěch konkurence. Veďte si jednoduchý kalendář aktualizací klíčových stránek.
 
 Celý audit pak **opakujte jednou za čtvrtletí**. Prostředí se mění rychle: přibývají noví roboti, platformy mění pravidla i způsob citování. Pokud AI viditelnost aktivně řešíte, roční kontrola bývá příliš pomalá — základní srovnání dotazů a citací dává smysl opakovat častěji.
 
@@ -137,6 +138,6 @@ Celý audit pak **opakujte jednou za čtvrtletí**. Prostředí se mění rychle
 
 ## Co dál: rámec, nebo audit na míru
 
-AI SEO audit vám ukáže, **co** je potřeba na webu opravit. Když to chcete krok za krokem promítnout do vlastního webu — od homepage přes produktové a kategoriové stránky až po blog — je k dispozici [AI SEO Wireframe Pack](/pack/): kompletní rámec se šablonami textů, strukturovanými daty a návodem za 1 490 Kč, se kterým začnete během jednoho odpoledne.
+Audit AI viditelnosti vám ukáže, **co** je potřeba na webu opravit. Když to chcete krok za krokem promítnout do vlastního webu — od homepage přes produktové a kategoriové stránky až po blog — je k dispozici [AI SEO Wireframe Pack](/pack/): kompletní rámec se šablonami textů, strukturovanými daty a návodem za 1 490 Kč včetně DPH, se kterým začnete během jednoho odpoledne.
 
-Pokud nechcete řešit implementaci sami, dává smysl navázat [AI SEO auditem na míru](/audit/) za 3 600 Kč přímo pro váš web. Pack vám dává rámec, audit přesný plán.
+Pokud nechcete řešit implementaci sami, dává smysl navázat [Auditem AI viditelnosti na míru](/audit/) za 3 600 Kč bez DPH přímo pro váš web. Pack vám dává rámec, audit přesný plán.

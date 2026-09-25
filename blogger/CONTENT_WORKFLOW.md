@@ -84,8 +84,13 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   stránky. Formát: 9 PDF souborů + souhrnné PDF. Platí pro CTA i zmínky v textu.
 - **Z4 — Název auditu** *(obě větve)*. Placený audit za 3 600 Kč je **„Audit AI
   viditelnosti“**; „SEO audit“ smí stát jen jako kontrast („není to klasický SEO audit“).
-  Starý název („AI SEO audit“, „SEO a AI audit“) je k 18. 9. 2026 ve **90 článcích,
-  125 výskytech** — odbaví ho blok oprav, adresa `/blog/ai-seo-audit/` zůstává.
+  Starý název („AI SEO audit“, „SEO a AI audit“) **byl z blogu odbaven 26. 9. 2026**
+  blokem oprav: 120 výskytů v 89 článcích, dnes **0**. Adresa `/blog/ai-seo-audit/` zůstala,
+  ale článek na ní se jmenuje „Audit AI viditelnosti svépomocí“ — slug drží adresu, ne název.
+  **Když v textu potřebuješ obecnou činnost, piš malým písmenem** („udělejte si audit AI
+  viditelnosti“); velké `Audit AI viditelnosti` je název naší placené služby. Ve stejném běhu
+  dostaly obě ceny povinný dovětek: **1 490 Kč včetně DPH** (Pack) a **3 600 Kč bez DPH** (audit),
+  a cena se přesunula **mimo text odkazu** — do popisku odkazu nepatří.
 - **Z5 — Kdo co píše** *(obě větve)*. Blog mají dvě blogger větve: **tahle (Claude,
   tento dokument)** píše nové články, refreshe a bloky oprav; **Codex**
   (`Content Workflow Codex.md`) píše **jen nové články**. Admin session zasahuje do blogu
