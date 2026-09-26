@@ -1,0 +1,218 @@
+---
+title: "Skladovost a dodací lhůta pro AI: návod pro e-shopy"
+seoTitle: "Skladovost pro AI: jak správně uvést dostupnost"
+description: "Jak odlišit skladovost od dodací lhůty, správně zapsat dostupnost produktu a udržet shodu stránky, feedu a strukturovaných dat."
+answer: "Skladovost říká, zda je produkt fyzicky dostupný právě teď. Stav dostupnosti navíc určuje, zda obchod přijímá běžnou objednávku, předobjednávku nebo objednávku po doskladnění; dodací lhůta říká, kdy zákazník zboží dostane. E-shop má údaje ukázat na produktové stránce a stejně je zapsat v používaných produktových datech. U variant patří každý stav konkrétní velikosti, barvě nebo balení."
+slug: "dostupnost-a-skladovost-pro-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "strukturovana-data"
+  - "technicke-zaklady"
+published: "2026-09-26"
+updated: "2026-09-26"
+keywords:
+  - "dostupnost a skladovost pro AI"
+  - "skladovost produktu"
+  - "dodací lhůta e-shop"
+  - "skladem u dodavatele"
+  - "Offer availability"
+  - "availability date"
+  - "strukturovaná data produktu"
+  - "produktový feed dostupnost"
+variant: "rich"
+faq:
+  - q: "Co znamená skladem u dodavatele?"
+    a: "Není to standardizovaný stav s jednotnou dodací lhůtou. Obvykle říká jen to, že zboží nemá e-shop ve vlastním skladu. Produktová stránka má proto doplnit konkrétní očekávání, například „odesíláme do 3–5 pracovních dnů“, a e-shop má termín skutečně umět dodržet."
+  - q: "Jaký je rozdíl mezi předobjednávkou a čekáním na doskladnění?"
+    a: "Předobjednávka patří produktu, který ještě nebyl uveden na trh. Stav backorder se používá u existujícího produktu, který teď není skladem, ale obchod objednávku přijímá a odešle ji po doskladnění. Google u obou stavů požaduje očekávané datum dostupnosti."
+  - q: "Musí být dodací lhůta ve strukturovaných datech?"
+    a: "Pro základní produktovou nabídku je klíčový stav Offer.availability. Dobu zpracování a přepravy lze doplnit přes OfferShippingDetails a ShippingDeliveryTime. Údaje mají odpovídat tomu, co zákazník vidí na stránce; strukturovaná data nemají nahrazovat viditelný termín."
+  - q: "Co když má každá varianta jinou dostupnost?"
+    a: "Nestačí označit celý produkt jako skladem, když je dostupná jen část velikostí nebo barev. Google vyžaduje, aby šla každá varianta přímo předvolit odlišnou URL. Ve vlastním formátu OpenAI potřebuje každý řádek odlišné `item_id`, společné `group_id`, `listing_has_variations=true` a `variant_dict`; odkaz má variantu předvolit, pokud je to technicky možné."
+  - q: "Jak často aktualizovat dostupnost v produktovém feedu?"
+    a: "Při každé změně stavu. Google požaduje aktuální shodu feedu se stránkou a OpenAI uvádí, že stav se musí změnit při naskladnění nebo vyprodání. U rychle se měnícího skladu proto nestačí jediný export za den, pokud mezitím prodáváte poslední kusy."
+  - q: "Zajistí správná dostupnost zobrazení v ChatGPT nebo Googlu?"
+    a: "Ne. Přesná dostupnost dává systémům použitelný podklad a u Googlu pomáhá splnit podmínky produktových výsledků. OpenAI ji uvádí mezi hledisky pro řazení nabídek obchodníků. Žádná z platforem ale negarantuje zobrazení konkrétního produktu."
+---
+
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import SourceCard from "~/components/blocks/SourceCard.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+**Skladovost a dodací lhůta nejsou jeden údaj.** První říká, zda je produkt fyzicky dostupný; stav dostupnosti navíc určuje, v jakém režimu obchod přijímá objednávku. Druhá odpovídá, kdy zákazník zboží dostane. E-shop má obojí ukázat zákazníkovi a stav dostupnosti správně promítnout do používaných produktových dat; dodací lhůtu doplní způsobem, který dané napojení podporuje. Vágní „skladem u dodavatele“ bez termínu zákazníkovi neřekne, kdy zboží dostane.
+
+Tento návod navazuje na obecnější postup pro [produktové stránky v AI vyhledávání](/blog/produktove-stranky-pro-ai/) a na článek o [shodě produktového feedu s webem](/blog/produktovy-feed-gtin/). Tady se soustředíme na **dostupnost nabídky: od posledních kusů přes dočasné vyprodání až po předobjednávku**.
+
+## <span class="hl">Skladovost a dodací lhůta</span> jsou <strong>dva různé údaje</strong>
+
+„Skladem“ bez dalšího kontextu odpovídá na otázku, zda e-shop objednávku přijme a může ji splnit. Neříká automaticky, zda balík odešle dnes, za tři dny nebo až po převozu z externího skladu. Dodací lhůta se skládá nejméně ze **zpracování objednávky** a **doby přepravy**.
+
+Google oba údaje rozlišuje i ve svých datových formátech. Ve strukturovaných datech se stav nabídky zapisuje do vlastnosti `availability` u typu `Offer` (nabídka). Údaje o dopravě lze popsat zvlášť v `OfferShippingDetails`, kde `ShippingDeliveryTime` rozlišuje `handlingTime` a `transitTime`. Viditelný text má být stejně konkrétní:
+
+<CompareTable
+  leftLabel="Co stav říká"
+  leftTone="accent"
+  rightLabel="Co má vidět zákazník"
+  rightTone="geo"
+  rows={[
+    { icon: "●", label: "Skladem", left: "Objednávku lze přijmout a zboží odeslat", right: "Skladem · odesíláme dnes nebo do 24 hodin" },
+    { icon: "◐", label: "Externí sklad", left: "Zboží není ve vlastním skladu e-shopu", right: "Odesíláme do 3–5 pracovních dnů" },
+    { icon: "↻", label: "Po doskladnění", left: "Objednávku přijmete, zboží teď chybí", right: "Očekávané odeslání 8. října" },
+    { icon: "○", label: "Vyprodáno", left: "Objednávku teď nepřijímáte", right: "Vyprodáno · hlídání dostupnosti" },
+  ]}
+/>
+
+<Insight tone="warn" label="Pozor na formulaci">
+**„Skladem u dodavatele“ není standardizovaný technický stav.** Bez konkrétního termínu může u každého e-shopu znamenat něco jiného. Pokud dodavatel termín nepotvrdí, ukažte raději poctivé rozpětí nebo stav „termín ověřujeme“ než přesný den, který nemáte pod kontrolou.
+</Insight>
+
+U ceny platí stejná zásada: zákazník i systémy mají dostat tentýž aktuální údaj. Jak cenu zapsat, rozebírá návod [Ceny na webu a AI](/blog/ceny-na-webu-a-ai/).
+
+## Čtyři <span class="hl">stavy dostupnosti</span> mají <strong>odlišný význam</strong>
+
+[Google Merchant Center](https://support.google.com/merchants/answer/6324448) rozlišuje čtyři běžné hodnoty. Názvy v produktovém feedu nejsou reklamní štítky; popisují, zda objednávku přijímáte a v jaké situaci se produkt nachází.
+
+| Stav v produktovém feedu | Kdy ho použít | Viditelná informace na stránce |
+|---|---|---|
+| `in_stock` | Produkt lze koupit, včas odeslat a doručit do všech oblastí, které u nabídky podporujete | Stav a konkrétní doba odeslání |
+| `out_of_stock` | Objednávku nepřijímáte | Jasné „vyprodáno“ a neaktivní nákupní tlačítko |
+| `preorder` | Produkt ještě nebyl uveden na trh, objednávky už přijímáte | Předobjednávka a očekávané datum odeslání |
+| `backorder` | Existující produkt dočasně chybí, objednávky přijímáte | Objednání po doskladnění a očekávané datum odeslání |
+
+U `preorder` a `backorder` Google požaduje také `availability_date`. Do feedu pošlete jediný odhadovaný termín v ISO 8601, nejvýše rok dopředu; rozsah Google nepřijímá. Na stránce můžete odhad zákazníkovi vyjádřit méně přesně, například měsícem, a po potvrzení ho zpřesnit. Předobjednávka tedy není univerzální náhrada za každý výrobek, který právě došel: patří novince před uvedením, zatímco dočasně vyprodaný existující produkt odpovídá stavu `backorder`.
+
+Případné omezení doručení musí být na stránce viditelné a odpovídat nastavení dopravy nebo regionální dostupnosti v Merchant Center. Obecné `in_stock` nesmí slibovat doručení do oblasti, kterou nabídka ve skutečnosti nepokrývá.
+
+<SourceCard
+  badge="Primární zdroj"
+  href="https://support.google.com/merchants/answer/6324448"
+  linkLabel="Pravidla dostupnosti Googlu"
+  tone="seo"
+>
+**Google vyžaduje shodu dostupnosti** mezi produktovou stránkou, strukturovanými daty, objednávkovým procesem a produktovým feedem. Rozpor může vést k zamítnutí produktu v Merchant Center.
+</SourceCard>
+
+OpenAI používá ve vlastním formátu produktového feedu podobné stavy: `in_stock`, `out_of_stock`, `pre_order`, `backorder` a `unknown`. Pokud OpenAI pro váš registrovaný feed výslovně potvrdí profil kompatibilní s Google Merchant Center, zapisuje se v něm předobjednávka `preorder` bez podtržítka a hodnota `unknown` se nepřijímá. **Formát proto vždy berte z dokumentace konkrétního napojení**, ne z náhodného příkladu na internetu.
+
+[OpenAI u nákupních výsledků](https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search) uvádí dostupnost mezi hledisky pro řazení nabídek obchodníků. Přímé feedy jsou však k 26. září 2026 dostupné jen schváleným partnerům. Pro běžný český e-shop z toho plyne střízlivý závěr: udržujte přesná produktová data všude, kam je skutečně posíláte, ale neslibujte si z toho automatické zobrazení v ChatGPT.
+
+## Ve <span class="hl">strukturovaných datech</span> oddělte <strong>stav od termínu</strong>
+
+Na produktové stránce patří stav do nabídky `Offer`. Dodací lhůtu popište samostatně pomocí údajů o zpracování a přepravě. Následující příklad obsahuje i obrázek a cenu dopravy, které Google pro způsobilost obchodního a dopravního rozšíření požaduje. Říká, že je produkt skladem, zpracování trvá nula až jeden den a přeprava jeden až tři dny:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Pracovní svítilna 1200 lm",
+  "sku": "SV-1200",
+  "image": "https://example.cz/images/svitilna-1200.jpg",
+  "offers": {
+    "@type": "Offer",
+    "price": 1290,
+    "priceCurrency": "CZK",
+    "availability": "https://schema.org/InStock",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 99,
+        "currency": "CZK"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "CZ"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 3,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+```
+
+Příklad ukazuje princip; nekopírujte jej bez úprav. Nahraďte ukázkovou adresu obrázku i cenu dopravy skutečnými údaji a doplňte jen hodnoty, které odpovídají nabídce a oblasti doručení. Pokud máte pro většinu sortimentu stejné dopravní podmínky, Google doporučuje popsat je na úrovni organizace a na produktu uvádět jen odchylky.
+
+<Insight tone="accent" label="Jeden zdroj údajů">
+Stránku, strukturovaná data i feed generujte ze stejného údaje v katalogu, místo abyste každý výstup upravovali ručně. **Když se změní skladový stav, současně aktualizujte viditelný štítek, `Offer.availability`, produktový feed i možnost vložit zboží do košíku.**
+</Insight>
+
+Strukturovaná data vytvořená až po načtení stránky pomocí JavaScriptu nejsou ideální pro rychle se měnící cenu a dostupnost. [Google u variant](https://developers.google.com/search/docs/appearance/structured-data/product-variants) upozorňuje, že může taková data načítat méně často a zpracovat méně spolehlivě než data obsažená přímo v HTML. Pokud to vaše e-shopové řešení umožňuje, vložte základní produktová data přímo do HTML, které server odešle prohlížeči.
+
+## U <span class="hl">variant produktu</span> nestačí <strong>jeden společný stav</strong>
+
+Modré tričko velikosti M může být skladem, zatímco černé tričko velikosti L je vyprodané. Označit celý produkt jako „skladem“ by bylo pravdivé jen pro část nabídky. Google i OpenAI proto počítají s dostupností na úrovni konkrétní varianty.
+
+Google pro skupinu variant používá `ProductGroup`, `hasVariant`, `variesBy` a `productGroupID`. Každá varianta má mít vlastní identifikátor a odlišnou URL, po jejímž otevření se přímo zobrazí se správnou cenou, obrázkem a dostupností. Ve vlastním formátu OpenAI pošlete pro každou variantu samostatný řádek s odlišným `item_id`, společným `group_id`, hodnotou `listing_has_variations=true` a `variant_dict` vybrané kombinace. Každý řádek nese vlastní cenu, dostupnost, URL a obrázek; odkaz má variantu předvolit, pokud je to technicky možné. U profilu kompatibilního s Google Merchant Center použijte pole, která OpenAI pro tento profil potvrdilo.
+
+<Stepper
+  steps={[
+    { title: "Vyberte konkrétní variantu", desc: "Otevřete odkaz uvedený ve feedu. Stránka má předvolit stejnou velikost, barvu nebo balení, které daný řádek popisuje." },
+    { title: "Porovnejte viditelný stav", desc: "Štítek dostupnosti, nákupní tlačítko a očekávané odeslání musí odpovídat zvolené variantě." },
+    { title: "Zkontrolujte strukturovaná data", desc: "Najděte správný produkt (Product) a nabídku (Offer). Identifikátor, cena a vlastnost availability musí patřit téže variantě." },
+    { title: "Porovnejte řádek ve feedu", desc: "Stejný identifikátor a stav musí být i v produktovém zdroji. Nestačí kontrolovat jen nadřazený produkt." },
+  ]}
+/>
+
+Častá chyba vzniká, když odkaz z feedu otevře jinou variantu, než kterou daný řádek popisuje. Feed odkazuje na velikost M, která je skladem, ale stránka po otevření předvolí vyprodanou velikost L. Google tento případ uvádí mezi typickými příčinami nesouladu dostupnosti.
+
+## <span class="hl">Kontrola dostupnosti</span> musí být <strong>součástí provozu</strong>
+
+Jednorázové nastavení nevydrží. Skladový stav se mění po objednávkách, vratkách, příjmu zboží i po ruční úpravě údajů dodavatelem. Nejrizikovější jsou produkty s posledními kusy a nabídky z externího skladu, kde e-shop přebírá stav se zpožděním.
+
+<Stepper
+  steps={[
+    { title: "Určete jeden zdroj skladového stavu", desc: "Viditelný text, strukturovaná data a feed generujte z téhož katalogového pole. Ruční přepis vytváří rozpor." },
+    { title: "Oddělte stav od slíbeného termínu", desc: "Vedle skladového stavu evidujte také dobu zpracování a přepravy. Externí sklad nesmí automaticky znamenat odeslání do 24 hodin." },
+    { title: "Aktualizujte změny bez zbytečné prodlevy", desc: "Při vyprodání, naskladnění nebo změně termínu obnovte stránku i všechny používané feedy. OpenAI doporučuje odesílat celý feed denně a průběžné změny přes API, pokud máte k tomuto napojení přístup." },
+    { title: "Kontrolujte vzorek rizikových produktů", desc: "Projděte poslední kusy, předobjednávky, externí sklady a varianty. Porovnejte stránku, košík, strukturovaná data a řádek ve feedu." },
+    { title: "Sledujte zamítnutí a chybové přehledy", desc: "V Merchant Center řešte nesoulad jako procesní chybu, ne jen jako jednotlivý vadný produkt. Hledejte společný zdroj zpoždění." },
+  ]}
+/>
+
+<MistakeGrid>
+  <Mistake num="01" title="Skladem u dodavatele bez termínu">
+    Zákazník ani systém nepoznají, zda jde o dva dny, nebo dva týdny. Doplňte realistickou dobu odeslání a pravidlo pro její aktualizaci.
+  </Mistake>
+  <Mistake num="02" title="Předobjednávka místo doskladnění">
+    `preorder` patří produktu před uvedením na trh. U existujícího výrobku, který došel, použijte stav pro objednání po doskladnění a očekávané datum.
+  </Mistake>
+  <Mistake num="03" title="Feed se mění později než stránka">
+    Při každé změně může vzniknout krátkodobý nesoulad. Oba výstupy proto aktualizujte ze stejného zdroje a pokud možno současně.
+  </Mistake>
+  <Mistake num="04" title="Jeden stav pro všechny varianty">
+    Dostupnost nadřazeného produktu neříká, která velikost nebo barva je skutečně k nákupu. Stav patří ke konkrétní variantě.
+  </Mistake>
+  <Mistake num="05" title="Termín, který nemáte pod kontrolou">
+    Datum od dodavatele se může změnit. Uvádějte je jen tehdy, pokud údaj průběžně ověřujete a každou změnu ihned promítnete na stránku. Bez potvrzení použijte ve viditelném textu poctivé rozpětí; do atributu availability_date patří jediný termín, ne rozsah.
+  </Mistake>
+  <Mistake num="06" title="Přesná data nejsou zárukou zobrazení">
+    Přesná data pomáhají splnit podmínky Googlu pro produktové výsledky, ale nezaručují zobrazení produktu ani doporučení v odpovědi AI.
+  </Mistake>
+</MistakeGrid>
+
+## <span class="hl">Přesná dostupnost</span> dává <strong>všem stejný údaj</strong>
+
+Začněte u významu, ne u kódu. Rozlište fyzickou skladovost, režim objednávky, dobu odeslání a dobu přepravy. Potom stejné údaje propisujte z jednoho zdroje na stránku, do strukturovaných dat, do košíku a do každého feedu, který skutečně používáte.
+
+Správná dostupnost negarantuje zobrazení v Googlu ani ChatGPT. Odstraňuje ale rozpor mezi údajem na stránce a údajem, který dostane vyhledávač nebo nákupní služba. U produktů s variantami proto veďte dostupnost zvlášť pro každou velikost, barvu a balení.
+
+**Chcete připravit produktovou stránku tak, aby zákazníci, vyhledávače i AI našli cenu, dostupnost, parametry a podmínky na správném místě?** [AI SEO Wireframe Pack](/pack/) za 1 490 Kč včetně DPH obsahuje vzor produktové stránky, strukturovaná data a návod na nasazení. Celkem pokrývá sedm typů stránek a samostatnou kapitolu k nasazení.
+
+*Stav dokumentace ověřen 26. září 2026. Přímé produktové feedy OpenAI jsou v době vydání dostupné jen schváleným partnerům a jejich formát se může měnit.*

@@ -1537,3 +1537,18 @@ zpřesněny vazby u uživatelů v USA, tiskové zprávy a výpočtu procenta.
 
 **Odmítnuto:** změna sedmi typů stránek Packu na osm. Aktuální produktový modul a Z3 potvrzují
 sedm typů; kapitola 08 je návod k nasazení. Nejde o jazykový nález.
+
+## 2026-09-26 · `dostupnost-a-skladovost-pro-ai` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 031 |
+| Mechanický checker | **1 → 0** nálezů při závěrečném průchodu |
+| LLM průchod | Oddělený jazykový subagent: 27 nálezů; všechny opraveny |
+| Nová pravidla | **žádné** — nálezy byly významové vazby nebo technický zápis konkrétního článku |
+
+**Opraveno:** nepřirozené a nejasné vazby kolem exportu, zdroje údajů, JavaScriptu,
+dodavatelského termínu a variant · odstraněný nedoložený superlativ · české vysvětlení
+technických názvů · přesnější rozdíl mezi skladovostí, možností objednat a dodací lhůtou ·
+označení názvů polí ve FAQ jako technický zápis. Závěrečný checker: 0 nálezů.
