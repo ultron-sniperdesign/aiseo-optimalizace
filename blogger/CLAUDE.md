@@ -140,7 +140,10 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
   proto se `.png` po kontrole ořezu maže a necommituje.
 - **Pole `stats` a `howto` se nepoužívají** (od 20. 9. 2026, pravidlo Z15) — nic je nevykreslovalo.
   Před přidáním nového pole frontmatteru ověř grepem, že ho šablona čte.
-- **IndexNow při lokálním buildu vrací 403** — normální, v CI projde.
+- **Krok IndexNow v CI spadne u každého většího commitu** — nad 60 namapovaných URL vrací
+  nenulový kód (`MAX_URLS` ve `scripts/indexnow.mjs`), podání je stejně vypnuté. Run to
+  neshazuje, postup je v `CONTENT_WORKFLOW.md` v D3. (Dřív tu stálo „v CI projde“ — od
+  plošných oprav to neplatí.)
 - **`ugrep` spadne na `mismatched [ ]`** u regexu se závorkami; na složitější hledání python.
 - Ukázky JSON-LD v článku se dají ověřit přes `validator.schema.org/validate`
   (POST, pole `html`) — použito 15. 9. 2026, 0 chyb.

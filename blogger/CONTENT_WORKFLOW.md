@@ -235,6 +235,10 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 - **A4 — Porovnání s tabulkou:** projdi `obsahovy-plan.csv` (řádky `Publikováno = ne`) → nepřidávej, co už čeká.
 - **A5 — Zápis ≥ 2 nových řádků** do `obsahovy-plan.csv` (formát sloupců viz legenda níže). Vyplň A–E (**D = kategorie** ze čtveřice `tutorial`/`analysis`/`defensive`/`case-study`, E = `ne`), F nech prázdné.
 
+  > **Neplatí pro blok oprav** *(rozhodnutí uživatele 26. 9. 2026)*. Blok oprav žádný research
+  > nedělá, takže by se témata musela vymýšlet jen kvůli splnění pravidla. Platí pro runy
+  > s novým článkem a pro refresh, kde research reálně proběhne.
+
   **U analytických témat rozlišuj tři věci a nepiš je do jedné věty:**
   1. **Otázka**, kterou má článek zodpovědět → sloupec B (Téma).
   2. **Teze k ověření** → sloupec C, uveď ji návěštím **`Teze:`**, ne `Data:`.
@@ -485,6 +489,15 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
     Nic jiného. **`.png` do commitu nepatří.**
   - commit `Blog: …` (obrázek jde se článkem) → `git push origin main` → CI ~1–2 min
+
+  > **Červené CI kvůli kroku IndexNow run neshazuje** *(rozhodnutí uživatele 26. 9. 2026)*.
+  > Krok `IndexNow` končí nenulovým kódem, kdykoli commit namapuje víc než **60 URL**
+  > (`MAX_URLS` ve `scripts/indexnow.mjs`) — každý blok oprav tu hranici z definice překročí.
+  > Podání je přitom vypnuté (`INDEXNOW_ENABLED: "0"`, Bing vrací 403), takže se nic neodesílá.
+  > **Postup:** ověř v `gh run view --json jobs`, že prošly kroky **Build**, **Upload + activate**
+  > a **Smoke test** a že selhal **jen** IndexNow. Pak je run v pořádku — pokračuj živou
+  > verifikací. Neřeš to a nehlas to znovu na board; zapsáno je to tam z 26. 9. 2026.
+  > Kterýkoli jiný červený krok je skutečná chyba a řeší se.
   - verifikace: `curl -sSI .../blog/<slug>/` → 200, **`curl -sSI .../og/<slug>.jpg` → 200**, listing `/blog/`, sitemap, JSON-LD (≥ 2); **mobilní kontrola na 375 px ve dvou krocích, viz níže**.; očima karta + hero (text obrázku se neusekne)
 
   **Mobilní kontrola (375 px) — dva kroky, nezaměňovat.**
@@ -581,6 +594,6 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
       ve frontmatteru** (s důvodem), ne nový slug ve slovníku
 - [ ] D1: design komponenty hotové **už před audity** (v C1), `.mdx` + `variant: rich`, žádný wall of text
 - [ ] D2: featured image `public/og/<slug>.jpg` + `.webp` (gpt-image-2, 1536×1024, CZ text v horních ~84 %, zkontrolováno) — **pracovní `.png` smazáno, do repa nejde**
-- [ ] D3: `npm run build` OK → commit (článek + `.jpg` + `.webp`) → push → CI → curl 200 (článek i `og/<slug>.jpg`)
+- [ ] D3: `npm run build` OK → commit (článek + `.jpg` + `.webp`) → push → CI → curl 200 (článek i `og/<slug>.jpg`). **Selhal-li v CI jen krok IndexNow, run je v pořádku** (D3)
 - [ ] D4: tabulka `E = ano`, `F = URL`
 - [ ] D5: URL do vlákna + (volitelně) záznam do per-projekt boardu

@@ -290,10 +290,15 @@ curl -s "https://aiseo-optimalizace.cz/blog/$SLUG/" | grep -c 'application/ld+js
 
 ```
 
-### ⛔ IndexNow je vypnutý (16. 9. 2026) — nic s ním nedělej
+### ⛔ IndexNow je vypnutý — nic s ním nedělej
 
-Integrace v `astro.config.mjs` je **zakomentovaná**, build ji nevolá a v logu po ní
-nic nezbylo. Nehledej ji, neřeš ji a nezkoušej URL podávat ručně.
+Od 17. 9. 2026 to **není integrace v buildu, ale samostatný krok v CI** (`scripts/indexnow.mjs`,
+soubor admin session) a **podání je vypnuté** přepínačem `INDEXNOW_ENABLED: "0"`. Krok jen vypisuje,
+co by podal. Nehledej to v buildu, neřeš to a nezkoušej URL podávat ručně.
+
+**Když kvůli němu zčervená CI, run to neshazuje** — nad 60 namapovaných URL vrací nenulový kód
+a každá plošná oprava tu hranici překročí. Postup je v `CONTENT_WORKFLOW.md` v D3
+*(rozhodnutí uživatele 26. 9. 2026)*.
 
 Důvod: `api.indexnow.org` vracel na tuhle doménu HTTP 403
 `{"errorCode":"UserForbiddedToAccessSite"}` u každého podání. Klíč je přitom
