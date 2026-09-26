@@ -1552,3 +1552,19 @@ sedm typů; kapitola 08 je návod k nasazení. Nejde o jazykový nález.
 dodavatelského termínu a variant · odstraněný nedoložený superlativ · české vysvětlení
 technických názvů · přesnější rozdíl mezi skladovostí, možností objednat a dodací lhůtou ·
 označení názvů polí ve FAQ jako technický zápis. Závěrečný checker: 0 nálezů.
+
+## 2026-09-26 · `tabulky-a-seznamy-pro-ai` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 066 |
+| Mechanický checker | **0** nálezů v konceptu i po opravách |
+| LLM průchod | Oddělený jazykový subagent: 20 nálezů; všechny opraveny |
+| Nová pravidla | **žádné** — nálezy byly významové vazby konkrétních vět |
+
+**Opraveno:** nepřirozené vazby u pořadí a porovnávání · nejasné podměty u vztahů mezi údaji
+a obrázku tabulky · kalk „tabulka stojí sama“ · terminologie W3C/WAI · tvrzení o studiích
+přepsaná do přirozené a současně přesnější češtiny · sloveso „skenovat“ nahrazené podle významu
+· zpřesněné pokyny k jednotné stavbě seznamu, převodu formátu a významu citace. Závěrečný
+checker: 0 nálezů.
