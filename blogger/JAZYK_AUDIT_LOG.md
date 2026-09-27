@@ -1568,3 +1568,19 @@ a obrázku tabulky · kalk „tabulka stojí sama“ · terminologie W3C/WAI · 
 přepsaná do přirozené a současně přesnější češtiny · sloveso „skenovat“ nahrazené podle významu
 · zpřesněné pokyny k jednotné stavbě seznamu, převodu formátu a významu citace. Závěrečný
 checker: 0 nálezů.
+
+## 2026-09-27 · `dotazy-zakazniku-na-produktu` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 078 |
+| Mechanický checker | **0** nálezů v konceptu i po opravách |
+| LLM průchod | Oddělený jazykový subagent: 26 nálezů; všechny opraveny a ověřeny závěrečným auditorem |
+| Nová pravidla | **žádné** — nálezy byly významové vazby konkrétních vět |
+
+**Opraveno:** rozlišení původního dotazu a zveřejněné otázky · nejasné „na produktu“
+v titulku · kalky „odpověď bydlí“, „surová otázka“, „vlastník odpovědi“, „zavřít mezeru“
+a „provozní výsledek“ · nesouběžné výčty a nejasná zájmena · vysvětlení FAQ, Q&A a QAPage
+· české označení rozšířeného výsledku s FAQ · přesnější formulace práce s osobními údaji,
+moderace a mobilní kontroly. Závěrečný checker: 0 nálezů.
