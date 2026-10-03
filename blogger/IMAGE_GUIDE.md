@@ -173,7 +173,7 @@ reading exactly: Generativní optimalizace . Spell the Czech text exactly with c
 diacritics. No other text, no logos, no brand marks.
 ```
 
-### Tři dodatky ověřené 2026-08-03
+### Dodatky a–f (první tři ověřené 2026-08-03, další přibyly z konkrétních vad)
 
 **a) Kompozici vynuť tvrdě, ne popisem.** Formulace „keep key elements in the upper and middle
 area" nestačí — model stejně poskládá spodní řadu karet do ořezové zóny. Funguje až tohle,
@@ -241,7 +241,7 @@ next. Do not draw any Creative Commons mark, copyright symbol, or any other logo
 Když ve scéně čitelný text chceš (název vlastnosti, štítek v rozhraní), **napiš ho do promptu
 doslova** a zkontroluj ho proti článku — obrázek je součástí tvrzení článku, ne dekorace.
 
-**e) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
+**f) Delší CZ nadpis si ohlídej.** Dvouslovné nadpisy se občas rozlomí uprostřed slova
 (`PROPADY V YDAVATELŮ`). Pojistka:
 
 ```

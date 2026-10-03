@@ -176,8 +176,8 @@ je trvalý stav souběhu:
 - **Blog píšou dvě blogger větve** (pravidlo Z5): tahle a Codex (`Content Workflow Codex.md`,
   jeho run-book — `CONTENT_WORKFLOW.md` nenahrazuje). Admin session dělá jen refreshe
   podložené daty. Před každým runem `git fetch` a `git log origin/main` (Z8, Z10).
-- **Nejbližší blok oprav** je přejmenování auditu do blogu (Z4) — starý název je
-  v 90 článcích, 125 výskytech.
+- **Kandidáti na blok oprav** jsou v `REFRESH_QUEUE.md` → „Otevřené kandidáty“. Přejmenování
+  auditu do blogu (Z4) je odbavené 26. 9. 2026 — znovu ho nehledej.
 
 ## VIII — Pointery
 
