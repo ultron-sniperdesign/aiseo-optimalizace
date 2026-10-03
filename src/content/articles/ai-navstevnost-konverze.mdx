@@ -1,121 +1,162 @@
 ---
 title: "AI návštěvnost a konverze: jak ji měřit v GA4 v roce 2026"
-description: "AI návštěvy mohou konvertovat lépe než klasické organické vyhledávání, ale část GA4 zařadí jako přímou návštěvnost. Jak je v roce 2026 měřit."
-answer: "AI návštěvnost je provoz, který na web posílají AI nástroje jako ChatGPT, Perplexity, Claude a Gemini. Podle dostupných analýz často konvertuje lépe než klasické organické vyhledávání, část návštěv ale přijde bez referrer hlavičky, tedy informace o zdroji. V Google Analytics 4 proto může spadnout do přímé návštěvnosti."
+seoTitle: "Návštěvnost z AI v GA4: jak ji měřit a jak číst konverze"
+description: "Kanál AI Assistant v GA4, relace bez zdroje a konverze z AI: jak návštěvnost z AI asistentů změřit a poctivě srovnat. S daty z našeho e-shopu."
+answer: "Návštěvnost z AI asistentů vykazuje GA4 v kanálu AI Assistant, který Google ohlásil 13. 5. 2026: ChatGPT, Gemini, Claude a další. Přehled od AI a režim AI v něm nejsou, ty počítá do organického vyhledávání. Část relací ze zdrojů AI skončí mimo kanál, proto pomůže vlastní skupina kanálů. Konverze srovnávejte jen mezi relacemi se stejným typem vstupní stránky."
 slug: "ai-navstevnost-konverze"
 category: "analysis"
 tags:
   - "mereni"
+  - "eshopy"
 published: "2026-05-30"
-updated: "2026-05-30"
+updated: "2026-10-03"
 variant: "rich"
 keywords:
+  - "návštěvnost z AI v GA4"
+  - "GA4 AI Assistant"
   - "ai návštěvnost konverze"
-  - "ai referral traffic"
-  - "ai návštěvnost ga4"
-  - "měření ai návštěv"
-  - "ai assistant channel"
-  - "chatgpt perplexity konverze"
-  - "ai návštěvy z chatgpt"
+  - "návštěvnost z ChatGPT"
+  - "utm_source=chatgpt.com"
+  - "vlastní skupina kanálů GA4"
+  - "konverze z AI asistentů"
 faq:
-  - q: "Konvertují AI návštěvníci opravdu líp než organické?"
-    a: "U části webů ano, ale není to univerzální pravidlo. Veřejné analýzy z let 2025–2026 naznačují vyšší konverzní poměr u AI návštěv (rozdíly mezi ChatGPT, Claude, Perplexity a Gemini se objevují, ale pořadí se liší podle oboru a vzorku). Konkrétní výsledek závisí na oboru, typu konverze, zdroji návštěvy a metodice měření — berte to jako trend, ne jako pevné srovnávací číslo."
-  - q: "Proč AI návštěvy chodí jako přímá návštěvnost?"
-    a: "Část AI nástrojů uživatele po kliknutí na zdroj přepošle na web bez referrer hlavičky. GA4 takovou návštěvu nemá podle čeho přiřadit, a spadne do přímé návštěvnosti (direct). Analýzy AI návštěvnosti upozorňují, že tímto způsobem se v reportech může schovat značná část AI návštěv — bez doplňkového měření zůstávají neviditelné jako AI zdroj."
-  - q: "Co je AI Assistant channel v GA4 a jak ho najít?"
-    a: "AI Assistant je nový kanál ve výchozí skupině kanálů Google Analytics 4, který Google přidal v květnu 2026. Funguje automaticky pro všechny GA4 účty. Najdete ho v Reportech v sekci Akvizice → Kanály; pokud váš web už dostává AI návštěvy, uvidíte je v něm souhrnně."
-  - q: "Jak doplnit měření AI návštěv, když AI Assistant channel nestačí?"
-    a: "Doplňte vlastní UTM značky v odkazech, které si dáváte do veřejných míst (dokumenty, návody, sdílený obsah), kde si je AI může vzít — UTM přežijí přechod lépe než přirozený referrer. Druhý krok je vlastní segment v GA4, který kombinuje AI Assistant channel, vaše UTM zdroje a referrery z domén AI nástrojů."
-  - q: "Mám prioritizovat objem AI návštěv, nebo jejich konverzi?"
-    a: "Konverzi a hodnotu. AI návštěvy bývají v absolutním objemu malé, ale často kvalifikovanější než klasické organické vyhledávání — uživatel přichází po průzkumu, blíž k rozhodnutí. Když budete AI návštěvnost hodnotit jen podle objemu, lehce ji podceníte; podle konverzí a hodnoty často vychází lépe než řada jiných kanálů."
-  - q: "Jdou v GA4 rozlišit kliky z ChatGPT, Perplexity, Claude a Gemini?"
-    a: "Částečně. AI Assistant channel je obvykle zobrazuje souhrnně, ale referrery a UTM značky vám umožní jednotlivé nástroje oddělit — ChatGPT, Perplexity, Claude i Gemini se v reportech objevují podle zdrojové domény. Plné rozdělení vyžaduje vlastní segment nebo Looker Studio report nad GA4."
+  - q: "Kde v GA4 najdu návštěvy z ChatGPT?"
+    a: "Rozpoznané návštěvy z ChatGPT řadí GA4 do kanálu AI Assistant ve výchozí skupině kanálů, který Google ohlásil 13. 5. 2026. Podle nápovědy dostane relace médium ai-assistant a kampaň (ai-assistant), když odkazující zdroj odpovídá seznamu AI asistentů, který vede Google. Na našem e-shopu MEGA DETAIL se to v datech objevilo až v týdnu 8.–14. 6. 2026; předtím byly návštěvy z ChatGPT mezi odkazujícími weby a v nepřiřazeném provozu a i potom pár relací skončilo mimo kanál — mezi 15. 6. a 30. 9. 2026 to bylo 8 ze 739 relací z chatgpt.com."
+  - q: "Patří Přehled od AI a režim AI do kanálu AI Assistant?"
+    a: "Přehled od AI ani režim AI do kanálu AI Assistant nepatří. Nápověda GA4 je z něj výslovně vyřazuje a počítá je do organického vyhledávání (Organic Search), kde je oddělit nejde. Stejně je to v Search Console: kliky z obou funkcí jsou v typu vyhledávání Web sečtené s ostatními kliky."
+  - q: "Proč mám návštěvy z chatgpt.com v Nepřiřazeno (Unassigned)?"
+    a: "ChatGPT podle OpenAI přidává do odkazů na weby parametr utm_source=chatgpt.com. V našich datech měly takové relace médium (not set), a dokud je GA4 nezačal řadit do kanálu AI Assistant, nesplnily pravidla žádného výchozího kanálu a zůstaly nepřiřazené. Na e-shopu MEGA DETAIL se to dělo hlavně před 8. 6. 2026; u zdrojů copilot.com, perplexity a gemini bez média se to děje dál."
+  - q: "Konvertují návštěvy z AI lépe než z vyhledávání?"
+    a: "Studie se rozcházejí. Na 973 e-shopech vyšla organická návštěva o 13 % pravděpodobněji ke konverzi než návštěva z ChatGPT, na 97 webech pro B2B se návštěvy z AI měnily v poptávku třikrát častěji a na 54 webech statisticky významný rozdíl nebyl. Na našem e-shopu měly relace z AI vyšší podíl nákupů, ale rozdíl se z 17× zmenšil na necelé 3×, když jsme srovnali jen relace začínající na produktu."
+  - q: "Jak v GA4 nastavit vlastní kanál pro AI?"
+    a: "Vlastní kanál pro AI vznikne ve vlastní skupině kanálů, kterou založíte jako kopii výchozí: přidáte kanál s podmínkou na zdroj relace přes regulární výraz a v pořadí ho dáte nad odkazující weby, protože relace patří do prvního kanálu, kterému odpovídá. Skupinu jde podle nápovědy použít i zpětně. Ukázkový výraz z nápovědy nekopírujte bez úprav — jeho první část zachytí i zdroj email."
+  - q: "Můžu kanál AI Assistant srovnat s obdobím před květnem 2026?"
+    a: "Kanál AI Assistant s obdobím před jeho zavedením srovnat nejde: předtím GA4 tytéž návštěvy třídil jinak, takže srovnání porovnává dvě různá třídění, ne vývoj návštěvnosti. Na našem e-shopu navíc kanál začal fungovat zhruba čtyři týdny po ohlášení. Pro delší řadu použijte vlastní skupinu kanálů, kterou jde podle nápovědy použít i na starší data."
 ---
 
-import Checklist from "../../components/blocks/Checklist.astro";
 import Insight from "../../components/blocks/Insight.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
 
-## AI návštěvníci často konvertují líp — pokud je správně naměříte
+**Návštěvnost z AI v GA4 začněte měřit v kanálu AI Assistant, ale neberte ho jako úplný přehled.** Přehled od AI a režim AI v něm nejsou — patří do organického vyhledávání. Část relací ze zdrojů AI skončí mimo kanál a v praxi nezačal ani v den, kdy ho Google ohlásil. Pro delší a úplnější řadu pomůže vlastní skupina kanálů podle zdroje relace, pro konverze srovnání podle vstupní stránky.
 
-**AI návštěvnost je provoz z AI nástrojů jako ChatGPT, Perplexity, Claude nebo Gemini. Podle dostupných analýz mohou u části webů konvertovat lépe než klasické organické vyhledávání.** Háček je v měřitelnosti: část AI nástrojů uživatele přepošle bez referrer hlavičky a Google Analytics 4 takovou návštěvu klasifikuje jako přímou návštěvnost (direct). Bez doplňkového měření vám tak významná část AI návštěv zůstane v běžných GA4 reportech skrytá.
+Návod ukazuje, kde návštěvy z AI v GA4 najdete a kde ne, jak zachytit relace, u kterých v datech zůstal zdroj AI mimo kanál AI Assistant, a jak srovnávat konverze, aby výsledek neurčovalo hlavně to, na jakou stránku návštěvy vstupují. Článek vyšel v květnu 2026 jako přehled; po zavedení kanálu jsme ho přepsali podle nápovědy Googlu a podle dat našeho e-shopu MEGA DETAIL za 13. 5.–30. 9. 2026.
 
-Tento rozbor doplňuje [zero-click a AI Overviews](/blog/zero-click-ai/) o **druhou stranu mince**: co naopak na web doráží a proč to stojí za to měřit. V anglických analýzách se pro tento typ návštěv často používá označení **AI referral** — tedy návštěva z AI nástroje nebo asistenta. Navazuje i na [měření SEO výkonu v roce 2026](/blog/mereni-seo-vykonu-2026/) a [AI SEO nástroje](/blog/ai-seo-nastroje/).
+## Kde návštěvy z AI v <span class="hl">GA4</span> najdete — <strong>a kde ne</strong>
 
-<Insight tone="accent" icon="!" label="Co si odnést">
-  AI návštěvy bývají v absolutním objemu malé, ale kvalifikovanější než klasické organické vyhledávání. Když je hodnotíte jen podle objemu, podceníte je. Klíč je správně je naměřit a sledovat konverzi.
+GA4 třídí relace do kanálů podle pravidel ve [výchozí skupině kanálů](https://support.google.com/analytics/answer/9756891). Pro návštěvy z AI jsou podstatná čtyři místa:
+
+| Kanál | Kdy tam relace spadne | Co z toho plyne |
+|---|---|---|
+| **AI Assistant** | odkazující zdroj je na seznamu AI asistentů, který vede Google (GA4 pak relaci přiřadí médium ai-assistant a kampaň (ai-assistant)), nebo relace už médium ai-assistant nese | jádro návštěv z AI; úplný seznam asistentů Google nezveřejňuje |
+| **Organické vyhledávání** (Organic Search) | klik z Přehledu od AI nebo z režimu AI ve Vyhledávání Google | AI funkce Googlu jsou sečtené s běžným vyhledáváním |
+| **dřívější zdroj, nebo přímá návštěvnost** (Direct) | relace bez odkazujícího zdroje a bez parametrů v adrese | připíše se poslednímu nepřímému zdroji uživatele, jinak přímé návštěvnosti |
+| **Nepřiřazeno** (Unassigned) | relace nesplní pravidla žádného kanálu — u nás typicky zdroj AI z parametru v adrese bez média | chatgpt.com před nasazením kanálu, dál copilot.com, perplexity a gemini |
+
+Kanál AI Assistant Google [ohlásil 13. 5. 2026](https://support.google.com/analytics/answer/9164320). Nápověda jako příklady jmenuje ChatGPT, Gemini, DeepSeek, Copilot a Grok, oznámení změny ChatGPT, Gemini a Claude. Přehled od AI a režim AI z kanálu výslovně vyřazuje — ty jsou v organickém vyhledávání a oddělit je tam nejde. Proč je neoddělí ani Search Console, rozebírá [článek o limitech měření](/blog/mereni-ai-mode-limity/).
+
+U relačních rozměrů připíše GA4 relaci, která začne bez odkazujícího zdroje a bez parametrů v adrese, [poslednímu nepřímému zdroji](https://support.google.com/analytics/answer/11080067) téhož uživatele; do přímé návštěvnosti ji dá, jen když žádný nezná. Návštěva z AI bez zdroje se tak může schovat v přímé návštěvnosti i v úplně jiném kanálu. Kolik takových návštěv je, žádný oficiální zdroj neuvádí.
+
+ChatGPT podle [OpenAI](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq) do odkazů na weby přidává parametr `utm_source=chatgpt.com`, takže GA4 může zdroj poznat i tam, kde odkazující adresa chybí — pokud parametr dorazí až na měřenou stránku a nezmizí cestou při přesměrování. Médium ale parametr nenese — a takové relace v našich datech končily jako nepřiřazené, dokud je GA4 nezačal řadit do kanálu AI Assistant.
+
+<Insight tone="warn" label="Kanál nezačal 13. května">
+Na e-shopu MEGA DETAIL začal GA4 relacím z ChatGPT přidělovat médium ai-assistant až v týdnu 8.–14. 6. 2026, skoro čtyři týdny po ohlášení. Do té doby byly tytéž návštěvy jako chatgpt.com bez média (nepřiřazené) a jako odkazující web. Perplexity.ai se do kanálu dostalo zhruba o týden později. Kdo počítá kanál AI Assistant od 13. 5., srovnává ve skutečnosti dvě různá třídění.
 </Insight>
 
-## Proč AI návštěvníci často konvertují líp
+Po nasazení jsou data čistší. Od 15. 6. do 30. 9. 2026 přišlo na MEGA DETAIL ze zdrojů AI 838 relací: 794 v kanálu AI Assistant a 44 (5 %) mimo něj — hlavně zdroje gemini, perplexity a copilot.com bez média a pár relací z chatgpt.com mezi odkazujícími weby.
 
-Není to magie, ale logika cesty:
+## <span class="hl">Vlastní skupina kanálů</span> — <strong>zachytí zdroje AI mimo kanál</strong>
 
-- **Vyšší intent** — uživatel se nejdřív s AI bavil, dostal kontext nebo doporučení a teprve potom klikl. Přichází blíž k rozhodnutí než člověk z obecného Googlu.
-- **Předkvalifikace** — AI mu zhruba dopředu řekla, co od vás čekat. Filtruje to neúčelové kliky.
-- **Vyšší podíl B2B / profesionálních uživatelů** u některých platforem (zejména Perplexity, Claude) — typicky vyšší hodnota návštěvy.
+Výchozí skupinu kanálů upravit nejde, [vlastní](https://support.google.com/analytics/answer/13051316) ano. Zachytí relace, u kterých v datech zůstal zdroj AI — jako chatgpt.com, perplexity nebo copilot.com mimo kanál AI Assistant. Návštěvy bez odkazujícího zdroje i bez parametrů neodhalí ani ona: v datech po nich nezůstane nic, podle čeho by je poznala. Standardní služba GA4 jich má podle nápovědy k dispozici dvě, každou nejvýš s 50 kanály, a relace v nich patří do prvního kanálu, kterému odpovídá.
 
-Veřejné analýzy z let 2025–2026 uvádějí u AI návštěv výrazně vyšší konverzní poměry než u klasického organického vyhledávání; konkrétní hodnoty se ale liší podle oboru, definice konverze a vzorku. Berte je jako orientační rozsah, ne pevný srovnávací bod.
-
-## Hlavní problém: měřitelnost AI návštěv
-
-Vyšší konverze nepomůže, když AI návštěvy v reportech vůbec nevidíte. A to je častý stav:
-
-<Insight tone="seo" icon="i" label="AI návštěvy mizí do přímé návštěvnosti">
-  Některé analýzy AI návštěvnosti upozorňují, že část návštěv z AI nástrojů se v GA4 může objevit jako přímá návštěvnost — některé nástroje uživatele předají bez referrer hlavičky. Nejde tedy o ztrátu návštěvy, ale o ztrátu přesného zdroje, dokud nedoplníte vlastní měření.
-</Insight>
-
-Praktický důsledek: pokud se díváte jen na report organického vyhledávání (v GA4 „Organické vyhledávání“), AI návštěvy neuvidíte jako samostatný zdroj — část je v přímé návštěvnosti, část v referralech a část v novém AI Assistant kanálu. Rostoucí přímá návštěvnost tak může skrývat AI návštěvy, které byste rádi sledovali zvlášť.
-
-## GA4 dostal nativní AI Assistant channel
-
-Podle dokumentace Google Analytics z května 2026 začal GA4 rozpoznávat část návštěv z AI asistentů ve výchozí skupině kanálů (Default Channel Group) jako nový kanál **AI Assistant**. Ve výchozí skupině by se měl objevit automaticky u účtů, kde GA4 dokáže takové návštěvy rozpoznat:
-
-- Najdete ho v Reportech v sekci **Akvizice → Kanály**.
-- Pokud váš web už nějaké AI návštěvy dostává, uvidíte je v něm souhrnně.
-- Pokud používáte vlastní kanálové skupiny nebo máte malý objem dat, ověřte si zobrazení přímo ve svých reportech.
-- Nepokrývá úplně všechno — část AI návštěv stále zůstává v přímé návštěvnosti (záleží na nástroji a tom, jak uživatele předal).
-
-Berte AI Assistant jako základ, který je dobré doplnit vlastním měřením.
-
-## Jak měření doplnit
-
-Pro plnější obrázek se vyplatí přidat dvě věci nad rámec automatického kanálu:
-
-<Checklist tone="seo" title="Doplnění měření AI návštěv v GA4" items={[
-  { title: "UTM značky u odkazů publikovaných mimo web", desc: "v dokumentech, návodech a sdíleném obsahu používejte odkazy s UTM parametry. Některé AI nástroje mohou odkazy upravit, ale UTM pomáhají u odkazů kliknutých v původní podobě. Neznačkujte interní odkazy na webu." },
-  { title: "Vlastní segment v GA4", desc: "kombinujte AI Assistant channel, vaše UTM zdroje a referrery z konkrétních domén (chatgpt.com, chat.openai.com, perplexity.ai, claude.ai, gemini.google.com a další podle vašich dat) do jednoho segmentu." },
-  { title: "Sledování konverze, ne objemu", desc: "AI návštěvy bývají kvalifikovanější — hodnoťte je dle konverzí a hodnoty, ne podle počtu návštěv." },
-  { title: "Rozlišení platforem", desc: "v segmentu zachyťte zdroje typu ChatGPT, Perplexity, Claude a Gemini zvlášť — různé platformy posílají různě hodnotné návštěvníky." }
+<Stepper steps={[
+  { title: "Založte skupinu jako kopii výchozí", desc: "Vlastní skupina se podle nápovědy zakládá kopií existující. Z výchozí převezme její kanály a jejich pořadí." },
+  { title: "Přidejte kanál pro AI asistenty", desc: "Podmínka na zdroj relace přes regulární výraz se zdroji, které vidíte ve svých datech." },
+  { title: "Dejte ho v pořadí nad odkazující weby", desc: "Relace patří do prvního kanálu, kterému odpovídá. Kanál pro AI musí stát výš než odkazující weby (Referral)." },
+  { title: "Zkontrolujte, co zachytil", desc: "Projděte zdroje v novém kanálu a hledejte nechtěné shody, třeba e-mail nebo newsletter." },
+  { title: "Použijte ho i na starší data", desc: "Vlastní skupinu jde podle nápovědy použít zpětně, takže řada před a po 13. 5. 2026 stojí na stejném třídění." },
 ]} />
 
-## Co s tím udělat strategicky
+Výraz, který zachytí zdroje z našich dat, vypadá takhle — seznam upravte podle toho, co vidíte u sebe:
 
-Když AI návštěvy umíte naměřit, posuňte i to, podle čeho je hodnotíte:
+```text
+^(chatgpt\.com|chat\.openai\.com|perplexity|perplexity\.ai|gemini|gemini\.google\.com|claude\.ai|copilot\.com|copilot\.microsoft\.com|deepseek\.com|chat\.deepseek\.com|grok\.com)$
+```
 
-- **Měřte konverzní hodnotu na úrovni kanálu** — ne jen počet relací; AI návštěvnost tak nezůstane podceněná v reportech objemu.
-- **Identifikujte platformy s nejvyšší hodnotou** pro váš obor a investujte do citovatelnosti tam, kde to dává smysl.
-- **Nezaměňujte AI návštěvy za AI viditelnost** — i bez prokliků na vás AI může odkazovat. Pomáhají [zmínky a recenze](/blog/ai-brand-mentions/) a [E-E-A-T pro AI](/blog/e-e-a-t-pro-ai/).
+Je ukotvený na celý zdroj, takže zachytí jen vyjmenované hodnoty. Ukázkový výraz v nápovědě Googlu naopak začíná `^.*ai|…` — a ta první část odpovídá každému zdroji, který obsahuje písmena „ai“, tedy i zdroji email. Když kanál s takovým výrazem postavíte nad e-mail, spadne do něj i newsletter.
 
-## Časté chyby
+## Konverze z <span class="hl">AI asistentů</span>: <strong>studie se rozcházejí</strong>
+
+Že návštěvy z AI konvertují líp, se opakuje často. Výsledky studií ale vycházejí různě:
+
+- **973 e-shopů** (Kaiser a Schulze, *Marketing Science* 2026, data ze srpna 2024 až července 2025): podle [Frankfurt School](https://www.frankfurt-school.de/de/home/news/2026/06/chatgpt-in-online-ohopping) konverze i tržba na relaci z ChatGPT vyšly nad placenými sociálními sítěmi, ale pod ostatními kanály. V [samotném článku](https://doi.org/10.1287/mksc.2025.0489) vyšla organická návštěva o 13 % pravděpodobněji ke konverzi a v části kontrolních výpočtů rozdíl přestal být statisticky významný. Konverze z ChatGPT v čase rostly a nejvíc dávaly smysl u složitých produktů.
+- **97 webů pro B2B** ([Orbit Media](https://www.orbitmedia.com/blog/conversion-rates-ai-search/), červenec 2025 až červen 2026): návštěvy z AI tvořily půl procenta návštěvnosti, ale v poptávku se měnily třikrát častěji než ostatní organické zdroje.
+- **54 webů** ([Amsive](https://www.amsive.com/insights/seo/does-llm-traffic-convert-better-than-organic-a-new-data-backed-study/), 2025): organické vyhledávání 4,60 %, návštěvy z AI 4,87 % — rozdíl statisticky nevýznamný.
+- **Ahrefs** na [vlastním webu](https://ahrefs.com/blog/ai-search-traffic-conversions-ahrefs/) uvedl 23× vyšší konverzi návštěv z AI, v [rozboru zhruba 82 tisíc webů](https://ahrefs.com/blog/ai-traffic-quality-study/) ale návštěvníci z AI odcházeli o 4,1 % častěji než návštěvníci z vyhledávání.
+
+Rozdíly nevysvětluje jen kvalita analýz, ale hlavně složení vzorku: e-shopy proti webům, které sbírají poptávky, jeden web proti tisícům a různá období. Podrobněji je srovnává [článek o tom, za jak dlouho se AI SEO projeví](/blog/za-jak-dlouho-se-projevi-ai-seo/).
+
+## Na našem <span class="hl">e-shopu</span>: <strong>ze 17× zbylo necelé 3×</strong>
+
+E-shop MEGA DETAIL, GA4, výchozí skupina kanálů relace, 15. 6.–30. 9. 2026 (kanál AI Assistant už běží). Míra je počet nákupů na relaci:
+
+| Kanál | Relace | Nákupy | Nákupy na relaci |
+|---|---:|---:|---:|
+| AI Assistant | 794 | 32 | 4,0 % |
+| Placené vyhledávání | 7 743 | 163 | 2,1 % |
+| Přímá návštěvnost | 7 936 | 127 | 1,6 % |
+| Organické vyhledávání | 42 789 | 100 | 0,23 % |
+
+Na první pohled konvertují relace z AI zhruba sedmnáctkrát líp než organické vyhledávání. Jenže **51 % relací z AI začíná rovnou na produktu, u organického vyhledávání jen 3 %** — zbytek organiky přichází na články a kategorie, kde se nakupuje málokdy. Když srovnáme jen relace, které začaly na produktové stránce, vypadá to jinak:
+
+| Kanál (vstup na produkt) | Relace | Nákupy | Nákupy na relaci |
+|---|---:|---:|---:|
+| AI Assistant | 408 | 26 | 6,4 % |
+| Organické vyhledávání | 1 355 | 31 | 2,3 % |
+| Přímá návštěvnost | 1 878 | 39 | 2,1 % |
+| Placené vyhledávání | 544 | 7 | 1,3 % |
+
+<Insight tone="accent" label="Co z toho plyne">
+Relace z AI u nás konvertují líp i při stejném typu vstupní stránky, ale rozdíl je necelé trojnásobný, ne sedmnáctinásobný. Zbytek dělá to, kam návštěvy vstupují. A stojí to na 26 nákupech: 95% interval pro relace z AI vychází zhruba 4,4–9,2 %, pro organické vyhledávání 1,6–3,2 %. Je to jeden e-shop s autokosmetikou a v organickém vyhledávání jsou započítané i Přehled od AI a režim AI — přenášet to na jiný obor nejde.
+</Insight>
+
+## Jak konverze z AI <span class="hl">srovnávat</span> <strong>poctivě</strong>
+
+<Checklist title="Než napíšete, že AI konvertuje líp" items={[
+  { title: "Stejné období", desc: "Jen dobu, kdy kanál AI Assistant ve vaší službě opravdu běží, nebo vlastní skupinu kanálů použitou zpětně." },
+  { title: "Stejný typ vstupní stránky", desc: "Produkt s produktem, článek s článkem. Jinak srovnáváte stránky, ne návštěvníky." },
+  { title: "Počty vedle procent", desc: "Třicet nákupů a tři tisíce nákupů dají stejné procento s úplně jinou jistotou." },
+  { title: "Stejná definice konverze", desc: "Nákup, poptávka, nebo klíčová událost — a ve všech kanálech stejně." },
+  { title: "Stejné připsání", desc: "Relační rozměry v GA4 používají poslední nepřímý klik, rozměry klíčových událostí model zvolený ve službě — výchozí je model založený na datech (data-driven). Srovnávejte kanály ve stejném rozměru." },
+  { title: "Funkce Googlu zvlášť nehledejte", desc: "Přehled od AI a režim AI jsou v organickém vyhledávání a oddělit je nejde." },
+]} />
+
+Když neprodáváte online a nákup v GA4 nevidíte, potřebujete hodnotu poptávky — postup popisuje [článek o hodnotě návštěvy z AI](/blog/hodnota-navstevy-z-ai/). Jak čísla potom uvést v reportu, aby se nesmíchala fakta se vzorky, rozebírá [návod na report AI viditelnosti](/blog/reportovani-ai-viditelnosti/).
+
+## Měření <span class="hl">návštěv z AI</span>: <strong>pět chyb, které zkreslí závěr</strong>
 
 <MistakeGrid>
-  <Mistake num="01" title="Hodnotit AI návštěvy jen podle objemu" fix="Sledujte konverzi a hodnotu.">
-    AI návštěv bývá málo, ale kvalifikovaných. Objemový pohled je podcení.
+  <Mistake num="01" title="Srovnávat AI s celým organickým vyhledáváním" fix="Srovnávejte relace se stejným typem vstupní stránky.">
+    U nás z rozdílu 17× zbylo necelé 3×, když jsme vzali jen relace začínající na produktu.
   </Mistake>
-  <Mistake num="02" title="Ignorovat AI návštěvy schované v přímé návštěvnosti" fix="Doplňte UTM a segment.">
-    Bez doplňkového měření může část AI návštěv spadnout do přímé.
+  <Mistake num="02" title="Počítat kanál AI Assistant od data ohlášení" fix="Zjistěte, kdy médium ai-assistant ve vašich datech poprvé naskočilo.">
+    U nás to bylo skoro čtyři týdny po 13. 5. 2026. Do té doby byly stejné návštěvy jinde.
   </Mistake>
-  <Mistake num="03" title="Nezkontrolovat AI Assistant v reportech GA4" fix="Zkontrolujte Akvizice → Kanály a ověřte zobrazení.">
-    Od května 2026 je nativní; bez kontroly o něm nevíte.
+  <Mistake num="03" title="Hledat Přehled od AI v kanálu AI Assistant" fix="Počítejte s ním v organickém vyhledávání.">
+    Nápověda GA4 ho z kanálu AI Assistant výslovně vyřazuje a oddělit ho nejde ani v Search Console.
   </Mistake>
-  <Mistake num="04" title="Brát všechny AI platformy stejně" fix="Rozlište zdroje v segmentu.">
-    Konverzní hodnota se mezi ChatGPT, Perplexity, Claude a Gemini výrazně liší.
+  <Mistake num="04" title="Převzít ukázkový výraz z nápovědy bez úprav" fix="Ukotvěte výraz na konkrétní zdroje.">
+    Jeho první část `^.*ai` zachytí každý zdroj s písmeny „ai“, tedy i email.
+  </Mistake>
+  <Mistake num="05" title="Dělat závěr z pár nákupů" fix="Uveďte počty a interval, ne jen procento.">
+    Z 26 nákupů vychází rozpětí zhruba 4,4–9,2 %. Jedno číslo by tvrdilo přesnost, kterou data nemají.
   </Mistake>
 </MistakeGrid>
 
-## Co dál: zasaďte AI návštěvnost do celku
+## <span class="hl">Co dál</span>: <strong>od měření k závěru</strong>
 
-Měření AI návštěvnosti je část širšího obrazu AI viditelnosti. Jak na celý obraz shrnuje [praktický checklist SEO pro AI](/blog/seo-pro-ai/).
+Kanál AI Assistant je dobrý začátek, ne úplný přehled: funkce Googlu v něm nejsou, část relací z AI skončí jinde a v praxi nezačal tehdy, kdy ho Google ohlásil. Vlastní skupina kanálů doplní relace, u kterých v datech zůstal zdroj AI, ale neskončily v kanálu AI Assistant, a srovnání podle vstupní stránky ukáže, kolik z rozdílu v konverzi jsou návštěvníci a kolik stránky, na které přišli.
 
-Pokud chcete nezávisle posoudit, kolik AI návštěvnosti a konverzí na váš web reálně doráží a kde se ztrácí v měření, pomůže produktový [Audit AI viditelnosti](/audit/) za 3 600 Kč bez DPH. Pokud chcete postupovat sami podle hotové předlohy, použijte [AI SEO Wireframe Pack](/pack/) za 1 490 Kč včetně DPH.
+GA4 ukáže, co už na web přišlo. Druhou část — kde vás AI odpovědi zmiňují a z jakých stránek čerpají — změříme v **[Auditu AI viditelnosti](/audit/)** za **3 600 Kč bez DPH**. Výsledek dostanete jako výchozí stav, ne jako přesné skóre — odpovědi AI se mezi běhy liší.

@@ -1617,3 +1617,17 @@ ne opis z angličtiny). Závěrečný checker: 0 nálezů.
 určit zdroj“ · „AI Googlu“ → „AI funkce Googlu“ · „k 3. 10.“ → „ke 3. 10.“ · „stojí, nebo padá“ →
 „stojí a padá“ (frazém) · „patří mezi vzorky“ → „patří ke vzorkům“ · „uvidíte z odpovědí“ →
 „zjistíte“ · „má důvod“ → „není náhodné“. Závěrečný checker: 0 nálezů.
+
+## 2026-10-03 · `ai-navstevnost-konverze` (refresh)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 404 (podle checkeru) |
+| Mechanický checker | **1 → 0** (`Organic Search` v tabulce → české názvy kanálů, anglické v závorce) |
+| LLM průchod | gpt-5.4 + celý slovník: 9 nálezů, všechny opraveny |
+| Nová pravidla | **žádné** — významové vazby a metafory konkrétních vět |
+
+**Opraveno:** „obraz“ ve smyslu *picture* (3×) → „přehled“ / „data“ · „ukazují oběma směry“ → „vycházejí
+různě“ · věta bez slovesa · „organika v sobě nese“ · „podat v reportu“ → „uvést“ · „druhou polovinu“ →
+„druhou část“ · přeskládaná věta o relačních rozměrech. Závěrečný checker: 0 nálezů.
