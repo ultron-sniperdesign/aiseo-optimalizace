@@ -1,0 +1,163 @@
+---
+title: "Jak reportovat AI viditelnost, aby to nebyla fikce"
+seoTitle: "Report AI viditelnosti: co je fakt a co jen vzorek"
+description: "Jak sestavit report AI viditelnosti, který obstojí: co ze Search Console, GA4 a Bingu je fakt, co ze sledování dotazů jen vzorek a co do reportu nepatří."
+answer: "Poctivý report AI viditelnosti dělí čísla do tří skupin. Fakta jsou data z oficiálních zdrojů s obdobím a filtrem: zobrazení v Search Console, návštěvy z kanálu AI Assistant v GA4, citace v Bing Webmaster Tools. Sledování vlastních dotazů je vzorek, ke kterému patří metodika a rozpětí. Co změřit nejde, uveďte jako mezeru, ne jako číslo."
+slug: "reportovani-ai-viditelnosti"
+category: "tutorial"
+tags:
+  - "mereni"
+  - "audit-nastroje"
+published: "2026-10-03"
+updated: "2026-10-03"
+keywords:
+  - "report AI viditelnosti"
+  - "měření AI viditelnosti"
+  - "report AI viditelnosti pro klienta"
+  - "podíl zmínek v AI"
+  - "GA4 AI Assistant"
+  - "Search Console generativní AI"
+  - "sledování dotazů v AI"
+variant: "rich"
+faq:
+  - q: "Co má obsahovat report AI viditelnosti?"
+    a: "Report AI viditelnosti má mít pět částí: co se na webu změnilo a kdy, fakta z oficiálních zdrojů se zdrojem, obdobím a filtrem, výsledky sledování dotazů s metodikou a rozpětím, mezery, které změřit nejde, a další krok. Fakta jsou zobrazení v Search Console, návštěvy z kanálu AI Assistant v GA4 a citace v Bing Webmaster Tools. Sledování dotazů je vzorek, ne skóre."
+  - q: "Dá se v reportu oddělit režim AI od Přehledu od AI?"
+    a: "Režim AI se od Přehledu od AI z oficiálních dat oddělit nedá. Report Search Console pro generativní AI ukazuje obě funkce jako jedno číslo a jen zobrazení. Kliky z obou funkcí jsou v reportu Výkon v typu vyhledávání Web sečtené s ostatními kliky a filtr, který by je oddělil, nápověda neuvádí. GA4 řadí návštěvy z obou funkcí do organického vyhledávání. V reportu proto pište „Přehled od AI a režim AI dohromady“."
+  - q: "Kam v GA4 spadají návštěvy z Přehledu od AI a režimu AI?"
+    a: "Návštěvy z Přehledu od AI a režimu AI řadí GA4 do organického vyhledávání (Organic Search), ne do kanálu AI Assistant. Ten od 13. 5. 2026 sbírá návštěvy z AI asistentů, jako jsou ChatGPT, Gemini, DeepSeek, Copilot nebo Grok, a funkce Googlu výslovně vynechává."
+  - q: "Proč do reportu nepsat pozici v ChatGPT?"
+    a: "Pořadí značek v odpovědi AI se mezi opakovanými dotazy mění natolik, že ho jako metriku použít nejde. Ve studii SparkToro a Gumshoe z ledna 2026 vyšla šance na stejné pořadí ve dvou bězích zhruba 1 : 1 000. Použitelnější je, v kolika procentech odpovědí se značka objeví napříč mnoha běhy."
+  - q: "Jak číst podíl zmínek proti konkurenci v AI?"
+    a: "Podíl zmínek proti konkurenci je poměr, takže roste i tehdy, když vašich zmínek ubude, ale konkurenci ubude víc. Na e-shopu MEGA DETAIL vzrostl mezi 18. 8. a 7. 9. 2026 z 65 na 69 %, přestože vlastních zmínek ubylo z 13 na 11. Do reportu proto patří vedle podílu i počet vlastních zmínek."
+  - q: "Kolikrát spustit dotaz, aby výsledek něco znamenal?"
+    a: "Univerzální počet běhů na dotaz nikdo nedoložil; studie SparkToro a Gumshoe ho vede jako otevřenou otázku. V reportu proto uveďte počet dotazů, počet běhů a rozpětí výsledků. Při sadě 32 dotazů dělá jedna zmínka navíc nebo méně zhruba 3 procentní body, a trend jde číst až z řady běhů."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Report AI viditelnosti obstojí, když u každého čísla jde poznat, odkud je a jak moc se mu dá věřit.** Oficiální zdroje měří jen část a slučují věci, které byste rádi viděli zvlášť. Sledování dotazů v ChatGPT nebo v Přehledu od AI zase dává čísla, která mezi běhy kolísají natolik, že jeden běh po zásahu na webu nestačí jako důkaz.
+
+Návod ukazuje, jak čísla roztřídit do tří skupin — fakt, vzorek a mezera —, co podle dokumentace ke 3. 10. 2026 měří Search Console, GA4 a Bing Webmaster Tools, jak zapsat metodiku sledování dotazů a které věty do reportu nepatří. Příklady jsou z našeho vlastního e-shopu MEGA DETAIL.
+
+## Proč se u <span class="hl">AI viditelnosti</span> snadno reportuje <strong>fikce</strong>
+
+Tři důvody, které se sčítají:
+
+1. **Oficiální zdroje slučují.** Report Search Console pro generativní AI ukazuje Přehled od AI a režim AI jako jedno číslo, a to jen zobrazení. GA4 řadí návštěvy z obou funkcí do organického vyhledávání. Kdo pak napíše „režim AI nám přinesl…“, vydává souhrn za konkrétní funkci.
+2. **U části návštěv nejde určit zdroj.** Relaci, která začne bez odkazujícího zdroje a bez parametrů v adrese, připíše GA4 poslednímu nepřímému zdroji téhož uživatele, a když žádný nezná, zařadí ji do přímé návštěvnosti. Platí to pro jakýkoli zdroj — kolik návštěv z AI asistentů takhle mine kanál AI Assistant, žádný oficiální zdroj neuvádí.
+3. **Odpovědi AI se mezi běhy liší.** [Studie SparkToro a Gumshoe](https://sparktoro.com/blog/new-research-ais-are-highly-inconsistent-when-recommending-brands-or-products-marketers-should-take-care-when-tracking-ai-visibility/) z ledna 2026 nechala 600 dobrovolníků zadat 12 stejných dotazů do ChatGPT, Claude a do AI funkcí Googlu, dohromady 2 961krát. Šance, že ChatGPT nebo AI funkce Googlu vrátí ve dvou bězích stejný seznam značek, vyšla pod 1 : 100. Na stejné pořadí zhruba 1 : 1 000.
+
+<Insight tone="warn" label="Co by stálo v našem reportu">
+Na e-shopu MEGA DETAIL sledujeme 32 stálých dotazů přes API OpenAI s vyhledáváním na webu. Značka se v odpovědích objevila 7. 8. 2026 u 33 % dotazů, 12. 8. u 28 %, 18. 8. u 41 % a 7. 9. u 34 %. Běh z 18. 8. byl první po nových textech kategorií. Report z toho dne mohl hlásit „po textech kategorií +13 bodů“ — o tři týdny později bylo 34 %. Při 32 dotazech je jedna zmínka víc nebo míň zhruba 3 procentní body, takže skok z 28 na 41 % jsou čtyři zmínky.
+</Insight>
+
+## Každé číslo patří do <span class="hl">jedné ze tří skupin</span> — <strong>fakt, vzorek, mezera</strong>
+
+| Skupina | Co do ní patří | Jak to v reportu napsat |
+|---|---|---|
+| **Fakt** | zobrazení v reportu Search Console pro generativní AI, návštěvy v kanálu AI Assistant v GA4 (a konverze, pokud je web měří), celkový počet citací v Bing Webmaster Tools | zdroj, report, období a filtr |
+| **Vzorek** | zmínky a citace v odpovědích na vaši sadu dotazů, podíl zmínek proti konkurenci, dotazy, kterými si AI v Bingu hledá podklad | počet dotazů a běhů, rozpětí, data běhů |
+| **Mezera** | režim AI zvlášť od Přehledu od AI, kliky z AI funkcí zvlášť, návštěvy z AI, které přišly bez zdroje, pořadí v odpovědi | proč změřit nejde — bez čísla |
+
+Fakt neznamená celý obraz. Znamená, že číslo umíte doložit zdrojem, obdobím a filtrem a kdo má k reportu přístup, ho za stejných podmínek najde znovu — u nejnovějších, ještě předběžných dat počítejte se změnou. Vzorek není horší číslo, jen jiné: bez metodiky a rozpětí z něj ale nejde nic vyčíst. A mezera v reportu není slabina — je to jediné místo, kde čtenář pozná, co mu nikdo říct nemůže.
+
+## <span class="hl">Fakta</span> z oficiálních zdrojů — <strong>co přesně měří</strong>
+
+### Search Console
+
+[Report Přehled výkonu v generativní AI](https://support.google.com/webmasters/answer/16984139) ukazuje jen zobrazení — kolikrát se odkaz na váš web objevil ve funkci s generativní AI ve Vyhledávání. Kliky, míru prokliku, pozici ani dotazy nemá a Přehled od AI s režimem AI v něm oddělit nejde. Data se dají rozdělit podle stránek, zemí, dat a zařízení a filtrovat podle typu vyhledávání na textové a multimodální, tedy vyhledávání obrázkem nebo fotoaparátem. Google v nápovědě píše, že ho od 31. 8. 2026 zpřístupnil webům po celém světě; v části o chybějícím reportu ale dál uvádí postupné zpřístupňování a další dva důvody — málo zobrazení ve funkcích s AI, nebo web z těchto funkcí vyloučený. Experimenty ze Search Labs report nezahrnuje.
+
+Pro report jsou důležité tři detaily z nápovědy:
+
+- **Graf a tabulka se můžou lišit.** Graf sčítá za celý web — dva odkazy na váš web v jedné odpovědi jsou v něm jedno zobrazení. Tabulka podle stránek počítá po stránkách.
+- **Data jsou v tichomořském čase.** Den v reportu nekončí o české půlnoci.
+- **Nejnovější data jsou předběžná** a ještě se můžou změnit.
+
+Kliky z Přehledu od AI i z režimu AI se podle nápovědy počítají do běžného reportu Výkon, do typu Web, stejně jako kterékoli jiné kliky. Filtr, který by je oddělil, nápověda neuvádí. Podrobně report rozebírá [článek o reportu AI v Search Console](/blog/gsc-ai-segmenty-mereni/).
+
+### GA4
+
+Od 13. 5. 2026 má GA4 ve výchozí skupině kanálů [kanál AI Assistant](https://support.google.com/analytics/answer/9756891). Patří do něj návštěvy, jejichž odkazující zdroj odpovídá seznamu AI asistentů, který vede Google; nápověda jmenuje jako příklady ChatGPT, Gemini, DeepSeek, Copilot a Grok. Takové návštěvě GA4 podle nápovědy sám přiřadí medium „ai-assistant“; do kanálu se dostane i návštěva, která to medium nese z parametru v adrese. Úplný seznam asistentů Google nezveřejňuje a v seznamu zdrojů, který ke kanálům vydává, AI asistenti nejsou vůbec.
+
+Dvě věci, se kterými report stojí a padá:
+
+- **Přehled od AI a režim AI v kanálu AI Assistant nejsou.** Nápověda je z něj výslovně vyřazuje a počítá je do organického vyhledávání.
+- **Kanál je nový.** Srovnání s obdobím před 13. 5. 2026 porovnává dvě různá třídění, ne vývoj návštěvnosti.
+
+Relaci bez odkazujícího zdroje a bez parametrů v adrese připíše GA4 [poslednímu nepřímému zdroji](https://support.google.com/analytics/answer/11080067) téhož uživatele; jen když žádný nezná, skončí v přímé návštěvnosti (Direct). Návštěva z AI bez zdroje se tak může schovat v přímé návštěvnosti i v jiném kanálu a růst přímé návštěvnosti jako důkaz návštěv z AI použít nejde. Proč se režim AI z dat neoddělí ani jinými cestami, rozebírá [článek o limitech měření](/blog/mereni-ai-mode-limity/).
+
+### Bing Webmaster Tools
+
+Report AI Performance je od února 2026 v předběžné verzi a ukazuje citace webu v Microsoft Copilotu, v AI shrnutích v Bingu a u vybraných partnerů: celkový počet citací, průměrný počet citovaných stránek za den a citace jednotlivých stránek. U dotazů, kterými si AI hledá podklad (grounding queries), Microsoft píše, že jde o vzorek celkové aktivity.
+
+V červnu 2026 přibyl [Citation Share](https://blogs.bing.com/search/June-2026/New-AI-Visibility-Insights-in-Bing-Webmaster-Tools-Intents-Topics-Citation-Share-Compare) — podíl citací vašeho webu ze všech citací u daného dotazu. Microsoft ho sám označuje za pozorovací metriku: není to pořadí ani podíl návštěvnosti a konkurenty nezobrazuje. V reportu patří spíš ke vzorkům než k faktům.
+
+<Checklist title="Co napsat ke každému faktu" items={[
+  { title: "Zdroj a report", desc: "Ne „podle Googlu“, ale konkrétní nástroj a report, ze kterého číslo je." },
+  { title: "Období", desc: "Od–do. U Search Console s vědomím, že den počítá v tichomořském čase." },
+  { title: "Filtr a pohled", desc: "Typ vyhledávání, země, zařízení — a jestli je číslo z grafu, nebo z tabulky." },
+  { title: "Co číslo neobsahuje", desc: "Například „jen zobrazení, bez kliků“ nebo „Přehled od AI a režim AI dohromady“." },
+]} />
+
+## <span class="hl">Sledování dotazů</span> je vzorek — <strong>jak ho zapsat</strong>
+
+Oficiální reporty ukazují zobrazení a citace, ale ne to, co AI o značce říká. To zjistíte z odpovědí na vlastní sadu dotazů, kterou pravidelně posíláte do ChatGPT, Perplexity nebo Přehledu od AI — ručně, nebo nástrojem. Odpovědi se ale mezi běhy liší, takže výsledek je vzorek. Studie SparkToro a Gumshoe z toho vyvozuje praktický závěr: pořadí v odpovědi je jako metrika velmi nestálé, použitelnější je **podíl odpovědí, ve kterých se značka objeví**, sledovaný přes mnoho běhů. Kolik běhů na to stačí a jestli odpovědi přes API odpovídají tomu, co vidí lidé v aplikaci, autoři výslovně nechávají otevřené.
+
+<Checklist title="Metodika, bez které vzorek nejde zopakovat" items={[
+  { title: "Seznam dotazů", desc: "Zmrazený a s verzí. Když ho změníte, začíná nová řada a se starou ji neporovnávejte." },
+  { title: "Kde se ptáte", desc: "Platforma, režim s vyhledáváním na webu, nebo bez něj, a jestli přes API, nebo v aplikaci." },
+  { title: "Za jakých podmínek", desc: "Přihlášený, nebo nepřihlášený účet, jazyk a země." },
+  { title: "Kolik běhů", desc: "Počet běhů na dotaz a data všech běhů." },
+  { title: "Co přesně počítáte", desc: "Zmínku značky, citaci webu, nebo podíl proti konkurenci. Každé z toho je jiné číslo." },
+  { title: "Surové odpovědi", desc: "Uložte je. Bez nich nejde zpětně ověřit, co se do čísla započítalo." },
+]} />
+
+Do reportu patří **rozpětí**, ne jedno číslo. U MEGA DETAIL je to za čtyři běhy 28–41 %; trend z toho bude čitelný až po dalších měsících. Jak si sadu dotazů sestavit a test provést, popisuje [návod na test AI viditelnosti](/blog/test-viditelnosti-v-ai/).
+
+**Podíl zmínek proti konkurenci čtěte vždy s počtem zmínek.** U MEGA DETAIL vzrostl mezi 18. 8. a 7. 9. 2026 z 65 na 69 %, přestože našich zmínek ubylo z 13 na 11. Konkurenci jich ubylo víc, ze 7 na 5. Podíl je poměr: roste i tehdy, když klesají všichni, jen vy pomaleji. Jak se taková metrika počítá, rozebírá [článek o Share of Model](/blog/share-of-model-metrika/).
+
+## <span class="hl">Report</span> na jednu stranu — <strong>pět bloků</strong>
+
+<Stepper steps={[
+  { title: "Co se na webu změnilo", desc: "Zásahy s daty nasazení. Bez nich nejde posoudit, jestli pohyb čísel s něčím souvisí." },
+  { title: "Fakta", desc: "Čísla ze Search Console, GA4 a Bingu se zdrojem, obdobím a filtrem. Srovnávejte jen stejně dlouhá období se stejným tříděním." },
+  { title: "Vzorek", desc: "Sledování dotazů: metodika, počet běhů a rozpětí. Trend až z řady běhů, ne z jednoho." },
+  { title: "Mezery", desc: "Co změřit nejde a proč: režim AI zvlášť, kliky z AI funkcí, návštěvy bez zdroje." },
+  { title: "Další krok", desc: "Co ověřit příště a čím. Jako hypotézu, ne jako slib výsledku." },
+]} />
+
+Pořadí bloků není náhodné. Zásahy na začátku chrání před tím, aby si čtenář sám spojil změnu na webu s pohybem čísel, a mezery před koncem drží celý report poctivý.
+
+## Šest vět, které do <span class="hl">reportu</span> <strong>nepatří</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="„Jsme první v ChatGPT.“" fix="Pište, v kolika procentech odpovědí se značka objevila.">
+    Pořadí v odpovědi se mezi běhy mění tak, že stejné pořadí vyšlo ve studii SparkToro zhruba jednou za tisíc běhů.
+  </Mistake>
+  <Mistake num="02" title="„Návštěvnost z režimu AI vzrostla.“" fix="Pište „Přehled od AI a režim AI dohromady“ a u zobrazení.">
+    Search Console ani GA4 režim AI zvlášť nevykazují. Číslo za samotný režim AI je odhad vydávaný za měření.
+  </Mistake>
+  <Mistake num="03" title="„Podíl zmínek roste, jde nám to nahoru.“" fix="Vedle podílu uveďte počet vlastních zmínek.">
+    Podíl roste i tehdy, když vašich zmínek ubude a konkurenci ubude víc. U nás se to stalo mezi srpnem a zářím 2026.
+  </Mistake>
+  <Mistake num="04" title="„Přímá návštěvnost roste, to je AI.“" fix="Uveďte to jako hypotézu, nebo vůbec.">
+    V přímé návštěvnosti končí relace bez zdroje od uživatelů, u kterých GA4 nezná dřívější zdroj — z jakéhokoli kanálu. Podíl AI v ní žádný oficiální zdroj nevykazuje.
+  </Mistake>
+  <Mistake num="05" title="„Zásah zvedl zmínky o 13 bodů.“" fix="Uveďte rozpětí z řady běhů a počkejte na potvrzení.">
+    Jeden běh po zásahu není trend. U nás se takový skok při dalším běhu nepotvrdil.
+  </Mistake>
+  <Mistake num="06" title="„Kliky z Přehledu od AI: 120.“" fix="Uveďte zobrazení z reportu AI a celkové kliky zvlášť.">
+    Report pro generativní AI kliky nemá a v reportu Výkon jsou kliky z AI funkcí sečtené s ostatními.
+  </Mistake>
+</MistakeGrid>
+
+## <span class="hl">Report</span>, který obstojí <strong>i za rok</strong>
+
+Dobrý report AI viditelnosti není ten s nejvyššími čísly, ale ten, ve kterém za rok poznáte, co se změřilo a jak. Fakta mají zdroj, období a filtr, vzorky metodiku a rozpětí a mezery jsou pojmenované místo dopočítané. Když nástroje čísla slučují, report je nerozděluje — napíše, že jsou dohromady.
+
+Výchozí stav AI viditelnosti vašeho webu změříme v **[Auditu AI viditelnosti](/audit/)** za **3 600 Kč bez DPH**: zmínky v ChatGPT vlastním nástrojem, Přehled od AI přes Marketing Miner a ostatní platformy ručně na sadě dotazů podle vašeho sortimentu. Výsledek dostanete jako výchozí stav, ne jako přesné skóre — odpovědi AI se mezi běhy liší.

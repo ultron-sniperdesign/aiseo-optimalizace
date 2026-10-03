@@ -1602,3 +1602,18 @@ a méně spolehlivé“ · „nahrání feedu cílí na USA“ → „je určen�
 „aby šla varianta předvolit“ → „aby se dala předvolit“. **Nezapracováno:** „zapsat do kódu“
 (běžná vazba „zapsat do + 2. p.“) · slovosled „Podporu variant … zavedl Google“ (téma na začátku,
 ne opis z angličtiny). Závěrečný checker: 0 nálezů.
+
+## 2026-10-03 · `reportovani-ai-viditelnosti` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 506 (podle checkeru, včetně frontmatteru a komponent) |
+| Mechanický checker | **0** nálezů v konceptu, po 1. i po 2. kole auditu |
+| LLM průchod | gpt-5.4 + celý slovník: 8 nálezů, všechny opraveny |
+| Nová pravidla | **žádné** — vokalizace „k / ke“ před číslovkou kolísá, ostatní nálezy jsou významové vazby |
+
+**Opraveno:** „poskládat report“ → „sestavit“ · „část návštěv nemá zdroj“ → „u části návštěv nejde
+určit zdroj“ · „AI Googlu“ → „AI funkce Googlu“ · „k 3. 10.“ → „ke 3. 10.“ · „stojí, nebo padá“ →
+„stojí a padá“ (frazém) · „patří mezi vzorky“ → „patří ke vzorkům“ · „uvidíte z odpovědí“ →
+„zjistíte“ · „má důvod“ → „není náhodné“. Závěrečný checker: 0 nálezů.
