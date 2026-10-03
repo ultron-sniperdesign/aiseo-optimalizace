@@ -163,7 +163,10 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   ```
 
   „Opraveno“ smíš napsat až po tomhle grepu. Výskyt, který zůstává záměrně, patří
-  do `vyporadani.md` s důvodem. *(Precedens: `ceske-nazvy-ai-funkci-google`, 20. 9. 2026 —
+  do `vyporadani.md` s důvodem. **Hledej podle kmene a jádra formulace, ne podle jednoho tvaru
+  slova** — čeština tutéž myšlenku skloňuje a časuje: grep na „zachytí, co výchozí“ minul
+  „zachytit, co výchozí“ v úvodu a nález vrátil až 2. auditor (`ai-navstevnost-konverze`,
+  3. 10. 2026). Vzor: `grep -n -i -E "co výchozí|kanál mine" …` místo jedné celé věty. *(Precedens: `ceske-nazvy-ai-funkci-google`, 20. 9. 2026 —
   po 1. auditu opravené tělo, ale FAQ dál tvrdilo „název článku v nápovědě je ten oficiální“;
   2. auditor to označil doslova jako zbytkový problém z 1. auditu. Pravidlo dosud platilo
   jen pro C5, chyba se stala v C3 — proto je teď závazné pro každou opravu.)*
