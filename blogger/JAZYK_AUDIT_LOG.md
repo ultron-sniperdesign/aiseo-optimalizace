@@ -1584,3 +1584,21 @@ v titulku · kalky „odpověď bydlí“, „surová otázka“, „vlastník o
 a „provozní výsledek“ · nesouběžné výčty a nejasná zájmena · vysvětlení FAQ, Q&A a QAPage
 · české označení rozšířeného výsledku s FAQ · přesnější formulace práce s osobními údaji,
 moderace a mobilní kontroly. Závěrečný checker: 0 nálezů.
+
+## 2026-10-03 · `varianty-produktu-pro-ai` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 851 (podle checkeru, včetně frontmatteru a komponent) |
+| Mechanický checker | **0** nálezů v konceptu, po 1. i po 2. kole auditu |
+| LLM průchod | gpt-5.4 + celý slovník: 10 nálezů (3 se překrývaly); 6 opraveno, 2 nezapracovány s důvodem |
+| Nová pravidla | **žádné** — „přes“ i „cílit na“ mají i správné použití („přes noc“, „cílit kampaň na“), regex by bez porozumění větě hlásil správnou češtinu |
+
+**Opraveno:** kalk „pracovat / zapsat / zakládat přes“ → „pomocí“ (popis, krátká odpověď, FAQ,
+tělo) · „adresy, přes které je může procházet“ → „adresy, které může procházet a podle kterých
+varianty rozpozná“ · „procházet méně spolehlivě“ → „nákupní procházení může být méně časté
+a méně spolehlivé“ · „nahrání feedu cílí na USA“ → „je určené pro USA“ (tabulka i odstavec) ·
+„aby šla varianta předvolit“ → „aby se dala předvolit“. **Nezapracováno:** „zapsat do kódu“
+(běžná vazba „zapsat do + 2. p.“) · slovosled „Podporu variant … zavedl Google“ (téma na začátku,
+ne opis z angličtiny). Závěrečný checker: 0 nálezů.

@@ -1,0 +1,229 @@
+---
+title: "Varianty produktu pro AI: adresa, skupina a feed"
+seoTitle: "Varianty produktu: jak je označit pro Google a AI"
+description: "Kdy variantě stačí parametr v adrese a kdy vlastní stránka, jak skupinu zapsat pomocí ProductGroup a item_group_id a co k variantám chtějí Heureka a Zboží.cz."
+answer: "Varianta produktu je konkrétní kombinace velikosti, barvy nebo balení, kterou si zákazník koupí. Google i české srovnávače zboží s ní pracují pomocí tří údajů: vlastního identifikátoru, vlastní adresy a vazby na skupinu — na stránce pomocí ProductGroup, ve feedech pomocí item_group_id nebo ITEMGROUP_ID. Cena, dostupnost a obrázek musí patřit právě té variantě."
+slug: "varianty-produktu-pro-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "strukturovana-data"
+published: "2026-10-03"
+updated: "2026-10-03"
+keywords:
+  - "varianty produktu"
+  - "ProductGroup"
+  - "item_group_id"
+  - "ITEMGROUP_ID"
+  - "varianty produktu Shoptet"
+  - "varianty v Merchant Center"
+  - "kanonická adresa varianty"
+  - "strukturovaná data variant"
+variant: "rich"
+faq:
+  - q: "Musí mít každá varianta produktu vlastní adresu?"
+    a: "Každá varianta produktu musí jít otevřít vlastní adresou, která ji rovnou předvolí — se správnou cenou, dostupností a obrázkem a s možností vložit ji do košíku. Google to u variant uvádí jako technickou zásadu. Samostatná stránka to být nemusí: stačí parametr v adrese, například ?velikost=m, nebo samostatná cesta. Unikátní adresu pro každou variantu chtějí i Heureka a Zboží.cz."
+  - q: "Kam má vést kanonická adresa u variant?"
+    a: "Kanonická adresa u variant závisí na tom, jak je zobrazujete. Když jsou všechny varianty na jedné stránce a liší se jen parametrem, má být podle Googlu kanonická jediná adresa bez parametru, tedy adresa celé skupiny. Když má každá varianta vlastní stránku, jednu kanonickou adresu skupina nemá a každá stránka nese vlastní, úplně popsané varianty."
+  - q: "Co je item_group_id?"
+    a: "item_group_id je atribut produktového feedu pro Google Merchant Center, který spojí varianty téhož produktu do skupiny. Každá varianta se posílá jako samostatný produkt s vlastním id a všechny dostanou stejnou hodnotu item_group_id, typicky rodičovský kód. U bezplatných výpisů produktů s variantami je povinný. Ve strukturovaných datech mu odpovídá productGroupID."
+  - q: "Jak jsou varianty řešené na Shoptetu?"
+    a: "Varianty se na Shoptetu zakládají pomocí šablon variant a každá má vlastní kód, cenu a dostupnost. Ve strukturovaných datech je Shoptet zapisuje jako víc nabídek pod jedním produktem: u šesti stránek, které jsem 3. 10. 2026 přeměřil, mířily všechny nabídky na stejnou adresu a skupina ProductGroup chyběla. Variantu ale umí předvolit parametrem v adrese — na dvou zkoušených stránkách to fungovalo a kanonická adresa zůstala bez parametru."
+  - q: "Stačí rozlišit variantu znakem # v adrese?"
+    a: "Znak # v adrese pro Google variantu nerozliší. Google část adresy za # při indexaci nepoužívá, takže adresy /tricko#cerne a /tricko#bile považuje za tutéž stránku. Heureka přitom fragmenty pro varianty na jedné stránce ve své specifikaci doporučuje. Když chcete jeden zápis pro Google i srovnávače, použijte parametr (?barva=cerna) nebo samostatnou cestu."
+  - q: "Platí item_group_id i pro Heureku a Zboží.cz?"
+    a: "Heureka a Zboží.cz atribut item_group_id nepoužívají — ve svém XML feedu mají značku ITEMGROUP_ID a každou variantu posílají jako samostatnou položku. Zboží.cz ji vede jako doporučenou. Nápověda Heureky k ní k 3. 10. 2026 uvádí dva různé rozsahy — na jednom místě jen oblečení a obuv lišící se velikostí, jinde i barvy, vzory a sady — takže použití mimo oblečení si u Heureky ověřte."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**U variant nejde o jednu značku v kódu, ale o to, aby stránka, strukturovaná data a feed popisovaly tutéž variantu stejně.** Tričko ve třech barvách a čtyřech velikostech je pro zákazníka jeden produkt s výběrem. Merchant Center z něj chce dvanáct samostatných produktů se společnou skupinou, Heureka dvanáct položek ve feedu a Google ve strukturovaných datech jednu skupinu s dvanácti variantami.
+
+Návod ukazuje, jak tyto pohledy sladit: co musí mít každá varianta, kdy stačí parametr v adrese, kdy dává smysl vlastní stránka a jak skupinu zapsat do kódu i do feedů. Praktická část se týká Shoptetu a našeho vlastního e-shopu na Upgates. Co píšu o platformách, je z jejich dokumentace k 3. 10. 2026 nebo z vlastního měření ve veřejném HTML; do administrací jsem se nepřihlašoval.
+
+## Co u <span class="hl">varianty</span> potřebuje stroj — <strong>tři údaje a jedna shoda</strong>
+
+Dokumentace Googlu, Merchant Center, Heureky i Zboží.cz se v detailech liší, ale u variant stojí na stejném základu:
+
+<Checklist title="Co musí mít každá varianta" items={[
+  { title: "Vlastní identifikátor", desc: "Kód, který patří jen té variantě: sku nebo gtin ve strukturovaných datech, id v Merchant Center, ITEM_ID na Heurece. Google jedinečný identifikátor u každé varianty vyžaduje." },
+  { title: "Vlastní adresu", desc: "Google chce, aby se každá varianta dala předvolit vlastní adresou — se správným obrázkem, cenou a dostupností a s možností vložit ji do košíku. Heureka i Zboží.cz chtějí unikátní adresu pro každou variantu." },
+  { title: "Vazbu na skupinu", desc: "Společný kód celé skupiny: productGroupID ve strukturovaných datech, item_group_id v Merchant Center, ITEMGROUP_ID na českých srovnávačích." },
+  { title: "Shodu všech míst", desc: "Merchant Center vyžaduje, aby stránka odpovídala hodnotám varianty ve feedu — názvu, barvě, ceně, dostupnosti i obrázku." },
+]} />
+
+Proč to souvisí s AI? U atributu `variant_option` píše Google v nápovědě Merchant Center, že ho použije, aby produkt ukázal **spolu se všemi dostupnými variantami** v konverzační AI i v klasickém Vyhledávání. Atribut patří do sady takzvaných konverzačních atributů, které Google 20. 5. 2026 zpřístupnil obchodníkům po celém světě a které mají podle nápovědy pomáhat v rozhraních s AI, jako je režim AI. Jak přesně je tam používá, Google nepopisuje — doložený je účel, ne efekt.
+
+Kde tahle shoda chybí, je vidět i bez přístupu do administrace. Na šesti produktových stránkách na Shoptetu, které jsem 3. 10. 2026 přeměřil, nesla každá nabídka vlastní kód, ale všechny mířily na stejnou adresu. Na jedné z nich byly pod tou jednou adresou varianty skladem i vyprodané.
+
+## <span class="hl">Jedna stránka</span>, nebo <strong>stránka pro každou variantu</strong>
+
+Google popisuje dva přístupy a žádný neoznačuje za lepší. V obou ale musí jít každá varianta otevřít vlastní adresou, která ji předvolí — rozdíl je jen v tom, jestli je to parametr na jedné stránce, nebo samostatná stránka.
+
+<CompareTable
+  leftLabel="Jedna stránka, varianta parametrem"
+  rightLabel="Samostatné stránky"
+  rows={[
+    { icon: "🔗", label: "Adresa varianty", left: "/mikina?barva=zelena&velikost=m", right: "/mikina-zelena?velikost=m nebo /mikina-zelena-m" },
+    { icon: "🎯", label: "Kanonická adresa", left: "Jediná pro celou skupinu, bez parametru: /mikina", right: "Každá stránka vlastní; skupina jednu kanonickou adresu nemá" },
+    { icon: "🧩", label: "Strukturovaná data", left: "ProductGroup s adresou skupiny a se všemi variantami", right: "ProductGroup znovu na každé stránce: varianty té stránky celé, ostatní jen odkazem" },
+    { icon: "🧭", label: "Kdy se hodí (naše doporučení)", left: "Varianty se liší jen parametrem — velikostí, objemem, balením", right: "Varianty mají vlastní fotky, popis a vzhled" },
+  ]}
+/>
+
+Poslední řádek tabulky není pokyn Googlu, ale naše doporučení. Samostatná stránka pro velikost M by byla kopie stránky pro velikost L s jiným písmenem. Zelená mikina má naproti tomu vlastní fotky a dá se popsat jinak než červená, takže samostatná stránka má co nést.
+
+### Co nefunguje: varianta za znakem #
+
+Google část adresy za znakem `#` při indexaci nepoužívá. V dokumentaci ke struktuře adres to ukazuje přímo na variantách: `/product/t-shirt#black` a `/product/t-shirt#white` jsou pro něj tatáž stránka. Heureka přitom ve specifikaci feedu u variant zobrazených na jedné stránce píše, že „jediným řešením“ jsou právě fragmenty typu `#1` a `#2` — počítá tedy se stránkou, která variantu adresou předvolit neumí. Feed pro Heureku tak může být v pořádku, zatímco Google varianty od sebe nerozliší. Parametr (`?barva=cerna`) dává unikátní adresu, kterou Heureka vyžaduje, a zároveň ji rozliší Google.
+
+### Pozor na robots.txt
+
+Dva dokumenty Googlu se tu při doslovném použití srazí. Ukázka pro filtry v kategoriích zakazuje procházení adres s parametry `color` a `size` (`disallow: /*?*color=`). Ukázkové adresy variant v dokumentaci k variantám ale používají tytéž parametry: `/coat?size=small&color=green`. A u variant Google chce adresy, které může procházet a podle kterých varianty rozpozná. Kdo převezme pravidlo pro filtry doslova a varianty předvoluje stejným parametrem, zablokuje i je.
+
+Řešení je oddělit parametr variant od parametrů filtrů, nebo pravidlo v robots.txt omezit jen na cesty výpisů. Jak s filtry zacházet obecně, rozebírá [článek o filtrech v e-shopu](/blog/filtry-faceted-navigace-eshopu/).
+
+## <span class="hl">ProductGroup</span>: jak skupinu <strong>zapsat do strukturovaných dat</strong>
+
+Podporu variant ve strukturovaných datech zavedl Google v únoru 2024. Skupinu popisuje typ `ProductGroup`, varianty jsou běžné produkty (`Product`) uvnitř ní. Kromě toho platí všechny povinné vlastnosti produktu a nabídky jako u jakékoli jiné produktové stránky.
+
+- **`name`** skupiny je jediná vlastnost, kterou Google u samotného `ProductGroup` vede jako povinnou. Pro variantní výsledky ale nestačí: každá varianta musí splnit povinné vlastnosti produktu a nabídky, mít jedinečný identifikátor a adresu, která ji předvolí. Název varianty má být konkrétnější než název skupiny: „Mikina Basic, zelená, M“.
+- **`productGroupID`** je kód skupiny, typicky rodičovský kód. Když ho uvedete i u variant (`inProductGroupWithID`), musí se shodovat.
+- **`variesBy`** říká, podle čeho se varianty liší. Google podporuje barvu, velikost, doporučený věk, doporučené pohlaví, materiál a vzor; zapisují se celou adresou, například `https://schema.org/color`.
+- **`hasVariant`** obsahuje jednotlivé varianty. Každá má `sku` nebo `gtin`, vlastní název a nabídku s cenou, dostupností a adresou, která ji předvolí.
+- **`url`** skupiny patří jen k přístupu „jedna stránka“. U samostatných stránek ji podle Googlu neuvádějte.
+
+Takhle vypadá skupina se dvěma variantami na jedné stránce — jedna skladem, druhá vyprodaná:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "ProductGroup",
+  "name": "Mikina s kapucí Basic",
+  "description": "Bavlněná mikina s kapucí a klokaní kapsou.",
+  "url": "https://www.example.cz/mikina-basic",
+  "brand": { "@type": "Brand", "name": "Example" },
+  "productGroupID": "MB-100",
+  "variesBy": ["https://schema.org/size", "https://schema.org/color"],
+  "hasVariant": [
+    {
+      "@type": "Product",
+      "sku": "MB-100-ZEL-M",
+      "name": "Mikina s kapucí Basic, zelená, M",
+      "color": "zelená",
+      "size": "M",
+      "image": "https://www.example.cz/img/mikina-basic-zelena.jpg",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.cz/mikina-basic?barva=zelena&velikost=m",
+        "price": 1290,
+        "priceCurrency": "CZK",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "MB-100-ZEL-L",
+      "name": "Mikina s kapucí Basic, zelená, L",
+      "color": "zelená",
+      "size": "L",
+      "image": "https://www.example.cz/img/mikina-basic-zelena.jpg",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.cz/mikina-basic?barva=zelena&velikost=l",
+        "price": 1290,
+        "priceCurrency": "CZK",
+        "availability": "https://schema.org/OutOfStock"
+      }
+    }
+  ]
+}
+```
+
+Společné údaje, jako je značka nebo materiál, stačí uvést jednou u skupiny. Data patří přímo do HTML, které posílá server: u produktových dat generovaných JavaScriptem Google upozorňuje, že nákupní procházení pak může být méně časté a méně spolehlivé, což u rychle se měnící ceny a dostupnosti vadí. K ověření kódu Google doporučuje Test rozšířených výsledků (Rich Results Test). Podle oznámení z února 2024 do něj kontroly variant přidal spolu s produktovými reporty v Search Console.
+
+## <span class="hl">Shoptet a Upgates</span> v praxi — <strong>přeměřeno 3. 10. 2026</strong>
+
+### Shoptet ve vzorku: adresa varianty fungovala, skupina v datech chyběla
+
+Podle nápovědy se varianty na Shoptetu zakládají pomocí šablon variant — nejvýš tři parametry na šablonu a nejvýš 512 variant na produkt. Každá varianta má vlastní cenu, kód, stav skladu a dostupnost, obrázek jde přiřadit jen tehdy, když ho dostanou všechny varianty produktu.
+
+Ve strukturovaných datech je to jinak. V srpnovém [měření 38 e-shopů na Shoptetu](/blog/shoptet-produktova-pole-google/) se `ProductGroup` ani vazby variant neobjevily ani jednou; produktová data byla [v microdatech](/blog/shoptet-strukturovana-data-mereni/) u všech 38, v JSON-LD navíc jen u šesti. Šest stránek z toho vzorku mělo víc nabídek pod jedním produktem a ty jsem 3. 10. 2026 přeměřil:
+
+- **u všech šesti** měla každá nabídka vlastní kód, ale všechny nabídky odkazovaly na stejnou adresu produktu bez parametru,
+- **na jedné** byly pod touto adresou nabídky skladem i vyprodané — stroj dostane dva stavy bez adresy, která by je přiřadila ke konkrétní variantě,
+- **předvolba adresou existuje.** Shoptet ve výpisech odkazuje na varianty adresou s parametrem `?parameterValueId=`. Na dvou zkoušených stránkách (varianty s jedním parametrem) vrátil server po načtení takové adresy stránku s předvolenou variantou a kanonická adresa zůstala bez parametru,
+- **robots.txt** žádného z 38 e-shopů tento parametr nezakazuje.
+
+Shoptet má tedy na zkoušených stránkách splněnou adresní část požadavků Googlu a nesplněnou datovou: chybí skupina a nabídky neodkazují na adresu své varianty. Nastavení, které by skupinu do dat přidalo, jsem v nápovědě k variantám nenašel. Je to téma pro šablonu, doplněk nebo dotaz na podporu.
+
+### MEGA DETAIL na Upgates: každá varianta svou stránku
+
+Upgates v nápovědě uvádí, že každá varianta má vlastní adresu a do sitemapy i do XML feedů pro srovnávače se vkládá samostatně. Přesně tak to vypadá na našem vlastním e-shopu [MEGA DETAIL](https://www.megadetail.cz/): mikina ve dvou barvách a čtyřech velikostech má **osm adres**. Každá má vlastní název („… zelená velikost L“), kód, cenu, dostupnost a vlastní kanonickou adresu a stránka nabízí odkazy na ostatní varianty.
+
+Ve strukturovaných datech ale každá z osmi stránek popisuje samostatný produkt s jednou nabídkou, bez skupiny — a stejně to bylo u všech 40 produktů ze vzorku napříč e-shopem. Vazba mezi variantami je tak jen v odkazech na stránce, ne v datech. Platí to i pro nás. E-shop běží na vlastní šabloně, takže z něj nejde usuzovat, co dělá výchozí šablona Upgates.
+
+## <span class="hl">Feedy</span>: jedna skupina, <strong>čtyři zápisy</strong>
+
+Každý kanál chce varianty jako samostatné položky se společným kódem skupiny. Liší se název pole a podrobnosti:
+
+| Kanál | Jak se zapisuje skupina | Co musí mít každá varianta | Na co si dát pozor |
+|---|---|---|---|
+| **Google Merchant Center** | `item_group_id`, volitelně `item_group_title` a `variant_option` | vlastní `id`, odkaz, který variantu předvolí, a `color`, `size` a další standardní atributy, podle kterých se liší | U bezplatných výpisů s variantami je `item_group_id` povinné. Rodičovský produkt neposílejte jako samostatnou položku. |
+| **Heureka** | `ITEMGROUP_ID` | vlastní `SHOPITEM`, název s rozlišujícím parametrem, unikátní `URL` | Nápověda uvádí pro `ITEMGROUP_ID` dva různé rozsahy. Fragment `#` Heurece stačí, Googlu ne. |
+| **Zboží.cz** | `ITEMGROUP_ID` (doporučené) | vlastní nabídka s unikátní `URL` | Variantou rozumí nabídky stejného výrobce, řady, názvu a cenové hladiny, které se liší jedním parametrem. Výjimkou jsou varianty určené výrobcem, třeba kapacita a barva telefonu. |
+| **OpenAI (ChatGPT)** | `group_id`, `listing_has_variations=true` a `variant_dict` | vlastní `item_id`, adresa s předvolenou variantou, kde to jde | Standardní nahrání feedu je k 3. 10. 2026 určené pro USA a přímé feedy mají jen schválení partneři. |
+
+**Merchant Center** k tomu má čtyři pravidla, na kterých seskupení stojí: hodnota skupiny musí být stejná u všech variant a jedinečná pro každou skupinu, nesmí se měnit, neposílá se u produktů, které variantou nejsou (oblek ze saka a kalhot, sada koupelnových doplňků), a stránka po otevření odkazu musí ukázat tytéž hodnoty jako feed.
+
+Novější atributy `item_group_title` a `variant_option` jsou volitelné. Podle nápovědy Merchant Center se dají poslat doplňkovým zdrojem dat a na schválení stávajících produktů nemají vliv. `variant_option` říká přesně, podle čeho se varianty liší — třeba `velikost:M,barva:zelená`. Standardní atributy jako barva to samy neříkají, protože je mají i produkty bez variant (Google uvádí příklad šedé tiskárny).
+
+**Heureka** má v nápovědě k `ITEMGROUP_ID` rozpor. Na jednom místě je značka vyhrazená jen pro oblečení a obuv, které se liší velikostí, jinde ji doporučuje i pro barvy, vzory a sady. Než ji nasadíte mimo oblečení, ověřte si u Heureky, co platí.
+
+**OpenAI** má pro varianty vlastní pole, ale pro český e-shop je to zatím výhled. Přímé produktové feedy jsou podle dokumentace OpenAI k 3. 10. 2026 jen pro schválené partnery a standardní nahrání feedu je určené pro USA. Kdyby vám OpenAI potvrdilo formát kompatibilní s Googlem, skupinu převezme z `item_group_id` a varianty složí ze standardních atributů.
+
+## <span class="hl">Kontrola</span> variant <strong>v pěti krocích</strong>
+
+<Stepper steps={[
+  { title: "Vyberte vzorek", desc: "Pár produktů, jejichž varianty se liší cenou nebo dostupností. Na nich se nesoulad projeví nejdřív." },
+  { title: "Otevřete adresu varianty z feedu", desc: "Stránka má předvolit tutéž variantu se stejnou cenou, dostupností a obrázkem a musí ji jít vložit do košíku." },
+  { title: "Porovnejte kódy", desc: "id ve feedu, sku ve strukturovaných datech a kód v e-shopu musí patřit téže variantě. Kód skupiny musí být stejný ve všech kanálech a v čase se nemění." },
+  { title: "Zkontrolujte kanonickou adresu a robots.txt", desc: "U parametrů má kanonická adresa vést na adresu bez parametru. Adresy variant nesmí zakazovat pravidlo pro filtry." },
+  { title: "Ověřte strukturovaná data", desc: "Projeďte stránku Testem rozšířených výsledků, který Google k ověření kódu doporučuje." },
+]} />
+
+Jak zapsat stav skladem a dodací lhůtu zvlášť pro každou variantu, rozebírá [článek o skladovosti a dodací lhůtě](/blog/dostupnost-a-skladovost-pro-ai/).
+
+## <strong>Šest chyb</strong> při zápisu <span class="hl">variant</span>
+
+<MistakeGrid>
+  <Mistake num="01" title="Rodičovský produkt jako samostatná položka" fix="Rodičovský kód patří do item_group_id všech variant, ne do vlastního řádku feedu.">
+    Merchant Center výslovně píše, že rodičovský kód se jako samostatný produkt neposílá. Do feedu jdou jen varianty, které jde koupit.
+  </Mistake>
+  <Mistake num="02" title="Skupina pro věci, které variantou nejsou" fix="Skupinu použijte jen pro varianty téhož produktu.">
+    Oblek ze saka a kalhot nebo sada koupelnových doplňků jsou podle Merchant Center podobné produkty, ne varianty. Skupina je pro jeden produkt v různých provedeních.
+  </Mistake>
+  <Mistake num="03" title="Kód skupiny, který se mění" fix="Použijte trvalý kód, typicky rodičovský SKU.">
+    Když se hodnota skupiny často mění, může to podle nápovědy Merchant Center vést k nekonzistentnímu seskupení a zobrazení variant.
+  </Mistake>
+  <Mistake num="04" title="Varianta jen za znakem #" fix="Variantu rozlište parametrem nebo vlastní cestou.">
+    Google část adresy za `#` při indexaci nepoužívá. Pro něj je to pořád jedna stránka, i když Heurece takový zápis stačí.
+  </Mistake>
+  <Mistake num="05" title="Pravidlo pro filtry, které zablokuje varianty" fix="Oddělte parametr variant od parametrů filtrů, nebo omezte pravidlo na výpisy.">
+    Ukázka Googlu pro filtry zakazuje parametry `color` a `size`. Když jimi předvolujete i varianty, zablokujete je.
+  </Mistake>
+  <Mistake num="06" title="Všechny varianty se stejným názvem" fix="Do názvu varianty patří rozlišující parametr: Mikina Basic, zelená, M.">
+    Google chce název varianty konkrétnější než název skupiny a Heureka chce v názvu rozlišit barvu, rozměr i množství. Stejný název u dvanácti položek nic nerozliší.
+  </Mistake>
+</MistakeGrid>
+
+## U <span class="hl">variant produktu</span> slaďte <strong>adresu, data a feed</strong>
+
+Varianta potřebuje všude totéž: vlastní kód, vlastní adresu a společný kód skupiny. Rozhoduje to, aby stránka, strukturovaná data a feed o ní tvrdily stejnou cenu a dostupnost. Na stránkách Shoptetu, které jsem přeměřil, je slabé místo ve strukturovaných datech, ne v adresách. Na našem e-shopu na Upgates máme adresy a odkazy mezi variantami, ale skupina v datech chybí také. Než začnete s kódem, projděte pět kroků kontroly na pár produktech — ukáže se, kde vaše varianty mezi kanály nesedí.
+
+Vzor produktové stránky se strukturovanými daty produktu a nabídky najdete v **[AI SEO Wireframe Packu](/pack/)** — PDF návodu za **1 490 Kč včetně DPH**; skupinu variant k němu doplníte podle tohoto článku. Když chcete vědět, jak strukturovaná data vašich produktů čte stroj, **[Audit AI viditelnosti](/audit/)** za **3 600 Kč bez DPH** je projde spolu s tím, z čeho může AI o vašem e-shopu čerpat.
