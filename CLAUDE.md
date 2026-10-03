@@ -725,7 +725,17 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   soupeřilo o jeden dotaz a spravilo se to bez psaní obsahu. Podklad:
   `_source/_keyword-research/blog-gsc-20260907/ANALYZA.md`. **Jediná cesta
   s řádovým dopadem** — titulky ani CTR to nevyřeší.
-- **Vyhodnotit přejmenování rodiny „režim AI" — 3. 10. 2026** (4 týdny od zásahu 5. 9.). Baseline, kritéria úspěchu a postup: `_source/_keyword-research/revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md`. Rodina `/ai-mode/` + `rezim-ai-google` + `ai-mode-cesky` = 14 429 impresí / 28 kliků za 90 d; `/ai-mode/` mělo 1 276 impresí a 0 kliků na pozici 6,1. Přesměrování NEbylo nasazeno — zvažovat až podle dat.
+- **🟠 Přejmenování rodiny „režim AI" vyhodnoceno 3. 10. 2026 — čeká rozhodnutí o 301.**
+  Výsledek a data: `_source/_keyword-research/revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md`.
+  Okno 6. 9. → 3. 10. proti 9. 8. → 5. 9. (obě 28 dní): imprese rodiny 16 496 → 27 006
+  (**+64 %**), kliky **31 → 31**, CTR 0,188 → 0,115 %. Splněny 3 ze 4 signálů, padl ten
+  výsledkový (CTR). **Titulek problém nebyl** — zobrazení přišlo, kliky ne. Přírůstek
+  impresí je poptávka (dotazy rodiny +57 %), ne lepší pozice; ty stojí na 7–9.
+  Doporučení k rozhodnutí: **301 `/blog/ai-mode-cesky/` → `/ai-mode/`** (ne na
+  `rezim-ai-google`, jak čekalo zadání z 5. 9. — hlavní dotaz „ai mode" si bere se
+  **sekcí**, překryv 17 %; návodu ukusuje jen 29 % dotazu „jak zapnout režim ai"),
+  `rezim-ai-google` nechat (23 z 31 kliků rodiny). Po nasazení přeměřit 31. 10. 2026
+  a rozhodovat podle **absolutních kliků**, ne CTR.
 - **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
 - **Další běh měření AI viditelnosti ~7. 10. 2026** (měsíční kadence). Poslední
   proběhl 7. 9. 2026, oba configy přes OpenAI. Výsledky a metodický závěr:
