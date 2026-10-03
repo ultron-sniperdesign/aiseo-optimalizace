@@ -174,16 +174,24 @@ Každý kanál chce varianty jako samostatné položky se společným kódem sku
 
 | Kanál | Jak se zapisuje skupina | Co musí mít každá varianta | Na co si dát pozor |
 |---|---|---|---|
-| **Google Merchant Center** | `item_group_id`, volitelně `item_group_title` a `variant_option` | vlastní `id`, odkaz, který variantu předvolí, a `color`, `size` a další standardní atributy, podle kterých se liší | U bezplatných výpisů s variantami je `item_group_id` povinné. Rodičovský produkt neposílejte jako samostatnou položku. |
-| **Heureka** | `ITEMGROUP_ID` | vlastní `SHOPITEM`, název s rozlišujícím parametrem, unikátní `URL` | Nápověda uvádí pro `ITEMGROUP_ID` dva různé rozsahy. Fragment `#` Heurece stačí, Googlu ne. |
-| **Zboží.cz** | `ITEMGROUP_ID` (doporučené) | vlastní nabídka s unikátní `URL` | Variantou rozumí nabídky stejného výrobce, řady, názvu a cenové hladiny, které se liší jedním parametrem. Výjimkou jsou varianty určené výrobcem, třeba kapacita a barva telefonu. |
-| **OpenAI (ChatGPT)** | `group_id`, `listing_has_variations=true` a `variant_dict` | vlastní `item_id`, adresa s předvolenou variantou, kde to jde | Standardní nahrání feedu je k 3. 10. 2026 určené pro USA a přímé feedy mají jen schválení partneři. |
+| **Google Merchant Center** | `item_group_id` | vlastní `id`, odkaz s předvolbou, `color`, `size`… | `item_group_id` povinné u bezplatných výpisů s variantami |
+| **Heureka** | `ITEMGROUP_ID` | vlastní položka, rozlišující název, unikátní `URL` | rozsah značky popsán dvakrát jinak |
+| **Zboží.cz** | `ITEMGROUP_ID` | vlastní nabídka s unikátní `URL` | varianta se liší jedním parametrem |
+| **OpenAI (ChatGPT)** | `group_id` | vlastní `item_id`, odkaz s předvolbou | jen pro schválené partnery, standardně USA |
 
-**Merchant Center** k tomu má čtyři pravidla, na kterých seskupení stojí: hodnota skupiny musí být stejná u všech variant a jedinečná pro každou skupinu, nesmí se měnit, neposílá se u produktů, které variantou nejsou (oblek ze saka a kalhot, sada koupelnových doplňků), a stránka po otevření odkazu musí ukázat tytéž hodnoty jako feed.
+**Merchant Center** k seskupení přidává pět pravidel:
 
-Novější atributy `item_group_title` a `variant_option` jsou volitelné. Podle nápovědy Merchant Center se dají poslat doplňkovým zdrojem dat a na schválení stávajících produktů nemají vliv. `variant_option` říká přesně, podle čeho se varianty liší — třeba `velikost:M,barva:zelená`. Standardní atributy jako barva to samy neříkají, protože je mají i produkty bez variant (Google uvádí příklad šedé tiskárny).
+- rodičovský produkt se jako samostatná položka neposílá,
+- hodnota skupiny je stejná u všech variant a jedinečná pro každou skupinu,
+- hodnota skupiny se nemění,
+- skupina se nepoužívá u produktů, které variantou nejsou (oblek ze saka a kalhot, sada koupelnových doplňků),
+- stránka po otevření odkazu ukazuje tytéž hodnoty jako feed.
 
-**Heureka** má v nápovědě k `ITEMGROUP_ID` rozpor. Na jednom místě je značka vyhrazená jen pro oblečení a obuv, které se liší velikostí, jinde ji doporučuje i pro barvy, vzory a sady. Než ji nasadíte mimo oblečení, ověřte si u Heureky, co platí.
+K `item_group_id` patří dva novější atributy, `item_group_title` a `variant_option`. Oba jsou volitelné. Podle nápovědy Merchant Center se dají poslat doplňkovým zdrojem dat a na schválení stávajících produktů nemají vliv. `variant_option` říká přesně, podle čeho se varianty liší — třeba `velikost:M,barva:zelená`. Standardní atributy jako barva to samy neříkají, protože je mají i produkty bez variant (Google uvádí příklad šedé tiskárny).
+
+**Heureka** má v nápovědě k `ITEMGROUP_ID` rozpor. Na jednom místě je značka vyhrazená jen pro oblečení a obuv, které se liší velikostí, jinde ji doporučuje i pro barvy, vzory a sady. Než ji nasadíte mimo oblečení, ověřte si u Heureky, co platí. Fragment `#` v adrese varianty Heurece stačí, Googlu ne.
+
+**Zboží.cz** vede `ITEMGROUP_ID` jako doporučené a za variantu považuje nabídky stejného výrobce, řady, názvu a cenové hladiny, které se liší jedním parametrem. Výjimkou jsou varianty určené výrobcem, třeba kapacita a barva telefonu.
 
 **OpenAI** má pro varianty vlastní pole, ale pro český e-shop je to zatím výhled. Přímé produktové feedy jsou podle dokumentace OpenAI k 3. 10. 2026 jen pro schválené partnery a standardní nahrání feedu je určené pro USA. Kdyby vám OpenAI potvrdilo formát kompatibilní s Googlem, skupinu převezme z `item_group_id` a varianty složí ze standardních atributů.
 

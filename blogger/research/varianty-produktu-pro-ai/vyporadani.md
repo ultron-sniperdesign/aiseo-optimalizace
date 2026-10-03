@@ -64,3 +64,15 @@ zásadní nález nemá.
   - **Nezapracováno (2):** „zapsat do kódu“ — vazba „zapsat do + 2. pád“ je spisovná · slovosled
     „Podporu variant … zavedl Google v únoru 2024“ — téma na začátku věty, ne opis.
   - **Nová pravidla do slovníku:** žádná — viz `JAZYK_AUDIT_LOG.md` (falešná pozitiva u „přes“ a „cílit na“).
+
+## Po nasazení — mobilní kontrola (D3), 3. 10. 2026
+
+- **Strojové měření na 375 px:** 0 přetékajících prvků, stránka vodorovně neroluje.
+- **Okem:** krátká odpověď, Checklist, CompareTable (ve vlastním rolovacím obalu), ukázka kódu,
+  Stepper, MistakeGrid (čísla 01–06), CTA i FAQ v pořádku.
+- **Nález:** čtyřsloupcová tabulka feedů měla kvůli dlouhým buňkám řádky vysoké kolem 300 px
+  a třetí a čtvrtý sloupec šlo číst jen rolováním do strany. Nejde o přetečení komponenty, ale
+  o můj text, proto **zkráceno v článku**: buňky jen klíčové údaje, podrobnosti přesunuty do
+  odstavců pod tabulkou (pravidla Merchant Center jako výčet, nový odstavec o Zboží.cz s celou
+  definicí varianty i výjimkou, věta o fragmentu `#` k odstavci o Heurece). Žádné tvrzení se
+  nezměnilo ani neubylo; grep `čtyři pravidla|užší definice` = 0, checker 0 nálezů.
