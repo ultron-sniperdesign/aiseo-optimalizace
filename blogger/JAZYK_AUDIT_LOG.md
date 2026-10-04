@@ -1631,3 +1631,19 @@ určit zdroj“ · „AI Googlu“ → „AI funkce Googlu“ · „k 3. 10.“ 
 **Opraveno:** „obraz“ ve smyslu *picture* (3×) → „přehled“ / „data“ · „ukazují oběma směry“ → „vycházejí
 různě“ · věta bez slovesa · „organika v sobě nese“ · „podat v reportu“ → „uvést“ · „druhou polovinu“ →
 „druhou část“ · přeskládaná věta o relačních rozměrech. Závěrečný checker: 0 nálezů.
+
+## 2026-10-04 · `rozpocet-seo-vs-ai-viditelnost` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 007 (podle checkeru, včetně frontmatteru a komponent) |
+| Mechanický checker | **1 → 0** (`Organic Search` v komponentě → „organické vyhledávání“) |
+| LLM průchod | nezávislý jazykový auditor: 27 nálezů, všechny opraveny |
+| Nová pravidla | **žádné** — šlo o významové vazby, shodu, nejasná zájmena a konkretizaci textu |
+
+**Opraveno:** „co platíte jen jednou“ → „co započítat jen jednou“ · indexace v samostatné
+krátké odpovědi rozepsána · neurčité „platformní úpravy“ a „ohraničené pokusy“ konkretizovány ·
+shoda u společnosti OpenAI · věty bez původce děje · nejednoznačné popisy komponent ·
+„mezní přínos“ vysvětlen běžnou češtinou · „měřitelná plocha“ → spolehlivě měřitelné výsledky ·
+prodejní závěr omezen na dohodnutý vzorek. Závěrečný checker: 0 nálezů.
