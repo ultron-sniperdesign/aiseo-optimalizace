@@ -1647,3 +1647,18 @@ krátké odpovědi rozepsána · neurčité „platformní úpravy“ a „ohran
 shoda u společnosti OpenAI · věty bez původce děje · nejednoznačné popisy komponent ·
 „mezní přínos“ vysvětlen běžnou češtinou · „měřitelná plocha“ → spolehlivě měřitelné výsledky ·
 prodejní závěr omezen na dohodnutý vzorek. Závěrečný checker: 0 nálezů.
+
+## 2026-10-05 · `parametry-produktu-tabulka-text` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 2 477 (podle checkeru, včetně frontmatteru a komponent) |
+| Mechanický checker | **0 nálezů** |
+| LLM průchod | nezávislý jazykový auditor: 12 nálezů, všechny opraveny |
+| Nová pravidla | **žádné** — šlo o významové vazby, kalky závislé na kontextu a zpřesnění formulací |
+
+**Opraveno:** nepřirozené „zavřít do odstavce“ · personifikace filtru a feedu · „vyexportuje“ →
+„má exportovat“ · „namapujte feedy“ → „přiřaďte údaje do polí feedu“ · kalk „rozšiřuje
+způsobilost“ · nejasný „čistý přenos“ · „vznikat nad slovníkem“ → „vycházet ze slovníku“ ·
+chybějící vazba „jako parametry“ · další nejednoznačné příklady. Závěrečný checker: 0 nálezů.

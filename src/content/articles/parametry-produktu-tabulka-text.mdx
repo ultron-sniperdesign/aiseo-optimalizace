@@ -1,0 +1,248 @@
+---
+title: "Parametry produktu: kdy použít tabulku a kdy text"
+seoTitle: "Parametry produktu: tabulka, text a shoda s feedem"
+description: "Rozhodněte, které parametry patří do tabulky, co vysvětlit textem a jak sjednotit názvy, jednotky, produktovou stránku a feed."
+answer: "Parametry produktu patří do tabulky, když mají krátký název, přesnou hodnotu a jednotku a zákazník je potřebuje porovnat. Text má vysvětlit význam, podmínky použití a omezení. Rozhodující údaj může být v obou formátech: v tabulce jako hodnota, v textu jako výklad. Stránka, feed a strukturovaná data přitom musí popisovat tutéž vlastnost stejně."
+slug: "parametry-produktu-tabulka-text"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "obsah"
+  - "technicke-zaklady"
+published: "2026-10-05"
+updated: "2026-10-05"
+keywords:
+  - "parametry produktu"
+  - "tabulka parametrů produktu"
+  - "technické parametry produktu"
+  - "produktová specifikace"
+  - "product_detail Merchant Center"
+  - "produktový feed"
+  - "parametry Heureka"
+  - "additionalProperty"
+variant: "rich"
+faq:
+  - q: "Kdy dát parametr produktu do tabulky a kdy do textu?"
+    a: "Do tabulky patří krátká a porovnatelná dvojice název–hodnota, například Hmotnost — 1,8 kg. Text použijte pro význam, podmínky a omezení, například zda je hmotnost uvedena s baterií. Pokud zákazník potřebuje obojí, uveďte přesnou hodnotu v tabulce a vysvětlení v textu."
+  - q: "Má být důležitý parametr v tabulce i v popisu produktu?"
+    a: "Ano, když samotná hodnota nestačí k rozhodnutí. V tabulce držte přesnou hodnotu a jednotku, v popisu vysvětlete její dopad nebo podmínku. Neopisujte však celou tabulku do souvislého textu; vznikly by dvě ručně udržované kopie téhož údaje."
+  - q: "Jak sjednotit názvy parametrů napříč katalogem?"
+    a: "Pro každou kategorii vytvořte slovník s kanonickým názvem, datovým typem, jednotkou a povolenými hodnotami. Sloučte synonyma, například Hmotnost, Váha a Hmotnost produktu, pod jeden název. Názvy požadované externí službou řešte při exportu, ne změnou významu ve zdrojových datech."
+  - q: "Jak správně zapisovat hodnotu a jednotku?"
+    a: "Ukládejte číslo a jednotku odděleně, například hodnotu 1800 a jednotku g. Na stránce je můžete zobrazit jako 1,8 kg, pokud stejnou veličinu a přesný přepočet zachováte i v ostatních kanálech. Rozměry neuvádějte jen jako nejasné ‚20 × 30 × 40 cm‘ bez pořadí veličin."
+  - q: "Musí se parametry na stránce a ve feedu shodovat?"
+    a: "Ano, stejná vlastnost musí popisovat stejný produkt a mít stejný význam. Jednotlivé systémy mohou vyžadovat jiné názvy polí nebo formát, ale nesmí z nich vzniknout jiná hodnota. Google doporučuje kombinovat data na stránce a v Merchant Center i proto, aby je mohl pochopit a ověřit."
+  - q: "Pomůže tabulka parametrů k citaci v AI?"
+    a: "Tabulka sama citaci nezaručuje. Čisté páry název–hodnota pomáhají zákazníkům porovnat produkty a Google je umí použít v Merchant Center a na produktových plochách. Google současně uvádí, že pro generativní vyhledávání nejsou vyžadována zvláštní strukturovaná data ani speciální formát obsahu."
+---
+
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import SourceCard from "~/components/blocks/SourceCard.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Technický parametr má dvě úlohy: dát přesnou hodnotu a pomoci člověku rozhodnout, co pro něj hodnota znamená.** Tabulka zvládá první úlohu, souvislý text druhou. Když e-shop všechno schová do odstavce, údaje se špatně porovnávají. Když nechá jen tabulku, zákazník nemusí poznat, proč na hodnotě záleží nebo za jakých podmínek platí.
+
+Řešením není psát každý údaj dvakrát. Nejdřív potřebujete jednotný slovník parametrů a jeden zdroj produktových dat. Z něj pak vznikne tabulka na stránce, produktový feed i strukturovaná data. Text doplní jen to, co se do dvojice název–hodnota nevejde.
+
+## <span class="hl">Tabulka, text, nebo obojí</span> — <strong>rozhoduje úloha údaje</strong>
+
+Začněte otázkou, co má zákazník s údajem udělat. Potřebuje ho **porovnat**, pochopit jeho **dopad**, nebo obojí? Formát vybírejte podle odpovědi, ne podle toho, co šablona produktu nabízí jako první.
+
+<CompareTable
+  leftTitle="Patří do tabulky"
+  rightTitle="Patří do textu"
+  rows={[
+    { icon: "↔", label: "Úloha", left: "Rychlé srovnání stejné veličiny u více produktů", right: "Vysvětlení významu, dopadu nebo omezení" },
+    { icon: "#", label: "Podoba", left: "Krátký název, hodnota a jednotka", right: "Celá věta se souvislostí a podmínkou" },
+    { icon: "✓", label: "Příklad", left: "Hmotnost — 1,8 kg", right: "Hmotnost 1,8 kg zahrnuje baterii, ale ne přepravní pouzdro." },
+    { icon: "!", label: "Riziko", left: "Hodnota bez vysvětlení může být dvojznačná", right: "Číslo ukryté ve větě se hůř porovnává" },
+  ]}
+/>
+
+Do tabulky dejte především **rozměry, hmotnost, výkon, kapacitu, materiál, kompatibilitu nebo obsah balení**, pokud je lze zapsat krátce a jednoznačně. Do textu patří odpovědi typu: co se při měření započítalo, s čím je výrobek kompatibilní, za jakých podmínek dosáhne uvedeného výkonu nebo komu bude určitá velikost vyhovovat.
+
+Rozhodující parametr může být v obou formátech, ale pokaždé má jinou práci. Například tabulka uvede „Výdrž baterie — až 12 hodin“ a text doplní, že výrobce hodnotu naměřil při přehrávání videa se sníženým jasem. **Tabulka drží hodnotu, text drží podmínku.**
+
+<Insight tone="accent" icon="?" label="Rychlý test">
+Zkuste vedle sebe položit dva výrobky. Pokud chcete hledat stejný název vlastnosti a porovnat dvě hodnoty, údaj patří do tabulky. Pokud se ptáte „co to pro mě znamená“ nebo „kdy to platí“, odpověď patří do textu.
+</Insight>
+
+Obecná pravidla pro hlavičky, popisky a sémantické HTML rozebírá návod [Tabulky a seznamy pro AI](/blog/tabulky-a-seznamy-pro-ai/). U produktové tabulky navíc platí, že každý řádek musí jít převést do jednoznačné dvojice **název vlastnosti–hodnota**.
+
+## Nejdřív vytvořte <span class="hl">slovník parametrů</span> — <strong>jedna veličina, jeden název</strong>
+
+Největší zmatek obvykle nevzniká v HTML, ale už v katalogu. Stejnou vlastnost může jeden výrobce dodat jako „váha“, druhý jako „hmotnost produktu“ a třetí jako „netto hmotnost“. Pokud e-shop hodnoty pouze převezme, ve filtru, tabulce i feedu mohou vzniknout tři různé parametry.
+
+Pro každou produktovou kategorii vytvořte malý slovník. Jeden řádek slovníku má obsahovat:
+
+<Checklist title="Co evidovat u každého parametru" items={[
+  { title: "Kanonický název", desc: "Jeden název používaný v katalogu a na stránce, například Hmotnost produktu." },
+  { title: "Význam", desc: "Co přesně se měří a co se do hodnoty započítává. Rozlišujte například čistou a přepravní hmotnost." },
+  { title: "Datový typ", desc: "Číslo, rozsah, ano/ne, výběr z povolených hodnot nebo volný text. Typ zabrání tomu, aby se v číselném poli objevily hodnoty jako „cca 2 kg“." },
+  { title: "Základní jednotka", desc: "Jedna jednotka pro uložení a přepočet, například g. Zobrazení může být v kg, když je převod přesný." },
+  { title: "Povolené hodnoty", desc: "U barvy, materiálu nebo typu konektoru držte řízený seznam, aby nevznikly varianty USB C, USB-C a typ C." },
+  { title: "Mapování do kanálů", desc: "Určete, do kterého pole půjde údaj v Merchant Center, na Heurece nebo v jiné službě. Externí název nemění význam zdrojového pole." },
+]} />
+
+Slovník tvořte po kategoriích. Úhlopříčka displeje je důležitá u notebooku, objem nádoby u mixéru a délka stélky u obuvi. Univerzální seznam stovek polí vede k tomu, že se na stránkách objevují prázdné řádky, nedůležité údaje nebo hodnoty „ne“ u vlastností, které se produktu vůbec netýkají.
+
+> **Nezapisujte nepotvrzenou hodnotu jako nulu nebo „ne“.** Google u `product_detail` výslovně požaduje uvádět jen potvrzené hodnoty. Chybějící údaj znamená „nevíme“, nikoli automaticky „produkt vlastnost nemá“.
+
+Názvy držte věcné. Merchant Center nedoporučuje přidávat do technických detailů hledané výrazy ani jiné texty pro optimalizaci. Řádek „Nejlepší lehký aku šroubovák hmotnost“ není parametr. Správný název je prostě „Hmotnost“.
+
+## U <span class="hl">hodnot a jednotek</span> oddělte <strong>uložení od zobrazení</strong>
+
+Hodnota `1,8 kg` vypadá jako jeden údaj, pro další použití jsou to ale tři části: **veličina**, číslo a jednotka. Když je uložíte odděleně, můžete je bezpečně převádět, řadit a exportovat. Když celé pole obsahuje volný text „cca 1.8kg bez akumulátoru“, každý další kanál ho musí znovu rozebírat.
+
+<table>
+  <caption>Příklad kanonického zápisu parametrů aku vrtačky</caption>
+  <thead>
+    <tr>
+      <th scope="col">Parametr</th>
+      <th scope="col">Uložená hodnota</th>
+      <th scope="col">Jednotka</th>
+      <th scope="col">Zobrazení na stránce</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Hmotnost bez akumulátoru</th>
+      <td>1800</td>
+      <td>g</td>
+      <td>1,8 kg</td>
+    </tr>
+    <tr>
+      <th scope="row">Napětí akumulátoru</th>
+      <td>18</td>
+      <td>V</td>
+      <td>18 V</td>
+    </tr>
+    <tr>
+      <th scope="row">Maximální průměr vrtání do dřeva</th>
+      <td>35</td>
+      <td>mm</td>
+      <td>35 mm</td>
+    </tr>
+    <tr>
+      <th scope="row">Akumulátor v balení</th>
+      <td>false</td>
+      <td>—</td>
+      <td>Ne</td>
+    </tr>
+  </tbody>
+</table>
+
+V názvu parametru zachovejte podmínku, která mění význam: „Hmotnost **bez akumulátoru**“ není totéž jako „Hmotnost“. U rozměrů napište pořadí veličin. Samotné „20 × 30 × 40 cm“ neříká, co je výška, šířka a hloubka. Buď použijte tři řádky, nebo název „Rozměry (š × v × h)“.
+
+Jednotky nepřidávejte do názvu, pokud je systém umí vést zvlášť. Pole „Hmotnost (kg)“ svádí k tomu, že někdo uloží `1800 g` a výsledkem bude chybný přepočet. Na stránce má být jednotka vždy viditelná; ve zdrojových datech ji držte odděleně, kdykoli to redakční systém dovolí.
+
+## <span class="hl">Stránka a feed</span> mají vycházet <strong>z jednoho zdroje pravdy</strong>
+
+Ruční přepis tabulky do popisu, feedu a strukturovaných dat vytváří čtyři kopie stejné skutečnosti. Jakmile se změní balení nebo výrobce opraví údaj, část kopií zůstane stará. Lepší je uložit parametr jednou a pro každý kanál jen určit, **jak se má exportovat**.
+
+<Stepper
+  tone="seo"
+  steps={[
+    { title: "Normalizujte zdrojová data", desc: "Převeďte dodavatelské názvy a jednotky na vlastní slovník. Původní hodnotu si ponechte pro kontrolu, ale na web neposílejte nekontrolovanou směs." },
+    { title: "Vygenerujte tabulku na stránce", desc: "Zobrazte jen parametry důležité pro danou kategorii. Seskupte je do sekcí, například Rozměry, Výkon a Balení." },
+    { title: "Doplňte vysvětlující text", desc: "Do popisu přidejte dopad, podmínku nebo omezení jen u parametrů, které ovlivňují rozhodnutí. Nevytvářejte textovou kopii celé tabulky." },
+    { title: "Přiřaďte údaje do polí feedu", desc: "Použijte vyhrazené pole služby, pokud existuje. Ostatní technické detaily pošlete ve formátu, který daný kanál skutečně podporuje." },
+    { title: "Porovnejte výsledky", desc: "Na vzorku produktů zkontrolujte stránku, výsledný feed a strukturovaná data. Hodnota může mít jiný technický zápis, ale musí mít stejný význam." },
+  ]}
+/>
+
+Google doporučuje používat zároveň strukturovaná data na stránce a produktový feed v Merchant Center. Díky oběma zdrojům mohou produkty splnit podmínky pro více typů produktových výsledků a Google může data snáze porovnat a ověřit. **Neznamená to, že máte stejný údaj ručně udržovat dvakrát.** Znamená to, že oba výstupy mají vzniknout ze stejné hodnoty.
+
+<SourceCard
+  badge="Dokumentace Googlu"
+  href="https://support.google.com/merchants/answer/9218260?hl=en"
+  linkLabel="Atribut product_detail v Merchant Center"
+  tone="seo"
+>
+Merchant Center přijímá technické údaje v opakovaném atributu `product_detail`. Každý záznam má povinný název a hodnotu a může mít doporučený název sekce. Google uvádí až 100 záznamů na produkt a doporučuje čisté páry název–hodnota. Cena, doprava nebo jiné údaje s vlastním atributem do tohoto pole nepatří.
+</SourceCard>
+
+V českém produktovém zdroji pro Merchant Center může stejná vrtačka poslat například sekci `Obecné`, název `Hmotnost bez akumulátoru` a hodnotu `1,8 kg`. Názvy i hodnoty lokalizujte do jazyka daného zdroje. U české Heureky se každý parametr zapisuje samostatně jako `PARAM_NAME` a `VAL`. Pro zapojení produktu do Heureka Marketplace jsou navíc podle kategorie stanovené povinné parametry; bez nich se u nabídky nezobrazí tlačítko „Koupit přes Heureku“. Heureka současně doporučuje posílat přesné technické údaje jako parametry, místo aby se schovávaly jen v obecném popisu.
+
+Podrobnější kontrolu základních produktových údajů a identifikátorů najdete v článku [Produktový feed pro AI: proč nestačí XML soubor](/blog/produktovy-feed-gtin/). U produktů s barvami, velikostmi nebo balením navíc hlídejte, aby údaj patřil správné variantě; tomu se věnuje návod [Varianty produktu pro AI](/blog/varianty-produktu-pro-ai/).
+
+## U <span class="hl">strukturovaných dat</span> rozlišujte <strong>slovník a podporu Googlu</strong>
+
+Schema.org umožňuje zapsat další technickou vlastnost produktu pomocí `additionalProperty` a typu `PropertyValue`. U číselné hodnoty lze oddělit číslo od jednotky. Pokud však existuje přesnější vlastnost Schema.org, například `color`, `material`, `width` nebo identifikátor `gtin`, použijte ji přednostně.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Aku vrtačka Model 18",
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Hmotnost bez akumulátoru",
+      "value": 1800,
+      "unitText": "g"
+    }
+  ]
+}
+```
+
+Tento zápis používá slovník Schema.org. **Není tím řečeno, že Google dané pole zobrazí v rozšířeném výsledku nebo že zvýší četnost citací.** Dokumentace Googlu pro produktové výsledky uvádí vlastní podporované a povinné vlastnosti. `additionalProperty` v ní není podmínkou produktového výsledku.
+
+Google v průvodci pro generativní vyhledávání z 10. července 2026 výslovně píše, že zvláštní strukturovaná data pro generativní funkce nejsou potřeba. Doporučuje dál používat strukturovaná data v rámci běžného SEO a u e-shopů zmiňuje Merchant Center feedy, které mohou pomoci viditelnosti produktů v odpovědích s AI i v dalších výsledcích.
+
+<Insight tone="warn" icon="!" label="Co tabulka neslibuje">
+Tabulka parametrů usnadňuje srovnání a umožňuje jednoznačně přenášet hodnoty do dalších systémů. **Sama nezaručí zařazení do výsledků, lepší pozici ani citaci v odpovědi AI.** Rozhoduje také kvalita stránky, správnost dat, dostupnost pro vyhledávače a pravidla konkrétní služby.
+</Insight>
+
+## <strong>Nejčastější chyby</strong> v <span class="hl">parametrech produktu</span>
+
+<MistakeGrid>
+  <Mistake num="01" title="Synonyma jako různá pole">
+    „Váha“, „Hmotnost“ a „Hmotnost produktu“ skončí ve třech filtrech. Ve zdrojových datech je slučte pod jeden kanonický parametr a dodavatelské názvy používejte jen jako vstupní mapování.
+  </Mistake>
+  <Mistake num="02" title="Jednotka jen v názvu">
+    Pole „Délka (cm)“ obsahuje směs hodnot `120`, `1,2 m` a `1200 mm`. Ukládejte číslo a jednotku odděleně a při importu dělejte přesný převod.
+  </Mistake>
+  <Mistake num="03" title="Nejasné rozměry">
+    Zápis `20 × 30 × 40 cm` neříká pořadí stran. Uveďte názvy jednotlivých rozměrů nebo pořadí přímo v názvu parametru.
+  </Mistake>
+  <Mistake num="04" title="Nula místo neznámé hodnoty">
+    Nula je platná hodnota, nikoli značka pro chybějící údaj. Neznámou hodnotu nepublikujte a do kanálů ji nedoplňujte domněnkou.
+  </Mistake>
+  <Mistake num="05" title="Tabulka ukrytá v obrázku">
+    Obrázek katalogového listu se hůř porovnává, neumožní filtrovat hodnoty a vazba mezi názvem a hodnotou není v HTML. Důležité údaje zveřejněte také jako skutečný text.
+  </Mistake>
+  <Mistake num="06" title="Čtyři ruční kopie údaje">
+    Parametr se samostatně přepíše do tabulky, popisu, feedu a kódu. Po změně se kopie rozejdou. Výstupy generujte z jednoho zdroje a text používejte jen pro vysvětlení.
+  </Mistake>
+</MistakeGrid>
+
+Další častou chybou je poslat všechny dostupné parametry všude. Merchant Center u `product_detail` nechce duplikovat údaje, které už mají vlastní atribut, ani opakovat data z názvu, popisu nebo jiných polí. **Úplnost není počet řádků.** Úplný je přehled, který obsahuje vlastnosti podstatné pro danou kategorii a přesně říká, co jejich hodnoty znamenají.
+
+## Před nasazením <span class="hl">zkontrolujte pět produktů</span> — <strong>pak teprve celý katalog</strong>
+
+Vyberte jeden běžný produkt, jednu variantní skupinu, produkt s chybějícím údajem, položku od jiného dodavatele a výrobek s neobvyklou jednotkou. Na této pětici se většina chyb ve slovníku i exportu ukáže dřív, než zasáhne celý katalog.
+
+<Checklist title="Kontrola parametrů před publikací" tone="seo" items={[
+  { title: "Stejný název znamená stejnou veličinu", desc: "Hmotnost bez obalu a přepravní hmotnost nejsou jedno pole. Synonyma stejné veličiny naopak slučte." },
+  { title: "Měřená veličina má jednotku a potřebný kontext", desc: "U měřených veličin zkontrolujte viditelnou jednotku. Podmínku měření doplňte tehdy, když mění význam hodnoty. Počty a jiné bezrozměrné údaje jednotku nepotřebují." },
+  { title: "Tabulka jde porovnat", desc: "Stejné parametry mají u produktů stejné názvy a pořadí. Nedůležité a prázdné řádky se nezobrazují." },
+  { title: "Text neopisuje tabulku", desc: "Každá zmínka v popisu přidává důvod, dopad nebo omezení. Pouhé zopakování hodnoty smažte." },
+  { title: "Výstupy si neodporují", desc: "Porovnejte stránku, Merchant Center, Heureku a strukturovaná data. Technický formát se může lišit, skutečnost nikoli." },
+]} />
+
+Po importu dodavatelského ceníku kontrolu zopakujte. Nová hodnota může projít technickou kontrolou, a přesto vytvořit duplicitní parametr nebo použít jinou jednotku. Automatická pravidla proto mají hlásit neznámý název, nepovolenou hodnotu a neočekávanou jednotku k ručnímu posouzení.
+
+## Dobré <span class="hl">parametry produktu</span> spojují <strong>přesnost s vysvětlením</strong>
+
+Tabulka má zákazníkovi umožnit najít a porovnat přesnou hodnotu. Text má dodat důvod, podmínku nebo omezení, které z hodnoty samotné nevyčte. Oba výstupy mají vycházet z jednoho slovníku parametrů, aby stránka, feed a strukturovaná data popisovaly tutéž vlastnost stejně.
+
+Začněte jednou kategorií a pěti produkty. Sjednoťte názvy, oddělte hodnoty od jednotek, odstraňte prázdné nebo nepodstatné řádky a teprve potom stejný postup použijte pro celý katalog. Tím získáte přehled, který pomáhá člověku při výběru a současně se dá spolehlivě předat dalším službám.
+
+Pokud chcete stejnou logiku promítnout do celého detailu produktu, **[AI SEO Wireframe Pack](/pack/)** obsahuje šablonu produktové stránky, vzory textů a ukázky strukturovaných dat. Stojí **1 490 Kč včetně DPH** a zahrnuje sedm typů stránek plus návod na nasazení.
+
+*Zdroje: [Google Merchant Center – product_detail](https://support.google.com/merchants/answer/9218260?hl=en), [Google Merchant Center – specifikace produktových dat](https://support.google.com/merchants/answer/7052112?hl=en), [Google Search Central – strukturovaná data Product](https://developers.google.com/search/docs/appearance/structured-data/product?version=published), [Google Search Central – průvodce pro generativní funkce](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [Schema.org additionalProperty](https://schema.org/additionalProperty), [Schema.org PropertyValue](https://schema.org/PropertyValue), [Heureka – povinné parametry](https://sluzby.heureka.cz/napoveda/co-jsou-to-povinne-parametry-a-jak-s-nimi-pracovat/) a [Heureka – popisky produktů](https://sluzby.heureka.cz/napoveda/jak-spravne-posilat-popisky/). Dokumentace ověřena 5. října 2026.*
