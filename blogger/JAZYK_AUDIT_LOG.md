@@ -1662,3 +1662,19 @@ prodejní závěr omezen na dohodnutý vzorek. Závěrečný checker: 0 nálezů
 „má exportovat“ · „namapujte feedy“ → „přiřaďte údaje do polí feedu“ · kalk „rozšiřuje
 způsobilost“ · nejasný „čistý přenos“ · „vznikat nad slovníkem“ → „vycházet ze slovníku“ ·
 chybějící vazba „jako parametry“ · další nejednoznačné příklady. Závěrečný checker: 0 nálezů.
+
+## 2026-10-06 · `claude-ai-vyhledavani` (nový článek)
+
+| Položka | Hodnota |
+|---|---|
+| Verze slovníku | v72 |
+| Slov | 1 835 (podle checkeru, včetně frontmatteru a komponent) |
+| Mechanický checker | **0 nálezů** |
+| LLM průchod | nezávislý jazykový auditor: 21 nálezů, všechny opraveny; závěrečný auditor: 0 nových nálezů |
+| Nová pravidla | **žádné** — šlo o významové vazby, kalky závislé na kontextu a konkretizaci textu |
+
+**Opraveno:** nejasný podmět v popisu · „cesta ke zdroji“ · „sahá na web“ · věty bez
+původce děje · „přesnost stránky“ · „vyhledávací tok“ · nesouřadná spojení · nejasný
+záznam výsledků měření · tautologický pokyn k češtině · abstraktní závěr a CTA.
+Závěrečný checker: 0 nálezů. Externí API průchod s celým slovníkem automatická
+bezpečnostní kontrola odmítla; C3 a C5 proběhly jako oddělené auditorské subagenty.

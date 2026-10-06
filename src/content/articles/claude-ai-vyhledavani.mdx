@@ -1,0 +1,210 @@
+---
+title: "Claude AI: jak vyhledává web a cituje zdroje"
+seoTitle: "Claude AI: jak vyhledává web a cituje zdroje"
+description: "Claude umí hledat aktuální informace na webu a uvádět zdroje. Zjistěte, kdy Claude vyhledává, které roboty povolit a jak měřit citace."
+answer: "Claude AI je rodina jazykových modelů a služba společnosti Anthropic. U dotazů, které vyžadují aktuální informace, může prohledat web a převzatá tvrzení doplnit odkazy na zdroje. Pro webové vyhledávání musí být stránka veřejná a bez pokynu `noindex` k vyřazení. Zákaz Claude-SearchBot může snížit její dohledatelnost; nastavení robotů samo o sobě citaci nezaručuje."
+slug: "claude-ai-vyhledavani"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-10-06"
+updated: "2026-10-06"
+keywords:
+  - "claude ai"
+  - "anthropic claude"
+  - "claude web search"
+  - "claude ai česky"
+  - "claude ai zdarma"
+  - "claude searchbot"
+  - "claude citace"
+  - "jak funguje claude"
+variant: "rich"
+faq:
+  - q: "Co je Claude AI?"
+    a: "Claude je rodina velkých jazykových modelů a současně služba společnosti Anthropic. Používat ji lze na webu, v počítačové aplikaci a v mobilních aplikacích; konkrétní funkce a limity se liší podle plánu."
+  - q: "Umí Claude česky?"
+    a: "Ano. Claude může vést konverzaci v češtině a služba je dostupná v Česku. Čeština ale k 6. srpnu 2026 nebyla mezi jazyky uživatelského rozhraní uvedenými v nápovědě Anthropicu."
+  - q: "Je Claude zdarma?"
+    a: "Anthropic nabízí bezplatný plán Claude s omezeným využitím. Placené plány přidávají vyšší limity a další funkce; jejich cenu a přesné podmínky je lepší ověřit přímo na aktuální stránce Claude, protože se mohou měnit."
+  - q: "Jak Claude vyhledává na webu a uvádí zdroje?"
+    a: "Když dotaz vyžaduje aktuální informace, Claude může spustit webové vyhledávání, zpracovat více výsledků a v odpovědi uvést přímé citace. Vyhledávání se nespouští u každé odpovědi a odkazy na zdroje mohou být jen u některých tvrzení."
+  - q: "Kterého robota mám povolit kvůli webovému vyhledávání Claude?"
+    a: "Pro webové vyhledávání je podstatný Claude-SearchBot. Claude-User načítá stránku na přímou žádost uživatele a ClaudeBot slouží k možnému tréninku modelů. Anthropic uvádí, že všichni tři respektují robots.txt, takže jejich pravidla nastavujte odděleně podle účelu."
+  - q: "Zaručí povolení Claude-SearchBot citaci?"
+    a: "Ne. Povolením Claude-SearchBot pouze odstraníte zákaz tohoto robota; Anthropic uvádí, že zákaz může snížit dohledatelnost, ale nezveřejňuje pořadí hodnoticích faktorů ani neslibuje zahrnutí stránky do odpovědi. Výsledek ověřujte opakovaným testem konkrétních dotazů."
+---
+
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import SourceCard from "~/components/blocks/SourceCard.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+**Claude AI je rodina jazykových modelů a služba společnosti Anthropic.** Dokáže odpovídat z naučených znalostí, pracovat s vloženými podklady a u vhodných dotazů také vyhledat aktuální informace na webu. Právě třetí možnost rozhoduje, zda může ve chvíli odpovědi najít a citovat vaši stránku.
+
+To je důležitější rozdíl než otázka, zda „Claude zná naši značku“. Jedna odpověď může vzniknout bez webu, druhá s webovým vyhledáváním a třetí z dokumentu, který poskytl uživatel. V každém případě se Claude k podkladům dostává jinak.
+
+Marketing Miner v měření z **5. října 2026** uváděl pro český dotaz `claude ai` průměrnou měsíční hledanost za posledních 12 měsíců **36 000**. Hledanost posledního měsíce byla podle jeho meziroční metriky o **239 % vyšší** než ve stejném měsíci předchozího roku. Jde o počet hledání výrazu, nikoli o počet uživatelů Claude nebo důkaz jeho podílu na trhu.
+
+## Co je <span class="hl">Claude AI</span> a <strong>kdy vyhledává na webu</strong>
+
+Claude označuje modely Anthropicu i službu, přes kterou s nimi lidé pracují. Je dostupná na webu, v počítačových a mobilních aplikacích. Odpověď může sestavit několika způsoby:
+
+- z informací, které má model z tréninku,
+- z textu, souboru nebo odkazu dodaného uživatelem,
+- z aktuálních výsledků webového vyhledávání,
+- v režimu Research z několika navazujících hledání a připojených zdrojů.
+
+**Webové vyhledávání se nespouští povinně u každého dotazu.** Je-li funkce v daném prostředí dostupná a zapnutá, Claude může vyhledat na webu tehdy, když mohou aktuální informace zlepšit odpověď. Ve starším rozhraní ji zapíná uživatel; v novém rozhraní samostatný přepínač není. U účtů Team a Enterprise musí funkci nejprve povolit správce pracovního prostoru.
+
+<CompareTable
+  leftLabel="Webové vyhledávání"
+  leftTone="aeo"
+  rightLabel="Research"
+  rightTone="geo"
+  rows={[
+    { icon: "⌕", label: "Účel", left: "Rychlá aktuální odpověď", right: "Podrobná rešerše složitějšího tématu" },
+    { icon: "↻", label: "Postup", left: "Jedno nebo více hledání podle dotazu", right: "Několik hledání, z nichž každé navazuje na předchozí zjištění" },
+    { icon: "▤", label: "Zdroje", left: "Veřejný web", right: "Veřejný web a případně připojené pracovní zdroje" },
+    { icon: "●", label: "Dostupnost", left: "Všechny plány na podporovaných modelech; u Team a Enterprise povoluje funkci správce", right: "Placené plány; vyžaduje zapnuté webové vyhledávání" },
+  ]}
+/>
+
+<SourceCard
+  badge="Dokumentace Anthropicu"
+  href="https://support.claude.com/en/articles/10684626-enable-and-use-web-search"
+  linkLabel="Jak funguje webové vyhledávání"
+  tone="aeo"
+>
+  Anthropic popisuje webové vyhledávání jako zdroj aktuálních informací. Claude může zpracovat více výsledků a u převzatých informací nabídnout citace a odkazy.
+</SourceCard>
+
+## Jak <span class="hl">citace v Claude</span> vzniká — <strong>jen část odpovědí používá web</strong>
+
+Když Claude použije informace z webového vyhledávání, má odpověď doplnit přímými citacemi. Odkaz čtenáři umožní otevřít stránku a tvrzení ověřit. Z toho ale neplyne, že citaci dostane každá věta nebo každá odpověď.
+
+Prakticky rozlišujte tři situace:
+
+1. **Claude web neprohledal.** V odpovědi není aktuální vyhledávací zdroj, i kdyby se v ní objevila vaše značka.
+2. **Claude web prohledal, ale použil jiný zdroj.** Vaše stránka mohla být dostupná, přesto nebyla vybrána.
+3. **Claude použil tvrzení z vaší stránky.** Teprve tady lze kontrolovat konkrétní citaci a odkaz.
+
+<Insight tone="warn" icon="!" label="Přístup není příslib citace">
+Anthropic nezveřejňuje seznam hodnoticích faktorů ani návod, který by citaci zaručil. Veřejná stránka bez pokynu `noindex` může být ve webovém vyhledávání; nastavení robotů může její dohledatelnost ovlivnit. Ani jedno není důkaz, že si Claude stránku vybere.
+</Insight>
+
+## Tři <span class="hl">roboti Anthropicu</span> mají <strong>tři různé účely</strong>
+
+V jednom souboru `robots.txt` můžete potkat tři názvy. Nejsou zaměnitelné. Anthropic jejich role popisuje takto:
+
+<div class="table-wrap" tabindex="0" role="region" aria-label="Přehled robotů Anthropicu">
+
+| Robot | K čemu slouží | Co způsobí zákaz |
+|---|---|---|
+| `Claude-SearchBot` | prochází web kvůli kvalitě vyhledávacích výsledků | může snížit dohledatelnost stránky a přesnost vyhledávacích výsledků |
+| `Claude-User` | načte stránku na přímý podnět uživatele | může zabránit načtení obsahu, když uživatel zadá odkaz nebo žádá práci se stránkou |
+| `ClaudeBot` | sbírá obsah, který může být použit ke zlepšování a tréninku modelů | omezí možné použití obsahu pro trénink; samo o sobě neblokuje webové vyhledávání |
+
+</div>
+
+Podle dokumentace Anthropicu **všichni tři respektují `robots.txt`**. O povolení každého robota proto rozhodujte podle jeho účelu. Můžete například povolit vyhledávacího robota a současně zakázat robota pro trénink. Pokud web používá více subdomén, pravidla nastavte na každé z nich.
+
+```txt
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: ClaudeBot
+Disallow: /
+```
+
+Tento příklad povoluje vyhledávání a načtení stránky na žádost uživatele, ale zakazuje její použití pro možný trénink. Pokud robota nezakazuje obecnější pravidlo, `Allow: /` není technicky nutné; výslovný zápis však přehledně ukazuje, co chcete povolit. Podrobnosti a kolize pravidel řeší [návod k robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+
+<SourceCard
+  badge="Primární zdroj"
+  href="https://privacy.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+  linkLabel="Role a pravidla robotů"
+  tone="geo"
+>
+  Dokumentace rozlišuje `ClaudeBot`, `Claude-User` a `Claude-SearchBot`, uvádí jejich účel a potvrzuje respektování souboru robots.txt.
+</SourceCard>
+
+## Co u <span class="hl">stránky zkontrolovat</span>, aby <strong>mohla být zdrojem</strong>
+
+Žádný krok nezaručí výběr stránky. Tato posloupnost ale odstraní běžné překážky a vytvoří podmínky pro poctivý test:
+
+<Stepper
+  tone="aeo"
+  steps={[
+    { title: "Zpřístupněte stránku bez přihlášení", desc: "Claude nemůže jako veřejný webový zdroj běžně načíst obsah chráněný heslem ani odstraněnou stránku." },
+    { title: "Zkontrolujte zařazení stránky", desc: "Anthropic uvádí, že noindex říká jeho vyhledávacím partnerům, aby obsah neposílali do webového vyhledávání Claude." },
+    { title: "Rozhodněte o robotech podle účelu", desc: "Zákaz Claude-SearchBot může snížit dohledatelnost stránky ve vyhledávání. Zákaz Claude-User může zabránit načtení na žádost uživatele. ClaudeBot posuzujte samostatně podle postoje k tréninku." },
+    { title: "Napište ověřitelnou odpověď", desc: "Na jedné stránce jasně uveďte tvrzení, podmínky, datum platnosti a zdroj. Je to redakční postup pro čtenáře a test, nikoli zveřejněný hodnoticí faktor Anthropicu." },
+    { title: "Testujte konkrétní dotazy opakovaně", desc: "U každého běhu zapište, zda Claude použil webové vyhledávání, zda zmínil značku, na kterou adresu URL odkázal a v kolika bězích se stejný výsledek objevil." },
+  ]}
+/>
+
+Samotné `noindex` a pravidla pro roboty řeší rozdílné vrstvy. `robots.txt` řídí procházení vyjmenovaným robotem. Pokyn `noindex` žádá vyhledávací partnery, aby stránku nezařazovali mezi zdroje pro webové vyhledávání Claude. Ani jedno nenahrazuje ochranu heslem u neveřejného obsahu.
+
+## Jak <span class="hl">viditelnost v Claude</span> <strong>měřit bez falešné jistoty</strong>
+
+Jeden úspěšný pokus neříká, jak často se značka objeví. AI odpovědi i citované zdroje se mohou mezi opakováními měnit. Pro srovnatelné měření si připravte pevnou sadu dotazů a neměňte zároveň jazyk, místo ani formulaci.
+
+U každého běhu zapisujte čtyři oddělené výsledky:
+
+<div class="table-wrap" tabindex="0" role="region" aria-label="Výsledky měření viditelnosti v Claude">
+
+| Výsledek | Co přesně znamená |
+|---|---|
+| webové vyhledávání | Claude při tvorbě odpovědi vyhledával aktuální informace na webu |
+| zmínka | v textu se objevila značka nebo entita |
+| citace | odpověď odkázala na konkrétní URL vašeho webu |
+| návštěva | člověk z odkazu skutečně přišel na web a návštěvu zachytila analytika |
+
+</div>
+
+Tyto hodnoty neslévejte do jediného „jsme v Claude“. Zmínka bez odkazu není citace a citace ještě není návštěva. Praktickou tabulku a způsob opakování popisuje [test AI viditelnosti](/blog/test-viditelnosti-v-ai/); proč jeden běh nestačí, ukazuje rozbor [proměnlivosti AI odpovědí](/blog/volatilita-ai-odpovedi/).
+
+<Insight tone="accent" icon="↻" label="Měřte četnost, ne jeden snímek">
+Záznam „citace ve 2 z 5 běhů“ lze později porovnat. Záznam „Claude nás cituje“ skrývá, zda šlo o pravidelný výsledek, nebo jedinou náhodnou odpověď.
+</Insight>
+
+## <span class="hl">Claude česky</span>: dostupnost služby a <strong>jazyk rozhraní jsou dvě věci</strong>
+
+Claude je v Česku dostupný a lze s ním vést konverzaci v češtině. Nápověda Anthropicu uvádí, že Claude může odpovědět v jazyce, který použije člověk.
+
+To není totéž jako české uživatelské rozhraní. V seznamu jazyků rozhraní aktualizovaném **6. srpna 2026** čeština uvedená nebyla. Tvrzení „Claude umí česky“ je tedy pravdivé pro konverzaci; tvrzení „Claude má české rozhraní“ by k tomuto datu pravdivé nebylo.
+
+Stejně přesně nastavte i test webové viditelnosti. Pro české publikum zadávejte dotazy česky a u každého běhu zaznamenejte jazyk i zemi. Výsledek z anglického dotazu nebo jiné lokality nelze automaticky přenést na české publikum.
+
+## <strong>Časté chyby</strong> při práci s <span class="hl">Claude AI</span>
+
+<MistakeGrid>
+  <Mistake num="01" title="Zaměnit vyhledávacího a tréninkového robota" fix="Rozhodujte zvlášť o Claude-SearchBot, Claude-User a ClaudeBot.">
+    Zákaz `ClaudeBot` není totéž jako zákaz webového vyhledávání. Každý robot má v dokumentaci jiný účel.
+  </Mistake>
+  <Mistake num="02" title="Považovat povolení za záruku citace" fix="Výsledek vždy ověřte opakovaným testem.">
+    Anthropic nezveřejňuje recept na výběr zdrojů. Dostupná stránka může zůstat nepoužitá.
+  </Mistake>
+  <Mistake num="03" title="Vyvodit závěr z jedné odpovědi" fix="Dotaz opakujte a zapisujte počet zmínek a citací.">
+    Jediný běh neukáže četnost ani proměnlivost výsledku.
+  </Mistake>
+  <Mistake num="04" title="Psát jen pro robota" fix="Dejte čtenáři jasnou odpověď, podmínky a ověřitelný zdroj.">
+    Technický přístup nenahradí obsah, který skutečně řeší otázku a lze jej zkontrolovat.
+  </Mistake>
+</MistakeGrid>
+
+## Co si z <span class="hl">Claude AI</span> <strong>odnést pro vlastní web</strong>
+
+Claude nevytváří každou odpověď ze stejného typu podkladů. K aktuálním informacím z webu se může dostat přes webové vyhledávání, načtení stránky na žádost uživatele nebo režim Research. Pro vlastní web proto hlídejte účel jednotlivých robotů, veřejnou dostupnost a zařazení stránky do webového vyhledávání.
+
+Pak měřte konkrétní dotazy. Oddělte zmínku, citaci a návštěvu a každý důležitý dotaz zopakujte. Výsledky pak můžete porovnat před úpravou a po ní i mezi jednotlivými obdobími.
+
+Pokud chcete prověřit, zda mohou roboti načíst váš web, co v obsahu chybí a které stránky citují různé AI nástroje, [Audit AI viditelnosti](/audit/) od Sniper Design stojí **3 600 Kč bez DPH**. Do pěti pracovních dní od úhrady dostanete doporučené úpravy seřazené podle důležitosti.
+
+*Primární zdroje: [Anthropic — Začínáme s Claude](https://support.claude.com/en/articles/8114491-get-started-with-claude) · [Claude — webové vyhledávání](https://claude.com/blog/web-search) · [Anthropic — zapnutí a používání webového vyhledávání](https://support.claude.com/en/articles/10684626-enable-and-use-web-search) · [Anthropic — Research](https://support.claude.com/en/articles/11088861-use-research-on-claude) · [Anthropic — role webových robotů](https://privacy.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) · [Anthropic — odstranění obsahu a noindex](https://support.claude.com/en/articles/10684638-report-block-and-remove-content-from-claude) · [Anthropic — podporované jazyky](https://support.claude.com/en/articles/10769299-how-to-use-claude-in-your-preferred-language) · [Anthropic — podporované země](https://support.claude.com/en/articles/8461763-where-can-i-access-claude). Ověřeno 6. 10. 2026.*
