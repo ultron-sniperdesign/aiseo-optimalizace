@@ -1706,3 +1706,16 @@ v Insightu „řádový odhad“ · „našeptávač k němu nabízel“ → „
 „jednotlivé měsíce mají vady“ → „v datech za jednotlivé měsíce jsou vady“ · „převezme malou část
 hledání“ → „připadá na ni jen malá část“ · „průzkum se ptá“ → „v průzkumu se ptají“ · „hýbou se
 různě“ → „vyvíjejí se odlišně“.
+
+## 2026-10-10 · `zkratky-a-terminy-pro-ai` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v72 → **v73** (výjimka pro vlastní jméno) |
+| Mechanický checker | 0 → po doplnění plných názvů 3× ⛔ „Content“ v názvu **Web Content Accessibility Guidelines** → výjimka do pravidla `\bcontent\b` (lookahead `Accessibility`), negativní kontrola holého „content“ dál hlásí; **0 nálezů** |
+| LLM průchod (gpt-5.4, celý slovník) | 5 nálezů, všech 5 přijato |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu |
+
+**Opraveno:** „relevantní k dotazu“ (kalk *relevant to*) → „jak moc stránka odpovídá dotazu“ · „doplnit do úseků
+kontext“ → „doplnit úseky o kontext“ · „k dotazu sedí“ → „dotazu odpovídá“ · holé „Google AI Overviews“ → „funkci
+Google AI Overviews“ · „předvídat variantu“ → „pokrýt každou variantu“.

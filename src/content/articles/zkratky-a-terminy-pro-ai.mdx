@@ -1,0 +1,163 @@
+---
+title: "Zkratky a odborné termíny: jak je psát, aby jim rozuměla i AI"
+seoTitle: "Zkratky v textu: kdy je rozepsat, aby jim rozuměla AI"
+description: "Kdy zkratku rozepsat znovu, jak zavést odborný termín jednou větou a proč držet jeden název pro pojem na celém webu. S měřením na našich 185 článcích."
+answer: "Zkratka rozepsaná jen v úvodu stránky v dalších sekcích chybí, a sekci přitom může člověk číst a nástroj AI zpracovat samostatně. Proto ji rozepište při prvním použití v každé sekci a víceznačné zkratky vždy. Odborný termín vysvětlete jednou větou a pro každý pojem držte na celém webu jediný název."
+slug: "zkratky-a-terminy-pro-ai"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-10-10"
+updated: "2026-10-10"
+keywords:
+  - "zkratky v textu"
+  - "rozepsání zkratky"
+  - "odborné termíny"
+  - "jednotné názvosloví webu"
+  - "terminologický slovník"
+  - "pasáže pro AI"
+  - "zkratka abbr"
+variant: "rich"
+faq:
+  - q: "Musím zkratku rozepsat v každé sekci?"
+    a: "Zkratku rozepište při prvním použití v každé sekci, pokud ji nezná každý z vašich čtenářů. Sekci může člověk číst a nástroj AI zpracovat i samostatně, bez úvodu stránky. Pravidla přístupnosti Web Content Accessibility Guidelines (WCAG) počítají s rozepsáním při prvním výskytu na stránce; rozepsání v každé sekci je přísnější. V dalších větách téže sekce už stačí zkratka."
+  - q: "Které zkratky rozepisovat nemusím?"
+    a: "Nerozepisovat můžete zkratky, které vaši čtenáři znají lépe než plný název, například DPH nebo PDF. Rozepsání by čtení jen zdrželo. Výjimkou jsou zkratky s více významy: AEO je v marketingu Answer Engine Optimization, v celnictví oprávněný hospodářský subjekt. Takové zkratky rozepisujte vždy, i když je v oboru všichni znají."
+  - q: "Jak zkratku poprvé zapsat?"
+    a: "Zkratku při prvním použití zapište jako plný název a hned za ním zkratku v závorce, například Google Search Console (GSC). Pravidla přístupnosti Web Content Accessibility Guidelines (WCAG) uvádějí plný tvar těsně před zkratkou i za ní a připomínají, že jiné jazyky mají vlastní zvyklosti. Místo rozepsání můžete zkratku propojit odkazem s definicí, třeba ve slovníku pojmů."
+  - q: "Pomůže značka abbr v HTML?"
+    a: "Značka abbr v HTML je jen doplněk, ne náhrada rozepsání v textu. Organizace World Wide Web Consortium (W3C), která vydává pravidla přístupnosti Web Content Accessibility Guidelines (WCAG), ji s atributem title vede jen jako doporučenou techniku, protože řada prohlížečů a pomůcek pro zrakově postižené obsah atributu title přístupně nezpřístupňuje. Že by ji využíval Google nebo nástroje AI, jejich dokumentace neuvádí. Zkratku proto rozepište přímo v textu."
+  - q: "Co dělat se zkratkou, která má dva významy?"
+    a: "U zkratky se dvěma významy vyberte pro web jeden význam a druhý pojem pojmenujte jinak. Na našem webu znamená AIO vždy zastřešující rámec AI Optimization a funkci Googlu říkáme celým jménem Přehled od AI. V sekci, kde zkratku použijete, ji přesto rozepište — čtenář ani nástroj AI nemusí vědět, který význam na webu platí."
+  - q: "Jak udržet jednotné názvy na velkém webu?"
+    a: "Jednotné názvy na velkém webu udrží terminologický slovník: hlavní název každého pojmu, povolené tvary, zakázané varianty a důvod. Před publikací text proti seznamu zkontrolujte, nejlépe automaticky. Samotné pravidlo nestačí: náš web si v září 2026 stanovil název Přehled od AI, a přesto 62 ze 185 článků používá jen anglické AI Overviews, protože je kontrola nehlídala."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Zkratka rozepsaná jen v úvodu stránky v ostatních sekcích chybí.** Kdo přijde rovnou do prostřední sekce — z odkazu, z obsahu stránky nebo přes nástroj AI, který pracuje jen s jedním úsekem — uvidí zkratku GSC (Google Search Console) nebo AEO (Answer Engine Optimization) bez vysvětlení. Na vlastním webu jsme to spočítali: z 307 sekcí, které používají některou ze sedmi běžných zkratek oboru, jich 201 aspoň jednu z nich nerozepisuje ani neodkazuje na vysvětlení.
+
+Sekcí tu myslíme část stránky pod jedním nadpisem H2; pasáží a úsekem obecně kus textu, který se čte nebo zpracovává samostatně. Základní pravidlo zní jednoduše: zkratku rozepište při prvním použití v každé sekci. Obecný postup pro samostatné úseky textu je v článku o [psaní po pasážích](/blog/pasazova-optimalizace-obsahu/). Tady jde o tři věci navíc: zkratky s dvojím významem, odborné termíny bez zkratky a jednotné názvy napříč celým webem.
+
+## Proč <span class="hl">zkratka</span> z úvodu <strong>do pasáže nedojde</strong>
+
+Google podle [své dokumentace](https://developers.google.com/search/docs/appearance/ranking-systems-guide#passage-ranking-system) rozpoznává v textu jednotlivé pasáže, aby lépe posoudil, jak moc stránka odpovídá dotazu. V [průvodci pro funkce s generativní AI](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide#mythbusting) zároveň výslovně píše, že kvůli AI není potřeba dělit obsah na malé kousky ani psát nějak zvlášť a že jeho systémy dokážou pochopit i stránku o více tématech a ukázat uživatelům tu její část, která dotazu odpovídá. Rozepsání zkratky v každé sekci proto není požadavek Googlu. Je to služba čtenáři, který ze stránky čte jen část.
+
+U systémů, které odpovídají z dokumentů po úsecích — anglicky retrieval-augmented generation, zkráceně RAG —, je kontext úvodu skutečný problém. Anthropic v roce 2024 [popsal](https://www.anthropic.com/engineering/contextual-retrieval), že úsek vytržený z dokumentu může ztratit souvislosti: v jeho příkladu věta o tříprocentním růstu tržeb neříká, o kterou firmu a o které období jde. Když úseky doplnil o chybějící kontext, klesl v jeho testech podíl případů, kdy se relevantní úsek nedostal mezi 20 vrácených, z 5,7 na 3,7 %. Jsou to testy Anthropicu na vlastních systémech, ne měření Googlu ani ChatGPT.
+
+Zkratka rozepsaná jen v úvodu je přesně takový kontext, který v samostatně čteném úseku chybí. Čtenáři se to stává taky: kdo do sekce přijde z odkazu nebo z obsahu stránky, úvod číst nemusí.
+
+## Stejná <span class="hl">zkratka</span>, <strong>jiný význam</strong>
+
+Zkratky z oboru mají často i jiný, běžnější význam. AEO, v marketingu Answer Engine Optimization, je v Česku i úřední zkratka: [Celní správa](https://celnisprava.gov.cz/cz/clo/e-customs/opravneny-hospodarsky-subjekt-aeo/Stranky/default.aspx) tak označuje oprávněný hospodářský subjekt, status podle celního kodexu Unie. Výraz „aeo certifikát“ má v Česku 30 hledání měsíčně, „aio pc“, tedy počítač vše v jednom, 50 a našeptávač Googlu u „llm“ nabízí „llm titul“ — právnický titul LL.M. (Marketing Miner a Google Suggest, 10. 10. 2026).
+
+Dva významy může mít zkratka i uvnitř jednoho oboru. Na našem webu znamená AIO zastřešující rámec AI Optimization, v praxi se ale AIO používá i pro Přehled od AI, tedy funkci Google AI Overviews. Náš web se proto rozhodl, že [AIO je vždy rámec a funkci Googlu říkáme celým jménem Přehled od AI](/aio/). Přesto v devíti našich článcích stojí „Google AIO“, „AIO panel“ nebo „AIO audit“ ve smyslu té funkce — z pasáže bez rozepsání nepoznáte, který význam autor myslel.
+
+<Insight tone="warn" icon="!" label="Pravidlo pro víceznačné zkratky">
+Zkratku, která má i jiný význam, rozepište v každé sekci, i když ji ve vašem oboru zná každý. Pro web vyberte jeden význam a druhý pojem pojmenujte jinak, nejlépe česky.
+</Insight>
+
+## Kdy <span class="hl">zkratku</span> rozepsat — <strong>a kdy ne</strong>
+
+<Checklist
+  title="Rozepsání zkratky v praxi"
+  items={[
+    { title: "První použití v každé sekci", desc: "Stačí jednou na sekci. Další věty téže sekce už můžou mít jen zkratku." },
+    { title: "Každá odpověď FAQ a krátká odpověď", desc: "Pište je tak, aby dávaly smysl samostatně, jako by byly jediným textem na stránce." },
+    { title: "Nadpis sekce", desc: "Samotná zkratka v nadpisu nestačí. Použijte plný název, nebo zkratku vysvětlete hned v první větě sekce." },
+    { title: "Tabulka", desc: "Rozepište zkratku v záhlaví nebo v popisku tabulky. Tabulka se často čte nebo cituje bez okolního textu." },
+    { title: "Zkratky s jiným významem", desc: "Rozepisujte vždy, i v sekci, kde už je jednou vysvětlená v úvodu." },
+    { title: "Kdy ne", desc: "Zkratky, které vaši čtenáři znají lépe než plný název, například DPH nebo PDF. Rozepsání by čtení jen zdrželo." },
+  ]}
+/>
+
+Pravidla přístupnosti webového obsahu WCAG 2.2 (Web Content Accessibility Guidelines) chtějí na nejvyšší úrovni AAA, aby šlo zjistit [plný tvar nebo význam zkratky](https://www.w3.org/WAI/WCAG22/Understanding/abbreviations.html); výjimkou jsou jen zkratky, které už zdomácněly v běžném jazyce. Podle technik organizace World Wide Web Consortium (W3C), která pravidla vydává, stačí rozepsat zkratku při prvním výskytu na stránce, [plný název těsně před ní nebo za ní](https://www.w3.org/WAI/WCAG22/Techniques/general/G97), nebo ji [propojit odkazem s definicí](https://www.w3.org/WAI/WCAG22/Techniques/general/G55), třeba ve slovníku pojmů. Když má zkratka na téže stránce víc významů, patří vysvětlení ke každému výskytu. Rozepsání v každé sekci, které doporučujeme tady, je přísnější než WCAG — počítá s tím, že se sekce čte samostatně. Značku `<abbr>` s atributem `title` vede W3C jen jako [doporučenou techniku](https://www.w3.org/WAI/WCAG22/Techniques/html/H28): obsah atributu `title` řada prohlížečů a pomůcek přístupně nezpřístupňuje.
+
+## Odborný <span class="hl">termín</span> zaveďte <strong>jednou větou</strong>
+
+Termín bez zkratky má stejný problém jako zkratka. Google v [Průvodci SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide#expect-search-terms) upozorňuje, že lidé, kteří téma dobře znají, hledají jinými slovy než ti, kdo s ním začínají; jeho příklad je odborné „charcuterie“ proti běžnému „cheese board“. Pokrýt každou variantu podle něj nemusíte. Praktický postup: termín uveďte a hned ve stejné větě řekněte, co znamená — přístavkem nebo vedlejší větou. Delší výklad patří do slovníku nebo do samostatného článku, na který odkážete.
+
+<DoDont>
+  <Do>
+    Nastavte kanonickou adresu, tedy adresu, kterou Googlu označíte za hlavní, když stejný obsah běží na více URL.
+  </Do>
+  <Dont>
+    Nastavte canonical.
+  </Dont>
+</DoDont>
+
+Přístavek přidá do věty pár slov, ne odstavec. Když termín v článku používáte často, vysvětlete ho při prvním použití v sekci a dál pište už jen termín — stejně jako u zkratky.
+
+## Jeden <span class="hl">pojem</span>, jeden <strong>název na celém webu</strong>
+
+Bing ve [svých pokynech pro správce webů](https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a) výslovně žádá jasné a jednotné pojmenování lidí, organizací, produktů a míst. My stejné pravidlo rozšiřujeme na všechny důležité pojmy v obsahu: každý pojem má jeden hlavní název a ten se drží v nadpisech, textu, FAQ i v odkazech. Jak sladit název služby na jedné stránce, rozebírá článek o [pojmenování služby](/blog/jak-pojmenovat-sluzbu-pro-ai/). Na celém webu je potřeba pravidlo přísnější: jeden pojem, jeden hlavní název, synonyma jen jako vysvětlení.
+
+Samotné pravidlo ale nestačí, potřebuje kontrolu. Náš web si v září 2026 stanovil, že funkci Googlu říká Přehled od AI. K 10. 10. 2026 přitom 62 ze 185 článků používá jen anglický název AI Overviews. 59 z nich vzniklo dřív, než jsme pravidlo stanovili, a naše jazyková kontrola anglický název nehlídá, protože ho vede mezi vlastními jmény. Druhá zkušenost je z přejmenování placené služby v září 2026: hledání podle jednoho tvaru starého názvu minulo variantu „SEO a AI audit“, která zůstala v pěti sekcích webu. V blogu jsme pak starý název opravili ve 120 výskytech v 89 článcích.
+
+<Checklist
+  title="Terminologický slovník webu"
+  items={[
+    { title: "Hlavní název", desc: "Jeden pro každý pojem. Ten patří do nadpisů, krátkých odpovědí a odkazů." },
+    { title: "Povolené tvary", desc: "Pády a varianty, které jsou v pořádku, aby je kontrola nehlásila jako chybu." },
+    { title: "Zakázané varianty", desc: "Starý název, anglický tvar, zkratka s jiným významem. U každé napište, čím ji nahradit." },
+    { title: "Důvod", desc: "Proč jste se rozhodli právě takhle. Bez důvodu se pravidlo za půl roku začne obcházet." },
+    { title: "Kontrola před publikací", desc: "Hledání zakázaných variant v textu, nejlépe automatické. Hledejte podle kmene slova, ne podle jednoho tvaru." },
+  ]}
+/>
+
+## Na našem webu chybí vysvětlení zkratky ve <span class="hl">201 sekcích</span> — <strong>vlastní měření</strong>
+
+Všech 185 článků jsme 10. 10. 2026 rozdělili na sekce: krátkou odpověď, každou otázku s odpovědí FAQ, úvod před prvním nadpisem H2 a každý úsek pod nadpisem H2. Sekci jsme počítali jako „bez vysvětlení“, když obsahovala zkratku, ale ne její rozepsání ani odkaz na zkratce do slovníku pojmů, do sekce webu, která zkratku vysvětluje, nebo na článek blogu.
+
+| Zkratka | Sekcí se zkratkou | Bez vysvětlení | Podíl |
+|---|---|---|---|
+| GSC (Google Search Console) | 77 | 40 | 52 % |
+| CTR (míra prokliku) | 53 | 45 | 85 % |
+| SERP (stránka s výsledky vyhledávání) | 38 | 38 | 100 % |
+| GEO (Generative Engine Optimization) | 103 | 70 | 68 % |
+| AEO (Answer Engine Optimization) | 95 | 64 | 67 % |
+| AIO (AI Optimization) | 94 | 39 | 41 % |
+| E-E-A-T (zkušenost, odbornost, autoritativnost, důvěryhodnost) | 52 | 13 | 25 % |
+| **Aspoň jedna ze sedmi zkratek** | **307** | **201** | **65 %** |
+
+Jedna sekce může obsahovat víc zkratek, proto poslední řádek není součtem řádků nad ním. Měření je mechanické, takže jsme 31 označených případů prošli ručně: 29 bylo skutečně bez vysvětlení, dva měly vysvětlení jinými slovy nebo odkazem, který měření nepočítalo. Ze 201 sekcí bez vysvětlení je 141 pod nadpisem uprostřed článku a 47 v odpovědích FAQ — z 67 odpovědí FAQ, které nějakou zkratku používají.
+
+<Insight tone="accent" icon="✦" label="Proč to píšeme o sobě">
+Pravidlo „rozepsat zkratku v každé sekci“ jsme na tomhle webu publikovali v červenci 2026 v článku o psaní po pasážích. Měření ukazuje, že ho neplní 65 % sekcí, které používají aspoň jednu ze sedmi sledovaných zkratek. Bez kontroly před publikací se zkratky do sekcí vracejí — i u autora, který o tom sám píše.
+</Insight>
+
+## Šest <span class="hl">chyb</span> se zkratkami a <strong>jak je opravit</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Rozepsáno jen v úvodu" fix="Rozepište zkratku při prvním použití v každé sekci.">
+    Kdo přijde rovnou do prostřední sekce, úvod číst nemusí. Úsek, se kterým pracuje nástroj AI, ho nemusí obsahovat vůbec.
+  </Mistake>
+  <Mistake num="02" title="Zkratka sama v nadpisu" fix="Dejte do nadpisu plný název, nebo zkratku vysvětlete v první větě sekce.">
+    Nadpis je první, co čtenář ze sekce vidí. Samotná zkratka mu nic neřekne.
+  </Mistake>
+  <Mistake num="03" title="Víceznačná zkratka bez rozepsání" fix="U zkratek s více významy pište vždy plný název.">
+    AIO je u nás rámec AI Optimization, jinde Přehled od AI. AEO je Answer Engine Optimization i celní status. Z pasáže se význam nedá odhadnout.
+  </Mistake>
+  <Mistake num="04" title="Zkratka v odpovědi FAQ" fix="Každou odpověď pište, jako by byla jediná na stránce.">
+    Odpověď FAQ může čtenář i nástroj AI zpracovat odděleně od zbytku článku. Na našem webu chybí vysvětlení ve 47 z 67 odpovědí FAQ, které nějakou zkratku používají.
+  </Mistake>
+  <Mistake num="05" title="Střídání názvů pro pestrost" fix="Jeden pojem, jeden hlavní název, synonyma jen jako vysvětlení.">
+    Dva názvy pro jednu věc čtenář snadno vezme jako dvě různé věci.
+  </Mistake>
+  <Mistake num="06" title="Vysvětlení jen ve značce abbr" fix="Rozepište zkratku v textu, značku abbr berte jako doplněk.">
+    Obsah atributu title řada prohlížečů a čteček přístupně neukazuje a v textu ho nikdo nevidí. Organizace World Wide Web Consortium (W3C), která vydává pravidla přístupnosti, proto značku abbr vede jen jako doporučenou techniku.
+  </Mistake>
+</MistakeGrid>
+
+## <span class="hl">Zkratka</span> má sloužit čtenáři, <strong>ne šetřit místo</strong>
+
+Zkratka šetří autorovi pár znaků, čtenáři ale může vzít smysl celé sekce. Rozepište ji při prvním použití v každé sekci, víceznačné zkratky vždy a odborný termín vysvětlete přístavkem. Na úrovni webu držte jeden název pro pojem a hlídejte ho kontrolou, ne pamětí — pravidlo, které nikdo nekontroluje, se po pár měsících přestane dodržovat.
+
+Wireframy a šablony textů pro sedm typů stránek obsahuje **[AI SEO Wireframe Pack](/pack/)**, PDF návod za **1 490 Kč včetně DPH**.
