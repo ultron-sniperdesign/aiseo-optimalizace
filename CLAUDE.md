@@ -548,6 +548,23 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   se tiše zahodí a odsazení se sečte (naměřeno 16. 9. 2026 na `/audit/`: 102 px proti
   52 px mezi ostatními bloky). **Nastav proměnnou CSS pravidlem** v šabloně stránky:
   `.audit :global(.answer) { --answer-pb: 0 }`. Build ani typy na to neupozorní.
+- **Prop, kterou typ přijme a šablona nevykreslí, je tichá chyba — a opakuje se**
+  (třetí výskyt 10. 10. 2026). Vzorec: `style` na `Answer` (zahozeno, odsazení se sečetlo),
+  `number=` místo `num=` na `Mistake` (81 prázdných čísel ve 27 článcích) a `label`
+  u kroků `Stepper` (deklarovaný od 25. 8. 2026, nikdy nevykreslený, nasbíral **219 výskytů
+  ve 43 článcích**, než si toho někdo všiml). Ani build, ani `astro check` neprotestují.
+  **Když komponenta prop nečte, nesmí ji mít v typu** — jinak autoři píšou do prázdna
+  a čísla rostou. Hlídá to `blogger/kontrola-komponent.py` (čte typy přímo ze zdrojů
+  v `components/blocks/`), ale jen pro prop, kterou typ **nemá**; prop deklarovanou
+  a nevykreslenou má jako doloženou slepou skvrnu v hlavičce. **Po přidání prop do typu
+  vždy zkontroluj, že ji šablona skutečně používá.**
+  **Rozhodnutí ke `Stepper`: `label` se nevykresluje a v typu není** (10. 10. 2026).
+  Z 219 labelů bylo 58× „Krok N“ (číslo nese kolečko), 50× duplikát titulku nebo textu,
+  16× částečný překryv a 95× krátký název fáze říkající totéž co titulek; informaci,
+  kterou čtenář nikde jinde nevidí, nesly **tři**. Štítek nad blokem je vyhrazený pro
+  podstatnou informaci (tokeny `--label-*`), ne pro parafrázi nadpisu. **Časová osa
+  do `Stepperu` nepatří** — ty tři případy jsou chronologie a patří do tabulky
+  `Datum | Co se stalo | Co to znamená`, jak ji drží `/ai-mode/`.
 - **`set:html` + Astro scoped CSS — KRITICKÉ pro datové moduly** — obsah vložený přes `set:html` (datové moduly `src/content/pages/*.ts`) NEdostane Astro scope atribut (`data-astro-cid-*`). Scoped pravidlo `.X strong { color: violet }` se kompiluje na `.X[cid] strong[cid]` → vložený `<strong>` bez atributu NEMATCHNE → ztratí styl (violet nadpisy zčernají, odkazy ztratí styl). **Fix: obal potomka v `:global()`** → `.X :global(strong)` (rodič zůstane scoped, potomek matchne i bez atributu, žádný leak). Platí pro `strong`, `a`, `em`, `small`, `code` uvnitř set:html. **Nejčastější tichá regrese je `a`:** 16. 9. 2026 se na `/audit/` 23 nových odkazů vykreslilo jako obyčejný text, protože nové bloky měly `:global(strong)`, ale `:global(a)` ne (globální reset je `a { color: inherit; text-decoration: inherit }`, takže odkaz zmizí beze stopy). Po vložení odkazu do `set:html` vždy zkontroluj `getComputedStyle(a).textDecorationLine` v prohlížeči. Po refaktoru VŽDY vizuálně ověř barvy v prohlížeči (`getComputedStyle`), ne jen počty prvků — regrese 2026-05-22.
 - **`import.meta.url` v Astro komponentě NEUKAZUJE na zdrojový soubor** — v dev režimu ano, ale v produkčním buildu ukazuje na zabalený chunk (`dist/chunks/*.mjs`). Cesta odvozená přes `new URL("../../../public", import.meta.url)` proto v buildu minula kořen projektu o úroveň a `Figure.astro` tiše nevykreslil ani jeden obrázek (naměřeno 2026-09-06). **Pro cesty k souborům v build-time kódu používej `process.cwd()`**, což je při `astro build` i `astro dev` kořen projektu. Selhání je tiché, takže po zásahu vždy zkontroluj `dist/`, ne jen dev server.
 - **Štítky nad bloky mají jednu škálu** (od 2026-09-06) — `--label-size` (0.875rem), `--label-weight` (700) a `--label-tracking` v `global.css`. Používají je `.eyebrow`, `.inline-cta__eyebrow`, `.insight__label` a `.answer__mark`. Dřív měl každý svoji velikost (11–13 px) a v textu zanikaly, přestože nesou podstatnou informaci — u kontextového CTA jméno služby a agentury. **Nový štítek ber z těchto tokenů**, nezaváděj další velikost.
