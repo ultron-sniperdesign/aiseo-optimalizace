@@ -99,6 +99,14 @@ export default defineConfig({
     // Skutečné 301 by musela dělat Caddy — sdílený soubor, jde přes
     // sd-server-admin. Platí pro všech pět přesměrování v tomhle bloku.
     "/blog/google-ai-mode": "/ai-mode",
+    // 2026-10-10: slouceni ai-mode-cesky do sekce po mereni prejmenovani rodiny
+    // „rezim AI" (zasah 5. 9., vyhodnoceno 3. 10. 2026 — viz _source/_keyword-research/
+    // revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md). Clanek dal za 28 dni
+    // 2 kliky z 5 551 impresi (CTR 0,04 %, pozice 9,1) a na svem hlavnim dotazu „ai mode"
+    // nulu — pricemz se na nem ve ~17 % hledani zobrazoval zaroven se sekci, ktera stoji
+    // o dve pozice vys. Dolozena veta o dostupnosti cestiny, o kterou se opiraji ctyri
+    // dalsi clanky, je prenesena do FAQ a casove osy v sekci.
+    "/blog/ai-mode-cesky": "/ai-mode",
     "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat",
     "/seo-nastroje-2026": "/blog/seo-nastroje-2026",
     "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview",

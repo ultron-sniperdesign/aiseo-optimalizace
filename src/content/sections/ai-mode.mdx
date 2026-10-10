@@ -7,14 +7,14 @@ slug: "ai-mode"
 order: 7
 abbr: "AIMODE"
 published: "2026-07-17"
-updated: "2026-09-05"
+updated: "2026-10-10"
 faq:
   - q: "Co je režim AI (Google AI Mode)?"
     a: "Režim AI je samostatný konverzační režim vyhledávání Googlu — záložka a tlačítko vedle klasických výsledků. Na dotaz odpoví souvislým textem složeným z mnoha zdrojů, s citacemi a možností doptat se. Anglicky se jmenuje AI Mode, česky Google používá název režim AI."
   - q: "Jak se režim AI liší od Přehledu od AI?"
     a: "Přehled od AI (AI Overviews) je souhrn nad klasickými výsledky — jeden blok, pod ním modré odkazy. Režim AI je celý konverzační zážitek bez seznamu výsledků. Od 19. 5. 2026 jsou propojené: navazující otázka z Přehledu od AI pokračuje v režimu AI."
   - q: "Je režim AI dostupný v Česku?"
-    a: "Ano. Google ho v češtině spustil 7. 10. 2025 a podle nápovědy je dostupný ve více než 200 zemích a územích a ve 100+ jazycích (ověřeno 5. 9. 2026). Českým uživatelům se plošně objevoval zhruba od poloviny října 2025. Podrobný návod máme v článku o režimu AI v Googlu."
+    a: "Ano. Nápověda Googlu vede Česko v seznamu podporovaných zemí a češtinu v seznamu jazyků — ověřeno v české i anglické verzi 13. 8., 2. 9. a 5. 9. 2026. Pozor na čísla: nápověda vede oba seznamy bez součtu. Celkový počet přes 200 zemí a území stojí v oznámení Googlu ze 7. 10. 2025, které ale Česko ani češtinu nejmenuje a mluví o 35 nových jazycích, ne o jejich součtu. Dostupnost češtiny je tedy doložená seznamem v nápovědě, ne tím oznámením. Českým uživatelům se plošně objevoval zhruba od poloviny října 2025. Podrobný návod máme v článku o režimu AI v Googlu."
   - q: "Jak režim AI zapnu?"
     a: "Otevřete google.com/ai, klepnete na tlačítko Režim AI u vyhledávacího pole nebo použijete aplikaci Google. V Chromu je tlačítko také v adresním řádku a na nové kartě. Krok za krokem to popisuje náš návod na /blog/rezim-ai-google/."
   - q: "Dá se režim AI vypnout nebo nastavit jako výchozí?"
@@ -78,7 +78,7 @@ používejte oba** — český „režim AI“ kvůli hledanosti, anglický „A
 <Insight icon="↳" tone="accent" label="Kam dál">
 Hledáte návod, ne teorii? Zapnutí, historii konverzací a časté omyly řeší článek
 [Režim AI v Googlu: zapnutí, vypnutí a co v něm najdete](/blog/rezim-ai-google/).
-Co režim AI umí a co o něm nápověda mlčí, rozebírá [co režim AI umí a co ne](/blog/ai-mode-cesky/).
+Co nápověda o režimu AI mlčí: jak se z něj vrátit na klasické výsledky ani jak ho vypnout neuvádí.
 Vypnout jde jen [Přehled od AI nad výsledky](/blog/jak-vypnout-ai-overview/) — a i tam jen filtrem Web.
 Tahle stránka je o něčem jiném: jak režim AI funguje a jak se do jeho odpovědí dostane váš web.
 </Insight>
@@ -86,6 +86,8 @@ Tahle stránka je o něčem jiném: jak režim AI funguje a jak se do jeho odpov
 ## Jak <span class="hl">režim AI</span> funguje — <strong>query fan-out</strong>
 
 Když uživatel zadá dotaz („jaký vosk na tmavý lak v zimě“), režim AI ho **rozloží na řadu souběžných souvisejících dotazů** — co je vosk vs. sealant, co dělá zima s lakem, jaké produkty existují, co říkají recenze. Google to popisuje jako „multitude of queries“ (20. 5. 2025), v oficiálním příkladu v dokumentaci z 10. 7. 2026 jde o tři podotázky; v režimu Deep Search jich systém pouští až stovky. Pro každou podotázku prohledá index a z nejlepších odpovědí složí výsledný text s citacemi.
+
+Nápověda k tomu přidává jednu větu, která se často přehlíží: **když si režim AI není dost jistý, nabídne místo odpovědi rovnou sadu odkazů.** Jak je ta hranice nastavená ani jak často k tomu dochází, Google neuvádí.
 
 Důsledek: **citaci nevyhrává stránka, která je „první na hlavní dotaz“, ale stránka, která nejlépe odpovídá na konkrétní podotázku.** Detailní rozbor mechanismu najdete v článku o [query fan-out](/blog/query-fan-out-ai-mode/) a v hesle slovníku [query fan-out](/slovnik/query-fan-out/).
 
@@ -125,7 +127,7 @@ Tahle stránka je na webu jediným místem, kde časovou osu držíme. Ostatní 
 
 | Datum | Co se stalo | Co to znamená pro web |
 |---|---|---|
-| 7. 10. 2025 | Google spouští režim AI v češtině, podle nápovědy ve 200+ zemích a územích a 100+ jazycích | česká verze existuje od začátku, nejde o americkou funkci |
+| 7. 10. 2025 | Google spouští režim AI v češtině; oznámení mluví o 35 nových jazycích a 200+ zemích a územích celkem, Česko ani češtinu nejmenuje — ty stojí v seznamech v nápovědě | česká verze existuje od začátku, nejde o americkou funkci |
 | ~15. 10. 2025 | dostupné plošně českým uživatelům (sekundární zdroj) | konec fáze „mají to jen někteří“ |
 | 6. 5. 2026 | odkazy přímo v textu odpovědi a náhled webu při najetí | rozhoduje název webu a titulek stránky |
 | 19. 5. 2026 | Google I/O: propojení s Přehledem od AI, Gemini 3.5 Flash jako výchozí model, miliarda uživatelů měsíčně | z přehledu se dá plynule přejít do konverzace |
