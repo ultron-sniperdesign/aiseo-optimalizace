@@ -1678,3 +1678,16 @@ původce děje · „přesnost stránky“ · „vyhledávací tok“ · nesouř
 záznam výsledků měření · tautologický pokyn k češtině · abstraktní závěr a CTA.
 Závěrečný checker: 0 nálezů. Externí API průchod s celým slovníkem automatická
 bezpečnostní kontrola odmítla; C3 a C5 proběhly jako oddělené auditorské subagenty.
+
+## C6 při bloku oprav: vlastnosti komponent ve 27 článcích (10. 10. 2026)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v72 |
+| Mechanický | **26 souborů 0 nálezů.** `shoptet-filtry-strankovani` 1× ⛔ „AI friendly“ (ř. 152, text odkazu na `/blog/ai-friendly-url-struktura/`; pravidlo ze 7. 9. 2026 je mladší než poslední revize článku). |
+| LLM průchod | **nedělal se** — blok měnil jen názvy vlastností komponent (`number` → `num`, `leftTitle`/`rightTitle` → `leftLabel`/`rightLabel`), žádné slovo textu |
+| Nová pravidla | **žádné** |
+
+**Do fronty, ne do opravy:** nález v `shoptet-filtry-strankovani` je starší jazykový dluh
+a s opravovanou vadou nesouvisí; blok oprav se drží jedné vady (A6). Zapsán v
+`REFRESH_QUEUE.md` jako kandidát na jazykový blok spolu se „stack“.

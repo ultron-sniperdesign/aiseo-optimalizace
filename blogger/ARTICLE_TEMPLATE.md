@@ -166,17 +166,25 @@ Inline kód jako `proměnná` nebo `cesta/k/souboru`.
 
 > **Tahle sekce není součástí článku** — je to kontrola před publikací, proto ji jako jediný H2 níže nedrží formát nadpisů. Do článku ji nekopíruj; kostra končí sekcí Závěr a CTA.
 
-Komponenta vykreslí jen ty klíče, které zná. **Překlep nebo cizí název klíče build nezastaví** — text prostě tiše zmizí ze stránky. Ověřeno 25. 8. 2026: `<Stepper>` měl ve 41 článcích popisy kroků v klíči `text:`, komponenta ale četla `desc:` → 42 bloků se vykreslovalo s prázdným odstavcem.
+Komponenta vykreslí jen ty klíče, které zná. **Překlep nebo cizí název klíče build nezastaví** — text prostě tiše zmizí ze stránky. Ověřeno 25. 8. 2026: `<Stepper>` měl ve 41 článcích popisy kroků v klíči `text:`, komponenta ale četla `desc:` → 42 bloků se vykreslovalo s prázdným odstavcem. Totéž znovu 10. 10. 2026: `<Mistake number="01">` místo `num` nechalo prázdné číslo u 78 karet ve 26 článcích a `<CompareTable leftTitle rightTitle>` prázdná záhlaví sloupců.
 
-| Komponenta | Klíče, které se vykreslí |
+| Komponenta | Vlastnosti a klíče, které se vykreslí |
 |---|---|
-| `<Stepper steps={[…]} />` | `title`, `desc` (**kanonický**; `text` funguje jako alias). `label` se **nevykresluje** — je to jen poznámka v kódu. |
-| `<Checklist items={[…]} />` | `title`, `desc` |
-| `<CompareTable rows={[…]} />` | `icon`, `label`, `left`, `right` |
-| `<Persona>` / `<AntiPersona>` | obsah mezi tagy |
-| `<Mistake num title>` | `num`, `title` + obsah mezi tagy |
+| `<Stepper steps={[…]} />` | položka: `title`, `desc` (**kanonický**; `text` funguje jako alias). `label` se **nevykresluje** — je to jen poznámka v kódu. |
+| `<Checklist items={[…]} />` | položka: `title`, `desc` (nebo prostý řetězec) |
+| `<CompareTable leftLabel rightLabel rows={[…]} />` | **`leftLabel`, `rightLabel` jsou povinná záhlaví sloupců** (ne `leftTitle`), `leftTone`, `rightTone`; položka řádku: `icon`, `label`, `left`, `right` |
+| `<Persona>` / `<AntiPersona>` | `title` + obsah mezi tagy |
+| `<Mistake num title fix>` | **`num`** (ne `number`), `title`, `fix` + obsah mezi tagy |
 
-**Po designové úpravě (blok D1) zkontroluj v buildu, že se text opravdu vykreslil:**
+Tabulka je pomůcka. **Rozhoduje kontrola, která čte typy přímo ze zdrojů komponent** —
+hlídá i komponenty, které tu nejsou, a vlastnosti přidané později. Pusť ji po designové
+úpravě (blok D1), ještě před buildem:
+
+```bash
+python3 blogger/kontrola-komponent.py src/content/articles/<slug>.mdx   # musí skončit 0 nálezy
+```
+
+V buildu pak ověř, že se text opravdu vykreslil (Z13):
 
 ```bash
 grep -o 'stp__desc[^<]*></p>' dist/blog/<slug>/index.html | wc -l   # musí být 0

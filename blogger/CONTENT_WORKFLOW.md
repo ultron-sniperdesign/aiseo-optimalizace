@@ -126,6 +126,19 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
 - **Z13 — Kontrola vykreslení** *(obě větve)*. Po buildu grepnout v `dist/blog/<slug>/`
   aspoň jeden text z každé komponenty (`Stepper`, `Checklist`, `CompareTable`…).
   Překlep v názvu vlastnosti build nezastaví a text tiše zmizí.
+  **Grep na text ale nechytí vlastnost, která nenese text karty** — číslo, záhlaví sloupce.
+  `<Mistake number="01">` místo `num` nechalo prázdné číslo u 78 karet ve 26 článcích
+  a `<CompareTable leftTitle rightTitle>` prázdná záhlaví; nadpis i text karty se přitom
+  vykreslily, takže kontrola textu prošla *(blok oprav 10. 10. 2026)*. Proto **před buildem**:
+
+  ```bash
+  python3 blogger/kontrola-komponent.py src/content/articles/<slug>.mdx   # cíl 0 nálezů
+  ```
+
+  Skript čte `interface Props` přímo ze zdrojů v `src/components/blocks/`, takže nová
+  komponenta ani nová vlastnost nepotřebuje jeho úpravu. Hlásí vlastnost, kterou komponenta
+  nečte, chybějící povinnou vlastnost a cizí klíč položky v poli (`steps`, `items`, `rows`).
+  Celý korpus se dá projet najednou (`src/content/articles/*.mdx`) — 10. 10. 2026: 0 nálezů.
 - **Z14 — Přednost témat k AI Mode: SPLNĚNO 20. 9. 2026.** Poslední otevřený řádek klastru
   (`osobni inteligence cesky nazev`) vyšel jako `ceske-nazvy-ai-funkci-google`. Pravidlo z 13. 8. 2026
   tím zaniká; nová témata k režimu AI jdou normálním pořadím fronty. Řádek tu zůstává jako záznam,
@@ -596,6 +609,8 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
       pravidla do slovníku.** Nález, který je předmětem článku, řeší **marker `jazyk-vyjimka:`
       ve frontmatteru** (s důvodem), ne nový slug ve slovníku
 - [ ] D1: design komponenty hotové **už před audity** (v C1), `.mdx` + `variant: rich`, žádný wall of text
+- [ ] **Z13: `python3 blogger/kontrola-komponent.py <soubor>` → 0 nálezů** (vlastnosti, které komponenta
+      nečte, se tiše nevykreslí) a po buildu grep textu z každé komponenty v `dist/`
 - [ ] D2: featured image `public/og/<slug>.jpg` + `.webp` (gpt-image-2, 1536×1024, CZ text v horních ~84 %, zkontrolováno) — **pracovní `.png` smazáno, do repa nejde**
 - [ ] D3: `npm run build` OK → commit (článek + `.jpg` + `.webp`) → push → CI → curl 200 (článek i `og/<slug>.jpg`). **Selhal-li v CI jen krok IndexNow, run je v pořádku** (D3)
 - [ ] D4: tabulka `E = ano`, `F = URL`

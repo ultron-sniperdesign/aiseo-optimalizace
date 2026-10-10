@@ -146,15 +146,15 @@ Tohle už neleží přímo v požadavcích na merchant listing, ale stojí za kr
 ## Tři chyby, které z měření plynou
 
 <MistakeGrid>
-<Mistake number="01" title="Nechat prázdný EAN a čekat, že to platforma dořeší">
+<Mistake num="01" title="Nechat prázdný EAN a čekat, že to platforma dořeší">
 Nedořeší. Pole `gtin13` se plní z vašeho katalogu a v měřeném vzorku ho nemělo 11 e-shopů z 38. Je to zároveň jedno z mála polí, kterými se produkt páruje napříč systémy — [proč na něm záleží](/blog/produktovy-feed-gtin/).
 </Mistake>
 
-<Mistake number="02" title="Řešit doporučená pole, která platforma negeneruje">
+<Mistake num="02" title="Řešit doporučená pole, která platforma negeneruje">
 Deklarace vrácení zboží, výrobní číslo, barva ani velikost se v datech neobjevily ani jednou ze 38. Nemá smysl je hledat v administraci — buď je doplní platforma, nebo doplněk či zásah do šablony. Pokud je potřebujete, je to úkol pro vývoj nebo dotaz na podporu, ne práce v katalogu.
 </Mistake>
 
-<Mistake number="03" title="Předpokládat, že varianty stroj pochopí">
+<Mistake num="03" title="Předpokládat, že varianty stroj pochopí">
 Dostane několik cen pod jedním produktem bez prvků, kterými Google varianty doporučuje provázat. Vlastnosti jako velikost nebo barva se ve vzorku neobjevily vůbec — pokud je zákazníci potřebují znát, patří čitelně do obsahu stránky.
 </Mistake>
 </MistakeGrid>

@@ -116,15 +116,15 @@ Pořadí, ve kterém to dává smysl řešit:
 3. `noindex` na adresách zakázaných v robots.txt neřešte — ten problém neřeší.
 
 <MistakeGrid>
-<Mistake number="01" title="Řešit filtry, protože se to tak dělá">
+<Mistake num="01" title="Řešit filtry, protože se to tak dělá">
 Ve vzorku proti nim působí dva faktory zároveň — zákaz v robots.txt a to, že z kategorie na ně většinou nevede odkaz. Čas strávený jejich „opravováním“ je čas, který jinde chybí.
 </Mistake>
 
-<Mistake number="02" title="Dávat noindex na adresy zakázané v robots.txt">
+<Mistake num="02" title="Dávat noindex na adresy zakázané v robots.txt">
 Nefunguje to a dokumentace Googlu to říká výslovně: je-li stránka blokovaná v robots.txt, crawler se k `noindex` na ní nedostane. Pokud chcete `noindex` použít, stránka pro něj musí být přístupná.
 </Mistake>
 
-<Mistake number="03" title="Prolinkovat si filtry vlastní úpravou">
+<Mistake num="03" title="Prolinkovat si filtry vlastní úpravou">
 Tím změníte ten druhý faktor: na zakázanou adresu nově povede odkaz. A zakázaná adresa, na kterou odkaz vede, se podle Googlu ve výsledcích objevit může — `noindex` na ní, jak už víme, nepomůže.
 </Mistake>
 </MistakeGrid>

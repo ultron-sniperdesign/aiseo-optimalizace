@@ -89,6 +89,9 @@ python3 ~/.claude/skills/open-ai-api-core/scripts/chat.py \
 # jazyková kontrola (C6) — cíl 0 nálezů, pouští se z kořene projektu
 python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md
 
+# vlastnosti komponent, které se tiše nevykreslí (Z13) — cíl 0 nálezů, před buildem
+python3 blogger/kontrola-komponent.py src/content/articles/<slug>.mdx
+
 # obrázek (D2) — preambule a pojistky v IMAGE_GUIDE.md §5, prompt v jednoduchých uvozovkách
 python3 ~/.claude/skills/open-ai-api-core/scripts/image.py \
   --model gpt-image-2 --size 1536x1024 --quality high \

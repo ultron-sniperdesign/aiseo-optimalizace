@@ -125,13 +125,13 @@ Jeden odečet, **13. srpna 2026**.
 ## Tři chyby okolo kódování
 
 <MistakeGrid>
-  <Mistake number="01" title="Dekódovat natvrdo UTF-8">
+  <Mistake num="01" title="Dekódovat natvrdo UTF-8">
     Projde to na většině webů a selže na menšině. Právě proto se to hledá špatně — nevypadá to jako chyba čtení, ale jako chybějící obsah.
   </Mistake>
-  <Mistake number="02" title="Číst značku meta a ignorovat hlavičku">
+  <Mistake num="02" title="Číst značku meta a ignorovat hlavičku">
     Bezpečné pořadí je opačné. Když si obě místa odporují, čtete to špatně.
   </Mistake>
-  <Mistake number="03" title="Dát meta charset až za blok skriptů">
+  <Mistake num="03" title="Dát meta charset až za blok skriptů">
     Specifikace počítá s prvními 1024 bajty. Tři weby ve vzorku to mají dál; zároveň posílají charset i v hlavičce.
   </Mistake>
 </MistakeGrid>
