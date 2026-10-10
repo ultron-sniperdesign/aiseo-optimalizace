@@ -14,8 +14,27 @@ interface Step {
   title: string;
   desc?: string;
   text?: string;
-  label?: string;
 }
+
+/**
+ * `label` tu záměrně NENÍ (rozhodnutí 10. 10. 2026).
+ * Deklarovaný byl od 25. 8. 2026, ale šablona ho nikdy nevykreslila — a prop,
+ * kterou typ přijme a komponenta zahodí, je tichá chyba. Je to třetí výskyt
+ * téhož vzorce po `style` na `Answer` a `number=` na `Mistake`.
+ *
+ * Nevykresluje se proto, že nemá co přinést: ze 219 kroků, které ho nesly,
+ * bylo 58 „Krok N" (číslo už nese kolečko), 50 duplikát titulku nebo textu,
+ * 16 částečný překryv a 95 krátký název fáze, který jen jinak říká totéž co
+ * titulek („Výběr subredditů" nad „Vyberte 3 až 5 relevantních komunit").
+ * Informaci, kterou čtenář nikde jinde nevidí, nesly tři — data časové osy
+ * v `konec-faq-rich-results`, a tam je chyba volba komponenty: časová osa
+ * patří do tabulky, jako ji drží `/ai-mode/`.
+ *
+ * Štítek nad blokem je v design systému vyhrazený pro podstatnou informaci
+ * (tokeny `--label-*`, viz CLAUDE.md § VI). Název fáze opakující titulek to není.
+ * Po odstranění z typu hlásí `blogger/kontrola-komponent.py` všech 219 výskytů
+ * sama, takže úklid nestojí na tom, že si ho někdo zapamatuje.
+ */
 
 interface Props {
   steps: Step[];
