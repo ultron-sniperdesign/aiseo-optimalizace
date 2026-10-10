@@ -23,8 +23,9 @@ Typy čte přímo ze zdrojů v `src/components/blocks/`, takže nová komponenta
 vlastnost nepotřebuje úpravu skriptu. Komponenta bez `Props` nečte žádnou vlastnost.
 
 Vědomé meze — tohle skript NEchytí:
-  - vlastnost, kterou komponenta deklaruje, ale nevykresluje. Stav k 10. 10. 2026: `label`
-    u kroků `Stepper` (deklarovaný, v šabloně nepoužitý; nese ho 219 kroků, viz REFRESH_QUEUE);
+  - vlastnost, kterou komponenta deklaruje, ale nevykresluje — typ ji přijme, šablona zahodí.
+    Takový byl `label` u kroků `Stepper`: 10. 10. 2026 odebrán z typu (`f5054ca`), takže ho
+    skript od té doby hlásí (219 výskytů = pracovní seznam bloku oprav, viz REFRESH_QUEUE);
   - typy importované odjinud (`import type { FaqItem } …`) a dědění z neznámého typu —
     tam se kontrola cizích vlastností vypne, aby nevznikaly falešné nálezy;
   - hodnoty předané proměnnou (`steps={kroky}`) — kontroluje jen zapsané literály.

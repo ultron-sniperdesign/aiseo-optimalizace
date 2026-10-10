@@ -138,7 +138,9 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
   Skript čte `interface Props` přímo ze zdrojů v `src/components/blocks/`, takže nová
   komponenta ani nová vlastnost nepotřebuje jeho úpravu. Hlásí vlastnost, kterou komponenta
   nečte, chybějící povinnou vlastnost a cizí klíč položky v poli (`steps`, `items`, `rows`).
-  Celý korpus se dá projet najednou (`src/content/articles/*.mdx`) — 10. 10. 2026: 0 nálezů.
+  Celý korpus se dá projet najednou (`src/content/articles/*.mdx`). Od `f5054ca` (10. 10. 2026,
+  `label` odebrán z typu `Stepper`) hlásí **219 × `steps[].label` ve 43 článcích — je to pracovní
+  seznam bloku oprav** (`REFRESH_QUEUE.md`), ne regrese. Pro nový článek platí cíl 0.
 - **Z14 — Přednost témat k AI Mode: SPLNĚNO 20. 9. 2026.** Poslední otevřený řádek klastru
   (`osobni inteligence cesky nazev`) vyšel jako `ceske-nazvy-ai-funkci-google`. Pravidlo z 13. 8. 2026
   tím zaniká; nová témata k režimu AI jdou normálním pořadím fronty. Řádek tu zůstává jako záznam,

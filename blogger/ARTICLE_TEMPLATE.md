@@ -170,7 +170,7 @@ Komponenta vykreslí jen ty klíče, které zná. **Překlep nebo cizí název k
 
 | Komponenta | Vlastnosti a klíče, které se vykreslí |
 |---|---|
-| `<Stepper steps={[…]} />` | položka: `title`, `desc` (**kanonický**; `text` funguje jako alias). `label` se **nevykresluje** — je to jen poznámka v kódu. |
+| `<Stepper steps={[…]} />` | položka: `title`, `desc` (**kanonický**; `text` funguje jako alias). **`label` nepoužívat** — od 10. 10. 2026 není v typu (nikdy se nevykresloval) a kontrola ho hlásí. |
 | `<Checklist items={[…]} />` | položka: `title`, `desc` (nebo prostý řetězec) |
 | `<CompareTable leftLabel rightLabel rows={[…]} />` | **`leftLabel`, `rightLabel` jsou povinná záhlaví sloupců** (ne `leftTitle`), `leftTone`, `rightTone`; položka řádku: `icon`, `label`, `left`, `right` |
 | `<Persona>` / `<AntiPersona>` | `title` + obsah mezi tagy |
