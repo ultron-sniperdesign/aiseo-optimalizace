@@ -1,0 +1,1 @@
+NEOBSTOJÍ — výhrada „co počítá za uživatele, neuvedl“ je doplněná a rozsah zemí/území také, ale karta chyby 06 stále vynechává „ve 40 jazycích“. Místo 1 tedy říká plný rozsah podle zdroje, místo 2 jen jeho část; obě místa neříkají totéž.

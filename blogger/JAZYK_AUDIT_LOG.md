@@ -1691,3 +1691,18 @@ bezpečnostní kontrola odmítla; C3 a C5 proběhly jako oddělené auditorské 
 **Do fronty, ne do opravy:** nález v `shoptet-filtry-strankovani` je starší jazykový dluh
 a s opravovanou vadou nesouvisí; blok oprav se drží jedné vady (A6). Zapsán v
 `REFRESH_QUEUE.md` jako kandidát na jazykový blok spolu se „stack“.
+
+## 2026-10-10 · `hledanost-neni-adopce` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v72 |
+| Mechanický checker | před auditem 2× ⛔ „Přehledy od AI“ (glosář: jednotné číslo) → opraveno; po všech opravách **0 nálezů** |
+| LLM průchod (gpt-5.4, celý slovník) | 6 nálezů, všech 6 přijato |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu |
+
+**Opraveno:** „řád velikosti služby“ (kalk *order of magnitude*) → „přibližná velikost služby“,
+v Insightu „řádový odhad“ · „našeptávač k němu nabízel“ → „po jeho zadání nabízel našeptávač“ ·
+„jednotlivé měsíce mají vady“ → „v datech za jednotlivé měsíce jsou vady“ · „převezme malou část
+hledání“ → „připadá na ni jen malá část“ · „průzkum se ptá“ → „v průzkumu se ptají“ · „hýbou se
+různě“ → „vyvíjejí se odlišně“.
