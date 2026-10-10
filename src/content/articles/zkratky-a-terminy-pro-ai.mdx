@@ -41,7 +41,6 @@ import Do from "~/components/blocks/Do.astro";
 import Dont from "~/components/blocks/Dont.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
-import DataBars from "~/components/blocks/DataBars.astro";
 
 **Zkratka rozepsaná jen v úvodu stránky v ostatních sekcích chybí.** Kdo přijde rovnou do prostřední sekce — z odkazu, z obsahu stránky nebo přes nástroj AI, který pracuje jen s jedním úsekem — uvidí zkratku GSC (Google Search Console) nebo AEO (Answer Engine Optimization) bez vysvětlení. Na vlastním webu jsme to spočítali: z 307 sekcí, které používají některou ze sedmi běžných zkratek oboru, jich 201 aspoň jednu z nich nerozepisuje ani neodkazuje na vysvětlení.
 
@@ -117,23 +116,17 @@ Samotné pravidlo ale nestačí, potřebuje kontrolu. Náš web si v září 202
 
 Všech 185 článků jsme 10. 10. 2026 rozdělili na sekce: krátkou odpověď, každou otázku s odpovědí FAQ, úvod před prvním nadpisem H2 a každý úsek pod nadpisem H2. Sekci jsme počítali jako „bez vysvětlení“, když obsahovala zkratku, ale ne její rozepsání ani odkaz na zkratce do slovníku pojmů, do sekce webu, která zkratku vysvětluje, nebo na článek blogu.
 
-<DataBars
-  caption="Podíl sekcí, ve kterých zkratka chybí vysvětlení (ze sekcí, které ji používají)"
-  unit="%"
-  tableValueLabel="Bez vysvětlení"
-  rows={[
-    { label: "SERP (stránka s výsledky vyhledávání)", value: 100, display: "100 %" },
-    { label: "CTR (míra prokliku)", value: 85, display: "85 %" },
-    { label: "GEO (Generative Engine Optimization)", value: 68, display: "68 %" },
-    { label: "AEO (Answer Engine Optimization)", value: 67, display: "67 %" },
-    { label: "GSC (Google Search Console)", value: 52, display: "52 %" },
-    { label: "AIO (AI Optimization)", value: 41, display: "41 %" },
-    { label: "E-E-A-T (zkušenost, odbornost, autoritativnost, důvěryhodnost)", value: 25, display: "25 %" },
-    { label: "Aspoň jedna ze sedmi zkratek", value: 65, display: "65 %", emphasized: true },
-  ]}
-/>
+Podíl sekcí bez vysvětlení u jednotlivých zkratek, ze sekcí, které zkratku používají:
 
-Celkem chybí vysvětlení ve 201 z 307 sekcí, které některou ze sedmi zkratek používají. Souhrnný řádek počítá každou sekci jednou, i když obsahuje víc zkratek. Měření je mechanické, takže jsme 31 označených případů prošli ručně: 29 bylo skutečně bez vysvětlení, dva měly vysvětlení jinými slovy nebo odkazem, který měření nepočítalo. Ze 201 sekcí bez vysvětlení je 141 pod nadpisem uprostřed článku a 47 v odpovědích FAQ — z 67 odpovědí FAQ, které nějakou zkratku používají.
+- **SERP** (stránka s výsledky vyhledávání): 100 % — 38 z 38 sekcí
+- **CTR** (míra prokliku): 85 % — 45 z 53
+- **GEO** (Generative Engine Optimization): 68 % — 70 ze 103
+- **AEO** (Answer Engine Optimization): 67 % — 64 z 95
+- **GSC** (Google Search Console): 52 % — 40 ze 77
+- **AIO** (AI Optimization): 41 % — 39 z 94
+- **E-E-A-T** (zkušenost, odbornost, autoritativnost, důvěryhodnost): 25 % — 13 z 52
+
+**Celkem chybí vysvětlení ve 201 z 307 sekcí (65 %), které některou ze sedmi zkratek používají.** Souhrn počítá každou sekci jednou, i když obsahuje víc zkratek. Měření je mechanické, takže jsme 31 označených případů prošli ručně: 29 bylo skutečně bez vysvětlení, dva měly vysvětlení jinými slovy nebo odkazem, který měření nepočítalo. Ze 201 sekcí bez vysvětlení je 141 pod nadpisem uprostřed článku a 47 v odpovědích FAQ — z 67 odpovědí FAQ, které nějakou zkratku používají.
 
 <Insight tone="accent" icon="✦" label="Proč to píšeme o sobě">
 Pravidlo „rozepsat zkratku v každé sekci“ jsme na tomhle webu publikovali v červenci 2026 v článku o psaní po pasážích. Měření ukazuje, že ho neplní 65 % sekcí, které používají aspoň jednu ze sedmi sledovaných zkratek. Bez kontroly před publikací se zkratky do sekcí vracejí — i u autora, který o tom sám píše.
