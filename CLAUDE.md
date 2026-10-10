@@ -526,6 +526,20 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   **Sesterská past v té knihovně:** po neúspěšném podání zapisovala cache a vypsala
   „IndexNow submission complete“ — jediný pravdivý signál byl `warn` mezi tím. Náš
   skript naopak na 4xx vrací nenulový kód a selhání nezamlčí.
+- **Astro ve statickém buildu negeneruje 301 — a přidává `noindex` vedle `canonicalu`**
+  (změřeno 6. 9. 2026, dopad doměřen 10. 10. 2026). Záznamy v `redirects` v `astro.config.mjs`
+  (k 10. 10. 2026 jich je 17) se vykreslí jako HTML stránka s `<meta http-equiv="refresh">`
+  a stavem **200**, ne jako HTTP 301. Nově změřená past je ten druhý meta tag: generovaná
+  stránka nese `<meta name="robots" content="noindex">` **a zároveň** `<link rel="canonical">`
+  na cíl. To jsou protichůdné signály a vyhledávač typicky poslechne `noindex`, takže URL
+  **zahodí, místo aby převedl její signály na cíl**. Pro alias nebo zrušenou stránku to
+  nevadí; **u konsolidace duplikátů je přenos signálu celý smysl zásahu**, takže tam
+  přesměrování z Astra nestačí. Skutečné 301 musí dát Caddy (`redir … permanent`, má
+  přednost před `file_server`, takže stránky v `dist/` zůstanou jako fallback). Caddyfile
+  je sdílený: vlastní blok editovat můžu (§ IV), **reload dělá sd-server-admin** (§ V).
+  Zadáno 10. 10. 2026 do `cross-session/server-admin.md` pro všech 17 cest najednou.
+  **Po sloučení duplikátu vždy ověř `curl -sS -o /dev/null -w "%{http_code}"` — 200 znamená,
+  že signál se nepřenáší.**
 - **macOS Finder `Icon\r`** — Excludováno v `.gitignore`. Pokud se objeví v `.git/refs/heads/Icon`, vyřešit dle log entry 2026-04-27.
 - **Caddy je sdílený** — před reloadem heads-up do `server-admin.md`. Reload dělá sd-server-admin.
 - **Tailwind 4 + Vite plugin Type mismatch** — `astro.config.mjs` má `/** @type {any} */` cast. Funkčně OK.
@@ -725,17 +739,19 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   soupeřilo o jeden dotaz a spravilo se to bez psaní obsahu. Podklad:
   `_source/_keyword-research/blog-gsc-20260907/ANALYZA.md`. **Jediná cesta
   s řádovým dopadem** — titulky ani CTR to nevyřeší.
-- **🟠 Přejmenování rodiny „režim AI" vyhodnoceno 3. 10. 2026 — čeká rozhodnutí o 301.**
-  Výsledek a data: `_source/_keyword-research/revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md`.
-  Okno 6. 9. → 3. 10. proti 9. 8. → 5. 9. (obě 28 dní): imprese rodiny 16 496 → 27 006
-  (**+64 %**), kliky **31 → 31**, CTR 0,188 → 0,115 %. Splněny 3 ze 4 signálů, padl ten
-  výsledkový (CTR). **Titulek problém nebyl** — zobrazení přišlo, kliky ne. Přírůstek
-  impresí je poptávka (dotazy rodiny +57 %), ne lepší pozice; ty stojí na 7–9.
-  Doporučení k rozhodnutí: **301 `/blog/ai-mode-cesky/` → `/ai-mode/`** (ne na
-  `rezim-ai-google`, jak čekalo zadání z 5. 9. — hlavní dotaz „ai mode" si bere se
-  **sekcí**, překryv 17 %; návodu ukusuje jen 29 % dotazu „jak zapnout režim ai"),
-  `rezim-ai-google` nechat (23 z 31 kliků rodiny). Po nasazení přeměřit 31. 10. 2026
-  a rozhodovat podle **absolutních kliků**, ne CTR.
+- **Přejmenování rodiny „režim AI" — vyhodnoceno 3. 10., sloučeno 10. 10. 2026.
+  🟠 Přeměřit 31. 10. 2026.** Data, verdikt i kritéria přeměření:
+  `_source/_keyword-research/revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md`.
+  Měření (okna 6. 9. → 3. 10. proti 9. 8. → 5. 9., obě 28 dní): imprese rodiny
+  16 496 → 27 006 (**+64 %**), kliky **31 → 31**, CTR 0,188 → 0,115 %. Splněny 3 ze 4
+  signálů, padl výsledkový. **Titulek problém nebyl**; přírůstek impresí je poptávka
+  (dotazy rodiny +57 %), pozice stojí na 7–9. Na to 10. 10. sloučen `ai-mode-cesky`
+  do `/ai-mode/` (commit `c94035a`): 2 kliky z 5 551 impresí, překryv se sekcí
+  na „ai mode" ve ~17 % hledání. Rodina je teď **dvě URL**: sekce (jak funguje,
+  jak být vidět) + návod `rezim-ai-google` (zapnout, vypnout, historie) — ten nese
+  23 z 31 kliků a nesahat na něj. **Přeměření 31. 10. se rozhoduje podle absolutních
+  kliků, ne CTR** (rostoucí poptávka CTR ředí); cíl je nad 31 kliků rodiny. Když
+  zůstanou na 31, je vyčerpaná i hypotéza o drobení na duplikáty a zbývá jen pozice.
 - **Série díl 9+10** — až blogger vydá „Recenze a hodnocení pro AI" a „Produktový feed a GTIN" (v obsahovém plánu), přidat slugy do `src/i18n/series.ts` parts a smazat z planned.
 - **Další běh měření AI viditelnosti ~7. 10. 2026** (měsíční kadence). Poslední
   proběhl 7. 9. 2026, oba configy přes OpenAI. Výsledky a metodický závěr:
