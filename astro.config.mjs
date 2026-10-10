@@ -79,14 +79,14 @@ export default defineConfig({
    *   301 redirecty zachovávají SEO equity ze starých URL.
    */
   redirects: {
-    "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio",
+    "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio/",
     // 2026-08-05: 4 detailní stránky služeb stažené při přestavbě /sluzby/
     // (nová nabídka je má jako sekce indexu, samostatný detail ztratil smysl).
     // 301 na index, ať se equity ze zaindexovaných URL neztratí.
-    "/sluzby/freshness-program": "/sluzby",
-    "/sluzby/geo-obsah-eshopy": "/sluzby",
-    "/sluzby/off-page-pro-ai": "/sluzby",
-    "/sluzby/technicka-uprava": "/sluzby",
+    "/sluzby/freshness-program": "/sluzby/",
+    "/sluzby/geo-obsah-eshopy": "/sluzby/",
+    "/sluzby/off-page-pro-ai": "/sluzby/",
+    "/sluzby/technicka-uprava": "/sluzby/",
     // 2026-09-06: rozcestníkový článek o režimu AI vznikl dřív než sekce /ai-mode/
     // a jeho kapitoly dnes pokrývají čtyři jiné články + sekce. Za 90 dní nesebral
     // ani jednu impresi, přestože jeho cílový dotaz „google ai mode" má 520 hledání
@@ -98,7 +98,7 @@ export default defineConfig({
     // přesměrování bere, ale je to slabší a pomalejší signál než 301.
     // Skutečné 301 by musela dělat Caddy — sdílený soubor, jde přes
     // sd-server-admin. Platí pro všech pět přesměrování v tomhle bloku.
-    "/blog/google-ai-mode": "/ai-mode",
+    "/blog/google-ai-mode": "/ai-mode/",
     // 2026-10-10: slouceni ai-mode-cesky do sekce po mereni prejmenovani rodiny
     // „rezim AI" (zasah 5. 9., vyhodnoceno 3. 10. 2026 — viz _source/_keyword-research/
     // revize-sekci-20260905/_evidence/mereni-rezim-ai-20260905.md). Clanek dal za 28 dni
@@ -106,21 +106,21 @@ export default defineConfig({
     // nulu — pricemz se na nem ve ~17 % hledani zobrazoval zaroven se sekci, ktera stoji
     // o dve pozice vys. Dolozena veta o dostupnosti cestiny, o kterou se opiraji ctyri
     // dalsi clanky, je prenesena do FAQ a casove osy v sekci.
-    "/blog/ai-mode-cesky": "/ai-mode",
-    "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat",
-    "/seo-nastroje-2026": "/blog/seo-nastroje-2026",
-    "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview",
-    "/local-seo-cesko-2026": "/blog/local-seo-cesko-2026",
-    "/jak-strukturovat-pillar-content": "/blog/jak-strukturovat-pillar-content",
-    "/mereni-seo-vykonu-2026": "/blog/mereni-seo-vykonu-2026",
-    "/seo-pro-eshopy-ai-era-2026": "/blog/seo-pro-eshopy-ai-era-2026",
+    "/blog/ai-mode-cesky": "/ai-mode/",
+    "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat/",
+    "/seo-nastroje-2026": "/blog/seo-nastroje-2026/",
+    "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview/",
+    "/local-seo-cesko-2026": "/blog/local-seo-cesko-2026/",
+    "/jak-strukturovat-pillar-content": "/blog/jak-strukturovat-pillar-content/",
+    "/mereni-seo-vykonu-2026": "/blog/mereni-seo-vykonu-2026/",
+    "/seo-pro-eshopy-ai-era-2026": "/blog/seo-pro-eshopy-ai-era-2026/",
     // 2026-05-06: konsolidace 3 paralelních verzí "Časté chyby v SEO 2026"
     // → ponechán pouze /blog/caste-chyby-v-seo-2026-update/ (osmdesátiprocentní rewrite).
     // Původní /blog/caste-chyby-v-seo-2026/ a /blog/caste-chyby-v-seo-2026-rewrite/
     // 301 → -update, ať SEO equity + případné externí linky neztratí cíl.
-    "/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update",
-    "/blog/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update",
-    "/blog/caste-chyby-v-seo-2026-rewrite": "/blog/caste-chyby-v-seo-2026-update",
+    "/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update/",
+    "/blog/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update/",
+    "/blog/caste-chyby-v-seo-2026-rewrite": "/blog/caste-chyby-v-seo-2026-update/",
   },
   markdown: {
     rehypePlugins: [
