@@ -1,0 +1,165 @@
+---
+title: "Zboží.cz a Seznam AI: co má e-shop udělat"
+seoTitle: "Zboží.cz v Seznam AI: registrace, feed a párování nabídek"
+description: "Seznam uvedl Zboží.cz mezi zdroji svého asistenta a v Seznam AI ukazuje placené nabídky z feedu. Co z toho plyne pro e-shop: registrace, feed a párování."
+answer: "Zboží.cz je srovnávač zboží Seznamu, do kterého e-shop posílá nabídky přes XML feed. Seznam ho v květnu 2026 uvedl mezi zdroji svého asistenta Seznam AI a od téhož měsíce v Seznam AI ukazuje placené nabídky Seznam Nákupů z téhož feedu. Podmínkou je registrace, kredit a feed shodný s webem; jak Seznam AI nabídky vybírá, Seznam nepopisuje."
+slug: "zbozi-cz-pro-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "ai-platformy"
+published: "2026-10-11"
+updated: "2026-10-11"
+keywords:
+  - "zboží.cz seznam ai"
+  - "seznam asistent zboží.cz"
+  - "zbozi feed"
+  - "zbozi cz specifikace feedu"
+  - "zboží.cz registrace e-shopu"
+  - "párování nabídek zboží.cz"
+  - "seznam nákupy"
+variant: "rich"
+faq:
+  - q: "Je Zboží.cz pro e-shop zdarma?"
+    a: "Registrace e-shopu na Zboží.cz je zdarma. Nabídky se ale zobrazují jen s dobitým kreditem v Seznam Peněžence a platí se každý proklik do e-shopu. Bezplatné zobrazení produktů Seznam Nákupy nenabízejí. Cenu za proklik určuje aukce, nejméně však minimum z ceníku podle kategorie a cenového pásma, platné od 1. 4. 2026."
+  - q: "Jak se e-shop s produkty dostane do Seznam AI?"
+    a: "Doloženou cestou do Seznam AI jsou placené nabídky ze Seznam Nákupů, které vznikají z XML feedu e-shopu. Podle nápovědy Seznamu se v Seznam AI zobrazují od května 2026 a ve statistikách Skliku se počítají do položky Produkt – doporučené nabídky. Jak Seznam AI nabídky vybírá, Seznam nepopisuje, takže zobrazení nezaručí registrace ani feed."
+  - q: "Kde najdu specifikaci feedu pro Zboží.cz?"
+    a: "Specifikace feedu pro Zboží.cz je k 11. 10. 2026 v nápovědě Skliku pod názvem Specifikace feedu (XML feed Zboží.cz). Původní nápověda Zboží.cz přesměrovává do nápovědy Skliku. Feed si před registrací ověříte ve validátoru, na který nápověda Skliku odkazuje."
+  - q: "Musí mít produkty ve feedu pro Zboží.cz EAN?"
+    a: "EAN není ve feedu pro Zboží.cz povinný, specifikace ho vede jako doporučený. Je ale jedním ze čtyř hlavních údajů, podle kterých Zboží.cz páruje nabídky s produkty v katalogu — spolu s názvem nabídky, výrobcem a produktovým číslem výrobce. Kde EAN existuje, vyplňte ho."
+  - q: "Můžu na Zboží.cz poslat feed, který mám pro Heureku nebo Google?"
+    a: "Feed pro Heureku ani pro Google Merchant Center Zboží.cz nepřijme, nápověda Skliku to uvádí výslovně. Potřebujete feed podle specifikace Zboží.cz s jejími vlastními značkami, například PRODUCTNAME, PRICE_VAT a DELIVERY_DATE. Feed bez povinných značek nejde pro inzerci Nákupy použít."
+  - q: "Co dělat, když se nabídka na Zboží.cz napáruje na špatný produkt?"
+    a: "Podle nápovědy Skliku může e-shop u špatně spárované nabídky požádat v párovacím nástroji Centra prodejce o přiřazení k jiné produktové kartě. Požadavek ručně kontrolují administrátoři Zboží.cz a zpracování Seznam garantuje do 48 hodin. Zamítnutý bývá, když nabídka neodpovídá produktu ve všech parametrech, je příliš obecná nebo je duplicitní."
+  - q: "Ovlivní blokace Seznam-Extended v robots.txt nabídky v Seznam AI?"
+    a: "Vliv blokace Seznam-Extended na nabídky z feedu Seznam nepopisuje. Nápověda říká jen to, že web se zákazem pro Seznam-Extended, AI nebo MachineLearning Seznam jako zdroj AI odpovědí nepoužije. Nabídky Seznam Nákupů ale vznikají z XML feedu a o vztahu mezi oběma cestami dokumentace mlčí."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Zboží.cz je srovnávač zboží Seznamu a e-shop do něj posílá nabídky přes XML feed. V tiskové zprávě z 25. 5. 2026 ho Seznam uvedl mezi zdroji svého asistenta, kterého nápověda už nazývá Seznam AI, a od května 2026 v Seznam AI ukazuje placené nabídky Seznam Nákupů z téhož feedu.** Zobrazení to nezaručuje — jak Seznam AI nabídky vybírá, Seznam nepopisuje. Popisuje ale, co musí e-shop udělat, aby v Seznam Nákupech nabídky vůbec měl: registraci, kredit a feed ve správném formátu. Párování s katalogem pak rozhoduje, ke kterému produktu se nabídka přiřadí.
+
+Článek shrnuje stav k 11. 10. 2026 podle nápovědy Skliku, nápovědy Seznam AI a blogu Seznamu. Do Seznam AI jsem dotazy nezadával a do Skliku ani Centra prodejce jsem se nepřihlašoval — popisuji dokumentaci, ne rozhraní.
+
+## Jak se <span class="hl">Zboží.cz</span> dostává do Seznam AI — <strong>doložené jsou placené nabídky</strong>
+
+K 11. 10. 2026 používají texty nápovědy i titulek webu asistent.seznam.cz název Seznam AI; tisková zpráva z května, smluvní podmínky a nápověda Skliku ještě Seznam Asistent. Oficiální oznámení přejmenování jsem nenašel. O tom, jestli je Zboží.cz zdrojem, říkají stránky Seznamu různé věci:
+
+| Zdroj Seznamu | Co uvádí o Zboží.cz |
+|---|---|
+| Tisková zpráva, 25. 5. 2026 | Asistent využívá data z Vyhledávání, zpravodajských webů, Zboží.cz, Počasí.cz, Firmy.cz, Sport.cz, Jízdních řádů a TV programu |
+| Nápověda Seznam AI, časté dotazy | Napojená jsou jen data z webového a zpravodajského indexu Vyhledávání a z Počasí.cz |
+| Nápověda Seznam AI, beta verze | Zboží.cz je mezi službami, které se připojí postupně |
+| Nápověda Sklik inzeráty v Seznam AI a blog z 25. 6. 2026 | Nabídky Seznam Nákupů se v Seznam AI zobrazují od května 2026 |
+
+Zdroje: [tisková zpráva o zpřístupnění asistenta](https://blog.seznam.cz/2026/05/seznam-asistent-je-dostupny-vsem-prihlasenym-uzivatelum/), nápověda Seznam AI — [časté dotazy](https://o-seznam.cz/napoveda/seznam-ai/nejcastejsi-dotazy/), [beta verze](https://o-seznam.cz/napoveda/seznam-ai/beta-verze/) a [Sklik inzeráty v Seznam AI](https://o-seznam.cz/napoveda/seznam-ai/sklik-inzeraty-v-seznam-ai/) — a [blog o inzerátech v Seznam AI](https://blog.seznam.cz/2026/06/novinka-v-seznam-asistentovi-pod-odpovedmi-se-zobrazuji-inzeraty-z-skliku/). Co tentýž výčet zdrojů znamená pro lokální firmy, rozebírá [článek o zápisu na Firmy.cz](/blog/firmy-cz-pro-ai/#co-se-zmenilo).
+
+<Insight tone="accent" icon="!" label="Co z toho plyne">
+Výčet zdrojů se mezi stránkami Seznamu liší, a tak na něm plán nestavte. Pevný bod je jinde: nápověda i blog Seznamu shodně uvádějí, že se v Seznam AI zobrazují nabídky Seznam Nákupů.
+</Insight>
+
+Seznam Nákupy jsou placená produktová inzerce Seznamu, dřív kampaň Zboží.cz. Od 15. 9. 2025 se v nich dá inzerovat jen přes kampaně ve Skliku a původní nápověda Zboží.cz přesměrovává do nápovědy Skliku. Nabídky vznikají z XML feedu e-shopu a zobrazují se na Zboží.cz, ve výsledcích vyhledávání na Seznam.cz, na Obrázky.cz a Sbazar.cz — a podle nápovědy Seznam AI i v Seznam AI, kde si uživatel může vybrat nabídku konkrétního e-shopu. Pro e-shop z toho plynou tři věci:
+
+- **Bez kreditu se nabídky nezobrazují.** Registrace je zdarma, ale nabídky se ukazují jen s dobitým kreditem a účtuje se každý proklik. Bezplatné zobrazení produktů Seznam Nákupy nenabízejí.
+- **Výkon ze Seznam AI se ve statistikách Skliku počítá do položky Produkt – doporučené nabídky.** Nápověda to uvádí pro imprese i prokliky; vlastní položku pro Seznam AI nezmiňuje.
+- **Seznam smí data z feedu použít i jinde.** Pravidla pro internetové obchody si vyhrazují právo použít údaje z XML feedu pro služby Seznamu a jeho partnerů. Je to vyhrazené právo, ne popis toho, co se s daty děje.
+
+## Jak se e-shop na <span class="hl">Zboží.cz</span> dostane — <strong>registrace, feed a kredit</strong>
+
+Postup podle nápovědy Skliku k registraci provozovny, stav k 11. 10. 2026:
+
+<Stepper steps={[
+  { title: "Ověřte, že web splňuje podmínky", desc: "Registrovat se mohou jen internetové obchody. Tuzemský obchod musí mít na webu IČO, kontaktní údaje, nákupní košík nebo objednávkový formulář, obchodní podmínky a zboží k prodeji. Pro zahraniční obchody platí vlastní seznam, mimo jiné web v češtině, ceny v Kč a ceny dopravy do Česka." },
+  { title: "Připravte XML feed podle specifikace Zboží.cz", desc: "Feed pro Heureku, Google Merchant Center ani Facebook Zboží.cz nepřijme. Nahrajte ho na web tak, aby si ho Centrum prodejce mohlo pravidelně stahovat — podle nastavení jednou až dvanáctkrát denně. Správnost ověříte ve validátoru, na který nápověda Skliku odkazuje." },
+  { title: "Přidejte provozovnu ve Skliku", desc: "Nápověda vede postup přes Nastavení účtu Sklik, sekci Provozovny a volbu Přidat provozovnu. Ve formuláři se vyplňuje IČ, obchodní název e-shopu, adresa webu a adresa XML feedu. Kampaň typu Nákupy můžete založit hned po vytvoření provozovny." },
+  { title: "Dobijte kredit", desc: "Registrace je zdarma, nabídky se ale zobrazují jen s dobitým kreditem v Seznam Peněžence a platí se každý proklik. Cenu za proklik určuje aukce, nejméně ale minimum z ceníku pro danou kategorii a cenové pásmo." },
+  { title: "Počkejte na ověření registrace", desc: "S funkčním feedem a kreditem se nabídky podle nápovědy zobrazí během pár hodin. Registraci pak Zboží.cz ověří podle pravidel pro internetové obchody a při nedostatcích vyzve k opravě. Ověření dokončí propojení se zápisem na Firmy.cz, odkud se do Zboží.cz propisuje název firmy, adresa, logo a výdejní místa; to trvá jeden až pět pracovních dní." },
+]} />
+
+Zdroje: [Registrace provozovny](https://napoveda.sklik.cz/inzerce-nakupy/registrace-provozovny/), [Ceník Inzerce Nákupy](https://napoveda.sklik.cz/inzerce-nakupy/cenik-inzerce-nakupy/) a [XML feed](https://napoveda.sklik.cz/reklamy/xml-feed/) v nápovědě Skliku.
+
+## Co do <span class="hl">feedu pro Zboží.cz</span> patří — <strong>povinné a doporučené značky</strong>
+
+Feed bez povinných značek nejde pro inzerci Nákupy použít. Doporučené značky podle specifikace zvyšují kvalitu feedu i kampaně a zároveň zvyšují pravděpodobnost, že se nabídky zobrazí ve výsledcích hledání. Pravidla navíc chtějí, aby údaje ve feedu byly pravdivé a shodovaly se s webem. Celý feed obaluje povinná kořenová značka SHOP a každou nabídku povinná značka SHOPITEM; uvnitř ní jsou tyto značky:
+
+| Značka | Na co dbát |
+|---|---|
+| PRODUCTNAME (povinná) | Název výrobku podle šablony: výrobce, řada, označení, kód, barva |
+| DESCRIPTION (povinná) | Popis výrobku v češtině, bez reklamních textů a sloganů obchodu |
+| URL (povinná) | Vlastní adresa každé nabídky i varianty, bez diakritiky |
+| PRICE_VAT (povinná) | Konečná cena v Kč včetně DPH a poplatků, totožná s cenou na webu |
+| DELIVERY_DATE (povinná) | Doba od přijetí objednávky do expedice ve dnech; 0 znamená skladem |
+| IMGURL (povinná) | Obrázek věrně zobrazující nabídku, bez vodoznaků, log obchodu a reklamních nápisů |
+| EPREL_ID (povinná v daných kategoriích) | Identifikátor výrobku v evropském registru energetických štítků EPREL |
+| EAN, PRODUCTNO, MANUFACTURER (doporučené) | Kód výrobku, produktové číslo výrobce a výrobce — spolu s názvem hlavní údaje pro párování |
+| ITEM_ID (doporučená) | Stálý identifikátor nabídky v e-shopu; podle něj a podle názvu Zboží.cz rozpozná duplicity |
+| CATEGORYTEXT (doporučená) | Celá cesta kategorie podle stromu Zboží.cz, u jedné nabídky nejvýš 10 hodnot |
+| ITEMGROUP_ID (doporučená) | Seskupení variant jednoho výrobku |
+
+Dvě pravidla se do tabulky nevešla a stojí za to je znát:
+
+- **Do PRODUCTNAME nepatří** údaje obchodu, znaky © ® ™ ani dárky — dárek patří do značky EXTRA_MESSAGE.
+- **URL nesmí vést** na úvodní stránku ani na výběr, kde ještě není určená velikost nebo barva. Má mířit na detail výrobku s jedinou nabídkou.
+
+Zdroje: [Specifikace feedu](https://napoveda.sklik.cz/reklamy/xml-feed/specifikace/) a [Pravidla pro internetové obchody](https://napoveda.sklik.cz/pravidla/pravidla-a-podminky-zbozi-cz/pravidla-pro-internetove-obchody/) v nápovědě Skliku. Jak do feedu zapsat varianty, popisuje [návod k variantám produktu](/blog/varianty-produktu-pro-ai/#feedy-jedna-skupina-ctyri-zapisy).
+
+## <span class="hl">Párování</span> s katalogem Zboží.cz — <strong>název, EAN, výrobce a kód</strong>
+
+Všechny nabídky, které lze spárovat, Zboží.cz po zařazení do feedu přiřadí k produktovým kartám v katalogu. Hlavními údaji pro správné spárování jsou podle nápovědy **název nabídky (PRODUCTNAME), EAN, výrobce (MANUFACTURER) a produktové číslo výrobce (PRODUCTNO)**. Proč jednoznačný kód zařadí produkt lépe než samotný název, rozebírá [článek o produktovém feedu a GTIN](/blog/produktovy-feed-gtin/#proc-je-identifikator-dulezitejsi-nez-vypada).
+
+Na párování se podepisují ještě dvě věci. **ITEM_ID** má zůstat stejné, i když se změní název nebo adresa téhož výrobku — když ale na nabídce začnete prodávat jiný výrobek, třeba jinou barvu nebo velikost, ITEM_ID změňte, aby se nabídka odpárovala z neodpovídající karty. A **název** musí obsahovat všechno, čím se nabídka liší od ostatních ve feedu.
+
+Když se nabídka spáruje špatně, může e-shop podle nápovědy v párovacím nástroji Centra prodejce požádat o přiřazení k jiné produktové kartě. Požadavek ručně kontrolují administrátoři Zboží.cz a zpracování Seznam garantuje do 48 hodin. Zamítnout ho mohou ze tří důvodů:
+
+<Checklist tone="seo" title="Proč Zboží.cz zamítá požadavek na spárování" items={[
+  { title: "Nabídka neodpovídá produktu", desc: "Shodovat se musí všechny parametry. Nabídku televize s úhlopříčkou 55″ nejde napárovat na kartu 48″ modelu, i když nese stejný kód." },
+  { title: "Nabídka je obecná", desc: "Z údajů nejde poznat, čím se liší od jiného zboží — třeba chybí úhlopříčka. Doplňte do feedu konkrétní parametry." },
+  { title: "Nabídka je duplicitní", desc: "Na stejný výrobek už na Zboží.cz nabídku máte. Upravte ve feedu tu původní, místo abyste zakládali novou." },
+]} />
+
+Zdroje: [Párování nabídek](https://napoveda.sklik.cz/inzerce-nakupy/parovani-nabidek/) a [Specifikace feedu](https://napoveda.sklik.cz/reklamy/xml-feed/specifikace/) v nápovědě Skliku.
+
+## Co o <span class="hl">Seznam AI</span> nevíme — <strong>a co proto neslibovat</strong>
+
+<Insight tone="warn" icon="!" label="Co Seznam nepopisuje">
+Jak Seznam AI vybírá a řadí nabídky, Seznam nepopisuje. Faktory řazení z nápovědy — shoda s dotazem a kategorií, cenová výhodnost, doprava a osobní odběr, dostupnost, hodnocení obchodu, předchozí zájem uživatelů a nabízená cena za proklik — platí pro hledání na srovnávači Zboží.cz. Na Seznam AI je bez dokladu nepřenášejte.
+</Insight>
+
+V dokumentaci jsem nenašel ani tohle:
+
+- **Jestli se v Seznam AI může objevit obchod bez placené kampaně.** Doložené jsou jen placené nabídky Seznam Nákupů.
+- **Jestli pro Seznam AI platí podmínky doporučených nabídek.** Imprese ze Seznam AI se počítají do položky Produkt – doporučené nabídky. Mezi doporučené nabídky na detailu produktu na Zboží.cz se obchod s víc než pěti hodnoceními dostane jen s průměrem nad 70 %. Jestli totéž platí v Seznam AI, nápověda neříká.
+- **Jestli jde nabídky ze Seznam AI vyloučit.** U inzerátů z vyhledávacích a Chytrých kampaní nápověda píše, že plochy v Seznam AI vyloučit nejde; u nabídek Seznam Nákupů to neuvádí.
+- **Jestli blokace Seznam-Extended v robots.txt ovlivní nabídky z feedu.** Co Seznam k odhlášení z AI odpovědí skutečně píše, rozebírá [článek o odhlášení ze Seznam AI](/blog/seznam-extended-opt-out/#jak-se-rozhodnout).
+- **Jestli Seznam AI čte strukturovaná data z produktových stránek.**
+
+## Pět <span class="hl">chyb</span> se Zboží.cz a Seznam AI — <strong>a jak se jim vyhnout</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Čekat bezplatné zobrazení" fix="Počítejte s cenou za proklik.">
+    Registrace je zdarma, ale bezplatné zobrazení produktů Seznam Nákupy nenabízejí. Bez kreditu se nabídky neukážou ani na Zboží.cz.
+  </Mistake>
+  <Mistake num="02" title="Poslat feed pro Heureku" fix="Vygenerujte feed podle specifikace Zboží.cz.">
+    Feedy pro Heureku, Google Merchant Center ani Facebook Zboží.cz nepodporuje a feed bez povinných značek nejde pro inzerci Nákupy použít.
+  </Mistake>
+  <Mistake num="03" title="Jiná cena ve feedu a na webu" fix="Plňte feed i web ze stejného zdroje dat.">
+    Pravidla chtějí cenu v Kč včetně DPH a poplatků totožnou s cenou na webu. Za porušení pravidel Seznam obchod postihuje podle smluvních podmínek.
+  </Mistake>
+  <Mistake num="04" title="Obecný název nabídky" fix="Pište název podle šablony: výrobce, řada, označení, kód, barva.">
+    Když z nabídky nejde poznat parametry, které ji odlišují, Zboží.cz ji podle nápovědy nemůže napárovat na navržený produkt a požadavek zamítne jako obecnou nabídku.
+  </Mistake>
+  <Mistake num="05" title="Slibovat zobrazení v Seznam AI" fix="Slibujte jen to, co Seznam popisuje.">
+    Jak Seznam AI nabídky vybírá, Seznam nepopisuje. Doložené je jen to, že se nabídky Seznam Nákupů v Seznam AI zobrazují.
+  </Mistake>
+</MistakeGrid>
+
+## U <span class="hl">Zboží.cz</span> máte v rukou <strong>feed, ne výběr Seznam AI</strong>
+
+Co e-shop ovlivní, je registrace, kredit, feed podle specifikace a nabídky správně spárované s katalogem. Tím dá Seznamu nabídku, kterou může ukázat — jestli ji Seznam AI ukáže, rozhoduje Seznam, a jak, nepopisuje. Výkon sledujte v položce Produkt – doporučené nabídky, kam ho podle nápovědy Sklik započítává, a specifikaci feedu kontrolujte pravidelně: strom kategorií Zboží.cz se podle ní průběžně aktualizuje a o nových kategoriích a parametrech Seznam píše na svém blogu.
+
+Feed posílá zákazníka na produktovou stránku a pravidla chtějí, aby údaje na ní seděly s feedem. Vzor produktové stránky — wireframe, šablonu textu a strukturovaná data — najdete v **[AI SEO Wireframe Packu](/pack/)**, PDF pro sedm typů stránek za **1 490 Kč včetně DPH**. Feed ani Zboží.cz Pack neřeší; řeší stránku, na kterou feed vede.
