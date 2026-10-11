@@ -75,7 +75,7 @@ Astro 5 používá Content Collections se Zod schématem v `src/content.config.t
 ---
 title: "Titulek článku (50–60 znaků, klíčové slovo nahoru)"
 description: "Meta description 70–160 znaků. Hook + benefit. Co čtenář získá."
-answer: "40–60 slovní krátká definice tématu pro AI scrapery. Tučně vykreslená nahoře v článku, čte ji ChatGPT/Perplexity/AIO. Musí dávat samostatný smysl bez kontextu zbytku článku. Konkrétní fakta, žádné fráze."
+answer: "40–60 slovní krátká definice tématu. Tučně vykreslená nahoře v článku — první, co čtenář dostane. Musí dávat samostatný smysl bez kontextu zbytku článku (čtenář i nástroj AI ji může převzít samostatně). Konkrétní fakta, žádné fráze."
 slug: "url-slug-clanku"
 category: "analysis"
 tags:
@@ -114,7 +114,7 @@ faq:                     # FAQ pod článkem + FAQPage JSON-LD
 |---|---|---|
 | `title` | string | H1 článku. SEO best practice 50–60 znaků. Klíčové slovo na začátek. |
 | `description` | string, **min 70, max 160** znaků | Meta description. Validuje se na build! Pod 70 nebo nad 160 = error. |
-| `answer` | string | „Krátká odpověď" 40–60 slov. AI scraper hook. Vykresluje se tučně nahoře. **Sebestačná** — bez kontextu zbytku článku musí dát smysl. |
+| `answer` | string | „Krátká odpověď" 40–60 slov. Vykresluje se tučně nahoře. **Sebestačná** — bez kontextu zbytku článku musí dát smysl. |
 | `slug` | `^[a-z0-9-]+$` | Lowercase, bez diakritiky, slovní oddělovač = pomlčka. **Toto je finální URL** (`/blog/<slug>/`). Nikdy neměnit po publikaci (rozbije linky a indexy). |
 | `category` | enum: `defensive` / `case-study` / `tutorial` / `analysis` | Volba ovlivňuje breadcrumb label a filter chip v `/blog/`. Viz tabulka níže. |
 | `tags` | string array | **Povinné.** Tematické štítky článku, používají se pro filtrování a související články. Drž se zavedených (`ai-platformy`, `strategie`, `mereni`, `obsah`, `technicke-zaklady`, `duveryhodnost`, `eshopy`, `strukturovana-data`, `audit-nastroje`) — nové zaváděj jen s důvodem. Zjistíš je: `grep -hA6 "^tags:" src/content/articles/*.mdx \| grep -oE '"[a-z-]+"' \| sort \| uniq -c \| sort -rn` |
@@ -122,7 +122,7 @@ faq:                     # FAQ pod článkem + FAQPage JSON-LD
 | `keywords` | string array | Pro `<meta keywords>` + interní reference. 5–10 klíčových slov + variant. |
 | `variant` | vždy `"rich"` | Sticky TOC, section dividers, numbered H3 cards, reading progress bar. **Má ho všech 165 článků** — `classic` se nepoužívá, nepiš ho. |
 | ~~`stats`~~ | — | **Nepoužívat (od 20. 9. 2026).** Dlaždice se nikde nevykreslovaly; ze 158 článků odstraněno 585 kusů. Čísla patří do textu. |
-| `faq` | array `{ q, a }` | **Silně doporučeno.** Generuje FAQPage JSON-LD = AI scrapery citují odsud. 4–8 reálných otázek čtenáře. |
+| `faq` | array `{ q, a }` | **Silně doporučeno.** Vykreslí viditelné FAQ a z týchž položek i FAQPage JSON-LD. Píše se kvůli čtenáři: FAQ rich results Google od 7. 5. 2026 nezobrazuje a že by FAQPage pomáhal AI, dokumentace nedokládá (`konec-faq-rich-results`, refresh 11. 10. 2026). 4–8 reálných otázek čtenáře. |
 | ~~`howto`~~ | — | **Nepoužívat (od 20. 9. 2026).** Generovalo neviditelná data (HowTo JSON-LD); Google zobrazování ukončil 2023. Ze všech 63 článků odstraněno, kroky patří do textu jako `Stepper`. |
 
 ### Kategorie — co kam patří
@@ -139,8 +139,8 @@ faq:                     # FAQ pod článkem + FAQPage JSON-LD
 ## ✍️ Body článku — pravidla obsahu
 
 > **Klíč pro AI éru:** první 100 slov musí dát samostatnou odpověď + zbytek prohlubuje.
-> AI scrapery (ChatGPT, Perplexity, Gemini, AIO) čerpají z `answer` frontmatteru +
-> z prvních H2/H3 sekcí. Lead, který odbočuje od slibu nadpisu, nikdo necituje.
+> Krátká odpověď a první sekce jsou to, co čtenář uvidí jako první — a co může nástroj AI
+> převzít samostatně. Lead, který odbočuje od slibu nadpisu, nikdo necituje.
 
 ### Struktura, kterou drží existující články
 

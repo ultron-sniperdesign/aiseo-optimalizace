@@ -1719,3 +1719,16 @@ různě“ → „vyvíjejí se odlišně“.
 **Opraveno:** „relevantní k dotazu“ (kalk *relevant to*) → „jak moc stránka odpovídá dotazu“ · „doplnit do úseků
 kontext“ → „doplnit úseky o kontext“ · „k dotazu sedí“ → „dotazu odpovídá“ · holé „Google AI Overviews“ → „funkci
 Google AI Overviews“ · „předvídat variantu“ → „pokrýt každou variantu“.
+
+## 2026-10-11 · `konec-faq-rich-results` (refresh)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73 |
+| Mechanický checker | **0 nálezů** na první průchod i po všech opravách z auditů |
+| LLM průchod (gpt-5.4, celý slovník) | 4 nálezy, všechny 4 přijaty |
+| Nová pravidla | **žádné** — jednorázové formulace |
+
+**Opraveno:** v tabulce „dokumentace FAQ smazaná“ (vazba bez slovesa) → „Google smazal dokumentaci FAQ“ ·
+„otázky zákazníků u produktu“ → „k produktu“ · „Kroky, které má článek ukázat“ → „Kroky postupu“ ·
+„Sekce, která odpovídá na skutečné dotazy, dál pomáhá čtenářům“ → „…na skutečné dotazy čtenářů, jim dál pomáhá“.

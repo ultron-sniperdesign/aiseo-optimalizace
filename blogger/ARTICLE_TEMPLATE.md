@@ -89,7 +89,9 @@ variant: "rich"
 # Dlaždice se nikde nevykreslovaly — žádná šablona to pole nečetla. Rozhodnutí
 # uživatele: obsah, který není vidět, je zbytečný (stejně jako `howto`). Ze 158 článků
 # bylo odstraněno 585 dlaždic. Čísla patří do textu článku, kde je čtenář uvidí.
-# FAQ — silně doporučeno. Generuje FAQPage JSON-LD = AI scrapery citují odsud.
+# FAQ — silně doporučeno. Vykreslí viditelné FAQ i FAQPage JSON-LD z týchž položek.
+# Píše se kvůli čtenáři — FAQ rich results Google od 7. 5. 2026 nezobrazuje a přínos
+# FAQPage pro AI dokumentace nedokládá (viz článek konec-faq-rich-results).
 # 4–8 reálných otázek, jak je čtenář formuluje. Odpověď 1–3 věty, sebestačná.
 faq:
   - q: "Otázka tak, jak ji uživatel napíše do Google nebo ChatGPT"
