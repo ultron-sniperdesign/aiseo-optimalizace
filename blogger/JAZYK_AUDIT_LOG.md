@@ -1732,3 +1732,15 @@ Google AI Overviews“ · „předvídat variantu“ → „pokrýt každou vari
 **Opraveno:** v tabulce „dokumentace FAQ smazaná“ (vazba bez slovesa) → „Google smazal dokumentaci FAQ“ ·
 „otázky zákazníků u produktu“ → „k produktu“ · „Kroky, které má článek ukázat“ → „Kroky postupu“ ·
 „Sekce, která odpovídá na skutečné dotazy, dál pomáhá čtenářům“ → „…na skutečné dotazy čtenářů, jim dál pomáhá“.
+
+## 2026-10-11 · blok oprav `Stepper.label` (42 článků)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73 |
+| Mechanický checker | 42 dotčených článků: **41× 0** před i po; `ai-friendly-url-struktura` **5 → 5** (starší nálezy „AI-friendly“, úpravou nevznikly) |
+| LLM průchod (gpt-5.4, celý slovník) | jen **10 nových titulků kroků** (jediný nový text bloku, labely se jen mazaly): **10× OK, 0 nálezů** |
+| Nová pravidla | **žádné** |
+
+**Do fronty, ne do opravy:** „AI-friendly“ v `ai-friendly-url-struktura` připsáno ke kandidátovi
+„AI friendly struktura URL“ v `REFRESH_QUEUE.md` — blok oprav se drží jedné vady (A6).

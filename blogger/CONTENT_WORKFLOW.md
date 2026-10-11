@@ -137,10 +137,14 @@ curl -s -H "Authorization: Bearer $OPENAI_API_KEY" https://api.openai.com/v1/mod
 
   Skript čte `interface Props` přímo ze zdrojů v `src/components/blocks/`, takže nová
   komponenta ani nová vlastnost nepotřebuje jeho úpravu. Hlásí vlastnost, kterou komponenta
-  nečte, chybějící povinnou vlastnost a cizí klíč položky v poli (`steps`, `items`, `rows`).
-  Celý korpus se dá projet najednou (`src/content/articles/*.mdx`). Od `f5054ca` (10. 10. 2026,
-  `label` odebrán z typu `Stepper`) hlásí **219 × `steps[].label` ve 43 článcích — je to pracovní
-  seznam bloku oprav** (`REFRESH_QUEUE.md`), ne regrese. Pro nový článek platí cíl 0.
+  nečte, chybějící povinnou vlastnost, cizí klíč položky v poli (`steps`, `items`, `rows`) a **od
+  11. 10. 2026 i vlastnost nebo klíč, který komponenta v typu má, ale šablona ho nikde nepoužije** —
+  tak se u `Stepper` nasbíralo 219 labelů, než si toho někdo všiml. Celý korpus se dá projet
+  najednou (`src/content/articles/*.mdx`); **od bloku oprav 11. 10. 2026 je na 0 nálezech a cíl 0
+  platí pro celý korpus.** `--komponenty` vypíše deklarace, které šablona nepoužije, i bez článků.
+  Šablonu čte pomocník `blogger/kontrola-komponent-sablony.mjs` překladačem Astro (jako `astro check`),
+  potřebuje tedy `node` a `node_modules` projektu; bez nich se tahle jedna kontrola přeskočí s upozorněním
+  a ostatní běží dál. Ruční lexer v Pythonu, který tu byl napřed, dával falešné nálezy (21 v recenzi).
 - **Z14 — Přednost témat k AI Mode: SPLNĚNO 20. 9. 2026.** Poslední otevřený řádek klastru
   (`osobni inteligence cesky nazev`) vyšel jako `ceske-nazvy-ai-funkci-google`. Pravidlo z 13. 8. 2026
   tím zaniká; nová témata k režimu AI jdou normálním pořadím fronty. Řádek tu zůstává jako záznam,
@@ -612,7 +616,7 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
       ve frontmatteru** (s důvodem), ne nový slug ve slovníku
 - [ ] D1: design komponenty hotové **už před audity** (v C1), `.mdx` + `variant: rich`, žádný wall of text
 - [ ] **Z13: `python3 blogger/kontrola-komponent.py <soubor>` → 0 nálezů** (vlastnosti, které komponenta
-      nečte, se tiše nevykreslí) a po buildu grep textu z každé komponenty v `dist/`
+      nečte nebo nevykreslí, se tiše zahodí) a po buildu grep textu z každé komponenty v `dist/`
 - [ ] D2: featured image `public/og/<slug>.jpg` + `.webp` (gpt-image-2, 1536×1024, CZ text v horních ~84 %, zkontrolováno) — **pracovní `.png` smazáno, do repa nejde**
 - [ ] D3: `npm run build` OK → commit (článek + `.jpg` + `.webp`) → push → CI → curl 200 (článek i `og/<slug>.jpg`). **Selhal-li v CI jen krok IndexNow, run je v pořádku** (D3)
 - [ ] D4: tabulka `E = ano`, `F = URL`

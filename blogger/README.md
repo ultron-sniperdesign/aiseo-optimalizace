@@ -96,8 +96,6 @@ keywords:
 ```yaml
 variant: "rich"          # POVINNÉ v praxi. sticky TOC, dividery, progress bar
 # (pole stats: se od 20. 9. 2026 nepoužívá — viz tabulka níž)
-  - value: "4–6"
-    label: "typicky vidíme"
 faq:                     # FAQ pod článkem + FAQPage JSON-LD
   - q: "Otázka, jak ji napíše uživatel"
     a: "Odpověď v 1–3 větách. Sebestačná, žádné odkazy na 'výše v článku'."
