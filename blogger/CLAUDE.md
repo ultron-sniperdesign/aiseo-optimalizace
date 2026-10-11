@@ -135,7 +135,10 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
 
 - **`obsahovy-plan.csv` má CRLF.** Číst `newline=''`, zapisovat `csv.writer(lineterminator='\r\n')`.
   Po zápisu ověřit, že počet fyzických `\r\n` odpovídá počtu parsovaných řádků — jinak rozbitá
-  uvozovka spolkne téma.
+  uvozovka spolkne téma. **Kontrola musí číst zavřený soubor:** `csv.writer(open(p, 'w'))` bez `with`
+  nechá konec dat v bufferu a kontrola ve stejném procesu pak viděla 214 řádků z 364 (11. 10. 2026),
+  přestože soubor byl po skončení skriptu celý. Zapisovat přes `with open(...) as f:` a ověřovat
+  až po zavření, nejlépe v dalším příkazu.
 - **Obrázek se ořezává zespodu o ~16 %** (zobrazuje se 1200×669 z horní části). Důležitý obsah
   do horních dvou třetin, pojistka „CRITICAL COMPOSITION RULE“. Zákaz číslic dávat **jen** tam,
   kde ve scéně žádné číslo být nemá. Do promptu nikdy „no text“ — CZ nadpis je součást stylu.

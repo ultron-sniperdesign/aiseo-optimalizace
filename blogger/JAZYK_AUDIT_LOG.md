@@ -1744,3 +1744,18 @@ Google AI Overviews“ · „předvídat variantu“ → „pokrýt každou vari
 
 **Do fronty, ne do opravy:** „AI-friendly“ v `ai-friendly-url-struktura` připsáno ke kandidátovi
 „AI friendly struktura URL“ v `REFRESH_QUEUE.md` — blok oprav se drží jedné vady (A6).
+
+## 2026-10-11 · `zbozi-cz-pro-ai` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** ve všech čtyřech verzích konceptu (před auditem, po kole 1, po kole 2, finál) |
+| LLM průchod (gpt-5.4, celý slovník) | 7 nálezů, všech 7 přijato |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu věty |
+
+**Opraveno:** „cestou … jsou placené nabídky Seznam Nákupy“ → „nabídky ze Seznam Nákupů“ (a sjednoceno na genitiv
+„nabídky Seznam Nákupů“) · „počítá se do položky“ doplněno „ve statistikách Skliku“ · „začnou zobrazovat během pár
+hodin“ → „zobrazí během pár hodin“ · kulhající souřadnost „zvyšují kvalitu … a zároveň pravděpodobnost“ → „a zároveň
+zvyšují pravděpodobnost“ · „které jde spárovat … napáruje na karty“ → „které lze spárovat … přiřadí k produktovým
+kartám“ · „Seznam nezveřejnil“ → „Seznam nepopisuje“ (2×, i věcně přesnější) · „v ní“ s nejasným odkazem → „v Seznam AI“.
