@@ -6,43 +6,72 @@ Proč: překlep v názvu vlastnosti build nezastaví a hodnota se tiše nevykres
 `<Mistake number="01">` místo `num="01"` nechalo prázdné číslo u 78 karet ve 26 článcích
 a `<CompareTable leftTitle rightTitle>` prázdná záhlaví sloupců (odbaveno blokem oprav
 10. 10. 2026). Kontrola vykreslení textu (Z13) to nechytí, protože nadpis i text karty
-se vykreslí — chybí jen to, co nesla zahozená vlastnost.
+se vykreslí — chybí jen to, co nesla zahozená vlastnost. Stejně tiše se zahodí vlastnost,
+kterou komponenta v typu má, ale šablona ji nikde nepoužije: `label` u kroků `Stepper`
+takhle nasbíral 219 výskytů ve 43 článcích, než si toho někdo všiml (odbaveno 11. 10. 2026).
 
 Použití (cesty k článkům jsou relativní k aktuální složce, komponenty si skript najde sám):
   python3 blogger/kontrola-komponent.py src/content/articles/<slug>.mdx
   python3 blogger/kontrola-komponent.py src/content/articles/*.mdx
+  python3 blogger/kontrola-komponent.py --komponenty      # přehled za komponenty, bez článků
 
 Hlásí:
   - vlastnost, kterou komponenta v `Props` nemá            → tiše se zahodí
+  - vlastnost, kterou v `Props` má, ale šablona ji nikde nepoužije → typ ji přijme, nevykreslí se
   - chybějící povinnou vlastnost (deklarovaná bez `?`)      → komponenta dostane undefined
-  - klíč položky v poli (`steps`, `items`, `rows`…), který typ položky nemá,
-    a chybějící povinný klíč položky
+  - klíč položky v poli (`steps`, `items`, `rows`…), který typ položky nemá, klíč, který
+    typ má, ale šablona ho nepoužije, a chybějící povinný klíč položky
   - import z `components/blocks/`, který skript nepřečetl  → komponenta by se nekontrolovala
+  S `--komponenty` vypíše deklarace, které šablona nepoužije, i když je zatím žádný článek
+  nepředává — kontrola po přidání vlastnosti do typu.
 
 Typy čte přímo ze zdrojů v `src/components/blocks/`, takže nová komponenta ani nová
 vlastnost nepotřebuje úpravu skriptu. Komponenta bez `Props` nečte žádnou vlastnost.
+Co šablona skutečně používá, zjišťuje pomocník `kontrola-komponent-sablony.mjs` (node):
+komponentu převede překladačem Astro do TSX (jako `astro check`) a projde ji TypeScriptem.
+Vlastnost je použitá, když se čte její lokální jméno z destrukturování `Astro.props`
+(i ve výchozí hodnotě jiné vlastnosti) nebo `Astro.props.x`. U klíčů položek je únik
+výchozí stav: klíč se prohlásí za nepoužitý, jen když kód s položkou nedělá nic jiného než
+čtení klíčů (`x.klíč`, `x["klíč"]`, destrukturování, `"klíč" in x`), vykreslení, porovnání
+a testy. Odchází-li položka nebo objekt celý — do proměnné, jako argument funkce, rozbalením,
+v atributu komponenty, přes dynamický klíč — klíče té komponenty se nekontrolují; řetězec
+nebo číslo předané dál kontrolu nevypne (rozhoduje deklarovaný typ). Jméno v typu, komentáři
+ani v obyčejném řetězci se nepočítá. Když node nebo překladač chybí, tahle jedna kontrola
+se přeskočí s upozorněním.
 
 Vědomé meze — tohle skript NEchytí:
-  - vlastnost, kterou komponenta deklaruje, ale nevykresluje — typ ji přijme, šablona zahodí.
-    Takový byl `label` u kroků `Stepper`: 10. 10. 2026 odebrán z typu (`f5054ca`), takže ho
-    skript od té doby hlásí (219 výskytů = pracovní seznam bloku oprav, viz REFRESH_QUEUE);
+  - klíč, jehož jméno kód čte i jinde (jiná proměnná nebo klíč jiného typu téhož jména) —
+    počítá se jako použitý; skript radši nález vynechá, než aby hlásil falešný;
+  - nepoužité vlastnosti u komponenty, která `Astro.props` nebo `Astro` předává celé,
+    a nepoužité klíče položek u komponenty, kde položka nebo objekt odchází celý (viz výš)
+    — tam použití nevidí, takže radši nehlásí nic;
+  - komponenty, které překladač Astro nebo TypeScript nepřečte — `--komponenty` je vypíše
+    jako „nekontrolováno“ s důvodem;
   - typy importované odjinud (`import type { FaqItem } …`) a dědění z neznámého typu —
     tam se kontrola cizích vlastností vypne, aby nevznikaly falešné nálezy;
   - hodnoty předané proměnnou (`steps={kroky}`) — kontroluje jen zapsané literály.
   Falešný nález naopak dá ukázka komponenty v řádkovém kódu v textu (`<Mistake …>`);
   bloky kódu ``` a ~~~ přeskakuje.
 
-Návratový kód: 0 = bez nálezů, 1 = nálezy, 2 = některý soubor nešel přečíst.
+Návratový kód: 0 = bez nálezů, 1 = nálezy, 2 = některý soubor nešel přečíst
+(u `--komponenty` i tehdy, když rozbor šablon nejde spustit).
 """
 
 import functools
+import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOCKS = os.path.join(ROOT, "src", "components", "blocks")
+HELPER = os.path.join(ROOT, "blogger", "kontrola-komponent-sablony.mjs")
+HELPER_TIMEOUT = 180  # s — překladač Astro je WebAssembly, první spuštění trvá déle
+KEY_PATHS_MAX = 5000  # víc klíčů má jen rekurzivní typ — komponentu pak nekontrolujeme
+UNCHECKED_SEEN = {}   # komponenty z článků, u kterých nešlo zjistit, co šablona čte → upozornění
 
 IMPORT_RE = re.compile(
     r"^import\s+(\w+)\s+from\s+[\"'](?:~|\.\./\.\.)/components/blocks/(\w+)\.astro[\"'];?[ \t]*\r?$",
@@ -193,9 +222,9 @@ def parse_members(body):
     return members
 
 
-def read_alias(fm, i):
-    """Pravá strana `type X = …` — do `;` nebo do řádku, kde začíná další deklarace."""
-    start, depth, n = i, 0, len(fm)
+def alias_end(fm, i):
+    """Konec pravé strany `type X = …` — `;` nebo řádek, kde začíná další deklarace."""
+    depth, n = 0, len(fm)
     while i < n:
         c = fm[i]
         if c in "\"'`":
@@ -205,7 +234,12 @@ def read_alias(fm, i):
         if depth == 0 and (c == ";" or (c == "\n" and DECL_START_RE.match(fm, i + 1))):
             break
         i += 1
-    return fm[start:i].strip()
+    return i
+
+
+def read_alias(fm, i):
+    """Pravá strana `type X = …` — do `;` nebo do řádku, kde začíná další deklarace."""
+    return fm[i:alias_end(fm, i)].strip()
 
 
 def merge(shapes, required_if_any):
@@ -226,8 +260,20 @@ def merge(shapes, required_if_any):
     return out
 
 
+_SHAPES = {}
+
+
 def shape_of(type_str, decls, depth=0):
-    """Tvar objektu, který typ popisuje ({klíč: (volitelný, typ)}), nebo None u skaláru."""
+    """Tvar objektu, který typ popisuje ({klíč: (volitelný, typ)}), nebo None u skaláru.
+    Výsledek se pamatuje (komponenta, typ, hloubka) — řetěz `extends` s opakovanými předky
+    by se jinak počítal exponenciálně. Vrácený slovník se nemění, jen čte."""
+    key = (id(decls), type_str, depth)
+    if key not in _SHAPES:
+        _SHAPES[key] = _shape_of(type_str, decls, depth)
+    return _SHAPES[key]
+
+
+def _shape_of(type_str, decls, depth):
     if depth > 8:
         return None
     t = type_str.strip()
@@ -267,6 +313,158 @@ def shape_of(type_str, decls, depth=0):
     return None
 
 
+# ---------- co šablona komponenty skutečně používá ----------
+
+def node_binary():
+    """`node` jen z absolutních položek PATH — relativní položka by spustila soubor `node`
+    z kořene projektu (cwd)."""
+    search = os.pathsep.join(d for d in os.environ.get("PATH", "").split(os.pathsep) if os.path.isabs(d))
+    return shutil.which("node", path=search) if search else None
+
+
+def run_helper(paths):
+    """Spustí pomocníka na komponentách: ({cesta: rozbor}, None), nebo (None, důvod)."""
+    node = node_binary()
+    if node is None:
+        return None, "node nejde spustit (není v PATH)"
+    try:
+        proc = subprocess.run([node, HELPER, *paths], capture_output=True, encoding="utf-8",
+                              errors="replace", timeout=HELPER_TIMEOUT, cwd=ROOT, check=False)
+    except subprocess.TimeoutExpired:
+        return None, f"pomocník nedoběhl do {HELPER_TIMEOUT} s"
+    except (OSError, subprocess.SubprocessError) as exc:
+        return None, f"node nejde spustit ({exc.__class__.__name__})"
+    try:
+        data = json.loads(proc.stdout) if proc.stdout.strip() else None
+    except ValueError:
+        data = None
+    if isinstance(data, dict):
+        return data, None          # i při nenulovém kódu: selhané položky nesou `retry`
+    lines = [ln.strip() for ln in (proc.stderr or "").splitlines() if ln.strip()]
+    telling = [ln for ln in lines if re.match(r"(?:\w*Error\b[^:]*|panic):", ln)] or lines
+    if proc.returncode != 0:
+        return None, "pomocník skončil chybou: " + (telling[0][:160] if telling else f"kód {proc.returncode}")
+    return None, "pomocník nevrátil platný JSON"
+
+
+@functools.lru_cache(maxsize=None)
+def template_usage():
+    """Rozbor šablon z `kontrola-komponent-sablony.mjs`: ({komponenta: rozbor}, None),
+    nebo (None, důvod), když nejde spustit — pak se kontrola nepoužitých vlastností
+    přeskočí a ostatní kontroly běží dál.
+
+    Šablonu čte překladač Astro (stejný jako `astro check`) a TypeScript. Vlastní lexer
+    v Pythonu na to nestačil: regulární výraz s uvozovkou, vnořený šablonový řetězec
+    nebo apostrof v textu uvnitř výrazu ho rozhodily a vznikaly falešné nálezy.
+    Překladač (Go ve WebAssembly) umí na rozbitém vstupu zpanikařit a shodit celý proces;
+    pak se komponenty projdou každá zvlášť, ať jedna rozbitá nevypne kontrolu ostatních."""
+    try:
+        names = sorted(f for f in os.listdir(BLOCKS)
+                       if f.endswith(".astro") and os.path.isfile(os.path.join(BLOCKS, f)))
+    except OSError as exc:
+        return None, f"složka komponent nejde přečíst ({exc.__class__.__name__})"
+    paths = [os.path.join(BLOCKS, f) for f in names]
+    data, err = run_helper(paths)
+    if data is None and err.startswith(("node nejde spustit", "pomocník nedoběhl")):
+        return None, err   # bez node nebo při zaseknutí nemá smysl zkoušet komponenty po jedné
+    data = data or {}
+    retry = [p for p in paths if not isinstance(data.get(p), dict) or data[p].get("retry")]
+    for path in retry:                      # každá zvlášť — pád překladače nesmí vzít ostatní
+        one, one_err = run_helper([path])
+        data[path] = (one or {}).get(path) or {"ok": False, "why": [one_err or "rozbor chybí"]}
+    if paths and not any(isinstance(v, dict) and v.get("ok") for v in data.values()):
+        return None, err or "rozbor nevrátil žádnou komponentu"
+    return {os.path.basename(k)[:-len(".astro")]: v for k, v in data.items() if isinstance(v, dict)}, None
+
+
+def is_array_type(t):
+    bare = t.strip()
+    return bare.endswith("[]") or bare.startswith(("Array<", "ReadonlyArray<"))
+
+
+def path_label(name, obj_path, props, decls):
+    """Cesta k objektu ve výpisu podle typů: steps[], cta, rows[].cells[]."""
+    label, t = name, props[name][1]
+    for key in obj_path:
+        if is_array_type(t):
+            label += "[]"
+        member = (shape_of(t, decls) or {}).get(key)
+        label += "." + key
+        t = member[1] if member else ""
+    return label + ("[]" if is_array_type(t) else "")
+
+
+def owner(path):
+    """Vlastnost, pod kterou klíč leží: `steps[].label` → steps."""
+    return path.split(".", 1)[0].split("[", 1)[0]
+
+
+def key_paths(props, decls):
+    """Klíče položek dosažitelné z `Props`: {klíč: [(cesta, typ)]}, např. label → steps[].label.
+    Typ, který už na cestě je (rekurze `Node.children: Node[]`), se znovu nerozbaluje;
+    nad KEY_PATHS_MAX klíčů vrátí None (rekurzivní typ, který cyklus neodhalil)."""
+    out, count = {}, 0
+    todo = [(p, t, ()) for p, (_opt, t) in props.items() if p != OPEN]
+    while todo:
+        path, t, chain = todo.pop()
+        core = re.sub(r"\s+|\[\]|^(?:Readonly)?Array<|^ReadonlyArray<|>$", "", t)
+        if core in chain or path.count(".") > 8:
+            continue
+        is_array = is_array_type(t)
+        for k, (_opt, kt) in (shape_of(t, decls) or {}).items():
+            if k == OPEN:
+                continue
+            count += 1
+            if count > KEY_PATHS_MAX:
+                return None
+            kp = f"{path}{'[]' if is_array else ''}.{k}"
+            out.setdefault(k, []).append((kp, kt))
+            todo.append((kp, kt, chain + (core,)))
+    return out
+
+
+def unused_names(name, props, decls, paths):
+    """Deklarované vlastnosti a klíče položek, které kód komponenty nikde nečte:
+    (vlastnosti, klíče, None), nebo (∅, ∅, důvod), když se komponenta nekontroluje.
+
+    Klíče položek se nesledují, když položka nebo objekt odchází celý (rozbalení, argument
+    funkce mimo komponentu, atribut vložené komponenty, dynamický klíč) — tam použití nevidíme.
+    Řetězec nebo číslo předané funkci nevadí, o tom rozhoduje deklarovaný typ."""
+    usage, err = template_usage()
+    if usage is None:
+        return set(), set(), err
+    u = usage.get(name)
+    if not u or not u.get("ok"):
+        return set(), set(), "; ".join((u or {}).get("why") or []) or "rozbor chybí"
+    used, direct = set(u.get("used") or []), set(u.get("direct") or [])
+    patterns = u.get("props") or {}
+    unused_props = set()
+    if not u.get("topOpen"):
+        for p in props:
+            if p == OPEN or p in direct:
+                continue
+            locals_ = patterns.get(p, [])
+            if locals_ is None:            # vnořený vzor { cta: { href } } — bere se jako použitá
+                continue
+            if not any(loc in used for loc in locals_):
+                unused_props.add(p)
+    if u.get("itemOpen"):
+        return unused_props, set(), None
+    local_prop = {loc: p for p, locals_ in patterns.items() if locals_ for loc in locals_}
+    if u.get("wholeItems"):                     # položka odchází celá — klíče nesledujeme
+        return unused_props, set(), None
+    leaving = [local_prop.get(n) for n in u.get("whole") or []] + list(u.get("wholeProps") or [])
+    for p in leaving:
+        if p is None or p not in props or shape_of(props[p][1], decls) is not None:
+            return unused_props, set(), None
+    for k in u.get("wholeKeys") or []:
+        if any(shape_of(kt, decls) is not None for _path, kt in paths.get(k, [])):
+            return unused_props, set(), None
+    unused_keys = {k for k, entries in paths.items()
+                   if k not in used and not all(owner(path) in unused_props for path, _t in entries)}
+    return unused_props, unused_keys, None
+
+
 @functools.lru_cache(maxsize=None)
 def component_info(name):
     path = os.path.join(BLOCKS, name + ".astro")
@@ -284,7 +482,14 @@ def component_info(name):
     for m in TYPE_RE.finditer(fm):
         decls[m.group(1)] = ("alias", read_alias(fm, m.end()), [])
     props = (shape_of("Props", decls) or {}) if "Props" in decls else {}
-    return {"props": props, "decls": decls, "rest": bool(REST_RE.search(fm))}
+    paths = key_paths(props, decls)
+    if paths is None:
+        paths, unused_props, unused_keys = {}, set(), set()
+        unchecked = f"typ má přes {KEY_PATHS_MAX} vnořených klíčů (rekurzivní typ?)"
+    else:
+        unused_props, unused_keys, unchecked = unused_names(name, props, decls, paths)
+    return {"props": props, "decls": decls, "rest": bool(REST_RE.search(fm)), "paths": paths,
+            "unused_props": unused_props, "unused_keys": unused_keys, "unchecked": unchecked}
 
 
 # ---------- čtení článku ----------
@@ -460,6 +665,8 @@ def check_file(path):
             findings.append((line_of(at), local, "neznámá komponenta", comp,
                              f"soubor src/components/blocks/{comp}.astro neexistuje"))
             continue
+        if info["unchecked"]:
+            UNCHECKED_SEEN[comp] = info["unchecked"]
         props, decls = info["props"], info["decls"]
         open_props = OPEN in props or info["rest"]
         readable = ", ".join(k for k in props if k != OPEN) or "žádnou vlastnost"
@@ -474,6 +681,9 @@ def check_file(path):
                     if not open_props:
                         findings.append((line_of(off), local, "nečtená vlastnost", name, f"komponenta čte: {readable}"))
                     continue
+                if name in info["unused_props"]:
+                    findings.append((line_of(off), local, "vlastnost v typu, kterou šablona nepoužije", name,
+                                     "typ ji přijme, šablona ji nikde nevykreslí — hodnota se tiše zahodí"))
                 if not is_expr or value is None:
                     continue
                 base = shape_of(props[name][1], decls)
@@ -483,21 +693,27 @@ def check_file(path):
                     shape = resolve_path(base, obj_path, decls)
                     if shape is None:
                         continue
-                    where = "[].".join((name,) + tuple(obj_path)) + "[]"
+                    where = path_label(name, obj_path, props, decls)
                     allowed = ", ".join(k for k in shape if k != OPEN)
                     if OPEN not in shape:
                         for key, koff in keys.items():
                             if key not in shape:
                                 findings.append((line_of(voff + koff), local, "nečtený klíč položky",
                                                  f"{where}.{key}", f"položka čte: {allowed}"))
+                    for key, koff in keys.items():
+                        if key in shape and key in info["unused_keys"] and name not in info["unused_props"]:
+                            findings.append((line_of(voff + koff), local, "klíč v typu, který šablona nepoužije",
+                                             f"{where}.{key}",
+                                             "typ ho přijme, šablona ho nikde nevykreslí — hodnota se tiše zahodí"))
                     if not obj_open:
                         for key, (optional, _t) in shape.items():
-                            if key != OPEN and not optional and key not in keys:
+                            # povinný klíč, který šablona nepoužije, se nevyžaduje — článek by jinak neprošel nikdy
+                            if key != OPEN and not optional and key not in keys and key not in info["unused_keys"]:
                                 findings.append((line_of(voff + oat), local, "chybí povinný klíč položky",
                                                  f"{where}.{key}", f"položka čte: {allowed}"))
             if "..." not in names:
                 for key, (optional, _t) in props.items():
-                    if key != OPEN and not optional and key not in names:
+                    if key != OPEN and not optional and key not in names and key not in info["unused_props"]:
                         findings.append((line_of(m.start()), local, "chybí povinná vlastnost", key,
                                          f"komponenta čte: {readable}"))
     return findings, tags
@@ -508,8 +724,48 @@ def safe(text):
     return "".join(ch if ch.isprintable() else repr(ch)[1:-1] for ch in str(text))
 
 
+def report_components():
+    """Přehled za komponenty: co mají v typu a šablona nepoužije — i když to žádný článek nepředává."""
+    usage, err = template_usage()
+    if usage is None:
+        print(f"kontrola nepoužitých vlastností nejde spustit: {safe(err)}", file=sys.stderr)
+        return 2
+    found, errors, unchecked = 0, 0, []
+    names = sorted(f[:-len(".astro")] for f in os.listdir(BLOCKS)
+                   if f.endswith(".astro") and os.path.isfile(os.path.join(BLOCKS, f)))
+    for name in names:
+        try:
+            info = component_info(name)
+        except (OSError, UnicodeDecodeError) as exc:
+            errors += 1
+            print(f"src/components/blocks/{safe(name)}.astro · soubor nešel přečíst: {safe(exc)}", file=sys.stderr)
+            continue
+        if info is None:
+            continue
+        if info["unchecked"]:
+            unchecked.append((name, info["unchecked"]))
+            continue
+        unused = sorted(info["unused_props"]) + sorted(
+            path for k in info["unused_keys"] for path, _t in info["paths"][k]
+            if owner(path) not in info["unused_props"])
+        if unused:
+            found += len(unused)
+            print(f"src/components/blocks/{safe(name)}.astro · v typu, ale šablona nepoužije: {safe(', '.join(unused))}")
+    for name, why in unchecked:
+        print(f"src/components/blocks/{safe(name)}.astro · nekontrolováno: {safe(why)}")
+    print(f"\n== {len(names)} komponent · {found} deklarací, které šablona nepoužije"
+          + (f" · {len(unchecked)} nekontrolováno" if unchecked else "")
+          + (f" · {errors} nešlo přečíst" if errors else ""))
+    return 2 if errors else (1 if found else 0)
+
+
 def main(argv):
     files = [a for a in argv if not a.startswith("-")]
+    if "--komponenty" in argv:
+        if files:
+            print("--komponenty se spouští bez článků (kontroluje komponenty, ne články)", file=sys.stderr)
+            return 2
+        return report_components()
     if not files:
         print(__doc__.strip())
         return 2
@@ -519,17 +775,25 @@ def main(argv):
             findings, tags = check_file(f)
         except (OSError, UnicodeDecodeError) as exc:
             errors += 1
-            print(f"{f} · soubor nešel přečíst: {exc}", file=sys.stderr)
+            print(f"{safe(f)} · soubor nešel přečíst: {safe(exc)}", file=sys.stderr)
             continue
         tags_total += tags
         for line, comp, kind, what, hint in sorted(findings):
             total += 1
             summary[(comp, kind, what)] += 1
-            print(f"{f}:{line} · <{comp}> · {kind} „{safe(what)}“ · {safe(hint)}")
+            print(f"{safe(f)}:{line} · <{comp}> · {kind} „{safe(what)}“ · {safe(hint)}")
     print(f"\n== {len(files) - errors} souborů · {tags_total} použití komponent · {total} nálezů"
           + (f" · {errors} nešlo přečíst" if errors else ""))
     for (comp, kind, what), cnt in summary.most_common():
         print(f"   {cnt:>4}× <{comp}> {kind} „{safe(what)}“")
+    if component_info.cache_info().currsize:
+        usage, err = template_usage()
+        if usage is None:
+            print(f"⚠ vlastnosti v typu, které šablona nepoužije, se nekontrolovaly: {safe(err)}", file=sys.stderr)
+        else:
+            for comp, why in sorted(UNCHECKED_SEEN.items()):
+                print(f"⚠ <{comp}>: vlastnosti v typu, které šablona nepoužije, se nekontrolovaly — {safe(why)}",
+                      file=sys.stderr)
     return 2 if errors else (1 if total else 0)
 
 
