@@ -58,22 +58,18 @@ Klíčový posun: model neodpovídá zpaměti, ale z toho, co si právě dohleda
 <Stepper
   steps={[
     {
-      label: "Dotaz",
       title: "Uživatel položí otázku",
       text: "Vstupem je dotaz uživatele. U AI vyhledávání bývá delší a konverzační než klasické vyhledávání.",
     },
     {
-      label: "Dohledání",
       title: "Systém najde relevantní úseky",
       text: "Systém prohledá index nebo znalostní bázi a najde nejrelevantnější úseky obsahu. Často k tomu používá vektory významu — dotaz i dokumenty se převedou na číselné reprezentace podle významu a hledají se ty s nejbližším významem, ne shoda klíčových slov.",
     },
     {
-      label: "Kontext",
       title: "Úseky se vloží do zadání pro model",
       text: "Nalezené úseky se přidají modelu jako kontext, ze kterého má vycházet. Model tak dostane konkrétní podklady k dotazu, které mohou být aktuálnější než samotný trénink modelu.",
     },
     {
-      label: "Odpověď",
       title: "Model složí odpověď s odkazy",
       text: "Z vloženého kontextu model složí odpověď a odkáže na zdroje. Neodpovídá tedy zpaměti, ale z toho, co se pro daný dotaz dohledalo.",
     },

@@ -88,32 +88,26 @@ Přechod mezi nimi je možný, ale měl by být **proveden opatrně** — kvůli
 <Stepper
   steps={[
     {
-      label: "SEO plugin",
       title: "Mějte funkční hlavní SEO plugin",
       text: "Pokud máte Yoast SEO, Rank Math, SEOPress nebo AIOSEO a strukturovaná data fungují (test přes validátor strukturovaných dat Schema.org nebo Google Rich Results Test), AI SEO základ máte. Pokud ne, nainstalujte jeden z nich a nakonfigurujte základní typy (Organization, WebSite, Article).",
     },
     {
-      label: "llms.txt",
       title: "Přidejte llms.txt",
       text: "Nejjednodušší cesta: plugin Website LLMs.txt (k červnu 2026 zhruba 30 000+ aktivních instalací). Automaticky generuje a aktualizuje llms.txt na základě obsahu webu. Manuální cesta: vytvořit textový soubor llms.txt s krátkým markdown přehledem a nahrát do rootu domény (přes FTP nebo File Manager v hostingu).",
     },
     {
-      label: "robots.txt",
       title: "Ujistěte se, že AI vyhledávací roboti nejsou blokovaní",
       text: "Pro citace v AI odpovědích musí mít přístup hlavní AI vyhledávací roboti: OAI-SearchBot, Claude-SearchBot a PerplexityBot. Tréninkové roboty (GPTBot, ClaudeBot, Meta-ExternalAgent) povolte nebo zakažte podle toho, jestli chcete obsah pouštět do tréninku modelů, a zvlášť rozhodněte o Google-Extended. Pokud máte restriktivní robots.txt, přidejte pro relevantní identifikátory výjimky. Pozor: GPTBot a OAI-SearchBot jsou dvě samostatná pravidla.",
     },
     {
-      label: "Strukturovaná data",
-      title: "Doplňte typy, které SEO plugin nedělá automaticky",
+      title: "Doplňte typy strukturovaných dat, které SEO plugin nedělá automaticky",
       text: "Manuálně přidejte FAQPage (FAQ blok na produktové nebo službové stránce), Product s Offer u WooCommerce, Person na autorské stránce. Většina SEO pluginů má pro tyto typy generátor přímo v editoru postu nebo Gutenberg blok.",
     },
     {
-      label: "Rychlost webu",
       title: "Hlídejte Core Web Vitals",
       text: "Cíl LCP < 2,5 s, INP < 200 ms, CLS < 0,1. Použijte cache plugin (LiteSpeed Cache zdarma, WP Rocket placený), optimalizaci obrázků (ShortPixel, Imagify, Smush). Největší dopad mívá kvalita hostingu — pro AI SEO doporučujeme spravovaný WordPress hosting.",
     },
     {
-      label: "CDN a firewall",
       title: "Ověřte konfiguraci Cloudflare nebo jiného CDN",
       text: "Pokud používáte Cloudflare, ověřte, že přepínač Block AI Bots není zapnutý — blokace na úrovni CDN je v praxi silnější než pravidla v robots.txt a může AI vyhledávací roboty zastavit ještě před tím, než váš web vůbec uvidí. Pro AI SEO doporučujeme jemnější pravidla pro jednotlivé AI vyhledávací roboty: povolit ty, kteří citují v AI odpovědích, blokovat pouze konkrétní obtěžující přes webový aplikační firewall (WAF).",
     },

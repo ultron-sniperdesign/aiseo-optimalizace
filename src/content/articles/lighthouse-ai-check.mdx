@@ -110,33 +110,27 @@ Existují tři cesty, jak audit spustit. Doporučená je Chrome DevTools.
 <Stepper
   steps={[
     {
-      label: "Otevřete stránku v Chrome",
       title: "Načtěte adresu, kterou chcete auditovat",
       text: "V Chrome otevřete stránku. Doporučujeme zavřít ostatní záložky a rozšíření, která by mohla ovlivnit výsledky (blokátor reklam, správce hesel, čtečku obrazovky). Audit má probíhat v co nejčistším prostředí.",
     },
     {
-      label: "Spusťte DevTools a vyberte Lighthouse",
       title: "Otevřete vývojářské nástroje a přejděte na Lighthouse",
       text: "Pravým tlačítkem klikněte na stránku a zvolte Inspect (česky často Prozkoumat), nebo stiskněte F12. V DevTools panelu přepněte na záložku Lighthouse. Pokud ji nevidíte, klikněte na dvě šipky vpravo (More tabs) a vyberte ji z přetékajícího menu.",
     },
     {
-      label: "Vyberte kategorie a zařízení",
       title: "Zaškrtněte Agentic Browsing + ostatní kategorie",
       text: "Zaškrtněte všechny relevantní kategorie (Performance, Accessibility, Best Practices, SEO, Agentic Browsing). Vyberte zařízení (mobile pro web cílený na uživatele, desktop pro B2B nástroje). Zachovejte Navigation jako režim měření.",
     },
     {
-      label: "Analyzujte a počkejte",
       title: "Klikněte na tlačítko Analyze page load a počkejte typicky desítky sekund",
       text: "Lighthouse otevře novou instanci stránky v izolovaném prostředí, projde ji a vyhodnotí všechny kategorie. Během auditu se stránky nedotýkejte. Po dokončení uvidíte přehledný report s úspěšnými a neúspěšnými kontrolami.",
     },
     {
-      label: "Prostudujte Agentic Browsing výstup",
       title: "Zaměřte se na neúspěšné kontroly",
       text: "U Agentic Browsing neuvidíte klasické 0 až 100 skóre, ale podíl splněných kontrol (například „3 of 4 checks passed“). Každá jednotlivá kontrola je rozkliknutelná s konkrétní podrobností, co chybí a jak to opravit.",
     },
     {
-      label: "Plán oprav podle priority",
-      title: "Postupujte od nejlevnějších k nejnáročnějším",
+      title: "Opravy seřaďte od nejlevnějších po nejnáročnější",
       text: "Začněte s llms.txt (nejlevnější), pak accessibility tree (names and labels), pak optimalizace stability rozvržení (CLS). WebMCP nechte na konec — implementace je náročná a smysl má hlavně pro e-shopy a aplikace, kde agent může provádět akce.",
     },
   ]}

@@ -121,27 +121,22 @@ Jde o zjednodušený příklad. V praxi bývá vhodné mít vydavatele (`Organiz
 <Stepper
   steps={[
     {
-      label: "Person",
       title: "Definujte autora na jeho profilu",
       text: "Na autorskou stránku vložte JSON-LD s typem Person — jméno, roli, popis a odkaz na profil. Jméno v datech musí přesně sedět s tím, jak je autor uvedený u článků.",
     },
     {
-      label: "sameAs",
       title: "Doplňte odkazy na profily",
       text: "Do sameAs přidejte URL profilů, které autora pomáhají spolehlivě identifikovat — například LinkedIn, Wikidata a další veřejné profily, které autora skutečně reprezentují. Důvěryhodné a udržované profily mohou odlišení autora usnadnit.",
     },
     {
-      label: "@id",
       title: "Přiřaďte stabilní identifikátor a opakujte ho",
       text: "Autorovi dejte jeden stabilní @id a ten samý použijte u všech jeho článků, což zvýší šanci, že si systémy jednotlivé zmínky spojí s jedním autorem místo mnoha různých osob.",
     },
     {
-      label: "Propojení",
       title: "Propojte článek s autorem",
       text: "V datech článku uveďte u autora typ, jméno a url se stejným @id a doplňte vydavatele. Plný popis autora zůstane jednou na jeho profilu.",
     },
     {
-      label: "Kontrola",
       title: "Ověřte soulad s viditelným obsahem",
       text: "Zkontrolujte, že data odpovídají tomu, co je na stránce reálně vidět. Nevymýšlejte tituly ani profily, které autor nemá; nesoulad je riziko.",
     },
