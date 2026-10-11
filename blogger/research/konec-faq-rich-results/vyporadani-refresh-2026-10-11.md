@@ -64,3 +64,18 @@ Nic.
 | „Sekce, která odpovídá na skutečné dotazy, dál pomáhá čtenářům.“ | „Sekce, která odpovídá na skutečné dotazy čtenářů, jim dál pomáhá.“ |
 
 Po opravách znovu: `kontrola-komponent.py` 0 nálezů, `jazyk-check.py` 0 nálezů.
+
+## Kontrola na mobilu (375 px, živá stránka po prvním deployi)
+
+Stránka do strany neroluje (`scrollWidth` 375), tabulka časové osy se posouvá ve vlastním rámu a klíčové
+sloupce „Datum“ a „Co se stalo“ jsou vidět celé. **Obě srovnávací tabulky (`CompareTable`) ale byly širší
+než sloupec textu** (373 a 341 px proti 335 px) — pravý sloupec „Co jsme v ní nenašli“ byl useknutý
+(„Že Googl…“, „Cokoli konkrétn…“). Příčina: nejdelší slova (`Vyhledávání` v tučném popisku,
+`strukturovaných`, `konkrétního`, `rozšířenému`) určují nejmenší šířku sloupců.
+
+Oprava jen ve znění (komponentu needituji), změřeno v prohlížeči před úpravou zdroje — nejmenší šířka
+tabulek po opravě **319 a 316 px**, tedy vejdou se i na telefony s šířkou 360 px (sloupec 320 px):
+popisek „Vyhledávání Google“ → „Google“ (slovo Vyhledávání přesunuto do buňky), „ChatGPT, Perplexity,
+Claude“ → „AI asistenti“ (jména v buňce), „Cokoli konkrétního o FAQPage“ → „Cokoli o FAQPage“,
+„Data vznikají automaticky…“ → „Data se generují…“, „…kvůli rozšířenému výsledku“ → „…kvůli výsledku,
+který už není“. Podmínka z B2 („která sedí s obsahem“) i forma „jsme nenašli“ z W1 zůstávají.
