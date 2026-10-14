@@ -72,14 +72,14 @@ import { meta, breadcrumb, lastUpdated, hero, sections } from "~/content/pages/p
 <style>
   /* ===== Page root ===== */
   .gdpr {
-    --gdpr-violet: oklch(0.55 0.25 305);
-    --gdpr-magenta: oklch(0.5 0.27 335);
+    /* Barva značky z global.css; do 14. 10. 2026 tu byla kopie palety s růžovou. */
+    --gdpr-violet: var(--sd-brand);
   }
 
   /* ===== HERO ===== */
   .gdpr-hero {
     background:
-      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--gdpr-magenta) 10%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--gdpr-violet) 9%, transparent), transparent 60%),
       radial-gradient(ellipse 60% 60% at 0% 100%, color-mix(in oklch, var(--gdpr-violet) 8%, transparent), transparent 60%),
       var(--color-paper);
     border-bottom: 1px solid var(--color-rule);
@@ -195,7 +195,7 @@ import { meta, breadcrumb, lastUpdated, hero, sections } from "~/content/pages/p
   }
   .gdpr-section p :global(em) {
     font-style: italic;
-    color: color-mix(in oklch, var(--gdpr-magenta) 80%, var(--color-ink));
+    color: color-mix(in oklch, var(--gdpr-violet) 80%, var(--color-ink));
     font-weight: 500;
   }
   .gdpr-section ul {

@@ -2099,9 +2099,12 @@ const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-
     box-shadow: 0 14px 30px -16px oklch(from var(--offer-accent) l c h / 0.35);
   }
   .offer--free { --offer-accent: oklch(0.45 0.14 145); }
-  .offer--pack { --offer-accent: oklch(0.5 0.25 305); }
+  /* Pack i audit nesou fialovou značky; doporučenou volbu (audit) odliší silnější
+     rámeček a zlatá pilulka — stejně jako na /navod-zdarma/ a /pack/. Do 14. 10. 2026
+     měl audit růžovou, kterou značka nemá. */
+  .offer--pack { --offer-accent: var(--sd-brand); }
   .offer--audit {
-    --offer-accent: oklch(0.5 0.27 335);
+    --offer-accent: var(--sd-brand);
     border-width: 2px;
     border-color: oklch(from var(--offer-accent) l c h / 0.6);
     background: linear-gradient(180deg, oklch(from var(--offer-accent) l c h / 0.04) 0%, var(--color-paper) 50%);
@@ -2120,6 +2123,11 @@ const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-
     padding: 0.3rem 0.75rem;
     border-radius: 999px;
     box-shadow: 0 4px 10px -3px oklch(from var(--offer-accent) l c h / 0.5);
+  }
+  .offer--audit .offer__featured-pill {
+    color: var(--sd-brand-deep);
+    background: var(--sd-gold);
+    box-shadow: 0 4px 10px -3px oklch(from var(--sd-gold-deep) l c h / 0.6);
   }
   .offer__head {
     display: flex;
@@ -2161,8 +2169,8 @@ const updatedStamp = new Date(`${updatedIso}T00:00:00Z`).toLocaleDateString("cs-
     color: var(--color-ink-muted);
   }
   .offer__price--free :global(strong) { color: oklch(0.45 0.14 145); }
-  .offer__price--pack :global(strong) { color: oklch(0.45 0.22 305); }
-  .offer__price--audit :global(strong) { color: oklch(0.5 0.25 335); }
+  .offer__price--pack :global(strong),
+  .offer__price--audit :global(strong) { color: var(--sd-brand); }
   .offer__title {
     font-family: var(--font-sans);
     font-weight: 600;

@@ -214,8 +214,9 @@ const DISC = {
     --h-blue: #1466ff;
     --h-blue-hover: #0f4fd0;
     --h-focus-ring: rgba(20, 102, 255, 0.14);
-    --h-audit-bg: #f8d4ec;
-    --h-audit-text: #a01f78;
+    /* Audit je služba Sniper Design → barvy značky (do 14. 10. 2026 růžová). */
+    --h-audit-bg: color-mix(in oklch, var(--sd-brand) 12%, white);
+    --h-audit-text: var(--sd-brand);
     --h-free-bg: #f7c25c;
     --h-free-text: #6a4a06;
     --h-free-shadow: rgba(240, 180, 60, 0.4);

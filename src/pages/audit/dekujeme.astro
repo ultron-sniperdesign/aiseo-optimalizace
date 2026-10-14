@@ -66,9 +66,11 @@ import * as p from "~/content/pages/audit-dekujeme";
 </BaseLayout>
 
 <style>
+  /* Stránka agentury nese jen barvy značky (global.css): akcent webu tu přebírá
+     fialová. Do 14. 10. 2026 tu byla kopie palety s růžovou. */
   .audit-ty {
-    --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.5 0.27 335);
+    --lp-violet: var(--sd-brand);
+    --color-accent: var(--sd-brand);
   }
 
   /* ===== Hero ===== */
@@ -262,7 +264,7 @@ import * as p from "~/content/pages/audit-dekujeme";
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--lp-violet);
-    background: oklch(0.96 0.05 305 / 0.6);
+    background: color-mix(in oklab, var(--sd-brand) 10%, var(--color-paper));
     padding: 0.25rem 0.625rem;
     border-radius: 999px;
   }

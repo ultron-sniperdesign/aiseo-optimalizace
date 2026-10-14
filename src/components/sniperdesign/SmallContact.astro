@@ -100,8 +100,8 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
 
 <style>
   /* ===== SniperDesign Small Contact =====
-   * Kompaktní varianta Big bloku — stejný brand styl (deep violet,
-   * magenta highlight, gold CTA), ale méně obsahu a menší padding.
+   * Kompaktní varianta Big bloku — stejný styl značky (tmavá plocha
+   * `--sd-surface`, zlaté zvýraznění a tlačítko), ale méně obsahu a menší padding.
    * Self-contained, scopované přes .sd-small prefix. Paleta --sd-* přichází
    * z global.css (lokální kopie smazaná 14. 9. 2026). */
   .sd-small {
@@ -115,25 +115,12 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
     padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x);
   }
   .sd-small__inner {
-    background:
-      radial-gradient(ellipse 60% 50% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 28%, transparent), transparent 60%),
-      radial-gradient(ellipse 70% 60% at -10% 100%, color-mix(in oklch, var(--sd-violet) 28%, transparent), transparent 60%),
-      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    background: var(--sd-surface);
     color: var(--sd-paper);
     border-radius: 14px;
     padding: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
     position: relative;
     overflow: hidden;
-  }
-  .sd-small__inner::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
-    pointer-events: none;
   }
   .sd-small__brand {
     display: inline-block;
@@ -158,11 +145,7 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: var(--sd-gold);
     margin-bottom: 0.5rem;
   }
   .sd-small__title {
@@ -174,13 +157,9 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
     margin: 0 0 0.875rem;
     color: var(--sd-paper);
   }
-  .sd-small__title strong {
+  .sd-small__title :global(strong) {
     font-weight: 700;
-    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: var(--sd-gold);
   }
   .sd-small__lead {
     font-family: var(--font-agency);
@@ -190,18 +169,18 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
     color: color-mix(in oklch, var(--sd-paper) 80%, transparent);
     margin: 0 0 1rem;
   }
-  .sd-small__lead strong {
+  .sd-small__lead :global(strong) {
     color: var(--sd-paper);
     font-weight: 700;
   }
-  .sd-small__lead a {
-    color: var(--sd-magenta);
+  .sd-small__lead :global(a) {
+    color: var(--sd-gold);
     text-decoration: none;
     border-bottom: 1px solid currentColor;
     padding-bottom: 1px;
     transition: opacity 0.2s ease;
   }
-  .sd-small__lead a:hover { opacity: 0.8; }
+  .sd-small__lead :global(a:hover) { opacity: 0.8; }
 
   .sd-small__partners {
     margin: 0 0 0.875rem;
@@ -228,10 +207,10 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    background: var(--sd-gold);
     flex-shrink: 0;
   }
-  .sd-small__trust strong {
+  .sd-small__trust :global(strong) {
     color: var(--sd-paper);
     font-weight: 700;
   }
@@ -257,25 +236,25 @@ const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
     text-decoration: none;
   }
   .sd-small__btn--solid {
-    background: linear-gradient(135deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
-    color: oklch(0.18 0.06 60);
+    background: var(--sd-button-gold);
+    color: var(--sd-brand-deep);
     font-weight: 600;
     box-shadow: 0 4px 14px -4px color-mix(in oklch, var(--sd-gold) 55%, transparent);
   }
   .sd-small__btn--solid:hover {
-    background: linear-gradient(135deg, var(--sd-gold-deep) 0%, var(--sd-gold) 100%);
-    color: oklch(0.15 0.06 60);
+    background: linear-gradient(180deg, var(--sd-gold-deep) 0%, var(--sd-gold) 100%);
+    color: var(--sd-brand-deep);
     transform: translateX(2px);
     box-shadow: 0 6px 18px -4px color-mix(in oklch, var(--sd-gold) 70%, transparent);
   }
   .sd-small__btn--ghost {
     background: transparent;
     color: var(--sd-paper);
-    border: 1px solid color-mix(in oklch, var(--sd-magenta) 50%, transparent);
+    border: 1px solid color-mix(in oklch, var(--sd-paper) 35%, transparent);
   }
   .sd-small__btn--ghost:hover {
-    background: color-mix(in oklch, var(--sd-magenta) 12%, transparent);
-    border-color: var(--sd-magenta);
+    background: color-mix(in oklch, var(--sd-paper) 10%, transparent);
+    border-color: var(--sd-paper);
     color: var(--sd-paper);
     transform: translateX(2px);
   }

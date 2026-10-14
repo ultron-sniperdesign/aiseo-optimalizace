@@ -81,27 +81,33 @@
      `--w-wide` je počítaná, aby prvek uvnitř úzkého sloupce textu dorazil
      přesně na pravý okraj rámu (levý okraj sdílí s textem). */
   /* ---- Značka Sniper Design ------------------------------------------------
-     Paleta agentury: tmavě fialový podklad, violet→magenta akcent, zlaté CTA.
-     Do 6. 9. 2026 byla naklonovaná v `audit/index.astro`, `kontakt.astro`
-     a v obou `sniperdesign/*Contact.astro`; kvůli konzistenci (a proto, aby
-     kontextové CTA v článcích vypadalo jako stránka, na kterou vede) je
-     kanonická tady. Z obou bloků Sniper Design kopie zmizela 14. 9. 2026;
-     v `audit/index.astro` a `kontakt.astro` zbývá — smazat při jejich revizi. */
+     Barvy přímo z podkladů agentury („Sniper design - znalost agentury/“):
+     fialová, zlatá a bílá — nic dalšího. `--sd-brand` je barva písmene S ve znaku
+     (`fav sniper.svg`, #5716b8) a zároveň pozadí bannerů, `--sd-brand-deep` jsou
+     tmavé okraje téhož pozadí (#21084c), `--sd-gold` je šestiúhelník znaku
+     (#fcae21). Zlatá je akcent: zvýraznění na tmavém podkladu, tlačítka, doporučená
+     volba. Zlatý text je na světlém podkladu nečitelný — tam nese akcent fialová.
+     Do 14. 10. 2026 tu byla paleta „violet → magenta“ (odstín 305 a 335), kterou
+     značka nikdy neměla: růžová v materiálech agentury není. Smazaná, i s kopiemi
+     v jedenácti souborech (stránky si ji klonovaly pod `--lp-*`, `--ty-*`,
+     `--gdpr-*`, `--ec-*`, `--mock-*`). Nová plocha bere barvy jen odsud. */
   --font-agency: "Kumbh Sans", var(--font-sans);
-  --sd-deep: oklch(0.22 0.13 305);
-  --sd-deeper: oklch(0.16 0.11 305);
-  --sd-violet: oklch(0.55 0.25 305);
-  --sd-magenta: oklch(0.5 0.27 335);
+  --sd-brand: oklch(0.42 0.22 291);
+  --sd-brand-deep: oklch(0.23 0.11 291);
   --sd-gold: oklch(0.82 0.16 80);
   --sd-gold-deep: oklch(0.7 0.18 60);
   --sd-paper: oklch(0.985 0.004 250);
-  /* Značková fialová přímo z podkladů agentury (14. 10. 2026): `--sd-brand` je barva
-     písmene S ve znaku (`fav sniper.svg`, #5716b8) a zároveň pozadí jejích bannerů;
-     `--sd-brand-deep` jsou tmavé okraje téhož pozadí (#21084c). Je modřejší než
-     `--sd-deep` (odstín 291 proti 305). Zlatá ze znaku (#fcae21) sedí na `--sd-gold`,
-     novou proto nepotřebuje. Zdroj: „Sniper design - znalost agentury/“. */
-  --sd-brand: oklch(0.42 0.22 291);
-  --sd-brand-deep: oklch(0.23 0.11 291);
+  /* Tmavá plocha agentury — jeden recept pro všechny: medailonek a hero na
+     /kontakt/, hero a závěr /audit/, oba bloky Sniper Design, kontextové CTA
+     v článcích. Světlo vlevo nahoře, k okrajům tmavne jako bannery. */
+  --sd-surface:
+    radial-gradient(ellipse 65% 85% at 22% 35%, var(--sd-brand), transparent 72%),
+    radial-gradient(ellipse 55% 70% at 95% 110%, color-mix(in oklch, var(--sd-brand) 70%, transparent), transparent 70%),
+    linear-gradient(160deg, var(--sd-brand-deep) 0%, color-mix(in oklch, var(--sd-brand) 45%, var(--sd-brand-deep)) 55%, var(--sd-brand-deep) 100%);
+  /* Fialové tlačítko na světlém podkladu (na tmavém je tlačítko zlaté). */
+  --sd-button: linear-gradient(135deg, var(--sd-brand) 0%, color-mix(in oklch, var(--sd-brand) 70%, var(--sd-brand-deep)) 100%);
+  /* Zlaté tlačítko — stejné jako „Víc o nás“ v medailonku a pilulka z bannerů. */
+  --sd-button-gold: linear-gradient(180deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
 
   /* ---- Štítky nad bloky (eyebrow) ------------------------------------------
      Drobný text nad blokem často nese podstatnou informaci — u kontextového CTA
@@ -379,19 +385,8 @@ pre.astro-code .line span[style*="color:#22863a"] {
   grid-template-columns: 1fr auto;
   gap: clamp(1.25rem, 3vw, 2.5rem);
   align-items: center;
-  background:
-    radial-gradient(ellipse 70% 60% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 30%, transparent), transparent 60%),
-    radial-gradient(ellipse 80% 70% at -10% 100%, color-mix(in oklch, var(--sd-violet) 32%, transparent), transparent 60%),
-    linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
-  box-shadow: 0 18px 44px -26px color-mix(in oklch, var(--sd-deep) 90%, black);
-}
-/* Proužek violet → magenta, stejný jako nad hero na /audit/. */
-.inline-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+  background: var(--sd-surface);
+  box-shadow: 0 18px 44px -26px color-mix(in oklch, var(--sd-brand-deep) 90%, black);
 }
 .inline-cta__eyebrow {
   margin: 0 0 0.75rem;
@@ -435,11 +430,11 @@ pre.astro-code .line span[style*="color:#22863a"] {
   gap: 0.45rem;
   padding: 0.75rem 1.5rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
+  background: var(--sd-button-gold);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 0.9375rem;
-  color: var(--sd-deep);
+  color: var(--sd-brand-deep);
   text-decoration: none;
   box-shadow: 0 6px 18px -6px color-mix(in oklch, var(--sd-gold) 60%, transparent);
   transition:
@@ -448,7 +443,7 @@ pre.astro-code .line span[style*="color:#22863a"] {
     transform 0.25s ease;
 }
 .inline-cta__link:hover {
-  background: linear-gradient(135deg, var(--sd-gold-deep) 0%, var(--sd-gold) 100%);
+  background: linear-gradient(180deg, var(--sd-gold-deep) 0%, var(--sd-gold) 100%);
   box-shadow: 0 10px 24px -6px color-mix(in oklch, var(--sd-gold) 75%, transparent);
   transform: translateY(-1px);
   text-decoration: none;

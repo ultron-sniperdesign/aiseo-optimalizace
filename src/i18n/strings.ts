@@ -147,7 +147,7 @@ export const nav = {
   ] as NavLink[],
 
   /** DESKTOP lišta — komerční / „co nabízíme" část. Oddělená dividerem.
-   *  Všechny 3 položky pilly (services = outlined neutral, audit = magenta,
+   *  Všechny 3 položky pilly (services = outlined neutral, audit = fialová značky,
    *  free = gold) — vizuálně koherentní trojice CTA. */
   desktopOffers: [
     { href: "/sluzby/", label: "Služby", variant: "services" },

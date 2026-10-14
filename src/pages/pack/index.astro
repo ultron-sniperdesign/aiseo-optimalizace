@@ -418,7 +418,7 @@ import { czDate } from "~/lib/date";
     font-size: 0.8125rem;
   }
   .page-type__links a {
-    color: var(--lp-violet, var(--sd-violet));
+    color: var(--lp-violet, var(--sd-brand));
     text-decoration: underline;
     text-underline-offset: 2px;
   }
@@ -439,9 +439,9 @@ import { czDate } from "~/lib/date";
 
   /* ===== Page root ===== */
   .pack {
-    --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.5 0.27 335);
-    --lp-gold: oklch(0.82 0.16 80);
+    /* Barvy značky z global.css — fialová a zlatá, žádná růžová (od 14. 10. 2026). */
+    --lp-violet: var(--sd-brand);
+    --lp-gold: var(--sd-gold);
   }
 
   /* ===== Section primitives (reused style scheme z /navod-zdarma/) ===== */
@@ -535,7 +535,7 @@ import { czDate } from "~/lib/date";
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--lp-violet);
-    background: oklch(0.95 0.04 305);
+    background: color-mix(in oklab, var(--sd-brand) 9%, var(--color-paper));
     padding: 0.4rem 0.875rem;
     border-radius: 999px;
     margin-bottom: 1.25rem;
@@ -561,11 +561,11 @@ import { czDate } from "~/lib/date";
     color: var(--color-ink-muted);
     margin: 1.25rem 0 1.5rem;
     padding-left: 0.875rem;
-    border-left: 3px solid var(--lp-magenta);
+    border-left: 3px solid var(--lp-violet);
     max-width: 36rem;
   }
   .pack-hero__urgency :global(strong) {
-    color: var(--lp-magenta);
+    color: var(--lp-violet);
     font-weight: 600;
   }
   .pack-hero__lead {
@@ -941,7 +941,7 @@ import { czDate } from "~/lib/date";
     width: 1.875rem;
     height: 1.875rem;
     border-radius: 999px;
-    background: oklch(0.95 0.04 305);
+    background: color-mix(in oklab, var(--sd-brand) 9%, var(--color-paper));
     color: var(--lp-violet);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
@@ -1033,7 +1033,7 @@ import { czDate } from "~/lib/date";
     padding: clamp(1.5rem, 2.5vw, 2rem);
     background: linear-gradient(135deg,
       color-mix(in oklch, oklch(0.72 0.2 145) 7%, var(--color-paper)) 0%,
-      color-mix(in oklch, var(--lp-violet) 5%, var(--color-paper)) 100%);
+      color-mix(in oklab, var(--lp-violet) 5%, var(--color-paper)) 100%);
     border: 1px solid color-mix(in oklch, oklch(0.6 0.18 145) 22%, var(--color-rule));
     border-left: 4px solid oklch(0.6 0.18 145);
     border-radius: 14px;
@@ -1137,7 +1137,7 @@ import { czDate } from "~/lib/date";
     padding: clamp(1.5rem, 2.5vw, 2rem);
     background: var(--color-paper-deep);
     border: 1px solid var(--color-rule);
-    border-left: 4px solid var(--lp-magenta);
+    border-left: 4px solid var(--lp-violet);
     border-radius: 14px;
   }
   .pack-template-sample__head {
@@ -1147,7 +1147,7 @@ import { czDate } from "~/lib/date";
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.75rem;
-    background: var(--lp-magenta);
+    background: var(--lp-violet);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.7rem;
@@ -1253,9 +1253,9 @@ import { czDate } from "~/lib/date";
     margin: clamp(1.5rem, 2.5vw, 2rem) auto 0;
     padding: clamp(1.5rem, 2.5vw, 2rem);
     background: linear-gradient(135deg,
-      color-mix(in oklch, var(--lp-gold) 9%, var(--color-paper)) 0%,
+      color-mix(in oklab, var(--lp-gold) 9%, var(--color-paper)) 0%,
       var(--color-paper) 70%);
-    border: 1px solid color-mix(in oklch, var(--lp-gold) 28%, var(--color-rule));
+    border: 1px solid color-mix(in oklab, var(--lp-gold) 28%, var(--color-rule));
     border-left: 4px solid var(--lp-gold);
     border-radius: 14px;
   }
@@ -1497,7 +1497,7 @@ import { czDate } from "~/lib/date";
     border-bottom: none;
   }
   .pack-decision__row--featured td {
-    background: color-mix(in oklch, var(--lp-violet) 7%, var(--color-paper-deep));
+    background: color-mix(in oklab, var(--lp-violet) 7%, var(--color-paper-deep));
     color: var(--color-ink);
   }
   .pack-decision__row--featured td :global(strong) { color: var(--lp-violet); }
@@ -1526,8 +1526,8 @@ import { czDate } from "~/lib/date";
   /* ===== Final CTA ===== */
   .pack-final {
     background:
-      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--lp-magenta) 24%, transparent), transparent 60%),
-      radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--lp-violet) 24%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--lp-violet) 14%, transparent), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--lp-violet) 10%, transparent), transparent 60%),
       linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-deep) 100%);
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
   }

@@ -497,8 +497,10 @@ import { czDate } from "~/lib/date";
      tady byla do 16. 9. 2026 a držela identické hodnoty dvakrát.
      Zůstávají jen aliasy a tóny vrstev, které nikde jinde nejsou. */
   .audit {
-    --lp-violet: var(--sd-violet);
-    --lp-magenta: var(--sd-magenta);
+    /* Stránka agentury nese jen barvy značky: akcent webu (modrá v `.hl`, FAQ)
+       tu přebírá fialová. Tóny vrstev níž jsou barvy disciplín, ne značky. */
+    --lp-violet: var(--sd-brand);
+    --color-accent: var(--sd-brand);
     --tone-aio: oklch(0.55 0.25 305);
     --tone-seo: oklch(0.6 0.18 240);
     --tone-geo: oklch(0.6 0.18 145);
@@ -526,9 +528,9 @@ import { czDate } from "~/lib/date";
     padding: 0 var(--space-section-x);
   }
   .audit-distinction__inner {
-    border: 1px solid color-mix(in oklch, var(--sd-violet) 22%, transparent);
+    border: 1px solid color-mix(in oklch, var(--sd-brand) 22%, transparent);
     border-radius: 16px;
-    background: color-mix(in oklch, var(--sd-violet) 4%, var(--surface, white));
+    background: color-mix(in oklch, var(--sd-brand) 4%, var(--surface, white));
     padding: clamp(1.5rem, 3.5vw, 2.75rem);
   }
   .audit-distinction__head {
@@ -540,7 +542,7 @@ import { czDate } from "~/lib/date";
     font-weight: var(--label-weight);
     letter-spacing: var(--label-tracking);
     text-transform: uppercase;
-    color: var(--sd-violet);
+    color: var(--sd-brand);
     margin-bottom: 0.625rem;
   }
   .audit-distinction__title {
@@ -550,7 +552,7 @@ import { czDate } from "~/lib/date";
     text-wrap: balance;
   }
   .audit-distinction__title :global(strong) {
-    color: var(--sd-violet);
+    color: var(--sd-brand);
   }
   .audit-distinction__lead {
     margin: 0;
@@ -573,8 +575,8 @@ import { czDate } from "~/lib/date";
     gap: 0.625rem;
   }
   .audit-distinction__col--ai {
-    border-color: color-mix(in oklch, var(--sd-violet) 38%, transparent);
-    box-shadow: 0 1px 3px color-mix(in oklch, var(--sd-violet) 12%, transparent);
+    border-color: color-mix(in oklch, var(--sd-brand) 38%, transparent);
+    box-shadow: 0 1px 3px color-mix(in oklch, var(--sd-brand) 12%, transparent);
   }
   .audit-distinction__label {
     margin: 0;
@@ -585,7 +587,7 @@ import { czDate } from "~/lib/date";
     color: var(--ink-faint, oklch(0.55 0.02 260));
   }
   .audit-distinction__col--ai .audit-distinction__label {
-    color: var(--sd-violet);
+    color: var(--sd-brand);
   }
   .audit-distinction__claim {
     margin: 0;
@@ -618,7 +620,7 @@ import { czDate } from "~/lib/date";
     background: var(--ink-faint, oklch(0.6 0.02 260));
   }
   .audit-distinction__col--ai .audit-distinction__items li::before {
-    background: var(--sd-violet);
+    background: var(--sd-brand);
   }
   /* Odkazy a tučné uvnitř set:html nedostanou scope atribut — musí přes :global(),
      jinak se vykreslí jako běžný text (gotcha projektu, CLAUDE.md § VI). */
@@ -635,7 +637,7 @@ import { czDate } from "~/lib/date";
   .audit-distinction__note {
     margin: clamp(1.25rem, 3vw, 1.75rem) 0 0;
     padding-top: 1.25rem;
-    border-top: 1px solid color-mix(in oklch, var(--sd-violet) 18%, transparent);
+    border-top: 1px solid color-mix(in oklch, var(--sd-brand) 18%, transparent);
     line-height: 1.6;
     color: var(--ink-muted, oklch(0.45 0.02 260));
   }
@@ -671,8 +673,8 @@ import { czDate } from "~/lib/date";
     font-family: var(--font-mono, monospace);
     font-size: 0.8125rem;
     font-weight: 700;
-    background: color-mix(in oklch, var(--sd-violet) 12%, transparent);
-    color: var(--sd-violet);
+    background: color-mix(in oklch, var(--sd-brand) 12%, transparent);
+    color: var(--sd-brand);
   }
   .audit-process__body {
     display: grid;
@@ -683,7 +685,7 @@ import { czDate } from "~/lib/date";
     font-weight: 700;
     letter-spacing: var(--label-tracking);
     text-transform: uppercase;
-    color: var(--sd-magenta);
+    color: var(--sd-brand);
   }
   .audit-process__title {
     margin: 0;
@@ -713,22 +715,12 @@ import { czDate } from "~/lib/date";
     padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-x) clamp(2rem, 4vw, 3.5rem);
   }
   .audit-hero__inner {
-    background:
-      radial-gradient(ellipse 70% 60% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 30%, transparent), transparent 60%),
-      radial-gradient(ellipse 80% 70% at -10% 100%, color-mix(in oklch, var(--sd-violet) 32%, transparent), transparent 60%),
-      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    background: var(--sd-surface);
     color: var(--sd-paper);
     border-radius: 14px;
     padding: clamp(2rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3.5rem);
     position: relative;
     overflow: hidden;
-  }
-  .audit-hero__inner::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
   }
   .audit-hero__brand {
     display: inline-block;
@@ -760,7 +752,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-hero__title :global(strong) {
     font-weight: 700;
-    color: color-mix(in oklch, var(--sd-magenta) 60%, white);
+    color: var(--sd-gold);
   }
   .audit-hero__lead {
     font-family: var(--font-sans);
@@ -860,7 +852,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-btn--solid {
     background: var(--sd-gold);
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
   }
   .audit-btn--solid:hover {
     background: color-mix(in oklch, var(--sd-gold) 85%, white);
@@ -957,7 +949,7 @@ import { czDate } from "~/lib/date";
     display: inline-flex;
     align-items: center;
     padding: 0.25rem 0.625rem;
-    background: var(--sd-magenta);
+    background: var(--sd-brand);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.7rem;
@@ -995,7 +987,7 @@ import { czDate } from "~/lib/date";
     padding: clamp(1.5rem, 2.5vw, 2rem);
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
-    border-left: 4px solid var(--sd-magenta);
+    border-left: 4px solid var(--sd-brand);
     border-radius: 14px;
     /* width = content area sekce (= --max-section − 2× section padding),
        drží zarovnání s audit-trust gridem výše */
@@ -1028,7 +1020,7 @@ import { czDate } from "~/lib/date";
     border-radius: 8px;
   }
   .audit-examples__list :global(strong) {
-    color: var(--sd-magenta);
+    color: var(--sd-brand);
     font-weight: 700;
   }
 
@@ -1036,8 +1028,8 @@ import { czDate } from "~/lib/date";
   .audit-impact-frame {
     margin: 0 0 clamp(2rem, 3vw, 2.5rem);
     padding: clamp(1.25rem, 2vw, 1.5rem);
-    background: color-mix(in oklch, var(--sd-violet) 4%, var(--color-paper-deep));
-    border: 1px solid color-mix(in oklch, var(--sd-violet) 18%, var(--color-rule));
+    background: color-mix(in oklab, var(--sd-brand) 4%, var(--color-paper-deep));
+    border: 1px solid color-mix(in oklab, var(--sd-brand) 18%, var(--color-rule));
     border-radius: 12px;
   }
   .audit-impact-frame__eyebrow {
@@ -1047,7 +1039,7 @@ import { czDate } from "~/lib/date";
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--sd-violet);
+    color: var(--sd-brand);
     margin: 0 0 0.875rem;
   }
   .audit-impact-frame__grid {
@@ -1066,7 +1058,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-impact-frame__item--crit { border-left-color: oklch(0.6 0.22 25); }
   .audit-impact-frame__item--quick { border-left-color: oklch(0.7 0.18 145); }
-  .audit-impact-frame__item--strat { border-left-color: var(--sd-violet); }
+  .audit-impact-frame__item--strat { border-left-color: var(--sd-brand); }
   .audit-impact-frame__item :global(strong) {
     display: block;
     font-family: var(--font-sans);
@@ -1107,11 +1099,9 @@ import { czDate } from "~/lib/date";
     padding: 0;
   }
   .audit-visibility__inner {
-    background: linear-gradient(135deg,
-      color-mix(in oklch, var(--sd-violet) 10%, var(--color-paper)) 0%,
-      color-mix(in oklch, var(--sd-magenta) 8%, var(--color-paper)) 100%);
-    border: 1px solid color-mix(in oklch, var(--sd-violet) 25%, var(--color-rule));
-    border-left: 4px solid var(--sd-violet);
+    background: color-mix(in oklab, var(--sd-brand) 7%, var(--color-paper));
+    border: 1px solid color-mix(in oklab, var(--sd-brand) 25%, var(--color-rule));
+    border-left: 4px solid var(--sd-brand);
     border-radius: 14px;
     padding: clamp(1.5rem, 2.5vw, 2rem);
   }
@@ -1119,7 +1109,7 @@ import { czDate } from "~/lib/date";
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.75rem;
-    background: var(--sd-violet);
+    background: var(--sd-brand);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.7rem;
@@ -1140,7 +1130,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-visibility__title :global(strong) {
     font-weight: 700;
-    color: var(--sd-violet);
+    color: var(--sd-brand);
   }
   .audit-visibility__desc {
     font-family: var(--font-sans);
@@ -1170,7 +1160,7 @@ import { czDate } from "~/lib/date";
     align-items: center;
     padding: 0.3rem 0.75rem;
     background: var(--sd-gold);
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
     font-family: var(--font-sans);
     font-size: 0.7rem;
     font-weight: 700;
@@ -1190,7 +1180,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-deliverable__title :global(strong) {
     font-weight: 700;
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
   }
   .audit-deliverable__lead {
     font-family: var(--font-sans);
@@ -1227,7 +1217,7 @@ import { czDate } from "~/lib/date";
     align-items: center;
     justify-content: center;
     background: var(--sd-gold);
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
@@ -1250,12 +1240,12 @@ import { czDate } from "~/lib/date";
   }
 
   /* ===== Urgency / FOMO sekce „proč to řešit teď" =====
-     Hned za hero. Subtle magenta tint bg, 3-card grid s urgency framing. */
+     Hned za hero. Jemný fialový nádech pozadí, 3 karty s urgency framing. */
   .audit-urgency {
     background:
-      radial-gradient(ellipse 50% 60% at 100% 0%, color-mix(in oklch, var(--sd-magenta) 8%, transparent), transparent 60%),
+      radial-gradient(ellipse 50% 60% at 100% 0%, color-mix(in oklch, var(--sd-brand) 8%, transparent), transparent 60%),
       var(--color-paper);
-    border-top: 1px solid color-mix(in oklch, var(--sd-magenta) 18%, var(--color-rule));
+    border-top: 1px solid color-mix(in oklab, var(--sd-brand) 18%, var(--color-rule));
     border-bottom: 1px solid var(--color-rule);
   }
   .audit-urgency__inner {
@@ -1271,7 +1261,7 @@ import { czDate } from "~/lib/date";
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.75rem;
-    background: var(--sd-magenta);
+    background: var(--sd-brand);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -1292,7 +1282,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-urgency__title :global(strong) {
     font-weight: 700;
-    color: var(--sd-magenta);
+    color: var(--sd-brand);
   }
   .audit-urgency__grid {
     display: grid;
@@ -1305,7 +1295,7 @@ import { czDate } from "~/lib/date";
   .audit-urgency-card {
     background: var(--color-paper-deep);
     border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--sd-magenta);
+    border-left: 3px solid var(--sd-brand);
     border-radius: 12px;
     padding: clamp(1.25rem, 2vw, 1.625rem);
   }
@@ -1314,7 +1304,7 @@ import { czDate } from "~/lib/date";
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     font-weight: 700;
-    color: var(--sd-magenta);
+    color: var(--sd-brand);
     margin: 0 0 0.5rem;
     letter-spacing: 0.04em;
   }
@@ -1339,10 +1329,7 @@ import { czDate } from "~/lib/date";
 
   /* ===== Final CTA banner — opakování CTA pod stránkou ===== */
   .audit-cta-final {
-    background:
-      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--sd-magenta) 28%, transparent), transparent 60%),
-      radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--sd-violet) 28%, transparent), transparent 60%),
-      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    background: var(--sd-surface);
     color: var(--sd-paper);
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
     text-align: center;
@@ -1362,7 +1349,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-cta-final__title :global(strong) {
     font-weight: 700;
-    color: color-mix(in oklch, var(--sd-magenta) 60%, white);
+    color: var(--sd-gold);
   }
   .audit-cta-final__lead {
     font-family: var(--font-sans);
@@ -1380,7 +1367,7 @@ import { czDate } from "~/lib/date";
     font-weight: 700;
     padding: 1rem 1.875rem;
     background: var(--sd-gold);
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
     border-radius: 999px;
     text-decoration: none;
     transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
@@ -1491,7 +1478,7 @@ import { czDate } from "~/lib/date";
     gap: 0.625rem;
   }
   .audit-layer--bonus {
-    background: oklch(0.97 0.04 305 / 0.4);
+    background: color-mix(in oklab, var(--sd-brand) 5%, var(--color-paper));
     border-color: var(--lp-violet);
   }
   .audit-layer__num {
@@ -1594,8 +1581,8 @@ import { czDate } from "~/lib/date";
     max-width: 44rem;
     margin: 1.25rem 0 0;
     padding: 1rem 1.25rem;
-    background: oklch(from var(--lp-magenta) l c h / 0.06);
-    border-left: 3px solid var(--lp-magenta);
+    background: oklch(from var(--lp-violet) l c h / 0.06);
+    border-left: 3px solid var(--lp-violet);
     border-radius: 0 8px 8px 0;
     font-size: 0.9375rem;
     line-height: 1.55;
@@ -1622,10 +1609,10 @@ import { czDate } from "~/lib/date";
     gap: 1rem;
   }
   .audit-compare__col--featured {
-    border-color: var(--lp-magenta);
+    border-color: var(--sd-gold);
     border-width: 2px;
-    background: oklch(0.97 0.04 335 / 0.4);
-    box-shadow: 0 8px 22px -10px oklch(from var(--lp-magenta) l c h / 0.3);
+    background: color-mix(in oklab, var(--sd-gold) 9%, var(--color-paper));
+    box-shadow: 0 8px 22px -10px oklch(from var(--sd-gold-deep) l c h / 0.45);
   }
   .audit-compare__col header {
     border-bottom: 1px solid var(--color-rule);
@@ -1644,11 +1631,11 @@ import { czDate } from "~/lib/date";
   }
   .audit-compare__pill--pack {
     color: var(--lp-violet);
-    background: oklch(0.96 0.05 305 / 0.6);
+    background: color-mix(in oklab, var(--sd-brand) 10%, var(--color-paper));
   }
   .audit-compare__pill--audit {
-    color: #fff;
-    background: var(--lp-magenta);
+    color: var(--sd-brand-deep);
+    background: var(--sd-gold);
   }
   .audit-compare__col h3 {
     font-family: var(--font-sans);
@@ -1659,7 +1646,6 @@ import { czDate } from "~/lib/date";
     margin: 0 0 0.5rem;
   }
   .audit-compare__col h3 :global(strong) { color: var(--lp-violet); font-weight: 700; }
-  .audit-compare__col--featured h3 :global(strong) { color: var(--lp-magenta); }
   .audit-compare__price {
     font-family: var(--font-mono);
     font-size: 0.85rem;
@@ -1691,7 +1677,6 @@ import { czDate } from "~/lib/date";
     color: var(--lp-violet);
     font-weight: 700;
   }
-  .audit-compare__col--featured li::before { color: var(--lp-magenta); }
   .audit-compare__col li :global(strong) { color: var(--color-ink); font-weight: 600; }
   .audit-compare__cta {
     align-self: flex-start;
@@ -1710,8 +1695,8 @@ import { czDate } from "~/lib/date";
     background: color-mix(in oklch, var(--lp-violet) 85%, black);
     transform: translateY(-1px);
   }
-  .audit-compare__cta--accent { background: var(--lp-magenta); }
-  .audit-compare__cta--accent:hover { background: color-mix(in oklch, var(--lp-magenta) 85%, black); }
+  .audit-compare__cta--accent { background: var(--sd-button-gold); color: var(--sd-brand-deep); }
+  .audit-compare__cta--accent:hover { background: var(--sd-gold-deep); }
 
   /* ===== FAQ ===== */
   
@@ -1756,7 +1741,7 @@ import { czDate } from "~/lib/date";
     justify-content: center;
     width: 100%;
     background: var(--sd-gold);
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
     font-weight: 700;
     font-size: 1.0625rem;
     padding: 1.125rem 1.5rem;
@@ -1765,7 +1750,7 @@ import { czDate } from "~/lib/date";
   }
   .audit-form--inline .audit-form__submit:hover {
     background: color-mix(in oklch, var(--sd-gold) 85%, white);
-    color: var(--sd-deep);
+    color: var(--sd-brand-deep);
     transform: translateY(-2px);
     box-shadow: 0 12px 32px -8px oklch(from var(--sd-gold) l c h / 0.7);
   }
@@ -1790,7 +1775,7 @@ import { czDate } from "~/lib/date";
     color: var(--color-ink);
   }
   .audit-form__field label span[aria-hidden] {
-    color: var(--lp-magenta);
+    color: var(--lp-violet);
     margin-left: 0.125rem;
   }
   .audit-form__hint {
@@ -1857,14 +1842,14 @@ import { czDate } from "~/lib/date";
     padding: 1rem 1.75rem;
     border: none;
     border-radius: 999px;
-    background: var(--lp-magenta);
+    background: var(--sd-button);
     color: #fff;
     cursor: pointer;
     margin-top: 1.75rem;
     transition: background 0.15s ease, transform 0.15s ease;
   }
   .audit-form__submit:hover {
-    background: color-mix(in oklch, var(--lp-magenta) 85%, black);
+    background: var(--sd-brand-deep);
     transform: translateY(-1px);
   }
   .audit-form__legal {

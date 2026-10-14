@@ -230,11 +230,11 @@ import {
 </BaseLayout>
 
 <style>
-  /* Paleta Sniper Design je globalni (global.css). Tady jen dva aliasy,
-     ktere pouzivaji akcentove CTA teto stranky. */
+  /* Paleta Sniper Design je globalni (global.css). Stranka agentury nese jen
+     barvy znacky: akcent webu (modra v `.hl`, FAQ) tu prebira fialova. */
   .kontakt {
-    --lp-violet: var(--sd-violet);
-    --lp-magenta: var(--sd-magenta);
+    --lp-violet: var(--sd-brand);
+    --color-accent: var(--sd-brand);
   }
 
   /* ===== HERO — Sniper Design brand box ===== */
@@ -244,22 +244,12 @@ import {
     padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-x) clamp(2rem, 4vw, 3.5rem);
   }
   .kontakt-hero__inner {
-    background:
-      radial-gradient(ellipse 70% 60% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 30%, transparent), transparent 60%),
-      radial-gradient(ellipse 80% 70% at -10% 100%, color-mix(in oklch, var(--sd-violet) 32%, transparent), transparent 60%),
-      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    background: var(--sd-surface);
     color: var(--sd-paper);
     border-radius: 14px;
     padding: clamp(2rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3.5rem);
     position: relative;
     overflow: hidden;
-  }
-  .kontakt-hero__inner::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
   }
   /* Logo vlevo, odznaky partnerstvi vpravo — prvni radek stranky (od 14. 10. 2026).
      Odznaky tu jsou nejviditelnejsi, a pritom kontaktum neuberou misto pod H1. */
@@ -290,7 +280,7 @@ import {
   }
   .kontakt-hero__title :global(strong) {
     font-weight: 700;
-    color: color-mix(in oklch, var(--sd-magenta) 60%, white);
+    color: var(--sd-gold);
   }
   .kontakt-hero__lead {
     font-family: var(--font-sans);
@@ -301,7 +291,7 @@ import {
     max-width: 38rem;
   }
   .kontakt-hero__lead :global(a) {
-    color: color-mix(in oklch, var(--sd-magenta) 60%, white);
+    color: var(--sd-gold);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
@@ -445,10 +435,7 @@ import {
     padding: clamp(2rem, 5vw, 3.75rem) clamp(1.5rem, 5vw, 3.75rem);
     border-radius: 14px;
     color: var(--sd-paper);
-    background:
-      radial-gradient(ellipse 65% 85% at 22% 35%, var(--sd-brand), transparent 72%),
-      radial-gradient(ellipse 55% 70% at 95% 110%, color-mix(in oklch, var(--sd-brand) 70%, transparent), transparent 70%),
-      linear-gradient(160deg, var(--sd-brand-deep) 0%, color-mix(in oklch, var(--sd-brand) 45%, var(--sd-brand-deep)) 55%, var(--sd-brand-deep) 100%);
+    background: var(--sd-surface);
   }
   @media (min-width: 860px) {
     .kontakt-medal { grid-template-columns: auto 1fr; }
@@ -518,7 +505,7 @@ import {
     font-size: 1.0625rem;
     font-weight: 700;
     color: var(--sd-brand-deep);
-    background: linear-gradient(180deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
+    background: var(--sd-button-gold);
     padding: 0.8rem 1.5rem;
     border-radius: 12px;
     text-decoration: none;
@@ -723,7 +710,7 @@ import {
     padding: clamp(1.5rem, 3.5vw, 2.5rem);
     border: 2px solid var(--lp-violet);
     border-radius: 14px;
-    background: oklch(0.97 0.035 305 / 0.55);
+    background: color-mix(in oklab, var(--sd-brand) 5%, var(--color-paper));
     box-shadow: 0 12px 30px -16px oklch(from var(--lp-violet) l c h / 0.45);
   }
   @media (min-width: 768px) {
@@ -769,17 +756,17 @@ import {
     font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(135deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+    background: var(--sd-button);
     padding: 1rem 1.875rem;
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
-    box-shadow: 0 8px 20px -10px oklch(from var(--sd-magenta) l c h / 0.6);
+    box-shadow: 0 8px 20px -10px oklch(from var(--sd-brand) l c h / 0.6);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   .kontakt-meeting__cta:hover {
     transform: translateY(-1px);
-    box-shadow: 0 12px 24px -10px oklch(from var(--sd-magenta) l c h / 0.7);
+    box-shadow: 0 12px 24px -10px oklch(from var(--sd-brand) l c h / 0.7);
   }
   .kontakt-meeting__cta:focus-visible {
     outline: 3px solid var(--sd-gold);

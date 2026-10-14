@@ -311,9 +311,9 @@ import { czDate } from "~/lib/date";
 
   /* ===== Page root ===== */
   .lp {
-    --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.5 0.27 335);
-    --lp-gold: oklch(0.82 0.16 80);
+    /* Barvy značky z global.css — fialová a zlatá, žádná růžová (od 14. 10. 2026). */
+    --lp-violet: var(--sd-brand);
+    --lp-gold: var(--sd-gold);
   }
 
   /* ===== Section primitives ===== */
@@ -421,11 +421,11 @@ import { czDate } from "~/lib/date";
     color: var(--color-ink-muted);
     margin: 1.25rem 0 1.5rem;
     padding-left: 0.875rem;
-    border-left: 3px solid var(--lp-magenta);
+    border-left: 3px solid var(--lp-violet);
     max-width: 36rem;
   }
   .lp-hero__urgency :global(strong) {
-    color: var(--lp-magenta);
+    color: var(--lp-violet);
     font-weight: 600;
   }
   .lp-hero__lead {
@@ -445,8 +445,8 @@ import { czDate } from "~/lib/date";
     margin: 2.25rem 0 0;
     padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 1.875rem);
     background:
-      linear-gradient(180deg, color-mix(in oklch, var(--lp-violet) 6%, var(--color-paper)) 0%, var(--color-paper) 60%);
-    border: 1px solid color-mix(in oklch, var(--lp-violet) 22%, var(--color-rule));
+      linear-gradient(180deg, color-mix(in oklab, var(--lp-violet) 6%, var(--color-paper)) 0%, var(--color-paper) 60%);
+    border: 1px solid color-mix(in oklab, var(--lp-violet) 22%, var(--color-rule));
     border-radius: 18px;
     box-shadow:
       0 14px 40px -16px color-mix(in oklch, var(--lp-violet) 38%, transparent),
@@ -564,7 +564,7 @@ import { czDate } from "~/lib/date";
     transition: border-color 0.2s ease, transform 0.2s ease;
   }
   .lp-feature:hover {
-    border-color: color-mix(in oklch, var(--lp-violet) 35%, var(--color-rule));
+    border-color: color-mix(in oklab, var(--lp-violet) 35%, var(--color-rule));
     transform: translateY(-2px);
   }
   .lp-feature__num {
@@ -706,12 +706,12 @@ import { czDate } from "~/lib/date";
     padding: 1.75rem 1.625rem;
     border-left: 3px solid var(--lp-violet);
   }
-  .lp-tier--audit { border-left-color: var(--lp-magenta); }
-  /* Featured tier (Audit) — sytější magenta plocha, tlustší border, větší padding */
+  .lp-tier--audit { border-left-color: var(--sd-gold-deep); }
+  /* Featured tier (Audit) — zlatá jako doporučená volba, tlustší border, větší padding */
   .lp-tier--featured {
-    background: oklch(0.96 0.04 335);
-    border: 2px solid oklch(0.85 0.1 335);
-    border-left: 5px solid var(--lp-magenta);
+    background: color-mix(in oklab, var(--sd-gold) 9%, var(--color-paper));
+    border: 2px solid color-mix(in oklab, var(--sd-gold) 75%, var(--color-paper));
+    border-left: 5px solid var(--sd-gold-deep);
     padding: 2rem 1.875rem;
   }
   .lp-tier__head {
@@ -729,8 +729,8 @@ import { czDate } from "~/lib/date";
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #ffffff;
-    background-color: var(--lp-magenta);
+    color: var(--sd-brand-deep);
+    background-color: var(--sd-gold);
     padding: 5px 12px;
     border-radius: 999px;
     white-space: nowrap;
@@ -746,7 +746,7 @@ import { czDate } from "~/lib/date";
     margin-bottom: 0.875rem;
   }
   .lp-tier__head .lp-tier__num { margin-bottom: 0; }
-  .lp-tier--audit .lp-tier__num { color: var(--lp-magenta); }
+  .lp-tier--audit .lp-tier__num { color: var(--lp-violet); }
   .lp-tier__title {
     font-family: var(--font-sans);
     font-size: 1.25rem;
@@ -773,7 +773,7 @@ import { czDate } from "~/lib/date";
     background-color: oklch(1 0 0 / 0.7);
     padding: 0.4rem 0.75rem;
     border-radius: 999px;
-    border: 1px solid oklch(0.85 0.1 335);
+    border: 1px solid color-mix(in oklab, var(--sd-gold) 75%, var(--color-paper));
     margin-bottom: 1.125rem;
   }
   .lp-tier__footer {
@@ -813,7 +813,7 @@ import { czDate } from "~/lib/date";
     transform: translateY(-1px);
     box-shadow: 0 4px 12px -4px oklch(0 0 0 / 0.25);
   }
-  .lp-tier--audit .lp-tier__cta { background-color: var(--lp-magenta); }
+  .lp-tier--audit .lp-tier__cta { background: var(--sd-button-gold); color: var(--sd-brand-deep); }
   /* Eyebrow proof line — pod hlavním eyebrow, drobná autorita */
   .lp-section__proof {
     display: block;
@@ -832,7 +832,7 @@ import { czDate } from "~/lib/date";
   /* ===== FINAL CTA ===== */
   .lp-final {
     background:
-      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--lp-magenta) 14%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--lp-violet) 12%, transparent), transparent 60%),
       radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--lp-violet) 12%, transparent), transparent 60%),
       var(--color-paper-deep);
     padding: clamp(3.5rem, 6vw, 5rem) var(--space-section-x);

@@ -136,8 +136,8 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
 
 <style>
   .ty {
-    --ty-violet: oklch(0.55 0.25 305);
-    --ty-magenta: oklch(0.5 0.27 335);
+    /* Barvy značky z global.css — fialová a zlatá, žádná růžová (od 14. 10. 2026). */
+    --ty-violet: var(--sd-brand);
     --ty-green: oklch(0.5 0.13 155);
   }
 
@@ -266,7 +266,7 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ty-magenta);
+    color: var(--ty-violet);
     margin-bottom: 0.75rem;
   }
   .ty-section__lead {
@@ -299,12 +299,12 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     padding: 1.75rem 1.625rem;
     border-left: 3px solid var(--ty-violet);
   }
-  .lp-tier--audit { border-left-color: var(--ty-magenta); }
-  /* Featured tier (Audit) — sytější magenta plocha, větší border. */
+  .lp-tier--audit { border-left-color: var(--sd-gold-deep); }
+  /* Featured tier (Audit) — zlatá jako doporučená volba, větší border. */
   .lp-tier--featured {
-    background: oklch(0.96 0.04 335);
-    border: 2px solid oklch(0.85 0.1 335);
-    border-left: 5px solid var(--ty-magenta);
+    background: color-mix(in oklab, var(--sd-gold) 9%, var(--color-paper));
+    border: 2px solid color-mix(in oklab, var(--sd-gold) 75%, var(--color-paper));
+    border-left: 5px solid var(--sd-gold-deep);
     padding: 2rem 1.875rem;
   }
   .lp-tier__head {
@@ -322,8 +322,8 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #ffffff;
-    background-color: var(--ty-magenta);
+    color: var(--sd-brand-deep);
+    background-color: var(--sd-gold);
     padding: 5px 12px;
     border-radius: 999px;
     white-space: nowrap;
@@ -339,7 +339,7 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     margin-bottom: 0.875rem;
   }
   .lp-tier__head .lp-tier__num { margin-bottom: 0; }
-  .lp-tier--audit .lp-tier__num { color: var(--ty-magenta); }
+  .lp-tier--audit .lp-tier__num { color: var(--ty-violet); }
   .lp-tier__title {
     font-family: var(--font-sans);
     font-size: 1.25rem;
@@ -366,7 +366,7 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     background-color: oklch(1 0 0 / 0.7);
     padding: 0.4rem 0.75rem;
     border-radius: 999px;
-    border: 1px solid oklch(0.85 0.1 335);
+    border: 1px solid color-mix(in oklab, var(--sd-gold) 75%, var(--color-paper));
     margin-bottom: 1.125rem;
   }
   .lp-tier__footer {
@@ -406,7 +406,7 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     transform: translateY(-1px);
     box-shadow: 0 4px 12px -4px oklch(0 0 0 / 0.25);
   }
-  .lp-tier--audit .lp-tier__cta { background-color: var(--ty-magenta); }
+  .lp-tier--audit .lp-tier__cta { background: var(--sd-button-gold); color: var(--sd-brand-deep); }
 
   /* ===== Sniper Design agency showcase ===== */
   .ty-agency {
@@ -429,7 +429,7 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ty-magenta);
+    color: var(--ty-violet);
     margin-bottom: 0.75rem;
   }
   .ty-agency__title {
@@ -501,7 +501,7 @@ import * as p from "~/content/pages/navod-zdarma-dekujeme";
     padding-bottom: 1px;
     transition: color 0.15s ease;
   }
-  .ty-agency__cta:hover { color: var(--ty-magenta); }
+  .ty-agency__cta:hover { color: var(--sd-brand-deep); }
 
   /* ===== Suggested links ===== */
   .ty-links {
