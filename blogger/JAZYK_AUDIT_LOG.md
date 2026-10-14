@@ -1787,3 +1787,19 @@ přivádět“ · „ukážou jen vaše data“ → „ukážou až vaše data�
 „všechno, co měl model k dispozici“ · „pokračovat do Seznam AI“ → „přejít do Seznam AI“ · obrácený slovosled „Že odpověď
 inzerce neovlivňuje, tvrdí Seznam“ → „Seznam tvrdí, že…“ · „tokeny“ → „pravidla“ / „user-agenty pro AI“. Z druhého auditu
 navíc „homepage“ → „domovská stránka Seznamu“ a „feed“ → „produktový feed“ u prvních výskytů.
+
+## 2026-10-14 · blok oprav „odhlášení ze Seznam AI“ (7 článků)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** ve všech sedmi článcích, před opravou i po každém kole |
+| LLM průchod (gpt-5.4, celý slovník, jen nový text) | 9 nálezů, 4 přijaty |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu věty |
+
+**Opraveno:** „po kterých Seznam… nepoužije“ → „na jejichž základě“ · „se Seznam-Extended odpadá“ (četlo se jako
+zvratné „se“) → „odpadá při zákazu pro Seznam-Extended“ · „Kde dokumentace co popisuje, se podle konvence odhadnout
+nedá“ → „Podle konvence se nedá odhadnout, kde…“ · „Zbytek je rozdělený dost vyhraněně“ → „Rozdělení zbytku je dost
+vyhraněné“. Z druhého auditu navíc „běžný crawler vyhledávání, ne AI opt-out“ → „běžný vyhledávací robot, ne odhlášení
+z AI“ a „Dokumentace se nedá tipnout“ (hovorové) → přeformulováno. **Nepřijato:** tři nálezy ve větách z verze 9. 8.,
+které blok nemění; „internetový archiv Wayback Machine“ (vysvětluje název) a „započítal“ (přesné sloveso v měření).
