@@ -1759,3 +1759,17 @@ Google AI Overviews“ · „předvídat variantu“ → „pokrýt každou vari
 hodin“ → „zobrazí během pár hodin“ · kulhající souřadnost „zvyšují kvalitu … a zároveň pravděpodobnost“ → „a zároveň
 zvyšují pravděpodobnost“ · „které jde spárovat … napáruje na karty“ → „které lze spárovat … přiřadí k produktovým
 kartám“ · „Seznam nezveřejnil“ → „Seznam nepopisuje“ (2×, i věcně přesnější) · „v ní“ s nejasným odkazem → „v Seznam AI“.
+
+## 2026-10-14 · `ai-sumarizace-a-vydavatele` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | 4× ⛔ `\bsession\b` v prvním konceptu → „relace“ (pojem ze smluvních podmínek Seznamu, v češtině se ale píše relace); pak **0 nálezů** ve všech verzích |
+| LLM průchod (gpt-5.4, celý slovník) | 5 nálezů, všech 5 přijato |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu věty |
+
+**Opraveno:** „souhrn nese zdroj“ → „uvádí zdroj“ · „návštěva je jen polovina obrazu“ (kalk idiomu) → „část obrazu“ ·
+„zákaz `Disallow: /`“ (zdvojený význam) → „pravidlo `Disallow: /`“, 2× · „Seznam je z AI ploch nepřivede“ → „přestane
+přivádět“ · „ukážou jen vaše data“ → „ukážou až vaše data“. Z druhého auditu navíc „těmhle“ → „těmto“, „homepage“ →
+„domovská stránka Seznamu“, „beta Seznam AI“ → „betaverze Seznam AI“.
