@@ -2,6 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Faq from "~/components/blocks/Faq.astro";
 import PartnerBadges from "~/components/blocks/PartnerBadges.astro";
+import SniperMark from "~/components/sniperdesign/SniperMark.astro";
 import {
   meta,
   breadcrumb,
@@ -104,20 +105,35 @@ import {
       </div>
     </section>
 
-    <!-- ===== 02 KDO JSME — medailonek firmy ===== -->
-    <section class="lp-section lp-section--alt">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">{about.eyebrowNum}</span> <Fragment set:html={about.eyebrowHtml} /></span>
-        <h2 class="lp-section__title" set:html={about.titleHtml}></h2>
-      </header>
+    <!-- ===== 02 KDO JSME — medailonek v barvách značky (od 14. 10. 2026) =====
+         Vizuální jazyk z podkladů agentury (bannery, znak): fialové pozadí,
+         nadpis bílá + zlatá, znak S ve zlatém šestiúhelníku, obrysy šestiúhelníků. -->
+    <section class="lp-section lp-section--alt" aria-labelledby="kontakt-about-title">
+      <!-- Rám je přímý potomek alt sekce (ta mu dá šířku a okraj), karta až uvnitř. -->
+      <div class="kontakt-medal-frame">
+      <div class="kontakt-medal">
+        <div class="kontakt-medal__deco kontakt-medal__deco--tr"><svg viewBox="0 0 100 116" aria-hidden="true" focusable="false"><polygon points="50,2 98,30 98,86 50,114 2,86 2,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polygon></svg></div>
+        <div class="kontakt-medal__deco kontakt-medal__deco--bl"><svg viewBox="0 0 100 116" aria-hidden="true" focusable="false"><polygon points="50,2 98,30 98,86 50,114 2,86 2,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polygon></svg></div>
 
-      <div class="kontakt-about">
-        {about.paragraphsHtml.map((p, i) => (
-          <p class:list={["kontakt-about__p", i === 0 && "kontakt-about__p--lead"]} set:html={p}></p>
-        ))}
-        <p class="kontakt-about__more">
-          <a href={about.more.href} target="_blank" rel="noopener" set:html={about.more.labelHtml}></a>
-        </p>
+        <div class="kontakt-medal__emblem">
+          <SniperMark />
+        </div>
+
+        <div class="kontakt-medal__body">
+          <span class="eyebrow"><span class="eyebrow__num">{about.eyebrowNum}</span> <Fragment set:html={about.eyebrowHtml} /></span>
+          <h2 id="kontakt-about-title" class="kontakt-medal__title" set:html={about.titleHtml}></h2>
+          {about.paragraphsHtml.map((p, i) => (
+            <p class:list={["kontakt-medal__p", i === 0 && "kontakt-medal__p--lead"]} set:html={p}></p>
+          ))}
+          <a
+            href={about.more.href}
+            target="_blank"
+            rel="noopener"
+            class="kontakt-medal__more"
+            set:html={about.more.labelHtml}
+          ></a>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -145,15 +161,6 @@ import {
         ))}
       </div>
 
-      <div class="kontakt-bridge">
-        <p set:html={services.bridge.textHtml}></p>
-        <a href={services.bridge.ctaHref} class="kontakt-bridge__cta">
-          {services.bridge.ctaLabel}
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </a>
-      </div>
     </section>
 
     <!-- ===== 04 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
@@ -416,37 +423,112 @@ import {
     .kontakt-hero__partners { --partner-scale: 1.2; }
   }
 
-  /* ===== 02 Kdo jsme — medailonek (od 14. 10. 2026) =====
-     Text drzi --w-read a stejny levy okraj jako hlavicka sekce (dve sirky, § VI).
-     Odkazy jsou v set:html, proto :global(a). */
-  /* Sirku nesou odstavce, ne obal: `.lp-section--alt > *` dava primym potomkum
-     max-width: var(--max-section) a ma vyssi specificitu (trida + 2 atributy),
-     takze `.kontakt-about { max-width }` prebil a text bezel pres 1 280 px. */
-  .kontakt-about__p,
-  .kontakt-about__more {
-    max-width: var(--w-read);
+  /* ===== 02 Kdo jsme — medailonek v barvách značky (od 14. 10. 2026) =====
+     Barvy z podkladů agentury: pozadí `--sd-brand` (fialová ze znaku a bannerů)
+     tmavnoucí k `--sd-brand-deep`, zvýraznění `--sd-gold`. Text drží --w-read
+     na odstavcích (ne na obalu: `.lp-section--alt > *` má vyšší specificitu).
+     Obsah v set:html -> :global(). */
+  /* Karta nesmí být přímý potomek `.lp-section--alt`: pravidlo `> *` (vyšší
+     specificita) jí přepíše vodorovný padding i okraje a karta se roztáhne
+     k okrajům okna. Proto rám `.kontakt-medal-frame`.
+     `overflow: clip`, ne `hidden`: dekorativní šestiúhelník přesahuje okraj
+     a kontejner s `hidden` jde posunout programově (scrollIntoView, hledání na
+     stránce, přechod tabulátorem na odkaz) — obsah pak ujede o desítky px. */
+  .kontakt-medal {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding: clamp(2rem, 5vw, 3.75rem) clamp(1.5rem, 5vw, 3.75rem);
+    border-radius: 14px;
+    color: var(--sd-paper);
+    background:
+      radial-gradient(ellipse 65% 85% at 22% 35%, var(--sd-brand), transparent 72%),
+      radial-gradient(ellipse 55% 70% at 95% 110%, color-mix(in oklch, var(--sd-brand) 70%, transparent), transparent 70%),
+      linear-gradient(160deg, var(--sd-brand-deep) 0%, color-mix(in oklch, var(--sd-brand) 45%, var(--sd-brand-deep)) 55%, var(--sd-brand-deep) 100%);
   }
-  .kontakt-about__p {
+  @media (min-width: 860px) {
+    .kontakt-medal { grid-template-columns: auto 1fr; }
+  }
+  /* Obrysy šestiúhelníků v pozadí — motiv z bannerů agentury. */
+  .kontakt-medal__deco {
+    position: absolute;
+    z-index: -1;
+    color: oklch(from var(--sd-paper) l c h / 0.12);
+    pointer-events: none;
+  }
+  .kontakt-medal__deco :global(svg) { display: block; width: 100%; height: auto; }
+  .kontakt-medal__deco--tr { width: clamp(12rem, 26vw, 22rem); top: -28%; right: -6%; }
+  .kontakt-medal__deco--bl { width: clamp(7rem, 13vw, 11rem); bottom: -22%; left: 34%; }
+
+  .kontakt-medal__emblem {
+    width: clamp(5.5rem, 15vw, 11rem);
+    /* Na tmavém podkladu bílé S ve zlatém šestiúhelníku — jako avatar agentury. */
+    --mark-hex: var(--sd-gold);
+    --mark-s: var(--sd-paper);
+    filter: drop-shadow(0 10px 24px oklch(from var(--sd-brand-deep) l c h / 0.55));
+  }
+
+  .kontakt-medal .eyebrow { color: oklch(from var(--sd-paper) l c h / 0.72); margin-bottom: 0.875rem; }
+  .kontakt-medal .eyebrow__num { color: var(--sd-gold); }
+
+  .kontakt-medal__title {
+    font-family: var(--font-agency);
+    font-weight: 700;
+    font-size: clamp(1.625rem, 3.2vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--sd-paper);
+    margin: 0 0 1.25rem;
+    text-wrap: balance;
+  }
+  /* Nadpis jako na bannerech: bílá + zlatá. `.hl` jinak bere barvu disciplíny. */
+  .kontakt-medal__title :global(.hl) { color: var(--sd-paper); font-weight: inherit; }
+  .kontakt-medal__title :global(strong) { color: var(--sd-gold); font-weight: 700; }
+
+  .kontakt-medal__p {
+    max-width: var(--w-read);
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--color-ink-muted);
+    color: oklch(from var(--sd-paper) l c h / 0.84);
     margin: 0 0 1rem;
   }
-  .kontakt-about__p--lead {
+  .kontakt-medal__p--lead {
     font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
     line-height: 1.6;
-    color: var(--color-ink);
+    color: var(--sd-paper);
   }
-  .kontakt-about__p :global(strong) { color: var(--color-ink); font-weight: 600; }
-  .kontakt-about__p :global(a),
-  .kontakt-about__more a {
-    color: var(--lp-violet);
+  .kontakt-medal__p :global(strong) { color: var(--sd-paper); font-weight: 700; }
+  .kontakt-medal__p :global(a) {
+    color: var(--sd-gold);
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-decoration-color: oklch(from var(--sd-gold) l c h / 0.55);
+    text-underline-offset: 3px;
   }
-  .kontakt-about__more {
-    margin: 1.5rem 0 0;
-    font-weight: 600;
+  .kontakt-medal__p :global(a:hover) { text-decoration-color: var(--sd-gold); }
+
+  /* Zlaté tlačítko jako „na míru“ na bannerech: zlatý přechod, tmavě fialový text. */
+  .kontakt-medal__more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-family: var(--font-agency);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--sd-brand-deep);
+    background: linear-gradient(180deg, var(--sd-gold) 0%, var(--sd-gold-deep) 100%);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 22px -12px oklch(from var(--sd-gold-deep) l c h / 0.8);
+    transition: transform 0.15s ease;
+  }
+  .kontakt-medal__more:hover { transform: translateY(-1px); }
+  .kontakt-medal__more:focus-visible { outline: 3px solid var(--sd-paper); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .kontakt-medal__more { transition: none; }
   }
 
   /* ===== Mini legal line pod hero ===== */
@@ -590,48 +672,6 @@ import {
     padding-top: 0.625rem;
     margin-top: 0.25rem;
     border-top: 1px dashed var(--color-rule);
-  }
-
-  /* ===== Bridge to Pack (po sekci 01) ===== */
-  .kontakt-bridge {
-    margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
-    padding: 1.25rem 1.5rem;
-    background: oklch(0.96 0.05 305 / 0.5);
-    border: 1px solid oklch(from var(--lp-violet) l c h / 0.2);
-    border-left: 3px solid var(--lp-violet);
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 1.5rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .kontakt-bridge p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--color-ink);
-    flex: 1 1 24rem;
-  }
-  .kontakt-bridge p :global(strong) { font-weight: 600; }
-  .kontakt-bridge__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #fff;
-    background: var(--lp-violet);
-    padding: 0.625rem 1.125rem;
-    border-radius: 999px;
-    text-decoration: none;
-    flex-shrink: 0;
-    transition: transform 0.15s ease, background 0.15s ease;
-  }
-  .kontakt-bridge__cta:hover {
-    background: color-mix(in oklch, var(--lp-violet) 85%, black);
-    transform: translateY(-1px);
   }
 
   /* ===== Trust block (4 proof points) ===== */

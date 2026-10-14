@@ -95,6 +95,13 @@
   --sd-gold: oklch(0.82 0.16 80);
   --sd-gold-deep: oklch(0.7 0.18 60);
   --sd-paper: oklch(0.985 0.004 250);
+  /* Značková fialová přímo z podkladů agentury (14. 10. 2026): `--sd-brand` je barva
+     písmene S ve znaku (`fav sniper.svg`, #5716b8) a zároveň pozadí jejích bannerů;
+     `--sd-brand-deep` jsou tmavé okraje téhož pozadí (#21084c). Je modřejší než
+     `--sd-deep` (odstín 291 proti 305). Zlatá ze znaku (#fcae21) sedí na `--sd-gold`,
+     novou proto nepotřebuje. Zdroj: „Sniper design - znalost agentury/“. */
+  --sd-brand: oklch(0.42 0.22 291);
+  --sd-brand-deep: oklch(0.23 0.11 291);
 
   /* ---- Štítky nad bloky (eyebrow) ------------------------------------------
      Drobný text nad blokem často nese podstatnou informaci — u kontextového CTA

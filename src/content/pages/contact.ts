@@ -211,7 +211,10 @@ export const about = {
   },
 };
 
-/** Sekce 03 — Co děláme (6 služeb agentury + bridge na Pack). */
+/**
+ * Sekce 03 — Co děláme (6 služeb agentury).
+ * Prodejní lišta Packu s cenou odebrána 14. 10. 2026 — na kontaktu se neprodává.
+ */
 export const services = {
   eyebrowNum: "03",
   eyebrowHtml: "Co děláme",
@@ -273,12 +276,6 @@ export const services = {
       metaHtml: "2&nbsp;600&nbsp;Kč/h &middot; typicky 1&ndash;2 hodiny",
     },
   ],
-  bridge: {
-    textHtml:
-      "Nechcete rovnou službu od&nbsp;agentury? <strong>AI&nbsp;SEO Wireframe Pack</strong> je nejdostupnější způsob, jak si&nbsp;tenhle postup převést na&nbsp;vlastní web. <strong>1&nbsp;490&nbsp;Kč jednorázově</strong>, včetně DPH, master PDF 85&nbsp;stran.",
-    ctaLabel: "Zobrazit Pack",
-    ctaHref: "/pack/",
-  },
 };
 
 /** Sekce 04 — Proč nám můžete důvěřovat (4 důkazy). */

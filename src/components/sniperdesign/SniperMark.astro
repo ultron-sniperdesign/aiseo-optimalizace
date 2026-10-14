@@ -1,0 +1,60 @@
+---
+/**
+ * SniperMark — znak Sniper Design: písmeno S v zaobleném šestiúhelníku.
+ *
+ * Cesty jsou převzaté beze změny z oficiálního souboru agentury
+ * `Sniper design - znalost agentury/fav sniper.svg` (14. 10. 2026). Tam je
+ * šestiúhelník zlatý (#fcae21 = `--sd-gold`) a S fialové (#5716b8 = `--sd-brand`)
+ * na bílém. Na tmavém podkladu značka používá bílé S (avatar agentury), proto
+ * jdou obě barvy nastavit proměnnými:
+ *
+ *   --mark-hex   barva šestiúhelníku   (výchozí --sd-gold)
+ *   --mark-s     barva písmene S        (výchozí --sd-brand)
+ *
+ * Velikost určuje obal (šířka); poměr stran drží viewBox. Třídu do komponenty
+ * nepředávej — styly se na webu scopují atributem `data-astro-cid-*`, takže
+ * pravidlo rodiče by se na `svg` netrefilo. Obal ji dostane i s barvami.
+ * Dekorativní použití: `decorative` → aria-hidden. Jinak nese popisek „Sniper Design“.
+ */
+interface Props {
+  decorative?: boolean;
+}
+
+const { decorative = false } = Astro.props;
+---
+
+<svg
+  class="sd-mark"
+  viewBox="0 0 175 192"
+  xmlns="http://www.w3.org/2000/svg"
+  role={decorative ? undefined : "img"}
+  aria-label={decorative ? undefined : "Sniper Design"}
+  aria-hidden={decorative ? "true" : undefined}
+  focusable="false"
+>
+  <path
+    class="sd-mark__hex"
+    d="M87.203,-0c5.239,-0 10.477,1.355 15.171,4.064l56.862,32.83c9.388,5.42 15.171,15.436 15.171,26.276l-0,65.66c-0,10.84 -5.783,20.856 -15.171,26.276l-56.862,32.83c-4.694,2.709 -9.932,4.064 -15.171,4.064c-5.238,-0 -10.476,-1.355 -15.17,-4.064l-56.863,-32.83c-9.387,-5.42 -15.17,-15.436 -15.17,-26.276l-0,-65.66c-0,-10.84 5.783,-20.856 15.17,-26.276l56.863,-32.83c4.694,-2.709 9.932,-4.064 15.17,-4.064Zm0,10c3.512,-0 7.025,0.908 10.171,2.725l56.862,32.83c6.294,3.633 10.171,10.348 10.171,17.615c-0,-0 -0,65.66 -0,65.66c-0,7.267 -3.877,13.982 -10.171,17.615l-56.862,32.83c-3.146,1.817 -6.659,2.725 -10.171,2.725c-3.512,-0 -7.024,-0.908 -10.171,-2.725c0,0 -56.862,-32.83 -56.862,-32.83c-6.293,-3.633 -10.17,-10.348 -10.17,-17.615l-0,-65.66c-0,-7.267 3.877,-13.982 10.17,-17.615c0,-0 56.627,-32.694 56.862,-32.83c3.147,-1.817 6.659,-2.725 10.171,-2.725Z"
+  ></path>
+  <path
+    class="sd-mark__s"
+    d="M90.755,133.011c4.59,0 8.443,-1.272 11.561,-3.816c3.118,-2.544 4.676,-5.686 4.676,-9.428c0,-2.993 -1.01,-5.537 -3.03,-7.632c-2.02,-2.095 -4.677,-3.978 -7.969,-5.649c-3.292,-1.671 -6.859,-3.305 -10.7,-4.901c-3.791,-1.596 -7.595,-3.33 -11.411,-5.2c-3.816,-1.871 -7.32,-4.078 -10.513,-6.622c-3.192,-2.544 -5.761,-5.612 -7.707,-9.204c-1.945,-3.591 -2.918,-7.906 -2.918,-12.945c0,-6.235 1.572,-11.685 4.714,-16.349c3.143,-4.664 7.558,-8.293 13.244,-10.887c5.687,-2.594 12.296,-3.891 19.829,-3.891c12.022,0 23.545,2.993 34.569,8.979l-9.428,19.155c-4.889,-3.092 -9.553,-5.188 -13.992,-6.285c-4.44,-1.097 -8.131,-1.646 -11.074,-1.646c-4.44,-0 -7.994,0.935 -10.663,2.806c-2.669,1.87 -4.003,4.352 -4.003,7.445c-0,2.644 0.948,4.913 2.843,6.809c1.896,1.896 4.403,3.592 7.52,5.088c3.118,1.497 6.522,3.018 10.214,4.564c3.841,1.597 7.732,3.343 11.673,5.238c3.94,1.896 7.582,4.165 10.924,6.809c3.342,2.644 6.023,5.837 8.044,9.578c2.02,3.741 3.03,8.256 3.03,13.543c0,6.734 -1.721,12.708 -5.163,17.921c-3.442,5.213 -8.181,9.303 -14.217,12.271c-6.035,2.968 -12.969,4.452 -20.801,4.452c-7.233,0 -14.491,-1.284 -21.774,-3.853c-7.283,-2.569 -13.942,-6.198 -19.978,-10.887l10.775,-18.258c2.793,2.445 6.01,4.64 9.652,6.585c3.641,1.945 7.395,3.467 11.261,4.564c3.866,1.098 7.47,1.646 10.812,1.646Z"
+  ></path>
+</svg>
+
+<style>
+  .sd-mark {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* Šestiúhelník je prstenec: vnější a vnitřní obrys v jedné cestě. Bez evenodd
+     se vyplní celý (v originálu je fill-rule na kořenovém <svg>). */
+  .sd-mark__hex {
+    fill: var(--mark-hex, var(--sd-gold));
+    fill-rule: evenodd;
+  }
+  .sd-mark__s {
+    fill: var(--mark-s, var(--sd-brand));
+  }
+</style>
