@@ -108,7 +108,7 @@ export const hero = {
    * tenhle web, a zmiňoval Pack; obojí na kontaktu nepatří.
    */
   titleHtml: "Kontakt na <strong>Sniper Design</strong>",
-  leadHtml: "Vývojářská agentura pro e-shopy na&nbsp;Upgates a&nbsp;Shoptetu.",
+  leadHtml: "Vývojářská agentura pro e&#8209;shopy na&nbsp;Upgates a&nbsp;Shoptetu.",
   /**
    * Kontaktní dlaždice. Od 22. 9. 2026 stojí v hero — dřív byly až v poslední
    * sekci stránky. `note` je doplňkový řádek pod hodnotou (hodiny, doba odezvy).
@@ -167,15 +167,19 @@ export const meeting = {
   eyebrowNum: "01",
   eyebrowHtml: "Online schůzka",
   titleHtml:
-    'Pojďme se <span class="hl">potkat online</span> &mdash; <strong>30&nbsp;minut nad vaším e-shopem</strong>',
+    'Pojďme se <span class="hl">potkat online</span> &mdash; <strong>30&nbsp;minut zdarma a&nbsp;nezávazně</strong>',
   leadHtml:
-    "Projdeme spolu váš e-shop a&nbsp;řekneme, co bychom řešili první a&nbsp;co může počkat. <strong>Nic to nestojí</strong> a&nbsp;odejdete s&nbsp;konkrétními informacemi pro svůj e-shop.",
-  /** Krátké údaje o schůzce, vykreslené jako štítky. */
-  facts: ["30&nbsp;minut", "online přes Google&nbsp;Meet", "zdarma", "termín si&nbsp;vyberete sami"],
+    "Projdeme spolu váš e&#8209;shop a&nbsp;řekneme, co bychom řešili první a&nbsp;co může počkat. Odejdete s&nbsp;konkrétními informacemi pro svůj e&#8209;shop.",
+  /**
+   * „Zdarma a nezávazně“ nese nadpis i poznámka u tlačítka (14. 10. 2026).
+   * Ve štítcích to dřív bylo jako jeden ze čtyř drobných údajů a „nezávazně“
+   * při přestavbě vypadlo úplně — uživatel to na snímku nenašel.
+   */
+  facts: ["online přes Google&nbsp;Meet", "termín si&nbsp;vyberete sami"],
   cta: {
     labelHtml: "Vybrat termín&nbsp;&rarr;",
     href: "https://www.sniperdesign.cz/rezervace-online-schuzky",
-    noteHtml: "Otevře kalendář na&nbsp;sniperdesign.cz",
+    noteHtml: "<strong>Zdarma a&nbsp;nezávazně</strong> &middot; kalendář na&nbsp;sniperdesign.cz",
   },
 };
 
@@ -195,11 +199,11 @@ export const about = {
   eyebrowNum: "02",
   eyebrowHtml: "Kdo jsme",
   titleHtml:
-    '<span class="hl">Sniper Design</span> v&nbsp;kostce &mdash; <strong>vývojáři e-shopů od&nbsp;roku 2016</strong>',
+    '<span class="hl">Sniper Design</span> v&nbsp;kostce &mdash; <strong>vývojáři e&#8209;shopů od&nbsp;roku 2016</strong>',
   paragraphsHtml: [
-    "Jsme vývojářská agentura specializovaná na&nbsp;e-shopy na&nbsp;<strong>Upgates a&nbsp;Shoptetu</strong>. Od&nbsp;roku 2016 jsme pracovali na&nbsp;víc než 600 e-shopech &mdash; od&nbsp;zásahů do&nbsp;kódu šablony přes napojení na&nbsp;další systémy až po&nbsp;přechody mezi platformami.",
+    "Jsme vývojářská agentura specializovaná na&nbsp;e&#8209;shopy na&nbsp;<strong>Upgates a&nbsp;Shoptetu</strong>. Od&nbsp;roku 2016 jsme pracovali na&nbsp;víc než 600 e&#8209;shopech &mdash; od&nbsp;zásahů do&nbsp;kódu šablony přes napojení na&nbsp;další systémy až po&nbsp;přechody mezi platformami.",
     "Pro obě platformy vyvíjíme i&nbsp;vlastní produkty: desítky modulů, šablonu Sniper&nbsp;ONE a&nbsp;doplněk SYNC Multistore. Oba poslední prošly schválením v&nbsp;Shoptet Marketplace.",
-    'A&nbsp;provozujeme vlastní e-shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA DETAIL</a>. Řešíme na&nbsp;něm stejné problémy jako naši klienti a&nbsp;viditelnost v&nbsp;AI vyhledávání na&nbsp;něm měříme dřív, než ji nabídneme jiným &mdash; za&nbsp;necelé dva měsíce přinesla <a href="/ai-viditelnost/">200&nbsp;000 zobrazení v&nbsp;Přehledech od&nbsp;AI a&nbsp;v&nbsp;režimu AI</a>.',
+    'A&nbsp;provozujeme vlastní e&#8209;shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA DETAIL</a>. Řešíme na&nbsp;něm stejné problémy jako naši klienti a&nbsp;viditelnost v&nbsp;AI vyhledávání na&nbsp;něm měříme dřív, než ji nabídneme jiným &mdash; za&nbsp;necelé dva měsíce přinesla <a href="/ai-viditelnost/">200&nbsp;000 zobrazení v&nbsp;Přehledech od&nbsp;AI a&nbsp;v&nbsp;režimu AI</a>.',
   ],
   more: {
     labelHtml: "Víc o&nbsp;nás na&nbsp;sniperdesign.cz&nbsp;&rarr;",

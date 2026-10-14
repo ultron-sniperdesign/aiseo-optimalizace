@@ -746,9 +746,14 @@ import {
     outline-offset: 3px;
   }
   .kontakt-meeting__note {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: var(--color-ink-faint);
     margin: 0;
+  }
+  /* „Zdarma a nezávazně“ u tlačítka — v set:html, proto :global(). */
+  .kontakt-meeting__note :global(strong) {
+    color: var(--color-ink);
+    font-weight: 700;
   }
   @media (prefers-reduced-motion: reduce) {
     .kontakt-meeting__cta { transition: none; }
