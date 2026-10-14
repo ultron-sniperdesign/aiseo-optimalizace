@@ -1773,3 +1773,17 @@ kartám“ · „Seznam nezveřejnil“ → „Seznam nepopisuje“ (2×, i věc
 „zákaz `Disallow: /`“ (zdvojený význam) → „pravidlo `Disallow: /`“, 2× · „Seznam je z AI ploch nepřivede“ → „přestane
 přivádět“ · „ukážou jen vaše data“ → „ukážou až vaše data“. Z druhého auditu navíc „těmhle“ → „těmto“, „homepage“ →
 „domovská stránka Seznamu“, „beta Seznam AI“ → „betaverze Seznam AI“.
+
+## 2026-10-14 · `seznam-cz-ai-vyhledavani` (refresh)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** ve všech verzích |
+| LLM průchod (gpt-5.4, celý slovník) | 6 nálezů, všech 6 přijato |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu věty |
+
+**Opraveno:** „bere podklady“ → „čerpá“ · „jmenovala mezi zdroji“ → „uváděla“ · „podklady“ vedle „zdrojů“ → „zdroje“ /
+„všechno, co měl model k dispozici“ · „pokračovat do Seznam AI“ → „přejít do Seznam AI“ · obrácený slovosled „Že odpověď
+inzerce neovlivňuje, tvrdí Seznam“ → „Seznam tvrdí, že…“ · „tokeny“ → „pravidla“ / „user-agenty pro AI“. Z druhého auditu
+navíc „homepage“ → „domovská stránka Seznamu“ a „feed“ → „produktový feed“ u prvních výskytů.
