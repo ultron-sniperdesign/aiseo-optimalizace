@@ -571,7 +571,7 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   podstatnou informaci (tokeny `--label-*`), ne pro parafrázi nadpisu. **Časová osa
   do `Stepperu` nepatří** — ty tři případy jsou chronologie a patří do tabulky
   `Datum | Co se stalo | Co to znamená`, jak ji drží `/ai-mode/`.
-- **`set:html` + Astro scoped CSS — KRITICKÉ pro datové moduly** — obsah vložený přes `set:html` (datové moduly `src/content/pages/*.ts`) NEdostane Astro scope atribut (`data-astro-cid-*`). Scoped pravidlo `.X strong { color: violet }` se kompiluje na `.X[cid] strong[cid]` → vložený `<strong>` bez atributu NEMATCHNE → ztratí styl (violet nadpisy zčernají, odkazy ztratí styl). **Fix: obal potomka v `:global()`** → `.X :global(strong)` (rodič zůstane scoped, potomek matchne i bez atributu, žádný leak). Platí pro `strong`, `a`, `em`, `small`, `code` uvnitř set:html. **Nejčastější tichá regrese je `a`:** 16. 9. 2026 se na `/audit/` 23 nových odkazů vykreslilo jako obyčejný text, protože nové bloky měly `:global(strong)`, ale `:global(a)` ne (globální reset je `a { color: inherit; text-decoration: inherit }`, takže odkaz zmizí beze stopy). Po vložení odkazu do `set:html` vždy zkontroluj `getComputedStyle(a).textDecorationLine` v prohlížeči. Po refaktoru VŽDY vizuálně ověř barvy v prohlížeči (`getComputedStyle`), ne jen počty prvků — regrese 2026-05-22.
+- **`set:html` + Astro scoped CSS — KRITICKÉ pro datové moduly** — obsah vložený přes `set:html` (datové moduly `src/content/pages/*.ts`) NEdostane Astro scope atribut (`data-astro-cid-*`). Scoped pravidlo `.X strong { color: violet }` se kompiluje na `.X[cid] strong[cid]` → vložený `<strong>` bez atributu NEMATCHNE → ztratí styl (violet nadpisy zčernají, odkazy ztratí styl). **Fix: obal potomka v `:global()`** → `.X :global(strong)` (rodič zůstane scoped, potomek matchne i bez atributu, žádný leak). Platí pro `strong`, `a`, `em`, `small`, `code` uvnitř set:html. **Nejčastější tichá regrese je `a`:** 16. 9. 2026 se na `/audit/` 23 nových odkazů vykreslilo jako obyčejný text, protože nové bloky měly `:global(strong)`, ale `:global(a)` ne (globální reset je `a { color: inherit; text-decoration: inherit }`, takže odkaz zmizí beze stopy). Po vložení odkazu do `set:html` vždy zkontroluj `getComputedStyle(a).textDecorationLine` v prohlížeči. Po refaktoru VŽDY vizuálně ověř barvy v prohlížeči (`getComputedStyle`), ne jen počty prvků — regrese 2026-05-22. **Platí i pro komponenty, ne jen pro datové moduly:** oba bloky Sniper Design (`sniperdesign/*Contact.astro`, ~180 stránek) měly `.sd-*__title strong` a `.sd-*__lead a` bez `:global()`, takže zvýraznění v nadpisu a odkazy v úvodním textu se nevykreslily nikdy — odkaz na Sniper Design vypadal jako běžný text (nalezeno a opraveno 14. 10. 2026).
 - **`import.meta.url` v Astro komponentě NEUKAZUJE na zdrojový soubor** — v dev režimu ano, ale v produkčním buildu ukazuje na zabalený chunk (`dist/chunks/*.mjs`). Cesta odvozená přes `new URL("../../../public", import.meta.url)` proto v buildu minula kořen projektu o úroveň a `Figure.astro` tiše nevykreslil ani jeden obrázek (naměřeno 2026-09-06). **Pro cesty k souborům v build-time kódu používej `process.cwd()`**, což je při `astro build` i `astro dev` kořen projektu. Selhání je tiché, takže po zásahu vždy zkontroluj `dist/`, ne jen dev server.
 - **Štítky nad bloky mají jednu škálu** (od 2026-09-06) — `--label-size` (0.875rem), `--label-weight` (700) a `--label-tracking` v `global.css`. Používají je `.eyebrow`, `.inline-cta__eyebrow`, `.insight__label` a `.answer__mark`. Dřív měl každý svoji velikost (11–13 px) a v textu zanikaly, přestože nesou podstatnou informaci — u kontextového CTA jméno služby a agentury. **Nový štítek ber z těchto tokenů**, nezaváděj další velikost.
 - **Anglicismy hlídá `blogger/JAZYK_SLOVNIK.md` — slovník platí pro celý web**, ne jen pro blog: články, sekce, pilíř i řetězce v `src/i18n/*` a v komponentách. Do 6. 9. 2026 se checker pouštěl jen na blog, takže sekce a pilíř měly nasbíraný dluh (419 nálezů). Příklady nálezů: „Klíčový insight" porušoval zakázané `\binsight\b` (→ „Klíčové zjištění"), H2 „Modern Search Visibility Stack" v pilíři (→ „Vrstvy viditelnosti"), popisky „Špatný / Správný mindset" zadrátované v `Mindset.astro` (→ „přístup", přesunuto do `ui.blocks.mindset*`). **Před přidáním nového mikrotextu ho projdi proti slovníku.**
@@ -603,14 +603,35 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   protože odvolat souhlas musí jít stejně snadno jako ho dát (GDPR čl. 7 odst. 3).
   **`/gdpr/` musí souhlasit s realitou** — do 22. 9. tvrdila „neukládáme reklamní cookies
   třetích stran“, zatímco Pixel běžel. Při přidání měřicího nástroje se sekce 07 přepisuje taky.
-- **Paleta značky Sniper Design je v `global.css`** (od 2026-09-06) — `--sd-deep`, `--sd-deeper`, `--sd-violet`, `--sd-magenta`, `--sd-gold`, `--sd-gold-deep`, `--sd-paper`, `--font-agency`. Používá ji `/audit/`, `/kontakt/`, oba Sniper Design kontaktní bloky a kontextové CTA v článcích. Vlastní kopie palety už nemá žádná stránka — `sniperdesign/*Contact.astro` 14. 9., `audit/index.astro` 16. 9. a `kontakt.astro` 22. 9. 2026. **Nová komerční plocha má nosit tuhle paletu**, ne obecný modrý accent, jinak splyne s obsahem.
-  **Od 14. 10. 2026 i `--sd-brand` a `--sd-brand-deep`** — fialová přímo z podkladů agentury
-  (`#5716b8` je barva písmene S ve znaku i pozadí jejích bannerů, `#21084c` okraje bannerů).
-  Je modřejší než `--sd-deep` (odstín 291 proti 305); kde má plocha vypadat jako materiály
-  agentury, ber tuhle. Zlatá ze znaku sedí na `--sd-gold`. **Znak (S v šestiúhelníku) jen přes
+- **Barvy značky Sniper Design: fialová, zlatá, bílá — žádná růžová** (rozhodnutí uživatele
+  14. 10. 2026: „růžová je prznění naší brand identity“). Jediný zdroj je `global.css`:
+  `--sd-brand` (#5716b8, písmeno S ve znaku i pozadí bannerů), `--sd-brand-deep` (#21084c,
+  okraje bannerů), `--sd-gold` / `--sd-gold-deep` (šestiúhelník znaku), `--sd-paper`,
+  `--font-agency` a tři hotové recepty: **`--sd-surface`** (tmavá plocha — hero `/kontakt/`
+  a `/audit/`, závěr `/audit/`, medailonek, oba bloky Sniper Design, kontextové CTA),
+  **`--sd-button`** (fialové tlačítko na světlém podkladu) a **`--sd-button-gold`** (zlaté
+  na tmavém). Role barev: na tmavé ploše zvýraznění i odkazy zlaté, text bílý, tlačítko zlaté
+  s textem `--sd-brand-deep`; na světlé akcent fialový; **doporučená volba** (audit vedle
+  Packu) je zlatá — rámeček, podklad, pilulka — ne druhý odstín fialové. Zlatý text na světlém
+  podkladu je nečitelný, tam nikdy. Stránky agentury (`/kontakt/`, `/audit/`, `/audit/dekujeme/`)
+  přepínají i `--color-accent` na fialovou, takže `.hl` v nadpisech a FAQ nejsou modré.
+  **Do 14. 10. 2026 web nesl paletu „violet → magenta“** (`--sd-violet` odstín 305,
+  `--sd-magenta` 335), kterou značka nikdy neměla, a jedenáct souborů si ji klonovalo pod
+  vlastními jmény (`--lp-*`, `--ty-*`, `--gdpr-*`, `--ec-*`, `--mock-*`, literály v hlavičce
+  a na homepage). Tokeny smazané, kopie odkazují na `--sd-*`. **Nová plocha nesmí mít vlastní
+  kopii palety** — přesně tak se růžová rozlezla. Kontrola: grep na odstín
+  `oklch\(\s*[0-9.]+%?\s+[0-9.]+\s+(29[5-9]|3[0-5][0-9])` (pozor, hledej i variantu s průhledností
+  `/ 0.25` — první grep ji minul) a v prohlížeči sken vypočtených barev; mimo nálezy smí zůstat
+  jen barva disciplíny AIO (`--color-aio`, `--tone-aio`).
+  **Znak (S v šestiúhelníku) jen přes
   `components/sniperdesign/SniperMark.astro`** — cesty z oficiálního `fav sniper.svg`, barvy
   `--mark-hex` / `--mark-s`. Pozor: prstenec šestiúhelníku potřebuje `fill-rule: evenodd`
   (v originálu je na kořenovém `<svg>`), bez něj se vyplní celý.
+- **Světlý odstín barvy míchej v `oklab`, ne v `oklch`** (naměřeno 14. 10. 2026). Papír webu
+  (`--color-paper`) má odstín 250 s nepatrnou sytostí a `color-mix(in oklch, …)` interpoluje
+  i odstín — zlatá 9 % s papírem tak vyšla **světle modrá** (odstín se posunul z 80 k 250)
+  a fialová do modra. `color-mix(in oklab, var(--sd-gold) 9%, var(--color-paper))` dá krémovou.
+  S `transparent` nebo `white` to nevadí (nemají odstín), s `--color-paper*` a `--color-rule` ano.
 - **Placený audit se jmenuje „Audit AI viditelnosti“, ne „AI SEO audit“** (rozhodnutí
   uživatele 16. 9. 2026). Starý název se četl jako „klasický SEO audit, akorát dělaný
   pomocí AI“ — což je jiná služba. Prodáváme **kontrolu připravenosti webu na vyhledávání
