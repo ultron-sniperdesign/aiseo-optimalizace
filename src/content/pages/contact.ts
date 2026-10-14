@@ -31,7 +31,7 @@ export const meta: PageMeta = {
   description:
     "Telefon, e-mail a fakturační údaje agentury Sniper Design (CPU s.r.o., IČO 08125163). Stavíme e-shopy na Upgates a Shoptetu, voláme Po–Pá 10–17.",
   ogImage: "/og/kontakt.jpg",
-  updated: "2026-09-22",
+  updated: "2026-10-14",
 };
 
 /** Breadcrumb položka stránky. */
@@ -92,7 +92,7 @@ export const contactPageJsonLd = {
   "@id": "https://aiseo-optimalizace.cz/kontakt/#page",
   url: "https://aiseo-optimalizace.cz/kontakt/",
   name: "Kontakt na Sniper Design",
-  dateModified: "2026-09-22",
+  dateModified: "2026-10-14",
   about: { "@id": "https://aiseo-optimalizace.cz/#publisher" },
 };
 
@@ -101,13 +101,19 @@ export const hero = {
   brandHref: "https://www.sniperdesign.cz/",
   brandAriaLabel: "Sniper Design — domovská stránka agentury",
   logoAlt: "Sniper Design",
-  eyebrow: "Kontakt",
-  titleHtml: "Spojte se s&nbsp;agenturou <strong>Sniper Design</strong>",
-  leadHtml:
-    'Tenhle průvodce i&nbsp;<strong>AI&nbsp;SEO Wireframe Pack</strong> vydává <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener"><strong>Sniper Design</strong></a> &mdash; agentura pro e-shopy na&nbsp;Upgates a&nbsp;Shoptetu. Zavolejte, napište, nebo si&nbsp;rovnou rezervujte termín.',
+  /**
+   * H1 je věcný štítek, ne výzva (14. 10. 2026). „Spojte se s agenturou…“ zvalo
+   * ke kontaktu člověka, který na stránku přišel právě proto, aby se ozval —
+   * potřebuje číslo a e-mail, ne pozvánku. Lead dřív mluvil o tom, kdo vydává
+   * tenhle web, a zmiňoval Pack; obojí na kontaktu nepatří.
+   */
+  titleHtml: "Kontakt na <strong>Sniper Design</strong>",
+  leadHtml: "Vývojářská agentura pro e-shopy na&nbsp;Upgates a&nbsp;Shoptetu.",
   /**
    * Kontaktní dlaždice. Od 22. 9. 2026 stojí v hero — dřív byly až v poslední
    * sekci stránky. `note` je doplňkový řádek pod hodnotou (hodiny, doba odezvy).
+   * Třetí dlaždice „Formulář agentury“ (sniperdesign.cz/kontakty) odebrána
+   * 14. 10. 2026: kdo je na kontaktní stránce, nepotřebuje odkaz na další.
    */
   contacts: [
     {
@@ -118,16 +124,10 @@ export const hero = {
     },
     {
       label: "E-mail",
-      valueHtml: "aiseo-optimalizace@sniperdesign.cz",
+      // <wbr> = misto, kde se adresa smi zalomit (mobil). Bez nej se lamala za „aiseo-“.
+      valueHtml: "aiseo-optimalizace<wbr>@sniperdesign.cz",
       href: "mailto:aiseo-optimalizace@sniperdesign.cz",
       note: "odpovídáme do jednoho pracovního dne",
-    },
-    {
-      label: "Formulář agentury",
-      valueHtml: "sniperdesign.cz/kontakty",
-      href: "https://www.sniperdesign.cz/kontakty",
-      external: true,
-      note: "poptávka a domluva schůzky",
     },
   ],
   /**
@@ -154,83 +154,57 @@ export const hero = {
     "Provozovatel: <strong>CPU s.r.o.</strong> &middot; IČO 08125163 &middot; plátce DPH",
 };
 
-/** Sekce 01 — Jak se nám ozvat (3 cesty). */
-export const paths = {
+/**
+ * Sekce 01 — Online schůzka (od 14. 10. 2026).
+ *
+ * Dřív tu byly tři karty „Vyberte cestu“: schůzka, Audit AI viditelnosti a Pack.
+ * Kontaktní stránka ale nemá co prodávat — kdo na ni přišel, chce se ozvat, a audit
+ * i Pack mají vlastní stránky. Zůstala jediná cesta, kterou chceme, aby lidé volili:
+ * 30 minut online zdarma. Proto je to teď jeden výrazný blok s jedním tlačítkem.
+ * Fakta o schůzce jsou z profilu agentury (vstupní brána č. 1, rozhodnutí 25. 7. 2026).
+ */
+export const meeting = {
   eyebrowNum: "01",
-  eyebrowHtml: "Jak se nám ozvat",
-  titleHtml: 'Vyberte <span class="hl">cestu</span> podle toho, <strong>s čím potřebujete pomoct</strong>',
-  cards: [
-    {
-      variant: "featured",
-      pillHtml: "Konzultace zdarma",
-      titleHtml: "Rezervujte si&nbsp;30&nbsp;minut a&nbsp;pojďme to probrat",
-      descHtml:
-        "Projdeme váš e-shop, řekneme, co bychom řešili první a&nbsp;co může počkat. <strong>Nezávazně a&nbsp;zdarma</strong>, online přes Google&nbsp;Meet. Vyberte si&nbsp;termín, který vám sedí.",
-      cta: {
-        labelHtml: "Vybrat termín&nbsp;&rarr;",
-        href: "https://www.sniperdesign.cz/rezervace-online-schuzky",
-        external: true,
-      },
-      subHtml:
-        'Radši napsat? <a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo <a href="https://www.sniperdesign.cz/kontakty" target="_blank" rel="noopener">formulář agentury</a>.',
-    },
-    {
-      variant: "accent",
-      pillVariant: "audit",
-      pillHtml: "Audit",
-      titleHtml: "Audit AI&nbsp;viditelnosti &mdash; přesný plán pro váš web",
-      descHtml:
-        "Chcete přesný plán přímo pro váš web? Projdeme ho optikou ChatGPT, Perplexity, Přehledu od&nbsp;AI a&nbsp;režimu AI. <strong>3&nbsp;600&nbsp;Kč bez DPH</strong>, výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;úhrady.",
-      cta: { labelHtml: "Objednat audit&nbsp;&rarr;", href: "/audit/", accent: true },
-    },
-    {
-      pillVariant: "pack",
-      pillHtml: "AI&nbsp;SEO Wireframe Pack",
-      titleHtml: "Chci to zvládnout sám",
-      descHtml:
-        "Hotové zadání pro sedm typů stránek e-shopu. Nejdostupnější způsob, jak si&nbsp;postup převést na&nbsp;vlastní web bez&nbsp;agentury.",
-      cta: { labelHtml: "Zobrazit Pack&nbsp;&rarr;", href: "/pack/" },
-      subHtml:
-        'Technické potíže nebo dotaz k&nbsp;Packu: <a href="mailto:aiseo-optimalizace@sniperdesign.cz?subject=AI%20SEO%20Wireframe%20Pack%20%E2%80%94%20dotaz">aiseo-optimalizace@sniperdesign.cz</a>',
-    },
-  ] satisfies ContactPathCard[],
+  eyebrowHtml: "Online schůzka",
+  titleHtml:
+    'Pojďme se <span class="hl">potkat online</span> &mdash; <strong>30&nbsp;minut nad vaším e-shopem</strong>',
+  leadHtml:
+    "Projdeme spolu váš e-shop a&nbsp;řekneme, co bychom řešili první a&nbsp;co může počkat. <strong>Nic to nestojí</strong> a&nbsp;odejdete s&nbsp;konkrétními informacemi pro svůj e-shop.",
+  /** Krátké údaje o schůzce, vykreslené jako štítky. */
+  facts: ["30&nbsp;minut", "online přes Google&nbsp;Meet", "zdarma", "termín si&nbsp;vyberete sami"],
+  cta: {
+    labelHtml: "Vybrat termín&nbsp;&rarr;",
+    href: "https://www.sniperdesign.cz/rezervace-online-schuzky",
+    noteHtml: "Otevře kalendář na&nbsp;sniperdesign.cz",
+  },
 };
 
-/** Karta v sekci 01 — Jak se nám ozvat. */
-export interface ContactPathCard {
-  /** Varianta karty: undefined (základní) | "featured" (Pack) | "accent" (Audit). */
-  variant?: "featured" | "accent";
-  /** Varianta pill štítku: undefined | "pack" | "audit". */
-  pillVariant?: "pack" | "audit";
-  pillHtml: string;
-  titleHtml: string;
-  descHtml: string;
-  cta: {
-    labelHtml: string;
-    href: string;
-    /** Externí odkaz (target=_blank rel=noopener). */
-    external?: boolean;
-    /** Akcentová varianta CTA odkazu. */
-    accent?: boolean;
-  };
-  /** Volitelný sub řádek pod CTA (featured karta). */
-  subHtml?: string;
-}
-
 /**
- * Sekce 02 — Kdo jsme. Krátká odpověď 40–60 slov, kterou stránka do 22. 9. 2026
- * neměla v souvislém tvaru: kdo web provozuje, bylo rozesetých po hero leadu,
- * kartách a patičce. Tohle je jediný blok stránky s citační hodnotou pro AI.
+ * Sekce 02 — Kdo jsme: medailonek firmy (od 14. 10. 2026).
+ *
+ * Dřív tu byla krátká odpověď „Za webem stojí Sniper Design“ — tedy kdo provozuje
+ * tenhle web, plus odkazy na autora a na ceník. Pro člověka na kontaktní stránce je to
+ * nepodstatné; chce vědět, s jakou firmou mluví. Každé tvrzení je doložené v podkladu
+ * `sniperdesign.cz - ADMIN/MARKETING/profil-agentury-podklad-2026-09-22.md` (✅):
+ * vývojářská agentura (§ 1), 600+ e-shopů od 2016 a dva doplňky schválené v Shoptet
+ * Marketplace (§ 5), zásahy do kódu šablony, vlastní moduly a migrace (§ 6),
+ * MEGA DETAIL a 200 000 zobrazení (§ 5, jediná čísla k volnému použití).
+ * Partnerství tu vědomě není textem — nesou ho odznaky v hero (CLAUDE.md § VI).
  */
 export const about = {
   eyebrowNum: "02",
   eyebrowHtml: "Kdo jsme",
-  titleHtml: 'Za webem stojí <span class="hl">Sniper Design</span> &mdash; <strong>agentura pro e-shopy</strong>',
-  answer:
-    "aiseo-optimalizace.cz provozuje **Sniper Design** (CPU s.r.o., Praha) — agentura pro e-shopy na platformách Upgates a Shoptet, Zlatý partner obou. Od roku 2016 jsme jich postavili přes 600 a jeden provozujeme sami: [MEGA DETAIL](https://www.megadetail.cz/). Na tomhle webu učíme, jak být vidět v ChatGPT, Perplexity, [Přehledu od AI](/aio/) a [režimu AI](/ai-mode/).",
-  /** Odkazy pod odpovědí — kdo obsah píše a co jsme na vlastním e-shopu naměřili. */
-  linksHtml:
-    'Kdo obsah píše: <a href="/autor/kamil/">Kamil ze Sniper Design</a>. Co jsme naměřili na&nbsp;vlastním e-shopu: <a href="/ai-viditelnost/">200&nbsp;000 zobrazení v&nbsp;odpovědích AI za&nbsp;dva měsíce</a>. Kolik to stojí: <a href="/blog/kolik-stoji-ai-seo/">ceny AI&nbsp;SEO v&nbsp;roce 2026</a>.',
+  titleHtml:
+    '<span class="hl">Sniper Design</span> v&nbsp;kostce &mdash; <strong>vývojáři e-shopů od&nbsp;roku 2016</strong>',
+  paragraphsHtml: [
+    "Jsme vývojářská agentura specializovaná na&nbsp;e-shopy na&nbsp;<strong>Upgates a&nbsp;Shoptetu</strong>. Od&nbsp;roku 2016 jsme pracovali na&nbsp;víc než 600 e-shopech &mdash; od&nbsp;zásahů do&nbsp;kódu šablony přes napojení na&nbsp;další systémy až po&nbsp;přechody mezi platformami.",
+    "Pro obě platformy vyvíjíme i&nbsp;vlastní produkty: desítky modulů, šablonu Sniper&nbsp;ONE a&nbsp;doplněk SYNC Multistore. Oba poslední prošly schválením v&nbsp;Shoptet Marketplace.",
+    'A&nbsp;provozujeme vlastní e-shop <a href="https://www.megadetail.cz/" target="_blank" rel="noopener">MEGA DETAIL</a>. Řešíme na&nbsp;něm stejné problémy jako naši klienti a&nbsp;viditelnost v&nbsp;AI vyhledávání na&nbsp;něm měříme dřív, než ji nabídneme jiným &mdash; za&nbsp;necelé dva měsíce přinesla <a href="/ai-viditelnost/">200&nbsp;000 zobrazení v&nbsp;Přehledech od&nbsp;AI a&nbsp;v&nbsp;režimu AI</a>.',
+  ],
+  more: {
+    labelHtml: "Víc o&nbsp;nás na&nbsp;sniperdesign.cz&nbsp;&rarr;",
+    href: "https://www.sniperdesign.cz/",
+  },
 };
 
 /** Sekce 03 — Co děláme (6 služeb agentury + bridge na Pack). */
@@ -379,7 +353,7 @@ export const faq = {
 export const direct = {
   eyebrowNum: "06",
   eyebrowHtml: "Fakturační údaje",
-  titleHtml: 'Fakturační údaje a <span class="hl">sídlo</span> &mdash; <strong>dohledatelná firma</strong>',
+  titleHtml: 'Fakturační údaje a <span class="hl">sídlo</span> &mdash; <strong>CPU s.r.o.</strong>',
   contactsHeading: "Sídlo a web",
   /** Řádky dt/dd — dd smí obsahovat <a>, <br>, <span class="kontakt-direct__hint">. */
   contactRows: [
