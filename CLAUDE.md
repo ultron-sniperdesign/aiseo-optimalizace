@@ -246,6 +246,7 @@ aiseo-optimalizace.cz/
 | Memory pointers | `~/.claude/projects/-Users-ultroncloudehome-Desktop-Ultron-DISK-SNIPER-DESIGN-ULTRON-SNIPER-DESIGN-aiseo-optimalizace-cz/memory/` |
 | Schválený onboarding plán | `~/.claude/plans/lively-coalescing-lake.md` |
 | Wrangler OAuth config | `~/Library/Preferences/.wrangler/config/default.toml` (token + refresh + scopes) |
+| **Podklady značky Sniper Design** | `SNIPER DESIGN ULTRON/Sniper design - znalost agentury/` — loga (SVG), znak `fav sniper.svg`, písmo Kumbh Sans, ukázky bannerů (vizuální jazyk). Podsložka `Kontakty z info mailu` jsou osobní údaje — **neotvírat, nepoužívat**. |
 
 > **i18n / mutace model (k 2026-05-23):** Tento CZ projekt je **kanonický, vlastník design systému (role „A")**. Jazykové mutace = **samostatné forky** na vlastních doménách, jeden jazyk uvnitř (žádné locale-keying). Veškerý překladový text/config je externalizovaný do dat: `src/content/pages/*.ts`, `src/i18n/{strings,sniperdesign,site}.ts`, `src/content/**/*.mdx`. Fork = kopie + překlad těchto dat; do `.astro`/CSS/komponent se NESAHÁ. Změny design systému dělá A a mutace je přebírají přes `cross-session/aiseo-global.md`. Plný postup: `MUTATIONS.md`.
 
@@ -540,6 +541,11 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   Zadáno 10. 10. 2026 do `cross-session/server-admin.md` pro všech 17 cest najednou.
   **Po sloučení duplikátu vždy ověř `curl -sS -o /dev/null -w "%{http_code}"` — 200 znamená,
   že signál se nepřenáší.**
+- **`overflow: hidden` jde posunout programově — u přesahující dekorace použij `overflow: clip`**
+  (naměřeno 14. 10. 2026 na medailonku `/kontakt/`). Dekorativní šestiúhelník přesahoval okraj
+  karty, takže vnitřní oblast měla 1 214 px místo 1 145 a `scrollIntoView` posunul obsah karty
+  o 69 px doleva — znak ujel za okraj. U návštěvníka to spustí hledání na stránce nebo přechod
+  tabulátorem na odkaz v kartě. `clip` ořízne stejně, ale posun nepovolí vůbec.
 - **macOS Finder `Icon\r`** — Excludováno v `.gitignore`. Pokud se objeví v `.git/refs/heads/Icon`, vyřešit dle log entry 2026-04-27.
 - **Caddy je sdílený** — před reloadem heads-up do `server-admin.md`. Reload dělá sd-server-admin.
 - **Tailwind 4 + Vite plugin Type mismatch** — `astro.config.mjs` má `/** @type {any} */` cast. Funkčně OK.
@@ -598,6 +604,13 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   **`/gdpr/` musí souhlasit s realitou** — do 22. 9. tvrdila „neukládáme reklamní cookies
   třetích stran“, zatímco Pixel běžel. Při přidání měřicího nástroje se sekce 07 přepisuje taky.
 - **Paleta značky Sniper Design je v `global.css`** (od 2026-09-06) — `--sd-deep`, `--sd-deeper`, `--sd-violet`, `--sd-magenta`, `--sd-gold`, `--sd-gold-deep`, `--sd-paper`, `--font-agency`. Používá ji `/audit/`, `/kontakt/`, oba Sniper Design kontaktní bloky a kontextové CTA v článcích. Vlastní kopie palety už nemá žádná stránka — `sniperdesign/*Contact.astro` 14. 9., `audit/index.astro` 16. 9. a `kontakt.astro` 22. 9. 2026. **Nová komerční plocha má nosit tuhle paletu**, ne obecný modrý accent, jinak splyne s obsahem.
+  **Od 14. 10. 2026 i `--sd-brand` a `--sd-brand-deep`** — fialová přímo z podkladů agentury
+  (`#5716b8` je barva písmene S ve znaku i pozadí jejích bannerů, `#21084c` okraje bannerů).
+  Je modřejší než `--sd-deep` (odstín 291 proti 305); kde má plocha vypadat jako materiály
+  agentury, ber tuhle. Zlatá ze znaku sedí na `--sd-gold`. **Znak (S v šestiúhelníku) jen přes
+  `components/sniperdesign/SniperMark.astro`** — cesty z oficiálního `fav sniper.svg`, barvy
+  `--mark-hex` / `--mark-s`. Pozor: prstenec šestiúhelníku potřebuje `fill-rule: evenodd`
+  (v originálu je na kořenovém `<svg>`), bez něj se vyplní celý.
 - **Placený audit se jmenuje „Audit AI viditelnosti“, ne „AI SEO audit“** (rozhodnutí
   uživatele 16. 9. 2026). Starý název se četl jako „klasický SEO audit, akorát dělaný
   pomocí AI“ — což je jiná služba. Prodáváme **kontrolu připravenosti webu na vyhledávání
@@ -651,7 +664,9 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   **Past na stránkách s `lp-section`:** `.lp-section--alt > *` dává přímým potomkům
   `max-width: var(--max-section)` a vyhraje specificitou nad `max-width` obalu — medailonek
   na `/kontakt/` tak 14. 10. 2026 běžel přes 1 280 px místo 640. **Šířku textu dávej
-  vnitřním prvkům** (odstavcům), ne přímému potomkovi sekce.
+  vnitřním prvkům** (odstavcům), ne přímému potomkovi sekce. Totéž pravidlo přepíše
+  i vodorovný `padding` a `margin` — **karta s vlastním pozadím proto potřebuje rám**
+  (`.kontakt-medal-frame`), jinak se roztáhne k okrajům okna.
 - **FAQ jen přes komponentu `components/blocks/Faq.astro` — nikdy ručně** (od 2026-09-13).
   Do té doby web vykresloval FAQ ve **14 souborech** po svém: tři způsoby chování, tři
   styly číslování, tři formáty odpovědí, čtyři způsoby strukturovaných dat. `/audit/` držel
