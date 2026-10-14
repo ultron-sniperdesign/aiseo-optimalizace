@@ -632,7 +632,9 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   (za osm dní přibyla jedna recenze). **Shoptet svoji úroveň nazývá česky „Zlatý partner“** — „Gold
   partner“ je jen interní kód v jeho datech, do textu nepatří; `/kontakt/` to tvrdila až do 22. 9. 2026.
   Vložené v obou blocích Sniper Design (181 stránek), prodejní stránky ho dávají do hero. Nepsat partnerství
-  ručně do textu. Gotcha: blok Sniper Design stojí v sekcích uvnitř `.article__prose`, jejíž `:global` styly
+  ručně do textu. **Velikost přes `--partner-scale`** (výchozí 1, od 14. 10. 2026) — písmo
+  je v `rem`, takže ho obal jinak nepřebije bez `:global()`; `/kontakt/` má 1,2 od 640 px.
+  Gotcha: blok Sniper Design stojí v sekcích uvnitř `.article__prose`, jejíž `:global` styly
   pro `ul li`, `li::before` a `a` by odznakům přidaly čárku, odsazení a podtržení — komponenta proto nese
   `.partners` jako předka ve všech selektorech.
 - **Kontaktní údaje patří nahoru, ne na konec stránky** (naměřeno 22. 9. 2026 na `/kontakt/`) —
@@ -641,7 +643,15 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   Obě tlačítka v hero navíc vedla jinam (Pack a web agentury), takže „ozvat se“ v hero nebylo
   vůbec. **U stránky pojmenované podle akce ověř, že ta akce jde udělat z prvního zhlédnutí.**
   Fakturační údaje jsou výjimka — ty jsou referenční a patří dolů.
+  **Na kontaktu se neprodává** (rozhodnutí uživatele 14. 10. 2026): kdo tam přišel, chce se
+  ozvat. Proto tam není karta auditu ani Packu, H1 je věcný štítek („Kontakt na Sniper
+  Design“), ne výzva ke kontaktu, a nabízí se jediná cesta — online schůzka 30 minut zdarma.
+  Blok „Kdo jsme“ je medailonek firmy, ne informace o tom, kdo provozuje tenhle web.
 - **Dvě šířky obsahu — závazné pravidlo (od 2026-09-05)** — v `global.css` jsou tokeny `--w-read` (40rem, čitelné měřítko textu) a `--w-wide` (okraj obsahového rámu). **Text drží `--w-read`, všechno ostatní — tabulky, srovnání, datové bloky — `--w-wide`.** Levý okraj je společný, liší se jen pravý. Nezavádět třetí šířku: `/ai-mode/` mělo před opravou čtyři pravé okraje (770 / 978 / 1090 / 1353 px při 1440 px viewportu), po opravě dva (770 / 1295). Karta krátké odpovědi je výjimka: sahá na `--w-wide` a text v ní tu šířku využívá — štítek „Stručná definice" je nad textem, ne vedle něj (od 14. 9. 2026 na celém webu přes komponentu `Answer`). Hotovo v `src/pages/[slug].astro` (7 sekcí). **Zbývá** pilíř, blogové layouty (`RichLayout`, `blog/[slug]`) a datové stránky — každý má zatím vlastní šířky. Po zásahu do layoutu změř pravé okraje v prohlížeči, ne odhadem.
+  **Past na stránkách s `lp-section`:** `.lp-section--alt > *` dává přímým potomkům
+  `max-width: var(--max-section)` a vyhraje specificitou nad `max-width` obalu — medailonek
+  na `/kontakt/` tak 14. 10. 2026 běžel přes 1 280 px místo 640. **Šířku textu dávej
+  vnitřním prvkům** (odstavcům), ne přímému potomkovi sekce.
 - **FAQ jen přes komponentu `components/blocks/Faq.astro` — nikdy ručně** (od 2026-09-13).
   Do té doby web vykresloval FAQ ve **14 souborech** po svém: tři způsoby chování, tři
   styly číslování, tři formáty odpovědí, čtyři způsoby strukturovaných dat. `/audit/` držel
