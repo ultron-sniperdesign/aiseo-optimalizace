@@ -46,7 +46,8 @@ export const tiers: PricingTier[] = [
     title: "Kompletní AI&nbsp;SEO Wireframe Pack",
     body: "Návod pokryl homepage. Pack pokryje celý e‑shop — sedm typů stránek s&nbsp;hotovými texty, kterým AI rozumí. Otevřete, dosaďte vlastní obsah, máte hotovo. Bez konzultantů.",
     price: "1&nbsp;490&nbsp;Kč",
-    priceNote: "jednorázově, bez DPH",
+    // Konečná cena včetně DPH (potvrzeno uživatelem 20. 9. 2026); do 14. 10. tu stálo „bez DPH“.
+    priceNote: "jednorázově, včetně DPH",
     ctaLabel: "Koupit Pack&nbsp;→",
     ctaHref: "/pack/",
   },

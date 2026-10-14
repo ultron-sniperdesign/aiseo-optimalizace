@@ -541,8 +541,9 @@ export const offers = [
     mod: "pack",
     tag: "AI&nbsp;SEO Wireframe Pack",
     priceMain: "1&nbsp;490&nbsp;Kč",
-    priceNote: "bez DPH &middot; jednorázově",
-    priceVat: "1&nbsp;803&nbsp;Kč s&nbsp;DPH",
+    // Konečná cena včetně DPH (potvrzeno uživatelem 20. 9. 2026, viz pack.ts).
+    // Do 14. 10. 2026 tu stálo „bez DPH“ + „1 803 Kč s DPH“ — o 313 Kč víc, než zákazník platí.
+    priceNote: "včetně DPH &middot; jednorázově",
     title: "Kompletní framework pro 7&nbsp;typů stránek",
     desc: "Ucelená sada wireframů, anotací a&nbsp;šablon textů — všechno připravené k&nbsp;okamžitému použití na&nbsp;vašem webu. Bez konzultantů, bez měsíců práce.",
     bullets: [
