@@ -1,0 +1,2 @@
+OBSTOJÍ — ve všech uvedených místech je už výslovně uvedena podmínka „Seznam AI obsah užije a zobrazí na něj odkaz“, takže to nezní jako nárok za samotné užití nebo samotné shrnutí. Answer, úvod, FAQ i tabulka si v tom neodporují.  
+Jen pozor: formulace o výpočtu provize zjednodušuje část „a/nebo při Článku na Seznamu“, ale pro posuzovaný nález 1 oprava obstojí.

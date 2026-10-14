@@ -1,0 +1,201 @@
+---
+title: "Když Seznam AI shrne váš článek: co z toho má vydavatel"
+seoTitle: "Seznam AI a vydavatelé: provize, měření a odhlášení"
+description: "Seznam si od května 2026 vyhradil užívání obsahu partnerů pro Seznam AI. Kdy za to vydavatel dostane provizi, jak návštěvy z AI poznat a jak se odhlásit."
+answer: "AI sumarizace jsou souhrny, které Seznam AI skládá z obsahu webů. Partnerům Newsfeedu s podmínkami platnými od 1. 5. 2026 vzniká nárok na provizi, když Seznam AI jejich obsah užije a zobrazí na něj odkaz: 30 %, v Modelu vyšší provize 50 % z výnosu reklamy Seznamu na jejich webu po prokliku. Jinou odměnu za samotné shrnutí podmínky neuvádějí."
+slug: "ai-sumarizace-a-vydavatele"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-10-14"
+updated: "2026-10-14"
+keywords:
+  - "seznam ai vydavatelé"
+  - "ai sumarizace seznam"
+  - "seznam newsfeed podmínky"
+  - "seznam partner podmínky"
+  - "seznam-extended"
+  - "robots.txt ai disallow"
+  - "user-agent machinelearning"
+  - "utm seznam_distribuce"
+variant: "rich"
+faq:
+  - q: "Platí Seznam vydavatelům za AI shrnutí jejich článků?"
+    a: "Partnerům programu Newsfeed, kteří přijali podmínky platné od 1. 5. 2026, vzniká nárok na provizi, když Seznam AI jejich obsah užije a zobrazí na něj odkaz: 30 % z výnosu reklamy Seznamu zobrazené na jejich webu po prokliku, v Modelu vyšší provize 50 %. Jinou odměnu za samotné shrnutí podmínky neuvádějí. Weby mimo program podmínky Newsfeedu nepokrývají."
+  - q: "Jak poznám v analytice návštěvy ze Seznam AI?"
+    a: "Od 1. 6. 2026 nesou odkazy ze Seznamu parametry utm_source=www.seznam.cz a utm_medium=seznam_distribuce. Návštěvy z asistenta mají utm_campaign=asistent, z AI funkcí aifunkce a z trendujících témat trending_topics. Do 31. 5. 2026 platily jiné tvary, takže starší segmenty v analytice nové návštěvy nezachytí."
+  - q: "Jak se odhlásit z AI odpovědí Seznamu?"
+    a: "Nápověda Vyhledávání uvádí dvě cesty: v robots.txt pravidlo Disallow: / pro user-agenta Seznam-Extended, AI nebo MachineLearning, nebo meta značku nosnippet pro SeznamBota, která ale vypne i úryvky ve výsledcích. Partnerům Newsfeedu podmínky uvádějí Seznam-Extended a Seznam jim pak z AI ploch přestane přivádět návštěvy."
+  - q: "Co v robots.txt znamenají user-agenti AI a MachineLearning?"
+    a: "Definuje je jednotný standard SPIR, který SPIR s AOV, Českou unií vydavatelů a SLPV aktualizoval 19. 3. 2026. MachineLearning podle něj zakazuje trénink obecných modelů, AI navíc i odpovědi v reálném čase, třeba souhrny. Seznam podle své nápovědy bere kterýkoli z nich jako zákaz AI odpovědí."
+  - q: "Platí podmínky Newsfeedu i pro weby mimo program?"
+    a: "Smluvní podmínky Newsfeedu pro weby mimo program neplatí. Týkají se jen partnerů, kteří je přijali v rozhraní Seznam Partner. Pro ostatní weby popisuje AI odpovědi nápověda Vyhledávání, a to hlavně tím, jak se z nich odhlásit. Provizi ani označení návštěv parametry UTM dokumentace u webů mimo program neuvádí."
+  - q: "Musí partner u návštěv ze Seznam AI ukazovat jen reklamu Seznamu?"
+    a: "Partner programu Newsfeed musí u návštěv ze Seznam AI po dobu relace ukazovat výhradně reklamu Seznamu. Spolupráce má stejný monetizační model jako Newsfeed a nápověda to vztahuje na návštěvy s parametry asistent, aifunkce i trending_topics. Výchozí skript Seznamu drží relaci 30 minut od posledního načtení stránky."
+  - q: "Jsou čísla Seznamu o růstu návštěvnosti ověřená?"
+    a: "Čísla Seznamu o růstu návštěvnosti nejsou nezávisle ověřená — jsou to údaje provozovatele o vlastní službě bez zveřejněné metodiky. Seznam uvádí zdvojnásobení zpravodajských dotazů mezi lety 2023 a 2025 a meziročně o 85 % víc hledání i prokliků. V grafu na téže stránce je ale +85 % vyznačeno jako rozdíl proti čáře bez AI."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**Seznam si od 1. 5. 2026 ve smlouvě s partnery programu Newsfeed vyhradil právo užívat jejich obsah pro Seznam AI — pro souhrny ve vyhledávání, u trendujících témat a v asistentovi. Když Seznam AI jejich obsah užije a zobrazí na něj odkaz, vzniká jim nárok na provizi — standardně 30 %, v Modelu vyšší provize 50 % — ale počítá se z výnosu reklamy Seznamu zobrazené na webu vydavatele po prokliku.** Jinou odměnu za samotné shrnutí podmínky neuvádějí. Článek rozebírá, co podmínky říkají, jak návštěvy ze Seznam AI poznat v analytice, co znamenají čísla, kterými Seznam spolupráci zdůvodňuje, a jak se z AI odpovědí odhlásit.
+
+Vycházím z partnerské nápovědy, smluvních podmínek Newsfeedu a nápovědy Vyhledávání ve stavu k 14. 10. 2026. Do rozhraní Seznam Partner jsem se nepřihlašoval a Seznam AI jsem netestoval. Nejde o právní výklad podmínek — o smlouvě rozhodujte podle jejich plného znění.
+
+## Kde <span class="hl">Seznam AI</span> články shrnuje — <strong>tři místa, jedny podmínky</strong>
+
+Partnerská nápověda jmenuje tři místa, odkud může vydavateli přijít návštěvnost: Seznam Asistent, trendující témata a AI sumarizace ve vyhledávání. Podle nápovědy Vyhledávání mohou přihlášení uživatelé ze souhrnu pokračovat do Seznam AI. Nápověda Vyhledávání dva z těch prvků popisuje:
+
+- **Sumarizace stránky s výsledky** — kompaktní souhrn toho nejrelevantnějšího, co je v organických výsledcích na zadaný dotaz.
+- **Sumarizace trendujících témat** — souhrn konkrétního tématu ze zpravodajských článků, které má Seznam ve vyhledávání.
+
+Oba souhrny jsou abstraktní: shrnují hlavní myšlenku vlastními slovy a Seznam k nim uvádí zdroje, aby bylo jasné, z které stránky nebo článku každý bod vychází. Vedle nich má vyhledávání ještě přímou odpověď jazykového modelu, která podle nápovědy čerpá z dat, na kterých se model učil, ne z aktuálních článků. Podle partnerské nápovědy ve stavu k 14. 10. 2026 se betaverze Seznam AI soustředí na zpravodajské dotazy.
+
+Zdroje: [Seznam AI](https://partner.seznam.cz/napoveda/dalsi-sluzby/seznam-ai/) v nápovědě Seznam Partner a [Vychytávky](https://o-seznam.cz/napoveda/vyhledavani/vysledky-vyhledavani/vychytavky/) v nápovědě Vyhledávání.
+
+<Insight tone="accent" icon="!" label="Zdroj je součást návrhu">
+Souhrn podle nápovědy uvádí zdroj u každého bodu. U partnerů programu Newsfeed to od května stojí i ve smlouvě: když Seznam AI obsah partnera užije, zobrazí odkaz na konkrétní obsah, ze kterého čerpala.
+</Insight>
+
+## Co za to <span class="hl">vydavatel</span> dostane — <strong>provizi z reklamy po prokliku</strong>
+
+Partnerská stránka shrnuje spolupráci větou, že parametry zůstávají stejné jako u Newsfeedu: stejné reklamní pozice, stejný monetizační model a stejná výše provize. Smluvně to od 1. 5. 2026 drží nový článek VIII smluvních podmínek Newsfeedu. V předchozí verzi, účinné od 1. 2. do 30. 4. 2026, nebyl.
+
+| Co podmínky říkají | Co to znamená |
+|---|---|
+| Seznam smí pro Seznam AI užívat obsah webu | Nejen články poslané do Newsfeedu |
+| Čl. VII se na Seznam AI nevztahuje | AI může užít i starší a kratší obsah |
+| Při užití zobrazí odkaz na obsah | Podobu odkazu volí Seznam |
+| Za užití s odkazem provize 30 % z reklamy po prokliku | V Modelu vyšší provize 50 % |
+| Po dobu relace jen reklama Seznamu | Vlastní reklamu těmto návštěvám neukážete |
+| Odhlášení přes Seznam-Extended | Obsah se v Seznam AI nepoužije |
+
+Odkaz může podle podmínek tvořit logo, název webu, adresa, titulek, perex nebo obrázek, jednotlivě i v kombinaci. U obsahu nahraného přímo do Seznamu (Článek na Seznamu) se provize počítá i z reklamy zobrazené u článku. Podmínky zároveň uvádějí, že provize zahrnuje i odměnu vydavatele tiskové publikace podle § 87b autorského zákona a čl. 15 směrnice (EU) 2019/790; tahle věta v nich byla už před přidáním AI části.
+
+Zdroj: [Smluvní podmínky služby Seznam Newsfeed](https://partner.seznam.cz/napoveda/newsfeed-a-clanky-na-seznamu/smluvni-podminky-sluzeb-seznam-newsfeed-a-clanky-na-seznamu/), čl. I až VIII, účinné od 1. 5. 2026, a jejich [předchozí verze](https://partner.seznam.cz/napoveda/newsfeed-a-clanky-na-seznamu/smluvni-podminky-sluzeb-seznam-newsfeed-a-clanky-na-seznamu-do-kvetna2026/).
+
+<Insight tone="warn" icon="!" label="Co podmínky neuvádějí">
+Jinou odměnu za užití obsahu v Seznam AI než provizi z reklamy po prokliku podmínky neuvádějí. Souhrn, po kterém čtenář na web nepřijde, tedy podle nich výnos nevytvoří. Kolik konkrétní web vydělá, z veřejných dokumentů nezjistíte — výnos z reklamy pro jednotlivé weby Seznam nezveřejňuje.
+</Insight>
+
+Podmínky Newsfeedu se týkají partnerů programu. Pro ostatní weby popisuje AI odpovědi nápověda Vyhledávání, a to hlavně tím, jak se z nich odhlásit. Provizi ani označení návštěv u nich dokumentace neuvádí.
+
+## Jak návštěvy ze <span class="hl">Seznam AI</span> poznáte — <strong>tři hodnoty utm_campaign</strong>
+
+Od 1. 6. 2026 Seznam značí odkazy ze svých kanálů jednotně: `utm_source=www.seznam.cz` a `utm_medium=seznam_distribuce`. Kanál prozradí parametr `utm_campaign`:
+
+| Kanál podle nápovědy | utm_campaign |
+|---|---|
+| Asistent | `asistent` |
+| AI funkce | `aifunkce` |
+| Trending Topics (trendující témata) | `trending_topics` |
+| Newsfeed, pro srovnání | `hp_feed` |
+
+Do 31. 5. 2026 platily jiné tvary — například `utm_medium=sekce-z-internetu` pro Newsfeed nebo `utm_medium=z-boxiku` pro boxy na domovské stránce Seznamu. Segment nebo filtr z doby před červnem tedy nové návštěvy nezachytí.
+
+U návštěv s těmito parametry musí partner ukazovat jen reklamu Seznamu. Výchozí skript Seznamu drží relaci 30 minut od posledního načtení stránky a s každou další stránkou ji prodlužuje. Jestli označené odkazy dostávají i weby mimo program, dokumentace neuvádí.
+
+<Checklist tone="geo" title="Jak si návštěvy ze Seznam AI změřit" items={[
+  { title: "Založte segment pro utm_medium=seznam_distribuce", desc: "Zachytí všechny kanály Seznamu, které odkazy takhle značí." },
+  { title: "Rozdělte ho podle utm_campaign", desc: "Asistent, aifunkce a trending_topics sledujte zvlášť od hp_feed, jinak se AI ztratí v Newsfeedu." },
+  { title: "Srovnávejte až od června 2026", desc: "Dřívější návštěvy nesou jiné parametry a do nového segmentu nespadnou." },
+  { title: "Vedle návštěv sledujte provizi", desc: "Návštěva je jen část obrazu. O výnosu rozhoduje reklama Seznamu zobrazená na vašem webu." },
+]} />
+
+Zdroje: [Identifikace zdroje návštěvy](https://partner.seznam.cz/napoveda/newsfeed-a-clanky-na-seznamu/newsfeed-jak-zacit/identifikace-zdroje-navstevy/) a [hodnoty UTM s povinnou reklamou Seznamu](https://partner.seznam.cz/napoveda/faq/pro-jake-hodnoty-utm-parametru-musim-na-svem-webu-zobrazovat-vyhradne-reklamu-od-seznamu/) v nápovědě Seznam Partner. Jak v GA4 oddělit návštěvy z AI asistentů obecně, popisuje [článek o AI návštěvnosti a konverzích](/blog/ai-navstevnost-konverze/).
+
+## Co <span class="hl">čísla Seznamu</span> říkají — <strong>a co z nich neplyne</strong>
+
+Partnerská stránka spolupráci zdůvodňuje vlastními čísly. Jsou to údaje provozovatele o jeho službě, bez zveřejněné metodiky:
+
+- počet zpravodajských dotazů ve Vyhledávání a v asistentovi se mezi lety 2023 a 2025 zdvojnásobil,
+- meziročně přibylo 85 % hledání i prokliků a míra prokliku zůstala stabilní,
+- graf má ukazovat korelaci mezi pokrytím AI a nárůstem návštěvnosti, ze které Seznam vyvozuje, že AI vytváří návštěvnost, jež by jinak nevznikla.
+
+Graf na téže stránce nemá hodnoty na ose. Ukazuje kliky ze zpravodajských hledání na zpravodajské weby v letech 2023 až 2026 a vedle nich čáru „Bez AI“. Popisky +33 % u roku 2024 a +85 % u roku 2025 stojí u šipek mezi těmito dvěma čarami, rok 2026 je čárkovaný odhad s popiskem „+? %“.
+
+Co z toho neplyne:
+
+1. **Že jde o meziroční růst.** Podle umístění u šipek graf vyznačuje +85 % jako rozdíl proti čáře „Bez AI“, text stránky totéž číslo podává jako meziroční nárůst. Jak vznikla čára bez AI, Seznam nevysvětluje.
+2. **Že stabilní míra prokliku něco dokazuje.** Když hledání i prokliky vzrostou o stejných 85 %, jejich poměr se nezmění. Věta nepřidává nový údaj.
+3. **Kolik připadne na váš web.** Jde o součet za celé vyhledávání a asistenta a z něj podíl jednoho vydavatele nevyčtete.
+4. **Že AI návštěvnost vytváří.** Seznam sám píše o korelaci a závěr o nové návštěvnosti z ní vyvozuje bez zveřejněné metodiky.
+
+Nezávislá data o Seznamu nemám. Pro představu, jak se dá souhrn a proklik měřit odděleně: Pew Research Center v březnu 2025 sledoval prohlížení 900 dospělých v USA na Googlu. Když se zobrazil AI souhrn, klikli na běžný výsledek v **8 % návštěv**, bez souhrnu v **15 %**. Na odkaz přímo v souhrnu klikli v **1 % návštěv**. Je to jiný vyhledávač, jiný trh a jiná metrika — na Seznam se to přenést nedá, ukazuje to jen, proč se má souhrn a proklik počítat zvlášť.
+
+Zdroje: [Seznam AI](https://partner.seznam.cz/napoveda/dalsi-sluzby/seznam-ai/) v nápovědě Seznam Partner a [Pew Research Center, 22. 7. 2025](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/). Proč se čísla o propadech návštěvnosti nedají přenášet mezi weby, rozebírá [článek o propadech u vydavatelů](/blog/propady-navstevnosti-vydavatelu/#co-z-toho-plati-pro-vas-web).
+
+## Odhlášení ze <span class="hl">Seznam AI</span> — <strong>tři user-agenty a dva výklady</strong>
+
+Seznam popisuje odhlášení na dvou místech, každé v jiném rozsahu:
+
+- **Partnerská nápověda a podmínky Newsfeedu** uvádějí jen `Seznam-Extended` s `Disallow`. Seznam pak obsah v Seznam AI nepoužije a z AI ploch na web přestane přivádět uživatele.
+- **Nápověda Vyhledávání** má stránku *Zákaz tvorby AI odpovědí z vašeho webu*, v internetovém archivu Wayback Machine už ze 7. 6. 2026. Stačí podle ní pravidlo `Disallow: /` pro kterýkoli z user-agentů `Seznam-Extended`, `AI` a `MachineLearning`, nebo meta značka `nosnippet` pro SeznamBota. Seznam pak web nepoužije jako zdroj AI odpovědí; `nosnippet` ale vypne i textové úryvky ve výsledcích.
+
+User-agenty `AI` a `MachineLearning` definuje jednotný standard SPIR. Navazuje na návrh SPIR z roku 2023 a 19. 3. 2026 ho SPIR aktualizoval spolu s Asociací online vydavatelů, Českou unií vydavatelů a Správcem licenčních práv vydavatelů. Standard je chápe jako výhradu proti vytěžování textů a dat podle čl. 4 směrnice (EU) 2019/790 a zároveň jako vůli jednat o kompenzaci.
+
+| Token | Podle standardu SPIR | Podle nápovědy Seznamu |
+|---|---|---|
+| `MachineLearning` | trénink obecných modelů a tvorba datových sad | zákaz AI odpovědí |
+| `AI` | trénink i odpovědi v reálném čase, například souhrny | zákaz AI odpovědí |
+| `Seznam-Extended` | konkrétní user-agent, má přednost před `AI` i `MachineLearning` | zákaz AI odpovědí, v podmínkách Newsfeedu jediný uvedený |
+
+Standard SPIR k tomu určuje pořadí: konkrétní user-agent, třeba `Seznam-Extended`, má přednost před oběma obecnými tokeny a `MachineLearning` má přednost před `AI`.
+
+<Insight tone="warn" icon="!" label="Kde se výklady rozcházejí">
+Standard SPIR vztahuje `MachineLearning` jen na trénink. Nápověda Seznamu ho počítá jako zákaz AI odpovědí, takže kdo chtěl zakázat jen trénink, toho Seznam podle nápovědy nepoužije ani jako zdroj souhrnů. Jestli Seznam respektuje přednost, kterou standard dává konkrétním user-agentům — třeba zákaz pro `AI` a povolení pro `Seznam-Extended` — nápověda neříká.
+</Insight>
+
+Zdroje: [Zákaz tvorby AI odpovědí z vašeho webu](https://o-seznam.cz/napoveda/vyhledavani/seznambot/zakaz-tvorby-ai-odpovedi-z-vaseho-webu/) v nápovědě Vyhledávání a [standard SPIR z 19. 3. 2026](https://unievydavatelu.cz/file/162/pravidla-opt-out-2026.pdf) (PDF).
+
+## Kolik <span class="hl">českých médií</span> má zákaz pro AI odpovědi Seznamu — <strong>12 z 33</strong>
+
+Stáhl jsem 14. 10. 2026 soubory robots.txt stejného vzorku 33 českých zpravodajských a oborových webů, jaký jsem měřil v srpnu. Zákaz pro celý web u aspoň jednoho z trojice má **12 z nich**:
+
+| Pravidlo v robots.txt | Webů z 33 |
+|---|---|
+| jen `MachineLearning` | 7 |
+| jen `AI` | 3 |
+| `AI` i `MachineLearning` | 1 |
+| `Seznam-Extended` (ve skupině s dalšími roboty) | 1 |
+| žádné z trojice | 21 |
+
+Výslovné povolení pro `Seznam-Extended` nemá žádný z nich. Stejná pravidla měly tyhle weby už v srpnu; tehdejší měření na tomto webu počítalo jen `Seznam-Extended`, a proto uvádělo jeden web ze 33. Měřím konfiguraci, ne chování Seznamu, a záměr vydavatelů z robots.txt nepoznám. Jednotlivé weby nejmenuju.
+
+<Checklist tone="seo" title="Než robots.txt změníte" items={[
+  { title: "Změřte, co vám Seznam AI přivádí", desc: "Ukážou to návštěvy s utm_campaign asistent, aifunkce a trending_topics. Po odhlášení přes Seznam-Extended je podle partnerské nápovědy Seznam z AI ploch přestane přivádět; u AI a MachineLearning je doložené vyřazení webu jako zdroje AI odpovědí." },
+  { title: "Ujasněte si, co vám vadí", desc: "Jen trénink modelů, nebo i souhrny v odpovědích? Podle standardu SPIR na to patří jiné tokeny." },
+  { title: "Počítejte s výkladem Seznamu", desc: "Podle jeho nápovědy vás z AI odpovědí vyřadí kterýkoli ze tří user-agentů, i MachineLearning." },
+  { title: "Kombinaci zákazu a výjimky si ověřte", desc: "Jak Seznam vyhodnotí zákaz pro AI spolu s povolením pro Seznam-Extended, dokumentace neuvádí." },
+  { title: "Nesahejte kvůli AI na SeznamBota", desc: "SeznamBot prochází web pro běžné vyhledávání. Pro AI odpovědi má Seznam samostatné user-agenty a nosnippet." },
+]} />
+
+## Pět <span class="hl">chyb</span> u souhrnů Seznam AI — <strong>a jak se jim vyhnout</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Brát čísla Seznamu jako údaj o vlastním webu" fix="Měřte vlastní návštěvy podle utm_campaign.">
+    Jde o součet za celé vyhledávání a asistenta, bez metodiky. O vašem webu neříká nic.
+  </Mistake>
+  <Mistake num="02" title="Počítat s provizí za každé shrnutí" fix="Počítejte jen s návštěvami po prokliku.">
+    Provize se počítá z výnosu reklamy Seznamu na vašem webu po prokliku. Jinou odměnu za užití obsahu podmínky neuvádějí.
+  </Mistake>
+  <Mistake num="03" title="Nastavit MachineLearning s tím, že jde jen o trénink" fix="Rozhodujte podle výkladu Seznamu, ne jen standardu.">
+    Podle nápovědy stačí kterýkoli ze tří user-agentů a Seznam pak web nepoužije jako zdroj AI odpovědí.
+  </Mistake>
+  <Mistake num="04" title="Nechat v analytice parametry z doby před červnem" fix="Přenastavte segmenty na utm_medium=seznam_distribuce.">
+    Do 31. 5. 2026 Seznam značil návštěvy jinak a starý segment nové návštěvy nezachytí.
+  </Mistake>
+  <Mistake num="05" title="Zaměnit odhlášení z AI se zákazem pro SeznamBota" fix="Pro AI odpovědi použijte některý z AI tokenů.">
+    SeznamBot je robot běžného vyhledávání. Pro AI odpovědi popisuje Seznam samostatné user-agenty a meta značku nosnippet.
+  </Mistake>
+</MistakeGrid>
+
+## U <span class="hl">souhrnů Seznam AI</span> rozhoduje <strong>proklik, ne samotné shrnutí</strong>
+
+Pro partnera programu Newsfeed je AI sumarizace další plocha se stejným obchodem jako Newsfeed: obsah za odkaz a provize z reklamy po prokliku. Jestli se vyplatí, ukážou až vaše data — návštěvy s `utm_campaign` asistent, aifunkce a trending_topics a provize z nich. Čísla Seznamu to za vás nezměří. Než sáhnete do robots.txt, ujasněte si, jestli vám vadí trénink, nebo i souhrny, a počítejte s tím, že Seznam bere jako zákaz AI odpovědí kterýkoli ze tří user-agentů.
+
+Jak váš robots.txt zachází s roboty AI podle účelu — vyhledávání, trénink i Seznam — a co který zákaz vypne, projdeme v **[Auditu AI viditelnosti](/audit/)** za **3 600 Kč bez DPH**.

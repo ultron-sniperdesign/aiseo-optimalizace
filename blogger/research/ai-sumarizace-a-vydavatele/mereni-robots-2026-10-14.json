@@ -1,0 +1,777 @@
+{
+ "datum": "2026-10-14",
+ "metoda": "robots.txt z https://<doména>/robots.txt (fallback www.), skupina s user-agentem přesně Seznam-Extended / AI / MachineLearning; *_full_disallow = ve skupině je Disallow: /",
+ "vzorek": "stejných 33 webů jako blogger/research/seznam-extended-opt-out/seznam_extended_media.json (9. 8. 2026)",
+ "weby": [
+  {
+   "domain": "novinky.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AI",
+    "SeznamSocialBot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [
+    "Disallow: /"
+   ],
+   "ai_full_disallow": true,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.idnes.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "Amazonbot",
+    "Applebot",
+    "Bytespider",
+    "Claude-Web",
+    "ClaudeBot",
+    "Diffbot",
+    "FacebookBot",
+    "GPTBot",
+    "Google-Extended",
+    "ImagesiftBot",
+    "MachineLearning",
+    "Omgili",
+    "Omgilibot",
+    "PerplexityBot",
+    "YouBot",
+    "anthropic-ai"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.seznamzpravy.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AI",
+    "SeznamSocialBot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [
+    "Disallow: /"
+   ],
+   "ai_full_disallow": true,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "zpravy.aktualne.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "GPTBot",
+    "MachineLearning",
+    "Twitterbot",
+    "facebookexternalhit"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.irozhlas.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.ceskenoviny.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AI",
+    "Amazonbot",
+    "Applebot-Extended",
+    "Bytespider",
+    "CCBot",
+    "ChatGPT-User",
+    "ClaudeBot",
+    "Cohere-ai",
+    "FacebookBot",
+    "GPTBot",
+    "Google-Extended",
+    "MachineLearning",
+    "Meta-ExternalAgent",
+    "MistralBot",
+    "Omgilibot",
+    "PerplexityBot",
+    "anthropic-ai"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [
+    "Disallow: /"
+   ],
+   "ai_full_disallow": true,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.denik.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AI2Bot",
+    "Ai2Bot-Dollhouse",
+    "Amazonbot",
+    "Andibot",
+    "Applebot-Extended",
+    "Brightbot",
+    "Bytespider",
+    "CCBot",
+    "Character-AI",
+    "ChatGPT-User",
+    "Claude-Web",
+    "ClaudeBot",
+    "Cohere-Command",
+    "Cohere-ai",
+    "Crawlspace",
+    "DeepseekBot",
+    "Diffbot",
+    "DuckAssistBot",
+    "DuckDuckBot-Web-Extraction",
+    "FacebookBot",
+    "FirecrawlAgent",
+    "FriendlyCrawler",
+    "GPTBot",
+    "Google-Extended",
+    "ImagesiftBot",
+    "Meltwater",
+    "Meta-ExternalAgent",
+    "OAI-SearchBot",
+    "Omgili",
+    "Omgilibot",
+    "PerplexityBot",
+    "Seznam-Extended",
+    "Tollbit",
+    "YouBot",
+    "anthropic-ai",
+    "grapeshot"
+   ],
+   "seznam_extended": [
+    "Disallow: /"
+   ],
+   "seznam_extended_full_disallow": true,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.blesk.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AhrefsBot",
+    "AhrefsSiteAudit",
+    "AwarioBot",
+    "BLEXBot",
+    "Bytespider",
+    "CriteoBot",
+    "DataForSeoBot",
+    "DotBot",
+    "GrapeshotCrawler",
+    "MJ12bot",
+    "MegaIndex",
+    "MojeekBot",
+    "SemrushBot",
+    "YandexBot",
+    "Yeti",
+    "YisouSpider",
+    "grapeshot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.lidovky.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "Amazonbot",
+    "Applebot",
+    "Bytespider",
+    "Claude-Web",
+    "ClaudeBot",
+    "Diffbot",
+    "FacebookBot",
+    "GPTBot",
+    "Google-Extended",
+    "ImagesiftBot",
+    "MachineLearning",
+    "Omgili",
+    "Omgilibot",
+    "PerplexityBot",
+    "YouBot",
+    "anthropic-ai"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "echo24.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "Amazonbot",
+    "Applebot",
+    "Bytespider",
+    "Claude-Web",
+    "ClaudeBot",
+    "Diffbot",
+    "FacebookBot",
+    "GPTBot",
+    "Google-Extended",
+    "ImagesiftBot",
+    "MachineLearning",
+    "Omgili",
+    "Omgilibot",
+    "PerplexityBot",
+    "YouBot",
+    "anthropic-ai"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.forum24.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.info.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.e15.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AhrefsBot",
+    "AhrefsSiteAudit",
+    "AwarioBot",
+    "BLEXBot",
+    "Bytespider",
+    "CriteoBot",
+    "DataForSeoBot",
+    "DotBot",
+    "GrapeshotCrawler",
+    "MJ12bot",
+    "MegaIndex",
+    "MojeekBot",
+    "SemrushBot",
+    "YandexBot",
+    "Yeti",
+    "YisouSpider",
+    "grapeshot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "archiv.hn.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "GPTBot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.respekt.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.reflex.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AhrefsBot",
+    "AhrefsSiteAudit",
+    "AwarioBot",
+    "BLEXBot",
+    "Bytespider",
+    "CriteoBot",
+    "DataForSeoBot",
+    "DotBot",
+    "GrapeshotCrawler",
+    "MJ12bot",
+    "MegaIndex",
+    "MojeekBot",
+    "SemrushBot",
+    "YandexBot",
+    "Yeti",
+    "YisouSpider"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "tn.nova.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "Amazonbot",
+    "Bytespider",
+    "CCBot",
+    "Cohere-ai",
+    "Omgili",
+    "Omgilibot",
+    "YouBot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "ct24.ceskatelevize.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.expres.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "Amazonbot",
+    "Applebot",
+    "Bytespider",
+    "Claude-Web",
+    "ClaudeBot",
+    "Diffbot",
+    "FacebookBot",
+    "GPTBot",
+    "Google-Extended",
+    "ImagesiftBot",
+    "MachineLearning",
+    "Omgili",
+    "Omgilibot",
+    "PerplexityBot",
+    "YouBot",
+    "anthropic-ai"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.super.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AI",
+    "SeznamSocialBot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [
+    "Disallow: /"
+   ],
+   "ai_full_disallow": true,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.lupa.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.root.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.zive.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AhrefsBot",
+    "Amazonbot",
+    "Applebot-Extended",
+    "Bytespider",
+    "CCBot",
+    "ChatGPT Agent",
+    "ChatGPT-User",
+    "Claude-SearchBot",
+    "Claude-User",
+    "ClaudeBot",
+    "Diffbot",
+    "DuckAssistBot",
+    "FacebookBot",
+    "GPTBot",
+    "Gemini-Deep-Research",
+    "Google-CloudVertexBot",
+    "Google-Extended",
+    "GoogleOther",
+    "MachineLearning",
+    "OAI-SearchBot",
+    "Perplexity-User",
+    "PerplexityBot",
+    "PetalBot",
+    "YouBot",
+    "archive.org_bot",
+    "cohere-ai",
+    "ia_archiver",
+    "meta-externalagent"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.cnews.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.mobilmania.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AhrefsBot",
+    "Amazonbot",
+    "Applebot-Extended",
+    "Bytespider",
+    "CCBot",
+    "ChatGPT Agent",
+    "ChatGPT-User",
+    "Claude-SearchBot",
+    "Claude-User",
+    "ClaudeBot",
+    "Diffbot",
+    "DuckAssistBot",
+    "FacebookBot",
+    "GPTBot",
+    "Gemini-Deep-Research",
+    "Google-CloudVertexBot",
+    "Google-Extended",
+    "GoogleOther",
+    "MachineLearning",
+    "OAI-SearchBot",
+    "Perplexity-User",
+    "PerplexityBot",
+    "PetalBot",
+    "YouBot",
+    "archive.org_bot",
+    "cohere-ai",
+    "ia_archiver",
+    "meta-externalagent"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [
+    "Disallow: /"
+   ],
+   "machinelearning_full_disallow": true,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.svetandroida.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.vtm.cz",
+   "status": 200,
+   "agents": [],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "21stoleti.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.kurzy.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "AhrefsBot",
+    "Bingbot",
+    "CriteoBot",
+    "DataForSeoBot",
+    "Mediapartners-Google*",
+    "PetalBot",
+    "SeekportBot",
+    "SentiBot",
+    "SenutoBot",
+    "Seznambot",
+    "googlebot",
+    "proximic",
+    "trendictionbot"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": true
+  },
+  {
+   "domain": "www.penize.cz",
+   "status": 200,
+   "agents": [
+    "*",
+    "Amazonbot",
+    "Applebot-Extended",
+    "Bytespider",
+    "CCBot",
+    "ChatGPT-User",
+    "Claude-SearchBot",
+    "Claude-User",
+    "Claude-web",
+    "ClaudeBot",
+    "Diffbot",
+    "FacebookBot",
+    "GPTBot",
+    "Google-Extended",
+    "ImagesiftBot",
+    "Meta-ExternalAgent",
+    "OAI-SearchBot",
+    "Omgilibot",
+    "Perplexity-User",
+    "PerplexityBot",
+    "Riddler",
+    "Timpibot",
+    "anthropic-ai",
+    "cohere-ai",
+    "cohere-training-data-crawler"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.mesec.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.podnikatel.cz",
+   "status": 200,
+   "agents": [
+    "*"
+   ],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  },
+  {
+   "domain": "www.marketingsales.cz",
+   "status": 200,
+   "agents": [],
+   "seznam_extended": [],
+   "seznam_extended_full_disallow": false,
+   "ai": [],
+   "ai_full_disallow": false,
+   "machinelearning": [],
+   "machinelearning_full_disallow": false,
+   "seznambot_skupina": false
+  }
+ ],
+ "souhrn": {
+  "jen_AI": 3,
+  "jen_MachineLearning": 7,
+  "AI_i_MachineLearning": 1,
+  "Seznam_Extended": 1,
+  "celkem_aspon_jeden": 12,
+  "n": 33
+ }
+}
