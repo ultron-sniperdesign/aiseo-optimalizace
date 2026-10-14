@@ -423,6 +423,10 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
   > kontrolovanou pasáž **neupravuj** — auditor by posuzoval stav, který už neplatí, a
   > vrátil by nález na něco, co je mezitím opravené. Když je změna během ověřování
   > nezbytná, ověřování zruš, změnu dokonči a pošli novou verzi.
+  - **Podklady přilož ke každému tvrzení v posílané pasáži, ne jen k opravenému nálezu.**
+    Auditor C5b brief z kola 1 nevidí. 14. 10. 2026 (blok „odhlášení ze Seznam AI“) vrátil
+    dva body jako NEOBSTOJÍ jen proto, že výtah vynechal doklad k větám, které v pasáži
+    stály vedle opravy — a padlo na to jediné povolené kolo navíc.
 
 - **Strop se počítá na nález, ne na článek — ale článek má vlastní strop.**
   - **Doověření téhož zásadního nálezu: jedno kolo navíc.** Když oprava ani po něm
