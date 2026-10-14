@@ -8,7 +8,7 @@ tags:
   - "ai-platformy"
   - "technicke-zaklady"
 published: "2026-07-19"
-updated: "2026-07-19"
+updated: "2026-10-14"
 keywords:
   - "seznam asistent"
   - "sellma"
@@ -19,8 +19,8 @@ variant: "rich"
 faq:
   - q: "Co je Seznam-Extended?"
     a: "Je to označení robota, kterým Seznam sbírá obsah pro své AI služby, tedy i pro Seznam Asistenta. Chová se jako ostatní roboti: řídí se pravidly v souboru robots.txt na vašem webu. Je to samostatný user-agent Seznamu pro jeho AI služby."
-  - q: "Jak weby z Seznam AI odhlásím?"
-    a: "Podle nápovědy Seznamu pro partnery se do robots.txt přidá pravidlo pro user-agenta Seznam-Extended s direktivou Disallow. Seznam zároveň uvádí, že pokud stránka obsahuje Seznam-Extended Disallow, direktivu AI Disallow nebo nosnippet, obsah se v AI odpovědích nepoužije."
+  - q: "Jak web ze Seznam AI odhlásím?"
+    a: "Nápověda Vyhledávání uvádí v robots.txt pravidlo Disallow: / pro kterýkoli z user-agentů Seznam-Extended, AI nebo MachineLearning, případně meta značku nosnippet pro SeznamBota, která ale vypne i úryvky ve výsledcích. Seznam pak web nepoužije jako zdroj AI odpovědí. Partnerská nápověda jmenuje jen Seznam-Extended."
   - q: "Co mě odhlášení bude stát?"
     a: "Seznam to říká přímo: na odhlášený web už nebude uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat. Není to tedy jen zákaz použití obsahu, ale i konec návštěv z tohoto kanálu. Je to volba za celý web, u které se za ochranu obsahu platí viditelností."
   - q: "Ovlivní blokace i běžné výsledky v Seznamu?"
@@ -50,7 +50,7 @@ User-agent: Seznam-Extended
 Disallow: /
 ```
 
-Seznam k tomu dodává, že pokud stránka obsahuje `Seznam-Extended: Disallow`, direktivu `AI: Disallow` nebo `nosnippet`, obsah se v AI odpovědích nepoužije vůbec.
+Nápověda Vyhledávání k tomu dodává, že stejný účinek má pravidlo `Disallow: /` pro obecné user-agenty `AI` nebo `MachineLearning` ze standardu SPIR a meta značka `nosnippet` pro SeznamBota, která ale vypne i úryvky ve výsledcích. Web pak Seznam nepoužije jako zdroj AI odpovědí.
 
 Že jde o snadno přehlédnutelnou věc, si dovolíme doložit na sobě: při psaní tohohle článku jsme si pustili vlastní `robots.txt` a `Seznam-Extended` v něm nebyl. Řešili jsme globální roboty a na českého zapomněli. Až si tedy budete robots.txt ladit podle [návodu pro AI roboty](/blog/ai-crawler-robots-txt/), přidejte si Seznam mezi věci ke kontrole.
 

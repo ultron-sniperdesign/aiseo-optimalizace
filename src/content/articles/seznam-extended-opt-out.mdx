@@ -1,14 +1,14 @@
 ---
-title: "Seznam popisuje opt-out z AI. V robots.txt ho má 1 web z 33"
-description: "Seznam popisuje odhlášení z AI přes user-agenta Seznam-Extended — v partnerské nápovědě, ne v dokumentaci procházení. Z 33 českých médií ho má jeden."
-answer: "Seznam v partnerské nápovědě ke službě Seznam AI uvádí user-agenta Seznam-Extended jako způsob, jak se z ní odhlásit přes robots.txt. V dokumentaci procházení není a u webů mimo tuhle službu účinek neupřesňuje. Ve vzorku 33 českých médií ho má jeden web, zatímco pravidlo pro nějakého zahraničního AI robota šestnáct."
+title: "Opt-out z AI u Seznamu: v robots.txt ho má 12 webů z 33"
+description: "Seznam popisuje odhlášení z AI odpovědí přes Seznam-Extended, AI nebo MachineLearning v robots.txt. Ve vzorku 33 českých médií ho má dvanáct webů."
+answer: "Odhlášení z AI u Seznamu je pravidlo v robots.txt nebo meta značka, na jejichž základě Seznam podle nápovědy Vyhledávání nepoužije web jako zdroj AI odpovědí. Stačí Disallow: / pro Seznam-Extended, AI nebo MachineLearning, případně nosnippet, který vypne i úryvky. Partnerská nápověda jmenuje jen Seznam-Extended. Ve vzorku 33 českých médií má zákaz pro některý ze tří user-agentů dvanáct webů, Seznam-Extended jeden."
 slug: "seznam-extended-opt-out"
 category: "analysis"
 tags:
   - "ai-platformy"
   - "mereni"
 published: "2026-08-09"
-updated: "2026-08-09"
+updated: "2026-10-14"
 variant: "rich"
 keywords:
   - "seznam-extended"
@@ -19,17 +19,17 @@ keywords:
   - "ai roboti robots.txt"
 faq:
   - q: "Co je Seznam-Extended?"
-    a: "Je to jméno user-agenta, který Seznam uvádí ve své partnerské nápovědě jako způsob, jak se odhlásit z funkcí Seznam AI — v kontextu zapojení do téhle služby. Odhlášení se dělá běžným zákazem v robots.txt, tedy Disallow na tenhle user-agent, podobně jako u Google-Extended."
+    a: "Je to jméno user-agenta, který Seznam uvádí pro odhlášení z AI odpovědí. Odhlášení se dělá běžným zákazem v robots.txt, tedy Disallow: / pro tenhle user-agent, podobně jako u Google-Extended. Nápověda Vyhledávání vedle něj uvádí i obecné user-agenty AI a MachineLearning a meta značku nosnippet."
   - q: "Kde to Seznam dokumentuje?"
-    a: "V nápovědě pro partnery u služby Seznam AI, ne v dokumentaci procházení webu. Ta jmenuje jen SeznamBota a zástupný user-agent. Kdo řeší robots.txt, obvykle čte tu druhou, a tam Seznam-Extended není."
+    a: "Na více místech. Nejúplnější je stránka Zákaz tvorby AI odpovědí z vašeho webu v nápovědě Vyhledávání, v sekci o SeznamBotovi: tři user-agenty a meta značka nosnippet. Partnerská nápověda u služby Seznam AI uvádí jen Seznam-Extended a připojuje důsledek pro návštěvnost. Nápověda Seznam AI v odpovědi autorům obsahu jmenuje jako příklady Seznam-Extended, AI a nosnippet. Text stránky nápovědy o robots.txt ani anglická dokumentace procházení AI odpovědi nezmiňují."
   - q: "Platí to i pro weby mimo program Seznam Partner?"
-    a: "To dokumentace neříká. Věta o odhlášení je psaná v kontextu zapojení do služby a týká se odhlášení z ní. Jak se Seznam-Extended chová u webů mimo program, jsme nedohledali a netvrdíme to."
+    a: "Nápověda Vyhledávání žádný program nezmiňuje: podle ní Seznam nepoužije jako zdroj AI odpovědí web, který má zákaz pro kterýkoli ze tří user-agentů nebo meta značku nosnippet. Důsledek pro návštěvnost, tedy že Seznam přestane na web přivádět uživatele, uvádí jen partnerská nápověda, a to u Seznam-Extended."
   - q: "Přijdu odhlášením o něco?"
-    a: "V partnerské nápovědě Seznam uvádí, že po tomhle zákazu už na web nebude uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat. U webů mimo tuhle službu dokumentace účinek nerozvádí."
+    a: "Partnerská nápověda u zákazu pro Seznam-Extended uvádí, že Seznam už na web nebude přivádět uživatele ani s jeho obsahem v rámci Seznam AI pracovat. U user-agentů AI a MachineLearning nápověda Vyhledávání píše jen to, že web jako zdroj AI odpovědí nepoužije. Meta značka nosnippet navíc vypne textové úryvky ve výsledcích Vyhledávání."
   - q: "Jak se pravidlo napíše?"
-    a: "Do robots.txt přidáte samostatnou skupinu s User-agent: Seznam-Extended a pod ni Disallow: /. Pozor na to, že skupina pro konkrétního robota nahrazuje skupinu User-agent: *, ne že by se s ní sčítala."
+    a: "Do robots.txt přidáte samostatnou skupinu s User-agent: Seznam-Extended, AI nebo MachineLearning a pod ni Disallow: /. Podle nápovědy Vyhledávání stačí jedna z nich. Pozor na to, že skupina pro konkrétního robota nahrazuje skupinu User-agent: *, ne že by se s ní sčítala."
   - q: "Ovlivní to moje pozice v Seznamu?"
-    a: "Nemáme doklad, že by zákaz pro Seznam-Extended ovlivnil běžnou indexaci pod SeznamBotem, a netvrdíme to. Měřili jsme konfiguraci v robots.txt, ne chování vyhledávače."
+    a: "Nemáme doklad, že by zákaz pro kterýkoli ze tří user-agentů ovlivnil běžnou indexaci pod SeznamBotem, a netvrdíme to. Jinak je to u meta značky nosnippet: podle nápovědy vypne i textové úryvky ve výsledcích. Měřili jsme konfiguraci v robots.txt, ne chování vyhledávače."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
@@ -39,60 +39,65 @@ import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 
 ## Odhlášení z AI u Seznamu: co je doložené
 
-**Seznam v partnerské nápovědě ke službě Seznam AI uvádí user-agenta `Seznam-Extended` jako způsob, jak se z ní odhlásit přes robots.txt.** V dokumentaci procházení, kam se pro robots.txt chodí, není. Změřil jsem 33 českých zpravodajských a oborových webů: **pravidlo pro něj má jeden**.
+**Nejúplněji popisuje Seznam odhlášení z AI odpovědí v nápovědě Vyhledávání.** Uvádí pravidlo `Disallow: /` pro kterýkoli z user-agentů `Seznam-Extended`, `AI` nebo `MachineLearning`, případně meta značku `nosnippet`. Partnerská nápověda ke službě Seznam AI jmenuje jen `Seznam-Extended`. Změřil jsem 33 českých zpravodajských a oborových webů: **některé z těch tří pravidel má dvanáct**, pravidlo pro `Seznam-Extended` jeden.
 
 Zahraniční AI roboty přitom ošetřuje šestnáct z nich.
 
-<Insight tone="warn" icon="!" label="Málem jsem publikoval opak">
-Dokumentace procházení jmenuje **jen SeznamBota** a zástupný `User-agent: *`. Bylo by z ní snadné usoudit, že žádný AI opt-out neexistuje — a byla by to chyba: `Seznam-Extended` je popsaný jinde, v partnerské nápovědě.
+<Insight tone="warn" icon="!" label="Oprava 14. 10. 2026">
+Původní verze článku z 9. 8. 2026 tvrdila, že odhlášení je popsané jen v partnerské nápovědě a jen přes `Seznam-Extended`, a měření počítalo jen tenhle user-agent — vyšel z toho jeden web z 33. Četl jsem tehdy anglickou dokumentaci procházení (*Crawling control*), která AI odpovědi nezmiňuje, stejně jako česká stránka nápovědy o robots.txt. Česká nápověda Vyhledávání má ale v sekci o SeznamBotovi samostatnou stránku *Zákaz tvorby AI odpovědí z vašeho webu* a internetový archiv Wayback Machine ji zachytil už 7. 6. 2026, tedy dva měsíce před článkem.
 
-  **Absence na jednom dokumentačním místě není doklad neexistence.** Sám jsem po té hypotéze šel a málem ji publikoval.
+  **Absence na jednom dokumentačním místě není doklad neexistence — a nález na jednom místě není doklad, že jinde nic dalšího není.** Měření jsem 14. 10. 2026 přepočítal na stejném vzorku.
 </Insight>
 
 ## Co přesně Seznam uvádí
 
-V nápovědě pro partnery u služby Seznam AI stojí:
+Nápověda Vyhledávání má stránku *Zákaz tvorby AI odpovědí z vašeho webu*. Podle ní stačí v robots.txt zakázat celý web jednomu z user-agentů `Seznam-Extended`, `AI` nebo `MachineLearning` a Seznam web nepoužije jako zdroj AI odpovědí. Druhou cestou je meta značka `nosnippet` pro SeznamBota, která ale vypne i textové úryvky ve výsledcích Vyhledávání.
 
-> „Pokud se do této nové služby nechcete zapojit, v souboru robots.txt na příslušné doméně specifikujte zákaz přístupu pro User-agent „Seznam-Extended“ (Disallow). Na váš web již nadále nebudeme uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat.“
+Partnerská nápověda u služby Seznam AI zmiňuje jen `Seznam-Extended` a připojuje k němu důsledek: *„nebudeme uživatele přivádět ani s jeho obsahem v rámci Seznam AI pracovat“*. Nápověda Seznam AI v odpovědi autorům obsahu jmenuje jako příklady `Seznam-Extended`, `AI` a `nosnippet`.
 
-Vyplývají z toho dvě věci.
+Vyplývají z toho tři věci.
 
-**Mechanismus je popsaný jako běžné pravidlo v robots.txt.** Žádné rozhraní, žádná žádost, žádný formulář — samostatná skupina na pojmenovaného user-agenta, analogicky k `Google-Extended`.
+**Mechanismus je popsaný jako běžné pravidlo v robots.txt.** Nápovědy k odhlášení neuvádějí žádné rozhraní, žádost ani formulář — jen samostatnou skupinu na pojmenovaného user-agenta, analogicky k `Google-Extended`, nebo meta značku.
 
-**Není to odhlášení zadarmo.** Podle téže věty s ním mizí i přiváděná návštěvnost z ploch Seznam AI. Podle téhle formulace tedy Seznam staví věc jako volbu mezi nepoužíváním obsahu v rámci Seznam AI a přiváděním návštěvnosti z těch ploch — ne jako jednosměrnou ochranu.
+**Podle partnerské nápovědy není odhlášení přes `Seznam-Extended` zadarmo.** S ním mizí i přiváděná návštěvnost z ploch Seznam AI. Seznam tu věc staví jako volbu mezi nepoužíváním obsahu v rámci Seznam AI a přiváděním návštěvnosti z těch ploch — ne jako jednosměrnou ochranu. U `AI` a `MachineLearning` nápověda Vyhledávání důsledek pro návštěvnost neuvádí.
 
-<Insight tone="aio" icon="i" label="Co dokumentace neříká">
-  Ta stránka je **partnerská nápověda pro vydavatele** a odhlášení je v ní popsané jako odhlášení „z této nové služby“.
+**`AI` a `MachineLearning` nejsou user-agenty Seznamu.** Definuje je jednotný standard SPIR, který SPIR v březnu 2026 aktualizoval spolu s organizacemi vydavatelů. Podle standardu `MachineLearning` zakazuje trénink obecných modelů a tvorbu datových sad, `AI` navíc i odpovědi v reálném čase, třeba online souhrny. Seznam podle své nápovědy bere kterýkoli z nich jako zákaz AI odpovědí. Oba výklady vedle sebe rozebírá článek o [AI sumarizaci Seznamu a vydavatelích](/blog/ai-sumarizace-a-vydavatele/#odhlaseni-ze-seznam-ai-tri-user-agenty-a-dva-vyklady).
 
-**Jak se `Seznam-Extended` chová u webů mimo ten program, dokumentace neuvádí a my to netvrdíme.** Doložené je tolik: Seznam ten user-agent pojmenoval a popsal u něj tenhle účinek.
+## Kde to <span class="hl">Seznam popisuje</span> — <strong>každá stránka jinak</strong>
 
-  Prakticky z toho plyne: pokud v programu Seznam Partner nejste, pravidlo si přidat můžete, ale **nečekejte doložený efekt**.
-</Insight>
-
-## Je to napsané tam, kam webmaster nechodí
-
-Tady je jádro problému. Seznam má dvě místa s dokumentací a opt-out je v tom méně navštěvovaném:
+Odhlášení je v nápovědě Vyhledávání, jen ne na stránce o robots.txt, ale na samostatné stránce v téže sekci. Partnerská nápověda je užší, zato jako jediná popisuje důsledek pro návštěvnost:
 
 | Kde | Co tam je |
 |---|---|
-| Dokumentace procházení webu | `SeznamBot` a zástupný `*`; direktivy Disallow, Allow, Request-rate, Sitemap. **`Seznam-Extended` tu uvedený není** |
-| Nápověda pro partnery u Seznam AI | **`Seznam-Extended`** |
+| Nápověda Vyhledávání, *Zákaz tvorby AI odpovědí z vašeho webu* | `Seznam-Extended`, `AI` nebo `MachineLearning` s `Disallow: /`, nebo meta značka `nosnippet`; web se nepoužije jako zdroj AI odpovědí |
+| Nápověda Vyhledávání, *Robots.txt*; anglická *Crawling control* | v textu AI odpovědi ani `Seznam-Extended` nezmiňují |
+| Partnerská nápověda u služby Seznam AI | jen `Seznam-Extended`; k tomu konec přivádění uživatelů z ploch Seznam AI |
+| Nápověda Seznam AI, odpověď autorům obsahu | jako příklady `Seznam-Extended`, `AI` a `nosnippet`; obsah se v AI odpovědích nepoužije |
 
-Kdo řeší robots.txt, otevře to první. Kdo řeší monetizaci obsahu, to druhé. Opt-out z AI je přitom téma, které patří oběma.
+Kdo řeší robots.txt a přečte jen stránku o něm, odhlášení z AI v jejím textu nenajde — je na samostatné stránce, kterou nabízí menu sekce. Kdo řeší monetizaci obsahu, dozví se z partnerské nápovědy jen o `Seznam-Extended`. Opt-out z AI je přitom téma, které patří oběma.
 
 ## Měření: kdo ho v Česku používá
 
-Stáhl jsem robots.txt 33 českých zpravodajských a oborových webů (podařilo se u všech 33, odečet 9. 8. 2026) a hledal, kdo má jaká pravidla.
+Stáhl jsem robots.txt 33 českých zpravodajských a oborových webů (podařilo se u všech 33, odečet 9. 8. 2026) a hledal, kdo má jaká pravidla. Původně jsem počítal jen `Seznam-Extended`. 14. 10. 2026 jsem stejný vzorek stáhl znovu a započítal všechny tři user-agenty z nápovědy Vyhledávání:
 
-| Co má web v robots.txt | Kolik z 33 |
+| Pravidlo `Disallow: /` v robots.txt, 14. 10. 2026 | Webů z 33 |
 |---|---|
-| pravidlo pro **`Seznam-Extended`** | **1** |
-| pravidlo pro `SeznamBot` (běžný crawler vyhledávání, ne AI opt-out) | 2 |
-| pravidlo aspoň pro jednoho **zahraničního** AI robota | **16** |
-| žádné pravidlo pro žádného ze sledovaných AI robotů | 17 |
-| pravidla pro šest a víc AI robotů najednou | 9 |
+| jen `MachineLearning` | 7 |
+| jen `AI` | 3 |
+| `AI` i `MachineLearning` | 1 |
+| `Seznam-Extended` | 1 |
+| **aspoň jedno ze tří** | **12** |
 
-Ten jediný web se `Seznam-Extended` u něj má `Disallow: /`, tedy skutečné odhlášení, ne dekoraci.
+Skupiny pro tyhle user-agenty měly stejné weby v robots.txt už 9. 8.; obsah pravidel u `AI` a `MachineLearning` jsem ale v srpnu neukládal, `Disallow: /` u nich proto počítám až z říjnového odečtu. Výslovné povolení pro `Seznam-Extended` nemá žádný z nich.
+
+Ostatní čísla jsou ze srpnového odečtu:
+
+| Co má web v robots.txt, 9. 8. 2026 | Kolik z 33 |
+|---|---|
+| pravidlo pro `SeznamBot` (běžný vyhledávací robot, ne odhlášení z AI) | 2 |
+| pravidlo aspoň pro jednoho **zahraničního** AI robota | **16** |
+| žádné pravidlo pro žádného ze sledovaných zahraničních AI robotů | 17, z toho tři mají `AI` |
+| pravidla pro šest a víc AI robotů najednou | 9 |
 
 Zahraniční roboty přitom měřené weby řeší docela pilně:
 
@@ -107,22 +112,23 @@ Zahraniční roboty přitom měřené weby řeší docela pilně:
 | anthropic-ai | 6 |
 | CCBot | 6 |
 
-Devět webů ošetřuje šest a víc AI robotů naráz. Někdo si s tím tedy dal skutečnou práci — a **pravidlo pro `Seznam-Extended`, které Seznam uvádí v partnerské nápovědě, má jeden web z třiatřiceti**.
+Devět webů ošetřuje šest a víc AI robotů naráz a osm z nich má i některé ze tří pravidel z nápovědy Vyhledávání. Někdo si s tím tedy dal skutečnou práci — a **konkrétní `Seznam-Extended` má jeden web z třiatřiceti**. Ostatní mají obecné user-agenty, které Seznam podle nápovědy bere také jako zákaz.
 
-Pro srovnání: v dřívějším [měření robots.txt na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/) nezmiňoval Seznam v robots.txt **ani jeden ze 47 e-shopů**. Tam to ale dává větší smysl — e-shopy nejsou populace, které se partnerská nápověda týká.
+Pro srovnání: v dřívějším [měření robots.txt na Shoptetu](/blog/shoptet-robots-txt-ai-roboti/) z 8. 8. 2026 neměl žádný ze 47 e-shopů ani jeden z těch tří user-agentů.
 
 ## Jak se rozhodnout
 
 Odhlášení nemá univerzálně správnou odpověď, protože se tím zavírají dveře oběma směry.
 
-- **Žijete z prokliků na obsah a Seznam vám je vozí:** odhlášením přijdete i o ně. Než sáhnete na robots.txt, zkuste ověřit, jestli tenhle zdroj návštěvnosti ve své analytice vůbec umíte odlišit.
-- **Vadí vám, že se s obsahem pracuje v rámci Seznam AI, a návštěvnost odjinud unesete:** Seznam takovou páku v partnerské nápovědě popisuje a je to jeden odstavec v souboru.
-- **Nejste v programu Seznam Partner:** dokumentace k vám mlčí. Pravidlo si přidat můžete, ale nečekejte doložený efekt.
+- **Žijete z prokliků na obsah a Seznam vám je vozí:** podle partnerské nápovědy o ně při odhlášení přes `Seznam-Extended` přijdete; u `AI` a `MachineLearning` dopad na návštěvnost nápověda neuvádí. Než sáhnete na robots.txt, zkuste ověřit, jestli tenhle zdroj návštěvnosti ve své analytice vůbec umíte odlišit.
+- **Vadí vám, že se s obsahem pracuje v rámci Seznam AI, a návštěvnost odjinud unesete:** Seznam takovou páku popisuje na všech třech místech nápovědy a je to pár řádků v souboru.
+- **Chcete zakázat jen trénink modelů:** `MachineLearning` na to podle standardu SPIR stačí, Seznam vás ale podle své nápovědy vyřadí i ze zdrojů AI odpovědí. Jestli Seznam respektuje přednost, kterou standard dává konkrétním user-agentům — třeba zákaz pro `MachineLearning` a povolení pro `Seznam-Extended` — nápověda neříká.
+- **Nejste v programu Seznam Partner:** nápověda Vyhledávání žádný program nezmiňuje, odhlášení tedy popisuje bez téhle podmínky. Důsledek pro návštěvnost uvádí jen partnerská nápověda.
 
 Ať se rozhodnete jakkoli, tohle je minimum, co si ověřit:
 
 <Checklist tone="seo" title="Než sáhnete na robots.txt" items={[
-  { title: "Vědět, co odhlášením ztratíte", desc: "podle Seznamu s ním odpadá i přiváděná návštěvnost z ploch Seznam AI." },
+  { title: "Vědět, co odhlášením ztratíte", desc: "podle partnerské nápovědy odpadá při zákazu pro Seznam-Extended i přiváděná návštěvnost z ploch Seznam AI; nosnippet navíc vypne úryvky ve výsledcích." },
   { title: "Nepsat pravidlo do skupiny pro hvězdičku", desc: "skupina pro konkrétního robota nahrazuje skupinu User-agent: *, nesčítá se s ní." },
   { title: "Nezaměňovat se SeznamBotem", desc: "to je robot běžného vyhledávání. Zákaz pro něj je něco úplně jiného než zákaz pro Seznam-Extended." },
   { title: "Ověřit soubor po nasazení", desc: "stáhněte si robots.txt z produkce a přečtěte, co v něm po nasazení skutečně je." },
@@ -136,11 +142,11 @@ User-agent: Seznam-Extended
 Disallow: /
 ```
 
-Proč se skupiny nesčítají a jak to celé souvisí se zbytkem souboru, rozebírá [návod na robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+Podle nápovědy Vyhledávání stejně poslouží `AI` nebo `MachineLearning` místo `Seznam-Extended`. Jsou to ale obecné user-agenty standardu SPIR, ne Seznamu — standard je nevztahuje k jedné AI platformě. Proč se skupiny nesčítají a jak to celé souvisí se zbytkem souboru, rozebírá [návod na robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
 
 ## Co o programu tvrdí sám Seznam
 
-Na téže stránce Seznam uvádí čísla o svých AI funkcích. Jsou to **údaje provozovatele o vlastní službě**, neověřené třetí stranou, takže je tu nechávám jako jeho tvrzení, ne jako doložený fakt:
+Na partnerské stránce ke službě Seznam AI uvádí Seznam čísla o svých AI funkcích. Jsou to **údaje provozovatele o vlastní službě**, neověřené třetí stranou, takže je tu nechávám jako jeho tvrzení, ne jako doložený fakt:
 
 - ve Vyhledávání a v Seznam Asistentovi se mezi lety 2023 a 2025 „podařilo zdvojnásobit počet zpravodajských dotazů“,
 - „meziročně vzrostl počet hledání i prokliků o 85 %, přičemž míra prokliku (CTR) zůstává stabilní i při výrazně vyšším objemu dotazů“.
@@ -149,30 +155,30 @@ Ať už těm číslům věříte jakkoli, ukazují, proč je odhlášení skute�
 
 ## Limity tohohle měření
 
-Jeden odečet, **9. srpna 2026** — dokumentace i robots.txt se mění.
+Dva odečty téhož vzorku, **9. 8. a 14. 10. 2026** — dokumentace i robots.txt se mění.
 
 Vzorek 33 médií není náhodný výběr, je to ruční seznam známých českých zpravodajských a oborových webů. Jednotlivé weby nejmenuju.
 
-A hlavně: **měřím konfiguraci v robots.txt, ne chování Seznamu.** Netestoval jsem, jestli a jak `Seznam-Extended` respektuje — to z veřejné strany ověřit neumím. Tenhle článek říká, co je dokumentované a kdo si to nastavil, ne co se pak děje.
+A hlavně: **měřím konfiguraci v robots.txt, ne chování Seznamu.** Netestoval jsem, jestli a jak Seznam tahle pravidla respektuje — to z veřejné strany ověřit neumím. Záměr vydavatelů z robots.txt taky nepoznám: sedm webů s jen `MachineLearning` mohlo chtít zakázat jen trénink. Tenhle článek říká, co je dokumentované a kdo si co nastavil, ne co se pak děje.
 
 ## Tři chyby, které se u toho nabízejí
 
 <MistakeGrid>
-  <Mistake num="01" title="Usoudit z jedné stránky dokumentace, že něco neexistuje">
-    Dokumentace procházení o Seznam-Extended mlčí. Přesto ho Seznam uvádí — jen v partnerské nápovědě. Sám jsem na to skoro naletěl.
+  <Mistake num="01" title="Usoudit z jedné stránky dokumentace, že jinde nic není">
+    Stránka nápovědy o robots.txt odhlášení z AI nezmiňuje a partnerská nápověda zná jen Seznam-Extended. Úplný výčet je na samostatné stránce nápovědy Vyhledávání. Tady jsem na to v srpnu naletěl.
   </Mistake>
   <Mistake num="02" title="Zaměnit Seznam-Extended se SeznamBotem">
     Jeden je AI vrstva, druhý běžné vyhledávání. Zákaz pro SeznamBota je něco úplně jiného než odhlášení z AI.
   </Mistake>
   <Mistake num="03" title="Brát opt-out jako čistý zisk">
-    Podle Seznamu s ním odchází i návštěvnost z těch ploch. Je to výměna, ne ochrana zadarmo.
+    Podle partnerské nápovědy s odhlášením přes Seznam-Extended odchází i návštěvnost z ploch Seznam AI. Je to výměna, ne ochrana zadarmo.
   </Mistake>
 </MistakeGrid>
 
 ## Shrnutí
 
-Seznam v partnerské nápovědě ke službě Seznam AI popisuje odhlášení přes `Seznam-Extended` v robots.txt. V dokumentaci procházení to není a u webů mimo tu službu účinek neupřesňuje — a ve vzorku 33 českých médií má to pravidlo jeden web, zatímco zahraniční AI roboty tam řeší šestnáct.
+Nejúplněji popisuje Seznam odhlášení z AI odpovědí v nápovědě Vyhledávání: tři user-agenty — `Seznam-Extended`, `AI` a `MachineLearning` — a meta značku `nosnippet`. Partnerská nápověda uvádí jen `Seznam-Extended` a k němu konec přivádění uživatelů z ploch Seznam AI. Ve vzorku 33 českých médií má některé z těch tří pravidel dvanáct webů, konkrétní `Seznam-Extended` jeden, zatímco zahraniční AI roboty tam řeší šestnáct.
 
-Nedoporučuju ho zapnout ani vypnout. Doporučuju o něm vědět, protože rozhodnutí se dělá mezi ochranou obsahu a návštěvností — a to rozhodnutí dnes většina webů nedělá vědomě.
+Nedoporučuju odhlášení zapnout ani vypnout. Doporučuju o něm vědět, protože rozhodnutí se dělá mezi ochranou obsahu a návštěvností — a u `MachineLearning` i mezi tím, co říká standard SPIR a jak ho čte Seznam.
 
 Jak si ověřit, že robot, který se vám hlásí v logu, je opravdu ten, za koho se vydává, rozebírá [ověřování AI robotů](/blog/overovani-ai-robotu/). Širší obrázek o Seznamu a AI je v článku o [Seznamu a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/).

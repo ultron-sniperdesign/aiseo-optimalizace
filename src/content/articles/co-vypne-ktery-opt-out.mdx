@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "ai-platformy"
 published: "2026-08-11"
-updated: "2026-09-13"
+updated: "2026-10-14"
 hub: "AIPREHLED"
 variant: "rich"
 keywords:
@@ -28,7 +28,7 @@ faq:
   - q: "Co vypne Applebot-Extended?"
     a: "Podle Applu jen použití obsahu pro trénink jeho generativních modelů. Obsah zůstává dohledatelný přes Spotlight, Siri a Safari, protože obyčejný Applebot dál prochází web."
   - q: "Čím se liší Seznam-Extended od ostatních?"
-    a: "Je to jediný z porovnávaných, u kterého nápověda uvádí, že zákaz znamená obojí najednou: Seznam přestane s obsahem pracovat v rámci Seznam AI a zároveň přestane na web z toho kanálu přivádět uživatele."
+    a: "Je to jediný z porovnávaných, u kterého partnerská nápověda Seznamu uvádí, že zákaz znamená obojí najednou: Seznam přestane s obsahem pracovat v rámci Seznam AI a zároveň přestane na web z toho kanálu přivádět uživatele."
   - q: "Jak se dostat úplně mimo AI plochy Googlu?"
     a: "Podle Googlu je AI součástí Search, takže přístup pro Search řídí pravidla pro Googlebota. Pro samotné AI plochy existuje nastavení Search generative AI control v Search Console, které podle nápovědy nezasahuje do běžných výsledků."
 ---
@@ -108,8 +108,10 @@ Nápověda Seznam Partner uvádí u zákazu `Seznam-Extended` obojí v jedné v�
 
 **To je jiný dokumentovaný dopad než u Googlu.** U Google-Extended nepřijdete o nic ve vyhledávání. U Seznam-Extended je opt-out z AI zároveň opt-out z návštěvnosti, kterou by ten kanál přinesl. Podrobněji [tady](/blog/seznam-extended-opt-out/).
 
+Nápověda Vyhledávání má k tomu samostatnou stránku *Zákaz tvorby AI odpovědí z vašeho webu*. Vedle `Seznam-Extended` jmenuje i obecné user-agenty `AI` a `MachineLearning` ze standardu SPIR a meta značku `nosnippet`, která ale vypne i úryvky ve výsledcích. Podle ní stačí kterékoli z těch nastavení a Seznam web nepoužije jako zdroj AI odpovědí; důsledek pro návštěvnost tahle stránka neuvádí.
+
 <Insight tone="signal" icon="i" label="Dokumentaci nejde odhadovat">
-  Obecná stránka Seznamu o řízení procházení `Seznam-Extended` vůbec nezmiňuje — je to v nápovědě pro partnery u služby Seznam AI. Potřetí za poslední týden jsem narazil na to, že se dokumentace nedá tipnout podle konvence; [posledně u Amazonu](/blog/kdo-publikuje-ip-rozsahy/).
+  Stránka Seznamu o robots.txt `Seznam-Extended` v textu nezmiňuje, odhlášení z AI je na samostatné stránce nápovědy Vyhledávání. V původní verzi z 11. 8. 2026 jsem tu psal, že je jen v nápovědě pro partnery u služby Seznam AI — opraveno 14. 10. 2026. Podle konvence se nedá odhadnout, kde dokumentace co popisuje; [podobně to bylo u Amazonu](/blog/kdo-publikuje-ip-rozsahy/).
 </Insight>
 
 ## Jak si vybrat
@@ -118,7 +120,7 @@ Nápověda Seznam Partner uvádí u zákazu `Seznam-Extended` obojí v jedné v�
   { title: "Nechci, aby se obsah používal na trénink", desc: "Google-Extended, GPTBot, Applebot-Extended. Ve vyhledávání vás to nikam neposune. Google-Extended ale podle dokumentace vyřadí obsah i z podkládání odpovědí (grounding) v aplikacích Gemini a ve službě Grounding with Google Search na Vertex AI." },
   { title: "Nechci být ve funkcích s generativní AI ve Vyhledávání", desc: "nastavení Search generative AI control v Search Console. Google-Extended na to podle dokumentace nestačí." },
   { title: "Nechci být v odpovědích ChatGPT", desc: "OAI-SearchBot, ne GPTBot. Počítejte s tím, že navigační odkaz může zůstat." },
-  { title: "Nechci být v Seznam AI", desc: "Seznam-Extended — ale ztratíte i uživatele, které by ten kanál přivedl." },
+  { title: "Nechci být v Seznam AI", desc: "Seznam-Extended, AI nebo MachineLearning, případně nosnippet, který vypne i úryvky. U Seznam-Extended podle partnerské nápovědy ztratíte i uživatele, které by ten kanál přivedl." },
   { title: "Chci ven úplně", desc: "to už není opt-out z AI, ale odchod z vyhledávání. U Googlu k tomu vedou pravidla pro Googlebota." }
 ]} />
 
@@ -126,7 +128,7 @@ Nápověda Seznam Partner uvádí u zákazu `Seznam-Extended` obojí v jedné v�
 
 Tohle je **porovnání dokumentace, ne měření chování**. Netestoval jsem, jestli se roboti podle svých pravidel opravdu řídí — u ChatGPT-User to dokumentace sama nechává otevřené.
 
-Stav k **11. srpna 2026**; formulace se mění a stojí za to si je před nastavením přečíst znovu. Sledoval jsem sedm nastavení a robotů nejpoužívanějších na českém trhu, ne všechny existující.
+Stav k **11. srpna 2026**, u Seznamu opraveno **14. října 2026**; formulace se mění a stojí za to si je před nastavením přečíst znovu. Sledoval jsem sedm nastavení a robotů nejpoužívanějších na českém trhu, ne všechny existující.
 
 Čísla o českých médiích (devět a pět z 33) jsou z [měření z 9. srpna](/blog/bytespider-ceska-media/) a jde o nenáhodný ruční vzorek.
 
@@ -140,7 +142,7 @@ Stav k **11. srpna 2026**; formulace se mění a stojí za to si je před nastav
     GPTBot řeší trénink. Z odpovědí vyhledávání vyřadí až OAI-SearchBot.
   </Mistake>
   <Mistake num="03" title="Nastavit Seznam-Extended bez rozmyslu">
-    Jako jediný ze sledovaných vypne najednou použití obsahu v Seznam AI i přivádění uživatelů, rozdělit to nejde. U OpenAI i Googlu se trénink vypíná odděleně od zobrazení ve vyhledávání.
+    Podle partnerské nápovědy jako jediný ze sledovaných vypne najednou použití obsahu v Seznam AI i přivádění uživatelů; jak to rozdělit, dokumentace neuvádí. U OpenAI i Googlu se trénink vypíná odděleně od zobrazení ve vyhledávání.
   </Mistake>
 </MistakeGrid>
 

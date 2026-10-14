@@ -7,7 +7,7 @@ category: "tutorial"
 tags:
   - "technicke-zaklady"
 published: "2026-05-24"
-updated: "2026-09-13"
+updated: "2026-10-14"
 variant: "rich"
 keywords:
   - "ai crawler"
@@ -97,7 +97,7 @@ Velcí hráči mají víc robotů s různým účelem — jiný pro trénink, ji
 | Amzn-SearchBot | Amazon | vyhledávací | procházení pro vyhledávání; podle Amazonu ne pro trénink modelů |
 | Amzn-User | Amazon | na vyžádání | akce vyvolané uživatelem; podle Amazonu nemusí dodržet všechna pravidla robots.txt |
 | Meta-ExternalAgent | Meta | sběrač | procházení pro trénink AI modelů a zlepšování produktů Meta |
-| [Seznam-Extended](/blog/seznam-extended-opt-out/) | Seznam | řídicí token | odhlášení ze služby Seznam AI; uvedený v partnerské nápovědě, ne v dokumentaci procházení |
+| [Seznam-Extended](/blog/seznam-extended-opt-out/) | Seznam | řídicí token | zákaz AI odpovědí Seznamu; nápověda Vyhledávání přisuzuje stejný účinek i obecným `AI` a `MachineLearning` ze standardu SPIR |
 
 Starší tokeny `anthropic-ai` a `Claude-Web`, které se dodnes objevují v šablonách robots.txt, v aktuální dokumentaci Anthropicu nejsou — ta vyjmenovává jen `ClaudeBot`, `Claude-SearchBot` a `Claude-User`. Pravidlo pro starý token tedy nemusí dělat to, co od něj čekáte.
 
@@ -303,7 +303,7 @@ Jak je rozšířený, se navíc špatně měří: ve [vzorku 80 českých domén
 | Řeším roboty, na které robots.txt neplatí | [Roboti vyvolaní uživatelem](/blog/roboti-vyvolani-uzivatelem/) |
 | Chci ověřit, že robot je opravdu ten pravý | [Ověřování AI robotů](/blog/overovani-ai-robotu/) · [kdo publikuje IP rozsahy](/blog/kdo-publikuje-ip-rozsahy/) |
 | Chci roboty opravdu zastavit | [Blokování přes Cloudflare](/blog/cloudflare-ai-bot-blocking/) |
-| Řeším český opt-out | [Seznam-Extended](/blog/seznam-extended-opt-out/) |
+| Řeším český opt-out | [Odhlášení z AI u Seznamu](/blog/seznam-extended-opt-out/) |
 | Zajímá mě zátěž od robotů | [Zátěž webu od AI robotů](/blog/ai-roboti-zatez-webu/) |
 
 ## Co dál: <strong>nastavte to</strong> v rámci <span class="hl">celého webu</span>

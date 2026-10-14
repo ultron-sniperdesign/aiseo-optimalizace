@@ -131,7 +131,7 @@ Zdroje: [Seznam AI](https://partner.seznam.cz/napoveda/dalsi-sluzby/seznam-ai/) 
 
 ## Odhlášení ze <span class="hl">Seznam AI</span> — <strong>tři user-agenty a dva výklady</strong>
 
-Seznam popisuje odhlášení na dvou místech, každé v jiném rozsahu:
+Seznam popisuje odhlášení na více místech a dvě z nich se liší rozsahem:
 
 - **Partnerská nápověda a podmínky Newsfeedu** uvádějí jen `Seznam-Extended` s `Disallow`. Seznam pak obsah v Seznam AI nepoužije a z AI ploch na web přestane přivádět uživatele.
 - **Nápověda Vyhledávání** má stránku *Zákaz tvorby AI odpovědí z vašeho webu*, v internetovém archivu Wayback Machine už ze 7. 6. 2026. Stačí podle ní pravidlo `Disallow: /` pro kterýkoli z user-agentů `Seznam-Extended`, `AI` a `MachineLearning`, nebo meta značka `nosnippet` pro SeznamBota. Seznam pak web nepoužije jako zdroj AI odpovědí; `nosnippet` ale vypne i textové úryvky ve výsledcích.
@@ -164,7 +164,7 @@ Stáhl jsem 14. 10. 2026 soubory robots.txt stejného vzorku 33 českých zpravo
 | `Seznam-Extended` (ve skupině s dalšími roboty) | 1 |
 | žádné z trojice | 21 |
 
-Výslovné povolení pro `Seznam-Extended` nemá žádný z nich. Stejná pravidla měly tyhle weby už v srpnu; tehdejší měření na tomto webu počítalo jen `Seznam-Extended`, a proto uvádělo jeden web ze 33. Měřím konfiguraci, ne chování Seznamu, a záměr vydavatelů z robots.txt nepoznám. Jednotlivé weby nejmenuju.
+Výslovné povolení pro `Seznam-Extended` nemá žádný z nich. Skupiny pro tytéž user-agenty měly tyhle weby už v srpnu; tehdejší měření na tomto webu počítalo jen `Seznam-Extended`, a proto uvádělo jeden web ze 33. Měřím konfiguraci, ne chování Seznamu, a záměr vydavatelů z robots.txt nepoznám. Jednotlivé weby nejmenuju.
 
 <Checklist tone="seo" title="Než robots.txt změníte" items={[
   { title: "Změřte, co vám Seznam AI přivádí", desc: "Ukážou to návštěvy s utm_campaign asistent, aifunkce a trending_topics. Po odhlášení přes Seznam-Extended je podle partnerské nápovědy Seznam z AI ploch přestane přivádět; u AI a MachineLearning je doložené vyřazení webu jako zdroje AI odpovědí." },
