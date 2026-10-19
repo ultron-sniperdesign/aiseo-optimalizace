@@ -1803,3 +1803,18 @@ nedá“ → „Podle konvence se nedá odhadnout, kde…“ · „Zbytek je roz
 vyhraněné“. Z druhého auditu navíc „běžný crawler vyhledávání, ne AI opt-out“ → „běžný vyhledávací robot, ne odhlášení
 z AI“ a „Dokumentace se nedá tipnout“ (hovorové) → přeformulováno. **Nepřijato:** tři nálezy ve větách z verze 9. 8.,
 které blok nemění; „internetový archiv Wayback Machine“ (vysvětluje název) a „započítal“ (přesné sloveso v měření).
+
+## 2026-10-19 · `oborove-katalogy-ai` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** po konečných opravách; 2 042 slov, 275 pravidel |
+| Nezávislý jazykový audit | 25 nálezů: 24 přijato, u 25. přijata jazyková část; návrh pevné 60minutové schůzky odmítnut podle aktuálního `src/content/pages/audit.ts` (30–60 minut) |
+| Závěrečný audit | 1 další drobný jazykový nález, přijat a opraven („přihlášené aplikace“ → „uživatel přihlášený do aplikace“) |
+| Nová pravidla | **žádné** — všechny nálezy závisely na významu a kontextu věty |
+
+**Opraveno:** opakované abstrakce „ekosystém“, „oborový kontext“ a „ovládá kartu“ byly nahrazeny konkrétními
+mapami, vyhledávači, správou údajů a informacemi pro výběr dodavatele · „odkazový šum“ → „seznam odkazů bez doloženého
+přínosu“ · „nárokovat záznam“ → „převzít správu záznamu“ · „faktor shody“ rozepsán věcnou větou · upřesněny metriky
+placeného zápisu, bodovací pomůcka a zdroje. Výraz 30–60 minut zůstává záměrně podle tří aktuálních výskytů v `audit.ts`.
