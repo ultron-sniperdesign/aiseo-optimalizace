@@ -1818,3 +1818,18 @@ které blok nemění; „internetový archiv Wayback Machine“ (vysvětluje ná
 mapami, vyhledávači, správou údajů a informacemi pro výběr dodavatele · „odkazový šum“ → „seznam odkazů bez doloženého
 přínosu“ · „nárokovat záznam“ → „převzít správu záznamu“ · „faktor shody“ rozepsán věcnou větou · upřesněny metriky
 placeného zápisu, bodovací pomůcka a zdroje. Výraz 30–60 minut zůstává záměrně podle tří aktuálních výskytů v `audit.ts`.
+
+## 2026-10-19 · `cachovani-pro-ai-roboty` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** po konečných opravách; 2 102 slov, 275 pravidel |
+| Nezávislý jazykový audit | 34 nálezů, všech 34 přijato a opraveno |
+| Závěrečný audit | bez nového jazykového nálezu; verdikt **PUBLIKOVAT** |
+| Nová pravidla | **žádné** — všechny nálezy závisely na významu, větné vazbě nebo konkrétním technickém kontextu |
+
+**Opraveno:** vysvětleny pojmy mezipaměť a distribuční síť při prvním výskytu · technické kalky „zásah CDN“,
+„URL způsobilá pro cache“, „přenos dat platí server“ a „nejnižší účinná vrstva“ nahrazeny přirozenými a přesnými
+formulacemi · sjednoceno „ukládání do cache“, „soubory cookie“ a „omezení frekvence požadavků“ · zpřesněny podměty,
+popisky tabulek, obnova cache a diagnostika stavů Cloudflare. Žádný nález nebyl vhodný pro nový obecný regex.

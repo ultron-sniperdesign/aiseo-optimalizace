@@ -1,0 +1,187 @@
+---
+title: "AI roboty nechci blokovat, ale nechci kvůli nim platit víc"
+seoTitle: "AI roboti s menší zátěží serveru: cache před blokací"
+description: "Jak snížit náklady na AI roboty bez plošné blokace: plnostránková cache, CDN, kontrola výsledku a opatrné omezení frekvence."
+answer: "Cache pro AI roboty nesnižuje počet jejich požadavků, ale může zabránit tomu, aby aplikace a databáze znovu zpracovávaly každý požadavek. Začněte plnostránkovou cache, veřejné HTML přesuňte na CDN a teprve po měření přidejte omezení frekvence. Přihlášení, košík a účet z cache vždy vynechte."
+slug: "cachovani-pro-ai-roboty"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "ai-platformy"
+published: "2026-10-19"
+updated: "2026-10-19"
+keywords:
+  - "cachování pro AI roboty"
+  - "AI roboti zátěž serveru"
+  - "CDN pro AI roboty"
+  - "omezení frekvence robotů"
+  - "rate limiting AI crawlerů"
+  - "robots.txt crawl-delay"
+  - "Cloudflare cache HTML"
+  - "CF-Cache-Status"
+variant: "rich"
+faq:
+  - q: "Pomůže cache, když AI robot žádá tutéž stránku znovu?"
+    a: "Ano, pokud požadavek vyřídí plnostránková cache nebo CDN. Robot může posílat stejný počet požadavků, ale aplikace a databáze na původním serveru je nemusí znovu zpracovat. Ověřte to v hlavičkách odpovědi a v logu serveru."
+  - q: "Mám do robots.txt přidat crawl-delay?"
+    a: "Neberte ho jako spolehlivé obecné řešení. Crawl-delay není součástí standardních pravidel Robots Exclusion Protocolu a Google jej výslovně nepodporuje. U jiných robotů záleží na jejich vlastní implementaci, takže bez dokumentace provozovatele nemáte jistotu."
+  - q: "Jak poznám, že HTML opravdu přišlo z cache Cloudflare?"
+    a: "Načtěte stejnou veřejnou URL dvakrát a zkontrolujte hlavičku CF-Cache-Status. První odpověď může být MISS, další má být HIT; hlavička Age pak ukazuje stáří kopie. DYNAMIC znamená, že Cloudflare URL už při požadavku nepovažoval za způsobilou pro cache. BYPASS znamená, že URL způsobilá byla, ale uložení následně zakázala odpověď původního serveru nebo konfigurace při jejím zpracování."
+  - q: "Kdy má smysl vracet robotovi HTTP 429?"
+    a: "Vlastní pravidlo 429 používejte jen jako změřenou ochranu serveru, ne jako trvalé plošné nastavení. Pro Google jde o nouzový postup na několik hodin, nejvýše jeden až dva dny; významný počet odpovědí 429 nebo 503 zpomalí procházení celého hostnamu. Přidejte Retry-After. U AI robotů ověřte chování podle dokumentace konkrétního provozovatele a podle logů."
+  - q: "Co lze udělat na běžném sdíleném hostingu?"
+    a: "Zapněte plnostránkovou cache, pokud ji nabízí hosting nebo redakční systém, a zkontrolujte, zda se stránka při opakovaném požadavku negeneruje znovu. Chcete-li ukládat HTML do cache na okraji sítě nebo cíleně omezovat frekvenci požadavků, obvykle potřebujete CDN či zásah podpory hostingu."
+  - q: "Smím ukládat do cache košík, účet a přihlášené stránky?"
+    a: "Ne jako společnou veřejnou kopii. Z pravidla pro HTML vynechte přihlášení, účet, košík, pokladnu, administrační rozhraní a další stránky závislé na souborech cookie nebo údajích konkrétního uživatele. Příliš široká cache může zobrazit neplatný stav nebo cizí obsah."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import SourceCard from "~/components/blocks/SourceCard.astro";
+
+AI robot nemusí dostat zákaz, aby jeho požadavky přestaly web zbytečně zatěžovat. Rozhoduje, **která vrstva požadavek vyřídí**: distribuční síť (CDN) s hotovou kopií v mezipaměti (cache), cache na původním serveru, nebo až aplikace, která znovu sáhne do databáze. Nejdřív proto zlevněte obsluhu veřejných stránek. Omezení frekvence přichází až poté, co z logu víte, koho a proč brzdíte.
+
+## <span class="hl">Cache</span> nesníží počet požadavků, ale <strong>odlehčí serveru</strong>
+
+Když si robot vyžádá stejný článek desetkrát, pořád jde o deset požadavků. Rozdíl je v tom, která vrstva je vyřídí.
+
+Bez cache může redakční systém při každém požadavku spustit kód, načíst data a složit HTML. Plnostránková cache uloží už hotovou stránku. CDN ji může poslat ze své sítě, takže požadavek nedojde ani k původnímu serveru.
+
+<CompareTable
+  leftLabel="Bez cache a CDN"
+  leftTone="accent"
+  rightLabel="S vhodnou cache"
+  rightTone="geo"
+  rows={[
+    { icon: "1", label: "Tvorba HTML", left: "Aplikace může stránku skládat při každém požadavku", right: "Hotovou stránku vrátí plnostránková cache" },
+    { icon: "2", label: "Původní server", left: "Každý požadavek dorazí až k hostingu", right: "Když požadavek vyřídí CDN z cache, server se vůbec neosloví" },
+    { icon: "3", label: "Počet požadavků robota", left: "Nemění se", right: "Cache sama počet požadavků nesníží" },
+    { icon: "4", label: "Aktuálnost", left: "Stránka vzniká z právě dostupných dat", right: "Záleží na době platnosti a obnově kopie" },
+  ]}
+/>
+
+<Insight tone="signal" icon="=" label="Nejdůležitější rozdíl">
+**Cache zlevňuje obsluhu. Omezení frekvence požadavky odmítá.** Když obě změny nasadíte najednou a nebudete je měřit odděleně, nepoznáte, zda jste webu odlehčili, nebo robota odřízli.
+</Insight>
+
+Pokud jsou drahé jen zbytečné adresy — nekonečné kombinace filtrů, interní hledání nebo kalendáře — začněte tím, že odstraníte odkazy na tyto adresy nebo jejich procházení výslovně omezíte. Cache by jinak jen levněji obsluhovala další URL, které nechcete poskytovat vůbec. Co pustit a co zavřít, řeší samostatně [návod na robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
+
+## Na běžném <span class="hl">hostingu</span> začněte <strong>plnostránkovou cache</strong>
+
+První krok nevyžaduje pravidlo pro konkrétního robota. Veřejná stránka má být levná pro všechny anonymní návštěvníky: člověka, klasický vyhledávač i AI robota.
+
+U statického webu už hotové HTML existuje jako soubor. U redakčního systému nebo e-shopu hledejte **plnostránkovou cache** v nastavení hostingu, platformy nebo doplňku pro cache. Jejím úkolem je vrátit hotové HTML bez opakovaného skládání stránky. Pokud ji v administraci nenajdete, zeptejte se podpory, zda server používá vlastní stránkovou cache a jak ověříte, že z ní odpověď skutečně přišla.
+
+<Checklist title="Co ověřit ještě před CDN" tone="accent" items={[
+  { title: "Veřejné stránky vracejí hotové HTML", desc: "Opakovaný požadavek nemá pokaždé znovu zaměstnat aplikaci a databázi." },
+  { title: "Statické soubory mají rozumnou dobu platnosti", desc: "Obrázky, styly a skripty se nemají stahovat z původního serveru při každé návštěvě." },
+  { title: "Po změně obsahu se cache vyprázdní nebo obnoví", desc: "Po publikaci musí být nová verze dostupná, aniž musíte čekat na vypršení platnosti staré kopie." },
+  { title: "Dynamické stránky zůstávají mimo společnou kopii", desc: "Účet, přihlášení, košík, pokladna, administrace a odpovědi s osobními údaji." },
+]} />
+
+Tato vrstva snižuje práci aplikace, ale data stále odesílá původní server a jejich přenos se může dál započítávat do nákladů hostingu. Pokud z logu vidíte velký objem opakovaných požadavků na stejné veřejné URL, další krok je CDN.
+
+## U <span class="hl">CDN</span> musíte veřejné HTML <strong>ukládat do cache výslovně</strong>
+
+Samotné zapojení CDN ještě neznamená, že CDN doručuje také HTML článku. Cloudflare ve výchozím nastavení ukládá do cache řadu statických přípon, ale **HTML ani JSON standardně do cache neukládá**. Ukládání veřejného HTML musíte povolit pravidlem Cache Rule nebo odpovídajícím nastavením jiné CDN.
+
+<SourceCard
+  badge="Dokumentace Cloudflare"
+  href="https://developers.cloudflare.com/cache/concepts/default-cache-behavior/"
+  linkLabel="Otevřít výchozí chování cache"
+  tone="accent"
+>
+  Cloudflare k 14. září 2026 uvádí, že HTML a JSON ve výchozím stavu do cache neukládá. Připojená doména proto může mít CDN, a přesto posílat každý požadavek na článek až k původnímu serveru.
+</SourceCard>
+
+Nezapínejte plošně pravidlo typu Cache Everything („uložit vše do cache“) bez výjimek. Dokumentace Cloudflare varuje, že dynamické HTML může obsahovat údaje určené konkrétnímu návštěvníkovi. Pravidlo musí vynechat přihlášení, účet, košík, pokladnu, administraci, rozhraní aplikace a stránky závislé na souborech cookie.
+
+Dobu platnosti volte podle toho, jak často se obsah mění. Pro článek lze nastavit delší dobu platnosti cache než pro stránku s cenou nebo skladovou dostupností. Pokud konkrétní CDN tuto funkci podporuje a konfigurace ji nepřebíjí, direktiva `stale-while-revalidate` dovolí po vypršení krátce poslat starší kopii a novou obnovit na pozadí. Tuto direktivu nepoužívejte u údajů, u nichž vadí i krátké zpoždění aktualizace.
+
+U Cloudflare obnovu na pozadí vypnou direktivy `s-maxage`, `must-revalidate`, `proxy-revalidate` a `no-cache`, pokud je aktivní Origin Cache Control. Stejný účinek může mít nastavení „Serve stale content while revalidating“ v Cache Rules. Potřebujete-li jinou dobu platnosti na CDN než v prohlížeči, použijte místo `s-maxage` nastavení Edge Cache TTL a výsledek ověřte v hlavičkách.
+
+## <span class="hl">Ověření cache</span>: <strong>dva požadavky, ne dojem</strong>
+
+Zelený přepínač v administraci není důkaz. Po nasazení vyžádejte stejnou veřejnou URL alespoň dvakrát a porovnejte hlavičky odpovědi.
+
+```bash
+curl -sI https://www.example.cz/clanek/
+curl -sI https://www.example.cz/clanek/
+```
+
+U Cloudflare sledujte `CF-Cache-Status`. První požadavek může kopii teprve naplnit a vrátit `MISS`. Další má vrátit `HIT`; hlavička `Age` ukazuje stáří kopie. `DYNAMIC` znamená, že Cloudflare URL už při požadavku nepovažoval za způsobilou pro cache; může to způsobit i pravidlo `Bypass cache`. `BYPASS` znamená, že URL způsobilá byla, ale uložení následně zakázala odpověď původního serveru nebo konfigurace při jejím zpracování.
+
+<Stepper tone="geo" steps={[
+  { title: "Vyberte jednu veřejnou URL", desc: "Použijte článek nebo stránku služby bez přihlášení, souborů cookie a osobního obsahu." },
+  { title: "Načtěte ji dvakrát", desc: "Testujte ze stejného místa. První požadavek může cache teprve naplnit." },
+  { title: "Přečtěte stav, ne jen rychlost", desc: "Hledejte HIT a Age. Rychlá odpověď sama neprokazuje, že původní server nebyl osloven." },
+  { title: "Zkontrolujte log původního serveru", desc: "Když druhý požadavek vyřídí CDN z cache, v logu nemá přibýt další záznam. Tím ověříte skutečné odlehčení." },
+  { title: "Změňte stránku a ověřte obnovu", desc: "Po publikaci zkontrolujte, že se nová verze zobrazí po vyprázdnění cache nebo po skončení nastavené doby platnosti." },
+]} />
+
+Cloudflare nabízí podrobné Cache Analytics až od placeného plánu. Hlavičky a log serveru však dávají základní kontrolu i bez tohoto přehledu.
+
+## <span class="hl">Omezení frekvence</span> přidejte, až <strong>znáte běžný provoz</strong>
+
+Omezení frekvence má smysl, když cache nestačí: jeden zdroj posílá tolik požadavků, že i doručení z cache překračuje dostupnou kapacitu nebo zvyšuje náklady, případně žádá adresy, které do cache uložit nelze. Univerzální počet požadavků za minutu neexistuje. Práh musí vycházet z logu vašeho webu a nesmí omezit běžné návštěvníky ani roboty, které chcete pustit.
+
+Neomezujte provoz jen podle hodnoty hlavičky `User-Agent`. Tento identifikační řetězec může napodobit kdokoli. Nejdřív [ověřte identitu AI robota](/blog/overovani-ai-robotu/) podle dostupných IP rozsahů či dokumentovaného postupu provozovatele.
+
+U Cloudflare se možnosti liší podle plánu. Podle dokumentace z 25. srpna 2026 nabízí tarif Free jedno pravidlo s desetisekundovým oknem; podmínku lze založit jen na cestě URL nebo příznaku ověřeného robota. Tento příznak je pouze hodnota ano/ne, takže nerozliší GPTBot, OAI-SearchBot, Googlebot ani jiného konkrétního robota. Požadavky se navíc počítají po jednotlivých IP adresách. Pravidlo pro všechny ověřené roboty proto bez analýzy nezapínejte: zasáhlo by i vyhledávače, které chcete ponechat.
+
+Cílení podle `User-Agent` nebo zdrojové IP uvádí tabulka dostupnosti až u tarifu Business. Ani tam omezení není absolutně přesné: kvůli průběžnému počítání může projít ještě několik požadavků nad nastavený limit.
+
+<Insight tone="warn" icon="!" label="HTTP 429 není trvalý režim">
+Google doporučuje při nouzovém přetížení vracet odpovědi `429` nebo `503` s hlavičkou `Retry-After` jen několik hodin, nejvýše jeden až dva dny. Významný počet těchto odpovědí zpomalí procházení celého hostnamu: nové stránky se objeví později a aktualizace cen, dostupnosti či odstraněných URL se mohou opozdit. Pokud stav trvá několik dnů, může Google URL z výsledků vyřadit. Tato dokumentace platí pro Google. U jednotlivých AI robotů nelze bez jejich vlastní dokumentace slíbit stejnou reakci.
+</Insight>
+
+Vlastní pravidlo pro ochranu serveru oddělte od nouzového postupu doporučeného Googlem. Omezení nasazujte nejprve na malém rozsahu, sledujte chyby a připravte si možnost pravidlo rychle vypnout. Pokud potřebujete jen snížit cenu obsluhy, dobře nastavená cache je mírnější zásah než odmítání požadavků.
+
+## <span class="hl">Crawl-delay</span> v robots.txt <strong>není obecné řešení</strong>
+
+Řádek `crawl-delay` v robots.txt není univerzální ovladač rychlosti.
+
+Google podporuje v robots.txt pole `user-agent`, `allow`, `disallow` a `sitemap`; `crawl-delay` výslovně nepodporuje. Jiní provozovatelé robotů mohou `crawl-delay` podporovat po svém, ale bez aktuální dokumentace nevíte, zda robot pokyn čte ani jak jej vykládá.
+
+<MistakeGrid>
+  <Mistake num="01" title="Přidat crawl-delay a považovat věc za hotovou" fix="Řiďte se dokumentací konkrétního robota a výsledek ověřte v logu.">
+    Google tento pokyn ignoruje. U AI robotů nelze podporu odvodit jen z toho, že se řádek v robots.txt často používá.
+  </Mistake>
+  <Mistake num="02" title="Uložit do cache i účet a košík" fix="Veřejné anonymní HTML oddělte od stránek závislých na uživateli.">
+    Příliš široké pravidlo může vrátit neplatný stav, ignorovat rozdíly mezi soubory cookie nebo zpřístupnit obsah určený jiné relaci.
+  </Mistake>
+  <Mistake num="03" title="Nastavit limit od stolu" fix="Nejdřív změřte běžné špičky a zkušebně omezte malý rozsah.">
+    Nízký práh může zasáhnout legitimní návštěvníky i vyhledávače. Vysoký práh naopak původní server neochrání.
+  </Mistake>
+</MistakeGrid>
+
+## Pro svůj <span class="hl">web</span> zvolte <strong>nejjednodušší účinné opatření</strong>
+
+Praktické rozhodnutí závisí na tom, kam máte přístup:
+
+<CompareTable
+  leftLabel="Co udělat nyní"
+  leftTone="accent"
+  rightLabel="Kdy přidat další vrstvu"
+  rightTone="geo"
+  rows={[
+    { icon: "S", label: "Statický web", left: "Ověřit cache statických souborů a případně CDN", right: "Když log ukazuje drahý přenos nebo nárazový nárůst počtu požadavků" },
+    { icon: "R", label: "Redakční systém", left: "Zapnout plnostránkovou cache a ověřit obnovu po publikaci", right: "Když opakované požadavky stále docházejí až k hostingu" },
+    { icon: "E", label: "E-shop", left: "Ukládat do cache statické soubory a bezpečné veřejné katalogové stránky", right: "Dynamické cesty řešit s platformou; košík, účet a pokladnu vynechat" },
+    { icon: "H", label: "Sdílený hosting", left: "Zjistit možnosti cache v administraci a u podpory", right: "CDN použít, pokud potřebujete zabránit tomu, aby každý požadavek dorazil na původní server, a hosting to neumí" },
+  ]}
+/>
+
+Začněte opatřením, které umíte ověřit. Plnostránková cache odlehčí aplikaci. CDN může zabránit tomu, aby opakované požadavky dorazily na původní server. Omezení frekvence použijte jen na tu část provozu, která zůstává problémem i poté. A pokud nevíte, zda je zátěž skutečně velká, nejdřív si spočítejte [poměr procházení k návštěvám](/blog/ai-roboti-zatez-webu/).
+
+## <strong>Zlevněte doručení</strong>, potom řešte <span class="hl">strukturu webu</span>
+
+Cache může snížit náklady na provoz, ale sama neudělá stránku srozumitelnější pro vyhledávače ani AI. Jakmile máte doručení pod kontrolou, musí veřejné stránky stále obsahovat jasnou odpověď, strukturu a aktuální údaje.
+
+[AI SEO Wireframe Pack](/pack/) obsahuje šablony pro sedm typů stránek, ukázky strukturovaných dat a návod na nasazení v jednom master PDF. Stojí **1 490 Kč jednorázově včetně DPH**.
+
+*Zdroje: Cloudflare, [Default Cache Behavior](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/), [Cache Everything](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything/), [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/), [Revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/), [Cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/), [Verified Bot](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.verified_bot/) a [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/); Google, [Reduce Google Crawl Rate](https://developers.google.com/crawling/docs/crawlers-fetchers/reduce-crawl-rate) a [robots.txt specification](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec); OpenAI, [Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots). Ověřeno 19. 10. 2026.*
