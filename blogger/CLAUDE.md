@@ -158,6 +158,13 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
   vypadalo, že `git add` selhal, přestože proběhl.
 - **`git add $PROMENNA` v zsh nefunguje** — proměnná se nerozdělí na slova. Seznam cest do souboru
   a pak `tr '\n' '\0' | xargs -0 git add`, commit s `-- $(tr '\n' ' ' < seznam)`.
+- **OpenAI API bez kreditů vrací 429** (od 19. 10. 2026 u obrázků, 21. 10. i u `chat.py`) — audity
+  ani obrázek pak přes `open-ai-api-core` nejdou. Na začátku runu to ověř krátkým voláním a **zeptej se
+  uživatele**, jak pokračovat; 21. 10. zvolil audity přes Codex (skill `predat-codexu`) a souhlas platí
+  pro ten run, ne natrvalo. Postup, který prošel: do složky pro Codex dát článek, research a **texty
+  zdrojů** (ať ověřuje proti nim, ne proti paměti), zadání = `auditor-system.md` + osa + pravidla webu,
+  výstup do souboru; C5b přes `--navazat` do vlákna auditora, který nález našel. Do repa jde výsledek,
+  ne identity měřených webů — URL v auditu před commitem zkontroluj (Z2).
 - **Agenti a workflow:** strop je pravidlo Z1 v `CONTENT_WORKFLOW.md`.
 
 ---

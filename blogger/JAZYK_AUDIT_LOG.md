@@ -1833,3 +1833,18 @@ placeného zápisu, bodovací pomůcka a zdroje. Výraz 30–60 minut zůstává
 „URL způsobilá pro cache“, „přenos dat platí server“ a „nejnižší účinná vrstva“ nahrazeny přirozenými a přesnými
 formulacemi · sjednoceno „ukládání do cache“, „soubory cookie“ a „omezení frekvence požadavků“ · zpřesněny podměty,
 popisky tabulek, obnova cache a diagnostika stavů Cloudflare. Žádný nález nebyl vhodný pro nový obecný regex.
+
+## 2026-10-21 · `kolik-stoji-ai-seo` (refresh)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** ve všech verzích |
+| LLM průchod (Codex místo gpt-5.4 — OpenAI API bez kreditů; celý slovník) | 3 nálezy, všechny přijaty |
+| Nová pravidla | **žádné** — nálezy závisí na kontextu věty |
+
+**Opraveno:** „s placeným auditem ale nejde o totéž“ → „nejde ale o totéž co placený audit“ · „Kolik práce je v ceně,
+se proto vyplatí dát do poptávky“ → „V poptávce se proto vyplatí zeptat, kolik práce je v ceně“ · „účtuje stejnými
+formami“ → „účtuje stejným způsobem“ (ne „stejně“, které by se četlo jako stejná cena). Z druhého auditu navíc
+„reportingem“ → „pravidelným přehledem výsledků“, „meeting“ → „schůzka“, „FAQ k produktům“ → „odpovědi na časté
+dotazy k produktům“.
