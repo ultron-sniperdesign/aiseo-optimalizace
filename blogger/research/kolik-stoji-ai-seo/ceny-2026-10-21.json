@@ -1,0 +1,245 @@
+{
+ "datum": "2026-10-21",
+ "metoda": "Veřejné ceníky na vlastních webech poskytovatelů. Vzorek A–F převzat z rešerše konkurence z 5. 9. 2026 (admin, _source/…/R6-konkurence.md) a všechny ceny znovu načteny 21. 10. 2026; G–H nalezeny 21. 10. 2026 vyhledáváním „kolik stojí SEO“ — použity jen ty, které uvádějí vlastní ceník, ne odhad trhu. Ceny jsou vstupní („od“), jak je poskytovatel uvádí; DPH podle toho, co uvádí. Nereprezentativní vzorek, poskytovatele nejmenujeme (Z2). Identity v _ceny-zdroje-2026-10-21.md (mimo repo). Opraveno po auditu 21. 10. 2026 (Codex): ceník balíčků hodin A je z nahrazené služby a nepoužívá se.",
+ "poskytovatele": [
+  {
+   "id": "A",
+   "typ": "agentura",
+   "zamereni": "SEO + AI (GEO prodávané jako SEO 2.0)",
+   "nabidky": [
+    {
+     "co": "správa pro AI („GEO správa“) po měsíčních balíčcích hodin; rozsahy 20/40/60/100 h (úvod zmiňuje i 10 h); „smysluplný rozsah od 20 h“, min. 6 měsíců",
+     "cena": "38 000 Kč (45 980 Kč s DPH) — karta služby, počet hodin neuveden",
+     "za": "měsíc (?)",
+     "dph": "uvedeno obojí"
+    },
+    {
+     "co": "ceník balíčků hodin SEO 2.0: 20 h 28 000, 40 h 48 000, 60 h 66 000, 100 h 100 000 Kč bez DPH",
+     "cena": "—",
+     "za": "měsíc",
+     "dph": "bez DPH",
+     "pozn": "NEPOUŽITO: stránka je v kategorii „Služby, které jsme nahradili jinými“ (audit Codex 21. 10., ověřeno)"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "typ": "agentura",
+   "zamereni": "SEO / AIO",
+   "nabidky": [
+    {
+     "co": "On-page SEO/AIO audit s doporučením",
+     "cena": "6 000 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "SEO/AIO monitoring",
+     "cena": "2 500 Kč",
+     "za": "měsíc",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "pravidelný obsah (SEO II)",
+     "cena": "6 000 Kč",
+     "za": "měsíc",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "komplexní optimalizace SEO/AIO (SEO III)",
+     "cena": "15 000 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "typ": "agentura",
+   "zamereni": "viditelnost značky v AI",
+   "nabidky": [
+    {
+     "co": "první audit",
+     "cena": "zdarma",
+     "za": "jednorázově",
+     "dph": "—",
+     "pozn": "první nezávazný audit zdarma; kompletní velký audit placený"
+    },
+    {
+     "co": "kompletní audit",
+     "cena": "19 900 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "typ": "specializovaný poskytovatel",
+   "zamereni": "GEO",
+   "nabidky": [
+    {
+     "co": "GEO audit s doporučením (ChatGPT, Gemini, Perplexity, Claude)",
+     "cena": "od 19 900 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "implementace na klíč",
+     "cena": "od 39 900 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "průběžná péče",
+     "cena": "od 16 900 Kč",
+     "za": "měsíc",
+     "dph": "neuvedeno",
+     "pozn": "ceny označené jako orientační"
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "typ": "agentura",
+   "zamereni": "optimalizace pro AI vyhledávání (GEO/AEO)",
+   "nabidky": [
+    {
+     "co": "audit AI viditelnosti (4 platformy, opakované běhy, analýza zdrojů, akční plán)",
+     "cena": "10 000–20 000 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "průběžná GEO/AEO optimalizace",
+     "cena": "od 8 000 Kč",
+     "za": "měsíc",
+     "dph": "neuvedeno",
+     "pozn": "obvykle v kombinaci s obsahem a linkbuildingem"
+    },
+    {
+     "co": "test AI viditelnosti na třech reálných dotazech",
+     "cena": "zdarma",
+     "za": "jednorázově",
+     "dph": "—"
+    }
+   ]
+  },
+  {
+   "id": "F",
+   "typ": "agentura",
+   "zamereni": "SEO + GEO",
+   "nabidky": [
+    {
+     "co": "jednorázový audit (technický SEO audit, klíčová slova, konkurence, akční plán)",
+     "cena": "od 15 000 Kč",
+     "za": "jednorázově",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "měsíční správa SEO & GEO",
+     "cena": "od 10 000 Kč",
+     "za": "měsíc",
+     "dph": "neuvedeno"
+    },
+    {
+     "co": "mini audit AI dohledatelnosti, základní analýza do 48 h",
+     "cena": "zdarma",
+     "za": "jednorázově",
+     "dph": "—"
+    }
+   ]
+  },
+  {
+   "id": "G",
+   "typ": "nezávislý konzultant",
+   "zamereni": "klasické SEO",
+   "nabidky": [
+    {
+     "co": "hodinová sazba",
+     "cena": "1 600 Kč dlouhodobě, 2 100 Kč jednorázová konzultace",
+     "za": "hodina",
+     "dph": "bez DPH (uvedeno)"
+    },
+    {
+     "co": "SEO audit",
+     "cena": "od 19 200 Kč",
+     "za": "jednorázově",
+     "dph": "bez DPH (uvedeno)"
+    },
+    {
+     "co": "dílčí technický / obsahový / odkazový SEO audit",
+     "cena": "od 6 400 Kč",
+     "za": "jednorázově",
+     "dph": "bez DPH",
+     "pozn": "„Připravuje se…“ — nenabízeno, nepoužito"
+    }
+   ]
+  },
+  {
+   "id": "H",
+   "typ": "nezávislý konzultant",
+   "zamereni": "klasické SEO",
+   "nabidky": [
+    {
+     "co": "konzultace",
+     "cena": "2 500 Kč (prvních 30 min zdarma)",
+     "za": "hodina",
+     "dph": "bez DPH (uvedeno)"
+    },
+    {
+     "co": "SEO audit",
+     "cena": "od 15 000 Kč",
+     "za": "jednorázově",
+     "dph": "bez DPH (uvedeno)"
+    },
+    {
+     "co": "měsíční správa",
+     "cena": "od 15 000 Kč",
+     "za": "měsíc",
+     "dph": "bez DPH (uvedeno)"
+    },
+    {
+     "co": "videoaudit",
+     "cena": "990 Kč",
+     "za": "jednorázově",
+     "dph": "bez DPH"
+    }
+   ]
+  }
+ ],
+ "nastroje": [
+  {
+   "nastroj": "Collabim",
+   "cena": "tarif Core 360 Kč/měs + balíček 500 měření 383 Kč/měs",
+   "dph": "bez DPH",
+   "pozn": "měření AI jen k placenému tarifu; hlavní popis ChatGPT, Gemini, Perplexity, FAQ stránky navíc Google AI Overviews a AI Mode; tarif Core 360 / 342 / 335 / 324 Kč měsíčně podle fakturačního období (měsíc / 3 / 6 / 12 měsíců); 500 měření = podle Collabimu 125 promptů týdně"
+  },
+  {
+   "nastroj": "Marketing Miner",
+   "cena": "tarif Starter 499 Kč/měs + 1 300 AI kreditů 499 Kč/měs",
+   "dph": "bez DPH",
+   "pozn": "doplněk jen k placenému předplatnému; 2 kredity za 1 prompt v 1 modelu; ChatGPT, Gemini, Perplexity, AI Overviews, AI Mode; AI kredity platí 30 dní"
+  },
+  {
+   "nastroj": "Otterly.AI",
+   "cena": "Lite 29 $/měs (15 promptů), Standard 189 $ (100), Premium 489 $ (400); ročně 25/160/422 $",
+   "dph": "u doplňků „excluding tax“, u tarifu neuvedeno",
+   "pozn": "ChatGPT, Přehled od AI, Perplexity, Copilot; Claude, režim AI a Gemini jako placené doplňky; denní měření"
+  },
+  {
+   "nastroj": "Semrush",
+   "cena": "SEO 139 $/měs; SEO + AI Search Starter 199 $/měs (165,17 $ při roční platbě)",
+   "dph": "neuvedeno",
+   "pozn": "Starter: 50 promptů denně, 1 doména pro AI"
+  }
+ ],
+ "nase": {
+  "audit": "Audit AI viditelnosti 3 600 Kč bez DPH (4 356 Kč s DPH), výstup do 5 pracovních dní, meeting 30–60 min (audit.ts)",
+  "technika": "technické úpravy orientačně od 8 000 Kč do vyšších desítek tisíc, přesně po auditu (sluzby.ts)",
+  "obsah": "kategorie 18 / 39 / 54 Kč za kus, produkty 34 / 49 / 55 Kč za kus + vstupní analýza 1 300–3 900 Kč jednou; srovnávací obsah 12 800 Kč/rok (sluzby.ts, ceny bez DPH)",
+  "sprava": "měsíční správa podle rozpočtu (sluzby.ts)",
+  "upgates": "hotové moduly pro Upgates 1 300–10 400 Kč bez DPH (sniperdesign.cz/seo-pro-ai, 21. 10. 2026)",
+  "pack": "AI SEO Wireframe Pack 1 490 Kč včetně DPH, sedm typů stránek, 9 PDF + souhrnné PDF (pack.ts, Z3)"
+ }
+}
