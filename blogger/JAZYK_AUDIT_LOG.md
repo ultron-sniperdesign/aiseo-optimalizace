@@ -1848,3 +1848,18 @@ se proto vyplatí dát do poptávky“ → „V poptávce se proto vyplatí zept
 formami“ → „účtuje stejným způsobem“ (ne „stejně“, které by se četlo jako stejná cena). Z druhého auditu navíc
 „reportingem“ → „pravidelným přehledem výsledků“, „meeting“ → „schůzka“, „FAQ k produktům“ → „odpovědi na časté
 dotazy k produktům“.
+
+## 2026-10-22 · `ai-roboti-v-serverovych-logach` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v73, beze změny |
+| Mechanický checker | **0 nálezů** po konečných opravách; 1 793 slov, 275 pravidel, hustota 0,0 na 1 000 slov |
+| Nezávislý jazykový audit | 17 nálezů, všech 17 přijato a opraveno |
+| Závěrečný audit | 1 nový jazykový nález („v logách“ → „v lozích“), opraveno |
+| LLM průchod ze skillu | Externí volání gpt-5.4 nebylo povoleno automatickou kontrolou kvůli odeslání interního slovníku; bezpečnou náhradou byl nezávislý jazykový subagent nad článkem a projektovým slovníkem |
+| Nová pravidla | **žádné** — nálezy závisely na významu, větné vazbě nebo konkrétním technickém kontextu |
+
+**Opraveno:** nejasné technické vazby, abstraktní analytické výrazy a přehnané závěry z logu byly nahrazeny
+konkrétními pozorovatelnými tvrzeními · vysvětleny rotované logy, odkazující stránka a práce s mezipamětí ·
+zpřesněny formulace o IP, filtrování a náročnosti požadavků · český lokál množného čísla sjednocen na „v lozích“.

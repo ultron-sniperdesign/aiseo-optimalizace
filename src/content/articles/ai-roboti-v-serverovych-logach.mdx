@@ -1,0 +1,224 @@
+---
+title: "Jak najít AI roboty v logu serveru a co z něj vyčíst"
+seoTitle: "AI roboti v serverových lozích: praktický postup"
+description: "Praktický postup pro přístupový log: které AI roboty hledat, jak spočítat požadavky, URL a chyby a proč samotný user-agent není důkaz."
+answer: "Analýza AI robotů v serverovém logu je rozdělení požadavků podle user-agentu, URL, stavového kódu a ověřené zdrojové IP. User-agent slouží jen jako první filtr. Skutečnou identitu posuzujte proti aktuálním rozsahům provozovatele a výsledky oddělujte podle účelu robota za zvolené období."
+slug: "ai-roboti-v-serverovych-logach"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-10-22"
+updated: "2026-10-22"
+keywords:
+  - "AI roboti v serverových lozích"
+  - "analýza access logu"
+  - "AI crawler"
+  - "nginx access log"
+  - "apache access log"
+variant: "rich"
+faq:
+  - q: "Kde najdu přístupový log webu?"
+    a: "Záleží na hostingu a konfiguraci serveru. V administraci hostingu hledejte přístupové nebo access logy. Na vlastním serveru cestu určuje konfigurace Nginxu nebo Apache, takže ji neodhadujte jen podle obvyklého názvu souboru. Pro první přehled zvolte například 30 dní a zahrňte starší soubory vytvořené rotací logu i komprimované archivy. U málo navštěvovaného webu období prodlužte."
+  - q: "Které údaje musí log obsahovat?"
+    a: "Pro tento postup potřebujete čas, zdrojovou IP, požadovanou adresu, stavový kód a celý user-agent. Hodí se i velikost odpovědi a doba zpracování. U webu za Cloudflare nebo jinou proxy ověřte, že se zapisuje původní IP návštěvníka, ne jen adresa proxy. Hlavičce s původní IP důvěřujte pouze u spojení z rozsahů dané proxy."
+  - q: "Stačí hledat GPTBot, ClaudeBot a PerplexityBot?"
+    a: "Ne. Pro účely řešené v tomto návodu rozlišuje OpenAI OAI-SearchBot, GPTBot a ChatGPT-User; Anthropic Claude-SearchBot, ClaudeBot a Claude-User; Perplexity PerplexityBot a Perplexity-User. Vyhledávání, možné použití při vývoji modelů a návštěva vyvolaná uživatelem se nemají sčítat. Reklamní OAI-AdsBot je mimo rozsah návodu."
+  - q: "Jak poznám podvrženého AI robota?"
+    a: "User-agent lze snadno napodobit. Zdrojovou IP porovnejte s aktuálním seznamem rozsahů provozovatele; u Googlu lze použít také reverzní a následný dopředný DNS dotaz. IP mimo dnešní seznam je důvod k prověření, ale u starého logu nemusí být sama o sobě definitivním důkazem podvrhu."
+  - q: "Najdu v logu Google-Extended?"
+    a: "Ne jako samostatný HTTP user-agent. Google-Extended je řídicí token pro robots.txt a Google uvádí, že procházení probíhá pod existujícími user-agenty. Z návštěvy Googlebota proto nepoznáte, zda data posloužila klasickému vyhledávání, režimu AI nebo jiné funkci Googlu."
+  - q: "Lze z logu spočítat poměr procházení k návštěvám?"
+    a: "Jen částečně. Log dá počet ověřených požadavků robota. Návštěvy lidí z dané platformy musíte vzít z analytiky za stejné období a podle odkazující stránky (referreru) či kampaně. Požadavky automatického robota navíc držte odděleně od návštěv typu ChatGPT-User nebo Perplexity-User, které vyvolal člověk."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+**AI roboty najdete v přístupovém logu podle user-agentu, tedy jména, kterým se program hlásí.** Samotné jméno ale nic nedokazuje. Použitelný výsledek vznikne až tehdy, když vedle něj máte původní IP adresu, požadovanou URL a stavový kód serveru.
+
+Tento návod počítá s textovým logem podobným výchozímu formátu `combined` v Nginxu nebo Apache. Pokud máte vlastní formát, význam sloupců si nejdřív ověřte v konfiguraci. Přehled na CDN zachytí také požadavky, které její mezipaměť nepředala původnímu serveru. Než však provoz označíte za ověřený, zjistěte, zda váš tarif rozpoznává roboty jen podle user-agentu, nebo také podle ověřené identity.
+
+## Nejdřív si vezměte <span class="hl">správný log</span> — <strong>bez user-agentu nic nenajdete</strong>
+
+Přístupový log, anglicky *access log*, zaznamenává požadavky, které webový server zpracoval. Chybový log je jiný soubor: hodí se při poruše aplikace, ale pro soupis robotů není výchozím podkladem.
+
+Jeden řádek v běžném rozšířeném formátu obsahuje přibližně toto:
+
+```text
+203.0.113.10 - - [22/Oct/2026:10:00:00 +0200] "GET /blog/clanek/ HTTP/1.1" 200 12000 "-" "... OAI-SearchBot/1.4 ..."
+```
+
+Potřebujete z něj pět údajů: **čas, zdrojovou IP, požadovanou adresu, stavový kód a celý user-agent**. Velikost odpovědi a doba zpracování se hodí při hledání náročných požadavků; skutečné náklady z nich ale bez dalších údajů nespočítáte. Ve výchozím logu navíc nemusí být obojí.
+
+<Insight tone="warn" icon="!" label="Web za proxy">
+  Když je web za Cloudflare nebo jinou reverzní proxy, původní server může zapisovat adresu proxy. Cloudflare posílá původní adresu v hlavičce `CF-Connecting-IP`, server ji však musí z této hlavičky převzít nebo ji výslovně zapisovat do logu. Hlavičce důvěřujte jen u spojení z aktuálních rozsahů Cloudflare a přímý přístup k původnímu serveru zablokujte nebo oddělte. Jinak ji může podvrhnout cizí klient. Dokud v logu vidíte jen adresy CDN, podle IP robota neověříte.
+</Insight>
+
+<Stepper
+  steps={[
+    { title: "Získejte celé období", text: "Pro první přehled stáhněte například 30 dní přístupových logů, včetně starších souborů vytvořených rotací logu a komprimovaných archivů. U málo navštěvovaného webu období prodlužte. Pro srovnání používejte stejně dlouhá a úplná období." },
+    { title: "Ověřte formát", text: "Na jednom řádku najděte IP, požadavek, stav a celý user-agent. Pokud něco chybí, požádejte správce o vhodnější export." },
+    { title: "Spojte soubory do pracovní kopie", text: "Komprimované části nejdřív rozbalte a spojte chronologicky do jednoho souboru, například access-30d.log. Původní logy neměňte." },
+    { title: "Pracujte s kopií", text: "Log může obsahovat IP adresy, parametry URL i text vložený do požadavku návštěvníkem nebo cizím programem. Nevkládejte celý soubor do veřejného nástroje a jeho obsah nespouštějte jako příkaz." },
+  ]}
+/>
+
+## Hledejte <span class="hl">jména robotů</span> — <strong>ale nesčítejte různé účely</strong>
+
+OpenAI, Anthropic a Perplexity používají různá jména pro automatické vyhledávání, procházení kvůli možnému použití při vývoji modelů a načtení stránky na pokyn člověka. V jednom součtu by se smíchaly tři odlišné situace.
+
+| Provozovatel | Vyhledávání | Možné použití při vývoji modelů | Požadavek vyvolaný uživatelem |
+|---|---|---|---|
+| OpenAI | `OAI-SearchBot` | `GPTBot` | `ChatGPT-User` |
+| Anthropic | `Claude-SearchBot` | `ClaudeBot` | `Claude-User` |
+| Perplexity | `PerplexityBot` | — | `Perplexity-User` |
+
+Jména vyjadřují deklarovaný hlavní účel a samostatné řízení v `robots.txt`, ne jistotu následného použití každého stažení. OpenAI může při povolení OAI-SearchBotu i GPTBotu použít výsledek jednoho procházení pro oba účely. `OAI-AdsBot`, který kontroluje vstupní stránky reklam, do tohoto návodu nezařazujeme.
+
+První pracovní výpis vytvoříte jednoduchým filtrem. Doplňte další jména jen tehdy, když víte, co označují:
+
+```bash
+awk -F'"' '
+tolower($6) ~ /oai-searchbot|gptbot|chatgpt-user|claudebot|claude-searchbot|claude-user|perplexitybot|perplexity-user/ { print }
+' access-30d.log > ai-roboti.log
+```
+
+Šesté pole oddělené uvozovkami je user-agent pouze v popsaném formátu podobném `combined`. U vlastního formátu upravte parser podle konfigurace. Příkaz tak nehledá jméno robota v URL ani v odkazující stránce a nevydává náhodnou shodu za návštěvu robota.
+
+Prázdný výsledek neznamená, že žádný systém AI nezískává nebo nepoužívá obsah vašeho webu. Může znamenat, že robot v daném období nepřišel, že log nemá user-agent, že požadavek zastavila CDN, nebo že platforma mohla obsah získat jiným způsobem.
+
+<Insight tone="aio" icon="i" label="Google je zvláštní případ">
+  `Google-Extended` v logu nenajdete jako samostatný HTTP user-agent. Je to řídicí token v `robots.txt`; Google uvádí, že samotné požadavky chodí pod existujícími user-agenty. Googlebot navíc obsluhuje klasické vyhledávání i další funkce Googlu, takže z jeho řádku nelze oddělit režim AI.
+</Insight>
+
+## Na výpis se podívejte <span class="hl">čtyřmi způsoby</span> — <strong>podle robota, URL, stavu a IP</strong>
+
+Samotný počet požadavků neřekne, jestli robot stahuje důležité články, prochází stále nové kombinace filtrů, nebo opakovaně žádá chybové adresy. Začněte čtyřmi pohledy.
+
+### 1. Kolik požadavků připadá na jednotlivá jména
+
+Následující příkaz počítá každý řádek jednou a sjednotí různé verze stejného user-agentu:
+
+```bash
+awk -F'"' '
+{
+  u=tolower($6); b=""
+  if (u ~ /oai-searchbot/) b="OAI-SearchBot"
+  else if (u ~ /chatgpt-user/) b="ChatGPT-User"
+  else if (u ~ /gptbot/) b="GPTBot"
+  else if (u ~ /claude-searchbot/) b="Claude-SearchBot"
+  else if (u ~ /claude-user/) b="Claude-User"
+  else if (u ~ /claudebot/) b="ClaudeBot"
+  else if (u ~ /perplexity-user/) b="Perplexity-User"
+  else if (u ~ /perplexitybot/) b="PerplexityBot"
+  if (b != "") n[b]++
+}
+END { for (b in n) print n[b], b }
+' ai-roboti.log | sort -nr
+```
+
+### 2. Které adresy robot žádá nejčastěji
+
+```bash
+awk -F'"' '{ split($2, r, " "); print r[2] }' ai-roboti.log \
+  | sort | uniq -c | sort -nr | head -20
+```
+
+Všímejte si hlavně interního hledání, kalendářů, filtrování a opakujících se parametrů. Takových adres mohou vzniknout tisíce, přestože zobrazují stejný nebo téměř stejný obsah. Požadavky na články a produktové stránky, které považujete za důležité, naopak ukazují, že robot tyto části webu navštěvuje.
+
+### 3. Jaké odpovědi server vrací
+
+```bash
+awk -F'"' '{
+  x=$3
+  sub(/^[[:space:]]+/, "", x)
+  split(x, s, " ")
+  print s[1]
+}' ai-roboti.log | sort | uniq -c | sort -nr
+```
+
+Převažující `200` znamená úspěšnou odpověď, ne zařazení do výsledků ani citaci. Větší podíl `404` ukazuje na požadavky na adresy, které server nenašel. Prověřte staré odkazy, překlepy, změny směrování i vymyšlené URL. `429` a `503` znamenají omezení či nedostupnost; jejich význam posuzujte spolu s časem a zatížením serveru.
+
+### 4. Z kolika IP provoz přichází
+
+```bash
+awk '{print $1}' ai-roboti.log | sort | uniq -c | sort -nr | head -20
+```
+
+Jedna adresa s velkou částí požadavků stojí za ověření. Více adres samo o sobě problém není: provozovatelé mohou požadavky obsluhovat z více sítí a datových center.
+
+## Ověřte <span class="hl">identitu robota</span> — <strong>user-agent je jen jmenovka</strong>
+
+Kdokoli může do požadavku napsat `GPTBot`. Jméno proto použijte k výběru správného oficiálního seznamu IP, nikoli jako konečný důkaz.
+
+OpenAI zveřejňuje samostatné soubory pro [OAI-SearchBot](https://openai.com/searchbot.json), [GPTBot](https://openai.com/gptbot.json) a [ChatGPT-User](https://openai.com/chatgpt-user.json). Anthropic odkazuje na [společný seznam svých robotů](https://claude.com/crawling/bots.json) a Perplexity na samostatné seznamy v [dokumentaci svých robotů](https://docs.perplexity.ai/docs/resources/perplexity-crawlers).
+
+Pro rychlou kontrolu jedné adresy lze použít Python. Nahraďte ukázkovou IP a adresu souboru podle jména z logu:
+
+```bash
+python3 - 203.0.113.10 https://openai.com/searchbot.json <<'PY'
+import ipaddress
+import json
+import sys
+import urllib.request
+
+ip = ipaddress.ip_address(sys.argv[1])
+with urllib.request.urlopen(sys.argv[2], timeout=10) as response:
+    data = json.load(response)
+
+networks = []
+for item in data["prefixes"]:
+    cidr = item.get("ipv4Prefix") or item.get("ipv6Prefix")
+    if cidr:
+        networks.append(ipaddress.ip_network(cidr))
+
+print("ANO" if any(ip in network for network in networks) else "NE")
+PY
+```
+
+Výsledek `ANO` potvrzuje, že adresa patří do právě zveřejněného rozsahu provozovatele. Neověřuje konkrétního uživatele. U starého logu navíc může `NE` znamenat, že se seznam od návštěvy změnil. Označte jej proto jako „dnes neověřeno“, ne automaticky jako podvrh. Chcete-li získat počet ověřených požadavků, proveďte tuto kontrolu pro každou jedinečnou dvojici jména a IP a další přehledy počítejte jen z vyhovujících řádků. U Googlu je k dispozici také [dvoukrokové ověření přes reverzní a dopředný DNS](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests).
+
+Rozdíl mezi ověřením a blokováním podrobněji vysvětluje návod [jak ověřit AI robota](/blog/overovani-ai-robotu/).
+
+## Čísla čtěte <span class="hl">v kontextu</span> — <strong>log ukazuje požadavky, ne přínos</strong>
+
+Z logu zjistíte, kdo si co vyžádal a jak server odpověděl. Nezjistíte z něj, zda stránku platforma zařadila do vyhledávání, použila v odpovědi nebo poslala návštěvníka.
+
+Poměr procházení k návštěvám proto skládejte ze dvou zdrojů:
+
+1. **čitatel:** požadavky automatického robota, jejichž IP jste ověřili proti správnému seznamu pro dané jméno,
+2. **jmenovatel:** návštěvy lidí z téže platformy v analytice za stejné období.
+
+Nesčítejte do čitatele automatický `OAI-SearchBot` a uživatelský `ChatGPT-User`. Stejně oddělte `PerplexityBot` od `Perplexity-User`. Do přehledu výsledků uveďte období, přesná označení robotů a způsob ověření; bez toho se číslo nedá později zopakovat.
+
+<Insight tone="geo" icon="→" label="Co udělat podle výsledku">
+  Když převládají adresy stránek, které chcete robotům zpřístupnit, a odpovědi `200`, sledujte trend a nic neměňte jen kvůli vysokému počtu. Když velkou část provozu tvoří kombinace filtrů a chybové adresy, opravte odkazy a pravidla pro procházení. Když požadavky výrazně zatěžují server, změřte dobu obsluhy a podíl odpovědí z mezipaměti; postup rozebírá článek o [cache pro AI roboty](/blog/cachovani-pro-ai-roboty/).
+</Insight>
+
+## Vyhněte se <span class="hl">rychlým závěrům</span> — <strong>čtyři chyby zkreslí výsledek</strong>
+
+<MistakeGrid>
+  <Mistake num="01" title="Počítat jen jméno v user-agentu">
+    Podvržený robot se do součtu dostane stejně jako pravý. U rozhodnutí o blokaci nebo kapacitě ověřujte také IP.
+  </Mistake>
+  <Mistake num="02" title="Analyzovat jen aktuální access.log">
+    Otočené soubory mohou obsahovat většinu období. Bez nich porovnáváte různě dlouhé výřezy.
+  </Mistake>
+  <Mistake num="03" title="Brát 200 jako důkaz citace">
+    Stav říká pouze to, že server požadavek úspěšně obsloužil. O dalším použití obsahu nic nedokazuje.
+  </Mistake>
+  <Mistake num="04" title="Míchat vyhledávání, trénink a uživatele">
+    Tři účely mají jinou hodnotu i pravidla. Jediný součet označený jako „provoz AI“ zakryje rozdíly, podle kterých se potřebujete rozhodovat.
+  </Mistake>
+</MistakeGrid>
+
+První výstup má být jednoduchá tabulka: robot, požadavky nalezené podle user-agentu, počet dnes ověřených požadavků, nejčastější URL, podíl chyb a období. U každého čísla uveďte způsob ověření. Teprve z ní rozhodujte, jestli upravit odkazy, robots.txt, cache nebo kapacitu. Bez tohoto mezikroku byste řešili jméno robota, ale ne jeho skutečné chování na vašem webu.
+
+---
+
+**[AI SEO Wireframe Pack](/pack/)** obsahuje šablony pro sedm typů stránek, textové vzory a návod na nasazení. Stojí 1 490 Kč včetně DPH. Pokud chcete místo obecného postupu rozbor techniky, obsahu a viditelnosti konkrétního webu, navazuje na něj **[Audit AI viditelnosti](/audit/)**.
+
+*Zdroje: [OpenAI — přehled robotů](https://developers.openai.com/api/docs/bots), [Anthropic — roboti a jejich účely](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), [Perplexity — dokumentace robotů](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [Google — běžní roboti](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers) a [ověřování požadavků](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests), [Nginx — access log](https://nginx.org/en/docs/http/ngx_http_log_module.html), [Apache — log files](https://httpd.apache.org/docs/2.4/logs.html), [Cloudflare — původní IP](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/) a [kvalita rozpoznání AI robotů](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#quality-of-ai-crawler-detection). Ověřeno 22. 10. 2026.*
