@@ -1863,3 +1863,18 @@ dotazy k produktům“.
 **Opraveno:** nejasné technické vazby, abstraktní analytické výrazy a přehnané závěry z logu byly nahrazeny
 konkrétními pozorovatelnými tvrzeními · vysvětleny rotované logy, odkazující stránka a práce s mezipamětí ·
 zpřesněny formulace o IP, filtrování a náročnosti požadavků · český lokál množného čísla sjednocen na „v lozích“.
+
+## 2026-10-23 · `format-obsahu-podle-zameru-dotazu` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v74 |
+| Mechanický checker | **0 nálezů** po konečných opravách; 2 079 slov, 276 pravidel, hustota 0,0 na 1 000 slov |
+| Nezávislý jazykový audit | 21 nálezů, všech 21 přijato a opraveno |
+| Závěrečný audit | 6 nálezů, všech 6 přijato a opraveno; následné C5b doověření: **PUBLIKOVAT** |
+| Nová pravidla | `\bbrief(u|em|y|ů)?\b` → „zadání“ |
+
+**Opraveno:** pět výskytů anglicismu „brief“ bylo nahrazeno českým „zadání“ · kalky a vágní obraty jako
+„odstranit tření“, „kurátorovaný přehled“, „servisní stránka“, „výsledek návštěvy“ a „technická chuť modelu“ byly
+nahrazeny konkrétní češtinou · zpřesněny podmínky generativních funkcí Googlu, meze čtení výsledků vyhledávání,
+proměnlivost záměru a pojmenování studie AIVO · titulek nyní rozlišuje vnitřní formáty a prodejní stránku.

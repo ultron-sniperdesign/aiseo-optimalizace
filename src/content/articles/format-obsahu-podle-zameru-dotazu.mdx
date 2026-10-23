@@ -1,0 +1,150 @@
+---
+title: "Formát obsahu podle záměru dotazu — kdy odpověď, návod, srovnání nebo prodejní stránka"
+seoTitle: "Formát obsahu podle záměru dotazu: rozhodovací matice"
+description: "Ne každý dotaz potřebuje článek. Rozhodovací matice ukáže, kdy použít definici, návod, srovnání, seznam, kategorii nebo produktovou stránku."
+answer: "Formát obsahu vybírejte podle úlohy, kterou chce člověk dokončit. Jednoduchý fakt vyřeší přímá odpověď, postup zpřehlední kroky, výběr usnadní srovnání a nákup dokončí produktová stránka nebo stránka služby. Výsledky vyhledávání pomohou záměr ověřit, ale nejsou předlohou k opsání. U smíšeného dotazu určete hlavní úlohu a slučitelné potřeby spojte."
+slug: "format-obsahu-podle-zameru-dotazu"
+category: "analysis"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-10-23"
+updated: "2026-10-23"
+keywords:
+  - "search intent"
+  - "záměr vyhledávání"
+  - "formát obsahu"
+  - "typy vyhledávacích dotazů"
+  - "obsah podle záměru dotazu"
+variant: "rich"
+faq:
+  - q: "Jak poznám záměr vyhledávacího dotazu?"
+    a: "Přepište si dotaz jako úlohu: chce člověk něco zjistit, provést, porovnat, koupit, nebo se dostat na konkrétní místo či stránku? Potom zkontrolujte aktuální výsledky pro správnou lokalitu a jazyk. Typy stránek, které se opakují, jsou vodítko, ne povinná šablona."
+  - q: "Je pro informační dotaz vždy nejlepší článek?"
+    a: "Ne. Jednoduchý fakt může nejlépe obsloužit krátké heslo, tabulka nebo část existující stránky. Článek či návod dává smysl až tehdy, když člověk potřebuje vysvětlení, souvislosti nebo několik kroků."
+  - q: "Kdy použít seznam a kdy srovnání?"
+    a: "Seznam se hodí, když člověk potřebuje více možností a u každé stručně poznat, pro koho je. Srovnání je vhodnější, když rozhodují stejná kritéria a čtenář potřebuje vidět rozdíly vedle sebe. Pořadí v žebříčku používejte jen tehdy, když ho umíte doložit."
+  - q: "Co dělat, když má dotaz více záměrů?"
+    a: "Určete hlavní úlohu a zkontrolujte, zda jsou vedlejší potřeby slučitelné. Kategorie může například obsahovat krátkého průvodce výběrem, ale nemá se změnit v dlouhou učebnici. Když úlohy vyžadují jinou stránku a jinou akci, rozdělte je a propojte odkazy."
+  - q: "Má produktová stránka obsahovat návod?"
+    a: "Ano, pokud návod pomáhá použít nebo vybrat konkrétní produkt. Neměl by však skrýt cenu, dostupnost, varianty a cestu k nákupu. Obecný postup pro celou kategorii obvykle patří do průvodce, na který produktová stránka odkáže."
+  - q: "Potřebuje obsah pro AI vyhledávání zvláštní formát?"
+    a: "Podle dokumentace Googlu ne. Pro Přehled od AI ani režim AI není předepsaný zvláštní způsob psaní, dělení textu na krátké úseky ani zvláštní strukturovaná data. Stránka ale musí splňovat technické požadavky Vyhledávání Google, být v indexu a být způsobilá k zobrazení s úryvkem. Web zároveň musí být zahrnutý do generativních funkcí v Search Console. Ani splnění těchto podmínek zobrazení nezaručuje."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+
+**Ne každý dotaz potřebuje článek.** Někdo chce pochopit pojem, jiný provést postup, porovnat nabídky, projít kategorii nebo rovnou objednat. Když pro všechny tyto úlohy vyrobíte dlouhý blogový text, může být dobře napsaný a přesto člověku překážet.
+
+Praktičtější pořadí je: **nejdřív pojmenovat úlohu, potom vybrat typ stránky a teprve nakonec vnitřní formát.** Seznam, tabulka a kroky jsou nástroje uvnitř stránky. Článek, kategorie a produkt jsou stránky s rozdílným účelem.
+
+<Insight tone="seo" icon="1" label="Pravidlo před zadáním">
+  Pokud člověk po přečtení pořád musí hledat stránku, na které dokončí původní úlohu, zvolili jste pravděpodobně špatný typ stránky — nebo jste schovali důležitou akci pod příliš mnoho vysvětlování.
+</Insight>
+
+## Nejdřív <span class="hl">úloha člověka</span>, potom <strong>typ stránky a formát</strong>
+
+V SEO se běžně používají čtyři štítky: informační, navigační, komerční a transakční záměr. Jsou užitečné pro třídění tabulky klíčových slov, ale nejsou to čtyři povinné šablony obsahu.
+
+Google ve svých pokynech pro hodnotitele výsledků používá jiné názvy: **Know** pro zjištění informace, **Do** pro provedení činnosti, **Website** pro cestu na konkrétní web a **Visit-in-Person** pro návštěvu místa. Zároveň výslovně počítá s tím, že jeden dotaz může mít více výkladů i více záměrů. Pokyny nejsou návod na pořadí ve výsledcích a hodnocení hodnotitelů přímo neurčuje pozice. Dobře ale ukazují, proč je lepší přemýšlet o úloze než o štítku.
+
+<CompareTable
+  leftLabel="Pracovní SEO štítek"
+  leftTone="seo"
+  rightLabel="Úloha, kterou je třeba obsloužit"
+  rightTone="geo"
+  rows={[
+    { icon: "?", label: "Informační", left: "Zjistit fakt, pochopit pojem nebo se naučit postup", right: "Rozlišit krátkou odpověď, vysvětlení a návod — každý potřebuje jinou hloubku" },
+    { icon: "↗", label: "Navigační", left: "Dostat se na známý web, přihlášení, kontakt nebo pobočku", right: "Usnadnit cestu na hledanou stránku, do pobočky nebo ke kontaktu; nový blogový článek obvykle nepomůže" },
+    { icon: "⇄", label: "Komerční", left: "Porovnat možnosti před rozhodnutím", right: "Ukázat společná kritéria, rozdíly, omezení a vhodnost pro různé situace" },
+    { icon: "✓", label: "Transakční", left: "Koupit, objednat, rezervovat, stáhnout nebo se registrovat", right: "Odstranit překážky při dokončení akce a uvést všechny potřebné údaje" },
+  ]}
+/>
+
+Záměr tedy neurčuje délku ani komponentu. Určuje, **co má člověk na stránce vyřešit**. U jednoduchého faktu může stačit několik přesných vět. U postupu je důležitější pořadí kroků než počet odstavců. U nákupu musí být vidět cena, dostupnost a další krok; obsáhlý úvod je nenahradí.
+
+## Rozhodovací <span class="hl">matice formátů</span> ukazuje, <strong>co použít a co bývá zbytečné</strong>
+
+Následující tabulka je výchozí zadání, ne univerzální zákon. Poslední slovo má konkrétní dotaz, nabídka firmy a aktuální podoba výsledků vyhledávání.
+
+| Co chce člověk udělat | Vhodný typ stránky | Vnitřní formát, který pomůže | Co bývá zbytečné |
+|---|---|---|---|
+| Získat jeden údaj nebo pochopit pojem | slovníkové heslo, krátká odpověď v širší stránce | definice, jedna tabulka, příklad | dlouhý obecný článek, který odpověď schová |
+| Provést úkol | návod nebo nápověda | kroky ve správném pořadí, podmínky, kontrola výsledku | žebříček „10 tipů“, kde návaznost kroků zanikne |
+| Vybrat mezi dvěma či několika možnostmi | srovnání, průvodce výběrem | společná kritéria, tabulka, pro koho ano a pro koho ne | produktová stránka jedné možnosti vydávaná za nestranné srovnání |
+| Projít více vhodných možností | seznam nebo ručně vybraný přehled | podmínky zařazení, krátký popis rozdílů, filtry | pořadí bez metodiky a výplň do předem zvoleného počtu položek |
+| Procházet skupinu produktů či služeb | kategorie, nabídka služeb, rozcestník | výpis, filtry, ceny, stručný návod k výběru | článek o několika tisících slovech před samotnou nabídkou |
+| Ověřit konkrétní produkt nebo službu a objednat ji či poslat poptávku | produktová, cenová či rezervační stránka nebo stránka služby | parametry, cena, dostupnost, důkazy, jasný další krok | samostatný blogový text, který návštěvníka pošle znovu hledat nákupní stránku |
+| Dostat se na známé místo | domovská stránka, přihlášení, kontakt, pobočka, nápověda | srozumitelný název, navigace, kontaktní či přístupové údaje | článek cílený na cizí značku nebo na vlastní přihlášení |
+
+Rozdíl mezi **seznamem** a **srovnáním** je praktický. Seznam odpovídá na „jaké možnosti vůbec mám“; srovnání na „v čem se tyto možnosti liší podle stejných kritérií“. Žebříček navíc tvrdí, že pořadí umíte obhájit. Když kritéria nemáte, napište přehled bez pořadí.
+
+Malá studie AIVO zaměřená na citace v ChatGPT zjistila, že zastoupení číslovaných seznamů se výrazně lišilo podle záměru dotazu. Nejde z ní udělat univerzální recept; rozbor i limity jsou v článku [Číslované seznamy pro AI: kdy fungují a kdy ne](/blog/listicly-top-n-pro-ai/).
+
+## Záměr <span class="hl">neuhodnete ze slova</span> — <strong>ověřte úlohu i výsledky</strong>
+
+Výrazy jako „jak“, „nejlepší“, „cena“ nebo název značky jsou užitečné stopy. Samy o sobě ale nestačí. Dotaz „cena účetnictví“ může znamenat hledání ceníku konkrétní služby, orientační výpočet pro malou firmu i porovnání dodavatelů. Stejné slovo vede k jiné stránce podle kontextu.
+
+<Stepper tone="seo" steps={[
+  { title: "Přepište dotaz jako úlohu", desc: "Místo štítku napište větu: člověk chce zjistit jeden údaj, naučit se postup, sestavit užší výběr, nebo dokončit akci. Pokud větu neumíte dokončit, je dotaz příliš široký pro jedno zadání." },
+  { title: "Projděte aktuální výsledky ve správném prostředí", desc: "Hledejte česky, nastavte českou lokalitu a použijte zařízení, na kterém obvykle hledá vaše cílové publikum. Zapište si typy stránek, způsob zpracování tématu a zvláštní prvky ve výsledcích. Jeden odlišný výsledek není důkaz změny záměru; hledejte opakující se vzorec." },
+  { title: "Porovnejte výsledky s tím, co víte o zákaznících", desc: "Výsledky odrážejí odhad vyhledávače i to, jaké stránky jsou nyní na webu k dispozici. Dotazy z podpory, prodeje a interního vyhledávání mohou odhalit potřebu, kterou výsledky zatím obsluhují slabě." },
+  { title: "Určete stránku, důkaz a další krok", desc: "Do zadání napište typ stránky, co musí člověk po návštěvě vědět nebo udělat, jakými podklady jednotlivá tvrzení doložíte a jaká akce má následovat. Formát odstavců, tabulek a kroků zvolte až potom." },
+]} />
+
+Výsledky vyhledávání tedy **nekopírujte mechanicky**. Mohou být ovlivněné lokalitou, aktuální událostí, značkou nebo tím, co je na webu vůbec k dispozici. Jsou vodítkem k tomu, co hodnoticí systémy Googlu v daném prostředí právě vybraly z dostupného obsahu. Neprokazují všechny významy ani potřeby spojené s dotazem, proto je porovnejte s vlastní znalostí zákazníků.
+
+## U <span class="hl">smíšeného záměru</span> určete, <strong>co patří na jednu stránku</strong>
+
+Smíšený záměr není pokyn nacpat na jednu adresu všechno. Rozhodnutí stojí na tom, zda jednotlivé úlohy vedou ke stejnému cíli a lze je splnit na jedné stránce, aniž si její části navzájem překážejí.
+
+**Slučitelné úlohy** lze často spojit. Kategorie běžeckých bot může mít výpis produktů, filtry a krátkou radu, jak zvolit tlumení. Vše pomáhá s jedním úkolem: vybrat produkt z nabídky. Stránka služby může vysvětlit rozsah, cenu a průběh spolupráce, protože všechny tři informace pomáhají návštěvníkovi rozhodnout se, zda poslat poptávku.
+
+**Neslučitelné úlohy** je lepší rozdělit. Obecný návod na vedení účetnictví, porovnání účetních programů a ceník vedení účetnictví mají jiné publikum, jiné důkazy i jiný další krok. Jeden souhrnný text by buď zdržoval člověka, který chce objednat, nebo odbyl člověka, který se chce naučit postup.
+
+<Insight tone="warn" icon="!" label="Test jedné adresy">
+  Položte si dvě otázky: **vede každá část ke stejné hlavní úloze a má stránka jeden přirozený další krok?** Pokud ne, vytvořte hlavní stránku pro dominantní záměr a vedlejší úlohy obslužte samostatně. Propojte je přesně v místě, kde je čtenář potřebuje.
+</Insight>
+
+Smíšený záměr se navíc může měnit. Při nové regulaci může dotaz na produkt dočasně přitáhnout zpravodajské výsledky; po odeznění události se mohou znovu prosadit nabídky a recenze. Proto má smysl kontrolovat důležité dotazy průběžně, zejména když stránka ztratí zobrazení nebo se změní skladba výsledků.
+
+## Pro <span class="hl">AI vyhledávání</span> nevzniká <strong>povinná zvláštní šablona</strong>
+
+Google ve svém průvodci pro generativní funkce výslovně uvádí, že pro Přehled od AI ani režim AI není potřeba zvláštní způsob psaní, dělení textu na krátké úseky nebo zvláštní strukturovaná data. Doporučuje hodnotný původní obsah, srozumitelné členění do odstavců a sekcí a popisné nadpisy.
+
+Aby se stránka mohla v těchto funkcích zobrazit, musí splňovat technické požadavky Vyhledávání Google, být v indexu a být způsobilá k zobrazení s úryvkem. Web zároveň musí být zahrnutý do generativních funkcí v nastavení Search Console. Ani splnění těchto podmínek zobrazení nezaručuje. Obecný vývojářský průvodce Googlu navíc doporučuje převést podstatnou informaci z obrázku nebo videa také do textu.
+
+To neznamená, že na formátu nezáleží. Znamená to, že **formát slouží člověku a jeho úloze, ne domnělým technickým požadavkům modelu**. Kroky pomohou u postupu, tabulka u porovnání a krátká odpověď u přesného faktu. Žádný z těchto prvků ale sám nezaručuje pozici ani citaci.
+
+<MistakeGrid>
+  <Mistake num="01" title="Nejdřív zvolit formát" fix="Nejdřív napište úlohu člověka jednou větou.">
+    Tým se rozhodne pro seznam, protože se dobře vyrábí, a teprve potom hledá dotaz. Výsledkem bývá formát bez skutečného důvodu.
+  </Mistake>
+  <Mistake num="02" title="Číst nástroj jako rozsudek" fix="Štítek ověřte na výsledcích a u zákazníků.">
+    Automatické označení záměru pomůže třídit tisíce slov, ale u nejasného dotazu nevidí kontext firmy ani českou nabídku.
+  </Mistake>
+  <Mistake num="03" title="Z článku dělat nákupní stránku" fix="Pro akci použijte produkt, službu, ceník nebo rezervaci.">
+    Dlouhý text nepřidá cenu, dostupnost ani možnost objednat. Když člověk musí po dočtení znovu hledat, stránka úlohu nedokončila.
+  </Mistake>
+</MistakeGrid>
+
+## Dobré <span class="hl">obsahové zadání</span> začíná výsledkem, <strong>ne počtem slov</strong>
+
+Před psaním nové stránky stačí zodpovědět šest otázek:
+
+1. **Jakou úlohu chce člověk dokončit?** Jedna věta bez SEO názvosloví.
+2. **Jaký typ stránky mu umožní úlohu dokončit?** Článek, návod, kategorie, produkt, služba, kontakt nebo jiný cíl.
+3. **Co musí na stránce vidět jako první?** Přímou odpověď, nabídku, srovnání, cenu, dostupnost nebo kroky.
+4. **Který vnitřní formát informaci zpřehlední?** Tabulka, seznam, postup, kalkulačka, ukázka či krátká definice.
+5. **Jaký vlastní podklad přidáte?** Zkušenost, měření, metodiku, konkrétní příklad nebo přesný zdroj.
+6. **Co má následovat?** Další čtení, výběr varianty, nákup, rezervace, kontakt nebo konec bez další akce.
+
+Počet slov z toho vyplyne. Definice může mít jeden odstavec, návod deset kroků a kategorie jen krátké vysvětlení nad nabídkou. Google mezi otázkami k užitečnému obsahu doporučuje ověřit právě to, zda člověk po přečtení získá dost informací k dosažení svého cíle a zda bude s výsledkem spokojený. To je lepší kontrola než předepsaná délka.
+
+**Nevíte, jestli důležité dotazy vedou na správné stránky, nebo jestli na webu některý typ obsahu chybí?** [Audit AI viditelnosti](/audit/) za 3 600 Kč bez DPH prověří, která důležitá témata na webu chybějí, i jeho technickou připravenost. Do pěti pracovních dní od úhrady dostanete seznam úprav seřazený podle priority.
+
+*Zdroje: Google — [Search Quality Rater Guidelines](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf), verze 11. 9. 2025; [Jak Vyhledávání určuje hodnocení výsledků](https://www.google.com/intl/cs_ALL/search/howsearchworks/how-search-works/ranking-results/); [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content); [Optimizing your website for generative AI features on Google Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide); [Ovládání generativní AI ve Vyhledávání](https://support.google.com/webmasters/answer/16908024?hl=cs); [SEO Guide for Web Developers](https://developers.google.com/search/docs/fundamentals/get-started-developers). Ověřeno 23. 10. 2026.*
