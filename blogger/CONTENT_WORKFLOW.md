@@ -35,6 +35,10 @@ Aktuálně nasazené (stav k 15. 9. 2026, všechny ověřeny jako dostupné v AP
 | Jazyková kontrola, LLM průchod (C6) | `gpt-5.4` |
 | Featured / OG image (D2) | `gpt-image-2` |
 
+> **Od 30. 10. 2026 se OpenAI API nepoužívá** (rozhodnutí uživatele) — audity C2, C4, C5b, LLM průchod C6
+> i obrázek D2 jdou přes **Codex** (skill `predat-codexu`, z předplatného ChatGPT). Příkazy `chat.py`
+> a `image.py` níž jsou historické; platné příkazy a postup jsou v `blogger/CLAUDE.md` § IV a § VI.
+
 **Když najdeš novější model, model v workflow neměň sám — napiš mi o to.** V žádosti uveď:
 
 1. Který krok se týká a jaký model navrhuješ.
@@ -283,7 +287,9 @@ Cíl: udržet `blogger/obsahovy-plan.csv` živý a najít, na čem pracovat.
 
 ## BLOK B — Výběr tématu a hloubkový research
 
-- **B1 — Výběr tématu:** vezmi **první volný řádek** (`Publikováno = ne`). K 15. 9. 2026 jich čeká 145 a **žádná mimořádná přednost neplatí** — jede se pořadí fronty.
+- **B1 — Výběr tématu:** vezmi **první volný řádek** (`Publikováno = ne`). Mimořádná přednost se nezapisuje sem — od revize 30. 10. 2026 jsou volné řádky **fyzicky seřazené podle priority**, takže první volný řádek je nejdůležitější téma.
+
+  > **Přednost od 30. 10. 2026 (revize plánu, zadání uživatele):** volné řádky přeřazeny podle researche trhu a vlastních dat (`blogger/REVIZE_PLANU_2026-10-30.md`, historie v `blogger/PRIORITA_2026-10-30.md`). Podmínky typu „psát až po vydání Upgates verze 37“ nebo „až po datech ČSÚ“ stojí na začátku sloupce C v poznámce `REVIZE 2026-10-30`; když podmínka ještě neplatí, vezmi další volný řádek. Nový řádek z A5 zařaď podle priority, ne automaticky na konec. Odkaz na jiný řádek v plánu piš klíčovým slovem (`kw`), ne číslem — čísla se přeřazením mění.
 
   > **Nejdřív přečti sloupec C (Pokyny).** Některé řádky mají varování: kanibalizace, „updatovat existující místo nového", riziko překryvu s pilířem. Pokud pokyn říká *nepsat / updatovat existující*, vyřeš řádek podle něj (např. UPDATE `geo-optimalizace.mdx` + bump `updated:`), ne slepě nový článek. Když řádek vyústí v „nepsat", nastav `E` smysluplně a přejdi na další volný.
 

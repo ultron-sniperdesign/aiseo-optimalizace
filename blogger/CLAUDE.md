@@ -19,9 +19,9 @@
 |---|---|
 | **Session-tag** | `aiseo-blogger` |
 | **Pracovní složka** | `aiseo-optimalizace.cz/blogger/` (git root je o úroveň výš) |
-| **Role** | Vlastní **celý** obsahový pipeline blogu: výběr tématu → research → draft → 2× audit přes OpenAI → jazyková kontrola → design komponentami → obrázek → build → commit/push → verifikace → uzávěr v obsahovém plánu. |
+| **Role** | Vlastní **celý** obsahový pipeline blogu: výběr tématu → research → draft → 2× audit přes Codex → jazyková kontrola → design komponentami → obrázek → build → commit/push → verifikace → uzávěr v obsahovém plánu. |
 | **Kanonický run-book** | `blogger/CONTENT_WORKFLOW.md` (bloky A–D). Mechanika publikace: `blogger/README.md`. |
-| **Provoz** | Plná autonomie. Roli recenzenta během tvorby plní auditor přes OpenAI, ne uživatel. Jediný povinný lidský dotyk je závěrečný report do vlákna. |
+| **Provoz** | Plná autonomie. Roli recenzenta během tvorby plní auditor přes Codex, ne uživatel. Jediný povinný lidský dotyk je závěrečný report do vlákna. |
 | **NEdělá** | Nepíše sekce ani pilíř, nesahá na design systém, na produkty ani na infrastrukturu. Nepřihlašuje se do žádné administrace. |
 | **Souběh** | Admin session (`aiseo-optimalizace`) edituje **stejné repo** ve stejnou dobu. Stagovat jen vlastní soubory, nikdy `git add -A`, nikdy nevracet cizí rozdělanou práci. |
 
@@ -79,12 +79,11 @@ komponentu, eskalace na admin session přes board.
 ## IV — Přesné příkazy
 
 ```bash
-# audit obsahu (kola C2 a C4) — model gpt-5.5, --temperature nepodporuje
-python3 ~/.claude/skills/open-ai-api-core/scripts/chat.py \
-  --system "$(cat blogger/auditor-system.md)" \
-  --input-file "blogger/research/<slug>/audit1-brief.md" \
-  --model gpt-5.5 --max-tokens 14000 \
-  --output "blogger/research/<slug>/audit1-result.md" --verbose
+# audit obsahu (kola C2, C4, C5b) — přes Codex, ne přes OpenAI API (rozhodnutí 30. 10. 2026, § VI)
+K="/Users/ultroncloudehome/Desktop/Ultron DISK/MY SKILLS/predat-codexu/scripts/codex-ukol.sh"
+OUT="/Users/ultroncloudehome/Desktop/Ultron DISK/Dokumenty/CODEX/z-clauda/RRRR-MM-DD-audit1-<slug>"
+"$K" --slozka "$OUT" --uroven high - < "$OUT/zadani.md"        # Bash run_in_background
+"$K" --navazat <VLAKNO> --slozka "$OUT" --uroven high - < c5b.md   # C5b do vlákna auditora
 
 # jazyková kontrola (C6) — cíl 0 nálezů, pouští se z kořene projektu
 python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger/JAZYK_SLOVNIK.md
@@ -92,10 +91,9 @@ python3 blogger/jazyk-check.py src/content/articles/<slug>.mdx --slovnik blogger
 # vlastnosti komponent, které se tiše nevykreslí (Z13) — cíl 0 nálezů, před buildem
 python3 blogger/kontrola-komponent.py src/content/articles/<slug>.mdx
 
-# obrázek (D2) — preambule a pojistky v IMAGE_GUIDE.md §5, prompt v jednoduchých uvozovkách
-python3 ~/.claude/skills/open-ai-api-core/scripts/image.py \
-  --model gpt-image-2 --size 1536x1024 --quality high \
-  --output "public/og/<slug>.png" --prompt '<preambule + scéna + CZ text + pravidla>'
+# obrázek (D2) — přes Codex (vestavěný imagegen), preambule a pojistky z IMAGE_GUIDE.md §5 beze změny
+"$K" --slozka "$OUT" --uroven low "<preambule + scéna + CZ text + pravidla>; 1536×1024; ulož jako <slug>.png"
+cp "$OUT/<slug>.png" public/og/<slug>.png   # pak odvozeniny níž; obrázek otevři a zkontroluj diakritiku
 
 # odvozeniny + kontrola ořezu (zobrazuje se 1200×669 z horní části)
 node -e "const sharp=require('sharp'), s='<slug>';
@@ -158,10 +156,12 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
   vypadalo, že `git add` selhal, přestože proběhl.
 - **`git add $PROMENNA` v zsh nefunguje** — proměnná se nerozdělí na slova. Seznam cest do souboru
   a pak `tr '\n' '\0' | xargs -0 git add`, commit s `-- $(tr '\n' ' ' < seznam)`.
-- **OpenAI API bez kreditů vrací 429** (od 19. 10. 2026 u obrázků, 21. 10. i u `chat.py`) — audity
-  ani obrázek pak přes `open-ai-api-core` nejdou. Na začátku runu to ověř krátkým voláním a **zeptej se
-  uživatele**, jak pokračovat; 21. 10. zvolil audity přes Codex (skill `predat-codexu`) a souhlas platí
-  pro ten run, ne natrvalo. Postup, který prošel: do složky pro Codex dát článek, research a **texty
+- **OpenAI API se nepoužívá — audity i obrázky jdou přes Codex** (skill `predat-codexu`; rozhodnutí
+  uživatele 30. 10. 2026: „OpenAI už nepotřebuješ“). Platí natrvalo, neptat se znovu. Důvod: API vracelo
+  429 bez kreditů (od 19. 10. u obrázků, 21. 10. i u `chat.py`), Codex jede z předplatného ChatGPT.
+  Příkazy v `open-ai-api-core` v CONTENT_WORKFLOW a IMAGE_GUIDE jsou historické. **Codex nemá v sandboxu
+  síť** — zdroje mu musíš dát jako texty ve složce. Obrázky se počítají do limitu předplatného 3–5× rychleji;
+  dávku nad ~10 obrázků nejdřív odsouhlasit. Postup, který prošel (21. 10.): do složky pro Codex dát článek, research a **texty
   zdrojů** (ať ověřuje proti nim, ne proti paměti), zadání = `auditor-system.md` + osa + pravidla webu,
   výstup do souboru; C5b přes `--navazat` do vlákna auditora, který nález našel. Do repa jde výsledek,
   ne identity měřených webů — URL v auditu před commitem zkontroluj (Z2).

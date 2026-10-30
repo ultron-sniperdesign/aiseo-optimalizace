@@ -45,6 +45,10 @@
 
 ## 1. Čím generovat — skill + model
 
+> **Od 30. 10. 2026 přes Codex** (skill `predat-codexu`, vestavěný imagegen, `--uroven low`) — OpenAI API
+> se nepoužívá, rozhodnutí uživatele. Preambule, kompozice a pojistky z §5 platí beze změny; Codex často
+> chybuje v textu, takže každý obrázek otevři a diakritiku zkontroluj. Příkaz: `blogger/CLAUDE.md` § IV.
+
 - **Skill:** `open-ai-api-core` (`~/.claude/skills/open-ai-api-core/scripts/image.py`)
 - **Model: `gpt-image-2`** (umí renderovat **český text včetně diakritiky** — ověřeno; difúzní modely jako Nano Banana text komolí, proto GPT Image 2).
 - **API klíč:** `OPENAI_API_KEY` — je v `~/.zshenv` i v `~/.claude/skills/open-ai-api-core/.env`, netřeba řešit.
