@@ -346,6 +346,47 @@ export const ui = {
   seriesPromoCta: "Projít sérii",
 
   // Stránka /hledat/ (Pagefind)
+  /**
+   * Stránka 404.
+   *
+   * Do 30. 10. 2026 vracela živá doména na neexistující adresu HTTP 404
+   * s **prázdným tělem** — návštěvník z překlapu nebo ze staré zálohy nedostal
+   * ani logo, ani menu, ani cestu zpět. Na webu se 141 články a aktivním
+   * prolinkováním je to trvalý únik.
+   *
+   * Text nic neomlouvá a netváří se vtipně. Říká, co se stalo, a hned nabízí
+   * dvě cesty ven: hledání (nejčastější záchrana, index z Pagefindu je stejný
+   * jako na `/hledat/`) a tři rozcestníky.
+   */
+  notFound: {
+    metaTitle: "Stránka nenalezena",
+    metaDescription:
+      "Tato adresa na webu neexistuje. Zkuste hledání nebo některý z rozcestníků.",
+    title: "Tahle stránka tu není",
+    lead: "Adresa může mít překlep, nebo stránka od vašeho posledního hledání zmizela. Zkuste hledání — prohledá všechny články, disciplíny i slovník.",
+    searchLabel: "Hledat na webu",
+    /** Zobrazí se, když se index Pagefindu nenačte (dev server). */
+    devNote: "Vyhledávací index vzniká při buildu — na dev serveru není k dispozici.",
+    linksTitle: "Nebo začněte odtud",
+    links: [
+      {
+        href: "/zacnete-tady/",
+        label: "Začněte tady",
+        desc: "Rozcestník podle toho, co zrovna řešíte.",
+      },
+      {
+        href: "/seo-vs-geo-vs-aeo-vs-aio/",
+        label: "Hlavní průvodce",
+        desc: "SEO, GEO, AEO a AIO — čím se liší a kdy co použít.",
+      },
+      {
+        href: "/blog/",
+        label: "Blog",
+        desc: "Rozbory a návody k AI éře vyhledávání.",
+      },
+    ],
+  },
+
   searchPage: {
     title: "Hledání",
     metaTitle: "Hledání na webu",

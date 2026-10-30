@@ -527,6 +527,16 @@ ssh aiseo-optimalizace-vps "awk '{print \$NF}' ~/.ssh/authorized_keys | sort | u
   **Sesterská past v té knihovně:** po neúspěšném podání zapisovala cache a vypsala
   „IndexNow submission complete“ — jediný pravdivý signál byl `warn` mezi tím. Náš
   skript naopak na 4xx vrací nenulový kód a selhání nezamlčí.
+- **Vlastní 404 potřebuje Caddy, samotný `src/pages/404.astro` nestačí** (slop audit nález
+  `2026-09-22/002`, nasazeno 30. 10. 2026). Astro soubor zbuilduje do `dist/404.html`, ale
+  `file_server` ho sám od sebe nepoužije — na neznámou cestu vrátí **404 s prázdným tělem**
+  (naměřeno `curl -w "%{size_download}"` → `0`, 22. 9. i 30. 10.). Blok domény potřebuje
+  `handle_errors { rewrite * /404.html; file_server }`. Caddyfile je sdílený, **reload dělá
+  `sd-server-admin`** (§ IV, § V). Dokud ten krok neproběhne, je stránka dostupná jen na `/404`.
+  **Po nasazení ověř `curl -sS -o /dev/null -w "%{http_code} %{size_download}"` na smyšlené
+  adrese — musí vrátit 404 a nenulovou velikost.** Stránka je `noindex`; vlastní `canonical`
+  na `/404/` z BaseLayoutu tam zůstává a nevadí (stav 404 je pro vyhledávač rozhodující),
+  ale při jiném použití layoutu na chybové stránce na to pamatuj.
 - **Astro ve statickém buildu negeneruje 301 — a přidává `noindex` vedle `canonicalu`**
   (změřeno 6. 9. 2026, dopad doměřen 10. 10. 2026). Záznamy v `redirects` v `astro.config.mjs`
   (k 10. 10. 2026 jich je 17) se vykreslí jako HTML stránka s `<meta http-equiv="refresh">`

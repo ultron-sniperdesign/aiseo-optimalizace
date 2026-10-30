@@ -1,0 +1,190 @@
+---
+/**
+ * /404.astro — vlastní stránka pro neexistující adresu.
+ *
+ * Proč vznikla (slop audit nález `2026-09-22/002`): živá doména vracela
+ * na neexistující adresu HTTP 404 s **prázdným tělem** (`size_download = 0`).
+ * Návštěvník z překlepu, ze staré zálohy nebo ze zastaralého odkazu nedostal
+ * ani logo, ani menu, ani vyhledávání — neměl se kam vrátit a odešel.
+ *
+ * POZOR — samotný tenhle soubor nestačí. Astro ho zbuilduje do `dist/404.html`,
+ * ale Caddy ho sám od sebe nepoužije: `file_server` na neznámou cestu vrátí
+ * prázdnou 404. Blok domény v `/etc/caddy/Caddyfile` potřebuje:
+ *
+ *     handle_errors {
+ *         rewrite * /404.html
+ *         file_server
+ *     }
+ *
+ * Caddyfile je sdílený a **reload dělá `sd-server-admin`** (CLAUDE.md § IV a § V).
+ * Dokud ten krok neproběhne, je tahle stránka dostupná jen přímo na `/404`.
+ *
+ * `noindex`, protože chybová stránka do indexu nepatří. Kanonickou URL
+ * nenastavujeme — žádná správná adresa téhle stránky neexistuje.
+ *
+ * Vyhledávání je tu hlavní cesta ven, ne dekorace: na webu je 280+ stránek
+ * a kdo přišel z překlepu, nejčastěji hledá konkrétní článek. Index je týž
+ * jako na `/hledat/` (Pagefind, vzniká při buildu).
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { ui } from "~/i18n/strings";
+
+const t = ui.notFound;
+---
+
+<BaseLayout title={t.metaTitle} description={t.metaDescription} noindex>
+  <div class="nf">
+    <section class="nf-hero">
+      <h1 class="nf-hero__title">{t.title}</h1>
+      <p class="nf-hero__lead">{t.lead}</p>
+    </section>
+
+    <section class="nf-search" aria-label={t.searchLabel}>
+      <div id="pagefind-search"></div>
+      <p class="nf-search__devnote" data-devnote hidden>{t.devNote}</p>
+    </section>
+
+    <section class="nf-links">
+      <h2 class="nf-links__title">{t.linksTitle}</h2>
+      <ul class="nf-links__list" role="list">
+        {t.links.map((l) => (
+          <li class="nf-links__item">
+            <a class="nf-links__link" href={l.href}>
+              <span class="nf-links__label">{l.label}</span>
+              <span class="nf-links__desc">{l.desc}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script is:inline src="/pagefind/pagefind-ui.js" onerror="document.querySelector('[data-devnote]').hidden = false"></script>
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", function () {
+    if (typeof window.PagefindUI === "undefined") return;
+    new window.PagefindUI({
+      element: "#pagefind-search",
+      showSubResults: true,
+      showImages: false,
+      // Autofocus NE: na chybové stránce chceme, aby člověk nejdřív přečetl,
+      // co se stalo. Skok kurzoru do pole mu navíc na mobilu vytáhne klávesnici
+      // přes celý obsah.
+      autofocus: false,
+      // Popisky Pagefindu jsou zatím shodná kopie s `/hledat/`. Až z vyhledávání
+      // vznikne komponenta, patří na jedno místo — dvě kopie se časem rozejdou.
+      translations: {
+        placeholder: "Hledat disciplíny, návody, pojmy…",
+        zero_results: "Pro „[SEARCH_TERM]“ jsme nic nenašli",
+        clear_search: "Vymazat",
+        load_more: "Načíst další výsledky",
+        search_label: "Hledat na webu",
+        results_label: "Výsledky hledání",
+      },
+    });
+  });
+</script>
+
+<style>
+  .nf {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) var(--space-section-x) clamp(3rem, 7vw, 6rem);
+  }
+
+  .nf-hero {
+    max-width: var(--w-read);
+  }
+  .nf-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+  .nf-hero__lead {
+    margin: clamp(1rem, 2vw, 1.4rem) 0 0;
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+
+  .nf-search {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    max-width: var(--w-read);
+  }
+  .nf-search__devnote {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+  }
+
+  .nf-links {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(1.75rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--color-rule);
+  }
+  .nf-links__title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-sans);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+  .nf-links__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  @media (min-width: 720px) {
+    .nf-links__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  .nf-links__link {
+    display: block;
+    height: 100%;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    background: var(--color-paper);
+    text-decoration: none;
+    transition:
+      border-color 0.18s ease,
+      background-color 0.18s ease;
+  }
+  .nf-links__link:hover {
+    border-color: var(--color-rule-strong);
+    background: var(--color-paper-deep);
+  }
+  .nf-links__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  .nf-links__label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    color: var(--color-ink);
+  }
+  .nf-links__desc {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+</style>
