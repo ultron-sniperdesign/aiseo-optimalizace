@@ -165,6 +165,13 @@ Jedno pravidlo, jedno místo — tady jen rozcestník:
   zdrojů** (ať ověřuje proti nim, ne proti paměti), zadání = `auditor-system.md` + osa + pravidla webu,
   výstup do souboru; C5b přes `--navazat` do vlákna auditora, který nález našel. Do repa jde výsledek,
   ne identity měřených webů — URL v auditu před commitem zkontroluj (Z2).
+- **Kotvy nadpisů se zkracují na 64 znaků** — `id` H2 je slug z textu nadpisu uříznutý uprostřed slova
+  (`…po-vlastnostech-ne-p`), takže odkaz `](#…)` odvozený od celého nadpisu tiše nikam nevede (31. 10. 2026,
+  1 ze 7 odkazů). Po buildu porovnat každé `](#…)` v článku s `id` v `dist/blog/<slug>/index.html`.
+  Změna H2 změní i kotvu, kterou Google ukazuje v SERP jako odkaz do článku.
+- **Auditor u nedoloženého postupu navrhuje škrtat** — když ho čtenář potřebuje (nastavení prohlížeče,
+  cesta v menu), ověř ho u výrobce místo škrtnutí; 31. 10. 2026 tak malý workflow (6 agentů, v rámci Z1)
+  zachránil postupy pro Firefox, Safari a Edge a opravil dva chybné. Co ani výrobce nedoloží, škrtni.
 - **Agenti a workflow:** strop je pravidlo Z1 v `CONTENT_WORKFLOW.md`.
 
 ---
