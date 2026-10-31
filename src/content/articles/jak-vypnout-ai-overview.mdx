@@ -1,296 +1,226 @@
 ---
 title: "Jak vypnout AI Overviews v Googlu — co jde a co ne (2026)"
 seoTitle: "Jak vypnout AI v Googlu: 3 funkční způsoby (návod 2026)"
-description: "Návod, jak vypnout AI odpovědi (AI Overviews) v Googlu: přes Search Labs, filtr &udm=14 nebo změnu vyhledávače. Pro Chrome, Edge, Firefox i mobil."
-answer: "Google AI Overviews nelze garantovaně globálně vypnout — Google nenabízí hlavní vypínač. Lze je ale omezit nebo obejít: (1) přes Search Labs experiment v Google účtu (dostupnost závisí na účtu, regionu a fázi zpřístupňování); (2) přes web filter `&udm=14`, který aktuálně potlačuje AIO i další SERP prvky; (3) přepnutím výchozího vyhledávače na Brave Search nebo DuckDuckGo. Pro vlastní web pak `data-nosnippet` nebo `nosnippet` direktivy selektivně, podle typu dotazu."
+description: "Přehled od AI v Googlu vypnout nejde a vypínač režimu AI nápověda neuvádí. Pomůže filtr Web nebo jiný vyhledávač, zkusit lze i neoficiální &udm=14."
+answer: "Přehled od AI je shrnutí od umělé inteligence nad výsledky Googlu a podle nápovědy Googlu ho vypnout nejde, na počítači ani na telefonu. Obejít ho můžete filtrem Web, který vyberete po hledání, nebo jiným vyhledávačem s vypnutými AI odpověďmi. Vypínač režimu AI nápověda také neuvádí; popisuje jen, jak do něj vstoupit."
 slug: "jak-vypnout-ai-overview"
 category: "defensive"
 tags:
   - "ai-platformy"
   - "technicke-zaklady"
 published: "2026-04-29"
-updated: "2026-09-09"
+updated: "2026-10-31"
 variant: "rich"
 keywords:
+  - "jak vypnout ai v google"
+  - "jak vypnout přehled od ai"
+  - "jak vypnout režim ai"
+  - "google bez ai"
   - "jak vypnout ai overview"
   - "ai overview vypnout"
   - "google ai overview vypnout"
+  - "udm=14"
   - "turn off ai overview google"
   - "how to disable ai overview"
-  - "ai overviews vypnout"
 faq:
-  - q: "Lze AI Overviews v Googlu úplně vypnout?"
-    a: "Ne, Google nedává garantovaný globální vypínač. Lze AIO omezit pro část dotazů přes Search Labs experiment (pokud ho ve vašem účtu vidíte) nebo obejít přepnutím výchozího vyhledávače na Brave Search či DuckDuckGo, které vlastní AIO panel nemají. Web filter `&udm=14` aktuálně potlačuje většinu AIO prvků v Googlu, ale nejde o oficiální dlouhodobou direktivu — Google může chování parametru kdykoli změnit."
-  - q: "Vrátí se AI Overviews po aktualizaci prohlížeče?"
-    a: "Search Labs nastavení je vázané na Google účet a může se resetovat při větších změnách AI funkcí. Web filter `&udm=14` je přepnutí Google search režimu — funguje, dokud Google chování parametru nezmění. Brave Search a DuckDuckGo AIO neobsahují, ale mohou mít vlastní AI/odpovědní funkce, které je vhodné zkontrolovat v jejich nastavení."
-  - q: "Jak vypnu AI Overviews na mobilu (Android/iOS)?"
-    a: "Postupy se liší podle verze Google app, regionu a účtu. Obecná cesta na obou platformách: Google app → profilová ikona → Settings → Search Labs → vyhledat experiment týkající se AI Overviews → vypnout. Pokud Search Labs nevidíte nebo postup nezabírá, spolehlivější workaround je nastavit web filter v prohlížeči nebo přepnout výchozí vyhledávač na Brave Search nebo DuckDuckGo."
-  - q: "Jak omezit AI Overviews pro vlastní web?"
-    a: "Použít snippet direktivy podle Google dokumentace: `<meta name=\"robots\" content=\"nosnippet\">` plošně (omezí použití textu ve snippetech i AI Overviews na celé stránce — i klasické featured snippets) nebo `data-nosnippet` selektivně na konkrétních HTML blocích, kde nechcete, aby Google obsah použil. Není to blokace samostatného AIO crawleru — Google AIO pracuje s Googlebotem a indexovaným obsahem, snippet direktivy omezují použití obsahu, ne crawl."
-  - q: "Proč by někdo chtěl omezit AI Overviews?"
-    a: "Hlavní důvody: (1) AIO odpovědi mohou být u některých dotazů nepřesné nebo vynechávat kontext; (2) panel zabírá horní část SERPu a u některých dotazů může snižovat CTR organických výsledků; (3) preference pro klasické vyhledávání. Reálný dopad AIO na návštěvnost se ale výrazně liší podle typu dotazu, záměru hledajícího, vertikály i toho, zda je váš web v AIO citovaný — než se rozhodnete pro snippet restrikce, vyhodnoťte data v GSC."
+  - q: "Jde Přehled od AI v Googlu úplně vypnout?"
+    a: "Přehled od AI podle nápovědy Vyhledávání Google vypnout nejde. Nápověda ho k 31. 10. 2026 řadí mezi základní funkce vyhledávání, stejně jako informační panely, a stejně to píše ve verzi pro počítač, Android i iPhone. Obejít ho jde filtrem Web po hledání, nebo jiným vyhledávačem. Neoficiální možností je parametr `&udm=14` v adrese, nastavený jako výchozí vyhledávač prohlížeče; platí jen pro hledání z adresního řádku a doložený je jen testem jiného webu na německém Googlu, pro český Google vlastní ověření nemáme. U jiného vyhledávače zkontrolujte AI odpovědi: DuckDuckGo je má podle nápovědy ve výchozím stavu zapnuté."
+  - q: "Vypne Přehled od AI přepínač v Search Labs?"
+    a: "Vypnutí přepínače „AI ve Vyhledávání“ v Search Labs Přehled od AI nevypne. Podle nápovědy Googlu jím jen odejdete z testovacího prostředí pro nové AI experimenty. Starší návody, včetně předchozí verze tohoto článku, radily vypnout experiment „AI Overviews and more“. Ten dnes v nápovědě Googlu není."
+  - q: "Jak vypnout AI v Googlu na telefonu?"
+    a: "Vypínač Přehledu od AI nápověda Googlu neuvádí ani pro Android a iPhone. U jednotlivého hledání můžete zvolit filtr Web, nebo v prohlížeči nastavit jiný výchozí vyhledávač, třeba DuckDuckGo s vypnutým Search Assist. Asistent Gemini je samostatná aplikace, ne vyhledávání, a tenhle návod ho neřeší."
+  - q: "Jak vypnout režim AI?"
+    a: "V nápovědě k režimu AI jsme k 31. 10. 2026 volbu vypnutí nenašli. Popisuje jen to, jak do něj vstoupit: na adrese google.com/ai, tlačítkem po zadání dotazu na google.com, nebo v aplikaci Google. Na mobilu lze podle nápovědy přejít do režimu AI i doplňující otázkou pod rozbaleným Přehledem od AI, pokud jsou v dané zemi a jazyce dostupné obě funkce. Když nic z toho neuděláte a zůstanete u výsledků, nebo zvolíte filtr Web, režim AI nepoužíváte. Podrobně to rozebírá návod [Režim AI v Googlu](/blog/rezim-ai-google/)."
+  - q: "Jak vyřadit vlastní web z Přehledu od AI a režimu AI?"
+    a: "Nápověda Search Console popisuje přepínač Search generative AI v Nastavení s volbou Exclude. Podle ní je od 31. 8. 2026 dostupný všem webům a platí pro Přehled od AI, režim AI a generativní funkce v Discover. Nastavuje se pro celý web nebo jeho část, kterou máte v Search Console jako samostatnou vlastnost (třeba subdoménu nebo adresář), a vlastník podřízené vlastnosti může zvolit jinak. Vyřazení se obvykle projeví do 1–2 dnů, část obsahu může kvůli mezipaměti zůstat déle. Web pak z těchto funkcí nedostane návštěvnost ani zobrazení a nemůže se v nich ukázat jako preferovaný zdroj. Jednotlivé stránky nebo jejich části omezíte pravidly `nosnippet` a `data-nosnippet`, jakmile je Google načte a zpracuje."
   - q: "Jde vypnout AI odpovědi i v Bingu a v Copilotu?"
-    a: "Od června 2026 částečně ano. Generativní odpovědi v Bingu se jmenují Copilot Search a samostatný přepínač přímo v nastavení Bingu zatím není. Nejjednodušší cesta je připsat k dotazu operátor `-ai`, který odpovědi Copilota u daného hledání potlačí — nic se neinstaluje. Microsoft k tomu v červnu 2026 vydal doplněk prohlížeče Bing AI Search Choice (Chrome i Edge, zatím ve zkušebním provozu), který je vypne natrvalo; při instalaci si ale zároveň nastaví Bing jako výchozí vyhledávač a otevírá ho na nových kartách. V Edgi se postranní panel Copilota vypíná v Nastavení → Copilot a postranní panel. Jeden přepínač už nepokryje všechno: tlačítko na liště, panel na nové kartě a novější funkce Copilota se vypínají zvlášť."
+    a: "AI odpovědi v Bingu lze podle popisu doplňku Microsoftu vypnout na počítači. Microsoft začátkem června 2026 vydal doplněk Microsoft Bing AI Search Choice pro Chrome a Edge; přidá přepínač pro AI odpovědi v Bingu a zároveň nastaví Bing jako výchozí vyhledávač, v Chromu i na nových kartách. U jednoho hledání je podle červnových zpráv potlačí i operátor `-ai` připsaný k dotazu, v nápovědě Bingu ale popsaný není. V Edgi na počítači skryjete tlačítko Copilota na stránce `edge://settings/appearance/copilotAndSidebar`. Copilot na nové kartě a čtení obsahu stránek se podle nápovědy Microsoftu vypínají zvlášť, v Nastavení → Copilot a AI."
+  - q: "Je Seznam vyhledávání bez AI?"
+    a: "Vyhledávání Seznamu obsahuje také prvky s jazykovým modelem. Nápověda Seznamu ve výsledcích popisuje tři: přímou odpověď modelu, souhrn výsledků a souhrn trendujících témat. Vypínač pro uživatele v ní k 31. 10. 2026 není. Nápověda řeší jen to, jak majitel webu zakáže použití svého obsahu."
 ---
-import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
-import Persona from "../../components/blocks/Persona.astro";
-import AntiPersona from "../../components/blocks/AntiPersona.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 
-## Proč hledat <strong>„jak vypnout</strong> <span class="hl">AI Overviews“</span>
+## Dá se <span class="hl">AI v Googlu</span> vypnout? <strong>Ne, jen obejít</strong>
 
-Google AI Overviews (česky Přehled od AI) jsou v Česku aktivní od **20. 5. 2025**. Pro některé uživatele jsou užitečné — krátký souhrn nahoře nad výsledky šetří čas. Pro jiné jsou frustrující: panel zabírá horní polovinu SERPu, AI u některých dotazů odpovídá nepřesně a uživatel musí scrollovat pro klasické modré odkazy, které dříve byly hned dostupné.
+Nápověda Vyhledávání Google je v tom k 31. 10. 2026 jednoznačná: **Přehled od AI** (anglicky AI Overviews) je základní funkce vyhledávání, stejně jako informační panely, a **vypnout ji nejde**. Po hledání ale můžete vybrat **filtr Web**, který ukáže jen odkazy; nápověda ho uvádí pro počítač, Android i iPhone. Vypínač **režimu AI** nápověda neuvádí, popisuje jen, jak do něj vstoupit ([víc níž](#rezim-ai-vypinac-napoveda-neuvadi)).
 
-V Google Trends jsou u CZ v období 1/2025 → 4/2026 mezi rychle rostoucími dotazy u výchozího dotazu `ai overview` několik defenzivních formulací (`turn off ai overview google`, `how to disable ai overview google`). Jde o **indikativní signál zájmu**, ne o reprezentativní měření poptávky — z rychle rostoucích dotazů nelze odvozovat objem ani podíl dotazů, jen směr růstu.
+Vyberte, kterou funkci chcete omezit:
 
-Tento návod pokrývá **hlavní dnes používané metody**, jak AIO omezit nebo obejít — od nastavení v účtu po vyhledávání jen na webu a alternativní vyhledávače. Jako bonus: jak omezit použití obsahu v AIO pro vlastní web (pro publishers, kteří vidí pokles organické CTR u informačních non-brand dotazů). A pokud vás zajímá opačný směr — jak z AI vyhledávání naopak vytěžit viditelnost pro vlastní web — začněte [hlavním průvodcem SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/).
+| Co vám vadí | Co to je | Co s tím |
+|---|---|---|
+| Shrnutí, které se samo objeví nad výsledky | Přehled od AI | [filtr Web](#filtr-web-jedina-cesta-kterou-google-sam-uvadi), [jiný vyhledávač](#jiny-vyhledavac-ai-odpovedi-zkontrolujte-i-tam), neoficiálně [adresa s udm=14](#predvolba-udm14-jako-vychozi-vyhledavac-v-prohlizeci) |
+| Konverzace s AI místo seznamu odkazů | [režim AI](/ai-mode/) | nepřepínat se do něj, viz [návod k režimu AI](/blog/rezim-ai-google/#jak-rezim-ai-vypnout-zrusit-nebo-odstranit) |
+| AI ve vyhledávání na telefonu | Přehled od AI v aplikaci Google a prohlížeči | [filtr Web a jiný vyhledávač](#ai-v-googlu-na-telefonu-i-tam-pomuze-filtr-web) |
+| Asistent v telefonu | Gemini | samostatná aplikace, ne vyhledávání; tenhle návod ji neřeší |
+| Váš web jako zdroj AI odpovědí | obsah webu | [přepínač v Search Console](#pro-majitele-webu-prepinac-v-search-console-po-vlastnostech-ne-p) nebo `nosnippet` |
 
-> **Krátká odpověď** _(stav k 5/2026)_:
-> - **Globální vypnutí AI Overviews Google nenabízí.**
-> - **Reálně fungují 3 cesty pro uživatele:** Search Labs experiment (závislé na účtu), `&udm=14` URL parametr (režim jen s weby), nebo přepnutí na Brave Search / DuckDuckGo.
-> - **Pro vlastní web** lze jen omezovat použitelnost obsahu (`data-nosnippet`, `nosnippet`, `max-snippet:0`) — ne „vypnout AIO crawler“. Nasazujte selektivně po segmentaci dotazů, ne plošně.
+Co je Přehled od AI a jak funguje, rozebírá stránka [Přehled od AI](/prehled-od-ai/). Tady jen to, jak se ho zbavit. Postupy popisujeme podle nápověd Googlu, prohlížečů a vyhledávačů. Do přihlášeného Googlu ani do vašeho prohlížeče nevidíme, takže se rozhraní může lišit.
 
-## Metoda 1 — <strong>Search Labs</strong> <span class="hl">(experiment v Google účtu)</span>
+## Filtr <span class="hl">Web</span> — <strong>jediná cesta, kterou Google sám uvádí</strong>
 
-Nejjednodušší metoda pro přihlášené uživatele:
+Po hledání vyberte filtr **Web**. Podle nápovědy Googlu ukáže jen textové odkazy, bez Přehledu od AI a dalších prvků stránky s výsledky. Nápověda ho uvádí ve verzi pro počítač, Android i iPhone.
 
-1. Přihlaste se do Google účtu na **google.com**
-2. Otevřete **Search Labs**: https://labs.google.com/search nebo přes profilovou ikonu → Settings → Search Labs
-3. Najděte experiment **„AI Overviews and more in Search“**
-4. Klikněte na přepínač do polohy **Off**
+Nápověda ho popisuje jako volbu po provedení hledání. Jestli vám zůstane i u dalších dotazů, neuvádí. Neoficiální možnost, jak ho mít předvolený, popisuje část o [adrese s udm=14](#predvolba-udm14-jako-vychozi-vyhledavac-v-prohlizeci), včetně toho, jak omezeně je ověřená.
 
-**Funguje typicky na:** Chrome, Edge, Firefox, Safari (přihlášený Google účet, desktop).
+## <span class="hl">AI v Googlu na telefonu</span> — <strong>i tam pomůže filtr Web</strong>
 
-**Limit:** Pokud ve vašem účtu vidíte experiment „AI Overviews and more in Search“, vypnutí může omezit experimentální AI prvky. **Nejde ale o garantovaný globální vypínač všech AI Overviews** — Google je může zobrazovat i mimo Labs, dostupnost a efekt nastavení závisí na účtu, regionu a na tom, jak daleko je zpřístupňování funkce. Pokud Search Labs experiment nevidíte vůbec, postup pro vás nefunguje.
+Nápověda Googlu pro Android i iPhone píše totéž co pro počítač: Přehled od AI vypnout nejde, jen zvolit filtr Web. Starší návody, včetně předchozí verze tohoto článku, radily vypnout experiment v Search Labs. To Přehled od AI nevypne ([víc níž](#search-labs-historie-hosts-na-tyhle-rady-nespolehejte)).
 
-## Metoda 2 — <strong>`&udm=14` web filter</strong> <span class="hl">(URL parametr)</span>
+Co na telefonu funguje:
 
-Tento parametr přepíná výsledky do **webového režimu**, kde se typicky nezobrazují AI Overviews ani část dalších rozšířených SERP prvků (People Also Ask, featured snippets) — vrací jen klasické modré odkazy.
+- u konkrétního hledání zvolit **filtr Web**,
+- hledat v prohlížeči a nastavit v něm jiný výchozí vyhledávač. Na iPhonu s iOS 18.2 a novějším je volba podle nápovědy Applu v **Nastavení → Hledání → Vyhledávač**, na iOS 17 v **Nastavení → Safari → Vyhledávač**. Pokud v nabídce máte DuckDuckGo, vyberte ho a Search Assist vypněte v jeho nastavení.
 
-⚠️ **Důležité:** `&udm=14` **není oficiální dlouhodobá direktiva**. Jde o web filter, jehož chování může Google kdykoli změnit. Některé prvky SERPu se mohou lišit podle země a dotazu. Není to garantovaný permanentní vypínač.
+## Předvolba: <span class="hl">udm=14</span> jako <strong>výchozí vyhledávač v prohlížeči</strong>
 
-### Jak ho aktivovat jednorázově
+Parametr `udm=14` v adrese otevře výsledky rovnou ve webovém zobrazení, tedy bez Přehledu od AI. **Google ho nikde nedokumentuje**, je to neoficiální zkratka. Test jiného webu z 17. 10. 2026 ji potvrdil na německém Googlu v odhlášeném Chromu. Filtr Web podle téhož testu do adresy nově zapisuje `udm=web`. Pro český Google ani pro adresu `google.com` vlastní ověření nemáme. Kdyby `udm=14` přestal fungovat, klikněte na filtr Web a parametr si opište z adresního řádku.
 
-Po vyhledávání přidejte na konec URL:
+Jednorázově ho připíšete na konec adresy:
 
 ```
 https://www.google.com/search?q=váš+dotaz&udm=14
 ```
 
-### Jak ho nastavit jako výchozí
+Výchozí vyhledávač v prohlížeči platí pro **hledání z adresního řádku**. Když budete hledat přímo na stránce Googlu, parametr se nepřidá.
 
-Přidejte si vlastní vyhledávač v prohlížeči:
+**Chrome na počítači** (podle nápovědy Chromu):
 
-**Chrome / Edge / Brave:**
+1. **Nastavení** → **Vyhledávač** → **Spravovat vyhledávače a vyhledávání na webu**
+2. Napravo od **Vyhledávání na webu** vyberte **Přidat** a vyplňte:
+   - Název: `Google bez AI`
+   - Zkratka: `gw`
+   - Adresa: `https://www.google.com/search?q=%s&udm=14`
+3. U nové položky otevřete ikonu možností a zvolte **Nastavit jako výchozí**
 
-1. `Settings → Search engine → Manage search engines`
-2. `Add new search engine`:
-   - Name: `Google (web only)`
-   - Shortcut: `gw`
-   - URL: `https://www.google.com/search?q=%s&udm=14`
-3. Nastavit jako výchozí
+Nápověda Chromu upozorňuje, že v některých zemích nejde vlastní vyhledávání nastavit jako výchozí v profilu hosta. V pracovním nebo školním prohlížeči může vyhledávače spravovat administrátor.
 
-**Firefox:**
+**Firefox na počítači** umí od verze 140 přidat vlastní vyhledávač v **Nastavení → Vyhledávání** tlačítkem pro přidání vyhledávače pod seznamem vyhledávačů (podle poznámek k vydání Firefoxu 140). Adresa musí obsahovat `%s` na místě hledaného výrazu. Nový vyhledávač pak vyberete v nabídce **Výchozí vyhledávač** na téže stránce. Nastavení dostalo ve Firefoxu 152 nový vzhled, takže se popisky ve starších návodech můžou lišit. Ve spravované firemní nebo školní instalaci může přidávání vyhledávačů zakázat správce.
 
-1. Pravým tlačítkem na vyhledávací pole Googlu → `Add a Search Engine`
-2. Použijte URL výše
-3. V Settings → Search nastavit jako výchozí
+**Safari:** možnost zadat vlastní adresu vyhledávání nápověda Applu nepopisuje, vyhledávač se tam vybírá ze seznamu. Některá rozšíření třetích stran nabízejí přesměrování hledání na vlastní adresu; použití s `udm=14` jsme netestovali.
 
-Po aktivaci typicky vrací klasické modré odkazy bez AIO panelu — dokud Google chování parametru nezmění.
+Rozšíření prohlížeče, která Přehled od AI skrývají úpravou stránky, panel skrýt můžou. Chtějí ale přístup k obsahu stránek a po změnách Googlu můžou přestat fungovat, proto si ověřte autora a rozsah oprávnění.
 
-## Metoda 3 — <strong>Přepnutí</strong> <span class="hl">výchozího vyhledávače</span>
+## Jiný <span class="hl">vyhledávač</span> — <strong>AI odpovědi zkontrolujte i tam</strong>
 
-⚠️ **Pozor na záměnu prohlížeče a vyhledávače.** Brave a DuckDuckGo nabízejí jak prohlížeč, tak vlastní vyhledávač. Pokud nainstalujete **Brave prohlížeč** a ponecháte **Google jako výchozí vyhledávač**, AIO uvidíte dál — Brave prohlížeč používá vyhledávač, který si nastavíte. AIO se netýkají prohlížeče, ale vyhledávače.
+Přechod na jiný vyhledávač je nejspolehlivější cesta k výsledkům bez Přehledu od AI. Dvě věci ale platí vždycky:
 
-### Brave Search
+- **Měníte vyhledávač, ne prohlížeč.** Samotná změna prohlížeče Přehled od AI ve Vyhledávání Google nevypne. Rozhoduje, jaký vyhledávač v prohlížeči používáte.
+- **AI odpovědi mají dnes i alternativy** a u DuckDuckGo jsou podle nápovědy ve výchozím stavu zapnuté.
 
-**[Brave Search](https://search.brave.com)** je vlastní vyhledávač Brave. **Google AIO panel neimplementuje.** Brave Search má vlastní funkci AI odpovědí, která je volitelná a ve výchozím nastavení vypnutá — pokud chcete vyhledávání úplně bez AI funkcí, ověřte v nastavení.
+| Vyhledávač | AI odpovědi | Jak je vypnout |
+|---|---|---|
+| DuckDuckGo | Search Assist, ve výchozím stavu na frekvenci „sometimes“ | v nastavení vyhledávání zvolit „never“, nebo hledat na noai.duckduckgo.com |
+| Brave Search | „Answer with AI“, podle popisu nastavení se zobrazuje sama u části dotazů | přepínač Answer with AI v nastavení vyhledávání |
+| Bing | AI odpovědi ve výsledcích | na počítači doplněk Microsoft Bing AI Search Choice, u jednoho hledání podle červnových zpráv operátor `-ai` |
+| Seznam | tři prvky s jazykovým modelem ve výsledcích | nápověda vypínač pro uživatele neuvádí |
 
-### DuckDuckGo
+Co z toho plyne v praxi:
 
-**[DuckDuckGo](https://duckduckgo.com)** je tradiční vyhledávač zaměřený na soukromí. Google AIO neimplementuje. Má vlastní DuckAssist (shrnutí od AI u některých odpovědí z Wikipedie) — také se zapíná ručně.
+- **DuckDuckGo** je nejjednodušší volba. Podle nápovědy jsou na **noai.duckduckgo.com** vypnuté všechny AI funkce a obrázky vytvořené AI se z výsledků ve výchozím stavu filtrují, jak nejlépe to jde. Odfiltrování všech takových obrázků tedy zaručené není. DuckDuckGo k tomu nabízí doplněk pro Chrome a Firefox, který si tuhle verzi nastaví jako výchozí vyhledávač.
+- **Brave Search:** v datech, která stránka Brave 31. 10. 2026 poslala návštěvníkovi bez uložených nastavení, byla volba AI odpovědí zapnutá. Jde o jeden vzorek, ne o ověření všech zemí a zařízení. Předchozí verze tohoto článku tvrdila, že jsou odpovědi standardně vypnuté. To doložené není, takže přepínač si zkontrolujte.
+- **Bing:** doplněk Microsoft Bing AI Search Choice vydal Microsoft začátkem června 2026 a nabízí ho v obchodech pro Chrome i Edge na počítači. Podle popisu v obchodě přidá přepínač pro AI odpovědi v Bingu a zároveň nastaví Bing jako výchozí vyhledávač, verze pro Chrome i na nových kartách. Na Google ani jiné vyhledávače nepůsobí.
+- **Seznam** není česká cesta k vyhledávání bez AI. Nápověda ve výsledcích popisuje přímou odpověď jazykového modelu, souhrn výsledků a souhrn trendujících témat. Kde se Seznam AI ve vyhledávání objevuje, rozebírá článek [Seznam AI ve vyhledávání](/blog/seznam-cz-ai-vyhledavani/).
 
-### Ecosia / Startpage / Mojeek
+## <span class="hl">Režim AI</span> — <strong>vypínač nápověda neuvádí</strong>
 
-Další alternativy zaměřené na soukromí. Žádná z nich Google AIO panel neimplementuje. Mohou ale mít vlastní AI/odpovědní funkce — zkontrolovat v nastavení každé z nich.
+[Režim AI](/ai-mode/) je v Česku dostupný. V jeho nápovědě jsme k 31. 10. 2026 volbu vypnutí nenašli; popisuje jen, jak do něj vstoupit: na adrese google.com/ai, tlačítkem po zadání dotazu na google.com, nebo v aplikaci Google. Na mobilu do něj podle nápovědy vede i doplňující otázka pod rozbaleným Přehledem od AI, pokud jsou v dané zemi a jazyce dostupné obě funkce. Když nic z toho neuděláte a zůstanete u výsledků, nebo zvolíte filtr Web, režim AI nepoužíváte. Co dalšího funguje, včetně mazání historie konverzací, ukazuje [návod k režimu AI](/blog/rezim-ai-google/).
 
-## Metoda 4 — <strong>Mobil</strong> <span class="hl">(Android, iOS)</span>
-
-Na mobilu se **názvy položek liší podle verze Google app, účtu a regionu**. Na obou platformách funguje obecná cesta:
-
-1. Otevřete **Google app** (ne Safari nebo Chrome)
-2. Profilová ikona vpravo nahoře → **Settings**
-3. **Search Labs** → vyhledat experiment týkající se AI Overviews → vypnout
-
-Pokud Search Labs experiment nevidíte nebo postup nezabírá, spolehlivější workaround:
-
-- **Nastavit web filter** v prohlížeči (viz Metoda 2)
-- **Změnit výchozí vyhledávač** v prohlížeči na Brave Search nebo DuckDuckGo (`Safari → Settings → Search → Search Engine`; `Chrome Android → Settings → Search engine`)
-
-Discover, Assistant, Gemini a běžné Search **nemají jednotný veřejný „AI off“ přepínač** — pokud chcete omezit AI prvky širokoplošně, jdete přes vyhledávač, ne přes jednu položku v nastavení.
-
-## Metoda 5 — Pro vlastní web: <strong>snippet direktivy</strong> <span class="hl">selektivně</span>
-
-Pokud u **informačních non-brand dotazů** vidíte v GSC pokles organické CTR po nástupu AIO, můžete testovat omezení použití vybraných bloků obsahu. Dvě úrovně podle dopadu — **netestujte plošně, segmentujte podle typu dotazu**.
-
-### Měkká blokace — `data-nosnippet` na konkrétních blocích
-
-```html
-<div data-nosnippet>
-  Tento odstavec se nepoužije ve snippetech ani v AI Overviews.
-</div>
-```
-
-`data-nosnippet` může Googlu zabránit použít konkrétní HTML blok jako textový snippet a podle Google dokumentace také omezit použití daného bloku v AI Overviews. **Nejde o blokaci samostatného AIO crawleru** — Google AIO pracuje s Googlebotem a indexovaným obsahem, direktiva omezuje použití textu, ne crawl.
-
-Použít primárně na **úvodní krátkou odpověď** dlouhých návodů, kde bývá kompletní stručná odpověď.
-
-### Tvrdá blokace — `nosnippet` plošně
-
-```html
-<head>
-  <meta name="robots" content="nosnippet">
-</head>
-```
-
-Standardní zápis je `<meta name="robots" content="nosnippet">` (nebo Google-specific `<meta name="googlebot" content="nosnippet">`). **Omezí použití textového obsahu** ve snippetech a AI Overviews na celé stránce. **Není to odstranění stránky z výsledků ani kontrola všech AI funkcí.**
-
-⚠️ **Vedlejší dopad:** ztratíte také klasické featured snippets (pozice 0), které u některých dotazů přivádějí návštěvnost. **Před plošným nasazením je minimem pilotní test na vybraném segmentu URL** a vyhodnocení dopadu v GSC; ideálně test na úrovni skupin stránek a dotazů (ne celého webu).
-
-### Maximální omezení — `max-snippet:0`
-
-```html
-<meta name="robots" content="max-snippet:0">
-```
-
-Pevný limit na 0 znaků snippetu. Nastavení `max-snippet:0` výrazně omezuje možnost použít text stránky ve snippetech a může omezit i využití obsahu v AI Overviews. **Neznamená ale odstranění stránky z indexu** ani garanci nulové přítomnosti ve všech AI formátech.
-
-### Rozhodovací rámec pro snippet direktivy
-
-Snippet restrikce **nikdy nenasazujte plošně bez segmentace**:
-
-- **Testujte primárně u informačních non-brand dotazů**, kde AIO odpovídá bez nutnosti kliku a GSC ukazuje konkrétní pokles CTR
-- **Nepoužívejte plošně** na brandové, navigační, produktové a konverzní stránky bez samostatného vyhodnocení — u brandových dotazů je často cílem maximalizovat kontrolu SERPu, ne blokovat snippets, kvalitní brand snippet může být pro značku výhodnější než obranná blokace
-- **U YMYL obsahu (medicína, finance, právo)** zvažte dopad na důvěru v značku — chybějící snippet může poslat uživatele jinam
-- **U e-commerce** dopady často mírnější (intent je transakční, ne informační), ale stále testujte
-
-## Pozor na <strong>AIO „dopad“</strong> <span class="hl">bez metodiky</span>
-
-V CZ marketingových diskusích kolují příklady „AIO snížila návštěvnost X webu o YY %“. Než z nich vyvodíte závěry pro svůj web, ověřte:
-
-- **Zdroj dat** (GSC, GA4, Similarweb odhad, Ahrefs) — odhady z third-party nástrojů jsou aproximace, ne přesná čísla
-- **Kontrola sezónnosti** (porovnání period rok-na-rok, ne měsíc-na-měsíc)
-- **Kontrola jiných změn** (core update, redesign, technické změny, linkbuilding)
-- **Dotazová úroveň v GSC** — pokles na úrovni domény může pocházet z jiných důvodů než AIO; segmentace na non-brand vs brand a na úrovni intent (informační vs transakční) je nezbytná
-
-**Korelace mezi AIO a poklesem návštěvnosti není automaticky kauzalita.** Rozhodnutí o snippet restrikcích by mělo vycházet z dat v GSC na úrovni dotazů a typů vstupních stránek, ne z agregovaných odhadů třetích stran.
-
-## Které metody <span class="hl">fungují</span> a <strong>kdy</strong>
-
-| Metoda | Desktop | Mobil | Spolehlivost | Jednoduchost |
-|---|---|---|---|---|
-| Search Labs Off | ⚠️ podle účtu | ⚠️ podle účtu | částečná | ⭐⭐⭐⭐ |
-| `&udm=14` web filter | ✅ | ⚠️ omezený | aktuálně ano, oficiálně negarantováno | ⭐⭐⭐ |
-| Brave Search | ✅ | ✅ | vysoká | ⭐⭐⭐⭐⭐ |
-| DuckDuckGo | ✅ | ✅ | vysoká | ⭐⭐⭐⭐⭐ |
-| Vlastní web `nosnippet` | n/a | n/a | omezuje použití textu, ne přítomnost stránky | ⭐⭐ |
-
-**Doporučení podle profilu uživatele:**
-
-- **Běžný uživatel** → vyzkoušet Search Labs experiment + Brave nebo DuckDuckGo jako záloha
-- **Power user, chce klasický Google** → `&udm=14` webový filtr jako výchozí vyhledávání v prohlížeči (s vědomím, že Google může chování změnit)
-- **Důraz na soukromí** → Brave Search nebo DuckDuckGo trvale (zkontrolovat, které AI funkce jsou zapnuté)
-- **Vydavatel u informačních nebrandových dotazů s prokázaným poklesem CTR** → `data-nosnippet` selektivně po segmentaci, A/B test
-- **Brand / e-commerce / YMYL** → snippet direktivy nepoužívat plošně bez separátní analýzy dopadu na brand SERP
-
-## Co se <strong>nedoporučuje</strong>
+## <span class="hl">Search Labs, historie, hosts</span> — <strong>na tyhle rady nespoléhejte</strong>
 
 <MistakeGrid>
-  <Mistake num="01" title="Rozšíření prohlížeče na blokování AIO" fix="Použijte transparentnější web filter udm=14 — bez nutnosti oprávnění v prohlížeči navíc.">
-    Typicky AIO skrývají lokálně přes CSS/DOM úpravy. Spolehlivost kolísá s úpravami Google SERPu a vyžadují oprávnění v prohlížeči — řešte reputaci autora, rozsah permissions a bezpečnost.
+  <Mistake num="01" title="Vypnout „AI ve Vyhledávání“ v Search Labs" fix="Tím opustíte jen experimenty. Přehled od AI zůstane.">
+    Podle nápovědy Googlu je to přihláška do testovacího prostředí pro nové AI funkce, ze kterého chodí e-maily o nových experimentech. Experiment „AI Overviews and more“, o kterém píšou starší návody, v nápovědě Googlu dnes není.
   </Mistake>
-  <Mistake num="02" title="Hosts file modifikace" fix="Nikdy neblokujte gemini.google.com přes hosts — rozbijete celé Google, ne jen AIO.">
-    Staré rady doporučují blokovat `gemini.google.com`. Tím rozbijete celé funkce Googlu, ne jen AIO. Vedlejší dopady jsou nepředvídatelné.
+  <Mistake num="02" title="Vypnout historii v Mojí aktivitě" fix="Změní, co se ukládá do účtu. Přehled od AI zůstane.">
+    Podle nápovědy tím zastavíte ukládání budoucích hledání, která děláte přihlášení, do účtu Google a jejich použití ke zlepšování AI modelů vyhledávání. Google ale může dál používat agregovaná anonymizovaná data i hledání bez přihlášení a dřív uloženou historii vypnutí samo nesmaže. Na to, co se zobrazuje nad výsledky, vliv nemá.
   </Mistake>
-  <Mistake num="03" title="Hledat globální vypínač AI Off" fix="Neexistuje. Search Labs experiment je nejblíž — a ani ten není garantovaný.">
-    Ve Google Settings žádný globální vypínač AI Overviews není. Hledání hlavního vypínače je ztráta času.
-  </Mistake>
-  <Mistake num="04" title="Žádost o vypnutí na Google supportu" fix="Vypnutí pro konkrétní účet Google nenabízí — řešte přes web filter nebo jiný vyhledávač.">
-    AIO je strategická feature Google. Support pro ni individuální vypnutí neposkytuje.
+  <Mistake num="03" title="Blokovat Gemini v souboru hosts" fix="Doložené to nemáme. Držte se filtru Web.">
+    Starší návody radí zablokovat `gemini.google.com`. Přehled od AI je podle nápovědy funkce Vyhledávání Google a doklad, že by ho tahle blokace odstranila, nemáme.
   </Mistake>
 </MistakeGrid>
 
-## <strong>Souhrn</strong> ve <span class="hl">5 řádcích</span>
+## <span class="hl">AI v Googlu</span> — <strong>shrnutí ve čtyřech bodech</strong>
 
-1. **Garantovaný globální vypínač Google AIO neexistuje** — Google ho nedává.
-2. **Search Labs experiment** — pokud ho ve vašem účtu vidíte, vypnutí může omezit AI prvky. Není to ale globální vypínač.
-3. **`&udm=14` web filter** je aktuálně nejstabilnější workaround pro klasický Google bez AIO. Není oficiální direktiva — Google může chování změnit.
-4. **Brave Search nebo DuckDuckGo** jako výchozí vyhledávač = nejspolehlivější cesta bez Google AIO.
-5. **Pro vlastní web** snippet direktivy **selektivně po segmentaci dotazů**, ne plošně. Před implementací A/B test, rozdělení na brandové a nebrandové dotazy, kontrola dopadu na featured snippets.
+1. **Přehled od AI vypnout nejde**, nápověda Googlu to říká výslovně pro počítač, Android i iPhone. Vypínač režimu AI v nápovědě také není.
+2. **Filtr Web** je jediná cesta, kterou Google uvádí. Nápověda ho popisuje jako volbu po hledání.
+3. **Adresa s `&udm=14`** je neoficiální možnost pro hledání z adresního řádku. Doložená je jen testem na německém Googlu a může přestat fungovat.
+4. **Jiný vyhledávač** pomůže, jen i tam AI odpovědi zkontrolujte. DuckDuckGo je má ve výchozím stavu zapnuté, u Brave Search byly zapnuté v našem vzorku a nápověda Seznamu vypínač pro uživatele neuvádí.
 
-## Metodika pro vydavatele — <strong>jak rozhodnout</strong> o snippet politice
+## Pro majitele webu: <span class="hl">přepínač v Search Console</span> — <strong>po vlastnostech, ne po stránkách</strong>
 
-Pokud řešíte AIO jako provozovatel webu, ne jako uživatel, doporučujeme proces v 5 krocích, ne plošné nasazení:
+Od 31. 8. 2026 je podle nápovědy Search Console přepínač **Search generative AI** (tak ho jmenuje anglická nápověda) dostupný všem webům. Nápověda ho umisťuje do Nastavení. Rozhoduje o třech funkcích: Přehledu od AI, režimu AI a generativních funkcích v Discover. Google ho 21. 10. 2026 doplnil mezi existující možnosti do dokumentace o tom, co webu dovolíte ve vyhledávání ukázat, a vede ho tam jako nastavení pro celý web.
+
+Přepínač má podle nápovědy tři volby: **Include** (výchozí, obsah se v AI funkcích může objevit jako odkaz i jako podklad odpovědi), **Exclude** (odkazy ani obsah webu se v nich neobjeví a **web z nich nedostane žádnou návštěvnost ani zobrazení**) a **Inherit from parent** (vlastnost přebírá volbu nadřazené vlastnosti, výchozí u podřízených).
+
+Co z nápovědy plyne pro rozhodnutí:
+
+- **Nastavuje se po vlastnostech, ne po stránkách.** Vlastnost je web nebo jeho část, kterou máte v Search Console zvlášť: doména, subdoména, nebo adresář s předponou adresy (například `https://www.example.cz/blog/`). Volba platí i pro části, které ji dědí.
+- **Vlastník podřízené vlastnosti může zvolit jinak.** Exclude u domény tedy samo nezaručí vyřazení všech jejích částí. Před vyřazením celého webu zkontrolujte, jestli některá podřízená vlastnost nemá vlastní nastavení.
+- **Konkurence v AI odpovědích zůstane.** Podle Googlu se tam dál objevuje obsah jiných webů a může vypadat podobně jako váš.
+- **Nejde o signál pro řazení** v ostatních částech vyhledávání a **netýká se tréninku modelů**, na ten je [Google-Extended](/slovnik/google-extended/). Přepínač také nemění vaši účast v Merchant Center a Google Ads a obsah webu může dál pomáhat Vyhledávání jako celku, třeba s porozuměním jazyku.
+- **Vyřazený web nemůže být [preferovaným zdrojem](/blog/preferovane-zdroje-google/)** v režimu AI ani v Přehledu od AI.
+- **Projeví se obvykle do 1–2 dnů**, část obsahu může kvůli mezipaměti zůstat déle.
+
+Proč přepínač vznikl a co dalšího neřeší, rozebírá článek [Blokovat AI odpovědi Googlu?](/blog/blokovat-ai-odpovedi-gsc/). Jak se liší od zákazů pro ChatGPT a Seznam, ukazuje přehled [Co přesně vypne který opt-out z AI](/blog/co-vypne-ktery-opt-out/).
+
+## Jen část webu: <span class="hl">nosnippet a data-nosnippet</span> — <strong>omezí i klasický úryvek</strong>
+
+Pro jednotlivé stránky a odstavce zůstávají pravidla, kterými Googlu omezíte úryvky a použití textu. Podle specifikace Googlu (aktualizace 24. 3. 2026) platí `nosnippet` pro všechny podoby výsledků, výslovně včetně Přehledu od AI a režimu AI, a obsah stránky pak nesmí sloužit jako jejich přímý podklad:
+
+```html
+<meta name="robots" content="nosnippet">
+```
+
+- **`max-snippet`** omezí délku úryvku a podle téže specifikace i to, kolik obsahu smí jít do Přehledu od AI a režimu AI. Hodnota `0` znamená žádný úryvek, kladné číslo jen omezí počet znaků. Limit neplatí tam, kde jste Googlu použití obsahu povolili zvlášť, třeba licenční smlouvou nebo strukturovanými daty na stránce.
+- **`data-nosnippet`** vyřadí z úryvků jen text označeného bloku, například `<div data-nosnippet>…</div>`. Specifikace ho povoluje na prvcích `span`, `div` a `section`. U prvků, které už na stránce jsou, ho nepřidávejte ani neodebírejte JavaScriptem; když nový prvek vytváříte JavaScriptem, vložte ho s atributem hned od začátku. Strukturovaná data uvnitř takového bloku zůstávají pro výsledky použitelná. Stránka Googlu o AI funkcích ho jmenuje mezi ovládáními, kterými omezíte, co se z vašich stránek ve vyhledávání ukáže.
+
+**Pravidla fungují, jen když je Google přečte.** Vyhledávací robot musí mít ke stránce přístup (stránka nesmí být zablokovaná v robots.txt), znovu ji projít a změnu zpracovat. Podle dokumentace Googlu může opětovné procházení trvat několik dní až několik měsíců. Co Google na stránce opravdu viděl, ukáže kontrola adresy URL v Search Console.
+
+**Vedlejší dopad:** `nosnippet` a `max-snippet:0` vezmou stránce i klasický úryvek ve výsledcích, včetně doporučeného úryvku, `data-nosnippet` totéž udělá s označeným blokem. Kladná hodnota `max-snippet` úryvek jen zkrátí. Proto pravidla nenasazujte na celý web najednou.
+
+Porovnání možností omezení obsahu:
+
+| Možnost | Rozsah | Co omezí | Vedlejší dopad |
+|---|---|---|---|
+| Přepínač v Search Console | vlastnost: web, subdoména, adresář | Přehled od AI, režim AI, generativní Discover | žádná návštěvnost ani zobrazení z těchto funkcí, web nemůže být preferovaným zdrojem v Přehledu od AI a režimu AI |
+| `nosnippet`, `max-snippet:0` | stránka | úryvky ve všech výsledcích včetně AI funkcí | stránka ztratí i klasický úryvek |
+| `max-snippet` s kladným číslem | stránka | délku úryvku a množství obsahu pro AI funkce | úryvek se zkrátí |
+| `data-nosnippet` | část stránky | text daného bloku v úryvcích | blok chybí i v klasickém úryvku |
+| [Google-Extended](/slovnik/google-extended/) | pravidlo v robots.txt (celý web nebo vybrané cesty) | trénink budoucích modelů Gemini a použití obsahu jako podkladu odpovědí v aplikacích Gemini a ve Vertex AI | zobrazení ve Vyhledávání, v Přehledu od AI ani v režimu AI neovlivní |
+
+## <span class="hl">Vyřazení webu z AI</span> — <strong>nejdřív zkontrolujte data</strong>
+
+Nápověda Search Console k přepínači sama doporučuje nejdřív se podívat do **Přehledu výkonu v generativní AI**. Podle jeho nápovědy ukazuje zobrazení v Přehledu od AI a v režimu AI dohromady a jde ho rozdělit podle stránek, zemí, dnů a zařízení. Data z experimentů v Search Labs Search Console nezahrnuje. Kliky ani pozici v přehledu nápověda neuvádí; Google slibuje, že metriky časem doplní. Generativní funkce v Discover mají samostatný přehled. Kliky z AI funkcí se dál počítají v běžném přehledu výkonu, u typu vyhledávání Web. Co přehled ukáže a co ne, popisuje článek o [přehledu generativní AI v Search Console](/blog/gsc-ai-segmenty-mereni/).
 
 <Stepper tone="aio" steps={[
-  { title: "Vybrat skupinu URL", desc: "Typicky 10–30 informačních non-brand stránek se srovnatelným typem dotazu (how-to průvodce, definiční články, srovnání). Nemíchat s brand a transakčními URL." },
-  { title: "Vyfiltrovat dotazy v GSC", desc: "Performance → Queries, filtr na brandové a nebrandové dotazy. Pokles CTR u non-brand informačních dotazů se stabilními nebo rostoucími zobrazeními = indikátor." },
-  { title: "Výchozí metriky", desc: "Prokliky, zobrazení, průměrná pozice a CTR za 4–8 týdnů před testem — zachytí sezónnost." },
-  { title: "Nasadit jen na segment", desc: "data-nosnippet na úvodní krátkou odpověď 5–10 vybraných URL, ne plošně. Sledovat 30–60 dní." },
-  { title: "Vyhodnotit po týdnech", desc: "Porovnání výchozího stavu se stavem po testu, kontrola skladby brandových dotazů (brand snippet je často výhoda, ne ztráta), vyhodnotit, jestli se pokles CTR zlepšil bez vedlejších škod." }
+  { title: "Zjistěte, kde se v AI ukazujete", desc: "V Přehledu výkonu v generativní AI si vypište stránky se zobrazeními. Když se vám přehled nezobrazí, web podle nápovědy obvykle nemá v těchto funkcích dost zobrazení. To ale neznamená, že se v nich váš obsah vůbec neobjevuje." },
+  { title: "Rozdělte dotazy a změřte výchozí stav", desc: "V běžném přehledu výkonu oddělte dotazy se jménem značky od ostatních a informační od nákupních. Zapište si prokliky, zobrazení, pozici a míru prokliku za 4–8 týdnů před změnou." },
+  { title: "Zkuste nejdřív jen část", desc: "data-nosnippet nebo nosnippet na 5–10 vybraných stránkách, případně přepínač u jednoho adresáře vedeného jako samostatná vlastnost. Sledujte 30–60 dní od chvíle, kdy Google změnu prokazatelně zpracoval." },
+  { title: "Vyhodnoťte proti výchozímu stavu", desc: "Porovnejte se stejně dlouhým obdobím před změnou a zkontrolujte dotazy se jménem značky. Úryvek u značkového dotazu bývá spíš výhoda než ztráta." }
 ]} />
 
-<AntiPersona title="Co NEDĚLAT jako vydavatel">
+Pokles návštěvnosti v době, kdy se objevil Přehled od AI, ještě neznamená, že ho způsobil. Ověřte, jestli ve stejné době neproběhla aktualizace algoritmu, změna webu nebo sezónní výkyv, a odhady z placených nástrojů berte jako přibližné. Vyřazení může stát návštěvnost z AI funkcí a konkurence v nich zůstane, proto nevyřazujte celý web bez pohledu do dat.
 
-- Nasadit `nosnippet` plošně na celý blog bez segmentace
-- Vyhodnocovat dopad jen na úrovni relací (smíchá brand a non-brand)
-- Brát Similarweb / Ahrefs odhady jako důkaz dopadu AIO (jsou to aproximace, ne přesná data)
-- Ignorovat skladbu brandových dotazů — chybějící brand snippet může poslat uživatele jinam, ne přivést
+## <span class="hl">Audit AI viditelnosti</span> — <strong>plán úprav pro váš web</strong>
 
-</AntiPersona>
+Zvažujete vyřazení vlastního webu z AI odpovědí? [Audit AI viditelnosti](/audit/) zkontroluje, co o vašem webu dnes říkají ChatGPT, Perplexity, Přehled od AI a režim AI, jestli k němu mají jejich roboti přístup a kde má obsah mezery, a navrhne pořadí úprav. Stojí 3 600 Kč bez DPH. Dělá ho agentura [Sniper Design](https://www.sniperdesign.cz/), která tenhle web provozuje.
 
-## Pro koho je <strong>tento článek</strong>
+## <span class="hl">AI ve vyhledávání</span> — <strong>další návody podle tématu</strong>
 
-<PersonaGrid>
-  <Persona icon="🔍" title="Uživatel: Google bez AIO" tone="aio">
-    Chcete dál používat Google, jen bez panelu. Cesta: Search Labs experiment + `&udm=14` webový filtr jako výchozí vyhledávač.
-  </Persona>
-  <Persona icon="🛡️" title="Uživatel: minimum AI prvků" tone="aio">
-    Nechcete řešit Google účet. Přepněte výchozí vyhledávač na Brave Search nebo DuckDuckGo — Google AIO panel nemají.
-  </Persona>
-  <Persona icon="📊" title="SEO a obsahový tým" tone="aio">
-    Řešíte pokles CTR po nástupu AIO. Snippet direktivy selektivně + audit na úrovni dotazů v GSC (brandové vs. nebrandové).
-  </Persona>
-  <Persona icon="📰" title="Vydavatel, magazín, obsahový web" tone="aio">
-    Mini-metodika výše + segmentace brand/non-brand. Obranná snippet politika podle typu obsahu, ne plošně.
-  </Persona>
-  <Persona icon="🛒" title="E-shopy a sběr poptávek" tone="aio">
-    Nejdřív ověřte, jestli je AIO reálný problém — u transakčního intentu se panel typicky negeneruje.
-  </Persona>
-  <Persona icon="⚖️" title="Regulované obory (YMYL)" tone="aio">
-    Opatrnější přístup. Zvažte dopad na důvěru ve značku a posuzujte individuálně, ne paušálně.
-  </Persona>
-</PersonaGrid>
+- [Přehled od AI](/prehled-od-ai/) — co to je, kdy se zobrazuje a jak v něm být vidět (v Česku od 20. 5. 2025)
+- [Režim AI v Googlu](/blog/rezim-ai-google/) — jak ho zapnout, opustit a smazat historii konverzací
+- [Blokovat AI odpovědi Googlu?](/blog/blokovat-ai-odpovedi-gsc/) — přepínač v Search Console podrobně
+- [Co přesně vypne který opt-out z AI](/blog/co-vypne-ktery-opt-out/) — Google, ChatGPT a Seznam vedle sebe
+- [Preferované zdroje v Googlu](/blog/preferovane-zdroje-google/) — o co vyřazený web přijde v Přehledu od AI a režimu AI
+- [Seznam AI ve vyhledávání](/blog/seznam-cz-ai-vyhledavani/) — AI prvky ve výsledcích Seznamu
+- [Zákaz AI u Seznamu](/blog/seznam-extended-opt-out/) — jak web vyřadit z AI funkcí Seznamu
+- [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) — opačný pohled: jak v AI odpovědích naopak být vidět
 
-## Kde si nechat <strong>poradit</strong>
+**Zdroje** (vše načteno 31. 10. 2026):
 
-Tento web provozuje agentura **[Sniper Design](https://www.sniperdesign.cz/)** — pokud řešíte AIO jako obchodní problém, ne jen jako uživatelské nastavení, [nabízíme 3 typy auditu](/audit/):
-
-- **Pro vydavatele a obsahové weby** — audit na úrovni dotazů v GSC, rozdělení na brandové a nebrandové, návrh obranné snippet politiky podle typu obsahu
-- **Pro e-commerce** — ověření, jestli je AIO reálný problém, nebo jen šum v agregovaných datech (často transakční intent AIO panel negeneruje)
-- **Pro SEO a obsahové týmy** — pokud řešíte pokles CTR po nástupu AIO, navrhneme postup, kde se nejdřív testuje na vybraných URL a teprve pak nasazuje na vybraných URL a vyhodnotíme dopad
-
-Tuhle problematiku řešíme u vydavatelů, obsahových webů a projektů zaměřených na sběr poptávek. **U klientů v informačním segmentu jsme po segmentaci typicky zjistili, že pokles CTR se týkal jen části non-brand how-to dotazů, ne celého webu** — což zásadně mění prioritu obrany.
-
-První [konzultace](/kontakt/) nezávazná.
-
-## <strong>Související</strong>
-
-- [AIO](/aio/) — co AIO je a jak funguje, proč je pro SEO důležité
-- [Rozhodovací matice](/rozhodovaci-matice/) — kdy přítomnost v AIO pomáhá (podíl citací) a kdy škodí (hledání bez prokliku)
-- [Praktický postup](/prakticky-postup/) — implementační rámec pro publishers a obsahové weby
-- [AI search trendy Česko 2026](/blog/ai-search-trendy-cesko-2026/) — co je měřitelné a co je proxy v AIO datech
-- [AI viditelnost na reálných datech](/ai-viditelnost/) — opačný pohled: jak v AI odpovědích naopak být vidět (200 000 zobrazení za 2 měsíce)
-- [Série SEO pro e-shop v éře AI](/serie/ai-seo-pro-eshopy/) — deset dílů pro e-shopy: produktové stránky, kategorie, feed a nákupní agenti
+- **Google pro uživatele:** nápověda Vyhledávání Google k [Přehledu od AI](https://support.google.com/websearch/answer/14901683?hl=cs) (verze pro počítač, Android a iPhone) a k [režimu AI](https://support.google.com/websearch/answer/16011537?hl=en), [oznámení spuštění v Česku](https://blog.google/intl/cs-cz/produkty-sluzby/objevujte-ziskavejte-odpovedi/google-spousti-v-cesku-prehledy-od-ai/) (blog Googlu, 20. 5. 2025). Parametr `udm=14` Google nedokumentuje; vycházíme z testu jiného webu ze 17. 10. 2026.
+- **Nastavení prohlížečů:** [nápověda Chromu](https://support.google.com/chrome/answer/95426?hl=cs), [poznámky k vydání Firefoxu 140](https://www.firefox.com/en-US/firefox/140.0/releasenotes/), nápověda Microsoftu k [vyhledávači v Edgi](https://support.microsoft.com/cs-cz/edge/change-your-default-search-engine-in-microsoft-edge) a [ke Copilotu v Edgi](https://support.microsoft.com/en-us/edge/copilot/getting-started-with-copilot-in-microsoft-edge), [nápověda Applu k vyhledávači na iPhonu](https://support.apple.com/cs-cz/guide/iphone/iphb719b43de/ios).
+- **Jiné vyhledávače:** nápověda DuckDuckGo k [Search Assist](https://duckduckgo.com/duckduckgo-help-pages/results/ai-assisted-answers) a [noai.duckduckgo.com](https://duckduckgo.com/duckduckgo-help-pages/ai-features/about-noaiduckduckgocom), [Microsoft Bing AI Search Choice v Chrome Web Store](https://chromewebstore.google.com/detail/microsoft-bing-ai-search/mcaabonmnmphidjfohjkdobemneigopa), [nápověda Seznamu k AI prvkům ve výsledcích](https://o-seznam.cz/napoveda/vyhledavani/vysledky-vyhledavani/vychytavky/).
+- **Vlastní web:** nápověda Search Console k [přepínači Search generative AI](https://support.google.com/webmasters/answer/16908024?hl=en) a k [Přehledu výkonu v generativní AI](https://support.google.com/webmasters/answer/16984139?hl=cs), [Control what you share with Google](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share) a [záznam změn dokumentace](https://developers.google.com/search/updates) (21. 10. 2026), [specifikace robots meta tagů](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag), [AI funkce a váš web](https://developers.google.com/search/docs/appearance/ai-features), [prohledávače Googlu a Google-Extended](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers), [preferované zdroje](https://developers.google.com/search/docs/appearance/preferred-sources).
