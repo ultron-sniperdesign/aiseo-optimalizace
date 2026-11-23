@@ -1,6 +1,6 @@
 ---
 title: "Může web vydělávat na AI robotech? Zatím spíš ne"
-description: "Cloudflare staví infrastrukturu pro placený přístup k obsahu, API i datům. Co z toho dnes reálně jde a jaké výchozí nastavení čeká nově zakládané domény."
+description: "Cloudflare staví infrastrukturu pro placený přístup k obsahu, API i datům. Co z toho dnes reálně jde a na co si dát pozor při blokaci tréninku."
 answer: "Nástroje na zpoplatnění přístupu AI robotů existují, ale běžně dostupné ani doložené nejsou. Monetization Gateway má Cloudflare na čekací listině, model Pay Per Use testuje s pěti partnery a žádné vyplacené částky ve svých materiálech neuvádí. Platí se navíc ve stablecoinech."
 slug: "vydelavat-na-ai-robotech"
 category: "analysis"
@@ -8,7 +8,7 @@ tags:
   - "technicke-zaklady"
   - "strategie"
 published: "2026-08-01"
-updated: "2026-08-02"
+updated: "2026-11-23"
 keywords:
   - "vydělávat na ai robotech"
   - "pay per crawl"
@@ -26,7 +26,7 @@ faq:
   - q: "Kolik se tím dá vydělat?"
     a: "Nevím a nedohledal jsem to. Kolují odhady v desítkách až stovkách tisíc dolarů měsíčně pro velké weby, ale v blogovém oznámení Cloudflare ani v jeho tiskové zprávě žádné takové číslo není a není u něj řečeno, čí je to odhad."
   - q: "Co se tedy mění doopravdy?"
-    a: "Od 15. září 2026 mají podle Cloudflare nově zakládané domény jiné výchozí nastavení: u stránek s reklamou zůstane povolená kategorie Search, ale zablokují se kategorie Training a Agent. Stávajícím doménám se podle změnového logu nic samo nepřepne — vlastní nastavení si ale můžete zvolit kdykoli."
+    a: "U Cloudflare doopravdy platí hlavně tohle: blokace Training zasáhne u každé domény i smíšené roboty, kteří slouží zároveň vyhledávání, podle oznámení z července 2026 i Googlebota. Trénink proto omezujte volbou Disallow se zapnutým Bot Preference Sync, která smíšené roboty z blokace na Cloudflare vynechává; u nich zůstane jen žádost v robots.txt. Jiné výchozí nastavení nových domén od 15. září Cloudflare v červenci ohlásil; dokumentace aktualizovaná 2. 11. 2026 ale u nových domén uvádí všechny kategorie povolené."
   - q: "Co mám dělat místo řešení monetizace?"
     a: "Zjistit si, kolik vás roboti opravdu procházejí a co vám z toho chodí zpátky. Bez toho čísla nemá smysl řešit ani blokování, ani ceník. Teprve pak se rozhodovat, jestli část robotů pustit, nebo ne."
 ---
@@ -113,16 +113,16 @@ Nedohledal jsem ho ani v blogovém oznámení Cloudflare, ani v jeho tiskové zp
 
 ## Co se naopak mění doopravdy
 
-Zatímco placení je zatím na čekací listině, jedna věc má konkrétní datum.
+Placení zatím běžně dostupné není, jedna ohlášená změna ale měla konkrétní datum.
 
-Podle Cloudflare mají od **15. září 2026** nově zakládané domény jiné výchozí nastavení: u stránek s reklamou zůstane povolená kategorie Search, ale zablokují se kategorie Training a Agent. Smíšení roboti, kteří kombinují Search a Training, spadnou pod blokaci tréninku.
+Cloudflare v červenci ohlásil, že od **15. září 2026** dostanou nově zakládané domény jiné výchozí nastavení: u stránek s reklamou zůstane povolená kategorie Search, ale zablokují se kategorie Training a Agent. Dokumentace aktualizovaná 2. 11. 2026 ale u nových domén uvádí všechny kategorie povolené. Podstatnější je druhá část oznámení: smíšení roboti, kteří kombinují Search a Training, spadnou pod blokaci tréninku u každé domény, která Training blokuje, a podle oznámení mezi ně patří Googlebot, Applebot a Bingbot.
 
 <Insight tone="warn" icon="↻" label="Opraveno 2026-08-02">
-V první verzi tohohle článku z 1. srpna stálo, že stávající zákazníci na bezplatném tarifu dostanou nové výchozí nastavení automaticky. **To bylo špatně.** Vzal jsem to z automatického shrnutí tiskové zprávy Cloudflare, aniž bych to ověřil ve změnovém logu — a ten říká jasně, že se nové výchozí hodnoty týkají **nově zakládaných domén**. Existující doméně se 15. září nic samo nepřepne.
+V první verzi tohohle článku z 1. srpna stálo, že stávající zákazníci na bezplatném tarifu dostanou nové výchozí nastavení automaticky. **To bylo špatně.** Vzal jsem to z automatického shrnutí tiskové zprávy Cloudflare, aniž bych to ověřil ve změnovém logu — a ten říká jasně, že se nové výchozí hodnoty týkají **nově zakládaných domén**. Blokace smíšených robotů se ale podle oznámení týká i existujících domén, pokud blokují Training (doplněno 23. 11. 2026).
 </Insight>
 
 <Insight tone="accent" icon="◆" label="Tohle je ta praktická část">
-Rozdíl je zásadní: k placení se musíte přihlásit a zatím nikam nevede. **Změna výchozího nastavení se od 15. září týká jen nově zakládaných domén; existující doméně se nic samo nepřepne.** Prakticky: máte-li web na Cloudflare už dnes, zkontrolujte si nastavení ručně; chystáte-li novou doménu po 15. září, počítejte s jinými výchozími hodnotami. Rozebíráme to v článku o [nastavení AI robotů na Cloudflare](/blog/cloudflare-ai-bot-blocking/).
+Rozdíl je zásadní: k placení se musíte přihlásit a Pay Per Use je od 30. 9. 2026 teprve v betě. **Ohlášená změna výchozího nastavení se týkala jen nově zakládaných domén a dokumentace aktualizovaná 2. 11. 2026 ji u nich neuvádí; blokace smíšených robotů se ale týká každé domény, která blokuje Training.** Prakticky: máte-li web na Cloudflare, zkontrolujte, jak máte nastavený Training. Trénink omezujte volbou Disallow se zapnutým Bot Preference Sync; ta smíšené roboty z blokace na Cloudflare vynechává, takže u nich zůstane jen žádost v robots.txt. Rozebíráme to v článku o [nastavení AI robotů na Cloudflare](/blog/cloudflare-ai-bot-blocking/).
 </Insight>
 
 ## Rozhodovací rámec
@@ -182,6 +182,6 @@ Kdo si chce nechat možnost do budoucna, může se na čekací listinu přihlás
 
 **Pro běžný český web z toho dnes není doložený příjem ani běžně dostupný způsob nasazení.** Čekací listina, test s pěti zahraničními partnery, platba ve stablecoinech a nula dohledaných vyplacených částek — to zatím nevypadá jako použitelná podnikatelská příležitost, spíš jako věc k dalšímu sledování.
 
-**Co je reálné, je změna výchozího nastavení v září** — ale jen pro nově zakládané domény. Existující web si nastavení musí zvolit sám.
+**Co je reálné, je riziko při blokaci tréninku:** blokace Training zasáhne i smíšené roboty, podle oznámení Cloudflare z července 2026 i Googlebota. Trénink proto omezujte volbou Disallow se zapnutým Bot Preference Sync; smíšeným robotům zůstane jen žádost v robots.txt.
 
 Než začnete řešit ceník, zjistěte si vlastní čísla — [kolik vás AI roboti projdou na jednu návštěvu zpět](/blog/ai-roboti-zatez-webu/). To je základní podklad, bez kterého se o dalším postupu rozhoduje naslepo.

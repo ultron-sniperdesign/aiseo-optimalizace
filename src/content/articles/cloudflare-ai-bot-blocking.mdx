@@ -1,34 +1,38 @@
 ---
 title: "Cloudflare a AI roboti: Search, Agent a Training"
-description: "Cloudflare rozlišuje u AI robotů tři chování — Search, Agent a Training. Co která volba znamená, kde je past se smíšenými roboty a co čeká nové domény."
-answer: "Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training. U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nově zakládané domény jiné výchozí hodnoty; existující doméně se nic samo nepřepne."
+description: "Cloudflare dělí AI roboty na Search, Agent a Training. Blokace Training může podle oznámení Cloudflare vzít i Googlebota. Jak trénink omezit bez ztráty Googlu."
+answer: "Cloudflare řídí AI roboty podle chování: Search, Agent a Training. U každého zvolíte blokaci všude, jen na stránkách s reklamou, nebo povolení. Blokace Training zasáhne i smíšené roboty, kteří slouží zároveň vyhledávání, podle oznámení z července 2026 i Googlebota. Kdo chce trénink omezit a Googlebota pustit, zvolí u Training Disallow s Bot Preference Sync; smíšeným zůstane jen žádost v robots.txt."
 slug: "cloudflare-ai-bot-blocking"
 category: "tutorial"
 tags:
   - "technicke-zaklady"
   - "ai-platformy"
 published: "2026-07-19"
-updated: "2026-08-02"
+updated: "2026-11-23"
 keywords:
   - "cloudflare blokování ai robotů"
   - "cloudflare ai crawl control"
+  - "cloudflare googlebot blokace"
+  - "ai crawler and agent access policies"
   - "block ai bots cloudflare"
   - "blokovat ai crawlery cdn"
   - "cloudflare ai bot blocking"
 variant: "rich"
 faq:
   - q: "Co Cloudflare u AI robotů vlastně rozlišuje?"
-    a: "Tři chování místo jmen robotů. Search je chování, které sbírá nebo indexuje obsah, aby z něj později mohlo čerpat při odpovědích. Agent je automatická činnost jednající v reálném čase za konkrétního člověka. Training je procházení, které bere obsah na trénink nebo doladění modelu. U každé kategorie se rozhodujete samostatně."
-  - q: "Co se mění 15. září 2026?"
-    a: "Podle změnového logu Cloudflare dostanou k tomuto datu nově zakládané domény jiné výchozí hodnoty: Training a Agent blokované na stránkách s reklamou, Search povolený. Ke stejnému dni mají pod blokaci tréninku spadnout i roboti, kteří kombinují Search a Training. Existující doméně se ale nic samo nepřepne a vlastní nastavení si můžete zvolit kdykoli."
+    a: "Cloudflare u AI robotů rozlišuje tři chování: Search, Agent a Training. Search je procházení, při kterém roboti sbírají nebo indexují obsah, aby z něj AI mohla později odpovídat na otázky. Agent je automatický přístup, kterým AI v reálném čase jedná za konkrétního člověka. Training je procházení, které bere obsah na trénink nebo doladění modelu, a podle dokumentace sem patří i smíšení roboti, kteří slouží zároveň vyhledávání i tréninku. U každé kategorie se rozhodujete samostatně; jednotlivé roboty jde dál blokovat i jménem v AI Crawl Control."
+  - q: "Zablokuje Cloudflare při blokaci Training i Googlebota?"
+    a: "Blokace Training u Cloudflare může zasáhnout i Googlebota. Cloudflare v oznámení z 1. 7. 2026 jmenovitě uvedl, že od 15. 9. budou Googlebot, Applebot a Bingbot jako smíšení roboti blokovaní u každého, kdo blokuje Training, přes nové volby i přes starý přepínač Block AI bots. Dokumentace aktualizovaná 2. 11. 2026 to říká obecně: akce pro Training platí i pro smíšené roboty. Volba Disallow se zapnutým Bot Preference Sync podle dokumentace smíšené roboty z blokace na Cloudflare vynechává, proto je pro weby, kterým záleží na Googlu, rozumnější než Block. Smíšeným robotům ale zůstane jen žádost v robots.txt."
+  - q: "Co se u Cloudflare změnilo 15. září 2026?"
+    a: "Co se u Cloudflare 15. září 2026 skutečně změnilo, doložit neumím. Cloudflare v oznámení z července 2026 sliboval, že nové domény dostanou Training a Agent blokované na stránkách s reklamou; do 15. 9. šlo změnu v nastavení odmítnout. Dokumentace aktualizovaná 2. 11. 2026 ale u nových domén uvádí všechny tři kategorie povolené a ve změnovém logu Bots k 15. září záznam není. Podle blogu ze 4. 11. se Cloudflare při přidání nové domény ptá, jestli web vydělává reklamou, a podle odpovědi doporučí nastavení. U každé domény přitom podle dokumentace platí, že akce pro Training se týká i smíšených robotů; podle oznámení mezi ně patří i Googlebot."
   - q: "Přijdu blokací tréninku o citace v AI odpovědích?"
-    a: "Cloudflare k dopadu na citace nic neuvádí, takže to nikdo netvrdí za něj. Uvádí ale, že blokace kategorie Training zasáhne i roboty, kteří kombinují Search a Training zároveň. Praktický důsledek může být ten, že robot z takového obsahu nebude mít z čeho čerpat; přesný dopad na citace ani na návštěvnost z toho ale odvodit nejde. Rozhodujte se s vědomím, že tyhle dvě věci nejdou vždy oddělit."
-  - q: "Je to dostupné i na bezplatném plánu?"
-    a: "Ano. Cloudflare uvádí, že novou správu AI provozu mají všichni zákazníci včetně Free plánu. Na bezplatných plánech se roboti rozpoznávají podle user-agent řetězce, placené Bot Management detekci vylepšuje."
-  - q: "Nahradí tohle nastavení robots.txt?"
-    a: "Ne, jsou to dvě různé vrstvy. Robots.txt je žádost, kterou slušný robot respektuje a ostatní ignorují. Blokace na úrovni CDN je vynucení — robot se k obsahu nedostane. Rozumné je mít obojí: robots.txt jako signál a CDN jako pojistku."
-  - q: "Proč Cloudflare nechává Search povolený?"
-    a: "Ve svém oznámení to zdůvodňuje tím, že Search je chování, které nejpřirozeněji vrací návštěvníky zpět, a že je podle nich v zájmu většiny majitelů webů ho povolit. Je to jejich vyjádření a zdůvodnění vlastního rozhodnutí, ne nezávislé měření."
+    a: "Při volbě Block u kategorie Training můžete přijít o víc než o citace v AI odpovědích. Robot, kterého Cloudflare řadí mezi smíšené, se k webu nedostane vůbec, a podle oznámení z července mezi ně patří i Googlebot, tedy klasické vyhledávání. K dopadu na citace samotné Cloudflare nic neuvádí. Volba Disallow se zapnutým Bot Preference Sync smíšené roboty z blokace na Cloudflare vynechává."
+  - q: "Je řízení AI robotů dostupné i na bezplatném plánu Cloudflare?"
+    a: "Řídit AI roboty podle tří chování mohou podle změnového logu z 1. 7. 2026 všichni zákazníci Cloudflare včetně těch na bezplatném plánu. Spravovaný robots.txt pro AI roboty je podle dokumentace dostupný na všech plánech."
+  - q: "Nahradí nastavení AI robotů v Cloudflare soubor robots.txt?"
+    a: "Nastavení AI robotů v Cloudflare robots.txt nenahradí, ale umí ho doplnit. Volba Disallow u Training se zapnutým Bot Preference Sync přidá do robots.txt spravované zákazy pro tréninkové roboty (v ukázce dokumentace například Google-Extended, GPTBot nebo ClaudeBot) a roboty, které Cloudflare jako tréninkové rozpozná, zablokuje i přímo na Cloudflare; smíšené vynechá. Samotný robots.txt je jen žádost, kterou slušný robot respektuje a ostatní ignorují."
+  - q: "Jde osobní agenty, kteří vyřizují věci za člověka, nastavit zvlášť?"
+    a: "Od 4. 11. 2026 jde u kategorie Agent podle změnového logu nastavit zvlášť nejčastější osobní agenty, kteří za člověka hledají informace nebo porovnávají produkty. Ve výchozím stavu přebírají nastavení celé kategorie Agent a změna celé kategorie podle dokumentace přepíše i jejich jednotlivé nastavení. Cloudflare je doporučuje povolit."
 ---
 
 import Insight from "~/components/blocks/Insight.astro";
@@ -37,25 +41,26 @@ import Stepper from "~/components/blocks/Stepper.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 
-**Cloudflare řídí AI roboty podle chování, ne podle jména: rozlišuje Search, Agent a Training.** U každé kategorie zvolíte, jestli ji blokovat všude, jen na stránkách s reklamou, nebo vůbec ne. Od 15. září 2026 dostávají nově zakládané domény jiné výchozí hodnoty; existující doméně se nic samo nepřepne.
+**Cloudflare řídí AI roboty podle chování: Search, Agent a Training.** U každého zvolíte blokaci všude, jen na stránkách s reklamou, nebo povolení. Blokace Training zasáhne i smíšené roboty, kteří slouží zároveň vyhledávání, podle oznámení z července 2026 i Googlebota. Kdo chce trénink omezit a Googlebota pustit, zvolí u Training Disallow s Bot Preference Sync; smíšeným zůstane jen žádost v robots.txt.
 
-Pokud jste někdy četli návod ve stylu „zablokujte Bytespider a povolte GPTBot“, je zastaralý. Cloudflare dnes nabízí řízení podle **kategorií chování**, ne podle jednotlivých jmen robotů.
+Návody ve stylu „zablokujte Bytespider a povolte GPTBot“ už nestačí. Cloudflare dnes nabízí i řízení podle **kategorií chování**; jednotlivé roboty jde podle dokumentace dál blokovat jménem v AI Crawl Control. Vycházím z dokumentace aktualizované 2. 11. 2026, načtené 23. 11.; do administrace Cloudflare ani Search Console nevidím, takže se rozhraní může lišit.
 
-## Co se změnilo a proč to má termín
+## Co se v roce 2026 <span class="hl">u Cloudflare</span> změnilo — <strong>a co z ohlášení v dokumentaci není</strong>
 
-Od 1. července 2026 může každý zákazník, **včetně bezplatného plánu**, nastavit chování AI robotů podle tří kategorií zvlášť. U každé z nich jsou tři volby: blokovat na všech stránkách, blokovat jen na stránkách s reklamou, nebo neblokovat.
+| Datum | Co se stalo | Co to znamená |
+|---|---|---|
+| 1. 7. 2026 | Řízení AI robotů podle tří chování pro všechny plány včetně bezplatného (změnový log) | rozhodujete i o kategoriích, ne jen o jménech robotů |
+| 1. 7. 2026 | Ohlášení na 15. 9.: nové domény mají dostat Training a Agent blokované na stránkách s reklamou; smíšení roboti (Googlebot, Applebot, Bingbot) budou blokovaní u každého, kdo blokuje Training; do 15. 9. šlo změnu v nastavení odmítnout (blog Cloudflare) | blokace smíšených robotů se týká každé domény s blokací Training, ne jen nové |
+| 15. 9. 2026 | Ve změnovém logu Bots k tomuto dni záznam není | na ohlášené výchozí hodnoty nespoléhejte a nastavení si zkontrolujte sami |
+| 30. 9. 2026 | Pay Per Use v betě: AI firma (kupec) nabídne cenu za konkrétní použití obsahu, vydavatel ji přijme, nebo odmítne. Kupec pak použití sám hlásí, Cloudflare mu ho účtuje a vydavateli platí měsíčně (blog Cloudflare) | v betě Cloudflare pracuje přímo s kupci a s vydavateli, kteří se přihlásí |
+| 2. 11. 2026 (aktualizace dokumentace) | Nové domény mají Search, Agent i Training povolené; akce pro Training se týká i smíšených robotů | ohlášené výchozí hodnoty v dokumentaci nejsou, past se smíšenými roboty ano |
+| 4. 11. 2026 | Sekce se přejmenovala na AI Crawler and Agent access policies, nejčastější osobní agenty jde nastavit zvlášť a nová doména dostane doporučené nastavení podle toho, jestli vydělává reklamou (změnový log, blog Cloudflare) | v nastavení hledejte nový název |
 
-Dnes jsou podle Cloudflare všechny tři kategorie ve výchozím stavu povolené. **Od 15. září 2026 se to mění pro nově zakládané domény**: ty mají dostat Training a Agent blokované na stránkách s reklamou a Search povolený. Změnový log k témuž dni dodává, že pod blokaci tréninku spadnou i roboti, kteří kombinují Search a Training.
-
-<Insight tone="signal" icon="↻" label="Aktualizováno 2026-08-02">
-V první verzi tohohle článku stálo, že k 15. září **končí starý přepínač Block AI bots**. To jsem po kontrole u zdroje nedohledal — změnový log Cloudflare ani dokumentace o jeho ukončení nic neuvádějí, píšou jen o nových výchozích hodnotách. Tvrzení proto z článku mizí. Co u starého přepínače doložené je: podle dokumentace pod něj **spadají i smíšení roboti**. Při spoléhání na tuhle volbu si proto ověřte její aktuální chování v dokumentaci.
+<Insight tone="signal" icon="↻" label="Aktualizováno 2026-11-23">
+Předchozí verze tohohle článku psala o 15. září v budoucím čase a v rámečku „Máte existující doménu? Žádná panika“ tvrdila, že se vám nic samo nepřepne. To byla jen polovina pravdy. Ohlášené výchozí hodnoty se týkaly nových domén (a dokumentace je neuvádí ani pro ně). **Blokace smíšených robotů se ale podle dokumentace týká každé domény, která Training blokuje.** Podle červencového oznámení to platí i pro starý přepínač Block AI bots. Proto teď článek jmenuje Googlebota a ukazuje, jak trénink omezit a Googlebota nezablokovat.
 </Insight>
 
-<Insight tone="accent">
-**Máte existující doménu? Žádná panika.** Nové výchozí hodnoty se podle oznámení týkají nově zakládaných domén — vám se 15. září nic samo nepřepne. Vlastní nastavení si můžete kdykoli zvolit sami, teď i potom. To datum je hlavně dobrá připomínka, abyste se podívali, jaké nastavení váš web teď má.
-</Insight>
-
-## Tři chování místo seznamu jmen
+## Tři <span class="hl">chování</span> vedle jmen robotů — <strong>Search, Agent, Training</strong>
 
 <CompareTable
   leftLabel="Co to je"
@@ -63,86 +68,109 @@ V první verzi tohohle článku stálo, že k 15. září **končí starý přep
   rightLabel="Co pro vás znamená"
   rightTone="accent"
   rows={[
-    { icon: "🔍", label: "Search", left: "Chování, které sbírá nebo indexuje obsah, aby z něj později umělo odpovídat", right: "Podle Cloudflare chování, které nejpřirozeněji vrací návštěvníky" },
-    { icon: "🤖", label: "Agent", left: "Automatická činnost jednající v reálném čase za konkrétního člověka", right: "Sem patří asistenti, kteří něco vyřizují za uživatele" },
-    { icon: "🧠", label: "Training", left: "Procházení, které bere obsah na trénink nebo doladění modelu", right: "Obsah se natrvalo vstřebá do modelu, návštěvu nečekejte" },
+    { icon: "🔍", label: "Search", left: "Procházení, při kterém roboti sbírají nebo indexují obsah, aby z něj AI mohla později odpovídat", right: "Podle Cloudflare nejpřirozeněji přivádí návštěvníky zpátky na web; blokace může podle oznámení vzít i Googlebota" },
+    { icon: "🤖", label: "Agent", left: "Automatický přístup, kterým AI v reálném čase jedná za konkrétního člověka", right: "Sem patří asistenti, kteří něco vyřizují za uživatele; nejčastější jde od 4. 11. 2026 nastavit zvlášť" },
+    { icon: "🧠", label: "Training", left: "Procházení, které bere obsah na trénink nebo doladění modelu, včetně smíšených robotů", right: "Blokace zasáhne i roboty, kteří slouží zároveň vyhledávání" },
   ]}
 />
 
-Rozdíl mezi nimi není akademický. Jako důvod, proč nechává **Search povolený** i v nových výchozích hodnotách, Cloudflare uvádí, že je to chování, které nejpřirozeněji vrací návštěvníky zpět a že je v zájmu většiny majitelů webů ho povolit.
+Rozdíl mezi nimi má praktický dopad. Jako důvod, proč chtěl nechat **Search povolený** i v ohlášených výchozích hodnotách, Cloudflare uvedl, že je to chování, které nejpřirozeněji přivádí návštěvníky zpátky na web, a že je v zájmu většiny majitelů webů ho povolit. Kategorie jsou vrstva nad jmény robotů, ne jejich náhrada.
 
-## Proč blokace Training nemusí jít oddělit od Search
+Do kategorie Agent patří například roboti, kteří na pokyn uživatele načtou stránku do chatu, nebo agenti, kteří za něj ovládají prohlížeč. Kdy na ně samotný robots.txt nestačí, rozebírá článek o [robotech vyvolaných uživatelem](/blog/roboti-vyvolani-uzivatelem/).
 
-Tady je nejdůležitější věta celého článku, a je přímo z oznámení Cloudflare: **blokace kategorie Training zasáhne i roboty, kteří kombinují Search a Training zároveň.**
+## Proč blokace <span class="hl">Training</span> může vzít i <strong>Googlebota</strong>
 
-<Insight tone="warn">
-Cloudflare u toho nepíše, co to udělá s vaší viditelností — to si musíte domyslet sami. Praktický důsledek může být ten, že robot z takového obsahu nebude mít z čeho čerpat. Přesný dopad na citace ani na návštěvnost z toho ale odvodit nejde. Rozšířená úvaha „zakážu trénink, ale zbytek si nechám“ proto nemusí vyjít tak, jak si ji člověk představuje.
+Dokumentace Cloudflare řadí do kategorie Training i **smíšené roboty, kteří slouží zároveň tréninku i vyhledávání**, a výslovně píše, že akce pro Training platí i pro ně. Které roboty takhle zařazuje, dokumentace nevyjmenovává. Z mých podkladů je jmenuje jen oznámení z 1. 7. 2026: **[Googlebot](/slovnik/googlebot/), Applebot a Bingbot** budou podle něj od 15. 9. blokovaní u každého, kdo zvolil blokaci Training, ať přes nové volby, nebo přes starý přepínač Block AI bots. Podle změnového logu Cloudflare zařazení robotů zveřejňuje i v adresáři na Cloudflare Radar; ten jsem ověřit nemohl.
+
+Podle téhož oznámení se smíšení roboti posuzují podle všech svých chování a platí nejpřísnější pravidlo. Googlebota proto může zablokovat i blokace kategorie Search a u Training i volba Block on pages with ads, a to na stránkách, kde Cloudflare rozpozná reklamu.
+
+<Insight tone="warn" label="Riziko pro e-shop: Googlebot">
+Kdo u Training zvolí Block, aby jeho texty nešly do tréninku modelů, může tím podle oznámení zablokovat i Googlebota. Pak nejde jen o citace v AI odpovědích, ale i o klasické vyhledávání Googlu. Pokud jste blokaci Training nebo Search někdy zapnuli, projděte postup níže dřív než cokoli jiného.
 </Insight>
 
-Podle dokumentace spadají pod starý přepínač **i smíšení roboti**. Pokud jste se na tuhle volbu spoléhali, **ověřte si její aktuální chování v dokumentaci** — zvlášť právě u smíšených robotů.
+## Jak <span class="hl">trénink omezit</span> a <strong>Googlebota nezablokovat</strong>
 
-## Postup
+Cloudflare k tomu nabízí samostatnou volbu. U kategorie Training zvolte **Disallow** a zapněte **Enable Bot Preference Sync**. Podle dokumentace se pak stane tohle:
+
+- Cloudflare přidá do robots.txt **spravované zákazy pro tréninkové roboty**. V ukázce dokumentace jsou mezi nimi Google-Extended, GPTBot, ClaudeBot, CCBot nebo Applebot-Extended, tedy tokeny pro trénink, ne Googlebot.
+- Před ně vloží i **Content Signals** (v ukázce `search=yes, ai-train=no, use=reference`) s textem, že omezení jsou výhradou práv podle čl. 4 evropské směrnice 2019/790. Search Console může u těchto řádků hlásit nerozpoznanou syntaxi; Cloudflare dopad na procházení nepozoroval.
+- Roboty, které Cloudflare jako tréninkové rozpozná, **zablokuje i přímo na Cloudflare**, takže se k obsahu nedostanou, ani když robots.txt ignorují.
+- **Smíšení roboti jsou z této blokace vynechaní.** To je hlavní rozdíl proti volbě Block.
+
+Háček je v tom, že Cloudflare tytéž smíšené roboty řadí i k tréninku. U nich tak zůstává jen žádost v robots.txt (v ukázce tokeny Google-Extended a Applebot-Extended), kterou dodržet nemusí. Trénink tedy touhle cestou omezíte, ne vyloučíte.
+
+Bez zapnutého Bot Preference Sync se podle stránky o robots.txt spravované zákazy nepřidají, takže volbu Disallow vždy kombinujte s ním. Co znamenají jednotlivé tokeny v robots.txt, rozebírá [robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/), signály pro použití obsahu [Content Signals](/blog/content-signals-rizeni-ai-botu/).
+
+## Postup — <span class="hl">kde to v Cloudflare najdete</span> a <strong>jak ověřit, že Googlebot prochází</strong>
 
 <Stepper
   steps={[
-    { title: "Otevřete AI Crawl Control u konkrétního webu", text: "Nastavení je vždy pro jeden web, ne pro celý účet. Vyberte doménu a otevřete AI Crawl Control; když ho v menu nevidíte, zkuste vyhledávání v administraci." },
-    { title: "V záložce Crawlers zjistěte, kdo k vám chodí", text: "Tabulka ukazuje AI roboty, kteří žádají o přístup, a u každého sloupec Action s volbou Allow nebo Block." },
-    { title: "Rozhodněte každou kategorii zvlášť", text: "Search, Agent a Training mají vlastní volbu: blokovat všude, blokovat jen na stránkách s reklamou, nebo neblokovat." },
-    { title: "Ověřte smíšené roboty", text: "Blokace Training zasáhne i roboty patřící zároveň do Search. Pokud vám na jejich přístupu záleží, projděte si to znovu." },
+    { title: "Otevřete nastavení AI robotů", desc: "Podle dokumentace: v Security → Settings vyfiltrujte nastavení pro roboty (Bot traffic) a otevřete sekci AI Crawler and Agent access policies. Do 4. 11. 2026 se jmenovala Configure AI bot policies. Nastavuje se zvlášť pro každý web." },
+    { title: "Nastavte kategorii Training", desc: "Chcete-li trénink omezit, zvolte u Training Disallow, zapněte Enable Bot Preference Sync a uložte. Stejně postupujte, když je Training teď na Block nebo Block on pages with ads a záleží vám na Googlu. Pak otevřete soubor robots.txt svého webu: spravovaný blok se v něm podle dokumentace objeví do několika sekund." },
+    { title: "Nezapomeňte na starý přepínač", desc: "Pokud jste dřív zapnuli Block AI bots, zjistěte, jestli je pořád zapnutý; podle červencového oznámení blokuje smíšené roboty i on. Je-li zapnutý a záleží vám na Googlu, vypněte ho a zkontrolujte, že Training zůstal na Disallow se zapnutým Enable Bot Preference Sync. Kde přepínač dnes je, dokumentace neuvádí, výsledek proto ověřte posledním krokem." },
+    { title: "Nastavte Search a Agent", desc: "Search nezavírejte, pokud vám záleží na vyhledávání: podle oznámení do něj patří i Googlebot, Applebot a Bingbot. U Agent nejdřív zvolte nastavení celé kategorie a teprve potom případně nastavte zvlášť nejčastější osobní agenty: změna celé kategorie podle dokumentace jejich jednotlivé nastavení přepíše." },
+    { title: "Ověřte, že Googlebot prochází", desc: "Podle nápovědy Search Console otevřete Nastavení služby → Statistiky procházení; přehled je jen pro služby typu Doména nebo s předponou adresy URL na kořenové úrovni. V tabulce Odpověď má převažovat OK (200) a nemá přibývat Jiná chyba klienta (4XX)." },
   ]}
 />
 
-Rozhraní Cloudflare se průběžně mění, takže se držte spíš názvu **AI Crawl Control** než konkrétní cesty v menu. Vedle záložky Crawlers tam najdete i přehled a metriky.
+V logu serveru zablokované požadavky neuvidíte, Cloudflare je zastaví dřív, než na server dojdou. Prudký pokles návštěv Googlebota tam ale poznáte; jak roboty v logu číst, ukazuje článek [AI roboti v serverových lozích](/blog/ai-roboti-v-serverovych-logach/).
 
-## Jak se u každé kategorie rozhodnout
+Rozhraní Cloudflare se průběžně mění; když cestu z kroku 1 nenajdete, hledejte podle názvu sekce AI Crawler and Agent access policies. Přehled AI robotů, kteří k vám chodí, a blokaci jednotlivých robotů jménem najdete v AI Crawl Control.
 
-Univerzální odpověď neexistuje, ale rozcestník ano. A jestli řešíte tu obecnější otázku — totiž jestli vůbec chcete být v AI odpovědích — patří k tomu [rozhodovací rámec kolem odhlášení](/blog/blokovat-ai-odpovedi-gsc/).
+## Jak se u každé <span class="hl">kategorie</span> rozhodnout — <strong>podle toho, co od AI chcete</strong>
 
-- **Chcete hlavně omezit použití obsahu pro trénink modelů?** Řešte kategorii Training — a počítejte s tím, co je napsané výš o smíšených robotech.
-- **Záleží vám, aby vás AI nástroje mohly citovat?** Pak je Search ta kategorie, kterou nechcete zavírat jako první.
-- **Vyděláváte hlavně reklamou?** Volba „blokovat jen na stránkách s reklamou“ existuje přesně pro tenhle případ.
-- **Nevíte, co vám AI kanál nese?** Tohle je nejčastější stav — a nejlepší první krok není nastavovat, ale změřit.
+Univerzální odpověď neexistuje, ale rozcestník ano. A jestli řešíte tu obecnější otázku, totiž jestli vůbec chcete být v AI odpovědích, patří k tomu článek [Blokovat AI odpovědi Googlu?](/blog/blokovat-ai-odpovedi-gsc/)
 
-## Jak to souvisí s robots.txt
+- **Chcete hlavně omezit použití obsahu pro trénink modelů?** Řešte kategorii Training volbou Disallow se zapnutým Bot Preference Sync, ne volbou Block. Smíšeným robotům zůstane jen žádost v robots.txt.
+- **Uvažujete o blokaci Search, protože nechcete být v AI odpovědích?** Podle oznámení z července 2026 do něj patří i Googlebot, Applebot a Bingbot, takže blokace Search může vzít i klasické vyhledávání. Kdo chce, aby ho AI nástroje citovaly, nechá Search povolený tak jako tak.
+- **Vyděláváte hlavně reklamou?** Volba Block on pages with ads je určená pro weby s reklamou; Cloudflare ji v ohlášených výchozích hodnotách chtěl u Agent a Training, Search nechával povolený. U Training ale na stránkách, kde Cloudflare rozpozná reklamu, zasáhne i smíšené roboty, podle oznámení i Googlebota, takže Training řešte raději volbou Disallow s Bot Preference Sync.
+- **Nevíte, co vám AI kanál nese?** To je častý stav. Než začnete AI roboty blokovat, změřte, jak často vás procházejí a kolik návštěv vám přivádějí zpátky: [AI roboti: kolik vás projdou na jednu návštěvu zpět](/blog/ai-roboti-zatez-webu/).
 
-Nijak se to nevylučuje, jsou to dvě vrstvy nad sebou:
+## Jak to souvisí s <span class="hl">robots.txt</span> — <strong>signál a vynucení</strong>
 
-- **robots.txt je žádost.** Slušný robot ji respektuje, ostatní ji ignorují. Podrobně to rozebírá [robots.txt pro AI roboty](/blog/ai-crawler-robots-txt/).
-- **CDN je vynucení.** Robot se k obsahu nedostane, ať ho robots.txt zajímá, nebo ne.
+Nastavení v Cloudflare a robots.txt se nevylučují, jsou to dvě vrstvy nad sebou:
 
-Rozumné je mít obojí a pro většinu majitelů webů stačí zapamatovat si jedinou větu: **robots.txt je signál, Cloudflare je vynucení.**
+- **robots.txt je žádost.** Slušný robot ji respektuje, ostatní ji ignorují. Co soubor umí a co ne, shrnuje heslo [robots.txt](/slovnik/robots-txt/) ve slovníku.
+- **Cloudflare jako CDN (síť, přes kterou se web doručuje) je vynucení.** Robot, kterého Cloudflare rozpozná a zablokuje, se k obsahu nedostane, ať ho robots.txt zajímá, nebo ne.
 
-## Časté chyby
+Bot Preference Sync obě vrstvy spojuje: zákaz zapíše do robots.txt a u robotů, které Cloudflare rozpozná jako tréninkové, ho vynutí na Cloudflare; smíšeným robotům zůstane jen žádost. Pro většinu majitelů webů stačí si zapamatovat jedinou větu: **robots.txt je signál, Cloudflare je vynucení.**
+
+## Časté <span class="hl">chyby</span> při blokování AI robotů — <strong>od Googlebota po log serveru</strong>
 
 <MistakeGrid>
-  <Mistake num="01" title="Zakázat trénink a čekat, že citace zůstanou">
-    Smíšené roboty spadnou pod blokaci tréninku. Obojí nejde vždycky oddělit.
+  <Mistake num="01" title="Zablokovat Training a nehlídat Googlebota" fix="Volte Disallow s Bot Preference Sync a hlídejte Statistiky procházení (postup v kroku 5).">
+    Blokace Training zasáhne i smíšené roboty a podle oznámení Cloudflare mezi ně patří Googlebot. Pak nejde jen o AI citace, ale i o klasické vyhledávání.
   </Mistake>
-  <Mistake num="02" title="Nechat výchozí nastavení a nevědět jaké">
-    Dnes je povoleno vše, od 15. září dostávají nové domény jiné. Podívejte se, co máte vy.
+  <Mistake num="02" title="Nechat výchozí nastavení a nevědět, jaké je" fix="Podívejte se, co má váš web nastavené.">
+    Nové domény mají podle dokumentace všechno povolené a Cloudflare jim doporučené nastavení může nabídnout už při přidání domény; starší domény mají, co si kdo kdy zvolil.
   </Mistake>
-  <Mistake num="03" title="Blokovat podle jména robota">
-    User-agent si do hlavičky napíše kdokoli, takže blokace podle jména je děravá. Dokumentace Cloudflare u robotů rozlišuje ověřené a neověřené.
+  <Mistake num="03" title="Blokovat jen podle jména robota" fix="Kombinujte jména, kategorie a ověřené roboty.">
+    User-agent si do hlavičky napíše kdokoli, takže samotná blokace podle jména je děravá. Dokumentace Cloudflare u robotů rozlišuje ověřené a neověřené, víc v článku [jak ověřit AI roboty](/blog/overovani-ai-robotu/).
   </Mistake>
-  <Mistake num="04" title="Spoléhat jen na jednu vrstvu">
+  <Mistake num="04" title="Spoléhat jen na jednu vrstvu" fix="Mějte robots.txt i blokaci na CDN.">
     Samotný robots.txt nic nevynutí, samotná blokace na CDN zase nedá slušným robotům signál.
+  </Mistake>
+  <Mistake num="05" title="Hledat zablokovaného Googlebota v logu serveru" fix="Dívejte se do Statistik procházení v Search Console (postup v kroku 5).">
+    Cloudflare zablokovaný požadavek zastaví dřív, než dojde na server, takže v logu chybí, místo aby tam byl s chybou.
   </Mistake>
 </MistakeGrid>
 
-## Kde má tenhle článek hranice
+## Kde má tenhle článek <span class="hl">hranice</span> — <strong>jen Cloudflare a jen dokumentace</strong>
 
 **Neřeší jiná CDN.** Je to návod ke Cloudflare; jinde vypadá nastavení jinak.
 
-**Nemapuje jména robotů na kategorie.** Dokumentace Cloudflare je takto nepřiřazuje, takže to tady dělat nebudeme ani my.
+**Nemapuje všechna jména robotů na kategorie.** Dokumentace Cloudflare je nevyjmenovává. Z mých podkladů jmenuje Googlebota, Applebota a Bingbota jako smíšené roboty jen červencové oznámení. Adresář na Cloudflare Radar, kde Cloudflare zařazení robotů zveřejňuje, jsem ověřit nemohl.
 
-## Co si odnést
+**Popisuje dokumentaci, ne rozhraní.** Do administrace Cloudflare ani Search Console jsem se nepřihlašoval, názvy voleb jsou podle dokumentace aktualizované 2. 11. 2026 a nápovědy Search Console.
 
-Změna je hlavně pojmová: **místo hádání, který robot je ten zlý, se rozhodujete o třech chováních.** Otázka „chci, aby si mě někdo mohl načíst a odpovědět na dotaz?“ se odpovídá líp než „mám blokovat CCBot?“.
+## Co si <span class="hl">odnést</span> — <strong>tři kontroly</strong>
 
-Prakticky si odneste tři věci. Podívejte se, jaké nastavení váš web dnes má. U kategorie Training počítejte s tím, že zasáhne i smíšené roboty. A pokud netušíte, co vám AI kanál nese, není prvním krokem nastavovat, ale změřit.
+Hlavní poučení je praktické: **blokace Training může podle oznámení Cloudflare vzít i Googlebota.** Pojmově se navíc vedle rozhodování o jednotlivých robotech rozhodujete o třech chováních. Na otázku „chci, aby si mě někdo mohl načíst a odpovědět na dotaz?“ se odpovídá líp než na „mám blokovat CCBot?“.
+
+Prakticky si odneste tři kontroly. Podívejte se, jak má váš web nastavený Training a Search a jestli nemá zapnutý starý přepínač Block AI bots. Pokud trénink omezujete, zkontrolujte, že je to volbou Disallow se zapnutým Bot Preference Sync, ne volbou Block. A podle posledního kroku postupu si ve Statistikách procházení v Search Console ověřte, že Googlebot dál prochází.
 
 ---
 
-Pokud nejdřív potřebujete zjistit, jestli vám z AI nástrojů vůbec někdo chodí, dává smysl začít měřením: **[Audit AI viditelnosti](/audit/)** za 3 600 Kč bez DPH projde měření i viditelnost a řekne, z čeho se rozhodovat.
+Pokud si nejste jistí, jestli k webu mají přístup AI roboti a co o vás dnes říkají AI odpovědi, **[Audit AI viditelnosti](/audit/)** za 3 600 Kč bez DPH to projde a dá vám prioritní seznam úprav.
 
-*Zdroje: oznámení Cloudflare „Your site, your rules“, changelog z 1. 7. 2026 a dokumentace AI Crawl Control. Stav k 19. 7. 2026 — nastavení i termíny se můžou měnit, článek budeme aktualizovat.*
+*Zdroje: dokumentace Cloudflare [AI Crawler and Agent access policies](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/), [robots.txt setting (Bot Preference Sync)](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) (obě aktualizace 2. 11. 2026) a [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/), [změnový log Bots](https://developers.cloudflare.com/changelog/product/bots/), blog Cloudflare [o nových volbách a smíšených robotech z 1. 7. 2026](https://blog.cloudflare.com/content-independence-day-ai-options/), [o Pay Per Use z 30. 9. 2026](https://blog.cloudflare.com/pay-per-use/) a [o osobních agentech ze 4. 11. 2026](https://blog.cloudflare.com/personal-agents-visibility-control), nápověda Search Console k [přehledu Statistiky procházení](https://support.google.com/webmasters/answer/9679690?hl=cs). Načteno 23. 11. 2026, nastavení se může měnit.*
