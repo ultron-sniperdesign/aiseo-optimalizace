@@ -9,7 +9,7 @@ tags:
   - "ai-platformy"
   - "mereni"
 published: "2026-10-14"
-updated: "2026-10-14"
+updated: "2026-11-22"
 keywords:
   - "seznam ai vydavatelé"
   - "ai sumarizace seznam"
@@ -48,7 +48,7 @@ Vycházím z partnerské nápovědy, smluvních podmínek Newsfeedu a nápovědy
 
 ## Kde <span class="hl">Seznam AI</span> články shrnuje — <strong>tři místa, jedny podmínky</strong>
 
-Partnerská nápověda jmenuje tři místa, odkud může vydavateli přijít návštěvnost: Seznam Asistent, trendující témata a AI sumarizace ve vyhledávání. Podle nápovědy Vyhledávání mohou přihlášení uživatelé ze souhrnu pokračovat do Seznam AI. Nápověda Vyhledávání dva z těch prvků popisuje:
+Partnerská nápověda jmenuje tři místa, odkud může vydavateli přijít návštěvnost: samotný konverzační asistent Seznam AI (v nápovědě k 22. 11. 2026 ještě jako Seznam Asistent), trendující témata a AI sumarizace ve vyhledávání. Podle nápovědy Vyhledávání mohou přihlášení uživatelé ze souhrnu pokračovat do Seznam AI. Nápověda Vyhledávání dva z těch prvků popisuje:
 
 - **Sumarizace stránky s výsledky** — kompaktní souhrn toho nejrelevantnějšího, co je v organických výsledcích na zadaný dotaz.
 - **Sumarizace trendujících témat** — souhrn konkrétního tématu ze zpravodajských článků, které má Seznam ve vyhledávání.
@@ -58,7 +58,7 @@ Oba souhrny jsou abstraktní: shrnují hlavní myšlenku vlastními slovy a Sezn
 Zdroje: [Seznam AI](https://partner.seznam.cz/napoveda/dalsi-sluzby/seznam-ai/) v nápovědě Seznam Partner a [Vychytávky](https://o-seznam.cz/napoveda/vyhledavani/vysledky-vyhledavani/vychytavky/) v nápovědě Vyhledávání.
 
 <Insight tone="accent" icon="!" label="Zdroj je součást návrhu">
-Souhrn podle nápovědy uvádí zdroj u každého bodu. U partnerů programu Newsfeed to od května stojí i ve smlouvě: když Seznam AI obsah partnera užije, zobrazí odkaz na konkrétní obsah, ze kterého čerpala.
+Souhrn podle nápovědy uvádí zdroj u každého bodu. U partnerů programu Newsfeed to od května stojí i ve smlouvě: když Seznam AI obsah partnera užije, zobrazí odkaz na konkrétní obsah, ze kterého čerpal.
 </Insight>
 
 ## Co za to <span class="hl">vydavatel</span> dostane — <strong>provizi z reklamy po prokliku</strong>
@@ -90,7 +90,7 @@ Od 1. 6. 2026 Seznam značí odkazy ze svých kanálů jednotně: `utm_source=ww
 
 | Kanál podle nápovědy | utm_campaign |
 |---|---|
-| Asistent | `asistent` |
+| Asistent (dnes Seznam AI) | `asistent` |
 | AI funkce | `aifunkce` |
 | Trending Topics (trendující témata) | `trending_topics` |
 | Newsfeed, pro srovnání | `hp_feed` |
@@ -101,7 +101,7 @@ U návštěv s těmito parametry musí partner ukazovat jen reklamu Seznamu. Vý
 
 <Checklist tone="geo" title="Jak si návštěvy ze Seznam AI změřit" items={[
   { title: "Založte segment pro utm_medium=seznam_distribuce", desc: "Zachytí všechny kanály Seznamu, které odkazy takhle značí." },
-  { title: "Rozdělte ho podle utm_campaign", desc: "Asistent, aifunkce a trending_topics sledujte zvlášť od hp_feed, jinak se AI ztratí v Newsfeedu." },
+  { title: "Rozdělte ho podle utm_campaign", desc: "Hodnoty asistent, aifunkce a trending_topics sledujte zvlášť od hp_feed, jinak se AI ztratí v Newsfeedu." },
   { title: "Srovnávejte až od června 2026", desc: "Dřívější návštěvy nesou jiné parametry a do nového segmentu nespadnou." },
   { title: "Vedle návštěv sledujte provizi", desc: "Návštěva je jen část obrazu. O výnosu rozhoduje reklama Seznamu zobrazená na vašem webu." },
 ]} />

@@ -1,15 +1,15 @@
 ---
 title: "Zboží.cz a Seznam AI: co má e-shop udělat"
 seoTitle: "Zboží.cz v Seznam AI: registrace, feed a párování nabídek"
-description: "Seznam uvedl Zboží.cz mezi zdroji svého asistenta a v Seznam AI ukazuje placené nabídky z feedu. Co z toho plyne pro e-shop: registrace, feed a párování."
-answer: "Zboží.cz je srovnávač zboží Seznamu, do kterého e-shop posílá nabídky přes XML feed. Seznam ho v květnu 2026 uvedl mezi zdroji svého asistenta Seznam AI a od téhož měsíce v Seznam AI ukazuje placené nabídky Seznam Nákupů z téhož feedu. Podmínkou je registrace, kredit a feed shodný s webem; jak Seznam AI nabídky vybírá, Seznam nepopisuje."
+description: "Seznam uvedl Zboží.cz mezi zdroji asistenta (dnes Seznam AI), kde ukazuje i placené nabídky z feedu. Co z toho plyne pro e-shop: registrace, feed a párování."
+answer: "Zboží.cz je srovnávač zboží Seznamu, do kterého e-shop posílá nabídky přes XML feed. Seznam ho v květnu 2026 uvedl mezi zdroji svého asistenta (dnes Seznam AI), ve kterém od téhož měsíce ukazuje placené nabídky Seznam Nákupů z téhož feedu. Podmínkou je registrace, kredit a feed shodný s webem; jak Seznam AI nabídky vybírá, Seznam nepopisuje."
 slug: "zbozi-cz-pro-ai"
 category: "tutorial"
 tags:
   - "eshopy"
   - "ai-platformy"
 published: "2026-10-11"
-updated: "2026-10-11"
+updated: "2026-11-22"
 keywords:
   - "zboží.cz seznam ai"
   - "seznam asistent zboží.cz"
@@ -42,13 +42,13 @@ import Checklist from "~/components/blocks/Checklist.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 
-**Zboží.cz je srovnávač zboží Seznamu a e-shop do něj posílá nabídky přes XML feed. V tiskové zprávě z 25. 5. 2026 ho Seznam uvedl mezi zdroji svého asistenta, kterého nápověda už nazývá Seznam AI, a od května 2026 v Seznam AI ukazuje placené nabídky Seznam Nákupů z téhož feedu.** Zobrazení to nezaručuje — jak Seznam AI nabídky vybírá, Seznam nepopisuje. Popisuje ale, co musí e-shop udělat, aby v Seznam Nákupech nabídky vůbec měl: registraci, kredit a feed ve správném formátu. Párování s katalogem pak rozhoduje, ke kterému produktu se nabídka přiřadí.
+**Zboží.cz je srovnávač zboží Seznamu a e-shop do něj posílá nabídky přes XML feed. V tiskové zprávě z 25. 5. 2026 ho Seznam uvedl mezi zdroji svého asistenta (dnes Seznam AI), ve kterém od května 2026 ukazuje placené nabídky Seznam Nákupů z téhož feedu.** Zobrazení to nezaručuje — jak Seznam AI nabídky vybírá, Seznam nepopisuje. Popisuje ale, co musí e-shop udělat, aby v Seznam Nákupech nabídky vůbec měl: registraci, kredit a feed ve správném formátu. Párování s katalogem pak rozhoduje, ke kterému produktu se nabídka přiřadí.
 
-Článek shrnuje stav k 11. 10. 2026 podle nápovědy Skliku, nápovědy Seznam AI a blogu Seznamu. Do Seznam AI jsem dotazy nezadával a do Skliku ani Centra prodejce jsem se nepřihlašoval — popisuji dokumentaci, ne rozhraní.
+Článek shrnuje stav k 11. 10. 2026 podle nápovědy Skliku, nápovědy Seznam AI a blogu Seznamu. Do Seznam AI jsem dotazy nezadával a do Skliku ani Centra prodejce jsem se nepřihlašoval — popisuji dokumentaci, ne rozhraní. Potvrzení přejmenování jsem doplnil 22. 11. 2026 podle tiskové zprávy z 15. 10. 2026.
 
 ## Jak se <span class="hl">Zboží.cz</span> dostává do Seznam AI — <strong>doložené jsou placené nabídky</strong>
 
-K 11. 10. 2026 používají texty nápovědy i titulek webu asistent.seznam.cz název Seznam AI; tisková zpráva z května, smluvní podmínky a nápověda Skliku ještě Seznam Asistent. Oficiální oznámení přejmenování jsem nenašel. O tom, jestli je Zboží.cz zdrojem, říkají stránky Seznamu různé věci:
+K 11. 10. 2026 používají texty nápovědy i titulek webu asistent.seznam.cz název Seznam AI; tisková zpráva z května, smluvní podmínky a nápověda Skliku ještě Seznam Asistent. Přejmenování potvrdila [tisková zpráva z 15. 10. 2026](https://blog.seznam.cz/2026/10/seznam-ai-propojuje-dalsi-sluzby-seznamu-vyuziva-ho-uz-vice-nez-pul-milionu-uzivatelu-tydne/), která službu uvádí jako „Seznam AI (dříve Seznam Asistent)“. O tom, jestli je Zboží.cz zdrojem, říkají stránky Seznamu různé věci:
 
 | Zdroj Seznamu | Co uvádí o Zboží.cz |
 |---|---|
@@ -57,7 +57,7 @@ K 11. 10. 2026 používají texty nápovědy i titulek webu asistent.seznam.cz n
 | Nápověda Seznam AI, beta verze | Zboží.cz je mezi službami, které se připojí postupně |
 | Nápověda Sklik inzeráty v Seznam AI a blog z 25. 6. 2026 | Nabídky Seznam Nákupů se v Seznam AI zobrazují od května 2026 |
 
-Zdroje: [tisková zpráva o zpřístupnění asistenta](https://blog.seznam.cz/2026/05/seznam-asistent-je-dostupny-vsem-prihlasenym-uzivatelum/), nápověda Seznam AI — [časté dotazy](https://o-seznam.cz/napoveda/seznam-ai/nejcastejsi-dotazy/), [beta verze](https://o-seznam.cz/napoveda/seznam-ai/beta-verze/) a [Sklik inzeráty v Seznam AI](https://o-seznam.cz/napoveda/seznam-ai/sklik-inzeraty-v-seznam-ai/) — a [blog o inzerátech v Seznam AI](https://blog.seznam.cz/2026/06/novinka-v-seznam-asistentovi-pod-odpovedmi-se-zobrazuji-inzeraty-z-skliku/). Co tentýž výčet zdrojů znamená pro lokální firmy, rozebírá [článek o zápisu na Firmy.cz](/blog/firmy-cz-pro-ai/#co-se-zmenilo).
+Zdroje: [tisková zpráva o zpřístupnění asistenta](https://blog.seznam.cz/2026/05/seznam-asistent-je-dostupny-vsem-prihlasenym-uzivatelum/), [tisková zpráva z 15. 10. 2026](https://blog.seznam.cz/2026/10/seznam-ai-propojuje-dalsi-sluzby-seznamu-vyuziva-ho-uz-vice-nez-pul-milionu-uzivatelu-tydne/), nápověda Seznam AI — [časté dotazy](https://o-seznam.cz/napoveda/seznam-ai/nejcastejsi-dotazy/), [beta verze](https://o-seznam.cz/napoveda/seznam-ai/beta-verze/) a [Sklik inzeráty v Seznam AI](https://o-seznam.cz/napoveda/seznam-ai/sklik-inzeraty-v-seznam-ai/) — a [blog o inzerátech v Seznam AI](https://blog.seznam.cz/2026/06/novinka-v-seznam-asistentovi-pod-odpovedmi-se-zobrazuji-inzeraty-z-skliku/). Co tentýž výčet zdrojů znamená pro lokální firmy, rozebírá [článek o zápisu na Firmy.cz](/blog/firmy-cz-pro-ai/#co-se-zmenilo).
 
 <Insight tone="accent" icon="!" label="Co z toho plyne">
 Výčet zdrojů se mezi stránkami Seznamu liší, a tak na něm plán nestavte. Pevný bod je jinde: nápověda i blog Seznamu shodně uvádějí, že se v Seznam AI zobrazují nabídky Seznam Nákupů.

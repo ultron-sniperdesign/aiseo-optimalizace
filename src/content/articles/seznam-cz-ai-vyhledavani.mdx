@@ -7,7 +7,7 @@ category: "analysis"
 tags:
   - "ai-platformy"
 published: "2026-06-11"
-updated: "2026-10-14"
+updated: "2026-11-22"
 keywords:
   - "seznam ai vyhledavani"
   - "seznam ai"
@@ -20,7 +20,7 @@ faq:
   - q: "Jaký podíl má Seznam na českém vyhledávání?"
     a: "Podle StatCounteru připadlo v září 2026 v Česku na Seznam 15,05 % prokliků z vyhledávačů na weby v jeho vzorku, na Google 78,71 % a na Bing 4,73 %. StatCounter ale měří prokliky na weby se svým kódem, ne počet hledání, a data ještě 45 dní reviduje. Pro rozhodnutí je spolehlivější poměr návštěv a konverzí ze Seznamu ve vlastní analytice."
   - q: "Co je Seznam AI a jak souvisí se Seznam Asistentem?"
-    a: "Seznam AI je konverzační asistent Seznamu, kterému tisková zpráva z května 2026 ještě říkala Seznam Asistent; nápověda i titulek stránky asistent.seznam.cz k 14. 10. 2026 používají název Seznam AI. Je zdarma s denním a týdenním limitem dotazů a podle nápovědy kombinuje vlastní model SeLLMa s modely OpenAI přes Microsoft Azure."
+    a: "Seznam AI je nový název Seznam Asistenta, konverzačního asistenta Seznamu: [tisková zpráva z 15. 10. 2026](https://blog.seznam.cz/2026/10/seznam-ai-propojuje-dalsi-sluzby-seznamu-vyuziva-ho-uz-vice-nez-pul-milionu-uzivatelu-tydne/) ho uvádí jako „Seznam AI (dříve Seznam Asistent)“, nápověda i titulek stránky asistent.seznam.cz nový název používaly už 14. 10. 2026. Je zdarma s denním a týdenním limitem dotazů a podle nápovědy kombinuje vlastní model SeLLMa s modely OpenAI přes Microsoft Azure."
   - q: "Z jakých zdrojů Seznam AI odpovídá?"
     a: "Podle nápovědy Seznam AI odpovídá z webového a zpravodajského indexu Vyhledávání a z Počasí.cz. Tisková zpráva z 25. 5. 2026 uváděla i Zboží.cz, Firmy.cz, Sport.cz, jízdní řády a TV program, stránka o betě je ale řadí mezi služby, které se teprve připojí. Placené nabídky Seznam Nákupů se v Seznam AI zobrazují od května 2026."
   - q: "Jak se odhlásit z AI odpovědí Seznamu?"
@@ -30,7 +30,7 @@ faq:
   - q: "Zobrazuje Seznam AI reklamu?"
     a: "Pod odpověďmi Seznam AI se mohou objevit inzeráty Skliku z vyhledávacích a Chytrých kampaní, v sekci Sponzorované výsledky a nejvýš dva k dotazu. Zvlášť na ně cílit ani je vyloučit podle nápovědy nejde. Vedle toho se v Seznam AI zobrazují nabídky Seznam Nákupů z produktových feedů e-shopů."
   - q: "Vyplatí se Seznam AI řešit hned?"
-    a: "Seznam AI je v betě, s limitem dotazů a bez zveřejněných čísel o tom, kolik lidí ji používá. Má smysl ji sledovat a mít v pořádku základ: dostupnost webu pro Seznam, zápis na Firmy.cz a u e-shopu feed pro Zboží.cz. Strategii na ní zatím nestavějte a rozhodujte podle vlastních dat ze Seznamu."
+    a: "Seznam AI je v betě a s limitem dotazů; o počtu uživatelů Seznam uvádí jen „vyšší statisíce“ týdně (tisková zpráva z 15. 10. 2026). Má smysl ho sledovat a mít v pořádku základ: dostupnost webu pro Seznam, zápis na Firmy.cz a u e-shopu feed pro Zboží.cz. Strategii na něm zatím nestavějte a rozhodujte podle vlastních dat ze Seznamu."
 ---
 
 import Checklist from "~/components/blocks/Checklist.astro";
@@ -57,11 +57,11 @@ Seznam je v Česku menšinový, ale podle StatCounteru pořád druhý největš�
 
 ## Co je <span class="hl">Seznam AI</span> — <strong>tisková zpráva a nápověda se rozcházejí</strong>
 
-Asistenta Seznam spustil 25. 11. 2025 ve zkušebním provozu pro vybranou skupinu uživatelů a 25. 5. 2026 ho podle tiskové zprávy zpřístupnil v betě všem přihlášeným. Tisková zpráva mu ještě říkala Seznam Asistent, nápověda i titulek stránky asistent.seznam.cz k 14. 10. 2026 používají název Seznam AI; oznámení přejmenování jsem nenašel. V několika bodech si tisková zpráva a nápověda odporují:
+Asistenta Seznam spustil 25. 11. 2025 ve zkušebním provozu pro vybranou skupinu uživatelů a 25. 5. 2026 ho podle tiskové zprávy zpřístupnil v betě všem přihlášeným. Květnová tisková zpráva mu ještě říkala Seznam Asistent, nápověda i titulek stránky asistent.seznam.cz k 14. 10. 2026 používají název Seznam AI a přejmenování potvrdila [tisková zpráva z 15. 10. 2026](https://blog.seznam.cz/2026/10/seznam-ai-propojuje-dalsi-sluzby-seznamu-vyuziva-ho-uz-vice-nez-pul-milionu-uzivatelu-tydne/), která službu uvádí jako „Seznam AI (dříve Seznam Asistent)“. V několika bodech si květnová zpráva a nápověda odporují:
 
 | | Tisková zpráva 25. 5. 2026 | Nápověda Seznam AI k 14. 10. 2026 |
 |---|---|---|
-| Kdo ji má | všichni přihlášení | pilotní režim pro část uživatelů, rozšiřování postupně |
+| Kdo ho má | všichni přihlášení | pilotní režim pro část uživatelů, rozšiřování postupně |
 | Kde | domovská stránka Seznamu, aplikace Seznam, Vyhledávání, asistent.seznam.cz | domovská stránka Seznamu a výsledky Vyhledávání; aplikace přijde později |
 | Odkud bere data | Vyhledávání, zprávy a další služby Seznamu | webový a zpravodajský index Vyhledávání a Počasí.cz |
 
@@ -73,7 +73,7 @@ Nápověda k tomu uvádí tři věci, které tisková zpráva nemá:
 - **Limity:** služba je zdarma, standardní účet má 40 dotazů denně a 100 týdně, uživatelé služby Seznam bez reklam 400 týdně. V jedné konverzaci jde v betě položit nejvýš 10 dotazů.
 - **Zdroje u odpovědi:** Seznam AI ukazuje všechny zdroje, které měl model k dispozici, a neoznačuje, které skutečně použil.
 
-Zdroje: [tisková zpráva z 25. 5. 2026](https://blog.seznam.cz/2026/05/seznam-asistent-je-dostupny-vsem-prihlasenym-uzivatelum/), [oznámení z 25. 11. 2025](https://blog.seznam.cz/2025/11/seznam-asistent-umozni-uzivatelum-jednodussi-a-chytrejsi-orientaci-na-ceskem-internetu/) a nápověda Seznam AI — [časté dotazy](https://o-seznam.cz/napoveda/seznam-ai/nejcastejsi-dotazy/), [beta verze](https://o-seznam.cz/napoveda/seznam-ai/beta-verze/), [jak Seznam AI funguje](https://o-seznam.cz/napoveda/seznam-ai/jak-seznam-ai-funguje/) a [limity pro konverzace](https://o-seznam.cz/napoveda/seznam-ai/tarify-a-limity/).
+Zdroje: [tisková zpráva z 15. 10. 2026](https://blog.seznam.cz/2026/10/seznam-ai-propojuje-dalsi-sluzby-seznamu-vyuziva-ho-uz-vice-nez-pul-milionu-uzivatelu-tydne/), [tisková zpráva z 25. 5. 2026](https://blog.seznam.cz/2026/05/seznam-asistent-je-dostupny-vsem-prihlasenym-uzivatelum/), [oznámení z 25. 11. 2025](https://blog.seznam.cz/2025/11/seznam-asistent-umozni-uzivatelum-jednodussi-a-chytrejsi-orientaci-na-ceskem-internetu/) a nápověda Seznam AI — [časté dotazy](https://o-seznam.cz/napoveda/seznam-ai/nejcastejsi-dotazy/), [beta verze](https://o-seznam.cz/napoveda/seznam-ai/beta-verze/), [jak Seznam AI funguje](https://o-seznam.cz/napoveda/seznam-ai/jak-seznam-ai-funguje/) a [limity pro konverzace](https://o-seznam.cz/napoveda/seznam-ai/tarify-a-limity/).
 
 ## Odkud <span class="hl">Seznam AI</span> čerpá — <strong>a co z toho firma ovlivní</strong>
 
@@ -166,7 +166,7 @@ Prioritou Seznam není, když web cílí mimo Česko, když vaše data ukazují 
     Seznam AI uvádí všechno, co měl model k dispozici, a neoznačuje, co skutečně využil.
   </Mistake>
   <Mistake num="05" title="Stavět strategii na Seznam AI" fix="Sledujte a testujte, rozhodujte podle dat.">
-    Je v betě, s limitem dotazů a bez zveřejněných čísel o tom, kolik lidí ji používá.
+    Je v betě a s limitem dotazů; o počtu uživatelů Seznam uvádí jen „vyšší statisíce“ týdně.
   </Mistake>
 </MistakeGrid>
 
@@ -176,4 +176,4 @@ Nejisté zůstává, kolik lidí Seznam AI používá, kdy skončí beta a jestl
 
 Jestli k vám smí robot Seznamu, které AI odpovědi máte zakázané a jak vás Seznam AI zmiňuje na vzorku dotazů, projdeme v **[Auditu AI viditelnosti](/audit/)** za **3 600 Kč bez DPH** — spolu s údaji na Firmy.cz a viditelností v ChatGPT, Perplexity a Přehledu od AI.
 
-*Transparentně: Stav k 14. 10. 2026 podle nápovědy Seznam AI, nápovědy Vyhledávání a Skliku, tiskových zpráv Seznamu z listopadu 2025 a května 2026 a dat StatCounteru. Seznam AI jsem netestoval. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
+*Transparentně: Stav k 14. 10. 2026 podle nápovědy Seznam AI, nápovědy Vyhledávání a Skliku, tiskových zpráv Seznamu z listopadu 2025 a května 2026 a dat StatCounteru; potvrzení přejmenování doplněno 22. 11. 2026 podle tiskové zprávy z 15. 10. 2026. Seznam AI jsem netestoval. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
