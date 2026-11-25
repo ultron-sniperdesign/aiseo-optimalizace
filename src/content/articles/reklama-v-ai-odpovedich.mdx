@@ -1,0 +1,172 @@
+---
+title: "Reklama v AI odpovědích v Česku: co je placené a co organické"
+seoTitle: "Reklama v ChatGPT, Googlu a Seznam AI: co je placené"
+description: "Kde se v Česku platí za reklamu u AI odpovědí: ChatGPT, Sklik v Seznam AI a Google kolem Přehledu od AI. A jak placené a organické oddělit v GA4."
+answer: "Reklama u AI odpovědí je placené umístění oddělené od samotné odpovědi. Pro Česko ho k listopadu 2026 podle dokumentace nabízí ChatGPT a Seznam AI pod odpovědí, Google v češtině jen nad Přehledem od AI nebo pod ním. Podmínky zobrazení se liší podle služby. Nákup reklamy podle provozovatelů neovlivňuje obsah odpovědi ani nezajišťuje citaci."
+slug: "reklama-v-ai-odpovedich"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-11-26"
+updated: "2026-11-26"
+keywords:
+  - "reklama v AI odpovědích"
+  - "reklama v ChatGPT"
+  - "ChatGPT Ads v Česku"
+  - "Sklik v Seznam AI"
+  - "reklama v Přehledu od AI"
+  - "placená a organická AI viditelnost"
+  - "GA4 AI Assistant UTM"
+  - "Sponsored Agents"
+variant: "rich"
+faq:
+  - q: "Je v ChatGPT v Česku reklama?"
+    a: "Ano. Samoobslužný Ads Manager OpenAI je v Česku dostupný od 31. 8. 2026; inzerující firma musí sídlit v podporované zemi a reklama, obrázky i cílová stránka musí splnit zásady OpenAI. OpenAI reklamy postupně zavádí způsobilým uživatelům tarifů Free a Go ve vybraných regionech, i nepřihlášeným. Nejsou v tarifech Plus, Pro, Business, Enterprise a Edu, ve variantě Free bez reklam, v dočasných chatech, u citlivých témat jako zdraví nebo politika ani u účtů, které OpenAI identifikuje jako účty lidí mladších 18 let."
+  - q: "Ovlivňuje reklama, co odpoví ChatGPT?"
+    a: "Reklamy v ChatGPT podle OpenAI odpovědi neovlivňují: běží na systémech oddělených od jazykového modelu a inzerent nemá možnost odpověď ovlivnit, seřadit ani upravit. Reklama je podle nápovědy označená a oddělená od odpovědi. Zvenku se to tvrzení ověřit nedá."
+  - q: "Zobrazuje Google reklamu v Přehledu od AI i v češtině?"
+    a: "Reklamy přímo v Přehledu od AI a v režimu AI nápověda Google Ads pro češtinu neuvádí. Uvádí pro ně angličtinu a seznam 12 zemí mimo EU s rozdíly podle funkce a formátu a dodává, že seznam nemusí být úplný. V češtině se standardní reklamy mohou zobrazovat nad Přehledem od AI nebo pod ním, stejně jako u ostatních výsledků."
+  - q: "Jak v GA4 odliším placenou návštěvu z ChatGPT od neplacené?"
+    a: "GA4 automaticky nastaví médium ai-assistant a kampaň (ai-assistant), když rozpozná odkazující stránku ze seznamu AI asistentů, který vede Google; samotný kanál neplacený původ návštěvy nedokazuje. Reklamy proto označte vlastními parametry UTM s placeným médiem, třeba cpc, a na prvních relacích ověřte, jak je GA4 zařadil. Jestli ruční médium dostane přednost před automatickým ai-assistant, nápověda GA4 neuvádí."
+  - q: "Dá se zaplatit za citaci v odpovědi AI?"
+    a: "Za citaci v odpovědi ChatGPT, Googlu nebo Seznam AI podle dokumentace těchto služeb zaplatit nejde. Provozovatelé prodávají označené reklamní místo u odpovědi a uvádějí, že reklama její obsah neovlivňuje. Citace závisí na tom, jestli služba váš web najde a jestli obsah na otázku odpovídá."
+  - q: "Uvidím výkon Skliku v Seznam AI zvlášť?"
+    a: "Výkon inzerátů Skliku v Seznam AI podle nápovědy samostatně neuvidíte: inzeráty z vyhledávacích a Chytrých kampaní se počítají do statistik kampaně a sestavy. Nabídky Seznam Nákupů patří do kategorie „Produkt – doporučené nabídky“ a oddělení Seznam AI v ní nápověda neuvádí. Na plochy v Seznam AI nejde zvlášť cílit ani je vyloučit."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import SourceCard from "~/components/blocks/SourceCard.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+
+**Placené místo přímo pod AI odpovědí nabízejí pro Česko podle své dokumentace k listopadu 2026 dvě ze tří velkých služeb: ChatGPT a Seznam AI. Google pro češtinu uvádí jen standardní reklamy nad Přehledem od AI nebo pod ním.** Všichni tři provozovatelé tvrdí, že nákup reklamy neovlivňuje obsah odpovědi. Placené a neplacené návštěvy je proto potřeba vyhodnocovat zvlášť, jenže samotné označení odkazu nestačí: jak GA4 zařadí proklik z reklamy v ChatGPT, z dostupné dokumentace jasné není.
+
+Vycházím z nápovědy OpenAI, Google Ads, Google Analytics a Seznamu a z oznámení OpenAI, vše ve stavu k 25. 11. 2026, a z dat GA4 našeho e-shopu MEGA DETAIL. Reklamu v ChatGPT, v Seznam AI ani u Přehledu od AI jsem nezadával a v rozhraní ji neověřoval, umístění a podobu reklam proto popisuji podle dokumentace. Do Ads Manageru, Skliku ani Google Ads jsem se nepřihlašoval.
+
+## Kde se v Česku platí za <span class="hl">reklamu u AI odpovědí</span> — <strong>tři služby, tři místa</strong>
+
+Každá ze tří služeb prodává reklamu jinak a na jiném místě.
+
+| Služba | Umístění podle dokumentace | Jak se koupí |
+|---|---|---|
+| **ChatGPT** | pod odpovědí; pro způsobilé uživatele tarifů Free a Go i nepřihlášené, s výjimkami | samoobslužně v Ads Manageru, Česko je v seznamu dostupných zemí |
+| **Seznam AI** | pod odpovědí v sekci „Sponzorované výsledky“, nejvýš dva inzeráty | automaticky z vyhledávacích a Chytrých kampaní Skliku |
+| **Google** | v češtině nad Přehledem od AI nebo pod ním; uvnitř AI funkcí nápověda uvádí jen angličtinu a vybrané země mimo EU | ze stávajících kampaní Google Ads |
+
+### ChatGPT: pod odpovědí, pro Free, Go i nepřihlášené
+
+Podle [nápovědy OpenAI](https://help.openai.com/en/articles/20001047-ads-in-chatgpt) se reklama zobrazuje pod odpovědí ChatGPT a je označená a oddělená od ní; zkouší se i formát s více snímky, který se zobrazí během tvorby obrázku. OpenAI reklamy postupně zavádí způsobilým uživatelům tarifů Free a Go ve vybraných regionech a počítá s nimi i u nepřihlášených. Tarify Plus, Pro, Business, Enterprise a Edu reklamu nemají. OpenAI ji neukazuje účtům, které identifikuje jako účty lidí mladších 18 let, v dočasných chatech ani u citlivých témat, jako je osobní a duševní zdraví nebo politika. Způsobilý uživatel tarifu Free může v regionech, kde OpenAI reklamy testuje, zvolit variantu bez reklam s nižšími limity a bez některých nástrojů. Uživatel Go se kvůli ní musí vrátit na Free, nebo přejít na Plus či Pro. V EHP a ve Švýcarsku OpenAI reklamy zatím nepersonalizuje.
+
+Do 31 evropských zemí OpenAI reklamy [rozšířilo koncem srpna 2026](https://openai.com/index/chatgpt-ads-expands-across-europe/) a samoobslužný Ads Manager je v nich podle aktualizace oznámení dostupný od 31. 8. 2026. [Stránka dostupnosti](https://help.openai.com/en/articles/20001245-ads-manager-availability) vede Česko jako dostupné; firma, která inzeruje a platí, musí sídlit v zemi ze seznamu. Dostupnost ale neznamená, že projde každá nabídka: reklama, obrázky i cílová stránka musí splnit zásady OpenAI, regulované obory jako zdravotnictví nebo finanční služby mají přísnější kritéria a politickou reklamu OpenAI zatím nepovoluje. Podle návodu pro inzerenty má reklama název inzerenta, logo, titulek, popis, obrázek a cílovou stránku; produktové reklamy z feedu jsou samostatný formát.
+
+### Seznam AI: nejvýš dva inzeráty Skliku pod odpovědí
+
+Podle [nápovědy Seznam AI](https://o-seznam.cz/napoveda/seznam-ai/sklik-inzeraty-v-seznam-ai/) se pod odpovědí mohou zobrazit nejvýš dva inzeráty Skliku v sekci s nadpisem „Sponzorované výsledky“, s odkazem na informaci, kdo reklamu zaplatil. Seznam je zobrazuje hlavně u dotazů se zájmem o zboží nebo službu, a jen když inzerát splní jeho kritéria. Podobu, umístění i označení ploch průběžně testuje.
+
+Pro tuhle plochu se nic samostatně nenastavuje: inzeráty se přebírají z vyhledávacích a Chytrých kampaní a na plochu v Seznam AI nejde zvlášť cílit ani ji vyloučit. V asistentovi se zobrazují i nabídky Seznam Nákupů. Co z toho plyne pro SEO na Seznamu, rozebírá [článek o Seznamu a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/).
+
+### Google: v češtině nad Přehledem od AI nebo pod ním
+
+[Nápověda Google Ads](https://support.google.com/google-ads/answer/18826097?hl=cs) popisuje reklamy přímo v Přehledu od AI a v režimu AI, označené jako „Sponzorováno“. Uvádí pro ně angličtinu a seznam 12 zemí, mezi nimi USA, Kanadu, Austrálii a Indii; žádná z nich není v EU. Dostupnost se liší i podle funkce a formátu: Indonésie je uvedená jen pro Přehled od AI, Pákistán jen pro textové reklamy. Google upozorňuje, že seznam nemusí být úplný. Standardní reklamy se mohou zobrazovat nad Přehledem od AI nebo pod ním ve všech zemích a jazycích, kde je Přehled od AI dostupný, tedy i v Česku. Tam, kde reklamy v AI funkcích běží, jsou stávající kampaně ve vyhledávání, v Nákupech a maximálně výkonné kampaně (Performance Max) automaticky způsobilé a o zobrazení rozhoduje relevance a aukce; přesná a frázová shoda se uplatní jen u dotazů s jasným nákupním záměrem. Cílit jen na AI funkce ani se z nich odhlásit nejde.
+
+## Co zůstává <span class="hl">organické</span> — <strong>odpověď a citované zdroje</strong>
+
+Všichni tři provozovatelé v dokumentaci tvrdí totéž: reklama neovlivňuje odpověď. OpenAI píše, že reklamy běží na systémech oddělených od jazykového modelu a inzerent nemá možnost odpověď ovlivnit, seřadit ani upravit. Google uvádí, že placená inzerce nemá vliv na organické odpovědi generované jeho AI a naopak že organická citace webu nemá vliv na to, jestli jsou reklamy téhož webu v aukci způsobilé. Seznam píše, že odpověď Seznam AI není inzercí nijak ovlivněna. Zvenku se to ověřit nedá. Pro firmu z toho ale plyne praktický rozdíl: **reklama může získat placené místo u odpovědi, ne zmínku v ní ani citaci.**
+
+<CompareTable
+  leftLabel="Placené"
+  leftTone="aio"
+  rightLabel="Organické"
+  rightTone="seo"
+  rows={[
+    { icon: "📍", label: "Místo", left: "Podle dokumentace pod odpovědí v ChatGPT a Seznam AI, u Googlu v češtině nad Přehledem od AI nebo pod ním.", right: "Text odpovědi, zmínka značky, citovaný zdroj a odkaz přímo v odpovědi." },
+    { icon: "🎯", label: "Jak se tam dostanete", left: "Kampaň, rozpočet a nabídka v aukci; o zobrazení rozhoduje i relevance a pravidla služby.", right: "Obsah, který na otázku odpovídá, a splněné podmínky služby: přístup jejího robota, indexace, u Googlu i způsobilost k úryvku. Zobrazení zaručené není." },
+    { icon: "💰", label: "Za co platíte", left: "Za zobrazení nebo proklik podle typu kampaně.", right: "Za práci na webu a obsahu, ne za jednotlivý proklik." },
+    { icon: "📊", label: "Kde to uvidíte", left: "Ve statistikách kampaně; v GA4 podle automatického značkování nebo vlastních UTM, u ChatGPT s výhradou níže.", right: "V GA4 často v kanálu AI Assistant (ChatGPT, Gemini a další), u Googlu v organickém vyhledávání. Kanál sám neplacený původ nedokazuje." },
+    { icon: "⏹️", label: "Když přestanete platit", left: "Reklama zmizí.", right: "Viditelnost se s rozpočtem nevypne, ale ani není zaručená." },
+  ]}
+/>
+
+Do neplacené části se dostanete jinak než do aukce. ChatGPT podle [dokumentace OpenAI](https://developers.openai.com/api/docs/bots) nezobrazí v odpovědích vyhledávání weby, které zakážou robota OAI-SearchBot; zůstat mohou jen jako navigační odkazy. Rozdíl proti robotovi GPTBot, který sbírá data pro trénink, vysvětluje [článek o GPTBotovi a OAI-SearchBotovi](/blog/gptbot-bez-oai-searchbot/). Google pro Přehled od AI a režim AI [požaduje](https://developers.google.com/search/docs/appearance/ai-features) totéž co pro běžné vyhledávání: stránka musí být v indexu a způsobilá k zobrazení s úryvkem, a ani to zobrazení nezaručuje. Seznam AI podle Seznamu odpovídá mimo jiné z indexu Vyhledávání a web může použití svého obsahu k tvorbě AI odpovědí zakázat; postup popisuje [článek o Seznamu a AI vyhledávání](/blog/seznam-cz-ai-vyhledavani/).
+
+<Insight tone="warn" label="Proč viditelnost v AI nekoupíte jako proklik">
+  Reklama vám může získat placené místo u odpovědi, ne doporučení v ní. Když odpověď cituje konkurenta, vaše reklama na tom nic nezmění — a podle Googlu to platí i obráceně: organická citace nemá vliv na reklamní aukci. Viditelnost v samotné odpovědi stojí na tom, jestli vás služba najde a jestli váš obsah na otázku odpovídá lépe než ostatní zdroje.
+</Insight>
+
+## <span class="hl">Měření návštěv z AI</span> — <strong>UTM označí kampaň, zařazení v GA4 ověřte</strong>
+
+GA4 má ve výchozí skupině kanálů kanál [AI Assistant](https://support.google.com/analytics/answer/9756891?hl=cs) (v české verzi „AI asistent“), který Google ohlásil 13. 5. 2026. Relace dostane médium `ai-assistant` a kampaň `(ai-assistant)`, když odkazující stránka patří na seznam AI asistentů, který vede Google; nápověda jako příklady jmenuje ChatGPT, Gemini, DeepSeek, Copilot a Grok. Přehled od AI a režim AI do kanálu nepatří, GA4 je počítá do organického vyhledávání.
+
+Na e-shopu MEGA DETAIL přišlo od 1. 10. do 24. 11. 2026 ze zdroje chatgpt.com 678 relací. **GA4 jich 672 zařadil do kanálu AI Assistant**, čtyři skončily jako nepřiřazené a dvě jako odkazující; relace s placeným médiem ze zdroje ChatGPT v datech nejsou. Rozpoznávání zdroje tedy funguje. Kanál ale třídí podle odkazující stránky, ne podle toho, jestli člověk klikl na reklamu — a reklama i neplacený odkaz vedou z téže služby. Samotná absence placeného média proto nedokazuje, že mezi relacemi není reklama bez označení.
+
+OpenAI v [nápovědě pro inzerenty](https://help.openai.com/en/articles/20001207-ads-in-chatgpt-the-basics) doporučuje dát do cílové adresy reklamy statické parametry UTM; podle ní se při prokliku přenesou do analytiky. Jak s nimi naloží GA4, ale dokumentované není: nápověda neříká, jestli při odkazující stránce chatgpt.com dostane přednost ruční médium, nebo automatické `ai-assistant`. Stejně tak nevíme, kam GA4 zařadí proklik z reklamy bez UTM.
+
+```text
+https://www.example.com/kategorie/?utm_source=chatgpt.com&utm_medium=cpc&utm_campaign=chatgpt-ads-listopad
+```
+
+Médium `cpc` odpovídá regulárnímu výrazu, se kterým GA4 pracuje v pravidlech placených kanálů (`^(.*cp.*|ppc|retargeting|paid.*)$`). Jestli ho u prokliků z ChatGPT opravdu použije, ukážou až první relace kampaně.
+
+<Stepper tone="accent" steps={[
+  { title: "Označte každou reklamu v ChatGPT", desc: "Do cílové adresy dejte utm_source, utm_medium a utm_campaign. Médium zvolte tak, aby odpovídalo pravidlu placených kanálů GA4, například cpc." },
+  { title: "Ověřte, jak GA4 prokliky zařadil", desc: "U prvních relací z kampaně zkontrolujte zdroj, médium, kampaň i výsledný kanál. Když parametry v adrese chybí, hledejte přesměrování, které je zahodí. Když v adrese jsou, ale relace má médium ai-assistant, nemusí jít o chybu — přednost obou způsobů přiřazení dokumentovaná není." },
+  { title: "Počítejte s kontrolními roboty", desc: "Podle OpenAI mohou roboti kontrolující reklamy navštívit cílovou stránku i s parametry a analytika je může započítat jako placenou návštěvu. Nejsou to účtované kliky." },
+  { title: "Zkontrolujte i návštěvy mimo kanál AI Assistant", desc: "Odkazy v odpovědích ChatGPT vlastními UTM neoznačujete, GA4 je zařadí podle odkazující stránky. Projděte i relace mimo kanál AI Assistant, u kterých zůstal rozpoznatelný zdroj. Vlastní skupina kanálů je může seskupit, reklamní původ neoznačené návštěvy ale neodhalí." },
+  { title: "Výdaje a kliky berte z Ads Manageru", desc: "Ads Manager vykazuje zobrazení, kliky, výdaje, míru prokliku, průměrné ceny a konverze, pokud máte nastavené měření. Dotazy ani konverzace, u kterých se reklama zobrazila, OpenAI inzerentům nedává; dostanou jen souhrnné údaje." },
+]} />
+
+Google podle své nápovědy vykazuje výkon reklam v Přehledu od AI a v režimu AI jen souhrnně v běžných přehledech kampaní. Neplacené prokliky z obou funkcí GA4 počítá do organického vyhledávání spolu s klasickými výsledky, takže je samostatně neoddělíte.
+
+U Seznamu se výkon inzerátů z vyhledávacích a Chytrých kampaní v Seznam AI podle nápovědy počítá do statistik kampaně a sestavy; samostatná statistika plochy zatím není. Imprese a prokliky nabídek Seznam Nákupů patří do kategorie „Produkt – doporučené nabídky“ a možnost oddělit v ní Seznam AI od ostatních ploch nápověda neuvádí.
+
+Nastavení vlastní skupiny kanálů a srovnání konverzí z AI popisuje [článek o návštěvnosti z AI v GA4](/blog/ai-navstevnost-konverze/).
+
+## <span class="hl">Reklamní formáty a ceny v AI</span> — <strong>zahraniční testy a české zkušenosti</strong>
+
+<SourceCard
+  badge="Primární zdroj"
+  href="https://openai.com/index/reimagining-advertising-with-ai/"
+  linkLabel="Otevřít oznámení OpenAI"
+  tone="aio"
+>
+  **Sponsored Agents: po kliknutí na reklamu konverzace s agentem inzerenta.** OpenAI 16. 9. 2026 oznámilo test s vybranými inzerenty v USA. Konverzace s agentem je podle OpenAI oddělená od nezávislých odpovědí ChatGPT i od původní konverzace uživatele.
+</SourceCard>
+
+- **Reklama uvnitř AI funkcí Googlu (v angličtině na vybraných trzích mimo EU):** Google k reklamám v některých umístěních přidává vysvětlení od AI, krátké texty generované modely Gemini, které popisují, jak reklama souvisí s tím, co člověk hledá. Inzerent je podle nápovědy nemůže napsat, upravit, schválit ani vypnout. Tady se hranice mezi reklamou a textem od AI stírá nejvíc.
+- **Produktové reklamy z feedu v ChatGPT:** podle zkušeností českých agentur v Česku k 24. 9. 2026 nedoručovaly. Než na ně postavíte rozpočet, ověřte aktuální stav přímo v Ads Manageru.
+- **Ceny za proklik:** první veřejně popsané české testy ze září 2026 uvádějí jednotky až desítky korun za proklik, na malých vzorcích a s velkými rozdíly mezi účty. Cenu určuje aukce: o pořadí reklam podle OpenAI rozhoduje mimo jiné relevance a nabídka inzerenta.
+
+## <span class="hl">Rozpočet na reklamu a AI viditelnost</span> — <strong>vyhodnocujte je zvlášť</strong>
+
+Reklama v AI je placená distribuce a vyhodnocuje se jako kampaň: výdaje, prokliky a konverze, s vlastním řádkem rozpočtu. Jak ho oddělit od práce na obsahu, rozebírá [článek o rozpočtu SEO a AI viditelnosti](/blog/rozpocet-seo-vs-ai-viditelnost/). Organická viditelnost se vyhodnocuje přes zmínky, citace a neplacené návštěvy z AI. **Sečíst obojí do jednoho čísla nedává smysl:** placený proklik by vylepšil „návštěvnost z AI“, aniž by se změnilo cokoli na tom, jak vás odpovědi zmiňují.
+
+<DoDont>
+  <Do>
+
+  - Reklamu v ChatGPT označte vlastními UTM, její zařazení v GA4 ověřte a vyhodnocujte ji jako placenou kampaň.
+  - Když v ChatGPT inzerujete, zpřístupněte cílové stránky robotům OAI-AdsBot i OAI-SearchBot (návod k tvorbě reklam chce neblokovat oba) a zkontrolujte i firewall, CDN a přesměrování. U produktového feedu musí OAI-SearchBot projít i na adresy obrázků.
+  - Pro neplacené odpovědi ověřte, že robot OAI-SearchBot má k webu přístup, že stránky jsou v Googlu v indexu a způsobilé k zobrazení s úryvkem a že jste na Seznamu nezakázali použití obsahu k tvorbě AI odpovědí.
+
+  </Do>
+  <Dont>
+
+  - Sčítat placené a neplacené návštěvy z ChatGPT do jednoho čísla „návštěvnost z AI“.
+  - Čekat, že reklama přidá citace — podle provozovatelů odpověď neovlivňuje.
+  - Plánovat produktové reklamy v ChatGPT bez ověření, že v Česku doručují.
+
+  </Dont>
+</DoDont>
+
+Jak zjistit, jestli roboty neblokuje CDN, i když je robots.txt v pořádku, popisuje [článek o Cloudflaru a AI robotech](/blog/cloudflare-ai-bot-blocking/). OpenAI v [pokynech pro inzerenty](https://help.openai.com/en/articles/20001243-advertiser-guidance-for-allowing-openai-web-crawlers) radí zkontrolovat i každého hostitele v řetězci přesměrování a to, jestli robota nezastaví přihlášení, CAPTCHA nebo jiná kontrola prohlížeče. Ani přístup robotů schválení reklamy nezaručuje.
+
+## <strong>Shrnutí</strong>: placené místo je u odpovědi, <span class="hl">organické v ní</span>
+
+Podle dokumentace tří srovnávaných služeb nabízejí k listopadu 2026 reklamu u AI odpovědi pro Česko ChatGPT a Seznam AI; Google pro češtinu popisuje standardní reklamy nad Přehledem od AI nebo pod ním. Nákup reklamy podle provozovatelů neovlivňuje obsah samotné odpovědi ani nezajišťuje citaci. Pokud v AI službách inzerujete, označte placené odkazy už při zakládání kampaně a jejich zařazení v GA4 ověřte na prvních relacích; bez rozlišujícího údaje nemusí jít reklamní a neplacené návštěvy zpětně spolehlivě oddělit.
+
+Neplacenou část zmapuje **[Audit AI viditelnosti](/audit/)** za **3 600 Kč bez DPH**: co o vás dnes říkají ChatGPT, Perplexity a Přehled od AI, jestli k vám jejich roboti mají přístup a kde obsahu chybí odpovědi, které jde citovat. Seznam úprav seřazený podle dopadu a náročnosti dostanete do pěti pracovních dní od úhrady a projdeme ho spolu na online schůzce na 30–60 minut v termínu podle vašich možností.
+
+*Transparentně: Stav k 25. 11. 2026 podle nápovědy OpenAI pro uživatele i inzerenty, dokumentace robotů OpenAI, oznámení OpenAI z 18. 8. a 16. 9. 2026, nápovědy Google Ads, Google Analytics a dokumentace Googlu k AI funkcím a nápovědy Seznamu ke Skliku v Seznam AI; data GA4 e-shopu MEGA DETAIL za 1. 10.–24. 11. 2026. Ceny za proklik a stav produktových reklam jsou zkušenosti českých agentur ze září 2026, ne údaje OpenAI. Reklamu v žádné ze služeb jsem nezadával a podobu reklam v rozhraní neověřoval. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*

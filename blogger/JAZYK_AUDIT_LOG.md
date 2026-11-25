@@ -1878,3 +1878,18 @@ zpřesněny formulace o IP, filtrování a náročnosti požadavků · český l
 „odstranit tření“, „kurátorovaný přehled“, „servisní stránka“, „výsledek návštěvy“ a „technická chuť modelu“ byly
 nahrazeny konkrétní češtinou · zpřesněny podmínky generativních funkcí Googlu, meze čtení výsledků vyhledávání,
 proměnlivost záměru a pojmenování studie AIVO · titulek nyní rozlišuje vnitřní formáty a prodejní stránku.
+
+## 2026-11-26 · `reklama-v-ai-odpovedich` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v74, beze změny |
+| Mechanický checker | **0 nálezů** v draftu i po konečných opravách; 2 934 slov (včetně frontmatteru a komponent), 276 pravidel, hustota 0,0 na 1 000 slov |
+| Nezávislý jazykový audit | kolo 2 (Codex): 6 jazykových a strukturních varování a 2 tipy, všech 8 přijato (FAQ bez holého záporu na začátku, nadpisy H2 podle obsahu sekcí, rozdělené odstavce s opakovanou atribucí, jednoznačný pokyn k zákazu AI odpovědí na Seznamu, CTA s oddělenou lhůtou a schůzkou) |
+| Závěrečný audit | C5b: 8 zásadních oprav obstálo, 1 nový věcný nález ve FAQ 4 opraven a cíleně ověřen (**OBSTOJÍ**) |
+| LLM průchod ze skillu | externí volání gpt-5.4 se nepoužívá (OpenAI API vypnuté rozhodnutím z 30. 10. 2026); náhradou vlastní průchod po C5b — 5 úprav bez změny faktů: vsuvka v úvodní větě, opakování „obrázky … obrázků“, „zvlášť … zvlášť“, dvojznačné „jeho reklam“, tučné zvýraznění přes hranici věty |
+| Nová pravidla | **žádné** — nálezy závisely na větné stavbě a kontextu, mechanicky je poznat nejde |
+
+**Opraveno:** kostrbatá vazba „odpověď tvarovat, řadit ani měnit“ → „ovlivnit, seřadit ani upravit“ · holé „Zatím ne.“ /
+„Podle OpenAI ne“ na začátku FAQ nahrazeny větou s předmětem · „hlídejte nastavení zákazu“ → „ověřte, že jste nezakázali“ ·
+„zmíněný článek“ → přímý odkaz · nadpisy sekcí o měření, formátech a rozpočtu přejmenovány podle toho, co v nich je.
