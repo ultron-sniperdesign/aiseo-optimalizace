@@ -1,0 +1,140 @@
+---
+title: "Propad návštěvnosti e-shopu kvůli AI: co ukazují česká data 2026"
+seoTitle: "Propad návštěvnosti e-shopu kvůli AI? Česká data 2026"
+description: "Propad návštěvnosti e-shopu v roce 2026: co ukazují data Shoptetu a Marketing Mineru a co při hledání příčiny poklesu prověřit na vlastním webu."
+answer: "Přímá návštěvnost z AI znamená prokliky z asistentů do e-shopu. Shoptet uvádí průměrný podíl kolem 0,3 % návštěv na své platformě, bez Přehledu od AI a části Gemini. Marketing Miner uvádí za červenec 2026 průměrně 0,6 % objednávek u více než stovky e-shopů s jeho doplňkem pro Shoptet. Oba vzorky zachycují jen doměřené prokliky; příčinu poklesu organické návštěvnosti neurčují."
+slug: "propad-navstevnosti-eshopu-ai"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "mereni"
+published: "2026-11-26"
+updated: "2026-11-26"
+keywords:
+  - "propad návštěvnosti e-shopu"
+  - "návštěvnost z AI e-shopy"
+  - "pokles organické návštěvnosti"
+  - "AI a e-commerce v Česku"
+  - "Přehled od AI a e-shopy"
+  - "objednávky z AI"
+  - "Shoptet návštěvnost z AI"
+  - "sezónnost návštěvnosti e-shopu"
+variant: "rich"
+faq:
+  - q: "Kolik návštěvnosti přivádí AI českým e-shopům?"
+    a: "Shoptet v říjnu 2026 uvedl průměrný podíl kolem 0,3 % přímých návštěv z AI u e-shopů na své platformě, u některých obchodů až 15 %; čísla nezahrnují Přehled od AI ani část návštěv z Gemini. U více než stovky e-shopů s doplňkem Marketing Mineru pro Shoptet šlo v červenci 2026 průměrně o 0,6 % objednávek. Obojí jsou jen doměřené prokliky a celý český trh nepopisují."
+  - q: "Může za propad návštěvnosti mého e-shopu AI?"
+    a: "Samotný pokles organické návštěvnosti e-shopu vliv AI neprokazuje. Porovnejte stejné měsíce meziročně, termíny aktualizací Googlu a změny na webu i v měření. Pokud při srovnatelných dotazech, stránkách, zařízeních a pozicích přibývá zobrazení a klesá míra prokliku, může to souviset s Přehledem od AI. Ani tento signál příčinu neprokazuje."
+  - q: "Proč GA4 ukazuje z AI tak málo návštěv?"
+    a: "GA4 rozpozná zdroj AI z odkazující adresy nebo označení zdroje v URL. Podle Marketing Mineru návštěvy z mobilních aplikací asistentů často skončí mezi přímými. Neplacené prokliky z Přehledu od AI a režimu AI patří v GA4 do organického vyhledávání. Když si zákazník obchod po doporučení AI dohledá sám, z těchto dat vazbu na doporučení nepoznáte."
+  - q: "Konvertují návštěvy z AI lépe než z Googlu?"
+    a: "Konverzi návštěv z AI ovlivňuje i vstupní stránka. Na e-shopu MEGA DETAIL měl kanál AI Assistant od 15. 6. do 30. 9. 2026 při vstupu na produkt necelý trojnásobek nákupů na relaci oproti organickému vyhledávání. Jde jen o 26 nákupů v AI Assistant a 31 v organickém vyhledávání jediného obchodu. Organické vyhledávání zahrnuje i neplacené prokliky z AI funkcí Googlu."
+  - q: "Kde se vzalo číslo o propadu e-shopů o 30–40 %?"
+    a: "Údaj o poklesu návštěvnosti některých e-shopů až o 30–40 % pochází z výroku jednatele české SEO agentury z června 2025, krátce po spuštění Přehledu od AI v češtině. Data, metodika ani počet e-shopů zveřejněny nebyly. Nejde tedy o veřejně doložené měření celého českého trhu."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+**Podle dat Shoptetu a Marketing Mineru dosahují průměrné doměřené podíly přímých návštěv a objednávek z AI asistentů u jimi sledovaných českých e-shopů v roce 2026 desetin procenta. Citovaný údaj o propadu e-shopů „až o 30–40 %“ je výrok bez zveřejněných dat.** Pokles na konkrétním webu může mít i jiné příčiny než AI. Článek porovnává data Shoptetu, Marketing Mineru a APEK a na příkladu e-shopu MEGA DETAIL ukazuje, co při hledání příčiny poklesu prověřit a jaké závěry dostupná data neunesou.
+
+Vycházím z dat Shoptetu, Marketing Mineru a APEK tak, jak je k listopadu 2026 citovala česká média (metodiku v detailu nezveřejnila), ze stavového panelu Vyhledávání Google a z GA4 a Search Console našeho e-shopu MEGA DETAIL (data z API ke 26. 11. 2026).
+
+## <span class="hl">Návštěvy a objednávky z AI</span> — <strong>ve sledovaných vzorcích průměrně desetiny procenta</strong>
+
+Následující čtyři české údaje měří různé věci. Dva popisují doměřené návštěvy a objednávky z AI, dva využití AI při nakupování.
+
+| Zdroj | Co měří | Číslo | Výhrada |
+|---|---|---|---|
+| Shoptet, konference Reshoper (říjen 2026) | průměrný podíl návštěv z nástrojů AI u e-shopů na platformě | kolem 0,3 %; obchodů, které takové návštěvy evidují, podle Shoptetu meziročně o 62 % víc; u některých až 15 % | nezahrnuje Přehled od AI; část návštěv z Gemini se vykazuje jako přímý vstup |
+| Marketing Miner (červenec 2026) | objednávky z AI u více než stovky e-shopů s jeho doplňkem pro Shoptet | průměrný e-shop 0,6 %; průměr čtvrtiny nejviditelnějších 1,9 %, desetiny 3 %; počet i podíl objednávek od ledna do července dvojnásobné | jen doměřené přímé prokliky; skutečné návštěvy a tržby z AI firma odhaduje na dvoj- až trojnásobek |
+| APEK, E-commerce Study 2026 (září) | podíl online nakupujících, kteří už nějak využili AI při výběru zboží nebo obchodu | 50 % | internetový průzkum, 1 504 respondentů; AI nejčastěji jako rádce |
+| Shoptet, průzkum z léta 2026 | podíl online nakupujících, kteří před nákupem používají AI | 31 % | jiné šetření s jinou otázkou, velikost vzorku zdroj neuvádí; bez metodiky rozdíl proti APEK nevysvětlíme |
+
+Shoptet k tomu uvádí, že návštěvy z AI mají o 29 % vyšší konverzi než průměr a o 50 % vyšší než návštěvy z organického vyhledávání a že 76 % zákazníků z AI je nových; období ani definici nového zákazníka zdroj neuvádí. Srovnání konverzí ale hodně závisí na tom, kam návštěvy vstupují.
+
+Na e-shopu MEGA DETAIL začínalo od 15. 6. do 30. 9. 2026 na produktu 51 % relací kanálu AI Assistant a 3 % relací organického vyhledávání. Poměr nákupů na relaci byl v celých kanálech u AI Assistant asi sedmnáctkrát vyšší; po omezení na vstupy na produkt šlo o necelý trojnásobek. Produktové srovnání stojí jen na 26 nákupech v AI Assistant a 31 v organickém vyhledávání jediného e-shopu. Organické vyhledávání zahrnuje i neplacené prokliky z AI funkcí Googlu. Postup popisuje [rozbor konverzí z AI v GA4](/blog/ai-navstevnost-konverze/).
+
+<Insight tone="accent" label="Proč jsou čísla nízká, když AI používá polovina nakupujících">
+  Analytika pozná zdroj AI, když se zachová odkazující adresa nebo označení zdroje v URL. Návštěvy z mobilních aplikací asistentů se podle Marketing Mineru často k AI nepřiřadí a skončí mezi přímými. Neplacené prokliky z Přehledu od AI a režimu AI GA4 podle nápovědy počítá do organického vyhledávání. A když si zákazník obchod po doporučení AI vyhledá sám, návštěva se zaznamená, ale vazbu na doporučení z dat nepoznáte. Marketing Miner proto doměřený podíl označuje za spodní hranici.
+</Insight>
+
+## Odkud se berou <span class="hl">„desítky procent propadu“</span> — <strong>výrok bez zveřejněných dat</strong>
+
+Jeden z citovaných údajů o propadech českých e-shopů kvůli AI pochází z června 2025, krátce po spuštění Přehledu od AI v češtině. Jednatel české SEO agentury tehdy pro média uvedl, že u některých e-shopů vidí pokles návštěvnosti až o 30–40 %. Data, metodiku ani počet e-shopů nezveřejnil; zahraniční „průměrný pokles o 25 % u webů, které včas nezareagovaly“ ve stejném článku neměl uvedený zdroj.
+
+Data Shoptetu a Marketing Mineru z roku 2026 měří opačnou stranu — kolik AI e-shopům přivádí, ne kolik jim bere. Veřejné české měření, které by oddělilo příspěvek AI k poklesu návštěvnosti e-shopů, jsem v podkladech k 26. 11. 2026 nenašel. To není důkaz nulového vlivu ani důkaz, že takové podklady neexistují. Proč se čísla o propadech nedají sčítat ani přenášet na vlastní web, rozebírá [článek o propadech návštěvnosti vydavatelů](/blog/propady-navstevnosti-vydavatelu/).
+
+## <span class="hl">Pokles organické návštěvnosti</span> — <strong>pět dalších vysvětlení k prověření</strong>
+
+Pokles organické návštěvnosti je výsledek, ne příčina. Než ho přičtete AI, prověřte vysvětlení, která se dají ověřit rychleji.
+
+<Checklist title="Co prověřit, než propad přičtete AI" tone="aio" items={[
+  { title: "Sezóna", desc: "Srovnávejte stejné úplné měsíce meziročně, ne měsíc s předchozím měsícem. Neúplný měsíc nesrovnávejte vůbec." },
+  { title: "Aktualizace Googlu", desc: "Porovnejte začátek poklesu s termíny aktualizací hodnocení Googlu. Časový souběh sám dopad na váš web nedokazuje." },
+  { title: "Změny na webu", desc: "Migrace, nová šablona, smazané nebo sloučené stránky, přepsané texty, změna interních odkazů." },
+  { title: "Měření", desc: "Nová cookie lišta nebo jiné nastavení souhlasu, chyba v měřicím kódu, nový kanál AI Assistant v GA4 — Google ho oznámil 13. 5. 2026, na našem e-shopu má první relace v červnu a přebírá relace z jiných kanálů." },
+  { title: "Poptávka a výsledky vyhledávání", desc: "Menší hledanost, nový silný konkurent, víc reklam nebo jiných prvků nad organickými výsledky." },
+]} />
+
+### Aktualizace Googlu k 26. 11. 2026
+
+Podle stavového panelu Vyhledávání Google:
+
+- Od konce března do začátku října 2026 proběhly dvě jádrové aktualizace, od 27. 3. a 21. 5., a tři aktualizace proti spamu, od 24. 6., 18. 8. a 24. 9.
+- Při rozboru března zohledněte také aktualizaci proti spamu od 24. 3. 2026.
+- Panel k 26. 11. 2026 uvádí ještě jádrovou aktualizaci od 10. 11. a položku „December 2026 core update“ od 24. 11. Tyto listopadové události už do říjnového srovnání nezasahují.
+
+## <span class="hl">Propad návštěvnosti e-shopu</span> — <strong>pět kontrol před závěrem o vlivu AI</strong>
+
+<Stepper tone="accent" steps={[
+  { title: "Srovnejte stejné měsíce meziročně", desc: "V GA4 porovnejte organické relace a objednávky za stejné úplné měsíce let 2025 a 2026. Prohlédněte i delší časovou řadu. Odlišný průběh dvou let sám sezónní vliv nevylučuje." },
+  { title: "V datech Search Console oddělte zobrazení, kliky a pozici", desc: "Klesla zobrazení: menší viditelnost nebo poptávka. Když při srovnatelných dotazech, stránkách a zařízeních zůstávají zobrazení i pozice podobné a ubývají kliky, klesá míra prokliku. To sedí na Přehled od AI, ale i na jiné prvky ve výsledcích. Souhrnné průměry takovou srovnatelnost nezaručují." },
+  { title: "Rozdělte stránky podle typu", desc: "Informační články, kategorie a produkty se chovají jinak. Když míra prokliku klesá jen u článků, ukazuje to spíš na změnu výsledků u informačních dotazů než na problém celého webu." },
+  { title: "Porovnejte úbytek organických relací s přírůstkem ze zdrojů AI", desc: "Spočítejte úbytek organických relací a přírůstek relací ze zdrojů AI mezi oběma obdobími. Zdroje, například chatgpt.com a gemini.google.com, vymezte v obou obdobích stejně; nepoužívejte jen kanál AI Assistant. Google ho oznámil 13. 5. 2026 a starší návštěvy z AI jsou v jiných kanálech. Početní srovnání změn neprokazuje nahrazení konkrétních návštěv." },
+  { title: "Zapište si data aktualizací a vlastních zásahů", desc: "Vedle grafu dejte data aktualizací Googlu a změn na webu. Bez nich se pokles snadno přičte tomu, o čem se zrovna mluví." },
+]} />
+
+## Příklad z <span class="hl">našeho e-shopu</span> — <strong>kliky −24 %, zobrazení +10 %</strong>
+
+E-shop MEGA DETAIL (autokosmetika) měl v říjnu 2026 meziročně o 24 % méně organických relací v GA4 (9 243 proti 12 210) a o 24 % méně kliků v Search Console. Od května do listopadu 2025 organické relace celkově vzrostly z 9 233 na 13 743, od března do října 2026 klesly ze 17 751 na 9 243. Průběh obou let se tedy liší, ale podíl sezónnosti na poklesu z této řady neurčíme.
+
+| Search Console, vyhledávání na webu | říjen 2025 | říjen 2026 | změna |
+|---|---|---|---|
+| kliky | 9 993 | 7 586 | −24 % |
+| zobrazení | 304 429 | 334 685 | +10 % |
+| míra prokliku | 3,28 % | 2,27 % | −1,0 procentního bodu |
+| průměrná pozice, mobil / počítač | 5,5 / 11,2 | 5,7 / 6,1 | mobil mírně hůř, počítač lépe |
+
+Zobrazení přibylo a kliků ubylo. Jde o souhrnné údaje, ve kterých se může měnit skladba dotazů a stránek, nikoli o srovnání stejných výsledků vyhledávání. Rozdělení podle typu stránek (součty po stránkách Search Console počítá jinak než celek, proto se trochu liší):
+
+| Typ stránky | kliky 10/2025 → 10/2026 | zobrazení 10/2025 → 10/2026 | míra prokliku |
+|---|---|---|---|
+| články | 8 922 → 6 722 (−25 %) | 234 656 → 286 124 (+22 %) | 3,80 % → 2,35 % |
+| ostatní: produkty, kategorie, jazykové verze | 925 → 741 (−20 %) | 91 962 → 52 743 (−43 %) | 1,01 % → 1,40 % |
+| domovská stránka | 193 → 140 (−27 %) | 8 956 → 5 388 (−40 %) | 2,15 % → 2,60 % |
+
+### Články: více zobrazení, nižší míra prokliku
+
+U článků, které přivádějí většinu kliků, přibylo zobrazení o 22 % a míra prokliku klesla z 3,8 % na 2,35 %. Takový vývoj může souviset s častějším výskytem Přehledu od AI u informačních dotazů, ale také se změnou skladby dotazů, pro které se články zobrazují. Search Console podle [dokumentace Googlu](https://developers.google.com/search/docs/appearance/ai-features) zahrnuje zobrazení a kliky z Přehledu od AI a režimu AI do celkového výkonu ve vyhledávání na webu. Jejich příspěvek proto z tohoto exportu podle zařízení a stránek neoddělíme.
+
+### Ostatní stránky: méně zobrazení, vyšší míra prokliku
+
+U ostatních adres klesla zobrazení o 43 %, zatímco míra prokliku vzrostla z 1,01 % na 1,40 %. Tuto změnu tedy nižší míra prokliku nevysvětluje. Bez podrobnějšího rozkladu nelze určit, jak se na změně podílely poptávka, skladba dotazů a stránek či pozice a zda souvisí s AI.
+
+### Přírůstek ze zdrojů AI proti úbytku z vyhledávání
+
+Zdroje AI přivedly v říjnu 2026 asi 423 relací a 14 objednávek, rok předtím 144 relací a 6 objednávek (tehdy je GA4 řadil do kanálů Referral a Unassigned). Z organického vyhledávání mezitím ubylo 2 967 relací a 13 objednávek. Přírůstek doměřených relací ze zdrojů AI (279) tak početně odpovídá asi 9 % úbytku organických relací. Celý vliv AI to nevyjadřuje ani neprokazuje, že AI nahradila konkrétní návštěvy; organické vyhledávání navíc zahrnuje neplacené prokliky z AI funkcí Googlu. U objednávek jde o malá čísla.
+
+<Insight tone="warn" label="Co z našich dat jde tvrdit">
+  Jde říct, že kliky z Googlu meziročně klesly, přestože zobrazení článků přibylo, a že doměřený přírůstek návštěv ze zdrojů AI odpovídá jen malé části úbytku organické návštěvnosti. Nejde říct, že pokles způsobil Přehled od AI: překrývá se s jádrovými aktualizacemi Googlu z března a května a se třemi aktualizacemi proti spamu a z dostupných dat příčinu neoddělíme. Je to jeden e-shop s autokosmetikou, ne vzorek trhu.
+</Insight>
+
+## <span class="hl">AI viditelnost e-shopu</span> — <strong>sledovat zmínky má smysl i bez prokázané příčiny poklesu</strong>
+
+U e-shopů sledovaných Shoptetem a Marketing Minerem tvoří doměřené průměrné podíly návštěv a objednávek z AI desetiny procenta. Měření nezachycuje celý vliv AI. Při poklesu organické návštěvnosti nejdřív projděte pět kontrol výše. Pokles míry prokliku u informačních stránek při srovnatelných pozicích je důvod prověřit změny ve výsledcích vyhledávání včetně AI odpovědí, ne důkaz jejich vlivu. Jestli vás AI odpovědi zmiňují, má ale smysl sledovat bez ohledu na to, odkud se vzal pokles. Jak v datech oddělit placené návštěvy z AI od neplacených, popisuje [článek o reklamě v AI odpovědích](/blog/reklama-v-ai-odpovedich/).
+
+Kde vás AI odpovědi zmiňují a kde ne, zmapuje **[Audit AI viditelnosti](/audit/)** za **3 600 Kč bez DPH**: co o vás dnes říkají ChatGPT, Perplexity a Přehled od AI, jestli k vám jejich roboti mají přístup a kde obsahu chybí odpovědi, které jde citovat. Seznam úprav seřazený podle dopadu a náročnosti dostanete do pěti pracovních dní od úhrady a projdeme ho spolu na online schůzce na 30–60 minut v termínu podle vašich možností.
+
+*Transparentně: Data Shoptetu (konference Reshoper, podle MediaGuru 20. 10. 2026), Marketing Mineru (Lupa 10. 8. 2026, MediaGuru 13. 8. 2026) a APEK (Lupa 25. 9. 2026) jsou čísla, jak je citovala média; metodiku v detailu nezveřejnila. Výrok o propadech „až o 30–40 %“ podle MediaGuru 20. 6. 2025. Aktualizace Googlu podle stavového panelu Vyhledávání Google k 26. 11. 2026. Data e-shopu MEGA DETAIL z GA4 a Search Console (API, 26. 11. 2026). Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*

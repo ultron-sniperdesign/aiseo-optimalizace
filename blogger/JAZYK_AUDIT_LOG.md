@@ -1893,3 +1893,19 @@ proměnlivost záměru a pojmenování studie AIVO · titulek nyní rozlišuje v
 **Opraveno:** kostrbatá vazba „odpověď tvarovat, řadit ani měnit“ → „ovlivnit, seřadit ani upravit“ · holé „Zatím ne.“ /
 „Podle OpenAI ne“ na začátku FAQ nahrazeny větou s předmětem · „hlídejte nastavení zákazu“ → „ověřte, že jste nezakázali“ ·
 „zmíněný článek“ → přímý odkaz · nadpisy sekcí o měření, formátech a rozpočtu přejmenovány podle toho, co v nich je.
+
+## 2026-11-26 · `propad-navstevnosti-eshopu-ai` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v74, beze změny |
+| Mechanický checker | v draftu **3 nálezy** (⛔ „Přehledů od AI“ → „Přehledu od AI“, 3×), opraveno; po konečných opravách **0 nálezů**, 2 475 slov (včetně frontmatteru a komponent), 276 pravidel |
+| Nezávislý jazykový audit | kolo 2 (Codex): 8 jazykových a strukturních varování, všech 8 přijato (FAQ s předmětem v první větě, rozdělené souvětí o GA4, chronologie aktualizací z Checklistu do samostatného H3, Stepper s úkony, dlouhý rozbor rozdělen do H3, slang „organika“ nahrazen, nadpisy podle obsahu) |
+| Závěrečný audit | C5b: 8 zásadních oprav obstálo, u 1 zbytek v úvodní větě opraven doslovně zněním auditora |
+| LLM průchod ze skillu | externí volání gpt-5.4 se nepoužívá (OpenAI API vypnuté rozhodnutím z 30. 10. 2026); náhradou nezávislý jazykový audit kola 2 |
+| Nová pravidla | **žádné** — ale pravidlo „organika“ ve slovníku nechytá skloňované tvary („organiky“, „organikou“); auditor je našel ručně. Kandidát na rozšíření regexu při příští údržbě slovníku |
+
+**Opraveno:** „Přehledů od AI“ → „Přehledu od AI“ (3×) · „organika / organiky / organiku“ → „organické vyhledávání / návštěvnost“ (6×) ·
+„nejdřív měřit, pak škrtat“ → nadpis podle obsahu · holé „Ze samotného poklesu to poznat nejde“ a větný zlomek „Z výroku…“
+na začátku FAQ nahrazeny větami s předmětem · „kontrolou stejných výsledků vyhledávání to není“ → „nikoli o srovnání stejných
+výsledků vyhledávání“.
