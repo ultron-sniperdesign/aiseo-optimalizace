@@ -1923,3 +1923,20 @@ výsledků vyhledávání“.
 
 **Opraveno:** ISO datum v textu → český zápis · „Co je UCP a ACP“ → „Co jsou“ (shoda s množným číslem) · „To není důkaz, že by podpora
 nikdy nebyla“ → „Z absence zmínky nelze určit, zda Upgates tuto funkci podporuje“ · holé „Obchodník.“ na začátku FAQ → věta s předmětem.
+
+## 2026-11-26 · `ai-act-pro-weby` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v74, beze změny |
+| Mechanický checker | v draftu i po všech opravách **0 nálezů**; konečná verze 2 681 slov (včetně frontmatteru a komponent), 276 pravidel |
+| Nezávislý jazykový audit | kolo 2 (Codex): 2 blockery (zbytky věcných nálezů kola 1 v `answer` a v Checklistu) a 4 varování, vše přijato (tabulka čl. 50 s buňkami o 36–61 slovech → pět bloků pod H3 s Kdo / Povinnost / Výjimky, opravené vazby „Systém … zajistí“ a „vytvářejícího nebo manipulujícího text“, kratší úvod bez tučného odstavce, závěr s dalším krokem místo opakování podmínek, dva nadpisy podle obsahu, FAQ začínající předmětem místo „Ne každý.“) |
+| Závěrečný audit | C5b: 13 oprav kola 1 obstálo; nový věcný nález v doplnění o čl. 50 odst. 7 opraven doslovně zněním auditora, cílené ověření obstálo |
+| LLM průchod ze skillu | externí volání gpt-5.4 se nepoužívá (OpenAI API vypnuté rozhodnutím z 30. 10. 2026); náhradou nezávislý jazykový audit kola 2 |
+| Nová pravidla | **žádné** — nálezy závisely na větné stavbě a délce právních výhrad, ne na hlídaných výrazech |
+
+**Opraveno:** „Systém vytvářející syntetický … obsah zajistí“ → „Poskytovatel systému vytvářejícího … zajistí“ · „U systému
+vytvářejícího nebo manipulujícího text“ → „systému AI, který vytváří text … nebo s takovým textem manipuluje“ · věta
+„Nevztahuje se ani na…“ hned za „Výjimka se uplatní…“ (četla se jako výjimka z výjimky) → „Povinnost se nevztahuje ani na…“ ·
+„Co si web a e-shop prověřit“ (vazba bez slovesa) → „AI Act pro weby a e-shopy — co prověřit s právníkem“ · „rady“ v čl. 50
+odst. 7 doplněno vysvětlivkou „(Evropské rady pro umělou inteligenci)“, aby se nezaměnila s Radou EU.
