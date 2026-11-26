@@ -1940,3 +1940,19 @@ vytvářejícího nebo manipulujícího text“ → „systému AI, který vytv�
 „Nevztahuje se ani na…“ hned za „Výjimka se uplatní…“ (četla se jako výjimka z výjimky) → „Povinnost se nevztahuje ani na…“ ·
 „Co si web a e-shop prověřit“ (vazba bez slovesa) → „AI Act pro weby a e-shopy — co prověřit s právníkem“ · „rady“ v čl. 50
 odst. 7 doplněno vysvětlivkou „(Evropské rady pro umělou inteligenci)“, aby se nezaměnila s Radou EU.
+
+## 2026-11-26 · `seo-pro-seznam-cz` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v74, beze změny |
+| Mechanický checker | v draftu i po všech opravách **0 nálezů**; konečná verze 3 041 slov (včetně frontmatteru a komponent), 276 pravidel |
+| Nezávislý jazykový audit | kolo 2 (Codex): 0 blockerů, 7 varování a 2 tipy, vše přijato (`answer` začíná definicí, sebestačné FAQ 1, konkrétnější H2, kratší buňky srovnávací tabulky bez dvojího záporu, postup IndexNow pod samostatným H3, členění dlouhých sekcí na H3, vysvětlené pojmy SeznamBot, Request-rate, kanonický odkaz a API, „Indexer“ → „část vyhledávače, která zpracovává obsah pro index“, úspornější CTA, méně opakovaného „podle nápovědy“) |
+| Závěrečný audit | C5b: 20 z 21 oprav kola 1 obstálo; zbytek u IndexNow (parametr `key`) a nový nález u strukturovaných dat opraveny doslovně zněním auditora, cílené ověření obstálo |
+| LLM průchod ze skillu | externí volání gpt-5.4 se nepoužívá (OpenAI API vypnuté rozhodnutím z 30. 10. 2026); náhradou nezávislý jazykový audit kola 2 |
+| Nová pravidla | **žádné** — nálezy závisely na délce a stavbě vět, ne na hlídaných výrazech |
+
+**Opraveno:** „Nepřijme ho, pokud stránky nepovažuje za dostatečně obsahově podobné“ (dvojí zápor) → „přijme jen při dostatečné
+obsahové podobnosti“ · „Indexer jejich obsah ignoruje“ → „Část vyhledávače, která zpracovává obsah pro index, jejich obsah
+ignoruje“ · „přes API“ → „přes rozhraní API pro automatické odesílání“ · FAQ „Řada základních doporučení je společná“ (bez
+předmětu) → „SEO pro Seznam.cz a Google sdílí doporučení…“ · H2 „co si odnést“ → „prověřte technická pravidla a hlaste změny stránek“.

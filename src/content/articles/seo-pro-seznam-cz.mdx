@@ -1,0 +1,194 @@
+---
+title: "SEO pro Seznam.cz v roce 2026: co je stejné jako u Googlu a co jinak"
+seoTitle: "SEO pro Seznam.cz 2026: co platí jinak než u Googlu"
+description: "SEO pro Seznam.cz podle nápovědy Seznamu: co platí stejně jako u Googlu, co SeznamBot čte jinak (X-Robots-Tag, Request-rate, kanonické URL) a jak hlásit změny."
+answer: "SEO pro Seznam.cz je úprava webu pro dohledatelnost ve vyhledávání Seznamu. S Googlem sdílí doporučení pro titulky, adresy, obsah, odkazy a strukturovaná data. SeznamBot podle nápovědy ignoruje X-Robots-Tag i kanonický odkaz sám na sebe a podporuje Request-rate v robots.txt. Nové a změněné stránky lze hlásit přes Seznam Webmaster nebo IndexNow."
+slug: "seo-pro-seznam-cz"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "ai-platformy"
+published: "2026-11-26"
+updated: "2026-11-26"
+keywords:
+  - "SEO pro Seznam.cz"
+  - "SEO Seznam"
+  - "SeznamBot"
+  - "Seznam Webmaster"
+  - "IndexNow Seznam"
+  - "robots.txt Seznam"
+  - "Request-rate"
+  - "Seznam a Google rozdíly"
+variant: "rich"
+faq:
+  - q: "Je SEO pro Seznam.cz jiné než pro Google?"
+    a: "SEO pro Seznam.cz a Google sdílí doporučení pro výstižné titulky a popisky, srozumitelné adresy, nadpisy, popisný text odkazů a alternativní text obrázků. Zákaz indexace značkou noindex funguje při povoleném stahování. Sitemapa smí mít nejvýš 50 MB po dekompresi a současně 50 000 adres v jednom souboru. SeznamBot podle nápovědy ignoruje X-Robots-Tag a kanonický odkaz sám na sebe; v robots.txt podporuje Request-rate. Změny lze Seznamu hlásit přes Seznam Webmaster nebo IndexNow. Vykreslování obsahu z JavaScriptu nápověda Seznamu nepopisuje."
+  - q: "Jak přidat web do vyhledávání Seznamu?"
+    a: "Podle nápovědy Seznamu obvykle stačí přidat hlavní stránku; ostatní by měl robot objevit po odkazech, pokud na každou vede alespoň jeden odkaz. Samotné objevení adresy ale nezaručuje její indexaci. Ručně jde web přidat přidávacím formulářem nebo protokolem IndexNow. Po ověření webu v Seznam Webmasteru zařadí funkce Přidat stránku do hledání indexovatelnou stránku do indexu se zpožděním několika minut; má denní kvótu, přes rozhraní API pro automatické odesílání až 500 adres denně."
+  - q: "Řídí se SeznamBot hlavičkou X-Robots-Tag?"
+    a: "SeznamBot se hlavičkou X-Robots-Tag podle nápovědy Seznamu neřídí: když ji použijete, robot ji ignoruje a stáhne celou adresu. Google ji podporuje, takže kdo zakazuje indexaci jen touto hlavičkou, u Seznamu tím zákaz nenastaví. Pro Seznam použijte meta značku robots s hodnotou noindex přímo v HTML a stahování stránky v robots.txt nechte povolené."
+  - q: "Jak rychle Seznam zaindexuje novou stránku?"
+    a: "Rychlost indexace v Seznamu záleží na tom, jak stránku ohlásíte. Funkce Přidat stránku do hledání v Seznam Webmasteru zařadí indexovatelnou stránku do indexu se zpožděním několika minut, ale má denní kvótu. Oznámení přes IndexNow je podle Seznamu jen informace pro algoritmy: stažení ani indexaci nezaručuje a adresy, které algoritmy vyberou k indexaci, se do výsledků dostanou do týdne. Jinak ji robot může najít sám po odkazech, ze sitemapy nebo z kanálu RSS."
+  - q: "Jak zakázat Seznamu používat web pro Seznam AI?"
+    a: "Pro zákaz používání celého webu jako zdroje AI odpovědí Seznam podle nápovědy respektuje v robots.txt kteroukoli z položek User-agent Seznam-Extended, AI nebo MachineLearning s pravidlem Disallow: / — stačí jedna. Druhou možností je meta značka seznambot s hodnotou nosnippet v hlavičce příslušné stránky. Ta ale zároveň zakáže textový úryvek, náhled, zobrazování strukturovaných dat i tvorbu vybraného úryvku; ve výsledcích zůstane jen titulek a odkaz."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+
+Společná jsou doporučení pro výstižné titulky, srozumitelné adresy, užitečný obsah, popisné odkazy a strukturovaná data. Rozdíly jsou technické: podle nápovědy SeznamBot ignoruje hlavičku **X-Robots-Tag** i kanonický odkaz sám na sebe a v robots.txt podporuje **Request-rate**. Zákaz indexace proto nastavte značkou **noindex** v HTML a stahování ponechte povolené; nové a změněné stránky hlaste přes Seznam Webmaster nebo IndexNow.
+
+Vycházím z nápovědy Seznam Vyhledávání pro weby a z dokumentace Google Search Central, stav k 26. 11. 2026. Do Seznam Webmasteru jsem se nepřihlašoval a výsledky vyhledávání Seznamu jsem neprocházel; co popisuji, je obsah nápovědy. Kolik lidí v Česku na Seznamu hledá, rozebírá [článek o podílu Seznamu](/blog/podil-seznamu-v-ceskem-vyhledavani/).
+
+## SEO pro Seznam a Google — <span class="hl">společná doporučení</span> pro <strong>obsah a přístup robotů</strong>
+
+Tyhle zásady stojí v nápovědě Seznamu i v dokumentaci Googlu:
+
+- **Titulek a popisek** jedinečný pro každou stránku, výstižný a bez hromady klíčových slov. Titulek výsledku skládají oba vyhledávače z `<title>` a z textu stránky, úryvek berou z obsahu, případně z meta popisku.
+- **Srozumitelné adresy** se slovy, která odpovídají obsahu. Seznam radí oddělovat slova spojovníkem nebo tečkou, jinak je nemusí rozpoznat.
+- **Nadpisy, popisný text odkazů a alternativní text obrázků** pomáhají vyhledávačům pochopit obsah a jeho souvislosti. Obrázky obě dokumentace doporučují výstižně popsat.
+- **Zákaz indexace značkou noindex** v `<meta name="robots">` při povoleném stahování. Stránku zakázanou v robots.txt robot nestáhne, takže noindex nepřečte.
+- **robots.txt** s pravidly Disallow a Allow a direktivou Sitemap. SeznamBot pravidla respektuje a rozumí zástupným znakům `*` a `$`.
+- **Sitemapa** nejvýš 50 MB v nekomprimovaném stavu a současně nejvýš 50 000 adres v jednom souboru; překročení kteréhokoli limitu vyžaduje rozdělení. Nápověda Seznamu navíc požaduje adresy z jednoho webserveru, umístění sitemapy oznámíte absolutní adresou v robots.txt a priority v ní ovlivňují jen procházení webu, ne pořadí ve výsledcích.
+- **Přesměrování 301** při trvalém přesunu. Přesměrování JavaScriptem Seznam nedoporučuje a Google ho radí použít, jen když nejde serverové přesměrování ani meta refresh.
+- **Strukturovaná data** podle slovníku schema.org pomáhají vyhledávačům pochopit obsah. U podporovaných typů mohou umožnit rozšířený výsledek; pro Google musí obsahovat všechny povinné vlastnosti a splňovat pravidla příslušného typu. Samotný zápis podle schema.org zobrazení rozšířeného výsledku nezaručuje.
+- **Meta značka keywords** nehraje roli: Seznam na ni podle nápovědy nebere ohled a Google ji nepoužívá.
+- **Jazyk stránky** oba vyhledávače rozpoznávají z textu.
+
+## Co SeznamBot <span class="hl">čte jinak</span> — <strong>rozdíly podle dokumentace</strong>
+
+Tabulka srovnává dokumentovaná pravidla obou vyhledávačů a označuje i místo, kde podklady k určení rozdílu nestačí: u SeznamBota z nápovědy nejde určit, zda vykresluje obsah vytvářený JavaScriptem.
+
+SeznamBot je vyhledávací robot Seznamu. Direktiva Request-rate v robots.txt slouží k nastavení rychlosti procházení webu. Kanonický odkaz označuje preferovanou adresu u stránek se stejným nebo podobným obsahem.
+
+<CompareTable
+  leftLabel="Seznam.cz podle nápovědy"
+  leftTone="seo"
+  rightLabel="Google podle dokumentace"
+  rightTone="aio"
+  rows={[
+    { icon: "📨", label: "Hlavička X-Robots-Tag", left: "Neřídí se jí: robot ji ignoruje a stáhne celou adresu. Indexaci zakazujte meta značkou robots v HTML.", right: "Podporuje ji, i pro soubory PDF, videa a obrázky." },
+    { icon: "⏱️", label: "Rychlost procházení v robots.txt", left: "Podporuje Request-rate, např. 100/15m. Minimum nastavení je 1 dokument za 30 sekund; nižší hodnotu zvýší na minimum. Maximum závisí na výkonu a zatížení SeznamBota. Mimo zadané časové okno platí výchozí chování. Nastavení nezaručuje dosaženou rychlost.", right: "Pole jako crawl-delay nepodporuje; v robots.txt čte jen user-agent, allow, disallow a sitemap." },
+    { icon: "🔗", label: "Kanonický odkaz", left: "Odkaz sám na sebe ignoruje. Odkaz na jinou adresu přijme jen při dostatečné obsahové podobnosti. Interně ho zpracuje obdobně jako 301, bez přesměrování návštěvníka. Cíl musí mít porovnatelný obsah; nemá být přesměrováním ani vyžadovat cookie.", right: "Doporučuje kanonický odkaz uvést i na kanonické stránce samotné." },
+    { icon: "📏", label: "Velikost HTML", left: "Nejčastější dotazy (změna 12. 8. 2025): 1 MB = 1 048 576 bajtů. Optimalizační minimum (změna 16. 12. 2025): 4 MiB výsledného zdrojového kódu. Obě stránky uvádějí, že větší dokument robot ignoruje.", right: "Googlebot pro Google Search stáhne prvních 2 MB podporovaného souboru, u PDF prvních 64 MB. Limity platí pro nekomprimovaná data. K posouzení indexace předá jen staženou část. Odkazované prostředky stahuje zvlášť; jiní roboti Googlu mohou mít jiné limity." },
+    { icon: "⚙️", label: "JavaScript (u Seznamu nedoloženo)", left: "Jestli vykresluje obsah z JavaScriptu, nápověda neříká. Přesměrování JavaScriptem nedoporučuje, protože všechny zápisy nezná; rozpoznané bere jako 302.", right: "Stránky zpracovává ve třech fázích: procházení, vykreslení a indexace. K vykreslení řadí stránky se stavem 200, které nezakazují indexaci." },
+    { icon: "📣", label: "IndexNow", left: "Zapojený, s koncovým bodem search.seznam.cz/indexnow a vlastní stránkou nápovědy.", right: "V seznamu účastníků na indexnow.org (searchengines.json) není." },
+  ]}
+/>
+
+<Insight tone="warn" label="Opatrná varianta">
+  Z nápovědy Seznamu nejde rozhodnout, jestli platí 1 MB, nebo 4 MiB; opatrnou volbou je držet HTML pod nižší hranicí. A protože nápověda neříká, jestli SeznamBot vykresluje obsah z JavaScriptu, patří hlavní text do HTML, které posílá server. Jak si ověřit, co robot dostane, ukazuje [článek o JavaScriptu a robotech](/blog/javascript-a-ai-roboti/).
+</Insight>
+
+Další pravidla z nápovědy Seznamu, která stojí za kontrolu:
+
+- **Kódování.** SeznamBot zná jen iso-8859-2, windows-1250, utf-8 a utf-16 a kódování musí být deklarované přímo ve stránce. Stránky v jiném kódování se do indexu nedostanou.
+- **Neuzavřené značky script a style.** Část vyhledávače, která zpracovává obsah pro index, jejich obsah ignoruje; když chybí uzavírací značka nebo je zapsaná jako `<script />`, nevidí ani text za ní.
+- **Meta značky s názvem seznambot.** Specializovaná nápověda uvádí `<meta name="seznambot" content="nosnippet">` a pro zákaz vybraného úryvku hodnotu `nofeaturedsnippet`. Obecná stránka Meta tag robots přitom zápis s `name="SeznamBot"` odmítá a ukazuje příklad s hodnotou `index`, takže nápověda tu jednotná není. Pro zákaz indexace použijte dokumentovaný `<meta name="robots" content="noindex">`.
+- **Strukturovaná data mimo zobrazení.** Prvek `div`, `span` nebo `section`, který je obsahuje, označte atributem `data-nosnippet`; rozšířený úryvek pak Seznam neukáže, data ale dál používá interně.
+- **Přesměrování 302.** Robot několik dní ověřuje, jestli se na adresu nevrátí obsah se stavem 200, a ve výsledcích může ponechat původní i cílovou adresu; Seznam upozorňuje, že se toto chování může změnit. Meta refresh delší než 7 sekund za přesměrování nebere a stránku normálně indexuje.
+- **Nedostupnost a zrušené stránky.** Nedostupnou stránku zkouší robot stáhnout opakovaně v několikadenních intervalech a z výsledků ji vyřadí po třech po sobě jdoucích zjištěních nedostupnosti. Stav 404 několikrát ověřuje; po zjištění 410 ho dál neověřuje a stránku rovnou označí k odstranění, takže proběhne rychleji.
+- **Přechod na HTTPS** podle nápovědy (stránka naposledy upravená 13. 12. 2024) může na čas snížit pozice, protože se signály přenášejí jako při změně domény. Při změně domény nebo protokolu radí zachovat cesty adres beze změny.
+- **Kanál RSS** používá SeznamBot k objevování nových stránek. Upozorníte ho na něj značkou `<link rel="alternate">`; zpracovat ale nemusí každý kanál.
+
+Zdroje: nápověda Seznamu [Meta tag robots](https://o-seznam.cz/napoveda/vyhledavani/seznambot/meta-tag-robots/), [Robots.txt](https://o-seznam.cz/napoveda/vyhledavani/seznambot/robots-txt/), [Kanonické URL](https://o-seznam.cz/napoveda/vyhledavani/seznambot/kanonicke-url/), [Přesměrování URL](https://o-seznam.cz/napoveda/vyhledavani/seznambot/presmerovani-url/), [Zakázání tvorby snippetů](https://o-seznam.cz/napoveda/vyhledavani/seznambot/zakazani-tvorby-snippetu/), [Optimalizační minimum](https://o-seznam.cz/napoveda/vyhledavani/optimalizace/optimalizacni-minimum/) a [Nejčastější dotazy](https://o-seznam.cz/napoveda/vyhledavani/nejcastejsi-dotazy/); Google [robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt), [robots meta tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag), [kanonické adresy](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [Googlebot](https://developers.google.com/search/docs/crawling-indexing/googlebot) a [JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); [seznam účastníků IndexNow](https://www.indexnow.org/searchengines.json).
+
+## Jak Seznam <span class="hl">řadí výsledky</span> — <strong>parametry, které sám zveřejňuje</strong>
+
+Seznam v [technických podmínkách](https://o-seznam.cz/napoveda/vyhledavani/technicke-podminky/) popisuje, z čeho řazení přirozených výsledků vychází. Klíčové je strojové učení: modely se učí z anotací, tedy z hodnocení stránek k dotazům podle zveřejněných pravidel, a aktualizují se zhruba jednou za tři měsíce. Jako hlavní parametry Seznam jmenuje:
+
+- výskyt slov z dotazu v dokumentu a v odkazech,
+- grafové algoritmy nad odkazovou sítí a statistiky zpětných odkazů,
+- zpětnou vazbu od uživatelů — počet kliků na výsledek a na výsledky z webu,
+- shodu jazyka dokumentu s jazykem dotazu,
+- informace o dotazu: jazyk, slovní druhy, vzácnost slov a počet částí, které mají samostatný význam,
+- informace o dokumentu: jazyk, statistiky HTML prvků (odstavce, nadpisy, seznamy, obrázky), protokol http nebo https, velikost dokumentu i po bezeztrátové kompresi a výskyt kódů reklamních systémů.
+
+Reklama ve Skliku podle Seznamu řazení přirozených výsledků neovlivňuje.
+
+### Titulek a úryvky výsledku
+
+Titulek i úryvek výsledku vznikají automaticky; ovlivníte je titulkem a textem stránky, úryvek i popiskem ve firemním zápisu na Firmy.cz, který Seznam použije, když dotaz na stránce chybí.
+
+**Vybraný úryvek** (featured snippet) Seznam bere z prvních deseti výsledků; v nápovědě odkazuje na vlastní studii, podle níž je při jeho vytvoření průměrná proklikovost stránky přibližně o 7 % vyšší. Datum ani metodiku studie stránka neuvádí, takže údaj není předpovědí pro konkrétní web.
+
+### Osnova a rychlé odkazy
+
+Podle nápovědy mohou vnitřní odkazy na kotvy ve zdrojovém HTML umožnit zobrazení **osnovy** výsledku; zaručené není a odkazy se vybírají podle dotazu. Rychlé odkazy Seznam vybírá z odkazů na domovské stránce, které vedou na dokumenty téže domény druhé úrovně a jsou pro uživatele nejpřínosnější.
+
+## <span class="hl">Seznam Webmaster a IndexNow</span> — <strong>jak hlásit nové a změněné stránky</strong>
+
+Postup vychází ze stránek nápovědy [Seznam Webmaster](https://o-seznam.cz/napoveda/vyhledavani/seznam-webmaster/) a [Protokol IndexNow](https://o-seznam.cz/napoveda/vyhledavani/seznambot/protokol-indexnow/); rozhraní nástroje jsem neověřoval.
+
+<Stepper
+  steps={[
+    {
+      title: "Ověřte, že SeznamBot na web smí",
+      desc: "V robots.txt nesmí být SeznamBot zakázaný a soubor nesmí být přesměrovaný — přesměrovaný robots.txt robot nezpracuje. K ověření přístupu robota odkazuje nápověda na kontrolní formulář Seznamu. Sitemapu oznamte v robots.txt absolutní adresou; odkazů na sitemapy smí být až 100.",
+    },
+    {
+      title: "Ověřte web v Seznam Webmasteru",
+      desc: "Nápověda pro přidání webu uvádí přihlášení Seznam účtem a dvě metody ověření: meta značku seznam-wmt přímo v hlavičce domovské stránky, nebo soubor seznam-wmt-<kód>.txt v kořeni webu. Robot musí mít k příslušné stránce či souboru přístup. Použijte poslední vygenerovaný kód, vytvoření nového zneplatní předchozí. Vložení značky skriptem podporované není a ověřovací soubor má na webu zůstat kvůli opakovaným kontrolám. Verze na http a https potřebují vlastní ověření; ověření http se nezdaří, pokud se požadavek přesměruje na https.",
+    },
+    {
+      title: "Sledujte index a chyby",
+      desc: "Nápověda Seznam Webmasteru popisuje metriky navštívených, zaindexovaných, přesměrovaných a chybových stránek. U rozhraní API pro automatické získávání dat uvádí vzorek až 1 000 chybových adres a možnost dotázat se na konkrétní adresu. Službu označuje jako betaverzi a upozorňuje na možné výpadky dat, takže propad v grafu ještě nemusí znamenat vypadnutí z indexu.",
+    },
+    {
+      title: "Nové a změněné stránky přidávejte do hledání",
+      desc: "Funkce Přidat stránku do hledání podle nápovědy zařadí indexovatelnou stránku do indexu se zpožděním několika minut; má denní kvótu a přes API až 500 adres denně. Hodí se i po úpravě titulku nebo textu — popisek ve výsledcích se tak aktualizuje rychleji.",
+    },
+    {
+      title: "Hromadné změny hlaste přes IndexNow",
+      desc: "IndexNow slouží k hlášení nových a změněných adres. Stažení ani indexaci nezaručuje. Nastavení klíče, odesílání a význam odpovědí popisuje následující postup.",
+    },
+  ]}
+/>
+
+### Jak nastavit a používat IndexNow
+
+1. **Připravte klíč.** Vygenerujte 8 až 128 znaků z a–z, A–Z, 0–9 a pomlčky. Do veřejně dostupného souboru v UTF-8 vložte pouze klíč, bez značky pořadí bajtů (BOM), HTML a dalších dat. Doporučené umístění je kořen webu a název `<klíč>.txt`. Klíč přiložte také ke každému požadavku jako parametr `key`: u GET v adrese požadavku, u POST v těle JSON. Jeho hodnota musí odpovídat klíči v souboru na webu.
+2. **Při umístění ve složce přidejte parametr.** Každý požadavek musí obsahovat `keyLocation`. Hlásit pak lze jen adresy z této složky a jejích podadresářů.
+3. **Odešlete adresy.** Na `search.seznam.cz/indexnow` je posílejte jednotlivě metodou GET, nebo nejvýš 10 000 v jednom požadavku POST. Celkový limit Seznam neuvádí; velké množství současných požadavků může operativně omezit odpovědí 429.
+4. **Rozlišujte přijetí a indexaci.** Odpověď 200 potvrzuje předání informace, nikoli stažení nebo indexaci. Adresy, které algoritmy vyberou k indexaci, se do výsledků dostanou do týdne. Ostatní zapojené vyhledávače Seznam informuje po ověření klíče.
+
+IndexNow v souvislostech s Bingem rozebírá [článek o SEO pro Bing](/blog/bing-seo-pro-ai/).
+
+## Seznam AI — <span class="hl">vyhledávání je jedním ze zdrojů</span>, <strong>SEO citaci nezaručí</strong>
+
+### Zdroje odpovědí Seznam AI
+
+Seznam AI je podle technických podmínek funkce Seznam Vyhledávání, která odpovídá souvislým textem. Výstup skládá z více zdrojů, zejména z výsledků Seznam Vyhledávání, z obsahu služeb Seznamu a ze zdrojů, které využívá jazykový model. Zdroje vybírá hlavně podle relevance k dotazu, aktuálnosti, jazykové a věcné souvislosti, dostupnosti a kvality zdroje, dostupnosti strukturovaných nebo ověřených dat a technické možnosti je využít.
+
+Pokud vychází z výsledků Seznam Vyhledávání, uplatní se pravidla řazení příslušného typu výsledků, odkazy ale nemusí převzít ve stejném pořadí. Do výstupu může zahrnout i informace ze sponzorovaných výsledků nebo jiného reklamního obsahu, pokud jsou relevantní k dotazu; platba za reklamu jejich zahrnutí nezaručuje a výstup Seznam AI podle Seznamu nejde přímo ovlivnit ani koupit.
+
+### Kdy může pomoci SEO pro Seznam
+
+Výsledky Seznam Vyhledávání jsou tedy jedním ze zdrojů Seznam AI vedle obsahu služeb Seznamu a zdrojů jazykového modelu; jejich vzájemný podíl technické podmínky neuvádějí. SEO pro Seznam je proto relevantní pro cestu, při níž AI využívá výsledky vyhledávání, samo o sobě ale citaci nezaručuje.
+
+### Jak zakázat použití obsahu v Seznam AI
+
+Kdo nechce, aby Seznam jeho web používal jako zdroj AI odpovědí, může v robots.txt zakázat kteroukoli z položek Seznam-Extended, AI nebo MachineLearning (stačí jedna), nebo do hlavičky stránky vložit `<meta name="seznambot" content="nosnippet">`. Ta ale zároveň zakáže textový úryvek, náhled, zobrazování strukturovaných dat i tvorbu vybraného úryvku; ve výsledcích zůstane titulek a odkaz. Podrobnosti rozebírá [článek o odhlášení ze Seznam AI](/blog/seznam-extended-opt-out/).
+
+## Kontrolní seznam <span class="hl">SEO pro Seznam.cz</span> — <strong>co projít na webu</strong>
+
+<Checklist title="SEO pro Seznam.cz" tone="seo" items={[
+  { title: "robots.txt", desc: "SeznamBot není zakázaný, soubor není přesměrovaný a obsahuje absolutní adresu sitemapy. Rychlost procházení případně upravte direktivou Request-rate." },
+  { title: "Zákaz indexace", desc: "Stránky, které ve výsledcích být nemají, nesou meta značku robots s hodnotou noindex a v robots.txt zakázané nejsou. Na hlavičku X-Robots-Tag Seznam nehledí." },
+  { title: "Kanonické adresy", desc: "Kanonický odkaz míří na obsahově podobnou stránku, ne na přesměrování ani na adresu, která vyžaduje cookie. Odkaz sám na sebe Seznam ignoruje; Google ho doporučuje, takže ho nechte." },
+  { title: "Velikost a kód stránky", desc: "HTML pod 1 MB, kódování utf-8 deklarované ve stránce, každá značka script a style uzavřená a hlavní text v HTML ze serveru." },
+  { title: "Přesměrování", desc: "Trvalé přesuny řešte serverovým stavem 301 na odpovídající novou stránku. Meta refresh se zpožděním nejvýš 7 sekund a rozpoznané přesměrování JavaScriptem Seznam zpracuje jako 302, takže ve výsledcích může ponechat i původní adresu; při delším meta refresh stránku za přesměrovanou nepovažuje." },
+  { title: "Strukturovaná data", desc: "Produkty, články, recepty, události nebo časté dotazy popsané podle schema.org, aby Seznam mohl ukázat rozšířený úryvek; obrázkové náhledy bere hlavně z Open Graph." },
+  { title: "Seznam Webmaster a IndexNow", desc: "Web je ověřený, chybové stránky sledujete a nové adresy hlásíte funkcí Přidat stránku do hledání nebo přes IndexNow." },
+  { title: "Firmy.cz", desc: "Firma má na Firmy.cz zápis s aktuálním popiskem. Nápověda Seznamu registraci doporučuje jako kvalitní zpětný odkaz a popisek může doplnit úryvek ve výsledcích." },
+]} />
+
+## SEO pro Seznam.cz — <span class="hl">prověřte technická pravidla</span> a <strong>hlaste změny stránek</strong>
+
+Společná základní doporučení pro Seznam i Google platí, rozhodují ale technické detaily. Zkontrolujte doložené rozdíly u X-Robots-Tag, Request-rate a kanonických odkazů. Zvlášť posuďte velikost HTML, u níž si nápověda Seznamu odporuje, a obsah závislý na JavaScriptu, jehož vykreslování SeznamBotem podklady neobjasňují — hlavní obsah proto posílejte už v HTML ze serveru. Potom web ověřte v Seznam Webmasteru a nové stránky hlaste přidáním do hledání nebo přes IndexNow; pro Seznam AI je SEO relevantní tam, kde AI využívá výsledky vyhledávání.
+
+Při úpravě produktů, kategorií nebo článků, včetně strukturovaných dat pro rozšířené úryvky, můžete použít **[AI SEO Wireframe Pack](/pack/)**. Obsahuje podklady pro sedm typů stránek: návrhy rozložení s anotacemi, šablony textů a ukázky strukturovaných dat včetně produktů, článků a častých dotazů. Součástí je návod aplikace podle redakčního systému. Pack stojí **1 490 Kč včetně DPH**.
+
+*Transparentně: Stav k 26. 11. 2026 podle nápovědy Seznam Vyhledávání pro weby, dokumentace Google Search Central a stránek indexnow.org. Seznam Webmaster ani výsledky vyhledávání Seznamu jsem netestoval. Jak vzniká obsah tohoto webu, popisujeme na [stránce autora](/autor/kamil/).*
