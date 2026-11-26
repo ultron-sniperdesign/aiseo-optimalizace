@@ -1909,3 +1909,17 @@ proměnlivost záměru a pojmenování studie AIVO · titulek nyní rozlišuje v
 „nejdřív měřit, pak škrtat“ → nadpis podle obsahu · holé „Ze samotného poklesu to poznat nejde“ a větný zlomek „Z výroku…“
 na začátku FAQ nahrazeny větami s předmětem · „kontrolou stejných výsledků vyhledávání to není“ → „nikoli o srovnání stejných
 výsledků vyhledávání“.
+
+## 2026-11-26 · `agentni-nakupovani-zbozi-cz` (nový článek)
+
+| Průchod | Výsledek |
+|---|---|
+| Verze slovníku | v74, beze změny |
+| Mechanický checker | v draftu **1 nález** (⛔ datum „2026-01-11“ v textu → „11. 1. 2026“), opraveno; po konečných opravách **0 nálezů**, 1 678 slov (včetně frontmatteru a komponent), 276 pravidel |
+| Nezávislý jazykový audit | kolo 2 (Codex): 4 varování a 1 tip, vše přijato (sebestačné FAQ, kratší buňky srovnávací tabulky, technický odstavec do samostatného H3 s vysvětlením MCP, méně opakovaných metodických výhrad, „Co jsou UCP a ACP“) |
+| Závěrečný audit | C5b: 7 zásadních oprav obstálo, nový nález žádný |
+| LLM průchod ze skillu | externí volání gpt-5.4 se nepoužívá (OpenAI API vypnuté rozhodnutím z 30. 10. 2026); náhradou nezávislý jazykový audit kola 2 |
+| Nová pravidla | **žádné** — nálezy závisely na větné stavbě a kontextu |
+
+**Opraveno:** ISO datum v textu → český zápis · „Co je UCP a ACP“ → „Co jsou“ (shoda s množným číslem) · „To není důkaz, že by podpora
+nikdy nebyla“ → „Z absence zmínky nelze určit, zda Upgates tuto funkci podporuje“ · holé „Obchodník.“ na začátku FAQ → věta s předmětem.
